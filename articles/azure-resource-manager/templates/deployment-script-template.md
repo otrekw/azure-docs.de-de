@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272649"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984792"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Verwenden von Bereitstellungsskripts in Vorlagen (Vorschauversion)
 
@@ -34,8 +34,7 @@ Vorteile von Bereitstellungsskripts:
 - Sie können Befehlszeilenargumente an das Skript übergeben.
 - Sie können Skriptausgaben angeben und an die Bereitstellung zurückgeben.
 
-> [!NOTE]
-> Das Bereitstellungsskript befindet sich derzeit in der Vorschauphase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/armtemplatepreviews).
+Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen Azure Container Instances verfügbar ist.  Informationen dazu finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
 > Zwei Bereitstellungsskriptressourcen – ein Speicherkonto und eine Containerinstanz – werden für die Skriptausführung und Problembehandlung in derselben Ressourcengruppe erstellt. Diese Ressourcen werden vom Skriptdienst normalerweise gelöscht, bevor die Ausführung des Bereitstellungsskripts beendet wird. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
@@ -45,7 +44,7 @@ Vorteile von Bereitstellungsskripts:
 - **Benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ für die Zielressourcengruppe.** . Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Zum Ausführen von Vorgängen außerhalb der Ressourcengruppe müssen Sie zusätzliche Berechtigungen erteilen. Weisen Sie die Identität beispielsweise der Abonnementebene zu, wenn Sie eine neue Ressourcengruppe erstellen möchten.
 
   > [!NOTE]
-  > Die Bereitstellungsskript-Engine muss im Hintergrund ein Speicherkonto und eine Containerinstanz erstellen.  Eine benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene ist erforderlich, wenn das Abonnement nicht die Ressourcenanbieter Azure-Speicherkonto (Microsoft.Storage) und Azure-Containerinstanz (Microsoft.containerinstance) registriert hat.
+  > Die Bereitstellungsskript-Engine erstellt im Hintergrund ein Speicherkonto und eine Containerinstanz.  Eine benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene ist erforderlich, wenn das Abonnement nicht die Ressourcenanbieter Azure-Speicherkonto (Microsoft.Storage) und Azure-Containerinstanz (Microsoft.ContainerInstance) registriert hat.
 
   Informationen zum Erstellen einer Identität finden Sie unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mithilfe des Azure-Portals](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [... mithilfe der Azure-Befehlszeilenschnittstelle](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) und [... mithilfe von Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
 
@@ -73,9 +72,15 @@ Vorteile von Bereitstellungsskripts:
 
   (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+
   ---
 
-- **Azure PowerShell, Version 3.0.0, 2.8.0 oder 2.7.0**, oder **Azure CLI, Version 2.0.80, 2.0.79, 2.0.78 oder 2.0.77**. Sie benötigen diese Versionen nicht für Bereitstellungsvorlagen. Für das lokale Testen von Bereitstellungsskripts sind diese Versionen jedoch erforderlich. Siehe [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Sie können ein vorkonfiguriertes Docker-Image verwenden.  Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung](#configure-development-environment).
+- **Azure PowerShell** oder **Azure CLI**. Eine Liste der unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list); eine Liste der unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list).
+
+    >[!IMPORTANT]
+    > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
+
+    Sie benötigen diese Versionen nicht für Bereitstellungsvorlagen. Für das lokale Testen von Bereitstellungsskripts sind diese Versionen jedoch erforderlich. Siehe [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Sie können ein vorkonfiguriertes Docker-Image verwenden.  Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung](#configure-development-environment).
 
 ## <a name="sample-templates"></a>Beispielvorlagen
 
@@ -98,6 +103,12 @@ Nachfolgend finden Sie ein JSON-Beispiel.  Das neueste Vorlagenschema finden Sie
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -121,8 +132,9 @@ Details zu Eigenschaftswerten:
 - **Identität**: Der Bereitstellungsskriptdienst verwendet eine benutzerseitig zugewiesene verwaltete Identität, um die Skripts auszuführen. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität unterstützt.
 - **kind:** Geben Sie den Typ des Skripts an. Zurzeit werden Azure PowerShell- und Azure CLI-Skripts unterstützt. Die Werte sind **AzurePowerShell** und **AzureCLI**.
 - **forceUpdateTag**: Wenn Sie diesen Wert zwischen Vorlagenbereitstellungen ändern, wird das Bereitstellungsskript erneut ausgeführt. Verwenden Sie eine der Funktionen newGuid() oder utcNow(), die als defaultValue eines Parameters festgelegt werden muss. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](#run-script-more-than-once).
-- **azPowerShellVersion**/**azCliVersion**: Geben Sie die zu verwendende Modulversion an. Das Bereitstellungsskript unterstützt zurzeit die Azure PowerShell-Versionen 2.7.0, 2.8.0 und 3.0.0 als auch die Azure CLI-Versionen 2.0.80, 2.0.79, 2.0.78 und 2.0.77.
+- **azPowerShellVersion**/**azCliVersion**: Geben Sie die zu verwendende Modulversion an. Eine Liste der unterstützten PowerShell- und CLI-Versionen finden Sie unter [Voraussetzungen](#prerequisites).
 - **arguments:** Geben Sie die Parameterwerte an. Die Werte werden durch Leerzeichen voneinander getrennt.
+- **environmentVariables**: Geben Sie die Umgebungsvariablen an, die an das Skript übergeben werden sollen. Weitere Informationen finden Sie unter [Entwickeln von Bereitstellungsskripts](#develop-deployment-scripts).
 - **scriptContent**: Geben Sie den Skriptinhalt an. Wenn Sie ein externes Skript ausführen möchten, verwenden Sie stattdessen `primaryScriptUri`. Beispiele finden Sie unter [Verwenden von Inlineskripts](#use-inline-scripts) und [Verwenden externer Skripts](#use-external-scripts).
 - **primaryScriptUri**: Geben Sie eine öffentlich zugängliche URL zum primären Bereitstellungsskript mit unterstützten Dateierweiterungen an.
 - **supportingScriptUris**: Geben Sie ein Array öffentlich zugänglicher URLs zu unterstützenden Dateien an, die in `ScriptContent` oder `PrimaryScriptUri` aufgerufen werden.
@@ -141,16 +153,16 @@ Details zu Eigenschaftswerten:
 
 ## <a name="use-inline-scripts"></a>Verwenden von Inlineskripts
 
-Für die folgende Vorlage wurde eine Ressource mit dem Typ `Microsoft.Resources/deploymentScripts` definiert.
+Für die folgende Vorlage wurde eine Ressource mit dem Typ `Microsoft.Resources/deploymentScripts` definiert. Der hervorgehobene Teil ist das Inlineskript.
 
-[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json?range=1-54)]
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
 > Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, müssen Zeichenfolgen innerhalb der Bereitstellungsskripts stattdessen in einfache Anführungszeichen eingeschlossen werden. Das Escapezeichen für PowerShell ist **&#92;** . Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen. Sehen Sie sich den Standardwert des Parameters an.
 
 Das Skript akzeptiert einen Parameter und gibt den Parameterwert aus. **DeploymentScriptOutputs** wird zum Speichern von Ausgaben verwendet.  Im Abschnitt „outputs“ zeigt die Zeile **value** an, wie auf die gespeicherten Werte zugegriffen wird. `Write-Output` wird zum Debuggen verwendet. Informationen zum Zugreifen auf die Ausgabedatei finden Sie unter [Debuggen von Bereitstellungsskripts](#debug-deployment-scripts).  Beschreibungen der Eigenschaften finden Sie unter [Beispielvorlagen](#sample-templates).
 
-Wählen Sie zum Ausführen des Skripts **Jetzt testen** aus, um die Azure Cloud Shell zu öffnen, und fügen Sie anschließend den folgenden Code in den Shellbereich ein.
+Wählen Sie zum Ausführen des Skripts **Jetzt testen** aus, um die Cloud Shell zu öffnen, und fügen Sie anschließend den folgenden Code in den Shellbereich ein.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -180,6 +192,8 @@ Ein Beispiel finden Sie [hier](https://github.com/Azure/azure-docs-json-samples/
 
 Die externen Skriptdateien müssen zugänglich sein.  Informationen zum Schützen Ihrer Skriptdateien, die in Azure Storage-Konten gespeichert sind, finden Sie im [Tutorial: Schützen von Artefakten in Bereitstellungen per Azure Resource Manager-Vorlage](./template-tutorial-secure-artifacts.md).
 
+Es ist Ihre Aufgabe, die Integrität der Skripts zu gewährleisten, auf die vom Bereitstellungsskript verwiesen wird, entweder **PrimaryScriptUri** oder **SupportingScriptUris**.  Verweisen Sie nur auf Skripts, denen Sie vertrauen.
+
 ## <a name="use-supporting-scripts"></a>Verwenden unterstützender Skripts
 
 Sie können komplizierte Logik in unterstützende Skriptdateien aufteilen. Die `supportingScriptURI`-Eigenschaft ermöglicht Ihnen, bei Bedarf ein Array von URIs für die unterstützenden Skriptdateien bereitzustellen:
@@ -204,7 +218,7 @@ Die unterstützenden Dateien werden zur Laufzeit in „azscripts/azscriptinput�
 
 Die folgende Vorlage zeigt, wie Werte zwischen zwei deploymentScripts-Ressourcen übergeben werden:
 
-[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic.json?range=1-84)]
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
 
 In der ersten Ressource definieren Sie eine Variable mit dem Namen **$DeploymentScriptOutputs**, die Sie zum Speichern der Ausgabewerte verwenden. Um aus einer anderen Ressource in der Vorlage auf den Ausgabewert zuzugreifen, verwenden Sie Folgendes:
 
@@ -216,9 +230,9 @@ reference('<ResourceName>').output.text
 
 Anders als das PowerShell-Bereitstellungsskript macht die CLI-/Bash-Unterstützung keine allgemeine Variable zum Speichern von Skriptausgaben verfügbar. Stattdessen gibt es eine Umgebungsvariable namens **AZ_SCRIPTS_OUTPUT_PATH**, in der der Speicherort der Skriptausgabedatei gespeichert wird. Wenn ein Bereitstellungsskript aus einer Resource Manager-Vorlage ausgeführt wird, wird diese Umgebungsvariable von der Bash-Shell automatisch für Sie festgelegt.
 
-Bereitstellungsskriptausgaben müssen am AZ_SCRIPTS_OUTPUT_PATH-Speicherort gespeichert werden, und bei den Ausgaben muss es sich um ein gültiges JSON-Zeichenfolgenobjekt handeln. Der Inhalt der Datei muss als Schlüssel-Wert-Paar gespeichert werden. Beispielsweise wird ein Array von Zeichenfolgen als { “MyResult”: [ “foo”, “bar”] } gespeichert.  Das Speichern nur der Arrayergebnisse, z. B. [ “foo”, “bar” ], ist ungültig.
+Bereitstellungsskriptausgaben müssen am AZ_SCRIPTS_OUTPUT_PATH-Speicherort gespeichert werden, und bei den Ausgaben muss es sich um ein gültiges JSON-Zeichenfolgenobjekt handeln. Der Inhalt der Datei muss als Schlüssel-Wert-Paar gespeichert werden. Beispielsweise wird ein Array von Zeichenfolgen als { "MyResult": [ "foo", "bar"] } gespeichert.  Das ausschließliche Speichern der Arrayergebnisse, z. B. [ "foo", "bar" ], ist ungültig.
 
-[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
 Im vorherigen Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet. Dies ist in den Containerimages enthalten. Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung](#configure-development-environment).
 
@@ -231,7 +245,7 @@ Sie können steuern, wie PowerShell auf Fehler ohne Abbruch reagiert, indem Sie 
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
 
-Das Festlegen von Umgebungsvariablen in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
+Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
 
 ## <a name="debug-deployment-scripts"></a>Debuggen von Bereitstellungsskripts
 
@@ -262,7 +276,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
-[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-status.json?range=1-48)]
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
 
 Die Ausgabe zeigt den Bereitstellungsstatus und die IDs der Bereitstellungsskriptressourcen.
 
@@ -299,7 +313,7 @@ Der Lebenszyklus dieser Ressourcen wird durch die folgenden Eigenschaften in der
 
 Die Ausführung des Bereitstellungsskripts ist ein idempotenter Vorgang. Wenn keine der deploymentScripts-Ressourceneigenschaften (einschließlich des Inlineskripts) geändert werden, wird das Skript nicht ausgeführt, wenn Sie die Vorlage erneut bereitstellen. Der Bereitstellungsskriptdienst vergleicht die Ressourcennamen in der Vorlage mit den vorhandenen Ressourcen in derselben Ressourcengruppe. Wenn Sie dasselbe Bereitstellungsskript mehrmals ausführen möchten, haben Sie zwei Möglichkeiten:
 
-- Ändern Sie den Namen Ihrer deploymentScripts-Ressource. Verwenden Sie z. B. die Vorlagenfunktion [utcNow](./template-functions-string.md#utcnow) als Ressourcennamen oder als Teil des Ressourcennamens. Wenn Sie den Ressourcennamen ändern, wird eine neue deploymentScripts-Ressource erstellt. Es ist sinnvoll, den Verlauf der Skriptausführung zu protokollieren.
+- Ändern Sie den Namen Ihrer deploymentScripts-Ressource. Verwenden Sie z. B. die Vorlagenfunktion [utcNow](./template-functions-date.md#utcnow) als Ressourcennamen oder als Teil des Ressourcennamens. Wenn Sie den Ressourcennamen ändern, wird eine neue deploymentScripts-Ressource erstellt. Es ist sinnvoll, den Verlauf der Skriptausführung zu protokollieren.
 
     > [!NOTE]
     > Die utcNow-Funktion kann nur für den Standardwert eines Parameters verwendet werden.

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159585"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656212"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76159585"
 <sup>2</sup>Die Cachegröße pro Einheit ist vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup>Verbindungen werden in Pools zusammengefasst und wiederverwendet, sofern sie nicht explizit durch das Back-End geschlossen wurden.<br/>
 <sup>4</sup>Dieser Grenzwert gilt pro Einheit der Tarife „Basic“, „Standard“ und „Premium“. Der Developer-Tarif ist auf 1.024 beschränkt. Dieser Grenzwert betrifft den Tarif „Consumption“ nicht.<br/>
-<sup>5</sup>Dieser Grenzwert gilt für die Tarife „Basic“, „Standard“ und „Premium“. Im Tarif „Consumption“ ist die Größe des Richtliniendokuments auf 4 KiB beschränkt.<br/>
+<sup>5</sup>Dieser Grenzwert gilt für die Tarife „Basic“, „Standard“ und „Premium“. Im Tarif „Consumption“ ist die Größe des Richtliniendokuments auf 16 KiB beschränkt.<br/>
 <sup>6</sup>Diese Ressource ist nur im Tarif „Premium“ verfügbar.<br/>
 <sup>7</sup>Diese Ressource betrifft nur den Tarif „Consumption“.<br/>
 <sup>8</sup>Gilt für nur den Tarif „Consumption“. Enthält eine Abfragezeichenfolge der Länge bis zu 2048 Bytes.<br/>

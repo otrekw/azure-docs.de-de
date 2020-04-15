@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227010"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985931"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -169,7 +169,7 @@ Dieser Abschnitt enthält Details zur datencenterübergreifenden Verfügbarkeit 
 
 #### <a name="availability"></a>Verfügbarkeit
 
-Um festzustellen, ob Media Services in einem Datencenter verfügbar ist, navigieren Sie zu https://azure.microsoft.com/status/ und scrollen zur Tabelle MEDIA.
+Verwenden Sie [Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all), um zu bestimmen, ob Media Services in einem bestimmten Rechenzentrum verfügbar ist.
 
 ### <a name="streaming-endpoints"></a>Streamingendpunkte 
 

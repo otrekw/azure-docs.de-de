@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561679"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437116"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -76,7 +76,7 @@ Es gibt mehrere integrierte RBAC-Rollen, die die Berechtigungen bereitstellen k�
 Zertifikatfehler treten in der Regel in einer der folgenden Situationen auf:
 
 - Die App ist über einen _transparenten Proxy_ verbunden, d. h., ein Server (z. B. Ihr Firmenserver) fängt HTTPS-Datenverkehr ab, entschlüsselt ihn und verschlüsselt ihn dann mit einem selbstsignierten Zertifikat.
-- Sie führen eine Anwendung aus, die ein selbstsigniertes SSL-Zertifikat in die empfangenen HTTPS-Nachrichten einfügt. Beispiele für Anwendungen, die Zertifikate einfügen, sind u. a. Antivirenprogramme und Prüfsoftware für den Netzwerkverkehr.
+- Sie führen eine Anwendung aus, die ein selbstsigniertes TLS/SSL-Zertifikat in die empfangenen HTTPS-Nachrichten einfügt. Beispiele für Anwendungen, die Zertifikate einfügen, sind u. a. Antivirenprogramme und Prüfsoftware für den Netzwerkverkehr.
 
 Wenn Storage-Explorer ein selbstsigniertes oder nicht vertrauenswürdiges Zertifikat sieht, kann er nicht mehr erkennen, ob die empfangene HTTPS-Nachricht geändert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig zu behandeln. Führen Sie dazu die folgenden Schritte aus:
 

@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73807701"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757053"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 
@@ -54,7 +54,7 @@ In den folgenden Fällen spüren Sie die Auswirkungen nicht:
 
 Es wird empfohlen, ausgehenden Datenverkehr zu IP-Adressen für alle [Gateway-IP-Adressen von Azure SQL-Datenbank](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) in der Region an TCP-Port 1433 und im Portbereich 11000–11999 zulassen. Diese Empfehlung bezieht sich auf Clients, die Verbindungen von lokalen Standorten herstellen, und ebenfalls solche, die Verbindungen über Dienstendpunkte herstellen. Weitere Informationen zu Portbereichen finden Sie unter [Verbindungsarchitektur von Azure SQL](sql-database-connectivity-architecture.md#connection-policy).
 
-Bei Verbindungen von Anwendungen, die eine ältere Version des Microsoft JDBC-Treibers als 4.0 verwenden, können Fehler bei der Zertifikatüberprüfung auftreten. Bei älteren Versionen von Microsoft JDBC muss das Feld „Antragsteller“ des Zertifikats einen allgemeinen Namen (Common Name, CN) enthalten. Stellen Sie sicher, dass die Eigenschaft „hostNameInCertificate“ auf „*.database.windows.net“ festgelegt ist, um dieses Problem zu umgehen. Weitere Informationen zum Festlegen der Eigenschaft „hostNameInCertificate“ finden Sie unter [Herstellen von Verbindungen mit SSL-Verschlüsselung](/sql/connect/jdbc/connecting-with-ssl-encryption).
+Bei Verbindungen von Anwendungen, die eine ältere Version des Microsoft JDBC-Treibers als 4.0 verwenden, können Fehler bei der Zertifikatüberprüfung auftreten. Bei älteren Versionen von Microsoft JDBC muss das Feld „Antragsteller“ des Zertifikats einen allgemeinen Namen (Common Name, CN) enthalten. Stellen Sie sicher, dass die Eigenschaft „hostNameInCertificate“ auf „*.database.windows.net“ festgelegt ist, um dieses Problem zu umgehen. Weitere Informationen zum Festlegen der Eigenschaft „hostNameInCertificate“ finden Sie unter [Herstellen von Verbindungen mit einer Verschlüsselung](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
 Wenn die oben genannte Lösung nicht funktioniert, stellen Sie eine Supportanfrage für SQL-Datenbank unter der folgenden URL: https://aka.ms/getazuresupport.
 

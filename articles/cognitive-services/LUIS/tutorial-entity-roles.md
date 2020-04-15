@@ -1,22 +1,14 @@
 ---
 title: 'Tutorial: Kontextbezogene Daten mit Rollen: LUIS'
-titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie verwandte Daten anhand des Kontexts finden. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75447884"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475826"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Tutorial: Extrahieren von Daten mit ähnlichem Kontext aus einer Äußerung
 
@@ -49,24 +41,26 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
-1. Melden Sie sich beim LUIS-Vorschauportal mit der URL [https://preview.luis.ai](https://preview.luis.ai) an.
+1. Melden Sie sich beim [LUIS-**Vorschauportal**](https://preview.luis.ai) an.
 
-1. Wählen Sie **Neue App erstellen** aus, geben Sie den Namen `HumanResources` ein, und behalten Sie die Standardkultur **Englisch** bei. Lassen Sie die Beschreibung leer.
-
-1. Wählen Sie **Fertig**aus.
+1. Wählen Sie **+ Neue App für Unterhaltung** aus, geben Sie den Namen `HumanResources` ein, und behalten Sie die Standardkultur **Englisch** bei. Lassen Sie die Felder für Beschreibung und Vorhersageressource leer. Wählen Sie **Fertig**aus.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Erstellen einer Absicht zur Versetzung von Mitarbeitern an einen anderen Ort
 
+Eine Absicht wird verwendet, um Benutzeräußerungen auf der Grundlage der anhand des Texts in natürlicher Sprache bestimmten Benutzerabsicht zu klassifizieren.
+
+Um eine Äußerung klassifizieren zu können, werden Beispiele von Benutzeräußerungen benötigt, die mit dieser Absicht klassifiziert werden sollen.
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
+1. Wählen Sie **+ Erstellen** aus.
 
 1. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployeeToCity` ein, und klicken Sie anschließend auf **Fertig**.
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot des Dialogfelds „Neue Absicht erstellen“](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. Fügen Sie der Absicht Beispieläußerungen hinzu.
+1. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu.
 
     |Beispiele für Äußerungen|
     |--|
@@ -85,24 +79,29 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Hinzufügen der vordefinierten geographyV2-Entität
 
-Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen extrahiert, z. B. Städtenamen. Da die Äußerungen zwei Städtenamen enthalten, die im Kontext miteinander in Beziehung stehen, sollten Sie Rollen zum Extrahieren dieses Kontexts verwenden.
+Mit der vordefinierten Entität **geographyV2** werden Standortinformationen extrahiert, u. a. Städtenamen. Da die Äußerungen zwei Städtenamen enthalten, die im Kontext miteinander in Beziehung stehen, sollten Sie Rollen zum Extrahieren dieses Kontexts verwenden.
 
 1. Wählen Sie im linken Navigationsmenü die Option **Entitäten**.
 
-1. Wählen Sie **Vordefinierte Entität hinzufügen** und dann in der Suchleiste die Option `geo`, um die vordefinierten Entitäten zu filtern.
+1. Wählen Sie **+ Vordefinierte Entität hinzufügen** aus, und geben Sie dann in der Suchleiste `geo` ein, um die vordefinierten Entitäten zu filtern.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen einer vordefinierten geographyV2-Entität zur App](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. Aktivieren Sie das Kontrollkästchen, und wählen Sie **Fertig**.
+
+## <a name="add-roles-to-prebuilt-entity"></a>Hinzufügen von Rollen zur vordefinierten Entität
+
 1. Wählen Sie in der Liste **Entitäten** die Option **geographyV2**, um die neue Entität zu öffnen.
-1. Fügen Sie die beiden Rollen `Origin` und `Destination` hinzu.
+1. Wählen Sie zum Hinzufügen einer Rolle **+** aus, und fügen Sie die beiden folgenden Rollen hinzu: `Origin`und `Destination`.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von Rollen zur vordefinierten Entität](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>Bezeichnen von Entitätsrollen in Beispieläußerungen
+
 1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Absichten** und dann die Absicht **MoveEmployeeToCity** aus. Beachten Sie, dass die Städtenamen mit der vordefinierten Entität **geographyV2** bezeichnet sind.
-1. Wählen Sie in der Kontextsymbolleiste die **Entitätspalette** aus.
+1. Wählen Sie in der Kontextsymbolleiste die **Entitätspalette** mit dem _Bleistiftsymbol_ aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen der Entitätspalette von der Inhaltssymbolleiste aus](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+Wählen Sie zum Trainieren der App **Trainieren** aus. Das Training wendet die Änderungen, z. B. die neuen Entitäten und die bezeichneten Äußerungen, auf das aktive Modell an.
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Veröffentlichen der App für den Zugriff über den HTTP-Endpunkt
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. Geben Sie in der Adressleiste am Ende der URL `Please move Carl Chamerlin from Tampa to Portland` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die `MoveEmployee`-Absicht mit extrahierter Entität zurückgegeben werden.
+1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch `Please move Carl Chamerlin from Tampa to Portland`.
+
+Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die `MoveEmployee`-Absicht mit extrahierter Entität zurückgegeben werden.
 
     ```json
     {
@@ -171,11 +173,9 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
     }
     ```
 
-    Die richtige Absicht wird vorhergesagt, und das Entitätenarray weist sowohl die Ursprungs- als auch die Zielrolle in der entsprechenden Eigenschaft vom Typ **entities** auf.
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Verwandte Informationen
 

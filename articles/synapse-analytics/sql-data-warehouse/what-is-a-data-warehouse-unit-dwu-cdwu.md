@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351114"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742545"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-Einheiten (DWUs)
 
@@ -24,14 +24,18 @@ Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Dat
 
 ## <a name="what-are-data-warehouse-units"></a>Was sind Data Warehouse-Einheiten?
 
-Ein [SQL-Pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) ist eine Sammlung von Analyseressourcen, die bei Verwendung der [SQL-Analyse](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) bereitgestellt werden. Analytische Ressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert. Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar. Durch eine Änderung der Dienstebene wird die Anzahl von DWUs geändert, die für das System verfügbar sind. Hiermit werden dann die Leistung und die Kosten Ihres Systems angepasst.
+Ein [Synapse SQL-Pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analyseressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert.
+
+Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar.
+
+Durch eine Änderung der Dienstebene wird die Anzahl von DWUs geändert, die für das System verfügbar sind. Hiermit werden dann die Leistung und die Kosten Ihres Systems angepasst.
 
 Um die Leistung zu steigern, können Sie die Anzahl von Data Warehouse-Einheiten erhöhen. Verringern Sie die Anzahl von Data Warehouse-Einheiten, um die Leistung zu reduzieren. Speicher- und Computekosten werden separat in Rechnung gestellt. Das Ändern der Data Warehouse-Einheiten wirkt sich daher nicht auf die Speicherkosten aus.
 
 Die Leistung für Data Warehouse-Einheiten basiert auf den folgenden Workloadmetriken:
 
-- Wie schnell eine Data Warehousing-Standardabfrage eine große Anzahl von Zeilen überprüfen und anschließend eine komplexe Aggregation ausführen kann. Dies ist ein Vorgang mit hohem E/A- und CPU-Aufwand.
-- Wie schnell das Data Warehouse Daten aus Azure Storage Blob oder Azure Data Lake aufnehmen kann. Dies ist ein Vorgang mit hohem Netzwerk- und CPU-Aufwand.
+- Wie schnell eine SQL-Pool-Standardabfrage eine große Anzahl von Zeilen überprüfen und anschließend eine komplexe Aggregation ausführen kann. Dies ist ein Vorgang mit hohem E/A- und CPU-Aufwand.
+- Wie schnell der SQL-Pool Daten aus Azure Storage Blobs oder Azure Data Lake aufnehmen kann. Dies ist ein Vorgang mit hohem Netzwerk- und CPU-Aufwand.
 - Wie schnell mit dem T-SQL-Befehl [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) eine Tabelle kopiert werden kann. Dieser Vorgang umfasst das Lesen von Daten aus dem Speicher, das Verteilen auf die Knoten der Anwendung und das erneute Schreiben in den Speicher. Dies ist ein Vorgang mit hohem CPU-, E/A- und Netzwerkaufwand.
 
 Erhöhen der Anzahl der DWUs:
@@ -42,7 +46,7 @@ Erhöhen der Anzahl der DWUs:
 
 ## <a name="service-level-objective"></a>Servicelevelziel
 
-Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres Data Warehouse festlegt. Die Servicelevel für den Gen2-SQL-Pool werden in DWU (Data Warehouse-Einheiten) gemessen, z. B. DW2000c.
+Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres SQL-Pools festlegt. Die Servicelevel für den Gen2-SQL-Pool werden in DWU (Data Warehouse-Einheiten) gemessen, z. B. DW2000c.
 
 In T-SQL bestimmt die Einstellung SERVICE_OBJECTIVE den Servicelevel für Ihren SQL-Pool.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Kapazitätsgrenzen
 
-Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../sql-database/sql-database-service-tiers-dtu.md) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Wie viele Data Warehouse-Einheiten benötige ich?
 
@@ -68,7 +72,9 @@ Schritte zum Ermitteln der besten DWU-Anzahl für Ihre Arbeitsauslastung:
 2. Überwachen Sie die Anwendungsleistung, wenn Sie Datenmengen im System testen, und beobachten Sie dabei die Anzahl der ausgewählten DWUs im Vergleich zur beobachteten Leistung.
 3. Identifizieren Sie zusätzliche Anforderungen für periodische Zeiten mit Spitzenauslastung. Workloads, bei denen die Aktivität erhebliche Spitzen und Täler aufweist, müssen unter Umständen häufig skaliert werden.
 
-SQL Analytics ist ein horizontal hochskalierbares System, das große Mengen von Compute- und Abfragedaten bereitstellen kann. Wenn Sie seine wahren Skalierungsfunktionen (insbesondere bei größeren DWUs) in Aktion sehen möchten, wird empfohlen, bei der Skalierung das Dataset zu skalieren, um sicherzustellen, dass genügend Daten zum Übertragen an die CPUs verfügbar sind. Es wird empfohlen, für die Skalierungstests mindestens 1 TB zu verwenden.
+Ein SQL-Pool ist ein horizontal hochskalierbares System, das große Mengen von Compute- und Abfragedaten bereitstellen kann.
+
+Wenn Sie seine wahren Skalierungsfunktionen (insbesondere bei größeren DWUs) in Aktion sehen möchten, wird empfohlen, bei der Skalierung das Dataset zu skalieren, um sicherzustellen, dass genügend Daten zum Übertragen an die CPUs verfügbar sind. Es wird empfohlen, für die Skalierungstests mindestens 1 TB zu verwenden.
 
 > [!NOTE]
 >
@@ -76,7 +82,7 @@ SQL Analytics ist ein horizontal hochskalierbares System, das große Mengen von 
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Ändern der Data Warehouse-Einheiten sind die unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) beschriebenen Berechtigungen erforderlich.
+Zum Ändern der Data Warehouse-Einheiten sind die unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) beschriebenen Berechtigungen erforderlich.
 
 Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und „SQL Server-Mitwirkender“ können die DWU-Einstellungen ändern.
 
@@ -128,7 +134,7 @@ Mit T-SQL können Sie die aktuellen DWU-Einstellungen anzeigen, die Einstellunge
 So ändern Sie die DWUs
 
 1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
-2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000c“ gesetzt.
+2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000c“ gesetzt.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -172,7 +178,7 @@ So überprüfen Sie den Zustand von DWU-Änderungen:
     FROM      sys.databases
     ;
     ```
-    
+
 1. Übermitteln der folgenden Abfrage zum Überprüfen des Betriebszustands
 
     ```sql
@@ -182,7 +188,7 @@ So überprüfen Sie den Zustand von DWU-Änderungen:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Diese DMV gibt Informationen zu verschiedenen Verwaltungsvorgängen auf Ihrer SQL-Pool-Instanz zurück. Dazu gehören etwa der Vorgang und der Status des Vorgangs, der IN_PROGRESS oder COMPLETED lauten kann.
 
 ## <a name="the-scaling-workflow"></a>Der Skalierungsworkflow

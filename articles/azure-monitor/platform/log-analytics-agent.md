@@ -1,21 +1,20 @@
 ---
 title: Übersicht über den Log Analytics-Agent
 description: In diesem Thema erfahren Sie, wie Sie mit Log Analytics Daten sammeln und Computer überwachen, die in Azure, lokal oder in einer anderen Cloudumgebung gehostet werden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: bf2939c28afb682d4053a27920b9cf57795d2e86
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467231"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520718"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
-Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](), [Azure Security Center]() und [Azure Automation]().
+Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/) und [Azure Automation](../../automation/automation-intro.md).
 
 Dieser Artikel enthält eine ausführliche Übersicht über den Agent sowie Informationen zu System- und Netzwerkanforderungen und zu den verschiedenen Bereitstellungsmethoden.
 
@@ -40,7 +39,7 @@ Für den Log Analytics-Agent fallen keine Kosten an, möglicherweise aber für 
 ## <a name="data-collected"></a>Gesammelte Daten
 Die folgende Tabelle enthält die Arten von Daten, mit denen Sie einen Log Analytics-Arbeitsbereich konfigurieren können, damit sie von allen verbundenen Agents erfasst werden. Unter [Was wird von Azure Monitor überwacht?](../monitor-reference.md) finden Sie eine Liste mit Erkenntnissen und wichtigen Lösungen sowie mit anderen Lösungen, die den Log Analytics-Agent verwenden, um andere Arten von Daten zu erfassen.
 
-| Datenquelle | Beschreibung |
+| Data source | BESCHREIBUNG |
 | --- | --- |
 | [Windows-Ereignisprotokolle](data-sources-windows-events.md) | An das Windows-System für die Ereignisprotokollierung gesendete Informationen |
 | [Syslog](data-sources-syslog.md)                     | Informationen, die an das Linux-System für die Ereignisprotokollierung gesendet werden |
@@ -71,7 +70,7 @@ Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt 
 
 Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log Analytics-Agents zu installieren und Ihren Computer mit Azure Monitor zu verbinden. Die folgende Tabelle hebt die einzelnen Methoden hervor, um festzustellen, welche Methode in Ihrer Organisation am besten funktioniert.
 
-|`Source` | Methode | Beschreibung|
+|`Source` | Methode | BESCHREIBUNG|
 |-------|-------------|-------------|
 |Azure VM| [Manuell über das Azure-Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Geben Sie virtuelle Computer für die Bereitstellung über den Log Analytics-Arbeitsbereich an. |
 | | Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) unter Verwendung der Azure-Befehlszeilenschnittstelle oder einer Azure Resource Manager-Vorlage | Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert sie in einem vorhandenen Azure Monitor-Arbeitsbereich. |
@@ -102,7 +101,7 @@ Dieser Abschnitt enthält Details zu den unterstützten Linux-Distributionen.
 Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende Änderungen für unser Supportmodell:  
 
 * Es werden nur die Serverversionen und keine Clientversionen unterstützt.  
-* Neue Versionen der [von Azure unterstützten Linux-Distributionen](../../virtual-machines/linux/endorsed-distros.md) werden immer unterstützt.  
+* Die Unterstützung konzentriert sich auf die [von Azure unterstützten Linux-Distributionen](../../virtual-machines/linux/endorsed-distros.md). Beachten Sie, dass möglicherweise eine Verzögerung zwischen einer neuen von Azure unterstützten Linux-Distribution/Version und deren Unterstützung für den Log Analytics Linux-Agent besteht.
 * Alle Nebenversionen werden für jede aufgeführte Hauptversion unterstützt.
 * Versionen, für die der Support des Herstellers abgelaufen ist, werden nicht unterstützt.  
 * Neue Versionen von AMI werden nicht unterstützt.  
@@ -127,7 +126,7 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
 
 In der folgenden Tabelle werden die Pakete hervorgehoben, die für unterstützte Linux-Distributionen erforderlich sind, auf denen der Agent installiert wird.
 
-|Erforderliches Paket |Beschreibung |Mindestversion |
+|Erforderliches Paket |BESCHREIBUNG |Mindestversion |
 |-----------------|------------|----------------|
 |Glibc |    GNU C-Bibliothek | 2.5-12 
 |Openssl    | OpenSSL-Bibliotheken | 1.0.x oder 1.1.x |
@@ -143,24 +142,41 @@ In der folgenden Tabelle werden die Pakete hervorgehoben, die für unterstützte
 Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass er mindestens TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](data-security.md#sending-data-securely-using-tls-12). 
 
 
+## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Unterstützung der SHA-2-Codesignierung für Windows erforderlich
+Der Windows-Agent verwendet ab dem 18. Mai 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 18. Mai 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
+
+1. Installieren Sie das neueste Service Pack für Ihr Betriebssystem. Folgende Service Pack-Versionen sind erforderlich:
+    - Windows 7 SP1
+    - Windows Server 2008 SP2
+    - Windows Server 2008 R2 SP1
+
+2. Installieren Sie die Windows-Updates für die SHA-2-Signierung für Ihr Betriebssystem wie in [Unterstützung der SHA-2-Codesignierung für Windows und WSUS (2019)](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus) beschrieben.
+3. Aktualisieren Sie auf die aktuelle Version des Windows-Agents (10.20.18029).
+4. Es wird empfohlen, den Agent zur Verwendung von [TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12) zu konfigurieren. 
+
+
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 Der Agent für Linux und Windows kommuniziert in ausgehender Richtung über den TCP-Port 443 mit dem Azure Monitor-Dienst. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen. Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetverbindung herstellen können, können Sie ein [Log Analytics-Gateway](gateway.md) einrichten und den Agent so konfigurieren, dass er die Verbindung mit Azure Monitor-Protokollen über das Gateway herstellt. Der Agent kann dann Konfigurationsinformationen empfangen und Daten senden, die je nach in Ihrem Arbeitsbereich aktivierten Datensammlungsregeln und Überwachungslösungen gesammelt werden.
 
 ![Kommunikationsdiagramm des Log Analytics-Agents](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+Die folgende Tabelle enthält die Proxy- und Firewall-Konfigurationsinformationen, die Linux- und Windows-Agenten benötigen, um mit Azure Monitor-Protokollen zu kommunizieren.
 
-## <a name="network-firewall-requirements"></a>Netzwerkfirewallanforderungen
-Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Linux- und Windows-Agent benötigt, um mit Azure Monitor-Protokollen zu kommunizieren.  
+### <a name="firewall-requirements"></a>Firewallanforderungen
 
 |Agent-Ressource|Ports |Direction |Umgehung der HTTPS-Überprüfung|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
-|*.oms.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
-|*.blob.core.windows.net |Port 443 |Ausgehend|Ja |  
+|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
+|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
+|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|Ja |
+|*.azure-automation.net |Port 443 |Eingehend und ausgehend|Ja |
+|*.azure.com |Port 443|Eingehend und ausgehend|Ja |
 
 Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
 Wenn Sie den Azure Automation Hybrid Runbook Worker zum Herstellen einer Verbindung mit dem Automatisierungsdienst bzw. die Registrierung bei diesem nutzen möchten, um Runbooks oder Verwaltungslösungen in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 
+
+### <a name="proxy-configuration"></a>Proxykonfiguration
 
 Der Windows- und Linux-Agent unterstützt die Kommunikation mit Azure Monitor über einen Proxyserver oder ein Log Analytics-Gateway mithilfe des HTTPS-Protokolls.  Es wird sowohl die anonyme als auch die Standardauthentifizierung (Benutzername und Kennwort) unterstützt.  Für den Windows-Agent, der direkt mit dem Dienst verbunden ist, wird die Proxykonfiguration während der Installation oder [nach der Bereitstellung](agent-manage.md#update-proxy-settings) über die Systemsteuerung oder mit PowerShell angegeben.  
 
@@ -171,7 +187,7 @@ Für den Linux-Agent wird der Proxyserver während der Installation oder [nach d
 > [!NOTE]
 > Wenn Ihr Proxyserver keine Authentifizierung erfordert, muss der Linux-Agent trotzdem einen Pseudo-Benutzernamen und -Kennwort angeben. Dies kann ein beliebiger Benutzername oder ein beliebiges Kennwort sein.
 
-|Eigenschaft| Beschreibung |
+|Eigenschaft| BESCHREIBUNG |
 |--------|-------------|
 |Protocol | https |
 |user | Optionaler Benutzername für die Proxyauthentifizierung |

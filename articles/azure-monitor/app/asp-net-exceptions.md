@@ -3,12 +3,12 @@ title: Diagnostizieren von Fehlern und Ausnahmen mit Azure Application Insights
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294685"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892341"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -19,7 +19,7 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-mo
   * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](../../azure-monitor/app/azure-vm-vmss-apps.md) hinzu.
   * Installieren Sie das [Application Insights SDK](../../azure-monitor/app/asp-net.md) in Ihrer App.
   * IIS-Webserver: Führen Sie den [Application Insights-Agent](../../azure-monitor/app/monitor-performance-live-website-now.md) aus, oder
-  * Java-Web-Apps: Installieren Sie den [Java-Agent](../../azure-monitor/app/java-agent.md).
+  * Java-Web-Apps: Aktivieren Sie den [Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
 * Installieren Sie den [JavaScript-Codeausschnitt](../../azure-monitor/app/javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)

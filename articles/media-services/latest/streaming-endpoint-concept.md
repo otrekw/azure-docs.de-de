@@ -12,23 +12,25 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562359"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582727"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamingendpunkte (Ursprung) in Azure Media Services
 
-In Microsoft Azure Media Services stellt ein [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs.
+In Microsoft Azure Media Services stellt ein [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs. 
 
-Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können weitere Streamingendpunkte erstellt werden (siehe [Kontingente und Einschränkungen](limits-quotas-constraints.md)).
+Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können weitere Streamingendpunkte erstellt werden (siehe [Kontingente und Grenzwerte](limits-quotas-constraints.md)).
 
 > [!NOTE]
 > Um das Streaming von Videos zu starten, muss der **Streamingendpunkt**, von dem aus Sie das Video streamen möchten, gestartet werden.
 >
 > Es werden nur ausgeführte Streamingendpunkte abgerechnet.
+
+Lesen Sie auch das Thema zur [dynamischen Paketerstellung](dynamic-packaging-overview.md). 
 
 ## <a name="naming-convention"></a>Benennungskonvention
 
@@ -116,7 +118,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
     > [!NOTE]
     > Für Streamingendpunkte, die sich im selben Rechenzentrum befinden, kann nicht der gleiche benutzerdefinierte Hostname verwendet werden.
 
-    Media Services unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht.
+    Media Services unterstützt derzeit TLS mit benutzerdefinierten Domänen nicht.
 
 - `maxCacheAge` – Überschreibt den standardmäßigen Max-Age-HTTP-Cache Control Header, der vom Streamingendpunkt für Medienfragmente und On-Demand-Manifeste festgelegt wird. Der Wert wird in Sekunden festgelegt.
 - `resourceState` -
@@ -136,7 +138,7 @@ Ein einzelner Streamingendpunkt kann sowohl Live- als auch On-Demand-Videos stre
 
 * Jede reservierte Einheit ermöglicht eine Bandbreite von 200 MBit/s. Wenn Sie mehr als 2.000 MBit/s (2 GBit/s) Bandbreite benötigen, können Sie den zweiten Streamingendpunkt und den Lastenausgleich verwenden, um zusätzliche Bandbreite zu erhalten.
 
-    Das CDN ist jedoch die beste Möglichkeit, eine Erweiterung für Streaminginhalte zu erreichen. Wenn Sie jedoch so viele Inhalte bereitstellen, dass das CDN mehr als 2 GBit/s pullt, können Sie zusätzliche Streamingendpunkte (Ursprünge) hinzufügen. In diesem Fall müssten Sie Inhalts-URLs ausgeben, die auf die beiden Streamingendpunkte verteilt sind. Dieser Ansatz ermöglicht ein besseres Zwischenspeichern als der Versuch, Anforderungen nach dem Zufallsprinzip (z. B. über einen Traffic Manager) an jeden Ursprung zu senden. 
+    Das CDN ist jedoch die beste Möglichkeit, eine Aufskalierung für Streaminginhalte zu erreichen. Wenn Sie jedoch so viele Inhalte bereitstellen, dass das CDN mehr als 2 GBit/s pullt, können Sie zusätzliche Streamingendpunkte (Ursprünge) hinzufügen. In diesem Fall müssten Sie Inhalts-URLs ausgeben, die auf die beiden Streamingendpunkte verteilt sind. Dieser Ansatz ermöglicht ein besseres Zwischenspeichern als der Versuch, Anforderungen nach dem Zufallsprinzip (z. B. über einen Traffic Manager) an jeden Ursprung zu senden. 
     
     > [!TIP]
     > Wenn das CDN mehr als 2 GBit/s pullt, könnte eine fehlerhafte Konfiguration vorliegen (z. B. kein Ursprungsschutz).
@@ -157,10 +159,14 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 - [CDN-Übersicht](../../cdn/cdn-overview.md)
 - [Skalieren des Streamings mit CDN](scale-streaming-cdn.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+## <a name="ask-questions-and--get-updates"></a>Stellen von Fragen und Abrufen von Updates
 
 Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
+## <a name="see-also"></a>Weitere Informationen
+
+[Dynamische Paketerstellung](dynamic-packaging-overview.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Mit dem Beispiel [in diesem Repository](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) wird gezeigt, wie der Standard-Streamingendpunkt mit .NET gestartet wird.
+[Verwalten von Streamingendpunkten](manage-streaming-endpoints-howto.md)

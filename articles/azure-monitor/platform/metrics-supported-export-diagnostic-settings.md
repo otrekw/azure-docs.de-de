@@ -3,14 +3,14 @@ title: Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp zur Verfügung stehen.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661361"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422112"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 
@@ -24,7 +24,9 @@ Aufgrund von Feinheiten im Azure Monitor-Back-End können nicht alle Metriken mi
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Änderung am Verhalten für NULL-Werte und 0-Werte 
  
-Bei den Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, gibt es einige Metriken, bei denen in Azure Monitor der Wert „0“ als NULL-Wert interpretiert wird. Dies führte zu einer gewissen Verwirrung zwischen den tatsächlichen „0“-Werten (von der Ressource ausgegeben) und den interpretierten „0“-Werten (NULL-Werte). Ab dem **1. April 2020** werden bei über Diagnoseeinstellungen exportierten Plattformmetriken keine „0“-Werte mehr exportiert, es sei denn, sie wurden tatsächlich von der zugrunde liegenden Ressource ausgegeben. Hinweis:
+Bei den Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, gibt es einige Metriken, bei denen in Azure Monitor der Wert „0“ als NULL-Wert interpretiert wird. Dies führte zu einer gewissen Verwirrung zwischen den tatsächlichen „0“-Werten (von der Ressource ausgegeben) und den interpretierten „0“-Werten (NULL-Werte). Bald wird es eine Änderung geben, und es werden bei über Diagnoseeinstellungen exportierten Plattformmetriken keine „0“-Werte mehr exportiert, es sei denn, sie wurden tatsächlich von der zugrunde liegenden Ressource ausgegeben. Die Änderung war für den 1. April  2020 geplant, hat sich aber aufgrund von Prioritätsverschiebungen aufgrund von COVID-19 verzögert. 
+
+Hinweis:
 
 1.  Wenn Sie eine Ressourcengruppe oder eine bestimmte Ressource löschen, werden Metrikdaten aus den betroffenen Ressourcen nicht mehr an die Exportziele der Diagnoseeinstellungen gesendet. Das heißt, sie werden nicht mehr in Event Hubs, Speicherkonten und Log Analytics-Arbeitsbereichen angezeigt.
 2.  Diese Verbesserung ist in allen öffentlichen und privaten Clouds verfügbar.
@@ -49,7 +51,7 @@ Die Tabelle enthält die folgenden Spalten.
 > In der folgenden Tabelle kann unten eine horizontale Scrollleiste angezeigt werden. Wenn Sie der Ansicht sind, dass Informationen fehlen, überprüfen Sie, ob die Scrollleiste ganz links steht.  
 
 
-| Über Diagnoseeinstellungen exportierbar?  | Gibt NULLs aus |  ResourceType  |  Metrik  |  MetricDisplayName  |  Einheit  |  AggregationType | 
+| Über Diagnoseeinstellungen exportierbar?  | Gibt bereits NULL-Werte aus |  ResourceType  |  Metrik  |  MetricDisplayName  |  Einheit  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | ****Ja****  | Nein |  Microsoft.AnalysisServices/servers  |  CleanerCurrentPrice  |  Memory: Bereinigung – aktueller Preis  |  Anzahl  |  Average | 
 | ****Ja****  | Nein |  Microsoft.AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  Memory: Bereinigung – nicht verkleinerbarer Arbeitsspeicher  |  Byte  |  Average | 

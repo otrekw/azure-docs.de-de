@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535203"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984145"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
 Der Dienst [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
@@ -55,6 +55,8 @@ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen we
 ## <a name="availability-tests"></a>Verfügbarkeitstests
 Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
 
+### <a name="service-tag"></a>Diensttag
+
 Wenn Sie Azure-Netzwerksicherheitsgruppen verwenden, fügen Sie einfach eine **Eingangsportregel** hinzu, um Datenverkehr von Application Insights-Verfügbarkeitstests zuzulassen, indem Sie **Diensttag** als **Quelle** und **ApplicationInsightsAvailability** als **Quelldiensttag** auswählen.
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Wenn Sie Azure-Netzwerksicherheitsgruppen verwenden, fügen Sie einfach eine **E
 >![Registerkarte „Eingangssicherheitsregel hinzufügen“](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen (die IP-Adressen sind nach Speicherort gruppiert):
+
+### <a name="addresses-grouped-by-location"></a>Nach Speicherort gruppierte Adressen
+
+> [!NOTE]
+> Diese Adressen sind anhand der Notation für klassenloses domänenübergreifendes Routing (Classless Inter-Domain Routing, CIDR) aufgelistet. Das bedeutet, dass ein Eintrag wie z. B. `51.144.56.112/28` 16 IP-Adressen von `51.144.56.112` bis `51.144.56.127` entspricht.
 
 ```
 Australia East

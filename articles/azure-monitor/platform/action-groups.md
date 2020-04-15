@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226558"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520887"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -52,7 +52,7 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     1. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion ein.
 
-    1. **Aktionstyp**: Wählen Sie E-Mail/SMS/Push/Sprachanruf, Logik-App, Webhook, ITSM oder Automation-Runbook aus.
+    1. **Aktionstyp**: Automation Runbook auswählen, Azure-Funktion, E-Mail an Azure Resource Manager-Rolle, E-Mail/SMS/Push/Sprachanruf, ITSM, Logik-App, sicherer Webhook, Webhook.
 
     1. **Details**: Geben Sie je nach Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook ein. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
     

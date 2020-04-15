@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/30/2020
 ms.author: juliako
-ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619891"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421402"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -175,6 +175,12 @@ Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgrü
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Wie oft muss das Zugriffstoken erneuert werden? Nach welcher Zeit laufen Zugriffstoken ab?
 
 Zugriffstoken laufen nach einer Stunde ab. Daher müssen Sie einmal pro Stunde ein neues Zugriffstoken generieren. 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Welche Anmeldeoptionen bestehen für das Entwicklerportal für Video Indexer?
+
+Sie können sich mithilfe von Azure AD, einem Microsoft-Konto, einem Google-Konto oder einem Facebook-Konto anmelden. 
+
+Nachdem Sie Ihr E-Mail-Konto mithilfe eines Identitätsanbieters registriert haben, können Sie das betreffende E-Mail-Konto nicht mehr mit einem anderen Identitätsanbieter verwenden.
 
 ## <a name="billing-questions"></a>Fragen zur Abrechnung
 

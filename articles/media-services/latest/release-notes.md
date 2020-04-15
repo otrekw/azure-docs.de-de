@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969804"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582799"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -89,7 +89,7 @@ Unterstützung für die folgenden neuen, empfohlenen Partner-Encoder für RTMP-L
 ### <a name="file-encoding-enhancements"></a>Verbesserungen bei der Dateicodierung
 
 - Eine neue Voreinstellung für Content Aware Encoding ist jetzt verfügbar. Sie erzeugt mithilfe der inhaltsbezogenen Codierung einen Satz von GOP-orientierten MP4s. Bei jeglichen eingegebenen Inhalten führt der Dienst eine erste einfache Analyse des eingegebenen Inhalts durch. Er verwendet diese Ergebnisse, um die optimale Anzahl der Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Diese Voreinstellung ist besonders effektiv für Videos mit geringer und mittlerer Komplexität, bei denen die Ausgabedateien mit niedrigeren Bitraten, aber in einer Qualität vorliegen, die dem Betrachter dennoch ein gutes Erlebnis bietet. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Öffnen der API-Spezifikationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
-- Verbesserte Leistung und Multithreading für das Größenänderungsmodul (Resizer) in Media Encoder Standard. Unter bestimmten Bedingungen sollte der Kunde eine Leistungssteigerung zwischen 5 und 40 % VOD-Codierung sehen. Inhalte von geringer Komplexität, die in mehrere Bitraten codiert werden, erfahren die höchsten Leistungssteigerungen. 
+- Verbesserte Leistung und Multithreading für das Größenänderungsmodul in Media Encoder Standard. Unter bestimmten Bedingungen sollte der Kunde eine Leistungssteigerung zwischen 5 und 40 % VOD-Codierung sehen. Inhalte von geringer Komplexität, die in mehrere Bitraten codiert werden, erfahren die höchsten Leistungssteigerungen. 
 - Die Standardcodierung behält nun bei Verwendung der zeitbasierten GOP-Einstellung einen regelmäßigen GOP-Rhythmus für Inhalte mit variablen Frameraten (VFR) bei der VOD-Codierung bei.  Dies bedeutet, dass Kunden, die Inhalte mit gemischten Frameraten übermitteln, die beispielsweise zwischen 15 und 30 fps variieren, nun feststellen sollten, dass bei der Ausgabe in MP4-Dateien mit Adaptive Bitrate Streaming regelmäßige GOP-Abstände berechnet werden. Hierdurch wird die Möglichkeit verbessert, nahtlos zwischen den Spuren zu wechseln, wenn über HLS oder DASH geliefert wird. 
 -  Verbesserte AV-Synchronisierung für Quellinhalte mit variabler Framerate (VFR)
 
@@ -177,7 +177,7 @@ Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Servi
 
 Updates wurden hinzugefügt, die Verbesserungen an der Media Services-Leistung umfassen.
 
-* Die maximal unterstützte Dateigröße für die Verarbeitung wurde aktualisiert. Siehe [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* Die maximal unterstützte Dateigröße für die Verarbeitung wurde aktualisiert. Mehr dazu finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
 * [Verbesserungen der Codierungsgeschwindigkeit](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
 ## <a name="april-2019"></a>April 2019

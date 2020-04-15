@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298309"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984639"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -223,7 +223,7 @@ Außerdem für die automatische Vorgangsbenennung.
 
 Das Application Insights Java SDK unterstützt jetzt die [verteilte Ablaufverfolgung W3C](https://w3c.github.io/trace-context/).
 
-Die SDK-Eingangskonfiguration wird ausführlicher in unserem Artikel zu [Korrelation](correlation.md#telemetry-correlation-in-the-java-sdk) behandelt.
+Die SDK-Eingangskonfiguration wird ausführlicher in unserem Artikel zu [Korrelation](correlation.md) behandelt.
 
 Die SDK-Ausgangskonfiguration wird in der Datei [AI-Agent.xml](java-agent.md) definiert.
 

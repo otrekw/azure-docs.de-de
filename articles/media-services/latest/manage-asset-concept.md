@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b1ec4ee3d7a51c2a21a5bbd8888ea4662cf78bf5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304156"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582199"
 ---
 # <a name="manage-assets"></a>Verwalten von Objekten
 
@@ -54,7 +54,13 @@ Nachdem die digitalen Dateien in den Speicher hochgeladen und einem Medienobjekt
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Rufen Sie eine SAS-URL mit Lese-/Schreibberechtigungen ab, die verwendet wird, um digitale Dateien in den Medienobjektcontainer hochzuladen. Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+2. Rufen Sie eine SAS-URL mit Lese-/Schreibberechtigungen ab, die verwendet wird, um digitale Dateien in den Medienobjektcontainer hochzuladen.
+
+    Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+
+    **AssetContainerSas.listContainerSas** nimmt einen [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)-Parameter an, für den Sie `expiryTime` festlegen. Die Zeit sollte auf < 24 Stunden festgelegt werden.
+
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) gibt mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Speicherkonten weisen zwei Schlüssel auf, weil dies das Failover und die nahtlose Rotation von Speicherkontoschlüsseln erleichtert. Die erste SAS-URL stellt den ersten Speicherkontoschlüssel dar, die zweite SAS-URL den zweiten.
 3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen.
 4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md).
 5. Streamen Sie die Inhalte des Ausgabemedienobjekts.

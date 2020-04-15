@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272180"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586167"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Ausführen von Enterprise Agreement-Aufgaben in Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 
@@ -28,16 +28,16 @@ Das folgende Diagramm verdeutlicht, wie die Abrechnung in Ihrem neuen Abrechnung
 |------------------------|--------------------------------------------------------|
 | Registrierung            | Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation ähnlich wie bei der Enterprise Agreement-Registrierung. Unternehmensadministratoren werden Besitzer des Abrechnungsprofils. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).
 | Department            | Sie verwenden einen Rechnungsabschnitt zum Organisieren Ihrer Kosten. Dies ähnelt den Abteilungen in Ihrer Enterprise Agreement-Registrierung. Abteilungen werden zu Rechnungsabschnitten und Abteilungsadministratoren zu Besitzern der jeweiligen Rechnungsabschnitte. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](../understand/mca-overview.md#invoice-sections). |
-| Konto               | Die Konten, die in Ihrem Enterprise Agreement erstellt wurden, werden beim neuen Abrechnungskonto nicht unterstützt. Die Abonnements des Kontos gehören dem jeweiligen Rechnungsabschnitt für die entsprechende Abteilung an. Kontobesitzer können Abonnements für ihre Rechnungsabschnitte erstellen und verwalten. |
+| Konto               | Die Konten, die in Ihrem Enterprise Agreement erstellt wurden, werden im neuen Abrechnungskonto nicht unterstützt. Die Abonnements des Kontos gehören dem jeweiligen Rechnungsabschnitt für die entsprechende Abteilung an. Kontobesitzer können Abonnements für ihre Rechnungsabschnitte erstellen und verwalten. |
 
 ## <a name="changes-for-enterprise-administrators"></a>Änderungen für Unternehmensadministratoren
 
 Die folgenden Änderungen gelten für Unternehmensadministratoren in einem Enterprise Agreement, das als Microsoft-Kundenvereinbarung verlängert wurde.
 
-- Ein Abrechnungsprofil wird für Ihre Registrierung erstellt. Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation wie bei der Enterprise Agreement-Registrierung. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).
+- Ein Abrechnungsprofil wird für Ihre Registrierung erstellt. Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation, wie Ihre Enterprise Agreement-Registrierung. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).
 - Für jede Abteilung in Ihrer Enterprise Agreement-Registrierung wird ein Rechnungsabschnitt erstellt. Sie verwenden die Rechnungsabschnitte, um Ihre Abteilungen zu verwalten. Sie können zum Einrichten weiterer Abteilungen neue Rechnungsabschnitte erstellen. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](../understand/mca-overview.md#invoice-sections).
-- Mit der Rolle des Erstellers von Azure-Abonnements geben Sie in Rechnungsabschnitten anderen Benutzer die Berechtigung zum Erstellen von Azure-Abonnements, wie bei den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden.
-- Im [Azure-Portal](https://portal.azure.com) statt über das Azure EA-Portal verwalten Sie die Abrechnung für Ihr Unternehmen.
+- Mit der Rolle des Erstellers von Azure-Abonnements in Rechnungsabschnitten geben Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements, z. B. den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden.
+- Sie verwenden das [Azure-Portal](https://portal.azure.com) anstelle des Azure EA-Portals, um die Abrechnung für Ihre Organisation zu verwalten.
 
 Im neuen Abrechnungskonto erhalten Sie die folgenden Rollen:
 
@@ -92,8 +92,8 @@ Weisen Sie Benutzern die Rolle des Erstellers von Azure-Abonnements in Rechnungs
 Die folgenden Änderungen gelten für Abteilungsadministratoren in einem Enterprise Agreement, das als Microsoft-Kundenvereinbarung verlängert wurde.
 
 - Für jede Abteilung in Ihrer Enterprise Agreement-Registrierung wird ein Rechnungsabschnitt erstellt. Sie verwenden die Rechnungsabschnitte, um Ihre Abteilungen zu verwalten. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](../understand/mca-overview.md#invoice-sections).
-- Mit der Rolle des Erstellers von Azure-Abonnements geben Sie in Rechnungsabschnitten anderen Benutzer die Berechtigung zum Erstellen von Azure-Abonnements, wie bei den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden.
-- Im Azure-Portal statt über das Azure EA-Portal verwalten Sie die Abrechnung für Ihr Unternehmen.
+- Mit der Rolle des Erstellers von Azure-Abonnements in Rechnungsabschnitten erteilen Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements, wie bei den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden.
+- Sie verwenden das Azure-Portal anstelle des Azure EA-Portals, um die Abrechnung für Ihre Organisation zu verwalten.
 
 Im neuen Abrechnungskonto erhalten Sie die folgenden Rollen:
 

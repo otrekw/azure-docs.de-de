@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302881"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582671"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
@@ -36,7 +36,7 @@ Sie können außerdem die Start- und Endzeit in Ihrem Streaminglocator angeben, 
 
 * **Streaminglocators** werden nicht aktualisiert. 
 * Eigenschaften von **Streaminglocators** vom Datetime-Typ liegen immer im UTC-Format vor.
-* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
 
 ## <a name="create-streaming-locators"></a>Erstellen von Streaminglocators  
 

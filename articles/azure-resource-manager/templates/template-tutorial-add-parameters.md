@@ -2,19 +2,19 @@
 title: 'Tutorial: Hinzufügen von Parametern zu einer Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Parameter hinzu, damit sie wiederverwendet werden kann.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773207"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437832"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Parametern zu Ihrer Resource Manager-Vorlage
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>Tutorial: Hinzufügen von Parametern zu Ihrer ARM-Vorlage
 
-Im [vorherigen Tutorial](template-tutorial-add-resource.md) haben Sie erfahren, wie Sie der Vorlage ein Speicherkonto hinzufügen und sie bereitstellen. In diesem Tutorial wird gezeigt, wie Sie die Vorlage durch Hinzufügen von Parametern verbessern. Das Tutorial dauert ungefähr **14 Minuten**.
+Im [vorherigen Tutorial](template-tutorial-add-resource.md) haben Sie erfahren, wie Sie der Vorlage ein Speicherkonto hinzufügen und sie bereitstellen. In diesem Tutorial wird beschrieben, wie Sie die ARM-Vorlage (Azure Resource Manager) verbessern, indem Sie Parameter hinzufügen. Das Tutorial dauert ungefähr **14 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +44,7 @@ Nun stellen Sie die Vorlage bereit. Im folgenden Beispiel wird die Vorlage mit d
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -54,10 +54,12 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnameparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -88,7 +90,7 @@ Der Parameter **storageSKU** hat einen Standardwert. Dieser Wert wird verwendet,
 
 Jetzt können Sie Ihre Vorlage erneut bereitstellen. Da die Standard-SKU auf **Standard_LRS** festgelegt ist, müssen Sie keinen Wert für diesen Parameter angeben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -98,10 +100,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -110,24 +112,27 @@ az group deployment create \
 
 ---
 
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
+
 Damit Sie sehen, wie flexibel Ihre Vorlage ist, stellen Sie sie nun nochmal bereit. Dieses Mal legen Sie den SKU-Parameter auf **Standard_GRS** fest. Sie können entweder einen neuen Namen übergeben, um ein anderes Speicherkonto zu erstellen, oder den gleichen Namen verwenden, um Ihr vorhandenes Speicherkonto zu aktualisieren. Beide Optionen funktionieren.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
-  --name usedefaultsku \
+az deployment group create \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}
@@ -137,7 +142,7 @@ az group deployment create \
 
 Zum Schluss überprüfen Sie mithilfe eines weiteren Tests, was passiert, wenn Sie eine SKU übergeben, die nicht in der Liste zulässiger Werte enthalten ist. In diesem Fall testen Sie das Szenario, in dem ein Benutzer Ihrer Vorlage glaubt, dass **basic** eine der zulässigen SKUs ist.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -148,10 +153,10 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name testskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \

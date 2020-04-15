@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350092"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633019"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integration der Quellcodeverwaltung für den SQL-Pool
 
-In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) mit Quellcodeverwaltung integrieren.  Die Integration der Quellcodeverwaltung ist der erste Schritt bei der Erstellung Ihrer Continuous Integration- und Continuous Deployment-Pipeline mit der SQL-Pool-Ressource in Azure Synapse Analytics. 
+In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) mit Quellcodeverwaltung integrieren.  Die Integration der Quellcodeverwaltung ist der erste Schritt bei der Erstellung Ihrer Continuous Integration- und Continuous Deployment-Pipeline mit der SQL-Pool-Ressource in Azure Synapse Analytics.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Registrieren für eine [Azure DevOps-Organisation](https://azure.microsoft.com/services/devops/)
-- Absolvieren des Tutorials [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
--  [Installieren von Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- Absolvieren des Tutorials [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md)
+- [Installieren von Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Einrichten von Azure DevOps und Herstellen einer Verbindung
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
    ![Erstellen des Projekts](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt erstellen")
 
-2. Öffnen Sie Visual Studio, und stellen Sie mit Ihrer Azure DevOps-Organisation und Ihrem Projekt aus Schritt 1 eine Verbindung her, indem Sie „Verbindungen verwalten“ auswählen.
+2. Öffnen Sie Visual Studio, und stellen Sie mit Ihrer Azure DevOps-Organisation und Ihrem Projekt aus Schritt 1 eine Verbindung her, indem Sie „Verbindungen verwalten“ auswählen
 
    ![Verwalten von Verbindungen](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verwalten von Verbindungen")
 
@@ -53,7 +53,7 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
    ![Importieren des Projekts](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Importieren des Projekts")  
 
-3. Committen Sie im Team Explorer in Visual Studio alle Änderungen im lokalen Git-Repository. 
+3. Committen Sie im Team Explorer in Visual Studio alle Änderungen im lokalen Git-Repository.
 
    ![Commit](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 

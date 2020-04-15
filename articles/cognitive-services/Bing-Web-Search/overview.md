@@ -1,22 +1,22 @@
 ---
 title: Was ist die Bing-Websuche-API?
 titleSuffix: Azure Cognitive Services
-description: Die Bing-Websuche-API ist ein RESTful-Dienst, der umgehend Antworten auf Benutzerabfragen liefert. Suchergebnisse lassen sich einfach konfigurieren und können unter anderem Webseiten, Bilder, Videos, Nachrichten und Übersetzungen enthalten. Ergebnisse werden im JSON-Format sowie auf der Grundlage der Suchrelevanz und Ihrer Bing-Websuche-Abonnements zurückgegeben.
+description: Die Bing-Websuche-API ist ein RESTful-Dienst, der umgehend Antworten auf Websuchabfragen liefert. Konfigurieren Sie die Ergebnisse so, dass sie Webseiten, Bilder, Videos, Neuigkeiten und vieles mehr enthalten. Ergebnisse werden im JSON-Format sowie auf der Grundlage der Suchrelevanz und Ihrer Bing-Websuche-Abonnements zurückgegeben.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77650281"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477464"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Was ist die Bing-Websuche-API?
 

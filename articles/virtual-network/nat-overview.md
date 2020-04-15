@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409897"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548387"
 ---
 # <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
@@ -40,11 +40,11 @@ Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) 
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-Adressen ausschließlich für den Ausgang
 
-Die ausgehende Konnektivität kann für jedes Subnetz mit NAT definiert werden.  Mehrere Subnetze desselben virtuellen Netzwerks können über unterschiedliche NATs verfügen. Ein Subnetz wird konfiguriert, indem angegeben wird, welche [NAT-Gatewayressource](./nat-gateway-resource.md) verwendet werden soll. Für alle ausgehenden UDP- und TCP-Datenflüsse einer VM-Instanz wird NAT genutzt. 
+Die ausgehende Konnektivität kann für jedes Subnetz mit NAT definiert werden.  Mehrere Subnetze desselben virtuellen Netzwerks können über unterschiedliche NATs verfügen. Ein Subnetz wird konfiguriert, indem angegeben wird, welche NAT-Gatewayressource verwendet werden soll. Für alle ausgehenden UDP- und TCP-Datenflüsse einer VM-Instanz wird NAT genutzt. 
 
-NAT ist mit [Ressourcen für öffentliche IP-Adressen](./virtual-network-ip-addresses-overview-arm.md#standard) und [Präfixressourcen für öffentliche IP-Adressen](./public-ip-address-prefix.md) der Standard-SKU kompatibel (bzw. einer Kombination dieser Ressourcen).  Sie können das Präfix einer öffentlichen IP-Adresse direkt nutzen, oder die öffentlichen IP-Adressen des Präfixes auf mehrere NAT-Gatewayressourcen verteilen. Mit NAT wird der gesamte Datenverkehr auf den IP-Adressbereich des Präfixes bereinigt.  Das IP-Whitelisting ist für Ihre Bereitstellungen somit jetzt sehr einfach.
+NAT ist mit Ressourcen für öffentliche IP-Adressen und Präfixressourcen für öffentliche IP-Adressen der Standard-SKU kompatibel (bzw. einer Kombination dieser Ressourcen).  Sie können das Präfix einer öffentlichen IP-Adresse direkt nutzen, oder die öffentlichen IP-Adressen des Präfixes auf mehrere NAT-Gatewayressourcen verteilen. Mit NAT wird der gesamte Datenverkehr auf den IP-Adressbereich des Präfixes bereinigt.  Das IP-Whitelisting ist für Ihre Bereitstellungen somit jetzt sehr einfach.
 
-Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfiguration durch den Kunden automatisch verarbeitet.  Benutzerdefinierte Routen sind nicht erforderlich. NAT hat Vorrang vor anderen [Ausgangsszenarien](../load-balancer/load-balancer-outbound-connections.md) und ersetzt das Standard-Internetziel eines Subnetzes.
+Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfiguration durch den Kunden automatisch verarbeitet.  Benutzerdefinierte Routen sind nicht erforderlich. NAT hat Vorrang vor anderen Ausgangsszenarien und ersetzt das Standard-Internetziel eines Subnetzes.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Bedarfsgesteuerte SNAT mit mehreren IP-Adressen zur Skalierung
 
@@ -60,9 +60,9 @@ Im Gegensatz zu SNAT in ausgehender Richtung für Load Balancer gelten bei NAT k
 
 NAT ist mit den folgenden Ressourcen der Standard-SKU kompatibel:
 
-- [Load Balancer](../load-balancer/load-balancer-overview.md)
-- [Öffentliche IP-Adresse](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md)
+- Load Balancer
+- Öffentliche IP-Adresse
+- Präfix für öffentliche IP-Adressen
 
 Bei der gemeinsamen Verwendung mit NAT stellen diese Ressourcen für Ihre Subnetze die Internetkonnektivität in eingehender Richtung bereit. Per NAT wird die gesamte Internetkonnektivität in ausgehender Richtung aus Ihren Subnetzen bereitgestellt.
 

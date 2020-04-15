@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663253"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437047"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663253"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Lösungsaktualisierung
-> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 30. April 2020 weiterhin verwendet werden.
+> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 30. Juli 2020 weiterhin verwendet werden.
 > 
 > Azure Sentinel ist eine cloudnative SIEM-Lösung (Security Information & Event Management), die Protokolle erfasst und zusätzliche SIEM-Funktionalität bereitstellt, einschließlich Erkennungen, Untersuchungen, Hunting und Einblicke auf Grundlage von Machine Learning. Mit Azure Sentinel können Sie nun Office 365 SharePoint-Aktivitäts- und Exchange-Verwaltungsprotokolle erfassen.
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663253"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663253"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>F: Brauche ich Azure Sentinel zum Herstellen einer Verbindung mit den Azure AD-Protokollen?
 > Sie können die [Integration von Azure AD-Protokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) konfigurieren. Dies steht nicht mit der Azure Sentinel-Lösung in Zusammenhang. Azure Sentinel bietet einen nativen Connector und standardmäßig verfügbare Inhalte für Azure AD-Protokolle. Weitere Informationen finden Sie unter der Frage zu standardmäßig verfügbaren, sicherheitsorientierten Inhalten weiter unten.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>F: Was sind die Unterschiede beim Herstellen einer Verbindung mit Azure AD-Protokollen über Azure Sentinel und Azure Monitor?
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>F: Was sind die Unterschiede beim Herstellen einer Verbindung mit Azure AD-Protokollen über Azure Sentinel und Azure Monitor?
 > Azure Sentinel und Azure Monitor stellen eine Verbindung mit Azure AD-Protokollen auf Grundlage derselben [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) her. Azure Sentinel bietet einen nativen 1-Klick-Connector, der eine Verbindung mit denselben Daten herstellt und Überwachungsinformationen bereitstellt.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>F: Was muss ich beim Umstieg auf die neuen Azure AD-Tabellen für Berichterstellung und Überwachung ändern?
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>F: Was muss ich beim Umstieg auf die neuen Azure AD-Tabellen für Berichterstellung und Überwachung ändern?
 > Alle Abfragen, die Azure AD-Daten verwenden, einschließlich Abfragen in Warnungen, Dashboards und Inhalten, die Sie mithilfe von Office 365 Azure AD-Daten erstellt haben, müssen mit den neuen Tabellen neu erstellt werden.
 >
 > Azure Sentinel und Azure AD bieten integrierte Inhalte, die Sie beim Wechsel zur Azure AD-Lösung für Berichterstellung und Überwachung verwenden können. Weitere Informationen finden Sie unter der nächsten Frage zu standardmäßig verfügbaren, sicherheitsorientierten Inhalten und unter [Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md). 
@@ -103,11 +103,11 @@ ms.locfileid: "77663253"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>F: Stellt Azure Sentinel zusätzliche Connectors als Teil der Lösung bereit?
 > Ja. Informationen dazu finden Sie unter [Herstellen einer Verbindung mit Datenquellen in Azure Sentinel](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. April? Muss ich vorab ein Offboarding durchführen?
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. April? Muss ich vorab ein Offboarding durchführen?
 > 
 > - Sie können keine Daten mehr von der **Office 365**-Lösung empfangen. Die Lösung ist nicht mehr im Marketplace verfügbar.
 > - Für Azure Sentinel-Kunden wird die Log Analytics-Arbeitsbereichslösung **Office365** in die Azure Sentinel-Lösung **SecurityInsights** eingeschlossen.
-> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. April automatisch getrennt.
+> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. April automatisch getrennt.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>F: Werden meine Daten in die neue Lösung übertragen?
 > Ja. Wenn Sie die **Office 365**-Lösung aus Ihrem Arbeitsbereich entfernen, sind die Daten vorübergehend nicht verfügbar, da das Schema entfernt wird. Sobald Sie den neuen **Office 365**-Connector in Sentinel aktivieren, wird das Schema im Arbeitsbereich wiederhergestellt, und alle bereits erfassten Daten sind wieder verfügbar. 
@@ -315,7 +315,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure 
 | ActorContextId | Die GUID der Organisation, zu der der Akteur gehört. |
 | ActorIpAddress | Der IP-Adresse des Akteurs im IPV4- oder IPV6-Adressformat. |
 | InterSystemsId | Die GUID, die die Aktionen für Komponenten im Office 365-Dienst überwacht. |
-| IntraSystemId |   Die GUID, die von Azure Active Directory zum Nachverfolgen der Aktion generiert wird. |
+| IntraSystemId |     Die GUID, die von Azure Active Directory zum Nachverfolgen der Aktion generiert wird. |
 | SupportTicketId | Die Kundensupportticket-ID für die Aktion in Vertretungssituationen. |
 | TargetContextId | Die GUID der Organisation, zu der der Zielbenutzer gehört. |
 
@@ -330,7 +330,7 @@ Diese Datensätze werden aus Überwachungsdaten für die Sicherheit von Rechenze
 | ElevationApprovedTime | Der Zeitstempel des Zeitpunkts, als die Erhöhung der Rechte genehmigt wurde. |
 | ElevationApprover | Der Name eines Microsoft-Managers. |
 | ElevationDuration | Die Dauer, für die die Erhöhung der Rechte aktiv war. |
-| ElevationRequestId |  Ein eindeutiger Bezeichner für die Anforderung zur Erhöhung der Rechte. |
+| ElevationRequestId |     Ein eindeutiger Bezeichner für die Anforderung zur Erhöhung der Rechte. |
 | ElevationRole | Die Rolle, für die die Erhöhung der Rechte angefordert wurde. |
 | ElevationTime | Die Startzeit für die Erhöhung der Rechte. |
 | Start_Time | Die Startzeit für die Cmdlet-Ausführung. |
@@ -344,8 +344,8 @@ Diese Datensätze werden erstellt, wenn Änderungen an der Exchange-Konfiguratio
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  Gibt an, ob das Cmdlet von einem Benutzer in Ihrer Organisation, von Mitarbeitern eines Microsoft-Rechenzentrums oder vom Dienstkonto eines Rechenzentrums oder von einem delegierten Administrator ausgeführt wurde. Der Wert „False“ gibt an, dass das Cmdlet von einem Benutzer in Ihrer Organisation ausgeführt wurde. Der Wert „True“ gibt an, dass das Cmdlet von Mitarbeitern eines Rechenzentrums, einem Dienstkonto eines Rechenzentrums oder einem delegierten Administrator ausgeführt wurde. |
-| ModifiedObjectResolvedName |  Dies ist der benutzerfreundliche Name des Objekts, das vom Cmdlet geändert wurde. Dies wird nur protokolliert, wenn das Cmdlet das Objekt ändert. |
+| ExternalAccess |     Gibt an, ob das Cmdlet von einem Benutzer in Ihrer Organisation, von Mitarbeitern eines Microsoft-Rechenzentrums oder vom Dienstkonto eines Rechenzentrums oder von einem delegierten Administrator ausgeführt wurde. Der Wert „False“ gibt an, dass das Cmdlet von einem Benutzer in Ihrer Organisation ausgeführt wurde. Der Wert „True“ gibt an, dass das Cmdlet von Mitarbeitern eines Rechenzentrums, einem Dienstkonto eines Rechenzentrums oder einem delegierten Administrator ausgeführt wurde. |
+| ModifiedObjectResolvedName |     Dies ist der benutzerfreundliche Name des Objekts, das vom Cmdlet geändert wurde. Dies wird nur protokolliert, wenn das Cmdlet das Objekt ändert. |
 | OrganizationName | Der Name des Mandanten. |
 | OriginatingServer | Der Name des Servers, über den das Cmdlet ausgeführt wurde. |
 | Parameter | Der Name und der Wert für alle Parameter, die mit dem Cmdlet verwendet wurden, das in der Eigenschaft „Operations“ identifiziert wird. |
@@ -366,7 +366,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchan
 | ClientVersion | Die Version des E-Mail-Clients. |
 | InternalLogonType | Für die interne Verwendung reserviert. |
 | Logon_Type | Gibt den Typ des Benutzers an, der auf das Postfach zugegriffen und den Vorgang ausgeführt hat, der protokolliert wurde. |
-| LogonUserDisplayName |    Der benutzerfreundliche Name des Benutzers, der den Vorgang ausgeführt hat. |
+| LogonUserDisplayName |     Der benutzerfreundliche Name des Benutzers, der den Vorgang ausgeführt hat. |
 | LogonUserSid | Die SID des Benutzers, der den Vorgang ausgeführt hat. |
 | MailboxGuid | Die Exchange-GUID des Postfachs, auf das zugegriffen wurde. |
 | MailboxOwnerMasterAccountSid | Die Hauptkonto-SID des Kontos des Postfachbesitzers. |
@@ -419,7 +419,7 @@ Diese Eigenschaften gelten für alle SharePoint-Datensätze.
 | EventSource | Gibt an, dass in SharePoint ein Ereignis aufgetreten ist. Mögliche Werte sind „SharePoint“ oder „ObjectModel“. |
 | ItemType | Der Typ des Objekts, auf das zugegriffen wurde oder das geändert wurde. Details zu den Typen von Objekten finden Sie in der Tabelle zu „ItemType“. |
 | MachineDomainInfo | Informationen zu Gerätesynchronisierungsvorgängen. Diese Informationen werden nur gemeldet, wenn sie in der Anforderung vorhanden sind. |
-| MachineId |   Informationen zu Gerätesynchronisierungsvorgängen. Diese Informationen werden nur gemeldet, wenn sie in der Anforderung vorhanden sind. |
+| MachineId |     Informationen zu Gerätesynchronisierungsvorgängen. Diese Informationen werden nur gemeldet, wenn sie in der Anforderung vorhanden sind. |
 | Site_ | Die GUID der Website, in der sich die Datei oder der Ordner befindet, auf die bzw. den der Benutzer zugegriffen hat. |
 | Source_Name | Die Entität, die den überwachten Vorgang ausgelöst hat. Mögliche Werte sind „SharePoint“ oder „ObjectModel“. |
 | UserAgent | Informationen zum Client oder Browser des Benutzers. Diese Informationen werden vom Client oder Browser bereitgestellt. |
@@ -434,7 +434,7 @@ Diese Datensätze werden erstellt, wenn Konfigurationsänderungen an SharePoint 
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | CustomEvent | Optionale Zeichenfolge für benutzerdefinierte Ereignisse. |
-| Event_Data |  Optionale Nutzlast für benutzerdefinierte Ereignisse. |
+| Event_Data |     Optionale Nutzlast für benutzerdefinierte Ereignisse. |
 | ModifiedProperties | Die Eigenschaft bezieht sich auf Verwaltungsereignisse, z.B. das Hinzufügen eines Benutzers als Mitglied einer Website oder der Administratorgruppe einer Websitesammlung. Die Eigenschaft enthält den Namen der Eigenschaft, die geändert wurde (z.B. die Gruppe der Websiteadministratoren), den neuen Wert der geänderten Eigenschaft (z.B. den Benutzer, der als Websiteadministrator hinzugefügt wurde) und den vorherigen Wert des geänderten Objekts. |
 
 
@@ -452,9 +452,9 @@ Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 | SharingType | Der Typ der Freigabeberechtigungen, die dem Benutzer zugewiesen wurden, für den die Ressource freigegeben wurde. Dieser Benutzer wird durch den Parameter „UserSharedWith“ identifiziert. |
 | Site_Url | Die URL der Website, in der sich die Datei oder der Ordner befindet, auf die bzw. den der Benutzer zugegriffen hat. |
 | SourceFileExtension | Die Dateierweiterung der Datei, auf die der Benutzer zugegriffen hat. Diese Eigenschaft ist leer, wenn das Objekt, auf das zugegriffen wurde, ein Ordner ist. |
-| SourceFileName |  Der Name der Datei oder des Ordners, auf die bzw. den der Benutzer zugegriffen hat. |
+| SourceFileName |     Der Name der Datei oder des Ordners, auf die bzw. den der Benutzer zugegriffen hat. |
 | SourceRelativeUrl | Die URL des Ordners, der die Datei enthält, auf die der Benutzer zugegriffen hat. Die Kombination der Werte für die Parameter „SiteURL“, „SourceRelativeURL“ und „SourceFileName“ ist identisch mit dem Wert für die Eigenschaft „ObjectID“, die den vollständigen Pfadnamen für die Datei darstellt, auf die der Benutzer zugegriffen hat. |
-| UserSharedWith |  Der Benutzer, für den eine Ressource freigegeben wurde. |
+| UserSharedWith |     Der Benutzer, für den eine Ressource freigegeben wurde. |
 
 
 

@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294961"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892256"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -27,15 +27,15 @@ Zudem bietet Azure Monitor eine [Anwendungsübersicht](https://docs.microsoft.co
 
 ## <a name="how-to-enable-distributed-tracing"></a>Aktivieren der verteilten Ablaufverfolgung
 
-Das Aktivieren der verteilten Ablaufverfolgung über die Dienste in einer Anwendung hinweg ist so einfach wie das Hinzufügen des richtigen SDK oder der richtigen Bibliothek zu jedem Dienst, basierend auf der Sprache, in der der Dienst implementiert wurde.
+Das Aktivieren der verteilten Ablaufverfolgung über die Dienste in einer Anwendung hinweg ist so einfach wie das Hinzufügen des richtigen Agents, des richtigen SDK oder der richtigen Bibliothek zu jedem Dienst, basierend auf der Sprache, in der der Dienst implementiert wurde.
 
-## <a name="enabling-via-application-insights-sdks"></a>Aktivieren über Application Insights SDKs
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Aktivieren über Application Insights per automatischer Instrumentierung oder SDKs
 
-Die verteilte Ablaufverfolgung wird von den Application Insights SDKs für .NET, .NET Core, Java, Node.js und JavaScript bereits nativ unterstützt. Anweisungen zum Installieren und Konfigurieren der einzelnen Application Insights SDKs finden Sie unter:
+Die verteilte Ablaufverfolgung wird von den Application Insights-Agents und/oder SDKs für .NET, .NET Core, Java, Node.js und JavaScript bereits nativ unterstützt. Anweisungen zum Installieren und Konfigurieren der einzelnen Application Insights SDKs finden Sie unter:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)

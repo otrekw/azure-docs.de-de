@@ -2,20 +2,19 @@
 title: Vorbereiten von Hyper-V-VMs für die Bewertung/Migration mit Azure Migrate
 description: Es wird beschrieben, wie Sie die Bewertung/Migration von Hyper-V-VMs mit Azure Migrate vorbereiten.
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77031219"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436224"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Vorbereiten auf die Bewertung und Migration von virtuellen Hyper-V-Computern zu Azure
 
-In diesem Artikel wird beschrieben, wie Sie Vorbereitungen für die Bewertung und Migration von lokalen virtuellen Hyper-V-Computern zu Azure mit [Azure Migrate](migrate-services-overview.md) treffen.
+In diesem Artikel wird beschrieben, wie Sie die Bewertung lokaler Hyper-V-VMs mit der Azure Migrate-Serverbewertung(migrate-services-overview.md#azure-migrate-server-assessment-tool) sowie die Migration von Hyper-V-VMs mit der [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) vorbereiten.
 
-[Azure Migrate](migrate-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
 
 Dieses Tutorial ist das erste in einer Reihe, die Ihnen zeigt, wie Sie virtuelle Hyper-V-Computer bewerten und zu Azure migrieren. In diesem Tutorial lernen Sie Folgendes:
 
@@ -30,7 +29,7 @@ Dieses Tutorial ist das erste in einer Reihe, die Ihnen zeigt, wie Sie virtuelle
 > In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Vorgehensweisen für die Hyper-V-Bewertung und -Migration.
 
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
 ## <a name="prepare-azure"></a>Vorbereiten von Azure
@@ -39,10 +38,11 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 
 Sie müssen Berechtigungen für die Azure Migrate-Bereitstellung einrichten:
 
-**Aufgabe** | **Berechtigungen**
---- | ---
-**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Projekts.
-**Registrieren der Azure Migrate-Appliance** | Azure Migrate verwendet eine schlanke Azure Migrate-Appliance, um virtuelle Hyper-V-Computer mit der Azure Migrate-Serverbewertung zu ermitteln und zu bewerten. Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu den VMs an Azure Migrate.<br/><br/>Bei der Registrierung der Appliance werden die folgenden Registrierungsanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde: Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.<br/><br/> Im Rahmen des Onboardings erstellt Azure Migrate eine Azure Active Directory-App (Azure AD-App):<br/> Die AAD-App wird für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure verwendet. Diese App verfügt nicht über Berechtigungen zum Senden von ARM-Aufrufen oder über RBAC-Zugriff auf Ressourcen.
+**Aufgabe** | **Details** 
+--- | --- 
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum Erstellen eines Projekts Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“. | 
+**Registrieren von Ressourcenanbietern** | Azure Migrate verwendet eine schlanke Azure Migrate-Appliance, um virtuelle Hyper-V-Computer mit der Azure Migrate-Serverbewertung zu ermitteln und zu bewerten.<br/><br/> Bei der Applianceregistrierung werden Ressourcenanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.
+**Erstellen der Azure AD-App** | Bei der Registrierung erstellt Azure Migrate eine Azure AD-App (Azure Active Directory) für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie benötigen Berechtigungen zum Erstellen von Azure AD-Apps (in der Rolle „Anwendungsentwickler“ verfügbar).
 
 
 
@@ -90,14 +90,14 @@ Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „A
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Vorbereiten von Hyper-V auf die Bewertung
 
-Sie können Hyper-V für die VM-Bewertung manuell oder mithilfe eines Konfigurationsskripts vorbereiten. Folgendes muss entweder mit dem Skript oder [manuell](#prepare-hyper-v-manually) vorbereitet werden:
-
+Sie können Hyper-V für die VM-Bewertung manuell oder mithilfe eines Konfigurationsskripts vorbereiten. Vorbereitungsschritte:
 - [Überprüfen](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Sie die Einstellungen des Hyper-V-Hosts, und stellen Sie sicher, dass die [erforderlichen Ports](migrate-support-matrix-hyper-v.md#port-access) auf Hyper-V-Hosts geöffnet sind.
 - Richten Sie auf jedem Host PowerShell-Remoting ein, sodass die Azure Migrate-Appliance über eine WinRM-Verbindung PowerShell-Befehle auf dem Host ausführen kann.
 - Delegieren Sie Anmeldeinformationen, wenn sich VM-Datenträger auf SMB-Remotefreigaben befinden.
 - Richten Sie ein Konto ein, das von der Appliance zum Ermitteln virtueller Computer auf Hyper-V-Hosts verwendet wird.
-- Richten Sie auf jedem virtuellen Computer, den Sie ermitteln und bewerten möchten, Hyper-V-Integrationsdienste ein.
+- Richten Sie auf jedem virtuellen Computer, den Sie ermitteln und bewerten möchten, Hyper-V-Integrationsdienste ein. Die Standardeinstellungen beim Aktivieren von Integration Services sind für Azure Migrate ausreichend.
 
+    ![Aktivieren von Integration Services](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Vorbereiten mit einem Skript
@@ -113,7 +113,7 @@ Das Skript führt Folgendes aus:
 - Das Skript überprüft, ob auf dem Host eine unterstützte Hyper-V-Version und die Hyper-V-Rolle ausgeführt werden.
 - Es aktiviert den WinRM-Dienst und öffnet die Ports 5985 (HTTP) und 5986 (HTTPS) auf dem Host (erforderlich für die Metadatensammlung).
 - Das Skript aktiviert PowerShell-Remoting auf dem Host.
-- Es überprüft, ob der Hyper-V-Integrationsdienst auf allen vom Host verwalteten virtuellen Computern aktiviert ist.
+- Es überprüft, ob die Hyper-V-Integrationsdienste auf allen vom Host verwalteten virtuellen Computern aktiviert sind.
 - Es aktiviert bei Bedarf CredSSP auf dem Host.
 
 Führen Sie das Skript wie folgt aus:
@@ -130,7 +130,7 @@ Führen Sie das Skript wie folgt aus:
     SHA256
     ```
 
-4.  Führen Sie nach der Überprüfung der Skriptintegrität das Skript mit dem folgenden PowerShell-Befehl auf jedem Hyper-V-Host aus:
+4.    Führen Sie nach der Überprüfung der Skriptintegrität das Skript mit dem folgenden PowerShell-Befehl auf jedem Hyper-V-Host aus:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -145,7 +145,7 @@ Hashwerte:
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 
-## <a name="prepare-hyper-v-manually"></a>Manuelles Vorbereiten der Hyper-V-Hosts
+## <a name="prepare-manually"></a>Manuelle Vorbereitung
 
 Führen Sie das Verfahren in diesem Abschnitt aus, um Hyper-V manuell und nicht mithilfe des Skripts vorzubereiten.
 

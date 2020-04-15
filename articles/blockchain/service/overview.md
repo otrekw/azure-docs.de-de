@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain-Dienst – Übersicht
 description: Übersicht über Azure Blockchain Service
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205066"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529141"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Was ist der Azure Blockchain-Dienst?
 
@@ -19,7 +19,7 @@ Der Azure Blockchain-Dienst ist ein vollständig verwalteter Ledger-Dienst, der 
 * Integrierte Konsortiumsverwaltung
 * Entwickeln von Smart Contracts mit vertrauten Entwicklungstools
 
-Der Azure Blockchain-Dienst unterstützt mehrere Ledger-Protokolle. Derzeit bietet es Unterstützung für den Ethereum-Ledger [Quorum](https://www.goquorum.com/) mithilfe des [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)-Konsensmechanismus.
+Der Azure Blockchain-Dienst unterstützt mehrere Ledger-Protokolle. Derzeit wird der Ethereum-Ledger [Quorum](https://www.goquorum.com/) mithilfe des [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)-Konsensmechanismus (Istanbul Byzantine Fault Tolerance) unterstützt.
 
 Diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Sie können sich auf die Entwicklung von Anwendungen und Geschäftslogik konzentrieren, anstatt Zeit und Ressourcen für die Verwaltung virtueller Computer und Infrastrukturen aufzuwenden. Darüber hinaus können Sie Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln, um Ihre Lösung bereitzustellen, ohne dass Sie sich dafür neue Fähigkeiten aneignen müssen.
 
@@ -33,7 +33,7 @@ Azure Blockchain Service bietet zwei Dienstebenen: *Basic* und *Standard*. Jede 
 
 ![Tarife](./media/overview/pricing-tiers.png)
 
-Zusätzlich zu den zwei Validierungsknoten bietet die *Standard*-Ebene2 *vCores* für jede Transaktion und jeden Validierungsknoten, die Basis-Ebene bietet eine Konfiguration mit 1 vCore.  Durch die 2 vCores für Transaktions- und Validierungsknoten kann 1 vCore dem Quorum-Ledger zugeordnet werden, während der verbleibende 1 vCore für andere infrastrukturbezogene Dienste verwendet werden kann, was eine optimale Leistung für Workloads von Produktionsblockchains gewährleistet. Weitere Informationen zu den Preisdetails finden Sie unter [Azure Blockchain-Dienst – Preise](https://azure.microsoft.com/pricing/details/blockchain-service).
+Zusätzlich zu den zwei Validierungsknoten bietet der *Standard*-Tarif zwei *virtuelle Kerne* für jede Transaktion und jeden Validierungsknoten, der *Basic*-Tarif hingegen bietet eine Konfiguration mit einem virtuellen Kern.  Durch die 2 vCores für Transaktions- und Validierungsknoten kann 1 vCore dem Quorum-Ledger zugeordnet werden, während der verbleibende 1 vCore für andere infrastrukturbezogene Dienste verwendet werden kann, was eine optimale Leistung für Workloads von Produktionsblockchains gewährleistet. Weitere Informationen zu den Preisdetails finden Sie unter [Azure Blockchain-Dienst – Preise](https://azure.microsoft.com/pricing/details/blockchain-service).
 
 ### <a name="security-and-maintenance"></a>Sicherheit und Wartung
 

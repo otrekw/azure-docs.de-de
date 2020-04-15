@@ -2,19 +2,19 @@
 title: 'Tutorial: Hinzufügen von Tags zu Ressourcen in einer Vorlage'
 description: Fügen Sie den Ressourcen, die Sie in Ihrer Azure Resource Manager-Vorlage bereitstellen, Tags hinzu. Mithilfe von Tags können Sie Ressourcen logisch organisieren.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773184"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411700"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Hinzufügen von Tags in Ihrer Resource Manager-Vorlage
+# <a name="tutorial-add-tags-in-your-arm-template"></a>Tutorial: Hinzufügen von Tags in Ihrer ARM-Vorlage
 
-In diesem Tutorial erfahren Sie, wie Sie Ressourcen in Ihrer Vorlage Tags hinzufügen. [Tags](../management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt. Dieses Tutorial dauert ungefähr **8 Minuten**.
+In diesem Tutorial wird beschrieben, wie Sie den Ressourcen in Ihrer ARM-Vorlage (Azure Resource Manager) Tags hinzufügen. [Tags](../management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt. Dieses Tutorial dauert ungefähr **8 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +44,7 @@ Jetzt können Sie die Vorlage bereitstellen und sich die Ergebnisse ansehen.
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,10 +56,12 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -67,6 +69,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

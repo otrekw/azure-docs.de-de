@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823379"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878849"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Erstellen eines virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -29,13 +29,13 @@ Die verwaltete Azure SQL-Datenbank-Instanz muss in einem [virtuellen Azure-Netzw
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und einem Verbindungsserver oder einem anderen lokalen Datenspeicher
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und Azure-Ressourcen  
 
-> [!Note]
+> [!NOTE]
 > Sie sollten [die Größe des Subnetzes für die verwaltete Instanz bestimmen](sql-database-managed-instance-determine-size-vnet-subnet.md), bevor Sie die erste Instanz bereitstellen. Die Größe des Subnetzes kann nach Einbinden der Ressourcen nicht mehr geändert werden.
 >
 > Wenn Sie die Verwendung eines vorhandenen virtuellen Netzwerks beabsichtigen, müssen Sie diese Netzwerkkonfiguration ändern, um Ihre verwaltete Instanz einzubeziehen. Weitere Informationen finden Sie unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](sql-database-managed-instance-configure-vnet-subnet.md).
 >
-> Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
-
+> Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.  Das Verschieben der verwalteten Instanz in ein anderes Subnetz wird ebenfalls nicht unterstützt.
+>
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 

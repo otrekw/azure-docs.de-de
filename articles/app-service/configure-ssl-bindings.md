@@ -1,28 +1,28 @@
 ---
-title: Schützen eines benutzerdefinierten DNS mit einer SSL-Bindung
-description: Schützen Sie den HTTPS-Zugriff auf Ihre benutzerdefinierte Domäne durch Erstellung einer TLS/SSL-Bindung mit einem Zertifikat. Verbessern Sie die Sicherheit Ihrer Website, indem Sie HTTPS oder TLS 1.2 erzwingen.
+title: Schützen eines benutzerdefinierten DNS mit einer TLS-/SSL-Bindung
+description: Schützen Sie den HTTPS-Zugriff auf Ihre benutzerdefinierte Domäne durch Erstellung einer TLS-/SSL-Bindung mit einem Zertifikat. Verbessern Sie die Sicherheit Ihrer Website, indem Sie HTTPS oder TLS 1.2 erzwingen.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223837"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811744"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung: Azure App Service
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
 In diesem Artikel erfahren Sie, wie Sie durch die Erstellung einer Zertifikatsbindung die [benutzerdefinierte Domäne](app-service-web-tutorial-custom-domain.md) in Ihrer [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen. Wenn Sie fertig sind, können Sie am Endpunkt `https://` für Ihren benutzerdefinierten DNS-Namen (z. B. `https://www.contoso.com`) auf Ihre App Service-App zugreifen. 
 
-![Web-App mit benutzerdefiniertem SSL-Zertifikat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![Web-App mit benutzerdefiniertem TLS-/SSL-Zertifikat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 Das Schützen einer [benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md) mit einem Zertifikat umfasst zwei Schritte:
 
-- [Hinzufügen eines privaten Zertifikats zu App Service](configure-ssl-certificate.md), das alle [Anforderungen für SSL-Bindungen](configure-ssl-certificate.md#private-certificate-requirements) erfüllt
--  Erstellen einer SSL-Bindung für die entsprechende benutzerdefinierte Domäne. Dieser zweite Schritt wird in diesem Artikel behandelt.
+- [Hinzufügen eines privaten Zertifikats zu App Service](configure-ssl-certificate.md), das alle [Anforderungen an private Zertifikate erfüllt](configure-ssl-certificate.md#private-certificate-requirements)
+-  Erstellen einer TLS-/SSL-Bindung für die entsprechende benutzerdefinierte Domäne. Dieser zweite Schritt wird in diesem Artikel behandelt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -77,17 +77,17 @@ Verfügt Ihre App über kein Zertifikat für die ausgewählte benutzerdefinierte
 
 ### <a name="create-binding"></a>Erstellen einer Bindung
 
-Konfigurieren Sie mithilfe der folgende Tabelle die SSL-Bindung im Dialogfeld **TLS-/SSL-Bindung**, und klicken Sie dann auf **Bindung hinzufügen**.
+Konfigurieren Sie mithilfe der folgende Tabelle die TLS-/SSL-Bindung im Dialogfeld **TLS-/SSL-Bindung**, und klicken Sie dann auf **Bindung hinzufügen**.
 
 | Einstellung | BESCHREIBUNG |
 |-|-|
-| Benutzerdefinierte Domäne | Der Domänenname, für den die SSL-Bindung hinzugefügt werden soll |
+| Benutzerdefinierte Domäne | Der Domänenname, für den die TLS-/SSL-Bindung hinzugefügt werden soll |
 | Fingerabdruck des privaten Zertifikats | Das zu bindende Zertifikat. |
-| TLS-/SSL-Typ | <ul><li>**[SNI SSL:](https://en.wikipedia.org/wiki/Server_Name_Indication)** Es können mehrere SNI-SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen finden Sie unter [Servernamensanzeige](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP-SSL:** Unter Umständen kann nur eine IP-SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein SSL-Zertifikat geschützt werden. Führen Sie nach dem Konfigurieren der Bindung die Schritte unter [Neuzuordnen eines Datensatzes für IP-SSL](#remap-a-record-for-ip-ssl) durch.<br/>IP-SSL wird nur in Produktionstarifen oder im Tarif „Isoliert“ unterstützt. </li></ul> |
+| TLS-/SSL-Typ | <ul><li>**[SNI SSL:](https://en.wikipedia.org/wiki/Server_Name_Indication)** Es können mehrere SNI-SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse gehörige Domänen durch mehrere TLS-/SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen finden Sie unter [Servernamensanzeige](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP-SSL:** Unter Umständen kann nur eine IP-SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein TLS-/SSL-Zertifikat geschützt werden. Führen Sie nach dem Konfigurieren der Bindung die Schritte unter [Neuzuordnen eines Datensatzes für IP-SSL](#remap-a-record-for-ip-ssl) durch.<br/>IP-SSL wird nur in Produktionstarifen oder im Tarif „Isoliert“ unterstützt. </li></ul> |
 
-Nach Abschluss des Vorgangs wird der SSL-Status der benutzerdefinierten Domäne in **Sicher** geändert.
+Nach Abschluss des Vorgangs wird der TLS-/SSL-Status der benutzerdefinierten Domäne in **Sicher** geändert.
 
-![SSL-Bindung erfolgreich](./media/configure-ssl-bindings/secure-domain-finished.png)
+![TLS-/SSL-Bindung erfolgreich](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > Der Zustand **Sicher** unter **Benutzerdefinierte Domänen** bedeutet, dass die Domäne durch ein Zertifikat geschützt ist. App Service überprüft jedoch nicht, ob das Zertifikat beispielsweise selbstsigniert oder abgelaufen ist, was ebenfalls dazu führen kann, dass ein Browser einen Fehler oder eine Warnung anzeigt.
@@ -147,9 +147,9 @@ Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus
 
 Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS-Version ab.
 
-## <a name="handle-ssl-termination"></a>Behandeln der SSL-Terminierung
+## <a name="handle-tls-termination"></a>Behandeln der TLS-Terminierung
 
-In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [TLS-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App unverschlüsselt erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer Linux-Node.js-App für Azure App Service](containers/configure-language-nodejs.md#detect-https-session)) wird die Erkennung einer HTTPS-Sitzung in Ihrem Anwendungscode gezeigt.
 
@@ -157,13 +157,13 @@ In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer 
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-* [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode](configure-ssl-certificate-in-code.md)
+* [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md)
 * [Häufig gestellte Fragen: App Service-Zertifikate](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

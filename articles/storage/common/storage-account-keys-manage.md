@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975784"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521262"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -52,6 +52,8 @@ Befolgen Sie diesen Prozess, um Ihre Speicherkontoschlüssel zu rotieren:
 
 > [!NOTE]
 > Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
+
+Zum Rotieren der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/regeneratekey/action** enthält. Einige integrierte RBAC-Rollen, die diese Aktion beinhalten, sind die Rollen **Besitzer**, **Mitwirkender** und **Dienstrolle „Speicherkonto-Schlüsseloperator“** . Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten RBAC-Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

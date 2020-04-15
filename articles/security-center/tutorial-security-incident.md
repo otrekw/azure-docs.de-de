@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74559187"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585765"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsincidents
+# <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
 Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -114,7 +114,7 @@ Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 4. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
-> Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+> Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -124,8 +124,3 @@ In diesem Tutorial haben Sie Informationen zu Security Center-Features erhalten,
 > * Sicherheitsincident, bei dem es sich um eine Aggregation von verwandten Warnungen für eine Ressource handelt
 > * Bereich für die Untersuchung, bei dem es sich um eine grafische Darstellung der Entitäten handelt, die mit einer Sicherheitswarnung bzw. einem Sicherheitsincident verbunden sind
 > * Suchfunktionen zur Ermittlung von weiteren Beweisen für kompromittierte Systeme
-
-Weitere Informationen zum Untersuchungsfeature von Security Center finden Sie unter:
-
-> [!div class="nextstepaction"]
-> [Untersuchen von Vorfällen und Warnungen in Azure Security Center (Vorschauversion)](security-center-investigation.md)

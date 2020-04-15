@@ -1,17 +1,17 @@
 ---
-title: Bewährte Methoden für die Verwaltungslösung in Azure | Microsoft-Dokumentation
-description: ''
+title: Bewährte Methoden für die Verwaltungslösung in Azure
+description: In diesem Artikel erhalten Sie Tipps zum Erstellen einer Verwaltungslösungsdatei. Hier erfahren Sie, wie Sie mit Datenquellen, Runbooks, Ansichten und Warnungen arbeiten.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663197"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548160"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in Azure (Vorschau)
 > [!NOTE]

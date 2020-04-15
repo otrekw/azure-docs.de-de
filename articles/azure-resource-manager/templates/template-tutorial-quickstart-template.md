@@ -2,15 +2,15 @@
 title: 'Tutorial: Verwenden von Schnellstartvorlagen'
 description: Erfahren Sie, wie Sie Azure-Schnellstartvorlagen verwenden, um die Vorlagenentwicklung abzuschließen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79368875"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408512"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Verwenden von Azure-Schnellstartvorlagen
 
@@ -77,6 +77,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
+
 ```azurecli
 az deployment group create \
   --name addwebapp \
@@ -86,6 +88,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

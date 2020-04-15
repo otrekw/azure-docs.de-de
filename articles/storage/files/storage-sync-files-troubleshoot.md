@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9d8aeba65a566cc93d3344a532a4636d709c1084
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303663"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607491"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -220,7 +220,7 @@ Möglicherweise protokolliert ein Serverendpunkt aufgrund eines Fehlers oder unz
 <a id="serverendpoint-pending"></a>**Die Serverendpunktintegrität befindet sich seit mehreren Stunden im Status „Ausstehend“.**  
 Dieses Problem ist zu erwarten, wenn Sie einen Cloudendpunkt erstellen und eine Azure-Dateifreigabe verwenden, die Daten enthält. Der Änderungsenumerationsauftrag, der auf Änderungen in der Azure-Dateifreigabe prüft, muss abgeschlossen sein, bevor Dateien zwischen der Cloud und den Serverendpunkten synchronisiert werden können. Der Zeitaufwand für die Auftragsausführung hängt von der Größe des Namespace in der Azure-Dateifreigabe ab. Sobald der Änderungsenumerationsauftrag abgeschlossen ist, sollte die Serverendpunktintegrität aktualisiert werden.
 
-### <a id="broken-sync"></a>Wie überwache ich die Integrität der Synchronisierung?
+### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Wie überwache ich die Integrität der Synchronisierung?
 # <a name="portal"></a>[Portal](#tab/portal1)
 In den einzelnen Synchronisierungsgruppen können Sie ein Drilldown auf die jeweiligen Serverendpunkte ausführen, um den Status der zuletzt abgeschlossenen Synchronisierungssitzungen anzuzeigen. Ein grünes Symbol in der Spalte „Integrität“ und der Wert „0“ unter „Dateien ohne Synchronisierung“ geben an, dass die Synchronisierung wie erwartet funktioniert. Wenn dies nicht der Fall sein sollte, sehen Sie sich nachfolgend die Liste mit allgemeinen Synchronisierungsfehlern und die Informationen an, wie Sie Dateien, die nicht synchronisiert wurden, behandeln. 
 
@@ -588,7 +588,7 @@ Wenn dieser Fehler länger anhält als ein paar Stunden, erstellen Sie eine Supp
 | **Fehlerzeichenfolge** | CERT_E_UNTRUSTEDROOT |
 | **Korrektur erforderlich** | Ja |
 
-Dieser Fehler kann vorkommen, wenn Ihre Organisation einen SSL-Terminierungsproxy verwendet oder eine schädliche Entität den Datenverkehr zwischen Ihrem Server und der Azure-Dateisynchronisierung abfängt. Wenn Sie sicher sind, dass dies normal ist (da Ihre Organisation einen SSL-Terminierungsproxy verwendet), überspringen Sie die Zertifikatüberprüfung durch eine Außerkraftsetzung der Registrierung.
+Dieser Fehler kann vorkommen, wenn Ihre Organisation einen TLS-Terminierungsproxy verwendet oder eine schädliche Entität den Datenverkehr zwischen Ihrem Server und der Azure-Dateisynchronisierung abfängt. Wenn Sie sicher sind, dass dies normal ist (da Ihre Organisation einen TLS-Terminierungsproxy verwendet), überspringen Sie die Zertifikatüberprüfung durch eine Außerkraftsetzung der Registrierung.
 
 1. Erstellen Sie den Registrierungswert „SkipVerifyingPinnedRootCertificate“.
 
@@ -602,7 +602,7 @@ Dieser Fehler kann vorkommen, wenn Ihre Organisation einen SSL-Terminierungsprox
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchronisierungs-Agent alle vertrauenswürdigen lokalen SSL-Zertifikate, wenn Daten zwischen dem Server und dem Clouddienst übertragen werden.
+Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchronisierungs-Agent alle vertrauenswürdigen lokalen TLS/SSL-Zertifikate, wenn Daten zwischen dem Server und dem Clouddienst übertragen werden.
 
 <a id="-2147012894"></a>**Eine Verbindung mit dem Dienst konnte nicht hergestellt werden.**  
 
@@ -992,19 +992,19 @@ if ($fileShare -eq $null) {
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)** .
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
-1. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
+1. Vergewissern Sie sich, dass in der Liste **Microsoft.StorageSync** oder der alte Anwendungsname **Hybrid File Sync Service** (Hybrid-Dateisynchronisierungsdienst) mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
 
     ![Ein Screenshot des Dienstprinzipals des hybriden Dateisynchronisierungsdiensts auf der Registerkarte zur Zugriffssteuerung des Speicherkontos](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
-    Wird **Hybrid-Dateisynchronisierungsdienst** nicht in der Liste angezeigt, führen Sie die folgenden Schritte aus:
+    Wird **Microsoft.StorageSync** oder **Hybrid File Sync Service** (Hybrid-Dateisynchronisierungsdienst) nicht in der Liste angezeigt, führen Sie die folgenden Schritte aus:
 
     - Klicken Sie auf **Hinzufügen**.
     - Wählen Sie im Feld **Rolle** die Option **Lese- und Datenzugriff** aus.
-    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Hybrid-Dateisynchronisierungsdienst** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
+    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Microsoft.StorageSync** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
-$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
+$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 
 if ($role -eq $null) {
     throw [System.Exception]::new("The storage account does not have the Azure File Sync " + `

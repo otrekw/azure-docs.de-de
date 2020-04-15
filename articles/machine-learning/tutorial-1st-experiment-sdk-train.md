@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222367"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546028"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Herstellen einer Verbindung für Ihren Arbeitsbereich und Erstellen eines Experiments
 > * Laden von Daten und Trainieren von Scikit-learn-Modellen
-> * Anzeigen der Trainingsergebnisse im Portal
+> * Anzeigen der Trainingsergebnisse in Studio
 > * Abrufen des besten Modells
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -124,32 +124,33 @@ Der obige Code bewirkt Folgendes:
 
 1. Für jeden Hyperparameter-Alphawert im Array `alphas` wird im Experiment eine neue Ausführung erstellt. Der Alphawert wird protokolliert, um zwischen den einzelnen Ausführungen zu unterscheiden.
 1. In jeder Ausführung wird ein Ridge-Modell instanziiert, trainiert und für Vorhersagen verwendet. Der Root Mean Squared Error (RMSE) wird für die tatsächlichen und die vorhergesagten Werte berechnet und anschließend für die Ausführung protokolliert. Der Ausführung sind nun Metadaten für Alphawert und RMSE-Genauigkeit zugeordnet.
-1. Als Nächstes wird das Modell für die jeweilige Ausführung serialisiert und in die Ausführung hochgeladen. Dadurch können Sie die Modelldatei der Ausführung im Portal herunterladen.
+1. Als Nächstes wird das Modell für die jeweilige Ausführung serialisiert und in die Ausführung hochgeladen. Dadurch können Sie die Modelldatei der Ausführung in Studio herunterladen.
 1. Am Ende jeder Iteration wird die Ausführung durch Aufrufen von `run.complete()` abgeschlossen.
 
-Rufen Sie nach Abschluss des Trainings die Variable `experiment` auf, um im Portal einen Link zu dem Experiment abzurufen.
+Rufen Sie nach Abschluss des Trainings die Variable `experiment` auf, um in Studio einen Link zum Experiment abzurufen.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Arbeitsbereich</th><th>Berichtseite</th><th>Dokumentseite</th></tr><tr><td>diabetes-experiment</td><td><Name Ihres Arbeitsbereichs></td><td>Link zum Azure-Portal</td><td>Link zur Dokumentation</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Arbeitsbereich</th><th>Berichtseite</th><th>Dokumentseite</th></tr><tr><td>diabetes-experiment</td><td><Name Ihres Arbeitsbereichs></td><td>Link zu Azure Machine Learning Studio</td><td>Link zur Dokumentation</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Anzeigen der Trainingsergebnisse im Portal
+## <a name="view-training-results-in-studio"></a>Anzeigen der Trainingsergebnisse in Studio
 
-Über den **Link zum Azure-Portal** gelangen Sie zur Hauptseite des Experiments. Dort werden alle einzelnen Ausführungen des Experiments angezeigt. Alle benutzerdefiniert protokollierten Werte (in diesem Fall `alpha_value` und `rmse`) werden zu Feldern für die jeweilige Ausführung und stehen für die Diagramme und Kacheln im oberen Bereich der Experimentseite zur Verfügung. Wenn Sie einem Diagramm oder einer Kachel eine protokollierte Metrik hinzufügen möchten, zeigen Sie darauf, klicken Sie auf die Bearbeitungsschaltfläche, und suchen Sie nach der benutzerdefiniert protokollierten Metrik.
+Über den **Link zu Azure Machine Learning Studio** gelangen Sie zur Hauptseite des Experiments. Dort werden alle einzelnen Ausführungen des Experiments angezeigt. Alle benutzerdefiniert protokollierten Werte (in diesem Fall `alpha_value` und `rmse`) werden zu Feldern für die jeweilige Ausführung und stehen für die Diagramme und Kacheln im oberen Bereich der Experimentseite zur Verfügung. Wenn Sie einem Diagramm oder einer Kachel eine protokollierte Metrik hinzufügen möchten, zeigen Sie darauf, klicken Sie auf die Bearbeitungsschaltfläche, und suchen Sie nach der benutzerdefiniert protokollierten Metrik.
 
 Wenn Sie Modelle mit mehreren hundert oder tausend separaten Ausführungen trainieren, können Sie auf dieser Seite ganz einfach die einzelnen trainierten Modelle anzeigen und insbesondere nachvollziehen, wie sie trainiert wurden und wie sich Ihre eindeutigen Metriken im Laufe der Zeit verändert haben.
 
-![Hauptseite des Experiments im Portal](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hauptseite des Experiments in Studio.":::
 
-Wenn Sie in der Spalte `RUN NUMBER` auf eine als Link dargestellte Ausführungsnummer klicken, gelangen Sie zur Seite der jeweiligen Ausführung. Die Standardregisterkarte **Details** enthält ausführlichere Informationen zur jeweiligen Ausführung. Auf der Registerkarte **Ausgaben** finden Sie die Datei `.pkl` für das Modell, das im Rahmen der jeweiligen Trainingsiteration in die Ausführung hochgeladen wurde. Hier können Sie die Modelldatei herunterladen, anstatt sie manuell neu trainieren zu müssen.
 
-![Seite mit Ausführungsdetails im Portal](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Wählen Sie in der Spalte `RUN NUMBER` einen Link zu einer Ausführung aus, um die Seite für eine einzelne Ausführung anzuzeigen. Die Standardregisterkarte **Details** enthält ausführlichere Informationen zur jeweiligen Ausführung. Auf der Registerkarte **Ausgaben und Protokolle** finden Sie die Datei `.pkl` für das Modell, das im Rahmen der jeweiligen Trainingsiteration in die Ausführung hochgeladen wurde. Hier können Sie die Modelldatei herunterladen, anstatt sie manuell neu trainieren zu müssen.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Seite mit Ausführungsdetails in Studio.":::
 
 ## <a name="get-the-best-model"></a>Abrufen des besten Modells
 
-Neben der Möglichkeit, Modelldateien aus dem Experiment im Portal herunterzuladen, haben Sie auch die Möglichkeit, Modelldateien programmgesteuert herunterzuladen. Der folgende Code durchläuft die einzelnen Ausführungen des Experiments und greift sowohl auf die protokollierten Ausführungsmetriken als auch auf die Ausführungsdetails zu (in denen sich die Ausführungs-ID befindet). Dadurch wird die beste Ausführung ermittelt. Im vorliegenden Fall ist das die Ausführung mit dem niedrigsten Root Mean Squared Error.
+Neben der Möglichkeit, Modelldateien aus dem Experiment in Studio herunterzuladen, haben Sie auch die Möglichkeit, Modelldateien programmgesteuert herunterzuladen. Der folgende Code durchläuft die einzelnen Ausführungen des Experiments und greift sowohl auf die protokollierten Ausführungsmetriken als auch auf die Ausführungsdetails zu (in denen sich die Ausführungs-ID befindet). Dadurch wird die beste Ausführung ermittelt. Im vorliegenden Fall ist das die Ausführung mit dem niedrigsten Root Mean Squared Error.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ In diesem Tutorial haben Sie folgende Aufgaben ausgeführt:
 > [!div class="checklist"]
 > * Herstellen einer Verbindung für Ihren Arbeitsbereich und Erstellen eines Experiments
 > * Laden von Daten und Trainieren von Scikit-learn-Modellen
-> * Anzeigen von Trainingsergebnissen im Portal und Abrufen von Modellen
+> * Anzeigen von Trainingsergebnissen in Studio und abgerufenen Modellen
 
 Als Nächstes können Sie [Ihr Modell mit Azure Machine Learning bereitstellen](tutorial-deploy-models-with-aml.md).
 Machen Sie sich mit der Entwicklung von Experimenten mit [automatisiertem Machine Learning](tutorial-auto-train-models.md) vertraut.

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664282"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435781"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
-In diesem Artikel führen Sie für zusätzliche Sicherheit ein Upgrade auf den Tarif Standard durch und installieren den Microsoft Monitoring Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
+In diesem Artikel führen Sie für zusätzliche Sicherheit ein Upgrade auf den Tarif „Standard“ durch und installieren den Log Analytics-Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
@@ -47,7 +47,7 @@ Innerhalb weniger Minuten nach dem ersten Start von Security Center wird Ihnen F
 - **Empfehlungen** für Möglichkeiten zur Verbesserung der Sicherheit Ihrer Azure-Abonnements. Wenn Sie auf die Kachel **Empfehlungen** klicken, wird eine priorisierte Liste eingeblendet.
 - Ein Bestand an Ressourcen vom Typ **Compute und Apps**, **Netzwerk**, **Datensicherheit** und **Identität und Zugriff**, die nun von Security Center zusammen mit dem jeweiligen Sicherheitsstatus bewertet werden.
 
-Um den vollen Nutzen aus Security Center zu ziehen, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Microsoft Monitoring Agent zu installieren.
+Um den vollen Nutzen aus Security Center zu ziehen, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Log Analytics-Agent zu installieren.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
 Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Von Security Center Standard gibt es eine kostenlose Testversion. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). 
@@ -66,11 +66,11 @@ Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen
   ![Sicherheitswarnungen][9]
 
 ## <a name="automate-data-collection"></a>Automatisieren der Datensammlung
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
+Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
 
-Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von Security Center auf allen unterstützten virtuellen Azure-Computern sowie auf allen neu erstellten virtuellen Computern installiert. Die automatische Bereitstellung wird dringend empfohlen.
+Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern installiert. Die automatische Bereitstellung wird dringend empfohlen.
 
-So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
+So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
 2. Klicken Sie in der Zeile des Abonnements auf das Abonnement, dessen Einstellungen Sie ändern möchten.
@@ -99,11 +99,11 @@ Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 4. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
-> Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+> Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Microsoft Monitoring Agent für ein einheitliches Sicherheitsmanagement und Bedrohungsschutz für Ihre Hybrid Cloud-Workloads bereitgestellt. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
+In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Log Analytics-Agent für ein einheitliches Sicherheitsmanagement und Bedrohungsschutz für Ihre Hybrid Cloud-Workloads bereitgestellt. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Einbinden von Windows-Computern in Azure Security Center](quick-onboard-windows-computer.md)

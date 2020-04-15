@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295417"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887196"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Widevine-Offlinestreaming für Android mit Media Services v3
 
@@ -153,65 +153,13 @@ Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine 
     - Das Zertifikat muss über eine vertrauenswürdige Zertifizierungsstelle verfügen. Ein selbstsigniertes Entwicklungszertifikat kann nicht verwendet werden.
     - Der allgemeine Name (Common Name, CN) des Zertifikats muss dem DNS-Namen des Webservers oder Gateways entsprechen.
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+## <a name="faqs"></a>Häufig gestellte Fragen
 
-### <a name="question"></a>Frage
-
-Wie kann ich für einige Clients/Benutzer permanente (offlinefähige) Lizenzen und für andere Clients/Benutzer nicht permanente (nicht offlinefähige) Lizenzen übermitteln? Muss ich den Inhalt duplizieren und separate symmetrische Schlüssel verwenden?
-
-### <a name="answer"></a>Antwort
-Da Media Services v3 ein Medienobjekt mit mehreren StreamingLocators zulässt. Folgendes ist zulässig:
-
-1.    Eine ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "persistent", und der StreamingLocator;
-2.    Eine weitere ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "nonpersistent", und der StreamingLocator;
-3.    Die zwei StreamingLocators haben unterschiedliche Contentkey-Objekts.
-
-Abhängig von der Geschäftslogik des benutzerdefinierten STS werden unterschiedliche Ansprüche im JWT-Token ausgegeben. Mit dem Token kann nur die dazugehörige Lizenz abgerufen und nur die entsprechende URL wiedergegeben werden.
-
-### <a name="question"></a>Frage
-
-Als Widevine-Sicherheitsstufen sind in der Dokumentation „Widevine DRM-Architekturübersicht“ von Google drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
-
-### <a name="answer"></a>Antwort
-
-In der Widevine DRM-Architekturübersicht von Google sind die drei folgenden Sicherheitsstufen definiert:
-
-1.  Sicherheitsstufe 1: Die gesamte Inhaltsverarbeitung, Kryptografie und Kontrolle findet innerhalb der vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) statt. In einigen Implementierungsmodellen findet die Sicherheitsverarbeitung unter Umständen in unterschiedlichen Chips statt.
-2.  Sicherheitsstufe 2: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.
-3.  Sicherheitsstufe 3: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit.
-
-Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
-
-1.  Erfordert softwarebasierte White-Box-Verschlüsselung.
-2.  Erfordert Softwareverschlüsselung und einen verborgenen Decoder.
-3.  Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten TEE ausgeführt werden.
-4.  Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten TEE durchgeführt werden.
-5.  Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und unkomprimiert) müssen innerhalb einer hardwaregestützten TEE stattfinden.
-
-Beide Sicherheitsstufen werden von Google Widevine definiert. Der Unterschied besteht in der Nutzungsebene (Architekturebene oder API-Ebene). Die fünf Sicherheitsstufen werden in der Widevine-API verwendet. Das content_key_specs-Objekt, das „security_level“ enthält, wird deserialisiert und durch den Widevine-Lizenzdienst von Azure Media Services an den globalen Widevine-Übermittlungsdienst übergeben. Die folgende Tabelle zeigt die Zuordnung zwischen den beiden Gruppen von Sicherheitsstufen:
-
-| **In der Widevine-Architektur definierte Sicherheitsstufen** |**In der Widevine-API verwendete Sicherheitsstufen**|
-|---|---| 
-| **Sicherheitsstufe 1**: Die gesamte Inhaltsverarbeitung, Kryptografie und Kontrolle findet innerhalb der vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) statt. In einigen Implementierungsmodellen findet die Sicherheitsverarbeitung unter Umständen in unterschiedlichen Chips statt.|**security_level=5**: Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und unkomprimiert) müssen innerhalb einer hardwaregestützten TEE stattfinden.<br/><br/>**security_level=4**: Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten TEE durchgeführt werden.|
-**Sicherheitsstufe 2**: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.| **security_level=3**: Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten TEE ausgeführt werden. |
-| **Sicherheitsstufe 3**: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit. | **security_level=2**: Erfordert Softwareverschlüsselung und einen verborgenen Decoder.<br/><br/>**security_level=1**: Erfordert softwarebasierte White-Box-Verschlüsselung.|
-
-### <a name="question"></a>Frage
-
-Warum dauert das Herunterladen des Inhalts so lange?
-
-### <a name="answer"></a>Antwort
-
-Die Downloadgeschwindigkeit lässt sich auf zwei Arten verbessern:
-
-1.  Aktivieren Sie das CDN, sodass Endbenutzer den Inhalt nicht über den Ursprung/Streamingendpunkt des Inhalts herunterladen, sondern eher über das CDN. Wenn Benutzer auf den Streamingendpunkt zugreifen, wird jedes HLS-Segment oder DASH-Fragment dynamisch gepackt und verschlüsselt. Dies führt bei den einzelnen Segmenten/Fragmenten zwar nur zu einer Wartezeit im Millisekundenbereich, bei einem Video mit einer Laufzeit von einer Stunde kann die kumulierte Wartezeit jedoch zu einer längeren Downloaddauer führen.
-2.  Geben Sie Endbenutzern die Möglichkeit, anstelle des gesamten Inhalts nur bestimmte Videoqualitätsstufen und Audiospuren herunterzuladen. Für den Offlinemodus hat es keinen Sinn, alle Qualitätsstufen herunterzuladen. Es gibt zwei Möglichkeiten, dies zu erreichen:
-    1.  Clientgesteuert: Die herunterzuladende Videoqualitätsstufe und die Audiospuren werden entweder automatisch durch die Player-App oder vom Benutzer ausgewählt.
-    2.  Dienstgesteuert: In Azure Media Services kann mithilfe des Features „Dynamisches Manifest“ ein (globaler) Filter erstellt werden, der die HLS-Wiedergabeliste oder DASH MPD auf eine einzelne Videoqualitätsstufe und bestimmte Audiospuren beschränkt. Dieser Filter ist dann in der Download-URL enthalten, die Endbenutzern angezeigt wird.
+Weitere Informationen finden unter [Häufig gestellte Fragen zu Widevine](frequently-asked-questions.md#widevine-streaming-for-android).
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="summary"></a>Zusammenfassung
 

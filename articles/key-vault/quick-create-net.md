@@ -3,16 +3,16 @@ title: 'Schnellstart: Azure Key Vault-Clientbibliothek für .NET (v4)'
 description: Erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek (v4) Geheimnisse in einer Azure Key Vault-Instanz erstellen, daraus abrufen und löschen.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/20/2019
+ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 584fe94a54facf1489382a6052bbff6b44649358
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a94717c7bed3ba25a4682896053672fe100dc43a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457235"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398382"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET (SDK v4)
 
@@ -40,7 +40,7 @@ In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie Befehle für `d
 
 ### <a name="create-new-net-console-app"></a>Erstellen einer neuen .NET-Konsolen-App
 
-Erstellen Sie in einem Konsolenfenster mit dem Befehl `dotnet new` eine neue .NET-Konsolen-App mit dem Namen `akv-dotnet`.
+Erstellen Sie in einem Konsolenfenster mit dem Befehl `dotnet new` eine neue .NET-Konsolen-App mit dem Namen `key-vault-console-app`.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -65,13 +65,13 @@ Build succeeded.
 Installieren Sie über das Konsolenfenster die Azure Key Vault-Clientbibliothek für .NET:
 
 ```console
-dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
+dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
 Im Rahmen dieser Schnellstartanleitung müssen außerdem folgende Pakete installiert werden:
 
 ```console
-dotnet add package Azure.Identity --version 1.0.0
+dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erstellen einer Ressourcengruppe und eines Schlüsseltresors
@@ -85,6 +85,12 @@ In dieser Schnellstartanleitung wird eine vorab erstellte Azure Key Vault-Inst
 az group create --name "myResourceGroup" -l "EastUS"
 
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
@@ -113,14 +119,39 @@ Daraufhin wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben.
 }
 ```
 
+Erstellen Sie einen Dienstprinzipal mithilfe des Azure PowerShell-Befehls [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal):
+
+```azurepowershell
+# Create a new service principal
+$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+
+# Get the tenant ID and subscription ID of the service principal
+$tenantId = (Get-AzContext).Tenant.Id
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+# Get the client ID
+$clientId = $spn.ApplicationId
+
+# Get the client Secret
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
+$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+```
+
+Weitere Informationen zum Erstellen eines Dienstprinzipals über Azure PowerShell finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+
 Notieren Sie sich clientId, clientSecret und tenantId, da wir diese Werte in den nachfolgenden Schritten verwenden.
+
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor für den Dienstprinzipal
 
 Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die dem Dienstprinzipal Berechtigungen erteilt, indem Sie die Client-ID an den Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) übergeben. Erteilen Sie dem Dienstprinzipal Berechtigungen zum Abrufen, Auflisten und Festlegen von Schlüsseln und Geheimnissen.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
+```
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
 ```
 
 #### <a name="set-environmental-variables"></a>Festlegen von Umgebungsvariablen
@@ -140,6 +171,16 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
 Bei jedem Aufruf von `setx` sollte eine Erfolgsmeldung mit dem Hinweis angezeigt werden, dass der angegebene Wert gespeichert wurde.
+
+```shell
+AZURE_CLIENT_ID=<your-clientID>
+
+AZURE_CLIENT_SECRET=<your-clientSecret>
+
+AZURE_TENANT_ID=<your-tenantId>
+
+KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -173,6 +214,10 @@ Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=a
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+```
+
 ### <a name="retrieve-a-secret"></a>Abrufen eines Geheimnisses
 
 Nun können Sie den zuvor festgelegten Wert mithilfe der [client.GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)-Methode abrufen.
@@ -191,6 +236,10 @@ Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyva
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
+
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

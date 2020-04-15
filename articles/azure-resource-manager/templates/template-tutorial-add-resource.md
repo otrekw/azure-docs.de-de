@@ -2,17 +2,17 @@
 title: 'Tutorial: Hinzufügen einer Ressource zu einer Vorlage'
 description: In diesem Tutorial werden die Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage beschrieben. Sie lernen die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586681"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411730"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Tutorial: Hinzufügen einer Ressource zu Ihrer Resource Manager-Vorlage
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Tutorial: Hinzufügen einer Ressource zu Ihrer ARM-Vorlage
 
 Im [vorherigen Tutorial](template-tutorial-create-first-template.md) haben Sie erfahren, wie Sie eine leere Vorlage erstellen und bereitstellen. Nun können Sie eine tatsächliche Ressource bereitstellen. In diesem Tutorial fügen Sie ein Speicherkonto hinzu. Das Tutorial dauert ungefähr **9 Minuten**.
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Der hervorgehobene JSON-Code im folgenden Beispiel zeigt, wie Sie der vorhandenen Vorlage eine Speicherkontodefinition hinzufügen. Anstatt Abschnitte der Vorlage zu kopieren, kopieren Sie die gesamte Datei und ersetzen Ihre Vorlage durch den Inhalt der Datei.
 
-Ersetzen Sie **{provide-unique-name}** durch einen eindeutigen Namen für das Speicherkonto.
+Ersetzen Sie **{provide-unique-name}** (einschließlich geschweifte Klammern) durch einen eindeutigen Speicherkontonamen.
 
 > [!IMPORTANT]
 > Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Der Name darf nur Kleinbuchstaben und Ziffern enthalten, und er darf maximal 24 Zeichen lang sein. Es sind verschiedene Benennungsmuster möglich. Sie können beispielsweise **store1** als Präfix verwenden und danach Ihre Initialen und das aktuelle Datum hinzufügen. Der Name könnte z. B. **store1abc09092019** lauten.
@@ -37,7 +37,7 @@ Das Erraten des eindeutigen Namens für ein Speicherkonto ist nicht einfach und 
 
 ## <a name="resource-properties"></a>Ressourceneigenschaften
 
-Vielleicht fragen Sie sich, wie Sie die zu verwendenden Eigenschaften für die einzelnen Ressourcentypen herausfinden können. Die [Referenz zur Resource Manager-Vorlage](/azure/templates/) kann Ihnen dabei helfen, die gewünschten Ressourcentypen für Ihre Bereitstellung zu finden.
+Vielleicht fragen Sie sich, wie Sie die zu verwendenden Eigenschaften für die einzelnen Ressourcentypen herausfinden können. Die [Referenz zur ARM-Vorlage](/azure/templates/) kann Ihnen als Hilfe beim Suchen nach den gewünschten Ressourcentypen für Ihre Bereitstellung dienen.
 
 Jede Ressource, die Sie bereitstellen, verfügt mindestens über die folgenden drei Eigenschaften:
 
@@ -72,14 +72,19 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
+
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addstorage \
   --resource-group myResourceGroup \
   --template-file $templateFile
 ```
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 Bei der Bereitstellung können die folgenden zwei Fehler auftreten:
 

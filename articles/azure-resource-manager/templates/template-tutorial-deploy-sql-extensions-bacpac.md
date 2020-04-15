@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239274"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754329"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen
 
-Hier erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine BACPAC-Datei mit ARM-Vorlagen (Azure Resource Manager) zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zu Hauptvorlagendateien für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt. 
+Hier erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine BACPAC-Datei mit ARM-Vorlagen (Azure Resource Manager) zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zu Hauptvorlagendateien für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt.
 
 In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen einer Azure SQL Server-Instanz und einer SQL-Datenbank sowie zum Importieren einer BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von ARM-Vorlagen finden Sie unter [Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen](./template-tutorial-deploy-vm-extensions.md).
 
@@ -255,7 +255,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen SQL-Server und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Die BACPAC-Datei wird in einem Azure Storage-Konto gespeichert. Jeder Benutzer, der über die URL verfügt, kann auf die Datei zugreifen. Informationen zum Schützen der BACPAC-Datei (Artefakt) finden Sie unter
+In diesem Tutorial haben Sie einen SQL-Server und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Informationen zur Behandlung von Problemen bei der Bereitstellung von Vorlagen finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Secure artifacts in Azure Resource Manager template deployments](./template-tutorial-secure-artifacts.md) (Tutorial: Schützen von Artefakten in Azure Resource Manager-Vorlagenbereitstellungen).
+> [Problembehandlung bei Bereitstellungen von ARM-Vorlagen](./template-tutorial-troubleshoot.md)

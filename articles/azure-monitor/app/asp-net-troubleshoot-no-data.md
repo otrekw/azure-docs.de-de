@@ -3,12 +3,12 @@ title: Problembehandlung ohne Daten – Application Insights für .NET
 description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie es hier.
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665900"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802585"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
 
@@ -247,6 +247,10 @@ Sie können die folgenden Parameter nach Bedarf ändern:
 Weitere Informationen finden Sie unter:
 - [Recording performance traces with PerfView (Aufzeichnen von Leistungsnachverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Entfernen von Application Insights
+
+Erfahren Sie, wie Sie Application Insights in Visual Studio entfernen, indem Sie die Schritte im entsprechenden [Artikel](../../azure-monitor/app/remove-application-insights.md) ausführen.
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell ei
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551712"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756039"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
@@ -156,7 +156,7 @@ In der Parameterdatei [azuredeploy.parameters][parameters] werden viele Werte de
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Einrichten der Azure Active Directory-Clientauthentifizierung
 Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der gegenseitigen Client-zu-Knoten-Authentifizierung Folgendes empfohlen:
 * Verwenden von Azure Active Directory für die Clientidentität.
-* Verwenden eines Zertifikats für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation.
+* Verwenden eines Zertifikats für die Serveridentität und TLS-/SSL-Verschlüsselung der HTTP-Kommunikation.
 
 Das Einrichten von Azure Active Directory (Azure AD) zur Authentifizierung von Clients für einen Service Fabric-Cluster muss vor dem [Erstellen des Clusters](#createvaultandcert) durchgeführt werden. Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. 
 

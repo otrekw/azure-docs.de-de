@@ -7,20 +7,20 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547658"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478987"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 
 ## <a name="overview"></a>Übersicht
 
-Azure-Kunden können Supportanfragen im [Azure-Portal](https://portal.azure.com) erstellen und verwalten.
+Azure ermöglicht das Erstellen und Verwalten von Supportanfragen (auch Supporttickets genannt). In diesem Artikel werden die Erstellung und Verwaltung von Anfragen über das [Azure-Portal](https://portal.azure.com) behandelt. Anfragen können aber auch programmgesteuert mithilfe der [Azure-Supportticket-REST-API](/rest/api/support) erstellt und verwaltet werden.
 
 > [!NOTE]
 > Die Azure-Portal-URL ist für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt ist.
@@ -43,7 +43,7 @@ Zu **Hilfe und Support** gelangen Sie im Azure-Portal. Die Option steht über da
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Um eine Supportanfrage erstellen zu können, müssen Sie ein Administrator sein, oder Ihnen muss die Rolle [Mitwirkender von Supportanfragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) zugewiesen sein.
+Um eine Supportanfrage erstellen zu können, müssen Sie ein [Besitzer](../../role-based-access-control/built-in-roles.md#owner) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein, oder Ihnen muss die Rolle [Mitwirkender für Supportanfragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) auf der Abonnementebene zugewiesen sein. Zum Erstellen einer Supportanfrage ohne Abonnement, z. B. in einem Azure Active Directory-Szenario (AAD), müssen Sie ein [Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) sein.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Über die globale Kopfzeile zu „Hilfe + Support“ wechseln
 

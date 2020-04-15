@@ -6,17 +6,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907461"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878810"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Integrieren einer statischen Website in Azure CDN
 
-Sie können [Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) aktivieren, um den Inhalt einer in einem Azure-Speicherkonto gehosteten [statischen Website](storage-blob-static-website.md) zwischenzuspeichern. Mit Azure CDN können Sie den benutzerdefinierten Domänenendpunkt für Ihre statische Website konfigurieren, benutzerdefinierte SSL-Zertifikate bereitstellen und benutzerdefinierte Umschreibungsregeln konfigurieren. Durch die Konfiguration von Azure CDN fallen zusätzliche Gebühren an, der Dienst bietet jedoch auf der ganzen Welt durchgängig kurze Wartezeiten für Ihre Website. Azure CDN bietet auch eine SSL-Verschlüsselung mit Ihrem eigenen Zertifikat. 
+Sie können [Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) aktivieren, um den Inhalt einer in einem Azure-Speicherkonto gehosteten [statischen Website](storage-blob-static-website.md) zwischenzuspeichern. Mit Azure CDN können Sie den benutzerdefinierten Domänenendpunkt für Ihre statische Website konfigurieren, benutzerdefinierte TLS/SSL-Zertifikate bereitstellen und benutzerdefinierte Umschreibungsregeln konfigurieren. Durch die Konfiguration von Azure CDN fallen zusätzliche Gebühren an, der Dienst bietet jedoch auf der ganzen Welt durchgängig kurze Wartezeiten für Ihre Website. Azure CDN bietet auch eine TLS-Verschlüsselung mit Ihrem eigenen Zertifikat. 
 
 Weitere Informationen zu den Preisen von Azure CDN finden Sie unter [Azure Content Delivery Network – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -26,19 +26,17 @@ Sie können Azure CDN direkt über Ihr Speicherkonto für Ihre statische Website
 
 1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
 
-2. Wählen Sie im Menü **Blob-Dienst** die Option **Azure CDN** aus, um Azure CDN zu konfigurieren.
+1. Wählen Sie im Menü **Blob-Dienst** die Option **Azure CDN** aus, um die Seite **Azure CDN** zu öffnen:
 
-    Die Seite **Azure CDN** wird angezeigt.
+    ![Erstellen eines CDN-Endpunkts](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
-    ![Erstellen eines CDN-Endpunkts](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
+1. Geben Sie im Abschnitt **CDN-Profil** an, ob ein neues CDN-Profil erstellt oder ein vorhandenes Profil verwendet werden soll. Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif und Anbieter. Geben Sie dann einen Namen für das CDN ein, der innerhalb Ihres Abonnements eindeutig ist.
 
-3. Geben Sie im Abschnitt **CDN-Profil** ein neues oder vorhandenes CDN-Profil an. 
+1. Geben Sie einen Tarif für den CDN-Endpunkt an. Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/). Weitere Informationen zu den in den einzelnen Tarifen verfügbaren Features finden Sie unter [Vergleichen von Azure CDN-Produktfeatures](../../cdn/cdn-features.md).
 
-4. Geben Sie einen Tarif für den CDN-Endpunkt an. Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/). Weitere Informationen zu den in den einzelnen Tarifen verfügbaren Features finden Sie unter [Vergleichen von Azure CDN-Produktfeatures](../../cdn/cdn-features.md).
+1. Geben Sie im Feld **Name des CDN-Endpunkts** einen Namen für Ihren CDN-Endpunkt an. Der CDN-Endpunkt muss innerhalb von Azure eindeutig sein und dient als erster Teil der Endpunkt-URL. Das Formular überprüft, ob der Endpunktname eindeutig ist.
 
-5. Geben Sie im Feld **Name des CDN-Endpunkts** einen Namen für Ihren CDN-Endpunkt an. Der Name des CDN-Endpunkts muss innerhalb von Azure eindeutig sein.
-
-6. Geben Sie im Feld **Hostname des Ursprungs** den Endpunkt Ihrer statischen Website an. 
+1. Geben Sie im Feld **Hostname des Ursprungs** den Endpunkt Ihrer statischen Website an. 
 
    Navigieren Sie zum Ermitteln des Endpunkts Ihrer statischen Website zum Abschnitt **Statische Website** Ihres Speicherkontos.  Kopieren Sie den primären Endpunkt, und fügen Sie ihn in die CDN-Konfiguration ein.
 
@@ -49,15 +47,15 @@ Sie können Azure CDN direkt über Ihr Speicherkonto für Ihre statische Website
 
    ![Screenshot einer Beispiel-CDN-Endpunktkonfiguration](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-7. Wählen Sie **Erstellen** aus, und warten Sie, bis der Verteilungsvorgang abgeschlossen ist. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.
+1. Wählen Sie **Erstellen** aus, und warten Sie, bis das CDN bereitgestellt ist. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt. (Wenn Fehler im Formular vorhanden sind, wird neben dem entsprechenden Feld ein Ausrufezeichen angezeigt.)
 
-8. Überprüfen Sie, ob der CDN-Endpunkt korrekt konfiguriert ist. Klicken Sie dazu auf den Endpunkt, um die Einstellungen anzuzeigen. Suchen Sie wie in der folgenden Abbildung dargestellt in der CDN-Übersicht für Ihr Speicherkonto nach dem Endpunkthostnamen, und navigieren Sie zum Endpunkt. Das Format Ihres CDN-Endpunkts sieht in etwa wie folgt aus: `https://staticwebsitesamples.azureedge.net`.
+1. Überprüfen Sie, ob der CDN-Endpunkt korrekt konfiguriert ist. Klicken Sie dazu auf den Endpunkt, um die Einstellungen anzuzeigen. Suchen Sie wie in der folgenden Abbildung dargestellt in der CDN-Übersicht für Ihr Speicherkonto nach dem Endpunkthostnamen, und navigieren Sie zum Endpunkt. Das Format Ihres CDN-Endpunkts sieht in etwa wie folgt aus: `https://staticwebsitesamples.azureedge.net`.
 
     ![Screenshot mit der Übersicht des CDN-Endpunkts](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-9. Wenn Sie nach Abschluss der Verteilung zum CDN-Endpunkt navigieren, wird der Inhalt der Datei „index.html“ angezeigt, die Sie zuvor in Ihre statische Website hochgeladen haben.
+1. Wenn Sie nach der Bereitstellung zum CDN-Endpunkt navigieren, wird der Inhalt der Datei „index.html“ angezeigt, die Sie zuvor in Ihre statische Website hochgeladen haben.
 
-10. Navigieren Sie zum Überprüfen der Ursprungseinstellungen Ihres CDN-Endpunkts im Abschnitt **Einstellungen** für den CDN-Endpunkt zu **Ursprung**. Das Feld **Ursprungstyp** ist auf *Benutzerdefinierter Ursprung* festgelegt, und im Feld **Hostname des Ursprungs** wird der Endpunkt Ihrer statischen Website angezeigt.
+1. Navigieren Sie zum Überprüfen der Ursprungseinstellungen Ihres CDN-Endpunkts im Abschnitt **Einstellungen** für den CDN-Endpunkt zu **Ursprung**. Das Feld **Ursprungstyp** ist auf *Benutzerdefinierter Ursprung* festgelegt, und im Feld **Hostname des Ursprungs** wird der Endpunkt Ihrer statischen Website angezeigt.
 
     ![Screenshot der Ursprungseinstellungen für den CDN-Endpunkt](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 

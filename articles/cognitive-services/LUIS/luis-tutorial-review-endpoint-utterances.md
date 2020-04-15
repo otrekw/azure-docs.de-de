@@ -1,22 +1,15 @@
 ---
 title: 'Tutorial: Überprüfung von Endpunktäußerungen: LUIS'
-titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTP-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843972"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548726"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTPS-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Endpunktäußerungen sollten regelmäßig im Rahmen der geplanten LUIS-Wartung überprüft werden.
@@ -46,15 +39,11 @@ Führen Sie zum Importieren einer App die folgenden Schritte aus:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) herunter, und speichern Sie sie.
 
-1. Importieren Sie die JSON-Datei im [LUIS-Vorschauportal](https://preview.luis.ai) in eine neue App.
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `review`.
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trainieren der App zum Anwenden der Entitätsänderungen auf die App
 
-    > [!TIP]
-    > Das Klonen in eine neue Version ist eine bewährte Methode vor dem Ändern einer App. Wenn Sie mit einer Version fertig sind, exportieren Sie die Version (als JSON- oder LU-Datei), und checken Sie diese in Ihre Quellcodeverwaltung ein.
-
-
-1. Wählen Sie zum Trainieren der App **Trainieren** aus.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Veröffentlichen der App für den Zugriff über den HTTP-Endpunkt
 
@@ -66,7 +55,7 @@ In dieser App sind Absichten und Entitäten vorhanden, aber keine Endpunktverwen
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Verwenden Sie den Endpunkt, um die folgenden Äußerungen hinzuzufügen.
+1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch die Äußerungen in der folgenden Tabelle. Übermitteln Sie jede Äußerung, und rufen Sie das Ergebnis ab. Ersetzen Sie dann die Äußerung am Ende durch die nächste Äußerung.
 
     |Endpunktäußerung|Zugeordnete Absicht|
     |--|--|
@@ -110,9 +99,9 @@ In dieser App sind Absichten und Entitäten vorhanden, aber keine Endpunktverwen
 
 Vergewissern Sie sich mithilfe einer Äußerung, die der korrigierten Äußerung ähnelt, dass sich die Vorhersage der App durch die korrekt zugeordneten Beispieläußerungen verbessert hat.
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Geben Sie in der Adressleiste am Ende der URL `Are there any natural language processing jobs in my department right now?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung).
+1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch `Are there any natural language processing jobs in my department right now?`.
 
    ```json
     {

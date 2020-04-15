@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002800"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544344"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
 
@@ -64,7 +64,7 @@ Basierend auf den oben genannten Punkten lassen sich die Anforderungen der Grö�
 
 Die folgenden Beispiele veranschaulichen, wie Sie die Größe für ein virtuelles Array gemäß Ihren Anforderungen bemessen können.
 
-#### <a name="example-1"></a>Beispiel 1:
+#### <a name="example-1"></a>Beispiel 1:
 Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
 
 * Bereitstellen eines mehrstufigen Volumes oder einer Freigabe mit 2 TB
@@ -92,7 +92,7 @@ Wenn Sie eine unerwartete Zunahme und neue Wiederherstellungen berücksichtigen,
 > Außerdem wird empfohlen, für den lokalen Datenträger die Thin-Bereitstellung (schlanke Speicherzuweisung) zu wählen. Der Grund für diese Empfehlung ist, dass der Wiederherstellungsspeicherplatz nur benötigt wird, wenn Sie Daten wiederherstellen möchten, die älter als fünf Tage sind. Bei der Wiederherstellung auf Elementebene können Sie die Daten für die letzten fünf Tage wiederherstellen, ohne dass der zusätzliche Speicherplatz für die Wiederherstellung benötigt wird.
 
 
-#### <a name="example-2"></a>Beispiel 2:
+#### <a name="example-2"></a>Beispiel 2:
 Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
 
 * Bereitstellen eines mehrstufigen Volumes mit 2 TB
@@ -161,8 +161,8 @@ Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes 
 
 * Die Dateigrößen relativ zur bereitgestellten Größe einer mehrstufigen Freigabe können sich auf die Leistung der Anordnung in Ebenen auswirken. Das Arbeiten mit großen Dateien kann zu einer langsamen Anordnung führen. Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein.
 * Im virtuellen Array können maximal 16 Volumes/Freigaben erstellt werden. Informationen zu den Größengrenzwerten für lokal angefügte und mehrstufige Volumes/Freigaben finden Sie unter [Einschränkungen von StorSimple Virtual Array](storsimple-ova-limits.md).
-* Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volumen kann nicht nachträglich vergrößert werden.
-* Nach der Erstellung des Volumes können Sie die Größe des Volumes unter StorSimple nicht mehr verringern.
+* Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volume oder die Freigabe kann nicht nachträglich vergrößert werden.
+* Nach der Erstellung des Volumes bzw. der Freigabe können Sie die Größe unter StorSimple nicht mehr verringern.
 * Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten (Volumeerweiterung wird derzeit nicht unterstützt).
 * Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus.
 
@@ -200,7 +200,7 @@ Nutzen Sie die folgenden bewährten Methoden, wenn Sie ACRs für StorSimple-Volu
 Das StorSimple Virtual Array verfügt über Sicherheits- und Verschlüsselungsfeatures, mit denen die Vertraulichkeit und Integrität Ihrer Daten sichergestellt wird. Für die Verwendung dieser Features empfehlen wir Ihnen die Befolgung der folgenden bewährten Methoden: 
 
 * Definieren Sie einen Cloudspeicher-Verschlüsselungsschlüssel zum Generieren einer AES-256-Verschlüsselung, bevor die Daten aus Ihrem virtuellen Array in die Cloud gesendet werden. Dieser Schlüssel ist nicht erforderlich, wenn die Daten bereits verschlüsselt sind. Der Schlüssel kann mit einem Schlüsselverwaltungssystem, z. B. [Azure Key Vault](../key-vault/key-vault-overview.md), generiert und sicher aufbewahrt werden.
-* Stellen Sie beim Konfigurieren des Speicherkontos über den StorSimple Manager-Dienst sicher, dass Sie den SSL-Modus aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen.
+* Stellen Sie beim Konfigurieren des Speicherkontos über den StorSimple Manager-Dienst sicher, dass Sie den TLS-Modus aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen.
 * Generieren Sie die Schlüssel für Ihre Speicherkonten in regelmäßigen Abständen neu (per Zugriff auf den Azure Storage-Dienst), um basierend auf der geänderten Administratorliste alle Zugriffsänderungen abzudecken.
 * Die Daten in Ihrem virtuellen Array werden komprimiert und dedupliziert, bevor sie an Azure gesendet werden. Es ist nicht zu empfehlen, den Rollendienst für die Datendeduplizierung auf dem Windows Server-Host zu verwenden.
 

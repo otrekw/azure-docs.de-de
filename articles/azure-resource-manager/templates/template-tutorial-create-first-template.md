@@ -2,21 +2,21 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e31d4a5f513355e61cb53a6548b3091637bfe9a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471505"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411726"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage
+# <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
-In diesem Tutorial lernen Sie die Azure Resource Manager-Vorlagen kennen. Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
+In diesem Tutorial lernen Sie die ARM-Vorlagen (Azure Resource Manager) kennen. Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
 
-Dieses Tutorial ist das erste einer Reihe. Im Laufe der Reihe ändern Sie die Startvorlage Schritt für Schritt, bis Sie alle wichtigen Bestandteile einer Resource Manager-Vorlage erkundet haben. Diese Elemente sind die Bausteine für weitaus komplexere Vorlagen. Wir hoffen, dass Sie am Ende der Reihe Ihre eigenen Vorlagen erstellen können und bereit sind, Ihre Bereitstellungen mit Vorlagen zu automatisieren.
+Dieses Tutorial ist das erste einer Reihe. Im Laufe der Reihe ändern Sie die Startvorlage Schritt für Schritt, bis Sie alle wichtigen Bestandteile einer ARM-Vorlage erkundet haben. Diese Elemente sind die Bausteine für weitaus komplexere Vorlagen. Wir hoffen, dass Sie am Ende der Reihe Ihre eigenen Vorlagen erstellen können und bereit sind, Ihre Bereitstellungen mit Vorlagen zu automatisieren.
 
 Weitere Informationen zu den Vorteilen der Verwendung von Vorlagen und der Automatisierung von Bereitstellungen mit Vorlagen finden Sie unter [Azure-Ressourcen-Manager-Vorlagen](overview.md).
 
@@ -28,11 +28,11 @@ Zunächst sorgen wir dafür, dass Sie über die Tools verfügen, die Sie zum Ers
 
 ### <a name="editor"></a>Editor
 
-Vorlagen sind JSON-Dateien. Zum Erstellen von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Wenn Sie diese Tools installieren müssen, finden Sie die entsprechenden Informationen unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+Vorlagen sind JSON-Dateien. Zum Erstellen von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Wenn Sie diese Tools installieren müssen, helfen Ihnen die entsprechenden Informationen unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md) weiter.
 
 ### <a name="command-line-deployment"></a>Befehlszeilenbereitstellung
 
-Zum Bereitstellen der Vorlage benötigen Sie außerdem entweder Azure PowerShell oder die Azure CLI. Die Installationsanweisungen finden Sie unter:
+Zum Bereitstellen der Vorlage benötigen Sie außerdem entweder Azure PowerShell oder die Azure CLI. Wenn Sie die Azure CLI verwenden, müssen Sie über die neueste Version verfügen. Die Installationsanweisungen finden Sie unter:
 
 - [Installieren von Azure PowerShell](/powershell/azure/install-az-ps)
 - [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows)
@@ -53,7 +53,7 @@ Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
 
     ```json
     {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": []
     }
@@ -67,7 +67,7 @@ Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
 
     Die JSON-Datei enthält die folgenden Elemente:
 
-    - **$schema**: Gibt den Speicherort der JSON-Schemadatei an. Die Schemadatei beschreibt die Eigenschaften, die innerhalb einer Vorlage verfügbar sind. Das Schema definiert z. B. **resources** als eine der gültigen Eigenschaften für eine Vorlage. Machen Sie sich keine Sorgen, dass das Datum für das Schema der 01.01.2015 ist. Diese Schemaversion ist aktuell und umfasst alle neuesten Features. Das Schemadatum wurde nicht geändert, da seit seiner Einführung keine Breaking Changes vorgenommen wurden.
+    - **$schema**: Gibt den Speicherort der JSON-Schemadatei an. Die Schemadatei beschreibt die Eigenschaften, die innerhalb einer Vorlage verfügbar sind. Das Schema definiert z. B. **resources** als eine der gültigen Eigenschaften für eine Vorlage. Machen Sie sich keine Sorgen, dass das Datum für das Schema der 01.04.2019 ist. Diese Schemaversion ist aktuell und umfasst alle neuesten Features. Das Schemadatum wurde nicht geändert, da seit seiner Einführung keine Breaking Changes vorgenommen wurden.
     - **contentVersion**: Gibt die Version der Vorlage an (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird.
     - **resources**: Enthält die Ressourcen, die Sie bereitstellen oder aktualisieren möchten. Zurzeit ist das Element leer, aber Sie werden später Ressourcen hinzufügen.
 
@@ -79,13 +79,13 @@ Herzlichen Glückwunsch, Sie haben Ihre erste Vorlage erstellt.
 
 Melden Sie sich mit Ihren Azure-Anmeldeinformationen an, um Azure PowerShell/Azure CLI zu verwenden.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
 az login
@@ -96,7 +96,7 @@ az login
 
 Beim Bereitstellen einer Vorlage geben Sie eine Ressourcengruppe an, die die bereitgestellten Ressourcen enthalten soll. Erstellen Sie die Ressourcengruppe vor dem Ausführen des Bereitstellungsbefehls entweder mit der Azure CLI oder Azure PowerShell. Wählen Sie die Registerkarten im folgenden Codeabschnitt aus, um zwischen Azure PowerShell und der Azure CLI zu wählen. Die CLI-Beispiele in diesem Artikel sind für die Bash-Shell geschrieben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -104,7 +104,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -118,21 +118,23 @@ az group create \
 
 Zum Bereitstellen der Vorlage verwenden Sie entweder die Azure CLI oder Azure PowerShell. Verwenden Sie die Ressourcengruppe aus, die Sie erstellt haben. Geben Sie der Bereitstellung einen Namen, damit Sie sie im Bereitstellungsverlauf problemlos identifizieren können. Erstellen Sie der Einfachheit halber auch eine Variable, in der der Pfad zur Vorlagendatei gespeichert wird. Mit dieser Variablen können Sie die Bereitstellungsbefehle leichter ausführen, da Sie den Pfad nicht bei jeder Bereitstellung erneut eingeben müssen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
 New-AzResourceGroupDeployment `
   -Name blanktemplate `
   -ResourceGroupName myResourceGroup `
-  -TemplateFile $templateFile
+  -TemplateFile $templateFile 
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
-az group deployment create \
+az deployment group create \
   --name blanktemplate \
   --resource-group myResourceGroup \
   --template-file $templateFile
@@ -142,15 +144,18 @@ az group deployment create \
 
 Der Bereitstellungsbefehl gibt Ergebnisse zurück. Suchen Sie nach `ProvisioningState`, um zu sehen, ob die Bereitstellung erfolgreich war.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![Bereitstellungsstatus der PowerShell-Bereitstellung](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ![Bereitstellungsstatus der Azure CLI-Bereitstellung](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

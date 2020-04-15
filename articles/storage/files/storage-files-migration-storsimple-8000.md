@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943585"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755034"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -137,12 +137,21 @@ Die Spezifikationen, für die Sie sich entscheiden, müssen jede Freigabe/jeden 
 Die Gesamtgröße der Daten stellt weniger einen Engpass dar, sondern die Anzahl der Elemente, an die Sie die Computerspezifikationen anpassen müssen.
 
 * [Hier erfahren Sie, wie Sie die Größe eines Windows-Servers basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](storage-sync-files-planning.md#recommended-system-resources)
+
+    **Hinweis:** Der zuvor verknüpfte Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Orientieren Sie sich am hohen Wert für die Azure-VM. Für Ihren lokalen Computer können Sie sich am niedrigeren Wert orientieren.
+
 * [Hier erfahren Sie, wie Sie eine Windows Server-VM bereitstellen.](../../virtual-machines/windows/quick-create-portal.md)
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass die VM in derselben Azure-Region wie die virtuelle StorSimple 8020-Appliance bereitgestellt wird. Wenn Sie im Rahmen dieser Migration auch die Region Ihrer Clouddaten in eine andere Region als die ändern müssen, in der sie derzeit gespeichert werden, können Sie dies in einem späteren Schritt beim Bereitstellen von Azure-Dateifreigaben vornehmen.
 
-### <a name="expose-the-storsimple-8020-volumes-to-the-vm"></a>Verfügbarmachen der StorSimple 8020-Volumes für die VM
+> [!IMPORTANT]
+> Häufig wird eine lokale Windows Server-Instanz für Ihre lokale StorSimple-Appliance verwendet. Bei einer solchen Konfiguration ist es möglich, die Funktion [Datendeduplizierung](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable) auf dieser Windows Server-Instanz zu aktivieren. **Wenn Sie die Datendeduplizierung für Ihre StorSimple-Daten verwendet haben, stellen Sie sicher, dass Sie die Datendeduplizierung auch auf dieser Azure-VM aktivieren.** Verwechseln Sie diese Deduplizierung auf Dateiebene nicht mit der in StorSimple integrierten Deduplizierung auf Blockebene, für die keine Aktion erforderlich ist.
+
+> [!IMPORTANT]
+> Um die Leistung zu optimieren, stellen Sie für Ihre Cloud-VM einen **schnellen Betriebssystemdatenträger** bereit. Sie speichern die Synchronisierungsdatenbank für alle Ihre Datenvolumes auf dem Betriebssystem-Datenträger. Stellen Sie außerdem sicher, dass Sie einen **großen Betriebssystem-Datenträger** erstellen. Je nach Anzahl der Elemente (Dateien und Ordner) auf Ihren StorSimple-Volumes benötigt der Betriebssystem-Datenträger möglicherweise **mehrere hundert GiB** Speicherplatz, um die Synchronisierungsdatenbank aufnehmen zu können.
+
+### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>Verfügbarmachen der StorSimple 8020-Volumes für die Azure-VM
 
 In dieser Phase verbinden Sie ein oder mehrere StorSimple-Volumes von der virtuellen 8020-Appliance über iSCSI mit der bereitgestellten Windows Server-VM.
 
@@ -339,7 +348,7 @@ Mit einer abschließenden RoboCopy können Sie den Cache des Windows-Servers auf
 RoboCopy-Befehl:
 
 ```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Hintergrund:
@@ -366,6 +375,14 @@ Hintergrund:
    :::column-end:::
    :::column span="1":::
       Ausgabe an das Konsolenfenster. Wird in Verbindung mit der Ausgabe in eine Protokolldatei verwendet.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /B
+   :::column-end:::
+   :::column span="1":::
+      Führt RoboCopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht RoboCopy, Dateien zu verschieben, für die der aktuelle Benutzer keine Berechtigungen hat.
    :::column-end:::
 :::row-end:::
 :::row:::

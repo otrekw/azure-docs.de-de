@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969903"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585990"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -32,7 +32,7 @@ Normalerweise ordnen Sie Ihre Richtlinie für Inhaltsschlüssel Ihrem [Streaming
 > [!IMPORTANT]
 > Berücksichtigen Sie die folgenden Empfehlungen.
 
-* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints.md).
 * Richtlinien für Inhaltsschlüssel sind aktualisierbar. Es kann bis zu 15 Minuten dauern, bis die Schlüsselbereitstellungscaches aktualisiert werden und die aktualisierte Richtlinie übernommen wird. 
 
    Durch Aktualisieren der Richtlinie wird der vorhandene CDN-Cache überschrieben. Dies kann bei Kunden, die zwischengespeicherte Inhalte verwenden, zu Problemen bei der Wiedergabe führen.  

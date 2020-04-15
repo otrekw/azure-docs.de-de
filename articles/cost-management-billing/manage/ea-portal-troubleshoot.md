@@ -3,16 +3,16 @@ title: Problembehandlung für den Zugriff auf das Azure EA-Portal
 description: In diesem Artikel werden einige häufige Probleme beschrieben, die im Zusammenhang mit einem Azure Enterprise Agreement (EA) im Azure EA-Portal auftreten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411547"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586199"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problembehandlung für den Zugriff auf das Azure EA-Portal
 
@@ -112,7 +112,7 @@ Registrierungen weisen den Status „Ausstehend“ auf, wenn der ursprüngliche 
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>Warum verbleibt mein Konto im Status „Ausstehend“?
 
-Wenn der Registrierung neue Kontobesitzer (Account Owners, AO) hinzugefügt werden, wird unter ihrem Status immer „Ausstehend“ angezeigt. Nach Erhalt der Begrüßungs-E-Mail für die Aktivierung kann der Kontobesitzer sich anmelden, um sein Konto zu aktivieren. Durch die Anmeldung wird der Kontostatus von „Ausstehend“ zu „Aktiv“ geändert.
+Wenn der Registrierung neue Kontobesitzer (Account Owners, AO) hinzugefügt werden, wird unter ihrem Status immer „Ausstehend“ angezeigt. Nach Erhalt der Begrüßungs-E-Mail für die Aktivierung kann der Kontobesitzer sich anmelden, um sein Konto zu aktivieren. Durch die Anmeldung wird der Kontostatus von „Ausstehend“ in „Aktiv“ geändert.
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>Beim Anmelden beim Azure-EA-Portal erhalte ich eine Fehlermeldung.
 
@@ -125,7 +125,7 @@ Es gibt verschiedene mögliche Gründe dafür, dass bei der Anmeldung beim Azure
     - Navigieren Sie zu „Ihre Informationen“ > „Anmelde-E-Mail oder Telefonnummer verwalten“.
     - Befolgen Sie die Anweisungen auf dem Bildschirm, um eine alternative E-Mail-Adresse zu verifizieren und einen Code für den Zugriff auf vertrauliche Informationen zu erhalten.
     - Geben Sie den Sicherheitscode ein.
-    - Wenn Sie die zweistufige Authentifizierung zu einem späteren Zeitpunkt einrichten möchten, klicken Sie auf „Später einrichten“.
+    - Wenn Sie die zweistufige Authentifizierung zu einem späteren Zeitpunkt einrichten möchten, wählen Sie „Später einrichten“ aus.
     - Sie gelangen zur Seite „Verwalten der Kontoaliase“, auf der die Kontoaliase angezeigt werden, über die Sie verfügen. Vergewissern Sie sich, dass der primäre Alias der Alias ist, den Sie für die Anmeldung beim Azure-EA-Portal verwenden. Ist dies nicht der Fall, können Sie entweder diesen Alias als primären Alias festlegen oder stattdessen den primären Alias für das Azure-EA-Portal verwenden.
 
 Wenn die oben beschriebenen Schritte das Problem nicht lösen, übermitteln Sie unter [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) eine Anfrage mit folgenden Informationen:
@@ -147,7 +147,7 @@ Wenn die oben beschriebenen Schritte das Problem nicht lösen, übermitteln Sie 
 
 **Microsoft-Konto**: Konten, die unter [https://signup.live.com](https://signup.live.com) mit einer Live-ID verknüpft sind.
 
-**Geschäfts-, Schul- oder Unikonto**: Nur für Unternehmen verfügbar, die Active Directory mit Cloudverbund eingerichtet haben und bei denen sich alle Konten in einem einzelnen Mandanten befinden. Benutzer können mit dem Authentifizierungstyp „Geschäfts-, Schul- oder Unikonto“ hinzugefügt werden, wenn das interne Active Directory des Unternehmens einem Verbund angehört.
+**Geschäfts-, Schul- oder Unikonto**: Nur für Unternehmen verfügbar, die Active Directory mit Cloudverbund eingerichtet haben und bei denen sich alle Konten in einem einzelnen Mandanten befinden. Benutzer können mit dem Authentifizierungstyp „Geschäfts-, Schul- oder Unikonto“ hinzugefügt werden, wenn das interne Active Directory-Verzeichnis des Unternehmens einem Cloudverbund angehört.
 
   Seit September 2016 gestattet Microsoft keine Registrierung von Geschäfts-, Schul- oder Uni-E-Mail-Adressen als Microsoft-Konten mehr. Weitere Details finden Sie hier: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 

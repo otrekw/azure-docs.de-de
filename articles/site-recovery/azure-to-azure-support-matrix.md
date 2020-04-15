@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: d278f96acf8d8efc57a9ae7fb57f9a758339162a
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444076"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673803"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -29,7 +29,7 @@ Dieser Artikel fasst die Unterstützung und die Voraussetzungen für die Notfall
 ## <a name="resource-support"></a>Ressourcenunterstützung
 
 **Ressourcenaktion** | **Details**
---- | --- 
+--- | ---
 **Tresore über Ressourcengruppen hinweg verschieben** | Nicht unterstützt
 **Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Wird nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem die VM repliziert wurde, müssen Sie die Replikation für die VM deaktivieren und dann wieder aktivieren.
 **Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
@@ -44,13 +44,13 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Südamerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
-Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“, „Südafrika, Westen“, „Südafrika, Norden“, „Norwegen, Osten“, „Norwegen, Westen“
-Asia | „Indien, Süden“, „Indien, Mitte“, „Indien, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „VAE, Mitte“, „VAE, Norden“
-Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
-Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“ 
-Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
+Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen; Südafrika, Westen; Südafrika, Norden; Norwegen, Osten; Norwegen, Westen
+Asia | Indien, Süden; Indien, Mitte; Indien, Westen; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
+Australien    | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
+Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
+Deutschland    | „Deutschland, Mitte“; „Deutschland, Nordosten“
 China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
-Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Deutschland, Norden“ reserviert für Kunden in „Deutschland, Westen-Mitte“, „Schweiz, Westen“ reserviert für Kunden in „Schweiz, Norden“, „Frankreich, Süden“ reserviert für Kunden in „Frankreich, Mitte“ 
+Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Deutschland, Norden“ reserviert für Kunden in „Deutschland, Westen-Mitte“, „Schweiz, Westen“ reserviert für Kunden in „Schweiz, Norden“, „Frankreich, Süden“ reserviert für Kunden in „Frankreich, Mitte“, „VAE, Mitte“eingeschränkt für Kunden in „VAE, Norden“
 
 >[!NOTE]
 >
@@ -75,7 +75,7 @@ Azure Storage-Firewalls für virtuelle Netzwerke  | Unterstützt | Wenn Sie ein 
 
 ## <a name="replicated-machine-operating-systems"></a>Replizierte Computerbetriebssysteme
 
-Site Recovery unterstützt die Replikation von Azure-VMs, auf denen die in diesem Abschnitt angegebenen Betriebssysteme ausgeführt werden.
+Site Recovery unterstützt die Replikation von Azure-VMs, auf denen die in diesem Abschnitt angegebenen Betriebssysteme ausgeführt werden. Hinweis: Wenn für einen Computer mit aktiver Replikation ein Upgrade (oder Downgrade) auf einen anderen Hauptkernel durchgeführt wird, muss die Replikation nach dem Upgrade deaktiviert und anschließend wieder aktiviert werden.
 
 ### <a name="windows"></a>Windows
 
@@ -109,7 +109,7 @@ SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Unterstützte Kernel-Ver
 SUSE Linux Enterprise Server 15 | 15 und 15 SP1 [(Unterstützte Kernel-Versionen)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Ein Upgrade von replizierenden Computern von SP3 auf SP4 wird nicht unterstützt. Wenn ein replizierter Computer aktualisiert wurde, müssen Sie die Replikation deaktivieren und nach dem Upgrade dann wieder aktivieren.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5)
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Ubuntu-Kernelversionen für virtuelle Azure-Computer
@@ -158,7 +158,7 @@ SUSE Linux Enterprise Server 15 und 15 SP1 | 9.32 | Alle [SUSE 15- und 15-Stock
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
 
-* Dateisysteme: ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS, BTRFS
+* Dateisysteme: ext3, ext4, XFS, BTRFS
 * Volume-Manager: LVM2
 * Multipfadsoftware: Gerätezuordnung
 
@@ -199,7 +199,7 @@ In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Da
 Maximale Größe des Betriebssystemdatenträgers | 2\.048 GB | [Erfahren Sie mehr](../virtual-machines/windows/managed-disks-overview.md) zu VM-Datenträgern.
 Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer von der Replikation ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/windows/managed-disks-overview.md)
 Maximale Größe des Datenträgers | 8\.192 GB für verwaltete Datenträger<br></br>4\.095 GB für nicht verwaltete Datenträger|
-Minimale Größe des Datenträgers | Keine Einschränkung für nicht verwaltete Datenträger. 2 GB für verwaltete Datenträger | 
+Minimale Größe des Datenträgers | Keine Einschränkung für nicht verwaltete Datenträger. 2 GB für verwaltete Datenträger |
 Maximale Anzahl von Datenträgern | Bis zu 64, gemäß der Unterstützung für eine bestimmte Azure-VM-Größe | [Erfahren Sie mehr](../virtual-machines/windows/sizes.md) zu VM-Größen.
 Änderungsrate für Datenträger | Maximal 10 MBit/s pro Datenträger für Storage Premium. Maximal 2 MBit/s pro Datenträger für Standardspeicher. | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über dem Maximalwert liegt, kann dies durch die Replikation nicht aufgeholt werden.<br/><br/>  Falls der Maximalwert aber nur sporadisch überschritten wird, kann die Replikation aufholen, aber es kommt ggf. zu einer leichten Verzögerung bei den Wiederherstellungspunkten.
 Datenträger – Standard-Speicherkonto | Unterstützt |
@@ -210,15 +210,16 @@ SSD Standard | Unterstützt |
 Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstützt.
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |
-Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
-Verschlüsselung ruhender Daten (CMK) | Unterstützt | Software- und HSM-Schlüssel werden für verwaltete Datenträger unterstützt.    
-Azure Disk Encryption (ADE) für Windows | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. Virtuelle Computer, die nicht verwaltete Datenträgern nutzen, werden nicht unterstützt. |
-Azure Disk Encryption (ADE) für Linux | Unterstützt |
-Hinzufügen von Datenträgern im laufendem Betrieb | Unterstützt | Die Aktivierung der Replikation für einen Datenträger, den Sie einer replizierten Azure-VM hinzufügen, wird für VMs unterstützt, die verwaltete Datenträger verwenden.
-Entfernen von Datenträgern im laufendem Betrieb | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer erneut aktivieren.
-Ausschließen von Datenträgern | Unterstützung. Sie müssen [PowerShell](azure-to-azure-exclude-disks.md) zum Konfigurieren verwenden. |  Temporäre Datenträger sind standardmäßig ausgeschlossen.
+Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.
+Verschlüsselung ruhender Daten (CMK) | Unterstützt | Software- und HSM-Schlüssel werden für verwaltete Datenträger unterstützt.
+Azure Disk Encryption (ADE) für Windows | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. | Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. <br/><br/> Durch HSM geschützte Schlüssel werden nicht unterstützt. |
+Azure Disk Encryption (ADE) für Linux | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. | Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. <br/><br/> Durch HSM geschützte Schlüssel werden nicht unterstützt. |
+Hinzufügen von Datenträgern im laufendem Betrieb    | Unterstützt | Die Aktivierung der Replikation für einen Datenträger, den Sie einer replizierten Azure-VM hinzufügen, wird für VMs unterstützt, die verwaltete Datenträger verwenden.
+Entfernen von Datenträgern im laufendem Betrieb    | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer erneut aktivieren.
+Ausschließen von Datenträgern | Unterstützung. Zum Konfigurieren muss [PowerShell](azure-to-azure-exclude-disks.md) verwendet werden. |    Temporäre Datenträger sind standardmäßig ausgeschlossen.
 Speicherplätze direkt  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
 Dateiserver mit horizontaler Skalierung  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
+DRBD | Datenträger, die Teil eines DRBD-Setups sind, werden nicht unterstützt. |
 LRS | Unterstützt |
 GRS | Unterstützt |
 RA-GRS | Unterstützt |
@@ -241,9 +242,9 @@ Die folgende Tabelle enthält die Site Recovery-Grenzwerte.
 
 **Speicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
 ---|---|---|---
-Standardspeicher | 8 KB | 2 MB/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträger
+Standardspeicher | 8 KB    | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 8 KB    | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |    336 GB pro Datenträger
 Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |20 MB/s | 1\.684 GB pro Datenträger
@@ -259,14 +260,14 @@ NSG auf Netzwerkkarte | Unterstützt | Ordnen Sie die NSG der Netzwerkkarte zu, 
 NSG im Subnetz | Unterstützt | Ordnen Sie die NSG dem Subnetz zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
 Reservierte (statische) IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine statische IP-Adresse verfügt und für das Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie der VM zugewiesen, für die das Failover ausgeführt wurde.<br/><br/> Falls das Zielsubnetz nicht über die gleiche IP-Adresse verfügt, wird eine der verfügbaren IP-Adressen im Subnetz für den virtuellen Computer reserviert.<br/><br/> Sie können eine feste IP-Adresse und ein Subnetz auch unter **Replizierte Elemente** > **Einstellungen** > **Compute und Netzwerk** > **Netzwerkschnittstellen** angeben.
 Dynamische IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf der Quelle über eine dynamische IP-Adressierung verfügt, ist die Netzwerkkarte auf dem virtuellen Computer, für den das Failover ausgeführt wurde, standardmäßig ebenfalls dynamisch.<br/><br/> Sie können dies in eine feste IP-Adresse ändern, falls es erforderlich ist.
-Mehrere IP-Adressen | Nicht unterstützt | Wenn Sie ein Failover für einen virtuellen Computer mit einem Netzwerkadapter mit mehreren IP-Adressen ausführen, wird nur die primäre IP-Adresse des Netzwerkadapters in der Quellregion beibehalten. Wenn Sie mehrere IP-Adressen zuweisen möchten, können Sie virtuelle Computer zu einem [Wiederherstellungsplan](recovery-plan-overview.md) hinzufügen und ein Skript anfügen, um dem Plan zusätzliche IP-Adressen zuzuweisen. Alternativ können Sie die Änderung nach dem Failover manuell oder mithilfe eines Skripts vornehmen. 
+Mehrere IP-Adressen | Nicht unterstützt | Wenn Sie ein Failover für einen virtuellen Computer mit einem Netzwerkadapter mit mehreren IP-Adressen ausführen, wird nur die primäre IP-Adresse des Netzwerkadapters in der Quellregion beibehalten. Wenn Sie mehrere IP-Adressen zuweisen möchten, können Sie virtuelle Computer zu einem [Wiederherstellungsplan](recovery-plan-overview.md) hinzufügen und ein Skript anfügen, um dem Plan zusätzliche IP-Adressen zuzuweisen. Alternativ können Sie die Änderung nach dem Failover manuell oder mithilfe eines Skripts vornehmen.
 Traffic Manager     | Unterstützt | Sie können Traffic Manager so vorkonfigurieren, dass Datenverkehr in regelmäßigen Abständen an den Endpunkt in der Quellregion und bei einem Failover an den Endpunkt in der Zielregion weitergeleitet wird.
 Azure DNS | Unterstützt |
-Benutzerdefinierter DNS  | Unterstützt |
-Nicht authentifizierter Proxy | Unterstützt | [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)    
-Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen authentifizierten Proxy für ausgehende Verbindungen verwendet, kann er nicht mit Azure Site Recovery repliziert werden.    
-VPN-Site-to-Site-Verbindung mit lokalem Standort<br/><br/>(mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)    
-VNet-zu-VNet-Verbindung | Unterstützt | [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)  
+Benutzerdefinierter DNS    | Unterstützt |
+Nicht authentifizierter Proxy | Unterstützt | [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)
+Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen authentifizierten Proxy für ausgehende Verbindungen verwendet, kann er nicht mit Azure Site Recovery repliziert werden.
+VPN-Site-to-Site-Verbindung mit lokalem Standort<br/><br/>(mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)
+VNet-zu-VNet-Verbindung    | Unterstützt | [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)
 VNET-Dienstendpunkte | Unterstützt | Wenn Sie den Zugriff auf virtuelle Netzwerke in Speicherkonten einschränken, stellen Sie sicher, dass den vertrauenswürdigen Microsoft-Diensten Zugriff auf das Speicherkonto gewährt wird.
 Beschleunigte Netzwerke | Unterstützt | Auf dem virtuellen Quellcomputer muss der beschleunigte Netzwerkbetrieb aktiviert sein. [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
 

@@ -3,17 +3,17 @@ title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets'
 description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten für Azure-Dienste, die Sie in Anspruch nehmen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155935"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874278"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -25,7 +25,7 @@ Die Budgets werden am Ende eines Zeitraums (monatlich, vierteljährlich oder jä
 
 Die Beispiele in diesem Tutorial führen Sie durch die Erstellung und Bearbeitung eines Budgets für ein Abonnement von Azure Enterprise Agreement (EA).
 
-Sehen Sie sich das Video [Anwenden von Budgets auf Abonnements im Azure-Portal](https://www.youtube.com/watch?v=UrkHiUx19Po) an, um zu erfahren, wie Sie Budgets in Azure erstellen können, um Ausgaben zu überwachen.
+Sehen Sie sich das Video [Anwenden von Budgets auf Abonnements im Azure-Portal](https://www.youtube.com/watch?v=UrkHiUx19Po) an, um zu erfahren, wie Sie Budgets in Azure erstellen können, um Ausgaben zu überwachen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Budgets werden für verschiedene Azure-Kontotypen unterstützt. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Budgets anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
+Budgets werden für die folgenden Arten von Azure-Kontentypen und -Bereichen unterstützt:
+
+- RBAC-Bereiche (Role-Based Access Control, rollenbasierte Zugriffssteuerung)
+    - Verwaltungsgruppen
+    - Subscription
+- Enterprise Agreement-Bereiche
+    - Abrechnungskonto
+    - Department
+    - Registrierungskonto
+- Individuelle Vereinbarungen
+    - Abrechnungskonto
+- Bereiche für Microsoft-Kundenvereinbarung
+    - Abrechnungskonto
+    - Abrechnungsprofil
+    - Rechnungsabschnitt
+    - Kunde
+- AWS-Bereiche
+    - Externes Konto
+    - Externes Abonnement
+
+
+Um Budgets anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
 
 Bei einem neuen Abonnement können Sie nicht sofort ein Budget erstellen oder andere Cost Management-Features nutzen. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können.
 
-Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
+Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen.
 
 Die folgenden Azure-Berechtigungen (oder Bereich) werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
@@ -58,7 +79,7 @@ Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten f
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Erstellen eines Budgets im Azure-Portal
 
-Sie können ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen. Ihr Navigationsinhalt im Azure-Portal legt fest, ob Sie ein Budget für ein Abonnement oder für eine Verwaltungsgruppe anlegen.
+Sie können ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen.
 
 Um ein Budget zu erstellen oder anzuzeigen, öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie im Menü **Budgets** aus. Navigieren Sie beispielsweise zu **Abonnements**, wählen Sie ein Abonnement in der Liste aus, und wählen Sie dann **Budgets** im Menü aus. Verwenden Sie die Pille **Bereich**, um zu einem anderen Bereich in „Budgets“ zu wechseln, z. B. zu einer Verwaltungsgruppe. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
@@ -110,15 +131,11 @@ Die Budgetkostenauswertung basiert auf den tatsächlichen Kosten. Sie beinhaltet
 
 Wenn Sie ein Budget für einen Abonnement- oder Ressourcengruppenbereich erstellen oder bearbeiten, können Sie es so konfigurieren, dass es eine Aktionsgruppe aufruft. Die Aktionsgruppe kann verschiedene Aktionen ausführen, wenn der Budgetschwellenwert erreicht wird. Aktionsgruppen werden derzeit nur für Abonnement- und Ressourcengruppenbereiche unterstützt. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../../azure-monitor/platform/action-groups.md). Weitere Informationen zum Verwenden von budgetbasierter Automatisierung mit Aktionsgruppen finden Sie unter [Verwalten von Kosten mit Azure-Budgets](../manage/cost-management-budget-scenario.md).
 
-
-
 Um Aktionsgruppen zu erstellen oder zu aktualisieren, klicken Sie beim Erstellen oder Bearbeiten eines Budgets auf **Aktionsgruppen verwalten**.
 
 ![Beispiel für das Erstellen eines Budgets zum Anzeigen von „Aktionsgruppen verwalten“](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 Klicken Sie anschließend auf **Aktionsgruppe hinzufügen**, und erstellen Sie die Aktionsgruppe.
-
 
 ![Abbildung des Dialogfelds „Aktionsgruppe hinzufügen“](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

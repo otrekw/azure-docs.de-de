@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc
+ms.date: 04/07/2020
+ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494561"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878441"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Tutorial: Erstellen einer Apache Spark-Machine Learning-Anwendung in Azure HDInsight
 
-In diesem Tutorial lernen Sie, wie Sie mit [Jupyter Notebook](https://jupyter.org/) eine [Apache Spark](https://spark.apache.org/)-Machine Learning-Anwendung für Azure HDInsight erstellen.
+In diesem Tutorial lernen Sie, wie Sie mit [Jupyter Notebook](https://jupyter.org/) eine [Apache Spark](./apache-spark-overview.md)-Machine Learning-Anwendung für Azure HDInsight erstellen.
 
-[MLib](https://spark.apache.org/docs/latest/ml-guide.html) ist die skalierbare Machine Learning-Bibliothek von Spark mit gängigen Lernalgorithmen und Hilfsprogrammen – einschließlich Klassifizierung, Regression, Clustering, kombinierten Filtern und Reduktion der Anzahl von Dimensionen sowie zugrunde liegenden Optimierungsprimitiven.
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) ist die anpassungsfähige Bibliothek für maschinelles Lernen von Spark, die aus gängigen Lernalgorithmen und Hilfsprogrammen besteht. (Klassifizierung, Regression, Clustering, kombiniertes Filtern und Verringerung der Dimensionalität. Auch zugrunde liegende Optimierungsprimitive.)
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -33,13 +33,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="understand-the-data-set"></a>Grundlegendes zum Dataset
 
-Für die Anwendung werden die **HVAC.csv**-Beispieldaten genutzt, die standardmäßig auf allen Clustern verfügbar sind. Die Datei befindet sich unter `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Die Daten zeigen die Zieltemperatur und die Ist-Temperatur von Gebäuden an, in denen HVAC-Systeme installiert sind. Die Spalte **System** enthält die System-ID und die Spalte **SystemAge** eine Angabe in Jahren, wie lange das HVAC-System im Gebäude bereits verwendet wird. Mit diesen Daten können Sie vorhersagen, ob es in einem Gebäude basierend auf der Zieltemperatur zu warm oder zu kalt ist. Hierfür werden die System-ID und das Alter des Systems verwendet.
+Für die Anwendung werden die **HVAC.csv**-Beispieldaten genutzt, die standardmäßig auf allen Clustern verfügbar sind. Die Datei befindet sich unter `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Die Daten zeigen die Zieltemperatur und die Ist-Temperatur von Gebäuden an, in denen HVAC-Systeme installiert sind. Die Spalte **System** enthält die System-ID und die Spalte **SystemAge** eine Angabe in Jahren, wie lange das HVAC-System im Gebäude bereits verwendet wird. Sie können anhand der Zieltemperatur, der jeweiligen System-ID und des Systemalters vorhersagen, ob ein Gebäude wärmer oder kälter wird.
 
 ![Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Daten](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Daten")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Entwickeln einer Spark-Machine Learning-Anwendung mit Spark MLlib
 
-In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.org/docs/2.2.0/ml-pipeline.html), um eine Dokumentklassifizierung durchzuführen. ML-Pipelines bieten eine einheitliche Gruppe von auf Dataframes aufgesetzten High-Level-APIs, mit deren Hilfe Benutzer praktische Machine Learning-Pipelines erstellen und optimieren können. In der Pipeline teilen Sie das Dokument in Wörter auf, konvertieren die Wörter in einen numerischen Featurevektor und erstellen dann mit den Featurevektoren und Beschriftungen ein Vorhersagemodell. Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen:
+In dieser Anwendung verwenden wir eine [ML-Pipeline](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) von Spark, um eine Dokumentklassifizierung durchzuführen. ML-Pipelines bieten eine einheitliche Gruppe allgemeiner APIs, die auf Datenrahmen aufbauen. Mit diesen Datenrahmen können Benutzer praktische Pipelines für maschinelles Lernen erstellen und optimieren. In der Pipeline teilen Sie das Dokument in Wörter auf, konvertieren die Wörter in einen numerischen Featurevektor und erstellen dann mit den Featurevektoren und Beschriftungen ein Vorhersagemodell. Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen.
 
 1. Erstellen Sie ein Jupyter Notebook mit dem PySpark-Kernel. Informationen dazu finden Sie unter [Erstellen eines Jupyter Notebooks](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
@@ -143,9 +143,9 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
     ![Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Ausgabedaten](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Ausgabedaten")
 
-    Beachten Sie, dass die Ist-Temperatur unterhalb der Zieltemperatur liegt. Im Gebäude ist es also zu kalt. In der Schulungsausgabe lautet der Wert **label** in der ersten Zeile daher **0,0**. Dies bedeutet, dass es im Gebäude nicht zu warm ist.
+    Beachten Sie, dass die Ist-Temperatur unterhalb der Zieltemperatur liegt. Im Gebäude ist es also zu kalt. Der Wert **label** in der ersten Zeile lautet daher **0,0**, was bedeutet, dass es im Gebäude nicht zu warm ist.
 
-1. Bereiten Sie ein Dataset vor, für das das Schulungsmodell ausgeführt werden kann. Hierzu übergeben Sie eine System-ID und ein Systemalter (in der Schulungsausgabe als **SystemInfo** bezeichnet). Mit dem Modell wird dann vorhergesagt, ob es im Gebäude mit der jeweiligen System-ID und dem Systemalter wärmer (1,0) oder kälter (0,0) ist.
+1. Bereiten Sie ein Dataset vor, für das das Schulungsmodell ausgeführt werden kann. Dazu übergeben Sie eine System-ID und ein Systemalter (in der Trainingsausgabe als **SystemInfo** bezeichnet). Mit dem Modell wird dann vorhergesagt, ob es im Gebäude mit der jeweiligen System-ID und dem Systemalter wärmer (1,0) oder kälter (0,0) wird.
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,7 +180,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren sehr warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0,49999) entspricht der Vorhersage 0,0, und der zweite Wert (0,5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0**an.
+   Beachten Sie die erste Zeile in der Vorhersage. Für ein HVAC-System mit der ID 20 und einem Systemalter von 25 Jahren ist das Gebäude warm (**Vorhersage=1,0**). Der erste Wert für DenseVector (0,49999) entspricht der Vorhersage 0,0, und der zweite Wert (0,5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0**an.
 
 1. Fahren Sie das Notebook herunter, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Mit dieser Aktion wird das Notebook heruntergefahren und geschlossen.
 

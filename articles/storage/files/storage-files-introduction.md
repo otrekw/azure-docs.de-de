@@ -7,20 +7,24 @@ ms.topic: overview
 ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78969130"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666796"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche Protokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
 
 ## <a name="videos"></a>Videos
-| Einführung in Azure-Dateisynchronisierung (2 Min.) | Azure Files mit Sync (Ignite 2017) (85 Min.)  |
+| Einführung in die Azure-Dateisynchronisierung | Azure Files mit Sync (Ignite 2019)  |
 |-|-|
-| [![Standbild aus dem Einführungsvideo für die Azure-Dateisynchronisierung. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Standbild der Präsentation zu Azure Files mit Sync. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
+| [![Standbild aus dem Einführungsvideo für die Azure-Dateisynchronisierung. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Standbild der Präsentation zu Azure Files mit Sync. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+Im Folgenden sind Videos zu häufigen Anwendungsfällen von Azure Files aufgeführt:
+* [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4) (Ersetzen Ihres Dateiservers durch eine serverlose Azure-Dateifreigabe)
+* [Getting started with FSLogix profile containers on Azure Files in Windows Virtual Desktop leveraging AD authentication](https://www.youtube.com/embed/9S5A1IJqfOQ) (Erste Schritte mit FSLogix-Profilcontainern in Azure Files in Windows Virtual Desktop unter Verwendung der AD-Authentifizierung)
 
 ## <a name="why-azure-files-is-useful"></a>Nützlichkeit von Azure Files
 Verwendungsmöglichkeiten für Azure-Dateifreigaben:
