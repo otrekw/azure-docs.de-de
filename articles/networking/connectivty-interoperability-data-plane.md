@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Datenebene | Microsoft-Dokumentation'
+title: 'Interoperabilität in Azure: Analyse der Datenebene'
 description: Dieser Artikel bietet eine Datenebenenanalyse der Testeinrichtung, mit der Sie die Interoperabilität zwischen ExpressRoute, einem Site-to-Site-VPN und Peering zwischen virtuellen Netzwerken in Azure analysieren können.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526636"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518263"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Datenebene
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperabilität in Azure: Analyse der Datenebene
 
 In diesem Artikel wird die Datenebenenanalyse der [Testeinrichtung][Setup] beschrieben. Sie können auch die [Testeinrichtungskonfiguration][Configuration] und die [Steuerebenenanalyse][Control-Analysis] der Testeinrichtung überprüfen.
 

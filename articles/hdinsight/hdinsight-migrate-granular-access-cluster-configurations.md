@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310831"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546338"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -131,8 +131,8 @@ Aktualisieren Sie auf [Version 1.0.0](https://pypi.org/project/azure-mgmt-hdinsi
 
 Aktualisieren Sie auf [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) oder höher des HDInsight SDK für Java. Möglicherweise sind minimale Codeänderungen erforderlich, wenn Sie eine von diesen Änderungen betroffene Methode verwenden:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) gilt jetzt als veraltet.
+- `ConfigurationsInner.get` gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
+- `ConfigurationsInner.update` gilt jetzt als veraltet.
 
 ### <a name="sdk-for-go"></a>SDK für Go
 
@@ -193,9 +193,9 @@ Clusterkonfigurationen befinden sind jetzt hinter einer differenzierten rollenba
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Warum wird die Meldung „Nicht genügend Berechtigungen zum Abschließen des Vorgangs.“ angezeigt, wenn ich versuche, einem anderen Benutzer oder Dienstprinzipal mithilfe des entsprechenden Azure CLI-Befehls die Rolle „HDInsight-Clusteroperator“ zuzuweisen?
 
-Der Benutzer oder Dienstprinzipal, der den Befehl ausführt, muss neben der Rolle „Besitzer“ auch über ausreichende AAD-Berechtigungen verfügen, um nach den Objekt-IDs der zugewiesenen Person zu suchen. Diese Meldung deutet auf unzureichende AAD-Berechtigungen hin. Ersetzen Sie das Argument `-–assignee` durch `–assignee-object-id`, und geben Sie als Parameter anstelle des Namens die Objekt-ID der zugewiesenen Person (oder im Falle einer verwalteten Identität: die Prinzipal-ID) an. Weitere Informationen finden Sie in der [Dokumentation zu „az role assignment create“](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) im Abschnitt zu optionalen Parametern.
+Der Benutzer oder Dienstprinzipal, der den Befehl ausführt, muss neben der Rolle „Besitzer“ auch über ausreichende Azure AD-Berechtigungen verfügen, um nach den Objekt-IDs der zugewiesenen Person zu suchen. Diese Meldung deutet auf unzureichende Azure AD-Berechtigungen hin. Ersetzen Sie das Argument `-–assignee` durch `–assignee-object-id`, und geben Sie als Parameter anstelle des Namens die Objekt-ID der zugewiesenen Person (oder im Falle einer verwalteten Identität: die Prinzipal-ID) an. Weitere Informationen finden Sie in der [Dokumentation zu „az role assignment create“](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) im Abschnitt zu optionalen Parametern.
 
-Sollte das Problem weiterhin bestehen, wenden Sie sich an Ihren AAD-Administrator, um die korrekten Berechtigungen zu erhalten.
+Sollte das Problem weiterhin bestehen, wenden Sie sich an Ihren Azure AD-Administrator, um die korrekten Berechtigungen zu erhalten.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Was passiert, wenn ich nichts unternehme?
 

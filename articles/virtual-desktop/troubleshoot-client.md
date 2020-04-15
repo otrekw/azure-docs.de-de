@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127504"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473850"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Troubleshooting für den Remotedesktopclient
 
@@ -21,21 +21,15 @@ In diesem Artikel werden häufige Probleme mit dem Remotedesktopclient sowie der
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Der Remotedesktopclient für Windows 7 oder Windows 10 reagiert nicht mehr oder kann nicht geöffnet werden.
 
-Verwenden Sie die folgenden PowerShell-Cmdlets, um Out-of-Band-Clientregistrierungen (OOB) zu bereinigen.
+Ab Version 1.2.790 können Sie die Benutzerdaten über die Seite „Info“ oder mithilfe eines Befehls zurücksetzen.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+Verwenden Sie den folgenden Befehl, um Ihre Benutzerdaten zu entfernen, die Standardeinstellungen wiederherzustellen und sich bei allen Arbeitsbereichen auszutragen.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-Navigieren Sie zu **%AppData%\RdClientRadc**, und löschen Sie den gesamten Inhalt.
-
-Deinstallieren Sie den Remotedesktopclient für Windows 7 und Windows 10, und installieren Sie ihn erneut.
+Wenn Sie eine frühere Version des Remotedesktopclients verwenden, empfehlen wir Ihnen, den Client zu deinstallieren und neu zu installieren.
 
 ## <a name="web-client-wont-open"></a>Webclient wird nicht geöffnet.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720349"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652218"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -135,7 +135,7 @@ Ja, Sie können eine Hive-Metastore von einem Cluster mit Enterprise-Sicherheits
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Wie kann ich die Größe einer Hive-Metastore-Datenbank schätzen?
 
-In einem Hive-Metastore werden die Metadaten für Datenquellen gespeichert, die auf dem Hive-Server verwendet werden. Die Größenanforderungen hängen zum Teil von der Anzahl und der Komplexität der Hive-Datenquellen ab und können nicht vorab geschätzt werden. Wie unter [Bewährte Methoden für den Hive-Metastore](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices) beschrieben, können Sie mit einem S2-Tarif mit 50 DTUs und 250 GB Speicher beginnen. Wenn Sie einen Engpass feststellen, können Sie die Datenbank hochskalieren.
+In einem Hive-Metastore werden die Metadaten für Datenquellen gespeichert, die auf dem Hive-Server verwendet werden. Die Größenanforderungen hängen zum Teil von der Anzahl und der Komplexität der Hive-Datenquellen ab und können nicht vorab geschätzt werden. Wie im [Leitfaden für den Hive-Metastore](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines) beschrieben, können Sie mit einem S2-Tarif mit 50 DTUs und 250 GB Speicher beginnen. Wenn Sie einen Engpass feststellen, können Sie die Datenbank hochskalieren.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Werden andere Datenbanken als Azure SQL-Datenbank als externer Metastore unterstützt?
 

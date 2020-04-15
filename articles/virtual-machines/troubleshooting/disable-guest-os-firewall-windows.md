@@ -1,6 +1,6 @@
 ---
 title: Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers | Microsoft-Dokumentation
-description: ''
+description: Lernen Sie eine Problemumgehungsmethode für die Problembehandlung in Situationen kennen, in denen eine Firewall des Gastbetriebssystems den teilweisen oder vollständigen Datenverkehr zu einem virtuellen Computer filtert.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718870"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422361"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -100,7 +100,7 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Starten Sie den Dienst neu. Da dies mit der Remoteregistrierung nicht möglich ist, müssen Sie „Dienstkonsole entfernen“ verwenden.
+3.  Starten Sie den Dienst neu. Da dies mit der Remoteregistrierung nicht möglich ist, müssen Sie die Remotedienstkonsole verwenden.
 
 4.  Öffnen Sie eine Instanz von **Services.msc**.
 

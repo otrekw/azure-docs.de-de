@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 03329252c0ed4231585d1717d9361a2aef35b36f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cea3245176e6c38137d68e3ad4b47477bedc78be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186993"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529184"
 ---
 Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
@@ -37,4 +37,10 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie di
 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 1. Wählen Sie **Neue Benutzeroberfläche ausprobieren** aus (sofern die Option angezeigt wird).
 1. Wählen Sie unter **Standardclienttyp** die Option **Ja** aus, um die Anwendung als öffentlichen Client einzustufen. Diese Einstellung ist für den ROPC-Flow erforderlich.
+1. Wählen Sie **Speichern** aus.
+1. Wählen Sie im linken Menü **Manifest** aus, um den Manifest-Editor zu öffnen. 
+1. Legen Sie das Attribut **oauth2AllowImplicitFlow** auf *true* fest:
+    ```json
+    "oauth2AllowImplicitFlow": true,
+    ```
 1. Wählen Sie **Speichern** aus.

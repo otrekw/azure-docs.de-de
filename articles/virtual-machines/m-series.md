@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164048"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521340"
 ---
 # <a name="m-series"></a>M-Serie
 
-Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden. Die Größen der M-Serie basieren auf der Intel® Xeon® CPU E7-8890 v3 mit 2,50 GHz.
+Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden. Die Größen der M-Serie werden sowohl unter der Intel&reg; Xeon&reg; CPU E7-8890 v3 mit 2,50 GHz und Intel&reg; Xeon&reg; Platinum 8280M mit 2,7 GHz (Cascade Lake) unterstützt.
 
-Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von Intel®.
+Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von Intel&reg;.
 
 ACU: 160-180
 

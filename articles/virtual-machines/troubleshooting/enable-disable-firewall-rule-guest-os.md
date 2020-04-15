@@ -1,6 +1,6 @@
 ---
 title: Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM | Microsoft-Dokumentation
-description: ''
+description: Erfahren Sie, wie Sie Online- oder Offline-Remotetools oder Registrierungseinstellungen verwenden können, um Firewallregeln für Gastbetriebssysteme auf einem virtuellen Azure-Remotecomputer zu aktivieren oder zu deaktivieren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71086454"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422899"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
 
@@ -35,7 +35,7 @@ Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffs
 
 ### <a name="online-troubleshooting"></a>Onlineproblembehandlung 
 
-#### <a name="mitigation-1-custom-script-extension"></a>Vorbeugende Maßnahme 1: Benutzerdefinierte Skripterweiterung
+#### <a name="mitigation-1-custom-script-extension"></a>Lösung 1: Benutzerdefinierte Skripterweiterung
 
 1.  Erstellen Sie Ihr Skript mit der folgenden Vorlage.
 
@@ -51,7 +51,7 @@ Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffs
 
 2.  Laden Sie dieses Skript mithilfe des Features [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md) in das Azure-Portal hoch. 
 
-#### <a name="mitigation-2-remote-powershell"></a>Vorbeugende Maßnahme 2: Remote-PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Lösung 2: Remote-PowerShell
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die folgenden vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
@@ -73,7 +73,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>Vorbeugende Maßnahme 3: PSTools-Befehle
+#### <a name="mitigation-3-pstools-commands"></a>Lösung 3: PSTools-Befehle
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die folgenden vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
@@ -93,7 +93,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>Vorbeugende Maßnahme 4: Remoteregistrierung
+#### <a name="mitigation-4-remote-registry"></a>Lösung 4: Remoteregistrierung
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die [Remoteregistrierung](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) auf dem anderen virtuellen Computer verwenden.
 

@@ -1,19 +1,19 @@
 ---
 title: Anpassen von Azure HDInsight-Clusterkonfigurationen mithilfe von Bootstrap
-description: Erfahren Sie, wie Sie die HDInsight-Clusterkonfiguration mithilfe von .Net-, PowerShell- und Resource Manager-Vorlagen programmgesteuert anpassen können.
+description: Erfahren Sie, wie Sie die HDInsight-Clusterkonfiguration mithilfe von .NET-, PowerShell- und Resource Manager-Vorlagen programmgesteuert anpassen können.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/21/2019
-ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233638"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529353"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Anpassen von HDInsight-Clustern mithilfe von Bootstrap
 
@@ -125,6 +125,18 @@ Sie können Bootstrap in einer Resource Manager-Vorlage verwenden:
 ```
 
 ![Hadoop passt Azure Resource Manager-Vorlage für Cluster-Bootstrap an](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+
+Codeausschnitt aus der Resource Manager-Beispielvorlage zum Umschalten der Konfiguration in „spark2-defaults“ zum regelmäßigen Bereinigen von Ereignisprotokollen aus dem Speicher.  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure Virtual Network: Resource Manager-Vorlage (Vorschau)'
+title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure Virtual Network: Resource Manager-Vorlage'
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Dual Stack-Anwendung in Azure Virtual Network mit Azure Resource Manager-VM-Vorlagen bereitgestellt wird.
 services: virtual-network
@@ -10,16 +10,16 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/26/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c2f66d92597801aa7c6b0b32f86f594d3effb05
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012838"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420598"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage
 
 Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um eine Dual Stack-Anwendung (IPv4 und IPv6) mit Basic Load Balancer bereitzustellen, die ein virtuelles Dual Stack-Netzwerk mit IPv4- und IPv6-Subnetzen, Basic Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen umfasst.
 

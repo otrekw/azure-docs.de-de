@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72965170"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420525"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Reserviertes Präfix für öffentliche IPv6-Adressen (Vorschau)
+# <a name="reserved-public-ipv6-address-prefix"></a>Reserviertes Präfix für öffentliche IPv6-Adressen
 
 In Azure sind virtuelle Dual-Stack-Netzwerke (IPv4 und IPv6) sowie virtuelle Computer (VMs) standardmäßig sicher, da sie keine Internetkonnektivität haben. Mit öffentlichen IPv6-Adressen, die Sie von Azure erhalten, können Sie Ihren Azure Load Balancer-Instanzen und VMs problemlos IPv6-Internetkonnektivität hinzufügen.
 
@@ -30,8 +30,7 @@ Alle öffentlichen IP-Adressen, die Sie reservieren, sind einer Azure-Region Ihr
 
 Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren.  Ähnlich wie einzelne IP-Adressen sind auch reservierte Präfixe einer Azure-Region Ihrer Wahl und Ihrem Azure-Abonnement zugeordnet. Das Reservieren eines vorhersagbaren, zusammenhängenden Bereichs von Adressen bietet viele Verwendungsmöglichkeiten. Beispielsweise können Sie die Aufnahme Ihrer in Azure gehosteten Anwendungen in die IP-*Whitelist* für Ihr Unternehmen und Ihre Kunden erheblich vereinfachen, da Ihre statischen IP-Bereiche problemlos in lokale Firewalls programmiert werden können.  Sie können nach Bedarf einzelne öffentliche IP-Adressen aus Ihrem IP-Präfix erstellen, und wenn Sie diese einzelnen öffentlichen IP-Adressen löschen, werden sie in den reservierten Bereich *zurückgegeben*, sodass Sie sie später wieder verwenden können. Alle IP-Adressen in Ihrem IP-Präfix sind für Ihre ausschließliche Nutzung reserviert, bis Sie Ihr Präfix löschen.
 
-> [!Important]
-> IPv6 für Azure Virtual Network ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6-Präfixgrößen
 Die folgenden Präfixgrößen für öffentliche IP-Adressen sind verfügbar:
