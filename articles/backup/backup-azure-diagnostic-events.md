@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136938"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672787"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -39,28 +39,60 @@ Mit der Ausrichtung auf die Azure Log Analytics-Roadmap ermöglicht Azure Backup
 
 So senden Sie Tresordiagnosedaten an Log Analytics:
 
-1.  Navigieren Sie zum Tresor, und klicken Sie auf **Diagnoseeinstellungen**. Klicken Sie auf **+ Add Diagnostic Setting** (Diagnoseeinstellung hinzufügen).
-2.  Geben Sie einen Namen für die Diagnoseeinstellung ein.
-3.  Aktivieren Sie das Kontrollkästchen **Send to Log Analytics** (An Log Analytics senden), und wählen Sie einen Log Analytics-Arbeitsbereich aus.
-4.  Klicken Sie beim Umschalter auf **Resource Specific** (Ressourcenspezifisch), und aktivieren Sie die folgenden sechs Ereignisse: **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy** und **AddonAzureBackupStorage**.
-5.  Klicken Sie auf **Speichern**.
+1.    Navigieren Sie zum Tresor, und klicken Sie auf **Diagnoseeinstellungen**. Klicken Sie auf **+ Add Diagnostic Setting** (Diagnoseeinstellung hinzufügen).
+2.    Geben Sie einen Namen für die Diagnoseeinstellung ein.
+3.    Aktivieren Sie das Kontrollkästchen **Send to Log Analytics** (An Log Analytics senden), und wählen Sie einen Log Analytics-Arbeitsbereich aus.
+4.    Klicken Sie beim Umschalter auf **Resource Specific** (Ressourcenspezifisch), und aktivieren Sie die folgenden sechs Ereignisse: **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy** und **AddonAzureBackupStorage**.
+5.    Klicken Sie auf **Speichern**.
 
 ![Modus „Ressourcenspezifisch“](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 Sobald die Daten in den Log Analytics-Arbeitsbereich fließen, werden im Arbeitsbereich für jedes dieser Ereignisse dedizierte Tabellen erstellt. Sie können jede dieser Tabellen direkt abfragen und für diese Tabellen ggf. Joins oder Vereinigungen durchführen.
 
 > [!IMPORTANT]
-> Die oben genannten sechs Ereignisse (CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy und AddonAzureBackupStorage) werden **nur** im Modus „Resource Specific“ (Ressourcenspezifisch) unterstützt. **Beachten Sie, dass beim Versuch, Daten für diese sechs Ereignisse im Modus „Azure-Diagnose“ zu senden, keine Daten an den Log Analytics-Arbeitsbereich übermittelt werden.**
+> Die oben genannten sechs Ereignisse (CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy und AddonAzureBackupStorage) werden **nur** im Modus „Resource Specific“ (Ressourcenspezifisch) in [Sicherungsberichten](https://docs.microsoft.com/azure/backup/configure-reports) unterstützt. **Beachten Sie, dass beim Versuch, Daten für diese sechs Ereignisse im Modus „Azure-Diagnose“ zu senden, keine Daten in Sicherungsberichten angezeigt werden.**
 
 ## <a name="legacy-event"></a>Legacyereignis
 
 Bisher waren alle sicherungsbezogenen Diagnosedaten für einen Tresor in einem einzelnen Ereignis namens „AzureBackupReport“ enthalten. Die sechs oben beschriebenen Ereignisse sind im Wesentlichen eine Aufschlüsselung aller Daten, die in „AzureBackupReport“ enthalten sind. 
 
-Auch aktuell unterstützen wir die Abwärtskompatibilität für das „AzureBackupReport“-Ereignis, wenn Benutzer über benutzerdefinierte Abfragen wie beispielsweise benutzerdefinierte Protokollwarnungen oder Visualisierungen für dieses Ereignis verfügen. **Es wird jedoch empfohlen, so früh wie möglich zu den neuen Ereignissen zu wechseln**, da so die Arbeit mit den Daten in Protokollabfragen erleichtert wird, eine bessere Auffindbarkeit von Schemas und deren Struktur geboten wird und die Leistung sowohl in Hinsicht auf die Erfassungslatenz als auch die Abfragezeiten verbessert werden kann. **Die Unterstützung für den Modus „Azure-Diagnose“ wird schließlich eingestellt, und es ist daher hilfreich, die neuen Ereignisse zu verwenden, um komplexe Migrationen zu einem späteren Zeitpunkt zu vermeiden.**
+Auch aktuell unterstützen wir die Abwärtskompatibilität für das „AzureBackupReport“-Ereignis, wenn Benutzer über benutzerdefinierte Abfragen wie beispielsweise benutzerdefinierte Protokollwarnungen oder Visualisierungen für dieses Ereignis verfügen. **Es wird jedoch empfohlen, so früh wie möglich zu den [neuen Ereignissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) zu wechseln**, da so die Arbeit mit den Daten in Protokollabfragen erleichtert wird, eine bessere Auffindbarkeit von Schemas und deren Struktur geboten wird und die Leistung sowohl in Hinsicht auf die Erfassungslatenz als auch die Abfragezeiten verbessert werden kann. 
 
-Verwenden Sie die integrierte Azure Backup-Richtlinie, um für alle Ihre Tresore in einem bestimmten Bereich eine neue Diagnoseeinstellung mit den 6 neuen Ereignissen hinzuzufügen: [Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+**Das Legacy-Ereignis im Modus „Azure-Diagnose“ wird schließlich als veraltet gekennzeichnet, und es ist daher hilfreich, die neuen Ereignisse zu verwenden, um komplexe Migrationsvorgänge zu einem späteren Zeitpunkt zu vermeiden.** Für unsere [Berichterstellungslösung](https://docs.microsoft.com/azure/backup/configure-reports), die Log Analytics nutzt, wird die Unterstützung von Daten aus dem Legacy-Ereignis ebenfalls eingestellt.
 
-Sie können separate Diagnoseeinstellungen für „AzureBackupReport“ und die sechs neuen Ereignisse erstellen, bis Sie alle benutzerdefinierten Abfragen migriert haben, um Daten aus den neuen Tabellen zu verwenden. Die folgende Abbildung zeigt ein Beispiel für einen Tresor mit zwei Diagnoseeinstellungen. Die erste Einstellung mit dem Namen **Setting1** sendet Daten des „AzureBackupReport“-Ereignisses an einen Log Analytics-Arbeitsbereich im Modus „Azure-Diagnose“. Die zweite Einstellung mit dem Namen **Setting2** sendet Daten der sechs neuen Azure Backup-Ereignisse an einen Log Analytics-Arbeitsbereich im Modus „Resource Specific“ (Ressourcenspezifisch).
+### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>Schritte zum Wechseln zu den neuen Diagnoseeinstellungen (zum Log Analytics-Arbeitsbereich)
+
+1. Ermitteln Sie mithilfe des Legacy-Ereignisses, welche Tresore Daten an die Log Analytics-Arbeitsbereiche senden und zu welchen Abonnements sie gehören. Führen Sie die folgenden Arbeitsbereiche aus, um diese Tresore und Abonnements zu ermitteln:
+
+    ````Kusto
+    let RangeStart = startofday(ago(3d));
+    let VaultUnderAzureDiagnostics = (){
+        AzureDiagnostics
+        | where TimeGenerated >= RangeStart | where Category == "AzureBackupReport" and OperationName == "Vault" and SchemaVersion_s == "V2"
+        | summarize arg_max(TimeGenerated, *) by ResourceId    
+        | project ResourceId, Category};
+    let VaultUnderResourceSpecific = (){
+        CoreAzureBackup
+        | where TimeGenerated >= RangeStart | where OperationName == "Vault" 
+        | summarize arg_max(TimeGenerated, *) by ResourceId
+        | project ResourceId, Category};
+        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+    let CombinedVaultTable = (){
+        CombinedTable | union isfuzzy = true 
+        (VaultUnderAzureDiagnostics() ),
+        (VaultUnderResourceSpecific() )
+        | distinct ResourceId, Category};
+    CombinedVaultTable | where Category == "AzureBackupReport"
+    | join kind = leftanti ( 
+    CombinedVaultTable | where Category == "CoreAzureBackup"
+    ) on ResourceId
+    | parse ResourceId with * "SUBSCRIPTIONS/" SubscriptionId:string "/RESOURCEGROUPS" * "MICROSOFT.RECOVERYSERVICES/VAULTS/" VaultName:string
+    | project ResourceId, SubscriptionId, VaultName
+    ````
+
+2. Verwenden Sie die [integrierte Azure-Richtlinie](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) für Azure Backup, um für alle Tresore in einem angegebenen Bereich eine neue Diagnoseeinstellung hinzuzufügen. Diese Richtlinie fügt diesen Tresoren, die entweder nicht über eine Diagnoseeinstellung verfügen oder nur eine Einstellung für die Legacy-Diagnose aufweisen, eine neue Diagnoseeinstellung hinzu. Diese Richtlinie kann jeweils nur einem gesamten Abonnement oder einer Ressourcengruppe zugewiesen werden. Beachten Sie, dass Sie für jedes Abonnement, dem die Richtlinie zugewiesen wird, die Zugriffsberechtigung „Besitzer“ benötigen.
+
+Sie können separate Diagnoseeinstellungen für „AzureBackupReport“ und die sechs neuen Ereignisse verwenden, bis Sie alle benutzerdefinierten Abfragen migriert haben, um Daten aus den neuen Tabellen zu verwenden. Die folgende Abbildung zeigt ein Beispiel für einen Tresor mit zwei Diagnoseeinstellungen. Die erste Einstellung mit dem Namen **Setting1** sendet Daten des „AzureBackupReport“-Ereignisses an einen Log Analytics-Arbeitsbereich im Modus „Azure-Diagnose“. Die zweite Einstellung mit dem Namen **Setting2** sendet Daten der sechs neuen Azure Backup-Ereignisse an einen Log Analytics-Arbeitsbereich im Modus „Resource Specific“ (Ressourcenspezifisch).
 
 ![Beide Einstellungen](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

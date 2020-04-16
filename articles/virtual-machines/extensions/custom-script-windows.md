@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066878"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478152"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -106,7 +106,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 > Auf einem virtuellen Computer kann jeweils nur eine Version einer Erweiterung installiert werden. Wenn Sie die Erweiterung für benutzerdefinierte Skripts zweimal in derselben Resource Manager-Vorlage für denselben Computer angeben, treten Fehler auf.
 
 > [!NOTE]
-> Dieses Schema kann in der VirtualMachine-Ressource oder als eigenständige Ressource verwendet werden. Der Name der Ressource muss das Format „virtualMachineName/extensionName“ haben, wenn diese Erweiterung als eigenständige Ressource in der ARM-Vorlage verwendet wird. 
+> Dieses Schema kann in der VirtualMachine-Ressource oder als eigenständige Ressource verwendet werden. Der Name der Ressource muss das Format „virtualMachineName/extensionName“ haben, wenn diese Erweiterung als eigenständige Ressource in der ARM-Vorlage verwendet wird.
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
@@ -146,6 +146,8 @@ Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sei
 Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur in Azure und auf dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und gegebenenfalls zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
 
 ####  <a name="property-managedidentity"></a>Eigenschaft: managedIdentity
+> [!NOTE]
+> Diese Eigenschaft **muss** nur in geschützten Einstellungen angegeben werden.
 
 CustomScript (ab Version 1.10) unterstützt [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
 

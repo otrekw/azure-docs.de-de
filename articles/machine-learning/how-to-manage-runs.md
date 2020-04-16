@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296871"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985914"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ In diesem Artikel finden Sie Beispiele für die folgenden Aufgaben:
 
 Sie benötige folgende Elemente:
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -264,16 +264,41 @@ Um viele untergeordnete Ausführungen effizient zu erstellen, verwenden Sie die 
 
 ### <a name="submit-child-runs"></a>Senden untergeordneter Ausführungen
 
-Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. Dies ermöglicht es Ihnen, Hierarchien von übergeordneten und untergeordneten Ausführungen zu erstellen, von denen jede auf verschiedenen Computezielen ausgeführt wird und die über eine allgemeine übergeordnete Ausführungs-ID verbunden sind.
+Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. So können Sie Hierarchien aus übergeordneten und untergeordneten Ausführungen erstellen. 
 
-Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der ``submit_child``-Methode der Kontextinstanz.
+Möglicherweise möchten Sie, dass untergeordnete Ausführungen eine andere Ausführungskonfiguration verwenden als die übergeordnete Ausführung. Sie könnten beispielsweise eine weniger leistungsfähige CPU-basierte Konfiguration für die übergeordnete Ausführung und GPU-basierte Konfigurationen für die untergeordneten Ausführungen verwenden. Häufig ist es auch wünschenswert, verschiedene Argumente und Daten an die einzelnen untergeordneten Ausführung zu übergeben. Um eine untergeordnete Ausführung anzupassen, übergeben Sie ein `RunConfiguration`-Objekt an den `ScriptRunConfig`-Konstruktor der untergeordneten Ausführung. Für dieses Codebeispiel, das Teil des Skripts für das `ScriptRunConfig`-Objekt der übergeordneten Ausführung sein kann, gilt Folgendes:
+
+- Es erstellt eine `RunConfiguration`, die eine benannte Computeressource `"gpu-compute"` abruft.
+- Es durchläuft verschiedene Argumentwerte, die an die untergeordneten `ScriptRunConfig`-Objekte übergeben werden sollen.
+- Es erstellt und übermittelt eine neue untergeordnete Ausführung und verwendet dabei benutzerdefinierte Computeressourcen und Argumente.
+- Es blockiert die weitere Ausführung, bis alle untergeordneten Ausführungen beendet sind.
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+Um auf effiziente Weise mehrere untergeordnete Ausführungen mit identischen Konfigurationen, Argumenten und Eingaben zu erstellen, verwenden Sie die [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-)-Methode. Weil jeder Erstellungsvorgang zu einem Netzwerkaufruf führt, ist das Erstellen eines Ausführungsbatches effizienter als ein jeweils einzelnes Erstellen der Ausführungen.
 
 In einer untergeordneten Ausführung können Sie die ID der übergeordneten Ausführung anzeigen:
 

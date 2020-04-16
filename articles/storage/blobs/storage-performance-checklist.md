@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228378"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473931"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Blob Storage
 
@@ -246,7 +246,7 @@ Das Befehlszeilenprogramm AzCopy bietet eine einfache und effiziente Möglichkei
 
 ### <a name="use-azure-data-box"></a>Verwenden von Azure Data Box
 
-Zum Importieren großer Datenmengen in Blob Storage sollten Sie die Azure Data Box-Familie für Offlineübertragungen verwenden. Von Microsoft bereitgestellte Data Box-Geräte bieten eine gute Möglichkeit, große Datenmengen in Azure zu übertragen, wenn Sie aufgrund der Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Weitere Informationen finden Sie in der [Azure Data Box-Dokumentation](/azure/databox/).
+Zum Importieren großer Datenmengen in Blob Storage sollten Sie die Azure Data Box-Familie für Offlineübertragungen verwenden. Von Microsoft bereitgestellte Data Box-Geräte bieten eine gute Möglichkeit, große Datenmengen in Azure zu übertragen, wenn Einschränkungen bei der Zeit, der Netzwerkverfügbarkeit oder den Kosten vorliegen. Weitere Informationen finden Sie in der [Azure Data Box-Dokumentation](/azure/databox/).
 
 ## <a name="content-distribution"></a>Inhaltsverteilung
 
@@ -267,7 +267,7 @@ Um BLOBs schnell hochzuladen, bestimmen Sie zunächst, ob Sie eines oder mehrere
 Um ein einzelnes großes Blob schnell hochzuladen, kann eine Clientanwendung Blöcke oder Seiten parallel hochladen. Beachten Sie dabei die Skalierbarkeitsziele für einzelne Blobs und das Speicherkonto im Ganzen. Die Azure Storage-Clientbibliotheken unterstützen das parallele Hochladen. Beispielsweise können Sie die folgenden Eigenschaften verwenden, um die Anzahl von gleichzeitigen Anforderungen anzugeben, die in .NET oder Java zulässig sind. Clientbibliotheken für andere unterstützte Programmiersprachen bieten ähnliche Optionen.
 
 - Legen Sie für .NET die [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)-Eigenschaft fest.
-- Rufen Sie für Java/Android die [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount)-Methode auf.
+- Rufen Sie für Java/Android die [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount)-Methode auf.
 
 ### <a name="upload-many-blobs-quickly"></a>Schnelles Hochladen von mehreren Blobs
 

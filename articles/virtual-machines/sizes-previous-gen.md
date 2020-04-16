@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e0abae8ada603e4e6b98ab0dfe9d794186e00000
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226782"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985727"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
@@ -66,6 +66,7 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 <sup>1</sup> Der mit einer VM der Fs-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Details finden Sie unter Entwerfen für hohe Leistung für [Windows](windows/premium-storage-performance.md) oder [Linux](linux/premium-storage-performance.md).  
+
 
 ## <a name="nvv2-series"></a>NVv2-Serie
 
@@ -339,6 +340,30 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 | Standard_G5&nbsp;<sup>1</sup> | 32 | 448 | 6\.144 | 96000/1500/750| 64/64 x 500 | 8/20000 |
 
 <sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+<br>
+
+## <a name="nv-series"></a>NV-Serie
+**Neuere Größenempfehlung**: [NVv3-Serie](nvv3-series.md) und [NVv4-Serie](nvv4-series.md)
+
+Die virtuellen Computer der NV-Serie nutzen NVIDIA-GPUs vom Typ [Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie und ermöglichen die Verwendung beschleunigter Desktopanwendungen und virtueller Desktops, mit denen Kunden ihre Daten oder Simulationen visualisieren können. Benutzer können ihre grafikintensiven Workflows mit den NV-Instanzen visualisieren, um überragende Grafikfunktionen zu erhalten, und darüber hinaus Workloads mit einfacher Genauigkeit ausführen (beispielsweise Codierung und Rendering). Virtuelle Computer der NV-Serie werden außerdem mit Intel Xeon E5-2690 v3 (Haswell)-CPUs betrieben.
+
+Alle GPUs in NV-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen die erforderliche Flexibilität für die Verwendung einer NV-Instanz als virtuelle Arbeitsstation für einen einzelnen Benutzer. Außerdem besteht für ein Szenario mit einer virtuellen Anwendung die Möglichkeit, dass 25 Benutzer gleichzeitig eine Verbindung mit dem virtuellen Computer herstellen.
+
+Storage Premium  Nicht unterstützt
+
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+
+Livemigration: Nicht unterstützt
+
+Updates mit Speicherbeibehaltung: Nicht unterstützt
+
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = halbe M60-Karte
 <br>
 
 ## <a name="other-sizes"></a>Andere Größen

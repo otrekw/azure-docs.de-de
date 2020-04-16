@@ -1,15 +1,16 @@
 ---
-title: Dynamisches Erstellen eines Files-Volumes für mehrere Pods in Azure Kubernetes Service (AKS)
+title: Dynamisches Erstellen von Azure Files-Freigaben
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure Files für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897709"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803533"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -29,7 +30,7 @@ Mit einer Speicherklasse wird festgelegt, wie eine Azure-Dateifreigabe erstellt 
 
 * *Standard_LRS:* lokal redundanter Standardspeicher (LRS)
 * *Standard_GRS:* georedundanter Standardspeicher (GRS)
-* *Standard_ZRS:* zonenredundanter Standardspeicher (GRS)
+* *Standard_ZRS:* zonenredundanter Standardspeicher (ZRS)
 * *Standard_RAGRS:* Georedundanter Standardspeicher mit Lesezugriff (Standard-RA-GRS)
 * *Premium_LRS:* lokal redundanter Premium-Speicher (LRS)
 * *Premium_ZRS:* zonenredundanter Premiumspeicher (GRS)

@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020045"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413218"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Nach der Transformation Ihrer Daten können Sie die Daten in ein Zieldataset als Senke übertragen. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
 
@@ -39,13 +41,15 @@ Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overvi
 
 ## <a name="sink-settings"></a>Senkeneinstellungen
 
-Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. 
+Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. Unten finden Sie ein Video, in dem verschiedene Senkenoptionen für Dateitypen mit Texttrennzeichen beschrieben werden:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![Senkeneinstellungen](media/data-flow/sink-settings.png "Senkeneinstellungen")
 
 **Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von Data Factory, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne explizit Spaltenänderungen definieren zu müssen. Aktivieren Sie **Schemaabweichung zulassen**, wenn Sie zusätzliche Spalten zusätzlich zur Definition im Datenschema der Senke schreiben möchten.
 
-**Schema überprüfen**: Ist „Schema überprüfen“ aktiviert, schlägt der Datenfluss fehl, wenn eine Spalte im definierten Schema des Datasets nicht gefunden wurde.
+**Schema überprüfen**: Wenn „Schema überprüfen“ ausgewählt ist, führt der Datenfluss zu einem Fehler, wenn eine der Spalten des Eingangsquellschemas in der Quellprojektion nicht gefunden wird oder wenn die Datentypen nicht übereinstimmen. Verwenden Sie diese Einstellung, um eine Übereinstimmung der Quelldaten mit dem Vertrag Ihrer definierten Projektion zu erzwingen. Dies ist in Szenarien mit Datenbankquellen nützlich, um anzugeben, dass die Spaltennamen oder -typen geändert wurden.
 
 ## <a name="field-mapping"></a>Feldzuordnung
 

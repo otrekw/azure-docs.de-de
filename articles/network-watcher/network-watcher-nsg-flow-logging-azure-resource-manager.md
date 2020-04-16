@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538157"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891457"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Erstellen von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage
 
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 Für die Überprüfung, ob die Bereitstellung erfolgreich war, gibt es mehrere Möglichkeiten. In Ihrer PowerShell-Konsole sollte „ProvisioningState“ als „erfolgreich“ angezeigt werden. Darüber hinaus können Sie die Änderungen auf der [Portalseite für NSG-Flussprotokolle](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) bestätigen. Falls bei der Bereitstellung Probleme aufgetreten sind, lesen Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
 
+## <a name="deleting-your-resource"></a>Löschen Ihrer Ressource
+Azure ermöglicht das Löschen von Ressourcen über den Bereitstellungsmodus „Vollständig“. Zum Löschen einer Ressource des Flowprotokolls geben Sie eine Bereitstellung im Modus „Vollständig“ ohne Angabe der zu löschenden Ressource an. Erfahren Sie mehr über den [Bereitstellungsmodus „Vollständig“](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

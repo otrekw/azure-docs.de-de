@@ -3,12 +3,12 @@ title: Verschieben von Ressourcen in ein neues Abonnement oder eine neue Ressour
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226354"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631500"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -107,7 +107,7 @@ Der Einfachheit halber verwenden wir hier nur eine abhängige Ressource.
 
 * Schritt 1: Wenn abhängige Ressourcen auf unterschiedliche Ressourcengruppen verteilt sind, müssen Sie diese zuerst in einer Ressourcengruppe zusammenfassen.
 * Schritt 2: Verschieben Sie die Ressource und die abhängigen Ressourcen zusammen aus dem Quellabonnement in das Zielabonnement.
-* Schritt 3: Optional können Sie die abhängigen Ressourcen auf unterschiedliche Ressourcengruppen im Zielabonnement verteilen. 
+* Schritt 3: Optional können Sie die abhängigen Ressourcen auf unterschiedliche Ressourcengruppen im Zielabonnement verteilen.
 
 ## <a name="validate-move"></a>Überprüfen der Verschiebung
 
@@ -260,8 +260,9 @@ Beim Verschieben einer Ressource müssen deren abhängige Ressourcen in der Ziel
 Beispielsweise könnte das Verschieben eines virtuellen Computers erfordern, dass sieben Ressourcentypen mit drei verschiedenen Ressourcenanbietern verschoben werden. Diese Ressourcenanbieter und -typen sind:
 
 * Microsoft.Compute
-   * virtualMachines
-   * disks
+
+  * virtualMachines
+  * disks
 * Microsoft.Network
   * networkInterfaces
   * publicIPAddresses

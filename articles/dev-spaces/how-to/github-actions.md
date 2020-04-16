@@ -1,21 +1,21 @@
 ---
 title: GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252378"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637945"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
-Azure Dev Spaces stellt mithilfe von GitHub-Aktionen einen Workflow zur Verfügung, mit dem Sie Änderungen einer Pull Request direkt in AKS testen können, bevor die Pull Request im Hauptzweig Ihres Repository zusammengeführt wird. Durch eine laufende Anwendung zum Prüfen der Änderungen einer Pull Request kann die Konfidenz sowohl des Entwicklers als auch der Teammitglieder erhöht werden. Diese laufende Anwendung kann auch dazu beitragen, dass Teammitglieder wie Produktmanager und Designer in frühen Entwicklungsphasen Teil des Überprüfungsprozesses werden.
+Azure Dev Spaces stellt mithilfe von GitHub Actions einen Workflow zur Verfügung, mit dem Sie Änderungen einer Pull Request direkt in AKS testen können, bevor die Pull Request im Hauptzweig Ihres Repository zusammengeführt wird. Durch eine laufende Anwendung zum Prüfen der Änderungen einer Pull Request kann die Konfidenz sowohl des Entwicklers als auch der Teammitglieder erhöht werden. Diese laufende Anwendung kann auch dazu beitragen, dass Teammitglieder wie Produktmanager und Designer in frühen Entwicklungsphasen Teil des Überprüfungsprozesses werden.
 
 In diesem Leitfaden lernen Sie Folgendes:
 
@@ -101,6 +101,11 @@ Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen*. Kli
 > Alle aufgeführten Geheimnisse werden von der GitHub-Aktion verwendet und in [.github/workflows/bikes.yml][github-action-yaml] konfiguriert.
 
 Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST*-Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io*. Nachdem Sie Ihre Änderungen im Master-Branch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+
+Wenn die Änderungen in Ihrem PR in einem untergeordneten Bereich ausgeführt werden sollen, aktualisieren Sie die Geheimnisse *MASTER_SPACE* und *HOST*. Ein Beispiel: Die Anwendung in *dev* wird mit einem untergeordneten Bereich *dev/azureuser1* ausgeführt. Der PR soll in einem untergeordneten Bereich von *dev/azureuser1* ausgeführt werden:
+
+* Aktualisieren Sie *MASTER_SPACE* auf den untergeordneten Bereich, der zum übergeordneten Bereich werden soll; in diesem Beispiel *azureuser1*.
+* Aktualisieren Sie *HOST* auf *<GRANDPARENT_SPACE>.<APP_NAME>.<HOST_SUFFIX>* ; in diesem Beispiel ist dies *dev.bikesharingweb.fedcab0987.eus.azds.io*.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Neuen Branch für Codeänderungen erstellen
 

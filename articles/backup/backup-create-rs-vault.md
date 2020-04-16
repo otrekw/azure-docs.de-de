@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295016"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672848"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -40,7 +40,7 @@ So erstellen Sie einen Recovery Services-Tresor
    - **Name**: Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
    - **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
    - **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-   - **Speicherort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zum Schutz virtueller Computer zu erstellen, **muss** sich dieser in derselben Region wie die virtuellen Computer befinden.
+   - **Standort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zum Schutz virtueller Computer zu erstellen, **muss** sich dieser in derselben Region wie die virtuellen Computer befinden.
 
       > [!IMPORTANT]
       > Wenn Sie den Speicherort des virtuellen Computers nicht kennen, schließen Sie das Dialogfeld. Wechseln Sie zur Liste der virtuellen Computer im Portal. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Speicherort, bevor Sie den Tresor für einen anderen Speicherort erstellen. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
@@ -88,27 +88,7 @@ Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfol
 >Vorbereitungen
 >
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
->- Die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) steht aktuell nur in den folgenden Regionen zur Verfügung: 
->    - USA, Westen-Mitte
->    - USA, Westen 2
->    - USA Süd Mitte
->    - East US
->    - USA (Ost) 2
->    - USA Nord Mitte
->    - Kanada, Mitte
->    - Kanada, Osten
->    - Australien (Osten)
->    - Australien, Südosten
->    - Indien, Mitte
->    - Indien (Süden)
->    - Japan, Osten
->    - Japan, Westen
->    - Asien, Südosten
->    - UK, Süden
->    - UK, Westen
->    - Frankreich, Mitte
->    - Korea, Mitte
->    - Korea, Süden
+>- Das Feature der bereichsübergreifenden Wiederherstellung (CRR) ist nun in allen öffentlichen Azure-Regionen in der Vorschau verfügbar.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
 >- Verwenden Sie den folgenden Befehl, um das Onboarding Ihres Abonnements für diese Funktion durchzuführen:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

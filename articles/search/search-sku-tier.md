@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899845"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547026"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -41,7 +41,9 @@ Die Tarife unterscheiden sich durch:
 
 Der ausgewählte Tarif bestimmt den abzurechnenden Preis. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). **Free**, **Basic** und **Standard** sind die gängigsten Tarife.
 
-Im Tarif **Free** wird ein eingeschränkter Suchdienst in einem Cluster erstellt, der auch für andere Abonnenten freigegeben ist. Sie können kleine Projekte ausführen, einschließlich Schnellstarts und Tutorials, aber Sie können den Dienst nicht skalieren und keine größeren Workloads ausführen. **Basic** und **Standard** sind die am häufigsten verwendeten abrechenbaren Tarife, wobei **Standard** der vorgegebene Tarif ist.
+Mit **Free** wird ein eingeschränkter Suchdienst für kleinere Projekte erstellt, einschließlich Schnellstartanleitungen und Tutorials. Intern werden Replikate und Partitionen von mehreren Abonnenten gemeinsam genutzt. Es ist nicht möglich, einen kostenlosen Dienst zu skalieren oder signifikante Workloads auszuführen.
+
+**Basic** und **Standard** sind die am häufigsten verwendeten abrechenbaren Tarife, wobei **Standard** der vorgegebene Tarif ist. Wenn Sie dedizierte Ressourcen nutzen, können Sie größere Projekte bereitstellen, die Leistung optimieren und die Kapazität festlegen.
 
 ![Tarife der kognitiven Azure-Suche](media/search-sku-tier/tiers.png "Tarife der kognitiven Azure-Suche")
 
@@ -55,10 +57,10 @@ Weitere Informationen zu den verschiedenen Tarifen finden Sie auf der [Seite mit
 
 Für eine auf der kognitiven Azure-Suche basierende Lösung können folgende Kosten anfallen:
 
-+ Basiskosten des Diensts bei minimaler Konfiguration (Erstellen eines Diensts)
++ Fixkosten für den Dienst selbst, der rund um die Uhr mit einer minimalen Konfiguration ausgeführt wird (eine Partition und ein Replikat)
 + Inkrementelle Kosten beim zentralen Hochskalieren (Hinzufügen von Replikaten oder Partitionen)
 + Bandbreitengebühren (ausgehende Datenübertragung) 
-+ Kognitive Suche (Anfügen von Cognitive Services für KI-Anreicherung, Azure Storage für Wissensspeicher)
++ Kognitive Suche (Anfügen von Cognitive Services für die KI-Anreicherung oder Verwendung von Azure Storage für den Wissensspeicher)
 
 ### <a name="service-costs"></a>Dienstkosten
 
@@ -106,13 +108,13 @@ Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halte
 
 Die folgenden Vorschläge können Ihnen dabei helfen, die Kosten minimal zu halten:
 
-- Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
++ Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
 
-- Führen Sie alle Dienste in einer Ressourcengruppe zusammen, z.B. kognitive Azure-Suche, Cognitive Services und alle anderen in Ihrer Lösung verwendeten Azure-Dienste. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, und verwenden Sie die Befehle für **Kostenverwaltung**, um Einblicke in die tatsächlichen und projizierten Ausgaben zu erhalten.
++ Führen Sie alle Dienste in einer Ressourcengruppe zusammen, z.B. kognitive Azure-Suche, Cognitive Services und alle anderen in Ihrer Lösung verwendeten Azure-Dienste. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, und verwenden Sie die Befehle für **Kostenverwaltung**, um Einblicke in die tatsächlichen und projizierten Ausgaben zu erhalten.
 
-- Sie können Azure App Service für Ihre Front-End-Anwendung verwenden, sodass Anforderungen und Antworten innerhalb der Grenzen des Rechenzentrums bleiben.
++ Sie können Azure App Service für Ihre Front-End-Anwendung verwenden, sodass Anforderungen und Antworten innerhalb der Grenzen des Rechenzentrums bleiben.
 
-- Führen Sie die Hochskalierung für ressourcenintensive Vorgänge wie die Indizierung durch, und passen Sie die Skalierung anschließend für reguläre Abfrageworkloads wieder an. Beginnen Sie mit der Mindestkonfiguration für die kognitive Azure-Suche (eine SU bestehend aus einer Partition und einem Replikat), und überwachen Sie dann die Benutzeraktivität, um Verwendungsmuster zu identifizieren, die auf die Notwendigkeit einer höheren Kapazität hindeuten. Wenn ein vorhersagbares Muster vorliegt, können Sie möglicherweise die Skalierung mit der Aktivität synchronisieren (um dies zu automatisieren, müssen Sie Code schreiben).
++ Führen Sie die Hochskalierung für ressourcenintensive Vorgänge wie die Indizierung durch, und passen Sie die Skalierung anschließend für reguläre Abfrageworkloads wieder an. Beginnen Sie mit der Mindestkonfiguration für die kognitive Azure-Suche (eine SU bestehend aus einer Partition und einem Replikat), und überwachen Sie dann die Benutzeraktivität, um Verwendungsmuster zu identifizieren, die auf die Notwendigkeit einer höheren Kapazität hindeuten. Wenn ein vorhersagbares Muster vorliegt, können Sie möglicherweise die Skalierung mit der Aktivität synchronisieren (um dies zu automatisieren, müssen Sie Code schreiben).
 
 Integrierte Tools und Features im Zusammenhang mit Ausgaben finden Sie außerdem unter [Abrechnung und Kostenverwaltung](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
@@ -130,7 +132,6 @@ In der kognitiven Azure-Suche wird Kapazität in *Replikate* und *Partitionen* s
 
 > [!NOTE]
 > Alle Tarife vom Typ „Standard“ und „Speicheroptimiert“ unterstützen [flexible Partitions- und Replikatskombinationen](search-capacity-planning.md#chart), sodass Sie durch Ändern des Verhältnisses [Ihr System in Hinblick auf Geschwindigkeit oder Speicher optimieren](search-performance-optimization.md) können. Der Tarif „Basic“ bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. Die Tarife vom Typ „Free“ bieten keine dedizierten Ressourcen: Computeressourcen werden von mehreren Abonnenten gemeinsam genutzt.
-
 
 ### <a name="evaluating-capacity"></a>Abschätzen der Kapazität
 
@@ -152,7 +153,7 @@ Eine Möglichkeit zum Abschätzen der Kapazität besteht darin, mit dem Tarif �
 
 + [Erstellen Sie einen kostenlosen Dienst](search-create-service-portal.md).
 + Bereiten Sie ein kleines repräsentatives Dataset vor.
-+ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch Hinzufügen von Vorschlagsfunktionen (typeahead) werden beispielsweise die Speicheranforderungen erhöht. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
++ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch das Hinzufügen von Vorschlagsfunktionen (Search-as-you-Type-Abfragen) erhöhen sich beispielsweise die Speicheranforderungen. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
 
 Mit einer groben Schätzung können Sie die betreffende Größe für zwei Indizes verdoppeln (Entwicklung und Produktion) und dann Ihren Tarif entsprechend auswählen.
 

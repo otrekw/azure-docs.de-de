@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942946"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668131"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -35,14 +35,14 @@ Antworten auf häufig gestellte Fragen zur Verwendung eines benutzerdefinierten 
 Weitere Informationen zum Kauf und Einrichten einer benutzerdefinierten Domäne für Ihre App Service-Web-App finden Sie unter [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in App Service](manage-custom-dns-buy-domain.md).
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes TLS-/SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
 
-Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten SSL-Zertifikats finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
+Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten TLS-/SSL-Zertifikats finden Sie unter [Hinzufügen eines TLS-/SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Wie kaufe und konfiguriere ich ein neues SSL-Zertifikat für meine Web-App in Azure?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Wie kaufe und konfiguriere ich ein neues TLS-/SSL-Zertifikat für meine Web-App in Azure?
 
-Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
+Informationen zum Erwerben und Einrichten eines TLS-/SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines TLS-/SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Wie verschiebe ich Application Insights-Ressourcen?
@@ -84,7 +84,7 @@ Um mehr darüber zu erfahren, wie Sie die ausgehende IP-Adresse abrufen, wenn Ih
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Wie kann eine reservierte oder dedizierte eingehende IP-Adresse für meine Web-App abgerufen werden?
 
-Zum Einrichten einer dedizierten oder reservierten IP-Adresse für an die Website Ihrer Azure-App eingehende Aufrufe müssen Sie ein IP-basiertes SSL-Zertifikat installieren und konfigurieren.
+Zum Einrichten einer dedizierten oder reservierten IP-Adresse für an die Website Ihrer Azure-App eingehende Aufrufe müssen Sie ein IP-basiertes TLS-/SSL-Zertifikat installieren und konfigurieren.
 
 Beachten Sie, dass zum Verwenden einer dedizierten oder reservierten IP-Adresse für eingehende Aufrufe Ihr App Service-Plan mindestens den Tarif „Basic“ aufweisen muss.
 

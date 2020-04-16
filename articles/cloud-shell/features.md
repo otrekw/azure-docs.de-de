@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366239"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521010"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Dateien außerhalb von `$HOME` und der Zustand des Computers werden nicht sitzun
 
 ### <a name="azure-drive-azure"></a>Azure-Laufwerk (Azure:)
 
-PowerShell in Cloud Shell startet auf dem Azure-Laufwerk (`Azure:`).
+PowerShell in Cloud Shell stellt das Azure-Laufwerk (`Azure:`) bereit. Mit `cd Azure:` können Sie zum Azure-Laufwerk wechseln und mit `cd  ~` zurück zum Basisverzeichnis.
 Das Azure-Laufwerk ermöglicht die einfache Ermittlung und Navigation von Azure-Ressourcen wie Computing, Netzwerk, Speicher usw., die der Navigation im Dateisystem ähnelt.
 Sie können weiterhin unabhängig vom Laufwerk, in dem Sie sich befinden, die vertrauten [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
 Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im Azure-Portal oder über Azure PowerShell-Cmdlets durchgeführt wurden, werden auf dem Azure-Laufwerk reflektiert.  Sie können `dir -Force` ausführen, um Ihre Ressourcen zu aktualisieren.

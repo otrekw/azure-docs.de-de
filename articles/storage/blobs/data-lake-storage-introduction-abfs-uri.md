@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855559"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437127"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Verwenden des Azure Data Lake Storage Gen2-URI
 
@@ -27,7 +27,7 @@ Wenn das zu adressierende Data Lake Storage Gen2-fähige Konto während der Kont
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Sie haben die Möglichkeit, eine Verbindung mit oder ohne SSL (Secure Socket Layer) herzustellen. Verwenden Sie `abfss` zum Herstellen einer SSL-Verbindung.
+1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Sie können eine Verbindung mit oder ohne TLS (Transport Layer Security, zuvor als Secure Sockets Layer, SSL, bezeichnet) herstellen. Verwenden Sie `abfss`, um eine TLS-Verbindung herzustellen.
 
 2. **Dateisystem**: Der übergeordnete Speicherort, in dem sich die Dateien und Ordner befinden. Dies entspricht Containern in Azure Storage-Blobs.
 

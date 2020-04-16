@@ -3,16 +3,16 @@ title: Grenzwerte und Kontingente in IoT Plug & Play (Vorschau) | Microsoft-Do
 description: Informieren Sie sich über die Grenzwerte, Kontingente und Drosselungen, die in IoT Plug & Play (Vorschau) gelten.
 author: miagdp
 ms.author: miag
-ms.date: 12/26/2019
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531376"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518172"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug & Play (Vorschau): Grenzwerte, Kontingente und Drosselungen
 
@@ -22,12 +22,12 @@ In diesem Artikel werden die IoT Plug & Play-spezifischen Grenzwerte, Kontinge
 
 In der öffentlichen Vorschau gelten die folgenden Grenzwerte und Kontingente für einen IoT-Hub:
 
-| Grenzwerte, Einschränkungen und Drosselungen | value | Notizen |
+| Grenzwerte, Einschränkungen und Drosselungen | Wert | Notizen |
 |-----|-----|-----|
 | Anzahl von Gerätefunktionsmodellen (Device Capability Models, DCMs) oder Schnittstellen, die pro Hub registriert werden können | 1500 ||
 | Maximale Anzahl von Schnittstellen, die pro Gerät registriert werden können | 40 ||
 | Maximale Anzahl von DCMs, die pro Gerät registriert werden können | 1 ||
-| Maximale Größe der Schnittstelle bzw. DCM-Datei | 512 Zeichen ||
+| Maximale Größe der Schnittstelle bzw. DCM-Datei | 512 KB ||
 | Maximale Größe eines Schnittstellennamens | 256 Zeichen ||
 | Maximale Größe eines Eigenschaftsnamens  | 64 Byte, 7 Ebenen Tiefe (die erste Ebene ist für `$iotin` reserviert) | Zulässige Zeichen: a-z, A-Z, 0-9 (nicht als erstes Zeichen) und Unterstrich |
 | Maximale Größe eines Eigenschaftswerts | 512 Bytes ||
@@ -39,7 +39,7 @@ In der öffentlichen Vorschau gelten die folgenden Grenzwerte und Kontingente f�
 
 In der öffentlichen Vorschau gelten die folgenden Grenzwerte und Kontingente für ein Modellrepository:
 
-| Grenzwerte, Einschränkungen und Drosselungen| value |
+| Grenzwerte, Einschränkungen und Drosselungen | Wert |
 |-----|-----|
 | Anzahl von Modellrepositorys eines Unternehmens pro Azure Active Directory-Mandant | 1 |
 | Anzahl von Autorisierungsschlüsseln pro Modellrepository | 10  |

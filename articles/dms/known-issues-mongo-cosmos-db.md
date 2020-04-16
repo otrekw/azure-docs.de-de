@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256032"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878050"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Bekannte Probleme/Migrationseinschränkungen beim Migrieren von MongoDB zur Azure Cosmos DB-API für MongoDB
 
@@ -45,7 +45,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
-| Sie versuchen, eine nicht unterstützte Version von MongoDB zu Azure Cosmos DB zu migrieren. | Neue veröffentlichte Versionen von MongoDB werden getestet, um die Kompatibilität mit Azure Database Migration Service sicherzustellen, und der Dienst wird regelmäßig aktualisiert, um die neueste(n) Version(en) zu akzeptieren. Wenn die Migration sofort durchgeführt werden muss, können Sie zur Problemumgehung die Datenbanken/Sammlungen in Azure Storage exportieren und die Quelle auf den resultierenden Dump verweisen. Erstellen Sie die SAS für den Blobcontainer in Storage-Explorer, und verwenden Sie dann die URL mit den SAS-Informationen des Containers als Quelldetail-Verbindungszeichenfolge.<br><br> |
+| Sie versuchen, eine nicht unterstützte Version von MongoDB zu Azure Cosmos DB zu migrieren. | Neue veröffentlichte Versionen von MongoDB werden getestet, um die Kompatibilität mit Azure Database Migration Service sicherzustellen, und der Dienst wird regelmäßig aktualisiert, um die neueste(n) Version(en) zu akzeptieren. Wenn die Migration sofort durchgeführt werden muss, können Sie zur Problemumgehung die Datenbanken/Sammlungen in Azure Storage exportieren und die Quelle auf das resultierende Speicherabbild verweisen. Erstellen Sie die SAS für den Blobcontainer in Storage-Explorer, und verwenden Sie dann die URL mit den SAS-Informationen des Containers als Quelldetail-Verbindungszeichenfolge.<br><br> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

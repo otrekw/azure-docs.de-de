@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1245ed89376de4ce777137d8427e03487d0432ab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280166"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586107"
 ---
 # <a name="cloud-partner-portal-migration-to-partner-center"></a>Migration vom Cloud-Partnerportal zu Partner Center
 
@@ -20,14 +20,13 @@ Um die Konto-und Angebotsverwaltung zu optimieren, migriert Microsoft Angebote v
 
 | **Angebotstyp** | **Vom Cloud-Partnerportal zu Partner Center migrierte Angebotsverwaltung** | **Möglichkeit zum Aktualisieren von Co-Selling-Begleitmaterialien in Partner Center** |
 |    -----------------------    |    -----------------------------  |  -----------------------------  |
-| Software-as-a-Service (SaaS) |     Jetzt verfügbar       |   Allgemeine Verfügbarkeit voraussichtlich im Februar 2020      |
+| Software-as-a-Service (SaaS) |     Jetzt verfügbar       |   Allgemeine Verfügbarkeit April 2020      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Jetzt verfügbar        |   Jetzt verfügbar      |
 | Dynamics 365 for Operations     |     Jetzt verfügbar       |   Jetzt verfügbar     |
-| Dynamics 365 Business Central      |     Jetzt verfügbar        |   Allgemeine Verfügbarkeit voraussichtlich im Februar 2020     |
-| Azure-Anwendung     |     Allgemeine Verfügbarkeit: Dezember 2019       |   Allgemeine Verfügbarkeit voraussichtlich im Februar 2020     |
-| Virtueller Azure-Computer      |     Wird noch bekanntgegeben       |   Wird noch bekanntgegeben    |
-| Azure-Container     |     Wird noch bekanntgegeben       |   Wird noch bekanntgegeben     |
-| Beratungsdienst      |     Wird noch bekanntgegeben       |   Wird noch bekanntgegeben     |
-| IoT Edge-Modul      |     Wird noch bekanntgegeben       |   Wird noch bekanntgegeben     |
-| Power BI-Dienst-App     |     Wird noch bekanntgegeben       |   Wird noch bekanntgegeben     |
-|  |  |
+| Dynamics 365 Business Central      |     Jetzt verfügbar        |   Allgemeine Verfügbarkeit April 2020     |
+| Azure-Anwendung     |     Jetzt verfügbar       |   Allgemeine Verfügbarkeit April 2020     |
+| Virtueller Azure-Computer      |     Allgemeine Verfügbarkeit April–Mai 2020       |   Wird noch bekannt gegeben    |
+| Azure-Container     |     Allgemeine Verfügbarkeit April–Mai 2020       |   Wird noch bekannt gegeben     |
+| Beratungsdienst      |     Allgemeine Verfügbarkeit April–Mai 2020       |   Wird noch bekannt gegeben     |
+| IoT Edge-Modul      |     Allgemeine Verfügbarkeit April–Mai 2020       |   Wird noch bekannt gegeben     |
+| Power BI-Dienst-App     |     Allgemeine Verfügbarkeit April–Mai 2020       |   Wird noch bekannt gegeben     |

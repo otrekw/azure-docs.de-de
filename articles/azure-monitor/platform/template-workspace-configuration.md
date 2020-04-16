@@ -1,17 +1,17 @@
 ---
-title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
+title: Azure Resource Manager-Vorlage für den Log Analytics-Arbeitsbereich
 description: Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658896"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477983"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics-Arbeitsbereichen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -48,6 +48,9 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 
 Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein Arbeitsbereich erstellt. Die JSON-Vorlage ist so konfiguriert, dass nur der Name und der Speicherort des neuen Arbeitsbereichs erforderlich sind. Es werden Werte verwendet, die für andere Arbeitsbereichsparameter wie [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode), Tarif, Aufbewahrung und Kapazitätsreservierungshöhe angegeben sind.
 
+> [!WARNING]
+> Die folgende Vorlage erstellt einen Log Analytics-Arbeitsbereich und konfiguriert die Datensammlung. Dies kann eine Änderung Ihrer Abrechnungseinstellungen verursachen. Lesen Sie [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](manage-cost-storage.md), um die Abrechnung für in einem Log Analytics-Arbeitsbereich gesammelte Daten zu verstehen, bevor Sie dies in Ihrer Azure-Umgebung anwenden.
+
 Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsreservierung für das Erfassen von Daten, indem Sie die SKU `CapacityReservation` und einen Wert in GB für die Eigenschaft `capacityReservationLevel` angeben. In der folgenden Liste sind die unterstützten Werte und das Verhalten bei der Konfiguration erläutert.
 
 - Nachdem Sie das Reservierungslimit festgelegt haben, können Sie innerhalb von 31 Tagen nicht zu einer anderen SKU wechseln.
@@ -75,7 +78,7 @@ Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsres
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsres
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsres
     }
     ```
 
-> [Information] für Einstellungen zur Kapazitätsreservierung verwenden Sie die folgenden Eigenschaften unter "sku":
+   >[!NOTE]
+   >Verwenden Sie für Einstellungen zur Kapazitätsreservierung die folgenden Eigenschaften unter "sku":
+   >* "name": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "name": "CapacityReservation",
+2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Erstellen Sie ggf. eine [Resource Manager-Parameterdatei](../../azure-resource-manager/templates/parameter-files.md), anstatt Parameter als Inlinewerte zu übergeben. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
 
->   "capacityReservationLevel": 100
-
-
-2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
 3. Speichern Sie diese Datei unter dem Namen **deploylaworkspacetemplate.json** in einem lokalen Ordner.
+
 4. Nun können Sie die Vorlage bereitstellen. Verwenden Sie entweder PowerShell oder die Befehlszeile, um den Arbeitsbereich zu erstellen, und geben Sie dabei den Namen und Speicherort des Arbeitsbereichs als Teil des Befehls an. Der Arbeitsbereichsname muss in allen Azure-Abonnements global eindeutig sein.
 
    * Führen Sie bei Verwendung von PowerShell die folgenden Befehle in dem Ordner mit der Vorlage aus:
@@ -176,7 +179,7 @@ Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird 
 Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
 1. Hinzufügen von Lösungen zum Arbeitsbereich
-2. Erstellen gespeicherter Suchvorgänge
+2. Erstellen gespeicherter Suchvorgänge. Um sicherzustellen, dass gespeicherte Suchvorgänge nicht versehentlich von Bereitstellungen überschrieben werden, sollte in der Ressource „savedSearches“ eine eTag-Eigenschaft zum Überschreiben und Beibehalten der Idempotenz gespeicherter Suchen hinzugefügt werden.
 3. Erstellen einer Computergruppe
 4. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
 5. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
@@ -197,7 +200,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -318,11 +321,11 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "Category": "VMSS",
-            "ETag": "*",
-            "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
-            "Version": 1
+            "category": "VMSS",
+            "eTag": "*",
+            "displayName": "VMSS Instance Count",
+            "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
+            "version": 1
           }
         },
         {
@@ -605,7 +608,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

@@ -1,6 +1,6 @@
 ---
 title: Erstellen, Aktualisieren von Statistiken
-description: Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
+description: Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Synapse SQL-Pools.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a6bdf9bcf2dfbb28244162bc7d88ced9194d0ac6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351185"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985863"
 ---
-# <a name="table-statistics-in-azure-sql-data-warehouse"></a>Tabellenstatistik in Azure SQL Data Warehouse
+# <a name="table-statistics-in-synapse-sql-pool"></a>Tabellenstatistiken in Synapse SQL-Pools
 
-Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
+In diesem Artikel finden Sie Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in SQL-Pools.
 
 ## <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen Azure SQL Data Warehouse zu Ihren Daten besitzt, desto schneller können Abfragen dafür durchgeführt werden. Nach dem Laden der Daten in SQL Data Warehouse ist das Erstellen von Statistiken zu Ihren Daten eine der wichtigsten Maßnahmen, die Sie zur Optimierung Ihrer Abfragen treffen können. Der Abfrageoptimierer von SQL Data Warehouse eine kostenbasierte Optimierung. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
+Je mehr Informationen zu Ihren Daten der SQL-Pool besitzt, desto schneller können Abfragen dafür durchgeführt werden. Nach dem Laden der Daten in den SQL-Pool ist das Erstellen von Statistiken zu Ihren Daten eine der wichtigsten Maßnahmen, die Sie zur Optimierung Ihrer Abfragen treffen können.
+
+Der Abfrageoptimierer im SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird.
+
+Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
 
 ## <a name="automatic-creation-of-statistic"></a>Automatische Erstellung von Statistiken
 
-Wenn die AUTO_CREATE_STATISTICS-Datenbankoption aktiviert ist, werden in SQL Data Warehouse eingehende Benutzerabfragen für fehlende Statistiken analysiert. Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern. Die automatische Erstellung von Statistiken ist zurzeit standardmäßig aktiviert.
+Wenn die AUTO_CREATE_STATISTICS-Datenbankoption aktiviert ist, werden im SQL-Pool eingehende Benutzerabfragen auf fehlende Statistiken analysiert.
 
-Sie können überprüfen, ob AUTO_CREATE_STATISTICS bei Ihrem Data Warehouse konfiguriert ist, indem Sie den folgenden Befehl ausführen:
+Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
+
+> [!NOTE]
+> Die automatische Erstellung von Statistiken ist zurzeit standardmäßig aktiviert.
+
+Sie können überprüfen, ob AUTO_CREATE_STATISTICS bei Ihrem SQL-Pool konfiguriert ist, indem Sie den folgenden Befehl ausführen:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Wenn AUTO_CREATE_STATISTICS nicht für Ihr Data Warehouse konfiguriert ist, sollten Sie diese Eigenschaft durch Ausführen des folgenden Befehls aktivieren:
+Wenn AUTO_CREATE_STATISTICS nicht für Ihren SQL-Pool konfiguriert ist, sollten Sie diese Eigenschaft durch Ausführen des folgenden Befehls aktivieren:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -56,22 +65,28 @@ Durch diese Anweisungen wird die automatische Erstellung von Statistiken ausgel�
 > [!NOTE]
 > Die automatische Erstellung von Statistiken ist nicht bei temporären oder externen Tabellen möglich.
 
-Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherweise eine geringfügige Verlangsamung bei der Abfrageleistung auftreten kann, sofern in Ihren Spalten keine Statistiken enthalten sind. Die Zeit zum Erstellen von Statistiken für eine einzelne Spalte hängt von der Größe der Tabelle ab. Um messbare Leistungseinbußen zu verhindern, insbesondere bei der Leistung in Benchmarks, sollten Sie zuerst durch Ausführung der Benchmarkworkload sicherstellen, dass Statistiken erstellt wurden, bevor Sie Profile für das System erstellen.
+Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherweise eine geringfügige Verlangsamung bei der Abfrageleistung auftreten kann, sofern in Ihren Spalten keine Statistiken enthalten sind. Die Zeit zum Erstellen von Statistiken für eine einzelne Spalte hängt von der Größe der Tabelle ab.
+
+Um messbare Leistungseinbußen zu verhindern, sollten Sie zuerst durch Ausführen der Benchmarkworkload sicherstellen, dass Statistiken erstellt wurden, bevor Sie Profile für das System erstellen.
 
 > [!NOTE]
-> Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) in einem anderen Benutzerkontext protokolliert.
+> Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) in einem anderen Benutzerkontext protokolliert.
 
-Bei der automatischen Erstellung von Statistiken weisen diese das folgende Muster auf: _WA_Sys_<8-stellige Spalten-ID im Hexadezimalformat>_<8-stellige Tabellen-ID im Hexadezimalformat>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-„Table_name“ ist der Name der Tabelle, die die anzuzeigende Statistik enthält. Hierbei darf es sich nicht um eine externe Tabelle handeln. „Target“ ist der Name des Zielindex, der Statistik oder der Spalte, für den bzw. für die Statistikinformationen angezeigt werden sollen.
+„Table_name“ ist der Name der Tabelle, die die anzuzeigende Statistik enthält. Diese Tabelle darf keine externe Tabelle sein. „Target“ ist der Name des Zielindex, der Statistik oder der Spalte, für den bzw. für die Statistikinformationen angezeigt werden sollen.
 
-## <a name="updating-statistics"></a>Aktualisieren von Statistiken
+## <a name="update-statistics"></a>Statistikaktualisierung
 
-Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hinzufügens neuer Daten täglich zu aktualisieren. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Hierdurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen Statistiken zu einer Länder-/Regionenspalte in einer Kundentabelle unter Umständen nie aktualisiert werden, da sich die Verteilung der Werte in der Regel nicht ändert. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse allerdings nur ein Land/eine Region enthält und Sie Daten eines neuen Lands/einer neuen Region hinzufügen, führt dies dazu, dass Daten aus mehreren Ländern/Regionen gespeichert werden. Sie müssen dann die Statistiken in der Länder-/Regionenspalte aktualisieren.
+Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hinzufügens neuer Daten täglich zu aktualisieren. Bei jedem Laden von neuen Zeilen in den SQL-Pool werden neue Daten für Lade- oder Transaktionsvorgänge hinzugefügt. Durch diese Ergänzungen wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell.
+
+Statistiken zu einer Länder-/Regionenspalte in einer Kundentabelle müssen unter Umständen nie aktualisiert werden, da sich die Verteilung der Werte in der Regel nicht ändert. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung.
+
+Wenn Ihr SQL-Pool allerdings nur ein Land/eine Region enthält und Sie Daten eines neuen Lands/einer neuen Region hinzufügen, führt dies dazu, dass Daten aus mehreren Ländern/Regionen gespeichert werden. Sie müssen dann die Statistiken in der Länder-/Regionenspalte aktualisieren.
 
 Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
@@ -82,9 +97,14 @@ Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
+Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben.
 
-Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen. Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
+> [!TIP]
+> Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
+
+Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen.
+
+Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
 
 > [!NOTE]
 > Immer wenn sich die Verteilung der Werte einer Spalte wesentlich ändert, sollten Sie die Statistiken – unabhängig vom Zeitpunkt des letzten Updates – aktualisieren.
@@ -116,23 +136,29 @@ WHERE
     st.[user_created] = 1;
 ```
 
-Beispielsweise benötigen **Datumsspalten** in einem Data Warehouse normalerweise häufige Statistikaktualisierungen. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Hierdurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ aktualisieren.
+Beispielsweise sind für **Datumsspalten** in einem SQL-Pool normalerweise häufige Statistikaktualisierungen erforderlich. Bei jedem Laden von neuen Zeilen in den SQL-Pool werden neue Daten für Lade- oder Transaktionsvorgänge hinzugefügt. Durch diese Ergänzungen wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell.
 
-Weitere Informationen finden Sie im allgemeinen Leitfaden zu [Statistik](/sql/relational-databases/statistics/statistics).
+Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung.
+
+Wenn Ihr SQL-Pool nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ aktualisieren.
+
+Weitere Informationen finden Sie im allgemeinen Leitfaden zu [Statistik](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="implementing-statistics-management"></a>Implementieren der Statistikverwaltung
 
-Häufig ist es ratsam, den Datenladeprozess zu erweitern, um sicherzustellen, dass die Statistiken am Ende des Ladevorgangs aktualisiert werden. Das Laden von Daten ist der Zeitpunkt, zu dem Tabellen am häufigsten ihre Größe oder die Verteilung der Werte ändern. Daher ist dies ein logischer Ansatzpunkt zum Implementieren einiger Verwaltungsprozesse.
+Häufig ist es ratsam, den Datenladeprozess zu erweitern, um sicherzustellen, dass die Statistiken am Ende des Ladevorgangs aktualisiert werden. Dadurch vermeiden/minimieren Sie Sperren oder Ressourcenkonflikte zwischen gleichzeitigen Abfragen.  
 
-Hier sind einige Richtlinien zur Aktualisierung von Statistiken während des Ladeprozesses angegeben:
+Das Laden von Daten ist der Zeitpunkt, zu dem Tabellen am häufigsten ihre Größe oder die Verteilung der Werte ändern. Das Laden von Daten ist ein logischer Ansatzpunkt zum Implementieren einiger Verwaltungsprozesse.
 
-* Stellen Sie sicher, dass jede geladene Tabelle mindestens über ein aktualisiertes Statistikobjekt verfügt. Im Rahmen der Statistikaktualisierung werden dann die Informationen zur Tabellengröße (Zeilen- und Seitenanzahl) aktualisiert.
-* Konzentrieren Sie sich auf Spalten mit JOIN-, GROUP BY-, ORDER BY- und DISTINCT-Klauseln.
-* Erwägen Sie, Spalten vom Typ „aufsteigender Schlüssel“, z.B. Transaktionsdaten, häufiger zu aktualisieren, da diese Werte nicht in das Statistikhistogramm einbezogen werden.
-* Erwägen Sie, Spalten mit statischer Verteilung weniger häufig zu aktualisieren.
-* Bedenken Sie, dass jedes statistische Objekt der Reihe nach aktualisiert wird. Es ist nicht ideal, einfach `UPDATE STATISTICS <TABLE_NAME>` zu implementieren. Dies gilt besonders für breite Tabellen mit vielen Statistikobjekten.
+Im Folgenden finden Sie einige Richtlinien zur Aktualisierung von Statistiken:
 
-Weitere Informationen finden Sie unter [Kardinalitätsschätzung (SQL Server)](/sql/relational-databases/performance/cardinality-estimation-sql-server).
+- Stellen Sie sicher, dass jede geladene Tabelle mindestens über ein aktualisiertes Statistikobjekt verfügt. Im Rahmen der Statistikaktualisierung werden dann die Informationen zur Tabellengröße (Zeilen- und Seitenanzahl) aktualisiert.
+- Konzentrieren Sie sich auf Spalten mit JOIN-, GROUP BY-, ORDER BY- und DISTINCT-Klauseln.
+- Erwägen Sie, Spalten vom Typ „aufsteigender Schlüssel“, z.B. Transaktionsdaten, häufiger zu aktualisieren, da diese Werte nicht in das Statistikhistogramm einbezogen werden.
+- Erwägen Sie, Spalten mit statischer Verteilung weniger häufig zu aktualisieren.
+- Bedenken Sie, dass jedes statistische Objekt der Reihe nach aktualisiert wird. Es ist nicht ideal, einfach `UPDATE STATISTICS <TABLE_NAME>` zu implementieren. Dies gilt besonders für breite Tabellen mit vielen Statistikobjekten.
+
+Weitere Informationen finden Sie unter [Kardinalitätsschätzung (SQL Server)](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="examples-create-statistics"></a>Beispiele: Erstellen von Statistiken
 
@@ -140,9 +166,9 @@ In diesen Beispielen wird veranschaulicht, wie Sie verschiedene Optionen zum Ers
 
 ### <a name="create-single-column-statistics-with-default-options"></a>Erstellen von Einspaltenstatistiken mit Standardoptionen
 
-Zum Erstellen von Statistiken für eine Spalte geben Sie einfach einen Namen für das Statistikobjekt und den Namen der Spalte an.
+Zum Erstellen von Statistiken für eine Spalte geben Sie einen Namen für das Statistikobjekt und den Namen der Spalte an.
 
-Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL Data Warehouse beim Erstellen von Statistiken eine **Stichprobenrate von 20%** der Tabelle verwendet.
+Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL-Pools beim Erstellen von Statistiken eine Stichprobenrate von **20 %** der Tabelle verwendet.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -201,11 +227,11 @@ Sie können die Optionen auch kombinieren. Im folgenden Beispiel wird ein Objekt
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql).
+Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="create-multi-column-statistics"></a>Erstellen von Mehrspaltenstatistiken
 
-Verwenden Sie zum Erstellen eines Mehrspaltenstatistik-Objekts einfach die vorherigen Beispiele, aber geben Sie mehr Spalten an.
+Verwenden Sie zum Erstellen eines mehrspaltigen Statistikobjekts die vorherigen Beispiele, aber geben Sie mehr Spalten an.
 
 > [!NOTE]
 > Das Histogramm, das zum Schätzen der Zeilenanzahl im Abfrageergebnis verwendet wird, ist nur für die erste Spalte verfügbar, die in der Definition des Statistikobjekts aufgelistet ist.
@@ -242,9 +268,9 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Verwenden einer gespeicherten Prozedur zum Erstellen von Statistiken für alle Spalten einer Datenbank
 
-SQL Data Warehouse verfügt nicht über eine im System gespeicherte Prozedur, die „sp_create_stats“ in SQL Server entspricht. Mit dieser gespeicherten Prozedur wird ein Einzelspaltenstatistik-Objekt für jede Spalte der Datenbank erstellt, die nicht bereits über eine Statistik verfügt.
+Der SQL-Pool verfügt nicht über eine gespeicherte Systemprozedur, die „sp_create_stats“ in SQL Server entspricht. Mit dieser gespeicherten Prozedur wird ein Einzelspaltenstatistik-Objekt für jede Spalte der Datenbank erstellt, die nicht bereits über eine Statistik verfügt.
 
-Das folgende Beispiel ist eine nützliche Einstiegshilfe für den Datenbankentwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen:
+Das folgende Beispiel ist eine nützliche Einstiegshilfe für den Datenbankentwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -338,21 +364,19 @@ Führen Sie die gespeicherte Prozedur aus, um damit Statistiken für alle Spalte
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
 
-Rufen Sie diese Prozedur auf, um damit Statistiken für alle Spalten in der Tabelle mithilfe der Option „Fullscan“ zu erstellen:
+Rufen Sie diese Prozedur auf, um damit Statistiken für alle Spalten in der Tabelle mithilfe eines vollständigen Scans zu erstellen.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
 
-Geben Sie „3“ und den Beispielprozentsatz ein, um erfasste Statistiken für alle Spalten in der Tabelle zu erstellen. Diese Prozedur verwendet eine Abtastrate von 20 Prozent.
+Geben Sie „3“ und den Beispielprozentsatz ein, um erfasste Statistiken für alle Spalten in der Tabelle zu erstellen. Diese Prozedur verwendet eine Stichprobenrate von 20 %.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
 
-Erstellen von erfassten Statistiken für alle Spalten
-
-## <a name="examples-update-statistics"></a>Beispiele: Aktualisieren von Statistiken
+## <a name="examples-update-statistics"></a>Beispiele: Statistikaktualisierung
 
 Sie können wie folgt vorgehen, um Statistiken zu aktualisieren:
 
@@ -392,11 +416,11 @@ UPDATE STATISTICS dbo.table1;
 Die UPDATE STATISTICS-Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit *alle* Statistiken der Tabelle aktualisiert werden, sodass unter Umständen mehr Arbeit als erforderlich erledigt wird. Wenn die Leistung kein Problem darstellt, ist dies die einfachste und umfassendste Möglichkeit sicherzustellen, dass die Statistiken aktuell sind.
 
 > [!NOTE]
-> Beim Aktualisieren aller Statistiken einer Tabelle führt SQL Data Warehouse einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
+> Beim Aktualisieren aller Statistiken einer Tabelle führt der SQL-Pool einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
 
 Informationen zur Implementierung einer `UPDATE STATISTICS`-Prozedur finden Sie unter [Temporäre Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-temporary.md). Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Ergebnis ist identisch.
 
-Die vollständige Syntax finden Sie unter [UPDATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/update-statistics-transact-sql).
+Die vollständige Syntax finden Sie unter [UPDATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="statistics-metadata"></a>Statistikmetadaten
 
@@ -408,13 +432,13 @@ Diese Systemsichten enthalten Informationen zu Statistiken:
 
 | Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Eine Zeile für jede Spalte. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eine Zeile für jedes Objekt in der Datenbank. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eine Zeile für jedes Schema in der Datenbank. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Eine Zeile für jedes Statistikobjekt. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Eine Zeile für jeden Datentyp. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jede Spalte. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jedes Objekt in der Datenbank. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jedes Schema in der Datenbank. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jedes Statistikobjekt. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eine Zeile für jeden Datentyp. |
 
 ### <a name="system-functions-for-statistics"></a>Systemfunktionen für Statistiken
 
@@ -422,8 +446,8 @@ Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
 
 | Systemfunktion | BESCHREIBUNG |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinieren von Statistikspalten und -funktionen zu einer Sicht
 
@@ -473,7 +497,10 @@ Mit DBCC SHOW_STATISTICS() werden die Daten angezeigt, die in einem Statistikobj
 - Dichtevektor
 - Histogramm
 
-Dies sind die Headermetadaten zur Statistik. Im Histogramm wird die Verteilung der Werte in der ersten Schlüsselspalte des Statistikobjekts angezeigt. Der Dichtevektor misst die spaltenübergreifende Korrelation. SQL Data Warehouse berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
+Dies sind die Headermetadaten zur Statistik. Im Histogramm wird die Verteilung der Werte in der ersten Schlüsselspalte des Statistikobjekts angezeigt. Der Dichtevektor misst die spaltenübergreifende Korrelation.
+
+> [!NOTE]
+> Der SQL-Pool berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
 
 ### <a name="show-header-density-and-histogram"></a>Anzeigen von Header, Dichte und Histogramm
 
@@ -505,7 +532,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS()-Unterschiede
 
-DBCC SHOW_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL Data Warehouse implementiert:
+DBCC SHOW_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL-Pools implementiert:
 
 - Nicht dokumentierte Funktionen werden nicht unterstützt.
 - Verwendung von Stats_stream nicht möglich.

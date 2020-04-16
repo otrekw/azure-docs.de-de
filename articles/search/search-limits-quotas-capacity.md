@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236854"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549056"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -30,7 +30,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 > [!NOTE]
 > Ab dem 1. Juli stehen alle Tarife allgemein zur Verfügung, einschließlich des datenspeicheroptimierten Tarifs. Weitere Einzelheiten zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/).
 
-  S3 High Density (S3 HD) ist für bestimmte Workloads konzipiert: [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (eine Million Dokumente pro Index, 3000 Indizes pro Dienst). Bei diesem Tarif ist das [Indexerfeature](search-indexer-overview.md) nicht verfügbar. Bei S3 HD muss der Push-Ansatz für die Datenerfassung verwendet werden, wobei Daten mithilfe von API-Aufrufen per Push von der Quelle an den Index übertragen werden. 
+  S3 High Density (S3 HD) ist für bestimmte Workloads konzipiert: [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (3.000 Indizes pro Dienst). Bei diesem Tarif ist das [Indexerfeature](search-indexer-overview.md) nicht verfügbar. Bei S3 HD muss der Push-Ansatz für die Datenerfassung verwendet werden, wobei Daten mithilfe von API-Aufrufen per Push von der Quelle an den Index übertragen werden. 
 
 > [!NOTE]
 > Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Das Wechseln von Tarifen, um die Kapazität zu erhöhen, umfasst die Bereitstellung eines neuen Diensts (es gibt kein direktes Upgrade). Weitere Informationen finden Sie unter [Auswählen einer SKU oder eines Tarifs](search-sku-tier.md). Weitere Informationen zum Anpassen der Kapazität in einem Dienst, den Sie bereits bereitgestellt haben, finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
@@ -61,38 +61,16 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 
 <sup>2</sup> Die Verwendung einer sehr großen Zahl von Elementen in komplexen Sammlungen pro Dokument führt derzeit zu einer hohen Speicherauslastung. Dies ist ein bekanntes Problem. Bis das Problem behoben wird, ist die Zahl 3.000 eine sichere Obergrenze für alle Dienstebenen. Dieser Grenzwert wird nur für Indizierungsvorgänge erzwungen, für die die früheste allgemein verfügbare API-Version mit Unterstützung von Feldern komplexen Typs (`2019-05-06`) verwendet wird (oder eine höhere Version). Damit es nicht zu Beeinträchtigungen für Clients kommt, für die ggf. ältere API-Vorschauversionen (mit Unterstützung von Feldern komplexen Typs) genutzt werden, wird dieser Grenzwert für Indizierungsvorgänge mit diesen API-Vorschauversionen nicht erzwungen. Beachten Sie, dass API-Vorschauversionen nicht für die Verwendung für Produktionsszenarien bestimmt sind und dass wir Kunden dringend empfehlen, die Umstellung auf die neueste allgemein verfügbare API-Version durchzuführen.
 
+> [!NOTE]
+> Die maximale Kapazität eines einzelnen Indexes ist in der Regel durch den verfügbaren Speicher begrenzt, es gibt jedoch eine Obergrenze für die Gesamtanzahl von Dokumenten, die in einem einzelnen Index gespeichert werden können. Diese Grenze beträgt ungefähr 24 Milliarden Dokumente pro Index für die Suchdienste Basic, S1, S2 und S3 und 2 Milliarden Dokumente pro Index für S3 HD-Suchdienste. Jedes Element einer komplexen Sammlung zählt für die Zwecke dieser Grenzwerte als separates Dokument.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
-Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch einige Regionen, in denen auch nach diesem Datum noch Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
+Seit Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Grenzwerte für die Anzahl von Dokumenten mehr. Ältere Dienste, die vor Oktober 2018 erstellt wurden, unterliegen möglicherweise weiterhin den Grenzwerten für die Dokumentanzahl.
 
 Um zu ermitteln, ob Ihr Dienst über Dokumentgrenzwerte verfügt, verwenden Sie die [GET Service Statistics-REST-API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Dokumentgrenzwerte werden in der Antwort angezeigt, wobei `null` für keine Grenzwerte steht.
-
-> [!NOTE]
-> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Dokument der kognitiven Azure-Suche wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Suchdokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
-
-### <a name="regions-previously-having-document-limits"></a>Regionen, für die noch Dokumentgrenzwerte galten
-
-Wenn im Portal ein Dokumentgrenzwert angegeben ist, wurde Ihr Dienst entweder vor Ende 2017 oder in einem Rechenzentrum erstellt, in dem Dienste der kognitiven Azure-Suche in Clustern mit geringerer Kapazität gehostet werden:
-
-+ Australien (Osten)
-+ Asien, Osten
-+ Indien, Mitte
-+ Japan, Westen
-+ USA, Westen-Mitte
-
-Für Dienste, die Dokumentgrenzwerten unterliegen, gelten die folgenden Obergrenzen:
-
-|  Kostenlos | Basic | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10.000 |1&nbsp;Millionen |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
-
-Sollten für den Dienst Einschränkungen gelten, die Sie behindern, erstellen Sie einen neuen Dienst, und veröffentlichen Sie anschließend sämtliche Inhalte erneut für diesen Dienst. Es gibt keinen Mechanismus, mit dem Sie Ihren Dienst nahtlos im Hintergrund auf neuer Hardware bereitstellen können.
-
-> [!Note] 
-> Bei S3 High Density-Diensten, die nach Ende 2017 erstellt wurden, wurde das Limit „200 Millionen Dokumente pro Partition“ entfernt, das Limit „1 Million Dokumente pro Index“ bleibt jedoch bestehen.
-
 
 ### <a name="document-size-limits-per-api-call"></a>Dokumentgrößenbeschränkungen pro API-Aufruf
 

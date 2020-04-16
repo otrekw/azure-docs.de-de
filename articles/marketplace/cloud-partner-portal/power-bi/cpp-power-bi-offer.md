@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: e0f8440686fc36d2cfcb493d97abaf44f81dd287
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc433fb2ee7888a20af16e01d76d4678cf12b01b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275916"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985574"
 ---
 # <a name="power-bi-app-offer"></a>Power BI-App-Angebot
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://aka.ms/AzurePBIAppCreationOverview).
 
 |              |                                |
 |--------------|--------------------------------|

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898514"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878968"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ausgehende Authentifizierung für Azure Scheduler
 
@@ -32,7 +32,7 @@ Der Scheduler unterstützt folgende Authentifizierungsmodelle:
 
 ## <a name="add-or-remove-authentication"></a>Hinzufügen oder Entfernen der Authentifizierung
 
-* Um einem Scheduler-Auftrag eine Authentifizierung hinzuzufügen, fügen Sie dem `authentication`-Element beim Erstellen oder Aktualisieren des Auftrags das untergeordnete JSON-Element (JavaScript Object Notation) `request` hinzu. 
+* Um einem Scheduler-Auftrag eine Authentifizierung hinzuzufügen, fügen Sie dem `request`-Element beim Erstellen oder Aktualisieren des Auftrags das untergeordnete JSON-Element (JavaScript Object Notation) `authentication` hinzu. 
 
   In den Antworten werden niemals Geheimnisse zurückgegeben, die dem Scheduler-Dienst über eine PUT-, PATCH- oder POST-Anforderung im Objekt `authentication` übergeben werden. 
   In Antworten werden geheime Informationen auf NULL festgelegt, oder sie verwenden unter Umständen ein öffentliches Token, das die authentifizierte Entität darstellt. 
@@ -47,8 +47,8 @@ Wenn Sie die Authentifizierung anhand des `ClientCertificate`-Modells hinzufüge
 
 | Element | Erforderlich | BESCHREIBUNG |
 |---------|----------|-------------|
-| **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung eines SSL-Clientzertifikats |
-| **type** | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate lautet der Wert `ClientCertificate`. |
+| **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung eines SSL-/TLS-Clientzertifikats |
+| **type** | Ja | Der Authentifizierungstyp. Für SSL-/TLS-Clientzertifikate lautet der Wert `ClientCertificate`. |
 | **pfx** | Ja | Der Base64-codierte Inhalt der PFX-Datei |
 | **password** | Ja | Der Parameter für den Zugriff auf die PFX-Datei |
 ||| 
@@ -59,8 +59,8 @@ Wenn eine Anforderung mit Authentifizierungsinformationen gesendet wird, enthäl
 
 | Element | BESCHREIBUNG | 
 |---------|-------------| 
-| **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung eines SSL-Clientzertifikats |
-| **type** | Der Authentifizierungstyp. Für SSL-Clientzertifikate lautet der Wert `ClientCertificate`. |
+| **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung eines SSL-/TLS-Clientzertifikats |
+| **type** | Der Authentifizierungstyp. Für SSL-/TLS-Clientzertifikate lautet der Wert `ClientCertificate`. |
 | **certificateThumbprint** |Der Fingerabdruck des Zertifikats |
 | **certificateSubjectName** |Der Distinguished Name des Antragstellers für das Zertifikat |
 | **certificateExpiration** | Das Ablaufdatum des Zertifikats |

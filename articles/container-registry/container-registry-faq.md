@@ -3,14 +3,14 @@ title: Häufig gestellte Fragen
 description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Registry-Dienst
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403223"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618791"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -105,6 +105,7 @@ Es dauert einige Zeit, bis Änderungen von Firewallregeln verbreitet werden. Nac
 - [Wird Inhaltsvertrauen von Azure Container Registry unterstützt?](#does-azure-container-registry-support-content-trust)
 - [Wie gewähre ich Zugriff auf Pull- oder Pushvorgänge für Images ohne Berechtigung zum Verwalten der Registrierungsressource?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Wie aktiviere ich die automatische Quarantäne von Images für eine Registrierung?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Wie aktiviere ich den anonymen Zugriff per Pull?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Wie greife ich auf die HTTP-API V2 für Docker-Registrierungen zu?
 
@@ -251,13 +252,18 @@ Bei ausschließlichem Verwenden der Rolle `AcrPull` oder `AcrPush` hat die zugew
 
 Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den Quarantänemodus einer Registry so aktivieren, dass nur die Images, die die Sicherheitsüberprüfung erfolgreich bestanden haben, für normale Benutzer sichtbar sind. Weitere Informationen finden Sie im [GitHub-Repository zu ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Wie aktiviere ich den anonymen Zugriff per Pull?
+
+Das Einrichten einer Azure Container Registry für den anonymen (öffentlichen) Zugriff per Pull ist derzeit eine Previewfunktion. Wenn Sie den öffentlichen Zugriff aktivieren möchten, öffnen Sie unter https://aka.ms/acr/support/create-ticket ein Supportticket. Weitere Informationen finden Sie im [Azure-Feedbackforum](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnose und Integritätsprüfungen
 
 - [Überprüfen der Integrität mit `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers) (Docker-Pullvorgang mit Fehler fehlgeschlagen: Net/http: Anforderung während des Wartens auf Verbindung abgebrochen [Client.Timeout-Wert beim Warten auf Header überschritten])
 - [docker push succeeds but docker pull fails with error: unauthorized: authentication required](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required) (Docker-Pushvorgang erfolgreich, aber Docker-Pullvorgang schlägt mit Fehler fehl: nicht autorisiert: Authentifizierung erforderlich)
 - [`az acr login` erfolgreich, aber für den Docker-Befehl tritt ein Fehler auf: "Nicht autorisiert: Authentifizierung erforderlich"](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Neue Benutzerberechtigungen gelten nach Aktualisierung möglicherweise nicht sofort](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Authentifizierungsinformationen sind für direkte Aufrufe der REST-API nicht im ordnungsgemäßen Format angegeben](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ Details zu `--signature-verification` finden Sie, indem Sie `man dockerd` ausfü
 
 Stellen Sie sicher, dass Sie für die Server-URL Kleinbuchstaben verwenden (z. B. `docker push myregistry.azurecr.io/myimage:latest`), auch wenn der Name der Registrierungsressource auch aus Großbuchstaben oder Groß- und Kleinbuchstaben besteht (z. B. `myRegistry`).
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons    
 
 Starten Sie `dockerd` mit der Option `debug`. Erstellen Sie zunächst die Docker-Daemon-Konfigurationsdatei (`/etc/docker/daemon.json`), falls sie noch nicht vorhanden ist, und fügen Sie die Option `debug` hinzu:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Starten Sie dann den Daemon neu. Beispiel für Ubuntu 14.04:
 sudo service docker restart
 ```
 
-Weitere Informationen finden Sie in der [Dokumentation zu Docker](https://docs.docker.com/engine/admin/#enable-debugging). 
+Weitere Informationen finden Sie in der [Dokumentation zu Docker](https://docs.docker.com/engine/admin/#enable-debugging).    
 
- * Die Protokolle können je nach System an verschiedenen Speicherorten generiert werden. Unter Ubuntu 14.04 ist dies z.B. `/var/log/upstart/docker.log`.   
+ * Die Protokolle können je nach System an verschiedenen Speicherorten generiert werden. Unter Ubuntu 14.04 ist dies z.B. `/var/log/upstart/docker.log`.    
 Weitere Informationen finden Sie in der [Dokumentation zu Docker](https://docs.docker.com/engine/admin/#read-the-logs).    
 
- * Für Docker für Windows werden die Protokolle unter %LOCALAPPDATA%/docker/ generiert. Möglicherweise sind jedoch noch nicht alle Debuginformationen enthalten.   
+ * Für Docker für Windows werden die Protokolle unter %LOCALAPPDATA%/docker/ generiert. Möglicherweise sind jedoch noch nicht alle Debuginformationen enthalten.    
 
    Um auf das vollständige Daemon-Protokoll zugreifen zu können, müssen Sie ggf. einige zusätzliche Schritte durchführen:
 

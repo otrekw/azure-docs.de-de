@@ -6,36 +6,35 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451404"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618960"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Updates von Mobility Service bei der Replikation zwischen Azure-Regionen
 
-Jeden Monat werden Azure Site Recovery-Releases veröffentlicht, um Probleme zu beheben, Funktionen zu verbessern und neue Funktion hinzuzufügen. Wenn Sie immer die aktuellste Version des Dienstes verwenden möchten, sollten Sie jeden Monat Patchimplementierungen einplanen. Wenn Sie sich nicht um jedes Update kümmern möchten, können Sie stattdessen Azure Site Recovery die Komponentenupdates verwalten lassen.
+Jeden Monat werden Azure Site Recovery-Releases veröffentlicht, um Probleme zu beheben, Funktionen zu verbessern und neue Funktion hinzuzufügen. Wenn Sie immer die aktuellste Version des Dienstes verwenden möchten, sollten Sie jeden Monat Patchimplementierungen einplanen. Wenn Sie sich nicht um jedes Update kümmern möchten, können Sie Site Recovery die Komponentenupdates verwalten lassen.
 
-Wie unter [Architektur der Notfallwiederherstellung von Azure zu Azure](azure-to-azure-architecture.md) beschrieben, wird beim Replizieren virtueller Computer von einer Azure-Region in einer anderen Mobility Service auf allen Azure-VMs installiert. Wenn Sie automatische Updates verwenden, wird Mobility Service durch jedes neue Release aktualisiert.
- 
+Wie unter [Architektur der Notfallwiederherstellung von Azure zu Azure](azure-to-azure-architecture.md) beschrieben, wird auf allen Azure-VMs, auf denen die Replikation von einer Region in eine andere aktiviert ist, Mobility Service installiert. Wenn Sie automatische Updates verwenden, wird Mobility Service durch jedes neue Release aktualisiert.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-automatic-updates-work"></a>Funktionsweise automatischer Updates
 
-Wenn Site Recovery Ihre Updates verwaltet, wird ein globales Runbook (das von Azure-Diensten verwendet wird) über ein Automatisierungskonto bereitgestellt, das im selben Abonnement wie der Tresor erstellt wird. Jeder Tresor verwendet ein Automatisierungskonto. Das Runbook überprüft für jeden virtuellen Computer in einem Tresor, ob automatische Updates aktiviert sind, und aktualisiert die Erweiterung Mobility Service wenn eine neuere Version verfügbar ist.
+Wenn Site Recovery Ihre Updates verwaltet, wird ein globales Runbook (das von Azure-Diensten verwendet wird) über ein Automatisierungskonto bereitgestellt, das im selben Abonnement wie der Tresor erstellt wird. Jeder Tresor verwendet ein Automatisierungskonto. Das Runbook überprüft jeden virtuellen Computer in einem Tresor auf aktive automatische Updates. Wenn eine neuere Version der Mobility Service-Erweiterung verfügbar ist, wird das Update installiert.
 
 Standardmäßig führt das Runbook dies jeden Tag um 0:00 Uhr in der Zeitzone des geografischen Raums der replizierten VM durch. Sie können diese Zeit über das Automatisierungskonto anpassen.
 
 > [!NOTE]
-> Ab dem Updaterollup 35 können Sie ein vorhandenes Automatisierungskonto auswählen, um es für Updates zu verwenden. Vor diesem Update wurde dieses Konto standardmäßig von Site Recovery erstellt. Si können diese Option nur auswählen, wenn Sie die Replikation für einen virtuellen Computer aktivieren. Sie ist für einen replizierenden virtuellen Computer nicht verfügbar. Die ausgewählte Einstellung gilt sie für alle Azure-VMs, die in demselben Tresor geschützt werden.
- 
-> Das Aktivieren automatischer Updates erfordert keinen Neustart der Azure-VMs und hat keinen Einfluss auf eine laufende Replikation.
+> Ab dem [Updaterollup 35](site-recovery-whats-new.md#updates-march-2019) können Sie ein vorhandenes Automatisierungskonto auswählen, um es für Updates zu verwenden. Vor dem Updaterollup 35 wurde das Automatisierungskonto standardmäßig von Site Recovery erstellt. Sie können diese Option nur auswählen, wenn Sie die Replikation für eine VM aktivieren. Sie ist nicht für VMs verfügbar, für die die Replikation bereits aktiviert ist. Die ausgewählte Einstellung gilt für alle Azure-VMs, die in demselben Tresor geschützt werden.
 
-> Die Abrechnung des Automatisierungskontos erfolgt auf Grundlage der Gesamtzahl an Minuten, die pro Monat zur Auftragsausführung verwendet wurden. Standardmäßig verfügt jedes Automatisierungskonto über 500 kostenlose Minuten. Die Auftragsausführung kann jeden Tag zwischen wenigen Sekunden und einer Minute in Anspruch nehmen und ist in den kostenlosen Einheiten enthalten.
+Das Aktivieren automatischer Updates erfordert keinen Neustart der Azure-VMs und hat keinen Einfluss auf eine laufende Replikation.
+
+Die Abrechnung des Automatisierungskontos erfolgt auf Grundlage der Gesamtzahl an Minuten, die pro Monat zur Auftragsausführung verwendet wurden. Die Auftragsausführung kann jeden Tag zwischen wenigen Sekunden und einer Minute in Anspruch nehmen und ist in den kostenlosen Einheiten enthalten. Standardmäßig verfügt jedes Automatisierungskonto über 500 kostenlose Minuten, wie in der folgenden Tabelle gezeigt:
 
 | Inbegriffenen kostenlosen Einheiten (pro Monat) | Preis |
 |---|---|
@@ -43,31 +42,38 @@ Standardmäßig führt das Runbook dies jeden Tag um 0:00 Uhr in der Zeitzone de
 
 ## <a name="enable-automatic-updates"></a>Aktivieren automatischer Updates
 
-Sie können das Verwalten von Updates durch Site Recovery folgendermaßen zulassen:
+Es gibt mehrere Möglichkeiten, wie die Erweiterungsupdates von Site Recovery verwaltet werden können:
+
+- [Verwaltung im Rahmen der Aktivierung der Replikation](#manage-as-part-of-the-enable-replication-step)
+- [Durch Ein-/Ausschalten der Erweiterungsupdateeinstellungen im Tresor](#toggle-the-extension-update-settings-inside-the-vault)
+- [Manuelles Verwalten von Updates](#manage-updates-manually)
 
 ### <a name="manage-as-part-of-the-enable-replication-step"></a>Verwaltung im Rahmen der Aktivieren der Replikation
 
 Wenn Sie die Replikation für einen virtuellen Computer aktivieren, indem Sie entweder [von der Ansicht der VM](azure-to-azure-quickstart.md) oder [vom Recovery Services-Tresor](azure-to-azure-how-to-enable-replication.md) aus starten, können Sie optional auswählen, entweder das Verwalten von Updates für die Site Recovery-Erweiterung durch Site Recovery zuzulassen oder diese manuell zu verwalten.
 
-![Erweiterungseinstellungen](./media/azure-to-azure-autoupdate/enable-rep.png)
+:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="Erweiterungseinstellungen":::
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Durch Ein-/Ausschalten der Erweiterungsupdateeinstellungen im Tresor
 
-1. Navigieren Sie im Tresor zu **Manage** > **Site Recovery Infrastructure** (Verwalten > Site Recovery-Infrastruktur).
-2. Aktivieren Sie unter **For Azure Virtual Machines** > **Extension Update Settings** (Für Azure-VMs > Erweiterungsupdateinstellungen) die Option **Verwaltung durch Site Recovery zulassen**. Deaktivieren Sie diese Option, um die Verwaltung manuell durchzuführen. 
-3. Wählen Sie **Speichern** aus.
+1. Wählen Sie im Recovery Services-Tresor **Verwalten** > **Site Recovery-Infrastruktur** aus.
+1. Wählen Sie unter **For Azure Virtual Machines** (Für Azure-VMs) > **Erweiterungsupdateeinstellungen** > **Verwaltung durch Site Recovery zulassen** die Option **Ein** aus.
 
-![Erweiterungsupdateeinstellungen](./media/azure-to-azure-autoupdate/vault-toggle.png)
+   Wählen Sie **Aus**, um die Erweiterung manuell zu verwalten.
 
-> [!Important]
-> Wenn Sie **Verwaltung durch Site Recovery zulassen** auswählen, wird die Einstellung auf alle virtuellen Computer im entsprechenden Tresor angewendet.
+1. Wählen Sie **Speichern** aus.
 
-
-> [!Note]
-> Bei beiden Optionen werden Sie über das Automatisierungskonto informiert, das zum Verwalten der Updates verwendet wird. Wenn Sie dieses Feature zum ersten Mal in einem Tresor verwenden, wird standardmäßig ein neues Automatisierungskonto erstellt. Alternativ können Sie die Einstellung anpassen und ein vorhandenes Automatisierungskonto auswählen. Alle nachfolgend im selben Tresor aktivierten Replikationen verwenden das zuvor erstellte Konto. In der Dropdownliste werden derzeit nur Automatisierungskonten aufgeführt, die sich in derselben Ressourcengruppe wie der Tresor befinden.  
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Erweiterungsupdateeinstellungen":::
 
 > [!IMPORTANT]
-> Das folgende Skript muss im Kontext eines Automatisierungskontos ausgeführt werden. Verwenden Sie für ein benutzerdefiniertes Automatisierungskonto das folgende Skript:
+> Wenn Sie **Verwaltung durch Site Recovery zulassen** auswählen, wird die Einstellung auf alle virtuellen Computer im Tresor angewendet.
+
+> [!NOTE]
+> Bei beiden Optionen werden Sie über das Automatisierungskonto informiert, das zum Verwalten der Updates verwendet wird. Wenn Sie dieses Feature zum ersten Mal in einem Tresor verwenden, wird standardmäßig ein neues Automatisierungskonto erstellt. Alternativ können Sie die Einstellung anpassen und ein vorhandenes Automatisierungskonto auswählen. Für alle nachfolgenden Aufgaben zum Aktivieren der Replikation in demselben Tresor wird das zuvor erstellte Automatisierungskonto verwendet. Im Dropdownmenü werden derzeit nur Automatisierungskonten aufgeführt, die sich in derselben Ressourcengruppe wie der Tresor befinden.
+
+> [!IMPORTANT]
+> Das folgende Skript muss im Kontext eines Automatisierungskontos ausgeführt werden.
+Für ein benutzerdefiniertes Automatisierungskonto können Sie das folgende Skript verwenden:
 
 ```azurepowershell
 param(
@@ -96,32 +102,32 @@ $Timeout = "160"
 
 function Throw-TerminatingErrorMessage
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     throw ("Message: {0}, TaskId: {1}.") -f $Message, $TaskId
 }
 
 function Write-Tracing
 {
-    Param
+        Param
     (
-        [Parameter(Mandatory=$true)]      
+        [Parameter(Mandatory=$true)]
         [ValidateSet("Informational", "Warning", "ErrorLevel", "Succeeded", IgnoreCase = $true)]
-        [String]
+                [String]
         $Level,
 
         [Parameter(Mandatory=$true)]
         [String]
         $Message,
 
-        [Switch]
+            [Switch]
         $DisplayMessageToUser
-    )
+        )
 
     Write-Output $Message
 
@@ -129,12 +135,12 @@ function Write-Tracing
 
 function Write-InformationTracing
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     Write-Tracing -Message $Message -Level Informational -DisplayMessageToUser
 }
@@ -183,14 +189,14 @@ function Initialize-SubscriptionId()
         $Tokens = $VaultResourceId.SubString(1).Split("/")
 
         $Count = 0
-        $ArmResources = @{}
+                $ArmResources = @{}
         while($Count -lt $Tokens.Count)
         {
             $ArmResources[$Tokens[$Count]] = $Tokens[$Count+1]
             $Count = $Count + 2
         }
-        
-        return $ArmResources["subscriptions"]
+
+                return $ArmResources["subscriptions"]
     }
     catch
     {
@@ -207,7 +213,7 @@ function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
     {
         try
         {
-            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers    
+            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers
             ($Result.Value) += ($ResultObject)
             break
         }
@@ -253,7 +259,7 @@ function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType,
 }
 
 function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionName){
-    try 
+    try
     {
         $RunAsConnection = Get-AutomationConnection -Name $RunAsConnectionName
         $TenantId = $RunAsConnection.TenantId
@@ -284,14 +290,14 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
 
 function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
 {
-    try 
+    try
     {
         Write-InformationTracing ("Get protection container mappings : {0}." -f $VaultResourceId)
         $ContainerMappingListUrl = $ArmEndPoint + $VaultResourceId + "/replicationProtectionContainerMappings" + "?api-version=" + $AsrApiVersion
-        
+
         Write-InformationTracing ("Getting the bearer token and the header.")
         Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-        
+
         $Result = @()
         Invoke-InternalRestMethod -Uri $ContainerMappingListUrl -Headers $header -Result ([ref]$Result)
         $ContainerMappings = $Result[0]
@@ -389,7 +395,7 @@ try
     try {
             $UpdateUrl = $ArmEndPoint + $Mapping + "?api-version=" + $AsrApiVersion
             Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-            
+
             $Result = @()
             Invoke-InternalWebRequest -Uri $UpdateUrl -Headers $Header -Method 'PATCH' `
                 -Body $InputJson  -ContentType "application/json" -Result ([ref]$Result)
@@ -479,7 +485,7 @@ catch
 {
     $ErrorMessage = ("Tracking modify cloud pairing jobs failed with [Exception: {0}]." -f $_.Exception)
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage  -DisplayMessageToUser
-    Throw-TerminatingErrorMessage -Message $ErrorMessage 
+    Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 
 Write-InformationTracing ("Tracking modify cloud pairing jobs completed.")
@@ -491,7 +497,7 @@ Write-InformationTracing ("Modify cloud pairing jobs timedout: {0}." -f $JobsTim
 if($JobsTimedOut -gt  0)
 {
     $ErrorMessage = "One or more modify cloud pairing jobs has timedout."
-    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)   
+    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
@@ -506,44 +512,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Manuelles Verwalten von Updates
 
-1. Wenn es neue Updates für die Mobility Service-Instanz auf Ihrer VM gibt, wird die folgende Benachrichtigung angezeigt: „Ein neues Site Recovery-Replikations-Agent-Update ist verfügbar. Klicken Sie, um es zu installieren.“
+1. Wenn es neue Updates für die Mobility Service-Instanz auf Ihrer VM gibt, wird die folgende Benachrichtigung angezeigt: **Ein neues Site Recovery-Replikations-Agent-Update ist verfügbar. Klicken Sie, um es zu installieren.**
 
-     ![Fenster „Replizierte Elemente“](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für VMs zu öffnen.
-3. Wählen Sie die VM, die Sie aktualisieren möchten, und klicken Sie dann auf **OK**. Das Update für Mobility Service wird für jede ausgewählte VM durchgeführt.
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Fenster „Replizierte Elemente“":::
 
-     ![VM-Liste mit replizierten Elementen](./media/vmware-azure-install-mobility-service/update-okpng.png)
+1. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für VMs zu öffnen.
+1. Wählen Sie die VM, die Sie aktualisieren möchten, und klicken Sie dann auf **OK**. Das Update für Mobility Service wird für jede ausgewählte VM durchgeführt.
 
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="VM-Liste mit replizierten Elementen":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Häufige Probleme und Problembehandlungen
 
 Wenn ein Problem mit den automatischen Updates auftritt, werden Sie mit einer Fehlermeldung unter **Konfigurationsprobleme** im Tresordashboard benachrichtigt.
 
-Wenn Sie keine automatischen Updates aktivieren konnten, finden Sie in den häufigen Problemen und empfohlenen Maßnahmen weitere Informationen finden:
+Wenn Sie keine automatischen Updates aktivieren konnten, finden Sie in den häufigen Problemen und empfohlenen Maßnahmen weitere Informationen:
 
 - **Fehler:** Sie verfügen nicht über die Berechtigungen, um ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zuzuweisen.
 
-   **Empfohlene Maßnahme:** Achten Sie darauf, dass das angemeldete Konto als Mitwirkender zugewiesen ist, und versuchen Sie es erneut. Im Abschnitt mit den erforderlichen Berechtigungen unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) finden Sie weitere Informationen zum Zuweisen von Berechtigungen.
- 
-   Die meisten Probleme nach dem Aktivieren von automatischen Updates können Sie mit **Reparieren** beheben. Für den Fall, dass die Schaltfläche „Reparieren“ nicht verfügbar ist, beachten Sie die Fehlermeldung, die im Bereich „Erweiterungsupdateeinstellungen“ angezeigt wird.
+  **Empfohlene Maßnahme:** Achten Sie darauf, dass das angemeldete Konto als Mitwirkender zugewiesen ist, und versuchen Sie es erneut. Weitere Informationen zum Zuweisen von Berechtigungen finden Sie im Abschnitt zu den erforderlichen Berechtigungen unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
 
-   ![Schaltfläche „Reparieren“ im Site Recovery-Dienst in den Erweiterungsupdateeinstellungen](./media/azure-to-azure-autoupdate/repair.png)
+  Die meisten Probleme nach dem Aktivieren von automatischen Updates können Sie mit **Reparieren** beheben. Für den Fall, dass die Schaltfläche „Reparieren“ nicht verfügbar ist, beachten Sie die Fehlermeldung, die im Bereich „Erweiterungsupdateeinstellungen“ angezeigt wird.
+
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Schaltfläche „Reparieren“ im Site Recovery-Dienst in den Erweiterungsupdateeinstellungen":::
 
 - **Fehler:** Das ausführende Konto verfügt nicht über die Berechtigung zum Zugriff auf die Recovery Services-Ressource.
 
-    **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Stellen Sie alternativ sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
+  **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](/azure/automation/automation-create-runas-account). Stellen Sie alternativ sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung auf die Recovery Services-Ressource zugreifen kann.
 
-- **Fehler:** Das ausführende Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
+- **Fehler:** Das ausführende Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung.
 
-    **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+  **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](/azure/automation/automation-create-runas-account).
 
--  **Fehler:** Das vom Automatisierungskonto verwendete Zertifikat für das ausführende Azure-Konto wird bald ablaufen. 
+- **Fehler:** Das vom Automatisierungskonto verwendete Zertifikat für das ausführende Azure-Konto wird bald ablaufen.
 
-    Das für das ausführende Konto erstellte selbstsignierte Zertifikat läuft ein Jahr nach dem Datum seiner Erstellung ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Wenn Sie sich für E-Mail-Benachrichtigungen registriert haben, erhalten Sie außerdem E-Mails, wenn Ihrerseits eine Maßnahme erforderlich ist. Dieser Fehler wird zwei Monate vor dem Ablaufdatum angezeigt und in einen kritischen Fehler geändert, wenn das Zertifikat abgelaufen ist. Nach Ablauf des Zertifikats funktioniert die automatische Aktualisierung erst wieder, wenn es erneuert wurde.
+  Das für das ausführende Konto erstellte selbstsignierte Zertifikat läuft ein Jahr nach dem Datum seiner Erstellung ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Wenn Sie sich für E-Mail-Benachrichtigungen registriert haben, erhalten Sie außerdem E-Mails, wenn Ihrerseits eine Maßnahme erforderlich ist. Dieser Fehler wird zwei Monate vor dem Ablaufdatum angezeigt und in einen kritischen Fehler geändert, wenn das Zertifikat abgelaufen ist. Nach Ablauf des Zertifikats funktioniert die automatische Aktualisierung erst wieder, wenn es erneuert wurde.
 
-   **Empfohlene Maßnahme:** Klicken Sie auf „Reparieren“ und dann auf „Zertifikat erneuern“, um dieses Problem zu beheben.
-    
-   ![Zertifikat erneuern](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+  **Empfohlene Maßnahme:** Wählen Sie **Reparieren** und dann **Zertifikat erneuern** aus, um dieses Problem zu beheben.
 
-> [!NOTE]
-> Nachdem Sie das Zertifikat erneuert haben, aktualisieren Sie bitte die Seite, damit der aktuelle Status aktualisiert wird.
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="Zertifikat erneuern":::
+
+  > [!NOTE]
+  > Nachdem Sie das Zertifikat erneuert haben, aktualisieren Sie die Seite, um den aktuellen Status anzuzeigen.

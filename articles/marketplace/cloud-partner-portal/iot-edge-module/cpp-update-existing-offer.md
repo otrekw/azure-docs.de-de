@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019711f35d249e6684013feddb6b453d509f66d4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286488"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985353"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Aktualisieren eines vorhandenen IoT Edge-Modulangebots
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://aka.ms/AzureCreateIoT).
 
 In diesem Artikel werden die Schritte der verschiedenen Aspekte beim Aktualisieren Ihres IoT Edge-Modulangebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) und beim anschließenden erneuten Veröffentlichen des Angebots erläutert.
 

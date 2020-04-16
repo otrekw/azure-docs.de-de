@@ -5,25 +5,25 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114298"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419535"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
-In diesem Artikel werden die Netzwerkfunktionen beschrieben, die für die Hostingoptionen von Azure Functions zur Verfügung stehen. Alle folgenden Netzwerkoptionen geben Ihnen die Möglichkeit zum Zugreifen auf Ressourcen ohne Verwendung von Adressen, die über das Internet geroutet werden können, oder die Einschränkung des Internetzugriffs auf eine Funktions-App.
+In diesem Artikel werden die Netzwerkfunktionen beschrieben, die für die Hostingoptionen von Azure Functions zur Verfügung stehen. Alle folgenden Netzwerkoptionen geben Ihnen die Möglichkeit zum Zugreifen auf Ressourcen ohne Verwendung von Adressen, die über das Internet geroutet werden können, oder zum Einschränken des Internetzugriffs auf eine Funktions-App.
 
 Die Hostingmodelle weisen verschiedene verfügbare Ebenen der Netzwerkisolation auf. Durch Auswahl der jeweils richtigen Ebene lassen sich Ihre Anforderungen an die Netzwerkisolation erfüllen.
 
 Sie können Funktions-Apps auf verschiedene Arten hosten:
 
-* Es gibt eine Gruppe von Tarifoptionen, die in einer mehrinstanzenfähigen Infrastruktur ausgeführt werden und über unterschiedliche Ebenen von Konnektivitäts- und Skalierungsoptionen für virtuelle Netzwerke verfügen:
-    * Der [Verbrauchstarif](functions-scale.md#consumption-plan), der als Reaktion auf Last dynamisch skaliert wird und nur über Optionen für eine minimale Netzwerkisolation verfügt.
-    * Der [Premium-Tarif](functions-scale.md#premium-plan), bei dem ebenfalls dynamisch skaliert wird, der aber eine umfassendere Netzwerkisolation ermöglicht.
-    * Der [Azure App Service-Plan](functions-scale.md#app-service-plan), bei dem eine feste Skalierung verwendet wird und der eine ähnliche Netzwerkisolation wie der Premium-Tarif aufweist.
+* Sie können unter Tarifoptionen wählen, die in einer mehrinstanzenfähigen Infrastruktur ausgeführt werden und über unterschiedliche Ebenen von Konnektivitäts- und Skalierungsoptionen für virtuelle Netzwerke verfügen:
+    * Im [Verbrauchstarif](functions-scale.md#consumption-plan) wird als Reaktion auf Last dynamisch skaliert, und der Tarif bietet Optionen für eine minimale Netzwerkisolation.
+    * Im [Premium-Tarif](functions-scale.md#premium-plan) wird ebenfalls dynamisch skaliert, der Tarif ermöglicht aber eine umfassendere Netzwerkisolation.
+    * Beim [Azure App Service-Plan](functions-scale.md#app-service-plan) wird eine feste Skalierung verwendet, und er weist eine ähnliche Netzwerkisolation wie der Premium-Tarif auf.
 * Sie können Funktionen in einer [App Service-Umgebung](../app-service/environment/intro.md) ausführen. Mit dieser Methode werden die Funktionen in Ihrem virtuellen Netzwerk bereitgestellt und eine umfassende Netzwerksteuerung und -isolation ermöglicht.
 
 ## <a name="matrix-of-networking-features"></a>Matrix der Netzwerkfunktionen
@@ -34,7 +34,7 @@ Sie können Funktions-Apps auf verschiedene Arten hosten:
 |[Integration in ein virtuelles Netzwerk](#virtual-network-integration)|❌Nein|✅Ja (regional)|✅Ja (regional und Gateway)|✅Ja|
 |[Trigger für virtuelle Netzwerke (nicht HTTP)](#virtual-network-triggers-non-http)|❌Nein| ✅Ja |✅Ja|✅Ja|
 |[Hybridverbindungen](#hybrid-connections) (nur Windows)|❌Nein|✅Ja|✅Ja|✅Ja|
-|[IP-Einschränkungen für ausgehenden Datenverkehr](#outbound-ip-restrictions)|❌Nein| ❌Nein|❌Nein|✅Ja|
+|[IP-Einschränkungen für ausgehenden Datenverkehr](#outbound-ip-restrictions)|❌Nein| ✅Ja|✅Ja|✅Ja|
 
 ## <a name="inbound-ip-restrictions"></a>IP-Einschränkungen für eingehenden Datenverkehr
 
@@ -47,83 +47,56 @@ Weitere Informationen finden Sie unter [Azure App Service – statische Zugriffs
 
 ## <a name="private-site-access"></a>Privater Websitezugriff
 
-Privater Websitezugriff bezieht sich darauf, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. über ein virtuelles Azure-Netzwerk.
+Privater Websitezugriff bedeutet, dass der Zugriff auf Ihre App nur über ein privates Netzwerk zugelassen wird, z. B. über ein virtuelles Azure-Netzwerk.
 
 * Zugriff auf private Sites ist im [Premium-Tarif](./functions-premium-plan.md), [Verbrauchstarif](functions-scale.md#consumption-plan) und [App Service-Plan](functions-scale.md#app-service-plan) verfügbar, wenn Dienstendpunkte konfiguriert sind.
     * Dienstendpunkte können unter **Plattformfeatures** > **Netzwerk** > **Zugriffseinschränkungen konfigurieren** > **Regel hinzufügen** pro App konfiguriert werden. Virtuelle Netzwerke können nun als Regeltyp ausgewählt werden.
-    * Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md).
+    * Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Bedenken Sie, dass Ihre Funktion auch mit Dienstendpunkten immer noch vollständigen ausgehenden Zugriff auf das Internet besitzt, selbst wenn die virtuelle Netzwerkintegration konfiguriert ist.
 * Der private Websitezugriff ist auch verfügbar, wenn eine App Service-Umgebung mit internen Lastenausgleich (ILB) konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
 
+Informationen zum Einrichten des privaten Websitezugriffs finden Sie unter [Tutorial: Einrichten von privatem Websitezugriff für Azure Functions](functions-create-private-site-access.md).
+
 ## <a name="virtual-network-integration"></a>Integration in ein virtuelles Netzwerk
 
-Durch die Integration des virtuellen Netzwerks kann die Funktions-App auf Ressourcen eines virtuellen Netzwerks zugreifen. Diese Funktion ist sowohl für den Premium-Tarif als auch für den App Service-Plan verfügbar. In einer App Service-Umgebung befindet sich Ihre App bereits in einem virtuellen Netzwerk, sodass die Integration des virtuellen Netzwerks nicht erforderlich ist, um Ressourcen im selben virtuellen Netzwerk zu erreichen.
+Durch die Integration des virtuellen Netzwerks kann die Funktions-App auf Ressourcen eines virtuellen Netzwerks zugreifen.
+Azure Functions unterstützt zwei Arten der Integration virtueller Netzwerke:
 
-Mithilfe der Integration des virtuellen Netzwerks kann der Zugriff von Apps auf Datenbanken und Webdienste im virtuellen Netzwerk ermöglicht werden. Mit der Integration des virtuellen Netzwerks müssen Sie keinen öffentlichen Endpunkt für Anwendungen auf Ihrem virtuellen Computer verfügbar machen. Stattdessen können Sie private Adressen verwenden, die nicht über das Internet geroutet werden.
-
-Es gibt zwei Formen der virtuellen Netzwerkintegration:
-
-+ **Regionale Integration des virtuellen Netzwerks (Vorschau)** : Ermöglicht die Integration in virtuelle Netzwerke in der gleichen Region. Dieser Typ der Integration erfordert ein Subnetz in einem virtuellen Netzwerk in der gleichen Region. Diese Funktion befindet sich noch in der Vorschau, wird aber für Funktions-Apps unter Windows mit den Einschränkungen unterstützt, die in der folgenden Problem-/Lösungstabelle beschrieben werden.
-+ **Integration des virtuellen Netzwerks mit erforderlichem Gateway**: Ermöglicht die Integration in virtuelle Netzwerke in Remoteregionen oder in klassische virtuelle Netzwerke. Dieser Typ der Integration erfordert die Bereitstellung eines virtuellen Netzwerkgateways in Ihrem VNET. Dies ist eine Funktion, die auf einer Point-to-Site-Verbindung basiert und nur für Funktions-Apps unter Windows unterstützt wird.
-
-Eine App kann jeweils nur einen Typ der Integrationsfunktion für virtuelle Netzwerke verwenden. Beide Typen sind in vielen Szenarien nützlich. Die folgende Tabelle gibt an, unter welchen Umständen der jeweilige Typ verwendet werden sollte:
-
-| Problem  | Lösung |
-|----------|----------|
-| Sie möchten eine RFC 1918-Adresse (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in der gleichen Region erreichen. | Regionale Integration des virtuellen Netzwerks |
-| Sie möchten Ressourcen in einem klassischen virtuellen Netzwerk oder einem virtuellen Netzwerk in einer anderen Region erreichen. | Integration des virtuellen Netzwerks mit erforderlichem Gateway |
-| Sie möchten RFC 1918-Endpunkte über Azure ExpressRoute erreichen. | Regionale Integration des virtuellen Netzwerks |
-| Sie möchten Ressourcen über Dienstendpunkte erreichen. | Regionale Integration des virtuellen Netzwerks |
-
-Mit keiner dieser Funktionen erreichen Sie RFC 1918-fremde Adressen über ExpressRoute. Zu diesem Zweck müssen Sie zurzeit eine App Service-Umgebung verwenden.
-
-Durch die Integration von regionalen virtuellen Netzwerken wird Ihr virtuelles Netzwerk nicht mit lokalen Endpunkten verbunden, und es werden keine Dienstendpunkte konfiguriert. Dafür ist eine separate Netzwerkkonfiguration erforderlich. Die regionale Integration virtueller Netzwerke ermöglicht es Ihrer App lediglich, Aufrufe über diese Verbindungstypen auszuführen.
-
-Unabhängig von der verwendeten Version ermöglicht die Integration des virtuellen Netzwerks Ihrer Funktions-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen privaten Websitezugriff auf Ihre Funktions-App aus dem virtuellen Netzwerk. Privater Websitezugriff bedeutet, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. über ein virtuelles Azure-Netzwerk. Die Integration des virtuellen Netzwerks wird nur für ausgehende Aufrufe verwendet, die von Ihrer App an Ihr virtuelles Netzwerk gerichtet werden.
-
-Die Funktion Integration eines virtuellen Netzwerks:
-
-* Erfordert einen Standard-, Premium- oder PremiumV2-App Service-Plan.
-* Unterstützt TCP und UDP.
-* Funktioniert mit App Service-Apps und Funktions-Apps.
-
-Einige Dinge werden von der Integration eines virtuellen Netzwerks nicht unterstützt, z.B.:
-
-* Bereitstellung eines Laufwerks
-* Active Directory-Integration
-* NetBIOS
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 Bei der Integration virtueller Netzwerke in Azure Functions wird die gemeinsame Infrastruktur mit App Service-Web-Apps verwendet. Weitere Informationen zu den beiden Arten der Integration virtueller Netzwerke finden Sie unter:
 
 * [Regionale Integration des virtuellen Netzwerks](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Integration des virtuellen Netzwerks mit erforderlichem Gateway](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-Weitere Informationen zur Verwendung der Integration virtueller Netzwerke finden Sie unter [Integrieren einer Funktions-App in ein virtuelles Azure-Netzwerk](functions-create-vnet.md).
+Informationen zum Einrichten der Integration virtueller Netzwerke finden Sie unter [Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk](functions-create-vnet.md).
 
-## <a name="connecting-to-service-endpoint-secured-resources"></a>Herstellen einer Verbindung mit durch den Dienstendpunkt gesicherten Ressourcen
+## <a name="regional-virtual-network-integration"></a>Regionale Integration des virtuellen Netzwerks
 
-> [!NOTE]
-> Derzeit kann es bis zu 12 Stunden dauern, bis neue Dienstendpunkte für Ihre Funktions-App verfügbar sind, nachdem Sie die Zugriffsbeschränkungen für die Downstreamressource konfiguriert haben. Während dieses Zeitraums ist die Ressource für Ihre App vollständig nicht verfügbar.
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
+
+## <a name="connect-to-service-endpoint-secured-resources"></a>Herstellen einer Verbindung mit durch den Dienstendpunkt gesicherten Ressourcen
 
 Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von Azure-Diensten auf ein virtuelles Netzwerk beschränken, indem Sie Dienstendpunkte verwenden. Sie müssen Ihre Funktions-App dann in dieses virtuelle Netzwerk integrieren, um auf die Ressource zugreifen zu können. Diese Konfiguration wird für alle Pläne unterstützt, die die Integration in ein virtuelles Netzwerk unterstützen.
 
-[Erfahren Sie mehr über Dienstendpunkte virtueller Netzwerke.](../virtual-network/virtual-network-service-endpoints-overview.md)
+Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Für dieses Konto können derzeit keine Einschränkungen für virtuelle Netzwerke verwendet werden. Wenn Sie einen Dienstendpunkt des virtuellen Netzwerks für das Speicherkonto konfigurieren, das Sie für Ihre Funktions-App verwenden, funktioniert die App nicht mehr. Diese Funktionalität ist derzeit bei Verwendung des Premium-Plans und einer Integration in ein virtuelles Netzwerk verfügbar.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Für dieses Konto können derzeit keine Einschränkungen für virtuelle Netzwerke verwendet werden. Wenn Sie einen Dienstendpunkt des virtuellen Netzwerks für das Speicherkonto konfigurieren, das Sie für ihre Funktions-App verwenden, funktioniert die App nicht mehr.
 
-[Weitere Informationen zu Speicherkontoanforderungen.](./functions-create-function-app-portal.md#storage-account-requirements)
+Weitere Informationen finden Sie unter [Speicherkontoanforderungen](./functions-create-function-app-portal.md#storage-account-requirements).
 
-### <a name="using-key-vault-references"></a>Verwenden von Key Vault-Verweisen 
+## <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
 
-Key Vault-Verweise ermöglichen Ihnen die Verwendung von Geheimnissen aus Ihrer Azure Key Vault-Instanz in Ihrer Azure Functions-Anwendung, ohne dass Codeänderungen erforderlich sind. Azure Key Vault ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
+Sie können mithilfe von Azure Key Vault-Verweisen Geheimnisse aus Ihrer Azure Key Vault-Instanz in Ihrer Azure Functions-Anwendung verwenden, ohne dass Codeänderungen erforderlich sind. Azure Key Vault ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
 
-Derzeit funktionieren [Key Vault-Verweise](../app-service/app-service-key-vault-references.md) nicht, wenn Ihr Key Vault-Instanz mit Dienstendpunkten gesichert ist. Zum Herstellen einer Verbindung mit einer Key Vault-Instanz mithilfe der Integration von virtuellen Netzwerken müssen Sie Key Vault in Ihrem Anwendungscode aufrufen.
+Derzeit funktionieren [Key Vault-Verweise](../app-service/app-service-key-vault-references.md) nicht, wenn Ihre Key Vault-Instanz mit Dienstendpunkten gesichert ist. Zum Herstellen einer Verbindung mit einer Key Vault-Instanz mithilfe der Integration von virtuellen Netzwerken müssen Sie Key Vault im Anwendungscode aufrufen.
 
 ## <a name="virtual-network-triggers-non-http"></a>Trigger für virtuelle Netzwerke (nicht HTTP)
 
-HTTP-fremde Triggerfunktionen können aktuell auf zwei Arten von einem virtuellen Netzwerk aus verwendet werden: 
+HTTP-fremde Triggerfunktionen können aktuell auf zwei Arten von einem virtuellen Netzwerk aus verwendet werden:
+
 + Sie können Ihre Funktions-App in einem Premium-Plan ausführen und die Triggerunterstützung für virtuelle Netzwerke aktivieren.
 + Sie können Ihre Funktions-App in einem App Service-Plan oder in einer App Service-Umgebung ausführen.
 
@@ -131,9 +104,9 @@ HTTP-fremde Triggerfunktionen können aktuell auf zwei Arten von einem virtuelle
 
 Bei Verwendung eines Premium-Plans können Sie HTTP-fremde Triggerfunktionen mit Diensten verbinden, die innerhalb eines virtuellen Netzwerks ausgeführt werden. Hierzu müssen Sie für Ihre Funktions-App die Triggerunterstützung für virtuelle Netzwerke aktivieren. Die Einstellung **Triggerunterstützung für virtuelle Netzwerke** finden Sie im [Azure-Portal](https://portal.azure.com) unter **Funktions-App-Einstellungen**.
 
-![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+![Umschalter für virtuelles Netzwerk](media/functions-networking-options/virtual-network-trigger-toggle.png)
 
-Trigger für virtuelle Netzwerke können auch mithilfe des folgenden Azure CLI-Befehls aktiviert werden:
+Trigger für virtuelle Netzwerke können auch mithilfe des folgenden Azure CLI-Befehls aktiviert werden:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
@@ -150,13 +123,13 @@ Trigger für virtuelle Netzwerke werden ab Version 2.x der Functions-Runtime un
 |[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 oder höher|
 
 > [!IMPORTANT]
-> Wenn Sie die Triggerunterstützung für virtuelle Netzwerke aktivieren, werden nur die oben aufgeführten Triggertypen dynamisch mit Ihrer Anwendung skaliert. Sie können zwar weiterhin Trigger verwenden, die oben nicht aufgeführt sind, diese werden jedoch nicht über die Anzahl vorab aufgewärmter Instanzen hinaus skaliert. Die vollständige Triggerliste finden Sie unter [Unterstützte Bindungen](./functions-triggers-bindings.md#supported-bindings).
+> Wenn Sie die Triggerunterstützung für virtuelle Netzwerke aktivieren, werden nur die in der obigen Tabelle aufgeführten Triggertypen dynamisch mit Ihrer Anwendung skaliert. Sie können zwar weiterhin Trigger verwenden, die nicht in der Tabelle aufgeführt sind, diese werden jedoch nicht über die Anzahl vorab aufgewärmter Instanzen hinaus skaliert. Die vollständige Triggerliste finden Sie unter [Trigger und Bindungen](./functions-triggers-bindings.md#supported-bindings).
 
-### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service-Plan und App Service-Umgebung mit Triggern für virtuelle Netzwerke
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service-Plan und App Service-Umgebung mit Triggern für virtuelle Netzwerke
 
-Wenn Ihre Funktions-App entweder in einem App Service-Plan oder in einer App Service-Umgebung ausgeführt wird, können Sie HTTP-fremde Triggerfunktionen verwenden. Damit Ihre Funktionen ordnungsgemäß ausgelöst werden, muss eine Verbindung mit einem virtuellen Netzwerk bestehen. Außerdem muss auf die in der Triggerverbindung definierte Ressource zugegriffen werden können. 
+Wenn Ihre Funktions-App entweder in einem App Service-Plan oder in einer App Service-Umgebung ausgeführt wird, können Sie HTTP-fremde Triggerfunktionen verwenden. Damit Ihre Funktionen ordnungsgemäß ausgelöst werden, muss eine Verbindung mit einem virtuellen Netzwerk bestehen. Außerdem muss auf die in der Triggerverbindung definierte Ressource zugegriffen werden können.
 
-Angenommen, Sie möchten Azure Cosmos DB so konfigurieren, dass nur Datenverkehr aus einem virtuellen Netzwerk akzeptiert wird. In diesem Fall müssen Sie Ihre Funktions-App in einem App Service-Plan bereitstellen, der die VNET-Integration mit diesem virtuellen Netzwerk ermöglicht. Dadurch kann eine Funktion durch diese Azure Cosmos DB-Ressource ausgelöst werden. 
+Angenommen, Sie möchten Azure Cosmos DB so konfigurieren, dass nur Datenverkehr aus einem virtuellen Netzwerk akzeptiert wird. In diesem Fall müssen Sie Ihre Funktions-App in einem App Service-Plan bereitstellen, der die VNET-Integration mit diesem virtuellen Netzwerk ermöglicht. Die Integration ermöglicht das Auslösen einer Funktion durch diese Azure Cosmos DB-Ressource.
 
 ## <a name="hybrid-connections"></a>Hybridverbindungen
 
@@ -171,9 +144,13 @@ Weitere Informationen finden Sie in der [App Service-Dokumentation zu Hybrid Con
 
 ## <a name="outbound-ip-restrictions"></a>IP-Einschränkungen für ausgehenden Datenverkehr
 
-IP-Einschränkungen für ausgehenden Datenverkehr sind nur für Funktionen verfügbar, die in einer App Service-Umgebung bereitgestellt werden. Sie können ausgehende Einschränkungen für das virtuelle Netzwerk konfigurieren, wo Ihre App Service-Umgebung bereitgestellt wird.
+IP-Einschränkungen für ausgehenden Datenverkehr sind in einem Premium-Plan, einem App Service-Plan oder in einer App Service-Umgebung verfügbar. Sie können ausgehende Einschränkungen für das virtuelle Netzwerk konfigurieren, wo Ihre App Service-Umgebung bereitgestellt wird.
 
-Wenn Sie eine Funktions-App in einen Premium-Tarif oder einen App Service-Plan mit einem virtuellen Netzwerk integrieren, kann die App weiterhin ausgehende Aufrufe ins Internet vornehmen.
+Wenn Sie eine Funktions-App in einen Premium-Tarif oder einen App Service-Plan mit einem virtuellen Netzwerk integrieren, kann die App standardmäßig weiterhin ausgehende Aufrufe ins Internet vornehmen. Durch Hinzufügen der Anwendungseinstellung `WEBSITE_VNET_ROUTE_ALL=1` erzwingen Sie, dass der gesamte ausgehende Datenverkehr an das virtuelle Netzwerk gesendet wird. Dort können Netzwerksicherheitsgruppen-Regeln verwendet werden, um den Datenverkehr einzuschränken.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

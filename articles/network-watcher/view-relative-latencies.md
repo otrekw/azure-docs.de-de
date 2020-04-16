@@ -1,5 +1,5 @@
 ---
-title: Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus | Microsoft-Dokumentation
+title: Anzeigen der relativen Latenzen für Azure-Regionen von bestimmten Standorten aus
 description: Erfahren Sie, wie Sie relative Latenzen zwischen Internetanbietern und Azure-Regionen von bestimmten Standorten aus anzeigen können.
 services: network-watcher
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840535"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521391"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus
 
@@ -45,7 +45,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatch
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Vergleichen der relativen Netzwerklatenzen mit einer einzelnen Azure-Region von einem bestimmten Standort aus
 
-Bewerten Sie Dienstanbieter, oder beheben Sie Fehler bei einem Benutzer, der ein Problem wie „Die Website war langsam“ meldet, von einem bestimmten Ort aus für eine Azure-Region, in der ein Dienst bereitgestellt wurde. Der folgende Befehl gibt beispielsweise die durchschnittlichen relativen Latenzen von Internetdienstanbietern zwischen dem US-Bundesstaat Washington und der Azure-Region „USA, Westen 2“ vom 13. bis 15. Dezember 2017 zurück:
+Bewerten Sie Dienstanbieter, oder beheben Sie Fehler bei einem Benutzer, der ein Problem wie eine langsame Website meldet, von einem bestimmten Ort aus für eine Azure-Region, in der ein Dienst bereitgestellt wurde. Der folgende Befehl gibt beispielsweise die durchschnittlichen relativen Latenzen von Internetdienstanbietern zwischen dem US-Bundesstaat Washington und der Azure-Region „USA, Westen 2“ vom 13. bis 15. Dezember 2017 zurück:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `

@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229674"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617437"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -65,9 +65,9 @@ Zum Ausführen Ihrer Anwendungen und der unterstützenden Dienste benötigen Sie
 
 ![Virtuelle Azure-Computer und unterstützende Ressourcen für einen Kubernetes-Knoten](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Größe des Arbeitsspeichers und die Größe und den Typ des verfügbaren Speichers (z.B. hochleistungsfähige SSDs oder reguläre HDDs). Wenn Sie damit rechnen, dass Sie Anwendungen bereitstellen werden, die große Mengen an CPUs und Arbeitsspeicher oder hochleistungsfähigen Datenspeicher erfordern, planen Sie die Knotengröße entsprechend. Sie können auch die Anzahl von Knoten in Ihrem AKS-Cluster hochskalieren, um Anforderungen zu erfüllen.
+Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Größe des Arbeitsspeichers und die Größe und den Typ des verfügbaren Speichers (z.B. hochleistungsfähige SSDs oder reguläre HDDs). Wenn Sie damit rechnen, dass Sie Anwendungen bereitstellen werden, die große Mengen an CPUs und Arbeitsspeicher oder hochleistungsfähigen Datenspeicher erfordern, planen Sie die Knotengröße entsprechend. Sie können auch die Anzahl von Knoten in Ihrem AKS-Cluster aufskalieren, um Anforderungen zu erfüllen.
 
-In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte, über die Sie auf die von Ihnen verwendete VM-Größe verfügen (einschließlich [Azure-Reservierungen][reservation-discounts]), automatisch angewendet werden.
+In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten aufskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte, über die Sie auf die von Ihnen verwendete VM-Größe verfügen (einschließlich [Azure-Reservierungen][reservation-discounts]), automatisch angewendet werden.
 
 Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `aks-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. eine andere Containerruntime als Moby verwenden möchten, können Sie mithilfe von `aks-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
 
@@ -96,7 +96,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 
 1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: *memory.available<750Mi*. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen. Dies ist eine reaktive Aktion, die ausgeführt wird, sobald der verfügbare Arbeitsspeicher den Schwellenwert von 750 Mi unterschreitet.
 
-2. Der zweite Wert ist die progressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird (kube-reserved).
+2. Der zweite Wert ist die regressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird („kube-reserved“).
     - 25 % der ersten 4 GB Arbeitsspeicher
     - 20 % der nächsten 4 GB Arbeitsspeicher (bis 8 GB)
     - 10 % der nächsten 8 GB Arbeitsspeicher (bis 16 GB)

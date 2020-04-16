@@ -1,6 +1,6 @@
 ---
 title: 'Kapazitätsgrenzen: Azure Synapse Analytics (ehemals SQL DW)'
-description: Die maximalen Werte, die für verschiedene Komponenten von SQL Analytics in Azure Synapse Analytics zulässig sind.
+description: Die maximalen Werte, die für verschiedene Komponenten von Synapse SQL-Pools in Azure Synapse Analytics zulässig sind.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350080"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414005"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Kapazitätsgrenzen in Azure Synapse Analytics (ehemals SQL DW)
 
@@ -42,7 +42,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure Synapse Analyti
 | Tabelle |Max. Größe |Unbegrenzte Größe für Columnstore-Tabellen. <br>60 TB für Rowstore-Tabellen, die auf dem Datenträger komprimiert sind. |
 | Tabelle |Tabellen pro Datenbank | 100.000 |
 | Tabelle |Spaltenanzahl pro Tabelle |1024 Spalten |
-| Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp](sql-data-warehouse-tables-data-types.md). Bei Zeichendatentypen kann die maximale Anzahl von bis zu 2 GB im Seitenspeicher (Zeilenüberlauf) gespeichert werden.  Bei Nicht-Unicode-Zeichen, wie z. B. „char“ oder „varchar“, beträgt der Grenzwert 8.000 auf einer Datenseite, bei Unicode-Zeichen, wie z. B. „nchar“ oder „nvarchar“, beträgt er 4.000.  Mithilfe von Datenseiten-Speichergrößen können Sie die Leistung steigern. |
+| Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp](sql-data-warehouse-tables-data-types.md). Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
 | Tabelle |Bytes pro Zeile, definierte Größe |8\.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie bei SQL Server wird die Speicherung von Zeilenüberlaufsdaten unterstützt, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlaufdaten mit über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tabelle |Partitionen pro Tabelle |15.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt. |
 | Tabelle |Zeichen pro Partitionsbegrenzungswert. |4000 |

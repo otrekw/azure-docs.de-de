@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f3a8d740d391edc09a290d3dba4307af7eec00b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bf8abb2d8ac6c1c9d2e03ef5e4f1edce530cbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286352"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985761"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“ für Power BI
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://aka.ms/AzureCreatePBIServiceApp).
 
 Beim Öffnen der Seite **Neues Angebot** für Dienst-Apps wird zuerst die Registerkarte **Angebotseinstellungen** angezeigt. Auf dieser Registerkarte geben Sie die primären Bezeichner und den Namen für Ihr Angebot ein. Ein Sternchen (*) kennzeichnet ein erforderliches Feld.
 

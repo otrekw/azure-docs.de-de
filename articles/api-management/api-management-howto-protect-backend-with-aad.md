@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190359"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804366"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -137,7 +137,7 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 
 1. Wenn Sie **v1**-Endpunkte verwenden, fügen Sie einen body-Parameter mit dem Namen **resource** hinzu. Verwenden Sie als Wert für diesen Parameter die **Anwendungs-ID** der Back-End-App. 
 
-1. Wenn Sie **v2**-Endpunkte verwenden, verwenden Sie im Feld **Standardbereich** den Bereich, den Sie für die Back-End-App erstellt haben.
+1. Wenn Sie **v2**-Endpunkte verwenden, verwenden Sie im Feld **Standardbereich** den Bereich, den Sie für die Back-End-App erstellt haben. Legen Sie auch den Wert für die [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)-Eigenschaft in Ihrem [Anwendungsmanifest](/azure/active-directory/develop/reference-app-manifest) auf `2` fest.
 
 1. Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
 

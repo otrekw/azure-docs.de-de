@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545587"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521317"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -33,7 +33,7 @@ In diesem Artikel wird die Authentifizierung des Zugriffs auf Event Hubs-Ressou
 
 
 ## <a name="configuring-for-sas-authentication"></a>Konfigurieren der SAS-Authentifizierung
-Sie können die Event Hubs-SAS-Autorisierungsregel für einen Event Hubs-Namespace oder eine Entität (Event Hub-Instanz oder Kafka-Thema in einem Event Hubs für Kafka-fähigen Namespace) konfigurieren. Das Konfigurieren einer SAS-Autorisierungsregel für eine Consumergruppe wird zurzeit nicht unterstützt, Sie können den Zugriff auf Consumergruppen jedoch mit den für einen Namespace oder eine Entität konfigurierten Regeln sichern. 
+Sie können die EventHubs-SAS-Autorisierungsregel für einen Event Hubs-Namespace oder eine Entität (Event Hub-Instanz oder Kafka-Thema in einer Event Hub-Instanz) konfigurieren. Das Konfigurieren einer SAS-Autorisierungsregel für eine Consumergruppe wird zurzeit nicht unterstützt, Sie können den Zugriff auf Consumergruppen jedoch mit den für einen Namespace oder eine Entität konfigurierten Regeln sichern. 
 
 Die folgende Abbildung zeigt, wie die Autorisierungsregeln auf Beispielentitäten angewendet werden. 
 

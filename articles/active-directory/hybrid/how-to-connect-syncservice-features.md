@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300535"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983074"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 
@@ -57,8 +57,8 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 
 | DirSyncFeature | Comment |
 | --- | --- |
-| DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) |
+| DeviceWriteback |[Azure AD Connect: Geräterückschreiben aktivieren](how-to-connect-device-writeback.md) |
+| DirectoryExtensions |[Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | Kennworthashsynchronisierung |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](how-to-connect-password-hash-synchronization.md) |
 |Passthrough-Authentifizierung|[Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](how-to-connect-pta.md)|
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates
 
-Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisierungsdiensts vom lokalen Standort blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt waren:
+Früher wurden Updates des UserPrincipalName-Attributs mithilfe des Synchronisierungsdiensts vom lokalen Standort blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt waren:
 
 * Der Benutzer ist verwaltet (kein Verbundbenutzer).
 * Dem Benutzer wurde keine Lizenz zugewiesen.
 
-Weitere Informationen finden Sie unter [Benutzernamen in Office 365, Azure oder Intune stimmen nicht mit lokaler UPN oder alternativen Benutzernamen überein](https://support.microsoft.com/kb/2523192).
+> [!NOTE]
+> Seit März 2019 ist das Synchronisieren von UPN-Änderungen für Verbundbenutzerkonten zulässig.
+> 
 
 Durch die Aktivierung dieses Features kann die Synchronisierungsengine den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden.
 

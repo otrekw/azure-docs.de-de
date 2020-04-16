@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656924"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668584"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -30,11 +30,11 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 
 **Zertifikate**
 
-- [Warum ist die Zertifikatkette meines Clouddienst-SSL-Zertifikats unvollständig?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Warum ist die Zertifikatkette meines Clouddienst-TSL/SSL-Zertifikats unvollständig?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Welchen Zweck hat das „Windows Azure Tools Encryption Certificate for Extensions“ (Windows Azure Tools-Verschlüsselungszertifikat für Erweiterungen)?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Wie kann ich eine Zertifikatsignieranforderung (Certificate Signing Request, CSR) generieren, ohne eine RDP-Verbindung mit der Instanz herzustellen?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Mein Clouddienst-Verwaltungszertifikat läuft ab. Wie kann ich es verlängern?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Wie wird die Installation des SSL-Hauptzertifikats (PFX) und des Zwischenzertifikats (P7B) automatisiert?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Wie wird die Installation des TLS/SSL-Hauptzertifikats (PFX) und des Zwischenzertifikats (P7B) automatisiert?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [Wozu dient das Microsoft Azure-Dienstverwaltungszertifikat für MachineKey?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Überwachung und Protokollierung**
@@ -75,7 +75,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 
 ## <a name="certificates"></a>Zertifikate
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Warum ist die Zertifikatkette meines Clouddienst-SSL-Zertifikats unvollständig?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Warum ist die Zertifikatkette meines Clouddienst-TSL/SSL-Zertifikats unvollständig?
     
 Wir empfehlen, dass Kunden die vollständige Zertifikatskette (untergeordnetes Zertifikat, Zwischenzertifikate und Stammzertifikate) installieren und nicht nur das untergeordnete Zertifikat. Wenn Sie nur das untergeordnete Zertifikat installieren, sind Sie davon abhängig, dass Windows die Zertifikatskette durch durchlaufen der CTL erstellt. Wenn zeitweilige Netzwerk- oder DNS-Probleme in Azure oder Windows Update auftreten, während Windows das Zertifikat überprüft, wird das Zertifikat möglicherweise als ungültig behandelt. Durch Installation der vollständigen Zertifikatskette kann dieses Problem vermieden werden. Der Blogbeitrag [How to install a chained SSL certificate (Installieren eines SSL-Kettenzertifikats)](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) veranschaulicht diese Vorgehensweise.
 
@@ -103,7 +103,7 @@ Sie können Ihre Verwaltungszertifikate mit folgenden PowerShell-Befehlen verlä
 
 Mit **Get-AzurePublishSettingsFile** wird im Azure-Portal unter **Abonnement** > **Verwaltungszertifikate** ein neues Verwaltungszertifikat erstellt. Der Name des neuen Zertifikats sieht wie folgt aus: YourSubscriptionNam]-[CurrentDate]-Anmeldeinformationen
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Wie wird die Installation des SSL-Hauptzertifikats (PFX) und des Zwischenzertifikats (P7B) automatisiert?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Wie wird die Installation des TLS/SSL-Hauptzertifikats (PFX) und des Zwischenzertifikats (P7B) automatisiert?
 
 Sie können diese Aufgabe mithilfe eines Startskripts („batch/cmd/PowerShell“) automatisieren und das Startskript in der Dienstdefinitionsdatei registrieren. Fügen Sie sowohl das Startskript als auch das Zertifikat (P7B-Datei) dem Projektordner im selben Verzeichnis wie das Startskript hinzu.
 

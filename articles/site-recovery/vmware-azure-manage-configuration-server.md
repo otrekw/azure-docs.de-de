@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228946"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672731"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 
@@ -93,6 +93,32 @@ Die OVF-Vorlage (Open Virtualization Format) stellt die Konfigurationsserver-VM 
 - Sie können [der VM einen zusätzlichen Adapter hinzufügen](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), müssen diesen Schritt aber vor der Registrierung des Konfigurationsservers im Tresor durchführen.
 - Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Danach müssen Sie den Server [erneut im Tresor registrieren](#reregister-a-configuration-server-in-the-same-vault).
 
+## <a name="how-to-renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
+
+Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten der Mobilitäts-Agents auf allen geschützten Computern, der integrierten oder für horizontales Skalieren ausgelegten Prozessserver und der Masterzielserver orchestriert, die mit dem Konfigurationsserver verbunden sind. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
+
+### <a name="check-expiry"></a>Überprüfen des Ablaufs
+
+Das Ablaufdatum wird unter **Integrität des Konfigurationsservers** angezeigt. Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zertifikatablaufzeit auf ein Jahr festgelegt. Wenn eines Ihrer Zertifikate demnächst abläuft, geschieht Folgendes:
+
+- Wenn das Ablaufdatum höchstens zwei Monate in der Zukunft liegt, sendet der Dienst Benachrichtigungen im Portal und per E-Mail (wenn Sie Site Recovery-Benachrichtigungen abonniert haben).
+- Auf der Ressourcenseite des Tresors wird ein Benachrichtigungsbanner angezeigt. Klicken Sie auf das Banner, um ausführlichere Informationen zu erhalten.
+- Wenn die Schaltfläche **Jetzt Upgrade durchführen** angezeigt wird, wurde für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen durchgeführt. Aktualisieren Sie die Komponenten, bevor Sie das Zertifikat erneuern. Sie können bei älteren Versionen keine Erneuerung durchführen.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Wenn die Zertifikate noch nicht abgelaufen sind
+
+1. Öffnen Sie zum Verlängern im Tresor die Option **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Wählen Sie den erforderlichen Konfigurationsserver aus.
+2. Stellen Sie sicher, dass alle Komponenten von Prozessservern für horizontale Skalierung, Masterzielservern und Mobilitäts-Agents auf allen geschützten Computern über die neuesten Versionen verfügen und verbunden sind.
+3. Wählen Sie jetzt **Zertifikate erneuern** aus.
+4. Befolgen Sie sorgfältig die Anweisungen auf dieser Seite, und klicken Sie auf „OK“, um die Zertifikate auf dem ausgewählten Konfigurationsserver und den zugehörigen Komponenten zu erneuern.
+
+### <a name="if-certificates-have-already-expired"></a>Wenn die Zertifikate bereits abgelaufen sind
+
+1. Nach Ablauf des Zertifikats können Zertifikate **nicht mehr im Azure-Portal erneuert werden**. Stellen Sie vor dem Fortfahren sicher, dass alle Komponenten von Prozessservern für horizontale Skalierung, Masterzielservern und Mobilitäts-Agents auf allen geschützten Computern über die neuesten Versionen verfügen und verbunden sind.
+2. **Befolgen Sie dieses Verfahren nur, wenn die Zertifikate bereits abgelaufen sind.** Melden Sie sich beim Konfigurationsserver an, und navigieren Sie zu „C:/Programme/Site Recovery/Homepage/svsystems/bin“, und führen Sie das Tool „RenewCerts“ als Administrator aus.
+3. Ein PowerShell-Ausführungsfenster wird geöffnet, und die Erneuerung der Zertifikate wird ausgelöst. Der Vorgang kann bis zu 15 Minuten dauern. Schließen Sie das Fenster erst, wenn die Verlängerung abgeschlossen ist.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="RenewCertificates":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Erneutes Registrieren eines Konfigurationsservers im selben Tresor
 
@@ -112,7 +138,7 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
    ```
 
     >[!NOTE]
-    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *„\<Installationslaufwerk\Microsoft Azure Site Recovery\agent\cdpcli.exe>“ --registermt*.
+    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *"\<Installationslaufwerk>\Microsoft Azure Site Recovery\agent\cdpcli.exe" --registermt*.
 
 8. Starten Sie den OBEngine-Dienst neu, indem Sie den folgenden Befehl ausführen.
    ```
@@ -269,24 +295,6 @@ Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 2. Um das Verzeichnis in den Ordner „bin“ zu ändern, führen Sie den Befehl **cd %ProgramData%\ASR\home\svsystems\bin** aus.
 3. Um die Passphrasedatei zu generieren, führen Sie **genpassphrase.exe -v > MobSvc.passphrase** aus.
 4. Die Passphrase wird in der Datei gespeichert, die sich unter **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** befindet.
-
-## <a name="renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
-
-Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
-
-### <a name="check-expiry"></a>Überprüfen des Ablaufs
-
-Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zertifikatablaufzeit auf ein Jahr festgelegt. Wenn eines Ihrer Zertifikate demnächst abläuft, geschieht Folgendes:
-
-- Wenn das Ablaufdatum höchstens zwei Monate in der Zukunft liegt, sendet der Dienst Benachrichtigungen im Portal und per E-Mail (wenn Sie Site Recovery-Benachrichtigungen abonniert haben).
-- Auf der Ressourcenseite des Tresors wird ein Benachrichtigungsbanner angezeigt. Klicken Sie auf das Banner, um ausführlichere Informationen zu erhalten.
-- Wenn die Schaltfläche **Jetzt Upgrade durchführen** angezeigt wird, wurde für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen durchgeführt. Aktualisieren Sie die Komponenten, bevor Sie das Zertifikat erneuern. Sie können bei älteren Versionen keine Erneuerung durchführen.
-
-### <a name="renew-the-certificate"></a>Erneuern von Zertifikaten
-
-1. Öffnen Sie im Tresor **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Wählen Sie den erforderlichen Konfigurationsserver aus.
-2. Das Ablaufdatum wird unter **Integrität des Konfigurationsservers** angezeigt.
-3. Klicken Sie auf **Zertifikate erneuern**.
 
 ## <a name="refresh-configuration-server"></a>Aktualisieren des Konfigurationsservers
 

@@ -2,13 +2,13 @@
 title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156258"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982377"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
@@ -77,6 +77,13 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>Datumsfunktionen
+
+Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Datumsangaben bereit.
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [utcNow](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>Funktionen für Bereitstellungswerte
 
@@ -224,7 +231,6 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

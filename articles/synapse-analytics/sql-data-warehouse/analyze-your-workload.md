@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351216"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631243"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analysieren Ihrer Workload in Azure Synapse Analytics
 
-Lernen Sie Techniken zum Analysieren Ihrer SQL Analytics-Workload in Azure Synapse Analytics kennen.
+Lernen Sie Techniken zum Analysieren Ihrer Synapse-SQL-Workload in Azure Synapse Analytics kennen.
 
 ## <a name="resource-classes"></a>Ressourcenklassen
 
-SQL Analytics bietet Ressourcenklassen zum Zuweisen von Systemressourcen zu Abfragen.  Weitere Informationen zu Ressourcenklassen finden Sie unter [Ressourcenklassen und Workloadverwaltung](resource-classes-for-workload-management.md).  Abfragen warten, wenn die einer Abfrage zugeordnete Ressourcenklasse mehr Ressourcen benötigt, als zurzeit verfügbar sind.
+Synapse SQL stellt Ressourcenklassen zum Zuweisen von Systemressourcen zu Abfragen bereit.  Weitere Informationen zu Ressourcenklassen finden Sie unter [Ressourcenklassen und Workloadverwaltung](resource-classes-for-workload-management.md).  Abfragen warten, wenn die einer Abfrage zugeordnete Ressourcenklasse mehr Ressourcen benötigt, als zurzeit verfügbar sind.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Erkennung von Abfragen in der Warteschlange und andere DMVs
 
@@ -63,12 +63,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Analytics verfügt über die folgenden Wartetypen:
+Synapse SQL verfügt über die folgenden Wartetypen:
 
-* **LocalQueriesConcurrencyResourceType**: Bezieht sich auf Abfragen, die sich außerhalb des Parallelitätsslot-Frameworks befinden. DMV-Abfragen und Systemfunktionen wie `SELECT @@VERSION` sind Beispiele für lokale Abfragen.
-* **UserConcurrencyResourceType**: Bezieht sich auf Abfragen, die sich innerhalb des Parallelitätsslot-Frameworks befinden. Abfragen für Endbenutzertabellen sind ein Beispiel für die Verwendung dieses Ressourcentyps.
-* **DmsConcurrencyResourceType**: Bezieht sich auf Wartezeiten, die sich aufgrund von Datenverschiebungen ergeben.
-* **BackupConcurrencyResourceType**: Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert wurden, werden die restlichen Sicherungen in die Warteschlange eingereiht. Im Allgemeinen sollten zwischen aufeinanderfolgenden Momentaufnahmen mindestens 10 Minuten verstreichen. 
+* **LocalQueriesConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich außerhalb des Parallelitätsslot-Frameworks befinden. DMV-Abfragen und Systemfunktionen wie `SELECT @@VERSION` sind Beispiele für lokale Abfragen.
+* **UserConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich innerhalb des Parallelitätsslot-Frameworks befinden. Abfragen für Endbenutzertabellen sind ein Beispiel für die Verwendung dieses Ressourcentyps.
+* **DmsConcurrencyResourceType:** Bezieht sich auf Wartezeiten, die sich aufgrund von Datenverschiebungen ergeben.
+* **BackupConcurrencyResourceType:** Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert wurden, werden die restlichen Sicherungen in die Warteschlange eingereiht. Im Allgemeinen sollten zwischen aufeinanderfolgenden Momentaufnahmen mindestens 10 Minuten verstreichen.
 
 Mit der DMV `sys.dm_pdw_waits` kann angezeigt werden, auf welche Ressourcen eine Abfrage wartet.
 
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Analytics](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Schützen einer Datenbank in Azure Synapse](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

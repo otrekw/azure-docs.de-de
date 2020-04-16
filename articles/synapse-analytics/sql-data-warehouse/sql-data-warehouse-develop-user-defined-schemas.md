@@ -1,6 +1,6 @@
 ---
 title: Verwenden benutzerdefinierter Schemas
-description: Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+description: Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas zum Entwickeln von Lösungen in einem Synapse SQL-Pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,49 +11,51 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9ed4f01aae6ace1af6c1652fe3c5ecfe14dc6bf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351546"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633465"
 ---
-# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Verwenden benutzerdefinierter Schemas in SQL Data Warehouse
-Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Benutzerdefinierte Schemas in einem Synapse SQL-Pool
+Dieser Artikel konzentriert sich auf die Bereitstellung verschiedener Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas zum Entwickeln von Lösungen in einem Synapse SQL-Pool.
 
 ## <a name="schemas-for-application-boundaries"></a>Schemas für Anwendungsgrenzen
 
-Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.
+Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. 
 
-Im Gegensatz dazu werden mit SQL Data Warehouse die gesamten Data Warehouse-Workloads innerhalb einer Datenbank ausgeführt. Datenbankübergreifende Verknüpfungen sind nicht zulässig. SQL Data Warehouse erwartet daher, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
+Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.
+
+Im Gegensatz dazu wird in SQL-Pools die gesamte Data Warehouse-Workload innerhalb einer Datenbank ausgeführt. Datenbankübergreifende Verknüpfungen sind nicht zulässig. SQL-Pools erwarten, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
 
 > [!NOTE]
-> SQL Data Warehouse unterstützt keine datenbankübergreifenden Abfragen. Data Warehouse-Implementierungen, die diese Funktion nutzen, müssen daher überarbeitet werden.
+> In einem SQL-Pool werden keine datenbankübergreifenden Abfragen unterstützt. Data Warehouse-Implementierungen, die diese Funktion nutzen, müssen daher überarbeitet werden.
 > 
 > 
 
 ## <a name="recommendations"></a>Empfehlungen
-Hierbei handelt es sich um Empfehlungen für die Konsolidierung der Workload-, Sicherheits-, Domänen- und Funktionsgrenzen mithilfe von benutzerdefinierten Schemas.
+Im Folgenden finden Sie Empfehlungen für die Konsolidierung der Workload-, Sicherheits-, Domänen- und Funktionsgrenzen mithilfe von benutzerdefinierten Schemas:
 
-1. Verwenden Sie eine SQL Data Warehouse-Datenbank zum Ausführen Ihrer gesamten Data Warehouse-Workloads.
-2. Konsolidieren Sie Ihre vorhandene Data Warehouse-Umgebung zur Verwendung einer SQL Data Warehouse-Datenbank.
-3. Nutzen Sie **benutzerdefinierte Schemas** , um die Grenze bereitzustellen, die zuvor mithilfe von Datenbanken implementiert wurde.
+- Verwenden Sie eine SQL-Pooldatenbank zum Ausführen Ihrer gesamten Data Warehouse-Workload.
+- Konsolidieren Sie Ihre vorhandene Data Warehouse-Umgebung zur Verwendung einer SQL-Pooldatenbank.
+- Nutzen Sie **benutzerdefinierte Schemas** , um die Grenze bereitzustellen, die zuvor mithilfe von Datenbanken implementiert wurde.
 
-Wenn zuvor keine benutzerdefinierten Schemas verwendet wurden, können Sie von Grund auf neu beginnen. Verwenden Sie einfach den alten Datenbanknamen als Grundlage für Ihre benutzerdefinierten Schemas in der SQL Data Warehouse-Datenbank.
+Wenn zuvor keine benutzerdefinierten Schemas verwendet wurden, können Sie von Grund auf neu beginnen. Verwenden Sie einfach den alten Datenbanknamen als Grundlage für Ihre benutzerdefinierten Schemas in der SQL-Pooldatenbank.
 
 Wenn bereits Schemas verwendet wurden, stehen Ihnen einige Optionen zur Verfügung:
 
-1. Entfernen Sie die älteren Schemanamen, und beginnen Sie von vorn.
-2. Behalten Sie die älteren Schemanamen bei, indem Sie diese vorab an den Tabellennamen anhängen.
-3. Behalten Sie die älteren Schemanamen bei, indem Sie Sichten auf die Tabelle in einem zusätzlichen Schema zum Neuerstellen der alten Schemastruktur implementieren.
+- Entfernen Sie die älteren Schemanamen, und beginnen Sie von vorn.
+- Behalten Sie die alten Schemanamen bei, indem Sie diese vorab an den Tabellennamen anhängen.
+- Behalten Sie die älteren Schemanamen bei, indem Sie Sichten auf die Tabelle in einem zusätzlichen Schema zum Neuerstellen der alten Schemastruktur implementieren.
 
 > [!NOTE]
-> Option 3 mag auf den ersten Blick die attraktivste Option sein. Bei genauerem Hinsehen treten jedoch Probleme zutage. Sichten werden nur in SQL Data Warehouse gelesen. Jede Änderung von Daten oder Tabellen muss für die Basistabelle ausgeführt werden. Option 3 führt außerdem eine Schicht von Sichten im System ein. Sie sollten dies besonders berücksichtigen, wenn Sie in Ihrer Architektur bereits Sichten verwenden.
+> Option 3 mag auf den ersten Blick die attraktivste Option sein. Bei genauerem Hinsehen treten jedoch Probleme zutage. Sichten werden nur im SQL-Pool gelesen. Jede Änderung von Daten oder Tabellen muss für die Basistabelle ausgeführt werden. Option 3 führt außerdem eine Schicht von Sichten im System ein. Sie sollten dies besonders berücksichtigen, wenn Sie in Ihrer Architektur bereits Sichten verwenden.
 > 
 > 
 
 ### <a name="examples"></a>Beispiele:
-Implementieren von benutzerdefinierten Schemas basierend auf Datenbanknamen
+Implementieren von benutzerdefinierten Schemas basierend auf Datenbanknamen:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -71,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Behalten Sie die älteren Schemanamen bei, indem Sie diese vorab an den Tabellennamen anhängen. Verwenden Sie Schemas für die Workload-Grenze.
+Behalten Sie die älteren Schemanamen bei, indem Sie diese vorab an den Tabellennamen anhängen. Verwenden Sie Schemas für die Workloadgrenze:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -89,7 +91,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Beibehalten von älteren Schemanamen mit Sichten
+Behalten Sie die alten Schemanamen mithilfe von Sichten bei:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary

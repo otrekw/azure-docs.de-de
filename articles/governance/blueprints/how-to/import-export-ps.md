@@ -3,12 +3,12 @@ title: Importieren und Exportieren von Blaupausen mit PowerShell
 description: Erfahren Sie, wie Sie mit Blaupausendefinitionen als Code arbeiten. Verwenden Sie die Export- und Importbefehle für Freigabe, Quellcodeverwaltung und Verwaltung.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873198"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677135"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
 
@@ -21,7 +21,7 @@ Azure Blueprints kann vollständig über das Azure-Portal verwaltet werden. Mit 
   - Automatisches Testen von Blaupausendefinitionen in Testumgebungen
   - Unterstützung von Continuous Integration- und Continuous Deployment-Pipelines (CI/CD)
 
-Ungeachtet Ihrer Gründe bietet die Verwaltung von Blaupausendefinitionen als Code stets Vorteile. In diesem Artikel wird gezeigt, wie Sie im Modul `Import-AzBlueprintWithArtifact`AZ.Blueprint`Export-AzBlueprintWithArtifact` die Befehle [ und ](https://powershellgallery.com/packages/Az.Blueprint/) verwenden.
+Ungeachtet Ihrer Gründe bietet die Verwaltung von Blaupausendefinitionen als Code stets Vorteile. In diesem Artikel wird gezeigt, wie Sie im Modul [AZ.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) die Befehle `Import-AzBlueprintWithArtifact` und `Export-AzBlueprintWithArtifact` verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +31,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über angemessene Grundkenntn
 - Lesen Sie die Informationen zu den [Bereitstellungsstufen](../concepts/deployment-stages.md) und zum [Lebenszyklus von Blaupausen](../concepts/lifecycle.md)
 - [Erstellen](../create-blueprint-powershell.md) und [Verwalten](./manage-assignments-ps.md) von Blaupausendefinitionen und Zuweisungen mit PowerShell
 
-Falls das Modul [AZ.Blueprint](./manage-assignments-ps.md#add-the-azblueprint-module) nicht bereits installiert ist, befolgen Sie die Anweisungen unter **Hinzufügen des Moduls „AZ.Blueprint“** , um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
+Falls das Modul **AZ.Blueprint** nicht bereits installiert ist, befolgen Sie die Anweisungen unter [Hinzufügen des Moduls „AZ.Blueprint“](./manage-assignments-ps.md#add-the-azblueprint-module), um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>Ordnerstruktur einer Blaupausendefinition
 

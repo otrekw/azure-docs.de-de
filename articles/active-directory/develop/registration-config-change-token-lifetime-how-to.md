@@ -1,26 +1,22 @@
 ---
-title: Ändern der Standardeinstellungen für die Lebensdauer von Token für benutzerdefinierte Azure AD-Apps | Microsoft-Dokumentation
+title: Ändern der Standardeinstellungen für die Lebensdauer von Token für benutzerdefinierte Azure AD-Apps
 description: Aktualisieren der Richtlinien für die Tokengültigkeitsdauer für Ihre Anwendung, die Sie in Azure AD entwickeln
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 431f18b9babb52b5000d3bf4cca75a0f5e29bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc71ebe61fba8c1bdb6b7625b16a50d8995a581a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702809"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883352"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Ändern der Standardwerte für die Tokengültigkeitsdauer für eine benutzerdefiniert entwickelte Anwendung
 

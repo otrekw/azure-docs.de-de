@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen | Microsoft-Dokumentation
+title: 'Azure CLI-Skriptbeispiel: Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen'
 description: Azure CLI-Skriptbeispiel – Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen.
 services: virtual-network
 documentationcenter: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c211a476c31e386c9c74fcb0139fc61dad0a8eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889388"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521539"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
 

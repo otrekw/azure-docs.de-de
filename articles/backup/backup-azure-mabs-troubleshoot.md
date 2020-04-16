@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673114"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421291"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -26,7 +26,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 - Wenn bei der Registrierung ein Fehler auftritt, stellen Sie sicher, dass der Server, auf dem Sie Azure Backup Server installieren möchten, nicht bereits für einen anderen Tresor registriert wurde.
 - Wenn die Pushinstallation nicht erfolgreich ist, sollten Sie überprüfen, ob der DPM-Agent bereits vorhanden ist. Wenn ja, können Sie den Agent deinstallieren und dann versuchen, die Installation durchzuführen.
 - [Stellen Sie sicher, dass kein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- Stellen Sie sicher, dass der SQL-Agent-Dienst ausgeführt und auf dem MAB-Server auf „Automatisch“ festgelegt ist.<br>
+- Stellen Sie sicher, dass der SQL Agent-Dienst ausgeführt und auf dem MABS-Server auf „Automatisch“ festgelegt ist.<br>
 
 ## <a name="invalid-vault-credentials-provided"></a>Es wurden ungültige Tresoranmeldeinformationen angegeben.
 

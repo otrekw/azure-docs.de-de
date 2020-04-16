@@ -2,13 +2,13 @@
 title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 04/03/2020
+ms.openlocfilehash: 4200784e3018ec80d9fbbbc0d3680b6b0e6d2cb3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254330"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656200"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -18,7 +18,14 @@ Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersi
 
 ## <a name="managing-limits"></a>Verwalten von Grenzwerten
 
-Wenn Sie einen Grenzwert oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine [gebührenfreie Onlinekundensupport-Anforderung öffnen](../templates/error-resource-quota.md). Die Grenzwerte können nicht über den maximalen Grenzwert in den folgenden Tabellen angehoben werden. Falls die Spalte für den maximalen Grenzwert nicht vorhanden ist, gibt es für die entsprechende Ressource keine anpassbaren Grenzwerte.
+> [!NOTE]
+> Einige Dienste verfügen über anpassbare Grenzwerte.
+>
+> Wenn ein Dienst keine anpassbaren Grenzwerte aufweist, verwenden die folgenden Tabellen den Header **Limit**. In diesen Fällen sind die Standard- und die maximalen Grenzwerte identisch.
+>
+> Wenn der Grenzwert angepasst werden kann, enthalten die Tabellen die Header **Default limit** und **Maximum limit**. Der Grenzwert kann über den Standardgrenzwert, aber nicht über den maximalen Grenzwert angehoben werden.
+>
+> Wenn Sie einen Grenzwert oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine [gebührenfreie Onlinekundensupport-Anforderung öffnen](../templates/error-resource-quota.md).
 
 Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Grenzwert- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade your Azure Free Trial subscription to a Pay-As-You-Go subscription](../../billing/billing-upgrade-azure-subscription.md) (Upgrade Ihres Abonnements mit kostenloser Azure-Testversion auf nutzungsbasierte Bezahlung) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
 
@@ -33,6 +40,12 @@ Deshalb sollten Sie entscheiden, welche Kontingente für Azure-Ressourcengruppen
 Grenzwerte für Ressourcennamen finden Sie unter [Benennungsregeln und -einschränkungen für Azure-Ressourcen](resource-name-rules.md).
 
 Informationen zum Umgang mit Grenzwerten für Lese- und Schreibvorgänge bei der Resource Manager-API finden Sie unter [Begrenzen von Resource Manager-Anforderungen](request-limits-and-throttling.md).
+
+### <a name="management-group-limits"></a>Grenzwerte von Verwaltungsgruppen
+
+Die folgenden Grenzwerte gelten für [Verwaltungsgruppen](../../governance/management-groups/overview.md).
+
+[!INCLUDE [management-group-limits](../../../includes/management-group-limits.md)]
 
 ### <a name="subscription-limits"></a>Grenzwerte für Abonnements
 
@@ -231,7 +244,11 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 ## <a name="media-services-limits"></a>Media Services-Grenzwerte
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services v2 (Vorgängerversion)
+
+Spezifische Grenzwerte für Media Services v2 (Legacy) finden Sie unter [Media Services v2 (Legacy)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations).
 
 ## <a name="mobile-services-limits"></a>Mobile Services-Grenzwerte
 
@@ -308,7 +325,7 @@ Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Da
 
 ## <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 
-Informationen zu Grenzwerten für SQL Data Warehouse finden Sie unter [SQL Data Warehouse resource limits](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md) (Ressourcengrenzwerte für SQL Data Warehouse).
+Informationen zu Grenzwerten für SQL Data Warehouse finden Sie unter [SQL Data Warehouse resource limits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md) (Ressourcengrenzwerte für SQL Data Warehouse).
 
 ## <a name="storage-limits"></a>Speichergrenzwerte
 

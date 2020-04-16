@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234446"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476979"
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -95,7 +95,7 @@ Sie können *eine* öffentliche Standard Load Balancer-Ressource für die Back-E
 ## <a name="limitations"></a>Einschränkungen
 
 - Lastenausgleichsregeln für Hochverfügbarkeitsports stehen nur für interne Load Balancer Standard zur Verfügung.
-- Die Kombination einer Lastenausgleichsregel mit und einer ohne Hochverfügbarkeitsports wird nicht unterstützt.
+- Die Kombination auch einer Lastenausgleichsregel mit und einer ohne Hochverfügbarkeitsports, die auf dieselbe Back-End-IP-Konfiguration verweisen, wird nicht unterstützt.
 - Vorhandene IP-Fragmente werden von Lastenausgleichsregeln für Hochverfügbarkeitsports an dasselbe Ziel wie das erste Paket weitergeleitet.  Die IP-Fragmentierung eines UDP- oder TCP-Pakets wird nicht unterstützt.
 - Flowsymmetrie (in erster Linie für Szenarien mit virtuellen Netzwerkgeräten) wird über die Back-End-Instanz und ein einzelnes NIC (und eine einzelne IP-Konfiguration) nur dann unterstützt, wenn der Einsatz wie im obigen Diagramm erfolgt und Lastenausgleichsregeln für Hochverfügbarkeitsports verwendet werden. In anderen Szenarien wird sie nicht unetrstützt. Dies bedeutet, dass zwei oder mehr Load Balancer-Ressourcen mit ihren jeweiligen Regeln unabhängige Entscheidungen treffen und nie miteinander koordiniert werden. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. Wenn Sie mehrere NICs verwenden oder das virtuelle Netzwerkgerät in Sandwichmanier zwischen einem öffentlichen und internen Load Balancer einbetten, ist keine Flowsymmetrie verfügbar.  Sie können das Problem möglicherweise umgehen, indem Sie per Adressübersetzung den eingehenden Datenfluss an die IP-Adresse des Geräts leiten, um den Eingang von Antworten auf demselben virtuellen Netzwerkgerät zu ermöglichen.  Es wird allerdings dringend empfohlen, ein einzelnes NIC und die im obigen Diagramm gezeigte Referenzarchitektur zu verwenden.
 

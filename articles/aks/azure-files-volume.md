@@ -1,15 +1,16 @@
 ---
-title: Erstellen eines statischen Volumes für mehrere Pods in Azure Kubernetes Service (AKS)
+title: Manuelles Erstellen von Azure Files-Freigaben
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die Verwendung mit mehreren parallelen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596401"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803448"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Einbindungsoptionen
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume*-Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
+Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das Objekt für das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume*-Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
 
 ```yaml
 apiVersion: v1

@@ -1,15 +1,16 @@
 ---
-title: Steuern von Clusterressourcen per RBAC und Azure AD in Azure Kubernetes Service
+title: Verwenden von Azure AD und RBAC für Cluster
+titleSuffix: Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie die Azure Active Directory-Gruppenmitgliedschaft verwenden, um den Zugriff auf Clusterressourcen per rollenbasierter Zugriffssteuerung (RBAC) in Azure Kubernetes Service (AKS) zu beschränken.
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596520"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803568"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service
 

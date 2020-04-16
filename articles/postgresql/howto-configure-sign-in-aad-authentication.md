@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384397"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804706"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
 
@@ -24,7 +24,9 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Zugriffs auf 
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Festlegen des Azure AD-Administratorbenutzers
 
-Nur ein Azure AD-Administratorbenutzer kann Benutzer für Azure AD-basierte Authentifizierung erstellen/aktivieren. Führen Sie die folgenden Schritte aus, um den Azure AD-Administratorbenutzer zu erstellen:
+Nur Azure AD-Administratorbenutzer können Benutzer für die Azure AD-basierte Authentifizierung erstellen oder aktivieren. Es wird empfohlen, den Azure AD-Administrator nicht für reguläre Datenbankvorgänge zu verwenden, da er über erhöhte Benutzerberechtigungen verfügt (z. B. CREATEDB).
+
+Führen Sie die folgenden Schritte aus, um den Azure AD-Administrator (Benutzer oder Gruppe) festzulegen:
 
 1. Wählen Sie im Azure-Portal die Instanz von Azure Database for PostgreSQL aus, die Sie für Azure AD aktivieren möchten.
 2. Wählen Sie unter „Einstellungen“ die Option „Active Directory-Administrator“ aus:
@@ -37,36 +39,6 @@ Nur ein Azure AD-Administratorbenutzer kann Benutzer für Azure AD-basierte Auth
 > Beim Festlegen des Administrators wird dem Azure Database for PostgreSQL-Server ein neuer Benutzer mit vollständigen Administratorberechtigungen hinzugefügt. Der Azure AD Administratorbenutzer in Azure Database for PostgreSQL übt die Rolle `azure_ad_admin` aus.
 
 Es kann nur ein Azure AD-Administrator pro PostgreSQL-Server erstellt werden, und die Auswahl eines anderen Administrators überschreibt den vorhandenen Azure AD-Administrator, der für den Server konfiguriert ist. Sie können eine Azure AD-Gruppe anstelle eines einzelnen Benutzers angeben, damit mehrere Administratoren vorhanden sind. Beachten Sie, dass Sie sich dann zu Verwaltungszwecken mit dem Gruppennamen anmelden.
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Erstellen von Azure AD-Benutzern in Azure Database for PostgreSQL
-
-Um Ihrer Azure Database for PostgreSQL-Datenbank einen Azure AD-Benutzer hinzuzufügen, führen Sie nach dem Herstellen einer Verbindung die folgenden Schritte aus (weitere Informationen finden Sie in einem späteren Abschnitt zum Herstellen einer Verbindung):
-
-1. Stellen Sie zunächst sicher, dass der Azure AD-Benutzer `<user>@yourtenant.onmicrosoft.com` ein gültiger Benutzer im Azure AD-Mandanten ist.
-2. Melden Sie sich bei Ihrer Azure Database for PostgreSQL-Instanz als Azure AD-Administratorbenutzer an.
-3. Erstellen Sie die Rolle `<user>@yourtenant.onmicrosoft.com` in Azure Database for PostgreSQL.
-4. Erklären Sie `<user>@yourtenant.onmicrosoft.com` zum Mitglied der Rolle azure_ad_user. Dies darf nur für Azure AD-Benutzer erfolgen.
-
-**Beispiel:**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> Die Authentifizierung eines Benutzers über Azure AD verleiht dem Benutzer keine Berechtigung für den Zugriff auf Objekte innerhalb der Azure Database for PostgreSQL-Datenbank. Sie müssen dem Benutzer die erforderlichen Berechtigungen manuell erteilen.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Erstellen von Azure AD-Gruppen in Azure Database for PostgreSQL
-
-Um eine Azure AD-Gruppe für den Zugriff auf Ihre Datenbank zu aktivieren, verwenden Sie den gleichen Mechanismus wie für Benutzer, geben aber stattdessen den Gruppennamen an:
-
-**Beispiel:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-Wenn sie sich anmelden, verwenden die Mitglieder der Gruppe ihre persönlichen Zugriffstoken, melden sich aber mit dem Gruppennamen an, der als Benutzername angegeben wurde.
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Herstellen einer Verbindung mit Azure Database for PostgreSQL mithilfe von Azure AD
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 Sie sind jetzt bei Ihrem PostgreSQL-Server über Azure AD-Authentifizierung authentifiziert.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Erstellen von Azure AD-Benutzern in Azure Database for PostgreSQL
+
+Um Ihrer Azure Database for PostgreSQL-Datenbank einen Azure AD-Benutzer hinzuzufügen, führen Sie nach dem Herstellen einer Verbindung die folgenden Schritte aus (weitere Informationen finden Sie in einem späteren Abschnitt zum Herstellen einer Verbindung):
+
+1. Stellen Sie zunächst sicher, dass der Azure AD-Benutzer `<user>@yourtenant.onmicrosoft.com` ein gültiger Benutzer im Azure AD-Mandanten ist.
+2. Melden Sie sich bei Ihrer Azure Database for PostgreSQL-Instanz als Azure AD-Administratorbenutzer an.
+3. Erstellen Sie die Rolle `<user>@yourtenant.onmicrosoft.com` in Azure Database for PostgreSQL.
+4. Erklären Sie `<user>@yourtenant.onmicrosoft.com` zum Mitglied der Rolle azure_ad_user. Dies darf nur für Azure AD-Benutzer erfolgen.
+
+**Beispiel:**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> Die Authentifizierung eines Benutzers über Azure AD verleiht dem Benutzer keine Berechtigung für den Zugriff auf Objekte innerhalb der Azure Database for PostgreSQL-Datenbank. Sie müssen dem Benutzer die erforderlichen Berechtigungen manuell erteilen.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Erstellen von Azure AD-Gruppen in Azure Database for PostgreSQL
+
+Um eine Azure AD-Gruppe für den Zugriff auf Ihre Datenbank zu aktivieren, verwenden Sie den gleichen Mechanismus wie für Benutzer, geben aber stattdessen den Gruppennamen an:
+
+**Beispiel:**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+Wenn sie sich anmelden, verwenden die Mitglieder der Gruppe ihre persönlichen Zugriffstoken, melden sich aber mit dem Gruppennamen an, der als Benutzername angegeben wurde.
 
 ## <a name="token-validation"></a>Tokenüberprüfung
 

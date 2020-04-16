@@ -6,27 +6,27 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517924"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
-Die Bereitstellung von Informationen auf der Registerkarte „Co-Selling“ ist völlig optional. Es ist erforderlich, um den Status „Bereit für Co-Selling“ (Co-sell Ready) und „Bereit für IP-Co-Selling“ (IP Co-sell Ready) zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Über Microsoft verkaufen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
+Die Bereitstellung von Informationen auf der Registerkarte „Co-Selling“ ist völlig optional. Es ist erforderlich, um den Status „Bereit für Co-Selling“ (Co-sell Ready) und „Bereit für IP-Co-Selling“ (IP Co-sell Ready) zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Über Microsoft verkaufen](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen verfügbar. Die Unterstützung wird mit der Zeit auf zusätzliche Angebotstypen ausgeweitet.
 
 | **Angebotstyp** | **Im Partner Center verfügbare Co-Selling-Seite** |
 |    -----------------------    |    -----------------------------  |
-| Software-as-a-Service (SaaS) |     Voraussichtlich im Februar 2020 allgemein verfügbar      |
+| Software-as-a-Service (SaaS) |     Allgemeine Verfügbarkeit April 2020      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Jetzt verfügbar      |
 | Dynamics 365 for Operations     |     Jetzt verfügbar       |
-| Dynamics 365 Business Central      |  Voraussichtlich im Februar 2020 allgemein verfügbar     |
-| Azure-Anwendung     |     Voraussichtlich im Februar 2020 allgemein verfügbar     |
+| Dynamics 365 Business Central      |  Allgemeine Verfügbarkeit April 2020     |
+| Azure-Anwendung     |     Allgemeine Verfügbarkeit April 2020     |
 | Virtueller Azure-Computer      |     Wird noch bekannt gegeben       |
 | Azure-Container     |     Wird noch bekannt gegeben       |
 | Beratungsdienst      |     Wird noch bekannt gegeben       |
@@ -66,8 +66,7 @@ Sie können Begleitmaterialien zur Verfügung stellen, die Microsoft zur Bewertu
 
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Office 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul>
- |
+| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Office 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
 | *Kundenpräsentation* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
 | *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
 | *Überprüfbare Kundengewinne (optional)* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |

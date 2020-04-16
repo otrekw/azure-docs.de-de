@@ -2,17 +2,17 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207007"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804757"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
+# <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
-Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
+Resource Manager stellt die folgenden Funktionen für das Abrufen von Ressourcenwerten in Ihren ARM-Vorlagen (Azure Resource Manager) bereit:
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
@@ -36,12 +36,12 @@ Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceId |Ja |string |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
-| resourceType |Ja |string |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
-| resourceName1 |Ja |string |Name der Ressource. |
-| resourceName2 |Nein |string |Nächstes Ressourcennamensegment, sofern erforderlich. |
+| resourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
 
 Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
 
@@ -118,8 +118,8 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceName oder resourceIdentifier |Ja |string |Eindeutiger Bezeichner für die Ressource. |
-| apiVersion |Ja |string |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
+| resourceName oder resourceIdentifier |Ja |Zeichenfolge |Eindeutiger Bezeichner für die Ressource. |
+| apiVersion |Ja |Zeichenfolge |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
 | functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. |
 
 ### <a name="valid-uses"></a>Gültige Verwendungen
@@ -170,8 +170,8 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
@@ -366,8 +366,8 @@ Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Re
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ja |string |Namespace des Anbieters |
-| resourceType |Nein |string |Der Ressourcentyp innerhalb des angegebenen Namespace. |
+| providerNamespace |Ja |Zeichenfolge |Namespace des Anbieters |
+| resourceType |Nein |Zeichenfolge |Der Ressourcentyp innerhalb des angegebenen Namespace. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -441,15 +441,15 @@ Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceName oder resourceIdentifier |Ja |string |Name oder eindeutiger Bezeichner einer Ressource Wenn Sie auf eine Ressource in der aktuellen Vorlage verweisen, stellen Sie nur den Ressourcennamen als Parameter bereit. Wenn Sie auf eine zuvor bereitgestellte Ressource verweisen oder der Name der Ressource nicht eindeutig ist, geben Sie die Ressourcen-ID an. |
-| apiVersion |Nein |string |API-Version der angegebenen Ressource. Schließen Sie diesen Parameter ein, wenn die Ressource nicht innerhalb der gleichen Vorlage bereitgestellt wird. In der Regel im Format **jjjj-mm-tt**. Informationen zu gültigen API-Versionen für Ihre Ressource finden Sie in der [Vorlagenreferenz](/azure/templates/). |
-| 'Full' |Nein |string |Ein Wert, der angibt, ob das vollständige Ressourcenobjekt zurückgegeben werden soll. Wird `'Full'` nicht angegeben, wird nur das Eigenschaftenobjekt der Ressource zurückgegeben. Das vollständige Objekt enthält Werte wie die Ressourcen-ID und den Standort. |
+| resourceName oder resourceIdentifier |Ja |Zeichenfolge |Name oder eindeutiger Bezeichner einer Ressource Wenn Sie auf eine Ressource in der aktuellen Vorlage verweisen, stellen Sie nur den Ressourcennamen als Parameter bereit. Wenn Sie auf eine zuvor bereitgestellte Ressource verweisen oder der Name der Ressource nicht eindeutig ist, geben Sie die Ressourcen-ID an. |
+| apiVersion |Nein |Zeichenfolge |API-Version der angegebenen Ressource. **Dieser Parameter ist erforderlich, wenn die Ressource nicht innerhalb derselben Vorlage bereitgestellt wird.** In der Regel im Format **jjjj-mm-tt**. Informationen zu gültigen API-Versionen für Ihre Ressource finden Sie in der [Vorlagenreferenz](/azure/templates/). |
+| 'Full' |Nein |Zeichenfolge |Ein Wert, der angibt, ob das vollständige Ressourcenobjekt zurückgegeben werden soll. Wird `'Full'` nicht angegeben, wird nur das Eigenschaftenobjekt der Ressource zurückgegeben. Das vollständige Objekt enthält Werte wie die Ressourcen-ID und den Standort. |
 
 ### <a name="return-value"></a>Rückgabewert
 
-Jeder Ressourcentyp gibt andere Eigenschaften für die Verweisfunktion zurück. Die Funktion gibt kein einzelnes vordefiniertes Format zurück. Darüber hinaus variiert der zurückgegebene Wert abhängig davon, ob Sie das vollständige Objekt angegeben haben. Um die Eigenschaften für einen Ressourcentyp anzuzeigen, geben Sie das Objekt wie im Beispiel gezeigt im Abschnitt „outputs“ zurück.
+Jeder Ressourcentyp gibt andere Eigenschaften für die Verweisfunktion zurück. Die Funktion gibt kein einzelnes vordefiniertes Format zurück. Darüber hinaus variiert der zurückgegebene Wert auch je nach dem Wert des `'Full'`-Arguments. Um die Eigenschaften für einen Ressourcentyp anzuzeigen, geben Sie das Objekt wie im Beispiel gezeigt im Abschnitt „outputs“ zurück.
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -496,7 +496,9 @@ Verwenden Sie `'Full'`, wenn Sie Ressourcenwerte benötigen, die nicht Teil des 
 
 ### <a name="valid-uses"></a>Gültige Verwendungen
 
-Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden. Wenn sie mit [Eigenschafteniteration](copy-properties.md) verwendet wird, können Sie die Verweisfunktion für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Verweisfunktion aufgelöst wird.
+Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden. Wenn sie mit [Eigenschafteniteration](copy-properties.md) verwendet wird, können Sie die Verweisfunktion für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird.
+
+Sie können die Verweisfunktion nicht verwenden, um den Wert der `count`-Eigenschaft in einer Kopierschleife festzulegen. Sie können damit andere Eigenschaften in der Schleife festlegen. Der Verweis ist für die count-Eigenschaft gesperrt, da diese Eigenschaft vor dem Auflösen der Verweisfunktion bestimmt werden muss.
 
 Die Referenzfunktion kann nicht in den Ausgaben einer [geschachtelten Vorlage](linked-templates.md#nested-template) verwendet werden, um eine Ressource zurückzugeben, die Sie in der geschachtelten Vorlage bereitgestellt haben. Verwenden Sie stattdessen eine [verknüpfte Vorlage](linked-templates.md#linked-template).
 
@@ -514,7 +516,7 @@ Wenn Sie auf eine Ressource verweisen, die in der gleichen Vorlage bereitgestell
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Wenn Sie auf eine Ressource verweisen, die nicht in der gleichen Vorlage bereitgestellt wird, geben Sie den Ressourcenbezeichner an.
+Wenn Sie auf eine Ressource verweisen, die nicht in derselben Vorlage bereitgestellt wird, geben Sie die Ressourcen-ID und die `apiVersion` an.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
@@ -756,13 +758,13 @@ Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird ver
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe oder eines Abonnements erfolgt. |
-| resourceGroupName |Nein |string |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe erfolgt. |
-| resourceType |Ja |string |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
-| resourceName1 |Ja |string |Name der Ressource. |
-| resourceName2 |Nein |string |Nächstes Ressourcennamensegment, sofern erforderlich. |
+| resourceGroupName |Nein |Zeichenfolge |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe erfolgt. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
 
 Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
 
@@ -896,7 +898,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -959,9 +961,9 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnemente
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. |
-| resourceType |Ja |string |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
-| resourceName1 |Ja |string |Name der Ressource. |
-| resourceName2 |Nein |string |Nächstes Ressourcennamensegment, sofern erforderlich. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
 
 Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
 
@@ -1040,11 +1042,11 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandanteneb
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceType |Ja |string |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
-| resourceName1 |Ja |string |Name der Ressource. |
-| resourceName2 |Nein |string |Nächstes Ressourcennamensegment, sofern erforderlich. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
 
 Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
 

@@ -13,23 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235834"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878271"
 ---
-# <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
-
-Wenn Sie Azure-Dienste in ein virtuelles Azure-Netzwerk integrieren, ermöglichen Sie damit den privaten Zugriff auf den Dienst über virtuelle Computer oder Computeressourcen im virtuellen Netzwerk.
-Sie können Azure-Dienste mit den folgenden Optionen in Ihr virtuelles Netzwerk integrieren:
-- Stellen Sie dedizierte Instanzen des Diensts in einem virtuellen Netzwerk bereit. Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
-- Verwenden Sie [Private Link](../private-link/private-link-overview.md), um von Ihrem virtuellen Netzwerk sowie von lokalen Netzwerken aus privat auf eine bestimmte Instanz des Diensts zuzugreifen.
-
-Sie können auf den Dienst auch unter Verwendung öffentlicher Endpunkte zugreifen, indem Sie ein virtuelles Netzwerk mithilfe von [Dienstendpunkten](virtual-network-service-endpoints-overview.md) auf den Dienst erweitern. Durch Dienstendpunkte können Dienstressourcen an das virtuelle Netzwerk gebunden werden.
- 
-## <a name="deploy-azure-services-into-virtual-networks"></a>Bereitstellen von Azure-Diensten in virtuellen Netzwerken
+# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken
 
 Wenn Sie dedizierte Azure-Dienste in einem [virtuellen Netzwerk](virtual-networks-overview.md) bereitstellen, können Sie über private IP-Adressen privat mit den Dienstressourcen kommunizieren.
 
@@ -48,16 +39,17 @@ Das Bereitstellen von Diensten in einem virtuellen Netzwerk bietet die folgenden
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Dienste, die in einem virtuellen Netzwerk bereitgestellt werden können
 
-|Category|Dienst| Dediziertes¹ Subnetz
+|Category|Dienst| Dediziertes<sup>1</sup>sup>1</sup> Subnetz
 |-|-|-|
-| Compute | Virtuelle Computer: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Skalierungsgruppen für virtuelle Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Clouddienst](https://msdn.microsoft.com/library/azure/jj156091): Nur virtuelles Netzwerk (klassisch)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nein <br/> Nein <br/> Nein <br/> Nein²
+| Compute | Virtuelle Computer: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Skalierungsgruppen für virtuelle Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Clouddienst](https://msdn.microsoft.com/library/azure/jj156091): Nur virtuelles Netzwerk (klassisch)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nein <br/> Nein <br/> Nein <br/> Nein<sup>2</sup>sup>2</sup>
 | Netzwerk | [Application Gateway – WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuelle Netzwerkgeräte](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn): | Ja <br/> Ja <br/> Ja <br/> Nein
 |Daten|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Verwaltete Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ja <br/> Ja <br/> 
-|Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nein² <br/> Nein² <br/> 
+|Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nein<sup>2</sup>sup>2</su<sup>2</sup>> <br/> Nein<sup>2</sup> <br/> 
 | Identity | [Azure Active Directory-Domänendienste](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nein <br/>
-| Container | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service-Engine](https://github.com/Azure/acs-engine) mit Azure Virtual Network-CNI-[Plug-In](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|Nein²<br/> Ja <br/><br/> Nein
-| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-Umgebung](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/> Ja
+| Container | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service-Engine](https://github.com/Azure/acs-engine) mit Azure Virtual Network-CNI-[Plug-In](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure-Funktionen](../azure-functions/functions-networking-options.md#virtual-network-integration) |Nein<sup>2</sup>sup>2</sup><br/> Ja <br/><br/> Nein <br/> Ja
+| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web-Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-Umgebung](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/> Ja <br/> Ja
 | Gehostet | [Dediziertes HSM von Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
 | | |
 
-¹ „Dediziert“ beinhaltet, dass nur dienstspezifische Ressourcen in diesem Subnetz bereitgestellt und nicht mit VM/VMSSs von Kunden kombiniert werden können. <br/> ² Es wird als bewährte Methode empfohlen, diese Dienste in einem dedizierten Subnetz auszuführen, dies ist jedoch keine zwingende Vorgabe des Diensts.
+<sup>1</sup> „Dediziert“ beinhaltet, dass nur dienstspezifische Ressourcen in diesem Subnetz bereitgestellt und nicht mit VM/VMSSs von Kunden kombiniert werden können. <br/> 
+<sup>2</sup> Es wird als bewährte Methode empfohlen, diese Dienste in einem dedizierten Subnetz auszuführen, dies ist jedoch keine zwingende Vorgabe des Diensts.

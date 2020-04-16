@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227026"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476560"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeiten mit Kanälen, die Livestreams mit Mehrfachbitrate von lokalen Encodern empfangen
 
@@ -112,7 +112,7 @@ Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) dar, den Sie im Liveenco
 
 Sie können die Erfassungs-URLs beim Erstellen des Kanals erhalten. Der Kanal muss hierfür nicht den Status **Running** (Wird ausgeführt) aufweisen. Wenn Sie damit beginnen möchten, Daten an den Kanal zu senden, muss der Kanal den Status **Running** (Wird ausgeführt) aufweisen. Sobald der Kanal mit dem Erfassen von Daten beginnt, können Sie Ihren Datenstrom über die Vorschau-URL anzeigen.
 
-Sie können Livestreams vom Typ „Fragmentiertes MP4“ (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. Derzeit kann RTMP nicht über SSL erfasst werden.
+Sie können Livestreams vom Typ „Fragmentiertes MP4“ (Smooth Streaming) über eine TLS-Verbindung erfassen. Achten Sie zur Erfassung über TLS darauf, die Erfassungs-URL auf HTTPS zu aktualisieren. RTMP kann derzeit nicht über TLS erfasst werden.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Keyframe-Intervall
 Wenn Sie einen lokalen Liveencoder zum Erzeugen eines Datenstroms mit Mehrfachbitrate nutzen, gibt das Keyframe-Intervall die GOP-Dauer (Group of Pictures) wie von diesem externen Encoder verwendet an. Nachdem der Kanal diesen eingehenden Datenstrom empfangen hat, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Wiedergabe-Clientanwendungen bereitstellen: Smooth Streaming, Dynamisches adaptives Streaming über HTTP (DASH) und HTTP Live Streaming (HLS). Beim Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS-Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, das vom Liveencoder empfangen wird.

@@ -4,12 +4,12 @@ description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Clu
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229378"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753796"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -74,7 +74,7 @@ Für in Azure ausgeführte Cluster können Sie den Zugriff auf die Verwaltungsen
 Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der gegenseitigen Client-zu-Knoten-Authentifizierung Folgendes empfohlen:
 
 * Verwendung von Azure Active Directory für die Clientidentität
-* Ein Zertifikat für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation
+* Ein Zertifikat für die Serveridentität und TLS-Verschlüsselung der HTTP-Kommunikation
 
 Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der Knoten-zu-Knoten-Sicherheit die Verwendung eines Clusterzertifikats zum Authentifizieren von Knoten empfohlen.
 
@@ -103,13 +103,13 @@ Einige wichtige Punkte sind zu beachten:
 
 Diese Zertifikate (ein primäres und optional ein sekundäres Zertifikat) sind erforderlich, um einen Cluster zu schützen und nicht autorisierten Zugriff zu verhindern. Diese Zertifikate stellen Cluster- und Serverauthentifizierung bereit.
 
-Clusterauthentifizierung authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten. Serverauthentifizierung authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation wirklich mit dem Cluster und nicht mit einem „Man in the Middle“ erfolgt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit. Bei der Authentifizierung eines Knotens durch einen Client oder Knoten besteht eine der ersten Prüfungen darin, den Wert des allgemeinen Namens im Feld **Antragsteller** zu prüfen. Dieser allgemeine Name oder einer der alternativen Antragstellernamen (Subject Alternative Names, SANs) der Zertifikate muss in der Liste der zulässigen allgemeinen Namen vorhanden sein.
+Clusterauthentifizierung authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten. Serverauthentifizierung authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation wirklich mit dem Cluster und nicht mit einem „Man in the Middle“ erfolgt. Dieses Zertifikat stellt auch TLS für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit. Bei der Authentifizierung eines Knotens durch einen Client oder Knoten besteht eine der ersten Prüfungen darin, den Wert des allgemeinen Namens im Feld **Antragsteller** zu prüfen. Dieser allgemeine Name oder einer der alternativen Antragstellernamen (Subject Alternative Names, SANs) der Zertifikate muss in der Liste der zulässigen allgemeinen Namen vorhanden sein.
 
 Das Zertifikat muss die folgenden Anforderungen erfüllen:
 
 * Das Zertifikat muss einen privaten Schlüssel enthalten. Diese Zertifikate weisen in der Regel die Erweiterung „.pfx“ oder „.pem“ auf.  
 * Das Zertifikat muss für den Schlüsselaustausch erstellt werden, um in eine PFX-Datei (Personal Information Exchange; privater Informationsaustausch) exportiert werden zu können.
-* Der **Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen**. Dies ist erforderlich, damit SSL für den HTTPS-Verwaltungsendpunkt des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne *.cloudapp.azure.com können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle (ZS) beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+* Der **Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen**. Dies ist erforderlich, damit TLS für den HTTPS-Verwaltungsendpunkt des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne *.cloudapp.azure.com können Sie kein TLS/SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
 Einige weitere Aspekte, die zu berücksichtigen sind:
 

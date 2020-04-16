@@ -5,22 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/31/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158b3b34bf433c1da0d1c4bdc851fd99e5bd54d2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671958"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476657"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
 Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure Active Directory (Azure AD) eine Vielzahl von Authentifizierungsprotokollen einschließlich der Legacyauthentifizierung. Ältere Protokolle unterstützen jedoch nicht die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). MFA ist in vielen Umgebungen eine allgemeine Anforderung zum Schutz vor Identitätsdiebstahl. 
+
+Alex Weinert, Director of Identity Security bei Microsoft, hebt in seinem Blogbeitrag vom 12. März 2020 mit dem Titel [Neue Tools zum Blockieren der Legacyauthentifizierung in Ihrer Organisation](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) hervor, warum Organisationen die Legacyauthentifizierung blockieren sollten und welche zusätzlichen Tools Microsoft für diese Aufgabe bereitstellt:
+
+> Damit die mehrstufige Authentifizierung (MFA) wirksam wird, müssen Sie auch die Legacyauthentifizierung blockieren. Legacyauthentifizierungsprotokolle wie POP, SMTP, IMAP und MAPI können nämlich keine MFA erzwingen und sind dadurch bevorzugte Einstiegspunkte für Angreifer, die Ihre Organisation attackieren...
+> 
+>... Die Zahlen zur Legacyauthentifizierung sind nach einer Analyse des Azure Active Directory (Azure AD)-Datenverkehrs ziemlich krass:
+> 
+> - Mehr als 99 Prozent der Kennwort-Spray-Angriffe verwenden Legacyauthentifizierungsprotokolle
+> - Mehr als 97 Prozent der Angriffe in Bezug auf Anmeldeinformationen verwenden die Legacyauthentifizierung
+> - Bei Azure AD-Konten in Organisationen, welche die Legacyauthentifizierung deaktiviert haben, sind 67 Prozent weniger Angriffe festzustellen als bei Organisation mit aktivierter Legacyauthentifizierung
+>
 
 Wenn Ihre Umgebung für das Blockieren der Legacyauthentifizierung bereit ist, um den Schutz Ihres Mandanten zu verbessern, können Sie dieses Ziel mit bedingtem Zugriff erreichen. In diesem Artikel wird erläutert, wie Sie die Richtlinien für bedingten Zugriff konfigurieren können, mit denen die Legacyauthentifizierung für Ihren Mandanten blockiert wird.
 
@@ -65,6 +76,8 @@ Die folgenden Optionen gelten als ältere Authentifizierungsprotokolle.
 - Reporting Web Services: wird zum Abrufen von Berichtsdaten in Exchange Online verwendet
 - Andere Clients: andere Protokolle, bei denen die Verwendung älterer Authentifizierungsmethoden identifiziert wird
 
+Weitere Informationen zu diesen Authentifizierungsprotokollen und -diensten finden Sie unter[Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities).
+
 ### <a name="identify-legacy-authentication-use"></a>Identifizieren der Verwendung der Legacyauthentifizierung
 
 Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
@@ -79,7 +92,7 @@ Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizie
 
 ### <a name="block-legacy-authentication"></a>Blockieren älterer Authentifizierungsmethoden 
 
-In einer Richtlinie für bedingten Zugriff können Sie eine Bedingung festlegen, die an die Client-Apps gebunden ist, die für den Zugriff auf Ihre Ressourcen verwendet werden. Mit der Client-App-Bedingung können Sie den Bereich für Apps mit Legacyauthentifizierung eingrenzen, indem Sie für **Mobile Apps und Desktopclients** die Option **Andere Clients** auswählen.
+In einer Richtlinie für bedingten Zugriff können Sie eine Bedingung festlegen, die an die Client-Apps gebunden ist, die für den Zugriff auf Ihre Ressourcen verwendet werden. Mit der Client-App-Bedingung können Sie den Bereich für Apps mit Legacyauthentifizierung eingrenzen, indem Sie für **Mobile Apps und Desktopclients** die Optionen **Exchange ActiveSync-Clients** und **Andere Clients** auswählen.
 
 ![Andere Clients](./media/block-legacy-authentication/01.png)
 
@@ -106,6 +119,8 @@ Diese Sicherheitsfunktion ist erforderlich, weil das *Blockieren aller Benutzer 
 ![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/05.png)
 
 Sie können diese Sicherheitsfunktion erfüllen, indem Sie einen Benutzer aus der Richtlinie ausschließen. Im Idealfall sollten Sie einige [Administratorkonten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md) definieren und diese aus der Richtlinie ausschließen.
+
+Wenn Sie beim Aktivieren der Richtlinie zum Blockieren der Legacyauthentifizierung den [Modus „Nur Bericht“](concept-conditional-access-report-only.md) verwenden, hat Ihre Organisation die Möglichkeit, die Auswirkungen der Richtlinie zu überwachen.
 
 ## <a name="policy-deployment"></a>Richtlinienbereitstellung
 
@@ -136,5 +151,6 @@ Wenn Sie die Legacyauthentifizierung mit der Bedingung **Andere Clients** blocki
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
 - Wenn Sie noch nicht mit dem Konfigurieren von Richtlinien für bedingten Zugriff vertraut sind, sehen Sie sich das Beispiel unter [Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md) an.
 - Weitere Informationen zur Unterstützung der modernen Authentifizierung finden Sie unter [So funktioniert die moderne Authentifizierung für Office 2013- und Office 2016-Client-Apps](/office365/enterprise/modern-auth-for-office-2013-and-2016). 

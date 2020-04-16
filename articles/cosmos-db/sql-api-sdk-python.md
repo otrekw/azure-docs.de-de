@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137337"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982904"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ ms.locfileid: "70137337"
 * Die Dokumentation wurde aktualisiert, damit anstelle von Azure DocumentDB auf Azure Cosmos DB verwiesen wird.
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Für dieses SDK muss die neueste Version des Azure Cosmos DB-Emulators vorhanden sein. Diese können Sie unter https://aka.ms/cosmosdb-emulator herunterladen.
+* Für dieses SDK muss die neueste Version des [Azure Cosmos DB-Emulators](https://aka.ms/cosmosdb-emulator) vorhanden sein.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Fehlerbehebung für aggregiertes Wörterbuch.
@@ -84,7 +84,7 @@ ms.locfileid: "70137337"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
-* Eine Option zum Deaktivieren der SSL-Überprüfung bei der Ausführung für den Cosmos DB-Emulator wurde hinzugefügt.
+* Eine Option zum Deaktivieren der TLS-Überprüfung bei der Ausführung mit dem Cosmos DB-Emulator wurde hinzugefügt.
 * Die Einschränkung wurde entfernt, dass das Modul für abhängige Anforderungen genau 2.10.0 sein muss.
 * Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
 * Unterstützung für das Aktivieren der Skriptprotokollierung während der Ausführung einer gespeicherten Prozedur wurde hinzugefügt.

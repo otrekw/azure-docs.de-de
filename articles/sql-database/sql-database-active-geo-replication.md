@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77426272"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887349"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -113,14 +113,16 @@ Um sicherzustellen, dass Ihre Anwendung nach einem Failover sofort auf die neue 
 
 ## <a name="configuring-secondary-database"></a>Konfigurieren einer sekundären Datenbank
 
-Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, eine sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage, mitzuhalten. Dadurch wird die Wiederholungsverzögerung für die sekundäre Datenbank und potenzielle Nichtverfügbarkeit verursacht. Eine sekundäre Datenbank, die die primäre Datenbank nur verzögert widerspiegelt, stellt auch ein Risiko eines großen Datenverlusts dar, falls ein erzwungenes Failover erforderlich ist. Um diese Risiken zu mindern, drosselt die effektive aktive Georeplikation die Protokollrate der primären Datenbank, damit die sekundären Datenbanken aufholen können. Wenn die sekundäre Datenbank nicht angemessen konfiguriert ist, kann es außerdem passieren, dass die Anwendungsleistung nach einem Failover beeinträchtigt wird, da die neue primäre Datenbank nicht genügend Computekapazität aufweist. Daher ist ein Upgrade auf eine höhere Computekapazität erforderlich, was erst möglich ist, nachdem der Ausfall behoben wurde. 
+Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, eine sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage mitzuhalten. Dadurch wird die Wiederholungsverzögerung für die sekundäre Datenbank verursacht, sodass sie potenziell nicht verfügbar ist. Um diese Risiken zu mindern, drosselt die aktive Georeplikation die Transaktionsprotokollrate der primären Datenbank, damit die sekundären Datenbanken aufholen können. 
 
+Wenn die sekundäre Datenbank nicht angemessen konfiguriert ist, kann es außerdem passieren, dass die Anwendungsleistung nach einem Failover beeinträchtigt wird, da die neue primäre Datenbank nicht genügend Computekapazität aufweist. In diesem Fall muss das Ziel des Datenbankdiensts auf die erforderliche Stufe hochskaliert werden, was beträchtliche Zeit und Computeressourcen beanspruchen kann und ein [Hochverfügbarkeits-Failover](sql-database-high-availability.md) am Ende des Hochskalierungsprozesses erfordert.
 
-> [!IMPORTANT]
-> Die veröffentlichte RPO = 5 Sekunden kann nur dann garantiert werden, wenn die sekundäre Datenbank mit der gleichen Computegröße wie die primäre Datenbank konfiguriert ist. 
+Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen, können Sie anhand des Diagramms mit dem Protokoll-E/A-Prozentsatz im Azure-Portal gut abschätzen, welche Computegröße für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Prozentsatz für Protokollschreibvorgänge 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Verwenden Sie zum Abrufen von Protokoll-E/A-Verlaufsdaten die Sicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database). Verwenden Sie die Sicht [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), um die neuesten Daten zu Protokollschreibvorgängen mit höherer Granularität abzurufen, da sie kurzfristige Spitzen der Protokollierungsrate besser widerspiegeln.
 
+Die Drosselung der Transaktionsprotokollrate für die primäre Datenbank aufgrund einer niedrigeren Computegröße in einer sekundären Datenbank wird über den Wartetyp HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO gemeldet, der in den Datenbanksichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) angezeigt wird. 
 
-Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen, können Sie anhand des Diagramms mit dem Protokoll-E/A-Prozentsatz im Azure-Portal gut abschätzen, welche Computegröße für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Protokoll-E/A-Prozentsatz 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Sie können die Protokoll-E/A-Daten auch mithilfe der Datenbanksicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) oder [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) abrufen.  Die Drosselung wird als HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO-Wartezustand in den Datenbanksichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) gemeldet. 
+> [!NOTE]
+> Die Transaktionsprotokollrate der primären Datenbank kann aus Gründen gedrosselt werden, die nicht mit einer niedrigeren Computegröße einer sekundären Datenbank zusammenhängen. Diese Art der Drosselung kann auch auftreten, wenn die sekundäre Datenbank dieselbe Computegröße wie die primäre Datenbank oder eine höhere aufweist. Weitere Einzelheiten, einschließlich der Wartetypen für unterschiedliche Arten von Protokollratendrosselungen, finden Sie unter [Transaktionsprotokollratengovernance](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).
 
 Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](sql-database-purchase-models.md).
 
@@ -146,7 +148,7 @@ Der Client, der die Änderungen durchführt, benötigt Netzwerkzugriff auf den p
 
    ```sql
    create user geodrsetup for login geodrsetup
-   alter role geodrsetup dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup
    ```
 
 1. Notieren Sie sich die SID der neuen Anmeldung mithilfe der folgenden Abfrage: 

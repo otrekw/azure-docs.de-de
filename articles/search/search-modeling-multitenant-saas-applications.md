@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113279"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549010"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
 Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit der kognitiven Azure-Suche erstellt werden.
@@ -51,7 +51,7 @@ Der Tarif „S3“ der kognitiven Azure-Suche bietet als Option einen HD-Modus (
 
 Mit S3 HD können die vielen kleinen Indizes unter der Verwaltung eines einzelnen Suchdiensts gepackt werden, indem die Möglichkeit zum Aufskalieren von Indizes mithilfe von Partitionen gegen die Möglichkeit eingetauscht wird, eine größere Anzahl von Indizes in einem einzelnen Dienst zu hosten.
 
-Konkret kann ein S3-Dienst zwischen 1 und 200 Indizes aufweisen, die zusammen bis zu 1,4 Milliarden Dokumente hosten können. Ein S3 HD-Dienst ermöglicht dagegen einzelne Indizes mit bis zu 1 Million Dokumente, kann jedoch bis zu 1.000 Indizes pro Partition (bis zu 3.000 pro Dienst) mit einer Gesamtzahl von 200 Millionen Dokumenten pro Partition (bis zu 600 Millionen pro Dienst) verarbeiten.
+Ein S3-Dienst dient zum Hosten einer bestimmten Anzahl von Indizes (maximal 200) und ermöglicht die horizontale Skalierung der einzelnen Indizes, wenn dem Dienst neue Partitionen hinzugefügt werden. Durch Hinzufügen von Partitionen zu S3 HD-Diensten wird die maximale Anzahl von Indizes erhöht, die vom Dienst gehostet werden können. Die ideale maximale Größe für einen einzelnen S3 HD-Index beträgt ca. 50–80 GB, das System erzwingt jedoch keine feste Größenbeschränkung für jeden Index.
 
 ## <a name="considerations-for-multitenant-applications"></a>Aspekte bei mehrinstanzenfähigen Anwendungen
 Mehrinstanzenfähige Anwendungen müssen Ressourcen gleichmäßig den Mandanten zuteilen und für ein Maß an Datenschutz zwischen diesen sorgen. Beim Entwerfen der Architektur einer solchen Anwendung sind verschiedene Aspekte zu beachten:

@@ -3,16 +3,16 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366214"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981527"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
-Dieser Artikel bietet einen Überblick über die Benennungsregeln und -einschränkungen für Azure-Ressourcen. Empfehlungen zum Benennen von Ressourcen finden Sie unter [Bereitschaft: Empfohlene Namens- und Kennzeichnungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Dieser Artikel bietet einen Überblick über die Benennungsregeln und -einschränkungen für Azure-Ressourcen. Empfehlungen zum Benennen von Ressourcen finden Sie unter [Empfohlene Namens- und Kennzeichnungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 Bei Ressourcennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden, es sei denn, dies ist in der Spalte für gültige Zeichen ausdrücklich angegeben.
 

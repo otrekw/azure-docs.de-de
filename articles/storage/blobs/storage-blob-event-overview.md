@@ -3,29 +3,29 @@ title: Reagieren auf Azure Blob Storage-Ereignisse | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 author: normesta
 ms.author: normesta
-ms.date: 01/30/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835962"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811544"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
-Azure Storage-Ereignisse ermöglichen es Anwendungen, auf Ereignisse wie das Erstellen und Löschen von Blobs zu reagieren. Dies geschieht ohne komplizierten Code oder teure und ineffiziente Abrufdienste.
+Azure Storage-Ereignisse ermöglichen es Anwendungen, auf Ereignisse wie das Erstellen und Löschen von Blobs zu reagieren. Dies geschieht ohne komplizierten Code oder teure und ineffiziente Abrufdienste. Und am besten dabei: Sie bezahlen nur für die tatsächliche Nutzung.
 
-Ereignisse werden mithilfe von [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie Azure Functions, Azure Logic Apps oder sogar an Ihren eigenen HTTP-Listener gepusht. Und am besten dabei: Sie bezahlen nur für die tatsächliche Nutzung.
+Blob Storage-Ereignisse werden mithilfe von [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie Azure Functions, Azure Logic Apps oder sogar an Ihren eigenen HTTP-Listener gepusht. Event Grid sorgt über umfassende Wiederholungsrichtlinien und unzustellbare Nachrichten für eine zuverlässige Ereignisübermittlung an Ihre Anwendungen.
 
-Blob Storage sendet Ereignisse an Event Grid, das über umfassende Wiederholungsrichtlinien und unzustellbare Nachrichten für eine zuverlässige Ereignisübermittlung an Ihre Anwendungen sorgt.
+Im Artikel zum [Blob Storage-Ereignisschema ](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) finden Sie eine vollständige Liste der Ereignisse, die von Blob Storage unterstützt werden.
 
 Gängige Blob Storage-Ereignisszenarien enthalten Bild- oder Videobearbeitung, Suchindizierung oder dateiorientierte Workflows. Asynchrone Dateiuploads eignen sich hervorragend für Ereignisse. Wenn Änderungen selten sind, aber Ihr Szenario die sofortige Reaktion erfordert, kann die ereignisbasierte Architektur besonders effizient sein.
 
-Wenn Sie diese jetzt ausprobieren möchten, informieren Sie sich in folgenden Schnellstartartikeln:
+Wenn Sie Blob Storage-Ereignisse ausprobieren möchten, informieren Sie sich in folgenden Schnellstartartikeln:
 
 |Gewünschtes Tool:    |In diesem Artikel finden Sie weitere Informationen: |
 |--|-|
@@ -33,10 +33,13 @@ Wenn Sie diese jetzt ausprobieren möchten, informieren Sie sich in folgenden Sc
 |PowerShell    |[Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure-Befehlszeilenschnittstelle    |[Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-Verfügt Ihr Konto über einen hierarchischen Namespace, können Sie das folgende Tutorial durcharbeiten, um zu erfahren, wie Sie ein Event Grid-Abonnement, eine Azure-Funktion und einen [Auftrag](https://docs.azuredatabricks.net/user-guide/jobs.html) in Azure Databricks verbinden: [Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle](data-lake-storage-events.md).
+Ausführliche Beispiele für die Reaktion auf Blobspeicherereignisse mithilfe von Azure-Funktionen finden Sie in den folgenden Artikeln:
+
+- [Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle](data-lake-storage-events.md).
+- [Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Nur Speicherkonten vom Typ **StorageV2 (universell, Version 2)** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (allgemein, Version 1)** unterstützt *nicht* die Integration in Event Grid.
+> Nur Speicherkonten vom Typ **StorageV2 (universell, Version 2)** , **BlockBlobStorage** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (allgemein, Version 1)** unterstützt *nicht* die Integration in Event Grid.
 
 ## <a name="the-event-model"></a>Ereignismodell
 
@@ -93,7 +96,9 @@ Anwendungen, die Blob Storage-Ereignisse behandeln, sollten einige bewährte Met
 > [!div class="checklist"]
 > * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
 > * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
-> * Da Nachrichten in falscher Reihenfolge und mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand ist.  Verwenden Sie auch die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen.
+> * Da Nachrichten mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand sind. Informationen zur Verwendung des etag-Felds finden Sie unter [Verwalten von Parallelität in Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
+> * Da Nachrichten in falscher Reihenfolge eintreffen können, verwenden Sie die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen. Das sequencer-Feld ist ein Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt. Sie können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen nachvollziehen.
+> * Storage-Ereignisse gewährleisten eine At-Least-Once-Zustellung an Abonnenten, wodurch sichergestellt wird, dass alle Nachrichten ausgegeben werden. Aufgrund von Wiederholungen oder abhängig von der Verfügbarkeit von Abonnements kommt es jedoch möglicherweise gelegentlich zu doppelten Nachrichten. Weitere Informationen zur Übermittlung und Wiederholung von Nachrichten finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](../../event-grid/delivery-and-retry.md).
 > * Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten. Gültige Werte sind `BlockBlob` oder `PageBlob`. 
 > * Verwenden Sie das url-Feld mit `CloudBlockBlob`- und `CloudAppendBlob`-Konstruktor für den Zugriff auf das Blob.
 > * Ignorieren Sie Felder, die Sie nicht verstehen. So müssen Sie sich nicht mit neuen Features auseinandersetzen, die in der Zukunft hinzugefügt werden könnten.
@@ -105,4 +110,5 @@ Anwendungen, die Blob Storage-Ereignisse behandeln, sollten einige bewährte Met
 Erfahren Sie mehr über Event Grid , und probieren Sie Blob Storage-Ereignisse aus:
 
 - [Einführung in Azure Event Grid](../../event-grid/overview.md)
+- [Blob Storage-Ereignisschema](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](storage-blob-event-quickstart.md)

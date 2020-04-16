@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237426"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546187"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
@@ -55,6 +55,7 @@ Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert di
 | modules.{moduleId}.status | {"running" \| "stopped"} | Ja |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | Ja |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | Nein |
+| modules.{moduleId}.env | Eine Liste von Umgebungsvariablen, die an das Modul übergeben werden. Nimmt das Format `"<name>": {"value": "<value>"}` entgegen | Nein |
 | modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
 | modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein |
 | modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | IoT Hub legt diese Eigenschaft fest, wenn das Manifest mithilfe einer Bereitstellung angewandt wird. Nicht Teil eines Bereitstellungsmanifests. |
@@ -77,7 +78,7 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 | Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
-| lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (Ungültige Konfiguration), `412` Invalid Schema Version (Ungültige Schemaversion), `417` The Desired Properties are Empty (Die gewünschten Eigenschaften sind leer), `500` Failed (Fehler) |
+| lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `412`: Ungültige Schemaversion, `417`: Die gewünschten Eigenschaften sind leer, `500`: Fehler |
 | lastDesiredStatus.description | Textbeschreibung des Status |
 | deviceHealth | `healthy`, wenn der Runtimestatus aller Module entweder `running` oder `stopped` ist, andernfalls `unhealthy` |
 | configurationHealth.{deploymentId}.health | `healthy`, wenn der von der Bereitstellung {deploymentId} festgelegte Runtimestatus aller Module `running` oder `stopped` ist, andernfalls `unhealthy` |
@@ -115,7 +116,7 @@ Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koord
 | Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Hub verarbeitete Version der gewünschten Eigenschaften. |
-| lastDesiredStatus.code | Der Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Hub erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (ungültige Konfiguration), `500` Failed (Fehler) |
+| lastDesiredStatus.code | Der Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Hub erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `500`: Fehler |
 | lastDesiredStatus.description | Textbeschreibung des Status. |
 | clients.{device or moduleId}.status | Konnektivitätsstatus dieses Geräts oder Moduls. Mögliche Werte: {"connected" \| "disconnected"}. Nur Modulidentitäten können den Status „disconnected“ aufweisen. Nachgeschaltete Geräte, die eine Verbindung mit dem IoT Edge-Hub herstellen, werden nur bei erfolgreicher Verbindung angezeigt. |
 | clients.{device or moduleId}.lastConnectTime | Letzter Verbindungszeitpunkt des Geräts oder Moduls. |

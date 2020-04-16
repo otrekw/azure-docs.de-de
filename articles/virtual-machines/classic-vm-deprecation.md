@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127336"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668804"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrieren Ihrer IaaS-Ressourcen zu Azure Resource Manager vor dem 1. März 2023 
 
@@ -41,10 +41,10 @@ Die folgenden Azure-Dienste und -Funktionen sind von dieser Aussonderung **NICHT
 
 - Beginnen Sie noch heute mit der Planung Ihre Migration zu Azure Resource Manager. 
 
-- Weitere Informationen zur Migration Ihrer klassischen virtuellen [Linux](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)- und [Windows](./linux/migration-classic-resource-manager-plan.md)-Computer zu Azure Resource Manager finden Sie [hier](./windows/migration-classic-resource-manager-plan.md).
+- Weitere Informationen zur Migration Ihrer klassischen virtuellen [Linux](./linux/migration-classic-resource-manager-plan.md)- und [Windows](./windows/migration-classic-resource-manager-plan.md)-Computer zu Azure Resource Manager finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
 
 - Zusätzliche Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq).
 
-- Bei technischen Fragen und Problemen [wenden Sie sich an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Wenden Sie sich bei technischen Fragen oder Problemen und für die Aufnahme Ihres Abonnements in die Whitelist an den [Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 - Wenn Sie sonstige Fragen haben, die nicht bei den häufig gestellten Fragen aufgeführt sind und bei denen es sich nicht um Feedback handelt, können Sie unten einen Kommentar schreiben.

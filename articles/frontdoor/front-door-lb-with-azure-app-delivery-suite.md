@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471709"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875281"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -45,7 +45,7 @@ Der Client stellt eine direkte Verbindung mit diesem Back-End her. Azure Traffic
 Azure Front Door Service beendet HTTP-Anforderungen im Edgebereich des Microsoft-Netzwerks und führt aktiv Tests durch, um Änderungen der Anwendungs- und Infrastrukturintegrität oder der Wartezeit zu erkennen.  Anschließend leitet Azure Front Door Service den Datenverkehr immer zum schnellsten und verfügbaren (fehlerfreien) Back-End. Weitere Informationen zu diesem Dienst finden Sie in den Artikeln zur [Routingarchitektur](front-door-routing-architecture.md) und zu den [Routingmethoden für Datenverkehr](front-door-routing-methods.md).
 
 ## <a name="regional-load-balancing"></a>Regionaler Lastenausgleich
-Application Gateway stellt einen ADC (Application Delivery Controller) als Dienst bereit und bietet damit verschiedene Layer-7-Lastenausgleichsfunktionen für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Terminierung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
+Application Gateway stellt einen ADC (Application Delivery Controller) als Dienst bereit und bietet damit verschiedene Layer-7-Lastenausgleichsfunktionen für Ihre Anwendung. So können Kunden die Produktivität von Webfarmen optimieren, indem die CPU-intensive TLS-Terminierung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
 Load Balancer ist ein integraler Bestandteil des Azure SDN-Stapels und bietet leistungsfähige Layer-4-Lastenausgleichsdienste mit geringer Wartezeit für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Lastenausgleichs-Endpunkte konfigurieren und Regeln definieren, um eingehende Verbindungen zu Back-End-Pool-Zielen mit TCP und HTTP Integritätstest-Optionen zuzuordnen, damit die Dienstverfügbarkeit verwaltet werden kann.
 
 
@@ -58,7 +58,7 @@ Für den globalen Lastenausgleich und das globale Routing stehen Ihnen Traffic M
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Alle Protokolle**: Da Traffic Manager auf der DNS-Ebene arbeitet, können Sie jede Art von Netzwerkdatenverkehr weiterleiten (TTP, TCP, UDP, usw.). | **HTTP-Beschleunigung**: Mit Azure Front Door wird Datenverkehr am Rand des Microsoft-Netzwerks über einen Proxy übermittelt.  Da die Wartezeit für die SSL-Aushandlung reduziert wird und „heiße“ Verbindungen zwischen Azure Front Door Service und Ihrer Anwendung verwendet werden, führt dies zu einer Verbesserung der Wartezeit und des Durchsatzes für HTTP(S)-Anforderungen.|
+|**Alle Protokolle**: Da Traffic Manager auf der DNS-Ebene arbeitet, können Sie jede Art von Netzwerkdatenverkehr weiterleiten (TTP, TCP, UDP, usw.). | **HTTP-Beschleunigung**: Mit Azure Front Door wird Datenverkehr am Rand des Microsoft-Netzwerks über einen Proxy übermittelt.  Da die Wartezeit für die TLS-Aushandlung reduziert wird und „heiße“ Verbindungen zwischen Azure Front Door und Ihrer Anwendung verwendet werden, führt dies zu einer Verbesserung von Latenz und Durchsatz bei HTTP(S)-Anforderungen.|
 |**Lokales Routing:** Beim Routing auf einer DNS-Ebene wird Datenverkehr immer von Punkt zu Punkt übermittelt.  Für das Routing von Ihrer Filiale zu Ihrem lokalen Rechenzentrum kann ein direkter Pfad verwendet werden. Mit Traffic Manager ist dies selbst in Ihrem eigenen Netzwerk möglich. | **Unabhängige Skalierbarkeit**: Da Azure Front Door Service HTTP-Anforderungen verarbeitet, können Anforderungen an unterschiedliche URL-Pfade basierend auf Regeln und der Integrität der einzelnen Anwendungsmicroservices zu verschiedenen Back-End-/regionalen Dienstpools (Microservices) geleitet werden.|
 |**Abrechnungsformat:** Die DNS-basierte Abrechnung passt sich Ihren Benutzern an und bleibt bei Diensten mit mehr Benutzern preislich konstant, um die Kosten bei höherer Nutzung zu senken. |**Inlinesicherheit**: Azure Front Door Service ermöglicht die Verwendung von Regeln (z.B. Ratenbegrenzung und Hinzufügen von IP-Adressen zu Zugriffssteuerungslisten), mit denen Sie Ihre Back-Ends schützen können, bevor Datenverkehr Ihre Anwendung erreicht. 
 
@@ -78,7 +78,7 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 ![Detaillierte Architektur der Suite für die Anwendungsbereitstellung][2] 
 
 > [!NOTE]
-> Dieses Beispiel zeigt nur eine von vielen möglichen Konfigurationen, die Azure für die Lastenausgleichsdienste bietet. Traffic Manager, Azure Front Door Service, Application Gateway und Load Balancer können kombiniert werden, um alle Ihre Anforderungen an den Lastenausgleich optimal zu erfüllen. Wenn beispielsweise die SSL-Auslagerung oder Verarbeitung der Ebene 7 nicht notwendig ist, kann Load Balancer anstatt Application Gateway verwendet werden.
+> Dieses Beispiel zeigt nur eine von vielen möglichen Konfigurationen, die Azure für die Lastenausgleichsdienste bietet. Traffic Manager, Azure Front Door Service, Application Gateway und Load Balancer können kombiniert werden, um alle Ihre Anforderungen an den Lastenausgleich optimal zu erfüllen. Wenn beispielsweise eine TLS/SSL-Abladung oder eine Verarbeitung auf Layer 7 nicht notwendig ist, kann Load Balancer anstatt Application Gateway verwendet werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

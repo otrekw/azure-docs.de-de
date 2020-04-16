@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161200"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672666"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -21,7 +21,7 @@ Heute bietet Azure Backup eine Berichterstellungslösung, die [Azure Monitor-Pro
 * Sicherungsberichte werden für Azure-VMs, SQL auf Azure-VMs, SAP HANA/ASE auf Azure-VMs, Azure Backup Agent (MARS), Azure Backup Server (MABS) und System Center DPM unterstützt.
 * Für DPM-Workloads werden Sicherungsberichte für DPM Version 5.1.363.0 und höher sowie Agent-Version 2.0.9127.0 und höher unterstützt.
 * Für MABS-Workloads werden Sicherungsberichte für MABS Version 13.0.415.0 und höher sowie Agent-Version 2.0.9170.0 und höher unterstützt.
-* Sicherungsberichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics (LA)-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. 
+* Sicherungsberichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics (LA)-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. Beachten Sie, dass Sie zum Anzeigen von Berichten für eine Gruppe von Tresoren nur über **Lesezugriff auf den LA-Arbeitsbereich verfügen müssen**, an den die Tresore die Daten senden. Sie **benötigen keinen Zugriff** auf die einzelnen Tresore.
 * Wenn Sie [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements Ihrer Kunden sind, können Sie diese Berichte mit Azure Lighthouse verwenden, um Berichte zu allen Ihren Mandanten anzuzeigen.
 * Daten für Protokollsicherungsaufträge werden derzeit in den Berichten nicht angezeigt.
 

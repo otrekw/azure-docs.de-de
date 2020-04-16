@@ -3,12 +3,12 @@ title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247400"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677423"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -27,12 +27,12 @@ Für das Azure Blueprints-Modul ist die folgende Software erforderlich:
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
-Das Blueprints-Modul für PowerShell ist **Az.Blueprint**.
+Das Azure Blueprints-Modul für PowerShell ist **Az.Blueprint**.
 
 1. Führen Sie an einer **Administratoreingabeaufforderung** von PowerShell den folgenden Befehl aus:
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 

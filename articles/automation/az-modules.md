@@ -1,41 +1,48 @@
 ---
-title: Verwenden von Az-Modulen in Azure Automation
+title: Unterstützung für Az-Module in Azure Automation
 description: Dieser Artikel enthält Informationen zum Verwenden von Az-Modulen in Azure Automation.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986103"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637993"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Unterstützung für Az-Module in Azure Automation
 
-Azure Automation unterstützt die Möglichkeit zum Verwenden des [Azure PowerShell Az-Moduls](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) in Ihren Runbooks. Das Az-Modul wird nicht automatisch in neue oder vorhandenen Automation-Konten importiert. Dieser Artikel beschreibt, wie Sie Az-Module mit Azure Automation verwenden.
+Azure Automation unterstützt die Verwendung des [Az-Moduls von Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) in Ihren Runbooks. Das Az-Rollupmodul wird nicht automatisch in neue oder vorhandenen Automation-Konten importiert. 
 
 ## <a name="considerations"></a>Überlegungen
 
-Es gibt viele Dinge zu beachten, wenn Sie das Az-Modul in Azure Automation verwenden. Runbooks und Module können von übergeordneten Lösungen in Ihrem Automation-Konto verwendet werden. Das Bearbeiten von Runbooks oder das Aktualisieren von Modulen kann zu Problemen mit Ihren Runbooks führen. Sie sollten alle Runbooks und Lösungen sorgfältig in einem separaten Automation-Konto testen, bevor Sie die neuen `Az`-Module importieren. Änderungen an Modulen können die Lösung zum [Starten/Beenden](automation-solution-vm-management.md) negativ beeinflussen. Es wird nicht empfohlen, Module und Runbooks in Automation-Konten, die Lösungen enthalten, nicht zu ändern. Dieses Verhalten ist nicht spezifisch für die Az-Module. Dieses Verhalten sollte bei der Einführung von Änderungen in Ihrem Automation-Konto berücksichtigt werden.
+Es gilt zahlreiche Dinge zu beachten, wenn Sie das Az-Modul in Azure Automation verwenden:
 
-Beim Importieren eines `Az`-Moduls in Ihr Automation-Konto wird das Modul in der PowerShell-Sitzung, die die Runbooks verwenden, nicht automatisch importiert. Module werden in den folgenden Situationen in die PowerShell-Sitzung importiert:
+* Allgemeinere Lösungen in Ihrem Automation-Konto können Runbooks und Module nutzen. Daher kann das Bearbeiten von Runbooks oder Aktualisieren von Modulen zu Problemen mit Ihren Runbooks führen. Sie sollten alle Runbooks und Lösungen in einem separaten Automation-Konto sorgfältig testen, bevor Sie neue Az-Module importieren. 
 
-* Wenn ein Cmdlet von einem Modul aus einem Runbook aufgerufen wird
-* Wenn ein Runbook es explizit mit einem `Import-Module`-Cmdlet importiert
-* Wenn ein anderes Modul, das vom Modul abhängig ist, in eine PowerShell-Sitzung importiert wird
+* Änderungen an Modulen können die Lösung zum [Starten/Beenden](automation-solution-vm-management.md) negativ beeinflussen. 
+
+* Beim Importieren eines Az-Moduls in Ihr Automation-Konto wird das Modul in der PowerShell-Sitzung, die die Runbooks verwenden, nicht automatisch importiert. Module werden in den folgenden Situationen in die PowerShell-Sitzung importiert:
+
+    * Wenn ein Runbook ein Cmdlet in einem Modul aufruft
+    * Wenn ein Runbook das Modul mit einem `Import-Module`-Cmdlet explizit importiert
+    * Wenn ein Runbook ein anderes Modul importiert, das vom Modul abhängig ist
+
+> [!NOTE]
+> Es wird nicht empfohlen, Module und Runbooks in Automation-Accounts zu ändern, die Lösungen enthalten. Diese Vorkehrung ist nicht spezifisch für die Az-Module. Sie sollte stets bei der Einführung von Änderungen in Ihrem Automation-Konto berücksichtigt werden.
 
 > [!IMPORTANT]
-> Es ist wichtig sicherzustellen, dass Runbooks in einem Automation-Konto entweder nur `Az`- oder `AzureRM`-Module in die von Runbooks verwendeten PowerShell-Sitzungen importieren und nicht beide. Wenn `Az` vor `AzureRM` in ein Runbook importiert wird, wird das Runbook abgeschlossen, aber es wird ein [Fehler mit Bezug auf die Methode get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) in den Auftragsdatenströmen angezeigt, und Cmdlets wurden möglicherweise nicht ordnungsgemäß ausgeführt. Wenn Sie `AzureRM` und dann `Az` importieren, wird Ihr Runbook immer noch vollständig sein, aber Sie werden einen Fehler in den Auftragsdatenströmen sehen, der besagt, dass sowohl `Az` als auch `AzureRM` nicht in der gleichen Sitzung importiert oder im gleichen Runbook verwendet werden können.
+> Stellen Sie sicher, dass Runbooks in einem Automation-Konto entweder nur Az-Module oder nur [AzureRM](https://www.powershellgallery.com/packages/AzureRM/6.13.1)-Module in eine PowerShell-Sitzung importieren. Wenn ein Runbook Az-Module vor AzureRM-Modulen importiert, wird das Runbook abgeschlossen. Wenn jedoch in den Auftragsdatenströmen ein Fehler beim Verweisen auf das Cmdlet [Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) auftritt, werden die Cmdlets möglicherweise nicht ordnungsgemäß ausgeführt. Wenn das Runbook AzureRM-Module vor Az-Modulen importiert, wird das Runbook ebenfalls abgeschlossen. In diesem Fall erhalten Sie jedoch einen Fehler in den Auftragsdatenströmen, der besagt, dass sowohl Az- als auch AzureRM-Module nicht in derselben Sitzung importiert oder im selben Runbook verwendet werden dürfen.
 
 ## <a name="migrating-to-az-modules"></a>Migrieren zu Az-Modulen
 
-Es wird empfohlen, die Migration zur Verwendung von Az-Modulen anstelle von AzureRM-Modulen in einem Automation-Testkonto zu testen. Sobald dieses Automation-Konto erstellt wurde, können Sie anhand der folgenden Schritte sicherstellen, dass die Migration reibungslos verläuft:
+Es wird empfohlen, eine Migration zu Az-Modulen in einem Automation-Testkonto zu testen. Sobald Sie das Konto erstellt haben, können Sie die Anweisungen in diesem Abschnitt befolgen, um mit den Modulen zu arbeiten.
 
-### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>Alle Runbooks, die AzureRM-Module verwenden, anhalten und entfernen
+### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Anhalten und Aufheben des Zeitplans aller Runbooks, die AzureRM-Module verwenden
 
-Um sicherzustellen, dass Sie keine vorhandenen Runbooks ausführen, die `AzureRM`-Cmdlets verwenden, sollten Sie alle Runbooks, die `AzureRM`-Module verwenden, anhalten und entfernen. Sie können im folgenden Beispiel sehen, welche Zeitpläne vorhanden sind und welche Zeitpläne entfernt werden müssen:
+Um sicherzustellen, dass Sie keine bestehenden Runbooks ausführen, die AzureRM-Module verwenden, beenden Sie alle betroffenen Runbooks, und entfernen Sie sie aus dem Zeitplan. Sie können sehen, welche Zeitpläne vorhanden sind und welche Zeitpläne zu entfernen sind, indem Sie Code ähnlich wie in diesem Beispiel ausführen:
 
   ```powershell-interactive
   Get-AzureRmAutomationSchedule -AutomationAccountName "<AutomationAccountName>" -ResourceGroupName "<ResourceGroupName>" | Remove-AzureRmAutomationSchedule -WhatIf
@@ -45,27 +52,35 @@ Es ist wichtig, jeden Zeitplan separat zu überprüfen, um sicherzustellen, dass
 
 ### <a name="import-the-az-modules"></a>Importieren der Az-Module
 
-Importieren Sie nur die Az-Module, die für Ihre Runbooks erforderlich sind. Importieren Sie nicht das Rollup -`Az`-Modul, da es alle zu importierenden `Az.*`-Module enthält. Diese Anleitung gilt für alle Module.
+>[!NOTE]
+>Lassen Sie Ihre Runbooks nur Az-Module importieren. Importieren Sie nicht das Az-Rollupmodul, da es alle Az-Module enthält. Diese Anleitung gilt für alle Module.
 
-Das [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0)-Modul ist eine Abhängigkeit für die anderen `Az.*`-Module. Aus diesem Grund muss dieses Modul in Ihr Automation-Konto importiert werden, bevor Sie andere Module importieren.
+Das Modul [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) stellt für die anderen Az-Module eine Abhängigkeit dar. Aus diesem Grund müssen Ihre Runbooks dieses Modul in Ihr Automation-Konto importieren, bevor Sie andere Module importieren können.
 
-Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. Klicken Sie auf **Katalog durchsuchen**, um die Seite **Katalog durchsuchen** zu öffnen.  Geben Sie in der Suchleiste den Namen des Moduls ein (z.B. `Az.Accounts`). Klicken Sie auf der Seite PowerShell-Module auf **Importieren**, um das Modul in Ihr Automation-Konto zu importieren.
+So importieren Sie die Module im Azure-Portal
+
+1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. 
+2. Klicken Sie auf **Katalog durchsuchen**, um die Seite „Katalog durchsuchen“ zu öffnen.  
+3. Geben Sie in die Suchleiste den Namen des Moduls ein, z. B. `Az.Accounts`. 
+4. Klicken Sie auf der Seite „PowerShell-Module“ auf **Importieren**, um das Modul in Ihr Automation-Konto zu importieren.
 
 ![Importieren von Modulen aus einem Automation-Konto](media/az-modules/import-module.png)
 
-Dieser Importvorgang kann auch über den [PowerShell-Katalog](https://www.powershellgallery.com) durchgeführt werden, indem nach dem Modul gesucht wird. Sobald Sie das Modul gefunden haben, wählen Sie es aus, und klicken Sie auf der Registerkarte **Azure Automation** auf **In Azure Automation bereitstellen**.
+Dieser Importvorgang kann auch über den [PowerShell-Katalog](https://www.powershellgallery.com) erfolgen, indem nach dem zu importierenden Modul gesucht wird. Sobald Sie das Modul gefunden haben, wählen Sie es aus. Wählen Sie die Registerkarte **Azure Automation** aus, und klicken Sie auf **In Azure Automation bereitstellen**.
 
 ![Importieren von Modulen direkt aus dem Katalog](media/az-modules/import-gallery.png)
 
-## <a name="test-your-runbooks"></a>Testen Ihres Runbooks
+## <a name="testing-your-runbooks"></a>Testen Ihrer Runbooks
 
-Sobald die `Az`-Module in Ihr Automation-Konto importiert wurden, können Sie nun mit der Bearbeitung Ihrer Runbooks beginnen, um stattdessen das Az-Modul zu verwenden. Die Mehrheit der Cmdlets haben den gleichen Namen, außer `AzureRM` wurde in `Az` geändert. Eine Liste der Module, die diesem Prozess nicht verwenden, finden Sie unter [Liste der Ausnahmen](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
+Sobald Sie die Az-Module in das Automation-Konto importiert haben, können Sie beginnen, Ihre Runbooks so zu bearbeiten, dass Sie die Module verwenden. Die Mehrzahl der Cmdlets hat denselben Namen wie beim AzureRM-Modul, mit der Ausnahme, dass das Präfix AzureRM (oder AzureRm) in Az geändert wurde. Eine Liste der Module, die diese Namenskonvention nicht befolgen, finden Sie in der [Liste der Ausnahmen](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
-Eine Möglichkeit, Ihre Runbooks zu testen, bevor Sie Ihr Runbook für die Verwendung der neuen Cmdlets ändern, besteht darin, `Enable-AzureRMAlias -Scope Process` am Anfang eines Runbooks zu verwenden. Wenn Sie dies zu Ihrem Runbook hinzufügen, kann Ihr Runbook ohne Änderungen ausgeführt werden.
+Eine Möglichkeit zum Testen der Änderung eines Runbooks zur Verwendung der neuen Cmdlets besteht darin, `Enable-AzureRmAlias -Scope Process` am Anfang des Runbooks anzugeben. Wenn Sie diesen Befehl Ihrem Runbook hinzufügen, kann das Skript ohne Änderungen ausgeführt werden.
 
-## <a name="after-migration-details"></a>Details zu den Vorgängen nach der Migration
+## <a name="after-migration-details"></a>Details nach der Migration
 
-Starten Sie nach Abschluss der Migration keine Runbooks mehr, die `AzureRM`-Module für das Konto verwenden. Es wird auch empfohlen, keine `AzureRM`-Module in diesem Konto mehr zu importieren oder zu aktualisieren. Ab diesem Zeitpunkt sollten Sie dieses Konto als auf `Az` migriert betrachten und nur mit `Az`-Modulen arbeiten. Wenn ein neues Automation-Konto erstellt wird, werden die vorhandenen `AzureRM`-Module weiterhin installiert und die Tutorial-Runbooks werden weiterhin mit `AzureRM`-Cmdlets erstellt. Diese Runbooks sollten nicht ausgeführt werden.
+Versuchen Sie nach Abschluss der Migration nicht, Runbooks mit AzureRM-Modulen im Automation-Konto zu starten. Es wird auch empfohlen, keine AzureRM-Module in das Konto zu importieren oder zu aktualisieren. Betrachten Sie das Konto als zu Az migriert, und arbeiten Sie nur mit Az-Modulen. 
+
+Wenn Sie ein neues Automation-Konto erstellen, sind die vorhandenen AzureRM-Module weiterhin installiert. Sie können die Runbooks von Tutorials weiterhin mit AzureRM-Cmdlets aktualisieren. Sie dürfen diese Runbooks jedoch nicht ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

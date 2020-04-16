@@ -3,12 +3,12 @@ title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226046"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672823"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -64,6 +64,8 @@ Beachten Sie Folgendes:
 5. Sie können den Namen der RG bearbeiten, indem Sie die Richtlinie ändern, wenn dies erforderlich ist. Wenn das Namensmuster geändert wird, werden in der neuen RG neue RPs erstellt. Die alten RPs befinden sich jedoch weiterhin in der alten RG und werden nicht verschoben, da die RP-Sammlung kein Verschieben von Ressourcen unterstützt. Schließlich erfolgt eine automatische Speicherbereinigung der RPs, wenn die Punkte ablaufen.
 ![Ändern des Namens beim Ändern der Richtlinie](./media/backup-during-vm-creation/modify-policy.png)
 6. Es empfiehlt sich, die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht zu sperren.
+
+Informationen zum Konfigurieren der Azure Backup-Ressourcengruppe für Virtual Machines mithilfe von PowerShell finden Sie unter [Erstellen einer Azure Backup-Ressourcengruppe während der Aufbewahrung von Momentaufnahmen](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Starten einer Sicherung nach dem Erstellen der VM
 

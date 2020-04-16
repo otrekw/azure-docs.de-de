@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215248"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983023"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
 Moderne Anwendungen erfordern eine hohe Reaktionsschnelligkeit und müssen immer online sein. Um eine geringe Latenz und Hochverfügbarkeit zu erreichen, müssen Instanzen dieser Anwendungen in Rechenzentren eingesetzt werden, die sich in der Nähe ihrer Benutzer befinden. Anwendungen müssen in Echtzeit auf große Nutzungsänderungen zu Spitzenzeiten reagieren, immer größere Datenmengen speichern und diese den Benutzern innerhalb von Millisekunden zur Verfügung stellen.
 
-Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Mit Cosmos DB können Sie Durchsatz und Speicher mit nur einem Klick elastisch und unabhängig voneinander über eine beliebige Anzahl von weltweiten Azure-Regionen hinweg skalieren. Sie können den Durchsatz und Speicherplatz elastisch skalieren und von einem schnellen Datenzugriff im einstelligen Millisekundenbereich über Ihre bevorzugte API profitieren, z. B.: SQL, MongoDB, Cassandra, Tables oder Gremlin. Cosmos DB bietet umfassende [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) mit Durchsatz-, Latenz-, Verfügbarkeits- und Konsistenzgarantien – dies kann kein anderer Datenbankdienst bereitstellen.
+Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Mit Cosmos DB können Sie Durchsatz und Speicher mit nur einem Klick elastisch und unabhängig voneinander über eine beliebige Anzahl von weltweiten Azure-Regionen hinweg skalieren. Sie können den Durchsatz und Speicherplatz elastisch skalieren und von einem schnellen Datenzugriff im einstelligen Millisekundenbereich über Ihre bevorzugte API profitieren, z. B.: SQL, MongoDB, Cassandra, Tables oder Gremlin. Cosmos DB bietet umfassende [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (Service Level Agreements, SLAs) mit Durchsatz-, Latenz-, Verfügbarkeits- und Konsistenzgarantien – dies kann kein anderer Datenbankdienst bereitstellen.
 
 Sie können [Azure Cosmos DB kostenlos ohne Azure-Abonnement und ohne Verpflichtungen testen](https://azure.microsoft.com/try/cosmosdb/) oder ein [Azure Cosmos DB-Konto im Tarif „Free“](optimize-dev-test.md#azure-cosmos-db-free-tier) nutzen, bei dem die ersten 400 RU/s und 5 GB Speicher kostenlos sind.
 
@@ -48,7 +48,7 @@ Mit Cosmos DB können Sie global nutzbare Anwendungen mit hoher Reaktionsfähigk
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Genau definiert, mehrere Konsistenzoptionen
 
-Beim Erstellen von global verteilten Anwendungen in Cosmos DB müssen Sie keine extremen [Kompromisse zwischen Konsistenz, Verfügbarkeit, Latenz und Durchsatz](consistency-levels-tradeoffs.md) mehr eingehen. Das Cosmos DB-Protokoll für die Multimasterreplikation bietet [fünf klar definierte Konsistenzoptionen](consistency-levels.md) - (*starke Veraltung*, *begrenzte Veraltung*, *Sitzungskonsistenz*, *Präfixkonsistenz* und *letztliche Konsistenz*) für ein intuitives Programmiermodell mit geringen Latenzen und hoher Verfügbarkeit für Ihre global verteilte Anwendung.
+Beim Erstellen von global verteilten Anwendungen in Cosmos DB müssen Sie keine extremen [Kompromisse zwischen Konsistenz, Verfügbarkeit, Latenz und Durchsatz](consistency-levels-tradeoffs.md) mehr eingehen. Das Cosmos DB-Protokoll für die Multimasterreplikation bietet [fünf klar definierte Konsistenzoptionen](consistency-levels.md) -  (*starke Veraltung*, *begrenzte Veraltung*, *Sitzungskonsistenz*, *Präfixkonsistenz* und *letztliche Konsistenz*) für ein intuitives Programmiermodell mit geringen Wartezeiten und Hochverfügbarkeit für Ihre global verteilte Anwendung.
 
 ### <a name="no-schema-or-index-management"></a>Keine Schema- oder Indexverwaltung
 
@@ -56,7 +56,7 @@ Die Synchronisierung von Datenbankschemas und -indizes mit dem Schema einer Anwe
 
 ### <a name="battle-tested-database-service"></a>Kampferprobter Datenbankdienst
 
-Cosmos DB ist ein Basisdienst in Azure. Seit fast einem Jahrzehnt wird Cosmos DB von vielen Microsoft-Produkten für unternehmenskritische Anwendungen auf globaler Ebene eingesetzt, darunter Skype, Xbox, Office 365, Azure und viele weitere. Heute ist Cosmos DB einer der am schnellsten wachsenden Dienste in Azure und wird von vielen externen Kunden und unternehmenskritischen Anwendungen genutzt, die eine elastische Skalierung, eine schlüsselfertige globale Verteilung sowie Multimasterreplikation für geringe Latenzen und hohe Verfügbarkeit für Lese- und Schreibvorgänge erfordern.
+Cosmos DB ist ein Basisdienst in Azure. Seit fast einem Jahrzehnt wird Cosmos DB von vielen Microsoft-Produkten für unternehmenskritische Anwendungen auf globaler Ebene eingesetzt, darunter Skype, Xbox, Office 365, Azure und viele weitere. Heute ist Cosmos DB einer der am schnellsten wachsenden Dienste in Azure und wird von vielen externen Kunden und unternehmenskritischen Anwendungen genutzt, die eine elastische Skalierung, eine schlüsselfertige globale Verteilung sowie Multimasterreplikation für geringe Latenzen und hohe Verfügbarkeit für Lese- und Schreibvorgänge erfordern.
 
 ### <a name="ubiquitous-regional-presence"></a>Ubiquitäre regionale Präsenz
 

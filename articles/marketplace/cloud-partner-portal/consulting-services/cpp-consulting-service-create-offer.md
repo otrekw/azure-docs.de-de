@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278551"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985132"
 ---
 # <a name="create-a-consulting-offer"></a>Erstellen eines Beratungsangebots
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
 
 In diesem Artikel wird erläutert, wie ein Beratungsdienstangebot erstellt und veröffentlicht wird.
 
@@ -34,5 +37,5 @@ Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen.
 
 Die Seite **Neues Angebot** für den Beratungsdienst enthält eine Reihe von Registerkarten und Formularfeldern zum Erstellen eines neuen Angebots. In den folgenden Artikeln wird erläutert, wie Sie auf der Registerkarte die Angebotseinstellungen und Details der digitalen Ladenzeile für Ihr neues Angebot definieren:
 
--   [Definieren der Angebotseinstellungen](./cpp-consulting-service-define-offer-settings.md)
--   [Eingeben der Details der digitalen Ladenzeile und Festlegen, ob im Azure Marketplace oder in AppSource veröffentlicht werden soll](./cpp-consulting-service-storefront-details.md)
+-    [Definieren der Angebotseinstellungen](./cpp-consulting-service-define-offer-settings.md)
+-    [Eingeben der Details der digitalen Ladenzeile und Festlegen, ob im Azure Marketplace oder in AppSource veröffentlicht werden soll](./cpp-consulting-service-storefront-details.md)

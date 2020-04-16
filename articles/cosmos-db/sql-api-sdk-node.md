@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411282"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982887"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -295,14 +295,14 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Unterstützung für Sitzungskonsistenz hinzugefügt.
-* Für dieses SDK muss die neueste Version des Azure Cosmos DB-Emulators vorhanden sein. Diese können Sie unter https://aka.ms/cosmosdb-emulator herunterladen.
+* Für dieses SDK muss die neueste Version des [Azure Cosmos DB-Emulators](https://aka.ms/cosmosdb-emulator) vorhanden sein.
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Partitionsübergreifende Abfragen sind jetzt aufteilungssicher.
 * Unterstützung für Ressourcenlinks mit führenden und nachgestellten Schrägstrichen (und entsprechende Tests) hinzugefügt.
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm-Dokumentation wurde berichtigt.
+*    npm-Dokumentation wurde berichtigt.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Ein Fehler in executeStoredProcedure, durch den beteiligte Dokumente Unicode-Sonderzeichen aufwiesen (LS, PS), wurde behoben.
@@ -356,7 +356,7 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 * Problem mit „hashPartitionResolver resolveForRead()“ behoben: Bei einem nicht angegebenen Partitionsschlüssel wurde eine Ausnahme ausgelöst, anstatt eine Liste aller registrierten Links zurückzugeben.
 
 ### <a name=""></a><a name="1.5.4"/>1.5.4</a>
-* Behebt Problem [100](https://github.com/Azure/azure-documentdb-node/issues/100): Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für Azure Cosmos DB-Zwecke. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
+* Behebt Problem [100](https://github.com/Azure/azure-documentdb-node/issues/100): Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für Azure Cosmos DB-Zwecke. Verwenden Sie für alle Anforderungen der Bibliothek einen dedizierten Agent.
 
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
 * Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.

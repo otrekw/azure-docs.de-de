@@ -3,12 +3,12 @@ title: 'Vorschläge für aktives Lernen: QnA Maker'
 description: Durch Vorschläge für aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053139"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804214"
 ---
 # <a name="active-learning-suggestions"></a>Vorschläge für aktives Lernen
 
@@ -27,7 +27,7 @@ Mit beiden Methoden werden ähnliche (gruppierte) Abfragen für die Bewertung be
 
 ## <a name="how-active-learning-works"></a>Aktives Lernen: Funktionsweise
 
-Aktives Lernen wird basierend auf den Bewertungen der relevantesten Antworten ausgelöst, die von QnA Maker zurückgegeben werden. Liegt der Scoreunterschied zwischen Frage-Antwort-Sätzen, die der Abfrage entsprechen, innerhalb eines geringen Bereichs, wird die Abfrage als möglicher Vorschlag (alternative Frage) für jedes der möglichen Frage-Antwort-Paare betrachtet. Nachdem Sie die vorgeschlagene Frage für ein bestimmtes QnA-Paar akzeptiert haben, wird sie für die anderen Paare abgelehnt. Denken Sie daran, nach dem Akzeptieren von Vorschlägen zu speichern und ein Training auszuführen.
+Aktives Lernen wird basierend auf den Bewertungen der relevantesten Antworten ausgelöst, die von QnA Maker zurückgegeben werden. Liegt der Scoreunterschied zwischen Frage-Antwort-Paaren, die der Abfrage entsprechen, innerhalb eines geringen Bereichs, wird die Abfrage als möglicher Vorschlag (alternative Frage) für jedes der möglichen Frage-Antwort-Paare betrachtet. Nachdem Sie die vorgeschlagene Frage für ein bestimmtes QnA-Paar akzeptiert haben, wird sie für die anderen Paare abgelehnt. Denken Sie daran, nach dem Akzeptieren von Vorschlägen zu speichern und ein Training auszuführen.
 
 Das Feature für aktives Lernen liefert die bestmöglichen Vorschläge in Fällen, in denen die Endpunkte eine angemessene Anzahl und Vielfalt von Nutzungsabfragen erhalten. Wenn mindestens 5 ähnliche Abfragen gruppiert werden, sendet QnA Maker alle 30 Minuten die benutzerbasierten Fragen als Vorschläge an den Entwickler der Wissensdatenbank, um diese zu akzeptieren oder abzulehnen. Alle Vorschläge werden nach Ähnlichkeit gruppiert, und die besten Vorschläge für alternative Fragen werden basierend auf der Häufigkeit der jeweiligen Abfragen von Endbenutzern angezeigt.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772005"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548305"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -111,7 +111,7 @@ Sicherheitsappliances für Azure-Netzwerke können eine bessere Sicherheit biete
 * Virenschutz
 * Botnet-Schutz
 
-Die für ein Azure Virtual Network verfügbaren Sicherheitsappliances finden Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/). Suchen Sie nach den Begriffen „Sicherheit“ und „Netzwerksicherheit“.
+Die für ein virtuelles Azure-Netzwerk verfügbaren Sicherheitsappliances finden Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/). Suchen Sie nach den Begriffen „Sicherheit“ und „Netzwerksicherheit“.
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Bereitstellen von Umkreisnetzwerken für Sicherheitszonen
 Ein [Umkreisnetzwerk](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (auch als DMZ bezeichnet) ist ein physisches oder logisches Netzwerksegment, das als zusätzliche Sicherheitsebene zwischen Ihren Ressourcen und dem Internet zu dient. Spezielle Geräte für die Netzwerkzugriffssteuerung am Rande eines Umkreisnetzwerks erlauben nur den gewünschten Datenverkehr in Ihrem virtuellen Netzwerk.
@@ -122,7 +122,7 @@ Dies ist das grundlegende Design eines Umkreisnetzwerks, aber es gibt noch viele
 
 Basierend auf dem zuvor beschriebenen Zero Trust-Konzept empfehlen wir für alle Bereitstellungen mit hohen Sicherheitsanforderungen die Nutzung eines Umkreisnetzwerks, um die Stufe der Netzwerksicherheit und der Zugriffssteuerung für Ihre Azure-Ressourcen zu erhöhen. Sie können Azure oder eine Drittanbieterlösung verwenden, um eine zusätzliche Sicherheitsebene zwischen Ihren Ressourcen und dem Internet bereitzustellen:
 
-- Native Azure-Kontrollen. [Azure-Firewall](/azure/firewall/overview) und [Web Application Firewall in Application Gateway](/azure/application-gateway/overview#web-application-firewall) bieten grundlegende Sicherheit mit einer vollständig zustandsbehafteten Firewall als Dienst, integrierte Hochverfügbarkeit, uneingeschränkte Cloudskalierbarkeit, FQDN-Filterung, Unterstützung für OWASP-Kernregelsätze sowie einfache Einrichtung und Konfiguration.
+- Native Azure-Kontrollen. [Azure-Firewall](/azure/firewall/overview) und [Web Application Firewall in Application Gateway](../../application-gateway/features.md#web-application-firewall) bieten grundlegende Sicherheit mit einer vollständig zustandsbehafteten Firewall als Dienst, integrierte Hochverfügbarkeit, uneingeschränkte Cloudskalierbarkeit, FQDN-Filterung, Unterstützung für OWASP-Kernregelsätze sowie einfache Einrichtung und Konfiguration.
 - Angebote von Drittanbietern. Suchen Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach Angeboten für Next-Generation-Firewalls (NGFW) und anderen Drittanbieterangeboten, die vertraute Sicherheitstools und erheblich verbesserte Netzwerksicherheit bieten. Die Konfiguration ist möglicherweise komplexer, aber mit einem Angebot eines Drittanbieters können Sie eventuell bereits vorhandene Fähigkeiten und Kenntnisse einsetzen.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Vermeiden der Offenlegung gegenüber dem Internet mit dedizierten WAN-Links
@@ -153,12 +153,12 @@ Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn
 - Dabei ist nur eine sichere Verbindung zulässig. Unverschlüsselte Kommunikation mit den Servern sind keine akzeptable Option.
 - Für die mehrere HTTP-Anforderungen über die gleiche lange bestehende TCP-Verbindung an verschiedene Back-End-Server weitergeleitet werden bzw. für die dort ein Lastenausgleich erfolgen muss.
 
-**Option für den Lastenausgleich**: Verwenden Sie [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), einen Lastenausgleich für HTTP-Web-Datenverkehr. Application Gateway unterstützt die End-to-End-SSL-Verschlüsselung und [SSL-Terminierung](/azure/application-gateway/application-gateway-introduction) am Gateway. Webserver können dann von Ver- und Entschlüsselungs-Overheads und unverschlüsseltem Datenverkehr zu den Back-End-Servern entlastet werden.
+**Option für den Lastenausgleich**: Verwenden Sie [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), einen Lastenausgleich für HTTP-Web-Datenverkehr. Application Gateway unterstützt die End-to-End-TLS-Verschlüsselung und [TLS-Terminierung](/azure/application-gateway/application-gateway-introduction) am Gateway. Webserver können dann von Ver- und Entschlüsselungs-Overheads und unverschlüsseltem Datenverkehr zu den Back-End-Servern entlastet werden.
 
 **Szenario:** Sie benötigen für eingehende Verbindungen aus dem Internet einen Lastenausgleich zwischen Ihren Servern in einem virtuellen Azure-Netzwerk. Szenarien sind, wenn Sie:
 
 - Zustandslose Anwendungen haben, die eingehende Anforderungen aus dem Internet akzeptieren.
-- Keine persistenten Sitzungen oder SSL-Auslagerung benötigen. Persistente Sitzungen sind eine Methode, die für den Anwendungslastenausgleich verwendet wird, um die Serveraffinität zu erreichen.
+- Keine persistenten Sitzungen oder TLS-Auslagerung benötigen. Persistente Sitzungen sind eine Methode, die für den Anwendungslastenausgleich verwendet wird, um die Serveraffinität zu erreichen.
 
 **Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen externen Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
 

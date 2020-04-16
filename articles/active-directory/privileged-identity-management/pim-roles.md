@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895203"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607521"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen, die nicht in Privileged Identity Management verwaltet werden können
 
-Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle [Azure AD-Rollen](../users-groups-roles/directory-assign-admin-roles.md) und alle [Azure-Ressourcenrollen](../../role-based-access-control/built-in-roles.md) verwalten. Zu diesen Rollen gehören auch benutzerdefinierten Rollen, die an Ihre Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen angefügt sind. Es gibt jedoch einige Rollen, die Sie nicht verwalten können. In diesem Artikel werden die Rollen beschrieben, die Sie nicht in Privileged Identity Management verwalten können.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle [Azure AD-Rollen](../users-groups-roles/directory-assign-admin-roles.md) und alle [Azure-Rollen](../../role-based-access-control/built-in-roles.md) verwalten. Zu diesen Azure-Rollen gehören auch benutzerdefinierten Rollen, die an Ihre Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen angefügt sind. Es gibt jedoch einige Rollen, die Sie nicht verwalten können. In diesem Artikel werden die Rollen beschrieben, die Sie nicht in Privileged Identity Management verwalten können.
 
 ## <a name="classic-subscription-administrator-roles"></a>Administrator für klassisches Abonnement
 
@@ -37,10 +37,10 @@ Weitere Informationen zu Administratorrollen klassischer Abonnements finden Sie 
 
 ## <a name="what-about-office-365-admin-roles"></a>Informationen zu Office 365-Administratorrollen
 
-Rollen in Exchange Online oder SharePoint Online (mit Ausnahme von Exchange-Administrator und SharePoint-Administrator) werden in Azure AD nicht dargestellt und können daher in Privileged Identity Management nicht verwaltet werden. Weitere Informationen zu diesen Office 365-Diensten finden Sie unter [Office 365-Administratorrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Es werden alle Office 365-Rollen in der Azure AD-Rollenumgebung und im Administratorportal unterstützt, z. B. „Exchange-Administrator“ und „SharePoint-Administrator“, aber es werden keine spezifischen Rollen innerhalb von Exchange-RBAC oder SharePoint-RBAC unterstützt. Weitere Informationen zu diesen Office 365-Diensten finden Sie unter [Office 365-Administratorrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> Der SharePoint-Administrator hat Administratorzugriff auf SharePoint Online über das SharePoint Online Admin Center und darf nahezu jede Aufgabe in SharePoint Online ausführen. Bei berechtigten Benutzern treten bei Verwendung dieser Rolle innerhalb von SharePoint nach der Aktivierung in Privileged Identity Management u.U. Verzögerungen auf.
+> Bei berechtigten Benutzern für die Rolle „SharePoint-Administrator“ sowie allen Rollen, die versuchen, auf das Microsoft Security and Compliance Center zuzugreifen, können nach dem Aktivieren ihrer Rolle Verzögerungen auftreten. Wir arbeiten mit diesen Teams zusammen daran, diese Probleme zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

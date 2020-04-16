@@ -2,13 +2,13 @@
 title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258123"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885734"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -30,11 +30,17 @@ Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-
 
    ![Vergleich von Vorlagenbereitstellungen](./media/overview/template-processing.png)
 
-* **Integrierte Überprüfung**: Ihre Vorlage wird erst bereitgestellt, wenn sie die Überprüfung bestanden hat. Resource Manager überprüft die Vorlage vor Beginn der Bereitstellung, um sicherzustellen, dass die Bereitstellung erfolgreich sein wird. Es ist weniger wahrscheinlich, dass die Bereitstellung in einem halbfertigen Zustand beendet wird.
-
 * **Modulare Dateien**: Sie können Ihre Vorlagen in kleinere, wiederverwendbare Komponenten unterteilen und sie zum Zeitpunkt der Bereitstellung miteinander verknüpfen. Sie können eine Vorlage auch in anderen Vorlagen schachteln.
 
 * **Erstellen jeder Azure-Ressource**: Sie können neue Azure-Dienste und -Features sofort in Vorlagen verwenden. Sobald ein Ressourcenanbieter neue Ressourcen einführt, können Sie diese Ressourcen mithilfe von Vorlagen bereitstellen. Sie müssen nicht warten, bis Tools oder Module aktualisiert werden, bevor Sie die neuen Dienste verwenden.
+
+* **Erweiterbarkeit:** Mit [Bereitstellungsskripts](deployment-script-template.md) können Sie Ihren Vorlagen PowerShell- oder Bash-Skripts hinzufügen. Die Bereitstellungsskripts erweitern die Möglichkeiten zum Einrichten von Ressourcen während der Bereitstellung. Ein Skript kann in die Vorlage eingeschlossen werden oder in einer externen Quelle gespeichert und in der Vorlage referenziert werden. Mit Bereitstellungsskripts haben Sie die Möglichkeit, die Einrichtung der End-to-End-Umgebung in einer einzelnen ARM-Vorlage abzuschließen.
+
+* **Testen:** Sie können sicherstellen, dass Ihre Vorlage den empfohlenen Richtlinien entspricht, indem Sie sie mit dem ARM-Vorlagentoolkit (arm-ttk) testen. Dieses Testkit ist ein PowerShell-Skript, das Sie von [GitHub](https://github.com/Azure/arm-ttk) herunterladen können. Das Toolkit erleichtert Ihnen das Erlangen von Kenntnissen mithilfe der Vorlagensprache.
+
+* **Vorschau der Änderungen:** Sie können den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md) verwenden, um vor der Bereitstellung der Vorlage eine Vorschau der Änderungen anzuzeigen. Mit Was-wäre-wenn können Sie feststellen, welche Ressourcen erstellt, aktualisiert oder gelöscht und welche Ressourceneigenschaften geändert werden. Der Was-wäre-wenn-Vorgang überprüft den aktuellen Zustand Ihrer Umgebung, sodass Sie diesen nicht verwalten müssen.
+
+* **Integrierte Überprüfung**: Ihre Vorlage wird erst bereitgestellt, wenn sie die Überprüfung bestanden hat. Resource Manager überprüft die Vorlage vor Beginn der Bereitstellung, um sicherzustellen, dass die Bereitstellung erfolgreich sein wird. Es ist weniger wahrscheinlich, dass die Bereitstellung in einem halbfertigen Zustand beendet wird.
 
 * **Nachverfolgte Bereitstellungen**: Im Azure-Portal können Sie den Bereitstellungsverlauf überprüfen und Informationen zur Vorlagenbereitstellung abrufen. Sie können die bereitgestellte Vorlage, die übergebenen Parameterwerte und die Ausgabewerte anzeigen. Andere Infrastructure-as-Code-Dienste werden nicht über das Portal nachverfolgt.
 

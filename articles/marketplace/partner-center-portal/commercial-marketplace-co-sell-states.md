@@ -1,26 +1,26 @@
 ---
-title: Co-Selling-Statuscodes | Azure Marketplace
-description: Verwenden Sie Codes für Bundesland/Kanton, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
+title: Bundesstaaten- und Provinzcodes für das Co-Selling | Azure Marketplace
+description: Verwenden Sie die folgenden Codes für Bundesstaaten und Provinzen, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277038"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619361"
 ---
-# <a name="co-sell-state-codes"></a>Co-Selling-Statuscodes
+# <a name="co-sell-state-and-province-codes"></a>Bundesstaaten- und Provinzcodes für das Co-Selling
 
 Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzustellen, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots bereitstellen](commercial-marketplace-co-sell.md#contacts).
 
-## <a name="stateprovince-table"></a>Tabelle für Bundesland/Kanton
+## <a name="us-states-and-territories"></a>US-Bundesstaaten und -Territorien
 
-|   Name des Bundeslands/Kantons               |   Code    |
+|   Name des Bundesstaats und Territoriums          |   Code    |
 |-------------------------------------|-----------|
 | Alabama                             | US-AL     |
 | Alaska                              | US-AK     |
@@ -78,7 +78,40 @@ Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzus
 | Nördliche Marianen            | US-MP     |
 | Puerto Rico                         | US-PR     |
 | Kleinere Amerikanische Überseeinseln | US-UM    |
-|Amerikanische Jungferninseln                 | US-VI     |
+| Amerikanische Jungferninseln                 | US-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>Kanadische Provinzen und Territorien
+
+|   Name der Provinz und des Territoriums       |   Code    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| Manitoba                            |  CA-MB    |
+| New Brunswick                       |  CA-NB    |
+| Newfoundland and Labrador           |  CA-NL    |
+| Nova Scotia                         |  CA-NS    |
+| Ontario                             |  CA-ON    |
+| Prince Edward Island                |  CA-PE    |
+| Quebec                              |  CA-QC    |
+| Saskatchewan                        |  CA-SK    |
+| Northwest Territories               |  CA-NT    |
+| Nunavut                             |  CA-NU    |
+| Yukon                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>Australische Bundesstaaten und Territorien
+
+|   Name des Bundesstaats und Territoriums          |   Code    |
+|-------------------------------------|-----------|
+| Neusüdwales                     |  AU-NSW   |
+| Queensland                          |  AU-QLD   |
+| South Australia                     |  AU-SA    |
+| Tasmania                            |  AU-TAS   |
+| Victoria                            |  AU-VIC   |
+| Western Australia                   |  AU-WA    |
+| Australian Capital Territory        |  AU-ACT   |
+| Northern Territory                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

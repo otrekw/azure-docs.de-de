@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588041"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529094"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -42,6 +42,10 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 - [MISP-Open-Source-Threat Intelligence Platform](https://www.misp-project.org/)
     
     Ein Beispielskript, das Clients mit MISP-Instanzen zur Migration von Bedrohungsindikatoren in die Microsoft Graph-Sicherheits-API bereitstellt, finden Sie unter [MISP zu Microsoft Graph-Sicherheitsskript](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP).
+
+- [Anomali ThreatStream](https://www.anomali.com/products/threatstream)
+
+    Auf der Seite für [ThreatStream-Downloads](https://ui.threatstream.com/downloads) können Sie ThreatStream Integrator und Erweiterungen herunterladen. Außerdem finden Sie dort Anweisungen dazu, wie Sie ThreatStream-Daten mit der Microsoft Graph-Sicherheits-API verbinden.
 
 - [Palo Alto Networks MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     

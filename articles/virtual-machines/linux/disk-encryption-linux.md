@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19dcfb96f29939fd92f49ba288ddb6d9264e0f9a
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970592"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313626"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
-Azure Disk Encryption verwendet das DM-Crypt-Feature von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereitzustellen, und ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für Datenträger steuern und verwalten können. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md).
 
-Es gibt viele Szenarien für die Aktivierung von Datenträgerverschlüsselung. Die Schritte können je nach Szenario abweichen. In den folgenden Abschnitten werden diese Szenarien für virtuelle Linux-Computer ausführlicher beschrieben.
+Azure Disk Encryption für virtuelle Linux-Computer (VMs) bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des EncryptFormatAll-Features die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt.
+
+Azure Disk Encryption ist [mit Azure Key Vault integriert](disk-encryption-key-vault.md), um Ihnen die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel und -geheimnisse zu erleichtern. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md).
 
 Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterstützten VM-Größen und Betriebssystemen](disk-encryption-overview.md#supported-vms-and-operating-systems) anwenden. Außerdem müssen die folgenden Voraussetzungen erfüllt sein:
 
@@ -202,9 +203,9 @@ Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene
 |  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des Verschlüsselungsschlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
 | volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
-| resizeOSDisk | Gibt an, ob die Größe der Betriebssystempartition angepasst werden soll, um die gesamte Betriebssystem-VHD einzunehmen, bevor das Systemvolume aufgeteilt wird. |
 | location | Der Standort für alle Ressourcen. |
 
+Weitere Informationen zum Konfigurieren zur Datenträgerverschlüsselungsvorlage für Linux-VMs finden Sie unter [Azure Disk Encryption für Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Verwenden des Features EncryptFormatAll für Datenträger auf virtuellen Linux-Computern
 
@@ -260,17 +261,22 @@ Wir empfehlen Ihnen, ein LVM-on-crypt-Setup zu verwenden. Ersetzen Sie für alle
 - Fügen Sie die Datenträger hinzu, aus denen sich die VM zusammensetzt.
 - Formatieren Sie diese Datenträger, stellen Sie sie bereit, und fügen Sie sie der FSTAB-Datei hinzu.
 
-    1. Formatieren Sie den neu hinzugefügten Datenträger. Hier verwenden wir von Azure generierte symlinks. Durch die Verwendung von symlinks werden Probleme in Bezug auf sich ändernde Gerätenamen vermieden. Weitere Informationen finden Sie im Artikel zur [Behandlung von Problemen mit Gerätenamen](troubleshoot-device-names-problems.md).
+    1. Wählen Sie einen Partitionsstandard aus, erstellen Sie eine Partition, die das gesamte Laufwerk umfasst, und formatieren Sie dann die Partition. Hier verwenden wir von Azure generierte symlinks. Durch die Verwendung von symlinks werden Probleme in Bezug auf sich ändernde Gerätenamen vermieden. Weitere Informationen finden Sie im Artikel zur [Behandlung von Problemen mit Gerätenamen](troubleshoot-device-names-problems.md).
     
-         `mkfs -t ext4 /dev/disk/azure/scsi1/lun0`
+         ```azurepowershell-interactive
+         parted /dev/disk/azure/scsi1/lun0 mklabel gpt
+         parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
+         
+         mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
+         ```
     
     1. Stellen Sie die Datenträger bereit.
          
-         `mount /dev/disk/azure/scsi1/lun0 /mnt/mountpoint`
+         `mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint`
     
     1. Fügen Sie sie der FSTAB-Datei hinzu.
          
-        `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
+        `echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab`
     
     1. Führen Sie das PowerShell-Cmdlet „Set-AzVMDiskEncryptionExtension“ mit „-EncryptFormatAll“ aus, um diese Datenträger zu verschlüsseln.
 
@@ -400,7 +406,11 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Dynamische Volumes
 - Kurzlebige Betriebssystemdatenträger
 - Verschlüsselung freigegebener/verteilter Dateisysteme, einschließlich der folgenden, aber nicht auf diese begrenzt: DFS, GFS, DRDB und CephFS.
+- Verschieben eines verschlüsselten virtuellen Computers in ein anderes Abonnement.
 - Kernel-Absturzabbild (kdump).
+- Oracle-ACFS (ASM-Clusterdateisystem)
+- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
+- VMs der Lsv2-Serie (siehe: [Lsv2-Serie](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Nächste Schritte
 

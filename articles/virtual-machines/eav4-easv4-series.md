@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab45298dbcb8988da7d0211fcbde3087d0099038
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164388"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437084"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- und Easv4-Serie
 
-Die Eav4-Serie und die Easv4-Serie verwenden den AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache, wodurch bei der Ausführung der meisten arbeitsspeicheroptimierten Workloads mehr Optionen zur Verfügung stehen. Die Eav4-Serie und die Easv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die Ev3- und die Esv3-Serie.
+Die Eav4-Serie und die Easv4-Serie verwenden den AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache, durch den für die Ausführung der meisten arbeitsspeicheroptimierten Workloads weitere Optionen zur Verfügung stehen. Die Eav4-Serie und die Easv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die Ev3- und die Esv3-Serie.
 
 ## <a name="eav4-series"></a>Eav4-Serie
 
@@ -40,11 +40,9 @@ Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 | Standard\_E16a\_v4|16|128|400|32|24000/375/187|8 / 8000 |
 | Standard\_E20a\_v4|20|160|500|32|30.000/468/234|8 / 10.000 |
 | Standard\_E32a\_v4|32|256|800|32|48000/750/375|8/16000 |
-| Standard\_E48a\_v4 <sup>**</sup> |48|384|1200|32| | |
-| Standard\_E64a\_v4 <sup>**</sup> |64|512|1600|32| | |
-| Standard\_E96a\_v4 <sup>**</sup> |96|672|2400|32| | |
-
-<sup>**</sup>  Diese Größen befinden sich in der Vorschauphase. Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+| Standard\_E48a\_v4|48|384|1200|32|96.000/1.000 (500)|8/24000 |
+| Standard\_E64a\_v4|64|512|1600|32|96.000/1.000 (500)|8 / 30000 |
+| Standard\_E96a\_v4|96|672|2400|32|96.000/1.000 (500)|8 / 30000 |
 
 ## <a name="easv4-series"></a>Easv4-Serie
 
@@ -68,11 +66,9 @@ Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 | Standard_E16as_v4|16|128|256|32|32.000/255 (400)|25600/384|8 / 8000 |
 | Standard_E20as_v4|20|160|320|32|40.000/320 (500)|32000/480|8 / 10.000 |
 | Standard_E32as_v4|32|256|512|32|64.000/510 (800)|51200/768|8/16000 |
-| Standard_E48as_v4 <sup>**</sup> |48|384|768|32|  | |
-| Standard_E64as_v4 <sup>**</sup> |64|512|1024|32| | |
-| Standard_E96as_v4 <sup>**</sup> |96|672|1344|32| | |  
-
-<sup>**</sup>  Diese Größen befinden sich in der Vorschauphase. Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+| Standard_E48as_v4|48|384|768|32|96.000/1.020 (1.200)|76.800/1.148|8/24000 |
+| Standard_E64as_v4|64|512|1024|32|128.000/1.020 (1.600)|80000/1200|8 / 30000 |
+| Standard_E96as_v4|96|672|1344|32|192.000/1.020 (2.400)|80000/1200|8 / 30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -1,15 +1,16 @@
 ---
-title: Erstellen eines HTTPS-Eingangscontrollers mit einem Azure Kubernetes Service-Cluster (AKS)
+title: Erstellen eines Eingangs mit automatischem TLS
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller installieren und konfigurieren, der Let‘s Encrypt für die automatische TLS-Zertifikatsgenerierung in einem Azure Kubernetes Service-Cluster (AKS) verwendet.
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191315"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668427"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers in Azure Kubernetes Service (AKS)
 
@@ -84,7 +85,7 @@ Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name * \
+    --record-set-name '*' \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
@@ -163,7 +164,7 @@ spec:
 Um den Aussteller zu erstellen, verwenden Sie den Befehl `kubectl apply`.
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>Ausführen von Demoanwendungen

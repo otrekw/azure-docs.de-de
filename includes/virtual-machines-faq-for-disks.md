@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ad36547b0cf9457d7ff4fdd919a0bb1362539eb5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205714"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522716"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -54,10 +54,6 @@ Nein.
 **Gelten für Kunden, die verwaltete Datenträger verwenden, Einschränkungen bei der Skalierung?**
 
 Managed Disks beseitigt die Grenzwerte im Zusammenhang mit Speicherkonten. Der Grenzwert liegt jedoch bei 50.000 verwalteten Datenträgern pro Region und Datenträgertyp für ein Abonnement.
-
-**Kann ich eine inkrementelle Momentaufnahme eines verwalteten Datenträgers erstellen?**
-
-Nein. Die aktuelle Momentaufnahmefunktion erstellt eine vollständige Kopie eines verwalteten Datenträgers.
 
 **Können virtuelle Computer in einer Verfügbarkeitsgruppe eine Kombination aus verwalteten und nicht verwalteten Datenträgern besitzen?**
 
@@ -148,17 +144,18 @@ Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstü
 **Was sind Azure-Datenträgerreservierungen?**
 Die Datenträgerreservierung bietet die Möglichkeit, Datenträgerspeicher ein Jahr im Voraus zu erwerben und so die Gesamtkosten zu reduzieren. Ausführliche Informationen zu Azure-Datenträgerreservierungen finden Sie in unserem Artikel zum Thema: [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Storage](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Welche Optionen werden für die Azure-Datenträgerreservierung angeboten?** Die Azure-Datenträgerreservierung bietet die Option, SSD Premium in den angegebenen SKUs von P30 (1 TiB) bis P80 (32 TiB) für eine einjährige Laufzeit zu erwerben. Es gibt keine Beschränkung für die Mindestmenge an Datenträgern zum Erwerb einer Datenträgerreservierung. Darüber hinaus können Sie entweder eine einmalige Vorauszahlung oder monatliche Zahlungen durchführen. Es fallen keine zusätzlichen Transaktionskosten für die verwalteten SSD Premium-Datenträger an. 
+**Welche Optionen werden für die Azure-Datenträgerreservierung angeboten?**     
+Die Azure-Datenträgerreservierung bietet die Option, SSD Premium in den angegebenen SKUs von P30 (1 TiB) bis P80 (32 TiB) für eine einjährige Laufzeit zu erwerben. Es gibt keine Beschränkung für die Mindestmenge an Datenträgern zum Erwerb einer Datenträgerreservierung. Darüber hinaus können Sie entweder eine einmalige Vorauszahlung oder monatliche Zahlungen durchführen. Es fallen keine zusätzlichen Transaktionskosten für die verwalteten SSD Premium-Datenträger an.    
 
 Reservierungen werden in Form von Datenträgern vorgenommen, nicht nach Kapazität. Anders ausgedrückt: Wenn Sie einen P80-Datenträger (32 TiB) reservieren, erhalten Sie einen einzelnen P80-Datenträger. Sie können diese Reservierung nicht in zwei kleinere P70-Datenträger (16 TiB) aufteilen. Sie können natürlich beliebig viele (oder wenige) Datenträger reservieren, auch zwei separate P70-Datenträger (16 TiB).
 
-**Wie wird die Azure-Datenträgerreservierung angewandt?**  
-Die Datenträgerreservierung folgt einem Modell, das reservierten VM-Instanzen ähnelt. Der Unterschied besteht darin, dass eine Datenträgerreservierung im Gegensatz zu einer VM-Instanz nicht auf verschiedene SKUs angewandt werden kann. Weitere Informationen zu VM-Instanzen finden Sie unter [Kostensparen mit Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md).    
+**Wie wird die Azure-Datenträgerreservierung angewandt?**     
+Die Datenträgerreservierung folgt einem Modell, das reservierten VM-Instanzen ähnelt. Der Unterschied besteht darin, dass eine Datenträgerreservierung im Gegensatz zu einer VM-Instanz nicht auf verschiedene SKUs angewandt werden kann. Weitere Informationen zu VM-Instanzen finden Sie unter [Kostensparen mit Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md).     
 
 **Kann ich meinen über die Azure-Datenträgerreservierung erworbenen Datenspeicher in mehreren Regionen verwenden?**     
-Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erworben (z. B. P30 in „USA, Osten 2“) und können daher nicht außerhalb dieser Vorgaben verwendet werden. Sie können jederzeit eine zusätzliche Azure-Datenträgerreservierung für Ihre Datenträger-Speicheranforderungen in anderen Regionen oder SKUs erwerben. 
+Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erworben (z. B. P30 in „USA, Osten 2“) und können daher nicht außerhalb dieser Vorgaben verwendet werden. Sie können jederzeit eine zusätzliche Azure-Datenträgerreservierung für Ihre Datenträger-Speicheranforderungen in anderen Regionen oder SKUs erwerben.    
 
-**Was geschieht beim Ablauf meiner Azure-Datenträgerreservierung?**    
+**Was geschieht beim Ablauf meiner Azure-Datenträgerreservierung?**     
 Sie erhalten 30 Tage vor dem Ablauf und am Ablaufdatum eine E-Mail-Benachrichtigung. Nach dem Ablauf der Reservierung werden bereitgestellte Datenträger weiterhin ausgeführt und mit dem aktuellen [Satz für die nutzungsbasierte Bezahlung](https://azure.microsoft.com/pricing/details/managed-disks/) in Rechnung gestellt.
 
 ### <a name="azure-shared-disks"></a>Freigegebene Azure-Datenträger
@@ -412,11 +409,11 @@ Es gibt keinen Nachteil bei der Verwendung von TRIM auf Azure-Datenträger auf P
 
 **Welche Regionen unterstützen die Burstfunktion für die gültigen SSD Premium-Datenträgergrößen?**
 
-Die Burstfunktion wird derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+Die Burstfunktion wird derzeit in allen Regionen der öffentlichen Azure-Cloud unterstützt, und Unterstützung von Sovereign Clouds folgt in Kürze. 
 
 **In welchen Regionen werden die Größen mit 4/8/16 GiB für verwaltete Datenträger (P1/P2/P3, E1/E2/E3) unterstützt?**
 
-Diese neuen Datenträgergrößen werden derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+Diese neuen Datenträgergrößen werden derzeit in allen Regionen der öffentlichen Azure-Cloud unterstützt, und Unterstützung von Sovereign Clouds folgt in Kürze. 
 
 **Werden die Datenträgergrößen P1/P2/P3 für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
@@ -447,7 +444,7 @@ Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, d
 |Azure PowerShell | Versionsnummer 4.1.0: Release vom Juni 2017 oder später|
 |Azure-CLI V1     | Versionsnummer 0.10.13: Release vom Mai 2017 oder später|
 |Azure CLI v2     | Versionsnummer 2.0.12: Release vom Juli 2017 oder später|
-|AzCopy           | Versionsnummer 6.1.0: Release vom Juni 2017 oder später|
+|AzCopy              | Versionsnummer 6.1.0: Release vom Juni 2017 oder später|
 
 **Werden P4- und P6-Datenträgergrößen für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
@@ -483,7 +480,7 @@ Die SKUs für Datenträger mit 8TiB, 16TiB und 32TiB werden in allen Regionen un
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf allen Datenträgergrößen unterstützt?**
 
-Die Hostzwischenspeicherung mit Schreibschutz und Lese-/Schreibzugriff wird für Datenträgergrößen unter 4TiB unterstützt. Für Datenträgergrößen von mehr als 4 TiB wird nur die Zwischenspeicherungsoption „Keine“ unterstützt. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
+Die Hostzwischenspeicherung mit Schreibschutz und Lese-/Schreibzugriff wird für Datenträgergrößen unter 4TiB unterstützt. Für Datenträgergrößen von mehr als 4 TiB wird nur die Zwischenspeicherungsoption „Keine“ unterstützt. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 

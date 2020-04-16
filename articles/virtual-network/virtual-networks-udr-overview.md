@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235958"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477880"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -122,7 +122,7 @@ Ein Gateway des lokalen Netzwerks kann Routen mit einem Gateway des virtuellen A
 
 Wenn Sie Routen mit Azure per BGP austauschen, wird der Routentabelle aller Subnetze in einem virtuellen Netzwerk für jedes angekündigte Präfix eine separate Route hinzugefügt. Die Route wird mit *Gateway für virtuelle Netzwerke* als Quelle und Typ des nächsten Hops hinzugefügt. 
 
-Die ER- und VPN Gateway-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter Verteilung von Gatewayrouten virtueller Netzwerke keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. Ausführliche Informationen finden Sie unter [Deaktivieren der Routenverteilung von Gatewayrouten des virtuellen Netzwerks](manage-route-table.md#create-a-route-table).
+Die ER- und VPN Gateway-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter Verteilung von Gatewayrouten virtueller Netzwerke keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. **Die Routenweitergabe sollte für das GatewaySubnet nicht deaktiviert werden. Das Gateway funktioniert nicht, wenn diese Einstellung deaktiviert ist.** Ausführliche Informationen finden Sie unter [Deaktivieren der Routenverteilung von Gatewayrouten des virtuellen Netzwerks](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Auswahl einer Route durch Azure
 

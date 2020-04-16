@@ -3,8 +3,8 @@ title: Verwenden der Dienstverwaltungs-API (Python) – Featureleitfaden
 description: Hier erfahren Sie, wie die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python funktioniert.
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141466"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253355"
 ---
 # <a name="use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
 In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die Klasse **ServiceManagementService** im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
 
-## <a name="WhatIs"> </a>Was ist die Dienstverwaltung?
+## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Was ist die Dienstverwaltung?
 Die Azure-Dienstverwaltungs-API bietet programmgesteuerten Zugriff auf viele der im [Azure-Portal][management-portal] verfügbaren Dienstverwaltungsfunktionen. Mithilfe des Azure SDK für Python können Sie Ihre Clouddienste und Speicherkonten verwalten.
 
 Um die Dienstverwaltungs-API verwenden zu können, müssen Sie [ein Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="Concepts"></a>Konzepte
-Das Azure SDK für Python umfasst die [Dienstverwaltungs-API][svc-mgmt-rest-api] (eine REST-API). Alle API-Vorgänge werden über SSL ausgeführt und mithilfe von X.509 v3-Zertifikaten gegenseitig authentifiziert. Auf den Verwaltungsdienst kann von einem Dienst, der in Azure ausgeführt wird, zugegriffen werden. Der Zugriff kann auch direkt über das Internet erfolgen, und zwar von jeder Anwendung aus, die HTTPS-Anforderungen senden und HTTPS-Antworten empfangen kann.
+## <a name="concepts"></a><a name="Concepts"> </a>Konzepte
+Das Azure SDK für Python umfasst die [Dienstverwaltungs-API][svc-mgmt-rest-api] (eine REST-API). Alle API-Vorgänge werden über TLS ausgeführt und mithilfe von X.509 v3-Zertifikaten gegenseitig authentifiziert. Auf den Verwaltungsdienst kann von einem Dienst, der in Azure ausgeführt wird, zugegriffen werden. Der Zugriff kann auch direkt über das Internet erfolgen, und zwar von jeder Anwendung aus, die HTTPS-Anforderungen senden und HTTPS-Antworten empfangen kann.
 
-## <a name="Installation"></a>Installation
-Alle in diesem Artikel beschriebenen Features sind im `azure-servicemanagement-legacy`-Paket verfügbar, das Sie mit pip installieren können. Weitere Informationen zur Installation (z.B. wenn Python für Sie neu ist) finden Sie unter [Installieren von Python und Azure SDK](/azure/python/python-sdk-azure-install).
+## <a name="installation"></a><a name="Installation"> </a>Installation
+Alle in diesem Artikel beschriebenen Features sind im `azure-servicemanagement-legacy`-Paket verfügbar, das Sie mit pip installieren können. Weitere Informationen zur Installation (z.B. wenn Python für Sie neu ist) finden Sie unter [Installieren von Python und Azure SDK](/azure/developer/python/azure-sdk-install).
 
-## <a name="Connect"> </a>Herstellen einer Verbindung mit der Dienstverwaltung
+## <a name="connect-to-service-management"></a><a name="Connect"> </a>Herstellen einer Verbindung mit der Dienstverwaltung
 Um eine Verbindung mit dem Dienstverwaltungs-Endpunkt herzustellen, benötigen Sie Ihre Azure-Abonnement-ID und ein gültiges Verwaltungszertifikat. Ihre Abonnement-ID können Sie über das [Azure-Portal][management-portal] abrufen.
 
 > [!NOTE]
@@ -89,7 +89,7 @@ Erstellen Sie nach dem Abrufen Ihrer Abonnement-ID ein Zertifikat, laden Sie die
 
 Im vorstehenden Beispiel ist `sms` ein **ServiceManagementService** -Objekt. Die **ServiceManagementService** -Klasse ist die primäre Klasse für die Verwaltung von Azure-Diensten.
 
-## <a name="ListAvailableLocations"> </a>Auflisten der verfügbaren Standorte
+## <a name="list-available-locations"></a><a name="ListAvailableLocations"> </a>Auflisten der verfügbaren Standorte
 Um die für das Hosten von Diensten verfügbaren Standorte aufzulisten, verwenden Sie die **list\_locations**-Methode.
 
     from azure import *
@@ -111,14 +111,14 @@ Wenn Sie einen Clouddienst oder einen Speicherdienst erstellen, müssen Sie eine
 * USA Nord Mitte
 * USA Süd Mitte
 * USA (Westen)
-* USA (Osten)
-* Japan (Osten)
+* East US
+* Japan, Osten
 * Japan, Westen
-* Brasilien (Süden)
+* Brasilien Süd
 * Australien (Osten)
 * Australien, Südosten
 
-## <a name="CreateCloudService"> </a>Erstellen eines Clouddiensts
+## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>Erstellen eines Clouddiensts
 Wenn Sie eine Anwendung erstellen und in Azure ausführen, werden der Code und die Konfiguration gemeinsam als Azure-[Clouddienst][cloud service] bezeichnet. (In älteren Azure-Versionen wurde die Bezeichnung *gehosteter Dienst* verwendet.) Sie können die **create\_hosted\_service**-Methode zum Erstellen eines neuen gehosteten Diensts verwenden. Sie erstellen den Dienst, indem Sie einen Namen für den gehosteten Dienst (der in Azure eindeutig sein muss), eine Bezeichnung (automatisch Base64-codiert), eine Beschreibung und einen Standort angeben.
 
     from azure import *
@@ -153,14 +153,14 @@ Wenn Sie Informationen zu einem bestimmten gehosteten Dienst abrufen möchten, �
 
 Nachdem Sie einen Clouddienst erstellt haben, können Sie Ihren Code mit der **create\_deployment**-Methode für den Dienst bereitstellen.
 
-## <a name="DeleteCloudService"> </a>Löschen eines Clouddiensts
+## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>Löschen eines Clouddiensts
 Sie können einen Clouddienst löschen, indem Sie den Dienstnamen an die **delete\_hosted\_service**-Methode übergeben.
 
     sms.delete_hosted_service('myhostedservice')
 
 Bevor Sie einen Dienst löschen können, müssen zunächst alle Bereitstellungen für den Dienst gelöscht werden. Weitere Informationen finden Sie unter [Löschen einer Bereitstellung](#DeleteDeployment).
 
-## <a name="DeleteDeployment"> </a>Löschen einer Bereitstellung
+## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>Löschen einer Bereitstellung
 Verwenden Sie zum Löschen einer Bereitstellung die Methode **delete\_deployment**. Im folgenden Beispiel wird eine Bereitstellung namens `v1` gelöscht:
 
     from azure import *
@@ -170,7 +170,7 @@ Verwenden Sie zum Löschen einer Bereitstellung die Methode **delete\_deployment
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>Erstellen eines Speicherdiensts
+## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Erstellen eines Speicherdiensts
 Ein [Speicherdienst](../storage/common/storage-create-storage-account.md) gewährt Ihnen Zugriff auf Azure-[Blobs](../storage/blobs/storage-python-how-to-use-blob-storage.md), -[Tabellen](../cosmos-db/table-storage-how-to-use-python.md) und -[Warteschlangen](../storage/queues/storage-python-how-to-use-queue-storage.md). Um einen Speicherdienst zu erstellen, benötigen Sie einen Namen für den Dienst (zwischen 3 und 24 Kleinbuchstaben, muss innerhalb von Azure eindeutig sein). Sie benötigen außerdem eine Beschreibung, eine Bezeichnung (bis zu 100 Zeichen; wird automatisch Base64-codiert) und einen Standort. Im folgenden Beispiel wird ein Speicherdienst durch Angabe eines Standorts erstellt:
 
     from azure import *
@@ -203,7 +203,7 @@ Mit der **list\_storage\_accounts**-Methode können Sie Ihre Speicherkonten und 
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"> </a>Löschen eines Speicherdiensts
+## <a name="delete-a-storage-service"></a><a name="DeleteStorageService"> </a>Löschen eines Speicherdiensts
 Sie löschen einen Speicherdienst, indem Sie den Speicherdienstnamen an die **delete\_storage\_account**-Methode übergeben. Beim Löschen eines Speicherdiensts werden alle im Dienst gespeicherten Daten gelöscht (Blobs, Tabellen und Warteschlangen).
 
     from azure import *
@@ -213,7 +213,7 @@ Sie löschen einen Speicherdienst, indem Sie den Speicherdienstnamen an die **de
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>Auflisten der verfügbaren Betriebssysteme
+## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>Auflisten der verfügbaren Betriebssysteme
 Mit der **list\_operating\_systems**-Methode können Sie die für das Hosten von Diensten verfügbaren Betriebssysteme auflisten.
 
     from azure import *
@@ -240,7 +240,7 @@ Alternativ können Sie die **list\_operating\_system\_families**-Methode verwend
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"> </a>Erstellen eines Betriebssystemimages
+## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>Erstellen eines Betriebssystemimages
 Wenn Sie dem Imagerepository ein Betriebssystemimage hinzufügen möchten, verwenden Sie die **add\_os\_image**-Methode.
 
     from azure import *
@@ -272,7 +272,7 @@ Mit der Methode **list\_os\_images** können Sie die verfügbaren Betriebssystem
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"> </a>Löschen eines Betriebssystemimages
+## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>Löschen eines Betriebssystemimages
 Verwenden Sie zum Löschen eines Betriebssystemimages die **delete\_os\_image**-Methode.
 
     from azure import *
@@ -285,7 +285,7 @@ Verwenden Sie zum Löschen eines Betriebssystemimages die **delete\_os\_image**-
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>Erstellen eines virtuellen Computers
+## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>Erstellen eines virtuellen Computers
 Zum Erstellen eines virtuellen Computers müssen Sie zunächst einen [Clouddienst](#CreateCloudService)erstellen. Anschließend erstellen Sie die Bereitstellung des virtuellen Computers mit der **create\_virtual\_machine\_deployment**-Methode.
 
     from azure import *
@@ -323,7 +323,7 @@ Zum Erstellen eines virtuellen Computers müssen Sie zunächst einen [Clouddiens
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>Löschen eines virtuellen Computers
+## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Löschen eines virtuellen Computers
 Zum Löschen eines virtuellen Computers löschen Sie zunächst die Bereitstellung mit der **delete\_deployment**-Methode.
 
     from azure import *
@@ -399,7 +399,7 @@ Weitere Informationen zum Erfassen eines virtuellen Linux-Computers im klassisch
 
 Weitere Informationen zum Erfassen eines virtuellen Windows-Computers im klassischen Bereitstellungsmodell finden Sie unter [Erfassen eines virtuellen Windows-Computers](../virtual-machines/windows/classic/capture-image-classic.md).
 
-## <a name="What's Next"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="What's Next"> </a>Nächste Schritte
 Da Sie nun mit den Grundlagen der Dienstverwaltung vertraut sind, können Sie auf die [vollständige API-Referenzdokumentation für das Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) zugreifen und komplexe Aufgaben mühelos durchführen, um Ihre Python-Anwendung zu verwalten.
 
 Weitere Informationen finden Sie im [Python Developer Center](https://azure.microsoft.com/develop/python/).

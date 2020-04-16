@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 9931c752d5ce33beb41dc00194c27d06b9469807
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595892"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617245"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ Dieser Artikel veranschaulicht die Verwendung von *kubenet*-Netzwerken zum Erste
 * Das virtuelle Netzwerk des AKS-Clusters muss ausgehende Internetkonnektivität zulassen.
 * In einem Subnetz sollte nicht mehr als ein AKS-Cluster erstellt werden.
 * AKS-Cluster verwenden möglicherweise nicht `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16` oder `192.0.2.0/24` für den Kubernetes-Dienstadressbereich.
-* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über die Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -118,9 +118,11 @@ az ad sp create-for-rbac --skip-assignment
 
 Die folgende Beispielausgabe zeigt Anwendungs-ID und Kennwort für Ihren Dienstprinzipal. Diese Werte werden in zusätzlichen Schritten zum Zuweisen einer Rolle für den Dienstprinzipal und anschließendes Erstellen des AKS-Clusters verwendet:
 
-```console
-$ az ad sp create-for-rbac --skip-assignment
+```azurecli
+az ad sp create-for-rbac --skip-assignment
+```
 
+```output
 {
   "appId": "476b3636-5eda-4c0e-9751-849e70b5cfad",
   "displayName": "azure-cli-2019-01-09-22-29-24",
@@ -154,7 +156,7 @@ Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozess
 * Die *--dns-service-ip*-Adresse muss die *10.* Adresse Ihres Dienst-IP-Adressbereichs sein.
 
 * *--pod-cidr* muss ein großer Adressraum sein, der nicht an anderer Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Bereich schließt alle lokalen Netzwerkbereiche ein, wenn Sie mit ExpressRoute oder Site-to-Site-VPN-Verbindungen eine Verbindung Ihrer virtuellen Azure-Netzwerke herstellen möchten oder dies planen.
-    * Dieser Adressbereich muss groß genug sein für die Anzahl der Knoten, auf die Sie erwartungsgemäß zentral hochskalieren werden. Sie können diesen Adressbereich nicht ändern, nachdem der Cluster bereitgestellt wurde, wenn Sie mehrere Adressen für zusätzliche Knoten benötigen.
+    * Dieser Adressbereich muss groß genug sein für die Anzahl der Knoten, auf die Sie erwartungsgemäß hochskalieren werden. Sie können diesen Adressbereich nicht ändern, nachdem der Cluster bereitgestellt wurde, wenn Sie mehrere Adressen für zusätzliche Knoten benötigen.
     * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24*-Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *10.244.0.0/16* dem ersten Knoten *10.244.0.0/24* zu, dem zweiten Knoten *10.244.1.0/24* und dem dritten Knoten *10.244.2.0/24*.
     * Beim Skalieren oder Upgraden des Clusters weist die Azure-Plattform weiterhin jedem neuen Knoten einen Pod-IP-Adressbereich zu.
     

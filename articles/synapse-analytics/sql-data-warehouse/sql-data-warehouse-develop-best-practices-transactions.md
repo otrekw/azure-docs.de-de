@@ -1,6 +1,6 @@
 ---
 title: Optimieren von Transaktionen
-description: Hier erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in SQL Analytics optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
+description: Erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in Synapse SQL optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,36 +11,38 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350590"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633562"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>Optimieren von Transaktionen in SQL Analytics
-Hier erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in SQL Analytics optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
+# <a name="optimizing-transactions-in-synapse-sql"></a>Optimieren von Transaktionen in Synapse SQL
+
+Erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in Synapse SQL optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
 
 ## <a name="transactions-and-logging"></a>Transaktionen und Protokollierung
-Transaktionen sind eine wichtige Komponente einer relationalen Datenbank-Engine. Bei SQL Analytics werden Transaktionen während der Datenänderung verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne INSERT-, UPDATE- und DELETE-Anweisungen sind Beispiele für implizite Transaktionen. Für explizite Transaktionen wird BEGIN TRAN, COMMIT TRAN oder ROLLBACK TRAN verwendet. Explizite Transaktionen werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen. 
 
-SQL Analytics führt mithilfe von Transaktionsprotokollen Änderungen an der Datenbank aus. Jede Verteilung verfügt über ein eigenes Transaktionsprotokoll. Schreibvorgänge für Transaktionsprotokolle werden automatisch durchgeführt. Es ist keine Konfiguration erforderlich. Mit diesem Prozess wird der Schreibvorgang zwar sichergestellt, aber er bedeutet auch Mehraufwand für das System. Sie können diese negative Auswirkung reduzieren, indem Sie Code schreiben, der in Bezug auf Transaktionen effektiv ist. Code dieser Art lässt sich grob in zwei Kategorien einteilen.
+Transaktionen sind eine wichtige Komponente einer relationalen Datenbank-Engine. Transaktionen werden während der Datenänderung verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne INSERT-, UPDATE- und DELETE-Anweisungen sind Beispiele für implizite Transaktionen. Für explizite Transaktionen wird BEGIN TRAN, COMMIT TRAN oder ROLLBACK TRAN verwendet. Explizite Transaktionen werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen.
+
+Änderungen an der Datenbank werden mithilfe von Transaktionsprotokollen verfolgt. Jede Verteilung verfügt über ein eigenes Transaktionsprotokoll. Schreibvorgänge für Transaktionsprotokolle werden automatisch durchgeführt. Es ist keine Konfiguration erforderlich. Mit diesem Prozess wird der Schreibvorgang zwar sichergestellt, aber er bedeutet auch Mehraufwand für das System. Sie können diese negative Auswirkung reduzieren, indem Sie Code schreiben, der in Bezug auf Transaktionen effektiv ist. Code dieser Art lässt sich grob in zwei Kategorien einteilen.
 
 * Verwenden von Konstrukten mit minimaler Protokollierung, wann immer möglich
 * Verarbeiten von Daten mit bereichsbezogenen Batches, um einzelne Transaktionen mit langer Ausführungsdauer zu vermeiden
 * Nutzen eines Partitionswechselmusters für große Änderungen einer bestimmten Partition
 
 ## <a name="minimal-vs-full-logging"></a>Vergleich von minimaler und vollständiger Protokollierung
+
 Im Gegensatz zu vollständig protokollierten Vorgängen, bei denen das Transaktionsprotokoll zum Nachverfolgen aller Zeilenänderungen verwendet wird, werden bei Vorgängen mit minimaler Protokollierung nur Umfangszuordnungen und Metadatenänderungen nachverfolgt. Die minimale Protokollierung umfasst daher nur die Informationen, die erforderlich sind, um für die Transaktion nach einem Ausfall oder bei einer expliziten Anforderung (ROLLBACK TRAN) ein Rollback auszuführen. Da im Transaktionsprotokoll deutlich weniger Informationen nachverfolgt werden, weist ein Vorgang mit minimaler Protokollierung eine höhere Leistung als ein Vorgang mit ähnlicher Größe und vollständiger Protokollierung auf. Da außerdem weniger Schreibvorgänge für das Transaktionsprotokoll anfallen, wird eine viel kleinere Menge von Protokolldaten generiert, und die E/A-Effizienz steigt.
 
 Die Sicherheitslimits für Transaktionen gelten nur für Vorgänge mit vollständiger Protokollierung.
 
 > [!NOTE]
-> Vorgänge mit minimaler Protokollierung können Teil von expliziten Transaktionen sein. Da alle Änderungen in Zuordnungsstrukturen nachverfolgt werden, ist es möglich, für Vorgänge mit minimaler Protokollierung ein Rollback durchzuführen. 
-> 
-> 
+> Vorgänge mit minimaler Protokollierung können Teil von expliziten Transaktionen sein. Da alle Änderungen in Zuordnungsstrukturen nachverfolgt werden, ist es möglich, für Vorgänge mit minimaler Protokollierung ein Rollback durchzuführen.
 
 ## <a name="minimally-logged-operations"></a>Vorgänge mit minimaler Protokollierung
+
 Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 
 * CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
@@ -60,10 +62,9 @@ Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 
 > [!NOTE]
 > Interne Datenverschiebungsvorgänge (z.B. BROADCAST und SHUFFLE) sind vom Sicherheitslimit für Transaktionen nicht betroffen.
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimale Protokollierung mit Massenladen
+
 CTAS und INSERT...SELECT sind jeweils Massenladevorgänge. Beide werden aber durch die Zieltabellendefinition beeinflusst und sind vom Ladeszenario abhängig. In der folgenden Tabelle wird erläutert, wann Massenvorgänge vollständig oder nur minimal protokolliert werden:  
 
 | Primärer Index | Ladeszenario | Protokollierungsmodus |
@@ -78,14 +79,13 @@ CTAS und INSERT...SELECT sind jeweils Massenladevorgänge. Beide werden aber dur
 Beachten Sie, dass es sich bei allen Schreibvorgängen zum Aktualisieren von sekundären oder nicht gruppierten Indizes immer um Vorgänge mit vollständiger Protokollierung handelt.
 
 > [!IMPORTANT]
-> Eine SQL Analytics-Datenbank hat 60 Verteilungen. Wenn davon ausgegangen wird, dass alle Zeilen gleichmäßig verteilt und in einer einzelnen Partition angeordnet sind, muss Ihr Batch also mindestens 6.144.000 Zeilen enthalten, damit beim Schreiben in einen gruppierten Columnstore-Index die minimale Protokollierung verwendet wird. Falls die Tabelle partitioniert ist und die eingefügten Zeilen über Partitionsgrenzen hinweg reichen, benötigen Sie bei gleichmäßiger Datenverteilung 6.144.000 Zeilen pro Partitionsgrenze. Für jede Partition in jeder Verteilung muss unabhängig voneinander der Schwellenwert in Höhe von 102.400 Zeilen überschritten werden, damit für den Einfügevorgang in die Verteilung die minimale Protokollierung angewendet wird.
-> 
-> 
+> Eine Synapse SQL-Pooldatenbank weist 60 Verteilungen auf. Wenn davon ausgegangen wird, dass alle Zeilen gleichmäßig verteilt und in einer einzelnen Partition angeordnet sind, muss Ihr Batch also mindestens 6.144.000 Zeilen enthalten, damit beim Schreiben in einen gruppierten Columnstore-Index die minimale Protokollierung verwendet wird. Falls die Tabelle partitioniert ist und die eingefügten Zeilen über Partitionsgrenzen hinweg reichen, benötigen Sie bei gleichmäßiger Datenverteilung 6.144.000 Zeilen pro Partitionsgrenze. Für jede Partition in jeder Verteilung muss unabhängig voneinander der Schwellenwert in Höhe von 102.400 Zeilen überschritten werden, damit für den Einfügevorgang in die Verteilung die minimale Protokollierung angewendet wird.
 
 Das Laden von Daten in eine nicht leere Tabelle mit einem gruppierten Index kann häufig eine Mischung aus vollständig protokollierten und minimal protokollierten Zeilen umfassen. Bei einem gruppierten Index handelt es sich um eine ausbalancierte Struktur (B-Struktur) von Seiten. Falls die Seite, auf die geschrieben wird, bereits Zeilen aus einer anderen Transaktion enthält, werden diese Schreibvorgänge vollständig protokolliert. Aber wenn die Seite leer ist, wird für das Schreiben auf die Seite nur die minimale Protokollierung genutzt.
 
 ## <a name="optimizing-deletes"></a>Optimieren der Löschvorgänge
-DELETE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS](sql-data-warehouse-develop-ctas.md) eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME](/sql/t-sql/statements/rename-transact-sql), um die alte Tabelle gegen die neu erstellte Tabelle auszutauschen.
+
+DELETE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS](sql-data-warehouse-develop-ctas.md) eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um die alte Tabelle gegen die neu erstellte Tabelle auszutauschen.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -110,25 +110,26 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimieren von Aktualisierungen
-UPDATE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Zahl von Zeilen in einer Tabelle oder einer Partition aktualisieren müssen, ist es häufig viel effizienter, einen Vorgang mit minimaler Protokollierung zu verwenden, z.B. [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+
+UPDATE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Zahl von Zeilen in einer Tabelle oder einer Partition aktualisieren müssen, ist es häufig viel effizienter, einen Vorgang mit minimaler Protokollierung zu verwenden, z.B. [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Im Beispiel unten wurde eine vollständige Tabellenaktualisierung in einen CTAS-Vorgang konvertiert, damit die minimale Protokollierung möglich ist.
 
 In diesem Fall fügen wir dem Umsatz in der Tabelle nachträglich einen Rabattbetrag hinzu:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -137,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -162,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -177,11 +178,10 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Analytics-Features zur Workloadverwaltung vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
-> 
-> 
+> Bei der Neuerstellung großer Tabellen können die Features zur Workloadverwaltung von Synapse SQL-Pools vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 
 ## <a name="optimizing-with-partition-switching"></a>Optimieren mit Partitionswechsel
+
 Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition](sql-data-warehouse-tables-partition.md) ist ein Muster für Partitionswechsel sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
 
 Schritte zum Durchführen eines Partitionswechsels:
@@ -220,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -243,7 +243,7 @@ Mit diesem Verfahren wird die Wiederverwendung von Code erhöht, und das Partiti
 Im folgenden Code sind die oben erwähnten Schritte enthalten, mit denen eine vollständige Partitionswechselroutine erzielt werden kann.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -253,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -275,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -305,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -344,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimieren der Protokollierung mit kleinen Batches
+
 Bei großen Datenänderungsvorgängen kann es sinnvoll sein, den Vorgang in Teile oder Batches aufzuteilen, um kleinere Einheiten zu erhalten.
 
-Der folgende Code ist ein funktionierendes Beispiel. Für die Batchgröße wurde ein Beispielwert gewählt, um die Vorgehensweise zu verdeutlichen. In Wirklichkeit wäre der Wert für die Batchgröße deutlich höher. 
+Der folgende Code ist ein funktionierendes Beispiel. Für die Batchgröße wurde ein Beispielwert gewählt, um die Vorgehensweise zu verdeutlichen. In Wirklichkeit wäre der Wert für die Batchgröße deutlich höher.
 
 ```sql
 SET NO_COUNT ON;
@@ -405,18 +406,17 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Anleitung zum Anhalten und Skalieren
-Mithilfe von SQL Analytics können Sie Ihren SQL-Pool bei Bedarf [anhalten, fortsetzen und skalieren](sql-data-warehouse-manage-compute-overview.md). Wenn Sie Ihren SQL-Pool anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dieser Vorgang wirkt sich möglicherweise auf den Zeitraum aus, der zum Anhalten oder Skalieren Ihres SQL-Pools benötigt wird. 
+
+Mithilfe von Synapse SQL können Sie Ihren SQL-Pool bei Bedarf [anhalten, fortsetzen und skalieren](sql-data-warehouse-manage-compute-overview.md). Wenn Sie Ihren SQL-Pool anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dieser Vorgang wirkt sich möglicherweise auf den Zeitraum aus, der zum Anhalten oder Skalieren Ihres SQL-Pools benötigt wird.
 
 > [!IMPORTANT]
-> Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger dauern als vergleichbare Vorgänge mit minimaler Protokollierung. 
-> 
-> 
+> Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger dauern als vergleichbare Vorgänge mit minimaler Protokollierung.
 
 Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor der SQL-Pool angehalten oder skaliert wird. Allerdings ist dieses Szenario unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
 
-* Umschreiben von Vorgängen mit langer Ausführungsdauer mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+* Umschreiben von Vorgängen mit langer Ausführungsdauer mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * Unterteilen des Vorgangs in Blöcke, ausgeführt für jeweils eine Teilmenge der Zeilen
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in SQL Analytics](sql-data-warehouse-develop-transactions.md).  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).
 
+Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in Synapse SQL](sql-data-warehouse-develop-transactions.md).  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a852807ab685e85b76d26e5b39c99a32f645bbd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97fde67c3ac7649418ed0239a2c7aa4f1a4b3f96
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71838159"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81275518"
 ---
-Benutzerdefinierte Routen mit einem 0.0.0.0/0-Ziel und NSGs im Gatewaysubnetz-**werden nicht unterstützt**. Die Erstellung von Gateways mit dieser Konfiguration wird blockiert. Gateways benötigen für die ordnungsgemäße Funktion Zugriff auf die Verwaltungscontroller.
+Benutzerdefinierte Routen mit einem 0.0.0.0/0-Ziel und NSGs im Gatewaysubnetz **werden nicht unterstützt**. Die Erstellung von Gateways mit dieser Konfiguration wird blockiert. Gateways benötigen für die ordnungsgemäße Funktion Zugriff auf die Verwaltungscontroller. [BGP-Routenverteilung](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) sollte für das Gatewaysubnetz auf „Aktiviert“ festgelegt werden, um die Verfügbarkeit des Gateways zu gewährleisten. Ist diese Option deaktiviert, funktioniert das Gateway nicht.

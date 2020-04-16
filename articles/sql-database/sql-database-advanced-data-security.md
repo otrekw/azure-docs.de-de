@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232594"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677468"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Advanced Data Security für Azure SQL-Datenbank
 
@@ -26,8 +26,8 @@ Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Sicherhei
 
 Advanced Data Security (ADS) stellt eine Reihe erweiterter SQL-Sicherheitsfunktionen bereit, darunter Datenermittlung und -klassifizierung, Risikoanalyse und Advanced Threat Protection.
 
-- [Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md) bietet in Azure SQL-Datenbank integrierte Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Feature kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen.
-- [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Er bietet Einblicke in Ihren Sicherheitsstatus, enthält umsetzbare Schritte zum Beheben von Sicherheitsproblemen und verbessert Ihre Datenbanksicherheit.
+- [Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md) bietet in Azure SQL-Datenbank integrierte Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Melden vertraulicher Daten in Ihren Datenbanken. Das Feature kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen.
+- [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Service, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Er bietet Einblicke in Ihren Sicherheitsstatus, enthält umsetzbare Schritte zum Beheben von Sicherheitsproblemen und verbessert Ihre Datenbanksicherheit.
 - [Advanced Threat Protection](sql-database-threat-detection-overview.md) erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbank zuzugreifen oder diese zu nutzen. Sie überwacht Ihre Datenbank fortlaufend auf verdächtige Aktivitäten und bietet sofortige Sicherheitswarnungen zu potenziellen Sicherheitslücken, Angriffe durch Einschleusung von SQL-Befehlen und ungewöhnliche Datenbankzugriffsmuster. Die Warnungen von Advanced Threat Protection enthalten Details zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann.
 
 Aktivieren Sie SQL ADS einmalig, um sämtliche der enthaltenen Features zu aktivieren. Mit nur einem Klick können Sie ADS für alle Datenbanken auf Ihrem SQL-Datenbank-Server oder Ihrer verwalteten Instanz aktivieren. Um ADS-Einstellungen aktivieren oder verwalten zu können, müssen Sie der Rolle [SQL-Sicherheits-Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager), „SQL-Datenbankadministrator“ oder „SQL Server-Administrator“ angehören. 
@@ -77,4 +77,4 @@ Sie können auch über den ADS-Datenbankbereich auf die Advanced Data Security-E
 - Weitere Informationen zur [Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md) 
 - Weitere Informationen zur [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) 
 - Weitere Informationen zu [Advanced Threat Protection](sql-database-threat-detection.md)
-- Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

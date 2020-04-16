@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235706"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521840"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
@@ -281,6 +281,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |---|---|
 |942100|SQL Injection-Angriff per libinjection erkannt|
 |942110|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
+|942120|Angriff mit Einschleusung von SQL-Befehlen: SQL-Operator ermittelt|
 |942130|Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.|
 |942140|SQL Injection-Angriff = Häufige Datenbanknamen erkannt|
 |942150|Angriff mit Einschleusung von SQL-Befehlen|

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368353"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521307"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorisieren des Zugriffs auf Azure Event Hubs
 Jedes Mal, wenn Sie Ereignisse/Daten von einem Event Hub veröffentlichen oder nutzen, versucht Ihr Client, auf Event Hubs-Ressourcen zuzugreifen. Jede Anforderung an eine sichere Ressource muss autorisiert sein, damit der Dienst sicherstellen kann, dass der Client über die erforderlichen Berechtigungen zum Veröffentlichen der Daten bzw. für den Zugriff darauf verfügt. 
@@ -27,7 +27,7 @@ Azure Event Hubs bietet die folgenden Optionen für die Autorisierung des Zugrif
 > Dieser Artikel gilt sowohl für Event Hubs als auch für [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)-Szenarien. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory-Integration (Azure AD) für Event Hubs-Ressourcen bietet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Sie können die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Event Hubs-Ressource verwendet werden.
+Die Azure Active Directory-Integration (Azure AD) für Event Hubs-Ressourcen bietet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Sie können die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Event Hubs-Ressource verwendet werden.
 
 Weitere Informationen zur Authentifizierung mit Azure AD finden Sie in den folgenden Artikeln:
 
@@ -39,7 +39,7 @@ Shared Access Signatures (SAS) für Event Hubs bieten begrenzten delegierten Zug
 
 Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung mit SAS (Shared Access Signature). Mit Azure AD müssen die Zugriffstoken nicht mehr mit Ihrem Code gespeichert werden und so potenzielle Sicherheitsrisiken eingegangen werden. Sie können zwar weiterhin Shared Access Signatures (SAS) für einen fein aufgelösten Zugriff auf Event Hubs-Ressourcen verwenden, doch Azure AD bietet ähnliche Funktionen ohne die Notwendigkeit, SAS-Token verwalten oder sich um das Widerrufen einer gefährdeten SAS kümmern zu müssen. 
 
-Standardmäßig sind alle Event Hubs-Ressourcen gesichert und stehen nur dem Kontobesitzer zur Verfügung. Obwohl Sie eine der oben beschriebenen Autorisierungsstrategien verwenden können, um Clients den Zugriff auf Event Hub-Ressourcen zu gewähren. Azure AD-Autorisierung wird nur von Event Hubs-Ressourcen unterstützt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Microsoft empfiehlt, falls möglich, die Verwendung von Azure AD für maximale Sicherheit und Benutzerfreundlichkeit.
+Standardmäßig sind alle Event Hubs-Ressourcen gesichert und stehen nur dem Kontobesitzer zur Verfügung. Obwohl Sie eine der oben beschriebenen Autorisierungsstrategien verwenden können, um Clients den Zugriff auf Event Hub-Ressourcen zu gewähren. Microsoft empfiehlt, falls möglich, die Verwendung von Azure AD für maximale Sicherheit und Benutzerfreundlichkeit.
 
 Weitere Informationen zur Autorisierung mit SAS finden Sie unter [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mithilfe von Shared Access Signatures](authorize-access-shared-access-signature.md).
 

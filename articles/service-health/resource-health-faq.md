@@ -3,12 +3,12 @@ title: Azure Resource Health – FAQ
 description: Übersicht über Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912787"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985030"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -27,7 +27,7 @@ Resource Health führt auf der Grundlage des [Ressourcentyps](resource-health-ch
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>Was bedeuten die einzelnen Integritätsstatus?
 Es gibt drei verschiedene Integritätsstatus:
-- Verfügbar: In der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
+- Verfügbar: Auf der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
 - Nicht verfügbar: Resource Health hat Probleme festgestellt, die die Ressource beeinträchtigen.
 - Unbekannt: Resource Health kann die Integrität einer Ressource nicht bestimmen, da der Dienst keine Informationen mehr zur Ressource erhält. 
 
@@ -37,7 +37,7 @@ Der Integritätsstatus wird auf „Unbekannt“ festgelegt, wenn Resource Health
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Wie kann ich Hilfe für eine Ressource erhalten, die nicht verfügbar ist?
 Sie können auf dem Resource Health-Blatt eine Supportanfrage senden. Sie benötigen keine Supportvereinbarung mit Microsoft, um eine Anfrage zu öffnen, wenn die Ressource aufgrund von Plattformereignissen nicht verfügbar ist.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Differenziert Resource Health, ob Nichtverfügbarkeit auf Plattformprobleme zurückzuführen ist, oder auf Aktionen, die ich durchgeführt habe?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Differenziert Resource Health, ob Nichtverfügbarkeit auf Plattformprobleme zurückzuführen ist, oder auf Aktionen, die ich durchgeführt habe?
 Ja, wenn eine Ressource nicht verfügbar ist, identifiziert Resource Health die Grundursache gemäß einer dieser Kategorien: 
 -   Benutzerinitiierte Aktion
 -   Geplantes Ereignis 

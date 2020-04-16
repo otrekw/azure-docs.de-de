@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung für Hybrid Runbook Worker von Azure Automation
-description: Dieser Artikel bietet Informationen zur Problembehandlung für Hybrid Runbook Worker von Azure Automation.
+description: Dieser Artikel bietet Informationen zum Troubleshooting für Hybrid Runbook Worker von Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030726"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637860"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
@@ -24,7 +24,7 @@ Dieser Artikel bietet Informationen zur Problembehandlung für Hybrid Runbook Wo
 
 Der Hybrid Runbook Worker ist von einem Agent abhängig, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbookaufträge zu erhalten und den Status zu melden. Für Windows ist dies der Log Analytics-Agent für Windows (früher Microsoft Monitoring Agent (MMA) genannt). Für Linux handelt es sich um den Log Analytics-Agent für Linux.
 
-### <a name="runbook-execution-fails"></a>Szenario: Fehler bei der Runbookausführung
+### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>Szenario: Fehler bei der Runbookausführung
 
 #### <a name="issue"></a>Problem
 
@@ -48,15 +48,55 @@ Folgende Ursachen kommen in Betracht:
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass der Computer über einen ausgehenden Zugriff auf „*.azure-automation.net“ über Port 443 verfügt.
+Stellen Sie sicher, dass der Computer über einen ausgehenden Zugriff auf * **.azure-automation.net** über Port 443 verfügt.
 
 Computer, auf denen der Hybrid Runbook Worker ausgeführt werden soll, müssen die Mindestanforderungen an die Hardware erfüllen, damit sie als Host für dieses Feature konfiguriert werden können. Runbooks und die Hintergrundprozesse, die sie verwenden, führen möglicherweise zu einer starken Auslastung des Systems sowie zu Verzögerungen und Timeouts des Runbookauftrags.
 
 Vergewissern Sie sich, dass der für die Ausführung des Hybrid Runbook Worker-Features vorgesehene Computer die Hardwaremindestanforderungen erfüllt. Wenn dies der Fall ist, überwachen Sie die CPU- und Arbeitsspeicherauslastung, um Zusammenhänge zwischen der Leistung der Hybrid Runbook Worker-Prozesse und Windows zu erkennen. Wenn der Arbeitsspeicher oder die CPU stark ausgelastet sind, kann dies auf die Notwendigkeit eines Upgrades von Ressourcen hindeuten. Sie können auch eine andere Computeressource auswählen, die die Mindestanforderungen erfüllt. Bei entsprechend großer Workload skalieren Sie sie nach Bedarf.
 
-Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereignis mit der Beschreibung *Win32-Prozess wurde mit dem Code [4294967295] beendet*vorhanden ist. Die Ursache dieses Fehlers liegt darin, dass Sie in Ihren Runbooks die Authentifizierung nicht konfiguriert haben oder dass Sie die „Ausführen als“-Anmeldeinformationen für die Hybrid Worker-Gruppe nicht angegeben haben. Überprüfen Sie die [Runbookberechtigungen](../automation-hrw-run-runbooks.md#runbook-permissions), und vergewissern Sie sich, dass Sie die Authentifizierung für Ihre Runbooks ordnungsgemäß konfiguriert haben.
+Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereignis mit der Beschreibung `Win32 Process Exited with code [4294967295]` vorhanden ist. Die Ursache dieses Fehlers liegt darin, dass Sie in Ihren Runbooks die Authentifizierung nicht konfiguriert haben oder dass Sie die „Ausführen als“-Anmeldeinformationen für die Hybrid Runbook Worker-Gruppe nicht angegeben haben. Überprüfen Sie die Runbookberechtigungen in [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md), und vergewissern Sie sich, dass Sie die Authentifizierung für Ihre Runbooks ordnungsgemäß konfiguriert haben.
 
-### <a name="no-cert-found"></a>Szenario: Es wurde kein Zertifikat im Zertifikatspeicher auf dem Hybrid Runbook Worker gefunden.
+### <a name="scenario-event-15011-in-hybrid-runbook-worker"></a><a name="cannot-connect-signalr"></a>Szenario: Ereignis 15011 im Hybrid Runbook Worker
+
+#### <a name="issue"></a>Problem
+
+Der Hybrid Runbook Worker empfängt das Ereignis 15011, das darauf hinweist, dass ein Abfrageergebnis nicht gültig ist. Die folgende Fehlermeldung wird angezeigt, wenn der Worker versucht, eine Verbindung mit dem [SignalR-Server](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1) zu öffnen.
+
+```error
+[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
+[Uri=https://cc-jobruntimedata-prod-su1.azure-automation.net/notifications/hub][Exception=System.TimeoutException: Transport timed out trying to connect
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at JobRuntimeData.NotificationsClient.JobRuntimeDataServiceSignalRClient.<Start>d__45.MoveNext()
+```
+
+#### <a name="cause"></a>Ursache
+
+Der Hybrid Runbook Worker wurde nicht ordnungsgemäß für die automatisierte Bereitstellungslösung konfiguriert. Diese Lösung enthält einen Teil, der die VM mit dem Log Analytics-Arbeitsbereich verbindet. Das PowerShell-Skript sucht in dem Abonnement mit dem angegebenen Namen nach dem Arbeitsbereich. In diesem Fall befindet sich der Log Analytics-Arbeitsbereich in einem anderen Abonnement. Das Skript kann den Arbeitsbereich nicht finden und versucht, einen zu erstellen, doch der Name ist bereits vergeben. Daher tritt bei der Bereitstellung ein Fehler auf.
+
+#### <a name="resolution"></a>Lösung
+
+Sie haben zwei Möglichkeiten, dieses Problem zu beheben:
+
+* Ändern Sie das PowerShell-Skript so, dass es in einem anderen Abonnement nach dem Log Analytics-Arbeitsbereich sucht. Dies ist eine gute Lösung, wenn Sie planen, in Zukunft viele Hybrid Runbook Worker-Computer bereitzustellen.
+
+* Konfigurieren Sie den Workercomputer manuell so, dass er in einer Orchestrator-Sandbox ausgeführt wird. Führen Sie dann ein im Azure Automation-Konto erstelltes Runbook auf dem Worker aus, um dessen Funktionalität zu testen.
+
+### <a name="scenario-windows-azure-vms-automatically-dropped-from-hybrid-worker-group"></a><a name="vm-automatically-dropped"></a>Szenario: Microsoft Azure-VMs wurden automatisch aus der Hybrid Worker-Gruppe gelöscht.
+
+#### <a name="issue"></a>Problem
+
+Hybrid Runbook Worker oder VMs werden Ihnen nicht angezeigt, wenn der Workercomputer lange Zeit ausgeschaltet war.
+
+#### <a name="cause"></a>Ursache
+
+Der Hybrid Runbook Worker-Computer hat Azure Automation länger als 30 Tage nicht gepingt. Daher hat Automation die Hybrid Runbook Worker-Gruppe oder die System Worker-Gruppe gelöscht. 
+
+#### <a name="resolution"></a>Lösung
+
+Starten Sie den Workercomputer, und registrieren Sie ihn erneut in Azure Automation. Anweisungen zur Installation der Runbookumgebung und dem Herstellen einer Verbindung mit Azure Automation finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md).
+
+### <a name="scenario-no-certificate-was-found-in-the-certificate-store-on-hybrid-runbook-worker"></a><a name="no-cert-found"></a>Szenario: Es wurde kein Zertifikat im Zertifikatspeicher auf dem Hybrid Runbook Worker gefunden.
 
 #### <a name="issue"></a>Problem
 
@@ -78,7 +118,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, ein [„Ausführen als“-Konto](..
 
 Wenn es sich bei Ihrem Hybrid Runbook Worker um eine Azure-VM handelt, können Sie stattdessen [verwaltete Identitäten für Azure-Ressourcen](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) verwenden. Dieses Szenario gestattet Ihnen die Authentifizierung bei Azure-Ressourcen mithilfe der verwalteten Identität der Azure-VM anstelle des „Ausführen als“-Kontos, was die Authentifizierung vereinfacht. Wenn der Hybrid Runbook Worker ein lokaler Computer ist, müssen Sie das Zertifikat des „Ausführen als“-Kontos auf dem Computer installieren. Sehen Sie sich die Schritte an, die für die Ausführung des PowerShell-Runbooks „Export-RunAsCertificateToHybridWorker“ erforderlich sind und in [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) erläutert werden, wenn Sie Informationen zum Installieren des Zertifikats erhalten möchten.
 
-### <a name="error-403-on-registration"></a>Szenario: Fehler 403 während der Registrierung eines Hybrid Runbook Workers
+### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>Szenario: Fehler 403 während der Registrierung eines Hybrid Runbook Workers
 
 #### <a name="issue"></a>Problem
 
@@ -91,13 +131,15 @@ Die Registrierungsphase des Workers schlägt fehlt, und der Fehler 403 wird zur
 #### <a name="cause"></a>Ursache
 
 Folgende Ursachen kommen in Betracht:
-* In den Einstellungen des Agents wurde eine Arbeitsbereich-ID oder ein primärer Arbeitsbereichsschlüssel fehlerhaft eingegeben. 
+
+* In den Einstellungen des Agents wurde eine Arbeitsbereich-ID oder ein (primärer) Arbeitsbereichsschlüssel fehlerhaft eingegeben. 
+
 * Der Hybrid Runbook Worker kann die Konfiguration nicht herunterladen, was zu einem Fehler bei der Kontoverknüpfung führt. Wenn Lösungen in Azure aktiviert werden, werden nur bestimmte Regionen zum Verknüpfen eines Log Analytics-Arbeitsbereichs und eines Automation-Kontos unterstützt. Möglicherweise wurde auch ein falsches Datum und/oder eine falsche Zeit auf dem Computer festgelegt. Wenn die Zeit ca. die 15 Minuten von der aktuellen Uhrzeit abweicht, tritt beim Onboarding ein Fehler auf.
 
 #### <a name="resolution"></a>Lösung
 
 ##### <a name="mistyped-workspace-idkey"></a>Fehlerhaft eingegebene Arbeitsbereich-ID/fehlerhaft eingegebener Arbeitsbereichsschlüssel
-Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zu [Windows-Agent](../../azure-monitor/platform/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereich-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurden.  Achten Sie darauf, im Azure-Portal die vollständige Zeichenfolge auszuwählen und sie korrekt zu kopieren und einzufügen.
+Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zum [Windows-Agent](../../azure-monitor/platform/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereich-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurde.  Achten Sie darauf, im Azure-Portal die vollständige Zeichenfolge auszuwählen und sie korrekt zu kopieren und einzufügen.
 
 ##### <a name="configuration-not-downloaded"></a>Konfiguration nicht heruntergeladen
 
@@ -109,7 +151,7 @@ Möglicherweise müssen Sie auch das Datum und die Zeitzone auf Ihrem Computer a
 
 Der Linux Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, gibt es mehrere mögliche Gründe dafür:
 
-### <a name="oms-agent-not-running"></a>Szenario: Der Log Analytics-Agent für Linux wird nicht ausgeführt
+### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Szenario: Der Log Analytics-Agent für Linux wird nicht ausgeführt
 
 #### <a name="issue"></a>Problem
 
@@ -121,7 +163,7 @@ Wenn der Agent nicht ausgeführt wird, verhindert er die Kommunikation zwischen 
 
 #### <a name="resolution"></a>Lösung
 
- Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl eingeben: `ps -ef | grep python`. Die Ausgabe sollte in etwa folgendermaßen aussehen, die Python-Prozesse mit dem **nxautomation**-Benutzerkonto. Wenn die Updateverwaltung oder Azure Automation nicht aktiviert ist, wird keiner der folgenden Prozesse ausgeführt.
+ Überprüfen Sie, ob der Agent ausgeführt wird, indem Sie den Befehl `ps -ef | grep python` eingeben. Die Ausgabe sollte in etwa folgendermaßen aussehen. Hierbei handelt es sich um die Python-Prozesse mit dem **nxautomation**-Benutzerkonto. Wenn die Updateverwaltung oder Azure Automation-Lösung nicht aktiviert ist, wird keiner der folgenden Prozesse ausgeführt.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -129,19 +171,19 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-Die folgende Liste enthält die Prozesse, die für einen Linux Hybrid Runbook Worker gestartet werden. Sie befinden sich alle im Verzeichnis `/var/opt/microsoft/omsagent/state/automationworker/`.
+Die folgende Liste enthält die Prozesse, die für einen Linux Hybrid Runbook Worker gestartet werden. Sie befinden sich alle im Verzeichnis **/var/opt/microsoft/omsagent/state/automationworker/** .
 
 * **oms.conf**: Dies ist der Worker-Manager-Prozess. Er wird direkt vom DSC gestartet.
 
 * **worker.conf**: Dies ist der automatisch registrierte Hybrid Worker-Prozess. Er wird vom Worker-Manager gestartet. Dieser Prozess dient der Updateverwaltung und ist für den Benutzer transparent. Dieser Prozess ist nicht vorhanden, wenn die Updateverwaltung auf dem Computer nicht aktiviert ist.
 
-* **diy/worker.conf**: Dies ist der eigenständige Hybrid Worker-Prozess. Der eigenständige Hybrid Worker-Prozess wird verwendet, um Benutzerrunbooks auf dem Hybrid Runbook Worker auszuführen. Er unterscheidet sich vom automatisch registrierten Hybrid Worker-Prozess nur darin, dass eine andere Konfiguration verwendet wird. Dieser Prozess ist nicht vorhanden, wenn Azure Automation deaktiviert und der eigenständige Linux Hybrid Worker nicht registriert ist.
+* **diy/worker.conf**: Dies ist der eigenständige Hybrid Worker-Prozess. Der eigenständige Hybrid Worker-Prozess wird verwendet, um Benutzerrunbooks auf dem Hybrid Runbook Worker auszuführen. Er unterscheidet sich vom automatisch registrierten Hybrid Worker-Prozess nur in dem wichtigen Detail, dass eine andere Konfiguration verwendet wird. Dieser Prozess ist nicht vorhanden, wenn Azure Automation deaktiviert und der eigenständige Linux Hybrid Worker nicht registriert ist.
 
 Wenn der Agent nicht ausgeführt wird, führen Sie zum Starten des Diensts den folgenden Befehl aus: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
-### <a name="class-does-not-exist"></a>Szenario: Die angegebene Klasse ist nicht vorhanden.
+### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Szenario: Die angegebene Klasse ist nicht vorhanden.
 
-Wenn die Fehlermeldung **Die angegebene Klasse ist nicht vorhanden…** in `/var/opt/microsoft/omsconfig/omsconfig.log` angezeigt wird, muss der Log Analytics-Agent für Linux aktualisiert werden. Führen Sie den folgenden Befehl aus, um den Agent neu zu installieren:
+Wenn im Protokoll **/var/opt/microsoft/omsconfig/omsconfig.log** der Fehler `The specified class does not exist..` auftaucht, muss der Log Analytics-Agent für Linux aktualisiert werden. Führen Sie den folgenden Befehl aus, um den Agent neu zu installieren:
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -149,9 +191,9 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Der Windows Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, gibt es mehrere mögliche Gründe dafür:
+Der Windows Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Für den Fall, dass bei der Registrierung des Workers ein Fehler auftritt, werden in diesem Abschnitt einige mögliche Gründe hierfür erläutert.
 
-### <a name="mma-not-running"></a>Szenario: Microsoft Monitoring Agent wird nicht ausgeführt.
+### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>Szenario: Microsoft Monitoring Agent wird nicht ausgeführt.
 
 #### <a name="issue"></a>Problem
 
@@ -159,29 +201,58 @@ Auf dem Computer mit dem Hybrid Runbook Worker wird der Dienst `healthservice` n
 
 #### <a name="cause"></a>Ursache
 
-Wenn der Microsoft Monitoring Agent-Dienst von Windows nicht ausgeführt wird, verhindert dieser Zustand die Kommunikation zwischen dem Hybrid Runbook Worker und Azure Automation.
+Wenn der Microsoft Monitoring Agent-Dienst nicht ausgeführt wird, verhindert dies, dass der Hybrid Runbook Worker mit Azure Automation kommuniziert.
 
 #### <a name="resolution"></a>Lösung
 
-Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl in PowerShell eingeben: `Get-Service healthservice`. Wenn der Dienst beendet wurde, geben Sie den folgenden Befehl in PowerShell ein, um ihn wieder zu starten: `Start-Service healthservice`.
+Überprüfen Sie, ob der Agent ausgeführt wird, indem Sie den folgenden Befehl in PowerShell eingeben: `Get-Service healthservice`. Wenn der Dienst beendet wurde, geben Sie den folgenden Befehl in PowerShell ein, um ihn wieder zu starten: `Start-Service healthservice`.
 
-### <a name="event-4502"></a>Szenario: Ereignis 4502 im Operations Manager-Protokoll
+### <a name="scenario-event-4502-in-operations-manager-log"></a><a name="event-4502"></a>Szenario: Ereignis 4502 im Operations Manager-Protokoll
 
 #### <a name="issue"></a>Problem
 
-Im Ereignisprotokoll **Anwendungs- und Dienstprotokolle\Operations Manager** werden das Ereignis 4502 und eine Ereignisnachricht mit **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** und folgender Beschreibung angezeigt: *Das durch den Dienst „\<wsid\>.oms.opinsights.azure.com“ vorgelegte Zertifikat wurde nicht durch eine für Microsoft-Dienste verwendete Zertifizierungsstelle ausgestellt. Wenden Sie sich bitte an Ihren Netzwerkadministrator, um zu erfahren, ob ein Proxy ausgeführt wird, das die TLS/SSL-Kommunikation abfängt.*
+Im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Operations Manager** werden das Ereignis 4502 und eine Ereignisnachricht, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthält, mit der folgenden Beschreibung angezeigt:<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
 
 #### <a name="cause"></a>Ursache
 
-Dieses Problem kann auftreten, wenn Ihr Proxy oder Ihre Netzwerkfirewall die Kommunikation mit Microsoft Azure blockiert. Stellen Sie sicher, dass der Computer über einen ausgehenden Zugriff auf *.azure-automation.net über Port 443 verfügt. 
+Dieses Problem kann auftreten, wenn Ihr Proxy oder Ihre Netzwerkfirewall die Kommunikation mit Microsoft Azure blockiert. Stellen Sie sicher, dass der Computer über einen ausgehenden Zugriff auf * **.azure-automation.net** über Port 443 verfügt. 
 
 #### <a name="resolution"></a>Lösung
 
-Protokolle werden lokal auf jedem Hybridworker unter "C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes" gespeichert. Sie können überprüfen, ob die Ereignisprotokolle **Anwendungs- und Dienstprotokolle\Microsoft-SMA\Operations** und **Anwendungs- und Dienstprotokolle\Operations Manager** Warnungen oder Fehlerereignisse enthalten, die darauf hindeuten, dass ein Verbindungsproblem oder ein anderes Problem das Onboarding der Rolle in Azure Automation beeinträchtigt oder ein Problem bei der Ausführung regulärer Vorgänge vorliegt. Weitere Hilfe bei der Behandlung von Problemen mit dem Log Analytics-Agent finden Sie unter [Behandeln von Problemen mit dem Log Analytics Windows-Agent](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Protokolle werden lokal auf jedem Hybrid Worker unter **C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes** gespeichert. Sie können überprüfen, ob in den Ereignisprotokollen unter **Anwendungs- und Dienstprotokolle\Microsoft-SMA\Operations** und **Anwendungs- und Dienstprotokolle\Operations Manager** Warnungs- oder Fehlerereignisse vorhanden sind. Diese Protokolle zeigen Verbindungsprobleme oder andere Probleme an, die Auswirkungen auf das Onboarding der Rolle in Azure Automation haben, oder Probleme, die im normalen Betrieb auftreten. Weitere Hilfe bei der Behandlung von Problemen mit dem Log Analytics-Agent finden Sie unter [Behandeln von Problemen mit dem Log Analytics Windows-Agent](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
-[Runbookausgabe und -meldungen](../automation-runbook-output-and-messages.md) werden von Hybridworkern an Azure Automation gesendet (genau wie Runbookaufträge, die in der Cloud ausgeführt werden). Sie können auch die Verbose- und Progress-Streams auf dieselbe Weise aktivieren wie für andere Runbooks.
+Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-output-and-messages.md) an Azure Automation auf dieselbe Art, auf die in der Cloud ausgeführte Runbookaufträge Ausgabe und Meldungen versenden. Wie bei Runbooks können Sie den ausführlichen Datenstrom und den Fortschrittsdatenstrom aktivieren.
 
-### <a name="corrupt-cache"></a>Szenario: Keine Meldungen vom Hybrid Runbook Worker
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Szenario: „Orchestrator.Sandbox.exe“ kann keine Verbindung mit Office 365 über den Proxy herstellen.
+
+#### <a name="issue"></a>Problem
+
+Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Office 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
+
+Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle bieten keine Informationen zum Proxy.
+
+#### <a name="cause"></a>Ursache
+
+Die Verbindung mit Active Directory-Verbunddienste (AD FS) auf dem Server kann den Proxy nicht umgehen. Denken Sie daran, dass eine PowerShell-Sandbox als der protokollierte Benutzer ausgeführt wird. Eine Orchestrator-Sandbox ist jedoch stark angepasst und ignoriert die Einstellungen in der Datei **Orchestrator.Sandbox.exe.config** möglicherweise. Sie weist speziellen Code für die Verarbeitung von Computer- oder MMA-Proxyeinstellungen auf, jedoch nicht für den Umgang mit anderen benutzerdefinierten Proxyeinstellungen. 
+
+#### <a name="resolution"></a>Lösung
+
+Sie können das Problem für die Orchestrator-Sandbox beheben, indem Sie Ihr Skript migrieren, sodass die Azure AD-Module anstelle des MSOnline-Moduls für PowerShell-Cmdlets verwendet werden. Weitere Informationen finden Sie unter [Migrieren von Orchestrator zu Azure Automation (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+
+Wenn Sie die Cmdlets des MSOnline-Moduls weiterhin verwenden möchten, ändern Sie das Skript so, dass [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwendet wird. Geben Sie Werte für die Parameter `ComputerName` und `Credential` an. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Diese Codeänderung startet eine vollständig neue PowerShell-Sitzung im Kontext der angegebenen Anmeldeinformationen. Dadurch sollte der Datenverkehr über einen Proxyserver geleitet werden können, der den aktiven Benutzer authentifiziert.
+
+>[!NOTE]
+>Mit dieser Lösung ist es nicht erforderlich, die Sandbox-Konfigurationsdatei zu bearbeiten. Selbst wenn die Konfigurationsdatei erfolgreich mit Ihrem Skript funktioniert, wird sie bei jeder Aktualisierung des Hybrid Runbook Worker-Agents gelöscht.
+
+### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Szenario: Keine Meldungen vom Hybrid Runbook Worker
 
 #### <a name="issue"></a>Problem
 
@@ -201,7 +272,7 @@ Dieses Problem kann durch einen beschädigten Cache für den Hybrid Runbook Work
 
 #### <a name="resolution"></a>Lösung
 
-Melden Sie sich zur Behebung dieses Problems beim Hybrid Runbook Worker an, und führen Sie das folgende Skript aus. Dieses Skript beendet den Microsoft Monitoring Agent, entfernt den dazugehörigen Cache und startet den Dienst neu. Dadurch muss der Hybrid Runbook Worker seine Konfiguration noch mal aus Azure Automation herunterladen.
+Melden Sie sich zur Behebung dieses Problems beim Hybrid Runbook Worker an, und führen Sie das folgende Skript aus. Dieses Skript beendet den Microsoft Monitoring Agent, entfernt den dazugehörigen Cache und startet den Dienst neu. Dadurch muss der Hybrid Runbook Worker seine Konfiguration erneut aus Azure Automation herunterladen.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -211,7 +282,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="already-registered"></a>Szenario: Sie können keinen Hybrid Runbook Worker hinzufügen
+### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>Szenario: Sie können keinen Hybrid Runbook Worker hinzufügen
 
 #### <a name="issue"></a>Problem
 
@@ -227,7 +298,7 @@ Dies kann dadurch verursacht werden, dass der Computer bereits bei einem anderen
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu lösen, entfernen Sie den folgenden Registrierungsschlüssel und starten den `HealthService` erneut, und versuchen Sie erneut, das `Add-HybridRunbookWorker`-Cmdlet auszuführen:
+Entfernen Sie den folgenden Registrierungsschlüssel, starten Sie `HealthService` erneut, und versuchen Sie, das `Add-HybridRunbookWorker`-Cmdlet noch mal auszuführen, um dieses Problem zu lösen.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 

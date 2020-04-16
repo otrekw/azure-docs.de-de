@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über das Cloudtieringfeature der Azure-Dateisync
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768208"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549177"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -20,10 +20,8 @@ Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem
 Wenn ein Benutzer eine Tieringdatei öffnet, ruft die Azure-Dateisynchronisierung nahtlos die Dateidaten aus Azure Files ab, ohne dass der Benutzer wissen muss, dass die Datei in Azure gespeichert ist. 
  
  > [!Important]  
- > Cloudtiering wird nicht für Serverendpunkte auf den Windows-Systemvolumes unterstützt, und nur Dateien mit einer Größe von mehr als 64 KiB können in Azure Files ausgelagert werden.
+ > Das Cloudtiering wird auf dem Systemvolume von Windows nicht unterstützt.
     
-Die Azure-Dateisynchronisierung unterstützt kein Tiering von Dateien mit einer Größe unter 64 KiB, da der Verwaltungsaufwand für das Tiering und das Zurückrufen so kleiner Dateien die Speichereinsparungen überwiegen würde.
-
  > [!Important]  
  > Um Dateien mit Tiering abzurufen, muss die Netzwerkbandbreite mindestens 1 Mbit/s betragen. Wenn die Netzwerkbandbreite kleiner als 1 Mbit/s ist, misslingt ggf. das Abrufen von Dateien mit einem Timeoutfehler.
 
@@ -34,6 +32,10 @@ Die Azure-Dateisynchronisierung unterstützt kein Tiering von Dateien mit einer 
 Der Systemfilter der Azure-Dateisynchronisierung erstellt ein „Wärmebild“ Ihres Namespace auf jedem Serverendpunkt. Er überwacht Zugriffe (Lese- und Schreibvorgänge) im Lauf der Zeit und weist dann jeder Datei basierend auf der Häufigkeit und Aktualität des Zugriffs eine Wärmebewertung zu. Eine häufig verwendete Datei, die vor Kurzem geöffnet wurde, wird als heiß angesehen, während eine Datei, die kaum verwendet wird und auf die seit einiger Zeit nicht zugegriffen wurde, als kalt angesehen wird. Wenn das Dateivolume auf einem Server den festgelegten Schwellenwert für freien Speicherplatz auf dem Volume überschreitet, werden die Dateien mit der niedrigsten Wärmebewertung nach Azure Files ausgelagert, bis der Anteil an freiem Speicherplatz wieder erfüllt ist.
 
 In Version 4.0 und höher des Azure-Dateisynchronisierungs-Agents können Sie zusätzlich eine Datumsrichtlinie für jeden Serverendpunkt angeben, durch die alle Dateien per Tiering ausgelagert werden, auf die innerhalb einer festgelegten Anzahl von Tagen nicht zugegriffen wurde oder die innerhalb dieses Zeitraums nicht geändert wurden.
+
+<a id="tiering-minimum-file-size"></a>
+### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Welche Mindestdateigröße gilt für Dateien, für die ein Tiering durchgeführt werden soll?
+Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden soll, basiert ab den Agent-Versionen 9.x auf der Größe des Dateisystemclusters (das Doppelte der Größe des Dateisystemclusters). Die Größe des NTFS-Dateisystemclusters beträgt beispielsweise 4 KB, sodass die Mindestdateigröße für eine Datei für das Tiering 8 KB beträgt. Bei den Agent-Versionen 8.x und älter ist die Mindestdateigröße für eine Datei, für die ein Tiering durchgeführt werden soll, 64 KB.
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Wie funktioniert die Richtlinie für freien Speicherplatz auf dem Volume?
@@ -49,7 +51,22 @@ Wenn auf einem Volume mehrere Serverendpunkte vorhanden sind, gilt als freier Sp
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Wie funktioniert die datumsbasierte Tieringrichtlinie in Verbindung mit der Tieringrichtlinie für freien Speicherplatz auf dem Volume? 
-Wenn Sie Cloudtiering auf einem Serverendpunkt aktivieren, legen Sie eine Richtlinie für freien Speicherplatz auf dem Volume fest. Diese Richtlinie hat immer Vorrang vor allen anderen Richtlinien, einschließlich der Datumsrichtlinie. Optional können Sie eine Datumsrichtlinie für jeden Serverendpunkt auf dem Volume aktivieren, sodass nur die Dateien lokal gespeichert werden, auf die innerhalb der festgelegten Anzahl von Tagen in der Richtlinie per Lese- oder Schreibvorgang zugegriffen wurde. Ältere Dateien werden ausgelagert. Denken Sie daran, dass die Richtlinie für freien Speicherplatz auf dem Volume immer Vorrang hat. Ist auf dem Volume nicht genügend freier Speicherplatz für die gemäß der Datumsrichtlinie zu speichernden Dateien verfügbar, lagert die Azure-Dateisynchronisierung die ältesten Dateien weiter per Tiering aus, bis der erforderliche Prozentsatz an freiem Speicherplatz auf dem Volume erreicht ist.
+Wenn Sie Cloudtiering auf einem Serverendpunkt aktivieren, legen Sie eine Richtlinie für freien Speicherplatz auf dem Volume fest. Diese Richtlinie hat immer Vorrang vor allen anderen Richtlinien, einschließlich der Datumsrichtlinie. Optional können Sie eine Datumsrichtlinie für jeden Serverendpunkt auf diesem Volume aktivieren. Diese Richtlinie sorgt dafür, dass nur Dateien lokal aufbewahrt werden, auf die in der in dieser Richtlinie beschriebenen Zeitspanne zugegriffen wird (d. h., es erfolgen Lese- oder Schreibzugriffe auf sie). Dateien, auf die nicht in der angegebenen Anzahl von Tagen zugegriffen wird, werden ausgelagert. 
+
+Beim Cloudtiering wird der Zeitpunkt des letzten Zugriffs verwendet, um festzulegen, welche Dateien ausgelagert werden sollen. Der Cloudtiering-Filtertreiber („storagesync.sys“) verfolgt den Zeitpunkt des letzten Zugriffs und protokolliert die Informationen im Cloudtiering-Wärmespeicher. Sie können den Wärmespeicher mithilfe eines lokalen PowerShell-Cmdlets anzeigen.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> Der Zeitstempel des letzten Zugriffs ist keine Eigenschaft, die von NTFS nachverfolgt wird, und wird daher standardmäßig nicht im Datei-Explorer angezeigt. Verwenden Sie nicht den Zeitstempel der letzten Änderung einer Datei, um zu überprüfen, ob die Datumsrichtlinie erwartungsgemäß funktioniert. Mit diesem Zeitstempel werden nur Schreibvorgänge nachverfolgt, keine Lesevorgänge. Verwenden Sie für diese Auswertung das dargestellte Cmdlet, um den Zeitstempel des letzten Zugriffs zu erhalten.
+
+> [!WARNING]
+> Aktivieren Sie nicht das NTFS-Feature für die Überwachung des Zeitstempels des letzten Zugriffs für Dateien und Ordner. Dieses Feature ist standardmäßig deaktiviert, da es starke Auswirkungen auf die Leistung hat. Die Azure-Dateisynchronisierung verfolgt den Zeitpunkt des letzten Zugriffs automatisch und sehr effizient nach und nutzt dieses NTFS-Feature nicht.
+
+Denken Sie daran, dass die Richtlinie für freien Speicherplatz auf dem Volume immer Vorrang hat. Ist auf dem Volume nicht genügend freier Speicherplatz für die gemäß der Datumsrichtlinie zu speichernden Dateien verfügbar, lagert die Azure-Dateisynchronisierung die ältesten Dateien weiter per Tiering aus, bis der erforderliche Prozentsatz an freiem Speicherplatz auf dem Volume erreicht ist.
 
 Angenommen, Sie haben eine datumsbasierte Tieringrichtlinie von 60 Tagen und eine Richtlinie für freien Speicherplatz auf dem Volume von 20 %. Wenn der freie Speicherplatz auf dem Volume nach dem Anwenden der Datumsrichtlinie unter 20 % liegt, setzt die Richtlinie für freien Speicherplatz auf dem Volume die Datumsrichtlinie außer Kraft. Da dadurch mehr Dateien ausgelagert werden, kann die auf dem Server beibehaltene Datenmenge von Daten für 60 Tage auf Daten für 45 Tage reduziert werden. Umgekehrt erzwingt diese Richtlinie auch dann das Tiering von Dateien außerhalb des Zeitbereichs, wenn der Schwellenwert für den freien Speicherplatz nicht erreicht wurde. Eine Datei, die 61 Tage alt ist, wird also selbst dann ausgelagert, wenn das Volume leer ist.
 
@@ -57,7 +74,7 @@ Angenommen, Sie haben eine datumsbasierte Tieringrichtlinie von 60 Tagen und ein
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Wie lege ich eine geeignete Menge an freiem Speicherplatz auf dem Volume fest?
 Die Menge der Daten, die lokal gespeichert werden sollten, wird durch einige Faktoren bestimmt: Ihre Bandbreite, das Zugriffsmuster Ihres Datasets und Ihr Budget. Wenn Sie über eine Verbindung mit geringer Bandbreite verfügen, sollten Sie möglicherweise einen größeren Teil Ihrer Daten lokal speichern, um sicherzustellen, dass nur minimale Verzögerungen für Ihre Benutzer auftreten. Andernfalls können Sie als Baseline die Änderungsrate in einem bestimmten Zeitraum verwenden. Wenn Ihnen z.B. bekannt ist, dass sich jeden Monat ungefähr 10 % Ihres 1-TB-Datasets ändern oder auf dieses aktiv zugegriffen wird, sollten Sie 100 GB lokal speichern, damit Sie nicht zu häufig Dateien abrufen. Wenn das Volume 2 TB groß ist, sollten Sie 5 % (100 GB) lokal speichern, d.h., die verbleibenden 95 % sind der Anteil des freien Speicherplatzes auf dem Volume. Wir empfehlen jedoch, einen Puffer hinzuzufügen, um Zeiträume höherer Änderungsraten zu berücksichtigen. Anders ausgedrückt, sollten Sie mit einem niedrigeren Anteil des freien Speicherplatzes auf dem Volume beginnen und diesen ggf. später noch einmal anpassen. 
 
-Wenn Sie mehr Daten lokal speichern, fallen geringere Kosten für ausgehenden Datenverkehr an, da weniger Dateien aus Azure zurückgerufen werden, Sie müssen jedoch eine größere Menge von lokalem Speicher verwalten, was ebenfalls mit Kosten verbunden ist. Nachdem Sie eine Instanz der Azure-Dateisynchronisierung bereitgestellt haben, können Sie den ausgehenden Datenverkehr Ihres Speicherkontos einsehen, um abzuschätzen, ob Ihre Einstellungen für den freien Speicherplatz auf dem Volume für Ihre Zwecke geeignet sind. Ausgehend davon, dass das Speicherkonto nur Ihren Cloudendpunkt für die Azure-Dateisynchronisierung (d.h. Ihre Synchronisierungsfreigabe) enthält, bedeutet ein hoher ausgehender Datenverkehr, dass viele Dateien aus der Cloud zurückgerufen werden. In diesem Fall sollten Sie erwägen, den lokalen Cache zu erhöhen.
+Wenn Sie mehr Daten lokal speichern, fallen geringere Kosten für ausgehenden Datenverkehr an, da weniger Dateien aus Azure zurückgerufen werden, Sie müssen jedoch eine größere Menge von lokalem Speicher verwalten, was ebenfalls mit Kosten verbunden ist. Nachdem Sie eine Instanz der Azure-Dateisynchronisierung bereitgestellt haben, können Sie über den ausgehenden Datenverkehr Ihres Speicherkontos abschätzen, ob Ihre Einstellungen für den freien Speicherplatz auf dem Volume für Ihre Zwecke geeignet sind. Ausgehend davon, dass das Speicherkonto nur Ihren Cloudendpunkt für die Azure-Dateisynchronisierung (d.h. Ihre Synchronisierungsfreigabe) enthält, bedeutet ein hoher ausgehender Datenverkehr, dass viele Dateien aus der Cloud zurückgerufen werden. In diesem Fall sollten Sie erwägen, den lokalen Cache zu erhöhen.
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ich habe einen neuen Serverendpunkt hinzugefügt. Wann werden meine Dateien auf diesem Server per Tiering ausgelagert?
@@ -131,7 +148,7 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Warum werden für meine Tieringdateien keine Miniaturansichten oder Vorschauversionen in Windows-Explorer angezeigt?
 Für Tieringdateien sind Miniatur- und Vorschauansichten auf dem Serverendpunkt nicht sichtbar. Dieses Verhalten ist zu erwarten, da das Feature zur Zwischenspeicherung von Miniaturansichten in Windows absichtlich das Lesen von Dateien mit dem Attribut „Offline“ überspringt. Wenn Cloudtiering aktiviert ist, würde das Lesen der Tieringdateien dazu führen, dass diese heruntergeladen (abgerufen) werden.
 
-Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, für die das Attribut „Offline“ festgelegt ist, ein graues X angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
+Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, die das Attribut „Offline“ aufweisen, ein graues „X“ angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

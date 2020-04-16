@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229554"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984945"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 
@@ -33,7 +33,7 @@ Service Bus Premium unterstützt die georedundante Notfallwiederherstellung auf 
 
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.
+Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. Service Bus verwaltet drei Kopien des Messagingstores (ein primäres und zwei sekundäre Replikate). Service Bus hält alle drei Kopien für Daten- und Verwaltungsvorgänge synchron. Wenn bei der primären Kopie ein Fehler auftritt, wird eine der sekundären Kopien ohne wahrnehmbare Ausfallzeit zum primären Replikat heraufgestuft. Wenn bei den Anwendungen vorübergehende Trennungen von Service Bus auftreten, stellt die Wiederholungslogik im SDK automatisch erneut eine Verbindung mit Service Bus her. 
 
 > [!NOTE]
 > Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-overview.md#services-support-by-region) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.

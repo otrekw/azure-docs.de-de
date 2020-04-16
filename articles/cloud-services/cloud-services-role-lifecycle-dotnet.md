@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385812"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652091"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
 Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
@@ -23,7 +23,7 @@ Die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100))-K
 
 Berücksichtigen Sie beim Erweitern von **RoleEntryPoint**das folgende Verhalten der Methoden:
 
-* Die [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))- und die [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100))-Methode geben einen booleschen Wert zurück, daher kann von diesen Methoden **false** zurückgegeben werden.
+* Da die [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))-Methode einen booleschen Wert zurückgibt, kann sie **false** zurückgeben.
   
    Wenn Ihr Code **false**zurückgibt, wird der Rollenvorgang abrupt beendet, ohne dass eine möglicherweise eingerichtete Herunterfahrsequenz ausgeführt wird. Im Allgemeinen sollte das Zurückgeben von **false** durch die **OnStart**-Methode vermieden werden.
 * Jede nicht abgefangene Ausnahme in einer Überladung einer **RoleEntryPoint** -Methode wird als nicht behandelte Ausnahme behandelt.

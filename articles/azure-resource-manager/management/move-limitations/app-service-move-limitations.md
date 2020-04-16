@@ -3,12 +3,12 @@ title: Verschieben von Azure App Service-Ressourcen
 description: Verwenden Sie Azure Resource Manager, um App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474928"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655787"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Anleitung zum Verschieben von App Service-Ressourcen
 
@@ -21,10 +21,10 @@ Beim Verschieben einer Web-App zwischen Abonnements gelten die folgenden Richtli
 - Die Zielressourcengruppe darf keine App Service-Ressourcen besitzen. Zu App Service-Ressourcen zählen:
     - Web-Apps
     - App Service-Pläne
-    - Hochgeladene oder importierte SSL-Zertifikate
+    - Hochgeladene oder importierte TLS/SSL-Zertifikate
     - App Service-Umgebungen
 - Alle App Service-Ressourcen in der Ressourcengruppe müssen zusammen verschoben werden. Beachten Sie, dass App Service-Umgebungen nicht in eine neue Ressourcengruppe oder in ein neues Abonnement verschoben werden können.
-- Sie können ein Zertifikat, das an ein Web gebunden ist, ohne Löschen der SSL-Bindungen verschieben, solange das Zertifikat mit allen anderen Ressourcen in der Ressourcengruppe verschoben wird.
+- Sie können ein Zertifikat, das an ein Web gebunden ist, ohne Löschen der TLS-Bindungen verschieben, solange das Zertifikat mit allen anderen Ressourcen in der Ressourcengruppe verschoben wird.
 - App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource nicht mehr in ihrer ursprünglichen Ressourcengruppe enthalten ist, verschieben Sie sie zurück zu ihrer ursprünglichen Ressourcengruppe. Verschieben Sie dann die Ressource zwischen Abonnements.
 
 Wenn Sie sich nicht an die ursprüngliche Ressourcengruppe erinnern, können Sie diese mithilfe der Diagnosefunktion finden. Wählen Sie für Ihre Web-App **Diagnose und Problembehandlung** aus. Wählen Sie dann **Konfiguration und Verwaltung** aus.

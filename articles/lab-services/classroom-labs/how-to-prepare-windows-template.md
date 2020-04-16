@@ -10,16 +10,16 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515002"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521191"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Leitfaden zum Einrichten eines Windows-Vorlagencomputers in Azure Lab Services
 
-Wenn Sie einen Windows 10-Vorlagencomputer für Azure Lab Services einrichten, finden Sie hier einige bewährte Methoden und Tipps. Die unten aufgeführten Konfigurationsschritte sind alle optional.  Diese Vorbereitungsschritte können jedoch dazu beitragen, dass Ihre Kursteilnehmer produktiver sind. Sie können Unterrichtsunterbrechungen minimieren und sicherstellen, dass sie die neuesten Technologien verwenden.
+Wenn Sie einen Windows 10-Vorlagencomputer für Azure Lab Services einrichten, finden Sie hier einige bewährte Methoden und Tipps. Die unten aufgeführten Konfigurationsschritte sind alle optional.  Diese Vorbereitungsschritte können jedoch dazu beitragen, dass Ihre Kursteilnehmer produktiver sind. Sie können Unterrichtsunterbrechungen minimieren und sicherstellen, dass sie die neuesten Technologien verwenden.
 
 >[!IMPORTANT]
 >Dieser Artikel enthält PowerShell-Codeausschnitte, um den Prozess der Änderung der Computervorlage zu optimieren.  Alle gezeigten PowerShell-Skripts sollten in Windows PowerShell mit Administratorrechten ausgeführt werden. In Windows 10 besteht eine schnelle Möglichkeit darin, mit der rechten Maustaste auf das Startmenü zu klicken und dann „Windows PowerShell (Administrator)“ auszuwählen.
@@ -133,7 +133,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="install-microsoft-office-365"></a>Installieren von Microsoft Office 365
 
-Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von Office über das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117 ). Sie müssen eine wiederverwendbare Konfigurationsdatei mit dem [Office 365-Clientkonfigurationsdienst](https://config.office.com/) erstellen, um die Architektur, die aus Office erforderlichen Features und die Updatehäufigkeit auszuwählen.
+Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von Office über das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117 ). Sie müssen eine wiederverwendbare Konfigurationsdatei mit dem [Office 365-Clientkonfigurationsdienst](https://config.office.com/) erstellen, um die Architektur, die erforderlichen Features von Office und die Updatehäufigkeit auszuwählen.
 
 1. Navigieren Sie zum [Office 365-Clientkonfigurationsdienst](https://config.office.com/), und laden Sie Ihre eigene Konfigurationsdatei herunter.
 2. Laden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117) herunter.  Die heruntergeladene Datei trägt den Namen `setup.exe`.
@@ -185,7 +185,7 @@ Es wird empfohlen, alle Microsoft Store-Apps auf die neuesten Versionen zu aktua
 3. Wählen Sie aus dem Dropdownmenü **Herunterladen** und „Updates“ aus.
 4. Klicken Sie auf die Schaltfläche **Update abrufen**.
 
-Sie können auch PowerShell verwenden, um Microsoft Store Anwendungen zu aktualisieren, die bereits installiert sind.
+Sie können auch PowerShell verwenden, um Microsoft Store-Anwendungen zu aktualisieren, die bereits installiert sind.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -208,7 +208,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
 Wenn Sie zusätzliche Sprachen auf dem virtuellen Computer installieren müssen, können Sie diese über den Microsoft Store hinzufügen.
 
 1. Starten Sie den Microsoft Store.
-2. Suchen Sie nach „Language Pack“.
+2. Suchen Sie nach „Language Pack“ (Sprachpaket).
 3. Wählen Sie die zu installierende Sprache aus.
 
 Wenn Sie bereits bei der Vorlagen-VM angemeldet sind, verwenden Sie die Verknüpfung [„Sprachpaket installieren“](ms-settings:regionlanguage?activationSource=SMC-IA-4027670), um direkt zur entsprechenden Einstellungsseite zu gelangen.
@@ -234,3 +234,6 @@ Installieren Sie andere Apps, die häufig für den Unterricht verwendet werden, 
 ## <a name="conclusion"></a>Zusammenfassung
 
 In diesem Artikel wurden optionale Schritte zum Vorbereiten Ihrer Windows-Vorlagen-VM für einen effektive Kurs gezeigt.  Die Schritte umfassen das Installieren von OneDrive und das Installieren von Office 365, das Installieren der Updates für Windows und das Installieren von Updates für Microsoft Store-Apps.  Außerdem wurde erläutert, wie Updates gemäß einem Zeitplan festgelegt werden, der für Ihren Kurs am besten geeignet ist.  
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zur Verwaltung von Kosten finden Sie im Artikel zum Steuern des Verhaltens beim Herunterfahren von Windows: [Leitfaden zum Steuern des Verhaltens beim Herunterfahren von Windows](how-to-windows-shutdown.md)

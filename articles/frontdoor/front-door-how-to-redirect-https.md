@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246856"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877999"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
-Sie können das Azure-Portal verwenden, um eine [Front Door-Ressource ](front-door-overview.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
+Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](front-door-overview.md) mit einem Zertifikat für die TLS-Terminierung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Front Door-Ressource mit einer vorhandenen Web-App-Ressource
-> * Hinzufügen einer benutzerdefinierten Domäne mit einem SSL-Zertifikat 
+> * Hinzufügen einer benutzerdefinierten Domäne mit einem TLS/SSL-Zertifikat 
 > * Einrichten von HTTPS-Umleitung für die benutzerdefinierte Domäne
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -87,7 +87,7 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 ### <a name="enable-https-on-your-custom-domain"></a>Aktivieren von HTTPS für eine benutzerdefinierte Domäne
 
 1. Klicken Sie auf die benutzerdefinierte Domäne, die hinzugefügt wurde, und ändern Sie den Status unter dem Abschnitt **HTTPS für benutzerdefinierte Domänen** in **Aktiviert**.
-2. Sie können den **Zertifikatverwaltungstyp** für das kostenlose Zertifikat, das von Front Door gewartet, verwaltet und automatisch bewertet wird, auf _Durch Front Door verwaltet_ festgelegt lassen. Sie können auch Ihr eigenes benutzerdefiniertes SSL-Zertifikat verwenden, das in Azure Key Vault gespeichert ist. In diesem Tutorial wird davon ausgegangen, dass ein durch Front Door verwaltetes Zertifikat verwendet wird.
+2. Sie können den **Zertifikatverwaltungstyp** für das kostenlose Zertifikat, das von Front Door gewartet, verwaltet und automatisch bewertet wird, auf _Durch Front Door verwaltet_ festgelegt lassen. Sie können auch Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat verwenden, das in Azure Key Vault gespeichert ist. In diesem Tutorial wird davon ausgegangen, dass ein durch Front Door verwaltetes Zertifikat verwendet wird.
 ![Aktivieren von HTTPS für die benutzerdefinierte Domäne](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Klicken Sie auf **Aktualisieren**, um die Auswahl zu speichern, und klicken Sie dann auf **Speichern**.

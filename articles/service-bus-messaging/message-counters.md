@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756374"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891763"
 ---
 # <a name="message-counters"></a>Nachrichtenzähler
 
@@ -38,11 +38,16 @@ Die Anzahl aktiver Nachrichten zu kennen ist nützlich, um festzustellen, ob ein
 
 -   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Nachrichten in der Warteschlange oder im Abonnement, die sich im aktiven Zustand befinden und zustellbereit sind.
 -   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Nachrichten in der Warteschlange für unzustellbare Nachrichten.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Nachrichten mit geplantem Zustand.
+-   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Nachrichten im Zustand „Geplant“.
 -   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Nachrichten, die nicht in eine andere Warteschlange oder ein anderes Thema übertragen wurden und die in die Warteschlange für unzustellbare Nachrichten verschoben wurden.
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Nachrichten, deren Übertragung in eine andere Warteschlange oder ein anderes Thema aussteht.
 
 Wenn eine Anwendung Ressourcen anhand der Länge der Warteschlange skalieren möchte, sollte sie dies langsam tun. Die Erfassung der Nachrichtenzählern ist ein aufwendiger Vorgang innerhalb des Nachrichtenbrokers, dessen Ausführung häufig direkte und negative Auswirkungen auf die Leistung der Entität hat.
+
+> [!NOTE]
+> Die an ein Service Bus-Thema gesendeten Nachrichten werden an Abonnements für dieses Thema weitergeleitet. Somit ist die Anzahl aktiver Nachrichten für das Thema selbst 0, da diese Nachrichten erfolgreich an das Abonnement weitergeleitet wurden. Ermitteln Sie die Anzahl der Nachrichten für das Abonnement, und überprüfen Sie, ob sie größer als 0 ist. Auch wenn Nachrichten im Abonnement angezeigt werden, befinden sie sich tatsächlich in einem Speicher, der im Besitz des Themas ist. 
+
+Wenn Sie die Abonnements anzeigen, ist die Anzahl der Nachrichten im Abonnement ungleich 0 (null) (und beanspruchen einen Teil des Speicherplatzes von 323 MB für die gesamte Entität).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,17 +1,17 @@
 ---
 title: Add-On für HTTP-Anwendungsrouting in Azure Kubernetes Service (AKS)
-description: In diesem Artikel erfahren Sie mehr zur Verwendung des Add-Ons für HTTP-Anwendungsrouting in Azure Kubernetes Service (AKS).
+description: In diesem Artikel erfahren Sie mehr über die Verwendung des Add-Ons für das HTTP-Anwendungsrouting zum Zugreifen auf Anwendungen, die in Azure Kubernetes Service (AKS) bereitgestellt wurden.
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595687"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632401"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -26,10 +26,10 @@ Wenn Sie dieses Add-On aktivieren, erstellt es eine DNS-Zone in Ihrem Abonnement
 
 Das Add-On stellt zwei Komponenten bereit: einen [Kubernetes-Eingangscontroller][ingress] und einen [externen DNS-Controller][external-dns].
 
-- **Eingangscontroller**: Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ „LoadBalancer“ mit dem Internet verbunden. Er überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
-- **Externer DNS-Controller**: Er überwacht die Kubernetes-Eingangsressourcen und erstellt in der clusterspezifischen DNS-Zone DNS-A-Einträge.
+- **Eingangscontroller:** Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ LoadBalancer mit dem Internet verbunden. Er überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
+- **Externer DNS-Controller:** Überwacht die Kubernetes-Eingangsressourcen und erstellt in der clusterspezifischen DNS-Zone DNS-A-Datensätze.
 
-## <a name="deploy-http-routing-cli"></a>Bereitstellen von HTTP-Routing: CLI
+## <a name="deploy-http-routing-cli"></a>Bereitstellen von HTTP-Routing: Befehlszeilenschnittstelle (CLI)
 
 Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Clusters über die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) aktiviert werden. Verwenden Sie hierzu den Befehl [az aks create][az-aks-create] mit dem Argument `--enable-addons`.
 
@@ -178,7 +178,7 @@ az aks disable-addons --addons http_application_routing --name myAKSCluster --re
 
 Wenn das Routing-Add-On für HTTP-Anwendungen deaktiviert ist, verbleiben eventuell einige Kubernetes-Ressourcen im Cluster. Zu diesen Ressourcen zählen *configMaps* und *secrets*, die im Namespace *kube-system* erstellt werden. Wenn Sie stets einen sauberen Cluster haben möchten, empfiehlt es sich, diese Ressourcen zu entfernen.
 
-Suchen Sie mit den folgenden *kubectl get*-Befehlen nach Ressourcen des Typs [addon-http-application-routing][kubectl-get]:
+Suchen Sie mit den folgenden [kubectl get][kubectl-get]-Befehlen nach Ressourcen des Typs *addon-http-application-routing*:
 
 ```console
 kubectl get deployments --namespace kube-system

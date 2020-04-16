@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65713eaf1651a6c02084751471504b5d022dfe14
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281696"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985047"
 ---
 # <a name="storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails)
+
+>[!Important]
+>Wir haben am 13. April 2020 mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center begonnen. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
 
 In diesem Artikel erfahren Sie, wie Sie die Details für Ihre Storefront eingeben. Die Registerkarte **Details der digitalen Ladenzeile** enthält folgende Abschnitte:
 

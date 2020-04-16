@@ -4,22 +4,22 @@ description: Verwenden eines simulierten Geräts auf Ihrem Windows-Computer zum 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510939"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668691"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Erstellen und Bereitstellen eines simulierten IoT Edge-Geräts mit einem virtuellen TPM unter Windows
 
 Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Device Provisioning-Dienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
 
-DPS unterstützt den Nachweis symmetrischer Schlüssel für IoT Edge-Geräte sowohl in Einzelregistrierungen als auch in Gruppenregistrierungen. Wenn Sie die Option zum Festlegen eines IoT Edge-Geräts für den Nachweis symmetrischer Schlüssel aktivieren, werden bei Gruppenregistrierungen alle in dieser Registrierungsgruppe registrierten Geräte als IoT Edge-Geräte markiert.
+DPS unterstützt den Nachweis symmetrischer Schlüssel für IoT Edge-Geräte sowohl in Einzelregistrierungen als auch in Gruppenregistrierungen. Wenn Sie die Option zum Festlegen eines IoT Edge-Geräts für den Nachweis symmetrischer Schlüssel auf TRUE festlegen, werden bei Gruppenregistrierungen alle in dieser Registrierungsgruppe registrierten Geräte als IoT Edge-Geräte markiert.
 
 In diesem Artikel wird beschrieben, wie Sie die automatische Bereitstellung auf einem simulierten IoT Edge-Gerät mit den folgenden Schritten testen:
 
@@ -59,6 +59,9 @@ Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Ang
 Wählen Sie die SDK-Sprache für die Erstellung des simulierten Geräts, und führen Sie die Schritte durch, um die individuelle Registrierung zu erstellen.
 
 Wenn Sie die individuelle Registrierung erstellen, wählen Sie **TRUE** aus, um anzugeben, dass das simulierte TPM-Gerät auf Ihrem Windows-Entwicklungscomputer ein **IoT Edge-Gerät** ist.
+
+> [!TIP]
+> In der Azure CLI können Sie eine [Registrierung](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) oder eine [Registrierungsgruppe](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
 
 Simuliertes Gerät und Anleitungen für die individuelle Registrierung:
 

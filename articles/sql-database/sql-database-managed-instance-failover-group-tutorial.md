@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462648"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631715"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -756,7 +756,7 @@ Erstellen Sie das Gateway für das virtuelle Netzwerk der primären verwalteten 
     | --- | --- |
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Name** | Der Name für das Gateway des virtuellen Netzwerks, z.B. `primary-mi-gateway`. | 
-    | **Region** | Die Region, in der sich die sekundäre verwaltete Instanz befindet. |
+    | **Region** | Die Region, in der sich die primäre verwaltete Instanz befindet. |
     | **Gatewaytyp** | Wählen Sie **VPN** aus. |
     | **VPN-Typ** | Wählen Sie **Routenbasiert** aus. |
     | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |

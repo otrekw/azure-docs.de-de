@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462563"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546259"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Anpassen der Kapazität in Azure Cognitive Search
 
@@ -21,7 +21,7 @@ Nehmen Sie sich vor dem [Bereitstellen eines Suchdiensts](search-create-service-
 
 Die Kapazität ist vom [ausgewählten Tarif](search-sku-tier.md) (Tarife bestimmen die Hardwareeigenschaften) und der für geplante Workloads erforderlichen Kombination aus Replikat und Partition abhängig. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern. 
 
-Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternative Lösungen.
+Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](https://docs.microsoft.com/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: Replikate und Partitionen
 
@@ -38,7 +38,8 @@ Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Wo
 
 Allgemein gilt: Suchanwendungen benötigen in der Regel mehr Replikate als Partitionen – insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu Hochverfügbarkeit](#HA).
 
-Das Hinzufügen weiterer Replikate oder Partitionen erhöht Ihre Kosten für den Betrieb des Diensts. Sie sollten daher den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) verwenden, um die Auswirkungen des Hinzufügens weiterer Knoten auf die Abrechnung zu verstehen. Das [Diagramm unten ](#chart) kann Ihnen helfen, die Anzahl der für eine bestimmte Konfiguration erforderlichen Sucheinheiten zu ermitteln.
+> [!NOTE]
+> Wenn Sie weitere Replikate oder Partitionen hinzufügen, erhöhen sich die Kosten für die Ausführung des Diensts. Außerdem kann die Sortierung der Ergebnisse leicht variieren. Sie sollten daher den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) verwenden, um die Auswirkungen des Hinzufügens weiterer Knoten auf die Abrechnung zu verstehen. Das [Diagramm unten ](#chart) kann Ihnen helfen, die Anzahl der für eine bestimmte Konfiguration erforderlichen Sucheinheiten zu ermitteln. Weitere Informationen dazu, wie sich zusätzliche Replikate auf die Abfrageverarbeitung auswirken, finden Sie unter [Sortieren von Ergebnissen](search-pagination-page-layout.md#ordering-results).
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Gewusst wie: Zuordnen von Replikaten und Partitionen
 

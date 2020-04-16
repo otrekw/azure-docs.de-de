@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350749"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743268"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadverwaltung mit Ressourcenklassen in Azure Synapse Analytics
 
-Enthält eine Anleitung für die Verwendung von Ressourcenklassen zum Verwalten des Speichers und der Parallelität für SQL Analytics-Abfragen in Azure Synapse.  
+Dies ist eine Anleitung für die Verwendung von Ressourcenklassen zum Verwalten von Arbeitsspeicher und Parallelität für Synapse-SQL-Poolabfragen in Azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Was sind Ressourcenklassen?
 
-Die Leistungskapazität einer Abfrage richtet sich nach der Ressourcenklasse des Benutzers.  Ressourcenklassen sind vorab festgelegte Ressourcenlimits in SQL Analytics, die die Computeressourcen und Parallelität für die Abfrageausführung steuern. Ressourcenklassen können Sie beim Konfigurieren von Ressourcen für Ihre Abfragen unterstützen, indem sie Ihnen die Festlegung von Grenzwerten für die Anzahl der gleichzeitig ausgeführten Abfragen und für die Serverressourcen, die den einzelnen Abfragen zugewiesen sind, ermöglichen.  Dabei erfolgt ein Ausgleich zwischen Speicher und Parallelität.
+Die Leistungskapazität einer Abfrage richtet sich nach der Ressourcenklasse des Benutzers.  Ressourcenklassen sind vorab festgelegte Ressourcenlimits in Synapse-SQL-Pools, die Computeressourcen und Parallelität für die Abfrageausführung regeln. Ressourcenklassen können Sie beim Konfigurieren von Ressourcen für Ihre Abfragen unterstützen, indem sie Ihnen die Festlegung von Grenzwerten für die Anzahl der gleichzeitig ausgeführten Abfragen und für die Serverressourcen, die den einzelnen Abfragen zugewiesen sind, ermöglichen.  Dabei erfolgt ein Ausgleich zwischen Speicher und Parallelität.
 
 - Kleinere Ressourcenklassen verringern den maximalen Speicher pro Abfrage, erhöhen jedoch die Parallelität.
 - Größere Ressourcenklassen erhöhen den maximalen Speicher pro Abfrage, verringern jedoch die Parallelität.
@@ -65,7 +65,7 @@ Die dynamischen Ressourcenklassen werden mit diesen vordefinierten Datenbankroll
 - largerc
 - xlargerc
 
-Die Speicherbelegung für jede Ressourcenklasse lautet wie folgt. 
+Die Speicherbelegung für jede Ressourcenklasse lautet wie folgt.
 
 | Dienstebene  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -76,13 +76,11 @@ Die Speicherbelegung für jede Ressourcenklasse lautet wie folgt.
 | DW500c         | 5 %                | 10 %                    | 22 %                    | 70 %                    |
 | DW1000c bis<br> DW30000c | 3 %       | 10 %                    | 22 %                    | 70 %                    |
 
-
-
 ### <a name="default-resource-class"></a>Standardressourcenklasse
 
 Standardmäßig ist jeder Benutzer Mitglied der dynamischen Ressourcenklasse **smallrc**.
 
-Die Ressourcenklasse des Dienstadministrators ist unter smallrc festgelegt und kann nicht geändert werden.  Der Dienstadministrator ist der Benutzer, der während des Bereitstellungsprozesses erstellt wird.  In diesem Kontext entspricht der Dienstadministrator dem Anmeldenamen, der beim Erstellen einer neuen SQL Analytics-Instanz bei einem neuen Server unter „Serveradministratoranmeldung“ angegeben wurde.
+Die Ressourcenklasse des Dienstadministrators ist unter smallrc festgelegt und kann nicht geändert werden.  Der Dienstadministrator ist der Benutzer, der während des Bereitstellungsprozesses erstellt wird.  In diesem Kontext entspricht der Dienstadministrator der Anmeldung, die beim Erstellen eines neuen Synapse-SQL-Pools mit einem neuen Server unter „Serveradministratoranmeldung“ angegeben wurde.
 
 > [!NOTE]
 > Als „Active Directory-Administrator“ definierte Benutzer oder Gruppen sind auch Dienstadministratoren.
@@ -164,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Ressourcenklassen werden implementiert, indem Benutzer Datenbankrollen zugewiesen werden. Wenn ein Benutzer eine Abfrage ausführt, wird die Abfrage mit der Ressourcenklasse des Benutzers ausgeführt. Ist ein Benutzer beispielsweise Mitglied der Datenbankrolle „staticrc10“, werden die dazugehörigen Abfragen mit kleinen Arbeitsspeichermengen ausgeführt. Wenn ein Datenbankbenutzer Mitglied der Datenbankrollen „xlargerc“ oder „staticrc80“ ist, werden die dazugehörigen Abfragen mit großen Arbeitsspeichermengen ausgeführt.
 
-Verwenden Sie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql), um die Ressourcenklasse eines Benutzers zu erhöhen und den Benutzer zu einer Datenbankrolle einer großen Ressourcenklasse hinzuzufügen.  Der folgende Code fügt einen Benutzer zur Datenbankrolle „largerc“ hinzu.  Jede Anforderung ruft 22 % des Systemspeichers ab.
+Verwenden Sie [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um die Ressourcenklasse eines Benutzers zu erhöhen und den Benutzer zu einer Datenbankrolle einer großen Ressourcenklasse hinzuzufügen.  Der folgende Code fügt einen Benutzer zur Datenbankrolle „largerc“ hinzu.  Jede Anforderung ruft 22 % des Systemspeichers ab.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Verwenden Sie [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql), um die Ressourcenklasse herabzusetzen.  Wenn „Loaduser“ kein Mitglied und keine andere Ressourcenklasse ist, wechseln Sie in die Standardressourcenklasse „smallrc“ mit einer Speicherzuweisung von 3 %.  
+Verwenden Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um die Ressourcenklasse herabzusetzen.  Wenn „Loaduser“ kein Mitglied und keine andere Ressourcenklasse ist, wechseln Sie in die Standardressourcenklasse „smallrc“ mit einer Speicherzuweisung von 3 %.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -285,8 +283,8 @@ IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
 
-SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
-  ELSE Mem*100 
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500
+  ELSE Mem*100
   END AS VARCHAR(10)) +'c'
     FROM (
       SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
@@ -595,4 +593,3 @@ GO
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Analytics](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität des gruppierten Columnstore-Index verbessern können, finden Sie unter [Arbeitsspeicheroptimierung für Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
-

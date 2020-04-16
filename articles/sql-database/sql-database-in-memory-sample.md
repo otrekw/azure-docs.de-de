@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73810327"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528216"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
 
@@ -41,7 +41,7 @@ Sie können im [Azure-Portal](https://portal.azure.com/) die Beispieldatenbank �
 Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLTP finden Sie hier:
 
 - Version: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
-- Quellcode: [in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
+- Quellcode: [in-memory-oltp-demo-source-code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
 
 #### <a name="installation-steps"></a>Installationsschritte
 
@@ -393,7 +393,7 @@ In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungsz
 
 #### <a name="deeper-information"></a>Weiterführende Informationen
 
-- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert (in englischer Sprache)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert.](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [Blogbeitrag „In-Memory OLTP in Azure SQL Database“](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory OLTP in Azure SQL-Datenbank)
 

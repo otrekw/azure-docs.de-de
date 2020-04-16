@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097098"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745098"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -23,14 +23,13 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* Aus einem Webbrowser
+Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird in einem neuen Blatt des Portals geöffnet.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird in einer neuen Portalansicht geöffnet.
 
-1. Wählen Sie aus **Clusterdashboards** die Option **Ambari-Ansichten** aus. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben. Navigieren Sie alternativ zu `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in Ihrem Browser, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
+1. Wählen Sie aus **Clusterdashboards** die Option **Ambari-Ansichten** aus. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben. Sie können auch zu `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in Ihrem Browser navigieren, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
 
 1. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
@@ -61,16 +60,13 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
     Diese Anweisungen führen die folgenden Aktionen aus:
 
-   * `DROP TABLE`: Löscht Tabelle und Datendatei, falls die Tabelle bereits existiert.
-
-   * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive.
-     Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
-
-   * `ROW FORMAT`: Gibt an, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
-
-   * `STORED AS TEXTFILE LOCATION`: Zeigt den Speicherort für die Daten an, und dass sie als Text gespeichert sind.
-
-   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte „t4“ den Wert „[ERROR]“ enthält.
+    |-Anweisung. | BESCHREIBUNG |
+    |---|---|
+    |DROP TABLE|Löscht Tabelle und Datendatei, falls die Tabelle bereits existiert.|
+    |CREATE EXTERNAL TABLE|Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.|
+    |ROW FORMAT|Gibt an, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.|
+    |STORED AS TEXTFILE LOCATION|Zeigt den Speicherort für die Daten an, und dass sie als Text gespeichert sind.|
+    |SELECT|Wählt die Anzahl aller Zeilen aus, bei denen die Spalte t4 den Wert [ERROR] enthält.|
 
    > [!IMPORTANT]  
    > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
@@ -116,7 +112,7 @@ Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb eine
 
 In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nachdem Sie eine Abfrage gespeichert haben, können Sie diese von der Registerkarte __Saved Queries__ aus wiederverwenden.
 
-![Apache Hive-Ansicht mit Registerkarte für gespeicherte Abfragen](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Registerkarte für gespeicherte Abfragen in Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.
@@ -131,7 +127,7 @@ Deklarieren und speichern Sie eine Gruppe von UDFs mit der Registerkarte **UDF**
 
 ![Apache Hive-Ansicht mit Anzeige der UDF-Registerkarte](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben, wird ganz unten im **Abfrage-Editor** die Schaltfläche **Insert udfs** angezeigt. Wenn Sie diesen Eintrag wählen, wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
+Am unteren Rand des **Abfrage-Editors** wird die Schaltfläche **UDFs einfügen** angezeigt. Durch diesen Eintrag wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
 
 Beispielsweise können Sie eine UDF mit den folgenden Eigenschaften definieren:
 
@@ -155,13 +151,13 @@ Sie können die UDF dann in Ihrer Abfrage verwenden. Beispiel: `SELECT myawesome
 Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Sie in den folgenden Artikeln:
 
 * [Verwenden von Python mit Apache Hive und Apache Pig in Azure HDInsight](python-udf-hdinsight.md)
-* [Hinzufügen einer benutzerdefinierten Apache Hive UDF zu HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Verwenden einer benutzerdefinierten Java-Funktion mit Apache Hive in HDInsight](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Hive-Einstellungen
 
 Sie können verschiedene Hive-Einstellungen ändern, z.B. die Ausführungs-Engine für Hive von Tez (Standard) in MapReduce.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Allgemeine Informationen zu Hive in HDInsight:
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444857"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619441"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Versionshinweise
 
@@ -45,6 +45,10 @@ ms.locfileid: "75444857"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Die neue `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`-Methode und die zugehörige öffentliche Schnittstelle `ICheckpointPartitionProcessorFactory` wurden hinzugefügt. Dies ermöglicht einer Implementierung der Schnittstelle `IPartitionProcessor`, den integrierten Prüfpunktmechanismus zu verwenden. Die neue Factory ähnelt der vorhandenen `IPartitionProcessorFactory`, mit dem Unterschied, dass die `Create`-Methode auch den Parameter `ILeaseCheckpointer` akzeptiert.
+* Nur eine der beiden Methoden (entweder `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` oder `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`) kann für dieselbe `ChangeFeedProcessorBuilder`-Instanz verwendet werden.
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Verbesserungen hinsichtlich Stabilität und Diagnostizierbarkeit:
@@ -182,6 +186,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2\. April 2020 |--- |
 | [2.2.8](#2.2.8) |28. Oktober 2019 |--- |
 | [2.2.7](#2.2.7) |14. Mai 2019 |--- |
 | [2.2.6](#2.2.6) |29. Januar 2019 |--- |
