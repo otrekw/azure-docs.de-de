@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 933a175213afd81c81eb237a2b2dd4c3e24e3315
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633154"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411680"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse Analytics 
  In diesem Artikel finden Sie weitere Ressourcen, die Ihnen helfen, wichtige Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse besser zu verstehen.
@@ -23,7 +23,7 @@ ms.locfileid: "80633154"
 ## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
 In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die Entwicklung eines verteilten Data Warehouse mit SQL-Poolfunktionen in Azure Synapse vorgestellt:
 
-* [connections](sql-data-warehouse-connect-overview.md)
+* [connections](../sql/connect-overview.md)
 * [concurrency](resource-classes-for-workload-management.md)
 * [Transaktionen](sql-data-warehouse-develop-transactions.md)
 * [Benutzerdefinierte Schemas](sql-data-warehouse-develop-user-defined-schemas.md)
