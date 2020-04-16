@@ -10,18 +10,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419118"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory-Instanz mit einer Azure Resource Manager-Vorlage
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuelle Version](quickstart-create-data-factory-resource-manager-template.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](transform-data-using-spark.md).
 
@@ -636,7 +638,7 @@ In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus einem Binärdata
 
 #### <a name="trigger"></a>Trigger
 
-In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro Stunde ausführt. Der bereitgestellte Trigger befindet sich im Status „Beendet“. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
+In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro Stunde ausführt. Der bereitgestellte Trigger befindet sich im Status „Beendet“. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#trigger-execution).
 
 ```json
 {  

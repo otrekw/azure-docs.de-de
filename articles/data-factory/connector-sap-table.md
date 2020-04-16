@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 04/09/2020
+ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421073"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415234"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer SAP-Tabelle zu kopieren. Weitere Informationen finden Sie im Artikel [Übersicht über die Kopieraktivität](copy-activity-overview.md).
 
@@ -242,6 +243,7 @@ In `rfcTableOptions` können Sie die folgenden allgemeinen SAP-Abfrageoperatoren
 | `LE` | Kleiner als oder gleich |
 | `GT` | Größer als |
 | `GE` | Größer als oder gleich |
+| `IN` | Wie in `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | Wie in `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Beispiel

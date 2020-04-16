@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414393"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver
 
@@ -64,6 +64,7 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 
 > [!NOTE]
 > In einigen Fällen befinden sich die Azure SQL-Datenbank und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+>
 > - Beide Abonnements müssen demselben Azure Active Directory-Mandanten zugeordnet sein.
 > - Der Benutzer muss über die erforderlichen Berechtigungen zum Initiieren der Vorgänge verfügen. Dazu gehören z.B. das Aktivieren von Dienstendpunkten und das Hinzufügen eines VNET-Subnetzes auf dem angegebenen Server.
 > - In beiden Abonnements muss der Anbieter „Microsoft.Sql“ registriert sein.
@@ -134,7 +135,7 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
    > [!NOTE]
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
-    
+
 1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrer Azure-SQL Server-Instanz, auf der Ihre mit Azure Active Directory (AAD) registrierte Azure SQL Data Warehouse-Instanz gehostet wird, die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu, wie in Schritt 1.
 
    > [!NOTE]
@@ -264,6 +265,7 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dien
 
 > [!NOTE]
 > Für die Regeln gelten die folgenden Status oder Zustände:
+>
 > - **Bereit:** Gibt an, dass der von Ihnen initiierte Vorgang erfolgreich war.
 > - **Fehlerhaft:** Gibt an, dass der von Ihnen initiierte Vorgang zu einem Fehler geführt hat.
 > - **Gelöscht:** Gilt nur für den Löschvorgang und gibt an, dass die Regel gelöscht wurde und nicht mehr angewendet wird.

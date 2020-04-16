@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164628"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414354"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Beheben von SQL-Kürzungsfehlern in Zeilen in Data Factory-Zuordnungsdatenflüssen
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Als gängiges Szenario in Data Factory bei der Verwendung von Zuordnungsdatenflüssen werden die transformierten Daten in eine Azure SQL-Datenbank geschrieben. In diesem Szenario muss eine mögliche Spaltenkürzung als häufige Fehlerbedingung verhindert werden. Führen Sie die nachfolgenden Schritte aus, um die Protokollierung von Spalten zu ermöglichen, die nicht in eine Zielzeichenfolgenspalte passen, sodass der Datenfluss in diesen Szenarien fortgesetzt werden kann.
 

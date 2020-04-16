@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416292"
 ---
 # <a name="azure-application-marketplace-tab"></a>Registerkarte „Marketplace“ für eine Azure-Anwendung
 
@@ -32,7 +32,7 @@ In der folgenden Tabelle sind die Einstellungen beschrieben, mit denen eine digi
 | **Zusammenfassung\***      | Kurze Zusammenfassung zum Angebot. Die maximale Länge beträgt 100 Zeichen.           |
 | **Lange Zusammenfassung\*** | Längere Zusammenfassung zum Angebot (kann auch mit der Zusammenfassung identisch sein). Die maximale Länge beträgt 256 Zeichen.           |
 | **Beschreibung\***  | Beschreibung des Angebots. Die maximale Länge beträgt 3000 Zeichen. Einfache HTML-Formatierung ist zulässig, einschließlich &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; und Headertags.  |
-| **Marketingbezeichner\*** | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen. Wählen Sie einen kurzen, benutzerfreundlichen Marketingbezeichner für Ihren Dienst. Dieser Bezeichner wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet „contoso“ und Ihr Marketingbezeichner lautet „sampleApp“, dann ist die URL für Ihr Angebot im Azure Marketplace gleich https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp.  
+| **Marketingbezeichner\*** | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen. Wählen Sie einen kurzen, benutzerfreundlichen Marketingbezeichner für Ihren Dienst. Dieser Bezeichner wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet „contoso“ und Ihr Marketingbezeichner lautet „sampleApp“, dann ist die URL für Ihr Angebot im Azure Marketplace gleich `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`.  
 | **Abonnement-IDs für die Vorschauversion\*** | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer der Vorschauversion hinzufügen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf Ihr Angebot, solange es in der Vorschau verfügbar ist, nachdem es veröffentlicht wurde und bevor es live geschaltet wird.          |
 | **Nützliche Links**    | Optional können Sie für Benutzer Ihres Angebots Links zu verschiedenen Ressourcen bereitstellen, z.B. Support, Dokumentation, Foren usw.  Es empfiehlt sich, mindestens einen Link hinzuzufügen, der zu Ihrer Dokumentation führt.            |
 | **Vorgeschlagene Kategorien (max. 5)\*** | Wählen Sie bis zu fünf Kategorien aus. Die ausgewählten Kategorien werden verwendet, um Ihr Angebot den Produktkategorien zuzuordnen, die im Azure Marketplace und im Azure-Portal verfügbar sind. Sie werden auf Suchseiten und auf Ihrer Produktdetailseite angezeigt. |

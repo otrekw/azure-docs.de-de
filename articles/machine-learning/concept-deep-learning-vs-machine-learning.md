@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501372"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414582"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -118,6 +118,6 @@ In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine 
 
 - [Klassifizieren von Bildern mit einem Pytorch-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
-Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](../synapse-analytics/sql-data-warehouse/cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.
+Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](algorithm-cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.

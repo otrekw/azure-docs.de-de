@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230214"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414171"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
 > * [Aktuelle Version](copy-activity-performance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Unabhängig davon, ob Sie eine umfangreiche Datenmigration aus Data Lake oder einem Data Warehouse auf Unternehmensniveau zu Azure durchführen möchten oder ob Sie umfassende Datenmengen aus verschiedenen Datenquellen für die Big Data-Analyse in Azure erfassen möchten, es ist unerlässlich, für die optimale Leistung und Skalierbarkeit zu sorgen.  Azure Data Factory bietet einen leistungsfähigen, robusten und kostengünstigen Mechanismus für die Erfassung von Daten im gewünschten Umfang. Dadurch ist es ideal geeignet für Datentechniker, die leistungsstarke und skalierbare Pipelines für die Datenerfassung erstellen möchten.
 

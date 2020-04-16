@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: cf6f25e8839ead5738eb7259cc4fccb674a4adea
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416099"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Überwachen der Workload Ihres SQL-Pools von Azure Synapse Analytics mit DMVs
 
@@ -309,4 +309,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu DMVs finden Sie unter [Systemsichten](sql-data-warehouse-reference-tsql-system-views.md).
+Weitere Informationen zu DMVs finden Sie unter [Systemsichten](../sql/reference-tsql-system-views.md).

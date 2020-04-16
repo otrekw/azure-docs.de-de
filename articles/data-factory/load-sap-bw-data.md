@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440145"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415838"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dieser Artikel beschreibt, wie Sie Azure Data Factory zum Kopieren von Daten aus SAP Business Warehouse (BW) über Open Hub in Azure Data Lake Storage Gen2 verwenden. Mit einer ähnlichen Vorgehensweise können Sie Daten in andere [unterstützte Senkendatenspeicher](copy-activity-overview.md#supported-data-stores-and-formats) kopieren.
 

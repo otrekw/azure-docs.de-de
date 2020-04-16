@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941912"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414743"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Verschieben von Dateien mit Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird eine Lösungsvorlage beschrieben, mit der Sie Dateien aus einem Ordner in einen anderen Ordner in einem anderen dateibasierten Speicher verschieben können. Eines der häufigsten Szenarien für die Verwendung dieser Vorlage: Dateien werden fortlaufend in einem Eingangsordner des Quellspeichers abgelegt. Durch das Erstellen eines geplanten Triggers kann die ADF-Pipeline diese Dateien in regelmäßigen Abständen aus dem Quell-in den Zielspeicher verschieben.  Die ADF-Pipeline verschiebt Dateien wie folgt: Die einzelnen Dateien im Eingangsordner werden in einen anderen Ordner im Zielspeicher kopiert und dann aus dem Eingangsordner im Quellspeicher gelöscht.
 

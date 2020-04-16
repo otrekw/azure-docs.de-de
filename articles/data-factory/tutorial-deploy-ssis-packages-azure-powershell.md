@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336148"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418642"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Einrichten von Azure-SSIS Integration Runtime in Azure Data Factory mithilfe von PowerShell
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) in Azure Data Factory einrichten. Azure-SSIS IR unterstützt das Ausführen von Paketen, die für Folgendes bereitgestellt wurden:
 * SSIS-Katalog (SSISDB), der von einer Azure SQL-Datenbank-Serverinstanz oder von einer verwalteten Instanz gehostet wird (Projektbereitstellungsmodell)
