@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289339"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261957"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-Sicherheitsbaseline für Azure Database for MySQL
 
@@ -134,7 +134,7 @@ Grundlegendes zur Verwendung von Diensttags für Azure Database for MySQL: https
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy-Beispiele für Netzwerke: https://docs.microsoft.com/azure/governance/policy/samples/#network
+Azure Policy-Beispiele für Netzwerke: https://docs.microsoft.com/azure/governance/policy/samples/
 
 Erstellen einer Azure-Blaupause: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -388,7 +388,7 @@ Konfigurieren von Advanced Threat Protection für Azure Database for MySQL: http
 
 Bereitstellen von Azure AD Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Grundlegendes zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Informationen zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -940,7 +940,7 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste
 
 **Verantwortlichkeit**: –
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vorabprüfen von in Azure-Ressourcen ohne Computaufgaben hochzuladenden Dateien
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vorabprüfen von in computefremde Azure-Ressourcen hochzuladenden Dateien
 
 **Leitfaden**: Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste (z. B. Azure Database for MySQL) aktiviert, wird aber nicht für Kundeninhalte ausgeführt.
 

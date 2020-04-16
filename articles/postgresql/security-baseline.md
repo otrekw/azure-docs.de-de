@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289925"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261159"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
 
@@ -112,7 +112,7 @@ Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL:
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimieren der Komplexität und des Verwaltungsaufwands von Netzwerksicherheitsregeln
 
-**Leitfaden**: Verwenden Sie für Ressourcen, die Zugriff auf Ihre Azure Database for PostgreSQL-Instanzen benötigen, VNET-Diensttags, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. „SQL.WestUs“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
+**Leitfaden**: Verwenden Sie für Ressourcen, die Zugriff auf Ihre Azure Database for PostgreSQL-Instanzen benötigen, VNET-Diensttags, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. SQL.WestUs) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
 Hinweis: Azure Database for PostgreSQL verwendet das Diensttag „Microsoft.Sql“.
 
@@ -134,7 +134,7 @@ Grundlegendes zur Verwendung von Diensttags für Azure Database for PostgreSQL: 
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy-Beispiele für Netzwerke: https://docs.microsoft.com/azure/governance/policy/samples/#network
+Azure Policy-Beispiele für Netzwerke: https://docs.microsoft.com/azure/governance/policy/samples/
 
 Erstellen einer Azure-Blaupause: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -234,7 +234,7 @@ Speichern von Ressourcenprotokollen in einem Azure Storage-Konto: https://docs.m
 
 **Leitfaden**: Analysieren und überwachen Sie Protokolle Ihrer Azure Database for PostgreSQL-Instanzen auf anormales Verhalten. Verwenden Sie Log Analytics von Azure Monitor, um Protokolle zu überprüfen und Abfragen für Protokolldaten auszuführen. Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren.
 
-Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 Weitere Informationen zu Log Analytics: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
@@ -258,7 +258,7 @@ Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL un
 
 Konfigurieren von Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -461,7 +461,7 @@ Einrichten von Advanced Threat Protection für Azure Database for PostgreSQL: ht
 
 Anzeigen riskanter Azure AD-Anmeldungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -541,7 +541,7 @@ Konfigurieren der Verschlüsselung während der Übertragung für Azure Database
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -688,7 +688,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Verwalten eines Bestands genehmigter Azure-Ressourcen und Softwaretitel
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung gilt für Computeressourcen und Azure allgemein.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen und Azure als Ganzes vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -722,7 +722,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Entfernen nicht genehmigter Azure-Ressourcen und Softwareanwendungen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung gilt für Computeressourcen und Azure allgemein.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen und Azure als Ganzes vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064145"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399060"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Algorithmen und Module – Referenz für Azure Machine Learning-Designer (Vorschau)
 
@@ -24,7 +24,7 @@ Jedes Modul stellt eine Codegruppe dar, die unabhängig ausgeführt werden und e
 
 Hilfe beim Auswählen von Algorithmen finden Sie unter: 
 * [Auswählen von Algorithmen](../how-to-select-algorithms.md)
-* [Azure Machine Learning – Cheat Sheet für Algorithmen](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
+* [Azure Machine Learning – Cheat Sheet für Algorithmen](../algorithm-cheat-sheet.md)
 
 > [!TIP]
 > In allen Pipelines im Designer können Sie Informationen zu einem bestimmten Modul abrufen. Wählen Sie das Modul und dann den **Weitere Hilfe**-Link im Bereich **Direkthilfe** aus.

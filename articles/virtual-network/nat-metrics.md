@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79202177"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408611"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriken für Azure Virtual Network NAT
 
-Azure Virtual Network NAT-Gatewayressourcen bieten mehrdimensionale Metriken. Diese Metriken können zur Überwachung des Betriebs sowie zur [Problembehandlung](nat-metrics.md) verwendet werden.  Für kritische Probleme wie etwa die SNAT-Auslastung können Warnungen konfiguriert werden.
+Azure Virtual Network NAT-Gatewayressourcen bieten mehrdimensionale Metriken. Diese Metriken können zur Überwachung des Betriebs sowie zur [Problembehandlung](troubleshoot-nat.md) verwendet werden.  Für kritische Probleme wie etwa die SNAT-Auslastung können Warnungen konfiguriert werden.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">

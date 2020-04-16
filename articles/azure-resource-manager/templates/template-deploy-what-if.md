@@ -3,23 +3,62 @@ title: Was-wäre-wenn für Vorlagenbereitstellung (Preview)
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156445"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010187"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
 
 Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
 
 > [!NOTE]
-> Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/armtemplatepreviews). Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+> Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
 Sie können den Was-wäre-wenn-Vorgang mit PowerShell-Befehlen oder REST-API-Vorgänge verwenden.
+
+## <a name="install-powershell-module"></a>Installieren des PowerShell-Moduls
+
+Um Was-wäre-wenn in PowerShell zu verwenden, installieren Sie eine Vorschauversion des Az.Resources-Moduls aus dem PowerShell-Katalog.
+
+### <a name="install-preview-version"></a>Installieren der Vorschauversion
+
+Verwenden Sie zum Installieren des Vorschaumoduls:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+### <a name="uninstall-alpha-version"></a>Deinstallieren einer Alphaversion
+
+Wenn Sie zuvor eine Alphaversion des Was-wäre-wenn-Moduls installiert hatten, deinstallieren Sie dieses Modul. Die Alphaversion war nur für Benutzer verfügbar, die sich für eine frühe Vorschau registriert hatten. Wenn Sie diese Vorschau nicht installiert haben, können Sie diesen Abschnitt überspringen.
+
+1. Ausführen von PowerShell als Administrator
+1. Überprüfen Sie Ihre installierten Versionen des Az.Resources-Moduls.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. Wenn Sie über eine installierte Version mit einer Versionsnummer im Format **2.x.x-alpha** verfügen, deinstallieren Sie diese Version.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Heben Sie die Registrierung des Was-wäre-wenn-Repositorys auf, das Sie für die Installation der Vorschau verwendet haben.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+Sie sind für die Verwendung von Was-wäre-wenn bereit.
+
+## <a name="see-results"></a>Anzeigen der Ergebnisse
 
 In PowerShell enthält die Ausgabe farbcodierte Ergebnisse, die Ihnen helfen, die verschiedenen Arten von Änderungen anzuzeigen.
 
@@ -72,11 +111,8 @@ Sie können auch den Parameterschalter `-Confirm` verwenden, um eine Vorschau de
 
 Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Um ein Objekt zu erhalten, das Sie programmgesteuert auf Änderungen überprüfen können, verwenden Sie Folgendes:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf` für Bereitstellungen von Ressourcengruppen
-* `$results = Get-AzSubscriptionDeploymentWhatIf` oder `$results = Get-AzDeploymentWhatIf` für Bereitstellungen auf Abonnementebene
-
-> [!NOTE]
-> Vor der Veröffentlichung von Version 2.0.1-alpha5 haben Sie den Befehl `New-AzDeploymentWhatIf` verwendet. Dieser Befehl wurde durch die Befehle `Get-AzDeploymentWhatIf`, `Get-AzResourceGroupDeploymentWhatIf` und `Get-AzSubscriptionDeploymentWhatIf` ersetzt. Wenn Sie eine frühere Version verwendet haben, müssen Sie diese Syntax aktualisieren. Der Parameter `-ScopeType` wurde entfernt.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult` für Bereitstellungen von Ressourcengruppen
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult` oder `$results = Get-AzDeploymentWhatIfResult` für Bereitstellungen auf Abonnementebene
 
 ### <a name="azure-rest-api"></a>Azure-REST-API
 
@@ -170,7 +206,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="test-modification"></a>Testen der Änderung
 
-Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Stellen Sie dieses Mal eine [Vorlage zum Ändern des virtuellen Netzwerks](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) bereit. Es fehlt einer der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert.
+Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Stellen Sie dieses Mal eine [Vorlage zum Ändern des virtuellen Netzwerks](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) bereit. Es fehlt eins der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -223,7 +259,7 @@ Einige der als gelöscht aufgeführten Eigenschaften werden sich tatsächlich ni
 Nun können Sie die Was-wäre-wenn-Ergebnisse programmgesteuert auswerten, indem Sie den Befehl auf eine Variable festlegen.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444110"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257724"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebooks
 
@@ -26,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Vorlagencomputer in Lab Servic
 
 ## <a name="lab-configuration"></a>Labkonfiguration
 
-Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein Lab-Konto. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. Sobald Sie ein Azure-Abonnement erhalten, können Sie ein neues Lab-Konto in Azure Lab Services erstellen. Weitere Informationen zum Erstellen eines neuen Lab-Kontos finden Sie im [Tutorial zum Einrichten eines Lab-Kontos](tutorial-setup-lab-account.md).  Sie können auch ein vorhandenes Lab-Konto verwenden.
+Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein Lab-Konto. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Sobald Sie ein Azure-Abonnement erhalten, können Sie ein neues Lab-Konto in Azure Lab Services erstellen. Weitere Informationen zum Erstellen eines neuen Lab-Kontos finden Sie im [Tutorial zum Einrichten eines Lab-Kontos](tutorial-setup-lab-account.md).  Sie können auch ein vorhandenes Lab-Konto verwenden.
 
 ### <a name="lab-account-settings"></a>Lab-Kontoeinstellungen
 
@@ -34,10 +34,10 @@ Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Ta
 
 | Lab-Kontoeinstellungen | Instructions |
 | ------------------- | ------------ |
-| Marketplace-Image | Aktivieren Sie das Image [Data Science Virtual Machine – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) zur Verwendung in Ihrem Lab-Konto. |
+| Marketplace-Image | Aktivieren Sie das Image [Data Science Virtual Machine – Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) zur Verwendung in Ihrem Lab-Konto. |
 
 >[!TIP]
->Dieser Artikel konzentriert sich auf das Konfigurieren eines Vorlagencomputers, der das Windows Server-Betriebssystem verwendet.  Es ist auch möglich, einen Data Science-Kurs mit Python und Jupyter Notebooks einzurichten, indem Sie eins der Images [Data Science Virtual Machine für Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) oder [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) aus dem Azure Marketplace verwenden.
+>Dieser Artikel konzentriert sich auf das Konfigurieren eines Vorlagencomputers, der das Windows Server-Betriebssystem verwendet.  Es ist auch möglich, einen Data Science-Kurs mit Python und Jupyter Notebooks einzurichten, indem Sie eines der [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)-Images aus Azure Marketplace verwenden.
 
 ### <a name="lab-settings"></a>Lab-Einstellungen
 
@@ -50,7 +50,7 @@ Verwenden Sie beim Einrichten eines Classroom-Labs die Einstellungen in der unte
 
 ## <a name="template-machine"></a>Vorlagencomputer
 
-Das Image [Data Science Virtual Machine – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) bietet die für Kurse dieser Art notwendigen Deep Learning-Frameworks und -Tools.  Das Image enthält Jupyter Notebooks und Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) ist eine Webanwendung, mit der Datenanalysten Berechnungen an Rohdaten durchführen und die Ergebnisse in derselben Umgebung anzeigen können.  Für den Vorlagencomputer wird die Webanwendung lokal ausgeführt.  [Visual Studio Code](https://code.visualstudio.com/) ist eine IDE, die eine umfangreiche interaktive Erfahrung zum Schreiben und Testen eines Notebooks bietet.  Weitere Informationen finden Sie unter [Arbeiten mit Jupyter-Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+Das Image [Data Science Virtual Machine – Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) bietet die für Kurse dieser Art notwendigen Deep Learning-Frameworks und -Tools.  Das Image enthält Jupyter Notebooks und Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) ist eine Webanwendung, mit der Datenanalysten Berechnungen an Rohdaten durchführen und die Ergebnisse in derselben Umgebung anzeigen können.  Für den Vorlagencomputer wird die Webanwendung lokal ausgeführt.  [Visual Studio Code](https://code.visualstudio.com/) ist eine IDE, die eine umfangreiche interaktive Erfahrung zum Schreiben und Testen eines Notebooks bietet.  Weitere Informationen finden Sie unter [Arbeiten mit Jupyter-Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
 Die verbleibende Aufgabe zum Einrichten des Kurses besteht darin, lokale Notebooks bereitzustellen.  Anweisungen zum Verwenden der Azure Machine Learning-Beispiele finden Sie unter [Konfigurieren einer Umgebung mit Jupyter Notebooks](../../machine-learning/how-to-configure-environment.md#jupyter).  Sie können auch Ihre eigenen Notebooks auf dem Vorlagencomputer bereitstellen.  Die Notebooks werden auf alle Kursteilnehmercomputer kopiert, wenn die Vorlage veröffentlicht wird.
 

@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "65604090"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398665"
 ---
-# <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen einer Azure Data Box
+# <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
 Azure Data Box ist eine Hybridlösung, mit der Sie Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure importieren können. Sie übertragen Ihre Daten auf ein von Microsoft bereitgestelltes Speichergerät mit 80 TB nutzbarer Kapazität, und anschließend senden Sie das Gerät zurück. Diese Daten werden dann in Azure hochgeladen.
 
@@ -33,21 +33,13 @@ Bevor Sie das Gerät bereitstellen, müssen die folgenden Konfigurationsvorausse
 
 ### <a name="for-service"></a>Für den Dienst
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
-- Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
-- Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
-    - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/offers/ms-azr-0036p/).
-
-- Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Für das Gerät
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie verfügen über einen Hostcomputer, der mit dem Netzwerk des Datencenters verbunden ist. Data Box kopiert die Daten von diesem Computer. Auf dem Hostcomputer muss ein unterstütztes Betriebssystem ausgeführt werden (siehe [Azure Data Box – Systemanforderungen](data-box-system-requirements.md)).
 - Ihr Datencenter verfügt über ein Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
-
 
 ## <a name="order-data-box"></a>Bestellen einer Data Box
 
@@ -62,7 +54,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 4. Überprüfen Sie, ob der Data Box-Dienst in Ihrer Region verfügbar ist. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Klicken Sie dann auf **Übernehmen**. 
 
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
     |Übertragungstyp     | Wählen Sie **Import in Azure** aus.        |
@@ -75,7 +67,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 6. Geben Sie in **Bestellung** die **Bestelldetails** an. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und klicken Sie dann auf **Weiter**.
     
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Name     |  Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.      |
     |Resource group     |   Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
@@ -88,7 +80,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
     Wenn Sie Data Box verwenden, um auf der Grundlage lokaler VHDs verwaltete Datenträger zu erstellen, sind außerdem folgende Informationen erforderlich:
 
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Ressourcengruppen     | Erstellen Sie neue Ressourcengruppen, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Eine bereits vorhandene Ressourcengruppe kann nur verwendet werden, wenn diese zuvor beim Erstellen eines Data Box-Auftrags für einen verwalteten Datenträger durch den Data Box-Dienst erstellt wurde. <br> Bei Angabe mehrerer Ressourcengruppen müssen diese jeweils durch ein Semikolon getrennt werden. Es werden maximal zehn Ressourcengruppen unterstützt.|
 

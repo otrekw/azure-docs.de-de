@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826274"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313586"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -125,7 +125,7 @@ Alternativ dazu können Sie sich über SSH beim virtuellen Computer anmelden und
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Wie kann ich überprüfen, ob die Simulation Daten an die Cloud sendet?
 
-Mit dem Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) oder dem Befehl [monitor-events für die CLI-Erweiterung von Azure IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) können Sie die Daten überprüfen, die von bestimmten Geräten an IoT Hub gesendet werden. Um diese Tools zu verwenden, müssen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung kennen. Informationen finden Sie unter [Wie finde ich die Verbindungszeichenfolge des IoT-Hubs, den meine Lösung verwendet?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Mit dem Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) oder dem Befehl [monitor-events für die CLI-Erweiterung von Azure IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) können Sie die Daten überprüfen, die von bestimmten Geräten an IoT Hub gesendet werden. Um diese Tools zu verwenden, müssen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung kennen. Informationen finden Sie unter [Wie finde ich die Verbindungszeichenfolge des IoT-Hubs, den meine Lösung verwendet?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Untersuchen Sie die Daten, die von einem der Publisher-Geräte gesendet werden:
 

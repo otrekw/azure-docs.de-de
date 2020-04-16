@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1a73894e2003ae742f329adcda51cf21ceeacb31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991159"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407152"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)

@@ -3,19 +3,19 @@ title: Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK C#
 titleSuffix: Azure Cognitive Services
 description: In diesem Leitfaden erfahren Sie, wie Sie mit dem Speech SDK für C# Absichten anhand gesprochener Sprache erkennen können.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77120044"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402222"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK für C#
 

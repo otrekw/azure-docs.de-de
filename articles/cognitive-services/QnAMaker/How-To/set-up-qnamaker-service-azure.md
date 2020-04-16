@@ -3,12 +3,12 @@ title: Einrichten eines QnA Maker-Diensts – QnA Maker
 description: Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131700"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402992"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -89,7 +89,7 @@ Endpunktschlüssel können im [QnA Maker-Portal](https://qnamaker.ai) verwaltet 
     >[!NOTE]
     >Aktualisieren Sie Ihre Schlüssel, wenn Sie denken, dass sie gefährdet sind. Dazu müssen möglicherweise entsprechende Änderungen an Ihrem Clientanwendungs- oder Botcode vorgenommen werden.
 
-### <a name="upgrade-qna-maker-sku"></a>Upgraden der QnA Maker-SKU
+## <a name="upgrade-qna-maker-sku"></a>Upgraden der QnA Maker-SKU
 
 Wenn Ihre Wissensdatenbank mehr Fragen und Antworten enthalten soll, die über Ihren aktuellen Tarif hinausgehen, upgraden Sie den Tarif Ihres QnA Maker-Diensts.
 
@@ -103,7 +103,7 @@ So führen Sie ein Upgrade der QnA Maker Management-SKU aus:
 
     ![QnA Maker-Preise](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Upgraden von App Service
+## <a name="upgrade-app-service"></a>Upgraden von App Service
 
  Wenn Ihre Wissensdatenbank mehr Anforderungen aus Ihrer Client-App verarbeiten muss, upgraden Sie Ihren App Service-Tarif.
 
@@ -113,7 +113,7 @@ Wechseln Sie im Azure-Portal zur App Service-Ressource, und wählen Sie nach Bed
 
 ![QnA Maker App Service-Staffelung](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade des Azure Cognitive Search-Diensts
+## <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade des Azure Cognitive Search-Diensts
 
 Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Cognitive Search-Diensts.
 

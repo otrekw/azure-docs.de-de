@@ -3,20 +3,20 @@ title: Verwenden der automatischen Spracherkennung zur Umwandlung von Sprache in
 titleSuffix: Azure Cognitive Services
 description: Das Sprach-SDK unterstützt die automatische Spracherkennung für die Umwandlung von Sprache in Text. Mit diesem Feature wird die Audioeingabe mit einer bereitgestellten Liste von Sprachen verglichen und die wahrscheinlichste Übereinstimmung bestimmt. Der zurückgegebene Wert kann dann verwendet werden, um das Sprachmodell auszuwählen, das für die Spracherkennung verwendet wird.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239599"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402208"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische Spracherkennung zur Umwandlung von Sprache in Text
 

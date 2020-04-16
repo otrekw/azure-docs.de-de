@@ -3,19 +3,19 @@ title: 'Speech-Dienst: Erste Schritte mit Custom Speech'
 titleSuffix: Azure Cognitive Services
 description: Bei Custom Speech handelt es sich um eine Reihe von Onlinetools, mit denen Sie die Genauigkeit unserer Spracherkennung für Ihre Anwendungen, Tools und Produkte bewerten und verbessern können. Für den Einstieg benötigen Sie lediglich eine Handvoll Audiotestdateien. Nutzen Sie die unten angegebenen Links, um mit der Erstellung einer benutzerdefinierten Spracherkennung zu beginnen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918953"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402065"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 

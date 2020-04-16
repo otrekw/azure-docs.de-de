@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 455036652836c6cfd2055e9a747f30b6dfe41295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059110"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381027"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Blink für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte erläutert, die in Blink und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Blink zu konfigurieren.
+In diesem Tutorial werden die Schritte erläutert, die in Blink und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern in Blink zu konfigurieren.
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -41,9 +41,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-blink"></a>Zuweisen von Benutzern zu Blink
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppenmitglieder synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
-Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Blink benötigen. Anschließend können Sie Blink diese Benutzer und/oder Gruppen zuweisen, indem Sie den folgenden Anweisungen folgen:
+Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppenmitglieder in Azure AD Zugriff auf Blink benötigen. Anschließend können Sie Blink diese Benutzer und/oder Gruppen zuweisen, indem Sie den folgenden Anweisungen folgen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-blink"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Blink
@@ -54,7 +54,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="setup-blink-for-provisioning"></a>Einrichten von Blink für die Bereitstellung
 
-1. Reichen Sie eine [Supportanfrage](https://help.joinblink.com/hc/requests/new) ein, oder senden Sie eine E-Mail an den **Blink-Support** (support@joinblink.com), um ein SCIM-Token anzufordern. erforderlich.
+1. Reichen Sie eine [Supportanfrage](https://support.joinblink.com) ein, oder senden Sie eine E-Mail an den **Blink-Support** (support@joinblink.com), um ein SCIM-Token anzufordern. erforderlich.
 
 2.  Kopieren Sie das **SCIM-Authentifizierungstoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Blink-Anwendung im Feld „Geheimes Token“ eingegeben.
 
@@ -82,7 +82,7 @@ Vor dem Konfigurieren von Blink für die automatische Benutzerbereitstellung mit
 
 ## <a name="configuring-automatic-user-provisioning-to-blink"></a>Konfigurieren der automatischen Benutzerbereitstellung für Blink 
 
-In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in Blink auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
+In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern in Blink auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für Blink aktivieren. Folgen Sie dazu den Anweisungen im [Tutorial für einmaliges Anmelden mit Blink](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Blink synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Blink für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Blink-Benutzerattribute](media/blink-provisioning-tutorial/User_attributes.png)
+    ![Blink-Benutzerattribute](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zum Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für Blink ausgeführt werden.
+Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zum Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für Blink ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 

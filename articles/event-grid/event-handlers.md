@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73118823aec9b8d4bd872986b13f19496240c0b9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231338"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393441"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Ereignishandler in Azure Event Grid
 
@@ -52,8 +52,6 @@ Event Hubs können entweder als Ereignisquelle oder Ereignishandler fungieren. I
 |---------|---------|
 | [Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid](custom-event-to-eventhub.md) | Sendet ein benutzerdefiniertes Ereignis an einen Event Hub, damit es durch eine Anwendung verarbeitet wird. |
 | [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
-
-Beispiele für Event Hubs als Quelle finden Sie unter [Event Hubs-Quelle](event-sources.md#event-hubs).
 
 ## <a name="hybrid-connections"></a>Hybridverbindungen
 

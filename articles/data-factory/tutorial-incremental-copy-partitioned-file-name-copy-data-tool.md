@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/17/2020
-ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501656"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409399"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory zu erstellen. Anschließend verwenden Sie das Tool „Daten kopieren“, um eine Pipeline zu erstellen, die neue Dateien basierend auf dem zeitpartitionierten Dateinamen aus einem Azure-Blobspeicher in einen anderen kopiert.
 

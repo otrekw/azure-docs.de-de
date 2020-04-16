@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880821"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380057"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph über eine Android-Anwendung 
 
@@ -91,7 +91,7 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
 
 1. Navigieren Sie im Projektbereich von Android Studio zu **app\src\main\res**.
 2. Klicken Sie mit der rechten Maustaste auf **res**, und wählen Sie **New** > **Directory** („Neu“ > „Verzeichnis“) aus. Geben Sie `raw` als neuen Verzeichnisnamen ein, und klicken Sie auf **OK**.
-3. Erstellen Sie unter **app** > **src** > **main** > **res** > **raw** eine neue JSON-Datei namens `auth_configbn_single_account.json`, und fügen Sie die MSAL-Konfiguration ein, die Sie zuvor gespeichert haben. 
+3. Erstellen Sie unter **app** > **src** > **main** > **res** > **raw** eine neue JSON-Datei namens `auth_config_single_account.json`, und fügen Sie die MSAL-Konfiguration ein, die Sie zuvor gespeichert haben. 
 
     Fügen Sie unterhalb des Umleitungs-URIs Folgendes ein: 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>Instanziieren von „PublicClientApplication“
 #### <a name="initialize-variables"></a>Initialisieren von Variablen 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -583,8 +583,3 @@ Löschen Sie das im Schritt [Registrieren Ihrer Anwendung](#register-your-applic
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 Sollten Probleme mit diesem Tutorial oder mit Microsoft Identity Platform auftreten, besuchen Sie die Seite [Hilfe und Support](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options).
-
-Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
-
-> [!div class="nextstepaction"]
-> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

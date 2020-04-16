@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649290"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391822"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Artefakt für benutzerdefinierte Rollendefinitionen in Azure Managed Applications
 
@@ -20,7 +20,7 @@ Dieser Artikel bietet eine Übersicht über das Artefakt für benutzerdefinierte
 
 ## <a name="custom-role-definition-artifact"></a>Artefakt für benutzerdefinierte Rollendefinitionen
 
-Sie müssen dem Artefakt für benutzerdefinierte Rollendefinitionen den Namen „customRoleDefinition.json“ geben. Platzieren Sie es in dem ZIP-Paket, das eine Definition eine verwalteten Anwendung erstellt, auf derselben Ebene wie „createUiDefinition.json“ und „mainTemplate.json“. Unter [Veröffentlichen einer Definition für eine verwaltete Anwendung](publish-managed-app-definition-quickstart.md) erfahren Sie, wie Sie das ZIP-Paket erstellen und eine Definition für eine verwaltete Anwendung veröffentlichen.
+Sie müssen dem Artefakt für benutzerdefinierte Rollendefinitionen den Namen „customRoleDefinition.json“ geben. Platzieren Sie es in dem ZIP-Paket, das eine Definition eine verwalteten Anwendung erstellt, auf derselben Ebene wie „createUiDefinition.json“ und „mainTemplate.json“. Unter [Veröffentlichen einer Definition für eine verwaltete Anwendung](publish-service-catalog-app.md) erfahren Sie, wie Sie das ZIP-Paket erstellen und eine Definition für eine verwaltete Anwendung veröffentlichen.
 
 ## <a name="custom-role-definition-schema"></a>Schema einer benutzerdefinierten Rollendefinition
 

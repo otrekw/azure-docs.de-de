@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231342"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393465"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -35,7 +35,7 @@ Ein Herausgeber ist der Benutzer oder die Organisation, die Ereignisse an Event 
 
 Eine Ereignisquelle ist die Quelle, in der das Ereignis auftritt. Jede Ereignisquelle ist mit mindestens einem Ereignistyp verknüpft. Azure Storage ist z.B. die Ereignisquelle für durch Blobs erstellte Ereignisse. IoT Hub ist die Ereignisquelle für Ereignisse, die von Geräten erstellt wurden. Ihre Anwendung ist die Ereignisquelle für benutzerdefinierte Ereignisse, die Sie definieren. Ereignisquellen sind dafür zuständig, Ereignisse an Event Grid zu senden.
 
-Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md).
+Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Sie unter [Ereignisquellen in Azure Event Grid](overview.md#event-sources).
 
 ## <a name="topics"></a>Themen
 

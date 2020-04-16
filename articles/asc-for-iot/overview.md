@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Security Center für IoT? | Microsoft-Dokumentation
+title: Übersicht über die Dienste
 description: Erfahren Sie mehr über Features und Dienste von Azure Security Center für IoT, und erhalten Sie Informationen zur umfassenden IoT-Sicherheit durch Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4601de6ee495def43d1267131193762ea482d2a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462223"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310922"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Einführung in Azure Security Center für IoT
 
-Vereinheitlichen Sie die Sicherheitsverwaltung, und ermöglichen Sie End-to-End-Bedrohungserkennung und -analyse über Hybrid Cloud-Workloads und Ihre Azure IoT-Lösung hinweg. 
+Vereinheitlichen Sie die Sicherheitsverwaltung, und ermöglichen Sie End-to-End-Bedrohungserkennung und -analyse über Hybrid Cloud-Workloads und Ihre Azure IoT-Lösung hinweg.
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Schützen Sie Ihre gesamte IoT-Lösung von IoT-Geräten bis zur Azure-Cloud.
 
 Wählen Sie unsere nahtlose Lösung ohne Agent, oder nutzen Sie umfassende, auf Agents aufbauende Sicherheit – Azure Security Center für IoT bietet Ihnen in jedem Fall Schutz vor Bedrohungen und Analysen für jedes Gerät, IoT Edge und IoT Hub, der alle Ihre IoT-Ressourcen umfasst.
 
-Da Milliarden neuer Geräte mit dem Internet verbunden und in den privaten und geschäftlichen Alltag integriert werden, müssen die für die Sicherheit zuständigen Teams gewährleisten, dass ihre Sicherheitsstrategien sich schnell genug weiterentwickeln, um vor jeder neuen Angriffstechnik zu schützen. Wie bei jedem anderen System erfordert der umfassende Schutz Ihrer IoT-Lösung Schutz in jeder Implementierungsphase. 
+Da Milliarden neuer Geräte mit dem Internet verbunden und in den privaten und geschäftlichen Alltag integriert werden, müssen die für die Sicherheit zuständigen Teams gewährleisten, dass ihre Sicherheitsstrategien sich schnell genug weiterentwickeln, um vor jeder neuen Angriffstechnik zu schützen. Wie bei jedem anderen System erfordert der umfassende Schutz Ihrer IoT-Lösung Schutz in jeder Implementierungsphase.
 
-Azure Security Center für IoT vereinfacht den Schutz von Hybridworkloads durch eine einheitliche Sichtbarkeit und Kontrolle, adaptiven Schutz vor Bedrohungen, intelligenter Bedrohungserkennung und Gegenmaßnahmen für Workloads, die am Edge, lokal, in Azure oder in anderen Clouds ausgeführt werden. 
+Azure Security Center für IoT vereinfacht den Schutz von Hybridworkloads durch eine einheitliche Sichtbarkeit und Kontrolle, adaptiven Schutz vor Bedrohungen, intelligenter Bedrohungserkennung und Gegenmaßnahmen für Workloads, die am Edge, lokal, in Azure oder in anderen Clouds ausgeführt werden.
 
 ![Azure Security Center für IoT-Architektur](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>Einheitliche Sichtbarkeit und Steuerung
 
-Verschaffen Sie sich einen einheitlichen Überblick über die Sicherheit sämtlicher lokaler und cloudbasierter Workloads (einschließlich Ihrer Azure-IoT-Lösung). Integrieren Sie neue Geräte, und wenden Sie Sicherheitsrichtlinien auf Ihre Workloads (Blattgeräte, Microsoft Edge-Geräte, IoT Hub) an, um die Einhaltung von Sicherheitsstandards und einen verbesserten Sicherheitsstatus zu gewährleisten. 
+Verschaffen Sie sich einen einheitlichen Überblick über die Sicherheit sämtlicher lokaler und cloudbasierter Workloads (einschließlich Ihrer Azure-IoT-Lösung). Integrieren Sie neue Geräte, und wenden Sie Sicherheitsrichtlinien auf Ihre Workloads (Blattgeräte, Microsoft Edge-Geräte, IoT Hub) an, um die Einhaltung von Sicherheitsstandards und einen verbesserten Sicherheitsstatus zu gewährleisten.
 
 ### <a name="adaptive-threat-prevention"></a>Adaptiver Schutz vor Bedrohungen
 
@@ -57,4 +57,3 @@ In dieser Übersicht haben Sie mehr über die Features und Dienste von Azure Sec
 - [Schnellstart: Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
 - [Azure Security Center für IoT – Häufig gestellte Fragen (FAQ)](resources-frequently-asked-questions.md)
 - [Azure Security Center für IoT-Warnungen](concept-security-alerts.md)
-

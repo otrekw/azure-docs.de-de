@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zur Ereignisaggregation im Azure Security Center für IoT | Microsoft-Dokumentation
+title: Ereignisaggregation
 description: Weitere Informationen zur Ereignisaggregation im Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73928957"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311416"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Ereignisaggregation im Azure Security Center für IoT
 
@@ -31,18 +31,20 @@ Um das zusätzliche Kontingent und die Kosten zu reduzieren, während Ihre Gerä
 Die Ereignisaggregation ist standardmäßig **aktiviert**. Sie kann jederzeit manuell **deaktiviert** werden, obwohl von dieser Vorgehensweise abgeraten wird.
 
 Die Aggregation steht derzeit für die folgenden Ereignistypen zur Verfügung:
+
 * ProcessCreate
 * ConnectionCreate
 * ProcessTerminate (nur Windows)
 
 ## <a name="how-does-event-aggregation-work"></a>Wie funktioniert die Ereignisaggregation?
+
 Wenn die Ereignisaggregation **aktiviert** ist, aggregieren Azure Security Center für IoT-Agents Ereignisse für den Intervallzeitraum oder das Zeitfenster.
 Nachdem der Intervallzeitraum abgelaufen ist, sendet der Agent die aggregierten Ereignisse zur weiteren Analyse an die Azure-Cloud.
 Die aggregierten Ereignisse werden im Arbeitsspeicher gespeichert, bis sie an die Azure-Cloud gesendet werden.
 
 Um den Speicherbedarf des Agents zu verringern, erhöht der Agent immer dann die Trefferanzahl dieses spezifischen Ereignisses, wenn er ein identisches Ereignis zu einem Ereignis erfasst, das im Arbeitsspeicher bereits enthalten ist. Wenn das Aggregationszeitfenster überschritten wird, sendet der Agent die Trefferanzahl für jeden spezifischen Ereignistyp, der aufgetreten ist. Die Ereignisaggregation ist einfach die Aggregation der Trefferanzahl für die einzelnen erfassten Ereignistypen.
 
-Ereignisse werden nur dann als identisch betrachtet, wenn die folgenden Bedingungen erfüllt sind: 
+Ereignisse werden nur dann als identisch betrachtet, wenn die folgenden Bedingungen erfüllt sind:
 
 * ProcessCreate-Ereignisse: Wenn **commandLine**, **executable**, **username** und **userid** identisch sind
 * ConnectionCreate-Ereignisse: Wenn **commandLine**, **userId**, **direction**, **local address**, **remote address**, **protocol und **destination port** identisch sind
@@ -50,18 +52,21 @@ Ereignisse werden nur dann als identisch betrachtet, wenn die folgenden Bedingun
 
 ### <a name="working-with-aggregated-events"></a>Arbeiten mit aggregierten Ereignissen
 
-Während der Aggregation werden nicht aggregierte Ereigniseigenschaften verworfen und in Log Analytics mit dem Wert „0“ angezeigt. 
+Während der Aggregation werden nicht aggregierte Ereigniseigenschaften verworfen und in Log Analytics mit dem Wert „0“ angezeigt.
+
 * „ProcessCreate“-Ereignisse – **processId** und **parentProcessId** sind auf „0“ festgelegt.
 * „ConnectionCreate“-Ereignisse – **processId** und **source port** sind auf „0“ festgelegt.
 
-## <a name="event-aggregation-based-alerts"></a>Warnungen, die auf Ereignisaggregation basieren 
+## <a name="event-aggregation-based-alerts"></a>Warnungen, die auf Ereignisaggregation basieren
+
 Nach der Analyse erstellt Azure Security Center für IoT Sicherheitswarnungen für verdächtige aggregierte Ereignisse. Aus aggregierten Ereignissen erstellte Warnungen werden für jedes aggregierte Ereignis nur einmal angezeigt.
 
-Die Start- und Endzeit für die Aggregation sowie die Trefferanzahl für jedes Ereignis werden im Ereignisfeld **ExtraDetails** in Log Analytics zur Verwendung während Untersuchungen protokolliert. 
+Die Start- und Endzeit für die Aggregation sowie die Trefferanzahl für jedes Ereignis werden im Ereignisfeld **ExtraDetails** in Log Analytics zur Verwendung während Untersuchungen protokolliert.
 
-Jedes aggregierte Ereignis stellt einen 24-Stunden-Zeitraum von gesammelten Warnungen dar. Über das Menü der Ereignisoptionen oben links in jedem Ereignis können Sie jedes einzelne aggregierte Ereignis **schließen**.    
+Jedes aggregierte Ereignis stellt einen 24-Stunden-Zeitraum von gesammelten Warnungen dar. Über das Menü der Ereignisoptionen oben links in jedem Ereignis können Sie jedes einzelne aggregierte Ereignis **schließen**.
 
 ## <a name="event-aggregation-twin-configuration"></a>Konfiguration der Ereignisaggregation von Modulzwillingen
+
 Nehmen Sie Änderungen an der Konfiguration der Ereignisaggregation von Azure Security Center für IoT im [Agentkonfigurationsobjekt](how-to-agent-configuration.md) der Modulzwillingsidentität des Moduls **azureiotsecurity** vor.
 
 | Konfigurationsname | Mögliche Werte | Details | Bemerkungen |

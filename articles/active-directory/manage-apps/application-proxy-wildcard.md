@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481244"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406732"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -116,7 +116,7 @@ Die Platzhalteranwendung wird im [MyApps-Panel](https://myapps.microsoft.com) mi
 
 ### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
 
-Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Szenario 1: Allgemeine Platzhalteranwendung
 

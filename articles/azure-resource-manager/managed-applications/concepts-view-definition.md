@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649270"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391695"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Ansichtsdefinitionsartefakt in Azure Managed Applications
 
@@ -20,7 +20,7 @@ Dieser Artikel gibt eine Übersicht über das Ansichtsdefinitionsartefakt und se
 
 ## <a name="view-definition-artifact"></a>Anzeigen des Definitionsartefakts
 
-Das Ansichtsdefinitionsartefakt muss **viewDefinition.json** genannt werden und auf der gleichen Ebene wie **createUiDefinition.json** und **mainTemplate.json** im ZIP-Paket platziert sein, das eine Definition einer verwalteten Anwendung erstellt. Unter [Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung](publish-managed-app-definition-quickstart.md) erfahren Sie, wie Sie das ZIP-Paket erstellen und eine Definition für eine verwaltete Anwendung veröffentlichen.
+Das Ansichtsdefinitionsartefakt muss **viewDefinition.json** genannt werden und auf der gleichen Ebene wie **createUiDefinition.json** und **mainTemplate.json** im ZIP-Paket platziert sein, das eine Definition einer verwalteten Anwendung erstellt. Unter [Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung](publish-service-catalog-app.md) erfahren Sie, wie Sie das ZIP-Paket erstellen und eine Definition für eine verwaltete Anwendung veröffentlichen.
 
 ## <a name="view-definition-schema"></a>Ansichtsdefinitionsschema
 

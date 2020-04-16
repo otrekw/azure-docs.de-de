@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252526"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115107"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
 
 In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und ein Speicherkonto mit einem privaten Endpunkt im Azure-Portal erstellen. Anschließend können Sie vom virtuellen Computer sicher auf das Speicherkonto zugreifen.
-
-> [!NOTE]
-> Private Endpunkte sind in Verbindung mit Dienstendpunkten im selben Subnetz unzulässig!
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

@@ -3,20 +3,20 @@ title: 'Schnellstart: Erkennen von Sprache aus einem Blobspeicher'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung verwenden Sie die REST-API zur Batchtranskription, um die in einem SAS-Blob gespeicherte Sprache asynchron zu erkennen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: df06d41e72026295de4673fd272c07d510e639fd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: b302180257ec6624ebd6144a7680755a2856899e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77119382"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400995"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Schnellstart: Erkennen von Sprache aus einem Blobspeicher
 

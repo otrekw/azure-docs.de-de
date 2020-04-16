@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198938"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381396"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -33,7 +33,7 @@ Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern
 
 Zum Sicherstellen der Hochverfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie Apache HDFS oder Apache Hadoop YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
-Verwenden Sie zum Abrufen der Hostnamen für verschiedene Knotentypen in Ihrem Cluster die [Ambari-Rest-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+Verwenden Sie zum Abrufen der Hostnamen für verschiedene Knotentypen in Ihrem Cluster die [Ambari-Rest-API](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Leiten Sie vom numerischen Wert nicht ab, ob ein Knoten primär oder sekundär ist. Der numerische Wert soll nur sicherstellen, dass jeder Knoten einen eindeutigen Namen hat.

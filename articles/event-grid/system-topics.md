@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501196"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393154"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Der Azure Event Grid-Dienst erstellt Systemthemen, wenn Sie ein erstes Ereignisabonnement für eine Azure-Ereignisquelle erstellen. Derzeit erstellt Event Grid keine Systemthemen für Themenquellen, die vor dem 15. März 2020 erstellt wurden. Für alle Themenquellen, die Sie nach diesem Datum erstellt haben, erstellt Event Grid automatisch Systemthemen. In diesem Artikel werden die **Systemthemen** in Azure Event Grid beschrieben.
@@ -38,5 +38,5 @@ Wenn Sie versuchen, die Ressourcengruppe mit dem Speicherkonto zu löschen, wird
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 
 
-- [Benutzerdefinierte Themen](event-sources.md#custom-topics)
+- [Benutzerdefinierte Themen](custom-topics.md)
 - [Domänen](event-domains.md)

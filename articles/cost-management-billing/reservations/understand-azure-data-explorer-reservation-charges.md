@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199329"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383124"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Data Explorer
 
@@ -65,7 +65,7 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
-* [Vorauszahlen für Azure Data Explorer-Aufschlagseinheiten mit reservierter Azure Data Explorer-Kapazität](../../data-explorer/pricing-reserved-capacity.md)  
+* [Vorauszahlen für Azure Data Explorer-Aufschlagseinheiten mit reservierter Azure Data Explorer-Kapazität](/azure/data-explorer/pricing-reserved-capacity)  
 * [Was sind Azure-Reservierungen?](save-compute-costs-reservations.md)  
 * [Verwalten von Azure-Reservierungen](manage-reserved-vm-instance.md)  
 * [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](understand-reserved-instance-usage.md)

@@ -3,19 +3,19 @@ title: Verbessern der Synthese mit Custom Voice – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Bei Custom Voice handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Nutzen Sie die unten angegebenen Links, um mit der Erstellung einer benutzerdefinierten Spracherkennung zu beginnen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218980"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402052"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 

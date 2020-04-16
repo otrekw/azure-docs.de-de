@@ -3,12 +3,12 @@ title: Ressourcenanbieter durch Azure-Dienste
 description: Listet alle Ressourcenanbieter-Namespaces für Azure Resource Manager auf und gibt den Azure-Dienst für den jeweiligen Namespace an.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9cf18a1e4c0dd40ae9106d32547ba4795ea9fbb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472961"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382510"
 ---
 # <a name="resource-providers-for-azure-services"></a>Ressourcenanbieter für Azure-Dienste
 
@@ -98,7 +98,7 @@ In diesem Artikel wird die Zuordnung von Ressourcenanbieter-Namespaces zu Azure-
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Schlüsseltresor](../../key-vault/index.yml) |
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft.Kusto | [Azure Data Explorer](../../data-explorer/index.yml) |
+| Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logik-Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |

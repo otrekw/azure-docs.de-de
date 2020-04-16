@@ -1,18 +1,18 @@
 ---
 title: Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 description: Es wird beschrieben, wie Sie das Betriebssystemimage auf VM-Instanzen in einer Skalierungsgruppe automatisch aktualisieren.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.author: manayar
-ms.openlocfilehash: 6d550e8e960cb8e212702796467c91d1cd1ebb23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.author: mimckitt
+ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235177"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393794"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -109,7 +109,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
 
 ```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -168,7 +168,7 @@ Stellen Sie zum Konfigurieren des automatischen Upgrades von Betriebssystemimage
 Im folgenden Beispiel wird beschrieben, wie automatische Betriebssystemupgrades auf einem Skalierungsgruppenmodell festgelegt werden:
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
 ```
 
 ```json
@@ -247,7 +247,7 @@ Sie können den Verlauf des letzten für Ihre Skalierungsgruppe durchgeführten 
 Im folgenden Beispiel wird der Status der Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* mit der [REST-API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) überprüft:
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
 ```
 
 Der GET-Aufruf gibt Eigenschaften ähnlich der folgenden Beispielausgabe zurück:
@@ -307,7 +307,7 @@ Sie können die verfügbaren Imageversionen für automatische Betriebssystemupgr
 
 ### <a name="rest-api"></a>REST-API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -332,7 +332,7 @@ In bestimmten Fällen, in denen Sie nicht auf das Anwenden des aktuellen Images 
 Verwenden Sie den API-Aufruf zum [Starten eines Betriebssystemupgrades](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade), um ein paralleles Upgrade zu starten, bei dem alle VM-Skalierungsgruppeninstanzen auf die neueste verfügbare Imagebetriebssystemversion aktualisiert werden. Instanzen, auf denen bereits die neueste verfügbare Betriebssystemversion ausgeführt wird, sind nicht betroffen. Das folgende Beispiel zeigt, wie Sie ein paralleles Betriebssystemupgrade für eine Skalierungsgruppe mit dem Namen *myScaleSet* in der Ressourcengruppe *myResourceGroup* starten können:
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

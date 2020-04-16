@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984560"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380806"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden allgemeine HTTP-Anforderungsheader und Parameter besc
 
 ### <a name="authentication"></a>Authentication
 
-Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden. 
+Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden. 
 
 > [!TIP]
 > Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://tsiclientsample.azurewebsites.net/) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).

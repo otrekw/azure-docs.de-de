@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Administrator- und Benutzerrollen von Azure A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273679"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406242"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
@@ -67,7 +67,7 @@ In den übrigen Aufgaben verwenden Sie SSMS, um eine Verbindung mit Ihrem Server
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Hinzufügen eines Benutzerkontos zur Serveradministratorrolle
 
-In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Wenn Sie eine Sicherheitsgruppe hinzufügen, muss die Eigenschaft `MailEnabled` auf `True` festgelegt sein.
+In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Wenn Sie eine Sicherheitsgruppe hinzufügen, muss die Eigenschaft `MailEnabled` auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Servernamen, und klicken Sie dann auf **Eigenschaften**. 
 2. Klicken Sie im Fenster **Eigenschaften für Analysis-Server** auf **Sicherheit** > **Hinzufügen**.
@@ -143,5 +143,5 @@ Wenn Benutzer- oder Gruppenkonten bzw. Benutzer- oder Gruppenrollen nicht mehr b
 In diesem Tutorial haben Sie gelernt, wie Sie eine Verbindung mit Ihrem Azure AS-Server herstellen und die Datenbanken und Eigenschaften der Modelldatenbank „adventureworks“ in SSMS untersuchen. Außerdem haben Sie erfahren, wie Sie mit SSMS und TMSL-Skripts Benutzer oder Gruppen zu vorhandenen und neuen Rollen hinzufügen. Sie haben Benutzerberechtigungen für Ihren Server und die Beispielmodelldatenbank konfiguriert. Nun können Sie und andere Benutzer mithilfe von Clientanwendungen wie Power BI eine Verbindung damit herstellen. Weitere Informationen finden Sie im nächsten Tutorial. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Tutorial: Herstellen einer Verbindung mit Power BI Desktop](analysis-services-tutorial-pbid.md)
 

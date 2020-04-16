@@ -3,19 +3,19 @@ title: 'Unterhaltungstranskription (Vorschau): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Bei der Unterhaltungstranskription handelt es sich um eine Lösung für Besprechungen, die Erkennung, Sprecher-ID und Diarisierung miteinander kombiniert, um die Transkription einer beliebigen Unterhaltung zu ermöglichen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479738"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402513"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Worum handelt es sich bei der Unterhaltungstranskription (Vorschau) in Besprechungen?
 
