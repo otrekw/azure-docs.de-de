@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335959"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260988"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -131,7 +131,7 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
-Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b117861a528b6983876d28d5b343ea88c2bcadc0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75921616"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260682"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -46,7 +46,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-github-repository"></a>ein GitHub-Repository erstellen
 
-GitHub wird zum Speichern Ihres Projektquellcodes (einschließlich Resource Manager-Vorlagen) verwendet. Informationen zu weiteren unterstützten Repositorys finden Sie unter [Supported repository types](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types) (Unterstützte Repositorytypen).
+GitHub wird zum Speichern Ihres Projektquellcodes (einschließlich Resource Manager-Vorlagen) verwendet. Informationen zu weiteren unterstützten Repositorys finden Sie unter [Supported repository types](/azure/devops/pipelines/repos/?view=azure-devops) (Unterstützte Repositorytypen).
 
 ### <a name="create-a-github-repository"></a>Erstellen eines GitHub-Repositorys
 

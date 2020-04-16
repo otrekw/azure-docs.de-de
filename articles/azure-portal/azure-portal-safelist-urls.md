@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900661"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255046"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver
 
@@ -80,13 +80,3 @@ Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-
 > Der Datenverkehr für diese Endpunkte verwendet TCP-Standardports für HTTP (80) und HTTPS (443).
 >
 >
-## <a name="next-steps"></a>Nächste Schritte
-
-Sie möchten IP-Adressen auf eine Liste mit sicheren Adressen setzen? Laden Sie die Liste der IP-Bereiche der Microsoft Azure-Rechenzentren für Ihre Cloud herunter:
-
-* [Weltweit](https://www.microsoft.com/download/details.aspx?id=56519)
-* [US- Government](https://www.microsoft.com/download/details.aspx?id=57063)
-* [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)
-* [China](https://www.microsoft.com/download/details.aspx?id=57062)
-
-Andere Microsoft-Dienste verwenden zusätzliche URLs und IP-Adressen für die Konnektivität. Weitere Informationen zum Optimieren der Netzwerkkonnektivität für Microsoft 365-Dienste finden Sie unter [Set up your network for Office 365 (Einrichten Ihres Netzwerks für Office 365)](/office365/enterprise/set-up-network-for-office-365).

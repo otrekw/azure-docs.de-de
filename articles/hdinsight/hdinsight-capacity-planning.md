@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233674"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886992"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
-Planen Sie vor der Bereitstellung eines HDInsight-Clusters die gewünschte Clusterkapazität, indem Sie die erforderliche Leistung und Skalierung bestimmen. Diese Planung trägt zur Optimierung von Nutzbarkeit und Kosten bei. Einige Entscheidungen hinsichtlich der Clusterkapazität können nach der Bereitstellung nicht mehr geändert werden. Wenn sich die Leistungsparameter ändern, kann ein Cluster deinstalliert und ohne Verlust von gespeicherten Daten neu erstellt werden.
+Planen Sie vor der Bereitstellung eines HDInsight-Clusters die vorgesehene Clusterkapazität, indem Sie die erforderliche Leistung und Skalierung bestimmen. Diese Planung trägt zur Optimierung von Nutzbarkeit und Kosten bei. Einige Entscheidungen hinsichtlich der Clusterkapazität können nach der Bereitstellung nicht mehr geändert werden. Wenn sich die Leistungsparameter ändern, kann ein Cluster deinstalliert und ohne Verlust von gespeicherten Daten neu erstellt werden.
 
 Die wichtigsten Fragen zur Kapazitätsplanung sind:
 
@@ -41,13 +41,13 @@ Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss
 
 ### <a name="location-of-existing-data"></a>Speicherort der vorhandenen Daten
 
-Wenn Sie bereits über ein Speicherkonto oder Data Lake Storage mit Ihren Daten verfügen und diesen Speicher als Standardspeicher für Ihren Cluster verwenden möchten, müssen Sie dem Cluster am selben Standort bereitstellen.
+Wenn Sie ein vorhandenes Speicherkonto oder Data Lake-Storage als Standardspeicher für Ihren Cluster verwenden möchten, müssen Sie Ihren Cluster am gleichen Standort bereitstellen.
 
 ### <a name="storage-size"></a>Speichergröße
 
-Nachdem Sie einen HDInsight-Cluster bereitgestellt haben, können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Storages zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Storage kann sich an einem anderen Standort befinden, obwohl dies zu einer gewissen Latenz beim Lesen/Schreiben von Daten führen kann.
+Für einen bereitgestellten Cluster können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Storages zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Storage kann sich an einem anderen Standort befinden, auch wenn große Entfernungen zu einer gewissen Wartezeit führen können.
 
-Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 praktisch unbegrenzt ist.
+Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 nahezu unbegrenzt ist.
 
 Ein Cluster kann auf eine Kombination verschiedener Speicherkonten zugreifen. Typische Beispiele hierfür sind:
 
@@ -60,27 +60,27 @@ Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbesse
 
 ## <a name="choose-a-cluster-type"></a>Auswahl eines Clustertyps
 
-Der Clustertyp bestimmt die Workload, für die Ihr HDInsight-Cluster konfiguriert ist, z.B. [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/) oder [Apache Spark](https://spark.apache.org/). Eine detaillierte Beschreibung der verfügbaren Clustertypen finden Sie unter [Einführung in Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
+Der Clustertyp bestimmt die Workload, für deren Ausführung Ihr HDInsight-Cluster konfiguriert ist. Zu den Typen gehören [Apache Hadoop](./hadoop/apache-hadoop-introduction.md), [Apache Storm](./storm/apache-storm-overview.md), [Apache Kafka](./kafka/apache-kafka-introduction.md) oder [Apache Spark](./spark/apache-spark-overview.md). Eine detaillierte Beschreibung der verfügbaren Clustertypen finden Sie unter [Einführung in Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
 
 ## <a name="choose-the-vm-size-and-type"></a>Auswahl von Größe und Typ des virtuellen Computers
 
 Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimmte Optionen für VM-Größe und -Typ.
 
-Um die optimale Clustergröße für Ihre Anwendung zu ermitteln, können Sie einen Vergleichstest für die Clusterkapazität durchführen und die Größe wie angegeben heraufsetzen. Sie können z.B. eine simulierte Workload oder eine *Testabfrage* verwenden. Bei einer simulierten Workload führen Sie die erwarteten Workloads auf Clustern verschiedener Größen aus und steigern allmählich die Größe, bis die gewünschte Leistung erreicht ist. Eine Testabfrage kann in regelmäßigen Abständen zwischen anderen Produktionsabfragen eingefügt werden, um zu zeigen, ob der Cluster über genügend Ressourcen verfügt.
+Um die optimale Clustergröße für Ihre Anwendung zu ermitteln, können Sie einen Vergleichstest für die Clusterkapazität durchführen und die Größe wie angegeben heraufsetzen. Sie können z.B. eine simulierte Workload oder eine *Testabfrage* verwenden. Führen Sie die simulierten Workloads in Clustern mit unterschiedlicher Größe aus. Erhöhen Sie allmählich die Größe, bis die beabsichtigte Leistung erreicht ist. Eine Testabfrage kann in regelmäßigen Abständen zwischen anderen Produktionsabfragen eingefügt werden, um zu zeigen, ob der Cluster über genügend Ressourcen verfügt.
 
 Weitere Informationen zum Auswählen der richtigen VM-Familie für ihre Workload finden Sie unter [Auswählen der richtigen VM-Größe für Ihren Azure HDInsight-Cluster](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>Auswahl der Clusterskalierung
 
-Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. Für alle Clustertypen gibt es Knotentypen mit bestimmter Skalierung, und Knotentypen, die horizontales Hochskalieren unterstützen. Beispielsweise könnte ein Cluster genau drei [Apache ZooKeeper](https://zookeeper.apache.org/)-Knoten oder zwei Hauptknoten erfordern. Workerknoten, die eine verteilte Datenverarbeitung praktizieren, können vom horizontalen Hochskalieren durch das Hinzufügen zusätzlicher Workerknoten profitieren.
+Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. Für alle Clustertypen gibt es Knotentypen mit bestimmter Skalierung, und Knotentypen, die horizontales Hochskalieren unterstützen. Beispielsweise könnte ein Cluster genau drei [Apache ZooKeeper](https://zookeeper.apache.org/)-Knoten oder zwei Hauptknoten erfordern. Workerknoten, die eine verteilte Datenverarbeitung praktizieren, profitieren von den zusätzlichen Workerknoten.
 
-Je nach Clustertyp kann durch zusätzliche Workerknoten die Rechenkapazität (z.B. durch weitere Kerne) heraufgesetzt werden, damit jedoch auch der Gesamtbedarf an Arbeitsspeicher zur Unterstützung der In-Memory-Speicherung verarbeiteter Daten für den gesamten Cluster steigen. Wie bei der Wahl von VM-Größe und -Typ gilt für die richtige Clusterskalierung, dass sie in der Regel mit simulierten Workloads oder Testabfragen empirisch ermittelt wird.
+Abhängig von Ihrem Clustertyp führt eine Erhöhung der Anzahl der Workerknoten zu zusätzlicher Rechenkapazität (z. B. mehr Kerne). Mehr Knoten erhöhen den Gesamtspeicherbedarf des gesamten Clusters, um die In-Memory-Speicherung der zu verarbeitenden Daten zu unterstützen. Wie bei der Wahl von VM-Größe und -Typ wird die Auswahl der richtigen Clustergröße in der Regel empirisch erreicht. Verwenden Sie simulierte Workloads oder Testabfragen.
 
-Sie können Ihren Cluster für Spitzenlastanforderungen aufskalieren und wieder abskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Das [Autoskalierungsfeature](hdinsight-autoscale-clusters.md) ermöglicht die automatische Skalierung Ihres Clusters auf der Grundlage vorab festgelegter Metriken und Zeitangaben. Weitere Informationen zur manuellen Clusterskalierung finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
+Sie können Ihren Cluster aufskalieren, um Spitzenlastanforderungen zu erfüllen. Dann skalieren Sie ihn wieder herunter, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Das [Autoskalierungsfeature](hdinsight-autoscale-clusters.md) ermöglicht die automatische Skalierung Ihres Clusters auf der Grundlage vorab festgelegter Metriken und Zeitangaben. Weitere Informationen zur manuellen Clusterskalierung finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Clusterlebenszyklus
 
-Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten betreiben müssen, können Sie [mithilfe von Azure Data Factory bedarfsgesteuerte Cluster erstellen](hdinsight-hadoop-create-linux-clusters-adf.md). Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
+Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten benötigen, können Sie [mithilfe von Azure Data Factory bedarfsgesteuerte Cluster erstellen](hdinsight-hadoop-create-linux-clusters-adf.md). Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
 
 > [!NOTE]  
 > Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher, z.B. Azure Database oder [Apache Oozie](https://oozie.apache.org/).
@@ -88,17 +88,17 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 
 ### <a name="isolate-cluster-job-errors"></a>Isolieren von Clusterauftragsfehlern
 
-Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, führen Sie verteilte Tests durch, indem Sie gleichzeitig mehrere Aufträge in einem Cluster mit einem einzelnen Workerknoten ausführen. Erweitern Sie diesen Ansatz dann auf die gleichzeitige Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten. Um einen HDInsight-Cluster mit einem einzelnen Knoten in Azure zu erstellen, verwenden Sie die Option *Benutzerdefiniert(Größe,Einstellungen,Apps)* , und verwenden Sie für die Bereitstellung eines neuen Clusters im Portal den Wert „1“ für *Anzahl von Workerknoten* im Abschnitt **Clustergröße**.
+Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Versuchen Sie es mit verteilten Tests, um das Problem einzugrenzen. Führen Sie mehrere Aufträge gleichzeitig auf einem einzelnen Workerknotencluster aus. Erweitern Sie dann diesen Ansatz, um mehrere Aufträge gleichzeitig auf Clustern mit mehr als einem Knoten auszuführen. Um einen HDInsight-Cluster mit einem einzelnen Knoten in Azure zu erstellen, verwenden Sie die Option *`Custom(size, settings, apps)`* , und verwenden Sie für die Bereitstellung eines neuen Clusters im Portal den Wert „1“ für *Anzahl von Workerknoten* im Abschnitt **Clustergröße**.
 
 ## <a name="quotas"></a>Kontingente
 
-Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten aufskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. 
+Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie keine neuen Cluster bereitstellen. Oder skalieren Sie bestehende Cluster durch Hinzufügen weiterer Workerknoten auf. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen.
 
 Führen Sie die folgenden Schritte aus, um die verfügbaren Kerne zu überprüfen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Navigieren Sie zur Seite **Übersicht** für den HDInsight-Cluster. 
-3. Klicken Sie im linken Menü auf **Kontingentgrenzen**.
+2. Navigieren Sie zur Seite **Übersicht** für den HDInsight-Cluster.
+3. Wählen Sie im linken Menü **Kontingentgrenzen** aus.
 
    Auf der Seite werden die Anzahl der verwendeten Kerne, die Anzahl der verfügbaren Kerne und die Gesamtanzahl der Kerne angezeigt.
 
@@ -125,9 +125,9 @@ Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
 
 Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
-Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Es gibt einige feste Kontingentgrenzen. Ein einzelnes Azure-Abonnement kann z. B. höchstens 10.000 Kerne aufweisen. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md): Erfahren Sie, wie Sie Cluster in HDInsight mit Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services oder Storm einrichten und konfigurieren.
+* [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md): Erfahren Sie, wie Cluster in HDInsight eingerichtet und konfiguriert werden können.
 * [Überwachen der Clusterleistung](hdinsight-key-scenarios-to-monitor.md): Lernen Sie wichtige Szenarien zur Überwachung des HDInsight-Clusters kennen, die sich auf die Kapazität des Clusters auswirken können.

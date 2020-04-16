@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f12b5c158025db89dcc64a3be03b263f95a3a64c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632369"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261357"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Tutorial: Senden einer E-Mail aus einem Azure Automation-Runbook
 
@@ -81,7 +81,7 @@ Für die Verwendung von Azure Key Vault innerhalb eines Runbooks benötigt Ihr A
 
 Klicken Sie auf der Registerkarte „Azure Automation“ unter „Installationsoptionen“ auf <kbd>Deploy to Azure Automation</kbd> (In Azure Automation bereitstellen). Das Azure-Portal wird geöffnet. Wählen Sie auf der Seite „Importieren“ Ihr Automation-Konto aus, und klicken Sie auf <kbd>OK</kbd>.
 
-Weitere Methoden zum Hinzufügen der erforderlichen Module finden Sie unter [Verwenden von Modulen in Azure Automation](/azure/automation/shared-resources/modules#import-modules).
+Weitere Methoden zum Hinzufügen der erforderlichen Module finden Sie unter [Verwenden von Modulen in Azure Automation](/azure/automation/shared-resources/modules#importing-modules).
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Erstellen des Runbooks zum Senden einer E-Mail
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297585"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273289"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -50,7 +50,7 @@ Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verw
 Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Die ausgefüllten Speicheroptionen werden nach Konten mit lokal redundantem Speicher (LRS), georedundantem Speicher (GRS) und zonenredundantem Speicher (ZRS) gefiltert. 
 
 > [!NOTE]
-> Für zusätzliche Resilienz wird die Verwendung von GRS- oder ZRS-Speicherkonten für Ihre unterstützende Dateifreigabe empfohlen. Die Art der Redundanz hängt von Ihren Zielen und Preisvorstellungen ab. [Erhalten Sie weitere Informationen zu Replikationsoptionen für Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> Für zusätzliche Resilienz wird die Verwendung von GRS- oder ZRS-Speicherkonten für Ihre unterstützende Dateifreigabe empfohlen. Die Art der Redundanz hängt von Ihren Zielen und Preisvorstellungen ab. [Erhalten Sie weitere Informationen zu Replikationsoptionen für Azure Storage-Konten](../storage/common/storage-redundancy.md).
 
 ![Einstellung „Ressourcengruppe“](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Hinweis: Wenn Sie eine Funktion in einer Datei definieren und diese über die Po
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Cloud Shell-Schnellstart](quickstart.md) <br>
-[Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Einführung in Microsoft Azure Storage](../storage/files/storage-files-introduction.md) <br>
 [Weitere Informationen zu Speichertags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

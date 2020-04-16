@@ -1,32 +1,32 @@
 ---
 title: Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight
-description: Verwenden Sie HDInsight-Diensttags, um eingehenden Datenverkehr von HDInsight-Integritäts- und Verwaltungsdienstknoten zu Ihrem Cluster zuzulassen, ohne dass Ihren Netzwerksicherheitsgruppen explizit IP-Adressen hinzugefügt werden.
+description: Verwenden Sie HDInsight-Diensttags, um eingehenden Datenverkehr von Integritäts- und Verwaltungsdienstknoten zu Ihrem Cluster zuzulassen, ohne dass Ihren Netzwerksicherheitsgruppen IP-Adressen hinzugefügt werden.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/10/2020
-ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117241"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437671"
 ---
-# <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight
+# <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
-HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen von IP-Adressen für Integritäts- und Verwaltungsdienste. Diese Gruppen reduzieren die Komplexität beim Erstellen von Sicherheitsregeln. [Diensttags](../virtual-network/security-overview.md#service-tags) bieten eine alternative Methode zum Zulassen von eingehendem Datenverkehr von bestimmten IP-Adressen, ohne dass alle [Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) in Ihre Netzwerksicherheitsgruppe eingegeben werden müssen.
+Azure HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen von IP-Adressen für Integritäts- und Verwaltungsdienste. Diese Gruppen reduzieren die Komplexität beim Erstellen von Sicherheitsregeln. [Diensttags](../virtual-network/security-overview.md#service-tags) bieten eine alternative Methode zum Zulassen von eingehendem Datenverkehr von bestimmten IP-Adressen, ohne dass alle [Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) in Ihre Netzwerksicherheitsgruppe eingegeben werden müssen.
 
-Diese Diensttags werden vom HDInsight-Dienst erstellt und verwaltet. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet die Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
+Der HDInsight-Dienst verwaltet diese Diensttags. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet die Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-## <a name="getting-started-with-service-tags"></a>Erste Schritte mit Diensttags
+## <a name="get-started-with-service-tags"></a>Erste Schritte mit Diensttags
 
 Sie haben zwei Optionen für die Verwendung von Diensttags in Ihrer Netzwerksicherheitsgruppe:
 
-1. Verwenden eines einzelnen HDInsight-Diensttags: Mit dieser Option wird das virtuelle Netzwerk für alle IP-Adressen geöffnet, die vom HDInsight-Dienst zum Überwachen von Clustern in allen Regionen verwendet werden. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
+- **Verwenden eines einzelnen globalen HDInsight-Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk für alle IP-Adressen, die der HDInsight-Dienst zur Überwachung von Clustern in allen Regionen verwendet. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
 
-1. Verwenden von mehreren regionalen Diensttags: Mit dieser Option wird das virtuelle Netzwerk nur für die IP-Adressen geöffnet, die von HDInsight in dieser bestimmten Region verwendet werden. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
+- **Verwenden von mehreren regionalen Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk nur für die IP-Adressen, die HDInsight in dieser bestimmten Region verwendet. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Verwenden eines einzelnen globalen HDInsight-Diensttags
 
@@ -40,19 +40,19 @@ Die einfachste Möglichkeit, Diensttags mit Ihrem HDInsight-Cluster zu verwenden
 
 1. Wählen Sie in der Dropdownliste **Quelldiensttag** den Eintrag **HDInsight** aus.
 
-    ![Azure-Portal: Hinzufügen des Diensttags](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![Hinzufügen eines Diensttags aus dem Azure-Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Dadurch wird sichergestellt, dass der Cluster unabhängig vom Erstellungsort mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann.
+Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Das Tag stellt sicher, dass Ihr Cluster mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann, unabhängig davon, wo er erstellt wurde.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Verwenden von regionalen HDInsight-Diensttags
 
-Wenn die erste Option nicht funktioniert, weil Sie restriktivere Berechtigungen benötigen, können Sie nur die für Ihre Region anwendbaren Diensttags zulassen. Abhängig von der Region, in der der Cluster erstellt wird, können die entsprechenden Diensttags ein, zwei oder drei Diensttags sein.
+Wenn die globale Tagoption nicht funktioniert, weil Sie restriktivere Berechtigungen benötigen, können Sie nur die für Ihre Region anwendbaren Diensttags zulassen. Abhängig von der Region, in der der Cluster erstellt wird, sind möglicherweise ein, zwei oder drei Diensttags anwendbar.
 
-Informationen dazu, welche Diensttags Sie für Ihre Region hinzufügen müssen, finden Sie in den folgenden Abschnitten des Dokuments.
+Informationen dazu, welche Diensttags Sie für Ihre Region hinzufügen müssen, finden Sie in den folgenden Abschnitten des Artikels.
 
 ### <a name="use-a-single-regional-service-tag"></a>Verwenden eines einzelnen regionalen Diensttags
 
-Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und Ihr Cluster sich in einer der in dieser Tabelle aufgeführten Regionen befindet, müssen Sie der Netzwerksicherheitsgruppe nur ein einzelnes regionales Diensttag hinzufügen.
+Wenn Sie die Verwendung von regionalen Diensttags bevorzugen und Ihr Cluster sich in einer der in dieser Tabelle aufgeführten Regionen befindet, müssen Sie der Netzwerksicherheitsgruppe nur ein einzelnes regionales Diensttag hinzufügen.
 
 | Country | Region | Diensttag |
 | ---- | ---- | ---- |
@@ -73,14 +73,14 @@ Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und Ihr
 | Japan | Japan, Westen | HDInsight.JapanWest |
 | Frankreich | Frankreich, Mitte| HDInsight.FranceCentral |
 | UK | UK, Süden | HDInsight.UKSouth |
-| Azure Government | USDoD, Mitte   | HDInsight.USDoDCentral |
+| Azure Government | USDoD, Mitte | HDInsight.USDoDCentral |
 | &nbsp; | US Gov Texas | HDInsight.USGovTexas |
 | &nbsp; | USDoD, Osten | HDInsight.USDoDEast |
 | &nbsp; | US Gov Arizona | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Verwenden von mehreren regionalen Diensttags
 
-Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und die Region, in der Ihr Cluster erstellt wird, oben nicht aufgeführt ist, müssen Sie mehrere regionale Diensttags zulassen. Die Notwendigkeit, mehr als eines zu verwenden, ist auf Unterschiede bei der Anordnung von Ressourcenanbietern für die verschiedenen Regionen zurückzuführen.
+Wenn Sie es vorziehen, regionale Diensttags zu verwenden, aber die Region, in der Ihr Cluster erstellt wird, in der vorhergehenden Tabelle nicht aufgeführt war, müssen Sie mehrere regionale Diensttags zulassen. Die Notwendigkeit, mehr als eines zu verwenden, ist auf Unterschiede bei der Anordnung von Ressourcenanbietern für die verschiedenen Regionen zurückzuführen.
 
 Die verbleibenden Regionen sind abhängig von den verwendeten regionalen Diensttags in Gruppen unterteilt.
 
@@ -88,7 +88,7 @@ Die verbleibenden Regionen sind abhängig von den verwendeten regionalen Dienstt
 
 Wenn Ihr Cluster in einer der Regionen in der folgenden Tabelle erstellt wird, lassen Sie die Diensttags `HDInsight.WestUS` und `HDInsight.EastUS` zusätzlich zum aufgelisteten regionalen Diensttag zu. Für Regionen in diesem Abschnitt sind drei Diensttags erforderlich.
 
-Wenn Ihr Cluster beispielsweise in der Region `East US 2` erstellt wird, müssen Sie Ihrer Netzwerksicherheitsgruppe die folgenden Diensttags hinzufügen:
+Wenn Ihr Cluster z. B. in der Region `East US 2` erstellt wird, müssen Sie Ihrer Netzwerksicherheitsgruppe die folgenden Diensttags hinzufügen:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
@@ -111,15 +111,15 @@ Wenn Ihr Cluster beispielsweise in der Region `East US 2` erstellt wird, müssen
 
 #### <a name="group-2"></a>Gruppe 2
 
-Cluster in den Regionen **China, Norden** und **China, Osten** müssen zwei Diensttags zulassen: `HDInsight.ChinaNorth` und `HDInsight.ChinaEast`.
+Cluster in den Regionen *China, Norden* und *China, Osten* müssen zwei Diensttags zulassen: `HDInsight.ChinaNorth` und `HDInsight.ChinaEast`.
 
 #### <a name="group-3"></a>Gruppe 3
 
-Cluster in den Regionen **US Gov Iowa** und **US Gov Virginia** müssen zwei Diensttags zulassen: `HDInsight.USGovIowa` und `HDInsight.USGovVirginia`.
+Cluster in den Regionen *US Gov Iowa* und *US Gov Virginia* müssen zwei Diensttags zulassen: `HDInsight.USGovIowa` und `HDInsight.USGovVirginia`.
 
 #### <a name="group-4"></a>Gruppe 4
 
-Cluster in den Regionen **Deutschland, Mitte** und **Deutschland, Nordosten** müssen zwei Diensttags zulassen: `HDInsight.GermanyCentral` und `HDInsight.GermanyNorthEast`.
+Cluster in den Regionen *Deutschland, Mitte* und *Deutschland, Nordosten* müssen zwei Diensttags zulassen: `HDInsight.GermanyCentral` und `HDInsight.GermanyNortheast`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

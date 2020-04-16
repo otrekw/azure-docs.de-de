@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Security Center für IoT | Microsoft-Dokumentation
+title: Häufig gestellte Fragen
 description: Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zu Features und Diensten zu Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02736b63b900600c51eda8666aff0117b9307824
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73571802"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310765"
 ---
-# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center für IoT – Häufig gestellte Fragen  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center für IoT – Häufig gestellte Fragen
 
-Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Security Center für IoT sowie die zugehörigen Antworten. 
+Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Security Center für IoT sowie die zugehörigen Antworten.
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Bietet Azure Unterstützung für IoT-Sicherheit?
 
@@ -34,7 +34,7 @@ Azure bietet eine integrierte Ansicht für die Überwachung und Verwaltung Ihrer
 
 Azure Security Center für IoT ermöglicht es Unternehmen, ihre bestehende Cybersicherheitsansicht auf ihre gesamte IoT-Lösung zu erweitern. Azure bietet eine ganzheitliche Ansicht Ihrer Geschäftslösung und ermöglicht es Ihnen, geschäftsbezogene Maßnahmen und Entscheidungen auf der Grundlage Ihrer Sicherheitslage und der gesammelten Daten zu treffen. Die Kombination verschiedener Sicherheitsfunktionen mit Azure IoT, Azure IoT Edge und Azure Security Center ermöglicht es Ihnen, die gewünschte Lösung mit der erforderlichen Sicherheit zu erstellen.
 
-## <a name="who-is-azure-security-center-for-iot-made-for"></a>Für wen ist Azure Security Center für IoT vorgesehen? 
+## <a name="who-is-azure-security-center-for-iot-made-for"></a>Für wen ist Azure Security Center für IoT vorgesehen?
 
 Azure Security Center für IoT ist in Azure IoT Hub Security integriert und übernimmt die Verwaltung der täglichen Sicherheitsabläufe bei der Unternehmenslösung. Außerdem ist Azure Security Center für IoT in die Funktionen von Azure Security Center integriert und bietet eine integrierte Ansicht für die Überwachung und Verwaltung Ihrer IoT-Sicherheit als Teil Ihrer gesamten Sicherheitslösung.
 
@@ -44,7 +44,7 @@ Andere Lösungen bieten eine Reihe von Funktionen, die es Kunden ermöglichen, i
 
 ## <a name="do-i-have-to-be-an-azure-security-center-customer-to-use-this-service"></a>Muss ich ein Azure Security Center-Kunde sein, um diesen Dienst nutzen zu können?
 
-Nein, aber es wird empfohlen. Ohne Azure Security Center empfängt Azure Security Center für IoT nur begrenzte Daten über verbundene Ressourcen und bietet eine begrenzte Analyse Ihrer potenziellen Angriffsfläche, Bedrohungen und potenziellen Angriffe. 
+Nein, aber es wird empfohlen. Ohne Azure Security Center empfängt Azure Security Center für IoT nur begrenzte Daten über verbundene Ressourcen und bietet eine begrenzte Analyse Ihrer potenziellen Angriffsfläche, Bedrohungen und potenziellen Angriffe.
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Muss ich Azure-IoT-Kunde sein?
 
@@ -56,9 +56,9 @@ Die Agentinstallation auf Ihren IoT-Geräten ist nicht zwingend erforderlich, um
 
 1. Installieren des Sicherheits-Agents für Azure Security Center für IoT mit oder ohne Änderungen. Diese Option bietet ein Höchstmaß an verbesserten Sicherheitsinformationen über das Geräteverhalten und den Zugriff.
 
-2. Erstellen Ihres eigenen Agents und Implementieren des Microsoft Azure Security Center für IoT-Sicherheit-Nachrichtenschemas. Diese Option ermöglicht die Verwendung von Microsoft Azure Security Center für IoT-Analysetools auf Ihrem Gerätesicherheits-Agent.
+1. Erstellen Ihres eigenen Agents und Implementieren des Microsoft Azure Security Center für IoT-Sicherheit-Nachrichtenschemas. Diese Option ermöglicht die Verwendung von Microsoft Azure Security Center für IoT-Analysetools auf Ihrem Gerätesicherheits-Agent.
 
-3. Keine Installation eines Sicherheits-Agent auf Ihren IoT-Geräten. Diese Option ermöglicht die Kommunikationsüberwachung des IoT Hubs mit reduzierten Sicherheitsüberwachungs- und -verwaltungsfunktionen. 
+1. Keine Installation eines Sicherheits-Agent auf Ihren IoT-Geräten. Diese Option ermöglicht die Kommunikationsüberwachung des IoT Hubs mit reduzierten Sicherheitsüberwachungs- und -verwaltungsfunktionen.
 
 ## <a name="what-does-the-azure-security-center-for-iot-agent-do"></a>Wozu dient der Azure Security Center für IoT-Agent?
 
@@ -68,13 +68,13 @@ Der Azure Security Center für IoT-Agent bietet Bedrohungsschutz auf Geräteeben
 
 Der Azure Security Center für IoT-Sicherheits-Agent ist Open Source und auf GitHub in 32-Bit- und 64-Bit-Versionen für Windows und Linux verfügbar: https://github.com/Azure/Azure-Security-IoT.
 
-## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Wo wird der Azure Security Center für IoT-Agent installiert? 
+## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Wo wird der Azure Security Center für IoT-Agent installiert?
 
 Detaillierte Informationen zur Installation und Bereitstellung des Agents finden Sie in GitHub: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wie lauten die Abhängigkeiten und Voraussetzungen für den Agent?
 
-Azure Security Center für IoT unterstützt eine Vielzahl von Plattformen. Informationen zur Unterstützung für Ihre spezifischen Geräte finden Sie unter [Unterstützte Geräteplattformen](how-to-deploy-agent.md). 
+Azure Security Center für IoT unterstützt eine Vielzahl von Plattformen. Informationen zur Unterstützung für Ihre spezifischen Geräte finden Sie unter [Unterstützte Geräteplattformen](how-to-deploy-agent.md).
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Welche Daten sammelt der Agent?
 
@@ -90,7 +90,7 @@ Azure Security Center für IoT bietet konfigurierbare Agent-Scans, Datenpuffer u
 
 ## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Wird für Nachrichten des Agent Kontingent von IoT Hub verwendet?
 
-Ja. Die vom Agent übertragenen Daten werden in Ihrem IoT Hub-Kontingent gezählt. 
+Ja. Die vom Agent übertragenen Daten werden in Ihrem IoT Hub-Kontingent gezählt.
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Nächste Schritte Ich habe einen Agent installiert, es werden aber keine Aktivitäten oder Protokolle angezeigt...
 
@@ -98,15 +98,15 @@ Ja. Die vom Agent übertragenen Daten werden in Ihrem IoT Hub-Kontingent gezähl
 
 1. Vergewissern Sie sich, dass der [Agent auf dem Gerät ausgeführt wird](how-to-agent-configuration.md).
 
-2. Überprüfen Sie, ob der [Dienst erfolgreich](quickstart-onboard-iot-hub.md) für **Security** in Ihrem IoT Hub aktiviert wurde. 
+1. Überprüfen Sie, ob der [Dienst erfolgreich](quickstart-onboard-iot-hub.md) für **Security** in Ihrem IoT Hub aktiviert wurde.
 
-3. Überprüfen Sie, ob das Gerät im [IoT Hub mit dem Azure Security Center für IoT-Modul konfiguriert](quickstart-create-security-twin.md) wurde.  
+1. Überprüfen Sie, ob das Gerät im [IoT Hub mit dem Azure Security Center für IoT-Modul konfiguriert](quickstart-create-security-twin.md) wurde.
 
 Wenn die Aktivitäten oder Protokolle immer noch nicht verfügbar sind, wenden Sie sich an Ihren Azure Security Center für IoT-Partner, um zusätzliche Hilfe zu erhalten.
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Was geschieht, wenn die Internetverbindung nicht mehr funktioniert?
 
-Solange das Gerät läuft, wird der Agent weiterhin ausgeführt und Daten werden gespeichert. Die Daten werden entsprechend der Größenkonfiguration im Cache für Sicherheitsmeldungen gespeichert. Wenn das Gerät wieder eine Verbindung herstellt, werden die Sicherheitsmeldungen wieder gesendet. 
+Solange das Gerät läuft, wird der Agent weiterhin ausgeführt und Daten werden gespeichert. Die Daten werden entsprechend der Größenkonfiguration im Cache für Sicherheitsmeldungen gespeichert. Wenn das Gerät wieder eine Verbindung herstellt, werden die Sicherheitsmeldungen wieder gesendet.
 
 ## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Stellt sich der Sicherheits-Agent selbst wieder hier, wenn das Gerät neu gestartet wird?
 
@@ -120,32 +120,29 @@ Der Agent verbraucht wie jede andere Anwendung/jeder andere Prozess Computerress
 
 Der Agent kann nicht deaktiviert werden.
 
-## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Gibt es eine Möglichkeit zum Testen, ob der Agent ordnungsgemäß funktioniert? 
+## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Gibt es eine Möglichkeit zum Testen, ob der Agent ordnungsgemäß funktioniert?
 
 Wenn der Agent die Kommunikation einstellt oder keine Sicherheitsmeldungen sendet, wird eine Warnung **Gerät ist still** generiert.
 
 ## <a name="can-i-create-my-own-alerts"></a>Kann ich meine eigenen Warnungen erstellen?
 
-Ja. Sie können eine benutzerdefinierte Warnung für vordefinierte Verhaltensweisen wie IP-Adresse und offene Ports festlegen. Weitere Informationen zu benutzerdefinierten Warnungen und deren Ausführung finden Sie unter [Erstellen von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md). 
+Ja. Sie können eine benutzerdefinierte Warnung für vordefinierte Verhaltensweisen wie IP-Adresse und offene Ports festlegen. Weitere Informationen zu benutzerdefinierten Warnungen und deren Ausführung finden Sie unter [Erstellen von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md).
 
 ## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Wo kann ich Protokolle sehen? Kann ich Protokolle anpassen?
 
 - Warnungen und Empfehlungen können Sie über Ihren angeschlossenen Log Analytics-Arbeitsbereich anzeigen. Im Arbeitsbereich können Sie die Speichergröße und die Dauern konfigurieren.
 
-- Rohdaten von Ihrem Sicherheits-Agent können auch in Ihrem Log Analytics-Konto gespeichert werden. Berücksichtigen Sie Größe, Dauer, Speicherbedarf und damit verbundene Kosten, bevor Sie die Konfiguration dieser Option ändern. 
+- Rohdaten von Ihrem Sicherheits-Agent können auch in Ihrem Log Analytics-Konto gespeichert werden. Berücksichtigen Sie Größe, Dauer, Speicherbedarf und damit verbundene Kosten, bevor Sie die Konfiguration dieser Option ändern.
 
 ## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Warum sollte ich Azure Security Center für IoT zur Modulidentität hinzufügen? Verwendungszweck
 
 Das Azure Security Center für IoT-Modul dient zur Konfiguration und Verwaltung des Agents.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um mehr darüber zu erfahren, wie Sie mit Azure Security Center für IoT beginnen können, lesen Sie die folgenden Artikel:
-
 
 - Lesen Sie die [Übersicht](overview.md) über Azure Security Center für IoT.
 - Überprüfen der [Dienstvoraussetzungen](service-prerequisites.md)
 - Erfahren Sie mehr über die [Ersten Schritte](getting-started.md)
 - Grundlegendes zu [Azure Security Center für IoT-Sicherheitswarnungen](concept-security-alerts.md)
-

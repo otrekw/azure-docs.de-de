@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086325"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261413"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
@@ -160,7 +160,7 @@ Nachdem der Stream Analytics Auftrag nun erstellt wurde, kann ihm Zugriff auf ei
 ### <a name="use-the-power-bi-ui"></a>Verwenden der Power BI-Benutzeroberfläche
 
    > [!Note]
-   > Wenn Sie den Stream Analytics Auftrag Ihrem Power BI-Arbeitsbereich mithilfe der Benutzeroberfläche hinzufügen möchten, müssen Sie auch in den **Entwicklereinstellungen** im Power BI-Verwaltungsportal den Dienstprinzipalzugriff aktivieren. Weitere Informationen finden Sie unter [Erste Schritte mit einem Dienstprinzipal](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal).
+   > Wenn Sie den Stream Analytics Auftrag Ihrem Power BI-Arbeitsbereich mithilfe der Benutzeroberfläche hinzufügen möchten, müssen Sie auch in den **Entwicklereinstellungen** im Power BI-Verwaltungsportal den Dienstprinzipalzugriff aktivieren. Weitere Informationen finden Sie unter [Erste Schritte mit einem Dienstprinzipal](https://docs.microsoft.com/power-bi/developer/embed-service-principal).
 
 1. Navigieren Sie zu den Zugriffseinstellungen des Arbeitsbereichs. Weitere Informationen finden Sie in diesem Artikel: [Erteilen des Zugriffs auf Ihren Arbeitsbereich](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 

@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell-Beispiele – Skalierungsgruppe mit nur einer Zone
 description: Mit diesem Skript wird eine VM-Skalierungsgruppe erstellt, in der Windows Server 2016 in einer einzelnen Verfügbarkeitszone ausgeführt wird.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: a9b3547844d0b2dcca58a95d04c9cb81d32fa52c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 21d83b3e39a2002725731c04f1727a0e50af335a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276427"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008487"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe mit nur einer Zone mit PowerShell
 Mit diesem Skript wird eine VM-Skalierungsgruppe erstellt, in der Windows Server 2016 in einer einzelnen Verfügbarkeitszone ausgeführt wird. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.

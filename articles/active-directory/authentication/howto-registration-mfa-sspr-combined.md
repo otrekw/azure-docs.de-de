@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e22871114f260417e8a1514546c88ec4541064a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652503"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309748"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -89,7 +89,7 @@ Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erzwingen der erneuten Registrierung von Authentifizierungsmethoden durch Benutzer](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Erzwingen der erneuten Registrierung von Authentifizierungsmethoden durch Benutzer](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md)
 

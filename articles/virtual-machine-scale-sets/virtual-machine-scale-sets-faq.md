@@ -1,19 +1,19 @@
 ---
 title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zu VM-Skalierungsgruppen in Azure.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.author: manayar
-ms.openlocfilehash: 3b34708d6e91da627ff44018778318337ddb6b06
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: mimckitt
+ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879495"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273714"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 

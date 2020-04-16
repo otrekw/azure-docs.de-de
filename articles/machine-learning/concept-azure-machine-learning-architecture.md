@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064186"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257333"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -187,7 +187,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Trainieren von ML-Modellen mit Schätzfunktionen](how-to-train-ml-models.md)
 * [Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning](how-to-train-pytorch.md).
 * [Trainieren und Registrieren von TensorFlow-Modellen in großem Umfang mit Azure Machine Learning](how-to-train-tensorflow.md).
-* [Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning](how-to-train-chainer.md).
+* [Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning](how-to-train-ml-models.md).
 
 ### <a name="endpoints"></a>Endpunkte
 

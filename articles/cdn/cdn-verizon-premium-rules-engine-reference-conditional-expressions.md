@@ -2,17 +2,17 @@
 title: Bedingte Ausdrücke für Azure CDN – Verizon Premium-Regel-Engine
 description: Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Regel-Engine für Azure CDN Premium von Verizon.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082969"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253508"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Bedingte Ausdrücke der Regel-Engine für Azure CDN Premium von Verizon
 

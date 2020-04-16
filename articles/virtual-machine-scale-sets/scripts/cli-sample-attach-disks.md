@@ -1,20 +1,20 @@
 ---
 title: 'Azure CLI-Beispiele: Anfügen und Verwenden von Datenträgern'
 description: Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe, fügt mit der Azure CLI Datenträger an und bereitet sie vor.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 6243899183bfbdf07aa9417d654e62b4b6cb548a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f8f84639095e4c495bfd24c534ee7c9a64136e5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277671"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010425"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Anfügen und Verwenden von Datenträgern mit einer VM-Skalierungsgruppe über die Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe, fügt Datenträger an und bereitet sie vor.

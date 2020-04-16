@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834294"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260920"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -59,7 +59,7 @@ Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/a
 
 Sobald der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen des benannten Werts ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
 
-Informationen zum Bearbeiten eines benannten Werts mithilfe der REST-API finden Sie unter [Bearbeiten eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-01-01/property?patch).
+Informationen zum Bearbeiten eines benannten Werts mithilfe der REST-API finden Sie unter [Bearbeiten eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-12-01/property?patch).
 
 ## <a name="to-delete-a-named-value"></a>So löschen Sie einen benannten Wert
 
@@ -68,7 +68,7 @@ Wenn Sie einen benannten Wert löschen möchten, klicken Sie neben dem zu lösch
 > [!IMPORTANT]
 > Wenn Richtlinien auf den benannten Wert verweisen, können Sie ihn erst erfolgreich löschen, nachdem Sie den benannten Wert aus allen Richtlinien entfernt haben, die ihn verwenden.
 
-Informationen zum Löschen eines benannten Werts mithilfe der REST-API finden Sie unter [Löschen eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-01-01/property/delete).
+Informationen zum Löschen eines benannten Werts mithilfe der REST-API finden Sie unter [Löschen eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-12-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>So suchen und filtern Sie benannte Werte
 

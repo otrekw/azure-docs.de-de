@@ -1,24 +1,24 @@
 ---
 title: Azure HDInsight für Visual Studio Code
-description: Es wird beschrieben, wie Sie die Spark- und Hive-Tools (Azure HDInsight) für Visual Studio Code verwenden, um Abfragen und Skripts zu erstellen und zu übermitteln.
+description: Erfahren Sie, wie Sie die Spark- und Hive-Tools (Azure HDInsight) für Visual Studio Code verwenden können. Verwenden Sie die Tools zum Erstellen und Übermitteln von Abfragen und Skripts.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435681"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878628"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
-Hier erfahren Sie, wie Sie Spark- und Hive-Tools für Visual Studio Code verwenden, um Apache Hive-Batchaufträge, interaktive Hive-Abfragen und PySpark-Skripts für Apache Spark zu erstellen und zu übermitteln. Zunächst wird die Installation von Spark- und Hive-Tools (Spark & Hive Tools) in Visual Studio Code beschrieben, und anschließend werden die Schritte zum Übermitteln von Aufträgen an Spark- und Hive-Tools erläutert.  
+Erfahren Sie, wie Sie Apache Spark- und Hive-Tools für Visual Studio Code verwenden. Verwenden Sie die Tools zum Erstellen und Übermitteln von Batchaufträgen für Apache Hive, interaktiven Hive-Abfragen und PySpark-Skripts für Apache Spark. Zunächst wird beschrieben, wie Sie Spark- und Hive-Tools in Visual Studio Code installieren. Anschließend werden die Schritte zum Übermitteln von Aufträgen an Spark- und Hive-Tools erläutert.  
 
-Die Spark & Hive Tools-Erweiterung kann auf allen von Visual Studio Code unterstützten Plattformen installiert werden. Dazu gehören Windows, Linux und macOS. Die folgenden Voraussetzungen gelten für die verschiedenen Plattformen.
+Spark- und Hive-Tools können auf allen von Visual Studio Code unterstützten Plattformen installiert werden. Die folgenden Voraussetzungen gelten für die verschiedenen Plattformen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,7 +70,7 @@ Führen Sie für Benutzer der nationalen Cloud diese Schritte aus, um zunächst 
 
 ## <a name="connect-to-an-azure-account"></a>Verbinden mit einem Azure-Konto
 
-Bevor Sie Skripts aus Visual Studio Code an Ihre Cluster übermitteln können, müssen Sie entweder eine Verbindung mit Ihrem Azure-Konto herstellen oder einen Cluster verknüpfen (mit Apache Ambari-Benutzername und -Kennwort als Anmeldeinformationen oder mit einem in die Domäne eingebundenen Konto). Führen Sie diese Schritte aus, um eine Verbindung mit Azure herzustellen:
+Bevor Sie Skripts aus Visual Studio Code an Ihre Cluster senden können, müssen Sie entweder eine Verbindung zu Ihrem Azure-Konto herstellen oder einen Cluster verknüpfen. Verwenden Sie die Anmeldeinformationen mit Apache Ambari-Benutzername und -Kennwort oder ein in eine Domäne eingebundenes Konto. Führen Sie diese Schritte aus, um eine Verbindung mit Azure herzustellen:
 
 1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Azure: Anmelden** ein:
 
@@ -260,7 +260,7 @@ Nachdem Sie einen Python-Auftrag übermittelt haben, werden Übermittlungsprotok
 
 ## <a name="apache-livy-configuration"></a>Apache Livy-Konfiguration
 
-Die [Apache Livy](https://livy.incubator.apache.org/)-Konfiguration wird unterstützt. Sie können Sie in der Datei **.VSCode\settings.json** im Arbeitsbereichsordner konfigurieren. Derzeit wird in der Livy-Konfiguration nur das Python-Skript unterstützt. Ausführlichere Informationen finden Sie in der [Livy-README](https://github.com/cloudera/livy/blob/master/README.rst ).
+Die [Apache Livy](https://livy.incubator.apache.org/)-Konfiguration wird unterstützt. Sie können Sie in der Datei **.VSCode\settings.json** im Arbeitsbereichsordner konfigurieren. Derzeit wird in der Livy-Konfiguration nur das Python-Skript unterstützt. Weitere Informationen finden Sie in der [Livy-Infodatei](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Auslösen der Livy-Konfiguration**
 
@@ -269,7 +269,7 @@ Methode 1
 2. Geben Sie in das Feld **Sucheinstellungen** die Zeichenfolge **HDInsight Job Submission: Livy Conf** (HDInsight-Auftragsübermittlung: Livy-Konfiguration) ein.  
 3. Klicken Sie beim relevanten Suchergebnis auf **In „settings.json“ bearbeiten**.
 
-Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“ automatisch dem Arbeitsordner hinzugefügt. Sie können die Livy-Konfiguration anzeigen, indem Sie **.vscode\settings.json** auswählen.
+Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner `.vscode` automatisch dem Arbeitsordner hinzugefügt. Sie können die Livy-Konfiguration anzeigen, indem Sie **.vscode\settings.json** auswählen.
 
 + Die Projekteinstellungen:
 
@@ -283,7 +283,7 @@ Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“
     **POST /batches** Anforderungstext
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     | file | Die Datei, die die auszuführende Anwendung enthält | Pfad (erforderlich) |
     | proxyUser | Der Benutzer, dessen Identität beim Ausführen des Auftrags angenommen werden soll | String |
     | className | Die Java-/Spark-Hauptklasse der Anwendung | String |
@@ -304,7 +304,7 @@ Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“
     Antworttext: Das erstellte Batchobjekt.
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | ---| --- |
     | id | Sitzungs-ID | Int |
     | appId | Die Anwendungs-ID dieser Sitzung | String |
     | appInfo | Detaillierte Anwendungsinformationen | Zuordnung von Schlüsseln zu Werten |
@@ -340,8 +340,8 @@ Sie können eine Vorschau der Hive-Tabelle in Ihren Clustern direkt über den **
 
 - Bereich MELDUNGEN
    1. Wenn die Tabelle mehr als 100 Zeilen enthält, sehen Sie die folgende Meldung: „Die ersten 100 Zeilen werden für die Hive-Tabelle angezeigt.“
-   2. Wenn die Tabelle bis zu 100 Zeilen enthält, sehen Sie eine Meldung wie die folgende: „60 Zeilen werden für die Hive-Tabelle angezeigt.“
-   3. Wenn die Tabelle keine Zeilen enthält, sehen Sie die folgende Meldung: „0 Zeilen werden für die Hive-Tabelle angezeigt.“
+   2. Wenn die Tabelle bis zu 100 Zeilen enthält, sehen Sie die folgende Meldung: „60 Zeilen werden für die Hive-Tabelle angezeigt.“
+   3. Wenn die Tabelle keine Zeilen enthält, sehen Sie die folgende Meldung: „`0 rows are displayed for Hive table.`“
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark und Hive für Visual Studio Code unterstützt auch die folgenden Features:
 
 ## <a name="reader-only-role"></a>Rolle nur mit Leseberechtigung
 
-Benutzer, denen für den Cluster die Rolle „Nur Leser“ (reader-only) zugewiesen ist, können keine Aufträge mehr an den HDInsight-Cluster übermitteln und können die Hive-Datenbank nicht mehr anzeigen. Wenden Sie sich an den Clusteradministrator, damit Ihre Rolle im [Azure-Portal](https://ms.portal.azure.com/) auf [**HDInsight-Clusteroperator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) aktualisiert wird. Wenn Sie gültige Ambari-Anmeldeinformationen haben, können Sie manuell mit dem Cluster verknüpfen, indem Sie die weiter unten aufgeführten Anweisungen ausführen.
+Benutzer, denen für den Cluster die Rolle „Nur Leser“ (reader-only) zugewiesen ist, können keine Aufträge an den HDInsight-Cluster übermitteln und die Hive-Datenbank nicht anzeigen. Wenden Sie sich an den Clusteradministrator, damit Ihre Rolle im [Azure-Portal](https://ms.portal.azure.com/) auf [**HDInsight-Clusteroperator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) aktualisiert wird. Wenn Sie gültige Ambari-Anmeldeinformationen haben, können Sie manuell mit dem Cluster verknüpfen, indem Sie die weiter unten aufgeführten Anweisungen ausführen.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Durchsuchen des HDInsight-Clusters  
 
@@ -393,11 +393,11 @@ Wenn Sie für den Cluster die Rolle „Nur Leser“ haben und einen Auftrag an d
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Durchsuchen eines Data Lake Storage Gen2-Kontos
 
-Wenn Sie den Azure HDInsight-Explorer auswählen, um ein Azure Data Lake Storage Gen2-Konto zu erweitern, werden Sie aufgefordert, den Zugriffsschlüssel für den Speicher einzugeben, wenn Ihr Azure-Konto keinen Zugriff auf den Gen2-Speicher hat. Sobald der Zugriffsschlüssel validiert ist, wird das Data Lake Storage Gen2-Konto automatisch erweitert.
+Wählen Sie Azure HDInsight-Explorer aus, um ein Data Lake Storage Gen2-Konto zu erweitern. Sie werden aufgefordert, den Speicherzugriffsschlüssel einzugeben, wenn Ihr Azure-Konto keinen Zugriff auf den Gen2-Speicher hat. Sobald der Zugriffsschlüssel validiert ist, wird das Data Lake Storage Gen2-Konto automatisch erweitert.
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Übermitteln von Aufträgen an einen HDInsight-Cluster mit Data Lake Storage Gen2
 
-Wenn Sie einen Auftrag über Azure Data Lake Storage Gen2 an einen HDInsight-Cluster übermitteln, werden Sie aufgefordert, den Zugriffsschlüssel für den Speicher einzugeben, wenn Ihr Azure-Konto keinen Schreibzugriff auf den Gen2-Speicher hat. Sobald der Zugriffsschlüssel validiert ist, wird der Auftrag erfolgreich übermittelt.
+Übermitteln Sie einen Auftrag an einen HDInsight-Cluster mit Data Lake Storage Gen2. Sie werden aufgefordert, den Speicherzugriffsschlüssel einzugeben, wenn Ihr Azure-Konto keinen Schreibzugriff auf den Gen2-Speicher hat. Sobald der Zugriffsschlüssel validiert ist, wird der Auftrag erfolgreich übermittelt.
 
 ![Spark- und Hive-Tools für Visual Studio Code: Zugriffsschlüssel](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 
