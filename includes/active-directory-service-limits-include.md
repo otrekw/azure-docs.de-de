@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: b65feeb99bb51419e19a8e4b537515be14c54ba8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334808"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986608"
 ---
 Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für den Azure Active Directory-Dienst (Azure AD).
 
 | Category | Begrenzung |
 | --- | --- |
-| Verzeichnisse | Ein einzelner Benutzer kann als Mitglied oder Gast bis zu 500 Azure AD-Verzeichnissen angehören.<br/>Ein einzelner Benutzer kann maximal 20 Verzeichnisse erstellen. |
+| Verzeichnisse | Ein einzelner Benutzer kann als Mitglied oder Gast bis zu 500 Azure AD-Verzeichnissen angehören.<br/>Ein einzelner Benutzer kann maximal 200 Verzeichnisse erstellen. |
 | Domänen | Sie können nicht mehr als 900 verwaltete Domänennamen hinzufügen. Wenn Sie alle Ihre Domänen für den Verbund mit der lokalen Active Directory-Instanz einrichten möchten, können Sie in jedem Verzeichnis maximal 450 Domänennamen hinzufügen. |
 |Ressourcen |<ul><li>Bei der Free Edition von Azure Active Directory können Benutzer standardmäßig in einem Verzeichnis maximal 50.000 Azure AD-Ressourcen erstellen. Wenn Sie mindestens eine verifizierte Domäne haben, wird das Standardkontingent für den Azure AD-Dienst für Ihre Organisation auf 300.000 Azure AD-Ressourcen erweitert. Dieses Dienstlimit steht nicht im Zusammenhang mit dem Tariflimit von 500.000 Ressourcen auf der Azure AD-Preisseite. Um das Standardkontingent zu überschreiten, müssen Sie sich an den Microsoft-Support wenden.</li><li>Ein Benutzer ohne Administratorrechte kann maximal 250 Azure AD-Ressourcen erstellen. Zu diesem Kontingent zählen sowohl aktive Ressourcen als auch gelöschte Ressourcen, die zum Wiederherstellen verfügbar sind. Nur gelöschte Azure AD-Ressourcen, die vor weniger als 30 Tagen gelöscht wurden, stehen für die Wiederherstellung bereit. Gelöschte Azure AD-Ressourcen, die nicht mehr für die Wiederherstellung verfügbar sind, zählen für 30 Tage mit einem Viertelwert zu diesem Kontingent. Wenn Sie Entwickler haben, die dieses Kontingent wahrscheinlich wiederholt im Rahmen ihrer regulären Aufgaben überschreiten, können Sie [eine benutzerdefinierte Rolle erstellen und zuweisen](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md), die die Berechtigung hat, eine unbegrenzte Anzahl von App-Registrierungen zu erstellen.</li></ul> |
 | Schemaerweiterungen |<ul><li>Erweiterungen des Typs „String“ sind auf maximal 256 Zeichen begrenzt. </li><li>Erweiterungen des Typs „Binary“ sind auf 256 Byte beschränkt.</li><li>Es können maximal 100 Erweiterungswerte (für *alle* Typen und *alle* Anwendungen) in jede einzelne Azure AD-Ressource geschrieben werden.</li><li>Nur die Entitäten „User“, „Group“, „TenantDetail“, „Device“, „Application“ und „ServicePrincipal“ mit dem Typ „String“ oder „Binary“ können mit Einzelwertattributen erweitert werden.</li><li>Schemaerweiterungen sind nur in der Graph-API-Version „1.21-preview“ verfügbar. Der Anwendung muss Schreibzugriff zum Registrieren einer Erweiterung gewährt werden.</li></ul> |

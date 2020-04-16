@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: keli19
 author: likebupt
-ms.date: 02/24/2020
-ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/06/2020
+ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389034"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810357"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells verwenden. Außerdem geht es darum, wie Sie veröffentlichte Pipelines zum Automatisieren von Machine Learning-Workflows für das erneute Trainieren verwenden.
+In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells verwenden. Sie werden veröffentlichte Pipelines verwenden, um Ihren Workflow zu automatisieren und Parameter festzulegen, um Ihr Modell anhand neuer Daten zu trainieren. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -27,90 +27,92 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Trainieren eines Machine Learning-Modells
 > * Erstellen eines Pipelineparameters
 > * Veröffentlichen Ihrer Trainingspipeline
-> * Erneutes Trainieren Ihres Modells
+> * Trainieren Sie Ihr Modell mit neuen Parametern erneut.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
 * Ein Azure Machine Learning-Arbeitsbereich mit der Enterprise-SKU.
+* Ein Dataset, auf das der Designer zugreifen kann. Die folgenden Werte sind möglich:
+   * Ein registriertes Azure Machine Learning-Dataset.
+    
+     **-oder-**
+   * Eine Datendatei, die in einem Azure Machine Learning-Datenspeicher gespeichert ist.
+   
+Informationen zum Datenzugriff mithilfe des Designers finden Sie unter [Importieren von Daten in den Designer](how-to-designer-import-data.md).
 
-In diesem Artikel wird davon ausgegangen, dass Sie grundlegende Kenntnisse zur Erstellung einer einfachen Pipeline im Designer haben. Eine Einführung in den Designer erhalten Sie im [Tutorial](tutorial-designer-automobile-price-train-score.md). 
+In diesem Artikel wird auch davon ausgegangen, dass Sie grundlegende Kenntnisse zur Erstellung einer einfachen Pipeline im Designer haben. Als Einführung können Sie das [Tutorial](tutorial-designer-automobile-price-train-score.md) durchführen. 
 
 ### <a name="sample-pipeline"></a>Beispiel-Pipeline
 
-Die in diesem Artikel verwendete Pipeline ist eine geänderte Version der in [Beispiel 3 – Einkommensvorhersage](how-to-designer-sample-classification-predict-income.md) verwendeten Pipeline. Es wird das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets verwendet, um Ihnen zu zeigen, wie Sie ein Modell mit Ihren eigenen Daten trainieren können.
+Die in diesem Artikel verwendete Pipeline ist eine geänderte Version von [Beispiel 3: Einkommensvorhersage](samples-designer.md#classification-samples) verwendeten Pipeline. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
 
 ![Screenshot der geänderten Beispielpipeline mit einem Feld, in dem das Modul „Import Data“ (Daten importieren) hervorgehoben ist](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
-## <a name="train-a-machine-learning-model"></a>Trainieren eines Machine Learning-Modells
-
-Zum erneuten Trainieren eines Modells benötigen Sie ein Ausgangsmodell. In diesem Abschnitt erfahren Sie, wie Sie ein Modell trainieren und mithilfe des Designers auf das gespeicherte Modell zugreifen.
-
-1. Wählen Sie das Modul **Import Data** (Daten importieren) aus.
-1. Geben Sie im Bereich „Eigenschaften“ eine Datenquelle an.
-
-   ![Screenshot mit einer Beispielkonfiguration für das Modul „Import Data“ (Daten importieren)](./media/how-to-retrain-designer/import-data-settings.png)
-
-   In diesem Beispiel werden die Daten in einem [Azure-Datenspeicher](how-to-access-data.md) gespeichert. Wenn Sie noch nicht über einen Datenspeicher verfügen, können Sie diesen jetzt über **Neuer Datenspeicher** erstellen.
-
-1. Geben Sie den Pfad zu Ihren Daten an. Sie können auch **Pfad durchsuchen** auswählen, um zum Datenspeicher zu navigieren. 
-1. Wählen Sie im oberen Bereich der Canvas die Option **Senden** aus.
-    
-   > [!NOTE]
-   > Wenn Sie bereits eine Standardcomputeressource für diesen Pipelineentwurf festgelegt haben, wird die Pipeline automatisch ausgeführt. Andernfalls können Sie den Anweisungen im Einstellungsbereich folgen, um jetzt eine Einstellung vorzunehmen.
-
-### <a name="find-your-trained-model"></a>Suchen des trainierten Modells
-
-Der Designer speichert alle Pipelineausgaben, einschließlich trainierter Modelle, im standardmäßigen Speicherkonto. Sie können jedoch auch direkt im Designer auf trainierte Modelle zugreifen:
-
-1. Warten Sie, bis die Ausführung der Pipeline abgeschlossen ist.
-1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
-1. Wählen Sie im Einstellungsbereich die Option **Ausgaben und Protokolle** aus.
-1. Wählen Sie das Symbol **Ausgabe anzeigen** aus, und folgen Sie den Anweisungen im Popupfenster, um das trainierte Modell zu suchen.
-
-![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/trained-model-view-output.png)
-
 ## <a name="create-a-pipeline-parameter"></a>Erstellen eines Pipelineparameters
 
-Fügen Sie Pipelineparameter hinzu, um Variablen zur Laufzeit dynamisch festzulegen. Fügen Sie für diese Pipeline einen Parameter für den Trainingsdatenpfad hinzu, damit Sie Ihr Modell mit einem neuen Dataset erneut trainieren können.
+Erstellen Sie Pipelineparameter, um Variablen zur Laufzeit dynamisch festzulegen. In diesem Beispiel werden Sie den Trainingsdatenpfad von einem festen Wert in einen Parameter ändern, sodass Sie Ihr Modell anhand anderer Daten neu trainieren können.
 
 1. Wählen Sie das Modul **Import Data** (Daten importieren) aus.
-1. Wählen Sie im Einstellungsbereich die Auslassungspunkte oberhalb des Felds **Pfad** aus.
+
+    > [!NOTE]
+    > In diesem Beispiel wird das Modul „Import Data“ (Daten importieren) verwendet, um auf Daten in einem registrierten Datenspeicher zuzugreifen. Sie können jedoch ähnliche Schritte durchführen, wenn Sie alternative Datenzugriffsmuster verwenden.
+
+1. Wählen Sie im Moduldetailbereich rechts neben der Canvas Ihre Datenquelle aus.
+
+1. Geben Sie den Pfad zu Ihren Daten ein. Sie können auch **Pfad durchsuchen** auswählen, um durch Ihre Dateistruktur zu navigieren. 
+
+1. Bewegen Sie den Mauszeiger über das Feld **Pfad**, und wählen Sie die Auslassungspunkte über dem Feld **Pfad** aus, die angezeigt werden.
+
+    ![Screenshot, der zeigt, wie ein Pipelineparameter erstellt wird](media/how-to-retrain-designer/add-pipeline-parameter.png)
+
 1. Wählen Sie **Zu Pipelineparameter hinzufügen** aus.
+
 1. Geben Sie einen Parameternamen und einen Standardwert an.
 
    > [!NOTE]
    > Über das Zahnradsymbol **Einstellungen** neben dem Titel Ihres Pipelineentwurfs können Sie die Pipelineparameter überprüfen und bearbeiten. 
 
-![Screenshot, der zeigt, wie ein Pipelineparameter erstellt wird](media/how-to-retrain-designer/add-pipeline-parameter.png)
+1. Wählen Sie **Speichern** aus.
+
+1. Übermitteln Sie die Pipelineausführung.
+
+## <a name="find-a-trained-model"></a>Suchen eines trainierten Modells
+
+Der Designer speichert alle Pipelineausgaben, einschließlich trainierter Modelle, im standardmäßigen Arbeitsbereichspeicherkonto. Sie können auch direkt im Designer auf trainierte Modelle zugreifen:
+
+1. Warten Sie, bis die Ausführung der Pipeline abgeschlossen ist.
+1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus.
+1. Sie finden Ihr Modell in **Andere Ausgaben** zusammen mit Ausführungsprotokollen.
+1. Wählen Sie alternativ das Symbol **Ausgabe anzeigen** aus. Von hier aus können Sie den Anweisungen im Dialogfeld folgen, um direkt zu Ihrem Datenspeicher zu navigieren. 
+
+![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Veröffentlichen einer Trainingspipeline
 
-Beim Veröffentlichen einer Pipeline wird ein Pipelineendpunkt erstellt. Mit Pipelineendpunkten können Sie Ihre Pipelines wiederverwenden und verwalten, um die Wiederholbarkeit und Automatisierung zu gewährleisten. In diesem Beispiel haben Sie die Pipeline zum erneuten Trainieren eingerichtet.
+Veröffentlichen Sie eine Pipeline an einem Pipelineendpunkt, um Ihre Pipelines in Zukunft einfach wiederverwenden zu können. Ein Pipelineendpunkt erstellt einen REST-Endpunkt, um die Pipeline zukünftig aufzurufen. In diesem Beispiel können Sie mit Ihrem Pipelineendpunkt Ihre Pipeline wiederverwenden, um ein Modell anhand anderer Daten neu zu trainieren.
 
 1. Wählen Sie **Veröffentlichen** über der Designer-Canvas aus.
 1. Wählen Sie einen Pipelineendpunkt aus, oder erstellen Sie ihn.
 
    > [!NOTE]
-   > Sie können mehrere Pipelines für einen einzelnen Endpunkt veröffentlichen. Jede Pipeline im Endpunkt erhält eine Versionsnummer, die Sie beim Aufruf des Pipelineendpunkts angeben können.
+   > Sie können mehrere Pipelines für einen einzelnen Endpunkt veröffentlichen. Jede Pipeline in einem bestimmten Endpunkt erhält eine Versionsnummer, die Sie beim Aufruf des Pipelineendpunkts angeben können.
 
 1. Wählen Sie **Veröffentlichen**.
 
 ## <a name="retrain-your-model"></a>Erneutes Trainieren Ihres Modells
 
-Nachdem Sie nun eine Trainingspipeline veröffentlicht haben, können Sie diese verwenden, um Ihr Modell mit neuen Daten neu zu trainieren. Sie können die Ausführungen von einem Pipelineendpunkt über das Azure-Portal oder programmgesteuert übermitteln.
+Nachdem Sie nun eine Trainingspipeline veröffentlicht haben, können Sie diese verwenden, um Ihr Modell anhand neuer Daten neu zu trainieren. Sie können Ausführungen von einem Pipelineendpunkt aus dem Studio-Arbeitsbereich oder programmgesteuert übermitteln.
 
 ### <a name="submit-runs-by-using-the-designer"></a>Übermitteln von Ausführungen mit dem Designer
 
-Verwenden Sie die folgenden Schritte, um die Ausführung eines Pipelineendpunktes über den Designer zu übermitteln:
+Verwenden Sie die folgenden Schritte, um die Ausführung eines parametrisierten Pipelineendpunkts über den Designer zu übermitteln:
 
-1. Wechseln Sie zur Seite **Endpunkte**.
-1. Wählen Sie die Registerkarte **Pipelineendpunkte** aus.
-1. Wählen Sie Ihren Pipelineendpunkt aus.
-1. Wählen Sie die Registerkarte **Veröffentlichte Pipelines** aus.
-1. Wählen Sie die Pipeline aus, die Sie ausführen möchten.
+1. Rufen Sie die Seite **Endpunkte** in Ihrem Studio-Arbeitsbereich auf.
+1. Wählen Sie die Registerkarte **Pipelineendpunkte** aus. Wählen Sie dann Ihren Pipelineendpunkt aus.
+1. Wählen Sie die Registerkarte **Veröffentlichte Pipelines** aus. Wählen Sie dann die Pipelineversion aus, die Sie ausführen möchten.
 1. Klicken Sie auf **Submit** (Senden).
-1. Im Setupdialogfeld können Sie einen neuen Wert für den Eingabedatenpfad angeben. Dieser Wert verweist auf das neue Dataset.
+1. Im Dialogfeld für die Einrichtung können Sie die Parameterwerte für die Ausführung angeben. Aktualisieren Sie in diesem Beispiel den Dateipfad, um das Modell mit einem Nicht-US-Dataset zu trainieren.
 
 ![Screenshot, der zeigt, wie Sie im Designer eine parametrisierte Pipelineausführung einrichten](./media/how-to-retrain-designer/published-pipeline-run.png)
 
@@ -122,4 +124,6 @@ Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zum Trainieren und Bereitstellen eines Regressionsmodells befolgen Sie die Schritte im Designer-[Tutorial](tutorial-designer-automobile-price-train-score.md).
+In diesem Artikel haben Sie erfahren, wie Sie mit dem Designer einen parametrisierten Trainingspipelineendpunkt erstellen können.
+
+Eine vollständige exemplarische Vorgehensweise, wie Sie ein Modell bereitstellen können, um Vorhersagen zu treffen, finden Sie im [Designer-Tutorial](tutorial-designer-automobile-price-train-score.md) zum Trainieren und Bereitstellen eines Regressionsmodells.

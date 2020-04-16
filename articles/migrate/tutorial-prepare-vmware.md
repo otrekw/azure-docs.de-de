@@ -4,44 +4,42 @@ description: Hier erfahren Sie, wie Sie virtuelle VMware-Computer auf die Bewert
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030794"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619430"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
 In diesem Artikel wird erläutert, wie Sie VMware-VMs mit [Azure Migrate](migrate-services-overview.md) für die Bewertung und die Migration zu Azure vorbereiten.
 
-[Azure Migrate](migrate-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
 
 
 Dieses Tutorial ist das erste in einer Reihe zur Bewertung und Migration von VMware-VMs. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Vorbereiten von Azure auf die Arbeit mit Azure Migrate
-> * Vorbereiten von VMware auf die VM-Bewertung
-> * Vorbereiten von VMware auf die VM-Migration
+> * Vorbereiten von VMware auf die VM-Bewertung mit dem Azure Migrate-Bewertungstool
+> * Vorbereiten von VMware auf die VM-Migration mit dem Tool für die Azure Migrate-Servermigration 
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie eignen sich als nützliche Einführung in die Einrichtung einer Bereitstellung und als schnelles Proof of Concept. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Bewertungs- und Migrationsanleitungen für VMware.
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie eignen sich als nützliche Einführung in die Einrichtung einer Bereitstellung und als schnelles Proof of Concept. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
 ## <a name="prepare-azure"></a>Vorbereiten von Azure
 
-Sie benötigen folgende Berechtigungen:
+Sie benötigen diese Berechtigungen für diese Aufgaben in Azure, bevor Sie VMware-VMs bewerten oder migrieren können.
 
-**Aufgabe** | **Berechtigungen**
---- | ---
-**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Projekts.
-**Registrieren der Azure Migrate-Appliance** | Azure Migrate verwendet eine schlanke Azure Migrate- Appliance, um VMware-VMs mit der Azure Migrate-Serverbewertung zu bewerten und für die VMware-VMs mit der Azure Migrate-Servermigration eine [Migration ohne Agents](server-migrate-overview.md) durchzuführen. Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu den VMs an Azure Migrate.<br/><br/>Bei der Registrierung der Appliance werden die folgenden Registrierungsanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde: Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.<br/><br/> Im Rahmen des Onboardings erstellt Azure Migrate zwei Azure Active Directory-Apps (Azure AD-Apps):<br/> -    Die erste App wird für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure verwendet. Diese App verfügt nicht über Berechtigungen zum Senden von ARM-Aufrufen oder über RBAC-Zugriff auf Ressourcen.<br/> - Die zweite App wird ausschließlich für den Zugriff auf die im Abonnement des Benutzers erstellte Key Vault-Instanz für die Migration ohne Agent verwendet. Sie verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten erstellte Instanz), wenn die Ermittlung von der Appliance initiiert wird.
-**Erstellen einer Key Vault-Instanz** | Für die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Für die Tresorerstellung benötigen Sie Rollenzuweisungsberechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet.
-
-
+**Aufgabe** | **Details** 
+--- | --- 
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum Erstellen eines Projekts Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“. 
+**Registrieren von Ressourcenanbietern** | Azure Migrate verwendet eine schlanke Azure Migrate-Appliance, um virtuelle VMware-Computer zu ermitteln und zu bewerten und mit der Azure Migrate-Serverbewertung zu Azure zu migrieren.<br/><br/> Bei der Applianceregistrierung werden Ressourcenanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.
+**Erstellen von Azure AD-Apps** | Bei der Registrierung der Appliance erstellt Azure Migrate Azure Active Directory-Apps (Azure AD-Apps). <br/><br/> – Die erste App wird für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure verwendet.<br/><br/> – Die zweite App wird ausschließlich für den Zugriff auf die im Abonnement des Benutzers erstellte Key Vault-Instanz für die Migration virtueller VMware-Computer ohne Agent verwendet. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie benötigen Berechtigungen zum Erstellen von Azure AD-Apps (in der Rolle „Anwendungsentwickler“ verfügbar).
+**Erstellen einer Key Vault-Instanz** | Zum Migrieren von VMware-VMs mit der Migration ohne Agents erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten.<br/><br/> Für die Tresorerstellung benötigen Sie Rollenzuweisungsberechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet.
 
 
 
@@ -58,8 +56,8 @@ Sie benötigen folgende Berechtigungen:
 
 Um die Appliance zu registrieren, weisen Sie Berechtigungen für Azure Migrate zu, um die Azure AD-Apps während der Applianceregistrierung zu erstellen. Die Berechtigungen können über eine der folgenden Methoden zugewiesen werden:
 
-- Ein Mandantenadministrator/globaler Administrator kann Benutzern unter dem Mandanten Berechtigungen zum Erstellen und Registrieren von Azure AD-Apps erteilen.
-- Ein Mandantenadministrator/globaler Administrator kann dem Konto die Rolle „Anwendungsentwickler“ (die über die Berechtigungen verfügt) zuweisen.
+- **Erteilen von Berechtigungen**: Ein Mandantenadministrator/globaler Administrator kann Benutzern unter dem Mandanten Berechtigungen zum Erstellen und Registrieren von Azure AD-Apps erteilen.
+- **Zuweisen der Rolle „Anwendungsentwickler“** : Ein Mandantenadministrator/globaler Administrator kann dem Konto die Rolle „Anwendungsentwickler“ (die über die Berechtigungen verfügt) zuweisen.
 
 > [!NOTE]
 > - Die Apps verfügen nur über die oben beschriebenen Zugriffsberechtigungen für das Abonnement.
@@ -68,7 +66,7 @@ Um die Appliance zu registrieren, weisen Sie Berechtigungen für Azure Migrate z
 
 #### <a name="grant-account-permissions"></a>Erteilen von Kontoberechtigungen
 
-Der Mandantenadministrator/globale Administrator kann Berechtigungen wie folgt erteilen:
+Wenn Sie möchten, dass der Mandantenadministrator/globale Administrator Berechtigungen erteilt, gehen Sie wie folgt vor:
 
 1. In Azure AD muss der globale oder der Mandantenadministrator zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** navigieren.
 2. Der Administrator muss **App-Registrierungen** auf **Ja** festlegen. Dies ist eine Standardeinstellung, die nicht vertraulich ist. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
@@ -79,7 +77,7 @@ Der Mandantenadministrator/globale Administrator kann Berechtigungen wie folgt e
 
 #### <a name="assign-application-developer-role"></a>Zuweisen der Rolle „Anwendungsentwickler“
 
-Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Als Alternative kann der Mandantenadministrator/globale Administrator einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Hier finden Sie weitere Informationen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) zum Zuweisen von Rollen.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Zuweisen von Berechtigungen für die Key Vault-Erstellung
 
@@ -100,8 +98,8 @@ Um das Erstellen einer Key Vault-Instanz durch Azure Migrate zu ermöglichen, we
 Führen Sie die folgenden Schritte aus, um die Bewertung von VMware-VMs vorzubereiten:
 
 - **Überprüfen Sie die VMware-Einstellungen**. Stellen Sie sicher, dass die vCenter Server-Instanz und die zu migrierenden VMs die geltenden Anforderungen erfüllen.
-- **Richten Sie ein Bewertungskonto ein**. Azure Migrate muss auf die vCenter Server-Instanz zugreifen können, um VMs für die Bewertung zu ermitteln.
-- **Überprüfen Sie die Appliance-Anforderungen**. Überprüfen Sie die Bereitstellungsanforderungen für die Azure Migrate-Appliance, die für die Bewertung verwendet wird.
+- **Richten Sie ein Konto für die Bewertung ein**. Azure Migrate nutzt dieses Konto für den Zugriff auf die vCenter Server-Instanz, um VMs für die Bewertung zu ermitteln.
+- **Überprüfen Sie die Appliance-Anforderungen**. Überprüfen Sie die Bereitstellungsanforderungen für die Azure Migrate-Appliance, bevor Sie sie bereitstellen.
 
 ### <a name="verify-vmware-settings"></a>Überprüfen der VMware-Einstellungen
 
@@ -124,9 +122,9 @@ Azure Migrate muss auf die vCenter Server-Instanz zugreifen, um VMs für die Be
 
 Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit der Bewertung beginnen, müssen Sie die Appliance-Bereitstellung vorbereiten.
 
-1. Lesen Sie die [Applianceanforderungen](migrate-appliance.md#appliance---vmware) für virtuelle VMware-Computer.
+1. [Überprüfen](migrate-appliance.md#appliance---vmware) Sie die Anforderungen für die Azure Migrate-Appliance.
 2. [Überprüfen](migrate-appliance.md#url-access) Sie die Azure-URLs, auf die die Appliance zugreifen muss. Sollten Sie eine URL-basierte Firewall oder einen Proxy verwenden, lassen Sie unbedingt den Zugriff auf die erforderlichen URLs zu.
-3. [Überprüfen](migrate-appliance.md#collected-data---vmware) Sie die Daten, die die Appliance während der Ermittlung und Bewertung sammelt.
+3. [Überprüfen Sie die Daten](migrate-appliance.md#collected-data---vmware), die die Appliance während der Ermittlung und Bewertung sammelt.
 4. [Beachten](migrate-support-matrix-vmware.md#port-access) Sie die Portzugriffsanforderungen für die Appliance.
 
 
@@ -134,22 +132,24 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 
 ## <a name="prepare-for-agentless-vmware-migration"></a>Vorbereiten der VMware-Migration ohne Agent
 
-Überprüfen Sie die Anforderungen für die Migration von VMware-VMs ohne Agent.
+Überprüfen Sie die Anforderungen für die [Migration von VMware-VMs ohne Agent](server-migrate-overview.md).
 
-1. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) Sie die Anforderungen an den VMware-Server und die [Berechtigungen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers), die Azure Migrate für den Zugriff auf die vCenter Server-Instanz für die Migration ohne Agent unter Verwendung der Azure Migrate-Servermigration benötigt.
-2. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) Sie die Anforderungen für VMware-VMs, die Sie mithilfe der Migration ohne Agents zu Azure migrieren möchten.
-4. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) Sie die Anforderungen zur Verwendung der Azure Migrate-Appliance für die Migration ohne Agents.
-5. Beachten Sie den [URL-Zugriff](migrate-appliance.md#url-access) und den [Portzugriff](migrate-support-matrix-vmware-migration.md#agentless-ports), der für die Migration ohne Agent erforderlich ist.
-
+1. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) Sie die Anforderungen für VMware-Server.
+2. [Überprüfen Sie die Berechtigungen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers), die Azure Migrate für den Zugriff auf vCenter Server benötigt.
+3. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) Sie die Anforderungen für VMware-VMs.
+4. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) Sie die Anforderungen für die Azure Migrate-Appliance.
+5. Beachten Sie die Anforderungen für den [URL-Zugriff](migrate-appliance.md#url-access) und [Portzugriff](migrate-support-matrix-vmware-migration.md#agentless-ports).
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Vorbereiten der Agent-basierten VMware-Migration
 
 Überprüfen Sie die Anforderungen für die [Agent-basierte Migration](server-migrate-overview.md) von VMware-VMs.
 
-1. [Überprüfen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Sie die Anforderungen an den VMware-Server und die Berechtigungen, die Azure Migrate für den Zugriff auf die vCenter Server-Instanz für die Agent-basierte Migration unter Verwendung der Azure Migrate-Servermigration benötigt.
-2. [Überprüfen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) Sie die Anforderungen für VMware-VMs, die Sie mithilfe der Agent-basierten Migration zu Azure migrieren möchten – einschließlich der Installation des Mobilitätsdiensts auf jeder VM, die Sie migrieren möchten.
+1. [Überprüfen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Sie die Anforderungen für VMware-Server.
+2. [Überprüfen Sie die Berechtigungen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers), die Azure Migrate für den Zugriff auf vCenter Server benötigt.
+2. [Überprüfen Sie](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) die Anforderungen für VMware-VMs, einschließlich der Installation des Mobilitätsdiensts auf jedem virtuellen Computer, den Sie migrieren möchten.
 3. Bei der Migration mit Agent wird eine Replikationsappliance verwendet:
-    - [Lesen](migrate-replication-appliance.md#appliance-requirements) Sie die Bereitstellungsanforderungen für die Replikationsappliance, und informieren Sie sich über die [Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
+    - [Überprüfen](migrate-replication-appliance.md#appliance-requirements) Sie die Bereitstellungsanforderungen für die Replikationsappliance.
+    - [Überprüfen Sie die Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
     - Überprüfen Sie die [URL-](migrate-replication-appliance.md#url-access) und [Portzugriffsanforderungen](migrate-replication-appliance.md#port-access) für die Replikationsappliance.
     
 ## <a name="next-steps"></a>Nächste Schritte

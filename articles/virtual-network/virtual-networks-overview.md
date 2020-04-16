@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290198"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879359"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -76,6 +76,15 @@ Azure leitet standardmäßig Datenverkehr zwischen Subnetzen, verbundenen virtue
 
 - **Routingtabellen**: Sie können benutzerdefinierte Routingtabellen mit Routen erstellen, über die gesteuert wird, wohin der Datenverkehr für die einzelnen Subnetze geleitet wird. Weitere Informationen zu Routingtabellen finden Sie [hier](virtual-networks-udr-overview.md#user-defined).
 - **BGP-Routen (Border Gateway Protocol)** : Wenn Sie Ihr virtuelles Netzwerk mit Ihrem lokalen Netzwerk über ein Azure-VPN-Gateway oder eine ExpressRoute-Verbindung verbinden, können Sie Ihren virtuellen Netzwerken Ihre lokalen BGP-Routen weitergeben. Weitere Informationen zur Verwendung von BGP mit dem Azure-VPN-Gateway finden Sie [hier](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Informationen zur Verwendung mit ExpressRoute finden Sie [hier](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange).
+
+## <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
+
+Wenn Sie Azure-Dienste in ein virtuelles Azure-Netzwerk integrieren, ermöglichen Sie damit den privaten Zugriff auf den Dienst über virtuelle Computer oder Computeressourcen im virtuellen Netzwerk.
+Sie können Azure-Dienste mit den folgenden Optionen in Ihr virtuelles Netzwerk integrieren:
+- Stellen Sie [dedizierte Instanzen des Diensts](virtual-network-for-azure-services.md) in einem virtuellen Netzwerk bereit. Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
+- Verwenden Sie [Private Link](../private-link/private-link-overview.md), um von Ihrem virtuellen Netzwerk sowie von lokalen Netzwerken aus privat auf eine bestimmte Instanz des Diensts zuzugreifen.
+- Sie können auf den Dienst auch unter Verwendung öffentlicher Endpunkte zugreifen, indem Sie ein virtuelles Netzwerk mithilfe von [Dienstendpunkten](virtual-network-service-endpoints-overview.md) auf den Dienst erweitern. Durch Dienstendpunkte können Dienstressourcen an das virtuelle Netzwerk gebunden werden.
+ 
 
 ## <a name="azure-vnet-limits"></a>Einschränkungen von Azure VNET
 

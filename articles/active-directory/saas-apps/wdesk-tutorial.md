@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985525"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666984"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Wdesk
 
@@ -181,6 +181,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Einmaliges Anmelden konfigurieren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. Aktivieren Sie unter **SAML User ID Settings** (Einstellungen für die SAML-Benutzer-ID) das Kontrollkästchen **SAML User ID is Wdesk Username** (SAML-Benutzer-ID entspricht Wdesk-Benutzername).
+
+    ![Einmaliges Anmelden konfigurieren](./media/wdesk-tutorial/wdesk-username.png)
+
 4. Aktivieren Sie unter **General Settings** (Allgemeine Einstellungen) die Option **Enable SAML Single Sign On** (SAML Single Sign On aktivieren):
 
     ![Einmaliges Anmelden konfigurieren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk b
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser1.png)  
 
-5. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z. B. brittasimon@contoso.com) ein, und klicken Sie dann auf **Continue** (Weiter).
+5. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z. B. b.simon@contoso.com) ein, und klicken Sie dann auf **Continue** (Weiter).
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk b
   
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser4.png)
  
-    a. Geben Sie im Textfeld **E-mail** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. brittasimon@contoso.com.
+    a. Geben Sie im Textfeld **E-mail** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. b.simon@contoso.com.
 
-    b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta**.
+    b. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein, z. B. **B**.
 
     c. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen des Benutzers ein, z.B. **Simon**.
 

@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061461"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619125"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ Die Reihe von Werten nach den einzelnen Parametern erscheint unter Umständen et
 Nachdem die SAS generiert wurde, kopieren Sie den Rückgabewert, und speichern Sie ihn zur Verwendung in einem späteren Schritt. Wenn Sie Ihre SAS mit einer anderen Methode als der Azure-Befehlszeilenschnittstelle erstellt haben, müssen Sie ggf. das `?` entfernen. Dieses Zeichen ist ein URL-Trennzeichen, das in der URL-Vorlage weiter unten in diesem Thema (bei der SAS-Verwendung) bereits angegeben ist.
 
 > [!IMPORTANT]
-> Übergeben Sie SAS-Token in einer Produktionsumgebung immer unter Verwendung von SSL. SAS-Token sollten für die Rückgabe an Azure Blob Storage außerdem auf dem Server generiert und an die HTML-Seite gesendet werden. Eine Möglichkeit besteht darin, SAS-Funktionen mit einer serverlosen Funktion zu generieren. Im Azure-Portal stehen Funktionsvorlagen zur Verfügung, die die Generierung einer SAS mit einer JavaScript-Funktion ermöglichen.
+> Übergeben Sie SAS-Token in einer Produktionsumgebung immer unter Verwendung von TLS. SAS-Token sollten für die Rückgabe an Azure Blob Storage außerdem auf dem Server generiert und an die HTML-Seite gesendet werden. Eine Möglichkeit besteht darin, SAS-Funktionen mit einer serverlosen Funktion zu generieren. Im Azure-Portal stehen Funktionsvorlagen zur Verfügung, die die Generierung einer SAS mit einer JavaScript-Funktion ermöglichen.
 
 ## <a name="implement-the-html-page"></a>Implementieren der HTML-Seite
 

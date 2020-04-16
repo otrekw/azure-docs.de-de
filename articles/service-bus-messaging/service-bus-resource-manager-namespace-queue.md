@@ -10,136 +10,86 @@ ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 978111596330d7d6b324c1ecc07fd424c7fd47b7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427003"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422628"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Service Bus-Namespace und eine Warteschlange innerhalb dieses Namespace erstellt. Dieser Artikel zeigt Ihnen, wie Sie angeben, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][Service Bus namespace and queue template] (Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Keine
+
+## <a name="create-a-service-bus-namespace-and-a-queue"></a>Erstellen eines Service Bus-Namespace und einer -Warteschlange
+
+### <a name="review-the-template"></a>Überprüfen der Vorlage
+
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
+
+:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
+
+In der Vorlage sind die folgenden Ressourcen definiert:
+
+- [**Microsoft.ServiceBus/namespaces**](/azure/templates/microsoft.servicebus/namespaces)
+- [**Microsoft.ServiceBus/namespaces/queues**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
 > Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
-> 
+>
 > * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 > * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 > * [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
-> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach **Service Bus** suchen.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Informationen zu weiteren Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular).
 
-## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Mit dieser Vorlage stellen Sie einen Service Bus-Namespace mit einer Warteschlange bereit.
 
 [Service Bus-Warteschlangen](service-bus-queues-topics-subscriptions.md#queues) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer.
 
-Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
+Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen: Erstellen Sie eine neue Ressourcengruppe für die Bereitstellung, um sie später problemlos bereinigen zu können.
 
 [![In Azure bereitstellen](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parameter
+## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
-Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters` , der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
+1. Wählen Sie oben **Benachrichtigungen** aus, um den Status der Bereitstellung anzuzeigen. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurde. Wählen Sie dann in der Benachrichtigungsmeldung **Zu Ressourcengruppe wechseln** aus, um zur Seite für die Ressourcengruppe zu navigieren, wo der Service Bus-Namespace angegeben ist. 
 
-Die Vorlage definiert die folgenden Parameter:
+    ![Benachrichtigung der Bereitstellung](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Vergewissern Sie sich, dass Ihr Service Bus-Namespace in der Ressourcenliste enthalten ist. 
 
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Der Name des zu erstellenden Service Bus-Namespace.
+    ![Ressourcengruppe: Namespace](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. Wählen Sie den Namespace in der Liste aus, um zur Seite **Service Bus-Namespace** zu gelangen. 
 
-```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
-}
-```
+## <a name="cleanup-resources"></a>Bereinigen von Ressourcen
 
-### <a name="servicebusqueuename"></a>serviceBusQueueName
-Der Name der Warteschlange im Service Bus-Namespace.
+1. Navigieren Sie im Azure-Portal zur Seite **Ressourcengruppe** für Ihre Ressourcengruppe.
+2. Klicken Sie auf der Symbolleiste auf **Ressourcengruppe löschen**. 
+3. Geben Sie den Namen der Ressourcengruppe ein, und wählen Sie **Löschen** aus. 
 
-```json
-"serviceBusQueueName": {
-"type": "string"
-}
-```
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-Die Service Bus-API-Version der Vorlage.
-
-```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       }
-```
-
-## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
-Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**mit einer Warteschlange.
-
-```json
-{
-    "resources": [{
-        "apiVersion": "2017-04-01",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/namespaces",
-        "location": "[parameters('location')]",
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {},
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }]
-}
-```
-
-JSON-Syntax und Eigenschaften finden Sie unter [Namespaces](/azure/templates/microsoft.servicebus/namespaces) und [Warteschlangen](/azure/templates/microsoft.servicebus/namespaces/queues).
-
-## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-## <a name="powershell"></a>PowerShell
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
+    ![Ressourcengruppe: Löschen](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie das folgende Thema zum Erstellen einer Autorisierungsregel für den Namespace bzw. die Warteschlange: [Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-auth-rule.md)
+
+Lesen Sie das folgende Thema zum Erstellen einer Autorisierungsregel für den Namespace bzw. die Warteschlange:
+
+[Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-auth-rule.md)
 
 In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 

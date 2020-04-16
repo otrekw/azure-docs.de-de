@@ -2,19 +2,19 @@
 title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Vorlage'
 description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Vorlage verwenden möchten.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773147"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411518"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer Resource Manager-Vorlage
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer ARM-Vorlage
 
-In diesem Tutorial erfahren Sie, wie Sie [Parameterdateien](parameter-files.md) verwenden, um die Werte zu speichern, die Sie während der Bereitstellung übergeben. In den vorherigen Tutorials haben Sie Inline-Parameter mit dem Bereitstellungs Befehl verwendet. Dieser Ansatz funktionierte beim Testen Ihrer Vorlage, aber bei der Automatisierung von Bereitstellungen kann es einfacher sein, eine Gruppe von Werten für Ihre Umgebung zu übergeben. Parameterdateien vereinfachen das Packen von Parameterwerten für eine bestimmte Umgebung. In diesem Tutorial erstellen Sie Parameterdateien für Entwicklungs- und Produktionsumgebungen. Dieser Schritt dauert ungefähr **12 Minuten**.
+In diesem Tutorial erfahren Sie, wie Sie [Parameterdateien](parameter-files.md) verwenden, um die Werte zu speichern, die Sie während der Bereitstellung übergeben. In den vorherigen Tutorials haben Sie Inline-Parameter mit dem Bereitstellungs Befehl verwendet. Dieser Ansatz hat beim Testen Ihrer ARM-Vorlage (Azure Resource Manager) funktioniert, aber bei der Automatisierung von Bereitstellungen kann es einfacher sein, eine Gruppe mit Werten für Ihre Umgebung zu übergeben. Parameterdateien vereinfachen das Packen von Parameterwerten für eine bestimmte Umgebung. In diesem Tutorial erstellen Sie Parameterdateien für Entwicklungs- und Produktionsumgebungen. Dieser Schritt dauert ungefähr **12 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,10 +54,10 @@ Als abschließenden Test Ihrer Vorlage erstellen wir zwei neue Ressourcengruppen
 
 Zuerst führen wir die Bereitstellung in der Entwicklungsumgebung durch.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -69,25 +69,28 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
 
 Jetzt stellen wir in der Produktionsumgebung bereit.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,20 +104,24 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 
@@ -136,7 +143,7 @@ Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppe
 
 Herzlichen Glückwunsch, Sie haben diese Einführung in die Bereitstellung von Vorlagen in Azure abgeschlossen. Informieren Sie uns im Abschnitt „Feedback“, wenn Sie Kommentare oder Vorschläge haben. Vielen Dank!
 
-Sie sind bereit, sich mit fortgeschritteneren Konzepten für Vorlagen zu befassen. Das nächste Tutorial geht detaillierter auf die Verwendung der Referenzdokumentation von Vorlagen zum Definieren von bereitzustellenden Ressourcen ein.
+In der nächsten Tutorialreihe wird ausführlicher auf die Bereitstellung von Vorlagen eingegangen.
 
 > [!div class="nextstepaction"]
-> [Nutzen der Vorlagenreferenz](template-tutorial-create-encrypted-storage-accounts.md)
+> [Bereitstellen einer lokalen Vorlage](./deployment-tutorial-local-template.md)

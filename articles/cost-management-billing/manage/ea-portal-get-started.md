@@ -3,16 +3,16 @@ title: Erste Schritte mit dem Azure Enterprise Portal
 description: In diesem Artikel wird erläutert, wie Azure EA-Kunden (Azure Enterprise Agreement) das Azure Enterprise Portal verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5b84cbf4ae7065f13442852cfbf646aa49771e1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da63960b312bde6ae8aafb659ef08ef2f52600cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272423"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586301"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Erste Schritte mit dem Azure Enterprise Portal
 
@@ -111,7 +111,7 @@ Der Benachrichtigungskontakt empfängt Nutzungsbenachrichtigungen zur Registrier
 
 Um den Dienst zu aktivieren, öffnet der erste Unternehmensadministrator das [Azure Enterprise Portal](https://ea.azure.com) und meldet sich mit der E-Mail-Adresse aus der Einladungs-E-Mail an.
 
-Sollten Sie als Unternehmensadministrator eingerichtet sein, benötigen Sie keine Aktivierungs-E-Mail. Stattdessen können Sie zum [Azure Enterprise Portal](https://ea.azure.com) wechseln und sich mit der E-Mail-Adresse Ihres Geschäfts-, Schul-, Uni- oder Microsoft-Kontos und Ihrem Kennwort anmelden.
+Wenn Sie als Unternehmensadministrator eingerichtet sind, benötigen Sie keine Aktivierungs-E-Mail. Stattdessen können Sie zum [Azure Enterprise Portal](https://ea.azure.com) wechseln und sich mit der E-Mail-Adresse Ihres Geschäfts-, Schul-, Uni- oder Microsoft-Kontos und Ihrem Kennwort anmelden.
 
 Wenn Sie über mehrere Registrierungen verfügen, wählen Sie eine aus, die Sie aktivieren möchten. Standardmäßig werden nur aktive Registrierungen angezeigt. Um den Registrierungsverlauf anzuzeigen, deaktivieren Sie die Option **Aktiv** in der oberen rechten Ecke des Azure Enterprise Portals.
 

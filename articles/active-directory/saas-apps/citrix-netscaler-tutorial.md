@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977907"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478005"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Citrix NetScaler (Kerberos-basierte Authentifizierung)
 
@@ -31,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie Citrix NetScaler in Azure Active Direc
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Citrix NetScaler anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,6 +50,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * [Kerberos-basierte Authentifizierung für Citrix NetScaler](#publish-the-web-server)
 
 * [Headerbasierte Authentifizierung für Citrix NetScaler](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+
+* Nach dem Konfigurieren von Citrix NetScaler können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Hinzufügen von Citrix NetScaler über den Katalog
 
@@ -102,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD üb
 
     1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<Your FQDN>`
 
-    1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. Wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus, und führen Sie den folgenden Schritt aus:
 
@@ -218,7 +219,7 @@ So binden Sie den Lastenausgleich mit dem virtuellen Server:
 
 ### <a name="bind-the-certificate"></a>Binden des Zertifikats
 
-Um diesen Dienst als SSL zu veröffentlichen, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden:
+Wenn Sie diesen Dienst als TLS veröffentlichen möchten, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden:
 
 1. Wählen Sie unter **Certificate** (Zertifikat) die Option **No Server Certificate** (Kein Serverzertifikat) aus.
 
@@ -456,10 +457,14 @@ Wenn Sie im Zugriffsbereich die Kachel „Citrix NetScaler“ auswählen, sollte
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Ausprobieren von Citrix NetScaler mit Azure AD](https://aad.portal.azure.com/)
 
 - [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung](header-citrix-netscaler-tutorial.md)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

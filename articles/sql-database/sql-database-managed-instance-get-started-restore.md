@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73825708"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874703"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz
 
@@ -46,7 +46,7 @@ In dieser Schnellstartanleitung gilt Folgendes:
 
 Führen Sie in SSMS die folgenden Schritte aus, um die Wide World Importers-Datenbank in Ihrer verwalteten Instanz wiederherzustellen. Die Datenbanksicherungsdatei ist in einem vorkonfigurierten Azure Blob Storage-Konto gespeichert.
 
-1. Öffnen Sie SMSS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
+1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
 2. Klicken Sie im linken Menü mit der rechten Maustaste auf Ihre verwaltete Instanz, und wählen Sie **Neue Abfrage** aus, um ein neues Abfragefenster zu öffnen.
 3. Führen Sie das folgende SQL-Skript aus. Dieses Skript verwendet ein vorkonfiguriertes Speicherkonto und einen SAS-Schlüssel zum [Erstellen von Anmeldeinformationen](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) in Ihrer verwalteten Instanz.
 

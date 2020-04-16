@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767967"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667309"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Übersicht über Azure FarmBeats (Vorschau)
 
@@ -42,6 +42,24 @@ Der Datenhub ist als erweiterbare API-Plattform konzipiert. Wir arbeiten mit zah
 ## <a name="accelerator"></a>Accelerator
 
 Der Azure FarmBeats Accelerator ist eine Beispielwebanwendung, die auf dem Datenhub aufsetzt. Der Accelerator beschleunigt die Entwicklung von Benutzeroberfläche und Modell. Der Azure FarmBeats Accelerator verwendet Azure FarmBeats-APIs. Er visualisiert erfasste Sensordaten als Diagramme und Modellausgaben als Karten. Beispielsweise können Sie mit dem Accelerator schnell einen Agrarbetrieb erstellen und ganz einfach eine Vegetationsindexkarte oder eine Karte zur Sensorplatzierung für diesen Betrieb erstellen.
+
+## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
+Ein Administrator kann mithilfe einer der vordefinierten Rollen Zugriffsregeln für Azure FarmBeats definieren. Über Rollen wird festgelegt, auf welche Bereiche einer Anwendung ein Benutzer zugreifen und welche Aktionen er ausführen darf. In Azure FarmBeats stehen zwei Arten von Rollen (für Benutzer und Partner) zur Verfügung.
+
+### <a name="user-roles"></a>Benutzerrollen
+
+Ein [Administrator kann Benutzer hinzufügen und verwalten](manage-users-in-azure-farmbeats.md) und deren Zugriffsebenen auf der Grundlage von zwei Benutzerrollen definieren: „Administrator“ und „Schreibgeschützt“.
+
+### <a name="partner-roles"></a>Partnerrollen
+
+Ein Administrator kann Azure FarmBeats mehrere Partner als Datenanbieter hinzufügen. Im Anschluss werden die in FarmBeats verfügbaren Partnerrollen und deren Berechtigungen zusammengefasst:
+
+| Partnertyp    |   Aktionen  | `Scope` |
+| ---- | -------- | -------- |
+| Partner für Sensordaten  |   Erstellen, Lesen, Aktualisieren <br/> <br/> Lesen, Aktualisieren | DeviceModel, Device, SensorModel, Sensor <br/> <br/> ExtendedType |
+| Partner für Bilder  |   Erstellen, Lesen, Aktualisieren <br/> <br/> Lesen, Aktualisieren <br/> <br/> Lesen | Scene, SceneFile <br/> <br/> ExtendedType <br/> <br/> Bauernhof |
+| Partner für Wetterdaten <br/> <br/>  (demnächst verfügbar) |   Erstellen, Lesen, Aktualisieren <br/> <br/> Lesen, Aktualisieren <br/> <br/> Lesen | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Bauernhof |
 
 ## <a name="resources"></a>Ressourcen
 

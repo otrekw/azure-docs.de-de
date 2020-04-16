@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977928"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung)
 
@@ -244,7 +244,7 @@ So binden Sie den Lastenausgleich mit dem virtuellen Server:
 
 ### <a name="bind-the-certificate"></a>Binden des Zertifikats
 
-Um diesen Dienst als SSL zu veröffentlichen, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden:
+Wenn Sie diesen Dienst als TLS veröffentlichen möchten, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden:
 
 1. Wählen Sie unter **Certificate** (Zertifikat) die Option **No Server Certificate** (Kein Serverzertifikat) aus.
 

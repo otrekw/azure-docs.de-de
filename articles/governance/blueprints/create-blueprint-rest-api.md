@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit REST-API'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290368"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676564"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -25,7 +25,7 @@ Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können 
 
 Sollten Sie noch nicht mit der REST-API vertraut sein, finden Sie unter [Azure REST-API-Referenz](/rest/api/azure/) eine allgemeine Übersicht über die REST-API (insbesondere über den Anforderungs-URI und den Anforderungstext). In diesem Artikel dienen diese Konzepte als Grundlage für die Anweisungen zur Verwendung von Azure Blueprint. Aus diesem Grund werden entsprechende Grundkenntnisse vorausgesetzt. Mit Tools wie [ARMClient](https://github.com/projectkudu/ARMClient) kann die Autorisierung automatisch durchgeführt werden. Diese Tools werden für Anfänger empfohlen.
 
-Die Spezifikationen zur Blaupause finden Sie unter [Azure Blueprints REST API](/rest/api/blueprints/) (REST-API für Azure-Blaupausen).
+Die Spezifikationen zu Azure Blueprints finden Sie in der [REST-API-Referenz für Azure Blueprints](/rest/api/blueprints/).
 
 ### <a name="rest-api-and-powershell"></a>REST-API und PowerShell
 
@@ -406,7 +406,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      Die **benutzerseitig zugewiesene verwaltete Identität** kann sich in einem beliebigen Abonnement/in einer beliebigen Ressourcengruppe befinden, für das/für die der Benutzer, der die Blaupause zuweist, über Berechtigungen verfügt.
 
      > [!IMPORTANT]
-     > Die benutzerseitig zugewiesene verwaltete Identität wird nicht durch Blaupausen verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
+     > Die benutzerseitig zugewiesene verwaltete Identität wird nicht von Azure Blueprints verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

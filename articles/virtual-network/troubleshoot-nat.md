@@ -1,6 +1,6 @@
 ---
-title: 'Problembehandlung: Azure Virtual Network NAT-Konnektivität'
-titleSuffix: Azure Virtual Network NAT troubleshooting
+title: Problembehandlung für Azure Virtual Network NAT-Konnektivität
+titleSuffix: Azure Virtual Network
 description: Es wird beschrieben, wie Sie Virtual Network NAT-Probleme beheben.
 services: virtual-network
 documentationcenter: na
@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674334"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396085"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Problembehandlung: Azure Virtual Network NAT-Konnektivität
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
 
 In diesem Artikel erhalten Administratoren Hilfe beim Diagnostizieren und Beheben von Konnektivitätsproblemen mit Virtual Network NAT.
-
->[!NOTE] 
->Virtual Network NAT ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar. Dieser Dienst ist bisher nur in einer begrenzten Zahl von [Regionen](nat-overview.md#region-availability) erhältlich. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Probleme
 
@@ -43,27 +40,39 @@ Führen Sie die Schritte im folgenden Abschnitt aus, um diese Probleme zu behebe
 
 Für eine einzelne [NAT-Gatewayressource](nat-gateway-resource.md) werden jeweils 64.000 bis maximal 1 Million gleichzeitige Datenflüsse unterstützt.  Jede IP-Adresse stellt 64.000 SNAT-Ports für den verfügbaren Bestand bereit. Sie können bis zu 16 IP-Adressen pro NAT-Gatewayressource nutzen.  Eine ausführlichere Beschreibung des SNAT-Mechanismus finden Sie [hier](nat-gateway-resource.md#source-network-address-translation).
 
-Die Grundursache für die SNAT-Auslastung ist häufig ein Antimuster bei der Einrichtung und Verwaltung der ausgehenden Konnektivität.  Lesen Sie diesen Abschnitt sorgfältig.
+Die Grundursache für eine SNAT-Auslastung ist häufig ein Antimuster bei der Einrichtung und Verwaltung der ausgehenden Konnektivität oder bei der Änderung des Standardwerts von konfigurierbaren Zeitgebern.  Lesen Sie diesen Abschnitt sorgfältig.
 
 #### <a name="steps"></a>Schritte
 
-1. Ermitteln Sie, wie von Ihrer Anwendung ausgehende Konnektivität erstellt wird (z. B. Code Review oder Paketerfassung). 
-2. Ermitteln Sie, ob es sich bei dieser Aktivität um ein erwartetes Verhalten handelt oder die Anwendung ein Fehlverhalten aufweist.  Verwenden Sie [Metriken](nat-metrics.md) in Azure Monitor, um Ihre Erkenntnisse zu untermauern. Verwenden Sie die Kategorie „Fehler“ für die Metrik „SNAT-Verbindungen“.
-3. Prüfen Sie, ob die richtigen Muster eingehalten werden.
-4. Prüfen Sie, ob die hohe SNAT-Portauslastung verringert werden sollte, indem der NAT-Gatewayressource weitere IP-Adressen zugewiesen werden.
+1. Überprüfen Sie, ob Sie das standardmäßige Leerlauftimeout auf einen Wert von mehr als vier Minuten festgelegt haben.
+2. Ermitteln Sie, wie von Ihrer Anwendung ausgehende Konnektivität erstellt wird (z. B. Code Review oder Paketerfassung). 
+3. Ermitteln Sie, ob es sich bei dieser Aktivität um ein erwartetes Verhalten handelt oder die Anwendung ein Fehlverhalten aufweist.  Verwenden Sie [Metriken](nat-metrics.md) in Azure Monitor, um Ihre Erkenntnisse zu untermauern. Verwenden Sie die Kategorie „Fehler“ für die Metrik „SNAT-Verbindungen“.
+4. Prüfen Sie, ob die richtigen Muster eingehalten werden.
+5. Prüfen Sie, ob die hohe SNAT-Portauslastung verringert werden sollte, indem der NAT-Gatewayressource weitere IP-Adressen zugewiesen werden.
 
 #### <a name="design-patterns"></a>Entwurfsmuster
 
-Nutzen Sie nach Möglichkeit immer die Wiederverwendung von Verbindungen und Verbindungspools.  Bei diesen Mustern werden Probleme aufgrund einer hohen Ressourcenauslastung ganz vermieden, und es wird ein planbares, zuverlässiges und skalierbares Verhalten erreicht. Primitive für diese Muster finden Sie in vielen Entwicklungsbibliotheken und Frameworks.
+Nutzen Sie nach Möglichkeit immer die Wiederverwendung von Verbindungen und Verbindungspools.  Bei diesen Mustern werden Probleme aufgrund einer hohen Ressourcenauslastung vermieden, und es ergibt sich ein vorhersagbares Verhalten. Primitive für diese Muster finden Sie in vielen Entwicklungsbibliotheken und Frameworks.
 
-_**Lösung:**_ Verwenden geeigneter Muster
+_**Lösung:**_ Nutzen geeigneter Muster und bewährter Methoden
 
+- Das TCP-Leerlauftimeout von NAT-Gatewayressourcen ist standardmäßig auf vier Minuten festgelegt.  Wird diese Einstellung auf einen höheren Wert festgelegt, werden Flows von der NAT länger aufrechterhalten, was eine [unnötige Belastung des SNAT-Portbestands](nat-gateway-resource.md#timers) zur Folge haben kann.
+- Atomische Anforderungen (eine Anforderung pro Verbindung) sind ein schlechter Entwurfsansatz. Antimuster dieser Art führen zu einer Begrenzung der Skalierung und zu einer Verringerung der Leistung und Zuverlässigkeit. Nutzen Sie stattdessen die Wiederverwendung von HTTP/S-Verbindungen, um die Anzahl von Verbindungen und zugeordneten SNAT-Ports zu reduzieren. Die Anwendungsskalierung und die Leistung werden verbessert, weil Handshakes, Mehraufwand und Kosten für kryptografische Vorgänge reduziert werden, wenn TLS verwendet wird.
+- Per DNS können viele einzelne Datenflüsse mit großen Datenmengen genutzt werden, wenn der Client das Ergebnis der DNS-Auflösung nicht zwischenspeichert. Verwenden Sie die Zwischenspeicherung.
+- Bei UDP-Datenflüssen (z. B. DNS-Suchen) werden für die Dauer des Leerlauftimeouts SNAT-Ports zugeordnet. Je länger der Leerlauftimeout dauert, desto höher ist der Druck auf die SNAT-Ports. Verwenden Sie ein kurzes Leerlauftimeout (z. B. vier Minuten).
+- Nutzen Sie Verbindungspools, um Ihre Verbindungsdatenmenge zu steuern.
+- Vermeiden Sie den Abbruch eines TCP-Datenflusses im Hintergrund, und verlassen Sie sich nicht darauf, dass dies über TCP-Timer bereinigt wird. Wenn Sie die explizite Verbindungstrennung durch TCP nicht zulassen, bleibt der Zuordnungszustand bei Zwischensystemen und -endpunkten erhalten, und SNAT-Ports stehen nicht für andere Verbindungen zur Verfügung. Aus diesem Grund kann es zu einer Auslösung von Anwendungsausfällen und zu einer SNAT-Überlastung kommen. 
+- Ändern Sie Timerwerte für die TCP-Verbindungstrennung auf der Betriebssystemebene nur, wenn Sie mit den Auswirkungen vertraut sind, die sich dadurch ergeben. Der TCP-Stapel wird zwar wiederhergestellt, Ihre Anwendungsleistung kann aber beeinträchtigt werden, wenn für die Endpunkte einer Verbindung unterschiedliche Erwartungen bestehen. Der Wunsch nach einer Änderung von Timern ist normalerweise ein Zeichen für ein zugrunde liegendes Entwurfsproblem. Sehen Sie sich die folgenden Empfehlungen an.
+
+Die SNAT-Überlastung wird häufig auch durch andere Antimuster in der zugrunde liegenden Anwendung verstärkt. Informieren Sie sich über diese zusätzlichen Muster und bewährten Methoden, um die Skalierbarkeit und Zuverlässigkeit Ihres Diensts zu verbessern.
+
+- Untersuchen Sie die Auswirkungen einer Verringerung des [TCP-Leerlauftimeouts](nat-gateway-resource.md#timers) (einschließlich des standardmäßigen Leerlauftimeouts von vier Minuten), um SNAT-Ports früher freizugeben.
 - Erwägen Sie die Nutzung von [asynchronen Abrufmustern](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) für zeitintensive Vorgänge, um Verbindungsressourcen für andere Vorgänge freizuhalten.
-- Für langlebige Datenflüsse (z. B. wiederverwendete TCP-Verbindungen) sollten TCP-Keepalives oder Anwendungsschicht-Keepalives verwendet werden, um zu verhindern, dass es für zwischengeschaltete Systeme zu Zeitüberschreitungen kommt.
+- Für langlebige Datenflüsse (z. B. wiederverwendete TCP-Verbindungen) sollten TCP-Keepalives oder Anwendungsschicht-Keepalives verwendet werden, um zu verhindern, dass es für zwischengeschaltete Systeme zu Zeitüberschreitungen kommt. Die Verlängerung des Leerlauftimeouts ist das letzte Mittel, und unter Umständen wird die Grundursache hierdurch nicht beseitigt. Eine lange Timeoutdauer kann zu einer geringen Ausfallrate führen, wenn der Timeoutzeitraum abgelaufen ist, und mit Verzögerungen und unnötigen Fehlern verbunden sein.
 - Es sollten ordnungsgemäße [Wiederholungsmuster](https://docs.microsoft.com/azure/architecture/patterns/retry) verwendet werden, um bei vorübergehenden Fehlern oder der Wiederherstellung nach Fehlern aggressive Wiederholungsversuche oder Bursts zu vermeiden.
 Die Erstellung einer neuen TCP-Verbindung für jeden HTTP-Vorgang (auch als „atomische Verbindungen“ bezeichnet) ist ein Antimuster.  Mit atomischen Verbindungen wird verhindert, dass für Ihre Anwendung eine gute Skalierung erzielt wird, und es werden Ressourcen verschwendet.  Fassen Sie immer mehrere Vorgänge per Pipeline in derselben Verbindung zusammen.  Ihre Anwendung profitiert von der Transaktionsgeschwindigkeit und den Ressourcenkosten.  Wenn Ihre Anwendung die Verschlüsselung auf der Transportschicht nutzt (z. B. TLS), ist die Verarbeitung neuer Verbindungen mit erheblichen Kosten verbunden.  Informationen zu weiteren bewährten Mustern finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns/).
 
-#### <a name="possible-mitigations"></a>Mögliche Gegenmaßnahmen
+#### <a name="additional-possible-mitigations"></a>Weitere mögliche Minderungsmaßnahmen
 
 _**Lösung:**_ Skalieren Sie die ausgehende Konnektivität wie folgt:
 
@@ -90,14 +99,14 @@ Die folgende Tabelle kann als Ausgangspunkt dafür dienen, welche Tools für den
 
 ### <a name="connectivity-failures"></a>Konnektivitätsfehler
 
-Konnektivitätsprobleme mit [Virtual Network NAT](nat-overview.md) können verschiedene Ursachen haben:
+Konnektivitätsprobleme mit [Virtual Network NAT](nat-overview.md) können unterschiedliche Ursachen haben:
 
 * Vorübergehende oder dauerhafte [SNAT-Auslastung](#snat-exhaustion) des NAT-Gateways
 * Vorübergehende Fehler in der Azure-Infrastruktur 
 * Vorübergehende Fehler im Pfad zwischen Azure und dem öffentlichen Internetziel 
 * Vorübergehende oder dauerhafte Fehler am öffentlichen Internetziel
 
-Verwenden Sie Tools wie die folgenden, um die Konnektivität zu überprüfen. [ICMP-Ping wird nicht unterstützt.](#icmp-ping-is-failing)
+Verwenden Sie Tools wie die folgenden, um die Konnektivität zu überprüfen. [ICMP-Ping wird nicht unterstützt](#icmp-ping-is-failing).
 
 | Betriebssystem | Allgemeiner TCP-Verbindungstest | TCP-Anwendungsschichttest | UDP |
 |---|---|---|---|
@@ -110,7 +119,7 @@ Lesen Sie den Abschnitt [SNAT-Auslastung](#snat-exhaustion) in diesem Artikel.
 
 #### <a name="azure-infrastructure"></a>Azure-Infrastruktur
 
-Die Azure-Infrastruktur wird zwar äußerst gewissenhaft überwacht und betrieben, vorübergehende Fehler können jedoch trotzdem auftreten, da es keine Garantie für verlustfreie Übertragungen gibt.  Verwenden Sie Entwurfsmuster, die SYN-Neuübertragungen für TCP-Anwendungen ermöglichen. Verwenden Sie ausreichen große Verbindungstimeouts, um TCP-SYN-Neuübertragungen zuzulassen und die vorübergehenden Auswirkungen von SYN-Paketverlusten zu verringern.
+Azure überwacht und betreibt seine Infrastruktur mit großer Sorgfalt. Vorübergehende Fehler können auftreten, und es gibt keine Garantie, dass die Übertragungen immer verlustfrei sind.  Verwenden Sie Entwurfsmuster, die SYN-Neuübertragungen für TCP-Anwendungen ermöglichen. Verwenden Sie ausreichen große Verbindungstimeouts, um TCP-SYN-Neuübertragungen zuzulassen und die vorübergehenden Auswirkungen von SYN-Paketverlusten zu verringern.
 
 _**Lösung:**_
 
@@ -118,9 +127,9 @@ _**Lösung:**_
 * Der Konfigurationsparameter in einem TCP-Stapel, der das Verhalten von SYN-Neuübertragungen steuert, wird [RTO](https://tools.ietf.org/html/rfc793) (Retransmission Time-Out, Timeout für Neuübertragungen) genannt. Der RTO-Wert ist anpassbar, aber in der Regel standardmäßig auf mindestens eine Sekunde mit exponentiellem Backoff festgelegt.  Sollte das Verbindungstimeout Ihrer Anwendung zu kurz sein (beispielsweise eine Sekunde), treten unter Umständen sporadische Verbindungstimeouts auf.  Erhöhen Sie das Verbindungstimeout der Anwendung.
 * Erstellen Sie im Falle von längeren unerwarteten Timeouts mit Standardanwendungsverhalten eine Supportanfrage für die weitere Problembehandlung.
 
-Es wird davon abgeraten, das TCP-Verbindungstimeout künstlich zu verkürzen oder den RTO-Parameter zu optimieren.
+Wir raten davon ab, das TCP-Verbindungstimeout künstlich zu verkürzen oder den RTO-Parameter zu optimieren.
 
-#### <a name="public-internet-transit"></a>Öffentliche Internetübertragung
+#### <a name="public-internet-transit"></a>Übertragung über das öffentliche Internet
 
 Die Wahrscheinlichkeit vorübergehender Fehler ist direkt proportional zur Länge des Zielpfads und zur Anzahl von Zwischensystemen. Es ist mit einer Zunahme vorübergehender Fehler über die [Azure-Infrastruktur](#azure-infrastructure) zu rechnen. 
 
@@ -128,7 +137,7 @@ Befolgen Sie die gleichen Anweisungen wie im vorherigen [Abschnitt zur Azure-Inf
 
 #### <a name="internet-endpoint"></a>Internetendpunkt
 
-Die obigen Abschnitte gelten zusätzlich zu den Überlegungen im Zusammenhang mit dem Internetendpunkt, der für Ihre Kommunikation verwendet wird. Weitere Faktoren, die sich auf den Erfolg der Konnektivität auswirken können:
+Es gelten die Informationen in den vorherigen Abschnitten und für den Internetendpunkt, mit dem die Kommunikationsverbindung hergestellt wird. Weitere Faktoren, die sich auf den Erfolg der Konnektivität auswirken können:
 
 * Zielseitige Datenverkehrsverwaltung, einschließlich Folgendem:
 - Zielseitige API-Ratenbegrenzung
@@ -147,9 +156,11 @@ _**Lösung:**_
 
 #### <a name="tcp-resets-received"></a>TCP-Zurücksetzungen empfangen
 
-Sollten bei dem virtuellen Quellcomputer TCP-Zurücksetzungen (TCP RST-Pakete) eingehen, stammen diese unter Umständen vom NAT-Gateway auf der privaten Seite für Flows, die nicht als aktiv erkannt werden.  Dies kann unter anderen darauf zurückzuführen sein, dass für die TCP-Verbindung ein Leerlauftimeout aufgetreten ist.  Das Leerlauftimeout kann auf einen Wert zwischen vier und 120 Minuten festgelegt werden.
+Vom NAT-Gateway werden TCP-Zurücksetzungen auf dem virtuellen Quellcomputer für Datenverkehr generiert, für den nicht der Status „In Bearbeitung“ erkannt wird.
 
-TCP-Zurücksetzungen werden nicht auf der öffentlichen Seite von NAT-Gatewayressourcen generiert. Wenn Sie TCP-Zurücksetzungen aufseiten des Ziels erhalten, stammen diese vom Stapel des virtuellen Quellcomputers und nicht von der NAT-Gatewayressource.
+Dies kann unter anderen darauf zurückzuführen sein, dass für die TCP-Verbindung ein Leerlauftimeout aufgetreten ist.  Das Leerlauftimeout kann auf einen Wert zwischen vier und 120 Minuten festgelegt werden.
+
+TCP-Zurücksetzungen werden nicht auf der öffentlichen Seite von NAT-Gatewayressourcen generiert. TCP-Zurücksetzungen auf der Zielseite werden vom virtuellen Quellcomputer generiert, und nicht von der NAT-Gatewayressource.
 
 _**Lösung:**_
 

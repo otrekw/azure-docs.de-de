@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052067"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520972"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -59,7 +59,7 @@ Für die Personalisierung wird das vertiefende Lernen genutzt, um die beste Akti
 
 Die **Rangfolge**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird _immer_ in Echtzeit aufgerufen, wenn Sie Inhalt anzeigen. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
 
-Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
+Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Die Relevanzbewertung liegt zwischen 0 und 1. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
 
 ## <a name="personalizer-content-requirements"></a>Inhaltsanforderungen für die Personalisierung
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Senden einer Abfrage an die API mit C# – Bing-Suche für ortsansässige Unternehmen'
+title: 'Schnellstart: Senden einer Abfrage an die API in C# mit der Bing-Suche für ortsansässige Unternehmen'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diesen Schnellstart, um Anforderungen an die API für die Bing-Suche nach ortsansässigen Unternehmen zu senden, die zum Leistungsumfang von Cognitive Services gehört.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/29/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74665677"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475595"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit C#
 

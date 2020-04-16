@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142917"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437774"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Was ist Azure Data Box Heavy?
 
@@ -116,7 +116,7 @@ Die aktuellsten Informationen zur regionalen Verfügbarkeit von Data Box Heavy f
 
 Führen Sie die folgenden Schritte aus, um sich für Data Box-Heavy zu registrieren:
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. [Melden Sie sich beim Azure-Portal an.](https://portal.azure.com)
 2. Klicken Sie auf **+ Ressource erstellen**, um eine neue Ressource zu erstellen. Suchen Sie nach **Azure Data Box**. Wählen Sie den Dienst **Azure Data Box** aus.
 3. Klicken Sie auf **Erstellen**.
 4. Wählen Sie das Abonnement aus, das Sie für Data Box Heavy verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Heavy-Ressource bereitstellen möchten. Klicken Sie bei der Option **Data Box Heavy** auf **Registrieren**.

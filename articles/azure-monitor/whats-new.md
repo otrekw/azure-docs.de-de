@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500502"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802603"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
+
+## <a name="march-2020"></a>März 2020
+
+### <a name="general"></a>Allgemein
+- [Azure Monitor – Übersicht](overview.md): Übersichtsvideo für Azure Monitor hinzugefügt.
+- [Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor](platform/customer-managed-keys.md): Allgemeine Aktualisierungen.
+- [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference): Neue Website.
+
+### <a name="alerts"></a>Alerts
+
+- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](platform/alerts-activity-log.md): Zusätzliche Erklärung der Resource Manager-Vorlage hinzugefügt.
+- [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](platform/alerts-metric-overview.md): Mit Informationen zur Behördenunterstützung aktualisiert.
+- [Problembehandlung bei Warnungen und Benachrichtigungen von Azure Monitor](platform/alerts-troubleshoot.md): Neuer Artikel.
+
+### <a name="application-insights"></a>Application Insights
+- [Verwalten von Application Insights-Ressourcen mithilfe von PowerShell](app/powershell.md): ARMClient-Beispiele hinzugefügt.
+- [Exportieren von Telemetriedaten aus Application Insights](app/export-telemetry.md): Tabelle mit Details zur Exportstruktur hinzugefügt.
+- [Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service](app/snapshot-debugger-appservice.md): Resource Manager-Vorlagenbeispiel hinzugefügt.
+- [Verwalten der Nutzung und der Kosten für Application Insights](app/pricing.md): Informationen zur Warnung im Zusammenhang mit der Datenobergrenze hinzugefügt.
+- [Einrichten von Azure Monitor für Ihre Python-Anwendung](app/opencensus-python.md): Standardmetriken hinzugefügt.
+- [Unterstützung für Quellzuordnungen für JavaScript-Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support): Neuer Artikel.
+
+
+### <a name="containers"></a>Container
+- [Häufig gestellte Fragen zu Azure Monitor](faq.md): Azure Monitor für Container aktualisiert.
+- [Konfigurieren der GPU-Überwachung mit Azure Monitor für Container](insights/container-insights-gpu-monitoring.md): Neuer Artikel.
+
+### <a name="insights"></a>Insights
+- [Office 365-Verwaltungslösung in Azure (Vorschau)](insights/solution-office-365.md): Das Veraltungsdatum wurde aktualisiert.
+
+### <a name="logs"></a>Protokolle
+- [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): CPU-Bedingung für die XML- und JSON-Analyse hinzugefügt.
+- [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](platform/delete-workspace.md): Problembehandlung hinzugefügt.
+- [Connector für Azure Monitor-Protokolle für Azure Logic Apps und Flow](platform/logicapp-flow-connector.md): Für neuen Azure Monitor-Connector aktualisiert.
+
+### <a name="metrics"></a>Metriken
+- [Veraltete Datenträgermetriken im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation): Neuer Artikel.
+- [Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor](learn/tutorial-metrics-explorer.md): Video hinzugefügt.
+
+### <a name="platform-logs"></a>Plattformprotokolle
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](platform/activity-log-collect.md): Überarbeitet, um die Erfassung des Aktivitätsprotokolls mit Diagnoseeinstellungen besser zu vermitteln.
+
+### <a name="virtual-machines"></a>Virtuelle Computer
+- [Überwachen von virtuellen Azure-Computern mit Azure Monitor](insights/monitor-vm-azure.md): Neuer Artikel.
+- [Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor](learn/quick-monitor-azure-vm.md): Aktualisiert, um Azure Monitor für VMs hinzuzufügen.
+- [Erstellen von Warnungen aus Azure Monitor für VMs](insights/vminsights-alerts.md): Neuer Artikel.
+- [Aktivieren von Azure Monitor für VMs: Übersicht](insights/vminsights-enable-overview.md): Agent-Downloadlinks aktualisiert.
+
+
+Allgemeine Aktualisierungen im Zusammenhang mit der allgemeinen Verfügbarkeit von Azure Monitor für VMs
+- [Was ist Azure Monitor für VMs?](insights/vminsights-overview.md)
+- [Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)](insights/vminsights-ga-release-faq.md) 
+- [Aktivieren von Azure Monitor für VMs mit Azure Policy](insights/vminsights-enable-at-scale-policy.md) 
+- [Darstellen der Leistung in Diagrammen mit Azure Monitor für VMs](insights/vminsights-performance.md)
+- [Abfragen von Protokollen aus Azure Monitor für VMs](insights/vminsights-log-search.md)
+- [Verwenden des Zuordnungsfeatures in Azure Monitor für VMs zum Analysieren von Anwendungskomponenten](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>Visualisierungen
+- [Visualisieren von Daten aus Azure Monitor](visualizations.md): Aktualisiert, um auf die geplante Einstellung des Ansicht-Designers hinzuweisen.
+
+
+
+
 
 ## <a name="february-2020"></a>Februar 2020
 
@@ -53,7 +117,7 @@ Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung
 - [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Neuer Artikel.
 - [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](platform/manage-cost-storage.md): Verbesserte Beispielabfragen zum besseren Verständnis Ihrer Nutzung.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 - [Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken](platform/metrics-supported-export-diagnostic-settings.md): Ein Abschnitt zum Ändern des Verhaltens für NULL-Werte und Nullwerte wurde hinzugefügt.
 
 
@@ -175,7 +239,7 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 - [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](platform/delete-workspace.md): Diesem Artikel wurde die PowerShell-Methode hinzugefügt.
 - [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md): In diesem Artikel wurde die Erfassungsrate für einen Arbeitsbereich erhöht.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 - [Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken](platform/metrics-supported-export-diagnostic-settings.md): Neuer Artikel.
 
 ### <a name="platform-logs"></a>Plattformprotokolle

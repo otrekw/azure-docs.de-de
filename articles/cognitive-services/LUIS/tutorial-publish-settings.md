@@ -1,22 +1,14 @@
 ---
 title: 'Tutorial: Veröffentlichungseinstellung – LUIS'
-titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial ändern Sie die Veröffentlichungseinstellungen, um bessere Vorhersagen zu erzielen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75890388"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545772"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Tutorial:  Hinzufügen der Standpunktanalyse als Veröffentlichungseinstellung
 
@@ -67,11 +59,11 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Geben Sie in der Adressleiste am Ende der URL die folgende Äußerung ein:
+1. Ersetzen Sie in der Adressleiste am Ende der URL die Angabe _YOUR_QUERY_HERE_ durch Folgendes:
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `OrderPizza` mit der extrahierten Stimmungsanalyse zurückgeben.
+    Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `OrderPizza` mit der extrahierten Stimmungsanalyse zurückgeben.
 
     ```json
     {
@@ -122,9 +114,7 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
     Die Standpunktanalyse ist positiv (Wert: 86 %).
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Verwandte Informationen
 

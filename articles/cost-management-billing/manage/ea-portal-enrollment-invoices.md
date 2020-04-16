@@ -3,16 +3,16 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037256"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743893"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -494,6 +494,12 @@ Die folgenden Dienste werden separat in Rechnung gestellt:
 - Visual Studio Enterprise (jährlich)
 - Visual Studio Professional (monatlich)
 - Visual Studio Professional (jährlich)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Auswirkungen der Änderung des Kanalpartners
+
+Wenn die Änderung des Kanalpartners (Change Of Channel Partner, COCP) in der Mitte des Monats erfolgt, erhält der Kunde eine Rechnung für die Nutzung unter dem zuvor zugeordneten Partner und eine weitere Rechnung für die Nutzung unter dem neuen Partner.
+
+Die Rechnungen werden im Monat nach dem Ende des Abrechnungszeitraums veröffentlicht. Bei einem monatlichen Abrechnungsintervall wird die Septemberrechnung für beide Partner im Oktober veröffentlicht. Im Falle eines vierteljährlichen oder jährlichen Abrechnungszeitraums erhält der Kunde eine Rechnung für den zuvor zugeordneten Partner, die die Nutzung des zugehörigen Zeitraums enthält. Der Rest wird dann für den neuen Partner auf der Grundlage des Abrechnungsintervalls abgerechnet.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace für EA-Kunden
 

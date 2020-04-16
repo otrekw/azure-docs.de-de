@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223967"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754688"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Tutorial: Konfigurieren der Netzwerkeinstellungen des Clusters
 
@@ -76,7 +76,7 @@ Der FXT Edge Filer-Cluster verwendet X.509-Zertifikate für folgende Funktione
 
 Zertifikate können bei Bedarf über die Einstellungsseite **Cluster** > **Certificates** (Cluster > Zertifikate) in den Cluster hochgeladen werden. Ausführliche Informationen finden Sie in der Anleitung zur Clusterkonfiguration auf der Seite [Cluster > Certificates](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) (Cluster > Zertifikate).
 
-Wenn Sie die Verwaltungskommunikation des Clusters verschlüsseln möchten, wählen Sie auf der Einstellungsseite **Cluster** > **General Setup** (Cluster > Allgemeine Einrichtung) aus, welches Zertifikat für die Verwaltung über SSL verwendet werden soll.
+Wenn Sie die Verwaltungskommunikation des Clusters verschlüsseln möchten, wählen Sie auf der Einstellungsseite **Cluster** > **General Setup** (Cluster > Allgemeine Einrichtung) aus, welches Zertifikat für die Verwaltung über TLS verwendet werden soll.
 
 > [!Note] 
 > Clouddienst-Zugriffsschlüssel werden mithilfe der Konfigurationsseite **Cloud Credentials** (Cloudanmeldeinformationen) gespeichert. Ein Beispiel finden Sie weiter oben im Abschnitt [Hinzufügen einer Kernspeichereinheit](fxt-add-storage.md#add-a-core-filer). Ausführliche Informationen finden Sie in der Anleitung zur Clusterkonfiguration im Abschnitt [Cloud Credentials](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) (Cloudanmeldeinformationen). 
