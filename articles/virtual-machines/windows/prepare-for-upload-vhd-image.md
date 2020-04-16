@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906785"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631556"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
-Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. 
+Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 2 TB.
 
 Bei einer VM der Generation 1 können Sie das VHDX-Dateisystem in VHD konvertieren. Sie können auch einen dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Sollte ich eine VM der Generation 1 oder 2 in Hyper-V erstellen?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) und [Azure-Support für VMs der Generation 2 (Vorschauversion)](generation-2.md).
 
@@ -235,7 +235,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
 
 9. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie die folgenden Richtlinien, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. 
     
-    | Zielsetzung                                     | Richtlinie                                                                                                                                                       | value                                                                                    |
+    | Zielsetzung                                     | Richtlinie                                                                                                                                                       | Wert                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP ist aktiviert                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen         | Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen                                  |
     | NLA-Gruppenrichtlinie                         | Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Sicherheit                                                    | Erfordern der Benutzerauthentifizierung für den Remotezugriff mithilfe der NLA |
@@ -267,9 +267,15 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie die folgenden Azure AD-Richtlinien, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. 
+5. Erstellen Sie eine Regel für das Azure-Plattformnetzwerk:
 
-    | Zielsetzung                                 | Richtlinie                                                                                                                                                  | value                                   |
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie die folgenden Azure AD-Richtlinien, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. 
+
+    | Zielsetzung                                 | Richtlinie                                                                                                                                                  | Wert                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Aktivieren der Windows-Firewallprofile | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Schützen aller Netzwerkverbindungen         |
     | Aktivieren von RDP                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Zulassen eingehender Remotedesktopausnahmen |
@@ -418,7 +424,7 @@ Im Idealfall sollten Sie den Computer auf dem Stand der aktuellen *Patchebene* h
 > [!NOTE]
 > Um einen versehentlichen Neustart bei der VM-Bereitstellung zu vermeiden, empfiehlt es sich, darauf zu achten, dass alle Windows Update-Installationen abgeschlossen sind und keine Updates ausstehen. Dies kann beispielsweise so erfolgen, dass alle möglichen Windows-Updates installiert werden und einmalig ein Neustart durchgeführt wird, bevor Sie den Sysprep-Befehl ausführen.
 
-### Ermitteln von Einsatzszenarien für Sysprep <a id="step23"></a>    
+### <a name="determine-when-to-use-sysprep"></a>Ermitteln von Einsatzszenarien für Sysprep <a id="step23"></a>    
 
 Das Tool für die Systemvorbereitung (System Preparation Tool, Sysprep) ist ein Prozess, den Sie ausführen können, um eine Windows-Installation zurückzusetzen. Sysprep ermöglicht praktisch das Zurücksetzen auf Werkseinstellungen, bei dem alle personenbezogenen Daten entfernt und verschiedene Komponenten zurückgesetzt werden. 
 

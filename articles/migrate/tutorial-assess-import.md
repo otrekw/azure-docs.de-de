@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453645"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115056"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Bewerten von Servern anhand von importierten Daten
 
@@ -126,22 +126,8 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **Network In throughput** (Eingehender Netzwerkdurchsatz) | Nein | Vom Server empfangene Daten (in MB pro Sekunde)
 **Network Out throughput** (Ausgehender Netzwerkdurchsatz) | Nein | Vom Server übertragene Daten (in MB pro Sekunde)
 **Firmware type** (Firmwaretyp) | Nein | Serverfirmware. Mögliche Werte: „BIOS“ und „UEFI“.
-**Servertyp** | Nein | Die Werte können „Physical“ (Physisch) oder „Virtual“ (Virtuell) lauten.
-**Hypervisor** | Nein | Hypervisor, auf dem ein Computer ausgeführt wird. <br/> Die Werte können „VMware“, „Hyper-V“, „Xen“, „AWS“, „GCP“ oder „Other“ (Sonstiges) lauten.
-**Hypervisor version number** (Hypervisor-Versionsnummer) | Nein | Hypervisor-Version
-**Virtual machine ID** (ID des virtuellen Computers) | Nein | VM-Bezeichner. Dies ist der Wert vom Typ **InstanceUUid** für einen virtuellen VMware vCenter-Computer oder die **ID des virtuellen Hyper-V-Computers** für Hyper-V.
-**Virtual machine manager ID** (ID für Virtual Machine Manager) | Nein | Dies ist der Wert vom Typ **InstanceUUid** für VMWare vCenter. Für Hyper-V wird dieser Wert nicht benötigt.
 **MAC address** (MAC-Adresse)| Nein | MAC-Adresse des Servers
-**BIOS ID** (BIOS-ID) | Nein | BIOS-ID des Servers
-**Custom server ID** (Benutzerdefinierte Server-ID) | Nein | Lokale eindeutige Server-ID in der lokalen Umgebung. <br/> Nützlich zum Nachverfolgen des importierten Servers anhand der lokalen ID.
-**Application 1 name** (Name von Anwendung 1) | Nein | Name der auf dem Server ausgeführten Workload.<br/>Sie können Details zu weiteren Apps hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-applications). Sie können maximal fünf Anwendungen hinzufügen.
-**Application 1 type** (Typ von Anwendung 1) | Nein | Art der auf dem Server ausgeführten Workload
-**Application 1 version** (Version von Anwendung 1) | Nein | Version der Workload, die auf dem Server ausgeführt wird
-**Application 1 license expiry** (Lizenzablauf von Anwendung 1) | Nein | Lizenzablauf der Workload (sofern zutreffend)
-**Business unit** (Geschäftseinheit) | Nein | Geschäftseinheit, zu der der Server gehört
-**Business owner** (Geschäftsinhaber) | Nein | Besitzer der Geschäftseinheit
-**Business application name** (Name der Geschäftsanwendung) | Nein | Name der Anwendung, zu der die App gehört
-**Location** | Nein | Datencenter, in dem sich der Server befindet
+
 
 ### <a name="add-operating-systems"></a>Hinzufügen von Betriebssystemen
 
@@ -159,19 +145,6 @@ Fügen Sie beispielsweise die folgenden Spalten hinzu, um alle Felder für einen
 - „Disk 2 read throughput“ (Lesedurchsatz für Datenträger 2)
 - „Disk 2 write throughput“ (Schreibdurchsatz für Datenträger 2)
 
-### <a name="add-multiple-applications"></a>Hinzufügen mehrerer Anwendungen
-
-Die Vorlage enthält nur die Felder für eine Anwendung. Sie können ähnliche Spalten für bis zu fünf Apps hinzufügen.  
-
-Fügen Sie beispielsweise die folgenden Spalten hinzu, um alle Felder für eine zweite App anzugeben:
-
-- „Application 2 name“ (Name von Anwendung 2)
-- „Application 2 type“ (Typ von Anwendung 2)
-- „Application 2 version“ (Version von Anwendung 2)
-- „Application 2 license expiry“ (Lizenzablauf von Anwendung 2)
-
-> [!NOTE]
-> App-Informationen sind hilfreich, wenn Sie Ihre lokale Umgebung für die Migration bewerten möchten. Mit der Azure Migrate-Serverbewertung wird derzeit aber keine Bewertung auf App-Ebene durchgeführt, und Apps werden bei der Bewertungserstellung nicht berücksichtigt.
 
 ## <a name="import-the-server-information"></a>Importieren der Serverinformationen
 

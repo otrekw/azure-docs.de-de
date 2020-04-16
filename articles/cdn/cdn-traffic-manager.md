@@ -3,7 +3,7 @@ title: Failover für mehrere Azure CDN-Endpunkte mit Traffic Manager
 description: Erfahren Sie, wie Sie Azure Traffic Manager mit Azure CDN-Endpunkten einrichten.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d4f77a0fb9b8005729a6e9d35f254eb522b690e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083003"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259849"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Einrichten des Failovers für mehrere Azure CDN-Endpunkte mit Azure Traffic Manager
 
@@ -33,7 +33,7 @@ Dieser Artikel enthält Anweisungen und ein Beispiel zum Einrichten des Failover
 ## <a name="set-up-azure-cdn"></a>Einrichten von Azure CDN 
 Erstellen Sie mehrere Azure CDN-Profile und Endpunkte mit verschiedenen Anbietern.
 
-1. Erstellen Sie anhand der unter **Erstellen eines neuen CDN-Profils** beschriebenen Schritte das Profil **Azure CDN Standard von Verizon** und das Profil [Azure CDN Standard von Akamai](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
+1. Erstellen Sie anhand der unter [Erstellen eines neuen CDN-Profils](cdn-create-new-endpoint.md#create-a-new-cdn-profile) beschriebenen Schritte das Profil **Azure CDN Standard von Verizon** und das Profil **Azure CDN Standard von Akamai**.
  
    ![Mehrere CDN-Profile](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 
@@ -82,7 +82,7 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile eingerichtet haben, führen Si
     Azure CDN verwendet die Unterdomäne *cdnverify*, um die DNS-Zuordnung zu überprüfen und den Registrierungsvorgang abzuschließen. Weitere Informationen finden Sie unter [Erstellen eines CNAME-DNS-Eintrags](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Durch diesen Schritt kann Azure CDN die benutzerdefinierte Domäne erkennen und in der Folge auf ihre Anforderungen antworten.
     
     > [!NOTE]
-    > Um SSL für ein **Azure CDN aus Akamai**-Profil zu aktivieren, müssen Sie die benutzerdefinierte Domäne direkt für Ihren Endpunkt benennen. „cdnverify“ zum Aktivieren von SSL wird noch nicht unterstützt. 
+    > Um TLS für ein **Azure CDN von Akamai**-Profil zu aktivieren, müssen Sie in der benutzerdefinierten Domäne einen direkten CNAME-Eintrag für Ihren Endpunkt erstellen. „cdnverify“ zum Aktivieren von TLS wird noch nicht unterstützt. 
     >
 
 3.  Wechseln Sie wieder zu der Website des Domänenanbieters für Ihre benutzerdefinierte Domäne, und aktualisieren Sie die erste erstellte DNS-Zuordnung so, dass die benutzerdefinierte Domäne dem zweiten CDN-Endpunkt zugeordnet ist.

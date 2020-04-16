@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73476758"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254885"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit SignalR Service
 
@@ -95,7 +95,7 @@ In diesem Abschnitt fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https:
     Auf dieses Geheimnis wird mit der Konfigurations-API zugegriffen. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Siehe [Konfiguration nach Umgebung](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
-4. Öffnen Sie *Startup.cs*, und aktualisieren Sie die Methode `ConfigureServices` für die Verwendung von Azure SignalR Service, indem Sie die Methode `services.AddSignalR().AddAzureSignalR()` aufrufen (nur für ASP.NET Core 2):
+4. Öffnen Sie *Startup.cs*, und aktualisieren Sie die `ConfigureServices`-Methode auf die Nutzung des Azure SignalR Service, indem Sie die `services.AddSignalR().AddAzureSignalR()`-Methode aufrufen:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +104,6 @@ In diesem Abschnitt fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https:
         services.AddSignalR().AddAzureSignalR();
     }
     ```
-    Für ASP.NET Core 3+ ist keine Änderung der Methode `ConfigureServices` erforderlich.
 
     Indem kein Parameter an `AddAzureSignalR()` übergeben wird, wird in diesem Code der Standardkonfigurationsschlüssel für die Verbindungszeichenfolge der SignalR Service-Ressource verwendet. Der Standardkonfigurationsschlüssel lautet *Azure:SignalR:ConnectionString*.
 

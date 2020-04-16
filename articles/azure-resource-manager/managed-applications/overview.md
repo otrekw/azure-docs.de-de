@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473029"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391580"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -84,4 +84,4 @@ Sie können eine [Azure-Richtlinie](../../governance/policy/overview.md) auf Ihr
 In diesem Artikel haben Sie Informationen zu den Vorteilen erhalten, die sich bei der Verwendung von verwalteten Anwendungen ergeben. Fahren Sie mit dem nächsten Artikel fort, um eine Definition für die verwaltete Anwendung zu erstellen.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung](publish-managed-app-definition-quickstart.md)
+> [Schnellstart: Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung](publish-service-catalog-app.md)

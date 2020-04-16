@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722406"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811771"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Wenn Sie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` festlegen, muss 
 > [!WARNING]
 > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für einen AKS-Cluster in Ihrem Arbeitsbereich. Verwenden Sie beispielsweise beim Verknüpfen eines AKS-Clusters mit einem Arbeitsbereich nicht zwei unterschiedliche Namen. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 >
-> Falls Sie einen AKS-Cluster erneut verknüpfen möchten (etwa zum Ändern der SSL-Einstellung oder einer anderen Clusterkonfigurationseinstellung), müssen Sie zuerst die vorhandene Verknüpfung mithilfe von [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) entfernen.
+> Falls Sie einen AKS-Cluster erneut verknüpfen möchten (etwa zum Ändern der TLS-Einstellung oder einer anderen Clusterkonfigurationseinstellung), müssen Sie zuerst die vorhandene Verknüpfung mithilfe von [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) entfernen.
 
 Weitere Informationen zum Erstellen eines AKS-Clusters mithilfe der Azure-CLI oder des Portals finden Sie in den folgenden Artikeln:
 
@@ -233,10 +233,28 @@ Informationen zur Verwendung von VS Code finden Sie im Artikel zum [Bereitstelle
 > Für die Bereitstellung über VS Code muss der AKS-Cluster im Vorfeld erstellt oder an Ihren Arbeitsbereich angefügt werden.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Bereitstellen von Modellen in AKS mithilfe eines kontrollierten Rollouts (Vorschau)
-Sie können Modellversionen mithilfe von Endpunkten kontrolliert analysieren und höher stufen. Stellen Sie bis zu 6 Versionen hinter einem einzigen Endpunkt bereit, und konfigurieren Sie den Prozentsatz der Bewertung des Datenverkehrs für jede bereitgestellte Version. Sie können App-Erkenntnisse aktivieren, um Metriken zum Betrieb von Endpunkten und bereitgestellten Versionen anzuzeigen.
+
+Sie können Modellversionen mithilfe von Endpunkten kontrolliert analysieren und höher stufen. Sie können bis zu sechs Versionen hinter einem einzelnen Endpunkt bereitstellen. Endpunkte bieten die folgenden Funktionen:
+
+* Konfigurieren Sie den __Prozentsatz der Bewertung des Datenverkehrs, der an jeden Endpunkt gesendet wird__. Leiten Sie z. B. 20 % des Datenverkehrs zum Endpunkt „Test“ und 80 % zum Endpunkt „Produktion“ weiter.
+
+    > [!NOTE]
+    > Wenn Sie nicht 100 % des Datenverkehrs erfassen, wird jeder verbleibende Prozentsatz an die __Standardversion__ des Endpunkts weitergeleitet. Wenn Sie z. B. die Endpunktversion „Test“ so konfigurieren, dass 10 % des Datenverkehrs erfasst werden, und Sie die „Produktion“ so konfigurieren, dass 30 %, erfasst werden, dann werden die restlichen 60 % an die Standardversion des Endpunkts gesendet.
+    >
+    > Die erste erstellte Endpunktversion wird automatisch als Standard konfiguriert. Sie können dies ändern, indem Sie beim Erstellen oder Aktualisieren einer Endpunktversion `is_default=True` festlegen.
+     
+* Markieren Sie eine Endpunktversion entweder als __Kontrolle__ oder als __Behandlung__. Die aktuelle Produktionsendpunktversion könnte z. B. die Kontrolle darstellen, während potenzielle neue Modelle als Behandlungsversionen bereitgestellt werden. Nach der Bewertung der Leistung der Behandlungsversionen, wenn eine die aktuelle Kontrollversion übertrifft, könnte sie zur neuen Produktion/Kontrolle höher gestuft werden.
+
+    > [!NOTE]
+    > Sie können nur über __eine__ Kontrollversion verfügen. Sie können über mehrere Behandlungen verfügen.
+
+Sie können App-Erkenntnisse aktivieren, um Metriken zum Betrieb von Endpunkten und bereitgestellten Versionen anzuzeigen.
 
 ### <a name="create-an-endpoint"></a>Erstellen eines Endpunkts
-Wenn Sie bereit sind, Ihre Modelle bereitzustellen, erstellen Sie einen Bewertungsendpunkt, und stellen Sie Ihre erste Version bereit. Der folgende Schritt zeigt, wie Sie den Endpunkt mithilfe des SDK erstellen und bereitstellen. Die erste Bereitstellung wird als Standardversion definiert, was bedeutet, dass ein nicht spezifiziertes Perzentil des Datenverkehrs in allen Versionen in die Standardversion eingehen.  
+Wenn Sie bereit sind, Ihre Modelle bereitzustellen, erstellen Sie einen Bewertungsendpunkt, und stellen Sie Ihre erste Version bereit. Im folgenden Beispiel wird gezeigt, wie der Endpunkt mithilfe des SDK bereitgestellt und erstellt wird. Die erste Bereitstellung wird als Standardversion definiert, was bedeutet, dass ein nicht spezifiziertes Perzentil des Datenverkehrs in allen Versionen in die Standardversion eingehen.  
+
+> [!TIP]
+> Im folgenden Beispiel legt die Konfiguration die anfängliche Endpunktversion so fest, dass 20 % des Datenverkehrs verarbeitet werden. Da dies der erste Endpunkt ist, ist dies auch die Standardversion. Und da wir für die anderen 80 % des Datenverkehrs über keine anderen Versionen verfügen, wird er ebenfalls an die Standardversion weitergeleitet. Bis andere Versionen, die einen bestimmten Prozentsatz des Datenverkehrs übernehmen, bereitgestellt werden, erhält diese Version effektiv 100 % des Datenverkehrs.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualisieren und Hinzufügen von Versionen zu einem Endpunkt
 
 Fügen Sie Ihrem Endpunkt eine weitere Version hinzu, und konfigurieren Sie das bewertende Perzentil des Datenverkehrs, das in die Version eingeht. Es gibt zwei Arten von Versionen, eine Kontroll- und eine Behandlungsversion. Es kann mehrere Behandlungsversionen geben, um den Vergleich mit einer einzelnen Kontrollversion zu erleichtern.
+
+> [!TIP]
+> Die zweite Version, die durch den folgenden Codeausschnitt erstellt wurde, akzeptiert 10 % des Datenverkehrs. Die erste Version ist für 20 % konfiguriert, sodass nur 30 % des Datenverkehrs für bestimmte Versionen konfiguriert sind. Die verbleibenden 70 % werden an die erste Endpunktversion gesendet, da diese auch die Standardversion ist.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Aktualisieren Sie vorhandene Versionen, oder löschen Sie sie in einem Endpunkt. Sie können den Standardtyp, den Kontrolltyp und das Perzentil des Datenverkehrs der Version ändern.
+Aktualisieren Sie vorhandene Versionen, oder löschen Sie sie in einem Endpunkt. Sie können den Standardtyp, den Kontrolltyp und das Perzentil des Datenverkehrs der Version ändern. Im folgenden Beispiel erhöht die zweite Version ihren Datenverkehr auf 40 % und ist nun die Standardversion.
+
+> [!TIP]
+> Nach dem folgenden Codeausschnitt ist nun die zweite Version die Standardversion. Sie ist jetzt für 40 % konfiguriert, während die ursprüngliche Version noch für 20 % konfiguriert ist. Dies bedeutet, dass 40 % des Datenverkehrs nicht auf Versionskonfigurationen entfallen. Der verbleibende Datenverkehr wird auf die zweite Version umgeleitet, da sie jetzt als Standardversion gilt. Sie empfängt effektiv 80 % des Datenverkehrs.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 
@@ -348,7 +376,7 @@ print(token)
 * [Schützen von Experimenten und Rückschlüssen in einem virtuellen Netzwerk](how-to-enable-virtual-network.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
-* [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)
+* [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)

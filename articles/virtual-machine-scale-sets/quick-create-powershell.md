@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell'
 description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie mit Azure PowerShell schnell eine VM-Skalierungsgruppe erstellen können.
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270892"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008606"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "76270892"
 
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit Azure PowerShell bereit.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

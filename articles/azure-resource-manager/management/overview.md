@@ -92,7 +92,7 @@ Der Azure Resource Manager-Dienst ist auf Resilienz und fortlaufende Verfügbark
 
 * Sie sind regionsübergreifend verteilt. Einige Dienste sind regional.
 
-* Sie sind an Standorten mit mehreren Verfügbarkeitszonen über Verfügbarkeitszonen (sowie Regionen) verteilt.
+* Sie sind an Standorten mit mehreren Verfügbarkeitszonen über diese Verfügbarkeitszonen (sowie deren Regionen) verteilt.
 
 * Sie sind nicht von einem einzelnen logischen Rechenzentrum abhängig.
 

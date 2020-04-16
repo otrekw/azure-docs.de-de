@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371487"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879444"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung
 
@@ -32,7 +32,7 @@ Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um
 
 1. Wechseln Sie zu „Start“, und wählen Sie dann „Einstellungen“ > „Datenschutz“ > „Hintergrund-Apps“ aus.
 2. Stellen Sie sicher, dass unter „Hintergrund-Apps“ die Option **Apps die Ausführung im Hintergrund gestatten** aktiviert ist.
-3. Legen Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellungen für Azure VPN Client auf **Ein** fest.
+3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ (**Ein**).
 
   ![Berechtigung (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -230,6 +230,16 @@ Sie können die heruntergeladene XML-Profildatei ändern und die Tags **\<exclud
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Kann ich das Profil über eine Eingabeaufforderung importieren?
+
+Sie können das Profil über eine Eingabeaufforderung importieren, indem Sie die heruntergeladene Datei **azurevpnconfig.xml** in den Ordner **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** legen und den folgenden Befehl ausführen:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+Um den Import zu erzwingen, verwenden Sie auch den Schalter **-f**
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

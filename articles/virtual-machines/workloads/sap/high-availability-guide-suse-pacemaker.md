@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471981"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811577"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -365,6 +365,9 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    </code></pre>
 
 1. **[A]** Konfigurieren von „cloud-netconfig-azure“ den HA-Cluster
+
+   >[!NOTE]
+   > Überprüfen Sie die installierte Version des Pakets **cloud-netconfig-azure**, indem Sie **zypper info cloud-netconfig-azure** ausführen. Wenn die Version in Ihrer Umgebung 1.3 oder höher ist, ist es nicht mehr notwendig, die Verwaltung von Netzwerkschnittstellen durch das Cloud-Netzwerk-Plug-In zu unterdrücken. Wenn die Version älter als 1.3 ist, empfehlen wir, das Paket **cloud-netconfig-azure** auf die neueste verfügbare Version zu aktualisieren.  
 
    Ändern Sie die Konfigurationsdatei für die Netzwerkschnittstelle wie unten dargestellt, um das Cloud-Netzwerk-Plug-In daran zu hindern, die virtuelle IP-Adresse zu entfernen (Pacemaker muss die VIP-Zuweisung steuern). Weitere Informationen finden Sie unter [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 

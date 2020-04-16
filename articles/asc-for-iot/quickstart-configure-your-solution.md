@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Konfigurieren Ihrer Microsoft Azure Security Center für IoT-Lösung'
+title: 'Schnellstart: Konfigurieren Ihrer Lösung'
 description: In diesem Schnellstart erfahren Sie, wie Sie Ihre End-to-End-IoT-Lösung mithilfe von Azure Security Center für IoT konfigurieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73904153"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310853"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Schnellstart: Konfigurieren Ihrer IoT-Lösung
 
-In diesem Artikel wird die Erstkonfiguration Ihrer IoT-Sicherheitslösung mithilfe von Azure Security Center für IoT erläutert. 
+In diesem Artikel wird die Erstkonfiguration Ihrer IoT-Sicherheitslösung mithilfe von Azure Security Center für IoT erläutert.
 
 ## <a name="azure-security-center-for-iot"></a>Azure Security Center für IoT
 
@@ -34,20 +34,20 @@ Mit Azure Security Center für IoT können Sie Ihre gesamte IoT-Lösung über ei
 
 Nach der Aktivierung in Ihrer IoT Hub-Instanz erkennt Azure Security Center für IoT automatisch andere Azure-Dienste, die ebenfalls mit Ihrer IoT Hub-Instanz verbunden sind und mit Ihrer IoT-Lösung zusammenhängen.
 
-Zusätzlich zur automatischen Beziehungserkennung können Sie auch weitere Azure-Ressourcengruppen als Teil Ihrer IoT-Lösung kennzeichnen. 
+Zusätzlich zur automatischen Beziehungserkennung können Sie auch weitere Azure-Ressourcengruppen als Teil Ihrer IoT-Lösung kennzeichnen.
 
-Dadurch können Sie vollständige Abonnements, Ressourcengruppen oder auch einzelne Ressourcen hinzufügen. 
+Dadurch können Sie vollständige Abonnements, Ressourcengruppen oder auch einzelne Ressourcen hinzufügen.
 
 Nachdem Sie alle Ressourcenbeziehungen definiert haben, stellt Azure Security Center für IoT mithilfe von Azure Security Center Sicherheitsempfehlungen und Warnungen für diese Ressourcen bereit.
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>Hinzufügen von Azure-Ressourcen zu Ihrer IoT-Lösung
 
-Gehen Sie wie folgt vor, um Ihrer IoT-Lösung neue Ressourcen hinzuzufügen: 
+Gehen Sie wie folgt vor, um Ihrer IoT-Lösung neue Ressourcen hinzuzufügen:
 
-1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**. 
-1. Öffnen Sie **Ressourcen** (im linken Menü unter **Sicherheit**). 
+1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**.
+1. Öffnen Sie **Ressourcen** (im linken Menü unter **Sicherheit**).
 1. Wählen Sie **Bearbeiten** und anschließend die Ressourcengruppen aus, die zu Ihrer IoT-Lösung gehören.
-1. Klicken Sie auf **Hinzufügen**. 
+1. Klicken Sie auf **Hinzufügen**.
 
 Glückwunsch! Sie haben Ihrer IoT-Lösung eine neue Ressourcengruppe hinzugefügt.
 

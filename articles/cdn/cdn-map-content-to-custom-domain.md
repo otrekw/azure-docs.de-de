@@ -3,7 +3,7 @@ title: Tutorial – Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-
 description: In diesem Tutorial ordnen Sie den Inhalt eines Azure CDN-Endpunkts einer benutzerdefinierten Domäne zu.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/11/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222407"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260580"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -50,7 +50,7 @@ Bevor Sie eine benutzerdefinierte Domäne mit einem Azure CDN-Endpunkt verwenden
 Eine benutzerdefinierte Domäne und die dazugehörige Unterdomäne können jeweils nur einem Endpunkt zugeordnet werden. Sie können aber unterschiedliche Unterdomänen derselben benutzerdefinierten Domäne für unterschiedliche Azure-Dienstendpunkte verwenden, indem Sie mehrere CNAME-Einträge nutzen. Außerdem können Sie eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen demselben CDN-Endpunkt zuordnen.
 
 > [!NOTE]
-> Für benutzerdefinierte Domänen kann jeder Aliaseintragstyp verwendet werden, wenn Sie Azure DNS als Domänenanbieter nutzen. In dieser exemplarischen Vorgehensweise wird der Eintragstyp CNAME verwendet. Wenn Sie die Eintragstypen A oder AAAA verwenden, führen Sie die gleichen unten gezeigten Schritte aus, und ersetzen Sie CNAME durch den Eintragstyp Ihrer Wahl. Wenn Sie einen Aliaseintrag verwenden, um eine Stammdomäne als benutzerdefinierte Domäne zu verwenden, und SSL aktivieren möchten, müssen Sie die manuelle Überprüfung verwenden, die [diesem Artikel](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) beschrieben wird. Weitere Informationen finden Sie unter [Verweisen an der Zonenspitze auf Azure CDN-Endpunkte](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
+> Für benutzerdefinierte Domänen kann jeder Aliaseintragstyp verwendet werden, wenn Sie Azure DNS als Domänenanbieter nutzen. In dieser exemplarischen Vorgehensweise wird der Eintragstyp CNAME verwendet. Wenn Sie die Eintragstypen A oder AAAA verwenden, führen Sie die gleichen unten gezeigten Schritte aus, und ersetzen Sie CNAME durch den Eintragstyp Ihrer Wahl. Wenn Sie einen Aliaseintrag verwenden, um eine Stammdomäne als benutzerdefinierte Domäne zu verwenden, und TLS aktivieren möchten, müssen Sie die manuelle Überprüfung verwenden, die [diesem Artikel](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) beschrieben wird. Weitere Informationen finden Sie unter [Verweisen an der Zonenspitze auf Azure CDN-Endpunkte](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Zuordnen der temporären Unterdomäne „cdnverify“
 

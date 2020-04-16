@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365422"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252556"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -77,7 +77,7 @@ Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die 
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Erstellen einer Rollenzuweisung in Windows Virtual Desktop (Vorschauversion)
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Erstellen einer Rollenzuweisung in Windows Virtual Desktop
 
 Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit sich der Dienstprinzipal bei Windows Virtual Desktop anmelden kann. Achten Sie darauf, dass Sie sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
 

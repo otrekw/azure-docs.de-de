@@ -3,7 +3,7 @@ title: Tutorial – Konfigurieren von HTTPS in einer benutzerdefinierten Azure C
 description: In diesem Tutorial wird beschrieben, wie Sie HTTPS in Ihrer benutzerdefinierten Azure CDN-Endpunktdomäne aktivieren und deaktivieren.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/1/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222427"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254001"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -58,8 +58,8 @@ Zusätzlich müssen Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Azure CDN-Dom
 
 ---
 
-## <a name="ssl-certificates"></a>SSL-Zertifikate
-Sie müssen ein SSL-Zertifikat verwenden, um das HTTPS-Protokoll für die sichere Übermittlung von Inhalten in einer benutzerdefinierten Azure CDN-Domäne zu aktivieren. Sie können ein von Azure CDN verwaltetes Zertifikat oder ein eigenes Zertifikat verwenden.
+## <a name="tlsssl-certificates"></a>TLS-/SSL-Zertifikate
+Sie müssen ein TLS-/SSL-Zertifikat verwenden, um das HTTPS-Protokoll für die sichere Übermittlung von Inhalten in einer benutzerdefinierten Azure CDN-Domäne zu aktivieren. Sie können ein von Azure CDN verwaltetes Zertifikat oder ein eigenes Zertifikat verwenden.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Option 1 (Standard): Aktivieren von HTTPS mit einem CDN-verwalteten Zertifikat](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 > Diese Option steht nur in den Profilen **Azure CDN von Microsoft** und **Azure CDN von Verizon** zur Verfügung. 
 >
  
-Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure CDN nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle (certificate authority, CA) verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure CDN finden Sie [hier](cdn-troubleshoot-allowed-ca.md). Für **Azure CDN von Verizon** wird jede gültige Zertifizierungsstelle akzeptiert. 
+Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure CDN nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS-/SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure CDN finden Sie [hier](cdn-troubleshoot-allowed-ca.md). Für **Azure CDN von Verizon** wird jede gültige Zertifizierungsstelle akzeptiert. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
@@ -308,7 +308,7 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
 4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
     
-    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten SSL-Zertifikate SHA-256.
+    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten TLS-/SSL-Zertifikate SHA-256.
 
 5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
 
@@ -320,7 +320,7 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
 7. *Wie werden eigene Zertifikate verlängert?*
 
-    Um sicherzustellen, dass ein neueres Zertifikat in der PoP-Infrastruktur bereitgestellt wird, laden Sie einfach Ihr neues Zertifikat in Azure Key Vault hoch, und wählen Sie anschließend in Azure CDN in Ihren SSL-Einstellungen die aktuelle Zertifikatversion aus. Klicken Sie anschließend auf „Speichern“. Azure CDN wird dann Ihr neues aktualisiertes Zertifikat verteilen. 
+    Um sicherzustellen, dass ein neueres Zertifikat in der PoP-Infrastruktur bereitgestellt wird, laden Sie einfach Ihr neues Zertifikat in Azure Key Vault hoch, und wählen Sie anschließend in Azure CDN in Ihren TLS-/SSL-Einstellungen die aktuelle Zertifikatversion aus. Klicken Sie anschließend auf „Speichern“. Azure CDN wird dann Ihr neues aktualisiertes Zertifikat verteilen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

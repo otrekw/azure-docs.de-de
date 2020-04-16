@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066373"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314285"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -208,7 +208,7 @@ In den folgenden beiden Unterabschnitten ([Öffentliche VM](#public-vm) und [Pri
 | Grundlagen | Resource group | **myResourceGroup** |
 | | Name des virtuellen Computers | *myVmPublic* |
 | | Öffentliche Eingangsports | **Ausgewählte Ports zulassen** |
-| | Eingangsports auswählen | **HTTP** und **RDP** |
+| | Eingangsports auswählen | **RDP** |
 | Netzwerk | Virtuelles Netzwerk | **myVirtualNetwork** |
 | | Subnet | **Öffentlich (10.0.0.0/24)** |
 | | Öffentliche IP-Adresse | Standardwert |
@@ -221,7 +221,7 @@ In den folgenden beiden Unterabschnitten ([Öffentliche VM](#public-vm) und [Pri
 | Grundlagen | Resource group | **myResourceGroup** |
 | | Name des virtuellen Computers | *myVmPrivate* |
 | | Öffentliche Eingangsports | **Ausgewählte Ports zulassen** |
-| | Eingangsports auswählen | **HTTP** und **RDP** |
+| | Eingangsports auswählen | **RDP** |
 | Netzwerk | Virtuelles Netzwerk | **myVirtualNetwork** |
 | | Subnet | **Privat (10.0.1.0/24)** |
 | | Öffentliche IP-Adresse | Standardwert |

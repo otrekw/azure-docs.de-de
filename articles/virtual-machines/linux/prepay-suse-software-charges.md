@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973130"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757228"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
 
@@ -38,6 +38,7 @@ Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reserv
 4. Wählen Sie einen Bereich aus. Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen.
     - Einzelabonnement: Der Rabatt für den Plan wird auf die übereinstimmende Nutzung im Abonnement angewandt.
     - Freigegeben: Der Rabatt für den Plan wird auf übereinstimmende Instanzen in jedem Abonnement in Ihrem Abrechnungskontext angewandt. Für Enterprise-Kunden entspricht der Abrechnungskontext der Registrierung und umfasst alle Abonnements in der Registrierung. Bei Kunden mit einem Einzelplan und nutzungsbasierter Bezahlung entspricht der Abrechnungskontext allen Einzelplanabonnements mit nutzungsbasierter Bezahlung, die vom Kontoadministrator erstellt wurden.
+    - Einzelne Ressourcengruppe: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
 5. Wählen Sie ein Produkt aus, um die VM-Größe und den Imagetyp auszuwählen. Der Rabatt gilt nur für die ausgewählte VM-Größe.
 6. Wählen Sie als Laufzeit ein Jahr oder drei Jahre aus.
 7. Wählen Sie eine Menge aus, die Anzahl der im Voraus bezahlten VM-Instanzen, auf die der Abrechnungsrabatt angewandt werden kann.

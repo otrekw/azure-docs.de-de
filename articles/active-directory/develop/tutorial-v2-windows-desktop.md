@@ -1,26 +1,22 @@
 ---
-title: Erste Schritte mit der Microsoft Identity Platform – Windows Desktop | Microsoft-Dokumentation
+title: Erste Schritte mit der Microsoft Identity Platform – Windows Desktop
 description: Es wird beschrieben, wie eine Windows Desktop .NET-Anwendung (XAML) ein Zugriffstoken abrufen und eine API aufrufen kann, die per Microsoft Identity Platform geschützt ist.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129929"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990938"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -89,7 +85,7 @@ Gehen Sie zum Erstellen der Anwendung wie folgt vor:
 
 Sie können Ihre Anwendung auf zwei Arten registrieren.
 
-### <a name="option-1-express-mode"></a>Option 1: Expressmodus
+### <a name="option-1-express-mode"></a>Option 1: Expressmodi
 
 Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 1. Navigieren Sie zur [Anwendungsregistrierung im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
@@ -379,8 +375,3 @@ Zusätzlich zu dem Zugriffstoken, das nach der Anmeldung des Benutzers zum Aufru
 <!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
-
-Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
-
-> [!div class="nextstepaction"]
-> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe über das Azure-Portal'
 description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie im Azure-Portal schnell eine VM-Skalierungsgruppe erstellen können.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm
 ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
-ms.author: cynthn
-ms.openlocfilehash: 41bfe86f4635a54c56a8313fabefa1f381f4a4ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062754"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010476"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe über das Azure-Portal
+# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe über das Azure-Portal.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
@@ -36,7 +36,7 @@ Erstellen Sie zunächst eine Load Balancer Standard-Instanz über das Portal. 
 1. Geben Sie im Suchfeld den Suchbegriff **Load Balancer** ein. Wählen Sie unter **Marketplace** in den Suchergebnissen **Load Balancer** aus.
 1. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
-    | Einstellung                 | value   |
+    | Einstellung                 | Wert   |
     | ---| ---|
     | Subscription  | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group | Wählen Sie **Neu erstellen** aus, und geben Sie *myVMSSResourceGroup* in das Textfeld ein.|

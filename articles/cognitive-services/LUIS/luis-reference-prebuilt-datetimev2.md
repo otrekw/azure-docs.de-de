@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270738"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272609"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
 
@@ -145,7 +145,7 @@ Jedes Element des `values`-Arrays kann folgende Felder enthalten:
 
 |Eigenschaftenname|Eigenschaftenbeschreibung|
 |--|--|
-|timex|Uhrzeiten, Datumsangaben oder Datumsbereiche, die im TIMEX-Format angegeben sind, das dem [ISO-Standard 8601](https://en.wikipedia.org/wiki/ISO_8601) folgt, und die TIMEX3-Attribute für TimeML-Anmerkungen. Diese Anmerkungen werden in den [TIMEX-Richtlinien](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf) beschrieben.|
+|timex|Uhrzeiten, Datumsangaben oder Datumsbereiche, die im TIMEX-Format angegeben sind, das dem [ISO-Standard 8601](https://en.wikipedia.org/wiki/ISO_8601) folgt, und die TIMEX3-Attribute für TimeML-Anmerkungen.|
 |mod|Ausdruck zur Beschreibung der Verwendung des Werts, z. B. `before`, `after`.|
 |type|Der Untertyp; kann eines der folgenden Elemente sein: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
 |value|**Optional.** Ein datetime-Objekt im Format JJJJ-MM-TT (date), hh:mm:ss (time), JJJJ-MM-TT hh:mm:ss (datetime). Wenn `type``duration` ist, entspricht der Wert der Anzahl der Sekunden (duration). <br/> Dies wird nur verwendet, wenn `type``datetime`, `date`, `time` oder duration ist.|
@@ -274,7 +274,7 @@ Die folgende Äußerung und ihre unvollständige JSON-Antwort sind unten dargest
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>Beispiel zur Auflösung des Datumsbereichs für ein numerisches Datum
 
-Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `start` und `end` geben den Anfang und das Ende des Bereichs an. Für die Äußerung `May 2nd to May 5th` stellt LUIS **daterange**-Werte für das aktuelle und das nächste Jahr bereit. Der `timex`-Wert im `XXXX`-Feld gibt die Mehrdeutigkeit des Jahrs an. `P3D` gibt an, dass der Zeitraum drei Tage beträgt.
+Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `start` und `end` geben den Anfang und das Ende des Bereichs an. Für die Äußerung `May 2nd to May 5th` stellt LUIS **daterange**-Werte für das aktuelle und das nächste Jahr bereit. Der `XXXX`-Wert im `timex`-Feld gibt die Mehrdeutigkeit des Jahrs an. `P3D` gibt an, dass der Zeitraum drei Tage beträgt.
 
 Die folgende Äußerung und ihre unvollständige JSON-Antwort sind unten dargestellt.
 
