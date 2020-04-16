@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278534"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981340"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- und Dynamics 365-Beratungsdienstangebot
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
 
 In diesem Artikel wird erläutert, wie Sie ein Beratungsdienstangebot im Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> oder in <a href="https://appsource.microsoft.com">AppSource</a> veröffentlichen. Lösungen, die auf Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a> und <a href="https://powerapps.microsoft.com">Power Apps</a> basieren, können in AppSource aufgeführt werden. Andere Angebote, die auf anderen Microsoft <a href="https://azure.microsoft.com/services">Azure-Diensten</a> basieren, können im Azure Marketplace aufgeführt werden.
 

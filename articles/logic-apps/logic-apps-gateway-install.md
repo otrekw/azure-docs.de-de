@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237166"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673818"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -22,7 +22,7 @@ Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../log
 * [Lokales Microsoft Power Apps-Datengateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
-Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
+Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? Um Aufgaben zur Installation und Verwaltung von Gateways zu automatisieren, besuchen Sie den PowerShell-Katalog mit den [PowerShell-Cmdlets für DataGateway](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
 
 <a name="requirements"></a>
 

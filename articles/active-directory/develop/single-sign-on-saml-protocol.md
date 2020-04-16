@@ -1,28 +1,24 @@
 ---
-title: Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs
+title: SAML-Protokoll für das einmalige Anmelden von Azure
 description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben.
 services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230530"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881281"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -84,7 +80,7 @@ Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory stellt den NameID-Anspruch als paarweisen Bezeichner aus.
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory stellt den NameID-Anspruch im E-Mail-Adressformat aus.
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory kann das Anspruchsformat selbst wählen. Azure Active Directory stellt die NameID als paarweisen Bezeichner aus.
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory stellt den Anspruch „NameID“ in Form eines zufällig generierten Werts aus, der für den aktuellen SSO-Vorgang eindeutig ist. Dieser Wert ist temporär und kann nicht zur Identifizierung des sich authentifizierenden Benutzers verwendet werden.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory stellt den NameID-Anspruch in Form eines zufällig generierten Werts aus, der für den aktuellen SSO-Vorgang eindeutig ist. Dieser Wert ist temporär und kann nicht zur Identifizierung des sich authentifizierenden Benutzers verwendet werden.
 
 Das `AllowCreate` -Attribut wird von Azure AD ignoriert.
 
@@ -97,7 +93,7 @@ Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `
 Wenn Sie sich für die Angabe entscheiden, schließen Sie nicht das `ProxyCount`-Attribut, `IDPListOption` oder das `RequesterID`-Element ein, da diese nicht unterstützt werden.
 
 ### <a name="signature"></a>Signatur
-Schließen Sie in `Signature`-Elementen kein `AuthnRequest`-Element ein, da Azure AD nicht signierte Authentifizierungsanforderungen unterstützt.
+Schließen Sie in `AuthnRequest`-Elementen kein `Signature`-Element ein, da Azure AD nicht signierte Authentifizierungsanforderungen unterstützt.
 
 ### <a name="subject"></a>Subject
 Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.

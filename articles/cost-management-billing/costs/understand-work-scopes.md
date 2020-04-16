@@ -3,17 +3,17 @@ title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management
 description: Dieser Artikel hilft Ihnen, die in Azure verfügbaren Bereiche für Abrechnung und Ressourcenverwaltung zu verstehen und wie Sie die Bereiche in Cost Management und APIs verwenden können.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131362"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877931"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -26,6 +26,10 @@ Ein _Bereich_ ist ein Knoten in der Azure-Ressourcenhierarchie, in dem Azure AD-
 - Clouddienste wie Kosten und die Richtliniengovernance
 
 In Bereichen können Sie Abrechnungsdaten verwalten, mit für Zahlungen spezifischen Rollen arbeiten, Rechnungen einsehen und die allgemeine Kontenverwaltung durchführen. Rechnungs- und Kontorollen werden getrennt von denen für die Ressourcenverwaltung verwaltet, die [Azure RBAC](../../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung) verwenden. Um den Zweck der einzelnen Bereiche, einschließlich der Unterschiede bei der Zugriffssteuerung, klar zu unterscheiden, werden diese als _Abrechnungsbereiche_ und _RBAC-Bereiche_ bezeichnet.
+
+Weitere Informationen zu Bereichen finden Sie im Video zur [Einrichtung von Hierarchien in Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY). Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Zweck von Bereichen in Cost Management
 
@@ -71,7 +75,7 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 
 Enterprise Agreement-Abrechnungskonten (EA), sog. Registrierungen, haben die folgenden Bereiche:
 
-- [**Abrechnungskonto**](../manage/view-all-accounts.md): Stellt eine EA-Registrierung dar. Rechnungen werden in diesem Bereich erstellt. Nicht nutzungsabhängige Käufe (Marketplace und Reservierungen) sind nur in diesem Bereich möglich. Sie werden in Abteilungen oder Registrierungskonten nicht berücksichtigt.
+- [**Abrechnungskonto**](../manage/view-all-accounts.md): Stellt eine EA-Registrierung dar. Rechnungen werden in diesem Bereich erstellt. Nicht nutzungsabhängige Käufe (Marketplace und Reservierungen) sind nur in diesem Bereich möglich. Sie werden in Abteilungen oder Registrierungskonten nicht berücksichtigt. Die Reservierungsnutzung wird zusammen mit der gesamten übrigen Nutzung auf einzelne Ressourcen angewendet. Die Nutzung wird in Abonnements innerhalb des Abrechnungskontos zusammengefasst. Wenn Sie die Reservierungskosten nach Ressource aufgeschlüsselt anzeigen möchten, wechseln Sie zur Ansicht **Amortisierte Kosten** in der Kostenanalyse.
 
     Ressourcentyp: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Abteilung** : Optionale Gruppierung von Registrierungskonten.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77048065"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5
 
@@ -281,7 +281,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 
-Verwenden Sie diesen Abschnitt, wenn Sie die interaktive Konfiguration nicht verwenden können oder weitere Parameter hinzufügen/ändern möchten. Sie benötigen das SSL-Zertifikat für den Anwendungshostnamen.
+Verwenden Sie diesen Abschnitt, wenn Sie die interaktive Konfiguration nicht verwenden können oder weitere Parameter hinzufügen/ändern möchten. Sie benötigen das TLS-/SSL-Zertifikat für den Anwendungshostnamen.
 
 1. Navigieren Sie zu **System > Certificate Management > Traffic Certificate Management > SSL Certificate List** (System > Zertifikatverwaltung > Zertifikatverwaltung für Datenverkehr > SSL-Zertifikatliste). Wählen Sie auf der rechten Seite **Import** (Importieren) aus. Der **Importtyp** lautet **PKCS 12 (IIS)** . Geben Sie unter **Key Name** (Schlüsselname) einen Schlüsselnamen und anschließend die PFX-Datei an. (Auf den Schlüsselnamen wird später in der Konfiguration verwiesen.) Geben Sie das **Kennwort** für die PFX-Datei an. Klicken Sie auf **Importieren**.
 
@@ -298,7 +298,7 @@ Verwenden Sie diesen Abschnitt, wenn Sie die interaktive Konfiguration nicht ver
  
     ![Konfiguration von F5 (headerbasiert)](./media/headerf5-tutorial/configure18.png)
 
-1. Unsere App „HeaderApp2“ wird in diesem Fall extern als HTTPS veröffentlicht. Für **how should the BIG-IP system handle SSL Traffic?** (Wie soll SSL-Datenverkehr vom BIG-IP-System behandelt werden?) geben wir Folgendes an: **Terminate SSL from Client, Plaintext to servers (SSL Offload)** (SSL vom Client beenden, Klartext an Server (SSL-Abladung)). Geben Sie unter „Which SSL certificate do you want to use?“ (Welches SSL-Zertifikat möchten Sie verwenden?) Ihr Zertifikat und unter **Which SSL private key do you want to use?** (Welchen privaten SSL-Schlüssel möchten Sie verwenden?) Ihren Schlüssel an. Geben Sie unter **What IP Address do you want to use for the Virtual Server?** (Welche IP-Adresse möchten Sie für den virtuellen Server verwenden?) die IP-Adresse des virtuellen Servers an. 
+1. Unsere App „HeaderApp2“ wird in diesem Fall extern als HTTPS veröffentlicht. Für **how should the BIG-IP system handle SSL Traffic?** (Wie soll SSL-Datenverkehr vom BIG-IP-System behandelt werden?) geben wir Folgendes an: **Terminate SSL from Client, Plaintext to servers (SSL Offload)** (SSL vom Client beenden, Klartext an Server (SSL-Abladung)). Geben Sie unter **Welches SSL-Zertifikat möchten Sie verwenden?** Ihr Zertifikat und unter **Welchen privaten SSL-Schlüssel möchten Sie verwenden?** Ihren Schlüssel an. Geben Sie unter **What IP Address do you want to use for the Virtual Server?** (Welche IP-Adresse möchten Sie für den virtuellen Server verwenden?) die IP-Adresse des virtuellen Servers an. 
 
     * **Geben Sie weitere Details an:**
 

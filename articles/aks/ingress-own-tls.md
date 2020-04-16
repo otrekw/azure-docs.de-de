@@ -1,15 +1,16 @@
 ---
-title: Verwenden Ihrer eigenen TLS-Zertifikate für eingehende Daten mit AKS-Clustern (Azure Kubernetes Service)
+title: Verwenden von TLS-Zertifikaten für den Eingang
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller, der Ihre eigenen Zertifikate verwendet, in einem AKS-Cluster (Azure Kubernetes Service) konfigurieren.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595500"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668458"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers und Verwenden Ihrer eigenen TLS-Zertifikate in Azure Kubernetes Service (AKS)
 

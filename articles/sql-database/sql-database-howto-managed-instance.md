@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228834"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638028"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Verwenden einer verwalteten Instanz in Azure SQL-Datenbank
 
@@ -43,6 +43,7 @@ In diesem Artikel finden Sie verschiedene Anleitungen, Skripts und Erläuterunge
 
 - [Transaktionsreplikation](replication-with-sql-database-managed-instance.md): Dies ermöglicht Ihnen das Replizieren Ihrer Daten zwischen verwalteten Instanzen oder von einem lokalen SQL Server zur verwalteten Instanz und umgekehrt. In dieser Anleitung finden Sie weitere Informationen zum Verwenden und Konfigurieren der Transaktionsreplikation.
 - [Konfigurieren der Bedrohungserkennung](sql-database-managed-instance-threat-detection.md): Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist ein integriertes Azure SQL-Datenbank-Feature, mit dem verschiedene potenzielle Angriffe, z.B. die Einschleusung von SQL-Befehlen oder ein Zugriff von verdächtigen Standorten, erkannt werden. In dieser Anleitung erfahren Sie, wie Sie die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für die verwaltete Instanz aktivieren und konfigurieren.
+- [Das Erstellen von Warnungen](sql-database-managed-instance-alerts.md) ermöglicht Ihnen, Warnungen zu überwachten Metriken wie CPU-Auslastung, Speicherplatzbelegung, IOPS u. a. für verwaltete Instanzen einzurichten. In dieser Anleitung erfahren Sie, wie Sie Warnungen für verwaltete Instanzen aktivieren und konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

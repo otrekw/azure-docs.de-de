@@ -1,15 +1,17 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2018
-ms.author: wolfma
-ms.openlocfilehash: f35a6c61cdbbb71d937b5293df1535e7751cf31d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.author: dapine
+ms.openlocfilehash: f17cbc17558c22abefa0b0309b01780657c037f2
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178379"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656681"
 ---
 > [!IMPORTANT]
-> Durch das Herunterladen eines Speech SDK für Azure Cognitive Services-Komponenten auf dieser Seite stimmen Sie den zugehörigen Lizenzbedingungen zu. Lesen Sie die [Microsoft-Software-Lizenzbedingungen für das Speech SDK](https://aka.ms/csspeech/license201809).
+> Durch das Herunterladen der Azure Cognitive Services Speech SDKs stimmen Sie den zugehörigen Lizenzbedingungen zu. Weitere Informationen finden Sie unter
+> - <a href="https://aka.ms/csspeech/license201809" target="_blank">Microsoft-Software-Lizenzbedingungen für das Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> - <a href="https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html" target="_blank">Hinweise zu Drittanbietersoftware <span class="docon docon-navigate-external x-hidden-focus"></span></a>

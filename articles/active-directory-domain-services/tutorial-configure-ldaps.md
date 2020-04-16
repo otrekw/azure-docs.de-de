@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481533"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475865"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -114,13 +114,13 @@ Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, d
 
 Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwalteten Azure AD DS-Domäne verwenden können, müssen Sie das Zertifikat in eine *PFX*-Zertifikatdatei exportieren, die den privaten Schlüssel enthält.
 
-1. Um das Dialogfeld *Ausführen* zu öffnen, drücken Sie die **Windows**-Taste und die Taste **R**.
+1. Um das Dialogfeld *Ausführen* zu öffnen, drücken Sie **Windows** + **R**.
 1. Öffnen Sie eine Microsoft Management Console (MMC), indem Sie im Dialogfeld *Ausführen* die Zeichenfolge **mmc** eingeben und auf **OK** klicken.
-1. Klicken Sie an der Eingabeaufforderung der **Benutzerkontensteuerung** auf **Ja**, um die MMC als Administrator zu starten.
-1. Klicken Sie im Menü **Datei** auf **Snap-In hinzufügen/entfernen**.
+1. Wählen Sie an der Eingabeaufforderung der **Benutzerkontensteuerung** die Option **Ja** aus, um die MMC als Administrator zu starten.
+1. Wählen Sie im Menü **Datei** die Option **Snap-In hinzufügen/entfernen...** aus.
 1. Wählen Sie im Assistenten für das **Zertifikat-Snap-In** die Option **Computerkonto** aus, und klicken Sie auf **Weiter**.
 1. Wählen Sie auf der Seite **Computer auswählen** die Option **Lokaler Computer: (Computer, auf dem diese Konsole ausgeführt wird)** aus, und klicken Sie auf **Fertig stellen**.
-1. Klicken Sie im Dialogfeld **Snap-Ins hinzufügen bzw. entfernen** auf **OK**, um der MMC das Zertifikat-Snap-In hinzuzufügen.
+1. Wählen Sie im Dialogfeld **Snap-Ins hinzufügen/entfernen** auf **OK**, um der MMC das Zertifikat-Snap-In hinzuzufügen.
 1. Erweitern Sie im MMC-Fenster den **Konsolenstamm**. Wählen Sie **Zertifikate (Lokaler Computer)** aus, und erweitern Sie nacheinander die Knoten **Eigene Zertifikate** und **Zertifikate**.
 
     ![Öffnen des Speichers mit eigenen Zertifikaten in der Microsoft Management Console](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ Die *CER*-Zertifikatdatei kann jetzt auf Clientcomputer verteilt werden, die der
 Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Schlüssel enthält, und Sie haben den Clientcomputer so eingerichtet, dass er der Verbindung vertraut. Nun aktivieren Sie Secure LDAP in Ihrer verwalteten Azure AD DS-Domäne. Führen Sie die folgenden Konfigurationsschritte aus, um Secure LDAP in einer verwalteten Azure AD DS-Domäne zu aktivieren:
 
 1. Geben Sie im [Azure-Portal](https://portal.azure.com) im Feld **Ressourcen suchen** den Begriff *Domänendienste* ein. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus.
-
-    ![Suchen und Auswählen der verwalteten Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie auf der linken Seite des Azure AD DS-Fensters die Option **Secure LDAP** aus.
 1. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne deaktiviert. Ändern Sie die Einstellung für **Secure LDAP** in **Aktivieren**.
@@ -235,10 +232,10 @@ Wenn der Secure LDAP-Zugriff über das Internet aktiviert wurde, aktualisieren S
 
 Konfigurieren Sie Ihren externen DNS-Anbieter, und erstellen Sie einen Hosteintrag wie z. B. *ldaps*, um diesen in diese externe IP-Adresse aufzulösen. Um dieses Szenario zuerst auf Ihrem Computer zu testen, können Sie einen Eintrag in der Windows-Datei „hosts“ erstellen. Zum Bearbeiten der Datei „hosts“ auf Ihrem lokalen Computer öffnen Sie den *Editor* als Administrator. Dort öffnen Sie die hosts-Datei im Ordner *C:\Windows\System32\drivers\etc*.
 
-Durch den folgenden DNS-Beispieleintrag (entweder bei Ihrem externen DNS-Anbieter oder in der lokalen Datei „hosts“) wird Datenverkehr für *ldaps.aaddscontoso.com* in die externe IP-Adresse *40.121.19.239* aufgelöst:
+Durch den folgenden DNS-Beispieleintrag (entweder bei Ihrem externen DNS-Anbieter oder in der lokalen Datei „hosts“) wird Datenverkehr für *ldaps.aaddscontoso.com* in die externe IP-Adresse *168.62.205.103* aufgelöst:
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testen von Abfragen in der verwalteten Domäne
@@ -261,7 +258,7 @@ So zeigen Sie die Objekte an, die in Ihrer verwalteten Azure AD DS-Domäne ges
 1. Wählen Sie die Menüoption **Ansicht** aus, und klicken Sie dann auf **Struktur**.
 1. Lassen Sie das Feld *BaseDN* leer, und klicken Sie auf **OK**.
 1. Wählen Sie einen Container aus, z. B. *AADDC Users*, klicken Sie mit der rechten Maustaste auf den Container, und wählen Sie **Suchen** aus.
-1. Lassen Sie die vorab ausgefüllten Felder unverändert, und klicken Sie auf **Ausführen**. Die Ergebnisse der Abfrage werden im rechten Fenster angezeigt.
+1. Lassen Sie die vorab ausgefüllten Felder unverändert, und klicken Sie auf **Ausführen**. Die Ergebnisse der Abfrage werden im rechten Fenster angezeigt, wie in der folgenden Beispielausgabe gezeigt:
 
     ![Suchen nach Objekten in der verwalteten Azure AD DS-Domäne mit „LDP.exe“](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Wenn Sie der lokalen Datei „hosts“ auf Ihrem Computer einen DNS-Eintrag hinz
 
 1. Öffnen Sie den *Editor* auf Ihrem lokalen Computer als Administrator.
 1. Navigieren Sie zum Ordner *C:\Windows\System32\drivers\etc*, und öffnen Sie die Datei „hosts“.
-1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `40.121.19.239    ldaps.aaddscontoso.com`.
+1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `168.62.205.103    ldaps.aaddscontoso.com`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

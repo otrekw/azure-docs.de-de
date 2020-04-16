@@ -2,25 +2,22 @@
 title: Verwenden des Modus für gemeinsam genutzte Geräte mit MSAL Android | Azure
 description: Es wird beschrieben, wie Sie ein Android-Gerät für die Ausführung im Modus für die gemeinsame Nutzung vorbereiten und eine App für Mitarbeiter in Service und Produktion ausführen.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086064"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886431"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Tutorial: Verwenden des Modus für gemeinsam genutzte Geräte in Ihrer Android-Anwendung
 
@@ -96,9 +93,9 @@ Wenn Sie `"account_mode":"SINGLE"` in der config-Datei für MSAL festlegen, kön
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +106,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Erkennen des Moduls für ein bzw. mehrere Konten
@@ -134,7 +131,7 @@ private IPublicClientApplication mApplication;
 
 Mit der `loadAccount`-Methode wird das Konto des angemeldeten Benutzers abgerufen. Mit der `onAccountChanged`-Methode wird ermittelt, ob sich der angemeldete Benutzer geändert hat. Wenn dies der Fall ist, wird eine Bereinigung durchgeführt:
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +154,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>Globales Anmelden eines Benutzers
@@ -233,7 +230,7 @@ Starten Sie die Authenticator-App, und navigieren Sie zur Hauptseite des Kontos.
 ![Authenticator-Bildschirm „Konto hinzufügen“](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  Wechseln Sie in der Menüleiste auf der rechten Seite zum Bereich **Einstellungen**. Wählen Sie unter **Geschäfts-, Schul- oder Unikonten** die Option **Geräteregistrierung** aus.
- 
+
  ![Authenticator-Bildschirm „Konto hinzufügen“](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  Wenn Sie auf diese Schaltfläche klicken, werden Sie aufgefordert, den Zugriff auf die Gerätekontakte zu autorisieren. Der Grund ist die Kontointegration von Android auf dem Gerät. Wählen Sie **Zulassen** aus.
@@ -266,4 +263,4 @@ Die Beispielanwendung ist eine einfache App, mit der die Graph-API Ihrer Organis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Modus für gemeinsam genutzte Geräte finden Sie unter [Modus für gemeinsam genutzte Geräte für Android-Geräte](shared-device-mode.md).
+Weitere Informationen zum Modus für gemeinsam genutzte Geräte finden Sie unter [Modus für gemeinsam genutzte Geräte für Android-Geräte](msal-android-shared-devices.md).

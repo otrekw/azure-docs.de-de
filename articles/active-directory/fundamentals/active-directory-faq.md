@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063627"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875791"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -29,14 +29,15 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
 **F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, im Azure-Portal auf Azure AD zuzugreifen?**
 
-**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [https://aka.ms/accessAAD](https://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
+**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie nicht über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/free/
+) oder ein kostenpflichtiges Abonnement aktivieren.
 
 Weitere Informationen finden Sie unter
 
 * [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**F: Welche Beziehung besteht zwischen Azure AD, Office 365 und Azure?**
+**F: Welche Beziehung besteht zwischen Azure AD, Office 365 und Azure?**
 
 **A:** Azure AD bietet Ihnen allgemeine Identitäts- und Zugriffsfunktionen für alle Webdienste. Wenn Sie Office 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits Azure AD, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
 
@@ -138,9 +139,9 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 
 Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
 
-**F:  Bestimmte (häufige) Kennwörter werden mit der Meldung „Dieses Kennwort wurde zu oft verwendet“ zurückgewiesen. Bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**
+**F:  Bestimmte (häufige) Kennwörter werden mit der Meldung „Dieses Kennwort wurde zu oft verwendet“ zurückgewiesen. Bezieht sich dies auf Kennwörter, die in der aktuellen Active Directory-Instanz verwendet werden?**
 
-Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
+Dies bezieht sich auf Kennwörter, die global sehr häufig verwendet werden, z. B. alle Varianten von „Password“ und „123456“.
 
 **F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**
 
@@ -199,7 +200,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff
 
 **A:** Mit dem bedingten Azure AD-Zugriff können Sie jeder Anwendung eine individuelle Zugriffsrichtlinie zuweisen. In dieser Richtlinie können Sie festlegen, dass die mehrstufige Authentifizierung immer oder nur dann erforderlich sein soll, wenn Benutzer gerade nicht mit dem lokalen Netzwerk verbunden sind.  
 
-Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](../conditional-access/overview.md).
 
 ---
 **F: Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?**
@@ -211,4 +212,4 @@ Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Be
 ---
 **F:  Kann ich mit Azure AD eine sichere LDAP-Verbindung einrichten?**
 
-**A:**  Nein. Das LDAP-Protokoll (Lightweight Directory Access Protocol) oder Secure LDAP wird von Azure AD nicht direkt unterstützt. Allerdings können Sie eine Azure AD Domain Services (Azure AD DS)-Instanz in Ihrem Azure AD-Mandanten mit ordnungsgemäß konfigurierten Netzwerksicherheitsgruppen über das Azure-Netzwerk aktivieren, um LDAP-Konnektivität zu erreichen. Weitere Informationen finden Sie unter https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**A:**  Nein. Das LDAP-Protokoll (Lightweight Directory Access Protocol) oder Secure LDAP wird von Azure AD nicht direkt unterstützt. Allerdings können Sie eine Azure AD Domain Services (Azure AD DS)-Instanz in Ihrem Azure AD-Mandanten mit ordnungsgemäß konfigurierten Netzwerksicherheitsgruppen über das Azure-Netzwerk aktivieren, um LDAP-Konnektivität zu erreichen. Weitere Informationen finden Sie unter [Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne](../../active-directory-domain-services/tutorial-configure-ldaps.md).

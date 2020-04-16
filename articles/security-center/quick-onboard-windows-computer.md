@@ -1,6 +1,6 @@
 ---
 title: Einbinden von Windows-Computern in Azure Security Center
-description: Dieser Schnellstart veranschaulicht die Microsoft Monitoring Agent-Bereitstellung auf einem Windows-Computer.
+description: Dieser Schnellstart veranschaulicht die Bereitstellung des Log Analytics-Agents auf einem Windows-Computer.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686504"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435925"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
-Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
+Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z. B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Log Analytics-Agent bereitstellen.
 
-Dieser Schnellstart veranschaulicht die Microsoft Monitoring Agent-Installation auf einem Windows-Computer.
+Dieser Schnellstart veranschaulicht die Installation des Log Analytics-Agents auf einem Windows-Computer.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
@@ -72,7 +72,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 9. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 10. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.
 
-Nach Abschluss wird der **Microsoft Monitoring Agent** in der **Systemsteuerung** angezeigt. Sie können hier Ihre Konfiguration überprüfen und sicherstellen, dass der Agent verbunden ist.
+Nach Abschluss wird der **Log Analytics-Agent** in der **Systemsteuerung** angezeigt. Sie können hier Ihre Konfiguration überprüfen und sicherstellen, dass der Agent verbunden ist.
 
 Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
@@ -93,10 +93,10 @@ So entfernen Sie den Agent
 
 1. Öffnen Sie die **Systemsteuerung**.
 2. Öffnen Sie **Programme und Features**.
-3. Wählen Sie in **Programme und Features** die Option **Microsoft Monitoring Agent** aus, und klicken Sie auf **Deinstallieren**.
+3. Wählen Sie unter **Programme und Features** die Option **Log Analytics-Agent** aus, und klicken Sie auf **Deinstallieren**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie den Microsoft Monitoring Agent auf einem Windows-Computer bereitgestellt. Weitere Informationen zur Verwendung von Security Center erhalten Sie, wenn Sie mit dem Tutorial zur Konfiguration einer Sicherheitsrichtlinie und zum Bewerten der Sicherheit Ihrer Ressourcen fortfahren.
+In diesem Schnellstart haben Sie den Log Analytics-Agent auf einem Windows-Computer bereitgestellt. Weitere Informationen zur Verwendung von Security Center erhalten Sie, wenn Sie mit dem Tutorial zur Konfiguration einer Sicherheitsrichtlinie und zum Bewerten der Sicherheit Ihrer Ressourcen fortfahren.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Definieren und Bewerten von Sicherheitsrichtlinien](tutorial-security-policy.md)

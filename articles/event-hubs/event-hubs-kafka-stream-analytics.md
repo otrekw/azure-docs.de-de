@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969372"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632801"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Tutorial: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
-Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
+Dieser Artikel zeigt, wie Daten an Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
 
-1. Erstellen eines Kafka-fähigen Event Hubs-Namespace
+1. Erstellen eines Event Hubs-Namespace
 2. Erstellen eines Kafka-Clients, der Nachrichten an den Event Hub sendet
 3. Erstellen eines Stream Analytics-Auftrags, der Daten aus dem Event Hub in Azure Blob Storage kopiert 
 
@@ -41,7 +41,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 * Ein **Azure Storage-Konto** Wenn keine öffentliche IP-Adresse vorhanden ist, [erstellen Sie jetzt eine](../storage/common/storage-account-create.md), ehe Sie fortfahren. Der Stream Analytics-Auftrag in dieser exemplarischen Vorgehensweise speichert die Ausgabedaten in Azure Blob Storage. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
+## <a name="create-an-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespace
 Wenn Sie einen Event Hubs-Namespace im **Standard**-Tarif erstellen, wird der Kafka-Endpunkt für den Namespace automatisch aktiviert. Sie können Ereignisse von Ihren Anwendungen, die das Kafka-Protokoll verwenden, in Event Hubs im Standard-Tarif streamen. Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md), um einen Event Hubs-Namespace mit dem **Standard**-Tarif zu erstellen. 
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Wenn Sie einen Event Hubs-Namespace im **Standard**-Tarif erstellen, wird der K
     ```
 
     Dieser Code sendet die Ereignisdaten im **JSON**-Format. Wenn Sie die Eingabe für einen Stream Analytics-Auftrag konfigurieren, geben Sie JSON als Format für die Eingabedaten an. 
-7. **Führen Sie den Producer aus**, und streamen Sie Daten an Kafka-fähige Event Hubs: Wechseln Sie auf einem Windows-Computer bei Verwendung einer **Node.js-Eingabeaufforderung** zum Ordner `azure-event-hubs-for-kafka/quickstart/java/producer`, bevor Sie diese Befehle ausführen. 
+7. **Führen Sie den Producer aus**, und streamen Sie Daten an Event Hubs. Wechseln Sie auf einem Windows-Computer bei Verwendung einer **Node.js-Eingabeaufforderung** zum Ordner `azure-event-hubs-for-kafka/quickstart/java/producer`, bevor Sie diese Befehle ausführen. 
    
     ```shell
     mvn clean package
@@ -181,15 +181,4 @@ Nachdem Sie einen Stream Analytics-Auftrag eingerichtet haben, um einen eingehen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Daten an Kafka-fähige Event Hubs gestreamt werden können, ohne dass Sie Protokollclients ändern oder eigene Cluster betreiben müssen. Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
-
-- [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Erstellen von Kafka-fähigen Event Hubs](event-hubs-create-kafka-enabled.md)
-- [Streamen von Ereignissen in Event Hubs aus Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Spiegeln eines Kafka-Brokers in einem Kafka-fähigen Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Verbinden von Apache Spark mit einem Kafka-fähigen Event Hub](event-hubs-kafka-spark-tutorial.md)
-- [Verbinden von Apache Flink mit einem Kafka-fähigen Event Hub](event-hubs-kafka-flink-tutorial.md)
-- [Integrieren von Kafka Connect in einen Kafka-fähigen Event Hub](event-hubs-kafka-connect-tutorial.md)
-- [Verbinden von Akka Streams mit einem Kafka-fähigen Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
-- [Erkunden von Beispielen auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) 
+In diesem Artikel haben Sie erfahren, wie Daten an Event Hubs gestreamt werden, ohne dass Sie Protokollclients ändern oder eigene Cluster ausführen müssen. Weitere Informationen zu Event Hubs für Apache Kafka finden Sie unter [Apache Kafka-Entwicklerleitfaden für Azure Event Hubs](apache-kafka-developer-guide.md). 

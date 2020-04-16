@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462461"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393614"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 
@@ -44,7 +44,7 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 |getPrevError | Nein  |
 |insert  |   Ja  |
 |parallelCollectionScan  | Ja   |
-|resetError |   Nein  |
+|resetError |    Nein  |
 |aktualisieren  |   Ja  |
 |[Ändern von Datenströmen](mongodb-change-streams.md)  |  Ja  |
 |GridFS |   Ja  |
@@ -88,18 +88,18 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|buildInfo       |   Ja      |
+|buildInfo         |   Ja      |
 |collStats    |  Ja       |
 |connPoolStats     |  Nein       |
 |connectionStatus     |  Nein       |
 |dataSize     |   Nein      |
 |dbHash    |    Nein     |
 |dbStats     |   Ja      |
-|explain     | Nein        |
-|explain: executionStats     |     Nein    |
+|explain     |   Ja      |
+|explain: executionStats     |   Ja      |
 |Features     |    Nein     |
 |hostInfo     |   Nein      |
-|listDatabases       |   Ja      |
+|listDatabases         |   Ja      |
 |listCommands     |  Nein       |
 |profiler     |  Nein       |
 |serverStatus     |  Nein       |
@@ -123,31 +123,31 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$collStats |Nein|
-|$project   |Ja|
-|$match |Ja|
-|$redact|   Ja|
-|$limit |Ja|
-|$skip  |Ja|
-|$unwind|   Ja|
-|$group |   Ja|
-|$sample|       Ja|
-|$sort  |Ja|
-|$geoNear|  Nein|
-|$lookup    |   Ja|
-|$out       |Ja|
-|$indexStats|       Nein|
-|$facet |Nein|
-|$bucket|   Nein|
-|$bucketAuto|   Nein|
-|$sortByCount|  Ja|
-|$addFields |Ja|
-|$replaceRoot|  Ja|
-|$count |Ja|
+|$collStats    |Nein|
+|$project    |Ja|
+|$match    |Ja|
+|$redact|    Ja|
+|$limit    |Ja|
+|$skip    |Ja|
+|$unwind|    Ja|
+|$group    |    Ja|
+|$sample|        Ja|
+|$sort    |Ja|
+|$geoNear|    Nein|
+|$lookup    |    Ja|
+|$out        |Ja|
+|$indexStats|        Nein|
+|$facet    |Nein|
+|$bucket|    Nein|
+|$bucketAuto|    Nein|
+|$sortByCount|    Ja|
+|$addFields    |Ja|
+|$replaceRoot|    Ja|
+|$count    |Ja|
 |$currentOp|    Nein|
-|$listLocalSessions |Nein|
-|$listSessions  |Nein|
-|$graphLookup   |Nein|
+|$listLocalSessions    |Nein|
+|$listSessions    |Nein|
+|$graphLookup    |Nein|
 
 ### <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
@@ -174,14 +174,14 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 |Get-Help  |Unterstützt |
 |---------|---------|
 |$cmp     |  Ja       |
-|$eq|   Ja| 
-|$gt |  Ja| 
-|$gte|  Ja| 
+|$eq|    Ja| 
+|$gt |    Ja| 
+|$gte|    Ja| 
 |$lt    |Ja|
-|$lte|  Ja| 
-|$ne    |   Ja| 
-|$in    |   Ja| 
-|$nin   |   Ja| 
+|$lte|    Ja| 
+|$ne    |    Ja| 
+|$in    |    Ja| 
+|$nin    |    Ja| 
 
 ### <a name="arithmetic-expressions"></a>Arithmetische Ausdrücke
 
@@ -230,66 +230,66 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$arrayElemAt   |   Ja|
+|$arrayElemAt    |    Ja|
 |$arrayToObject|    Ja|
-|$concatArrays  |   Ja|
-|$filter    |   Ja|
-|$indexOfArray  |Ja|
-|$isArray   |   Ja|
-|$objectToArray |Ja|
-|$range |Ja|
-|$reverseArray  |   Ja|
-|$reduce|   Ja|
-|$size  |   Ja|
-|$slice |   Ja|
-|$zip   |   Ja|
-|$in    |   Ja|
+|$concatArrays    |    Ja|
+|$filter    |    Ja|
+|$indexOfArray    |Ja|
+|$isArray    |    Ja|
+|$objectToArray    |Ja|
+|$range    |Ja|
+|$reverseArray    |    Ja|
+|$reduce|    Ja|
+|$size    |    Ja|
+|$slice    |    Ja|
+|$zip    |    Ja|
+|$in    |    Ja|
 
 ### <a name="variable-operators"></a>Variablenoperatoren
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$map   |Nein|
-|$let   |Ja|
+|$map    |Nein|
+|$let    |Ja|
 
 ### <a name="system-variables"></a>Systemvariablen
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$$CURRENT| Ja|
-|$$DESCEND|     Ja|
-|$$KEEP     |Ja|
-|$$PRUNE    |   Ja|
-|$$REMOVE   |Ja|
-|$$ROOT     |Ja|
+|$$CURRENT|    Ja|
+|$$DESCEND|        Ja|
+|$$KEEP        |Ja|
+|$$PRUNE    |    Ja|
+|$$REMOVE    |Ja|
+|$$ROOT        |Ja|
 
 ### <a name="literal-operator"></a>Literaloperator
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$literal   |Ja|
+|$literal    |Ja|
 
 ### <a name="date-expressions"></a>Datumsausdrücke
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$dayOfYear |Ja    |
-|$dayOfMonth|   Ja |
-|$dayOfWeek |Ja    |
-|$year  |Ja    |
-|$month |Ja|   
-|$week  |Ja    |
-|$hour  |Ja    |
-|$minute|   Ja|    
+|$dayOfYear    |Ja    |
+|$dayOfMonth|    Ja    |
+|$dayOfWeek    |Ja    |
+|$year    |Ja    |
+|$month    |Ja|    
+|$week    |Ja    |
+|$hour    |Ja    |
+|$minute|    Ja|    
 |$second    |Ja    |
-|$millisecond|  Ja|    
-|$dateToString  |Ja    |
-|$isoDayOfWeek  |Ja    |
-|$isoWeek   |Ja    |
-|$dateFromParts|    Nein| 
-|$dateToParts   |Nein |
-|$dateFromString|   Nein|
-|$isoWeekYear   |Ja    |
+|$millisecond|    Ja|    
+|$dateToString    |Ja    |
+|$isoDayOfWeek    |Ja    |
+|$isoWeek    |Ja    |
+|$dateFromParts|    Nein|    
+|$dateToParts    |Nein    |
+|$dateFromString|    Nein|
+|$isoWeekYear    |Ja    |
 
 ### <a name="conditional-expressions"></a>Bedingte Ausdrücke
 
@@ -309,16 +309,16 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$sum   |Ja    |
-|$avg   |Ja    |
+|$sum    |Ja    |
+|$avg    |Ja    |
 |$first|    Ja|
-|$last  |Ja    |
-|$max   |Ja    |
-|$min   |Ja    |
-|$push| Ja|
-|$addToSet| Ja|
-|$stdDevPop|    Nein  |
-|$stdDevSamp|   Nein|
+|$last    |Ja    |
+|$max    |Ja    |
+|$min    |Ja    |
+|$push|    Ja|
+|$addToSet|    Ja|
+|$stdDevPop|    Nein    |
+|$stdDevSamp|    Nein|
 
 ### <a name="merge-operator"></a>Zusammenführungsoperator
 
@@ -330,25 +330,25 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|Double |Ja    |
-|String |Ja    |
-|Object |Ja    |
-|Array  |Ja    |
-|Binary Data    |Ja|   
-|ObjectID   |Ja    |
+|Double    |Ja    |
+|String    |Ja    |
+|Object    |Ja    |
+|Array    |Ja    |
+|Binary Data    |Ja|    
+|ObjectID    |Ja    |
 |Boolean    |Ja    |
-|Date   |Ja    |
-|Null   |Ja    |
-|32-Bit-Ganzzahl (int)   |Ja    |
-|Timestamp  |Ja    |
-|64-Bit-Ganzzahl (long)  |Ja    |
-|MinKey |Ja    |
-|MaxKey |Ja    |
-|Decimal128 |Ja|   
-|Regular Expression |Ja|
-|JavaScript |Ja|
-|JavaScript (mit Gültigkeitsbereich)|   Ja |
-|Nicht definiert  |Ja    |
+|Date    |Ja    |
+|Null    |Ja    |
+|32-Bit-Ganzzahl (int)    |Ja    |
+|Timestamp    |Ja    |
+|64-Bit-Ganzzahl (long)    |Ja    |
+|MinKey    |Ja    |
+|MaxKey    |Ja    |
+|Decimal128    |Ja|    
+|Regular Expression    |Ja|
+|JavaScript    |Ja|
+|JavaScript (mit Gültigkeitsbereich)|    Ja    |
+|Nicht definiert    |Ja    |
 
 ## <a name="indexes-and-index-properties"></a>Indizes und Indexeigenschaften
 
@@ -356,23 +356,23 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|Einzelfeldindex |Ja    |
-|Verbundindex |Ja    |
-|Index mit mehreren Schlüsseln |Ja    |
-|Textindex |Nein|
-|2dsphere   |Ja    |
-|2D-Index   |Nein |
-|Hashindex   | Ja|
+|Einzelfeldindex    |Ja    |
+|Verbundindex    |Ja    |
+|Index mit mehreren Schlüsseln    |Ja    |
+|Textindex    |Nein|
+|2dsphere    |Ja    |
+|2D-Index    |Nein    |
+|Hashindex    | Ja|
 
 ### <a name="index-properties"></a>Indexeigenschaften
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|TTL|   Ja |
-|Eindeutig |Ja|
-|Teilweise|   Nein|
-|Keine Beachtung von Groß-/Kleinschreibung   |Nein|
-|Platzsparend |Nein |
+|TTL|    Ja    |
+|Eindeutig    |Ja|
+|Teilweise|    Nein|
+|Keine Beachtung von Groß-/Kleinschreibung    |Nein|
+|Platzsparend    |Nein |
 |Hintergrund|    Ja |
 
 ## <a name="operators"></a>Operatoren
@@ -381,28 +381,28 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$or    |   Ja|
-|$and   |   Ja|
-|$not   |   Ja|
-|$nor   |   Ja| 
+|$or    |    Ja|
+|$and    |    Ja|
+|$not    |    Ja|
+|$nor    |    Ja| 
 
 ### <a name="element-operators"></a>Elementoperatoren
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$exists|   Ja|
-|$type  |   Ja|
+|$exists|    Ja|
+|$type    |    Ja|
 
 ### <a name="evaluation-query-operators"></a>Abfrageoperatoren für die Auswertung
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$expr  |   Nein|
-|$jsonSchema    |   Nein|
-|$mod   |   Ja|
-|$regex |   Ja|
-|$text  | Nein (Nicht unterstützt. Verwenden Sie stattdessen „$regex“.)| 
-|$where |Nein| 
+|$expr    |    Nein|
+|$jsonSchema    |    Nein|
+|$mod    |    Ja|
+|$regex |    Ja|
+|$text    | Nein (Nicht unterstützt. Verwenden Sie stattdessen „$regex“.)| 
+|$where    |Nein| 
 
 In $regex-Abfragen ermöglichen linksverankerte Ausdrücke eine Indexsuche. Die Verwendung des „i“-Modifizierers (keine Berücksichtigung der Groß-/Kleinschreibung) und des „m“-Modifizierers (mehrere Zeilen) führt jedoch zur Sammlungsüberprüfung in allen Ausdrücken.
 
@@ -430,9 +430,9 @@ $comment |Ja|
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$elemMatch |Ja|
-|$meta| Nein|
-|$slice | Ja|
+|$elemMatch    |Ja|
+|$meta|    Nein|
+|$slice    | Ja|
 
 ### <a name="update-operators"></a>Aktualisierungsoperatoren
 
@@ -440,28 +440,28 @@ $comment |Ja|
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$inc   |   Ja|
-|$mul   |   Ja|
-|$rename    |   Ja|
-|$setOnInsert|  Ja|
-|$set   |Ja|
+|$inc    |    Ja|
+|$mul    |    Ja|
+|$rename    |    Ja|
+|$setOnInsert|    Ja|
+|$set    |Ja|
 |$unset| Ja|
-|$min   |Ja|
-|$max   |Ja|
-|$currentDate   | Ja|
+|$min    |Ja|
+|$max    |Ja|
+|$currentDate    | Ja|
 
 #### <a name="array-update-operators"></a>Operatoren für die Arrayaktualisierung
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$  |Ja|
-|$[]|   Ja|
-|$[<identifier>]|   Ja|
-|$addToSet  |Ja|
-|$pop   |Ja|
-|$pullAll|  Ja|
-|$pull  |Ja|
-|$push  |Ja|
+|$    |Ja|
+|$[]|    Ja|
+|$[<identifier>]|    Ja|
+|$addToSet    |Ja|
+|$pop    |Ja|
+|$pullAll|    Ja|
+|$pull    |Ja|
+|$push    |Ja|
 |$pushAll| Ja|
 
 
@@ -469,20 +469,20 @@ $comment |Ja|
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|$each  |   Ja|
-|$slice |Ja|
-|$sort  |Ja|
-|$position  |Ja|
+|$each    |    Ja|
+|$slice    |Ja|
+|$sort    |Ja|
+|$position    |Ja|
 
 #### <a name="bitwise-update-operator"></a>Bitweiser Updateoperator
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-| $bit  |   Ja|    
-|$bitsAllSet    |   Nein|
-|$bitsAnySet    |   Nein|
-|$bitsAllClear  |Nein|
-|$bitsAnyClear  |Nein|
+| $bit    |    Ja|    
+|$bitsAllSet    |    Nein|
+|$bitsAnySet    |    Nein|
+|$bitsAllClear    |Nein|
+|$bitsAnyClear    |Nein|
 
 ### <a name="geospatial-operators"></a>Räumliche Operatoren
 
@@ -504,37 +504,37 @@ $polygon |  Ja |
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-|cursor.batchSize() |   Ja|
-|cursor.close() |Ja|
-|cursor.isClosed()|     Ja|
+|cursor.batchSize()    |    Ja|
+|cursor.close()    |Ja|
+|cursor.isClosed()|        Ja|
 |cursor.collation()|    Nein|
-|cursor.comment()   |Ja|
-|cursor.count() |Ja|
-|cursor.explain()|  Nein|
-|cursor.forEach()   |Ja|
-|cursor.hasNext()   |Ja|
-|cursor.hint()  |Ja|
-|cursor.isExhausted()|  Ja|
-|cursor.itcount()   |Ja|
-|cursor.limit() |Ja|
-|cursor.map()   |Ja|
-|cursor.maxScan()   |Ja|
+|cursor.comment()    |Ja|
+|cursor.count()    |Ja|
+|cursor.explain()|    Nein|
+|cursor.forEach()    |Ja|
+|cursor.hasNext()    |Ja|
+|cursor.hint()    |Ja|
+|cursor.isExhausted()|    Ja|
+|cursor.itcount()    |Ja|
+|cursor.limit()    |Ja|
+|cursor.map()    |Ja|
+|cursor.maxScan()    |Ja|
 |cursor.maxTimeMS()|    Ja|
-|cursor.max()   |Ja|
-|cursor.min()   |Ja|
-|cursor.next()| Ja|
-|cursor.noCursorTimeout()   |Nein|
-|cursor.objsLeftInBatch()   |Ja|
-|cursor.pretty()|   Ja|
-|cursor.readConcern()|  Ja|
-|cursor.readPref()      |Ja|
-|cursor.returnKey() |Nein|
-|cursor.showRecordId()| Nein|
-|cursor.size()  |Ja|
-|cursor.skip()  |Ja|
-|cursor.sort()  |   Ja|
-|cursor.tailable()| Nein|
-|cursor.toArray()   |Ja|
+|cursor.max()    |Ja|
+|cursor.min()    |Ja|
+|cursor.next()|    Ja|
+|cursor.noCursorTimeout()    |Nein|
+|cursor.objsLeftInBatch()    |Ja|
+|cursor.pretty()|    Ja|
+|cursor.readConcern()|    Ja|
+|cursor.readPref()        |Ja|
+|cursor.returnKey()    |Nein|
+|cursor.showRecordId()|    Nein|
+|cursor.size()    |Ja|
+|cursor.skip()    |Ja|
+|cursor.sort()    |    Ja|
+|cursor.tailable()|    Nein|
+|cursor.toArray()    |Ja|
 
 ## <a name="sort-operations"></a>Sortiervorgänge
 
@@ -542,7 +542,7 @@ Bei Verwendung des `findOneAndUpdate`-Vorgangs werden Sortiervorgänge für ein 
 
 ## <a name="unique-indexes"></a>Eindeutige Indizes
 
-Eindeutige Indizes stellen sicher, dass ein bestimmtes Feld in allen Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ähnelt der Art und Weise, auf die die Eindeutigkeit für den Standardschlüssel „_id“ beibehalten wird. Sie können benutzerdefinierte Indizes in Cosmos DB erstellen, indem Sie den Befehl „createIndex“ einschließlich der Einschränkung „unique“ verwenden.
+Eindeutige Indizes stellen sicher, dass ein bestimmtes Feld in allen Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ist vergleichbar mit der Bewahrung der Eindeutigkeit für den Standardschlüssel „_id“. Sie können benutzerdefinierte Indizes in Cosmos DB erstellen, indem Sie den Befehl „createIndex“ mit der Einschränkung „unique“ verwenden.
 
 ## <a name="time-to-live-ttl"></a>Gültigkeitsdauer (TTL)
 

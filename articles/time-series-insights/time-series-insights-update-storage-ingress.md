@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246189"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673903"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -42,7 +42,7 @@ Azure Time Series Insights Preview unterstützt die folgenden Ereignisquellen:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz.
+Azure Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz. Wenn Sie eine Ereignisquelle verbinden, liest Ihre TSI-Umgebung alle Ereignisse, die aktuell in Ihrem IoT Hub oder Event Hub gespeichert sind. Dabei wird mit dem ältesten Ereignis begonnen. 
 
 > [!IMPORTANT] 
 > * Beim Anfügen einer Ereignisquelle an die Vorschau-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf. 
@@ -91,7 +91,7 @@ Im Allgemeinen werden Eingangsraten als Faktor der Anzahl von Geräten in Ihrer 
 
 *  **Anzahl der Geräte** × **Häufigkeit der Ereignisausgabe** × **Größe jedes Ereignisses**.
 
-Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rate von **bis zu 1 MB pro Sekunde (MBit/s) pro Time Series Insights-Umgebung** erfassen.
+Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rate von **bis zu 1 MB pro Sekunde (MBit/s) pro Time Series Insights-Umgebung** erfassen. Es gelten zusätzliche Einschränkungen [pro Hubpartition](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits).
 
 > [!TIP] 
 > * Die Umgebungsunterstützung für Erfassungsgeschwindigkeiten von bis zu 16 MBit/s kann auf Anfrage bereitgestellt werden.
@@ -99,7 +99,7 @@ Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rat
  
 * **Beispiel 1:**
 
-    Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Hierfür wird ein Event Hub mit vier Partitionen als Time Series Insights-Ereignisquelle genutzt.
+    Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Hierfür wird ein IoT Hub mit vier Partitionen als Time Series Insights-Ereignisquelle genutzt.
 
     * Die Erfassungsrate für die Time Series Insights-Umgebung lautet: **100.000 Geräte · 200 Byte/Ereignis · (3/60 Ereignis/s) = 1 MBit/s**.
     * Die Erfassungsrate pro Partition wäre 0,25 Mbit/s.
@@ -107,11 +107,11 @@ Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rat
 
 * **Beispiel 2:**
 
-    Contoso Fleet Analytics verfügt über 60.000 Geräte, die jede Sekunde ein Ereignis ausgeben. Sie verwenden eine IoT Hub 24-Partitionsanzahl von 4 als Time Series Insights-Ereignisquelle. Die Größe eines Ereignisses beträgt 200 Byte.
+    Contoso Fleet Analytics verfügt über 60.000 Geräte, die jede Sekunde ein Ereignis ausgeben. Hierfür wird ein Event Hub mit vier Partitionen als Time Series Insights-Ereignisquelle genutzt. Die Größe eines Ereignisses beträgt 200 Byte.
 
-    * Die Erfassungsrate der Umgebung wäre wie folgt: **20.000 Geräte · 200 Byte/Ereignis · 1 Ereignis/s = 4 MBit/s**.
-    * Die Rate pro Partition wäre dann 1 MBit/s.
-    * Von Contoso Fleet Analytics über das Azure-Portal kann eine Anfrage für Time Series Insights gesendet werden, um eine Erhöhung der Erfassungsrate für die Umgebung anzufordern.
+    * Die Erfassungsrate der Umgebung wäre wie folgt: **60.000 Geräte x 200 Byte/Ereignis x 1 Ereignis/s = 12 MBit/s**.
+    * Die Rate pro Partition wäre dann 3 MBit/s.
+    * Die Erfassungsrate von Contoso Fleet Analytics liegt über den Umgebungs- und Partitionsgrenzwerten. Sie können über das Azure-Portal eine Anforderung an Time Series Insights senden, um die Erfassungsrate für ihre Umgebung zu erhöhen, und einen Event Hub mit mehr Partitionen erstellen, um die Grenzwerte der Vorschau nicht zu übersteigen.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Hub-Partitionen und Limits pro Partition
 

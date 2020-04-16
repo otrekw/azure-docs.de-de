@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335213"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804638"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Verwenden des Moduls Spatial IO von Azure Maps
 
@@ -26,6 +26,13 @@ Das Azure Maps Web SDK bietet das Modul **Spatial IO** , das räumliche Daten mi
 - [Nutzen sehr schneller Klassen zum Lesen und Schreiben von XML-Dateien und Dateien mit Trennzeichen](spatial-io-core-operations.md).
 
 In diesem Leitfaden erfahren Sie, wie Sie das Modul Spatial IO in eine Webanwendung integrieren und verwenden können.
+
+Dieses Video enthält eine Übersicht über das Modul Spatial IO im Azure Maps Web SDK.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Einfaches Integrieren von räumlichen Daten in Azure Maps – Microsoft Channel 9-Video"></iframe>
+
 
 > [!WARNING]
 > Verwenden Sie nur Daten und Dienste, die aus einer vertrauenswürdigen Quelle stammen, insbesondere, wenn sie von einer anderen Domäne aus darauf verweisen. Das räumliche IO-Modul unternimmt Maßnahmen zum Minimieren des Risikos, der sicherste Ansatz besteht aber darin, von vornherein keine gefährlichen Daten in Ihrer Anwendung zuzulassen. 

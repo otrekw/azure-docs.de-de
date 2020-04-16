@@ -4,12 +4,12 @@ description: Anleitung zum Bereitstellen einer verknüpften Vorlage
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081799"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672914"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Tutorial: Bereitstellen einer verknüpften Vorlage
 
@@ -90,6 +90,9 @@ Write-Host "Press [ENTER] to continue ..."
 Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token, und fügen Sie es dem URI für die Vorlage hinzu. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt. Auf den Blob, der die Vorlage enthält, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](./deployment-tutorial-local-template.md#create-resource-group).
+
+> [!NOTE]
+> Der date-Parameter „-d“ im folgenden Azure CLI-Code wäre unter macOS ein ungültiges Argument. Wenn macOS-Benutzer im Terminal zwei Stunden zur aktuellen Zeit addieren möchten, müssen sie „-v+2H“ verwenden.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

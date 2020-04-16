@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/20/2020
-ms.author: dapine
-ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: trbye
+ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116903"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400321"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -18,7 +18,7 @@ ms.locfileid: "80116903"
 * Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar:
     * Windows: x64 und x86.
     * Mac: macOS X Version 10.12 oder höher
-    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 unter x64
+    * Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 für x64.
 * Führen Sie unter Linux die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
@@ -43,7 +43,7 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Befolgen Sie unter RHEL/CentOS 7/8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ---
 
@@ -135,7 +135,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Wenn ein Python-Interpreter ausgewählt wurde, wird er auf der linken Seite der Statusleiste am unteren Rand des Fensters angezeigt.
    Zeigen Sie andernfalls eine Liste der verfügbaren Python-Interpreter an. Öffnen Sie die Befehlspalette (<kbd>STRG+UMSCHALT+P</kbd>), und geben Sie **Python: Select Interpreter** ein. Wählen Sie einen passenden Interpreter aus.
 1. Sie können das Speech SDK-Paket für Python über Visual Studio Code installieren. Führen Sie diesen Schritt aus, wenn es für den ausgewählten Python-Interpreter noch nicht installiert wurde.
-   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Öffnen Sie erneut die Befehlspalette (<kbd>STRG+UMSCHALT+P</kbd>), und geben Sie **Terminal: Neues integriertes Terminal erstellen** ein.
+   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Öffnen Sie erneut die Befehlspalette (<kbd>STRG+UMSCHALT+P</kbd>), und geben Sie **Terminal: Neues integriertes Terminal erstellen** eingeben.
    Geben Sie im Terminal, das geöffnet wird, den Befehl `python -m pip install azure-cognitiveservices-speech` bzw. den entsprechenden Befehl für Ihr System ein.
 1. Klicken Sie zum Ausführen des Beispielcodes mit der rechten Maustaste an einer beliebigen Stelle im Editor. Wählen Sie **Run Python File in Terminal** (Python-Datei im Terminal ausführen) aus.
    Ihr Text wird in Sprache konvertiert und in den angegebenen Audiodaten gespeichert.
@@ -148,7 +148,7 @@ Falls Sie Probleme beim Ausführen dieser Anweisungen haben, können Sie das aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e520c9a1e9d40c318b8e2b69801bf5cc600e16bb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/16/2020
+ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772043"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547500"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Verbindungsarchitektur in Azure Database for MySQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MySQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MySQL-Instanz weitergeleitet wird.
@@ -35,14 +35,14 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | Brasilien Süd | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Kanada, Mitte |40.85.224.249  |
 | Kanada, Osten | 40.86.226.166    |
-| USA (Mitte) | 23.99.160.139, 13.67.215.62   |
+| USA (Mitte) | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | China, Osten | 139.219.130.35    |
 | China, Osten 2 | 40.73.82.1  |
 | China, Norden | 139.219.15.17    |
 | China, Norden 2 | 40.73.50.0     |
 | Asien, Osten | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | East US | 40.121.158.30, 191.238.6.43  |
-| USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1  |
 | Deutschland, Mitte | 51.4.144.100     |
 | Deutschland, Nordosten | 51.5.144.179  |
@@ -50,11 +50,11 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | Indien, Süden | 104.211.224.146  |
 | Indien, Westen | 104.211.160.80    |
 | Japan, Osten | 13.78.61.196, 191.237.240.43  |
-| Japan, Westen | 104.214.148.156, 191.238.68.11, 40.74.96.7, 40.74.96.6 |
+| Japan, Westen | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Korea, Mitte | 52.231.32.42   |
 | Korea, Süden | 52.231.200.86    |
 | USA Nord Mitte | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Nordeuropa | 40.113.93.91, 191.235.193.75    |
+| Nordeuropa | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Südafrika, Norden  | 102.133.152.0    |
 | Südafrika, Westen | 102.133.24.0   |
 | USA Süd Mitte |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -64,12 +64,24 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | UK, Süden | 51.140.184.11   |
 | UK, Westen | 51.141.8.11  |
 | USA, Westen-Mitte | 13.78.145.25     |
-| Europa, Westen | 40.68.37.158, 191.237.232.75     |
+| Europa, Westen | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
 | USA (Westen) | 104.42.238.205, 23.99.34.75  |
 | USA, Westen 2 | 13.66.226.202  |
 ||||
+
+## <a name="connection-redirection"></a>Verbindungsumleitung
+
+Azure Database for MySQL unterstützt eine zusätzliche Verbindungsrichtlinie, **Umleitung**, mit der die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern reduziert werden kann. Bei diesem Feature gibt der Server die Back-End-Adresse des Knotens, auf dem der MySQL-Server gehostet wird, an den Client zurück, nachdem die erste TCP-Sitzung mit dem Azure Database for MySQL-Server eingerichtet wurde. Anschließend werden alle nachfolgenden Pakete direkt an den Server übertragen, wobei das Gateway umgangen wird. Wenn Pakete direkt an den Server übertragen werden, wird die Leistung von Latenz und Durchsatz verbessert.
+
+Dieses Feature wird in Azure Database for MySQL-Servern mit den Engine-Versionen 5.6, 5.7 und 8.0 unterstützt.
+
+Die Umleitungsunterstützung steht in der von Microsoft entwickelten Erweiterung [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) und in [PECL](https://pecl.php.net/package/mysqlnd_azure) zur Verfügung. Weitere Informationen zur Verwendung der Umleitung in Ihren Anwendungen finden Sie im Artikel [Konfigurieren der Umleitung](./howto-redirection.md).
+
+> [!IMPORTANT]
+> Die Umleitungsunterstützung in der PHP-Erweiterung [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) befindet sich derzeit in der Vorschauphase.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./howto-manage-firewall-using-portal.md)
 * [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI](./howto-manage-firewall-using-cli.md)
+* [Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung](./howto-redirection.md)

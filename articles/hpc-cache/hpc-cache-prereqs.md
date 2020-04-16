@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233430"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655659"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -113,7 +113,7 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
 
   Stellen Sie sicher, dass alle von der ``rpcinfo``-Abfrage zurückgegebenen Ports uneingeschränkten Datenverkehr aus dem Azure HPC Cache-Subnetz zulassen.
 
-  * Vergewissern Sie sich zusätzlich zur Überprüfung der vom Befehl `rpcinfo` zurückgegebenen Ports, dass an den folgenden häufig verwendeten Ports eingehender und ausgehender Datenverkehr zugelassen wird:
+  * Wenn Sie den Befehl `rpcinfo` nicht verwenden können, vergewissern Sie sich, dass an den folgenden häufig verwendeten Ports ein- und ausgehender Datenverkehr zugelassen wird:
 
     | Protocol | Port  | Dienst  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | mountd   |
     | TCP/UDP  | 4047  | status   |
+
+    Bei einigen Systemen werden für diese Dienste verschiedene Portnummern verwendet. Schlagen Sie in der Dokumentation zu Ihrem Speichersystem nach, ob dies für Ihr System zutrifft.
 
   * Vergewissern Sie sich, dass die Firewalleinstellungen Datenverkehr an allen diesen erforderlichen Ports zulassen. Überprüfen Sie sowohl in Azure verwendete Firewalls als auch lokale Firewalls in Ihrem Rechenzentrum.
 
@@ -132,7 +134,7 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
 
   Weitere Informationen zum Auflistungszugriff auf Verzeichnisse finden Sie im [Artikel zur Problembehandlung](troubleshoot-nas.md#enable-export-listing) für NFS-Speicherziele.
 
-* **Root-Zugriff:** Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
+* **Root-Zugriff** (Lesen/Schreiben): Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
   
   * `no_root_squash`aktivieren. Diese Option sorgt dafür, dass der Root-Remotebenutzer auf Dateien zugreifen kann, die sich im Besitz von Root befinden.
 

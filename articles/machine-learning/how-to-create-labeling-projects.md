@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296947"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873887"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296947"
 
 Das Beschriften großer Datenmengen in Projekten für maschinelles Lernen bereitet häufig Kopfzerbrechen. Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Beschriftungen für Tausende von Bildern.
  
-[Azure Machine Learning](https://ml.azure.com/) ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
+[Azure Machine Learning](https://ml.azure.com/) ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten (öffentliche Vorschau). Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
 
 Machine Learning verfolgt den Fortschritt nach und verwaltet die Warteschlange mit unvollständigen Beschriftungsaufgaben. Beschriftungsersteller benötigen kein Azure-Konto für die Teilnahme. Nachdem sie mit Ihrem Microsoft-Konto oder über [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) authentifiziert sind, können sie sich Beschriftungsaufgaben widmen, so wie es ihre Zeit erlaubt.
 
 Sie können das Projekt starten und beenden, Beschriftungsersteller und Teams hinzufügen und entfernen sowie den Beschriftungsstatus überwachen. Sie können beschriftete Daten im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
 
 > [!Important]
-> Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.) 
+> Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.)
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -41,6 +41,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+
 * Die zu beschriftenden Daten (entweder in lokalen Dateien oder in Azure Blob Storage).
 * Der Satz von Beschriftungen, die Sie anwenden möchten.
 * Die Anweisungen für die Beschriftung.
@@ -51,11 +52,12 @@ In diesem Artikel lernen Sie Folgendes:
 
 Beschriftungsprojekte werden in Azure Machine Learning verwaltet. Auf der Seite **Beschriftungsprojekte** verwalten Sie Projekte und Personen. Einem Projekt können ein oder mehrere Teams zugewiesen sein, und ein Team kann aus einem oder mehreren Personen bestehen.
 
-Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ausführliche Informationen dazu finden Sie unter [Erstellen und Registrieren von Datenspeichern](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores).
+Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ein Beispiel zum Verwenden eines Datenspeichers finden Sie unter [Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung](tutorial-labeling.md).
 
 Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie dem Projekt einen geeigneten Namen, und wählen Sie den **Beschriftungsaufgabentyp** aus.
 
 ![Assistent zum Erstellen von Beschriftungsprojekten](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Wählen Sie **Bildklassifizierung mit mehreren Klassen** für Projekte aus, in denen nur eine *einzige Klasse* aus einer Reihe von Klassen auf ein Bild angewendet werden soll.
 * Wählen Sie **Bildklassifizierung mit mehreren Beschriftungen** für Projekte aus, in denen *eine oder mehrere* Beschriftungen aus einer Reihe von Klassen auf ein Bild angewendet werden sollen. Ein Foto eines Hunds z. B. kann sowohl mit *Hund* als auch mit *Tag* beschriftet werden.
@@ -168,9 +170,9 @@ Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projek
 
 ## <a name="manage-teams-and-people"></a>Verwalten von Teams und Personen
 
-Standardmäßig wird für jedes Beschriftungsprojekt, das Sie erstellen, ein neues Team mit Ihnen als Mitglied angezeigt. Teams können aber auch von Projekten gemeinsam genutzt werden. Und Projekte können über mehrere Teams verfügen. Zum Erstellen eines Teams wählen Sie auf der Seite **Teams** die Option **Team hinzufügen** aus.
+Standardmäßig wird für jedes Beschriftungsprojekt, das Sie erstellen, ein neues Team mit Ihnen als Mitglied angezeigt. Teams können aber auch von Projekten gemeinsam genutzt werden. Und Projekte können über mehrere Teams verfügen. Zum Erstellen eines Teams wählen Sie auf der Seite **Teams** die Option **Team hinzufügen** aus. 
 
-Personen werden auf der Seite **Personen** verwaltet. Personen werden per E-Mail-Adresse hinzugefügt und entfernt. Jeder Beschriftungsersteller muss sich mit Ihrem Microsoft-Konto oder über Azure Active Directory authentifizieren, falls Sie es verwenden.  
+Personen werden auf der Seite **Beschriftungsersteller** verwaltet. Personen werden per E-Mail-Adresse hinzugefügt und entfernt. Jeder Beschriftungsersteller muss sich mit Ihrem Microsoft-Konto oder über Azure Active Directory authentifizieren, falls Sie es verwenden.  
 
 Nachdem Sie eine Person hinzugefügt haben, können Sie diese einem oder mehreren Teams zuweisen: Wechseln Sie zur Seite **Teams**, wählen Sie das Team aus, und wählen Sie dann **Personen zuweisen** oder **Personen entfernen** aus.
 
@@ -216,5 +218,6 @@ Die COCO-Datei wird im Standardblobspeicher des Azure Machine Learning-Arbeitsbe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung](tutorial-labeling.md).
 * Beschriften von Bildern für die [Bildklassifizierung oder Objekterkennung](how-to-label-images.md)
 * Weitere Informationen zu [Azure Machine Learning und Machine Learning Studio (klassisch)](compare-azure-ml-to-studio-classic.md)

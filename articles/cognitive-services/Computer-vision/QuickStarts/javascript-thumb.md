@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1d07bc12f33df7253a849b605fdaff1f2f0123dd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974545"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656059"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und JavaScript
 
@@ -26,18 +26,18 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`.
+Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. Speichern Sie Ihren Abonnementschlüssel und Ihre Endpunkt-URL in einem temporären Verzeichnis.
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-1. Kopieren Sie den folgenden Code in einen Text-Editor.
-1. Ersetzen Sie optional den Wert des Attributs `value` für das Steuerelement `inputImage` durch die URL eines anderen Bilds, das Sie analysieren möchten.
-1. Speichern Sie den Code als Datei mit der Erweiterung `.html`. Beispiel: `get-thumbnail.html`.
+1. Erstellen Sie eine Datei mit dem Namen _get-thumbnail.html_, öffnen Sie die Datei in einem Text-Editor, und kopieren Sie den folgenden Code in die Datei.
+1. Ersetzen Sie optional den Wert des Attributs `value` des Steuerelements `inputImage` durch die URL eines anderen Bilds, das Sie analysieren möchten.
 1. Öffnen Sie ein Browserfenster.
 1. Ziehen Sie die Datei in das Browserfenster, und legen Sie sie dort ab.
-1. Wenn die Webseite im Browser angezeigt wird, klicken Sie auf die Schaltfläche **Miniaturansicht generieren**.
+1. Wenn die Webseite im Browser angezeigt wird, kopieren Sie Ihren Abonnementschlüssel und Ihre Endpunkt-URL in die entsprechenden Eingabefelder.
+1. Wählen Sie abschließend die Schaltfläche **Miniaturansicht generieren** aus.
 
 ```html
 <!DOCTYPE html>
@@ -53,9 +53,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/generateThumbnail";
 
@@ -122,6 +121,13 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 <h1>Generate thumbnail image:</h1>
 Enter the URL to an image to use in creating a thumbnail image,
 then click the <strong>Generate thumbnail</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image for thumbnail:
 <input type="text" name="inputImage" id="inputImage"

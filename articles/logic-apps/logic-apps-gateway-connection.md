@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 02/14/2020
+ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456576"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657137"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -59,6 +59,9 @@ Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Datengateway.
 * Ihre Gatewayinstallation wurde noch nicht registriert und von einer anderen Azure-Gatewayressource beansprucht.
 
   Wenn Sie im Azure-Portal eine Gatewayressource erstellen, wählen Sie eine Gatewayinstallation aus, die mit ihrer Gatewayressource und nur mit dieser Gatewayressource verknüpft ist. In Azure Logic Apps verwenden lokale Trigger und Aktionen dann die Gatewayressource, um eine Verbindung mit lokalen Datenquellen herzustellen. In diesen Triggern und Aktionen wählen Sie Ihr Azure-Abonnement und die zugehörige Gatewayressource aus, die Sie verwenden möchten. Jede Gatewayressource ist nur mit einer Gatewayinstallation verknüpft, die nur mit einem Azure-Konto verknüpft ist.
+
+  > [!NOTE]
+  > Nur Ger gatewayadministrator kann die Gatewayressource im Azure-Portal erstellen. Zurzeit werden Dienstprinzipale nicht unterstützt. 
 
 <a name="create-gateway-resource"></a>
 

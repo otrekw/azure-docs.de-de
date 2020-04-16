@@ -2,19 +2,19 @@
 title: 'Tutorial: Hinzufügen von Ausgaben zur Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Ausgaben hinzu, um die Syntax zu vereinfachen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765744"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743553"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Ausgaben zur Azure Resource Manager-Vorlage
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>Tutorial: Hinzufügen von Ausgaben zu Ihrer ARM-Vorlage
 
-In diesem Tutorial erfahren Sie, wie Sie einen Wert aus Ihrer Vorlage zurückgeben. Sie verwenden Ausgaben, wenn Sie einen Wert von einer bereitgestellten Ressource benötigen. Dieses Tutorial dauert ungefähr **7 Minuten**.
+In diesem Tutorial wird beschrieben, wie Sie einen Wert aus Ihrer ARM-Vorlage (Azure Resource Manager) zurückgeben. Sie verwenden Ausgaben, wenn Sie einen Wert von einer bereitgestellten Ressource benötigen. Dieses Tutorial dauert ungefähr **7 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +52,7 @@ Jetzt können Sie die Vorlage bereitstellen und sich den zurückgegebenen Wert a
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -75,7 +77,7 @@ az group deployment create \
 
 ---
 
-Die Ausgabe des Bereitstellungsbefehls enthält ein Objekt, das in etwa wie folgt aussieht:
+Die Ausgabe für den Bereitstellungsbefehl enthält ein ähnliches Objekt wie im folgenden Beispiel (allerdings nur, wenn die Ausgabe im JSON-Format vorliegt):
 
 ```json
 {
@@ -87,6 +89,9 @@ Die Ausgabe des Bereitstellungsbefehls enthält ein Objekt, das in etwa wie folg
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="review-your-work"></a>Überprüfen Ihrer Arbeit
 

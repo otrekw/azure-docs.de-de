@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172676"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474358"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Tutorial: Konfigurieren eines virtuellen Netzwerks für eine Azure Active Directory Domain Services-Instanz
 
@@ -72,18 +72,18 @@ Standardmäßig enthält das virtuelle Azure-Netzwerk, das mit der verwalteten A
 Gehen Sie wie folgt vor, um ein VNET-Subnetz für virtuelle Computer und Anwendungsworkloads zu erstellen:
 
 1. Wählen Sie im Azure-Portal die Ressourcengruppe Ihrer verwalteten Azure AD DS-Domäne aus (beispielsweise *myResourceGroup*). Wählen Sie in der Ressourcenliste das virtuelle Standardnetzwerk aus (beispielsweise *aadds-vnet*).
-1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **Adressraum** aus. Das virtuelle Netzwerk wird mit einem einzelnen Adressraum (*10.0.1.0/24*) erstellt. Dieser wird vom Standardsubnetz verwendet.
+1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **Adressraum** aus. Das virtuelle Netzwerk wird mit einem einzelnen Adressraum (*10.0.2.0/24*) erstellt. Dieser wird vom Standardsubnetz verwendet.
 
     Fügen Sie dem virtuellen Netzwerk einen zusätzlichen IP-Adressbereich hinzu. Die Größe dieses Adressbereichs und der tatsächlich zu verwendende IP-Adressbereich hängen von anderen, bereits bereitgestellten Netzwerkressourcen ab. Der IP-Adressbereich darf sich nicht mit vorhandenen Adressbereichen in Ihrer Azure-Umgebung oder in Ihrer lokalen Umgebung überschneiden. Wählen Sie die Größe des IP-Adressbereichs so, dass sie für die Anzahl virtueller Computer ausreicht, die voraussichtlich im Subnetz bereitgestellt werden.
 
-    Im folgenden Beispiel wird ein zusätzlicher IP-Adressbereich (*10.0.2.0/24*) hinzugefügt. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
+    Im folgenden Beispiel wird ein zusätzlicher IP-Adressbereich (*10.0.3.0/24*) hinzugefügt. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
 
     ![Hinzufügen eines zusätzlichen IP-Adressbereichs für das virtuelle Netzwerk im Azure-Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. Wählen Sie als Nächstes im Menü auf der linken Seite des Fensters für das virtuelle Netzwerk die Option **Subnetze** und anschließend **+ Subnetz** aus, um ein Subnetz hinzuzufügen.
 1. Geben Sie einen Namen für das Subnetz ein (beispielsweise *workloads*). Aktualisieren Sie bei Bedarf den **Adressbereich**, wenn Sie eine Teilmenge des IP-Adressbereichs verwenden möchten, der in den vorherigen Schritten für das virtuelle Netzwerk konfiguriert wurde. Behalten Sie für Optionen wie Netzwerksicherheitsgruppe, Routingtabelle und Dienstendpunkte vorerst die Standardeinstellungen bei.
 
-    Im folgenden Beispiel wird ein Subnetz namens *workloads* mit dem IP-Adressbereich *10.0.2.0/24* erstellt:
+    Im folgenden Beispiel wird ein Subnetz namens *workloads* mit dem IP-Adressbereich *10.0.3.0/24* erstellt:
 
     ![Hinzufügen eines zusätzlichen VNET-Subnetzes im Azure-Portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ In diesem Tutorial werden die DNS-Server des virtuellen Azure-Netzwerks für die
 
 1. Wählen Sie im Azure-Portal die Ressourcengruppe des mittels Peering verbundenen virtuellen Netzwerks aus (beispielsweise *myResourceGroup*). Wählen Sie in der Ressourcenliste das mittels Peering verbundene virtuelle Netzwerk aus (beispielsweise *myVnet*).
 1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **DNS-Server** aus.
-1. Von einem virtuellen Netzwerk werden standardmäßig die integrierten, von Azure bereitgestellten DNS-Server verwendet. Wählen Sie die DNS-Serveroption **Benutzerdefiniert** aus. Geben Sie die IP-Adressen für die Azure AD DS-Domänencontroller ein (üblicherweise *10.0.1.4* und *10.0.1.5*). Bestätigen Sie diese IP-Adressen im Portal im Fenster **Übersicht** Ihrer verwalteten Azure AD DS-Domäne.
+1. Von einem virtuellen Netzwerk werden standardmäßig die integrierten, von Azure bereitgestellten DNS-Server verwendet. Wählen Sie die DNS-Serveroption **Benutzerdefiniert** aus. Geben Sie die IP-Adressen für die Azure AD DS-Domänencontroller ein (üblicherweise *10.0.2.4* und *10.0.2.5*). Bestätigen Sie diese IP-Adressen im Portal im Fenster **Übersicht** Ihrer verwalteten Azure AD DS-Domäne.
 
     ![Konfigurieren der DNS-Server des virtuellen Netzwerks für die Verwendung der Azure AD DS-Domänencontroller](./media/tutorial-configure-networking/custom-dns.png)
 

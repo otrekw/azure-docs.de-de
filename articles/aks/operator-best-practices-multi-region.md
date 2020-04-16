@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
+title: Bewährte Methoden für Business Continuity & Disaster Recovery für AKS
 description: Lernen Sie die Best Practices für Clusteroperator kennen, mit denen Sie die Betriebsbereitschaft Ihrer Anwendungen maximieren und so für Hochverfügbarkeit sorgen und sich auf die Notfallwiederherstellung in Azure Kubernetes Service (AKS) vorbereiten können.
 services: container-service
 author: lastcoolnameleft
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594740"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668296"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
-Bei der Verwaltung von Clustern in Azure Kubernetes Service (AKS) ist die Betriebsbereitschaft Ihrer Anwendungen von größter Bedeutung. AKS sorgt mithilfe von mehreren Knoten in einer Verfügbarkeitsgruppe für Hochverfügbarkeit. Diese mehreren Knoten bieten allerdings keinen Schutz Ihres Systems beim Ausfall einer ganzen Region. Um die Betriebszeit zu maximieren, planen Sie voraus, um die Geschäftskontinuität beizubehalten und die Notfallwiederherstellung vorzubereiten.
+Bei der Verwaltung von Clustern in Azure Kubernetes Service (AKS) ist die Betriebsbereitschaft Ihrer Anwendungen von größter Bedeutung. Standardmäßig bietet AKS durch die Verwendung mehrerer Knoten pro [VMSS-Instanz (Virtual Machine Scale Sets)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) Hochverfügbarkeit. Diese mehreren Knoten bieten allerdings keinen Schutz Ihres Systems beim Ausfall einer ganzen Region. Um die Betriebszeit zu maximieren, planen Sie voraus, um die Geschäftskontinuität beizubehalten und die Notfallwiederherstellung vorzubereiten.
 
 Thema dieses Artikels sind Planungen zur Geschäftskontinuität und Notfallwiederherstellung in AKS-Cluster. Folgendes wird vermittelt:
 
@@ -59,7 +59,7 @@ Informationen zum Einrichten der Endpunkte und der Weiterleitung finden Sie unte
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Layer-7-Anwendungsrouting mit Azure Front Door Service
 
-Traffic Manager verwendet DNS (Layer 3) zum Formen des Datenverkehrs. [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) stellt eine Routingoption über HTTP/HTTPS (Layer 7) bereit. Zu den weiteren Features von Azure Front Door Service gehören SSL-Terminierung, benutzerdefinierte Domänen, Web Application Firewall, URL-Rewrite und Sitzungsaffinität. Überprüfen Sie die Anforderungen des Anwendungsdatenverkehrs, um zu ermitteln, welche Lösung sich am besten eignet.
+Traffic Manager verwendet DNS (Layer 3) zum Formen des Datenverkehrs. [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) stellt eine Routingoption über HTTP/HTTPS (Layer 7) bereit. Zu den weiteren Features von Azure Front Door Service gehören TLS-Terminierung, benutzerdefinierte Domänen, Web Application Firewall, URL-Rewrite und Sitzungsaffinität. Überprüfen Sie die Anforderungen des Anwendungsdatenverkehrs, um zu ermitteln, welche Lösung sich am besten eignet.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Verbinden von Regionen mit globalem Peering virtueller Netzwerke
 

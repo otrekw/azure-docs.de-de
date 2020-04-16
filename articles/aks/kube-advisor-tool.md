@@ -1,17 +1,18 @@
 ---
-title: Überprüfen Ihrer Kubernetes-Bereitstellungen in Azure für die Implementierung von Best Practices
+title: Überprüfen von Bereitstellungen auf Best Practices
+titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Ihre Bereitstellungen von Azure Kubernetes Service mit kube-advisor auf die Implementierung von Best Practices überprüfen können.
 services: container-service
 author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17e21c142dc354de7b72bc17396b19366027c5cd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595432"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668396"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Überprüfen auf Best Practices von Kubernetes in Ihrem Cluster
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112336"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758643"
 ---
 In diesem Schnellstart auf Postman-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -49,7 +49,7 @@ Verwenden Sie diese Vorgehensweise, um Postman zu konfigurieren, und lesen Sie a
 
 ## <a name="use-metadata-to-filter-answer"></a>Filtern von Antworten mithilfe von Metadaten
 
-In einer vorherigen Schnellstartanleitung wurden zwei QnA-Sätzen Metadaten zur Unterscheidung von zwei Fragen hinzugefügt. Fügen Sie die Metadaten der Abfrage hinzu, um den Filter auf den relevanten QnA-Satz zu beschränken.
+In einer vorherigen Schnellstartanleitung wurden zwei Frage-Antwort-Paaren Metadaten zur Unterscheidung von zwei Fragen hinzugefügt. Fügen Sie die Metadaten der Abfrage hinzu, um den Filter auf das relevante Frage-Antwort-Paar zu beschränken.
 
 1. Ändern Sie in Postman nur den JSON-Code der Abfrage, indem Sie die Eigenschaft `strictFilters` mit dem Name-Wert-Paar `service:qna_maker` hinzufügen. Der JSON-Code im Text sollte wie folgt aussehen:
 

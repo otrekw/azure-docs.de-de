@@ -4,19 +4,19 @@ description: Auf dieser Seite zur Azure Multi-Factor Authentication werden die e
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b1654d306d50ff8521193b93da1ce4be624ed70
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848220"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653513"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers zur Verwendung von AD FS 2.0
 
@@ -39,17 +39,17 @@ Wenn Sie AD FS 2.0 mit einem Proxy schützen möchten, müssen Sie den Azure Mul
 
    ![Fenster „IIS-Authentifizierung“ in MFA Server](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. Geben Sie zur automatischen Erkennung von Benutzername, Kennwort und Domänenvariablen im Dialogfeld „Formularbasierte Website automatisch konfigurieren“ die Anmelde-URL (beispielsweise https://sso.contoso.com/adfs/ls) ein, und klicken Sie auf **OK**.
+4. Geben Sie zur automatischen Erkennung von Benutzername, Kennwort und Domänenvariablen im Dialogfeld „Formularbasierte Website automatisch konfigurieren“ die Anmelde-URL (beispielsweise `https://sso.contoso.com/adfs/ls`) ein, und klicken Sie auf **OK**.
 5. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die zweistufige Überprüfung verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der zweistufigen Überprüfung ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 6. Falls die Seitenvariablen nicht automatisch erkannt werden können, klicken Sie auf die Schaltfläche **Manuell angeben...** (im Dialogfeld „Formularbasierte Website automatisch konfigurieren“).
-7. Geben Sie im Dialogfeld „Formularbasierte Website hinzufügen“ im Feld „Sende-URL“ die URL der AD FS-Anmeldeseite (beispielsweise https://sso.contoso.com/adfs/ls) und optional einen Anwendungsnamen ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
+7. Geben Sie im Dialogfeld „Formularbasierte Website hinzufügen“ im Feld „Sende-URL“ die URL der AD FS-Anmeldeseite (z. B. `https://sso.contoso.com/adfs/ls`) und optional einen Anwendungsnamen ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 8. Legen Sie das Anforderungsformat auf **POST oder GET** fest.
 9. Geben Sie die Username-Variable (ctl00$ContentPlaceHolder1$UsernameTextBox) und die Password-Variable (ctl00$ContentPlaceHolder1$PasswordTextBox) ein. Wenn auf Ihrer formularbasierten Anmeldeseite ein Textfeld für die Domäne angezeigt wird, geben Sie auch die Domain-Variable ein. Navigieren Sie in einem Webbrowser zur Anmeldeseite, klicken Sie mit der rechten Maustaste auf die Seite, und wählen Sie **Quelltext anzeigen** aus, um die Namen der Eingabefelder auf der Anmeldeseite zu ermitteln.
 10. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die zweistufige Überprüfung verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der zweistufigen Überprüfung ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 
     ![Hinzufügen einer formularbasierten Website zu MFA Server](./media/howto-mfaserver-adfs-2/manual.png)
 
-11. Klicken Sie auf **Erweitert...** , um die erweiterten Einstellungen anzuzeigen. Hier haben Sie unter anderem folgende Möglichkeiten:
+11. Klicken Sie auf **Erweitert** um die erweiterten Einstellungen anzuzeigen. Hier haben Sie unter anderem folgende Möglichkeiten:
 
     - Sie können eine Datei für eine benutzerdefinierte Verweigerungsseite auswählen.
     - Sie können erfolgreiche Authentifizierungen bei der Website mithilfe von Cookies speichern.
@@ -57,9 +57,9 @@ Wenn Sie AD FS 2.0 mit einem Proxy schützen möchten, müssen Sie den Azure Mul
 
 12. Da der AD FS-Proxyserver wahrscheinlich nicht der Domäne angehört, können Sie LDAP verwenden, um für den Benutzerimport und die Vorauthentifizierung eine Verbindung mit dem Domänencontroller herzustellen. Klicken Sie im Dialogfeld „Erweiterte formularbasierte Website“ auf die Registerkarte **Primäre Authentifizierung**, und wählen Sie als Vorauthentifizierungstyp die Option **LDAP-Bindung** aus.
 13. Klicken Sie abschließend auf **OK**, um zum Dialogfeld „Formularbasierte Website hinzufügen“ zurückzukehren.
-14. Klicken Sie auf **OK**, um das Dialogfeld zu schließen.
+14. Klicken Sie auf **OK** , um das Dialogfeld zu schließen.
 15. Sobald die URL und die Seitenvariablen erkannt bzw. eingegeben wurden, werden die Websitedaten im Bereich „Formularbasiert“ angezeigt.
-16. Klicken Sie auf die Registerkarte **Systemeigenes Modul**, und wählen Sie den Server, die Website, unter der der AD FS ausgeführt wird (beispielsweise „Standardwebsite“), oder die AD FS-Proxyanwendung (beispielsweise „ls“ unter „adfs“) aus, um das IIS-Plug-In auf der gewünschten Ebene zu aktivieren.
+16. Klicken Sie auf die Registerkarte **Systemeigenes Modul**, und wählen Sie den Server, die Website, unter der der AD FS-Proxy ausgeführt wird (z. B. „Standardwebsite“), oder die AD FS-Proxyanwendung (z. B. „ls“ unter „adfs“) aus, um das IIS-Plug-In auf der gewünschten Ebene zu aktivieren.
 17. Aktivieren Sie im oberen Bildschirmbereich das Kontrollkästchen **IIS-Authentifizierung aktivieren**.
 
 Die IIS-Authentifizierung ist jetzt aktiviert.
@@ -73,7 +73,7 @@ Sie haben zwar die IIS-Authentifizierung aktiviert, um die Vorauthentifizierung 
 
    ![Konfigurieren der LDAP-Einstellungen für bestimmte LDAP-Einstellungen](./media/howto-mfaserver-adfs-2/ldap1.png)
 
-3. Klicken Sie auf **Edit**.
+3. Klicken Sie auf **Bearbeiten**.
 4. Füllen Sie im Dialogfeld "LDAP-Konfiguration bearbeiten" die Felder mit den Informationen aus, die für die Verbindung mit dem Active Directory-Domänencontroller erforderlich sind. Beschreibungen der Felder sind in der Hilfedatei zum Azure Multi-Factor Authentication-Server enthalten.
 5. Testen Sie die LDAP-Verbindung durch Klicken auf die Schaltfläche **Testen**.
 
@@ -86,7 +86,7 @@ Sie haben zwar die IIS-Authentifizierung aktiviert, um die Vorauthentifizierung 
 1. Klicken Sie als Nächstes auf das Symbol **Unternehmenseinstellungen**, und wählen Sie die Registerkarte **Benutzernamenauflösung** aus.
 2. Wählen Sie das Optionsfeld **Eindeutiges LDAP-Bezeichnerattribut für den Abgleich von Benutzernamen verwenden** aus.
 3. Wenn Benutzer ihren Benutzernamen im Format „Domäne\Benutzername“ eingeben, muss der Server beim Erstellen der LDAP-Abfrage die Domäne vom Benutzernamen trennen können. Dazu kann eine Registrierungseinstellung verwendet werden.
-4. Öffnen Sie den Registrierungs-Editor auf einem 64-Bit-Server, und navigieren Sie zu "HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor". Auf einem 32-Bit-Server fehlt "Wow6432Node" im Pfad. Erstellen Sie einen DWORD-Registrierungsschlüssel namens „UsernameCxz_stripPrefixDomain“, und legen Sie den Wert auf „1“ fest. Der AD FS-Proxy wird nun durch Azure Multi-Factor Authentication geschützt.
+4. Öffnen Sie den Registrierungs-Editor auf einem 64-Bit-Server, und navigieren Sie zu "HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor". Auf einem 32-Bit-Server fehlt „Wow6432Node“ im Pfad. Erstellen Sie einen DWORD-Registrierungsschlüssel namens „UsernameCxz_stripPrefixDomain“, und legen Sie den Wert auf „1“ fest. Der AD FS-Proxy wird nun durch Azure Multi-Factor Authentication geschützt.
 
 Stellen Sie sicher, dass Benutzer aus Active Directory in den Server importiert wurden. Wenn Sie interne IP-Adressen zulassen möchten, sodass bei einer Websiteanmeldung über diese Adressen keine zweistufige Überprüfung erforderlich ist, lesen Sie den Abschnitt [Vertrauenswürdige IP-Adressen](#trusted-ips).
 
@@ -99,7 +99,7 @@ AD FS kann auch ohne Verwendung des AD FS-Proxys geschützt werden. Installieren
 1. Klicken Sie im Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol **IIS-Authentifizierung**.
 2. Klicken Sie auf die Registerkarte **HTTP**.
 3. Klicken Sie auf **Hinzufügen**.
-4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ im Feld „Basis-URL“ die URL für die AD FS-Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise https://sso.domain.com/adfs/ls/auth/integrated). Geben Sie dann einen Anwendungsnamen ein (optional). Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
+4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ im Feld „Basis-URL“ die URL für die AD FS-Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise `https://sso.domain.com/adfs/ls/auth/integrated`). Geben Sie dann einen Anwendungsnamen ein (optional). Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 5. Passen Sie bei Bedarf die Leerlaufzeitüberschreitung und die maximale Sitzungsdauer an.
 6. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die zweistufige Überprüfung verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der zweistufigen Überprüfung ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 7. Aktivieren Sie bei Bedarf das Kontrollkästchen für das Cookie zur Zwischenspeicherung.
@@ -107,7 +107,7 @@ AD FS kann auch ohne Verwendung des AD FS-Proxys geschützt werden. Installieren
    ![AD FS 2.0 – direkt, ohne Proxy](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. Klicken Sie auf **OK**.
-9. Klicken Sie auf die Registerkarte **Systemeigenes Modul**, und wählen Sie den Server, die Website (beispielsweise „Standardwebsite“) oder die AD FS-Anwendung (beispielsweise „ls“ unter „adfs“) aus, um das IIS-Plug-In auf der gewünschten Ebene zu aktivieren.
+9. Klicken Sie auf die Registerkarte **Systemeigenes Modul**, und wählen Sie den Server, die Website (z. B. „Standardwebsite“) oder die AD FS-Anwendung (z. B. „ls“ unter „adfs“) aus, um das IIS-Plug-In auf der gewünschten Ebene zu aktivieren.
 10. Aktivieren Sie im oberen Bildschirmbereich das Kontrollkästchen **IIS-Authentifizierung aktivieren**.
 
 AD FS wird nun durch Azure Multi-Factor Authentication geschützt.

@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 04/03/2020
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916505"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415709"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -148,15 +148,15 @@ Cosmos DB unterstützt das Abfragen von Elementen mithilfe von [SQL](how-to-sql-
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Länge der SQL-Abfrage| 256KB <sup>*</sup>|
+| Maximale Länge der SQL-Abfrage| 256 KB |
 | Maximale Anzahl der JOINs pro Abfrage| 5 <sup>*</sup>|
-| Maximale Anzahl der ANDs pro Abfrage| 2\.000 <sup>*</sup>|
-| Maximale Anzahl der ORs pro Abfrage| 2\.000 <sup>*</sup>|
 | Maximale Anzahl der UDFs pro Abfrage| 10 <sup>*</sup>|
-| Maximale Anzahl der Argumente pro IN-Ausdrucks| 6\.000 <sup>*</sup>|
-| Maximale Anzahl der Punkte pro Polygon| 4\.096 <sup>*</sup>|
+| Maximale Anzahl der Punkte pro Polygon| 4096 |
+| Maximale Anzahl von eingeschlossenen Pfaden pro Container| 500 |
+| Maximale Anzahl von ausgeschlossenen Pfaden pro Container| 500 |
+| Maximale Anzahl von Eigenschaften in einem zusammengesetzten Index| 8 |
 
-<sup>*</sup> Sie können jeden dieser Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden.
+<sup>*</sup> Sie können diese Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-spezifische Grenzwerte
 
@@ -166,7 +166,7 @@ Die folgende Tabelle enthält die spezifischen Grenzwerte für die Unterstützun
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Speichergröße für MongoDB-Abfragen | 40MB |
+| Maximale Speichergröße für MongoDB-Abfragen (diese Einschränkung gilt ausschließlich für die Serverversion 3.2) | 40MB |
 | Maximale Ausführungszeit für MongoDB-Vorgänge| 30 Sek. |
 | Zeitlimit für Leerlaufverbindung für serverseitige Verbindungsschließung* | 30 Minuten |
 
@@ -186,6 +186,20 @@ Die folgende Tabelle enthält die Grenzwerte für die [Azure Cosmos DB kostenlos
 | Max. Gesamtspeicher pro Konto | 10 GB |
 
 „Azure Cosmos DB kostenlos testen“ unterstützt die globale Verteilung nur in den Regionen „USA, Mitte“, „Europa, Norden“ und „Asien, Südosten“. Für „Azure Cosmos DB kostenlos testen“-Konten können keine Azure-Supporttickets erstellt werden. Abonnenten mit bestehenden Supportplänen wird allerdings Support gewährt.
+
+## <a name="free-tier-account-limits"></a>Kontolimits für den Free-Tarif
+Die folgende Tabelle enthält die Limits für [Free-Tarif-Konten in Azure Cosmos DB](optimize-dev-test.md#azure-cosmos-db-free-tier).
+
+| Resource | Standardlimit |
+| --- | --- |
+| Anzahl der Free-Tarif-Konten pro Azure-Abonnement | 1 |
+| Dauer des Free-Tarif-Rabatts | Gültigkeitsdauer des Kontos. Aktivierung ist während der Kontoerstellung erforderlich. |
+| Maximale Anzahl kostenloser RU/s | 400 RU/s |
+| Maximaler kostenloser Speicherplatz | 5 GB |
+| Maximale Anzahl von Datenbanken mit gemeinsam genutztem Durchsatz | 5 |
+| Maximale Anzahl von Containern in einer Datenbank mit gemeinsam genutztem Durchsatz | 25 <br>Bei Konten mit Free-Tarif hat eine Datenbank mit gemeinsam genutztem Durchsatz mit bis zu 25 Containern mindestens 400 RU/s. |
+
+  Zusätzlich zu den oben genannten Einschränkungen gelten die [Grenzwerte pro Konto](#per-account-limits) auch für Free-Tarif-Konten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

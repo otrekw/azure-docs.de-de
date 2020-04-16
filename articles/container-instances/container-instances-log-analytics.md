@@ -2,20 +2,22 @@
 title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Containergruppen in Azure Container Instances an Azure Monitor-Protokolle senden können.
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770542"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892392"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
 Log Analytics-Arbeitsbereiche bieten einen zentralen Ort zum Speichern und Abfragen von Protokolldaten – sowohl für Azure-Ressourcen als auch für lokale Ressourcen und Ressourcen in anderen Clouds. In Azure Container Instances ist die Unterstützung für das Senden von Protokollen und Ereignisdaten an Azure Monitor-Protokolle bereits integriert.
 
-Um Containergruppenprotokolle und -ereignisdaten an Azure Monitor-Protokolle senden zu können, geben Sie beim Erstellen einer Containergruppe eine vorhandene ID und den Arbeitsbereichsschlüssel eines Log Analytics-Arbeitsbereichs an. In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit aktivierter Protokollierung erstellen und Protokolle abfragen.
+Um Containergruppenprotokolle und -ereignisdaten an Azure Monitor-Protokolle zu senden, geben Sie beim Konfigurieren einer Containergruppe eine ID und den Arbeitsbereichsschlüssel eines vorhandenen Log Analytics-Arbeitsbereichs an. 
+
+In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit aktivierter Protokollierung erstellen und Protokolle abfragen. Sie können [eine Containergruppe auch mit einer Arbeitsbereichs-ID und einem Arbeitsbereichsschlüssel aktualisieren](container-instances-update.md), um die Protokollierung zu aktivieren.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

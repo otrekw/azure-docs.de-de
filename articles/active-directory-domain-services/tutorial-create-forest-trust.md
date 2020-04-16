@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/19/2019
+ms.topic: tutorial
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a76f72d3f01ab9253c452e49dde171280fe481d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612519"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654411"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)
 
@@ -59,7 +59,7 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung in Azure AD DS konfigurieren, s
 
 * Es werden private IP-Adressen verwendet. Sie sollten sich nicht auf DHCP mit dynamischer Zuweisung von IP-Adressen verlassen.
 * Überlappende IP-Adressräume sollten vermieden werden, damit Peering und Routing von virtuellen Netzwerken ermöglicht wird, um eine erfolgreiche Kommunikation zwischen Azure und lokalen Ressourcen zu erreichen.
-* Ein virtuelles Azure-Netzwerk erfordert ein Gatewaysubnetz, um eine Site-to-Site-VPN- oder ExpressRoute-Verbindung zu konfigurieren.
+* Ein virtuelles Azure-Netzwerk erfordert ein Gatewaysubnetz, um eine [S2S-VPN][vpn-gateway]-Verbindung (Site-to-Site) oder [ExpressRoute][expressroute]-Verbindung zu konfigurieren.
 * Es wurden Subnetze mit genügend IP-Adressen erstellt, um Ihr Szenario zu unterstützen.
 * Vergewissern Sie sich, dass Azure AD DS ein eigenes Subnetz hat. Dieses Subnetz des virtuellen Netzwerks sollte nicht gemeinsam mit Anwendungs-VMs und Diensten verwendet werden.
 * Über Peering verbundene virtuelle Netzwerke sind nicht transitiv.
@@ -74,7 +74,7 @@ Um die von Azure AD DS verwaltete Domäne ordnungsgemäß aus der lokalen Umgebu
 1. Wählen Sie **Start | Verwaltung | DNS** aus.
 1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, z. B. *meinAD01*, und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie **Weiterleitungen** und dann **Bearbeiten** aus, um weitere Weiterleitungen hinzuzufügen.
-1. Fügen Sie die IP-Adressen der verwalteten Azure AD DS-Domäne hinzu, z. B. *10.0.1.4* und *10.0.1.5*.
+1. Fügen Sie die IP-Adressen der verwalteten Azure AD DS-Domäne hinzu, z. B. *10.0.2.4* und *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Erstellen der eingehenden Gesamtstruktur-Vertrauensstellung in der lokalen Domäne
 
@@ -85,10 +85,6 @@ Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurier
 1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
 1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com*, und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Vertrauensstellungen** aus, und wählen Sie dann **Neue Vertrauensstellung** aus.
-
-   > [!NOTE]
-   > Wenn die Menüoption **Vertrauensstellungen** nicht angezeigt wird, suchen Sie unter **Eigenschaften** nach dem *Gesamtstrukturtyp*. Nur *Ressourcengesamtstrukturen* können Vertrauensstellungen erstellen. Wenn der Gesamtstrukturtyp *Benutzer* lautet, können Sie keine Vertrauensstellungen erstellen. Es gibt derzeit keine Möglichkeit, den Gesamtstrukturtyp einer verwalteten Azure AD DS-Domäne zu ändern. Sie müssen die verwaltete Domäne löschen und als eine Ressourcengesamtstruktur neu erstellen.
-
 1. Geben Sie einen Namen für die Azure AD DS-Domäne ein, z. B. *aaddscontoso.com*, und wählen Sie dann **Weiter** aus.
 1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend**-Vertrauensstellung aus.
 1. Wählen Sie die Option aus, mit der die Vertrauensstellung **Nur für diese Domäne** erstellt wird. Im nächsten Schritt erstellen Sie die Vertrauensstellung im Azure-Portal für die verwaltete Azure AD DS-Domäne.
@@ -104,12 +100,16 @@ Führen Sie die folgenden Schritte aus, um die ausgehende Vertrauensstellung fü
 
 1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie dann Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*.
 1. Wählen Sie im Menü auf der linken Seite der verwalteten Azure AD DS-Domäne die Option **Vertrauensstellungen** aus, und wählen Sie dann **+ Hinzufügen** aus.
+
+   > [!NOTE]
+   > Wenn die Menüoption **Vertrauensstellungen** nicht angezeigt wird, suchen Sie unter **Eigenschaften** nach dem *Gesamtstrukturtyp*. Nur *Ressourcengesamtstrukturen* können Vertrauensstellungen erstellen. Wenn der Gesamtstrukturtyp *Benutzer* lautet, können Sie keine Vertrauensstellungen erstellen. Es gibt derzeit keine Möglichkeit, den Gesamtstrukturtyp einer verwalteten Azure AD DS-Domäne zu ändern. Sie müssen die verwaltete Domäne löschen und als eine Ressourcengesamtstruktur neu erstellen.
+
 1. Geben Sie einen Anzeigenamen ein, der Ihre Vertrauensstellung kennzeichnet, und geben Sie dann den lokalen DNS-Namen der vertrauenswürdigen Gesamtstruktur ein, z. B. *onprem.contoso.com*.
 1. Geben Sie dasselbe Vertrauensstellungskennwort an, das beim Konfigurieren der eingehenden Gesamtstruktur-Vertrauensstellung für die lokale AD DS-Domäne im vorherigen Abschnitt verwendet wurde.
-1. Geben Sie mindestens zwei DNS-Server für die lokale AD DS-Domäne an, z. B. *10.0.2.4* und *10.0.2.5*
+1. Geben Sie mindestens zwei DNS-Server für die lokale AD DS-Domäne an, z. B. *10.1.1.4* und *10.1.1.5*.
 1. Wählen Sie dann **Speichern** aus, um die ausgehende Gesamtstruktur-Vertrauensstellung zu speichern.
 
-    [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung im Azure-Portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung im Azure-Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Überprüfen der Ressourcenauthentifizierung
 
@@ -126,11 +126,7 @@ Mit den folgenden gängigen Szenarien können Sie überprüfen, ob die Gesamtstr
 
 Sie sollten den virtuellen Windows Server-Computer mit der Azure AD DS-Ressourcendomäne verknüpft haben. Verwenden Sie diesen virtuellen Computer, um zu testen, ob der lokale Benutzer sich bei einem virtuellen Computer authentifizieren kann.
 
-1. Stellen Sie über „Remotedesktop“ und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit Azure AD DS-Ressourcengesamtstruktur verknüpft ist. Wird ein „Authentifizierung auf Netzwerkebene“-Fehler gemeldet, überprüfen Sie, ob das von Ihnen verwendete Benutzerkonto tatsächlich ein Domänenbenutzerkonto ist.
-
-    > [!NOTE]
-    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](https://docs.microsoft.com/azure/bastion/bastion-overview) in unterstützten Azure-Regionen verwenden.
-
+1. Stellen Sie über [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
 1. Öffnen Sie eine Eingabeaufforderung, und verwenden Sie den `whoami`-Befehl, um den kennzeichnenden Namen (distinguished name) des derzeit authentifizierten Benutzers anzuzeigen:
 
     ```console
@@ -152,10 +148,7 @@ Mit dem virtuellen Windows Server-Computer, der mit der Azure AD DS-Ressourcenge
 
 #### <a name="enable-file-and-printer-sharing"></a>Aktivieren von Datei- und Druckerfreigabe
 
-1. Stellen Sie über „Remotedesktop“ und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit Azure AD DS-Ressourcengesamtstruktur verknüpft ist. Wird ein „Authentifizierung auf Netzwerkebene“-Fehler gemeldet, überprüfen Sie, ob das von Ihnen verwendete Benutzerkonto tatsächlich ein Domänenbenutzerkonto ist.
-
-    > [!NOTE]
-    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](https://docs.microsoft.com/azure/bastion/bastion-overview) in unterstützten Azure-Regionen verwenden.
+1. Stellen Sie über [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
 
 1. Öffnen Sie **Windows-Einstellungen**, suchen Sie nach **Netzwerk- und Freigabecenter**, und wählen Sie diese Option aus.
 1. Wählen Sie die Option **Erweiterte Freigabeeinstellungen ändern** aus.
@@ -221,3 +214,5 @@ Weitere konzeptbezogene Informationen zu Gesamtstrukturtypen in Azure AD DS fi
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

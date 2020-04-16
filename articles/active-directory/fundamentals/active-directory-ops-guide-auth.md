@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368044"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876291"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -64,8 +64,8 @@ Anhand der folgenden Tabelle können Sie die empfohlene Lösung zur Behebung ein
 | Es liegt kein Mechanismus zum Schutz vor schwachen Kennwörtern vor. | Aktivieren Sie die [Self-Service-Kennwortzurücksetzung (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) und den [Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) von Azure AD. |
 | Es liegt kein Mechanismus zur Ermittlung von kompromittierten Kennwörtern vor. | Aktivieren Sie die [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization), um Informationen zu erhalten. |
 | Es werden Active Directory-Verbunddienste (AD FS) verwendet, und eine Migration zu einer verwalteten Authentifizierung ist nicht möglich. | Aktivieren Sie [AD FS Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) und/oder [Azure AD Smart Lockout](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout). |
-| Die Kennwortrichtlinie nutzt komplexitätsbasierte Regeln wie Länge, mehrere Zeichensätze oder Ablaufdatum. | Erwägen Sie [von Microsoft empfohlene bewährte Methoden](https://aka.ms/passwordguidance), wechseln Sie von Ihrem Ansatz zur Kennwortverwaltung, und stellen Sie den [Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) bereit. |
-| Benutzer sind nicht für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) registriert. | [Registrieren Sie die Sicherheitsinformationen aller Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy), damit diese mit dem Kennwort zum Verifizieren der Benutzeridentität verwendet werden können. |
+| Die Kennwortrichtlinie nutzt komplexitätsbasierte Regeln wie Länge, mehrere Zeichensätze oder Ablaufdatum. | Erwägen Sie [von Microsoft empfohlene bewährte Methoden](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf), wechseln Sie von Ihrem Ansatz zur Kennwortverwaltung, und stellen Sie den [Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) bereit. |
+| Benutzer sind nicht für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) registriert. | [Registrieren Sie die Sicherheitsinformationen aller Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy), damit diese mit dem Kennwort zum Verifizieren der Benutzeridentität verwendet werden können. |
 | Kennwörter werden nicht basierend auf dem Benutzerrisiko gesperrt. | Stellen Sie die [Benutzerrisikorichtlinien von Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) bereit, um Kennwortänderungen bei kompromittierten Anmeldeinformationen mit SSPR zu erzwingen. |
 | Es gibt keinen Smart Lockout-Mechanismus für den Schutz vor böswilligen Authentifizierungsanforderungen durch schädliche Akteure, die von identifizierten IP-Adressen stammen. | Stellen Sie die cloudverwaltete Authentifizierung mit Kennworthashsynchronisierung oder [Pass-Through-Authentifizierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) bereit. |
 
@@ -97,17 +97,17 @@ Kennwörter allein sind nicht sicher genug, um böswillige Akteure davon abzuhal
 
 Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Office 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
 
-Wenn Ihre lokale Organisation über keine Resilienzstrategie für Ausfälle oder über eine Strategie verfügt, die nicht mit Azure AD integriert ist, sollten Sie die Azure AD-Kennworthashsynchronisierung bereitstellen und einen Notfallwiederherstellungsplan definieren, der die Kennworthashsynchronisierung enthält. Indem Sie die Azure AD-Kennworthashsynchronisierung aktivieren, ermöglichen Sie Benutzern die Authentifizierung bei Azure AD, wenn Ihre lokale Active Directory-Lösung nicht verfügbar ist.
+Wenn Ihre lokale Organisation nicht über eine Resilienzstrategie für Ausfälle oder über eine Strategie verfügt, die nicht mit Azure AD integriert ist, sollten Sie die Azure AD-Kennworthashsynchronisierung bereitstellen und einen Notfallwiederherstellungsplan definieren, der die Kennworthashsynchronisierung enthält. Indem Sie die Azure AD-Kennworthashsynchronisierung aktivieren, ermöglichen Sie Benutzern die Authentifizierung bei Azure AD, wenn Ihre lokale Active Directory-Lösung nicht verfügbar ist.
 
 ![Ablauf der Kennworthashsynchronisierung](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Weitere Informationen zu den verfügbaren Authentifizierungsoptionen finden Sie unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Weitere Informationen zu den verfügbaren Authentifizierungsoptionen finden Sie unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../hybrid/choose-ad-authn.md).
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmgesteuerte Nutzung von Anmeldeinformationen
 
-Azure AD-Skripts mit PowerShell oder Anwendungen, die die Microsoft Graph-API nutzen, erfordern sichere Authentifizierung. Bei unzureichender Verwaltung von Anmeldeinformationen kann die Ausführung dieser Skripts und Tools das Risiko des Diebstahls von Anmeldeinformationen erhöhen. Wenn Sie Skripts oder Anwendungen verwenden, die auf hartcodierten Kennwörtern oder Kennworteingabeaufforderungen basieren, sollten Sie zunächst die Kennwörter in den Konfigurationsdateien oder im Quellcode überprüfen. Ersetzen Sie diese Abhängigkeiten anschließend, und verwenden Sie nach Möglichkeit verwaltete Azure-Identitäten, die integrierte Windows-Authentifizierung oder [Zertifikate](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates). Bei Anwendungen, für die die genannten Lösungen nicht möglich sind, sollten Sie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) in Betracht ziehen.
+Azure AD-Skripts mit PowerShell oder Anwendungen, die die Microsoft Graph-API nutzen, erfordern sichere Authentifizierung. Bei unzureichender Verwaltung von Anmeldeinformationen kann die Ausführung dieser Skripts und Tools das Risiko des Diebstahls von Anmeldeinformationen erhöhen. Wenn Sie Skripts oder Anwendungen verwenden, die auf hartcodierten Kennwörtern oder Kennworteingabeaufforderungen basieren, sollten Sie zunächst die Kennwörter in den Konfigurationsdateien oder im Quellcode überprüfen. Ersetzen Sie diese Abhängigkeiten anschließend, und verwenden Sie nach Möglichkeit verwaltete Azure-Identitäten, die integrierte Windows-Authentifizierung oder [Zertifikate](../reports-monitoring/tutorial-access-api-with-certificates.md). Bei Anwendungen, für die die genannten Lösungen nicht möglich sind, sollten Sie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) in Betracht ziehen.
 
-Wenn Sie feststellen, dass es Dienstprinzipale mit Kennwortanmeldeinformationen vorliegen, und Sie sich nicht sicher sind, wie diese Kennwortanmeldeinformationen durch Skripts oder Anwendungen geschützt werden, wenden Sie sich an den Besitzer der Anwendung, um weitere Informationen zu den Nutzungsmustern in Erfahrung zu bringen.
+Wenn Sie feststellen, dass Dienstprinzipale mit Kennwortanmeldeinformationen vorhanden sind, und Sie sich nicht sicher sind, wie diese Kennwortanmeldeinformationen durch Skripts oder Anwendungen geschützt werden, sollten Sie beim Besitzer der Anwendung weitere Informationen zu den Nutzungsmustern erfragen.
 
 Außerdem wird von Microsoft empfohlen, dass Sie Anwendungsbesitzer kontaktieren, um Informationen zu Nutzungsmustern zu erhalten, wenn Dienstprinzipale mit Kennwortanmeldeinformationen vorliegen.
 
@@ -115,7 +115,7 @@ Außerdem wird von Microsoft empfohlen, dass Sie Anwendungsbesitzer kontaktieren
 
 ### <a name="on-premises-authentication"></a>Lokale Authentifizierung
 
-Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der verwalteten Authentifizierung mit nahtlosem einmaligen Anmelden mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung sind am benutzerfreundlichsten, wenn im Unternehmensnetzwerk mit Sichtverbindung mit den lokalen Domänencontrollern gearbeitet wird. Dadurch werden die Komplexität der Eingabeaufforderungen für Anmeldeinformationen und das Risiko reduziert, dass Benutzer auf Phishingangriffe hereinfallen. Wenn Sie bereits eine in der Cloud verwaltete Authentifizierung mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden, die Benutzer aber weiterhin ihre Kennwörter bei der lokalen Authentifizierung eingeben müssen, sollten Sie umgehend [nahtloses SSO bereitstellen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Wenn Sie jedoch derzeit im Verbund mit Plänen für eine eventuelle Migration zu einer in der Cloud verwalteten Authentifizierung sind, sollten Sie das nahtlose SSO im Rahmen des Migrationsprojekts implementieren.
+Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der verwalteten Authentifizierung mit nahtlosem einmaligen Anmelden mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung sind am benutzerfreundlichsten, wenn im Unternehmensnetzwerk mit Sichtverbindung mit den lokalen Domänencontrollern gearbeitet wird. Dadurch werden die Komplexität der Eingabeaufforderungen für Anmeldeinformationen und das Risiko reduziert, dass Benutzer auf Phishingangriffe hereinfallen. Wenn Sie bereits eine in der Cloud verwaltete Authentifizierung mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden, die Benutzer aber weiterhin ihre Kennwörter bei der lokalen Authentifizierung eingeben müssen, sollten Sie umgehend [nahtloses SSO bereitstellen](../hybrid/how-to-connect-sso.md). Wenn Sie jedoch derzeit im Verbund mit Plänen für eine eventuelle Migration zu einer in der Cloud verwalteten Authentifizierung sind, sollten Sie das nahtlose SSO im Rahmen des Migrationsprojekts implementieren.
 
 ### <a name="device-trust-access-policies"></a>Zugriffsrichtlinien für Geräte mit Vertrauensstellung
 
@@ -123,66 +123,66 @@ Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der
 
 - Wenn das Gerät über eine Vertrauensstellung verfügt, werden diverse Schwierigkeiten vermieden, beispielsweise mit MFA.
 - Der Zugriff über nicht vertrauenswürdige Geräte wird blockiert.
-- Windows 10-Geräte erhalten [nahtloses einmaliges Anmelden bei lokalen Ressourcen](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso).
+- Windows 10-Geräte erhalten [nahtloses einmaliges Anmelden bei lokalen Ressourcen](../devices/azuread-join-sso.md).
 
 Dafür können Sie Geräteidentitäten mit einer der folgenden Methoden in Azure AD bereitstellen und verwalten:
 
 - Organisationen können [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) verwenden, um das Gerät zu verwalten und Konformitätsrichtlinien zu erzwingen, die Geräteintegrität zu überprüfen und Richtlinien für bedingten Zugriff anhand der Konformität des Geräts festzulegen. Microsoft Intune kann iOS-Geräte, Mac-Computer (per JAMF-Integration), Windows-Computer (nativ per mobile Geräteverwaltung bei Windows 10 und per Co-Verwaltung mit Microsoft Endpoint Configuration Manager) und mobile Android-Geräte verwalten.
-- [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) bietet Verwaltung mit Gruppenrichtlinien oder Microsoft Endpoint Configuration Manager in einer Umgebung mit in einer Azure Active Directory-Domäne eingebundenen Computern. Organisationen können eine verwaltete Umgebung entweder über Kennworthashsynchronisierung oder Pass-Through-Authentifizierung mit nahtlosem SSO bereitstellen. Die Migration Ihrer Geräte zu Azure AD maximiert die Produktivität der Benutzer mithilfe von SSO für Ihre Cloud- und lokalen Ressourcen, während Ihnen gleichzeitig das Sichern Ihres Zugriffs auf diese Ressourcen mithilfe des  [bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)  ermöglicht wird.
+- [Azure AD Hybrid Join](../devices/hybrid-azuread-join-managed-domains.md) bietet Verwaltung mit Gruppenrichtlinien oder Microsoft Endpoint Configuration Manager in einer Umgebung mit in einer Azure Active Directory-Domäne eingebundenen Computern. Organisationen können eine verwaltete Umgebung entweder über Kennworthashsynchronisierung oder Pass-Through-Authentifizierung mit nahtlosem SSO bereitstellen. Die Migration Ihrer Geräte zu Azure AD maximiert die Produktivität der Benutzer mithilfe von SSO für Ihre Cloud- und lokalen Ressourcen, während Ihnen gleichzeitig das Sichern Ihres Zugriffs auf diese Ressourcen mithilfe des  [bedingten Zugriffs](../conditional-access/overview.md)  ermöglicht wird.
 
-Wenn Sie über in eine Domäne eingebundene Windows-Geräte, die nicht in der Cloud registriert sind, oder über in eine Domäne eingebundene Windows-Geräte verfügen, die in der Cloud registriert sind, aber keine Richtlinien für bedingten Zugriff aufweisen, sollten Sie die nicht registrierten Geräte registrieren und, in beiden Fällen, [Azure AD Hybrid Join als Kontrolle](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) in Ihren Richtlinien für bedingten Zugriff verwenden.
+Gehen Sie wie folgt vor, falls Sie über in eine Domäne eingebundene Windows-Geräte verfügen, die nicht in der Cloud registriert sind, oder über in eine Domäne eingebundene Windows-Geräte, die in der Cloud registriert sind, aber keine Richtlinien für bedingten Zugriff aufweisen: Registrieren Sie die nicht registrierten Geräte, und verwenden Sie in beiden Fällen in Ihren Richtlinien für bedingten Zugriff [Azure AD Hybrid Join als Kontrolle](../conditional-access/require-managed-devices.md).
 
 ![Screenshot: Zuweisung zum Erfordern von Hybridgeräten in Richtlinien für bedingten Zugriff](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-Wenn Sie Geräte mit der mobilen Geräteverwaltung oder Microsoft Intune verwalten, aber keine Geräteüberprüfungen in Ihren Richtlinien für bedingten Zugriff verwenden, wird empfohlen, dass Sie [Markieren des Geräts als kompatibel erforderlich](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) in diesen Richtlinien verwenden.
+Wenn Sie Geräte mit der mobilen Geräteverwaltung oder Microsoft Intune verwalten, aber keine Geräteüberprüfungen in Ihren Richtlinien für bedingten Zugriff verwenden, wird empfohlen, dass Sie [Markieren des Geräts als kompatibel erforderlich](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) in diesen Richtlinien verwenden.
 
 ![Screenshot: Zuweisung zum Erfordern der Gerätekonformität in Richtlinien für bedingten Zugriff](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Empfohlene Artikel zu Gerätezugriffsrichtlinien mit Vertrauensstellung
 
-- [Vorgehensweise: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [Vorgehensweise: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../devices/hybrid-azuread-join-plan.md)
 - [Konfigurationen für den Identitäts- und Gerätezugriff](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
 
-Unter Windows 10 ersetzt [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) Kennwörter durch eine sichere zweistufige Authentifizierung auf Computern. Windows Hello for Business bietet eine optimierte MFA-Funktion für Benutzer und reduziert Ihre Abhängigkeit von Kennwörtern. Wenn Sie noch nicht mit der Bereitstellung von Windows 10-Geräten begonnen oder diese nur teilweise bereitgestellt haben, wird empfohlen, dass Sie ein Upgrade auf Windows 10 durchführen und [Windows Hello for Business auf allen Geräten aktivieren](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization).
+Unter Windows 10 ersetzt [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) Kennwörter durch eine sichere zweistufige Authentifizierung auf Computern. Windows Hello for Business bietet eine optimierte MFA-Funktion für Benutzer und reduziert Ihre Abhängigkeit von Kennwörtern. Wenn Sie noch nicht mit der Bereitstellung von Windows 10-Geräten begonnen oder diese nur teilweise bereitgestellt haben, empfehlen wir Ihnen, ein Upgrade auf Windows 10 durchzuführen und [Windows Hello for Business auf allen Geräten zu aktivieren](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization).
 
-Weitere Informationen zur kennwortlosen Authentifizierung finden Sie unter [Eine Welt ohne Kennwörter mit Azure Active Directory](https://aka.ms/passwordlessdoc).
+Weitere Informationen zur kennwortlosen Authentifizierung finden Sie unter [Eine Welt ohne Kennwörter mit Azure Active Directory](../authentication/concept-authentication-passwordless.md).
 
 ## <a name="application-authentication-and-assignment"></a>Anwendungsauthentifizierung und -zuweisung
 
 ### <a name="single-sign-on-for-apps"></a>Einmaliges Anmelden für Apps
 
-Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance. Wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die derzeit jedoch zur Verwendung lokaler Konten konfiguriert sind, sollten Sie diese Anwendungen neu konfigurieren, damit diese SSO mit Azure AD verwenden. Ebenso sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren, wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die jedoch einen anderen Identitätsanbieter nutzen. Für Anwendungen, die Verbundprotokolle nicht unterstützen, aber formularbasierte Authentifizierung unterstützen, wird empfohlen, dass Sie die Anwendung zur Verwendung von [Kennworttresoren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) mit Azure Active Directory-Anwendungsproxys konfigurieren.
+Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance. Wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die derzeit jedoch zur Verwendung lokaler Konten konfiguriert sind, sollten Sie diese Anwendungen neu konfigurieren, damit diese SSO mit Azure AD verwenden. Ebenso sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren, wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die jedoch einen anderen Identitätsanbieter nutzen. Für Anwendungen, die keine Verbundprotokolle unterstützen, sondern nur die formularbasierte Authentifizierung, empfehlen wir Ihnen, die Anwendung für die Verwendung von [Kennworttresoren](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) mit Azure Active Directory-Anwendungsproxys zu konfigurieren.
 
 ![Kennwortbasierte Anmeldung mit Anwendungsproxy](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
-> Wenn Sie über keinen Mechanismus zum Ermitteln nicht verwalteter Anwendungen in Ihrer Organisation verfügen, wird empfohlen, dass Sie einen Ermittlungsprozess mithilfe einer CASB-Lösung (Cloud Access Security Broker) wie [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) implementieren.
+> Wenn Sie nicht über einen Mechanismus zum Ermitteln nicht verwalteter Anwendungen in Ihrer Organisation verfügen, empfehlen wir Ihnen, einen Ermittlungsprozess mithilfe einer CASB-Lösung (Cloud Access Security Broker) wie [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) zu implementieren.
 
-Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
+Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../azuread-dev/howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
 
 #### <a name="single-sign-on-recommended-reading"></a>Empfohlene Artikel zu SSO
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>Migration von AD FS-Anwendungen zu Azure AD
 
-Die [Migration von AD FS-Apps zu Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) ermöglicht zusätzliche Sicherheitsfunktionen, konsistentere Verwaltbarkeit sowie eine bessere Zusammenarbeit. Wenn Sie über in AD FS konfigurierte Anwendungen verfügen, die SSO mit Azure AD unterstützen, sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren. Wenn Sie Anwendungen mit ungewöhnlichen nicht von Azure AD unterstützten Konfigurationen in AD FS konfiguriert haben, sollten Sie die Besitzer der Apps kontaktieren, um in Erfahrung zu bringen, ob die spezielle Konfiguration absolut erforderlich ist. Wenn sie nicht erforderlich ist, sollten Sie die Anwendung neu konfigurieren, damit sie SSO mit Azure AD nutzt.
+Die [Migration von AD FS-Apps zu Azure AD](../manage-apps/migrate-adfs-apps-to-azure.md) ermöglicht zusätzliche Sicherheitsfunktionen, konsistentere Verwaltbarkeit sowie eine bessere Zusammenarbeit. Wenn Sie über in AD FS konfigurierte Anwendungen verfügen, die SSO mit Azure AD unterstützen, sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren. Wenn Sie Anwendungen mit ungewöhnlichen nicht von Azure AD unterstützten Konfigurationen in AD FS konfiguriert haben, sollten Sie die Besitzer der Apps kontaktieren, um in Erfahrung zu bringen, ob die spezielle Konfiguration absolut erforderlich ist. Wenn sie nicht erforderlich ist, sollten Sie die Anwendung neu konfigurieren, damit SSO mit Azure AD genutzt wird.
 
 ![Azure AD als primärer Identitätsanbieter](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [Azure AD Connect Health für AD FS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) kann zum Erfassen von Konfigurationsdetails zu allen Anwendungen verwendet werden, die zu Azure AD migriert werden können.
+> [Azure AD Connect Health für AD FS](../hybrid/how-to-connect-health-adfs.md) kann zum Erfassen von Konfigurationsdetails zu allen Anwendungen verwendet werden, die zu Azure AD migriert werden können.
 
 ### <a name="assign-users-to-applications"></a>Zuweisen von Benutzern zu Anwendungen
 
-Das [Zuweisen von Benutzern zu Anwendungen](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) erfolgt am besten mithilfe von Gruppen, da sie mehr Flexibilität sowie die Möglichkeit zu einer bedarfsorientierten Verwaltung bieten. Zu den Vorteilen der Verwendung von Gruppen gehören [attributbasierte dynamische Gruppenmitgliedschaften](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) und die [Delegierung an App-Besitzer](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners). Wenn Sie bereits Gruppen verwenden und verwalten, wird daher empfohlen, dass Sie die folgenden Aktionen durchführen, um die bedarfsorientierte Verwaltung zu verbessern:
+Das [Zuweisen von Benutzern zu Anwendungen](../manage-apps/assign-user-or-group-access-portal.md) erfolgt am besten mithilfe von Gruppen, da sie mehr Flexibilität sowie die Möglichkeit zu einer bedarfsorientierten Verwaltung bieten. Zu den Vorteilen der Verwendung von Gruppen gehören [attributbasierte dynamische Gruppenmitgliedschaften](../users-groups-roles/groups-dynamic-membership.md) und die [Delegierung an App-Besitzer](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Wenn Sie bereits Gruppen verwenden und verwalten, wird daher empfohlen, dass Sie die folgenden Aktionen durchführen, um die bedarfsorientierte Verwaltung zu verbessern:
 
 - Delegieren Sie die Verwaltung und Governance von Gruppen an Anwendungsbesitzer.
 - Erlauben Sie den Self-Service-Zugriff auf die Anwendung.
 - Definieren Sie dynamische Gruppen, wenn die Benutzerattribute den Zugriff auf Anwendungen konsistent bestimmen können.
-- Implementieren Sie Gruppennachweise für den Anwendungszugriff mithilfe von [Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview).
+- Implementieren Sie Gruppennachweise für den Anwendungszugriff mithilfe von [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md).
 
 Wenn Sie jedoch Anwendungen finden, die individuellen Benutzern zugewiesen sind, sollten Sie sicherstellen, dass Sie [Governance](https://docs.microsoft.com/azure/active-directory/governance/index) für diese Anwendungen einrichten.
 
@@ -207,7 +207,7 @@ Verwenden Sie die folgende Tabelle, um je nach Priorität die empfohlene Lösung
 
 | **Priority** | **Szenario** | **Empfehlung** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1 | Wenn Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden, und keine benannten Standorte definiert wurden. | Definieren Sie benannte Standorte, um die Erkennung von Risikoereignissen zu verbessern. |
+| 1 | Wenn Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden und keine benannten Standorte definiert wurden. | Definieren Sie benannte Standorte, um die Erkennung von Risikoereignissen zu verbessern. |
 | 2 | Wenn Sie sich in einem Verbund befinden, den Anspruch „insideCorporateNetwork“ nicht verwenden und keine benannten Standorte definiert wurden. | Definieren Sie benannte Standorte, um die Erkennung von Risikoereignissen zu verbessern. |
 | 3 | Wenn Sie keine benannten Standorte in Richtlinien für bedingten Zugriff verwenden und kein Risiko bzw. keine Geräteüberprüfungen in Richtlinien für bedingten Zugriff vorhanden sind. | Konfigurieren Sie die Richtlinie für bedingten Zugriff, sodass benannte Standorte enthalten sind. |
 | 4 | Wenn Sie sich in einem Verbund befinden, den Anspruch „insideCorporateNetwork“ verwenden und keine benannten Standorte definiert wurden. | Definieren Sie benannte Standorte, um die Erkennung von Risikoereignissen zu verbessern. |
@@ -219,16 +219,16 @@ Azure AD kann das Risiko für jede Anmeldung und jeden Benutzer definieren. Die 
 
 ![Richtlinie zum Anmelderisiko](./media/active-directory-ops-guide/active-directory-ops-img11.png)
 
-Wenn Sie bereits Azure AD Premium P2-Lizenzen besitzen, die die Verwendung von Risiken in Zugriffsrichtlinien unterstützen, welche aber nicht verwendet werden, wird dringend empfohlen, Risiken zu Ihrer Sicherheit hinzuzufügen.
+Wenn Sie bereits Azure AD Premium P2-Lizenzen besitzen, die die Verwendung von Risiken in Zugriffsrichtlinien unterstützen, diese aber nicht verwendet werden, empfehlen wir Ihnen dringend das Hinzufügen von Risiken zu Ihren Sicherheitsmaßnahmen.
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Empfohlene Artikel zu risikobasierten Zugriffsrichtlinien
 
-- [Vorgehensweise: Konfigurieren der Anmelderisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [Vorgehensweise: Konfigurieren der Benutzerrisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [Vorgehensweise: Konfigurieren der Anmelderisiko-Richtlinie](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Vorgehensweise: Konfigurieren der Benutzerrisiko-Richtlinie](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>Zugriffsrichtlinien für Clientanwendungen
 
-Die Microsoft Intune-Anwendungsverwaltung bietet die Möglichkeit, Datenschutzüberprüfungen für die Speicherverschlüsselung, PIN, Remotespeicherbereinigung usw. an kompatible mobile Clientanwendungen wie Outlook Mobile zu pushen. Darüber hinaus können Richtlinien für bedingten Zugriff zum [Einschränken des Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) auf Clouddienste wie Exchange Online für genehmigte oder kompatible Apps erstellt werden.
+Die Microsoft Intune-Anwendungsverwaltung bietet die Möglichkeit, Datenschutzüberprüfungen für die Speicherverschlüsselung, PIN, Remotespeicherbereinigung usw. an kompatible mobile Clientanwendungen wie Outlook Mobile zu pushen. Darüber hinaus können Richtlinien für bedingten Zugriff zum [Einschränken des Zugriffs](../conditional-access/app-based-conditional-access.md) auf Clouddienste wie Exchange Online für genehmigte oder kompatible Apps erstellt werden.
 
 Wenn Ihre Mitarbeiter MAM-fähige (mobile Anwendungsverwaltung) Anwendungen wie mobile Office-Apps installieren können, um auf Unternehmensressourcen wie Exchange Online oder SharePoint Online zuzugreifen, und Sie BYOD (Bring-Your-Own-Device) unterstützen, wird empfohlen, dass Sie MAM-Richtlinien bereitstellen, um die Anwendungskonfiguration von persönlichen Geräten ohne MDM-Registrierung (mobile Geräteverwaltung) zu verwalten, und anschließend Ihre Richtlinien für bedingten Zugriff anpassen, um den Zugriff nur über MAM-fähige Clients zuzulassen.
 
@@ -245,10 +245,10 @@ Der bedingte Zugriff ist ein wichtiges Tool zur Verbesserung der Sicherheit Ihre
 - Vermeiden Sie es, versehentlich **Guests** (Gäste) hinzuzufügen, wenn Sie den Filter **Alle Benutzer** verwenden.
 - **Migrieren Sie alle alten Richtlinien zum Azure-Portal**.
 - Erfassen Sie alle Kriterien für Benutzer, Geräte und Anwendungen.
-- Verwenden Sie Richtlinien für bedingten Zugriff, um [MFA zu implementieren](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access), anstatt eine **MFA pro Benutzer** zu verwenden.
+- Verwenden Sie Richtlinien für bedingten Zugriff, um [MFA zu implementieren](../conditional-access/plan-conditional-access.md), anstatt eine **MFA pro Benutzer** zu verwenden.
 - Nutzen Sie eine kleine Gruppe wichtiger Richtlinien an, die auf mehrere Anwendungen angewendet werden können.
 - Definieren Sie leere Ausnahmegruppen, und fügen Sie diese zu den Richtlinien hinzu, um eine Ausnahmestrategie zu erhalten.
-- Planen Sie Konten ohne MFA-Kontrollen für den [Notfallzugriff](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency).
+- Planen Sie Konten ohne MFA-Kontrollen für den [Notfallzugriff](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency).
 - Stellen Sie eine konsistente Umgebung zwischen Office 365-Clientanwendungen (z. B. Teams, OneDrive for Business, Outlook usw.) sicher, indem Sie dieselben Kontrollen für Dienste wie Exchange Online und SharePoint Online implementieren.
 - Die Zuweisung zu Richtlinien sollte nur über Gruppen erfolgen, nicht über Einzelpersonen.
 - Führen Sie regelmäßige Überprüfungen der Ausnahmegruppen durch, die in Richtlinien verwendet werden, um die Zeit zu begrenzen, in der die Benutzer nicht durch die errichtete Sicherheit geschützt werden. Wenn Sie über Azure AD Premium P2 verfügen, können Sie Zugriffsüberprüfungen verwenden, um diesen Prozess zu automatisieren.
@@ -283,7 +283,7 @@ Wenn die Legacyauthentifizierung in Ihrer Umgebung umfassend verwendet wird, sol
    
    c. Identifizieren Sie, welche Legacyanwendungen eine harte Abhängigkeit von der Legacyauthentifizierung aufweisen. Siehe Schritt 3 unten.
 
-2. Deaktivieren Sie die Quellen von Legacyprotokollen (z. B. Exchange Mailbox) für Benutzer, die keine Legacyauthentifizierung verwenden, um Offenlegung zu vermeiden.
+2. Deaktivieren Sie die Quellen von Legacyprotokollen (z. B. Exchange Mailbox) für Benutzer, die keine Legacyauthentifizierung verwenden, um die Offenlegung zu vermeiden.
 3. Verwenden Sie für die restlichen Konten (im Idealfall nicht menschliche Identitäten wie Dienstkonten) den [bedingten Zugriff zum Einschränken von Legacyprotokollen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Conditional-Access-support-for-blocking-legacy-auth-is/ba-p/245417) nach der Authentifizierung.
 
 #### <a name="legacy-authentication-recommended-reading"></a>Empfohlene Artikel zur Legacyauthentifizierung
@@ -324,7 +324,7 @@ Informationen zur Vermeidung dieses Szenarios sowie zur Identifizierung und Beha
 
 ### <a name="user-and-group-settings"></a>Einstellungen für Benutzer und Gruppen
 
-Im Folgenden werden Benutzer- und Gruppeneinstellungen aufgeführt, die gesperrt werden können, wenn keine explizite Geschäftsanforderung vorliegt:
+Im Folgenden sind Benutzer- und Gruppeneinstellungen aufgeführt, die gesperrt werden können, wenn keine explizite Geschäftsanforderung vorliegt:
 
 #### <a name="user-settings"></a>Benutzereinstellungen
 
@@ -355,7 +355,7 @@ Angreifer stammen aus verschiedenen Teilen der Welt. Sie können dieses Risiko m
 
 ![Erstellen eines neuen benannten Standorts](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-Verwenden Sie nach Möglichkeit eine SIEM-Lösung (Security Information & Event Management), um den Zugriff verschiedener Regionen zu analysieren und Muster zu ermitteln. Wenn Sie kein SIEM-Produkt verwenden oder Ihres keine Authentifizierungsinformationen von Azure AD erfasst, wird empfohlen, dass Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) verwenden, um Zugriffsmuster aus verschiedenen Regionen zu identifizieren.
+Verwenden Sie nach Möglichkeit eine SIEM-Lösung (Security Information & Event Management), um den Zugriff verschiedener Regionen zu analysieren und Muster zu ermitteln. Wenn Sie kein SIEM-Produkt verwenden oder damit keine Authentifizierungsinformationen von Azure AD erfasst werden, empfehlen wir Ihnen die Verwendung von [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um Zugriffsmuster aus verschiedenen Regionen zu identifizieren.
 
 ## <a name="access-usage"></a>Nutzung des Zugriffs
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36898e75680771a9cb084fa142bb635ddbf51c70
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192047"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755254"
 ---
 # <a name="conditional-access-users-and-groups"></a>Bedingter Zugriff: Benutzer und Gruppen
 
@@ -35,28 +35,38 @@ Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Option
 - Alle Benutzer
    - Alle Benutzer, die im Verzeichnis vorhanden sind, einschließlich der B2B-Gäste.
 - Auswählen von „Benutzer und Gruppen“
-   - Alle Gast- und externen Benutzer (Vorschau)
+   - Alle Gastbenutzer und externen Benutzer
       - Diese Auswahl umfasst B2B-Gastbenutzer und externe Benutzer, einschließlich aller Benutzer, deren `user type`-Attribut auf `guest` festgelegt ist. Diese Auswahl gilt auch für externe Benutzer, die sich von einer anderen Organisation wie einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) angemeldet haben. 
-   - Verzeichnisrollen (Vorschau)
+   - Verzeichnisrollen
       - Diese Option ermöglicht Administratoren das Auswählen bestimmter Azure AD-Verzeichnisrollen, die zum Bestimmen der Zuweisung verwendet werden. Beispielsweise können Organisationen eine restriktivere Richtlinie für Benutzer erstellen, denen die Rolle „Globaler Administrator“ zugewiesen ist.
    - Benutzer und Gruppen
       - Ermöglicht das Einbeziehen bestimmter Gruppen von Benutzern. Beispielsweise können Organisationen eine Gruppe auswählen, die alle Mitglieder der Personalabteilung enthält, wenn eine HR-App als Cloud-App ausgewählt wurde. Als Gruppe gilt eine beliebige Gruppe in Azure AD, einschließlich dynamischer oder zugewiesener Sicherheits- und Verteilungsgruppen.
 
 ## <a name="exclude-users"></a>Ausschließen von Benutzern
 
-Ausschlüsse werden häufig für Notfallzugriffskonten verwendet. Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finden Sie in den folgenden Artikeln: 
+Wenn Organisationen einen Benutzer oder eine Gruppe sowohl ein- als auch ausschließen, wird der Benutzer oder die Gruppe von der Richtlinie ausgeschlossen, da eine Ausschlussaktion das Einschließen in die Richtlinie außer Kraft setzt. Ausschlüsse werden häufig für Notfallzugriffskonten verwendet. Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finden Sie in den folgenden Artikeln: 
 
 * [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md)
 * [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Optionen zum Ausschließen verfügbar.
 
-- Alle Gast- und externen Benutzer (Vorschau)
+- Alle Gastbenutzer und externen Benutzer
    - Diese Auswahl umfasst B2B-Gastbenutzer und externe Benutzer, einschließlich aller Benutzer, deren `user type`-Attribut auf `guest` festgelegt ist. Diese Auswahl gilt auch für externe Benutzer, die sich von einer anderen Organisation wie einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) angemeldet haben. 
-- Verzeichnisrollen (Vorschau)
+- Verzeichnisrollen
    - Diese Option ermöglicht Administratoren das Auswählen bestimmter Azure AD-Verzeichnisrollen, die zum Bestimmen der Zuweisung verwendet werden. Beispielsweise können Organisationen eine restriktivere Richtlinie für Benutzer erstellen, denen die Rolle „Globaler Administrator“ zugewiesen ist.
 - Benutzer und Gruppen
    - Ermöglicht das Einbeziehen bestimmter Gruppen von Benutzern. Beispielsweise können Organisationen eine Gruppe auswählen, die alle Mitglieder der Personalabteilung enthält, wenn eine HR-App als Cloud-App ausgewählt wurde. Als Gruppe gilt eine beliebige Gruppe in Azure AD, einschließlich dynamischer oder zugewiesener Sicherheits- und Verteilungsgruppen.
+
+### <a name="preventing-administrator-lockout"></a>Verhindern der Administratorsperre
+
+Um zu verhindern, dass ein Administrator sich bei der Erstellung einer Richtlinie, die für **Alle Benutzer** und **Alle Apps** gilt, aus seinem Verzeichnis aussperrt, wird die folgende Warnung angezeigt:
+
+> Sperren Sie sich nicht aus! Wir empfehlen, die Richtlinie zuerst auf eine kleine Gruppe von Benutzern anzuwenden und zu überprüfen, ob sie sich erwartungsgemäß verhält. Wir empfehlen auch, mindestens einen Administrator von dieser Richtlinie auszuschließen. So wird sichergestellt, dass Sie weiterhin Zugriff haben und die Richtlinie bei Bedarf aktualisieren können. Überprüfen Sie die betroffenen Benutzer und Apps.
+
+Standardmäßig bietet die Richtlinie eine Option, um den aktuellen Benutzer von der Richtlinie auszuschließen. Diese Standardeinstellung kann jedoch vom Administrator außer Kraft gesetzt werden, wie in der folgenden Abbildung dargestellt. 
+
+![Warnung: Sperren Sie sich nicht aus!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

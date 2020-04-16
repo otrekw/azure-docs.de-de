@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73643794"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981306"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -118,8 +118,8 @@ Ein Remotedesktopgateway ist ein richtlinienbasierter RDP-Proxydienst, mit dem S
 ## <a name="security-guidelines"></a>Sicherheitsrichtlinien
 Im Allgemeinen ähnelt das Schützen von Administratorarbeitsstationen für die Verwendung mit der Cloud stark den Verfahren, die lokal für alle Arbeitsstationen verwendet werden, z.B. durch auf das Nötigste reduzierte Systeme und eingeschränkte Berechtigungen. Einige einzigartige Aspekte der Cloudverwaltung ähneln eher der Remoteverwaltung oder Out-of-Band-Verwaltung für Unternehmen. Hierzu gehören die Nutzung und Überwachung von Anmeldeinformationen, der geschützte Remotezugriff und die Bedrohungserkennung mit den entsprechenden Gegenmaßnahmen.
 
-### <a name="authentication"></a>Authentication
-Sie können Azure-Anmeldeeinschränkungen nutzen, um IP-Quelladressen zum Zugreifen auf Verwaltungstools und Überwachen von Zugriffsanforderungen zu beschränken. Zur Unterstützung von Azure beim Identifizieren von Verwaltungsclients (Arbeitsstationen bzw. Anwendungen) können Sie sowohl SMAPI (mit von Kunden entwickelten Tools wie beispielsweise Windows PowerShell-Cmdlets) als auch das Azure-Portal so konfigurieren, dass zusätzlich zu SSL-Zertifikaten clientseitige Verwaltungszertifikate installiert werden müssen. Wir empfehlen auch, dass für den Administratorzugriff die Multi-Factor Authentication obligatorisch gemacht wird.
+### <a name="authentication"></a>Authentifizierung
+Sie können Azure-Anmeldeeinschränkungen nutzen, um IP-Quelladressen zum Zugreifen auf Verwaltungstools und Überwachen von Zugriffsanforderungen zu beschränken. Zur Unterstützung von Azure beim Identifizieren von Verwaltungsclients (Arbeitsstationen bzw. Anwendungen) können Sie sowohl SMAPI (mit von Kunden entwickelten Tools, z. B. Windows PowerShell-Cmdlets) als auch das Azure-Portal so konfigurieren, dass zusätzlich zu TLS/SSL-Zertifikaten clientseitige Verwaltungszertifikate installiert werden müssen. Wir empfehlen auch, dass für den Administratorzugriff die Multi-Factor Authentication obligatorisch gemacht wird.
 
 Einige Anwendungen oder Dienste, die Sie in Azure bereitstellen, verfügen unter Umständen über eigene Authentifizierungsmechanismen sowohl für den Endbenutzer- als auch den Administratorzugriff, während andere vollständig auf Azure AD setzen. Je nachdem, ob Sie für Anmeldeinformationen einen Verbund über Active Directory-Verbunddienste (AD FS) erstellen, die Verzeichnissynchronisierung verwenden oder Benutzerkonten ausschließlich in der Cloud verwenden, hilft Ihnen die Verwendung von [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Teil von Azure AD Premium) beim Verwalten von Identitätslebenszyklen zwischen den Ressourcen.
 
@@ -145,9 +145,6 @@ Für eine Arbeitsstation mit verstärkter Sicherheit empfehlen wir drei Hauptkon
 | - | Klare Aufgabentrennung | - |
 | Unternehmens-PC als virtueller Computer |Niedrigere Hardwarekosten | - |
 | - | Trennung von Rolle und Anwendungen | - |
-| Windows To Go mit BitLocker-Laufwerkverschlüsselung |Kompatibilität mit den meisten PCs |Asset-Nachverfolgung |
-| - | Kosteneffizienz und Portabilität | - |
-| - | Isolierte Verwaltungsumgebung |- |
 
 Es ist wichtig, dass die Arbeitsstation mit verstärkter Sicherheit der Host und nicht der Gast ist und zwischen dem Hostbetriebssystem und der Hardware keine weiteren Elemente vorhanden sind. Mit dem „Prinzip der sauberen Quelle“ (auch als „sicherer Ursprung“ bezeichnet) ist gemeint, dass der Host die größte Sicherheit aufweisen soll. Andernfalls ist die Arbeitsstation mit verstärkter Sicherheit (Gast) den Angriffen des Systems ausgesetzt, auf dem sie gehostet wird.
 
@@ -171,15 +168,6 @@ Um verschiedene Sicherheitsrisiken zu vermeiden, die sich aus der Verwendung ein
 
 Der virtuelle Computer des Unternehmens-PC wird in einem geschützten Bereich ausgeführt und dient zum Bereitstellen von Benutzeranwendungen. Der Host bleibt eine „saubere Quelle“ und setzt strenge Netzwerkrichtlinien im Stammbetriebssystem durch (z.B. das Blockieren des RDP-Zugriffs vom virtuellen Computer).
 
-### <a name="windows-to-go"></a>Windows To Go
-Eine weitere Alternative zu einer eigenständigen Arbeitsstation mit verstärkter Sicherheit ist die Nutzung eines [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx)-Laufwerks mit Unterstützung einer clientseitigen USB-Startfunktion. Windows To Go ermöglicht Benutzern das Starten eines kompatiblen PCs mit einem isolierten Systemimage, das von einem verschlüsselten USB-Laufwerk ausgeführt wird. Hierbei erhalten Sie zusätzliche Steuerelemente für Remoteverwaltungs-Endpunkte, da das Image vollständig von einer IT-Gruppe des Unternehmens mit strengen Sicherheitsrichtlinien, einem minimalen Betriebssystembuild und TPM-Unterstützung verwaltet werden kann.
-
-In der Abbildung unten ist das portable Image ein in die Domäne eingebundenes System, das für die ausschließliche Verbindungsherstellung mit Azure vorkonfiguriert ist, Multi-Factor Authentication benötigt und den gesamten nicht verwaltungsrelevanten Datenverkehr blockiert. Wenn ein Benutzer denselben PC über das standardmäßige Unternehmensimage startet und versucht, auf das RD-Gateway für Azure-Verwaltungstools zuzugreifen, wird die Sitzung blockiert. Windows To Go wird zum Stammebenen-Betriebssystem, und es sind keine weiteren Schichten erforderlich (Hostbetriebssystem, Hypervisor, virtueller Computer), die ggf. anfällig für externe Angriffe sind.
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-Es ist wichtig zu beachten, dass USB-Laufwerke leichter als durchschnittliche Desktop-PCs verloren gehen. Die Verwendung von BitLocker zum Verschlüsseln des gesamten Volumes sowie eines sicheren Kennworts verringert die Wahrscheinlichkeit, dass ein Angreifer das Laufwerkimage für schädliche Zwecke nutzen kann. Wenn der USB-Speicherstick verloren geht, kann die Gefahr durch Widerrufen und [Ausgeben eines neuen Verwaltungszertifikats](https://technet.microsoft.com/library/hh831574.aspx) und ein schnelles Zurücksetzen des Kennworts zusätzlich verringert werden. Administrative Überwachungsprotokolle sind in Azure angeordnet, nicht auf dem Client, sodass die Gefahr eines potenziellen Datenverlusts weiter reduziert wird.
-
 ## <a name="best-practices"></a>Bewährte Methoden
 Berücksichtigen Sie die folgenden weiteren Richtlinien, wenn Sie Anwendungen und Daten in Azure verwalten.
 
@@ -188,7 +176,7 @@ Gehen Sie nicht davon aus, dass andere gängige Sicherheitsanforderungen nicht e
 
 | Sie sollten auf keinen Fall | Sie sollten |
 | --- | --- |
-| Senden Sie Anmeldeinformationen für den Administratorzugriff oder andere geheime Daten (wie etwa SSL- oder Verwaltungszertifikate) nicht per E-Mail. |Sorgen Sie für Vertraulichkeit, indem Sie Kontonamen und Kennwörter mündlich mitteilen (aber nicht per Voicemail), eine Remoteinstallation von Client-/Serverzertifikaten durchführen (per verschlüsselter Sitzung), Downloads von einer geschützten Freigabe durchführen oder diese Daten per Hand mit Wechselmedien verteilen. |
+| Senden Sie Anmeldeinformationen für den Administratorzugriff oder andere geheime Daten (z. B. TLS/SSL- oder Verwaltungszertifikate) nicht per E-Mail. |Sorgen Sie für Vertraulichkeit, indem Sie Kontonamen und Kennwörter mündlich mitteilen (aber nicht per Voicemail), eine Remoteinstallation von Client-/Serverzertifikaten durchführen (per verschlüsselter Sitzung), Downloads von einer geschützten Freigabe durchführen oder diese Daten per Hand mit Wechselmedien verteilen. |
 | - | Verwalten Sie die Lebenszyklen Ihrer Verwaltungszertifikate proaktiv. |
 | Speichern Sie Kontokennwörter nicht unverschlüsselt oder ohne Hashing im Anwendungsspeicher (z.B. in Tabellen, auf SharePoint-Websites oder auf Dateifreigaben). |Stellen Sie Prinzipien für die Sicherheitsverwaltung und Richtlinien für die Erhöhung der Systemsicherheit auf, und wenden Sie sie auf Ihre Entwicklungsumgebung an. |
 | - | Verwenden Sie die Anheftungsregeln des Zertifikats [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751), um den richtigen Zugriff auf Azure SSL/TLS-Websites sicherzustellen. |
@@ -215,7 +203,7 @@ Die Verringerung der Anzahl von Aufgaben, die von Administratoren auf einer Arbe
 * Gruppenrichtlinie: Erstellen Sie eine globale Verwaltungsrichtlinie, die auf alle für die Verwaltung genutzten Domänenarbeitsstationen ( alle anderen werden blockiert), sowie auf die Benutzerkonten, die auf diesen Arbeitsstationen authentifiziert werden, angewendet wird.
 * Bereitstellung mit erhöhter Sicherheit: Schützen Sie Ihr Basisimage für Arbeitsstationen mit verstärkter Sicherheit, um Manipulationen zu verhindern. Setzen Sie auf Sicherheitsmaßnahmen wie die Verschlüsselung und Isolierung, um Images, virtuelle Computer und Skripts zu speichern und den Zugriff zu beschränken (ggf. per überwachtem Aus- und Einchecken).
 * Patching: Verwenden Sie einen einheitlichen Build (oder nutzen Sie separate Images für Entwicklung, Betrieb und andere Verwaltungsaufgaben), führen Sie regelmäßige Überprüfungen auf Änderungen und Schadsoftware durch, halten Sie den Build auf dem aktuellen Stand, und aktivieren Sie Computer nur, wenn sie benötigt werden.
-* Verschlüsselung: Stellen Sie sicher, dass die Arbeitsstationen für die Verwaltung über ein TPM verfügen, um [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) und BitLocker mit noch mehr Sicherheit zu ermöglichen. Wenn Sie Windows To Go verwenden, sollten Sie nur verschlüsselte USB-Schlüssel mit BitLocker einsetzen.
+* Verschlüsselung: Stellen Sie sicher, dass die Arbeitsstationen für die Verwaltung über ein TPM verfügen, um [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) und BitLocker mit noch mehr Sicherheit zu ermöglichen.
 * Governance (Kontrolle): Verwenden Sie AD DS-Gruppenrichtlinienobjekte, um alle Windows-Schnittstellen der Administratoren, z.B. die Dateifreigabe, zu kontrollieren. Binden Sie Verwaltungsarbeitsstationen in die Prozesse der Bereiche Auditing, Überwachung und Protokollierung ein. Verfolgen Sie für Administratoren und Entwickler den gesamten Zugriff und die Nutzung.
 
 ## <a name="summary"></a>Zusammenfassung

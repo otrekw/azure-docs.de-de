@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d7c7d9f6d59ffd57ddb14f7c060d0a3f6f2a6eb
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967750"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877387"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -27,6 +27,7 @@ Zuerst sehen wir uns die folgenden wichtigsten Bereitstellungsszenarien an:
 
 * Konfigurieren von Connectors zum Umgehen von lokalen Proxys für ausgehenden Datenverkehr
 * Konfigurieren von Connectors zum Verwenden eines Proxys für ausgehenden Datenverkehr für den Zugriff auf den Azure AD-Anwendungsproxy
+* Konfigurieren der Nutzung eines Proxys zwischen dem Connector und der Back-End-Anwendung
 
 Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md).
 
@@ -104,7 +105,7 @@ Auf dem Proxy für ausgehenden Datenverkehr sind vier Aspekte zu beachten:
 * Proxyregeln für ausgehenden Datenverkehr
 * Proxyauthentifizierung
 * Proxyports
-* SSL-Überprüfung
+* TLS-Überprüfung
 
 #### <a name="proxy-outbound-rules"></a>Proxyregeln für ausgehenden Datenverkehr
 
@@ -129,14 +130,31 @@ Die Proxyauthentifizierung wird derzeit nicht unterstützt. Unsere aktuelle Empf
 
 #### <a name="proxy-ports"></a>Proxyports
 
-Der Connector stellt ausgehende SSL-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den Ports 443 und 80.
+Der Connector stellt ausgehende TLS-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den Ports 443 und 80.
 
 > [!NOTE]
 > Wenn die Service Bus-Daten per HTTPS gesendet werden, wird Port 443 verwendet. Standardmäßig wird für Service Bus aber versucht, direkte TCP-Verbindungen herzustellen, und HTTPS wird nur verwendet, wenn für die direkte Verbindung ein Fehler auftritt.
 
-#### <a name="ssl-inspection"></a>SSL-Überprüfung
+#### <a name="tls-inspection"></a>TLS-Überprüfung
 
-Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen für den Connectordatenverkehr führt. Der Connector verwendet ein Zertifikat zur Authentifizierung beim Anwendungsproxydienst, und dieses Zertifikat kann während der SSL-Überprüfung verloren gehen.
+Verwenden Sie die TLS-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen beim Connectordatenverkehr führt. Der Connector verwendet ein Zertifikat zur Authentifizierung beim Anwendungsproxydienst, und dieses Zertifikat kann während der TLS-Überprüfung verloren gehen.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Konfigurieren der Nutzung eines Proxys zwischen dem Connector und der Back-End-Anwendung
+Die Nutzung eines Weiterleitungsproxys für die Kommunikation mit der Back-End-Anwendung kann in einigen Umgebungen eine besondere Anforderung sein.
+Führen Sie die folgenden Schritte aus, um dies zu aktivieren:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Schritt 1: Hinzufügen des erforderlichen Registrierungswerts zum Server
+1. Fügen Sie zum Aktivieren der Nutzung des Standardproxys dem Registrierungsschlüssel für die Connectorkonfiguration unter „HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector“ den Registrierungswert (DWORD) `UseDefaultProxyForBackendRequests = 1` hinzu.
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Schritt 2: Manuelles Konfigurieren des Proxyservers mit dem Befehl „netsh“
+1.  Aktivieren Sie die Gruppenrichtlinie „Proxyeinstellungen pro Computer vornehmen“. Diese finden Sie unter: Computerkonfiguration\Richtlinien\Administrative Vorlagen\Windows-Komponenten\Internet Explorer. Dies muss wie hier angegeben festgelegt werden, anstatt die Richtlinie pro Benutzer festzulegen.
+2.  Führen Sie `gpupdate /force` auf dem Server aus, oder starten Sie den Server neu, um sicherzustellen, dass die aktualisierten Einstellungen für die Gruppenrichtlinie verwendet werden.
+3.  Starten Sie eine Eingabeaufforderung mit erhöhten Rechten (Administratorrechten), und geben Sie `control inetcpl.cpl` ein.
+4.  Konfigurieren Sie die erforderlichen Proxyeinstellungen. 
+
+Mit diesen Einstellungen kann der Connector für die Kommunikation mit Azure und mit der Back-End-Anwendung denselben Weiterleitungsproxy nutzen. Falls für die Kommunikation zwischen Connector und Azure kein oder ein anderer Weiterleitungsproxy benötigt wird, können Sie dies wie folgt einrichten: Ändern Sie die Datei „ApplicationProxyConnectorService.exe.config“, wie dies in den Abschnitten „Umgehen von Proxys für ausgehenden Datenverkehr“ bzw. „Verwenden des Proxyservers für ausgehenden Datenverkehr“ beschrieben ist.
+
+Der Proxy des Computers wird auch vom Connectorupdatedienst verwendet. Sie können dieses Verhalten ändern, indem Sie die Datei „ApplicationProxyConnectorUpdaterService.exe.config“ bearbeiten.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problembehandlung für Proxyprobleme des Connectors und Verbindungsprobleme von Diensten
 

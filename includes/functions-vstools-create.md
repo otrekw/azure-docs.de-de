@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056574"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657512"
 ---
 Mit der Azure Functions-Projektvorlage in Visual Studio wird ein Projekt erstellt, das Sie in einer Funktions-App in Azure veröffentlichen können. Sie können mit einer Funktions-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen.
 
-1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt** aus.
+1. Wählen Sie im Visual Studio-Menü **Datei** > **Neu** > **Projekt** aus.
 
-1. Geben Sie unter **Neues Projekt erstellen** den Suchbegriff *functions* in das Suchfeld ein, und wählen Sie die Vorlage **Azure Functions** aus.
+1. Geben Sie unter **Neues Projekt erstellen** den Suchbegriff *functions* in das Suchfeld ein, und wählen Sie die Vorlage **Azure Functions** und anschließend **Weiter** aus.
 
 1. Geben Sie unter **Neues Projekt konfigurieren** im Feld **Projektname** einen Namen für Ihr Projekt ein, und wählen Sie anschließend **Erstellen** aus. Der Name der Funktions-App muss als C#-Namespace gültig sein, verwenden Sie daher keine Unterstriche, Bindestriche oder andere nicht alphanumerische Zeichen.
 
-1. Konfigurieren Sie die Einstellungen für **Neues Projekt – &lt;Name Ihres Projekts&gt;** mit den Werten aus der folgenden Tabelle:
+1. Verwenden Sie für die Einstellungen zum **Erstellen einer neuen Azure-Funktionsanwendung** die Werte in der folgenden Tabelle:
 
     | Einstellung      | Wert  | BESCHREIBUNG                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ Mit der Azure Functions-Projektvorlage in Visual Studio wird ein Projekt erstel
 
     Legen Sie die **Zugriffsrechte** auf **Anonym** fest. Bei Verwendung der Standardebene **Funktion** muss in Anforderungen für den Zugriff auf den Funktionsendpunkt der [Funktionsschlüssel](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) angegeben werden.
 
-1. Wählen Sie **OK** aus, um das Funktionsprojekt und die per HTTP ausgelöste Funktion zu erstellen.
+1. Wählen Sie **Erstellen** aus, um das Funktionsprojekt und die HTTP-Triggerfunktion zu erstellen.

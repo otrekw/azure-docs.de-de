@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969712"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Paylocity
 
@@ -45,6 +44,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Paylocity unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+
+* Nach dem Konfigurieren von Paylocity können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-paylocity-from-the-gallery"></a>Hinzufügen von Paylocity aus dem Katalog
 
@@ -82,8 +83,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Paylocity](common/preintegrated.png)
-
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://access.paylocity.com/`.
@@ -98,13 +97,24 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     | Name |  Quellattribut|
     | ---------------| --------------- |
-    | PartnerID | <"PartnerID"> |
-    | PaylocityUser | <"PaylocityUser"> |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | PartnerID | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > „PaylocityEntity“ ist die Paylocity-Unternehmens-ID.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
+
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf das **Bearbeitungssymbol**.
+
+    ![Bearbeiten des SAML-Signaturzertifikats](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. Wählen Sie für **Signaturoption** die Option **SAML-Antwort und -Assertion signieren** aus, und klicken Sie auf **Speichern**.
+
+    ![Bearbeiten des SAML-Signaturzertifikats](./media/paylocity-tutorial/saml-assertion.png)
 
 1. Kopieren Sie im Abschnitt **Paylocity einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
@@ -163,3 +173,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Paylocity“ klicken, sollten Sie 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Paylocity mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
+* [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

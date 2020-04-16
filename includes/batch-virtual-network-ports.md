@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086260"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657475"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -75,6 +75,9 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 2
 | --- | --- | --- | --- | --- | --- | --- |
 | – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/security-overview.md#service-tags) (bei Verwendung der regionalen Variante in derselben Region wie Ihr Batch-Konto) | * | Any | 29876–29877 | TCP | Allow |
 | Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
+
+> [!WARNING]
+> IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Daher wird dringend empfohlen, das Diensttag `BatchNodeManagement` (oder die regionale Variante) für NSG-Regeln zu verwenden. Es wird nicht empfohlen, NSG-Regeln direkt mit den IP-Adressen des Batch-Diensts aufzufüllen.
 
 **Ausgangssicherheitsregeln**
 

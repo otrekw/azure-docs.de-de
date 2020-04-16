@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74068134"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985710"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Bereitstellen hoch verfügbarer virtueller Computer mit Azure PowerShell
 
@@ -113,7 +113,7 @@ Im Portal sollten Sie bei der Verfügbarkeitsgruppe unter **Ressourcengruppen** 
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 
-Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind. Verwenden Sie [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
+Wenn Sie einen virtuellen Computer in einer Verfügbarkeitsgruppe erstellen, müssen Sie wissen, welche VM-Größen in der Hardware verfügbar sind. Rufen Sie mit dem Befehl [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) alle verfügbaren Größen für virtuelle Computer ab, die Sie in der Verfügbarkeitsgruppe bereitstellen können.
 
 ```azurepowershell-interactive
 Get-AzVMSize `

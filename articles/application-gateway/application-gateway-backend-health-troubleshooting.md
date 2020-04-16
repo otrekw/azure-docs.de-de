@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001672"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983839"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -131,7 +131,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **Lösung:** Wenn Sie diesen Fehler erhalten, gehen Sie folgendermaßen vor:
 
-1.  Überprüfen Sie, ob Sie mithilfe eines Browsers oder mithilfe von PowerShell eine Verbindung mit dem Back-End-Server am in den HTTP-Einstellungen genannten Port herstellen können. Sie können z.B. den folgenden Befehl ausführen: `Test-NetConnection -ComputerName
+1.  Überprüfen Sie, ob Sie mithilfe eines Browsers oder mithilfe von PowerShell eine Verbindung mit dem Back-End-Server am in den HTTP-Einstellungen genannten Port herstellen können. Führen Sie beispielsweise den folgenden Befehl aus: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Wenn der angegebene Port nicht der gewünschte Port ist, geben Sie die richtige Portnummer ein, damit Application Gateway eine Verbindung mit dem Back-End-Server herstellen kann.
@@ -170,7 +170,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **Nachricht:** Status code of the backend\'s HTTP response did not match the probe setting. (Der Statuscode der HTTP-Antwort des Back-Ends stimmte nicht mit der Testeinstellung überein.) Expected:{HTTPStatusCode0} Received:{HTTPStatusCode1}. (Erwartet: {HTTPStatusCode0}, Empfangen: {HTTPStatusCode1}.)
 
-**Ursache:** Nachdem die TCP-Verbindung hergestellt und ein SSL-Handshake ausgeführt wurde (wenn SSL aktiviert ist), sendet Application Gateway den Test als HTTP GET-Anforderung an den Back-End-Server. Wie zuvor beschrieben, wird als Standardtest \<Protokoll\>://127.0.0.1:\<port\>/ verwendet, und die Antwortstatuscodes im Bereich 200 bis 399 werden als fehlerfrei angesehen. Wenn der Server einen anderen Statuscode zurückgibt, wird er mit dieser Meldung als fehlerhaft gekennzeichnet.
+**Ursache:** Nachdem die TCP-Verbindung hergestellt und ein TLS-Handshake ausgeführt wurde (wenn TLS aktiviert ist), sendet Application Gateway den Test als HTTP GET-Anforderung an den Back-End-Server. Wie zuvor beschrieben, wird als Standardtest \<Protokoll\>://127.0.0.1:\<port\>/ verwendet, und die Antwortstatuscodes im Bereich 200 bis 399 werden als fehlerfrei angesehen. Wenn der Server einen anderen Statuscode zurückgibt, wird er mit dieser Meldung als fehlerhaft gekennzeichnet.
 
 **Lösung:** Abhängig vom Antwortcode des Back-End-Servers können Sie die folgenden Schritte ausführen. Einige der allgemeinen Statuscodes sind hier aufgeführt:
 
@@ -208,7 +208,7 @@ Weitere Informationen zum [Testabgleich von Application Gateway](https://docs.mi
 **Nachricht:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (Das vom Back-End verwendete Serverzertifikat ist nicht von einer bekannten Zertifizierungsstelle (CA) signiert.) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (Fügen Sie das Back-End für Application Gateway der Whitelist hinzu, indem Sie das Stammzertifikat des Serverzertifikats hochladen, das vom Back-End verwendet wird.)
 
 **Ursache:** End-to-End-SSL mit Application Gateway v2 erfordert, dass das Zertifikat des Back-End-Servers überprüft wird, damit der Server als fehlerfrei angesehen wird.
-Damit ein SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.
+Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.
 
 **Lösung:** Führen Sie diese Schritte aus, um das vertrauenswürdige Stammzertifikat zu exportieren und in Application Gateway hochzuladen. (Diese Schritte gelten für Windows-Clients.)
 
@@ -241,7 +241,7 @@ Weitere Informationen zum Extrahieren und Hochladen vertrauenswürdiger Stammzer
 **Nachricht:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (Das Stammzertifikat des Serverzertifikats, das vom Back-End verwendet wird, stimmt nicht mit dem vertrauenswürdigen Stammzertifikat überein, das Application Gateway hinzugefügt wurde.) Ensure that you add the correct root certificate to whitelist the backend. (Stellen Sie sicher, dass Sie das richtige Stammzertifikat hinzufügen, um das Back-End in die Whitelist aufzunehmen.)
 
 **Ursache:** End-to-End-SSL mit Application Gateway v2 erfordert, dass das Zertifikat des Back-End-Servers überprüft wird, damit der Server als fehlerfrei angesehen wird.
-Damit ein SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss das Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.
+Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss das Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.
 
 Das Zertifikat, das in die HTTP-Einstellungen von Application Gateway hochgeladen wurde, muss mit dem Stammzertifikat des Back-End-Serverzertifikats übereinstimmen.
 
@@ -257,7 +257,7 @@ Beispiel:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
-Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats anzeigt, exportieren Sie das Zertifikat erneut mit der vollständigen Kette (einschließlich des Stammzertifikats), und konfigurieren Sie es auf Ihrem Back-End-Server. 
+Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats enthält, exportieren Sie das Zertifikat erneut mit der vollständigen Kette (einschließlich des Stammzertifikats). Konfigurieren Sie dieses Zertifikat auf Ihrem Back-End-Server. 
 
 ```
   CONNECTED(00000188)\
@@ -280,7 +280,7 @@ Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats anzeigt,
 
 **Nachricht:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (Der allgemeine Name (CN) des Back-End-Zertifikats stimmt nicht mit dem Hostheader des Tests überein.)
 
-**Ursache:** Application Gateway überprüft, ob der in der HTTP-Einstellung des Back-Ends angegebene Hostname mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom SSL-Zertifikat des Back-End-Servers angegeben wird. Dies ist Standard_v2- und WAF_v2-SKU-Verhalten. Die SNI (Server Name Indication, Servernamensanzeige) der Standard- und WAF-SKU wird als FQDN in der Adresse des Back-End-Pools festgelegt.
+**Ursache:** Application Gateway überprüft, ob der in der HTTP-Einstellung des Back-Ends angegebene Hostname mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom TLS/SSL-Zertifikat des Back-End-Servers angegeben wird. Dies ist Standard_v2- und WAF_v2-SKU-Verhalten. Die SNI (Server Name Indication, Servernamensanzeige) der Standard- und WAF-SKU wird als FQDN in der Adresse des Back-End-Pools festgelegt.
 
 Wenn ein Standardtest vorliegt (es wurde kein benutzerdefinierter Test konfiguriert und zugeordnet), wird in der V2-SKU die SNI aus dem in den HTTP-Einstellungen angegebenen Hostnamen festgelegt. Oder für den Fall, dass „Pick hostname from backend address“ (Hostnamen aus Back-End-Adresse entnehmen) in den HTTP-Einstellungen erwähnt wird, wobei der Back-End-Adresspool einen gültigen FQDN enthalten muss, wird diese Einstellung angewendet.
 
@@ -321,9 +321,9 @@ Für Linux mit OpenSSL:
 
 **Nachricht:** Backend certificate is invalid. (Das Back-End-Zertifikat ist ungültig.) Current date is not within the \"Valid from\" and \"Valid to\" date range on the certificate. (Das aktuelle Datum entspricht nicht den Datumsbereichen „Gültig ab“ und „Gültig bis“ für das Zertifikat.)
 
-**Ursache:** Jedes Zertifikat verfügt über einen Gültigkeitsdauerbereich, und die HTTPS-Verbindung ist nur dann sicher, wenn das SSL-Zertifikat des Servers gültig ist. Die aktuellen Daten müssen sich innerhalb des Bereichs **Gültig ab** und **Gültig bis** befinden. Wenn dies nicht der Fall ist, wird das Zertifikat als ungültig eingestuft und führt so zu einem Sicherheitsproblem, bei dem der Back-End-Server von Application Gateway als fehlerhaft markiert wird.
+**Ursache:** Jedes Zertifikat verfügt über einen Gültigkeitsdauerbereich, und die HTTPS-Verbindung ist nur dann sicher, wenn das TLS/SSL-Zertifikat des Servers gültig ist. Die aktuellen Daten müssen sich innerhalb des Bereichs **Gültig ab** und **Gültig bis** befinden. Wenn dies nicht der Fall ist, wird das Zertifikat als ungültig eingestuft und führt so zu einem Sicherheitsproblem, bei dem der Back-End-Server von Application Gateway als fehlerhaft markiert wird.
 
-**Lösung:** Wenn Ihr SSL-Zertifikat abgelaufen ist, erneuern Sie das Zertifikat bei Ihrem Hersteller, und aktualisieren Sie die Servereinstellungen mit dem neuen Zertifikat. Wenn es sich um ein selbstsigniertes Zertifikat handelt, müssen Sie ein gültiges Zertifikat generieren und das Stammzertifikat in die HTTP-Einstellungen von Application Gateway hochladen. Gehen Sie dazu folgendermaßen vor:
+**Lösung:** Wenn Ihr TLS/SSL-Zertifikat abgelaufen ist, erneuern Sie das Zertifikat bei Ihrem Hersteller, und aktualisieren Sie die Servereinstellungen mit dem neuen Zertifikat. Wenn es sich um ein selbstsigniertes Zertifikat handelt, müssen Sie ein gültiges Zertifikat generieren und das Stammzertifikat in die HTTP-Einstellungen von Application Gateway hochladen. Gehen Sie dazu folgendermaßen vor:
 
 1.  Öffnen Sie Ihre HTTP-Einstellungen von Application Gateway im Portal.
 

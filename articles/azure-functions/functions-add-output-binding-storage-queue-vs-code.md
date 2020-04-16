@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Functions mit einer Azure Storage-Warte
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290068"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673450"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studio Code
 
@@ -52,9 +52,13 @@ Im [vorherigen Schnellstartartikel](functions-create-first-function-vs-code.md) 
 
 Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführen des Projekts die Storage-Bindungserweiterung installieren. 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Ihr Projekt wurde für die Verwendung von [Erweiterungsbündeln](functions-bindings-register.md#extension-bundles) konfiguriert, wodurch automatisch ein vordefinierter Satz von Erweiterungspaketen installiert wird. 
+
+Erweiterungspakete sind in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht etwa wie folgt aus:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ Dann können Sie dem Projekt die Storage-Ausgabebindung hinzufügen.
 
 In Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ein eindeutiger `name` in der Datei „function.json“ definiert werden. Wie Sie diese Attribute definieren, hängt von der Sprache der Funktions-App ab.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ In Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ei
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ Nachdem die Bindung definiert wurde, können Sie den `name` der Bindung verwende
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ Nachdem die Bindung definiert wurde, können Sie den `name` der Bindung verwende
 ::: zone-end
 
 Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto von der Functions-Runtime erstellt, wenn die Ausgabebindung zum ersten Mal verwendet wird. Mit Storage-Explorer überprüfen Sie, ob die Warteschlange zusammen mit der neuen Nachricht erstellt wurde.
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Herstellen einer Storage-Explorer-Verbindung mit Ihrem Konto
 
@@ -148,7 +176,7 @@ Nach der erfolgreichen Anmeldung bei Ihrem Konto werden alle mit dem Konto verbu
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und wählen Sie die Warteschlange mit dem Namen **outqueue** aus. 
 
-   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
+   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure* (An die Funktion übergebener Name: Azure).
 
     ![In Azure Storage-Explorer angezeigte Warteschlangennachricht](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

@@ -3,14 +3,14 @@ title: Abfragen von Protokollen der Azure-Updateverwaltung
 description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für die Updateverwaltung in Ihrem Log Analytics-Arbeitsbereich abfragen.
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867062"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743871"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Azure Monitor-Protokollen
 
@@ -26,7 +26,7 @@ Datensätze, die von der Updateverwaltung für Windows und Linux-VMs gesammelt w
 
 Ein Datensatz mit dem Typ `RequiredUpdate` wird erstellt, der die für einen Computer erforderlichen Updates darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
 | KBID | ID des Knowledge Base-Artikels für das Windows Update. |
@@ -47,7 +47,7 @@ Ein Datensatz mit dem Typ `RequiredUpdate` wird erstellt, der die für einen Com
 
 Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer verfügbaren Updates sowie deren Installationsstatus darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | ApprovalSource | Gilt nur für das Windows-Betriebssystem. Der Wert ist *Microsoft Update*. |
 | Genehmigt | *True* oder *False* |
@@ -84,7 +84,7 @@ Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer ve
 
 Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Agent auf dem Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
@@ -105,14 +105,14 @@ Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Ag
 
 Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstellungsstatus des Updates einer geplanten Bereitstellung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
 | ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
 | CorrelationId | Eindeutiger Bezeichner für die Runbookauftragsausführung für das Update. |
 | EndTime | Der Zeitpunkt, an dem der Synchronisierungsprozess beendet wurde. | 
 | ErrorResult | Generierter Windows Update-Fehlercode, wenn die Installation eines Updates fehlschlägt. | 
-| InstallationStatus | Die möglichen Installationszustände eines Updates auf dem Clientcomputer, *In Arbeit*, *Erfolgreich*, *Teilweise fehlgeschlagen*. |
+| InstallationStatus | Die folgenden Installationszustände sind für Updates auf dem Clientcomputer möglich:<br> *NotStarted:* Der Auftrag wurde noch nicht ausgelöst.<br> *FailedToStart:* Der Auftrag konnte nicht auf dem Computer gestartet werden.<br> *Failed:* Der Auftrag wurde gestartet, ist aber mit einer Ausnahme fehlgeschlagen.<br> *InProgress:* Der Auftrag ist in Bearbeitung.<br> *MaintenanceWindowExceeded:* Die Ausführung wurde noch nicht fertiggestellt, aber das Wartungsfenster ist abgelaufen.<br> *Succeeded:* Der Auftrag wurde erfolgreich abgeschlossen.<br> *InstallFailed:* Die Installation des Updates ist fehlgeschlagen.<br> *NotIncluded*<br> *Excluded* |
 | KBID | ID des Knowledge Base-Artikels für das Windows Update. | 
 | ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
 | OSType | Gibt den Typ des Betriebssystems an, entweder *Windows* oder *Linux*. | 
@@ -137,15 +137,15 @@ Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstell
 
 Ein Datensatz mit dem Typ `UpdateSummary` wird erstellt, der eine Updatezusammenfassung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
 | ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
 | CriticalUpdatesMissing | Anzahl der fehlenden wichtigen Updates, die anwendbar sind. | 
 | ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
 | NETRuntimeVersion | Version des auf dem Windows-Computer installierten .NET Frameworks. |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | Werte:<br> *Aktuell*, wenn der Wert unter 30 Tagen liegt<br> *Vor 30 Tagen*<br> *Vor 60 Tagen*<br> *Vor 90 Tagen*<br> *Vor 120 Tagen*<br> *Vor 150 Tagen*<br> *Vor 180 Tagen*<br> *Älter*, wenn der Wert über 180 Tagen liegt | 
+| OldestMissingSecurityUpdateInDays | Die Gesamtanzahl von Tagen für das älteste erkannte Update, das nicht installiert wurde (sofern zutreffend). |
 | OsVersion | Die Version des Betriebssystems. |
 | OtherUpdatesMissing | Anzahl der erkannten fehlenden Updates. |
 | Resource |  Der Name der Ressource. | 

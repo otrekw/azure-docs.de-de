@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Hochladen von Bildern – Visuelle Bing-Suche'
+title: 'Tutorial: Hochladen von Bildern mit der API für die visuelle Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Erläutert den Upload eines Bilds in Bing, um Erkenntnisse über das Bild zu gewinnen, und die anschließende Analyse und Anzeige der Antwort.
+description: Hier erfahren Sie, wie Sie ein Bild in Bing hochladen, Erkenntnisse dazu gewinnen und die Antwort anzeigen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689179"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477939"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Tutorial: Hochladen von Bildern in die API für die visuelle Bing-Suche
 
@@ -69,7 +69,7 @@ Fügen Sie ein `<script>`-Tag zum `<head>`-Tag hinzu, das den JavaScript-Code f�
 
 Damit der Benutzer ein hochzuladendes Bild auswählen kann, verwendet die Anwendung das `<input>`-Tag, wobei das Typattribut auf `file` festgelegt ist. Auf der Benutzeroberfläche muss deutlich werden, dass die Anwendung Bing verwendet, um die Suchergebnisse zu erhalten.
 
-Fügen Sie `requestSection` `<div>` das folgende `<div>`-Tags hinzu. Als Dateieingabe wird eine einzelne Datei mit einem beliebigen Bildtyp (z.B. JPG, GIF, PNG) akzeptiert. Das `onchange`-Ereignis gibt den Handler an, der aufgerufen wird, wenn ein Benutzer eine Datei auswählt.
+Fügen Sie `<div>` wie folgt zu `requestSection` `<div>` hinzu. Als Dateieingabe wird eine einzelne Datei mit einem beliebigen Bildtyp (z.B. JPG, GIF, PNG) akzeptiert. Das `onchange`-Ereignis gibt den Handler an, der aufgerufen wird, wenn ein Benutzer eine Datei auswählt.
 
 Das `<output>`-Tag wird verwendet, um eine Miniaturansicht des ausgewählten Bilds anzuzeigen:
 

@@ -3,17 +3,16 @@ title: Grundlegendes zum Lebenszyklus einer Blaupause
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die Details zu den einzelnen Phasen, einschließlich dem Aktualisieren und Entfernen von Blaupausenzuweisungen.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404587"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677383"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
-Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprints einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind.
-Blueprints unterstützt Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
+Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprints einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind. Azure Blueprints unterstützt Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
 
 Um einen Überblick über Blaupausen und ihre einzelnen Phasen zu vermitteln, wird ein Standardlebenszyklus vorgestellt:
 

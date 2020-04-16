@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7a3374e8b1bb5c7624f41c994f7f9a6135506c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278517"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985098"
 ---
 # <a name="consulting-service-prerequisites"></a>Voraussetzungen für Beratungsdienst
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
 
 Lesen Sie die Beschreibung und Anforderungen für diesen Angebotstyp unter [Beratungsdienste für Azure Marketplace und AppSource](../../consulting-services.md).  Die folgenden Arten von Beratungsdiensten weisen zusätzliche Anforderungen auf:
 

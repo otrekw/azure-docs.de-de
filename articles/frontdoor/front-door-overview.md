@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471645"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879121"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 Über Azure Front Door können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie die Optimierung auf die bestmögliche Leistung und sofortige globale Failover durchführen, um die Hochverfügbarkeit sicherzustellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen (in mehreren Regionen angeordnet) in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, mit denen über Azure eine globale Zielgruppe erreicht wird.
@@ -51,12 +51,12 @@ Entsprechend können zwei verschiedene Domänen (`www.contoso.com` und `www.fabr
 ## <a name="session-affinity"></a>Sitzungsaffinität
 Die cookiebasierte Sitzungsaffinität ist ein hilfreiches Feature, mit dem eine Benutzersitzung auf demselben Anwendungs-Back-End fortgesetzt werden kann. Durch die Nutzung von Cookies, die durch Front Door verwaltet werden, wird nachfolgender Datenverkehr von einer Benutzersitzung an dasselbe Anwendungs-Back-End zur Verarbeitung geleitet. Dieses Feature ist wichtig, wenn der Sitzungsstatus für eine Benutzersitzung lokal auf dem Back-End gespeichert wird.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>SSL-Terminierung (Secure Sockets Layer)
-Front Door unterstützt SSL-Terminierung auf Edge-Ebene, d. h., einzelne Benutzer können eine SSL-Verbindung mit Front Door-Umgebungen einrichten, statt sie über lange Transportverbindungen mit dem Anwendungs-Back-End herzustellen. Darüber hinaus unterstützt Front Door sowohl HTTP- als auch HTTPS-Konnektivität zwischen Front Door-Umgebungen und Ihren Back-Ends. Deshalb können Sie auch End-to-End-SSL-Verschlüsselung einrichten. Wenn Front Door für Ihre Arbeitsauslastung beispielsweise infolge der Wiederverwendung einer betriebsbereiten Verbindung innerhalb einer Minute über 5.000 Anforderungen für aktive Dienste empfängt, stellt es ungefähr 500 Verbindungen mit Ihrem Anwendungs-Back-End her, wodurch ihre Back-Ends erheblich entlastet werden.
+## <a name="tls-termination"></a>TLS-Terminierung
+Front Door unterstützt TLS-Terminierung auf Edge-Ebene, d. h., einzelne Benutzer können eine TLS-Verbindung mit Front Door-Umgebungen einrichten, statt sie über lange Transportverbindungen mit dem Anwendungs-Back-End herzustellen. Darüber hinaus unterstützt Front Door sowohl HTTP- als auch HTTPS-Konnektivität zwischen Front Door-Umgebungen und Ihren Back-Ends. Deshalb können Sie auch End-to-End-TLS-Verschlüsselung einrichten. Wenn Front Door für Ihre Arbeitsauslastung beispielsweise infolge der Wiederverwendung einer betriebsbereiten Verbindung innerhalb einer Minute über 5.000 Anforderungen für aktive Dienste empfängt, stellt es ungefähr 500 Verbindungen mit Ihrem Anwendungs-Back-End her, wodurch ihre Back-Ends erheblich entlastet werden.
 
 ## <a name="custom-domains-and-certificate-management"></a>Benutzerdefinierte Domänen und Zertifikatverwaltung
 Wenn Sie Front Door zum Bereitstellen von Inhalten verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer Front Door-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
-Front Door unterstützt auch HTTPS für benutzerdefinierte Domänennamen. Verwenden Sie dieses Feature, indem Sie entweder durch Front Door verwaltete Zertifikate für Ihren Datenverkehr wählen oder Ihr eigenes benutzerdefiniertes SSL-Zertifikat hochladen.
+Front Door unterstützt auch HTTPS für benutzerdefinierte Domänennamen. Verwenden Sie dieses Feature, indem Sie entweder durch Front Door verwaltete Zertifikate für Ihren Datenverkehr wählen oder Ihr eigenes benutzerdefiniertes TLS-/SSL-Zertifikat hochladen.
 
 ## <a name="application-layer-security"></a>Sicherheit für Anwendungsschichten
 Azure Front Door ermöglicht Ihnen, WAF-Regeln (Web Application Firewall) für Zugriffssteuerung zu erstellen, um Ihre HTTP/HTTPS-Workload vor Missbrauch auf Basis von Client-IP-Adressen, Landeskennzahl und HTTP-Parametern zu schützen. Darüber hinaus ermöglicht es Ihnen Front Door, Ratenbegrenzungsregeln zur Bekämpfung von schädlichem Bot-Datenverkehr zu erstellen. Weitere Informationen zu Web Application Firewall finden Sie unter [Was ist die Azure Web Application Firewall?](../web-application-firewall/overview.md).

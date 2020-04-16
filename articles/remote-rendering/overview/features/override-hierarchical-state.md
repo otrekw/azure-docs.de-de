@@ -1,0 +1,87 @@
+---
+title: Hierarchische Zustandsüberschreibung
+description: Erläutert das Konzept der Komponenten zur hierarchischen Zustandsüberschreibung
+author: florianborn71
+ms.author: flborn
+ms.date: 02/10/2020
+ms.topic: article
+ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80679076"
+---
+# <a name="hierarchical-state-override"></a>Hierarchische Zustandsüberschreibung
+
+In vielen Fällen ist es notwendig, die Darstellung von Teilen eines [Modells](../../concepts/models.md) dynamisch zu ändern, z. B. das Ausblenden von Unterdiagrammen oder das Tauschen von Teilen für das transparente Rendering. Es ist nicht sehr praktikabel, die Materialien jedes involvierten Teils zu ändern, da es erforderlich ist, das gesamte Szenendiagramm zu durchlaufen und die Materialklonung sowie die Zuweisung auf jedem Knoten zu verwalten.
+
+Verwenden Sie die Komponente `HierarchicalStateOverrideComponent`, um diesen Anwendungsfall mit dem geringstmöglichen Aufwand zu lösen. Diese Komponente implementiert Updates für den hierarchischen Zustand für beliebige Branches des Szenendiagramms. Das bedeutet, dass der Zustand auf jeder Ebene im Szenendiagramm definiert werden kann. Die Hierarchie wird so lange durchsucht, bis der Zustand entweder von einem neuen Zustand überschrieben oder auf ein Blattobjekt angewendet wird.
+
+Nehmen Sie als Beispiel das Modell eines Autos: Sie möchten, dass das gesamte Auto transparent dargestellt wird, mit Ausnahme des Motors. Der Anwendungsfall umfasst nur zwei Instanzen der Komponente:
+
+* Die erste Komponente wird dem Stammknoten des Modells zugewiesen und aktiviert das transparente Rendering für das gesamte Auto.
+* Die zweite Komponente wird dem Stammknoten des Motors zugewiesen und überschreibt den Zustand erneut, indem der durchsichtige Modus explizit überschrieben wird.
+
+## <a name="features"></a>Features
+
+Die festgelegten Zustände, die überschrieben werden können, sind die folgenden:
+
+* **Hidden**: Entsprechende Gittermodelle im Szenendiagramm werden ausgeblendet oder angezeigt.
+* **Tönungsfarbe:** Ein gerendertes Objekt kann mit einzelnen Farben und Sättigung getönt werden. Im Bild unten ist die Felge eines Rads getönt dargestellt.
+  
+  ![Farbtönung](./media/color-tint.png)
+
+* **Durchsichtig:** Die Geometrie wird semitransparent gerendert, um beispielsweise die inneren Teile eines Objekts anzuzeigen. Die folgende Abbildung zeigt das gesamte Auto, das mit Ausnahme des roten Bremssattels im durchsichtigen Modus gerendert wird:
+
+  ![Durchsichtig](./media/see-through.png)
+
+  > [!IMPORTANT]
+  > Der durchsichtige Effekt funktioniert nur, wenn der [Renderingmodus](../../concepts/rendering-modes.md) *TileBasedComposition* verwendet wird.
+
+* **Ausgewählt:** Die Geometrie wird mit einer [Auswahlgliederung](outlines.md) gerendert.
+
+  ![Auswahlgliederung](./media/selection-outline.png)
+
+* **DisableCollision**: Die Geometrie ist von [räumlichen Abfragen](spatial-queries.md) ausgenommen. Das Flag **Ausgeblendet** deaktiviert keine Konflikte, deshalb werden diese beiden Flags häufig zusammen festgelegt.
+
+## <a name="hierarchical-overrides"></a>Hierarchische Überschreibungen
+
+Die `HierarchicalStateOverrideComponent` kann auf mehreren Ebenen einer Objekthierarchie angefügt werden. Da auf einer Entität nur eine Komponente jedes Typs vorhanden sein darf, verwaltet jede `HierarchicalStateOverrideComponent` die Zustände für „ausgeblendet“, „durchsichtig“, „ausgewählt“, „getönt“ und „collision“
+
+Deshalb kann jeder Zustand auf eine der folgenden Optionen festgelegt werden:
+
+* `ForceOn`: Der Zustand wird für alle Gittermodelle auf und unterhalb dieses Knotens aktiviert.
+* `ForceOff`: Der Zustand wird für alle Gittermodelle auf und unterhalb dieses Knotens deaktiviert.
+* `InheritFromParent`: Der Zustand ist von dieser Überschreibungskomponente nicht betroffen.
+
+Sie können Zustände direkt oder über die `SetState`-Funktion ändern:
+
+```cs
+HierarchicalStateOverrideComponent component = ...;
+
+// set one state directly
+component.HiddenState = HierarchicalEnableState.ForceOn;
+
+// set a state with the SetState function
+component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.InheritFromParent);
+
+// set multiple states at once with the SetState function
+component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
+```
+
+### <a name="tint-color"></a>Tönungsfarbe
+
+Das Überschreiben der Tönungsfarbe ist etwas Besonderes, da es sowohl den Zustand „ on/off/inherit“ (an, aus, erben) als auch eine Tönungsfarbeneigenschaft gibt. Der Alpha-Teil der Tönungsfarbe definiert die Sättigung des Tönungseffekts: Wenn der Wert auf 0,0 festgelegt ist, ist keine Tönung sichtbar. Wenn der Wert auf 1,0 festgelegt ist, wird das Objekt mit reiner Farbe dargestellt. Für Zwischenwerte wird die endgültige Farbe mit der Tönungsfarbe gemischt. Die Tönungsfarbe kann auf Pro-Frame-Basis geändert werden, um eine Farbanimation zu erreichen.
+
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
+
+Eine Instanz von `HierarchicalStateOverrideComponent` selbst führt nicht zu einem großen Runtimemehraufwand. Jedoch bewährt es sich immer, die Anzahl der aktiven Komponenten niedrig zu halten. Wenn Sie beispielsweise ein Auswahlsystem implementieren, das das ausgewählte Objekt hervorhebt, wird empfohlen, die Komponente zu löschen, wenn die Hervorhebung entfernt wird. Die Beibehaltung der Komponenten mit neutralen Features kann sich schnell häufen.
+
+Durch das transparente Rendering werden die GPUs des Servers durch mehr Workload belastet als beim Standardrendering. Wenn große Teile des Szenendiagramms zu *durchsichtig* wechseln und viele Geometrieebenen sichtbar sind, kann dies zu einem Leistungsengpass führen. Das gleiche gilt für Objekte mit [Auswahlgliederungen](../../overview/features/outlines.md#performance).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Gliederungen](../../overview/features/outlines.md)
+* [Renderingmodi](../../concepts/rendering-modes.md)
+* [Räumliche Abfragen](../../overview/features/spatial-queries.md)

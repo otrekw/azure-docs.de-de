@@ -1,6 +1,6 @@
 ---
 title: Merkmale der Interaktion mehrerer Mandanten – Azure AD | Microsoft-Dokumentation
-description: Verwalten Ihrer Azure Active Directory-Mandanten, indem Sie Ihre Mandanten als vollständig unabhängige Ressourcen verstehen
+description: Enthält grundlegende Informationen zu Ihren Azure Active Directory-Mandanten als vollständig unabhängige Organisationen.
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -9,45 +9,50 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 04/07/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562257"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878118"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Mandanten
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Grundlegendes zur Interaktion mehrerer Azure Active Directory-Organisationen
 
-In Azure Active Directory (Azure AD) ist jeder Mandant eine vollständig unabhängige Ressource: gleichgestellt, logisch unabhängig von anderen Mandanten, die Sie verwalten. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Mandanten. Diese Unabhängigkeit zwischen den Mandanten beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
+In Azure Active Directory (Azure AD) ist jeder Mandant eine vollständig unabhängige Organisation: gleichgestellt und logisch unabhängig von anderen Azure AD-Organisationen, die Sie verwalten. Diese Unabhängigkeit zwischen den Organisationen umfasst die Unabhängigkeit in Bezug auf Ressourcen, Verwaltung und Synchronisierung. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Organisationen.
 
 ## <a name="resource-independence"></a>Ressourcenunabhängigkeit
-* Wenn Sie eine Ressource in einem Mandanten erstellen oder löschen, hat dies keine Auswirkungen auf Ressourcen in einem anderen Mandanten. Eine teilweise geltende Ausnahme bilden externe Benutzer. 
-* Wenn Sie einen Ihrer Domänennamen bei einem Mandanten verwenden, kann er bei keinem anderen Mandanten verwendet werden.
+
+* Wenn Sie eine Azure AD-Ressource in einer Organisation erstellen oder löschen, hat dies keine Auswirkungen auf Ressourcen in einer anderen Organisation (gilt teilweise nicht für externe Benutzer).
+* Wenn Sie einen Ihrer Domänennamen bei einer Organisation registrieren, kann er nicht von einer anderen Organisation verwendet werden.
 
 ## <a name="administrative-independence"></a>Verwaltungsunabhängigkeit
-Wenn ein Benutzer ohne Administratorberechtigungen aus dem Mandanten „Contoso“ einen Testmandanten „Test“ erstellt, geschieht Folgendes:
 
-* Standardmäßig wird der Benutzer, der einen Mandanten erstellt, als externer Benutzer in diesem neuen Mandanten hinzugefügt, und ihm wird ihm die globale Administratorrolle in diesem Mandanten zugewiesen.
-* Die Administratoren für den Mandanten „Contoso“ haben keine direkten Administratorberechtigungen für den Mandanten „Test“, sofern ihnen nicht ein Administrator dieses Mandanten die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können allerdings den Zugriff auf den Mandanten „Test“ steuern, wenn sie das Benutzerkonto steuern, mit dem dieser Mandant erstellt wurde.
-* Wenn Sie eine Administratorrolle für einen Benutzer in einem Mandanten hinzufügen oder entfernen, wirkt sich die Änderung nicht auf die Administratorrollen aus, über die der Benutzer in einem anderen Mandanten verfügt.
+Wenn ein regulärer Benutzer (kein Administrator) der Organisation „Contoso“ die Testorganisation „Test“ erstellt, gilt Folgendes:
+
+* Standardmäßig wird der Benutzer, der eine Organisation erstellt, als externer Benutzer in dieser neuen Organisation hinzugefügt, und ihm wird die globale Administratorrolle für diese Organisation zugewiesen.
+* Die Administratoren für die Organisation „Contoso“ haben keine direkten Administratorberechtigungen für die Organisation „Test“, sofern ihnen nicht ein Administrator dieser Organisation die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können allerdings den Zugriff auf die Organisation „Test“ steuern, wenn sie das Benutzerkonto steuern, mit dem diese Organisation erstellt wurde.
+* Wenn Sie eine Azure AD-Rolle für einen Benutzer in einer Organisation hinzufügen oder entfernen, wirkt sich diese Änderung nicht auf die Rollen aus, die dem Benutzer in einer anderen Azure AD-Organisation zugewiesen werden.
 
 ## <a name="synchronization-independence"></a>Synchronisierungsunabhängigkeit
-Sie können jeden Azure AD-Mandanten unabhängig voneinander konfigurieren, damit Sie mit einer der folgenden Möglichkeiten synchronisierte Daten einer einzelnen Instanz erhalten:
+
+Sie können jede Azure AD-Organisation einzeln konfigurieren, damit die Daten jeweils nur über eine Instanz synchronisiert werden, z. B.:
 
 * Dem Tool Azure AD Connect, um Daten mit einer AD-Gesamtstruktur zu synchronisieren
-* Dem Connector des Azure Active Directory-Mandanten für Forefront Identity Manager, um Daten mit mindestens einer lokalen Gesamtstruktur und/oder anderen Datenquellen als Azure AD zu synchronisieren
+* Dem Azure Active Directory Connector für Forefront Identity Manager, um Daten mit mindestens einer lokalen Gesamtstruktur und/oder anderen Datenquellen als Azure AD zu synchronisieren.
 
-## <a name="add-an-azure-ad-tenant"></a>Hinzufügen eines Azure AD-Mandanten
-Um einen Azure AD-Mandanten im Azure-Portal hinzuzufügen, melden Sie sich mit einem globalen Azure AD-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite **Neu** aus.
+## <a name="add-an-azure-ad-organization"></a>Hinzufügen einer Azure AD-Organisation
+
+Um eine Azure AD-Organisation im Azure-Portal hinzuzufügen, melden Sie sich mit einem globalen Azure AD-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an und wählen die Option **Neu** aus.
 
 > [!NOTE]
-> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Microsoft Graph-API oder über das Microsoft 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können [dem Mandanten auch ein anderes Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Azure AD-Organisationen keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt wurde oder abgelaufen ist, können Sie per Azure PowerShell, Microsoft Graph-API oder Microsoft 365 Admin Center weiter auf die Daten Ihrer Azure AD-Organisation zugreifen. Sie können [der Organisation auch ein anderes Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine grobe Übersicht über Lizenzierungsprobleme und Best Practices im Zusammenhang mit Azure AD finden Sie unter [Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+
+Informationen zu Lizenzierungsaspekten und bewährten Methoden im Zusammenhang mit Azure AD finden Sie unter [Was ist Azure Active Directory-Lizenzierung?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

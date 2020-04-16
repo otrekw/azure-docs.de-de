@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498578"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414246"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -219,7 +219,7 @@ Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätseben
 
 Die schnellste Möglichkeit zum Herstellen einer Verbindung mit einer Cosmos-Datenbank mit der API für MongoDB von Azure Cosmos DB besteht darin, dass Sie zum [Azure-Portal](https://portal.azure.com) wechseln. Navigieren Sie zu Ihrem Konto, und klicken Sie dann im Navigationsmenü auf der linken Seite auf **Schnellstart**. Der Schnellstart ist die beste Möglichkeit, um Codeausschnitte für das Herstellen einer Verbindung mit Ihrer Datenbank abzurufen.
 
-Azure Cosmos DB erzwingt strenge Sicherheitsanforderungen und -standards. Azure Cosmos DB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über SSL. Verwenden Sie daher unbedingt TLSv1.2.
+Azure Cosmos DB erzwingt strenge Sicherheitsanforderungen und -standards. Azure Cosmos DB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über TLS. Verwenden Sie daher unbedingt TLSv1.2.
 
 Weitere Informationen finden Sie unter [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md).
 
@@ -404,7 +404,7 @@ Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohi
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Können mit der Table-API Sicherungen erstellt werden?
 
-Ja. Die Table-API nutzt für Sicherungen die global verteilte Plattform von Azure Cosmos DB. Sicherungen werden automatisch erstellt. Weitere Informationen finden Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
+Ja. Die Table-API nutzt für Sicherungen die global verteilte Plattform von Azure Cosmos DB. Sicherungen werden automatisch erstellt. Weitere Informationen finden Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Indiziert die Table-API standardmäßig alle Attribute einer Entität?
 
@@ -640,7 +640,7 @@ Die Ausgabe des Profils oben zeigt, wie viel Zeit zum Abrufen der Scheitelpunkt-
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a>Cassandra-API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Welche Protokollversion wird von der Cassandra-API von Azure Cosmos DB unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Welche Protokollversion wird von der Cassandra-API von Azure Cosmos DB unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
 
 Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [Uservoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
 
@@ -761,7 +761,7 @@ Derzeit ist Azure Cosmos DB für Cloudumgebungen optimiert und kann ohne zusätz
 ### <a name="does-cassandra-api-provide-full-backups"></a>Bietet die Cassandra-API vollständige Sicherungen?
 
 Azure Cosmos DB bietet zwei kostenlose vollständige Sicherungen, die zurzeit alle vier Stunden über alle APIs hinweg erstellt werden. Dadurch müssen Sie keinen Sicherungszeitplan o.Ä. einrichten.
-Wenn Sie Aufbewahrungsdauer und Häufigkeit ändern möchten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), oder lösen Sie eine Supportanfrage aus. Informationen zu Sicherungsfunktion finden Sie im Artikel [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
+Wenn Sie Aufbewahrungsdauer und Häufigkeit ändern möchten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), oder lösen Sie eine Supportanfrage aus. Informationen zu Sicherungsfunktion finden Sie im Artikel [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Wie läuft mit dem Cassandra-API-Konto das Failover bei einem Ausfall einer Region ab?
 

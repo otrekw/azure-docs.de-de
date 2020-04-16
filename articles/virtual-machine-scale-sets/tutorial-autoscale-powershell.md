@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Automatisches Skalieren einer Skalierungsgruppe mit Azure PowerShell'
 description: Es wird beschrieben, wie Sie eine VM-Skalierungsgruppe mit Azure PowerShell automatisch skalieren, wenn sich die CPU-Anforderungen erhöhen oder verringern.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278410"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008997"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -27,9 +27,9 @@ Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanze
 > * Durchführen eines Belastungstests für VM-Instanzen und Auslösen von Regeln für die automatische Skalierung
 > * Zurückfahren der automatischen Skalierung bei einer Reduzierung des Bedarfs
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Es gibt ein bekanntes Problem für die Version 6.8.1 und höhere Versionen des Azure PowerShell-Moduls. Davon ist auch die aktuelle Version von Azure Cloud Shell betroffen. Für dieses Tutorial können nur die Versionen 6.0.0 bis 6.8.0 des Azure PowerShell-Moduls verwendet werden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Es gibt ein bekanntes Problem für die Version 6.8.1 und höhere Versionen des Azure PowerShell-Moduls. Davon ist auch die aktuelle Version von Azure Cloud Shell betroffen. Für dieses Tutorial können nur die Versionen 6.0.0 bis 6.8.0 des Azure PowerShell-Moduls verwendet werden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
@@ -64,7 +64,7 @@ Wir erstellen mit [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights
 
 Für diese Regel werden die folgenden Parameter verwendet:
 
-| Parameter               | Erklärung                                                                                                         | value          |
+| Parameter               | Erklärung                                                                                                         | Wert          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Die Leistungsmetrik zum Überwachen und Anwenden von Skalierungsgruppenaktionen.                                                   | CPU in Prozent |
 | *-TimeGrain*            | Gibt an, wie häufig Metriken zu Analysezwecken gesammelt werden.                                                                   | 1 Minute       |
@@ -191,7 +191,7 @@ mstsc /v 52.168.121.216:50001
 - Wählen Sie **OK**, um *Empfohlene Sicherheits-, Datenschutz- und Kompatibilitätseinstellungen verwenden* zu akzeptieren.
 - Geben Sie in der Adressleiste *http://download.sysinternals.com/files/CPUSTRES.zip* ein.
 - Da die verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist, können Sie **Hinzufügen** wählen, um die Domäne *http://download.sysinternals.com* Ihrer Liste mit den vertrauenswürdigen Sites hinzuzufügen.
-- Wählen Sie bei Aufforderung zum Herunterladen der Datei die Option **Öffnen**, wählen Sie das Tool **CPUSTRES.EXE** aus, und wählen Sie *Ausführen*, um das Tool auszuführen.
+- Wählen Sie bei Aufforderung zum Herunterladen der Datei die Option **Öffnen**, wählen Sie das Tool *CPUSTRES.EXE* aus, und wählen Sie **Ausführen**, um das Tool auszuführen.
 
 Aktivieren Sie für zwei Threads das Kontrollkästchen **Aktiv**, um eine CPU-Last zu generieren. Wählen Sie im Dropdownmenü **Aktivität** für beide Threads die Option *Maximum*. Sie können den Task-Manager öffnen, um sich zu vergewissern, dass die CPU-Last für die VM bei 100% liegt.
 
@@ -209,7 +209,7 @@ Lassen Sie beide Remotedesktop-Verbindungssitzungen geöffnet, damit das Tool **
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Überwachen der aktiven Regeln für die automatische Skalierung
-Verwenden Sie **while**, um die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe zu überwachen. Es dauert fünf Minuten, bis die Regeln für die automatische Skalierung als Reaktion auf die CPU-Last, die mit *CPUStress* auf den einzelnen VM-Instanzen generiert wurde, mit dem Aufskalieren beginnen:
+Verwenden Sie **while**, um die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe zu überwachen. Es dauert fünf Minuten, bis die Regeln für die automatische Skalierung als Reaktion auf die CPU-Last, die mit **CPUStress** für die einzelnen VM-Instanzen generiert wurde, mit dem horizontalen Hochskalieren beginnen:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

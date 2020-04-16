@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 871a3edf70690a09d3747703e8bc999dfcce967c
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 84736b7f1dcdf8b186fddbced5dd773e008c0dd2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385179"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887413"
 ---
 Datenträgerbursting wird für SSD Premium unterstützt. Bursting wird für SSD Premium-Datenträger mit Größen bis einschließlich 512 GiB (P20 oder niedriger) unterstützt. Diese Datenträgergrößen unterstützen das Bursting nach dem Prinzip des bestmöglichen Aufwands und nutzen ein Guthabensystem zum Verwalten von Bursts. Das Guthaben wird in einem Burstbucket gesammelt, wenn der Datenverkehr unter dem bereitgestellten Leistungsziel für die Datenträgergröße liegt, und verbraucht, wenn der Datenverkehr das Ziel übersteigt. Der Datenverkehr des Datenträgers wird auf IOPS und Bandbreite im bereitgestellten Ziel nachverfolgt. Das Datenträgerbursting umgeht keine Größenbeschränkungen für virtuelle Computer hinsichtlich IOPS oder Durchsatz.
 
@@ -46,8 +46,8 @@ Datenträgerbursting ist in allen Regionen in der öffentlichen Cloud verfügbar
 
 Im Folgenden finden Sie einige Beispielszenarien zum besseren Verständnis:
 
-- Ein häufiges Szenario, bei dem das Datenträgerbursting Vorteile bietet, sind schnellere Starts von VMs und Anwendungen auf Betriebssystemdatenträgern. Gehen Sie als Beispiel von einer Linux-VM mit einem Betriebssystemimage mit 8 GiB aus. Wenn Sie einen P2-Datenträger als Betriebssystemdatenträger verwenden, ist das bereitgestellte Ziel 120 IOPS und 25 MB/s. Beim Starten des virtuellen Computers tritt aufgrund des Ladens der Startdateien eine Lesespitze auf dem Betriebssystemdatenträger auf. Durch die Verwendung von Bursting können Sie mit der maximalen Burstgeschwindigkeit von 3.500 IOPS und 170 MB/s lesen und so die Ladezeit um mindestens das 6-Fache beschleunigen. Nach dem Start des virtuellen Computers ist die Datenverkehrsrate auf dem Betriebssystemdatenträger normalerweise niedrig, da die meisten Datenvorgänge der Anwendung auf den angefügten Datenträgern erfolgen. Wenn der Datenverkehr unter das bereitgestellte Ziel fällt, sammeln Sie Guthaben an.
+- Ein häufiges Szenario, bei dem das Datenträgerbursting Vorteile bietet, sind schnellere Starts von VMs und Anwendungen auf Betriebssystemdatenträgern. Gehen Sie als Beispiel von einer Linux-VM mit einem Betriebssystemimage mit 8 GiB aus. Wenn Sie einen P2-Datenträger als Betriebssystemdatenträger verwenden, ist das bereitgestellte Ziel 120 IOPS und 25 MiB. Beim Starten des virtuellen Computers tritt aufgrund des Ladens der Startdateien eine Lesespitze auf dem Betriebssystemdatenträger auf. Durch die Verwendung von Bursting können Sie mit der maximalen Burstgeschwindigkeit von 3500 IOPS und 170 MiB lesen und so die Ladezeit um mindestens das 6-Fache beschleunigen. Nach dem Start des virtuellen Computers ist die Datenverkehrsrate auf dem Betriebssystemdatenträger normalerweise niedrig, da die meisten Datenvorgänge der Anwendung auf den angefügten Datenträgern erfolgen. Wenn der Datenverkehr unter das bereitgestellte Ziel fällt, sammeln Sie Guthaben an.
 
 - Wenn Sie eine virtuelle Remote Virtual Desktop-Umgebung hosten, erhöht sich bei jedem Start einer Anwendung wie AutoCAD durch einen aktiven Benutzer der Datenverkehr auf dem Betriebssystemdatenträger erheblich. In diesem Fall beansprucht der Burstdatenverkehr das angesammelte Guthaben, sodass Sie das bereitgestellte Ziel überschreiten und die Anwendung wesentlich schneller starten können.
 
-- Ein P1-Datenträger verfügt über ein bereitgestelltes Ziel von 120 IOPS und 25 MB/s. Wenn der tatsächliche Datenverkehr auf dem Datenträger im letzten 1-Sekunden-Intervall 100 IOPS und 20 MB/s war, werden die nicht genutzten 20 IOPS und 5 MB im Burstbucket des Datenträgers gutgeschrieben. Guthaben im Burstbucket kann später verwendet werden, wenn der Datenverkehr das bereitgestellte Ziel überschreitet (bis zum maximalen Burstlimit). Das maximale Burstlimit definiert die Obergrenze für Datenverkehr auf dem Datenträger (auch wenn Sie über Burstguthaben verfügen, das verbraucht werden kann). In diesem Fall kann ein P1-Datenträger selbst dann, wenn er über 10.000 IOPS im Guthabenbucket verfügt, nicht mehr als den maximalen Burstwert von 3.500 IOPS nutzen.  
+- Ein P1-Datenträger verfügt über ein bereitgestelltes Ziel von 120 IOPS und 25 MiB. Wenn der tatsächliche Datenverkehr auf dem Datenträger im letzten 1-Sekunden-Intervall 100 IOPS und 20 MiB betrug, werden die nicht genutzten 20 IOPS und 5 MB im Burstbucket des Datenträgers gutgeschrieben. Guthaben im Burstbucket kann später verwendet werden, wenn der Datenverkehr das bereitgestellte Ziel überschreitet (bis zum maximalen Burstlimit). Das maximale Burstlimit definiert die Obergrenze für Datenverkehr auf dem Datenträger (auch wenn Sie über Burstguthaben verfügen, das verbraucht werden kann). In diesem Fall kann ein P1-Datenträger selbst dann, wenn er über 10.000 IOPS im Guthabenbucket verfügt, nicht mehr als den maximalen Burstwert von 3.500 IOPS nutzen.  

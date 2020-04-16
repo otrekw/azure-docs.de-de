@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321760"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677414"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -22,17 +22,17 @@ Blaupausen sind eine deklarative Möglichkeit zum Orchestrieren der Bereitstellu
 - Ressourcengruppen
 
 Der Azure-Dienst für Blaupausen wird vom global verteilten [Azure Cosmos DB](../../cosmos-db/introduction.md)-Dienst unterstützt.
-Blaupausenobjekte werden in mehreren Azure-Regionen repliziert. Diese Replikation bietet niedrige Wartezeiten, Hochverfügbarkeit und konsistenten Zugriff auf Ihre Blaupausenobjekte – unabhängig davon, in welcher Region Ihre Ressourcen bereitgestellt werden.
+Blaupausenobjekte werden in mehreren Azure-Regionen repliziert. Diese Replikation bietet niedrige Wartezeiten, Hochverfügbarkeit und konsistenten Zugriff auf Ihre Blaupausenobjekte – unabhängig davon, in welcher Region Ihre Ressourcen von Azure Blueprints bereitgestellt werden.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Unterschied zu Resource Manager-Vorlagen
 
 Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Resource Manager-Vorlagenbereitstellungen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Mit diesen können Sie das Paket zusammenstellen und versionieren – auch über eine CI/CD-Pipeline. Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
 
-Nahezu alle Elemente, die Sie für die Bereitstellung in Blaupausen einfügen möchten, können über eine Resource Manager-Vorlage eingefügt werden. Eine Resource Manager-Vorlage ist jedoch ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
+Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine Resource Manager-Vorlage eingefügt werden. Eine Resource Manager-Vorlage ist jedoch ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
 
-Mit Blaupausen bleibt die Beziehung zwischen der Blaupausendefinition (was _soll_ bereitgestellt werden) und der Blaupausenzuweisung (was _wurde_  bereitgestellt) erhalten. Diese Verbindung ermöglicht eine erweiterte Nachverfolgung und Überprüfung von Bereitstellungen. Mit Blaupausen lassen sich auch mehrere Abonnements, die der gleichen Blaupause unterliegen, gleichzeitig upgraden.
+Mit Azure Blueprints bleibt die Beziehung zwischen der Blaupausendefinition (was _soll_ bereitgestellt werden) und der Blaupausenzuweisung (was _wurde_ bereitgestellt) erhalten. Diese Verbindung ermöglicht eine erweiterte Nachverfolgung und Überprüfung von Bereitstellungen. Mit Azure Blueprints lassen sich auch mehrere Abonnements, die der gleichen Blaupause unterliegen, gleichzeitig upgraden.
 
-Es besteht nicht die Notwendigkeit, zwischen einer Resource Manager-Vorlage und einer Blaupause zu wählen. Jede Blaupause kann aus keinem oder mehreren _Artefakten_ für Resource Manager-Vorlagen bestehen. Das bedeutet, dass frühere Bemühungen zur Entwicklung und Verwaltung einer Bibliothek von Resource Manager-Vorlagen in Blaupausen wiederverwendet werden können.
+Es besteht nicht die Notwendigkeit, zwischen einer Resource Manager-Vorlage und einer Blaupause zu wählen. Jede Blaupause kann aus keinem oder mehreren _Artefakten_ für Resource Manager-Vorlagen bestehen. Das bedeutet, dass frühere Bemühungen zur Entwicklung und Verwaltung einer Bibliothek von Resource Manager-Vorlagen in Azure Blueprints wiederverwendet werden können.
 
 ## <a name="how-its-different-from-azure-policy"></a>Unterschied zu Azure Policy
 
@@ -46,7 +46,7 @@ Eine Richtlinie kann als eines von vielen _Artefakten_ in eine Blaupausendefinit
 
 ## <a name="blueprint-definition"></a>Blaupausendefinition
 
-Eine Blaupause besteht aus _Artefakten_. Azure Blueprint unterstützt derzeit die folgenden Ressourcen als Artefakte:
+Eine Blaupause besteht aus _Artefakten_. Azure Blueprints unterstützt derzeit die folgenden Ressourcen als Artefakte:
 
 |Resource  | Hierarchieoptionen| BESCHREIBUNG  |
 |---------|---------|---------|

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074087"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478869"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Tutorial: Integrieren von MyWorkDrive in Azure Active Directory
 
@@ -92,7 +92,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > 
     > Anmelde-URL: `https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Wenden Sie sich an das [Supportteam für MyWorkDrive](mailto:support@myworkdrive.com), wenn Sie unsicher sind, wie Sie Ihren eigenen Hostnamen und das SSL-Zertifikat für diese Werte einrichten.
+    > Wenden Sie sich an das [Supportteam für MyWorkDrive](mailto:support@myworkdrive.com), wenn Sie unsicher sind, wie Sie Ihren eigenen Hostnamen und das TLS-/SSL-Zertifikat für diese Werte einrichten.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** in die Zwischenablage zu kopieren.
 

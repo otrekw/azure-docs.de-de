@@ -2,26 +2,27 @@
 title: Einbinden eines geheimen Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein geheimes Volume zum Speichern vertraulicher Informationen einbinden, auf das von Ihren Containerinstanzen zugegriffen werden kann.
 ms.topic: article
-ms.date: 07/19/2018
-ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249952"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657150"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Einbinden eines geheimen Volumes in Azure Container Instances
 
 Verwenden Sie ein *geheimes* Volume, um für die Container in einer Containergruppe vertrauliche Informationen bereitzustellen. Das *geheime* Volume speichert Ihre Geheimnisse in Dateien im Volume, auf die die Container in der Containergruppe zugreifen können. Mit dem Speichern von Geheimnissen in einem *geheimen* Volume können Sie vermeiden, vertrauliche Daten wie SSH-Schlüssel oder Datenbankanmeldeinformationen dem Anwendungscode hinzuzufügen.
 
-Alle *geheimen* Volumes werden durch [tmpfs][tmpfs], ein auf RAM basierendes Dateisystem, gesichert. Ihre Inhalte werden nie in permanenten Speicher geschrieben.
+* Nach der Bereitstellung mit Geheimnissen in einer Containergruppe ist ein geheimes Volume *schreibgeschützt*.
+* Alle geheimen Volumes werden durch [tmpfs][tmpfs], ein auf RAM basierendes Dateisystem, gesichert. Ihre Inhalte werden nie in permanenten Speicher geschrieben.
 
 > [!NOTE]
 > *Geheime* Volumes sind momentan auf Linux-Container beschränkt. Unter [Festlegen von Umgebungsvariablen](container-instances-environment-variables.md) erfahren Sie, wie Sie sichere Umgebungsvariablen für Windows- und Linux-Container übergeben. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="mount-secret-volume---azure-cli"></a>Einbinden eines geheimen Volumes – Azure CLI
 
-Um einen Container mit einem oder mehreren Geheimnissen mit der Azure-Befehlszeilenschnittstelle bereitzustellen, verwenden Sie den Befehl [az container create][az-container-create] mit den Parametern `--secrets` und `--secrets-mount-path`. Dieses Beispiel bindet ein aus zwei Geheimnissen, „mysecret1“ und „mysecret2“, bestehendes *geheimes* Volume unter `/mnt/secrets` ein:
+Um einen Container mit einem oder mehreren Geheimnissen mit der Azure-Befehlszeilenschnittstelle bereitzustellen, verwenden Sie den Befehl [az container create][az-container-create] mit den Parametern `--secrets` und `--secrets-mount-path`. Dieses Beispiel bindet ein aus zwei Dateien, die die Geheimnisse „mysecret1“ und „mysecret2“ enthalten, bestehendes *geheimes* Volume unter `/mnt/secrets` ein:
 
 ```azurecli-interactive
 az container create \
@@ -35,11 +36,13 @@ az container create \
 Die folgende Ausgabe von [az container exec][az-container-exec] zeigt das Öffnen einer Shell im ausgeführten Container, das Auflisten der Dateien im geheimen Volume und dann das Anzeigen ihrer Inhalte:
 
 ```azurecli
-az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+az container exec \
+  --resource-group myResourceGroup \
+  --name secret-volume-demo --exec-command "/bin/sh"
 ```
 
 ```output
-/usr/src/app # ls -1 /mnt/secrets
+/usr/src/app # ls /mnt/secrets
 mysecret1
 mysecret2
 /usr/src/app # cat /mnt/secrets/mysecret1
@@ -56,7 +59,7 @@ Sie können auch Gruppen von Containern mit der Azure CLI und einer [YAML-Vorlag
 
 Wenn Sie mit einer YAML-Vorlage bereitstellen, müssen die geheimen Werte in der Vorlage **Base64-codiert** sein. Allerdings werden die geheimen Werte in den Dateien im Container in Nur-Text-Form angezeigt.
 
-Die folgende YAML-Vorlage definiert eine Containergruppe mit einem Container, der ein *geheimes* Volume unter `/mnt/secrets` einbindet. Das geheime Volume verfügt über zwei Geheimnisse, „mysecret1“ und „mysecret2“.
+Die folgende YAML-Vorlage definiert eine Containergruppe mit einem Container, der ein *geheimes* Volume unter `/mnt/secrets` einbindet. Das geheime Volume verfügt über zwei Dateien, die die Geheimnisse „mysecret1“ und „mysecret2“ enthalten.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -91,7 +94,9 @@ Um mit der YAML-Vorlage bereitzustellen, speichern Sie den vorherigen YAML-Code 
 
 ```azurecli-interactive
 # Deploy with YAML template
-az container create --resource-group myResourceGroup --file deploy-aci.yaml
+az container create \
+  --resource-group myResourceGroup \
+  --file deploy-aci.yaml
 ```
 
 ## <a name="mount-secret-volume---resource-manager"></a>Einbinden eines geheimen Volumes – Resource Manager
@@ -107,11 +112,13 @@ Die folgende Resource Manager-Vorlage definiert eine Containergruppe mit einem C
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Um mit der Resource Manager-Vorlage bereitzustellen, speichern Sie den vorherigen JSON-Code in einer Datei namens `deploy-aci.json` und führen dann den Befehl [az group deployment create][az-group-deployment-create] mit dem Parameter `--template-file` aus:
+Um mit der Resource Manager-Vorlage bereitzustellen, speichern Sie den vorherigen JSON-Code in einer Datei namens `deploy-aci.json`, und führen Sie dann den Befehl [az deployment group create][az-deployment-group-create] mit dem Parameter `--template-file` aus:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create \
+  --resource-group myResourceGroup \
+  --template-file deploy-aci.json
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -134,4 +141,4 @@ Eine andere Methode zum Bereitstellen von vertraulichen Informationen für Conta
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-exec]: /cli/azure/container#az-container-exec
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

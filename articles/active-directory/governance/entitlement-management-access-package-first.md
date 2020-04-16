@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422651"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410592"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -84,79 +84,83 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
 
 1. Klicken Sie im Azure-Portal im linken Navigationsbereich auf **Azure Active Directory**.
 
-1. Klicken Sie im linken Menü auf **Identity Governance**.
+2. Klicken Sie im linken Menü auf **Identity Governance**.
 
-1. Klicken Sie im linken Menü auf **Zugriffspakete**.  Sollte **Zugriff verweigert** angezeigt werden, prüfen Sie, vergewissern Sie sich, dass in Ihrem Verzeichnis eine Azure AD Premium P2-Lizenz vorhanden ist.
+3. Klicken Sie im linken Menü auf **Zugriffspakete**.  Sollte **Zugriff verweigert** angezeigt werden, prüfen Sie, vergewissern Sie sich, dass in Ihrem Verzeichnis eine Azure AD Premium P2-Lizenz vorhanden ist.
 
-1. Klicken Sie auf **Neues Zugriffspaket**.
+4. Klicken Sie auf **Neues Zugriffspaket**.
 
     ![Berechtigungsverwaltung im Azure-Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Geben Sie auf der Registerkarte **Grundeinstellungen** den Namen **Marketing Campaign** und die Beschreibung **Access to resources for the campaign** ein.
+5. Geben Sie auf der Registerkarte **Grundeinstellungen** den Namen **Marketing Campaign** und die Beschreibung **Access to resources for the campaign** ein.
 
-1. Übernehmen Sie für die Dropdownliste **Katalog** die Einstellung **Allgemein**.
+6. Übernehmen Sie für die Dropdownliste **Katalog** die Einstellung **Allgemein**.
 
     ![Neues Zugriffspaket, Registerkarte „Grundeinstellungen“](./media/entitlement-management-access-package-first/basics.png)
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Ressourcenrollen** zu öffnen.
+7. Klicken Sie auf **Weiter**, um die Registerkarte **Ressourcenrollen** zu öffnen.
 
     Wählen Sie auf dieser Registerkarte die Ressourcen und die Ressourcenrolle aus, die in das Zugriffspaket aufgenommen werden sollen.
 
-1. Klicken Sie auf **Gruppen und Teams**.
+8. Klicken Sie auf **Gruppen und Teams**.
 
-1. Suchen Sie im Bereich „Gruppen auswählen“ nach der zuvor erstellten Gruppe **Marketing resources**, und wählen Sie sie aus.
+9. Suchen Sie im Bereich „Gruppen auswählen“ nach der zuvor erstellten Gruppe **Marketing resources**, und wählen Sie sie aus.
 
     Standardmäßig werden Gruppen angezeigt, die sich innerhalb und außerhalb des Katalogs **Allgemein** befinden. Wenn Sie eine Gruppe auswählen, die sich außerhalb des Katalogs **Allgemein** befindet, wird sie dem Katalog **Allgemein** hinzugefügt.
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Klicken Sie auf **Auswählen**, um die Gruppe zur Liste hinzuzufügen.
+10. Klicken Sie auf **Auswählen**, um die Gruppe zur Liste hinzuzufügen.
 
-1. Wählen Sie in der Dropdownliste **Rolle** den Eintrag **Mitglied** aus.
+11. Wählen Sie in der Dropdownliste **Rolle** den Eintrag **Mitglied** aus.
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
+    >[!NOTE]
+    > Bei der Verwendung von [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) sind außer „Besitzer“ keine anderen Rollen verfügbar. Dies ist beabsichtigt.
+    > ![Übersicht über das Szenario](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
 
     Diese Registerkarte dient zum Erstellen einer Anforderungsrichtlinie. In einer *Richtlinie* sind die Regeln oder Leitlinien für den Zugriff auf ein Zugriffspaket definiert. Sie erstellen eine Richtlinie, die es einem bestimmten Benutzer im Ressourcenverzeichnis ermöglicht, dieses Zugriffspaket anzufordern.
 
-1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für in Ihrem Verzeichnis befindliche Benutzer** und anschließend auf **Bestimmte Benutzer und Gruppen**.
+13. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für in Ihrem Verzeichnis befindliche Benutzer** und anschließend auf **Bestimmte Benutzer und Gruppen**.
 
     ![Neues Zugriffspaket, Registerkarte „Anforderungen“](./media/entitlement-management-access-package-first/requests.png)
 
-1. Klicken Sie auf **Benutzer und Gruppen hinzufügen**.
+14. Klicken Sie auf **Benutzer und Gruppen hinzufügen**.
 
-1. Wählen Sie im Bereich „Benutzer und Gruppen auswählen“ den zuvor erstellten Benutzer **Anforderer1** aus.
+15. Wählen Sie im Bereich „Benutzer und Gruppen auswählen“ den zuvor erstellten Benutzer **Anforderer1** aus.
 
     ![Neues Zugriffspaket, Registerkarte „Anforderungen“: „Benutzer und Gruppen auswählen“](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Klicken Sie auf **Auswählen**.
+16. Klicken Sie auf **Auswählen**.
 
-1. Scrollen Sie nach unten zu den Abschnitten **Genehmigung** und **Enable requests** (Anforderungen aktivieren).
+17. Scrollen Sie nach unten zu den Abschnitten **Genehmigung** und **Enable requests** (Anforderungen aktivieren).
 
-1. Behalten Sie für **Genehmigung erforderlich** die Einstellung **Nein** bei.
+18. Behalten Sie für **Genehmigung erforderlich** die Einstellung **Nein** bei.
 
-1. Klicken Sie für **Enable requests** (Anforderungen aktivieren) auf **Ja**, damit dieses Zugriffspaket angefordert werden kann, sobald es erstellt wurde.
+19. Klicken Sie für **Enable requests** (Anforderungen aktivieren) auf **Ja**, damit dieses Zugriffspaket angefordert werden kann, sobald es erstellt wurde.
 
     ![Neues Zugriffspaket, Registerkarte „Anforderungen“: „Genehmigung“ und „Enable requests“ (Anforderungen aktivieren)](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Lebenszyklus** zu öffnen.
+20. Klicken Sie auf **Weiter**, um die Registerkarte **Lebenszyklus** zu öffnen.
 
-1. Legen Sie im Abschnitt **Ablauf** die Option **Die Zugriffspaketzuweisungen laufen ab.** auf **Anzahl Tage** fest.
+21. Legen Sie im Abschnitt **Ablauf** die Option **Die Zugriffspaketzuweisungen laufen ab.** auf **Anzahl Tage** fest.
 
-1. Legen Sie **Zuweisungen laufen ab nach:** auf **30** Tage fest.
+22. Legen Sie **Zuweisungen laufen ab nach:** auf **30** Tage fest.
 
     ![Neues Zugriffspaket, Registerkarte „Lebenszyklus“](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Überprüfen + erstellen** zu öffnen.
+23. Klicken Sie auf **Weiter**, um die Registerkarte **Überprüfen + erstellen** zu öffnen.
 
     ![Neues Zugriffspaket, Registerkarte „Überprüfen + erstellen“](./media/entitlement-management-access-package-first/review-create.png)
 
     Nach einigen Augenblicken sollte eine Benachrichtigung angezeigt werden, dass das Zugriffspaket erfolgreich erstellt wurde.
 
-1. Klicken Sie im linken Menü des Zugriffspakets „Marketing Campaign“ auf **Übersicht**.
+24. Klicken Sie im linken Menü des Zugriffspakets „Marketing Campaign“ auf **Übersicht**.
 
-1. Kopieren Sie den Wert von **Link zum Portal "Mein Zugriff"** .
+25. Kopieren Sie den Wert von **Link zum Portal "Mein Zugriff"** .
 
     Sie verwenden diesen Link im nächsten Schritt.
 

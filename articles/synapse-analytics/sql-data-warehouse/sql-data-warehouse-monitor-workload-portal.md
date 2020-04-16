@@ -1,6 +1,6 @@
 ---
 title: Überwachen von Workloads – Azure-Portal
-description: Überwachen von SQL Analytics im Azure-Portal
+description: Überwachen von Synapse SQL im Azure-Portal
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0658a775e40c1fc433c7c2e1d853493544e74ee4
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350329"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743204"
 ---
 # <a name="monitor-workload---azure-portal"></a>Überwachen von Workloads – Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Ihre Workload überwachen. Dazu gehört auch das Einrichten von Azure Monitor-Protokollen, um Abfrageausführung und Workloadtrends mit Log Analytics für [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) zu untersuchen.
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Ihre Workload überwachen. Dazu gehört auch das Einrichten von Azure Monitor-Protokollen, um Abfrageausführung und Workloadtrends mit Log Analytics für [Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) zu untersuchen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- SQL-Pool: Sie sammeln Protokolle für einen SQL-Pool. Wenn Sie keinen SQL-Pool bereitgestellt haben, lesen Sie die Anleitungen unter [Erstellen eines SQL-Pools](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- SQL-Pool: Sie sammeln Protokolle für einen SQL-Pool. Wenn Sie keinen SQL-Pool bereitgestellt haben, lesen Sie die Anleitungen unter [Erstellen eines SQL-Pools](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
-Navigieren Sie im Suchfeld zu den Log Analytics-Arbeitsbereichen, und erstellen Sie einen Arbeitsbereich. 
+Navigieren Sie im Suchfeld zu den Log Analytics-Arbeitsbereichen, und erstellen Sie einen Arbeitsbereich.
 
 ![Log Analytics-Arbeitsbereiche](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
@@ -36,18 +36,17 @@ Navigieren Sie im Suchfeld zu den Log Analytics-Arbeitsbereichen, und erstellen 
 
 ![Hinzufügen eines Log Analytics-Arbeitsbereichs](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-Weitere Informationen zu Arbeitsbereichen finden Sie in dieser [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace).
+Weitere Informationen zu Arbeitsbereichen finden Sie in dieser [Dokumentation](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
 
 Konfigurieren Sie die Diagnoseeinstellungen, um Protokolle aus Ihrem SQL-Pool auszugeben. Protokolle bestehen aus Telemetriesichten, die den am häufigsten verwendeten Leistungsproblemen bei dynamischen Verwaltungssichten (DMVs) entsprechen. Aktuell werden die folgenden Ansichten unterstützt:
 
-- [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
-- [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)
-- [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=aps-pdw-2016-au7)
-- [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=aps-pdw-2016-au7)
-- [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=aps-pdw-2016-au7)
-
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ![Aktivieren von Diagnoseprotokollen](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
@@ -64,39 +63,38 @@ Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich, in dem Sie die folgenden S
 - Erstellen von Protokollwarnungen
 - Anheften von Abfrageergebnissen an ein Dashboard
 
-Weitere Informationen zu der Funktionalität von Protokollabfragen finden Sie in dieser [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Weitere Informationen zu der Funktionalität von Protokollabfragen finden Sie in dieser [Dokumentation](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ![Log Analytics-Arbeitsbereich-Editor](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
-
-
 
 ![Abfragen von Log Analytics-Arbeitsbereichen](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_queries.png)
 
 ## <a name="sample-log-queries"></a>Beispielprotokollabfragen
 
-
-
 ```Kusto
-//List all queries 
+//List all queries
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | project TimeGenerated, StartTime_t, EndTime_t, Status_s, Command_s, ResourceClass_s, duration=datetime_diff('millisecond',EndTime_t, StartTime_t)
 ```
+
 ```Kusto
 //Chart the most active resource classes
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | where Status_s == "Completed"
 | summarize totalQueries = dcount(RequestId_s) by ResourceClass_s
-| render barchart 
+| render barchart
 ```
+
 ```Kusto
 //Count of all queued queries
 AzureDiagnostics
-| where Category contains "waits" 
+| where Category contains "waits"
 | where Type_s == "UserConcurrencyResourceType"
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun Azure Monitor-Protokolle eingerichtet und konfiguriert haben, können Sie [Azure-Dashboards anpassen](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards), um die Protokolle mit Ihrem Team gemeinsam zu nutzen.
+Nachdem Sie nun Azure Monitor-Protokolle eingerichtet und konfiguriert haben, können Sie [Azure-Dashboards anpassen](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), um die Protokolle mit Ihrem Team gemeinsam zu nutzen.

@@ -3,16 +3,16 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301419"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586228"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -105,7 +105,7 @@ Prüfen Sie alle kaufmännischen Informationen – Guthabensaldo, Preisliste usw
 
 **Schritt 2: Überprüfen und validieren**
 
-Überprüfen Sie den Aufschlagspreis in der _Nutzungszusammenfassung_ für die Laufzeit der Zusicherung in der Kundenansicht. Der Preis von Microsoft ist in der Partneransicht weiterhin verfügbar. Sie können mithilfe des Schalters „Personen“ oben rechts zwischen den Ansichten wechseln.
+Überprüfen Sie den Aufschlagspreis in der _Nutzungszusammenfassung_ für die Laufzeit der Zusicherung in der Kundenansicht. Der Preis von Microsoft ist in der Partneransicht weiterhin verfügbar. Sie können mithilfe des Partnermarkups „Personen“ oben rechts zwischen den Ansichten wechseln.
 
 1. Überprüfen Sie die Preise auf dem Preisblatt.
 1. Sie können vor der Veröffentlichung Änderungen vornehmen, indem Sie auf der Registerkarte _Nutzungszusammenfassung anzeigen > Kundenansicht_ auf **Bearbeiten** klicken.
@@ -174,7 +174,7 @@ Verschiedene Computertypen verwenden verschiedene Maßeinheiten: D3- und D4-VMs 
 
 Im Allgemeinen können Sie mit der folgenden Formel die Anzahl von erworbenen VMs anhand ihrer Maßeinheiten berechnen:
 
-<center><b> (enthaltene Menge × Maßeinheit) / 744 </b></center>
+<center><b> (enthaltene Menge · Maßeinheit) : 744 </b></center>
 
 ## <a name="plan-skus"></a>Plan-SKUs
 
@@ -219,7 +219,7 @@ Unternehmensadministratoren können neue Kontobesitzer hinzufügen, vorhandene K
 1. Geben Sie einen Namen ein, den Sie zum Identifizieren dieses Kontos in Berichten verwenden möchten.
 1. Klicken Sie auf **Hinzufügen**.
 1. Sie können ein weiteres Konto hinzufügen, indem Sie erneut die Option **+ Konto hinzufügen** auswählen, oder kehren Sie zur Startseite zurück, indem Sie auf die Schaltfläche **Verwaltung** klicken.  
-1. Wenn Sie durch Klicken die Kontoseite öffnen, wird das neu hinzugefügte Konto mit dem Status „Ausstehend“ angezeigt. Der Status ändert sich zu „Aktiv“, nachdem sich der Kontobesitzer zum ersten Mal beim EA-Portal angemeldet hat.
+1. Wenn Sie durch Klicken die Kontoseite öffnen, wird das neu hinzugefügte Konto mit dem Status „Ausstehend“ angezeigt. Der Status ändert sich in „Aktiv“, nachdem sich der Kontobesitzer zum ersten Mal beim EA-Portal angemeldet hat.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Vorhandene/neue Kontobesitzer zum Erstellen neuer Abonnements
 
@@ -248,7 +248,7 @@ Nur Kontobesitzer können Abonnements anzeigen und verwalten.
 
 **Kontobesitzer wird im Status „Ausstehend“ angezeigt**
 
-Wenn der Registrierung neue Kontobesitzer (Account Owners, AO) hinzugefügt werden, wird unter ihrem Status immer „Ausstehend“ angezeigt. Nach Erhalt der Begrüßungs-E-Mail für die Aktivierung kann der Kontobesitzer sich anmelden, um sein Konto zu aktivieren. Durch diese Aktivierung wird der Kontostatus von „Ausstehend“ zu „Aktiv“ geändert.
+Wenn der Registrierung neue Kontobesitzer (Account Owners, AO) hinzugefügt werden, wird unter ihrem Status immer „Ausstehend“ angezeigt. Nach Erhalt der Begrüßungs-E-Mail für die Aktivierung kann der Kontobesitzer sich anmelden, um sein Konto zu aktivieren. Durch diese Aktivierung wird der Kontostatus von „Ausstehend“ in „Aktiv“ geändert.
 
 **Nutzungen werden berechnet, nachdem Plan-SKUs erworben wurden**
 

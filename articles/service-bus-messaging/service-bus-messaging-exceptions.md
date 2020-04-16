@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokumentation
+title: Messagingausnahmen von Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel stellt eine Liste von Azure Service Bus-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung, wenn eine Ausnahme auftritt.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,20 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: fb27befadcf8e6d201d020e758cfd1ef9b695f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240802"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880787"
 ---
-# <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
-Dieser Artikel beschreibt einige der .NET-Ausnahmen, die von Service Bus .NET Framework-APIs generiert werden, und enthält weitere Tipps zur Problembehandlung. 
+# <a name="service-bus-messaging-exceptions"></a>Service Bus-Messagingausnahmen
+In diesem Artikel werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
 
-## <a name="service-bus-messaging-exceptions"></a>Service Bus-Messagingausnahmen
-In diesem Abschnitt werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
-
-### <a name="exception-categories"></a>Ausnahmekategorien
+## <a name="exception-categories"></a>Ausnahmekategorien
 Die von den Messaging-APIs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören. Die Bedeutung und die Ursachen einer Ausnahme können je nach Art der Messagingentität variieren:
 
 1. Fehler der Benutzercodierung ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
@@ -35,7 +32,7 @@ Die von den Messaging-APIs generierten Ausnahmen können – zusammen mit den zu
 3. Vorübergehende Ausnahmen ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Allgemeine Maßnahme: Wiederholen Sie den Vorgang, oder benachrichtigen Sie die Benutzer. Beachten Sie, dass die `RetryPolicy`-Klasse im Client-SDK so konfiguriert werden kann, dass Wiederholungsversuche automatisch verarbeitet werden. Weitere Informationen finden Sie in im [Leitfaden zu Wiederholungsversuchen](/azure/architecture/best-practices/retry-service-specific#service-bus).
 4. Andere Ausnahmen ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Allgemeine Aktion: spezifisch für den Typ der Ausnahme, weitere Informationen finden Sie in der Tabelle im folgenden Abschnitt. 
 
-### <a name="exception-types"></a>Ausnahmetypen
+## <a name="exception-types"></a>Ausnahmetypen
 In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen und Vorschläge für Korrekturmaßnahmen aufgelistet.
 
 | **Ausnahmetyp** | **Beschreibung/Ursache/Beispiele** | **Vorgeschlagene Maßnahme** | **Hinweis zur automatischen/sofortigen Wiederholung** |
@@ -64,10 +61,10 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen 
 | [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |Die Ambient-Transaktion (*Transaction.Current*) ist ungültig. Sie wurde möglicherweise abgeschlossen oder abgebrochen. Unter Umständen enthält die innere Ausnahme weitere Informationen. | |Der Wiederholungsversuch ist nicht hilfreich. |
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Es wurde versucht, einen Vorgang für eine unsichere Transaktion auszuführen, oder es wurde versucht, ein Commit für die Transaktion auszuführen, und die Transaktion wurde unsicher. |Die Anwendung muss diese Ausnahme (als Sonderfall) behandeln, da für die Transaktion u. U. bereits ein Commit ausgeführt wurde. |- |
 
-### <a name="quotaexceededexception"></a>QuotaExceededException
+## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) gibt an, dass das Kontingent für eine bestimmte Entität überschritten wurde.
 
-#### <a name="queues-and-topics"></a>Warteschlangen und Themen
+### <a name="queues-and-topics"></a>Warteschlangen und Themen
 Für Warteschlangen und Themen ist dies häufig die Größe der Warteschlange. Die Fehlermeldungseigenschaft enthält weitere Details, wie das folgende Beispiel zeigt:
 
 ```Output
@@ -79,7 +76,7 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 Die Meldung besagt, dass das Thema seine maximale Größe überschritten hat, in diesem Fall 1GB (Standardgrenzwert). 
 
-#### <a name="namespaces"></a>Namespaces
+### <a name="namespaces"></a>Namespaces
 
 Für Namespaces kann [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) angeben, dass eine Anwendung die maximale Anzahl der Verbindungen zu einem Namespace überschritten hat. Beispiel:
 
@@ -90,7 +87,7 @@ System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]:
 ConnectionsQuotaExceeded for namespace xxx.
 ```
 
-#### <a name="common-causes"></a>Häufige Ursachen
+### <a name="common-causes"></a>Häufige Ursachen
 Es gibt zwei häufige Ursachen für diesen Fehler: die Warteschlange für unzustellbare Nachrichten und nicht funktionierende Nachrichtenempfänger.
 
 1. **[Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md)** : Ein Leser kann Nachrichten nicht abschließen, und die Nachrichten werden nach Ablauf der Sperre an die Warteschlange/das Thema zurückgegeben. Dies kann auftreten, wenn der Leser auf eine Ausnahme trifft, die den Aufruf von [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete) verhindert. Nachdem eine Nachricht 10 Mal gelesen wurde, wird sie standardmäßig in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten wird von der Eigenschaft [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) gesteuert, die standardmäßig den Wert 10 aufweist. Wenn sich Nachrichten in der Warteschlange für unzustellbare Nachrichten anhäufen, belegen sie Speicherplatz.
@@ -98,70 +95,14 @@ Es gibt zwei häufige Ursachen für diesen Fehler: die Warteschlange für unzust
     Um das Problem zu beheben, lesen und schließen Sie die Nachrichten in der Warteschlange für unzustellbare Nachrichten ab – genau wie in jeder anderen Warteschlange. Sie können die Methode [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) verwenden, die Sie beim Formatieren des Pfads für die Warteschlange für unzustellbare Nachrichten unterstützt.
 2. **Empfänger beendet**. Ein Empfänger hat den Empfang von Nachrichten aus einer Warteschlange oder einem Abonnement beendet. Dies können Sie anhand der Eigenschaft [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) feststellen, die die vollständige Aufschlüsselung der Nachrichten zeigt. Wenn die Eigenschaft [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) hoch ist oder dieser wert anwächst, werden die Nachrichten nicht so schnell gelesen, wie sie geschrieben werden.
 
-### <a name="timeoutexception"></a>TimeoutException
+## <a name="timeoutexception"></a>TimeoutException
 Eine [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) zeigt an, dass ein von einem Benutzer initiierter Vorgang länger als das Timeout des Vorgangs dauert. 
 
 Überprüfen Sie den Wert der [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit)-Eigenschaft, da das Erreichen dieses Limits auch eine [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) auslösen kann.
 
-#### <a name="queues-and-topics"></a>Warteschlangen und Themen
+### <a name="queues-and-topics"></a>Warteschlangen und Themen
 Für Warteschlangen und Themen wird das Zeitlimit entweder in der [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)-Eigenschaft als Teil der Verbindungszeichenfolge oder über [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) angegeben. Die Fehlermeldung selbst kann variieren, aber sie enthält immer den Timeoutwert für den aktuellen Vorgang. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Konnektivitäts-, Zertifikat- oder Timeoutprobleme
-Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektivitäts-/Zertifikat-/Timeoutproblemen für alle Dienste unter *.servicebus.windows.net. 
-
-- Navigieren Sie zu `https://<yournamespace>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
-
-    Beispiel für eine erfolgreiche Meldung:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    Beispiel für eine Fehlermeldung:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- Führen Sie den folgenden Befehl aus, um zu überprüfen, ob ein Port auf der Firewall blockiert ist. Die verwendeten Ports lauten 443 (HTTPS), 5671 (AMQP) und 9354 (.NET-Messaging/SBMP). Abhängig von der verwendeten Bibliothek werden auch andere Ports verwendet. Dies ist der Beispielbefehl, mit dem überprüft wird, ob Port 5671 blockiert ist. 
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    Unter Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- Führen Sie bei zeitweiligen Konnektivitätsproblemen den folgenden Befehl aus, um zu überprüfen, ob gelöschte Pakete vorhanden sind. Mit diesem Befehl wird versucht, jede Sekunde 25 verschiedene TCP-Verbindungen mit dem Dienst herzustellen. Anschließend können Sie überprüfen, wie viele davon erfolgreich/fehlerhaft waren, und außerdem die Latenz der TCP-Verbindung anzeigen. Sie können das `psping`-Tool [hier](/sysinternals/downloads/psping) herunterladen.
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
-    ```
-    Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
-- Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
-
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts
-Upgrades und Neustarts des Back-End-Diensts können sich wie folgt auf Ihre Anwendungen auswirken:
-
-- Anforderungen werden ggf. vorübergehend gedrosselt.
-- Es gehen möglicherweise weniger Nachrichten/Anforderungen ein.
-- Die Protokolldatei enthält unter Umständen Fehlermeldungen.
-- Die Verbindung zwischen Anwendungen und dem Dienst wird möglicherweise für einige Sekunden getrennt.
-
-Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt.
-
 ## <a name="next-steps"></a>Nächste Schritte
-
 Die vollständige .NET-API-Referenz für Service Bus finden Sie unter [Azure .NET API Referenz](/dotnet/api/overview/azure/service-bus).
-
-Weitere Informationen zu [Service Bus](https://azure.microsoft.com/services/service-bus/) finden Sie in den folgenden Artikeln:
-
-* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-* [Service Bus-Architektur](service-bus-architecture.md)
-
+Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung](service-bus-troubleshooting-guide.md).

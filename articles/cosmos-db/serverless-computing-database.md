@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462444"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985251"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -110,7 +110,7 @@ Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat,
 
 Die native Integration zwischen Azure Cosmos DB und Azure Functions ist im Azure-Portal und in Visual Studio 2019 verfügbar.
 
-* Im Azure Functions-Portal können Sie einen Trigger erstellen. Eine Schnellstartanleitung finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc).
+* Im Azure Functions-Portal können Sie einen Trigger erstellen. Eine Schnellstartanleitung finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](../azure-functions/functions-create-cosmos-db-triggered-function.md).
 * Im Azure Cosmos DB-Portal können Sie einer vorhandenen Azure-Funktionen-App in derselben Ressourcengruppe einen Azure Functions-Trigger für Cosmos DB hinzufügen.
 * In Visual Studio 2019 können Sie den Trigger mit den [Azure Functions-Tools](../azure-functions/functions-develop-vs.md) erstellen:
 
@@ -146,6 +146,6 @@ Wenn Sie nicht sicher sind, ob Flow, Logic Apps, Azure Functions oder WebJobs am
 
 Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functions her: 
 
-* [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](https://aka.ms/cosmosdbinputbind)
+* [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb-v2.md)

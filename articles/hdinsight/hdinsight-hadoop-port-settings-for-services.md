@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314690"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754225"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
@@ -21,9 +21,9 @@ Dieses Dokument enthält eine Liste mit den Ports für Apache Hadoop-Dienste, di
 
 ## <a name="public-ports-vs-non-public-ports"></a>Öffentliche Ports im Vergleich mit nicht öffentlichen Ports
 
-Für Linux-basierte HDInsight-Cluster werden nur drei Ports öffentlich im Internet verfügbar gemacht: 22, 23 und 443. Diese Ports werden zum sicheren Zugreifen auf den Cluster per SSH und auf Dienste verwendet, die über das sichere HTTPS-Protokoll bereitgestellt werden.
+Für Linux-basierte HDInsight-Cluster werden nur drei Ports im Internet öffentlich verfügbar gemacht: 22, 23 und 443. Diese Ports sichern den Clusterzugriff mithilfe von SSH und Diensten, die über das sichere HTTPS-Protokoll verfügbar gemacht werden.
 
-Intern wird HDInsight von mehreren Azure Virtual Machines (Knoten im Cluster) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie beispielsweise eine Verbindung mit einem der Hauptknoten per SSH herstellen, können Sie vom Hauptknoten dann direkt auf Dienste zugreifen, die auf den Clusterknoten ausgeführt werden.
+HDInsight wird von mehreren Azure Virtual Machines (Clusterknoten) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie über SSH eine Verbindung mit dem Hauptknoten herstellen, können Sie auf Dienste, die auf den Clusterknoten ausgeführt werden, direkt zugreifen.
 
 > [!IMPORTANT]  
 > Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können in dieses virtuelle Netzwerk aber keine anderen Computer (z. B. virtuelle Azure-Computer oder Ihren Cliententwicklungscomputer) einbinden.
@@ -32,7 +32,7 @@ Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, m�
 
 ## <a name="public-ports"></a>Öffentliche Ports
 
-Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Network, und darauf kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
+Alle Knoten in einem HDInsight-Cluster befinden sich in einem Azure Virtual Network. Auf die Knoten kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
 
 | Dienst | Port | Protocol | BESCHREIBUNG |
 | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ Für spezielle Clustertypen ist Folgendes verfügbar:
 
 | Dienst | Port | Protocol | Clustertyp | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark-REST-API. Siehe [Remoteübermittlung von Apache Spark-Aufträgen mit Apache Livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift-Server |443 |HTTPS |Spark |Zum Übermitteln von Hive-Abfragen verwendeter Spark Thrift-Server. Siehe [Verwenden von Beeline mit Apache Hive in HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm-Webbenutzeroberfläche. Siehe [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka-REST-Proxy |443 |HTTPS |Kafka |Kafka-REST-API. Weitere Informationen finden Sie unter [Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys](kafka/rest-proxy.md). |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen authentifiziert werden:
 
@@ -89,7 +89,7 @@ Beispiele:
 | --- | --- | --- | --- | --- |
 | NameNode-Webbenutzeroberfläche |Hauptknoten |30070 |HTTPS |Webbenutzeroberfläche zum Anzeigen des Status |
 | NameNode-Metadatendienst |Hauptknoten |8020 |IPC |Dateisystem-Metadaten |
-| DataNode |Alle Workerknoten |30075 |HTTPS |Webbenutzeroberfläche zum Anzeigen von Status, Protokollen usw. |
+| DataNode |Alle Workerknoten |30075 |HTTPS |Webbenutzeroberfläche zum Anzeigen von Status, Protokollen und so weiter. |
 | DataNode |Alle Workerknoten |30010 |&nbsp; |Datenübertragung |
 | DataNode |Alle Workerknoten |30020 |IPC |Metadatenvorgänge |
 | Sekundärer NameNode |Hauptknoten |50090 |HTTP |Prüfpunkt für NameNode-Metadaten |
@@ -100,7 +100,7 @@ Beispiele:
 | --- | --- | --- | --- | --- |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8088 |HTTP |Webbenutzeroberfläche für Resource Manager |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8090 |HTTPS |Webbenutzeroberfläche für Resource Manager |
-| Resource Manager-Administratoroberfläche |Hauptknoten |8141 |IPC |Für Anwendungsübermittlungen (Hive, Hive-Server, Pig usw.) |
+| Resource Manager-Administratoroberfläche |Hauptknoten |8141 |IPC |Für Anwendungsübermittlungen (Hive, Hive-Server, Pig und so weiter) |
 | Resource Manager-Planer |Hauptknoten |8030 |HTTP |Administratoroberfläche |
 | Resource Manager-Anwendungsschnittstelle |Hauptknoten |8050 |HTTP |Adresse der Anwendungs-Manager-Schnittstelle |
 | NodeManager |Alle Workerknoten |30050 |&nbsp; |Adresse des Container-Managers |

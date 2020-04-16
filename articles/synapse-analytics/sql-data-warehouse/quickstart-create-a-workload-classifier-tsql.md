@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350801"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633745"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Schnellstart: Erstellen eines Workloadklassifizierers mit T-SQL
 
@@ -25,7 +25,7 @@ In dieser Schnellstartanleitung erstellen Sie in kurzer Zeit einen Workloadklass
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Das Erstellen einer SQL-Analyse-Instanz in Azure Synapse Analytics führt möglicherweise zu einem neuen abrechenbaren Dienst.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Das Erstellen einer Synapse SQL-Poolinstanz in Azure Synapse Analytics führt möglicherweise zu einem neuen abrechenbaren Dienst.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
@@ -39,7 +39,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-login-for-theceo"></a>Erstellen einer Anmeldung für TheCEO
 
-Erstellen Sie eine SQL Server-Authentifizierungsanmeldung in der `master`-Datenbank, indem Sie [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) für „TheCEO“ verwenden.
+Erstellen Sie eine SQL Server-Authentifizierungsanmeldung in der `master`-Datenbank, indem Sie [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) für „TheCEO“ verwenden.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Benutzer erstellen
 
-[Erstellen des Benutzers](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest) „TheCEO“ in mySampleDataWarehouse
+[Erstellen des Benutzers](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) „TheCEO“ in mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Erstellen eines Workloadklassifizierers
 
-Erstellen eines [Workloadklassifizierers](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) für TheCEO mit hoher Wichtigkeit
+Erstellen eines [Workloadklassifizierers](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) für TheCEO mit hoher Wichtigkeit
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -108,6 +108,6 @@ Führen Sie die folgenden Schritte aus, um Ressourcen zu bereinigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie haben nun einen Workloadklassifizierer erstellt. Führen Sie einige Abfragen als TheCEO durch, um zu ermitteln, welche Leistung erzielt wird. Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
-- Weitere Informationen zur SQL-Analyse-Workloadverwaltung finden Sie unter [Workloadpriorität für SQL Data Warehouse](sql-data-warehouse-workload-importance.md) sowie unter [SQL Data Warehouse-Workloadklassifizierung](sql-data-warehouse-workload-classification.md).
+- Sie haben nun einen Workloadklassifizierer erstellt. Führen Sie einige Abfragen als TheCEO durch, um zu ermitteln, welche Leistung erzielt wird. Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anzeigen.
+- Weitere Informationen zur Synapse SQL-Workloadverwaltung finden Sie unter [Azure Synapse Analytics-Workloadpriorität](sql-data-warehouse-workload-importance.md) sowie unter [Azure Synapse Analytics-Workloadklassifizierung](sql-data-warehouse-workload-classification.md).
 - Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

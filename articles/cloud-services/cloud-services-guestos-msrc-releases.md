@@ -10,40 +10,68 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/20/2020
+ms.date: 04/3/2020
 ms.author: raiye
-ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506029"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656350"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="february-2020-guest-os"></a>Gastbetriebssystem für Februar 2020
-
->[!NOTE]
->Das Gastbetriebssystem für Februar wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Februar enthalten. Änderungen der Liste vorbehalten.
+## <a name="march-2020-guest-os"></a>Gastbetriebssystem für März 2020
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2.85, 3.82, 4.75 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537813]  |  Windows-Sicherheit | 2.85 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537794]  |  Windows-Sicherheit | 3.82 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537803]  |  Windows-Sicherheit | 4.75 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537764]  |  Letztes kumulatives Update | 5.4 | 11. Februar 2020 |
-|  Rel 20-02 |  [4532691]  |  Letztes kumulatives Update | 6.16 | 11. Februar 2020 |
-|  Rel 20-02 |  [4534310]  |  Monatlicher Rollup | 2.85 | 14. Januar 2020 |
-|  Rel 20-02 |  [4536952]  |  Wartungsstapelaktualisierung | 2.85 | 14. Januar 2020 |
-|  Rel 20-02 |  [4537829]  |  Wartungsstapelaktualisierung | 2.85 | 11. Februar 2020 |
-|  Rel 20-02 |  [4538483]  |  Erweiterte Sicherheitsupdates | 2.85 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537820]  |  Monatlicher Rollup | 2.85 | 11. Februar 2020 |
-|  Rel 20-02 |  [4537759]  |  Sicherheitsupdate (Flash) | 3.82, 4.75 | 11. Februar 2020 |
-|  Rel 20-02 |  [4534283]  |  Monatlicher Rollup | 3.82 | 14. Januar 2020 |
-|  Rel 20-02 |  [4532920]  |  Wartungsstapelaktualisierung | 3.82 | 10. Dezember 2020 |
-|  Rel 20-02 |  [4534297]  |  Nicht sicherheitsrelevant | 4.75 | 14. Januar 2020 |
+|  Rel 20-03  |  [4541500]  |  Windows-Sicherheit  | [2.96] | 10. März 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96], [3.83], [4.76] | 10. März 2020 |
+|  Rel 20-03  |  [4540694]  |  Windows-Sicherheit  | [3.83] | 10. März 2020 |
+|  Rel 20-03  |  [4541505]  |  Windows-Sicherheit  | [4.76] | 10. März 2020 |
+|  Rel 20-03  |  [4540670]  |  Letztes kumulatives Update  | [5.41] | 10. März 2020 |
+|  Rel 20-03  |  [4538461]  |  Letztes kumulatives Update  | [6.17] | 10. März 2020 |
+|  Rel 20-03  |  [4537820]  |  Monatlicher Rollup  | [2.96] | 11. Februar 2020 |
+|  Rel 20-03  |  [4537814]  |  Monatlicher Rollup  | [3.83] | 11. Februar 2020 |
+|  Rel 20-03  |  [4537821]  |  Monatlicher Rollup  | [4.76] | 11. Februar 2020 |
+
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
+
+[6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="february-2020-guest-os"></a>Gastbetriebssystem für Februar 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02  |  [4537767]  |  Internet Explorer  |  [2.95], [3.82], [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537813]  |  Windows-Sicherheit  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537794]  |  Windows-Sicherheit  |  [3.82]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537803]  |  Windows-Sicherheit  |  [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537764]  |  Letztes kumulatives Update  |  [5.40]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4532691]  |  Letztes kumulatives Update  |  [6.16]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4534310]  |  Monatlicher Rollup  |  [2.95]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4536952]  |  Wartungsstapelaktualisierung  |  [2.95]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4537829]  |  Wartungsstapelaktualisierung  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4538483]  |  Erweiterte Sicherheitsupdates  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537820]  |  Monatlicher Rollup  |  [2.95]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4537759]  |  Sicherheitsupdate (Flash)  |  [3.82], [4.75]  |  11. Februar 2020  |
+|  Rel 20-02  |  [4534283]  |  Monatlicher Rollup  |  [3.82]  |  14. Januar 2020  |
+|  Rel 20-02  |  [4532920]  |  Wartungsstapelaktualisierung  |  [3.82]  |  10. Dezember 2020  |
+|  Rel 20-02  |  [4534297]  |  Nicht sicherheitsrelevant  |  [4.75]  |  14. Januar 2020  |
 
 [4537767]: https://support.microsoft.com/kb/4537767
 [4537813]: https://support.microsoft.com/kb/4537813
@@ -60,6 +88,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4534283]: https://support.microsoft.com/kb/4534283
 [4532920]: https://support.microsoft.com/kb/4532920
 [4534297]: https://support.microsoft.com/kb/4534297
+
+[6.16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="january-2020-guest-os"></a>Gastbetriebssystem für Januar 2020
@@ -2133,36 +2167,36 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3002657]: https://support.microsoft.com/kb/3002657
 [3035126]: https://support.microsoft.com/kb/3035126
 
-[3049563]: https://support.microsoft.com/kb/3049563
-[3057110]: https://support.microsoft.com/kb/3057110
-[3046002]: https://support.microsoft.com/kb/3046002
-[3057134]: https://support.microsoft.com/kb/3057134
-[3055642]: https://support.microsoft.com/kb/3055642
-[3057191]: https://support.microsoft.com/kb/3057191
-[3050514]: https://support.microsoft.com/kb/3050514
-[3057263]: https://support.microsoft.com/kb/3057263
-[3051768]: https://support.microsoft.com/kb/3051768
-[3061518]: https://support.microsoft.com/kb/3061518
+[3049563]:https://support.microsoft.com/kb/3049563
+[3057110]:https://support.microsoft.com/kb/3057110
+[3046002]:https://support.microsoft.com/kb/3046002
+[3057134]:https://support.microsoft.com/kb/3057134
+[3055642]:https://support.microsoft.com/kb/3055642
+[3057191]:https://support.microsoft.com/kb/3057191
+[3050514]:https://support.microsoft.com/kb/3050514
+[3057263]:https://support.microsoft.com/kb/3057263
+[3051768]:https://support.microsoft.com/kb/3051768
+[3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]: https://support.microsoft.com/kb/3038314
-[3042553]: https://support.microsoft.com/kb/3042553
-[3046306]: https://support.microsoft.com/kb/3046306
-[3046269]: https://support.microsoft.com/kb/3046269
-[3049576]: https://support.microsoft.com/kb/3049576
-[3046482]: https://support.microsoft.com/kb/3046482
-[3045711]: https://support.microsoft.com/kb/3045711
-[3048010]: https://support.microsoft.com/kb/3048010
-[3047234]: https://support.microsoft.com/kb/3047234
-[3045755]: https://support.microsoft.com/kb/3045755
-[3030377]: https://support.microsoft.com/kb/3030377
-[3039976]: https://support.microsoft.com/kb/3039976
+[3038314]:https://support.microsoft.com/kb/3038314
+[3042553]:https://support.microsoft.com/kb/3042553
+[3046306]:https://support.microsoft.com/kb/3046306
+[3046269]:https://support.microsoft.com/kb/3046269
+[3049576]:https://support.microsoft.com/kb/3049576
+[3046482]:https://support.microsoft.com/kb/3046482
+[3045711]:https://support.microsoft.com/kb/3045711
+[3048010]:https://support.microsoft.com/kb/3048010
+[3047234]:https://support.microsoft.com/kb/3047234
+[3045755]:https://support.microsoft.com/kb/3045755
+[3030377]:https://support.microsoft.com/kb/3030377
+[3039976]:https://support.microsoft.com/kb/3039976
 
-[3058515]: https://support.microsoft.com/kb/3058515
-[3033890]: https://support.microsoft.com/kb/3033890
-[3059317]: https://support.microsoft.com/kb/3059317
-[3057839]: https://support.microsoft.com/kb/3057839
-[3062577]: https://support.microsoft.com/kb/3062577
-[3063858]: https://support.microsoft.com/kb/3063858
+[3058515]:https://support.microsoft.com/kb/3058515
+[3033890]:https://support.microsoft.com/kb/3033890
+[3059317]:https://support.microsoft.com/kb/3059317
+[3057839]:https://support.microsoft.com/kb/3057839
+[3062577]:https://support.microsoft.com/kb/3062577
+[3063858]:https://support.microsoft.com/kb/3063858
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

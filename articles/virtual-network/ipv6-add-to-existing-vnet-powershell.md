@@ -11,25 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965233"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420761"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Aktualisieren einer IPv4-Anwendung auf IPv6 in Azure Virtual Network: PowerShell (Vorschau)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Aktualisieren einer IPv4-Anwendung auf IPv6 in Azure Virtual Network: PowerShell
 
 Dieser Artikel zeigt Ihnen, wie Sie einer vorhandenen IPv4-Anwendung IPv6-Konnektivität in einem virtuellen Azure-Netzwerk mit einem Load Balancer Standard und öffentlicher IP-Adresse hinzufügen. Das direkte Upgrade umfasst Folgendes:
 - IPv6-Adressraum für das virtuelle Netzwerk und das Subnetz
 - Einen Load Balancer Standard mit IPv4- und IPV6-Front-End-Konfigurationen
 - Virtuelle Computer mit NICs, die sowohl eine IPv4- als auch eine IPv6-Konfiguration besitzen
-- Öffentliche IPv-IP-Adresse, sodass der Load Balancer über eine internetfähige IPv6-Konnektivität verfügt.
+- Öffentliche IPv6-IP-Adresse, sodass das Lastenausgleichsmodul über eine internetfähige IPv6-Konnektivität verfügt.
 
-> [!Important]
-> Die IPv6-Unterstützung für Azure Virtual Network ist derzeit als Public Preview verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="register-the-service"></a>Registrieren des Diensts
-
-Bevor Sie eine Anwendung mit dualem Stapel in Azure bereitstellen, müssen Sie Ihr Abonnement für diese Previewfunktion mit dem folgenden Azure PowerShell-Befehl konfigurieren:
-
-Führen Sie die Registrierung wie folgt aus:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Sie können den Registrierungsstatus überprüfen, indem Sie den folgenden Azure PowerShell-Befehl ausführen: Überprüfen Sie die Registrierung wie folgt:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Führen Sie im Anschluss an die Registrierung den folgenden Befehl aus:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
 In diesem Artikel wird davon ausgegangen, dass Sie eine Load Balancer Standard-Instanz wie unter [Schnellstart: Erstellen einer Load Balancer Standard-Instanz: Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) beschrieben bereitgestellt haben.
 
 ## <a name="retrieve-the-resource-group"></a>Abrufen der Ressourcengruppe
@@ -176,8 +154,7 @@ Sie können das virtuelle IPv6-Dual Stack-Netzwerk im Azure-Portal wie folgt anz
 
   ![Virtuelles IPv6-Dual Stack-Netzwerk in Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Das virtuelle IPv6-Netzwerk für Azure ist im Azure-Portal schreibgeschützt für diese Vorschauversion verfügbar.
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fc5e379aae7d8ff0d7cb685b0dd7e7e0a46bb677
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454073"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393294"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -161,12 +161,12 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
+Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 ---
 
@@ -213,7 +213,7 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | **Ressource** | Ihr Blob Storage-Konto | Wählen Sie das Blob Storage-Konto aus, das Sie erstellt haben. |
     | **Ereignistypen** | Blob erstellt | Deaktivieren Sie alle Typen außer **Blob erstellt**. Nur Ereignistypen mit `Microsoft.Storage.BlobCreated` werden an die Funktion übergeben. |
     | **Endpunkttyp** | Automatisch generiert | Vordefiniert als **Azure-Funktion** |
-    | **Endpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. |
+    | **Endpunkt** | Automatisch generiert | Name der Funktion. In diesem Fall: **Thumbnail**. |
 
 4. Wechseln Sie zur Registerkarte **Filter**, und führen Sie die folgenden Aktionen durch:
     1. Wählen Sie die Option **Betrefffilter aktivieren** aus.

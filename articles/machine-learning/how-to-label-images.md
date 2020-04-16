@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409557"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879427"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
 
-Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
+Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool (öffentliche Vorschau) schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
 > [!div class="checklist"]
 > * Zugreifen auf Ihre Bezeichnungsprojekte
@@ -45,7 +45,9 @@ Navigieren Sie zu **Detaillierte Anweisungen anzeigen**. Diese Anweisungen sind 
 
 Bei Bildbezeichnungsaufgaben müssen jeweils geeignete Tags aus einer vom Projektadministrator angegebenen Gruppe ausgewählt werden. Die ersten neun Tags können über die Zifferntasten auf der Tastatur ausgewählt werden.  
 
-Bei Bildklassifizierungsaufgaben können Sie auswählen, dass mehrere Bilder gleichzeitig angezeigt werden sollen. Verwenden Sie die Symbole über dem Bildbereich, um das Layout auszuwählen. Wenn Sie alle angezeigten Bilder gleichzeitig auswählen möchten, verwenden Sie **Alle auswählen**. Wenn Sie einzelne Bilder auswählen möchten, verwenden Sie die runde Auswahlschaltfläche in der rechten oberen Ecke des Bilds. Sie müssen mindestens ein Bild auswählen, um ein Tag anzuwenden. Wenn Sie mehrere Bilder auswählen, wird jedes Tag, das Sie auswählen, auf alle ausgewählten Bilder angewendet.
+Bei Bildklassifizierungsaufgaben können Sie auswählen, dass mehrere Bilder gleichzeitig angezeigt werden sollen. Verwenden Sie die Symbole über dem Bildbereich, um das Layout auszuwählen. 
+
+Wenn Sie alle angezeigten Bilder gleichzeitig auswählen möchten, verwenden Sie **Alle auswählen**. Wenn Sie einzelne Bilder auswählen möchten, verwenden Sie die runde Auswahlschaltfläche in der rechten oberen Ecke des Bilds. Sie müssen mindestens ein Bild auswählen, um ein Tag anzuwenden. Wenn Sie mehrere Bilder auswählen, wird jedes Tag, das Sie auswählen, auf alle ausgewählten Bilder angewendet.
 
 Hier haben wir ein 2 × 2-Layout ausgewählt und sind im Begriff, das Tag „Mammal“ (Säugetier) auf die Bilder mit dem Bären und dem Orca anzuwenden. Das Bild mit dem Hai wurde bereits als „Cartilaginous fish“ (Knorpelfisch) markiert, und der Leguan wurde noch nicht markiert.
 

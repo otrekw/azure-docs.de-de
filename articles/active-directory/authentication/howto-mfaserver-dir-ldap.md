@@ -4,19 +4,19 @@ description: Bereitstellen von LDAP-Authentifizierung und Azure Multi-Factor Aut
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7a5400fce2fce1b75cbd579830f929fcc0d0dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454464"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653014"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 
@@ -79,5 +79,5 @@ Nachdem Sie diese Schritte ausgeführt haben, lauscht der MFA-Server an den konf
 Verwenden Sie die folgenden Richtlinien, um den LDAP-Client zu konfigurieren:
 
 * Konfigurieren Sie Ihre Appliance, den Server oder die Anwendung so, dass die Authentifizierung über LDAP an den Azure Multi-Factor Authentication-Server stattfindet, als wäre es Ihr LDAP-Verzeichnis. Verwenden Sie die gleichen Einstellungen, die Sie normalerweise für die direkte Verbindung mit Ihrem LDAP-Verzeichnis verwenden würden, mit Ausnahme des Servernamens oder der IP-Adresse, die dem Azure Multi-Factor Authentication-Server entsprechen.
-* Konfigurieren Sie das LDAP-Timeout auf 30 bis 60 Sekunden, sodass genug Zeit ist, die Anmeldeinformationen des Benutzers mit dem LDAP-Verzeichnis zu überprüfen, die Überprüfung in zwei Schritten durchzuführen, deren Antwort zu empfangen und auf die LDAP-Zugriffsanforderung zu reagieren.
+* Legen Sie die Konfiguration für das LDAP-Timeout auf 30 bis 60 Sekunden fest, damit genug Zeit ist, die Anmeldeinformationen des Benutzers mit dem LDAP-Verzeichnis zu überprüfen, die Überprüfung in zwei Schritten durchzuführen, deren Antwort zu empfangen und auf die LDAP-Zugriffsanforderung zu reagieren.
 * Bei Verwendung der LDAPS-Kommunikation muss die Appliance oder der Server, die bzw. der LDAP-Abfragen ausgibt, dem auf dem Azure Multi-Factor Authentication-Server installierten TLS/SSL-Zertifikat vertrauen.

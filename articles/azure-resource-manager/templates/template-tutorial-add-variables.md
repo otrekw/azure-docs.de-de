@@ -2,19 +2,19 @@
 title: 'Tutorial: Hinzufügen einer Variablen zur Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Variablen hinzu, um die Syntax zu vereinfachen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b1df86e5b593edec784de21e21a4399274d820bb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765505"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411684"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Variablen zur Azure Resource Manager-Vorlage
+# <a name="tutorial-add-variables-to-your-arm-template"></a>Tutorial: Hinzufügen von Variablen zu Ihrer ARM-Vorlage
 
-In diesem Tutorial erfahren Sie, wie Sie Ihrer Vorlage eine Variable hinzufügen. Variablen vereinfachen Ihre Vorlagen, da sie es Ihnen ermöglichen, einen Ausdruck einmal zu schreiben und dann in der gesamten Vorlage wiederzuverwenden. Dieses Tutorial dauert ungefähr **7 Minuten**.
+In diesem Tutorial wird beschrieben, wie Sie Ihrer ARM-Vorlage (Azure Resource Manager) eine Variable hinzufügen. Variablen vereinfachen Ihre Vorlagen, da sie es Ihnen ermöglichen, einen Ausdruck einmal zu schreiben und dann in der gesamten Vorlage wiederzuverwenden. Dieses Tutorial dauert ungefähr **7 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +56,7 @@ Nun stellen Sie die Vorlage bereit. Die Bereitstellung dieser Vorlage ist einfac
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,10 +67,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnamevariable \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -78,6 +80,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

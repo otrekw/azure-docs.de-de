@@ -5,24 +5,25 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314105"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519479"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen 
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen
+
 Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten. Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
 - Info zum Azure Import/Export-Dienst
 - Vorbereiten der Datenträger für den Import/Export
 - Import-/Exportaufträge
 - Datenträgerversand
-- Verschiedenes 
+- Sonstiges
 
 ## <a name="about-importexport-service"></a>Info zum Azure Import/Export-Dienst
 
@@ -46,7 +47,6 @@ Ja. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azu
 
 Nein. Sie müssen sowohl für den Import als auch Export Ihre eigenen Laufwerke einsenden.
 
-
 ## <a name="preparing-disks-for-importexport"></a>Vorbereiten der Datenträger für den Import/Export
 
 ### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Kann ich für einen Importauftrag den Schritt der Laufwerkvorbereitung überspringen? Kann ich ein Laufwerk ohne Kopieren vorbereiten?
@@ -60,28 +60,37 @@ Nein. Einige Vorabüberprüfungen sollten Sie durchführen. Überprüfen Sie die
 ## <a name="importexport-jobs"></a>Import-/Exportaufträge
 
 ### <a name="can-i-cancel-my-job"></a>Kann ich meinen Auftrag stornieren?
+
 Ja. Sie können einen Auftrag stornieren, solange dieser den Status **Wird erstellt** oder **Wird versendet** hat. Nach diesen Phasen kann der Auftrag nicht abgebrochen werden und wird bis zur letzten Phase fortgesetzt.
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Wie lange kann ich den Status abgeschlossener Aufträge im Azure-Portal anzeigen?
+
 Den Status abgeschlossener Aufträge können Sie bis zu 90 Tage lang anzeigen. Abgeschlossene Aufträge werden nach 90 Tagen gelöscht.
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Was soll ich tun, wenn ich mehr als 10 Laufwerke importieren oder exportieren möchte?
-Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke verweisen. Um mehr als zehn Laufwerke zu verschicken, sollten Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden. Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie vom Microsoft-Support. 
+
+Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke verweisen. Um mehr als zehn Laufwerke zu verschicken, sollten Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden.
+Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie vom Microsoft-Support.
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Für das hochgeladenen Blob wird der Status „Eine Lease ist abgelaufen“ angezeigt. Wie sollte ich vorgehen?
-Sie können das Feld „Eine Lease ist abgelaufen“ ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status „Eine Lease ist abgelaufen“ bedeutet, dass der Import/Export-Prozess nun nichts mehr hochlädt und Ihnen das Blob zur Verfügung steht. 
+
+Sie können das Feld „Eine Lease ist abgelaufen“ ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status „Eine Lease ist abgelaufen“ bedeutet, dass der Import/Export-Prozess nun nichts mehr hochlädt und Ihnen das Blob zur Verfügung steht.
 
 ## <a name="shipping-disks"></a>Datenträgerversand
 
 ### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Wie viele HDDs kann eine Lieferung maximal enthalten?
-Es gibt keine Beschränkung für die Anzahl der HDDs in einer Lieferung. Wenn die Datenträger zu mehreren Aufträgen gehören, sollten Sie auf Folgendes achten: 
+
+Es gibt keine Beschränkung für die Anzahl der HDDs in einer Lieferung. Wenn die Datenträger zu mehreren Aufträgen gehören, sollten Sie auf Folgendes achten:
+
 - Bezeichnen Sie die Datenträger mit entsprechenden Auftragsnamen.
 - Aktualisieren Sie die Aufträge mit einer Nachverfolgungsnummer und dem Suffix „-1“, „-2“ usw.
 
 ### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Sollte mein Paket noch andere Dinge als die Festplatte enthalten?
+
 Senden Sie nur die Festplatten im Versandpaket. Legen Sie keine Gegenstände wie z. B. Strom- oder USB-Kabel bei.
 
 ### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Muss ich meine Festplatten mit FedEx oder DHL schicken?
+
 Sie können Festplatten mit allen gängigen Kurierdiensten wie FedEx, DHL, UPS oder US Postal Service an das Azure-Rechenzentrum schicken. Allerdings müssen Sie für die Rücksendung der Laufwerke vom Rechenzentrum an Sie Folgendes angeben:
 
 - Eine FedEx-Kontonummer in den USA und Europa, oder
@@ -90,15 +99,18 @@ Sie können Festplatten mit allen gängigen Kurierdiensten wie FedEx, DHL, UPS o
 > [!NOTE]
 > Die Rechenzentren in Indien verlangen im Briefkopf eine Zustellaufforderung zur Rücksendung der Laufwerke. Um den gewünschten Zutrittsausweis zu arrangieren, müssen Sie auch die Abholung bei Ihrem gewählten Spediteur buchen und die Details mit dem Rechenzentrum klären.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Gelten für den internationalen Versand meiner Festplatte bestimmte Einschränkungen?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>Gelten für den internationalen Versand und die Rückgabe meines Datenträgers bestimmte Einschränkungen?
+
 Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen.
+
+Nach Abschluss des Uploads kann die Rückgabe von Datenträgern an internationale Adressen mehr Zeit als die üblichen 2-3 Tage für lokalen Versand beanspruchen. In der Phase, die im Azure-Portal als „Wird verpackt“ bezeichnet wird, stellt das Data Box-Team sicher, dass die entsprechende Dokumentation bereitgestellt wird, damit der Versand den verschiedenen internationalen Anforderungen für Import und Export entspricht.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Gelten besondere Anforderungen an die Zustellung meiner Datenträger an ein Rechenzentrum?
 
 Die Anforderungen hängen von den jeweiligen für das Azure-Rechenzentrum geltenden Einschränkungen ab.
-- Es gibt einige wenige Standorte, bei denen aus Sicherheitsgründen eine Eingangs-ID-Nummer des Microsoft-Rechenzentrums auf dem Paket vermerkt sein muss. Bevor Sie Ihre Laufwerke oder Datenträger an das Rechenzentrum senden, wenden Sie sich an Azure DataBox Operations (adbops@microsoft.com), um diese Nummer zu erhalten. Ohne diese Nummer wird die Annahme des Pakets verweigert.
-- Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wozu der Personalausweis oder die ID-Nachweisnummer (z. B. PAN, AADHAR, DL), der Name, der Kontakt und das Autokennzeichen gehören, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
 
+- Es gibt einige wenige Standorte, z. B. Australien, Deutschland und Vereinigtes Königreich, Süden, bei denen aus Sicherheitsgründen eine Eingangs-ID-Nummer des Microsoft-Rechenzentrums auf dem Paket vermerkt sein muss. Bevor Sie Ihre Laufwerke oder Datenträger an das Rechenzentrum senden, wenden Sie sich an Azure DataBox Operations (adbops@microsoft.com), um diese Nummer zu erhalten. Ohne diese Nummer wird die Annahme des Pakets verweigert.
+- Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wozu der Personalausweis oder die ID-Nachweisnummer (z. B. PAN, AADHAR, DL), der Name, der Kontakt und das Autokennzeichen gehören, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Beim Erstellen des Auftrags habe ich festgestellt, dass die Versandadresse ein Standort ist, der sich von meinem Speicherkontostandort unterscheidet. Wie sollte ich vorgehen?
 
@@ -108,8 +120,7 @@ Einige Speicherkontostandorte sind alternativen Standorten für den Versand zuge
 
 Die Telefonnummer und die Adresse des Rechenzentrums werden beim Erstellen des Auftrags angegeben.
 
-
-## <a name="miscellaneous"></a>Verschiedenes
+## <a name="miscellaneous"></a>Sonstiges
 
 ### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Was geschieht, wenn ich aus Versehen eine HDD verschicke, die den unterstützten Anforderungen nicht entspricht?
 
@@ -121,41 +132,29 @@ Nein. Alle Festplatten werden mit BitLocker verschlüsselt.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?
 
-Greifen Sie über das Azure-Portal oder den [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) auf die Daten unter Ihrem Azure-Speicherkonto zu.  
+Greifen Sie über das Azure-Portal oder [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) auf die Daten unter Ihrem Azure-Speicherkonto zu.  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Wie sehen meine Daten nach Abschluss des Imports im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?
 
-Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld „DstBlobPathOrPrefix“ in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt. 
+Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld „DstBlobPathOrPrefix“ in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt.
 
 ### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Wenn eine Festplatte Dateien enthält, die in meinem Speicherkonto bereits vorhanden sind, werden die entsprechenden Blobs oder Dateien dann vom Dienst überschrieben?
 
 Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs oder Dateien zu überschreiben.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?
-Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
+Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?
 
-Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
-Die maximale Seitenblobgröße ist 8 TB.
-
+- Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
+- Die maximale Seitenblobgröße ist 8 TB.
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Unterstützt Azure Import/Export die AES-256-Verschlüsselung?
-Der Azure Import/Export-Dienst verwendet standardmäßig die AES-128-Bitlocker-Verschlüsselung. Bevor die Daten kopiert werden, können Sie dies durch manuelle Verschlüsselung mit Bitlocker in AES-256 ändern. 
 
-- Wenn Sie [WAImportExport V1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) verwenden, sehen Sie sich folgenden Beispielbefehl an:
-    ```
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
-    ```
-- Geben Sie bei Verwendung von [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280) „AlreadyEncrypted“ an, und geben Sie den Schlüssel in der Driveset-CSV-Datei an.
-    ```
-    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
-    ```
+Nein. Der Azure Import/Export-Dienst verwendet die AES-128-BitLocker-Verschlüsselung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist Azure Import/Export?](storage-import-export-service.md)
-
-

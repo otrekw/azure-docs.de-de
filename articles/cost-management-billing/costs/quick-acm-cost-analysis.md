@@ -3,17 +3,17 @@ title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155952"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874499"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -45,7 +45,7 @@ Um Ihre Kosten in der Kostenanalyse zu überprüfen, öffnen Sie den Bereich im 
 
 Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann bis zu den benötigten geschachtelten Bereichen. Es ist wichtig, dieses Vorgehen zu verstehen, da möglicherweise nicht alle Benutzer Zugriff auf einen einzelnen übergeordneten Bereich haben, der mehrere verschachtelte Bereiche abdeckt.
 
-Sehen Sie sich das Video zur [Verwendung von Cost Management im Azure-Portal](https://www.youtube.com/watch?v=mfxysF-kTFA) an, um mehr über die Verwendung der Kostenanalyse zu erfahren.
+Sehen Sie sich das Video zur [Verwendung von Cost Management im Azure-Portal](https://www.youtube.com/watch?v=mfxysF-kTFA) an, um mehr über die Verwendung der Kostenanalyse zu erfahren. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ Sie können das vollständige Dataset für eine beliebige Ansicht anzeigen. Ausw
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Grundlegendes zu Gruppierungs- und Filteroptionen
 
+Die Kostenanalyse beinhaltet zahlreiche Gruppierungs- und Filteroptionen. Das Video zur [Cost Management-Berichterstellung anhand von Dimensionen und Tags](https://www.youtube.com/watch?v=2Vx7V17zbmk) enthält weitere Informationen zu den Gruppierungs- und Filteroptionen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 In der folgenden Tabelle sind einige der häufigsten Gruppierungs- und Filteroptionen und deren Anwendungsmöglichkeiten aufgeführt.
 
 | Eigenschaft | Verwendung | Notizen |
@@ -178,7 +182,7 @@ Informationen zu den Bedingungen finden Sie unter [Grundlegendes zu den Bedingun
 
 Speichern Sie benutzerdefinierte Ansichten, und geben Sie sie für andere Benutzer frei, indem Sie die Kostenanalyse im Dashboard des Azure-Portals anheften oder einen Link zur Kostenanalyse kopieren.
 
-Sehen Sie sich das Video zum [Freigeben und Speichern von Ansichten in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) an, um mehr darüber zu erfahren, wie Sie das Portal zum Freigeben von Kosteninformationen in Ihrer Organisation verwenden.
+Sehen Sie sich das Video zum [Freigeben und Speichern von Ansichten in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) an, um mehr darüber zu erfahren, wie Sie das Portal zum Freigeben von Kosteninformationen in Ihrer Organisation verwenden. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

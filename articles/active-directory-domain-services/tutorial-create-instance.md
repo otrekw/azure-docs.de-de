@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223077"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474231"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -104,8 +104,8 @@ Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Az
 
 Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei Verwendung dieser Erstellungsoption werden folgende Standardwerte konfiguriert:
 
-* Ein virtuelles Netzwerk mit dem Namen *aadds-vnet* und dem IP-Adressbereich *10.0.1.0/24* wird erstellt.
-* Ein Subnetz mit dem Namen *aadds-subnet* und dem IP-Adressbereich *10.0.1.0/24* wird erstellt.
+* Ein virtuelles Netzwerk mit dem Namen *aadds-vnet* und dem IP-Adressbereich *10.0.2.0/24* wird erstellt.
+* Ein Subnetz mit dem Namen *aadds-subnet* und dem IP-Adressbereich *10.0.2.0/24* wird erstellt.
 * *Alle* Benutzer aus Azure AD werden mit der verwalteten Azure AD DS-Domäne synchronisiert.
 
 Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsoptionen zu akzeptieren.
@@ -136,7 +136,7 @@ Nachdem Azure AD DS erfolgreich bereitgestellt wurde, konfigurieren Sie nun da
 
 1. Auf der Registerkarte **Übersicht** für Ihre verwaltete Domäne werden einige **erforderliche Konfigurationsschritte** angezeigt. Der erste Konfigurationsschritt besteht darin, die DNS-Servereinstellungen für Ihr virtuelles Netzwerk zu aktualisieren. Sobald die DNS-Einstellungen ordnungsgemäß konfiguriert sind, wird dieser Schritt nicht mehr angezeigt.
 
-    Die aufgelisteten Adressen sind die Domänencontroller, die im virtuellen Netzwerk genutzt werden können. In diesem Beispiel lauten die Adressen *10.0.1.4* und *10.0.1.5*. Sie finden diese IP-Adressen später auf der Registerkarte **Eigenschaften**.
+    Die aufgelisteten Adressen sind die Domänencontroller, die im virtuellen Netzwerk genutzt werden können. In diesem Beispiel lauten die Adressen *10.0.2.4* und *10.0.2.5*. Sie finden diese IP-Adressen später auf der Registerkarte **Eigenschaften**.
 
     ![Konfigurieren von DNS-Einstellungen für Ihr virtuelles Netzwerk mit den IP-Adressen der Azure AD Domain Services](./media/tutorial-create-instance/configure-dns.png)
 

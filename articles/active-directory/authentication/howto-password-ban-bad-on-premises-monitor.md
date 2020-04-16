@@ -4,19 +4,19 @@ description: Erfahren Sie, wie Sie in einer lokalen Active Directory Domain Serv
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671656"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652612"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
@@ -94,7 +94,7 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-Der Umfang der Berichterstellung des Cmdlets kann mit einem der -Forest, -Domain- oder -DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
+Der Umfang der Berichterstellung des Cmdlets kann mit einem der –Forest-, –Domain- oder –DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
 
 Die Cmdlet `Get-AzureADPasswordProtectionSummaryReport` funktioniert durch Abfragen des DC-Agent-Administratorereignisprotokolls und anschließendes Zählen der Gesamtanzahl von Ereignissen, die den einzelnen angezeigten Ergebniskategorien entsprechen. Die folgende Tabelle enthält die Zuordnungen zwischen den einzelnen Ergebnissen und der zugehörigen Ereignis-ID:
 
@@ -117,7 +117,7 @@ Beachten Sie, dass das Cmdlet `Get-AzureADPasswordProtectionSummaryReport` in Po
 > Dieses Cmdlet funktioniert, indem es eine PowerShell-Sitzung mit jedem Domänencontroller öffnet. Damit dies gelingt, muss die Unterstützung für PowerShell-Remotesitzungen auf jedem Domänencontroller aktiviert sein, und der Client muss über ausreichende Berechtigungen verfügen. Weitere Informationen zu Anforderungen für PowerShell-Remotesitzungen führen Sie in einem PowerShell-Fenster „Get-Help about_Remote_Troubleshooting“ aus.
 
 > [!NOTE]
-> Dieses Cmdlet funktioniert durch Remoteabfrage des Admin-Ereignisprotokolls jedes DC-Agentendienstes. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
+> Bei diesem Cmdlet wird jeweils das Admin-Ereignisprotokoll der einzelnen DC-Agent-Dienste remote abgefragt. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
 
 ### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10014 – Kennwort erfolgreich geändert
 
@@ -265,7 +265,7 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 Die verschiedenen Eigenschaften werden von jedem DC-Agent-Dienst ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
 
-Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
+Der Bereich der Cmdlet-Abfrage kann durch die Verwendung des Parameters „–Forest“ oder „–Domain“ beeinflusst werden.
 
 Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der DC-Agent des Azure AD-Kennwortschutzes auf diesem Domänencontroller nicht ausgeführt wird oder deinstalliert wurde oder dass der Computer herabgestuft wurde und kein Domänencontroller mehr ist.
 
@@ -357,7 +357,7 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 Die verschiedenen Eigenschaften werden von den einzelnen Proxydiensten ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
 
-Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
+Der Bereich der Cmdlet-Abfrage kann durch die Verwendung des Parameters „–Forest“ oder „–Domain“ beeinflusst werden.
 
 Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der Proxy des Azure AD-Kennwortschutzes auf diesem Computer nicht ausgeführt wird oder deinstalliert wurde.
 

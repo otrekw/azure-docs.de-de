@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79475801"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754285"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application Firewall in Azure Content Delivery Network
 
-Azure Web Application Firewall (WAF) in Azure Content Delivery Network (CDN) ermöglicht einen zentralen Schutz für Ihre Webinhalte. WAF schützt Ihre Webdienste von gängigen Exploits und Sicherheitsrisiken. Die Lösung gewährleistet eine hohe Verfügbarkeit Ihres Diensts für Benutzer und unterstützt Sie bei der Erfüllung von Complianceanforderungen.
+Azure Web Application Firewall (WAF) in Azure Content Delivery Network (CDN) von Microsoft ermöglicht einen zentralen Schutz für Ihre Webinhalte. WAF schützt Ihre Webdienste von gängigen Exploits und Sicherheitsrisiken. Die Lösung gewährleistet eine hohe Verfügbarkeit Ihres Diensts für Benutzer und unterstützt Sie bei der Erfüllung von Complianceanforderungen.
 
 > [!IMPORTANT]
-> WAF in Azure CDN befindet sich derzeit in der öffentlichen Vorschauphase und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> WAF in Azure CDN von Microsoft befindet sich derzeit in der öffentlichen Vorschauphase und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 WAF in Azure CDN ist eine globale und zentrale Lösung. Sie wird an Edgestandorten des Azure-Netzwerks auf der ganzen Welt bereitgestellt. Per WAF werden schädliche Angriffe in der Nähe der Angriffsquellen gestoppt, bevor sie Ihren Ursprungsort erreichen. Sie erhalten globalen bedarfsgerechten Schutz ohne Leistungseinbußen. 
 
@@ -53,8 +53,8 @@ Für die Ausführung der WAF-Richtlinie können die beiden folgenden Modi konfig
 
 Sie können eine der folgenden Aktionen auswählen, wenn für eine Anforderung die Bedingungen einer Regel erfüllt sind:
 
-- *Allow*: Die Anforderung passiert die WAF und wird an das Back-End weitergeleitet. Diese Anforderung kann mit Regeln niedrigerer Priorität nicht mehr gesperrt werden.
-- *Block*: Die Anforderung wird gesperrt. WAF sendet eine Antwort an den Client, ohne die Anforderung an das Back-End weiterzuleiten.
+- *Zulassen*: Die Anforderung passiert die WAF und wird an das Back-End weitergeleitet. Diese Anforderung kann mit Regeln niedrigerer Priorität nicht mehr gesperrt werden.
+- *Blockieren*: Die Anforderung wird gesperrt. WAF sendet eine Antwort an den Client, ohne die Anforderung an das Back-End weiterzuleiten.
 - *Log*:  Die Anforderung wird in den WAF-Protokollen protokolliert, und WAF setzt den Vorgang mit dem Auswerten von Regeln mit niedrigerer Priorität fort.
 - *Redirect*: WAF leitet die Anforderung an den angegebenen URI weiter. Der URI wird als Einstellung auf Richtlinienebene angegeben. Nach der Konfiguration werden alle Anforderungen, die der Aktion *REDIRECT* entsprechen, an diesen URI gesendet.
 

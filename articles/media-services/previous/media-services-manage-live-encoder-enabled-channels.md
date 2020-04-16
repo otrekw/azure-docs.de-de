@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162530"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677018"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -167,7 +167,7 @@ Mit einem Kanal ist ein Eingabeendpunkt (Erfassungs-URL) verfügbar, den Sie im 
 
 Wenn Sie einen Kanal erstellen, können Sie die Erfassungs-URLs abrufen. Der Kanal muss dazu nicht den Status **Running** (Wird ausgeführt) aufweisen. Wenn Sie beginnen möchten, Daten an den Kanal zu senden, ist der Status **Running** (Wird ausgeführt) hingegen erforderlich. Wenn die Datenerfassung durch den Kanal begonnen hat, können Sie über die Vorschau-URL eine Vorschau Ihres Datenstroms ansehen.
 
-Sie können optional einen Livedatenstrom mit fragmentiertem MP4 (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. AMS unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht.  
+Sie können optional einen Livedatenstrom mit fragmentiertem MP4 (Smooth Streaming) über eine TLS-Verbindung erfassen. Für die Erfassung über TLS sollten Sie sicherstellen, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. AMS unterstützt TLS mit benutzerdefinierten Domänen derzeit nicht.  
 
 ### <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
 Sie können die IP-Adressen definieren, die zum Veröffentlichen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.

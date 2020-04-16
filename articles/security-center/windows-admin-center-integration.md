@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960690"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435260"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Integrieren von Azure Security Center mit Windows Admin Center (Vorschau)
+# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrieren von Azure Security Center mit Windows Admin Center
 
 Windows Admin Center ist ein Verwaltungstool für Ihre Windows-Server. Es stellt den zentralen Ort dar, von dem aus Systemadministratoren auf die meisten der am häufigsten verwendeten Verwaltungstools zugreifen. Sie können direkt in Windows Admin Center das Onboarding in Azure Security Center für Ihre lokalen Server durchführen. Anschließend können Sie eine Zusammenfassung Ihrer Sicherheitsempfehlungen und -warnungen direkt auf der Benutzeroberfläche von Windows Admin Center anzeigen.
 
 > [!NOTE]
-> Für Ihr Azure-Abonnement und den zugehörigen Log Analytics-Arbeitsbereich muss der Standard-Tarif für Security Center aktiviert sein, damit die Integration mit Windows Admin Center aktiviert werden kann.
+> Für Ihr Azure-Abonnement und den zugehörigen Log Analytics-Arbeitsbereich muss der Standard-Tarif für Security Center aktiviert sein, damit die Integration mit Windows Admin Center aktiviert werden kann.
 > Der Standard-Tarif ist für die ersten 30 Tage kostenlos, sofern Sie ihn noch nicht für das Abonnement und den Arbeitsbereich verwendet haben. Weitere Preisinformationen finden Sie in der [Preisübersicht](security-center-pricing.md).
 >
 
@@ -46,9 +46,9 @@ Durch die Kombination dieser beiden Tools wird Security Center zum zentralen Anz
 1. Befolgen Sie die Anweisungen zum Verbinden Ihres Servers mit Security Center. Nachdem Sie die erforderlichen Informationen eingegeben und bestätigt haben, nimmt Security Center die erforderlichen Konfigurationsänderungen vor, um sicherzustellen, dass Folgendes gilt:
     * Ein Azure-Gateway ist registriert.
     * Der Server verfügt über einen Arbeitsbereich für Berichte und ein zugeordnetes Abonnement.
-    * Die Log Analytics-Lösung im Standard-Tarif von Security Center ist im Arbeitsbereich aktiviert. Diese Lösung bietet die Features des Standard-Tarifs von Security Center für *alle* Server und virtuellen Computer, die an diesen Arbeitsbereich berichten.
+    * Die Log Analytics-Lösung im Standard-Tarif von Security Center ist im Arbeitsbereich aktiviert. Diese Lösung bietet die Features des Standard-Tarifs von Security Center für *alle* Server und virtuellen Computer, die Berichte an diesen Arbeitsbereich übermitteln.
     * Die Preise für den Standard-Tarif von Security Center für virtuelle Computer sind für das Abonnement aktiviert.
-    * Microsoft Monitoring Agent (MMA) ist auf dem Server installiert und so konfiguriert, dass er Berichte an den ausgewählten Arbeitsbereich übermittelt. Wenn der Server bereits Berichte an einen anderen Arbeitsbereich übermittelt, ist er so konfiguriert, dass er auch an den neu ausgewählten Arbeitsbereich berichtet.
+    * Der Log Analytics-Agent ist auf dem Server installiert und so konfiguriert, dass er Berichte an den ausgewählten Arbeitsbereich übermittelt. Wenn der Server bereits Berichte an einen anderen Arbeitsbereich übermittelt, wird er so konfiguriert, dass er auch Berichte an den neu ausgewählten Arbeitsbereich übermittelt.
 
     > [!NOTE]
     > Es kann nach dem Onboarding einige Zeit dauern, bis Empfehlungen angezeigt werden. Tatsächlich kann es abhängig von Ihrer Serveraktivität auch vorkommen, dass Sie *überhaupt keine* Warnungen erhalten. Wenn Sie Testwarnungen generieren möchten, um die ordnungsgemäße Funktion Ihrer Warnungen zu testen, befolgen Sie die Anweisungen im [Verfahren zur Warnungsüberprüfung](security-center-alert-validation.md).

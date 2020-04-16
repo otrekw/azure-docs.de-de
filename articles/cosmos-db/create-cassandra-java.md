@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 124bbcedceffca318367799441f66e330bc41fef
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134911"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811319"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-Cassandra-API-Daten
 
@@ -66,7 +66,7 @@ Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-App aus 
 
 Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenbankressourcen erstellt, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. Alle Codeausschnitte stammen aus der Datei *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java*.  
 
-* Cassandra-Host, -Port, -Benutzername, -Kennwort und SSL-Optionen wurden festgelegt. Die Informationen zur Verbindungszeichenfolge stammen von der Seite „Verbindungszeichenfolge“ im Azure-Portal.
+* Cassandra-Host, -Port, -Benutzername, -Kennwort und TLS-/SSL-Optionen wurden festgelegt. Die Informationen zur Verbindungszeichenfolge stammen von der Seite „Verbindungszeichenfolge“ im Azure-Portal.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -168,18 +168,18 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. Wenn Sie ein bestimmtes SSL-Zertifikat verwenden möchten, ersetzen Sie `<SSL key store file location>` in Zeile 6 durch den Speicherort des SSL-Zertifikats. Wenn kein Wert angegeben ist, wird das unter „<JAVA_HOME>/jre/lib/security/cacerts“ installierte JDK-Zertifikat verwendet. 
+5. Wenn Sie ein bestimmtes TLS-/SSL-Zertifikat verwenden möchten, ersetzen Sie `<SSL key store file location>` in Zeile 6 durch den Speicherort des TLS-/SSL-Zertifikats. Wenn kein Wert angegeben ist, wird das unter „<JAVA_HOME>/jre/lib/security/cacerts“ installierte JDK-Zertifikat verwendet. 
 
-6. Wenn Sie Zeile 6 so geändert haben, dass ein bestimmtes SSL-Zertifikat verwendet wird, aktualisieren Sie Zeile 7 so, dass das Kennwort für das betreffende Zertifikat verwendet wird. 
+6. Wenn Sie Zeile 6 so geändert haben, dass ein bestimmtes TLS-/SSL-Zertifikat verwendet wird, aktualisieren Sie Zeile 7 so, dass das Kennwort für das betreffende Zertifikat verwendet wird. 
 
 7. Speichern Sie die Datei *config.properties*.
 
 ## <a name="run-the-java-app"></a>Ausführen der Java-App
 
-1. Wechseln Sie im Git-Terminalfenster mithilfe von `cd` in den Ordner `azure-cosmosdb-cassandra-java-getting-started\java-examples`.
+1. Wechseln Sie im Git-Terminalfenster mithilfe von `cd` in den Ordner `azure-cosmosdb-cassandra-java-getting-started`.
 
     ```git
-    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
+    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started"
     ```
 
 2. Verwenden Sie im Git-Terminalfenster den folgenden Befehl, um die Datei `cosmosdb-cassandra-examples.jar` zu generieren.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931989"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981850"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
@@ -27,7 +27,7 @@ ms.locfileid: "75931989"
 >Dieser Inhalt wurde durch [Übersicht über IPv6 für Azure VNETs](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) abgelöst. Azure empfiehlt, in neuen IPv6-Bereitstellungen die neuen IPv6-Features für virtuelle Azure-Netzwerke zu verwenden.
 
 >[!NOTE]
->Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
+>Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
 
 Load Balancer mit Internetzugriff für die SKU „Basic“ können mit einer IPv6-Adresse bereitgestellt werden. Zusätzlich zu IPv4-Konnektivität werden dadurch die folgenden Funktionen ermöglicht:
 
@@ -81,6 +81,7 @@ Einschränkungen
 * Das Ändern des Parameters loadDistributionMethod wird für IPv6 **derzeit nicht unterstützt**.
 * Reservierte IPv6-IP-Adressen (wobei IPAllocationMethod = static) werden **derzeit nicht unterstützt**.
 * NAT64 (Übersetzung von IPv6 in IPv4) wird nicht unterstützt.
+* Das Anfügen einer sekundären NIC, die sich auf ein IPv6-Subnetz bezieht, an einen Back-End-Pool wird **derzeit nicht unterstützt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

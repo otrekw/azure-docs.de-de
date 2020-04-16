@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416244"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -29,7 +29,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |BodyChunkSize |Uint, Standardwert 16384 |Dynamisch| Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
 |CrlCheckingFlag|uint, Standardwert 0 x 40000000 |Dynamisch| Flags für die Überprüfung der Anwendungs- bzw. Dienstzertifikatkette, z.B. Zertifikatssperrlistenüberprüfung 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatssperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
-|ForwardClientCertificate|Boolesch, Standardwert FALSE|Dynamisch|Wenn auf FALSE gesetzt, fordert der Reverseproxy das Clientzertifikat nicht an. Wenn auf TRUE festgelegt, fordert der Reverseproxy das Clientzertifikat beim SSL-Handshake an und leitet die base64-verschlüsselte PEM-Formatzeichenfolge an den Dienst in einem Header namens „X-Client-Certificate“ weiter. Die Anforderung kann mit dem entsprechenden Statuscode für den Dienst fehlschlagen, nachdem die Zertifikatsdaten überprüft wurden. Wenn dies der Fall ist und der Client kein Zertifikat vorlegt, leitet der Reverseproxy einen leeren Header weiter und lässt den Dienst den Fall bearbeiten. Der Reverseproxy fungiert als transparente Ebene. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung mit Clientzertifikat](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
+|ForwardClientCertificate|Boolesch, Standardwert FALSE|Dynamisch|Wenn dieser Parameter auf FALSE gesetzt ist, fordert der Reverseproxy das Clientzertifikat nicht an. Wenn er auf TRUE festgelegt ist, fordert der Reverseproxy das Clientzertifikat beim TLS-Handshake an und leitet die Base64-verschlüsselte PEM-Formatzeichenfolge in einem Header namens „X-Client-Certificate“ an den Dienst weiter. Die Anforderung kann mit dem entsprechenden Statuscode für den Dienst fehlschlagen, nachdem die Zertifikatsdaten überprüft wurden. Wenn dies der Fall ist und der Client kein Zertifikat vorlegt, leitet der Reverseproxy einen leeren Header weiter und lässt den Dienst den Fall bearbeiten. Der Reverseproxy fungiert als transparente Ebene. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung mit Clientzertifikat](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |string, Standardwert „None“ |statischen| Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind „None/X509“. |
 |GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ |Dynamisch| Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | string, Standardwert "" |Dynamisch| Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn nicht vorhanden, wird nach FindValueSecondary gesucht. |
@@ -55,10 +55,10 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für BackupRestoreService |
-|PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|  PlacementConstraints für den BackupRestore-Dienst |
+|PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|    PlacementConstraints für den BackupRestore-Dienst |
 |SecretEncryptionCertThumbprint|Zeichenfolge, Standardwert „“|Dynamisch|Fingerabdruck des X509-Verschlüsselungszertifikats für das Geheimnis |
-|SecretEncryptionCertX509StoreName|Zeichenfolge, Standardwert „My“|   Dynamisch|    Gibt das Zertifikat für das Ver- und Entschlüsseln von Anmeldeinformationen und den Namen des X.509-Zertifikatspeichers für das Ver- und Entschlüsseln von Speicheranmeldeinformationen für den Sicherungs- und Wiederherstellungsdienst an |
-|TargetReplicaSetSize|Ganze Zahl, Standardwert 0|statischen| TargetReplicaSetSize für BackupRestoreService |
+|SecretEncryptionCertX509StoreName|Zeichenfolge, Standardwert ist „My“|    Dynamisch|    Gibt das Zertifikat für das Ver- und Entschlüsseln von Anmeldeinformationen und den Namen des X.509-Zertifikatspeichers für das Ver- und Entschlüsseln von Speicheranmeldeinformationen für den Sicherungs- und Wiederherstellungsdienst an |
+|TargetReplicaSetSize|Ganze Zahl, Standardwert ist „0“|statischen| TargetReplicaSetSize für BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
 
@@ -147,8 +147,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für den EventStore-Dienst |
-|PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|  PlacementConstraints für den EventStore-Dienst |
-|TargetReplicaSetSize|Ganze Zahl, Standardwert 0|statischen| TargetReplicaSetSize für den EventStore-Dienst |
+|PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|    PlacementConstraints für den EventStore-Dienst |
+|TargetReplicaSetSize|Ganze Zahl, Standardwert ist „0“|statischen| TargetReplicaSetSize für den EventStore-Dienst |
 
 ## <a name="fabricclient"></a>FabricClient
 
@@ -270,7 +270,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |CommonNameNtlmPasswordSecret|SecureString, Standardwert „Common::SecureString("")“| statischen|Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, Standardwert Common::TimeSpan::FromMinutes(5)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall zwischen dem Überprüfen des Speicherplatzes für das Berichterstattungs-Integritätsereignis, wenn der Speicherplatz auf dem Datenträger nahezu erschöpft ist. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, Standardwert Common::TimeSpan::FromMinutes(15)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall zwischen dem Überprüfen des Speicherplatzes für das Berichterstattungs-Integritätsereignis, wenn auf dem Datenträger ausreichend Speicherplatz vorhanden ist. |
-|EnableImageStoreHealthReporting |Boolesch, Standardwert TRUE |statischen|Konfiguration zur Bestimmung, ob der Dateispeicherdienst seine Integrität melden sollte. |
+|EnableImageStoreHealthReporting |Boolesch, Standardwert TRUE    |statischen|Konfiguration zur Bestimmung, ob der Dateispeicherdienst seine Integrität melden sollte. |
 |FreeDiskSpaceNotificationSizeInKB|int64, Standardwert 25 \* 1024 |Dynamisch|Die Größe des freien Speicherplatzes, unterhalb dessen es zu einer Integritätswarnung kommen kann. Der minimale Wert dieser Konfiguration und die Konfiguration „FreeDiskSpaceNotificationThresholdPercentage" werden verwendet, um das Senden der Integritätswarnung zu ermitteln. |
 |FreeDiskSpaceNotificationThresholdPercentage|double, Standardwert 0,02 |Dynamisch|Der prozentuale Anteil des freien Speicherplatzes, unterhalb dessen es zu einer Integritätswarnung kommen kann. Der minimale Wert dieser Konfiguration und die Konfiguration „FreeDiskSpaceNotificationInMB" werden verwendet, um das Senden der Integritätswarnung zu ermitteln. |
 |GenerateV1CommonNameAccount| Boolesch, Standardwert TRUE|statischen|Gibt an, ob ein Konto mit dem V1-Generierungsalgorithmus für Benutzernamen erstellt werden soll. Ab Service Fabric-Version 6.1 wird immer ein Konto mit v2-Generierung erstellt. Das V1-Konto ist erforderlich für Upgrades von/auf Versionen, die die V2-Generierung (vor 6.1) nicht unterstützen.|
@@ -556,16 +556,20 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PlacementSearchTimeout | Zeit in Sekunden, Standardwert 0,5 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beim Platzieren von Diensten wird für maximal diese Zeitspanne gesucht, bevor ein Ergebnis zurückgegeben wird. |
 |PLBRefreshGap | Zeit in Sekunden, Standardwert 1 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Definiert die minimale Zeitspanne, die verstreichen muss, bevor PLB den Zustand erneut aktualisiert. |
 |PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Dynamisch|Bestimmt die Priorität der Einschränkung für den bevorzugten Speicherort: 0: Stark; 1: Schwach; 2: Optimierung; negativ: Ignorieren |
+|PreferredPrimaryDomainsConstraintPriority| Ganze Zahl, Standardwert 1 | Dynamisch| Legt die Priorität der Einschränkung für die bevorzugte primäre Domäne fest: 0: Stark; 1: Schwach; negativ: Ignorieren |
 |PreferUpgradedUDs|Boolesch, Standardwert FALSE|Dynamisch|Aktiviert und deaktiviert die Logik, die ein Verschieben zu UDs bevorzugt, für die bereits ein Upgrade durchgeführt wurde. Ab Service Fabric 7.0 lautet der Standardwert für diesen Parameter nicht mehr TRUE sondern FALSE.|
 |PreventTransientOvercommit | Boolesch, Standardwert „false“ | Dynamisch|Bestimmt, ob PLB sofort Ressourcen nutzen soll, die von den initiierten Datenverschiebungen freigegeben werden. Standardmäßig kann PLB Datenverschiebungen aus und in einen Knoten initiieren, sodass eine vorübergehende Überlastung entstehen kann. Wenn dieser Parameter auf TRUE festgelegt wird, wird diese Art von Überlastungen verhindert, und eine bedarfsgesteuerte Defragmentierung (placementWithMove) wird deaktiviert. |
 |ScaleoutCountConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Einschränkung für den Umfang der horizontalen Hochskalierung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
+|SubclusteringEnabled|Boolesch, Standardwert ist „false“ | Dynamisch |Berücksichtigt das Subclustering beim Berechnen der Standardabweichung für den Ausgleich |
+|SubclusteringReportingPolicy| Ganze Zahl, Standardwert 1 |Dynamisch|Definiert, ob und wie Integritätsberichte zum Subclustering gesendet werden: 0: Nicht melden; 1: Warnung; 2: OK |
 |SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""|statischen| Der zugehörige Metrikname für diese Drosselung. |
 |SwapPrimaryThrottlingEnabled | Boolesch, Standardwert „false“|Dynamisch| Bestimmen Sie, ob die Drosselung beim Austausch des primären Replikats aktiviert wird. |
 |SwapPrimaryThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 |Dynamisch| Die maximale, global zulässige Anzahl von primären Replikaten für den Austausch. |
 |TraceCRMReasons |Boolesch, Standardwert „true“ |Dynamisch|Gibt an, ob Gründe für von CRM ausgegebene Datenverschiebungen zum Kanal für Betriebsereignisse verfolgt werden sollen. |
 |UpgradeDomainConstraintPriority | Ganze Zahl, Standardwert 1| Dynamisch|Bestimmt die Priorität der Einschränkung für die Upgradedomäne: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
-|UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die festlegt, ob eine andere sekundäre Last verwendet werden soll. |
+|UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Hierbei handelt es sich um eine Einstellung, die festlegt, ob für sekundäre Replikate eine separate Auslastung verwendet werden soll. |
+|UseSeparateSecondaryMoveCost | Boolesch, Standardwert „false“ | Dynamisch|Hierbei handelt es sich um eine Einstellung, die festlegt, ob für sekundäre Replikate separate Verschiebungskosten verwendet werden sollen. |
 |ValidatePlacementConstraint | Boolesch, Standardwert „true“ |Dynamisch| Gibt an, ob der PlacementConstraint-Ausdruck für einen Dienst überprüft wird, wenn ServiceDescription für einen Dienst aktualisiert wird. |
 |ValidatePrimaryPlacementConstraintOnPromote| Boolesch, Standardwert TRUE |Dynamisch|Gibt an, ob der Ausdruck „PlacementConstraint“ für einen Dienst beim Failover für die primäre Einstellung ausgewertet werden soll oder nicht. |
 |VerboseHealthReportLimit | Ganze Zahl, Standardwert 20 | Dynamisch|Definiert, wie häufig ein Replikat nicht platziert werden muss, bevor eine Integritätswarnung dafür gemeldet wird (wenn ausführliche Integritätsberichte aktiviert sind). |
@@ -671,7 +675,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DisableFirewallRuleForDomainProfile| Boolesch, Standardwert TRUE |statischen| Gibt an, ob die Firewallregel das Domänenprofil nicht aktiviert werden soll. |
 |DisableFirewallRuleForPrivateProfile| Boolesch, Standardwert TRUE |statischen| Gibt an, ob die Firewallregel das private Profil nicht aktiviert werden soll. | 
 |DisableFirewallRuleForPublicProfile| Boolesch, Standardwert TRUE | statischen|Gibt an, ob die Firewallregel das öffentliche Profil nicht aktiviert werden soll. |
-| EnforceLinuxMinTlsVersion | Boolesch, Standardwert FALSE | Dynamisch | Wenn auf TRUE festgelegt. Nur TLS-Version 1.2 oder höher wird unterstützt.  Wenn FALSE, Unterstützung früherer TLS-Versionen. Gilt nur für Linux |
+| EnforceLinuxMinTlsVersion | Boolesch, Standardwert FALSE | statischen | Wenn auf TRUE festgelegt. Nur TLS-Version 1.2 oder höher wird unterstützt.  Wenn FALSE, Unterstützung früherer TLS-Versionen. Gilt nur für Linux |
+| EnforcePrevalidationOnSecurityChanges | Boolesch, Standardwert FALSE| Dynamisch | Flag zum Steuern des Verhaltens beim Clusterupgrade, wenn Änderungen an den Sicherheitseinstellungen erkannt werden. Wenn der Wert auf TRUE festgelegt ist, wird bei einem Clusterupgrade versucht, sicherzustellen, dass mindestens eines der Zertifikate, die mit einer der Darstellungsregeln übereinstimmen, eine entsprechende Validierungsregel bestehen kann. Die Vorvalidierung wird ausgeführt, bevor die neuen Einstellungen auf einen Knoten angewandt werden. Sie wird jedoch nur auf dem Knoten ausgeführt, der zum Zeitpunkt der Initiierung des Upgrades das primäre Replikat des Cluster-Manager-Diensts hostet. Die Standardeinstellung ist derzeit FALSE. Ab Release 7.1 wird die Einstellung für neue Azure Service Fabric-Cluster auf TRUE festgelegt.|
 |FabricHostSpn| string, Standardwert "" |statischen| Der Dienstprinzipalname von FabricHost, wenn Fabric als einzelner Domänenbenutzer (gMSA-/Domänenbenutzerkonto) und FabricHost unter dem Computerkonto ausgeführt wird. Es handelt sich um den SPN von IPC-Listenern für FabricHost. Standardmäßig sollte diese Angabe leer bleiben, weil FabricHost unter dem Computerkonto ausgeführt wird |
 |IgnoreCrlOfflineError|Boolesch, Standardwert FALSE|Dynamisch|Gibt an, ob ein Zertifikatsperrlisten-Offlinefehler ignoriert werden soll, wenn die Serverseite eingehende Clientzertifikate überprüft. |
 |IgnoreSvrCrlOfflineError|Boolesch, Standardwert TRUE|Dynamisch|Gibt an, ob ein Zertifikatsperrlisten-Offlinefehler ignoriert werden soll, wenn die Clientseite eingehende Serverzertifikate überprüft. Der Standardwert ist TRUE. Für Angriffe mit gesperrten Serverzertifikaten ist eine Gefährdung des DNS erforderlich. Dies ist schwieriger als mit gesperrten Clientzertifikaten. |
@@ -680,12 +685,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SettingsX509StoreName| string, Standardwert „MY“| Dynamisch|Der X509-Zertifikatspeicher, der von Fabric für den Konfigurationsschutz verwendet wird. |
 |UseClusterCertForIpcServerTlsSecurity|Boolesch, Standardwert FALSE|statischen|Gibt an, ob ein Clusterzertifikat verwendet werden soll, um die TLS-Transporteinheit auf dem IPC-Server zu schützen |
 |X509Folder|string, Standarwert /var/lib/waagent|statischen|Der Ordner, in dem X509 Zertifikate und private Schlüssel gespeichert sind. |
+|TLS1_2_CipherList| Zeichenfolge| statischen|Wenn auf eine nicht leere Zeichenfolge festgelegt. Überschreibt die unterstützte Verschlüsselungsliste für TLS 1.2 und niedriger. Weitere Informationen zum Abrufen der unterstützten Verschlüsselungsliste und zum Listenformatbeispiel für eine starke Verschlüsselungsliste für TLS 1.2 finden Sie in der Dokumentation zu „openssl-ciphers“: „ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256“ Gilt nur für Linux. |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Admin-Clientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Admin-Clientzertifikate in der Liste befinden. |
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Administratorclientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Kommas getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Administratorclientzertifikate in der Liste befinden. |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
 
@@ -800,7 +806,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clientzertifikate in der Liste befinden.|
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Kommas getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clientzertifikate in der Liste befinden.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 
@@ -812,7 +818,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clustervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clusterzertifikate in der Liste befinden.|
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clustervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Kommas getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clusterzertifikate in der Liste befinden.|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 
@@ -824,7 +830,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Servervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Serverzertifikate in der Liste befinden.|
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Servervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Kommas getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Serverzertifikate in der Liste befinden.|
 
 ## <a name="setup"></a>Einrichten
 

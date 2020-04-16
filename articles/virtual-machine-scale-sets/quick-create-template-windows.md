@@ -1,35 +1,53 @@
 ---
 title: 'Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer Azure-Vorlage'
 description: Es wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage schnell eine Windows-VM-Skalierungsgruppe erstellen, mit der eine Beispiel-App bereitgestellt wird und Regeln für die automatische Skalierung konfiguriert werden.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
-ms.author: cynthn
-ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc,subject-armqs
+ms.date: 03/27/2020
+ms.author: jushiman
+ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270173"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010442"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer Azure-Vorlage
 
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit einer Azure Resource Manager-Vorlage bereit.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="define-a-scale-set-in-a-template"></a>Definieren einer Skalierungsgruppe in einer Vorlage
-Mit Azure Resource Manager-Vorlagen können Sie Gruppen mit verwandten Ressourcen bereitstellen. Vorlagen werden in JSON (JavaScript Object Notation) geschrieben und definieren die gesamte Azure-Infrastrukturumgebung für Ihre Anwendung. In einer einzelnen Vorlage können Sie die VM-Skalierungsgruppe erstellen, Anwendungen installieren und Regeln für die automatische Skalierung konfigurieren. Bei Nutzung von Variablen und Parametern kann diese Vorlage wiederverwendet werden, um vorhandene Skalierungsgruppen zu aktualisieren oder zusätzliche zu erstellen. Sie können Vorlagen über das Azure-Portal, die Azure CLI oder Azure PowerShell oder über CI/CD-Pipelines (Continuous Integration/Continuous Delivery) bereitstellen.
+Keine.
 
-Weitere Informationen zu Vorlagen finden Sie unter [Übersicht über Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Informationen zur JSON-Syntax und zu Eigenschaften finden Sie in der Vorlagenreferenz [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets).
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
 
-Mit einer Vorlage wird die Konfiguration für die einzelnen Ressourcentypen definiert. Der Ressourcentyp einer VM-Skalierungsgruppe ist mit einer individuellen VM vergleichbar. Dies sind die wichtigsten Bestandteile des Ressourcentyps einer VM-Skalierungsgruppe:
+Mit Azure Resource Manager-Vorlagen können Sie Gruppen mit verwandten Ressourcen bereitstellen. In einer einzelnen Vorlage können Sie die VM-Skalierungsgruppe erstellen, Anwendungen installieren und Regeln für die automatische Skalierung konfigurieren. Bei Nutzung von Variablen und Parametern kann diese Vorlage wiederverwendet werden, um vorhandene Skalierungsgruppen zu aktualisieren oder zusätzliche zu erstellen. Sie können Vorlagen über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle, per Azure PowerShell oder über CI/CD-Pipelines (Continuous Integration/Continuous Delivery) bereitstellen.
+
+### <a name="review-the-template"></a>Überprüfen der Vorlage
+
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/).
+
+:::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
+
+Diese Ressourcen sind in den folgenden Vorlagen definiert:
+
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+
+#### <a name="define-a-scale-set"></a>Definieren einer Skalierungsgruppe
+
+Der hervorgehobene Teil ist die Definition der Skalierungsgruppenressource. Für die Erstellung einer Skalierungsgruppe mit einer Vorlage definieren Sie die entsprechenden Ressourcen. Dies sind die wichtigsten Bestandteile des Ressourcentyps einer VM-Skalierungsgruppe:
 
 | Eigenschaft                     | Beschreibung der Eigenschaft                                  | Beispiel für Vorlagenwert                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -44,49 +62,10 @@ Mit einer Vorlage wird die Konfiguration für die einzelnen Ressourcentypen defi
 | osProfile.adminUsername      | Benutzername für die einzelnen VM-Instanzen                        | azureuser                                 |
 | osProfile.adminPassword      | Kennwort für die einzelnen VM-Instanzen                        | P@ssw0rd!                                 |
 
- Im folgenden Beispiel wird die grundlegende Ressourcendefinition der Skalierungsgruppe veranschaulicht. Zu Anpassen einer Skalierungsgruppenvorlage können Sie die VM-Größe oder anfängliche Kapazität ändern oder ein anderes Plattformimage bzw. ein benutzerdefiniertes Image verwenden.
+Zum Anpassen einer Skalierungsgruppenvorlage können Sie die VM-Größe oder die anfängliche Kapazität ändern. Eine weitere Möglichkeit ist die Verwendung einer anderen Plattform oder eines benutzerdefinierten Image.
 
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US",
-  "apiVersion": "2017-12-01",
-  "sku": {
-    "name": "Standard_A1",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-      "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2016-Datacenter",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
-```
+#### <a name="add-a-sample-application"></a>Hinzufügen einer Beispielanwendung
 
- Die Konfiguration der virtuellen Netzwerkschnittstellenkarte (NIC) ist nicht angegeben, um das Beispiel möglichst kurz zu halten. Auch zusätzliche Komponenten, z.B. ein Lastenausgleichsmodul, werden nicht angezeigt. Eine vollständige Skalierungsgruppenvorlage ist [am Ende dieses Artikels](#deploy-the-template) angegeben.
-
-
-## <a name="add-a-sample-application"></a>Hinzufügen einer Beispielanwendung
 Installieren Sie eine einfache Webanwendung, um Ihre Skalierungsgruppe zu testen. Beim Bereitstellen einer Skalierungsgruppe können über VM-Erweiterungen Aufgaben für die Konfiguration und Automatisierung nach der Bereitstellung, z.B. das Installieren einer App, bereitgestellt werden. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden. Fügen Sie dem obigen Ressourcenbeispiel den Abschnitt *extensionProfile* hinzu, um eine Erweiterung auf Ihre Skalierungsgruppe anzuwenden. Im Erweiterungsprofil werden normalerweise die folgenden Eigenschaften definiert:
 
 - Erweiterungstyp
@@ -95,44 +74,17 @@ Installieren Sie eine einfache Webanwendung, um Ihre Skalierungsgruppe zu testen
 - Speicherort der Konfiguration bzw. der Installationsskripts
 - Auf den VM-Instanzen auszuführende Befehle
 
-In der Beispielvorlage für eine [ASP.NET-Anwendung unter Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) wird die PowerShell DSC-Erweiterung verwendet, um eine ASP.NET MVC-App zu installieren, die in IIS ausgeführt wird. 
+Von der Vorlage wird die PowerShell DSC-Erweiterung verwendet, um eine ASP.NET MVC-App zu installieren, die in IIS ausgeführt wird.
 
 Ein Installationsskript wird wie unter *url* definiert von GitHub heruntergeladen. Anschließend führt die Erweiterung *InstallIIS* über das Skript *IISInstall.ps1* aus, wie in *function* und *Script* definiert. Die eigentliche ASP.NET-App wird als Web Deploy-Paket bereitgestellt, das auch von GitHub heruntergeladen wird, wie in *WebDeployPackagePath* definiert:
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Powershell.DSC",
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.9",
-        "autoUpgradeMinorVersion": true,
-        "forceUpdateTag": "1.0",
-        "settings": {
-          "configuration": {
-            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
-            "script": "IISInstall.ps1",
-            "function": "InstallIIS"
-          },
-          "configurationArguments": {
-            "nodeName": "localhost",
-            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
-Sie können die Vorlage für die [ASP.NET MVC-Anwendung unter Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) mit der folgenden Schaltfläche **In Azure bereitstellen** bereitstellen. Diese Schaltfläche bewirkt Folgendes: Das Azure-Portal wird geöffnet, die vollständige Vorlage wird geladen, und es werden einige Parameter abgefragt, z.B. der Name der Skalierungsgruppe, die Instanzanzahl und die Administratoranmeldeinformationen.
+
+Sie können die Vorlage bereitstellen, indem Sie die Schaltfläche **In Azure bereitstellen** auswählen. Diese Schaltfläche bewirkt Folgendes: Das Azure-Portal wird geöffnet, die vollständige Vorlage wird geladen, und es werden einige Parameter abgefragt, z.B. der Name der Skalierungsgruppe, die Instanzanzahl und die Administratoranmeldeinformationen.
 
 [![In Azure bereitstellen](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Sie können auch Azure PowerShell verwenden, um die ASP.NET-Anwendung wie folgt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) unter Windows zu installieren:
+Sie können eine Resource Manager-Vorlage auch mithilfe von Azure PowerShell bereitstellen:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -152,8 +104,8 @@ Update-AzVmss `
 
 Folgen Sie den Aufforderungen zum Angeben des Namens einer Skalierungsgruppe und der Administratoranmeldeinformationen für die VM-Instanzen. Es kann 10 bis 15 Minuten dauern, bis die Skalierungsgruppe erstellt und die Erweiterung zum Konfigurieren der App angewendet wurde.
 
+## <a name="test-the-deployment"></a>Testen der Bereitstellung
 
-## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
 Greifen Sie über einen Webbrowser auf die Beispielwebanwendung zu, um Ihre Skalierungsgruppe in Aktion zu sehen. Rufen Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab:
 
 ```azurepowershell-interactive
@@ -164,16 +116,16 @@ Geben Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls in einem Webbro
 
 ![Ausführen der IIS-Website](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Mit [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) können Sie die Ressourcengruppe und die Skalierungsgruppe entfernen, sofern diese nicht mehr benötigt werden. Der Parameter `-Force` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten. Der Parameter `-AsJob` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 In dieser Schnellstartanleitung haben Sie mit einer Azure-Vorlage eine Windows-Skalierungsgruppe erstellt und die PowerShell DSC-Erweiterung verwendet, um eine einfache ASP.NET-App auf den VM-Instanzen zu installieren. Im nächsten Tutorial erfahren Sie mehr über die Erstellung und Verwaltung von Azure-VM-Skalierungsgruppen.
 
 > [!div class="nextstepaction"]

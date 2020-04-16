@@ -1,19 +1,19 @@
 ---
-title: Hinzufügen und Verwalten von SSL-Zertifikaten
+title: Hinzufügen und Verwalten von TLS-/SSL-Zertifikaten
 description: Erstellen Sie ein kostenloses Zertifikat, importieren Sie ein App Service-Zertifikat, importieren Sie ein Key Vault-Zertifikat, oder erwerben Sie ein App Service-Zertifikat in Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223917"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810589"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
 Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Artikel erfahren Sie, wie Sie ein privates oder öffentliches Zertifikat in App Service erstellen, hochladen oder importieren. 
 
@@ -47,7 +47,7 @@ Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-certificat
 * Enthält einen privaten Schlüssel mit mindestens 2048 Bit
 * Enthält alle Zwischenzertifikate in der Zertifikatkette
 
-Zum Schützen einer benutzerdefinierten Domäne in einer SSL-Bindung gelten für das Zertifikat zusätzliche Anforderungen:
+Zum Schützen einer benutzerdefinierten Domäne in einer TLS-Bindung gelten für das Zertifikat zusätzliche Anforderungen:
 
 * Beinhaltet [erweiterte Schlüsselverwendung](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) für die Serverauthentifizierung (OID = 1.3.6.1.5.5.7.3.1).
 * Von einer vertrauenswürdigen Zertifizierungsstelle signiert
@@ -59,7 +59,7 @@ Zum Schützen einer benutzerdefinierten Domäne in einer SSL-Bindung gelten für
 
 ## <a name="create-a-free-certificate-preview"></a>Erstellen eines kostenlosen Zertifikats (Vorschau)
 
-Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lösung zum Schützen Ihres benutzerdefinierten DNS-Namens in App Service. Es handelt sich dabei um ein voll funktionsfähiges SSL-Zertifikat, das von App Service verwaltet und automatisch verlängert wird. Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
+Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lösung zum Schützen Ihres benutzerdefinierten DNS-Namens in App Service. Es handelt sich dabei um ein voll funktionsfähiges TLS-/SSL-Zertifikat, das von App Service verwaltet und automatisch verlängert wird. Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
 
 - Platzhalterzertifikate werden nicht unterstützt.
 - Es unterstützt keine „nackten“ Domänen.
@@ -237,7 +237,7 @@ Erstellen Sie eine Datei für das zusammengeführte Zertifikat mit dem Namen _me
 
 ### <a name="export-certificate-to-pfx"></a>Exportieren des Zertifikats als PFX-Datei
 
-Exportieren Sie Ihr benutzerdefiniertes SSL-Zertifikat mit dem privaten Schlüssel, mit dem Ihre Zertifikatanforderung generiert wurde.
+Exportieren Sie Ihr zusammengeführtes TLS-/SSL-Zertifikat mit dem privaten Schlüssel, mit dem Ihre Zertifikatanforderung generiert wurde.
 
 Wenn Sie die Zertifikatanforderung mittels OpenSSL generiert haben, haben Sie eine Datei des privaten Schlüssels erstellt. Führen Sie folgenden Befehl aus, um Ihr Zertifikat nach PFX zu exportieren. Ersetzen Sie die Platzhalter _&lt;private-key-file>_ und _&lt;merged-certificate-file>_ mit den Pfaden zu Ihrem privaten Schlüssel und Ihrer zusammengeführten Zertifikatdatei.
 
@@ -245,7 +245,7 @@ Wenn Sie die Zertifikatanforderung mittels OpenSSL generiert haben, haben Sie ei
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Definieren Sie ein Kennwort für den Export, wenn Sie dazu aufgefordert werden. Dieses Kennwort verwenden Sie, wenn Sie Ihr SSL-Zertifikat zu einem späteren Zeitpunkt in App Service hochladen.
+Definieren Sie ein Kennwort für den Export, wenn Sie dazu aufgefordert werden. Dieses Kennwort verwenden Sie, wenn Sie Ihr TLS-/SSL-Zertifikat zu einem späteren Zeitpunkt in App Service hochladen.
 
 Wenn Sie IIS oder _Certreq.exe_ zum Generieren Ihrer Zertifikatanforderung verwendet haben, installieren Sie das Zertifikat auf dem lokalen Computer, und klicken Sie anschließend auf [Zertifikat nach PFX exportieren](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -363,16 +363,16 @@ Nun können Sie das App Service-Zertifikat löschen. Wählen Sie im linken Navig
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-* [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung](configure-ssl-bindings.md)
+* [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service](configure-ssl-bindings.md)
 * [Erzwingen von HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode](configure-ssl-certificate-in-code.md)
+* [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md)
 * [Häufig gestellte Fragen: App Service-Zertifikate](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

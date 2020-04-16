@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12a83c6381d3f068eecc2dda4838b981a8b59ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135779"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520079"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Netvision Compas
 
@@ -69,7 +69,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Netvision Compas](#configure-netvision-compas-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Netvision Compas-Testbenutzers](#create-netvision-compas-test-user)** , um eine Entsprechung von B. Simon in Netvision Compas zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Konfigurieren eines Netvision Compas-Testbenutzers](#configure-netvision-compas-test-user)** , um eine Entsprechung von B. Simon in Netvision Compas zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -95,13 +95,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Netvision Compas-Client](mailto:contact@net.vision). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um die Metadatendatei herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Kopieren Sie im Abschnitt **Netvision Compas einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -135,17 +133,58 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-netvision-compas-sso"></a>Konfigurieren des einmaligen Anmeldens für Netvision Compas
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Netvision Compas** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Netvision Compas](mailto:contact@net.vision) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+In diesem Abschnitt aktivieren Sie SAML-SSO in **Netvision Compas**.
+1. Melden Sie sich mit einem Administratorkonto bei **Netvision Compas** an, und öffnen Sie den Verwaltungsbereich.
 
-### <a name="create-netvision-compas-test-user"></a>Erstellen eines Netvision Compas-Testbenutzers
+    ![Verwaltungsbereich](media/netvision-compas-tutorial/admin.png)
 
-In diesem Abschnitt erstellen Sie in Netvision Compas einen Benutzer namens B. Simon. Wenden Sie sich an das [Netvision Compas-Supportteam](mailto:contact@net.vision), um die Benutzer auf der Netvision Compas-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+1. Navigieren Sie zum Bereich **System**, und wählen Sie **Identity Providers** (Identitätsanbieter) aus.
+
+    ![Admin-IDPs](media/netvision-compas-tutorial/admin-idps.png)
+
+1. Wählen Sie die Aktion **Add** (Hinzufügen) aus, um Azure AD als neuen IDP zu registrieren.
+
+    ![Hinzufügen des IDP](media/netvision-compas-tutorial/idps-add.png)
+
+1. Wählen Sie für **Provider type** (Anbietertyp) die Option **SAML** aus.
+1. Geben Sie aussagekräftige Werte für die Felder **Display name** (Anzeigename) und **Description** (Beschreibung) ein.
+1. Weisen Sie dem IDP **Netvision Compas**-Benutzer zu, indem Sie Benutzer in der Liste **Available users** (Verfügbare Benutzer) und anschließend die Schaltfläche **Add selected** (Ausgewählte hinzufügen) auswählen. Benutzer können dem IDP auch mithilfe des Bereitstellungsverfahrens zugewiesen werden.
+1. Klicken Sie für die SAML-Option für **Metadaten** auf die Schaltfläche **Choose File** (Datei auswählen), und wählen Sie die Metadatendatei aus, die Sie zuvor auf dem Computer gespeichert haben.
+1. Klicken Sie auf **Speichern**.
+
+    ![Bearbeiten des IDP](media/netvision-compas-tutorial/idp-edit.png)
+
+
+### <a name="configure-netvision-compas-test-user"></a>Konfigurieren eines Netvision Compas-Testbenutzers
+
+In diesem Abschnitt konfigurieren Sie einen vorhandenen Benutzer in **Netvision Compas**, um Azure AD für einmaliges Anmelden zu verwenden.
+1. Führen Sie das Verfahren für die Benutzerbereitstellung von **Netvision Compas** wie von Ihrem Unternehmen vorgegeben aus, oder bearbeiten Sie ein vorhandenes Benutzerkonto.
+1. Stellen Sie beim Definieren des Benutzerprofils sicher, dass die Benutzeradresse unter **Email (Personal)** (E-Mail (persönlich)) mit dem Azure AD-Benutzernamen übereinstimmt: username@companydomain.extension. Beispiel: `B.Simon@contoso.com`.
+
+    ![Benutzer bearbeiten](media/netvision-compas-tutorial/user-config.png)
+
+Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anmelden.
+
+### <a name="using-the-access-panel-idp-initiated"></a>Verwenden des Zugriffsbereichs (IDP-initiiert)
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Netvision Compas“ klicken, sollten Sie automatisch bei der Netvision Compas-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Direktzugriff auf Netvision Compas (SP-initiiert)
+
+1. Rufen Sie die **Netvision Compas**-URL auf. Beispiel: `https://tenant.compas.cloud`.
+1. Geben Sie den **Netvision Compas**-Benutzernamen ein, und wählen Sie **Next** (Weiter) aus.
+
+    ![Anmelden des Benutzers](media/netvision-compas-tutorial/login-user.png)
+
+1. **(optional)** Sind dem Benutzer mehrere IDPs in **Netvision Compas** zugewiesen, wird eine Liste der verfügbaren IDPs angezeigt. Wählen Sie den Azure AD-IDP aus, den Sie zuvor in **Netvision Compas** konfiguriert haben.
+
+    ![Auswählen der Anmeldung](media/netvision-compas-tutorial/login-choose.png)
+
+1. Sie werden zu Azure AD umgeleitet, um die Authentifizierung durchzuführen. Sobald Sie erfolgreich authentifiziert wurden, sollten Sie automatisch bei der **Netvision Compas**-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

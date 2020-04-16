@@ -1,18 +1,18 @@
 ---
 title: 'Remotearbeit mit P2S: Azure VPN Gateway'
-description: Auf dieser Seite wird beschrieben, wie Sie Azure Bastion nutzen können, um Remotearbeit aufgrund der COVID-19-Pandemie zu ermöglichen.
+description: Auf dieser Seite wird beschrieben, wie Sie VPN Gateway nutzen können, um Remotearbeit aufgrund der COVID-19-Pandemie zu ermöglichen.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: b751817467bd263e8b7c64ccc95ec82ef1579836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337117"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886584"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Remotearbeit mit Azure VPN Gateway Point-to-Site
 
@@ -20,11 +20,11 @@ ms.locfileid: "80337117"
 >In diesem Artikel wird beschrieben, wie Sie Azure VPN Gateway, Azure, das Microsoft-Netzwerk und das Azure-Partnerökosystem nutzen können, um remote zu arbeiten und Netzwerkprobleme zu beheben, die Sie aufgrund der COVID-19-Krise bewältigen müssen.
 >
 
-In diesem Artikel werden die Optionen beschrieben, die Organisationen während der COVID-19-Epidemie zur Verfügung stehen, um Remotezugriff für Ihre Benutzer einzurichten oder um ihre vorhandenen Lösungen mit zusätzlicher Kapazität zu ergänzen.
+In diesem Artikel werden die Optionen beschrieben, die Organisationen während der COVID-19-Epidemie zur Verfügung stehen, um den Remotezugriff für ihre Benutzer einzurichten oder um ihre vorhandenen Lösungen mit zusätzlicher Kapazität zu ergänzen.
 
 Die Azure Point-to-Site-Lösung ist cloudbasiert und kann in kurzer Zeit bereitgestellt werden, um den höheren Bedarf von Benutzern zu unterstützen, die zu Hause arbeiten. Sie kann einfach zentral hochskaliert sowie ebenso einfach und schnell deaktiviert werden, wenn die größere Kapazität nicht mehr benötigt wird.
 
-## <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
+## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>Informationen zu Point-to-Site-VPN
 
 Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs oder lokalen Rechenzentren herstellen möchten. In diesem Artikel wird basierend auf verschiedenen Szenarien beschrieben, wie Sie es Benutzern ermöglichen können, remote zu arbeiten.
 
@@ -32,7 +32,7 @@ In der folgenden Tabelle sind die Clientbetriebssysteme und Authentifizierungsop
 
 ![point-to-site](./media/working-remotely-support/ostable.png "OS")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a>Szenario 1 – Benutzer benötigen nur Zugriff auf Ressourcen in Azure
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Szenario 1 – Benutzer benötigen nur Zugriff auf Ressourcen in Azure
 
 In diesem Szenario müssen die Remotebenutzer nur auf Ressourcen in Azure zugreifen können.
 
@@ -42,15 +42,16 @@ Um Benutzern die sichere Verbindung mit Azure-Ressourcen zu ermöglichen, sind d
 
 1. Erstellen eines Gateways für das virtuelle Netzwerk (sofern nicht vorhanden)
 2. Konfigurieren einer Point-to-Site-VPN-Verbindung im Gateway
-    3. [Folgen Sie für die Zertifikatauthentifizierung diesem Link](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw).
-    2.  [Folgen Sie für OpenVPN diesem Link](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn).
-    3.  [Folgen Sie für die Azure AD-Authentifizierung diesem Link](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant).
-    4.  [Informationen zur Problembehandlung bei Point-to-Site-Verbindungen finden Sie unter diesem Link](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems).
+
+   * Folgen Sie für die Zertifikatauthentifizierung [diesem Link](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw).
+   * Folgen Sie für OpenVPN [diesem Link](vpn-gateway-howto-openvpn.md).
+   * Folgen Sie für die Azure AD-Authentifizierung [diesem Link](openvpn-azure-ad-tenant.md).
+   * Informationen zur Problembehandlung bei Point-to-Site-Verbindungen finden Sie unter [diesem Link](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
 3. Herunterladen und Verteilen der VPN-Clientkonfiguration
 4. Verteilen der Zertifikate (bei Auswahl der Zertifikatauthentifizierung) an die Clients
 5. Herstellen der Azure-VPN-Verbindung
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a>Szenario 2 – Benutzer benötigen Zugriff auf Ressourcen in Azure und/oder lokale Ressourcen
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>Szenario 2 – Benutzer benötigen Zugriff auf Ressourcen in Azure und/oder lokale Ressourcen
 
 In diesem Szenario müssen die Remotebenutzer auf Ressourcen in Azure und in lokalen Rechenzentren zugreifen können.
 
@@ -59,12 +60,12 @@ In diesem Szenario müssen die Remotebenutzer auf Ressourcen in Azure und in lok
 Um Benutzern die sichere Verbindung mit Azure-Ressourcen zu ermöglichen, sind die folgenden übergeordneten Schritte erforderlich:
 
 1. Erstellen eines Gateways für das virtuelle Netzwerk (sofern nicht vorhanden)
-2. Konfigurieren einer Point-to-Site-VPN-Verbindung im Gateway (siehe Szenario 1 oben)
-3. Konfigurieren eines Site-zu-Site-Tunnels im Azure Virtual Network Gateway mit aktiviertem BGP
-4. Konfigurieren eines lokalen Geräts für die Verbindung mit dem Azure Virtual Network Gateway
+2. Konfigurieren einer Point-to-Site-VPN-Verbindung im Gateway (siehe [Szenario 1](#scenario1))
+3. Konfigurieren eines Site-to-Site-Tunnels im Azure-Gateway für virtuelle Netzwerke mit aktiviertem BGP
+4. Konfigurieren eines lokalen Geräts für die Verbindung mit dem Azure-Gateway für virtuelle Netzwerke
 5. Herunterladen des Point-to-Site-Profils vom Azure-Portal und Verteilen an Clients
 
-[Informationen zum Einrichten eines Site-to-Site-VPN-Tunnels finden Sie unter diesem Link.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+Informationen zum Einrichten eines Site-to-Site-VPN-Tunnels finden Sie unter [diesem Link](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Häufig gestellte Fragen zur nativen Azure-Zertifikatauthentifizierung
 

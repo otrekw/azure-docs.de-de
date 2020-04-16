@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481584"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476259"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 
@@ -76,8 +76,6 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
 
     RDP sollte nur aktiviert werden, wenn es benötigt wird, und es sollte auf eine Reihe autorisierter IP-Adressbereiche beschränkt werden. Diese Konfiguration trägt zur Sicherheit der VM bei und reduziert potenzielle Angriffsflächen. Alternativ können Sie einen Azure Bastion-Host erstellen und verwenden, der den Zugriff auf das Azure-Portal nur über TLS zulässt. Im nächsten Schritt dieses Tutorials wird ein Azure Bastion-Host verwendet, um eine sichere Verbindung mit dem virtuellen Computer herzustellen.
 
-    Deaktivieren Sie vorerst direkte RDP-Verbindungen mit dem virtuellen Computer.
-
     Wählen Sie unter **Öffentliche Eingangsports** die Option *Keine* aus.
 
 1. Klicken Sie dann auf **Weiter: Datenträger**.
@@ -96,22 +94,23 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
 
     ![Auswählen von „Subnetzkonfiguration verwalten“ im Azure-Portal](./media/join-windows-vm/manage-subnet.png)
 
-1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **Adressraum** aus. Das virtuelle Netzwerk wird mit einem einzelnen Adressraum (*10.0.1.0/24*) erstellt. Dieser wird vom Standardsubnetz verwendet.
+1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **Adressraum** aus. Das virtuelle Netzwerk wird mit einem einzelnen Adressraum (*10.0.2.0/24*) erstellt. Dieser wird vom Standardsubnetz verwendet. Möglicherweise sind auch andere Subnetze verfügbar, z. B. für *Workloads* oder Azure Bastion.
 
     Fügen Sie dem virtuellen Netzwerk einen zusätzlichen IP-Adressbereich hinzu. Die Größe dieses Adressbereichs und der tatsächlich zu verwendende IP-Adressbereich hängen von anderen, bereits bereitgestellten Netzwerkressourcen ab. Der IP-Adressbereich darf sich nicht mit vorhandenen Adressbereichen in Ihrer Azure-Umgebung oder in Ihrer lokalen Umgebung überschneiden. Wählen Sie die Größe des IP-Adressbereichs so, dass sie für die Anzahl virtueller Computer ausreicht, die voraussichtlich im Subnetz bereitgestellt werden.
 
-    Im folgenden Beispiel wird ein zusätzlicher IP-Adressbereich (*10.0.2.0/24*) hinzugefügt. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
+    Im folgenden Beispiel wird ein zusätzlicher IP-Adressbereich (*10.0.5.0/24*) hinzugefügt. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
 
-    ![Hinzufügen eines zusätzlichen IP-Adressbereichs für das virtuelle Netzwerk im Azure-Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![Hinzufügen eines zusätzlichen IP-Adressbereichs für das virtuelle Netzwerk im Azure-Portal](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. Wählen Sie als Nächstes im Menü auf der linken Seite des Fensters für das virtuelle Netzwerk die Option **Subnetze** und anschließend **+ Subnetz** aus, um ein Subnetz hinzuzufügen.
 
-1. Wählen Sie **+ Subnetz** aus, und geben Sie einen Namen für das Subnetz ein, z. B. *management*. Geben Sie einen **Adressbereich (CIDR-Block)** an, z. B. *10.0.2.0/24*. Stellen Sie sicher, dass sich dieser Adressbereich nicht mit einem vorhandenen Azure- oder lokalen Adressbereich überschneidet. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **OK**.
+1. Wählen Sie **+ Subnetz** aus, und geben Sie einen Namen für das Subnetz ein, z. B. *management*. Geben Sie einen **Adressbereich (CIDR-Block)** an, z. B. *10.0.5.0/24*. Stellen Sie sicher, dass sich dieser Adressbereich nicht mit einem vorhandenen Azure- oder lokalen Adressbereich überschneidet. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **OK**.
 
     ![Erstellen einer Subnetzkonfiguration im Azure-Portal](./media/join-windows-vm/create-subnet.png)
 
 1. Das Erstellen des Subnetzes dauert einige Sekunden. Klicken Sie nach dem Erstellen auf das *X*, um das Subnetzfenster zu schließen.
 1. Wählen Sie für die VM-Erstellung im Bereich **Netzwerk** im Dropdownmenü das erstellte Subnetz aus (hier also *management*). Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht im gleichen Subnetz bereitstellen wie Ihre verwaltete Azure AD DS-Domäne.
+1. Wählen Sie unter **Öffentliche IP-Adresse** im Dropdownmenü *Keine* aus, da Sie Azure Bastion zum Herstellen einer Verbindung mit „management“ verwenden keine öffentliche IP-Adresse zugewiesen werden muss.
 1. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Verwaltung**.
 1. Legen Sie **Startdiagnose** auf *Aus* fest. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Überprüfen + erstellen**.
 1. Überprüfen Sie die VM-Einstellungen, und klicken Sie dann auf **Erstellen**.

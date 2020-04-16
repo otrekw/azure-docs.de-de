@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209602"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985676"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>Schnellstart: Abfragen einer SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal
 
@@ -175,7 +175,7 @@ Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 
 * Der Abfrage-Editor verwendet die Ports 443 und 1443 zum Kommunizieren. Vergewissern Sie sich, dass ausgehender HTTPS-Datenverkehr an diesen Ports aktiviert ist. Sie müssen auch Ihre ausgehende IP-Adresse den Firewallzulassungsregeln des Servers hinzufügen, um auf Ihre Datenbanken und Data Warehouses zugreifen zu können.
 
-* Der Abfrage-Editor kann mit Private Link verwendet werden, ohne dass die Client-IP-Adresse in der Firewall von SQL-Datenbank hinzugefügt werden muss.
+* Bei einer Private Link-Verbindung kann der Abfrage-Editor verwendet werden, ohne dass die Client-IP-Adresse in der Firewall von SQL-Datenbank hinzugefügt werden muss.
 
 * Durch Drücken von **F5** wird die Seite des Abfrage-Editors aktualisiert, und aktuell bearbeitete Abfragen gehen verloren.
 

@@ -3,12 +3,12 @@ title: Sicherheitsfeatures für den Schutz von Cloudworkloads
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156071"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668735"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -34,7 +34,7 @@ Vorläufiges Löschen für VMs schützt die Sicherungen Ihrer VMs vor unbeabsich
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
-Vorläufiges Löschen wird derzeit in unterstützt in USA, Westen-Mitte; Asien, Osten; Kanada, Mitte; Kanada, Osten; Frankreich, Mitte; Frankreich, Süden; Südkorea, Mitte; Südkorea, Süden; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Australien, Osten; Australien, Südosten; Europa, Norden; USA, Westen; USA, Westen 2; USA, Mitte; Asien, Südosten; USA, Norden-Mitte, USA, Süden-Mitte; Japan, Osten; Japan, Westen; Indien, Süden; Indien, Mitte; Indien, Westen; USA, Osten 2; Schweiz, Norden; Schweiz, Westen und allen nationalen Regionen.
+Vorläufiges Löschen wird derzeit unterstützt in „USA, Westen-Mitte“, „Asien, Osten“, „Kanada, Mitte“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Südkorea, Mitte“, „Südkorea, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Australien, Osten“, „Australien, Südosten“, „Europa, Norden“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Asien, Südosten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Japan, Osten“, „Japan, Westen“, „Indien, Süden“, „Indien, Mitte“, „Indien, Westen“, „USA, Osten 2“, „Schweiz, Norden“, „Schweiz, Westen“, „Norwegen, Westen“, „Norwegen, Osten“ und allen nationalen Regionen.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Vorläufiges Löschen für VMs über das Azure-Portal
 

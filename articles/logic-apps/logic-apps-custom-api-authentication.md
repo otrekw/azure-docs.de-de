@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191404"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656234"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Erhöhen der Sicherheit von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -21,12 +21,12 @@ Um die Sicherheit für Aufrufe Ihrer APIs zu erhöhen, können Sie die Azure Act
 
 Sie können die Sicherheit für Aufrufe Ihrer benutzerdefinierten API auf folgende Arten erhöhen:
 
-* [Keine Änderungen am Code](#no-code): Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht bereitstellen müssen.
+* [Keine Änderungen am Code:](#no-code) Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht erneut bereitstellen müssen.
 
   > [!NOTE]
   > Bei der Azure AD-Authentifizierung, die Sie im Azure-Portal aktivieren, wird standardmäßig keine fein abgestufte Autorisierung durchgeführt. Beispielsweise sperrt diese Authentifizierung Ihre API nur für einen bestimmten Mandanten und nicht für einen bestimmten Benutzer oder eine App. 
 
-* [Aktualisieren Ihres API-Codes](#update-code): Schützen Sie Ihre API, indem Sie die [Zertifikatsauthentifizierung](#certificate), [Standardauthentifizierung](#basic), oder [Azure AD-Authentifizierung](#azure-ad-code) über Code erzwingen.
+* [Aktualisieren Ihres API-Codes:](#update-code) Schützen Sie Ihre API, indem Sie die [Zertifikatsauthentifizierung](#certificate), [Standardauthentifizierung](#basic) oder [Azure AD-Authentifizierung](#azure-ad-code) über Code erzwingen.
 
 <a name="no-code"></a>
 
@@ -250,7 +250,7 @@ Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | -------- | -------- | ----------- |
-| `type` | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. |
+| `type` | Ja | Der Authentifizierungstyp. Für TLS/SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. |
 | `password` | Nein | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) |
 | `pfx` | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) |
 ||||

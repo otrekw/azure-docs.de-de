@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917032"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549066"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -32,12 +32,12 @@ AKS generiert und verwendet die folgenden Zertifikate, Zertifizierungsstellen un
 * Jedes kubelet erstellt außerdem eine Zertifikatsignierungsanforderung (Certificate Signing Request, CSR), die von der Clusterzertifizierungsstelle signiert wird, für die Kommunikation vom kubelet zum API-Server.
 * Der etcd-Schlüsselwertspeicher verfügt über ein Zertifikat, das von der Clusterzertifizierungsstelle für die Kommunikation von etcd zum API-Server signiert wurde.
 * Der etcd-Schlüsselwertspeicher erstellt eine Zertifizierungsstelle, die Zertifikate signiert, um die Datenreplikation zwischen etcd-Replikaten im AKS-Cluster zu authentifizieren und zu autorisieren.
-* Der API-Aggregator verwendet die Clusterzertifizierungsstelle zum Ausstellen von Zertifikaten für die Kommunikation mit anderen APIs, z. B. Open Service Broker für Azure. Der API-Aggregator kann auch über eine eigene Zertifizierungsstelle zum Ausstellen dieser Zertifikate verfügen, aber zurzeit verwendet er die Clusterzertifizierungsstelle.
+* Der API-Aggregator verwendet die Clusterzertifizierungsstelle zum Ausstellen von Zertifikaten für die Kommunikation mit anderen APIs. Der API-Aggregator kann auch über eine eigene Zertifizierungsstelle zum Ausstellen dieser Zertifikate verfügen, aber zurzeit verwendet er die Clusterzertifizierungsstelle.
 * Jeder Knoten verwendet ein Dienstkontotoken (SA-Token), das von der Clusterzertifizierungsstelle signiert wurde.
 * Der `kubectl`-Client verfügt über ein Zertifikat für die Kommunikation mit dem AKS-Cluster.
 
 > [!NOTE]
-> AKS-Cluster, die vor März 2019 erstellt wurden, besitzen Zertifikate, die nach zwei Jahren ablaufen. Alle Cluster, die nach März 2019 erstellt wurden, oder alle Cluster, deren Zertifikate rotiert werden, besitzen Zertifikate, die nach 30 Jahren ablaufen. Um zu überprüfen, wann Ihr Cluster erstellt wurde, verwenden Sie `kubectl get nodes`, um das *Alter* Ihrer Knotenpools anzuzeigen.
+> AKS-Cluster, die vor März 2019 erstellt wurden, besitzen Zertifikate, die nach zwei Jahren ablaufen. Cluster, die nach März 2019 erstellt wurden, sowie Cluster mit Zertifikatrotation besitzen Zertifikate der Clusterzertifizierungsstelle, die nach 30 Jahren ablaufen. Alle anderen Zertifikate laufen nach zwei Jahren ab. Um zu überprüfen, wann Ihr Cluster erstellt wurde, verwenden Sie `kubectl get nodes`, um das *Alter* Ihrer Knotenpools anzuzeigen.
 > 
 > Darüber hinaus können Sie das Ablaufdatum des Zertifikats Ihres Clusters überprüfen. Beispielsweise zeigt der folgende Befehl die Zertifikatdetails für den Cluster *myAKSCluster* an.
 > ```console
@@ -52,13 +52,13 @@ AKS generiert und verwendet die folgenden Zertifikate, Zertifizierungsstellen un
 
 Verwenden Sie [az aks get-credentials][az-aks-get-credentials], um sich bei Ihrem AKS-Cluster anzumelden. Mit diesem Befehl wird auch das `kubectl`-Clientzertifikat auf Ihren lokalen Computer heruntergeladen und konfiguriert.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 Verwenden Sie `az aks rotate-certs`, um alle Zertifikate, Zertifizierungsstellen und SAs auf Ihrem Cluster zu rotieren.
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 Aktualisieren Sie das von `kubectl` verwendete Zertifikat, indem Sie `az aks get-credentials` ausführen.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

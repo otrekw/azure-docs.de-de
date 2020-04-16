@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824941"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519703"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -33,8 +33,11 @@ Bestimmte Bedingungen müssen sein erfüllt, damit ein Benutzer die von einer An
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Anfordern nicht autorisierter Berechtigungen
 * **AADSTS90093:** &lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
+* **AADSTS90094:** &lt;Anzeigename der Client-App&gt; benötigt eine Berechtigung zum Zugriff auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann. Bitten Sie einen Administrator, dieser App Berechtigungen zu erteilen, bevor Sie sie verwenden können.
 
 Dieser Fehler tritt auf, wenn ein Benutzer, der kein Unternehmensadministrator ist, versucht, eine Anwendung zu verwenden, die Berechtigungen anfordert, die nur ein Administrator erteilen kann. Dieser Fehler kann von einem Administrator behoben werden, indem der Zugriff auf die Anwendung im Auftrag der Organisation gewährt wird.
+
+Dieser Fehler kann auch auftreten, wenn ein Benutzer daran gehindert wird, einer Anwendung zuzustimmen, weil Microsoft erkennt, dass die Berechtigungsanforderung riskant ist. In diesem Fall wird auch ein Überwachungsereignis der Kategorie „ApplicationManagement“ mit dem Aktivitätstyp „Zustimmung zu Anwendung“ und dem Statusgrund „Riskante Anwendung erkannt“ protokolliert.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Richtlinien verhindern das Erteilen von Berechtigungen
 * **AADSTS90093:** Ein Administrator von &lt;Anzeigename_des_Mandanten&gt; hat eine Richtlinie festgelegt, die Sie daran hindert, &lt;Name der App&gt; die angeforderten Berechtigungen zu erteilen. Wenden Sie sich an einen Administrator von &lt;Anzeigename_des_Mandanten&gt;, der Berechtigungen für diese App in Ihrem Auftrag erteilen kann.

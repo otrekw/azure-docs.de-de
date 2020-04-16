@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120712"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804417"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -27,22 +27,22 @@ Frankreich, Mitte; Frankreich, Süden; Deutschland, Nordosten; Deutschland, Mitt
 
 - Während des Verschiebens des Tresors zwischen den Ressourcengruppen sind sowohl die Quell- als auch die Zielgruppen gesperrt und verhindern das Schreiben und Löschen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Nur das Administratorabonnement verfügt über die Berechtigungen, einen Tresor zu verschieben.
-- Beim Verschieben eines Tresors zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status in demselben Mandanten befinden wie das Quellabonnement.
+- Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status in demselben Mandanten wie das Quellabonnement befinden.
 - Sie benötigen die Berechtigung zum Ausführen der Schreibvorgänge in der Zielressourcengruppe.
-- Das Verschieben des Tresors ändert nur die Ressourcengruppe. Der Recovery Services-Tresor befindet sich im selben Speicherort und kann nicht geändert werden.
+- Das Verschieben des Tresors ändert nur die Ressourcengruppe. Der Recovery Services-Tresor befindet sich an demselben Speicherort und kann nicht geändert werden.
 - Sie können nur einen Recovery Services-Tresor pro Region verschieben.
 - Wenn ein virtueller Computer nicht mit dem Recovery Services-Tresor zwischen Abonnements oder in eine neue Ressourcengruppe verschoben wird, bleiben die aktuellen VM-Wiederherstellungspunkte im Tresor intakt, bis sie ablaufen.
 - Unabhängig davon, ob die VM mit dem Tresor verschoben wird oder nicht, können Sie die VM immer anhand des Sicherungsverlaufs im Tresor wiederherstellen.
 - Azure Disk Encryption setzt voraus, dass der Schlüsseltresor und die VMs zur selben Azure-Region und zum selben Azure-Abonnement gehören.
 - Informationen zum Verschieben eines virtuellen Computers mit verwalteten Datenträgern finden Sie in diesem [Artikel](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
-- Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+- Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich in Abhängigkeit davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Für den Tresor definierte Sicherungsrichtlinien werden beibehalten, nachdem der Tresor zwischen Abonnements oder in eine neue Ressourcengruppe verschoben worden ist.
-- Das Verschieben von Tresoren mit Azure Files, Azure-Dateisynchronisierung oder SQL in-IaaS-VMs zwischen Abonnements und Ressourcengruppen wird nicht unterstützt.
+- Das Verschieben von Tresoren mit Azure Files, Azure-Dateisynchronisierung oder SQL-in-IaaS-VMs zwischen Abonnements und Ressourcengruppen wird nicht unterstützt.
 - Wenn Sie einen Tresor mit VM-Sicherungsdaten abonnementübergreifend verschieben, müssen Sie Ihre VMs in dasselbe Abonnement verschieben und denselben Namen (wie im alten Abonnement) für die VM-Zielressourcengruppe verwenden, um weiterhin Sicherungen durchführen zu können.
 
 > [!NOTE]
->
-> Für die Verwendung mit **Azure Site Recovery** konfigurierte Recovery Services-Tresore können noch nicht verschoben werden. Wenn Sie virtuelle (Azure IaaS, Hyper-V, VMware) oder physische Computer für die Notfallwiederherstellung mit **Azure Site Recovery** konfiguriert haben, wird der Verschiebevorgang blockiert. Die Ressourcenverschiebefunktion für den Site Recovery-Dienst ist noch nicht verfügbar.
+> Das Verschieben von Recovery Services-Tresoren für Azure Backup zwischen Azure-Regionen wird nicht unterstützt.<br><br>
+> Wenn Sie virtuelle (Azure IaaS, Hyper-V, VMware) oder physische Computer für die Notfallwiederherstellung mit **Azure Site Recovery** konfiguriert haben, wird der Verschiebevorgang blockiert. Falls Sie Tresore für Azure Site Recovery verschieben möchten, helfen Ihnen die Informationen zum manuellen Verschieben von Tresoren in [diesem Artikel](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) weiter.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Verwenden des Azure-Portals zum Verschieben eines Recovery Services-Tresors in eine andere Ressourcengruppe
 
@@ -53,7 +53,7 @@ So verschieben Sie einen Recovery Services-Tresor und die zugehörigen Ressource
 
    ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Wenn Sie die **Essentials**-Informationen für Ihren Tresor nicht sehen, klicken Sie auf das Dropdownsymbol. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+   Klicken Sie auf das Dropdownsymbol, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
    ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
@@ -61,7 +61,7 @@ So verschieben Sie einen Recovery Services-Tresor und die zugehörigen Ressource
 
    ![Ressourcengruppe ändern](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. Auf dem Blatt **Ressourcen verschieben** für den ausgewählten Tresor sollten die optionalen verwandten Ressourcen durch Aktivieren des Kontrollkästchens verschoben werden, wie in der folgenden Abbildung dargestellt.
+4. Auf dem Blatt **Ressourcen verschieben** für den ausgewählten Tresor sollten die optionalen verwandten Ressourcen durch das Aktivieren des Kontrollkästchens verschoben werden. Dies ist in der folgenden Abbildung dargestellt.
 
    ![Abonnement verschieben](./media/backup-azure-move-recovery-services/move-resource.png)
 
@@ -122,7 +122,7 @@ Um Ressourcen in ein anderes Abonnement zu verschieben, schließen Sie den `-Des
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Nach Ausführen der obigen Cmdlets werden Sie aufgefordert, zu bestätigen, dass Sie die angegebenen Ressourcen verschieben möchten. Geben Sie **J** zur Bestätigung ein. Nach einer erfolgreichen Validierung wird die Ressource verschoben.
+Nach dem Ausführen der obigen Cmdlets werden Sie aufgefordert, zu bestätigen, dass Sie die angegebenen Ressourcen verschieben möchten. Geben Sie **J** zur Bestätigung ein. Nach einer erfolgreichen Validierung wird die Ressource verschoben.
 
 ## <a name="use-cli-to-move-recovery-services-vault"></a>Verwenden der CLI zum Verschieben eines Recovery Services-Tresors
 

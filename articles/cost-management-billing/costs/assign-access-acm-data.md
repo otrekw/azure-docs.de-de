@@ -3,17 +3,17 @@ title: Zuweisen des Zugriffs auf Daten in Azure Cost Management
 description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Azure Cost Management für verschiedene Zugriffsbereiche.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065834"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879104"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -21,9 +21,9 @@ Für Benutzer mit Azure Enterprise Agreements wird die Zugriffsebene auf Daten i
 
 Der von einem Benutzer ausgewählte Bereich wird im gesamten Cost Management verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Bei Verwendung von Bereichen findet keine Mehrfachauswahl durch Benutzer statt. Stattdessen wählen sie einen größeren Bereich aus, auf den untergeordnete Bereiche erweitert werden, und filtern diese dann nach den gewünschten Elementen für die Anzeige. Diese Datenkonsolidierung sollten Sie verstehen, da einige Personen nicht auf einen übergeordneten Bereich zugreifen sollten, in den die untergeordneten Bereiche zusammengefasst werden.
 
-Sehen Sie sich das Video [Zuweisen des Zugriffs mit Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) an, um mehr über die Zuweisung des Zugriffs auf Anzeigekosten und -gebühren mit der rollenbasierten Zugriffssteuerung von Azure zu erfahren.
+Sehen Sie sich das Video zum [Steuern des Zugriffs mit Cost Management](https://www.youtube.com/watch?v=_uQzQ9puPyM) an, um mehr über die Zuweisung des Zugriffs zum Anzeigen von Kosten und Gebühren mit der rollenbasierten Zugriffssteuerung von Azure zu erfahren. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Bereiche in Cost Management
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561285"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673658"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Bereitstellen von OpenShift Container Platform 3.11 in Azure
 
@@ -303,7 +303,7 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 | `masterClusterType` | Geben Sie an, ob der Cluster private oder öffentliche Master-Knoten verwendet. Bei Auswahl von „private“ werden die Master-Knoten nicht über eine öffentliche IP-Adresse im Internet offengelegt. Stattdessen wird die in `masterPrivateClusterIp` angegebene private IP-Adresse verwendet | öffentlich <br> Privat | öffentlich |
 | `masterPrivateClusterIp` | Wenn private Master-Knoten ausgewählt sind, muss eine private IP-Adresse für die Verwendung durch den internen Lastenausgleich für Master-Knoten angegeben werden. Diese statische IP-Adresse muss innerhalb des CIDR-Blocks für das Master-Subnetz liegen und darf nicht bereits verwendet werden. Wenn öffentliche Master-Knoten ausgewählt sind, wird dieser Wert nicht verwendet, er muss jedoch angegeben sein |  | 10.1.0.200 |
 | `routerClusterType` | Geben Sie an, ob der Cluster private oder öffentliche Infra-Knoten verwendet. Bei Auswahl von „private“ werden die Infra-Knoten nicht über eine öffentliche IP-Adresse im Internet offengelegt. Stattdessen wird die in `routerPrivateClusterIp` angegebene private IP-Adresse verwendet | öffentlich <br> Privat | öffentlich |
-| `routerPrivateClusterIp` | Wenn private Infra-Knoten ausgewählt sind, muss eine private IP-Adresse für die Verwendung durch den internen Lastenausgleich für Infra-Knoten angegeben werden. Diese statische IP-Adresse muss innerhalb des CIDR-Blocks für das Master-Subnetz liegen und darf nicht bereits verwendet werden. Wenn öffentliche Infra-Knoten ausgewählt sind, wird dieser Wert nicht verwendet, er muss jedoch angegeben sein |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Wenn private Infra-Knoten ausgewählt sind, muss eine private IP-Adresse für die Verwendung durch den internen Lastenausgleich für Infra-Knoten angegeben werden. Diese statische IP-Adresse muss innerhalb des CIDR-Blocks für das Infrasubnetz liegen und darf nicht bereits verwendet werden. Wenn öffentliche Infra-Knoten ausgewählt sind, wird dieser Wert nicht verwendet, er muss jedoch angegeben sein |  | 10.2.0.200 |
 | `routingCertType` | Verwenden Sie ein benutzerdefiniertes Zertifikat für die Routingdomäne oder das standardmäßige selbstsignierte Zertifikat – befolgen Sie die Anweisungen im Abschnitt **Benutzerdefinierte Zertifikate** | selfsigned <br> custom | selfsigned |
 | `masterCertType` | Verwenden Sie ein benutzerdefiniertes Zertifikat für die Masterdomäne oder das standardmäßige selbstsignierte Zertifikat – befolgen Sie die Anweisungen im Abschnitt **Benutzerdefinierte Zertifikate** | selfsigned <br> custom | selfsigned |
 

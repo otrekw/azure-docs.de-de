@@ -2,34 +2,42 @@
 title: Erstellen einer LUIS-Ressource
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/23/2019
-ms.author: dapine
-ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.author: aahi
+ms.openlocfilehash: ebfe7e80577b163218a7bc501fa4e3e9b206fd62
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465930"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879201"
 ---
-## <a name="create-a-luis-resource"></a>Erstellen einer LUIS-Ressource
+<a name="create-luis-resources"></a>
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+## <a name="create-luis-resources-in-azure-portal"></a>Erstellen von LUIS-Ressourcen im Azure-Portal
+
+1. Unter [diesem Link](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) können Sie mit der Erstellung von LUIS-Ressourcen im Azure-Portal beginnen.
+
 1. Geben Sie alle erforderlichen Einstellungen ein:
 
-    |Einstellung|value|
+    |Name|Zweck|
     |--|--|
-    |Name|Gewünschter Name (2 bis 64 Zeichen)|
-    |Subscription|Wählen Sie ein passendes Abonnement aus|
-    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
-    |Preisstufe|`F0` – der Mindesttarif|
-    |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
+    |Abonnementname| Das Abonnement, unter dem die Ressource abgerechnet wird.|
+    |Resource group| Ein benutzerdefinierter Ressourcengruppenname, den Sie auswählen oder erstellen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren.|
+    |Name| Ein von Ihnen gewählter benutzerdefinierter Name, der als benutzerdefinierte Unterdomäne für Ihre Erstellungs- und Vorhersageendpunktabfragen verwendet wird|
+    |Authoring location (Erstellungsstandort)|Die Region, die Ihrem Modell zugeordnet ist.|
+    |Authoring pricing tier (Erstellungstarif)|Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.|
+    |Runtime location (Laufzeitstandort)|Die Region, die Ihrer veröffentlichten Vorhersageendpunkt-Laufzeitumgebung zugeordnet ist.|
+    |Runtime pricing tier (Laufzeittarif)|Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.|
 
-1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
-1. Erfassen Sie den konfigurierten `endpoint` und einen API-Schlüssel. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters).
+    > [!div class="mx-imgBorder"]
+    > [![Erstellen der Language Understanding-Ressource (LUIS-Ressource)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+1. Klicken Sie auf **Überprüfen + erstellen**, und warten Sie, bis die Ressource erstellt wird.
+1. Wählen Sie nach der Erstellung der beiden Ressourcen im Azure-Portal die neue Erstellungsressource und anschließend **Schnellstarts** aus, um die **Endpunkt-URL** und den **Schlüssel** für die programmgesteuerte Erstellung zu erhalten.
+
+> [!TIP]
+> Um die Ressourcen verwenden zu können, müssen Sie sie im LUIS-Portal [zuweisen](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps).

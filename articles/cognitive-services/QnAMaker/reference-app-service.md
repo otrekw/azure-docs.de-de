@@ -3,12 +3,12 @@ title: Dienstkonfiguration – QnA Maker
 description: Erfahren Sie, wie und wo Ressourcen konfiguriert werden.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651804"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804259"
 ---
 # <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -27,8 +27,8 @@ Sie können eine einzelne Einstellung entweder über die Liste der Anwendungsein
 
 |Resource|Einstellung|
 |--|--|
-|AzureSearchAdminKey|Cognitive Search: für QnA-Satzspeicher und Rangfolge #1 verwendet|
-|AzureSearchName|Cognitive Search: für QnA-Satzspeicher und Rangfolge #1 verwendet|
+|AzureSearchAdminKey|Cognitive Search: wird für QnA-Paarspeicher und Bewerter 1 verwendet|
+|AzureSearchName|Cognitive Search: wird für QnA-Paarspeicher und Bewerter 1 verwendet|
 |DefaultAnswer|Text der Antwort, wenn kein Treffer gefunden wird|
 |UserAppInsightsAppId|Chatprotokoll und Telemetrie|
 |UserAppInsightsKey|Chatprotokoll und Telemetrie|

@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184614"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878883"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Integrieren einer Stamm- oder Apex-Domäne in Ihre Front Door-Instanz
 Azure Front Door verwendet CNAME-Einträge zum Überprüfen des Domänenbesitzes beim Integrieren von benutzerdefinierten Domänen. Außerdem gibt Front Door nicht die Frontend-IP-Adresse frei, die Ihrem Front Door-Profil zugeordnet ist. Daher können Sie Ihre Apex-Domäne keiner IP-Adresse zuordnen, wenn Sie die Absicht haben, die Front Door-Instanz zu integrieren.
@@ -26,7 +26,7 @@ Zum Zuweisen Ihrer Apex- oder Stammdomäne an Ihr Front Door-Profil muss in erst
 > [!NOTE]
 > Es gibt außerdem weitere DNS-Anbieter, die das Vereinfachen von CNAME oder das Nachverfolgen von DNS unterstützen. Allerdings wird den Azure Front Door-Kunden die Verwendung von Azure DNS für das Hosten von Domänen empfohlen.
 
-Sie können das Azure-Portal verwenden, um eine Apex-Domäne in Ihre Front Door-Instanz zu integrieren und HTTPS für diese Instanz zu aktivieren, indem Sie sie einem Zertifikat für die SSL-Terminierung zuweisen. Apex-Domänen werden auch als Stammdomänen oder Naked Domains bezeichnet.
+Sie können das Azure-Portal verwenden, um ein Onboarding für eine Apex-Domäne in Ihrer Front Door-Instanz durchzuführen und HTTPS für sie zu aktivieren, indem Sie sie einem Zertifikat für die TLS-Terminierung zuordnen. Apex-Domänen werden auch als Stammdomänen oder Naked Domains bezeichnet.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -65,7 +65,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 2. Wählen Sie unter **Zertifikatverwaltungstyp** die Option _Eigenes Zertifikat verwenden_ aus.
 
 > [!WARNING]
-> Der Zertifikatverwaltungstyp „Front Door managed“ (Mit Front Door verwaltet) wird derzeit nicht für Apex- oder Stammdomänen unterstützt. Sie können nur Ihr eigenes benutzerdefiniertes SSL-Zertifikat verwenden, das auf Azure Key Vault gehostet wird, um HTTPS auf einer Apex- oder Stammdomäne für Front Door zu aktivieren.
+> Der Zertifikatverwaltungstyp „Front Door managed“ (Mit Front Door verwaltet) wird derzeit nicht für Apex- oder Stammdomänen unterstützt. Sie können nur Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat verwenden, das in Azure Key Vault gehostet wird, um HTTPS auf einer Apex- oder Stammdomäne für Front Door zu aktivieren.
 
 3. Vergewissern Sie sich, dass Sie die richtigen Berechtigungen für Front Door eingerichtet haben, um wie auf der Benutzeroberfläche angegeben auf Ihren Schlüsseltresor zugreifen zu können, bevor Sie mit dem nächsten Schritt fortfahren.
 4. Wählen Sie ein **Key Vault-Konto** aus, das Ihrem aktuellen Abonnement zugeordnet ist, und wählen Sie anschließend das entsprechende **Geheimnis** einschließlich der jeweiligen **Geheimnisversion** aus, um das Konto dem richtigen Zertifikat zuzuordnen.

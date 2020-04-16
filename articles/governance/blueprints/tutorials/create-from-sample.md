@@ -3,18 +3,18 @@ title: 'Tutorial: Blaupausenbeispiel für neue Umgebung'
 description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, mit der zwei Ressourcengruppen eingerichtet werden und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert wird.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282017"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677088"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
 Beispielblaupausen enthalten Beispiele für die Aufgaben, die mit Azure Blueprints ausgeführt werden können. Jedes Blaupausenbeispiel dient einer bestimmten Absicht bzw. einem spezifischen Zweck, erstellt aber nicht selbst eine vollständige Umgebung. Jedes Blaupausenbeispiel ist als Ausgangspunkt für die Erkundung von Azure Blueprints vorgesehen und enthält verschiedene Kombinationen von Artefakten, Designs und Parametern.
 
-Im folgenden Tutorial wird die Blaupause **Ressourcengruppen mit RBAC** verwendet, um verschiedene Aspekte des Diensts Azure Blueprints vorzustellen. Folgende Schritte werden erläutert:
+Im folgenden Tutorial wird das Blaupausenbeispiel **Ressourcengruppen mit RBAC** verwendet, um verschiedene Aspekte des Diensts Azure Blueprints vorzustellen. Folgende Schritte werden erläutert:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupausendefinition anhand des Beispiels

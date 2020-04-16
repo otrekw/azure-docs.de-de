@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444839"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757167"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>IP-Adressgruppen (Vorschau) in Azure Firewall
 
@@ -54,7 +54,7 @@ Sie können in der IP-Adressgruppe alle IP-Adressen sowie die ihr zugeordneten R
 
 1. Zum Anzeigen oder Bearbeiten der IP-Adressen wählen Sie im linken Bereich unter **Einstellungen** die Option **IP-Adressen** aus.
 2. Zum Hinzufügen von einer oder mehreren IP-Adresse(n) wählen Sie **IP-Adressen hinzufügen** aus. Daraufhin wird die Seite **Drag or Browse** (Ziehen oder durchsuchen) für einen Upload angezeigt, oder Sie können die Adresse manuell eingeben.
-3.  Wählen Sie die Auslassungspunkte ( **...** ) rechts aus, um IP-Adressen zu bearbeiten oder zu löschen. Wenn Sie mehrere IP-Adressen bearbeiten oder löschen möchten, wählen Sie die Kontrollkästchen und dann oben **Bearbeiten** oder **Löschen** aus.
+3.    Wählen Sie die Auslassungspunkte ( **...** ) rechts aus, um IP-Adressen zu bearbeiten oder zu löschen. Wenn Sie mehrere IP-Adressen bearbeiten oder löschen möchten, wählen Sie die Kontrollkästchen und dann oben **Bearbeiten** oder **Löschen** aus.
 4. Schließlich können Sie die Datei im CSV-Dateiformat exportieren.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ Sie können jetzt beim Erstellen von Azure Firewall-DNAT-, -Anwendungs- oder -Ne
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-IP-Adressgruppen sind derzeit in den folgenden Regionen verfügbar:
+IP-Gruppen sind in allen öffentlichen Cloudregionen verfügbar.
 
-- USA (Westen)
-- USA, Westen 2
-- East US
-- USA (Ost) 2
-- USA (Mitte)
-- USA Nord Mitte
-- USA, Westen-Mitte
-- USA Süd Mitte
-- Kanada, Mitte
-- Nordeuropa
-- Europa, Westen
-- Frankreich, Mitte
-- UK, Süden
-- Australien (Osten)
-- Australien, Mitte
-- Australien, Südosten
+## <a name="ip-address-limits"></a>Grenzwerte für IP-Adressen
+
+Bei nicht mehr als 50 IP-Gruppen können Sie höchstens 5000 individuelle IP-Adressen pro Firewallinstanz haben. Bei 51 bis 100 IP-Gruppen können Sie höchstens 500 individuelle IP-Adressen pro Firewallinstanz haben.
+
+### <a name="examples"></a>Beispiele
+
+#### <a name="example-1-supported"></a>Beispiel 1: unterstützt
+
+|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |3|196.0.0.0 – 196.0.0.2|Rule1|
+|IPGroup3     |1|1.2.3.4|Rule1|
+|     |**Gesamt 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>Beispiel 2: unterstützt
+
+|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |4096|11.0.0.0/20|Rule1|
+|     |**Gesamt 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>Beispiel 3: nicht unterstützt
+
+|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
+|     |**Gesamt 8192**|||
+
+#### <a name="example-4-supported"></a>Beispiel 4: unterstützt
+
+|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |4096|11.0.0.0/20|Rule2|
+|     |**Gesamt 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>Zugehörige Azure PowerShell-Cmdlets
 

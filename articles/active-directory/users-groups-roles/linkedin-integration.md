@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025414"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755121"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
 
@@ -26,8 +26,9 @@ Sie können Benutzern in Ihrer Organisation den Zugriff auf ihre LinkedIn-Verbin
 
 > [!IMPORTANT]
 > Die Einstellung für LinkedIn-Kontoverbindungen wird derzeit auf Azure AD-Organisationen ausgeweitet. Nachdem die Funktionen für Ihre Organisation zur Verfügung stehen, sind sie standardmäßig aktiviert.
-> 
+>
 > Ausnahmen:
+>
 > * Die Einstellung ist nicht für Kunden mit Microsoft Cloud für die US-Regierung, Microsoft Cloud Deutschland oder Azure und Office 365, betrieben von 21Vianet in China, verfügbar.
 > * Die Einstellung ist standardmäßig für Mandanten, die in Deutschland bereitgestellt werden, deaktiviert. Beachten Sie, dass die Einstellung nicht für Kunden mit Microsoft Cloud Deutschland verfügbar ist.
 > * Die Einstellung ist standardmäßig für Mandanten, die in Frankreich bereitgestellt werden, deaktiviert.
@@ -40,7 +41,7 @@ Sie können LinkedIn-Kontoverbindungen nur für die Benutzer aktivieren, auf die
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) mit dem Konto eines globalen Administrators für die Azure AD-Organisation an.
 1. Wählen Sie **Benutzer** aus.
-1. Wählen Sie auf dem Blatt **Benutzer** die Option **Benutzereinstellungen** aus.
+1. Wählen Sie auf der Seite **Benutzer** die Option **Benutzereinstellungen** aus.
 1. Gestatten Sie Benutzern unter **LinkedIn-Kontoverbindungen** das Verbinden ihrer Konten, damit sie in einigen Microsoft-Anwendungen auf ihre LinkedIn-Verbindungen zugreifen können. Es werden keine Daten freigegeben, bis der Benutzer der Verbindung seiner Konten zustimmt.
 
     * Wählen Sie **Ja** aus, um den Dienst für alle Benutzer in Ihrer Organisation zu aktivieren.
@@ -55,25 +56,22 @@ Sie können LinkedIn-Kontoverbindungen nur für die Benutzer aktivieren, auf die
 > Die LinkedIn-Integration wird erst dann vollständig für Ihre Benutzer aktiviert, wenn diese ihre Einwilligung zum Verbinden ihrer Konten gegeben haben. Wenn Sie die Kontoverbindungen für Ihre Benutzer aktivieren, werden keine Daten freigegeben.
 
 ### <a name="assign-selected-users-with-a-group"></a>Zuweisen ausgewählter Benutzer mithilfe einer Gruppe
-Die Option „Ausgewählt“, die eine Liste von Benutzern enthält, wurde durch die Option zum Auswählen einer Gruppe von Benutzern ersetzt, damit Sie die Möglichkeit haben, LinkedIn- und Microsoft-Konten anstatt für viele einzelne Benutzer für eine einzelne Gruppe zu aktivieren. Wenn Sie für ausgewählte einzelne Benutzer keine LinkedIn-Kontoverbindungen aktiviert haben, müssen Sie nichts weiter tun. Wenn Sie zuvor LinkedIn-Kontoverbindungen für ausgewählte einzelne Benutzer aktiviert haben, sollten Sie folgende Schritte ausführen:
+
+Die Option „Ausgewählt“, die eine Liste mit Benutzern enthält, wurde durch die Option zum Auswählen einer Gruppe von Benutzern ersetzt, damit Sie die Möglichkeit haben, LinkedIn- und Microsoft-Konten für eine einzelne Gruppe zu aktivieren (anstatt für viele einzelne Benutzer). Wenn Sie für ausgewählte einzelne Benutzer keine LinkedIn-Kontoverbindungen aktiviert haben, müssen Sie nichts weiter tun. Wenn Sie zuvor LinkedIn-Kontoverbindungen für ausgewählte einzelne Benutzer aktiviert haben, sollten Sie folgende Schritte ausführen:
 
 1. Rufen Sie die aktuelle Liste mit den einzelnen Benutzern ab.
 1. Verschieben Sie die aktuell aktivierten einzelnen Benutzer in eine Gruppe.
 1. Verwenden Sie in der LinkedIn-Kontoverbindungseinstellung im Azure AD-Verwaltungscenter die obige Gruppe als ausgewählte Gruppe.
 
 > [!NOTE]
-> Auch wenn Sie die aktuell ausgewählten einzelnen Benutzer nicht in eine Gruppe verschieben, werden diesen weiterhin LinkedIn-Informationen in Microsoft-Apps angezeigt.
+> Auch wenn Sie die derzeit ausgewählten einzelnen Benutzer nicht in eine Gruppe verschieben, werden diesen in Microsoft-Apps weiterhin LinkedIn-Informationen angezeigt.
 
-### <a name="get-the-current-list-of-selected-users"></a>Abrufen der aktuellen Liste mit den ausgewählten Benutzern
+### <a name="move-currently-selected-users-to-a-group"></a>Verschieben von derzeit ausgewählten Benutzern in eine Gruppe
 
+1. Erstellen Sie eine CSV-Datei mit den Benutzern, die für LinkedIn-Kontoverbindungen ausgewählt wurden.
 1. Melden Sie sich bei Microsoft 365 mit Ihrem Administratorkonto an.
-1. Gehe zu https://linkedinselectedusermigration.azurewebsites.net/. Die Liste der Benutzer, die für LinkedIn-Kontoverbindungen ausgewählt wurden, wird angezeigt.
-1. Exportieren Sie die Liste in eine CSV-Datei.
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Verschieben der aktuell ausgewählten einzelnen Benutzer in eine Gruppe
-
-1. Starten von PowerShell
-1. Installieren Sie das Azure AD Modul, indem Sie `Install-Module AzureAD` ausführen.
+1. Starten Sie PowerShell.
+1. Installieren Sie das Azure AD-Modul, indem Sie `Install-Module AzureAD` ausführen.
 1. Führen Sie folgendes Skript aus:
 
   ``` PowerShell

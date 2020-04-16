@@ -1,20 +1,20 @@
 ---
-title: Empfangen von HTTPS-Aufrufen und Reagieren auf diese
-description: Behandeln von HTTPS-Anforderungen und -Ereignissen in Echtzeit mittels Azure Logic Apps
+title: Empfangen und Beantworten von Aufrufen mit HTTPS
+description: Hier erfahren Sie, wie Sie eingehende HTTPS-Anforderungen externer Dienste mit Azure Logic Apps behandeln.
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900267"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656306"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
 Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten Anforderungstrigger oder der Antwortaktion können Sie automatisierte Tasks und Workflows erstellen, die eingehende HTTPS-Anforderungen empfangen und beantworten. Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
 
@@ -25,7 +25,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 > [!NOTE]
 > Der Anforderungstrigger unterstützt für eingehende Aufrufe *ausschließlich* Transport Layer Security (TLS) 1.2. Ausgehende Aufrufe unterstützen weiterhin TLS 1.0, 1.1 und 1.2. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem).
 >
-> Wenn SSL-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden. Für eingehende Aufrufe werden folgende Verschlüsselungssammlungen unterstützt:
+> Wenn TLS-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden. Für eingehende Aufrufe werden folgende Verschlüsselungssammlungen unterstützt:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -58,7 +58,7 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 
    ![Anforderungstrigger](./media/connectors-native-reqres/request-trigger.png)
 
-   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | Beschreibung |
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
    |---------------|--------------------|----------|-------------|
    | **HTTP-POST-URL** | {keine} | Ja | Die Endpunkt-URL, die nach dem Speichern der Logik-App generiert wird und zum Aufrufen ihrer Logik-App verwendet wird |
    | **JSON-Schema für Anforderungstext** | `schema` | Nein | Das JSON-Schema, das die Eigenschaften und Werte im Text der eingehenden Anforderung beschreibt |
@@ -157,7 +157,7 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 
 1. Öffnen Sie zum Hinzufügen weiterer Eigenschaften die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
 
-   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | Beschreibung |
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
    |---------------|--------------------|----------|-------------|
    | **Methode** | `method` | Nein | Die Methode, die die eingehende Anforderung zum Aufrufen der Logik-App verwenden muss |
    | **Relativer Pfad** | `relativePath` | Nein | Der relative Pfad für den Parameter, der von der Endpunkt-URL der Logik-App akzeptiert werden kann |
@@ -189,7 +189,7 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 
 Im Folgenden finden Sie weitere Informationen zu den Ausgaben des Anforderungstriggers:
 
-| JSON-Eigenschaftenname | Datentyp | Beschreibung |
+| JSON-Eigenschaftenname | Datentyp | BESCHREIBUNG |
 |--------------------|-----------|-------------|
 | `headers` | Object | Ein JSON-Objekt, das die Header aus der Anforderung beschreibt |
 | `body` | Object | Ein JSON-Objekt, das den Textinhalt aus der Anforderung beschreibt |
@@ -202,6 +202,19 @@ Im Folgenden finden Sie weitere Informationen zu den Ausgaben des Anforderungstr
 Mithilfe der Antwortaktion können Sie mit einer Nutzlast (Daten) auf eine eingehende HTTPS-Anforderung antworten. Dies gilt allerdings nur für eine Logik-App, die durch eine HTTPS-Anforderung ausgelöst wird. Sie können die Antwortaktion an einer beliebigen Stelle im Workflow hinzufügen. Weitere Informationen zur zugrunde liegenden JSON-Definition für diesen Trigger finden Sie beim [Antwortaktionstyp](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 Ihre Logik-App hält die eingehenden Anforderung nur für eine Minute geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
+
+> [!IMPORTANT]
+> Wenn eine Antwortaktion diese Header enthält, entfernt Logic Apps sie aus der generierten Antwortnachricht, ohne eine Warnung oder einen Fehler anzuzeigen:
+>
+> * `Allow`
+> * `Content-*` mit den folgenden Ausnahmen: `Content-Disposition`, `Content-Encoding` und `Content-Type`.
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Logic Apps verhindert nicht, dass Sie Logik-Apps speichern, in denen eine Antwortaktion mit diesen Headern verwendet wird, sondern ignoriert diese Header.
 
 1. Wählen Sie im Logik-App-Designer unter dem Schritt, dem Sie eine Antwortaktion hinzufügen möchten, die Option **Neuer Schritt** aus.
 
@@ -231,7 +244,7 @@ Ihre Logik-App hält die eingehenden Anforderung nur für eine Minute geöffnet.
 
    Hier finden Sie weitere Informationen zu den Eigenschaften, die Sie in der Antwortaktion festlegen können. 
 
-   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | Beschreibung |
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
    |---------------|--------------------|----------|-------------|
    | **Statuscode** | `statusCode` | Ja | Der in der Antwort zurückzugebende Statuscode |
    | **Headers** | `headers` | Nein | Ein JSON-Objekt, das einen oder mehrere Header beschreibt, die in die Antwort eingeschlossen werden sollen |

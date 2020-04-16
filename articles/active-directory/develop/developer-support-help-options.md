@@ -1,10 +1,9 @@
 ---
-title: Support- und Hilfeoptionen für Entwickler von Azure AD-Apps| Microsoft-Dokumentation
+title: Support- und Hilfeoptionen für Entwickler von Azure AD-Apps
 description: Hier erfahren Sie, wie Sie beim Erstellen einer Anwendung, die mit Microsoft-Identitäten (Azure Active Directory und Microsoft-Konto) integriert wird, Hilfe und Support zu entwicklungsbezogenen Problemen und Fragen erhalten.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160966"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885530"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 

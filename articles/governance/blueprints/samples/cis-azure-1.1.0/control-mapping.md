@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Be
 description: Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“ zu Azure Policy.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707430"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656969"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -245,7 +245,7 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definiti
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11. Sicherstellen, dass „SSL-Verbindung erzwingen“ für den MySQL-Datenbankserver auf „AKTIVIERT“ festgelegt ist
 
-Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass für MySQL-Datenbankserver SSL-Verbindungen erzwungen werden.
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass für MySQL-Datenbankserver TLS-/SSL-Verbindungen erzwungen werden.
 
 - Erzwingen einer SSL-Verbindung muss für MySQL-Datenbankserver aktiviert sein
 
@@ -257,7 +257,7 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defi
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13. Sicherstellen, dass „SSL-Verbindung erzwingen“ für den PostgreSQL-Datenbankserver auf „AKTIVIERT“ festgelegt ist
 
-Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass für PostgreSQL-Datenbankserver SSL-Verbindungen erzwungen werden.
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass für PostgreSQL-Datenbankserver TLS-/SSL-Verbindungen erzwungen werden.
 
 - Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
 

@@ -3,17 +3,17 @@ title: Optimieren der Cloudinvestitionen mit Azure Cost Management
 description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre Cloudinvestitionen optimal ausschöpfen, Ihre Kosten senken und auswerten, wofür genau Ihr Geld ausgegeben wird.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157210"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874584"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -36,6 +36,10 @@ In Ihrer Organisation müssen die drei unten genannten Schlüsselgruppen aufeina
 ### <a name="key-principles"></a>Wichtige Prinzipien
 
 Nutzen Sie die unten genannten Prinzipien, um für ein erfolgreiches Cloudkostenmanagement Ihrer Organisation zu sorgen.
+
+Weitere Informationen werden im [Video zur optimalen Einrichtung von Cost Management](https://www.youtube.com/watch?v=dVuwITdSAZ4) vermittelt. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Planung
 
@@ -125,7 +129,7 @@ Bleiben Sie auf dem Laufenden über die langfristige Kostenentwicklung in Ihrer 
 
 Organisieren Sie Ihre Ressourcen mit Blick auf die Kosten. Wenn Sie Abonnements und Ressourcengruppen erstellen, bedenken Sie, welche Teams für die damit verbundenen Kosten verantwortlich sein sollen. Stellen Sie sicher, dass bei der Berichterstellung die Organisation im Mittelpunkt steht. Abonnements und Ressourcengruppen sind geeignete Elemente, um die Ausgaben über die gesamte Organisation hinweg zu organisieren und zuzuordnen. Tags bieten eine gute Möglichkeit für die Kostenzuordnung. Sie können Tags als Filter verwenden. Sie können Sie auch zum Gruppieren verwenden, wenn Sie Daten analysieren und Kosten untersuchen. Enterprise Agreement-Kunden können auch Abteilungen erstellen und Abonnements in diesen platzieren. Eine kostenbasierte Organisation in Azure hilft dabei, den relevanten Personen in Ihrer Organisation die Verantwortung für die Senkung der Ausgaben ihres Teams zu übertragen.
 
-Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung in Ihrer Organisation zur Verfügung stehen.
+Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung in Ihrer Organisation zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

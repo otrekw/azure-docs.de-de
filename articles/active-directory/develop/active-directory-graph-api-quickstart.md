@@ -4,7 +4,6 @@ description: Die Azure Active Directory (Azure AD) Graph-API ermöglicht program
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,17 +12,17 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e417d29341ecd175f5ef97761292568b200fc64e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161340"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884510"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Gewusst wie: Verwenden der Azure AD-Graph-API
 
 > [!IMPORTANT]
-> Es wird dringend empfohlen, auf Azure Active Directory (Azure AD)-Ressourcen nicht mithilfe der Azure AD Graph-API, sondern mithilfe von [Microsoft Graph](https://developer.microsoft.com/graph) zuzugreifen. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Es gibt nur eine sehr begrenzte Anzahl von Szenarien, in denen die Verwendung der Azure AD Graph-API möglicherweise weiterhin geeignet ist. Weitere Informationen finden Sie im Blogbeitrag [Microsoft Graph oder Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) und unter [Migrieren von Azure AD Graph-Apps zu Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> Es wird dringend empfohlen, auf Azure Active Directory (Azure AD)-Ressourcen nicht mithilfe der Azure AD Graph-API, sondern mithilfe von [Microsoft Graph](https://developer.microsoft.com/graph) zuzugreifen. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Es gibt nur eine sehr begrenzte Anzahl von Szenarien, in denen die Verwendung der Azure AD Graph-API möglicherweise weiterhin geeignet ist. Weitere Informationen finden Sie im Blogbeitrag [Microsoft Graph oder Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) und unter [Migrieren von Azure AD Graph-Apps zu Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
 Die Azure AD Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen. Beispielsweise können Sie die Azure AD Graph-API verwenden, um einen neuen Benutzer zu erstellen, Eigenschaften des Benutzers anzuzeigen oder zu aktualisieren, das Kennwort des Benutzers zu ändern, die Gruppenmitgliedschaft für den rollenbasierten Zugriff zu überprüfen und den Benutzer zu deaktivieren oder zu löschen. Weitere Informationen zu den Azure AD Graph-API-Features und entsprechenden Anwendungsszenarien finden Sie unter [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) und [Voraussetzungen für die Azure AD Graph-API](https://msdn.microsoft.com/library/hh974476.aspx). Die Azure AD Graph-API funktioniert nur mit Geschäfts-, Schul- oder Unikonten/Organisationskonten.
 
@@ -35,12 +34,12 @@ In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (
 
 * **Dienststamm:** In der Azure AD Graph-API ist der Dienststamm immer https://graph.windows.net.
 * **Mandanten-ID:** Dieser Abschnitt kann ein überprüfter (registrierter) Domänenname sein, im Beispiel oben ist dies „contoso.com“. Es kann aber auch eine Objekt-ID des Mandanten oder der Alias „myorganization“ oder „me“ sein. Weitere Informationen finden Sie unter [Adressieren von Entitäten und Vorgängen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
-* **Ressourcenpfad**: Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer, eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene „groups“ zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise "users/{objectId}" oder "users/userPrincipalName".
+* **Ressourcenpfad**: Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer, eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene „groups“ zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise „users/{objectId}“ oder „users/userPrincipalName“.
 * **Abfrageparameter:** Ein Fragezeichen (?) trennt den Abschnitt für den Ressourcenpfad vom Abschnitt für Abfrageparameter. Der Abfrageparameter „api-version“ ist für alle Anforderungen in der Azure AD Graph-API erforderlich. Die Azure AD Graph-API unterstützt außerdem die folgenden OData-Abfrageoptionen: **$filter**, **$orderby**, **$expand**, **$top** und **$format**. Die folgenden Abfrageoptionen werden zurzeit nicht unterstützt: **$count**, **$inlinecount** und **$skip**. Weitere Informationen finden Sie unter [Unterstützte Abfragen, Filter und Paginierungsoptionen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Graph-API-Versionen
 
-Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter "api-version" an. Verwenden Sie ab Version 1.5 einen numerischen Versionswert; api-version=1.6 Für frühere Versionen verwenden Sie eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise „api-version=2013-11-08“. Verwenden Sie für Funktionen der Vorschauversion die Zeichenfolge "beta", beispielsweise "api-version=beta". Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
+Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter „api-version“ an. Verwenden Sie ab Version 1.5 einen numerischen Versionswert; api-version=1.6 Für frühere Versionen verwenden Sie eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise „api-version=2013-11-08“. Verwenden Sie für Previewfunktionen die Zeichenfolge „beta“, beispielsweise „api-version=beta“. Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## <a name="graph-api-metadata"></a>Graph-API-Metadaten
 
@@ -69,7 +68,7 @@ Beachten Sie die folgenden Funktionen und Einschränkungen für den Azure AD Gra
 
 * Funktion zum automatischen Vervollständigen für Ressourcensätze. Um diese Funktion zu sehen, klicken Sie auf das Textfeld für die Anforderung (in dem die Unternehmens-URL angezeigt wird). Sie können einen Ressourcensatz aus der Dropdownliste auswählen.
 * Anforderungsverlauf.
-* Unterstützt die Adressierungsaliase "me" und "myorganization". Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.6` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.6`, um alle Benutzer im Verzeichnis des angemeldeten Benutzers zurückzugeben.
+* Unterstützt die Adressierungsaliase „me“ und „myorganization“. Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.6` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.6`, um alle Benutzer im Verzeichnis des angemeldeten Benutzers zurückzugeben.
 * Unterstützt vollständige CRUD-Vorgänge für Ihr eigenes Verzeichnis mit `POST`, `GET`, `PATCH` und `DELETE`.
 * Ein Abschnitt für den Antwortheader. Dieser Abschnitt kann zur Behandlung von Problemen beim Ausführen von Abfragen verwendet werden.
 * Ein JSON-Viewer für die Antwort mit Funktionen zum Erweitern und Reduzieren.

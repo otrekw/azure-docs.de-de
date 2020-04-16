@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77494978"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758134"
 ---
 In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -34,13 +34,13 @@ In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie 
 Verwenden Sie die Wissensdatenbank aus der vorherigen Schnellstartanleitung, um eine Antwort auf der Grundlage von Metadaten abzufragen.
 
 1. Wählen Sie auf der Seite **Einstellungen** der Wissensdatenbank die Registerkarte **cURL** aus, um einen cURL-Beispielbefehl anzuzeigen, mit dem eine Antwort auf der Grundlage der Wissensdatenbank generiert wird.
-1. Kopieren Sie den Befehl in eine Bearbeitungsumgebung (beispielsweise eine Textdatei), um ihn zu bearbeiten. Bearbeiten Sie den Fragewert so, dass die Metadaten von `service:qna_maker` als Filter für die QnA-Sätze verwendet werden.
+1. Kopieren Sie den Befehl in eine Bearbeitungsumgebung (beispielsweise eine Textdatei), um ihn zu bearbeiten. Bearbeiten Sie den Fragewert so, dass die Metadaten von `service:qna_maker` als Filter für die Frage-Antwort-Paare verwendet werden.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Die Frage ist nur ein einzelnes Wort (`size`), wodurch jeder der beiden QnA-Sätze zurückgegeben werden kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
+    Die Frage ist nur ein einzelnes Wort (`size`), wodurch jedes der beiden Frage-Antwort-Paare zurückgegeben werden kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
 
 1. Die Ausgabe enthält nur die Antwort, die den Filterkriterien entspricht. Die folgende cURL-Antwort wurde aus Gründen der Lesbarkeit formatiert:
 

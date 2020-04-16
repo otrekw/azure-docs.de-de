@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108991"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756697"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Schnellstart: Testen der Wissensdatenbank mit Batchfragen und erwarteten Antworten
 
@@ -149,7 +149,7 @@ Verwenden Sie das folgende Diagramm, um zu ermitteln, wie Sie die Feldwerte für
     |Charge your Surface Pro 4|
     |Check the battery level|
 
-    Für zwei QnA-Sätze ist der Metadatensatz vorhanden.
+    Für zwei Frage-Antwort-Paare ist der Metadatensatz vorhanden.
 
     > [!TIP]
     > Um die Metadaten und QnA-IDs der einzelnen Sätze anzuzeigen, exportieren Sie die Wissensdatenbank. Wechseln Sie zur Seite **Einstellungen**, und wählen Sie für den **Export** das Dateiformat `.xls` aus. Suchen Sie diese heruntergeladene Datei, öffnen Sie sie in Excel, und überprüfen Sie Metadaten und ID.
@@ -169,7 +169,7 @@ Bei Batchtests gibt es zwei Hauptszenarien:
 
 Beim folgenden Verfahren wird davon ausgegangen, dass Chatprotokolle verarbeitet werden sollen.
 
-1. Erstellen Sie eine neue Batchtestdatei, der optionale Daten hinzugefügt werden können: `batch-test-data-2.tsv`. Fügen Sie die sechs Zeilen aus der ursprünglichen Eingabedatei für den Batchtest hinzu, und fügen Sie dann die Metadaten, die häufigste Antwort und die QnA-Satz-ID für jede Zeile hinzu.
+1. Erstellen Sie eine neue Batchtestdatei, der optionale Daten hinzugefügt werden können: `batch-test-data-2.tsv`. Fügen Sie die sechs Zeilen aus der ursprünglichen Eingabedatei für den Batchtest hinzu, und fügen Sie dann die Metadaten, die häufigste Antwort und die ID des Frage-Antwort-Paars für jede Zeile hinzu.
 
     Um den automatisierten Prozess der Überprüfung neuer Texte aus Chatprotokollen anhand der Wissensdatenbank zu simulieren, legen Sie die Metadaten für jede Spalte auf den gleichen Wert fest: `topic:power`.
 

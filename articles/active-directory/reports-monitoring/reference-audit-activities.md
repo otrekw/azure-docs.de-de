@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007749"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891508"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -135,11 +135,11 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Anwendungsverwaltung|AdminPolicyDatas-SetResources|
 |Anwendungsverwaltung|AdminUserJourneys-GetResources|
 |Anwendungsverwaltung|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Create IdentityProvider (IdentityProvider-Element erstellen)|
-|Authentication|Create V1 application (V1-Anwendung erstellen)|
-|Authentication|Create V2 application (V2-Anwendung erstellen)|
-|Authentication|Create a custom domains in the tenant (Benutzerdefinierte Domäne im Mandanten erstellen)|
+|Authentifizierung|AdminUserJourneys-SetResources|
+|Authentifizierung|Create IdentityProvider (IdentityProvider-Element erstellen)|
+|Authentifizierung|Create V1 application (V1-Anwendung erstellen)|
+|Authentifizierung|Create V2 application (V2-Anwendung erstellen)|
+|Authentifizierung|Create a custom domains in the tenant (Benutzerdefinierte Domäne im Mandanten erstellen)|
 |Authorization|Create a new AdminUserJourney (Neues AdminUserJourney-Element erstellen)|
 |Authorization|Create localized resource json (Lokalisierten JSON-Ressourcencode erstellen)|
 |Authorization|Create new Custom IDP (Neuen benutzerdefinierten IDP erstellen)|
@@ -230,9 +230,9 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Authorization|Aktualisieren von Richtlinien|
 |Authorization|Update user attribute (Benutzerattribut aktualisieren)|
 |Authorization|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
-|Authorization|User Authorization: API is disabled for tenant featureset (Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.)|
-|Authorization|User Authorization: User granted access as 'Tenant Admin' (Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.)|
-|Authorization|User Authorization: User was granted 'Authenticated Users' access rights (Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.)|
+|Authorization|Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.|
+|Authorization|Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.|
+|Authorization|Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.|
 |Authorization|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
 |Authorization|Überprüfen, ob das Feature aktiviert ist|
 |Authorization|Programm erstellen|
@@ -256,17 +256,17 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Verzeichnisverwaltung|Get tenant Info (Abrufen der Mandanteninformationen)|
 |Verzeichnisverwaltung|Get tenant allowed features (Vom Mandanten zugelassene Features abrufen)|
 |Verzeichnisverwaltung|Get tenantDomains (tenantDomains-Element abrufen)|
-|Key|Gets the type of tenant (Mandantentyp abrufen)|
-|Key|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
-|Key|Überprüfen, ob das Feature aktiviert ist|
-|Key|Partner zu Unternehmen hinzufügen|
-|Key|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
-|Key|Add verified domain (Überprüfte Domäne hinzufügen)|
-|Key|Unternehmen erstellen|
-|Key|Unternehmenseinstellungen erstellen|
-|Key|Unternehmenseinstellungen löschen|
-|Key|Partner tiefer stufen|
-|Key|Directory deleted (Verzeichnis gelöscht)|
+|Schlüssel|Gets the type of tenant (Mandantentyp abrufen)|
+|Schlüssel|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
+|Schlüssel|Überprüfen, ob das Feature aktiviert ist|
+|Schlüssel|Partner zu Unternehmen hinzufügen|
+|Schlüssel|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
+|Schlüssel|Add verified domain (Überprüfte Domäne hinzufügen)|
+|Schlüssel|Unternehmen erstellen|
+|Schlüssel|Unternehmenseinstellungen erstellen|
+|Schlüssel|Unternehmenseinstellungen löschen|
+|Schlüssel|Partner tiefer stufen|
+|Schlüssel|Directory deleted (Verzeichnis gelöscht)|
 |Andere|Directory deleted permanently (Verzeichnis unwiderruflich gelöscht)|
 |Andere|Directory scheduled for deletion (Löschen des Verzeichnisses geplant)|
 |Resource|Promote company to partner (Unternehmen zu Partner heraufstufen)|
@@ -370,8 +370,8 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Anwendungsverwaltung|Edit Terms Of Use (Nutzungsbedingungen bearbeiten)|
 |Anwendungsverwaltung|Publish Terms Of Use (Nutzungsbedingungen veröffentlichen)|
 |Anwendungsverwaltung|Unpublish Terms Of Use (Veröffentlichung der Nutzungsbedingungen aufheben)|
-|Anwendungsverwaltung|Add application SSL certificate (Anwendungs-SSL-Zertifikat hinzufügen)|
-|Anwendungsverwaltung|Delete SSL binding (SSL-Bindung löschen)|
+|Anwendungsverwaltung|TLS-/SSL-Zertifikat der Anwendung hinzufügen|
+|Anwendungsverwaltung|TLS-Bindung löschen|
 |Anwendungsverwaltung|Register connector (Connector registrieren)|
 |Anwendungsverwaltung|AdminPolicyDatas-RemoveResources|
 |Anwendungsverwaltung|AdminPolicyDatas-SetResources|

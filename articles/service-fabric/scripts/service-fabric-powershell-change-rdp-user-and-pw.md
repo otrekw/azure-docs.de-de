@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614807"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984928"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualisieren des Administratorbenutzernamens und des zugehörigen Kennworts für die VMs in einem Cluster
 
@@ -35,13 +35,17 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript benutzt die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
+Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Dient zum Abrufen der Eigenschaften eines Clusterknotentyps (einer VM-Skalierungsgruppe)   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Fügt der VM-Skalierungsgruppe eine Erweiterung hinzu|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualisiert den Zustand einer VM-Skalierungsgruppe in den Zustand eines lokalen VMSS-Objekts|
+
+## <a name="duration"></a>Duration
+
+Bei einem einzelnen Knotentyp mit fünf Knoten dauert die Änderung des Benutzernamens und Kennworts beispielsweise 45 bis 60 Minuten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
