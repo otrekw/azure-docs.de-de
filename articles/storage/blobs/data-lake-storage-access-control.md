@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528607"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992214"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -54,7 +54,7 @@ SAS-Token enthalten zulässige Berechtigungen als Teil des Tokens. Die im SAS-To
 Sie können einem Sicherheitsprinzipal eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Diese Zuordnungen werden in einer *Zugriffssteuerungsliste (ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste.
 
 > [!NOTE]
-> ACLs gelten nur für Sicherheitsprinzipale im gleichen Mandanten. Sie können einem Gastbenutzer keine Zugriffsebene zuordnen.  
+> ACLs gelten nur für Sicherheitsprinzipale im gleichen Mandanten. 
 
 Wenn Sie einem Sicherheitsprinzipal eine Rolle auf Speicherkontoebene zugewiesen haben, können Sie diesem Sicherheitsprinzipal mit Zugriffssteuerungslisten Zugriff mit erhöhten Rechten auf bestimmte Dateien und Verzeichnisse gewähren.
 

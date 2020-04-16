@@ -1,53 +1,42 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C++ (Windows) – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop erkennen.
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: db87f31f4702d3487a11a6d833755105455d74c8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925007"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400774"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
-## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
+## <a name="source-code"></a>Quellcode
 
-1. Öffnen Sie die Quelldatei **helloworld.cpp**.
+Erstellen Sie eine C++-Quelldatei namens *helloworld.cpp*, und fügen Sie den folgenden Code in der Datei ein.
 
-1. Ersetzen Sie den gesamten Code durch den folgenden Codeausschnitt:
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. Ersetzen Sie in der gleichen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
+## <a name="code-explanation"></a>Erläuterung zum Code
 
-1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch den **Regionsbezeichner** der [Region](https://aka.ms/speech/sdkregion), die mit Ihrem Abonnement verknüpft ist (beispielsweise `westus` für das kostenlose Testabonnement).
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
-
-> [!NOTE]
-> Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
-
-## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
+## <a name="build-and-run-app"></a>App erstellen und ausführen
 
 1. Wählen Sie auf der Menüleiste **Erstellen** > **Projektmappe erstellen** aus, um die Anwendung zu erstellen. Der Code sollte nun ohne Fehler kompiliert werden.
 
-1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
+1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie<kbd>F5</kbd>), um die Anwendung **helloworld** zu starten.
 
 1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der den Text transkribiert und zur Anzeige zurück an die Anwendung sendet.
 
@@ -55,4 +44,4 @@ Bevor Sie beginnen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

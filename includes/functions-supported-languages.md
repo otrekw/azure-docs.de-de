@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 38c739ecdbfd54627d4fc45f807705e32dc94f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 879b971511238ab02a43896edaed074b8b0b447d
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086212"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007855"
 ---
 |Sprache                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
@@ -23,7 +23,7 @@ ms.locfileid: "79086212"
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2)| Allgemeine Verfügbarkeit (.NET Core 3.1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|–|Allgemeine Verfügbarkeit (Java 8)| Allgemeine Verfügbarkeit (Java 8)|
 |[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |–|Allgemeine Verfügbarkeit (PowerShell Core 6)| Allgemeine Verfügbarkeit (PowerShell Core 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)#python-version|–|Allgemeine Verfügbarkeit (Python 3.6 und 3.7)| Allgemeine Verfügbarkeit (Python 3.6, 3.7 und 3.8)|
+|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|–|Allgemeine Verfügbarkeit (Python 3.6 und 3.7)| Allgemeine Verfügbarkeit (Python 3.6, 3.7 und 3.8)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |–|Allgemeine Verfügbarkeit<sup>1</sup>| Allgemeine Verfügbarkeit<sup>1</sup> |
 
 

@@ -3,19 +3,19 @@ title: Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML
 titleSuffix: Azure Cognitive Services
 description: Verwenden der Markupsprache für Sprachsynthese zum Steuern der Aussprache und des Satzrhythmus in Text-zu-Sprache
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365803"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399823"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -196,7 +196,6 @@ Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutra
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück.
 
@@ -214,18 +213,17 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
-| Sprache | Style | BESCHREIBUNG |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | Formeller und professioneller Ton für Nachrichten |
-| | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport |
-| | `style="chat"` | Lockerer und zwangloser Ton |
-| | `style="cheerful"` | Positiver und fröhlicher Ton |
-| | `style="empathetic"` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Formeller und professioneller Ton für Nachrichten |
-| | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport |
-| | `style="assistant"` | Herzlicher und zwangloser Ton für digitale Assistenten  |
-| | `style="lyrical"` | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | Positiver und fröhlicher Ton |
+| Sprache                   | Style                     | BESCHREIBUNG                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
+|                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
+|                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
+|                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
+|                         | `style="empathetic"`      | Drückt ein Gefühl von Anteilnahme und Verständnis aus               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
+|                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
+|                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
+|                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |
 
 **Beispiel**
 
@@ -263,15 +261,14 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 | `strength` | Gibt die relative Dauer einer Pause mit einem der folgenden Werte an:<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium (Standard)</li><li>strong</li><li>x-strong</li></ul> | Optional |
 | `time` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Beispiele für gültige Werte sind `2s` und `500` | Optional |
 
-| Strength | BESCHREIBUNG |
-|----------|-------------|
-| „None“, oder wenn kein Wert angegeben | 0 ms |
-| x-weak | 250 ms |
-| weak | 500 ms |
-| mittel | 750 ms |
-| strong | 1\.000 ms |
-| x-strong | 1\.250 ms |
-
+| Strength                      | BESCHREIBUNG |
+|-------------------------------|-------------|
+| „None“, oder wenn kein Wert angegeben | 0 ms        |
+| x-weak                        | 250 ms      |
+| weak                          | 500 ms      |
+| mittel                        | 750 ms      |
+| strong                        | 1\.000 ms     |
+| x-strong                      | 1\.250 ms     |
 
 **Beispiel**
 
@@ -372,9 +369,9 @@ In einigen Fällen kann TTS ein Wort nicht richtig aussprechen, z. B. einen Fir
 
 **Attribute**
 
-| attribute | BESCHREIBUNG | Erforderlich/optional |
-|-----------|-------------|---------------------|
-| `uri` | Die Adresse des externen PLS-Dokuments. | Erforderlich. |
+| attribute | BESCHREIBUNG                               | Erforderlich/optional |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | Die Adresse des externen PLS-Dokuments. | Erforderlich.           |
 
 **Verwendung**
 
@@ -614,9 +611,9 @@ Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anfo
 
 **Attribute**
 
-| attribute | BESCHREIBUNG | Erforderlich/optional |
-|-----------|-------------|---------------------|
-| `src` | Gibt den Speicherort bzw. die URL der Audiodatei an. | Erforderlich, wenn Sie das Element „audio“ im SSML-Dokument verwenden. |
+| attribute | BESCHREIBUNG                                   | Erforderlich/optional                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | Gibt den Speicherort bzw. die URL der Audiodatei an. | Erforderlich, wenn Sie das Element „audio“ im SSML-Dokument verwenden. |
 
 **Beispiel**
 

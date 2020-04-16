@@ -3,19 +3,19 @@ title: Worum handelt es sich beim Speech-Dienst?
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das Speech SDK, das Speech Devices SDK oder REST-APIs können Sie Ihren Anwendungen, Tools und Geräten Sprachfunktionen hinzufügen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/12/2020
-ms.author: dapine
-ms.openlocfilehash: 353e66c2d4ebb288244866b12a32e9acb7c765e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371568"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401039"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 

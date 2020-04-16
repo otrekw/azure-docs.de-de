@@ -3,14 +3,14 @@ title: Bereitstellen einer App mit einer benutzerseitig zugewiesenen verwalteten
 description: In diesem Artikel wird das Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität beschrieben.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415630"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität (Vorschau)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität
 
 Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss die Anwendung über Azure Resource Manager bereitgestellt werden – in der Regel mit einer Azure Resource Manager-Vorlage. Weitere Informationen zum Bereitstellen von Service Fabric Anwendung über Azure Resource Manager finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](service-fabric-application-arm-resource.md).
 
@@ -62,7 +62,7 @@ Im Beispiel oben wird der Ressourcenname der vom Benutzer zugewiesenen Identitä
 
 ### <a name="application-package"></a>Anwendungspaket
 
-1. Fügen Sie für jede Identität, die im Abschnitt `managedIdentities` der Azure Resource Manager-Vorlage definiert ist, im Anwendungsmanifest im Abschnitt `<ManagedIdentity>`Principals**ein**-Tag hinzu. Das `Name`-Attribut muss der im Abschnitt `name` definierten `managedIdentities`-Eigenschaft entsprechen.
+1. Fügen Sie für jede Identität, die im Abschnitt `managedIdentities` der Azure Resource Manager-Vorlage definiert ist, im Anwendungsmanifest im Abschnitt **Principals** ein `<ManagedIdentity>`-Tag hinzu. Das `Name`-Attribut muss der im Abschnitt `managedIdentities` definierten `name`-Eigenschaft entsprechen.
 
     **ApplicationManifest.xml**
 

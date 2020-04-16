@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die GROUP BY-Klausel für Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/10/2020
 ms.author: tisande
-ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819108"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261600"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY-Klausel in Azure Cosmos DB
 
@@ -52,6 +52,12 @@ Die GROUP BY-Klausel unterteilt die Ergebnisse der Abfrage anhand der Werte eine
 - Aliase von Eigenschaften oder Systemfunktionen (in der SELECT-Klausel sind Aliase weiterhin zulässig)
 - Unterabfragen
 - Aggregierte Systemfunktionen (diese sind nur in der SELECT-Klausel zulässig)
+
+Abfragen mit einer Aggregatsystemfunktion und einer Unterabfrage mit `GROUP BY` werden nicht unterstützt. Beispielsweise wird die folgende Abfrage nicht unterstützt:
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>Beispiele
 

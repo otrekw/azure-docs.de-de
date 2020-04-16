@@ -4,14 +4,14 @@ description: 'Vorgehensweise: Aktivieren der Unterstützung der verwalteten Iden
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76930463"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415669"
 ---
-# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Konfigurieren von Unterstützung der verwalteten Identität für einen neuen Service Fabric-Cluster (Vorschau)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Konfigurieren von Unterstützung der verwalteten Identität für einen neuen Service Fabric-Cluster
 
 Um [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) in Ihren Service Fabric-Anwendungen zu verwenden, aktivieren Sie zunächst den *Tokendienst für verwaltete Identitäten* auf dem Cluster. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er in Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** neben anderen Systemdiensten angezeigt.
 

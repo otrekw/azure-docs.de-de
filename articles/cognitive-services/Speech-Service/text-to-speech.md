@@ -3,19 +3,19 @@ title: Text-zu-Sprache – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Wählen Sie voreingestellte Stimmen aus, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131560"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399498"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 

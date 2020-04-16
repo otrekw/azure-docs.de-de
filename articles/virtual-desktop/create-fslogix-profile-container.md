@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535730"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270892"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
@@ -117,9 +117,6 @@ Als Nächstes müssen Sie den Beitritt zu einer Active Directory-Verbindung durc
     - Geben Sie unter **Präfix des SMB-Servers (Computerkonto)** die Zeichenfolge ein, die Sie an den Computerkontonamen anfügen möchten.
     - Geben Sie unter **Benutzername** den Namen des Kontos mit Berechtigungen zum Durchführen eines Domänenbeitritts ein.
     - Geben Sie unter **Kennwort** das Kennwort des Kontos ein.
-
-  >[!NOTE]
-  >Die bewährte Methode ist die Bestätigung, dass das Computerkonto, das Sie unter [Durchführen des Beitritts zu einer Active Directory-Verbindung](create-fslogix-profile-container.md#join-an-active-directory-connection) erstellt haben, in Ihrem Domänencontroller unter **Computer** oder in der **relevanten OE Ihres Unternehmens** angezeigt wird.
 
 ## <a name="create-a-new-volume"></a>Erstellen eines neuen Volumes
 

@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73672705"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410943"
 ---
 # <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In Zeiten von Big Data werden unorganisierte Rohdaten häufig in relationalen, nicht relationalen und anderen Speichersystemen gespeichert. Für sich genommen mangelt es den Rohdaten allerdings an Kontext bzw. an der nötigen Aussagekraft, um von Analysten, Datenspezialisten oder Entscheidungsträgern in Unternehmen sinnvoll genutzt werden zu können. 
 

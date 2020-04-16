@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 951ae2c48bcdd92f640a37ddbb6430ca62a3b816
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671810"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275495"
 ---
 > [!NOTE]
 > Das Speech SDK für Unity unterstützt Windows Desktop (x86 und x64) oder die universelle Windows-Plattform (x86, x64, ARM/ARM64) sowie Android (x86, ARM32/64) und iOS (x64-Simulator, ARM32 und ARM64).
@@ -133,4 +133,5 @@ Weitere Informationen finden Sie in unserem [Beispielrepository](https://aka.ms/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [footer](../footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

@@ -3,12 +3,12 @@ title: Aktualisieren eines Clusters, um den allgemeinen Namen des Zertifikats zu
 description: Erfahren Sie, wie Sie einen Service Fabric-Cluster so ändern, dass anstelle des Zertifikatfingerabdrucks der allgemeine Name des Zertifikats verwendet wird.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610198"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272626"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
@@ -20,12 +20,12 @@ Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Cluster
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Abrufen eines Zertifikats
-Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte der Hostname des Clusters sein.  Beispiel: "meinclustername.southcentralus.cloudapp.azure.com".  
+Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte für die benutzerdefinierte Domäne bestimmt sein, die Sie besitzen, und bei einer Domänenregistrierungsstelle gekauft sein. Beispiel: „azureservicefabricbestpractices.com“; da nur Microsoft-Mitarbeiter Zertifikate für MS-Domänen bereitstellen können, können Sie die DNS-Namen von Ihrem LB oder Traffic Manager nicht als allgemeine Namen für Ihr Zertifikat verwenden, und Sie müssen eine [Azure DNS-Zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) bereitstellen, wenn Ihre benutzerdefinierte Domäne in Azure auflösbar sein soll. Sie sollten auch Ihre benutzerdefinierte Domäne als „managementEndpoint“ Ihres Clusters deklarieren, wenn das Portal den Alias der benutzerdefinierten Domäne für Ihren Cluster reflektieren soll.
 
 Zu Testzwecken können Sie von einer kostenlosen oder offenen Zertifizierungsstelle ein von der Zertifizierungsstelle signiertes Zertifikat abrufen.
 
 > [!NOTE]
-> Selbstsignierte Zertifikate, einschließlich der beim Bereitstellen eines Service Fabric-Clusters im Azure-Portal generierten Zertifikate, werden nicht unterstützt.
+> Selbstsignierte Zertifikate, einschließlich der beim Bereitstellen eines Service Fabric-Clusters im Azure-Portal generierten Zertifikate, werden nicht unterstützt. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Hochladen des Zertifikats und Installieren in der Skalierungsgruppe
 In Azure wird ein Service Fabric-Cluster in einer VM-Skalierungsgruppe bereitgestellt.  Laden Sie das Zertifikat in einen Schlüsseltresor hoch, und installieren Sie es in der VM-Skalierungsgruppe, in welcher der Cluster ausgeführt wird.

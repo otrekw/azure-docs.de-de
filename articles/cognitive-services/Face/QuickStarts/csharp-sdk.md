@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78401755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403035"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für .NET
 
@@ -39,12 +39,9 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für .NET für Folgende
 
 ### <a name="create-a-face-azure-resource"></a>Erstellen einer Azure-Ressource für die Gesichtserkennung
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Gesichtserkennung. Sie können außerdem:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Gesichtserkennung. Sie können auch einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) abrufen, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 
-* Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
-* Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
-
-Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und eine Endpunkt-URL mit den Namen `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
+Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und eine Endpunkt-URL mit den Namen `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 

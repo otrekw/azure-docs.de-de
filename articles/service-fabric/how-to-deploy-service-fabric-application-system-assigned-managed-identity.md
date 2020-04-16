@@ -3,14 +3,14 @@ title: Bereitstellen einer Service Fabric-App mit systemseitig zugewiesener verw
 description: In diesem Artikel erfahren Sie, wie Sie einer Azure Service Fabric-Anwendung eine systemseitig zugewiesene verwaltete Identität zuweisen.
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614824"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415654"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität (Vorschau)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität
 
 Um auf das Feature für verwaltete Identitäten für Azure Service Fabric-Anwendungen zugreifen zu können, müssen Sie zunächst den Tokendienst für verwaltete Identitäten im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er in Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** neben anderen Systemdiensten angezeigt.
 
