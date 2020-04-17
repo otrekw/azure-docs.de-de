@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fea0f74a90bc7b786a9b302d6282f9fb70e5412
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78675628"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991482"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
@@ -27,7 +27,7 @@ In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (g
 >Das Betriebssystemupgrade liegt in der Zuständigkeit des Kunden. Der Microsoft Operations-Support kann Sie dabei auf wichtige Punkte hinweisen, die beim Upgrade zu beachten sind. Bevor Sie Planungen für ein Upgrade treffen, sollten Sie auch den Hersteller Ihres Betriebssystems zurate ziehen.
 
 Das Microsoft Operations-Team installiert das Betriebssystem während der Bereitstellung der HLI-Einheiten.
-Im Laufe der Zeit müssen Sie Wartungsvorgänge für das Betriebssystem für die HLI-Einheit vornehmen (z.B. Patches erstellen, Optimierungen sowie Upgrades durchführen).
+Im Lauf der Zeit müssen Sie Wartungsvorgänge für das Betriebssystem für die HLI-Einheit vornehmen (z.B. Patches erstellen, optimieren, Upgrades durchführen).
 
 Bevor Sie umfassende Änderungen am Betriebssystem vornehmen (z.B. ein Upgrade von SP1 auf SP2), müssen Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket öffnen.
 
@@ -62,6 +62,7 @@ Die Betriebssystemkonfiguration kann sich im Lauf der Zeit aufgrund angewendeter
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3b           |  2.3.0.47    |   2.0.0.54   |
   |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
  
 

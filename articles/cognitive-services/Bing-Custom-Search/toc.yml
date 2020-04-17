@@ -29,7 +29,7 @@
           items:
             - name: Clientbibliotheken der benutzerdefinierten Bing-Suche
               href: ./quickstarts/client-libraries.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer benutzerdefinierten Suchwebseite
       href: ./tutorials/custom-search-web-page.md
@@ -37,7 +37,7 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
       href: define-your-custom-view.md
@@ -108,7 +108,7 @@
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Endpunkt für die benutzerdefinierte Bing-Suche
       href: endpoint-custom.md
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

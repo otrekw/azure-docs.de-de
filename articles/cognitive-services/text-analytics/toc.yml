@@ -30,7 +30,7 @@
           href: quickstarts/go.md
         - name: Verwenden von Ruby
           href: quickstarts/ruby.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -48,11 +48,11 @@
   items:
     - name: Benannte Entitätstypen
       href: named-entity-types.md
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Textversätze
       href: concepts/text-offsets.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Aufrufen der Textanalyse-API
       href: How-tos/text-analytics-how-to-call-api.md

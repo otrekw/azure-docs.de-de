@@ -13,7 +13,7 @@
       href: quickstart-nodejs.md
     - name: Verwenden von Swift (iOS)
       href: ios-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
@@ -42,6 +42,6 @@
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Sprachunterstützung
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

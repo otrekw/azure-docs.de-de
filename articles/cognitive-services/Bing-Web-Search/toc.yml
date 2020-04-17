@@ -29,7 +29,7 @@
       items:
         - name: Clientbibliotheken für die Bing-Websuche
           href: ./quickstarts/client-libraries.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-web-search-single-page-app.md
@@ -39,7 +39,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
     - name: SDK-Beispiele
       href: sdk-samples.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Filtern von Antworten
       href: filter-answers.md
@@ -95,7 +95,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Analyse für die Bing-Websuche-API
       href: bing-web-stats.md

@@ -28,7 +28,7 @@
       items:
         - name: Clientbibliotheken für die Bing-Bildersuche
           href: ./quickstarts/client-libraries.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer Webanwendung für die Bildersuche
       href: tutorial-bing-image-search-single-page-app.md
@@ -38,7 +38,7 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Abrufen von Bildauswertungen
       href: image-insights.md
@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing-Bildersuche-Endpunkte
       href: image-search-endpoint.md
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Analysen für Bing-Bildersuche-API
       maintainContext: true

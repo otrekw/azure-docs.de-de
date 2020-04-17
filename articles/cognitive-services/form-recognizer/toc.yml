@@ -38,11 +38,11 @@
               href: quickstarts/python-layout.md
     - name: Verwenden des .NET SDK
       href: quickstarts/dotnet-sdk.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden der Formularerkennung mit Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
       href: build-training-data-set.md
@@ -80,5 +80,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: Sprachunterstützung
+      href: language-support.md
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -28,11 +28,11 @@
       items:
         - name: 'Verwenden von C#'
           href: sdk-quickstart-spell-check.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer Rechtschreibprüfungs-Web-App
       href: tutorials/spellcheck.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Upgrade von v5 auf v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -72,7 +72,7 @@
     - name: Analyse für Bing-Rechtschreibprüfungs-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Sprach- und Regionsunterstützung
+    - name: Sprachunterstützung
       href: language-support.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

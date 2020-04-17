@@ -20,7 +20,7 @@
           href: quickstart-languages.md
         - name: Bestimmen der Satzlänge
           href: quickstart-sentences.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: 'Erstellen einer WPF-App für Textübersetzung (C#)'
           href: tutorial-wpf-translation-csharp.md
@@ -32,7 +32,7 @@
           href: customization.md
         - name: Vorgehensweise der API beim Zählen von Zeichen
           href: character-counts.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Registrieren für die Textübersetzungs-API
           href: translator-text-how-to-signup.md
@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Häufig gestellte Fragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Sprach- und Regionsunterstützung
+        - name: Sprachunterstützung
           href: language-support.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
@@ -138,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-Bewertung
           href: custom-translator/what-is-bleu-score.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Erstellen eines Projekts
           href: custom-translator/how-to-create-project.md
