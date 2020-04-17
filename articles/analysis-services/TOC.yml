@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: Hochverfügbarkeit
       href: analysis-services-bcdr.md
+    - name: Zeitintensive Vorgänge
+      href: analysis-services-long-operations.md
     - name: Unterstützte Datenquellen
       href: analysis-services-datasource.md
 - name: Vorgehensweise

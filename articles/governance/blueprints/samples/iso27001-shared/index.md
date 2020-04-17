@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.'
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381574"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458453"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -34,7 +34,7 @@ Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung 
   - Eine Jumpbox oder einen Bastionhost für Verwaltungszwecke, wobei der Zugriff nur über eine [Azure Firewall](../../../../firewall/overview.md) möglich ist, die im Eingangsstapelsubnetz bereitgestellt wird
   - Zwei virtuelle Computer mit Ausführung von Active Directory Domain Services (AD DS) und DNS, auf die nur über die Jumpbox zugegriffen werden kann und die so konfiguriert werden können, dass die Replikation nur per AD über eine VPN- oder [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-Verbindung (keine Bereitstellung durch die Blaupause) durchgeführt wird
   - Verwendung von [Azure Network Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) und DDoS-Standardschutz
-- Eine [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
+- Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.
 

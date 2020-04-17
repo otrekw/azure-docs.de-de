@@ -1,5 +1,7 @@
 - name: Schnittebenen
   href: cut-planes.md
+- name: Debuggen des Renderings
+  href: debug-rendering.md
 - name: Hierarchische Zustandsüberschreibung
   href: override-hierarchical-state.md
 - name: LSR (Late State Reprojection)

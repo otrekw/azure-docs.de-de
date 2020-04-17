@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Zertifikate
+summary: Mit Azure Key Vault können Microsoft Azure-Anwendungen und -Benutzer Zertifikate speichern und verwenden, die auf Schlüsseln und Geheimnissen basieren, und eine automatisierte Verlängerungsfunktion hinzufügen.
+metadata:
+  title: 'Azure Key Vault-Dokumentation: Zertifikate'
+  description: Mit Azure Key Vault können Microsoft Azure-Anwendungen und -Benutzer Zertifikate speichern und verwenden, die auf Schlüsseln und Geheimnissen basieren, und eine automatisierte Verlängerungsfunktion hinzufügen.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423529"
+landingContent:
+- title: Zertifikate
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Key Vault-Zertifikate?
+      url: about-certificates.md
+    - text: Erste Schritte mit Key Vault-Zertifikaten
+      url: certificate-scenarios.md
+    - text: Methoden für die Zertifikaterstellung
+      url: create-certificate.md
+    - text: Überwachen und Verwalten der Zertifikaterstellung
+      url: create-certificate-scenarios.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure-Befehlszeilenschnittstelle
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portal
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Importieren eines Zertifikats in Key Vault
+      url: tutorial-import-certificate.md
+- title: Weitere Informationen zu Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über Key Vault
+      url: ../general/overview.md
+    - text: Grundlegende Konzepte
+      url: ../general/basic-concepts.md
+    - text: 'Vorläufiges Löschen: Übersicht'
+      url: ../general/overview-soft-delete.md
+    - text: Sicherheitsübersicht
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

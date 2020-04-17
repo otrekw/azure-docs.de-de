@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: Zurücksetzen Ihres Kennworts
       href: active-directory-passwords-update-your-own-password.md
+- name: Hilfe zum Portal „Meine Mitarbeiter“
+  items:
+    - name: Benutzerverwaltung für „Meine Mitarbeiter“
+      href: my-staff-team-manager.md
 - name: Hilfe zur Microsoft Authenticator-App
   items:
     - name: Wozu dient die Microsoft Authenticator-App?

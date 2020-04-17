@@ -15,23 +15,23 @@
   items:
     - name: Storage-Ereignisse
       items:
+        - name: Portal
+          href: blob-event-quickstart-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Portal
-          href: blob-event-quickstart-portal.md
         - name: ARM-Vorlage
           displayName: Resource Manager
           href: blob-event-quickstart-template.md
     - name: Benutzerdefinierte Ereignisse
       items:
+        - name: Portal
+          href: custom-event-quickstart-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: Portal
-          href: custom-event-quickstart-portal.md
     - name: Azure Functions als Ereignishandler
       href: custom-event-to-function.md
     - name: Warteschlangenspeicher als Ereignishandler
@@ -96,10 +96,63 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: Konzepte
   items:
-    - name: Event Grid-Konzepte
+    - name: Event Grid-Terminologie
       href: concepts.md
+    - name: Benutzerdefinierte Themen
+      href: custom-topics.md
     - name: Systemthemen
-      href: system-topics.md
+      items:
+        - name: Übersicht über Systemthemen
+          href: system-topics.md
+        - name: Ereignisquellen
+          items:
+            - name: Azure App Configuration
+              href: event-schema-app-configuration.md
+            - name: Azure Blob Storage
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure Event Hubs
+              href: event-schema-event-hubs.md
+            - name: Azure IoT Hub
+              href: event-schema-iot-hub.md
+            - name: Azure-Schlüsseltresor
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure Maps
+              href: event-schema-azure-maps.md
+            - name: Azure Media Services
+              href: event-schema-media-services.md
+            - name: Azure-Ressourcengruppen
+              href: event-schema-resource-groups.md
+            - name: Azure-Servicebus
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Azure-Abonnements
+              href: event-schema-subscriptions.md
+    - name: Ereignisdomänen
+      href: event-domains.md
+    - name: Ereignisschemaformate
+      items:
+        - name: Event Grid-Ereignisschema
+          href: event-schema.md
+        - name: Cloudereignisschema
+          href: cloud-event-schema.md
+    - name: Ereignishandler
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
+      href: event-handlers.md
+    - name: Ereignisbereitstellung
+      items:
+        - name: Ereignisfilterung
+          href: event-filtering.md
+        - name: Übermittlung und Wiederholung
+          href: delivery-and-retry.md
+    - name: Notfallwiederherstellung
+      items:
+        - name: Notfallwiederherstellung mit Georeplikation
+          href: geo-disaster-recovery.md
     - name: Sicherheit
       items:
         - name: Authentifizierung
@@ -108,20 +161,6 @@
           href: security-authorization.md
         - name: Netzwerksicherheit
           href: network-security.md
-    - name: Übermittlung und Wiederholung
-      href: delivery-and-retry.md
-    - name: Ereignisfilterung
-      href: event-filtering.md
-    - name: Ereignisdomänen
-      href: event-domains.md
-    - name: Ereignisquellen
-      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
-      href: event-sources.md
-    - name: Ereignishandler
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
-      href: event-handlers.md
-    - name: Notfallwiederherstellung mit Georeplikation
-      href: geo-disaster-recovery.md
 - name: Anleitungen
   items:
     - name: Konfigurieren privater Endpunkte (Vorschau)
@@ -140,8 +179,6 @@
       href: manage-event-delivery.md
     - name: Filtern von Ereignissen
       href: how-to-filter-events.md
-    - name: Überwachen der Ereignisbereitstellung
-      href: monitor-event-delivery.md
     - name: Abfragen von Ereignisabonnements
       href: query-event-subscriptions.md
     - name: Abonnieren über das Portal
@@ -154,10 +191,14 @@
       href: how-to-event-domains.md
     - name: Implementieren des clientseitigen Failovers
       href: custom-disaster-recovery.md
-    - name: Beheben von Fehlern
-      href: troubleshoot-errors.md
-    - name: Aktivieren von Diagnoseprotokollen für ein Thema
-      href: enable-diagnostic-logs-topic.md
+    - name: Problembehandlung
+      items:
+        - name: Aktivieren von Diagnoseprotokollen für ein Thema
+          href: enable-diagnostic-logs-topic.md
+        - name: Beheben von Fehlern
+          href: troubleshoot-errors.md
+        - name: Überwachen der Ereignisbereitstellung
+          href: monitor-event-delivery.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -176,35 +217,6 @@
       href: /javascript/api/overview/azure/eventgrid
     - name: Abonnementschema
       href: subscription-creation-schema.md
-    - name: Ereignisschema
-      href: event-schema.md
-      items:
-        - name: Azure-Abonnements
-          href: event-schema-subscriptions.md
-        - name: Blob Storage
-          href: event-schema-blob-storage.md
-        - name: Containerregistrierung
-          href: event-schema-container-registry.md
-        - name: Event Hubs
-          href: event-schema-event-hubs.md
-        - name: IoT Hub
-          href: event-schema-iot-hub.md
-        - name: Key Vault
-          href: event-schema-key-vault.md
-        - name: Media Services
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Ressourcengruppen
-          href: event-schema-resource-groups.md
-        - name: Service Bus
-          href: event-schema-service-bus.md
-        - name: Azure Maps
-          href: event-schema-azure-maps.md
-        - name: App Configuration
-          href: event-schema-app-configuration.md
-        - name: Azure SignalR
-          href: event-schema-azure-signalr.md
-        - name: Azure Machine Learning
-          href: event-schema-machine-learning.md
     - name: Vorlagenressourcen
       items:
         - name: Ereignisabonnements

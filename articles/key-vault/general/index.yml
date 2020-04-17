@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Key Vault
+summary: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+metadata:
+  title: Dokumentation zu Azure Key Vault
+  description: Hier erfahren Sie, wie Sie mithilfe von Key Vault Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81422403"
+landingContent:
+- title: Informationen zu Azure Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Key Vault?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Grundlegende Konzepte
+      url: basic-concepts.md
+    - text: Vorläufiges Löschen
+      url: overview-soft-delete.md
+    - text: Drosselung
+      url: overview-throttling.md
+- title: Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Key Vault über eine Webanwendung
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Key Vault mit einer Azure-Windows-VM
+      url: tutorial-net-windows-virtual-machine.md
+    - text: 'Key Vault mit Python: Windows'
+      url: tutorial-python-windows-virtual-machine.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Schützen einer Key Vault-Instanz
+      url: secure-your-key-vault.md
+    - text: Sicherheitsempfehlungen
+      url: security-recommendations.md
+    - text: Sicherheitsbaseline
+      url: security-baseline.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden von Private Link
+      url: private-link-service.md
+    - text: Verwenden einer verwalteten Identität
+      url: managed-identity.md
+    - text: Verwenden einer Zugriffsrichtlinie
+      url: group-permissions-for-apps.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/
