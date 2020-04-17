@@ -1,5 +1,5 @@
 ---
-title: Planungs- und Betriebshandbuch für Security Center | Microsoft Docs
+title: Planungs- und Betriebshandbuch für Azure Security Center
 description: Dieses Dokument ist hilfreich bei der Planung der Verwendung von Azure Security Center und informiert über Aspekte des täglichen Betriebs.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236766"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810472"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
+# <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
 
 
@@ -131,15 +131,15 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-recommendations), ob diese Richtlinien für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Es ist auch wichtig zu verstehen, welche Aktionen aufgrund der Sicherheitsempfehlungen ausgeführt werden sollten und wer in Ihrer Organisation für die Überwachung neuer Empfehlungen und die Durchführung der erforderlichen Schritte verantwortlich ist.
 
 ## <a name="data-collection-and-storage"></a>Datensammlung und -speicherung
-Azure Security Center verwendet Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Computern zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
+Azure Security Center verwendet den Log Analytics-Agent, um sicherheitsrelevante Daten von Ihren VMs (virtuelle Computer) zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
 
 ### <a name="agent"></a>Agent
 
-Wenn in der Sicherheitsrichtlinie die automatische Bereitstellung aktiviert ist, wird Microsoft Monitoring Agent (für [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) oder [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) auf allen unterstützten virtuellen Azure-Computern sowie auf allen neu erstellten virtuellen Computern installiert. Wenn Microsoft Monitoring Agent bereits auf dem virtuellen oder physischen Computer installiert wurde, nutzt Azure Security Center den installierten Agent. Der Prozess des Agents ist so konzipiert, dass er nicht invasiv ist und nur eine minimale Auswirkung auf die VM-Leistung hat.
+Wenn in der Sicherheitsrichtlinie die automatische Bereitstellung aktiviert ist, wird der Log Analytics-Agent (für [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) oder [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) auf allen unterstützten Azure-VMs sowie auf allen neu erstellten VMs installiert. Wenn der Log Analytics-Agent bereits auf der VM oder dem Computer installiert wurde, nutzt Azure Security Center den installierten Agent. Der Prozess des Agents ist so konzipiert, dass er nicht invasiv ist und nur eine minimale Auswirkung auf die VM-Leistung hat.
 
-Der Microsoft Monitoring Agent für Windows erfordert TCP-Port 443. Weitere Informationen finden Sie im Artikel zur [Problembehandlung](security-center-troubleshooting-guide.md).
+Der Log Analytics-Agent für Windows erfordert TCP-Port 443. Weitere Informationen finden Sie im Artikel zur [Problembehandlung](security-center-troubleshooting-guide.md).
 
-Die Datensammlung kann bei Bedarf in der Sicherheitsrichtlinie deaktiviert werden. Da der Microsoft Monitoring Agent möglicherweise durch andere Azure-Dienste zur Verwaltung und Überwachung verwendet wird, wird der Agent jedoch nicht automatisch deinstalliert, wenn Sie die Datensammlung in Security Center deaktivieren. Sie können den Agent bei Bedarf manuell deinstallieren.
+Die Datensammlung kann bei Bedarf in der Sicherheitsrichtlinie deaktiviert werden. Da der Log Analytics-Agent möglicherweise durch andere Überwachungs- und Verwaltungsdienste von Azure verwendet wird, wird der Agent jedoch nicht automatisch deinstalliert, wenn Sie die Datensammlung in Security Center deaktivieren. Sie können den Agent bei Bedarf manuell deinstallieren.
 
 > [!NOTE]
 > Eine Liste mit unterstützten virtuellen Computern finden Sie unter [Azure Security Center – Häufig gestellte Fragen (FAQ)](faq-vms.md).
@@ -148,12 +148,12 @@ Die Datensammlung kann bei Bedarf in der Sicherheitsrichtlinie deaktiviert werde
 
 Ein Arbeitsbereich ist eine Azure-Ressource, die als Container für Daten fungiert. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
 
-Die vom Microsoft Monitoring Agent (für Azure Security Center) gesammelten Daten werden in einem vorhandenen Log Analytics-Arbeitsbereich, der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in neuen Arbeitsbereichen gespeichert.
+Die vom Log Analytics-Agent (für Azure Security Center) gesammelten Daten werden in einem vorhandenen Log Analytics-Arbeitsbereich, der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts der VM in neuen Arbeitsbereichen gespeichert.
 
 Sie können das Azure-Portal durchsuchen, um eine Liste Ihrer Log Analytics-Arbeitsbereiche (einschließlich aller von Azure Security Center erstellten) anzuzeigen. Für neue Arbeitsbereiche wird eine zugehörige Ressourcengruppe erstellt. Für beide gilt folgende Namenskonvention:
 
 * Arbeitsbereich: *DefaultWorkspace-[Abonnement-ID]-[Region]*
-* Ressourcengruppe: *DefaultResourceGroup-[geo]*
+* Ressourcengruppe: *DefaultResourceGroup-[Region]*
 
 Für Arbeitsbereiche, die von Azure Security Center erstellt wurden, werden die Daten 30 Tage lang beibehalten. Bei vorhandenen Arbeitsbereichen basiert die Vermerkdauer auf dem Tarif des Arbeitsbereichs. Sie können auch einen bereits vorhandenen Arbeitsbereich verwenden.
 
@@ -181,7 +181,7 @@ Nach der Umsetzung aller Empfehlungen werden im Abschnitt **Prävention** alle b
 
 Der Abschnitt **Erkennung** ist eher reaktionsorientiert. Die Warnungen beziehen sich auf Probleme, die entweder aktuell vorliegen oder in der Vergangenheit aufgetreten sind und bei Security Center-Kontrollen oder von Drittanbietersystemen erkannt wurden. Auf der Kachel „Sicherheitswarnungen“ werden anhand von Balkendiagrammen die Anzahl gefundener Warnungen pro Tag sowie deren Verteilung auf unterschiedliche Schweregradkategorien (niedrig, mittel, hoch) angezeigt. Weitere Informationen zu Sicherheitswarnungen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Planen Sie den täglichen Aufruf der Option [Informationen zu Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) ein. Hier können Sie sich über Sicherheitsrisiken für die Umgebung informieren und so beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist.
+Planen Sie den täglichen Aufruf der Option „Informationen zu Bedrohungen“ ein. Hier können Sie sich über Sicherheitsrisiken für die Umgebung informieren und so beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Überwachung auf neue oder geänderte Ressourcen
 Die meisten Azure-Umgebungen sind dynamisch, wobei Ressourcen regelmäßig erstellt, hoch- oder heruntergefahren, neu konfiguriert und geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
@@ -200,7 +200,7 @@ Außerdem sollten Sie die vorhandenen Ressourcen regelmäßig auf Konfigurations
 ![Operationen (Operations)](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. Über den Abschnittsbereich **Prävention** können Sie schnell auf Ihre wichtigsten Ressourcen zugreifen. Verwenden Sie diese Option für die Überwachung von Compute, Netzwerk, Speicher und Daten und Anwendungen.
-2. Der Bereich **Empfehlungen** enthält die Empfehlungen von Security Center. Im Rahmen der kontinuierlichen Überwachung stehen möglicherweise nicht jeden Tag Empfehlungen zur Verfügung. Dies ist normal, da Sie ja alle Empfehlungen bei der Ersteinrichtung von Security Center umgesetzt haben. Aus diesem Grund enthält der Abschnitt unter Umständen nicht täglich neue Informationen, sodass Sie nur bei Bedarf darauf zugreifen müssen.
+2. Der Bereich **Empfehlungen** enthält die Empfehlungen von Security Center. Im Rahmen der kontinuierlichen Überwachung stehen möglicherweise nicht jeden Tag Empfehlungen zur Verfügung. Dies ist normal, da Sie alle Empfehlungen bei der Ersteinrichtung von Security Center umgesetzt haben. Aus diesem Grund enthält der Abschnitt unter Umständen nicht täglich neue Informationen, sodass Sie nur bei Bedarf darauf zugreifen müssen.
 3. Der Abschnitt **Erkennung** kann sich sehr häufig oder auch nur sehr selten ändern. Prüfen Sie immer Ihre Sicherheitswarnungen, und setzen Sie die Empfehlungen von Security Center um.
 
 ### <a name="hardening-access-and-applications"></a>Härten von Zugriff und Anwendungen
@@ -213,7 +213,7 @@ Sie können [adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/se
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 Security Center erkennt Bedrohungen, wenn diese entstehen, und macht Sie darauf aufmerksam. Organisationen sollten eine Überwachung auf neue Sicherheitswarnungen implementieren und bei Bedarf geeignete Maßnahmen zur weiteren Untersuchung oder Abwehr des Angriffs ergreifen. Weitere Informationen zur Funktionsweise des Security Center-Bedrohungsschutzes finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
 
-Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Plans für Reaktionen auf Zwischenfälle dienen, aber wir verwenden Microsoft Azure Security Response im Cloudlebenszyklus als Grundlage für die Phasen der Reaktionen auf Zwischenfälle. Die Phasen sind in der folgenden Abbildung dargestellt:
+Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Reaktionsplans für Sicherheitsvorfälle dienen, aber wir verwenden Microsoft Azure Security Response im Cloudlebenszyklus als Grundlage für die Phasen der Reaktionen auf Vorfälle. Die Phasen sind in der folgenden Abbildung dargestellt:
 
 ![Verdächtige Aktivitäten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ Das folgende Beispiel zeigt eine verdächtige RDP-Aktivität:
 
 Diese Seite enthält Details zur Angriffszeit, den Hostnamen der Quelle, den virtuellen Zielcomputer sowie empfohlene Schritte. In bestimmten Fällen sind die Quellinformationen des Angriffs möglicherweise leer. Weitere Informationen hierzu finden Sie unter [Fehlende Quellinformationen in Azure Security Center-Warnungen](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) .
 
-Auf dieser Seite können Sie auch eine [Untersuchung](https://docs.microsoft.com/azure/security-center/security-center-investigation) starten, um den Angriffsverlauf nachzuvollziehen und zu ermitteln, wie der Angriff durchgeführt wurde, welche Systeme möglicherweise betroffen sind und welche Anmeldeinformationen verwendet wurden. Außerdem können Sie sich eine grafische Darstellung der gesamten Angriffskette ansehen.
+Auf dieser Seite können Sie auch eine Untersuchung starten, um den Angriffsverlauf nachzuvollziehen und zu ermitteln, wie der Angriff durchgeführt wurde, welche Systeme möglicherweise betroffen sind und welche Anmeldeinformationen verwendet wurden. Außerdem können Sie sich eine grafische Darstellung der gesamten Angriffskette ansehen.
 
 Nach Ermittlung des betroffenen Systems können Sie eine zuvor erstellte [Workflowautomatisierung](workflow-automation.md) ausführen. Dabei handelt es sich um eine Sammlung von Prozeduren, die aus Security Center ausgeführt werden können, sobald sie durch eine Warnung ausgelöst wurden.
 

@@ -4,26 +4,26 @@ description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Daten
 author: gitralf
 services: germany
 cloud: Azure Germany
-ms.author: ralfwi
+ms.author: juliako
 ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e924a8e9ed80ae8a466cda5211a1637ed873b3e5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d24c87e0ebb5e5297a62f00186cd182b1aa48cd9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632719"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
 > [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Germany-Standorten bereitgestellt.
+> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
 >
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, indem Sie noch heute [migrieren](germany-migration-main.md).
+> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -134,6 +134,12 @@ Bei diesem Ansatz müssen Sie Ihre Anwendung ändern. Die Anwendung muss Daten i
 Weitere Informationen finden Sie unter:
 
 - Lesen Sie die [Übersicht über Azure-Cache für Redis](../redis-cache/cache-overview.md).
+
+## <a name="postgresql-and-mysql"></a>PostgreSQL und MySQL
+
+Weitere Informationen finden Sie in den Artikeln im Abschnitt „Sichern und Migrieren von Daten“ in [PostgreSQL](https://docs.microsoft.com/azure/postgresql/) und [MySQL](https://docs.microsoft.com/azure/mysql/).
+
+![PostgreSQL und MySQL](./media/germany-migration-main/databases.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

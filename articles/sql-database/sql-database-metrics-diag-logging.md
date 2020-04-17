@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387902"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756418"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetriedaten für Azure SQL-Datenbank
 
@@ -454,9 +454,15 @@ In der folgenden Tabelle finden Sie Details zu den erweiterten Metriken.
 
 |**Metrik**|**Metrikanzeigename**|**Beschreibung**|
 |---|---|---|
-|tempdb_data_size| Größe der tempdb-Datendatei in Kilobytes |Die Größe der tempdb-Datendatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen oder mindestens 200 DTUs (bei DTU-basierten Kaufmodellen) verwenden. Diese Metrik ist derzeit für Hyperscale-Datenbanken nicht verfügbar.|
-|tempdb_log_size| Größe der tempdb-Protokolldatei in Kilobytes |Die Größe der tempdb-Protokolldatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen oder mindestens 200 DTUs (bei DTU-basierten Kaufmodellen) verwenden. Diese Metrik ist derzeit für Hyperscale-Datenbanken nicht verfügbar.|
-|tempdb_log_used_percent| Nutzung des tempdb-Protokolls in Prozent |Die Nutzung des tempdb-Protokolls in Prozent. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen oder mindestens 200 DTUs (bei DTU-basierten Kaufmodellen) verwenden. Diese Metrik ist derzeit für Hyperscale-Datenbanken nicht verfügbar.|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server-Prozess: Kern (in Prozent)|CPU-Auslastungsprozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem.|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Arbeitsspeicherauslastungs-Prozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem.|
+|tempdb_data_size<sup>2</sup>| Größe der tempdb-Datendatei in Kilobytes |Die Größe der tempdb-Datendatei in Kilobytes.|
+|tempdb_log_size<sup>2</sup>| Größe der tempdb-Protokolldatei in Kilobytes |Die Größe der tempdb-Protokolldatei in Kilobytes.|
+|tempdb_log_used_percent<sup>2</sup>| Nutzung des tempdb-Protokolls in Prozent |Die Nutzung des tempdb-Protokolls in Prozent.|
+
+<sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). 
+
+<sup>2</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). Diese Metrik ist derzeit nicht für Hyperscale-Datenbanken oder Data Warehouses verfügbar.
 
 ### <a name="basic-logs"></a>Grundlegende-Protokolle
 

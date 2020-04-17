@@ -3,12 +3,12 @@ title: 'Verwalten von Wissensdatenbanken: QnA Maker'
 description: Über QnA Maker können Sie zur Verwaltung Ihrer Wissensdatenbanken auf deren Einstellungen und Inhalte zugreifen.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071073"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756802"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Erstellen einer Wissensdatenbank und Verwalten der Einstellungen
 
@@ -107,5 +107,5 @@ Wenn Sie Ihre Wissensdatenbank für [Mitwirkende](collaborate-knowledge-base.md)
 
 Informieren Sie sich über das [Verwalten der Sprache](language-knowledge-base.md) aller Wissensdatenbanken in einer Ressource.
 
-* Bearbeiten von Frage-Antwort-Sätzen
+* Bearbeiten von Frage-Antwort-Paaren
 * Verwalten der von QnA Maker verwendeten Azure-Ressourcen

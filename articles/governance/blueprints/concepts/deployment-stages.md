@@ -3,27 +3,27 @@ title: Phasen einer Blaupausenbereitstellung
 description: Erfahren Sie etwas über die Schritte in Bezug auf Sicherheit und Artefakte, die von den Azure Blueprints-Diensten beim Erstellen einer Blaupausenzuweisung durchlaufen werden.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d19c84cd659b9df3a272c5c2743944e51df06e
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76156623"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677325"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Phasen einer Blaupausenbereitstellung
 
 Wenn eine Blaupause bereitgestellt wird, werden mehrere Aktionen vom Azure Blueprints-Dienst durchgeführt, um die in der Blaupause definierten Ressourcen bereitzustellen. In diesem Artikel werden die einzelnen Schritte erläutert.
 
-Die Blaupausenbereitstellung wird durch Zuweisen einer Blaupause zu einem Abonnement oder durch [Aktualisieren einer vorhandenen Zuweisung](../how-to/update-existing-assignments.md) ausgelöst. Während der Bereitstellung führt der Azure Blueprints-Dienst die folgenden allgemeinen Schritte aus:
+Die Blaupausenbereitstellung wird durch Zuweisen einer Blaupause zu einem Abonnement oder durch [Aktualisieren einer vorhandenen Zuweisung](../how-to/update-existing-assignments.md) ausgelöst. Während der Bereitstellung führt Azure Blueprints die folgenden allgemeinen Schritte aus:
 
 > [!div class="checklist"]
-> - Azure Blueprints gewährt Besitzerrechte
+> - Azure Blueprints werden Besitzerrechte gewährt.
 > - Erstellen des Blaupausenzuweisungsobjekts
 > - Optional: Azure Blueprints erstellt eine **systemseitig zugewiesene** verwaltete Identität
 > - Die verwaltete Identität stellt Blaupausenartefakte bereit
-> - Die Rechte des Azure Blueprints-Diensts und der **systemseitig zugewiesenen** verwalteten Identität werden widerrufen
+> - Die Rechte des Azure Blueprints-Diensts und der **systemseitig zugewiesenen** verwalteten Identität werden widerrufen.
 
-## <a name="blueprints-granted-owner-rights"></a>Azure Blueprints gewährt Besitzerrechte
+## <a name="azure-blueprints-granted-owner-rights"></a>Azure Blueprints werden Besitzerrechte gewährt.
 
 Dem Azure Blueprints-Dienstprinzipal werden Besitzerrechte für die zugewiesenen Abonnements oder für Abonnements gewährt, wenn eine [systemseitig zugewiesene verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) verwendet wird. Mit der gewährten Rolle kann Azure Blueprints die **systemseitig zugewiesene verwaltete Identität** erstellen und später widerrufen. Wenn eine **vom Benutzer zugewiesene** verwaltete Identität verwendet wird, erhält der Azure Blueprints-Dienstprinzipal keine Besitzerrechte für das Abonnement, und er benötigt diese auch nicht.
 
@@ -37,7 +37,7 @@ Ein Benutzer, eine Gruppe oder ein Dienstprinzipal weist eine Blaupause zu einem
 
 Bei der Erstellung der Blaupausenzuweisung wird der Typ der [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md) ausgewählt. Die **systemseitig zugewiesene** verwaltete Identität entspricht dem Standardtyp. Eine **benutzerseitig zugewiesene** verwaltete Identität kann ebenfalls ausgewählt werden. Bei der Verwendung einer **benutzerseitig zugewiesenen** verwalteten Identität muss diese definiert werden und die Berechtigungen erhalten, bevor die Blaupausenzuweisung erstellt wird. Die integrierten Rollen [Besitzer](../../../role-based-access-control/built-in-roles.md#owner) und [Blueprint-Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) verfügen über die erforderliche `blueprintAssignment/write`-Berechtigung zum Erstellen einer Zuweisung, die eine **vom Benutzer zugewiesene** verwaltete Identität verwendet.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optional: Azure Blueprints erstellt eine systemseitig zugewiesene verwaltete Identität
+## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>Optional: Azure Blueprints erstellt eine systemseitig zugewiesene verwaltete Identität
 
 Wenn die [systemseitig zugewiesene verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) während der Zuweisung ausgewählt wird, erstellt Azure Blueprints die verwaltete Identität und weist ihr die Rolle [Besitzer](../../../role-based-access-control/built-in-roles.md#owner) zu. Wenn eine [vorhandene Zuweisung aktualisiert wird](../how-to/update-existing-assignments.md), verwendet Azure Blueprints die zuvor erstellte verwaltete Identität.
 
@@ -52,7 +52,7 @@ Oft ist der Zugriff, der der verwalteten Identität gewährt wird, die Ursache f
 
 ## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Die Rechte des Azure Blueprints-Diensts und der systemseitig zugewiesenen verwalteten Identität werden widerrufen
 
-Sobald die Bereitstellungen abgeschlossen sind, widerruft der Azure Blueprints-Dienst die Rechte der **systemseitig zugewiesenen** verwalteten Identität aus dem Abonnement. Dann widerruft der Azure Blueprints-Dienst die eigenen Rechte aus dem Abonnement. Durch die Entfernung der Rechte wird verhindert, dass der Azure Blueprints-Dienst der dauerhafte Besitzer eines Abonnements wird.
+Sobald die Bereitstellungen abgeschlossen sind, widerruft Azure Blueprints die Rechte der **systemseitig zugewiesenen** verwalteten Identität aus dem Abonnement. Dann widerruft der Azure Blueprints-Dienst die eigenen Rechte aus dem Abonnement. Durch die Entfernung der Rechte wird verhindert, dass Azure Blueprints der dauerhafte Besitzer eines Abonnements wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

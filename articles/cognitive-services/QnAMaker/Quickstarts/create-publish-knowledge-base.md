@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen, Trainieren und Veröffentlichen einer Wissensda
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf der Grundlage einer einfachen FAQ-Webseite, um Fragen zu QnA Maker zu beantworten.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219016"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756824"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -135,7 +135,7 @@ Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffent
 
 ## <a name="what-did-you-accomplish"></a>Was haben Sie erreicht?
 
-Sie haben eine neue Wissensdatenbank erstellt, der Wissensdatenbank eine öffentliche URL hinzugefügt, ihren eigenen QnA-Satz hinzugefügt, trainiert, getestet und die Wissensdatenbank veröffentlicht.
+Sie haben eine neue Wissensdatenbank erstellt, der Wissensdatenbank eine öffentliche URL hinzugefügt, Ihr eigenes QnA-Paar hinzugefügt, trainiert, getestet und die Wissensdatenbank veröffentlicht.
 
 Nachdem Sie die Wissensdatenbank veröffentlicht haben, haben Sie einen Bot erstellt und getestet.
 

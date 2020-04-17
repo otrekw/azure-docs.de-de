@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286590"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983346"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Übersicht über das Veröffentlichen von IoT Edge-Modulangeboten
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://aka.ms/AzureCreateIoT).
 
 <table> <tr> <td>In diesem Abschnitt wird beschrieben, wie Sie ein neues Angebot für ein Azure IoT Edge-Modul auf dem <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> von Microsoft veröffentlichen. Ein IoT Edge-Modul ist ein Docker-kompatibler Container, der zur Ausführung auf einem IoT Edge-Gerät erstellt wurde. Azure IoT Edge-Module stellen die kleinste Berechnungseinheit dar, die mit IoT Edge verwaltet wird, und können Azure-Dienste oder benutzerdefinierten Lösungscode enthalten. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

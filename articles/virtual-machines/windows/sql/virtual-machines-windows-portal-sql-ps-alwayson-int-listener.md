@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647882"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668886"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -58,9 +58,13 @@ Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, st
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Festlegen der erforderlichen Load Balancer-SKU
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist in 2 SKUs verfügbar: Basic und Standard. Die Verwendung von Load Balancer Standard wird empfohlen. Wenn die virtuellen Computer in einer Verfügbarkeitsgruppe enthalten sind, kann Load Balancer Basic verwendet werden. Für Load Balancer Standard müssen für alle virtuellen Computer Standard-IP-Adressen verwendet werden.
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist in 2 SKUs verfügbar: Basic und Standard. Die Verwendung von Load Balancer Standard wird empfohlen. Wenn die virtuellen Computer in einer Verfügbarkeitsgruppe enthalten sind, kann Load Balancer Basic verwendet werden. Wenn die virtuellen Computer sich in einer Verfügbarkeitszone befinden, ist ein Standardlastenausgleich erforderlich. Für Load Balancer Standard müssen für alle virtuellen Computer Standard-IP-Adressen verwendet werden.
 
 Die aktuelle [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) für eine Verfügbarkeitsgruppe verwendet Load Balancer Basic mit grundlegenden IP-Adressen.
+
+   > [!NOTE]
+   > Sie müssen einen [Dienstendpunkt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) konfigurieren, wenn Sie einen Standardlastenausgleich und Azure Storage als Cloudzeugen verwenden. 
+
 
 In den Beispielen in diesem Artikel wird Load Balancer Standard angegeben. In den Beispielen ist `-sku Standard` im Skript enthalten.
 
@@ -226,6 +230,8 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 * Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb desselben virtuellen Netzwerks.
 
 * Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
+
+* Erstellen Sie einen Dienstendpunkt, wenn Sie einen Standardlastenausgleich mit Azure Storage als Cloudzeugen verwenden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs über ein virtuelles Netzwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

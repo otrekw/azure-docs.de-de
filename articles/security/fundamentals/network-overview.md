@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749940"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811084"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -160,7 +160,7 @@ Möglicherweise möchten Sie es einzelnen Entwicklern oder Betriebsmitarbeitern 
 
 Mit der Point-to-Site-VPN-Verbindung können Sie eine private und sichere Verbindung zwischen dem Benutzer und dem virtuellen Netzwerk einrichten. Wenn die VPN-Verbindung hergestellt wurde, kann der Benutzer über die VPN-Verknüpfung mit RDP oder SSH auf jeden virtuellen Computer im virtuellen Netzwerk zugreifen. (Dies setzt voraus, dass der Benutzer sich authentifizieren kann und autorisiert ist.) Ein Point-to-Site-VPN unterstützt Folgendes:
 
-* Secure Socket Tunneling-Protokoll (SSTP), ein proprietäres SSL-basiertes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher).
+* Secure Socket Tunneling-Protokoll (SSTP), ein proprietäres SSL-basiertes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS/SSL verwendeten TCP-Port 443 öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher).
 
 * IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
@@ -232,7 +232,7 @@ Organisationen, die webbasierte Dienste ausführen, möchten für diese Webdiens
 Azure Application Gateway umfasst den HTTP-basierten Lastenausgleich für Ihre webbasierten Dienste. Application Gateway unterstützt Folgendes:
 
 * Cookiebasierte Sitzungsaffinität: Diese Funktion stellt sicher, dass der Client mit dem Server hinter dem Lastenausgleich verbunden bleibt. Dies gewährleistet die Stabilität der Transaktionen.
-* SSL-Auslagerung: Wenn ein Client eine Verbindung mit dem Lastenausgleich herstellt, wird diese Sitzung mithilfe des HTTPS-Protokolls (SSL) verschlüsselt. Sie können jedoch die Verbindung zwischen dem Lastenausgleich und dem Webserver hinter diesem so einrichten, dass das HTTP-Protokoll (unverschlüsselt) verwendet wird, und somit die Leistung erhöhen. Dies wird als „SSL-Auslagerung“ bezeichnet, da der Webserver hinter dem Lastenausgleich die durch die Verschlüsselung hervorgerufene, zusätzliche Prozessorauslastung nicht tragen muss. Die Webserver können daher Dienstanforderungen schneller erfüllen.
+* TLS-Auslagerung Wenn ein Client eine Verbindung mit dem Lastenausgleich herstellt, wird diese Sitzung mithilfe des HTTPS-Protokolls (TLS) verschlüsselt. Sie können jedoch die Verbindung zwischen dem Lastenausgleich und dem Webserver hinter diesem so einrichten, dass das HTTP-Protokoll (unverschlüsselt) verwendet wird, und somit die Leistung erhöhen. Dies wird als „TLS-Auslagerung“ bezeichnet, da die Webserver hinter dem Lastenausgleich die durch die Verschlüsselung hervorgerufene, zusätzliche Prozessorauslastung nicht tragen müssen. Die Webserver können daher Dienstanforderungen schneller erfüllen.
 * URL-basiertes Inhaltsrouting: Diese Funktion ermöglicht es dem Lastenausgleich, ausgehend von der Ziel-URL zu entscheiden, wohin Verbindungen weitergeleitet werden sollen. Dies bietet viel mehr Flexibilität als Lösungen, die Lastenausgleichsentscheidungen auf Grundlage von IP-Adressen treffen.
 
 Weitere Informationen:
@@ -336,7 +336,7 @@ Weitere Informationen:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Mit dem Azure Front Door-Dienst können Sie das globale Routing Ihres Webdatenverkehrs definieren, verwalten und überwachen. Der Dienst optimiert das Routing des Datenverkehrs im Hinblick auf eine optimale Leistung und hohe Verfügbarkeit. Azure Front Door ermöglicht es Ihnen, WAF-Regeln (Web Application Firewall) für Zugriffssteuerung zu erstellen, um Ihren HTTP/HTTPS-Workload vor Missbrauch auf Basis von Client-IP-Adressen, Landeskennzahl und HTTP-Parametern zu schützen. Darüber hinaus können Sie mit Front Door auch Ratenbegrenzungsregeln erstellen, um schädlichen Botdatenverkehr zu bekämpfen. Der Dienst enthält SSL-Abladung und HTTP-/HTTPS-basierte Verarbeitung von Anforderungen auf Anwendungsebene.
+Mit dem Azure Front Door-Dienst können Sie das globale Routing Ihres Webdatenverkehrs definieren, verwalten und überwachen. Der Dienst optimiert das Routing des Datenverkehrs im Hinblick auf eine optimale Leistung und hohe Verfügbarkeit. Azure Front Door ermöglicht es Ihnen, WAF-Regeln (Web Application Firewall) für Zugriffssteuerung zu erstellen, um Ihren HTTP/HTTPS-Workload vor Missbrauch auf Basis von Client-IP-Adressen, Landeskennzahl und HTTP-Parametern zu schützen. Darüber hinaus können Sie mit Front Door auch Ratenbegrenzungsregeln erstellen, um schädlichen Botdatenverkehr zu bekämpfen. Der Dienst enthält TLS-Auslagerung und HTTP-/HTTPS-basierte Verarbeitung von Anforderungen auf Anwendungsebene.
 
 Die Front Door-Plattform selbst wird durch Azure DDoS Protection Basic geschützt. Zum weiteren Schutz kann Azure DDoS Protection Standard auf Ihren VNETs aktiviert werden und Ressourcen vor Vermittlungsschichtangriffen (TCP/UDP) über automatische Optimierung und Risikominderung schützen. Front Door ist ein Layer 7-Reverseproxy, der nur Webdatenverkehr über Back-End-Server zulässt und andere Arten von Datenverkehr standardmäßig blockiert.
 

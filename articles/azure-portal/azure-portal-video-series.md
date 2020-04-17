@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/20/2019
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 93c9ce45fd660f444146827e2f5bafaeb12fc471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310511"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757076"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Anleitungsvideos für das Azure-Portal
 
@@ -22,18 +22,18 @@ In den Anleitungsvideos für das Azure-Portal wird gezeigt, wie Sie mit Azure-Di
 
 ## <a name="featured-video"></a>Vorgestelltes Video
 
-In diesem vorgestellten Video wird erläutert, wie Sie einige häufig auftretende Probleme mit virtuellen Computern beheben.
+In diesem Video erfahren Sie, wie Sie mithilfe von Azure Advisor-Empfehlungen zu Kosten in Azure Geld sparen.
 
-> [!VIDEO https://www.youtube.com/embed/MAJrN-2IPY8]
+> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
 
-[Beheben gängiger Probleme mit virtuellen Computern](https://www.youtube.com/watch?v=MAJrN-2IPY8)
+[Verwenden von Kostenempfehlungen im Azure Advisor](https://www.youtube.com/watch?v=ky2WS3KWuYs)
 
 Sehen Sie sich auch die folgenden aktuellen Videos an, die Sie möglicherweise verpasst haben:
 
 |   |   |   |
 | ------| ------ | ------ |
-| [![Abbildung eines YouTube-Videos zum Erstellen einer Funktions-App](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [![Abbildung eines YouTube-Videos zum Verwenden des neuen Azure-Startbildschirms](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![Abbildung: YouTube-Video zur optimalen Nutzung von Azure Advisor](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
-| [Erstellen einer Funktions-App](https://www.youtube.com/watch?v=BEIZKCDElMs) | [Verwenden des neuen Azure-Startbildschirms](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [Optimale Nutzung von Azure Advisor](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [![Abbildung von YouTube-Video zum Verwenden von Azure Monitor-Arbeitsmappen](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Abbildung von YouTube-Video zum Filtern Ihrer Ressourcenlistenansicht im Azure-Portal](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![Abbildung von YouTube-Video zum Verwenden der automatischen Aktualisierung für Dashboards](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [Verwenden von Azure Monitor-Arbeitsmappen](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Filtern der Ressourcenlistenansicht im Azure-Portal](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [Verwenden der automatischen Aktualisierung für Dashboards](https://www.youtube.com/watch?v=tVoDXygZzWM) |
 
 ## <a name="video-playlist"></a>Wiedergabeliste
 

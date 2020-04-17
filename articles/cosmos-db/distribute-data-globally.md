@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264304"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982122"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale Datenverteilung mit Azure Cosmos DB: Übersicht
 
@@ -41,7 +41,7 @@ Mithilfe der Multihosting-APIs von Azure Cosmos DB kennt Ihre Anwendung die nä
 
 **Geschäftskontinuität bei Ausfall einer Region.** Azure Cosmos DB unterstützt ein [automatisches Failover](how-to-manage-database-account.md#automatic-failover) beim Ausfall einer Region. Darüber hinaus sorgt Azure Cosmos DB beim Ausfall einer Region für die Einhaltung der SLAs in Bezug auf Latenz, Verfügbarkeit, Konsistenz und Durchsatz. Um zu gewährleisten, dass Ihre gesamte Anwendung hochverfügbar ist, bietet Cosmos DB eine API für ein manuelles Failover, um einen Regionsausfall zu simulieren. Mithilfe dieser API können Sie regelmäßige Übungen zur Gewährleistung der Geschäftskontinuität durchführen.
 
-**Globale Skalierbarkeit von Lese- und Schreibvorgängen.** Sie können jede Region als schreibbar aktivieren und Lese- und Schreibvorgänge auf der ganzen Welt flexibel skalieren. Es wird garantiert, dass der Durchsatz, den Ihre Anwendung in einer Azure Cosmos-Datenbank oder einem Container konfiguriert, in allen Ihrem Azure Cosmos-Konto zugeordneten Regionen bereitgestellt wird. Der bereitgestellte Durchsatz wird immer durch [finanziell abgesicherte SLAs](https://aka.ms/acdbsla) garantiert.
+**Globale Skalierbarkeit von Lese- und Schreibvorgängen.** Sie können jede Region als schreibbar aktivieren und Lese- und Schreibvorgänge auf der ganzen Welt flexibel skalieren. Es wird garantiert, dass der Durchsatz, den Ihre Anwendung in einer Azure Cosmos-Datenbank oder einem Container konfiguriert, in allen Ihrem Azure Cosmos-Konto zugeordneten Regionen bereitgestellt wird. Der bereitgestellte Durchsatz wird immer durch [finanziell abgesicherte SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) garantiert.
 
 **Mehrere klar definierte Konsistenzmodelle zur Auswahl.** Das Replikationsprotokoll von Azure Cosmos DB bietet fünf klar definierte, praktische und intuitive Konsistenzmodelle. Jedes Modell stellt einen klar beschriebenen Kompromiss zwischen Konsistenz und Leistung dar. Mit diesen Konsistenzmodellen können Sie problemlos global verteilte Anwendungen erstellen.
 

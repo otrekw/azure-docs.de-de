@@ -4,19 +4,19 @@ description: Aktivieren der Self-Service-Kennwortzurücksetzung mithilfe von „
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370074"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743347"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Gewusst wie: Aktivieren der Kennwortzurücksetzung über den Windows-Anmeldebildschirm
 
@@ -43,7 +43,7 @@ Für Computer, auf denen Windows 7, 8, 8.1 oder 10 ausgeführt wird, können Sie
 - Die Kombination der folgenden drei Einstellungen kann dazu führen, dass dieses Feature fehlschlägt.
     - Interaktive Anmeldung: Kein STRG+ALT+ENTF erforderlich = Deaktiviert
     - DisableLockScreenAppNotifications = 1 oder „Aktiviert“
-    - IsContentDeliveryPolicyEnforced = 1 oder „True“
+    - Bei der Windows-SKU handelt es sich nicht um die Home oder Professional Edition.
 
 ## <a name="windows-10-password-reset"></a>Windows 10-Kennwortzurücksetzung
 
@@ -141,8 +141,8 @@ Wenn zusätzliche Protokollierung erforderlich ist, kann ein Registrierungsschl�
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Zum Aktivieren der ausführlichen Protokollierung erstellen Sie den Eintrag `REG_DWORD: “EnableLogging”`, und legen Sie ihn auf 1 fest.
-- Um die ausführliche Protokollierung zu deaktivieren, ändern Sie `REG_DWORD: “EnableLogging”` in 0.
+- Zum Aktivieren der ausführlichen Protokollierung erstellen Sie den Eintrag `REG_DWORD: "EnableLogging"`, und legen Sie ihn auf 1 fest.
+- Um die ausführliche Protokollierung zu deaktivieren, ändern Sie `REG_DWORD: "EnableLogging"` in 0.
 
 ## <a name="what-do-users-see"></a>Anzeige für Benutzer
 

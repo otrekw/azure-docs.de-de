@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061109"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756027"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -21,7 +21,7 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 > [!NOTE]
 > AzCopy **V10** ist die aktuell unterstützte Version von AzCopy.
 >
-> Wenn Sie AzCopy **v8.1** verwenden müssen, finden Sie Informationen hierzu im Abschnitt [Verwenden der vorherige Version von AzCopy](#previous-version) in diesem Artikel.
+> Wenn Sie eine vorherige Version von AzCopy verwenden müssen, finden Sie Informationen hierzu im Abschnitt [Verwenden der vorherige Version von AzCopy](#previous-version) in diesem Artikel.
 
 <a id="download-and-install-azcopy" />
 
@@ -308,11 +308,11 @@ Storage-Explorer verwendet Ihren Kontoschlüssel, um Vorgänge auszuführen. Nac
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Verwenden der vorherigen Version von AzCopy
 
-Wenn Sie die vorherige Version von AzCopy (AzCopy v8.1) verwenden müssen, werden Sie unter den folgenden Links fündig:
+Wenn Sie die vorherige Version von AzCopy verwenden müssen, werden Sie unter den folgenden Links fündig:
 
 - [AzCopy unter Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [AzCopy unter Linux (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy unter Linux (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 

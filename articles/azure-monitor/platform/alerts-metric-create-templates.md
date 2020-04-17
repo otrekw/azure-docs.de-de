@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664835"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677006"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Vorlage für eine Metrikwarnung mit statischem Schwellenwert, mit der mehrere Kriterien überwacht werden
 
-Neuere metrische Warnungen unterstützen das Warnen bei mehrdimensionalen Metriken, und sie unterstützen mehrere Kriterien. Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel für dimensionale Metriken erstellen und mehrere Kriterien angeben.
+Neuere metrische Warnungen unterstützen das Warnen bei mehrdimensionalen Metriken, und sie unterstützen das Definieren mehrerer Kriterien (bis zu fünf Kriterien pro Warnungsregel). Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel für dimensionale Metriken erstellen und mehrere Kriterien angeben.
 
 Für das Verwenden von Dimensionen in einer Warnungsregel, in der mehrere Kriterien enthalten sind, gibt es die folgenden Einschränkungen:
 - Innerhalb jedes Kriteriums können Sie nur einen Wert pro Dimension auswählen.
@@ -1518,6 +1518,10 @@ In diesem Abschnitt werden Azure Resource Manager-Vorlagen für drei Szenarien b
 - Überwachen aller virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen
 - Überwachen aller virtuellen Computer (in einer Azure-Region) unter einem Abonnement
 - Überwachen einer Liste mit virtuellen Computern (in einer Azure-Region) unter einem Abonnement
+
+> [!NOTE]
+>
+> In einer Metrikwarnungsregel, mit der mehrere Ressourcen überwacht werden, ist nur eine Bedingung zulässig.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Warnungen mit statischem Schwellenwert für alle virtuellen Computer in einer oder mehreren Ressourcengruppen
 

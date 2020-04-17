@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226134"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811462"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.
@@ -55,10 +55,10 @@ Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstell
 * Es ist für den Schlüsselaustausch erstellt (PFX-Datei).
 * Der Name des Antragstellers muss der Domäne entsprechen, über die auf den Clouddienst zugegriffen wird.
 
-    > Sie können kein SSL-Zertifikat für die Domäne cloudapp.net (oder für eine andere Domäne in Zusammenhang mit Azure) beziehen; der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die auf Ihre Anwendung zugegriffen wird. Beispielsweise **contoso.net**, nicht **contoso.cloudapp.net**.
+    > Sie können kein TLS/SSL-Zertifikat für die Domäne „cloudapp.net“ (oder für eine andere Domäne in Zusammenhang mit Azure) beziehen; der Name des Antragstellers für das Zertifikat muss mit dem benutzerdefinierten Domänennamen übereinstimmen, mit dem auf Ihre Anwendung zugegriffen wird. Beispielsweise **contoso.net**, nicht **contoso.cloudapp.net**.
 
 * Mindestens 2048-Bit-Verschlüsselung.
-* **Nur Dienstzertifikat:** Das clientseitige Zertifikat muss sich im *persönlichen* Zertifikatspeicher befinden.
+* **Nur Dienstzertifikat**: Das clientseitige Zertifikat muss sich im *persönlichen* Zertifikatspeicher befinden.
 
 Es gibt zwei einfache Möglichkeiten zum Erstellen eines Zertifikats unter Windows: mithilfe des Dienstprogramms `makecert.exe` oder mit IIS.
 

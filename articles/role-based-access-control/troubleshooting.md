@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung von RBAC für Azure-Ressourcen | Microsoft-Dokumentation
-description: Beheben von Problemen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen.
+title: Behandeln von Problemen bei Azure RBAC
+description: Beheben von Problemen bei der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC).
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,43 +11,72 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980984"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548290"
 ---
-# <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
+# <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
-In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können.
+In diesem Artikel werden häufig gestellte Fragen über die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen verwenden, und wie Sie Zugriffsprobleme lösen können.
 
-## <a name="problems-with-rbac-role-assignments"></a>Probleme mit RBAC-Rollenzuweisungen
+## <a name="azure-role-assignments-limit"></a>Azure-Rollenzuweisungslimit
+
+Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, verringern Sie die Anzahl der Rollenzuweisungen im Abonnement.
+
+> [!NOTE]
+> Das Rollenzuweisungslimit **2.000** pro Abonnement ist fest und kann nicht erweitert werden.
+
+Wenn dieses Limit bald erreicht ist, können Sie mit folgenden Methoden die Anzahl der Rollenzuweisungen verringern:
+
+- Fügen Sie Benutzer zu Gruppen hinzu, und weisen Sie stattdessen den Gruppen Rollen zu. 
+- Kombinieren Sie mehrere integrierte Rollen mit einer benutzerdefinierten Rolle. 
+- Nehmen Sie allgemeine Rollenzuweisungen in einem übergeordneten Bereich vor, z. B. Abonnement oder Verwaltungsgruppe.
+- Wenn Sie über Azure AD Premium P2 verfügen, können Sie in [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) Berechtigungen für Rollenzuweisungen festlegen, anstatt dauerhafte Rollenzuweisungen zu verwenden. 
+- Fügen Sie ein zusätzliches Abonnement hinzu. 
+
+Um die Anzahl der Rollenzuweisungen zu ermitteln, können Sie das [Diagramm auf der Seite „Zugriffssteuerung (IAM)“](role-assignments-list-portal.md#list-number-of-role-assignments) im Azure-Portal anzeigen. Sie können auch die folgenden Azure PowerShell-Befehle verwenden:
+
+```azurepowershell
+$scope = "/subscriptions/<subscriptionId>"
+$ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
+$ras.Count
+```
+
+## <a name="problems-with-azure-role-assignments"></a>Probleme bei RBAC-Rollenzuweisungen
 
 - Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, weil die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „The client with object id does not have authorization to perform action“ (Der Client mit der Objekt-ID ist zum Ausführen der Aktion nicht autorisiert) ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
-- Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Dieses Rollenzuweisungslimit ist fest und kann nicht erweitert werden.
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 
-- Wenn Sie wissen möchten, wie Sie eine benutzerdefinierte Rolle erstellen können, sehen Sie sich die entsprechenden Tutorials für die Verwendung von [Azure PowerShell](tutorial-custom-role-powershell.md) bzw. [Azure CLI](tutorial-custom-role-cli.md) an.
+- Wenn Sie wissen möchten, wie Sie eine benutzerdefinierte Rolle erstellen können, sehen Sie sich die entsprechenden Tutorials für die Verwendung des [Azure-Portals](custom-roles-portal.md) (derzeit als Vorschau verfügbar), von [Azure PowerShell](tutorial-custom-role-powershell.md) oder der [Azure CLI](tutorial-custom-role-cli.md) an.
 - Wenn Sie eine vorhandene benutzerdefinierte Rolle nicht aktualisieren können, stellen Sie sicher, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleDefinition/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), zugewiesen ist.
 - Wenn Sie eine benutzerdefinierte Rolle nicht löschen können und die Fehlermeldung „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)“ (Es sind Rollenzuweisungen vorhanden, die auf die Rolle verweisen (Code: RoleDefinitionHasAssignments)) angezeigt wird, wird die benutzerdefinierte Rolle noch von Rollenzuweisungen verwendet. Entfernen Sie die entsprechenden Rollenzuweisungen, und wiederholen Sie anschließend den Löschvorgang für die benutzerdefinierte Rolle.
-- Wird beim Erstellen einer neuen benutzerdefinierten Rolle die Fehlermeldung „Role definition limit exceeded. No more role definitions can be created (code: RoleDefinitionLimitExceeded)“ (Limit für Rollendefinition überschritten. Es können keine weiteren Rollendefinitionen erstellt werden (Code: RoleDefinitionLimitExceeded)) angezeigt, löschen Sie alle nicht verwendeten benutzerdefinierten Rollen. Azure unterstützt bis zu **5.000** benutzerdefinierte Rollen in einem Mandanten. (Für spezielle Clouds, z. B. Azure Government, Azure Deutschland und Azure China 21Vianet, beträgt das Limit 2.000 benutzerdefinierte Rollen.)
-- Wenn beim Aktualisieren einer benutzerdefinierten Rolle ein Fehler auftritt, ähnlich „The client has permission to perform action 'Microsoft.Authorization/roleDefinitions/write' on scope '/subscriptions/{subscriptionid}', however the linked subscription was not found“ (Der Client ist berechtigt die Aktion 'Microsoft.Authorization/roleDefinitions/write' im Bereich '/subscriptions/{subscriptionid}' auszuführen, das verknüpfte Abonnement wurde jedoch nicht gefunden), überprüfen Sie, ob mindestens ein [zuweisbarer Bereich](role-definitions.md#assignablescopes) im Mandanten gelöscht wurde. Wurde der Bereich gelöscht, erstellen Sie ein Supportticket, da hierfür derzeit keine Self-Service-Lösung zur Verfügung steht.
+- Wird beim Erstellen einer neuen benutzerdefinierten Rolle die Fehlermeldung „Role definition limit exceeded. No more role definitions can be created (code: RoleDefinitionLimitExceeded)“ (Limit für Rollendefinition überschritten. Es können keine weiteren Rollendefinitionen erstellt werden (Code: RoleDefinitionLimitExceeded)) angezeigt, löschen Sie alle nicht verwendeten benutzerdefinierten Rollen. Azure unterstützt bis zu **5.000** benutzerdefinierte Rollen in einem Verzeichnis. (Für Azure Deutschland und Azure China 21ViaNet beträgt das Limit 2.000 benutzerdefinierte Rollen.)
+- Wenn beim Aktualisieren einer benutzerdefinierten Rolle ein Fehler auftritt (z. B. „Der Client verfügt über die Berechtigung zum Ausführen der Aktion "Microsoft.Authorization/roleDefinitions/write" im Bereich "/subscriptions/{subscriptionid}". Das verknüpfte Abonnement wurde jedoch nicht gefunden.“), überprüfen Sie, ob mindestens ein [zuweisbarer Bereich](role-definitions.md#assignablescopes) im Verzeichnis gelöscht wurde. Wurde der Bereich gelöscht, erstellen Sie ein Supportticket, da hierfür derzeit keine Self-Service-Lösung zur Verfügung steht.
 
-## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Wiederherstellen von RBAC beim übergreifenden Verschieben von Abonnements auf Mandanten
+## <a name="custom-roles-and-management-groups"></a>Benutzerdefinierte Rollen und Verwaltungsgruppen
 
-- Schritte zum Übertragen eines Abonnements auf einen anderen Azure AD-Mandanten finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md).
-- Wenn Sie ein Abonnement auf einen anderen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Azure AD-Quellmandanten gelöscht und nicht zum Azure AD-Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
-- Globale Azure AD-Administratoren ohne Zugriff auf ein Abonnement können, nachdem dieses zwischen Mandanten verschoben wurde, mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um Zugriff auf das Abonnement zu erhalten.
+- Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+- Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
+- Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.
+- Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
+
+## <a name="transferring-a-subscription-to-a-different-directory"></a>Übertragen eines Abonnements in ein anderes Verzeichnis
+
+- Schritte zum Übertragen eines Abonnements in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md).
+- Wenn Sie ein Abonnement in ein anderes Azure AD-Verzeichnis übertragen, werden alle Rollenzuweisungen **dauerhaft** aus dem Azure AD-Quellverzeichnis gelöscht und nicht zum Azure AD-Zielverzeichnis migriert. Sie müssen die Rollenzuweisungen im Zielverzeichnis neu erstellen. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
+- Globale Azure AD-Administratoren ohne Zugriff auf ein Abonnement können, nachdem dieses zwischen Verzeichnissen übertragen wurde, mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um Zugriff auf das Abonnement zu erhalten.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Probleme mit Dienstadministratoren oder Co-Administratoren
 
-- Wenn Sie Probleme mit Dienstadministrator oder Co-Admins haben, finden Sie weitere Informationen unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md) und [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](rbac-and-directory-admin-roles.md).
+- Wenn Sie Probleme mit dem Dienstadministrator oder Co-Admins haben, finden Sie weitere Informationen unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md) und [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Administratorrollen](rbac-and-directory-admin-roles.md).
 
 ## <a name="access-denied-or-permission-errors"></a>Zugriff verweigert oder Berechtigungsfehler
 
@@ -62,7 +91,7 @@ Wenn Sie einem Sicherheitsprinzipal eine Rolle (Benutzer, Gruppe, Dienstprinzipa
 
 Wenn Sie diese Rollenzuweisung mit Azure PowerShell anzeigen, ist `DisplayName` leer und `ObjectType` auf „Unknown“ (Unbekannt) festgelegt. Beispiel: [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
 
-```azurepowershell
+```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
 Scope              : /subscriptions/11111111-1111-1111-1111-111111111111
 DisplayName        :
@@ -76,7 +105,7 @@ CanDelegate        : False
 
 Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
 
-```azurecli
+```
 {
     "canDelegate": null,
     "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222",
@@ -94,7 +123,7 @@ Es stellt kein Problem dar, diese Rollenzuweisungen zu belassen. Sie können Sie
 
 Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Nachfolgend sehen Sie ein Beispiel für die Fehlermeldung:
 
-```Example
+```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
 
 Remove-AzRoleAssignment : The provided information does not map to a role assignment.
@@ -107,13 +136,15 @@ At line:1 char:1
 
 Wenn Sie diese Fehlermeldung erhalten, stellen Sie sicher, dass Sie auch die Parameter `-Scope` oder `-ResourceGroupName` angegeben haben.
 
-```Example
+```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
+## <a name="role-assignment-changes-are-not-being-detected"></a>Änderungen bei der Rollenzuweisung werden nicht erkannt.
 
-Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Erstellen oder Löschen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
+Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Hinzufügen oder Entfernen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
+
+Wenn Sie im Verwaltungsgruppenbereich eine Rollenzuweisung hinzufügen oder entfernen und die Rolle über `DataActions` verfügt, wird der Zugriff auf Datenebene möglicherweise mehrere Stunden lang nicht aktualisiert. Dies gilt nur für den Verwaltungsgruppenbereich und die Datenebene.
 
 ## <a name="web-app-features-that-require-write-access"></a>Web-App-Features, für die Schreibzugriff erforderlich ist
 
@@ -148,7 +179,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan**
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst:  
 
-* SSL-Zertifikate und -Bindungen (SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
+* TLS/SSL-Zertifikate und -Bindungen (TLS/SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
 * Warnregeln  
 * Einstellungen für automatische Skalierung  
 * Application Insights-Komponenten  
@@ -188,4 +219,3 @@ Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle E
 - [Problembehandlung für Gastbenutzer](role-assignments-external-users.md#troubleshoot)
 - [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
 - [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen](change-history-report.md)
-

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224822"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804434"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute
 
@@ -39,7 +39,7 @@ Eine App Service-Umgebung erfordert für eine ordnungsgemäße Funktionsweise di
 
 * Ausgehende Netzwerkkonnektivität zu den Azure-Endpunkten der Verwaltungsebene (klassisches Azure-Bereitstellungsmodell und Azure Resource Manager-Endpunkte). Die Konnektivität zu diesen Endpunkten beinhaltet die Domänen management.core.windows.net und management.azure.com. 
 
-* Ausgehende Netzwerkkonnektivität zu den Domänen ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Konnektivität zu diesen Domänen ist zur Unterstützung von SSL-Funktionen erforderlich.
+* Ausgehende Netzwerkkonnektivität zu den Domänen ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Konnektivität zu diesen Domänen ist zur Unterstützung von TLS-Funktionen erforderlich.
 
 * Die DNS-Konfiguration für das virtuelle Netzwerk muss alle in diesem Artikel genannten Endpunkte und Domänen auflösen können. Wenn die Endpunkte nicht aufgelöst werden können, schlägt das Erstellen der App Service-Umgebung fehl. Alle vorhandenen App Service-Umgebungen werden als fehlerhaft markiert.
 

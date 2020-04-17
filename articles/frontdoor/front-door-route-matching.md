@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471590"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878594"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Abgleich von Anforderungen mit Routingregeln durch Front Door
 
-Wenn eine Anforderung nach dem Herstellen einer Verbindung und dem Ausführen eines SSL-Handshakes in einer Front Door-Umgebung eingeht, besteht eine der ersten Aktionen von Front Door darin, anhand aller Konfigurationen zu bestimmen, mit welcher Routingregel die Anforderung abgeglichen werden soll. Danach wird die definierte Aktion ausgeführt. Der folgende Artikel erläutert, wie Front Door bestimmt, welche Routenkonfiguration beim Verarbeiten einer HTTP-Anforderung verwendet werden soll.
+Wenn eine Anforderung nach dem Herstellen einer Verbindung und dem Ausführen eines TLS-Handshakes in einer Front Door-Umgebung eingeht, besteht eine der ersten Aktionen von Front Door darin, anhand aller Konfigurationen zu bestimmen, mit welcher Routingregel die Anforderung abgeglichen werden soll. Danach wird die definierte Aktion ausgeführt. Der folgende Artikel erläutert, wie Front Door bestimmt, welche Routenkonfiguration beim Verarbeiten einer HTTP-Anforderung verwendet werden soll.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Struktur einer Front Door-Routenkonfiguration
 Die Konfiguration einer Front Door-Routingregel besteht aus zwei Hauptteilen: einer „linken Seite“ und einer „rechten Seite“. Die eingehende Anforderung wird mit der linken Seite der Route abgeglichen, während die rechte Seite definiert, wie die Anforderung verarbeitet wird.

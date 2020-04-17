@@ -3,16 +3,16 @@ title: Bereitstellen von Blob Storage im Modul auf Ihrem Gerät (Azure IoT Edge)
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
 author: kgremban
 ms.author: kgremban
-ms.date: 12/13/2019
+ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548780"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804621"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -88,16 +88,16 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
    - Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem vorhandenen Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul seine Daten speichern wird. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
 
-     - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**.
-         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
-     - Für Windows-Container lautet das Format *\<Speicherpfad oder Volume>:C:/BlobRoot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
-         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
+     - Für Linux-Container lautet das Format **\<Speicherpfad oder -volume>:/blobroot**. Beispiel:
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): `my-volume:/blobroot`
+         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): `/srv/containerdata:/blobroot` Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
+     - Für Windows-Container lautet das Format **\<Speicherpfad oder -volume>:C:/BlobRoot**. Beispiel:
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot`
+         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot`
          - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Verwenden der SMB-Freigabe als lokalen Speicher](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
-     > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
+     > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul „Blob Storage in IoT Edge“ und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
 
 5. Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn auf der Registerkarte **Einstellungen für Modulzwilling** in das Feld ein.
 
@@ -163,7 +163,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
    Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
@@ -200,16 +200,16 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
 1. Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.  
 
-     - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**.
-         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
-     - Für Windows-Container lautet das Format *\<Speicherpfad oder Volume>:C:/BlobRoot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
-         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
+     - Für Linux-Container lautet das Format **\<Speicherpfad oder -volume>:/blobroot**. Beispiel:
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): `my-volume:/blobroot`
+         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): `/srv/containerdata:/blobroot` Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
+     - Für Windows-Container lautet das Format **\<Speicherpfad oder -volume>:C:/BlobRoot**. Beispiel:
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot`
+         - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot`
          - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
-     > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
+     > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul „Blob Storage in IoT Edge“ und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
 
 1. Konfigurieren Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für Ihr Modul, indem Sie der Datei *deployment.template.json* den folgenden JSON-Code hinzufügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, und speichern Sie die Datei. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, die Sie im Abschnitt „Erläuterung“ von [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) finden können.
 
@@ -259,6 +259,39 @@ Bearbeiten Sie das Feld **Optionen für Containererstellung** (im Azure-Portal) 
 ```
 
 Wenn Sie zusätzliche Blob Storage-Module verbinden, ändern Sie den Endpunkt dahingehend, dass er auf den aktualisierten Hostport zeigt.
+
+## <a name="configure-proxy-support"></a>Konfigurieren der Proxyunterstützung
+
+Wenn Ihre Organisation einen Proxyserver verwendet, müssen Sie die Proxyunterstützung für die Laufzeitmodule „edgeAgent“ und „edgeHub“ konfigurieren. Dieser Prozess besteht aus zwei Aufgaben:
+
+- Konfigurieren Sie die Runtime-Daemons und den IoT Edge-Agent auf dem Gerät.
+- Legen Sie die HTTPS_PROXY-Umgebungsvariable für Module in der JSON-Datei des Bereitstellungsmanifests fest.
+
+Dieser Prozess wird in [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](how-to-configure-proxy-support.md) beschrieben.
+
+Außerdem erfordert ein Blob Storage-Modul die Einstellung „HTTPS_PROXY“ in der Bereitstellungsdatei für das Manifest. Sie können diese Datei direkt bearbeiten oder dazu das Azure-Portal verwenden.
+
+1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub, und wählen Sie im Menü auf der linken Seite **Iot Edge** aus.
+
+1. Wählen Sie das Gerät mit dem Modul aus, das Sie konfigurieren möchten.
+
+1. Wählen Sie **Module festlegen** aus.
+
+1. Wählen Sie im Abschnitt **IoT Edge-Module** der Seite das Blob Storage-Modul aus.
+
+1. Wählen Sie auf der Seite **IoT Edge-Modul aktualisieren** die Registerkarte **Umgebungsvariablen** aus.
+
+1. Wählen Sie `HTTPS_PROXY` als **Name** und Ihre Proxy-URL als **Wert** aus.
+
+      ![Festlegen der HTTPS_PROXY-Umgebungsvariablen](./media/how-to-deploy-blob/https-proxy-config.png)
+
+1. Klicken Sie auf **Aktualisieren** und dann auf **Bewerten + erstellen**.
+
+1. Beachten Sie, dass der Proxy dem Modul im Bereitstellungsmanifest hinzugefügt wird, und wählen Sie **Erstellen** aus.
+
+1. Überprüfen Sie die Einstellung, indem Sie das Modul auf der Seite „Gerätedetails“ auswählen. Wählen Sie dann im unteren Teil der Seite **IoT Edge-Module – Details** die Registerkarte **Umgebungsvariablen** aus.
+
+      ![Festlegen der HTTPS_PROXY-Umgebungsvariablen](./media/how-to-deploy-blob/verify-proxy-config.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

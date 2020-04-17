@@ -1,34 +1,43 @@
 ---
-title: Verwenden von Batch-Transkription – Speech-Dienst
+title: 'Speech-Dienst: Was ist die Batch-Transkription?'
 titleSuffix: Azure Cognitive Services
 description: Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
 services: cognitive-services
-author: PanosPeriorellis
+author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: panosper
-ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.date: 03/18/2020
+ms.author: wolfma
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500010"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892460"
 ---
-# <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
+# <a name="what-is-batch-transcription"></a>Was ist die Batch-Transkription?
 
-Die Batch-Transkription eignet sich optimal für die Transkription großer Mengen an Audiomaterial im Speicher. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen.
+Bei der Batch-Transkription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen.
 
-Die API bietet asynchrone Transkription von Sprache in Text und weitere Funktionen. Sie können die REST-API verwenden, um Methoden für folgende Zwecke verfügbar zu machen:
+Die asynchrone Transkription für die Spracherkennung ist nur eine der verfügbaren Funktionen. Mit den REST-APIs für die Batch-Transkription können Sie die folgenden Methoden aufrufen:
 
-- Erstellen von Anforderungen für die Batchverarbeitung
-- Abfragen des Status
-- Herunterladen von Transkriptionsergebnissen
-- Löschen von Transkriptionsinformationen aus dem Dienst
 
-Die ausführliche API steht als [Swagger-Dokument](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A) unter der Überschrift `Custom Speech transcriptions` zur Verfügung.
+
+|    Batch-Transkriptionsvorgang                                             |    Methode    |    REST-API-Aufruf                                   |
+|------------------------------------------------------------------------------|--------------|----------------------------------------------------|
+|    Erstellt eine neue Transkription.                                              |    POST      |    api/speechtotext/v2.0/transcriptions            |
+|    Ruft eine Liste von Transkriptionen für das authentifizierte Abonnement ab.    |    GET       |    api/speechtotext/v2.0/transcriptions            |
+|    Ruft eine Liste der unterstützten Gebietsschemas für Offlinetranskriptionen ab.              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
+|    Aktualisiert die änderbaren Details der durch die ID angegebenen Transkription.    |    PATCH     |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    Löscht die angegebene Transkriptionsaufgabe.                                 |    Delete    |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    Ruft die durch die ID angegebene Transkription ab.                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+
+
+
+
+Sie können die ausführliche API prüfen und testen. Sie steht als [Swagger-Dokument](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A) unter der Überschrift `Custom Speech transcriptions` zur Verfügung.
 
 Batch-Transkriptionsaufträge werden auf der Grundlage des optimalen Arbeitsaufwands geplant. Zurzeit lässt sich nicht einschätzen, wann ein Auftrag in den Ausführungsstatus wechselt. Bei normaler Systemlast sollte dies innerhalb von Minuten erfolgen. Sobald er ausgeführt wird, wird die aktuelle Transkription schneller als in Audioechtzeit verarbeitet.
 
@@ -53,11 +62,11 @@ Wenn Sie die Anpassung von Audio- oder Sprachmodellen planen, befolgen Sie die S
 
 Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 
-| Format | Codec | Bitrate | Samplingrate |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
-| MP3 | PCM | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
-| OGG | OPUS | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
+| Format | Codec | Bitrate | Samplingrate                     |
+|--------|-------|---------|---------------------------------|
+| WAV    | PCM   | 16 Bit  | 8 kHz oder 16 kHz, Mono oder Stereo |
+| MP3    | PCM   | 16 Bit  | 8 kHz oder 16 kHz, Mono oder Stereo |
+| OGG    | OPUS  | 16 Bit  | 8 kHz oder 16 kHz, Mono oder Stereo |
 
 Bei Audiostreams in Stereo sind linker und rechter Kanal während des Transkriptionsvorgangs geteilt. Für jeden Kanal wird eine JSON-Ergebnisdatei erstellt. Die pro Äußerung erstellten Zeitstempel ermöglichen es dem Entwickler, eine geordnete endgültige Transkription zu erstellen.
 
@@ -120,14 +129,14 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Stimmung pro Äußerung.
+      Gibt an, ob die Standpunktanalyse auf die Äußerung angewendet werden soll. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren. Weitere Informationen finden Sie unter [Stimmungsanalyse](#sentiment-analysis).
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Diarisierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.
+      Gibt an, dass die Diarisierungsanalyse für die Eingabe durchgeführt werden soll. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Diarisierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -147,7 +156,7 @@ Für Mono-Audioeingangssignale wird eine Transkriptions-Ergebnisdatei erstellt. 
 
 ```json
 {
-  "AudioFileResults":[ 
+  "AudioFileResults":[
     {
       "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
       "AudioFileUrl": null                                  'always null'
@@ -209,18 +218,47 @@ Für Mono-Audioeingangssignale wird eine Transkriptions-Ergebnisdatei erstellt. 
 
 Das Ergebnis enthält diese Formen:
 
-|Form|Inhalt|
-|-|-|
-|`Lexical`|Die tatsächlich erkannten Wörter
-|`ITN`|Der erkannte Text in Form von inverser Textnormalisierung. Abkürzungen („Doktor Schmidt“ zu „Dr. Schmidt“), Telefonnummern und weitere Transformationen werden angewendet.
-|`MaskedITN`|Die ITN-Form mit angewendeter Maskierung von Obszönitäten
-|`Display`|Die Anzeigeform des erkannten Texts. Diese beinhaltet hinzugefügte Satzzeichen und Groß-/Kleinschreibung.
+:::row:::
+   :::column span="1":::
+      **Form**
+   :::column-end:::
+   :::column span="2":::
+      **Inhalt**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      Die tatsächlich erkannten Wörter
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      Der erkannte Text in Form von inverser Textnormalisierung. Abkürzungen („Doktor Schmidt“ zu „Dr. Schmidt“), Telefonnummern und weitere Transformationen werden angewendet.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      Die ITN-Form mit angewendeter Maskierung von Obszönitäten
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      Die Anzeigeform des erkannten Texts. Hinzugefügte Satzzeichen und Groß-/Kleinschreibung sind enthalten.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Sprechertrennung (Diarisierung)
 
 Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen. Die Funktion ist für Stereoaufzeichnungen nicht verfügbar.
 
-Alle Transkriptionsausgaben enthalten eine `SpeakerId`. Wenn keine Diarisierung verwendet wird, tritt `"SpeakerId": null` in der JSON-Ausgabe auf. Bei der Diarisierung werden zwei Stimmen unterstützt, sodass die Sprecher als `"1"` oder `"2"` identifiziert werden.
+Alle Transkriptionsausgaben enthalten eine `SpeakerId`. Wenn die Diarisierung nicht verwendet wird, wird `"SpeakerId": null` in der JSON-Ausgabe angezeigt. Bei der Diarisierung werden zwei Stimmen unterstützt, sodass die Sprecher als `"1"` oder `"2"` identifiziert werden.
 
 Wenn Sie Diarisierung anfordern möchten, müssen Sie einfach der HTTP-Anforderung den relevanten Parameter wie unten gezeigt hinzufügen.
 
@@ -250,7 +288,11 @@ Die Funktion zur Stimmungsanalyse schätzt die im Audiosignal ausgedrückte Stim
 - Was funktionierte gut, wenn es gelingt, einem negativen Anruf eine positive Wendung zu geben
 - herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
 
-Die Stimmung wird pro Audiosegment auf der Grundlage der lexikalischen Form bewertet. Zum Berechnen der Stimmung wird der gesamte Text im betreffenden Audiosegment bewertet. Es wird keine aggregierte Stimmung für die gesamte Transkription berechnet.
+Die Stimmung wird pro Audiosegment auf der Grundlage der lexikalischen Form bewertet. Zum Berechnen der Stimmung wird der gesamte Text im betreffenden Audiosegment bewertet. Es wird keine aggregierte Stimmung für die gesamte Transkription berechnet. Die Standpunktanalyse ist zurzeit nur für Englisch verfügbar.
+
+> [!NOTE]
+> Es wird empfohlen, stattdessen die Textanalyse-API von Microsoft zu verwenden. Diese bietet erweiterte Features, die über die Stimmungsanalyse hinausgehen, zum Beispiel die Schlüsselbegriffserkennung, die automatische Spracherkennung usw. Weitere Informationen und Beispiele finden Sie in der [Dokumentation zur Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+>
 
 Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
 
@@ -290,7 +332,7 @@ Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Der Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen über ein `GET` in der [Transkriptionsmethode](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions) abfragen. Halten Sie die zurückgegebenen Informationen in einem vernünftigen Größenrahmen, indem Sie den Parameter `take` (einige Hundert) angeben. [Löschen Sie Transkriptionen](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regelmäßig aus dem Dienst, nachdem Sie die Ergebnisse abgerufen haben. Dies stellt schnelle Antworten auf die Aufrufe der Transkriptionsverwaltung sicher.
+Der Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen über ein `GET` in der [Transkriptionsmethode](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions) abfragen. Halten Sie die zurückgegebenen Informationen in einem vernünftigen Größenrahmen, indem Sie den Parameter `take` (einige Hundert) angeben. [Löschen Sie Transkriptionen](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regelmäßig aus dem Dienst, nachdem Sie die Ergebnisse abgerufen haben. Dadurch stellen Sie schnelle Antworten auf die Aufrufe der Transkriptionsverwaltung sicher.
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -300,7 +342,7 @@ Sie müssen den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-Der Beispielcode richtet den Client ein und sendet die Transkriptionsanforderung. Anschließend fragt er die Statusinformationen ab und druckt Details über den Fortschritt der Transkription.
+Der Beispielcode richtet den Client ein und sendet die Transkriptionsanforderung. Anschließend fragt er die Statusinformationen ab und gibt Details zum Fortschritt der Transkription aus.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
@@ -319,4 +361,4 @@ Sie finden das Beispiel im [GitHub-Beispielrepository](https://aka.ms/csspeech/s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)

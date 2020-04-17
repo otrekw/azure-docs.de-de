@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421031"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810203"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 
@@ -150,7 +150,7 @@ Beachten Sie, dass in Produktionsbereitstellungen für die Zertifizierungsstelle
 
 ## <a name="troubleshoot-the-deployment"></a>Problembehandlung bei der Bereitstellung
 
-Wenn Ihre Webrolle nicht online geschaltet wird, liegt möglicherweise ein Problem mit der Sicherheitskonfiguration vor. Überprüfen Sie, ob SSL wie oben beschrieben konfiguriert ist.
+Wenn Ihre Webrolle nicht online geschaltet wird, liegt möglicherweise ein Problem mit der Sicherheitskonfiguration vor. Überprüfen Sie, ob TLS/SSL wie oben beschrieben konfiguriert ist.
 
 Wenn die Workerrolle nicht online geschaltet wird, während der Vorgang bei der Webrolle erfolgreich ist, liegt sehr wahrscheinlich ein Problem beim Herstellen der Verbindung mit der Statusdatenbank vor, die Sie zuvor erstellt haben.
 
@@ -254,7 +254,7 @@ Die enthaltenen Skriptdateien lauten:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Führen Sie das Skript *ExecuteSampleSplitMerge.ps1* aus, um einen Teilungsvorgang auszuführen (die Hälfte der Daten vom ersten Shard auf den zweiten Shard zu verschieben) und dann einen Zusammenführungsvorgang auszuführen (die Daten wieder zurück auf den ersten Shard zu verschieben). Wenn Sie SSL konfiguriert und den http-Endpunkt deaktiviert gelassen haben, stellen Sie sicher, dass Sie stattdessen den https:// endpunkt verwenden.
+5. Führen Sie das Skript *ExecuteSampleSplitMerge.ps1* aus, um einen Teilungsvorgang auszuführen (die Hälfte der Daten vom ersten Shard auf den zweiten Shard zu verschieben) und dann einen Zusammenführungsvorgang auszuführen (die Daten wieder zurück auf den ersten Shard zu verschieben). Wenn Sie TLS konfiguriert und den http-Endpunkt deaktiviert gelassen haben, stellen Sie sicher, dass Sie stattdessen den https://-Endpunkt verwenden.
 
    Beispiel für eine Befehlszeile:
 
@@ -333,7 +333,7 @@ Beim Ausführen der PowerShell-Beispielskripts kann folgende Meldung angezeigt w
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Dieser Fehler weist darauf hin, dass das SSL-Zertifikat nicht ordnungsgemäß konfiguriert ist. Folgen Sie den Anweisungen im Abschnitt „Herstellen einer Verbindung mit einem Webbrowser“.
+Dieser Fehler weist darauf hin, dass das TLS/SSL-Zertifikat nicht ordnungsgemäß konfiguriert ist. Folgen Sie den Anweisungen im Abschnitt „Herstellen einer Verbindung mit einem Webbrowser“.
 
 Wenn Sie keine Anforderungen übermitteln können, wird möglicherweise Folgendes angezeigt:
 

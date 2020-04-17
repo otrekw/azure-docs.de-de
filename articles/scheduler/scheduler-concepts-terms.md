@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898568"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878390"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler unterstützt mehrere Auftragstypen: 
 
-* HTTP-Aufträge, einschließlich HTTPS-Aufträge, die SSL unterstützen, wenn Ihnen der Endpunkt für einen vorhandenen Dienst oder eine vorhandene Workload bekannt ist
+* HTTP-Aufträge, einschließlich HTTPS-Aufträge, die TLS unterstützen, wenn Ihnen der Endpunkt für einen vorhandenen Dienst oder eine vorhandene Workload bekannt ist
 * Storage-Warteschlangenaufträge für Workloads, die Storage-Warteschlangen verwenden (z. B. Veröffentlichung von Nachrichten in Storage-Warteschlangen)
 * Service Bus-Warteschlangenaufträge für Workloads, die Service Bus-Warteschlangen verwenden
 * Service Bus-Themenaufträge für Workloads, die Service Bus-Themen verwenden
@@ -77,7 +77,7 @@ Allgemein betrachtet besteht ein Scheduler-Auftrag aus den folgenden grundlegend
 
 * Die Aktion, die beim Auslösen des Auftragszeitgebers ausgeführt wird
 * Optional: Die Zeit, zu der der Auftrag ausgeführt werden soll
-* Optional: Eine Angabe, wann und wie oft der Auftrag wiederholt werden soll
+* Optional: Die Angabe, wann und wie oft der Auftrag wiederholt werden soll
 * Optional: Eine Fehleraktion, die bei einem Fehler der primären Aktion ausgeführt wird
 
 Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die nächste geplante Ausführungszeit des Auftrags. Die Codedefinition des Auftrags ist ein Objekt im JSON-Format (JavaScript Object Notation), das folgende Elemente enthält:
@@ -246,7 +246,7 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 },
 ```
 
-| Eigenschaft | Erforderlich | value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
@@ -276,7 +276,7 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 },
 ```
 
-| Eigenschaft | Erforderlich | value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
 | **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 

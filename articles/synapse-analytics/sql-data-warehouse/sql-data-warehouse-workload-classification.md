@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349975"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743658"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics-Workloadklassifizierung
 
-In diesem Artikel wird der Workloadklassifizierungsprozess beim Zuweisen einer Workloadgruppe und Priorität für eingehende Anforderungen mit SQL Analytics in Azure Synapse erläutert.
+In diesem Artikel wird der Workloadklassifizierungsprozess beim Zuweisen einer Workloadgruppe und Priorität für eingehende Anforderungen mit Synapse-SQL-Pools in Azure Synapse erläutert.
 
 ## <a name="classification"></a>Klassifizierung
 
@@ -36,7 +36,7 @@ Nicht alle Anweisungen sind klassifiziert, da sie keine Ressourcen oder Bedeutun
 
 ## <a name="classification-process"></a>Klassifizierungsprozess
 
-Für die Klassifizierung in SQL Analytics werden derzeit Benutzer mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) einer Rolle zugewiesen, der wiederum eine entsprechende Ressourcenklasse zugewiesen wurde. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können SQL Analytics-Benutzer Priorität zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden. 
+Die Klassifizierung für Synapse SQL-Pools in Azur Synapse erfolgt derzeit, indem Benutzern mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) einer Rolle zugewiesen werden, der wiederum eine entsprechende Ressourcenklasse zugewiesen wurde. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können Synapse-SQL-Poolbenutzer Priorität zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden.
 
 > [!NOTE]
 > Die Klassifizierung wird für jede Anforderung einzeln ausgewertet. Mehrere Anforderungen in einer einzelnen Sitzung können separat klassifiziert werden.
@@ -76,7 +76,7 @@ Nehmen Sie das folgende Szenario als Beispiel:
 - Zum Testen der neuen Klassifizierungssyntax wird über die Datenbankrolle „DBARole“ (von der DBAUser ein Mitglied ist) eine Klassifizierung für beide erstellt. Dabei wird eine Zuordnung zu „mediumrc“ mit hoher Priorität vorgenommen.
 - Wenn DBAUser sich anmeldet und eine Abfrage ausführt, wird diese „largerc“ zugewiesen, da ein Benutzer Vorrang vor einer Rollenmitgliedschaft hat.
 
-Beim Erstellen von Workloadklassifizierungen wird empfohlen, Ressourcenklassen-Rollenzuordnungen zu entfernen, da Sie auf diese Weise Probleme mit Fehlklassifizierungen leichter beheben können.  Der folgende Code gibt Ressourcenklassen-Rollenmitgliedschaften zurück.  Führen Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) für alle Mitgliedsnamen aus, die von der entsprechenden Ressourcenklasse zurückgegeben werden.
+Beim Erstellen von Workloadklassifizierungen wird empfohlen, Ressourcenklassen-Rollenzuordnungen zu entfernen, da Sie auf diese Weise Probleme mit Fehlklassifizierungen leichter beheben können.  Der folgende Code gibt Ressourcenklassen-Rollenmitgliedschaften zurück.  Führen Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) für alle Mitgliedsnamen aus, die von der entsprechenden Ressourcenklasse zurückgegeben werden.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -87,12 +87,12 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
 - Beachten Sie für die Erstellung eines Workloadklassifizierers die folgende Schnellstartanleitung: [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md).
 - Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
+- Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anzeigen.

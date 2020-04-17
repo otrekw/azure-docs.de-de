@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330520"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667762"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Erstellen und Verwalten von Zeitplänen für Classroom-Labs in Azure Lab Services 
 Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VMs im Lab automatisch zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden. Sie können einen einmaligen Zeitplan oder einen sich wiederholenden Zeitplan definieren. Die folgenden Verfahren zeigen die Schritte zum Erstellen und Verwalten von Zeitplänen für ein Classroom-Lab: 
@@ -28,6 +28,12 @@ Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VM
 
 ## <a name="set-a-schedule-for-the-lab"></a>Festlegen eines Zeitplans für das Lab
 Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmten Zeiten automatisch gestartet und beendet werden. Das von Ihnen zuvor angegebene Benutzerkontingent ist die zusätzliche Zeit, die jedem Benutzer außerhalb dieser geplanten Zeit zugewiesen ist. 
+
+> [!NOTE]
+> Bevor Sie beginnen, sehen Sie sich an, wie Zeitpläne virtuelle Labcomputer beeinflussen: 
+>- Die Vorlagen-VM ist nicht in den Zeitplänen enthalten. 
+>- Es werden nur zugewiesene virtuelle Computer gestartet. Das bedeutet, dass der Computer nur zu den geplanten Stunden gestartet wird, wenn er nicht von einem Endbenutzer (Student) beansprucht wird. 
+>- Alle virtuellen Computer (unabhängig davon, ob sie von einem Benutzer beansprucht werden) werden basierend auf dem Labzeitplan angehalten. 
 
 1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie in der Symbolleiste die Option **Add scheduled event** (Geplantes Ereignis hinzufügen) aus. 
 

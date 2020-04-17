@@ -6,18 +6,20 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230018"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414077"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Erstellen und Konfigurieren von Azure Integration Runtime
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zu IR finden Sie unter [Integration runtime in Azure Data Factory](concepts-integration-runtime.md) (Integration Runtime in Azure Data Factory).
 
 Azure IR bietet ein vollständig verwaltetes Compute zur nativen Durchführung des Verschiebens von Daten und Disponierens von Datentransformationsaktivitäten zum Berechnen von Diensten wie HDInsight. IR wird in der Azure-Umgebung gehostet und unterstützt das Herstellen von Verbindungen mit Ressourcen in einer öffentlichen Netzwerkumgebung mit öffentlich zugänglichen Endpunkten.
@@ -30,7 +32,11 @@ Dieses Dokument ist eine Einführung zum Erstellen und Konfigurieren von Azure I
 Standardmäßig verfügt jede Data Factory im Back-End über eine Azure-IR, die Vorgänge in Clouddatenspeichern und Computediensten im öffentlichen Netzwerk unterstützt. Der Speicherort dieser Azure IR wird automatisch aufgelöst. Wenn die **connectVia**-Eigenschaft in der Definition des verknüpften Diensts nicht angegeben ist, wird die standardmäßige Azure IR verwendet. Sie müssen nur dann explizit eine Azure IR erstellen, wenn Sie den Speicherort der IR explizit definieren möchten, oder wenn Sie die Aktivitätsausführungen aus Verwaltungsgründen auf verschiedenen IRs virtuell gruppieren möchten. 
 
 ## <a name="create-azure-ir"></a>Erstellen der Azure IR
-Integration Runtime kann mithilfe des PowerShell-Cmdlets **Set-AzDataFactoryV2IntegrationRuntime** erstellt werden. Um ein Azure IR zu erstellen, geben Sie Namen, Speicherort und Typ im Befehl an. Hier ist ein Beispielbefehl zum Erstellen einer Azure IR mit Speicherort „Europa, Westen“:
+
+Zum Erstellen und Einrichten einer Azure IR können Sie die nachstehenden Verfahren verwenden.
+
+### <a name="create-an-azure-ir-via-azure-powershell"></a>Erstellen einer Azure IR über Azure PowerShell
+Integration Runtime kann mithilfe des PowerShell-Cmdlets **Set-AzDataFactoryV2IntegrationRuntime** erstellt werden. Geben Sie zum Erstellen einer Azure IR den Namen, Speicherort und Typ im Befehl an. Hier ist ein Beispielbefehl zum Erstellen einer Azure IR mit Speicherort „Europa, Westen“:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
@@ -39,9 +45,30 @@ Für die Azure IR muss der Typ auf **Managed** festgelegt werden. Sie müssen ke
 
 Sie können eine vorhandenen Azure IR mithilfe des Set-AzDataFactoryV2IntegrationRuntime-PowerShell-Cmdlets konfigurieren, um ihren Speicherort zu ändern. Weitere Informationen über den Speicherort einer Azure IR finden Sie unter [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md).
 
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Erstellen einer Azure IR über die Azure Data Factory-Benutzeroberfläche
+Führen Sie die unten angegebenen Schritte aus, um eine Azure IR über die Azure Data Factory-Benutzeroberfläche zu erstellen.
+
+1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im linken Bereich die Registerkarte **Erstellen** aus.
+
+   ![Schaltfläche „Erstellen“ auf der Startseite](media/doc-common-process/get-started-page-author-button.png)
+
+1. Wählen Sie unten im linken Bereich die Option **Verbindungen** und dann im Fenster **Verbindungen** die Option **Integration Runtimes** aus. Klicken Sie auf **+ Neu**.
+
+   ![Erstellen einer Integration Runtime](media/create-azure-integration-runtime/new-integration-runtime.png)
+
+1. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
+
+1. Wählen Sie auf der daraufhin angezeigten Seite die Option **Azure** zum Erstellen einer Azure IR und dann **Weiter** aus.
+   ![Erstellen einer Integration Runtime](media/create-azure-integration-runtime/new-azure-ir.png)
+
+1. Geben Sie einen Namen für Ihre Azure IR ein, und wählen Sie **Erstellen** aus.
+   ![Erstellen einer Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
+
+1. Wenn die Erstellung abgeschlossen ist, wird eine Popupbenachrichtigung angezeigt. Vergewissern Sie sich auf der Seite **Integration Runtimes**, dass die neu erstellte IR in der Liste angezeigt wird.
+
 ## <a name="use-azure-ir"></a>Verwenden der Azure IR
 
-Sobald eine Azure IR erstellt ist, können Sie in Ihrer Definition des verknüpften Diensts darauf verweisen. Das folgende Beispiel zeigt Ihnen, wie Sie von einem verknüpften Azure Storage-Dienst aus auf die oben erstellte Azure Integration Runtime verweisen können:  
+Sobald eine Azure IR erstellt ist, können Sie in Ihrer Definition des verknüpften Diensts darauf verweisen. Das folgende Beispiel zeigt Ihnen, wie Sie von einem verknüpften Azure Storage-Dienst aus auf die oben erstellte Azure Integration Runtime verweisen können:
 
 ```json
 {

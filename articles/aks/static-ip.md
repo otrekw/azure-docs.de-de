@@ -1,15 +1,16 @@
 ---
-title: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
+title: Verwenden der statischen IP-Adresse mit dem Lastenausgleich
+titleSuffix: Azure Kubernetes Service
 description: Informationen zum Erstellen und Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943578"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886737"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
@@ -70,6 +71,8 @@ az role assignment create \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
+
+Alternativ können Sie für Berechtigungen die vom System zugewiesene verwaltete Identität anstelle des Dienstprinzipals verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Fügen Sie die Eigenschaft `loadBalancerIP` und den Wert der statischen öffentlichen IP-Adresse dem YAML-Manifest hinzu, um einen Dienst vom Typ *LoadBalancer* mit der statischen öffentlichen IP-Adresse zu erstellen. Erstellen Sie eine Datei namens „`load-balancer-service.yaml`“, und fügen Sie den folgenden YAML-Code ein. Geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben: Im folgenden Beispiel wird auch die Anmerkung auf die Ressourcengruppe *myResourceGroup* festgelegt. Geben Sie Ihren eigenen Ressourcengruppennamen an.
 

@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756279"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)
 
@@ -25,7 +25,7 @@ Sie können private Endpunkte für Ihre Azure-Web-App verwenden, um Clients in I
 
 Die Verwendung privater Endpunkte für Ihre Web-App bietet Ihnen folgende Möglichkeiten:
 
-- Schützen Ihrer Web-App durch Konfigurieren des Dienstendpunkts, wodurch eine öffentliche Verfügbarmachung beseitigt wird.
+- Schützen Ihrer Web-App durch Konfigurieren des privaten Endpunkts, wodurch eine öffentliche Verfügbarmachung beseitigt wird.
 - Sicheres Verbinden mit der Web-App aus lokalen Netzwerken, die eine Verbindung mit dem virtuellen Netzwerk über VPN oder ExpressRoute mit privatem Peering herstellen.
 
 Wenn Sie nur eine sichere Verbindung zwischen Ihrem virtuellen Netzwerk und Ihrer Web-App benötigen, ist ein Dienstendpunkt die einfachste Lösung. Wenn Sie auch von einem lokalen Standort aus über ein Azure-Gateway auf die Web-App zugreifen können müssen, ist ein privater Endpunkt mit einem VNet mit regionalem Peering oder mit globalem Peering die Lösung.  

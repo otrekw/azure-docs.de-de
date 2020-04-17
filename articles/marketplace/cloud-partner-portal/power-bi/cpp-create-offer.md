@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286386"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984843"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Erstellen eines Power BI-App-Angebots
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die Power BI-App-Erstellung](https://aka.ms/AzureCreatePBIServiceApp).
 
 In diesem Artikel werden die Schritte zum Erstellen eines neuen Power BI-App-Angebots für [AppSource](https://appsource.microsoft.com) beschrieben. Jedes Angebot wird in AppSource als eigene Entität angezeigt. Beim Erstellen eines neuen Angebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) müssen Sie für Ihr Angebot vier Gruppen von Ressourcen angeben.
 

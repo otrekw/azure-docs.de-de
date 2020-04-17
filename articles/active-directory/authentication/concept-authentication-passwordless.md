@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/23/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505756"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743540"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -26,7 +26,7 @@ Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist eine gr
 | --- | --- | --- |
 | Kennwortlos | Windows 10-Gerät, Smartphone oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
 
-Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Microsoft bietet drei kennwortlose Authentifizierungsoptionen:
+Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Microsoft bietet die folgenden drei Optionen für kennwortlose Authentifizierung, die mit Azure Active Directory (Azure AD) integriert sind:
 
 - Windows Hello for Business
 - Microsoft Authenticator-App
@@ -38,6 +38,20 @@ Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifi
 
 Windows Hello for Business eignet sich ideal für Information-Worker, die über einen eigenen Windows-PC verfügen. Die biometrischen Daten und die PIN sind direkt mit dem PC des Benutzers verknüpft, wodurch sichergestellt wird, dass nur der Besitzer darauf zugreifen kann. Mit PKI-Integration (Public Key-Infrastruktur) und integrierter Unterstützung für einmaliges Anmelden (Single Sign-On, SSO) bietet Windows Hello for Business eine praktische Methode für den nahtlosen Zugriff auf Unternehmensressourcen lokal und in der Cloud.
 
+![Beispiel für eine Benutzeranmeldung mit Windows Hello for Business](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
+
+In den folgenden Schritten wird gezeigt, wie der Anmeldevorgang mit Azure Active Directory funktioniert.
+
+![Diagramm mit Übersicht über die Schritte bei der Benutzeranmeldung mit Windows Hello for Business](./media/concept-authentication-passwordless/windows-hello-flow.png)
+
+1. Ein Benutzer meldet sich bei Windows mit biometrischer Geste oder PIN an. Die Geste entsperrt den privaten Schlüssel von Windows Hello for Business, und die Daten werden an den Security Support Provider für Cloudauthentifizierung gesendet, auch als *Cloudauthentifizierungsanbieter* bezeichnet.
+1. Der Cloudauthentifizierungsanbieter fordert eine Nonce von Azure AD an.
+1. Azure AD gibt eine Nonce zurück, die 5 Minuten lang gültig ist.
+1. Der Cloudauthentifizierungsanbieter signiert die Nonce mit dem privaten Schlüssel des Benutzers und gibt die signierte Nonce an Azure AD zurück.
+1. Azure AD überprüft die signierte Nonce, indem der Dienst den sicher registrierten öffentlichen Schlüssel des Benutzers mit der Nonce-Signatur abgleicht. Nach der Verifizierung der Signatur überprüft Azure AD dann die zurückgegebene signierte Nonce. Nach der Überprüfung der Nonce erstellt Azure AD ein primäres Aktualisierungstoken (Primary Refresh Token, PRT) mit Sitzungsschlüssel, das mit dem Transportschlüssel des Geräts verschlüsselt ist, und gibt es an den Cloudauthentifizierungsanbieter zurück.
+1. Der Cloud-AP-Anbieter erhält das verschlüsselte PRT mit Sitzungsschlüssel. Mithilfe des privaten Transportschlüssels des Geräts entschlüsselt der Cloudauthentifizierungsanbieter den Sitzungsschlüssel und schützt den Sitzungsschlüssel mit dem Trusted Platform Module (TPM) des Geräts.
+1. Der Cloudauthentifizierungsanbieter gibt als Antwort an Windows zurück, dass die Authentifizierung erfolgreich war. Der Benutzer kann nun sowohl auf Windows-Anwendungen als auch auf Cloudanwendungen und lokale Anwendungen zugreifen, ohne dass eine wiederholte Authentifizierung erforderlich ist (SSO).
+
 Das [Planungshandbuch](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) für Windows Hello for Business kann verwendet werden, um die Auswahl der Art der Bereitstellung von Windows Hello for Business und die zu berücksichtigenden Optionen zu erleichtern.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-App
@@ -46,7 +60,20 @@ Ermöglichen Sie, dass die Telefone Ihrer Mitarbeiter in die kennwortlose Authen
 
 ![Anmelden bei Microsoft Edge mit der Microsoft Authenticator-App](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Die Authenticator-App wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten (Touch oder Gesicht) oder ihre PIN zur Bestätigung verwenden.
+Die Authenticator-App wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten (Touch oder Gesicht) oder ihre PIN zur Bestätigung verwenden. Weitere Informationen zur Installation finden Sie unter [Herunterladen und Installieren der Microsoft Authenticator-App](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install).
+
+Das Grundprinzip der kennwortlosen Authentifizierung mit der Authenticator-App ist dasselbe wie bei Windows Hello for Business. Sie ist etwas komplizierter, da der Benutzer identifiziert werden muss, damit Azure AD die verwendete Version der Microsoft Authenticator-App herausfinden kann:
+
+![Diagramm mit Übersicht über die Schritte bei der Benutzeranmeldung mit der Microsoft Authenticator-App](./media/concept-authentication-passwordless/authenticator-app-flow.png)
+
+1. Der Benutzer gibt seinen Benutzernamen ein.
+1. Azure AD erkennt, dass der Benutzer über sichere Anmeldeinformationen verfügt, und startet den Strong Credential-Flow (Ablauf für sichere Anmeldeinformationen).
+1. Über den Apple Push Notification Service (APNS) bei iOS-Geräten bzw. Firebase Cloud Messaging (FCM) bei Android-Geräten wird eine Benachrichtigung an die App gesendet.
+1. Der Benutzer erhält die Pushbenachrichtigung und öffnet die App.
+1. Die App ruft Azure AD auf und erhält eine Proof-of-Presence-Abfrage sowie eine Nonce.
+1. Der Benutzer beantwortet die Abfrage durch Eingabe von biometrischen Daten oder einer PIN, um den privaten Schlüssel zu entsperren.
+1. Die Nonce wird mit dem privaten Schlüssel signiert und an Azure AD zurückgesendet.
+1. Azure AD überprüft den öffentlichen/privaten Schlüssel und gibt ein Token zurück.
 
 ## <a name="fido2-security-keys"></a>FIDO2-Sicherheitsschlüssel
 
@@ -55,6 +82,20 @@ FIDO2-Sicherheitsschlüssel sind eine Phishing-resistente, standardbasierte Meth
 In der Public Preview-Phase können sich Mitarbeiter mit Sicherheitsschlüsseln bei ihren in Azure AD oder Azure AD Hybrid eingebundenen Windows 10-Geräten anmelden und einmaliges Anmelden nutzen, um auf ihre cloudbasierten und lokalen Ressourcen zuzugreifen. Benutzer können sich auch bei unterstützten Browsern anmelden. FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sicherheitsbewusst sind oder deren Mitarbeiter nicht bereit oder in der Lage sind, ihr Telefon als zweiten Faktor zu nutzen, oder aber bei denen andere entsprechende Szenarien vorliegen.
 
 ![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
+
+Wenn ein Benutzer sich mit einem FIDO2-Sicherheitsschlüssel anmeldet, sieht der Prozess wie folgt aus:
+
+![Diagramm mit Übersicht über die Schritte bei der Benutzeranmeldung mit einem FIDO2-Sicherheitsschlüssel](./media/concept-authentication-passwordless/fido2-security-key-flow.png)
+
+1. Der Benutzer steckt den FIDO2-Sicherheitsschlüssel in seinen Computer.
+2. Windows erkennt den FIDO2-Sicherheitsschlüssel.
+3. Windows sendet eine Authentifizierungsanforderung.
+4. Azure AD sendet eine Nonce zurück.
+5. Der Benutzer führt eine Geste aus, um den privaten Schlüssel freizuschalten, der in der sicheren Enclave des FIDO2-Sicherheitsschlüssels gespeichert ist.
+6. Der FIDO2-Sicherheitsschlüssel signiert die Nonce mit dem privaten Schlüssel.
+7. Die Anforderung des primären Aktualisierungstokens (PRT) mit signierter Nonce wird an Azure AD gesendet.
+8. Azure AD überprüft die signierte Nonce mit dem öffentlichen FIDO2-Schlüssel.
+9. Azure AD gibt das PRT zurück, um den Zugriff auf lokale Ressourcen zu ermöglichen.
 
 Viele Schlüssel verfügen zwar über eine FIDO2-Zertifizierung der FIDO Alliance, Microsoft verlangt von Anbietern jedoch die Implementierung einiger optionaler Erweiterungen der FIDO2-CTAP-Spezifikation (Client-to-Authenticator Protocol), um maximale Sicherheit und ein optimales Benutzererlebnis zu gewährleisten.
 
@@ -77,6 +118,9 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
+| Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
+| OneSpan Inc. | [https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf](https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf) |
+| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
 
 > [!NOTE]
 > Wenn Sie NFC-basierte Sicherheitsschlüssel erwerben und sie verwenden möchten, benötigen Sie einen unterstützten NFC-Leser für den Sicherheitsschlüssel. Der NFC-Leser ist keine Azure-Anforderung oder -Einschränkung. Eine Liste der unterstützten NFC-Leser finden Sie beim Anbieter für Ihren NFC-basierten Sicherheitsschlüssel.
@@ -90,7 +134,31 @@ Wenn Sie ein Anbieter sind und Ihr Gerät in dieser Liste von unterstützten Ger
 - Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
 - Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden
    - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung der Windows 10-Out-of-Box-Experience (OOBE) und mit integrierten mobilen Apps unter jedem Betriebssystem.
-   - Sicherheitsschlüssel: Funktioniert auf dem Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge.
+   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge (sowohl ältere als auch neue Edge-Version).
+
+## <a name="choose-a-passwordless-method"></a>Auswählen einer kennwortlosen Methode
+
+Welche der drei kennwortlosen Optionen die richtige ist, hängt von den Sicherheits-, Plattform- und App-Anforderungen Ihres Unternehmens ab.
+
+Folgende Faktoren sollten Sie bei der Auswahl der Microsoft-Technologie zur kennwortlosen Anmeldung berücksichtigen:
+
+||**Windows Hello for Business**|**Anmelden ohne Kennwort mit der Microsoft Authenticator-App**|**FIDO2-Sicherheitsschlüssel**|
+|:-|:-|:-|:-|
+|**Voraussetzung**| Windows 10 Version 1809 oder höher<br>Azure Active Directory| Microsoft Authenticator-App<br>Mobiltelefon (iOS- und Android-Gerät mit Android 6.0 oder höher)|Windows 10 Version 1809 oder höher<br>Azure Active Directory|
+|**Mode**|Plattform|Software|Hardware|
+|**Systeme und Geräte**|PC mit integriertem Trusted Platform Module (TPM)<br>PIN und biometrische Erkennung |PIN und biometrische Erkennung per Telefon|FIDO2-Sicherheitsgeräte, die mit Microsoft kompatibel sind|
+|**Benutzerfreundlichkeit**|Melden Sie sich mit einer PIN oder einer biometrischen Erkennung (Gesicht, Iris oder Fingerabdruck) bei Windows-Geräten an.<br>Die Windows Hello-Authentifizierung ist gerätegebunden; der Benutzer benötigt sowohl das Gerät als auch eine Anmeldekomponente wie eine PIN oder einen biometrischen Faktor, um auf Unternehmensressourcen zugreifen zu können.|Melden Sie sich mit einem Mobiltelefon per Fingerabdruckscan, Gesichts- oder Iriserkennung oder PIN an.<br>Die Benutzer melden sich von ihrem PC oder Mobiltelefon aus am Geschäfts- oder Privatkonto an.|Anmelden mithilfe eines FIDO2-Sicherheitsgeräts (Biometrie, PIN und NFC)<br>Der Benutzer kann auf das Gerät gemäß den Richtlinien der Organisation zugreifen und sich per PIN oder biometrischem Merkmal mit Geräten wie USB-Sicherheitsschlüsseln und NFC-fähigen Smartcards, Schlüsseln oder Wearables authentifizieren.|
+|**Unterstützte Szenarios**| Kennwortfreie Benutzerführung auf Windows-Gerät.<br>Geeignet für dedizierte Arbeits-PCs mit der Möglichkeit zum einmaligen Anmelden (SSO) bei Geräten und Anwendungen.|Kennwortlose, ortsunabhängige Lösung mit Mobiltelefon.<br>Geeignet für den Zugriff auf Arbeits- oder Privatanwendungen im Web von jedem Gerät aus.|Kennwortfreie Benutzerführung für Worker mit Biometrie, PIN und NFC.<br>Geeignet für gemeinsam verwendete PCs, für die die Verwendung eines Mobiltelefons keine geeignete Option ist (z. B. für Helpdeskmitarbeiter, Nutzern von öffentlichen Terminals oder Krankenhauspersonal).|
+
+Verwenden Sie die folgende Tabelle, um herauszufinden, welche Methode Ihre Anforderungen und Benutzer am besten unterstützt.
+
+|Persona|Szenario|Environment|Kennwortlose Technologie|
+|:-|:-|:-|:-|
+|**Administrator**|Sicherer Zugriff auf ein Gerät für Verwaltungsaufgaben|Zugewiesenes Windows 10-Gerät|Windows Hello for Business und/oder FIDO2-Sicherheitsschlüssel|
+|**Administrator**|Verwaltungsaufgaben auf Nicht-Windows-Geräten| Mobilgerät oder Nicht-Windows-Gerät|Anmelden ohne Kennwort mit der Microsoft Authenticator-App|
+|**Information-Worker**|Produktive Arbeit|Zugewiesenes Windows 10-Gerät|Windows Hello for Business und/oder FIDO2-Sicherheitsschlüssel|
+|**Information-Worker**|Produktive Arbeit| Mobilgerät oder Nicht-Windows-Gerät|Anmelden ohne Kennwort mit der Microsoft Authenticator-App|
+|**Mitarbeitern im Kundenkontakt**|Terminals in Fabriken, im Einzelhandel oder zur Dateneingabe|Gemeinsam genutzte Windows 10-Geräte|FIDO2-Sicherheitsschlüssel|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

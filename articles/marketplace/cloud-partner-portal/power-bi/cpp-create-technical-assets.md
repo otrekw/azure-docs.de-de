@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90317591b2666f48363c2ee636e36822e2083ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286369"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984809"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Erstellen technischer Ressourcen für ein Power BI-App-Angebot
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die Power BI-App-Erstellung](https://aka.ms/AzureCreatePBIServiceApp).
 
 Die primäre technische Ressource, die Sie für diesen Angebotstyp benötigen, ist eine Power BI-App. Eine Power BI-App ist eine Sammlung von primären Datasets, Berichten oder Dashboards sowie optionale verbundene Dienste und eingebettete Datasets. Sie stellt die Weiterentwicklung eines vormals als [Inhaltspaket](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction) bekannten Ressourcentyps dar. Weitere Informationen zum Entwickeln dieses App-Typs finden Sie unter [Was sind Power BI-Vorlagen-Apps?](https://go.microsoft.com/fwlink/?linkid=2028636).
 

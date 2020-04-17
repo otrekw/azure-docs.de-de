@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Transaktionen
-description: Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwickeln von Lösungen
+title: Verwenden von Transaktionen in einem Synapse SQL-Pool
+description: Dieser Artikel enthält Tipps für das Implementieren von Transaktionen und Entwickeln von Lösungen in einem Synapse SQL-Pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,34 +10,41 @@ ms.subservice: ''
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351568"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416148"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>Verwenden von Transaktionen in SQL Data Warehouse
-Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwickeln von Lösungen
+# <a name="use-transactions-in-synapse-sql-pool"></a>Verwenden von Transaktionen in einem Synapse SQL-Pool
+
+Dieser Artikel enthält Tipps für das Implementieren von Transaktionen und Entwickeln von Lösungen in einem SQL-Pool.
 
 ## <a name="what-to-expect"></a>Ausblick
-Wie zu erwarten, unterstützt SQL Data Warehouse Transaktionen als Teil der Data Warehouse-Workload. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet. 
+
+Wie zu erwarten, unterstützen SQL-Pools Transaktionen als Teil der Data Warehouse-Workload. Allerdings sind im Vergleich zu SQL Server einige Features eingeschränkt, um eine angemessene Leistung von SQL-Pools sicherzustellen. In diesem Artikel werden die Unterschiede hervorgehoben.
 
 ## <a name="transaction-isolation-levels"></a>Transaktionsisolationsstufen
-SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).
+
+SQL-Pools implementieren ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  
+
+Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="transaction-size"></a>Transaktionsgröße
-Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird pro Verteilung angewendet. Die Gesamtzuordnung kann also ermittelt werden, indem der Grenzwert mit der Verteilungsanzahl multipliziert wird. Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Zeile. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
 
-Für die Tabelle unten gelten die folgenden Annahmen:
+Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird pro Verteilung angewendet. Die Gesamtzuordnung kann also ermittelt werden, indem der Grenzwert mit der Verteilungsanzahl multipliziert wird.
 
-* Gleichmäßige Verteilung der Daten 
+Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Zeile. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
+
+Für die Tabelle unten gelten die folgenden beiden Annahmen:
+
+* Gleichmäßige Verteilung der Daten
 * Durchschnittliche Zeilenlänge beträgt 250 Byte
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4\.000.000 |240.000.000 |
 | DW200c |1.5 |60 |90 |6\.000.000 |360.000.000 |
@@ -58,7 +65,7 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4\.000.000 |240.000.000 |
 | DW200 |1.5 |60 |90 |6\.000.000 |360.000.000 |
@@ -73,25 +80,26 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 | DW3000 |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
 | DW6000 |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
 
-Die Obergrenze für die Transaktionsgröße wird pro Transaktion oder Vorgang angewendet. Sie wird nicht übergreifend für alle gleichzeitigen Transaktionen angewendet. Daher ist es für jede Transaktion zulässig, diese Menge an Daten in das Protokoll zu schreiben. 
+Die Obergrenze für die Transaktionsgröße wird pro Transaktion oder Vorgang angewendet. Sie wird nicht übergreifend für alle gleichzeitigen Transaktionen angewendet. Daher ist es für jede Transaktion zulässig, diese Menge an Daten in das Protokoll zu schreiben.
 
 Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll geschrieben wird, finden Sie im Artikel [Bewährte Methoden für Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md).
 
 > [!WARNING]
 > Die maximale Transaktionsgröße kann nur für Tabellen mit HASH- oder ROUND_ROBIN-Verteilung erreicht werden, bei denen die Daten gleichmäßig verteilt werden. Wenn bei der Transaktion Daten auf verzerrte Weise in die Verteilungen geschrieben werden, wird die Obergrenze wahrscheinlich vor der maximalen Transaktionsgröße erreicht.
 > <!--REPLICATED_TABLE-->
-> 
-> 
 
 ## <a name="transaction-state"></a>Transaktionsstatus
-SQL Data Warehouse verwendet die XACT_STATE()-Funktion, um eine fehlgeschlagene Transaktion mit dem Wert "-2" zu melden. Dieser Wert bedeutet, dass die Transaktion fehlerhaft und nur für den Rollback markiert ist.
+
+SQL-Pools verwenden die XACT_STATE()-Funktion, um eine fehlgeschlagene Transaktion mit dem Wert „– 2“ zu melden. Dieser Wert bedeutet, dass die Transaktion fehlerhaft und nur für den Rollback markiert ist.
 
 > [!NOTE]
-> Die Verwendung von "-2" in der XACT_STATE-Funktion zum Kennzeichnen einer fehlgeschlagenen Transaktion stellt für SQL Server unterschiedliche Verhalten dar. SQL Server verwendet den Wert "-1" für eine Transaktion, für die kein Commit durchgeführt werden kann. SQL Server kann einige Fehler innerhalb einer Transaktion tolerieren, ohne als nicht commitfähig gekennzeichnet zu werden. `SELECT 1/0` würde beispielsweise einen Fehler verursachen, aber keinen Transaktionszustand erzwingen, der keinen Commit zulässt. SQL Server lässt auch Lesevorgänge in der nicht commitfähigen Transaktion zu. SQL Data Warehouse dagegen lässt dies nicht zu. Wenn in einer SQL Data Warehouse-Transaktion ein Fehler auftritt, wird die Transaktion sofort in den Zustand „-2“ versetzt, und Sie können erst dann weitere SELECT-Anweisungen ausführen, wenn ein Rollback für die ursprüngliche Anweisung durchgeführt wurde. Es ist daher wichtig, zu überprüfen, ob in Ihrem Anwendungscode XACT_STATE() verwendet wird, da Sie den Code möglicherweise ändern müssen.
-> 
-> 
+> Die Verwendung von "-2" in der XACT_STATE-Funktion zum Kennzeichnen einer fehlgeschlagenen Transaktion stellt für SQL Server unterschiedliche Verhalten dar. SQL Server verwendet den Wert "-1" für eine Transaktion, für die kein Commit durchgeführt werden kann. SQL Server kann einige Fehler innerhalb einer Transaktion tolerieren, ohne als nicht commitfähig gekennzeichnet zu werden. `SELECT 1/0` würde beispielsweise einen Fehler verursachen, aber keinen nicht commitfähigen Transaktionszustand erzwingen.
 
-In SQL Server kann z.B. eine Transaktion wie die folgende angezeigt werden:
+SQL Server lässt auch Lesevorgänge in der nicht commitfähigen Transaktion zu. SQL-Pools lassen dies dagegen nicht zu. Wenn in einer SQL-Pool-Transaktion ein Fehler auftritt, wird die Transaktion sofort in den Zustand „– 2“ versetzt, und Sie können erst dann weitere SELECT-Anweisungen ausführen, wenn ein Rollback für die ursprüngliche Anweisung ausgeführt wurde.
+
+Es ist daher wichtig, zu überprüfen, ob in Ihrem Anwendungscode XACT_STATE() verwendet wird, da Sie den Code möglicherweise ändern müssen.
+
+In SQL Server begegnet Ihnen z. B. möglicherweise eine Transaktion wie die folgende:
 
 ```sql
 SET NOCOUNT ON;
@@ -135,7 +143,7 @@ Meldung 111233, Ebene 16, Status 1, Zeile 1 111233; Die aktuelle Transaktion wur
 
 Sie erhalten auch keine Ausgabe der ERROR_*-Funktionen.
 
-In SQL Data Warehouse muss der Code leicht geändert werden:
+Bei einem SQL-Pool muss der Code leicht geändert werden:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +185,22 @@ Jetzt werden Sie das erwartete Verhalten feststellen. Der Fehler in der Transakt
 Die einzige Änderung besteht darin, dass die ROLLBACK-Ausführung für die Transaktion vor dem Lesen der Fehlerinformationen im CATCH-Block erfolgen muss.
 
 ## <a name="error_line-function"></a>Error_Line()-Funktion
-Es ist auch erwähnenswert, dass SQL Data Warehouse die ERROR_LINE()-Funktion nicht implementiert oder unterstützt. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL Data Warehouse zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Details finden Sie im Artikel [LABEL](sql-data-warehouse-develop-label.md).
+
+Es ist auch erwähnenswert, dass die ERROR_LINE()-Funktion in SQL-Pools nicht implementiert oder unterstützt wird. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL-Pools zu gewährleisten.
+
+Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Details finden Sie im Artikel [LABEL](sql-data-warehouse-develop-label.md).
 
 ## <a name="using-throw-and-raiserror"></a>Verwenden von THROW und RAISERROR
-THROW ist die modernere Implementierung zum Auslösen von Ausnahmen in SQL Data Warehouse, RAISERROR wird jedoch ebenfalls unterstützt. Es gibt aber einige erwähnenswerte Unterschiede.
+
+THROW ist die modernere Implementierung zum Auslösen von Ausnahmen in SQL-Pools, RAISERROR wird jedoch ebenfalls unterstützt. Es gibt aber einige erwähnenswerte Unterschiede.
 
 * Benutzerdefinierte Fehlermeldungsnummern können für THROW nicht im Bereich 100.000 bis 150.000 liegen.
 * RAISERROR-Fehlermeldungen sind bei 50.000 festgelegt.
 * Die Verwendung von "sys.messages" wird nicht unterstützt.
 
 ## <a name="limitations"></a>Einschränkungen
-SQL Data Warehouse verfügt über einige weitere Einschränkungen in Bezug auf Transaktionen.
+
+SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transaktionen.
 
 Dies sind:
 
@@ -199,5 +212,5 @@ Dies sind:
 * Keine Unterstützung für DDL wie z.B. CREATE TABLE innerhalb von benutzerdefinierten Transaktionen
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md). Informationen zu weiteren bewährten Methoden für SQL Data Warehouse finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).
 
+Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md). Weitere Informationen zu anderen Best Practices für SQL-Pools finden Sie unter [Bewährte Methoden für den Synapse SQL-Pool in Azure Synapse Analytics (ehemals SQL DW)](sql-data-warehouse-best-practices.md).

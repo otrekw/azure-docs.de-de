@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: e05aa6e8f656001eb9eb2a3717dde6c16f030e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337151"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985625"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Herstellen einer Verbindung mit China über Azure Virtual WAN und einen sicheren Hub
 
@@ -54,7 +54,7 @@ Abhängig vom Anbieter können Sie unterschiedliche Dienstangebote erhalten. In 
 | --- | --- |
 | MPLS/IPVPN-Netzwerk |PCCW, China Telecom Global |
 |SDWAN| PCCW, China Telecom Global|
-| Dedizierter Internetzugang | PCCW, Hong Kong Telecom, China Mobil, PCCW |
+| Dedizierter Internetzugang | PCCW, Hong Kong Telecom, China Mobil|
 
 Mit Ihrem Anbieter können Sie eine der beiden folgenden Lösungen vereinbaren, um den globalen Backbone von Microsoft zu erreichen:
 

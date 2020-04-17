@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232486"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879070"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -67,7 +67,7 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 | Portal-Unterstützung | Ja|
 | Integrierter Integrationsdienst (SSIS) | Nein – SSIS ist Teil von [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrierter Analysedienst (SSAS) | Nein – SSAS ist ein separater [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Integrierter Berichterstellungsdienst (SSRS) | Nein – Power BI oder SSRS IaaS verwenden |
+| Integrierter Berichterstellungsdienst (SSRS) | Nein – verwenden Sie stattdessen [paginierte Berichte in Power BI ](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi), oder hosten Sie SSRS auf einer Azure-VM. In einer verwalteten Instanz kann SSRS nicht als Dienst ausgeführt werden, eine verwaltete Instanz kann jedoch mithilfe der SQL Server-Authentifizierung SSRS 2019-Katalogdatenbanken für einen externen Berichtsserver hosten. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
@@ -121,7 +121,7 @@ Weitere Informationen zu den Unterschieden zwischen Dienstebenen finden Sie unte
 
 Azure SQL-Datenbank verfügt über Verwaltungsvorgänge, die Sie zum automatischen Bereitstellen von neuen verwalteten Instanzen, Aktualisieren von Instanzeigenschaften und Löschen von Instanzen (falls diese nicht mehr benötigt werden) verwenden können. Dieser Abschnitt enthält Informationen zu Verwaltungsvorgängen und deren typischer Dauer.
 
-Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken (VNETs)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) und zur Sicherstellung der Isolation und Sicherheit für Kunden werden für verwaltete Instanzen [virtuelle Cluster](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) verwendet. Hierbei handelt es sich um einen dedizierten Satz isolierter virtueller Computer, die im VNET-Subnetz des Kunden bereitgestellt werden. Praktisch jede Bereitstellung einer verwalteten Instanz in einem leeren Subnetz führt dazu, dass ein neuer virtueller Cluster erstellt wird.
+Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken (VNETs)](../virtual-network/virtual-network-for-azure-services.md) und zur Sicherstellung der Isolation und Sicherheit für Kunden werden für verwaltete Instanzen [virtuelle Cluster](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) verwendet. Hierbei handelt es sich um einen dedizierten Satz isolierter virtueller Computer, die im VNET-Subnetz des Kunden bereitgestellt werden. Praktisch jede Bereitstellung einer verwalteten Instanz in einem leeren Subnetz führt dazu, dass ein neuer virtueller Cluster erstellt wird.
 
 Nachfolgende Vorgänge für bereitgestellte verwaltete Instanzen können auch Auswirkungen auf den zugrunde liegenden virtuellen Cluster haben. Dies wirkt sich auf die Dauer von Verwaltungsvorgängen aus, da die Bereitstellung von zusätzlichen virtuellen Computern mit Mehraufwand verbunden ist. Dieser muss berücksichtigt werden, wenn Sie neue Bereitstellungen oder Updates vorhandener verwalteter Instanzen planen.
 

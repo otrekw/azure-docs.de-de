@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 29789f299f266c86d719d56cfbf8e262907f7264
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827079"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743449"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Troubleshooting für Problemen mit gesperrten Konten bei einer mit Azure AD Domain Services verwalteten Domäne
 
@@ -33,11 +33,11 @@ Die Standard-Schwellenwerte für die Kontosperrung werden mithilfe differenziert
 
 ### <a name="fine-grained-password-policy"></a>Eine differenzierte Kennwortrichtlinie
 
-Mit differenzierten Kennwortrichtlinien (FGPP) können Sie bestimmte Einschränkungen für Kennwort- und Kontosperrungsrichtlinien auf verschiedene Benutzer in einer Domäne anwenden. FGPP betrifft nur in Azure AD DS erstellte Benutzer. Cloudbenutzer und Domänenbenutzer, die von Azure AD in der verwalteten Azure AD DS-Domäne synchronisiert werden, sind von den Kennwortrichtlinien nicht betroffen.
+Mit differenzierten Kennwortrichtlinien (FGPP) können Sie bestimmte Einschränkungen für Kennwort- und Kontosperrungsrichtlinien auf verschiedene Benutzer in einer Domäne anwenden. FGPP betreffen nur Benutzer in einer verwalteten Azure AD DS-Domäne. Cloudbenutzer und Domänenbenutzer, die von Azure AD in der verwalteten Azure AD DS-Domäne synchronisiert werden, sind nur von den Kennwortrichtlinien in Azure AD DS betroffen. Deren Konten in Azure AD oder in einem lokalen Verzeichnis sind davon nicht betroffen.
 
 Richtlinien werden über die Gruppenzuordnung in der verwalteten Azure AD DS-Domäne verteilt. Von Ihnen vorgenommene Änderungen werden bei der nächsten Benutzeranmeldung angewendet. Wenn Sie die Richtlinie ändern, wird ein bereits gesperrtes Benutzerkonto nicht entsperrt.
 
-Weitere Informationen zu differenzierten Kennwortrichtlinien finden Sie unter [Konfigurieren von Richtlinien für Kennwörter und Kontosperrungen][configure-fgpp].
+Weitere Informationen zu differenzierten Kennwortrichtlinien sowie zu den Unterschieden zwischen Benutzern, die direkt in Azure AD DS erstellt werden, und Benutzern, die über Azure AD synchronisiert werden, finden Sie unter [Konfigurieren von Kennwort- und Kontosperrungsrichtlinien][configure-fgpp].
 
 ## <a name="common-account-lockout-reasons"></a>Allgemeine Gründe für Kontosperrungen
 
@@ -54,7 +54,7 @@ Folgende Szenarien stellen die häufigsten Gründe für eine Kontosperrung dar, 
 
 ## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Troubleshooting für Kontosperrungen mit protokollierten Sicherheitsüberwachungen
 
-Aktivieren Sie zur Problembehandlung bei auftretenden Kontosperrungsereignissen mithilfe von [Sicherheitsüberwachungen für Azure AD DS aktivieren (derzeit Vorschauversion)][security-audit-events] die Sicherheitsüberwachung. Überwachungsereignisse werden nur ab der Aktivierung des Features erfasst. Im Idealfall sollten Sie Sicherheitsüberwachungen bereits aktivieren, *bevor* ein zu behebendes Problem mit Kontosperrungen auftritt. Wenn bei einem Benutzerkonto wiederholt Probleme mit Kontosperrungen auftreten, können Sie die Sicherheitsüberwachung im Hinblick auf den nächsten Vorfall aktivieren.
+Aktivieren Sie zur Problembehandlung bei auftretenden Kontosperrungsereignissen [Sicherheitsüberwachungen für Azure AD Domain Services][security-audit-events]. Überwachungsereignisse werden nur ab der Aktivierung des Features erfasst. Im Idealfall sollten Sie Sicherheitsüberwachungen bereits aktivieren, *bevor* ein zu behebendes Problem mit Kontosperrungen auftritt. Wenn bei einem Benutzerkonto wiederholt Probleme mit Kontosperrungen auftreten, können Sie die Sicherheitsüberwachung im Hinblick auf den nächsten Vorfall aktivieren.
 
 Nach Aktivierung der Sicherheitsüberwachung zeigen Ihnen die folgenden Musterabfragen, wie Sie *Kontosperrungsereignisse*, Code *4740*, auswerten.
 
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 Weitere Informationen zu differenzierten Kennwortrichtlinien finden Sie unter [Konfigurieren von Richtlinien für Kennwörter und Kontosperrungen][configure-fgpp].
 
-Sollten beim Verknüpfen Ihres VM mit der durch Azure AD DS verwalteten Domäne weitere Probleme auftreten, [öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support].
+Sollten beim Einbinden Ihrer VM in die von Azure AD DS verwaltete Domäne weiterhin Probleme auftreten, [suchen Sie Hilfe, und öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

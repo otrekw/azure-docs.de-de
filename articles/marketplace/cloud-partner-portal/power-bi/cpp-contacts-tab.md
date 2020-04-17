@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285230"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984826"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Registerkarte „Kontakte“ für Power BI-Apps
+
+>[!Important]
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die Power BI-App-Erstellung](https://aka.ms/AzureCreatePBIServiceApp).
 
 Verwenden Sie auf der Seite **Neues Angebot** die Registerkarte **Kontakte**, um Ressourcen für technischen und Benutzersupport für Ihr Angebot anzugeben. Sie ist in zwei Abschnitte unterteilt: **Engineering** und **Kundensupport**.
 

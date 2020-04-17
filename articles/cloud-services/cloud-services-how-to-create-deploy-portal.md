@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386169"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811342"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
@@ -42,7 +42,7 @@ Bevor Sie einen Clouddienst bereitstellen können, müssen Sie das Clouddienstpa
 
 Drei Clouddienstfunktionen benötigen vor dem Export eines Dienstpakets spezielle Konfigurationen:
 
-* Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify) .
+* Wenn Sie einen Clouddienst bereitstellen möchten, der Transport Layer Security (TLS) verwendet, das zuvor als „Secure Sockets Layer“ (SSL) bezeichnet wurde, müssen Sie zur Datenverschlüsselung [Ihre Anwendung für TLS konfigurieren](cloud-services-configure-ssl-certificate-portal.md#modify).
 * Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop-new-portal.md) für Remotedesktop.
 * Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
 
@@ -70,7 +70,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 ## <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
 Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify)wurde, können Sie das Zertifikat jetzt hochladen.
 
-1. Wählen Sie **Zertifikate** aus. Wählen Sie im Bereich **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
+1. Wählen Sie **Zertifikate** und im Bereich **Zertifikate hinzufügen** die PFX-Datei mit dem TLS/SSL-Zertifikat aus. Geben Sie dann das **Kennwort** für das Zertifikat ein.
 2. Klicken Sie auf **Zertifikat anfügen** und anschließend im Bereich **Zertifikate hinzufügen** auf **OK**.
 3. Klicken Sie im Bereich **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
 
@@ -90,7 +90,7 @@ Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
-* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+* Konfigurieren von [TLS/SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
 
 

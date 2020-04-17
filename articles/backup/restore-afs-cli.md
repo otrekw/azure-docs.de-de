@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschn
 description: Hier erfahren Sie, wie Sie gesicherte Azure-Dateifreigaben mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) im Recovery Services-Tresor wiederherstellen.
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931045"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757097"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Wiederherstellen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
 
@@ -19,6 +19,9 @@ Am Ende dieses Artikels erfahren Sie, wie Sie die folgenden Vorgänge mit Azure 
 * Anzeigen von Wiederherstellungspunkten für eine gesicherte Azure-Dateifreigabe.
 * Wiederherstellen einer vollständigen Azure-Dateifreigabe.
 * Wiederherstellen einzelner Dateien oder Ordner.
+
+>[!NOTE]
+> Azure Backup unterstützt jetzt das Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort mit Azure CLI. Weitere Informationen finden Sie im Abschnitt [Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort](#restore-multiple-files-or-folders-to-original-or-alternate-location) dieses Dokuments.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Verwenden Sie das Cmdlet [az backup recoverypoint list](https://docs.microsoft.c
 Das folgende Beispiel ruft die Liste der Wiederherstellungspunkte für die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* ab.
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 Sie können das vorstehende Cmdlet auch mit den Anzeigenamen für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
@@ -82,7 +85,7 @@ Wenn Sie an einem ursprünglichen Speicherort eine Wiederherstellung vornehmen, 
 Im folgenden Beispiel wird das Cmdlet [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) mit dem Wiederherstellungsmodus *originallocation* verwendet, um die Dateifreigabe *azurefiles* am ursprünglichen Speicherort wiederherzustellen. Dabei wird der Wiederherstellungspunkt 932883129628959823 verwendet, den Sie unter [Abrufen von Wiederherstellungspunkten für die Azure-Dateifreigabe](#fetch-recovery-points-for-the-azure-file-share) abgerufen haben:
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ Mit dieser Option können Sie eine Dateifreigabe an einem alternativen Speichero
 Im folgenden Beispiel wird das Cmdlet [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) mit dem Wiederherstellungsmodus *alternatelocation* verwendet, um die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* auf die Dateifreigabe *azurefiles1* im Speicherkonto *afaccount1* wiederherzustellen.
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ Verwenden Sie das Cmdlet [az backup restore restore-azurefiles](https://docs.mic
 Im folgenden Beispiel wird die Datei *RestoreTest.txt* an ihrem ursprünglichen Speicherort wiederhergestellt: in der Dateifreigabe *azurefiles*.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ Um bestimmte Dateien oder Ordner an einem alternativen Speicherort wiederherzust
 Im folgenden Beispiel wird die Datei *RestoreTest.txt*, die ursprünglich in der Dateifreigabe *azurefiles* vorhanden war, an einem alternativen Speicherort wiederhergestellt: im Ordner *restoredata* in der im Speicherkonto *afaccount1* gehosteten Dateifreigabe*azurefiles1*.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Wiederherstellungsvorgang erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show).
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort
+
+Wenn Sie die Wiederherstellung für mehrere Elemente durchführen möchten, übergeben Sie den Wert für den Parameter **source-file-path** als **durch Leerzeichen getrennte** Pfade aller Dateien oder Ordner, die wiederhergestellt werden sollen.
+
+Im folgenden Beispiel werde die Dateien *Restore.txt* und *AFS testing Report.docx* an ihrem ursprünglichen Speicherort wiederhergestellt.
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+Die Ausgabe sieht etwa wie folgt aus:
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Wiederherstellungsvorgang erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show).
+
+Wenn Sie mehrere Elemente an einem alternativen Speicherort wiederherstellen möchten, verwenden Sie den obigen Befehl und geben Sie zielbezogene Parameter entsprechend der Beschreibung im Abschnitt [Wiederherstellen einzelner Dateien oder Ordner an einem alternativen Speicherort](#restore-individual-files-or-folders-to-an-alternate-location) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

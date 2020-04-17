@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fd1f06bcb92ea97e0e9e9a6eefeac957031575a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471556"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879291"
 ---
 # <a name="routing-architecture-overview"></a>Übersicht über die Routingarchitektur
 
@@ -35,7 +35,7 @@ Beim Routing zu den Azure Front Door Service-Umgebungen wird [Anycast](https://e
 [Split TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) ist ein Verfahren, bei dem eine Verbindung, die eine hohe Roundtripzeit haben würde, in kleine Teile aufgeteilt wird, um die Wartezeiten und TCP-Probleme zu reduzieren.  Indem die Azure Front Door Service-Umgebungen näher beim Endbenutzer platziert und TCP-Verbindungen innerhalb der Azure Front Door Service-Umgebung beendet werden, wird eine TCP-Verbindung mit hoher Roundtripzeit (RTT) zum Anwendungs-Back-End in zwei TCP-Verbindungen aufgeteilt. Aufgrund der kurzen Verbindung zwischen dem Endbenutzer und der Azure Front Door-Umgebung wird die Verbindung nicht über drei lange Roundtrips hergestellt, sondern über drei kurze Roundtrips, wodurch die Wartezeit reduziert wird.  Die lange Verbindung zwischen der Azure Front Door Service-Umgebung und dem Back-End kann vorab eingerichtet und bei mehreren Aufrufen von Endbenutzern wiederverwendet werden, wodurch sich wiederum die TCP-Verbindungszeit verkürzt.  Beim Herstellen einer SSL-/TLS-Verbindung (Transport Layer Security) vervielfacht sich der Effekt aufgrund der größeren Anzahl von Roundtrips zum Sichern der Verbindung.
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>Verarbeiten der Anforderung zum Zuordnen einer Routingregel
-Wenn eine Anforderung nach dem Herstellen der Verbindung und Durchführen eines SSL-Handshakes in eine Azure Front Door Service-Umgebung gelangt, ist die Zuordnung einer passenden Routingregel der erste Schritt. Bei dieser Zuordnung wird auf Grundlage aller Konfigurationen in Azure Front Door Service bestimmt, welcher spezifischen Routingregel die Anforderung entspricht. Erfahren Sie mehr darüber, wie Azure Front Door Service die [Routenzuordnung](front-door-route-matching.md) vornimmt.
+Wenn eine Anforderung nach dem Herstellen der Verbindung und Durchführen eines TLS-Handshakes in eine Front Door-Umgebung gelangt, ist die Zuordnung einer passenden Routingregel der erste Schritt. Bei dieser Zuordnung wird auf Grundlage aller Konfigurationen in Azure Front Door Service bestimmt, welcher spezifischen Routingregel die Anforderung entspricht. Erfahren Sie mehr darüber, wie Azure Front Door Service die [Routenzuordnung](front-door-route-matching.md) vornimmt.
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Identifizieren der verfügbaren Back-Ends im Back-End-Pool für die Routingregel
 Wenn Azure Front Door Service basierend auf der eingehenden Anforderung eine übereinstimmende Routingregel ermittelt hat und die Zwischenspeicherung nicht aktiviert ist, besteht der nächste Schritt darin, den Integritätsteststatus für den Back-End-Pool der zugeordneten Route zu pullen. Erfahren Sie, wie Azure Front Door Service die Back-End-Integrität mithilfe von [Integritätstests](front-door-health-probes.md) überwacht.

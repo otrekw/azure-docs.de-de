@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485079"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632188"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -20,7 +20,7 @@ Azure Application Gateway besteht aus mehreren Komponenten, die Sie auf verschie
 
 ![Flussdiagramm der Application Gateway-Komponenten](./media/configuration-overview/configuration-overview1.png)
 
-Dieses Bild zeigt eine Anwendung mit drei Listenern. Die ersten zwei sind Listener für mehrere Standorte für `http://acme.com/*` bzw. `http://fabrikam.com/*`. Beide lauschen auf Port 80. Der dritte ist ein grundlegender Listener mit End-to-End-Secure Sockets Layer-Beendigung (SSL).
+Dieses Bild zeigt eine Anwendung mit drei Listenern. Die ersten zwei sind Listener für mehrere Standorte für `http://acme.com/*` bzw. `http://fabrikam.com/*`. Beide lauschen auf Port 80. Bei dem dritten handelt es sich um einen Basislistener, der über End-to-End-TLS-Beendigung (Transport Layer Security) verfügt, die zuvor als SSL-Beendigung (Secure Sockets Layer) bekannt war.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -36,11 +36,11 @@ Ein Application Gateway ist eine dedizierte Bereitstellung in Ihrem virtuellen N
 
 #### <a name="size-of-the-subnet"></a>Subnetzgröße
 
-Application Gateway nutzt 1 private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP konfiguriert ist.
+Application Gateway nutzt eine private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP konfiguriert ist.
 
-Azure reserviert auch 5 IP-Adressen in jedem Subnetz für die interne Verwendung: die ersten 4 und die letzte IP-Adresse. Stellen Sie sich beispielsweise 15 Application Gateway-Instanzen ohne private Front-End-IP vor. Sie benötigen mindestens 20 IP-Adressen für dieses Subnetz: 5 für die interne Verwendung und 15 für die Application Gateway-Instanzen. Sie benötigen also mindestens ein /27-Subnetz.
+Azure reserviert außerdem fünf IP-Adressen in jedem Subnetz für die interne Verwendung: die ersten vier und die letzte IP-Adresse. Stellen Sie sich beispielsweise 15 Application Gateway-Instanzen ohne private Front-End-IP vor. Sie benötigen mindestens 20 IP-Adressen für dieses Subnetz: fünf zur internen Verwendung und 15 für die Application Gateway-Instanzen. Sie benötigen also mindestens ein /27-Subnetz.
 
-Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer privaten Front-End-IP vor. In diesem Fall benötigen Sie 33 IP-Adressen: 27 für Application Gateway-Instanzen, 1 für das private Front-End und 5 für die interne Verwendung. Sie benötigen also mindestens ein /26-Subnetz.
+Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer privaten Front-End-IP vor. In diesem Fall benötigen Sie 33 IP-Adressen: 27 für die Application Gateway-Instanzen, eine für das private Front-End und fünf für die interne Verwendung. Sie benötigen also mindestens ein /26-Subnetz.
 
 Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 nutzbare IP-Adressen. Wenn für Ihre Anwendungslast mehr als zehn Application Gateway-Instanzen erforderlich sind, sollten Sie eine Subnetzgröße von /27 oder /26 in Betracht ziehen.
 
@@ -69,23 +69,64 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Im Application Gateway-Subnetz unterstützte benutzerdefinierte Routen
 
-Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
+> [!IMPORTANT]
+> Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz kann dazu führen, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als **Unbekannt** angezeigt wird. Außerdem können bei der Generierung von Application Gateway-Protokollen und -Metriken Fehler auftreten. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
 
-UDRs im Application Gateway-Subnetz werden mit der v2-SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
+- **v1**
 
-> [!NOTE]
-> Nun werden UDRs für die v2-SKU nicht unterstützt.
+   Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
-> [!NOTE]
-> Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz kann dazu führen, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem können bei der Generierung von Application Gateway-Protokollen und -Metriken Fehler auftreten. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
+- **v2**
+
+   Für die v2-SKU gibt es unterstützte und nicht unterstützte Szenarios:
+
+   **Unterstützte v2-Szenarios**
+   > [!WARNING]
+   > Eine fehlerhafte Konfiguration der Routingtabelle kann zu asymmetrischer Routenplanung in Application Gateway v2 führen. Stellen Sie sicher, dass der gesamte Datenverkehr der Verwaltungs-/Steuerungsebene direkt an das Internet und nicht über ein virtuelles Gerät gesendet wird. Dies kann sich auch auf die Protokollierung und Metriken auswirken.
+
+
+  **Szenario 1**: Benutzerdefinierte Routen zum Deaktivieren der BGP-Routenverteilung (Border Gateway Protocol) an das Application Gateway-Subnetz
+
+   Manchmal wird die Standardgatewayroute (0.0.0.0/0) per ExpressRoute oder VPN-Gateways angekündigt, die dem virtuellen Application Gateway-Netzwerk zugeordnet sind. Dies unterbricht den Datenverkehr der Verwaltungsebene, da er einen direkten Pfad zum Internet erfordert. In solchen Szenarios kann eine benutzerdefinierte Route zum Deaktivieren der BGP-Routenverteilung verwendet werden. 
+
+   Führen Sie die folgenden Schritte aus, um die BGP-Routenverteilung zu deaktivieren:
+
+   1. Erstellen Sie eine Routingtabelleressource in Azure.
+   2. Deaktivieren Sie den Parameter **Routenverteilung des Gateways für virtuelle Netzwerke**. 
+   3. Ordnen Sie die Routingtabelle dem entsprechenden Subnetz zu. 
+
+   Das Aktivieren der benutzerdefinierten Route für dieses Szenario sollte keine vorhandenen Setups unterbrechen.
+
+  **Szenario 2**: Benutzerdefinierte Route zum Weiterleiten von Datenverkehr an 0.0.0.0/0 an das Internet
+
+   Sie können eine benutzerdefinierte Route erstellen, um Datenverkehr an 0.0.0.0/0 direkt an das Internet zu übermitteln. 
+
+  **Szenario 3:** Benutzerdefinierte Route für Azure Kubernetes Service-Kubenet
+
+  Wenn Sie Kubenet mit Azure Kubernetes Service (AKS) und dem Application Gateway-Eingangscontroller (AGIC, Application Gateway Ingress Controller) verwenden, müssen Sie eine Routingtabelle einrichten, um die Weiterleitung des Datenverkehrs an die Pods an den richtigen Knoten zu erlauben. Dies ist nicht erforderlich, wenn Sie Azure CNI verwenden. 
+
+   Führen Sie die folgenden Schritte aus, um die Routingtabelle einzurichten, damit Kubenet funktioniert:
+
+  1. Erstellen Sie eine Routingtabelleressource in Azure. 
+  2. Rufen Sie nach der Erstellung die Seite **Routen** auf. 
+  3. Fügen Sie eine neue Route hinzu:
+     - Das Adresspräfix sollte dem IP-Adressbereich der Pods entsprechen, die Sie in AKS erreichen möchten. 
+     - Der Typ des nächsten Hops sollte **virtuelles Gerät** sein. 
+     - Die Adresse des nächsten Hops sollte der IP-Adresse des Knotens entsprechen, der die Pods im IP-Adressbereich hostet, der im Feld für das Adresspräfix definiert wurde. 
+    
+  **Nicht unterstützte v2-Szenarios**
+
+  **Szenario 1**: Benutzerdefinierte Route für virtuelle Geräte
+
+  Szenarios, in denen Datenverkehr an 0.0.0.0/0 über ein virtuelles Gerät, ein virtuelles Hub-/Spoke-Netzwerk oder lokal (Tunnelerzwingung) umgeleitet werden muss, werden in V2 nicht unterstützt.
 
 ## <a name="front-end-ip"></a>Front-End-IP
 
 Sie können das Application Gateway mit einer öffentlichen IP-Adresse, mit einer privaten IP-Adresse oder mit beidem konfigurieren. Eine öffentliche IP-Adresse ist erforderlich, wenn Sie ein Back-End hosten, auf das Clients über eine für den Internetzugriff verfügbare virtuelle IP (VIP) über das Internet zugreifen müssen. 
 
-Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Terminierung erfordern.
+Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungspersistenz oder TLS-Beendigung erfordern.
 
-Es wird nur 1 öffentliche oder 1 private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
+Es werden nur jeweils eine öffentliche und private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
 - Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
@@ -127,13 +168,14 @@ Wählen Sie HTTP oder HTTPS aus:
 
 - Wenn Sie sich für HTTP entscheiden, ist der Datenverkehr zwischen dem Client und dem Application Gateway unverschlüsselt.
 
-- Wählen Sie HTTPS aus, wenn Sie [SSL-Terminierung](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) oder [End-to-End-SSL-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) wünschen. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die SSL-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-SSL-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
+- Wählen Sie HTTPS aus, wenn Sie die [TLS-Beendigung](features.md#secure-sockets-layer-ssltls-termination) oder [End-to-End-TLS-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) verwenden möchten. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die TLS-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-TLS-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
 
-Zum Konfigurieren von SSL-Terminierung und End-to-End-SSL-Verschlüsselung müssen Sie dem Listener ein Zertifikat hinzufügen, damit das Application Gateway einen symmetrischen Schlüssel ableiten kann. Dies wird durch die SSL-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
+
+Zum Konfigurieren der TLS-Beendigung und End-to-End-TLS-Verschlüsselung müssen Sie ein Zertifikat zum Listener hinzufügen, um Application Gateway das Ableiten eines symmetrischen Schlüssels zu ermöglichen. Dies wird durch die TLS-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
 
 #### <a name="supported-certificates"></a>Unterstützte Zertifikate
 
-Informationen finden Sie unter [Unterstützte Zertifikate für die SSL-Terminierung](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
+Weitere Informationen finden Sie unter [Unterstützte Zertifikate für die TLS-Beendigung](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
 
 ### <a name="additional-protocol-support"></a>Unterstützung zusätzlicher Protokolle
 
@@ -161,11 +203,11 @@ Sie können benutzerdefinierte Fehler auf globaler Ebene oder Listenerebene defi
 
 Wie Sie eine globale benutzerdefinierte Fehlerseite konfigurieren, erfahren Sie unter [Azure PowerShell-Konfiguration](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
 
-### <a name="ssl-policy"></a>SSL-Richtlinie
+### <a name="tls-policy"></a>TLS-Richtlinie
 
-Sie können die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßigen*, *vordefinierten* oder *benutzerdefinierten* SSL-Richtlinie wählen.
+Sie können die TLS/SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte TLS-Behandlung ermöglicht auch die Angabe einer zentralen TLS-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßig vorhandenen*, *vordefinierten* oder *benutzerdefinierten* TLS-Richtlinie auswählen.
 
-Sie konfigurieren die SSL-Richtlinie, um die SSL-Protokollversionen zu steuern. Sie können eine Application Gateway-Instanz so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview) (Application Gateway SSL-Richtlinie – Übersicht).
+Sie konfigurieren die TLS-Richtlinie, um die TLS-Protokollversionen zu steuern. Sie können eine Application Gateway-Instanz so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [TLS-Richtlinienübersicht für Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie vom Listener empfangene Anforderungen an das Back-End weitergeleitet werden.
 
@@ -252,18 +294,18 @@ Das Application Gateway leitet Datenverkehr mithilfe der Konfiguration, die Sie 
 
 ### <a name="cookie-based-affinity"></a>Cookiebasierte Affinität
 
-Azure Application Gateway verwendet vom Gateway verwaltete Cookies zum Aufrechterhalten von Benutzersitzungen. Wenn ein Benutzer die erste Anforderung an Application Gateway sendet, setzt dieses in der Antwort ein Affinitätscookie mit einem Hashwert, der die Sitzungsdetails enthält, sodass die nachfolgenden Anfragen, die das Affinitätscookie enthalten, zum selben Back-End-Server geleitet werden, um die Bindung aufrechtzuerhalten. 
+Azure Application Gateway verwendet vom Gateway verwaltete Cookies zum Beibehalten von Benutzersitzungen. Wenn ein Benutzer die erste Anforderung an Application Gateway sendet, setzt dieses in der Antwort ein Affinitätscookie mit einem Hashwert, der die Sitzungsdetails enthält, sodass die nachfolgenden Anfragen, die das Affinitätscookie enthalten, zum selben Back-End-Server geleitet werden, um die Bindung aufrechtzuerhalten. 
 
 Diese Funktion ist hilfreich, wenn eine Benutzersitzung auf demselben Server bleiben soll und der Sitzungszustand lokal auf dem Server für eine Benutzersitzung gespeichert wird. Wenn die Anwendung cookiebasierte Affinität nicht verarbeiten kann, können Sie diese Funktion nicht verwenden. Um sie zu verwenden, stellen Sie sicher, dass die Clients Cookies unterstützen.
 
-Ab dem **17. Februar 2020** enthält das [Chromium](https://www.chromium.org/Home) [v80-Update](https://chromiumdash.appspot.com/schedule) ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Im Falle von CORS-Anforderungen (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen), wenn das Cookie in einem Drittanbieterkontext gesendet werden muss, muss es „SameSite=None; Secure“-Attribute verwenden und sollte nur über HTTPS gesendet werden. Andernfalls sendet der Browser in einem reinen HTTTP-Szenario die Cookies nicht im Drittanbieterkontext. Das Ziel dieses Updates von Chrome besteht darin, die Sicherheit zu erhöhen und CSRF-Angriffe (Cross-Site Request Forgery, siteübergreifende Anforderungsfälschung) zu vermeiden. 
+Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt ein Mandat, bei dem HTTP-Cookies ohne [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7)-Attribut als „SameSite=Lax“ behandelt werden müssen. Im Falle von CORS-Anforderungen (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen), wenn das Cookie in einem Drittanbieterkontext gesendet werden muss, muss es *SameSite=None; Secure*-Attribute verwenden und sollte nur über HTTPS gesendet werden. Andernfalls sendet der Browser in einem reinen HTTTP-Szenario die Cookies nicht im Drittanbieterkontext. Das Ziel dieses Updates von Chrome besteht darin, die Sicherheit zu erhöhen und CSRF-Angriffe (Cross-Site Request Forgery, siteübergreifende Anforderungsfälschung) zu vermeiden. 
 
-Um diese Änderung zu unterstützen, fügt Application Gateway (alle SKU-Typen) ein anderes, identisches Cookie namens **ApplicationGatewayAffinityCORS** zusätzlich zum vorhandenen **ApplicationGatewayAffinity**-Cookie ein, das ähnlich ist. Aber diesem Cookie werden nun zwei weitere Attribute **"SameSite=None; Secure"** hinzugefügt, damit die beständige Sitzung aufrechterhalten werden kann, auch bei Anforderungen von verschiedenen Ursprüngen.
+Zur Unterstützung dieser Änderung fügt Application Gateway (alle SKU-Typen) ab dem 17. Februar 2020 ein weiteres Cookie namens *ApplicationGatewayAffinityCORS* zusätzlich zum vorhandenen Cookie *ApplicationGatewayAffinity* hinzu. Dem *ApplicationGatewayAffinityCORS*-Cookie sind zwei weitere Attribute hinzugefügt ( *"SameSite = None; Secure"* ), damit persistente Sitzungen selbst für ursprungsübergreifende Anforderungen erhalten bleiben.
 
-Beachten Sie, dass der Standardname des Affinitätscookies **ApplicationGatewayAffinity** lautet, was aber von den Benutzern geändert werden kann. Für den Fall, dass Sie einen benutzerdefinierten Affinitätscookienamen verwenden, wird ein zusätzliches Cookie mit CORS als Suffix hinzugefügt, z. B. **CustomCookieNameCORS**.
+Beachten Sie, dass der Standardname des Affinitätscookies *ApplicationGatewayAffinity* lautet, was Sie aber ändern können. Für den Fall, dass Sie einen benutzerdefinierten Affinitätscookienamen verwenden, wird ein zusätzliches Cookie mit CORS als Suffix hinzugefügt. Beispielsweise *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Es ist obligatorisch, dass, wenn das Attribut **SameSite=None** festgelegt ist, das Cookie auch das Flag **Secure** enthalten und über **HTTPS** gesendet werden sollte. Wenn also Sitzungsaffinität über CORS erforderlich ist, müssen Sie Ihre Workload zu HTTPS migrieren. Die Dokumentation zu SSL-Auslagerung und End-to-End-SSL für Application Gateway finden Sie hier: [Übersicht](ssl-overview.md), [Konfigurieren von SSL-Auslagerung](create-ssl-portal.md), [Konfigurieren von End-to-End-SSL](end-to-end-ssl-portal.md).
+> Wenn das Attribut *SameSite=None* festgelegt ist, ist es obligatorisch, dass das Cookie auch das Flag *Secure* enthält und über HTTPS gesendet werden muss.  Wenn Sitzungsaffinität über CORS erforderlich ist, müssen Sie Ihren Workload zu HTTPS migrieren. Weitere Informationen zur TLS-Abladung und End-to-End-TLS-Dokumentation für Application Gateway finden Sie unter: [Übersicht](ssl-overview.md), [Konfigurieren einer Application Gateway-Instanz mit TLS-Beendigung mithilfe des Azure-Portals](create-ssl-portal.md) und [Konfigurieren der End-to-End-TLS-Verschlüsselung mithilfe von Application Gateway und dem Portal](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
@@ -273,7 +315,7 @@ Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplant
 
 Application Gateway unterstützt sowohl HTTP als auch HTTPS für das Routing von Anforderungen an die Back-End-Server. Bei Auswahl von HTTP ist Datenverkehr an die Back-End-Server unverschlüsselt. Wenn unverschlüsselte Kommunikation nicht akzeptabel ist, wählen Sie HTTPS.
 
-Diese Einstellung unterstützt zusammen mit HTTPS im Listener [End-to-End-SSL](ssl-overview.md). Damit können Sie vertrauliche Daten sicher verschlüsselt an das Back-End übertragen. Jeder Back-End-Server im Back-End-Pool mit aktiviertem End-to-End-SSL muss mit einem Zertifikat konfiguriert sein, um die sichere Kommunikation zu erlauben.
+Diese Einstellung unterstützt zusammen mit HTTPS im Listener [End-to-End-TLS](ssl-overview.md). Damit können Sie vertrauliche Daten sicher verschlüsselt an das Back-End übertragen. Jeder Back-End-Server im Back-End-Pool mit aktiviertem End-to-End-TLS muss mit einem Zertifikat konfiguriert sein, um die sichere Kommunikation zu erlauben.
 
 ### <a name="port"></a>Port
 
@@ -317,7 +359,7 @@ Diese Einstellung ordnet einen [benutzerdefinierten Test](application-gateway-pr
 > [!NOTE]
 > Der benutzerdefinierte Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
 
-### <a id="pick"/></a>Auswählen eines Hostnamens aus der Back-End-Adresse
+### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Auswählen eines Hostnamens aus der Back-End-Adresse
 
 Diese Funktion legt den *Host*-Header in der Anforderung dynamisch auf den Hostnamen des Back-End-Pools fest. Sie verwendet dazu eine IP-Adresse oder einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN ).
 
@@ -325,7 +367,7 @@ Dieses Feature ist nützlich, wenn der Domänenname des Back-Ends vom DNS-Namen 
 
 Ein Beispielfall sind mehrinstanzenfähige Dienste auf dem Back-End. Ein App Service ist ein mehrinstanzenfähiger Dienst, der einen gemeinsam genutzten Speicherplatz mit einer einzigen IP-Adresse verwendet. Daher kann der Zugriff auf einen App Service nur über die Hostnamen erfolgen, die in den Einstellungen der benutzerdefinierten Domäne konfiguriert werden.
 
-Standardmäßig ist der benutzerdefinierte Domänenname *example.azurewebsites.net*. Um mit einem Application Gateway über einen Hostnamen, der nicht explizit im App Service registriert ist, oder über den FQDN des Application Gateways auf Ihren App Service zuzugreifen, überschreiben Sie den Hostnamen in der ursprünglichen Anforderung mit dem App Service-Hostnamen. Aktivieren Sie zu diesem Zweck die Einstellung **Hostnamen aus Back-End-Adresse auswählen**.
+Standardmäßig ist der benutzerdefinierte Domänenname *example.azurewebsites.net*. Überschreiben Sie den Hostnamen in der ursprünglichen Anforderung an den Hostnamen des App-Diensts, um mithilfe einer Application Gateway-Instanz über einen Hostnamen auf Ihren App-Dienst zuzugreifen, der nicht explizit im App-Dienst oder dem vollqualifizierten Domänennamen der Application Gateway-Instanz registriert ist. Aktivieren Sie zu diesem Zweck die Einstellung **Hostnamen aus Back-End-Adresse auswählen**.
 
 Für eine benutzerdefinierte Domäne, deren bestehender benutzerdefinierter DNS-Name dem App Service zugeordnet ist, müssen Sie diese Einstellung nicht aktivieren.
 
@@ -336,11 +378,11 @@ Für eine benutzerdefinierte Domäne, deren bestehender benutzerdefinierter DNS-
 
 Diese Funktion ersetzt den *Host*-Header in der beim Application Gateway eingehenden Anforderung durch den Hostnamen, den Sie angeben.
 
-Wenn beispielsweise *www.contoso.com* in der Einstellung **Hostname** angegeben wird, wird die ursprüngliche Anforderung * https://appgw.eastus.cloudapp.azure.com/path1 beim Weiterleiten der Anforderung an den Back-End-Server in * https://www.contoso.com/path1 geändert.
+Wenn beispielsweise *www.contoso.com* in der Einstellung **Hostname** angegeben wird, wird die ursprüngliche Anforderung *`https://appgw.eastus.cloudapp.azure.com/path1` beim Weiterleiten der Anforderung an den Back-End-Server in *`https://www.contoso.com/path1` geändert.
 
 ## <a name="back-end-pool"></a>Back-End-Pool
 
-Sie können vier Typen von Back-End-Elementen festlegen, auf die ein Back-End-Pool verweisen kann: einen bestimmten virtuellen Computer, eine VM-Skalierungsgruppe, eine IP-Adresse/einen FQDN oder einen App Service. Jeder Back-End-Pool kann auf mehrere Elemente des gleichen Typs verweisen. Das Verweisen auf Elemente verschiedenen Typs im gleichen Back-End-Pool wird nicht unterstützt.
+Sie können vier Typen von Back-End-Elementen festlegen, auf die ein Back-End-Pool verweisen kann: einen bestimmten virtuellen Computer, eine VM-Skalierungsgruppe, eine IP-Adresse/einen FQDN oder einen App Service. 
 
 Nachdem Sie einen Back-End-Pool erstellt haben, müssen Sie ihn einer oder mehreren Regeln für das Routing von Anforderungen zuordnen. Ferner müssen Sie Integritätstests für jeden Back-End-Pool in Ihrem Application Gateway konfigurieren. Wenn eine Bedingung einer Anfoderungsroutingregel erfüllt ist, leitet das Application Gateway den Datenverkehr an die fehlerfreien Server (die durch die Integritätstests bestimmt werden) im entsprechenden Back-End-Pool weiter.
 

@@ -3,12 +3,12 @@ title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausenartefakte während einer Blaupausenzuweisung bereitgestellt werden, und wie Sie die Bereitstellungsreihenfolge anpassen können.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128821"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677557"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -42,7 +42,7 @@ In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhal
 
 ## <a name="customizing-the-sequencing-order"></a>Anpassen der Reihenfolge
 
-Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupausendefinition mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
+Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupausendefinition mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Azure Blueprints das Definieren der Reihenfolge.
 
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 

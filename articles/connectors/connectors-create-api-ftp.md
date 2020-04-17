@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 94ca609d9dc070e6e2b4dc878ecd8dfaf9331ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648171"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656331"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Erstellen, Überwachen und Verwalten von FTP-Dateien mithilfe von Azure Logic Apps
 
@@ -27,7 +27,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Der FTP-Connector unterstützt nur explizites FTP über SSL (FTPS) und ist nicht kompatibel mit implizitem FTPS.
+* Der FTP-Connector unterstützt nur explizites FTP über TLS/SSL (FTPS) und ist nicht kompatibel mit implizitem FTPS.
 
 * Standardmäßig können FTP-Aktionen Dateien mit einer Größe von *50 MB oder kleiner* lesen oder schreiben. FTP-Aktionen unterstützen die [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md), um Dateien zu verarbeiten, die größer als 50 MB sind. Die Aktion **Get file content** (Dateiinhalt abrufen) verwendet implizit die Nachrichtensegmentierung.
 

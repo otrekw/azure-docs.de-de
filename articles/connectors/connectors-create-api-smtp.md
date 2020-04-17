@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647578"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656997"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Senden von E-Mails von Ihrem SMTP-Konto mithilfe von Azure Logic Apps
 
@@ -20,7 +20,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Ihr SMTP-Konto und Benutzeranmeldeinformationen.
 
@@ -56,7 +56,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
    | **Benutzername** | Ja | Der Benutzername für Ihr SMTP-Konto | 
    | **Kennwort** | Ja | Das Kennwort für Ihr SMTP-Konto | 
    | **SMTP-Serverport** | Nein | Ein bestimmter Port auf Ihrem SMTP-Server, den Sie verwenden möchten | 
-   | **SSL aktivieren?** | Nein | Aktivieren oder Deaktivieren der SSL-Verschlüsselung | 
+   | **SSL aktivieren?** | Nein | Aktivieren oder Deaktivieren der TLS/SSL-Verschlüsselung. | 
    |||| 
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer ausgewählten Aktion ein. 
