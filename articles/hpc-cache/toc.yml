@@ -8,7 +8,7 @@
   items:
     - name: Planen des aggregierten Namespace
       href: hpc-cache-namespace.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Voraussetzungen
       href: hpc-cache-prereqs.md
@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: Verwalten des Caches
       href: hpc-cache-manage.md
+    - name: Konfigurieren optionaler Einstellungen
+      href: configuration.md
 - name: Ressourcen
   items:
     - name: Öffnen eines Supporttickets
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: Durchführen einer Wiederherstellung nach einem regionalen Ausfall
       href: hpc-region-recovery.md
+    - name: Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln
+      href: customer-keys.md
     - name: Verwenden von Azure NetApp Files mit Azure HPC Cache
       href: hpc-cache-netapp.md

@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: Trainieren eines Anomalieerkennungsmodells
       href: train-anomaly-detection-model.md
+- name: Webdienst
+  items:
+    - name: Webdiensteingabe/-ausgabe
+      href: web-service-input-output.md
 - name: Modulfehler und Problembehandlung
   href: designer-error-codes.md

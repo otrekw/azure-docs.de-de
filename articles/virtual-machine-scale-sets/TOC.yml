@@ -252,7 +252,7 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Automatische Betriebssystemupgrades
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Automatische Instanzreparaturen (Vorschau)
+        - name: Automatische Instanzreparaturen
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Instanzschutz
           href: virtual-machine-scale-sets-instance-protection.md

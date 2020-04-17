@@ -12,7 +12,7 @@
           items:
             - name: Einrichten – Azure-Portal
               href: data-box-quickstart-portal.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1 – Bestellen
               href: data-box-deploy-ordered.md
@@ -70,6 +70,8 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Aus HDFS-Speicher
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Zu Azure Backup
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: Problembehandlung
               items:
                 - name: Data Box-Probleme
@@ -87,7 +89,7 @@
           items:
             - name: Einrichten – Azure-Portal
               href: data-box-disk-quickstart-portal.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1 – Bestellen
               href: data-box-disk-deploy-ordered.md
@@ -135,7 +137,7 @@
           items:
             - name: Einrichten – Azure-Portal
               href: data-box-heavy-quickstart-portal.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1 – Bestellen
               href: data-box-heavy-deploy-ordered.md
