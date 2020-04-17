@@ -98,6 +98,7 @@
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: Getestete lokale Liveencoder
+          displayName: recommended
           href: recommended-on-premises-live-encoders.md
         - name: Timeshift und Live-to-VOD
           displayName: 'archive, dvr'
