@@ -759,14 +759,6 @@
           items:
             - name: 1. Abfragen von Daten
               href: tutorial-query-graph.md
-        - name: Verweis
-          items:
-            - name: Antwortheader
-              href: gremlin-headers.md
-            - name: Einschränkungen
-              href: gremlin-limits.md
-            - name: Kompatibilität
-              href: gremlin-compatibility.md
         - name: Anleitungen
           items:
             - name: Modellierung von Diagrammdaten
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
               href: cli-samples-gremlin.md
+        - name: Verweis
+          items:
+            - name: Antwortheader
+              href: gremlin-headers.md
+            - name: Einschränkungen
+              href: gremlin-limits.md
+            - name: Kompatibilität
+              href: gremlin-compatibility.md
     - name: Tabelle-API
       items:
         - name: Übersicht

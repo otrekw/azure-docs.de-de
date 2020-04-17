@@ -3,12 +3,12 @@ title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für die Azure-Migrationslandezone.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383545"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459864"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -24,7 +24,7 @@ Das CAF-Blaupausenbeispiel für die Migrationslandezone stellt grundlegende Infr
 
 Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Governancelösung genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 
-- Eine [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-Instanz zum Hosten von Geheimnissen für die Zertifikate, Schlüssel und Geheimnisse, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden.
+- Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz zum Hosten von Geheimnissen für die Zertifikate, Schlüssel und Geheimnisse, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden.
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre Migration starten.
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) bietet ein isoliertes Netzwerk sowie Subnetze für Ihren virtuellen Computer.
