@@ -1,17 +1,17 @@
 ---
 title: Entwickeln unter Azure Kubernetes Service (AKS) mit Draft
-description: Verwenden von Draft mit AKS und Azure Container Registry
+description: Verwenden Sie Draft mit AKS und Azure Container Registry, um Anwendungscontainer in einem Cluster zu packen und auszuführen.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d69676121fcb26f7d2f796e6de42435447084cd
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595220"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392748"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Draft
 
@@ -306,7 +306,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete]. Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet und muss nicht entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

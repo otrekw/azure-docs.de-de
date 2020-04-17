@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405266"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -63,7 +63,7 @@ Application Insights geht zum [W3C Trace-Context](https://w3c.github.io/trace-co
 
 Die neueste Version des Application Insights SDK unterstützt das Trace-Context-Protokoll, aber möglicherweise müssen Sie sich explizit dafür entscheiden. (Abwärtskompatibilität mit dem vorherigen Korrelationsprotokoll, das vom Application Insights SDK unterstützt wird, bleibt erhalten.)
 
-Das [Korrelations-HTTP-Protokoll, das auch als „Request-ID“ bezeichnet wird](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), ist veraltet. Dieses Protokoll definiert zwei Header:
+Das [Korrelations-HTTP-Protokoll, das auch als „Request-ID“ bezeichnet wird](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), ist veraltet. Dieses Protokoll definiert zwei Header:
 
 - `Request-Id`: Enthält die global eindeutige ID des Aufrufs.
 - `Correlation-Context`: Enthält die Sammlung von Name/Wert-Paaren der Eigenschaften von verteilten Ablaufverfolgungen.
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für Java-Apps
 
+#### <a name="java-30-agent"></a>Java 3.0-Agent
+
+  Der Java 3.0-Agent unterstützt standardmäßig W3C, und es ist keine zusätzliche Konfiguration erforderlich. 
+
+#### <a name="java-sdk"></a>Java-SDK
 - **Eingangskonfiguration**
 
   - Fügen Sie für Java EE-Apps dem Tag `<TelemetryModules>` in „ApplicationInsights.xml“ Folgendes hinzu:
@@ -202,13 +207,13 @@ Dieses Feature befindet sich in `Microsoft.ApplicationInsights.JavaScript`. Stan
 
 Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` mit `span.kind = server`                  |
-| `Dependency`                          | `Span` mit `span.kind = client`                  |
-| `Id` der `Request` und `Dependency`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `Span` mit `span.kind = server`                    |
+| `Dependency`                           | `Span` mit `span.kind = client`                    |
+| `Id` der `Request` und `Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)     |
 
 Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md).
 
@@ -309,7 +314,7 @@ Im Lauf der Zeit wurden in .NET verschiedene Möglichkeiten zur Korrelation von 
 
 Allerdings wurde durch diese Methoden nicht die Unterstützung für automatische verteilte Ablaufverfolgung aktiviert. `DiagnosticSource` unterstützt die automatische computerübergreifende Korrelation. .NET-Bibliotheken unterstützen `DiagnosticSource` und ermöglichen die automatische computerübergreifende Propagierung des Korrelationskontexts durch die Übertragungsmethode, z.B. HTTP.
 
-Im [Benutzerleitfaden zu „Activity“](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) in `DiagnosticSource` werden die Grundlagen von Nachverfolgungsaktivitäten erläutert.
+Im [Benutzerleitfaden zu „Activity“](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) in `DiagnosticSource` werden die Grundlagen von Nachverfolgungsaktivitäten erläutert.
 
 ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten neuer Aktivitäten.
 
@@ -320,24 +325,32 @@ Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryC
 Das Application Insights SDK ab Version 2.4.0-beta1 verwendet `DiagnosticSource` und `Activity`, um Telemetriedaten zu sammeln und mit der aktuellen Aktivität zu verknüpfen.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetriekorrelation im Java SDK
+## <a name="telemetry-correlation-in-java"></a>Telemetriekorrelation in Java
 
-Das [Application Insights SDK für Java](../../azure-monitor/app/java-get-started.md), Version 2.0.0 oder höher, unterstützt die automatische Korrelation von Telemetriedaten. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es gibt außerdem die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weiter, wenn der [Java SDK-Agent](../../azure-monitor/app/java-agent.md) konfiguriert ist.
+Die automatische Korrelation von Telemetriedaten wird vom [Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) und vom [Java SDK](../../azure-monitor/app/java-get-started.md) (Version 2.0.0 oder höher) unterstützt. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es gibt außerdem die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weiter, wenn der [Java SDK-Agent](../../azure-monitor/app/java-agent.md) konfiguriert ist.
 
 > [!NOTE]
-> Für die Korrelationsfunktion werden nur Aufrufe unterstützt, die über Apache HttpClient erfolgen. Sowohl Spring Rest Template als auch Feign können aufgesetzt auf Apache HttpClient verwendet werden.
+> Der Java-Agent von Application Insights erfasst automatisch Anforderungen und Abhängigkeiten für JMS, Kafka, Netty/Webflux usw. Beim Java SDK werden für die Korrelationsfunktion nur Aufrufe unterstützt, die per Apache HttpClient erfolgen. Die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z. B. Kafka, RabbitMQ und Azure Service Bus) wird im SDK nicht unterstützt. 
 
-Derzeit wird die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z.B. Kafka, RabbitMQ und Azure Service Bus) nicht unterstützt. Es ist möglich, solche Szenarien manuell mithilfe der Methoden `trackDependency` und `trackRequest` zu schreiben. Bei diesen Methoden entsprechen Telemetriedaten zu Abhängigkeiten einer Nachricht, die von einem Producer in die Warteschlange eingereiht wird. Die Anforderung entspricht einer Nachricht, die von einem Consumer verarbeitet wird. In diesem Fall müssen sowohl `operation_id` als auch `operation_parentId` in den Eigenschaften der Nachricht weitergegeben werden.
+> [!NOTE]
+> Um benutzerdefinierte Telemetriedaten zu erfassen, müssen Sie die Anwendung mit dem Java 2.6 SDK instrumentieren. 
 
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>Telemetriekorrelation in asynchronen Java-Anwendungen
-
-Informationen zum Korrelieren von Telemetriedaten in einer asynchronen Spring Boot-Anwendung finden Sie unter [Verteilte Ablaufverfolgung in asynchronen Java-Anwendungen](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications). Dieser Artikel enthält Anweisungen für das Instrumentieren von [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) und [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) für Spring.
-
-
-<a name="java-role-name"></a>
-## <a name="role-name"></a>Rollenname
+### <a name="role-names"></a>Rollennamen
 
 Sie möchten möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](../../azure-monitor/app/app-map.md) angezeigt werden. Dazu können Sie `cloud_RoleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
+
+- Legen Sie für den Application Insights Java-Agent 3.0 den Cloudrollennamen wie folgt fest:
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    Sie können den Cloudrollennamen auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_ROLE_NAME` festlegen.
 
 - Mit dem Application Insights Java SDK 2.5.0 und höher können Sie `cloud_RoleName` angeben, indem Sie der Datei „ApplicationInsights.xml“ den Eintrag `<RoleName>` hinzufügen:
 

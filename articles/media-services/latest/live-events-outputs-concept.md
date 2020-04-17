@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065944"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010578"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -111,9 +111,12 @@ Sie können Nicht-Vanity-URLs oder Vanity-URLs verwenden.
 
 * Vanity-URL
 
-    Der Vanity-Modus wird von großen Medienanstalten bevorzugt, die Hardware-Rundfunkencoder verwenden und diese nicht beim Starten des Liveereignisses neu konfigurieren möchten. Dabei wird eine vorhersagbare Erfassungs-URL gewünscht, die sich im Laufe der Zeit nicht ändert.
+    Der Vanity-Modus wird von großen Medienanstalten bevorzugt, die Hardware-Rundfunkencoder verwenden und diese nicht beim Starten des Liveereignisses neu konfigurieren möchten. Diese Medienanstalten wünschen eine vorhersagbare Erfassungs-URL, die sich im Laufe der Zeit nicht ändert.
+    
+    > [!NOTE]
+    > Im Azure-Portal hat die Vanity-URL den Namen *Persistente Eingabe-URL*.
 
-    Zum Festlegen dieses Modus setzen Sie `vanityUrl` zum Zeitpunkt der Erstellung auf `true` (der Standardwert ist `false`). Sie müssen zum Zeitpunkt der Erstellung außerdem Ihr eigenes Zugriffstoken (`LiveEventInput.accessToken`) übergeben. Sie geben den Tokenwert an, um ein zufälliges Token in der URL zu vermeiden. Das Zugriffstoken muss eine gültige GUID-Zeichenfolge (mit oder ohne Bindestriche) sein. Sobald der Modus festgelegt ist, kann er nicht mehr aktualisiert werden.
+    Zum Festlegen dieses Modus in der API legen Sie `vanityUrl` zum Zeitpunkt der Erstellung auf `true` fest (der Standardwert ist `false`). Sie müssen zum Zeitpunkt der Erstellung außerdem Ihr eigenes Zugriffstoken (`LiveEventInput.accessToken`) übergeben. Sie geben den Tokenwert an, um ein zufälliges Token in der URL zu vermeiden. Das Zugriffstoken muss eine gültige GUID-Zeichenfolge (mit oder ohne Bindestriche) sein. Sobald der Modus festgelegt ist, kann er nicht mehr aktualisiert werden.
 
     Das Zugriffstoken muss in Ihrem Rechenzentrum eindeutig sein. Wenn Ihre App eine Vanity-URL verwenden muss, wird empfohlen, immer eine neue GUID-Instanz für das Zugriffstoken zu erstellen (statt vorhandene GUIDs wiederzuverwenden).
 

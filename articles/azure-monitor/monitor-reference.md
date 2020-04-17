@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408487"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405177"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -31,7 +31,7 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 | [Azure Monitor für Netzwerke (Vorschauversion)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
 [Azure Monitor für Ressourcengruppen (Vorschauversion)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
 | [Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
-| [Azure Monitor für VMs (Vorschauversion)](insights/container-insights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
+| [Azure Monitor für VMs](insights/container-insights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
 
 ### <a name="core-solutions"></a>Wichtige Lösungen
 
@@ -205,7 +205,6 @@ Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösun
 | [Bedarfsgesteuerte Bewertungen](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |
 | [SQL-Integritätsprüfung](insights/sql-assessment.md) | Bewerten des Risikos und der Integrität Ihrer SQL Server-Umgebungen.  |
 | [Wire Data](insights/wire-data.md) | Konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden. |
-
 
 ## <a name="third-party-integration"></a>Integration von Drittanbieterprodukten
 

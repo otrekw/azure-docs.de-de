@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097998"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757112"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -58,6 +58,9 @@ Erfahren Sie mehr über das Verarbeiten und Analysieren von JSON-Dateien (JavaSc
 Die Datei finden Sie unter `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Weitere Informationen zur Verwendung von Azure Blob Storage mit HDInsight finden Sie unter [Verwenden von HDFS-kompatiblem Azure Blob Storage mit Apache Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). Sie können die Datei in den Standardcontainer des Clusters kopieren.
 
 In diesem Artikel verwenden Sie die Apache Hive-Konsole. Anweisungen zum Öffnen der Hive-Konsole finden Sie unter [Verwenden der Apache Ambari Hive-Ansicht mit Apache Hadoop in HDInsight](apache-hadoop-use-hive-ambari-view.md).
+
+> [!NOTE]  
+> Hive View ist in HDInsight 4.0 nicht mehr verfügbar.
 
 ## <a name="flatten-json-documents"></a>Vereinfachen von JSON-Dokumenten
 
@@ -105,7 +108,7 @@ Hive stellt drei verschiedene Mechanismen zum Ausführen von Abfragen bei JSON-D
 
 ### <a name="use-the-get_json_object-udf"></a>Verwenden der GET_JSON_OBJECT-UDF
 
-In Hive ist eine integrierte UDF namens [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) verfügbar, mit der JSON-Abfragen während der Laufzeit ausgeführt werden können. Von dieser Methode werden zwei Argumente akzeptiert: der Tabellenname/Methodenname mit dem vereinfachten JSON-Dokument sowie das JSON-Feld, das analysiert werden muss. An einem Beispiel soll verdeutlicht werden, wie diese UDF funktioniert.
+In Hive ist eine integrierte UDF mit dem Namen [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) verfügbar, die JSON-Abfragen während der Laufzeit ausführt. Diese Methode akzeptiert zwei Argumente: den Tabellennamen und den Methodennamen. Der Methodenname enthält das vereinfachte JSON-Dokument und das JSON-Feld, das analysiert werden muss. An einem Beispiel soll verdeutlicht werden, wie diese UDF funktioniert.
 
 Die folgende Abfrage gibt den Vor- und Nachnamen aller Studierenden zurück:
 
@@ -118,18 +121,18 @@ FROM StudentsOneLine;
 
 Dies ist die Ausgabe, wenn diese Abfrage im Konsolenfenster ausgeführt wurde:
 
-![Apache Hive get json object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive gets json object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Für die get-json_object-UDF gibt es Einschränkungen:
 
 * Da für jedes Feld in der Abfrage eine erneute Analyse der Abfrage erforderlich ist, wird die Leistung beeinträchtigt.
 * \_GET**JSON_OBJECT()** gibt die Zeichenfolgendarstellung eines Arrays zurück. Zum Umwandeln dieses Arrays in ein Hive-Array müssen Sie reguläre Ausdrücke verwenden, um die eckigen Klammern „[“ und „]“ zu ersetzen, und Sie müssen die Funktion „Call Split“ verwenden, um das Array zu erhalten.
 
-Deshalb wird im Hive-Wiki die Verwendung von **json_tuple** empfohlen.  
+Aufgrund dieser Umwandlung wird im Hive-Wiki die Verwendung von **json_tuple** empfohlen.  
 
 ### <a name="use-the-json_tuple-udf"></a>Verwenden der JSON_TUPLE-UDF
 
-Eine andere in Hive verfügbare UDF ist [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple). Diese Funktion ist leistungsfähiger als [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Bei dieser Methode wird ein Satz von Schlüsseln sowie eine JSON-Zeichenfolge verwendet und ein Tupel mit Werten mithilfe einer einzigen Funktion zurückgegeben. Die folgende Abfrage gibt die ID der Studierenden und die Klasse aus dem JSON-Dokument zurück:
+Eine weitere in Hive verfügbare UDF ist [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple). Diese Funktion ist besser als [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Sie akzeptiert einen Satz von Schlüsseln und eine JSON-Zeichenfolge. Anschließend gibt sie ein Tupel von Werten zurück. Die folgende Abfrage gibt die ID der Studierenden und die Klasse aus dem JSON-Dokument zurück:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -142,7 +145,7 @@ Die Ausgabe des Skripts in der Hive-Konsole:
 
 ![Apache Hive json query results](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Die json_tuple-UDF verwendet die Syntax [Lateral View](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, wodurch „json\_tuple“ eine virtuelle Tabelle erstellen kann, indem die UDT-Funktion auf jede Zeile der Originaltabelle angewendet wird. Komplexe JSONs werden durch die wiederholte Verwendung von **LATERAL VIEW** zu unhandlich. Darüber hinaus kann **JSON_TUPLE** keine geschachtelten JSONs verarbeiten.
+Die `json_tuple`-UDF verwendet die Syntax [Lateral View](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, wodurch „json\_tuple“ eine virtuelle Tabelle erstellen kann, indem die UDT-Funktion auf jede Zeile der Originaltabelle angewendet wird. Komplexe JSONs werden durch die wiederholte Verwendung von **LATERAL VIEW** zu unhandlich. Darüber hinaus kann **JSON_TUPLE** keine geschachtelten JSONs verarbeiten.
 
 ### <a name="use-a-custom-serde"></a>Verwenden eines benutzerdefinierten Serialisierungs-/Deserialisierungsprogramms (SerDe)
 
@@ -150,7 +153,7 @@ SerDe ist die beste Wahl für das Analysieren von geschachtelten JSON-Dokumenten
 
 ## <a name="summary"></a>Zusammenfassung
 
-Es lässt sich zusammenfassend feststellen, dass der JSON-Operatortyp in der Struktur, den Sie auswählen, von Ihrem Szenario abhängt. Wenn in einem einfachen JSON-Dokument nur ein einziges Feld durchsucht werden soll, können Sie die Hive-UDF **get_json_object** verwenden. Wenn mehrere Suchschlüssel vorliegen, können Sie die UDF **json_tuple** verwenden. Bei geschachtelten Dokumenten müssen Sie das **JSON-SerDe** verwenden.
+Der Typ des JSON-Operators in Hive, den Sie auswählen, hängt vom Szenario ab. Wählen Sie für die Suche nach einem einzigen Feld in einem einfachen JSON-Dokument die Hive-UDF **get_json_object** aus. Wenn mehrere Suchschlüssel vorliegen, können Sie die UDF **json_tuple** verwenden. Verwenden Sie für geschachtelte Dokumente das **JSON-SerDe**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

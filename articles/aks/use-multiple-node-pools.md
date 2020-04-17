@@ -3,17 +3,17 @@ title: Verwenden mehrerer Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 04/08/2020
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615694"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259084"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
-Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Diese Knotenpools enthalten die zugrunde liegenden virtuellen Computer, die Ihre Anwendungen ausführen. Die anfängliche Anzahl der Knoten und ihre Größe (SKU) werden beim Erstellen eines AKS-Clusters festgelegt, der einen *Standardknotenpool* erstellt. Sie können zusätzliche Knotenpools erstellen, um Anwendungen mit unterschiedlichen Compute- oder Speicheranforderungen zu unterstützen. Verwenden Sie diese zusätzlichen Knotenpools z. B. zum Bereitstellen von GPUs für rechenintensive Anwendungen oder für den Zugriff auf leistungsstarken SSD-Speicher.
+Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Diese Knotenpools enthalten die zugrunde liegenden virtuellen Computer, die Ihre Anwendungen ausführen. Die anfängliche Anzahl der Knoten und ihre Größe (SKU) werden beim Erstellen eines AKS-Clusters festgelegt, der einen [Systemknotenpool][use-system-pool] erstellt. Sie können zusätzliche *Benutzerknotenpools* erstellen, um Anwendungen mit unterschiedlichen Compute- oder Speicheranforderungen zu unterstützen. Systemknotenpools dienen dem primären Zweck, kritische Systempods wie CoreDNS und tunnelfront zu hosten. Benutzerknotenpools dienen dem primären Zweck, Ihre Anwendungspods zu hosten. Anwendungspods lassen sich jedoch auf Systemknotenpools planen, wenn Sie nur einen Pool in Ihrem AKS-Cluster haben möchten. In Benutzerknotenpools können Sie dagegen anwendungsspezifische Pods speichern. Verwenden Sie diese zusätzlichen Benutzerknotenpools z. B. zum Bereitstellen von GPUs für rechenintensive Anwendungen oder für den Zugriff auf leistungsstarken SSD-Speicher.
 
 > [!NOTE]
 > Diese Funktion ermöglicht eine höhere Kontrolle über das Erstellen und Verwalten mehrerer Knotenpools. Daher sind separate Befehle zum Erstellen, Aktualisieren und Löschen erforderlich. Für über `az aks create` oder `az aks update` ausgeführte Clustervorgänge wurde bisher die managedCluster-API verwendet, und diese Vorgänge stellten die einzige Möglichkeit zum Ändern der Steuerungsebene und eines einzelnen Knotenpools dar. Diese Funktion stellt einen separaten Vorgang für Agent-Pools über die agentPool-API zur Verfügung und erfordert die Verwendung des `az aks nodepool`-Befehlssatzes zum Ausführen von Vorgängen für einen einzelnen Knotenpool.
@@ -22,26 +22,30 @@ In diesem Artikel erfahren Sie, wie Sie mehrere Knotenpools in einem AKS-Cluster
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.2.0 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="limitations"></a>Einschränkungen
 
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
 * Siehe [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Sie können den Systemknotenpool, standardmäßig der erste Knotenpool, nicht löschen.
+* Systemknotenpools können Sie löschen, wenn im AKS-Cluster ein anderer Systemknotenpool als Ersatz vorhanden ist.
+* Systempools müssen mindestens einen Knoten enthalten, während Benutzerknotenpools keine oder mehrere Knoten enthalten können.
 * Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt.
 * Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 * Der Name eines Knotenpools darf nur Kleinbuchstaben und Ziffern enthalten und muss mit einem Kleinbuchstaben beginnen. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
-* Alle Knotenpools müssen sich im selben VNET und Subnetz befinden.
+* Alle Knotenpools müssen sich im selben virtuellen Netzwerk befinden.
 * Beim Erstellen mehrerer Knotenpools während der Clustererstellung muss die Kubernetes-Version für alle Knotenpools der für die Steuerungsebene festgelegten Version entsprechen. Dies kann nach dem Bereitstellen des Clusters mithilfe von Poolvorgängen pro Knoten aktualisiert werden.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
+> [!Important]
+> Wenn Sie für Ihren AKS-Cluster nur einen Systemknotenpool in einer Produktionsumgebung ausführen, sollten Sie für den Knotenpool mindestens drei Knoten verwenden.
+
 Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. In einem nachfolgenden Schritt wird die Aktualisierung eines Knotenpools mithilfe von *--kubernetes-version* *1.15.7* veranschaulicht. Sie können eine beliebige [unterstützte Kubernetes-Version][supported-versions] angeben.
 
 > [!NOTE]
-> Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools **nicht unterstützt**. Standardmäßig werden AKS-Cluster mit der Lastenausgleichs-SKU *Standard* über die Azure CLI und das Azure-Portal erstellt.
+> Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools **nicht unterstützt**. Standardmäßig werden AKS-Cluster mit der Lastenausgleichs-SKU *Standard* über die Azure-Befehlszeilenschnittstelle und das Azure-Portal erstellt.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -93,9 +97,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 
 Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knoten im Knotenpool erstellt wurde. Wenn der AKS-Cluster im vorherigen Schritt erstellt wurde, dann wurde ein Standardknotenpool (*nodepool1*) mit *2* Knoten erstellt.
 
-```console
-$ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
-
+```output
 [
   {
     ...
@@ -123,6 +125,29 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!TIP]
 > Wenn beim Hinzufügen eines Knotenpools keine *VmSize* angegeben ist, lautet die Standardgröße *Standard_DS2_v3* für Windows-Knotenpools und *Standard_DS2_v2* für Linux-Knotenpools. Wenn keine *OrchestratorVersion* angegeben ist, wird standardmäßig die gleiche Version wie für die Steuerungsebene verwendet.
 
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Hinzufügen eines Knotenpools mit einem eindeutigen Subnetz (Vorschau)
+
+Eine Workload erfordert für die logische Isolation möglicherweise das Aufteilen der Knoten eines Clusters in getrennte Pools. Diese Isolation kann mit separaten Subnetzen unterstützt werden, die für die einzelnen Knotenpools im Cluster vorgesehen sind. Damit können spezifische Anforderungen erfüllt werden, wie z. B. ein nicht zusammenhängender IP-Adressraum für das virtuelle Netzwerk, der auf Knotenpools aufgeteilt ist.
+
+#### <a name="limitations"></a>Einschränkungen
+
+* Alle Subnetze, die Knotenpools zugewiesen sind, müssen demselben virtuellen Netzwerk angehören.
+* Systempods müssen Zugriff auf alle Knoten im Cluster haben, um wichtige Funktionen wie die DNS-Auflösung über coreDNS bereitstellen zu können.
+* Die Zuweisung eines eindeutigen Subnetzes pro Knotenpool ist nur während der Vorschauphase von Azure CNI möglich.
+* Die Verwendung von Netzwerkrichtlinien mit einem eindeutigen Subnetz pro Knotenpool wird während der Vorschau nicht unterstützt.
+
+Um einen Knotenpool mit einem dedizierten Subnetz zu erstellen, übergeben Sie beim Erstellen des Knotenpools die Subnetzressourcen-ID als zusätzlichen Parameter.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
+
 ## <a name="upgrade-a-node-pool"></a>Durchführen eines Upgrades für einen Knotenpool
 
 > [!NOTE]
@@ -148,9 +173,11 @@ az aks nodepool upgrade \
 
 Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.15.7* aufweist:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -195,11 +222,11 @@ Ein AKS-Cluster verfügt über zwei Clusterressourcenobjekte mit zugeordneten Ku
 
 Eine Steuerungsebene ist einem oder mehreren Knotenpools zugeordnet. Das Verhalten eines Upgradevorgangs hängt davon ab, welcher Azure CLI-Befehl verwendet wird.
 
-Zum Aktualisieren einer AKS-Steuerungsebene muss `az aks upgrade` verwendet werden. Dadurch werden die Version der Steuerungsebene und alle Knotenpools im Cluster aktualisiert. 
+Zum Aktualisieren einer AKS-Steuerungsebene muss `az aks upgrade` verwendet werden. Durch diesen Befehl werden die Version der Steuerungsebene und alle Knotenpools im Cluster aktualisiert.
 
 Beim Ausgeben des Befehls `az aks upgrade` mit dem Flag `--control-plane-only` wird nur die Clustersteuerungsebene aktualisiert. Keiner der zugeordneten Knotenpools im Cluster wird geändert.
 
-Zum Aktualisieren einzelner Knotenpools muss `az aks nodepool upgrade` verwendet werden. Dadurch wird nur der Zielknotenpool mit der angegebenen Kubernetes-Version aktualisiert.
+Zum Aktualisieren einzelner Knotenpools muss `az aks nodepool upgrade` verwendet werden. Durch diesen Befehl wird nur der Zielknotenpool mit der angegebenen Kubernetes-Version aktualisiert.
 
 ### <a name="validation-rules-for-upgrades"></a>Validierungsregeln für Upgrades
 
@@ -234,9 +261,11 @@ az aks nodepool scale \
 
 Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Scaling* (Wird skaliert) mit einer neuen Anzahl von *5* Knoten aufweist:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -284,9 +313,11 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name myn
 
 Die folgende Beispielausgabe des Befehls [az aks node pool list][az-aks-nodepool-list] zeigt, dass sich *mynodepool* im Zustand *Deleting* (Wird gelöscht) befindet:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -337,9 +368,11 @@ az aks nodepool add \
 
 Die folgende Beispielausgabe des Befehls [az aks node pool list][az-aks-nodepool-list] zeigt, dass *gpunodepool* Knoten mit der angegebenen *VmSize* (VM-Größe) *erstellt*:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -375,8 +408,10 @@ Es dauert einige Minuten, bis *gpunodepool* erfolgreich erstellt wurde.
 Sie verfügen jetzt über zwei Knotenpools in Ihrem Cluster – den ursprünglich erstellten Standardknotenpool und den GPU-basierten Knotenpool. Verwenden Sie den Befehl [kubectl get nodes][kubectl-get], um die Knoten in Ihrem Cluster anzuzeigen. Die folgende Beispielausgabe zeigt die Knoten:
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
+```
 
+```output
 NAME                                 STATUS   ROLES   AGE     VERSION
 aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
@@ -389,7 +424,7 @@ Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, 
 
 Weitere Informationen zur Verwendung der erweiterten geplanten Kubernetes-Features finden Sie unter [Best Practices für erweiterte Scheduler-Funktionen in Azure Kubernetes Service (AKS)][taints-tolerations].
 
-In diesem Beispiel wenden Sie mit dem Befehl „--node-taints“ einen Taint auf Ihren GPU-basierten Knoten an. Geben Sie den Namen Ihres GPU-basierten Knotens aus der Ausgabe des vorherigen `kubectl get nodes` Befehls an. Der Taint wird als *Schlüssel:Wert* und dann eine Planungsoption angewendet. Das folgende Beispiel verwendet das Paar *sku=gpu* und definiert Pods, die ansonsten die Option *NoSchedule* aufweisen:
+In diesem Beispiel wenden Sie mit dem Befehl „--node-taints“ einen Taint auf Ihren GPU-basierten Knoten an. Geben Sie den Namen Ihres GPU-basierten Knotens aus der Ausgabe des vorherigen `kubectl get nodes` Befehls an. Der Taint wird als *Schlüssel=Wert*-Paar und dann als Planungsoption angewandt. Das folgende Beispiel verwendet das Paar *sku=gpu* und definiert Pods, die ansonsten die Option *NoSchedule* aufweisen:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -431,8 +466,10 @@ kubectl apply -f gpu-toleration.yaml
 Es dauert einige Sekunden, um den Pod zu planen und das NGINX-Image per Pull abzurufen. Verwenden Sie den Befehl [kubectl describe pod][kubectl-describe], um den Podstatus anzuzeigen. Die folgende kompakte Beispielausgabe zeigt, dass die Toleranz *sku=gpu:NoSchedule* angewendet wird. Im Ereignisabschnitt hat der Planer den Pod dem GPU-basierten Knoten *aks-gpunodepool-28993262-vmss000000* zugewiesen:
 
 ```console
-$ kubectl describe pod mypod
+kubectl describe pod mypod
+```
 
+```output
 [...]
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
@@ -447,24 +484,95 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Nur Pods mit diesem Taint können auf Knoten in *gpunodepool* geplant werden. Alle anderen Pods werden im Knotenpool *nodepool1* geplant. Wenn Sie weitere Knotenpools erstellen, können Sie mit zusätzlichen Taints und Toleranzen einschränken, welche Pods für diese Knotenressourcen geplant werden können.
+Nur Pods mit dieser Toleranz können auf Knoten in *gpunodepool* geplant werden. Alle anderen Pods werden im Knotenpool *nodepool1* geplant. Wenn Sie weitere Knotenpools erstellen, können Sie mit zusätzlichen Taints und Toleranzen einschränken, welche Pods für diese Knotenressourcen geplant werden können.
 
-## <a name="specify-a-tag-for-a-node-pool"></a>Angeben eines Tags für einen Knotenpool
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Angeben von Taint, Bezeichnung oder Tag für einen Knotenpool
 
-Sie können ein Azure-Tag auf Knotenpools in Ihrem AKS-Cluster anwenden. Auf einen Knotenpool angewendete Tags werden auf jeden Knoten innerhalb des Knotenpools angewendet und bleiben bei Upgrades erhalten. Tags werden auch auf neue Knoten angewendet, die einem Knotenpool im Rahmen von Vorgängen zum horizontalen Hochskalieren hinzugefügt werden. Das Hinzufügen eines Tags kann Aufgaben wie das Nachverfolgen von Richtlinien oder die Kostenschätzung erleichtern.
+Beim Erstellen eines Knotenpools können Sie diesem Knotenpool Taints, Bezeichnungen oder Tags hinzufügen. Wenn Sie einen Taint, eine Bezeichnung oder ein Tag hinzufügen, erhalten alle Knoten innerhalb dieses Knotenpools ebenfalls diesen Taint, diese Bezeichnung oder dieses Tag.
 
-> [!IMPORTANT]
-> Um Knotenpooltags verwenden zu können, benötigen Sie mindestens Version 0.4.29 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-> 
-> ```azurecli-interactive
-> # Install the aks-preview extension
-> az extension add --name aks-preview
-> 
-> # Update the extension to make sure you have the latest version installed
-> az extension update --name aks-preview
-> ```
+Verwenden Sie [az aks nodepool add][az-aks-nodepool-add], um einen Knotenpool mit einem Taint zu erstellen. Geben Sie den Namen *taintnp* an, und verwenden Sie den Parameter `--node-taints`, um *sku=gpu:NoSchedule* für den Taint anzugeben.
 
-Erstellen Sie einen Knotenpool mit dem Befehl [az aks node pool add][az-aks-nodepool-add]. Geben Sie den Namen *tagnodepool* an, und verwenden Sie den `--tag`-Parameter, um *dept=IT* und *costcenter=9999* als Tags anzugeben.
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
+
+Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *taintnp* Knoten mit dem angegebenen *nodeTaints* *erstellt*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  [
+      "sku=gpu:NoSchedule"
+    ],
+    ...
+  },
+ ...
+]
+```
+
+Die Taint-Informationen sind in Kubernetes für die Behandlung von Planungsregeln für Knoten sichtbar.
+
+Sie können einem Knotenpool auch während der Erstellung des Knotenpools Bezeichnungen hinzufügen. Für den Knotenpool festgelegte Bezeichnungen werden jedem Knoten im Knotenpool hinzugefügt. Diese [Bezeichnungen sind in Kubernetes][kubernetes-labels] zur Behandlung von Planungsregeln für Knoten sichtbar.
+
+Verwenden Sie [az aks nodepool add][az-aks-nodepool-add], um einen Knotenpool mit einer Bezeichnung zu erstellen. Geben Sie den Namen *labelnp* an, und verwenden Sie den `--labels`-Parameter, um *dept=IT* und *costcenter=9999* als Bezeichnungen anzugeben.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> Die Bezeichnung kann für Knotenpools nur während der Erstellung des Knotenpools festgelegt werden. Bezeichnungen müssen auch ein Schlüssel-Wert-Paar sein und eine [gültige Syntax][kubernetes-label-syntax] aufweisen.
+
+Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *labelnp* Knoten mit dem angegebenen *nodeLabels* *erstellt*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+Sie können ein Azure-Tag auf Knotenpools in Ihrem AKS-Cluster anwenden. Auf einen Knotenpool angewendete Tags werden auf jeden Knoten innerhalb des Knotenpools angewendet und bleiben bei Upgrades erhalten. Tags werden auch auf neue Knoten angewendet, die einem Knotenpool im Rahmen von Vorgängen zum horizontalen Skalieren hinzugefügt werden. Das Hinzufügen eines Tags kann Aufgaben wie das Nachverfolgen von Richtlinien oder die Kostenschätzung erleichtern.
+
+Erstellen Sie einen Knotenpool mit dem Befehl [az aks nodepool add][az-aks-nodepool-add]. Geben Sie den Namen *tagnodepool* an, und verwenden Sie den `--tag`-Parameter, um *dept=IT* und *costcenter=9999* als Tags anzugeben.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -481,9 +589,11 @@ az aks nodepool add \
 
 Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *tagnodepool* Knoten mit dem angegebenen *Tag* *erstellt*:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -612,18 +722,22 @@ az group deployment create \
 
 Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängig von den Knoteneinstellungen und Vorgängen, die Sie in Ihrer Resource Manager-Vorlage definieren.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool (Vorschau)
 
 > [!WARNING]
 > Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. Aufgrund dieser Einschränkung werden Windows-Agentpools bei dieser Previewfunktion nicht unterstützt. In der Vorschauversion müssen Sie die *Load-Balancer-SKU „Basic“* verwenden, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
 
-AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel hierfür ist Gaming, bei dem eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dies kann erreicht werden, indem Sie sich für eine separate Previewfunktion für öffentliche IP-Adressen für Knoten (Node Public IP) (Vorschauversion) registrieren.
+AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils eine eigene dedizierte öffentliche IP-Adresse erhalten. Ein häufiges Szenario hierfür sind Gamingworkloads, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dieses Szenario kann in AKS erreicht werden, indem Sie sich für eine Previewfunktion für öffentliche IP-Adressen für Knoten (Vorschau) registrieren.
+
+Sie registrieren sich für die Funktion für öffentliche IP-Adressen von Knoten, indem Sie den folgenden Befehl an der Azure-Befehlszeilenschnittstelle ausgeben.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie die Eigenschaft `enableNodePublicIP` (boolescher Wert) zu „agentPoolProfiles“ hinzu. Sie müssen den Wert auf `true` festlegen, da er standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
+Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie agentPoolProfiles die Eigenschaft `enableNodePublicIP` (boolescher Wert) hinzu. Sie müssen den Wert auf `true` festlegen, da er standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. 
+
+Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -643,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zu [Systemknotenpools][use-system-pool].
+
 In diesem Artikel haben Sie erfahren, wie Sie mehrere Knotenpools in einem AKS-Cluster erstellen und verwalten. Weitere Informationen zum knotenpoolübergreifenden Steuern von Pods finden Sie unter [Best Practices für erweiterte Scheduler-Funktionen in Azure Kubernetes Service (AKS)][operator-best-practices-advanced-scheduler].
 
 Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpools finden Sie unter [Erstellen eines Windows Server-Containers in AKS][aks-windows].
@@ -652,6 +768,8 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
@@ -676,3 +794,4 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md
