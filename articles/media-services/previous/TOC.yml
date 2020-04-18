@@ -257,8 +257,6 @@
           items:
             - name: Haivision KB-Encoder
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster-Encoder
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast-Encoder
               href: media-services-configure-wirecast-live-encoder.md
         - name: Behandeln von Vorgängen mit langer Ausführungsdauer
