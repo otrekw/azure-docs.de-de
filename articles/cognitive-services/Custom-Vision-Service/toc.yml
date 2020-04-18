@@ -9,49 +9,41 @@
       href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: Verwenden des Webportals
+    - name: Erstellen einer Klassifizierung
       items:
-        - name: Erstellen einer Klassifizierung
+        - name: Verwenden des Webportals
           href: getting-started-build-a-classifier.md
-        - name: Erstellen einer Objekterkennung
-          href: get-started-build-detector.md
-    - name: Verwenden des .NET SDK
-      items:
-        - name: Bildklassifizierung
+        - name: Verwenden des .NET SDK
           href: csharp-tutorial.md
-        - name: Objekterkennung
-          href: csharp-tutorial-od.md
-    - name: Verwenden des Python SDK
-      items:
-        - name: Bildklassifizierung
+        - name: Verwenden des Python SDK
           href: python-tutorial.md
-        - name: Objekterkennung
-          href: python-tutorial-od.md
-    - name: Verwenden des Java SDK
-      items:
-        - name: Bildklassifizierung
+        - name: Verwenden des Java SDK
           href: java-tutorial.md
-        - name: Objekterkennung
-          href: java-tutorial-od.md
-    - name: Verwenden des Node.js SDK
-      items:
-        - name: Bildklassifizierung
+        - name: Verwenden des Node.js SDK
           href: node-tutorial.md
-        - name: Objekterkennung
-          href: node-tutorial-object-detection.md
-    - name: Verwenden des Go SDK
-      items:
-        - name: Bildklassifizierung
+        - name: Verwenden des Go SDK
           href: go-tutorial.md
-        - name: Objekterkennung
+    - name: Erstellen einer Objekterkennung
+      items:
+        - name: Verwenden des Webportals
+          href: get-started-build-detector.md
+        - name: Verwenden des .NET SDK
+          href: csharp-tutorial-od.md
+        - name: Verwenden des Python SDK
+          href: python-tutorial-od.md
+        - name: Verwenden des Java SDK
+          href: java-tutorial-od.md
+        - name: Verwenden des Node.js SDK
+          href: node-tutorial-object-detection.md
+        - name: Verwenden des Go SDK
           href: go-tutorial-object-detection.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Melden von visuellen Zustände auf einem IoT-Gerät
       href: iot-visual-alerts-tutorial.md
     - name: Erkennen von Logos auf mobilen Geräten
       href: logo-detector-mobile.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Testen des Modells
       href: test-your-model.md
