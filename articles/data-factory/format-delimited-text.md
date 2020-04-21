@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 696c175f55ecdb09b1b88f9766c4c678afe2c4ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830189"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417101"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textformat mit Trennzeichen in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Beachten Sie diesen Artikel, wenn Sie die **Textdateien mit Trennzeichen analysieren oder die Daten im Textformat mit Trennzeichen schreiben** möchten. 
 
@@ -30,14 +31,14 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **DelimitedText** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften.  | Ja      |
-| columnDelimiter  | Das Zeichen, das in einer Datei zum Trennen von Spalten verwendet wird. Das mehrstellige Trennzeichen wird derzeit nur für Mappingdatenflüsse, aber nicht für die Kopieraktivität unterstützt. <br>Der Standardwert ist **Komma `,`** . wenn das Spaltentrennzeichen als leere Zeichenfolge definiert ist, d.h. kein Trennzeichen, wird die gesamte Zeile als eine einzige Spalte betrachtet. | Nein       |
-| rowDelimiter     | Das Einzelzeichen oder „\r\n“, das in einer Datei zum Trennen von Zeilen verwendet wird.<br>Der Standardwert ist einer der folgenden Werte: **[ „\r\n“, „\r“, „\r“, „\n“] (beim Lesen)** und **„\n“ oder „\r\n“ (beim Schreiben)** für Mappingdatenfluss bzw. Kopieraktivität. <br>Wenn `rowDelimiter` auf kein Trennzeichen (leere Zeichenfolge) gesetzt ist, darf auch `columnDelimiter` auf kein Trennzeichen (leere Zeichenfolge) gesetzt werden, was bedeutet, dass der gesamte Inhalt als Einzelwert behandelt wird. | Nein       |
+| columnDelimiter  | Das Zeichen, das in einer Datei zum Trennen von Spalten verwendet wird. <br>Der Standardwert ist das **Komma `,`** . Wenn das Spaltentrennzeichen als leere Zeichenfolge, d. h. kein Trennzeichen, definiert wurde, wird die gesamte Zeile als eine einzige Spalte betrachtet.<br>Zurzeit wird das Spaltentrennzeichen als leere oder aus mehreren Zeichen bestehende Zeichenfolge nur für den Zuordnungsdatenfluss unterstützt, aber nicht für die Kopieraktivität.  | Nein       |
+| rowDelimiter     | Das Einzelzeichen oder „\r\n“, das in einer Datei zum Trennen von Zeilen verwendet wird. <br>Der Standardwert ist einer der folgenden Werte: **[ „\r\n“, „\r“, „\r“, „\n“] (beim Lesen)** und **„\n“ oder „\r\n“ (beim Schreiben)** für Mappingdatenfluss bzw. Kopieraktivität. <br>Wenn das Zeilentrennzeichen auf „kein Trennzeichen“ (leere Zeichenfolge) festgelegt wird, muss auch das Spaltentrennzeichen auf „kein Trennzeichen“ (leere Zeichenfolge) festgelegt werden. Dies bedeutet, dass der gesamte Inhalt als Einzelwert behandelt wird.<br>Zurzeit wird das Zeilentrennzeichen als leere Zeichenfolge nur für den Zuordnungsdatenfluss unterstützt, aber nicht für die Kopieraktivität. | Nein       |
 | quoteChar        | Das einzelne Zeichen, um Spaltenwerte mit Anführungszeichen zu versehen, wenn es ein Spaltentrennzeichen enthält. <br>Der Standardwert ist ein **doppeltes Anführungszeichen** `"`. <br>Bei Mappingdatenflüssen darf `quoteChar` keine leere Zeichenfolge sein. <br>Wenn `quoteChar` als leere Zeichenfolge definiert ist, bedeutet dies, dass es kein Anführungszeichen gibt und der Spaltenwert nicht in Anführungszeichen gesetzt wird, und `escapeChar` wird verwendet, um das Spaltentrennzeichen und sich selbst zu escapen. | Nein       |
 | escapeChar       | Das einzelne Zeichen zum Escapen von Anführungszeichen innerhalb eines mit Anführungszeichen versehenen Wertes.<br>Der Standardwert ist ein **umgekehrter Schrägstrich `\`** . <br>Bei Mappingdatenflüssen darf `escapeChar` keine leere Zeichenfolge sein. <br/>Wenn `escapeChar` als leere Zeichenfolge definiert ist, muss für die Kopieraktivität auch `quoteChar` als leere Zeichenfolge festgelegt werden, wobei in diesem Fall darauf zu achten ist, dass alle Spaltenwerte keine Trennzeichen enthalten. | Nein       |
 | firstRowAsHeader | Gibt an, ob die erste Zeile als Kopfzeile mit Spaltennamen behandelt bzw. zu dieser gemacht werden soll.<br>Zulässige Werte sind **true** und **false** (Standard). | Nein       |
 | nullValue        | Gibt eine Zeichenfolgendarstellung von Null-Werten an. <br>Der Standardwert ist eine **leere Zeichenfolge**. | Nein       |
 | encodingName     | Der zu Lesen/Schreiben von Testdateien verwendete Codierungstyp. <br>Es sind die folgenden Werte zulässig: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", “UTF-7”, "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258”.<br>Beachten Sie, dass Mappingdatenflüsse keine UTF-7-Codierung unterstützen. | Nein       |
-| compressionCodec | Der zum Lesen und Schreiben von Textdateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, die beim Speichern der Datei verwendet werden können. <br>Beachten Sie, dass die Kopieraktivität derzeit „snappy“ und „lz4“ und der Zuordnungsdatenfluss „ZipDeflate“ nicht unterstützt. <br>Hinweis: Bei der Verwendung der Kopieraktivität zum Dekomprimieren einer oder mehrerer ZipDeflate-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher werden Dateien in den folgenden Ordner extrahiert: `<path specified in dataset>/<folder named as source zip file>/`. | Nein       |
+| compressionCodec | Der zum Lesen und Schreiben von Textdateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, Der Standardwert wird nicht komprimiert. <br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“. <br>**Hinweis** Bei Verwendung der Kopieraktivität zum Dekomprimieren einer oder mehrerer ZipDeflate-Datei(en) und zum Schreiben in den dateibasierten Senkendatenspeicher werden Dateien in folgenden Ordner extrahiert: `<path specified in dataset>/<folder named as source zip file>/`. | Nein       |
 | compressionLevel | Das Komprimierungsverhältnis. <br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
 
 Nachfolgend sehen Sie das Beispiel eines DelimitedText-Datasets in Azure Blob Storage:
@@ -60,6 +61,7 @@ Nachfolgend sehen Sie das Beispiel eines DelimitedText-Datasets in Azure Blob St
             },
             "columnDelimiter": ",",
             "quoteChar": "\"",
+            "escapeChar": "\"",
             "firstRowAsHeader": true,
             "compressionCodec": "gzip"
         }

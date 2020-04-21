@@ -6,18 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 10/10/2019
+ms.openlocfilehash: 63843230b3d4a521df858b00c8e5c887e8f53a7a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415589"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
 
 Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Factory unterstützt werden, und die Aktivitäten, die darin ausgeführt werden können. 
@@ -36,12 +39,14 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 >  
 
 ## <a name="on-demand-hdinsight-compute-environment"></a>Bedarfsgesteuerte HDInsight-Compute-Umgebung
+
 Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data Factory-Dienst verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können einen verknüpften Dienst für die bedarfsgesteuerte Compute-Umgebung erstellen, diesen konfigurieren und differenzierte Einstellungen für Auftragsausführung, Clusterverwaltung und Bootstrappingaktionen festlegen.
 
 > [!NOTE]
 > Die bedarfsgesteuerte Konfiguration wird gegenwärtig nur für Azure HDInsight-Cluster unterstützt. Azure Databricks unterstützt auch bedarfsgesteuerte Aufträge mithilfe von Auftragsclustern. Weitere Informationen finden Sie unter [Mit Azure Databricks verknüpfter Dienst](#azure-databricks-linked-service).
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
+
 Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto muss ein allgemeines Azure Storage-Standardkonto sein. 
 
 Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknüpften HDInsight-Dienst:
@@ -55,6 +60,7 @@ Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknü
 > Die bedarfsgesteuerte Bereitstellung eines Azure HDInsight-Clusters dauert üblicherweise **20 Minuten** oder länger.
 
 ### <a name="example"></a>Beispiel
+
 Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt automatisch einen **Linux-basierten** HDInsight-Cluster zur Verarbeitung der angeforderten Aktivität. 
 
 ```json
@@ -93,21 +99,20 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist. 
 >
 > Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](https://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
->
-> 
 
 ### <a name="properties"></a>Eigenschaften
+
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
 | clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
-| linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters, der Azure Data Lake Store als Speicher verwendet, ist derzeit nicht möglich. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einer Azure Data Lake Store-Instanz speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus der Azure Blob Storage-Instanz in die Azure Data Lake Store-Instanz. </p> | Ja      |
+| linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Derzeit können Sie keinen bedarfsgesteuerten HDInsight-Cluster erstellen, der einen Azure Data Lake Storage (Gen 2) als Speicher verwendet. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einem Azure Data Lake Storage (Gen 2) speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus dem Azure Blob Storage in den Azure Data Lake Storage (Gen 2). </p> | Ja      |
 | clusterResourceGroup         | Der HDInsight-Cluster wird in dieser Ressourcengruppe erstellt. | Ja      |
 | timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung einer Data Factory zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja      |
 | clusterType                  | Der Typ des zu erstellenden HDInsight-Clusters. Zulässige Werte sind „hadoop“ und „spark“. Wenn Sie hier nichts angeben, lautet der Standardwert „hadoop“. Ein für das Enterprise-Sicherheitspaket aktivierter Cluster kann nicht bedarfsweise erstellt werden. Verwenden Sie stattdessen einen [vorhandenen Cluster/eine eigene Compute-Umgebung](#azure-hdinsight-linked-service). | Nein       |
 | version                      | Version des HDInsight-Clusters. Wenn nichts angegeben wird, ist dies die aktuelle definierte HDInsight-Standardversion. | Nein       |
 | hostSubscriptionId           | Die Azure-Abonnement-ID, die zum Erstellen des HDInsight-Clusters verwendet wird. Wenn nicht angegeben, wird die Abonnement-ID Ihres Azure-Anmeldungskontexts verwendet. | Nein       |
-| clusterNamePrefix           | Das Präfix des HDI-Clusternamens; am Ende des Clusternamens wird automatisch ein Zeitstempel angefügt.| Nein       |
+| clusterNamePrefix           | Das Präfix des HDI-Clusternamens, ein Zeitstempel, wird am Ende des Clusternamens automatisch angefügt.| Nein       |
 | sparkVersion                 | Die Spark-Version, wenn der Clustertyp „Spark“ ist. | Nein       |
 | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster, der in der gleichen Region erstellt wird wie das von „linkedServiceName“ angegebene Speicherkonto. | Nein       |
 | osType                       | Typ des Betriebssystems. Zulässige Werte sind: Linux und Windows (nur für HDInsight 3.3). Der Standardwert ist „Linux“. | Nein       |
@@ -125,8 +130,6 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > [!IMPORTANT]
 > Derzeit werden HBase-, Interactive Query- (Hive LLAP) und Storm-Cluster von verknüpften HDInsight-Diensten nicht unterstützt. 
->
-> 
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames (JSON-Beispiel)
 
@@ -291,7 +294,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
 | username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
 | password          | Geben Sie ein Kennwort für das Benutzerkonto an.                       | Ja      |
-| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p> | Ja      |
+| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Storage (Gen 2)-Dienst für diese Eigenschaft angeben. Wenn der HDInsight-Cluster Zugriff auf den Data Lake Store hat, können Sie auf Daten im Azure Data Lake Storage (Gen 2) über Hive-/Pig-Skripts zugreifen. </p> | Ja      |
 | isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) aktiviert ist. Die Standardeinstellung lautet *FALSE*. | Nein       |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. <br />Verwenden Sie für einen für das Enterprise-Sicherheitspaket (ESP) aktivierten HDInsight-Cluster eine selbstgehostete Integration Runtime, die auf den Cluster zugreifen kann oder in demselben virtuellen Netzwerk wie der ESP-HDInsight-Cluster bereitgestellt werden muss. | Nein       |
 
@@ -483,7 +486,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 
 ## <a name="azure-databricks-linked-service"></a>Mit Azure Databricks verknüpfter Dienst
-Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den Databricks-Arbeitsbereich zu registrieren, den Sie verwenden möchten, um die Databricks-Workloads (Notebook, JAR, Python) auszuführen. 
+Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den Databricks-Arbeitsbereich zu registrieren, den Sie für die Ausführung der Databricks-Workloads (Notebook, JAR, Python) verwenden möchten. 
 > [!IMPORTANT]
 > Mit Databricks verknüpfte Dienste unterstützen [Instanzenpools](https://aka.ms/instance-pools). 
 
@@ -538,7 +541,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 | accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Ja                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein 
 | instancePoolId    | Instanzenpool-ID eines vorhandenen Pools im Databricks-Arbeitsbereich.  | Nein  |
-| newClusterVersion    | Die Spark-Version des Clusters. In Databricks wird ein neuer Auftragscluster erstellt. | Nein  |
+| newClusterVersion    | Die Spark-Version des Clusters. Damit wird ein Auftragscluster in Databricks erstellt. | Nein  |
 | newClusterNumOfWorker| Die Anzahl der Workerknoten, die dieser Cluster haben sollte. Ein Cluster hat einen Spark Driver und Executors entsprechend der Workeranzahl, also insgesamt Workeranzahl + 1 Spark-Knoten. Eine als Int32 formatierte Zeichenfolge wie „1“ bedeutet, dass numOfWorker den Wert 1 hat. „1:10“ steht für eine Autoskalierung von 1 als Minimum und 10 als Maximum.  | Nein                |
 | newClusterNodeType   | Dieses Feld codiert mithilfe eines einzigen Werts die Ressourcen, die jedem der Spark-Knoten in diesem Cluster zur Verfügung stehen. Beispielsweise können die Spark-Knoten für arbeitsspeicher- oder rechenintensive Workloads bereitgestellt und optimiert werden. Dieses Feld wird für neue Cluster benötigt.                | Nein               |
 | newClusterSparkConf  | Eine Gruppe optionaler, benutzerdefinierter Spark-Konfigurationsschlüssel-Wert-Paare. Benutzer können auch über „spark.driver.extraJavaOptions“ bzw. „spark.executor.extraJavaOptions“ eine Zeichenfolge mit zusätzlichen JVM-Optionen an den Driver und die Executors übergeben. | Nein  |
@@ -546,15 +549,19 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 
 ## <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
+
 Sie erstellen einen mit Azure SQL verknüpften Dienst und verwenden ihn mit der [Aktivität "Gespeicherte Prozedur"](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL-Connector](connector-azure-sql-database.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Mit Azure SQL Data Warehouse verknüpfter Dienst
+
 Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL Data Warehouse-Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="sql-server-linked-service"></a>Mit SQL Server verknüpfter Dienst
+
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](connector-sql-server.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
+
 Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
@@ -565,4 +572,5 @@ Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit
 |   |   |   |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Eine Liste der Transformationsaktivitäten, die von Azure Data Factory unterstützt werden, finden Sie unter [Transform data in Azure Data Factory](transform-data.md) (Transformieren von Daten in Azure Data Factory).

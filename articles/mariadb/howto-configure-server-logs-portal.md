@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531395"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270593"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Protokolle für langsame Abfragen im Azure-Portal
 
@@ -32,11 +32,15 @@ Konfigurieren Sie den Zugriff auf das Protokoll für langsame Abfragen.
 
 4. Um die Serverparameter anzuzeigen, wählen Sie **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus.
 
-5. Ändern Sie die Parameter, die Sie anpassen müssen, und legen Sie dabei **slow_query_log** auf **ON** (EIN) fest. Alle in dieser Sitzung vorgenommenen Änderungen werden in violett hervorgehoben. 
+5. Aktivieren Sie **slow_query_log** mit **ON**.
 
-   Wählen Sie **Speichern** aus, nachdem Sie die Parameter geändert haben. Sie können Ihre Änderungen auch verwerfen.
+6. Wählen Sie mit **log_output** aus, wohin die Protokolle ausgegeben werden sollen. Wenn Protokolle sowohl in den lokalen Speicher als auch in die Azure Monitor-Diagnoseprotokolle gesendet werden sollen, wählen Sie **Datei** aus. 
 
-   ![Screenshot der Optionen für Serverparameter](./media/howto-configure-server-logs-portal/3-save-discard.png)
+7. Ändern Sie alle anderen erforderlichen Parameter. 
+
+8. Wählen Sie **Speichern** aus. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Screenshot der Parameter von „Protokoll für langsame Abfrage“ mit „Speichern“.":::
 
 Von der Seite **Serverparameter** können Sie zur Liste der Protokolle zurückkehren, indem Sie die Seite schließen.
 

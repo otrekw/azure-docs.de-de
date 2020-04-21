@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528930"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382969"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle im Azure-Portal
 
@@ -70,3 +70,4 @@ Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zu [Überwachungsprotokollen](concepts-audit-logs.md) in Azure Database for MariaDB.
+- Erfahren Sie mehr zum Konfigurieren von Überwachungsprotokollen über die [Azure CLI](howto-configure-audit-logs-cli.md).

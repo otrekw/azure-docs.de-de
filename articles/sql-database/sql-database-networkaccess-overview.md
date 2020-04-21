@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945392"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414409"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
 
@@ -29,7 +29,7 @@ ms.locfileid: "78945392"
 
 Wenn Sie eine neue Azure SQL Server-Instanz im [Azure-Portal](sql-database-single-database-get-started.md) erstellen, ist das Ergebnis ein öffentlicher Endpunkt im Format *IhrServername.database.windows.net*.
 
-Sie können die folgenden Netzwerkzugriffssteuerungen verwenden, um den Zugriff auf die SQL-Datenbank selektiv über den öffentlichen Endpunkt zuzulassen:
+Sie können die folgenden Netzwerkzugriffssteuerungen verwenden, um den Zugriff auf die SQL-Datenbank über den öffentlichen Endpunkt selektiv zuzulassen:
 - Azure-Dienste zulassen: Bei einer Festlegung auf „Ein“ können andere Ressourcen innerhalb der Azure-Grenze (z. B. ein virtueller Azure-Computer) auf die SQL-Datenbank zugreifen.
 
 - IP-Firewallregeln: Verwenden Sie dieses Feature, um Verbindungen von einer bestimmten IP-Adresse explizit zuzulassen (z. B. von lokalen Computern).
@@ -56,13 +56,13 @@ Sie können diese Einstellung auch über den Bereich „Firewall“ wie folgt ä
 
 Wenn die Einstellung auf **Ein** festgelegt wird, erlaubt Azure SQL Server Azure die Kommunikation von allen Ressourcen innerhalb der Azure-Grenze, egal ob sie Teil Ihres Abonnements sind oder nicht.
 
-In vielen Fällen lässt die Einstellung **Ein** mehr zu, als die meisten Kunden wünschen. Möglicherweise sollten sie diese Einstellung auf **Aus** festlegen und durch restriktivere IP-Firewallregeln oder Virtual Network-Firewallregeln ersetzen. Dies wirkt sich auf die folgenden Features auf virtuellen Computern in Azure aus, die nicht Teil Ihres VNET sind und somit über eine Azure-IP-Adresse eine Verbindung mit SQL-Datenbank herstellen.
+In vielen Fällen ist die Einstellung **EIN** weniger einschränkend, als es die meisten Kunden wünschen. Möglicherweise möchten sie für diese Einstellung **AUS** festlegen und dann durch stärker einschränkende IP-Firewallregeln oder Virtual Network-Firewallregeln ersetzen. Dies wirkt sich auf die folgenden Features auf virtuellen Computern in Azure aus, die nicht Teil Ihres VNET sind und somit über eine Azure-IP-Adresse eine Verbindung mit SQL-Datenbank herstellen.
 
 ### <a name="import-export-service"></a>Import/Export-Dienst
-Der Import/Export-Dienst funktioniert nicht, wenn **Azure-Diensten Zugriff auf den Server erlauben** deaktiviert ist. Sie können dieses Problem jedoch umgehen, indem Sie [„sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export mithilfe der DACFx-API direkt in Ihrem Code ausführen](https://docs.microsoft.com/azure/sql-database/import-export-from-vm).
+Der Import/Export-Dienst funktioniert nicht, wenn **Azure-Diensten Zugriff auf den Server erlauben** mit **AUS** deaktiviert ist. Sie können dieses Problem jedoch umgehen, indem Sie [„sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export mithilfe der DACFx-API direkt in Ihrem Code ausführen](https://docs.microsoft.com/azure/sql-database/import-export-from-vm).
 
 ### <a name="data-sync"></a>Datensynchronisierung
-Wenn **Azure-Diensten Zugriff auf den Server erlauben** deaktiviert ist und Sie das Datensynchronisierungsfeature verwenden möchten, müssen Sie zum [Hinzufügen von IP-Adressen](sql-database-server-level-firewall-rule.md) einzelne Firewallregeleinträge auf der Grundlage des **SQL-Diensttags** für die Region erstellen, in der die **Hub-Datenbank** gehostet wird.
+Wenn **Azure-Diensten Zugriff auf den Server erlauben** mit **AUS** deaktiviert ist und Sie das Datensynchronisierungsfeature verwenden möchten, müssen Sie zum [Hinzufügen von IP-Adressen](sql-database-server-level-firewall-rule.md) einzelne Firewallregeleinträge auf der Grundlage des **SQL-Diensttags** für die Region erstellen, in der die **Hub**-Datenbank gehostet wird.
 Fügen Sie diese Firewallregeln auf der Serverebene den logischen Servern hinzu, die sowohl die **Hub-Datenbank** als auch die **Mitgliedsdatenbanken** hosten (können sich in unterschiedlichen Regionen befinden).
 
 Verwenden Sie das folgende PowerShell-Skript, um die entsprechenden IP-Adressen für das SQL-Diensttag für die Region „USA, Westen“ zu generieren:

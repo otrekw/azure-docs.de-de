@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387647"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115386"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen in Azure SQL-Datenbank
 
@@ -89,14 +89,14 @@ Die zentrale Identitätsverwaltung bietet die folgenden Vorteile:
 
 - Erstellen Sie einen Azure AD-Mandanten, [erstellen Sie Benutzer](../active-directory/fundamentals/add-users-azure-active-directory.md), um menschliche Benutzer darzustellen, und erstellen Sie [Dienstprinzipale](../active-directory/develop/app-objects-and-service-principals.md), die Apps, Dienste und Automatisierungstools darstellen. Dienstprinzipale entsprechen Dienstkonten in Windows und Linux. 
 
-- Weisen Sie Azure AD-Prinzipalen über die Gruppenzuweisung Zugriffsrechte für Ressourcen zu: Erstellen Sie Azure AD-Gruppen, gewähren Sie Zugriff auf Gruppen, und fügen Sie den Gruppen einzelne Mitglieder hinzu. Erstellen in Ihrer Datenbank eigenständige Datenbankbenutzer, die Ihren Azure AD-Gruppen zugeordnet sind. Zum Zuweisen von Berechtigungen innerhalb der Datenbank müssen Sie Benutzern Datenbankrollen mit den entsprechenden Berechtigungen zuordnen.
+- Weisen Sie Azure AD-Prinzipalen über die Gruppenzuweisung Zugriffsrechte für Ressourcen zu: Erstellen Sie Azure AD-Gruppen, gewähren Sie Zugriff auf Gruppen, und fügen Sie den Gruppen einzelne Mitglieder hinzu. Erstellen in Ihrer Datenbank eigenständige Datenbankbenutzer, die Ihren Azure AD-Gruppen zugeordnet sind. Wenn Sie innerhalb der Datenbank Berechtigungen zuweisen möchten, fügen Sie die Ihren Azure AD-Gruppen zugeordneten Benutzer in Datenbankrollen mit den entsprechenden Berechtigungen ein.
   - Weitere Informationen finden Sie in den Artikeln [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](sql-database-aad-authentication-configure.md) und [Verwenden von Azure AD für die Authentifizierung mit SQL](sql-database-aad-authentication.md).
   > [!NOTE]
   > In einer verwalteten Instanz können Sie auch Anmeldungen erstellen, die Azure AD-Prinzipalen in der Masterdatenbank zugeordnet sind. Siehe [CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
 - Die Verwendung von Azure AD-Gruppen vereinfacht die Berechtigungsverwaltung des Gruppenbesitzers, und der Besitzer der Ressource kann der Gruppe Mitglieder hinzufügen bzw. aus ihr entfernen. 
 
-- Erstellen Sie eine separate Gruppe für den Azure AD-Administrator für SQL-Datenbank-Server.
+- Erstellen Sie für jeden SQL-Datenbank-Server eine separate Gruppe für Azure AD-Administratoren.
 
   - Lesen Sie dazu den Artikel [Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -213,7 +213,7 @@ SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers bei
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 
-Zugriffsverwaltung ist der Vorgang der Steuerung und Verwaltung des Zugriffs und der Berechtigungen autorisierter Benutzer auf die Azure SQL-Datenbank.
+Zugriffsverwaltung (auch als „Autorisierung“ bezeichnet) ist der Vorgang der Steuerung und Verwaltung des Zugriffs und der Berechtigungen von autorisierten Benutzern auf die Azure SQL-Datenbank.
 
 ### <a name="implement-principle-of-least-privilege"></a>Implementieren des Prinzips der geringsten Rechte
 
@@ -225,7 +225,7 @@ Das Prinzip der geringsten Rechte besagt, dass Benutzer nicht umfangreichere Ber
 
 Weisen Sie nur die notwendigen [Berechtigungen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) zu, um die erforderlichen Aufgaben auszuführen:
 
-- Auf der SQL-Datenebene: 
+- In SQL-Datenbanken: 
     - Verwenden Sie granulare Berechtigungen und benutzerdefinierte Datenbankrollen (oder Serverrollen in MI): 
         1. Erstellen der erforderlichen Rollen
             - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
   - Erstellen Sie Serverrollen für serverweite Aufgaben (Erstellen neuer Anmeldungen, Datenbanken) in einer verwalteten Instanz. 
   - Erstellen Sie Datenbankrollen für Aufgaben auf Datenbankebene.
 
-- Für bestimmte vertrauliche Aufgaben sollten Sie die Erstellung spezieller gespeicherter Prozeduren in Erwägung ziehen, die durch ein Zertifikat signiert werden, um Aufgaben im Namen von Benutzern auszuführen. 
+- Für bestimmte vertrauliche Aufgaben sollten Sie die Erstellung spezieller gespeicherter Prozeduren in Erwägung ziehen, die durch ein Zertifikat signiert werden, um Aufgaben im Namen von Benutzern auszuführen. Ein wichtiger Vorteil von digital signierten gespeicherten Prozeduren besteht darin, dass die der vorherigen Version der Prozedur erteilten Berechtigungen bei einer Prozeduränderung sofort entfernt werden.
   - Beispiel: [Tutorial: Signieren von gespeicherten Prozeduren mit einem Zertifikat](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Implementieren Sie Transparent Data Encryption (TDE) mit vom Kunden verwalteten Schlüsseln in Azure Key Vault, um die Trennung von Aufgaben zwischen Datenbesitzern und Sicherheitsbesitzern zu ermöglichen. 
@@ -303,7 +303,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 - Um sicherzustellen, dass ein Datenbankadministrator keine Daten einsehen kann, die als äußerst sensibel eingestuft werden, aber trotzdem Datenbankadministratoraufgaben ausführen kann, können Sie Always Encrypted mit Rollentrennung verwenden. 
   - Weitere Informationen dazu finden Sie in den Artikeln [Übersicht über die Schlüsselverwaltung für Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted), [Schlüsselbereitstellung mit Rollentrennung](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles) und [Spaltenhauptschlüsselrotation mit Rollentrennung](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation). 
 
-- In Fällen, in denen dies nicht durchführbar ist (zumindest nicht ohne große Kosten und Anstrengungen, die das System nahezu unbrauchbar machen können), können Kompromisse durch den Einsatz von kompensierenden Kontrollmechanismen eingegangen werden, etwa: 
+- In Fällen, in denen die Verwendung von „Always Encrypted“ nicht möglich ist (zumindest nicht ohne große Kosten und Anstrengungen, die das System sogar nahezu unbrauchbar machen können), können Kompromisse durch den Einsatz von kompensierenden Kontrollmechanismen eingegangen werden, z. B.: 
   - Menschliches Eingreifen in Prozesse. 
   - Überwachungspfade – Weitere Informationen zur Überwachung finden Sie unter [Überwachen kritischer Sicherheitsereignisse](#audit-critical-security-events).
 
@@ -319,13 +319,13 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 
 - Rollenzuweisungen können auch temporär erfolgen. Dies wird auch als „dynamische Trennung von Aufgaben“ (Dynamic Separation of Duties, DSD) bezeichnet und erfolgt entweder innerhalb von Schritten des SQL Agent-Auftrags in T-SQL oder mithilfe von Azure PIM für RBAC-Rollen. 
 
-- Stellen Sie sicher, dass Datenbankadministratoren keinen Zugriff auf die Verschlüsselungsschlüssel oder Schlüsselspeicher haben, und dass Sicherheitsadministratoren, die Zugriff auf die Schlüssel besitzen, ihrerseits über keinen Zugriff auf die Datenbank verfügen. 
+- Stellen Sie sicher, dass Datenbankadministratoren keinen Zugriff auf die Verschlüsselungsschlüssel oder Schlüsselspeicher haben und dass andererseits Sicherheitsadministratoren mit Zugriff auf die Schlüssel nicht auf die Datenbank zugreifen können. Mithilfe von [erweiterbarer Schlüsselverwaltung (Extensible Key Management, EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) lässt sich diese Trennung einfacher erreichen. Zum Implementieren von EKM kann [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) verwendet werden. 
 
 - Stellen Sie immer sicher, dass Sie über einen Überwachungspfad für sicherheitsbezogene Aktionen verfügen. 
 
 - Sie können die Definition der integrierten RBAC-Rollen abrufen, um die verwendeten Berechtigungen anzuzeigen und anhand von Ausschnitten und deren Kumulationen über PowerShell eine benutzerdefinierte Rolle zu erstellen.
 
-- Da jedes Mitglied der db_owner-Datenbankrolle Sicherheitseinstellungen wie Transparent Data Encryption (TDE) oder SLO ändern kann, sollte diese Mitgliedschaft mit Bedacht erteilt werden. Es gibt jedoch viele Aufgaben, die die Berechtigungen von db_owner erfordern. Dazu gehören Aufgaben wie das Ändern von Datenbankeinstellungen. Überwachung spielt in jeder Lösung eine wichtige Rolle.
+- Weil jedes beliebige Mitglied der Datenbankrolle „db_owner“ Sicherheitseinstellungen wie Transparent Data Encryption (TDE) oder SLO ändern kann, sollte diese Mitgliedschaft mit der nötigen Vorsicht erteilt werden. Es gibt jedoch viele Aufgaben, die die Berechtigungen von db_owner erfordern. Dazu gehören Aufgaben wie das Ändern von Datenbankeinstellungen. Überwachung spielt in jeder Lösung eine wichtige Rolle.
 
 - Es ist nicht möglich, die Berechtigungen für eine db_owner-Rolle einzuschränken und somit zu verhindern, dass über ein Administratorkonto Benutzerdaten angezeigt werden können. Wenn sich in einer Datenbank hochgradig vertrauliche Daten befinden, kann Always Encrypted verwendet werden, um sicher zu verhindern, dass Benutzer mit db_owner-Berechtigungen oder andere Datenbankadminsistratoren diese anzeigen können.
 
@@ -436,11 +436,11 @@ Die Richtlinien, die festlegen, welche Daten sensibel sind, und welche sensiblen
 
 - Verwenden Sie deterministische Verschlüsselung, wenn Berechnungen (Gleichheit) für Daten unterstützt werden müssen. Verwenden Sie andernfalls Verschlüsselung nach dem Zufallsprinzip. Vermeiden Sie die Verwendung von deterministischer Verschlüsselung für Datasets mit niedriger Entropie oder Datasets mit öffentlich bekannter Verteilung. 
 
-- Wenn Sie Bedenken haben, dass Dritte ohne Ihre Zustimmung legal auf Ihre Daten zugreifen, stellen Sie sicher, dass alle Anwendungen und Tools, die Zugriff auf die Schlüssel und Daten in Klartext besitzen, außerhalb von Microsoft Azure Cloud ausgeführt werden. Ohne Zugriff auf die Schlüssel verfügt der Dritte nicht über die Möglichkeit, die Daten zu entschlüsseln, es sei denn, er umgeht die Verschlüsselung.
+- Wenn Sie Bedenken haben, dass Dritte ohne Ihre Zustimmung legal auf Ihre Daten zugreifen, stellen Sie sicher, dass alle Anwendungen und Tools, die auf die Schlüssel und Daten in Klartext zugreifen können, außerhalb von Microsoft Azure Cloud ausgeführt werden. Ohne Zugriff auf die Schlüssel verfügt der Dritte nicht über die Möglichkeit, die Daten zu entschlüsseln, es sei denn, er umgeht die Verschlüsselung.
 
 - Always Encrypted unterstützt das Erteilen von temporären Zugriffsberechtigungen auf die Schlüssel (und die geschützten Daten) nicht auf einfache Weise. Angenommen, Sie müssen z. B. die Schlüssel für einen Datenbankadministrator freigeben, damit dieser einige Bereinigungsvorgänge für vertrauliche und verschlüsselte Daten durchführen kann. Die einzige Möglichkeit, dem Datenbankadministrator den Zugriff auf die Daten zuverlässig zu entziehen, besteht darin, die Spaltenverschlüsselungsschlüssel und die Spaltenhauptschlüssel, mit denen die Daten geschützt werden, zu rotieren. Dies ist allerdings ein aufwendiger Vorgang. 
 
-- Um auf die Klartextwerte in verschlüsselten Spalten zuzugreifen, muss ein Benutzer über Zugriff auf den CMK verfügen, der die Spalten schützt. Dieser wird im Schlüsselspeicher konfiguriert, der den CMK enthält. Außerdem muss der Benutzer über die Datenbankberechtigungen **VIEW ANY COLUMN MASTER KEY DEFINITION** und **VIEW ANY COLUMN ENCRYPTION KEY DEFINITION** verfügen.
+- Damit ein Benutzer auf die Klartextwerte in verschlüsselten Spalten zugreifen kann, muss er Zugriff auf den Spaltenhauptschlüssel (Column Master Key, CMK) haben, der die Spalten schützt. Dieser wird im Schlüsselspeicher konfiguriert, in dem der CMK enthalten ist. Außerdem muss der Benutzer über die Datenbankberechtigungen **VIEW ANY COLUMN MASTER KEY DEFINITION** und **VIEW ANY COLUMN ENCRYPTION KEY DEFINITION** verfügen.
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Steuern des Zugriffs von Anwendungsbenutzern auf sensible Daten durch Verschlüsselung
 
@@ -735,7 +735,7 @@ Ermitteln Sie Spalten, die potenziell vertrauliche Daten enthalten. Welche Daten
 **Implementierung**:
 
 - Verwenden Sie SQL-Überwachung und -Datenklassifizierung in Kombination. 
-  - Im Protokoll der [SQL-Datenbanküberwachung](sql-database-auditing.md) können Sie ausdrücklich den Zugriff auf vertrauliche Daten nachverfolgen. Sie können auch Informationen wie die Daten anzeigen, auf die zugegriffen wurde, sowie deren Vertraulichkeitsbezeichnung. Weitere Informationen finden Sie unter [Überwachen des Zugriffs auf vertrauliche Daten](sql-database-data-discovery-and-classification.md#subheading-3). 
+  - Im Protokoll der [SQL-Datenbanküberwachung](sql-database-auditing.md) können Sie ausdrücklich den Zugriff auf vertrauliche Daten nachverfolgen. Sie können auch Informationen wie die Daten anzeigen, auf die zugegriffen wurde, sowie deren Vertraulichkeitsbezeichnung. Weitere Informationen finden Sie unter [Datenerkennung und -klassifizierung für Azure SQL-Datenbank und Azure Synapse Analytics](sql-database-data-discovery-and-classification.md) und [Überwachen des Zugriffs auf vertrauliche Daten](sql-database-data-discovery-and-classification.md#audit-sensitive-data). 
 
 **Bewährte Methoden:**
 

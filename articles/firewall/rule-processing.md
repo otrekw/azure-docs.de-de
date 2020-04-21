@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231254"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113448"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logik für die Azure Firewall-Regelverarbeitung
-Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall konfigurieren. Die Regeln werden gemäß dem Regeltyp verarbeitet. 
+Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall konfigurieren. Regelsammlungen werden entsprechend dem Regeltyp in Prioritätsreihenfolge verarbeitet – niedrigere Zahlen bis höhere Zahlen von 100 bis 65.000. Der Name einer Regelsammlung darf nur Buchstaben, Ziffern, Unterstriche, Punkte oder Bindestriche enthalten. Er muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Die maximale Namenslänge ist 80 Zeichen.
+
+Es empfiehlt sich, die Prioritätsnummern der Regelsammlung zunächst in Inkrementen von 100 (100, 200, 300 usw.) aufzuteilen, damit Sie bei Bedarf Platz zum Hinzufügen weiterer Regelsammlungen haben.
 
 > [!NOTE]
 > Wenn Sie das Threat Intelligence-gestützte Filtern aktivieren, weisen diese Regeln die höchste Priorität auf und werden stets als Erstes verarbeitet. Threat Intelligence-gestütztes Filtern kann den Datenverkehr ablehnen, bevor konfigurierte Regeln verarbeitet werden. Weitere Informationen finden Sie unter [Threat Intelligence-gestütztes Filtern für Azure Firewall](threat-intel.md).
 
-## <a name="outbound"></a>Ausgehend
+## <a name="outbound-connectivity"></a>Ausgehende Konnektivität
 
 ### <a name="network-rules-and-applications-rules"></a>Netzwerkregeln und Anwendungsregeln
 
 Wenn Sie Netzwerkregeln und Anwendungsregeln konfigurieren, werden die Netzwerkregeln in der Prioritätsreihenfolge vor den Anwendungsregeln angewendet. Die Regeln können zur Beendigung von Vorgängen führen. Wenn also eine Netzwerkregel gefunden wird, werden keine anderen Regeln mehr verarbeitet.  Wenn sich keine Übereinstimmung für eine Netzwerkregel ergibt und als Protokoll HTTP, HTTPS oder MSSQL verwendet wird, wird das Paket von den Anwendungsregeln in der Reihenfolge ihrer Priorität ausgewertet. Falls sich immer noch keine Übereinstimmung ergibt, wird das Paket von der [Regelsammlung der Infrastruktur](infrastructure-fqdns.md) ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt.
 
-## <a name="inbound"></a>Eingehend
+## <a name="inbound-connectivity"></a>Eingehende Konnektivität
 
 ### <a name="nat-rules"></a>NAT-Regeln
 

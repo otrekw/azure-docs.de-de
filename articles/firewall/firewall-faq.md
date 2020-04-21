@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621960"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383067"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -72,9 +72,9 @@ Die Web Application Firewall (WAF) ist ein Feature von Application Gateway, das 
 
 Der Azure Firewall-Dienst ergänzt die Funktionen der Netzwerksicherheitsgruppen. Zusammen bieten sie eine bessere „Defense-in-Depth“-Netzwerksicherheit. Netzwerksicherheitsgruppen bieten verteilte Datenverkehrsfilterung auf Netzwerkebene, um den Datenverkehr auf Ressourcen in virtuellen Netzwerken in jedem Abonnement zu beschränken. Azure Firewall ist eine vollständig zustandsbehaftete, zentrale Netzwerkfirewall als Dienst, die Schutz auf Netzwerk- und Anwendungsebene für verschiedene Abonnements und virtuelle Netzwerke bietet.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Werden Netzwerksicherheitsgruppen (NSGs) im Azure Firewall-Subnetz unterstützt?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Werden Netzwerksicherheitsgruppen (NSGs) in AzureFirewallSubnet unterstützt?
 
-Azure Firewall ist ein verwalteter Dienst mit mehreren Schutzebenen, z. B. Plattformschutz mit NSGs auf NIC-Ebene (nicht sichtbar).  NSGs auf Subnetzebene sind im Azure Firewall-Subnetz nicht erforderlich und deaktiviert, um zu verhindern, dass es zu Dienstunterbrechungen kommt.
+Azure Firewall ist ein verwalteter Dienst mit mehreren Schutzebenen, z. B. Plattformschutz mit NSGs auf NIC-Ebene (nicht sichtbar).  NSGs auf Subnetzebene sind in AzureFirewallSubnet nicht erforderlich und deaktiviert, um zu verhindern, dass es zu Dienstunterbrechungen kommt.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Wie richte ich Azure Firewall für meine Dienstendpunkte ein?
 
@@ -125,7 +125,7 @@ Ja. Die Konfiguration der UDRs zur Umleitung des Datenverkehrs zwischen Subnetze
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Übermittelt Azure Firewall SNAT bei privaten Netzwerken?
 
-Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter. Sie können Azure Firewall so konfigurieren, dass Ihr öffentlicher IP-Adressbereich **nicht** per SNAT weitergeleitet wird. Weitere Informationen finden Sie unter [Azure Firewall SNAT private IP address ranges](snat-private-range.md) (Azure Firewall SNAT – private Adressbereiche).
+Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter. Sie können Azure Firewall so konfigurieren, dass Ihr öffentlicher IP-Adressbereich **nicht** per SNAT weitergeleitet wird. Weitere Informationen finden Sie unter [Azure Firewall SNAT private IP address ranges](snat-private-range.md) (Azure Firewall SNAT – private Adressbereiche).
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wird erzwungenes Tunneling bzw. die erzwungene Verkettung mit einem virtuellen Netzwerkgerät unterstützt?
 
@@ -151,8 +151,12 @@ Wenn Sie * **.contoso.com** konfigurieren, ist *anyvalue*.contoso.com, aber nich
 
 Wenn eine Konfigurationsänderung angewendet wird, versucht Azure Firewall alle zugrunde liegenden Back-End-Instanzen zu aktualisieren. In seltenen Fällen kann bei der Aktualisierung einer dieser Back-End-Instanzen mit der neuen Konfiguration ein Fehler auftreten, und der Aktualisierungsvorgang wird mit dem Bereitstellungsstatus „Fehler“ angehalten. Azure Firewall ist noch funktionsfähig, die angewendete Konfiguration befindet sich jedoch unter Umständen in einem inkonsistenten Zustand, in dem einige Instanzen die vorherige Konfiguration und andere den aktualisierten Regelsatz verwenden. Versuchen Sie in diesem Fall, die Konfiguration noch einmal zu aktualisieren, bis der Vorgang erfolgreich war und für Ihre Firewall der Bereitstellungsstatus *Erfolgreich* angezeigt wird.
 
-### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Wie verarbeitet Azure Firewall geplante Wartungsarbeiten und nicht geplante Fehler?
+## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Wie verarbeitet Azure Firewall geplante Wartungsarbeiten und nicht geplante Fehler?
 Azure Firewall besteht aus mehreren Back-End-Knoten in einer aktiv/aktiv-Konfiguration.  Für jede geplante Wartung gibt es Verbindungsausgleichslogik zum ordnungsgemäßen Aktualisieren von Knoten.  Updates sind für jede Azure-Region außerhalb der Geschäftszeiten geplant, um das Risiko einer Unterbrechung weiter einzuschränken.  Bei nicht geplanten Problemen wird ein neuer Knoten instanziiert, um den fehlerhaften Knoten zu ersetzen.  Die Konnektivität zum neuen Knoten wird in der Regel innerhalb von 10 Sekunden nach dem Zeitpunkt des Fehlers wieder hergestellt.
+
+## <a name="how-does-connection-draining-work"></a>Wie funktioniert ein Verbindungsausgleich?
+
+Für jede geplante Wartung gibt es Verbindungsausgleichslogik zum ordnungsgemäßen Aktualisieren von Back-End-Knoten. Azure Firewall wartet 90 Sekunden lang darauf, dass bestehende Verbindungen geschlossen werden. Bei Bedarf können Clients automatisch eine neue Verbindung mit einem anderen Back-End-Knoten herstellen.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Gibt es eine Beschränkung der Zeichenzahl für einen Firewallnamen?
 
@@ -168,12 +172,42 @@ Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Wie kann ich meinen Firewalldurchsatz erhöhen?
 
-Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s und kann bis 30 GBit/s skaliert werden. Das horizontale Hochskalieren erfolgt basierend auf der CPU-Auslastung und dem Durchsatz. Wenden Sie sich an den Support, um die Durchsatzkapazität Ihrer Firewall zu erhöhen, wenn Ihre Firewall nicht Ihren Anforderungen entsprechend horizontal hochskaliert wird und Sie eine höhere Durchsatzkapazität benötigen.
+Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s und kann bis 30 GBit/s skaliert werden. Das automatische Aufskalieren erfolgt basierend auf der CPU-Auslastung und dem Durchsatz.
 
-## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall horizontal hochskaliert wird?
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall aufskaliert wird?
 
-Es dauert zwischen fünf und sieben Minuten, bis Azure Firewall horizontal hochskaliert wird. Wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen, wenn bei Ihnen Bursts auftreten, die eine schnellere automatische Skalierung erfordern.
+Azure Firewall wird schrittweise skaliert, wenn der durchschnittliche Durchsatz oder die CPU-Auslastung 60 % beträgt. Das Aufskalieren dauert zwischen fünf und sieben Minuten. Sorgen Sie bei Leistungstests dafür, mindestens 10 bis 15 Minuten zu testen, und initiieren Sie neue Verbindungen, um neu erstellte Firewallknoten nutzen zu können.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
 
 Nein. Standardmäßig blockiert Azure Firewall den Zugriff auf Active Directory. Konfigurieren Sie das Diensttag „AzureActiveDirectory“, um den Zugriff zuzulassen. Weitere Informationen finden Sie unter [Azure Firewall-Diensttags](service-tags.md).
+
+## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>Kann ich einen FQDN oder eine IP-Adresse von der auf Azure Firewall Threat Intelligence basierenden Filterung ausschließen?
+
+Ja, Sie können dafür Azure PowerShell verwenden:
+
+```azurepowershell
+# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+
+## Create the Whitelist with both FQDN and IPAddresses
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
+   -FQDN @("fqdn1", "fqdn2", …) -IpAddress @("ip1", "ip2", …)
+
+## Or Update FQDNs and IpAddresses separately
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist.FQDNs = @("fqdn1", "fqdn2", …)
+$fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
+
+Set-AzFirewall -AzureFirewall $fw
+```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Warum kann ein TCP-Ping und können ähnliche Tools eine Verbindung mit einem Ziel-FQDN erfolgreich herstellen, auch wenn keine Regel von Azure Firewall diesen Datenverkehr zulässt?
+
+Ein TCP-Ping stellt tatsächlich keine Verbindung mit dem Ziel-FQDN her. Der Grund dafür: Der transparente Proxy von Azure Firewall lauscht an Port 80/443 für ausgehenden Datenverkehr. Der TCP-Ping stellt eine Verbindung mit der Firewall her, die das Paket dann löscht und die Verbindung protokolliert. Dieses Verhalten hat keinerlei Auswirkung auf die Sicherheit. Um ein Durcheinander zu vermeiden, untersuchen wir jedoch mögliche Änderungen an diesem Verhalten.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Gibt es Beschränkungen bei der Anzahl von IP-Adressen, die von IP-Gruppen unterstützt werden?
+
+Ja. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits).

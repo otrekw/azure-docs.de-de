@@ -9,19 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422502"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416825"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuelle Version](connector-oracle.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Oracle-Datenbank und in eine Oracle-Datenbank zu kopieren. Der Artikel baut auf der [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf.
 
@@ -37,6 +39,7 @@ Sie können Daten aus einer Oracle-Datenbank in jeden unterstützten Senkendaten
 Dieser Oracle-Connector unterstützt insbesondere Folgendes:
 
 - Die folgenden Versionen einer Oracle-Datenbank:
+    - Oracle 19c R1 (19.1) und höher
     - Oracle 18c R1 (18.1) und höher
     - Oracle 12c R1 (12.1) und höher
     - Oracle 11g R1 (11.1) und höher
@@ -84,9 +87,9 @@ Zum Aktivieren der Verschlüsselung bei einer Oracle-Verbindung haben Sie zwei M
 
 -   Um die **Triple-DES-Verschlüsselung (3DES) und Advanced Encryption Standard (AES)** zu verwenden, wechseln Sie aufseiten des Oracle-Servers zu Oracle Advanced Security (OAS), und konfigurieren Sie die Verschlüsselungseinstellungen. Ausführliche Informationen finden Sie in der [Oracle-Dokumentation](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Der Oracle-ADF-Connector (Application Development Framework) handelt automatisch die zu verwendende Verschlüsselungsmethode als diejenige aus, die Sie in OAS bei der Verbindungsherstellung mit Oracle konfigurieren.
 
--   Gehen Sie zur Verwendung von **SSL** wie folgt vor:
+-   So verwenden Sie **TLS**:
 
-    1.  Rufen Sie die SSL-Zertifikatinformationen ab. Rufen Sie die mit Distinguished Encoding Rules (DER) codierten Zertifikatinformationen Ihres SSL-Zertifikats ab, und speichern Sie die Ausgabe (----- Begin Certificate … End Certificate -----) als Textdatei.
+    1.  Rufen Sie die TLS/SSL-Zertifikatinformationen ab. Rufen Sie die mit Distinguished Encoding Rules (DER) codierten Zertifikatinformationen Ihres TLS/SSL-Zertifikats ab, und speichern Sie die Ausgabe (----- Begin Certificate … End Certificate -----) als Textdatei.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

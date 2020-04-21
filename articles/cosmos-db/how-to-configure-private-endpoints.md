@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270688"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
@@ -624,6 +624,10 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 * Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert.
 
 * Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, ist das Azure Cosmos-Konto nur über die privaten Endpunkte zugänglich. Wenn Sie keinen öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren, ist das Konto nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte für das gesamte Netzwerk offen.
+
+## <a name="blocking-public-network-access-during-account-creation"></a>Blockieren des Zugriffs auf öffentliche Netzwerke während der Kontoerstellung
+
+Wie im vorherigen Abschnitt beschrieben wurde und sofern keine bestimmten Firewallregeln festgelegt wurden, kann durch das Hinzufügen eines privaten Endpunkts nur über private Endpunkte auf Ihr Azure Cosmos-Konto zugegriffen werden. Dies bedeutet, dass das Azure Cosmos-Konto über öffentlichen Datenverkehr erreicht werden könnte, nachdem es erstellt wurde und bevor ein privater Endpunkt hinzugefügt wird. Wenn Sie sicherstellen möchten, dass der Zugriff auf öffentliche Netzwerke sogar vor der Erstellung von privaten Endpunkten deaktiviert wird, können Sie das Flag `publicNetworkAccess` während der Kontoerstellung auf `Disabled` festlegen. Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/).
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualisieren eines privaten Endpunkts beim Hinzufügen oder Entfernen einer Region
 

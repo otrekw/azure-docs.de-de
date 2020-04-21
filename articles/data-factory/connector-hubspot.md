@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415209"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory (Vorschau)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus HubSpot zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -55,8 +56,8 @@ Folgende Eigenschaften werden für den mit HubSpot verknüpften Dienst unterstü
 | accessToken | Das Zugriffstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Informationen, wie Sie das Zugriffstoken mit Ihrer Client-ID und dem geheimen Schlüssel abrufen können, finden Sie [hier](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | refreshToken | Das Aktualisierungstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
-| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
-| usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein |
+| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
+| usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
 **Beispiel:**
 
