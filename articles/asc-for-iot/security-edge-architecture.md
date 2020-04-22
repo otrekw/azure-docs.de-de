@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Azure Security Center für das IoT-Sicherheitsmodul für IoT Edge | Microsoft-Dokumentation
+title: Sicherheitsmodul für IoT Edge
 description: Grundlegendes zur Architektur und den Funktionen des Azure Security Center für IoT-Sicherheitsmoduls für IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315888"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310627"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge-Sicherheitsmodul
 
@@ -36,7 +36,7 @@ Weitere Informationen finden Sie unter [Konfigurieren Ihres Agents](how-to-agent
 Das Azure Security Center für IoT-Sicherheitsmodul für IoT Edge umfasst die folgenden Funktionen:
 
 - Sammeln von Sicherheitsrohereignissen vom zugrunde liegenden Betriebssystem (Linux) und den IoT Edge-Containersystemen
-  
+
   Weitere Informationen zu verfügbaren Sicherheitsdatensammlern finden Sie unter [Konfiguration für den Azure Security Center für IoT-Agent](how-to-agent-configuration.md).
 
 - Analyse von IoT Edge-Bereitstellungsmanifesten
@@ -52,7 +52,7 @@ Der privilegierte Modus ist erforderlich, damit das Modul das Betriebssystem und
 
 ## <a name="module-supported-platforms"></a>Vom Modul unterstützte Plattformen
 
-Das Azure Security Center für IoT-Sicherheitsmodul für IoT Edge ist derzeit nur für Linux verfügbar. 
+Das Azure Security Center für IoT-Sicherheitsmodul für IoT Edge ist derzeit nur für Linux verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

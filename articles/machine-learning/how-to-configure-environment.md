@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472425"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399010"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -288,7 +288,7 @@ Verwenden Sie die folgenden Einstellungen:
 | Einstellung |Anwendungsbereich| Wert |
 |----|---|---|
 | Clustername |immer| IhrClustername |
-| Databricks Runtime |immer|Non-ML Runtime 6.0 (Scala 2.11, Spark 2.4.3) |
+| Databricks Runtime |immer|Nicht ML Runtime 6.5 (Scala 2.11, Spark 2.4.3) |
 | Python-Version |immer| 3 |
 | Worker |immer| 2 oder mehr |
 | VM-Typen des Workerknotens <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235334"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010918"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel erfahren Sie, wie Sie das Clustering in einer Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
@@ -125,7 +125,7 @@ Sie können eine Verbindung mit dem Cache mit den gleichen [Endpunkten](cache-co
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Kann ich direkt eine Verbindung mit den einzelnen Shards des Caches herstellen?
 Das Clusteringprotokoll erfordert, dass der Client die richtigen Shardverbindungen herstellt. Daher muss der Client dies ordnungsgemäß durchführen. Allerdings besteht jeder Shard aus einem Paar aus primärem Cache und Replikatcache, die zusammen als Cacheinstanz bezeichnet werden. Mit dem Hilfsprogramm redis-cli in der [unstable](https://redis.io/download) -Verzweigung des Redis-Repositorys auf GitHub können Sie eine Verbindung mit diesen Cacheinstanzen herstellen. Diese Version implementiert grundlegende Unterstützung, wenn sie mit dem Switch `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](https://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [https://redis.io](https://redis.io).
 
-Ohne SSL verwenden Sie die folgenden Befehle.
+Ohne TLS verwenden Sie die folgenden Befehle.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Ohne SSL verwenden Sie die folgenden Befehle.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Ersetzen Sie für SSL `1300N` durch `1500N`.
+Bei Verwendung von TLS ersetzen Sie `1300N` durch `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Kann ich das Clustering für einen bereits erstellten Cache konfigurieren?
 Ja. Stellen Sie zunächst sicher, dass Ihr Cache Premium ist, und wenn nicht, erzielen Sie dies durch Skalierung. Als Nächstes sollten Sie in der Lage sein, die Clusterkonfigurationsoptionen anzuzeigen, einschließlich einer Option zum Aktivieren von Clustern. Sie können die Clustergröße ändern, nachdem der Cache erstellt wurde, oder nachdem Sie das Clustering zum ersten Mal aktiviert haben.

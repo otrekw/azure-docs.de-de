@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233522"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390222"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
 
@@ -30,11 +30,11 @@ In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer b
 | R Server-Edgeknoten | Der R Server-Edgeknoten ist der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Ein Edgeknoten ist nicht an der Datenanalyse innerhalb des Clusters beteiligt. Dieser Knoten hostet außerdem den R Studio-Server, sodass Sie zum Ausführen von R-Anwendungen einen Browser verwenden können. |
 | Regionsknoten | Beim HBase-Clustertyp führt der Regionsknoten (auch als Datenknoten bezeichnet) den Regionsserver aus. Regionsserver stellen einen Teil der von HBase verwalteten Daten bereit und verwalten diese. Regionsknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten.|
 | Nimbusknoten | Beim Storm-Clustertyp stellt der Nimbusknoten eine dem Hauptknoten vergleichbare Funktionalität bereit. Der Nimbusknoten weist anderen Knoten im Cluster Aufgaben über den Zookeeper-Knoten zu, der die Ausführung der Storm-Topologien koordiniert. |
-| Supervisorknoten | Beim Storm-Clustertyp führt der Supervisorknoten die vom Nimbusknoten bereitgestellten Anweisungen aus, um die gewünschte Verarbeitung vorzunehmen. |
+| Supervisorknoten | Beim Storm-Clustertyp führt der Supervisorknoten die vom Nimbus-Knoten bereitgestellten Anweisungen aus, um die Verarbeitung vorzunehmen. |
 
 ## <a name="resource-naming-conventions"></a>Konventionen für Ressourcennamen
 
-Verwenden Sie bei der Adressierung von Knoten in Ihrem Cluster vollqualifizierte Domänennamen (FQDNs). Sie können die vollqualifizierten Namen für verschiedene Knotentypen in Ihrem Cluster mithilfe der [Ambari-API](hdinsight-hadoop-manage-ambari-rest-api.md) abrufen. 
+Verwenden Sie bei der Adressierung von Knoten in Ihrem Cluster vollqualifizierte Domänennamen (FQDNs). Sie können die vollqualifizierten Namen für verschiedene Knotentypen in Ihrem Cluster mithilfe der [Ambari-API](hdinsight-hadoop-manage-ambari-rest-api.md) abrufen.
 
 Diese FQDNs weisen das Format `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` auf.
 
@@ -48,24 +48,24 @@ Das folgende Diagramm zeigt die Platzierung von HDInsight-Knoten und Netzwerkres
 
 ![Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-Zu den Standardressourcen, die beim Bereitstellen von HDInsight in einem virtuellen Azure-Netzwerk vorhanden sind, zählen die in der obigen Tabelle aufgeführten Clusterknotentypen sowie Netzwerkgeräte, welche die Kommunikation zwischen dem virtuellen Netzwerk und externen Netzwerken unterstützen.
+Die Standardressourcen in einem virtuellen Azure-Netzwerk umfassen die in der vorherigen Tabelle genannten Clusterknotentypen. Außerdem Netzwerkgeräte, die die Kommunikation zwischen dem virtuellen Netzwerk und externen Netzwerken unterstützen.
 
 Die folgende Tabelle enthält die neun Clusterknoten, die erstellt werden, wenn HDInsight in einem benutzerdefinierten virtuellen Azure-Netzwerk bereitgestellt wird.
 
 | Ressourcentyp | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Hauptknoten | two |    |
-|ZooKeeper-Knoten | three | |
-|Workerknoten | two | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
-|Gatewayknoten | two | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
+|Hauptknoten | 2 |    |
+|ZooKeeper-Knoten | 3 | |
+|Workerknoten | 2 | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
+|Gatewayknoten | 2 | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
 
 Die folgenden Netzwerkressourcen werden innerhalb des virtuellen Netzwerks, das mit HDInsight verwendet wird, automatisch erstellt:
 
 | Netzwerkressource | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Load Balancer | three | |
-|Netzwerkschnittstellen | neun | Dieser Wert basiert auf einem normalen Cluster, in dem jeder Knoten eine eigene Netzwerkschnittstelle hat. Die neun Schnittstellen sind für die in der vorherigen Tabelle beschriebenen Knoten bestimmt: zwei Hauptknoten, drei Zookeeper-Knoten, zwei Workerknoten und zwei Gatewayknoten. |
-|Öffentliche IP-Adressen | two |    |
+|Load Balancer | 3 | |
+|Netzwerkschnittstellen | 9 | Dieser Wert basiert auf einem normalen Cluster, in dem jeder Knoten eine eigene Netzwerkschnittstelle hat. Die neun Schnittstellen sind für die in der vorherigen Tabelle beschriebenen Knoten bestimmt: zwei Hauptknoten, drei Zookeeper-Knoten, zwei Workerknoten und zwei Gatewayknoten. |
+|Öffentliche IP-Adressen | 2 |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Endpunkte zum Herstellen einer Verbindung mit HDInsight
 
@@ -73,7 +73,7 @@ Sie können auf drei verschiedene Arten auf Ihren HDInsight-Cluster zugreifen:
 
 - HTTPS-Endpunkt außerhalb des virtuellen Netzwerks in `CLUSTERNAME.azurehdinsight.net`.
 - SSH-Endpunkt für die direkte Verbindung mit dem Hauptknoten in `CLUSTERNAME-ssh.azurehdinsight.net`.
-- HTTPS-Endpunkt innerhalb des virtuellen Netzwerks `CLUSTERNAME-int.azurehdinsight.net`. Achten Sie auf die Zeichenfolge „-int“ in dieser URL. Dieser Endpunkt wird in eine private IP-Adresse im virtuellen Netzwerk aufgelöst und kann nicht über das öffentliche Internet aufgerufen werden.
+- HTTPS-Endpunkt innerhalb des virtuellen Netzwerks `CLUSTERNAME-int.azurehdinsight.net`. Achten Sie auf `-int` in dieser URL. Dieser Endpunkt wird in eine private IP-Adresse im virtuellen Netzwerk aufgelöst und kann nicht über das öffentliche Internet aufgerufen werden.
 
 Diesen drei Endpunkten wird jeweils ein Lastenausgleich zugewiesen.
 

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548865"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311944"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
-Seit der Application Gateway v2-SKU können vertrauenswürdige Stammzertifikate verwendet werden, damit Back-End-Server zugelassen werden können. Hierdurch werden die Authentifizierungszertifikate ersetzt, die in der v1-SKU erforderlich sind. Das *Stammzertifikat* ist ein Base64-kodiertes Stammzertifikat im X.509-Format (.CER) vom Back-End-Zertifikatserver. Es kennzeichnet die Stammzertifizierungsstelle, die das Serverzertifikat ausgestellt hat. Das Serverzertifikat wird dann für die SSL-Kommunikation verwendet.
+Seit der Application Gateway v2-SKU können vertrauenswürdige Stammzertifikate verwendet werden, damit Back-End-Server zugelassen werden können. Hierdurch werden die Authentifizierungszertifikate ersetzt, die in der v1-SKU erforderlich sind. Das *Stammzertifikat* ist ein Base64-kodiertes Stammzertifikat im X.509-Format (.CER) vom Back-End-Zertifikatserver. Es kennzeichnet die Stammzertifizierungsstelle, die das Serverzertifikat ausgestellt hat. Das Serverzertifikat wird dann für die TLS/SSL-Kommunikation verwendet.
 
-Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder DigiCert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
+Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder DigiCert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
 
 > [!NOTE]
 > Selbstsignierten Zertifikaten wird standardmäßig nicht vertraut, und es kann schwierig sein, sie zu verwalten. Außerdem kann es sein, dass für sie veraltete Hash- und Verschlüsselungssammlungen verwendet werden, die möglicherweise nicht stark sind. Um eine bessere Sicherheit zu erreichen, sollten Sie ein Zertifikat kaufen, das von einer bekannten Zertifizierungsstelle signiert ist.
@@ -125,15 +125,15 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Konfigurieren des Zertifikats in den SSL-Einstellungen Ihres Webservers
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurieren des Zertifikats in den TLS-Einstellungen Ihres Webservers
 
-Konfigurieren Sie SSL in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM- oder PFX-Datei kombinieren.
+Konfigurieren Sie TLS in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM- oder PFX-Datei kombinieren.
 
 ### <a name="iis"></a>IIS
 
 Anweisungen, wie ein Zertifikat importiert und als Serverzertifikat nach IIS hochgeladen wird, finden Sie unter [Gewusst wie: Installieren importierter Zertifikate auf einem Webserver in Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Anweisungen zur SSL-Bindung finden Sie unter [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Anweisungen zur TLS-Bindung finden Sie unter [Einrichtung von SSL auf IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ Die folgende Konfiguration ist ein Beispiel für einen [für SSL konfigurierten 
 
 ### <a name="nginx"></a>NGINX
 
-Die folgende Konfiguration ist ein Beispiel für einen [NGINX-Serverblock](https://nginx.org/docs/http/configuring_https_servers.html) mit SSL-Konfiguration:
+Die folgende Konfiguration ist ein Beispiel für einen [NGINX-Serverblock](https://nginx.org/docs/http/configuring_https_servers.html) mit TLS-Konfiguration:
 
-![NGINX mit SSL](media/self-signed-certificates/nginx-ssl.png)
+![NGINX mit TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Zugreifen auf den Server, um die Konfiguration zu überprüfen
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SSL/TLS in Application Gateway finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md).
+Weitere Informationen zu SSL/TLS in Application Gateway finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md).
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064970"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113177"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -47,7 +47,7 @@ In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen
 
 Sie können ein virtuelles WAN erstellen, indem Sie einen einzelnen Virtual WAN-Hub in der Region erstellen, in der sich die meisten Spokes (Zweigstellen, VNets, Benutzer) befinden. Stellen Sie anschließend eine Verbindung der Spokes, die sich in einer anderen Region befinden, zum Hub her. Dies ist eine gute Möglichkeit, wenn der Fußabdruck eines Unternehmens größtenteils in einer Region mit wenigen Remote-Spokes liegt.  
   
-## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen
+## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen (Vorschau)
 
 Der Cloudfußabdruck eines Unternehmens kann sich über mehrere Cloudregionen erstrecken. Diese Architektur ist optimal (in Bezug auf die Latenz) für den Cloudzugriff in einer Region geeignet, die möglichst nah am physischen Standort des Unternehmens und an den Benutzern liegt. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Transitnetzwerk ist die Möglichkeit regionsübergreifender Verbindungen zwischen allen Cloud- und lokalen Netzwerkendpunkten. Das bedeutet, dass der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, eine Zweigstelle oder ein VNet in einer anderen Region über eine Hub-zu-Hub-Konnektivität, die durch das [Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) ermöglicht wird, erreichen kann.
 

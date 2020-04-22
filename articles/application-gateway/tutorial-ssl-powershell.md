@@ -1,7 +1,7 @@
 ---
-title: SSL-Beendigung mit PowerShell
+title: TLS-Terminierung mit PowerShell
 titleSuffix: Azure Application Gateway
-description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen und ein Zertifikat für die TLS-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075063"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311920"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe von Azure PowerShell
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit TLS-Terminierung mithilfe von Azure PowerShell
 
-Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [SSL-Terminierung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden. 
+Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [TLS-/SSL-Terminierung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -28,11 +28,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen eines Anwendungsgateways mit dem Zertifikat
 > * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Für diesen Artikel ist Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Für diesen Artikel ist Version 1.0.0 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
@@ -67,7 +67,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit *New-AzResourceGroup* eine Azure-Ressourcengruppe mit dem Namen [myResourceGroupAG](/powershell/module/az.resources/new-azresourcegroup). 
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe mit dem Namen *myResourceGroupAG*. 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -75,7 +75,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Konfigurieren Sie mithilfe von *New-AzVirtualNetworkSubnetConfig* die Subnetze namens *myBackendSubnet* und [myAGSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Erstellen Sie mit *New-AzVirtualNetwork* und den Subnetzkonfigurationen das virtuelle Netzwerk [myVNet](/powershell/module/az.network/new-azvirtualnetwork). Erstellen Sie abschließend mithilfe von *New-AzPublicIpAddress* die öffentliche IP-Adresse mit dem Namen [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress). Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
+Konfigurieren Sie mithilfe von [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) die Subnetze namens *myBackendSubnet* und *myAGSubnet*. Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) und den Subnetzkonfigurationen das virtuelle Netzwerk *myVNet*. Erstellen Sie abschließend mithilfe von [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -129,7 +129,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Erstellen des Back-End-Pools und der Einstellungen
 
-Erstellen Sie mit *New-AzApplicationGatewayBackendAddressPool* den Back-End-Pool [appGatewayBackendPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
+Erstellen Sie mit [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) den Back-End-Pool *appGatewayBackendPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -147,7 +147,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf HTTPS-Datenverkehr lauscht. 
 
-Erstellen Sie mit [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) ein Zertifikatobjekt und anschließend mit *New-AzApplicationGatewayHttpListener* und der Front-End-Konfiguration, dem Front-End-Port und dem zuvor erstellten Zertifikat einen Listener mit dem Namen [mydefaultListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener). Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit *New-AzApplicationGatewayRequestRoutingRule* eine grundlegende Regel namens [rule1](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Erstellen Sie mit [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) ein Zertifikatobjekt und anschließend mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) und der Front-End-Konfiguration, dem Front-End-Port und dem zuvor erstellten Zertifikat einen Listener mit dem Namen *mydefaultListener*. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -177,7 +177,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-certificate"></a>Erstellen des Anwendungsgateways mit dem Zertifikat
 
-Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit *New-AzApplicationGatewaySku* Parameter für das Anwendungsgateway [myAppGateway](/powershell/module/az.network/new-azapplicationgatewaysku) an, und erstellen Sie es mit [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) und dem Zertifikat.
+Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) Parameter für das Anwendungsgateway *myAppGateway* an, und erstellen Sie es mit [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) und dem Zertifikat.
 
 ### <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 

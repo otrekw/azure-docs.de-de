@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ed7d62ef5c1c4837b3eb6d02f301085178fe5e0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528216"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272983"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -35,7 +35,9 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnah
 * [B-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Serie](../dcv2-series.md)
 * [DSv2-Serie](../dv2-dsv2-series.md) und [Dsv3-Serie](../dv3-dsv3-series.md)
+* [Dasv4-Serie](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3-Serie](../ev3-esv3-series.md)
+* [Easv4-Serie](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
 * [Fsv2-Serie](../fsv2-series.md)
 * [GS-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [HB-Serie](../hb-series.md)
@@ -59,7 +61,7 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
-* Cent OS 8.0, 7.7, 7.6, 7.5, 7.4
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich

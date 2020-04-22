@@ -4,12 +4,12 @@ description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsü
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666274"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989526"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -85,7 +85,7 @@ Wählen Sie **Warnungen** aus, um aktive Warnungen und die zugrunde liegenden Re
 
 In der Anwendungsübersicht wird die Eigenschaft **Cloudrollenname** verwendet, um die Komponenten in der Zuordnung zu identifizieren. Das Application Insights SDK versieht die von Komponenten ausgegebenen Telemetriedaten automatisch mit der Eigenschaft „Cloudrollenname“. So fügt das SDK der Eigenschaft „Cloudrollenname“ beispielsweise einen Websitenamen oder einen Dienstrollennamen hinzu. Manchmal soll der Standardwert jedoch möglicherweise überschrieben werden. So überschreiben Sie den Cloudrollennamen und ändern den Inhalt der Anwendungsübersicht
 
-### <a name="netnet-core"></a>.NET/.NET Core
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Schreiben Sie einen benutzerdefinierten Telemetrie-Initialisierer wie nachfolgend gezeigt.**
 
@@ -153,7 +153,44 @@ Zum Hinzufügen eines neuen `TelemetryInitializer` für [ASP.NET Core](asp-net-c
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+**Java-Agent**
+
+Für [Java-Agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ist der Name der Cloudrolle wie folgt festgelegt:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+Sie können den Namen der Cloudrolle auch mithilfe der Umgebungsvariablen ```APPLICATIONINSIGHTS_ROLE_NAME``` festlegen.
+
+**Java SDK**
+
+Ab dem Java SDK 2.5.0 für Application Insights können Sie den Namen der Cloudrolle angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen. Beispiel:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
+
+`spring.application.name=<name-of-app>`
+
+Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „Cloudrollenname“ zu.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +211,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Ab dem Java SDK 2.5.0 für Application Insights können Sie den Cloudrollennamen angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
-
-`spring.application.name=<name-of-app>`
-
-Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „Cloudrollenname“ zu.
-
-### <a name="clientbrowser-side-javascript"></a>Client-/Browserseitiger JavaScript-Code
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +221,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Grundlegendes zu „Cloudrollenname“ im Kontext der Anwendungsübersicht
 

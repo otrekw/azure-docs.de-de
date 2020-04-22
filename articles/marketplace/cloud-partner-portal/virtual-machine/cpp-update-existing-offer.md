@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: fe1397d7ad00a2eb6e9fe04d8bfa50e49839fe34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288783"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273051"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure Virtual Machines-Angebots](https://aka.ms/CreateAzureVMoffer), um Ihre migrierten Angebote zu verwalten.
 
 In diesem Artikel werden die verschiedenen Aspekte beim Aktualisieren Ihres VM-Angebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) und beim anschließenden erneuten Veröffentlichen des Angebots erläutert. 
 

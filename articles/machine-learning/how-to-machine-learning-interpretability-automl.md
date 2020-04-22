@@ -1,5 +1,5 @@
 ---
-title: Modellinterpretierbarkeit bei automatisiertem Machine Learning
+title: Erklärbarkeit beim automatisierten maschinellen Lernen
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr automatisiertes Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden des Azure Machine Learning SDK Vorhersagen trifft.
 services: machine-learning
@@ -8,20 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437280"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257163"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Modellinterpretierbarkeit bei automatisiertem Machine Learning
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Interpretierbarkeitsfeatures für automatisiertes Machine Learning (ML) in Azure Machine Learning aktivieren können. Automatisiertes ML unterstützt Sie dabei, die Relevanz von entwickelten Features zu verstehen. 
+In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Erklärungen für automatisiertes maschinelles Lernen (ML) erhalten können. Automatisiertes ML unterstützt Sie dabei, die Relevanz von entwickelten Features zu verstehen. 
 
 Alle SDK-Versionen nach 1.0.85 sind standardmäßig auf `model_explainability=True` festgelegt. In SDK Version 1.0.85 und in früheren Versionen müssen die Benutzer `model_explainability=True` im `AutoMLConfig`-Objekt festlegen, um die Interpretierbarkeit des Modells zu nutzen. 
 

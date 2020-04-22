@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933785"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253338"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -169,6 +169,8 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 ## <a name="options"></a>Tastatur
 
+**--backup** Aktiviert SeBackupPrivilege unter Windows für Uploads oder SeRestorePrivilege für Downloads, damit AzCopy alle Dateien unabhängig von ihren Dateisystemberechtigungen lesen und alle Berechtigungen wiederherstellen kann. Erfordert, dass das Konto, unter dem AzCopy läuft, bereits über diese Berechtigungen verfügt (z. B. Administratorrechte hat oder Mitglied der Gruppe „Sicherungsoperatoren“ ist). Dieses Flag aktiviert lediglich die Berechtigungen, die das Konto bereits hat.
+
 **--blob-type** string                     Definiert den Typ des Blobs am Ziel. Wird zum Hochladen von Blobs und beim Kopieren zwischen Konten verwendet (Standardeinstellung: „Detect“). Gültige Werte sind „Detect“, „BlockBlob“, „PageBlob“ und „AppendBlob“. Beim Kopieren zwischen Konten bewirkt der Wert „Detect“, dass AzCopy den Typ des Zielblobs anhand des Typs des Quellblobs bestimmt. Beim Hochladen einer Datei bestimmt „Detect“ anhand der Dateierweiterung, ob es sich um eine VHD- oder VHDX-Datei handelt. Eine VHD- oder VHDX-Datei wird von AzCopy als Seitenblob behandelt. (Standardwert: „Detect“)
 
 **--block-blob-tier** string               Lädt Blockblobs direkt auf die [Zugriffsebene](../blobs/storage-blob-storage-tiers.md) Ihrer Wahl. (Der Standardwert lautet „None“.) Gültige Werte sind „None“, „Hot“, „Cool“ und „Archive“. Wenn der Wert „None“ oder keine Ebene übergeben wird, erbt das Blob die Ebene des Speicherkontos.
@@ -222,6 +224,12 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 **--page-blob-tier** string                Lädt ein Seitenblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Standardwert: „None“)
 
 **--preserve-last-modified-time**          Nur verfügbar, wenn das Ziel ein Dateisystem ist.
+
+**--preserve-smb-permissions**: Zeichenfolge, standardmäßig FALSE. Behält SMB-ACLs zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Für Downloads müssen Sie auch das Flag `--backup` verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. `include-pattern`).
+
+**--preserve-smb-info**: Zeichenfolge, standardmäßig FALSE. Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Es werden nur die von Azure Files unterstützten Attributbits übertragen. Alle anderen werden ignoriert. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern). Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
+
+**--preserve-owner** Wirkt sich nur beim Herunterladen von Daten aus, und auch nur dann, wenn `--preserve-smb-permissions` verwendet wird. Falls TRUE (Standardeinstellung), werden Besitzer und Gruppe der Datei bei Downloads beibehalten. Wenn dieses Flag auf FALSE festgelegt ist, behält `--preserve-smb-permissions` die ACLs trotzdem bei. Allerdings basieren Besitzer und Gruppe auf dem Benutzer, der AzCopy ausführt.
 
 **--put-md5**                             Erstellt einen MD5-Hash jeder Datei und speichert den Hash als „Content-MD5“-Eigenschaft des Zielblobs bzw. der Zieldatei. (Standardmäßig wird der Hash NICHT erstellt.) Nur beim Hochladen verfügbar.
 

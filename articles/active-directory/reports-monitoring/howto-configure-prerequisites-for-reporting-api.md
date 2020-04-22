@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399301"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991261"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
@@ -33,9 +33,10 @@ Die Berichterstellungs-API verwendet [OAuth](https://docs.microsoft.com/azure/ap
 Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Schritte ausführen:
 
 1. [Zuweisen von Rollen](#assign-roles)
-2. [Registrieren einer Anwendung](#register-an-application)
-3. [Erteilen von Berechtigungen](#grant-permissions)
-4. [Erfassen von Konfigurationseinstellungen](#gather-configuration-settings)
+2. [Lizenzanforderungen](#license-requirements)
+3. [Registrieren einer Anwendung](#register-an-application)
+4. [Erteilen von Berechtigungen](#grant-permissions)
+5. [Erfassen von Konfigurationseinstellungen](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Zuweisen von Rollen
 
@@ -46,6 +47,10 @@ Um mithilfe der API auf die Berichtsdaten zuzugreifen, müssen Ihnen eine der fo
 - Sicherheitsadministrator
 
 - Globaler Administrator
+
+## <a name="license-requirements"></a>Lizenzanforderungen
+
+Um auf die Anmeldungsberichte eines Mandanten zugreifen zu können, muss einem Azure AD-Mandanten eine Azure AD Premium-Lizenz zugeordnet sein. Eine Azure AD Premium-Lizenz ab P1 ist erforderlich, um auf die Anmeldeberichte beliebiger Azure AD-Mandanten zugreifen zu können. Alternativ, wenn der Verzeichnistyp Azure AD B2C ist, ist der Zugriff auf die Anmeldeberichte über die API ohne zusätzliche Lizenzanforderungen möglich. 
 
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung

@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zur Baseline von Azure Security Center für IoT | Microsoft-Dokumentation
+title: Baselineüberprüfungen und benutzerdefinierte Überprüfungen
 description: Erfahren Sie mehr über das Konzept der Baseline für Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176617"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311658"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Baseline und benutzerdefinierte Überprüfungen von Azure Security Center für IoT
 
@@ -28,11 +28,11 @@ Dieser Artikel erläutert die Baseline von Azure Security Center für IoT und fa
 
 ## <a name="baseline"></a>Grundwert
 
-Eine Baseline richtet das Standardverhalten für jedes Gerät ein und erleichtert die Unterscheidung von ungewöhnlichem oder abweichendem Verhalten von der erwarteten Norm.  
+Eine Baseline richtet das Standardverhalten für jedes Gerät ein und erleichtert die Unterscheidung von ungewöhnlichem oder abweichendem Verhalten von der erwarteten Norm.
 
 ## <a name="baseline-custom-checks"></a>Benutzerdefinierte Überprüfungen der Baseline
 
-Benutzerdefinierte Überprüfungen der Baseline richten eine benutzerdefinierte Liste von Überprüfungen für die Baseline jedes Geräts ein und verwenden dazu den **Zwilling der Modulkennung** des Geräts. 
+Benutzerdefinierte Überprüfungen der Baseline richten eine benutzerdefinierte Liste von Überprüfungen für die Baseline jedes Geräts ein und verwenden dazu den **Zwilling der Modulkennung** des Geräts.
 
 ## <a name="setting-baseline-properties"></a>Festlegen von Baseline-Eigenschaften
 

@@ -1,5 +1,5 @@
 ---
-title: Spickzettel für Machine Learning-Algorithmen
+title: Azure Machine Learning – Spickzettel für Algorithmen – Designer
 titleSuffix: Azure Machine Learning
 description: Eine druckbare Version des Spickzettels für Machine Learning-Algorithmen, mit dem Sie den richtigen Algorithmus für Ihr Vorhersagemodell im Azure Machine Learning-Designer auswählen können.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328613"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399083"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
-Mithilfe des **Cheat Sheet für Azure Machine Learning-Algorithmen** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
+Mithilfe des **Spickzettels für Azure Machine Learning-Algorithmen** können Sie im Designer den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
 Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung***, ***Empfehlungssystem***, ***Clustering***, ***Anomalieerkennung***, ***Regression*** und ***Textanalyse***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
@@ -38,7 +38,7 @@ Die Vorschläge in diesem Cheat Sheet für Algorithmen stellen nur grobe Richtli
 
 Jeder Algorithmus für maschinelles Lernen hat seinen eigenen Stil oder induktiven Bias. Für ein bestimmtes Problem können verschiedene Algorithmen geeignet sein, aber ein Algorithmus passt möglicherweise besser als andere. Es ist jedoch nicht immer schon im Vorfeld klar, welches der am besten geeignete Algorithmus ist. In diesen Fällen werden im Cheat Sheet mehrere Algorithmen zusammen angegeben. Eine geeignete Strategie bestünde darin, einen Algorithmus zu testen und bei nicht zufriedenstellenden Ergebnissen einen anderen zu versuchen. 
 
-Um mehr über die Algorithmen in Azure Machine Learning zu erfahren, rufen Sie die [Referenz zu Algorithmen und Modulen](algorithm-module-reference/module-reference.md) auf.
+Um mehr über die Algorithmen im Azure Machine Learning-Designer zu erfahren, rufen Sie die [Referenz zu Algorithmen und Modulen](algorithm-module-reference/module-reference.md) auf.
 
 ## <a name="kinds-of-machine-learning"></a>Arten des maschinellen Lernens
 

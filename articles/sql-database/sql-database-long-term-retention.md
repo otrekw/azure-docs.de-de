@@ -1,6 +1,6 @@
 ---
-title: Speichern von Sicherungen für bis zu 10 Jahre
-description: Hier erfahren Sie, wie Azure SQL-Datenbank das Speichern vollständiger Datenbanksicherungen für bis zu zehn Jahre unterstützt.
+title: Langfristiges Aufbewahren von Sicherungen
+description: Hier erfahren Sie, wie Azure SQL-Datenbank das Speichern vollständiger Datenbanksicherungen bei Verwendung der Richtlinie zur Langzeitaufbewahrung für bis zu zehn Jahre unterstützt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380756"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
+# <a name="azure-sql-database-long-term-retention"></a>Langzeitaufbewahrung von Azure SQL-Datenbank
 
-Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die langfristige Aufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbanken bis zu zehn Jahre lang in Azure-Blobspeicher mit georedundantem Speicher mit Lesezugriff speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen. Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storage-Redundanz](../storage/common/storage-redundancy.md).
+Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die langfristige Aufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbanken bis zu zehn Jahre lang in Azure-Blobspeicher mit georedundantem Speicher mit Lesezugriff speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen. Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storage-Redundanz](../storage/common/storage-redundancy.md). 
+
+Eine lange Aufbewahrungsdauer kann für einzelne Datenbanken und Pooldatenbanken aktiviert werden. Sie ist in der eingeschränkten öffentlichen Vorschau für Instanzen verfügbar, die über Azure SQL-Datenbank verwaltet werden. 
 
 > [!NOTE]
-> LTR kann für Einzel- und Pooldatenbanken aktiviert werden. Für Instanzdatenbankdatenbanken, die in verwalteten Instanzen gehostet werden, steht LTR noch nicht zur Verfügung. Sie können SQL-Agent-Aufträge verwenden, um [Kopiesicherungen von Datenbanken](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) als Alternative zur Langzeitaufbewahrung über 35 Tage hinaus zu planen.
-> 
+> Sie können SQL-Agent-Aufträge verwenden, um [Kopiesicherungen von Datenbanken](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) als Alternative zur Langzeitaufbewahrung über 35 Tage hinaus zu planen.
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Funktionsweise der langfristigen Aufbewahrung von SQL-Datenbank
 
@@ -74,6 +76,16 @@ Wenn Sie aktive Georeplikation oder Failovergruppen als Geschäftskontinuitätsl
 
 > [!NOTE]
 > Wenn die ursprüngliche primäre Datenbank nach dem Ausfall, der zu einem Failover geführt hat, wiederhergestellt wird, wird sie zu einer neuen sekundären Datenbank. Daher wird die Sicherungserstellung nicht fortgesetzt und die bestehende LTR-Richtlinie wird erst wieder wirksam, wenn sie wieder die primäre Datenbank ist. 
+
+## <a name="managed-instance-support"></a>Unterstützung verwalteter Instanzen
+
+Für die langfristige Sicherungsaufbewahrung bei Instanzen, die über Azure SQL-Datenbank verwaltet werden, gelten die folgenden Einschränkungen:
+
+- **Eingeschränkte öffentliche Vorschau**: Diese Vorschauversion ist nur für EA- und CSP-Abonnements verfügbar. Es gelten die Bestimmungen der eingeschränkten Verfügbarkeit.  
+- [**Nur PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md): Das Azure-Portal wird derzeit nicht unterstützt. Die Langzeitaufbewahrung muss über PowerShell aktiviert werden. 
+
+Um die Registrierung anzufordern, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/) im Supportthema **Sicherung, Wiederherstellung und Geschäftskontinuität/langfristige Sicherungsaufbewahrung**.
+
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung
 

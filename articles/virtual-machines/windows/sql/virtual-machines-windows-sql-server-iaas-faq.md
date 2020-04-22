@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226626"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270824"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -53,9 +53,17 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
    Ja, durch Verwenden von PowerShell. Weitere Informationen zum Bereitstellen von SQL Server-VMs über PowerShell finden Sie unter [Bereitstellen von SQL Server-VMs mit Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 
-1. **Kann ich ein generalisiertes Azure SQL Server-Marketplace-Image meiner SQL Server-VM erstellen und zum Bereitstellen von VMs verwenden?**
+1. **Wie lässt sich SQL Server auf Azure-VMs generalisieren und für die Bereitstellung neuer VMs verwenden?**
 
-   Ja, Sie müssen allerdings [alle SQL Server-VMs beim SQL Server-VM-Ressourcenanbieter registrieren](virtual-machines-windows-sql-register-with-resource-provider.md), um Ihre SQL Server-VM im Portal verwalten und Features wie automatisches Patchen und automatische Sicherungen nutzen zu können. Beim Registrieren beim Ressourcenanbieter müssen Sie außerdem den Lizenztyp jeder SQL Server-VM angeben. 
+   Sie können eine Windows Server-VM (ohne SQL Server) bereitstellen und [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) verwenden, um SQL Server auf Azure-VMs (Windows) mit dem SQL Server-Installationsmedium zu generalisieren. Kunden, die über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) verfügen, können Ihre Installationsmedien vom [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) erhalten. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Marketplace mit der gewünschten Edition verwenden.
+
+   Alternativ verwenden Sie die SQL Server-Images aus Azure Marketplace, um SQL Server auf Azure-VMs zu generalisieren. Beachten Sie, dass der folgende Registrierungsschlüssel im Quellimage gelöscht werden muss, bevor Sie ein eigenes Image erstellen. Anderenfalls kann es zu einer Überfrachtung des SQL Server-Setupbootstrap-Ordners und/oder zu einem Fehler bei der SQL-IaaS-Erweiterung kommen.
+
+   Registrierungsschlüsselpfad:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > Es wird empfohlen, alle SQL Server-Azure-VMs (einschließlich der anhand benutzerdefinierter generalisierter Images bereitgestellten VMs) [bei einem SQL-VM-Ressourcenanbieter zu registrieren](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash). Auf diese Weise lassen sich Complianceanforderungen erfüllen und optionale Features wie automatisiertes Patchen und automatische Sicherungen nutzen. Außerdem können Sie [den Lizenztyp für jede SQL Server-VM angeben](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal).
 
 1. **Kann ich eine SQL Server VM mithilfe meiner eigenen VHD bereitstellen?**
 

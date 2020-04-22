@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417609"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Apache Hadoop in HDInsight
 
 Erfahren Sie, wie Sie C# verwenden, um eine MapReduce-Lösung in HDInsight zu erstellen.
 
-Mit Apache Hadoop-Streaming können Sie MapReduce-Aufträge über ein Skript oder eine ausführbare Datei ausführen. In diesem Beispiel wird .NET verwendet, um die Mapper- und Reducer-Prozesse für eine Lösung zum Zählen von Wörtern zu implementieren.
+Mit Apache Hadoop-Streaming können Sie MapReduce-Aufträge mithilfe eines Skripts oder einer ausführbaren Datei ausführen. Hier wird .NET verwendet, um die Mapper- und Reducer-Prozesse für eine Lösung zum Zählen von Wörtern zu implementieren.
 
 ## <a name="net-on-hdinsight"></a>.NET in HDInsight
 
@@ -49,12 +49,9 @@ Weitere Informationen zum Streaming finden Sie unter [Hadoop-Streaming](https://
 
 * Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/overview).
 
-* Einen SSH-Client (optional). Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 * Ein Apache Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../../storage/common/storage-require-secure-transfer.md).
-
+* Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dieses Schema ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 und `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="create-the-mapper"></a>Erstellen des Mappers
 
@@ -221,14 +218,16 @@ Im folgenden Verfahren wird beschrieben, wie Sie einen MapReduce-Auftrag über e
 
    In der folgenden Liste wird beschrieben, was die einzelnen Parameter und Optionen darstellen:
 
-   * *hadoop-streaming.jar:* Gibt die JAR-Datei an, die die MapReduce-Streamingfunktionen enthält.
-   * `-files`: Gibt die Dateien *mapper.exe* und *reducer.exe* für diesen Auftrag an. Die Protokolldeklaration `wasbs:///`, `adl:///` oder `abfs:///` vor jeder Datei ist der Pfad zum Stamm des Standardspeichers für den Cluster.
-   * `-mapper`: Gibt die Datei an, die den Mapper implementiert.
-   * `-reducer`: Gibt die Datei an, die den Reducer implementiert.
-   * `-input`: Gibt die Eingabedaten an.
-   * `-output`: Gibt das Ausgabeverzeichnis an.
+   |Parameter | BESCHREIBUNG |
+   |---|---|
+   |hadoop-streaming.jar|Gibt die JAR-Datei an, die die MapReduce-Streamingfunktionen enthält.|
+   |-files|Gibt die Dateien *mapper.exe* und *reducer.exe* für diesen Auftrag an. Die Protokolldeklaration `wasbs:///`, `adl:///` oder `abfs:///` vor jeder Datei ist der Pfad zum Stamm des Standardspeichers für den Cluster.|
+   |-mapper|Gibt die Datei an, die den Mapper implementiert.|
+   |-reducer|Gibt die Datei an, die den Reducer implementiert.|
+   |-input|Gibt die Eingabedaten an.|
+   |-output|Gibt das Ausgabeverzeichnis an.|
 
-3. Wenn der MapReduce-Auftrag abgeschlossen ist, können Sie die Ergebnisse mit dem folgenden Befehl anzeigen:
+1. Wenn der MapReduce-Auftrag abgeschlossen ist, können Sie die Ergebnisse mit dem folgenden Befehl anzeigen:
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000
