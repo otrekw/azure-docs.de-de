@@ -156,8 +156,6 @@
         - name: Hinzufügen eines Deskriptors
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: Migrieren zur V3-Erstellung
-          href: luis-migration-authoring-entities.md
         - name: Mit REST-APIs
           items:
             - name: Programmgesteuertes Erstellen einer App per Node.js
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: Veröffentlichen
       href: luis-how-to-publish-app.md
+    - name: Abfragen der Vorhersagelaufzeit
+      href: luis-get-started-get-intent-from-browser.md
     - name: Verwalten der App
       items:
         - name: Azure-Ressourcen
@@ -216,11 +216,10 @@
       items:
         - name: Für Entwickler
           href: developer-reference-resource.md
-        - name: Erstellen von APIs
-          href: luis-migration-api-authoring.md
-        - name: Migrieren zur V3-API
+        - name: Migrieren zur V3-Erstellungs-APIs
+          href: luis-migration-authoring-entities.md
+        - name: Migration zu V3-Vorhersage-APIs
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: Migrieren zur V2-API
           href: luis-migration-api-v1-to-v2.md
     - name: Verwenden von Containern
