@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277870"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273918"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Bereitstellungsvorlage für eine virtuelle Festplatte 
+# <a name="virtual-hard-disk-deployment-template"></a>Bereitstellungsvorlage für eine virtuelle Festplatte
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
 
 Über die folgende Azure Resource Manager-Vorlage wird eine neue Instanz eines virtuellen Azure-Computers definiert, der aus einer lokalen virtuellen Festplatte (VHD) erstellt wurde.  Diese Vorlage wird in dem Artikel [Bereitstellen einer Azure-VM aus einer Benutzer-VHD](./cpp-deploy-vm-user-image.md) verwendet. 
 

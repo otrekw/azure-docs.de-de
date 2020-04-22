@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380189"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -49,6 +49,38 @@ Zum Archivieren von Azure AD-Überwachungsprotokollen müssen Sie über Azure Mo
 1. Wählen Sie **Nutzung und geschätzte Kosten** aus, und klicken Sie auf **Datenaufbewahrung**. Stellen Sie den Schieberegler auf die Anzahl der Tage ein, für die Daten zum Erfüllen Ihrer Überwachungsanforderungen aufbewahrt werden sollen.
 
     ![Fenster „Log Analytics-Arbeitsbereiche“](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. Wenn Sie später den Bereich der Datumsangaben in Ihrem Arbeitsbereich anzeigen möchten, können Sie die Arbeitsmappe *Datumsbereich für archivierte Protokolle* verwenden:  
+    
+    1. Wählen Sie **Azure Active Directory** aus, und klicken Sie auf **Arbeitsmappen**. 
+    
+    1. Erweitern Sie den Abschnitt **Problembehandlung für Azure Active Directory**, und klicken Sie auf **Datumsbereich für archivierte Protokolle**. 
+
+
+## <a name="view-events-for-an-access-package"></a>Anzeigen von Ereignissen für ein Zugriffspaket  
+
+Um Ereignisse für ein Zugriffspaket anzuzeigen, benötigen Sie Zugriff auf den zugrunde liegenden Azure Monitor-Arbeitsbereich (siehe [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)) und eine der folgenden Rollen: 
+
+- Globaler Administrator  
+- Sicherheitsadministrator  
+- Sicherheitsleseberechtigter  
+- Berichtsleseberechtigter  
+- Anwendungsadministrator  
+
+Gehen Sie folgendermaßen vor, um Ereignisse anzuzeigen: 
+
+1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, und klicken Sie auf **Arbeitsmappen**. Wenn Sie nur über ein einziges Abonnement verfügen, fahren Sie mit Schritt 3 fort. 
+
+1. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das den Arbeitsbereich enthält.  
+
+1. Wählen Sie die Arbeitsmappe *Zugriffspaketaktivität* aus. 
+
+1. Wählen Sie in dieser Arbeitsmappe einen Zeitbereich aus (wenn Sie nicht sicher sind, ändern Sie ihn in **Alle**), und wählen Sie in der Dropdownliste aller Zugriffspakete, die in diesem Zeitraum Aktivitäten aufwiesen, eine Zugriffspaket-ID aus. Es werden die Ereignisse im Zusammenhang mit dem Zugriffspaket angezeigt, die während des ausgewählten Zeitbereichs auftraten.  
+
+    ![Anzeigen von Zugriffspaketereignissen](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    Jede Zeile enthält die Uhrzeit, die Zugriffspaket-ID, den Namen des Vorgangs, die Objekt-ID, den UPN und den Anzeigenamen des Benutzers, der den Vorgang gestartet hat.  Weitere Details sind im JSON-Code enthalten.   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Erstellen von benutzerdefinierten Azure Monitor-Abfragen mit dem Azure-Portal
 Sie können eigene Abfragen für Azure AD-Überwachungsereignisse erstellen. Dazu zählen auch Ereignisse der Berechtigungsverwaltung.  
@@ -86,6 +118,7 @@ Nachdem Sie Azure AD zum Senden von Protokollen an Azure Monitor konfiguriert ha
 Stellen Sie sicher, dass dem Benutzer oder Dienstprinzipal, der sich bei Azure AD authentifiziert, im Log Analytics-Arbeitsbereich die entsprechende Azure-Rolle zugewiesen ist. „Log Analytics-Leser“ oder „Log Analytics-Mitwirkender“ sind als Rollenoptionen verfügbar. Wenn Ihnen bereits eine dieser Rollen zugewiesen wurde, fahren Sie mit [Abrufen der Log Analytics-ID mit einem Azure-Abonnement](#retrieve-log-analytics-id-with-one-azure-subscription) fort.
 
 Führen Sie die folgenden Schritte aus, um die Rollenzuweisung festzulegen und eine Abfrage zu erstellen:
+
 1. Suchen Sie im Azure-Portal nach dem [Log Analytics-Arbeitsbereich](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 ).
 
@@ -103,7 +136,7 @@ Wenn Sie über die richtige Rollenzuweisung verfügen, starten Sie PowerShell, u
 install-module -Name az -allowClobber -Scope CurrentUser
 ```
     
-Nun können Sie sich bei Azure AD authentifizieren und die ID des Log Analytics-Arbeitsbereichs abrufen, den Sie abfragen möchten.
+Nun können Sie sich bei Azure AD authentifizieren und die ID des Log Analytics-Arbeitsbereichs abrufen, den Sie abfragen möchten.
 
 ### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>Abrufen der Log Analytics-ID mit einem Azure-Abonnement
 Wenn Sie ein einzelnes Azure-Abonnement und einen einzelnen Log Analytics-Arbeitsbereich haben, geben Sie Folgendes ein, um sich bei Azure AD zu authentifizieren, eine Verbindung mit dem jeweiligen Abonnement herzustellen und den Arbeitsbereich abzurufen:
@@ -128,7 +161,7 @@ $subs | ft
 Sie können sich erneut authentifizieren und Ihre PowerShell-Sitzung mit einem Befehl (z. B. `Connect-AzAccount –Subscription $subs[0].id`) mit diesem Abonnement verknüpfen. Weitere Informationen zum Authentifizieren bei Azure über die PowerShell (einschließlich der nicht interaktiven Authentifizierung) finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 ).
 
-Wenn das Abonnement mehrere Log Analytics-Arbeitsbereiche enthält, können Sie mit dem Cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) eine Liste der Arbeitsbereiche zurückgeben. Dann können Sie nach dem Arbeitsbereich mit den Azure AD-Protokollen suchen. Das Feld `CustomerId`, das dieses Cmdlet zurückgibt, ist identisch mit dem Wert für „Arbeitsbereich-ID“, der im Azure-Portal in der Übersicht der Log Analytics-Arbeitsbereiche angezeigt wird.
+Wenn das Abonnement mehrere Log Analytics-Arbeitsbereiche enthält, können Sie mit dem Cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) eine Liste der Arbeitsbereiche zurückgeben. Dann können Sie nach dem Arbeitsbereich mit den Azure AD-Protokollen suchen. Das von diesem Cmdlet zurückgegebene Feld `CustomerId` ist identisch mit der Arbeitsbereichs-ID, die im Azure-Portal in der Übersicht der Log Analytics-Arbeitsbereiche angezeigt wird.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 Mit einer Abfrage ähnlich der Folgenden können Sie auch Ereignisse der Berechtigungsverwaltung abrufen:
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```

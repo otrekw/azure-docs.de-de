@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e5353797aaa7d40e1b6a95685b79cb3fe99f5ecd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94be2e5d3c2c941ab17401a743ea86acbe8b6252
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277649"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273799"
 ---
 # <a name="virtual-machine-offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“ für virtuelle Computer
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines Azure Virtual Machines-Angebots](https://aka.ms/CreateAzureVMoffer).
 
 Auf der Seite **Neues Angebot** für virtuelle Computer wird als Erstes die Registerkarte **Angebotseinstellungen** angezeigt.  
 

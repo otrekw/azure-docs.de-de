@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie die REST-API für Azure Analysis Services ver
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273720"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406286"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 
@@ -208,8 +208,8 @@ C#-Codebeispiel für Ihren Einstieg: [RestApiSample auf GitHub](https://github.c
 
 ### <a name="to-use-the-code-sample"></a>So verwenden Sie das Codebeispiel
 
-1.  Klonen Sie das Repository, oder laden Sie es herunter. Öffnen Sie die RestApiSample-Lösung.
-2.  Suchen Sie die Zeile **client.BaseAddress = …** , und geben Sie Ihre [Basis-URL](#base-url) an.
+1.    Klonen Sie das Repository, oder laden Sie es herunter. Öffnen Sie die RestApiSample-Lösung.
+2.    Suchen Sie die Zeile **client.BaseAddress = …** , und geben Sie Ihre [Basis-URL](#base-url) an.
 
 Das Codebeispiel verwendet die [Dienstprinzipal](#service-principal)-Authentifizierung.
 
@@ -217,9 +217,9 @@ Das Codebeispiel verwendet die [Dienstprinzipal](#service-principal)-Authentifiz
 
 Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen eines Dienstprinzipals – Azure-Portals](../active-directory/develop/howto-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
 
-1.  Suchen Sie im Codebeispiel **string authority = …** , und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
-2.  Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.
-3.  Führen Sie das Beispiel aus.
+1.    Suchen Sie im Codebeispiel nach **string authority = …** , und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
+2.    Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.
+3.    Führen Sie das Beispiel aus.
 
 
 ## <a name="see-also"></a>Weitere Informationen

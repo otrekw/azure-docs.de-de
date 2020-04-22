@@ -3,17 +3,17 @@ title: Dienstprinzipale für Azure Kubernetes Service (AKS)
 description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Cluster im Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229606"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392736"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
-Für die Interaktion mit Azure-APIs benötigt ein AKS-Cluster einen [Azure AD-Dienstprinzipal (Active Directory)][aad-service-principal]. Der Dienstprinzipal wird für die dynamische Erstellung und Verwaltung anderer Azure-Ressourcen wie Azure Load Balancer oder Azure Container Registry (ACR) benötigt.
+Für die Interaktion mit Azure-APIs benötigt ein AKS-Cluster einen [Azure AD-Dienstprinzipal (Active Directory)][aad-service-principal] oder eine [verwaltete Identität](use-managed-identity.md). Der Dienstprinzipal bzw. die verwaltete Identität wird für die dynamische Erstellung und Verwaltung anderer Azure-Ressourcen wie Azure Load Balancer oder Azure Container Registry (ACR) benötigt.
 
 Dieser Artikel veranschaulicht das Erstellen und Verwenden eines Dienstprinzipals für Ihre AKS-Cluster.
 

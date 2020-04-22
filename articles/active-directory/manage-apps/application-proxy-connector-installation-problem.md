@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d773e6302edf0b799e6dfccc702750a9cc74f60
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049126"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406701"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -50,20 +50,69 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: `https://login.microsoftonline.com`. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Überprüfen der Unterstützung für das Vertrauensstellungszertifikat des Anwendungsproxys durch Computer und Back-End-Komponenten
 
-**Ziel**: Überprüfen Sie, ob Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde.
+**Ziel**: Vergewissern Sie sich, dass Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde, und dass dieses Zertifikat gültig ist.
 
 >[!NOTE]
 >Der Connector versucht ein SHA512-Zertifikat zu erstellen, das von TLS1.2 unterstützt wird. Wenn TLS 1.2 vom Computer oder von der Back-End-Firewall und dem Proxy nicht unterstützt wird, tritt bei der Installation ein Fehler auf.
 >
 >
 
-**So lösen Sie das Problem:**
+**Überprüfen der erforderlichen Voraussetzungen:**
 
 1.  Überprüfen Sie, ob der Computer TLS 1.2 unterstützt – Alle Windows-Versionen nach 2012 R2 sollten TLS 1.2 unterstützen. Wenn für Ihren Connectorcomputer eine Version von 2012 R2 oder früher verwendet wird, sollten Sie sicherstellen, dass die folgenden KBs darauf installiert sind: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>.
 
 2.  Wenden Sie sich an Ihren Netzwerkadministrator, damit der Back-End-Proxy und die Firewall überprüft werden, damit sie SHA512 nicht für ausgehenden Datenverkehr blockieren.
+
+**So überprüfen Sie das Clientzertifikat**
+
+Überprüfen Sie den Fingerabdruck des aktuellen Clientzertifikats. Der Zertifikatspeicher befindet sich unter „%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml“.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorTrustSettingsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CloudProxyTrust>
+    <Thumbprint>4905CC64B2D81BBED60962ECC5DCF63F643CCD55</Thumbprint>
+    <IsInUserStore>false</IsInUserStore>
+  </CloudProxyTrust>
+</ConnectorTrustSettingsFile>
+```
+
+Im Folgenden sind die möglichen Werte und Bedeutungen für **IsInUserStore** aufgeführt:
+
+- **false:** Das Clientzertifikat wurde während der durch den Befehl Register-AppProxyConnector initiierten Installation oder Registrierung erstellt. Es wird im persönlichen Container im Zertifikatspeicher des lokalen Computers gespeichert. 
+
+Befolgen Sie die Schritte zum Überprüfen des Zertifikats:
+
+1. Führen Sie **certlm.msc** aus.
+2. Erweitern Sie in der Verwaltungskonsole den persönlichen Container, und klicken Sie auf „Zertifikate“.
+3. Suchen Sie das Zertifikat, das von **connectorregistrationca.msappproxy.net** ausgestellt wurde.
+
+- **true:** Das automatisch erneuerte Zertifikat wird im persönlichen Container im Benutzerzertifikatspeicher des Netzwerkdienstanbieters gespeichert. 
+
+Befolgen Sie die Schritte zum Überprüfen des Zertifikats:
+
+1. Laden Sie [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
+2. Extrahieren Sie [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) aus dem Paket, und führen Sie **psexec -i -u "nt authority\network service" cmd.exe** an einer Eingabeaufforderung mit erhöhten Rechten aus.
+3. Führen Sie **certmgr.msc** in der neu angezeigten Eingabeaufforderung aus.
+2. Erweitern Sie in der Verwaltungskonsole den persönlichen Container, und klicken Sie auf „Zertifikate“.
+3. Suchen Sie das Zertifikat, das von **connectorregistrationca.msappproxy.net** ausgestellt wurde.
+
+**So erneuern Sie das Clientzertifikat**
+
+Wenn ein Connector über mehrere Monate hinweg keine Verbindung mit dem Dienst herstellt, sind die Zertifikate möglicherweise veraltet. Der Fehler bei der Zertifikaterneuerung führt zu einem abgelaufenen Zertifikat. Dadurch funktioniert wiederum der Connectordienst nicht mehr. Das Ereignis 1000 wird im Verwaltungsprotokoll des Connectors aufgezeichnet:
+
+„Fehler bei der erneuten Connectorregistrierung: Das Zertifikat der Connectorvertrauensstellung ist abgelaufen. Führen Sie das PowerShell-Cmdlet Register-AppProxyConnector auf dem Computer aus, auf dem der Connector ausgeführt wird, um den Connector erneut zu registrieren.“
+
+In diesem Fall müssen Sie den Connector deinstallieren und neu installieren, um die Registrierung auszulösen, oder Sie führen die folgenden PowerShell-Befehle aus:
+
+```
+Import-module AppProxyPSModule
+Register-AppProxyConnector
+```
+
+Weitere Informationen zum Befehl Register-AppProxyConnector finden Sie unter [Erstellen eines Skripts für die unbeaufsichtigte Installation für den Azure AD-Anwendungsproxyconnector](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell).
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Überprüfen, dass der Connector vom Administrator installiert wird
 

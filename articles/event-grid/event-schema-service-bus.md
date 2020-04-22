@@ -1,27 +1,26 @@
 ---
-title: Azure Event Grid-Ereignisschema für Service Bus
+title: Azure Service Bus als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Service Bus-Ereignisse bereitgestellt werden.
 services: event-grid
 author: banisadr
-manager: darosa
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: babanisa
-ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561760"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393241"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure Event Grid-Ereignisschema für Service Bus
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Service Bus-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md#service-bus) im Abschnitt „Service Bus“.
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Service Bus gibt die folgenden Ereignistypen aus:
 
@@ -30,7 +29,7 @@ Service Bus gibt die folgenden Ereignistypen aus:
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange oder in einem Abonnement vorliegen und kein lauschender Empfänger vorhanden ist. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange für unzustellbare Nachrichten vorliegen und kein lauschender Empfänger vorhanden ist. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Das folgende Beispiel zeigt das Schema für ein Ereignis mit aktiven Nachrichten ohne Listener:
 
@@ -76,7 +75,7 @@ Das Schema für ein Ereignis mit Warteschlange für unzustellbare Nachrichten si
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
@@ -101,6 +100,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | queueName | Zeichenfolge | Die Warteschlange mit aktiven Nachrichten, falls eine Warteschlange abonniert wird. Bei Verwendung von Themen/Abonnements ist der Wert NULL. |
 | topicName | Zeichenfolge | Das Thema, zu dem das Service Bus-Abonnement mit aktiven Nachrichten gehört. Bei Verwendung einer Warteschlange ist der Wert NULL. |
 | subscriptionName | Zeichenfolge | Das Service Bus-Abonnement mit aktiven Nachrichten. Bei Verwendung einer Warteschlange ist der Wert NULL. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Tutorial: Beispiele für die Integration von Azure Service Bus in Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid sendet Nachrichten von einem Service Bus-Thema an eine Funktions-App und an eine Logik-App. |
+| [Integration von Azure Service Bus in Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Übersicht über die Integration von Service Bus in Event Grid. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,23 +1,22 @@
 ---
-title: Erstellen Sie eines neuen Dynamics 365 Business Central-Angebots im kommerziellen Marketplace
-description: Erstellen eines neuen Dynamics 365 Business Central-Angebots (Software-as-a-Service) für das Auflisten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Erstellen eines neuen Angebots für Dynamics 365 Business Central im kommerziellen Microsoft-Marketplace
+description: Hier finden Sie Informationen zum Erstellen eines neuen Angebots für Dynamics 365 Business Central zum Auflisten oder Verkaufen in Azure Marketplace, Microsoft AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal in Microsoft Partner Center.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048725"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115280"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
-In diesem Artikel wird erläutert, wie Sie ein Dynamics 365 Business Central-Angebot erstellen. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) ist ein ERP-System (Enterprise Resource Planning), mit dem eine Vielzahl von Geschäftsprozessen verarbeitet werden kann, z. B. für Finanzierung, operative Vorgänge, Lieferketten-, CRM- und Projektmanagement sowie E-Commerce. Premium-Pakete unterstützen außerdem das klassische Bereitstellungsmodell und die Fertigung. Alle Angebote für Dynamics 365 Business Central müssen unseren Zertifizierungsprozess durchlaufen.
+In diesem Artikel wird erläutert, wie Sie ein neues Angebot für Dynamics 365 Business Central erstellen. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) ist ein ERP-System (Enterprise Resource Planning), mit dem eine Vielzahl von Geschäftsprozessen verarbeitet werden kann, z. B. für Finanzierung, operative Vorgänge, Lieferketten-, CRM- und Projektmanagement sowie E-Commerce. Premium-Pakete unterstützen außerdem das klassische Bereitstellungsmodell und die Fertigung. Alle Angebote für Dynamics 365 Business Central müssen unseren Zertifizierungsprozess durchlaufen.
 
 Um mit dem Erstellen von Dynamics 365 Business Central-Angeboten zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md), das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, und darin die Seite **Übersicht** auswählen.
 
@@ -110,26 +109,24 @@ Geben Sie die Versionsnummer Ihres Angebots ein. Für Kunden wird diese Version 
 
 ### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bedingungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
+Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bestimmungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
-Auf der Seite „Angebotsliste“ werden die Sprachen angezeigt, in denen Ihr Angebot aufgeführt wird. Derzeit ist **Englisch (Vereinigte Staaten)** die einzige verfügbare Option.
-
-Sie müssen für jede Sprache/jeden Markt Marketplace-Informationen (Angebotsname, Beschreibung, Bilder usw.) definieren. Wählen Sie die Sprache bzw. den Namen des Markts aus, um diese Informationen anzugeben.
+Auf der Seite „Angebotsliste“ können Sie Details für Ihr Angebot (z. B. den Namen, eine Beschreibung, Bilder usw.) definieren.
 
 > [!NOTE]
-> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+> Die Details eines Angebotseintrags können nur in einer Sprache angegeben werden. Eine Angabe in englischer Sprache ist nicht erforderlich, sofern die Angebotsbeschreibung mit dem Satz „Diese Anwendung ist nur auf [nicht englische Sprache] erhältlich“ beginnt. Es ist auch zulässig, eine *Hilfelink-URL* bereitzustellen, um Inhalte in einer anderen als der im Angebotseintrag verwendeten Sprache anzubieten.
 
 ### <a name="name"></a>Name
 
-Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text aufgefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
+Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text gefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
 
 ### <a name="short-description"></a>Kurze Beschreibung
 
 Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die in den Marketplace-Suchergebnissen verwendet werden kann.
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein. 
 
@@ -170,23 +167,23 @@ Sie können optional bis zu drei Suchbegriffe eingeben, die Kunden helfen, Ihr A
 
 Wenn Sie den Kunden mitteilen möchten, dass Ihre App mit bestimmten Produkten zusammenarbeitet, geben Sie hier bis zu drei Produktnamen ein.
 
-### <a name="support-urls"></a>Support-URLs
+### <a name="helpprivacy-urls"></a>Hilfe-/Datenschutz-URLs
 
 In diesem Abschnitt können Sie Links bereitstellen, die Kunden dabei helfen, mehr über Ihr Angebot zu erfahren.
 
 #### <a name="help-link"></a>Hilfelink
 
-Geben Sie die URL ein, unter der Kunden mehr über Ihr Angebot erfahren können.
+Geben Sie die URL ein, unter der Kunden mehr über Ihr Angebot erfahren können. Ihr **Hilfelink** und Ihre **Support-URL** dürfen nicht identisch sein (siehe unten).
 
-#### <a name="privacy-policy-url"></a>URL zur Datenschutzrichtlinie
+#### <a name="privacy-policy-link"></a>Link zur Datenschutzrichtlinie
 
 Geben Sie die URL zur Datenschutzrichtlinie Ihrer Organisation ein. Sie müssen sicherzustellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
 
-### <a name="contacts"></a>Kontakte
+### <a name="contact-information"></a>Kontaktinformationen
 
 In diesem Abschnitt müssen Sie den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt** und einen **Engineering-Kontakt** angeben. Diese Informationen werden Kunden nicht angezeigt, sind aber für Microsoft verfügbar und können CSP-Partnern bereitgestellt werden.
 
-Im Abschnitt **Supportkontakt** müssen Sie auch die **Support-URL** angeben, unter der CSP-Partner Support für Ihr Angebot erhalten.
+Im Abschnitt **Supportkontakt** müssen Sie auch die **Support-URL** angeben, unter der CSP-Partner Support für Ihr Angebot erhalten. Ihre Support-URL und Ihr **Hilfelink** dürfen nicht identisch sein.
 
 ### <a name="supporting-documents"></a>Unterstützende Dokumente
 
@@ -194,15 +191,7 @@ Geben Sie mindestens ein (und höchstens drei) zugehörige Marketingdokumente an
 
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
-In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeigen Ihres Angebots für Kunden verwendet werden. Alle Bilder müssen das PNG-Format aufweisen.
-
-#### <a name="store-logos"></a>Store-Logos
-
-Geben Sie das Logo Ihres Angebots in zwei Größen an: **Klein (48 x 48)** und **Groß (216 x 216)** .
-
-#### <a name="hero"></a>Hero
-
-Das Herobild ist optional. Wenn Sie ein Herobild angeben, muss es in der Größe 815 x 290 Pixel vorliegen.
+In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeigen Ihres Angebots für Kunden verwendet werden. Alle Bilder müssen das PNG-Format aufweisen. Laden Sie das Logo Ihres Angebots in zwei Größen hoch: **Klein (48 x 48)** und **Groß (216 x 216)** .
 
 #### <a name="screenshots"></a>Screenshots
 
@@ -268,7 +257,7 @@ Erforderlich, wenn Ihr Angebot zusammen mit einer anderen Erweiterung installier
 
 ### <a name="url-to-app-installation"></a>URL zur App-Installation
 
-Wenn Sie oben **Connect** ausgewählt haben, geben Sie hier die URL für Ihre App-Installation an.
+Wenn Sie oben **Connect** ausgewählt haben, geben Sie hier die URL für Ihre App-Installation an. Bei verbundenen Diensten, die keine Installation erfordern, geben Sie die URL für die Angebotsseite oder Registrierungsseite Ihres Diensts an.
 
 ## <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -307,9 +296,9 @@ Microsoft kann mit diesem Typ von Testversion die Dienstbereitstellung hosten un
 
 - **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum ein, in dem die Testversion aktiv bleibt, indem Sie die Anzahl der Stunden festlegen. Nach Ablauf dieser Anzahl von Stunden wird die Sitzung beendet, und sie belegt nicht mehr eine Ihrer Lizenzen. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Diese Dauer kann nur als ganze Anzahl von Stunden festgelegt werden (z. B. „2“ Stunden, die Angabe „1,5“ ist nicht zulässig).  Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
 
-- **Instanz-URL** (erforderlich): Die URL, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z. B. https://testdrive.crm.dynamics.com).
+- **Instanz-URL** (erforderlich): Die URL, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z. B. `https://testdrive.crm.dynamics.com`).
 
-- **Web-API-URL der Instanz** (erforderlich): Rufen Sie die Web-API-URL für Ihre Dynamics 365-Instanz ab, indem Sie sich bei Ihrem Microsoft 365-Konto anmelden, zu **Einstellungen** \&gt; **Anpassung** \&gt; **Entwicklerressourcen** \&gt; **Instanz-Web-API (Service-Stamm-URL)** navigieren und die hier angegebene URL kopieren (z. B. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Web-API-URL der Instanz** (erforderlich): Rufen Sie die Web-API-URL für Ihre Dynamics 365-Instanz ab, indem Sie sich bei Ihrem Microsoft 365-Konto anmelden, zu **Einstellungen** \&gt; **Anpassung** \&gt; **Entwicklerressourcen** \&gt; **Instanz-Web-API (Service-Stamm-URL)** navigieren und die hier angegebene URL kopieren (z. B. `https://testdrive.crm.dynamics.com/api/data/v9.0`).
 
 - **Rollenname** (erforderlich): Geben Sie den Namen der Sicherheitsrolle an, den Sie in der benutzerdefinierten Dynamics 365-Testversion definiert haben. Dieser wird dem Benutzer für die Dauer der Testversion zugewiesen (z. B. „Testversionsrolle“).
 
@@ -351,7 +340,11 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 ### <a name="test-drive-marketplace-listings"></a>Testversionen für Marketplace-Auflistungen
 
-Die Option **Marketplace-Auflistungen** auf der Registerkarte **Testversion** zeigt die Sprachen an, in denen Ihre Testversion verfügbar ist. Derzeit ist **Englisch (Vereinigte Staaten)** der einzige verfügbare Standort. Wählen Sie den Namen der Sprache aus, um Informationen zur Beschreibung der Testversion einzugeben.
+Auf der Registerkarte **Testversion** können Sie mithilfe der Option **Marketplace-Auflistung** Details für die Oberfläche der Testversion definieren.
+
+> [!NOTE]
+> Die Details einer Testversionsauflistung können nur in einer Sprache angegeben werden. Eine Angabe in englischer Sprache ist nicht erforderlich, sofern die Angebotsbeschreibung mit dem Satz „Diese Anwendung ist nur auf [nicht englische Sprache] erhältlich“ beginnt. Es ist auch zulässig, eine *Hilfelink-URL* bereitzustellen, um Inhalte in einer anderen als der im Inhalt der Testversionsauflistung verwendeten Sprache anzubieten.
+
 
 - **Beschreibung:** (erforderlich): Beschreiben Sie Ihre Testversion. Geben Sie an, was vorgeführt wird, nennen Sie die Ziele, mit denen der Benutzer experimentieren soll, sowie die zu erkundenden Funktionen, und geben Sie relevante Informationen an, die dem Benutzer helfen zu entscheiden, ob er Ihr Angebot erwerben soll. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654195"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407175"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -235,7 +235,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Gibt es eine API, um auf die Daten der Kennwortzurücksetzung oder des Registrierens für die Kennwortzurücksetzung zuzugreifen?**
 
-  > **A:** Ja. Informationen zum Zugreifen auf den Berichtsdatenstrom für die Kennwortzurücksetzung finden Sie unter [Informationen zum programmgesteuerten Zugreifen auf die Berichterstellungsereignisse zur Kennwortzurücksetzung](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **A:** Ja. Informationen dazu, wie Sie auf die Berichtsdaten zur Kennwortzurücksetzung zugreifen können, finden Sie in der [Referenz zur Azure Log Analytics-REST-API](/rest/api/loganalytics/).
   >
   >
 

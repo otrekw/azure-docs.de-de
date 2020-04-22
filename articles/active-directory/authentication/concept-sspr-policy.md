@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051169"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393033"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Richtlinien und Einschränkungen für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -160,16 +160,6 @@ Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung über Azure AD:
+Informationen zu den ersten Schritten mit SSPR finden Sie im [Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory](tutorial-enable-sspr.md).
 
-* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
-* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
-* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
-* [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
-* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
-* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
-* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
+Wenn Sie oder Ihre Benutzer Probleme mit SSPR haben, finden Sie weitere Informationen unter [Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung](active-directory-passwords-troubleshoot.md).

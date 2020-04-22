@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053872"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404295"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
@@ -38,7 +38,7 @@ Im Anschluss finden Sie einige Szenarien, in denen ein Softwareentwickler oder T
 
 ## <a name="what-it-includes"></a>Lieferumfang
 
-Der Content Moderator-Dienst umfasst mehrere Webdienst-APIs, die sowohl über REST-Aufrufe als auch über ein .NET SDK verfügbar sind. Darüber hinaus steht ein Tool für die Überprüfung durch Personen zur Verfügung, mit dem Personen den Dienst unterstützen und seine Moderationsfunktion verbessern oder optimieren können.
+Der Content Moderator-Dienst umfasst mehrere Webdienst-APIs, die sowohl über REST-Aufrufe als auch über ein .NET SDK verfügbar sind. Darüber hinaus steht ein Prüfungstool zur Verfügung, mit dem Personen den Dienst unterstützen und seine Moderationsfunktion verbessern oder optimieren können.
 
 ## <a name="moderation-apis"></a>Moderations-APIs
 
@@ -58,18 +58,18 @@ Die folgende Tabelle beschreibt die verschiedenen Typen von Moderations-APIs.
 
 ## <a name="review-apis"></a>Überprüfen von APIs
 
-Mithilfe der Review-APIs können Sie Ihre Moderationspipeline für menschliche Reviewer integrieren. Verwenden Sie die Vorgänge [Jobs](review-api.md#jobs), [Reviews](review-api.md#reviews) und [Workflow](review-api.md#workflows), um mit dem [Review-Tool](#the-review-tool) (unten) Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren.
+Mithilfe der Review-APIs können Sie Ihre Moderationspipeline für menschliche Reviewer integrieren. Verwenden Sie die Vorgänge [Jobs](review-api.md#jobs), [Reviews](review-api.md#reviews) und [Workflow](review-api.md#workflows), um mit dem [Review-Tool](#review-tool) (unten) Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren.
 
 > [!NOTE]
 > Die Workflow-API ist noch nicht im .NET SDK verfügbar, sie kann jedoch mit dem REST-Endpunkt verwendet werden.
 
 ![Blockdiagramm für Review-APIs von Content Moderator](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>Das Prüfungstool
+## <a name="review-tool"></a>Überprüfungstool
 
 Der Content Moderator-Dienst enthält auch das webbasierte [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md), das die Inhaltsüberprüfungen für menschliche Moderatoren hostet. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen. Das Überprüfungstool bietet auch ein benutzerfreundliches Front-End für verschiedene Content Moderator-Ressourcen.
 
-![Startseite des Content Moderator-Tools für die Überprüfung durch Personen](images/homepage.PNG)
+![Startseite des Content Moderator-Prüfungstools](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 

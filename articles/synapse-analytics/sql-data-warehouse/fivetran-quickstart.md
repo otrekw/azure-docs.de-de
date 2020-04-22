@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348916"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414270"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Schnellstart: Fivetran mit Data Warehouse 
 
@@ -26,7 +26,7 @@ Dieser Schnellstart beschreibt, wie Sie einen neuen Fivetran-Benutzer für das A
 
 1. Ermitteln Sie den vollqualifizierten Server- und Datenbanknamen, den Sie zum Herstellen einer Verbindung mit Ihrem Data Warehouse verwenden.
     
-    Wenn Sie Hilfe beim Ermitteln dieser Informationen benötigen, finden Sie weitere Informationen unter [Herstellen einer Verbindung mit Ihrem Data Warehouse](sql-data-warehouse-connect-overview.md).
+    Wenn Sie Hilfe beim Ermitteln dieser Informationen benötigen, finden Sie weitere Informationen unter [Herstellen einer Verbindung mit Ihrem Data Warehouse](../sql/connect-overview.md).
 
 2. Wählen Sie im Setup-Assistenten aus, ob Sie Ihre Datenbank direkt oder über einen SSH-Tunnel verbinden möchten.
 
@@ -75,9 +75,9 @@ Dieser Schnellstart beschreibt, wie Sie einen neuen Fivetran-Benutzer für das A
     Weitere Informationen finden Sie in den Dokumenten zu [Speicher- und Parallelitätsgrenzwerten](memory-concurrency-limits.md) und [Ressourcenklassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
-## <a name="sign-in-to-fivetran"></a>Anmelden bei Fivetran
+## <a name="connect-from-fivetran"></a>Herstellen einer Verbindung von Fivetran
 
-Um sich bei Fivetran anzumelden, geben Sie die Anmeldeinformationen ein, die Sie für den Zugriff auf Ihr Data Warehouse verwenden: 
+Zum Herstellen einer Verbindung mit Ihrem Data Warehouse über Ihr Fivetran-Konto geben Sie die Anmeldeinformationen ein, mit denen Sie auf Ihr Data Warehouse zugreifen: 
 
 * Host (Ihr Servername).
 * Port.

@@ -3,12 +3,12 @@ title: Ressourcenkontrolle für Container und Dienste
 description: Azure Service Fabric ermöglicht Ihnen, Ressourcenlimits für Dienste festzulegen, die innerhalb oder außerhalb von Containern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772379"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115142"
 ---
 # <a name="resource-governance"></a>Ressourcengovernance
 
@@ -31,7 +31,8 @@ Für diese beiden Metriken werden vom [Cluster Resource Manager](service-fabric-
 * Der Cluster kann gemäß diesen beiden Metriken [defragmentiert](service-fabric-cluster-resource-manager-defragmentation-metrics.md) werden.
 * Beim [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md) kann für diese beiden Metriken gepufferte Kapazität festgelegt werden.
 
-[Dynamische Auslastungsberichte](service-fabric-cluster-resource-manager-metrics.md) werden für diese Metriken nicht unterstützt, und Lasten für diese Metriken werden zum Zeitpunkt der Erstellung definiert.
+> [!NOTE]
+> [Dynamische Auslastungsberichte](service-fabric-cluster-resource-manager-metrics.md) werden für diese Metriken nicht unterstützt, und Lasten für diese Metriken werden zum Zeitpunkt der Erstellung definiert.
 
 ## <a name="resource-governance-mechanism"></a>Ressourcenkontrollmechanismus
 

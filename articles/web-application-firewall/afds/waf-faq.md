@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
-ms.openlocfilehash: c40210f3a6f0fb10be1f20deef87b2acfa076a4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460635"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314323"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Web Application Firewall in Azure Front Door Service
 
@@ -31,7 +31,7 @@ Azure Front Door Service ist ein hochgradig skalierbares, global verteiltes APN 
 
 ## <a name="does-azure-waf-support-https"></a>Wird HTTPS von Azure WAF unterstützt?
 
-Front Door bietet SSL-Abladung. WAF ist nativ in Front Door integriert und kann Anforderungen nach ihrer Entschlüsselung untersuchen.
+Frontdoor bietet TLS-Abladung. WAF ist nativ in Front Door integriert und kann Anforderungen nach ihrer Entschlüsselung untersuchen.
 
 ## <a name="does-azure-waf-support-ipv6"></a>Wird IPv6 von Azure WAF unterstützt?
 

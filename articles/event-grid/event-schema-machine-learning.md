@@ -1,26 +1,26 @@
 ---
-title: Azure Event Grid-Ereignisschema für Machine Learning
+title: Azure Machine Learning als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Machine Learning-Arbeitsbereichsereignisse bereitgestellt werden.
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202143"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393277"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-Ereignisschema für Azure Machine Learning
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Machine Learning-Arbeitsbereichsereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-Eine Liste mit Beispielskripts und Tutorials finden Sie unter [Ereignisquellen in AzureML](event-sources.md#azure-machine-learning).
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Azure Machine Learning gibt die folgenden Ereignistypen aus:
 
@@ -32,7 +32,7 @@ Azure Machine Learning gibt die folgenden Ereignistypen aus:
 | Microsoft.MachineLearningServices.DatasetDriftDetected | Wird ausgelöst, wenn ein Datasetdriftmonitor eine Abweichung erkennt. |
 | Microsoft.MachineLearningServices.RunStatusChanged | Wird ausgelöst, wenn sich der Ausführungsstatus in „Fehler“ ändert. |
 
-## <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
+### <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
 
 Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
 
@@ -186,10 +186,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
@@ -260,6 +257,11 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 | RunTags | Objekt (object) | Die Tags der abgeschlossenen Ausführung. |
 | RunProperties | Objekt (object) | Die Eigenschaften der abgeschlossenen Ausführung. |
 | RunStatus | Zeichenfolge | Der Status der Ausführung |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+| Titel | BESCHREIBUNG |
+| ----- | ----- |
+| [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/concept-event-grid-integration.md) | Übersicht über die Integration von Azure Machine Learning in Event Grid. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656419"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261804"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
 Bei der [einfachen Abfragesyntax](query-simple-syntax.md) in Azure Cognitive Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
 
-In diesem Artikel werden Beispiele verwendet, um die einfache Syntax zu veranschaulichen.
+In diesem Artikel werden anhand von Beispielen die einfache Syntax veranschaulicht und bei einem Vorgang mit [Suchdokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) der Parameter `search=` aufgefüllt.
 
 Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
 

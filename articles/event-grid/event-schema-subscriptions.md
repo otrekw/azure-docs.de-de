@@ -1,20 +1,20 @@
 ---
-title: Ereignisschema des Azure Event Grid-Abonnements
+title: Azure-Abonnement als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Abonnementereignisse bereitgestellt werden
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561675"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393223"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
+# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-Abonnement als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Azure-Abonnementereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
@@ -28,9 +28,10 @@ Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sort
 
 Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an. Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Eine Liste von Beispielskripts und Tutorials finden Sie in den Informationen zur [Ereignisquelle für Azure-Abonnements](event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, beispielsweise wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
 
@@ -46,7 +47,7 @@ Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, be
 | Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang fehlschlägt. |
 | Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang erfolgreich ausgeführt wurde. |
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
 
@@ -230,7 +231,7 @@ Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereigni
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
@@ -259,6 +260,14 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | status | Zeichenfolge | Der Status des Vorgangs. |
 | subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
 | tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+|Titel |BESCHREIBUNG  |
+|---------|---------|
+| [Tutorial: Azure Automation mit Event Grid und Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Erstellen Sie einen virtuellen Computer, der ein Ereignis gesendet. Das Ereignis löst ein Automation-Runbook, das den virtuellen Computer markiert, sowie eine Nachricht aus, die an einen Microsoft Teams-Kanal gesendet wird. |
+| [Gewusst wie: Abonnieren von Ereignissen über das Portal](subscribe-through-portal.md) | Verwenden Sie das Portal, um Ereignisse für ein Azure-Abonnement zu abonnieren. |
+| [Azure CLI: Abonnieren von Ereignissen für ein Azure-Abonnement](./scripts/event-grid-cli-azure-subscription.md) |Beispielskript, mit dem ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird und Ereignisse an einen WebHook gesendet werden. |
+| [PowerShell: Abonnieren von Ereignissen für ein Azure-Abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Beispielskript, mit dem ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird und Ereignisse an einen WebHook gesendet werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

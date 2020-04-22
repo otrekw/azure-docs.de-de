@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336260"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262161"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace
 
@@ -21,7 +21,7 @@ ms.locfileid: "80336260"
 
 Wir freuen uns über Ihr Interesse an der Veröffentlichung von Angeboten im kommerziellen Marketplace. Wir streben eine enge Partnerschaft mit Ihnen an, um gemeinsam eine ergiebige Quelle für Cloud-Lösungsangebote und Branchenlösungen zu schaffen, die Kunden weltweit begeistert. Darüber hinaus möchten wir Sie beim Auf- und Ausbau Ihres Unternehmens unterstützen.
 
-Angebote im Marketplace müssen unseren Richtlinien und Nutzungsbedingungen entsprechen. Diese Richtlinien und Nutzungsbedingungen werden von Zeit zu Zeit aktualisiert, um eine gute Kundenerfahrung zu gewährleisten und unseren Partnern Erfolgsmöglichkeiten zu geben. Wenn Sie Feedback zu unseren Richtlinien oder Nutzungsbedingungen haben, informieren Sie uns bitte, indem Sie im [Forum für Azure Marketplace und AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) einen Kommentar hinterlassen.
+Angebote im Marketplace müssen unseren Richtlinien und Nutzungsbedingungen entsprechen. Diese Richtlinien und Nutzungsbedingungen werden von Zeit zu Zeit aktualisiert, um eine gute Kundenerfahrung zu gewährleisten und unseren Partnern Erfolgsmöglichkeiten zu geben. Wenn Sie Feedback zu unseren Richtlinien oder Nutzungsbedingungen haben, hinterlassen Sie bitte im [Forum für den Azure Marketplace und Microsoft AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) einen Kommentar.
 
 ## <a name="policies-and-terms"></a>Richtlinien und Nutzungsbedingungen
 
@@ -35,6 +35,6 @@ Angebote im Marketplace müssen unseren Richtlinien und Nutzungsbedingungen ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).
+Besuchen Sie die Seite [Herausgeberleitfaden für den kommerziellen Marketplace](./marketplace-publishers-guide.md).
 
 ---

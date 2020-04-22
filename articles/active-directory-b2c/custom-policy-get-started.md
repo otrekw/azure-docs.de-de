@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189326"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407295"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
 1. Wählen Sie **Nativ** als **Anwendungstyp** aus.
-1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
+1. Geben Sie `myapp://auth` als **Umleitungs-URI** ein.
 1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 1. Wählen Sie **Einstellungen**, anschließend **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.
 1. Wählen Sie **API auswählen** aus, suchen Sie nach **IdentityExperienceFramework**, wählen Sie diese API aus, und klicken Sie anschließend auf **Auswählen**.
@@ -129,7 +129,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Verwenden Sie die Dropdownliste unter **Umleitungs-URI**, um **Öffentlicher Client/nativ (mobil und Desktop)** auszuwählen.
-1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
+1. Geben Sie `myapp://auth` als **Umleitungs-URI** ein.
 1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
 1. Wählen Sie **Registrieren**.
 1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
@@ -190,7 +190,7 @@ Holen Sie sich die Starter Packs für benutzerdefinierte Richtlinien-von GitHub,
 
 Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml* hinzu.
 
-1. Öffnen Sie `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** , und suchen Sie das Element `<TechnicalProfile Id="login-NonInteractive">`.
+1. Öffnen Sie `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** , und suchen Sie das Element `<TechnicalProfile Id="login-NonInteractive">`.
 1. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie zuvor erstellt haben.
 1. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie zuvor erstellt haben.
 1. Speichern Sie die Datei .
@@ -225,7 +225,7 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 
 Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Soziale Medien-Verbundanmeldung in einer benutzerdefinierten Richtlinie aktivieren können.
 
-1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
+1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">

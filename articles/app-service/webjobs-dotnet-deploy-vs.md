@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75e1f5fbfa41ac310d2a737dcfe28199715a094b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684170"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312880"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -225,7 +225,7 @@ Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zei
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-### <a name="settingjob-reference"></a>Referenz zur Datei „setting.job“
+### <a name="settingsjob-reference"></a>Referenz zu „settings.job“
 
 Webaufträge unterstützen die folgenden Einstellungen:
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277938"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273901"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Bereitstellen eines virtuellen Computers auf Basis der VHDs
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
 
 Dieser Abschnitt erläutert, wie Sie einen virtuellen Computer (VM) von einer in Azure bereitgestellten virtuellen Festplatte (VHD) bereitstellen.  Hier sind die erforderlichen Tools aufgeführt. Es wird beschrieben, wie Sie diese verwenden, um ein Benutzer-VM-Image zu erstellen und dieses dann mithilfe von PowerShell-Skripts in Azure bereitzustellen.
 

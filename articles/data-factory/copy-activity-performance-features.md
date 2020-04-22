@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257885"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414187"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel werden die Features für die Leistungsoptimierung bei Kopieraktivitäten beschrieben, die Sie in Azure Data Factory nutzen können.
 
@@ -27,7 +29,7 @@ In diesem Artikel werden die Features für die Leistungsoptimierung bei Kopierak
 
 Eine Datenintegrationseinheit ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Azure Data Factory. Die Datenintegrationseinheit gilt nur für die [Azure-Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie „Auto“ in der Benutzeroberfläche auswählen, wendet die Data Factory die optimale DIU-Einstellung dynamisch auf Grundlage des Quell-/Senkenpaars und des Datenmusters an. In der nachstehenden Tabelle sind die unterstützten DIU-Bereiche und das Standardverhalten in verschiedenen Kopierszenarien aufgeführt:
+Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie auf der Benutzeroberfläche „Auto“ auswählen, wendet die Data Factory dynamisch die optimale DIU-Einstellung basierend auf dem Quelle-Senke-Paar und dem Datenmuster an. In der nachstehenden Tabelle sind die unterstützten DIU-Bereiche und das Standardverhalten in verschiedenen Kopierszenarien aufgeführt:
 
 | Kopierszenario | Unterstützter DIU-Bereich | Vom Dienst bestimmte Standard-DIUs |
 |:--- |:--- |---- |
@@ -140,7 +142,7 @@ Derzeit können Sie keine Daten zwischen zwei Datenspeichern kopieren, die über
 
 ### <a name="configuration"></a>Konfiguration
 
-Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf `TRUE` festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, falls noch nicht vorhanden.
+Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf `TRUE` festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, sofern noch keiner vorhanden ist.
 
 | Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
 | --- | --- | --- | --- |

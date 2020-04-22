@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313928"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -27,8 +27,6 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement.
-
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Ein vorhandener [Speichercontainer](../storage/blobs/storage-quickstart-blobs-portal.md).  
@@ -41,7 +39,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 * Bei Verwendung von C# muss die Version von Visual Studio 2013 oder höher sein.
 
-* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
+* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dieses Schema ist für Azure Storage `wasb://`, für Azure Data Lake Storage Gen2 `abfs://` und für Azure Data Lake Storage Gen1 `adl://`. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
 
 * Ein vorhandener HDInsight-Cluster, dem eine Shared Access Signature hinzugefügt werden kann. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 
@@ -56,11 +54,11 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 Es gibt zwei Arten von Shared Access Signatures:
 
-* Ad-hoc: Startzeit, Ablaufzeit und Berechtigungen für die SAS werden direkt im SAS-URI angegeben.
+* `Ad hoc`: Startzeit, Ablaufzeit und Berechtigungen für die SAS werden direkt im SAS-URI angegeben.
 
-* Gespeicherte Zugriffsrichtlinie: Eine gespeicherte Zugriffsrichtlinie wird für einen Ressourcencontainer definiert (also etwa für einen Blobcontainer). Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
+* `Stored access policy`: Eine gespeicherte Zugriffsrichtlinie wird für einen Ressourcencontainer definiert (also etwa für einen Blobcontainer). Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
 
-Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselszenario: Widerruf. Eine SAS ist eine URL und kann daher von beliebiger Stelle verwendet werden, unabhängig davon, wer die SAS ursprünglich angefordert hatte. Wenn eine SAS veröffentlicht wird, kann diese von beliebiger Stelle weltweit verwendet werden. Auf diese Weise verteilte SAS sind gültig, bis eines von vier Ereignissen eintritt:
+Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselszenario: Widerruf. Eine SAS ist eine URL, daher kann sie von jedem Benutzer verwendet werden, der die SAS erhält. Es spielt keine Rolle, wer sie ursprünglich angefordert hat. Wenn eine SAS veröffentlicht wird, kann diese von beliebiger Stelle weltweit verwendet werden. Auf diese Weise verteilte SAS sind gültig, bis eines von vier Ereignissen eintritt:
 
 1. Die Ablaufzeit der SAS wird erreicht.
 
@@ -82,7 +80,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen z
 
 ## <a name="create-a-stored-policy-and-sas"></a>Erstellen einer gespeicherte Richtlinie und einer SAS
 
-Speichern Sie das SAS-Token, das am Ende jeder Methode erstellt wird. Das Token sieht etwa wie folgt aus:
+Speichern Sie das SAS-Token, das am Ende jeder Methode erstellt wird. Das Token ähnelt der folgenden Ausgabe:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgeb
 
 Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, wenn Sie die Fehlermeldung `ImportError: No module named azure.storage` erhalten.
 
-### <a name="using-c"></a>Verwenden von C#
+### <a name="using-c"></a>Verwenden von C\#
 
 1. Öffnen Sie die Projektmappe in Visual Studio.
 
@@ -213,21 +211,20 @@ Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, we
 
 3. Wählen Sie **Einstellungen** aus, und fügen Sie Werte für die folgenden Einträge hinzu:
 
-   * StorageConnectionString: Die Verbindungszeichenfolge für das Speicherkonto, für das eine gespeicherte Richtlinie und SAS erstellt werden soll. Das Format muss `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` sein, wobei `myaccount` der Name Ihres Speicherkontos und `mykey` der Schlüssel des Speicherkontos ist.
-
-   * ContainerName: Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.
-
-   * SASPolicyName: Der zu verwendende Name für die gespeicherte Richtlinie, die erstellt wird.
-
-   * FileToUpload: Der Pfad zu einer Datei, die in den Container hochgeladen wird.
+    |Element |BESCHREIBUNG |
+    |---|---|
+    |StorageConnectionString|Die Verbindungszeichenfolge für das Speicherkonto, für das eine gespeicherte Richtlinie und SAS erstellt werden soll. Das Format muss `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` sein, wobei `myaccount` der Name Ihres Speicherkontos und `mykey` der Schlüssel des Speicherkontos ist.|
+    |ContainerName|Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.|
+    |SASPolicyName|Der zu verwendende Name für die gespeicherte Richtlinie, die erstellt wird.|
+    |FileToUpload|Der Pfad zu einer Datei, die in den Container hochgeladen wird.|
 
 4. Führen Sie das Projekt aus. Speichern Sie die SAS-Richtlinientoken, den Speicherkontonamen und den Containernamen. Diese Werte werden verwendet, wenn Sie das Speicherkonto mit Ihrem HDInsight-Cluster verknüpfen.
 
 ## <a name="use-the-sas-with-hdinsight"></a>Verwenden der SAS mit HDInsight
 
-Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein primäres Speicherkonto angeben. Optional können Sie zusätzliche Speicherkonten angeben. Beide Methoden zum Hinzufügen von Speicher benötigen Vollzugriff auf die Speicherkonten und Container, die verwendet werden.
+Beim Erstellen eines HDInsight-Clusters müssen Sie ein primäres Speicherkonto angeben. Sie können auch zusätzliche Speicherkonten angeben. Beide Methoden zum Hinzufügen von Speicher benötigen Vollzugriff auf die Speicherkonten und Container, die verwendet werden.
 
-Fügen Sie der Konfiguration für den Cluster von **core-site** einen benutzerdefinierten Eintrag hinzu, um eine Shared Access Signature zum Begrenzen des Zugriffs auf einen Container zu verwenden. Sie können den Eintrag während der Erstellung des Clusters mithilfe von PowerShell hinzufügen oder nach der Clustererstellung mittels Ambari.
+Verwenden Sie eine Shared Access Signature, um den Containerzugriff einzuschränken. Fügen Sie der Konfiguration **core-site** für den Cluster einen benutzerdefinierten Eintrag hinzu. Sie können den Eintrag während der Erstellung des Clusters mithilfe von PowerShell hinzufügen oder nach der Clustererstellung mittels Ambari.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Erstellen eines Clusters, der die SAS verwendet
 

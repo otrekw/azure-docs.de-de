@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475266"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262088"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -193,6 +193,17 @@ In Ihrer Azure-Rechnung werden Gebühren für den Monat auf der Grundlage von _V
 Filtern Sie die CSV-Nutzungsdatei basierend auf dem Namen der in der Rechnung enthaltenen Verbrauchseinheit (_MeterName_), die Sie analysieren möchten, um alle Positionen anzuzeigen, die die Verbrauchseinheit betreffen. Die Instanz-ID (_InstanceID_) für die Position entspricht der eigentlichen Azure-Ressource, auf die die Gebühr zurückzuführen ist.
 
 Wenn Sie die betreffende Ressource ermittelt haben, können Sie die ressourcenbezogenen Kosten mithilfe der Kostenanalyse in Azure Cost Management weiter analysieren. Weitere Informationen zur Verwendung der Kostenanalyse finden Sie unter [Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../costs/quick-acm-cost-analysis.md).
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>Überprüfen der berechneten Gebühren in der Kostenanalyse
+
+Navigieren Sie zum Anzeigen der Rechnungsdetails im Azure-Portal zur Kostenanalyse für den Bereich, der der von Ihnen analysierten Rechnung zugeordnet ist. Wählen Sie die Ansicht **Rechnungsdetails** aus. In den Rechnungsdetails werden die Gebühren wie auf der Rechnung angezeigt.
+
+[![Beispiel: Anzeigen der Rechnungsdetails](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+Wenn Sie die Rechnungsdetails anzeigen, können Sie den Dienst identifizieren, der unerwartete Kosten verursacht, und ermitteln, welche Ressourcen in der Kostenanalyse direkt mit der Ressource verknüpft sind. Wenn Sie beispielsweise die Gebühren für den Virtual Machines-Dienst analysieren möchten, navigieren Sie zur Ansicht **Kumulierte Kosten**. Legen Sie dann die Granularität auf **Täglich** fest, filtern Sie nach Gebühren für **Dienstname: Virtual Machines**, und gruppieren Sie die Gebühren nach **Ressource**.
+
+[![Beispiel für die akkumulierten Kosten für Virtual Machines](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>Identifizieren von Kostenspitzen im Zeitverlauf
 

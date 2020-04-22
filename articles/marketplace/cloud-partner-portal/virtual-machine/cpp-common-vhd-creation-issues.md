@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387341"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273442"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Allgemeine Probleme bei der VHD-Erstellung (FAQ)
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen von VHDs: häufig gestellte Fragen](https://aka.ms/VHDcreationIssues).
 
 In den folgenden häufig gestellten Fragen (FAQ) werden allgemeine Probleme behandelt, die bei der Erstellung von virtuellen Festplatten (VHDs) und virtuellen Computern (VMs) für VM-Angebote häufiger auftreten. 
 

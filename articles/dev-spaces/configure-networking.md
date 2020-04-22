@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Beschreibung der Netzwerkanforderungen für die Ausführung von Azure Dev Spaces in Azure Kubernetes Service
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, CNI, kubenet, SDN, Netzwerk
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240570"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262042"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netzwerkkonfiguration für Azure Dev Spaces in verschiedenen Netzwerktopologien
 
@@ -20,7 +20,7 @@ Azure Dev Spaces wird in Azure Kubernetes Service-Clustern (AKS) mit der Standar
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Konfiguration des virtuellen Netzwerks oder Subnetzes
 
-In einem AKS-Cluster kann eine abweichende Konfiguration des virtuellen Netzwerks oder des Subnetzes definiert sein, um den eingehenden oder ausgehenden Datenverkehr für den AKS-Cluster einzuschränken. Der Cluster kann sich beispielsweise hinter einer Firewall (z. B. Azure Firewall) befinden. Oder Sie verwenden möglicherweise Netzwerksicherheitsgruppen oder benutzerdefinierte Rollen zum Einschränken des Netzwerkdatenverkehrs.
+In einem AKS-Cluster kann eine abweichende Konfiguration des virtuellen Netzwerks oder des Subnetzes definiert sein, um den eingehenden oder ausgehenden Datenverkehr für den AKS-Cluster einzuschränken. Der Cluster kann sich beispielsweise hinter einer Firewall (z. B. Azure Firewall) befinden. Oder Sie verwenden möglicherweise Netzwerksicherheitsgruppen oder benutzerdefinierte Rollen zum Einschränken des Netzwerkdatenverkehrs. Ein Beispiel für eine Netzwerkkonfiguration finden Sie im [Azure Dev Spaces-Beispielrepository auf GitHub][sample-repo].
 
 Azure Dev Spaces hat bestimmte Anforderungen für *eingehenden und ausgehenden* Netzwerkdatenverkehr sowie für *nur eingehenden*  Datenverkehr. Wenn Sie Azure Dev Spaces in einem AKS-Cluster mit einer Konfiguration eines virtuellen Netzwerks oder eines Subnetzes verwenden, die den Datenverkehr für den AKS-Cluster einschränkt, müssen Sie die folgenden Anforderungen für nur eingehenden sowie für eingehenden und ausgehenden Datenverkehr beachten, damit Azure Dev Spaces ordnungsgemäß ausgeführt wird.
 
@@ -109,4 +109,5 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

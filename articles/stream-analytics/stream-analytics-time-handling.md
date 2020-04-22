@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354644"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115122"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 
@@ -96,7 +96,7 @@ Sie kennen vielleicht bereits ein anderes Konzept mit der Bezeichnung Fenster f�
 
 Da Azure Stream Analytics garantiert, dass immer vollständige Ergebnisse generiert werden, können Sie als erste Ausgabezeit des Auftrags nur die **Auftragsstartzeit** angeben, nicht die Eingangszeit. Die Auftragsstartzeit s wird benötigt, damit das gesamte Fenster bearbeitet wird, nicht nur von der Mitte des Fensters aus.
 
-Stream Analytics leitet die Startzeit dann von der Abfragespezifikation ab. Da der Eingangsereignis-Broker jedoch nur nach Eingangszeit indiziert wird, muss das System die Startzeit des Ereignisses in die Eingangszeit umrechnen. Das System kann die Verarbeitung von Ereignissen ab dieser Stelle im Eingangsereignis-Broker starten. Mit dem Grenzwert für das Fenster für den verfrühten Eingang ist die Umrechnung ganz einfach. Sie errechnet sich aus der Ereigniszeit minus dem Fenster für den verfrühten Eingang von 5 Minuten. Diese Berechnung bedeutet auch, dass das System alle Ereignisse löscht, die eine Ereigniszeit von mehr als 5 Minuten über der Eingangszeit haben.
+Stream Analytics leitet die Startzeit dann von der Abfragespezifikation ab. Da der Eingangsereignis-Broker jedoch nur nach Eingangszeit indiziert wird, muss das System die Startzeit des Ereignisses in die Eingangszeit umrechnen. Das System kann die Verarbeitung von Ereignissen ab dieser Stelle im Eingangsereignis-Broker starten. Mit dem Grenzwert für das Fenster für den verfrühten Eingang ist die Umrechnung ganz einfach. Sie errechnet sich aus der Startzeit des Ereignisses abzüglich des Fensters von 5 Minuten für den verfrühten Eingang. Diese Berechnung bedeutet auch, dass das System alle Ereignisse löscht, deren Ereigniszeit 5 Minuten vor der Eingangszeit liegt.
 
 Dieses Konzept wird verwendet, um sicherzustellen, dass die Verarbeitung wiederholbar ist, unabhängig davon, von wo aus Sie mit der Ausgabe beginnen. Ohne einen solchen Mechanismus wäre es nicht möglich, die Wiederholbarkeit zu gewährleisten, wie es viele andere Streamingsysteme behaupten.
 

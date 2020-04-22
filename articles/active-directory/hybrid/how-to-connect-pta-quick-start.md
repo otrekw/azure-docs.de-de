@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Passthrough-Authentifizierung – Schnellstart | Microsoft-Dokumentation
+title: Azure AD-Pass-Through-Authentifizierung – Schnellstart | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die ersten Schritte für die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) ausführen.
 services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331412"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312855"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Bereitstellen der Azure AD-Passthrough-Authentifizierung
 
@@ -61,14 +61,19 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
      | Portnummer | Wie diese verwendet wird |
      | --- | --- |
-     | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
+     | **80** | Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
      | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
      | **8080** (optional) | Authentifizierungs-Agents melden ihren Status alle zehn Minuten über Port 8080, wenn Port 443 verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. Port 8080 wird _nicht_ für Benutzeranmeldungen verwendet. |
      
      Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
-   - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** mittels Whitelist. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
+   - Wenn Ihre Firewall oder Ihr Proxy DNS-Whitelisting zulässt, fügen Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
    - Ihre Authentifizierungs-Agents benötigen für den anfänglichen Registrierungsprozess Zugriff auf **login.windows.net** und **login.microsoftonline.com**. Öffnen Sie Ihre Firewall auch für diese URLs.
    - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www\.microsoft.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
+
+### <a name="azure-government-cloud-prerequisite"></a>Voraussetzungen für die Azure Government-Cloud
+Laden Sie vor dem Aktivieren der Pass-Through-Authentifizierung über Azure AD Connect in Schritt 2 das neueste Release des PTA-Agents im Azure-Portal herunter.  Sie müssen sicherstellen, dass die Agent-Version **x.x.xxx.x** oder höher lautet.  Informationen zum Überprüfen des Agents finden Sie unter [Upgrade von Authentifizierungs-Agents](how-to-connect-pta-upgrade-preview-authentication-agents.md).
+
+Nachdem Sie das neueste Release des Agents heruntergeladen haben, fahren Sie anhand der folgenden Anweisungen fort, um die Pass-Through-Authentifizierung über Azure AD Connect zu konfigurieren.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
@@ -114,8 +119,8 @@ Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktio
 Durch die Installation von mehreren Passthrough-Authentifizierungs-Agents wird zwar Hochverfügbarkeit, jedoch kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents sichergestellt. Berücksichtigen Sie beim Ermitteln der Anzahl der für Ihren Mandanten erforderlichen Authentifizierungs-Agents die Spitzenlast und die durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Kernen und 16 GB RAM pro Sekunde 300 bis 400 Authentifizierungen verarbeiten kann.
 
 Um den Netzwerkverkehr abzuschätzen, verwenden Sie die folgende Anleitung zur Skalierung:
-- Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * anz_agents) Bytes, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
-- Jede Antwort hat eine Nutzlastgröße von 1 K Bytes, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
+- Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * Anz_Agents) Byte, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
+- Jede Antwort hat eine Nutzlastgröße von 1 K Byte, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
 
 Bei den meisten Kunden reichen insgesamt drei Authentifizierungs-Agents aus, um Hochverfügbarkeit und genügend Kapazität bereitzustellen. Es wird empfohlen, die Authentifizierungs-Agents in der Nähe Ihres Domänencontrollers zu installieren, um die Anmeldungslatenz zu verbessern.
 

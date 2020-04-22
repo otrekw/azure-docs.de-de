@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414117"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie die Kopieraktivität von Azure Data Factory beim Kopieren der Daten die Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) durchführt.
 
@@ -278,11 +279,7 @@ Kopieraktivität führt Zuordnungen von Quelltypen zu Senkentypen mit dem folgen
 1. Konvertieren von nativen Quelltypen in Azure Data Factory-Zwischendatentypen
 2. Konvertieren von Azure Data Factory-Zwischendatentypen in nativen Senkentyp
 
-Sie können die Zuordnung des nativen Typs zum Zwischendatentyp im „Datentypzuordnung“-Abschnitt jedes Connectorthemas finden.
-
-### <a name="supported-data-types"></a>Unterstützte Datentypen
-
-Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Konfigurieren von Typinformationen in der Konfiguration der [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure-or-schema) folgende Werte angeben:
+Die Kopieraktivität unterstützt die folgenden Zwischendatentypen: 
 
 * Byte[]
 * Boolean

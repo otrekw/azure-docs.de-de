@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229494"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414512"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Verwalten von verschlüsselten Geheimnissen in Service Fabric-Anwendungen
 In diesem Leitfaden werden die Schritte zum Verwalten von Geheimnissen in einer Service Fabric-Anwendung beschrieben. Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
@@ -57,6 +57,11 @@ Die Geheimnisse sollten auch in Ihre Service Fabric-Anwendung eingebunden werden
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> Beim Aktivieren einer Anwendung, die ein SecretsCertificate angibt, sucht Service Fabric das übereinstimmende Zertifikat und gewährt der Identität, in der die Anwendung ausgeführt wird, volle Berechtigungen für den privaten Schlüssel des Zertifikats. Service Fabric überwacht außerdem das Zertifikat auf Änderungen und wendet die Berechtigungen entsprechend erneut an. Zum Erkennen von Änderungen für Zertifikate, die über einen allgemeinen Namen deklariert wurden, führt Service Fabric eine regelmäßige Aufgabe aus, die alle übereinstimmenden Zertifikate findet und sie mit einer zwischengespeicherten Liste von Fingerabdrücken vergleicht. Wenn ein neuer Fingerabdruck erkannt wird, bedeutet dies, dass ein Zertifikat dieses Antragstellers erneuert wurde. Der Task wird einmal pro Minute auf jedem Knoten des Clusters ausgeführt.
+>
+> Obwohl SecretsCertificate antragstellerbasierte Deklarationen zulässt, sollten Sie beachten, dass die verschlüsselten Einstellungen an das Schlüsselpaar gebunden sind, das zum Verschlüsseln der Einstellung auf dem Client verwendet wurde. Sie müssen sicherstellen, dass das ursprüngliche Verschlüsselungszertifikat (oder eine Entsprechung) mit der antragstellerbasierten Deklaration übereinstimmt und dass es einschließlich des zugehörigen privaten Schlüssels auf jedem Knoten des Clusters installiert ist, der die Anwendung hosten könnte. Alle derzeit gültigen Zertifikate, die mit der antragstellerbasierten Deklaration übereinstimmen und mit demselben Schlüsselpaar wie das ursprüngliche Verschlüsselungszertifikat erstellt wurden, werden als Entsprechungen angesehen.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Einfügen von Geheimnissen aus Anwendungen in Anwendungsinstanzen
 Die Bereitstellung in anderen Umgebungen sollte idealerweise so automatisiert wie möglich erfolgen. Zu diesem Zweck können Sie die Geheimnisse in einer Buildumgebung verschlüsseln und die verschlüsselten Geheimnisse beim Erstellen von Anwendungsinstanzen als Parameter angeben.

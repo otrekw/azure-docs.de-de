@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e39f1c70cd94c14b12e54817941ea9106aacfdd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277972"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273867"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Bereitstellen eines virtuellen Computers über den Azure Marketplace
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
 
 In diesem Artikel wird beschrieben, wie Sie einen vorkonfigurierten virtuellen Computer (VM) über einen Azure Marketplace bereitstellen, indem Sie das beigefügte Azure PowerShell-Skript verwenden.  Mit diesem Skript werden auch die WinRM-HTTP- und HTTPS-Endpunkte auf der VM verfügbar gemacht.  Für dieses Skript ist es erforderlich, dass Sie bereits ein Zertifikat in Azure Key Vault hochgeladen haben, wie unter [Erstellen von Zertifikaten für Azure Key Vault](./cpp-create-key-vault-cert.md) beschrieben. 
 
@@ -26,16 +29,16 @@ Die Azure-VM-Bereitstellungsvorlage für den Schnellstart ist als Onlinedatei un
 
 |  **Parameter**        |   **Beschreibung**                                 |
 |  -------------        |   ---------------                                 |
-| newStorageAccountName | Name des Speicherkontos                       |
+| newStorageAccountName    | Name des Speicherkontos                       |
 | dnsNameForPublicIP    | DNS-Name für die öffentliche IP-Adresse. Muss aus Kleinbuchstaben bestehen.    |
-| adminUserName         | Benutzername des Administrators                          |
-| adminPassword         | Kennwort des Administrators                          |
+| adminUserName            | Benutzername des Administrators                          |
+| adminPassword            | Kennwort des Administrators                          |
 | imagePublisher        | Imageherausgeber                                   |
 | imageOffer            | Imageangebot                                       |
-| imageSKU              | Image-SKU                                         |
+| imageSKU                | Image-SKU                                         |
 | vmSize                | Größe des virtuellen Computers                                    |
 | vmName                | Name des virtuellen Computers                                    |
-| vaultName             | Der Name des Schlüsseltresors                             |
+| vaultName                | Der Name des Schlüsseltresors                             |
 | vaultResourceGroup    | Die Ressourcengruppe des Schlüsseltresors                   |
 | certificateUrl        | URL für das Zertifikat, einschließlich der Version in KeyVault, z.B. `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481312"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312948"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen
 
@@ -40,16 +40,12 @@ Connectors richten Verbindungen basierend auf den Prinzipien für Hochverfügbar
 1. Ein Benutzer auf einem Clientgerät versucht, auf eine lokale Anwendung zuzugreifen, die über den Anwendungsproxy veröffentlicht wurde.
 2. Die Anforderung durchläuft eine Azure Load Balancer-Instanz, die bestimmt, welche Dienstinstanzen von Anwendungsproxy die Anforderung übernehmen sollen. Pro Region sind Dutzende Instanzen verfügbar, die die Anforderung akzeptieren können. Mit dieser Methode kann der Datenverkehr gleichmäßig auf die Dienstinstanzen verteilt werden.
 3. Die Anforderung wird an [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/) gesendet.
-4. In Service Bus wird überprüft, ob für die Verbindung zuvor ein vorhandener Connector in der Connectorgruppe verwendet wurde. Wenn dies der Fall ist, wird die Verbindung wiederverwendet. Wenn noch kein Connector mit der Verbindung gekoppelt ist, wird ein verfügbarer Connector nach dem Zufallsprinzip ausgewählt, an den Signale gesendet werden. Der Connector übernimmt die Anforderung dann von Service Bus.
-
+4. Service Bus sendet ein Signal an einen verfügbaren Connector. Der Connector übernimmt die Anforderung dann von Service Bus.
    - In Schritt 2 werden Anforderungen an verschiedene Anwendungsproxy-Dienstinstanzen gesendet, sodass Verbindungen eher mit unterschiedlichen Connectors hergestellt werden. Folglich werden Connectors fast gleichmäßig innerhalb der Gruppe verwendet.
-
-   - Eine Verbindung wird nur wiederhergestellt, wenn sie getrennt wird oder eine Leerlaufzeit von 10 Minuten auftritt. Beispielsweise kann die Verbindung unterbrochen werden, wenn ein Computer oder Connectordienst neu gestartet wird oder wenn eine Netzwerkunterbrechung vorliegt.
-
 5. Der Connector übergibt die Anforderung an den Back-End-Server der Anwendung. Die Anwendung sendet dann die Antwort an den Connector zurück.
 6. Der Connector schließt die Antwort ab, indem eine ausgehende Verbindung mit der Dienstinstanz geöffnet wird, von der die Anforderung stammt. Diese Verbindung wird dann sofort geschlossen. Standardmäßig ist jeder Connector auf 200 gleichzeitige ausgehende Verbindungen beschränkt.
 7. Die Antwort wird dann von der Dienstinstanz an den Client zurückgegeben.
-8. Bei nachfolgenden Anforderungen über dieselbe Verbindung werden die oben beschriebenen Schritte wiederholt, bis die Verbindung getrennt wird oder sich 10 Minuten lang im Leerlauf befindet.
+8. Bei nachfolgenden Anforderungen von derselben Verbindung werden die oben angegebenen Schritte wiederholt.
 
 Eine Anwendung umfasst häufig viele Ressourcen und öffnet beim Laden mehrere Verbindungen. Jede Verbindung durchläuft die oben beschriebenen Schritte, damit sie einer Dienstinstanz zugeordnet wird. Wählen Sie einen neuen verfügbaren Connector aus, wenn die Verbindung noch nicht mit einem Connector gekoppelt wurde.
 

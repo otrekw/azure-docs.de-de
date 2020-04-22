@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278074"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274020"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Erstellen von Zertifikaten für Azure Key Vault
 
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
+
 In diesem Artikel ist erläutert, wie die selbstsignierten Zertifikate bereitgestellt werden, die dazu benötigt werden, eine Windows-Remoteverwaltung-Verbindung (WinRM-Verbindung) mit einem unter Azure gehosteten virtuellen Computer herzustellen. Dieser Vorgang besteht aus drei Schritten:
 
-1.  Erstellen Sie das Sicherheitszertifikat. 
-2.  Erstellen Sie den Azure Key Vault, in dem dieses Zertifikat gespeichert werden soll. 
-3.  Speichern Sie die Zertifikate in diesem Key Vault (Schlüsseltresor). 
+1.    Erstellen Sie das Sicherheitszertifikat. 
+2.    Erstellen Sie den Azure Key Vault, in dem dieses Zertifikat gespeichert werden soll. 
+3.    Speichern Sie die Zertifikate in diesem Key Vault (Schlüsseltresor). 
 
 Für diesen Vorgang können Sie entweder eine neue oder eine vorhandene Azure-Ressourcengruppe verwenden.  Der erstgenannte Ansatz wird in der folgenden Erläuterung verwendet.
 

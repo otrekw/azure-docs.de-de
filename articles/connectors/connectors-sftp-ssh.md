@@ -4,16 +4,16 @@ description: Automatisieren von Aufgaben, die Dateien auf einem SFTP-Server mith
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128414"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393630"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -147,6 +147,16 @@ Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiter
 
 1. Speichern Sie die private Schlüsseldatei mit der Dateinamenerweiterung `.pem`.
 
+## <a name="considerations"></a>Überlegungen
+
+In diesem Abschnitt werden Überlegungen zu den Triggern und Aktionen dieses Connectors beschrieben.
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>Datei erstellen
+
+Zum Erstellen einer Datei auf Ihrem SFTP-Server können Sie die SFTP-SSH-Aktion **Datei erstellen** verwenden. Wenn die Datei mit dieser Aktion erstellt wird, ruft der Logic Apps-Dienst auch automatisch Ihren SFTP-Server auf, um die Metadaten der Datei abzurufen. Wenn Sie jedoch die neu erstellte Datei verschieben, bevor der Logic Apps-Dienst den Aufruf zum Abrufen der Metadaten ausführen kann, erhalten Sie einen `404`Fehler mit der Meldung `'A reference was made to a file or folder which does not exist'`. Um das Lesen der Dateimetadaten nach dem Erstellen der Datei zu überspringen, führen Sie die Schritte zum [Hinzufügen der Eigenschaft **Alle Dateimetadaten abrufen** und Festlegen der Eigenschaft auf **Keine**](#file-does-not-exist) aus.
+
 <a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>Herstellen einer Verbindung zu SFTP mit SSH
@@ -211,9 +221,27 @@ Dieser Trigger startet einen Logik-App-Workflow, wenn auf einem SFTP-Server eine
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP – SSH-Aktion: Dateiinhalt über Pfad abrufen
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP – SSH-Aktion: Dateiinhalt anhand des Pfads abrufen
 
-Diese Aktion ruft den Inhalt einer Datei auf einem SFTP-Server ab. Sie können z.B. den Trigger aus dem vorherigen Beispiel sowie eine Bedingung hinzufügen, die vom Dateiinhalt erfüllt werden muss. Wenn die Bedingung als TRUE ausgewertet wird, kann die Aktion ausgeführt werden, die den Inhalt abruft.
+Diese Aktion ruft den Inhalt einer Datei auf einem SFTP-Server durch Angeben des Dateipfads ab. Sie können z.B. den Trigger aus dem vorherigen Beispiel sowie eine Bedingung hinzufügen, die vom Dateiinhalt erfüllt werden muss. Wenn die Bedingung als TRUE ausgewertet wird, kann die Aktion ausgeführt werden, die den Inhalt abruft.
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>Beheben von Fehlern
+
+In diesem Abschnitt werden mögliche Lösungen für häufige Fehler oder Probleme beschrieben.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404-Fehler: „Es wurde auf eine Datei oder einen Ordner verwiesen, die oder der nicht vorhanden ist.“
+
+Dieser Fehler kann auftreten, wenn Ihre Logik-App über die SFTP-SSH-Aktion **Datei erstellen** eine neue Datei auf Ihrem SFTP-Server erstellt, diese dann aber sofort verschoben wird, bevor der Logic Apps-Dienst die Metadaten der Datei abrufen kann. Wenn Ihre Logik-App die Aktion **Datei erstellen** ausführt, ruft der Logic Apps-Dienst auch automatisch Ihren SFTP-Server auf, um die Metadaten der Datei abzurufen. Wenn die Datei jedoch verschoben wird, kann der Logic Apps-Dienst sie nicht mehr finden, daher erhalten Sie die Fehlermeldung `404`.
+
+Wenn Sie das Verschieden der Datei nicht vermeiden oder verzögern können, können Sie das Lesen der Dateimetadaten nach der Dateierstellung überspringen, indem Sie die folgenden Schritte ausführen:
+
+1. Öffnen Sie in der Aktion **Datei erstellen** die Liste **Neuen Parameter hinzufügen**, wählen Sie die Eigenschaft **Alle Dateimetadaten abrufen** aus, und legen Sie den Wert auf **Nein** fest.
+
+1. Wenn Sie diese Dateimetadaten zu einem späteren Zeitpunkt benötigen, können Sie die Aktion **Dateimetadaten abrufen** verwenden.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

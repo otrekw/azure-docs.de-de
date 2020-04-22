@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278091"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273425"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
-In diesem Artikel wird beschrieben, wie Sie für einen in Azure gehosteten virtuellen Computer (VM) die Größe festlegen und ihn aktualisieren und generalisieren.  Diese Schritte sind erforderlich, um Ihre VM für die Bereitstellung über den Azure Marketplace vorzubereiten.
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
 
+In diesem Artikel wird beschrieben, wie Sie für einen in Azure gehosteten virtuellen Computer (VM) die Größe festlegen und ihn aktualisieren und generalisieren.  Diese Schritte sind erforderlich, um Ihre VM für die Bereitstellung über den Azure Marketplace vorzubereiten.
 
 ## <a name="sizing-the-vhds"></a>Festlegen der Größe von VHDs
 

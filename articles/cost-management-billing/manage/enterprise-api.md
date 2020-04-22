@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202912"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383165"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
@@ -51,7 +51,9 @@ In der Antwort jeder der oben genannten APIs werden ETags zurückgegeben. Eine �
 |Statuscode der Antwort|`Message`|BESCHREIBUNG|
 |-|-|-|
 |200| OK|Kein Fehler|
+|400| Ungültige Anforderung| Ungültige Parameter – Datumsbereiche, EA-Nummern usw.|
 |401| Nicht autorisiert| API-Schlüssel nicht gefunden, ungültig, abgelaufen usw.|
 |404| Nicht verfügbar| Berichtsendpunkt nicht gefunden|
-|400| Ungültige Anforderung| Ungültige Parameter – Datumsbereiche, EA-Nummern usw.|
+|429 | TooManyRequests | Die Anforderung wurde gedrosselt. Wiederholen Sie den Vorgang, nachdem Sie die im Header <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> angegebene Zeit abgewartet haben.|
 |500| Serverfehler| Unerwarteter Fehler beim Verarbeiten der Anforderung|
+| 503 | ServiceUnavailable | Der Dienst ist vorübergehend nicht verfügbar. Wiederholen Sie den Vorgang, nachdem Sie die im Header <code>Retry-After</code> angegebene Zeit abgewartet haben.|

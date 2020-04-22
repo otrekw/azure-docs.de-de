@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053593"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403469"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Der Gesichtserkennungsdienst von Azure Cognitive Services bietet die Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig. Beispielszenarien sind Sicherheit, natürliche Benutzeroberflächen, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
+Der Gesichtserkennungsdienst von Azure Cognitive Services bietet Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig. Zu den Beispielszenarien zählen Sicherheit, natürliche Benutzeroberflächen, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
 
-Der Gesichtserkennungsdienst stellt verschiedene Funktionen bereit. Jede dieser Funktion wird in den folgenden Abschnitten beschrieben. Weitere Informationen zu den einzelnen Funktionen finden Sie im Folgenden.
+Der Gesichtserkennungsdienst verfügt über mehrere unterschiedliche Funktionen, die in den folgenden Abschnitten beschrieben werden.
 
 ## <a name="face-detection"></a>Gesichtserkennung
 
@@ -69,7 +69,7 @@ Nachdem Sie eine Datenbank erstellt und trainiert haben, können Sie die Identif
 
 Weitere Informationen zur Personenidentifizierung finden Sie in den Konzepten der [Gesichtserkennung](concepts/face-recognition.md) oder der Referenzdokumentation zur [Identify-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-## <a name="use-containers"></a>Verwenden von Containern
+## <a name="containers"></a>Container
 
 [Verwenden Sie den Gesichtserkennungscontainer](face-how-to-install-containers.md), um Gesichter zu erkennen und zu identifizieren. Installieren Sie dazu einen standardisierten Docker-Container, der sich näher bei Ihren Daten befindet.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806112"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402196"
 ---
 # <a name="deploy-a-custom-model"></a>Bereitstellen eines benutzerdefinierten Modells
 
@@ -42,7 +42,7 @@ Protokolldaten stehen unter **Endpunkt > Details** zum Download zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Ihres benutzerdefinierten Endpunkts mit dem [Speech SDK](speech-sdk.md)
+* Erfahren Sie [hier](how-to-specify-source-language.md), wie Sie Ihr benutzerdefiniertes Modell verwenden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

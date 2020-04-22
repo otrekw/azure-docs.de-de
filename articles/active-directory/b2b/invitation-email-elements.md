@@ -5,75 +5,81 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 04/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65768365"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407222"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
-Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als Benutzer von B2B-Zusammenarbeit in Azure AD. Sie können diese verwenden, um die Vertrauenswürdigkeit des Empfängers zu erhöhen. Sie können der E-Mail Rechtmäßigkeit und Glaubwürdigkeit verleihen, um sicherzustellen, dass der Empfänger ohne Bedenken die Schaltfläche **Loslegen** auswählt und die Einladung annimmt. Diese Vertrauensstellung ist eine der wichtigsten Voraussetzungen dafür, Konflikte bei der Freigabe zu reduzieren. Außerdem können Sie die E-Mail damit auch viel ansprechender machen.
+Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als Benutzer von B2B-Zusammenarbeit in Azure AD. Auch wenn es [nicht erforderlich ist, eine E-Mail zu senden, um eine Person mit B2B Collaboration einzuladen](add-user-without-invite.md), erhalten die Benutzer auf diese Weise alle benötigten Informationen, um entscheiden zu können, ob sie Ihre Einladung akzeptieren. Außerdem erhalten sie einen Link, auf den sie in Zukunft zurückgreifen können, wenn sie zu Ihren Ressourcen zurückkehren möchten.
 
 ![Screenshot, der die B2B-Einladungs-E-Mail zeigt](media/invitation-email-elements/invitation-email.png)
 
+> [!NOTE]
+> Diese neue E-Mail-Vorlage wird derzeit noch für alle Mandanten eingeführt, sodass einige Mandanten immer noch ein älteres Design verwenden. Ab Ende Mai 2020 wird diese Vorlage in Einladungen aller Mandanten verwendet.
+
 ## <a name="explaining-the-email"></a>Erläuterungen zur E-Mail
+
 Sehen wir uns einige Elemente der E-Mail an, damit Sie diese Funktionen optimal nutzen können.
 
 ### <a name="subject"></a>Subject
-Der Betreff der E-Mail folgt dem folgenden Muster: Einladung der Organisation von &lt;Mandantenname&gt;
+
+Der Betreff der E-Mail folgt diesem Muster:
+
+&lt;Benutzername&gt; hat Sie zum Zugriff auf Anwendungen in seiner Organisation eingeladen.
 
 ### <a name="from-address"></a>Absenderadresse
-Wir verwenden ein LinkedIn-ähnliches Muster für die Absenderadresse.  Sie sollten klarstellen, wer der einladende Benutzer ist und welchem Unternehmen er angehört. Außerdem soll deutlich werden, dass die E-Mail von einer Microsoft-E-Mail-Adresse stammt. Das Format lautet: Microsoft-Einladungen <invites@microsoft.com> oder &lt;Anzeigename des Einladenden&gt; von &lt;Mandantenname&gt; (über Microsoft) <invites@microsoft.com>.
+
+Wir verwenden ein LinkedIn-ähnliches Muster für die Absenderadresse. Dieses Muster sollte deutlich machen, dass die E-Mail zwar von invites@microsoft.com stammt, die Einladung jedoch von einer anderen Organisation. Das Format lautet: Microsoft-Einladungen <invites@microsoft.com> oder Microsoft-Einladungen im Namen von &lt;Mandantenname&gt; <invites@microsoft.com>. 
 
 ### <a name="reply-to"></a>Antworten an
+
 Die Antwort-E-Mail-Adresse wird auf die E-Mail-Adresse des einladenden Benutzers festgelegt (falls verfügbar). Wenn eine Antwort auf die E-Mail gesendet wird, gelangt diese zurück an den einladenden Benutzer.
 
-### <a name="branding"></a>Branding
-Die Einladungs-E-Mails von Ihrem Mandanten verwenden das Unternehmensbranding, das Sie möglicherweise für Ihren Mandanten eingerichtet haben. Wenn Sie diese Funktion nutzen möchten, finden Sie [hier](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) die Informationen zur Konfiguration. Das Bannerlogo wird in der E-Mail angezeigt. Befolgen Sie die [hier](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) aufgeführten Anweisungen zur Bildgröße und -qualität, um ein optimales Ergebnis zu erzielen. Darüber hinaus wird auch der Unternehmensname in der Handlungsaufforderung angezeigt.
+### <a name="phishing-warning"></a>Phishingwarnung
 
-### <a name="call-to-action"></a>Call-to-Action (Handlungsaufforderung)
-Die Handlungsaufforderung besteht aus zwei Teilen: der Erläuterung, warum der Empfänger die E-Mail erhalten hat, und der Aktion, die vom Empfänger erwartet wird.
-- Für den Abschnitt „Warum“ kann das folgende Muster verwendet werden: Sie wurden eingeladen, auf Anwendungen in der Organisation von &lt;Mandantenname&gt; zuzugreifen.
+Die E-Mail beginnt mit einer kurzen Warnung für den Benutzer über Phishing und benachrichtigt ihn, dass er nur erwartete Einladungen akzeptieren sollte. Sie sollten sicherstellen, dass die Partner, die Sie einladen, von Ihrer Einladung nicht überrascht werden, indem Sie sie im Vorfeld erwähnen.
 
-- Der Bereich „Erwartete Aktion“ wird durch die Schaltfläche **Loslegen** dargestellt. Wenn der Empfänger hinzugefügt wurde, ohne dass eine Einladung erforderlich ist, wird diese Schaltfläche nicht angezeigt.
+![Abbildung der Phishingwarnung in der E-Mail](media/invitation-email-elements/phishing-warning.png)
 
 ### <a name="inviters-information"></a>Informationen zum einladenden Benutzer
-Der Anzeigename des einladenden Benutzers ist in der E-Mail enthalten. Wenn Sie ein Profilbild für Ihr Azure AD-Konto eingerichtet haben, ist auch dieses Bild in der Einladungs-E-Mail enthalten. Beides dient dazu, das Vertrauen Ihres Empfängers in die E-Mail zu erhöhen.
 
-Wenn Sie noch kein Profilbild eingerichtet haben, wird anstelle des Bilds ein Symbol mit den Initialen des einladenden Benutzers gezeigt:
+Die E-Mail enthält Informationen zu der einladenden Person und der Organisation, von der die Einladung gesendet wird. Dies umfasst den Namen und die E-Mail-Adresse des Absenders sowie den Namen und die primäre Domäne, die der Organisation zugeordnet sind. Alle diese Informationen sollen der eingeladenen Person dabei helfen, eine fundierte Entscheidung zum Akzeptieren der Einladung zu treffen.
 
-  ![Screenshot, der die Einladung mit den Initialen des Einladenden zeigt](media/invitation-email-elements/inviters-initials.png)
+![Abbildung der Informationen der einladenden Person in der E-Mail](media/invitation-email-elements/inviters-information.png)
 
-### <a name="body"></a>Body
-Der Text enthält die Nachricht, die der einladende Benutzer erstellt, wenn er [einen Gastbenutzer zu einem Verzeichnis, einer Gruppe oder einer App einlädt](add-users-administrator.md) oder [die Einladungs-API verwendet](customize-invitation-api.md). Dies ist ein Textbereich, der aus Sicherheitsgründen keine HTML-Tags verarbeitet.
+### <a name="invitation-message"></a>Einladungsnachricht
 
-  ![Screenshot mit dem Text der Einladungs-E-Mail](media/invitation-email-elements/invitation-email-body.png)
+Wenn die einladende Person beim [Einladen eines Gastbenutzers in das Verzeichnis, die Gruppe oder die App](add-users-administrator.md) oder bei [Verwendung der Einladungs-API](customize-invitation-api.md) eine Nachricht einschließt, wird diese im Hauptabschnitt der E-Mail hervorgehoben. Außerdem sind der Name der einladenden Person und ihr Profilbild enthalten, sofern sie eines festgelegt hat. Die Meldung selbst ist ein Textbereich, daher werden aus Sicherheitsgründen keine HTML-Tags verarbeitet.
+
+![Abbildung der Einladungsnachricht in der E-Mail](media/invitation-email-elements/invitation-message.png)
+
+### <a name="accept-button-and-redirect-url"></a>Schaltfläche „Akzeptieren“ und Umleitungs-URL
+
+Der nächste Abschnitt der E-Mail enthält Informationen darüber, wohin die eingeladene Person nach dem Akzeptieren der Einladung geleitet wird, sowie eine Schaltfläche zu diesem Zweck.  In Zukunft kann die eingeladene Person diesen Link immer verwenden, um direkt zu Ihren Ressourcen zurückzukehren.
+
+![Abbildung der Schaltfläche „Akzeptieren“ und der Umleitungs-URL in der E-Mail](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>Fußzeilenabschnitt
-Die Fußzeile enthält die Microsoft-Unternehmensmarke und informiert den Empfänger, wenn die E-Mail von einem nicht überwachten Alias aus gesendet wurde. 
 
-Sonderfälle:
+Die Fußzeile enthält weitere Informationen zu der gesendeten Einladung. Es gibt immer eine Option, mit der die eingeladene Person zukünftige Einladungen blockieren kann. Wenn die Organisation [eine Datenschutzerklärung festgelegt hat](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), wird hier der entsprechende Link angezeigt.  Andernfalls zeigt ein Hinweis an, dass die Organisation keine Datenschutzerklärung festgelegt hat.
 
-- Der einladende Benutzer besitzt keine E-Mail-Adresse im einladenden Mandanten.
-
-  ![Screenshot, wenn ein Einladender keine E-Mail-Adresse auf dem einladenden Mandanten besitzt](media/invitation-email-elements/inviter-no-email.png)
-
-
-- Der Empfänger muss die Einladung nicht annehmen.
-
-  ![Screenshot, wenn der Empfänger die Einladung nicht einlösen muss](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
-
+![Abbildung des Footerabschnitts in der E-Mail](media/invitation-email-elements/footer-section.png)
+ 
 ## <a name="how-the-language-is-determined"></a>So wird die Sprache bestimmt
-Die den Gastbenutzern in der Einladungs-E-Mail angezeigte Sprache richtet sich nach den folgenden Einstellungen. Diese Einstellungen sind in der Reihenfolge ihres Auftretens aufgeführt. Wenn eine Einstellung nicht konfiguriert ist, bestimmt die nächste Einstellung in der Liste die Sprache. 
+
+Die den Gastbenutzern in der Einladungs-E-Mail angezeigte Sprache richtet sich nach den folgenden Einstellungen. Diese Einstellungen sind in der Reihenfolge ihres Auftretens aufgeführt. Wenn eine Einstellung nicht konfiguriert ist, bestimmt die nächste Einstellung in der Liste die Sprache.
+
 - Die **messageLanguage**-Eigenschaft des [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
 -   Die **preferredLanguage**-Eigenschaft, die im [user-Objekt](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
 -   Die **Benachrichtigungssprache**, die in den Eigenschaften des Stammmandanten des Gastbenutzers (nur bei Azure AD-Mandanten) festgelegt wurde

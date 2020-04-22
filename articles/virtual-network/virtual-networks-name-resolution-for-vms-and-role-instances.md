@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059982"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262195"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -87,6 +88,7 @@ Reverse-DNS wird in allen auf Azure Resource Manager basierenden virtuellen Netz
 * Forward-Lookup für FQDNs im Format \[VM-Name\].internal.cloudapp.net wird in die IP-Adresse aufgelöst, die dem virtuellen Computer zugewiesen ist.
 * Wenn das virtuelle Netzwerk mit [privaten Azure DNS-Zonen](../dns/private-dns-overview.md) als virtuelles Registrierungsnetzwerk verknüpft ist, geben die Reverse-DNS-Abfragen zwei Einträge zurück. Ein Eintrag hat das Format \[VM-Name\].[Name_der_privaten_Zone] und der andere das Format \[VM-Name\].internal.cloudapp.net
 * Reverse-DNS-Lookup ist auf ein bestimmtes virtuelles Netzwerk begrenzt, auch bei Peerings mit anderen virtuellen Netzwerken. Reverse-DNS-Abfragen (PTR-Abfragen) für IP-Adressen virtueller Computer im Peering mit virtuellen Netzwerken geben NXDOMAIN zurück.
+* Wenn Sie die Reverse-DNS-Funktion in einem virtuellen Netzwerk deaktivieren möchten, können Sie dazu mit [Azure DNS Private Zones](../dns/private-dns-overview.md) eine Reverse-Lookup-Zone erstellen und diese mit Ihrem virtuellen Netzwerk verknüpfen. Wenn der IP-Adressraum des virtuellen Netzwerks z. B. 10.20.0.0/16 lautet, können Sie die leere private DNS-Zone 20.10.in-addr.arpa erstellen und diese mit dem virtuellen Netzwerk verknüpfen. Beim Verknüpfen der Zone mit dem virtuellen Netzwerk sollten Sie die automatische Registrierung für den Link deaktivieren. Diese Zone setzt die Reverse-Lookup-Standardzonen für das virtuelle Netzwerk außer Kraft, und da diese Zone leer ist, erhalten Sie für Ihre Reverse-DNS-Abfragen NXDOMAIN. Weitere Informationen zum Erstellen einer privaten DNS-Zone und Verknüpfen der Zone mit einem virtuellen Netzwerk finden Sie in unserem [Schnellstart](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal).
 
 > [!NOTE]
 > Wenn Sie möchten, dass sich Reverse-DNS-Lookup über ein virtuelles Netzwerk erstreckt, können Sie eine Reverse-Lookup-Zone (in-addr.arpa [private Azure DNS-Zonen](../dns/private-dns-overview.md)) erstellen und diese mit mehreren virtuellen Netzwerken verknüpfen. Sie müssen jedoch die Reverse-DNS-Einträge für die virtuellen Computer manuell verwalten.
@@ -185,8 +187,7 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, so
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
 > [!NOTE]
-> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein. Eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) sollte jedem virtuellen DNS-Servercomputer zugewiesen werden. 
-> 
+> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein.
 
 ### <a name="web-apps"></a>Web-Apps
 Angenommen, Sie müssen Namensauflösung aus Ihrer Web-App, die mithilfe von App Service erstellt wurde und mit einem virtuellen Netzwerk verbunden ist, für virtuelle Computer im gleichen virtuellen Netzwerk ausführen. Zusätzlich zur Einrichtung eines benutzerdefinierten DNS-Servers mit DNS-Weiterleitung, die Abfragen an Azure weiterleitet (virtuelle IP-Adresse 168.63.129.16), führen Sie die folgenden Schritte aus:
@@ -199,7 +200,7 @@ Wenn Sie eine Namensauflösung von Ihrer mit App Service erstellten und mit eine
 
 * Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) zur Verfügung. 
 * Richten Sie eine DNS-Weiterleitung im virtuellen Quellnetzwerk auf einem virtuellen Computer ein. Konfigurieren Sie diese DNS-Weiterleitung für das Weiterleiten von Abfragen an den DNS-Server in Ihrem virtuellen Zielnetzwerk.
-* Konfigurieren Sie den DNS-Quellserver unter den Einstellungen für Ihr virtuelles Quellnetzwerk.
+* Konfigurieren Sie den DNS-Quellserver in den Einstellungen für Ihr virtuelles Quellnetzwerk.
 * Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App, um eine Verknüpfung mit dem virtuellen Quellnetzwerk herzustellen. Befolgen Sie dazu die Anweisungen unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Wählen Sie im Azure-Portal für den App Service-Plan, in dem die Web-App gehostet wird, unter **Netzwerk** > **Integration des virtuellen Netzwerks** die Option **Netzwerk synchronisieren** aus.
 

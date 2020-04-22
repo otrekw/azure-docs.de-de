@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130886"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419305"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -116,7 +116,7 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z.B. in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
+       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z. B. in „IhrnameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
    2. Wählen Sie Ihr Azure- **Abonnement**aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
@@ -160,7 +160,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: 
 
     ![Kopier-Assistent – Seite Eingabeordner auswählen](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. Sobald Sie auf **Weiter** geklickt haben, werden die Dateiformateinstellungen automatisch erkannt.  Stellen Sie sicher, dass das Spaltentrennzeichen als „|“ statt des standardmäßigen Kommas „,“ eingestellt ist.  Klicken Sie auf **Weiter** nachdem Sie die Daten in der Vorschau angezeigt haben.
+4. Sobald Sie auf **Weiter** geklickt haben, werden die Dateiformateinstellungen automatisch erkannt.  Stellen Sie sicher, dass das Spaltentrennzeichen als „|“ anstelle des standardmäßigen Kommas „,“ festgelegt ist.  Klicken Sie auf **Weiter** nachdem Sie die Daten in der Vorschau angezeigt haben.
 
     ![Kopiertool – Dateiformateinstellungen](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 

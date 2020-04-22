@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991349"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314173"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
 
-HDInsight-Cluster bieten über das Internet Zugriff auf die Apache Ambari-Webbenutzeroberfläche, allerdings benötigen einige Features einen SSH-Tunnel. Beispielsweise kann ohne SSH-Tunnel nicht über das Internet auf die Webbenutzeroberfläche für den Apache Oozie-Dienst zugegriffen werden.
+HDInsight-Cluster bieten über das Internet Zugriff auf die Apache Ambari-Webbenutzeroberfläche. Für einige Features ist ein SSH-Tunnel erforderlich. Beispielsweise kann ohne SSH-Tunnel nicht über das Internet auf die Webbenutzeroberfläche für Apache Oozie zugegriffen werden.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Weshalb ist die Verwendung eines SSH-Tunnels empfehlenswert?
 
@@ -31,7 +31,7 @@ Die folgenden Webbenutzeroberflächen erfordern einen SSH-Tunnel:
 * Oozie-Webbenutzeroberfläche
 * Benutzeroberfläche für HBase-Master und -Protokolle
 
-Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die einen Webdienst verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
+Dienste, die mit Skriptaktionen installiert wurden und einen Webdienst verfügbar machen, benötigen einen SSH-Tunnel. Mit einer Skriptaktion installiertes Hue erfordert einen SSH-Tunnel für den Zugriff auf die Webbenutzeroberfläche.
 
 > [!IMPORTANT]  
 > Wenn Sie über ein virtuelles Netzwerk Direktzugriff auf HDInsight haben, müssen Sie keine SSH-Tunnel verwenden. Ein Beispiel für Direktzugriff auf HDInsight über ein virtuelles Netzwerk finden Sie im Dokument [Connect HDInsight to your on-premise network](connect-on-premises-network.md) (Verbinden von HDInsight mit Ihrem lokalen Netzwerk, in englischer Sprache).
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
 
-* **D 9876**: Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.
-* **C** : Alle Daten werden komprimiert, da der Webdatenverkehr hauptsächlich aus Text besteht.
-* **2** : SSH zwingen, nur Protokollversion 2 zu verwenden.
-* **q** : Stiller Modus.
-* **T:** Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
-* **n:** Lesevorgang für STDIN verhindern, da lediglich ein Port weitergeleitet wird.
-* **N:** Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
-* **f** : Im Hintergrund ausführen.
+    |Option |BESCHREIBUNG |
+    |---|---|
+    |D 9876|Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.|
+    |C|Komprimiert alle Daten, da der Webdatenverkehr hauptsächlich aus Text besteht.|
+    |2|Erzwingt für SSH, dass nur Protokollversion 2 verwendet wird.|
+    |q|Stiller Modus.|
+    |T|Deaktiviert die Pseudo-TTY-Zuordnung, da lediglich ein Port weitergeleitet wird.|
+    |n|Verhindert das Lesen von STDIN, da lediglich ein Port weitergeleitet wird.|
+    |N|Verhindert das Ausführen von Remotebefehlen, da lediglich ein Port weitergeleitet wird.|
+    |f|Erzwingt die Ausführung im Hintergrund.|
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.
 
@@ -85,7 +87,7 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Wenn Sie noch keine gespeicherte Sitzung haben, geben Sie Ihre Verbindungsdaten ein:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Hostname (oder IP-Adresse)|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
     |Port|22|
@@ -99,7 +101,7 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Quellport|Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.|
     |Destination|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|

@@ -5,18 +5,21 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281492"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263026"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurieren der Leadverwaltung in Salesforce
 
-In diesem Artikel ist beschrieben, wie Sie Ihr Salesforce-System einrichten, um Vertriebsleads aus dem Marketplace-Angebot zu verarbeiten.
+In diesem Artikel wird beschrieben, wie Sie Ihr Salesforce-System einrichten, um Vertriebsleads aus Ihrem Angebot im kommerziellen Marketplace zu verarbeiten.
+
+> [!Note]
+> Der Marketplace unterstützt keine vorab aufgefüllten Listen, z. B. Listen von Werten für das Feld **Country**. Stellen Sie vor dem Fortfahren sicher, dass keine Listen eingerichtet sind. Alternativ können Sie einen [HTTPS-Endpunkt](./commercial-marketplace-lead-management-instructions-https.md) oder eine [Azure-Tabelle](./commercial-marketplace-lead-management-instructions-azure-table.md) für den Erhalt von Leads konfigurieren.
 
 ## <a name="set-up-your-salesforce-system"></a>Einrichten des Salesforce-Systems
 
@@ -26,14 +29,16 @@ In diesem Artikel ist beschrieben, wie Sie Ihr Salesforce-System einrichten, um 
     ![Einrichtung von Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Navigieren Sie auf der Seite „Setup“ über den linken Navigationsbereich zu **Platform Tools (Plattformtools) > Feature Settings (Featureeinstellungen) > Marketing > Web-to-Lead**.
-    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Web-to-Lead in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Wenn Sie die klassische Salesforce-Benutzeroberfläche verwenden:
     1. Wählen Sie auf der Salesforce-Startseite **Setup** aus.
     ![Klassisches Salesforce-Setup](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. Navigieren Sie auf der Seite „Setup“ über den linken Navigationsbereich zu **Build (Erstellen) > Customize (Anpassen) > Leads > Web-to-Lead**.
-    ![Klassisches Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Web-to-Lead in Salesforce (klassisch)](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 Die restlichen Anweisungen sind identisch, unabhängig davon, welche Salesforce-Darstellung Sie verwenden.
 
@@ -59,11 +64,15 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 
 1. Wählen Sie im Popupfenster „Verbindungsdetails“ **Salesforce** als **Leadzielgruppe** aus, und fügen Sie die `oid` aus dem in den vorherigen Schritten erstellten Web-to-Lead-Formular in das Feld **Organisations-ID** ein.
 
-1. Wählen Sie **Speichern** aus. 
+1. **Kontakt-E-Mail**: Geben Sie E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
 
-    >[!Note]
-    >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.
+1. Klicken Sie auf **OK**.
 
-    ![Verbindungsdetails – Leadzielgruppe auswählen](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+Klicken Sie auf die Schaltfläche „Überprüfen“, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
 
-    ![Verbindungsdetails – Leadzielgruppe auswählen](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.
+
+![Verbindungsdetails – Leadzielgruppe auswählen](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Verbindungsdetails – Leadzielgruppe auswählen](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

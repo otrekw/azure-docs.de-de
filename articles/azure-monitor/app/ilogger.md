@@ -4,12 +4,12 @@ description: Beispiele für die Verwendung des Azure Application Insights-ILogge
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276375"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313661"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider für .NET Core-ILogger-Protokolle
 
@@ -213,7 +213,7 @@ Sie können weiterhin den alten-Anbieter verwenden. (Er wird erst bei einer Umst
 - In ASP.NET Core (2.0 und höher) wird zum [Aktivieren von Protokollierungsanbietern](https://github.com/aspnet/Announcements/issues/255) empfohlen, Erweiterungsmethoden für ILoggingBuilder in **Program.cs** selbst zu verwenden.
 
 > [!Note]
-> Der neue Anbieter ist für Anwendungen verfügbar, die auf NETSTANDARD2.0 oder höher ausgelegt sind. Wenn Ihre Anwendung auf ältere .NET Core-Versionen wie .NET Core 1.1 oder das .NET Framework ausgelegt ist, verwenden Sie weiterhin den alten Anbieter.
+> Der neue Anbieter ist für Anwendungen verfügbar, die auf NETSTANDARD2.0 oder höher ausgelegt sind. Ab Version 2.14.0 des [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) ist auch ein neuer Anbieter für Anwendungen verfügbar, die .NET Framework NET461 oder höher als Ziel haben. Wenn Ihre Anwendung auf ältere .NET Core-Versionen wie .NET Core 1.1 oder .NET Framework unter NET46 ausgelegt ist, verwenden Sie weiterhin den alten Anbieter.
 
 ## <a name="console-application"></a>Konsolenanwendung
 

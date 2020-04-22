@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234690"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405388"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -27,6 +27,8 @@ Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gern
 Die Preise für [Azure Application Insights][start] richten sich nach einem Modell mit **nutzungsbasierter Bezahlung** basierend auf dem verbrauchten Datenvolumen und mit optional längerer Datenaufbewahrung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights von Ihrer Anwendung empfängt. Für die Verwendung von [Live Metrics Stream](../../azure-monitor/app/live-stream.md) fällt keine Gebühr für das Datenvolumen an.
 
 Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen. Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
+
+Die Application Insights-Option zum [Aktivieren von Warnungen für benutzerdefinierte Metrikdimensionen](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) kann ebenfalls zusätzliche Kosten erzeugen, da dies zur Erstellung zusätzlicher Metriken vor der Aggregation führen kann. [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) über protokollbasierte und vorab aggregierte Metriken in Application Insights sowie über die [Preise](https://azure.microsoft.com/pricing/details/monitor/) für benutzerdefinierte Metriken in Azure Monitor.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung
 
@@ -216,7 +218,9 @@ Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application I
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
 
-Die Aufbewahrungsdauer kann auch [programmgesteuert mithilfe von PowerShell](powershell.md#set-the-data-retention) festgelegt werden, indem der Parameter `retentionInDays` verwendet wird. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Bereinigungsfunktion wird nur über Azure Resource Manager bereitgestellt und sollte mit äußerster Sorgfalt verwendet werden. Die tägliche Zurücksetzungszeit für das Datenvolumenlimit kann mithilfe von Azure Resource Manager konfiguriert werden, um den `dailyQuotaResetTime`-Parameter festzulegen.
+Wenn die Aufbewahrungsdauer gesenkt wird, besteht ein Toleranzzeitraum von mehreren Tagen, bevor die ältesten Daten entfernt werden.
+
+Die Aufbewahrungsdauer kann auch [programmgesteuert mithilfe von PowerShell](powershell.md#set-the-data-retention) festgelegt werden, indem der Parameter `retentionInDays` verwendet wird. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen. Dies kann für Szenarien im Zusammenhang mit Compliance nützlich sein. Diese Bereinigungsfunktion wird nur über Azure Resource Manager bereitgestellt und sollte mit äußerster Sorgfalt verwendet werden. Die tägliche Zurücksetzungszeit für das Datenvolumenlimit kann mithilfe von Azure Resource Manager konfiguriert werden, um den `dailyQuotaResetTime`-Parameter festzulegen.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Datenübertragungsgebühren bei Verwendung von Application Insights
 

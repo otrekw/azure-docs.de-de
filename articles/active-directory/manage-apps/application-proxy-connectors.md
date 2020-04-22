@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406830"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -153,12 +153,17 @@ Zur Bereitstellung eines sicheren Diensts müssen sich Connectors beim Dienst au
 
 Die verwendeten Zertifikate gelten nur für den Anwendungsproxydienst. Sie werden während der ersten Registrierung erstellt und von den Connectors alle paar Monate automatisch verlängert.
 
+Nach der ersten erfolgreichen Zertifikatsverlängerung hat der Azure AD-Anwendungsproxy-Connectordienst (Netzwerkdienst) keine Berechtigung, das alte Zertifikat aus dem Speicher des lokalen Computers zu entfernen. Wenn das Zertifikat abgelaufen ist oder nicht mehr vom Dienst verwendet wird, können Sie es problemlos löschen.
+
+Um Probleme bei der Zertifikatsverlängerung zu vermeiden, müssen Sie sicherstellen, dass die Netzwerkkommunikation zwischen dem Connector und den [dokumentierten Zielen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) aktiviert ist.
+
 Wenn ein Connector über mehrere Monate hinweg keine Verbindung mit dem Dienst herstellt, sind die Zertifikate möglicherweise veraltet. In diesem Fall müssen Sie den Connector deinstallieren und neu installieren, um die Registrierung auszulösen. Sie können die folgenden PowerShell-Befehle ausführen:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+Weitere Informationen zum Überprüfen des Zertifikats und zur Problembehandlung finden Sie unter [Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
 
 ## <a name="under-the-hood"></a>Hinter den Kulissen
 

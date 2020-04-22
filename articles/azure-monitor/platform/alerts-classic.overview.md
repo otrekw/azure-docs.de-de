@@ -1,15 +1,15 @@
 ---
-title: Überblick über klassische Warnungen in Microsoft Azure und Microsoft Azure Monitor
+title: Übersicht über klassische Warnungen in Azure Monitor
 description: Klassische Warnungen sind veraltet. Mit Warnungen können Sie Metriken, Ereignisse oder Protokolle für Ihre Azure-Ressourcen überwachen. Lassen Sie sich benachrichtigen, wenn eine von Ihnen festgelegte Bedingung erfüllt ist.
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668265"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114499"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
@@ -28,20 +28,20 @@ Sie können klassische Warnungen nur auf dem Benutzerbildschirm für klassische 
  ![Warnungsoptionen im Azure-Portal](media/alerts-classic.overview/monitor-alert-screen2.png)
 
 Die neuere Benutzeroberfläche „Warnungen“ bietet gegenüber der Oberfläche für klassische Warnungen folgende Vorteile:
--   **Besseres Benachrichtigungssystem:** – Alle neuere Warnungen verwenden Aktionsgruppen. Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können. Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen.
--   **Einheitliche Oberfläche für die Erstellung** – Alle Funktionen zum Erstellen von Warnungen für Metriken, Protokolle und Aktivitätsprotokolle für Azure Monitor, Log Analytics und Application Insights befinden sich an einem Ort.
--   **Anzeige von ausgelösten Log Analytics-Warnungen im Azure-Portal** – Sie können nun auch ausgelöste Log Analytics-Warnungen in Ihrem Abonnement sehen. Zuvor wurden diese in einem separaten Portal angezeigt.
--   **Unterscheidung zwischen ausgelösten Warnungen und Warnungsregeln** – Warnungsregeln (der Definition der Bedingung, die eine Warnung auslöst) und ausgelöste Warnungen (einer Instanz zur Auslösung von Warnungsregeln) werden unterschieden, sodass die Betriebs- und Konfigurationsansichten getrennt sind.
--   **Verbesserter Workflow** – Die neue Oberfläche zum Erstellen von Warnungen führt den Benutzer durch die Konfiguration einer Warnungsregel, was die Auswahl der entsprechenden Warnungselemente vereinfacht.
--   **Konsolidierung von intelligenten Warnungen** und **Festlegen des Warnungsstatus** – Neuere Warnungen umfassen eine automatische Gruppierungsfunktion, die ähnliche Warnungen zusammen anzeigt, um die Überladung der Benutzeroberfläche zu vermeiden. 
+- **Besseres Benachrichtigungssystem:** – Alle neuere Warnungen verwenden Aktionsgruppen. Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können. Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen.
+- **Einheitliche Oberfläche für die Erstellung** – Alle Funktionen zum Erstellen von Warnungen für Metriken, Protokolle und Aktivitätsprotokolle für Azure Monitor, Log Analytics und Application Insights befinden sich an einem Ort.
+- **Anzeige von ausgelösten Log Analytics-Warnungen im Azure-Portal** – Sie können nun auch ausgelöste Log Analytics-Warnungen in Ihrem Abonnement sehen. Zuvor wurden diese in einem separaten Portal angezeigt.
+- **Unterscheidung zwischen ausgelösten Warnungen und Warnungsregeln** – Warnungsregeln (der Definition der Bedingung, die eine Warnung auslöst) und ausgelöste Warnungen (einer Instanz zur Auslösung von Warnungsregeln) werden unterschieden, sodass die Betriebs- und Konfigurationsansichten getrennt sind.
+- **Verbesserter Workflow** – Die neue Oberfläche zum Erstellen von Warnungen führt den Benutzer durch die Konfiguration einer Warnungsregel, was die Auswahl der entsprechenden Warnungselemente vereinfacht.
+- **Konsolidierung von intelligenten Warnungen** und **Festlegen des Warnungsstatus** – Neuere Warnungen umfassen eine automatische Gruppierungsfunktion, die ähnliche Warnungen zusammen anzeigt, um die Überladung der Benutzeroberfläche zu vermeiden. 
 
 Die neueren Metrikwarnungen haben folgende Vorteile gegenüber den klassischen Metrikwarnungen:
--   **Kürzere Wartezeit:** Neuere Metrikwarnungen können im Minutentakt ausgeführt werden. Ältere Metrikwarnungen werden immer nur alle fünf Minuten ausgeführt. Neuere Warnungen weisen eine immer geringere Verzögerung vom Auftreten des Problems bis zur Benachrichtigung oder Aktion auf (drei bis fünf Minuten). Ältere Warnungen dauern je nach Typ 5 bis 15 Minuten.  Protokollwarnungen verzögern sich aufgrund der Zeit, die bis zur Aufnahme der Protokolle vergeht, in der Regel um 10 bis 15 Minuten, aber neuere Verarbeitungsmethoden reduzieren diese Zeit. 
--   **Unterstützung mehrdimensionaler Metriken:** Für dimensionale Metriken können Warnungen ausgegeben werden, um ein für Sie interessantes Segment der Metrik zu überwachen.
--   **Mehr Kontrolle über Metrikbedingungen:** Sie können umfangreichere Warnungsregeln definieren. Die neueren Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
--   **Kombinierte Überwachung mehrerer Metriken:** Sie können mehrere Metriken (aktuell bis zu zwei) mit einer einzelnen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihren jeweiligen Schwellenwert für den angegebenen Zeitraum überschreiten.
--   **Besseres Benachrichtigungssystem:** Alle neueren Warnungen verwenden [Aktionsgruppen](../../azure-monitor/platform/action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können.  Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
--   **Metriken aus Protokollen** (Public Preview): Bei Log Analytics eingehende Protokolldaten können jetzt extrahiert und in Azure Monitor-Metriken konvertiert werden. Dadurch können sie genau wie andere Metriken in Warnungen genutzt werden. Informationen zur spezifischen Terminologie für klassische Warnungen finden Sie unter [Warnungen (klassisch)](alerts-classic.overview.md). 
+- **Kürzere Wartezeit:** Neuere Metrikwarnungen können im Minutentakt ausgeführt werden. Ältere Metrikwarnungen werden immer nur alle fünf Minuten ausgeführt. Neuere Warnungen weisen eine immer geringere Verzögerung vom Auftreten des Problems bis zur Benachrichtigung oder Aktion auf (drei bis fünf Minuten). Ältere Warnungen dauern je nach Typ 5 bis 15 Minuten.  Protokollwarnungen verzögern sich aufgrund der Zeit, die bis zur Aufnahme der Protokolle vergeht, in der Regel um 10 bis 15 Minuten, aber neuere Verarbeitungsmethoden reduzieren diese Zeit. 
+- **Unterstützung mehrdimensionaler Metriken:** Für dimensionale Metriken können Warnungen ausgegeben werden, um ein für Sie interessantes Segment der Metrik zu überwachen.
+- **Mehr Kontrolle über Metrikbedingungen:** Sie können umfangreichere Warnungsregeln definieren. Die neueren Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
+- **Kombinierte Überwachung mehrerer Metriken:** Sie können mehrere Metriken (aktuell bis zu zwei) mit einer einzelnen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihren jeweiligen Schwellenwert für den angegebenen Zeitraum überschreiten.
+- **Besseres Benachrichtigungssystem:** Alle neueren Warnungen verwenden [Aktionsgruppen](../../azure-monitor/platform/action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können.  Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
+- **Metriken aus Protokollen** (Public Preview): Bei Log Analytics eingehende Protokolldaten können jetzt extrahiert und in Azure Monitor-Metriken konvertiert werden. Dadurch können sie genau wie andere Metriken in Warnungen genutzt werden. Informationen zur spezifischen Terminologie für klassische Warnungen finden Sie unter [Warnungen (klassisch)](alerts-classic.overview.md). 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klassische Warnungen zu Azure Monitor-Daten

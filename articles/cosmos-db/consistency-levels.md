@@ -5,21 +5,21 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 4e3d29471064616039bf946bb2762c15ce67bf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530256"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380080"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
-Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: *starke* Konsistenz und *letztliche* Konsistenz. Die Linearisierbarkeit oder das Modell für starke Konsistenz ist der Goldstandard in Sachen Datenprogrammierbarkeit. Es wird jedoch teuer durch hohe Wartezeit (im stabilen Zustand) bzw. durch geringere Verfügbarkeit (im Fall eines Ausfalls) erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich. 
+Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: *starke* Konsistenz und *letztliche* Konsistenz. Die Linearisierbarkeit oder das Modell für starke Konsistenz ist der Goldstandard bei der Datenprogrammierbarkeit. Es wird jedoch teuer durch hohe Schreiblatenz (im stabilen Zustand) bzw. durch geringere Verfügbarkeit (im Fall eines Ausfalls) erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich.
 
-Azure Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Die starke und die letztliche Konsistenz bilden die beiden Enden des Spektrums, aber dazwischen gibt es viele weitere Konsistenzoptionen. Entwickler können mit diesen Optionen eine genaue Auswahl treffen und differenzierte Kompromisse in Bezug auf Hochverfügbarkeit und Leistung eingehen. 
+Azure Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Entwickler können mit diesen Optionen eine genaue Auswahl treffen und differenzierte Kompromisse in Bezug auf Hochverfügbarkeit und Leistung eingehen.
 
-Mit Azure Cosmos DB können Entwickler aus fünf klar definierten Konsistenzmodellen für das Konsistenzspektrum auswählen. Dabei handelt es sich um die folgenden Modelle (von der stärksten bis zur schwächsten Option): *starke Konsistenz*, *begrenzte Veraltung*, *Sitzungskonsistenz*, *Präfixkonsistenz* und *letztliche Konsistenz*. Die Modelle sind klar definiert und intuitiv und können für spezifische reale Szenarien verwendet werden. Jedes Modell ermöglicht [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch SLAs abgesichert. In der folgenden Abbildung sind die verschiedenen Konsistenzebenen als Spektrum dargestellt.
+Mit Azure Cosmos DB können Entwickler aus fünf klar definierten Konsistenzebenen für das Konsistenzspektrum auswählen. Zu den Konsistenzebenen gehören *Sicher*, *Begrenzte Veraltung*, *Sitzung*, *Präfixkonsistenz* und *Letztlich*. Die Ebenen sind klar definiert und intuitiv und können für spezifische reale Szenarien verwendet werden. Jede Ebene bietet [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch SLAs abgesichert. In der folgenden Abbildung sind die verschiedenen Konsistenzebenen als Spektrum dargestellt.
 
 ![Konsistenz als Spektrum](./media/consistency-levels/five-consistency-levels.png)
 
@@ -27,7 +27,7 @@ Die Konsistenzebenen sind regionsunabhängig und für alle Vorgänge garantiert,
 
 ## <a name="scope-of-the-read-consistency"></a>Geltungsbereich der Lesekonsistenz
 
-Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb eines Partitionsschlüsselbereichs bzw. einer logischen Partition. Ein Lesevorgang kann durch einen Remoteclient oder eine gespeicherte Prozedur ausgelöst werden.
+Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb einer logischen Partition. Ein Lesevorgang kann durch einen Remoteclient oder eine gespeicherte Prozedur ausgelöst werden.
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 
@@ -45,26 +45,49 @@ Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
   ![video](media/consistency-levels/strong-consistency.gif)
 
-- **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden: 
+- **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden:
 
-  * Anhand der Anzahl von Versionen (*K*) des Elements
-  * Anhand des Zeitintervalls (*T*) zwischen Lese- und Schreibvorgängen 
+- Anhand der Anzahl von Versionen (*K*) des Elements
+- Anhand des Zeitintervalls (*T*) zwischen Lese- und Schreibvorgängen
 
-  Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. Die starke Konsistenz weist die gleiche Semantik auf wie die begrenzte Veraltung. Das Veraltungszeitfenster ist gleich Null (0). Die begrenzte Veraltung wird auch als „Linearisierbarkeit mit Zeitverzögerung“ bezeichnet. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
+Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außerhalb des „Veraltungsfensters“. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
+
+Im Veraltungsfenster bietet die begrenzte Veraltung die folgenden Konsistenzgarantien:
+
+- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Sicher
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
+- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
+- Konsistenz für Clients, die in verschiedene Regionen für ein Multimasterkonto schreiben = Letztlich
 
   Die begrenzte Veraltung wird häufig von global verteilten Anwendungen genutzt, die niedrige Schreibwartezeiten erwarten, aber eine garantierte vollständige globale Reihenfolge benötigen. Begrenzte Veraltung eignet sich hervorragend für Anwendungen mit Gruppenzusammenarbeit und -freigabe, Börsenticker, Veröffentlichen-Abonnieren-Muster/Queueing und Ähnlichem. In der folgenden Grafik wird die begrenzte Veraltung anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Westen 2“ geschrieben wurden, wird der geschriebene Wert in den Regionen „USA, Osten 2“ und „Australien, Osten“ basierend auf der konfigurierten maximalen Verzögerung oder den maximalen Vorgängen gelesen:
 
   ![video](media/consistency-levels/bounded-staleness-consistency.gif)
 
-- **Sitzung (Session)** :  Die Lesevorgänge in einer einzelnen Clientsitzung berücksichtigen immer folgende Garantien: Präfixkonsistenz (sofern es sich um eine einzelne Schreibsitzung handelt), monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, erreichen auch irgendwann Konsistenz.
+- **Sitzung (Session)** :  Innerhalb einer einzelnen Clientsitzung berücksichtigen Lesevorgänge immer die folgenden Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Dabei wird davon ausgegangen, dass eine einzelne Schreibsitzung oder das Sitzungstoken für mehrere Writer gemeinsam genutzt wird.
 
-  Die Sitzungskonsistenz ist die gängige Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Die Region „USA, Westen 2“ und die Region „USA, Osten 2“ verwenden dieselbe Sitzung (Sitzung A) und lesen die Daten somit zu derselben Zeit. Die Region „Australien, Osten“ dagegen verwendet „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
+Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten folgende Garantien:
+
+- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Präfixkonsistenz
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
+- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
+- Konsistenz für Clients, die in mehrere Regionen für ein Multimasterkonto schreiben = Letztlich
+
+  Die Sitzungskonsistenz ist die gängige Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Für „USA, Westen 2“ (Schreiben) und „USA, Westen 2“ (Lesen) wird dieselbe Sitzung (Sitzung A) verwendet, sodass beide dieselben Daten zur gleichen Zeit lesen. Die Region „Australien, Osten“ dagegen verwendet „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
 
   ![video](media/consistency-levels/session-consistency.gif)
 
 - **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die Konsistenzebene „Präfixkonsistenz“ garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
-  Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals eine falsche Reihenfolge wie `A,C` oder `B,A,C` angezeigt. Die Präfixkonsistenz bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie Reihenfolgengarantien für Szenarien bereit, in denen die Reihenfolge relevant ist. In der folgenden Grafik wird die Präfixkonsistenz anhand von Noten veranschaulicht. In allen Regionen werden bei Lesevorgängen niemals Schreibvorgänge in der falschen Reihenfolge angezeigt:
+Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals eine falsche Reihenfolge wie `A,C` oder `B,A,C` angezeigt. Die Präfixkonsistenz bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie Reihenfolgengarantien für Szenarien bereit, in denen die Reihenfolge relevant ist. 
+
+Im Folgenden finden Sie die Konsistenzgarantien für Präfixkonsistenz:
+
+- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Präfixkonsistenz
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
+- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
+- Konsistenz für Clients, die in mehrere Regionen für ein Multimasterkonto schreiben = Letztlich
+
+In der folgenden Grafik wird die Präfixkonsistenz anhand von Noten veranschaulicht. In allen Regionen werden bei Lesevorgängen niemals Schreibvorgänge in der falschen Reihenfolge angezeigt:
 
   ![video](media/consistency-levels/consistent-prefix.gif)
 
@@ -79,7 +102,7 @@ In folgenden Ressourcen erfahren Sie mehr über Konsistenzkonzepte:
 
 - [High-level TLA+ specifications for the five consistency levels offered by Azure Cosmos DB](https://github.com/Azure/azure-cosmos-tla) (Allgemeine TLA+-Spezifikationen für die fünf von Azure Cosmos DB angebotenen Konsistenzebenen)
 - [Erläuterung der Konsistenz replizierter Daten anhand von Baseball (Video) von Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
-- [Erläuterung der Konsistenz replizierter Daten anhand von Baseball (Whitepaper) von Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
+- [Erläuterung der Konsistenz replizierter Daten anhand von Baseball (Whitepaper) von Doug Terry](https://www.microsoft.com/research/publication/replicated-data-consistency-explained-through-baseball/)
 - [Sitzungsgarantien für schwach konsistente replizierte Daten](https://dl.acm.org/citation.cfm?id=383631)
 - [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme: CAP ist nur ein Teil der Wahrheit](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
@@ -89,9 +112,8 @@ In folgenden Ressourcen erfahren Sie mehr über Konsistenzkonzepte:
 
 Lesen Sie die folgenden Artikel, um mehr über die Konsistenzebenen in Azure Cosmos DB zu erfahren:
 
-* [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](consistency-levels-choosing.md)
-* [Konsistenzebenen und Azure Cosmos DB-APIs](consistency-levels-across-apis.md)
-* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
-* [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level)
-* [Außerkraftsetzen der Standardkonsistenzebene](how-to-manage-consistency.md#override-the-default-consistency-level)
-
+- [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](consistency-levels-choosing.md)
+- [Konsistenzebenen und Azure Cosmos DB-APIs](consistency-levels-across-apis.md)
+- [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
+- [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level)
+- [Außerkraftsetzen der Standardkonsistenzebene](how-to-manage-consistency.md#override-the-default-consistency-level)

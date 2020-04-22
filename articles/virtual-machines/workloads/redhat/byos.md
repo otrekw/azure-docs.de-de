@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231198"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273170"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -120,7 +120,7 @@ In den folgenden Anweisungen wird der erste Bereitstellungsprozess für eine RHE
 1. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her, und überprüfen Sie, ob Sie ein nicht berechtigtes Image haben. Führen Sie für diesen Schritt `sudo yum repolist` aus. Verwenden Sie für RHEL 8 `sudo dnf repolist`. In der Ausgabe werden Sie aufgefordert, den virtuellen Computer mithilfe des Abonnement-Managers bei Red Hat zu registrieren.
 
 >[!NOTE]
->Bei RHEL 8 sind `dnf` und `yum` austauschbar. Weitere Informationen finden Sie im [RHEL 8-Administratorhandbuch](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings).
+>Bei RHEL 8 sind `dnf` und `yum` austauschbar. Weitere Informationen finden Sie im [RHEL 8-Administratorhandbuch](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>Verwenden der Red Hat Gold-Images in PowerShell
 
@@ -214,6 +214,7 @@ Schritte zum Anwenden von Azure Disk Encryption sind unter [Azure Disk Encryptio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen zu Red Hat Cloud Access finden Sie in der [Dokumentation zur öffentlichen Cloud mit Red Hat](https://access.redhat.com/public-cloud).
 - Schritt-für-Schritt-Anleitungen und Programmdetails für Cloud Access finden Sie in der [Red Hat-Dokumentation für Cloud Access](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index).
 - Weitere Informationen zur Red Hat-Updateinfrastruktur finden Sie unter [Azure Red Hat-Updateinfrastruktur](./redhat-rhui.md).
 - Weitere Informationen zu allen Red Hat-Images in Azure finden Sie auf der [Dokumentationsseite](./redhat-images.md).

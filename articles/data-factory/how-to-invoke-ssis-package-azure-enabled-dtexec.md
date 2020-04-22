@@ -6,19 +6,22 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931705"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414326"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Ausführen von SQL Server Integration Services-Paketen mit dem Azure-fähigen Hilfsprogramm dtexec
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In diesem Artikel wird das Azure-fähige Befehlszeilenhilfsprogramm dtexec (AzureDTExec) beschrieben. Es wird verwendet, um SSIS-Pakete (SQL Server Integration Services) unter Azure-SSIS Integration Runtime (IR) in Azure Data Factory auszuführen.
 
 Das traditionelle Hilfsprogramm dtexec wird mit SQL Server bereitgestellt. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017). Es wird häufig von externen Orchestratoren oder Planern wie ActiveBatch und Control-M aufgerufen, um SSIS-Pakete lokal auszuführen. 
@@ -46,19 +49,19 @@ Geben Sie im Fenster **AzureDTExecConfig** Ihre Konfigurationseinstellungen ein:
 - **ApplicationId**: Geben Sie den eindeutigen Bezeichner der zu erstellenden Azure AD-App mit den erforderlichen Berechtigungen für die Pipelinegenerierung in Ihrer Data Factory ein. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 - **AuthenticationKey**: Geben Sie den Authentifizierungsschlüssel für Ihre Azure AD-App ein.
 - **TenantId**: Geben Sie die eindeutige Kennung des Azure AD-Mandanten ein, unter dem Ihre Azure AD-App erstellt wird.
-- **SubscriptionId**: Geben Sie die eindeutige Kennung des Azure-Abonnements ein, unter dem Ihre Data Factory erstellt wurde.
-- **Ressourcengruppe**: Geben Sie den Namen der Azure-Ressourcengruppe ein, in der Ihre Data Factory erstellt wurde.
 - **DataFactory**: Geben Sie den Namen Ihrer Data Factory ein, in der eindeutige Pipelines mit der Aktivität „SSIS-Paket ausführen“ basierend auf den Werten der Optionen generiert werden, die beim Aufrufen von AzureDTExec angegeben wurden.
 - **IRName**: Geben Sie den Namen der Azure-SSIS IR-Instanz in Ihrer Data Factory ein, in der die Pakete, die in ihrem UNC-Pfad (Universal Naming Convention) angegeben sind, beim Aufrufen von AzureDTExec ausgeführt werden.
-- **PackageAccessDomain**: Geben Sie die Domäne (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
-- **PackageAccessUserName**: Geben Sie den Benutzernamen (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
-- **PackageAccessPassword**: Geben Sie das Kennwort (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
-- **LogPath**: Geben Sie den UNC-Pfad des Protokollordners ein, in den Protokolldateien Ihrer Paketausführungen in der Azure-SSIS IR-Instanz geschrieben werden.
-- **LogLevel:** Geben Sie den ausgewählten Protokollierungsbereich für Ihre Paketausführungen in der Azure-SSIS IR-Instanz ein. Folgende vordefinierte Optionen stehen zur Verfügung: **null** (NULL), **Basic** (Einfach), **Verbose** (Ausführlich) oder **Performance** (Leistung).
-- **LogAccessDomain**: Geben Sie die Domäne (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
-- **LogAccessUserName**: Geben Sie den Benutzernamen (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
-- **LogAccessPassword**: Geben Sie das Kennwort (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
 - **PipelineNameHashStrLen**: Geben Sie die Länge der Hashzeichenfolgen ein, die auf der Grundlage der Werte der Optionen generiert werden sollen, die Sie beim Aufrufen von AzureDTExec angeben. Die Zeichenfolgen werden verwendet, um eindeutige Namen für Data Factory-Pipelines zu bilden, die Ihre Pakete in der Azure-SSIS IR-Instanz ausführen. Eine Länge von 32 Zeichen ist normalerweise ausreichend.
+- **Ressourcengruppe**: Geben Sie den Namen der Azure-Ressourcengruppe ein, in der Ihre Data Factory erstellt wurde.
+- **SubscriptionId**: Geben Sie die eindeutige Kennung des Azure-Abonnements ein, unter dem Ihre Data Factory erstellt wurde.
+- **LogAccessDomain**: Geben Sie die Domäne (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
+- **LogAccessPassword**: Geben Sie das Kennwort (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
+- **LogAccessUserName**: Geben Sie den Benutzernamen (Anmeldeinformation) ein, um beim Schreiben von Protokolldateien auf Ihren Protokollordner am entsprechenden UNC-Pfad zuzugreifen, wenn **LogPath** angegeben ist und **LogLevel** nicht **null** (NULL) ist.
+- **LogLevel:** Geben Sie den ausgewählten Protokollierungsbereich für Ihre Paketausführungen in der Azure-SSIS IR-Instanz ein. Folgende vordefinierte Optionen stehen zur Verfügung: **null** (NULL), **Basic** (Einfach), **Verbose** (Ausführlich) oder **Performance** (Leistung).
+- **LogPath**: Geben Sie den UNC-Pfad des Protokollordners ein, in den Protokolldateien Ihrer Paketausführungen in der Azure-SSIS IR-Instanz geschrieben werden.
+- **PackageAccessDomain**: Geben Sie die Domäne (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
+- **PackageAccessPassword**: Geben Sie das Kennwort (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
+- **PackageAccessUserName**: Geben Sie den Benutzernamen (Anmeldeinformation) für den Zugriff auf Ihre Pakete in ihrem UNC-Pfad ein, der beim Aufrufen von AzureDTExec angegeben wird.
 
 Wenn Sie Ihre Pakete und Protokolldateien in lokalen Dateisystemen oder -freigaben speichern möchten, müssen Sie Ihre Azure-SSIS IR-Instanz mit einem VNET verknüpfen, das mit Ihrem lokalen Netzwerk verbunden ist, damit Ihre Pakete abgerufen und Ihre Protokolldateien geschrieben werden können. Weitere Informationen finden Sie im Artikel zum [Beitritt einer Azure-SSIS Integration Runtime zu einem virtuellen Netzwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
@@ -92,7 +95,7 @@ Bei Aufrufen von AzureDTExec stehen ähnliche Optionen zur Verfügung wie bei dt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald eindeutige Pipelines mit der enthaltenen Aktivität „SSIS-Paket ausführen“ generiert und nach dem Aufrufen von AzureDTExec ausgeführt werden, können sie im Data Factory-Portal überwacht werden. Weitere Informationen finden Sie unter [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Sobald eindeutige Pipelines mit der enthaltenen Aktivität „SSIS-Paket ausführen“ beim Aufrufen von AzureDTExec generiert und ausgeführt werden, können sie im Data Factory-Portal überwacht werden. Sie können ihnen auch Data Factory-Auslöser zuweisen, wenn Sie sie mithilfe von Data Factory orchestrieren/planen möchten. Weitere Informationen finden Sie unter [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 > [!WARNING]
 > Es wird davon ausgegangen, dass die generierte Pipeline nur von AzureDTExec verwendet wird. Die zugehörigen Eigenschaften oder Parameter ändern sich ggf. noch. Es empfiehlt sich daher, sie nicht zu verändern oder für andere Zwecke zu verwenden. Änderungen führen unter Umständen dazu, dass AzureDTExec nicht mehr funktioniert. In diesem Fall muss die Pipeline gelöscht werden. Von AzureDTExec wird dann beim nächsten Aufruf eine neue Pipeline generiert.

@@ -1,26 +1,18 @@
 ---
 title: 'Tutorial: Muster: LUIS'
-titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial werden Muster verwendet, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979760"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380772"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen, um Vorhersagen zu verbessern
 
-In diesem Tutorial verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern, was Ihnen ermöglicht, weniger Beispieläußerungen anzugeben. Bei dem Muster handelt es sich um eine Vorlagenäußerung, die einer Absicht zugewiesen ist und Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
+In diesem Tutorial verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern, was Ihnen ermöglicht, weniger Beispieläußerungen anzugeben. Bei dem Muster handelt es sich um eine Vorlagenäußerung, die einer Absicht zugewiesen ist und eine Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -41,7 +33,7 @@ In der LUIS-APP sind zwei Arten von Äußerungen gespeichert:
 
 Das Hinzufügen von Vorlagenäußerungen als Muster ermöglicht Ihnen, insgesamt weniger Beispieläußerungen für eine Absicht bereitzustellen.
 
-Ein Muster wird als Kombination aus der Suche nach Übereinstimmungen mit Ausdrücken und maschinellem Lernen bereitgestellt.  Die Vorlagenäußerung vermittelt zusammen mit den Beispieläußerungen LUIS ein besseres Verständnis dafür, welche Äußerungen zur Absicht passen.
+Ein Muster wird als Kombination aus der Suche nach Übereinstimmungen mit Text und maschinellem Lernen angewendet.  Durch die Vorlagenäußerung innerhalb des Musters und die Beispieläußerungen in der Absicht erhält LUIS ein besseres Verständnis davon, welche Äußerungen zur Absicht passen.
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>Importieren der Beispiel-App und Klonen in neue Version
 
@@ -49,11 +41,13 @@ Führen Sie die folgenden Schritte durch:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true) herunter, und speichern Sie sie.
 
-1. Importieren Sie die JSON-Datei im [LUIS-Vorschauportal](https://preview.luis.ai) in eine neue App.
+1. Importieren Sie die JSON-Datei im [LUIS-Vorschauportal](https://preview.luis.ai) in eine neue App. Wählen Sie auf der Seite **Meine Apps** die Option **+ Neue App für Unterhaltung** und dann **Als JSON importieren** aus. Wählen Sie die Datei aus, die Sie im vorherigen Schritt heruntergeladen haben.
 
-1. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `patterns`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+1. Wählen Sie auf der Registerkarte **Versionen** im Abschnitt **Verwalten** die aktive Version und dann **Klonen** aus. Geben Sie für die geklonte Version den Namen `patterns` an. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Erstellen neuer Absichten samt Äußerungen
+
+Die beiden Absichten ermitteln basierend auf dem Äußerungstext den Verwalter oder die direkten Berichte des Verwalters. Die Schwierigkeit besteht darin, dass die beiden Absichten verschiedene Dinge _bedeuten_, die meisten Wörter jedoch identisch sind. Lediglich die Wortreihenfolge ist anders. Damit die Absicht richtig vorhergesagt werden kann, müssten viele Beispiele enthalten sein.
 
 1. Wählen Sie in der Navigationsleiste **Erstellen** aus.
 
@@ -105,7 +99,7 @@ Führen Sie die folgenden Schritte durch:
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` ein. Der letzte Parameter der Abfragezeichenfolge ist die Äußerung `query`.
+1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch: `Who is the boss of Jill Jones?`.
 
     ```json
     {
@@ -195,9 +189,9 @@ Führen Sie die folgenden Schritte durch:
     }
     ```
 
-War diese Abfrage erfolgreich? Für diesen Trainingszyklus war sie erfolgreich. Die Ergebnisse der beiden wichtigsten Absichten liegen nah beieinander, aber die höchstbewertete Absicht ist nicht signifikant hoch (über 60 %) und liegt nicht weit genug über der Bewertung der nächsten Absicht.
+Die Ergebnisse der beiden wichtigsten Absichten liegen nah beieinander, aber die höchstbewertete Absicht ist nicht signifikant hoch (über 60 %) und liegt nicht weit genug über der Bewertung der nächsten Absicht.
 
-Da das Trainieren von LUIS nicht jedes Mal identisch abläuft, gibt es ein wenig Abwechslung. Beim nächsten Trainingszyklus können sich diese beiden Werte umkehren. Das Ergebnis ist, dass die falsche Absicht zurückgegeben werden konnte.
+Da das Trainieren von LUIS nicht jedes Mal identisch abläuft (es gibt geringfügige Abweichungen), könnten sich diese beiden Werte im nächsten Trainingszyklus umkehren. Das Ergebnis ist, dass die falsche Absicht zurückgegeben werden konnte.
 
 Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhen (in Prozent) und den Abstand zur nächst höheren Bewertung zu vergrößern.
 
@@ -220,11 +214,11 @@ Zu den Beispielen für Vorlagenäußerungen zu dieser Absicht gehören:
 |`Who does {Employee} report to[?]`|austauschbar `{Employee}`<br>ignorieren `[?]`|
 |`Who reports to {Employee}[?]`|austauschbar `{Employee}`<br>ignorieren `[?]`|
 
-Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. Die optionale Syntax (`[?]`) markiert Wörter oder Satzzeichen, die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
+Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. Die optionale Syntax (`[?]`) markiert Wörter oder [Satzzeichen](luis-reference-application-settings.md#punctuation-normalization), die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
 
 Zwar sieht die Syntax nach einem regulären Ausdruck aus, es handelt sich aber nicht um einen regulären Ausdruck. Es wird nur die Syntax mit geschweiften `{}` und eckigen `[]` Klammern unterstützt. Sie können bis zu zwei Ebenen tief geschachtelt werden.
 
-Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten innerhalb der Äußerung zuerst mit den Entitäten in der Vorlagenäußerung übereinstimmen. Dies bedeutet, dass die Entitäten genügend Beispiele in Beispieläußerungen mit einem hohen Vorhersagegrad aufweisen müssen, bevor Muster mit Entitäten erfolgreich sind. Allerdings hilft die Vorlage nicht dabei, Entitäten vorherzusagen, sondern nur Absichten.
+Damit ein Muster mit einer Äußerung übereinstimmt, müssen _zunächst_ die Entitäten innerhalb der Äußerung mit den Entitäten in der Vorlagenäußerung übereinstimmen. Dies bedeutet, dass die Entitäten genügend Beispiele in Beispieläußerungen mit einem hohen Vorhersagegrad aufweisen müssen, bevor Muster mit Entitäten erfolgreich sind. Allerdings hilft die Vorlage nicht dabei, Entitäten vorherzusagen, sondern nur Absichten.
 
 **Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
 
@@ -245,6 +239,8 @@ Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten inn
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
+    Diese Vorlagenäußerungen umfassen die Entität **Employee** in geschweiften Klammern.
+
 1. Wählen Sie auf der Seite „Muster“ die Absicht **OrgChart-Reports** aus, und geben Sie dann die folgenden Vorlagenäußerungen ein:
 
     |Vorlagenäußerungen|
@@ -264,7 +260,7 @@ Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem 
 
 1. Wechseln Sie nach Abschluss der Veröffentlichung in den Browserregisterkarten wieder zur Endpunkt-URL-Registerkarte.
 
-1. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` als Äußerung ein. Der letzte Parameter der Abfragezeichenfolge ist `query`.
+1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch: `Who is the boss of Jill Jones?`
 
     ```json
     {
@@ -375,7 +371,7 @@ Beispielvorlagenäußerungen, die diese optionalen Informationen ermöglichen:
 
 |Intent|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
 
 
@@ -389,14 +385,6 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 **Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {Employee}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus. Sie können [Gruppen und den OR-Operator](#use-the-or-operator-and-groups) mit den Verbzeitformen verwenden, um diese Äußerungen zu kombinieren.
 
 **Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
-
-### <a name="edit-the-existing-pattern-template-utterance"></a>Bearbeiten der vorhandenen Mustervorlagenäußerung
-
-1. Wählen Sie im LUIS-Vorschauportal die Option **Erstellen** im oberen Menü und anschließend **Muster** im linken Menü aus.
-
-1. Suchen Sie nach der vorhandenen Vorlagenäußerung `Who is {Employee}['s] manager[?]`, und wählen Sie rechts die Auslassungspunkte (***...***). Wählen Sie dann im Popupmenü die Option **Bearbeiten**.
-
-1. Ändern Sie die Vorlagenäußerung in: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ### <a name="add-new-pattern-template-utterances"></a>Hinzufügen von neuen Mustervorlagenäußerungen
 
@@ -428,7 +416,7 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 Alle diese Äußerungen beinhalten Entitäten, daher entsprechen sie dem gleichen Muster und haben einen hohen Vorhersagewert. Sie haben einige Muster hinzugefügt, die vielen Variationen von Äußerungen entsprechen. Sie mussten der Absicht keine Beispieläußerungen hinzufügen, damit die Vorlagenäußerung im Muster funktioniert.
 
 Diese Verwendung von Mustern hat für Folgendes gesorgt:
-* höhere Vorhersageergebnisse
+* Bessere Vorhersageergebnisse
 * mit den gleichen Beispieläußerungen in der Absicht
 * mit einigen wenigen gut konzipierten Vorlagenäußerungen im Muster
 
@@ -472,7 +460,7 @@ Hier wird **group** für die erforderlichen Verbzeitformen und die optionale Ang
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-Wenn Sie mehr Mustersyntax verwenden, können Sie die Anzahl der Vorlagenäußerungen verringern, die Sie in ihrer App verwalten müssen, während Sie immer noch ein hohes Vorhersageergebnis erhalten.
+Wenn Sie eine umfangreichere Mustersyntax verwenden, verringern Sie die Anzahl von Vorlagenäußerungen, die Sie in Ihrer App verwalten müssen, während Sie immer noch ein gutes Vorhersageergebnis erhalten.
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>Verwenden von Anfangs- und Endankern für Äußerungen
 
@@ -514,7 +502,7 @@ Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das End
 
 1. Wählen Sie **FindForm** in der Absichtenliste aus.
 
-1. Fügen Sie einige Beispieläußerungen hinzu:
+1. Fügen Sie einige Beispieläußerungen hinzu. Der Text, der als Pattern.any vorhergesagt werden soll, ist **fett formatiert**. Der Formularname lässt sich anhand der übrigen umgebenden Begriffe in der Äußerung nur schwer erkennen. Mit Pattern.any können die Begrenzungen der Entität markiert werden.
 
     |Beispieläußerung|Formularname|
     |--|--|

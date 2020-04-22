@@ -7,17 +7,17 @@ ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.date: 03/12/2020
-ms.openlocfilehash: 9c4215d2c2e811b4c6369ee3773fb811695da4fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204357"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419186"
 ---
 # <a name="download-notebookspreview-data"></a>Herunterladen der Daten aus Notebooks (Vorschau)
 
-Das Notebooks-Feature (Vorschau) wird am *13. April 2020* entfernt. Nach diesem Datum wird die Registerkarte „Notebooks (Vorschau)“ entfernt, und die Notebooks-Daten können nicht wiederhergestellt werden. Laden Sie Ihre Notebooks-Daten vor dem 13. April 2020 herunter.
+Das Notebooks-Feature (Vorschauversion) wurde am *13. April 2020* entfernt. Das Entfernen der Registerkarte „Notebooks (Vorschau)“ und der Benutzer-Notebookdateien wird zurzeit in den weltweiten Azure-Regionen ausgeführt.
 
 Dieser Artikel enthält Schritt-für-Schritt-Anleitungen zum Herunterladen der Daten aus Notebooks (Vorschau).
 

@@ -1,5 +1,5 @@
 ---
-title: Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace im Partner Center
+title: Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace in Partner Center
 description: Erfahren Sie, wie Sie auf Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote zugreifen.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0cd6614c1ccc51a2b25f115dccf0ee389075aa70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285128"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262178"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zum Dashboard „Nutzung“ im Partner Cen
 Um auf das Dashboard „Nutzung“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter „Kommerzieller Marketplace“.
 
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Dashboard „Nutzung“
 
@@ -45,7 +45,7 @@ Die Registerkarte „VM-Nutzung“ enthält grafische Darstellungen der folgende
 
 In der Tabelle „Nutzungszusammenfassung“ werden die Nutzungsstunden der Kunden für alle erworbenen Angebote angezeigt.
 
-- Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet.
+- Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet.
 - Die tatsächlichen Nutzungsstunden werden als die Zeitspanne (in Stunden) definiert, in der VMs ausgeführt wurden.
 - Der Prozentwert stellt eine Zunahme/Abnahme der Nutzung im ausgewählten Datumsbereich dar ([Nutzung im letzten Monat – Nutzung im ersten Monat])/Nutzung im ersten Monat).
 - Nach oben weisende grüne Dreiecke geben eine Zunahme an.
@@ -58,7 +58,7 @@ Im Wärmebild **Normalisierte Nutzung nach Geografie** werden die Nutzungsstunde
 
 ### <a name="usage-by-offers"></a>Nutzung nach Angeboten
 
-- Im Kreisdiagramm **Normalisierte Nutzung nach Angeboten** sind die normalisierten Nutzungsstunden entsprechend dem ausgewählten Datumsbereich nach Angeboten aufgeschlüsselt. Die 5 Top-Angebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
+- Im Kreisdiagramm **Normalisierte Nutzung nach Angeboten** sind die normalisierten Nutzungsstunden entsprechend dem ausgewählten Datumsbereich nach Angeboten aufgeschlüsselt. Die 5 Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
 - Im Balkendiagramm wird der Wachstumstrend für den ausgewählten Datumsbereich nach Monaten angezeigt. In den Monatsspalten sind die Nutzungsstunden aus den Angeboten mit den meisten Nutzungsstunden für den jeweiligen Monat dargestellt. Im Liniendiagramm wird der prozentuale Wachstumstrend auf der sekundären Y-Achse dargestellt.
 - Mit dem Schieberegler oben im Diagramm können Sie entlang der X-Achse nach rechts und links scrollen und/oder sich auf bestimmte Datenpunkte konzentrieren.
 
@@ -69,7 +69,7 @@ In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewähl
 ### <a name="usage-by-offer-type"></a>Nutzung nach Angebotstyp
 
 - Im Kreisdiagramm **Nutzung nach Angebotstyp** ist die Nutzung nach dem Angebotstyp organisiert.
-- Die Top-Angebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
+- Die Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
 - Im Diagramm **Trend** werden Wachstumstrends nach Monaten angezeigt. In der Monatsspalte wird die Nutzung nach den Top-Angebotstypen im jeweiligen Monat dargestellt.
 
 ### <a name="usage-by-vm-size"></a>Nutzung nach VM-Größe
@@ -81,9 +81,9 @@ In der Bestenliste werden die 50 Top-VM-Größen mit der höchsten Nutzung nach
 ### <a name="usage-by-sales-channel"></a>Nutzung nach Vertriebskanal
 
 - Im Kreisdiagramm „Nutzung nach Vertriebskanal“ ist die Nutzung nach dem Vertriebskanal organisiert.
-- Die Top-Vertriebskanäle mit der höchsten Nutzung werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Vertriebskanäle gruppiert sind.
+- Die Topvertriebskanäle mit der höchsten Nutzung werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Vertriebskanäle gruppiert sind.
 - In der Monatsspalte wird die Nutzung nach den Top-Vertriebskanälen im jeweiligen Monat dargestellt.
-- Die Funktionen dieses Diagramms sind identisch mit denen im Diagramm „Nutzung nach Angeboten“.
+- Die Features dieses Diagramms sind identisch mit denen im Diagramm „Nutzung nach Angeboten“.
 
 ### <a name="detailed-usage-data"></a>Detaillierte Nutzungsdaten
 
@@ -95,12 +95,12 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 - Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
 
 > [!NOTE]
-> Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der „Normalisierten Ansicht“ oder in der „Rohdatenansicht“ anzuzeigen. Die „Normalisierte Ansicht“ ist die Standardansicht für diese Diagramme.
+> Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der normalisierten Ansicht oder in der Rohdatenansicht anzuzeigen. Die normalisierte Ansicht ist die Standardansicht für diese Diagramme.
 
-**Filter für die Seite „Nutzung“** werden auf Seitenebene angewendet. Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export „Detaillierte Nutzungsdaten“ anzuzeigen. Filter werden auf die Daten angewendet, die für den Datenbereich extrahiert wurden, den Sie in der oberen rechten Ecke der Seite „Bestellungen“ ausgewählt haben.
+**Filter für die Seite „Nutzung“** werden auf Seitenebene angewendet. Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export für detaillierte Nutzungsdaten anzuzeigen. Filter werden auf die Daten angewendet, die für den Datenbereich extrahiert wurden, den Sie in der oberen rechten Ecke der Seite „Bestellungen“ ausgewählt haben.
 
 - **Angebotstypen** und **Angebotsnamen** werden nur für die Angebote aufgelistet, die Sie im ausgewählten Datumsbereich erworben haben. In der Liste enthaltene Angebotsnamen werden für Angebotstypen angezeigt, die aus der Liste ausgewählt werden.
-- Die Standardauswahl für jede der Filteroptionen lautet „Alle“. **Verwendungstyp** ist hiervon ausgenommen. Die Standardauswahl für **Verwendungstyp** ist „Normalisierte Nutzung“. Um die Rohdatennutzung in den Diagrammen anzuzeigen, wählen Sie „Rohdatennutzung“ aus.
+- Die Standardauswahl für jede der Filteroptionen lautet „Alle“, mit Ausnahme von **Verwendungstyp**. Die Standardauswahl für **Verwendungstyp** ist „Normalisierte Nutzung“. Um die Rohdatennutzung in den Diagrammen anzuzeigen, wählen Sie „Rohdatennutzung“ aus.
 - Mithilfe der angewendeten Filter werden die ausgewählten Werte für die vorgenommenen Filterauswahlen anzeigt. Für die Standardauswahlen werden keine angewendeten Filter angezeigt.
 
 > [!NOTE]
@@ -118,10 +118,10 @@ Auf der Registerkarte **Nutzung nach getakteter Abrechnung** werden Nutzungsinfo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die im kommerziellen Marketplace im Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace im Partner Center](./analytics.md).
+- Eine Übersicht über die im kommerziellen Marketplace in Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace in Partner Center](./analytics.md).
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
+- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).

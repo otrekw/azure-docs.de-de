@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Komponenten einer App sowie Absichten und Entitäten. Außerdem verwenden Sie zu Testzwecken eine Beispieläußerung im LUIS-Portal.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244613"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382582"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
@@ -88,11 +88,10 @@ Fügen Sie der `FindForm`-Absicht die folgenden 15 Beispieläußerungen hinzu.
 Diese Beispieläußerungen unterscheiden sich entwurfsbedingt in folgenden Punkten:
 
 * Länge der Äußerung
-* Interpunktion
+* [Interpunktion](luis-reference-application-settings.md#punctuation-normalization)
 * Wortwahl
 * Zeitform des Verbs (is, was, will be)
 * Reihenfolge der Wörter
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“

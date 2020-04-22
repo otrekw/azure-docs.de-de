@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044102"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404263"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
@@ -139,9 +139,9 @@ Beispiel für die Extraktion:
     ....
     }
 
-## <a name="human-review-tool"></a>Tool für die Überprüfung durch Personen
+## <a name="review-tool"></a>Überprüfungstool
 
-Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) und die API des Content Moderator, um die Ergebnisse und Inhalte der Moderation für die Überprüfung durch menschliche Moderatoren zum Vorschein zu bringen. Diese überprüfen die vom Computer zugewiesenen Tags und bestätigen die endgültigen Entscheidungen.
+Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) und die API von Content Moderator, um die Ergebnisse und Inhalte der Moderation für die Überprüfung durch menschliche Moderatoren zum Vorschein zu bringen. Diese überprüfen die vom Computer zugewiesenen Tags und bestätigen die endgültigen Entscheidungen.
 
 ![Bildüberprüfung für menschliche Moderatoren](images/moderation-reviews-quickstart-dotnet.PNG)
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384114"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314359"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall für Azure Application Gateway
 
@@ -28,9 +28,9 @@ Alle unten aufgeführten WAF-Features befinden sich innerhalb einer WAF-Richtlin
 
 ![Application Gateway-WAF-Diagramm](../media/ag-overview/waf1.png)
 
-Application Gateway wird als Application Delivery Controller (ADC, Controller zur Anwendungsbereitstellung) betrieben. Die Anwendung bietet SSL-Terminierung (Secure Sockets Layer), cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen.
+Application Gateway wird als Application Delivery Controller (ADC, Controller zur Anwendungsbereitstellung) betrieben. Die Anwendung bietet TLS-Terminierung (Transport Layer Security, zuvor als Secure Sockets Layer (SSL) bekannt), cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen.
 
-Zu den Sicherheitsverbesserungen von Application Gateway gehören die SSL-Gruppenrichtlinienverwaltung sowie umfassende End-to-End-Unterstützung. Die Anwendungssicherheit wird von der WAF-Integration in Application Gateway gestärkt. Die Kombination schützt Ihre Webanwendungen vor gängigen Sicherheitslücken. Außerdem bietet sie einen einfach konfigurierbaren zentralen Verwaltungsort.
+Zu den Sicherheitsverbesserungen von Application Gateway gehören die TLS-Richtlinienverwaltung sowie umfassende TLS-Unterstützung. Die Anwendungssicherheit wird von der WAF-Integration in Application Gateway gestärkt. Die Kombination schützt Ihre Webanwendungen vor gängigen Sicherheitslücken. Außerdem bietet sie einen einfach konfigurierbaren zentralen Verwaltungsort.
 
 ## <a name="benefits"></a>Vorteile
 
@@ -40,7 +40,7 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 
 * Schützen Sie Ihre Webanwendungen vor Sicherheitsrisiken und Angriffen im Web, ohne den Back-End-Code zu verändern.
 
-* Schützen Sie mehrere Webanwendungen gleichzeitig. Eine Instanz von Application Gateway kann bis zu 40 Websites hosten, die mit einer Web Application Firewall geschützt sind.
+* Schützen Sie mehrere Webanwendungen gleichzeitig. Eine Instanz von Application Gateway kann bis zu 40 Websites hosten, die durch eine Web Application Firewall geschützt sind.
 
 * Erstellen Sie benutzerdefinierte WAF-Richtlinien für verschiedene Websites hinter derselben WAF. 
 

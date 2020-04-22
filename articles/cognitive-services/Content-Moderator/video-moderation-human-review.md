@@ -1,25 +1,25 @@
 ---
 title: Videomoderation mit Überprüfung durch Personen – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die computergestützte Videomoderation und Tools für die Überprüfung durch Personen, um unangemessene Inhalte zu moderieren.
+description: Verwenden Sie die computergestützte Videomoderation und Überprüfungstools, um unangemessene Inhalte zu moderieren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754170"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404250"
 ---
 # <a name="video-moderation-with-human-review"></a>Videomoderation mit Überprüfung durch Personen
 
-Nutzen Sie die computergestützte [Videomoderation](video-moderation-api.md) von Content Moderator und [Tools zur Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md) zum Moderieren von Videos und Transkripts auf anstößige und zweideutige Inhalte, um optimale Ergebnisse für Ihr Unternehmen zu erhalten.
+Nutzen Sie die computergestützte [Videomoderation](video-moderation-api.md) von Content Moderator und [Überprüfungstools](Review-Tool-User-Guide/human-in-the-loop.md) zum Moderieren von Videos und Transkripts auf anstößige und zweideutige Inhalte, um optimale Ergebnisse für Ihr Unternehmen zu erhalten.
 
 ## <a name="video-trained-classifier-preview"></a>Durch Videos trainierte Klassifizierung (Preview)
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277955"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273884"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Bereitstellen einer Azure-VM aus einer Benutzer-VHD
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
 
 In diesem Artikel wird erläutert, wie Sie ein generalisiertes VHD-Image bereitstellen, um eine neue Azure-VM-Ressource zu erstellen. Dazu verwenden Sie die mitgelieferte Azure Resource Manager-Vorlage und das mitgelieferte Azure PowerShell-Skript.
 
@@ -31,7 +34,7 @@ Kopieren Sie die Azure Resource Manager-Vorlage für [VHD-Bereitstellung](cpp-de
 | userStorageAccountName     | Name des Speicherkontos                                                    |
 | sNameForPublicIP           | DNS-Name für die öffentliche IP-Adresse. Muss aus Kleinbuchstaben bestehen.                                  |
 | subscriptionId             | Azure-Abonnement-ID                                                  |
-| Location                   | Standardmäßiger geografischer Azure-Standort der Ressourcengruppe                       |
+| Position                   | Standardmäßiger geografischer Azure-Standort der Ressourcengruppe                       |
 | vmName                     | Name des virtuellen Computers                                                    |
 | vaultName                  | Der Name des Schlüsseltresors                                                          |
 | vaultResourceGroup         | Die Ressourcengruppe des Schlüsseltresors
