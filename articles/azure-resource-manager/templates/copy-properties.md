@@ -2,13 +2,13 @@
 title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Hier erfahren Sie, wie Sie den Kopiervorgang in einer Azure Resource Manager-Vorlage verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258106"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391340"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
@@ -30,7 +30,9 @@ Das copy-Element hat das folgende allgemeine Format:
 ]
 ```
 
-Geben Sie für **name** den Namen der Ressourceneigenschaft an, die Sie erstellen möchten. Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für die Eigenschaft an.
+Geben Sie für **name** den Namen der Ressourceneigenschaft an, die Sie erstellen möchten.
+
+Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für die Eigenschaft an.
 
 Die Eigenschaft **input** gibt die Eigenschaften an, die Sie wiederholen möchten. Sie erstellen ein Array von Elementen, das auf der Grundlage des Werts in der Eigenschaft **input** erstellt wird.
 
@@ -78,11 +80,7 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigensc
 }
 ```
 
-Beachten Sie Folgendes: Bei Verwendung von `copyIndex` in einer Eigenschaften-Iteration müssen Sie den Namen der Iteration angeben.
-
-> [!NOTE]
-> Von der Eigenschafteniteration wird auch ein Offsetargument unterstützt. Der Offset muss nach dem Namen der Iteration angegeben werden. Beispiel: copyIndex('dataDisks', 1).
->
+Beachten Sie Folgendes: Bei Verwendung von `copyIndex` in einer Eigenschaften-Iteration müssen Sie den Namen der Iteration angeben. Von der Eigenschafteniteration wird auch ein Offsetargument unterstützt. Der Offset muss nach dem Namen der Iteration angegeben werden. Beispiel: copyIndex('dataDisks', 1).
 
 Ressourcen-Manager erweitert das `copy`-Array während der Bereitstellung. Der Name des Arrays wird zum Namen der Eigenschaft. Die Eingabewerte werden zu den Eigenschaften des Objekts. Die bereitgestellte Vorlage sieht wie folgt aus:
 
@@ -111,6 +109,66 @@ Ressourcen-Manager erweitert das `copy`-Array während der Bereitstellung. Der N
         }
       ],
       ...
+```
+
+Der „copy“-Vorgang ist besonders bei Verwendung von Arrays hilfreich, weil Sie jedes Element im Array durchlaufen können. Verwenden Sie die Funktion `length` für das Array, um die Anzahl von Iterationen anzugeben, und `copyIndex`, um den aktuellen Index im Array abzurufen.
+
+Die folgende Beispielvorlage erstellt eine Failovergruppe für Datenbanken, die als Array übergeben werden.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 Das Kopierelement ist ein Array, sodass Sie mehrere Eigenschaften für die Ressource angeben können.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064896"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390286"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Event Hubs
 
@@ -25,6 +25,23 @@ Die Integration von Event Hubs und [VNET-Dienstendpunkten][vnet-sep] ermöglicht
 Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNET-Subnetzes durchgeführt wurde, akzeptiert der entsprechende Event Hubs-Namespace nur noch Datenverkehr von autorisierten Subnetzen in virtuellen Netzwerken. Aus Sicht des virtuellen Netzwerks wird durch die Bindung eines Event Hubs-Namespace an einen Dienstendpunkt ein isolierter Netzwerktunnel vom Subnetz des virtuellen Netzwerks zum Messagingdienst konfiguriert. 
 
 Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Event Hubs-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet. Es gibt bei diesem Verhalten eine Ausnahme. Durch die Aktivierung eines Dienstendpunkts wird standardmäßig die `denyall`-Regel in der [IP-Firewall](event-hubs-ip-filtering.md) aktiviert, die dem virtuellen Netzwerk zugeordnet ist. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. 
+
+>[!WARNING]
+> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Event Hubs interagieren.
+>
+> Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
+>
+> Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
+> - Azure Monitor (Diagnoseeinstellungen)
+> - Azure Stream Analytics
+> - Integration in Azure Event Grid
+> - Azure IoT Hub-Routen
+> - Azure IoT Device Explorer
+>
+> Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
+> - Azure-Web-Apps
+> - Azure-Funktionen
+
 
 > [!IMPORTANT]
 > Virtuelle Netzwerke werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Im **Basic**-Tarif werden sie nicht unterstützt.

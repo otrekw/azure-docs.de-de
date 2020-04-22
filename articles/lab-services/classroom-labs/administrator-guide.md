@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370858"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257775"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem ein Lab-Konto eingerichtet wurde, erstellen Administratoren oder Lehrkräfte Classroom-Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -59,7 +59,7 @@ In der folgenden Liste werden Szenarien hervorgehoben, in denen mehr als ein Lab
     
     Wenn Sie ein Lab-Konto einrichten, legen Sie Richtlinien fest, die für *alle* Classroom-Labs unter dem Lab-Konto gelten, wie:
     - Das virtuelle Azure-Netzwerk mit freigegebenen Ressourcen, auf die das Classroom-Lab zugreifen kann. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf ein freigegebenes Dataset in einem virtuellen Netzwerk benötigen.
-    - Die VM-Images, die von den Classroom-Labs zum Erstellen virtueller Computer verwendet werden können. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf das Marketplace-Image der [Data Science VM für Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) benötigen. 
+    - Die VM-Images, die von den Classroom-Labs zum Erstellen virtueller Computer verwendet werden können. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf das Marketplace-Image der [Data Science VM für Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) benötigen. 
     
     Wenn Sie über Classroom-Labs verfügen, die eindeutige Richtlinienanforderungen besitzen, kann es vorteilhaft sein, separate Lab-Konten zu erstellen, um diese Classroom-Labs getrennt zu verwalten.
 
@@ -156,6 +156,9 @@ Der Speicherort, an dem ein Classroom-Lab vorhanden ist, variiert basierend auf 
        
     Wenn **kein** Peering mit dem VNET erfolgt und [Lab-Ersteller den Lab-Speicherort auswählen dürfen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), basieren die Speicherorte, die vom Lab-Ersteller ausgewählt werden können, auf der verfügbaren Kapazität.
 
+> [!NOTE]
+> Um sicherzustellen, dass ausreichend VM-Kapazität für eine Region vorhanden ist, müssen Sie zunächst die Kapazität über das Lab-Konto oder beim Erstellen des Labs anfordern.
+
 Eine allgemeine Regel ist es, die Region einer Ressource auf eine Region festzulegen, die ihren Benutzern am nächsten liegt. Bei Classroom-Labs bedeutet dies, das Classroom-Lab in maximaler Nähe zu Ihren Kursteilnehmern zu erstellen. Für Onlinekurse, bei denen Schüler sich weltweit verteilt aufhalten, müssen Sie nach Ihrem Ermessen verfahren, um ein Classroom-Lab zu erstellen, das zentral angesiedelt ist. Alternativ können Sie einen Kurs auch in mehrere Classroom-Labs aufteilen, basierend auf der jeweiligen Region Ihrer Kursteilnehmer.
 
 ### <a name="shared-image-gallery"></a>Shared Image Gallery
@@ -169,7 +172,7 @@ Wenn Administratoren oder Ersteller von Labs ein Classroom-Lab erstellen, könne
 | ---- | ----- | ------ | ------------- |
 | Klein| <ul><li>2 Kerne</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
 | Medium | <ul><li>4 Kerne</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. |
-| Mittel (geschachtelte Virtualisierung) | <ul><li>4 Kerne</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
+| Mittel (geschachtelte Virtualisierung) | <ul><li>4 Kerne</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
 | Groß | <ul><li>8 Kerne</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
 | Kleine GPU (Visualisierung) | <ul><li>6 Kerne</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
 | Kleine GPU (Compute) | <ul><li>6 Kerne</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |

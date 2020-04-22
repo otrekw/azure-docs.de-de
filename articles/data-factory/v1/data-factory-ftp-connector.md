@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236370"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992044"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | gatewayName |Gibt den Namen des Gateways im Datenverwaltungsgateway zum Herstellen einer Verbindung mit einem lokalen FTP-Server an. |Nein |&nbsp; |
 | port |Gibt den Port, den der FTP-Server abhört, an. |Nein |21 |
 | enableSsl |Gibt an, ob FTP über einen SSL/TLS-Kanal verwendet werden soll. |Nein |true |
-| enableServerCertificateValidation |Gibt an, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn Sie FTP über SSL/TLS-Kanal verwenden. |Nein |true |
+| enableServerCertificateValidation |Gibt an, ob die Überprüfung des TLS/SSL-Serverzertifikats aktiviert werden soll, wenn Sie FTP über den SSL/TLS-Kanal verwenden. |Nein |true |
 
 >[!NOTE]
 >Der FTP-Connector unterstützt den Zugriff auf FTP-Server ohne Verschlüsselung oder mit expliziter SSL/TLS-Verschlüsselung. Er unterstützt keine implizite SSL/TLS-Verschlüsselung.

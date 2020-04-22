@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288834"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252017"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurieren der Leadverwaltung mit Azure-Tabellen
 
@@ -66,12 +66,12 @@ Verwenden Sie dieses Beispiel als Leitfaden, um einen einfachen Flow zu erstelle
 
    ![Meine Flows **+ Scheduled - from blank** (+ Geplant – Ohne Vorlage)](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  Wählen Sie im Fenster *Geplanten Flow erstellen* unter *Wiederholen alle* für das Intervall „1“ und für die Häufigkeit „Stunde“ aus. Wenn Sie möchten, können Sie den Flow benennen. Klicken Sie auf **Erstellen**.
+5.    Wählen Sie im Fenster *Geplanten Flow erstellen* unter *Wiederholen alle* für das Intervall „1“ und für die Häufigkeit „Stunde“ aus. Wenn Sie möchten, können Sie den Flow benennen. Klicken Sie auf **Erstellen**.
 
-    >[!Note]
-    >Obwohl in diesem Beispiel ein 1-Stunden-Intervall verwendet wird, können Sie das Intervall und die Häufigkeit auswählen, die für Ihre Geschäftsanforderungen am besten geeignet sind.
+>[!Note]
+>Obwohl in diesem Beispiel ein 1-Stunden-Intervall verwendet wird, können Sie das Intervall und die Häufigkeit auswählen, die für Ihre Geschäftsanforderungen am besten geeignet sind.
 
-    ![Geplanten Flow erstellen](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Geplanten Flow erstellen](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Wählen Sie **+ Neuer Schritt**aus.
 7. Suchen Sie im Fenster *Aktion auswählen*  nach „Vergangene Zeit abrufen“, und wählen Sie dann unter „Aktionen“ **Vergangene Zeit abrufen** aus.
@@ -92,23 +92,17 @@ In den nächsten Schritten stellen Sie eine Verbindung mit Ihrer Azure-Tabelle h
 
 9. Wählen Sie nach dem Schritt „Vergangene Zeit abrufen“ die Option **+ Neuer Schritt** aus, und suchen Sie dann im Fenster *Aktion auswählen* nach „Entitäten abrufen“.
 10. Wählen Sie unter **Aktionen** die Option **Get entities (Azure Table Storage)** (Entitäten abrufen (Azure-Tabellenspeicher)) aus.
-11. Geben Sie im Fenster **Azure-Tabellenspeicher** Informationen für die folgenden Felder an, und wählen Sie **Erstellen** aus:
+11.    Geben Sie im Fenster **Azure-Tabellenspeicher** Informationen für die folgenden Felder an, und wählen Sie **Erstellen** aus:
+* *Verbindungsname*: Geben Sie einen aussagekräftigen Namen für die Verbindung ein, die Sie zwischen diesem Flow und der Azure-Tabelle einrichten.
+* *Speicherkontoname*: Geben Sie den Namen des Speicherkontos für die Azure-Tabelle ein. Diesen finden Sie auf der Seite **Zugriffsschlüssel** des Speicherkontos.
+* *Freigegebener Speicherschlüssel*: Geben Sie den Schlüsselwert des Speicherkontos für die Azure-Tabelle an. Diesen finden Sie auf der Seite **Zugriffsschlüssel** des Speicherkontos.
+    ![Azure Table Storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Verbindungsname*: Geben Sie einen aussagekräftigen Namen für die Verbindung ein, die Sie zwischen diesem Flow und der Azure-Tabelle einrichten.
-    * *Speicherkontoname*: Geben Sie den Namen des Speicherkontos für die Azure-Tabelle ein. Diesen finden Sie auf der Seite **Zugriffsschlüssel** des Speicherkontos.
-    * *Freigegebener Speicherschlüssel*: Geben Sie den Schlüsselwert des Speicherkontos für die Azure-Tabelle an. Diesen finden Sie auf der Seite **Zugriffsschlüssel** des Speicherkontos.
+Nachdem Sie auf „Erstellen“ geklickt haben, wird das Fenster *Entitäten abrufen* angezeigt. Wählen Sie **Erweiterte Optionen anzeigen** aus, und geben Sie Informationen für die folgenden Felder an:
+* *Tabelle*: Wählen Sie den Namen des Azure-Tabellenspeichers aus (aus Schritt 6 der Anleitung zum Konfigurieren einer Azure-Tabelle). Der nächste Screenshot zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle „marketplaceleads“ ausgewählt ist.
+    ![Azure-Tabelle – Entitäten abrufen.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure Table Storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    Nachdem Sie auf „Erstellen“ geklickt haben, wird das Fenster *Entitäten abrufen* angezeigt. Wählen Sie **Erweiterte Optionen anzeigen** aus, und geben Sie Informationen für die folgenden Felder an:
-
-       * *Tabelle*: Wählen Sie den Namen des Azure-Tabellenspeichers aus (aus Schritt 6 der Anleitung zum Konfigurieren einer Azure-Tabelle). Der nächste Screenshot zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle „marketplaceleads“ ausgewählt ist.
-
-            ![Azure-Tabelle – Entitäten abrufen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Filterabfrage*: Wählen Sie dieses Feld aus, und fügen Sie diese Funktion in das Feld ein: `Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure-Tabelle – Entitäten abrufen – Filterabfrage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Filterabfrage*: Wählen Sie dieses Feld aus, und fügen Sie diese Funktion in das Feld ein: `Timestamp gt datetime'@{body('Get_past_time')}'` ![Azure-Tabelle – Entitäten abrufen – Filterabfrage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Nachdem Sie die Verbindung mit der Azure-Tabelle eingerichtet haben, wählen Sie **Neuer Schritt** aus, um eine Bedingung für das Durchsuchen der Azure-Tabelle nach neuen Leads hinzuzufügen. 
 
@@ -178,7 +172,10 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
 2. Wählen Sie im Abschnitt „Leadverwaltung“ die Option **Verbinden** aus.
 3. Wählen Sie im Fenster „Verbindungsdetails“ **Azure-Tabelle** als **Leadzielgruppe** aus, und fügen Sie in das Feld **Verbindungszeichenfolge für Speicherkonto** die Verbindungszeichenfolge aus dem Azure Storage-Konto ein, die Sie in den vorherigen Schritten erstellt haben.
-4. Wählen Sie **Speichern** aus. 
+4. **Kontakt-E-Mail**: Geben Sie E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
+5. Klicken Sie auf **OK**.
+
+Klicken Sie auf die Schaltfläche „Überprüfen“, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
 
 >[!Note]
 >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.

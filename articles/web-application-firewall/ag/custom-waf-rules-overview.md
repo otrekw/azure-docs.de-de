@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 01/30/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77031730"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383811"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
@@ -20,13 +20,13 @@ Die Web Application Firewall (WAF) v2 in Azure Application Gateway enthält eine
 
 Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, die die WAF durchläuft. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln enthalten einen Regelnamen, eine Regelpriorität und ein Array von Abgleichsbedingungen. Sind diese Bedingungen erfüllt, erfolgt eine Aktion (Zulassen oder Blockieren).
 
-So können beispielsweise alle Anforderungen von einer IP-Adresse im Bereich 192.168.5.4/24 blockiert werden. In dieser Regel ist der Operator *IPMatch*, „matchValues“ ist der IP-Adressbereich (192.168.5.4/24), und die Aktion ist die Blockierung des Datenverkehrs. Darüber hinaus werden Name und Priorität der Regel festgelegt.
+So können beispielsweise alle Anforderungen von einer IP-Adresse im Bereich 192.168.5.4/24 blockiert werden. In dieser Regel ist der Operator *IPMatch*, „matchValues“ ist der IP-Adressbereich (192.168.5.4/24), und die Aktion ist die Blockierung des Datenverkehrs. Sie legen auch den Namen und die Priorität der Regel fest.
 
 Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zur Erstellung komplexerer Regeln für Ihre individuellen Sicherheitsanforderungen. Beispiel: (Bedingung 1 **und** Bedingung 2) **oder** Bedingung 3). In diesem Beispiel soll die WAF die in der benutzerdefinierten Regel angegebene Aktion ausführen, wenn Bedingung 1 **und** Bedingung 2 erfüllt sind **oder** wenn Bedingung 3 erfüllt ist.
 
-Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch **und** verknüpft. Beispiel: Blockieren des Datenverkehrs einer bestimmten IP-Adresse – und zwar nur bei Verwendung eines bestimmten Browsers.
+Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch **und** verknüpft. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse nur bei Verwendung eines bestimmten Browsers.
 
-Wenn Sie zwei Bedingungen mit **oder** verknüpfen möchten, müssen sich diese in unterschiedlichen Regeln befinden. Beispiel: Blockieren des Datenverkehrs einer bestimmten IP-Adresse oder Blockieren von Datenverkehr bei Verwendung eines bestimmten Browsers.
+Wenn Sie zwei Bedingungen mit **oder** verknüpfen möchten, müssen sich diese in unterschiedlichen Regeln befinden. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse oder Blockieren des Datenverkehrs bei Verwendung eines bestimmten Browsers.
 
 > [!NOTE]
 > Es können maximal 100 benutzerdefinierte WAF-Regeln verwendet werden. Weitere Informationen zu Application Gateway-Grenzwerten finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
@@ -125,7 +125,7 @@ Beschreibt das Feld der matchVariable-Auflistung. Lautet die Abgleichsvariable (
 Muss einer der folgenden Operatoren sein:
 
 - IPMatch: Wird nur verwendet, wenn die Abgleichsvariable *RemoteAddr* lautet.
-- Equals: Die Eingabe entspricht dem Abgleichswert (MatchValue).
+- Equal: Die Eingabe entspricht dem MatchValue.
 - Enthält
 - LessThan
 - GreaterThan

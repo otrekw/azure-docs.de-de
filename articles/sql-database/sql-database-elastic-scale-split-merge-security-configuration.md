@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823527"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011360"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 
@@ -26,7 +26,7 @@ Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemä�
 
 Zertifikate werden auf zwei Arten konfiguriert. 
 
-1. [So konfigurieren Sie das SSL-Zertifikat](#to-configure-the-ssl-certificate)
+1. [So konfigurieren Sie das TLS/SSL-Zertifikat](#to-configure-the-tlsssl-certificate)
 2. [So konfigurieren Sie Clientzertifikate](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>So rufen Sie Zertifikate ab
@@ -47,28 +47,28 @@ Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifi
     Falls installiert, gehen Sie zu:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Abrufen des WDK unter [Windows 8.1: Herunterladen der Kits für die Windows-Hardwareentwicklung](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
-## <a name="to-configure-the-ssl-certificate"></a>So konfigurieren Sie das SSL-Zertifikat
+## <a name="to-configure-the-tlsssl-certificate"></a>So konfigurieren Sie das TLS/SSL-Zertifikat
 
-Ein SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
+Ein TLS/SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und zum Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Erstellen eines neuen selbstsignierten Zertifikats
 
 1. [Erstellen eines selbstsignierten Zertifikats](#create-a-self-signed-certificate)
-2. [Erstellen einer PFX-Datei für ein selbstsigniertes SSL-Zertifikat](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [Hochladen des SSL-Zertifikats zum Clouddienst](#upload-ssl-certificate-to-cloud-service)
-4. [Aktualisieren des SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-ssl-certificate-in-service-configuration-file)
-5. [Importieren der SSL-Zertifizierungsstelle](#import-ssl-certification-authority)
+2. [Erstellen einer PFX-Datei für ein selbstsigniertes TLS/SSL-Zertifikat](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [Hochladen des TLS/SSL-Zertifikats in den Clouddienst](#upload-tlsssl-certificate-to-cloud-service)
+4. [Aktualisieren des TLS/SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-tlsssl-certificate-in-service-configuration-file)
+5. [Importieren der TLS/SSL-Zertifizierungsstelle](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>So verwenden Sie ein vorhandenes Zertifikat aus dem Zertifikatspeicher
-1. [Exportieren des SSL-Zertifikats aus dem Zertifikatspeicher](#export-ssl-certificate-from-certificate-store)
-2. [Hochladen des SSL-Zertifikats zum Clouddienst](#upload-ssl-certificate-to-cloud-service)
-3. [Aktualisieren des SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-ssl-certificate-in-service-configuration-file)
+1. [Exportieren des TLS/SSL-Zertifikats aus dem Zertifikatspeicher](#export-tlsssl-certificate-from-certificate-store)
+2. [Hochladen des TLS/SSL-Zertifikats in den Clouddienst](#upload-tlsssl-certificate-to-cloud-service)
+3. [Aktualisieren des TLS/SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>So verwenden Sie ein vorhandenes Zertifikat in einer PFX-Datei
-1. [Hochladen des SSL-Zertifikats zum Clouddienst](#upload-ssl-certificate-to-cloud-service)
-2. [Aktualisieren des SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-ssl-certificate-in-service-configuration-file)
+1. [Hochladen des TLS/SSL-Zertifikats in den Clouddienst](#upload-tlsssl-certificate-to-cloud-service)
+2. [Aktualisieren des TLS/SSL-Zertifikats in der Dienstkonfigurationsdatei](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>So konfigurieren Sie Clientzertifikate
 Clientzertifikate sind erforderlich, um Anforderungen an den Dienst zu authentifizieren. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
@@ -102,7 +102,7 @@ Ein Zertifikat ist erforderlich, um die Anmeldeinformationen zu verschlüsseln, 
 
 ### <a name="use-a-new-self-signed-certificate"></a>Verwenden eines neuen selbstsignierten Zertifikats
 1. [Erstellen eines selbstsignierten Zertifikats](#create-a-self-signed-certificate)
-2. [Erstellen einer PFX-Datei für ein selbstsigniertes Verschlüsselungszertifikat](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [Erstellen einer PFX-Datei für ein selbstsigniertes Verschlüsselungszertifikat](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Hochladen eines Verschlüsselungszertifikats zum Clouddienst](#upload-encryption-certificate-to-cloud-service)
 4. [Aktualisieren des Verschlüsselungszertifikats in der Dienstkonfigurationsdatei](#update-encryption-certificate-in-service-configuration-file)
 
@@ -186,7 +186,7 @@ Weitere unterstützte Werte entnehmen Sie der Dokumentation für dynamische IP-S
 ## <a name="operations-for-configuring-service-certificates"></a>Vorgänge für das Konfigurieren von Dienstzertifikaten
 Dieses Thema dient nur zu Informationszwecken. Führen Sie die Konfigurationsschritte aus, die in den folgenden Themen beschrieben sind:
 
-* Konfigurieren des SSL-Zertifikats
+* Konfigurieren des TLS/SSL-Zertifikats
 * Konfigurieren von Clientzertifikaten
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
@@ -204,7 +204,7 @@ Zur Anpassung:
 * -n mit der Dienst-URL. Platzhalter ("CN=*.cloudapp.net") und alternative Namen ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") werden unterstützt.
 * -e mit dem Ablaufdatum des Zertifikats. Erstellen Sie ein sicheres Kennwort, und geben Sie es bei Aufforderung an.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Erstellen einer PFX-Datei für ein selbstsigniertes SSL-Zertifikat
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Erstellen einer PFX-Datei für ein selbstsigniertes TLS/SSL-Zertifikat
 Führen Sie folgende Befehle aus:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folg
 * Ja, privaten Schlüssel exportieren
 * Alle erweiterten Eigenschaften exportieren
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>Exportieren des SSL-Zertifikats aus dem Zertifikatspeicher
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>Exportieren des TLS/SSL-Zertifikats aus dem Zertifikatspeicher
 * Suchen des Zertifikats
 * Klicken Sie auf "Aktionen -> Alle Aufgaben -> Exportieren..."
 * Exportieren Sie das Zertifikats mit den folgenden Optionen in eine.PFX-Datei:
   * Ja, privaten Schlüssel exportieren
   * Wenn möglich, alle Zertifikate im Zertifizierungspfad einbeziehen *Alle erweiterten Eigenschaften exportieren
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>Hochladen des SSL-Zertifikats zum Clouddienst
-Laden Sie das Zertifikat mit der vorhandenen oder generierten .PFX-Datei mit dem SSL-Schlüsselpaar hoch:
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>Hochladen des TLS/SSL-Zertifikats in den Clouddienst
+Laden Sie das Zertifikat mit der vorhandenen oder generierten PFX-Datei mit dem TLS-Schlüsselpaar hoch:
 
 * Geben Sie das Kennwort zum Schützen der Informationen des private Schlüssels ein.
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>Aktualisieren des SSL-Zertifikats in der Dienstkonfigurationsdatei
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>Aktualisieren des TLS/SSL-Zertifikats in der Dienstkonfigurationsdatei
 Aktualisieren Sie den Fingerabdruckwert der folgenden Einstellung in der Dienstkonfigurationsdatei mit dem Fingerabdruck des in den Clouddienst hochgeladenen Zertifikats:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>Importieren der SSL-Zertifizierungsstelle
+## <a name="import-tlsssl-certification-authority"></a>Importieren der TLS/SSL-Zertifizierungsstelle
 Führen Sie die folgenden Schritten für alle Konto/Computer aus, die mit dem Dienst kommunizieren werden:
 
 * Doppelklicken Sie auf die.CER-Datei in Windows-Explorer.
@@ -248,7 +248,7 @@ Es wird nur die zertifikatbasierte Clientauthentifizierung unterstützt, und der
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-Kopieren Sie dann denselben Fingerabdruck wie für das SSL-Zertifikat in die Einstellung des CA-Zertifikats:
+Kopieren Sie dann denselben Fingerabdruck wie für das TLS/SSL-Zertifikat in die Einstellung des CA-Zertifikats:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ Aktualisieren Sie den Fingerabdruckwert der folgenden Einstellungen in der Diens
 ```
 
 ## <a name="common-certificate-operations"></a>Allgemeine Zertifikatvorgänge
-* Konfigurieren des SSL-Zertifikats
+* Konfigurieren des TLS/SSL-Zertifikats
 * Konfigurieren von Clientzertifikaten
 
 ## <a name="find-certificate"></a>Suchen des Zertifikats
@@ -477,7 +477,7 @@ Gehen Sie im [Azure-Portal](https://portal.azure.com/) wie folgt vor:
 7. Nach Abschluss kopieren Sie den Zertifikatfingerabdruck aus dem neuen Eintrag in der Liste.
 
 ## <a name="other-security-considerations"></a>Weitere Überlegungen zur Sicherheit
-Die in diesem Dokument beschriebenen SSL-Einstellungen verschlüsseln die Kommunikation zwischen dem Dienst und seinen Clients, wenn der HTTPS-Endpunkt verwendet wird. Dies ist wichtig, da die Anmeldeinformationen für den Datenbankzugriff und andere vertrauliche Informationen in der Kommunikation enthalten sind. Beachten Sie jedoch, dass der Dienst den internen Status, einschließlich der Anmeldeinformationen, in den internen Tabellen in der Microsoft Azure SQL-Datenbank, die Sie in Ihrem Microsoft Azure-Abonnement für Metadatenspeicher bereitgestellt haben, beibehält. Diese Datenbank wurde im Rahmen der folgenden Einstellung in der Dienstkonfigurationsdatei (.CSCFG-Datei) definiert: 
+Die in diesem Dokument beschriebenen TLS-Einstellungen verschlüsseln die Kommunikation zwischen dem Dienst und den zugehörigen Clients, wenn der HTTPS-Endpunkt verwendet wird. Dies ist wichtig, da die Anmeldeinformationen für den Datenbankzugriff und andere vertrauliche Informationen in der Kommunikation enthalten sind. Beachten Sie jedoch, dass der Dienst den internen Status, einschließlich der Anmeldeinformationen, in den internen Tabellen in der Microsoft Azure SQL-Datenbank, die Sie in Ihrem Microsoft Azure-Abonnement für Metadatenspeicher bereitgestellt haben, beibehält. Diese Datenbank wurde im Rahmen der folgenden Einstellung in der Dienstkonfigurationsdatei (.CSCFG-Datei) definiert: 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

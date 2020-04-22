@@ -1,197 +1,216 @@
 ---
-title: Informationen zum Mobilitätsdienst für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
-description: Hier erfahren mehr über den Mobilitätsdienst-Agent, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
+title: Informationen zum Mobilitätsdienst für die Notfallwiederherstellung von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie mehr über den Mobilitätsdienst-Agent, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure auszuführen.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 03/25/2019
+ms.topic: how-to
+ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228810"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259793"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
-Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithilfe von [Azure Site Recovery](site-recovery-overview.md) einrichten, installieren Sie den Site Recovery-Mobilitätsdienst auf jedem lokalen virtuellen VMware-Computer und physischen Server.  Der Mobilitätsdienst erfasst Datenschreibvorgänge auf dem Computer und leitet sie an den Site Recovery-Prozessserver weiter. Sie können die den Mobilitätsdienst mithilfe der folgenden Methoden bereitstellen:
+Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithilfe von [Azure Site Recovery](site-recovery-overview.md) einrichten, installieren Sie den Site Recovery-Mobilitätsdienst auf jeder lokalen VMware-VM und auf jedem physischen Server. Der Mobilitätsdienst erfasst Datenschreibvorgänge auf dem Computer und leitet sie an den Site Recovery-Prozessserver weiter. Der Mobilitätsdienst wird durch die Mobilitätsdienst-Agent-Software installiert, die Sie mithilfe der folgenden Methoden bereitstellen können:
 
-- [Pushinstallation](#push-installation): Site Recovery installiert den Mobilitäts-Agent auf dem Server, wenn der Schutz im Azure-Portal aktiviert wird.
-- Manuelle Installation: Über die [Benutzeroberfläche](#install-mobility-agent-through-ui) oder die [Eingabeaufforderung](#install-mobility-agent-through-command-prompt) können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
-- [Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mithilfe von Softwarebereitstellungstools wie Configuration Manager automatisieren.
+- [Pushinstallation](#push-installation): Wenn der Schutz im Azure-Portal aktiviert wird, installiert Site Recovery den Mobilitätsdienst auf dem Server.
+- Manuelle Installation: Über die [Benutzeroberfläche](#install-the-mobility-service-using-ui) oder die [Eingabeaufforderung](#install-the-mobility-service-using-command-prompt) können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
+- [Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation des Mobilitätsdiensts mithilfe von Softwarebereitstellungstools wie Configuration Manager automatisieren.
 
 > [!NOTE]
-> Der Mobilitäts-Agent verwendet ungefähr 6-10 % des Arbeitsspeichers auf den Quellcomputern für VMware-VMS oder physische Computer.
+> Der Mobilitätsdienst belegt ungefähr 6–10 % des Arbeitsspeichers auf den Quellcomputern für VMware-VMs oder physische Computer.
 
-## <a name="anti-virus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
+## <a name="antivirus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
 
-Wenn auf Computern, die Sie replizieren möchten, aktive Virenschutzsoftware ausgeführt wird, achten Sie darauf, den Installationsordner von Mobility Service von Virenschutzvorgängen auszuschließen (*C:\ProgramData\ASR\agent*). Dadurch wird sichergestellt, dass die Replikation wie erwartet funktioniert.
+Wenn auf Computern, die Sie replizieren möchten, eine Virenschutzsoftware ausgeführt wird, schließen Sie den Installationsordner des Mobilitätsdiensts (_C:\ProgramData\ASR\agent_) von Virenschutzvorgängen aus. Dadurch wird sichergestellt, dass die Replikation wie erwartet funktioniert.
 
 ## <a name="push-installation"></a>Pushinstallation
 
-Die Pushinstallation ist ein integraler Bestandteil des Auftrags [Replikation aktivieren](vmware-azure-enable-replication.md#enable-replication), die im Portal ausgelöst wird. Nachdem Sie die Gruppe der zu schützenden virtuellen Computer ausgewählt und „Replikation aktivieren“ ausgelöst haben, überträgt der Konfigurationsserver mittels Pushvorgang den Mobilitäts-Agent auf die Server, installiert den Agent und schließt die Registrierung des Agents beim Konfigurationsserver ab. Stellen Sie für den erfolgreichen Abschluss dieses Vorgangs Folgendes sicher:
+Die Pushinstallation ist ein wesentlicher Bestandteil des Auftrags, der über das Azure-Portal zum [Aktivieren der Replikation](vmware-azure-enable-replication.md#enable-replication) ausgeführt wird. Nachdem Sie die Gruppe der zu schützenden VMs ausgewählt und die Replikation aktiviert haben, überträgt der Konfigurationsserver mittels Pushvorgang den Mobilitätsdienst-Agent auf die Server, installiert den Agent und schließt die Registrierung des Agents beim Konfigurationsserver ab.
+
+### <a name="prerequisites"></a>Voraussetzungen
 
 - Alle [Voraussetzungen](vmware-azure-install-mobility-service.md) für die Pushinstallation müssen erfüllt sein.
-- Alle Serverkonfigurationen müssen in die [Unterstützungsmatrix von VMware für ein Azure-Notfallwiederherstellungsszenario](vmware-physical-azure-support-matrix.md) fallen.
+- Stellen Sie sicher, dass alle Serverkonfigurationen die Kriterien in der [Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure](vmware-physical-azure-support-matrix.md) erfüllen.
 
-Die Einzelheiten des Workflows für die Pushinstallation werden in den folgenden Abschnitten beschrieben.
+Der Workflow für die Pushinstallation wird in den folgenden Abschnitten beschrieben:
 
-### <a name="from-923-version-onwards"></a>Ab [Version 9.23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)
+### <a name="mobility-service-agent-version-923-and-higher"></a>Mobilitätsdienst-Agent, Version 9.23 und höher
 
-Bei der Installation des Mobilitäts-Agents werden die folgenden Schritte ausgeführt
+Weitere Informationen zu Version 9.23 finden Sie unter [Updaterollup 35 für Azure Site Recovery](https://support.microsoft.com/help/4494485/update-rollup-35-for-azure-site-recovery).
 
-1. Der Agent wird per Pushvorgang auf den Quellcomputer übertragen. Beim Kopieren des Agents auf den Quellcomputer können aufgrund mehrerer Umgebungsfehler Fehler auftreten. Schlagen Sie in [unserem Leitfaden](vmware-azure-troubleshoot-push-install.md) nach, wie Sie Fehler bei der Pushinstallation behandeln können.
-2. Nachdem der Agent erfolgreich auf den Server kopiert wurde, werden auf dem Server Voraussetzungsprüfungen ausgeführt. Die Installation schlägt fehl, wenn eine oder mehrere der [Voraussetzungen](vmware-physical-azure-support-matrix.md) nicht erfüllt werden. Wenn alle Voraussetzungen erfüllt werden, wird die Installation ausgelöst.
-3. Im Rahmen der Installation des Mobilitäts-Agents wird auch der Azure Site Recovery-VSS-Anbieter auf dem Server installiert. Dieser Anbieter wird zum Generieren von anwendungskonsistenten Punkten verwendet. Wenn bei der Installation des VSS-Anbieters ein Fehler auftritt, wird dieser Schritt übersprungen, und die Agent-Installation wird fortgesetzt.
-4. Wenn die Agent-Installation erfolgreich war, aber bei der Installation des VSS-Anbieters ein Fehler aufgetreten ist, wird der Auftragsstatus als „Warnung“ gekennzeichnet. Dies wirkt sich nicht auf die Generierung von absturzkonsistenten Punkten aus.
+Während einer Pushinstallation des Mobilitätsdiensts werden die folgenden Schritte ausgeführt:
 
-    a. Informationen zum Generieren von anwendungskonsistenten Punkten finden Sie in [unserem Leitfaden](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine), damit Sie die Installation des Site Recovery-VSS-Anbieters manuell abschließen können. </br>
-    b.  Wenn keine anwendungskonsistenten Punkte generiert werden sollen, [ändern Sie die Replikationsrichtlinie](vmware-azure-set-up-replication.md#create-a-policy), um anwendungskonsistente Punkte zu deaktivieren.
+1. Der Agent wird mithilfe von Push auf den Quellcomputer übertragen. Beim Kopieren des Agents auf den Quellcomputer kann es aufgrund verschiedener Umgebungsfehler zu Fehlern kommen. Schlagen Sie in [unserem Leitfaden](vmware-azure-troubleshoot-push-install.md) nach, wie Sie Fehler bei der Pushinstallation behandeln können.
+1. Nachdem der Agent erfolgreich auf den Server kopiert wurde, wird auf dem Server eine Voraussetzungsprüfung ausgeführt.
+   - Wenn alle Voraussetzungen erfüllt sind, wird die Installation gestartet.
+   - Die Installation ist nicht erfolgreich, wenn mindestens eine der [Voraussetzungen](vmware-physical-azure-support-matrix.md) nicht erfüllt ist.
+1. Im Rahmen der Agent-Installation wird der Volumeschattenkopie-Dienstanbieter (Volume Shadow Copy Service, VSS) für Azure Site Recovery installiert. Der VSS-Anbieter wird zum Generieren von anwendungskonsistenten Wiederherstellungspunkten verwendet. Wenn es bei der Installation des VSS-Anbieters zu einem Fehler kommt, wird dieser Schritt übersprungen, und die Agent-Installation wird fortgesetzt.
+1. Wenn die Agent-Installation erfolgreich war, aber bei der Installation des VSS-Anbieters ein Fehler aufgetreten ist, wird der Status des Auftrags auf **Warnung** festgelegt. Dies wirkt sich nicht auf das Generieren absturzkonsistenter Wiederherstellungspunkte aus.
 
-### <a name="before-922-versions"></a>Vor Version 9.22
+    - Informationen zum Generieren von anwendungskonsistenten Wiederherstellungspunkten finden Sie in [unserem Leitfaden](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) zum manuellen Abschließen der Installation des Site Recovery-VSS-Anbieters.
+    - Wenn keine anwendungskonsistenten Wiederherstellungspunkte generiert werden sollen, [ändern Sie die Replikationsrichtlinie](vmware-azure-set-up-replication.md#create-a-policy), um anwendungskonsistente Wiederherstellungspunkte zu deaktivieren.
 
-1. Der Agent wird per Pushvorgang auf den Quellcomputer übertragen. Beim Kopieren des Agents auf den Quellcomputer können aufgrund mehrerer Umgebungsfehler Fehler auftreten. Schlagen Sie in [unserem Leitfaden](vmware-azure-troubleshoot-push-install.md) nach, wie Sie Fehler bei der Pushinstallation behandeln können.
-2. Nachdem der Agent erfolgreich auf den Server kopiert wurde, werden auf dem Server Voraussetzungsprüfungen ausgeführt. Die Installation schlägt fehl, wenn eine oder mehrere der [Voraussetzungen](vmware-physical-azure-support-matrix.md) nicht erfüllt werden. Wenn alle Voraussetzungen erfüllt werden, wird die Installation ausgelöst.
-3. Im Rahmen der Installation des Mobilitäts-Agents wird auch der Azure Site Recovery-VSS-Anbieter auf dem Server installiert. Dieser Anbieter wird zum Generieren von anwendungskonsistenten Punkten verwendet. Wenn bei der Installation des VSS-Anbieters ein Fehler auftritt, schlägt die Agent-Installation fehl. Zur Vermeidung von Fehlern bei der Installation des Mobilitäts-Agents sollten Sie [Version 9.23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) oder höher verwenden, um absturzkonsistente Punkte zu generieren und den VSS-Anbieter manuell zu installieren.
+### <a name="mobility-service-agent-version-922-and-below"></a>Mobilitätsdienst-Agent, Version 9.22 und niedriger
 
-## <a name="install-mobility-agent-through-ui"></a>Installieren des Mobilitäts-Agents über die Benutzeroberfläche
+1. Der Agent wird mithilfe von Push auf den Quellcomputer übertragen. Beim Kopieren des Agents auf den Quellcomputer kann es aufgrund verschiedener Umgebungsfehler zu Fehlern kommen. Informieren Sie sich in [unserem Leitfaden](vmware-azure-troubleshoot-push-install.md), wie Sie Fehler bei der Pushinstallation behandeln können.
+1. Nachdem der Agent erfolgreich auf den Server kopiert wurde, wird auf dem Server eine Voraussetzungsprüfung ausgeführt.
+   - Wenn alle Voraussetzungen erfüllt sind, wird die Installation gestartet.
+   - Die Installation ist nicht erfolgreich, wenn mindestens eine der [Voraussetzungen](vmware-physical-azure-support-matrix.md) nicht erfüllt ist.
 
-### <a name="prerequisite"></a>Voraussetzung
+1. Im Rahmen der Agent-Installation wird der Volumeschattenkopie-Dienstanbieter (Volume Shadow Copy Service, VSS) für Azure Site Recovery installiert. Der VSS-Anbieter wird zum Generieren von anwendungskonsistenten Wiederherstellungspunkten verwendet.
+   - Wenn es bei der Installation des VSS-Anbieters zu Fehlern kommt, kann der Agent nicht installiert werden. Verwenden Sie zur Vermeidung von Fehlern bei der Agent-Installation [Version 9.23](https://support.microsoft.com/help/4494485/update-rollup-35-for-azure-site-recovery) oder höher, um absturzkonsistente Wiederherstellungspunkte zu generieren, und installieren Sie den VSS-Anbieter manuell.
 
-- Alle Serverkonfigurationen müssen in die [Unterstützungsmatrix von VMware für ein Azure-Notfallwiederherstellungsszenario](vmware-physical-azure-support-matrix.md) fallen.
-- [Suchen Sie das Installationsprogramm](#locate-installer-files) basierend auf dem Betriebssystem des Servers.
+## <a name="install-the-mobility-service-using-ui"></a>Installieren des Mobilitätsdiensts über die Benutzeroberfläche
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+- Stellen Sie sicher, dass alle Serverkonfigurationen die Kriterien in der [Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure](vmware-physical-azure-support-matrix.md) erfüllen.
+- Suchen Sie basierend auf dem Betriebssystem des Servers nach dem [Installationsprogramm](#locate-installer-files).
 
 >[!IMPORTANT]
-> Wenn Sie virtuelle Azure-IaaS-Computer von einer Azure-Region in eine andere replizieren, sollten Sie diese Methode nicht verwenden. Verwenden Sie stattdessen die befehlszeilenbasierte Installationsmethode.
+> Verwenden Sie keine Installation über die Benutzeroberfläche, wenn Sie eine Azure IaaS-VM (Infrastructure-as-a-Service) von einer Azure-Region in eine andere replizieren. Verwenden Sie in diesem Fall die Installation über die [Eingabeaufforderung](#install-the-mobility-service-using-command-prompt).
 
 1. Kopieren Sie die Installationsdatei auf den Computer, und führen Sie sie aus.
-2. Wählen Sie unter **Installationsoption** den Eintrag **Mobilitätsdienst installieren** aus.
-3. Wählen Sie den Installationspfad aus, und klicken Sie auf **Installieren**.
+1. Wählen Sie unter **Installationsoption** den Eintrag **Mobilitätsdienst installieren** aus.
+1. Wählen Sie den Installationsspeicherort aus, und klicken Sie auf **Installieren**.
 
-    ![Optionsseite für die Mobility Service-Installation](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Optionsseite für die Installation des Mobilitätsdiensts":::
 
-4. Überwachen Sie die Installation im **Installationsfortschritt**. Klicken Sie nach Abschluss der Installation auf **Mit der Konfiguration fortfahren**, um den Dienst beim Konfigurationsserver zu registrieren.
+1. Überwachen Sie die Installation im **Installationsfortschritt**. Klicken Sie nach Abschluss der Installation auf **Mit der Konfiguration fortfahren**, um den Dienst beim Konfigurationsserver zu registrieren.
 
-    ![Seite für die Mobility Service-Registrierung](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Seite für die Registrierung des Mobilitätsdiensts":::
 
-5. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse und die konfigurierte Passphrase an.
+1. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse und die konfigurierte Passphrase an.
 
-    ![Seite für die Mobility Service-Registrierung](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Seite für die Registrierung des Mobilitätsdiensts":::
 
-6. Klicken Sie auf **Registrieren**, um die Registrierung abzuschließen.
+1. Klicken Sie auf **Registrieren**, um die Registrierung abzuschließen.
 
-    ![Letzte Seite der Mobility Service-Registrierung](./media/vmware-physical-mobility-service-install-manual/mobility5.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Letzte Seite die Registrierung des Mobilitätsdiensts":::
 
-## <a name="install-mobility-agent-through-command-prompt"></a>Installieren des Mobilitäts-Agents über die Eingabeaufforderung
+## <a name="install-the-mobility-service-using-command-prompt"></a>Installieren des Mobilitätsdiensts über die Eingabeaufforderung
 
-### <a name="prerequisite"></a>Voraussetzung
+### <a name="prerequisites"></a>Voraussetzungen
 
-- Alle Serverkonfigurationen müssen in die [Unterstützungsmatrix von VMware für ein Azure-Notfallwiederherstellungsszenario](vmware-physical-azure-support-matrix.md) fallen.
-- [Suchen Sie das Installationsprogramm](#locate-installer-files) basierend auf dem Betriebssystem des Servers.
+- Stellen Sie sicher, dass alle Serverkonfigurationen die Kriterien in der [Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure](vmware-physical-azure-support-matrix.md) erfüllen.
+- Suchen Sie basierend auf dem Betriebssystem des Servers nach dem [Installationsprogramm](#locate-installer-files).
 
-### <a name="on-a-windows-machine"></a>Auf einem Windows-Computer
+### <a name="windows-machine"></a>Windows-Computer
 
-- Kopieren Sie das Installationsprogramm in einen lokalen Ordner (z.B. „C:\Temp“) auf dem Server, den Sie schützen möchten.
+- Führen Sie an einer Eingabeaufforderung die folgenden Befehle aus, um das Installationsprogramm in einen lokalen Ordner (z. B. _C:\Temp_) auf dem Server zu kopieren, den Sie schützen möchten. Ersetzen Sie den Dateinamen des Installationsprogramms durch den tatsächlichen Dateinamen.
 
-    ```
-    cd C:\Temp
-    ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
-    MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
-    cd C:\Temp\Extracted
-    ```
+  ```cmd
+  cd C:\Temp
+  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
+  cd C:\Temp\Extracted
+  ```
 
-- Führen Sie die Installation auf folgende Weise aus:
+- Führen Sie diesen Befehl aus, um den Agent zu installieren.
 
-    ```
-    UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
-    ```
+  ```cmd
+  UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
+  ```
 
-- Registrieren Sie den Agent beim Konfigurationsserver.
+- Führen Sie diese Befehle aus, um den Agent beim Konfigurationsserver zu registrieren.
 
-    ```
-    cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-    UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
-    ```
+  ```cmd
+  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+  ```
 
 #### <a name="installation-settings"></a>Installationseinstellungen
-**Einstellung** | **Details**
+
+Einstellung | Details
 --- | ---
-Verwendung | UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Installationsort> /Platform „VmWare“ /Silent
-Setupprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log“.
-/Role | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
-/InstallLocation| Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
-/Platform | Mandatory. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
-/Silent| Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Setupprotokolle | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
+`/Role` | Erforderlicher Installationsparameter. Gibt an, ob der Mobilitätsdienst oder das Masterziel installiert werden soll.
+`/InstallLocation`| Optionaler Parameter. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
+`/Platform` | Erforderlich. Gibt die Plattform an, auf der der Mobilitätsdienst installiert wird: <br/> **VMware** für VMware-VMs/physische Server. <br/> **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
+`/Silent`| Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
 
 #### <a name="registration-settings"></a>Registrierungseinstellungen
-**Einstellung** | **Details**
+
+Einstellung | Details
 --- | ---
-Verwendung | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
-Agent-Konfigurationsprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log“.
-/CSEndPoint | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
-/PassphraseFilePath |  Mandatory. Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Agent-Konfigurationsprotokolle | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
+`/CSEndPoint` | Erforderlicher Parameter. `<CSIP>` gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
+`/PassphraseFilePath` |  Erforderlich. Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
 
-### <a name="on-a-linux-machine"></a>Auf einem Linux-Computer
+### <a name="linux-machine"></a>Linux-Computer
 
-1. Kopieren Sie das Installationsprogramm in einen lokalen Ordner (z.B. „/tmp“) auf dem Server, den Sie schützen möchten. Führen Sie an einem Terminal die folgenden Befehle aus:
+1. Kopieren Sie aus einer Terminalsitzung das Installationsprogramm in einen lokalen Ordner (z. B. _/tmp_) auf dem Server, den Sie schützen möchten. Ersetzen Sie den Namen des Installationsprogramms durch den tatsächlichen Dateinamen Ihrer Linux-Distribution, und führen Sie dann die Befehle aus.
 
-    ```
-    cd /tmp ;
-    tar -xvf Microsoft-ASR_UA*release.tar.gz
-    ```
+   ```shell
+   cd /tmp ;
+   tar -xvf Microsoft-ASR_UA_version_LinuxVersion_GA_date_release.tar.gz
+   ```
 
 2. Führen Sie die Installation auf folgende Weise aus:
 
-    ```
-    sudo ./install -d <Install Location> -r MS -v VmWare -q
-    ```
+   ```shell
+   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   ```
 
-3. Nach Abschluss der Installation muss Mobility Service auf dem Konfigurationsserver registriert werden. Führen Sie den folgenden Befehl aus, um Mobility Service beim Konfigurationsserver zu registrieren:
+3. Nach Abschluss der Installation muss der Mobilitätsdienst beim Konfigurationsserver registriert werden. Führen Sie den folgenden Befehl aus, um den Mobilitätsdienst beim Konfigurationsserver zu registrieren.
 
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
-    ```
+   ```shell
+   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+   ```
 
 #### <a name="installation-settings"></a>Installationseinstellungen
-**Einstellung** | **Details**
+
+Einstellung | Details
 --- | ---
-Verwendung | ./install -d \<Installationsort> -r \<MS/MT> -v VmWare -q
--r | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
--d | Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an: /usr/local/ASR.
--v | Mandatory. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.
--q | Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+`-r` | Erforderlicher Installationsparameter. Gibt an, ob der Mobilitätsdienst oder das Masterziel installiert werden soll.
+`-d` | Dieser Parameter ist optional. Gibt den Installationsspeicherort des Mobilitätsdiensts an: `/usr/local/ASR`.
+`-v` | Erforderlich. Gibt die Plattform an, auf der der Mobilitätsdienst installiert wird. <br/> **VMware** für VMware-VMs/physische Server. <br/> **Azure** für Azure-VMs.
+`-q` | Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
 
 #### <a name="registration-settings"></a>Registrierungseinstellungen
-**Einstellung** | **Details**
+
+Einstellung | Details
 --- | ---
-Verwendung | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
--i | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
--P |  Mandatory. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+`-i` | Erforderlicher Parameter. `<CSIP>` gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
+`-P` |  Erforderlich. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-VM-Agent
 
-- **Virtuelle Windows-Computer:** Ab Version 9.7.0.0 des Mobilitätsdiensts wird der [Azure VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) vom Mobilitätsdienst-Installer installiert. Damit wird sichergestellt, dass die Azure-VM die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen erfüllt, wenn ein Computer ein Failover zu Azure ausführt.
-- **Virtuelle Linux-Computer:** Der [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) muss nach dem Failover manuell auf der Azure-VM installiert werden.
+- **Virtuelle Windows-Computer:** Ab Version 9.7.0.0 des Mobilitätsdiensts wird der [Azure VM-Agent](/azure/virtual-machines/extensions/features-windows#azure-vm-agent) vom Mobilitätsdienst-Installer installiert. So wird sichergestellt, dass die Azure-VM die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen erfüllt, wenn ein Computer ein Failover zu Azure ausführt.
+- **Virtuelle Linux-Computer:** Der [WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) muss nach dem Failover manuell auf der Azure-VM installiert werden.
 
 ## <a name="locate-installer-files"></a>Suchen nach den Installerdateien
 
-Wechseln Sie auf dem Konfigurationsserver zum Ordner „%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository“. Überprüfen Sie, welches Installationsprogramm Sie für Ihr Betriebssystem benötigen. Die folgende Tabelle enthält die Installationsprogramme für alle virtuellen VMware-Computer und alle Betriebssysteme von physischen Servern. Sie können sich vor dem Start die [unterstützten Betriebssysteme](vmware-physical-azure-support-matrix.md#replicated-machines) anschauen.
+Wechseln Sie auf dem Konfigurationsserver zum Ordner _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_. Überprüfen Sie, welches Installationsprogramm Sie für Ihr Betriebssystem benötigen. Die folgende Tabelle enthält die Installationsprogramme für alle virtuellen VMware-Computer und alle Betriebssysteme von physischen Servern. Sie können sich vor dem Start die [unterstützten Betriebssysteme](vmware-physical-azure-support-matrix.md#replicated-machines) ansehen.
 
-**Installerdatei** | **Betriebssystem (nur 64-Bit)**
+> [!NOTE]
+> Der Dateiname verwendet die in der folgenden Tabelle gezeigte Syntax mit _version_ und _date_ als Platzhalter für die echten Werte. Die tatsächlichen Dateinamen ähneln denen in diesen Beispielen:
+> - `Microsoft-ASR_UA_9.30.0.0_Windows_GA_22Oct2019_release.exe`
+> - `Microsoft-ASR_UA_9.30.0.0_UBUNTU-16.04-64_GA_22Oct2019_release.tar.gz`
+
+Installerdatei | Betriebssystem (nur 64-Bit)
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.*
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1,SP2,SP3
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5
-Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
-Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS-Server
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
-Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
+`Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+`Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
+`Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux 7 (RHEL) </br> CentOS 7:
+`Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> Umfasst SP2 und SP3.
+`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+`Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
+`Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
+`Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS-Server
+`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
 
 ## <a name="next-steps"></a>Nächste Schritte
 

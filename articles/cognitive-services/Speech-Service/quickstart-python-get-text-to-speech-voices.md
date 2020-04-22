@@ -3,19 +3,19 @@ title: Auflisten von Stimmen für die Sprachsynthese, Python – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.author: trbye
+ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77119797"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401015"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Abrufen der Liste der Stimmen für Text-to-Speech mit Python
 
@@ -26,7 +26,7 @@ Für diesen Artikel wird ein [Azure Cognitive Services-Konto](https://docs.micro
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Python 2.7.x oder 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span></a>, <a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a> oder Ihr bevorzugter Editor
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module

@@ -1,7 +1,7 @@
 ---
-title: Debuggen und Problembehandlung für Machine Learning-Pipelines
+title: Debuggen und Troubleshooting bei ML-Pipelines
 titleSuffix: Azure Machine Learning
-description: Debuggen und Problembehandlung für Machine Learning-Pipelines im Azure Machine Learning SDK für Python. Lernen Sie häufige Fallstricke bei der Entwicklung von Pipelines kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen. Erfahren Sie, wie Sie Ihre Machine Learning-Pipelines mithilfe von Visual Studio Code interaktiv debuggen.
+description: Debuggen Sie Ihre Azure Machine Learning-Pipelines in Python. Lernen Sie häufige Fallstricke bei der Entwicklung von Pipelines kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen. Erfahren Sie, wie Sie Ihre Machine Learning-Pipelines mithilfe von Visual Studio Code interaktiv debuggen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388983"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257212"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

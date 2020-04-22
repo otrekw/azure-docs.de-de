@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502021"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257741"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -37,6 +37,8 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     1. Geben Sie unter **Name** einen Namen für Ihr Lab an. 
     2. Wählen Sie die **Größe der virtuellen Computer** aus, die Sie für die Klasse benötigen. Die Liste der verfügbaren Größen finden Sie im Abschnitt [VM-Größen ](#vm-sizes). 
     3. Wählen Sie das **VM-Image** aus, das Sie für das Classroom-Lab verwenden möchten. Bei Auswahl eines Linux-Images wird eine Option zum Aktivieren der Remotedesktopverbindung angezeigt. Ausführliche Informationen finden Sie unter [Aktivieren der Remotedesktopverbindung für Linux](how-to-enable-remote-desktop-linux.md).
+
+        Wenn Sie sich mit den Anmeldeinformationen für Labkontobesitzer angemeldet haben, wird eine Option angezeigt, mit der Sie weitere Images für das Lab aktivieren können. Weitere Informationen finden Sie unter [Aktivieren von Images zum Zeitpunkt der Laberstellung](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     4. Überprüfen Sie den **Gesamtpreis pro Stunde** , der auf der Seite angezeigt wird. 
     6. Wählen Sie **Speichern** aus.
 

@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233578"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390296"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 
-In Azure HDInsight gibt es verschiedene Clustertypen und -technologien, auf denen Apache Hive-Abfragen ausgeführt werden können. Wenn Sie einen HDInsight-Cluster erstellen, wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus.
+In Azure HDInsight gibt es verschiedene Clustertypen und -technologien, auf denen Apache Hive-Abfragen ausgeführt werden können. Wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus.
 
-Wählen Sie z. B. den Clustertyp **Interactive Query** zur Optimierung für interaktive Ad-hoc-Abfragen aus. Wählen Sie den Apache **Hadoop**-Clustertyp zur Optimierung für Hive-Abfragen zur Batchverarbeitung aus. Auf den Clustertypen **Spark** und **HBase** können auch Hive-Abfragen ausgeführt werden. Weitere Informationen zum Ausführen von Hive-Abfragen auf verschiedenen Typen von HDInsight-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+Wählen Sie z. B. den Clustertyp **Interaktive Abfrage** für die Optimierung interaktiver `ad hoc`-Abfragen aus. Wählen Sie den Apache **Hadoop**-Clustertyp zur Optimierung für Hive-Abfragen zur Batchverarbeitung aus. Auf den Clustertypen **Spark** und **HBase** können auch Hive-Abfragen ausgeführt werden. Weitere Informationen zum Ausführen von Hive-Abfragen auf verschiedenen Typen von HDInsight-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 
 HDInsight-Cluster des Clustertyps Hadoop sind standardmäßig nicht für Leistung optimiert. In diesem Artikel werden einige der gängigsten Methoden für die Optimierung der Leistung von Hive beschrieben, die Sie auf Ihre Abfragen anwenden können.
 
 ## <a name="scale-out-worker-nodes"></a>Aufskalieren der Workerknoten
 
-In einem HDInsight-Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die Aufskalierung auf zwei Weisen erhöhen:
+In einem HDInsight-Cluster, dem mehr Workerknoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die Aufskalierung auf zwei Weisen erhöhen:
 
-* Bei der Bereitstellung eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
+* Beim Bereitstellen eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
   
     ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,7 +45,7 @@ Weitere Informationen zum Skalieren von HDInsight finden Sie unter [Skalieren vo
 
 Tez ist jedoch aus folgenden Gründen schneller:
 
-* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch einen komplexen gerichteten azyklischen Graphen in einem Auftrag verarbeiten, sodass weniger Aufträge gestartet werden müssen.
+* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Aufgrund dieser Anforderung werden für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet. Für Tez gilt diese Einschränkung nicht. Tez kann auch einen komplexen gerichteten azyklischen Graphen in einem Auftrag verarbeiten, sodass weniger Aufträge gestartet werden müssen.
 * **Vermeiden unnötiger Schreibvorgänge**. Es werden mehrere Aufträge verwendet, um die Hive-Abfrage in der MapReduce-Engine zu verarbeiten. Die Ausgabe der einzelnen MapReduce-Aufträge wird in HDFS-Zwischenspeicher geschrieben. Tez hingegen minimiert die Anzahl der Aufträge für jede Hive-Abfrage und vermeidet so unnötige Schreibvorgänge.
 * **Minimierung von Startverzögerungen**. Tez minimiert Startverzögerungen durch Reduzierung der Anzahl der für den Start erforderlichen Mapper sowie durch eine insgesamt bessere Optimierung.
 * **Wiederverwendung von Containern**. Tez versucht, Container möglichst wiederzuverwenden, und verringert so Latenzzeiten aufgrund von Containerstarts.
@@ -70,7 +70,7 @@ Die Hive-Partitionierung wird durch Neuorganisation der Rohdaten in neue Verzeic
 Überlegungen zur Partitionierung:
 
 * **Partitionieren Sie großzügig**: Wenn Sie die Partitionierung für Spalten mit nur wenigen Werte durchführen, erhalten Sie nur wenige Partitionen. Partitionieren Sie zum Beispiel nach dem Geschlecht, so erhalten Sie nur zwei Partitionen (männlich, weiblich), sodass sich die Latenzzeit also höchstens halbiert.
-* **Aber nicht zu großzügig**: Im anderen Extremfall werden bei Erstellung einer Partition anhand einer Spalte mit einem eindeutigen Wert (z.B. userid) mehrere Partitionen erzeugt. Eine zu großzügige Partitionierung verursacht eine große Belastung für den NameNode des Clusters, da dieser mit einer großen Anzahl von Verzeichnissen zurechtkommen muss.
+* **Aber nicht zu großzügig**: Im anderen Extremfall werden bei Erstellung einer Partition anhand einer Spalte mit einem eindeutigen Wert (z. B. userid) mehrere Partitionen erzeugt. Eine zu großzügige Partitionierung verursacht eine große Belastung für den NameNode des Clusters, da dieser mit einer großen Anzahl von Verzeichnissen zurechtkommen muss.
 * **Vermeiden Sie zu unterschiedliche Partitionsgrößen** – Wählen Sie Ihren Partitionsschlüssel so, dass sich etwa gleich große Partitionen ergeben. Beispielsweise kann die Partitionierung nach der Spalte *State* möglicherweise die Verteilung der Daten verzerren. Da der Bundesstaat Kalifornien eine Bevölkerung von fast dem 30-Fachen von Vermont aufweist, ist die Größe der Partition möglicherweise verzerrt und die Leistung kann erheblich schwanken.
 
 Zum Erstellen einer Partitionstabelle verwenden Sie die Klausel *Partitioned By*:
@@ -198,5 +198,5 @@ Es gibt noch weitere Optimierungsmethoden, die durchaus erwägenswert sind, zum 
 In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Verwenden von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md)
-* [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analysieren von Twitter-Daten mit Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)

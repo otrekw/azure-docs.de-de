@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877302"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990904"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -52,6 +52,9 @@ Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwend
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern zu Azure unterstützt?
 
 Der Anwendungsproxyconnector führt eine zertifikatbasierte Authentifizierung bei Azure durch. Die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) unterbricht diese Authentifizierungsmethode und wird nicht unterstützt. Der Datenverkehr vom Connector zu Azure muss alle Geräte umgehen, die eine TLS-Terminierung ausführen.  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Kann ich ein Weiterleitungsproxygerät zwischen den Connectorservern und dem Back-End-Anwendungsserver platzieren?
+Ja, dieses Szenario wird ab Connectorversion 1.5.1526.0 unterstützt. Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md).
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Sollte ich ein dediziertes Konto erstellen, um den Connector beim Azure AD-Anwendungsproxy zu registrieren?
 

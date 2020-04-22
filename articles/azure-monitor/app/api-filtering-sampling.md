@@ -3,12 +3,12 @@ title: Filterung und Vorverarbeitung im Azure Application Insights-SDK | Microso
 description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer für das SDK, um die Daten zu filtern oder ihnen Eigenschaften hinzuzufügen, bevor die Telemetriedaten an das Application Insights-Portal gesendet werden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8b81849726ad546a24ce1bb56a139b384eb54c42
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405361"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -21,7 +21,7 @@ Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurier
 
 Vorbereitungen:
 
-* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) oder [JavaScript](javascript.md)
+* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md) oder [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -307,26 +307,6 @@ Wenn Sie bei Apps, die mithilfe von [ASP.NET Core](asp-net-core.md#adding-teleme
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java-Telemetrieinitialisierer
-
-[Java SDK-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-Registrieren Sie anschließend den benutzerdefinierten Initialisierer in der Datei „applicationinsights.xml“.
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript-Telemetrieinitialisierer
 *JavaScript*
 
@@ -508,9 +488,37 @@ Mit dem folgenden Beispielinitialisierer wird für alle überwachten Telemetried
 ```csharp
 public void Initialize(ITelemetry telemetry)
 {
-    if(string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+    if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
     {
         telemetry.Context.Cloud.RoleName = "MyCloudRoleName";
+    }
+}
+```
+
+#### <a name="add-information-from-httpcontext"></a>Hinzufügen von Informationen aus HttpContext
+
+Der folgende Beispielinitialisierer liest Daten aus [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) und fügt sie an eine `RequestTelemetry`-Instanz an. Der `IHttpContextAccessor` wird automatisch durch die Abhängigkeitsinjektion des Konstruktors bereitgestellt.
+
+```csharp
+public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
+{
+    private readonly IHttpContextAccessor httpContextAccessor;
+
+    public HttpContextRequestTelemetryInitializer(IHttpContextAccessor httpContextAccessor)
+    {
+        this.httpContextAccessor =
+            httpContextAccessor ??
+            throw new ArgumentNullException(nameof(httpContextAccessor));
+    }
+
+    public void Initialize(ITelemetry telemetry)
+    {
+        var requestTelemetry = telemetry as RequestTelemetry;
+        if (requestTelemetry == null) return;
+
+        var claims = this.httpContextAccessor.HttpContext.User.Claims;
+        Claim oidClaim = claims.FirstOrDefault(claim => claim.Type == "oid");
+        requestTelemetry.Properties.Add("UserOid", oidClaim?.Value);
     }
 }
 ```

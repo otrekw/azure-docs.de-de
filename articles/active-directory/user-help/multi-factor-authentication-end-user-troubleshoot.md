@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897726"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271691"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Allgemeine Probleme mit der zweistufigen Überprüfung in Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto
 
@@ -65,6 +65,7 @@ Stellen Sie sicher, dass Sie über ein Gerätesignal und eine Internetverbindung
 Deaktivieren Sie „Nicht stören“ | Stellen Sie sicher, dass das Funktionsmerkmal **Nicht stören** für Ihr mobiles Gerät deaktiviert ist. Wenn dieses Funktionsmerkmal aktiviert ist, sind keine Benachrichtigungen auf Ihrem Mobilgerät möglich. In der Bedienungsanleitung Ihres Mobilgeräts finden Sie Anweisungen, wie Sie dieses Funktionsmerkmal deaktivieren können.
 Aufheben der Sperre von Telefonnummern | In den USA stammen Anrufe von Microsoft von folgenden Telefonnummern: + 1 (866) 539 4191, + 1 (855) 330 8653 und + 1 (877) 668 6536.
 Überprüfen Sie akkubezogene Einstellungen | Dies scheint auf den ersten Blick etwas seltsam zu sein, aber wenn Sie Ihre Akkuroptimierung so eingerichtet haben, dass weniger genutzte Anwendungen nicht im Hintergrund aktiv bleiben, ist Ihr Benachrichtigungssystem höchstwahrscheinlich betroffen. Um dieses Problem zu beheben, deaktivieren Sie die Akkuoptimierung für Ihre Authentifizierungs- und Messaging-App, und versuchen Sie dann, sich erneut bei Ihrem Konto anzumelden.
+Deaktivieren von Sicherheits-Apps von Drittanbietern | Wenn Sie über eine App verfügen, die Textnachrichten oder Telefonanrufe schützt, um unbekannte Anrufer zu minimieren, kann diese den Empfang des Prüfcodes verhindern. Versuchen Sie, alle Sicherheits-Apps von Drittanbietern auf Ihrem Telefon zu deaktivieren, und fordern Sie dann einen weiteren Prüfcode an.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Ich werde nicht zur Eingabe meiner zweiten Überprüfungsinformation aufgefordert
 
@@ -99,6 +100,8 @@ App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, di
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Ich kann die zweistufige Überprüfung nicht deaktivieren
 
 Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) verwenden, bedeutet dies höchstwahrscheinlich, dass Ihre Organisation entschieden hat, dass Sie dieses zusätzliche Sicherheitsfeature verwenden müssen. Da Ihre Organisation die Verwendung des Features vorgeschrieben hat, kann es nicht individuell deaktiviert werden. Wenn Sie jedoch die zweistufige Überprüfung mit einem persönlichen Konto wie alain@outlook.comverwenden, können Sie das Feature aktivieren und deaktivieren. Anweisungen zum Steuern der zweistufigen Überprüfung für Ihre persönlichen Konten finden Sie unter [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+Wenn Sie die zweistufige Überprüfung nicht deaktivieren können, liegt dies möglicherweise auch an den Sicherheitsstandards, die auf Organisationsebene angewendet wurden. Weitere Informationen zu Sicherheitsstandards finden Sie unter [Was sind Sicherheitsstandards?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ich konnte keine Lösung für mein Problem finden
 

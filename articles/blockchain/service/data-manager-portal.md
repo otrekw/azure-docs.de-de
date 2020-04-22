@@ -1,15 +1,15 @@
 ---
 title: 'Konfigurieren von Blockchain Data Manager mithilfe des Azure-Portals: Azure Blockchain Service'
 description: Erstellen und Verwalten von Blockchain Data Manager-Instanzen für Azure Blockchain Service mithilfe des Azure-Portals.
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233834"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260597"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurieren von Blockchain Data Manager über das Azure-Portal
 
@@ -22,13 +22,13 @@ So konfigurieren Sie eine Blockchain Data Manager-Instanz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
+* [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md) durcharbeiten. Der Tarif *Standard* von Azure Blockchain Service wird empfohlen, wenn Sie Blockchain Data Manager verwenden.
 * Erstellen eines [Event Grid-Themas](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Weitere Informationen zu [Ereignishandlern in Azure Event Grid](../../event-grid/event-handlers.md)
 
 ## <a name="create-instance"></a>Erstellen einer Instanz
 
-Eine Blockchain Data Manager-Instanz verbindet und überwacht einen Azure Blockchain Service-Transaktionsknoten. Nur Benutzer, die Zugriff auf den Transaktionsknoten haben, können eine Verbindung herstellen. Eine Instanz erfasst alle Block- und Transaktionsrohdaten aus dem Transaktionsknoten.
+Eine Blockchain Data Manager-Instanz verbindet und überwacht einen Azure Blockchain Service-Transaktionsknoten. Nur Benutzer, die Zugriff auf den Transaktionsknoten haben, können eine Verbindung herstellen. Eine Instanz erfasst alle Block- und Transaktionsrohdaten aus dem Transaktionsknoten. Blockchain Data Manager veröffentlicht eine **RawBlockAndTransactionMsg**-Nachricht, die eine Obermenge von Informationen ist, die von [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock)- und [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)-web3.eth-Abfragen zurückgegeben werden.
 
 Eine ausgehende Verbindung sendet Blockchaindaten an Azure Event Grid. Beim Erstellen der Instanz konfigurieren Sie eine einzelne ausgehende Verbindung. Blockchain Data Manager unterstützt ausgehende Verbindungen mit mehreren Event Grid-Themen für eine beliebige Blockchain Data Manager-Instanz. Sie können Blockchaindaten an ein einzelnes Ziel oder an mehrere Ziele senden. Fügen Sie der Instanz einfach zusätzliche ausgehende Verbindungen hinzu, um ein weiteres Ziel hinzuzufügen.
 

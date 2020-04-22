@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74287024"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417656"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformationsfunktionen im Wranglingdatenfluss
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Der Wranglingdatenfluss in Azure Data Factory ermöglicht die codefreie agile Datenaufbereitung und Data Wrangling für die Cloud. Der Wranglingdatenfluss kann in [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) integriert werden und stellt Power Query M-Funktionen für Data Wrangling über Spark-Ausführung bereit. 
 
@@ -86,7 +88,7 @@ Verwenden Sie [Table.Sort](https://docs.microsoft.com/powerquery-m/table-sort), 
 | Funktion | Status |
 | -- | -- |
 | Table.PromoteHeaders | Wird nicht unterstützt. Dasselbe Ergebnis kann erzielt werden, indem „Erste Zeile als Header verwenden“ im Dataset festgelegt wird. |
-| Table.CombineColumns | Dies ist ein gängiges Szenario, das nicht direkt unterstützt wird. Es kann jedoch durch Hinzufügen einer neuen Spalte umgesetzt werden, in der zwei angegebene Spalten verkettet sind.  Beispiel: Table.AddColumn(RemoveEmailColumn, “Name”, jeweils [FirstName] & ” ” & [LastName]) |
+| Table.CombineColumns | Dies ist ein gängiges Szenario, das nicht direkt unterstützt wird. Es kann jedoch durch Hinzufügen einer neuen Spalte umgesetzt werden, in der zwei angegebene Spalten verkettet sind.  Beispiel: Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName]) |
 | Table.TransformColumnTypes | Diese Funktion wird in den meisten Fällen unterstützt. Die folgenden Szenarien werden nicht unterstützt: Transformieren des Typs „string“ in „currency“, Transformieren des Typs „string“ in „time“, Transformieren des Typs „string“ in „Percentage“. |
 | Table.NestedJoin | Wenn Sie nur einen Join durchführen, führt dies zu einem Überprüfungsfehler. Die Spalten müssen erweitert werden, damit der Vorgang funktioniert. |
 | Table.Distinct | Das Entfernen doppelter Zeilen wird nicht unterstützt. |

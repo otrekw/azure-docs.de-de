@@ -1,26 +1,26 @@
 ---
-title: Ratenlimits für SMS, E-Mail-Nachrichten, Azure-App-Pushbenachrichtigungen und Webhooks
+title: Ratenlimits für SMS, E-Mails und Pushbenachrichtigungen
 description: Es wird erläutert, wie Azure die Anzahl der möglichen SMS-, E-Mail-, Azure App-Push- oder Webhookbenachrichtigungen aus einer Aktionsgruppe beschränkt.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665526"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114329"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge
 Das Ratenlimit führt zu einer Unterbrechung der Benachrichtigungen, wenn zu viele an eine bestimmte Telefonnummer, E-Mail-Adresse oder an ein Gerät gesendet werden. Das Ratenlimit stellt sicher, dass Warnungen verwaltbar und verfolgbar sind.
 
 Folgende Ratenlimits gelten:
 
-- **SMS**: Nicht mehr als 1 SMS alle 5 Minuten.
-- **Sprache**: nicht mehr als 1 Telefonanruf alle 5 Minuten.
-- **E-Mail**: Nicht mehr als 100 E-Mails in einer Stunde.
+- **SMS**: Maximal eine SMS alle fünf Minuten
+- **Sprache**: Maximal ein Telefonanruf alle fünf Minuten
+- **E-Mail**: Maximal 100 E-Mails in einer Stunde.
  
   Für andere Aktionen gelten keine Ratenlimits.
 

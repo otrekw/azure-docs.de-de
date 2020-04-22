@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zur lokalen Konfigurationsdatei für C# des Sicherheits-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
+title: Lokale Sicherheits-Agent-Konfiguration (C#)
 description: Erfahren Sie mehr über Azure Security Center für IoT und die lokale Konfigurationsdatei für C# des Sicherheits-Agents.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664191"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311662"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
-
 
 Der Azure Security Center für IoT-Sicherheits-Agent verwendet Konfigurationen aus einer lokalen Konfigurationsdatei.
 
@@ -35,18 +34,21 @@ Der C#-Sicherheits-Agent verwendet mehrere Konfigurationsdateien:
 - **Authentication.config** – Authentifizierungsbezogene Konfiguration (einschließlich Authentifizierungsdetails).
 - **SecurityIotInterface.config** – IoT-bezogene Konfigurationen.
 
-Die Konfigurationsdateien enthalten die Standardkonfiguration. Die Authentifizierungskonfiguration wird während der Agentinstallation aufgefüllt, und Änderungen an der Konfigurationsdatei werden beim Neustart des Agents vorgenommen. 
+Die Konfigurationsdateien enthalten die Standardkonfiguration. Die Authentifizierungskonfiguration wird während der Agentinstallation aufgefüllt, und Änderungen an der Konfigurationsdatei werden beim Neustart des Agents vorgenommen.
 
 ## <a name="configuration-file-location"></a>Speicherort der Konfigurationsdatei
+
 Linux:
+
 - Konfigurationsdateien für das Betriebssystem befinden sich in `/var/ASCIoTAgent`.
 
 Windows:
-- Konfigurationsdateien für das Betriebssystem befinden sich im Verzeichnis des Sicherheits-Agents. 
+
+- Konfigurationsdateien für das Betriebssystem befinden sich im Verzeichnis des Sicherheits-Agents.
 
 ### <a name="generalconfig-configurations"></a>„General.config“-Konfigurationen
 
-| Konfigurationsname | Mögliche Werte | Details | 
+| Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
 | agentId | GUID | Eindeutiger Agent-Bezeichner |
 | readRemoteConfigurationTimeout | TimeSpan | Zeitraum für das Abrufen der Remotekonfiguration aus IoT Hub. Wenn der Agent die Konfiguration innerhalb des angegebenen Zeitraums nicht abrufen kann, kommt es bei diesem Vorgang zu einem Timeout.|
@@ -61,6 +63,7 @@ Windows:
 | defaultEventPriority | „High“, „Low“, „Off“ | Standardereignispriorität. |
 
 ### <a name="generalconfig-example"></a>Beispiel für „General.config“
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,20 +83,21 @@ Windows:
 
 ### <a name="authenticationconfig"></a>Authentication.config
 
-| Konfigurationsname | Mögliche Werte | Details | 
+| Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
-| moduleName | string | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
-| deviceId | string | ID des Geräts (wie in Azure IoT Hub registriert). || schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
-| gatewayHostname | string | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |
+| moduleName | Zeichenfolge | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
+| deviceId | Zeichenfolge | ID des Geräts (wie in Azure IoT Hub registriert). || schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
+| gatewayHostname | Zeichenfolge | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |
 | filePath | Zeichenfolge – Pfad zur Datei | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält.|
 | type | „SymmetricKey“, „SelfSignedCertificate“ | Das Benutzergeheimnis für die Authentifizierung. Wählen Sie *SymmetricKey* aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist; wählen Sie *SelfSignedCertificate* aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist. |
 | identity | „DPS“, „Module“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „Module“, wenn sie mit Anmeldeinformationen für das Modul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt.
 | certificateLocationKind |  „LocalFile“, „Store“ | „LocalFile“, wenn das Zertifikat in einer Datei gespeichert ist; „Store“, wenn sich das Zertifikat in einem Zertifikatspeicher befindet. |
-| idScope | string | ID-Bereich von DPS |
-| registrationId | string  | Registrierungs-ID für DPS-Geräte. |
+| idScope | Zeichenfolge | ID-Bereich von DPS |
+| registrationId | Zeichenfolge  | Registrierungs-ID für DPS-Geräte. |
 |
 
 ### <a name="authenticationconfig-example"></a>Beispiel für „Authentication.config“
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Windows:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
-| Konfigurationsname | Mögliche Werte | Details | 
+| Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
 | transportType | „Ampq“ „Mqtt“ | IoT-Hub-Transporttyp. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>Beispiel für „SecurityIotInterface.config“
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Windows:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
 - Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md) „Azure Security Center für IoT“.

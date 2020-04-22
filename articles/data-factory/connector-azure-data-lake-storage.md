@@ -10,19 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 2e4e554bb6564adb8c6722533e127a758e5a9c24
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155850"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415400"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) baut auf [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. So haben Sie eine Schnittstelle zu Ihren Daten sowohl über das Dateisystem als auch den Objektspeicher.
 
 In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Kopieraktivität in Azure Data Factory aus und in Azure Data Lake Storage Gen2 kopieren sowie Daten mithilfe von Datenfluss in Azure Data Lake Storage Gen2 transformieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+
+>[!TIP]
+>Weitere Informationen zu Data Lake- oder Data Warehouse-Migrationsszenarios finden Sie unter [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -44,8 +49,6 @@ Dieser Connector bietet Ihnen für die Kopieraktivität folgende Möglichkeiten:
 >[!IMPORTANT]
 >Wenn Sie die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** in den Firewalleinstellungen von Azure Storage aktivieren und Azure Integration Runtime zum Herstellen einer Verbindung mit Data Lake Storage Gen2 verwenden möchten, müssen Sie die [Authentifizierung der verwalteten Identität](#managed-identity) für ADLS Gen2 verwenden.
 
->[!TIP]
->Wenn Sie den hierarchischen Namespace aktivieren, beachten Sie, dass derzeit keine Interoperabilität bei Vorgängen zwischen Blob- und Data Lake Storage Gen2-APIs besteht. Falls der Fehler „ErrorCode=FilesystemNotFound“ mit dem Meldungstext „Das angegebene Dateisystem ist nicht vorhanden“ auftritt, ist dies auf das angegebene Senkendateisystem zurückzuführen, das an anderer Stelle anstelle der Data Lake Storage Gen2-API über die Blob-API erstellt wurde. Geben Sie zum Beheben des Problems ein neues Dateisystem mit einem Namen an, der nicht als Name eines Blobcontainers vorhanden ist. Von Data Factory wird dieses Dateisystem automatisch während des Datenkopiervorgangs erstellt.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -393,7 +396,7 @@ Beim Transformieren von Daten in den Zuordnungsdatenfluss können Sie Dateien au
 
 ### <a name="source-transformation"></a>Quellentransformation
 
-In der Quellentransformation können Sie in Azure Data Lake Storage Gen2 Daten aus einem Container, Ordner oder einer einzelnen Datei auslesen. Über die Registerkarte **Quellenoptionen** können Sie verwalten, wie die Dateien gelesen werden. 
+Bei der Quellentransformation können Sie Daten in Azure Data Lake Storage Gen2 aus einem Container, einem Ordner oder einer einzelnen Datei auslesen. Über die Registerkarte **Quellenoptionen** können Sie verwalten, wie die Dateien gelesen werden. 
 
 ![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
 

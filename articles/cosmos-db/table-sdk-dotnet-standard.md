@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771587"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272575"
 ---
-# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB-Tabellen-API – .NET Standard: Herunterladen und Versionshinweise
+# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -41,6 +41,9 @@ Die Serie 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https
 
 ## <a name="release-notes-for-100-series"></a>Versionshinweise für die Serie 1.0.0
 Die Serie 1.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* Leistungsverbesserung durch Festlegen der Standard-Ablaufverfolgungsebene für das Tabellen-SDK auf „SourceLevels.Off“, die über „app.config“ aktiviert werden kann.
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * Einführung einer neuen Konfiguration unter TableClientConfiguration, um Rest Executor für die Kommunikation mit der Cosmos DB-Tabellen-API zu verwenden

@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473771"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383645"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Integrieren von Azure Event Hubs in Azure Private Link (Vorschau)
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -58,7 +58,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
     2. Wählen Sie die **Ressourcengruppe** für die private Endpunktressource aus.
     3. Geben Sie einen **Namen** für den privaten Endpunkt ein. 
     5. Wählen Sie eine **Region** für den privaten Endpunkt aus. Ihr privater Endpunkt muss sich in derselben Region wie Ihr virtuelles Netzwerk befinden, kann aber in einer anderen Region als die Private Link-Ressource enthalten sein, mit der Sie eine Verbindung herstellen. 
-    6. Wählen Sie die Schaltfläche **Weiter: Ressource >** unten auf der Seite aus.
+    6. Klicken Sie auf **Weiter: Ressource >** unten auf der Seite aus.
 
         ![Erstellen des privaten Endpunkts: Seite „Grundlagen“](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Führen Sie auf der Seite **Ressource** die folgenden Schritte aus:
@@ -67,20 +67,20 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
         2. Wählen Sie für den **Ressourcentyp** **Microsoft.EventHub/namespaces** als **Ressourcentyp** aus.
         3. Wählen Sie als **Ressource** in der Dropdownliste einen Event Hubs-Namespace aus. 
         4. Vergewissern Sie sich, dass die **Unterressource des Ziels** auf **Namespace** festgelegt ist.
-        5. Wählen Sie die Schaltfläche **Weiter: Konfiguration >** unten auf der Seite aus. 
+        5. Klicken Sie auf **Weiter: Konfiguration >** unten auf der Seite aus. 
         
             ![Erstellen des privaten Endpunkts: Seite „Ressourcen“](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Wenn Sie **Verbindung mit einer Azure-Ressource mithilfe einer Ressourcen-ID oder eines Alias herstellen** auswählen, führen Sie die folgenden Schritte aus:
         1. Geben Sie die **Ressourcen-ID** oder den **Alias** ein. Dabei kann es sich um die Ressourcen-ID oder den Alias handeln, die jemand für Sie freigegeben hat.
         2. Geben Sie für **Zielunterressource** **Namespace** ein. Dabei handelt es sich um den Unterressourcentyp, auf den der private Endpunkt zugreifen kann.
         3. (Optional) Geben Sie eine **Anforderungsnachricht** ein. Der Ressourcenbesitzer sieht diese Nachricht beim Verwalten der Verbindung mit dem privaten Endpunkt.
-        4. Wählen Sie dann die Schaltfläche **Weiter: Konfiguration >** unten auf der Seite aus.
+        4. Wählen Sie anschließend **Weiter: Konfiguration >** unten auf der Seite aus.
 
             ![Erstellen des privaten Endpunkts: Verbinden mithilfe der Ressourcen-ID](./media/private-link-service/connect-resource-id.png)
 9. Wählen Sie auf der Seite **Konfiguration** das Subnetz in einem virtuellen Netzwerk aus, in dem Sie den privaten Endpunkt bereitstellen möchten. 
     1. Wählen Sie ein **virtuelles Netzwerk** aus. Nur virtuelle Netzwerke im aktuell ausgewählten Abonnement und am aktuell ausgewählten Standort werden in der Dropdownliste aufgeführt. 
     2. Wählen Sie ein **Subnetz** innerhalb des ausgewählten virtuellen Netzwerks aus. 
-    3. Wählen Sie die Schaltfläche **Weiter: Tags >** unten auf der Seite aus. 
+    3. Klicken Sie auf **Weiter: Tags >** unten auf der Seite aus. 
 
         ![Erstellen des privaten Endpunkts: Seite „Konfiguration“](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. Erstellen Sie auf der Seite **Tags** beliebige Tags (Namen und Werte), die Sie der privaten Endpunktressource zuordnen möchten. Wählen Sie dann am unteren Rand der Seite die Schaltfläche **Überprüfen und erstellen** aus. 
@@ -151,6 +151,32 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 (Get-AzResource -ResourceId $namespaceResource.ResourceId -ExpandProperties).Properties
 
 
+```
+
+### <a name="configure-the-private-dns-zone"></a>Konfigurieren der privaten DNS-Zone
+Erstellen Sie eine private DNS-Zone für die Event Hubs-Domäne und eine Zuordnungsverknüpfung mit dem virtuellen Netzwerk:
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
 ```
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Verwalten eines privaten Endpunkts mit dem Azure-Portal

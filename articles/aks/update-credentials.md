@@ -1,21 +1,24 @@
 ---
-title: Zurücksetzen der Anmeldeinformationen eines Azure Kubernetes Service-Clusters (AKS)
+title: Zurücksetzen der Anmeldeinformationen für einen Cluster
+titleSuffix: Azure Kubernetes Service
 description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs-Anmeldeinformationen für einen AKS-Cluster (Azure Kubernetes Service) aktualisieren oder zurücksetzen können.
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475543"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392630"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
 Standardmäßig werden AKS-Cluster mit einem Dienstprinzipal mit einer Ablaufzeit von einem Jahr erstellt. Wenn Sie sich dem Ablaufdatum nähern, können Sie die Anmeldeinformationen zurücksetzen, um den Dienstprinzipal um einen zusätzlichen Zeitraum zu verlängern. Sie können die Anmeldeinformationen auch im Rahmen einer definierten Sicherheitsrichtlinie aktualisieren oder rotieren. Dieser Artikel beschreibt, wie diese Anmeldeinformationen für einen AKS-Cluster aktualisiert werden.
 
-Möglicherweise haben Sie auch [Ihren AKS-Cluster in Azure Active Directory][aad-integration] integriert und verwenden ihn als Authentifizierungsanbieter für Ihren Cluster. In diesem Fall verfügen Sie über zwei weitere Identitäten, die für Ihren Cluster erstellt wurden: die AAD-Server-App und die AAD-Client-App. Sie können diese Anmeldeinformationen ebenfalls zurücksetzen. 
+Möglicherweise haben Sie auch [Ihren AKS-Cluster in Azure Active Directory][aad-integration] integriert und verwenden ihn als Authentifizierungsanbieter für Ihren Cluster. In diesem Fall verfügen Sie über zwei weitere Identitäten, die für Ihren Cluster erstellt wurden: die AAD-Server-App und die AAD-Client-App. Sie können diese Anmeldeinformationen ebenfalls zurücksetzen.
+
+Sie können anstelle eines Dienstprinzipals auch eine verwaltete Identität für Berechtigungen verwenden. Verwaltete Identitäten sind einfacher zu verwalten als Dienstprinzipale und erfordern keine Updates oder Drehungen. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

@@ -4,16 +4,16 @@ description: Erstellen Sie Testzertifikate, und erfahren Sie, wie Sie diese zur 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535985"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393822"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 Der Name, den Sie an diesen Befehl übergeben, ist die Geräte-ID für das IoT Edge-Gerät in IoT Hub.
 
-Mit dem neuen Geräteidentitätsbefehl werden mehrere Zertifikats- und Schlüsseldateien erstellt. Dazu gehören auch zwei Dateien, die Sie zum Erstellen einer individuellen Registrierung in DPS und Installieren der IoT Edge-Runtime verwenden.
+Der neue Geräteidentitätsbefehl erstellt verschiedene Zertifikats- und Schlüsseldateien, u. a. drei Dateien, die Sie zum Erstellen einer individuellen Registrierung in DPS und Installieren der IoT Edge-Runtime verwenden.
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ Erstellen Sie mit dem folgenden Befehl das IoT Edge-Geräteidentitätszertifikat
 
 Der Name, den Sie an diesen Befehl übergeben, ist die Geräte-ID für das IoT Edge-Gerät in IoT Hub.
 
-Mit dem Skript werden mehrere Zertifikats- und Schlüsseldateien erstellt. Dazu gehören auch zwei Dateien, die Sie zum Erstellen einer individuellen Registrierung in DPS und Installieren der IoT Edge-Runtime verwenden.
+Das Skript erstellt verschiedene Zertifikats- und Schlüsseldateien, u. a. drei Dateien, die Sie zum Erstellen einer individuellen Registrierung in DPS und Installieren der IoT Edge-Runtime verwenden.
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 

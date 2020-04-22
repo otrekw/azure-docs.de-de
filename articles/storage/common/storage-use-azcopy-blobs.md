@@ -4,20 +4,23 @@ description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933581"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263436"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
 AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Daten in ein oder aus einem Speicherkonto zu kopieren. Dieser Artikel enthält Beispielbefehle, die mit Blob Storage funktionieren.
+
+> [!TIP]
+> In den Beispielen in diesem Artikel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -31,9 +34,6 @@ Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um
 > Beispiel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
-
-> [!TIP]
-> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 Sie können den Befehl [azcopy make](storage-ref-azcopy-make.md) verwenden, um einen Container zu erstellen. Die Beispiele in diesem Abschnitt erstellen einen Container namens `mycontainer`.
 
@@ -57,10 +57,16 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Hochladen der Inhalte eines Verzeichnisses 
 > * Hochladen bestimmter Dateien
 
-Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcopy-copy.md).
-
 > [!TIP]
-> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
+> Sie können den Uploadvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+>
+> |Szenario|Flag|
+> |---|---|
+> |Dateien sollen als Anfügeblobs oder Seitenblobs hochgeladen werden.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Der Upload soll auf eine bestimmte Zugriffsebene erfolgen (z. B. auf die Archivebene).|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
+> 
+> Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 ### <a name="upload-a-file"></a>Hochladen einer Datei
 
@@ -71,10 +77,6 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcop
 | **Beispiel** (hierarchischer Namespace) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 Sie können eine Datei auch mit einem Platzhaltersymbol (*) an einer beliebigen Stelle im Dateipfad oder Dateinamen hochladen. Beispiel: `'C:\myDirectory\*.txt'` oder `C:\my*\*.txt`
-
-> [!NOTE]
-> AzCopy lädt Daten standardmäßig als Blockblobs hoch. Um Dateien als Anfügeblobs oder Seitenblobs hochzuladen, verwenden Sie das Flag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
-> AzCopy lädt Ihre Daten standardmäßig hoch, um die Kontozugriffsebene zu erben. Um Dateien auf eine bestimmte [Zugriffsebene](../blobs/storage-blob-storage-tiers.md) hochzuladen, verwenden Sie das Flag `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Hochladen eines Verzeichnisses
 
@@ -152,13 +154,19 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Herunterladen der Inhalte eines Verzeichnisses
 > * Herunterladen bestimmter Dateien
 
+> [!TIP]
+> Sie können den Downloadvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+>
+> |Szenario|Flag|
+> |---|---|
+> |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
+> |Geben Sie an, wie detailliert die kopierbezogenen Protokolleinträge sein sollen.|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> |Geben Sie an, ob und wie die in Konflikt stehenden Dateien und Blobs im Ziel überschrieben werden sollen.|**--overwrite**=\[true\|false\|ifSourceNewer\|prompt\]|
+> 
+> Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
+
 > [!NOTE]
 > Wenn der `Content-md5`-Eigenschaftswert eines Blobs einen Hash enthält, berechnet AzCopy einen MD5-Hash für heruntergeladene Daten und überprüft, ob der in der `Content-md5`-Eigenschaft des Blobs gespeicherte MD5-Hash mit dem berechneten Hash übereinstimmt. Wenn diese Werte nicht übereinstimmen, wird der Download nicht durchgeführt, es sei denn, Sie überschreiben dieses Verhalten, indem Sie `--check-md5=NoCheck` oder `--check-md5=LogOnly` an den Kopierbefehl anfügen.
-
-Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcopy-copy.md).
-
-> [!TIP]
-> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 ### <a name="download-a-file"></a>Herunterladen einer Datei
 
@@ -245,12 +253,18 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Kopieren eines Containers in ein anderes Speicherkonto
 > * Kopieren aller Container, Verzeichnisse und Dateien in ein anderes Speicherkonto
 
-Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcopy-copy.md).
+Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden.
 
 > [!TIP]
-> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
-
- Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden. 
+> Sie können den Kopiervorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+>
+> |Szenario|Flag|
+> |---|---|
+> |Dateien sollen als Anfügeblobs oder Seitenblobs kopiert werden.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Der Kopiervorgang soll auf eine bestimmte Zugriffsebene erfolgen (z. B. auf die Archivebene).|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
+> 
+> Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopieren eines Blobs in ein anderes Speicherkonto
 
@@ -306,10 +320,16 @@ Wenn Sie das `--delete-destination`-Flag auf `true` festlegen, löscht AzCopy Da
 > [!NOTE]
 > Um ein versehentliches Löschen zu verhindern, aktivieren Sie das Feature [Vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), bevor Sie das Flag `--delete-destination=prompt|true` verwenden.
 
-Ausführliche Referenzdokumente finden Sie unter [azcopy sync](storage-ref-azcopy-sync.md).
-
 > [!TIP]
-> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
+> Sie können den Synchronisierungsvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+>
+> |Szenario|Flag|
+> |---|---|
+> |Geben Sie an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollen.|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |Dateien sollen basierend auf einem Muster ausgeschlossen werden.|**--exclude-path**|
+> |Geben Sie an, wie detailliert die synchronisierungsbezogenen Protokolleinträge sein sollen.|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> 
+> Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-sync.md#options).
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualisieren eines Containers mit Änderungen an einem lokalen Dateisystem
 

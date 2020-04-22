@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310122"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 
@@ -138,6 +138,8 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
 |Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für das automatische Anhalten.|
 |SQL Server Management Studio (SSMS)|Durch Verwenden von SSMS-Versionen vor 18.1 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn mindestens Version 18.1 von SSMS verwendet wird.|
+
+Überwachung und Verwaltung sowie andere Lösungen, die einen der oben aufgeführten Vorgänge ausführen, lösen eine automatische Fortsetzung aus.
 
 Das automatische Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die erfordern, dass die Datenbank online ist.
 

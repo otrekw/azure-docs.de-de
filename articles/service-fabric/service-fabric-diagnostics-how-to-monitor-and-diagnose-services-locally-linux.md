@@ -3,12 +3,12 @@ title: Debuggen von Azure Service Fabric-Apps unter Linux
 description: Erfahren Sie, wie Sie Ihre Service Fabric-Dienste auf einem lokalen Linux-Entwicklungscomputer überwachen und diagnostizieren.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526293"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991329"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Linux-Computer
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie bei den [Codebeispielen in GitHub](https://gith
 ## <a name="debugging-service-fabric-c-applications"></a>Debuggen von Service Fabric-C#-Anwendungen
 
 
-Für die Ablaufverfolgung von CoreCLR-Anwendungen unter Linux sind mehrere Frameworks verfügbar. Weitere Informationen finden Sie unter [GitHub logging](http:/github.com/aspnet/logging) (GitHub-Protokollierung).  Da C#-Entwickler mit EventSource vertraut sind, wird EventSource in diesem Artikel für die Ablaufverfolgung von CoreCLR-Beispielen unter Linux verwendet.
+Für die Ablaufverfolgung von CoreCLR-Anwendungen unter Linux sind mehrere Frameworks verfügbar. Weitere Informationen finden Sie unter [.NET-Erweiterungen für die Protokollierung](https://github.com/dotnet/extensions/tree/master/src/Logging).  Da C#-Entwickler mit EventSource vertraut sind, wird EventSource in diesem Artikel für die Ablaufverfolgung von CoreCLR-Beispielen unter Linux verwendet.
 
 Der erste Schritt besteht darin, System.Diagnostics.Tracing einzuschließen, sodass Sie Ihre Protokolle in den Arbeitsspeicher, Ausgabestreams oder Konsolendateien schreiben können.  Zur Protokollierung unter Verwendung von EventSource fügen Sie das folgende Projekt zu Ihrer project.json-Datei hinzu:
 

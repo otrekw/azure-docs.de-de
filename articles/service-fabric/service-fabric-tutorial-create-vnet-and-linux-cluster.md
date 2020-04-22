@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251782"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411003"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -31,8 +31,17 @@ Mit den folgenden Schritten wird ein Service Fabric-Cluster mit sieben Knoten er
 
 Laden Sie die folgenden Resource Manager-Vorlagendateien herunter:
 
+Für Ubuntu 16.04 LTS:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Für Ubuntu 18.04 LTS:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+Der Unterschied zwischen den beiden Vorlagen besteht darin, dass das Attribut **vmImageSku** auf „18.04-LTS“ und die **typeHandlerVersion** jedes Knotens auf 1.1 festgelegt wird.
 
 Diese Vorlage stellt einen sicheren Cluster mit sieben virtuellen Computern und drei Knotentypen in einem virtuellen Netzwerk bereit.  Weitere Beispielvorlagen finden Sie auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Die Datei [AzureDeploy.json][template] stellt verschiedene Ressourcen bereit, einschließlich der folgenden.
 
@@ -42,7 +51,7 @@ In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Linux-Cluster mit
 
 * Drei Knotentypen
 * Fünf Knoten für den primären Knotentyp (in den Vorlagenparametern konfigurierbar) sowie jeweils ein Knoten für die anderen Knotentypen
-* Betriebssystem: Ubuntu 16.04 LTS (in den Vorlagenparametern konfigurierbar)
+* Betriebssystem: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (in den Vorlagenparametern konfigurierbar)
 * Geschütztes Zertifikat (in den Vorlagenparametern konfigurierbar)
 * [DNS-Dienst](service-fabric-dnsservice.md) aktiviert
 * [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar)
@@ -70,7 +79,7 @@ Wenn keine anderen Anwendungsports benötigt werden, müssen Sie die Ressource �
 
 ## <a name="set-template-parameters"></a>Festlegen von Vorlagenparametern
 
-In der Parameterdatei [AzureDeploy.Parameters][parameters] werden viele Werte deklariert, die zum Bereitstellen des Clusters und der zugehörigen Ressourcen verwendet werden. Hier sind einige Parameter angegeben, die Sie für Ihre Bereitstellung ggf. ändern müssen:
+In der **AzureDeploy.Parameters**-Datei werden viele Werte deklariert, die zum Bereitstellen des Clusters und der zugehörigen Ressourcen verwendet werden. Hier sind einige Parameter angegeben, die Sie für Ihre Bereitstellung ggf. ändern müssen:
 
 |Parameter|Beispielwert|Notizen|
 |---|---||
@@ -86,7 +95,7 @@ In der Parameterdatei [AzureDeploy.Parameters][parameters] werden viele Werte de
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Bereitstellen des virtuellen Netzwerks und des Clusters
 
-Richten Sie als Nächstes die Netzwerktopologie ein, und stellen Sie den Service Fabric-Cluster bereit. Die Resource Manager-Vorlage [AzureDeploy.json][template] erstellt ein virtuelles Netzwerk (VNET) und ein Subnetz für Service Fabric. Außerdem wird mit der Vorlage ein Cluster mit aktivierter Zertifikatsicherheit bereitgestellt.  Verwenden Sie für Produktionscluster ein Zertifikat einer Zertifizierungsstelle als Clusterzertifikat. Es kann ein selbstsigniertes Zertifikat zum Schützen von Testclustern verwendet werden.
+Richten Sie als Nächstes die Netzwerktopologie ein, und stellen Sie den Service Fabric-Cluster bereit. Die Resource Manager-Vorlage **AzureDeploy.json** erstellt ein virtuelles Netzwerk (VNET) und ein Subnetz für Service Fabric. Außerdem wird mit der Vorlage ein Cluster mit aktivierter Zertifikatsicherheit bereitgestellt.  Verwenden Sie für Produktionscluster ein Zertifikat einer Zertifizierungsstelle als Clusterzertifikat. Es kann ein selbstsigniertes Zertifikat zum Schützen von Testclustern verwendet werden.
 
 Mit der Vorlage in diesem Artikel wird ein Cluster bereitgestellt, der das Clusterzertifikat anhand des Zertifikatfingerabdrucks identifiziert.  Zwei Zertifikate können nicht den gleichen Fingerabdruck haben, was die Zertifikatverwaltung erschwert. Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht.  Unter [Ändern des Clusters in Zertifikatverwaltung mit allgemeinen Namen](service-fabric-cluster-change-cert-thumbprint-to-cn.md) erfahren Sie, wie Sie den Cluster aktualisieren, um allgemeine Zertifikatnamen für die Zertifikatverwaltung zu verwenden.
 
@@ -163,3 +172,5 @@ Mit der Vorlage in diesem Artikel wird ein Cluster bereitgestellt, der das Clust
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

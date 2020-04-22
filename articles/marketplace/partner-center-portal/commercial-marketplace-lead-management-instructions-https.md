@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281594"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262612"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
 
-Wenn Ihr CRM-System (Customer Relationship Management) im Partner Center nicht explizit für den Empfang von Azure Marketplace- und AppSource-Leads unterstützt wird, können Sie zum Behandeln dieser Leads einen HTTPS-Endpunkt in Microsoft Flow verwenden. Mit einem HTTPS-Endpunkt können diese Leads per E-Mail-Benachrichtigung versendet oder in ein von Microsoft Flow unterstütztes CRM-System (Customer Relationship Management) geschrieben werden. Die Anweisungen in diesem Artikel führen Sie schrittweise durch den grundlegenden Prozess des Erstellens eines neuen Flows mithilfe von Microsoft Flow. Dabei wird die HTTP POST-URL erstellt, die Sie im Veröffentlichungsportal für das Feld „Leadverwaltung“ > **HTTPS-Endpunkt-URL** eingeben. Außerdem finden Sie hier Anweisungen dazu, wie Sie Ihren Flow mithilfe des Tools [Postman](https://www.getpostman.com/downloads/) testen können, das online zugänglich ist.
+>[!Note]
+>Der in diesen Anweisungen verwendete Power Automate-Connector erfordert ein kostenpflichtiges Power Automate-Abonnement. Berücksichtigen Sie dies, bevor Sie die Anweisungen in diesem Dokument befolgen.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Erstellen eines Flows mit Microsoft Flow
+Wenn Ihr CRM-System (Customer Relationship Management) im Partner Center nicht explizit für den Empfang von Azure Marketplace- und AppSource-Leads unterstützt wird, können Sie zum Umgang mit diesen Leads einen HTTPS-Endpunkt in Power Automate verwenden. Mit einem HTTPS-Endpunkt können diese Leads per E-Mail-Benachrichtigung versendet oder in ein von Power Automate unterstütztes CRM-System (Customer Relationship Management) geschrieben werden. Die Anweisungen in diesem Artikel führen Sie schrittweise durch den grundlegenden Prozess des Erstellens eines neuen Flows mithilfe von Power Automate. Dabei wird die HTTP POST-URL erstellt, die Sie im Veröffentlichungsportal für das Feld „Leadverwaltung“ > **HTTPS-Endpunkt-URL** eingeben. Außerdem finden Sie hier Anweisungen dazu, wie Sie Ihren Flow mithilfe des Tools [Postman](https://www.getpostman.com/downloads/) testen können, das online zugänglich ist.
+
+## <a name="create-a-flow-using-power-automate"></a>Erstellen eines Flows mit Power Automate
 
 1. Öffnen Sie die [Flow](https://flow.microsoft.com/)-Webseite. Wählen Sie **Anmelden** aus, oder – falls Sie noch kein Konto besitzen – wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Flow-Konto zu erstellen.
 
@@ -168,7 +171,7 @@ Durch Ausführen der folgenden Schritte können Sie mithilfe des Tools [Postman]
 
    ![Meinen Flow testen](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Fügen Sie bei der Aufforderung *Anforderungs-URL eingeben* die HTTP-POST-URL aus dem Flow ein, den Sie in Microsoft Flow erstellt haben.
+4. Fügen Sie bei der Aufforderung *Anforderungs-URL eingeben* die HTTP-POST-URL aus dem Flow ein, den Sie in Power Automate erstellt haben.
 
    ![HTTP-POST-URL einfügen](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
 2. Wählen Sie im Abschnitt „Leadverwaltung“ die Option **Verbinden** aus.
 3. Wählen Sie im Popupfenster „Verbindungsdetails“ **HTTPS-Endpunkt** für **Leadziel** aus, und fügen Sie die HTTP-POST-URL aus dem zuvor erstellten Flow im Feld **HTTPS-Endpunkt-URL** ein.
-4. Wählen Sie **Speichern** aus. 
+4. **Kontakt-E-Mail**: Geben Sie E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
+5. Klicken Sie auf **OK**.
+
+Klicken Sie auf die Schaltfläche „Überprüfen“, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
 
 >[!Note] 
 >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.
@@ -213,5 +219,5 @@ Generierte Leads werden von Microsoft an den Flow gesendet und anschließend an 
 
 ![Verbindungsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Verbindungsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Verbindungsdetails](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

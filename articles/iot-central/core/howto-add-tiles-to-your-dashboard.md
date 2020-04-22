@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158748"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310296"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -74,7 +74,7 @@ In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusa
 | Inhalt | Dashboards von Anwendungen und Gerätegruppen |Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext angezeigt werden. Sie können diese Kachel auch als Link-Kachel verwenden, um Benutzern das Navigieren zu einer URL Ihrer Anwendung zu ermöglichen.|
 | Image | Dashboards von Anwendungen und Gerätegruppen |Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Verwenden Sie eine Bildkachel, um einem Dashboard Grafiken hinzuzufügen und optional einem Benutzer die Navigation zu einer URL zu ermöglichen, die für Ihre Anwendung relevant ist.|
 | Bezeichnung | Anwendungsdashboards |Auf Kacheln mit einer Beschriftung auf einem Dashboard wird benutzerdefinierter Text angezeigt. Sie können die Größe des Texts festlegen. Auf einer Kachel mit Beschriftung können Sie dem Dashboard relevante Informationen wie Beschreibungen, Kontaktinformationen oder Hilfe hinzufügen.|
-| Karte | Dashboards von Anwendungen und Gerätegruppen |Auf Kartenkacheln werden der Standort und Status eines Geräts auf einer Karte angezeigt. So können Sie beispielsweise anzeigen, wo sich ein Gerät befindet und ob sein Lüfter eingeschaltet ist.|
+| Karte | Dashboards von Anwendungen und Geräten |Kartenkacheln zeigen den Standort eines Geräts auf einer Karte an. Sie können bis zu 100 Punkte im Standortverlauf eines Geräts anzeigen. Sie können beispielsweise einen Routenmuster der Orte anzeigen, an denen sich ein Gerät in der vergangenen Woche befand.|
 | Liniendiagramm | Dashboards von Anwendungen und Geräten |Liniendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Liniendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
 | Balkendiagramm | Dashboards von Anwendungen und Geräten |Balkendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Balkendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
 | Kreisdiagramm | Dashboards von Anwendungen und Gerätegruppen |Kreisdiagrammkacheln zeigen eine Grafik der aggregierten Messungen für ein Gerät über einen Zeitraum.|

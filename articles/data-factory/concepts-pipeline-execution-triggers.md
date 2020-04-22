@@ -11,23 +11,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225538"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418353"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Diensts aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuelle Version](concepts-pipeline-execution-triggers.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Eine _Pipelineausführung_ in Azure Data Factory definiert eine Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (oder Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Eine Ausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert.
 
 Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in der Pipeline definierte Parameter übergeben. Sie können eine Pipeline entweder manuell oder mithilfe eines _Triggers_ ausführen. Dieser Artikel enthält Informationen zu beiden Möglichkeiten der Ausführung einer Pipeline.
 
 ## <a name="manual-execution-on-demand"></a>Manuelle Ausführung (bei Bedarf)
+
 Die manuelle Ausführung einer Pipeline wird auch als _bedarfsgesteuerte_ Ausführung bezeichnet.
 
 Beispiel: Angenommen, Sie haben eine allgemeine Pipeline mit dem Namen **copyPipeline**, die Sie ausführen möchten. Dabei handelt es sich um eine Pipeline mit einer einzelnen Aktivität, die Daten aus einem Azure Blob Storage-Quellordner in einen Zielordner im selben Speicher kopiert. Die folgende JSON-Definition zeigt diese Beispielpipeline:
@@ -83,7 +86,8 @@ Sie können Ihre Pipeline manuell mit einer der folgenden Methoden ausführen:
 - Python SDK
 
 ### <a name="rest-api"></a>REST-API
-Der folgende Befehl zeigt, wie Ihre Pipeline manuell mithilfe der REST-API ausgeführt wird:
+
+Der folgende Befehl zeigt, wie Ihre Pipeline mithilfe der REST-API manuell ausgeführt wird:
 
 ```
 POST
@@ -122,7 +126,8 @@ Die Antwortnutzlast ist eine eindeutige ID der Pipelineausführung:
 Ein vollständiges Beispiel finden Sie unter [Schnellstart: Erstellen einer Data Factory mit Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="net-sdk"></a>.NET SDK
-Der folgende Beispielaufruf zeigt, wie Ihre Pipeline manuell mithilfe des .NET SDK ausgeführt wird:
+
+Der folgende Beispielaufruf zeigt, wie Ihre Pipeline mithilfe des .NET SDK manuell ausgeführt wird:
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -131,9 +136,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 Ein vollständiges Beispiel finden Sie unter [Schnellstart: Erstellen einer Data Factory mit dem .NET SDK](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
-> Mit dem .NET SDK können Sie Data Factory-Pipelines in Azure Functions, Ihren eigenen Webdiensten usw. aufrufen.
+> Mit dem .NET SDK können Sie Data Factory-Pipelines aus Azure Functions, Ihren Webdiensten usw. aufrufen.
 
-<h2 id="triggers">Triggerausführung</h2>
+## <a name="trigger-execution"></a>Triggerausführung
+
 Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt Data Factory drei Arten von Triggern:
 
 - Zeitplantrigger: Ein Trigger, der eine Pipeline nach einem Realzeitplan aufruft.
@@ -143,7 +149,6 @@ Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stell
 - Ereignisbasierter Trigger: Ein Trigger, der auf ein Ereignis reagiert.
 
 Pipelines und Trigger haben eine m:n-Beziehung (mit Ausnahme des Triggers für ein rollierendes Fenster). Mehrere Trigger können eine einzelne Pipeline starten, oder ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden Triggerdefinition bezieht sich die **Pipelines**-Eigenschaft auf eine Liste von Pipelines, die vom jeweiligen Trigger ausgelöst werden. Die Eigenschaftendefinition enthält Werte für die Pipelineparameter.
-
 ### <a name="basic-trigger-definition"></a>Grundlegende Triggerdefinition
 
 ```json
@@ -244,33 +249,33 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 
 ```json
 {
-    "properties": {
-        "name": "MyTrigger",
-        "type": "ScheduleTrigger",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "Hour",
-                "interval": 1,
-                "startTime": "2017-11-01T09:00:00-08:00",
-                "endTime": "2017-11-02T22:00:00-08:00"
-            }
+  "properties": {
+    "name": "MyTrigger",
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+        "startTime": "2017-11-01T09:00:00-08:00",
+        "endTime": "2017-11-02T22:00:00-08:00"
+      }
+    },
+    "pipelines": [{
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToBlobPipeline"
         },
-        "pipelines": [{
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToBlobPipeline"
-                },
-                "parameters": {}
-            },
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToAzureSQLPipeline"
-                },
-                "parameters": {}
-            }
-        ]
-    }
+        "parameters": {}
+      },
+      {
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToAzureSQLPipeline"
+        },
+        "parameters": {}
+      }
+    ]
+  }
 }
 ```
 
@@ -371,7 +376,7 @@ In der folgenden Tabelle werden der Trigger für ein rollierendes Fenster und de
 |:--- |:--- |:--- |
 | **Abgleichsszenarien** | Unterstützt. Pipelineausführungen können für Fenster in der Vergangenheit geplant werden. | Wird nicht unterstützt. Pipelineausführungen können nur in Zeiträumen ab der aktuellen Zeit und der Zukunft ausgeführt werden. |
 | **Zuverlässigkeit** | 100 % zuverlässig. Pipelineausführungen können für alle Fenster ab einem festgelegten Datum ohne Lücken geplant werden. | Weniger zuverlässig. |
-| **Wiederholungsfunktion** | Unterstützt. Für fehlgeschlagene Pipelineausführungen gilt standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder eine vom Benutzer in der Triggerdefinition angegebene Richtlinie. Eine Wiederholung erfolgt automatisch, wenn Pipelineausführungen aufgrund von Parallelitäts-/Server-/Einschränkungsgrenzwerten (d.h. mit den Statuscodes „400: Benutzerfehler“, „429: Zu viele Anforderungen“ und „500: Interner Serverfehler“) fehlschlagen. | Wird nicht unterstützt. |
+| **Wiederholungsfunktion** | Unterstützt. Für fehlgeschlagene Pipelineausführungen gilt standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder eine vom Benutzer in der Triggerdefinition angegebene Richtlinie. Eine Wiederholung erfolgt automatisch, wenn Pipelineausführungen aufgrund von Parallelitäts-/Server-/Einschränkungsgrenzwerten (d. h. mit den Statuscodes „400: Benutzerfehler“, „429: Zu viele Anforderungen“ und „500: Interner Serverfehler“) fehlschlagen. | Wird nicht unterstützt. |
 | **Concurrency** | Unterstützt. Benutzer können Parallelitätsgrenzwerte für den Trigger explizit festlegen. Zwischen 1 und 50 parallele ausgelöste Pipelineausführungen sind zulässig. | Wird nicht unterstützt. |
 | **Systemvariablen** | Unterstützt die Verwendung der Systemvariablen **WindowStart** und **WindowEnd**. Benutzer haben Zugriff auf `triggerOutputs().windowStartTime` und `triggerOutputs().windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` und `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Wird nicht unterstützt. |
 | **Beziehung zwischen Pipeline und Trigger** | Unterstützt eine 1:1-Beziehung. Nur eine Pipeline kann ausgelöst werden. | Unterstützt m:m-Beziehungen. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten. |

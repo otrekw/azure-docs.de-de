@@ -4,18 +4,18 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656048"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991278"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -109,7 +109,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
 - [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity)
+- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -270,6 +270,9 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Verfügbar][check] |
 | Azure Deutschland | `https://*.asazure.cloudapi.de` | ![Verfügbar][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Verfügbar][check] |
+
+> [!Note]
+> Microsoft Power BI bietet auch [Unterstützung für verwaltete Identitäten](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
 
 [check]: media/services-support-managed-identities/check.png "Verfügbar"

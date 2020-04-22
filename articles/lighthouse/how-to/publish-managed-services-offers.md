@@ -1,38 +1,47 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
-ms.date: 01/16/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328941"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991908"
 ---
-# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
-
-In diesem Artikel erfahren Sie, wie Sie über das [Cloud-Partnerportal](https://cloudpartner.azure.com/) ein öffentliches oder privates Angebot für verwaltete Dienste im [Azure Marketplace](https://azuremarketplace.microsoft.com) veröffentlichen und damit einem Kunden, der das Angebot kauft, das Onboarding für die delegierte Azure-Ressourcenverwaltung ermöglichen.
-
-> [!NOTE]
-> Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/partner-center-portal/create-account.md), um diese Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos im Partner Center und die Registrierung beim kommerziellen Marketplace-Programm. Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../billing/billing-partner-admin-link-started.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
->
-> Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen](onboard-customer.md).
-
-Das Veröffentlichen eines Angebots für verwaltete Dienste ähnelt dem Veröffentlichen eines beliebigen anderen Typs von Angebot im Azure Marketplace. Informationen zu diesem Prozess finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/marketplace-publishers-guide.md) und [Verwalten von Angeboten im Azure Marketplace und im AppSource-Marketplace](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
-
-Wenn ein Kunde Ihr Angebot hinzufügt, kann er bestimmte Abonnements oder Ressourcengruppen delegieren, für die dann [für die delegierte Azure-Ressourcenverwaltung das Onboarding durchgeführt wird](#the-customer-onboarding-process). Beachten Sie Folgendes: Bevor für ein Abonnement (oder Ressourcengruppen innerhalb eines Abonnements) das Onboarding durchgeführt werden kann, muss das Abonnement manuell für das Onboarding autorisiert werden, indem der Ressourcenanbieter **Microsoft.ManagedServices** registriert wird.
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
 > [!IMPORTANT]
-> Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden, die diesen Plan kaufen, erhalten sollen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie hier einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Um verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuzuweisen, müssen Sie einen gesonderten privaten Plan veröffentlichen, der exklusiv für jeden Kunden ist.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Angebote für verwaltete Dienste auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines neuen Angebots für verwaltete Dienste](../../marketplace/partner-center-portal/create-new-managed-service-offer.md), um Ihre migrierten Angebote zu verwalten.
 
-## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Erstellen Ihres Angebots im Cloud-Partnerportal
+In diesem Artikel erfahren Sie, wie Sie mit dem [Cloud-Partnerportal](https://cloudpartner.azure.com/) ein öffentliches oder privates Angebot für verwaltete Dienste im [Azure Marketplace](https://azuremarketplace.microsoft.com) veröffentlichen. Kunden, die das Angebot kaufen, können dann ein Onboarding für Abonnements und Ressourcengruppen für die [delegierte Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) durchführen.
+
+## <a name="publishing-requirements"></a>Veröffentlichungsbedingungen
+
+Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/partner-center-portal/create-account.md), um Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos in Partner Center und die Registrierung beim kommerziellen Marketplace-Programm.
+
+Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements) müssen Sie über die [Cloudplattform-Kompetenzebene Silver oder Gold](https://docs.microsoft.com/partner-center/learn-about-competencies) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen.
+
+Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../billing/billing-partner-admin-link-started.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
+
+> [!NOTE]
+> Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen](onboard-customer.md).
+
+Das Veröffentlichen eines Angebots für verwaltete Dienste ähnelt dem Veröffentlichen eines beliebigen anderen Typs von Angebot im Azure Marketplace. Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/marketplace-publishers-guide.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
+
+Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren, für die dann [das Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird](#the-customer-onboarding-process).
+
+> [!IMPORTANT]
+> Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden erhalten sollen, die diesen Plan kaufen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Damit Sie verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuweisen können, müssen Sie einen gesonderten [privaten Plan](../../marketplace/private-offers.md) veröffentlichen, der jeweils exklusiv für die einzelnen Kunden ist.
+
+## <a name="create-your-offer"></a>Erstellen Ihres Angebots
 
 1. Melden Sie sich beim [Cloudpartnerportal](https://cloudpartner.azure.com/) an.
 2. Wählen Sie im linken Navigationsmenü **Neues Angebot** aus, und wählen Sie dann **Verwaltete Dienste** aus.
 3. Ihnen wird ein Abschnitt **Editor** für Ihr Angebot angezeigt, der vier auszufüllende Teile enthält: **Angebotseinstellungen**, **Pläne**, **Marketplace** und **Support**. Lesen Sie weiter, wenn Sie eine Anleitung zum Ausfüllen dieser Abschnitte wünschen.
 
-## <a name="enter-offer-settings"></a>Eingeben der Angebotseinstellungen
+### <a name="enter-offer-settings"></a>Eingeben der Angebotseinstellungen
 
 Geben Sie im Abschnitt **Angebotseinstellungen** Folgendes ein:
 
@@ -44,13 +53,13 @@ Geben Sie im Abschnitt **Angebotseinstellungen** Folgendes ein:
 
 Wählen Sie fertig sind, wählen Sie **Speichern** aus. Nun sind Sie bereit, um mit dem Abschnitt **Pläne** fortzufahren.
 
-## <a name="create-plans"></a>Pläne erstellen
+### <a name="create-plans"></a>Pläne erstellen
 
 Jedes Angebot muss über einen oder mehrere Pläne (manchmal auch als SKUs bezeichnet) verfügen. Sie können mehrere Pläne hinzufügen, um verschiedene Featuregruppen zu unterschiedlichen Preisen zu unterstützen oder um einen bestimmten Plan für eine begrenzte Zielgruppe spezifischer Kunden anzupassen. Kunden können die Pläne, die Ihnen zur Verfügung stehen, unter dem übergeordneten Angebot anzeigen.
 
 Wählen Sie im Abschnitt für Pläne **Neuer Plan** aus. Geben Sie dann eine **Plan-ID** ein. Diese ID kann nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und darf höchstens 50 Zeichen lang sein. Die Plan-ID kann an Stellen wie in Produkt-URLs und Abrechnungsberichten möglicherweise für Kunden sichtbar ist. Sobald Sie das Angebot veröffentlichen, können Sie diesen Wert nicht mehr ändern.
 
-### <a name="plan-details"></a>Plandetails
+#### <a name="plan-details"></a>Plandetails
 
 Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 
@@ -65,7 +74,7 @@ Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 > [!IMPORTANT]
 > Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](onboard-customer.md#remove-access-to-a-delegation), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
-### <a name="manifest-details"></a>Manifestdetails
+#### <a name="manifest-details"></a>Manifestdetails
 
 Füllen Sie den Abschnitt **Manifestdetails** für Ihren Plan aus. Dadurch wird ein Manifest mit Autorisierungsinformationen zum Verwalten von Kundenressourcen erstellt. Diese Informationen werden benötigt, um die delegierte Azure-Ressourcenverwaltung zu aktivieren.
 
@@ -88,14 +97,14 @@ Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie könne
 - **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](../../role-based-access-control/built-in-roles.md) und [Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
   > [!NOTE]
   > Wenn Azure geeignete neue integrierte Rollen hinzugefügt werden, sind diese hier verfügbar. Es kann jedoch zu Verzögerungen kommen, bevor sie angezeigt werden.
-- **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen**[verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
+- **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen**[verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkungen.)
 
 > [!TIP]
 > Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](onboard-customer.md#remove-access-to-a-delegation) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 Nachdem Sie die Informationen eingegeben haben, können Sie so häufig wie nötig **Neuer Plan** auswählen, um zusätzliche Pläne zu erstellen. Wenn Sie die Bearbeitung abgeschlossen haben, wählen Sie **Speichern** aus, und fahren Sie dann mit dem Abschnitt **Marketplace** fort.
 
-## <a name="provide-marketplace-text-and-images"></a>Bereitstellen von Marketplace-Text und -Bildern
+### <a name="provide-marketplace-text-and-images"></a>Bereitstellen von Marketplace-Text und -Bildern
 
 Im Abschnitt **Marketplace** stellen Sie den Text und die Bilder bereit, die Kunden im Azure Marketplace und im Azure-Portal sehen werden.
 
@@ -135,7 +144,7 @@ Geben Sie abschließend Ihre **Datenschutzrichtlinien-URL** und die **Nutzungsbe
 
 Stellen Sie sicher, dass Sie Ihre Änderungen speichern, bevor Sie mit dem Abschnitt **Support** fortfahren.
 
-## <a name="add-support-info"></a>Hinzufügen von Supportinformationen
+### <a name="add-support-info"></a>Hinzufügen von Supportinformationen
 
 Geben Sie im Abschnitt **Support** den Namen, die E-Mail-Adresse und die Telefonnummer eines Engineering-Kontakts ein sowie einen Kundensupportkontakt an. Sie müssen außerdem Support-URLs bereitstellen. Microsoft kann diese Informationen verwenden, um Sie bei Geschäfts- und Supportfragen zu kontaktieren.
 
@@ -152,11 +161,12 @@ Sie können jederzeit [eine aktualisierte Version Ihres Angebots veröffentliche
 Nachdem ein Kunde Ihr Angebot hinzugefügt hat, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann ein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
 
 > [!IMPORTANT]
-> Die Delegierung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Die Delegierung muss von einem Konto im Mandanten des Kunden durchgeführt werden, bei dem es sich nicht um ein Gastkonto handelt und das für das Abonnement, für das das Onboarding durchgeführt wird (oder das die Ressourcengruppen enthält, für die das Onboarding durchgeführt wird), über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) verfügt. Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
-Nachdem der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert hat, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
+Wenn der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Erfahren Sie mehr über den [kommerziellen Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
 - [Anzeigen und Verwalten von Kunden](view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.

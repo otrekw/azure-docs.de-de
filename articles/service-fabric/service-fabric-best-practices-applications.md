@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586086"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991653"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Bewährte Methoden für den Azure Service Fabric-Anwendungsentwurf
 
@@ -58,8 +58,8 @@ Sparen von Kosten und Verbessern der Verfügbarkeit:
 ## <a name="how-to-work-with-reliable-services"></a>Arbeiten mit Reliable Services
 Service Fabric Reliable Services ermöglichen Ihnen das einfache Erstellen von zustandslosen und zustandsbehafteten Diensten. Weitere Informationen finden Sie unter [Einführung in Reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
 - Berücksichtigen Sie immer das [Abbruchtoken](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) in der `RunAsync()`-Methode für zustandslose und zustandsbehaftete Dienste und die `ChangeRole()`-Methode für zustandsbehaftete Dienste. Andernfalls weiß Service Fabric nicht, ob Ihr Dienst geschlossen werden kann. Beispielsweise kann die Nichtbeachtung des Abbruchtokens zu wesentlich längeren Upgradezeiten für Anwendungen führen.
--   Öffnen und schließen Sie [Kommunikationslistener](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) rechtzeitig, und berücksichtigen Sie die Abbruchtoken.
--   Kombinieren Sie niemals synchronen Code mit asynchronem Code. Verwenden Sie beispielsweise nicht `.GetAwaiter().GetResult()` in Ihren asynchronen Aufrufen. Arbeiten Sie in der *gesamten* Aufrufliste asynchron.
+-    Öffnen und schließen Sie [Kommunikationslistener](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) rechtzeitig, und berücksichtigen Sie die Abbruchtoken.
+-    Kombinieren Sie niemals synchronen Code mit asynchronem Code. Verwenden Sie beispielsweise nicht `.GetAwaiter().GetResult()` in Ihren asynchronen Aufrufen. Arbeiten Sie in der *gesamten* Aufrufliste asynchron.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Arbeiten mit Reliable Actors
 Service Fabric Reliable Actors ermöglicht Ihnen das einfache Erstellen von zustandsbehafteten virtuellen Akteuren. Weitere Informationen finden Sie unter [Einführung in Reliable Actors](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
@@ -68,8 +68,8 @@ Service Fabric Reliable Actors ermöglicht Ihnen das einfache Erstellen von zust
 - Stellen Sie den Akteurzustand so [präzise wie möglich](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices) dar.
 - Verwalten Sie den [Lebenszyklus des Akteurs](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices). Löschen Sie Akteure, wenn Sie nicht vorhaben, sie noch einmal zu verwenden. Das Löschen von nicht benötigten Akteuren ist besonders wichtig, wenn Sie [flüchtige Zustandsanbieter](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication) verwenden, da alle Zustände im Arbeitsspeicher gespeichert werden.
 - Aufgrund ihrer [turnusbasierten Parallelität](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency) werden Akteure am besten als unabhängige Objekte verwendet. Erstellen Sie keine Graphen mit synchronen Methodenaufrufen mit mehreren Akteuren (von denen jeder höchstwahrscheinlich zu einem separaten Netzwerkaufruf wird), und erstellen Sie keine zirkulären Akteuranforderungen. Diese beeinflussen die Leistung und Skalierung erheblich.
-- Kombinieren Sie keinen synchronen Code mit asynchronem Code. Verwenden Sie immer asynchronen Code, um Leistungsprobleme zu vermeiden.
-- Nehmen Sie keine zeitintensiven Aufrufe in Akteuren vor. Diese blockieren andere Aufrufe des gleichen Akteurs aufgrund der turnusbasierten Parallelität.
+- Kombinieren Sie synchronen Code nicht mit asynchronem Code. Verwenden Sie immer asynchronen Code, um Leistungsprobleme zu vermeiden.
+- Verwenden Sie keine Aufrufe mit langer Ausführungszeit in Akteuren. Diese blockieren andere Aufrufe des gleichen Akteurs aufgrund der turnusbasierten Parallelität.
 - Wenn Sie mit anderen Diensten über [Service Fabric-Remoting](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) kommunizieren und eine `ServiceProxyFactory` erstellen, dann erstellen Sie die Factory auf der Eben des [Actordiensts](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) und *nicht* auf der des Akteurs.
 
 
@@ -77,7 +77,7 @@ Service Fabric Reliable Actors ermöglicht Ihnen das einfache Erstellen von zust
 Fügen Sie konsequent [Anwendungsprotokollierung](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) in Dienstaufrufen hinzu. Dies hilft bei der Diagnose von Szenarien, in denen Dienste sich gegenseitig aufrufen. Bei der Abrufreihenfolge „A ruft B auf – B ruft C auf – C ruft D auf“ könnte der Aufruf z. B. an jeder beliebigen Stelle zu einem Fehler führen. Wenn die Protokollierung nicht umfassend ist, können Fehler nur schwer diagnostiziert werden. Wenn die Dienste aufgrund des Aufrufaufkommens zu viel protokollieren, sollten Sie zumindest Fehler und Warnungen protokollieren.
 
 ## <a name="iot-and-messaging-applications"></a>IoT und Messaginganwendungen
-Wenn Sie Nachrichten von [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) lesen, verwenden Sie [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). ServiceFabricProcessor ist in Service Fabric Reliable Services integriert und verwaltet den Zustand des Lesens von den Event Hub-Partitionen und pusht neue Nachrichten über die `IEventProcessor::ProcessEventsAsync()`-Methode an Ihre Dienste.
+Wenn Sie Nachrichten von [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) lesen, verwenden Sie [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). ServiceFabricProcessor ist in Service Fabric Reliable Services integriert und verwaltet den Zustand des Lesens von den Event Hub-Partitionen und pusht neue Nachrichten über die `IEventProcessor::ProcessEventsAsync()`-Methode an Ihre Dienste.
 
 
 ## <a name="design-guidance-on-azure"></a>Entwurfsleitfaden für Azure

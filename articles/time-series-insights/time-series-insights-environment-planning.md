@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314809"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272711"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-GA-U
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Für den Einstieg in Azure Time Series Insights sollten Sie am besten wissen, wie viele Daten voraussichtlich pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.  
+Für den Einstieg in Azure Time Series Insights sollten Sie idealerweise wissen, wie viele Daten voraussichtlich pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.  
 
 Weitere Informationen zur Kapazität und Aufbewahrung für beide Time Series Insights-SKUs finden Sie unter [Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
@@ -79,9 +79,7 @@ Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewa
 
 ### <a name="environment-planning"></a>Umgebungsplanung
 
-Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die Eingangskapazität. Die Eingangskapazität wird von der Zuordnung pro Minute abgeleitet.
-
-In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
+Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die Eingangskapazität. Die Speicher- und Ereigniskapazität für den täglichen Dateneingang wird in 1-KB-Blöcken pro Minute gemessen. Die maximal zulässige Paketgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
 
 Sie können die Kapazität einer SKU des Typs S1 oder S2 in einer einzelnen Umgebung auf 10 Einheiten erhöhen. Sie können nicht von einer S1-Umgebung zu einer S2-Umgebung migrieren. Sie können nicht von einer S2-Umgebung zu einer S1-Umgebung migrieren.
 

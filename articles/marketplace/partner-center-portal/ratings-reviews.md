@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2995cd2a97329aa8b7947145150c6a3501346fdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275661"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262416"
 ---
 # <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Bewertungen und Rezensionen“ in Analysen für den kommerziellen Marketplace
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezension
 Um auf das **Dashboard „Bewertungen und Rezensionen“** in den Partner Center-Analysetools zuzugreifen, öffnen Sie unter „Kommerzieller Marketplace“ das **[Dashboard „Analyse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** .
 
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
 
 ## <a name="ratings--reviews"></a>Bewertungen und Rezensionen
 
@@ -57,10 +57,10 @@ Rezensionen werden in chronologischer Reihenfolge nach Veröffentlichungsdatum a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die im kommerziellen Marketplace in Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace in Partner Center](./analytics.md).
+- Eine Übersicht über die im kommerziellen Marketplace im Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace im Partner Center](./analytics.md).
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
-- Informationen zu Ihren Bestellungen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Bestellungen“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
+- Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).

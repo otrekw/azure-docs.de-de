@@ -1,28 +1,25 @@
 ---
 title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78267934"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381676"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancebedingungen auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Bedingungen.
 
-Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.  Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
+Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](./overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
->[!IMPORTANT]
->Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren.  Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern.  
->Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.  
-
-
+> [!IMPORTANT]
+> Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren. Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern. Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.  
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 
@@ -40,11 +37,11 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 
 1. Klicken Sie oben auf der Seite auf die Option **Gruppe umbenennen**.
 
-   ![Option „Gruppe umbenennen“ auf einer Verwaltungsgruppenseite](./media/detail_action_small.png)
+   :::image type="content" source="./media/detail_action_small.png" alt-text="Option „Gruppe umbenennen“ auf einer Verwaltungsgruppenseite" border="false":::
 
 1. Wenn das Menü geöffnet wird, geben Sie den neuen Namen ein, der angezeigt werden soll.
 
-   ![Bereich „Gruppe umbenennen“ zum Umbenennen einer Verwaltungsgruppe](./media/rename_context.png)
+   :::image type="content" source="./media/rename_context.png" alt-text="Bereich „Gruppe umbenennen“ zum Umbenennen einer Verwaltungsgruppe" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -72,7 +69,8 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
    - Informationen zum Verschieben eines Abonnements oder einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen und Abonnements in der Hierarchie](#moving-management-groups-and-subscriptions).
 
-1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
+1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter  
+   [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Löschen im Portal
 
@@ -86,14 +84,14 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Wählen Sie **Löschen** aus.
 
-    > [!TIP]
-    > Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
+   :::image type="content" source="./media/delete.png" alt-text="Option zum Löschen der Gruppe" border="false":::
 
-   ![Option zum Löschen der Gruppe](./media/delete.png)
+   > [!TIP]
+   > Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
 
 1. Ein Fenster wird geöffnet, in dem Sie das Löschen der Verwaltungsgruppe bestätigen müssen.
 
-   ![Bestätigungsfenster für das Löschen der Gruppe](./media/delete_confirm.png)
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Bestätigungsfenster für das Löschen der Gruppe" border="false":::
 
 1. Wählen Sie **Ja** aus.
 
@@ -127,11 +125,11 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 
 1. Um die Details der Verwaltungsgruppe zu sehen, wählen Sie den Link **(Details)** neben dem Titel der Verwaltungsgruppe. Wenn dieser Link nicht verfügbar ist, sind Sie zum Anzeigen dieser Verwaltungsgruppe nicht berechtigt.
 
-   ![Main](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="Hauptseite" border="false":::
 
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 
-Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab.  Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in PowerShell für Verwaltungsgruppen.  
+Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab. Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in PowerShell für Verwaltungsgruppen.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -206,23 +204,22 @@ Wenn eine Verwaltungsgruppe oder ein Abonnement verschoben und einer anderen Ver
 
 Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
 
--  Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
-    - Beispiel für eine integrierte Rolle **Besitzer**
+- Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
+  - Beispiel für eine integrierte Rolle **Besitzer**
 - Verwaltungsgruppen-Schreibzugriff auf die übergeordnete Zielverwaltungsgruppe.
-    - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+  - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
 - Verwaltungsgruppen-Schreibzugriff auf die bestehende übergeordnete Verwaltungsgruppe.
-    - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+  - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
 
 **Ausnahme**: Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
 
-Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind. 
+Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind.
 
 Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
 
-
 ## <a name="move-subscriptions"></a>Verschieben von Abonnements 
 
-#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Hinzufügen eines vorhandenen Abonnements zu einer Verwaltungsgruppe im Portal
+### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Hinzufügen eines vorhandenen Abonnements zu einer Verwaltungsgruppe im Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -234,11 +231,11 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Wählen Sie in der Liste das Abonnement mit der richtigen ID aus.
 
-   ![Verfügbare Abonnements zum Hinzufügen zu einer Verwaltungsgruppe](./media/add_context_sub.png)
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Verfügbare Abonnements zum Hinzufügen zu einer Verwaltungsgruppe" border="false":::
 
 1. Wählen Sie „Speichern“ aus.
 
-#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Entfernen eines Abonnements aus einer Verwaltungsgruppe im Portal
+### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Entfernen eines Abonnements aus einer Verwaltungsgruppe im Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -248,13 +245,13 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
-   ![Option „Verschieben“ für eine Verwaltungsgruppe](./media/move_small.png)
+   :::image type="content" source="./media/move_small.png" alt-text="Option „Verschieben“ für eine Verwaltungsgruppe" border="false":::
 
 1. Klicken Sie auf **Verschieben**.
 
 1. Klicken Sie im angezeigten Menü auf **Übergeordnete Verwaltungsgruppe**.
 
-   ![Bereich „Verschieben“ zum Ändern der übergeordneten Gruppe](./media/move_small_context.png)
+   :::image type="content" source="./media/move_small_context.png" alt-text="Bereich „Verschieben“ zum Ändern der übergeordneten Gruppe" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -303,7 +300,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Durch die Auswahl von „Neu“ wird eine neue Verwaltungsgruppe erstellt.
    - Wenn Sie eine vorhandene Verwaltungsgruppe auswählen, wird eine Dropdownliste mit allen Verwaltungsgruppen angezeigt, die Sie in diese Verwaltungsgruppe verschieben können.  
 
-   ![Verschieben einer Verwaltungsgruppe in eine neue oder vorhandene Gruppe](./media/add_context_MG.png)
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Verschieben einer Verwaltungsgruppe in eine neue oder vorhandene Gruppe" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -326,9 +323,9 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
 
-Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden.  Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
+Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden. Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
-![Aktivitätsprotokolle mit Verwaltungsgruppen](media/al-mg.png)
+:::image type="content" source="./media/al-mg.png" alt-text="Aktivitätsprotokolle mit Verwaltungsgruppen" border="false":::
 
 Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
@@ -336,9 +333,9 @@ Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieh
 
 Wenn Sie von den Aktionen eines anderen Ressourcenanbieters auf Verwaltungsgruppen verweisen, verwenden Sie den folgenden Pfad als Bereich. Dieser Pfad wird sowohl in PowerShell, als auch an der Azure-Befehlszeilenschnittstelle (CLI) und in REST-APIs verwendet.  
 
->„/providers/Microsoft.Management/managementGroups/{IhreVerwaltungsgruppenID}“
+`/providers/Microsoft.Management/managementGroups/{yourMgID}`
 
-Das Zuweisen einer neuen Rollenzuweisung für eine Verwaltungsgruppe in PowerShell ist ein Beispiel für die Verwendung dieses Pfads.
+Das Zuweisen einer neuen Rollenzuweisung für eine Verwaltungsgruppe in PowerShell ist ein Beispiel für die Verwendung dieses Pfads:
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
@@ -354,8 +351,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
-- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](create.md)
-- [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](manage.md)
+- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](./create.md)
+- [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](./manage.md)
 - [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
 - [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
 - [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)

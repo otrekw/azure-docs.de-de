@@ -3,19 +3,19 @@ title: Konvertieren von Text in Sprache, Python – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.author: trbye
+ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400833"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Konvertieren von Text in Sprache mit Python
 
@@ -26,7 +26,7 @@ Für diesen Artikel wird ein [Azure Cognitive Services-Konto](https://docs.micro
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Python 2.7.x oder 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span></a>, <a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a> oder Ihr bevorzugter Editor
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module

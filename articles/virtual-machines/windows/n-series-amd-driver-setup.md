@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387834"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011066"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows
 
@@ -52,6 +52,12 @@ Sie können die Treiberinstallation im Geräte-Manager überprüfen. Das folgend
 <br />
 ![Eigenschaften des GPU-Treibers](./media/n-series-amd-driver-setup/device-manager.png)
 
-Mit dxdiag können Sie die GPU-Anzeigeeigenschaften einschließlich Video-RAM überprüfen. Das folgende Beispiel zeigt eine 1/8-Partition der Radeon Instinct MI25-Karte auf einem virtuellen Azure-NVv4-Computer.
+Mit dxdiag können Sie die GPU-Anzeigeeigenschaften einschließlich Video-RAM überprüfen. Das folgende Beispiel zeigt eine 1/2-Partition der Radeon Instinct MI25-Karte auf einem virtuellen Azure-NVv4-Computer.
 <br />
-![Eigenschaften des GPU-Treibers](./media/n-series-amd-driver-setup/dxdiag.png)
+![Eigenschaften des GPU-Treibers](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Wenn Sie Windows 10 Build 1903 oder höher ausführen, zeigt „dxdiag“ keine Informationen auf der Registerkarte „Anzeige“. Verwenden Sie die Option „Alle Informationen speichern“ im unteren Bereich, dann zeigt die Ausgabedatei die Informationen zur AMD-MI25-GPU.
+
+![Eigenschaften des GPU-Treibers](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

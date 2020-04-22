@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966811"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312557"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -24,7 +24,7 @@ ms.locfileid: "75966811"
 In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen Anwendungsgateway mit PowerShell hinzu. Benutzerdefinierte Tests sind für Anwendungen, die über eine bestimmte Seite für die Integritätsprüfung verfügen, oder für Anwendungen hilfreich, die keine erfolgreiche Antwort für die Standardwebanwendung bereitstellen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -153,7 +153,7 @@ Auf den Namen der Überprüfung wird in der \<BackendHttpSettings\>-Konfiguratio
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Hinzufügen eines benutzerdefinierten Tests zu einem vorhandenen Anwendungsgateway
 
-Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Schritte nötig: das Abrufen der aktuellen XML-Konfigurationsdatei, das Einfügen des benutzerdefinierten Tests in die XML-Datei und das Konfigurieren des Application Gateways mit den neuen XML-Einstellungen.
+Zum Ändern der aktuellen Konfiguration eines Anwendungsgateways sind drei Schritte nötig: das Abrufen der aktuellen XML-Konfigurationsdatei, das Ändern für einen benutzerdefinierten Test und das Konfigurieren des Anwendungsgateways mit den neuen XML-Einstellungen.
 
 1. Rufen Sie die XML-Datei mit `Get-AzureApplicationGatewayConfig` ab. Dieses Cmdlet exportiert die XML-Konfigurationsdatei, damit ihr die Einstellungen für die Überprüfung hinzugefügt werden können.
 
@@ -161,7 +161,7 @@ Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Sch
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Öffnen Sie die XML-Datei in einem Texteditor. Fügen Sie nach `<probe>` den Abschnitt `<frontendport>` hinzu.
+1. Öffnen Sie die XML-Datei in einem Texteditor. Fügen Sie nach `<frontendport>` den Abschnitt `<probe>` hinzu.
 
    ```xml
    <Probes>
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung (Secure Sockets Layer) konfigurieren möchten, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl.md).
+Wenn Sie Transport Layer Security (TLS) konfigurieren möchten, früher als SSL-Auslagerung (Secure Sockets Layer) bekannt, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die TLS-Auslagerung](application-gateway-ssl.md).
 
 Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 

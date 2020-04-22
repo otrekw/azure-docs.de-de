@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 411c06e19b932b441f27a3c7578d847c6dfc1f7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336988"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393108"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -168,7 +168,7 @@ In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der
 | 801-1.000 | 32 |
 
 >[!NOTE]
-> Bei Verwendung von Load Balancer Standard mit [mehreren Front-Ends](load-balancer-multivip-overview.md) multipliziert jede Front-End-IP-Adresse die Anzahl der verfügbaren SNAT-Ports in der vorherigen Tabelle. Beispielsweise verwendet ein Back-End-Pool von 50 VMs mit zwei Lastenausgleichsregeln, jede mit einer eigenen Front-End-IP-Adresse, 2048 (2 x 1024) SNAT-Ports pro IP-Konfiguration. Weitere Informationen finden Sie in den Details zu [mehreren Front-Ends](#multife).
+> Bei Verwendung von Load Balancer Standard mit [mehreren Front-Ends](load-balancer-multivip-overview.md) multipliziert jede Front-End-IP-Adresse die Anzahl der verfügbaren SNAT-Ports in der vorherigen Tabelle. Beispielsweise verwendet ein Back-End-Pool von 50 VMs mit zwei Lastenausgleichsregeln, jede mit einer eigenen Front-End-IP-Adresse, 2.048 (2 x 1.024) SNAT-Ports pro Regel. Weitere Informationen finden Sie in den Details zu [mehreren Front-Ends](#multife).
 
 Denken Sie daran, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Datenflüsse zu übersetzen ist. Ein einzelner SNAT-Port kann für mehrere eindeutige Ziele wiederverwendet werden. Ports werden nur genutzt, wenn Datenflüsse eindeutig gemacht werden müssen. Eine Anleitung für den Entwurf und Lösungsmöglichkeiten finden Sie in den Abschnitten, in den die [Verwaltung dieser begrenzten Ressource](#snatexhaust) und [PAT](#pat) beschrieben sind.
 
@@ -193,11 +193,11 @@ SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (T
 Dieser Abschnitt enthält Informationen dazu, wie Sie das Problem einer SNAT-Überlastung, die bei ausgehenden Verbindungen in Azure auftreten kann, lösen können.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> Verwalten der SNAT-Portauslastung (PAT)
-Wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse](#lb) beschrieben wird, sind für [PAT](#pat) verwendete [kurzlebige Ports](#preallocatedports) eine begrenzte Ressource.
+[Kurzlebige Ports](#preallocatedports), die für [PAT](#pat) verwendet werden, sind eine erschöpfbare Ressource, wie in [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse](#lb) beschrieben. Sie können Ihre Nutzung von kurzlebigen Ports überwachen und mit Ihrer aktuellen Zuteilung vergleichen, um das Risiko zu ermitteln oder die SNAT-Auslastung anhand [dieses Leitfadens](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) zu bestätigen.
 
 Wenn Sie wissen, dass Sie viele ausgehende TCP- oder UDP-Verbindungen zu derselben IP-Zieladresse und demselben Port initiieren und Fehler bei ausgehenden Verbindungen feststellen oder vom Support darauf hingewiesen werden, dass Sie zu viele SNAT-Ports (vorab zugeordnete [kurzlebige Ports](#preallocatedports), die für [PAT](#pat) verwendet werden) in Anspruch nehmen, stehen Ihnen mehrere Lösungsmöglichkeiten zur Verfügung. Überprüfen Sie diese Optionen, und entscheiden Sie, welche für Ihr Szenario verfügbar und am besten geeignet sind. Möglicherweise kann die ein oder andere die Verwaltung dieses Szenarios erleichtern.
 
-Wenn Sie Probleme haben, das Verhalten der ausgehenden Verbindungen zu verstehen, können Sie die IP-Stapelstatistiken (netstat) verwenden. Es kann aber auch hilfreich sein, das Verbindungsverhalten mithilfe von Paketerfassungen zu beobachten. Sie können diese Paketerfassungen im Gastbetriebssystem Ihrer Instanz durchführen oder [Network Watcher für die Paketerfassung](../network-watcher/network-watcher-packet-capture-manage-portal.md) verwenden.
+Wenn Sie Probleme haben, das Verhalten der ausgehenden Verbindungen zu verstehen, können Sie die IP-Stapelstatistiken (netstat) verwenden. Es kann aber auch hilfreich sein, das Verbindungsverhalten mithilfe von Paketerfassungen zu beobachten. Sie können diese Paketerfassungen im Gastbetriebssystem Ihrer Instanz durchführen oder [Network Watcher für die Paketerfassung](../network-watcher/network-watcher-packet-capture-manage-portal.md) verwenden. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Ändern der Anwendung für die Wiederverwendung von Verbindungen 
 Sie können den Bedarf an kurzlebigen Ports, die für SNAT verwendet werden, durch Wiederverwenden von Verbindungen in der Anwendung reduzieren. Dies gilt insbesondere für Protokolle wie HTTP/1.1, das standardmäßig Verbindungen wiederverwendet. Andere Protokolle, die HTTP als Transportprotokoll verwenden (z. B. REST) können davon wiederum profitieren. 

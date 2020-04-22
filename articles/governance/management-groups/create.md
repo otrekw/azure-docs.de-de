@@ -1,26 +1,27 @@
 ---
 title: Erstellen von Verwaltungsgruppen zum Organisieren von Ressourcen – Azure Governance
 description: Hier erfahren Sie, wie Sie Azure-Verwaltungsgruppen zum Verwalten mehrerer Ressourcen über das Portal, mithilfe von Azure PowerShell oder mithilfe der Azure CLI erstellen.
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436533"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381589"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
 Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Erstellen Sie diese Container, um eine effektive und effiziente Hierarchie zu erstellen, die mit [Azure Policy](../policy/overview.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Controls, RBAC) von Azure](../../role-based-access-control/overview.md) verwendet werden kann. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](overview.md).
 
-Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgruppe im Verzeichnis abgeschlossen ist. Bei der ersten Erstellung werden Prozesse zum Einrichten des Verwaltungsgruppendiensts in Azure für Ihr Verzeichnis ausgeführt. Sie erhalten eine Benachrichtigung, wenn der Vorgang abgeschlossen ist. Weitere Informationen finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](./overview.md#initial-setup-of-management-groups). 
+Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgruppe im Verzeichnis abgeschlossen ist. Bei der ersten Erstellung werden Prozesse zum Einrichten des Verwaltungsgruppendiensts in Azure für Ihr Verzeichnis ausgeführt. Sie erhalten eine Benachrichtigung, wenn der Vorgang abgeschlossen ist. Weitere Informationen finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](./overview.md#initial-setup-of-management-groups).
 
 ## <a name="create-a-management-group"></a>Erstellen einer Verwaltungsgruppe
 
-Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen.  Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer Zugriff auf sie.  Der Sinn dahinter, dass Verwaltungsgruppen zu Beginn auf Stammebene erstellt werden können, ist die Vermeidung der Hürde, erst nach den globalen Administratoren für Azure AD suchen zu müssen, bevor Verwaltungsgruppen verwendet werden können.      
+Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen. Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer Zugriff auf sie. Damit nicht erst nach den globalen Azure AD-Administratoren gesucht werden muss, um mit der Verwendung von Verwaltungsgruppen beginnen zu können, lassen wir die Erstellung der ersten Verwaltungsgruppen auf  
+Stammebene zu.
 
-Die Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell oder mithilfe der Azure CLI erstellt werden. Derzeit können Sie keine Resource Manager-Vorlagen zum Erstellen von Verwaltungsgruppen verwenden.
+Sie können die Verwaltungsgruppe im Portal, mit einer [Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), mithilfe von PowerShell oder über die Azure CLI erstellen.
 
 ### <a name="create-in-portal"></a>Erstellen im Portal
 
@@ -34,14 +35,15 @@ Die Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell oder mithil
 
 1. Wählen Sie **+ Verwaltungsgruppe hinzufügen** aus.
 
-   ![Seite für die Arbeit mit Verwaltungsgruppen](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="Seite für die Arbeit mit Verwaltungsgruppen" border="false":::
 
 1. Füllen Sie das Feld für die Verwaltungsgruppen-ID aus.
 
    - Die **ID der Verwaltungsgruppe** ist der eindeutige Bezeichner des Verzeichnisses, der zum Übermitteln von Befehlen für diese Verwaltungsgruppe verwendet wird. Dieser Bezeichner kann nach der Erstellung nicht bearbeitet werden, da er im gesamten Azure-System zum Identifizieren dieser Gruppe verwendet wird. Die [Stammverwaltungsgruppe](overview.md#root-management-group-for-each-directory) wird mit einer ID, bei der es sich um die Azure Active Directory-ID handelt, automatisch erstellt. Weisen Sie bei allen anderen Verwaltungsgruppen eine eindeutige ID zu.
-   - Im Feld für den Anzeigenamen wird der Name angegeben, der im Azure-Portal angezeigt wird. Beim Erstellen der Verwaltungsgruppe gibt es ein optionales Feld für einen separaten Anzeigenamen, der jederzeit geändert werden kann.  
+   - Im Feld für den Anzeigenamen wird der Name angegeben, der im Azure-Portal angezeigt wird. Beim Erstellen der Verwaltungsgruppe gibt es ein optionales Feld für einen separaten Anzeigenamen, der jederzeit geändert werden  
+     kann.
 
-   ![Bereich „Optionen“ zum Erstellen einer neuen Verwaltungsgruppe](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Bereich „Optionen“ zum Erstellen einer neuen Verwaltungsgruppe" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
-- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](create.md)
-- [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](manage.md)
+- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](./create.md)
+- [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](./manage.md)
 - [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
 - [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
 - [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)

@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren von End-to-End-SSL mit Azure Application Gateway
-description: Dieser Artikel beschreibt das Konfigurieren von End-to-End-SSL mit Azure Application Gateway mit PowerShell.
+title: Konfigurieren von End-to-End-TLS mit Azure Application Gateway
+description: Dieser Artikel beschreibt das Konfigurieren von End-to-End-TLS mit Azure Application Gateway unter Verwendung von PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286469"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312499"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-TLS mit Application Gateway mithilfe von PowerShell
 
 ## <a name="overview"></a>Übersicht
 
-Azure Application Gateway unterstützt die End-to-End-Verschlüsselung des Datenverkehrs. Hierfür wird in Application Gateway die SSL-Verbindung am Anwendungsgateway getrennt. Das Gateway wendet dann die Routingregeln auf den Datenverkehr an, verschlüsselt das Paket erneut und leitet das Paket basierend auf den definierten Routingregeln an den entsprechenden Back-End-Server weiter. Antworten vom Webserver durchlaufen denselben Prozess zurück an den Endbenutzer.
+Azure Application Gateway unterstützt die End-to-End-Verschlüsselung des Datenverkehrs. Application Gateway terminiert die TLS/SSL-Verbindung am Anwendungsgateway. Das Gateway wendet dann die Routingregeln auf den Datenverkehr an, verschlüsselt das Paket erneut und leitet das Paket basierend auf den definierten Routingregeln an den entsprechenden Back-End-Server weiter. Antworten vom Webserver durchlaufen denselben Prozess zurück an den Endbenutzer.
 
-Application Gateway unterstützt das Definieren benutzerdefinierter SSL-Optionen. Es unterstützt auch das Deaktivieren der folgenden Protokollversionen: **TLSv1.0**, **TLSv1.1** und **TLSv1.2**; außerdem werden das Definieren der zu verwendenden Verschlüsselungssammlungen und die jeweilige Priorität unterstützt. Weitere Informationen zu konfigurierbaren SSL-Optionen finden Sie in der [SSL-Richtlinienübersicht](application-gateway-SSL-policy-overview.md).
+Application Gateway unterstützt das Definieren benutzerdefinierter TLS-Optionen. Es unterstützt auch das Deaktivieren der folgenden Protokollversionen: **TLSv1.0**, **TLSv1.1** und **TLSv1.2**; außerdem werden das Definieren der zu verwendenden Verschlüsselungssammlungen und die jeweilige Priorität unterstützt. Weitere Informationen zu konfigurierbaren TLS-Optionen finden Sie in der [Übersicht über TLS-Richtlinien](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2.0 und SSL 3.0 sind standardmäßig deaktiviert und können nicht aktiviert werden. Sie werden als unsicher eingestuft und können mit Application Gateway nicht verwendet werden.
@@ -29,22 +29,22 @@ Application Gateway unterstützt das Definieren benutzerdefinierter SSL-Optionen
 
 ## <a name="scenario"></a>Szenario
 
-In diesem Szenario erfahren Sie, wie Sie mithilfe von PowerShell ein Anwendungsgateway über End-to-End-SSL erstellen.
+In diesem Szenario erfahren Sie, wie Sie mithilfe von PowerShell ein Anwendungsgateway mit End-to-End-TLS erstellen.
 
 Dieses Szenario umfasst Folgendes:
 
 * Erstellen einer Ressourcengruppe namens **appgw-rg**
 * Erstellen eines virtuellen Netzwerks namens **appgwvnet** mit dem Adressraum **10.0.0.0/16**
 * Erstellen zweier Subnetze namens **appgwsubnet** und **appsubnet**.
-* Erstellen eines kleinen Anwendungsgateways mit Unterstützung der End-to-End-SSL-Verschlüsselung, die bestimmte SSL-Protokollversionen und Verschlüsselungssammlungen einschränkt
+* Erstellen eines kleinen Anwendungsgateways mit Unterstützung der End-to-End-TLS-Verschlüsselung und Einschränkung bestimmter TLS-Protokollversionen und Verschlüsselungssammlungen
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt. Außerdem sind weitere Zertifikate für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des SSL-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Zum Konfigurieren von End-to-End-TLS mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt. Außerdem sind weitere Zertifikate für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des TLS-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
-Für die End-to-End-SSL-Verschlüsselung muss das Back-End explizit vom Anwendungsgateway zugelassen werden. Laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
+Für die End-to-End-TLS-Verschlüsselung muss das Back-End explizit vom Anwendungsgateway zugelassen werden. Laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
 
 Der Konfigurationsprozess wird in den folgenden Abschnitten beschrieben.
 
@@ -154,20 +154,20 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    ```
 
    > [!NOTE]
-   > In diesem Beispiel wird das Zertifikat für SSL-Verbindungen konfiguriert. Das Zertifikat muss im PFX-Format vorliegen, und das Kennwort muss zwischen 4 und 12 Zeichen umfassen.
+   > In diesem Beispiel wird das Zertifikat für TLS-Verbindungen konfiguriert. Das Zertifikat muss im PFX-Format vorliegen, und das Kennwort muss zwischen 4 und 12 Zeichen umfassen.
 
-6. Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das SSL-Zertifikat zu.
+6. Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das TLS/SSL-Zertifikat zu.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Laden Sie das Zertifikat hoch, das von den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
+7. Laden Sie das Zertifikat hoch, das von den TLS-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
 
    > [!NOTE]
-   > Der Standardtest ruft den öffentlichen Schlüssel aus der *standardmäßigen* SSL-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. 
+   > Der Standardtest ruft den öffentlichen Schlüssel aus der *standardmäßigen* TLS-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. 
    > 
-   > Wenn Sie Hostheader und Servernamensanzeige (SNI) auf dem Back-End verwenden, ist der abgerufene öffentliche Schlüssel nicht zwingend der Zielort für den Datenverkehr. Öffnen Sie im Zweifelsfall auf den Back-End-Servern die Seite https://127.0.0.1/, um sich zu vergewissern, welches Zertifikat für die *standardmäßige* SSL-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in https://127.0.0.1/ auf den Back-End-Servern keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-SSL-Bindung auf diesen einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
+   > Wenn Sie Hostheader und Servernamensanzeige (SNI) auf dem Back-End verwenden, ist der abgerufene öffentliche Schlüssel nicht zwingend der Zielort für den Datenverkehr. Öffnen Sie im Zweifelsfall auf den Back-End-Servern die Seite https://127.0.0.1/, um sich zu vergewissern, welches Zertifikat für die *standardmäßige* TLS-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in https://127.0.0.1/ auf den Back-End-Servern keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-TLS-Bindung auf diesen Servern einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > [!NOTE]
    > Das im vorherigen Schritt bereitgestellte Zertifikat sollte dem öffentlichen Schlüssel des PFX-Zertifikats entsprechen, das auf dem Back-End vorliegt. Exportieren Sie das auf dem Back-End-Server im CER-Format (Claim, Evidence, and Reasoning) installierte Zertifikat (nicht das Stammzertifikat), und verwenden Sie es für diesen Schritt. Durch diesen Schritt wird das Back-End beim Anwendungsgateway auf die Whitelist gesetzt.
 
-   Wenn Sie die Application Gateway v2-SKU verwenden, erstellen Sie anstelle eines Authentifizierungszertifikats ein vertrauenswürdiges Stammzertifikat. Weitere Informationen finden Sie unter [Übersicht über End-to-End-SSL mit Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+   Wenn Sie die Application Gateway v2-SKU verwenden, erstellen Sie anstelle eines Authentifizierungszertifikats ein vertrauenswürdiges Stammzertifikat. Weitere Informationen finden Sie unter [Übersicht über End-to-End-TLS mit Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
     > [!NOTE]
     > Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Gateways mit niedriger Nutzungsdauer sind für Dev/Test-Umgebungen vorgesehen und sollten nicht zu Produktionszwecken verwendet werden.
 
-11. Konfigurieren Sie die SSL-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway ermöglicht das Festlegen einer SSL-Mindestprotokollversion.
+11. Konfigurieren Sie die TLS-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway ermöglicht das Festlegen einer Mindestversion für das TLS-Protokoll.
 
     Die folgenden Werte sind eine Liste mit definierbaren Protokollversionen:
 
@@ -247,7 +247,7 @@ Gehen Sie wie folgt vor, um ein neues Zertifikat anzuwenden, wenn das Back-End-Z
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Fügen Sie die neue Zertifikatsressource aus der CER-Datei hinzu, die den öffentlichen Schlüssel des Zertifikats enthält. Dieses Zertifikat kann mit demjenigen identisch sein, das dem Listener für SSL-Terminierung am Anwendungsgateway hinzugefügt wurde.
+2. Fügen Sie die neue Zertifikatsressource aus der CER-Datei hinzu, die den öffentlichen Schlüssel des Zertifikats enthält. Dieses Zertifikat kann mit demjenigen identisch sein, das dem Listener für die TLS-Terminierung auf dem Anwendungsgateway hinzugefügt wurde.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ Gehen Sie wie folgt vor, um ein nicht verwendetes abgelaufenes Zertifikat aus de
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Beschränken von SSL-Protokollversionen für ein vorhandenes Anwendungsgateway
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>Beschränken von TLS-Protokollversionen für ein vorhandenes Anwendungsgateway
 
-Die vorangehenden Schritte führen Sie durch die Erstellung einer Anwendung mit End-to-End-SSL und durch das Deaktivieren bestimmter Versionen des SSL-Protokolls. Im folgenden Beispiel werden bestimmte SSL-Richtlinien auf einem vorhandenen Anwendungsgateway deaktiviert.
+Mit den bisher erläuterten Schritten haben Sie eine Anwendung mit End-to-End-TLS erstellt und bestimmte Versionen des TLS-Protokolls deaktiviert. Das folgende Beispiel deaktiviert bestimmte TLS-Richtlinien auf einem vorhandenen Anwendungsgateway.
 
 1. Rufen Sie das Anwendungsgateway ab, das aktualisiert werden soll.
 
@@ -310,14 +310,14 @@ Die vorangehenden Schritte führen Sie durch die Erstellung einer Anwendung mit 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definieren Sie eine SSL-Richtlinie. Im folgenden Beispiel werden **TLSv1.0** und **TLSv1.1** deaktiviert und nur die Verschlüsselungssammlungen **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** und **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** zugelassen.
+2. Definieren Sie eine TLS-Richtlinie. Im folgenden Beispiel werden **TLSv1.0** und **TLSv1.1** deaktiviert und nur die Verschlüsselungssammlungen **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** und **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** zugelassen.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Zum Schluss aktualisieren Sie das Gateway. Dieser letzte Schritt nimmt einen längeren Zeitraum in Anspruch. Nach Abschluss des Vorgangs ist End-to-End-SSL für das Anwendungsgateway konfiguriert.
+3. Zum Schluss aktualisieren Sie das Gateway. Dieser letzte Schritt nimmt einen längeren Zeitraum in Anspruch. Nach Abschluss des Vorgangs ist End-to-End-TLS auf dem Anwendungsgateway konfiguriert.
 
    ```powershell
    $gw | Set-AzApplicationGateway

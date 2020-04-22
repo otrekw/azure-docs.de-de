@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232974"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257435"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -2407,7 +2407,13 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 Standardmäßig werden alle Logik-App-Workflowinstanzen gleichzeitig (oder parallel) ausgeführt. Dieses Verhalten bedeutet, dass jede Triggerinstanz ausgelöst wird, bevor die Ausführung der zuvor aktiven Workflowinstanz beendet ist. Die Anzahl der gleichzeitig ausgeführten Instanzen hat jedoch ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wenn die Anzahl von gleichzeitig ausgeführten Workflowinstanzen dieses Limit erreicht, müssen alle anderen neuen Instanzen auf ihre Ausführung warten. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen.
 
-Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Workflowinstanzen, die parallel ausgeführt werden können. Hier finden Sie einige Erwägungen, wenn Sie die Parallelitätssteuerung aktivieren möchten:
+Wenn Sie die Parallelitätssteuerung des Auslösers aktivieren, werden Auslöserinstanzen parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Zum Ändern des Standardparallelitätslimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von neuen Workflowinstanzen, die parallel ausgeführt werden können.
+
+Hier finden Sie einige Erwägungen für den Fall, dass Sie die Parallelität auf einem Auslöser aktivieren möchten:
+
+* Wenn Parallelität aktiviert ist, wird das [SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)-Limit für das [Auflösen von Arraybatches](#split-on-debatch) wesentlich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
+
+* Die Parallelität kann nicht deaktiviert werden, nachdem Sie die Parallelitätssteuerung aktiviert haben.
 
 * Wenn Parallelität aktiviert ist, wird das [SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)-Limit für das [Auflösen von Arraybatches](#split-on-debatch) wesentlich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
 

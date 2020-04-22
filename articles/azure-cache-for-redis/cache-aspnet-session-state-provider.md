@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530273"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010901"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-Sitzungszustandsanbieter für Azure Cache for Redis
 
@@ -82,10 +82,10 @@ Im kommentierten Bereich finden Sie Beispiele der Attribute sowie Beispieleinste
 Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsoft Azure-Portal, und konfigurieren Sie die restlichen Werte wie gewünscht. Anweisungen zum Zugreifen auf die Cacheeigenschaften finden Sie unter [Konfigurieren von Azure Cache for Redis-Einstellungen](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 * **host** : Geben Sie den Cacheendpunkt an.
-* **port** : Verwenden Sie abhängig von Ihren SSL-Einstellungen entweder den Nicht-SSL-Port oder den SSL-Port.
+* **port**: Verwenden Sie abhängig von Ihren TLS-Einstellungen entweder den Nicht-TLS/SSL-Port oder den TLS/SSL-Port.
 * **accessKey** : Verwenden Sie den primären oder sekundären Schlüssel für Ihren Cache.
-* **ssl** : Geben Sie „true“ an, wenn Sie die Kommunikation zwischen Cache und Client mit SSL absichern möchten, andernfalls „false“. Achten Sie darauf, dass Sie den richtigen Port angeben.
-  * Der Nicht-SSL-Port ist für neue Caches standardmäßig deaktiviert. Geben Sie für diese Einstellung „true“ an, wenn Sie den SSL-Port verwenden möchten. Weitere Informationen zum Aktivieren des Nicht-SSL-Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md).
+* **ssl**: Diese Einstellung ist „true“, wenn Sie die Kommunikation zwischen Cache und Client mit TSL absichern möchten, andernfalls lautet der Wert „false“. Achten Sie darauf, dass Sie den richtigen Port angeben.
+  * Der Nicht-TLS-Port ist für neue Caches standardmäßig deaktiviert. Geben Sie für diese Einstellung „true“ an, wenn Sie den TLS-Port verwenden möchten. Weitere Informationen zum Aktivieren des Nicht-TLS-Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md).
 * **throwOnError:** Geben Sie TRUE an, wenn bei einem Fehler eine Ausnahme ausgelöst werden soll, oder FALSE, wenn bei einem nicht ausgeführten Vorgang keine Meldung erfolgen soll. Sie können das Vorliegen von Fehlern feststellen, indem Sie die statische Eigenschaft „Microsoft.Web.Redis.RedisSessionStateProvider.LastException“ überprüfen. Der Standardwert ist „true“.
 * **retryTimeoutInMilliseconds**: Bei Fehlern werden Vorgänge für diese Zeitspanne wiederholt (angegeben in Millisekunden). Die erste Wiederholung erfolgt nach 20 Millisekunden. Danach wird die Wiederholung jede Sekunde durchgeführt, bis die in „retryTimeoutInMilliseconds“ angegebene Zeitspanne abgelaufen ist. Unmittelbar nach dieser Zeitspanne wird der Vorgang ein letztes Mal wiederholt. Wenn dann immer noch ein Fehler bei dem Vorgang auftritt, wird der aufrufenden Funktion eine Ausnahme zurückgegeben, abhängig von der Einstellung für „throwOnError“. Der Standardwert lautet 0, d.h. keine Wiederholungen.
 * **databaseId** : Gibt an, welche Datenbank für die Cacheausgabedaten verwendet werden soll. Wenn Sie hier nichts angeben, wird der Standardwert 0 verwendet.

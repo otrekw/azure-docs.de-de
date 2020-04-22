@@ -7,24 +7,41 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294598"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270705"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
-Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese werden als Standard- oder Plattformmetriken bezeichnet. Allerdings sind sie beschränkt. Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen.
+Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese Metriken werden als [Standard- oder Plattformmetriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bezeichnet. Allerdings sind sie beschränkt. Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen.
 Diese **benutzerdefinierten** Metriken können über Ihre Anwendungstelemetrie, einen auf Ihren Azure-Ressourcen ausgeführten Agent, oder sogar über ein außerhalb des Unternehmens befindliches Überwachungssystem gesammelt und direkt an Azure Monitor übermittelt werden. Nach der Veröffentlichung in Azure Monitor können Sie nach benutzerdefinierten Metriken für Ihre Azure-Ressourcen und -Anwendungen suchen, diese abfragen und Warnungen ausgeben, und zwar parallel zu den von Azure ausgegebenen Standardmetriken.
 
-## <a name="send-custom-metrics"></a>Senden benutzerdefinierter Metriken
+## <a name="methods-to-send-custom-metrics"></a>Methoden zum Senden benutzerdefinierter Metriken
+
 Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor übermittelt werden:
 - Instrumentieren Ihrer Anwendung mit dem Azure Application Insights SDK und Senden benutzerdefinierter Telemetriedaten an Azure Monitor 
 - Installieren der WAD-Erweiterung (Windows Azure-Diagnose) auf Ihrer [Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassischen VM](collect-custom-metrics-guestos-vm-classic.md) oder Ihrem [klassischen Clouddienst](collect-custom-metrics-guestos-vm-cloud-service-classic.md) und Senden der Leistungsindikatoren an Azure Monitor 
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
 - Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+
+## <a name="pricing-model"></a>Preismodell
+
+Es fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Im Azure Monitor-Metrikspeicher erfasste benutzerdefinierte Metriken werden pro MB abgerechnet, wobei jedem geschriebenen Datenpunkt einer benutzerdefinierten Metrik eine Größe von 8 Bytes zugewiesen wird. Alle erfassten Metriken werden 90 Tage lang aufbewahrt.
+
+Metrikabfragen werden auf der Anzahl der API-Standardaufrufe basierend in Rechnung gestellt. Ein API-Standardaufruf ist ein Aufruf, der 1.440 Datenpunkte analysiert (1.440 ist auch die Gesamtanzahl von Datenpunkten, die pro Metrik pro Tag gespeichert werden können). Wenn ein API-Aufruf mehr als 1.440 Datenpunkte analysiert, zählt er als mehrere API-Standardaufrufe. Wenn ein API-Aufruf weniger als 1.440 Datenpunkte analysiert, zählt er weniger als ein API-Aufruf. Die Anzahl von API-Standardaufrufen wird jeden Tag als Gesamtzahl der pro Tag analysierten Datenpunkte dividiert durch 1.440 berechnet.
+
+Bestimmte Preisdetails für benutzerdefinierte Metriken und Metrikabfragen finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Über das Application Insights SDK an Azure Monitor gesendete Metriken werden als erfasste Protokolldaten abgerechnet und verursachen nur dann zusätzliche Metrikgebühren, wenn das Application Insights-Feature [Hiermit aktivieren Sie Dimensionswarnungen für benutzerdefinierte Metriken](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) ausgewählt wurde. Erfahren Sie mehr über das [Application Insights-Preismodell](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) und [Preise in Ihrer Region](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). 
+
+## <a name="how-to-send-custom-metrics"></a>Vorgehensweise beim Senden benutzerdefinierter Metriken
 
 Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemeldete Datenpunkt (oder Wert) die folgenden Informationen enthalten.
 
@@ -34,7 +51,7 @@ Zum Übermitteln von benutzerdefinierten Metriken an Azure Monitor muss die Enti
 2. [Azure AD-Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) In diesem Szenario können einer AAD-Anwendung oder einem Dienst die Berechtigungen zum Ausgeben von Metriken zu einer Azure-Ressource gewährt werden.
 Azure Monitor überprüft das Anwendungstoken mithilfe von öffentlichen Azure AD-Schlüsseln, um die Anforderung zu authentifizieren. Die vorhandene Rolle **Überwachungsmetriken veröffentlichen** verfügt bereits über diese Berechtigung. Sie ist im Azure-Portal verfügbar. Dem Dienstprinzipal kann die Rolle **Überwachungsmetriken veröffentlichen** im erforderlichen Gültigkeitsbereich erteilt werden, je nachdem, für welche Ressourcen er benutzerdefinierte Metriken ausgibt. Dabei kann es sich um ein Abonnement, eine Ressourcengruppe oder eine bestimmte Ressource handeln.
 
-> [!NOTE]  
+> [!TIP]  
 > Wenn Sie ein Azure AD-Token zum Ausgeben von benutzerdefinierten Metriken anfordern, stellen Sie sicher, dass die Zielgruppe oder Ressource, für die das Token angefordert wird, `https://monitoring.azure.com/` ist. Fügen Sie auch unbedingt den nachgestellten Schrägstrich (/) hinzu.
 
 ### <a name="subject"></a>Subject
@@ -42,8 +59,7 @@ Diese Eigenschaft erfasst, für welche Azure-Ressourcen-ID die benutzerdefiniert
 
 > [!NOTE]  
 > Sie können keine benutzerdefinierten Metriken für die Ressourcen-ID einer Ressourcengruppe oder eines Abonnements ausgeben.
->
->
+
 
 ### <a name="region"></a>Region
 Diese Eigenschaft erfasst, in welcher Azure-Region die Ressource, für die Sie Metriken senden, bereitgestellt wird. Metriken müssen an denselben regionalen Endpunkt von Azure Monitor ausgegeben werden wie die Region, in der die Ressource bereitgestellt wird. Benutzerdefinierte Metriken für eine VM, die in der Region „USA, Westen“ bereitgestellt wurde, müssen z.B. an den regionalen Endpunkt „WestUS“ von Azure Monitor gesendet werden. Die Regionsinformationen sind auch in der URL des API-Aufrufs codiert.
@@ -84,7 +100,7 @@ Azure Monitor speichert alle Metriken in Granularitätsintervallen von einer Min
 * **Sum**: Die Summe aller beobachteten Werte aus allen Stichproben und Messungen während der Minute.
 * **Count**: Die Anzahl der Stichproben und Messungen, die während der Minute durchgeführt wurden.
 
-Wenn es z.B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ihre App gab, ergeben sich daraus möglicherweise die folgenden gemessenen Wartezeiten für jede dieser Transaktionen:
+Wenn z. B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ihre App stattfanden, ergeben sich daraus möglicherweise die folgenden gemessenen Wartezeiten für jede dieser Transaktionen:
 
 |Transaktion 1|Transaktion 2|Transaktion 3|Transaktion 4|
 |---|---|---|---|

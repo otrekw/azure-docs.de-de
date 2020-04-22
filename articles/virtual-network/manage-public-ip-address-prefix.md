@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65952682"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383867"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -41,7 +41,7 @@ Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informat
 ## <a name="create-a-public-ip-address-prefix"></a>Erstellen des Präfix einer öffentlichen IP-Adresse
 
 1. Wählen Sie in der linken oberen Ecke des Portals die Option **+ Ressource erstellen** aus.
-2. Geben Sie im Feld *Marketplace durchsuchen* den Begriff *Präfix einer öffentlichen IP-Adresse* ein. Wenn **Präfix einer öffentlichen IP-Adresse** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+2. Geben Sie im Feld *Marketplace durchsuchen* den Begriff *Präfix für öffentliche IP-Adresse* ein. Wenn **Präfix einer öffentlichen IP-Adresse** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie unter **Präfix einer öffentlichen IP-Adresse** auf **Erstellen**.
 4. Geben Sie unter **Präfix einer öffentlichen IP-Adresse erstellen** Werte für folgende Einstellungen ein, oder wählen Sie Werte aus, und klicken Sie dann auf **Erstellen**:
 

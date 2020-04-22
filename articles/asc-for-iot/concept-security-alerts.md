@@ -1,5 +1,5 @@
 ---
-title: Anleitung zu Sicherheitswarnungen für Azure Security Center für IoT | Microsoft-Dokumentation
+title: Integrierte und benutzerdefinierte Warnlisten
 description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von Azure Security Center für IoT-Features und -Diensten.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296132"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311483"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center für IoT – Sicherheitswarnungen
 
@@ -32,11 +32,9 @@ In diesem Artikel finden Sie eine Liste von integrierten Warnungen, die auf Ihre
 Neben integrierten Warnungen ermöglicht Ihnen Azure Security Center für IoT, benutzerdefinierte Warnungen zu erstellen, die auf dem erwarteten IoT Hub- und/oder Geräteverhalten basieren.
 Weitere Informationen finden Sie unter [anpassbare Warnungen](concept-customizable-security-alerts.md).
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrierte Warnungen für IoT-Geräte
 
-| Name | severity | Data source | BESCHREIBUNG | Vorschlag für Problemlösungsschritte|                  
+| Name | severity | Data source | BESCHREIBUNG | Vorschlag für Problemlösungsschritte|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Hoher** Schweregrad|  |  |  |
 |   Binäre Befehlszeile   | High | Agent | Eine Linux-Binärdatei wurde über die Befehlszeile aufgerufen oder ausgeführt. Dieser Vorgang kann eine legitime Aktivität sein oder darauf hindeuten, dass Ihr Gerät kompromittiert wurde.|   Überprüfen Sie den Befehl und den Benutzer, der den Befehl ausgeführt hat, um festzustellen, ob die Aktivität auf dem Gerät legitim war. Eskalieren Sie die Warnung andernfalls an Ihr IT-Sicherheitsteam. |
@@ -52,7 +50,7 @@ Weitere Informationen finden Sie unter [anpassbare Warnungen](concept-customizab
 |  Verhalten ähnlich dem von Fairware-Ransomware erkannt  | Medium | Agent       | Die Ausführung von „rm -rf“-Befehlen, die auf verdächtige Speicherorte angewandt wurden, wurde durch eine Analyse der Hostdaten erkannt. Der Befehl „rm -rf“ löscht Dateien rekursiv und wird normalerweise nur für Einzelordner verwendet. In diesem Fall wurde er auf einen Speicherort angewandt, über den eine große Datenmenge entfernt werden könnte. Fairware-Ransomware ist bekannt dafür, rm -rf-Befehle in diesem Ordner auszuführen. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime Aktivität handelt, die auf dem Gerät erwartbar ist. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |  Verhalten ähnlich dem von Ransomware erkannt  | Medium | Agent       | Ausführung von Dateien erkannt, die bekannter Ransomware ähneln und möglicherweise verhindern, dass Benutzer auf ihr System oder ihre persönlichen Dateien zugreifen können, und darüber hinaus ggf. eine Lösegeldforderung nach sich ziehen, um wieder Zugriff zu erhalten.|Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |   Crypto Coin Miner-Containerimage erkannt | Medium                   | Agent       | Ein Container wurde erkannt, in dem bekannte Images für das Mining digitaler Währungen ausgeführt werden. |  1. Wenn dieses Verhalten nicht beabsichtigt ist, löschen Sie das entsprechende Containerimage.<br> 2. Stellen Sie sicher, dass auf den Docker-Daemon nicht über einen unsicheren TCP-Socket zugegriffen werden kann.<br> 3. Eskalieren Sie die Warnung an das IT-Sicherheitsteam.|
-|  Crypto Coin Miner-Image  | Medium| Agent       | Die Ausführung eines Prozesses wurde erkannt, der normalerweise mit digitalem Währungsmining in Verbindung steht.| Überprüfen Sie zusammen mit dem Benutzer, der den Befehl ausgeführt hat, ob dies eine legitime Aktivität auf dem Gerät war. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.| 
+|  Crypto Coin Miner-Image  | Medium| Agent       | Die Ausführung eines Prozesses wurde erkannt, der normalerweise mit digitalem Währungsmining in Verbindung steht.| Überprüfen Sie zusammen mit dem Benutzer, der den Befehl ausgeführt hat, ob dies eine legitime Aktivität auf dem Gerät war. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.|
 |   Verdächtige Verwendung des nohup-Befehls erkannt | Medium | Agent       | Verdächtige Verwendung des nohup-Befehls auf dem Host erkannt. Böswillige Akteure führen den nohup-Befehl in der Regel in einem temporären Verzeichnis aus, damit ihre ausführbaren Dateien im Hintergrund ausgeführt werden können. Die Ausführung dieses Befehls für Dateien in einem temporären Verzeichnis ist weder ein erwartbares noch ein normales Verhalten. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |   Verdächtige Verwendung des useradd-Befehls erkannt  | Medium      | Agent       | Verdächtige Verwendung des useradd-Befehls auf dem Gerät erkannt. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |  Verfügbar gemachter Docker-Daemon von TCP-Socket  | Medium | Agent | Computerprotokolle deuten darauf hin, dass Ihr Docker-Daemon (dockerd) einen TCP-Socket verfügbar macht. Standardmäßig verwendet die Docker-Konfiguration keine Verschlüsselung oder Authentifizierung, wenn ein TCP-Socket aktiviert ist. Die Standardkonfiguration von Docker ermöglicht jedem, der Zugriff auf den entsprechenden Port hat, Vollzugriff auf den Docker-Daemon.|Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
@@ -60,7 +58,7 @@ Weitere Informationen finden Sie unter [anpassbare Warnungen](concept-customizab
 |  Download von Dateien von einer bekannten schädlichen Quelle erkannt   | Medium  | Agent       |  Der Download einer Datei von einer bekannten Quelle für Schadsoftware wurde erkannt.|Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |   Zugriff auf htaccess-Datei erkannt | Medium                       | Agent       | Bei der Analyse von Hostdaten wurde eine mögliche Manipulation einer htaccess-Datei erkannt. Bei htaccess handelt es sich um eine leistungsstarke Konfigurationsdatei, mit der Sie mehrere Änderungen an einem Webserver mit der Apache Web-Software vornehmen können, beispielsweise grundlegende Umleitungsfunktionen oder erweiterte Funktionen wie den einfachen Kennwortschutz. Böswillige Akteure ändern häufig die htaccess-Dateien auf Computern, die sie kompromittiert haben, um dauerhaft Zugriff zu erhalten. |Vergewissern Sie sich, dass dies eine legitime erwartete Aktivität auf dem Host ist. Eskalieren Sie die Warnung andernfalls an Ihr IT-Sicherheitsteam.|
 |  Bekanntes Angriffstool  | Medium                                   | Agent       | Ein Tool wurde erkannt, das häufig mit Angriffen auf andere Computer durch böswilliger Benutzer in Verbindung steht. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.|
-|  IoT-Agent hat erfolglos versucht, die Konfiguration des Modulzwillings zu analysieren | Medium  | Agent       | Der Sicherheits-Agent des Azure Security Center für IoT konnte die Konfiguration des Modulzwillings aufgrund von Typenkonflikten im Konfigurationsobjekt nicht analysieren.|Überprüfen Sie Ihre Konfiguration des Modulzwillings anhand des Konfigurationsschemas für den IoT-Agent, und beheben Sie alle Konflikte. 
+|  IoT-Agent hat erfolglos versucht, die Konfiguration des Modulzwillings zu analysieren | Medium  | Agent       | Der Sicherheits-Agent des Azure Security Center für IoT konnte die Konfiguration des Modulzwillings aufgrund von Typenkonflikten im Konfigurationsobjekt nicht analysieren.|Überprüfen Sie Ihre Konfiguration des Modulzwillings anhand des Konfigurationsschemas für den IoT-Agent, und beheben Sie alle Konflikte.
 |  Local Host-Reconnaissance erkannt  | Medium | Agent       | Es wurde die Ausführung eines Befehls erkannt, der normalerweise häufig mit Linux-Bot-Reconnaissance in Verbindung steht. |Überprüfen Sie die verdächtige Befehlszeile, um zu bestätigen, dass sie von einem legitimen Benutzer ausgeführt wurde. Eskalieren Sie die Warnung andernfalls an Ihr IT-Sicherheitsteam.
 |  Konflikt zwischen Skriptinterpreter und Dateierweiterung  | Medium | Agent       | Es wurde ein Konflikt zwischen dem Skriptinterpreter und der Erweiterung der als Eingabe bereitgestellten Skriptdatei erkannt. Diese Art von Abweichung ist häufig mit Skriptausführungen durch Angreifer verknüpft. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.
 |  Mögliche Hintertür erkannt  | Medium | Agent |Eine verdächtige Datei wurde heruntergeladen und dann auf einem Host in Ihrem Abonnement ausgeführt. Dieser Aktivitätstyp ist in der Regel mit der Installation einer Backdoor verknüpft. |Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam.

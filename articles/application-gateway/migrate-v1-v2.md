@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475180"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312048"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -36,7 +36,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 * Das neue v2-Gateway hat neue öffentliche und private IP-Adressen. Es ist nicht möglich, die IP-Adressen, die dem vorhandenen v1-Gateway zugeordnet sind, nahtlos in v2 zu verschieben. Sie können dem neuen v2-Gateway jedoch eine vorhandene (nicht zugeordnete) öffentliche oder private IP-Adresse zuordnen.
 * Sie müssen einen IP-Adressraum für ein anderes Subnetz in Ihrem virtuellen Netzwerk bereitstellen, in dem sich Ihr v1-Gateway befindet. Mit dem Skript kann das v2-Gateway nicht in einem vorhandenen Subnetz erstellt werden, in dem es bereits ein v1-Gateway v1 gibt. Hat das vorhandene Subnetz jedoch bereits ein v2-Gateway, funktioniert dieses möglicherweise weiterhin, sofern genügend IP-Adressraum verfügbar ist.
-* Um eine SSL-Konfiguration zu migrieren, müssen Sie alle SSL-Zertifikate angeben, die in Ihrem v1-Gateway verwendet werden.
+* Um eine TLS/SSL-Konfiguration zu migrieren, müssen Sie alle TLS/SSL-Zertifikate angeben, die in Ihrem v1-Gateway verwendet werden.
 * Haben Sie für Ihr v1-Gateway den FIPS-Modus aktiviert, wird dieser nicht in Ihr neues v2-Gateway migriert. Der FIPS-Modus wird in v2 nicht unterstützt.
 * In v2 wird IPv6 nicht unterstützt, weshalb v1-Gateways, für die IPv6 aktiviert ist, nicht migriert werden. Wenn Sie das Skript ausführen, wird es möglicherweise nicht vollständig ausgeführt.
 * Wenn das v1-Gateway nur eine private IP-Adresse hat, erstellt das Skript eine öffentliche IP-Adresse und eine private IP-Adresse für das neue v2-Gateway. v2-Gateways unterstützen derzeit nicht nur private IP-Adressen.
@@ -101,7 +101,7 @@ So führen Sie das Skript aus
 
    * **subnetAddressRange: [Zeichenfolge]:  Erforderlich** – Dies ist der IP-Adressraum, den Sie einem neuen Subnetz, das Ihr neues v2-Gateway enthält, zugewiesen haben (oder zuweisen wollen). Diese Angabe muss in der CIDR-Notation erfolgen. Beispiel: 10.0.0.0/24. Sie müssen dieses Subnetz nicht im Voraus anlegen. Das Skript erstellt es für Sie, wenn es nicht vorhanden ist.
    * **appgwName: [Zeichenfolge]: Optional**. Dies ist eine Zeichenfolge, die als der Name des neuen Standard_v2- oder WAF_v2-Gateways verwendet werden soll. Ist dieser Parameter nicht angegeben, wird der Name Ihres vorhandenen v1-Gateways verwendet, an den das Suffix *_v2* angefügt wird.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  Eine Liste aus PSApplicationGatewaySslCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die SSL-Zertifikate aus Ihrem v1-Gateway aufgeführt sind, muss in das neue v2-Gateway hochgeladen werden. Für jedes Ihrer SSL-Zertifikate, die für Ihr Standard-v1- oder -WAF-v1-Gateway konfiguriert sind, können Sie über den hier gezeigten `New-AzApplicationGatewaySslCertificate`-Befehl ein neues PSApplicationGatewaySslCertificate-Objekt erstellen. Sie benötigen den Pfad zu Ihrer SSL-Zertifikatsdatei und das Kennwort.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  Eine Liste aus PSApplicationGatewaySslCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die TLS/SSL-Zertifikate aus Ihrem v1-Gateway aufgeführt sind, muss in das neue v2-Gateway hochgeladen werden. Für jedes Ihrer TLS/SSL-Zertifikate, die für Ihr Standard-v1- oder -WAF-v1-Gateway konfiguriert sind, können Sie über den hier gezeigten `New-AzApplicationGatewaySslCertificate`-Befehl ein neues PSApplicationGatewaySslCertificate-Objekt erstellen. Sie benötigen den Pfad zu Ihrer TLS/SSL-Zertifikatsdatei und das Kennwort.
 
      Dieser Parameter ist nur optional, wenn Sie für das v1-Gateway oder die v1-WAF keine HTTPS-Listener konfiguriert haben. Sobald Sie mindestens einen HTTPS-Listener eingerichtet haben, müssen Sie diesen Parameter angeben.
 

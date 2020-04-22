@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 02/21/2020
+ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096191"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314311"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -71,6 +71,11 @@ Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jed
 Sie können kein registriertes Modell löschen, das in einer aktiven Bereitstellung verwendet wird.
 Weitere Informationen finden Sie im Abschnitt „Registrieren eines Modells“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#registermodel).
 
+### <a name="profile-models"></a>Profilmodelle
+
+Azure Machine Learning kann Ihnen helfen, die CPU- und Arbeitsspeicheranforderungen des Diensts zu verstehen, der bei der Bereitstellung Ihres Modells erstellt wird. Die Profilerstellung testet den Dienst, der Ihr Modell ausführt, und gibt Informationen wie CPU-Auslastung, Speicherauslastung und Antwortlatenz zurück. Sie bietet auch eine CPU- und Speicherempfehlung auf der Grundlage der Ressourcenauslastung.
+Weitere Informationen finden Sie im Abschnitt „Profilerstellung“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#profilemodel).
+
 ### <a name="package-and-debug-models"></a>Packen und Debuggen von Modellen
 
 Vor dem Bereitstellen eines Modells in der Produktion wird es in ein Docker-Image gepackt. In den meisten Fällen erfolgt die Imageerstellung während der Bereitstellung automatisch im Hintergrund. Sie können das Image auch manuell angeben.
@@ -119,6 +124,16 @@ Um das Modell als Webdienst bereitzustellen, müssen Sie folgende Elemente zur V
 
 Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md).
 
+#### <a name="controlled-rollout"></a>Kontrollierter Rollout
+
+Bei der Bereitstellung in Azure Kubernetes Service können Sie einen kontrollierten Rollout verwenden, um die folgenden Szenarien zu unterstützen:
+
+* Erstellen mehrerer Versionen eines Endpunkts für eine Bereitstellung
+* Durchführen von A/B-Tests über die Weiterleitung von Datenverkehr an verschiedene Versionen des Endpunkts
+* Wechsel zwischen Endpunktversionen durch Aktualisierung des Prozentsatzes an Datenverkehr in der Endpunktkonfiguration
+
+Weitere Informationen finden Sie unter [Kontrollierter Rollout von ML-Modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
+
 #### <a name="iot-edge-devices"></a>IoT Edge-Geräte
 
 Sie können Modelle mit IoT-Geräten über **Azure IoT Edge-Module** verwenden. IoT Edge-Module werden auf einem Hardwaregerät bereitgestellt, wodurch Rückschlüsse bzw. Modellbewertungen auf dem Gerät ermöglicht werden.
@@ -131,12 +146,20 @@ Microsoft Power BI unterstützt die Verwendung von Machine Learning-Modellen fü
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Sammeln der erforderlichen Governancedaten zur Erfassung des ML-Lebenszyklus End-to-End
 
-Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ressourcen nachverfolgen. Dies gilt insbesondere in folgenden Fällen:
+Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ressourcen durch Verwendung von Metadaten nachverfolgen.
 
 - Azure ML ist [mit Git integriert](how-to-set-up-training-targets.md#gitintegration), um nachverfolgen zu können, von welchem Repository, welcher Branch oder welchem Commit Ihr Code stammt.
-- Mit [Azure ML-Datasets](how-to-create-register-datasets.md) können Sie Daten nachverfolgen, Profile erstellen und Versionen verwalten. 
+- Mit [Azure ML-Datasets](how-to-create-register-datasets.md) können Sie Daten nachverfolgen, Profile erstellen und Versionen verwalten.
+- Dank der [Interpretierbarkeit](how-to-machine-learning-interpretability.md) ist es möglich, Ihre Modelle zu erläutern, gesetzliche Bestimmungen einzuhalten und zu verstehen, wie Modelle bei bestimmten Eingaben zu einem Ergebnis kommen.
 - Der Azure ML-Ausführungsverlauf speichert eine Momentaufnahme des Codes, der Daten und der Computevorgänge, mit denen ein Modell trainiert wurde.
 - Die Azure ML-Modellregistrierung erfasst alle Metadaten, die Ihrem Modell zugeordnet sind (welches Experiment wurde für das Training verwendet, wo wird es bereitgestellt und ob die Bereitstellungen fehlerfrei sind).
+- Durch die [Integration in Azure Event Grid](concept-event-grid-integration.md) können Sie auf Ereignisse im ML-Lebenszyklus reagieren. Hierzu zählen beispielsweise Ereignisse für Modellregistrierung, Bereitstellung, Datenabweichung und Training (Ausführung).
+
+> [!TIP]
+> Während einige Informationen zu Modellen und Datasets automatisch erfasst werden, können Sie mithilfe von __Tags__ zusätzliche Informationen hinzufügen. Wenn Sie in Ihrem Arbeitsbereich nach registrierten Modellen und Datasets suchen, können Sie Tags als Filter verwenden.
+>
+> Die Zuordnung eines Datasets zu einem registrierten Modell ist ein optionaler Schritt. Informationen zum Referenzieren eines Datasets beim Registrieren eines Modells finden Sie in der Referenz zur [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)-Klasse.
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Benachrichtigen, Automatisieren und Warnen bei Ereignissen im ML-Lebenszyklus
 Azure ML veröffentlicht wichtige Ereignisse in Azure EventGrid, das für Benachrichtigung und Automatisierung bei Ereignissen im ML-Lebenszyklus verwendet werden kann. Weitere Informationen finden Sie in [diesem Dokument](how-to-use-event-grid.md).
@@ -152,7 +175,7 @@ Weitere Informationen finden Sie unter [Gewusst wie: Aktivieren der Modelldatens
 
 ## <a name="retrain-your-model-on-new-data"></a>Erneutes Trainieren des Modells nach neuen Daten
 
-Oftmals möchten Sie Ihr Modell aktualisieren oder sogar von Grund auf neu trainieren, wenn Sie neue Informationen erhalten. Manchmal ist das Empfangen neuer Daten ein erwarteter Teil der Domäne. Zu anderen Zeiten, wie in [Erkennen von Datenabweichungen (Vorschau) in Datasets](how-to-monitor-datasets.md) erläutert, kann die Modellleistung angesichts von Faktoren wie Änderungen an einem bestimmten Sensor, natürlichen Datenänderungen wie saisonalen Effekten oder Verschiebung von Features in ihrer Beziehung zu anderen Features abnehmen. 
+Oftmals möchten Sie Ihr Modell validieren, aktualisieren oder sogar von Grund auf neu trainieren, wenn Sie neue Informationen erhalten. Manchmal ist das Empfangen neuer Daten ein erwarteter Teil der Domäne. Zu anderen Zeiten, wie in [Erkennen von Datenabweichungen (Vorschau) in Datasets](how-to-monitor-datasets.md) erläutert, kann die Modellleistung angesichts von Faktoren wie Änderungen an einem bestimmten Sensor, natürlichen Datenänderungen wie saisonalen Effekten oder Verschiebung von Features in ihrer Beziehung zu anderen Features abnehmen. 
 
 Es gibt keine allgemeingültige Antwort auf die Frage „Woher weiß ich, ob ich erneut trainieren soll?“, aber die zuvor besprochenen Ereignis- und Überwachungstools von Azure Machine Learning sind gute Ausgangspunkte für die Automatisierung. Wenn Sie sich für ein erneutes Training entschieden haben, sollten Sie wie folgt vorgehen: 
 
@@ -172,7 +195,11 @@ Die [Azure Machine Learning-Erweiterung](https://marketplace.visualstudio.com/it
 * Ermöglicht beim Definieren einer Dienstverbindung die Auswahl eines Arbeitsbereichs.
 * Ermöglicht das Auslösen von Releasepipelines durch trainierte Modelle, die in einer Trainingspipeline erstellt wurden.
 
-Weitere Informationen zum Verwenden von Azure Pipelines mit Azure Machine Learning finden Sie im Artikel [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning) und im Repository [Azure Machine Learning MLOps](https://aka.ms/mlops).
+Weitere Informationen zur Verwendung von Azure Pipelines mit Azure Machine Learning finden Sie unter den folgenden Links:
+
+* [Continuous Integration und Continuous Deployment von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure Machine Learning MLOps](https://aka.ms/mlops)-Repository
+* [Azure Machine Learning MLOpsPython](https://github.com/Microsoft/MLOpspython)-Repository
 
 Sie können Azure Data Factory auch verwenden, um eine Datenerfassungspipeline zu erstellen, die die Daten für die Verwendung im Training vorbereitet. Weitere Informationen finden Sie unter [Datenerfassungspipeline](how-to-cicd-data-ingestion.md).
 

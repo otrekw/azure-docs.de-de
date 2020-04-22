@@ -5,27 +5,29 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016798"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272473"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurieren von PHP in Azure App Service
 
 ## <a name="introduction"></a>Einführung
 
-In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-Apps, mobile Back-Ends und API-Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) konfigurieren, eine benutzerdefinierte PHP-Laufzeit angeben und Erweiterungen aktivieren. Um App Service zu verwenden, registrieren Sie sich für die [kostenlose Testversion]. Um diese Anleitung optimal zu nutzen, sollten Sie zuerst eine PHP-App in App Service erstellen.
+In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-Apps und API-Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) konfigurieren, eine benutzerdefinierte PHP-Runtime angeben und Erweiterungen aktivieren. Um App Service zu verwenden, registrieren Sie sich für die [kostenlose Testversion]. Um diese Anleitung optimal zu nutzen, sollten Sie zuerst eine PHP-App in App Service erstellen.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Gewusst wie: Ändern der integrierten PHP-Version
 
-PHP 5.6 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
+Beim Erstellen einer Web-App können Sie die PHP-Version auswählen, die konfiguriert wird. Aktuelle Informationen zu den derzeit unterstützten Versionen finden Sie unter [PHP in App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md).
 
-PHP 7.0 und PHP 7.2 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
+Um die vorhandene Runtimeversion Ihrer App zu überprüfen, können Sie ein Skript bereitstellen, das die Funktion [phpinfo()] aufruft.
+
+Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -49,7 +51,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss die [Azure CL
 
 2. Legen Sie die PHP-Version für die App fest.
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
 
@@ -79,7 +81,7 @@ Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [
 
 1. Hinzufügen einer App-Einstellung zu Ihrer App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 1. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.
-1. Fügen Sie der Datei `settings.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine `*.crt`-Datei verweisen und, und die Einstellung 'wincache.maxfilesize' auf 512 KB festlegen, enthält die Datei `settings.ini` diesen Text:
+1. Fügen Sie der Datei `settings.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine Datei vom Typ `*.crt` verweisen und die Einstellung „wincache.maxfilesize“ auf 512 K festlegen, enthält die Datei `settings.ini` diesen Text:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

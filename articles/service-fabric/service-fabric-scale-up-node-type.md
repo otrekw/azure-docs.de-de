@@ -3,12 +3,12 @@ title: Hochskalieren eines Azure Service Fabric-Knotentyps
 description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skaliert wird.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464230"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998940"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Hochskalieren des primären Knotentyps eines Service Fabric-Clusters
 Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters durch Erhöhen der Ressourcen des virtuellen Computers hochskalieren können. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -34,7 +34,7 @@ Im Folgenden wird der Vorgang zum Aktualisieren der VM-Größe und des Betriebss
     Um die neue Skalierungsgruppe in der Vorlage zu finden, suchen Sie nach der Ressource „Microsoft.Compute/virtualMachineScaleSets“, die durch den Parameter *vmNodeType2Name* benannt wird.  Die neue Skalierungsgruppe wird dem primären Knotentyp mithilfe der Einstellung „properties->virtualMachineProfile->extensionProfile->extensions->properties->settings->nodeTypeRef“ hinzugefügt.
 4. Überprüfen Sie die Clusterintegrität und ob alle Knoten fehlerfrei sind.
 5. Deaktivieren Sie die Knoten in der alten Skalierungsgruppe des primären Knotentyps mit der Absicht, die Knoten zu entfernen. Sie können alle gleichzeitig deaktivieren. Die Vorgänge werden dann in eine Warteschlange eingereiht. Warten Sie, bis alle Knoten deaktiviert sind. Dies kann einige Zeit dauern.  Nachdem die älteren Knoten im Knotentyp deaktiviert sind, werden die Systemdienste und Seed-Knoten zu den VMs der neuen Skalierungsgruppe im primären Knotentyp migriert.
-6. Entfernen Sie die ältere Skalierungsgruppe aus dem primären Knotentyp.
+6. Entfernen Sie die ältere Skalierungsgruppe aus dem primären Knotentyp. (Nachdem die Knoten wie in Schritt 5 deaktiviert wurden, heben Sie im Blatt für die VM-Skalierungsgruppe im Azure-Portal nacheinander die Zuordnung der Knoten für den alten Knotentyp auf.)
 7. Entfernen Sie den der alten Skalierungsgruppe zugeordneten Lastenausgleich. Während die neue öffentliche IP-Adresse und der Lastenausgleich für die neue Skalierungsgruppe konfiguriert werden, ist der Cluster nicht verfügbar.  
 8. Speichern Sie die DNS-Einstellungen der öffentlichen IP-Adresse, die der alten Skalierungsgruppe des primären Knotentyps zugeordnet ist, in einer Variablen, und entfernen Sie diese öffentliche IP-Adresse.
 9. Ersetzen Sie die DNS-Einstellungen der öffentlichen IP-Adresse, die der neuen Skalierungsgruppe des primären Knotentyps zugeordnet ist, durch die DNS-Einstellungen der gelöschten öffentlichen IP-Adresse.  Der Cluster ist jetzt wieder verfügbar.

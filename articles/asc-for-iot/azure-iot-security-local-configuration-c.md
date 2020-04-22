@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Azure Security Center-Sicherheits-Agent – Lokale Konfigurationen für C | Microsoft-Dokumentation
+title: Lokale Sicherheits-Agent-Konfiguration (C)
 description: Erfahren Sie mehr über den Azure Security Center-Sicherheits-Agent, und zwar lokale Konfigurationen für C.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,44 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600309"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311703"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Grundlegendes zur Datei „LocalConfiguration.json“ – C-Agent
 
 Der Azure Security Center für IoT-Sicherheits-Agent verwendet Konfigurationen aus einer lokalen Konfigurationsdatei.
 Der Sicherheits-Agent liest die Konfiguration einmal bei seinem Start.
 Die Konfiguration in der lokalen Konfigurationsdatei enthält die Authentifizierungskonfiguration und andere Konfigurationen im Zusammenhang mit dem Agent.
-Die Datei enthält Konfigurationen in „Schlüssel-Wert“-Paaren im JSON-Format, und die Konfigurationen werden bei der Installation des Agents aufgefüllt. 
+Die Datei enthält Konfigurationen in „Schlüssel-Wert“-Paaren im JSON-Format, und die Konfigurationen werden bei der Installation des Agents aufgefüllt.
 
 Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfiguration.json“.
 
-Änderungen an der Konfigurationsdatei erfolgen beim Neustart des Agents. 
+Änderungen an der Konfigurationsdatei erfolgen beim Neustart des Agents.
 
 ## <a name="security-agent-configurations-for-c"></a>Sicherheits-Agent-Konfigurationen für C
-| Konfigurationsname | Mögliche Werte | Details | 
+
+| Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
 | AgentId | GUID | Der eindeutige Agent-Bezeichner |
 | TriggerdEventsInterval | ISO8601-Zeichenfolge | Scheduler-Intervall für die Sammlung von ausgelösten Ereignissen |
 | ConnectionTimeout | ISO8601-Zeichenfolge | Zeitraum vor dem Ablauf der Verbindung zu IoT Hub |
-| Authentication | JsonObject | Authentifizierungskonfiguration. Dieses Objekt enthält alle Informationen, die für die Authentifizierung bei IoT Hub erforderlich sind. |
+| Authentifizierung | JsonObject | Authentifizierungskonfiguration. Dieses Objekt enthält alle Informationen, die für die Authentifizierung bei IoT Hub erforderlich sind. |
 | Identity | „DPS“, „SecurityModule“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „SecurityModule“, wenn sie über Anmeldeinformationen für das Sicherheitsmodul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt. |
 | AuthenticationMethod | „SasToken“, „SelfSignedCertificate“ | Das Benutzergeheimnis zur Authentifizierung – Wählen Sie „SasToken“ aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist; wählen Sie „SelfSignedCertificate“ aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist.  |
 | FilePath | Pfad zur Datei (Zeichenfolge) | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält. |
-| HostName | string | Der Hostname des Azure IoT Hubs. normalerweise <mein-hub>.azure-devices.net |
-| deviceId | string | Die ID des Geräts (wie in Azure IoT Hub registriert) |
+| HostName | Zeichenfolge | Der Hostname des Azure IoT Hubs. normalerweise <mein-hub>.azure-devices.net |
+| deviceId | Zeichenfolge | Die ID des Geräts (wie in Azure IoT Hub registriert) |
 | DPS | JsonObject | DPS-bezogene Konfigurationen |
-| IDScope | string | ID-Bereich von DPS |
-| RegistrationId | string  | Registrierungs-ID für DPS-Geräte |
+| IDScope | Zeichenfolge | ID-Bereich von DPS |
+| RegistrationId | Zeichenfolge  | Registrierungs-ID für DPS-Geräte |
 | Protokollierung | JsonObject | Konfigurationen mit Agentprotokollierung |
 | SystemLoggerMinimumSeverity | 0 < = Zahl < = 4 | Protokollmeldungen gleich und über diesem Schweregrad werden in „/var/log/syslog“ protokolliert („0“ ist der niedrigste Schweregrad). |
 | DiagnosticEventMinimumSeverity | 0 < = Zahl < = 4 | Protokollmeldungen gleich und über diesem Schweregrad werden als Diagnoseereignisse gesendet („0“ ist der niedrigste Schweregrad). |
 
 ## <a name="security-agent-configurations-code-example"></a>Codebeispiel für Sicherheits-Agent-Konfigurationen
+
 ```JSON
 {
     "Configuration" : {
@@ -79,6 +81,7 @@ Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfigur
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
 - Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md) „Azure Security Center für IoT“.

@@ -1,5 +1,5 @@
 ---
-title: Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace in Partner Center
+title: Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace im Partner Center
 description: Erfahren Sie, wie Sie mithilfe des Dashboards „Kunde“ in Analysen für den kommerziellen Marketplace auf Informationen zu Ihren Kunden zugreifen, einschließlich Wachstumstrends.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286114"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251638"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zum **Dashboard „Kunde“** in Partner C
 Um auf das **Dashboard „Kunde“** zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter „Kommerzieller Marketplace“.
 
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
 
 ## <a name="customer-dashboard"></a>Dashboard „Kunden“
 
@@ -108,10 +108,10 @@ Die Filter auf der Seite **Kunden** werden auf der Ebene der Seite „Kunden“ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die im kommerziellen Marketplace in Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace in Partner Center](./analytics.md).
+- Eine Übersicht über die im kommerziellen Marketplace im Partner Center verfügbaren Analyseberichte finden Sie unter [Analysen für den kommerziellen Marketplace im Partner Center](./analytics.md).
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
-- Informationen zu Ihren Bestellungen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Bestellungen“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
+- Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).

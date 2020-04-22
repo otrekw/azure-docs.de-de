@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444895"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257696"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Angeben von für Lab-Ersteller verfügbare Marketplace-Images
 Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Ersteller zum Erstellen von Labs im Lab-Konto verwenden können. 
@@ -50,6 +50,19 @@ Um mehrere Images gleichzeitig zu deaktivieren, aktivieren Sie die Kontrollkäst
 Um ein deaktiviertes Image zu aktivieren, wählen Sie in der letzten Spalte die **Auslassungspunkte (...)** und dann **Image aktivieren** aus. Aktivieren Sie wahlweise das Kontrollkästchen vor dem Imagenamen, und wählen Sie auf der Symbolleiste **Ausgewählte Images aktivieren** aus. 
 
 Um mehrere Images gleichzeitig zu deaktivieren, aktivieren Sie die Kontrollkästchen vor den Imagenamen, und wählen Sie auf der Symbolleiste **Ausgewählte Images aktivieren** aus. 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>Aktivieren von Images zum Zeitpunkt der Laberstellung
+Zum Zeitpunkt der Erstellung des Labs können Sie weitere Images aktivieren: 
+
+1. Melden Sie sich bei der [Azure Lab Services-Website](https://labs.azure.com) mithilfe der Anmeldeinformationen eines **Lab-Kontobesitzers** an.
+2. Wählen Sie das standardmäßige VM-Image oder den Pfeil nach unten aus. 
+3. Wählen Sie **Weitere Imageoptionen aktivieren** aus. 
+
+    ![Weitere Imageoptionen aktivieren](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. Befolgen Sie die Anleitung aus dem vorherigen Abschnitt, um die Images zu aktivieren, die Sie auswählen. 
+5. Möglicherweise müssen Sie das Fenster **Neues Lab** schließen und erneut öffnen, um die im vorherigen Schritt ausgewählten Images anzuzeigen. 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln:

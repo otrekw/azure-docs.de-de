@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932187"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309207"
 ---
 # <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
  
@@ -29,13 +29,13 @@ Heute stammt der Großteil aller gefährdenden Anmeldeversuche von Legacyauthent
 
 ## <a name="identify-legacy-authentication-use"></a>Identifizieren der Verwendung der Legacyauthentifizierung
 
-Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
+Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
 
-1. Navigieren Sie im Azure-Portal zu „Azure Active Directory“ > „Anmeldungen“.
-1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf „Spalten“ > „Client-App“ hinzu.
-1. Filtern Sie nach Client-App, überprüfen Sie alle anderen angezeigten Clientoptionen, und klicken Sie auf „Übernehmen“.
-1. Filtern Sie nach Status > Erfolg, und klicken Sie auf „Übernehmen“. 
-1. Erweitern Sie ggf. den Datumsbereich mithilfe des Filters „Datum“.
+1. Navigieren Sie zu  **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
+1. Falls die Spalte **Client-App** nicht angezeigt wird, fügen Sie sie durch Klicken auf  **Spalten** > **Client-App** hinzu.
+1. Filtern Sie nach **Client-App** , und aktivieren Sie alle angezeigten Optionen für **Legacy-Authentifizierungsclients**.
+1. Filtern Sie nach **Status** > **Erfolg**. 
+1. Erweitern Sie ggf. den Datumsbereich mithilfe des Filters **Datum**.
 
 Beim Filtern werden nur erfolgreiche Anmeldeversuche der ausgewählten Legacyauthentifizierungsprotokolle angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Wenn Sie eine einzelne Datenzeile auswählen, wird in der Spalte „Client-App“ oder im Feld „Client-App“ (auf der Registerkarte „Grundlegende Infos“) angezeigt, welches Legacyauthentifizierungsprotokoll verwendet wurde. Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Für Benutzer, die nicht in diesen Protokollen aufgeführt sind und für die bestätigt wurde, dass sie keine veraltete Authentifizierungsmethode verwenden, implementieren Sie eine Richtlinie für bedingten Zugriff. Oder aktivieren Sie nur für diese Benutzer die Basisrichtlinie zum Blockieren der Legacyauthentifizierung.
 
@@ -50,7 +50,7 @@ Dieser Abschnitt bietet eine schrittweise Übersicht zur Aktualisierung Ihrer Um
 Im ersten Schritt zum Aktivieren der modernen Authentifizierung stellen Sie sicher, dass Ihr Verzeichnis die moderne Authentifizierung unterstützt. Moderne Authentifizierung ist standardmäßig für Verzeichnisse aktiviert, die am 1. August 2017 oder später erstellt wurden. Wenn Ihr Verzeichnis vor diesem Datum erstellt wurde, müssen Sie die moderne Authentifizierung für Ihr Verzeichnis mit den folgenden Schritten manuell aktivieren:
 
 1. Überprüfen Sie durch Ausführen von  `Get-CsOAuthConfiguration`  im Modul  [Skype for Business Online-PowerShell](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell), ob Ihr Verzeichnis bereits die moderne Authentifizierung unterstützt.
-1. Wenn der Befehl eine leere  `OAuthServers` -Eigenschaft zurückgibt, ist die moderne Authentifizierung deaktiviert. Aktualisieren Sie die Einstellung, um die moderne Authentifizierung mit  `Set-CsOAuthConfiguration` zu aktivieren. Wenn Ihre  `OAuthServers` -Eigenschaft einen Eintrag enthält, können Sie loslegen.
+1. Wenn der Befehl eine leere  `OAuthServers` -Eigenschaft zurückgibt, ist die moderne Authentifizierung deaktiviert. Aktualisieren Sie die Einstellung, um die moderne Authentifizierung mit  `Set-CsOAuthConfiguration` zu aktivieren. Wenn Ihre `OAuthServers` -Eigenschaft einen Eintrag enthält, können Sie loslegen.
 
 Schließen Sie diesen Schritt unbedingt ab, bevor Sie fortfahren. Ihre Verzeichniskonfigurationen müssen unbedingt zuerst geändert werden, da sie bestimmen, welches Protokoll von allen Office-Clients verwendet wird. Auch wenn Sie Office-Clients verwenden, die die moderne Authentifizierung unterstützen, werden sie standardmäßig ältere Protokolle verwenden, wenn die moderne Authentifizierung in Ihrem Verzeichnis deaktiviert ist.
 
@@ -58,11 +58,11 @@ Schließen Sie diesen Schritt unbedingt ab, bevor Sie fortfahren. Ihre Verzeichn
 
 Nachdem Sie die moderne Authentifizierung in Ihrem Verzeichnis aktiviert haben, können Sie mit dem Aktualisieren von Anwendungen beginnen, indem Sie die moderne Authentifizierung für Office-Clients aktivieren. Office 2016- oder neuere Clients unterstützen die moderne Authentifizierung standardmäßig. Es sind keine besonderen Schritte erforderlich.
 
-Wenn Sie Office 2013-Windows-Clients oder frühere verwenden, sollten Sie auf Office 2016 oder höher aktualisieren. Auch nach dem Abschluss des vorherigen Schritts zum Aktivieren der modernen Authentifizierung in Ihrem Verzeichnis werden die älteren Office-Anwendungen weiterhin Legacyauthentifizierungsprotokolle verwenden. Wenn Sie Office 2013-Clients verwenden und nicht sofort auf Office 2016 oder höher aktualisieren können, führen Sie die Schritte im folgenden Artikel zum  [Aktivieren der modernen Authentifizierung für Office 2013 auf Windows-Geräten](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication) aus. Um Ihr Konto zu schützen, während Sie die Legacyauthentifizierung verwenden, sollten Sie in Ihrem gesamten Verzeichnis sicherere Kennwörter verwenden. Informieren Sie sich unter  [Azure AD-Kennwortschutz](../authentication/concept-password-ban-bad.md) , um unsichere Kennwörter in Ihrem Verzeichnis auszuschließen.
+Wenn Sie Office 2013-Windows-Clients oder frühere verwenden, sollten Sie auf Office 2016 oder höher aktualisieren. Auch nach dem Abschluss des vorherigen Schritts zum Aktivieren der modernen Authentifizierung in Ihrem Verzeichnis werden die älteren Office-Anwendungen weiterhin Legacyauthentifizierungsprotokolle verwenden. Wenn Sie Office 2013-Clients verwenden und nicht sofort auf Office 2016 oder höher aktualisieren können, führen Sie die Schritte im folgenden Artikel zum  [Aktivieren der modernen Authentifizierung für Office 2013 auf Windows-Geräten](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication) aus. Um Ihr Konto zu schützen, während Sie die Legacyauthentifizierung verwenden, sollten Sie in Ihrem gesamten Verzeichnis sichere Kennwörter verwenden. Informieren Sie sich unter  [Azure AD-Kennwortschutz](../authentication/concept-password-ban-bad.md) , um unsichere Kennwörter in Ihrem Verzeichnis auszuschließen.
 
 Office 2010 unterstützt keine moderne Authentifizierung. Sie müssen alle Office 2010-Benutzer auf eine neuere Version von Office aktualisieren. Sie sollten ein Upgrade auf Office 2016 oder höher durchführen, da dies die Legacyauthentifizierung standardmäßig blockiert.
 
-Wenn Sie MacOS verwenden, sollten Sie ein Upgrade auf Office für Mac 2016 oder höher durchführen. Wenn Sie den nativen E-Mail-Client verwenden, benötigen Sie MacOS-Version 10.14 oder höher auf allen Geräten.
+Wenn Sie macOS verwenden, sollten Sie ein Upgrade auf Office für Mac 2016 oder höher durchführen. Wenn Sie den nativen E-Mail-Client verwenden, benötigen Sie macOS-Version 10.14 oder höher auf allen Geräten.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Schritt 3: Exchange und SharePoint
 

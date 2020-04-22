@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136904"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383908"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -50,7 +50,7 @@ Wenn Benutzer mithilfe der Active Directory (AD)- oder Azure Active Directory Do
 
 ### <a name="solution-for-cause-3"></a>Lösung für Ursache 3
 
-Informationen zum Aktualisieren der Berechtigungen auf Freigabeebene finden Sie unter [Zuweisen von Zugriffsberechtigungen zu einer Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
+Informationen zum Aktualisieren der Berechtigungen auf Freigabeebene finden Sie unter [Zuweisen von Zugriffsberechtigungen zu einer Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>„Fehler 53“, „Fehler 67“ oder „Fehler 87“ beim Versuch, eine Azure-Dateifreigabe einzubinden oder die Einbindung aufzuheben
@@ -324,6 +324,30 @@ Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“ tritt auf, wenn
 Derzeit können Sie die nochmalige Bereitstellung des AAD DS mit einem neuen DNS-Domänennamen in Erwägung ziehen, für den die folgenden Regeln gelten:
 - Namen dürfen nicht mit einem numerischen Zeichen beginnen.
 - Die Namen müssen zwischen 3 und 63 Zeichen lang sein.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Azure Files mit AD-Anmeldeinformationen kann nicht eingebunden werden 
+
+### <a name="self-diagnostics-steps"></a>Selbstdiagnoseschritte
+Stellen Sie zunächst sicher, dass Sie alle vier Schritte durchgeführt haben, um die [Azure Files-AD-Authentifizierung](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable) zu aktivieren.
+
+Versuchen Sie dann, die [Azure-Dateifreigabe mit dem Speicherkontoschlüssel](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) einzubinden. Wenn beim Einbinden ein Fehler aufgetreten ist, laden Sie [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) herunter, um die Clientausführungsumgebung zu überprüfen und die nicht kompatible Clientkonfiguration zu erkennen, die zu einem Zugriffsfehler für Azure Files führen würde. Zudem stellt das Tool Anleitungen zur Selbsthilfe bereit und erfasst die Diagnoseablaufverfolgungen.
+
+Drittens können Sie das Cmdlet Debug-AzStorageAccountAuth ausführen, um eine Reihe grundlegender Überprüfungen Ihrer AD-Konfiguration mit dem angemeldeten AD-Benutzer durchzuführen. Dieses Cmdlet wird von der [Version AzFilesHybrid v0.1.2+](https://github.com/Azure-Samples/azure-files-samples/releases) unterstützt. Sie müssen dieses Cmdlet mit einem AD-Benutzer ausführen, der über die Besitzerberechtigung für das Zielspeicherkonto verfügt.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und bietet Anleitungen zu Fehlern:
+1. CheckPort445Connectivity: Überprüfung, ob Port 445 für die SMB-Verbindung geöffnet ist
+2. CheckDomainJoined: Überprüfung, ob der Clientcomputer der AD-Domäne beigetreten ist
+3. CheckADObject: Bestätigung, dass der angemeldete Benutzer über eine gültige Darstellung in der AD-Domäne verfügt, der das Speicherkonto zugeordnet ist
+4. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten 
+5. CheckADObjectPasswordIsCorrect: Sicherstellen, dass das für die AD-Identität konfigurierte Kennwort, das das Speicherkonto darstellt, mit dem Speicherkonto-Kerb-Schlüssel übereinstimmt
+6. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist
+
+Wir arbeiten an der Erweiterung dieses Diagnose-Cmdlets, um eine bessere Anleitung zur Problembehandlung zu bieten.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

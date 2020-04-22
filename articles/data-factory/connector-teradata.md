@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418030"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
 > * [Version 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuelle Version](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Teradata Vantage zu kopieren. Der Artikel baut auf der [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf.
 
@@ -256,7 +258,7 @@ Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren
 
 | Szenario                                                     | Empfohlene Einstellungen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Vollständiges Laden aus großer Tabelle                                   | **Partitionsoption:** Hash <br><br/>Während der Ausführung erkennt Data Factory automatisch die PK-Spalte, wendet einen Hash darauf an und kopiert Daten anhand von Partitionen. |
+| Vollständiges Laden aus großer Tabelle                                   | **Partitionsoption:** Hash <br><br/>Während der Ausführung erkennt Data Factory automatisch die Primärindexspalte, wendet einen Hash darauf an und kopiert Daten anhand von Partitionen. |
 | Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage                 | **Partitionsoption:** Hash<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Hashpartitionierung an. Ohne Angabe erkennt Data Factory automatisch die PK-Spalte der Tabelle, die Sie im Teradata-Dataset angegeben haben.<br><br>Während der Ausführung ersetzt Data Factory `?AdfHashPartitionCondition` durch die Hashpartitionierungslogik und sendet die Daten an Teradata. |
 | Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage, wenn eine Integerspalte mit gleichmäßig verteilten Werten für die Bereichspartitionierung vorhanden ist | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an. Die Partitionierung kann auf der Grundlage der Spalte mit dem Datentyp „Integer“ erfolgen.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie anhand der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Data Factory ersetzt während der Ausführung `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` durch den tatsächlichen Spaltennamen und die Wertebereiche für die jeweilige Partition und sendet die Daten dann an Teradata. <br>Wenn Ihre Partitionsspalte „ID“ also beispielsweise mit der Untergrenze „1“ und der Obergrenze „80“ konfiguriert und paralleles Kopieren auf „4“ festgelegt ist, ruft Data Factory Daten anhand von vier Partitionen ab. Die ID-Bereiche sehen dann wie folgt aus: [1–20], [21–40], [41–60] und [61–80]. |
 

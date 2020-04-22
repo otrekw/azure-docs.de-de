@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348718"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255242"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -273,7 +273,7 @@ Um eine Rolle mit ausschließlichem Zugriff auf die Tabelle _SecurityBaseline_ z
 
  Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](../log-query/get-started-portal.md#understand-the-schema) aufgeführten Tabellen zu überprüfen.
 
- Sie können derzeit den Zugriff auf einzelne benutzerdefinierte Protokolle nicht gewähren, aber Sie können den Zugriff auf alle benutzerdefinierten Protokolle gewähren. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
+ Sie können keinen Zugriff auf einzelne benutzerdefinierte Protokolle gewähren, aber Sie können Zugriff auf alle benutzerdefinierten Protokolle gewähren. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Um eine Rolle mit ausschließlichem Zugriff auf die Tabelle _SecurityBaseline_ z
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Als Alternative können Sie den Zugriff auf Protokolle verwalten, indem Sie diese einer Azure-Ressource zuweisen und den Zugriff über das Ressource-Kontext-Paradigma verwalten. Um diese Methode verwenden zu können, müssen Sie die Ressourcen-ID einschließen, indem Sie sie im [x-ms-AzureResourceId](data-collector-api.md#request-headers)-Header angeben, wenn die Daten über die [HTTP-Datensammler-API](data-collector-api.md) in Log Analytics erfasst werden. Die Ressourcen-ID muss gültig sein, und für sie müssen Zugriffsregeln angewendet worden sein. Nachdem die Protokolle erfasst wurden, können Benutzer mit Lesezugriff darauf zugreifen, wie hier erläutert.
+
+Manchmal stammen benutzerdefinierte Protokolle aus Quellen, die nicht direkt einer bestimmten Ressource zugeordnet sind. Erstellen Sie in diesem Fall eine Ressourcengruppe, um nur den Zugriff auf diese Protokolle zu verwalten. Die Ressourcengruppe verursacht keine Kosten, bietet Ihnen aber eine gültige Ressourcen-ID zum Steuern des Zugriffs auf die benutzerdefinierten Protokolle. Wenn beispielsweise eine bestimmte Firewall benutzerdefinierte Protokolle sendet, erstellen Sie eine Ressourcengruppe namens „MyFireWallLogs“, und stellen Sie sicher, dass die API-Anforderungen die Ressourcen-ID von „MyFireWallLogs“ enthalten. So sind die Datensätze des Firewallprotokolls nur für Benutzer zugänglich, denen Zugriff auf „MyFireWallLogs“ gewährt wurde, oder für Benutzer mit Vollzugriff auf den Arbeitsbereich.          
 
 ### <a name="considerations"></a>Überlegungen
 

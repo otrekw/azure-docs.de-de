@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981425"
+ms.locfileid: "80998992"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -110,9 +110,9 @@ Die optimale Größe eines Pools hängt von den zusammengefassten Ressourcen ab,
 - Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder virtuellen Kernen) verwendet werden.
 - Maximale Speicherbytes, die von allen Datenbanken im Pool verwendet werden.
 
-Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md).
+Verfügbare Dienstebenen und Grenzwerte für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md).
 
-Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als eine einzelne Datenbank ist:
+Die folgenden Schritte können Ihnen dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als einzelne Datenbanken ist:
 
 1. Schätzen Sie die für den Pool benötigten eDTUs oder V-Kerne nach der folgenden Methode:
 
@@ -126,6 +126,10 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das vCore-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.
 4. Auf der [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie die kleinste Poolgröße, die größer ist als die Schätzung aus Schritt 3.
 5. Vergleichen Sie den Poolpreis aus Schritt 5 mit dem Preis der geeigneten Computegrößen für Einzeldatenbanken.
+
+> [!IMPORTANT]
+> Wenn sich die Anzahl von Datenbanken in einem Pool dem unterstützten Maximalwert nähert, informieren Sie sich unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](sql-database-elastic-pool-resource-management.md) über das mögliche weitere Vorgehen.
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Verwenden anderer SQL Datenbank-Funktionen mit Pools für elastische Datenbanken
 
@@ -218,7 +222,7 @@ Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im 
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.   
+   Daxko/CSI verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.    
 
 ## <a name="next-steps"></a>Nächste Schritte
 

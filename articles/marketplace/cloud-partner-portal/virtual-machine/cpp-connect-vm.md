@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278057"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272660"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Herstellen einer Verbindung mit Ihrem Azure-basierten virtuellen Computer
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
 
 In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit den virtuellen Computern (VMs) herstellen, die Sie in Azure erstellt haben, und sich daran anmelden.  Nachdem Sie die Verbindung erfolgreich hergestellt haben, können Sie so mit dem virtuellen Computer arbeiten, als ob Sie lokal auf dem Hostserver angemeldet wären. 
 
@@ -48,7 +51,7 @@ Zum Herstellen der Verbindung mit dem Linux-basierten virtuellen Computer benöt
 8. Klicken Sie auf **Öffnen**, um ein PuTTY-Terminal zu öffnen.  
 9. Geben Sie bei entsprechender Aufforderung den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein. 
 
-Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z.B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals).
+Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z. B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals).
 
 Weitere Informationen, z.B. zum Hinzufügen eines Desktops zu einer bereitgestellten Linux-VM, finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

@@ -3,19 +3,19 @@ title: 'Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK – S
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie einen Echobot mithilfe von Microsoft Bot Framework, stellen ihn in Azure bereit und registrieren ihn beim Bot Framework-Direct Line Speech-Kanal. Anschließend konfigurieren Sie eine Beispiel-Client-App für Windows, über die Sie mit dem Bot sprechen und die Antwort hören können.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397894"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399474"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -56,7 +56,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Windows 10-PC mit einem funktionierenden Mikrofon und Lautsprechern (oder Kopfhörer)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) oder höher
-- [.NET Core SDK](https://dotnet.microsoft.com/download) Version 2.1 oder höher
+- [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) oder höher
 - Ein Azure-Konto. [Registrieren Sie sich kostenlos](https://azure.microsoft.com/free/ai/).
 - Ein [GitHub](https://github.com/) -Konto
 - [Git für Windows](https://git-scm.com/download/win)
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um eine Speech-Ressource zu erstellen:
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) eine Speech-Ressource enthält:
 
-| Name | type  | Position |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
 
@@ -125,7 +125,7 @@ Im nächsten Schritt wird ein App Service-Plan erstellt. Mit einem App Service-P
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) zwei Ressourcen enthält:
 
-| Name | type  | Position |
+| Name | Typ  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
@@ -207,7 +207,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
 1. Überprüfen Sie hier, ob die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal drei Ressourcen enthält:
 
-| Name | type  | Position |
+| Name | Typ  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -248,7 +248,7 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollten nun vier Ressourcen angezeigt werden:
 
-| Name | type  | Position |
+| Name | Typ  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -276,19 +276,23 @@ Nun muss der Bot beim Direct Line Speech-Kanal registriert werden. Dieser Kanal 
 > [!TIP]
 > Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Direct Line Speech für einen Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Diese Seite enthält zusätzliche Informationen und bekannte Probleme.
 
-## <a name="build-the-windows-voice-assistant-client"></a>Erstellen des Windows-Sprachassistent-Clients
+## <a name="run-the-windows-voice-assistant-client"></a>Ausführen des Windows-Sprachassistent-Clients
 
-In diesem Schritt erstellen Sie den Windows-Sprachassistent-Client. Der Client ist eine WPF-App (Windows Presentation Foundation) in C#, in der mithilfe des [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) die Kommunikation mit dem Bot über den Direct Line Speech-Kanal verwaltet wird. Verwenden Sie ihn, um mit dem Bot zu interagieren und ihn zu testen, bevor Sie eine benutzerdefinierte Client-App schreiben.
+In diesem Schritt führen Sie den Windows-Sprachassistent-Client aus. Der Client ist eine WPF-App (Windows Presentation Foundation) in C#, in der mithilfe des [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) die Kommunikation mit dem Bot über den Direct Line Speech-Kanal verwaltet wird. Verwenden Sie ihn, um mit dem Bot zu interagieren und ihn zu testen, bevor Sie eine benutzerdefinierte Client-App schreiben. Es handelt sich um einen Open-Source-Client, deshalb können Sie entweder die ausführbare Datei herunterladen und ausführen oder ihn selbst kompilieren.
 
 Der Windows-Sprachassistent-Client verfügt über eine einfache Benutzeroberfläche, über die Sie die Verbindung mit dem Bot konfigurieren und die Textunterhaltung sowie Bot Framework-Aktivitäten im JSON-Format und adaptive Karten anzeigen können. Außerdem wird die Verwendung von benutzerdefinierten Schlüsselwörtern unterstützt. Über diesen Client sprechen Sie mit dem Bot und erhalten eine Sprachantwort.
 
 Stellen Sie sicher, dass das Mikrofon und die Lautsprecher aktiviert sind und funktionieren, bevor Sie fortfahren.
 
 1. Navigieren Sie zum GitHub-Repository für den [Windows-Sprachassistent-Client](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md).
-2. Befolgen Sie die Anweisungen, um das Repository zu klonen, das Projekt zu erstellen, den Client zu konfigurieren und den Client zu starten.
-3. Klicken Sie auf **Erneut verbinden**, und vergewissern Sie sich, dass die Meldung **Press the mic button, or type to start talking to your bot** (Klicken Sie auf die Schaltfläche für das Mikrofon, oder geben Sie Text ein, um mit dem Bot zu sprechen) angezeigt wird.
-4. Testen wir den Bot. Klicken Sie auf die Schaltfläche für das Mikrofon, und sprechen Sie ein paar Worte auf Englisch. Der erkannte Text wird angezeigt, während Sie sprechen. Wenn Sie aufhören zu sprechen, antwortet der Bot mit eigener Stimme und sagt „Echo“, gefolgt von den erkannten Wörtern.
-5. Sie können auch über Text mit dem Bot kommunizieren. Geben Sie den Text einfach auf der unteren Leiste ein. 
+1. Befolgen Sie die Anweisungen zum Erstellen, um entweder
+   * eine ZIP-Datei mit der ausführbaren Datei herunterzuladen oder
+   * die ausführbare Datei selbst zu erstellen, indem Sie das Repository klonen und das Projekt kompilieren.
+
+1. Starten Sie die Clientanwendung, und konfigurieren Sie sie.
+1. Klicken Sie auf **Erneut verbinden**, und vergewissern Sie sich, dass die Meldung **Press the mic button, or type to start talking to your bot** (Klicken Sie auf die Schaltfläche für das Mikrofon, oder geben Sie Text ein, um mit dem Bot zu sprechen) angezeigt wird.
+1. Testen wir den Bot. Klicken Sie auf die Schaltfläche für das Mikrofon, und sprechen Sie ein paar Worte auf Englisch. Der erkannte Text wird angezeigt, während Sie sprechen. Wenn Sie aufhören zu sprechen, antwortet der Bot mit eigener Stimme und sagt „Echo“, gefolgt von den erkannten Wörtern.
+1. Sie können auch über Text mit dem Bot kommunizieren. Geben Sie den Text einfach auf der unteren Leiste ein. 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Behandeln von Problemen mit dem Windows-Sprachassistent-Client
 
@@ -425,7 +429,7 @@ Nachdem Sie die erforderliche Änderung an dem Bot vorgenommen haben, wird er im
 2. Ihre vorherige Bereitstellungskonfiguration wurde bereits als Standardkonfiguration geladen. Klicken Sie einfach neben **EchoBot20190805125647 - Web Deploy** auf **Veröffentlichen**.
 3. Die Meldung **Veröffentlichung erfolgreich** wird im Visual Studio-Ausgabefenster angezeigt, und eine Webseite mit der Meldung „Your bot is ready!“ (Ihr Bot wurde erstellt) wird geöffnet.
 4. Öffnen Sie die App für den Windows-Sprachassistent-Client, klicken Sie auf die Schaltfläche für Einstellungen (Zahnradsymbol oben rechts), und vergewissern Sie sich, dass immer noch `de-de` im Feld „Sprache“ angegeben ist.
-5. Befolgen Sie die Anweisungen unter [Erstellen des Windows-Sprachassistent-Clients](#build-the-windows-voice-assistant-client), um eine Verbindung mit dem neu bereitgestellten Bot herzustellen, in der neuen Sprache zu sprechen und die Antwort des Bots in dieser Sprache mit einer neuen Stimme zu hören.
+5. Befolgen Sie die Anweisungen unter [Ausführen des Windows-Sprachassistent-Clients](#run-the-windows-voice-assistant-client), um eine Verbindung mit dem neu bereitgestellten Bot herzustellen, in der neuen Sprache zu sprechen und die Antwort des Bots in dieser Sprache mit einer neuen Stimme zu hören.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

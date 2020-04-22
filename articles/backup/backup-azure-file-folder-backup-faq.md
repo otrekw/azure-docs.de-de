@@ -3,12 +3,12 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233914"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254749"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -22,7 +22,7 @@ Der neueste MARS-Agent, der beim Sichern von Windows Server-Computern, System Ce
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Wie lange gelten Tresoranmeldeinformationen?
 
-Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei mit den Anmeldeinformationen abläuft, laden Sie die Datei erneut vom Azure-Portal herunter.
+Tresoranmeldeinformationen laufen nach 10 Tagen ab. Wenn die Datei mit den Anmeldeinformationen abläuft, laden Sie die Datei erneut vom Azure-Portal herunter.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Von welchen Laufwerken kann ich Dateien und Ordner sichern?
 
@@ -57,6 +57,10 @@ Die Sicherungsdaten werden an das Rechenzentrum des Tresors gesendet, bei dem de
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Unterstützt der MARS-Agent die Deduplizierung von Windows Server 2012?
 
 Ja. Der MARS-Agent konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Tresor.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Benötige ich Administratorberechtigungen zum Installieren und Konfigurieren des MARS-Agents?
+
+Ja, die Installation des MARS-Agents und die Konfiguration von Sicherungen mithilfe der MARS-Konsole erfordern, dass der Benutzer ein lokaler Administrator auf dem geschützten Server ist.
 
 ## <a name="manage-backups"></a>Verwalten von Sicherungen
 
@@ -181,7 +185,6 @@ Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben h
 | --- | --- | --- |
 | Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** ** > Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
 

@@ -2,7 +2,6 @@
 title: Integrationslaufzeit
 description: Enthält Informationen zur Integrationslaufzeit in Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.author: abnarain
 author: nabhishek
 manager: shwang
@@ -12,14 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: 4077e1e00b606480ec93feacbad3c841c0de1ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336175"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418380"
 ---
-# <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
+# <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
 
 - **Datenfluss**: Ausführen eines [Datenflusses](concepts-data-flow-overview.md) in einer verwalteten Azure-Computeumgebung.  
@@ -27,10 +29,11 @@ Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Co
 - **Aktivitätsverteilung:**  Dient zum Verteilen und Überwachen von Transformationsaktivitäten, die in vielen verschiedenen Computediensten wie Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL-Datenbank, SQL Server und vielen weiteren ausgeführt werden.
 - **SSIS-Paketausführung:** Dient zum nativen Ausführen von SSIS-Paketen (SQL Server Integration Services) in einer verwalteten Azure-Computeumgebung.
 
-In Data Factory wird mit einer Aktivität eine durchzuführende Aktion definiert. Mit einem verknüpften Dienst wird ein Zieldatenspeicher oder ein Computedienst definiert. Eine Integrationslaufzeit stellt die Brücke zwischen der Aktivität und verknüpften Diensten dar.  Vom verknüpften Dienst oder der Aktivität wird darauf verwiesen, und sie stellt die Computeumgebung bereit, in der die Aktivität entweder ausgeführt wird oder aus der sie verteilt wird. Auf diese Weise kann die Aktivität in der Region durchgeführt werden, die dem Zieldatenspeicher bzw. dem Computedienst am nächsten liegt, und es kann die höchste Leistung erzielt werden, während gleichzeitig die Anforderungen an die Sicherheit und Konformität erfüllt werden.
+In Data Factory wird mit einer Aktivität eine durchzuführende Aktion definiert. Mit einem verknüpften Dienst wird ein Zieldatenspeicher oder ein Computedienst definiert. Eine Integrationslaufzeit stellt die Brücke zwischen der Aktivität und verknüpften Diensten dar.  Sie wird vom verknüpften Dienst oder der Aktivität referenziert und stellt die Computeumgebung bereit, in der die Aktivität entweder ausgeführt wird oder aus der sie verteilt wird. Auf diese Weise kann die Aktivität in der Region durchgeführt werden, die dem Zieldatenspeicher bzw. dem Computedienst am nächsten liegt, und es kann die höchste Leistung erzielt werden, während gleichzeitig die Anforderungen an die Sicherheit und Konformität erfüllt werden.
 
 ## <a name="integration-runtime-types"></a>Integrationslaufzeit-Typen
-Data Factory verfügt über drei Integrationslaufzeit-Typen. Sie sollten den Typ wählen, der die Anforderungen an die gewünschten Datenintegrationsfunktionen und die Netzwerkumgebung am besten erfüllt.  Diese drei Typen lauten:
+
+Data Factory bietet Integration Runtime-Typen. Wählen Sie den Typ aus, der die gewünschten Anforderungen an die Datenintegrationsfunktionen und die Netzwerkumgebung am besten erfüllt.  Diese drei Typen lauten:
 
 - Azure
 - Selbstgehostet
@@ -49,14 +52,16 @@ Im folgenden Diagramm ist dargestellt, wie die unterschiedlichen Integrationslau
 ![Verschiedene Integrationslaufzeit-Typen](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
-Die Azure-Integrationslaufzeit ermöglicht Folgendes:
+
+Eine Azure Integration Runtime bietet folgende Möglichkeiten:
 
 - Ausführen von Datenflüssen in Azure 
 - Ausführen von Kopieraktivitäten zwischen Clouddatenspeichern
 - Bereitstellen der folgenden Transformationsaktivitäten im öffentlichen Netzwerk: Databricks Notebook-/ Jar-/ Python-Aktivität, HDInsight Hive-Aktivität, HDInsight Pig-Aktivität, HDInsight MapReduce-Aktivität, HDInsight Spark-Aktivität, HDInsight-Streamingaktivität, Machine Learning-Batchausführungsaktivität, Machine Learning-Ressourcenaktualisierungsaktivitäten, Aktivität „Gespeicherte Prozedur“, U-SQL-Aktivität für Data Lake Analytics, benutzerdefinierte .NET-Aktivität, Webaktivität, Lookup-Aktivität und Aktivität „Metadaten abrufen“.
 
 ### <a name="azure-ir-network-environment"></a>Azure-Integrationslaufzeit: Netzwerkumgebung
-Azure Integration Runtime unterstützt die Verbindungsherstellung mit Datenspeichern und Computediensten mit öffentlich zugänglichen Endpunkten. Verwenden Sie eine selbstgehostete Integrationslaufzeit für die virtuelle Azure-Netzwerkumgebung.
+
+Die Azure Integration Runtime unterstützt die Herstellung von Verbindungen mit Datenspeichern und Computediensten mit öffentlich zugänglichen Endpunkten. Verwenden Sie eine selbstgehostete Integrationslaufzeit für die virtuelle Azure-Netzwerkumgebung.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure-Integrationslaufzeit: Computeressource und Skalierung
 Die Azure-Integrationslaufzeit stellt in Azure eine vollständig verwaltete, serverlose Computeressource bereit.  Sie müssen sich keine Gedanken um die Infrastrukturbereitstellung, die Softwareinstallation, das Patchen oder die Kapazitätsskalierung machen.  Darüber hinaus zahlen Sie nur für die tatsächliche Nutzungsdauer.
@@ -65,12 +70,13 @@ Mit der Azure-Integrationslaufzeit wird die native Computeressource zum sicheren
 
 Die Aktivitätsverteilung ist ein einfacher Vorgang zum Weiterleiten der Aktivität an den Zielcomputedienst. Deshalb muss die Computegröße bei diesem Szenario nicht zentral hochskaliert werden.
 
-Informationen zur Erstellung und Konfiguration einer Azure IR finden Sie in den Anleitungen unter „Gewusst wie: Erstellen und Konfigurieren der Azure IR“. 
+Informationen zum Erstellen und Konfigurieren einer Azure IR finden Sie in den entsprechenden Leitfäden zur jeweiligen Vorgehensweise. 
 
 > [!NOTE] 
 > Azure Integration Runtime verfügt über Eigenschaften, die mit der Datenflussruntime in Zusammenhang stehen, die die zugrunde liegende Computeinfrastruktur definiert, auf der die Datenflüsse ausgeführt würden. 
 
 ## <a name="self-hosted-integration-runtime"></a>Selbstgehostete Integrationslaufzeit
+
 Eine selbstgehostete Integrationslaufzeit ermöglicht Folgendes:
 
 - Ausführen einer Kopieraktivität zwischen einem Clouddatenspeicher und einem Datenspeicher im privaten Netzwerk.
@@ -83,20 +89,25 @@ Eine selbstgehostete Integrationslaufzeit ermöglicht Folgendes:
 > Die Java Runtime Environment (JRE) ist eine Abhängigkeit der selbstgehosteten IR. Stellen Sie sicher, dass die JRE auf dem gleichen Host installiert ist.
 
 ### <a name="self-hosted-ir-network-environment"></a>Selbstgehostete Integrationslaufzeit: Netzwerkumgebung
-Wenn Sie die Datenintegration auf sichere Weise in einer privaten Netzwerkumgebung durchführen möchten, die nicht über eine direkte Sichtlinie aus der öffentlichen Cloudumgebung verfügt, können Sie eine selbstgehostete IR in der lokalen Umgebung hinter Ihrer Unternehmensfirewall oder in einem virtuellen privaten Netzwerk installieren.  Die selbstgehostete Integrationslaufzeit stellt nur ausgehende HTTP-basierte Verbindungen in das offene Internet her.
+
+Wenn Sie die Datenintegration auf sichere Weise in einer privaten Netzwerkumgebung durchführen möchten, die nicht über eine direkte Sichtverbindung aus der öffentlichen Cloudumgebung verfügt, können Sie eine selbstgehostete IR in der lokalen Umgebung hinter Ihrer Unternehmensfirewall oder in einem virtuellen privaten Netzwerk installieren.  Die selbstgehostete Integrationslaufzeit stellt nur ausgehende HTTP-basierte Verbindungen in das offene Internet her.
 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Selbstgehostete Integrationslaufzeit: Computeressource und Skalierung
-Die selbstgehostete Integrationslaufzeit muss auf einem lokalen Computer oder einem virtuellen Computer in einem privaten Netzwerk installiert werden. Derzeit wird nur das Ausführen der selbstgehosteten Integrationslaufzeit auf einem Windows-Betriebssystem unterstützt.  
+
+Installieren Sie die selbstgehostete IR auf einem lokalen Computer oder einem virtuellen Computer in einem privaten Netzwerk. Derzeit wird nur das Ausführen der selbstgehosteten Integrationslaufzeit auf einem Windows-Betriebssystem unterstützt.  
 
 Zur Erzielung von Hochverfügbarkeit und Skalierbarkeit können Sie die selbstgehostete Integrationslaufzeit aufskalieren, indem Sie die logische Instanz mehreren lokalen Computern im Aktiv-Aktiv-Modus zuordnen.  Ausführlichere Informationen finden Sie in den Anleitungen im Artikel [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md).
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS-Integrationslaufzeit
+
 Für die Durchführung von Lift & Shift-Vorgängen für vorhandene SSIS-Workloads können Sie eine Azure-SSIS-Integrationslaufzeit erstellen, um SSIS-Pakete nativ auszuführen.
 
 ### <a name="azure-ssis-ir-network-environment"></a>Azure-SSIS-Integrationslaufzeit: Netzwerkumgebung
+
 Die Azure-SSIS--Integrationslaufzeit kann entweder im öffentlichen oder im privaten Netzwerk bereitgestellt werden.  Der lokale Datenzugriff wird unterstützt, indem Azure-SSIS-IR mit einem virtuellen Netzwerk verknüpft wird, für das eine Verbindung mit Ihrem lokalen Netzwerk besteht.  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS-Integrationslaufzeit: Computeressource und Skalierung
+
 Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder mit einer verwalteten Instanz bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung hochskalieren, indem Sie die Knotengröße angeben und aufskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
 
 Weitere Informationen finden Sie in den Anleitungen unter „Gewusst wie: Erstellen und Konfigurieren von Azure-SSIS-Integrationslaufzeit“.  Nach der Erstellung können Sie Ihre vorhandenen SSIS-Pakete mit nur wenigen oder auch ganz ohne Änderungen bereitstellen und verwalten, indem Sie vertraute Tools wie SQL Server Data Tools (SSDT) und SQL Server Management Studio (SSMS) verwenden – genauso wie bei der lokalen Nutzung von SSIS.
@@ -110,17 +121,12 @@ Weitere Informationen zur Azure-SSIS-Laufzeit finden Sie in den folgenden Artike
 - [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk:](join-azure-ssis-integration-runtime-virtual-network.md). Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-IR mit einem virtuellen Azure-Netzwerk. Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des virtuellen Netzwerks, damit die Azure-SSIS-IR dem virtuellen Netzwerk beitreten kann. 
 
 ## <a name="integration-runtime-location"></a>Ort der Integrationslaufzeit
+
 Am Data Factory-Standort werden die Metadaten der Data Factory gespeichert, und von diesem Standort wird auch die Auslösung der Pipeline initiiert. Eine Data Factory kann währenddessen auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten. Dieses Verhalten wird durch die [global verfügbare Integrationslaufzeit](https://azure.microsoft.com/global-infrastructure/services/) realisiert, um für Datenkonformität, Effizienz und geringere Kosten für ausgehenden Netzwerkdatenverkehr zu sorgen.
 
 Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinstanz definiert. Somit ist dies auch der Standort, an dem die Datenverschiebung, Aktivitätsverteilung und SSIS-Paketausführung durchgeführt werden. Der Integrationslaufzeit-Standort kann sich vom Standort der Data Factory unterscheiden, zu der er gehört. 
 
 ### <a name="azure-ir-location"></a>Azure-Integrationslaufzeit: Standort
-Wenn Sie für eine Azure-Integrationslaufzeit einen bestimmten Standort festlegen, werden Datenverschiebungen und Aktivitätsverteilungen in der entsprechenden Region durchgeführt. 
-
->[!TIP]
->Wenn Ihre Daten strengen Complianceanforderungen unterliegen und ein bestimmtes geografisches Gebiet nicht verlassen dürfen, können Sie explizit eine Azure-Integrationslaufzeit in einer bestimmten Region erstellen und den verknüpften Dienst mithilfe der ConnectVia-Eigenschaft auf diese Integrationslaufzeit verweisen. Ein Beispiel: Angenommen, Sie möchten Daten aus einem Blob in der Region „Vereinigtes Königreich, Süden“ in SQL Data Warehouse in der Region „Vereinigtes Königreich, Süden“ kopieren und dabei sicherstellen, dass die Daten das Vereinigte Königreich nicht verlassen. In diesem Fall können Sie eine Azure-Integrationslaufzeit in der Region „Vereinigtes Königreich, Süden“ erstellen und beide verknüpften Dienste mit dieser Integrationslaufzeit verknüpfen.
-
-Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (Standardeinstellung) gilt Folgendes: 
 
 - Bei der Kopieraktivität versucht ADF, den Standort Ihres Senkendatenspeichers automatisch zu erkennen, und verwendet dann die Integrationslaufzeit entweder in derselben Region (falls verfügbar) oder in der nächstgelegenen Region im selben geografischen Gebiet. Wenn die Region des Senkendatenspeichers nicht erkannt werden kann, wird alternativ die Integrationslaufzeit in der Data Factory-Region verwendet.
 
@@ -129,7 +135,9 @@ Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (
   - Wenn ADF beim Kopieren von Daten in ein Azure-Blob in „USA, Westen“ erfolgreich erkannt hat, dass sich das Blob in „USA, Westen“ befindet, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Westen“ ausgeführt. Schlägt die Regionserkennung fehl, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
   - Wenn beim Kopieren von Daten in Salesforce die Region nicht erkannt werden kann, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
 
-- ADF verwendet die IR in der Data Factory-Region für die Ausführung der Aktivitäten Lookup/GetMetadata/Delete (auch als Pipelineaktivitäten bezeichnet), die Bereitstellung von Transformationsaktivitäten (auch als externe Aktivitäten bezeichnet) und die Erstellung von Vorgängen (Verbindung testen, Ordner- und Tabellenliste durchsuchen, Daten als Vorschau anzeigen).
+- Bei einer Kopieraktivität versucht ADF, den Senken- und Quelldatenspeicher automatisch zu erkennen und den bestmöglichen Speicherort auszuwählen – entweder in der gleichen Region (sofern verfügbar) oder in der nächstgelegenen Region in der gleichen Geografie. Ist keine Erkennung möglich, wird alternativ die Data Factory-Region verwendet.
+
+- Für Vorgänge zur Ausführung von Lookup-/GetMetadata-/Delete-Aktivitäten (auch als Pipelineaktivitäten bezeichnet), zur Verteilung von Transformationsaktivitäten (auch als externe Aktivitäten bezeichnet) und zur Erstellung (Verbindung testen, Ordner- und Tabellenliste durchsuchen, Daten als Vorschau anzeigen) verwendet ADF die IR in der Data Factory-Region.
 
 - Für den Datenfluss verwendet ADF die IR in der Data Factory-Region. 
 
@@ -139,11 +147,13 @@ Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (
 In der Überwachungsansicht für Pipelineaktivitäten (auf der Benutzeroberfläche) oder über die Nutzlast für die Aktivitätsüberwachung können Sie überwachen, welcher Integrationslaufzeit-Standort bei der Aktivitätsausführung verwendet wird.
 
 ### <a name="self-hosted-ir-location"></a>Selbstgehostete Integrationslaufzeit: Standort
+
 Die selbstgehostete Integrationslaufzeit wird logisch unter der Data Factory registriert, und die Computekomponente, mit der die Funktionen unterstützt werden, wird von Ihnen bereitgestellt. Aus diesem Grund ist für die selbstgehostete Integrationslaufzeit keine explizite Standorteigenschaft vorhanden. 
 
 Bei Verwendung zum Durchführen der Datenverschiebung extrahiert die selbstgehostete Integrationslaufzeit Daten aus der Quelle und schreibt sie an das Ziel.
 
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS-Integrationslaufzeit: Standort
+
 Die Auswahl des richtigen Standorts für Ihre Azure-SSIS-Integrationslaufzeit ist entscheidend, um für Ihre ETL-Workflows (Extrahieren-Transformieren-Laden) eine hohe Leistung zu erzielen.
 
 - Der Standort der Azure-SSIS-Integrationslaufzeit muss nicht dem Standort Ihrer Data Factory entsprechen. Es sollte aber derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz sein, auf dem die SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
@@ -160,7 +170,7 @@ Im folgenden Diagramm sind die Standorteinstellungen von Data Factory und die da
 
 Für die Kopieraktivität sind hierbei verknüpfte Quellen- und Senkendienste zum Definieren der Datenflussrichtung erforderlich. Anhand der folgenden Logik wird ermittelt, welche Integrationslaufzeit-Instanz zum Durchführen des Kopiervorgangs verwendet wird: 
 
-- **Kopieren zwischen zwei Clouddatenquellen**: Wenn sowohl der verknüpfte Quelldienst als auch der verknüpfte Senkendienst die Azure-Integrationslaufzeit nutzt, verwendet ADF die regionale Azure-Integrationslaufzeit (sofern angegeben) oder bestimmt automatisch einen Ort der Azure-Integrationslaufzeit, sofern Sie wie unter [Ort der Integrationslaufzeit](#integration-runtime-location) beschrieben die Integrationslaufzeit mit automatischer Auflösung (Standardeinstellung) ausgewählt haben.
+- **Kopieren zwischen zwei Clouddatenquellen**: Wenn sowohl der verknüpfte Quelldienst als auch der verknüpfte Senkendienst die Azure IR nutzt, verwendet ADF die regionale Azure IR (sofern angegeben) oder bestimmt automatisch einen Speicherort der Azure IR, sofern Sie wie unter [Ort der Integrationslaufzeit](#integration-runtime-location) beschrieben die IR mit automatischer Auflösung (Standardeinstellung) ausgewählt haben.
 - **Kopieren zwischen einer Clouddatenquelle und einer Datenquelle im privaten Netzwerk**: Wenn entweder der verknüpfte Quellen- oder Senkendienst auf eine selbstgehostete Integrationslaufzeit zeigt, wird die Kopieraktivität unter dieser selbstgehosteten Integrationslaufzeit ausgeführt.
 - **Kopieren zwischen zwei Datenquellen im privaten Netzwerk**: Sowohl der verknüpfte Quelldienst als auch der verknüpfte Senkendienst muss auf die gleiche Integrationslaufzeit verweisen, und diese Integrationslaufzeit wird zum Ausführen der Kopieraktivität verwendet.
 
@@ -177,6 +187,7 @@ Jede externe Transformationsaktivität, die eine externe Compute-Engine nutzt, v
 Datenflussaktivitäten werden auf der ihnen zugeordneten Azure Integration Runtime ausgeführt. Der für Datenflüsse genutzte Spark-Computedienst wird durch die Datenflusseigenschaften in Ihrer Azure Integration Runtime bestimmt und vollständig von ADF verwaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen einer Azure Integration Runtime-Instanz](create-azure-integration-runtime.md)

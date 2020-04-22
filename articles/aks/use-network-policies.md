@@ -1,15 +1,16 @@
 ---
-title: Sichere Pods mit Richtlinien für Netzwerke in Azure Kubernetes Service (AKS)
+title: Schützen des Datenverkehrs zwischen Pods mit einer Netzwerkrichtlinie
+titleSuffix: Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei Pods mittels Kubernetes-Netzwerkrichtlinien in Azure Kubernetes Service (AKS) schützen.
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592865"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392610"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -81,6 +82,8 @@ Das folgende Beispielskript:
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
     * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`. Hinweis: Calico könnte entweder mit `--network-plugin azure` oder mit `--network-plugin kubenet` verwendet werden.
+
+Beachten Sie, dass Sie anstelle eines Dienstprinzipals eine verwaltete Identität für Berechtigungen verwenden können. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Sie können die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME* ersetzen:
 
@@ -172,7 +175,7 @@ wget -qO- http://backend
 
 Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,14 +207,15 @@ spec:
   ingress: []
 ```
 
+Navigieren Sie zu [https://shell.azure.com](https://shell.azure.com), um Azure Cloud Shell in Ihrem Browser zu öffnen.
+
 Wenden Sie die Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
 ### <a name="test-the-network-policy"></a>Testen der Netzwerkrichtlinie
-
 
 Jetzt prüfen wir, ob Sie die NGINX-Webseite auf dem Back-End-Pod verwenden können. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
@@ -222,8 +226,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -264,7 +270,7 @@ spec:
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -282,7 +288,7 @@ wget -qO- http://backend
 
 Da die Eingangsregel Datenverkehr mit Pods zulässt, die die Bezeichnungen *app: webapp,role: frontend* haben, wird der Datenverkehr vom Front-End-Pod zugelassen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -307,8 +313,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -343,7 +351,7 @@ wget -qO- http://backend.development
 
 Da die Bezeichnungen für den Pod mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmen, wird der Datenverkehr zugelassen. Die Netzwerkrichtlinie beachtet nicht die Namespaces, sondern nur die Podbezeichnungen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -387,7 +395,7 @@ In komplexeren Beispielen können Sie mehrere Eingangsregeln definieren, z. B. 
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -402,8 +410,10 @@ kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend -
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr nun ablehnt:
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
@@ -427,7 +437,7 @@ wget -qO- http://backend
 
 Der Datenverkehr wird zugelassen, da der Pod in dem Namespace geplant ist, der mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmt. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
