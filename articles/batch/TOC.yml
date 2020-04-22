@@ -85,8 +85,6 @@
           href: batch-aad-auth-management.md
         - name: Sicherer Zugriff auf Key Vault mit Batch
           href: credential-access-key-vault.md
-    - name: Verwenden von Anwendungspaketen
-      href: batch-application-packages.md
     - name: Kopieren von Dateien und Anwendungen auf Poolknoten
       items:
         - name: Kopieren von Anwendungen und Daten auf Poolknoten

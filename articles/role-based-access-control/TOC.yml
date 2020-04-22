@@ -11,7 +11,7 @@
   items:
     - name: Anzeigen des Zugriffs für einen Benutzer
       href: check-access.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 'Gewähren des Zugriffs für einen Benutzer: Portal'
       href: quickstart-assign-role-user-portal.md
@@ -28,11 +28,11 @@
       href: tutorial-custom-role-cli.md
 - name: Konzepte
   items:
-    - name: PIM für Azure-Ressourcen
-      href: pim-azure-resource.md
+    - name: Bewährte Methoden
+      href: best-practices.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Auflisten der Rollendefinitionen
       items:
