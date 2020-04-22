@@ -96,14 +96,16 @@
       href: how-to-assess.md
     - name: Bereitstellen einer Azure Migrate-Appliance
       items:
-        - name: Bereitstellen einer Appliance für VMware (OVA)
+        - name: Bereitstellen einer Appliance mit einer Vorlage (VMware)
           href: how-to-set-up-appliance-vmware.md
-        - name: Bereitstellen einer Appliance für Hyper-V (VHD)
+        - name: Bereitstellen einer Appliance mit einer Vorlage (Hyper-V)
           href: how-to-set-up-appliance-hyper-v.md
-        - name: Bereitstellen einer Appliance für VMware/Hyper-V (Skript)
+        - name: Bereitstellen einer Appliance mit einem Skript (VMware/Hyper-V)
           href: deploy-appliance-script.md
         - name: Bereitstellen einer Appliance für physische Server
           href: how-to-set-up-appliance-physical.md
+        - name: Bereitstellen einer Appliance in Azure Government
+          href: deploy-appliance-script-government.md
     - name: Begrenzen des Ermittlungsbereichs für VMware-VMS
       href: set-discovery-scope.md
     - name: Erkunden von Anwendungen/Rollen/Features

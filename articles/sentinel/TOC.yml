@@ -9,7 +9,7 @@
       href: quickstart-onboard.md
     - name: Einblick in Warnungen
       href: quickstart-get-visibility.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erkennen von Bedrohungen mithilfe integrierter Analysen
       href: tutorial-detect-threats-built-in.md
@@ -27,7 +27,7 @@
       href: roles.md
     - name: Erweiterte mehrstufige Angriffserkennung
       href: fusion.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Datenquellen
       href: connect-data-sources.md
@@ -87,7 +87,7 @@
             - name: CEF-basierte Lösungen
               href: connect-common-event-format.md
               items:
-                - name: "SCHRITT\_1: Bereitstellen des Agents"
+                - name: "SCHRITT\_1: Bereitstellen der Protokollweiterleitung"
                   href: connect-cef-agent.md
                 - name: "SCHRITT\_2: Konfigurieren Ihrer Sicherheitslösung"
                   href: connect-cef-solution-config.md

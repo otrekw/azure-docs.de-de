@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: 'Passthrough-Authentifizierung: häufig gestellte Fragen'
           href: how-to-connect-pta-faq.md
+        - name: Deaktivieren von PTA bei Verwendung von „Nicht konfigurieren“ für Azure AD Connect
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Verwalten von Verbunddiensten
       items:
         - name: Verwalten des Verbunds mit Azure AD Connect
