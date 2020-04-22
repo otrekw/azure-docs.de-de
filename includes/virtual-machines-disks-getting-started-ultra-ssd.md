@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116946"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008631"
 ---
 Azure Ultra-Datenträger bieten hohen Durchsatz, einen hohen IOPS-Wert und einen Datenträgerspeicher mit durchgängig geringer Latenz für virtuelle Azure IaaS-Computer (VMs). Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Ein Hauptvorteil von Ultra-Datenträgern ist die Möglichkeit zum dynamischen Ändern der SSD-Leistung zusammen mit Ihren Workloads, ohne dass Sie Ihre VMs neu starten müssen. Ultra-Datenträger eignen sich für datenintensive Workloads wie SAP HANA, führende Datenbanksysteme und Workloads mit vielen Transaktionen.
 
@@ -23,9 +23,11 @@ Azure Ultra-Datenträger bieten hohen Durchsatz, einen hohen IOPS-Wert und einen
 
 ## <a name="determine-vm-size-and-region-availability"></a>Ermitteln der VM-Größe und Regionsverfügbarkeit
 
+### <a name="vms-using-availability-zones"></a>Virtuelle Computer mit Verfügbarkeitszonen
+
 Sie müssen ermitteln, in welcher Verfügbarkeitszone Sie sich befinden, um Ultra-Datenträger verwenden zu können. Nicht jede Region unterstützt jede VM-Größe bei Ultra-Datenträgern. Führen Sie einen der folgenden Befehle aus, um zu ermitteln, ob Ihre Region, Zone und VM-Größe Ultra-Datenträger unterstützt. Ersetzen Sie dazu die Werte für **region**, **vmSize** und **subscription** entsprechend:
 
-Über die CLI:
+#### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-Mit PowerShell:
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -57,6 +59,55 @@ Behalten Sie den Wert für **Zones** bei. Er steht für Ihre Verfügbarkeitszone
 > Kommt vom Befehl keine Antwort, wird die ausgewählte VM-Größe für Ultra-Datenträger in der ausgewählten Region nicht unterstützt.
 
 Nachdem Sie nun wissen, in welcher Zone die Bereitstellung erfolgen muss, führen Sie die Bereitstellungsschritte in diesem Artikel aus, um entweder einen virtuellen Computer mit einem zugeordneten Ultra-Datenträger bereitzustellen oder einem vorhandenen virtuellen Computer einen Ultra-Datenträger zuzuordnen.
+
+### <a name="vms-with-no-redundancy-options"></a>Virtuelle Computer ohne Redundanzoptionen
+
+Die in der Region „USA, Westen“ bereitgestellten Disk Ultra-Datenträger müssen vorerst ohne Redundanzoptionen bereitgestellt werden. Jedoch befindet sich möglicherweise nicht jede Datenträgergröße, die Disk Ultra-Datenträger unterstützt, in dieser Region. Sie können einen der folgenden Codeausschnitte verwenden, um zu bestimmen, welche in der Region „USA, Westen“ Disk Ultra-Datenträger unterstützen. Stellen Sie sicher, dass Sie zuerst die Werte `vmSize` und `subscription` ersetzen:
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+Die Antwort ist ähnlich der folgenden Form. `UltraSSDAvailable   True` gibt an, ob die Größe des virtuellen Computers Disk Ultra-Datenträger in dieser Region unterstützt.
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Bereitstellen eines Ultra-Datenträgers über Azure Resource Manager
 
@@ -151,6 +202,18 @@ Ersetzen Sie die Variablen **$vmname**, **$rgname**, **$diskname**, **$location*
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Aktivieren der Disk Ultra-Datenträgerkompatibilität auf einem vorhandenen virtuellen Computer
+
+Wenn Ihre VM die in [Umfang und Einschränkungen für allgemeine Verfügbarkeit](#ga-scope-and-limitations) genannten Anforderungen erfüllt und sich in der [geeigneten Zone für Ihr Konto](#determine-vm-size-and-region-availability) befindet, können Sie auf Ihrem virtuellen Computer die Disk Ultra-Datenträgerkompatibilität aktivieren.
+
+Sie müssen den virtuellen Computer beenden, um die Disk Ultra-Datenträgerkompatibilität zu aktivieren. Nachdem Sie den virtuellen Computer beendet haben, können Sie die Kompatibilität aktivieren, einen Disk Ultra-Datenträger anschließen und dann den virtuellen Computer neu starten:
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
+```
+
 ### <a name="create-an-ultra-disk-using-cli"></a>Erstellen eines Ultra-Datenträgers über CLI
 
 Nachdem Sie nun über eine VM verfügen, der Ultra-Datenträger zugeordnet werden können, können Sie einen Ultra-Datenträger erstellen und diesen der VM zuordnen.
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Aktivieren der Disk Ultra-Datenträgerkompatibilität auf einem vorhandenen virtuellen Computer
+
+Wenn Ihre VM die in [Umfang und Einschränkungen für allgemeine Verfügbarkeit](#ga-scope-and-limitations) genannten Anforderungen erfüllt und sich in der [geeigneten Zone für Ihr Konto](#determine-vm-size-and-region-availability) befindet, können Sie auf Ihrem virtuellen Computer die Disk Ultra-Datenträgerkompatibilität aktivieren.
+
+Sie müssen den virtuellen Computer beenden, um die Disk Ultra-Datenträgerkompatibilität zu aktivieren. Nachdem Sie den virtuellen Computer beendet haben, können Sie die Kompatibilität aktivieren, einen Disk Ultra-Datenträger anschließen und dann den virtuellen Computer neu starten:
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>Erstellen eines Ultra-Datenträgers über PowerShell
@@ -265,7 +341,3 @@ Ultra-Datenträger haben eine einzigartige Funktion, mit der Sie die Leistung an
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Wenn Sie den neuen Datenträgertyp ausprobieren möchten, [fordern Sie Zugriff über diese Umfrage an](https://aka.ms/UltraDiskSignup).

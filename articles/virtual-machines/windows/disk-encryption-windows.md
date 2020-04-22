@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f7b6e667df95d9279ad5c44caa4ba33a17909935
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064002"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113160"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
-Azure Disk Encryption verwendet die externen Schlüsselschutzvorrichtung BitLocker, um Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereitzustellen, und ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für Datenträger besser steuern und verwalten können. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für virtuelle Windows-Computer](disk-encryption-overview.md).
+Azure Disk Encryption für virtuelle Windows-Computer (VMs) bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und des Datenträgers für Daten. Darüber hinaus wird die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt, wenn der VolumeType-Parameter auf „All“ festgelegt ist.
 
-Es gibt viele Szenarien für die Aktivierung von Datenträgerverschlüsselung. Die Schritte können je nach Szenario abweichen. In den folgenden Abschnitten werden diese Szenarien für virtuelle Windows-Computer ausführlicher beschrieben.
+Azure Disk Encryption ist [mit Azure Key Vault integriert](disk-encryption-key-vault.md), um Ihnen die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel und -geheimnisse zu erleichtern. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für virtuelle Windows-Computer](disk-encryption-overview.md).
 
 Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterstützten VM-Größen und Betriebssystemen](disk-encryption-overview.md#supported-vms-and-operating-systems) anwenden. Außerdem müssen die folgenden Voraussetzungen erfüllt sein:
 
@@ -39,9 +39,6 @@ Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterst
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Windows-Computer
 In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie die Resource Manager-Vorlage, PowerShell-Cmdlets oder CLI-Befehle verwenden. Wenn Sie Schemainformationen für die Erweiterung des virtuellen Computers benötigen, finden Sie diese im Artikel [Azure Disk Encryption für Windows](../extensions/azure-disk-enc-windows.md).
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern
-Sie können die Verschlüsselung aktivieren, indem Sie eine Vorlage, PowerShell-Cmdlets oder CLI-Befehle verwenden. Wenn Sie Schemainformationen für die Erweiterung des virtuellen Computers benötigen, finden Sie diese im Artikel [Azure Disk Encryption für Windows](../extensions/azure-disk-enc-windows.md).
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit Azure PowerShell 
 Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren. 
@@ -250,6 +247,9 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Windows Server-Container, die dynamische Volumes für jeden Container erstellen.
 - Kurzlebige Betriebssystemdatenträger
 - Verschlüsselung freigegebener/verteilter Dateisysteme, einschließlich u. a. DFS, GFS, DRDB, und CephFS.
+- Verschieben von verschlüsselten VMs in ein anderes Abonnement.
+- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
+- VMs der Lsv2-Serie (siehe: [Lsv2-Serie](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Nächste Schritte
 

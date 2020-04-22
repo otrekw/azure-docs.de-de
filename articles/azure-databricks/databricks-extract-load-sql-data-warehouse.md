@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Durchführen von ETL-Vorgängen mithilfe von Azure Databricks'
-description: In diesem Tutorial erfahren Sie, wie Sie Daten aus Data Lake Storage Gen2 in Azure Databricks extrahieren, transformieren und anschließend in Azure SQL Data Warehouse laden.
+description: In diesem Tutorial erfahren Sie, wie Sie Daten aus Data Lake Storage Gen2 in Azure Databricks extrahieren, dort transformieren und anschließend in Azure Synapse Analytics laden.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239413"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382739"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
-In diesem Tutorial führen Sie mithilfe von Azure Databricks einen ETL-Vorgang (Extrahieren, Transformieren und Laden) für Daten durch. Sie extrahieren Daten aus Azure Data Lake Storage Gen2 in Azure Databricks, führen Transformationen für die Daten in Azure Databricks aus und laden die transformierten Daten anschließend in Azure SQL Data Warehouse.
+In diesem Tutorial führen Sie mithilfe von Azure Databricks einen ETL-Vorgang (Extrahieren, Transformieren und Laden) für Daten durch. Sie extrahieren Daten aus Azure Data Lake Storage Gen2 in Azure Databricks, führen in Azure Databricks Transformationen für die Daten aus und laden die transformierten Daten anschließend in Azure Synapse Analytics.
 
-Bei den Schritten in diesem Tutorial wird für die Datenübertragung an Azure Databricks der SQL Data Warehouse-Connector für Azure Databricks verwendet. Dieser Connector verwendet wiederum Azure Blob Storage als temporären Speicher für die Daten, die zwischen einem Azure Databricks-Cluster und Azure SQL Data Warehouse übertragen werden.
+Bei den Schritten in diesem Tutorial wird für die Datenübertragung an Azure Databricks der Azure Synapse-Connector für Azure Databricks verwendet. Dieser Connector verwendet wiederum Azure Blob Storage als temporären Speicher für die Daten, die zwischen einem Azure Databricks-Cluster und Azure Synapse übertragen werden.
 
 In der folgenden Abbildung ist der Anwendungsfluss dargestellt:
 
-![Azure Databricks mit Data Lake Store und SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks mit Data Lake Store und SQL Data Warehouse")
+![Azure Databricks mit Data Lake Store und Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks mit Data Lake Store und Azure Synapse")
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -35,7 +35,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Erstellen eines Dienstprinzipals
 > * Extrahieren von Daten aus dem Azure Data Lake Storage Gen2-Konto
 > * Transformieren von Daten in Azure Databricks
-> * Laden von Daten in Azure SQL Data Warehouse
+> * Laden von Daten in Azure Synapse
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -47,9 +47,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
-* Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* Erstellen Sie eine Azure Synapse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Erstellen Sie einen Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Erstellen Sie einen Hauptschlüssel für die Azure Synapse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -63,7 +63,7 @@ Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
       Wenn Sie es vorziehen, eine Zugriffssteuerungsliste (ACL) zu verwenden, um den Dienstprinzipal mit einer bestimmten Datei oder einem bestimmten Verzeichnis zu verknüpfen, verweisen Sie auf [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Geheimnis in eine Textdatei ein. Sie benötigen sie in Kürze.
+   * Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Geheimnis in eine Textdatei ein.
 
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -73,7 +73,7 @@ Stellen Sie sicher, dass die Voraussetzungen für dieses Tutorial erfüllt sind.
 
    Vergewissern Sie sich, dass Sie über folgende Informationen verfügen:
 
-   :heavy_check_mark:  Datenbankname, Name des Datenbankservers, Benutzername und Kennwort Ihres Azure SQL Data Warehouse
+   :heavy_check_mark:  Datenbankname, Name des Datenbankservers, Benutzername und Kennwort Ihrer Azure Synapse-Instanz
 
    :heavy_check_mark:  Zugriffsschlüssel Ihres Blobspeicherkontos
 
@@ -316,11 +316,11 @@ Die unformatierten Beispieldaten aus der Datei **small_radio_json.json** dienen 
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Laden von Daten in Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse"></a>Laden von Daten in Azure Synapse
 
-In diesem Abschnitt laden Sie die transformierten Daten in Azure SQL Data Warehouse hoch. Sie verwenden den Azure SQL Data Warehouse-Connector für Azure Databricks, um einen Datenrahmen direkt als Tabelle in eine SQL Data Warehouse-Instanz hochzuladen.
+In diesem Abschnitt laden Sie die transformierten Daten in Azure Synapse hoch. Sie verwenden den Azure Synapse-Connector für Azure Databricks, um einen Datenrahmen direkt als Tabelle in einen Synapse-Spark-Pool hochzuladen.
 
-Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicher, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
+Der Azure Synapse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicher, um Daten zwischen Azure Databricks und Azure Synapse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
 
 1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an.
 
@@ -330,7 +330,7 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Geben Sie einen temporären Ordner für die Verschiebung von Daten zwischen Azure Databricks und Azure SQL Data Warehouse an.
+2. Geben Sie einen temporären Ordner für die Verschiebung von Daten zwischen Azure Databricks und Azure Synapse an.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Geben Sie die Werte für die Verbindungsherstellung mit der Azure SQL Data Warehouse-Instanz an. Im Rahmen der Vorbereitung muss bereits eine SQL Data Warehouse-Instanz erstellt worden sein. Verwenden Sie den vollqualifizierten Servernamen für **dwServer**. Beispiel: `<servername>.database.windows.net`.
+4. Geben Sie die Werte für die Herstellung der Verbindung mit der Azure Synapse-Instanz an. Voraussetzung hierfür ist, dass bereits ein Azure Synapse Analytics-Dienst erstellt wurde. Verwenden Sie den vollqualifizierten Servernamen für **dwServer**. Beispiel: `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Führen Sie den folgenden Codeausschnitt aus, um den transformierten Datenrahmen (**renamedColumnsDF**) als Tabelle in einer SQL Data Warehouse-Instanz zu laden. Dieser Codeausschnitt erstellt in der SQL-Datenbank eine Tabelle namens **SampleTable**.
+5. Führen Sie den folgenden Codeausschnitt aus, um den transformierten Datenrahmen (**renamedColumnsDf**) als Tabelle in Azure Synapse zu laden. Dieser Codeausschnitt erstellt in der SQL-Datenbank eine Tabelle namens **SampleTable**.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
    ```
 
    > [!NOTE]
-   > Dieses Beispiel verwendet das Flag `forward_spark_azure_storage_credentials`, das bewirkt, dass SQL Data Warehouse über einen Zugriffsschlüssel auf Daten im Blobspeicher zugreift. Dies ist die einzige unterstützte Authentifizierungsmethode.
+   > Dieses Beispiel verwendet das Flag `forward_spark_azure_storage_credentials`, das bewirkt, dass Azure Synapse über einen Zugriffsschlüssel auf Daten im Blobspeicher zugreift. Dies ist die einzige unterstützte Authentifizierungsmethode.
    >
-   > Wenn Ihr Azure Blob Storage auf ausgewählte virtuelle Netzwerke beschränkt ist, benötigt SQL Data Warehouse eine [verwaltete Dienstidentität anstelle von Zugriffsschlüsseln](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dies führt zum Fehler „Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen“.
+   > Wenn Ihr Azure Blob Storage auf ausgewählte virtuelle Netzwerke beschränkt ist, benötigt Azure Synapse eine [verwaltete Dienstidentität anstelle von Zugriffsschlüsseln](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dies führt zum Fehler „Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen“.
 
 6. Stellen Sie eine Verbindung mit der SQL-Datenbank her, und vergewissern Sie sich, dass eine Datenbank namens **SampleTable** vorhanden ist.
 
@@ -398,7 +398,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines Notebooks in Azure Databricks
 > * Extrahieren von Daten aus einem Data Lake Storage Gen2-Konto
 > * Transformieren von Daten in Azure Databricks
-> * Laden von Daten in Azure SQL Data Warehouse
+> * Laden von Daten in Azure Synapse
 
 Das nächste Tutorial beschäftigt sich mit dem Streamen von Echtzeitdaten an Azure Databricks unter Verwendung von Azure Event Hubs.
 

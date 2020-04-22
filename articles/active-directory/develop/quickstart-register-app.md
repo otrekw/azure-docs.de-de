@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 1625b48d86eebaf5d8fcd4c100d89b83716ba459
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408367"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309511"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -28,7 +28,7 @@ Ihre App wird bei einem Azure Active Directory-Mandanten registriert, um sie i
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Ein [Azure AD-Mandant](quickstart-create-new-tenant.md).
+* Ein [Azure AD-Mandant](quickstart-create-new-tenant.md).
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
 
@@ -39,7 +39,7 @@ Ihre App wird bei einem Azure Active Directory-Mandanten registriert, um sie i
 1. Geben Sie unter **Anwendung registrieren** einen aussagekräftigen Anwendungsnamen ein, der Benutzern angezeigt werden soll.
 1. Geben Sie an, von wem die Anwendung verwendet werden kann:
 
-    | Unterstützte Kontotypen | Beschreibung |
+    | Unterstützte Kontotypen | BESCHREIBUNG |
     |-------------------------|-------------|
     | **Nur Konten in diesem Organisationsverzeichnis** | Wählen Sie diese Option aus, wenn Sie eine Branchenanwendung erstellen. Falls Sie die Anwendung nicht in einem Verzeichnis registrieren, ist diese Option nicht verfügbar.<br><br>Diese Option ist für reine Azure AD-Apps mit einem einzelnen Mandanten vorgesehen.<br><br>Sofern Sie die App nicht außerhalb eines Verzeichnisses registrieren, ist dies die Standardoption. Wird die App außerhalb eines Verzeichnisses registriert, werden standardmäßig mehrinstanzenfähige Azure AD-Konten und persönliche Microsoft-Konten verwendet. |
     | **Konten in einem beliebigen Organisationsverzeichnis** | Wählen Sie diese Option, wenn Sie alle Kunden aus dem Unternehmens- und Bildungsbereich ansprechen möchten.<br><br>Diese Option ist für reine Azure AD-Apps mit mehreren Mandanten vorgesehen.<br><br>Wenn Sie die App als reine Azure AD-App mit einem einzelnen Mandanten registriert haben, können Sie sie über die Seite **Authentifizierung** in eine Azure AD-App mit mehreren Mandanten umwandeln (und umgekehrt). |
@@ -62,7 +62,7 @@ Azure AD weist Ihrer App eine eindeutige Anwendungs-ID (oder Client-ID) zu. Im 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Zugreifen auf Web-APIs finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md).
+* Informationen zum Zugreifen auf Web-APIs finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
 
 * Informationen zu den Berechtigungen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md).
 

@@ -7,14 +7,14 @@ ms.custom: include file
 ms.topic: include
 author: peterclu
 ms.author: peterclu
-ms.date: 03/12/2020
-ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1ae0b4bda584e86bc3a25f6cd5181175fc7fa282
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204057"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411888"
 ---
 > [!NOTE]
-> Das Notebooks-Feature (Vorschau) in Studio (klassisch) wird am 13. April 2020 eingestellt. Nach dem 13. April ist die Registerkarte „Notebooks“ nicht mehr vorhanden. Dies gilt auch für alle gespeicherten Notebooks. Eine Anleitung zum Herunterladen Ihrer Notebooks finden Sie in [diesem Artikel](../articles/machine-learning/studio/download-notebooks-data.md).
+> Das Notebooks-Feature (Vorschau) wurde am *13. April 2020* entfernt. Das Entfernen der Registerkarte „Notebooks“ und der Benutzer-Notebookdateien erfolgt zurzeit in allen Azure-Regionen der Welt.
       

@@ -1,6 +1,6 @@
 ---
 title: Temporäre Tabellen
-description: Wichtige Anleitungen zur Verwendung von temporären Tabellen in Azure SQL Data Warehouse und Vorstellen der Grundsätze von temporären Tabellen auf Sitzungsebene.
+description: Wichtige Anleitungen zur Verwendung von temporären Tabellen in einem Synapse SQL-Pool mit besonderem Fokus auf den Grundsätzen von temporären Tabellen auf Sitzungsebene.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,33 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3a8772550e67c250b1a84dbae17d1d3fe6c5c90e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351169"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408042"
 ---
-# <a name="temporary-tables-in-sql-data-warehouse"></a>Temporäre Tabellen in SQL Data Warehouse
-Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren und sowohl die Wiederverwendbarkeit als auch die Einfachheit der Verwaltung für den Code verbessern.
+# <a name="temporary-tables-in-synapse-sql-pool"></a>Temporäre Tabellen in einem Synapse SQL-Pool
+Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. 
+
+Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren und sowohl die Wiederverwendbarkeit als auch die Einfachheit der Verwaltung verbessern.
 
 ## <a name="what-are-temporary-tables"></a>Was sind temporäre Tabellen?
-Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
+Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In einem Synapse SQL-Pool befinden sich temporäre Tabellen auf Sitzungsebene.  
 
-## <a name="create-a-temporary-table"></a>Erstellen einer temporären Tabelle
+Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und sie werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  
+
+Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
+
+Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. Bei SQL Analytics sind temporäre Tabellen auf Sitzungsebene vorhanden.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
+
+## <a name="temporary-tables-in-sql-pool"></a>Temporäre Tabellen im SQL-Pool
+
+In der SQL-Poolressource verfügen temporäre Tabellen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
+
+### <a name="create-a-temporary-table"></a>Erstellen einer temporären Tabelle
+
 Temporäre Tabellen werden erstellt, indem dem Tabellennamen `#` als Präfix vorangestellt wird.  Beispiel:
 
 ```sql
@@ -83,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS` ist ein leistungsfähiger Befehl und bietet den zusätzlichen Vorteil, dass er den Speicherplatz für das Transaktionsprotokoll effizient verwendet. 
@@ -91,7 +103,9 @@ GROUP BY
 > 
 
 ## <a name="dropping-temporary-tables"></a>Löschen von temporären Tabellen
-Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein.  Wenn Sie aber dieselbe gespeicherte Prozedur aufrufen, die eine temporäre Tabelle mit dem gleichen Namen erstellt, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `CREATE TABLE` sicherstellen, dass Ihre `DROP`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
+Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein.  
+
+Wenn Sie dieselbe gespeicherte Prozedur aufrufen, die eine temporäre Tabelle mit dem gleichen Namen erstellt, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `DROP` sicherstellen, dass Ihre `CREATE TABLE`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -100,14 +114,18 @@ BEGIN
 END
 ```
 
-In Bezug auf die Codekonsistenz ist es eine bewährte Methode, dieses Muster sowohl für Tabellen als auch für temporäre Tabellen zu verwenden.  Es ist auch eine gute Idee, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn Sie sie in Ihrem Code nicht mehr benötigen.  Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Löschen am Ende einer Prozedur zu bündeln, um sicherzustellen, dass diese Objekte bereinigt werden.
+In Bezug auf die Codekonsistenz ist es eine bewährte Methode, dieses Muster sowohl für Tabellen als auch für temporäre Tabellen zu verwenden.  Es empfiehlt sich auch, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn diese in Ihrem Code nicht mehr benötigt werden.  
+
+Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Löschen am Ende einer Prozedur zu bündeln, um sicherzustellen, dass diese Objekte bereinigt werden.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>Modularisieren von Code
-Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann dies zur Modularisierung des Anwendungscodes genutzt werden.  Die folgende gespeicherte Prozedur generiert z. B. DDL, um alle Statistiken in der Datenbank nach Statistiknamen zu aktualisieren.
+Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann diese Funktion zur Modularisierung des Anwendungscodes genutzt werden.  
+
+Die folgende gespeicherte Prozedur generiert z. B. DDL-Code, um alle Statistiken in der Datenbank nach Statistiknamen zu aktualisieren:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -181,7 +199,13 @@ FROM    t1
 GO
 ```
 
-In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird die temporäre Tabelle „#stats_ddl“ mit DDL-Anweisungen generiert.  Diese gespeicherte Prozedur verwirft „#stats_ddl“, wenn sie bereits vorhanden ist, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehr als einmal ausgeführt wird.  Da am Ende der gespeicherten Prozedur keine `DROP TABLE`-Anweisung vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann.  In SQL Data Warehouse ist es im Gegensatz zu anderen SQL Server-Datenbanken möglich, diese temporäre Tabelle außerhalb der Prozedur zu verwenden, mit der sie erstellt wurde.  Temporäre SQL Data Warehouse-Tabellen können innerhalb der Sitzung **überall** verwendet werden. Dies kann zu modularerem und besser verwaltbarem Code führen, wie im folgenden Beispiel dargestellt:
+In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird die temporäre Tabelle „#stats_ddl“ mit DDL-Anweisungen generiert.  
+
+Diese gespeicherte Prozedur verwirft eine vorhandene #stats_ddl, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehrmals ausgeführt wird.  
+
+Da am Ende der gespeicherten Prozedur keine `DROP TABLE`-Anweisung vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann.  
+
+In einem SQL-Pool ist es im Gegensatz zu anderen SQL Server-Datenbanken möglich, diese temporäre Tabelle außerhalb der Prozedur zu verwenden, mit der sie erstellt wurde.  Temporäre SQL-Pooltabellen können innerhalb der Sitzung **überall** verwendet werden. Diese Funktion kann zu modularerem und besser verwaltbarem Code führen, wie im folgenden Beispiel dargestellt:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -203,8 +227,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Einschränkungen der temporären Tabelle
-SQL Data Warehouse weist eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf.  Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt.  Globale temporäre Tabellen werden nicht unterstützt.  Außerdem können Sichten nicht in temporären Tabellen erstellt werden.  Temporäre Tabellen können nur mit Hash- oder Roundrobin-Verteilung erstellt werden.  Die Verteilung replizierter temporärer Tabellen wird nicht unterstützt. 
+SQL-Pools weisen eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf.  Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt.  Globale temporäre Tabellen werden nicht unterstützt.  
+
+Darüber hinaus können Sichten nicht in temporären Tabellen erstellt werden.  Temporäre Tabellen können nur mit Hash- oder Roundrobin-Verteilung erstellt werden.  Die Verteilung replizierter temporärer Tabellen wird nicht unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Entwickeln von Tabellen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md).
+
+Weitere Informationen zum Entwickeln von Tabellen finden Sie im Artikel [Entwerfen von Tabellen mithilfe von SQL Analytics-Ressourcen](sql-data-warehouse-tables-overview.md).
 

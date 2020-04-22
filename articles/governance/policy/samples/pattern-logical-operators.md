@@ -1,14 +1,14 @@
 ---
 title: 'Muster: Logische Operatoren in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält Beispiele für die Verwendung der logischen Operatoren in einer Richtliniendefinition.
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170238"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272507"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy-Muster: Logische Operatoren
 
@@ -38,6 +38,18 @@ Mit der folgenden Richtliniendefinition wird das Benennungsmuster von Ressourcen
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
 Der Block **policyRule.if** in diesem Beispiel enthält ebenfalls einen einzelnen logischen Operator vom Typ **allOf**, die Bedingungen sind jedoch jeweils von dem logischen Operator **not** umschlossen. Die Bedingung innerhalb des logischen Operators **not** wird zuerst ausgewertet. Danach wird der logische Operator **not** ausgewertet, um zu ermitteln, ob die gesamte Klausel „true“ oder „false“ ist. Werden beide logischen Operatoren vom Typ **not** als „true“ ausgewertet, wird die Richtlinienauswirkung ausgelöst.
+
+## <a name="sample-3-combining-logical-operators"></a>Beispiel 3: Kombinieren logischer Operatoren
+
+Diese Richtliniendefinition wertet Java Spring-Konten aus, um festzustellen, ob die Ablaufverfolgung nicht aktiviert ist oder sich nicht in einem erfolgreichen Status befindet.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
+
+### <a name="sample-3-explanation"></a>Beispiel 3: Erklärung
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
+
+Dieser **policyRule.if**-Block enthält die logischen Operatoren **allOf** und **anyOf**. Der logische Operator **anyOf** wird mit „true“ ausgewertet, solange eine enthaltene Bedingung „true“ ist. Da der _Typ_ sich im Kern von **allOf** befindet, muss er immer mit „true“ ausgewertet werden. Wenn der _Typ_ und eine der Bedingungen in **anyOf** „true“ sind, wird der Richtlinieneffekt ausgelöst.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

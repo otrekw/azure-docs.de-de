@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu den Kosten für Azure Security Center für IoT | Microsoft-Dokumentation
+title: Preise und anfallende Kosten
 description: Informationen zu den für Azure Security Center für IoT anfallenden Kosten und dazu, wie sie gesteuert werden.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348523"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311562"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
 
@@ -34,13 +34,11 @@ Das Preismodell für Azure Security Center für IoT besteht aus zwei Teilen und 
 
 - Kosten nach Meldung: erweiterte Sicherheitsfunktionen basierend auf Sicherheitsmeldungen von IoT Edge oder Blattgeräten
 
-
 Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Anfallende Kosten
 
 Für Azure Security Center für IoT fallen Kosten an, die nicht Teil der direkten Preise sind:
-
 
 - Kosten für Log Analytics-Speicher
 
@@ -50,9 +48,9 @@ So ändern Sie Ihre Einstellungen
 
 1. Öffnen Sie IoT Hub.
 
-2. Klicken Sie unter **Sicherheit** auf **Übersicht**.
+1. Klicken Sie unter **Sicherheit** auf **Übersicht**.
 
-3. Klicken Sie auf **Einstellungen**.
+1. Klicken Sie auf **Einstellungen**.
 
 Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Auswirkungen der einzelnen Optionen.
 
@@ -64,8 +62,8 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 |
 
 >[!Important]
-> Die Deaktivierung hat schwerwiegende Auswirkungen auf die Verfügbarkeit von Azure Security Center für IoT-Sicherheitsfunktionen. 
-  
+> Die Deaktivierung hat schwerwiegende Auswirkungen auf die Verfügbarkeit von Azure Security Center für IoT-Sicherheitsfunktionen.
+
 | Deaktivierung | Auswirkungen |
 | --- | --- |
 | _Twin metadata collection (Sammlung von Gerätezwillingsmetadaten)_ | [Benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md) sind deaktiviert |
@@ -74,7 +72,6 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 | _Store raw device security events (Sicherheitsrohereignisse für Geräte speichern)_ | Details zu grundlegenden Empfehlungen zum Gerätebetriebssystem sind nicht verfügbar |
 | | Details zu Untersuchungen von [Warnungen](concept-security-alerts.md) und [Empfehlungen](concept-recommendations.md) sind nicht verfügbar |
 |
-
 
 ## <a name="see-also"></a>Weitere Informationen
 

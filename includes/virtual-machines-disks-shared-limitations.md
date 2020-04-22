@@ -5,19 +5,30 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/09/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77471688"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008338"
 ---
-In der Vorschau unterliegen verwaltete Datenträger, für die freigegebene Datenträger aktiviert sind, den folgenden Einschränkungen:
+Während der Vorschau ist die Aktivierung freigegebener Datenträger nur für eine Teilmenge von Datenträgertypen verfügbar. Derzeit können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Jeder verwaltete Datenträger, für den freigegebene Datenträger aktiviert sind, unterliegt den folgenden Einschränkungen, die nach Datenträgertyp geordnet sind:
 
-- Zurzeit nur mit SSD-Premium-Datenträgern verfügbar.
+### <a name="ultra-disks"></a>Ultra-Datenträger
+
+Disk Ultra-Datenträger verfügen über eine eigene separate Liste von Einschränkungen, die nicht mit freigegebenen Datenträgern zusammenhängen. Informationen zu den Einschränkungen für Disk Ultra-Datenträger finden Sie unter [Verwendung von Azure Ultra-Datenträgern](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md).
+
+Bei der Freigabe von Disk Ultra-Datenträgern gelten die folgenden zusätzlichen Einschränkungen:
+
+- Derzeit nur in „USA, Westen“ unterstützt.
+- Derzeit beschränkt auf Azure Resource Manager oder die SDK-Unterstützung.
+- Nur Basisdatenträger können mit einigen Versionen des Windows Server-Failoverclusters verwendet werden. Weitere Informationen finden Sie unter [Hardwareanforderungen und Speicheroptionen für Failoverclustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+
+### <a name="premium-ssds"></a>SSD Premium
+
 - Zurzeit nur in der Region „USA, Westen-Mitte“ unterstützt.
 - Alle virtuellen Computer, die einen Datenträger gemeinsam nutzen, müssen in denselben [Näherungsplatzierungsgruppen](../articles/virtual-machines/windows/proximity-placement-groups.md) bereitgestellt werden.
 - Die Aktivierung kann nicht auf Betriebssystem-Datenträgern, sondern nur auf sonstigen Datenträgern erfolgen.

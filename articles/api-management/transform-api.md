@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067467"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258744"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API
 
@@ -112,7 +112,7 @@ So zeigen Sie die ursprüngliche Antwort an
 2.  Wählen Sie **Alle Vorgänge** aus.
 3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 4.  Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>** .
-5.  Positionieren Sie den Cursor im **&lt;outbound&gt;** -Element.
+5.  Positionieren Sie den Cursor im Element **&lt;outbound&gt;** , und klicken Sie in der oberen rechten Ecke auf die Schaltfläche **Richtlinie einfügen**.
 6.  Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
 7.  Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>** ) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel:
 

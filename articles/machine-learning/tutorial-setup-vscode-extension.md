@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604869"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272911"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code
 
@@ -70,36 +70,36 @@ Nachdem Sie sich nun mit Ihren Anmeldeinformationen für das Konto bei Azure ang
 1. Befolgen Sie die Aufforderungen, wenn die Befehlspalette erweitert wird.
 
     1. Wählen Sie Ihr Azure-Abonnement.
-    1. Wählen Sie die Option **Create a new Azure ML workspace** (Neuen Azure ML-Arbeitsbereich erstellen) aus.
-    1. Wählen Sie den Auftragstyp **TensorFlow Single-Node Training** (TensorFlow: Training auf einem einzelnen Knoten) aus.
-    1. Geben Sie `train.py` als Skript ein, das trainiert werden soll. Dies ist die Datei, die Code für ein Machine Learning-Modell enthält, mit dem die Bilder von handschriftlichen Ziffern kategorisiert werden.
-    1. Geben Sie die folgenden Pakete als Anforderungen für die Ausführung an.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. Wählen Sie aus der Liste der Umgebungen eine **Conda-Abhängigkeitsdatei** aus.
+    1. Drücken Sie die **EINGABETASTE**, um die Conda-Abhängigkeitsdatei zu durchsuchen. Diese Datei enthält die erforderlichen Abhängigkeiten, um Ihr Skript auszuführen. In diesem Fall ist die Abhängigkeitsdatei die Datei `env.yml` im Verzeichnis `mnist-vscode-docs-sample`.
+    1. Drücken Sie die **EINGABETASTE**, um die Trainingsskriptdatei zu durchsuchen. Dies ist die Datei, die Code für ein Machine Learning-Modell enthält, mit dem die Bilder von handschriftlichen Ziffern kategorisiert werden. In diesem Fall ist die Datei `train.py` im Verzeichnis `mnist-vscode-docs-sample` das Skript zum Trainieren des Modells.
 
 1. An diesem Punkt wird im Text-Editor eine Konfigurationsdatei angezeigt, die der unten angegebenen Datei ähnelt. Die Konfiguration enthält die Informationen, die zum Trainieren des Auftrags benötigt werden. Dies umfasst beispielsweise die Datei mit dem Code zum Trainieren des Modells sowie alle Python-Abhängigkeiten, die im vorherigen Schritt angegeben wurden.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

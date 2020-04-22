@@ -4,31 +4,31 @@ description: Lernen Sie Azure Analysis Services kennen, eine vollständig verwal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215548"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271657"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services ist eine vollständig verwaltete PaaS-Komponente (Platform-as-a-Service), über die für Unternehmen geeignete Datenmodelle in der Cloud bereitgestellt werden. Verwenden Sie die erweiterten Mashup- und Modellierungsfeatures, um Daten aus verschiedenen Datenquellen zu kombinieren, Metriken zu definieren und Ihre Daten in einem einzelnen, vertrauenswürdigen Datenmodell (semantisch und tabellarisch) zu schützen. Das Datenmodell ermöglicht Benutzern das einfachere und schnellere Durchsuchen von sehr großen Datenmengen für Ad-hoc-Datenanalysen.
+Azure Analysis Services ist eine vollständig verwaltete PaaS-Komponente (Platform-as-a-Service), über die für Unternehmen geeignete Datenmodelle in der Cloud bereitgestellt werden. Verwenden Sie die erweiterten Mashup- und Modellierungsfeatures, um Daten aus verschiedenen Datenquellen zu kombinieren, Metriken zu definieren und Ihre Daten in einem einzelnen, vertrauenswürdigen Datenmodell (semantisch und tabellarisch) zu schützen. Das Datenmodell ermöglicht Benutzern das einfachere und schnellere Durchführen von Ad-hoc-Datenanalysen mithilfe von Tools wie Power BI und Excel.
 
 ![Datenquellen](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Video:** In [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) (Übersicht über Azure Analysis Services) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
+**Video:** In [Übersicht über Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
 
 ## <a name="get-up-and-running-quickly"></a>Schnelle Betriebsbereitschaft
 
 Über das Azure-Portal können Sie innerhalb weniger Minuten [einen Server erstellen](analysis-services-create-server.md). Und mit Azure Resource Manager-[Vorlagen](../azure-resource-manager/resource-manager-create-first-template.md) und PowerShell lassen sich Server unter Verwendung einer deklarativen Vorlage erstellen. Mit einer einzelnen Vorlage können Sie Serverressourcen sowie andere Azure-Komponenten (z.B. Speicherkonten und Azure Functions) bereitstellen. 
 
-**Video:** In [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) (Automatisieren der Bereitstellung) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
+**Video:** In [Automatisieren der Bereitstellung](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
 
 Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden. 
 
@@ -38,7 +38,7 @@ Azure Analysis Services ist in den Tarifen **Developer**, **Basic** und **Standa
 
 ### <a name="developer-tier"></a>Developer-Tarif
 
-Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das Aufskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
+Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
 
 |Planen  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -64,12 +64,14 @@ Dieser Tarif ist am besten für unternehmenskritische Produktionsanwendungen gee
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
 
-\* Nicht in allen Regionen verfügbar.  
+<a name="depr">1</a> – nicht in allen Regionen verfügbar.   
+<a name="rec">2</a> – dieser Plan ist veraltet. v2 wird empfohlen.
+
 
 ## <a name="availability-by-region"></a>Verfügbarkeit nach Region
 
@@ -83,15 +85,15 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA (Ost) 2     |     S8, S9, S8v2, S9v2   |    1    |
+|USA (Ost) 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA (Westen)     |    S8, S9, S8v2, S9v2   |    2  |
+|USA (Westen)     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
 |USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA, Westen 2    |    S8, S9, S8v2, S9v2  |    1     |
+|USA, Westen 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -101,17 +103,17 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Nordeuropa     |    S8v2, S9v2      |    3     |
 |UK, Süden     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa, Westen    |   S8, S9, S8v2, S9v2  |  1  |
+|Europa, Westen    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Australien (Osten)     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australien (Osten)     |    S8, S9, S8v2, S9v2    |    1     |
+|Australien (Osten)     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, Osten     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung
@@ -161,7 +163,7 @@ Auf der Serverebene bietet Analysis Services eine Firewall, Azure-Authentifizier
 
 Die Azure Analysis Services-Firewall blockiert alle Clientverbindungen, mit Ausnahme der IP-Adressen, die nicht in Regeln angegeben sind. Für neue Server ist standardmäßig kein Firewallschutz aktiviert. Es empfiehlt sich, direkt nach der Servererstellung den Firewallschutz zu aktivieren und Regeln zu konfigurieren – entweder im Rahmen eines Serverbereitstellungsskripts oder über das Portal. Konfigurieren Sie die Regeln, mit denen zulässige IP-Adressen nach einzelnen Client-IPs oder nach dem Bereich angegeben werden. Verbindungen von Power BI (Dienst) können auch zugelassen oder blockiert werden. Konfigurieren Sie die Firewall und Regeln im Portal oder per PowerShell. Weitere Informationen finden Sie unter [Konfigurieren einer Serverfirewall](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Die Benutzerauthentifizierung wird per [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) durchgeführt. Beim Anmelden verwenden Benutzer eine Organisationskontoidentität mit rollenbasiertem Zugriff auf die Datenbank. Benutzeridentitäten müssen Mitglieder der Azure Active Directory-Standardinstanz für das Abonnement sein, unter dem sich der Server befindet. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 
@@ -208,6 +210,10 @@ Microsoft Analysis Services-Projekte sind als kostenlos installierbares VSIX-Pak
 
 Verwalten Sie Server und Modelldatenbanken mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Stellen Sie eine Verbindung mit Ihren Servern in der Cloud her. Führen Sie TMSL-Skripts direkt über das XMLA-Abfragefenster aus, und automatisieren Sie Aufgaben mithilfe von TMSL-Skripts und PowerShell. Die Features und Funktionen werden kontinuierlich erweitert. (SSMS wird monatlich aktualisiert.)
 
+### <a name="open-source-tools"></a>Open-Source-Tools
+
+Analysis Services verfügt über eine dynamische Community von Toolentwicklern. Sehen Sie sich das Open-Source-Tool [Tabular Editor](https://tabulareditor.github.io/) an, mit dem Sie intuitiv und einfach tabellarische Modelle erstellen und verwalten können. Ein erstklassiges Open-Source-Tool für die Erstellung, Diagnose, Leistungsoptimierung und Analyse von DAX-Abfragen ist [DAX Studio](https://daxstudio.org/).
+
 ### <a name="powershell"></a>PowerShell
 
 Zur Verwaltung von Serverressourcen (beispielsweise Erstellen von Serverressourcen, Anhalten oder Fortsetzen von Servervorgängen oder Ändern des Servicelevels (Tarif)) werden Azure PowerShell-Cmdlets verwendet. Für andere Datenbankverwaltungsaufgaben (beispielsweise für das Hinzufügen oder Entfernen von Rollenmitgliedern, für die Verarbeitung oder für das Ausführen von TMSL-Skripts) werden Cmdlets im SQLServer-Modul verwendet. Weitere Informationen finden Sie unter [Verwalten von Azure Analysis Services mit PowerShell](analysis-services-powershell.md).
@@ -232,19 +238,15 @@ Azure Analysis Services unterstützt auch [dynamische Verwaltungssichten](https:
 
 Spezifische Dokumentationsinformationen zu Azure Analysis Services sind in diesem Text enthalten. Verwenden Sie das Inhaltsverzeichnis links im Browserfenster, um nach Artikeln zu suchen. 
 
-Da tabellarische Azure Analysis Services-Modelle den tabellarischen Modellen in SQL Server Analysis Services stark ähneln, enthält die [SQL Server-Dokumentation zu Analysis Services](https://docs.microsoft.com/analysis-services/analysis-services-overview) eine umfangreiche Bibliothek mit Tutorials zur Modellierung gemeinsam verwendeter Daten sowie mit verfügbaren Artikeln zu den Bereichen Konzept, Verfahren, Entwickler und Referenz. In den Artikeln der SQL Server Analysis Services-Dokumentation wird gezeigt, ob sie auch für Azure Analysis Services gelten, indem unter dem Titel ein GILT FÜR-Banner angezeigt wird.
+Da tabellarische Modelle in Azure Analysis Services den tabellarischen Modellen in SQL Server Analysis Services und Power BI Premium-Datasets stark ähneln, enthält die [Dokumentation zu Analysis Services](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current) eine umfangreiche Bibliothek mit Tutorials zur Modellierung gemeinsam verwendeter Daten. Darüber hinaus umfasst diese Bibliothek Artikel zu Konzepten und Verfahren sowie relevante Informationen für Entwickler und Referenzartikel. Die Artikel der gemeinsamen Analysis Services-Dokumentation enthalten unterhalb des Titels einen GILT FÜR-Banner, der zeigt, ob die Artikel auch für Azure Analysis Services gelten. Sie können auch die Versionsauswahl oberhalb des Inhaltsverzeichnisses verwenden, um nur Artikel anzuzeigen, die für die von Ihnen verwendete Plattform gelten.
 
 ![Verfügbare Dokumentation](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Beteiligen Sie sich!
 
-Die Analysis Services-Dokumentation, z.B. dieser Artikel, ist eine Open-Source-Dokumentation. Wenn Sie über ein GitHub-Konto verfügen, können Sie einen Artikel bearbeiten, indem Sie oben rechts im Browserfenster auf „Bearbeiten“ (Stiftsymbol) klicken. Verwenden Sie den Editor im Browser, und klicken Sie dann auf „Propose file change“ (Dateiänderung vorschlagen). 
+Die Analysis Services-Dokumentation, z.B. dieser Artikel, ist eine Open-Source-Dokumentation. Weitere Informationen dazu, wie Sie mitwirken können, finden Sie im [Leitfaden für Mitwirkende an der Microsoft-Dokumentation](https://docs.microsoft.com/contribute/). 
 
-![Verfügbare Dokumentation](./media/analysis-services-overview/aas-overview-edit.png)
-
-Ihr Beitrag wird vom Dokumentationsteam geprüft, und wenn die Genehmigung erteilt wird, werden Sie über Ihren GitHub-Kontonamen als mitwirkende Person angezeigt. Weitere Informationen finden Sie im [Leitfaden für Mitwirkende](https://docs.microsoft.com/contribute/).
-
-Für die Azure Analysis Services-Dokumentation wird auch [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) genutzt. Hierüber können Sie Feedback zum Produkt oder zur Dokumentation übermitteln. Verwenden Sie die Option **Feedback** am Ende des Artikels. „GitHub Issues“ ist für die SQL Server Analysis Services-Dokumentation noch nicht aktiviert. 
+Für die Azure Analysis Services-Dokumentation wird auch [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) genutzt. Hierüber können Sie Feedback zum Produkt oder zur Dokumentation übermitteln. Verwenden Sie die Option **Feedback** am Ende des Artikels. „GitHub Issues“ ist für die gemeinsame Analysis Services-Dokumentation nicht aktiviert. 
 
 ## <a name="blogs"></a>Blogs
 
@@ -260,7 +262,7 @@ Analysis Services verfügt über eine dynamische Community von Benutzern. Beteil
 > [Registrieren für eine kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md)   
+> [Schnellstart: Erstellen eines Servers – Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Azure Analysis Services-Servers mithilfe von PowerShell](analysis-services-create-powershell.md)  
+> [Schnellstart: Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)  

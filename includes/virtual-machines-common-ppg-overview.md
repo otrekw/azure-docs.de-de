@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73171113"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421755"
 ---
 Wenn Sie VMs in einer einzelnen Region anordnen, verringert sich der physische Abstand zwischen den Instanzen. Wenn Sie sie in einer einzelnen Verfügbarkeitszone anordnen, verringert sich ebenfalls ihr physischer Abstand. Wenn jedoch Ihre Ressourcen in Azure zunehmen, kann eine einzige Verfügbarkeitszone auch mehrere physische Rechenzentren umspannen. Dies kann zu Netzwerklatenzen führen, die sich auf die Anwendung auswirken. 
 
@@ -39,6 +39,13 @@ Sie können auch eine vorhandene Ressource in eine Näherungsplatzierungsgruppe 
 Im Falle von Verfügbarkeitsgruppen und VM-Skalierungsgruppen sollten Sie die Näherungsplatzierungsgruppe auf Ressourcenebene und nicht auf der Ebene der einzelnen virtuellen Computer festlegen. 
 
 Eine Näherungsplatzierungsgruppe ist eher eine Zusammenstellungseinschränkung als ein Anheftmechanismus. Sie wird an ein bestimmtes Rechenzentrum angeheftet, wobei die erste von ihr verwendete Ressource bereitgestellt wird. Sobald alle Ressourcen, die die Näherungsplatzierungsgruppe verwenden, beendet (Zuordnung aufgehoben) oder gelöscht wurden, wird sie nicht mehr angeheftet. Daher ist es bei der Verwendung einer Näherungsplatzierungsgruppe mit mehreren VM-Serien wichtig, möglichst alle erforderlichen Typen im Voraus in einer Vorlage anzugeben oder einer Bereitstellungssequenz zu folgen, die Ihre Chancen auf eine erfolgreiche Bereitstellung verbessert. Wenn bei der Bereitstellung ein Fehler auftritt, starten Sie die Bereitstellung mit der VM-Größe neu, bei der die erste Bereitstellung fehlgeschlagen ist.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Erwartung bei der Verwendung von Näherungsplatzierungsgruppen 
+Näherungsplatzierungsgruppen bieten eine Zusammenstellung in demselben Rechenzentrum. Da jedoch Näherungsplatzierungsgruppen eine zusätzliche Bereitstellungseinschränkung darstellen, kann es zu Zuordnungsfehlern kommen. Es gibt nur wenige Anwendungsfälle, in denen Sie bei der Verwendung von Näherungsplatzierungsgruppen Zuordnungsfehler feststellen können:
+
+- Wenn Sie nach dem ersten virtuellen Computer in der Näherungsplatzierungsgruppe fragen, wird das Rechenzentrum automatisch ausgewählt. In einigen Fällen kann eine zweite Anforderung der SKU für einen anderen virtuellen Computer fehlschlagen, wenn sie in diesem Rechenzentrum nicht vorhanden ist. In diesem Fall wird der Fehler **OverconstrainedAllocationRequest** zurückgegeben. Um dies zu vermeiden, versuchen Sie, die Reihenfolge zu ändern, in der Sie Ihre SKUs bereitstellen, oder lassen Sie beide Ressourcen mit einer einzelnen ARM-Vorlage bereitstellen.
+-   Im Fall von flexiblen Workloads, bei denen Sie VM-Instanzen hinzufügen und entfernen, kann das Vorhandensein einer Einschränkung für Näherungsplatzierungsgruppen für Ihre Bereitstellung dazu führen, dass die Anforderung nicht erfüllt wird, was zu einem **AllocationFailure**-Fehler führt. 
+- Das bedarfsgesteuerte Beenden (Freigeben) und Starten Ihrer virtuellen Computer ist eine weitere Möglichkeit, Flexibilität zu erreichen. Da die Kapazität nicht erhalten bleibt, wenn Sie einen virtuellen Computer beenden (freigeben), kann ein erneuter Start zu einem **AllocationFailure**-Fehler führen.
 
 
 ## <a name="best-practices"></a>Bewährte Methoden 

@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014418"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271062"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Was ist Azure Time Series Insights (Vorschauversion)?
 
@@ -55,8 +55,8 @@ Als umfassende operative Analyseplattform in Kombination mit unseren interaktive
 
 * Mehrschichtige Speicherlösung mit Unterstützung von „warmen“ und „kalten“ Analysen, die dem Kunden die Möglichkeit bietet, Daten für interaktive Analysen anhand „warmer“ Daten sowie Operational Intelligence über historische Daten, die über Jahrzehnte erfasst wurden, zwischen „warm“ und „kalt“ zu leiten. 
 
-    *   Eine hochgradig interaktive, „warme“ Analyselösung zur Durchführung häufiger und umfangreicher Abfragen über kürzere Zeiträume hinweg. 
-    *   Ein skalierbarer, leistungsstarker und kostenoptimierter Zeitreihen-Data Lake auf Basis von Azure Storage, der es Kunden ermöglicht, Zeitreihendaten aus mehreren Jahren in Sekundenschnelle zu erfassen. 
+    *    Eine hochgradig interaktive, „warme“ Analyselösung zur Durchführung häufiger und umfangreicher Abfragen über kürzere Zeiträume hinweg. 
+    *    Ein skalierbarer, leistungsstarker und kostenoptimierter Zeitreihen-Data Lake auf Basis von Azure Storage, der Kunden ermöglicht, Zeitreihendaten aus mehreren Jahren in Sekundenschnelle zu erfassen. 
 
 * Unterstützung des Semantikmodells zur Beschreibung der Domänen- und Metadaten, die den abgeleiteten und unformatierten Signalen von Ressourcen und Geräten zugeordnet sind.
 
@@ -64,7 +64,7 @@ Als umfassende operative Analyseplattform in Kombination mit unseren interaktive
 
 * Umfassende Analysen mit erweiterten Abfrage-APIs und einer Benutzererfahrung, die ressourcenbasierte Datenerkenntnisse mit umfassenden Ad-hoc-Datenanalysen kombiniert, mit Unterstützung von Interpolations-, Skalar- und Aggregatfunktionen, Kategorievariablen, Punktdiagrammen und Zeitverschiebung von Zeitreihensignalen für tief greifende Analysen.
 
-*   Für große Unternehmen geeignete Plattform zur Unterstützung der Skalierungs-, Leistungs-, Sicherheits- und Zuverlässigkeitsanforderungen unserer IoT-Unternehmenskunden.
+*    Für große Unternehmen geeignete Plattform zur Unterstützung der Skalierungs-, Leistungs-, Sicherheits- und Zuverlässigkeitsanforderungen unserer IoT-Unternehmenskunden.
 
 * Unterstützung von Erweiterbarkeit und Integration für End-to-End-Analysen. Time Series Insights bietet eine erweiterbare Analyseplattform für eine Vielzahl von Datenszenarien. Time Series Insights-Power BI-Connector ermöglicht es Kunden, Abfragen aus Time Series Insights direkt in Power BI zu übertragen, um eine einzelne, vereinheitlichte Ansicht von BI- und Zeitreihenanalysen zu erzielen.
 

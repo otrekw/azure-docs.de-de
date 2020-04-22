@@ -5,27 +5,36 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/18/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74935890"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008633"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
-- Werden in den folgenden Regionen mit jeweils einer unterschiedlichen Anzahl von Verfügbarkeitszonen unterstützt:
-    - USA (Ost) 2
-    - East US
-    - USA, Westen 2
-    - Asien, Südosten
-    - Nordeuropa
-    - Europa, Westen
-    - UK, Süden 
-- Können nur mit Verfügbarkeitszonen verwendet werden. (Verfügbarkeitsgruppen und einzelne VM-Bereitstellungen außerhalb der Zonen können keine Ultra-Datenträger anfügen.)
+Die einzigen Optionen für die Infrastrukturredundanz, die derzeit für Disk Ultra-Datenträger zur Verfügung stehen, sind Verfügbarkeitszonen. Virtuelle Computer, die andere Redundanzoptionen verwenden, können keinen Disk Ultra-Datenträger anfügen.
+
+In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger verfügbar sind, sowie die entsprechenden Verfügbarkeitsoptionen aufgeführt:
+
+> [!NOTE]
+> Einige Verfügbarkeitszonen innerhalb dieser Regionen bieten keine Disk Ultra-Datenträger an.
+
+|Regions  |Keine Redundanz bei der Infrastruktur  |Verfügbarkeitszonen  |
+|---------|---------|---------|
+|USA (Westen)     |Ja         |Nein         |
+|USA, Westen 2    |Nein         |Ja         |
+|East US     |Nein         |Ja         |
+|USA (Ost) 2     |Nein         |Ja         |
+|Asien, Südosten     |Nein         |Ja         |
+|Nordeuropa     |Nein         |Ja         |
+|Europa, Westen     |Nein         |Ja         |
+|UK, Süden     |Nein         |Ja         |
+
 - Werden nur auf den folgenden VM-Serien unterstützt:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -35,7 +44,8 @@ Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt 
 - Nicht jede VM-Größe ist in allen unterstützten Regionen mit Ultra-Datenträgern verfügbar.
 - Sind nur als Datenträger für Daten verfügbar und unterstützen nur für physische Sektorgröße von 4 KB. Aufgrund der nativen Sektorgröße von 4 KB von Ultra-Datenträgern gibt es einige Anwendungen die mit Ultra-Datenträgern nicht kompatibel sind. Ein Beispiel hierfür wäre Oracle Database, das Version 12.2 oder höher erfordert, um Ultra-Datenträger zu unterstützen.  
 - Können nur als leere Datenträger erstellt werden.  
-- Unterstützen noch keine Datenträger-Momentaufnahmen, VM-Images, Verfügbarkeitsgruppen oder Azure Disk Encryption
-- Unterstützen noch keine Integration in Azure Backup oder Azure Site Recovery.
+- Unterstützt derzeit keine Momentaufnahmen von Datenträgern, VM-Images, Verfügbarkeitsgruppen, Azure Dedicated Hosts oder Azure Disk Encryption.
+- Unterstützt derzeit keine Integration in Azure Backup oder Azure Site Recovery.
 - Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
-- Wenn Sie an einer eingeschränkten Vorschau einer VM teilnehmen möchten, die 160.000 IOPS mit Ultradisks erreichen kann, senden Sie eine E-Mail an UltraDiskFeedback@microsoft.com.
+
+Azure Ultra-Datenträger bieten standardmäßig bis zu 16 TiB pro Region pro Abonnement, aber Disk Ultra-Datenträger unterstützen auf Anfrage auch höhere Kapazitäten. Wenden Sie sich an den Azure-Support, um eine Erhöhung der Kapazität anzufordern.

@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Konfigurieren der SSL-Terminierung im Portal: Azure Application Gateway'
-description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway konfigurieren und ein Zertifikat für die SSL-Terminierung hinzufügen.
+title: 'Tutorial: Konfigurieren der TLS-Terminierung im Portal: Azure Application Gateway'
+description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway konfigurieren und ein Zertifikat für die TLS-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012307"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312389"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Terminierung mithilfe des Azure-Portals
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Tutorial: Konfigurieren eines Anwendungsgateways mit TLS-Terminierung über das Azure-Portal
 
-Sie können im Azure-Portal ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die SSL-Terminierung konfigurieren, das virtuelle Computer als Back-End-Server verwendet.
+Sie können im Azure-Portal ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die TLS-Terminierung konfigurieren, das virtuelle Computer als Back-End-Server verwendet.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -265,4 +265,4 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Erfahren Sie mehr über die [SSL-Unterstützung in Application Gateway](ssl-overview.md).
+> Erfahren Sie mehr über die [TLS-Unterstützung in Application Gateway](ssl-overview.md)

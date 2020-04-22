@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77123202"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007861"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignieranforderungsdatei
 
@@ -74,11 +74,21 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
 4. Suchen Sie auf der Seite **Zertifikate, Bezeichner und Profile** unter **Bezeichner** die soeben erstellte App-ID-Position, und wählen Sie die zugehörige Zeile aus, um den Bildschirm zum **Bearbeiten Ihrer App-ID-Konfiguration** anzuzeigen.
 
-5. Scrollen Sie nach unten zur aktivierten Option **Pushbenachrichtigungen**, und wählen Sie dann **Konfigurieren** aus, um das Zertifikat zu erstellen.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Erstellen eines Zertifikats für Notification Hubs
+Damit der Notification Hub mit **APNs** funktioniert, ist ein Zertifikat erforderlich. Dafür können Sie zwei Methoden verwenden:
+
+1. Erstellen Sie eine **P12**-Datei, die direkt in den Notification Hub hochgeladen werden kann.  
+2. Erstellen Sie eine **P8**-Datei, die für die [tokenbasierte Authentifizierung](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) verwendet werden kann (dies ist die *neuere Methode*).
+
+Die neuere Methode bietet eine Reihe von Vorteilen gegenüber der Verwendung von Zertifikaten. Diese sind unter [Tokenbasierte Authentifizierung (HTTP/2) für APNs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) dokumentiert. Hier finden Sie die Schritte für beide Methoden. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>OPTION 1: Erstellen eines P12-Pushzertifikats, das direkt in den Notification Hub hochgeladen werden kann
+
+1. Scrollen Sie nach unten zur aktivierten Option **Pushbenachrichtigungen**, und wählen Sie dann **Konfigurieren** aus, um das Zertifikat zu erstellen.
 
     ![Bearbeiten der Seite für App-IDs](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. Das Fenster für die **SSL-Zertifikate von Apple Push Notification Service** wird angezeigt. Wählen Sie im Abschnitt des **SSL-Zertifikats für die Entwicklung** die Schaltfläche **Zertifikat erstellen** aus.
+2. Das Fenster für die **SSL-Zertifikate von Apple Push Notification Service** wird angezeigt. Wählen Sie im Abschnitt des **SSL-Zertifikats für die Entwicklung** die Schaltfläche **Zertifikat erstellen** aus.
 
     ![Schaltfläche zum Erstellen eines Zertifikats für die App-ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
     > [!NOTE]
     > In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
 
-1. Klicken Sie auf **Datei auswählen**, wechseln Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei, und doppelklicken Sie dann auf den Namen des Zertifikats, um es zu laden. Klicken Sie anschließend auf **Weiter**.
+3. Klicken Sie auf **Datei auswählen**, wechseln Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei, und doppelklicken Sie dann auf den Namen des Zertifikats, um es zu laden. Klicken Sie anschließend auf **Weiter**.
 
-1. Wählen Sie nach der Erstellung des Zertifikats im Portal die Schaltfläche **Herunterladen** aus. Speichern Sie das Zertifikat, und merken Sie sich den Speicherort.
+4. Wählen Sie nach der Erstellung des Zertifikats im Portal die Schaltfläche **Herunterladen** aus. Speichern Sie das Zertifikat, und merken Sie sich den Speicherort.
 
     ![Downloadseite für das generierte Zertifikat](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
     > [!NOTE]
     > Standardmäßig heißt das heruntergeladene Entwicklungszertifikat **aps_development.cer**.
 
-1. Doppelklicken Sie auf dem heruntergeladenen Pushzertifikat **aps_development.cer**. Das neue Zertifikat wird im Schlüsselbund installiert, wie in der folgenden Abbildung gezeigt:
+5. Doppelklicken Sie auf dem heruntergeladenen Pushzertifikat **aps_development.cer**. Das neue Zertifikat wird im Schlüsselbund installiert, wie in der folgenden Abbildung gezeigt:
 
     ![Zertifikatliste der Schlüsselbundverwaltung mit neuem Zertifikat](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > Der Name in Ihrem Zertifikat kann anders lauten, ihm wird jedoch **Apple Development iOS Push Services** vorangestellt.
 
-1. Klicken Sie in der Kategorie **Zertifikate** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Wählen Sie die Option **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und wählen Sie dann die Option **Speichern**.
+6. Klicken Sie in der Kategorie **Zertifikate** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Wählen Sie die Option **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und wählen Sie dann die Option **Speichern**.
 
     ![Exportieren des Zertifikats im p12-Format](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
     > [!NOTE]
     > Dateiname und Speicherort Ihrer P12-Datei können sich von den in diesem Tutorial abgebildeten Informationen unterscheiden.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>OPTION 2: Erstellen eines P8-Zertifikats, das für die tokenbasierte Authentifizierung verwendet werden kann
+
+1. Notieren Sie sich folgende Angaben:
+
+    - **App-ID-Präfix** (dies ist eine **Team-ID**)
+    - **Bundle-ID**
+    
+2. Klicken Sie in **Zertifikate, Bezeichner und Profile** auf **Schlüssel**.
+
+   > [!NOTE]
+   > Wenn Sie bereits einen Schlüssel für **APNs** konfiguriert haben, können Sie das P8-Zertifikat wiederverwenden, das Sie direkt nach der Erstellung heruntergeladen haben. In diesem Fall können Sie die Schritte **3** bis **5** überspringen.
+
+3. Klicken Sie auf die Schaltfläche **+** (oder die Schaltfläche **Schlüssel erstellen**), um einen neuen Schlüssel zu erstellen.
+4. Geben Sie einen geeigneten Wert für den **Schlüsselnamen** an, aktivieren Sie die Option **Apple Push Notification Service (APNs)** , und klicken Sie dann auf **Weiter** und auf dem nächsten Bildschirm auf **Registrieren**.
+5. Klicken Sie auf **Herunterladen**, und verschieben Sie die **P8**-Datei (mit dem Präfix *AuthKey_* ) in ein sicheres lokales Verzeichnis. Klicken Sie dann auf **Fertig**.
+
+   > [!NOTE] 
+   > Bewahren Sie die P8-Datei an einem sicheren Ort auf (und speichern Sie eine Sicherungskopie). Nach dem Herunterladen kann der Schlüssel nicht erneut heruntergeladen werden, weil die Kopie auf dem Server gelöscht wird.
+  
+6. Klicken Sie unter **Schlüssel** auf den gerade erstellten Schlüssel (oder auf einen vorhandenen Schlüssel, falls Sie stattdessen einen solchen verwenden möchten).
+7. Notieren Sie sich den Wert der **Schlüssel-ID**.
+8. Öffnen Sie das P8-Zertifikat in einer geeigneten Anwendung wie z. B. [**Visual Studio Code**](https://code.visualstudio.com), und notieren Sie sich den Schlüsselwert. Dies ist der Wert zwischen **-----BEGIN PRIVATE KEY-----** und **-----END PRIVATE KEY-----** .
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Dies ist der **Tokenwert**, der später verwendet wird, um den **Notification Hub** zu konfigurieren. 
+
+Nach Abschluss dieser Schritte verfügen Sie über folgende Informationen, die Sie später unter [Konfigurieren Ihres Notification Hubs mit APNs-Informationen](#configure-your-notification-hub-with-apns-information) verwenden werden:
+
+- **Team-ID** (siehe Schritt 1)
+- **Bundle-ID** (siehe Schritt 1)
+- **Schlüssel-ID** (siehe Schritt 7)
+- **Tokenwert**, also der P8-Schlüsselwert (siehe Schritt 8)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Erstellen eines Bereitstellungsprofils für die App
 
@@ -153,13 +202,18 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
 ## <a name="create-a-notification-hub"></a>Erstellen eines Notification Hubs
 
-In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die Authentifizierung mit APNs unter Verwendung des zuvor erstellten Pushzertifikats vom Typ „.p12“. Wenn Sie einen bereits erstellten Notification Hub verwenden möchten, können Sie mit Schritt 5 fortfahren.
+In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die Authentifizierung mit APNs unter Verwendung des zuvor erstellten P12-Pushzertifikats oder der tokenbasierten Authentifizierung. Wenn Sie einen bereits erstellten Notification Hub verwenden möchten, können Sie mit Schritt 5 fortfahren.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurieren Ihres Notification Hubs mit APNs-Informationen
 
-1. Wählen Sie unter **Notification Services** die Option **Apple (APNS)** aus.
+Wählen Sie unter **Benachrichtigungsdienste** die Option **Apple (APNs)** aus, und führen Sie dann je nach der Methode, die Sie im Abschnitt [Erstellen eines Zertifikats für Notification Hubs](#creating-a-certificate-for-notification-hubs) ausgewählt haben, die entsprechenden Schritte aus.  
+
+> [!NOTE]
+> Verwenden Sie **Produktion** nur dann als **Anwendungsmodus**, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>OPTION 1: Verwenden eines P12-Zertifikats
 
 1. Wählen Sie **Certificate**aus.
 
@@ -169,10 +223,23 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
 
 1. Geben Sie bei Bedarf das richtige Kennwort an.
 
-1. Wählen Sie den Modus **Sandbox** aus. Verwenden Sie den Modus **Produktion** nur dann, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
+1. Wählen Sie den Modus **Sandbox** aus.
 
     ![Konfigurieren der APNs-Zertifizierung im Azure-Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. Wählen Sie **Speichern** aus.
+
+### <a name="option-2-using-token-based-authentication"></a>OPTION 2: Verwenden der tokenbasierten Authentifizierung
+
+1. Wählen Sie **Token** aus.
+1. Geben Sie die folgenden Werte ein, die Sie zuvor abgerufen haben:
+
+    - **Schlüssel-ID**
+    - **Bundle-ID**
+    - **Team-ID**
+    - **Token** 
+
+1. Wählen Sie **Sandbox** aus.
+1. Wählen Sie **Speichern** aus. 
 
 Sie haben Ihren Notification Hub mit APNs-Informationen konfiguriert. Sie verfügen außerdem über die Verbindungszeichenfolgen, die Sie zum Registrieren Ihrer App und zum Senden von Pushbenachrichtigungen benötigen.

@@ -10,12 +10,12 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.date: 11/05/2019
-ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433464"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010850"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Schnellstart: Erstellen einer Python-App, die Azure Cache for Redis verwendet
 
@@ -54,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Für Azure Cache for Redis ab Version 3.0 wird SSL-Zertifikatüberprüfung erzwungen. Beim Herstellen der Verbindung mit Azure Cache for Redis muss „ssl_ca_certs“ explizit festgelegt werden. Im Fall von Red Hat Linux befindet sich „ssl_ca_certs“ im Zertifikatsmodul */etc/pki/tls/certs/ca-bundle.crt*.
+> Für Azure Cache for Redis, Version 3.0 oder höher, wird die TLS/SSL-Zertifikatüberprüfung erzwungen. Beim Herstellen der Verbindung mit Azure Cache for Redis muss „ssl_ca_certs“ explizit festgelegt werden. Im Fall von Red Hat Linux befindet sich „ssl_ca_certs“ im Zertifikatsmodul */etc/pki/tls/certs/ca-bundle.crt*.
 
 ## <a name="create-a-python-sample-app"></a>Erstellen einer Python-Beispiel-App
 

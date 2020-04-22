@@ -6,26 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75866895"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383687"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Zugreifen auf Blob- oder Warteschlangendaten über das Azure-Portal
 
 Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blob- oder Warteschlangendaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
 
+Sie können auch angeben, wie ein einzelner Blob-Uploadvorgang im Azure-Portal autorisiert werden soll. Das Portal verwendet standardmäßig die Methode, die Sie zum Autorisieren von Blob-Uploadvorgängen verwenden. Sie haben jedoch die Möglichkeit, diese Einstellung beim Hochladen eines Blobs zu ändern.
+
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Für den Zugriff auf Blob- oder Warteschlangendaten benötigte Berechtigungen
 
 Je nachdem, wie Sie den Zugriff auf Blob- oder Warteschlangendaten im Azure-Portal autorisieren möchten, benötigen Sie spezielle Berechtigungen. Meist werden diese Berechtigungen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bereitgestellt. Weitere Informationen dazu finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../../role-based-access-control/overview.md).
 
-### <a name="account-access-key"></a>Kontozugriffsschlüssel
+### <a name="use-the-account-access-key"></a>Verwenden des Kontozugriffsschlüssels
 
 Für den Zugriff auf Blob- und Warteschlangendaten mit dem Kontozugriffsschlüssel muss Ihnen eine RBAC-Rolle zugewiesen sein, die die RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** einschließt. Bei dieser RBAC-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für **Microsoft.Storage/storageAccounts/listkeys/action**:
 
@@ -36,9 +38,9 @@ Für den Zugriff auf Blob- und Warteschlangendaten mit dem Kontozugriffsschlüss
 Wenn Sie versuchen, im Azure-Portal auf Blob- oder Warteschlangendaten zuzugreifen, prüft das Portal zunächst, ob Ihnen eine Rolle mit **Microsoft.Storage/storageAccounts/listkeys/action** zugewiesen ist. Wenn Ihnen eine Rolle mit dieser Aktion zugewiesen wurde, verwendet das Portal den Kontoschlüssel für den Zugriff auf Blob- und Warteschlangendaten. Wenn Ihnen keine Rolle mit dieser Aktion zugewiesen wurde, versucht das Portal, über Ihr Azure AD-Konto auf Daten zuzugreifen.
 
 > [!NOTE]
-> Die zu „Administrator für klassisches Abonnement“ gehörigen Rollen „Dienstadministrator“ und „Co-Administrator“ schließen die Entsprechung der Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) ein. Die Rolle **Besitzer** schließt alle Aktionen einschließlich **Microsoft.Storage/storageAccounts/listkeys/action** ein, sodass ein Benutzer mit einer dieser Administratorrollen auch mit dem Kontoschlüssel auf Blob- und Warteschlangendaten zugreifen kann. Weitere Informationen finden Sie unter [Administrator für klassisches Abonnement](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Die zu „Administrator für klassisches Abonnement“ gehörigen Rollen „Dienstadministrator“ und „Co-Administrator“ schließen die Entsprechung der Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) ein. Die Rolle **Besitzer** schließt alle Aktionen einschließlich **Microsoft.Storage/storageAccounts/listkeys/action** ein, sodass ein Benutzer mit einer dieser Administratorrollen auch mit dem Kontoschlüssel auf Blob- und Warteschlangendaten zugreifen kann. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
-### <a name="azure-ad-account"></a>Azure AD-Konto
+### <a name="use-your-azure-ad-account"></a>Verwenden des Azure AD-Kontos
 
 Für den Zugriff auf Blob- oder Warteschlangendaten im Azure-Portal über Ihr Azure AD-Konto müssen Sie die beiden folgenden Voraussetzungen erfüllen:
 
@@ -54,7 +56,7 @@ Es folgen die integrierten Rollen, die den Zugriff auf Ihre Blob- oder Warteschl
 - [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Weist ausschließlich Leseberechtigungen für Blobs zu.
 - [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Weist Lese-, Schreib- und Löschberechtigungen für Warteschlangen zu.
 - [Storage-Warteschlangendatenleser](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Weist ausschließlich Leseberechtigungen für Warteschlangen zu.
-    
+
 Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integrierten Rollen gebotenen Berechtigungen unterstützen. Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../../role-based-access-control/custom-roles.md) und [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../../role-based-access-control/role-definitions.md).
 
 Das Auflisten von Warteschlangen wird von der Rolle „Administrator für klassisches Abonnement“ nicht unterstützt. Um Warteschlangen auflisten zu können, muss einem Benutzer die Azure Resource Manager-Rolle **Leser**, die Rolle **Storage-Warteschlangendatenleser** oder die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen sein.
@@ -74,7 +76,7 @@ Wenn Sie zu einem Container oder einer Warteschlange navigieren, zeigt das Azure
 
 Die Beispiele in diesem Abschnitt zeigen den Zugriff auf einen Container und dessen Blobs, aber das Portal zeigt die gleiche Meldung an, wenn Sie auf eine Warteschlange und deren Nachrichten zugreifen oder Warteschlangen auflisten.
 
-### <a name="account-access-key"></a>Kontozugriffsschlüssel
+### <a name="authenticate-with-the-account-access-key"></a>Authentifizierung mit dem Kontozugriffsschlüssel
 
 Wenn Sie sich mit dem Kontozugriffsschlüssel authentifizieren, wird im Portal **Zugriffsschlüssel** als Authentifizierungsmethode angegeben:
 
@@ -86,7 +88,7 @@ Um zur Verwendung des Azure AD-Kontos zu wechseln, klicken Sie auf den in der Ab
 
 Beachten Sie, dass in der Liste keine Blobs enthalten sind, wenn Ihrem Azure AD-Konto die Berechtigung zu ihrer Anzeige fehlt. Klicken Sie auf den Link **Zum Zugriffsschlüssel wechseln**, um erneut den Zugriffsschlüssel für die Authentifizierung zu nutzen.
 
-### <a name="azure-ad-account"></a>Azure AD-Konto
+### <a name="authenticate-with-your-azure-ad-account"></a>Authentifizierung mit dem Azure AD-Konto
 
 Wenn Sie sich mit Ihrem Azure AD-Konto authentifizieren, wird im Portal **Azure AD-Benutzerkonto** als Authentifizierungsmethode angegeben:
 
@@ -97,6 +99,19 @@ Um zur Verwendung des Zugriffsschlüssels zu wechseln, klicken Sie auf den in de
 ![Angezeigter Fehler, wenn Sie keinen Zugriff auf den Kontoschlüssel haben](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
 Beachten Sie, dass in der Liste keine Blobs enthalten sind, wenn Sie keinen Zugriff auf die Kontoschlüssel haben. Klicken Sie auf den Link **Zum Azure AD-Benutzerkonto wechseln**, um erneut das Azure AD-Konto für die Authentifizierung zu nutzen.
+
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>Angeben, wie ein Blob-Uploadvorgang autorisiert werden soll
+
+Wenn Sie ein Blob aus dem Azure-Portal hochladen, können Sie angeben, ob Sie diesen Vorgang mit dem Kontozugriffsschlüssel oder mit Ihren Azure AD-Anmeldeinformationen authentifizieren und autorisieren möchten. Das Portal verwendet wie unter [Bestimmen der aktuellen Authentifizierungsmethode](#determine-the-current-authentication-method) beschrieben standardmäßig die aktuelle Authentifizierungsmethode.
+
+So geben Sie an, wie ein Blob-Uploadvorgang autorisiert werden soll
+
+1. Navigieren Sie im Azure-Portal zu dem Container, in den Sie ein Blob hochladen möchten.
+1. Wählen Sie die Schaltfläche **Hochladen**.
+1. Erweitern Sie den Abschnitt **Erweitert**, um die erweiterten Eigenschaften für das Blob anzuzeigen.
+1. Geben Sie im Feld **Authentifizierungstyp** an, ob Sie den Uploadvorgang mithilfe Ihres Azure AD-Kontos oder mit dem Kontozugriffsschlüssel autorisieren möchten, wie in der folgenden Abbildung dargestellt:
+
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="Screenshot: Ändern der Autorisierungsmethode beim Hochladen von Blobs":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

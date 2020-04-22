@@ -3,18 +3,18 @@ title: 'Schnellstart: Automatisierte VM-Bereitstellung mit Azure App Configurati
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure PowerShell-Modul und Azure Resource Manager-Vorlagen verwenden, um einen Azure App Configuration-Speicher bereitzustellen. Verwenden Sie die Werte im Speicher, um eine VM bereitzustellen.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126384"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309095"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration und Resource Manager-Vorlage
 
@@ -152,6 +152,9 @@ Sie können einen App Configuration-Speicher erstellen, indem Sie eine Azure Res
 ## <a name="deploy-vm-using-stored-key-values"></a>Bereitstellen eines virtuellen Computers mit gespeicherten Schlüsselwerten
 
 Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit einer Azure Resource Manager-Vorlage einen virtuellen Computer bereitstellen. In der Vorlage wird auf die von Ihnen erstellten Schlüssel **windowsOsVersion** und **diskSizeGB** verwiesen.
+
+> [!WARNING]
+> ARM-Vorlagen können nicht auf Schlüssel in einem App Configuration-Speicher verweisen, für den Private Link aktiviert ist.
 
 1. Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in eine neue Datei mit dem Namen *azuredeploy.json* ein, oder laden Sie die Datei von der Seite mit den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json) herunter.
 
@@ -423,13 +426,13 @@ Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit ein
    |storageAccountName|Ein eindeutiger Name für ein Speicherkonto, das dem virtuellen Computer zugeordnet ist.|
    |domainNameLabel|Ein eindeutiger Domänenname.|
 
-1. Führen Sie in Ihrem PowerShell-Fenster den folgenden Befehl aus, um den Azure App Configuration-Speicher bereitzustellen. Vergessen Sie nicht, den Ressourcengruppennamen, den Pfad der Vorlagendatei und den Pfad der Vorlagenparameterdatei zu ersetzen.
+1. Führen Sie in Ihrem PowerShell-Fenster den folgenden Befehl aus, um die VM bereitzustellen. Vergessen Sie nicht, den Ressourcengruppennamen, den Pfad der Vorlagendatei und den Pfad der Vorlagenparameterdatei zu ersetzen.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Glückwunsch! Sie haben mithilfe von Konfigurationen, die in Azure App Configuration gespeichert sind, einen virtuellen Computer bereitgestellt.

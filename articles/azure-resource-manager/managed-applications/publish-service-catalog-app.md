@@ -2,23 +2,21 @@
 title: Veröffentlichen einer verwalteten Dienstkatalog-App
 description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist.
 author: tfitzmac
-ms.topic: tutorial
-ms.date: 10/04/2018
+ms.topic: quickstart
+ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473012"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391502"
 ---
-# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Tutorial: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Diese Schnellstartanleitung enthält eine Einführung in die Verwendung von [Azure Managed Applications](overview.md). Sie können verwaltete Azure-Anwendungen erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind.
 
-Sie können [verwaltete Azure-Anwendungen](overview.md) erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind. Eine IT-Abteilung kann beispielsweise verwaltete Anwendungen veröffentlichen, die die Standards der Organisation erfüllen. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
-
-Um eine verwaltete Anwendung im Azure-Dienstkatalog zu veröffentlichen, gehen Sie folgendermaßen vor:
+Um eine verwaltete Anwendung im Dienstkatalog zu veröffentlichen, gehen Sie folgendermaßen vor:
 
 * Erstellen Sie eine Vorlage, die definiert, welche Ressourcen mit der verwalteten Anwendung bereitgestellt werden.
 * Definieren Sie die Elemente der Benutzeroberfläche für das Portal, wenn Sie die verwaltete Anwendung bereitstellen.
@@ -26,13 +24,9 @@ Um eine verwaltete Anwendung im Azure-Dienstkatalog zu veröffentlichen, gehen S
 * Entscheiden Sie, welche Benutzer, Gruppen oder Anwendungen Zugriff auf die Ressourcengruppe im Benutzerabonnement benötigen.
 * Erstellen Sie die verwaltete Anwendungsdefinition, die auf das ZIP-Paket verweist und Zugriff auf die Identität anfordert.
 
-Für diesen Artikel verfügt die verwaltete Anwendung nur über ein Speicherkonto. Es soll die Schritte zum Veröffentlichen einer verwalteten Anwendung veranschaulichen. Vollständige Beispiele finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
+## <a name="create-the-arm-template"></a>Erstellen der ARM-Vorlage
 
-Für die PowerShell-Beispiele in diesem Artikel wird mindestens die Azure PowerShell-Version 6.2 benötigt. [Aktualisieren Sie Ihre Version](/powershell/azure/install-Az-ps), sofern erforderlich.
-
-## <a name="create-the-resource-template"></a>Erstellen der Ressourcenvorlage
-
-Jede Definition einer verwalteten Anwendung enthält eine Datei namens **mainTemplate.json**. Darin definieren Sie die bereitzustellenden Azure-Ressourcen. Die Vorlage unterscheidet sich nicht von anderen regulären Resource Manager-Vorlagen.
+Jede Definition einer verwalteten Anwendung enthält eine Datei namens **mainTemplate.json**. Darin definieren Sie die bereitzustellenden Azure-Ressourcen. Die Vorlage unterscheidet sich nicht von regulären ARM-Vorlagen (Azure Resource Manager).
 
 Erstellen Sie eine Datei mit dem Namen **mainTemplate.json**. Beim Namen wird die Groß- und Kleinschreibung berücksichtigt.
 
@@ -60,20 +54,20 @@ Fügen Sie Ihrer Datei den folgenden JSON-Code hinzu. Er definiert die Parameter
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2016-01-01",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
-            "kind": "Storage",
+            "kind": "StorageV2",
             "properties": {}
         }
     ],
     "outputs": {
         "storageEndpoint": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
         }
     }
 }
@@ -81,9 +75,9 @@ Fügen Sie Ihrer Datei den folgenden JSON-Code hinzu. Er definiert die Parameter
 
 Speichern Sie die Datei „mainTemplate.json“.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definieren Ihrer Erstellungsoberfläche mithilfe von „CreateUiDefinition.json“
+## <a name="define-your-create-experience"></a>Definieren Ihrer Benutzeroberfläche zur Erstellung
 
-Als Herausgeber definieren Sie Ihre Erstellungsoberfläche mithilfe der Datei **createUiDefinition.json**. Mit dieser Datei wird die Oberfläche für Benutzer generiert, die verwaltete Anwendungen erstellen. Sie definieren mithilfe von [Steuerelementen](create-uidefinition-elements.md) (etwa Dropdownmenüs, Textfeldern und Kennwortfeldern), wie Benutzer Werte für die einzelnen Parameter eingeben.
+Als Herausgeber definieren Sie die Portalbenutzeroberfläche zum Erstellen der verwalteten Anwendung. Die **createUiDefinition.json**-Datei generiert die Portalbenutzeroberfläche. Sie definieren mithilfe von [Steuerelementen](create-uidefinition-elements.md) (etwa Dropdownmenüs, Textfeldern und Kennwortfeldern), wie Benutzer Werte für die einzelnen Parameter eingeben.
 
 Erstellen Sie eine Datei mit dem Namen **createUiDefinition.json**. (Bei diesem Namen muss die Groß-/Kleinschreibung beachtet werden.)
 
@@ -142,59 +136,123 @@ Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im A
 
 ## <a name="package-the-files"></a>Erstellen eines Pakets aus den Dateien
 
-Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu. Die zwei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie beim Erstellen der Definition der verwalteten Anwendung eine Fehlermeldung mit dem Hinweis, dass die erforderlichen Dateien nicht vorhanden sind. 
+Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu. Die zwei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie beim Erstellen der Definition der verwalteten Anwendung eine Fehlermeldung mit dem Hinweis, dass die erforderlichen Dateien nicht vorhanden sind.
 
-Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. 
+Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. Sie müssen einen eindeutigen Namen für das Speicherkonto angeben.
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
+
+$storageAccount = New-AzStorageAccount `
+  -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage
+  -Kind StorageV2
 
 $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent `
+  -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name storageGroup --location eastus
+
+az storage account create \
+    --name mystorageaccount \
+    --resource-group storageGroup \
+    --location eastus \
+    --sku Standard_LRS \
+    --kind StorageV2
+
+az storage container create \
+    --account-name mystorageaccount \
+    --name appcontainer \
+    --public-access blob
+
+az storage blob upload \
+    --account-name mystorageaccount \
+    --container-name appcontainer \
+    --name "app.zip" \
+    --file "D:\myapplications\app.zip"
+
+```
+
+---
+
 ## <a name="create-the-managed-application-definition"></a>Erstellen der Definition für die verwaltete Anwendung
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Erstellen einer Azure Active Directory-Benutzergruppe oder -Anwendung
 
-Der zweite Schritt besteht darin, eine Benutzergruppe oder Anwendung für das Verwalten der Ressourcen für den Kunden zu erstellen. Diese Benutzergruppe oder Anwendung verfügt über Berechtigungen für die verwaltete Ressourcengruppe, die durch die zugewiesene Rolle festgelegt sind. Es kann sich um eine beliebige integrierte rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) wie „Besitzer“ oder „Mitwirkender“ handeln. Sie können einem einzelnen Benutzer auch Berechtigungen zum Verwalten der Ressourcen zuweisen, in der Regel weisen Sie diese Berechtigungen jedoch einer Benutzergruppe zu. Weitere Informationen zum Erstellen einer neuen Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Der zweite Schritt besteht darin, eine Benutzergruppe, einen Benutzer oder eine Anwendung für das Verwalten der Ressourcen für den Kunden zu erstellen. Diese Identität verfügt über Berechtigungen für die verwaltete Ressourcengruppe, die durch die zugewiesene Rolle festgelegt sind. Es kann sich um eine beliebige integrierte rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) wie „Besitzer“ oder „Mitwirkender“ handeln. Weitere Informationen zum Erstellen einer neuen Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Sie benötigen zum Verwalten der Ressourcen die Objekt-ID der Benutzergruppe. 
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+groupid=$(az ad group show --group mygroup --query objectId --output tsv)
+```
+
+---
 
 ### <a name="get-the-role-definition-id"></a>Abrufen der Rollendefinitions-ID
 
 Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel verwenden Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+ownerid=$(az role definition list --name Owner --query [].name --output tsv)
+```
+
+---
 
 ### <a name="create-the-managed-application-definition"></a>Erstellen der Definition für die verwaltete Anwendung
 
 Falls Sie noch nicht über eine Ressourcengruppe zum Speichern der Definition Ihrer verwalteten Anwendung verfügen, erstellen Sie jetzt eine:
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name appDefinitionGroup --location westcentralus
+```
+
+---
+
 Erstellen Sie nun die Definitionsressource für die verwaltete Anwendung.
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
 New-AzManagedApplicationDefinition `
@@ -208,18 +266,48 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+blob=$(az storage blob url --account-name mystorageaccount --container-name appcontainer --name app.zip --output tsv)
+
+az managedapp definition create \
+  --name "ManagedStorage" \
+  --location "westcentralus" \
+  --resource-group appDefinitionGroup \
+  --lock-level ReadOnly \
+  --display-name "Managed Storage Account" \
+  --description "Managed Azure Storage Account" \
+  --authorizations "$groupid:$ownerid" \
+  --package-file-uri "$blob"
+```
+
+---
+
+Nachdem die Ausführung des Befehls abgeschlossen ist, verfügen Sie in Ihrer Ressourcengruppe über eine Definition für die verwaltete Anwendung.
+
+Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
+
+* **Ressourcengruppe**: Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
+* **Sperrebene**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
+* **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Wenn mehr als ein Wert erforderlich ist, können Sie diese in der Form `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` angeben. Die Werte werden hierbei durch ein Leerzeichen voneinander getrennt.
+* **Paketdatei-URI**: Der Speicherort eines ZIP-Pakets, das die erforderlichen Dateien enthält.
+
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Bereitstellen eines eigenen Speichers (Bring Your Own Storage) für die Definition der verwalteten Anwendung
+
 Sie können die Definition der verwalteten Anwendung in einem von Ihnen während der Erstellung angegebenen Speicherkonto speichern. Dadurch können sein Speicherort und der Zugriff gemäß Ihrer gesetzlichen Anforderungen vollständig von Ihnen verwaltet werden.
 
 > [!NOTE]
 > Die Bereitstellung eines eigenen Speichers wird nur bei Bereitstellungen der Definition der verwalteten Anwendung über ARM-Vorlagen oder REST-APIs unterstützt.
 
 ### <a name="select-your-storage-account"></a>Wählen Sie Ihr Speicherkonto aus.
+
 Sie müssen [ein Speicherkonto erstellen](../../storage/common/storage-account-create.md), in dem die Definition der verwalteten Anwendung zur Verwendung mit dem Dienstkatalog gespeichert wird.
 
 Kopieren Sie die Ressourcen-ID des Speicherkontos. Sie wird später bei der Bereitstellung der Definition verwendet.
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Festlegen der Rollenzuweisung für „Applianceressourcenanbieter“ in Ihrem Speicherkonto
+
 Bevor die Definition der verwalteten Anwendung in Ihrem Speicherkonto bereitgestellt werden kann, müssen Sie der Rolle **Applianceressourcenanbieter** Berechtigungen vom Typ „Mitwirkender“ zuweisen, damit die Definitionsdateien in den Container Ihres Speicherkontos geschrieben werden können.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
@@ -310,11 +398,13 @@ Sie können überprüfen, ob die Anwendungsdefinitionsdateien in Ihrem bereitges
 > [!NOTE]
 > Um für mehr Sicherheit zu sorgen, können Sie eine Definition für verwaltete Anwendungen erstellen und in einem [Azure-Speicherkontoblob mit aktivierter Verschlüsselung](../../storage/common/storage-service-encryption.md) speichern. Der Definitionsinhalt wird mithilfe der Verschlüsselungsoptionen des Speicherkontos verschlüsselt. Nur Benutzer mit Berechtigungen für die Datei können die Definition im Dienstkatalog anzeigen.
 
-### <a name="make-sure-users-can-see-your-definition"></a>Sicherstellen, dass Benutzer Ihre Definition sehen können
+## <a name="make-sure-users-can-see-your-definition"></a>Sicherstellen, dass Benutzer Ihre Definition sehen können
 
 Sie haben zwar Zugriff auf die Definition der verwalteten Anwendung, möchten aber sicherstellen, dass andere Benutzer in Ihrer Organisation darauf zugreifen können. Erteilen Sie ihnen mindestens die Leserrolle für die Definition. Diese Zugriffsebene haben sie möglicherweise vom Abonnement oder von der Ressourcengruppe geerbt. Informationen zum Überprüfen, wer Zugriff auf die Definition hat, sowie zum Hinzufügen von Benutzern oder Gruppen finden Sie unter [Manage access using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md) (Verwalten des Zugriffs mithilfe von RBAC und Azure-Portal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Veröffentlichen der verwalteten Anwendung im Azure Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](publish-marketplace-app.md).
-* Informationen zum Bereitstellen einer Instanz der verwalteten Anwendung finden Sie unter [Deploy service catalog app through Azure portal](deploy-service-catalog-quickstart.md) (Bereitstellen einer Dienstkatalog-App über das Azure-Portal).
+Sie haben die Definition für die verwaltete Anwendung veröffentlicht. Als Nächstes erfahren Sie, wie Sie eine Instanz dieser Definition bereitstellen.
+
+> [!div class="nextstepaction"]
+> [Schnellstart: Bereitstellen einer Dienstkatalog-App](deploy-service-catalog-quickstart.md)

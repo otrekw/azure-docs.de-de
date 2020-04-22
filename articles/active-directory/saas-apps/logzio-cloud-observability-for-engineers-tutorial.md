@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Logz.io - Cloud Observability for Engineers | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Logz.io - Cloud Observability for Engineers konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Logz.io – Azure AD-Integration | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Logz.io – Azure AD-Integration konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 04/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1c929ffa790d2abe3a1922cecc2175cd7a8e12
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: e192a8e97e82ba26ffa7527cb12219aeaf2a80cd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385272"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259424"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---cloud-observability-for-engineers"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Logz.io - Cloud Observability for Engineers
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Logz.io – Azure AD-Integration
 
-In diesem Tutorial erfahren Sie, wie Sie Logz.io - Cloud Observability for Engineers in Azure Active Directory (Azure AD) integrieren. Die Integration von Logz.io - Cloud Observability for Engineers in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Logz.io – Azure AD-Integration in Azure Active Directory (Azure AD) integrieren. Die Integration von Logz.io – Azure AD-Integration in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Logz.io - Cloud Observability for Engineers hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Logz.io - Cloud Observability for Engineers anzumelden.
+* Sie können in Azure AD steuern, wer Zugriff auf Logz.io – Azure AD-Integration haben soll.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Logz.io – Azure AD-Integration anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
@@ -37,44 +37,44 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Abonnement für Logz.io - Cloud Observability for Engineers, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Logz.io – Azure AD-Integration-Abonnement, für das einmaliges Anmelden aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Logz.io - Cloud Observability for Engineers unterstützt **IDP-initiiertes** einmaliges Anmelden.
-* Nachdem Sie Logz.io - Cloud Observability for Engineers konfiguriert haben, können Sie die Sitzungssteuerung erzwingen, um vertrauliche Unternehmensdaten in Echtzeit vor Exfiltration und Infiltration zu schützen. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Logz.io – Azure AD-Integration unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* Nach dem Konfigurieren von Logz.io – Azure AD-Integration können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="adding-logzio---cloud-observability-for-engineers-from-the-gallery"></a>Hinzufügen von Logz.io - Cloud Observability for Engineers aus dem Katalog
+## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>Hinzufügen von Logz.io – Azure AD-Integration aus dem Katalog
 
-Zum Konfigurieren der Integration von Logz.io - Cloud Observability for Engineers in Azure AD müssen Sie Logz.io - Cloud Observability for Engineers aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Logz.io – Azure AD-Integration in Azure AD müssen Sie Logz.io – Azure AD-Integration über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Logz.io - Cloud Observability for Engineers** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Logz.io - Cloud Observability for Engineers** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Logz.io – Azure AD-Integration** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Logz.io – Azure AD-Integration** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---cloud-observability-for-engineers"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Logz.io - Cloud Observability for Engineers
+## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---azure-ad-integration"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Logz.io – Azure AD-Integration
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Logz.io - Cloud Observability for Engineers mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Logz.io - Cloud Observability for Engineers eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Logz.io – Azure AD-Integration unter Verwendung eines Testbenutzers namens **B. Simon**. Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Logz.io – Azure AD-Integration eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Logz.io - Cloud Observability for Engineers die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Logz.io – Azure AD-Integration zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Logz.io - Cloud Observability for Engineers](#configure-logzio-cloud-observability-for-engineers-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Testbenutzers für Logz.io Cloud Observability for Engineers](#create-logzio-cloud-observability-for-engineers-test-user)** , um eine Entsprechung von B. Simon in Logz.io - Cloud Observability for Engineers zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Logz.io – Azure AD-Integration](#configure-logzio-azure-ad-integration-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Testbenutzers für Logz.io – Azure AD-Integration](#create-logzio-azure-ad-integration-test-user)** , um in Logz.io – Azure AD-Integration eine Entsprechung von Britta Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Logz.io - Cloud Observability for Engineers** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Logz.io – Azure AD-Integration** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -87,13 +87,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://logzio.auth0.com/login/callback?connection=CONNECTION-NAME`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Client von Logz.io - Cloud Observability for Engineers](mailto:help@logz.io). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Kundensupportteam von Logz.io – Azure AD-Integration](mailto:help@logz.io), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Die Anwendung Logz.io - Cloud Observability for Engineers erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+1. Logz.io – Azure AD-Integration erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
     ![image](common/default-attributes.png)
 
-1. Darüber hinaus erwartet die Anwendung Logz.io - Cloud Observability for Engineers, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+1. Darüber hinaus erwartet Logz.io – Azure AD-Integration, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
     
     | Name |  Quellattribut|
     | ---------------| --------- |
@@ -105,7 +105,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Kopieren Sie im Abschnitt **Logz.io - Cloud Observability for Engineers einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Logz.io – Azure AD-Integration einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -123,10 +123,10 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Logz.io - Cloud Observability for Engineers gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Logz.io – Azure AD-Integration gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **Logz.io - Cloud Observability for Engineers** aus.
+1. Wählen Sie in der Anwendungsliste die Option **Logz.io – Azure AD-Integration** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
@@ -139,19 +139,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-logzio-cloud-observability-for-engineers-sso"></a>Konfigurieren des einmaligen Anmeldens für Logz.io - Cloud Observability for Engineers
+## <a name="configure-logzio-azure-ad-integration-sso"></a>Konfigurieren des einmaligen Anmeldens für Logz.io – Azure AD-Integration
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Logz.io - Cloud Observability for Engineers** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Logz.io - Cloud Observability for Engineers](mailto:help@logz.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Logz.io – Azure AD-Integration** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Logz.io – Azure AD-Integration](mailto:help@logz.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-logzio-cloud-observability-for-engineers-test-user"></a>Erstellen eines Testbenutzers für Logz.io Cloud Observability for Engineers
+### <a name="create-logzio-azure-ad-integration-test-user"></a>Erstellen eines Testbenutzers für Logz.io – Azure AD-Integration
 
-In diesem Abschnitt erstellen Sie in Logz.io - Cloud Observability for Engineers einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das  [Supportteam von Logz.io - Cloud Observability for Engineers](mailto:help@logz.io), um die Benutzer auf der Plattform von Logz.io - Cloud Observability for Engineers hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Logz.io – Azure AD-Integration einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Supportteam von Logz.io – Azure AD-Integration](mailto:help@logz.io) zusammen, um Benutzer zur Logz.io – Azure AD-Integration-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Logz.io - Cloud Observability for Engineers“ klicken, sollten Sie automatisch bei der Instanz von Logz.io - Cloud Observability for Engineers angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Logz.io – Azure AD-Integration“ klicken, sollten Sie automatisch bei der Logz.io – Azure AD-Integration-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -161,7 +161,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Logz.io - Cloud Observability for 
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Logz.io - Cloud Observability for Engineers mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+- [Testen von Logz.io – Azure AD-Integration mit Azure AD](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

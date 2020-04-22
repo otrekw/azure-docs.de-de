@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288800"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273085"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Registerkarte „Testversion“ für virtuelle Computer
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure Virtual Machines-Angebots](https://aka.ms/CreateAzureVMoffer), um Ihre migrierten Angebote zu verwalten.
 
 Auf der Registerkarte **Testversion** der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden eine praktische, interaktive Demonstration der wichtigen Features und Vorteile Ihres Produkts in einem standardisierten Szenario bereitstellen.  „Testversion“ ist ein optionales Feature für Angebotstypen, die Testversionen unterstützen.  Für die richtige Implementierung von „Testversion“ werden unterstützende Ressourcen benötigt.  Weitere Informationen finden Sie im Artikel [Azure Marketplace Test Drive](https://azure.microsoft.com/blog/azure-marketplace-test-drive/) (Azure Marketplace-Testversion).  <!--TD: Replace with migrated version of Test Drive article! -->
 

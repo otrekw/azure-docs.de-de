@@ -4,14 +4,14 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d0dcdf89962c93348b3cf9c1f96221ae8940717d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3802afaa05faea0f16a374f39fe459b4d7b6a1d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444189"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81385004"
 ---
-| Category              | Datenspeicher                                                   | [Kopieraktivität](../articles/data-factory/copy-activity-overview.md) (Quelle/Senke) | [Zuordnen des Datenflusses](../articles/data-factory/concepts-data-flow-overview.md) (Quelle/Senke) | [Lookup-Aktivität](../articles/data-factory/control-flow-lookup-activity.md) | [Aktivität „Metadaten abrufen“](../articles/data-factory/control-flow-get-metadata-activity.md) | [Aktivität löschen](../articles/data-factory/delete-activity.md) |
+| Category              | Datenspeicher                                                   | [Kopieraktivität](../articles/data-factory/copy-activity-overview.md) (Quelle/Senke) | [Zuordnen des Datenflusses](../articles/data-factory/concepts-data-flow-overview.md) (Quelle/Senke) | [Lookup-Aktivität](../articles/data-factory/control-flow-lookup-activity.md) | [Aktivität „Metadaten abrufen“](../articles/data-factory/control-flow-get-metadata-activity.md)/[Aktivität „Prüfung“](../articles/data-factory/control-flow-validation-activity.md) | [Aktivität löschen](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
 | **Azure**             | [Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) | ✓/✓                                                          | ✓/✓ <br> <small>Unterstützte Formate: Text mit Trennzeichen, Parquet, JSON, Avro</small>               | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure Cognitive Search-Index](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |                                                              |

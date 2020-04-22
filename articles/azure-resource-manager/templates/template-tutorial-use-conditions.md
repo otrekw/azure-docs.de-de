@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239189"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260633"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Tutorial: Verwenden von Bedingungen in ARM-Vorlagen
 
@@ -55,23 +55,25 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
-2. Fügen Sie in **Dateiname** die folgende URL ein:
+1. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
+1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
+1. Es gibt sechs Ressourcen, die von der Vorlage definiert werden:
 
-   * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
-5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+    Es empfiehlt sich, vor dem Anpassen einer Vorlage die Referenz zu dieser Vorlage zu lesen.
+
+1. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
 ## <a name="modify-the-template"></a>Ändern der Vorlage
 
@@ -83,12 +85,12 @@ Nehmen Sie zwei Änderungen an der vorhandenen Vorlage vor:
 Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
 1. Öffnen Sie **azuredeploy.json** in Visual Studio Code.
-2. Ersetzen Sie die drei **variables('storageAccountName')** in der gesamten Vorlage durch **parameters('storageAccountName')** .
-3. Entfernen Sie die folgende Variablendefinition:
+1. Ersetzen Sie die drei **variables('storageAccountName')** in der gesamten Vorlage durch **parameters('storageAccountName')** .
+1. Entfernen Sie die folgende Variablendefinition:
 
     ![Diagramm der Bedingungen zum Verwenden der Resource Manager-Vorlage](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. Fügen Sie der Vorlage die folgenden beiden Parameter hinzu:
+1. Fügen Sie am Anfang des Parameterabschnitts die folgenden beiden Parameter hinzu:
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     },
     ```
 
+    Drücken Sie **[ALT]+[UMSCHALT]+ F**, um die Vorlage in Visual Studio Code zu formatieren.
+
     Die aktualisierte Parameterdefinition sieht wie folgt aus:
 
     ![Resource Manager-Nutzungsbedingung](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. Fügen Sie am Anfang der Speicherkontodefinition die folgende Zeile hinzu.
+1. Fügen Sie am Anfang der Speicherkontodefinition die folgende Zeile hinzu.
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     Die aktualisierte Speicherkontodefinition sieht wie folgt aus:
 
     ![Resource Manager-Nutzungsbedingung](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Aktualisieren Sie die Eigenschaft **storageUri** der VM-Ressourcendefinition mit dem folgenden Wert:
+1. Aktualisieren Sie die Eigenschaft **storageUri** der VM-Ressourcendefinition mit dem folgenden Wert:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
     Diese Änderung ist erforderlich, wenn Sie ein vorhandenes Speicherkonto unter einer anderen Ressourcengruppe verwenden.
 
-7. Speichern Sie die Änderungen.
+1. Speichern Sie die Änderungen.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Befolgen Sie die Anweisungen unter [Bereitstellen der Vorlage](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), um Cloud Shell zu öffnen und die geänderte Vorlage hochzuladen, und führen Sie dann das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
+> [!IMPORTANT]
+> Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Der Name darf nur Kleinbuchstaben und Ziffern enthalten, und er darf maximal 24 Zeichen lang sein. Zur Bildung des Speicherkontonamens wird dem Projektnamen „store“ angehängt. Stellen Sie sicher, dass der Projektname und der generierte Speicherkontoname den Anforderungen an den Speicherkontonamen entsprechen.
+
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ Versuchen Sie, eine andere Bereitstellung zu erstellen, bei der **newOrExisting*
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen. Um die Ressourcengruppe zu löschen, wählen Sie **Testen Sie es.** aus, um die Cloud Shell zu öffnen. Um das PowerShell-Skript einzufügen, klicken Sie mit der rechten Maustaste auf den Shellberich, und wählen Sie **Einfügen** aus.
+Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen. Um die Ressourcengruppe zu löschen, wählen Sie **Ausprobieren** aus, um die Cloud Shell zu öffnen. Um das PowerShell-Skript einzufügen, klicken Sie mit der rechten Maustaste auf den Shellberich, und wählen Sie **Einfügen** aus.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

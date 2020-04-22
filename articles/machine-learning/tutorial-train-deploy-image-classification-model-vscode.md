@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224087"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272783"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code
 
@@ -99,71 +99,33 @@ Erstellen eines Computeziels:
 1. Wählen Sie eine VM-Größe aus. Wählen Sie in der Optionenliste **Standard_F2s_v2** aus. Die Größe Ihrer VM wirkt sich auf die Zeitspanne aus, die zum Trainieren der Modelle erforderlich ist. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 1. Nennen Sie Ihr Computeziel **TeamWkspc-com**, und drücken Sie die EINGABETASTE, um Ihr Computeziel zu erstellen.
 
-Nach einigen Minuten wird das neue Computeziel im Knoten *Compute* Ihres Arbeitsbereichs angezeigt.
-
-## <a name="create-a-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
-
-Wenn Sie eine Trainingsausführung an ein Computeziel übermitteln, übermitteln Sie auch die Konfiguration, die zum Ausführen des Trainingsauftrags erforderlich ist. Dazu zählt beispielsweise das Skript, das den Trainingscode und die Python-Abhängigkeiten enthält, die zum Ausführen erforderlich sind.
-
-So erstellen Sie eine Laufzeitkonfiguration:
-
-1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das **Azure**-Symbol aus. Die Azure Machine Learning-Ansicht wird angezeigt. 
-1. Erweitern Sie Ihren Abonnementknoten. 
-1. Erweitern Sie den Knoten **TeamWorkspace**. 
-1. Klicken Sie unter dem Arbeitsbereichsknoten mit der rechten Maustaste auf den Computeknoten **TeamWkspc-com**, und wählen Sie **Laufzeitkonfiguration erstellen** aus.
-
-    > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Laufzeitkonfiguration](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
-
-1. Nennen Sie Ihre Laufzeitkonfiguration **MNIST-rc**, und drücken Sie die EINGABETASTE, um Ihre Laufzeitkonfiguration zu erstellen.
-1. Wählen Sie anschließend den Auftragstyp **TensorFlow Single-Node Training** (TensorFlow: Training auf einem einzelnen Knoten) aus.
-1. Drücken Sie die **EINGABETASTE**, um die Skriptdatei für die Ausführung auf dem Computeziel zu suchen. In diesem Fall ist die Datei `train.py` im Verzeichnis `vscode-tools-for-ai/mnist-vscode-docs-sample` das Skript zum Trainieren des Modells.
-1. Geben Sie Folgendes in das Eingabefeld ein, um die erforderlichen Pakete anzugeben:
-    
-    ```text
-    pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-    ```
-    
-    Eine Datei mit dem Namen `MNIST-rc.runconfig` wird in VS Code angezeigt, deren Inhalt dem folgenden ähnelt:
+    In VS Code wird eine Datei geöffnet, deren Inhalt dem folgenden ähnelt:
 
     ```json
     {
-        "script": "train.py",
-        "framework": "Python",
-        "communicator": "None",
-        "target": "TeamWkspc-com",
-        "environment": {
-            "python": {
-                "userManagedDependencies": false,
-                "condaDependencies": {
-                    "dependencies": [
-                        "python=3.6.2",
-                        "tensorflow=1.15.0",
-                        {
-                            "pip": [
-                                "azureml-defaults"
-                            ]
-                        }
-                    ]
-                }
-            },
-            "docker": {
-                "baseImage": "mcr.microsoft.com/azureml/base:0.2.4",
-                "enabled": true,
-                "baseImageRegistry": {
-                    "address": null,
-                    "username": null,
-                    "password": null
-                }
+        "location": "westus2",
+        "tags": {},
+        "properties": {
+            "computeType": "AmlCompute",
+            "description": "",
+            "properties": {
+                "vmSize": "Standard_F2s_v2",
+                "vmPriority": "dedicated",
+                "scaleSettings": {
+                    "maxNodeCount": 4,
+                    "minNodeCount": 0,
+                    "nodeIdleTimeBeforeScaleDown": 120
+                },
+                "userAccountCredentials": {
+                    "adminUserName": "",
+                    "adminUserPassword": "",
+                    "adminUserSshPublicKey": ""
+                },
+                "subnetName": "",
+                "vnetName": "",
+                "vnetResourceGroupName": "",
+                "remoteLoginPortPublicAccess": ""
             }
-        },
-        "nodeCount": 1,
-        "history": {
-            "outputCollection": true,
-            "snapshotProject": false,
-            "directoriesToWatch": [
-                "logs"
-            ]
         }
     }
     ```
@@ -175,7 +137,152 @@ So erstellen Sie eine Laufzeitkonfiguration:
     Azure ML: Save and Continue
     ```
 
-Die Laufzeitkonfiguration `MNIST-rc` wird unter dem Computeknoten *TeamWkspc-com* hinzugefügt.
+Nach einigen Minuten wird das neue Computeziel im Knoten *Compute* Ihres Arbeitsbereichs angezeigt.
+
+## <a name="create-a-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
+
+Wenn Sie eine Trainingsausführung an ein Computeziel übermitteln, übermitteln Sie auch die Konfiguration, die zum Ausführen des Trainingsauftrags erforderlich ist. Dazu zählt beispielsweise das Skript, das den Trainingscode und die Python-Abhängigkeiten enthält, die zum Ausführen erforderlich sind.
+
+So erstellen Sie eine Laufzeitkonfiguration:
+
+1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das **Azure**-Symbol aus. Die Azure Machine Learning-Ansicht wird angezeigt. 
+1. Erweitern Sie Ihren Abonnementknoten. 
+1. Erweitern Sie den Knoten **TeamWorkspace > Compute**. 
+1. Klicken Sie unter dem Knoten „Compute“ mit der rechten Maustaste auf den Computeknoten **TeamWkspc-com**, und wählen Sie **Laufzeitkonfiguration erstellen** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Erstellen einer Laufzeitkonfiguration](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
+
+1. Nennen Sie Ihre Laufzeitkonfiguration **MNIST-rc**, und drücken Sie die EINGABETASTE, um Ihre Laufzeitkonfiguration zu erstellen.
+1. Wählen Sie danach **Neue Azure ML-Umgebung erstellen** aus. Umgebungen definieren die Abhängigkeiten, die zur Ausführung Ihrer Skripts erforderlich sind.
+1. Nennen Sie Ihre Umgebung „MNIST-env“, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie die **Conda-Abhängigkeitsdatei** aus der Liste aus.
+1. Drücken Sie die **EINGABETASTE**, um die Conda-Abhängigkeitsdatei zu durchsuchen. In diesem Fall ist die Abhängigkeitsdatei die Datei `env.yml` im Verzeichnis `vscode-tools-for-ai/mnist-vscode-docs-sample`.
+
+    In VS Code wird eine Datei geöffnet, deren Inhalt dem folgenden ähnelt:
+
+    ```json
+    {
+        "name": "MNIST-env",
+        "version": "1",
+        "python": {
+            "interpreterPath": "python",
+            "userManagedDependencies": false,
+            "condaDependencies": {
+                "name": "vs-code-azure-ml-tutorial",
+                "channels": [
+                    "defaults"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip",
+                    {
+                        "pip": [
+                            "azureml-defaults"
+                        ]
+                    }
+                ]
+            },
+            "baseCondaEnvironment": null
+        },
+        "environmentVariables": {},
+        "docker": {
+            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseDockerfile": null,
+            "baseImageRegistry": {
+                "address": null,
+                "username": null,
+                "password": null
+            },
+            "enabled": false,
+            "arguments": []
+        },
+        "spark": {
+            "repositories": [],
+            "packages": [],
+            "precachePackages": true
+        },
+        "inferencingStackVersion": null
+    }
+    ```
+
+1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, speichern Sie sie, indem Sie die Befehlspalette öffnen und den folgenden Befehl eingeben:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+1. Drücken Sie die **EINGABETASTE**, um die Skriptdatei für die Ausführung auf dem Computeziel zu suchen. In diesem Fall ist die Datei `train.py` im Verzeichnis `vscode-tools-for-ai/mnist-vscode-docs-sample` das Skript zum Trainieren des Modells.
+
+    Eine Datei mit dem Namen `MNIST-rc.runconfig` wird in VS Code angezeigt, deren Inhalt dem folgenden ähnelt:
+
+    ```json
+    {
+        "script": "train.py",
+        "framework": "Python",
+        "communicator": "None",
+        "target": "TeamWkspc-com",
+        "environment": {
+            "name": "MNIST-env",
+            "version": "1",
+            "python": {
+                "interpreterPath": "python",
+                "userManagedDependencies": false,
+                "condaDependencies": {
+                    "name": "vs-code-azure-ml-tutorial",
+                    "channels": [
+                        "defaults"
+                    ],
+                    "dependencies": [
+                        "python=3.6.2",
+                        "tensorflow=1.15.0",
+                        "pip",
+                        {
+                            "pip": [
+                                "azureml-defaults"
+                            ]
+                        }
+                    ]
+                },
+                "baseCondaEnvironment": null
+            },
+            "environmentVariables": {},
+            "docker": {
+                "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+                "baseDockerfile": null,
+                "baseImageRegistry": {
+                    "address": null,
+                    "username": null,
+                    "password": null
+                },
+                "enabled": false,
+                "arguments": []
+            },
+            "spark": {
+                "repositories": [],
+                "packages": [],
+                "precachePackages": true
+            },
+            "inferencingStackVersion": null
+        },
+        "history": {
+            "outputCollection": true,
+            "snapshotProject": false,
+            "directoriesToWatch": [
+                "logs"
+            ]
+        }
+    }
+    ```
+
+1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, speichern Sie sie, indem Sie die Befehlspalette öffnen und den folgenden Befehl eingeben:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+Die Laufzeitkonfiguration `MNIST-rc` wird unter dem Computeknoten *TeamWkspc-com* hinzugefügt, die Umgebungskonfiguration `MNIST-env` unter dem Knoten *Umgebungen*.
 
 ## <a name="train-the-model"></a>Trainieren des Modells
 
@@ -264,7 +371,7 @@ So stellen Sie einen Webdienst als ACI bereit:
 1. Klicken Sie mit der rechten Maustaste auf **MNIST-TensorFlow-model**, und wählen Sie **Deploy Service from Registered Model** (Dienst aus registriertem Modell bereitstellen) aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Bereitstellen des Modells](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
+    > ![Bereitstellen des Modells](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
 1. Wählen Sie **Azure Container Instances** aus.
 1. Nennen Sie Ihren Dienst **mnist-tensorflow-svc**, und drücken Sie die EINGABETASTE.
@@ -300,6 +407,7 @@ So stellen Sie einen Webdienst als ACI bereit:
         ]
     }
     ```
+
 1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, speichern Sie sie, indem Sie die Befehlspalette öffnen und den folgenden Befehl eingeben:
 
     ```text

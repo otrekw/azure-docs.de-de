@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057414"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114633"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
 
@@ -60,6 +60,9 @@ So erstellen Sie eine ILB-ASE:
 
     ![ASE-Erstellung](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> Der Name der App Service-Umgebung darf nicht mehr als 37 Zeichen umfassen.
+
 6. Wählen Sie „Netzwerk“.
 
 7. Erstellen oder wählen Sie ein virtuelles Netzwerk aus. Wenn Sie hier ein neues VNET erstellen, wird es mit einem Adressbereich von 192.168.250.0/23 definiert. Zum Erstellen eines VNET mit einem anderen Adressbereich oder in einer anderen Ressourcengruppe als der ASE verwenden Sie das Portal zur Azure Virtual Network-Erstellung. 
@@ -69,6 +72,7 @@ So erstellen Sie eine ILB-ASE:
     ![ASE-Netzwerk][1]
 
 7. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Erstellen einer App in einer ILB-ASE ##
 

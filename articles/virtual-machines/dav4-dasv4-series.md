@@ -6,17 +6,17 @@ author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c7a2fea94e0dc1ff868eff26399877cab66e6f66
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78162178"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115344"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- und Dasv4-Serie
 
-Die Dav4-Serie und die Dasv4-Serie sind neue Größen, bei denen der AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache verwendet wird. Hierbei werden 8 GB des L3-Caches jeweils acht Kernen zur Verfügung gestellt, was Kunden bei der Ausführung ihrer universellen Workloads mehr Optionen gibt. Die Dav4-Serie und die Dasv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D- und die Dsv3-Serie.
+Die Dav4-Serie und die Dasv4-Serie sind neue Größen, bei denen der AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache verwendet wird. Hierbei werden 8 MB des L3-Caches jeweils acht Kernen zur Verfügung gestellt, was Kunden bei der Ausführung ihrer universellen Workloads mehr Optionen gibt. Die Dav4-Serie und die Dasv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D- und die Dsv3-Serie.
 
 ## <a name="dav4-series"></a>Dav4-Serie
 
@@ -39,11 +39,9 @@ Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 | Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000/187/93 | 4/4000 |
 | Standard_D16a_v4|  16 | 64 | 400 |32  | 24000/375/187 |8 / 8000 |
 | Standard_D32a_v4|  32 | 128| 800 | 32 | 48000/750/375 |8/16000 |
-| Standard_D48a_v4 <sup>**</sup> | 48 | 192| 1200 | 32 | | |
-| Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
-| Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
-
-<sup>**</sup> Diese Größen befinden sich in der Vorschauphase.  Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+| Standard_D48a_v4| 48 | 192| 1200 | 32 | 96000/1000/500 | 8/24000 |
+| Standard_D64a_v4| 64 | 256 | 1600 | 32 | 96000/1000/500 | 8 / 30000 |
+| Standard_D96a_v4| 96 | 384 | 2400 | 32 | 96000/1000/500 | 8 / 30000 |
 
 ## <a name="dasv4-series"></a>Dasv4-Serie
 
@@ -66,11 +64,9 @@ Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 | Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4/4000 |
 | Standard_D16as_v4|16|64|128|32|32.000/255 (400)|25600/384|8 / 8000 |
 | Standard_D32as_v4|32|128|256|32|64.000/510 (800)|51200/768|8/16000 |
-| Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
-| Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
-| Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
-
-<sup>**</sup> Diese Größen befinden sich in der Vorschauphase.  Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+| Standard_D48as_v4|48|192|384|32|96.000/1.020 (1.200)|76.800/1.148|8/24000 |
+| Standard_D64as_v4|64|256|512|32|128.000/1.020 (1.600)|80000/1200|8 / 30000 | 
+| Standard_D96as_v4|96|384|768|32|192.000/1.020 (2.400)|80000/1200|8 / 30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

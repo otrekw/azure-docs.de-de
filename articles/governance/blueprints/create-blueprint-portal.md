@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause im Portal'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte über das Azure-Portal zu erstellen, zu definieren und bereitzustellen.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282051"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381893"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
@@ -28,7 +28,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    Sie können auch auf der Seite **Erste Schritte** die Option**Erstellen** wählen, um direkt mit dem Erstellen einer Blaupause fortzufahren.
 
-   ![Erstellen einer Blaupause über die Seite „Blaupausendefinitionen“](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Erstellen einer Blaupause über die Seite „Blaupausendefinitionen“" border="false":::
 
 1. Wählen Sie auf der Karte oben in der integrierten Blaupausenliste die Option **Mit leerer Blaupause beginnen** aus.
 
@@ -48,10 +48,10 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-   ![Rollenzuweisung für ein Blaupausenartefakt](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Rollenzuweisung für ein Blaupausenartefakt" border="false":::
 
    > [!NOTE]
-   > Die meisten Artefakte unterstützen Parameter. Ein Parameter, dem während der Erstellung der Blaupause ein Wert zugewiesen wird, ist ein *statischer Parameter*. Wenn der Parameter während der Blaupausenzuweisung zugewiesen wird, ist er ein *dynamischer Parameter*. Weitere Informationen finden Sie unter [Blaupausenparameter](./concepts/parameters.md).
+   > Die meisten Artefakte unterstützen Parameter. Ein Parameter, dem während der Erstellung der Blaupause ein Wert zugewiesen wird, ist ein _statischer Parameter_. Wenn der Parameter während der Blaupausenzuweisung zugewiesen wird, ist er ein _dynamischer Parameter_. Weitere Informationen finden Sie unter [Blaupausenparameter](./concepts/parameters.md).
 
 1. Fügen Sie eine Richtlinienzuweisung auf der Abonnementebene hinzu:
 
@@ -144,11 +144,11 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-   ![Resource Manager-Vorlage für das Blaupausenartefakt](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Resource Manager-Vorlage für das Blaupausenartefakt" border="false":::
 
 1. Ihre abgeschlossene Blaupause sollte wie folgt aussehen. Beachten Sie, dass jedes Artefakt in der Spalte **Parameter** die Angabe **_x_ von _y_ Parametern aufgefüllt** enthält. Die dynamischen Parameter werden jeweils beim Zuweisen der Blaupause festgelegt.
 
-   ![Abgeschlossene Blaupausendefinition](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Abgeschlossene Blaupausendefinition" border="false":::
 
 1. Alle geplanten Artefakte wurden hinzugefügt. Wählen Sie am unteren Rand der Seite die Option **Entwurf speichern**.
 
@@ -174,13 +174,13 @@ Unter [Erstellen einer Blaupause](#create-a-blueprint) haben Sie keine Beschreib
 
    1. Suchen Sie nach einem Benutzer, einer App oder einer Gruppe, und wählen Sie den Eintrag aus, der hinzugefügt werden soll. Dieses Artefakt verwendet einen statischen Parameter, der in jeder Zuordnung dieser Blaupause auf den gleichen Wert festgelegt wird.
 
-   e. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+   1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-   ![Zweite Rollenzuweisung für das Blaupausenartefakt](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Zweite Rollenzuweisung für das Blaupausenartefakt" border="false":::
 
 1. Ihre abgeschlossene Blaupause sollte wie folgt aussehen. Beachten Sie, dass für die neu hinzugefügte Rollenzuweisung **1 von 1 Parametern aufgefüllt** angezeigt wird. Dies bedeutet, dass es sich um einen statischen Parameter handelt.
 
-   ![Zweite Definition für die abgeschlossene Blaupause](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Zweite Definition für die abgeschlossene Blaupause" border="false":::
 
 1. Wählen Sie **Entwurf speichern**, da nun die Aktualisierung durchgeführt wurde.
 
@@ -219,10 +219,10 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
    1. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
 
-   ![Erstellen eines Abonnements für eine Blaupausenzuweisung](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Erstellen eines Abonnements für eine Blaupausenzuweisung" border="false":::
 
-   > [!IMPORTANT]
-   > Das neue Abonnement wird sofort erstellt, nachdem Sie **Erstellen** gewählt haben.
+      > [!IMPORTANT]
+      > Das neue Abonnement wird sofort erstellt, nachdem Sie **Erstellen** gewählt haben.
 
    > [!NOTE]
    > Eine Zuweisung wird für jedes Abonnement erstellt, das Sie ausgewählt haben. Sie können zu einem späteren Zeitpunkt Änderungen an einer einzelnen Abonnementzuweisung vornehmen, ohne dass Änderungen für die restlichen ausgewählten Abonnements erzwungen werden.
@@ -235,7 +235,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
 1. Behalten Sie für **Zuweisung der Sperre** den Standardwert **Nicht sperren** bei. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](./concepts/resource-locking.md).
 
-   ![Sperrung und verwaltete Identitäten für die Zuweisung](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Sperrung und verwaltete Identitäten für die Zuweisung" border="false":::
 
 1. Behalten Sie unter **Verwaltete Identität** die Standardeinstellung **Vom System zugewiesen** bei.
 
@@ -266,7 +266,7 @@ Wenn mindestens einem Abonnement eine Blaupause zugewiesen wurde, passieren zwei
 
 1. Klicken Sie in der Liste mit den Blaupausen mit der rechten Maustaste auf Ihre zuvor zugewiesene Blaupause, und wählen Sie **Zuweisungsdetails anzeigen**.
 
-   ![Anzeigen der Zuweisungsdetails auf der Seite „Zugewiesene Blaupausen“](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Anzeigen der Zuweisungsdetails auf der Seite „Zugewiesene Blaupausen“" border="false":::
 
 1. Überprüfen Sie auf der Seite **Blaupausenzuweisung**, ob alle Artefakte erfolgreich bereitgestellt wurden und während der Bereitstellung keine Fehler aufgetreten sind. Ermitteln Sie anhand der Schritte unter [Problembehandlung mit Azure Blueprints](./troubleshoot/general.md), was nicht funktioniert hat, falls es zu Fehlern gekommen ist.
 

@@ -1,7 +1,7 @@
 ---
-title: Verwenden von Beispieldatasets in Azure Machine Learning-Designer
+title: Beispieldaten für Designer
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie mehr über die Beispieldatasets in Azure Machine Learning-Designer.
+description: Hier erfahren Sie mehr über die in Azure Machine Learning-Designer verfügbaren Beispieldatasets.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037302"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256976"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>Verwenden von Beispieldatasets in Azure Machine Learning-Designer (Vorschau)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Beispieldatasets in Azure Machine Learning-Designer (Vorschau)
 
 Beim Erstellen einer neuen Pipeline in Azure Machine Learning-Designer (Vorschau) ist eine Reihe von Beispieldatasets standardmäßig enthalten. Diese Beispieldatasets werden von den Beispielpipelines auf der Designerstartseite verwendet. 
 
