@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892375"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312992"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Schnellstart: Konvertieren eines Modells für das Rendering
 
@@ -26,7 +26,7 @@ Sie lernen Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Arbeiten Sie [Schnellstart: Rendern eines Modells mit Unity](render-model.md) durch.
+* [Quickstart: Rendern eines Modells mit Unity](render-model.md) durch.
 * Installieren Sie Azure PowerShell ([Dokumentation](https://docs.microsoft.com/powershell/azure/)).
   * Öffnen Sie eine PowerShell-Instanz mit Administratorrechten.
   * Führen Sie `Install-Module -Name Az -AllowClobber` aus.
@@ -72,10 +72,10 @@ Füllen Sie das Formular wie folgt aus:
 * Erstellen Sie über den Link unter dem Dropdownfeld eine neue Ressourcengruppe, und geben Sie ihr den Namen **ARR_Tutorial**.
 * Geben Sie unter **Speicherkontoname** einen eindeutigen Namen ein. Dieser **Name muss global eindeutig sein**. Andernfalls wird eine Meldung mit dem Hinweis angezeigt, dass der Name bereits verwendet wird. In dieser Schnellstartanleitung nutzen wir den Namen **arrtutorialstorage**. Sie müssen den Namen für diese Schnellstartanleitung also jeweils durch Ihren eigenen Speicherkontonamen ersetzen.
 * Wählen Sie einen **Standort** in Ihrer Nähe aus. Verwenden Sie idealerweise denselben Standort wie beim Einrichten des Renderings in der anderen Schnellstartanleitung.
-* **Leistung**: „Standard“
-* **Kontoart**: „StorageV2 (universell v2)“
-* **Replikation**: „Georedundanter Speicher mit Lesezugriff (RA-GRS)“
-* **Zugriffsebene**: „Heiß“
+* **Leistung** ist auf „Standard“ festgelegt.
+* **Kontoart** ist auf „StorageV2 (universell v2)“ festgelegt.
+* **Replikation** ist auf „Georedundanter Speicher mit Lesezugriff (RA-GRS)“ festgelegt.
+* **Zugriffsebene** ist auf „Heiß“ festgelegt.
 
 Die Eigenschaften auf den anderen Registerkarten müssen nicht geändert werden. Sie können fortfahren, indem Sie die Option **Bewerten + erstellen** auswählen und dann die Schritte zum Abschließen der Einrichtung ausführen.
 
