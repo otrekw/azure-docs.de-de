@@ -1,22 +1,26 @@
 ---
-title: Einstellung der Unterstützung für TLS 1.0 und 1.1 in IoT Hub und Device Provisioning Service (DPS) | Microsoft-Dokumentation
-description: Richtlinien für die Einstellung der Unterstützung von TLS 1.0 und 1.1 und Chiffren in IOT Hub und DPS.
-author: rezasherafat
-ms.author: rezas
+title: Einstellung der Unterstützung von TLS 1.0 und 1.1 in IoT Hub | Microsoft-Dokumentation
+description: Enthält Richtlinien zur Einstellung der Unterstützung von TLS 1.0 und 1.1 und der zugehörigen Verschlüsselungen in IoT Hub.
+author: jlian
+ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: a887dd4df44ba58b0e6646ffb1c10eb21edf3e69
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402788"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381297"
 ---
-# <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Einstellung von TLS 1.0 und 1.1 in IoT Hub und Device Provisioning Service
+# <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>Einstellung der Unterstützung von TLS 1.0 und 1.1 in IoT Hub
 
-Zur Bereitstellung einer erstklassigen Verschlüsselung wechseln IOT Hub und Device Provisioning Service (DPS) zu Transport Layer Security (TLS) 1.2 als Verschlüsselungsmechanismus der Wahl für IOT-Geräte und-Dienste. 
+Um die bestmögliche Verschlüsselung zu erzielen, erfolgt für IoT Hub die Umstellung auf Transport Layer Security 1.2 (TLS) als Verschlüsselungsmechanismus für IoT-Geräte und -Dienste. 
+
+## <a name="timeline"></a>Zeitachse
+
+TLS 1.0/1.1 wird für IoT Hub bis auf Weiteres noch unterstützt. Wir empfehlen aber allen Kunden, so bald wie möglich die Migration zu TLS 1.2 durchzuführen.
 
 ## <a name="supported-ciphers"></a>Unterstützte Verschlüsselungen
 
@@ -26,7 +30,6 @@ Die Zeitachse für die Verfügbarkeit verschiedener Verschlüsselungen, die im T
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (wird in der zweiten Hälfte von 2020 unterstützt)
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (wird in der zweiten Hälfte von 2020 unterstützt)
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (wird in der zweiten Hälfte von 2020 unterstützt)
-
 
 ## <a name="customer-feedback"></a>Kundenfeedback
 

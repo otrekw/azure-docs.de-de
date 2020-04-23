@@ -4,14 +4,14 @@ description: Beschreibt Azure HPC Cache, eine Dateizugriffsbeschleuniger-Lösung
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536640"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Was ist Azure HPC Cache?
 
@@ -49,22 +49,20 @@ Eine Azure HPC Cache-Bereitstellung kann zur Beschleunigung von quantitativen An
 
 Azure HPC Cache ist in diesen Azure-Regionen verfügbar:
 
+| Nordamerika      | Europa         | Asia            | Australien      |
+|--------------------|----------------|-----------------|----------------|
+| East US            | Nordeuropa   | Korea, Mitte   | Australien (Osten) |
+| USA (Ost) 2          | Europa, Westen    | Asien, Südosten  |               |
+| USA Süd Mitte | | | |
+| USA, Westen 2        | | | |
+
+[Kundenseitig verwaltete Schlüssel](customer-keys.md) werden nur in folgenden Regionen unterstützt:
+
 * East US
-* USA (Ost) 2
-* Nordeuropa
-* Europa, Westen
-* Asien, Südosten
-* Sydney
+* USA Süd Mitte
 * USA, Westen 2
-* Korea, Mitte
 
 Aktuelle Informationen zur Verfügbarkeit finden Sie auf der [Produktseite für Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache).
-
-## <a name="service-availability"></a>Dienstverfügbarkeit
-
-Sie müssen für jedes Abonnement, das Sie mit Azure HPC Cache verwenden möchten, Zugriff anfordern. Durch diese Einschränkung wird die Dienstqualität in den ersten Monaten der allgemeinen Verfügbarkeit sichergestellt.
-
-Fordern Sie den Zugriff an, indem Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) ausfüllen. Nachdem Ihr Abonnement der Zugriffsliste hinzugefügt wurde, können Sie Caches erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

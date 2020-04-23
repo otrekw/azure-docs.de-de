@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 07/05/2018
-ms.author: tomfitz
+ms.date: 04/16/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67178180"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605566"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Aktivieren des Event Grid-Ressourcenanbieters
 
@@ -21,9 +21,9 @@ Wenn Sie zuvor in Ihrem Azure-Abonnement noch nicht Event Grid verwendet haben, 
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
-1. Wählen Sie **Abonnements**.
+1. Wählen Sie im linken Menü **Abonnements** aus.
 1. Wählen Sie das Abonnement aus, das Sie für Event Grid verwenden.
-1. Klicken Sie unter **Einstellungen** auf **Ressourcenanbieter**.
+1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Ressourcenanbieter** aus.
 1. Suchen Sie nach **Microsoft.EventGrid**.
 1. Wenn Sie nicht registriert sind, klicken Sie auf **Registrieren**. 
 

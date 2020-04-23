@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75499991"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449968"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die [Apache Tinkerpop](https://tinkerpop.apache.org)-Graphdurchlauf-Sprache, auch als [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) bezeichnet. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
@@ -46,11 +46,9 @@ Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB 
 | Edgefunktionen | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Unterstützen die Erstellung, Änderung und Löschung von Edges |
 | Edge-Eigenschafts-Funktionen | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Unterstützen die Erstellung, Änderung und Löschung von Edge-Eigenschaften |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin-Sendeformat: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin-Sendeformat
 
-Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das [GraphSON-Format](https://tinkerpop.apache.org/docs/current/reference/#graphson). Azure Cosmos DB unterstützt derzeit die Version „GraphSONv2“. GraphSON ist das Standardformat von Gremlin zur Darstellung von Vertices, Edges und (ein- und mehrwertigen) Eigenschaften mittels JSON.
-
-Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azure Cosmos DB, der *an den Client zurückgegeben wurde*. 
+Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das JSON-Format. Von Azure Cosmos DB wird aktuell das JSON-Format unterstützt. Der folgende Ausschnitt zeigt beispielsweise eine JSON-Darstellung eines Vertex, der von Azure Cosmos DB *an den Client zurückgegeben* wurde:
 
 ```json
   {
@@ -89,9 +87,9 @@ Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azu
   }
 ```
 
-Die von GraphSON für Vertices verwendeten Eigenschaften sind nachfolgend beschrieben:
+Im Anschluss werden die Eigenschaften beschrieben, die im JSON-Format für Vertices verwendet werden:
 
-| Eigenschaft | BESCHREIBUNG | 
+| Eigenschaft | Beschreibung | 
 | --- | --- | --- |
 | `id` | Die ID für den Vertex. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). Wird kein Wert angegeben, wird automatisch eine GUID bereitgestellt. | 
 | `label` | Die Bezeichnung des Vertex. Diese Eigenschaft dient zur Beschreibung des Entitätstyps. |
@@ -102,7 +100,7 @@ Die von GraphSON für Vertices verwendeten Eigenschaften sind nachfolgend beschr
 
 Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teilen des Diagramms unterstützen können.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | `id` | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). |
 | `label` | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
@@ -111,14 +109,14 @@ Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teil
 
 Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | `value` | Wert der Eigenschaft
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| Schritt | BESCHREIBUNG | Dokumentation zu TinkerPop 3.2 |
+| Schritt | Beschreibung | Dokumentation zu TinkerPop 3.2 |
 | --- | --- | --- |
 | `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |

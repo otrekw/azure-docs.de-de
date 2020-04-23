@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/20/2019
-ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206009"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408939"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
-Eine verwaltete Identität ist eine in Azure Active Directory (Azure AD) registrierte Identität, deren Anmeldeinformationen von Azure verwaltet werden. Mit verwalteten Identitäten müssen Sie keine Dienstprinzipale in Azure AD registrieren und keine Anmeldeinformationen wie z. B. Zertifikate verwalten.
+Eine verwaltete Identität ist eine in Azure Active Directory (Azure AD) registrierte Identität, deren Anmeldeinformationen von Azure verwaltet werden. Bei Verwendung von verwalteten Identitäten müssen Sie in Azure AD keine Dienstprinzipale registrieren. Sie müssen auch keine Anmeldeinformationen, z. B. Zertifikate, verwalten.
 
 Verwaltete Identitäten werden in Azure HDInsight bei Bedarf zum Zugreifen auf Azure AD Domain Services oder auf Dateien in Azure Data Lake Storage Gen2 verwendet.
 
@@ -25,7 +25,7 @@ Es gibt zwei Arten von verwalteten Identitäten: benutzerseitig und systemseitig
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementierung verwalteter HDInsight-Identitäten
 
-In Azure HDInsight werden verwaltete Identitäten auf jedem Knoten des Clusters bereitgestellt. Diese Identitätskomponenten können jedoch nur vom HDInsight-Dienst verwendet werden. Es wird derzeit keine Methode unterstützt, mit der Sie Zugriffstoken anhand der verwalteten Identitäten, die auf HDInsight-Clusterknoten installiert sind, generieren können. Für einige Azure-Dienste werden verwaltete Identitäten mit einem Endpunkt implementiert, über den Sie selbstständig Zugriffstoken für die Interaktion mit anderen Azure-Diensten abrufen können.
+In Azure HDInsight werden verwaltete Identitäten auf jedem Knoten des Clusters bereitgestellt. Diese Identitätskomponenten können jedoch nur vom HDInsight-Dienst verwendet werden. Es wird derzeit keine Methode unterstützt, mit der Sie Zugriffstoken anhand der verwalteten Identitäten, die auf HDInsight-Clusterknoten installiert sind, generieren können. Für einige Azure-Dienste werden verwaltete Identitäten mit einem Endpunkt implementiert, den Sie zum Beziehen von Zugriffstoken verwenden können. Verwenden Sie die Token, wenn Sie allein mit anderen Azure-Diensten interagieren möchten.
 
 ## <a name="create-a-managed-identity"></a>Erstellen einer verwalteten Identität
 
@@ -47,8 +47,10 @@ Verwaltete Identitäten werden in Azure HDInsight in verschiedenen Szenarien ver
 * [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Was geschieht, wenn ich die verwaltete Identität nach der Clustererstellung lösche?
-In Ihrem Cluster treten Probleme auf, wenn die verwaltete Identität benötigt wird. Es gibt derzeit keine Möglichkeit, die verwaltete Identität nach der Clustererstellung zu aktualisieren oder zu ändern. Sie sollten daher unbedingt sicherstellen, dass die verwaltete Identität während der Clusterlaufzeit nicht gelöscht wird. Alternativ können Sie den Cluster neu erstellen und eine neue verwaltete Identität zuweisen.
+
+In Ihrem Cluster treten Probleme auf, wenn die verwaltete Identität benötigt wird. Es gibt derzeit keine Möglichkeit, eine verwaltete Identität nach der Clustererstellung zu aktualisieren oder zu ändern. Sie sollten daher unbedingt sicherstellen, dass die verwaltete Identität während der Clusterlaufzeit nicht gelöscht wird. Alternativ können Sie den Cluster neu erstellen und eine neue verwaltete Identität zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

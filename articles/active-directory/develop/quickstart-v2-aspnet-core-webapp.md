@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von „Bei Microsoft anmelden“ zu ASP.NET Core-Web-Apps – Microsoft Identity Platform | Azure
-description: Erfahren Sie, wie „Bei Microsoft anmelden“ für eine ASP.NET Core-Web-App mithilfe von OpenID Connect implementiert wird.
+description: Hier erfahren Sie, wie Sie „Bei Microsoft anmelden“ mithilfe von OpenID Connect für eine ASP.NET Core-Web-App implementieren.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407152"
+ms.locfileid: "81536164"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
@@ -71,15 +71,15 @@ In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie ein
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
-> Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit. 
+> Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Schritt 3: Ausführen Ihres Visual Studio-Projekts
 > 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner im Stammordner, etwa **C:\Azure-Samples**.
-> 1. Öffnen der Projektmappe in Visual Studio 
-> 1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und aktualisieren Sie den Wert von `ClientId` mit dem Wert der **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
+> 1. Öffnen der Projektmappe in Visual Studio
+> 1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und aktualisieren Sie den Wert von `ClientId` mit dem Wert der **Anwendungs-ID (Client)** der soeben registrierten Anwendung.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen der cookiebasierten Authentifizierung, die in Browserszenarien sowie zum Festlegen der Aufforderung auf OpenID Connect verwendet wird. 
+Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen der cookiebasierten Authentifizierung, die in Browserszenarien sowie zum Festlegen der Aufforderung auf OpenID Connect verwendet wird.
 
 Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Die Anmeldung erfolgt dann über den Microsoft Identity Platform-Endpunkt.
 
@@ -167,4 +167,4 @@ Sie können einen Controller oder Controllermethoden mithilfe des `[Authorize]`-
 Weitere Informationen finden Sie im GitHub-Repository für dieses ASP.NET Core-Tutorial, einschließlich Anweisungen zum Hinzufügen der Authentifizierung zu einer neuen ASP.NET Core Web-Anwendung, zum Aufrufen von Microsoft Graph und anderen Microsoft-APIs, zum Aufrufen eigener APIs, zum Hinzufügen von Berechtigungen, zum Anmelden von Benutzern bei nationalen Clouds oder mit Identitäten in sozialen Netzwerken und mehr:
 
 > [!div class="nextstepaction"]
-> [Tutorial: ASP.NET Core-Web-App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [Tutorial: ASP.NET Core-Web-App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

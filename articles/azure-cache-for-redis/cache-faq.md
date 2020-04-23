@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235542"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010221"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -54,7 +54,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Was sind Redis-Datenbanken?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Häufig gestellte Fragen zur Sicherheit
-* [Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Wann sollte ich den nicht für TLS/SSL bestimmten Port für die Verbindungsherstellung mit Redis aktivieren?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Häufig gestellte Fragen zur Produktion
 * [Welche Best Practices gelten für die Produktion?](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Wahl helfen
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Cache for Redis – Leistung
-In der folgenden Tabelle sind die maximalen Bandbreitenwerte beim Testen verschiedener Standard- und Premium-Cachegrößen bei Verwendung von `redis-benchmark.exe` aus einem virtuellen IaaS-Computer mit dem Azure Cache for Redis-Endpunkt angegeben. Für SSL-Durchsatz wird der Redis-Vergleichstest mit stunnel für das Herstellen der Verbindung mit dem Azure Cache for Redis-Endpunkt verwendet.
+In der folgenden Tabelle sind die maximalen Bandbreitenwerte beim Testen verschiedener Standard- und Premium-Cachegrößen bei Verwendung von `redis-benchmark.exe` aus einem virtuellen IaaS-Computer mit dem Azure Cache for Redis-Endpunkt angegeben. Für TLS-Durchsatz wird der Redis-Vergleichstest mit „stunnel“ für das Herstellen der Verbindung mit dem Azure Cache for Redis-Endpunkt verwendet.
 
 >[!NOTE] 
 >Diese Werte werden nicht garantiert, und es gibt keine SLA für diese Werte; sie sollten jedoch typischerweise erreicht werden. Führen Sie Auslastungstests für Ihre Anwendung durch, um die geeignete Cachegröße für Ihre Anwendung zu ermitteln.
@@ -244,7 +244,7 @@ Sie können alle aufgelisteten [Redis-Befehle](https://redis.io/commands#) mit A
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Die Redis-Befehlszeilentools funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie unter [Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool).
+> Die Redis-Befehlszeilentools funktionieren nicht mit dem TLS-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem TLS-Port herzustellen. Anweisungen hierzu finden Sie unter [Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool).
 >
 >
 
@@ -281,15 +281,15 @@ Redis-Datenbanken sind einfach eine logische Trennung von Daten innerhalb der gl
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?
-Der Redis-Server bietet keine native SSL-Unterstützung, Azure Cache for Redis hingegen schon. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client SSL unterstützt (wie etwa StackExchange.Redis), sollten Sie SSL verwenden.
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Wann sollte ich den nicht für TLS/SSL bestimmten Port für die Verbindungsherstellung mit Redis aktivieren?
+Der Redis-Server bietet keine native TLS-Unterstützung, während dies für Azure Cache for Redis der Fall ist. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client TLS unterstützt (z. B. StackExchange.Redis), sollten Sie TLS verwenden.
 
 >[!NOTE]
->Bei neuen Azure Cache for Redis-Instanzen ist der SSL-fremde Port standardmäßig deaktiviert. Wenn Ihr Client keine SSL-Unterstützung bietet, müssen Sie den nicht SSL-fähigen Port mithilfe der Anweisungen im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Artikels [Konfigurieren eines Caches in Azure Cache for Redis](cache-configure.md) aktivieren.
+>Bei neuen Azure Cache for Redis-Instanzen ist der nicht für TLS bestimmte Port standardmäßig deaktiviert. Wenn Ihr Client keine TLS-Unterstützung bietet, müssen Sie den nicht für TLS bestimmten Port gemäß den Anweisungen im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Artikels [Konfigurieren eines Caches in Azure Cache for Redis](cache-configure.md) aktivieren.
 >
 >
 
-Redis-Tools wie z.B. `redis-cli` funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
+Redis-Tools wie `redis-cli` funktionieren nicht mit dem TLS-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem TLS-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag zur [Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
 Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands) .
 
@@ -312,7 +312,7 @@ Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führ
 * Entwickeln Sie Ihr System so, dass es Verbindungsunterbrechungen [aufgrund von Patching- und Failovervorgängen](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)behandeln kann.
 
 #### <a name="performance-testing"></a>Leistungstests
-* Starten Sie mit der Verwendung von `redis-benchmark.exe` , um den möglichen Durchsatz einschätzen zu können, bevor Sie Ihre eigenen Leistungstests schreiben. Weil `redis-benchmark` nicht SSL unterstützt, müssen Sie [den Nicht-SSL-Port über das Azure-Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen. Beispiele finden Sie unter [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Starten Sie mit der Verwendung von `redis-benchmark.exe` , um den möglichen Durchsatz einschätzen zu können, bevor Sie Ihre eigenen Leistungstests schreiben. Weil `redis-benchmark` TLS nicht unterstützt, müssen Sie [den nicht für TLS bestimmten Port über das Azure-Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen. Beispiele finden Sie unter [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Die für den Test verwendete Client-VM sollte sich in derselben Region befinden wie Ihre Azure Cache for Redis-Instanz.
 * Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden, da sie über bessere Hardware verfügt und die besten Ergebnisse liefern dürfte.
 * Stellen Sie sicher, dass die von Ihnen ausgewählte Client-VM mindestens über die gleiche Computing- und Bandbreitenkapazität verfügt wie der getestete Cache.

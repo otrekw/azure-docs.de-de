@@ -1,6 +1,6 @@
 ---
 title: Videos zu Microsoft Identity Platform | Azure
-description: Eine Liste von Videos zu Microsoft Identity Platform
+description: Enthält eine Liste mit Videos zu modernen Authentifizierungsoptionen und zu Microsoft Identity Platform.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085194"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991295"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videos zu Microsoft Identity Platform
 
-Erfahren Sie mehr über Microsoft Identity Platform und die Microsoft-Authentifizierungsbibliotheken (MSAL). Sie sind in der Regel 1–2 Minuten lang.
+Informieren Sie sich über die Grundlagen der modernen Authentifizierung, Microsoft Identity Platform und die Microsoft-Authentifizierungsbibliotheken (Microsoft Authentication Libraries, MSAL).
+
+## <a name="authentication-fundamentals"></a>Grundlagen der Authentifizierung
+
+Wenn Begriffe wie Identitätsanbieter, Sicherheitstoken, Ansprüche und Zielgruppe neu für Sie sind, stellt diese Videoreihe für Sie einen guten Einstieg dar.
+___
+
+:::row:::
+    :::column:::
+        1\. Grundlagen: Die Konzepte der modernen Authentifizierung (4:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2\. Moderne Authentifizierung für Webanwendungen (6:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3\. Einmalige Webanmeldung (4:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4\. Verbundauthentifizierung (Web) (6:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5\. Native Clientanwendungen: Teil 1 (8:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6\. Native Clientanwendungen: Teil 2 (5:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>Grundlagen zu Microsoft Identity Platform
 
-**Erfahren Sie mehr über Konzepte von Microsoft Identity-Plattform.**
+Informieren Sie sich über die Komponenten von Microsoft Identity Platform, die Microsoft-Authentifizierungsbibliotheken (Microsoft Authentication Libraries, MSAL) und die Interaktion dieser Komponenten mit Azure Active Directory. Die „One Dev Question“-Videos haben jeweils eine Länge von ein bis zwei Minuten.
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ Erfahren Sie mehr über Microsoft Identity Platform und die Microsoft-Authentifi
 
 ## <a name="migrate-from-v10-to-v20"></a>Migrieren von Version 1.0 zu 2.0
 
-**Erfahren Sie mehr über die Migration zur neuesten Version von Microsoft Identity Platform.**
+Informieren Sie sich über die Migration zur aktuellen Version von Microsoft Identity Platform, z. B. die Umstellung von der Active Directory-Authentifizierungsbibliothek (ADAL) auf MSAL.
+___
 
 :::row:::
     :::column:::

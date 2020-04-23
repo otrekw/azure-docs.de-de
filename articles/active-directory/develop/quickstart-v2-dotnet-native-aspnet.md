@@ -1,5 +1,5 @@
 ---
-title: Aufrufen einer von der Microsoft Identity Platform geschützten ASP.NET-Web-API
+title: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer Windows-Desktopanwendung (Windows Presentation Foundation, WPF) eine ASP.NET-Web-API aufrufen, die von der Microsoft Identity Platform geschützt wird. Der WPF-Client authentifiziert einen Benutzer, fordert ein Zugriffstoken an und ruft die Web-API auf.
 services: active-directory
 author: jmprieur
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703472"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536147"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer von der Microsoft Identity Platform geschützten ASP.NET-Web-API
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 
-In dieser Schnellstartanleitung machen Sie eine Web-API verfügbar und schützen sie, sodass nur authentifizierte Benutzer darauf zugreifen können. Dieses Beispiel zeigt, wie Sie eine ASP.NET-Web-API verfügbar machen, sodass diese Token akzeptieren kann, die sowohl von persönlichen Konten (z. B. outlook.com, live.com u. a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen ausgegeben wurden, die eine Integration in die Microsoft Identity Platform durchgeführt haben.
+In dieser Schnellstartanleitung wird eine Web-API verfügbar gemacht und geschützt, sodass nur authentifizierte Benutzer darauf zugreifen können. Dieses Beispiel zeigt, wie Sie eine ASP.NET-Web-API verfügbar machen, damit sie Token akzeptieren kann, die von persönlichen Konten (z. B. outlook.com, live.com u. a.) oder von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen mit Microsoft Identity Platform-Integration ausgegeben wurden.
 
 Das Beispiel enthält auch einen Windows-Desktopanwendungsclient (WPF), der veranschaulicht, wie Sie ein Zugriffstoken anfordern, um auf eine Web-API zuzugreifen.
 
@@ -69,13 +69,13 @@ Wenn Sie Ihre Apps manuell registrieren möchten, ist Folgendes der erste Schrit
      - Verwenden Sie `access_as_user` als **Bereichsnamen**.
      - Stellen Sie sicher, dass die Option **Administratoren und Benutzer** unter **Zum Einwilligen berechtigte Personen** ausgewählt ist.
      - Geben Sie unter **Anzeigename der Administratoreinwilligung**`Access TodoListService as a user` ein.
-     - Geben Sie unter **Beschreibung der Administratoreinwilligung**`Accesses the TodoListService Web API as a user` ein.
+     - Geben Sie unter **Beschreibung der Administratoreinwilligung**`Accesses the TodoListService web API as a user` ein.
      - Geben Sie unter **Anzeigename der Benutzereinwilligung**`Access TodoListService as a user` ein.
-     - Geben Sie unter **Beschreibung der Benutzereinwilligung**`Accesses the TodoListService Web API as a user` ein.
+     - Geben Sie unter **Beschreibung der Benutzereinwilligung**`Accesses the TodoListService web API as a user` ein.
      - Behalten Sie für den **Zustand** die Einstellung **Aktiviert** bei.
      - Wählen Sie **Bereich hinzufügen** aus.
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurieren des Dienstprojekts für die registrierte Web-API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurieren des Dienstprojekts für die registrierte Web-API
 
 1. Öffnen Sie die Projektmappe in Visual Studio, und öffnen Sie dann im Stammverzeichnis des Projekts **TodoListService** die Datei **Web.config**.
 1. Ersetzen Sie den Wert des `ida:ClientId`-Parameters durch die **Client-ID (Anwendungs-ID)** der Anwendung, die Sie gerade im Anwendungsregistrierungsportal registriert haben.
@@ -86,7 +86,7 @@ Wenn Sie Ihre Apps manuell registrieren möchten, ist Folgendes der erste Schrit
 
    > Hinweis: Stellen Sie sicher, dass folgendes Format verwendet wird:
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >(Hierbei ist {TodoListService-Application-ID} die GUID, die für die Anwendungs-ID der TodoListService-Anwendung steht).
 
@@ -108,7 +108,7 @@ In diesem Schritt konfigurieren Sie Ihr *TodoListClient*-Projekt, indem Sie eine
 1. Wählen Sie den Abschnitt **API-Berechtigungen** aus.
    - Klicken Sie auf die Schaltfläche **Berechtigung hinzufügen**.
    - Wählen Sie die Registerkarte **Meine APIs** aus.
-   - Wählen Sie in der Liste der APIs `AppModelv2-NativeClient-DotNet-TodoListService API` oder den Namen aus, den Sie für die Web-API eingegeben haben.
+   - Wählen Sie in der Liste der APIs `AppModelv2-NativeClient-DotNet-TodoListService API` bzw. den Namen aus, den Sie für die Web-API eingegeben haben.
    - Aktivieren Sie die Berechtigung **access_as_user**, wenn diese nicht bereits aktiviert ist. Verwenden Sie bei Bedarf das Suchfeld.
    - Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
 
@@ -126,7 +126,7 @@ In diesem Schritt konfigurieren Sie Ihr *TodoListClient*-Projekt, indem Sie eine
 
 ## <a name="pre-authorize-your-client-application"></a>Vorautorisieren der Clientanwendung
 
-Um Benutzern aus anderen Verzeichnissen den Zugriff auf Ihre Web-API zu ermöglichen, können Sie die Clientanwendungen für den Zugriff auf Ihre Web-API *vorab autorisieren*. Dazu fügen Sie die Anwendungs-IDs der Clientanwendungen der Liste der *vorab autorisierten* Anwendungen für Ihre Web-API hinzu. Indem Sie einen vorautorisierten Client hinzufügen, müssen Sie die Benutzer nicht auffordern, der Verwendung Ihrer Web-API zuzustimmen. Führen Sie die folgenden Schritte aus, um Ihre Webanwendung vorab zu autorisieren:
+Um Benutzern aus anderen Verzeichnissen den Zugriff auf Ihre Web-API zu ermöglichen, können Sie die Clientanwendungen für den Zugriff auf Ihre Web-API *vorab autorisieren*. Dazu fügen Sie die Anwendungs-IDs der Clientanwendungen der Liste der *vorab autorisierten* Anwendungen für Ihre Web-API hinzu. Wenn Sie einen vorab autorisierten Client hinzufügen, müssen Benutzer nicht in die Verwendung Ihrer Web-API einwilligen. Führen Sie die folgenden Schritte aus, um Ihre Webanwendung vorab zu autorisieren:
 
 1. Wechseln Sie wieder zum *Anwendungsregistrierungsportal*, und öffnen Sie die Eigenschaften Ihres **TodoListService**.
 1. Klicken Sie im Abschnitt **API verfügbar machen** im Bereich *Autorisierte Clientanwendungen* auf **Clientanwendung hinzufügen**.
@@ -141,7 +141,7 @@ Um Benutzern aus anderen Verzeichnissen den Zugriff auf Ihre Web-API zu ermögli
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>Optional: Beschränken des Anmeldezugriffs auf Ihre Anwendung
 
-Wenn Sie dieses Codebeispiel herunterladen und die Anwendung mit den oben genannten Schritten für die Verwendung des Azure Active Directory v2-Endpunkts konfigurieren, können standardmäßig sowohl persönliche Konten (outlook.com, live.com und weitere) als auch Geschäfts-, Schul- oder Unikonten aus jeder in Azure AD integrierten Organisation Token anfordern und auf Ihre Web-API zugreifen. 
+Wenn Sie dieses Codebeispiel herunterladen und die Anwendung mit den oben genannten Schritten für die Verwendung des Azure Active Directory v2-Endpunkts konfigurieren, können standardmäßig sowohl persönliche Konten (outlook.com, live.com und weitere) als auch Geschäfts-, Schul- oder Unikonten aus jeder in Azure AD integrierten Organisation Token anfordern und auf Ihre Web-API zugreifen.
 
 Um die Anmeldung auf Ihre Anwendung einzuschränken, verwenden Sie eine der folgenden Optionen:
 

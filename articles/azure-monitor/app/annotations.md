@@ -3,27 +3,23 @@ title: Versionsanmerkungen für Application Insights | Microsoft Docs
 description: Fügen Sie den Diagrammen im Metrik-Explorer in Application Insights Bereitstellungs- oder Buildmarker hinzu.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666512"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010715"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
-Anmerkungen in Diagrammen des [Metrik-Explorers](../../azure-monitor/app/metrics-explorer.md) zeigen, wo Sie einen neuen Build bereitgestellt haben, oder andere wichtige Ereignisse. Dank der Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch durch das Buildsystem von [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
-
-> [!NOTE]
-> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikoberfläche finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md).
-
-![Beispiel für Anmerkungen](./media/annotations/0-example.png)
+Mit Anmerkungen wird angegeben, wo Sie einen neuen Build bereitgestellt haben, oder es wird auf andere wichtige Ereignisse hingewiesen. Dank der Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch durch das Buildsystem von [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Releaseanmerkungen mit Azure Pipelines-Build
 
 Releaseanmerkungen sind ein Feature des cloudbasierten Azure Pipelines-Diensts von Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Installieren der Erweiterung für Anmerkungen (einmalig)
+
 Um Releaseanmerkungen erstellen zu können, müssen Sie eine der zahlreichen Azure DevOps-Erweiterungen installieren, die im Visual Studio Marketplace zur Verfügung stehen.
 
 1. Melden Sie sich bei Ihrem [Azure DevOps](https://azure.microsoft.com/services/devops/)-Projekt an.
@@ -74,11 +70,26 @@ Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separate
 1. Wählen Sie im Hauptfenster der Versionsvorlage die Option **Speichern** aus, um die Vorlage zu speichern.
 
 ## <a name="view-annotations"></a>Anmerkungen anzeigen
-Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen werden in Diagrammen des **Metrik-Explorers** angezeigt.
 
-Wählen Sie einen Anmerkungsmarker (hellgrauer Pfeil) aus, um Details zum Release wie Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung anzuzeigen.
 
-![Wählen Sie einen Releaseanmerkungsmarker aus.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > Versionsanmerkungen sind im Bereich „Metriken“ von Application Insights derzeit nicht verfügbar.
+
+Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen können an den folgenden Orten angezeigt werden:
+
+Bereich „Nutzung“, in dem Sie auch manuell Versionsanmerkungen erstellen können:
+
+![Screenshot: Balkendiagramm mit der Anzahl von Benutzerbesuchen für eine bestimmte Anzahl von Stunden Versionsanmerkungen werden als grüne Häkchen oberhalb des Diagramms angezeigt und geben den Zeitpunkt einer Versionsveröffentlichung an.](./media/annotations/usage-pane.png)
+
+Alle protokollbasierten Arbeitsmappenabfragen, bei denen bei der Visualisierung die Uhrzeit auf der X-Achse angezeigt wird.
+
+![Screenshot: Arbeitsmappenbereich mit protokollbasierter Zeitreihenabfrage mit Anzeige von Anmerkungen](./media/annotations/workbooks-annotations.png)
+
+Navigieren Sie zum Aktivieren der Anmerkungen in Ihrer Arbeitsmappe zu **Erweiterte Einstellungen**, und wählen Sie **Anmerkungen anzeigen** aus.
+
+![Screenshot: Menü „Erweiterte Einstellungen“ mit Hervorhebung von „Anmerkungen anzeigen“ und einem Häkchen zum Aktivieren neben der Einstellung](./media/annotations/workbook-show-annotations.png)
+
+Wählen Sie einen Anmerkungsmarker aus, um Details zur Version anzuzeigen, z. B. Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Erstellen von benutzerdefinierten Anmerkungen in PowerShell
 Mit dem PowerShell-Skript [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) von GitHub können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden. 

@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Clients für ein als Webdienst bereitgestelltes Modell
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie ein Webdienst genutzt werden kann, der bei der Bereitstellung eines Modells mit dem Azure Machine Learning-Modell generiert wurde. Der Webdienst stellt eine REST-API bereit. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.
+description: Es wird beschrieben, wie ein Webdienst-Endpunkt aufgerufen werden kann, der bei der Bereitstellung eines Modells über Azure Machine Learning generiert wurde. Vom Endpunkt wird eine REST-API verfügbar gemacht, die Sie aufrufen können, um für das Modell einen Rückschlussvorgang durchzuführen. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282663"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383390"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird eine REST-API erstellt. Sie können Daten an diese API senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
+Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird ein REST-API-Endpunkt erstellt. Sie können Daten an diesen Endpunkt senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Modell in Ihrer lokalen Umgebung oder für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Der URI für den Zugriff auf den Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
 
 Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 
@@ -174,6 +174,17 @@ Der Webdienst kann mehrere Sätze von Daten in einer Anforderung akzeptieren. Er
 ### <a name="binary-data"></a>Binärdaten
 
 Informationen zum Aktivieren der Unterstützung für Binärdaten in Ihrem Dienst finden Sie unter [Binärdaten](how-to-deploy-and-where.md#binary).
+
+> [!TIP]
+> Die Aktivierung der Unterstützung für Binärdaten erfolgt in der Datei „score.py“, die vom bereitgestellten Modell verwendet wird. Verwenden Sie über den Client die HTTP-Funktionalität Ihrer Programmiersprache. Mit dem folgenden Codeausschnitt wird der Inhalt einer JPG-Datei beispielsweise an einen Webdienst gesendet:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)
 

@@ -2,13 +2,13 @@
 title: Konfigurieren der Prometheus-Integration in Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für Container-Agent so konfigurieren können, dass Metriken aus Prometheus mit Ihrem Kubernetes-Cluster abgerufen werden.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931420"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537371"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container
 
@@ -22,7 +22,6 @@ ms.locfileid: "75931420"
 Das Scraping von Prometheus-Metriken wird bei Kubernetes-Clustern unterstützt, die in folgenden Diensten gehostet werden:
 
 - Azure Kubernetes Service (AKS)
-- Azure Container Instances
 - Azure Stack oder lokal
 - Azure Red Hat OpenShift
 

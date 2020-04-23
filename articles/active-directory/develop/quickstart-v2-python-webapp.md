@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von „Bei Microsoft anmelden“ zu einer Python-Web-App mit Microsoft Identity Platform | Azure
-description: Hier erfahren Sie, wie „Bei Microsoft anmelden“ mithilfe von OAuth2 für eine Python-Web-App implementiert wird.
+description: Hier erfahren Sie, wie Sie „Bei Microsoft anmelden“ mithilfe von OAuth2 für eine Python-Web-App implementieren.
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873955"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536028"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App
 

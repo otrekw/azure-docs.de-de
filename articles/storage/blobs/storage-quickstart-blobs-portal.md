@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535167"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal
 
@@ -39,27 +39,25 @@ Führen Sie die folgenden Schritte aus, um einen Container über das Azure-Porta
 
 ## <a name="upload-a-block-blob"></a>Hochladen eines Blockblobs
 
-Blockblobs bestehen aus Datenblöcken, die zusammen ein Blob bilden. In den meisten Blob Storage-Szenarien werden Blockblobs verwendet. Blockblobs eignen sich perfekt zum Speichern von Text und Binärdaten in der Cloud. Hierzu zählen beispielsweise Dateien, Bilder und Videos. In dieser Schnellstartanleitung erfahren Sie, wie Sie Blockblobs verwenden. 
+Blockblobs bestehen aus Datenblöcken, die zusammen ein Blob bilden. In den meisten Blob Storage-Szenarien werden Blockblobs verwendet. Blockblobs eignen sich perfekt zum Speichern von Text und Binärdaten in der Cloud. Hierzu zählen beispielsweise Dateien, Bilder und Videos. In dieser Schnellstartanleitung erfahren Sie, wie Sie Blockblobs verwenden.
 
 Gehen Sie wie folgt vor, um über das Azure-Portal ein Blockblob in Ihren neuen Container hochzuladen:
 
 1. Navigieren Sie im Azure-Portal zu dem Container, den Sie im vorherigen Abschnitt erstellt haben.
-2. Wählen Sie den Container aus, um eine Liste mit den darin enthaltenen Blobs anzuzeigen. Da dieser Container neu ist, enthält er noch keine Blobs.
-3. Wählen Sie die Schaltfläche **Hochladen** aus, um das Uploadblatt zu öffnen.
-4. Navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, die Sie als Blockblob hochladen möchten.
-     
+1. Wählen Sie den Container aus, um eine Liste mit den darin enthaltenen Blobs anzuzeigen. Da dieser Container neu ist, enthält er noch keine Blobs.
+1. Wählen Sie die Schaltfläche **Hochladen** aus, um das Uploadblatt zu öffnen, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie als Blockblob hochzuladen. Im Abschnitt „Erweitert“ können optional weitere Einstellungen für den Uploadvorgang konfiguriert werden.
+
     ![Screenshot: Hochladen eines Blobs von Ihrem lokalen Laufwerk](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Erweitern Sie optional den Abschnitt „Erweitert“, um weitere Einstellungen zu definieren, etwa den Authentifizierungstyp, die Zugriffsebene oder den Pfad des virtuellen Ordners.
-6. Wählen Sie die Schaltfläche **Hochladen** aus, um den Upload zu committen.
-7. Laden Sie auf diese Weise beliebig viele Blobs hoch. Wie Sie sehen, werden die neuen Blobs nun innerhalb des Containers aufgeführt.
+1. Wählen Sie die Schaltfläche **Hochladen** aus, um das Blob hochzuladen.
+1. Laden Sie auf diese Weise beliebig viele Blobs hoch. Wie Sie sehen, werden die neuen Blobs nun innerhalb des Containers aufgeführt.
 
 ## <a name="download-a-block-blob"></a>Herunterladen eines Blockblobs
 
 Sie können ein Blockblob herunterladen, um es im Browser anzuzeigen oder in Ihrem lokalen Dateisystem zu speichern. Gehen Sie zum Herunterladen eines Blockblobs wie folgt vor:
 
-1. Navigieren Sie zu der Liste mit den Blobs, die Sie im vorherigen Abschnitt hochgeladen haben. 
-2. Klicken Sie mit der rechten Maustaste auf den Blob, den Sie herunterladen möchten, und wählen Sie **Herunterladen** aus. 
+1. Navigieren Sie zu der Liste mit den Blobs, die Sie im vorherigen Abschnitt hochgeladen haben.
+1. Klicken Sie mit der rechten Maustaste auf den Blob, den Sie herunterladen möchten, und wählen Sie **Herunterladen** aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -68,9 +66,9 @@ Wenn Sie die Ressourcen entfernen möchten, die Sie im Rahmen dieser Schnellstar
 So löschen Sie den Container:
 
 1. Navigieren Sie im Azure-Portal zu der Liste mit den Containern in Ihrem Speicherkonto.
-2. Wählen Sie den zu löschenden Container aus.
-3. Wählen Sie die Schaltfläche **Mehr** ( **...** ) und dann **Löschen**.
-4. Bestätigen Sie, dass Sie den Container löschen möchten.
+1. Wählen Sie den zu löschenden Container aus.
+1. Wählen Sie die Schaltfläche **Mehr** ( **...** ) und dann **Löschen**.
+1. Bestätigen Sie, dass Sie den Container löschen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -78,4 +76,3 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit dem Azure-Portal Dateien z
 
 > [!div class="nextstepaction"]
 > [Gewusst wie: Blob Storage-Vorgänge](storage-dotnet-how-to-use-blobs.md)
-

@@ -1,213 +1,158 @@
 ---
 title: 'Erstellen einer Vorlage: Visual Studio Code'
 description: Verwenden Sie Visual Studio Code und die Azure Resource Manager-Tools-Erweiterung für Resource Manager-Vorlagen.
-author: mumian
-ms.date: 03/04/2019
+author: neilpeterson
+ms.date: 04/17/2020
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: nepeters
+ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984451"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686611"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
-Hier erfahren Sie, wie Sie Visual Studio Code und die Erweiterung „Azure Resource Manager-Tools“ verwenden, um ARM-Vorlagen (Azure Resource Manager) zu erstellen und zu bearbeiten. Sie können ARM-Vorlagen in Visual Studio Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
+Die Azure Resource Manager-Tools für Visual Studio Code bieten Sprachunterstützung, Ressourcenausschnitte und eine automatische Vervollständigung für Ressourcen. Diese Tools unterstützen Sie beim Erstellen und Überprüfen von Azure Resource Manager-Vorlagen. In dieser Schnellstartanleitung wird mithilfe der Erweiterung eine ganz neue Azure Resource Manager-Vorlage erstellt. Dabei werden Erweiterungsfunktionen wie ARM-Vorlagenausschnitte, Überprüfung, Vervollständigungen und die Unterstützung einer Parameterdatei genutzt.
 
-In dieser Schnellstartanleitung stellen Sie ein Speicherkonto bereit:
-
-![Resource Manager-Vorlage, Schnellstart, Visual Studio Code, Diagramm](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+Für diese Schnellstartanleitung benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit installierter Erweiterung [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Außerdem muss entweder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) installiert und authentifiziert sein.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="create-an-arm-template"></a>Erstellen einer ARM-Vorlage
 
-Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
+Erstellen Sie mit Visual Studio Code eine neue Datei namens *azuredeploy.json*, und öffnen Sie sie. Geben Sie `arm` in den Code-Editor ein. Dadurch werden Azure Resource Manager-Ausschnitte zum Bau eines Gerüsts für eine ARM-Vorlage initiiert.
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- Die Erweiterung „Azure Resource Manager-Tools“. Zum Installieren gehen Sie wie folgt vor:
+Wählen Sie `arm!` aus, um eine Vorlage für eine Azure-Ressourcengruppenbereitstellung zu erstellen.
 
-    1. Öffnen Sie Visual Studio Code.
-    2. Drücken Sie **STRG+UMSCHALT+X**, um den Bereich "Erweiterungen" zu öffnen.
-    3. Suchen Sie nach **Azure Resource Manager-Tools**, und wählen Sie die Option **Installieren** aus.
-    4. Wählen Sie die Option **Erneut laden**, um die Installation der Erweiterung abzuschließen.
+![Abbildung: Gerüstbau in Azure Resource Manager](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
+Mit diesem Codeausschnitt werden die Grundbausteine für eine ARM-Vorlage erstellt.
 
-Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen.
+![Abbildung: ARM-Vorlage mit vollständigem Gerüst](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
+Beachten Sie, dass der Visual Studio Code-Sprachmodus von *JSON* in *Azure Resource Manager-Vorlage* geändert wurde. Die Erweiterung enthält einen speziellen Sprachserver für ARM-Vorlagen, der eine speziell auf ARM-Vorlagen zugeschnittene Überprüfung, Vervollständigung und andere entsprechende Sprachdienste bietet.
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
-2. Fügen Sie in **Dateiname** die folgende URL ein:
+![Abbildung: Azure Resource Manager als Visual Studio Code-Sprachmodus](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>Hinzufügen einer Azure-Ressource
 
-3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+Die Erweiterung enthält Ausschnitte für zahlreiche Azure-Ressourcen. Mit diesen Ausschnitten können Sie Ihrer Vorlagenbereitstellung ganz einfach Ressourcen hinzufügen.
 
-## <a name="edit-the-template"></a>Bearbeiten der Vorlage
+Platzieren Sie den Cursor im Block **resources** der Vorlage, geben Sie `storage` ein, und wählen Sie den Ausschnitt *arm-storage* aus.
 
-Wenn Sie sich mit der Bearbeitung einer Vorlage über Visual Studio Code vertraut machen möchten, fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um den Speicher-URI anzuzeigen.
+![Abbildung: Hinzufügen einer Ressource zur ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. Fügen Sie der exportierten Vorlage eine weitere Ausgabe hinzu:
+Durch diese Aktion wird der Vorlage eine Speicherressource hinzugefügt.
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![Abbildung: Azure Storage-Ressource in einer ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    Wenn Sie fertig sind, sieht der Ausgabeabschnitt folgendermaßen aus:
+Mithilfe der **TAB-TASTE** kann durch die konfigurierbaren Eigenschaften für das Speicherkonto navigiert werden.
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![Abbildung: Navigieren durch die Ressourcenkonfiguration mithilfe der TAB-TASTE](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    Wenn Sie den Code in Visual Studio Code kopiert und eingefügt haben, versuchen Sie, das Element **value** erneut einzugeben, um die IntelliSense-Funktion der Erweiterung „Resource Manager-Tools“ zu testen.
+## <a name="completion-and-validation"></a>Vervollständigung und Überprüfung
 
-    ![Resource Manager-Vorlage, Visual Studio Code, IntelliSense](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+Eine der praktischsten Funktionen der Erweiterung ist die Azure-Schemaintegration. Durch Azure-Schemas stehen der Erweiterung Überprüfungs- und ressourcenbasierte Vervollständigungsfunktionen zur Verfügung. Im nächsten Schritt wird das Speicherkonto geändert, um die Überprüfung und Vervollständigung in Aktion zu sehen. 
 
-2. Wählen Sie **Datei**>**Speichern** aus, um die Datei zu speichern.
+Legen Sie zunächst die Art des Speicherkontos auf einen ungültigen Wert fest (beispielsweise `megaStorage`). Beachten Sie, dass diese Aktion zu einer Warnung mit dem Hinweis führt, dass `megaStorage` kein gültiger Wert ist.
+
+![Abbildung: Ungültige Speicherkonfiguration](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+Entfernen Sie zur Verwendung der Vervollständigungsfunktionen `megaStorage`, platzieren Sie den Cursor innerhalb der doppelten Anführungszeichen, und drücken Sie `ctrl` + `space`. Daraufhin wird eine Vervollständigungsliste mit gültigen Werten angezeigt.
+
+![Abbildung: Automatische Vervollständigung der Erweiterung](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>Hinzufügen von Vorlagenparametern
+
+Erstellen Sie nun einen Parameter, und verwenden Sie ihn zur Angabe des Speicherkontonamens.
+
+Platzieren Sie den Cursor im Block „parameters“, fügen Sie einen Wagenrücklauf ein, geben Sie `par` ein, und wählen Sie anschließend den Ausschnitt `arm-param-value` aus. Dadurch wird der Vorlage ein generischer Parameter hinzugefügt.
+
+![Abbildung: Hinzufügen eines Parameters zur ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+Ändern Sie den Namen des Parameters in `storageAccountName` und die Beschreibung in `Storage Account Name`.
+
+![Abbildung: Vollständiger Parameter in einer ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Azure-Speicherkontonamen müssen zwischen drei und 24 Zeichen lang sein. Fügen Sie dem Parameter sowohl `minLength` als auch `maxLength` hinzu, und geben Sie entsprechende Werte an.
+
+![Abbildung: Hinzufügen von „minLength“ und „maxLength“ zu einem ARM-Vorlagenparameter](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+Aktualisieren Sie nun in der Speicherressource die Namenseigenschaft, um den Parameter zu verwenden. Entfernen Sie dazu den aktuellen Namen. Geben Sie ein doppeltes Anführungszeichen und eine öffnende eckige Klammer (`[`) ein. Daraufhin wird eine Liste mit ARM-Vorlagenfunktionen angezeigt. Wählen Sie in der Liste die Option *parameters* aus. 
+
+![Abbildung: Automatische Vervollständigung bei Verwendung von „parameters“ in ARM-Vorlagenressourcen](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+Wenn Sie innerhalb der runden Klammern ein einzelnes Anführungszeichen (`'`) eingeben, wird eine Liste aller Parameter angezeigt, die in der Vorlage definiert sind (in diesem Fall: *storageAccountName*). Wählen Sie den Parameter aus.
+
+![Abbildung: Vollständiger Parameter in einer ARM-Vorlagenressource](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>Erstellen einer Parameterdatei
+
+Mit einer ARM-Vorlagenparameterdatei können Sie umgebungsspezifische Parameterwerte speichern und zur Bereitstellungszeit gesammelt übergeben. So können Sie beispielsweise eine Parameterdatei mit speziellen Werten für eine Testumgebung und eine andere Parameterdatei für eine Produktionsumgebung verwenden.
+
+Mit der Erweiterung können Sie ganz einfach eine Parameterdatei auf der Grundlage Ihrer vorhandenen Vorlagen erstellen. Klicken Sie hierzu im Code-Editor mit der rechten Maustaste auf die Vorlage, und wählen Sie `Select/Create Parameter File` aus.
+
+![Abbildung: Erstellen einer Parameterdatei auf der Grundlage einer ARM-Vorlage mittels Rechtsklick](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+Wählen Sie `New` > `All Parameters` und anschließend einen Namen und einen Speicherort für die Parameterdatei aus.
+
+![Abbildung: Dialogfeld zum Benennen und Speichern der Datei beim Erstellen einer Parameterdatei auf der Grundlage einer ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+Dadurch wird eine neue Parameterdatei erstellt und der Vorlage zugeordnet, auf deren Grundlage sie erstellt wurde. Die aktuelle Zuordnung zwischen Vorlage und Parameterdatei wird auf der Statusleiste von Visual Studio Code angezeigt, während die Vorlage ausgewählt ist, und kann geändert werden.
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+Nachdem die Parameterdatei der Vorlage zugeordnet wurde, werden Vorlage und Parameterdatei gemeinsam durch die Erweiterung überprüft. Fügen Sie dem Parameter `storageAccountName` in der Parameterdatei einen zweistelligen Wert hinzu, und speichern Sie die Datei, um die Überprüfung in Aktion zu sehen.
+
+![Abbildung: Ungültige Vorlage aufgrund eines Problems mit der Parameterdatei](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+Wenn Sie nun zur ARM-Vorlage zurückkehren, sehen Sie, dass ein Fehler ausgelöst wurde, da der Wert nicht den Parameterkriterien entspricht.
+
+![Abbildung: Gültige ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+Aktualisieren Sie den Wert auf einen geeigneten Wert, speichern Sie die Datei, und kehren Sie zur Vorlage zurück. Dort sehen Sie, dass der Fehler für den Parameter behoben wurde.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen. In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell unterstützt sowohl die Azure-Befehlszeilenschnittstelle (CLI) als auch Azure PowerShell. Verwenden Sie die Registerkartenauswahl, um zwischen CLI und PowerShell zu wählen.
+Öffnen Sie das integrierte Visual Studio Code-Terminal mithilfe der Tastenkombination `ctrl` + ```` ` ````, und stellen Sie die Vorlage per Azure-Befehlszeilenschnittstelle oder Azure PowerShell-Modul bereit.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
-1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
+```azurecli
+az group create --name arm-vscode --location eastus
 
-2. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure-Portal, Cloud Shell, CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure-Portal, Cloud Shell, PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
-
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
-
-    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Der Standardname lautet **azuredeploy.json**. Auf die Vorlagendatei muss über die Shell zugegriffen werden können.
-
-    Sie können optional den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
-
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
-
-    ![Azure-Portal, Cloud Shell, Datei auflisten](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure-Portal, Cloud Shell, Datei auflisten](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
-
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    ```
-
-    ---
-
-    Aktualisieren Sie den Namen der Vorlagendatei, wenn Sie die Datei nicht unter dem Namen **azuredeploy.json** gespeichert haben.
-
-    Der folgende Screenshot zeigt eine Beispielbereitstellung:
-
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
-
-    ![Azure-Portal, Cloud Shell, Vorlage bereitstellen](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure-Portal, Cloud Shell, Vorlage bereitstellen](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    Der Speicherkontoname und die Speicher-URL im Ausgabeabschnitt sind auf dem Screenshot hervorgehoben. Den Speicherkontonamen benötigen Sie im nächsten Schritt.
-
-5. Führen Sie den folgenden CLI- oder PowerShell-Befehl zum Auflisten des neu erstellen Speicherkontos aus:
-
-    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    ```
-
-    ---
-
-Weitere Informationen zur Verwendung von Azure-Speicherkonten finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../../storage/blobs/storage-quickstart-blobs-portal.md).
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen.
+Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe der Schnellstartanleitung mithilfe der Azure-Befehlszeilenschnittstelle oder des Azure PowerShell-Moduls.
 
-1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
-2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
-3. Klicken Sie auf den Namen der Ressourcengruppe.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
-4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Schnellstart geht es in erster Linie um die Bearbeitung einer vorhandenen Azure-Schnellstartvorlage mithilfe von Visual Studio Code. Darüber hinaus haben Sie gelernt, wie Sie die Vorlage über Azure Cloud Shell mithilfe der CLI oder PowerShell bereitstellen. Die Azure-Schnellstartvorlagen decken unter Umständen nicht alle Ihre Anforderungen ab. Weitere Informationen zur Vorlagenentwicklung finden Sie in unserer neuen Tutorialreihe für Anfänger:
 
 > [!div class="nextstepaction"]
 > [Tutorials für Anfänger](./template-tutorial-create-first-template.md)

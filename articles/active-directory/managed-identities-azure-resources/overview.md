@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/25/2020
+ms.date: 04/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282119"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682592"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -51,8 +51,12 @@ Es gibt zwei Arten von verwalteten Identitäten:
 - Eine **vom Benutzer zugewiesene verwaltete Identität** wird als eigenständige Azure-Ressource erstellt. Azure erstellt eine Identität in dem Azure AD-Mandanten, der vom verwendeten Abonnement als vertrauenswürdig eingestuft wird. Nachdem die Identität erstellt wurde, kann sie einer oder mehreren Azure-Dienstinstanzen zugewiesen werden. Der Lebenszyklus einer vom Benutzer zugewiesenen Identität wird getrennt vom Lebenszyklus der Azure-Dienstinstanzen verwaltet, denen sie zugewiesen ist.
 
 Intern sind verwaltete Identitäten eine Sonderform von Dienstprinzipalen, die nur mit Azure-Ressourcen verwendet werden können. Wenn die verwaltete Identität gelöscht wird, wird automatisch auch der entsprechende Dienstprinzipal entfernt.
+Außerdem gilt: Wenn eine benutzerseitig oder systemseitig zugewiesenen Identität erstellt wird, gibt der Ressourcenanbieter der verwalteten Identität (Managed Identity Resource Provider, MSRP) intern ein Zertifikat für diese Identität aus. 
 
-Ihr Code kann eine verwaltete Identität zum Anfordern von Zugriffstokens für Dienste verwenden, die die Azure AD-Authentifizierung unterstützen. Azure übernimmt die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen.
+Ihr Code kann eine verwaltete Identität zum Anfordern von Zugriffstokens für Dienste verwenden, die die Azure AD-Authentifizierung unterstützen. Azure übernimmt die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen. 
+
+## <a name="credential-rotation"></a>Rotation von Anmeldeinformationen
+Die Rotation von Anmeldeinformationen wird durch den Ressourcenanbieter gesteuert, von dem die Azure-Ressource gehostet wird. Standardmäßig werden die Anmeldeinformationen alle 46 Tage rotiert. Da die Anforderung neuer Anmeldeinformationen vom Ressourcenanbieter abhängt, kann es auch länger als 46 Tage dauern.
 
 Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Azure-Computern funktionieren:
 

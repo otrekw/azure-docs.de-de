@@ -1,32 +1,32 @@
 ---
-title: 'Einrichten Ihrer Sicherheitsinformation (Vorschau) über eine Anmeldeaufforderung: Azure AD'
-description: So richten Sie die Sicherheitsinformation (Vorschau) für Ihr Geschäfts-, Schul- oder Unikonto ein, wenn Sie auf der Anmeldeseite Ihres Unternehmens dazu aufgefordert werden
+title: 'Einrichten Ihrer Sicherheitsinformation über eine Anmeldeaufforderung: Azure AD'
+description: Hier erfahren Sie, wie Sie die Sicherheitsinformation für Ihr Geschäfts-, Schul- oder Unikonto einrichten, wenn Sie auf der Anmeldeseite Ihrer Organisation dazu aufgefordert werden.
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063984"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454430"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Einrichten Ihrer Sicherheitsinformation (Vorschau) über eine Anmeldeaufforderung
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Einrichten Ihrer Sicherheitsinformation über eine Anmeldeaufforderung
 
 Wenn Sie direkt nach der Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto zum Einrichten Ihrer Sicherheitsinformationen aufgefordert werden, können Sie diese Schritte ausführen.
 
-Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderten Sicherheitsinformationen noch nicht eingerichtet haben. Wenn Sie Ihre Sicherheitsinformationen bereits eingerichtet haben und Änderungen vornehmen möchten, können Sie die Schritte in den verschiedenen methodenbasierten Anleitungen ausführen. Weitere Informationen finden Sie im Artikel zum [Hinzufügen oder Aktualisieren Ihrer Sicherheitsinformationen](security-info-add-update-methods-overview.md).
+Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderte Sicherheitsinformation noch nicht eingerichtet haben. Wenn Sie Ihre Sicherheitsinformationen bereits eingerichtet haben und Änderungen vornehmen möchten, können Sie die Schritte in den verschiedenen methodenbasierten Anleitungen ausführen. Weitere Informationen finden Sie im Artikel zum [Hinzufügen oder Aktualisieren Ihrer Sicherheitsinformationen](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
 
 Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
 
@@ -122,7 +122,7 @@ Führen Sie diese Schritte aus, um die Sicherheitsinformationen für Ihr Geschä
 Bestimmte Apps wie z.B. Outlook 2010 unterstützen keine zweistufige Überprüfung. Das bedeutet, dass die App nicht funktioniert, wenn in Ihrer Organisation die zweistufige Überprüfung verwendet wird. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
 
 >[!Note]
->Wird diese Option im Assistenten nicht angezeigt, bedeutet das, dass sie vom Administrator nicht eingerichtet wurde. Wenn diese Option nicht eingerichtet wurde, Sie aber wissen, dass Sie App-Kennwörter verwenden müssen, können Sie die Schritte unter [Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) ausführen.
+>Wird diese Option im Assistenten nicht angezeigt, bedeutet das, dass sie vom Administrator nicht eingerichtet wurde. Wenn diese Option nicht eingerichtet wurde, Sie aber wissen, dass Sie App-Kennwörter verwenden müssen, können Sie die Schritte unter [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) ausführen.
 
 Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 

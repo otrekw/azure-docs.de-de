@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811154"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085126"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
@@ -109,25 +109,25 @@ Mit dem Argument `--sku F1` wird die Web-App im Tarif „Free“ erstellt. Sie k
 
 Außerdem können Sie optional das Argument `-l <location-name>` einschließen. `<location_name>` ist hierbei eine Azure-Region wie **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia** und so weiter. Sie können eine Liste der zulässigen Regionen für Ihr Azure-Konto abrufen, indem Sie den Befehl [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ausführen.
 
-Die vollständige Ausführung des Befehls `az webapp up` kann mehrere Minuten dauern. Während der Ausführung werden Informationen wie im folgenden Beispiel angezeigt. `<app_name>` ist hierbei der zuvor angegebene Name:
+Die vollständige Ausführung des Befehls `az webapp up` kann mehrere Minuten dauern. Während der Ausführung werden Informationen wie im folgenden Beispiel angezeigt. `<app-name>` ist hierbei der zuvor angegebene Name:
 
 <pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
-Creating app '<app-name>' ....
+Creating app '&lt;app-name&gt;' ....
 Configuring default logging for the app, if not already enabled
 Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
-You can launch the app at http://<app-name>.azurewebsites.net
+You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 {
-  "URL": "http://<app-name>.net",
+  "URL": "http://&lt;app-name&gt;.net",
   "appserviceplan": "appsvc_asp_Linux_centralus",
   "location": "eastus",
-  "name": "<app-name>",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
   "resourcegroup": "appsvc_rg_Linux_centralus",
   "runtime_version": "python|3.7",
@@ -227,6 +227,9 @@ az group delete -n <resource-group-name>
 
 > [!div class="nextstepaction"]
 > [Tutorial: Python-Web-App (Django) mit PostgreSQL](tutorial-python-postgresql-app.md)
+
+> [!div class="nextstepaction"]
+> [Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App](../../active-directory/develop/quickstart-v2-python-webapp.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurieren einer Python-App](how-to-configure-python.md)

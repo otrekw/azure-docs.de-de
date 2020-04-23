@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768508"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456990"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Schnellstart: Verwenden von R mit Machine Learning Services zum Abfragen von Azure SQL-Datenbank (Vorschauversion)
 
@@ -30,14 +31,11 @@ In dieser Schnellstartanleitung verwenden Sie R mit Machine Learning Services, u
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md).
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) mit aktiviertem R. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) mit aktiviertem R.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > Die Skripts in diesem Artikel wurden für die Datenbank **Adventure Works** geschrieben.
-
-> [!NOTE]
-> Während der Public Preview-Phase übernimmt Microsoft das Onboarding für Sie und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Die Bereitstellungsoption für verwaltete Instanzen wird momentan jedoch nicht unterstützt.
 
 Machine Learning Services mit R ist ein Feature von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Weitere Informationen zum R-Projekt finden Sie [hier](https://www.r-project.org/).
 
