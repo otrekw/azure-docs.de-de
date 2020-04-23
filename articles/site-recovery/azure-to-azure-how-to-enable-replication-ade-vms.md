@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408636"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
 In diesem Artikel erfahren Sie, wie Sie virtuelle Azure-Computer mit aktivierter Azure Disk Encryption (ADE) zwischen Azure-Regionen replizieren.
 
 >[!NOTE]
-> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows- und Linux-Betriebssysteme ausgeführt werden.  Für Computer, auf denen ADE 1.1 (ohne AAD) ausgeführt wird, müssen die virtuellen VMs verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
+> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows-Betriebssysteme ausgeführt werden. Für Linux-Betriebssysteme wird nur ADE ohne AAD unterstützt. Bei Computern mit ADE 1.1 (ohne AAD) müssen die virtuellen Computer außerdem verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen

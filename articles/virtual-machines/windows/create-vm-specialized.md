@@ -1,24 +1,18 @@
 ---
 title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD in Azure
 description: Erstellen Sie eine neue Windows-VM, indem Sie über das Resource Manager-Bereitstellungsmodell einen speziellen verwalteten Datenträger als Betriebssystemdatenträger anfügen.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224666"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086401"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Erstellen einer Windows-VM von einem speziellen Datenträger mithilfe von PowerShell
 

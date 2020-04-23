@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280472"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255871"
 ---
-<a name="retrieve-operations"></a>Abrufen von Vorgängen
-===================
+# <a name="retrieve-operations"></a>Abrufen von Vorgängen
+
+> [!NOTE]
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
 
 Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene Vorgangs-ID ab. Der Client kann Abfrageparameter zum Filtern nach ausgeführten Vorgängen verwenden.
 
@@ -28,21 +30,18 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 ```
 
 
-<a name="uri-parameters"></a>URI-Parameter
---------------
+## <a name="uri-parameters"></a>URI-Parameter
 
 |  **Name**          |      **Beschreibung**                                                                                           | **Datentyp** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Herausgeber-ID, z.B. `Contoso`                                                                   |  String       |
 |  offerId           |  Angebots-ID                                                                                              |  String       |
 |  operationId       |  GUID, die den Vorgang im Angebot eindeutig identifiziert. Die Vorgangs-ID kann mithilfe dieser API abgerufen werden. Sie wird auch im HTTP-Header der Antwort für lang ausgeführte Vorgänge zurückgegeben, wie z.B. bei der [API zum Veröffentlichen von Angeboten](./cloud-partner-portal-api-publish-offer.md).  |   Guid   |
-|  filteredStatus    | Optionaler Abfrageparameter zum Filtern nach dem Status (z.B. `running`) in der von dieser API zurückgegebenen Sammlung.  |   String |
-|  api-version       | Neueste Version der API                                                                                           |    Date      |
+|  api-version       | Neueste Version der API |    Date      |
 |  |  |  |
 
+## <a name="header"></a>Header
 
-<a name="header"></a>Header
-------
 
 |  **Name**          |  **Wert**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 |  |  |
 
 
-<a name="body-example"></a>Beispiel für Hauptteil
-------------
+## <a name="body-example"></a>Beispiel für Hauptteil
 
 ### <a name="response"></a>Antwort
 
@@ -167,25 +165,35 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Eigenschaften für Antworthauptteil
 
 |  **Name**                    |  **Beschreibung**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | GUID, die den Vorgang eindeutig identifiziert                                                       |
-|  submissionType              | Gibt den Typ des Vorgangs, der für das Angebot gemeldet wird, an, z.B. `Publish/GGoLive`      |
+|  submissionType              | Gibt den Typ des Vorgangs, der für das Angebot gemeldet wird, an, z.B. `Publish/GoLive`      |
 |  createdDateTime             | UTC-Datum und -Uhrzeit der Erstellung des Vorgangs                                                       |
 |  lastActionDateTime          | UTC-Datum und -Uhrzeit der letzten Änderung des Vorgangs                                       |
 |  status                      | Status des Vorgangs: `not started` \| `running` \| `failed` \| `completed` Nur ein Vorgang kann jeweils den Status `running` aufweisen. |
 |  error                       | Fehlermeldung für Vorgangsfehler                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Antwortschritteigenschaften
+
+|  **Name**                    |  **Beschreibung**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| estimatedTimeFrame | Die geschätzte Dauer dieses Vorgangs |
+| id | Der eindeutige Bezeichner für den Schrittprozess |
+| description | Beschreibung des Schritts |
+| stepName | Der Anzeigename für den Schritt |
+| status | Der Status des Schritts (`notStarted` \| `running` \| `failed` \| `completed`) |
+| messages | Im Rahmen des Schritts aufgetretene Benachrichtigungen oder Warnungen. Array von Zeichenfolgen |
+| progressPercentage | Eine ganze Zahl zwischen 0 und 100, die den Fortschritt des Schritts angibt |
+| | |
 
 ### <a name="response-status-codes"></a>Antwortstatuscodes
 

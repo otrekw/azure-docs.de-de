@@ -18,7 +18,7 @@ In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Erstellen Sie
 
 ## <a name="create-an-app"></a>Erstellen einer App
 
-1. Wählen Sie auf der Kontextsymbolleiste die Option **+ New app for conversation** (+ Neue App für die Konversation) und anschließend **New app for conversation** (Neue App für die Konversation) aus.
+1. Wählen Sie auf der Kontextsymbolleiste die Option **+ New app for conversation** (+ Neue App für Unterhaltungen) und anschließend **New app for conversation** (Neue App für Unterhaltungen) aus.
 
     > [!div class="mx-imgBorder"]
     > [![Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)

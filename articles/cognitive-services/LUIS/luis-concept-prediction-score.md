@@ -1,28 +1,20 @@
 ---
 title: Vorhersageergebnisse – LUIS
-titleSuffix: Azure Cognitive Services
 description: Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den der LUIS-API-Dienst den Ergebnissen von Vorhersagen basierend auf einer Benutzeräußerung zuordnet.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280826"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382377"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Vorhersageergebnisse geben die Vorhersagegenauigkeit für Absichten und Entitäten an
 
 Ein Vorhersagescore gibt den Grad der Zuverlässigkeit an, den LUIS den Ergebnissen von Vorhersagen einer Benutzeräußerung zuordnet.
 
-Ein Vorhersageergebnis liegt zwischen 0 (null) und 1 (eins). Ein Beispiel für eine hohe Zuverlässigkeitsbewertung von LUIS ist der Wert 0,99. Ein Beispiel für eine Bewertung mit niedriger Zuverlässigkeit ist 0,01. 
+Ein Vorhersageergebnis liegt zwischen 0 (null) und 1 (eins). Ein Beispiel für eine hohe Zuverlässigkeitsbewertung von LUIS ist der Wert 0,99. Ein Beispiel für eine Bewertung mit niedriger Zuverlässigkeit ist 0,01.
 
 |Ergebniswert|Confidence|
 |--|--|
@@ -33,11 +25,11 @@ Ein Vorhersageergebnis liegt zwischen 0 (null) und 1 (eins). Ein Beispiel für e
 
 ## <a name="top-scoring-intent"></a>Absicht mit der höchsten Bewertung
 
-Zu jeder Vorhersage einer Äußerung wird die am höchsten bewertete Absicht zurückgegeben. Diese Vorhersage ist ein numerischer Vergleich der Vorhersageergebnisse. 
+Zu jeder Vorhersage einer Äußerung wird die am höchsten bewertete Absicht zurückgegeben. Diese Vorhersage ist ein numerischer Vergleich der Vorhersageergebnisse.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Ähnlichkeit der Scores
 
-Zwischen den 2 höchsten Bewertungen kann nur ein sehr kleiner Unterschied bestehen. LUIS zeigt diesen geringen Unterschied nicht an, sondern gibt lediglich das höchste Ergebnis zurück.  
+Zwischen den 2 höchsten Bewertungen kann nur ein sehr kleiner Unterschied bestehen. LUIS zeigt diesen geringen Unterschied nicht an, sondern gibt lediglich das höchste Ergebnis zurück.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Zurückgeben der Vorhersageergebnisse für alle Absichten
 
@@ -74,9 +66,11 @@ Vorhersagebewertungen können exponentiell angegeben werden, um außerhalb des I
 |--|--|
 |9,910309E-07|0,0000009910309|
 
-## <a name="punctuation"></a>Interpunktion
+<a name="punctuation"></a>
 
-[Erfahren Sie mehr](luis-concept-utterance.md#punctuation-marks) über das Verwenden oder Ignorieren von Satzzeichen. 
+## <a name="application-settings"></a>Anwendungseinstellungen
+
+Verwenden Sie [Anwendungseinstellungen](luis-reference-application-settings.md), um zu steuern, wie sich diakritische Zeichen und Interpunktion auf Vorhersageergebnisse auswirken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 625efcce7305cd7b1dd415a286e6b1e92682cc0a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296959"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616832"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,32 +152,19 @@ Verwenden Sie in diesem Szenario die Data Science Virtual Machine (DSVM) als Azu
     > [!WARNING]
     > Azure Machine Learning unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
 
-1. **Anfügen**: Um einen vorhandenen virtuellen Computer als Computeziel anzufügen, müssen Sie den vollqualifizierten Domänennamen (FQDN), Benutzernamen und das Kennwort für die VM bereitstellen. Ersetzen Sie in diesem Beispiel \<fqdn> durch den öffentlichen FQDN der VM oder die öffentliche IP-Adresse. Ersetzen Sie im folgenden Befehl \<username> und \<password> durch den SSH-Benutzernamen und das Kennwort für die VM.
+1. **Anfügen**: Wenn Sie einen vorhandenen virtuellen Computer als Computeziel anfügen möchten, müssen Sie die Ressourcen-ID, den Benutzernamen und das Kennwort für den virtuellen Computer angeben. Die Ressourcen-ID des virtuellen Computers kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des virtuellen Computers im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
 
-    > [!IMPORTANT]
-    > Die folgenden Azure-Regionen unterstützen das Anfügen eines virtuellen Computers über die öffentliche IP-Adresse der VM nicht. Verwenden Sie stattdessen die Azure Resource Manager-ID der VM mit dem Parameter `resource_id`:
-    >
-    > * USA, Osten
-    > * USA, Westen 2
-    > * USA, Süden-Mitte
-    >
-    > Die Ressourcen-ID des virtuellen Computers kann mithilfe der Abonnement-ID, des Ressourcengruppennamens und des Namens des virtuellen Computers im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +198,7 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
     
     Nach Erstellen des Clusters stellen Sie eine Verbindung mit dem Hostnamen \<clustername>-ssh.azurehdinsight.net her, wobei \<clustername> der Name ist, den Sie für den Cluster angegeben haben. 
 
-1. **Anfügen**: Um einen HDInsight-Cluster als Computeziel anzufügen, müssen Sie den Hostnamen, Benutzernamen und das Kennwort für den HDInsight-Cluster bereitstellen. Im folgenden Beispiel wird das SDK zum Anfügen eines Clusters zu Ihrem Arbeitsbereich verwendet. Ersetzen Sie in diesem Beispiel \<clustername> durch den Namen Ihres Clusters. Ersetzen Sie \<username> und \<password> durch den SSH-Benutzernamen und das Kennwort für den Cluster.
-
-    > [!IMPORTANT]
-    > In den folgenden Azure-Regionen wird das Anfügen eines HDInsight-Clusters mithilfe der öffentlichen IP-Adresse des Clusters nicht unterstützt. Verwenden Sie stattdessen die Azure Resource Manager-ID des Clusters mit dem Parameter `resource_id`:
-    >
-    > * USA, Osten
-    > * USA, Westen 2
-    > * USA, Süden-Mitte
-    >
-    > Die Ressourcen-ID des Clusters kann mithilfe der Abonnement-ID, des Ressourcengruppennamens und des Clusternamens im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+1. **Anfügen**: Wenn Sie einen HDInsight-Cluster als Computeziel anfügen möchten, müssen Sie den die Ressourcen-ID, den Benutzernamen und das Kennwort für den HDInsight-Cluster angeben. Die Ressourcen-ID des HDInsight-Clusters kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des HDInsight-Clusters im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +206,11 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -451,7 +425,7 @@ Weitere Informationen finden Sie in der Dokumentation zu [ScriptRunConfig](https
 
 Sie können die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und die [Machine Learning CLI-Erweiterung](reference-azure-machine-learning-cli.md) zum Erstellen von Laufzeitkonfigurationen und Übermitteln von Ausführungen für verschiedene Computeziele verwenden. Die folgenden Beispiele gehen davon aus, dass Sie über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen und sich mit dem CLI-Befehl `az login` bei Azure angemeldet haben. 
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ### <a name="create-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
 

@@ -1,21 +1,14 @@
 ---
 title: Bezeichnen einer Entität in einer Beispieläußerung
-titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie eine durch maschinelles Lernen erworbene Entität mit Unterkomponenten in einer Beispieläußerung auf einer Absichtsdetailseite des LUIS-Portals bezeichnen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898370"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382401"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität in einer Beispieläußerung
 
@@ -87,6 +80,10 @@ Entitätsrollen werden mithilfe der Entitätspalette beschriftet.
 1. Wenn die Entitätspalette offen ist, wählen Sie aus der Liste die gewünschte Entität aus.
 1. Wechseln Sie zur **Entitätsprüfung**, und wählen Sie eine vorhandene Rolle aus, oder erstellen Sie eine neue Rolle.
 1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle.
+
+## <a name="labeling-for-punctuation"></a>Bezeichnungen für Interpunktion
+
+Für Interpunktion sind keine Bezeichnungen erforderlich. Verwenden Sie [Anwendungseinstellungen](luis-reference-application-settings.md), um zu steuern, ob Interpunktion Auswirkungen auf Äußerungsvorhersagen hat.
 
 ## <a name="unlabel-entities"></a>Entitäten ohne Bezeichnung
 

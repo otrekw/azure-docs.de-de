@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280438"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255888"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 ==================================
+
+> [!NOTE]
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
 
 Es gibt drei Möglichkeiten, die Preise für VM-Angebote anzugeben: angepasste Kernpreise, Preise pro Kern und Tabellenpreise.
 

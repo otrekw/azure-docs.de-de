@@ -149,8 +149,9 @@
             - name: Verwenden von Private Link
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Sichern von Webdiensten mit SSL
+            - name: Schützen von Webdiensten mit TLS
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: "Verwenden der Azure\_AD-Identität in AKS-Bereitstellungen"
               href: how-to-use-azure-ad-identity.md
             - name: Erneutes Generieren von Speicherzugriffsschlüsseln

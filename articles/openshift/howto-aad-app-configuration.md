@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236102"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382913"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 
@@ -25,13 +25,13 @@ Stellen Sie im [Azure-Portal](https://portal.azure.com) sicher, dass Ihr Mandant
 
 ![Screenshot des Portals mit Anzeige des Mandanten oben rechts](./media/howto-create-tenant/tenant-callout.png) Wenn der falsche Mandant angezeigt wird, klicken Sie oben rechts auf Ihren Benutzernamen. Klicken Sie dann auf **Verzeichnis wechseln**, und wählen Sie den richtigen Mandanten aus der Liste **Alle Verzeichnisse** aus.
 
-Erstellen Sie einen neuen globalen Azure Active Directory-Administratorbenutzer, um sich bei Ihrem Azure Red Hat OpenShift-Cluster anzumelden.
+Erstellen Sie einen neuen Azure Active Directory-Benutzer vom Typ „Besitzer“, um sich bei Ihrem Azure Red Hat OpenShift-Cluster anzumelden.
 
 1. Wechseln Sie zum Blatt [Benutzer – Alle Benutzer](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 2. Klicken Sie zum Öffnen des Bereichs **Benutzer** auf **Neuer Benutzer**.
 3. Geben Sie einen **Namen** für diesen Benutzer ein.
 4. Erstellen Sie einen **Benutzernamen**, der auf dem Namen des erstellten Mandanten basiert, und fügen Sie am Ende `.onmicrosoft.com` an. Beispiel: `yourUserName@yourTenantName.onmicrosoft.com`. Notieren Sie sich diesen Benutzernamen. Sie benötigen ihn zur Anmeldung bei Ihrem Cluster.
-5. Klicken Sie zum Öffnen des Bereichs „Verzeichnisrolle“ auf **Verzeichnisrolle**, und wählen Sie **Globaler Administrator** aus. Klicken Sie dann am unteren Rand des Bereichs auf **OK**.
+5. Klicken Sie zum Öffnen des Bereichs „Verzeichnisrolle“ auf **Verzeichnisrolle**, und wählen Sie **Besitzer** aus. Klicken Sie dann am unteren Rand des Bereichs auf **OK**.
 6. Klicken Sie im Bereich **Benutzer** auf **Kennwort anzeigen**, und notieren Sie das temporäre Kennwort. Nachdem Sie sich zum ersten Mal angemeldet haben, werden Sie zum Zurücksetzen des Kennworts aufgefordert.
 7. Klicken Sie im unteren Bereich auf **Erstellen**, um den Benutzer zu erstellen.
 

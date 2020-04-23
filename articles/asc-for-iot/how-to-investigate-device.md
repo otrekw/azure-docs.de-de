@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center für IoT-Leitfaden zur Untersuchung von Geräten | Microsoft-Dokumentation
+title: Untersuchen eines verdächtigen Geräts
 description: In dieser Anleitung wird beschrieben, wie Sie Azure Security Center für IoT verwenden, um mithilfe von Log Analytics ein verdächtiges IoT-Gerät zu untersuchen.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596237"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311035"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Untersuchen eines verdächtigen IoT-Geräts
 
-Anhand von Warnungen des Diensts Azure Security Center für IoT wird eindeutig angegeben, wenn bei IoT-Geräten der Verdacht besteht, dass sie an verdächtigen Aktivitäten beteiligt sind, oder wenn es Hinweise auf eine Kompromittierung eines Geräts gibt. 
+Anhand von Warnungen des Diensts Azure Security Center für IoT wird eindeutig angegeben, wenn bei IoT-Geräten der Verdacht besteht, dass sie an verdächtigen Aktivitäten beteiligt sind, oder wenn es Hinweise auf eine Kompromittierung eines Geräts gibt.
 
-In diesem Leitfaden verwenden Sie die Vorschläge für die Untersuchung. Sie dienen Ihnen als Hilfe beim Ermitteln der potenziellen Risiken für Ihre Organisation, Auswählen von Gegenmaßnahmen und Festlegen der besten Vorgehensweise zur Verhinderung ähnlicher Angriffe in der Zukunft.  
+In diesem Leitfaden verwenden Sie die Vorschläge für die Untersuchung. Sie dienen Ihnen als Hilfe beim Ermitteln der potenziellen Risiken für Ihre Organisation, Auswählen von Gegenmaßnahmen und Festlegen der besten Vorgehensweise zur Verhinderung ähnlicher Angriffe in der Zukunft.
 
 > [!div class="checklist"]
 > * Suchen nach Ihren Gerätedaten
 > * Untersuchen mit KQL-Abfragen
-
 
 ## <a name="how-can-i-access-my-data"></a>Wie kann ich auf meine Daten zugreifen?
 
@@ -39,15 +38,15 @@ Standardmäßig werden die Sicherheitswarnungen und Empfehlungen von Azure Secur
 
 So suchen Sie Ihren Log Analytics-Arbeitsbereich für die Datenspeicherung
 
-1. Öffnen Sie Ihren IoT-Hub. 
+1. Öffnen Sie Ihren IoT-Hub.
 1. Klicken Sie unter **Sicherheit** auf **Übersicht** und anschließend auf **Einstellungen**.
-1. Ändern Sie die Konfigurationsdetails für Ihren Log Analytics-Arbeitsbereich. 
-1. Klicken Sie auf **Speichern**. 
+1. Ändern Sie die Konfigurationsdetails für Ihren Log Analytics-Arbeitsbereich.
+1. Klicken Sie auf **Speichern**.
 
 Gehen Sie nach der Konfiguration wie folgt vor, um auf Daten zuzugreifen, die in Ihrem Log Analytics-Arbeitsbereich gespeichert sind:
 
-1. Wählen Sie in Ihrem IoT-Hub eine Azure Security Center für IoT-Warnung aus, und klicken Sie darauf. 
-1. Klicken Sie auf **Further investigation** (Weitere Untersuchung). 
+1. Wählen Sie in Ihrem IoT-Hub eine Azure Security Center für IoT-Warnung aus, und klicken Sie darauf.
+1. Klicken Sie auf **Further investigation** (Weitere Untersuchung).
 1. Wählen Sie **To see which devices have this alert click here and view the DeviceId column** (Klicken Sie hier, und zeigen Sie die Spalte „DeviceId“ an, um die Geräte mit dieser Warnung anzuzeigen).
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Untersuchungsschritte für verdächtige IoT-Geräte
@@ -70,7 +69,7 @@ Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, ob im gleichen Zeitraum
 
 ### <a name="users-with-access"></a>Zugriffsberechtigte Benutzer
 
-Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer Zugriff auf dieses Gerät haben: 
+Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer Zugriff auf dieses Gerät haben:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -85,13 +84,14 @@ Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer Zugriff
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
  ```
-Verwenden Sie für die Ermittlung diese Daten: 
+Verwenden Sie für die Ermittlung diese Daten:
+
 - Welche Benutzer haben Zugriff auf das Gerät?
 - Verfügen die zugriffsberechtigten Benutzer über die erwarteten Berechtigungsstufen?
 
 ### <a name="open-ports"></a>Öffnen von Ports
 
-Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Ports im Gerät derzeit verwendet werden oder verwendet wurden: 
+Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Ports im Gerät derzeit verwendet werden oder verwendet wurden:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -112,14 +112,15 @@ Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Ports im Gerät 
  ```
 
 Verwenden Sie für die Ermittlung diese Daten:
+
 - Welche lauschenden Sockets sind auf dem Gerät derzeit aktiv?
 - Sollten die derzeit aktiven lauschenden Sockets zugelassen werden?
 - Sind irgendwelche verdächtigen Remoteadressen mit dem Gerät verbunden?
 
 ### <a name="user-logins"></a>Benutzeranmeldungen
 
-Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer sich am Gerät angemeldet haben: 
- 
+Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer sich am Gerät angemeldet haben:
+
  ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
@@ -143,13 +144,14 @@ Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, welche Benutzer sich am
  ```
 
 Nutzen Sie die Abfrageergebnisse, um Folgendes zu ermitteln:
+
 - Welche Benutzer haben sich am Gerät angemeldet?
 - Dürfen sich die angemeldeten Benutzer tatsächlich anmelden?
 - Haben Benutzer, die sich angemeldet haben, die Verbindung über erwartete oder unerwartete IP-Adressen hergestellt?
-  
+
 ### <a name="process-list"></a>Prozessliste
 
-Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, ob die Prozessliste den Erwartungen entspricht: 
+Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, ob die Prozessliste den Erwartungen entspricht:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -186,4 +188,4 @@ Nutzen Sie die Abfrageergebnisse, um Folgendes zu ermitteln:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie ein Gerät untersucht und ein besseres Verständnis der Risiken entwickelt haben, können Sie das [Konfigurieren von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md) erwägen, um den Sicherheitsstatus Ihrer IoT-Lösung zu verbessern. Falls Sie nicht bereits über einen Geräte-Agent verfügen, können Sie [einen Sicherheits-Agent bereitstellen](how-to-deploy-agent.md) oder [die Konfiguration eines vorhandenen Geräte-Agents ändern](how-to-agent-configuration.md), um Ihre Ergebnisse zu verbessern. 
+Nachdem Sie ein Gerät untersucht und ein besseres Verständnis der Risiken entwickelt haben, können Sie das [Konfigurieren von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md) erwägen, um den Sicherheitsstatus Ihrer IoT-Lösung zu verbessern. Falls Sie nicht bereits über einen Geräte-Agent verfügen, können Sie [einen Sicherheits-Agent bereitstellen](how-to-deploy-agent.md) oder [die Konfiguration eines vorhandenen Geräte-Agents ändern](how-to-agent-configuration.md), um Ihre Ergebnisse zu verbessern.

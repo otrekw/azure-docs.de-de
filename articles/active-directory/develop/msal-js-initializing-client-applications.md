@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084042"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010153"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.js
 Dieser Artikel beschreibt die Initialisierung der Microsoft Authentication Library für JavaScript (MSAL.js) mit einer Instanz einer Benutzer-Agent-Anwendung. Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. Diese Clients speichern keine Geheimnisse, da der Browserkontext offen zugänglich ist. Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
@@ -35,7 +35,7 @@ Bevor Sie eine Anwendung initialisieren, müssen Sie sie zunächst [im Azure-Por
 
 Sie können MSAL.js wie folgt in einer einfachen JavaScript/Typescript-Anwendung verwenden. Initialisieren Sie den MSAL-Authentifizierungskontext, indem Sie `UserAgentApplication` mit einem Konfigurationsobjekt instanziieren. Die für die Initialisierung von MSAL.js mindestens erforderliche Konfiguration ist die ClientID Ihrer Anwendung, die Sie vom Portal zur Anwendungsregistrierung erhalten.
 
-Für Authentifizierungsmethoden mit Umleitungsflows (`loginRedirect` und `acquireTokenRedirect`) müssen Sie einen Rückruf über die `handleRedirectCallback()`-Methode explizit für Erfolg oder Fehler registrieren. Dies ist notwendig, da Umleitungsflows keine Zusagen zurückgeben, wie es bei Methoden mit einer Popup der Fall ist.
+Für Authentifizierungsmethoden mit Umleitungsflows (`loginRedirect` und `acquireTokenRedirect`) in MSAL.js 1.2.x und früheren Versionen muss über die Methode `handleRedirectCallback()` explizit ein Rückruf für Erfolg oder Fehler registriert werden. Dies ist notwendig, da Umleitungsflows keine Zusagen zurückgeben, wie es bei Methoden mit einer Popup der Fall ist. Ab MSAL.js 1.3.0 ist dies optional.
 
 ```javascript
 // Configuration object constructed

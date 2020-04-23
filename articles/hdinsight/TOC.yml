@@ -39,6 +39,8 @@
       items:
         - name: Apache Hadoop-Komponenten in HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Hortonworks-Versionshinweise
+          href: ./hortonworks-release-notes.md
         - name: Hochverfügbarkeitskomponenten
           href: ./hdinsight-high-availability-components.md
         - name: Apache Ambari in Azure HDInsight
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: Verfügbarkeit und Zuverlässigkeit
           href: ./hdinsight-high-availability-linux.md
-        - name: Vergleichen von Speicheroptionen
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: Grundlegendes zu verwalteten Identitäten
           href: ./hdinsight-managed-identities.md
+        - name: Vergleichen von Speicheroptionen
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: "Übersicht über Azure\_Storage"
+              href: overview-azure-storage.md
+            - name: Übersicht über Azure Data Lake Storage Gen1
+              href: overview-data-lake-storage-gen1.md
+            - name: Übersicht über Azure Data Lake Storage Gen2
+              href: overview-data-lake-storage-gen2.md
     - name: Anleitung
       items:
         - name: Erstellen von Clustern

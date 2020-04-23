@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228842"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409767"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -210,7 +210,7 @@ Sie können sich wie folgt im Voraus für Failover vorbereiten:
 Für das Ausführen eines umfangreichen Failovers wird Folgendes empfohlen:
 
 1. Erstellen Sie Wiederherstellungspläne für Workloadfailover.
-    - Jeder Wiederherstellungsplan kann einen Failover von bis zu 50 Computern auslösen.
+    - Jeder Wiederherstellungsplan kann ein Failover von bis zu 100 Computern auslösen.
     - [hier](recovery-plan-overview.md) .
 2. Fügen Sie Wiederherstellungsplänen Azure Automation-Runbookskripts hinzu, um alle manuellen Aufgaben in Azure zu automatisieren. Zu den typischen Aufgaben gehören die Konfiguration von Lastenausgleichsmodulen, das Aktualisieren von DNS usw. [Weitere Informationen](site-recovery-runbook-automation.md)
 2. Bereiten Sie Windows-Computer vor dem Failover vor, sodass sie der Azure-Umgebung entsprechen. [Failover-Grenzwerte](#plan-azure-subscriptions-and-quotas) sind für Computer höher, die die Vorgaben einhalten. [Erfahren Sie mehr](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) über Runbooks.

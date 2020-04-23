@@ -2,13 +2,13 @@
 title: Konversationen mit mehreren Turns – QnA Maker
 description: Verwalten Sie für Ihren Bot von einer Frage zur nächsten die verschiedenen Durchläufe (Multi-Turn) mit Eingabeaufforderungen und Kontext. Mehrfachdurchläufe sind die Fähigkeit, eine wechselseitige Konversation zu führen, wobei der Kontext der vorherigen Frage die nächste Frage und die nächste Antwort beeinflusst.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219032"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261464"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -80,7 +80,7 @@ Beim Hinzufügen eines hierarchischen Dokuments bestimmt QnA Maker Folgeaufforde
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
 
-Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `context` der `prompts`-Eigenschaft hinzugefügt.
+Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt.
 
 ## <a name="show-questions-and-answers-with-context"></a>Anzeigen von Fragen und Antworten mit Kontext
 
@@ -108,7 +108,7 @@ Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hi
 1. Wählen Sie in der Zeile für **Sign out** in der Spalte **Answer** (Antwort) die Option **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
 1. Geben Sie in den Feldern des Popupfensters **Follow-up prompt** (Folgeaufforderung) die folgenden Werte ein:
 
-    |Feld|value|
+    |Feld|Wert|
     |--|--|
     |Anzeigetext|Geben Sie **Gerät ausschalten** ein. Dies ist benutzerdefinierter Text, der in der Folgeaufforderung angezeigt werden soll.|
     |Context-only (Nur Kontext)| Aktivieren Sie dieses Kontrollkästchen. Eine Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
@@ -146,7 +146,7 @@ Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, soll
 1. Wählen Sie in der Spalte **Antwort** für diese Frage **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
 1. Erstellen Sie unter **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) eine neue Folgeaufforderung, indem Sie folgende Werte eingeben:
 
-    |Feld|value|
+    |Feld|Wert|
     |--|--|
     |Anzeigetext|*Erstellen Sie ein Windows-Konto*. Dies ist der benutzerdefinierte Text, der in der Folgeaufforderung angezeigt werden soll.|
     |Context-only (Nur Kontext)|Aktivieren Sie dieses Kontrollkästchen. Diese Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
@@ -172,13 +172,13 @@ Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, soll
 
 1. Nachdem Sie die Folgeaufforderung hinzugefügt haben, wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 
-## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Aktivieren von Mehrfachdurchläufen während des Testens von Folgeaufforderungen
+<a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>
 
-Wenn Sie die Frage mit Folgeaufforderungen im Bereich **Test** testen, wählen Sie **Enable multi-turn** (Mehrfachdurchlauf aktivieren) aus, und geben Sie Ihre Frage ein. Die Antwort enthält die Folgeaufforderungen.
+## <a name="view-multi-turn-during-testing-of-follow-up-prompts"></a>Anzeigen von Mehrfachdurchläufen beim Testen von Folgeaufforderungen
+
+Wenn Sie die Frage im **Testbereich** mit Folgeaufforderungen testen, enthält die Antwort die Folgeaufforderungen.
 
 ![Die Antwort enthält die Folgeaufforderungen.](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
-
-Wenn Sie Mehrfachdurchläufe nicht aktivieren, wird zwar die Antwort zurückgegeben, aber keine Folgeaufforderungen.
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Eine JSON-Anforderung zur Rückgabe einer ersten Antwort und der Folgeaufforderungen
 
@@ -314,7 +314,7 @@ QnA Maker-JSON-Antwort _GenerateAnswer_ enthält die Folgeaufforderungen in der 
             "questions": [
                 "Meet Surface Pro 4"
             ],
-            "answer": "**Meet Surface Pro 4**\n\nGet acquainted with the features built in to your Surface Pro 4. \n\nHere’s a quick overview of Surface Pro 4 features: \n\n\n\n\n\n\n\nPower button \n\n\n\n\n\nPress the power button to turn your Surface Pro 4 on. You can also use the power button to put it to sleep and wake it when you’re ready to start working again. \n\n\n\n\n\n\n\nTouchscreen \n\n\n\n\n\nUse the 12.3” display, with its 3:2 aspect ratio and 2736 x 1824 resolution, to watch HD movies, browse the web, and use your favorite apps. \n\nThe new Surface G5 touch processor provides up to twice the touch accuracy of Surface Pro 3 and lets you use your fingers to select items, zoom in, and move things around. For more info, see Surface touchscreen on Surface.com. \n\n\n\n\n\n\n\nSurface Pen \n\n\n\n\n\nEnjoy a natural writing experience with a pen that feels like an actual pen. Use Surface Pen to launch Cortana in Windows or open OneNote and quickly jot down notes or take screenshots. \n\nSee Using Surface Pen (Surface Pro 4 version) on Surface.com for more info. \n\n\n\n\n\n\n\nKickstand \n\n\n\n\n\nFlip out the kickstand and work or play comfortably at your desk, on the couch, or while giving a hands-free presentation. \n\n\n\n\n\n\n\nWi-Fi and Bluetooth® \n\n\n\n\n\nSurface Pro 4 supports standard Wi-Fi protocols (802.11a/b/g/n/ac) and Bluetooth 4.0. Connect to a wireless network and use Bluetooth devices like mice, printers, and headsets. \n\nFor more info, see Add a Bluetooth device and Connect Surface to a wireless network on Surface.com. \n\n\n\n\n\n\n\nCameras \n\n\n\n\n\nSurface Pro 4 has two cameras for taking photos and recording video: an 8-megapixel rear-facing camera with autofocus and a 5-megapixel, high-resolution, front-facing camera. Both cameras record video in 1080p, with a 16:9 aspect ratio. Privacy lights are located on the right side of both cameras. \n\nSurface Pro 4 also has an infrared (IR) face-detection camera so you can sign in to Windows without typing a password. For more info, see Windows Hello on Surface.com. \n\nFor more camera info, see Take photos and videos with Surface and Using autofocus on Surface 3, Surface Pro 4, and Surface Book on Surface.com. \n\n\n\n\n\n\n\nMicrophones \n\n\n\n\n\nSurface Pro 4 has both a front and a back microphone. Use the front microphone for calls and recordings. Its noise-canceling feature is optimized for use with Skype and Cortana. \n\n\n\n\n\n\n\nStereo speakers \n\n\n\n\n\nStereo front speakers provide an immersive music and movie playback experience. To learn more, see Surface sound, volume, and audio accessories on Surface.com. \n\n\n\n\n",
+            "answer": "**Meet Surface Pro 4**\n\nGet acquainted with the features built in to your Surface Pro 4. \n\nHere's a quick overview of Surface Pro 4 features: \n\n\n\n\n\n\n\nPower button \n\n\n\n\n\nPress the power button to turn your Surface Pro 4 on. You can also use the power button to put it to sleep and wake it when you're ready to start working again. \n\n\n\n\n\n\n\nTouchscreen \n\n\n\n\n\nUse the 12.3" display, with its 3:2 aspect ratio and 2736 x 1824 resolution, to watch HD movies, browse the web, and use your favorite apps. \n\nThe new Surface G5 touch processor provides up to twice the touch accuracy of Surface Pro 3 and lets you use your fingers to select items, zoom in, and move things around. For more info, see Surface touchscreen on Surface.com. \n\n\n\n\n\n\n\nSurface Pen \n\n\n\n\n\nEnjoy a natural writing experience with a pen that feels like an actual pen. Use Surface Pen to launch Cortana in Windows or open OneNote and quickly jot down notes or take screenshots. \n\nSee Using Surface Pen (Surface Pro 4 version) on Surface.com for more info. \n\n\n\n\n\n\n\nKickstand \n\n\n\n\n\nFlip out the kickstand and work or play comfortably at your desk, on the couch, or while giving a hands-free presentation. \n\n\n\n\n\n\n\nWi-Fi and Bluetooth&reg; \n\n\n\n\n\nSurface Pro 4 supports standard Wi-Fi protocols (802.11a/b/g/n/ac) and Bluetooth 4.0. Connect to a wireless network and use Bluetooth devices like mice, printers, and headsets. \n\nFor more info, see Add a Bluetooth device and Connect Surface to a wireless network on Surface.com. \n\n\n\n\n\n\n\nCameras \n\n\n\n\n\nSurface Pro 4 has two cameras for taking photos and recording video: an 8-megapixel rear-facing camera with autofocus and a 5-megapixel, high-resolution, front-facing camera. Both cameras record video in 1080p, with a 16:9 aspect ratio. Privacy lights are located on the right side of both cameras. \n\nSurface Pro 4 also has an infrared (IR) face-detection camera so you can sign in to Windows without typing a password. For more info, see Windows Hello on Surface.com. \n\nFor more camera info, see Take photos and videos with Surface and Using autofocus on Surface 3, Surface Pro 4, and Surface Book on Surface.com. \n\n\n\n\n\n\n\nMicrophones \n\n\n\n\n\nSurface Pro 4 has both a front and a back microphone. Use the front microphone for calls and recordings. Its noise-canceling feature is optimized for use with Skype and Cortana. \n\n\n\n\n\n\n\nStereo speakers \n\n\n\n\n\nStereo front speakers provide an immersive music and movie playback experience. To learn more, see Surface sound, volume, and audio accessories on Surface.com. \n\n\n\n\n",
             "score": 21.92,
             "id": 3,
             "source": "product-manual.pdf",
@@ -360,7 +360,7 @@ Der in der JSON-Antwort zurückgegebene [Anzeigetext und die Anzeigereihenfolge]
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Hinzufügen oder Löschen von Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Update-API
 
-Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `context` der `promptsToAdd`-Eigenschaft und im Array `promptsToDelete` hinzugefügt.
+Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `promptsToAdd` der `context`-Eigenschaft und im Array `promptsToDelete` hinzugefügt.
 
 ## <a name="export-knowledge-base-for-version-control"></a>Exportieren der Wissensdatenbank für die Versionskontrolle
 

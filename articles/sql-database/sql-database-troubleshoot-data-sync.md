@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 8e223d0c6243bfddc1e5a56867c4c69de5e2a62e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822456"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382895"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung
 
@@ -110,7 +110,7 @@ Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme aufgetreten
 -  Es gibt eine WHERE-Klausel in Ihrer CREATE INDEX-Anweisung. Die Datensynchronisierung verarbeitet diese Bedingung nicht. Um dieses Problem zu beheben, entfernen Sie die WHERE-Klausel, oder nehmen Sie die Änderungen an allen Datenbanken manuell vor. 
  
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> Wie geht die Datensynchronisierung mit Zirkelbezügen um? Diese liegen vor, wenn dieselben Daten in mehreren Synchronisierungsgruppen synchronisiert werden und sich daher ständig ändern.
-Die Datensynchronisierung beseitigt Zirkelbezüge nicht. Vermeiden Sie sie deshalb unbedingt. 
+Die Datensynchronisierung behandelt keine Zirkelbezüge. Vermeiden Sie sie deshalb unbedingt. 
 
 ## <a name="client-agent-issues"></a>Probleme mit dem Client-Agent
 

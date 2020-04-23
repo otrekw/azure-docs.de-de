@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297068"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269726"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie Sie [**Azure Machine Learning-Arbeitsbere
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an. 
 
@@ -90,6 +90,8 @@ Sie können Ihren Arbeitsbereich von der Basic Edition auf die Enterprise Editio
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Suchen nach einem Arbeitsbereich
 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
 1. Geben Sie im oberen Suchfeld **Machine Learning** ein.  
 
 1. Wählen Sie **Machine Learning** aus.
@@ -102,9 +104,9 @@ Sie können Ihren Arbeitsbereich von der Basic Edition auf die Enterprise Editio
 
 ## <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
-Verwenden Sie die Schaltfläche „Löschen“ oben in dem Arbeitsbereich, den Sie löschen möchten.
+Wählen Sie im [Azure-Portal](https://portal.azure.com/) am oberen Rand des zu löschenden Arbeitsbereichs die Option **Löschen** aus.
 
-  ![Schaltfläche „Löschen“](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Löschen des Arbeitsbereichs":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

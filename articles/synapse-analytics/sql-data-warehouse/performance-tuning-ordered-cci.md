@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583871"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417044"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -28,7 +28,7 @@ Standardmäßig erstellt eine interne Komponente (Index-Generator) für jede Tab
 
 Beim Erstellen einer geordneten CCI-Tabelle sortiert die Synapse SQL-Engine die vorhandenen Daten im Arbeitsspeicher nach den Sortierschlüsseln, bevor der Index-Generator sie in Indexsegmente komprimiert.  Bei sortierten Daten wird die Überlappung von Segmenten verringert, sodass Abfragen Segmente effizienter entfernen können und somit eine schnellere Leistung aufweisen, da die Anzahl der Segmente, die vom Datenträger gelesen werden sollen, kleiner ist.  Die Überlappung von Segmenten lässt sich vermeiden, wenn alle Daten im Arbeitsspeicher gleichzeitig sortiert werden.  Aufgrund großer Tabellen in Data Warehouses kommt dieses Szenario nicht häufig vor.  
 
-Wenn Sie die Segmentbereiche für eine Spalte überprüfen möchten, führen Sie diesen Befehl mit dem Tabellen- und Spaltennamen aus:
+Wenn Sie die Segmentbereiche für eine Spalte überprüfen möchten, führen Sie den folgenden Befehl unter Angabe Ihres Tabellen- und Spaltennamens aus:
 
 ```sql
 SELECT o.name, pnp.index_id, 

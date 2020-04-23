@@ -5,7 +5,7 @@
   items:
     - name: Was ist die Anwendungsbereitstellung?
       href: user-provisioning.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: G Suite
       href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
@@ -28,7 +28,7 @@
       href: plan-auto-user-provisioning.md
     - name: Planen einer HR-Cloudbereitstellung
       href: plan-cloud-hr-provision.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Konfigurieren der Bereitstellung für eine Katalog-App
@@ -79,6 +79,8 @@
   items:
     - name: "Einhaltung des SCIM\_2.0-Protokolls"
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM- und Graphszenarien
+      href: scim-graph-scenarios.md
     - name: Auswählen einer Bereitstellungsmethode
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: HR-Cloudbereitstellung

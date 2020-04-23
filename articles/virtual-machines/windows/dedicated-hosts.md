@@ -1,21 +1,19 @@
 ---
 title: Übersicht über dedizierte Azure-Hosts für virtuelle Computer
 description: Erfahren Sie mehr darüber, wie dedizierte Azure-Hosts für die Bereitstellung virtueller Computer verwendet werden können.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: zivr
+ms.openlocfilehash: 9709408f006cbcc5786a4e5a854abcd20affd693
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251566"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082831"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 

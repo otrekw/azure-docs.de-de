@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288613"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256347"
 ---
 <a name="create-or-modify-an-offer"></a>Erstellen oder Ändern ein Angebots
 =========================
+
+> [!NOTE]
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
 
 Dieser Aufruf aktualisiert ein bestimmtes Angebot im Herausgebernamespace oder erstellt ein neues Angebot.
 
@@ -246,11 +249,11 @@ Im folgenden Beispiel wird ein Angebot mit der Angebots-ID (offerId) `contosovir
 
 | **Code**  |  **Beschreibung**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | [https://login.microsoftonline.com/consumers/](`OK`). Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich geändert.           |
-|  201      | [https://login.microsoftonline.com/consumers/](`Created`). Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich erstellt.   |
-|  400      | [https://login.microsoftonline.com/consumers/](`Bad/Malformed request`). Der Fehlerantworttext enthält ggf. weitere Informationen.            |
-|  403      | [https://login.microsoftonline.com/consumers/](`Forbidden`). Der Client hat keinen Zugriff auf den angeforderten Namespace.                     |
-|  404      | [https://login.microsoftonline.com/consumers/](`Not found`). Die Entität, auf die im Client verwiesen wird, gibt es nicht.                           |
+|  200      | `OK`. Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich geändert.           |
+|  201      | `Created`. Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich erstellt.   |
+|  400      | `Bad/Malformed request`. Der Fehlerantworttext enthält ggf. weitere Informationen.            |
+|  403      | `Forbidden`. Der Client hat keinen Zugriff auf den angeforderten Namespace.                     |
+|  404      | `Not found`. Die Entität, auf die im Client verwiesen wird, gibt es nicht.                           |
 |  412      | Der Server erfüllt nicht alle Voraussetzungen, die die anfordernde Person in der Anforderung angegeben hat. Der Client sollte das ETAG prüfen, das mit der Anforderung gesendet wurde. |
 |  |  |
 

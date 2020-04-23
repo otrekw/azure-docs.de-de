@@ -2,13 +2,13 @@
 title: Einführung in Reliable Collections
 description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen.
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609722"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398433"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
 
@@ -24,10 +24,9 @@ Der Hauptunterschied zwischen zuverlässigen Auflistungen und anderen Hochverfü
 Reliable Collections können als natürliche Weiterentwicklung der **System.Collections** -Klassen betrachtet werden: Der neue Satz von Auflistungen wurde für Cloudanwendungen und Umgebungen mit mehreren Computern konzipiert, ohne die Komplexität für den Entwickler zu erhöhen. Reliable Collections sind damit:
 
 * Repliziert: Zustandsänderungen werden für Hochverfügbarkeit repliziert.
-* Persistent gespeichert: Daten werden persistent auf Datenträgern gespeichert, um sie vor größeren Ausfällen (z.B. einem Stromausfall im Datencenter) zu schützen.
-* Da Schreibvorgänge persistent gespeichert und repliziert werden, können Sie kein flüchtiges ReliableDictionary, keine flüchtige ReliableQueue oder andere zuverlässige Sammlung erstellen, die nur Daten im Arbeitsspeicher beibehält.
 * Asynchron: APIs sind asynchron, um sicherzustellen, dass Threads bei einer E/A nicht blockiert werden.
 * Transaktional: APIs nutzen die Abstraktion von Transaktionen, damit Sie mehrere Reliable Collections (zuverlässige Sammlungen) auf einfache Weise in einem Dienst verwalten können.
+* Persistent oder flüchtig: Daten können persistent auf Datenträgern gespeichert werden, um sie vor größeren Ausfällen (etwa einem Stromausfall im Datencenter) zu schützen. Von einigen zuverlässigen Sammlungen wird auch ein flüchtiger Modus (mit [Einschränkungen](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)) unterstützt, bei dem sich alle Daten im Arbeitsspeicher befinden (beispielsweise ein replizierter In-Memory-Cache).
 
 Reliable Collections zeichnen sich durch von Anfang an starke Konsistenzgarantien aus, was die Argumentation hinsichtlich Anwendungszuständen erleichtert.
 Eine starke Konsistenz wird erreicht, indem Transaktionscommits erst abgeschlossen werden, nachdem die gesamte Transaktion in einem Mehrheitsquorum von Replikaten (einschließlich des primären Replikats) protokolliert wurde.
@@ -57,5 +56,5 @@ Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 * Andere
-  * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
   * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

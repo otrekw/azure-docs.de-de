@@ -1,22 +1,14 @@
 ---
 title: Planen Ihrer App – LUIS
-titleSuffix: Azure Cognitive Services
 description: Beschreiben Sie kurz relevante App-Absichten und -Entitäten, und erstellen Sie dann Ihre Anwendungspläne in Language Understanding Intelligent Service (LUIS).
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326773"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382305"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planen Ihres LUIS-App-Schemas mit Motivdomäne und Datenextraktion
 
@@ -44,7 +36,7 @@ Wenn Sie nicht die Gesamtabsicht identifizieren müssen, fügen Sie alle Beispie
 
 ## <a name="create-example-utterances-for-each-intent"></a>Erstellen von Beispieläußerungen für jede Absicht
 
-Vermeiden Sie zunächst, zu viele Äußerungen für jede Absicht zu erstellen. Nachdem Sie die Absichten festgelegt haben, können Sie pro Absicht jeweils 15 bis 30 Beispieläußerungen erstellen. Jede Äußerung sollte sich von den zuvor bereitgestellten Äußerungen unterscheiden. Eine gute Vielfalt in den Äußerungen umfasst die Gesamtzahl der Wörter, die Wortwahl, die Verbform und die Interpunktion.
+Vermeiden Sie zunächst, zu viele Äußerungen für jede Absicht zu erstellen. Nachdem Sie die Absichten festgelegt haben, können Sie pro Absicht jeweils 15 bis 30 Beispieläußerungen erstellen. Jede Äußerung sollte sich von den zuvor bereitgestellten Äußerungen unterscheiden. Eine gute Vielfalt in den Äußerungen umfasst die Gesamtzahl der Wörter, die Wortwahl, die Verbform und die [Interpunktion](luis-reference-application-settings.md#punctuation-normalization).
 
 Weitere Informationen finden Sie unter [Grundlegendes zu guten Äußerungen für LUIS-Apps](luis-concept-utterance.md).
 

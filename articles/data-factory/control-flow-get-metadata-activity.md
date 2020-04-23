@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250276"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417108"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten beliebiger Daten in Azure Data Factory verwendet werden. Die Aktivität kann in folgenden Szenarien verwendet werden:
 
@@ -54,6 +55,7 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Me
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Wenn Sie die Aktivität „Metadaten abrufen“ für einen Ordner verwenden möchten, vergewissern Sie sich, dass Sie für den angegebenen Ordner über die Berechtigung zum Auflisten/Ausführen (LIST/EXECUTE) verfügen.
 - Für Amazon S3 und Google Cloud Storage gilt `lastModified` für den Bucket und den Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für den Bucket und den Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
 - Für Azure Blob Storage gilt `lastModified` für den Container und das Blob, aber nicht für den virtuellen Ordner.
 - Der Filter `lastModified` gilt aktuell für untergeordnete Filterelemente, aber nicht für den angegebenen Ordner bzw. die angegebene Datei selbst.

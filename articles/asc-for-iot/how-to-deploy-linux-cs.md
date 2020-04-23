@@ -1,5 +1,5 @@
 ---
-title: Anleitung zum Installieren und Bereitstellen des C#-basierten Linux-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
+title: Installieren und Bereitstellen des C#-basierten Linux-Agents
 description: Hier erfahren Sie, wie Sie Azure Security Center für IoT-Agent unter Linux (32 Bit und 64 Bit) installieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75367415"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311142"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C#-basierten Sicherheits-Agents von Azure Security Center für IoT unter Linux
 
-
 In dieser Anleitung erfahren Sie, wie Sie den C#-basierten Sicherheits-Agent von Azure Security Center für IoT unter Linux installieren und bereitstellen.
 
-In diesem Artikel lernen Sie Folgendes: 
+In diesem Artikel lernen Sie Folgendes:
+
 > [!div class="checklist"]
 > * Installieren
 > * Überprüfen der Bereitstellung
 > * Deinstallieren des Agents
-> * Problembehandlung 
+> * Problembehandlung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Informationen zu anderen Plattformen und Agent-Varianten finden Sie unter [Choose the right security agent](how-to-deploy-agent.md) (Auswählen des richtigen Sicherheits-Agents).
 
-1. Um den Sicherheits-Agent bereitstellen zu können, müssen Sie auf dem Computer, auf dem Sie ihn installieren möchten, über lokale Administratorrechte verfügen. 
+1. Um den Sicherheits-Agent bereitstellen zu können, müssen Sie auf dem Computer, auf dem Sie ihn installieren möchten, über lokale Administratorrechte verfügen.
 
 1. [Erstellen Sie ein Sicherheitsmodul](quickstart-create-security-twin.md) für das Gerät.
 
-## <a name="installation"></a>Installation 
+## <a name="installation"></a>Installation
 
 Gehen Sie zum Bereitstellen des Sicherheits-Agents wie folgt vor:
 
@@ -50,14 +50,14 @@ Gehen Sie zum Bereitstellen des Sicherheits-Agents wie folgt vor:
 
 1. Extrahieren Sie den Inhalt des Pakets, und navigieren Sie zum Ordner _/Install_.
 
-1. Führen Sie **aus, um dem Skript**InstallSecurityAgent`chmod +x InstallSecurityAgent.sh` Ausführungsberechtigungen hinzuzufügen. 
+1. Führen Sie `chmod +x InstallSecurityAgent.sh` aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen.
 
-1. Als Nächstes führen Sie den folgenden Befehl mit **root-Berechtigungen** aus: 
+1. Als Nächstes führen Sie den folgenden Befehl mit **root-Berechtigungen** aus:
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
-   
+
    Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Konfigurieren der Authentifizierung](concept-security-agent-authentication-methods.md).
 
 Dieses Skript führt folgende Aktionen aus:
@@ -72,23 +72,22 @@ Dieses Skript führt folgende Aktionen aus:
 
 - Konfigurieren des Agents mit den angegebenen Authentifizierungsparametern
 
-
 Sollten Sie weitere Hilfe benötigen, führen Sie das Skript mit dem Parameter „–help“ aus: `./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 
-Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Parameter „–u“ aus: `./InstallSecurityAgent.sh -u`. 
+Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Parameter „–u“ aus: `./InstallSecurityAgent.sh -u`.
 
 > [!NOTE]
 > Bei der Deinstallation werden keine der fehlenden erforderlichen Komponenten entfernt, die ggf. im Zuge der Installation installiert wurden.
 
-## <a name="troubleshooting"></a>Problembehandlung  
+## <a name="troubleshooting"></a>Problembehandlung
 
 1. Führen Sie Folgendes aus, um den Bereitstellungsstatus zu überprüfen:
 
     `systemctl status ASCIoTAgent.service`
 
-2. Aktivieren Sie die Protokollierung.  
+1. Aktivieren Sie die Protokollierung.
    Sollte der Agent nicht starten, aktivieren Sie die Protokollierung, um weitere Informationen zu erhalten.
 
    So aktivieren Sie die Protokollierung:
@@ -97,15 +96,16 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
 
         `vi /var/ASCIoTAgent/General.config`
 
-   1. Bearbeiten Sie die folgenden Werte: 
+   1. Bearbeiten Sie die folgenden Werte:
 
       ```
       <add key="logLevel" value="Debug"/>
       <add key="fileLogLevel" value="Debug"/>
-      <add key="diagnosticVerbosityLevel" value="Some" /> 
+      <add key="diagnosticVerbosityLevel" value="Some" />
       <add key="logFilePath" value="IotAgentLog.log"/>
       ```
-       Der Wert **logFilePath** ist konfigurierbar. 
+
+       Der Wert **logFilePath** ist konfigurierbar.
 
        > [!NOTE]
        > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
@@ -114,11 +114,11 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
 
        `systemctl restart ASCIoTAgent.service`
 
-   1. Sehen Sie sich die Protokolldatei an, um mehr über den Fehler zu erfahren.  
+   1. Sehen Sie sich die Protokolldatei an, um mehr über den Fehler zu erfahren.
 
        Speicherort der Protokolldatei: `/var/ASCIoTAgent/IotAgentLog.log`
 
-       Ändern Sie den Dateipfad gemäß dem Namen, den Sie in Schritt 2 für **logFilePath** gewählt haben. 
+       Ändern Sie den Dateipfad gemäß dem Namen, den Sie in Schritt 2 für **logFilePath** gewählt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

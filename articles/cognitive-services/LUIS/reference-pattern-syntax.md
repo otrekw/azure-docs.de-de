@@ -1,25 +1,19 @@
 ---
 title: Mustersyntaxreferenz – LUIS
-titleSuffix: Azure Cognitive Services
 description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren. Extrahierte Daten werden von der Clientanwendung verwendet.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218708"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382142"
 ---
 # <a name="pattern-syntax"></a>Mustersyntax
 
-Die Mustersyntax ist eine Vorlage für eine Äußerung. Die Vorlage sollte sowohl Wörter und Entitäten enthalten, die abgeglichen werden sollen, als auch Wörter und Interpunktion, die ignoriert werden sollen. Sie ist **kein** regulärer Ausdruck.
+Die Mustersyntax ist eine Vorlage für eine Äußerung. Die Vorlage sollte sowohl abzugleichende Wörter und Entitäten als auch zu ignorierende Wörter und [Interpunktion](luis-reference-application-settings.md#punctuation-normalization) enthalten. Sie ist **kein** regulärer Ausdruck.
 
 > [!CAUTION]
 > Zu den Mustern gehören nur übergeordnete, durch maschinelles Lernen erworbene Entitäten, keine Unterkomponenten.

@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743170"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417021"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
 Die materialisierten Sichten im Synapse SQL-Pool bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
 
-Die materialisierten Sichten in Azure SQL Data Warehouse bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
+Die materialisierten Sichten im SQL-Pool bieten eine wartungsarme Methode für komplexe analytische Abfragen, um ohne Abfrageänderungen eine hohe Leistung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
 
 ## <a name="materialized-views-vs-standard-views"></a>Materialisierte Sichten im Vergleich zu Standardsichten
 
@@ -45,7 +44,7 @@ Die meisten Anforderungen an eine Standardsicht gelten weiterhin für eine mater
 
 ## <a name="benefits-of-using-materialized-views"></a>Vorteile der Verwendung von materialisierten Sichten
 
-Eine ordnungsgemäß entworfene materialisierte Sicht kann folgende Vorteile bieten:
+Eine ordnungsgemäß entworfene materialisierte Sicht bietet folgende Vorteile:
 
 - Verkürzen der Ausführungszeit für komplexe Abfragen mit JOINs und Aggregatfunktionen. Je komplexer die Abfrage ist, desto höher ist das Potenzial für Einsparungen bei der Ausführungszeit. Der größte Vorteil wird erzielt, wenn die Berechnungskosten für eine Abfrage hoch sind und das sich ergebende Dataset klein ist.  
 - Der Optimierer im SQL-Pool kann bereitgestellte materialisierte Sichten automatisch verwenden, um Abfrageausführungspläne zu verbessern.  Dieser Prozess ist für Benutzer transparent, die eine schnellere Abfrageleistung bereitstellen, und es ist nicht erforderlich, dass Abfragen einen direkten Verweis auf die materialisierten Sichten erstellen.

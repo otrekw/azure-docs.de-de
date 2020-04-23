@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382526"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -33,7 +33,7 @@ Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 | Eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Komponente | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [Hostingplan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1</sup>Ein Hostingplan ist nur erforderlich, wenn Sie Ihre Funktions-App unter einem [Premium-Plan](./functions-premium-plan.md) (als Vorschau verfügbar) oder einem [App Service-Plan](../app-service/overview-hosting-plans.md) ausführen.
+<sup>1</sup> Ein Hostingplan ist nur erforderlich, wenn Sie Ihre Funktions-App im Rahmen eines [Premium-Plans](./functions-premium-plan.md) oder [App Service-Plans](../app-service/overview-hosting-plans.md) ausführen.
 
 > [!TIP]
 > Obwohl nicht erforderlich, sollten Sie unbedingt Application Insights für Ihre App konfigurieren.
@@ -111,7 +111,7 @@ Darüber hinaus muss der Instrumentierungsschlüssel für die Funktions-App mit 
 
 Die Definition des Hostingplans variiert und kann eine der folgenden sein:
 * [Verbrauchsplan](#consumption) (Standard)
-* [Premium-Plan](#premium) (in der Vorschau)
+* [Premium-Plan](#premium)
 * [App Service-Plan](#app-service-plan)
 
 ### <a name="function-app"></a>Funktionen-App

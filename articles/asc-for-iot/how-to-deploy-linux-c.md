@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zum Installieren und Bereitstellen des C-basierten Linux-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
+title: Installieren und Bereitstellen des C-basierten Linux-Agents
 description: Hier erfahren Sie, wie Sie Azure Security Center für IoT-Agent unter Linux (32 Bit und 64 Bit) installieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,23 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7578811c37cd0bbe47821dadacce5fa5974f56cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9f9602a19a266c70b17422e90566f72de2978f6
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68812734"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311188"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C-basierten Sicherheits-Agents von Azure Security Center für IoT unter Linux
 
 In diesem Leitfaden erfahren Sie, wie Sie den C-basierten Sicherheits-Agent von Azure Security Center für IoT unter Linux installieren und bereitstellen.
 
-In diesem Artikel lernen Sie Folgendes: 
+In diesem Artikel lernen Sie Folgendes:
+
 > [!div class="checklist"]
 > * Installieren
 > * Überprüfen der Bereitstellung
 > * Deinstallieren des Agents
-> * Problembehandlung 
+> * Problembehandlung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,56 +42,56 @@ Informationen zu anderen Plattformen und Agent-Varianten finden Sie unter [Choos
 
 1. [Erstellen Sie ein Sicherheitsmodul](quickstart-create-security-twin.md) für das Gerät.
 
-## <a name="installation"></a>Installation 
+## <a name="installation"></a>Installation
 
 Verwenden Sie zum Installieren und Bereitstellen des Sicherheits-Agents den folgenden Workflow:
-
 
 1. Laden Sie von [GitHub](https://aka.ms/iot-security-github-c) die neueste Version auf Ihren Computer herunter.
 
 1. Extrahieren Sie den Inhalt des Pakets, und navigieren Sie zum Ordner _/src/installation_.
 
 1. Führen Sie den folgenden Befehl aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen:
-    
+
    ```
    chmod +x InstallSecurityAgent.sh
    ```
 
-1. Führen Sie anschließend Folgendes aus: 
+1. Führen Sie anschließend Folgendes aus:
 
    ```
    ./InstallSecurityAgent.sh -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -i
    ```
-   
+
    Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Security agent authentication methods](concept-security-agent-authentication-methods.md) (Authentifizierungsmethoden des Sicherheits-Agents).
 
 Dieses Skript führt die folgende Funktion aus:
 
 1. Installieren der erforderlichen Komponenten
 
-2. Hinzufügen eines Dienstbenutzers (mit deaktivierter interaktiver Anmeldung)
+1. Hinzufügen eines Dienstbenutzers (mit deaktivierter interaktiver Anmeldung)
 
-3. Installieren des Agents als **Daemon** (wobei vorausgesetzt wird, dass das Gerät **systemd** für die Dienstverwaltung verwendet)
+1. Installieren des Agents als **Daemon** (wobei vorausgesetzt wird, dass das Gerät **systemd** für die Dienstverwaltung verwendet)
 
-4. Konfigurieren des Agents mit den angegebenen Authentifizierungsparametern 
+1. Konfigurieren des Agents mit den angegebenen Authentifizierungsparametern
 
-Sollten Sie weitere Hilfe benötigen, führen Sie das Skript mit dem Parameter „–help“ aus: 
-    
-    ./InstallSecurityAgent.sh --help
+Sollten Sie weitere Hilfe benötigen, führen Sie das Skript mit dem Parameter „–help“ aus:
+
+```./InstallSecurityAgent.sh --help```
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 
 Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Parameter „–uninstall“ aus:
 
-    ./InstallSecurityAgent.sh -–uninstall
+```./InstallSecurityAgent.sh -–uninstall```
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
 Führen Sie Folgendes aus, um den Bereitstellungsstatus zu überprüfen:
 
-    systemctl status ASCIoTAgent.service
-
+```systemctl status ASCIoTAgent.service```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
 - Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).

@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 90867d51bd0952eea350ed9120d2274d40b30d99
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81536266"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81867259"
 highlightedContent:
   items:
   - title: Einführung in Azure Key Vault
@@ -89,14 +89,34 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: Weitere Informationen
-  - title: Verwalten von Speicherschlüsseln
+  - title: Key Vault mit Speicher
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: 'Speicherschlüssel: CLI'
+      text: 'Verwalten von Speicherschlüsseln: Befehlszeilenschnittstelle'
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: 'Speicherschlüssel: PowerShell'
+      text: 'Verwalten von Speicherschlüsseln: PowerShell'
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: Abrufen von SAS-Token in Code
+  - title: Key Vault mit virtuellen Computern
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: 'Azure Key Vault-VM-Erweiterung: Windows'
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: 'Azure Key Vault-VM-Erweiterung: Linux'
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: Key Vault mit Linux-VMs in Ansible
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: 'Key Vault mit Azure Disk Encryption: Windows'
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: 'Key Vault mit Azure Disk Encryption: Linux'
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault mit Virtual Machine Scale Sets

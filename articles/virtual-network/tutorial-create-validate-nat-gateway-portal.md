@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80059997"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084742"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit dem Azure-Portal und Testen des NAT-Diensts
 
@@ -46,9 +46,9 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 | **\<Ressourcengruppenname>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetsource          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
-| **\<subnet-name>**          | mySubnetsource        |
-| **\<subnet-address-range>** | 192.168.0.0\24          |
+| **\<IPv4-Adressraum>**   | 192.168.0.0/16          |
+| **\<Subnetzname>**          | mySubnetsource        |
+| **\<Subnetzadressbereich>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -107,7 +107,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
     | Name | Geben Sie **myPublicIPsource** ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **myResourceGroupNAT** aus. |
-    | Position | Wählen Sie **USA, Osten 2** aus.|
+    | Standort | Wählen Sie **USA, Osten 2** aus.|
 
 3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
@@ -169,9 +169,9 @@ In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten w
 | **\<Ressourcengruppenname>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetdestination          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
-| **\<subnet-name>**          | mySubnetdestination        |
-| **\<subnet-address-range>** | 192.168.0.0\24          |
+| **\<IPv4-Adressraum>**   | 192.168.0.0/16          |
+| **\<Subnetzname>**          | mySubnetdestination        |
+| **\<Subnetzadressbereich>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130188"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084888"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -34,7 +34,7 @@ Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über 
 ### <a name="tls-12-enforcement"></a>Erzwingen von TLS 1.2
 Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind kryptografische Protokolle, die Kommunikationssicherheit über ein Computernetzwerk bereitstellen. Erfahren Sie mehr über [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight verwendet auf öffentlichen HTTPS-Endpunkten TLS 1.2, TLS 1.1 wird jedoch aus Gründen der Abwärtskompatibilität weiterhin unterstützt. 
 
-Mit diesem Release können Kunden nur TLS 1.2 für alle Verbindungen über den öffentlichen Clusterendpunkt auswählen. Zur Unterstützung dieser Möglichkeit wird die neue **minSupportedTlsVersion**-Eigenschaft eingeführt, die bei der Clustererstellung angegeben werden kann. Wenn die-Eigenschaft nicht festgelegt ist, unterstützt der Cluster weiterhin TLS 1.0, 1.1 und 1.2. Dies entspricht dem derzeitigen Verhalten. Kunden können den Wert für diese Eigenschaft auf „1.2“ festlegen, damit der Cluster nur TLS 1.2 und höher unterstützt. Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks – Transport Layer Security](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security).
+Mit diesem Release können Kunden nur TLS 1.2 für alle Verbindungen über den öffentlichen Clusterendpunkt auswählen. Zur Unterstützung dieser Möglichkeit wird die neue **minSupportedTlsVersion**-Eigenschaft eingeführt, die bei der Clustererstellung angegeben werden kann. Wenn die-Eigenschaft nicht festgelegt ist, unterstützt der Cluster weiterhin TLS 1.0, 1.1 und 1.2. Dies entspricht dem derzeitigen Verhalten. Kunden können den Wert für diese Eigenschaft auf „1.2“ festlegen, damit der Cluster nur TLS 1.2 und höher unterstützt. Weitere Informationen finden Sie unter [Transport Layer Security](./transport-layer-security.md).
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key für Datenträgerverschlüsselung
 Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) von Azure geschützt. Die Daten auf diesen Datenträgern werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Ab diesem Release können Sie Bring Your Own Key (BYOK) für die Datenträgerverschlüsselung auswählen und mithilfe von Azure Key Vault verwalten. Die BYOK-Verschlüsselung ist eine Konfiguration in einem Schritt bei der Clustererstellung ohne zusätzliche Kosten. Registrieren Sie beim Erstellen Ihres Clusters lediglich HDInsight als verwaltete Identität bei Azure Key Vault, und fügen Sie den Verschlüsselungsschlüssel hinzu. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
@@ -66,14 +66,3 @@ HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit un
 ## <a name="component-version-change"></a>Änderung der Komponentenversion
 Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie hier.
 
-## <a name="known-issues"></a>Bekannte Probleme
-
-Ab dem 18. März 2020 haben einige Azure HDInsight-Kunden in West- oder Nordeuropa Fehlerbenachrichtigungen erhalten, als sie in diesen Regionen HDInsight-Cluster erstellt oder skaliert haben. Fehler bei diesem Problem:
-
-- Internal server error occurred while processing the request. Wiederholen Sie die Anforderung, oder wenden Sie sich an den Support.
-- Bei der Ressourcenbereitstellung ist mindestens ein Fehler aufgetreten. Listen Sie die Bereitstellungsvorgänge auf, um Details anzuzeigen. Weitere Informationen zur Verwendung finden Sie unter https://aka.ms/DeployOperations.
-- Für die Benutzer-SubscriptionId „\<Abonnement-ID\>“ stehen keine Kerne zum Erstellen der Ressource „\<Clustername>“ mehr zur Verfügung. Erforderlich: \<X\>, verfügbar: 0.
-
-Das Problem ist den Technikern bekannt und wird zurzeit untersucht.
-
-Um weitere Hilfe zu erhalten, erstellen Sie eine [Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

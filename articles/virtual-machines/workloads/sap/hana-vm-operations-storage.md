@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080307"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255616"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -72,7 +72,7 @@ Das Kumulieren einer Reihe von Azure-VHDs unter einem RAID-Volume ist für den I
 Darüber hinaus sollten Sie den E/A-Gesamtdurchsatz eines virtuellen Computers beachten, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Speicherdurchsatz im Allgemeinen ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) beschrieben.
 
 ## <a name="linux-io-scheduler-mode"></a>E/A-Scheduler-Modus für Linux
-Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter und SAP empfehlen im Allgemeinen, den E/A-Schedulermodus für Datenträgervolumes von **cfq** in **noop** (Non-Multiqueue) oder **none** (Multiqueue) zu ändern. Details finden Sie im [SAP-Hinweis 1984787](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter und SAP empfehlen im Allgemeinen, den E/A-Schedulermodus für Datenträgervolumes von **mq-deadline** oder **kyber** in **noop** (Non-Multiqueue) oder **none** (Multiqueue) zu ändern. Details finden Sie im [SAP-Hinweis 1984787](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Lösungen mit Storage Premium und Azure-Schreibbeschleunigung für virtuelle Azure-Computer der M-Serie

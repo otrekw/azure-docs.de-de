@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279962"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269923"
 ---
 # <a name="container-support-tab"></a>Registerkarte „Containerunterstützung“
+
+> [!IMPORTANT]
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure-Containerangebots](https://aka.ms/CreateContainerOffer), um Ihre migrierten Angebote zu verwalten.
 
 Verwenden Sie die Registerkarte **Support** auf der Seite **Neues Angebot**, um Ressourcen für technischen und Benutzersupport für Ihr Angebot anzugeben.  Die folgenden Eingabebereiche sind im Supportformular enthalten: **Engineering-Kontakt**, **Kundensupport** und **Support-URLs**. Mit einem Sternchen (*) gekennzeichnete Felder sind Pflichtfelder.
 

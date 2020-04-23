@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396779"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382871"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Zwar können Sie das Aktivitätsprotokoll im Azure-Portal anzeigen, doch sollten Sie es so konfigurieren, dass es an einen Log Analytics-Arbeitsbereich gesendet wird, um die Verwendung zusätzlicher Features von Azure Monitor zu ermöglichen. In diesem Artikel wird beschrieben, wie Sie diese Konfiguration ausführen und das Aktivitätsprotokoll an Azure Storage und Event Hubs senden.
@@ -25,7 +25,8 @@ Das Erfassen des Aktivitätsprotokolls in einem Log Analytics-Arbeitsbereich bie
 - Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
 - Konsolidieren von Protokolleinträgen mehrerer Azure-Abonnements und -Mandanten an einem einzigen Ort zur gemeinsamen Analyse
 
-
+> [!IMPORTANT]
+> Für eine mandantenübergreifende Erfassung von Protokollen ist [Azure Lighthouse](/azure/lighthouse) erforderlich.
 
 ## <a name="collecting-activity-log"></a>Erfassen des Aktivitätsprotokolls
 Das Aktivitätsprotokoll wird automatisch für die [Anzeige im Azure-Portal](activity-log-view.md) erfasst. Zur Erfassung in einem Log Analytics-Arbeitsbereich oder zum Senden an Azure Storage oder Event Hubs erstellen Sie eine [Diagnoseeinstellung](diagnostic-settings.md). Dieselbe Methode wird auch von Ressourcenprotokollen verwendet, sodass sie für alle [Plattformprotokolle](platform-logs-overview.md) konsistent ist.  
@@ -92,7 +93,7 @@ Die Spalten in der folgenden Tabelle sind im aktualisierten Schema veraltet. Sie
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
-| OperationName     | OperationNameValue     |
+| Vorgangsname     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]

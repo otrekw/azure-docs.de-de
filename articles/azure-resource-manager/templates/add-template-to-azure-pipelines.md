@@ -3,12 +3,12 @@ title: CI/CD mit Azure Pipelines und Vorlagen
 description: Beschreibt die Einrichtung von Continuous Integration in Azure Pipelines mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen in Visual Studio für die Bereitstellung von Resource Manager-Vorlagen.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153453"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084650"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrieren von ARM-Vorlagen in Azure Pipelines
 
@@ -28,7 +28,7 @@ In diesem Artikel wird vorausgesetzt, dass Ihr Visual Studio-Projekt und die Azu
 
 * Sie haben eine Azure DevOps-Organisation. Sollten Sie über keine Organisation verfügen, [können Sie kostenlos eine erstellen](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Wenn Ihr Team bereits über eine Azure DevOps-Organisation verfügt, stellen Sie sicher, dass Sie Administrator des Azure DevOps-Projekts sind, das Sie verwenden möchten.
 
-* Sie haben eine [Dienstverbindung](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) zu Ihrem Azure-Abonnement konfiguriert. Die Aufgaben in der Pipeline werden unter der Identität des Dienstprinzipals ausgeführt. Die Schritte zum Erstellen der Verbindung finden Sie unter [Erstellen eines DevOps-Projekts](template-tutorial-use-azure-pipelines.md#create-a-devops-project).
+* Sie haben eine [Dienstverbindung](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) zu Ihrem Azure-Abonnement konfiguriert. Die Aufgaben in der Pipeline werden unter der Identität des Dienstprinzipals ausgeführt. Die Schritte zum Erstellen der Verbindung finden Sie unter [Erstellen eines DevOps-Projekts](deployment-tutorial-pipeline.md#create-a-devops-project).
 
 * Sie haben ein Visual Studio-Projekt, das aus der Startvorlage **Azure-Ressourcengruppe** erstellt wurde. Informationen zum Erstellen dieser Art von Projekt finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](create-visual-studio-deployment-project.md).
 
@@ -261,4 +261,4 @@ Sie können die aktuell laufende Pipeline auswählen, um Details zu den Aufgaben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Schritt-für-Schritt-Anleitung zur Verwendung von Azure Pipelines mit ARM-Vorlagen finden Sie im [Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+Eine Schritt-für-Schritt-Anleitung zur Verwendung von Azure Pipelines mit ARM-Vorlagen finden Sie im [Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines](deployment-tutorial-pipeline.md).

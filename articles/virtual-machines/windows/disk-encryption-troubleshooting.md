@@ -2,17 +2,18 @@
 title: Leitfaden zur Azure Disk Encryption-Problembehandlung
 description: Dieser Artikel bietet Tipps zur Problembehandlung für Microsoft Azure Disk Encryption für virtuelle Windows-Computer.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fafe4a9ef78a92595eaae942fa5d7cbeb2c07189
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458213"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085687"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
 

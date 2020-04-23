@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288562"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255973"
 ---
 <a name="api-prerequisites"></a>API-Voraussetzungen
 ================
+
+> [!NOTE]
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
 
 Es gibt zwei programmatische Ressourcen, die Sie benötigen, um die Cloud-Partnerportal-APIs verwenden zu können: ein Dienstprinzipal- und ein Azure Active Directory-Zugriffstoken (Azure AD-Zugriffstoken).
 
@@ -41,7 +44,7 @@ Gehen Sie wie folgt vor, um den Dienstprinzipal hinzuzufügen:
 3. Wählen Sie in der Dropdownliste **Typ** die Option **Dienstprinzipal** aus, und fügen Sie die folgenden Details hinzu:
 
 -   Einen **Anzeigenamen** für den Dienstprinzipal, z. B. `spAccount`.
--   Die **Anwendungs-ID**. Um diesen Bezeichner zu finden, wechseln Sie zum [Azure-Portal](https://portal.azure.com), klicken Sie auf **Azure Active Directory**, wählen Sie **App-Registrierungen** aus, und klicken Sie auf Ihre App.
+-   Die **Anwendungs-ID**. Wechseln Sie zur Ermittlung dieses Bezeichners zum [Azure-Portal](https://portal.azure.com), klicken Sie auf **Azure Active Directory**, wählen Sie **App-Registrierungen** aus, und klicken Sie auf Ihre App.
 -   Die **Mandanten-ID**, auch als **Verzeichnis-ID** bezeichnet, für Ihren Azure AD-Mandanten. Sie finden diesen Bezeichner auf der Azure Active Directory-Seite im [Azure-Portal](https://portal.azure.com) unter **Eigenschaften**.
 -   Die **Objekt-ID** für Ihr Dienstprinzipalobjekt. Diesen Bezeichner können Sie im Azure-Portal ermitteln. Wechseln Sie zu **Azure Active Directory**, wählen Sie **App-Registrierungen** aus, klicken Sie auf Ihre App, und klicken Sie auf den Namen der App unter **Verwaltete Anwendung in lokalem Verzeichnis**. Wechseln Sie dann zur Seite **Eigenschaften**, um nach der Objekt-ID zu suchen. Stellen Sie sicher, dass Sie nicht die ursprüngliche Objekt-ID übernehmen, die zu Ihrer App gehört, sondern stattdessen die Objekt-ID in der verwalteten Anwendung.
 -   Die **Rolle**, die dem Konto zugeordnet ist, das für rollenbasierte Zugriffssteuerung verwendet werden soll.

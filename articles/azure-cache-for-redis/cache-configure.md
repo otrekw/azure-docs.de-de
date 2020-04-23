@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235550"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010306"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -117,10 +117,10 @@ Die folgenden Einstellungen werden auf dem Blatt **Erweiterte Einstellungen** ko
 * [Keyspacebenachrichtigungen (Erweiterte Einstellungen)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Zugriffsports
-Der Zugriff ohne SSL ist für neue Caches standardmäßig deaktiviert. Zum Aktivieren eines nicht SSL-fähigen Ports klicken Sie auf dem Blatt **Erweiterte Einstellungen** bei **Nur Zugriff über SSL zulassen** auf **Nein**, und klicken Sie dann auf **Speichern**.
+TLS-/SSL-fremder Zugriff ist für neue Caches standardmäßig deaktiviert. Klicken Sie zum Aktivieren des TLS-fremden Ports auf dem Blatt **Erweiterte Einstellungen** für **Nur Zugriff über SSL zulassen** auf **Nein** und anschließend auf **Speichern**.
 
 > [!NOTE]
-> Der SSL-Zugriff auf Azure Cache for Redis unterstützt derzeit TLS 1.0, 1.1 und 1.2, aber die Versionen 1.0 und 1.1 werden bald eingestellt.  Weitere Informationen finden Sie auf unserer Seite [Entfernen von TLS 1.0 und 1.1](cache-remove-tls-10-11.md).
+> Für den TLS-Zugriff auf Azure Cache for Redis werden derzeit TLS 1.0, 1.1 und 1.2 unterstützt. Die Versionen 1.0 und 1.1 werden jedoch bald eingestellt.  Weitere Informationen finden Sie auf unserer Seite [Entfernen von TLS 1.0 und 1.1](cache-remove-tls-10-11.md).
 
 ![Azure Cache for Redis: Zugriffsports](./media/cache-configure/redis-cache-access-ports.png)
 

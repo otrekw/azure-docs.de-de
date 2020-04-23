@@ -1,18 +1,18 @@
 ---
 title: Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 description: In diesem Artikel werden Konzepte wie gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen in Azure Cosmos DB erläutert.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065890"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010544"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -90,7 +90,7 @@ Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für 
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Benutzerdefinierte Funktionen
 
-Mithilfe von benutzerdefinierten Funktionen kann die Syntax der SQL-API-Abfragesprache erweitert und mühelos eine benutzerdefinierte Geschäftslogik implementiert werden. Benutzerdefinierte Funktionen können nur innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten ausgeführt werden. Beispiele finden Sie unter [Schreiben von benutzerdefinierten Funktionen](how-to-write-stored-procedures-triggers-udfs.md#udfs).
+Mithilfe von [benutzerdefinierten Funktionen](sql-query-udfs.md) (User-Defined Functions, UDFs) kann die Syntax der SQL-API-Abfragesprache erweitert und mühelos eine benutzerdefinierte Geschäftslogik implementiert werden. Benutzerdefinierte Funktionen können nur innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten ausgeführt werden. Beispiele finden Sie unter [Schreiben von benutzerdefinierten Funktionen](how-to-write-stored-procedures-triggers-udfs.md#udfs).
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript-Language Integrated Query-API
 

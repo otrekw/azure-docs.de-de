@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: Konfigurationsverwaltung
       items:
-        - name: Verwalten von State Configuration (DSC)
+        - name: 'Zustandskonfiguration (Desired State Configuration, DSC)'
           items:
             - name: Übersicht
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: Behandlung von Problemen mit DSC
               href: troubleshoot/desired-state-configuration.md
-        - name: Verwalten der Änderungsnachverfolgung und des Bestands
+        - name: Änderungsnachverfolgung und Bestand
           items:
             - name: Übersicht
               href: change-tracking.md
@@ -182,7 +182,7 @@
                   href: troubleshoot/onboarding.md
                 - name: Verwenden der Änderungsnachverfolgung und des Bestands
                   href: troubleshoot/change-tracking.md
-    - name: Starten/Beenden von virtuellen Computern außerhalb der Geschäftszeiten
+    - name: Starten/Beenden von VMs außerhalb der Kernzeit
       items:
         - name: Übersicht
           href: automation-solution-vm-management.md

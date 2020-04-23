@@ -1,15 +1,15 @@
 ---
 title: Herstellen einer Verbindung mit Azure Blockchain Service mithilfe von Visual Studio Code
 description: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code
-ms.date: 03/26/2020
+ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348581"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084837"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code
 
@@ -34,7 +34,7 @@ Unter Windows ist ein installierter C++-Compiler für das Modul „node-gyp“ e
 * Ist Visual Studio 2019 installiert, legen Sie den Pfad der MSBuild-Tools für npm fest. Zum Beispiel, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Installieren Sie andernfalls die eigenständigen VS-Buildtools. Verwenden Sie hierzu `npm install --global windows-build-tools` in einer Befehlsshell mit erhöhten Rechten (*Als Administrator ausführen*).
 
-Weitere Informationen zu node-gyp finden Sie im [node-gyp-Repository auf GitHub](https://github.com/node-gyp).
+Weitere Informationen zu node-gyp finden Sie im [node-gyp-Repository auf GitHub](https://github.com/nodejs/node-gyp).
 
 ### <a name="verify-azure-blockchain-development-kit-environment"></a>Überprüfen der Azure Blockchain Development Kit-Umgebung
 

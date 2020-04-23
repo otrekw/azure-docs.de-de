@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532551"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416936"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-http-connector.md)
 > * [Aktuelle Version](connector-http.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem HTTP-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -44,7 +46,7 @@ Sie können Daten aus einer HTTP-Quelle in beliebige unterstützte Senkendatensp
 Sie können diesen HTTP-Connector für die folgenden Aufgaben verwenden:
 
 - Abrufen von Daten von einem HTTP/HTTPS-Endpunkt mithilfe der HTTP-Methoden **GET** oder **POST**.
-- Abrufen von Daten mithilfe der folgenden Authentifizierungstypen: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**.
+- Abrufen von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **Digest**, **Windows**, **Clientzertifikat**.
 - Kopieren der HTTP-Antwort im jeweiligen Zustand oder Analysieren der HTTP-Antwort mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
@@ -68,7 +70,7 @@ Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
-| enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
+| enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des TLS-/SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -289,7 +291,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | requestBody | Der Text der HTTP-Anforderung. | Nein |
 | format | Wenn Sie Daten vom HTTP-Endpunkt im vorliegenden Zustand abrufen möchten, ohne diese analysieren und in einen dateibasierten Speicher kopieren zu müssen, überspringen Sie den Abschnitt **format** in den Definitionen des Eingabe- und Ausgabedatasets.<br/><br/>Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Legen Sie die **type**-Eigenschaft unter **format** auf einen dieser Werte fest. Weitere Informationen finden Sie unter [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**.<br/>Unterstützte Grade: **Optimal** und **Fastest**. |Nein |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt:  **Optimal** und **Fastest**. |Nein |
 
 > [!NOTE]
 > Die unterstützte Nutzlastgröße für HTTP-Anforderungen beträgt etwa 500 KB. Wenn die Nutzlast, die Sie an Ihre Webendpunkt übergeben möchten, größer als 500 KB ist, sollten Sie eine Aufteilung der Nutzlast in kleinere Blöcke erwägen.
@@ -313,7 +315,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 }
 ```
 
-**Beispiel 2: Verwenden der Post-Methode**
+**Beispiel 2: Verwenden der POST-Methode**
 
 ```json
 {

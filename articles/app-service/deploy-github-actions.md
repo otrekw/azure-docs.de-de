@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562206"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084990"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
@@ -62,7 +62,7 @@ Sie können auch Anmeldeinformationen auf App-Ebene verwenden, z. B. das Veröff
 4. Ersetzen Sie jetzt in der Workflowdatei in Ihrem Branch `.github/workflows/workflow.yml` das Geheimnis für das eingegebene `publish-profile` der Aktion für die Bereitstellung der Azure-Web-App.
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -182,7 +182,7 @@ Die folgenden Beispiele zeigen den Teil des Workflows, der die Web-App in den ve
 ```
 ## <a name="deploy-to-app-service"></a>Bereitstellen für App Service
 
-Verwenden Sie die Aktion `azure/webapps-deploy@v1 `, um Ihren Code in einer App Service-App bereitzustellen. Diese Aktion umfasst vier Parameter:
+Verwenden Sie die Aktion `azure/webapps-deploy@v2`, um Ihren Code in einer App Service-App bereitzustellen. Diese Aktion umfasst vier Parameter:
 
 | **Parameter**  | **Erklärung**  |
 |---------|---------|
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

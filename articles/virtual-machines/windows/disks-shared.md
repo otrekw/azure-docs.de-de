@@ -1,18 +1,18 @@
 ---
 title: Freigeben eines verwalteten Azure-Datenträgers für mehrere VMs (Vorschau)
-description: Erfahren Sie etwas über das Freigeben von verwalteten Azure-Datenträgern auf mehreren VMs.
+description: Hier erfahren Sie mehr über das Freigeben von verwalteten Azure-Datenträgern auf mehreren VMs.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 712975b0a74f8ed98dd54e1acd819ca01d6884cd
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 97eb39772715fad8a1ca065a8bfdfa81bd7e132f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011173"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085499"
 ---
 # <a name="azure-shared-disks"></a>Freigegebene Azure-Datenträger
 

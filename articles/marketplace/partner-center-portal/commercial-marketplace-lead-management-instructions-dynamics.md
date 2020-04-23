@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288817"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252781"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 for Customer Engagement
 
@@ -180,6 +180,7 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
     ![Verbindungsdetails – Leadziel](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. Geben Sie die **Dynamics 365-Instanz-URL** an, z. B. `https://contoso.crm4.dynamics.com`.
+
 5. Wählen Sie die Methode der **Authentifizierung** aus: „Azure Active Directory“ oder „Office 365“. 
 6. Wenn Sie „Azure Active Directory“ auswählen, geben Sie die **Anwendungs-ID (Client)** (z. B. `23456052-aaaa-bbbb-8662-1234df56788f`), die **Verzeichnis-ID** (z. B. `12345678-8af1-4asf-1234-12234d01db47`) und den **geheimen Clientschlüssel** (z. B. `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`) an.
 
@@ -188,6 +189,13 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 7. Wenn Sie „Office 365“ auswählen, geben Sie den **Benutzernamen** (z. B. `contoso@contoso.onmicrosoft.com`) und das Kennwort (z. B. `P@ssw0rd`) an.
 
     ![Verbindungsdetails – Benutzername](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **Kontakt-E-Mail**: Geben Sie E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
+9. Klicken Sie auf **OK**.
+
+Klicken Sie auf die Schaltfläche „Überprüfen“, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
+
+![Lead Verwaltung – Verbindungsdetails für Speicherkonto](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.

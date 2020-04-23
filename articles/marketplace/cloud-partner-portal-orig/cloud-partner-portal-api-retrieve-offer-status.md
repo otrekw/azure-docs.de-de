@@ -5,24 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280506"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255911"
 ---
-<a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus 
-=====================
+# <a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus
+
+> [!NOTE]
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
 
 Ruft den aktuellen Status des Angebots ab.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-Parameter
---------------
+## <a name="uri-parameters"></a>URI-Parameter
 
 |  **Name**       |   **Beschreibung**                            |  **Datentyp** |
 |  -------------  |  ------------------------------------------  |  ------------  |
@@ -32,18 +33,17 @@ Ruft den aktuellen Status des Angebots ab.
 |  |  |
 
 
-<a name="header"></a>Header
-------
+## <a name="header"></a>Header
 
-|  Name           |  value               |
+
+|  Name           |  Wert               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Authorization  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Beispiel für Hauptteil
 
-<a name="body-example"></a>Beispiel für Hauptteil
-------------
 
 ### <a name="response"></a>Antwort
 
@@ -115,8 +115,7 @@ Ruft den aktuellen Status des Angebots ab.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Ruft den aktuellen Status des Angebots ab.
 |  processPercentage    | Prozentsatz, bis zu dem der Schritt abgeschlossen ist                                                              |
 |  previewLinks         | *Derzeit nicht implementiert*                                                                    |
 |  liveLinks            | *Derzeit nicht implementiert*                                                                    |
-|  notificationEmails   | Kommagetrennte Liste der E-Mail-Adressen, die über den Fortschritt des Vorgangs benachrichtigt werden sollen        |
+|  notificationEmails   | Veraltet für Angebote, die zu Partner Center migriert wurden. Benachrichtigungs-E-Mails für migrierte Angebote werden an die E-Mail-Adresse gesendet, die in den Kontoeinstellungen unter den Kontaktinformationen des Verkäufers angegeben ist.<br><br>Bei nicht migrierten Angeboten handelt es sich hierbei um eine kommagetrennte Liste der E-Mail-Adressen, die über den Fortschritt des Vorgangs informiert werden sollen.        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Antwortstatuscodes
 
@@ -148,7 +146,6 @@ Ruft den aktuellen Status des Angebots ab.
 |  400     | `Bad/Malformed request` – der Fehlerantworttext enthält möglicherweise weitere Informationen.                 |
 |  404     | `Not found`: Die angegebene Entität ist nicht vorhanden.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Angebotsstatus
 
@@ -162,7 +159,6 @@ Ruft den aktuellen Status des Angebots ab.
 |  Canceled                    | Die Angebotsübermittlung wurde abgebrochen.                           |
 |  Fehler                      | Fehler bei der Angebotsübermittlung.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Schrittstatus
 

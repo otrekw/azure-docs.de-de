@@ -7,10 +7,12 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen von Mitgliedern – Portal
+    - name: Erstellen von Mitgliedern über das Portal
       href: create-member.md
-    - name: Erstellen von Mitgliedern – CLI
+    - name: Erstellen von Mitgliedern mithilfe der Befehlszeilenschnittstelle
       href: create-member-cli.md
+    - name: Erstellen von Mitgliedern mithilfe einer Vorlage
+      href: create-member-template.md
     - name: Herstellen einer Verbindung mit dem Transaktionsknoten
       items:
         - name: Verwenden von VS Code
