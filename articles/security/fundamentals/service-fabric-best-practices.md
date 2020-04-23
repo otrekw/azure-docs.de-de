@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549244"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461649"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -155,7 +155,7 @@ Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung 
 
 Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu schützen und Sicherheitsfunktionen für Anwendungen bereitzustellen. Azure Key Vault dient dem [Verwalten von Zertifikaten](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) für Service Fabric-Cluster in Azure. Der Azure-Ressourcenanbieter, der die Cluster erstellt, ruft die Zertifikate aus einem Schlüsseltresor ab. Der Anbieter installiert die Zertifikate auf den virtuellen Computern, wenn der Cluster in Azure bereitgestellt wird.
 
-Eine Zertifikatbeziehung besteht zwischen [Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md), dem Service Fabric-Cluster und dem Ressourcenanbieter, der die Zertifikate verwendet. Wenn der Cluster erstellt wird, werden Informationen über die Zertifikatbeziehung in einem Schlüsseltresor gespeichert.
+Eine Zertifikatbeziehung besteht zwischen [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md), dem Service Fabric-Cluster und dem Ressourcenanbieter, der die Zertifikate verwendet. Wenn der Cluster erstellt wird, werden Informationen über die Zertifikatbeziehung in einem Schlüsseltresor gespeichert.
 
 Das Einrichten eines Schlüsseltresors umfasst zwei grundlegende Schritte:
 1. Erstellen Sie eine neue Ressourcengruppe speziell für Ihren Schlüsseltresor.
@@ -166,7 +166,7 @@ Das Einrichten eines Schlüsseltresors umfasst zwei grundlegende Schritte:
 
     Der Schlüsseltresor muss für die Bereitstellung aktiviert sein. Der Computeressourcenanbieter kann dann die Zertifikate vom Tresor abrufen und auf den VM-Instanzen installieren.
 
-Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md).
 
 ## <a name="assign-users-to-roles"></a>Zuweisen von Benutzern zu Rollen
 Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das Azure-Portal verwenden.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461700"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -74,7 +74,7 @@ Prinzipien und Muster für den Netzwerkbereich sind bereits seit Jahrzehnten ver
 Mit der nachfolgenden bewährten Methode können Sie den identitätsorientierten Sicherheitsbereich verwalten.
 
 **Bewährte Methode**: Schützen Sie Ihre Schlüssel und Anmeldeinformationen, um Ihre PaaS-Bereitstellung zu schützen.   
-**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. [Azure Key Vault](../../key-vault/key-vault-overview.md) schützt Ihre Schlüssel und Geheimnisse durch Verschlüsseln von Authentifizierungsschlüsseln, Schlüsseln für Speicherkonten, Datenverschlüsselungsschlüsseln, PFX-Dateien und Kennwörtern durch Verwendung von Schlüsseln, die durch HSMs geschützt sind.
+**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. [Azure Key Vault](../../key-vault/general/overview.md) schützt Ihre Schlüssel und Geheimnisse durch Verschlüsseln von Authentifizierungsschlüsseln, Schlüsseln für Speicherkonten, Datenverschlüsselungsschlüsseln, PFX-Dateien und Kennwörtern durch Verwendung von Schlüsseln, die durch HSMs geschützt sind.
 
 **Bewährte Methode**: Speichern Sie Anmeldeinformationen und andere Geheimnisse nicht im Quellcode oder in GitHub.   
 **Detail**: Noch schlimmer als der Verlust von Schlüsseln und Anmeldeinformationen ist es, wenn nicht autorisierte Personen an Ihre Schlüssel und Anmeldeinformationen gelangen. Angreifer können mithilfe von Bottechnologien Coderepositorys wie GitHub nach darin gespeicherten Schlüsseln und Geheimnissen durchsuchen. Speichern Sie daher keine Schlüssel oder Geheimnisse in diesen öffentlichen Coderepositorys.

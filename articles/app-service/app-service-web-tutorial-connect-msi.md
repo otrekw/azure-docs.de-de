@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897692"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453776"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -128,7 +128,7 @@ Nehmen Sie in *Web.config* nacheinander folgende Änderungen vor:
 - Suchen Sie nach der Verbindungszeichenfolge `MyDbConnection`, und ersetzen Sie den Wert `connectionString` durch `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Ersetzen Sie die Platzhalter _\<server-name>_ und _\<db-name>_ durch Ihren Servernamen bzw. durch Ihren Datenbanknamen.
 
 > [!NOTE]
-> Der von Ihnen eben registrierte SQL-Authentifizierungsanbieter (SqlAuthenticationProvider) basiert auf der zuvor installierten AppAuthentication-Bibliothek. Standardmäßig wird eine systemseitig zugewiesene Identität verwendet. Um eine benutzerseitig zugewiesene Identität zu nutzen, müssen Sie eine zusätzliche Konfiguration bereitstellen. Lesen Sie die Informationen zur [Unterstützung der Verbindungszeichenfolge](../key-vault/service-to-service-authentication.md#connection-string-support) für die AppAuthentication-Bibliothek.
+> Der von Ihnen eben registrierte SQL-Authentifizierungsanbieter (SqlAuthenticationProvider) basiert auf der zuvor installierten AppAuthentication-Bibliothek. Standardmäßig wird eine systemseitig zugewiesene Identität verwendet. Um eine benutzerseitig zugewiesene Identität zu nutzen, müssen Sie eine zusätzliche Konfiguration bereitstellen. Lesen Sie die Informationen zur [Unterstützung der Verbindungszeichenfolge](../key-vault/general/service-to-service-authentication.md#connection-string-support) für die AppAuthentication-Bibliothek.
 
 Das ist alles, was Sie benötigen, um eine Verbindung mit SQL-Datenbank herzustellen. Beim Debuggen in Visual Studio verwendet Ihr Code den Azure AD-Benutzer, den Sie unter [Einrichten von Visual Studio](#set-up-visual-studio) konfiguriert haben. Sie richten den SQL-Datenbank-Server später ein, um eine Verbindung von der verwalteten Identität ihrer App Service-App zuzulassen.
 

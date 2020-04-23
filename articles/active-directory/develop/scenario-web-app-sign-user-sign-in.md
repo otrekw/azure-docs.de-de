@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537065"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
 
@@ -205,7 +205,7 @@ Nachdem der Benutzer sich bei Ihrer App angemeldet hat, sollten Sie ihm auch das
 ## <a name="sign-out"></a>Abmeldung
 
 Beim Abmelden von einer Web-App geht es um mehr als um das Entfernen der Informationen zum angemeldeten Konto aus dem Status der Web-App.
-Die Web-App muss den Benutzer für die Abmeldung außerdem an den `logout`-Endpunkt von Microsoft Identity Platform umleiten. 
+Die Web-App muss den Benutzer für die Abmeldung außerdem an den `logout`-Endpunkt von Microsoft Identity Platform umleiten.
 
 Wenn Ihre Web-App den Benutzer an den `logout`-Endpunkt umleitet, löscht dieser Endpunkt die Sitzung des Benutzers aus dem Browser. Wenn Ihre App nicht den `logout`-Endpunkt erreicht hat, kann sich der Benutzer erneut bei Ihrer App authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen. Der Grund hierfür ist, dass er über eine gültige Sitzung für einmaliges Anmelden mit dem Microsoft Identity Platform-Endpunkt verfügt.
 
@@ -306,7 +306,7 @@ Im Python-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei [temp
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

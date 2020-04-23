@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521262"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454661"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -31,8 +31,8 @@ Microsoft empfiehlt die Verwendung von Azure Key Vault zum Verwalten Ihrer Zugri
 
 Microsoft empfiehlt die Verwendung von Azure Key Vault zum Verwalten und Rotieren Ihrer Zugriffsschlüssel. Ihre Anwendung kann auf sichere Weise auf die Schlüssel in Key Vault zugreifen, sodass Sie diese nicht mit dem Anwendungscode speichern müssen. Weitere Informationen zur Verwendung von Key Vault für die Schlüsselverwaltung finden Sie in den folgenden Artikeln:
 
-- [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und PowerShell](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und der Azure-Befehlszeilenschnittstelle](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und PowerShell](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und der Azure-Befehlszeilenschnittstelle](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>Manuelles Rotieren von Zugriffsschlüsseln
 

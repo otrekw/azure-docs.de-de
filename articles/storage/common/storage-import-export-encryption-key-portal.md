@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811446"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456497"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst
 
 Azure Import/Export schützt die BitLocker-Schlüssel, die zum Sperren der Laufwerke verwendet werden, mit einem Verschlüsselungsschlüssel. Standardmäßig werden BitLocker-Schlüssel mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um zusätzliche Kontrolle über die Verschlüsselungsschlüssel zu erhalten, können Sie auch kundenseitig verwaltete Schlüssel bereitstellen.
 
-Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault erstellt und gespeichert werden. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md)
+Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault erstellt und gespeichert werden. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)
 
 In diesem Artikel wird gezeigt, wie Sie kundenseitig verwaltete Schlüssel mit dem Import/Export-Dienst im [Azure-Portal](https://portal.azure.com/) verwenden.
 
@@ -33,12 +33,12 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - [Erstellen eines Importauftrags für Dateien](storage-import-export-data-to-files.md)
     - [Erstellen eines Exportauftrags für Blobs](storage-import-export-data-from-blobs.md)
 
-2. Sie verfügen über eine vorhandene Azure Key Vault-Instanz mit einem Schlüssel, den Sie zum Schützen Ihres BitLocker-Schlüssels verwenden können. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../../key-vault/quick-create-portal.md).
+2. Sie verfügen über eine vorhandene Azure Key Vault-Instanz mit einem Schlüssel, den Sie zum Schützen Ihres BitLocker-Schlüssels verwenden können. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../../key-vault/secrets/quick-create-portal.md).
 
     - Für Ihre vorhandene Key Vault-Instanz ist **Vorläufiges Löschen** und **Nicht bereinigen** festgelegt. Diese Eigenschaften sind standardmäßig nicht aktiviert. Informationen zum Aktivieren dieser Eigenschaften finden Sie in den Abschnitten **Aktivieren des vorläufigen Löschens** und **Aktivieren des Bereinigungsschutzes** in einem der folgenden Artikel:
 
-        - [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/key-vault-soft-delete-powershell.md)
-        - [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/key-vault-soft-delete-cli.md)
+        - [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/soft-delete-powershell.md)
+        - [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/soft-delete-cli.md)
     - Der vorhandene Schlüsseltresor muss über einen RSA-Schlüssel mit einer Größe von mindestens 2048 verfügen. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
     - Der Schlüsseltresor muss sich in derselben Region wie das Speicherkonto für Ihre Daten befinden.  
     - Wenn Sie noch nicht über eine Azure Key Vault-Instanz verfügen, können Sie diese auch inline erstellen, wie im folgenden Abschnitt beschrieben.

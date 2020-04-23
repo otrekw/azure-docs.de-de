@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127635"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458436"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
 Azure Logic Apps nutzt Azure Storage zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../storage/common/storage-service-encryption.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen zur Funktionsweise der Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md) und [Azure-Datenverschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md).
 
-Wenn Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten Ihrer Logik-Apps erstellen und mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel haben möchten, können Sie mit [Azure Key Vault](../key-vault/key-vault-overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet.
+Wenn Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten Ihrer Logik-Apps erstellen und mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel haben möchten, können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet.
 
 In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel einrichten und angeben, der verwendet wird, wenn Sie Ihre ISE mithilfe der Logic Apps-REST-API erstellen. Die allgemeinen Schritte zum Erstellen einer ISE mithilfe der Logic Apps-REST-API finden Sie unter [Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API](../logic-apps/create-integration-service-environment-rest-api.md).
 
@@ -39,7 +39,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Ein Azure-Schlüsseltresor mit aktivierten Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen)
 
-  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/quick-create-portal.md#create-a-vault).
+  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
 
 * Ein Schlüssel in Ihrem Schlüsseltresor, der mit diesen Eigenschaftswerten erstellt wurde:
 
@@ -225,8 +225,8 @@ Für diese Aufgabe können Sie entweder den Azure PowerShell-Befehl [Set-AzKeyVa
 
    1. Wenn Sie im Bereich **Zugriffsrichtlinien** fertig sind, wählen Sie **Speichern** aus.
 
-Weitere Informationen finden Sie unter [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault).
+Weitere Informationen finden Sie unter [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Azure Key Vault](../key-vault/key-vault-overview.md)
+* Weitere Informationen zu [Azure Key Vault](../key-vault/general/overview.md)

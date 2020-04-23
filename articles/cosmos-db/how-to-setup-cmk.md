@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411149"
+ms.locfileid: "81450031"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
@@ -23,7 +23,7 @@ Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtl
 
 ![Verschlüsselungsschicht um Kundendaten](./media/how-to-setup-cmk/cmk-intro.png)
 
-Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und einen Schlüssel für jedes Azure Cosmos-Konto bereitstellen, für das vom Kunden verwalteten Schlüssel aktiviert sind. Dieser Schlüssel wird zum Verschlüsseln aller in diesem Konto gespeicherten Daten verwendet.
+Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/general/overview.md) speichern und einen Schlüssel für jedes Azure Cosmos-Konto bereitstellen, für das vom Kunden verwalteten Schlüssel aktiviert sind. Dieser Schlüssel wird zum Verschlüsseln aller in diesem Konto gespeicherten Daten verwendet.
 
 > [!NOTE]
 > Derzeit sind von Kunden verwaltete Schlüssel nur für neue Azure Cosmos-Konten verfügbar. Sie sollten während der Kontoerstellung konfiguriert werden.
@@ -44,8 +44,8 @@ Wenn Sie vom Kunden verwaltete Schlüssel mit Azure Cosmos DB verwenden, müssen
 
 Informationen zum Aktivieren dieser Eigenschaften für eine vorhandene Azure Key Vault-Instanz finden Sie in den Abschnitten „Aktivieren des vorläufigen Löschens“ und „Aktivieren des Bereinigungsschutzes“ in einem der folgenden Artikel:
 
-- [Verwenden des vorläufigen Löschens mit PowerShell](../key-vault/key-vault-soft-delete-powershell.md)
-- [Verwenden des vorläufigen Löschens mit Azure CLI](../key-vault/key-vault-soft-delete-cli.md)
+- [Verwenden des vorläufigen Löschens mit PowerShell](../key-vault/general/soft-delete-powershell.md)
+- [Verwenden des vorläufigen Löschens mit Azure CLI](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Hinzufügen einer Zugriffsrichtlinie zu Ihrer Azure Key Vault-Instanz
 

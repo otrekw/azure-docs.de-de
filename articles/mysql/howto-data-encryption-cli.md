@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: fca9b9eea3697a10650e5dbf0522f795fe0a8e0b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 37f6f0dc9c1221207273110252bff445d2e1245b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522594"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459099"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Datenverschlüsselung für Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle
 
@@ -33,13 +33,13 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
     ```
 
 * Damit Sie einen vorhandenen Schlüsseltresor mit einem vom Kunden verwalteten Schlüssel verwenden können, muss er die folgenden Eigenschaften aufweisen:
-  * [Vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md)
+  * [Vorläufiges Löschen](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Löschschutz](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [Löschschutz](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

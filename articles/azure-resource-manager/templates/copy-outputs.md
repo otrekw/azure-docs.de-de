@@ -2,13 +2,13 @@
 title: Definieren mehrerer Instanzen eines Ausgabewerts
 description: Verwenden des „copy“-Vorgangs in einer Azure Resource Manager-Vorlage, um das Zurückgeben eines Werts aus einer Bereitstellung mehrere Male zu durchlaufen.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/17/2020
+ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153385"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617827"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Ausgabeiteration in ARM-Vorlagen
 
@@ -21,12 +21,10 @@ Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften 
 Das copy-Element hat das folgende allgemeine Format:
 
 ```json
-"copy": [
-  {
-    "count": <number-of-iterations>,
-    "input": <values-for-the-variable>
-  }
-]
+"copy": {
+  "count": <number-of-iterations>,
+  "input": <values-for-the-output>
+}
 ```
 
 Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für den Ausgabewert an.

@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535773"
 ---
 # <a name="supported-account-types"></a>Unterstützte Kontotypen
 
 In diesem Artikel wird erläutert, welche Kontotypen (manchmal als „Zielgruppen“ bezeichnet) in Anwendungen unterstützt werden.
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Unterstützte Kontentypen in Microsoft Identity Platform-Anwendungen
 
@@ -44,7 +44,7 @@ In der öffentlichen Microsoft Azure-Cloud können die meisten App-Typen Benutze
 
 Einige Kontotypen können mit bestimmten Authentifizierungsabläufen nicht verwendet werden. Auf dem Desktop betrifft dies beispielsweise UWP- oder Daemon-Anwendungen:
 
-- Daemon-Anwendungen können nur mit Azure Active Directory-Organisationen verwendet werden. Das Verwenden von Daemon-Anwendungen zum Ändern persönlicher Microsoft-Konten ist zwecklos (die Administratoreinwilligung wird nie erteilt).  
+- Daemon-Anwendungen können nur mit Azure Active Directory-Organisationen verwendet werden. Das Verwenden von Daemon-Anwendungen zum Ändern persönlicher Microsoft-Konten ist zwecklos (die Administratoreinwilligung wird nie erteilt).
 - Sie können den Ablauf der integrierten Windows-Authentifizierung nur mit Geschäfts-, Schul- oder Unikonten (in Ihrer oder einer anderen Organisation) verwenden. Tatsächlich funktioniert die integrierte Windows-Authentifizierung mit Domänenkonten und erfordert, dass die Computer in die Domäne oder in Azure AD eingebunden sind. Dieser Ablauf ist für persönliche Microsoft-Konten nicht sinnvoll.
 - Die [Zuweisung eines Ressourcenbesitzerkennworts](./v2-oauth-ropc.md) (Benutzername/Kennwort) kann nicht mit persönlichen Microsoft-Konten verwendet werden. Tatsächlich erfordern persönliche Microsoft-Konten, dass der Benutzer bei jeder Anmeldesitzung dem Zugriff auf persönliche Ressourcen zustimmt. Daher ist dieses Verhalten mit nicht-interaktiven Strömen nicht kompatibel.
 - Gerätecodefluss funktioniert noch nicht mit persönlichen Microsoft-Konten.

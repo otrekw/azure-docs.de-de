@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437041"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461462"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-Verschlüsselung
  
 ExpressRoute unterstützt eine Reihe von Verschlüsselungstechnologien, um Vertraulichkeit und Integrität der Daten zu gewährleisten, die zwischen Ihrem Netzwerk und dem Netzwerk von Microsoft übertragen werden.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Häufig gestellte Fragen zur Point-to-Point-Verschlüsselung durch MACsec
-MACsec ist ein [IEEE-Standard](https://1.ieee802.org/security/802-1ae/). Er verschlüsselt Daten auf der MAC-Ebene (Media Access Control) oder Netzwerkebene 2. Sie können mit MACsec die physischen Verbindungen zwischen Ihren Netzwerkgeräten und den Netzwerkgeräten von Microsoft verschlüsseln, wenn Sie über [ExpressRoute Direct](expressroute-erdirect-about.md) eine Verbindung mit Microsoft herstellen. MACsec ist standardmäßig für ExpressRoute Direct-Ports deaktiviert. Sie geben Ihren eigenen MACsec-Schlüssel für die Verschlüsselung an und speichern diesen in [Azure Key Vault](../key-vault/key-vault-overview.md). Sie entscheiden, wann der Schlüssel gedreht werden soll. Weitere häufig gestellte Fragen finden Sie unten.
+MACsec ist ein [IEEE-Standard](https://1.ieee802.org/security/802-1ae/). Er verschlüsselt Daten auf der MAC-Ebene (Media Access Control) oder Netzwerkebene 2. Sie können mit MACsec die physischen Verbindungen zwischen Ihren Netzwerkgeräten und den Netzwerkgeräten von Microsoft verschlüsseln, wenn Sie über [ExpressRoute Direct](expressroute-erdirect-about.md) eine Verbindung mit Microsoft herstellen. MACsec ist standardmäßig für ExpressRoute Direct-Ports deaktiviert. Sie geben Ihren eigenen MACsec-Schlüssel für die Verschlüsselung an und speichern diesen in [Azure Key Vault](../key-vault/general/overview.md). Sie entscheiden, wann der Schlüssel gedreht werden soll. Weitere häufig gestellte Fragen finden Sie unten.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Kann ich MACsec für meine ExpressRoute-Verbindung aktivieren, die von einem ExpressRoute-Anbieter bereitgestellt wurde?
 Nein. MACsec verschlüsselt den gesamten Datenverkehr in einer physischen Verbindung mit einem Schlüssel, deren Besitzer eine Entität ist (d. h. der Kunde). Daher ist es ausschließlich für ExpressRoute Direct verfügbar.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Kann ich einige der ExpressRoute-Verbindungen an meinen ExpressRoute Direct-Ports verschlüsseln und andere Verbindungen an denselben Ports unverschlüsselt lassen? 

@@ -4,12 +4,12 @@ description: Macht Sie auf ungewöhnliche Änderungen bei der Rate fehlgeschlage
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536810"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
@@ -353,7 +353,7 @@ Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt ander
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Daten Ihrer App untersuchen:
 
-* [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md)
+* [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)
 * [Suchexplorer](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics: Leistungsfähige Abfragesprache](../../azure-monitor/log-query/get-started-portal.md)
 

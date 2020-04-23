@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067186"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452756"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell und Befehlszeilenschnittstelle: Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels
 
@@ -28,9 +28,9 @@ In diesem Artikel wird die Verwendung eines Schlüssels aus Azure Key Vault für
 - [Empfohlen, aber optional] Sie sollten über ein Hardwaresicherheitsmodul (HSM) oder einen lokalen Schlüsselspeicher zum Erstellen einer lokalen Kopie des Schlüsselmaterials der TDE-Schutzvorrichtung verfügen.
 - Azure PowerShell muss installiert sein und ausgeführt werden.
 - Erstellen Sie eine Azure Key Vault-Instanz und einen Schlüssel zur Verwendung für TDE.
-  - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+  - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](../key-vault/keys/hsm-protected-keys.md)
     - Der Schlüsseltresor muss die folgende Eigenschaft aufweisen, um für TDE verwendet werden zu können:
-  - [Vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md) und Löschschutz
+  - [Vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) und Löschschutz
 - Der Schlüssel muss die folgenden Attribute aufweisen, um für TDE verwendet werden zu können:
    - Kein Ablaufdatum
    - Nicht deaktiviert
@@ -40,7 +40,7 @@ In diesem Artikel wird die Verwendung eines Schlüssels aus Azure Key Vault für
 
 Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell). Spezifische Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
 
-Weitere Informationen zu Key Vault finden Sie im Artikel zu [PowerShell-Anweisungen von Key Vault](../key-vault/quick-create-powershell.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](../key-vault/key-vault-soft-delete-powershell.md).
+Weitere Informationen zu Key Vault finden Sie im Artikel zu [PowerShell-Anweisungen von Key Vault](../key-vault/secrets/quick-create-powershell.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](../key-vault/general/soft-delete-powershell.md).
 
 > [!IMPORTANT]
 > Das Azure Resource Manager-Modul von PowerShell wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 Weitere Informationen zum Installieren der erforderlichen Version der Befehlszeilenschnittstelle (2.0 oder höher) und zum Verbindungsaufbau mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Weitere Informationen zu Key Vault finden Sie unter [Verwalten von Key Vault mit CLI-Version 2.0](../key-vault/key-vault-manage-with-cli2.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](../key-vault/key-vault-soft-delete-cli.md).
+Weitere Informationen zu Key Vault finden Sie unter [Verwalten von Key Vault mit CLI-Version 2.0](../key-vault/general/manage-with-cli2.md) und unter [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](../key-vault/general/soft-delete-cli.md).
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Zuweisen einer Azure AD-Identität zu einem Server
 

@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458282"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications
 
-Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../../key-vault/key-vault-overview.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Der Managed Applications-Dienst verwendet diese Identität, um Vorgänge auszuführen. Um einen Wert während der Bereitstellung erfolgreich aus einem Schlüsseltresor abzurufen, muss der Dienstprinzipal auf den Schlüsseltresor zugreifen können.
+Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../../key-vault/general/overview.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Der Managed Applications-Dienst verwendet diese Identität, um Vorgänge auszuführen. Um einen Wert während der Bereitstellung erfolgreich aus einem Schlüsseltresor abzurufen, muss der Dienstprinzipal auf den Schlüsseltresor zugreifen können.
 
 Dieser Artikel beschreibt, wie Sie den Schlüsseltresor zum Arbeiten mit verwalteten Anwendungen konfigurieren.
 

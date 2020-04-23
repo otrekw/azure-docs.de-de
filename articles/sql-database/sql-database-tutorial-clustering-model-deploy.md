@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: ef478246108d40a0c97d7dab03ecf1e5b474410b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452892"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Bereitstellen eines Clusteringmodells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschau)
 
@@ -38,8 +39,6 @@ In diesem Artikel lernen Sie Folgendes:
 Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering vorbereiten.
 
 In [Teil 2](sql-database-tutorial-clustering-model-build.md) haben Sie erfahren, wie Sie ein K-Means-Clusteringmodell in R erstellen und trainieren.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

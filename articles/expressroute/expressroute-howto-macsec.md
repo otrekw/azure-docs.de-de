@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083550"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458231"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurieren von MACsec für ExpressRoute Direct-Ports
 
@@ -47,7 +47,7 @@ Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an, 
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Wenn Sie bereits über einen Schlüsseltresor oder eine Ressourcengruppe verfügen, können Sie diese wiederverwenden. Es ist jedoch wichtig, dass Sie das [**vorläufige Löschen**](../key-vault/key-vault-ovw-soft-delete.md) für Ihren vorhandenen Schlüsseltresor aktivieren. Wenn das vorläufige Löschen nicht aktiviert ist, können Sie die Funktion mit den folgenden Befehlen aktivieren:
+    Wenn Sie bereits über einen Schlüsseltresor oder eine Ressourcengruppe verfügen, können Sie diese wiederverwenden. Es ist jedoch wichtig, dass Sie das [**vorläufige Löschen**](../key-vault/general/overview-soft-delete.md) für Ihren vorhandenen Schlüsseltresor aktivieren. Wenn das vorläufige Löschen nicht aktiviert ist, können Sie die Funktion mit den folgenden Befehlen aktivieren:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

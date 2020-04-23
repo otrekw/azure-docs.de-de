@@ -4,12 +4,12 @@ description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Clu
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753796"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461581"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -90,7 +90,7 @@ Legen Sie die Administrator- und Benutzerclientrollen bei der Erstellung des Clu
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-Zertifikate und Service Fabric
 
-Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/key-vault-overview.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
+Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/general/overview.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
 
 Einige wichtige Punkte sind zu beachten:
 

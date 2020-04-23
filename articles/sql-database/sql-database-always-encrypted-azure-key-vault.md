@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067431"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451668"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -55,7 +55,7 @@ Führen Sie zum Abrufen von *Anwendungs-ID* und *Schlüssel* die Schritte unter 
 
 Da nun die Client-App konfiguriert ist und Sie über die Anwendungs-ID verfügen, ist es an der Zeit, einen Schlüsseltresor zu erstellen und die Zugriffsrichtlinie zu konfigurieren, damit Sie und Ihre Anwendung auf die Geheimnisse (Always Encrypted-Schlüssel) im Tresor zugreifen können. Die Berechtigungen *create*, *get*, *list*, *sign*, *verify*, *wrapKey* und *unwrapKey* sind zum Erstellen eines neuen Spaltenhauptschlüssels sowie zum Einrichten der Verschlüsselung mit SQL Server Management Studio erforderlich.
 
-Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skript ausführen. Eine ausführliche Erläuterung dieser Befehle und weitere Informationen zum Erstellen und Konfigurieren eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../key-vault/key-vault-overview.md).
+Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skript ausführen. Eine ausführliche Erläuterung dieser Befehle und weitere Informationen zum Erstellen und Konfigurieren eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](../key-vault/general/overview.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

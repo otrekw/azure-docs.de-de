@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985744"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456344"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Einführung in die zentralen Azure Storage-Dienste
 
@@ -131,7 +131,7 @@ Die Clientbibliotheken für Azure Storage umfassen verschiedene Methoden zum Ver
 
 ## <a name="redundancy"></a>Redundanz
 
-Um die Dauerhaftigkeit Ihrer Daten zu gewährleisten, speichert Azure Storage mehrere Kopien Ihrer Daten. Beim Einrichten Ihres Speicherkontos wählen Sie eine Redundanzoption aus. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](/storage-redundancy?toc=/azure/storage/blobs/toc.json).
+Um die Dauerhaftigkeit Ihrer Daten zu gewährleisten, speichert Azure Storage mehrere Kopien Ihrer Daten. Beim Einrichten Ihres Speicherkontos wählen Sie eine Redundanzoption aus. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json).
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Übertragen von Daten in und aus Azure Storage
 

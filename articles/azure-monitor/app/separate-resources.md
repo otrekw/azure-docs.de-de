@@ -3,12 +3,12 @@ title: Trennen von Telemetriedaten in Azure Application Insights
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671459"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536776"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
 
@@ -69,7 +69,7 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Applicati
 
 ![Klicken Sie auf "Neu > Application Insights"](./media/separate-resources/01-new.png)
 
-* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md)verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
+* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
 * **Ressourcengruppe** ist eine benutzerfreundliche Möglichkeit zum Verwalten von Eigenschaften wie der [Zugriffssteuerung](../../azure-monitor/app/resources-roles-access-control.md)gespeichert und verarbeitet. Sie können separate Ressourcengruppen für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
 * **Abonnement** ist Ihr Zahlungskonto in Azure.
 * **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden. 
@@ -89,7 +89,7 @@ Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App
 ## <a name="filter-on-build-number"></a>Filtern nach Buildnummer
 Wenn Sie eine neue Version Ihrer App veröffentlichen, sollten Sie die Telemetrie aus verschiedenen Builds trennen können.
 
-Sie können die Eigenschaft „Anwendungsversion“ festlegen, sodass Sie die Ergebnisse in der [Suche](../../azure-monitor/app/diagnostic-search.md) und im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) filtern können.
+Sie können die Eigenschaft „Anwendungsversion“ festlegen, sodass Sie die Ergebnisse in der [Suche](../../azure-monitor/app/diagnostic-search.md) und im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) filtern können.
 
 ![Filtern nach einer Eigenschaft](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinf
     </PropertyGroup>
 ```
 
-Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](../../azure-monitor/app/diagnostic-search.md) durchführen oder [Metriken untersuchen](../../azure-monitor/app/metrics-explorer.md).
+Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](../../azure-monitor/app/diagnostic-search.md) durchführen oder [Metriken untersuchen](../../azure-monitor/platform/metrics-charts.md).
 
 Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild aus Visual Studio.
 

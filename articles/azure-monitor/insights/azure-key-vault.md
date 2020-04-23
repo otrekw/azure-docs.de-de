@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455443"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 
@@ -94,7 +94,7 @@ Nachdem Sie auf die Kachel **Key Vault-Analyse** geklickt haben, können Sie Zus
     Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 ## <a name="azure-monitor-log-records"></a>Protokolldatensätze in Azure Monitor
-Die Azure Key Vault-Lösung analysiert Datensätze vom Typ **KeyVaults**, die aus den [AuditEvent-Protokollen](../../key-vault/key-vault-logging.md) in Azure-Diagnose gesammelt wurden.  Eigenschaften für diese Datensätze finden Sie in der folgenden Tabelle:  
+Die Azure Key Vault-Lösung analysiert Datensätze vom Typ **KeyVaults**, die aus den [AuditEvent-Protokollen](../../key-vault/general/logging.md) in Azure-Diagnose gesammelt wurden.  Eigenschaften für diese Datensätze finden Sie in der folgenden Tabelle:  
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
@@ -107,7 +107,7 @@ Die Azure Key Vault-Lösung analysiert Datensätze vom Typ **KeyVaults**, die au
 | `httpStatusCode_d` |Der von der Anforderung zurückgegebene HTTP-Statuscode (beispielsweise *200*) |
 | `id_s` |Eindeutige ID der Anforderung |
 | `identity_claim_appid_g` | GUID für die Anwendungs-ID |
-| `OperationName` |Der Name des Vorgangs, wie unter [Azure Key Vault-Protokollierung](../../key-vault/key-vault-logging.md) beschrieben |
+| `OperationName` |Der Name des Vorgangs, wie unter [Azure Key Vault-Protokollierung](../../key-vault/general/logging.md) beschrieben |
 | `OperationVersion` |Die vom Client angeforderte REST-API-Version (beispielsweise *2015-06-01*) |
 | `requestUri_s` |Der URI der Anforderung |
 | `Resource` |Der Name des Schlüsseltresors |

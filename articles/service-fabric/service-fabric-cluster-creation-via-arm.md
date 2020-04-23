@@ -3,12 +3,12 @@ title: Erstellen eines Azure Service Fabric-Clusters
 description: Hier erfahren Sie, wie mithilfe von Azure Resource Manager ein sicherer Service Fabric-Cluster in Azure eingerichtet wird.  Sie können eine Standardvorlage oder Ihre eigene Clustervorlage zum Erstellen eines Clusters verwenden.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624115"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458299"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Verwenden eines Zeigers auf ein Geheimnis in einem Schlüsseltresor
 
-Zur Verwendung eines vorhandenen Schlüsseltresors muss dieser [für die Bereitstellung aktiviert werden](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI), damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann.
+Zur Verwendung eines vorhandenen Schlüsseltresors muss dieser [für die Bereitstellung aktiviert werden](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI), damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann.
 
 Bereitstellen des Clusters mithilfe von PowerShell:
 

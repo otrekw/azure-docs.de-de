@@ -3,12 +3,12 @@ title: Application Insights für Azure Cloud Services | Microsoft-Dokumentation
 description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234766"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537592"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -31,7 +31,7 @@ Mit dieser Option wird die App zur Laufzeit instrumentiert, sodass Sie alle erfo
 
 Wenn Sie nur diese Option benötigen, sind Sie fertig. 
 
-Die nächsten Schritte sind: [Anzeigen von Metriken aus der App](../../azure-monitor/app/metrics-explorer.md) und [Abfragen von Daten mit Analytics](../../azure-monitor/app/analytics.md). 
+Die nächsten Schritte sind: [Anzeigen von Metriken aus der App](../../azure-monitor/platform/metrics-charts.md) und [Abfragen von Daten mit Analytics](../../azure-monitor/app/analytics.md). 
 
 Zur Überwachung der Leistung im Browser sollten Sie [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) einrichten und [Ihren Webseiten Code hinzufügen](../../azure-monitor/app/javascript.md).
 
@@ -165,7 +165,7 @@ Dieser Schritt ist nur erforderlich, wenn Sie vollständige SQL-Abfragen für .N
 
 1. Öffnen Sie die zuvor erstellten Application Insights-Ressourcen.
 
-   Einzelne Datenpunkte werden in [Suche][diagnostic] angezeigt, und aggregierte Daten werden im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) angezeigt.
+   Einzelne Datenpunkte werden in [Suche][diagnostic] angezeigt, und aggregierte Daten werden im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) angezeigt.
 
 1. Fügen Sie weitere Telemetriedaten hinzu (siehe folgende Abschnitte), und veröffentlichen Sie dann Ihre App, um Livediagnosen und Nutzungsfeedback zu erhalten. 
 
@@ -184,7 +184,7 @@ Sie finden Sie Informationen der [Azure-Diagnose](https://docs.microsoft.com/azu
 * Windows-Ereignisprotokolle werden als Ablaufverfolgungen und benutzerdefinierte Ereignisse angezeigt.
 * Anwendungsprotokolle, ETW-Protokolle und alle Diagnoseinfrastrukturprotokolle werden als Ablaufverfolgungen angezeigt.
 
-Zum Anzeigen von Leistungsindikatoren und Angaben zur Anzahl von Ereignissen öffnen Sie den [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und fügen das folgende Diagramm hinzu:
+Zum Anzeigen von Leistungsindikatoren und Angaben zur Anzahl von Ereignissen öffnen Sie den [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) und fügen das folgende Diagramm hinzu:
 
 ![Azure-Diagnosedaten](./media/cloudservices/23-wad.png)
 

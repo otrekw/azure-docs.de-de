@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3de1edc8560cfc85f52293c095fa824b364d2058
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 3cb51a57baa87849e97f7b05762dc4d6eba787a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881637"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537110"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie den Code für Ihre Web-App zur Benutzeranmeldung konfiguri
 
 ## <a name="libraries-for-protecting-web-apps"></a>Bibliotheken zum Schützen von Web-Apps
 
-<!-- This section can be in an include for Web App and Web APIs -->
+<!-- This section can be in an include for web app and web APIs -->
 Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API) verwendet:
 
 | Plattform | Bibliothek | BESCHREIBUNG |

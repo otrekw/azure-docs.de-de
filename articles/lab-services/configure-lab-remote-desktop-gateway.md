@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460986"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurieren Ihres Labs in Azure DevTest Labs zum Verwenden eines Remotedesktopgateways
 Sie können in Azure DevTest Labs ein Remotedesktopgateway für Ihr Lab konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten. Das Lab bietet einen zentralen Ort für Ihre Lab-Benutzer zum Anzeigen aller virtuellen Computer, auf die sie Zugriff haben, sowie für den Zugriff auf diese. Die Schaltfläche **Verbinden** auf der Seite **Virtueller Computer** erstellt eine computerspezifische RDP-Datei, die Sie öffnen können, um eine Verbindung mit dem Computer herzustellen. Sie können die RDP-Verbindung weiter anpassen und sichern, indem Sie Ihr Lab mit einem Remotedesktopgateway verbinden. 
@@ -64,7 +64,7 @@ Die Azure-Funktion verarbeitet Anforderungen der Form `https://{function-app-uri
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurieren des Labs für die Verwendung der Tokenauthentifizierung 
 In diesem Abschnitt wird das Konfigurieren eines Labs für die Verwendung eines Remotedesktopgateway-Computers beschrieben, der die Tokenauthentifizierung unterstützt. In diesem Abschnitt wird jedoch nicht das Einrichten einer Remotedesktop-Gatewayfarm selbst behandelt. Informationen dazu finden Sie im Abschnitt mit dem [Beispiel für das Erstellen eines Remotedesktopgateways](#sample-to-create-a-remote-desktop-gateway) am Ende dieses Artikels. 
 
-Bevor Sie die Labeinstellungen ändern, speichern Sie den Schlüssel, den Sie benötigen, um die Funktion zum Zurückgeben eines Authentifizierungstokens im Schlüsseltresor des Labs speichern. Sie finden den Funktionsschlüsselwert auf der Seite **Verwalten** der Funktion im Azure-Portal. Weitere Informationen zum Speichern eines Geheimnisses in einem Schlüsseltresor finden Sie unter [Hinzufügen eines Geheimnisses zu Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Speichern Sie den Namen des Geheimnisses zur späteren Verwendung.
+Bevor Sie die Labeinstellungen ändern, speichern Sie den Schlüssel, den Sie benötigen, um die Funktion zum Zurückgeben eines Authentifizierungstokens im Schlüsseltresor des Labs speichern. Sie finden den Funktionsschlüsselwert auf der Seite **Verwalten** der Funktion im Azure-Portal. Weitere Informationen zum Speichern eines Geheimnisses in einem Schlüsseltresor finden Sie unter [Hinzufügen eines Geheimnisses zu Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault). Speichern Sie den Namen des Geheimnisses zur späteren Verwendung.
 
 Um die ID des Schlüsseltresors des Labs zu ermitteln, führen Sie den folgenden Azure CLI-Befehl aus: 
 

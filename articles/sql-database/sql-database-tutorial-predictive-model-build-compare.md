@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345759"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452926"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
@@ -36,8 +37,6 @@ In diesem Artikel lernen Sie Folgendes:
 In [Teil 1](sql-database-tutorial-predictive-model-prepare-data.md) haben Sie gelernt, wie Sie eine Beispieldatenbank importieren und anschließend die Daten vorbereiten, die zum Trainieren eines Vorhersagemodells in R verwendet werden sollen.
 
 In [Teil 3](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Sie das Modell in einer Datenbank speichern und anschließend auf der Grundlage der in den Teilen 1 und 2 entwickelten R-Skripts gespeicherte Prozeduren erstellen. Die gespeicherten Prozeduren werden in einer SQL-Datenbank ausgeführt, um Vorhersagen basierend auf neuen Daten zu treffen.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -3,16 +3,16 @@ title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460193"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458265"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
-Anstatt einen sicheren Wert (wie ein Kennwort) direkt in Ihre Vorlage oder Parameterdatei einzufügen, können Sie den Wert während einer Bereitstellung aus einem [Azure Key Vault](../../key-vault/key-vault-overview.md) abrufen. Sie rufen den Wert ab, indem Sie den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei angeben. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Der Schlüsseltresor kann in einem anderen Abonnement als die Ressourcengruppe vorhanden sein, für die Sie ihn bereitstellen.
+Anstatt einen sicheren Wert (wie ein Kennwort) direkt in Ihre Vorlage oder Parameterdatei einzufügen, können Sie den Wert während einer Bereitstellung aus einem [Azure Key Vault](../../key-vault/general/overview.md) abrufen. Sie rufen den Wert ab, indem Sie den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei angeben. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Der Schlüsseltresor kann in einem anderen Abonnement als die Ressourcengruppe vorhanden sein, für die Sie ihn bereitstellen.
 
 Dieser Artikel konzentriert sich auf das Szenario, bei dem ein sensibler Wert als Vorlagenparameter zur Eingabe übergeben wird. Er behandelt nicht das Szenario, in dem eine Eigenschaft eines virtuellen Computers auf die URL eines Zertifikats in einem Schlüsseltresor festgelegt wird. Eine Schnellstartvorlage für dieses Szenario finden Sie unter [Installieren eines Zertifikats aus Azure Key Vault auf einem virtuellen Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 Weitere Informationen zum Erstellen von Schlüsseltresoren und zum Hinzufügen von Geheimnissen finden Sie unter:
 
-- [Festlegen und Abrufen eines Geheimnisses über die Befehlszeilenschnittstelle](../../key-vault/quick-create-cli.md)
-- [Festlegen und Abrufen eines Geheimnisses mit PowerShell](../../key-vault/quick-create-powershell.md)
-- [Festlegen und Abrufen eines Geheimnisses über das Portal](../../key-vault/quick-create-portal.md)
-- [Festlegen und Abrufen eines Geheimnisses mit .NET](../../key-vault/quick-create-net.md)
-- [Festlegen und Abrufen eines Geheimnisses mit Node.js](../../key-vault/quick-create-node.md)
+- [Festlegen und Abrufen eines Geheimnisses über die Befehlszeilenschnittstelle](../../key-vault/secrets/quick-create-cli.md)
+- [Festlegen und Abrufen eines Geheimnisses mit PowerShell](../../key-vault/secrets/quick-create-powershell.md)
+- [Festlegen und Abrufen eines Geheimnisses über das Portal](../../key-vault/secrets/quick-create-portal.md)
+- [Festlegen und Abrufen eines Geheimnisses mit .NET](../../key-vault/secrets/quick-create-net.md)
+- [Festlegen und Abrufen eines Geheimnisses mit Node.js](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Gewähren des Zugriffs auf die Geheimnisse
 
@@ -375,5 +375,5 @@ Die folgende Vorlage erstellt dynamisch die Schlüsseltresor-ID und übergibt si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md)
 - Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)(in englischer Sprache).

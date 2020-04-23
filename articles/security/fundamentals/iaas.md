@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: fadf07f312c86f8ca15f5a97ebbe99e84bcffc89
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450014"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -155,7 +155,7 @@ Folgende Methoden haben sich bei der Verwendung von Azure Disk Encryption bewäh
 **Detail**: Azure Disk Encryption generiert die Verschlüsselungsschlüssel und schreibt sie in Ihren Schlüsseltresor. Das Verwalten von Verschlüsselungsschlüsseln im Schlüsseltresor erfordert eine Azure AD-Authentifizierung. Erstellen Sie dafür eine Azure AD-Anwendung. Zu Authentifizierungszwecken können Sie entweder die auf einem geheimen Clientschlüssel basierende Authentifizierung oder die [auf einem Clientzertifikat basierende Azure AD-Authentifizierung](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verwenden.
 
 **Bewährte Methode**: Sorgen Sie mit einem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) für zusätzlichen Schutz für Verschlüsselungsschlüssel. Fügen Sie Ihrem Schlüsseltresor einen KEK hinzu.   
-**Detail**: Verwenden Sie das Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../../key-vault/key-vault-hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
+**Detail**: Verwenden Sie das Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../../key-vault/keys/hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
 
 **Bewährte Methode**: Erstellen Sie eine [Momentaufnahme](../../virtual-machines/windows/snapshot-copy-managed-disk.md), und/oder sichern Sie die Datenträger, bevor diese verschlüsselt werden. Sicherungen bieten eine Wiederherstellungsoption, wenn während der Verschlüsselung ein unerwarteter Fehler auftritt.   
 **Detail**: Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet **Set-AzVMDiskEncryptionExtension** verwenden, um verwaltete Datenträger durch das Angeben des Parameters *-skipVmBackup* zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../../backup/backup-azure-vms-encryption.md).

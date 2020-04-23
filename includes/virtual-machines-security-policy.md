@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79381863"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458664"
 ---
 Es ist wichtig, dass Sie in Bezug auf die ausgeführten Anwendungen auf den Schutz Ihres virtuellen Computers (VM) achten. Das Schützen Ihrer VMs kann einen oder mehrere Azure-Dienste und -Features enthalten, die für den sicheren Zugriff auf Ihre VMs und die sichere Speicherung Ihrer Daten sorgen. Dieser Artikel enthält Informationen dazu, wie Sie den Schutz Ihrer VM und Anwendungen aufrechterhalten.
 
@@ -39,7 +39,7 @@ Weitere Informationen zur serverseitigen Verschlüsselung finden Sie in den Arti
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Zum Verbessern der Sicherheit und Konformität von [Windows-VMs](../articles/virtual-machines/windows/encrypt-disks.md) und [Linux-VMs](../articles/virtual-machines/linux/disk-encryption-overview.md) können virtuelle Datenträger in Azure verschlüsselt werden. Virtuelle Datenträger auf virtuellen Windows-Computern werden im Ruhezustand mithilfe von BitLocker verschlüsselt. Virtuelle Datenträger auf virtuellen Linux-Computern werden im Ruhezustand mithilfe von dm-crypt verschlüsselt. 
+Zum Verbessern der Sicherheit und Konformität von [Windows-VMs](../articles/virtual-machines/windows/disk-encryption-overview.md) und [Linux-VMs](../articles/virtual-machines/linux/disk-encryption-overview.md) können virtuelle Datenträger in Azure verschlüsselt werden. Virtuelle Datenträger auf virtuellen Windows-Computern werden im Ruhezustand mithilfe von BitLocker verschlüsselt. Virtuelle Datenträger auf virtuellen Linux-Computern werden im Ruhezustand mithilfe von dm-crypt verschlüsselt. 
 
 Für die Verschlüsselung virtueller Datenträger in Azure fallen keine Gebühren an. Kryptografische Schlüssel werden in Azure Key Vault mit Softwareschutz gespeichert. Alternativ können Sie Schlüssel aber auch in Hardwaresicherheitsmodulen (HSMs) mit FIPS 140-2 Level 2-Zertifizierung importieren oder generieren. Die kryptografischen Schlüssel dienen zum Verschlüsseln und Entschlüsseln virtueller Datenträger, die an Ihren virtuellen Computer angefügt sind. Diese kryptografischen Schlüssel werden allein von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. Über einen Azure Active Directory-Dienstprinzipal werden die kryptografischen Schlüssel beim Ein- und Ausschalten virtueller Computer sicher ausgegeben.
 

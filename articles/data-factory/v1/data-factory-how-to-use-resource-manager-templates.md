@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972858"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460731"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
@@ -233,7 +233,7 @@ Informationen zu bewährten Vorgehensweisen bei der Parametrisierung finden Sie 
 * Einstellungen variieren nach Umgebung (Beispiel: Entwicklung, Test und Produktion)
 * Geheime Schlüssel (z.B. Kennwörter)
 
-Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von Pull Geheimnisse aus [Azure Key Vault](../../key-vault/key-vault-overview.md) übertragen, müssen Sie **keyVault** und **secretName** wie im folgenden Beispiel gezeigt angeben:
+Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von Pull Geheimnisse aus [Azure Key Vault](../../key-vault/general/overview.md) übertragen, müssen Sie **keyVault** und **secretName** wie im folgenden Beispiel gezeigt angeben:
 
 ```JSON
 "parameters": {

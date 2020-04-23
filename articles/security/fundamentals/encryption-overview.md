@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac657e6627aff4eb588506118e5eeeaef70efba
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548606"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454644"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -61,7 +61,7 @@ Die drei Modelle für die serverseitige Verschlüsselung bieten unterschiedliche
 
 Sie können virtuelle Windows- und Linux-Computer mithilfe von [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) schützen. Hierbei werden die [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx)-Technologie und Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) verwendet, um Betriebssystemdatenträger sowie Datenträger mit vollständiger Volumeverschlüsselung zu schützen.
 
-Verschlüsselungsschlüssel und Geheimnisse werden in Ihrem [Azure Key Vault-Abonnement](../../key-vault/key-vault-overview.md) geschützt. Mithilfe des Azure Backup-Diensts können Sie verschlüsselte virtuelle Computer, die mit der KEK-Konfiguration (Key Encryption Key) verschlüsselt sind, sichern und wiederherstellen.
+Verschlüsselungsschlüssel und Geheimnisse werden in Ihrem [Azure Key Vault-Abonnement](../../key-vault/general/overview.md) geschützt. Mithilfe des Azure Backup-Diensts können Sie verschlüsselte virtuelle Computer, die mit der KEK-Konfiguration (Key Encryption Key) verschlüsselt sind, sichern und wiederherstellen.
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 

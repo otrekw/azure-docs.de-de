@@ -3,12 +3,12 @@ title: Überwachen einer ASP.NET-Live-Web-App mit Azure Application Insights | M
 description: Überwachen Sie die Leistung einer Website, ohne sie erneut bereitzustellen. Funktioniert mit ASP.NET-Web-Apps, die lokal oder auf virtuellen Computern gehostet werden.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670048"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536827"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 
@@ -314,7 +314,7 @@ Für Anwendungen, die beim Kompilieren bereits instrumentiert sind:
 
 Anzeigen der Telemetrie:
 
-* [Untersuchen Sie Metriken](../../azure-monitor/app/metrics-explorer.md) für die Überwachung von Leistung und Auslastung.
+* [Untersuchen Sie Metriken](../../azure-monitor/platform/metrics-charts.md) für die Überwachung von Leistung und Auslastung.
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme zu diagnostizieren.
 * [Verwenden Sie Analytics](../../azure-monitor/app/analytics.md) für erweiterte Abfragen.
 

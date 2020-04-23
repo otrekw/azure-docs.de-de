@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970658"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460119"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption in einem isolierten Netzwerk
 
@@ -43,7 +43,7 @@ Für alle angewendeten Einstellungen von Netzwerksicherheitsgruppen muss es erm�
 
 Wenn [Azure Disk Encryption mit Azure AD (vorherige Version)](disk-encryption-overview-aad.md) verwendet wird, muss die [Azure Active Directory-Bibliothek](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) für alle Distributionen manuell installiert werden (zusätzlich zu den Paketen, die für die Distribution geeignet sind, wie [oben aufgelistet](#package-management)).
 
-Wenn die Verschlüsselung mit [Azure AD-Anmeldeinformationen](disk-encryption-linux-aad.md) aktiviert wird, muss der virtuelle Zielcomputer die Konnektivität sowohl mit Azure Active Directory-Endpunkten als auch mit Schlüsseltresor-Endpunkten zulassen. Aktuelle Azure Active Directory-Authentifizierungsendpunkte werden in den Abschnitten 56 und 59 der Dokumentation zu [URLs und IP-Adressbereichen in Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) verwaltet. Anweisungen zu Schlüsseltresoren werden in der Dokumentation [Zugreifen auf Azure Key Vault hinter einer Firewall](../../key-vault/key-vault-access-behind-firewall.md) bereitgestellt.
+Wenn die Verschlüsselung mit [Azure AD-Anmeldeinformationen](disk-encryption-linux-aad.md) aktiviert wird, muss der virtuelle Zielcomputer die Konnektivität sowohl mit Azure Active Directory-Endpunkten als auch mit Schlüsseltresor-Endpunkten zulassen. Aktuelle Azure Active Directory-Authentifizierungsendpunkte werden in den Abschnitten 56 und 59 der Dokumentation zu [URLs und IP-Adressbereichen in Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) verwaltet. Anweisungen zu Schlüsseltresoren werden in der Dokumentation [Zugreifen auf Azure Key Vault hinter einer Firewall](../../key-vault/general/access-behind-firewall.md) bereitgestellt.
 
 ### <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst 
 

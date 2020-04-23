@@ -3,12 +3,12 @@ title: 'Tutorial: Speichern des Terraform-Zustands in Azure Storage'
 description: Eine Einführung in das Speichern des Terraform-Status in Azure Storage.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459014"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Tutorial: Speichern des Terraform-Status in Azure Storage
 
@@ -67,7 +67,7 @@ Erstellen Sie eine Umgebungsvariable namens `ARM_ACCESS_KEY` mit dem Wert des Az
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Um den Zugriffsschlüssel des Azure Storage-Kontos noch stärker zu schützen, speichern Sie ihn in Azure Key Vault. Die Umgebungsvariable kann dann mit einem Befehl wie dem Folgenden festgelegt werden. Weitere Informationen zu Azure Key Vault finden Sie in der [Dokumentation zu Azure Key Vault](../key-vault/quick-create-cli.md).
+Um den Zugriffsschlüssel des Azure Storage-Kontos noch stärker zu schützen, speichern Sie ihn in Azure Key Vault. Die Umgebungsvariable kann dann mit einem Befehl wie dem Folgenden festgelegt werden. Weitere Informationen zu Azure Key Vault finden Sie in der [Dokumentation zu Azure Key Vault](../key-vault/secrets/quick-create-cli.md).
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

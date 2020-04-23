@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: cdc739c7464b3deb87faaaabfd8d657ae8c28678
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985914"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617755"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um eine Ausführung Ihres Experiments zu
     az login
     ```
     
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 1. Fügen Sie eine Arbeitsbereichskonfiguration an den Ordner an, der Ihr Trainingsskript enthält. Ersetzen Sie `myworkspace` durch Ihren Azure Machine Learning-Arbeitsbereich. Ersetzen Sie `myresourcegroup` durch die Azure-Ressourcengruppe, die Ihren Arbeitsbereich enthält:
 

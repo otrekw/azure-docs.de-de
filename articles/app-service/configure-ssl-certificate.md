@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810589"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453896"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -94,7 +94,7 @@ Wenn Sie ein App Service-Zertifikat von Azure erwerben, verwaltet Azure die fol
 
 - Abwickeln des Kaufs von GoDaddy
 - Ausführen der Domänenüberprüfung des Zertifikats
-- Speichern des Zertifikats in [Azure Key Vault](../key-vault/key-vault-overview.md)
+- Speichern des Zertifikats in [Azure Key Vault](../key-vault/general/overview.md)
 - Verwalten der Zertifikatsverlängerung (siehe [Verlängern des Zertifikats](#renew-certificate))
 - Automatisches Synchronisieren des Zertifikats mit den importierten Kopien in App Service-Apps
 
@@ -140,8 +140,8 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
 | Position | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
-| Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |
+| Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/general/group-permissions-for-apps.md) durchführen. |
+| Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/general/network-security.md) durchführen. |
 
 Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Für die Option **Schritt 1: Speichern** sollte ein grünes Häkchen (erfolgreiche Ausführung) angezeigt werden. Lassen Sie die Seite für den nächsten Schritt geöffnet.
 

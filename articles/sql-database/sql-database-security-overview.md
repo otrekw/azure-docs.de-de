@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124832"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461394"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -112,11 +112,11 @@ Bei Verwendung des ADO.NET-Treibers erfolgt dies z. B. über **Encrypt=True** u
 
 [Transparent Data Encryption (TDE) für Azure SQL-Datenbank](transparent-data-encryption-azure-sql.md) fügt eine zusätzliche Sicherheitsebene zum Schutz ruhender Daten vor nicht autorisiertem oder Offlinezugriff auf Rohdatendateien oder Sicherungen hinzu. Entsprechende Szenarien umfassen häufig den Diebstahl im Rechenzentrum oder die unsichere Entsorgung von Hardware oder Medien wie z.B. Festplatten und Sicherungsbändern. TDE verschlüsselt die gesamte Datenbank mit einem AES-Verschlüsselungsalgorithmus. Dies erfordert von den Anwendungsentwicklern keine Änderungen an vorhandenen Anwendungen.
 
-In Azure werden standardmäßig alle neu erstellten SQL-Datenbanken verschlüsselt, und der Datenbankverschlüsselungsschlüssel wird mit einem integrierten Serverzertifikat geschützt.  Zertifikatwartung und -rotation werden vom Dienst verwaltet und erfordern keine Aktion durch den Benutzer. Kunden, die volle Kontrolle über die Verschlüsselungsschlüssel benötigen, können die Schlüssel in [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) verwalten.
+In Azure werden standardmäßig alle neu erstellten SQL-Datenbanken verschlüsselt, und der Datenbankverschlüsselungsschlüssel wird mit einem integrierten Serverzertifikat geschützt.  Zertifikatwartung und -rotation werden vom Dienst verwaltet und erfordern keine Aktion durch den Benutzer. Kunden, die volle Kontrolle über die Verschlüsselungsschlüssel benötigen, können die Schlüssel in [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) verwalten.
 
 ### <a name="key-management-with-azure-key-vault"></a>Schlüsselverwaltung mit Azure Key Vault
 
-[BYOK](transparent-data-encryption-byok-azure-sql.md)-Unterstützung (Bring Your Own Key) für [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) ermöglicht Kunden, die Schlüsselverwaltung und -rotation mit  [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), dem externen Schlüsselverwaltungssystem auf Grundlage der Azure-Cloud, selbst zu übernehmen. Wenn der Zugriff der Datenbank auf den Schlüsseltresor widerrufen wird, kann eine Datenbank nicht entschlüsselt und in den Speicher gelesen lesen. Azure Key Vault bietet eine zentrale Plattform für die Schlüsselverwaltung, verwendet streng überwachte Hardwaresicherheitsmodule (HSMs) und ermöglicht die Aufgabentrennung zwischen dem Verwalten von Schlüsseln und Daten, um Sicherheitsbestimmungen zu erfüllen.
+[BYOK](transparent-data-encryption-byok-azure-sql.md)-Unterstützung (Bring Your Own Key) für [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) ermöglicht Kunden, die Schlüsselverwaltung und -rotation mit  [Azure Key Vault](../key-vault/general/secure-your-key-vault.md), dem externen Schlüsselverwaltungssystem auf Grundlage der Azure-Cloud, selbst zu übernehmen. Wenn der Zugriff der Datenbank auf den Schlüsseltresor widerrufen wird, kann eine Datenbank nicht entschlüsselt und in den Speicher gelesen lesen. Azure Key Vault bietet eine zentrale Plattform für die Schlüsselverwaltung, verwendet streng überwachte Hardwaresicherheitsmodule (HSMs) und ermöglicht die Aufgabentrennung zwischen dem Verwalten von Schlüsseln und Daten, um Sicherheitsbestimmungen zu erfüllen.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (Verschlüsselung während der Verwendung)
 

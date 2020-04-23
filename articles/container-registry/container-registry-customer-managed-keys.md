@@ -4,18 +4,18 @@ description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer A
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498949"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461751"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
 
 Wenn Sie Images und andere Artefakte in einer Azure Container Registry speichern, verschlüsselt Azure automatisch den ruhenden Registrierungsinhalt mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#data-encryption-models). Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie einen Schlüssel verwenden, den Sie in Azure Key Vault erstellen und verwalten. Dieser Artikel führt Sie Schritt für Schritt durch die Verwendung der Azure CLI und des Azure-Portals.
 
-Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird durch die Integration in [Azure Key Vault](../key-vault/key-vault-overview.md) unterstützt. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen.
+Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird durch die Integration in [Azure Key Vault](../key-vault/general/overview.md) unterstützt. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen.
 
 Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md).
 
@@ -176,7 +176,7 @@ Notieren Sie sich den **Ressourcennamen** der verwalteten Identität. Sie benöt
 
 ### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Schritte zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/quick-create-portal.md).
+Schritte zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/secrets/quick-create-portal.md).
 
 Wenn Sie einen Schlüsseltresor für einen kundenseitig verwalteten Schlüssel erstellen, müssen Sie auf der Registerkarte **Grundlagen** die folgenden Schutzeinstellungen aktivieren: **Vorläufiges Löschen** und **Löschschutz**. Diese Einstellungen helfen bei der Verhinderung von Datenverlusten aufgrund versehentlich gelöschter Schlüssel oder Schlüsseltresore.
 
@@ -392,7 +392,7 @@ Das Widerrufen des Schlüssels blockiert praktisch den Zugriff auf alle Registri
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [Verschlüsselung ruhender Daten in Azure](../security/fundamentals/encryption-atrest.md).
-* Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
+* Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
 * Wenn Sie Feedback zu kundenseitig verwalteten Schlüsseln für Azure Container Registry bereitstellen möchten, besuchen Sie die [ACR GitHub-Site](https://aka.ms/acr/issues).
 
 

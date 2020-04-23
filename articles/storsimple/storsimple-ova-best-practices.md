@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544344"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460646"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
 
@@ -199,7 +199,7 @@ Nutzen Sie die folgenden bewährten Methoden, wenn Sie ACRs für StorSimple-Volu
 ### <a name="data-security-and-encryption"></a>Datensicherheit und -verschlüsselung
 Das StorSimple Virtual Array verfügt über Sicherheits- und Verschlüsselungsfeatures, mit denen die Vertraulichkeit und Integrität Ihrer Daten sichergestellt wird. Für die Verwendung dieser Features empfehlen wir Ihnen die Befolgung der folgenden bewährten Methoden: 
 
-* Definieren Sie einen Cloudspeicher-Verschlüsselungsschlüssel zum Generieren einer AES-256-Verschlüsselung, bevor die Daten aus Ihrem virtuellen Array in die Cloud gesendet werden. Dieser Schlüssel ist nicht erforderlich, wenn die Daten bereits verschlüsselt sind. Der Schlüssel kann mit einem Schlüsselverwaltungssystem, z. B. [Azure Key Vault](../key-vault/key-vault-overview.md), generiert und sicher aufbewahrt werden.
+* Definieren Sie einen Cloudspeicher-Verschlüsselungsschlüssel zum Generieren einer AES-256-Verschlüsselung, bevor die Daten aus Ihrem virtuellen Array in die Cloud gesendet werden. Dieser Schlüssel ist nicht erforderlich, wenn die Daten bereits verschlüsselt sind. Der Schlüssel kann mit einem Schlüsselverwaltungssystem, z. B. [Azure Key Vault](../key-vault/general/overview.md), generiert und sicher aufbewahrt werden.
 * Stellen Sie beim Konfigurieren des Speicherkontos über den StorSimple Manager-Dienst sicher, dass Sie den TLS-Modus aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen.
 * Generieren Sie die Schlüssel für Ihre Speicherkonten in regelmäßigen Abständen neu (per Zugriff auf den Azure Storage-Dienst), um basierend auf der geänderten Administratorliste alle Zugriffsänderungen abzudecken.
 * Die Daten in Ihrem virtuellen Array werden komprimiert und dedupliziert, bevor sie an Azure gesendet werden. Es ist nicht zu empfehlen, den Rollendienst für die Datendeduplizierung auf dem Windows Server-Host zu verwenden.

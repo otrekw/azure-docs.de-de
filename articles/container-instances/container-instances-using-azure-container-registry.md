@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252138"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453522"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -36,7 +36,7 @@ Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprin
 
 ### <a name="create-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Wenn Sie noch keinen Tresor in [Azure Key Vault](../key-vault/key-vault-overview.md) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
+Wenn Sie noch keinen Tresor in [Azure Key Vault](../key-vault/general/overview.md) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
 
 Aktualisieren Sie die Variable `RES_GROUP` mit dem Namen einer vorhandenen Ressourcengruppe, in der der Schlüsselspeicher erstellt werden soll, und `ACR_NAME` mit dem Namen Ihrer Containerregistrierung. Aus Gründen der Übersichtlichkeit wird bei Befehlen in diesem Artikel davon ausgegangen, dass Ihre Registrierung, der Schlüsseltresor und die Containerinstanzen alle in derselben Ressourcengruppe erstellt wurden.
 

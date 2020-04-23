@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502401"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605171"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -182,7 +182,7 @@ Ausführlichere Informationen zur Aktivierung von ExpressRoute Global Reach find
 HANA (große Instanz) verfügt *nicht* über direkte Internetkonnektivität. Daher können Sie das Betriebssystemimage möglicherweise nicht direkt beim Hersteller des Betriebssystems registrieren. Gegebenenfalls müssen Sie dazu den lokalen SUSE Linux Enterprise Server Subscription Management Tool-Server oder Red Hat Enterprise Linux Subscription Manager verwenden.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Datenverschlüsselung zwischen VMs und HANA (große Instanz)
-Zwischen HANA (große Instanz) und VMs übertragene Daten werden nicht verschlüsselt. Sie können jedoch für den Austausch zwischen der HANA DBMS-Seite und JDBC-/ODBC-basierten Anwendungen die Verschlüsselung des Datenverkehrs aktivieren. Weitere Informationen finden Sie in [dieser Dokumentation von SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
+Zwischen HANA (große Instanz) und VMs übertragene Daten werden nicht verschlüsselt. Sie können jedoch für den Austausch zwischen der HANA DBMS-Seite und JDBC-/ODBC-basierten Anwendungen die Verschlüsselung des Datenverkehrs aktivieren. Weitere Informationen finden Sie in [dieser Dokumentation von SAP](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html).
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Verwenden von Einheiten von HANA (große Instanz) in mehreren Regionen
 

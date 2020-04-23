@@ -3,12 +3,12 @@ title: Application Insights-API für benutzerdefinierte Ereignisse und Metriken 
 description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, Webseite oder dem Webdienst ein, um Nutzungs- und Diagnoseprobleme nachzuverfolgen.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585878"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536946"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -107,7 +107,7 @@ In Node.js-Projekten können Sie `new applicationInsights.TelemetryClient(instru
 
 ## <a name="trackevent"></a>TrackEvent
 
-In Application Insights handelt es sich bei einem *benutzerdefinierten Ereignis* um einen Datenpunkt, den Sie als aggregierte Anzahl im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und als einzelne Vorkommen in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) anzeigen können. (Er gehört nicht zu MVC oder anderen Ereignissen des Frameworks.)
+In Application Insights handelt es sich bei einem *benutzerdefinierten Ereignis* um einen Datenpunkt, den Sie als aggregierte Anzahl im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) und als einzelne Vorkommen in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) anzeigen können. (Er gehört nicht zu MVC oder anderen Ereignissen des Frameworks.)
 
 Fügen Sie `TrackEvent`-Aufrufe in Ihrem Code ein, um verschiedene Ereignisse zu zählen – beispielsweise, wie oft Benutzer ein bestimmtes Feature auswählen, bestimmte Ziele erreichen oder bestimmte Arten von Fehlern machen.
 
@@ -443,7 +443,7 @@ requests
 
 Ziele beim Senden von Ausnahmen an Application Insights:
 
-* Durchführen einer [Zählung](../../azure-monitor/app/metrics-explorer.md) als Hinweis auf die Häufigkeit eines Problems
+* Durchführen einer [Zählung](../../azure-monitor/platform/metrics-charts.md) als Hinweis auf die Häufigkeit eines Problems
 * [Untersuchen einzelner Vorkommen](../../azure-monitor/app/diagnostic-search.md)
 
 Die Berichte enthalten die Stapelüberwachung.
@@ -774,7 +774,7 @@ Wenn bei Ihrer App Benutzer in Konten gruppiert werden, können Sie auch einen B
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-Im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) können Sie ein Diagramm erstellen, das **authentifizierte Benutzer** und **Benutzerkonten** zählt.
+Im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) können Sie ein Diagramm erstellen, das **authentifizierte Benutzer** und **Benutzerkonten** zählt.
 
 Sie können auch nach Clientdatenpunkten mit bestimmten Benutzernamen und Konten [suchen](../../azure-monitor/app/diagnostic-search.md).
 

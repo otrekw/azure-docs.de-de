@@ -3,12 +3,12 @@ title: Neuigkeiten – Language Understanding (LUIS)
 description: Dieser Artikel wird regelmäßig mit Neuigkeiten über die Language Understanding-API von Azure Cognitive Services aktualisiert.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156003"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538017"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
@@ -73,8 +73,8 @@ Die folgenden Features wurden bei der Build 2019-Konferenz veröffentlicht:
 * [Migrationsanleitung für die Vorschauversion der V3-API](luis-migration-api-v3.md)
 * [Verbessertes Analytics-Dashboard](luis-how-to-use-dashboard.md)
 * [Verbesserte vordefinierte Domänen](luis-reference-prebuilt-domains.md)
-* [Entitäten vom Typ „dynamische Liste“](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [Externe Entitäten](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [Entitäten vom Typ „dynamische Liste“](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [Externe Entitäten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Blogs
 

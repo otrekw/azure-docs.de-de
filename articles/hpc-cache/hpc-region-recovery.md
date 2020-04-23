@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21074ae6bc4959da031bc7065cd7d0639ec2a14f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982155"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537269"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Verwenden mehrerer Caches für die regionale Failoverwiederherstellung
 
@@ -58,4 +58,3 @@ Alle Clients müssen den neuen Cache einbinden, auch wenn sie nicht vom Regionsa
 ## <a name="learn-more"></a>Weitere Informationen
 
 Im Leitfaden zur Azure-Anwendungsarchitektur finden Sie weitere Informationen zur [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).
-<!-- this should be an internal link instead of a URL but I can't find the tree  -->

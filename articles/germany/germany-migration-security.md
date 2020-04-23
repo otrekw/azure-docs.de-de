@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 12/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a3321c1e1dcce642aec4a1ee1da5aa583fa747c1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1c5eae570793203a912efffb2d19164343d7bd78
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436654"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458429"
 ---
 # <a name="migrate-security-resources-to-global-azure"></a>Migrieren von Sicherheitsressourcen zu Azure weltweit
 
@@ -55,7 +55,7 @@ Get-AzKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Key Vault](https://docs.microsoft.com/azure/key-vault/) durcharbeiten.
-- Lesen Sie die [Übersicht über Key Vault](../key-vault/key-vault-overview.md).
+- Lesen Sie die [Übersicht über Key Vault](../key-vault/general/overview.md).
 - Lesen Sie die Referenz zu den [PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/).
 
 ## <a name="vpn-gateway"></a>VPN Gateway

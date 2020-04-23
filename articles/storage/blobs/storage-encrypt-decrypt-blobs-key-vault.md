@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618881"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456888"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
 
@@ -23,7 +23,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie die clientseitige Speicherverschlü
 
 **Geschätzter Zeitaufwand**: 20 Minuten
 
-Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md).
 
 Übersichtsinformationen zur clientseitigen Verschlüsselung für Azure Storage finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -48,7 +48,7 @@ Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüssel
 
 ## <a name="set-up-your-azure-key-vault"></a>Einrichten des Azure-Schlüsseltresors
 
-Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die beschrieben sind im Tutorial [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App](../../key-vault/quick-create-net.md).
+Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die beschrieben sind im Tutorial [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App](../../key-vault/secrets/quick-create-net.md).
 
 * Erstellen eines Schlüsseltresors
 * Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
