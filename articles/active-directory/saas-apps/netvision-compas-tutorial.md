@@ -159,7 +159,7 @@ In diesem Abschnitt aktivieren Sie SAML-SSO in **Netvision Compas**.
 
 In diesem Abschnitt konfigurieren Sie einen vorhandenen Benutzer in **Netvision Compas**, um Azure AD für einmaliges Anmelden zu verwenden.
 1. Führen Sie das Verfahren für die Benutzerbereitstellung von **Netvision Compas** wie von Ihrem Unternehmen vorgegeben aus, oder bearbeiten Sie ein vorhandenes Benutzerkonto.
-1. Stellen Sie beim Definieren des Benutzerprofils sicher, dass die Benutzeradresse unter **Email (Personal)** (E-Mail (persönlich)) mit dem Azure AD-Benutzernamen übereinstimmt: username@companydomain.extension. Beispiel: `B.Simon@contoso.com`.
+1. Stellen Sie beim Definieren des Benutzerprofils sicher, dass die Benutzeradresse unter **Email (Personal)** (E-Mail (privat)) mit dem Azure AD-Benutzernamen übereinstimmt: username@companydomain.extension. Beispiel: `B.Simon@contoso.com`.
 
     ![Benutzer bearbeiten](media/netvision-compas-tutorial/user-config.png)
 

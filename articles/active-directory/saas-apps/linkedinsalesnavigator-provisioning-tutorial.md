@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057378"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869739"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung
 
@@ -99,7 +99,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 11. Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
-    * Geben Sie im Feld **Mandanten-URL** die URL https://api.linkedin.com ein.
+    * Geben Sie im Feld **Mandanten-URL** die URL https://developer.linkedin.com ein.
 
     * Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
 

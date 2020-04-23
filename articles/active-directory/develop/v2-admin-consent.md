@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886380"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868661"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administratoreinwilligung auf Microsoft Identity Platform
 
-Einige Berechtigungen erfordern eine Administratoreneinwilligung, bevor sie innerhalb eines Mandanten erteilt werden können.  Sie können auch den Endpunkt für die Administratoreinwilligung verwenden, um Berechtigungen für einen gesamten Mandanten zu erteilen.  
+Einige Berechtigungen erfordern eine Administratoreneinwilligung, bevor sie innerhalb eines Mandanten erteilt werden können.  Sie können auch den Endpunkt für die Administratoreinwilligung verwenden, um Berechtigungen für einen gesamten Mandanten zu erteilen.
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
 
@@ -33,15 +33,15 @@ Durch das Anmelden des Benutzers bei der App können Sie die Organisation identi
 
 Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anzufordern, können Sie den Benutzer zum *Endpunkt für die Administratorzustimmung* von Microsoft Identity Platform umleiten.
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anz
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `redirect_uri` | Erforderlich |Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-|`scope`        | Erforderlich      | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können entweder statische (mit /.default) oder dynamische Bereiche sein.  Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. | 
+|`scope`        | Erforderlich      | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können entweder statische (mit /.default) oder dynamische Bereiche sein.  Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. |
 
 
 An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anmelden kann, um die Anforderung abzuschließen. Der Administrator wird aufgefordert, alle Berechtigungen zu genehmigen, die Sie für den Parameter `scope` angefordert haben.  Wenn Sie einen statischen Wert (`/.default`) verwendet haben, funktioniert er wie der v1.0-Endpunkt für die Administratoreinwilligung und fordert die Zustimmung für alle Bereiche an, die in den erforderlichen Berechtigungen für die APP gefunden werden.

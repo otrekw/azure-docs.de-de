@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668131"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869963"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -187,7 +187,7 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 3. Klicken Sie im Meldungsabschnitt des Bereichs mit der rechten Maustaste, und wählen Sie dann **Alle kopieren** aus.
 4. Fügen Sie den kopierten Text in eine Datei ein, und speichern Sie dann die Datei.
 
-Eine HAR-Datei können Sie im [HAR Viewer](https://www.softwareishard.com/har/viewer/) anzeigen.
+Eine HAR-Datei können Sie im [HAR Viewer](http://www.softwareishard.com/har/viewer/) anzeigen.
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Warum erhalte ich eine Fehlermeldung beim Versuch, eine App Service-Web-App mit einem virtuellen Netzwerk zu verbinden, das mit ExpressRoute verbunden ist?
 

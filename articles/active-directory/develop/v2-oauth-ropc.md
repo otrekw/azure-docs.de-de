@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309467"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868652"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -50,8 +50,8 @@ Der ROPC-Flow ist eine einzelne Anforderung: Er sendet die Client-ID und die Anm
 > [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, bei dem Sie den Benutzer anmelden möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Dieser Parameter kann nicht auf `common` oder `consumers`, sondern nur auf `organizations` festgelegt werden. |
-| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. | 
+| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `grant_type` | Erforderlich | Muss auf `password` festgelegt sein. |
 | `username` | Erforderlich | Die E-Mail-Adresse des Benutzers. |
 | `password` | Erforderlich | Das Kennwort des Benutzers. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste von [Bereichen](v2-permissions-and-consent.md) oder Berechtigungen, die die App benötigt. In einem interaktiven Flow müssen der Administrator oder der Benutzer diesen Bereichen vorab zustimmen. |
-| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. | 
-| `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). | 
+| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. |
+| `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). |
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 

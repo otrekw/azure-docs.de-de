@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093194"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Tutorial: Azure Active Directory-Integration mit Rackspace SSO
 
@@ -187,7 +187,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Einrichten der Attributzuordnung in der Rackspace-Systemsteuerung
 
-Rackspace verwendet eine **Richtlinie für Attributzuordnung**, um Ihren Benutzern mit einmaliger Anmeldung Rackspace-Rollen und -Gruppen zuzuweisen. Die **Richtlinie für Attributzuordnung** übersetzt Azure AD-SAML-Ansprüche in die für Rackspace erforderlichen Benutzerkonfigurationsfelder. Weitere Informationen finden Sie in der Rackspace-Dokumentation zu den [Grundlagen der Attributzuordnung](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/). Einige Überlegungen:
+Rackspace verwendet eine **Richtlinie für Attributzuordnung**, um Ihren Benutzern mit einmaliger Anmeldung Rackspace-Rollen und -Gruppen zuzuweisen. Die **Richtlinie für Attributzuordnung** übersetzt Azure AD-SAML-Ansprüche in die für Rackspace erforderlichen Benutzerkonfigurationsfelder. Weitere Informationen finden Sie in der Rackspace-Dokumentation zu den [Grundlagen der Attributzuordnung](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/). Einige Überlegungen:
 
 * Wenn Sie mithilfe von Azure AD-Gruppen unterschiedliche Rackspace-Zugriffsebenen zuweisen möchten, müssen Sie den Gruppenanspruch in den Azure-Einstellungen für einmaliges Anmelden für **Rackspace SSO** aktivieren. Die **Richtlinie für Attributzuordnung** wird dann verwendet, um diese Gruppen den gewünschten Rackspace-Rollen und -Gruppen zuzuordnen:
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > Achten Sie darauf, bei der Bearbeitung Ihrer Richtliniendatei einen Texteditor zu verwenden, der die YAML-Syntax überprüft.
 
-Weitere Beispiele finden Sie in der [Rackspace-Dokumentation zu den Grundlagen der Attributzuordnung](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/).
+Weitere Beispiele finden Sie in der [Rackspace-Dokumentation zu den Grundlagen der Attributzuordnung](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/).
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

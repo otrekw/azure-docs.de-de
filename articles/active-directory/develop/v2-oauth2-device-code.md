@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309411"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868481"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
 
-Microsoft Identity Platform unterstützt die [Geräteautorisierungsgenehmigung](https://tools.ietf.org/html/rfc8628), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.  
+Microsoft Identity Platform unterstützt die [Geräteautorisierungsgenehmigung](https://tools.ietf.org/html/rfc8628), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.
 
 In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
-
-> [!NOTE]
-> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure Active Directory. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -43,7 +40,7 @@ Der Client muss zuerst den Authentifizierungsserver auf einen Geräte- und Benut
 > Führen Sie diese Anforderung in Postman aus.
 > [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
@@ -62,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Geräteautorisierungsantwort
 
-Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen Informationen enthält, mit denen sich der Benutzer anmelden kann.  
+Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen Informationen enthält, mit denen sich der Benutzer anmelden kann.
 
 | Parameter | Format | BESCHREIBUNG |
 | ---              | --- | --- |
@@ -80,11 +77,11 @@ Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen
 
 Nach dem Empfang von `user_code` und `verification_uri` zeigt der Client diese für den Benutzer an und weist ihn an, sich unter Verwendung seines Mobiltelefons oder PC-Browsers anzumelden.
 
-Wenn sich der Benutzer mit einem persönlichen Konto (mit „/common“ oder „/consumers“) authentifiziert, wird er aufgefordert, sich erneut anzumelden, um den Authentifizierungsstatus ans Gerät zu übertragen.  Außerdem wird er aufgefordert, seine Zustimmung zu erteilen, um sicherzustellen, dass er die gewährten Berechtigungen kennt.  Dies gilt nicht für Geschäfts-, Schul- oder Unikonten, die für die Authentifizierung verwendet werden. 
+Wenn sich der Benutzer mit einem persönlichen Konto (mit „/common“ oder „/consumers“) authentifiziert, wird er aufgefordert, sich erneut anzumelden, um den Authentifizierungsstatus ans Gerät zu übertragen.  Außerdem wird er aufgefordert, seine Zustimmung zu erteilen, um sicherzustellen, dass er die gewährten Berechtigungen kennt.  Dies gilt nicht für Geschäfts-, Schul- oder Unikonten, die für die Authentifizierung verwendet werden.
 
 Während sich der Benutzer bei dem `verification_uri` authentifiziert, sollte der Client beim `/token`-Endpunkt das angeforderte Token mithilfe des `device_code` abrufen.
 
-``` 
+```HTTP
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Parameter | Erforderlich | BESCHREIBUNG|
 | -------- | -------- | ---------- |
-| `tenant`  | Erforderlich | Derselbe Mandant oder Mandantenalias, der in der ursprünglichen Anforderung verwendet wurde. | 
+| `tenant`  | Erforderlich | Derselbe Mandant oder Mandantenalias, der in der ursprünglichen Anforderung verwendet wurde. |
 | `grant_type` | Erforderlich | Muss gleich `urn:ietf:params:oauth:grant-type:device_code` sein.|
 | `client_id`  | Erforderlich | Muss mit der in der anfänglichen Anforderung verwendeten `client_id` übereinstimmen. |
 | `device_code`| Erforderlich | Der in der Geräteautorisierungsanforderung zurückgegebene `device_code`.  |
 
 ### <a name="expected-errors"></a>Erwartete Fehler
 
-Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, Fehler zu erhalten, bevor der Benutzer die Authentifizierung abgeschlossen hat.  
+Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, Fehler zu erhalten, bevor der Benutzer die Authentifizierung abgeschlossen hat.
 
 | Fehler | BESCHREIBUNG | Clientaktion |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Der Benutzer hat die Authentifizierung nicht abgeschlossen, den Flow aber nicht abgebrochen. | Wiederholen Sie die Anforderung nach mindestens `interval` Sekunden. |
 | `authorization_declined` | Der Endbenutzer hat die Autorisierungsanforderung verweigert.| Beenden Sie das Abrufen, und kehren Sie in einen nicht authentifizierten Zustand zurück.  |
-| `bad_verification_code`| Der an den `device_code`-Endpunkt gesendete `/token` wurde nicht erkannt. | Stellen Sie sicher, dass der Client den richtigen `device_code` in der Anforderung sendet. |
-| `expired_token` | Mindestens `expires_in` Sekunden sind verstrichen, und die Authentifizierung ist mit diesem `device_code` nicht mehr möglich. | Beenden des Abrufens und Wiederherstellen eines nicht authentifizierten Zustands. |   
+| `bad_verification_code`| Der an den `/token`-Endpunkt gesendete `device_code` wurde nicht erkannt. | Stellen Sie sicher, dass der Client den richtigen `device_code` in der Anforderung sendet. |
+| `expired_token` | Mindestens `expires_in` Sekunden sind verstrichen, und die Authentifizierung ist mit diesem `device_code` nicht mehr möglich. | Beenden des Abrufens und Wiederherstellen eines nicht authentifizierten Zustands. |
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 
@@ -135,4 +132,4 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | `id_token`   | JWT | Ausgestellt, wenn der ursprüngliche `scope`-Parameter den `openid`-Bereich enthalten hat.  |
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat.  |
 
-Sie können mit dem Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken abrufen. Verwenden Sie dazu den in der [Dokumentation für den OAuth-Codeflow](v2-oauth2-auth-code-flow.md#refresh-the-access-token) beschriebenen Flow.  
+Sie können mit dem Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken abrufen. Verwenden Sie dazu den in der [Dokumentation für den OAuth-Codeflow](v2-oauth2-auth-code-flow.md#refresh-the-access-token) beschriebenen Flow.

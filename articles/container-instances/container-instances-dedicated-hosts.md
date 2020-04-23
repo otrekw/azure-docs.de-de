@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934146"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025032"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Bereitstellen auf dedizierten Hosts
 
@@ -37,7 +37,7 @@ Die `sku`-Eigenschaft kann einen der folgenden Werte haben:
 ## <a name="modify-your-json-deployment-template"></a>Ändern Ihrer JSON-Bereitstellungsvorlage
 
 Ändern Sie in Ihrer Bereitstellungsvorlage die folgenden Eigenschaften, oder fügen Sie sie hinzu:
-* Legen Sie unter `resources` `apiVersion` auf `2012-12-01` fest.
+* Legen Sie unter `resources` `apiVersion` auf `2019-12-01` fest.
 * Fügen Sie unter den Eigenschaften der Containergruppe eine `sku`-Eigenschaft mit dem Wert `Dedicated` hinzu.
 
 Im Folgenden finden Sie einen Beispielcodeausschnitt für den Ressourcenabschnitt einer Containergruppen-Bereitstellungsvorlage, die die dedizierte SKU verwendet:

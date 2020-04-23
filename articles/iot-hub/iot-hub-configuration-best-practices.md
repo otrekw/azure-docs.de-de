@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden der Gerätekonfiguration für Azure IoT Hub | Microsoft-Dokumentation
 description: Hier erfahren Sie etwas über bewährte Methoden zur Verwendung der automatischen Geräteverwaltung, um wiederkehrende und komplexe Aufgaben im Zusammenhang mit der Verwaltung von IoT-Geräten bedarfsgerecht zu minimieren.
-author: chrisgre
-ms.author: chrisgre
+author: robinsh
+ms.author: robinsh
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a3b70af71c2ce19835ac2ef8fc8ceed79ca5fe1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889530"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024777"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung
 

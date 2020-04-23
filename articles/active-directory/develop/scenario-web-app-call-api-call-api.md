@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881807"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868715"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web-App, die Web-APIs aufruft: Aufrufen einer Web-API
 
@@ -26,7 +26,7 @@ Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufru
 
 Im Anschluss finden Sie einen vereinfachten Code für die Aktion von `HomeController`. Mit diesem wird ein Token für den Aufruf von Microsoft Graph abgerufen. Es wurde Code hinzugefügt, um das Aufrufen von Microsoft Graph als REST-API zu zeigen. Die URL für die Microsoft Graph-API wird in der Datei „appsettings.json“ bereitgestellt und in einer Variablen namens `webOptions` gelesen:
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",

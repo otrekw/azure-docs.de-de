@@ -1,19 +1,18 @@
 ---
 title: Automatische bedarfsgerechte Geräteverwaltung mit Azure IoT Hub | Microsoft-Dokumentation
 description: Verwenden der automatischen Konfigurationen von Azure IoT Hub zum Verwalten mehrerer IoT-Geräte und -Module
-author: ChrisGMsft
-manager: bruz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: robinsh
+ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233262"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025066"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über das Azure-Portal
 

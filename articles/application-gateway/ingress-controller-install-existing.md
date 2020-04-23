@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239433"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869898"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines vorhandenen Application Gateways
 
@@ -117,7 +117,7 @@ Es ist auch möglich, AGIC-Zugriff auf ARM über ein Kubernetes-Geheimnis bereit
 1. Erstellen Sie einen Active Directory-Dienstprinzipal, und codieren Sie ihn als base64. Die base64-Codierung ist erforderlich, damit das JSON-Blob in Kubernetes gespeichert wird.
 
 ```azurecli
-az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
+az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
 2. Fügen Sie der Datei `helm-config.yaml` das base64-codierte JSON-Blob hinzu. Weitere Informationen zu `helm-config.yaml` finden Sie im nächsten Abschnitt.
@@ -184,7 +184,7 @@ In den ersten Schritten installieren wir Tiller von Helm auf Ihrem Kubernetes-Cl
     ## Alternatively you can use Service Principal credentials
     # armAuth:
     #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
     # Specify if the cluster is RBAC enabled or not
@@ -221,7 +221,7 @@ In den ersten Schritten installieren wir Tiller von Helm auf Ihrem Kubernetes-Cl
          --set appgw.subscriptionId=subscription-uuid \
          --set appgw.shared=false \
          --set armAuth.type=servicePrincipal \
-         --set armAuth.secretJSON=$(az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0) \
+         --set armAuth.secretJSON=$(az ad sp create-for-rbac --sdk-auth | base64 -w0) \
          --set rbac.enabled=true \
          --set verbosityLevel=3 \
          --set kubernetes.watchNamespace=default \

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016016"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868076"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimieren der privaten CloudSimple-Cloud für die Installation von Oracle RAC
 
@@ -169,7 +169,7 @@ Gehen Sie folgendermaßen vor, um einen vSphere-Cluster in der privaten Cloud be
 
 vSAN-Richtlinien definieren Fehlertoleranz und Datenträgerstriping für die auf den VM-Datenträgern gespeicherten Daten.  Die erstellte Speicherrichtlinie muss beim Erstellen des virtuellen Computers auf die VM-Datenträger angewandt werden.
 
-1. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten Cloud an.
+1. [Melden Sie sich beim vSphere-Client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) Ihrer privaten Cloud an.
 2. Wählen Sie im Menü oben die Option **Policies and Profiles** (Richtlinien und Profile) aus.
 3. Wählen Sie im Menü auf der linken Seite **VM Storage Policies** (VM-Speicherrichtlinien) und dann **Create a VM storage Policy** (VM-Speicherrichtlinie erstellen) aus.
 4. Geben Sie einen aussagekräftigen Namen für die Richtlinie ein, und klicken Sie auf **NEXT** (Weiter).

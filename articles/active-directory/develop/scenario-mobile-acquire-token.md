@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf967525283f28d5829d80b75e40e263f7eaedef
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882742"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868893"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -26,7 +26,7 @@ Damit Ihre App geschützte Web-APIs aufrufen kann, benötigt sie ein Zugriffstok
 
 ## <a name="define-a-scope"></a>Definieren eines Bereichs
 
-Wenn Sie ein Token anfordern, müssen Sie einen Bereich definieren. Der Gültigkeitsbereich bestimmt, auf welche Daten Ihre App zugreifen kann.  
+Wenn Sie ein Token anfordern, müssen Sie einen Bereich definieren. Der Gültigkeitsbereich bestimmt, auf welche Daten Ihre App zugreifen kann.
 
 Die einfachste Vorgehensweise zum Definieren eines Bereichs besteht darin, den `App ID URI` der Web-API mit dem Bereich `.default` zu kombinieren. Diese Definition informiert Microsoft Identity Platform darüber, dass Ihre App alle im Portal festgelegten Bereiche benötigt.
 
@@ -41,7 +41,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 ### <a name="xamarin"></a>Xamarin
-```csharp 
+```csharp
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -72,13 +72,13 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
             /* No accounts or > 1 account. */
         }
     }
-});    
+});
 
 [...]
 
 // No accounts found. Interactively request a token.
 // TODO: Create an interactive callback to catch successful or failed requests.
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
+sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 ```
 
 #### <a name="ios"></a>iOS
@@ -89,22 +89,22 @@ Versuchen Sie zunächst, ein Token automatisch abzurufen:
 
 NSArray *scopes = @[@"https://graph.microsoft.com/.default"];
 NSString *accountIdentifier = @"my.account.id";
-    
+
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-        
+
     if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
-        // Access token to call the Web API
+
+        // Access token to call the web API
         NSString *accessToken = result.accessToken;
     }
-        
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -113,34 +113,34 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
- 
+
 ```swift
 
 let scopes = ["https://graph.microsoft.com/.default"]
 let accountIdentifier = "my.account.id"
-        
+
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
     if (nsError.domain == MSALErrorDomain &&
         nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
          }
          return
      }
-            
+
     // You'll want to get the account identifier to retrieve and reuse the account
     // for later acquireToken calls
     let accountIdentifier = authResult.account.identifier
-            
-    // Access token to call the Web API
+
+    // Access token to call the web API
     let accessToken = authResult.accessToken
 }
 ```
@@ -149,15 +149,15 @@ Wenn MSAL `MSALErrorInteractionRequired` zurückgibt, versuchen Sie, Token inter
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
-MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:viewController];
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
+    if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
+
         NSString *accessToken = result.accessToken;
     }
 }];
@@ -165,15 +165,15 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
-let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let webviewParameters = MSALWebviewParameters(authPresentationViewController: viewController)
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
+
     guard let authResult = result, error == nil else {
         print(error!.localizedDescription)
         return
     }
-                
+
     // Get access token from result
     let accessToken = authResult.accessToken
 })
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Erforderliche Parameter in MSAL.NET
 
-`AcquireTokenInteractive` weist nur einen obligatorischen Parameter auf: `scopes`. Der `scopes`-Parameter enumeriert Zeichenfolgen , die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs. Navigieren Sie in der Referenz zum Abschnitt „Berechtigungen“. 
+`AcquireTokenInteractive` weist nur einen obligatorischen Parameter auf: `scopes`. Der `scopes`-Parameter enumeriert Zeichenfolgen , die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs. Navigieren Sie in der Referenz zum Abschnitt „Berechtigungen“.
 
 Um beispielsweise die [Kontakte des Benutzers aufzulisten](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), verwenden Sie den Bereich „User.Read“, „Contacts.Read“. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
@@ -215,7 +215,7 @@ Unter Android können Sie beim Erstellen der App mithilfe von `PublicClientAppli
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>Spezifische optionale Parameter in MSAL.NET
 
-In den folgenden Abschnitten werden die optionalen Parameter in MSAL.NET erläutert. 
+In den folgenden Abschnitten werden die optionalen Parameter in MSAL.NET erläutert.
 
 ##### <a name="withprompt"></a>WithPrompt
 
@@ -225,19 +225,19 @@ Der `WithPrompt()`-Parameter steuert die Interaktivität mit dem Benutzer durch 
 
 Die Klasse definiert die folgenden Konstanten:
 
-- `SelectAccount` zwingt den Sicherheitstokendienst (Security Token Service, STS), das Dialogfeld zur Kontoauswahl darzustellen. Das Dialogfeld enthält die Konten, für die der Benutzer über eine Sitzung verfügt. Sie können diese Option verwenden, wenn Sie dem Benutzer die Wahl zwischen verschiedenen Identitäten geben möchten. Diese Option bewirkt, dass MSAL `prompt=select_account` an den Identitätsanbieter sendet. 
-    
+- `SelectAccount` zwingt den Sicherheitstokendienst (Security Token Service, STS), das Dialogfeld zur Kontoauswahl darzustellen. Das Dialogfeld enthält die Konten, für die der Benutzer über eine Sitzung verfügt. Sie können diese Option verwenden, wenn Sie dem Benutzer die Wahl zwischen verschiedenen Identitäten geben möchten. Diese Option bewirkt, dass MSAL `prompt=select_account` an den Identitätsanbieter sendet.
+
     Die Konstante `SelectAccount` stellt den Standardwert dar, und sie bietet in der Praxis die bestmögliche Benutzererfahrung auf der Grundlage der vorhandenen Informationen. Zu den verfügbaren Informationen können etwa das Konto, das Vorhandensein einer Sitzung für den Benutzer usw. zählen. Ändern Sie diesen Standardwert nicht ohne triftigen Grund.
-- `Consent` ermöglicht es Ihnen, die Zustimmung des Benutzers anzufordern, auch wenn die Zustimmung bereits erteilt wurde. In diesem Fall sendet MSAL `prompt=consent` an den Identitätsanbieter. 
+- `Consent` ermöglicht es Ihnen, die Zustimmung des Benutzers anzufordern, auch wenn die Zustimmung bereits erteilt wurde. In diesem Fall sendet MSAL `prompt=consent` an den Identitätsanbieter.
 
     Es kann sinnvoll sein, die `Consent`-Konstante in Anwendungen mit einem starken Schwerpunkt auf der Sicherheit zu verwenden, wenn die Governance der Organisation es erfordert, den Benutzern bei jedem Verwenden der Anwendung ein Zustimmungsdialogfeld anzuzeigen.
-- `ForceLogin` ermöglicht es dem Dienst, den Benutzer zur Eingabe von Anmeldeinformationen aufzufordern, auch wenn keine Eingabeaufforderung erforderlich ist. 
+- `ForceLogin` ermöglicht es dem Dienst, den Benutzer zur Eingabe von Anmeldeinformationen aufzufordern, auch wenn keine Eingabeaufforderung erforderlich ist.
 
     Diese Option kann nützlich sein, wenn beim Tokenerwerb ein Fehler auftritt, und Sie dem Benutzer die erneute Anmeldung ermöglichen wollen. In diesem Fall sendet MSAL `prompt=login` an den Identitätsanbieter. Die Verwendung dieser Option kann in sicherheitsorientierten Anwendungen sinnvoll sein, wenn die Governance der Organisation vorschreibt, dass sich Benutzer beim Zugriff auf bestimmte Teile einer Anwendung stets erneut anmelden müssen.
 - `Never` ist nur für .NET 4.5 und Windows Runtime (WinRT) verfügbar. Mit dieser Konstante ergeht keine Aufforderung an den Benutzer, vielmehr wird versucht, das in der verborgenen eingebetteten Webansicht gespeicherte Cookie zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern mit MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
 
     Wenn bei dieser Option ein Fehler auftritt, löst `AcquireTokenInteractive` eine Ausnahme aus, um Sie zu informieren, dass ein Eingriff an der Benutzeroberfläche erforderlich ist. Dann müssen Sie einen anderen `Prompt`-Parameter verwenden.
-- `NoPrompt` sendet keine Eingabeaufforderung an den Identitätsanbieter. 
+- `NoPrompt` sendet keine Eingabeaufforderung an den Identitätsanbieter.
 
     Diese Option ist nur für Richtlinien für die Profilbearbeitung in Azure Active Directory B2C nützlich. Weitere Informationen finden Sie unter [Spezifische Informationen zu B2C](https://aka.ms/msal-net-b2c-specificities).
 
@@ -245,7 +245,7 @@ Die Klasse definiert die folgenden Konstanten:
 
 Verwenden Sie den `WithExtraScopeToConsent`-Modifizierer in einem erweiterten Szenario, in dem Sie möchten, dass der Benutzer vorab seine Zustimmung zu mehreren Ressourcen erteilt. Sie können diesen Modifizierer verwenden, wenn Sie keine inkrementelle Zustimmung verwenden möchten, die normalerweise mit MSAL.NET oder Microsoft Identity Platform 2.0 verwendet wird. Weitere Informationen finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
-Hier sehen Sie ein Codebeispiel: 
+Hier sehen Sie ein Codebeispiel:
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -261,14 +261,14 @@ Informationen zu den anderen optionalen Parametern für `AcquireTokenInteractive
 
 Die direkte Verwendung des Protokolls zum Abrufen von Token wird nicht empfohlen. Wenn Sie dies tun, werden einige Szenarien, die einmaliges Anmelden (Single Sign-On, SSO), die Geräteverwaltung und den bedingten Zugriff beinhalten, von der App nicht unterstützt.
 
-Wenn Sie das Protokoll verwenden, um Token für mobile Apps abzurufen, machen Sie zwei Anforderungen: 
+Wenn Sie das Protokoll verwenden, um Token für mobile Apps abzurufen, machen Sie zwei Anforderungen:
 
 * Abrufen eine Autorisierungscodes
 * Austausch des Codes gegen ein Token
 
 #### <a name="get-an-authorization-code"></a>Abrufen von Autorisierungscodes
 
-```Text
+```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=<CLIENT_ID>
 &response_type=code
@@ -280,7 +280,7 @@ client_id=<CLIENT_ID>
 
 #### <a name="get-access-and-refresh-the-token"></a>Erhalten des Zugriffs und Aktualisieren des Tokens
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded

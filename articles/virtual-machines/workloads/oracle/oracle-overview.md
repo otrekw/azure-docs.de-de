@@ -3,8 +3,7 @@ title: Oracle-Lösungen in Microsoft Azure | Microsoft-Dokumentation
 description: Lernen Sie Optionen zum Bereitstellen von Oracle-Anwendungen und -Lösungen in Microsoft Azure kennen, einschließlich der vollständigen Ausführung in einer Azure-Infrastruktur oder der Verwendung von cloudübergreifender Konnektivität mit Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
-manager: gwallace
+author: BorisB2015
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: mimckitt
-ms.openlocfilehash: 8c266986ac795be48f3a8439afc5ae4752ff3ed7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263249"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870498"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Übersicht über Oracle-Anwendungen und -Lösungen in Azure
 
@@ -50,7 +49,7 @@ Unternehmensanwendungen führen Sie in Azure unter unterstützten Oracle-Betrieb
 
 * Verwenden Sie [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md), um die Notfallwiederherstellung für Ihre Oracle Linux-VMs in Azure sowie für Ihre lokalen oder physischen Server zu orchestrieren und zu verwalten. 
 
-* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMWare Solution by CloudSimple](https://docs.azure.cloudsimple.com/oracle-rac/) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
+* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMWare Solution by CloudSimple](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="backup-oracle-workloads"></a>Sichern von Oracle-Workloads
 

@@ -2,24 +2,18 @@
 title: Erstellen und Verwalten eines virtuellen Azure-Computers mit Java
 description: Verwenden Sie Java und Azure Resource Manager, um einen virtuellen Computer und alle unterstützenden Ressourcen bereitzustellen.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944496"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870028"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
 

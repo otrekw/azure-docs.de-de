@@ -1,26 +1,19 @@
 ---
 title: Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur
 description: Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung einer Beispielinfrastruktur in Azure.
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038566"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869471"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Windows-VMs
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich Namenskonventionen, Verfügbarkeit, virtuelle Netzwerke und Lastenausgleiche relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
@@ -72,7 +65,7 @@ Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk v
 Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folgenden Einstellungen über das Azure-Portal erstellt:
 
 * Name: AZOS-USE-VN01
-* Standort: East US 2
+* Standort: USA (Ost) 2
 * Adressraum des virtuellen Netzwerks: 10.0.0.0/8
 * Erstes Subnetz:
   * Name: FrontEnd
