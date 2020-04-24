@@ -8,7 +8,7 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs und Lab Services
       href: lab-services-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Einrichten eines Labs
       href: tutorial-create-custom-lab.md
@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: Hinzufügen eines externen Benutzers zu einem Lab
+          href: scripts/add-external-user-to-lab.md
+        - name: Hinzufügen von Marketplace-Images zu einem Lab
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: Erstellen eines benutzerdefinierten Images anhand einer VHD
+          href: scripts/create-custom-image-from-vhd.md
+        - name: Erstellen einer benutzerdefinierten Rolle in einem Lab
+          href: scripts/create-custom-role-in-lab.md
+        - name: Festlegen zulässiger VM-Größen in einem Lab
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: 'Azure PowerShell: Modul „Az.DevTestLabs2“'
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure-Befehlszeilenschnittstelle
       href: samples-cli.md
+      items:
+        - name: Erstellen und Überprüfen der Verfügbarkeit eines virtuellen Computers
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: Starten eines virtuellen Computers
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: Beenden und Löschen eines virtuellen Computers
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: Konzepte
   items:
     - name: DevTest Labs-Konzepte
@@ -44,7 +62,7 @@
           href: devtest-lab-training-lab.md
         - name: Szenarien für die Verwendung von abrufbaren VMs
           href: devtest-lab-use-claim-capabilities.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Konfigurieren eines Labs
       items:

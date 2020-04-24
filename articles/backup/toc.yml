@@ -60,6 +60,8 @@
           href: sql-support-matrix.md
         - name: "Unterstützungsmatrix für SAP\_HANA-Sicherungen"
           href: sap-hana-backup-support-matrix.md
+        - name: Supportmatrix für Sicherungen von Azure-Dateifreigaben
+          href: azure-file-share-support-matrix.md
         - name: Unterstützte VM-SKUs für Azure Policy
           href: backup-azure-policy-supported-skus.md
     - name: Häufig gestellte Fragen (FAQ)
@@ -346,6 +348,8 @@
           href: backup-azure-security-feature.md
         - name: Integrierte Sicherheitskontrollen
           href: backup-security-controls.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Problembehandlung
       items:
         - name: Azure VM

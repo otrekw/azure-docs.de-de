@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Az
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481115"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682644"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
@@ -40,7 +40,7 @@ Weitere Informationen finden Sie unter [Packen einer Anwendung](service-fabric-p
 
 Erstellen Sie dann eine Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie die Vorlage im Service Fabric-Cluster bereit. [Erkunden Sie Beispiele](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
-### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Um eine Anwendung anhand einer Resource Manager-Vorlage bereitzustellen, müssen Sie über ein Speicherkonto verfügen. Das Speicherkonto wird für das Staging des Anwendungsimages verwendet. 
 
@@ -99,7 +99,7 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 | applicationTypeVersion | Die Version des Anwendungstyps         | 1.0.0                                                        | Muss „ApplicationManifest.xml“ entsprechen                 |
 | serviceName            | Der Name des Diensts         | Voting~VotingWeb                                             | Muss im Format „ApplicationName~ServiceType“ vorliegen.            |
 | serviceTypeName        | Der Typname des Diensts                | VotingWeb                                                    | Muss „ServiceManifest.xml“ entsprechen                 |
-| appPackageUrl          | Die Blob Storage-URL der Anwendung     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Die URL des Anwendungspakets in Blob Storage (die Schritte zur Festlegung der URL werden weiter unten in diesem Artikel beschrieben) |
+| appPackageUrl          | Die Blob Storage-URL der Anwendung     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Die URL des Anwendungspakets in Blob Storage (die Schritte zur Festlegung der URL werden weiter unten in diesem Artikel beschrieben) |
 
 ```json
 {

@@ -232,7 +232,7 @@
           items:
             - name: Erstellen einer Vorschlagsfunktion
               href: index-add-suggesters.md
-            - name: Hinzufügen von Vorschlägen oder AutoVervollständigen
+            - name: Hinzufügen von AutoVervollständigen und Vorschlägen
               href: search-autocomplete-tutorial.md
         - name: Abfragen in Power Apps
           href: search-howto-powerapps.md
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Grundlegendes zu Sammlungsfiltern
           href: search-query-understand-collection-filters.md
-        - name: Beispiel von Facets mit mehreren Ebenen
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: Filtern nach Sprache
+          href: search-filters-language.md
     - name: Ergebnisse
       items:
         - name: Arbeiten mit Ergebnissen
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Demo zu JFK-Dateien
           href: 'https://aka.ms/jfkfiles'
-        - name: Demo zu NYC-Aufträgen
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Durchsuchen von Anwendungsfällen
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: Training
       items:
         - name: Einführung (Microsoft Learn)

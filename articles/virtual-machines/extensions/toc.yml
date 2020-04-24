@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Azure Disk Encryption
       items:
@@ -125,3 +125,5 @@
       href: export-templates.md
     - name: Problembehandlung
       href: troubleshoot.md
+    - name: "Probleme mit Python\_3-fähigen Linux-Systemen"
+      href: issues-using-vm-extensions-python-3.md

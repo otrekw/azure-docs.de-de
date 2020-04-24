@@ -131,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: Verwenden von SSH-Tunneln
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: Verwenden von SCP mit HDInsight
+              href: ./use-scp.md
             - name: Beschränken des Zugriffs auf Daten
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: Autorisieren von Benutzern für Apache Ambari-Ansichten
@@ -225,6 +227,8 @@
           items:
             - name: Problembehandlung für Skriptaktionen
               href: ./troubleshoot-script-action.md
+            - name: Fehler bei der Ressourcenerstellung
+              href: ./troubleshoot-resource-creation-fails.md
     - name: Verweis
       items:
         - name: Azure PowerShell

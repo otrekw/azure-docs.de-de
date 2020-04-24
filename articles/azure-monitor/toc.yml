@@ -1199,6 +1199,8 @@
           href: platform/diagnostic-logs-schema.md
         - name: Aktivitätsprotokollschema
           href: platform/activity-log-schema.md
+    - name: Tabellenverweis für Azure Monitor-Protokolle
+      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: 'Azure CLI: Application Insights (Vorschau)'
