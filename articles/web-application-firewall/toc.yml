@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: "Verknüpfen einer Richtlinie mit einer vorhandenen Application\_Gateway-Instanz"
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: Diagnoseprotokolle
+        - name: Ressourcenprotokolle
           href: ./ag/web-application-firewall-logs.md
         - name: Behandeln von Problemen mit der WAF
           href: ./ag/web-application-firewall-troubleshoot.md

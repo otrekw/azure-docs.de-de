@@ -187,7 +187,7 @@
           href: service-bus-metrics-azure-monitor.md
         - name: Service Bus-Verwaltungsbibliotheken
           href: service-bus-management-libraries.md
-        - name: Diagnoseprotokolle
+        - name: Ressourcenprotokolle
           href: service-bus-diagnostic-logs.md
         - name: Anhalten und Reaktivieren von Messagingentitäten
           href: entity-suspend.md

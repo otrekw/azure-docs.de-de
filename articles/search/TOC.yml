@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: Abfragen in Power Apps
+      href: search-howto-powerapps.md
 - name: Beispiele
   items:
     - name: 'Beispiele für C#'
@@ -234,8 +236,6 @@
               href: index-add-suggesters.md
             - name: Hinzufügen von AutoVervollständigen und Vorschlägen
               href: search-autocomplete-tutorial.md
-        - name: Abfragen in Power Apps
-          href: search-howto-powerapps.md
         - name: Syntaxverweis
           items:
             - name: Einfache Abfragesyntax
