@@ -7,14 +7,8 @@
       href: Overview.md
 - name: Schnellstarts
   items:
-    - name: Verwenden des Client-SDK
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK
-          href: QuickStarts/go-sdk.md
+    - name: Verwenden der Clientbibliothek
+      href: Quickstarts/client-libraries.md
     - name: Verwenden der REST-API
       items:
         - name: Gesichtserkennung in einem Bild
@@ -37,7 +31,7 @@
               href: QuickStarts/Python.md
             - name: Ruby
               href: QuickStarts/Ruby.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden des Client-SDK
       items:
@@ -51,7 +45,7 @@
       href: concepts/face-detection.md
     - name: Gesichtserkennung
       href: concepts/face-recognition.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erkennen von Gesichtern
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
