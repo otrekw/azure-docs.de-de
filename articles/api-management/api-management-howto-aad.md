@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473539"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868395"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -38,7 +38,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 3. Geben Sie im Suchfeld **api** ein.
 4. Wählen Sie **API Management-Dienste** aus.
 5. Wählen Sie Ihre API Management-Dienstinstanz aus.
-6. Wählen Sie unter **Sicherheit** die Option **Identitäten** aus.
+6. Wählen Sie unter **Entwicklerportal** die Option **Identitäten** aus.
 7. Wählen Sie oben **+ Hinzufügen** aus.
 
     Auf der rechten Seite wird der Bereich **Identitätsanbieter hinzufügen** geöffnet.
@@ -105,11 +105,11 @@ Benutzer aus der konfigurierten Azure AD-Instanz können sich jetzt beim Entwick
 
 ## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
 
-Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“:  OAuth** bei AAD anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
+Im Entwicklerportal ist die Anmeldung bei AAD über das Widget **Schaltfläche „Anmelden“: OAuth** möglich. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 
 Obwohl ein neues Konto automatisch erstellt wird, wenn sich ein neuer Benutzer bei AAD anmeldet, können Sie das gleiche Widget auf der Anmeldeseite hinzufügen.
 
-Das Widget **Registrierungsformular:  OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
+Das Widget **Registrierungsformular: OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
 
 > [!IMPORTANT]
 > Sie müssen [das Portal](api-management-howto-developer-portal-customize.md#publish) erneut veröffentlichen, damit die AAD-Änderungen wirksam werden.

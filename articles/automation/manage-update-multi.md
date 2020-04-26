@@ -5,31 +5,28 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335774"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676445"
 ---
-# <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
+# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Verwalten von Updates für mehrere virtuelle Azure-Computer
 
-Sie können die Updateverwaltungslösung verwenden, um Updates und Patches für Ihre virtuellen Windows- und Linux-Computer zu verwalten. Über Ihr [Azure Automation](automation-offering-get-started.md)-Konto können Sie:
+Sie können die Azure Automation-Updateverwaltung verwenden, um Updates und Patches für Ihre Windows- und Linux-Computer zu verwalten. Über Ihr [Azure Automation](automation-offering-get-started.md)-Konto können Sie:
 
 - Virtuelle Computer integrieren
 - Den Status verfügbarer Updates bewerten
 - Die Installation erforderlicher Updates planen
-- Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf alle virtuellen Computer angewendet wurden, für die die Updateverwaltung aktiviert ist
+- Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf alle virtuellen Computer angewendet wurden, für die die Updateverwaltung aktiviert ist.
+
+Informationen zu den Systemanforderungen für die Updateverwaltung finden Sie unter [Clientanforderungen für die Updateverwaltung](automation-update-management.md#clients).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
-
-- Einen virtuellen Computer bzw. einen Computer, auf dem eines der unterstützten Betriebssysteme installiert ist.
-
-- Zugriff auf ein Updaterepository für virtuelle Linux-Computer, die in die Lösung integriert sind.
-
-Informationen zu den Systemanforderungen für die Updateverwaltung finden Sie unter [Clientanforderungen für die Updateverwaltung](automation-update-management.md#clients).
+* Einen virtuellen Computer bzw. einen Computer, auf dem eines der unterstützten Betriebssysteme installiert ist.
+* Zugriff auf ein Updaterepository für virtuelle Linux-Computer, die in die Updateverwaltung integriert sind.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -53,25 +50,23 @@ Der Log Analytics-Agent für Windows und Linux muss auf den VMS installiert werd
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Anzeigen von Computern, die an Ihr Automation-Konto angefügt sind
 
-Nachdem Sie die Updateverwaltung für Ihre Computer aktiviert haben, können Sie Computerinformationen anzeigen, indem Sie **Computer** auswählen. Folgende Informationen werden für Ihre Computer angezeigt: *Computername*, *Konformitätsstatus*, *Umgebung*, *Betriebssystemtyp*, *installierte kritische Updates und Sicherheitsupdates*, *andere installierte Updates* und *Bereitschaft des Update-Agents*.
+Nachdem Sie die Updateverwaltung für Ihre Computer aktiviert haben, können Sie Computerinformationen anzeigen, indem Sie **Computer** auswählen. Folgende Informationen werden für Ihre Computer angezeigt: Computername, Compliancestatus, Umgebung, Betriebssystemtyp, installierte kritische und Sicherheitsupdates, andere installierte Updates sowie Bereitschaft des Update-Agents.
 
   ![Registerkarte „Computer“](./media/manage-update-multi/update-computers-tab.png)
 
-Für Computer, für die die Updateverwaltung erst vor Kurzem aktiviert wurde, ist ggf. noch keine Bewertung vorhanden. Der Konformitätsstatus dieser Computer lautet **Nicht bewertet**. Es folgt eine Liste mit möglichen Werten für den Konformitätsstatus:
+Für Computer, für die die Updateverwaltung erst vor Kurzem aktiviert wurde, ist ggf. noch keine Bewertung vorhanden. Der Compliancestatus dieser Computer lautet `Not assessed`. Es folgt eine Liste mit möglichen Werten für den Konformitätsstatus:
 
-- **Konform**: Computer, für die keine kritischen Updates oder Sicherheitsupdates fehlen.
+- `Compliant`: Computer, für die keine kritischen Updates oder Sicherheitsupdates fehlen.
+- `Non-compliant`: Computer, für die mindestens ein kritisches Update oder Sicherheitsupdate fehlt.
+- `Not assessed`: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen. Bei Linux-Computern liegt der erwartete Zeitrahmen in der letzten Stunde. Bei Windows-Computer liegt der erwartete Zeitrahmen in den letzten 12 Stunden.
 
-- **Nicht konform**: Computer, für die mindestens ein kritisches Update oder Sicherheitsupdate fehlt.
-
-- **Nicht bewertet**: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen. Bei Linux-Computern liegt der erwartete Zeitrahmen in der letzten Stunde. Bei Windows-Computer liegt der erwartete Zeitrahmen in den letzten 12 Stunden.
-
-Klicken Sie zum Anzeigen des Agent-Status auf den Link in der Spalte **Bereitschaft des Update-Agents**. Bei Auswahl dieser Option wird der Bereich **Hybrid Worker** geöffnet und der Status des Hybrid Worker angezeigt. In der folgenden Abbildung wird ein Beispiel für einen Agent gezeigt, der über einen längeren Zeitraum nicht mit der Updateverwaltung verbunden war:
+Klicken Sie zum Anzeigen des Agent-Status auf den Link in der Spalte **Bereitschaft des Update-Agents**. Bei Auswahl dieser Option wird der Bereich „Hybrid Worker“ geöffnet und der Status des Hybrid Workers angezeigt. In der folgenden Abbildung wird ein Beispiel für einen Agent gezeigt, der über einen längeren Zeitraum nicht mit der Updateverwaltung verbunden war:
 
 ![Registerkarte „Computer“](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Anzeigen einer Updatebewertung
 
-Sobald die Updateverwaltung aktiviert ist, wird der Bereich **Updateverwaltung** angezeigt. Auf der Registerkarte **Fehlende Updates** wird eine Liste der fehlenden Updates angezeigt.
+Sobald die Updateverwaltung aktiviert ist, wird der Bereich „Updateverwaltung“ angezeigt. Auf der Registerkarte **Fehlende Updates** wird eine Liste der fehlenden Updates angezeigt.
 
 ## <a name="collect-data"></a>Sammeln von Daten
 
@@ -132,7 +127,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
   - Tools
   - Aktualisierungen
 
-- **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Planen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment).
+- **Einzuschließende/auszuschließende Updates**: Öffnet die Seite „Einschließen/ausschließen“. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Planen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
 > [!NOTE]
 > Es ist wichtig zu wissen, dass Ausschlüsse eine höhere Priorität als Einschlüsse haben. Wenn Sie beispielsweise die Ausschlussregel `*` definieren, werden keine Patches oder Pakete installiert, da sie alle ausgeschlossen wurden. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn auf Linux-Computern ein Paket eingeschlossen wird, das jedoch eine Abhängigkeit zu einem ausgeschlossenen Paket aufweist, wird das Paket nicht installiert.
@@ -176,11 +171,11 @@ Wenn bei einem oder mehreren Updates in der Bereitstellung ein Fehler auftritt, 
 
 Klicken Sie auf die abgeschlossene Bereitstellung, um das Dashboard für eine Updatebereitstellung anzuzeigen.
 
-Im Bereich **Updateergebnisse** werden die Gesamtzahl von Updates und die Ergebnisse der Bereitstellung für den virtuellen Computer angezeigt. Die Tabelle rechts enthält eine detaillierte Aufschlüsselung der einzelnen Updates und die Installationsergebnisse. Bei den Installationsergebnissen kann es sich um einen der folgenden Werte handeln:
+Im Bereich „Updateergebnisse“ werden die Gesamtzahl von Updates und die Ergebnisse der Bereitstellung für den virtuellen Computer angezeigt. Die Tabelle rechts enthält eine detaillierte Aufschlüsselung der einzelnen Updates und die Installationsergebnisse. Bei den Installationsergebnissen kann es sich um einen der folgenden Werte handeln:
 
-- **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
-- **Erfolg:** Das Update war erfolgreich.
-- **Fehler:** Beim Update ist ein Fehler aufgetreten.
+- `Not attempted`: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
+- `Succeeded`: Das Update war erfolgreich.
+- `Failed`: Beim Update ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 

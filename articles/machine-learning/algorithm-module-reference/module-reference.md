@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399060"
+ms.locfileid: "81458197"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Algorithmen und Module – Referenz für Azure Machine Learning-Designer (Vorschau)
 
@@ -59,6 +59,10 @@ Hilfe beim Auswählen von Algorithmen finden Sie unter:
 | Empfehlung | Erstellen Sie Empfehlungsmodelle. | [Evaluate Recommender](evaluate-recommender.md) <br/> [Score SVD Recommender](score-svd-recommender.md) <br/> [Train SVD Recommender](train-SVD-recommender.md) |
 | Erkennung von Anomalien | Erstellen Sie Modelle zur Erkennung von Anomalien. | [PCA-basierte Anomalieerkennung](pca-based-anomaly-detection.md) <br/> [Train Anomaly Detection Model](train-anomaly-detection-model.md) (Anomalieerkennungsmodell trainieren) |
 
+
+## <a name="web-service"></a>Webdienst
+
+Erfahren Sie mehr über die [Webdienstmodule](web-service-input-output.md), die für Echtzeitrückschlüsse im Azure Machine Learning-Designer erforderlich sind.
 
 ## <a name="error-messages"></a>Fehlermeldungen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Einrichten von Continuous Integration/Continuous Deployment mithilfe von Azure DevOps mit Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438442"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685637"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Verwenden von CI/CD mit Azure Dev Spaces
 
@@ -131,7 +131,7 @@ Jetzt beginnt ein automatisierter Releaseprozess und stellt die Diagramme *myweb
 Das Release ist erfolgt, wenn alle Aufgaben abgeschlossen sind.
 
 > [!TIP]
-> Wenn Ihr Release mit einer Fehlermeldung wie *FEHLER BEIM UPGRADE: Timeout beim Warten auf die Bedingung* fehlschlägt, versuchen Sie, die Pods in Ihrem Cluster [ mit dem Kubernetes-Dashboard](../../aks/kubernetes-dashboard.md) zu überprüfen. Wenn Sie feststellen, dass die Pods nicht mit Fehlermeldungen wie *Fehler beim Pullen von Image "azdsexample.azurecr.io/mywebapi:122": RPC-Fehler: code = Unbekannt desc = Fehlerantwort von Daemon: Abrufen von https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: nicht autorisiert: Authentifizierung erforderlich* beginnen können, kann es daran liegen, dass Ihr Cluster nicht die Berechtigung erhalten hat, einen Pull aus Ihrer Azure Container Registry auszuführen. Vergewissern Sie sich, dass Sie die Voraussetzung [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../aks/cluster-container-registry-integration.md) abgeschlossen haben.
+> Wenn Ihr Release mit einer Fehlermeldung wie *FEHLER BEIM UPGRADE: Timeout beim Warten auf die Bedingung* fehlschlägt, versuchen Sie, die Pods in Ihrem Cluster [ mit dem Kubernetes-Dashboard](../../aks/kubernetes-dashboard.md) zu überprüfen. Wenn Sie feststellen, dass die Pods nicht mit Fehlermeldungen wie *Fehler beim Pullen von Image "azdsexample.azurecr.io/mywebapi:122": RPC-Fehler: code = Unbekannt desc = Fehlerantwort von Daemon: Abrufen von \//azdsexample.azurecr.io/v2/mywebapi/manifests/122: nicht autorisiert: Authentifizierung erforderlich* beginnen können, kann es daran liegen, dass Ihr Cluster nicht die Berechtigung erhalten hat, einen Pull aus Ihrer Azure Container Registry auszuführen. Vergewissern Sie sich, dass Sie die Voraussetzung [Autorisieren des AKS-Clusters zum Ausführen eines Pulls von Azure Container Registry](../../aks/cluster-container-registry-integration.md) abgeschlossen haben.
 
 Sie verfügen jetzt über eine vollständig automatisierte CI/CD-Pipeline für Ihre GitHub-Fork der Dev Spaces-Beispielanwendungen. Jedes Mal, wenn Sie einen Commit und Push für Code ausführen, erstellt die Buildpipeline die Images *mywebapi* und *webfrontend* und verschiebt sie in Ihre benutzerdefinierte ACR-Instanz. Dann stellt die Releasepipeline das Helm-Diagramm für jede Anwendung im Bereich _dev_ auf Ihrem Dev Spaces-fähigen Cluster bereit.
 

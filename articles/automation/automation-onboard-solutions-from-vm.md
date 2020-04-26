@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f33f829b6cb86cb01c848e5fc48e1618a3e00a2c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299524"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537031"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -24,34 +24,34 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Aktivieren Sie zuerst eine oder alle drei der Lösungen auf Ihrer VM:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich die Option **Virtuelle Computer** aus, oder suchen Sie auf der **Startseite** nach **Virtuelle Computer**, und wählen Sie diese Option aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Virtuelle Computer** aus, oder suchen Sie auf der Startseite nach **Virtuelle Computer**, und wählen Sie die entsprechende Option aus.
 2. Wählen Sie die VM aus, für die Sie eine Lösung aktivieren möchten.
-3. Wählen Sie auf der Seite der VM unter **Vorgänge** eine der Optionen **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Beim Onboarding einer Lösung von einer VM aus benötigen Sie die Berechtigung `Microsoft.OperationalInsights/workspaces/read`, um zu ermitteln, ob die VM in einen Arbeitsbereich integriert ist. Weitere Informationen zu den weiteren erforderlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Onboarding von Computern](automation-role-based-access-control.md#onboarding).
+3. Wählen Sie auf der Seite der VM unter **Vorgänge** eine der Optionen **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Beim Onboarding einer Lösung von einer VM aus benötigen Sie die Berechtigung `Microsoft.OperationalInsights/workspaces/read`, um zu ermitteln, ob die VM in einen Arbeitsbereich integriert ist. Weitere Informationen zu den weiteren erforderlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Onboarding von Computern](automation-role-based-access-control.md#onboarding-permissions). Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
 
-Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
-
-Wählen Sie den Azure Log Analytics-Arbeitsbereich sowie das Automation-Konto und dann **Aktivieren** aus, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
+4. Wählen Sie den Azure Log Analytics-Arbeitsbereich sowie das Automation-Konto aus, und klicken Sie dann auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
 ![Integrieren der Updateverwaltungslösung](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die Dropdownlisten für Log Analytics-Arbeitsbereich und Automation-Konto sind deaktiviert, da diese Lösungen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden wie die zuvor aktivierte Lösung.
+5. Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die Dropdownlisten für Log Analytics-Arbeitsbereich und Automation-Konto sind deaktiviert, da diese Lösungen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden wie die zuvor aktivierte Lösung.
 
 > [!NOTE]
-> **Änderungsnachverfolgung** und **Bestand** verwenden dieselbe Lösung. Wenn eine dieser Lösungen aktiviert ist, ist die andere auch aktiviert.
+> „Änderungsnachverfolgung“ und „Bestand“ verwenden dieselbe Lösung. Wenn eine dieser Lösungen aktiviert ist, ist die andere auch aktiviert.
 
 ## <a name="scope-configuration"></a>Bereichskonfiguration
 
-Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. Wählen Sie in Ihrem Automation-Konto unter **Zugehörige Ressourcen** die Option **Arbeitsbereich** aus, um auf die Bereichskonfigurationen zuzugreifen. Wählen Sie im Arbeitsbereich unter **Arbeitsbereichsdatenquellen** die Option **Bereichskonfigurationen** aus.
+Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. So greifen Sie auf die Bereichskonfigurationen zu
 
-Falls der ausgewählte Arbeitsbereich nicht die Lösungen „Updateverwaltung“ und „Änderungsnachverfolgung“ enthält, werden die folgenden Bereichskonfigurationen erstellt:
+1. Wählen Sie in Ihrem Automation-Konto unter **Verwandte Ressourcen** die Option **Arbeitsbereich** aus. 
+2. Wählen Sie im Arbeitsbereich unter **Arbeitsbereichsdatenquellen** die Option **Bereichskonfigurationen** aus.
+3. Falls der ausgewählte Arbeitsbereich nicht die Lösungen „Updateverwaltung“ und „Änderungsnachverfolgung“ enthält, werden die folgenden Bereichskonfigurationen erstellt:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+    * `MicrosoftDefaultScopeConfig-ChangeTracking`
+    * `MicrosoftDefaultScopeConfig-Updates`
 
-* **MicrosoftDefaultScopeConfig-Updates**
+    Verfügt der ausgewählte Arbeitsbereich bereits über die Lösung, wird die Lösung nicht erneut bereitgestellt, und die Bereichskonfiguration wird nicht hinzugefügt.
 
-Verfügt der ausgewählte Arbeitsbereich bereits über die Lösung, wird die Lösung nicht erneut bereitgestellt, und die Bereichskonfiguration wird nicht hinzugefügt.
-
-Wählen Sie die Auslassungspunkte ( **...** ) bei einer Konfiguration und dann **Bearbeiten** aus. Wählen Sie im Bereich **Bereichskonfiguration bearbeiten** die Option **Computergruppen auswählen** aus. Im Bereich **Computergruppen** werden die gespeicherten Suchvorgänge angezeigt, die zum Erstellen der Bereichskonfiguration verwendet werden.
+4. Wählen Sie die Auslassungspunkte ( **...** ) bei einer der Konfigurationen aus, und klicken Sie dann auf **Bearbeiten**. 
+5. Wählen Sie im Bereich **Bereichskonfiguration bearbeiten** die Option **Computergruppen auswählen** aus. Im Bereich **Computergruppen** werden die gespeicherten Suchvorgänge angezeigt, die zum Erstellen der Bereichskonfiguration verwendet werden.
 
 ## <a name="saved-searches"></a>Gespeicherte Suchvorgänge
 
@@ -83,7 +83,7 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 > [!NOTE]
 > Einige Lösungen – einschließlich früherer Versionen der Azure SQL-Überwachungslösung – haben möglicherweise Automatisierungsressourcen erstellt und müssen möglicherweise vor dem Aufheben der Verknüpfung des Arbeitsbereichs entfernt werden.
 
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
 2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
@@ -112,7 +112,7 @@ Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in I
 So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 
 * Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-* Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Entfernen Sie den [Log Analytics-Agent für Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

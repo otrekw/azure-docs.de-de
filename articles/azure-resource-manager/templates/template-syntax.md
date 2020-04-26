@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459989"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687869"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -293,7 +293,7 @@ Es gibt mehrere Möglichkeiten, um Kommentare und Metadaten in Ihrer Vorlage hin
 Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht den Vorlagen-Editor des Portals verwenden, um Vorlagen mit Inlinekommentaren zu bearbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
 
 > [!NOTE]
-> Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
+> Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI, Version 2.3.0 oder niedriger, bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
 
 ```json
 {
@@ -404,7 +404,7 @@ Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beis
   ],
 ```
 
-Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
+Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI, Version 2.3.0oder niedriger, bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

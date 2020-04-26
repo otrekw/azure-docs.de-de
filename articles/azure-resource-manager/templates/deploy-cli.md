@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282646"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685704"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI
 
@@ -168,7 +168,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Verarbeiten des erweiterten JSON-Formats
 
-Zum Bereitstellen einer Vorlage mit mehrzeiligen Zeichenfolgen oder Kommentaren müssen Sie den Switch `--handle-extended-json-format` verwenden.  Beispiel:
+Zum Bereitstellen einer Vorlage mit mehrzeiligen Zeichenfolgen oder Kommentaren mithilfe von Azure CLI, Version 2.3.0 oder niedriger, müssen Sie den Switch `--handle-extended-json-format` verwenden.  Beispiel:
 
 ```json
 {

@@ -3,12 +3,12 @@ title: Festlegen der Bereitstellungsreihenfolge für Ressourcen
 description: Beschreibt, wie während der Bereitstellung festlegt wird, dass eine Ressource von einer anderen Ressource abhängt, um sicherzustellen, dass die Ressourcen in der richtigen Reihenfolge bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153283"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535467"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen
 
@@ -18,7 +18,7 @@ Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stel
 
 ## <a name="dependson"></a>dependsOn
 
-Innerhalb Ihrer Vorlage bietet das „dependsOn“-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Der Wert ist eine durch Trennzeichen getrennte Liste mit Ressourcennamen. Die Liste kann Ressourcen mit [bedingter Bereitstellung](conditional-resource-deployment.md) enthalten. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
+Innerhalb Ihrer Vorlage bietet das „dependsOn“-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Sein Wert ist ein JSON-Array von Zeichenfolgen, von denen jede ein Ressourcenname ist. Das Array kann Ressourcen mit [bedingter Bereitstellung](conditional-resource-deployment.md) enthalten. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
 Das folgende Beispiel zeigt eine VM-Skalierungsgruppe, die abhängig von einem Load Balancer, einem virtuellen Netzwerk und einer Schleife ist, die mehrere Speicherkonten erstellt. Diese anderen Ressourcen werden im folgenden Beispiel nicht gezeigt, müssen jedoch anderswo in der Vorlage vorhanden sein.
 

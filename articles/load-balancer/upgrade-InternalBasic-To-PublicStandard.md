@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659984"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770404"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgraden einer internen Azure Load Balancer-Instanz: Ausgehende Verbindung erforderlich
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.
@@ -21,8 +21,7 @@ Ein Upgrade umfasst vier Phasen:
 
 1. Migrieren der Konfiguration zur öffentlichen Load Balancer Standard-Instanz
 2. Hinzufügen virtueller Computer zu Back-End-Pools der öffentlichen Load Balancer Standard-Instanz
-3. Erstellen einer Ausgangsregel auf dem Load Balancer für ausgehende Verbindungen
-4. Einrichten von NSG-Regeln für Subnetze/VMs, die keine Verbindung mit dem Internet erhalten sollten
+3. Einrichten von NSG-Regeln für Subnetze/VMs, die keine Verbindung mit dem Internet erhalten sollten
 
 Dieser Artikel behandelt die Migration einer Konfiguration. Die Vorgehensweise zu Hinzufügen virtueller Computer zu Back-End-Pools kann abhängig von Ihrer spezifischen Umgebung variieren. Einige generelle Empfehlungen dazu finden Sie jedoch [hier](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -32,6 +31,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 * Erstellen einer öffentlichen Load Balancer-Instanz mit Standard-SKU in der angegebenen Ressourcengruppe und am angegebenen Standort
 * Nahtloses Kopieren der Konfigurationen der internen Load Balancer-Instanz mit Basic-SKU in die neu erstellte öffentliche Load Balancer Standard-Instanz
+* Erstellt eine Ausgangsregel, die ausgehende Konnektivität ermöglicht.
 
 ### <a name="caveatslimitations"></a>Vorbehalte/Einschränkungen
 
@@ -42,7 +42,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
-Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0) herunter.
+Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0) herunter.
 ## <a name="use-the-script"></a>Verwenden des Skripts
 
 Je nach dem, wie Ihre lokale PowerShell-Umgebung eingerichtet und eingestellt ist, gibt es zwei Optionen für Sie:

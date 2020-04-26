@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137462"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641363"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -55,9 +55,7 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) als globaler Administrator an.
 
-1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-
-   ![Auswählen von Azure Active Directory (Screenshot)](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. Öffnen Sie **Azure Active Directory**.
 
 1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
 

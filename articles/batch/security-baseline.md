@@ -2,24 +2,23 @@
 title: Azure-Sicherheitsbaseline für Batch
 description: Azure-Sicherheitsbaseline für Batch
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472927"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756620"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-Sicherheitsbaseline für Batch
 
 Die Azure-Sicherheitsbaseline für Batch enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diese Dienste wird aus [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen darüber bietet, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden sichern können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
 Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
@@ -30,7 +29,6 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
 
 **Leitfaden**: Bereitstellen von Azure Batch-Pools im virtuellen Netzwerk. Um die sichere Kommunikation zwischen Computeknoten und VMs oder lokalen Netzwerken zu ermöglichen, können Sie den Pool in einem Subnetz eines virtuellen Azure-Netzwerks bereitstellen. Durch die Bereitstellung Ihres Pools innerhalb eines virtuellen Netzwerks erhalten Sie außerdem die Kontrolle über die Netzwerksicherheitsgruppe (NSG), die zur Sicherung der Netzwerkschnittstellen (NIC) der einzelnen Knoten sowie des Subnetzes verwendet wird. Konfigurieren Sie die NSG so, dass Datenverkehr von nur vertrauenswürdigen IP-Adressen/Speicherorten im Internet zugelassen wird.
-
 
 So erstellen Sie einen Azure Batch-Pool in einem virtuellen Netzwerk:
 
@@ -44,16 +42,13 @@ https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 **Leitfaden**: Verwenden Sie Azure Security Center, und setzen Sie die Netzwerkschutzempfehlungen im Zusammenhang mit dem virtuellen Netzwerk bzw. der Netzwerksicherheitsgruppe (NSG) um, das oder die Ihrem Batch-Pool zugeordnet ist. Aktivieren Sie die Flussprotokolle für die NSG, die zum Schutz Ihres Batch-Pools verwendet wird, und senden Sie Protokolle an ein Azure Storage-Konto für die Überwachung des Datenverkehrs. Sie können auch NSG-Flussprotokolle an einen Azure Log Analytics-Arbeitsbereich senden und Azure Traffic Analytics verwenden, um Einblicke in den Datenverkehrsfluss in Ihrer Azure-Cloud bereitzustellen. Einige Vorteile von Azure Traffic Analytics sind die Möglichkeit, die Netzwerkaktivität zu visualisieren und Hotspots zu erkennen, Sicherheitsbedrohungen zu erkennen, Datenverkehrsflussmuster zu verstehen und Netzwerkfehlkonfigurationen zu ermitteln.
 
-
 Aktivieren der NSG-Flussprotokolle:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-
 So aktivieren Sie Traffic Analytics:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
-
 
 Grundlegendes zu der von Azure Security Center bereitgestellten Netzwerksicherheit:
 
@@ -65,7 +60,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3: Schützen kritischer Webanwendungen
 
-**Leitfaden**: Nicht zutreffend. Benchmark ist für Webanwendungen gedacht, die in Azure App Service oder in IaaS-Instanzen ausgeführt werden.
+**Leitfaden**:  Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -75,11 +70,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Leitfaden**: Aktivieren Sie den Azure DDoS-Standardschutz (Distributed Denial-of-Service) im virtuellen Netzwerk, der Ihren Azure Batch-Pool vor DDoS-Angriffen schützt. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-
 Konfigurieren von DDoS-Schutz:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Grundlegendes zu integrierten Informationen zu Bedrohungen in Azure Security Center:
 
@@ -93,7 +86,6 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 **Leitfaden**: Aktivieren Sie die Flussprotokolle für die Netzwerksicherheitsgruppe (NSG), die zum Schutz Ihres Azure Batch-Pools verwendet wird, und senden Sie Protokolle an ein Azure Storage-Konto für die Überwachung des Datenverkehrs.
 
-
 Aktivieren der NSG-Flussprotokolle:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
@@ -106,22 +98,17 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Leitfaden**: Wenn dies für Kompatibilitätszwecke erforderlich ist, wählen Sie ein virtuelles Netzwerkgerät aus Azure Marketplace aus, das Angriffserkennungssysteme (IDS) und IPS-Funktionen (Eindringschutzsysteme) mit Nutzlastinspektionsfunktionen unterstützt.
 
-
 Wenn Angriffserkennung und/oder -verhinderung auf der Grundlage der Nutzlastüberprüfung keine Anforderung ist, kann Azure Firewall mit Threat Intelligence verwendet werden. Das Filtern auf Basis von Threat Intelligence mit Azure Firewall kann vor Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnen und diesen verweigern. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed.
 
-
 Stellen Sie Azure Firewall mit einer öffentlichen IP-Adresse im gleichen virtuellen Netzwerk wie Ihre Azure Batch Pool-Knoten bereit. Konfigurieren Sie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) zwischen vertrauenswürdigen Speicherorten im Internet und den privaten IP-Adressen der einzelnen Poolknoten. Konfigurieren Sie in Azure Firewall unter Threat Intelligence „Warnen und verweigern“, um zu warnen und den Datenverkehr an bzw. von bekannten schädlichen IP-Adressen und Domänen zu blockieren. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Es sind nur Datensätze mit der höchsten Genauigkeit enthalten. 
-
 
 So erstellen Sie einen Azure Batch-Pool in einem virtuellen Netzwerk:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
-
 Bereitstellen von Azure Firewall:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
-
 
 Azure Marketplace:
 
@@ -143,7 +130,6 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **Leitfaden**: Verwenden Sie Virtual Network-Diensttags, um Netzwerkzugriffssteuerungen in Netzwerksicherheitsgruppen oder Azure Firewalls zu definieren, die Ihren Azure Batch-Pools zugeordnet sind. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. „ApiManagement“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-
 Grundlegendes zu Diensttags und Verwenden von Diensttags:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
@@ -155,8 +141,6 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihren Azure Batch-Pools zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.Batch“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Batch-Pools zu erstellen.
-
-
 
 Konfigurieren und Verwalten von Azure Policy:
 
@@ -170,22 +154,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Leitfaden**: Verwenden Sie Tags für Netzwerkdienstgruppen (NSGs) und andere Ressourcen im Zusammenhang mit Netzwerksicherheit und Datenverkehrsfluss, die mit ihren Azure Batch-Pools verknüpft sind. Verwenden Sie für einzelne NSG-Regeln das Feld „Beschreibung“, um geschäftliche Anforderungen und/oder deren Dauer (usw.) für alle Regeln festzulegen, die Datenverkehr in das bzw. aus einem Netzwerk zulassen.
 
-
 Verwenden Sie eine der integrierten Azure Policy-Definitionen zum Tagging, z. B. „Tag und zugehörigen Wert erzwingen“, um sicherzustellen, dass alle Ressourcen mit Tags erstellt werden und Sie über vorhandene nicht markierte Ressourcen benachrichtigt werden.
 
-
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen auszuführen.
-
 
 Erstellen und Verwenden von Tags:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-
 Erstellen eines virtuellen Netzwerks:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
 
 Erstellen und Verwenden einer Netzwerksicherheitsgruppe (NSG):
 
@@ -223,8 +202,6 @@ Erstellen von Warnungen in Azure Monitor: https://docs.microsoft.com/azure/azure
 
 **Leitfaden**: Integrieren Sie das Azure Batch-Konto in Azure Monitor, um die von den Clustergeräten generierten Sicherheitsdaten zu aggregieren. Nutzen Sie benutzerdefinierte Abfragen, um Bedrohungen in der Umgebung zu erkennen und darauf zu reagieren.  Verwenden Sie für Azure Batch-Überwachung auf Ressourcenebene die Batch-APIs, um den Status von Ressourcen wie Aufträgen, Aufgaben, Knoten und Pools zu überwachen oder abzufragen.
 
-
-
 Integrieren eines Azure Batch-Kontos in Azure Monitor:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -237,14 +214,11 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Leitfaden**: Überwachen Sie für Azure Batch-Überwachung auf Kontoebene jedes Batch-Konto mithilfe der Features von Azure Monitor. Azure Monitor erfasst Metriken und optional Diagnoseprotokolle für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren.
 
-
 Verwenden Sie für Azure Batch-Überwachung auf Ressourcenebene die Azure Batch-APIs, um den Status von Ressourcen wie Aufträgen, Aufgaben, Knoten und Pools zu überwachen oder abzufragen.
-
 
 Konfigurieren von Azure Batch-Überwachung und -Protokollierung auf Kontoebene:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Grundlegendes zur Batch-Überwachung auf Ressourcenebene:
 
@@ -258,14 +232,11 @@ https://docs.microsoft.com/azure/batch/monitoring-overview#batch-resource-monito
 
 **Leitfaden**: Azure Monitor erfasst Metriken und Diagnoseprotokolle für Ressourcen in Ihrem Azure Batch-Konto. Sie können mithilfe verschiedener Methoden diese Daten sammeln und nutzen, um Ihr Azure Batch-Konto zu überwachen und Probleme zu diagnostizieren. Sie können auch Metrikwarnungen konfigurieren, um Benachrichtigungen zu erhalten, wenn eine Metrik einen angegebenen Wert erreicht.
 
-
 Falls erforderlich, stellen Sie möglicherweise eine Verbindung mit Ihren einzelnen Poolknoten über Secure Shell (SSH) oder Remotedesktopprotokoll (RDP) her, um auf lokale Betriebssystemprotokolle zuzugreifen.
-
 
 Erfassen von Diagnose Protokollen aus Ihrem Azure Batch-Konto:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
-
 
 Herstellen einer Remoteverbindung mit Ihren Azure Batch-Poolknoten:
 
@@ -279,11 +250,9 @@ https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
 **Leitfaden**: Integrieren eines Azure Batch-Kontos in Azure Monitor. Stellen Sie sicher, dass für den verwendeten Azure Log Analytics-Arbeitsbereich der Protokollaufbewahrungszeitraum gemäß den Compliancebestimmungen Ihrer Organisation festgelegt ist.
 
-
 Konfigurieren von Azure Batch-Überwachung und -Protokollierung:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Konfigurieren des Aufbewahrungszeitraums des Azure Log Analytics-Arbeitsbereichs:
 
@@ -297,7 +266,6 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
 **Leitfaden**: Erstellen Sie Azure Batch-Metrikwarnungen, die ausgelöst werden, wenn der Wert für eine bestimmte Metrik einen angegebenen Schwellenwert überschreitet.
 
-
 Konfigurieren von Azure Batch-Metrikwarnungen:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -309,7 +277,6 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Aktivieren von Warnungen für anormale Aktivitäten
 
 **Leitfaden**: Erstellen Sie Azure Batch-Metrikwarnungen, die ausgelöst werden, wenn der Wert für eine bestimmte Metrik einen angegebenen Schwellenwert überschreitet.
-
 
 Konfigurieren von Azure Batch-Metrikwarnungen:
 
@@ -351,19 +318,15 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Leitfaden**: Verwalten Sie den Datensatz für das lokale Administratorkonto, das während der Bereitstellung des Azure Batch-Pools erstellt wird, sowie für alle anderen Konten, die Sie erstellen. Wenn außerdem AAD-Integration (Azure Active Directory) verwendet wird, verfügt AAD über integrierte Rollen, die explizit zugewiesen werden müssen und daher abgefragt werden können. Verwenden Sie das AAD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-
 Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center anwenden.
-
 
 Abrufen einer Verzeichnisrolle in AAD mit PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-
 Abrufen von Mitgliedern einer Verzeichnisrolle in AAD mit PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
-
 
 Überwachen von Identität und Zugriff mit Azure Security Center:
 
@@ -377,7 +340,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Leitfaden**: Wenn Sie einen Azure Batch-Pool bereitstellen, haben Sie die Möglichkeit, lokale Computerkonten zu erstellen. Es gibt keine Standardkennwörter, die geändert werden müssen. Sie können jedoch unterschiedliche Kennwörter für den SSH-Zugriff (Secure Shell) und RDP-Zugriff (Remotedesktopprotokoll) angeben. Nachdem Azure Batch Pool konfiguriert wurde, können Sie einen zufälligen Benutzer für einzelne Knoten innerhalb des Azure-Portals oder über die Azure Resource Manager-API generieren.
 
-
 Vorgehensweise beim Hinzufügen eines Benutzers zu einem bestimmten Computeknoten:
 
 https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
@@ -390,14 +352,11 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
 
 **Leitfaden**: Integrieren Sie Authentifizierung für Azure Batch-Anwendungen mit Azure Active Directory. Erstellen Sie Richtlinien und Vorgänge für die Verwendung dedizierter Administratorkonten.
 
-
 Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center anwenden.
-
 
 Authentifizieren von Batch-Anwendungen mit Azure Active Directory:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
-
 
 Überwachen von Identität und Zugriff mit Azure Security Center:
 
@@ -418,13 +377,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 ### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff.
 
 **Leitfaden**: Integrieren Sie Authentifizierung für Azure Batch-Anwendungen mit Azure Active Directory (AAD). Aktivieren Sie mehrstufige AAD-Authentifizierung (MFA), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
- 
 
+ 
 
 Aktivieren von MFA in Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
 
 Überwachen von Identität und Zugriff in Azure Security Center:
 
@@ -438,11 +396,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Leitfaden**: Verwenden Sie PAWs (Privileged Access Workstation, Arbeitsstation mit privilegiertem Zugriff) mit MFA (mehrstufige Authentifizierung), die für die Anmeldung und Konfiguration von Azure Batch-Ressourcen konfiguriert sind.
 
-
 Informationen zu Arbeitsstationen mit privilegiertem Zugriff:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
-
 
 Aktivieren von MFA in Azure:
 
@@ -456,11 +412,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Leitfaden**: Wenn Sie über integrierte Authentifizierung für Azure Batch-Anwendungen mit Azure Active Directory (AAD) verfügen, verwenden Sie Azure Active Directory-Sicherheitsberichte für die Generierung von Protokollen und Warnungen, wenn verdächtige oder unsichere Aktivitäten in der Umgebung auftreten. Verwenden Sie Azure Security Center zum Überwachen von identitäts- und zugriffsbezogenen Aktivitäten.
 
-
 Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
-
 
 Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center:
 
@@ -474,8 +428,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Leitfaden**: Wenn Sie über integrierte Authentifizierung für Azure Batch-Anwendungen mit Azure Active Directory verfügen, können Sie bedingten Zugriff mit benannten Speicherorten verwenden, um den Zugriff nur für bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
-
-
 Konfigurieren benannter Standorte in Azure:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
@@ -488,11 +440,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 **Leitfaden**: Verwenden Sie Azure Active Directory (AAD) als zentrales Authentifizierungs- und Autorisierungssystem, und integrieren Sie Authentifizierung für Azure Batch-Anwendungen mit AAD. AAD schützt Daten durch eine starke Verschlüsselung für ruhende und übertragene Daten. Außerdem werden in AAD Salts und Hashs für Anmeldeinformationen verwendet und diese sicher gespeichert.
 
-
 Erstellen und Konfigurieren einer AAD-Instanz:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
-
 
 Authentifizieren von Batch-Anwendungen mit AAD:
 
@@ -506,7 +456,6 @@ https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 **Leitfaden**: Azure Active Directory (AAD) enthält Protokolle zum Ermitteln von veralteten Konten. Außerdem können Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten verwenden, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff besitzen.
 
-
 Verwenden von Zugriffsüberprüfungen für Azure-Identitäten:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
@@ -518,7 +467,6 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Konten
 
 **Leitfaden**: Erstellen Sie Diagnoseeinstellungen für Azure Active Directory-Benutzerkonten, und senden Sie die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich. Konfigurieren Sie die gewünschten Warnungen im Log Analytics-Arbeitsbereich.
-
 
 Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor:
 
@@ -532,16 +480,13 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 **Leitfaden**: Mit den Funktionen zur Risikoerkennung und zum Identitätsschutz von Azure Active Directory (AAD) können Sie automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
 
-
 Anzeigen von AAD-Risikoanmeldungen:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-
 Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
-
 
 Ausführen des Onboardings für Azure Sentinel:
 
@@ -553,7 +498,11 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>Ermöglichen des Zugriffs auf relevante Kundendaten für Microsoft in Supportszenarien<br></div>
 
-**Leitfaden**: Nicht verfügbar. Kunden-Lockbox wird für Azure Batch nicht unterstützt. Liste der durch Kunden-Lockbox unterstützten Dienste: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+**Leitfaden**: Nicht verfügbar. Kunden-Lockbox wird für Azure Batch nicht unterstützt.
+ 
+Liste der durch Kunden-Lockbox unterstützten Dienste: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -567,7 +516,6 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Leitfaden**: Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
 
-
 Erstellen und Verwenden von Tags:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -580,11 +528,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Leitfaden**: Implementieren Sie separate Abonnements und/oder Verwaltungsgruppen für Entwicklungs-, Test- und Produktionsumgebungen. Azure Batch-Pools sollten durch ein virtuelles Netzwerk/Subnetz getrennt, entsprechend gekennzeichnet und durch eine Netzwerksicherheitsgruppe (NSG) gesichert werden. Azure Batch-Daten sollten in einem gesicherten Azure Storage-Konto enthalten sein.
 
-
 So erstellen Sie einen Azure Batch-Pool in einem virtuellen Netzwerk:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
-
 
 Schützen von Azure Storage-Konten:
 
@@ -598,17 +544,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Leitfaden**: Bei Azure Storage-Konten, die Ihren Azure Batch-Pools zugeordnet sind, die vertrauliche Informationen enthalten, markieren Sie diese mithilfe von Tags als vertraulich, und schützen Sie sie mit bewährten Azure-Methoden.
 
-
 Funktionen für Datenidentifizierung, -klassifizierung und -verlust sind für Azure Storage- oder Computeressourcen noch nicht verfügbar. Implementieren Sie eine Drittanbieterlösung, wenn dies für Compliancezwecke erforderlich ist.
 
-
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
-
 
 Grundlegendes zum Schutz von Kundendaten in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Schützen von Azure Storage-Konten:
 
@@ -622,13 +564,11 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Leitfaden**: Verschlüsseln Sie alle vertraulichen Informationen während der Übertragung. Microsoft Azure Ressourcen handeln standardmäßig TLS 1.2 aus. Stellen Sie sicher, dass alle Clients, die sich mit Ihren Azure Batch-Pools oder Datenspeichern (Azure Storage-Konten) verbinden, TLS 1.2 oder höher aushandeln können.
 
-
 Stellen Sie sicher, dass für den Zugriff auf das Speicherkonto mit den Azure Batch-Daten HTTPS erforderlich ist.
-
 
 Verstehen der Azure Storage-Kontoverschlüsselung während der Übertragung:
 
-https://docs.microsoft.com/azure/storage/blobs/security-recommendations
+https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -638,17 +578,13 @@ https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Leitfaden**: Bei Azure Storage-Konten, die Ihren Azure Batch-Pools zugeordnet sind, die vertrauliche Informationen enthalten, markieren Sie diese mithilfe von Tags als vertraulich, und schützen Sie sie mit bewährten Azure-Methoden.
 
-
 Funktionen für Datenidentifizierung, -klassifizierung und -verlust sind für Azure Storage- oder Computeressourcen noch nicht verfügbar. Implementieren Sie eine Drittanbieterlösung, wenn dies für Compliancezwecke erforderlich ist.
 
-
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
-
 
 Grundlegendes zum Schutz von Kundendaten in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Schützen von Azure Storage-Konten:
 
@@ -662,11 +598,9 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Leitfaden**: Verwenden Sie rollenbasierte Zugriffssteuerung (RBAC) von Azure Active Directory (AAD), um den Zugriff auf die Verwaltungsebene von Azure-Ressourcen (einschließlich Batch-Konto, Batch-Pools und Speicherkonten) zu steuern.
 
-
 Grundlegendes zu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
-
 
 Konfigurieren von RBAC in Azure:
 
@@ -680,11 +614,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 **Leitfaden**: Funktionen für Datenidentifizierung, -klassifizierung und -verlust sind für Azure Storage- oder Computeressourcen noch nicht verfügbar. Implementieren Sie eine Drittanbieterlösung, wenn dies für Compliancezwecke erforderlich ist.
 
-
-
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
-
-
 
 Grundlegendes zum Schutz von Kundendaten in Azure:
 
@@ -698,8 +628,6 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Leitfaden**: Für Speicherkonten, die Ihrem Azure Batch-Konto zugeordnet sind, wird empfohlen, Microsoft die Verwaltung von Verschlüsselungsschlüsseln zu gestatten. Sie haben jedoch die Möglichkeit, bei Bedarf Ihre eigenen Schlüssel zu verwalten.
 
-
-
 Verwalten von Verschlüsselungsschlüsseln für Azure Storage-Konten:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
@@ -712,17 +640,11 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an wichtigen Azure-Ressourcen ausgegeben werden, die Ihren Azure Batch-Konten/-Pools zugeordnet sind.
 
-
-
 Konfigurieren Sie Diagnoseeinstellungen für Speicherkonten, die dem Azure Batch-Pool zugeordnet sind, um alle CRUD-Vorgänge für Pooldaten zu überwachen und zu protokollieren.
-
-
 
 Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
-
-
 
 Aktivieren zusätzlicher Protokollierung/Überwachung für ein Azure Storage-Konto:
 
@@ -740,7 +662,6 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **Leitfaden**: Für Azure Batch-Poolknoten sind Sie für die Verwaltung der Lösung für die Sicherheitsrisikoverwaltung verantwortlich.
 
-
 Wenn Sie über ein Rapid7-, Qualys- oder anderes Sicherheitsrisiko-Verwaltungsplattformabonnement verfügen, können Sie optional Sicherheitsanfälligkeits-Agents für Batch-Poolknoten manuell installieren und Knoten über das entsprechende Portal verwalten.
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -751,6 +672,7 @@ Wenn Sie über ein Rapid7-, Qualys- oder anderes Sicherheitsrisiko-Verwaltungspl
 
 **Leitfaden**: Microsoft zum Verwalten und Aktualisieren von Basisknotenimages für Azure Batch-Pools. Stellen Sie sicher, dass das Betriebssystem der Azure Batch-Poolknoten für die Clusterlebensdauer gepatcht bleibt, was die Aktivierung automatischer Updates, die Überwachung der Knoten oder die Durchführung regelmäßiger Neustarts erfordern kann.
 
+
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Shared
@@ -758,6 +680,7 @@ Wenn Sie über ein Rapid7-, Qualys- oder anderes Sicherheitsrisiko-Verwaltungspl
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
 **Leitfaden**: Stellen Sie sicher, dass die Drittanbieteranwendungen der Azure Batch-Poolknoten für die Clusterlebensdauer gepatcht bleibt, was die Aktivierung automatischer Updates, die Überwachung der Knoten oder die Durchführung regelmäßiger Neustarts erfordern kann.
+
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -787,19 +710,15 @@ Wenn Sie über ein Rapid7-, Qualys- oder anderes Sicherheitsrisiko-Verwaltungspl
 
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (z. B. Computeressourcen, Speicher, Netzwerke usw.) in Ihren Abonnements abzufragen bzw. zu ermitteln. Stellen Sie entsprechende Berechtigungen (Leseberechtigungen) in Ihrem Mandanten sicher, und vergewissern Sie sich, dass Sie alle Azure-Abonnements sowie Ressourcen in Ihren Abonnements aufzählen können.
 
+Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen (ARM-Ressourcen) zu erstellen und zu verwenden.
 
-Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen (ARM) zu erstellen und zu verwenden.
-
-
-Erstellen von Abfragen mit Azure Resource Graph Explorer:
+Erstellen von Abfragen mit Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
 
 Anzeigen Ihrer Azure-Abonnements:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
 
 Grundlegendes zu Azure RBAC:
 
@@ -813,7 +732,6 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-
 Erstellen und Verwenden von Tags:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -826,31 +744,26 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Leitfaden**: Verwenden Sie nach Bedarf Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-
-
 Erstellen zusätzlicher Azure-Abonnements:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
-
-
 
 Erstellen von Verwaltungsgruppen:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-
-
 Erstellen und Verwenden von Tags:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Verwalten eines Bestands genehmigter Azure-Ressourcen und Softwaretitel.
 
 **Leitfaden**: Definieren Sie eine Liste der genehmigte Azure-Ressourcen und der genehmigten Software für Computeressourcen.
+
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -863,14 +776,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-
 Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass alle in der Umgebung vorhandenen Azure-Ressourcen genehmigt sind.
-
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
+Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Erstellen von Abfragen mit Azure Resource Graph Explorer: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -880,6 +791,7 @@ Erstellen von Abfragen mit Azure Resource Graph Explorer: https://docs.microsoft
 
 **Leitfaden**: Implementieren Sie für Azure Batch-Poolknoten eine Drittanbieterlösung, um Clusterknoten für nicht genehmigte Softwareanwendungen zu überwachen.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -887,6 +799,7 @@ Erstellen von Abfragen mit Azure Resource Graph Explorer: https://docs.microsoft
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Entfernen nicht genehmigter Azure-Ressourcen und Softwareanwendungen
 
 **Leitfaden**: Implementieren Sie für Azure Batch-Poolknoten eine Drittanbieterlösung, um Clusterknoten für nicht genehmigte Softwareanwendungen zu überwachen.
+
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -896,6 +809,7 @@ Erstellen von Abfragen mit Azure Resource Graph Explorer: https://docs.microsoft
 
 **Leitfaden**: Implementieren Sie für Azure Batch-Poolknoten eine Drittanbieterlösung, um zu verhindern, dass nicht autorisierte Software ausgeführt wird.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -904,15 +818,13 @@ Erstellen von Abfragen mit Azure Resource Graph Explorer: https://docs.microsoft
 
 **Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
 
-
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -922,6 +834,7 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 
 **Leitfaden**: Implementieren Sie für Azure Batch-Poolknoten eine Drittanbieterlösung, um zu verhindern, dass nicht autorisierte Dateitypen ausgeführt werden.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -930,8 +843,8 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 
 **Leitfaden**: Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren.
 
-
 Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -942,6 +855,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 **Leitfaden**: Nicht zutreffend.
 
 Dies gilt nicht für Azure Batch, da Benutzer (Nicht-Administratoren) der Azure Batch-Pools keinen Zugriff auf die einzelnen Knoten benötigen, um Aufträge auszuführen. Der Clusteradministrator besitzt bereits root-Zugriff auf alle Knoten.
+
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -963,11 +877,9 @@ Dies gilt nicht für Azure Batch, da Benutzer (Nicht-Administratoren) der Azure 
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Batch“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure Batch-Konten und -Pools zu erstellen.
 
-
 Anzeigen verfügbarer Azure Policy-Aliase:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
 
 Konfigurieren und Verwalten von Azure Policy:
 
@@ -990,14 +902,15 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 **Leitfaden**: Verwenden Sie eine Azure-Richtlinie [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für die Azure-Ressourcen zu erzwingen, die mit Ihrem Batch-Konto und Ihren Pools verknüpft sind (z. B. virtuelle Netzwerke, Subnetze, Azure Firewalls, Azure Storage-Konten usw.). Sie können Azure Policy-Aliase aus den folgenden Namespaces verwenden, um benutzerdefinierte Richtlinien zu erstellen:
 
 - Microsoft.Batch
-- Microsoft.Storage
-- Microsoft.Network
 
+- Microsoft.Storage
+
+- Microsoft.Network
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1015,11 +928,9 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Azure-Richtliniendefinitionen für Azure Batch-Konten, -Pools oder verwandte Ressourcen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
-
 Speichern von Code in Azure DevOps:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
 
 Dokumentation zu Azure Repos:
 
@@ -1033,11 +944,9 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Images für Ihre Azure Batch-Pools verwenden, verwenden Sie rollenbasierte Zugriffssteuerung (RBAC), um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-
 Grundlegendes zu RBAC in Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
-
 
 Konfigurieren von RBAC in Azure:
 
@@ -1051,8 +960,6 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 **Leitfaden**: Verwenden Sie integrierte Azure Policy-Definitionen, um Azure Batch-bezogene Ressourcenkonfigurationen mit Warnungen zu versehen, zu überwachen und zu erzwingen.  Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Batch“, um benutzerdefinierte Richtlinien für Ihre Azure Batch-Konten und -Pools zu erstellen. Entwickeln Sie außerdem einen Prozess und eine Pipeline zum Verwalten von Richtlinienausnahmen.
 
-
-
 Konfigurieren und Verwalten von Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
@@ -1065,6 +972,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Leitfaden**: Implementieren Sie eine Drittanbieterlösung, um den gewünschten Zustand für die Betriebssysteme Ihrer Azure Batch-Poolknoten zu verwalten.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -1073,12 +981,16 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Batch“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure Batch-Instanz zu erstellen. Sie können auch die integrierten Richtlinien verwenden, die speziell für Azure Batch oder die von Azure Batch verwendeten Ressourcen erstellt wurden, beispielsweise:
 
-- Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet sein, und Speicherkonten sollten einen Dienstendpunkt eines virtuellen Netzwerks verwenden.
+- Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden
+
+Speicherkonten sollten einen VNET-Dienstendpunkt verwenden
+
 - Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.
 
 Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -1089,6 +1001,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 **Leitfaden**: Implementieren Sie eine Drittanbieterlösung, um den Zustand für die Betriebssysteme Ihrer Azure Batch-Poolknoten zu überwachen.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -1097,16 +1010,13 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 **Leitfaden**: Azure Key Vault kann mit Azure Batch-Bereitstellungen verwendet werden, um Schlüssel für den Poolspeicher innerhalb von Azure Storage-Konten zu verwalten.
 
-
 Integration mit verwalteten Azure-Identitäten:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-
 Erstellen einer Azure Key Vault-Instanz:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
 
 Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität:
 
@@ -1119,6 +1029,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 ### <a name="712-securely-and-automatically-manage-identities"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
 
 **Leitfaden**: Nicht verfügbar. Die verwaltete Dienstidentität wird von Azure Batch nicht unterstützt.
+
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1142,6 +1053,7 @@ Einrichten von Credential Scanner: https://secdevtools.azurewebsites.net/helpcre
 
 **Leitfaden**: Verwenden Sie Windows Defender für Ihre einzelnen Azure Batch-Poolknoten im Fall von Windows-Betriebssystemen, oder stellen Sie eine eigene Antischadsoftwarelösung bereit, wenn Sie Linux verwenden.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -1150,9 +1062,7 @@ Einrichten von Credential Scanner: https://secdevtools.azurewebsites.net/helpcre
 
 **Leitfaden**: Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste (z. B. Azure Batch) aktiviert, wird jedoch nicht für Kundeninhalte ausgeführt.
 
-
 Führen Sie eine Vorabprüfung aller Dateien durch, die in computefremde Azure-Ressourcen hochgeladen werden sollen, z. B. in App Service, Data Lake Storage, Blob Storage usw. Microsoft kann in diesen Instanzen nicht auf Kundendaten zugreifen.
-
 
 Grundlegendes zu Microsoft Antimalware für Azure Cloud Services und Virtual Machines:
 
@@ -1166,6 +1076,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Leitfaden**: Verwenden Sie Windows Defender für Ihre einzelnen Azure Batch-Poolknoten im Fall von Windows-Betriebssystemen, und stellen Sie sicher, dass automatische Updates aktiviert sind. Stellen Sie Ihre eigene Antischadsoftwarelösung bereit, wenn Sie Linux verwenden.
 
+
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -1177,7 +1088,6 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
 **Leitfaden**: Wenn Sie ein Azure Storage-Konto für den Azure Batch-Pooldatenspeicher verwenden, wählen Sie die entsprechende Redundanzoption (LRS, ZRS, GRS, RA-GRS) aus. 
-
 
 Konfigurieren der Speicherredundanz für Azure Storage-Konten:
 
@@ -1191,11 +1101,9 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 **Leitfaden**: Wenn Sie ein Azure Storage-Konto für den Azure Batch-Pooldatenspeicher verwenden, wählen Sie die entsprechende Redundanzoption (LRS, ZRS, GRS, RA-GRS) aus.  Wenn Sie Azure Key Vault für einen Teil Ihrer Azure Batch-Bereitstellung verwenden, stellen Sie sicher, dass Ihre Schlüssel gesichert werden.
 
-
 Konfigurieren der Speicherredundanz für Azure Storage-Konten:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
 
 Sichern von Key Vault-Schlüsseln in Azure:
 
@@ -1209,11 +1117,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 **Leitfaden**: Wenn Sie Ihre eigenen Schlüssel für Azure Storage-Konten oder eine andere Ressource verwalten, die sich auf Ihre Azure Batch-Implementierung bezieht, testen Sie regelmäßig die Wiederherstellung gesicherter Schlüssel.
 
-
 Sichern von Key Vault-Schlüsseln in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
-
 
 Wiederherstellen eines vom Kunden verwalteten Schlüssels mit PowerShell:
 
@@ -1226,7 +1132,6 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Sicherstellen des Schutzes von Sicherungen und von kundenseitig verwalteten Schlüsseln
 
 **Leitfaden**: Wenn Azure Key Vault zum Speichern von Schlüsseln verwendet wird, die sich auf Azure Batch-Poolspeicherkonten beziehen, aktivieren Sie vorläufiges Löschen in Azure Key Vault, um Schlüssel vor versehentlichem oder böswilligem Löschen zu schützen.
-
 
 Aktivieren von vorläufigem Löschen in Azure Key Vault:
 
@@ -1243,8 +1148,6 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 ### <a name="101-create-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
 **Leitfaden**: Stellen Sie sicher, dass es schriftliche Pläne für die Reaktion auf Vorfälle gibt, in denen die Rollen der Mitarbeiter sowie die Phasen der Bearbeitung und Verwaltung von Vorfällen definiert sind.
-
-
 
 Konfigurieren von Workflowautomatisierungen in Azure Security Center:
 
@@ -1276,8 +1179,6 @@ Informationen finden Sie in der folgenden Veröffentlichung des NIST: Leitfaden 
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Daten zugegriffen haben.
 
-
-
 Festlegen der Kontaktinformationen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
@@ -1290,11 +1191,9 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Azure Sentinel zu streamen.
 
-
 Konfigurieren des fortlaufenden Exports:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
-
 
 Streamen von Warnungen in Azure Sentinel:
 
@@ -1307,8 +1206,6 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisieren der Reaktion auf Sicherheitswarnungen
 
 **Leitfaden**: Verwenden Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über „Logic Apps“ automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen.
-
-
 
 Konfigurieren von „Workflowautomatisierung“ und Logic Apps:
 
@@ -1327,8 +1224,6 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 **Leitfaden**: Befolgen Sie die Microsoft Rules of Engagement, um sicherzustellen, dass die Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
-
-
 
 Weitere Informationen zur Microsoft-Strategie und Ausführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen finden Sie hier: 
 

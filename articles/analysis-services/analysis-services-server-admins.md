@@ -4,21 +4,21 @@ description: In diesem Artikel wird beschrieben, wie Sie Serveradministratoren f
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572624"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454236"
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
 
 „Serveradministratoren“ muss eine gültige Benutzer- oder Sicherheitsgruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. **Analysis Services-Administratoren** für Ihren Server können im Azure-Portal, in Servereigenschaften in SSMS, in PowerShell oder in der REST-API verwendet werden, um Serveradministratoren zu verwalten. 
 
-Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) und die `MailEnabled`-Eigenschaft auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
+Verwenden Sie beim Hinzufügen einer **Sicherheitsgruppe** `obj:groupid@tenantid`.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>So fügen Sie Serveradministratoren über das Azure-Portal hinzu
 

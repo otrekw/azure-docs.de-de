@@ -3,12 +3,12 @@ title: Einrichten Ihrer Entwicklungsumgebung unter Linux
 description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen lokalen Entwicklungscluster unter Linux. Nach Abschluss des Setups können Sie mit der Erstellung von Anwendungen beginnen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309112"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682625"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse-IDE für J
 
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe** > **Neue Software installieren...** aus.
 
-3. Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **https://dl.microsoft.com/eclipse** .
+3. Geben Sie im Feld **Verwenden von** die URL **https:\//dl.microsoft.com/eclipse** ein.
 
 4. Wählen Sie **Hinzufügen**.
 

@@ -1,30 +1,30 @@
 ---
-title: Anzeigen von Updatebewertungen der Azure-Updateverwaltung
+title: Anzeigen von Updatebewertungen der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235450"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617391"
 ---
-# <a name="view-azure-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure-Updateverwaltung
+# <a name="view-azure-automation-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure Automation-Updateverwaltung
 
 Wählen Sie in Ihrem Azure Automation-Konto **Updateverwaltung** aus, um den Status Ihrer Computer anzuzeigen.
 
 Diese Ansicht enthält Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und geplanten Updatebereitstellungen. Die Spalte **KONFORMITÄT** gibt Aufschluss darüber, wann der Computer zuletzt bewertet wurde. Die Spalte **UPDATE-AGENT-BEREITSCHAFT** gibt Aufschluss über die Integrität des Update-Agents. Liegt ein Problem vor, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und Informationen zur Behebung des Problems zu erhalten.
 
-Wenn Sie eine Protokollsuche ausführen möchten, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, wählen Sie das entsprechende Element in der Liste aus. Der Bereich **Protokollsuche** wird mit einer Abfrage für das ausgewählte Element geöffnet:
+Wenn Sie eine Protokollsuche ausführen möchten, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, wählen Sie das entsprechende Element in der Liste aus. Der Bereich „Protokollsuche“ wird mit einer Abfrage für das ausgewählte Element geöffnet.
 
 ![Standardansicht der Updateverwaltung](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Anzeigen fehlender Updates
 
-Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und kann ausgewählt werden. Es werden Informationen zur Anzahl von Computern, die das Update benötigen, sowie Details zum Betriebssystem und ein Link zu weiteren Informationen angezeigt. Im Bereich **Protokollsuche** werden weitere Details zu den Updates angezeigt.
+Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und kann ausgewählt werden. Es werden Informationen zur Anzahl von Computern, die das Update benötigen, sowie Details zum Betriebssystem und ein Link zu weiteren Informationen angezeigt. Im Bereich „Protokollsuche“ werden weitere Details zu den Updates angezeigt.
 
 ![Fehlende Updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -36,14 +36,14 @@ Die folgenden Tabellen enthalten eine Liste der unterstützten Updateklassifizie
 
 |Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
-|Kritische Updates     | Ein Update für ein bestimmtes Problem, mit dem ein entscheidender, nicht sicherheitsrelevanter Fehler behoben wird.        |
-|Sicherheitsupdates     | Ein Update für ein produktspezifisches, sicherheitsrelevantes Problem.        |
-|Updaterollups     | Eine kumulative Gruppe von Hotfixes, die zur Vereinfachung der Bereitstellung gebündelt sind.        |
+|Kritische Updates     | Updates für bestimmte Probleme, mit denen kritische, nicht sicherheitsrelevante Fehler behoben werden.        |
+|Sicherheitsupdates     | Updates für produktspezifische, sicherheitsrelevante Probleme.        |
+|Updaterollups     | Eine Gruppe von Hotfixes, die zur Vereinfachung der Bereitstellung gebündelt sind.        |
 |Feature Packs     | Neue Produktfeatures, die nicht im Rahmen eines Produktreleases verteilt werden.        |
-|Service Packs     | Eine kumulative Gruppe von Hotfixes, die auf eine Anwendung angewendet werden.        |
-|Definitionsupdates     | Ein Update für virenbehaftete oder andere Definitionsdateien.        |
-|Tools     | Ein Hilfsprogramm oder Feature, mit dem mindestens eine Aufgabe ausgeführt werden kann.        |
-|Aktualisierungen     | Ein Update für eine Anwendung oder Datei, die zurzeit installiert ist.        |
+|Service Packs     | Eine Gruppe von Hotfixes, die auf eine Anwendung angewendet werden.        |
+|Definitionsupdates     | Updates für Viren- oder andere Definitionsdateien.        |
+|Tools     | Hilfsprogramme oder Features, mit denen mindestens eine Aufgabe ausgeführt werden kann.        |
+|Aktualisierungen     | Updates für Anwendungen oder Dateien, die derzeit installiert sind.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 

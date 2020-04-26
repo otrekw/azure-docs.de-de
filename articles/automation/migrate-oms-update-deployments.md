@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417778"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680008"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrieren von OMS-Updatebereitstellungen zu Azure
 
-Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../azure-monitor/platform/oms-portal-transition.md). Alle Funktionen des OMS-Portals für die Updateverwaltung sind ab jetzt im Azure-Portal verfügbar. Dieser Artikel enthält alles Wissenswerte zur Migration zum Azure-Portal.
+Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../azure-monitor/platform/oms-portal-transition.md). Alle Funktionen des OMS-Portals für die Updateverwaltung sind ab jetzt im Azure-Portal über Azure Monitor-Protokolle verfügbar. Dieser Artikel enthält alles Wissenswerte zur Migration zum Azure-Portal.
 
 ## <a name="key-information"></a>Wichtige Informationen
 
@@ -23,7 +23,7 @@ Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../az
 
 ## <a name="access-the-azure-portal"></a>Zugriff auf fas Azure-Portal
 
-Klicken Sie in Ihrem OMS-Arbeitsbereich auf **In Azure öffnen**. So gelangen Sie zum Log Analytics-Arbeitsbereich, den die OMS verwendet hat.
+Klicken Sie in Ihrem OMS-Arbeitsbereich auf **In Azure öffnen**. Durch diese Auswahl gelangen Sie zum Log Analytics-Arbeitsbereich, den die OMS verwendet hat.
 
 ![In Azure öffnen – OMS-Portal](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,11 +31,13 @@ Klicken Sie im Azure-Portal auf **Automation-Konto**.
 
 ![Azure Monitor-Protokolle](media/migrate-oms-update-deployments/log-analytics.png)
 
-Klicken Sie in Ihrem Automation-Konto auf **Updateverwaltung**, um „Updateverwaltung“ zu öffnen.
+Klicken Sie in Ihrem Automation-Konto auf **Updateverwaltung**.
 
 ![Updateverwaltung](media/migrate-oms-update-deployments/azure-automation.png)
 
-Von nun an können Sie im Azure-Portal direkt zu **Alle Dienste** navigieren, unter **Verwaltungsprogramme** auf **Automation-Konten** klicken, das entsprechende Automation-Konto auswählen und auf **Updateverwaltung** klicken.
+Wählen Sie im Azure-Portal unter **Alle Dienste** die Option **Automation-Konten** aus. 
+
+Wählen Sie unter **Verwaltungstools** das entsprechende Automation-Konto aus, und klicken Sie auf **Updateverwaltung**.
 
 ## <a name="recreate-existing-deployments"></a>Neuerstellen vorhandener Bereitstellungen
 
@@ -49,9 +51,9 @@ Wechseln Sie zum Erstellen einer neuen Updatebereitstellung zum Azure-Portal, w�
 
 ![Updatebereitstellung planen](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-Der Bereich **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
+Der Bereich „Neue Updatebereitstellung“ wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
 
-Wählen Sie für zu aktualisierende Computer die gespeicherte Suche aus, die von der vorhandenen OMS-Bereitstellung verwendet wird.
+Wählen Sie für **Zu aktualisierende Computer** die gespeicherte Suche aus, die von der vorhandenen OMS-Bereitstellung verwendet wird.
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |

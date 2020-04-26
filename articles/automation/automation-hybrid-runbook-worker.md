@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235590"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457704"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -20,20 +20,20 @@ Diese Funktionalität wird in der folgenden Abbildung veranschaulicht:
 
 ![Übersicht über Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Jeder Hybrid-Runbook-Worker ist ein Mitglied einer Hybrid-Runbook-Workergruppe, die Sie beim Installieren des Agents angeben. Eine Gruppe kann einen einzelnen Agent umfassen, aber für Hochverfügbarkeit können Sie mehrere Agents installieren. Jeder Computer kann einen Hybrid Worker hosten, der einem Automation-Konto Bericht erstattet.
+Jeder Hybrid-Runbook-Worker ist ein Mitglied einer Hybrid-Runbook-Workergruppe, die Sie beim Installieren des Agents angeben. Eine Gruppe kann einen einzelnen Agent umfassen, aber für Hochverfügbarkeit können Sie mehrere Agents installieren. Jeder Computer kann einen Hybrid Worker hosten, der einem Automation-Konto untersteht.
 
-Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie auf der [Seite mit auftragsspezifischen Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie unter den [Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Installieren eines Hybrid Runbook Workers
 
-Der Vorgang zum Installieren eines Hybrid Runbook Workers ist vom Betriebssystem abhängig. Die folgende Tabelle enthält Links zu den Methoden, die für die Installation verwendet werden können.
-
-Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers können Sie zwei verschiedene Methoden verwenden. Die empfohlene Methode besteht darin, ein Automation-Runbook zu verwenden, um den Prozess zum Konfigurieren eines Windows-Computers vollständig zu automatisieren. Bei der zweiten Methode wird die Rolle Schritt für Schritt manuell installiert und konfiguriert. Bei Linux-Computern führen Sie zur Installation des Agents auf dem Computer ein Python-Skript aus.
+Der Vorgang zum Installieren eines Hybrid Runbook Workers ist vom Betriebssystem abhängig. In der folgenden Tabelle sind die Bereitstellungstypen definiert.
 
 |OS  |Bereitstellungstypen  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
+
+Die empfohlene Installationsmethode besteht darin, mithilfe eines Automation-Runbooks den Prozess zum Konfigurieren eines Windows-Computers vollständig zu automatisieren. Bei der zweiten Methode wird die Rolle Schritt für Schritt manuell installiert und konfiguriert. Bei Linux-Computern führen Sie zur Installation des Agents auf dem Computer ein Python-Skript aus.
 
 > [!NOTE]
 > Um die Konfiguration der Server zu verwalten, die die Hybrid Runbook Worker-Rolle mit DSC (Desired State Configuration) unterstützen, müssen Sie die Server als DSC-Knoten hinzufügen. Weitere Informationen zu ihrer Integration für die Verwaltung durch DSC finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
@@ -44,41 +44,35 @@ Bevor Sie mit der Bereitstellung eines Hybrid Runbook Worker beginnen, lesen Sie
 
 Der Computer kann einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
-## <a name="remove-a-hybrid-runbook-worker"></a>Entfernen eines Hybrid Runbook Workers
+## <a name="a-nameremove-a-hybrid-runbook-workerremove-a-hybrid-runbook-worker-from-an-on-premises-computer"></a><a name="remove-a-hybrid-runbook-worker">Entfernen eines Hybrid Runbook Workers von einem lokalen Computer
 
-Abhängig von Ihren Anforderungen können Sie mindestens einen Hybrid Runbook Worker aus einer Gruppe entfernen, oder Sie können die Gruppe entfernen. Wenn Sie einen Hybrid Runbook Worker von einem lokalen Computer entfernen möchten, führen Sie die folgenden Schritte aus:
+Sie können einen Hybrid Runbook Worker von einem lokalen Computer entfernen. In diesem Abschnitt wird die Vorgehensweise für Windows und Linux beschrieben.
+
+### <a name="remove-the-worker-on-windows"></a>Entfernen eines Workers unter Windows
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
-2. Wählen Sie unter **Kontoeinstellungen** die Option **Schlüssel** aus, und notieren Sie sich die Werte für **URL** und **Primärer Zugriffsschlüssel**. Sie benötigen diese Informationen im nächsten Schritt.
+2. Wählen Sie unter **Kontoeinstellungen** die Option **Schlüssel** aus, und notieren Sie sich die Werte für **URL** und **Primärer Zugriffsschlüssel**.
 
-### <a name="windows"></a>Windows
-
-Öffnen Sie eine PowerShell-Sitzung im Administratormodus, und führen Sie den folgenden Befehl aus: Verwenden Sie den Schalter **-Verbose** , um ein ausführliches Protokoll zum Entfernungsvorgang zu erhalten.
-
-```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
-```
-
-Verwenden Sie zum Entfernen veralteter Computer aus Ihrer Hybrid Worker-Gruppe den optionalen Parameter `machineName`.
+3. Öffnen Sie eine PowerShell-Sitzung im Administratormodus, und führen Sie den folgenden Befehl aus. Verwenden Sie dabei Ihre Werte für URL und primären Zugriffsschlüssel. Verwenden Sie den Parameter `Verbose`, um ein ausführliches Protokoll zum Entfernungsvorgang zu erhalten. Verwenden Sie zum Entfernen veralteter Computer aus Ihrer Hybrid Worker-Gruppe den optionalen Parameter `machineName`.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a>Linux
+### <a name="remove-the-worker-on-linux"></a>Entfernen eines Workers unter Linux
 
-Sie können den Befehl `ls /var/opt/microsoft/omsagent` auf dem Hybrid Runbook Worker verwenden, um die Arbeitsbereichs-ID abzurufen. Es gibt einen Ordner in dem Verzeichnis, in dem der Name des Ordners die Arbeitsbereichs-ID ist.
+Sie können den Befehl `ls /var/opt/microsoft/omsagent` auf dem Hybrid Runbook Worker verwenden, um die Arbeitsbereichs-ID abzurufen. Es wird ein Ordner mit der Arbeitsbereichs-ID als Name erstellt.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
-> Dieser Code entfernt nicht Microsoft Monitoring Agent von diesem Computer, sondern nur die Funktionen und die Konfiguration der Hybrid Runbook Worker-Rolle.
+> Mit diesem Code wird der Log Analytics-Agent für Linux nicht vom Computer entfernt. Er entfernt nur die Funktionalität und Konfiguration der Hybrid Runbook Worker-Rolle.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Entfernen einer Hybrid Worker-Gruppe
 
-Um eine Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von allen Computern entfernen, die Mitglied der Gruppe sind. Verwenden Sie zu diesem Zweck das weiter oben beschriebene Verfahren. Führen Sie dann die folgenden Schritte aus, um die Gruppe zu entfernen:
+Um eine Hybrid Runbook Worker-Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von allen Computern entfernen, die Mitglied der Gruppe sind. Führen Sie dann die folgenden Schritte aus, um die Gruppe zu entfernen:
 
 1. Wählen Sie im Azure-Portal das Automation-Konto aus.
 2. Wählen Sie unter **Prozessautomatisierung** die Option **Hybrid Worker-Gruppen** aus. Wählen Sie die Gruppe aus, die Sie löschen möchten. Die Seite „Eigenschaften“ für diese Gruppe wird angezeigt.
@@ -95,7 +89,7 @@ Um eine Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker-Rolle
 
-Der Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Dieser Zugriff wird zusätzlich zu den [für Microsoft Monitoring Agent erforderlichen Ports und URLs](../azure-monitor/platform/agent-windows.md) für das Herstellen einer Verbindung mit Azure Monitor-Protokolle benötigt.
+Der Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Dieser Zugriff wird zusätzlich zu den [für den Log Analytics-Agent erforderlichen Ports und URLs](../azure-monitor/platform/agent-windows.md) für das Herstellen einer Verbindung mit Azure Monitor-Protokolle benötigt.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -152,5 +146,4 @@ Neben den Standardadressen und -ports, die der Hybrid Runbook Worker erfordert, 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Rechenzentrum oder in einer anderen Cloudumgebung konfigurieren, lesen Sie sich [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md) durch.
-* Informationen zur Problembehandlung Ihrer Hybrid Runbook Worker finden Sie unter [Problembehandlung von Hybrid Runbook Workers](troubleshoot/hybrid-runbook-worker.md#general).
-
+* Informationen zum Troubleshooting Ihrer Hybrid Runbook Worker finden Sie unter [Problembehandlung von Hybrid Runbook Workers](troubleshoot/hybrid-runbook-worker.md#general).

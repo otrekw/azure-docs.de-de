@@ -3,12 +3,12 @@ title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885734"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086333"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -50,7 +50,7 @@ Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-
 
 * **Bereitstellungsblaupausen**: Sie können von Microsoft bereitgestellte [Blaupausen](../../governance/blueprints/overview.md) nutzen, um gesetzliche Vorgaben und Konformitätsstandards einzuhalten. Diese Blaupausen umfassen vorgefertigte Vorlagen für verschiedene Architekturen.
 
-* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgaben verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von ARM-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Continuous Integration mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgaben verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von ARM-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines](./deployment-tutorial-pipeline.md).
 
 * **Exportierbarer Code**: Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](export-template-portal.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 

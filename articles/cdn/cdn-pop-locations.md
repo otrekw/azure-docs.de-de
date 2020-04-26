@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2019
+ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 34d864c3902a1b9eb82be760259c08fb2e8c2ff9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260223"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770981"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "81260223"
 > 
 
 
-Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point of Presence), die nach Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Azure CDN von Microsoft verfügt z. B. über 130 POP-Standorte in 80 Metropolregionen. 
+Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point of Presence), die nach Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Azure CDN von Microsoft verfügt z. B. über 130 POP-Standorte in 82 Metropolregionen. 
 
 > [!IMPORTANT]
 > POP-Standorte für **Azure CDN von Akamai** werden nicht einzeln offengelegt.  
@@ -39,10 +39,10 @@ Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point
 | Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Nordamerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal (Kanada)<br />Querétaro, Mexiko<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexiko<br />Mexiko-Stadt, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Canada<br />Mexiko<br />USA |
-| Südamerika | Campinas, Brasilien<br />Rio de Janeiro, Brasilien<br />Sao Paulo, Brasilien<br />Santiago, Chile | Buenos Aires, Argentinien<br />Rio de Janeiro, Brasilien<br />São Paulo, Brasilien<br />Valparaíso, Chile<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br />Quito, Ecuador<br />Lima, Peru | Argentinien<br />Brasilien<br />Chile<br />Kolumbien<br />Ecuador<br />Peru<br />Uruguay |
+| Südamerika | Campinas, Brasilien<br />Rio de Janeiro, Brasilien<br />Sao Paulo, Brasilien<br />Santiago, Chile | Buenos Aires, Argentinien<br />Rio de Janeiro, Brasilien<br />São Paulo, Brasilien<br />Valparaíso, Chile<br />Bogotá, Kolumbien<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br />Quito, Ecuador<br />Lima, Peru | Argentinien<br />Brasilien<br />Chile<br />Kolumbien<br />Ecuador<br />Peru<br />Uruguay |
 | Europa | Wien, Österreich<br />Brüssel, Belgien<br />Sofia, Bulgarien<br />Zagreb, Kroatien<br />Prag, Tschechien<br />Kopenhagen, Dänemark<br /> Helsinki, Finnland<br /> Oslo, Norwegen<br />Marseille, Frankreich<br />Paris, Frankreich<br />Berlin, Deutschland<br />Frankfurt, Deutschland<br />Athen, Griechenland<br />Budapest, Ungarn<br />Dublin, Irland<br />Mailand, Italien<br />Amsterdam, Niederlande<br />Warschau, Polen<br />Lissabon, Portugal<br />Bukarest, Rumänien<br />Barcelona, Spanien<br />Madrid, Spanien<br />Stockholm, Schweden<br />Zürich, Schweiz<br />London, Großbritannien<br />Manchester, Großbritannien | Wien, Österreich<br />Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Marseille, Frankreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Mailand, Italien<br />Riga, Lettland<br />Amsterdam, Niederlande<br />Warschau, Polen<br />Madrid, Spanien<br />Stockholm, Schweden<br />London, Großbritannien | Österreich<br />Bulgarien<br />Dänemark<br />Finnland<br />Frankreich<br />Deutschland<br />Griechenland<br />Irland<br />Italien<br />Niederlande<br />Polen<br />Russland<br />Spanien<br />Schweden<br />Schweiz<br />United Kingdom |
 | Afrika | Kapstadt, Südafrika<br />Johannesburg, Südafrika<br />Lagos, Nigeria<br />Nairobi, Kenia | Johannesburg, Südafrika | Südafrika |
-| Naher Osten | Dubai, Vereinigte Arabische Emirate | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar<br />Vereinigte Arabische Emirate |
+| Naher Osten | Dubai, Vereinigte Arabische Emirate<br />Tel Aviv, Israel<br />Istanbul, Türkei | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar<br />Vereinigte Arabische Emirate |
 | Indien | Chennai, Indien<br />Hyderabad, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien | Bengaluru (Bangalore), Indien<br />Chennai, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br /> | Indien |
 | Asia | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Malaysia<br />Jakarta, Indonesien<br />Manila, Philippinen<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Taipei, Taiwan<br />Bangkok, Thailand<br />Ho-Chi-Minh-Stadt, Vietnam | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan<br />Taipei, Taiwan | Hongkong<br />Indonesien<br />Israel<br />Japan<br />Macau (SAR)<br />Malaysia<br />Philippinen<br />Singapur<br />Südkorea<br />Taiwan<br />Thailand<br />Türkei<br />Vietnam |
 | Australien und Neuseeland | Brisbane, Australien<br />Melbourne, Australien<br />Perth, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |

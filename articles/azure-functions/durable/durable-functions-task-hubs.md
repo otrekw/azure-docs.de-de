@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262485"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604611"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
@@ -35,7 +35,13 @@ Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Kont
 
 ## <a name="task-hub-names"></a>Aufgabenhubnamen
 
-Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* deklariert ist, wie im folgenden Beispiel gezeigt:
+Aufgabenhubs werden anhand eines Namens identifiziert, der den folgenden Regeln entspricht:
+
+* Enthält ausschließlich alphanumerische Zeichen.
+* Beginnen mit einem Buchstaben.
+* Ist mindestens 3 Zeichen und höchstens 45 Zeichen lang.
+
+Der Name des Aufgabenhubs wird in der Datei *host.json* deklariert, wie im folgenden Beispiel gezeigt:
 
 ### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 

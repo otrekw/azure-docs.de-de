@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Datumsangaben
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Datumsangaben verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986207"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084786"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datumsfunktionen für ARM-Vorlagen
 
@@ -21,7 +21,7 @@ Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Datumsang
 
 `dateTimeAdd(base, duration, [format])`
 
-Hiermit wird einem datetime-Basiswert eine Dauer hinzugefügt.
+Hiermit wird einem Basiswert eine Dauer hinzugefügt. ISO 8601-Format wird erwartet.
 
 ### <a name="parameters"></a>Parameter
 

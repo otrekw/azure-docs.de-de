@@ -1,39 +1,39 @@
 ---
-title: Konvertieren eines älteren Exchange Peerings in eine Azure-Ressource mithilfe von PowerShell
+title: Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource mithilfe von PowerShell
 titleSuffix: Azure
-description: Konvertieren eines älteren Exchange Peerings in eine Azure-Ressource mithilfe von PowerShell
+description: Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource mithilfe von PowerShell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774001"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686793"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>Konvertieren eines älteren Exchange Peerings in eine Azure-Ressource mithilfe von PowerShell
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource mithilfe von PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell-Cmdlets ein vorhandenes Legacy-Exchange Peering in eine Azure-Ressource konvertieren.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](howto-legacy-exchange-portal.md) ausführen.
+Sie können diese Anleitung auch im Azure-[Portal](howto-legacy-exchange-portal.md) durchführen, wenn Sie das vorziehen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für das Austauschpeering](walkthrough-exchange-all.md).
+* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [Exemplarische Vorgehensweise für das Exchange Peering](walkthrough-exchange-all.md).
 
-### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+### <a name="work-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Konvertieren einer älteren Instanz für Austauschpeering in eine Azure-Ressource
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Abrufen des Legacy- Exchange Peerings für die Konvertierung
-Im Folgenden finden Sie das Beispiel zum Abrufen einer älteren Instanz für Exchange Peering an einem Peeringstandort in Seattle:
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Abrufen des Legacy-Exchange Peerings für die Konvertierung
+Dieses Beispiel zeigt, wie Sie eine ältere Instanz für Exchange Peering an einem Peeringstandort in Seattle abrufen:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ Die Antwort kann wie folgt aussehen:
 ```
 
 ### <a name="convert-legacy-peering"></a>Legacy-Peering konvertieren
-Der Befehl unten kann dazu verwendet werden, ein Legacy-Exchange Peering in eine Azure-Ressource zu konvertieren:
+Dieser Befehl kann dazu verwendet werden, ein Legacy-Exchange Peering in eine Azure-Ressource zu konvertieren:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,9 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Beachten Sie, dass Änderungen beim Konvertieren einer älteren Peering-Instanz in eine Azure-Ressource nicht unterstützt werden.&nbsp;
+> Änderungen werden beim Konvertieren einer älteren Peering-Instanz in eine Azure-Ressource nicht unterstützt.
+&nbsp;
 
-Unten sehen Sie eine Beispielantwort, wenn die End-to-End-Bereitstellung erfolgreich abgeschlossen wurde:
+Diese Beispielantwort wird angezeigt, wenn die End-to-End-Bereitstellung erfolgreich abgeschlossen wurde:
 
 ```powershell
     Name                     : SeattleExchangePeering

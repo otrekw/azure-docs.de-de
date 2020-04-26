@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348969"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084956"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -391,7 +391,7 @@ Azure Functions speichert Blobbelege in einem Container mit dem Namen *azure-web
 * Blobname
 * ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
 
-Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen. Auch wenn eine erneute Verarbeitung eventuell nicht sofort ausgeführt wird, erfolgt sie doch garantiert zu einem späteren Zeitpunkt.
+Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen. Auch wenn eine erneute Verarbeitung eventuell nicht sofort ausgeführt wird, erfolgt sie doch garantiert zu einem späteren Zeitpunkt. Für eine sofortige erneute Verarbeitung kann das *ScanInfo*-Blob in *azure-webjobs-hosts/blobscaninfo* aktualisiert werden. Alle Blobs mit einem Zeitstempel der letzten Änderung, der nach der `LatestScan`-Eigenschaft liegt, werden erneut überprüft.
 
 ## <a name="poison-blobs"></a>Nicht verarbeitbare Blobs
 

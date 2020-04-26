@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Datenbankrollen und Benutzer auf einem Analys
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273695"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454202"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -27,8 +27,7 @@ Folgende Rollenberechtigungen stehen zur Verfügung:
 
 Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in Visual Studio mit Analysis Services-Projekten Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SQL Server Management Studio (SSMS), [Analysis Services-PowerShell-Cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) oder die [Tabular Model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
 
-Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) und die `MailEnabled`-Eigenschaft auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
-
+Verwenden Sie beim Hinzufügen einer **Sicherheitsgruppe** `obj:groupid@tenantid`.
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>So fügen Sie Rollen und Benutzer in Visual Studio hinzu oder verwalten diese  
   
@@ -133,7 +132,7 @@ Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer be
   
 Zeilenfilter können nur für Rollen mit den Berechtigungen „Lesen“ und „Lesen und Verarbeiten“ definiert werden. Wenn für eine bestimmte Tabelle kein Zeilenfilter definiert ist, können Mitglieder standardmäßig alle Zeilen in der Tabelle abfragen, sofern keine Kreuzfilterung aus einer anderen Tabelle gilt.
   
- Zeilenfilter erfordern eine DAX-Formel, die als TRUE- oder FALSE-Wert ausgewertet werden muss, um die Zeilen zu definieren, die von Mitgliedern dieser bestimmten Rolle abgefragt werden können. Zeilen, die in der DAX-Formel nicht enthalten sind, können nicht abgefragt werden. Bei der Tabelle „Customers“ mit dem Zeilenfilterausdruck *=Customers[Country]="USA"* können Mitglieder der Rolle „Sales“ beispielsweise nur Kunden in den USA anzeigen.  
+ Zeilenfilter erfordern eine DAX-Formel, die als TRUE- oder FALSE-Wert ausgewertet werden muss, um die Zeilen zu definieren, die von Mitgliedern dieser bestimmten Rolle abgefragt werden können. Zeilen, die in der DAX-Formel nicht enthalten sind, können nicht abgefragt werden. Bei der Tabelle „Customers“ mit dem Zeilenfilterausdruck *=Customers [Country] = "USA"* können Mitglieder der Rolle „Sales“ beispielsweise nur Kunden in den USA anzeigen.  
   
 Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn eine Tabelle über mehrere Beziehungen verfügt, wird die Sicherheit für die aktive Beziehung mithilfe von Filtern gewährleistet. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
   

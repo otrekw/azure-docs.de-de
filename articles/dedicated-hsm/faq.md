@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064925"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683322"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -40,7 +40,7 @@ Microsoft ist eine Partnerschaft mit Gemalto eingegangen, um den Azure Dedicated
 
 ### <a name="q-what-is-an-hsm-used-for"></a>F: Wofür wird ein HSM verwendet?
 
-HSMs dienen zur Speicherung von Kryptografieschlüsseln, die für Kryptografiefunktionen wie SSL (Secure Sockets Layer), die Verschlüsselung von Daten, die PKI (Public Key-Infrastruktur), die Verwaltung digitaler Rechte (Digital Rights Management, DRM) und die Signatur von Dokumenten verwendet werden.
+HSMs dienen zur Speicherung von Kryptografieschlüsseln, die für Kryptografiefunktionen wie TLS (Transport Layer Security), die Verschlüsselung von Daten, die PKI (Public Key-Infrastruktur), die Verwaltung digitaler Rechte (Digital Rights Management, DRM) und die Signatur von Dokumenten verwendet werden.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>F: Wie funktioniert Dedicated HSM?
 
@@ -69,6 +69,7 @@ Seit Ende März 2019 ist Dedicated HSM in den 14 unten aufgeführten Regionen ve
 * East US
 * USA (Ost) 2
 * USA (Westen)
+* USA, Westen 2
 * USA Süd Mitte
 * Asien, Südosten
 * Asien, Osten
@@ -84,6 +85,10 @@ Seit Ende März 2019 ist Dedicated HSM in den 14 unten aufgeführten Regionen ve
 * Kanada, Osten
 * Australien (Osten)
 * Australien, Südosten
+* Schweiz, Norden
+* Schweiz, Westen
+* US Government, Virginia
+* US Gov Texas
 
 ## <a name="interoperability"></a>Interoperabilität
 
@@ -132,13 +137,13 @@ Ja. Weitere Informationen finden Sie im Gemalto-Migrationshandbuch.
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>F: Wie kann ich entscheiden, ob Azure Key Vault oder Azure Dedicated HSM verwendet werden sollte?
 
-Azure Dedicated HSM ist die geeignete Wahl für Unternehmen, die zu lokalen Azure-Anwendungen migrieren, die HSMs verwenden. Dedizierte HSMs bieten die Möglichkeit, eine Anwendung mit minimalen Änderungen zu migrieren. Wenn kryptografische Vorgänge im Code der Anwendung ausgeführt werden, der in einem virtuellen Azure-Computer oder in einer Web-App ausgeführt wird, können sie Dedicated HSM verwenden. Im Allgemeinen kann Software auf Datenträgern, die in IaaS-Modellen (Infrastructure-as-a-Service) ausgeführt wird, die HSMs als Schlüsselspeicher unterstützen, Dedicate HSM verwenden, z.B. Application Gateway oder Traffic Manager für schlüsselloses SSL, ADCS (Active Directory-Zertifikatdienste) oder ähnliche PKI-Tools, Tools/Anwendungen für die Dokumentensignierung, Codesignierung oder einen SQL Server (IaaS), der mit TDE (transparente Datenbankverschlüsselung) mit Masterkey in einem HSM unter Verwendung eines EKM-Anbieters (Extensible Key Management) konfiguriert ist. Azure Key Vault eignet sich für „in der Cloud geborene“ Anwendungen oder für Verschlüsselungsszenarien für ruhende Daten, bei denen Kundendaten von PaaS- (Platform-as-a-Service) oder SaaS-Szenarien (Software-as-a-Service) wie Office 365 mit Kundenschlüssel, Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store-Verschlüsselung mit vom Kunden verwaltetem Schlüssel, Azure Storage-Verschlüsselung mit vom Kunden verwaltetem Schlüssel und Azure SQL mit vom Kunden verwaltetem Schlüssel verarbeitet werden.
+Azure Dedicated HSM ist die geeignete Wahl für Unternehmen, die zu lokalen Azure-Anwendungen migrieren, die HSMs verwenden. Dedizierte HSMs bieten die Möglichkeit, eine Anwendung mit minimalen Änderungen zu migrieren. Wenn kryptografische Vorgänge im Code der Anwendung ausgeführt werden, der in einem virtuellen Azure-Computer oder in einer Web-App ausgeführt wird, können sie Dedicated HSM verwenden. Im Allgemeinen kann Software auf Datenträgern, die in IaaS-Modellen (Infrastructure-as-a-Service) ausgeführt wird, die HSMs als Schlüsselspeicher unterstützen, Dedicate HSM verwenden, z.B. Application Gateway oder Traffic Manager für schlüsselloses TLS, ADCS (Active Directory-Zertifikatdienste) oder ähnliche PKI-Tools, Tools/Anwendungen für die Dokumentensignierung, Codesignierung oder einen SQL Server (IaaS), der mit TDE (transparente Datenbankverschlüsselung) mit Masterkey in einem HSM unter Verwendung eines EKM-Anbieters (Extensible Key Management) konfiguriert ist. Azure Key Vault eignet sich für „in der Cloud geborene“ Anwendungen oder für Verschlüsselungsszenarien für ruhende Daten, bei denen Kundendaten von PaaS- (Platform-as-a-Service) oder SaaS-Szenarien (Software-as-a-Service) wie Office 365 mit Kundenschlüssel, Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store-Verschlüsselung mit vom Kunden verwaltetem Schlüssel, Azure Storage-Verschlüsselung mit vom Kunden verwaltetem Schlüssel und Azure SQL mit vom Kunden verwaltetem Schlüssel verarbeitet werden.
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>F: Welche Verwendungsszenarien eignen sich am besten für Azure Dedicated HSM?
 
 Azure Dedicated HSM eignet sich am besten für Migrationsszenarien. Dies bedeutet, dass Sie lokale Anwendungen zu Azure migrieren, die bereits HSMs verwenden. Dies bietet eine reibungsarme Option für die Migration zu Azure mit minimalen Änderungen an der Anwendung. Wenn kryptografische Vorgänge im Code der Anwendung ausgeführt werden, der in einem virtuellen Azure-Computer oder in einer Web-App ausgeführt wird, kann Dedicated HSM verwendet werden. Im Allgemeinen kann Software auf Datenträgern, die in IaaS-Modellen (Infrastructure-as-a-Service) ausgeführt wird, die HSMs als Schlüsselspeicher unterstützen, Dedicate HSM verwenden. Beispiele dafür sind:
 
-* Application Gateway oder Traffic Manager für schlüsselloses SSL
+* Application Gateway oder Traffic Manager für schlüsselloses TLS
 * ADCS (Active Directory-Zertifikatdienste)
 * Ähnliche PKI-Tools
 * Tools/Anwendungen für das Signieren von Dokumenten

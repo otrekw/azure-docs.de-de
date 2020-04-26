@@ -1,5 +1,5 @@
 ---
-title: Verschlüsselung sicherer Ressourcen in Automation
+title: Verschlüsseln sicherer Ressourcen in Azure Automation
 description: Azure Automation schützt sichere Ressourcen mithilfe mehrerer Verschlüsselungsstufen. Standardmäßig erfolgt die Verschlüsselung mittels von Microsoft verwalteter Schlüssel. Kunden können ihre Automation-Konten so konfigurieren, dass kundenseitig verwaltete Schlüssel für die Verschlüsselung verwendet werden. In diesem Artikel werden die Details beider Verschlüsselungsmodi sowie die Vorgehensweise zum Wechseln zwischen diesen beiden beschrieben.
 services: automation
 ms.service: automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246237"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604815"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Sichere Ressourcen in Azure Automation
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Verschlüsseln sicherer Ressourcen in Azure Automation
 
 Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Ressourcen werden in Azure Automation mithilfe mehrerer Verschlüsselungsstufen geschützt. Basierend auf dem Schlüssel der obersten Ebene, der für die Verschlüsselung verwendet wird, gibt es zwei Modelle für die Verschlüsselung:
--   Verwendung der von Microsoft verwalteten Schlüssel
--   Verwendung der kundenseitig verwalteten Schlüssel
+-    Verwendung der von Microsoft verwalteten Schlüssel
+-    Verwendung der kundenseitig verwalteten Schlüssel
 
 ## <a name="microsoft-managed-keys"></a>Von Microsoft verwaltete Schlüssel
 
@@ -30,9 +30,9 @@ Jede sichere Ressource wird in Azure Automation mit einem eindeutigen Schlüssel
 
 ## <a name="customer-managed-keys-with-key-vault-preview"></a>Von Kunden verwaltete Schlüssel mit Key Vault (Preview)
 
-Sie können die Verschlüsselung sicherer Ressourcen für Ihr Automation-Konto mit Ihren eigenen Schlüsseln verwalten. Wenn Sie einen kundenseitig verwalteten Schlüssel auf der Ebene des Automation-Kontos angeben, wird dieser Schlüssel zum Schutz und zur Kontrolle des Zugriffs auf den Kontoverschlüsselungsschlüssel für das Automation-Konto verwendet, wobei dieser wiederum zum Ver- und Entschlüsseln aller sicheren Ressourcen verwendet wird. Vom Kunden verwaltete Schlüssel bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Sie können auch die zum Schutz Ihrer sicheren Ressourcen verwendeten Verschlüsselungsschlüssel überwachen.
+Sie können die Verschlüsselung sicherer Ressourcen für Ihr Automation-Konto mit Ihren eigenen Schlüsseln verwalten. Wenn Sie einen kundenseitig verwalteten Schlüssel auf der Ebene des Automation-Kontos angeben, wird dieser Schlüssel zum Schutz und zur Kontrolle des Zugriffs auf den Kontoverschlüsselungsschlüssel für das Automation-Konto verwendet. Dieser wiederum wird zum Ver- und Entschlüsseln aller sicheren Ressourcen verwendet. Vom Kunden verwaltete Schlüssel bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Sie können auch die zum Schutz Ihrer sicheren Ressourcen verwendeten Verschlüsselungsschlüssel überwachen.
 
-Verwenden Sie Azure Key Vault, um kundenseitig verwaltete Schlüssel zu speichern. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren.  Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
+Verwenden Sie Azure Key Vault, um kundenseitig verwaltete Schlüssel zu speichern. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren.  Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Aktivieren von kundenseitig verwalteten Schlüsseln für ein Automation-Konto
 
@@ -192,10 +192,7 @@ Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie Pow
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
-
+- [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 - [Zertifikatobjekte in Azure Automation](shared-resources/certificates.md)
-
 - [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md)
-
 - [Variable Objekte in Azure Automation](shared-resources/variables.md)

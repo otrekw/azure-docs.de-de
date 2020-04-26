@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418808"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682996"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Anzeigen des Inhalts einer Datei, die mit der Änderungsnachverfolgung überwacht wird
 
@@ -44,19 +44,19 @@ Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei v
 
 In den folgenden Schritten wird exemplarisch das Aktivieren der Nachverfolgung für eine Datei erläutert:
 
-1. Wählen Sie auf der Seite **Einstellungen bearbeiten** von **Änderungsnachverfolgung** entweder **Windows-Dateien** oder **Linux-Dateien** aus, und klicken Sie auf **Hinzufügen**.
+1. Wählen Sie auf der Seite „Einstellungen bearbeiten“ von **Änderungsnachverfolgung** eine der Registerkarten **Windows-Dateien** oder **Linux-Dateien** aus, und klicken Sie auf **Hinzufügen**.
 
-1. Füllen Sie die Informationen für den Dateipfad aus, und wählen Sie **Wahr** unter **Dateiinhalte für alle Einstellungen hochladen** aus. Diese Einstellung ermöglicht die Nachverfolgung von Dateiinhalten nur für diesen Dateipfad.
+1. Füllen Sie die Informationen für den Dateipfad aus, und wählen Sie unter **Dateiinhalte für alle Einstellungen hochladen** „True“ aus. Diese Einstellung ermöglicht die Nachverfolgung von Dateiinhalten nur für diesen Dateipfad.
 
    ![Hinzufügen einer Linux-Datei](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>Anzeigen des Inhalts einer nachverfolgten Datei
 
-1. Sobald eine Änderung für die Datei oder eine Datei im Pfad erkannt wurde, wird sie im Portal angezeigt. Wählen Sie die Dateiänderung in der Liste der Änderungen aus. Der Bereich **Änderungsdetails** wird angezeigt.
+1. Sobald eine Änderung für die Datei oder eine Datei im Pfad erkannt wurde, wird sie im Portal angezeigt. Wählen Sie die Dateiänderung in der Liste der Änderungen aus. Der Bereich „Änderungsdetails“ wird angezeigt.
 
    ![Änderungen auflisten](./media/change-tracking-file-contents/change-list.png)
 
-1. Auf der Seite **Änderungsdetails** sehen Sie den Standard vor und nach der Dateiinformation. Klicken Sie links oben auf **Änderungen am Dateiinhalt anzeigen**, um den Inhalt der Datei anzuzeigen.
+1. Im Bereich „Änderungsdetails“ werden die Standarddateiinformationen von vorher und nachher angezeigt. Wählen Sie **Änderungen am Dateiinhalt anzeigen** aus, um den Inhalt der Datei anzuzeigen.
 
    ![Änderungsdetails](./media/change-tracking-file-contents/change-details.png)
 

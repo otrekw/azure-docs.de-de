@@ -7,22 +7,17 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: c2c909d8ef2be982d4dd4a70b5f35d03e8e71418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659967"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770383"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Aktualisieren einer internen Azure Load Balancer-Instanz: keine ausgehende Verbindung erforderlich
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
-Ein Upgrade umfasst zwei Phasen:
-
-1. Migrieren der Konfiguration
-2. Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
-
-Dieser Artikel behandelt die Migration einer Konfiguration. Die Vorgehensweise zu Hinzufügen virtueller Computer zu Back-End-Pools kann abhängig von Ihrer spezifischen Umgebung variieren. Einige generelle Empfehlungen dazu finden Sie jedoch [hier](#add-vms-to-backend-pools-of-standard-load-balancer).
+In diesem Artikel wird ein PowerShell-Skript eingeführt, das einen Load Balancer Standard mit derselben Konfiguration erstellt wie der des Load Balancers Basic zusammen mit der Migration von Datenverkehr vom Load Balancer Basic zum Load Balancer Standard.
 
 ## <a name="upgrade-overview"></a>Upgradeübersicht
 
@@ -30,17 +25,18 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 * Erstellt einen internen SKU-Lastenausgleich im Tarif „Standard“ an dem von Ihnen angegebenen Standort. Beachten Sie, dass keine [ausgehende Verbindung](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) durch den internen Lastenausgleich im Tarif „Standard“ bereitgestellt wird.
 * Nahtloses Kopieren der Konfigurationen der Load Balancer-Instanz mit Basic-SKU in die neu erstellte Load Balancer Standard-Instanz.
+* Nahtloses Verschieben der privaten IPs vom Load Balancer Basic in den neu erstellten Load Balancer Standard.
+* Nahtloses Verschieben der VMs aus dem Back-End-Pool des Load Balancers Basic in den Back-End-Pool des Load Balancers Standard
 
 ### <a name="caveatslimitations"></a>Vorbehalte/Einschränkungen
 
 * Das Skript unterstützt nur das Upgrade des internen Lastenausgleichs, wenn keine ausgehende Verbindung erforderlich ist. Wenn Sie für einige Ihrer VMs eine [ausgehende Verbindung](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) benötigen, finden Sie auf dieser [Seite](upgrade-InternalBasic-To-PublicStandard.md) entsprechende Anweisungen. 
-* Die Load Balancer Standard-Instanz hat neue öffentliche Adressen. Die mit der vorhandenen Load Balancer Basic-Instanz verknüpften IP-Adressen können aufgrund der abweichenden SKUs nicht nahtlos auf die Load Balancer Standard-Instanz übertragen werden.
 * Wenn die Load Balancer Standard-Instanz in einer anderen Region erstellt wird, können die virtuellen Computer aus der alten Region nicht der neu erstellten Load Balancer Standard-Instanz zugeordnet werden. Erstellen Sie zur Umgehung dieser Einschränkung einen neuen virtuellen Computer in der neuen Region.
 * Wenn Ihre Load Balancer-Instanz über keine Front-End-IP-Konfiguration oder über keinen Back-End-Pool verfügt, tritt beim Ausführen des Skripts wahrscheinlich ein Fehler auf. Stellen Sie sicher, dass die Angaben vorhanden sind.
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
-Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) herunter.
+Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0) herunter.
 ## <a name="use-the-script"></a>Verwenden des Skripts
 
 Je nach dem, wie Ihre lokale PowerShell-Umgebung eingerichtet und eingestellt ist, gibt es zwei Optionen für Sie:
@@ -84,30 +80,6 @@ So führen Sie das Skript aus
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
-
-Überprüfen Sie zunächst, ob durch das Skript erfolgreich eine neue interne Load Balancer Standard-Instanz mit exakt der migrierten Konfiguration Ihrer internen Load Balancer Basic-Instanz erstellt wurde. Sie können dies über das Azure-Portal prüfen.
-
-Senden Sie zum manuellen Testen etwas Datenverkehr über die Load Balancer Standard-Instanz.
-  
-In den folgenden Szenarien wird gezeigt, wie Sie virtuelle Computer zu Back-End-Pools der neu erstellten internen Load Balancer Standard-Instanz hinzufügen und sie konfigurieren (einschließlich Empfehlungen):
-
-* **Verschieben vorhandener virtueller Computer aus Back-End-Pools der alten internen Load Balancer Basic-Instanz in Back-End-Pools einer neu erstellten internen Load Balancer Standard-Instanz**.
-    1. Melden Sie sich zur Durchführung der Aufgaben dieser Schnellstartanleitung am [Azure-Portal](https://portal.azure.com) an.
- 
-    1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die **neu erstellte Load Balancer Standard-Instanz** aus.
-   
-    1. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools**.
-   
-    1. Wählen Sie den Back-End-Pool aus, der dem Back-End-Pool der Load Balancer Basic-Instanz entspricht. Wählen Sie den folgenden Wert aus: 
-      - **Virtual Machine** (Virtueller Computer): Wählen Sie in der Dropdownliste die virtuellen Computer aus dem entsprechenden Back-End-Pool der Load Balancer Basic-Instanz aus.
-    1. Wählen Sie **Speichern** aus.
-    >[!NOTE]
-    >Für virtuelle Computer mit öffentlichen IP-Adressen müssen zuerst Standard-IP-Adressen erstellt werden. Hierbei können allerdings keine identischen IP-Adressen garantiert werden. Heben Sie die Zuordnung der virtuellen Computer zu Basic-IP-Adressen auf, und ordnen Sie sie den neu erstellten Standard-IP-Adressen zu. Anschließend können Sie die Schritte zum Hinzufügen von virtuellen Computern zum Back-End-Pool der Load Balancer Standard-Instanz ausführen. 
-
-* **Erstellen neuer virtueller Computer, um sie den Back-End-Pools der neu erstellten internen Load Balancer Standard-Instanz hinzuzufügen**.
-    * Weitere Informationen zum Erstellen eines virtuellen Computers sowie zum Zuordnen des virtuellen Computers zu Load Balancer Standard finden Sie [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
-
 ## <a name="common-questions"></a>Häufig gestellte Fragen
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Gibt es irgendwelche Einschränkungen mit dem Azure PowerShell-Skript zum Migrieren der Konfiguration von v1 zu v2?
@@ -116,7 +88,7 @@ Ja. Lesen Sie [Vorbehalte/Einschränkungen](#caveatslimitations).
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Leitet das Azure PowerShell-Skript auch den Datenverkehr von meiner Load Balancer Basic-Instanz zur neu erstellten Load Balancer Standard-Instanz um?
 
-Nein. Das Azure PowerShell-Skript migriert nur die Konfiguration. Die Migration des Datenverkehrs liegt in Ihrer Verantwortung und muss von Ihnen gesteuert werden.
+Ja, der Datenverkehr wird migriert. Wenn Sie den Datenverkehr persönlich migrieren möchten, verwenden Sie [dieses Skript](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0), das virtuelle Computer nicht für Sie verschiebt.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ich hatte beim Verwenden dieses Skripts einige Probleme. Wie erhalte ich Hilfe?
   

@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198597"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535586"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurieren einer Application Gateway-Instanz mit einem Endpunkt für den internen Lastenausgleich (Internal Load Balancer, ILB)
 
 Ein Azure Application Gateway kann mit einer VIP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Ein interner Endpunkt verwendet eine private IP-Adresse für das Front-End, das auch als *ILB-Endpunkt (Internal Load Balancer, interner Lastenausgleich)* bezeichnet wird.
 
-Das Konfigurieren des Gateways mit einer privaten Front-End-IP-Adresse ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für die Dienste und Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befinden und nicht für das Internet verfügbar gemacht werden, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder SSL-Terminierung erfordern.
+Das Konfigurieren des Gateways mit einer privaten Front-End-IP-Adresse ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist ebenfalls nützlich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befinden und nicht für das Internet verfügbar gemacht werden, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder Transport Layer Security (TLS), früher als SSL-Auslagerung (Secure Sockets Layer) bekannt, erfordern.
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren einer Application Gateway-Instanz mit einer privaten Front-End-IP-Adresse über das Azure-Portal.
 
@@ -95,8 +95,8 @@ Führen Sie dazu die folgenden Schritte aus:
    - Wählen Sie für *Ressourcengruppe* den Wert **myResourceGroupAG** aus.
    - *myVM*: als **Name des virtuellen Computers**.
    - Wählen Sie als **Image** den Wert **Windows Server 2019 Datacenter** aus.
-   - *azureadmin*: als **Benutzername**.
-   - *Azure123456!* als **Kennwort**.
+   - Einen gültigen **Benutzernamen**.
+   - Ein gültiges **Kennwort**.
 5. Übernehmen Sie die verbleibenden Standardwerte, und wählen Sie **Weiter: Datenträger**.
 6. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Netzwerk** aus.
 7. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist.

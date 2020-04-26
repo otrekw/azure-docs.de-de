@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671632"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869941"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -31,6 +31,10 @@ Navigieren Sie für Azure Functions zu Ihrer Funktions-App, klicken Sie im obere
 Auf der Startseite der App Service-Diagnose können Sie mithilfe der Schlüsselwörter auf den einzelnen Kacheln der Startseite die Kategorie auswählen, die auf das Problem mit Ihrer App am ehesten zutrifft. Außerdem finden Sie auf dieser Seite **Diagnosetools** für Windows-Apps. Weitere Informationen finden Sie unter [Diagnosetools (nur für Windows-Apps)](#diagnostic-tools-only-for-windows-app).
 
 ![Startseite](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> Wenn Ihre App nicht aktiv oder langsam ist, können Sie [eine Profilerstellungs-Ablaufverfolgung erfassen](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html), um die Ursache des Problems zu identifizieren. Die Profilerstellung ist schlank und für Produktionsszenarien konzipiert.
+>
 
 ## <a name="interactive-interface"></a>Interaktive Benutzeroberfläche
 

@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537643"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -32,7 +32,7 @@ Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Featu
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features bereitgestellt. Zu diesen Features gehören benutzerdefinierte Domänen und SSL-Zertifikate, automatische Skalierung, Bereitstellungsslots, Sicherungen, Traffic Manager-Integration und mehr. Je höher der Tarif, desto mehr Features sind verfügbar. Informationen dazu, welche Features für einen Tarif unterstützt werden, finden Sie unter [App Service-Pläne](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features bereitgestellt. Zu diesen Features gehören benutzerdefinierte Domänen und TLS/SSL-Zertifikate, automatische Skalierung, Bereitstellungsslots, Sicherungen, Traffic Manager-Integration und mehr. Je höher der Tarif, desto mehr Features sind verfügbar. Informationen dazu, welche Features für einen Tarif unterstützt werden, finden Sie unter [App Service-Pläne](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 <a name="new-pricing-tier-premiumv2"></a>
 
@@ -71,11 +71,11 @@ Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr
 - Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr auf Stundenbasis an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
 - Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an.
 
-Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
+Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, TLS/SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
 
 - App Service-Domänen: Sie zahlen, wenn Sie in Azure eine Domäne erwerben, sowie bei jeder jährlichen Erneuerung.
 - App Service-Zertifikate: Sie zahlen, wenn Sie in Azure ein Zertifikat erwerben, sowie bei jeder jährlichen Erneuerung.
-- IP-basierte SSL-Verbindungen: Es wird eine Gebühr auf Stundenbasis für jede IP-basierte SSL-Verbindung berechnet, aber bei einigen **Standard**-Tarifen (oder höheren Tarifen) erhalten Sie eine kostenlose IP-basierte SSL-Verbindung. SNI-basierte SSL-Verbindungen sind kostenlos.
+- IP-basierte TLS-Verbindungen: Es wird eine Gebühr auf Stundenbasis für jede IP-basierte TLS-Verbindung berechnet, aber bei einigen **Standard**-Tarifen (oder höheren Tarifen) erhalten Sie eine kostenlose IP-basierte TLS-Verbindung. SNI-basierte TLS-Verbindungen sind kostenlos.
 
 > [!NOTE]
 > Wenn Sie App Service in einen anderen Azure-Dienst integrieren, müssen Sie ggf. Gebühren für diese anderen Dienste berücksichtigen. Beispiel: Wenn Sie Azure Traffic Manager zum geografischen Skalieren Ihrer App verwenden, werden Ihnen für Azure Traffic Manager auch Gebühren je nach Nutzung berechnet. Informationen dazu, wie Sie für Ihre dienstübergreifenden Kosten in Azure einen Schätzwert erhalten, finden Sie unter [Preisrechner](https://azure.microsoft.com/pricing/calculator/). 
@@ -86,7 +86,7 @@ Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfigu
 
 Ihr App Service-Plan kann jederzeit zentral hoch- und herunterskaliert werden. Hierzu wird einfach der Tarif für den Plan geändert. Sie können zuerst einen niedrigeren Tarif wählen und dann später hochskalieren, wenn Sie mehr App Service-Features benötigen.
 
-Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Wenn Sie später [eine SSL-Bindung erstellen](configure-ssl-bindings.md) möchten, skalieren Sie Ihren Tarif zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif auf eine höhere VM-Größe hochskalieren.
+Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Wenn Sie später [eine TLS-Bindung erstellen](configure-ssl-bindings.md) möchten, skalieren Sie Ihren Tarif zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif auf eine höhere VM-Größe hochskalieren.
 
 Dies funktioniert auch umgekehrt. Sobald Sie die Funktionen oder Features eines höheren Tarifs nicht mehr benötigen, können Sie zentral auf einen niedrigeren Tarif herunterskalieren und Kosten sparen.
 

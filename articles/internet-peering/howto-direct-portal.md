@@ -1,38 +1,38 @@
 ---
-title: Erstellen oder Ändern einer Instanz für direktes Peering über das Portal
+title: Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 titleSuffix: Azure
-description: Erstellen oder Ändern einer Instanz für direktes Peering über das Portal
+description: Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 67a4944082d3ebc14fd564eedee0310afe6e3ff5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd6aaf584691005dd071a7aba5958070f598978
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773981"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681054"
 ---
-# <a name="create-or-modify-a-direct-peering-using-the-portal"></a>Erstellen oder Ändern einer Instanz für direktes Peering über das Portal
+# <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie über das Portal ein direktes Microsoft-Peering erstellen. Der Artikel veranschaulicht auch, wie Sie den Status der Ressource prüfen und die Ressource aktualisieren, löschen oder ihre Bereitstellung aufheben.
+In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal ein direktes Microsoft-Peering erstellen. Der Artikel veranschaulicht darüber hinaus, wie Sie den Status der Ressource prüfen und die Ressource aktualisieren, löschen oder ihre Bereitstellung aufheben.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShell](howto-direct-powershell.md) ausführen.
+Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von Azure [PowerShell](howto-direct-powershell.md) ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
-* Falls Sie bereits direkte Microsoft-Peerings eingerichtet haben, die nicht in Azure-Ressourcen konvertiert werden, lesen Sie die Informationen unter [Konvertieren eines älteren direkten Peerings in eine Azure-Ressource über das Portal](howto-legacy-direct-portal.md).
+* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [Exemplarische Vorgehensweise für das Direct Peering](walkthrough-direct-all.md).
+* Falls Sie bereits Direct Peering-Verbindungen mit Microsoft eingerichtet haben, die nicht in Azure-Ressourcen konvertiert werden, lesen Sie die Informationen unter [Konvertieren eines Legacy-Direct Peerings in eine Azure-Ressource mithilfe des Portals](howto-legacy-direct-portal.md).
 
 ## <a name="create-and-provision-a-direct-peering"></a>Erstellen und Bereitstellen eines direkten Peerings
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-portal.md)]
 
 ### <a name="create-a-direct-peering"></a><a name=create></a>Erstellen eines direkten Peerings
 
-Sie können mithilfe einer **Peeringressource** eine neue Peeringanforderung erstellen.
+Sie können mithilfe der **Peering**ressource eine neue Peeringanforderung erstellen.
 
 #### <a name="launch-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
@@ -51,8 +51,8 @@ Sie können mithilfe einer **Peeringressource** eine neue Peeringanforderung ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen oder Ändern eines Austauschpeerings über das Portal](howto-exchange-portal.md)
-* [Konvertieren eines älteren Austauschpeerings in eine Azure-Ressource über das Portal](howto-legacy-exchange-portal.md)
+* [Erstellen oder Ändern einer Instanz für Exchange Peering über das Portal](howto-exchange-portal.md)
+* [Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource über das Portal](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367090"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535535"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 
@@ -240,7 +240,7 @@ Sofern Sie diese Informationen also nicht zur Nachverfolgung des Fortschritts ei
 **So aktivieren Sie die Ablaufverfolgung auf Aktivitätsebene**
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Wählen Sie im Abschnitt **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
+2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 3. Wählen Sie auf der Seite „Runbooks“ ein grafisches Runbook in der Liste der Runbooks aus.
 4. Klicken Sie unter **Einstellungen** auf **Protokollierung und Ablaufverfolgung**.
 5. Klicken Sie auf der Seite „Protokollierung und Ablaufverfolgung“ unter **Ausführliche Datensätze protokollieren** auf **Ein**, um die ausführliche Protokollierung zu aktivieren.

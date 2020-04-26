@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283666"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086367"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -182,7 +182,7 @@ Bei den Tests wurden folgende Kriterien verwendet:
 Anhand dieser Ergebnisse bekommen Sie eine Vorstellung davon, was mit einem dedizierten Event Hubs-Cluster möglich ist. Zudem ist bei einem dedizierten Cluster Event Hub Capture für Szenarien mit Microbatch und Langzeitaufbewahrung aktiviert.
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Wie erstelle ich einen Event Hubs Dedicated-Cluster?
-Einen Event Hub Dedicated-Cluster erstellen Sie, indem Sie eine [Supportanfrage zur Kontingenterhöhung](https://portal.azure.com/#create/Microsoft.Support) senden oder sich an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com) wenden. Es dauert in der Regel etwa zwei Wochen, bis der Cluster bereitgestellt und Ihnen zur Verwendung zur Verfügung gestellt wird. Dieser Vorgang ist vorübergehend, bis ein vollständiger Self-Service über das Azure-Portal oder Azure Resource Manager-Vorlagen zur Verfügung steht, bei dem der Cluster nach etwa zwei Stunden bereitgestellt wird.
+Einen Event Hub Dedicated-Cluster erstellen Sie, indem Sie eine [Supportanfrage zur Kontingenterhöhung](https://portal.azure.com/#create/Microsoft.Support) senden oder sich an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com) wenden. Es dauert in der Regel etwa zwei Wochen, bis der Cluster bereitgestellt und Ihnen zur Verwendung zur Verfügung gestellt wird. Dieser Vorgang ist vorübergehend, bis ein vollständiger Self-Service über das Azure-Portal bereitgestellt wird.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

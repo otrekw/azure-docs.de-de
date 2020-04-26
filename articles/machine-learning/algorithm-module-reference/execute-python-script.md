@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365564"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684727"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -164,7 +164,7 @@ Das folgende Beispiel zeigt, wie eine Imagedatei im Modul **Execute Python Scrip
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
 5. Geben oder fügen Sie in das Textfeld **Python script** (Python-Skript) ein gültiges Python-Skript ein.
 
+    > [!NOTE]
+    > Gehen Sie beim Schreiben Ihres Skripts sehr vorsichtig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, z. B. das Verwenden eines nicht deklarierten Objekts oder eines nicht importierten Moduls. Widmen Sie außerdem der Liste der vorinstallierten Module besondere Aufmerksamkeit. Um Module zu importieren, die nicht aufgelistet sind, installieren Sie die entsprechenden Pakete in Ihrem Skript, z. B.
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     Das Textfeld **Python script** (Python-Skript) ist mit einigen Anweisungen in Kommentaren und Beispielcode für den Datenzugriff und die Datenausgabe voraufgefüllt. Sie müssen diesen Code bearbeiten oder ersetzen. Achten Sie darauf, die Python-Konventionen zu Einzug und Schreibweise zu beachten.
 
     + Das Skript muss eine Funktion mit dem Namen `azureml_main` als Einstiegspunkt für dieses Modul enthalten.
-    + Die Einstiegspunktfunktion kann bis zu zwei Eingabeargumente enthalten: `Param<dataframe1>` und `Param<dataframe2>`
+    + Die Einstiegspunktfunktion muss über zwei Eingabeargumente verfügen: `Param<dataframe1>` und `Param<dataframe2>`, auch wenn diese Argumente nicht in Ihrem Skript verwendet werden.
     + ZIP-Dateien, die mit dem dritten Eingabeport verbunden sind, werden entzippt und im Verzeichnis `.\Script Bundle` gespeichert, das dem Python-`sys.path` ebenfalls hinzugefügt wird. 
 
     Wenn Ihre ZIP-Datei `mymodule.py` enthält, importieren Sie sie daher mit `import mymodule`.

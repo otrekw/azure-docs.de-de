@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133071"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457874"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -102,7 +102,7 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Anforderungsfehler**
 
-  Anzahl von fehlerhaften Anforderungen über Application Gateway. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
+  Anzahl von Anforderungen, die von Application Gateway mit 5xx-Serverfehlercodes verarbeitet wurden. Dies umfasst die 5xx-Codes, die von Application Gateway generiert werden, sowie die 5xx-Codes, die vom Back-End generiert werden. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
    
 - **Feste abrechenbare Kapazitätseinheiten**
 
@@ -162,7 +162,7 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Anforderungsfehler**
 
-  Anzahl von fehlerhaften Anforderungen über Application Gateway. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
+  Anzahl von Anforderungen, die von Application Gateway mit 5xx-Serverfehlercodes verarbeitet wurden. Dies umfasst die 5xx-Codes, die von Application Gateway generiert werden, sowie die 5xx-Codes, die vom Back-End generiert werden. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
 
 - **Antwortstatus**
 

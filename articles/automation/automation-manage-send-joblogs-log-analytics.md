@@ -5,24 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 54f77f55a127cd712d43419eb6a85fd5d93a478c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a9f4e641e60d6cf1c481c445767422e8b4df683b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652178"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457687"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Azure Monitor-Protokolle
 
 Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Dieser Prozess beinhaltet nicht die Arbeitsbereichsverknüpfung. Er ist vollkommen unabhängig. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Mit Azure Monitor-Protokollen können Sie jetzt:
 
-* Gewinnen Sie Einblicke in Ihre Automation-Aufträge.
+* Gewinnen Sie Erkenntnisse über den Status Ihrer Automation-Aufträge.
 * Lösen Sie basierend auf Ihrem Runbookauftragsstatus (beispielsweise „Fehler“ oder „Angehalten“) das Senden einer E-Mail oder einer Warnung aus.
 * Schreiben Sie erweiterte Abfragen für Ihre Auftragsdatenströme.
 * Korrelieren Sie Aufträge über Automation-Konten hinweg.
-* Visualisieren Sie Ihren Auftragsverlauf.
+* Benutzerdefinierte Ansichten und Suchabfragen zum Visualisieren von Runbookergebnissen, Runbookauftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Voraussetzungen und Überlegungen zur Bereitstellung
 
@@ -35,7 +38,7 @@ Zum Senden Ihrer Automation-Protokolle an Azure Monitor-Protokolle benötigen Si
 Verwenden Sie den folgenden Befehl, um die Ressourcen-ID für Ihr Azure Automation-Konto zu ermitteln:
 
 ```powershell-interactive
-# Find the ResourceId for the Automation Account
+# Find the ResourceId for the Automation account
 Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
@@ -50,8 +53,9 @@ Sollten Sie über mehrere Automation-Konten (oder über mehrere Arbeitsbereiche)
 
 1. Wählen Sie im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto aus, und wählen Sie dann **Alle Einstellungen** aus. 
 2. Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  
-3. Notieren Sie sich diese Werte von dem Blatt **Eigenschaften**.<br> ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+3. Notieren Sie sich die auf dem Blatt **Eigenschaften** unten angezeigten Eigenschaften.
 
+    ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)erforderlich.
 
 ## <a name="azure-monitor-log-records"></a>Protokolldatensätze in Azure Monitor
 
@@ -104,7 +108,7 @@ Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Azure 
 ## <a name="setting-up-integration-with-azure-monitor-logs"></a>Einrichten der Integration in Azure Monitor-Protokolle
 
 1. Starten Sie auf Ihrem Computer die Windows PowerShell über den **Start**bildschirm.
-2. Führen Sie die folgenden PowerShell-Befehle aus, und bearbeiten Sie den Wert für `[your resource ID]` und `[resource ID of the log analytics workspace]` mit den Werten aus dem vorherigen Abschnitt.
+2. Führen Sie die folgenden PowerShell-Befehle aus, und bearbeiten Sie die Werte für `[your resource ID]` und `[resource ID of the log analytics workspace]` mit den Werten aus dem vorherigen Abschnitt.
 
    ```powershell-interactive
    $workspaceId = "[resource ID of the log analytics workspace]"
@@ -178,15 +182,6 @@ $automationAccountId = "[resource ID of your Automation account]"
 
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
-
-## <a name="summary"></a>Zusammenfassung
-
-Sie erhalten einen besseren Einblick in den Status Ihrer Automation-Aufträge, wenn Sie den Status und die Streamdaten Ihres Automation-Auftrags an Azure Monitor-Protokolle senden und:
-+ Warnungen einrichten, um bei Problemen benachrichtigt zu werden.
-+ Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.
-
-Azure Monitor-Protokolle bietet eine höhere operative Transparenz für Ihre Automation-Aufträge, sodass schneller auf Vorfälle reagiert werden kann.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zur Problembehandlung in Log Analytics finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
@@ -194,4 +189,3 @@ Azure Monitor-Protokolle bietet eine höhere operative Transparenz für Ihre Aut
 * Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
 * Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).
-

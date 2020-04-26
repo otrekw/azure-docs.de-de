@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349583"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870559"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -27,7 +27,7 @@ Um den Zugriff zu steuern und Daten in Azure Logic Apps zu schützen, können Si
 
 ## <a name="access-to-request-based-triggers"></a>Zugriff auf anforderungsbasierte Trigger
 
-Wenn Ihre Logik-App einen anforderungsbasierten Trigger verwendet, der eingehende Aufrufe oder Anforderungen empfängt, z. B. den Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff so einschränken, dass nur autorisierte Clients die Logik-App aufrufen können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Secure Sockets Layer-Protokoll (SSL) verschlüsselt und gesichert.
+Wenn Ihre Logik-App einen anforderungsbasierten Trigger verwendet, der eingehende Aufrufe oder Anforderungen empfängt, z. B. den Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff so einschränken, dass nur autorisierte Clients die Logik-App aufrufen können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Transport Layer Security-Protokoll (TLS), zuvor als Secure Sockets Layer-Protokoll (SSL) bezeichnet, verschlüsselt und gesichert.
 
 Mit diesen Optionen können Sie den Zugriff auf diesen Triggertyp absichern:
 
@@ -182,7 +182,7 @@ Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, kö
 
 Während der Ausführung einer Logik-App werden alle Daten [bei der Übertragung](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) mithilfe von Transport Layer Security (TLS) sowie [im Ruhezustand](../security/fundamentals/encryption-atrest.md) verschlüsselt. Wenn Ihre Logik-App die Ausführung beendet hat, können Sie den Verlauf für diese Ausführung anzeigen, einschließlich der ausgeführten Schritte sowie Status, Dauer, Eingaben und Ausgaben für die einzelnen Aktionen. Diese umfangreichen Informationen geben einen Einblick in die Funktionsweise Ihrer Logik-App und zeigen, wo Sie bei der Problembehandlung ansetzen können.
 
-Wenn Sie den Ausführungsverlauf Ihrer Logik-App anzeigen, authentifiziert Azure Logic Apps Ihren Zugriff und stellt dann Links zu den Ein- und Ausgaben für die Anforderungen und Antworten für jede Ausführung bereit. Bei Aktionen, die Kennwörter, Geheimnisse, Schlüssel oder andere sensible Informationen verarbeiten, sollten Sie jedoch verhindern, dass andere Personen diese Daten einsehen und darauf zugreifen. Wenn Ihre Logik-App beispielsweise ein Geheimnis aus [Azure Key Vault](../key-vault/key-vault-overview.md) erhält, das bei der Authentifizierung einer HTTP-Aktion verwendet werden soll, sollten Sie dieses Geheimnis ausblenden.
+Wenn Sie den Ausführungsverlauf Ihrer Logik-App anzeigen, authentifiziert Azure Logic Apps Ihren Zugriff und stellt dann Links zu den Ein- und Ausgaben für die Anforderungen und Antworten für jede Ausführung bereit. Bei Aktionen, die Kennwörter, Geheimnisse, Schlüssel oder andere sensible Informationen verarbeiten, sollten Sie jedoch verhindern, dass andere Personen diese Daten einsehen und darauf zugreifen. Wenn Ihre Logik-App beispielsweise ein Geheimnis aus [Azure Key Vault](../key-vault/general/overview.md) erhält, das bei der Authentifizierung einer HTTP-Aktion verwendet werden soll, sollten Sie dieses Geheimnis ausblenden.
 
 Um den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App zu steuern, stehen Ihnen folgende Optionen zur Verfügung:
 
@@ -370,7 +370,7 @@ Weitere Informationen finden in diesem Artikel in diesen Abschnitten:
 
 Wenn Sie die [Bereitstellung für Logik-Apps mithilfe von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie geschützte [Vorlagenparameter](../azure-resource-manager/templates/template-parameters.md) definieren, die beim Bereitstellen ausgewertet werden, indem Sie die Typen `securestring` und `secureobject` verwenden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/templates/parameter-files.md).
 
-Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/key-vault-overview.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
+Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/general/overview.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Sichere Parameter in Azure Resource Manager-Vorlagen](#secure-parameters-deployment-template) weiter unten in diesem Thema
@@ -425,7 +425,7 @@ Zum Schützen sensibler Informationen in der Workflowdefinition der Logik-App ve
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Sichere Parameter in Azure Resource Manager-Vorlagen
 
-Eine [Resource Manager-Vorlage](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und die [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weiter Informationen finden Sie unter [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
+Eine [Resource Manager-Vorlage](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/general/overview.md) speichern und die [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weiter Informationen finden Sie unter [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
 
 Hier finden Sie weitere Informationen zu diesen `parameters`-Abschnitten:
 
@@ -655,7 +655,7 @@ Wenn die Option [Clientzertifikat](../active-directory/authentication/active-dir
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp. Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für SSL. |
+| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für TLS-/SSL-Clientzertifikate zu verwendende Authentifizierungstyp. <p><p>**Hinweis**: Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für TLS/SSL. Der HTTP-Connector unterstützt keine zwischengeschalteten TLS/SSL-Zertifikate. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Kennwort** | `password`| Nein | <*password-for-pfx-file*> | Der Parameter für den Zugriff auf die PFX-Datei |
 |||||
@@ -684,7 +684,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 * [Erhöhen der Sicherheit von Back-End-Diensten mithilfe von Clientzertifikatauthentifizierung in API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Erhöhen der Sicherheit Ihres RESTful-Diensts mit Clientzertifikaten](../active-directory-b2c/secure-rest-api.md)
 * [Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
+* [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 

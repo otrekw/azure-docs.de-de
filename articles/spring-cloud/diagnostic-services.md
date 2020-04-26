@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adbcf28cfbbe2ea3b7cc9c7fd0d1c76246938344
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920041"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870410"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -23,6 +23,9 @@ Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle un
 
 Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwachen möchten.
 
+> [!TIP]
+> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs) an.
+
 ## <a name="logs"></a>Protokolle
 
 |Log | BESCHREIBUNG |
@@ -30,7 +33,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 | **ApplicationConsole** | Konsolenprotokoll aller Kundenanwendungen. | 
 | **SystemLogs** | Zurzeit befinden sich nur [Spring Cloud-Konfigurationsserver](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in dieser Kategorie. |
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
