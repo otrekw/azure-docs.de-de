@@ -1,25 +1,25 @@
 ---
 title: Überwachen und Verwalten von Azure HDInsight mithilfe der Ambari-Webbenutzeroberfläche
-description: Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Linux-basierten HDInsight-Clustern verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Webbenutzeroberfläche Ambari verwenden.
+description: Erfahren Sie, wie Sie die Apache Ambari-UI zum Überwachen und Verwalten von HDInsight-Clustern verwenden.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/05/2020
-ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: bceafc5c9c238db7b73a9a3a781fa0fe26274984
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064695"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866574"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari vereinfacht die Verwaltung und Überwachung von Apache Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen.
+Apache Ambari vereinfacht die Verwaltung und Überwachung von Apache Hadoop-Clustern. Diese Vereinfachung erfolgt durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen.
 
 In diesem Dokument erfahren Sie, wie Sie die Webbenutzeroberfläche Ambari mit einem HDInsight-Cluster verwenden.
 
@@ -82,7 +82,7 @@ Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die
 
 ![Apache Ambari – Warnungsgruppen verwalten](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Über den Eintrag __Warnungsbenachrichtigungen verwalten__ im Menü **Aktionen** können Sie ebenfalls Warnungsmethoden verwalten und Warnungsbenachrichtigungen erstellen. Es werden alle aktuellen Benachrichtigungen angezeigt. Sie können hier auch Benachrichtigungen erstellen. Die Benachrichtigungen können bei bestimmten Kombinationen aus Warnung und Schweregrad über **E-Mail** oder **SNMP** gesendet werden. Sie können z.B. eine E-Mail senden, wenn eine der Benachrichtigungen in der Gruppe **YARN Default** auf **Kritisch** festgelegt ist.
+Über den Eintrag __Warnungsbenachrichtigungen verwalten__ im Menü **Aktionen** können Sie zudem Warnungsmethoden verwalten und Warnungsbenachrichtigungen erstellen. Es werden alle aktuellen Benachrichtigungen angezeigt. Erstellen Sie hier Benachrichtigungen. Die Benachrichtigungen können bei bestimmten Kombinationen aus Warnung und Schweregrad über **E-Mail** oder **SNMP** gesendet werden. Sie können z.B. eine E-Mail senden, wenn eine der Benachrichtigungen in der Gruppe **YARN Default** auf **Kritisch** festgelegt ist.
 
 ![Apache Ambari – Warnungsbenachrichtigung erstellen](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -119,10 +119,10 @@ Wenn Sie einen Dienst auswählen, werden weitere ausführliche Informationen zum
 
 #### <a name="quick-links"></a>Quicklinks
 
-Einige Dienste zeigen oben auf der Seite den Link **Quicklinks** an. Hierüber können Sie auf dienstspezifische Webbenutzeroberflächen zugreifen. Beispiel:
+Einige Dienste zeigen oben auf der Seite den Link **Quicklinks** an. Über diesen Link können Sie auf dienstspezifische Webbenutzeroberflächen zugreifen. Beispiel:
 
 * **Job History** : MapReduce-Auftragsverlauf.
-* **Resource Manager** : Benutzeroberfläche des YARN-Ressourcen-Managers.
+* **Resource Manager**: YARN Resource Manager-Benutzeroberfläche.
 * **NameNode** : NameNode-Benutzeroberfläche im Hadoop Distributed File System (HDFS).
 * **Oozie Web UI** : Oozie-Benutzeroberfläche.
 
@@ -135,7 +135,7 @@ Wenn Sie einen dieser Links öffnen, wird eine Registerkarte im Browser geöffne
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari-Benutzer, -Gruppen und -Berechtigungen
 
-Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines in die [Domäne eingebundenen](./domain-joined/hdinsight-security-overview.md) HDInsight-Clusters unterstützt. Informationen zur Verwendung der Ambari-Verwaltungsoberfläche in einem in die Domäne eingebundenen Cluster finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/hdinsight-security-overview.md).
+Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines in die Domäne eingebundenen HDInsight-Clusters unterstützt. Informationen zur Verwendung der Ambari-Verwaltungsoberfläche in einem in die Domäne eingebundenen Cluster finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Ändern Sie nicht das Kennwort für den Ambari-Watchdog (hdinsightwatchdog) in Ihrem Linux-basierten HDInsight-Cluster. Durch eine Kennwortänderung wird die Möglichkeit zum Verwenden von Skriptaktionen oder zum Durchführen von Skalierungsvorgängen mit Ihren Cluster deaktiviert.
@@ -151,7 +151,7 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
 
 1. Wählen Sie den Host aus, den Sie verwalten möchten.
 
-2. Verwenden Sie das Menü **Actions** , um die Aktion auswählen, die Sie durchführen möchten:
+2. Verwenden Sie das Menü **Actions**, um die Aktion auswählen, die Sie durchführen möchten:
 
     |Element |BESCHREIBUNG |
     |---|---|
@@ -179,7 +179,7 @@ Während die Schaltfläche **Actions** alle Dienste neu starten kann, ist es mö
 
 1. Wählen Sie auf der Seite **Dashboard** oder **Dienste** einen Dienst aus.
 
-2. Verwenden Sie am oberen Rand der Registerkarte **Zusammenfassung** die Schaltfläche **Dienstaktionen**, und wählen Sie dann die auszuführende Aktion aus. Dadurch wird der Dienst auf allen Knoten neu gestartet.
+2. Verwenden Sie am oberen Rand der Registerkarte **Zusammenfassung** die Schaltfläche **Dienstaktionen**, und wählen Sie dann die auszuführende Aktion aus. Mit dieser Aktion wird der Dienst auf allen Knoten neu gestartet.
 
     ![Apache Ambari – Einzelne Dienstaktionen](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
@@ -203,7 +203,7 @@ Gehen Sie wie folgt vor, um einen Dienst zu konfigurieren:
 
 ## <a name="ambari-views"></a>Ambari-Ansichten
 
-Ambari-Ansichten ermöglichen Entwicklern das Hinzufügen von Benutzeroberflächenelementen zur Ambari-Webbenutzeroberfläche mit dem [Apache Ambari Views Framework](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight bietet für Hadoop-Clustertypen die folgenden Ansichten:
+Ambari-Ansichten ermöglichen Entwicklern das Hinzufügen von Benutzeroberflächenelementen zur Ambari-Webbenutzeroberfläche mit dem Apache Ambari Views Framework. HDInsight bietet für Hadoop-Clustertypen die folgenden Ansichten:
 
 * Hive-Ansicht: In der Hive-Ansicht können Sie Hive-Abfragen direkt in Ihrem Webbrowser ausführen. Sie können Abfragen speichern sowie Ergebnisse anzeigen, im Clusterspeicher speichern oder auf Ihr lokales System herunterladen. Weitere Informationen zum Verwenden von Hive-Ansichten finden Sie unter [Verwenden von Apache Hive-Ansichten mit HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
@@ -213,8 +213,10 @@ Ambari-Ansichten ermöglichen Entwicklern das Hinzufügen von Benutzeroberfläch
 
 Die folgenden Ambari-Vorgänge werden nicht in HDInsight unterstützt:
 
-* __Verschieben des Metrikensammlungsdiensts__. Beim Anzeigen von Informationen im Metrikensammlungsdienst ist im Menü „Dienstaktionen“ u.a. die Aktion __Metrikensammler verschieben__ vorhanden. Dies wird in HDInsight nicht unterstützt.
+* __Verschieben des Metrikensammlungsdiensts__. Beim Anzeigen von Informationen im Metrikensammlungsdienst ist im Menü „Dienstaktionen“ u.a. die Aktion __Metrikensammler verschieben__ vorhanden. Diese Aktion wird mit HDInsight nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie die [Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) mit HDInsight verwendet wird.
+* [Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) mit HDInsight.
+* [Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen](./hdinsight-changing-configs-via-ambari.md)
+* [Skalieren von Azure HDInsight-Clustern](./hdinsight-scaling-best-practices.md)
