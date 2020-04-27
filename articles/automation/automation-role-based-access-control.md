@@ -6,16 +6,19 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235518"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535569"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
 Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/overview.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Sie können Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs rollenbasierten Zugriff gewähren.
+
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-Konten
 
@@ -204,11 +207,11 @@ Ein Benutzerzugriffsadministrator kann den Benutzerzugriff auf Azure-Ressourcen 
 |Microsoft.Authorization/*|Verwalten der Autorisierung|
 |Microsoft.Support/*|Erstellen und Verwalten von Support-Tickets|
 
-## <a name="onboarding"></a>Onboarding
+## <a name="onboarding-permissions"></a>Onboardingberechtigungen
 
-Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die beim Onboarding virtueller Computer für die Lösungen zur Änderungsnachverfolgung oder Updateverwaltung benötigt werden.
+In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen beschrieben, die beim Onboarding virtueller Computer für die Lösungen zur Änderungsnachverfolgung oder Updateverwaltung benötigt werden.
 
-### <a name="onboarding-from-a-virtual-machine"></a>Onboarding von eines virtuellen Computers
+### <a name="permissions-for-onboarding-from-a-vm"></a>Berechtigungen für das Onboarding von einem virtuellen Computer aus
 
 |**Aktion**  |**Berechtigung**  |**Mindestumfang**  |
 |---------|---------|---------|
@@ -230,7 +233,7 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 
 <sup>1</sup> Diese Berechtigung ist für das Onboarding über die VM-Portal-Benutzeroberfläche erforderlich.
 
-### <a name="onboarding-from-automation-account"></a>Onboarding von Automation-Konto
+### <a name="permissions-for-onboarding-from-automation-account"></a>Berechtigungen für das Onboarding aus einem Automation-Konto heraus
 
 |**Aktion**  |**Berechtigung** |**Mindestumfang**  |
 |---------|---------|---------|
@@ -250,7 +253,7 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write           | Arbeitsbereich        |
 |Bereichskonfiguration erstellen/bearbeiten  | Microsoft.OperationalInsights/workspaces/write   | Arbeitsbereich|
 
-## <a name="update-management"></a>Updateverwaltung
+## <a name="update-management-permissions"></a>Aktualisieren von Verwaltungsberechtigungen
 
 Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst bereitzustellen. Die folgende Tabelle zeigt die Berechtigungen, die zum Verwalten von Bereitstellungen der Updateverwaltung benötigt werden:
 
@@ -265,12 +268,12 @@ Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst berei
 
 ## <a name="configure-rbac-for-your-automation-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten
 
-Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten über das [Portal](#configure-rbac-using-the-azure-portal) und [PowerShell](#configure-rbac-using-powershell).
+Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten über das [Azure-Portal](#configure-rbac-using-the-azure-portal) und [PowerShell](#configure-rbac-using-powershell).
 
 ### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurieren der rollenbasierten Zugriffssteuerung über das Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf der Seite „Automation-Konten“ Ihr Automation-Konto.
-2. Klicken Sie oben links auf das Steuerelement **Zugriffssteuerung (IAM)** , um die Seite „Zugriffssteuerung (IAM)“ zu öffnen. Auf dieser Seite können Sie neue Benutzer, Gruppen und Anwendungen der Verwaltung Ihres Automation-Kontos hinzufügen und vorhandene Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
+2. Klicken Sie auf **Zugriffssteuerung (IAM)** , um die Seite „Zugriffssteuerung (IAM)“ zu öffnen. Auf dieser Seite können Sie neue Benutzer, Gruppen und Anwendungen der Verwaltung Ihres Automation-Kontos hinzufügen und vorhandene Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
 3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
 
    ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)
@@ -281,7 +284,7 @@ Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zug
 
 2. Wählen Sie eine Rolle aus der Liste der verfügbaren Rollen aus. Sie können aber jede der verfügbaren integrierten Rollen, die von Automation-Konten unterstützt werden, oder auch eine eigene, benutzerdefinierte Rolle auswählen.
 
-3. Geben Sie im Feld **Auswählen** den Benutzernamen des Benutzers ein, dem Sie Berechtigungen erteilen möchten. Wählen Sie den Benutzer in der Liste aus, und klicken Sie auf **Speichern**.
+3. Geben Sie im Feld **Auswählen** den Namen des Benutzers ein, dem Sie Berechtigungen erteilen möchten. Wählen Sie den Benutzer in der Liste aus, und klicken Sie auf **Speichern**.
 
    ![Hinzufügen von Benutzern](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -311,10 +314,10 @@ Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Autom
 
 Sie können den rollenbasierten Zugriff für ein Automation-Konto auch mit den folgenden [Azure PowerShell-Cmdlets](../role-based-access-control/role-assignments-powershell.md) konfigurieren:
 
-[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können dieses Cmdlet mit dem Parameter *Name* verwenden, um alle Aktionen aufzulisten, die eine bestimmte Rolle ausführen kann.
+[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können dieses Cmdlet mit dem Parameter `Name` verwenden, um alle Aktionen aufzulisten, die eine bestimmte Rolle ausführen kann.
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Automation Operator'
+Get-AzRoleDefinition -Name 'Automation Operator'
 ```
 
 Im Folgenden sehen Sie die Beispielausgabe:
@@ -330,12 +333,12 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne Parameter gibt dieses Cmdlet alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den *ExpandPrincipalGroups*-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.
+[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne Parameter gibt dieses Cmdlet alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den `ExpandPrincipalGroups`-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.
 
 **Beispiel:** Verwenden Sie das folgende Cmdlet, um alle Benutzer innerhalb eines Automation-Kontos mit ihren Rollen aufzulisten.
 
 ```azurepowershell-interactive
-Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Get-AzRoleAssignment -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 Im Folgenden sehen Sie die Beispielausgabe:
@@ -352,12 +355,12 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Verwenden Sie [New-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.
+Verwenden Sie [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.
     
 **Beispiel:** Verwenden Sie den folgenden Befehl, um einem Benutzer die Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zuzuweisen.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+New-AzRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 Im Folgenden sehen Sie die Beispielausgabe:
@@ -374,15 +377,15 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Verwenden Sie [Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.
+Verwenden Sie [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.
 
 **Beispiel:** Verwenden Sie den folgenden Befehl, um den Benutzer aus der Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zu entfernen.
 
 ```azurepowershell-interactive
-Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Ersetzen Sie in den obigen Beispielen die „Anmelde-ID, eines Benutzers, den Sie entfernen möchten“ die „Abonnement-ID“, den „Namen der Ressourcengruppe“ und den „Namen des Automation-Kontos“ durch die entsprechenden Werte Ihres Kontos. Wählen Sie **Ja**, wenn Sie zum Bestätigen aufgefordert werden, bevor Sie mit dem Entfernen von Benutzerrollenzuweisungen fortfahren.
+Ersetzen Sie im vorherigen Beispiel `sign-in ID of a user you wish to remove`, `SubscriptionID`, `Resource Group Name` und `Automation account name` durch Ihre Kontodetails. Wählen Sie **Ja**, wenn Sie zum Bestätigen aufgefordert werden, bevor Sie mit dem Entfernen von Benutzerrollenzuweisungen fortfahren.
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Berechtigungen der Rolle „Operator für Automation“ – Automation-Konto
 
@@ -401,19 +404,19 @@ $rbName = "<Name of Runbook>" # Name of the runbook
 $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
 
 # Gets the Automation account resource
-$aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
+$aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
 
 # Adds the user to the Automation Runbook Operator role to the Runbook scope
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Nach Ausführung des Skripts muss der Benutzer sich im Azure-Portal anmelden und **Alle Ressourcen** aufrufen. In der Liste kann der Benutzer das Runbook sehen, für das er als Automation-Runbookoperator hinzugefügt wurde.
+Nach Ausführung des Skripts muss der Benutzer sich im Azure-Portal anmelden und **Alle Ressourcen** auswählen. In der Liste kann der Benutzer das Runbook sehen, für das er als Automation-Runbookoperator hinzugefügt wurde.
 
 ![Rollenbasierte Zugriffssteuerung für Runbooks über das Portal](./media/automation-role-based-access-control/runbook-rbac.png)
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235534"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457534"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
@@ -20,9 +20,12 @@ Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenh
 
 Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](https://technet.microsoft.com/library/jj134242.aspx).
 
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+
 ## <a name="basic-structure-of-a-workflow"></a>Grundlegende Struktur eines Workflows
 
-Der erste Schritt beim Konvertieren eines PowerShell-Skripts in einen PowerShell-Workflow ist das Umschließen mit einem **Workflow** -Schlüsselwort.  Ein Workflow beginnt mit dem Schlüsselwort **Workflow** , gefolgt vom Hauptteil des Skripts, der in Klammern gesetzt ist. Auf das Schlüsselwort **Workflow** folgt der Name des Workflows, wie in der folgenden Syntax gezeigt:
+Der erste Schritt beim Konvertieren eines PowerShell-Skripts in einen PowerShell-Workflow besteht im Umschließen mit dem `Workflow`-Schlüsselwort.  Ein Workflow beginnt mit dem Schlüsselwort `Workflow`, gefolgt vom Hauptteil des Skripts, der in Klammern gesetzt ist. Auf das Schlüsselwort `Workflow` folgt der Name des Workflows, wie in der folgenden Syntax gezeigt:
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 Der Name des Workflows muss mit dem Namen des Automation-Runbooks übereinstimmen. Wenn das Runbook importiert wird, muss der Dateiname mit dem Workflownamen übereinstimmen und auf *.ps1* enden.
 
-Zum Hinzufügen von Parametern für den Workflow verwenden Sie das Schlüsselwort **Param** genauso wie bei einem Skript.
+Zum Hinzufügen von Parametern für den Workflow verwenden Sie das Schlüsselwort `Param` genauso wie bei einem Skript.
 
 ## <a name="code-changes"></a>Änderungen am Code
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-Die **InlineScript** -Aktivität ist nützlich, wenn Sie einen oder mehrere Befehle als herkömmliches PowerShell-Skript ausführen müssen, anstatt als PowerShell-Workflow.  Wenngleich die Befehle in einem Workflow zur Verarbeitung an Windows Workflow Foundation gesendet werden, werden die Befehle in einem InlineScript-Block durch Windows PowerShell verarbeitet.
+Die `InlineScript`-Aktivität ist nützlich, wenn Sie einen oder mehrere Befehle als herkömmliches PowerShell-Skript ausführen müssen, anstatt als PowerShell-Workflow.  Wenngleich die Befehle in einem Workflow zur Verarbeitung an Windows Workflow Foundation gesendet werden, werden die Befehle in einem InlineScript-Block durch Windows PowerShell verarbeitet.
 
 Der InlineScript-Block verwendet die nachstehende Syntax.
 
@@ -154,7 +157,7 @@ Weitere Informationen zur Verwendung von InlineScript finden Sie unter [Ausführ
 
 Ein Vorteil von Windows PowerShell-Workflows besteht darin, dass sie einen Satz an Befehlen parallel – und nicht wie in einem typischen Skript sequenziell – ausführen können.
 
-Sie können mit dem Schlüsselwort **Parallel** einen Skriptblock mit mehreren Befehlen erstellen, die gleichzeitig ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall werden Activity1 und Activity2 gleichzeitig gestartet. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 abgeschlossen wurden.
+Sie können mit dem Schlüsselwort `Parallel` einen Skriptblock mit mehreren Befehlen erstellen, die gleichzeitig ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall werden Activity1 und Activity2 gleichzeitig gestartet. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 abgeschlossen wurden.
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-Sie können das Konstrukt **ForEach -Parallel** verwenden, um Befehle für jedes Element in einer Auflistung gleichzeitig zu verarbeiten. Die Elemente in der Auflistung werden parallel ausgeführt, während die Befehle im Skriptblock sequenziell ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall wird Activity1 für alle Elemente in der Sammlung gleichzeitig gestartet. Activity2 wird für alle Elemente gestartet, nachdem Activity1 abgeschlossen wurde. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 für alle Elemente abgeschlossen wurden. Wir verwenden den Parameter `ThrottleLimit`, um die Parallelität zu beschränken. Ein zu hoher Wert für `ThrottleLimit` kann Probleme verursachen. Der ideale Wert des Parameters `ThrottleLimit` hängt von vielen Faktoren in Ihrer Umgebung ab. Sie sollten mit einem niedrigen Wert beginnen und verschiedene ansteigende Werte ausprobieren, bis Sie einen finden, der für Ihre individuellen Umstände geeignet ist.
+Sie können das Konstrukt `ForEach -Parallel` verwenden, um Befehle für jedes Element in einer Auflistung gleichzeitig zu verarbeiten. Die Elemente in der Auflistung werden parallel ausgeführt, während die Befehle im Skriptblock sequenziell ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall wird Activity1 für alle Elemente in der Sammlung gleichzeitig gestartet. Activity2 wird für alle Elemente gestartet, nachdem Activity1 abgeschlossen wurde. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 für alle Elemente abgeschlossen wurden. Wir verwenden den Parameter `ThrottleLimit`, um die Parallelität zu beschränken. Ein zu hoher Wert für `ThrottleLimit` kann Probleme verursachen. Der ideale Wert des Parameters `ThrottleLimit` hängt von vielen Faktoren in Ihrer Umgebung ab. Sie sollten mit einem niedrigen Wert beginnen und verschiedene ansteigende Werte ausprobieren, bis Sie einen finden, der für Ihre individuellen Umstände geeignet ist.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Prüfpunkte
 
-Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows.  Sie können mithilfe der Aktivität **Checkpoint-Workflow** einen Prüfpunkt in einem Workflow setzen. Azure Automation bietet ein Feature namens [gleichmäßige Auslastung](automation-runbook-execution.md#fair-share), bei dem jedes Runbook, das drei Stunden lang ausgeführt wird, entladen wird, um anderen Runbooks die Ausführung zu ermöglichen. Das entladene Runbook wird schließlich erneut geladen, und dann wird die Ausführung ab dem letzten Prüfpunkt fortgesetzt, der im Runbook gesetzt wurde. Um zu garantieren, dass das Runbook schließlich abgeschlossen wird, müssen Sie Prüfpunkte in Abständen hinzufügen, die kürzer als 3 Stunden Ausführungsdauer sind. Wenn während jeder Ausführung ein neuer Prüfpunkt hinzugefügt wird, und wenn das Runbook nach drei Stunden wegen eines Fehlers entfernt wird, wird das Runbook unendlich fortgesetzt.
+Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows.  Sie können mithilfe der Aktivität `Checkpoint-Workflow` einen Prüfpunkt in einem Workflow setzen. Azure Automation bietet ein Feature namens [gleichmäßige Auslastung](automation-runbook-execution.md#fair-share), bei dem jedes Runbook, das drei Stunden lang ausgeführt wird, entladen wird, um anderen Runbooks die Ausführung zu ermöglichen. Das entladene Runbook wird schließlich erneut geladen, und dann wird die Ausführung ab dem letzten Prüfpunkt fortgesetzt, der im Runbook gesetzt wurde. Um zu garantieren, dass das Runbook schließlich abgeschlossen wird, müssen Sie Prüfpunkte in Abständen hinzufügen, die kürzer als 3 Stunden Ausführungsdauer sind. Wenn während jeder Ausführung ein neuer Prüfpunkt hinzugefügt wird, und wenn das Runbook nach drei Stunden wegen eines Fehlers entfernt wird, wird das Runbook unendlich fortgesetzt.
 
 Im folgenden Beispielcode führt eine Ausnahme nach „Activity2“ dazu, dass der Workflow beendet wird. Bei der Fortsetzung der Ausführung wird zunächst „Activity2“ ausgeführt, da diese Aktivität unmittelbar auf den zuletzt gesetzten Prüfpunkt folgt.
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität **Suspend-Workflow** oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen.  Sie erhalten andernfalls unter Umständen die folgende Fehlermeldung: *Der Workflowauftrag kann nicht fortgesetzt werden, weil Persistenzdaten nicht vollständig gespeichert werden konnten oder gespeicherte Persistenzdaten beschädigt wurden. Sie müssen den Workflow neu starten.*
+Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität `Suspend-Workflow` oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen.  Sie erhalten andernfalls unter Umständen die folgende Fehlermeldung: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Workflow-Runbooks.
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
+> [!NOTE]
+> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+
 
 Dies ist nicht erforderlich, wenn die Authentifizierung mithilfe eines ausführenden Kontos erfolgt, das mit einem Dienstprinzipal konfiguriert ist.
 
