@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233642"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531015"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 
-Dieser Artikel enthält Beispiele und Beispielcode für das Erstellen und Konfigurieren von [virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md) für die Verwendung mit Azure HDInsight-Clustern. Es werden ausführliche Beispiele zum Erstellen von Netzwerksicherheitsgruppen (NSG) und der DNS-Konfiguration gegeben. 
+Dieser Artikel enthält Beispiele und Beispielcode für das Erstellen und Konfigurieren von [virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md) für die Verwendung mit Azure HDInsight-Clustern. Es werden ausführliche Beispiele zum Erstellen von Netzwerksicherheitsgruppen (NSG) und der DNS-Konfiguration gegeben.
 
 Hintergrundinformationen für die Verwendung von virtuellen Netzwerken mit Azure HDInsight finden Sie unter [Plan a virtual network for Azure HDInsight (Planen eines virtuellen Netzwerks für Azure HDInsight)](hdinsight-plan-virtual-network-deployment.md).
 
@@ -28,7 +28,7 @@ Vor dem Ausführen der in diesem Artikel beschriebenen Beispielcodes sollten Sie
 Weitere Voraussetzungen für die Beispiele in diesem Artikel sind die folgenden:
 
 * Sie müssen das [AZ-Modul](https://docs.microsoft.com/powershell/azure/overview) installieren, wenn Sie PowerShell verwenden.
-* Navigieren Sie zu [Install the Azure CLI (Installieren der Azure-Befehlszeilenschnittstelle)](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben.
+* Navigieren Sie zu [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben.
 
 > [!IMPORTANT]  
 > Eine ausführliche Anleitung zum Herstellen einer Verbindung von HDInsight mit Ihrem lokalen Netzwerk mithilfe eines virtuellen Azure-Netzwerks finden Sie im Dokument [Verbinden von HDInsight mit Ihrem lokalen Netzwerk](connect-on-premises-network.md).
@@ -202,7 +202,6 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 
     Nachdem die Ausführung dieses Befehls abgeschlossen ist, können Sie HDInsight im virtuellen Netzwerk installieren.
 
-
 Mit diesen Schritten wird nur der Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud ermöglicht. Jeder andere Zugriff auf den HDInsight-Cluster von außerhalb des virtuellen Netzwerks wird blockiert. Wenn Sie den Zugriff von außerhalb des virtuellen Netzwerks ermöglichen möchten, müssen Sie zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen.
 
 Mit dem folgenden Code wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
@@ -211,7 +210,7 @@ Mit dem folgenden Code wird veranschaulicht, wie der SSH-Zugriff über das Inter
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a name="example-dns-configuration"></a><a id="example-dns"></a>Beispiel: DNS-Konfiguration
+## <a name="example-dns-configuration"></a><a id="example-dns"></a> Beispiel: DNS-Konfiguration
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Namensauflösung zwischen einem virtuellen Netzwerk und einem verbundenen lokalen Netzwerk
 
@@ -238,7 +237,7 @@ Auf dem benutzerdefinierten DNS-Server im virtuellen Netzwerk:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Verwenden Sie auf dem benutzerdefinierten DNS-Server für das virtuelle Netzwerk den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.local`:
+1. Verwenden Sie auf dem benutzerdefinierten DNS-Server für das virtuelle Netzwerk den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.local`:
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ Auf dem benutzerdefinierten DNS-Server im virtuellen Netzwerk:
 
     Bei dieser Konfiguration werden alle DNS-Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den rekursiven Azure-Resolver geleitet.
 
-2. Verwenden Sie auf dem benutzerdefinierten DNS-Server für das virtuelle Netzwerk den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.options`:
+1. Verwenden Sie auf dem benutzerdefinierten DNS-Server für das virtuelle Netzwerk den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.options`:
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ Auf dem benutzerdefinierten DNS-Server im virtuellen Netzwerk:
     
     * Ersetzen Sie den Wert `192.168.0.1` durch die IP-Adresse Ihres lokalen DNS-Servers. Bei diesem Eintrag werden alle anderen DNS-Anforderungen an den lokalen DNS-Server geleitet.
 
-3. Starten Sie Bind neu, um die Konfiguration zu verwenden. Beispiel: `sudo service bind9 restart`.
+1. Starten Sie Bind neu, um die Konfiguration zu verwenden. Beispiel: `sudo service bind9 restart`.
 
-4. Fügen Sie dem lokalen DNS-Server eine bedingte Weiterleitung hinzu. Konfigurieren Sie die bedingte Weiterleitung, um Anforderungen für das DNS-Suffix aus Schritt 1 an den benutzerdefinierten DNS-Server zu senden.
+1. Fügen Sie dem lokalen DNS-Server eine bedingte Weiterleitung hinzu. Konfigurieren Sie die bedingte Weiterleitung, um Anforderungen für das DNS-Suffix aus Schritt 1 an den benutzerdefinierten DNS-Server zu senden.
 
     > [!NOTE]  
     > Die Dokumentation Ihrer DNS-Software enthält ausführliche Informationen zum Hinzufügen einer bedingten Weiterleitung.
@@ -351,7 +350,7 @@ Für dieses Beispiel werden die folgenden Annahmen getroffen:
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,7 +359,7 @@ Für dieses Beispiel werden die folgenden Annahmen getroffen:
             listen-on { any; };
     };
     ```
-    
+
    Ersetzen Sie die Werte `10.0.0.0/16` und `10.1.0.0/16` durch die IP-Adressbereiche Ihrer virtuellen Netzwerke. Bei diesem Eintrag ist es für Ressourcen in beiden Netzwerken zulässig, Anforderungen an die DNS-Server zu senden.
 
     Alle Anforderungen, die nicht für die DNS-Suffixe der virtuellen Netzwerke bestimmt sind (z.B. „microsoft.com“), werden vom rekursiven Azure-Resolver verarbeitet.
@@ -371,7 +370,7 @@ Nach Ausführung dieser Schritte können Sie mit den Ressourcen im virtuellen Ne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein umfassendes Beispiel für die Konfiguration von HDInsight zum Herstellen einer Verbindung mit einem lokalen Netzwerk finden Sie unter [Connect HDInsight to an on-premises network](./connect-on-premises-network.md) (Verbinden von HDInsight mit einem lokalen Netzwerk).
+* Ein umfassendes Beispiel für die Konfiguration von HDInsight zum Herstellen einer Verbindung mit einem lokalen Netzwerk finden Sie unter [Verbinden von HDInsight mit einem lokalen Netzwerk](./connect-on-premises-network.md) ().
 * Informationen zum Konfigurieren von Apache HBase-Clustern in virtuellen Azure-Netzwerken finden Sie unter [Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
 * Informationen zum Konfigurieren der Apache HBase-Georeplikation finden Sie unter [Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken](hbase/apache-hbase-replication.md).
 * Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie in der [Übersicht zu virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md).

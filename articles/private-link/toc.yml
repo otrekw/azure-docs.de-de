@@ -24,6 +24,8 @@
       href: private-endpoint-overview.md
     - name: "Private\_Link-Dienst"
       href: private-link-service-overview.md
+    - name: DNS-Integration für private Endpunkte
+      href: private-endpoint-dns.md
 - name: Anleitung
   items:
     - name: Herstellen einer privaten Verbindung mit einem Speicherkonto
@@ -40,9 +42,9 @@
       href: manage-private-endpoint.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung bei Konnektivitätsproblemen mit privaten Endpunkten
+        - name: Beheben von Problemen bei Verbindungen mit privaten Endpunkten
           href: troubleshoot-private-endpoint-connectivity.md
-        - name: Problembehandlung bei Konnektivitätsproblemen beim Private Link-Dienst
+        - name: Beheben von Problemen bei Verbindungen mit dem Private Link-Dienst
           href: troubleshoot-private-link-connectivity.md
 - name: Verweis
   items:

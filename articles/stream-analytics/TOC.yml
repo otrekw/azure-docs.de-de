@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Abfragelogik
           href: stream-analytics-troubleshoot-query.md
-        - name: Aktivitäts- und Diagnoseprotokolle
+        - name: Aktivitäts- und Ressourcenprotokolle
           href: stream-analytics-job-diagnostic-logs.md
         - name: Datenfehler
           href: data-errors.md

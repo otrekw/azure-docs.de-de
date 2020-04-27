@@ -4,7 +4,7 @@
   items:
     - name: Was sind Kostenverwaltung und Abrechnung?
       href: ../cost-management-billing-overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Kostenloses Konto
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: Karte abgelehnt
       href: troubleshoot-declined-card.md
-    - name: Probleme bei der Registrierung
+    - name: Probleme bei der Registrierung von Azure-Konten
       href: troubleshoot-azure-sign-up.md
     - name: Probleme bei der Abonnementanmeldung
       href: troubleshoot-sign-in-issue.md

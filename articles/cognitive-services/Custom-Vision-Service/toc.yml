@@ -13,30 +13,14 @@
       items:
         - name: Verwenden des Webportals
           href: getting-started-build-a-classifier.md
-        - name: Verwenden des .NET SDK
-          href: csharp-tutorial.md
-        - name: Verwenden des Python SDK
-          href: python-tutorial.md
-        - name: Verwenden des Java SDK
-          href: java-tutorial.md
-        - name: Verwenden des Node.js SDK
-          href: node-tutorial.md
-        - name: Verwenden des Go SDK
-          href: go-tutorial.md
+        - name: Verwenden des Custom Vision SDK
+          href: quickstarts/image-classification.md
     - name: Erstellen einer Objekterkennung
       items:
         - name: Verwenden des Webportals
           href: get-started-build-detector.md
-        - name: Verwenden des .NET SDK
-          href: csharp-tutorial-od.md
-        - name: Verwenden des Python SDK
-          href: python-tutorial-od.md
-        - name: Verwenden des Java SDK
-          href: java-tutorial-od.md
-        - name: Verwenden des Node.js SDK
-          href: node-tutorial-object-detection.md
-        - name: Verwenden des Go SDK
-          href: go-tutorial-object-detection.md
+        - name: Verwenden des Custom Vision SDK
+          href: quickstarts/object-detection.md
 - name: Tutorials
   items:
     - name: Melden von visuellen Zustände auf einem IoT-Gerät

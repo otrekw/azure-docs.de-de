@@ -210,7 +210,7 @@
       items:
         - name: Einrichten von Warnungen auf der Grundlage von Metriken
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: Einrichten von Benachrichtigungen auf der Grundlage von Diagnoseprotokollen
+        - name: Einrichten von Warnungen auf der Grundlage von Ressourcenprotokollen
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Konfigurieren von Paketerfassungen
       href: packet-capture.md

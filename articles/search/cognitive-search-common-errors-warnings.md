@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671972"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086609"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -91,6 +91,8 @@ Der Indexer konnte einen Skill im Skillset nicht ausführen.
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Error: Skill konnte wegen eines Fehlers bei der Anforderung der Web-API nicht ausgeführt werden.
 Bei der Ausführung eines Skills ist aufgrund eines Fehlers beim Aufruf der Web-API ein Fehler aufgetreten. Diese Fehlerklasse wird normalerweise angegeben, wenn benutzerdefinierte Skills verwendet werden. In diesem Fall müssen Sie den benutzerdefinierten Code debuggen, um das Problem zu beheben. Wenn der Fehler stattdessen einen integrierten Skill betrifft, finden Sie in der Fehlermeldung Hilfe zum Beheben des Problems.
+
+Achten Sie beim Debuggen dieses Problems auf alle [Qualifikationseingaben-Warnungen](#warning-skill-input-was-invalid) für diese Qualifikation. Bei Ihrem Web-API-Endpunkt kann ein Fehler auftreten, weil ihm vom Indexer unerwartete Eingaben übergeben werden.
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 

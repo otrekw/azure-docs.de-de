@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931698"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767549"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -159,7 +159,7 @@ In diesem Beispiel verwendet der Befehl `hdfs` auf transparente Weise den Standa
 HDInsight protokolliert Skriptausgaben, die in STDOUT oder STDERR geschrieben werden. Diese Informationen können Sie mit der Ambari-Webbenutzeroberfläche anzeigen.
 
 > [!NOTE]  
-> Apache Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
+> Apache Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie unter [Problembehandlung für Skriptaktionen](./troubleshoot-script-action.md) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
 Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel:
 
@@ -175,7 +175,7 @@ Standardmäßig sendet `echo` die Zeichenfolge an STDOUT. Soll dieser an STDERR 
 
 So werden in STDOUT geschriebene Informationen stattdessen an STDERR (2) weitergeleitet. Weitere Informationen zur E/A-Umleitung finden Sie unter [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Problembehandlung für Skriptaktionen](./troubleshoot-script-action.md).
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Speichern von Dateien im ASCII-Format mit LF-Zeilenenden
 
