@@ -20,7 +20,7 @@ ms.locfileid: "81869917"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
-Die Aufrechterhaltung der Sicherheit kann schwierig sein, da gängige identitätsbezogene Angriffe immer zahlreicher auftreten. Zu diesen gängigen Angriffen zählen Kennwortspray, Wiedergabe und Phishing.
+Die Aufrechterhaltung der Sicherheit kann schwierig sein, da gängige identitätsbezogene Angriffe immer zahlreicher auftreten. Zu diesen zählen Kennwortspray- und Replay-Angriffe sowie Phishing.
 
 Die Sicherheitsstandards in Azure Active Directory (Azure AD) erleichtern es, die Sicherheit zu erhöhen und Ihr Unternehmen vor gängigen Angriffen zu schützen. Sie umfassen vorkonfigurierte Sicherheitseinstellungen für diese verbreiteten Angriffe. 
 
