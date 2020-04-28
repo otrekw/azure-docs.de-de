@@ -22,13 +22,13 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726726"
 ---
-# <a name="azure-facilities-premises-and-physical-security"></a>Azure-Einrichtungen, Gelände und physische Sicherheit
+# <a name="azure-facilities-premises-and-physical-security"></a>Sicherheit der Azure-Infrastruktur
 In diesem Artikel wird beschrieben, welche Maßnahmen Microsoft zur Sicherung der Azure-Infrastruktur ergreift.
 
 ## <a name="datacenter-infrastructure"></a>Infrastruktur der Rechenzentren
 Azure besteht aus einer [global verteilten Rechenzentrumsinfrastruktur](https://azure.microsoft.com/global-infrastructure/), die Tausende von Onlinediensten unterstützt und mehr als 100 höchst sichere Einrichtungen weltweit umfasst.
 
-Die Infrastruktur bringt Anwendungen und Benutzer weltweit näher zusammen, stellt dabei die Datenresidenz sicher und bietet den Kunden umfassende Optionen hinsichtlich Compliance und Ausfallsicherheit. Azure hat 52-Regionen weltweit und ist in 140 Ländern/Regionen verfügbar.
+Die Infrastruktur bringt Anwendungen und Benutzer weltweit näher zusammen, stellt dabei die Datenresidenz sicher und bietet den Kunden umfassende Optionen hinsichtlich Compliance und Ausfallsicherheit. Azure hat 52 Regionen weltweit und ist in 140 Ländern/Regionen verfügbar.
 
 Als Region wird eine Reihe von Rechenzentren bezeichnet, die über ein großes und robustes Netzwerk miteinander verbunden sind. Das Netzwerk umfasst standardmäßig Inhaltsverteilung, Lastenausgleich, Redundanz und Verschlüsselung. Azure verfügt über mehr globale Regionen als jeder andere Cloudanbieter und bietet Ihnen damit die Flexibilität, Ihre Anwendungen genau dort bereitzustellen, wo Sie diese benötigen.
 

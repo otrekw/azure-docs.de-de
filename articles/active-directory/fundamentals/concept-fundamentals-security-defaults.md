@@ -85,7 +85,7 @@ Organisationen verwenden eine Vielzahl von Azure-Diensten, die über die Azure R
 
 - Azure-Portal 
 - Azure PowerShell 
-- Azure-Befehlszeilenschnittstelle
+- Azure CLI
 
 Benutzer, die Dienste mit Azure Resource Manager verwalten, verfügen über weitreichende Berechtigungen. Beispielsweise können mit Azure Resource Manager mandantenweite Konfigurationen wie Diensteinstellungen und die Abonnementabrechnung geändert werden. Die einstufige Authentifizierung ist für eine Vielzahl von Bedrohungen anfällig, beispielsweise für Phishing- und Kennwortspray-Angriffe. 
 
@@ -123,7 +123,7 @@ Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, d
 
 ![Warnmeldung mit dem Hinweis, dass Sicherheitsstandards und bedingter Zugriff nicht gleichzeitig verwendet werden können](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Hier finden Sie Schrittanleitungen dazu, wie Sie mithilfe des bedingten Zugriffs äquivalente Richtlinien konfigurieren können:
+Hier finden Sie Anleitungen dazu, wie Sie mithilfe des bedingten Zugriffs äquivalente Richtlinien konfigurieren können:
 
 - [Vorschreiben der MFA für Administratoren](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vorschreiben der MFA für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
