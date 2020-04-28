@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 69ef68dafc2385eb5614179c3d04265250383104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471539"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687805"
 ---
 # <a name="front-door-routing-methods"></a>Datenverkehrsrouting in Azure Front Door Service
 
@@ -27,7 +27,7 @@ In Azure Front Door Service stehen vier Hauptkonzepte für das Datenverkehrsrout
 * **[Wartezeit](#latency):** Mit dem latenzbasierten Routing wird sichergestellt, dass Anforderungen an diejenigen Back-Ends gesendet werden, die innerhalb eines akzeptablen Empfindlichkeitsbereichs die niedrigste Latenz aufweisen. Benutzeranforderungen werden auf diese Weise unter Berücksichtigung der Netzwerklatenz an die nächstgelegenen Back-Ends gesendet.
 * **[Priorität:](#priority)** Sie können Ihren verschiedenen Back-Ends Prioritäten zuweisen, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden. Außerdem können Sie zusätzliche Back-Ends bereitstellen, falls das primäre Back-End oder die Ersatz-Back-Ends nicht verfügbar sind.
 * **[Gewichtet:](#weighted)** Sie können Ihren verschiedenen Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr entweder gleichmäßig oder gemäß Gewichtungskoeffizienten auf eine Gruppe von Back-Ends verteilen möchten.
-* **Sitzungsaffinität:** Sie können für Ihre Front-End-Hosts oder -Domänen Sitzungsaffinität konfigurieren, wenn nachfolgende Anforderungen eines Benutzers an dasselbe Back-End gesendet werden sollen, solange die Benutzersitzung aktiv ist und die Back-End-Instanz nach Integritätstests weiterhin als fehlerfrei bewertet wird. 
+* **[Sitzungsaffinität](#affinity):** Sie können für Ihre Front-End-Hosts oder -Domänen Sitzungsaffinität konfigurieren, wenn nachfolgende Anforderungen eines Benutzers an dasselbe Back-End gesendet werden sollen, solange die Benutzersitzung aktiv ist und die Back-End-Instanz nach Integritätstests weiterhin als fehlerfrei bewertet wird. 
 
 Alle Azure Front Door Service-Konfigurationen schließen die Überwachung der Back-End-Integrität und ein automatisiertes, sofortiges und globales Failover ein. Weitere Informationen finden Sie unter [Überwachen von Azure Front Door Service-Back-Ends](front-door-health-probes.md). Azure Front Door Service kann so konfiguriert werden, dass eine einzelne oder bei entsprechenden Anwendungsanforderungen mehrere Routingmethoden in Kombination verwendet werden, um eine optimale Routingtopologie zu erstellen.
 
