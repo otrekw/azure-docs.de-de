@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986215"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450350"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Änderungsfeed-Entwurfsmuster in Azure Cosmos DB
 
@@ -87,7 +87,7 @@ Der Änderungsfeed weist wichtige Einschränkungen auf, die Sie kennen sollten. 
 
 Nur die letzte Änderung für ein bestimmtes Element ist im Änderungsfeed enthalten. Wenn Änderungen verarbeitet werden, lesen Sie die neueste verfügbare Elementversion. Wenn mehrere Aktualisierungen für das gleiche Element innerhalb kurzer Zeit vorhanden sind, ist es möglich, dass die Verarbeitung von Zwischenaktualisierungen verpasst wird. Wenn Sie Aktualisierungen nachverfolgen und in der Lage sein möchten, frühere Aktualisierungen für ein Element wiederzugeben, empfiehlt es sich, diese Aktualisierungen stattdessen als eine Reihe von Schreibvorgängen zu modellieren.
 
-### <a name="deletes"></a>Löschvorgänge
+### <a name="deletes"></a>Löschvorgang
 
 Der Änderungsfeed erfasst keine Löschvorgänge. Wenn Sie ein Element aus dem Container löschen, wird es auch aus dem Änderungsfeed entfernt. Die gebräuchlichste Methode, dies zu handhaben, ist das Hinzufügen einer vorläufigen Markierung für die zu löschenden Elemente. Sie können eine Eigenschaft mit dem Namen „deleted“ (gelöscht) hinzufügen und sie zum Zeitpunkt der Löschung auf TRUE festlegen. Diese Dokumentaktualisierung wird im Änderungsfeed angezeigt. Sie können eine Gültigkeitsdauer für dieses Element festlegen, damit es später automatisch gelöscht werden kann.
 
