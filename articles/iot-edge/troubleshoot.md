@@ -4,16 +4,19 @@ description: In diesem Artikel werden grundlegende Diagnoseverfahren für Azure 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13eab175356ed1ec20caa3263ba00d0563384f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064378"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086520"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -37,20 +40,19 @@ Sie können den Befehl `check` wie folgt ausführen oder das Flag `--help` einbi
   iotedge check
   ```
 
-Die Arten der Überprüfung, die vom Tool ausgeführt werden, können wie folgt klassifiziert werden:
+Das Problembehandlungstool führt viele Überprüfungen durch, die in diese drei Kategorien eingeteilt werden:
 
 * Konfigurationsüberprüfungen: Untersucht Details, mit denen verhindert werden kann, dass Edge-Geräte eine Verbindung mit der Cloud herstellen, und mit denen ferner Probleme mit *config.yaml* und mit dem Containermodul verhindert werden können.
 * Verbindungsüberprüfungen: Überprüft, ob IoT Edge Runtime Zugriff auf Ports am Hostgerät hat, und ob alle IoT Edge-Komponenten eine Verbindung mit dem IoT Hub herstellen können.
 * Prüflisten für die Produktionsbereitschaft: Sucht nach empfohlenen Best Practices für die Produktion, wie etwa nach Zertifikaten der Zertifizierungsstelle (Certificate Authority, CA) für Gerätestatus und nach der Konfiguration der Modulprotokolldatei.
 
-Eine umfassende Liste der Diagnoseprüfungen finden Sie unter [Built-in troubleshooting functionality (Integrierte Problembehandlungsfunktion)](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+Informationen zu den einzelnen Diagnoseprüfungen, die von diesem Tool durchgeführt werden – einschließlich der Vorgehensweise beim Auftreten eines Fehlers oder einer Warnung – finden Sie unter [IoT Edge-Problembehandlung bei Überprüfungen](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Sammeln von Debuginformationen mit dem iotedge-Befehl „support-bundle“
 
 Wenn Sie Protokolle von einem IoT Edge-Gerät sammeln müssen, verwenden Sie dazu am einfachsten den Befehl `support-bundle`. Dieser Befehl sammelt standardmäßig Modul-, IoT Edge Security Manager- und Containerengine-Protokolle, die JSON-Ausgabe „iotedge check“ und weitere nützliche Debuginformationen. Er komprimiert sie zur einfachen Freigabe in einer einzigen Datei. Der Befehl `support-bundle` steht ab [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) zur Verfügung.
 
 Führen Sie den Befehl `support-bundle` mit dem Flag `--since` aus, um anzugeben, wie alt die Protokolle sein sollen, die Sie abrufen möchten. Beispiele: Mit `6h` werden Protokolle seit den letzten 6 Stunden abgerufen, mit `6d` seit den letzten 6 Tagen, mit `6m` seit den letzten 6 Minuten usw. Beziehen Sie das Flag `--help` mit ein, damit eine vollständige Liste der Optionen angezeigt wird.
-
 
 * Unter Linux:
 
@@ -425,7 +427,7 @@ In diesem Beispiel wird der DNS-Server auf einen öffentlich zugänglichen DNS-D
 
 Fügen Sie `daemon.json` im richtigen Pfad für Ihre Plattform ein:
 
-| Plattform | Position |
+| Plattform | Standort |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows-Host mit Windows-Containern | `C:\ProgramData\iotedge-moby\config` |

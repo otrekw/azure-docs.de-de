@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 39ee0fa2dc973cd6c20756cae2024af79d1375dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294150"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688000"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -147,7 +147,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) (OWASP-Cheat Sheet zu HTTP Strict Transport Security) |
+| **Referenzen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) (OWASP-Cheat Sheet zu HTTP Strict Transport Security) |
 | **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für `https://example.com` oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.
@@ -213,7 +213,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, Windows Phone |
 | **Attribute**              | –  |
-| **Referenzen**              | [Certificate and Public Key Pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) (Anheften von Zertifikaten und öffentlichen Schlüsseln) |
+| **Referenzen**              | [Certificate and Public Key Pinning](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) (Anheften von Zertifikaten und öffentlichen Schlüsseln) |
 | **Schritte** | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen SSL-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim SSL-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
 
 ### <a name="example"></a>Beispiel

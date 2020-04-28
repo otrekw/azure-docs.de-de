@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a17f98d69cb2196f92e19b66fc23dcd89bce188
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133273"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687145"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Vorgehensweise: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
 Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
@@ -33,11 +33,8 @@ Informationen zum Konfigurieren des [Haivision KB-Encoders](https://www.haivisio
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 Informationen zum Konfigurieren des [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Wirecast](media-services-configure-wirecast-live-encoder.md).
 
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-Informationen zum Konfigurieren des [Tricaster](https://newtek.com/products/tricaster-40.html)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Tricaster](media-services-configure-tricaster-live-encoder.md).
-
 ## <a name="elemental-live"></a>Elemental Live
-Weitere Informationen finden Sie unter [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
+Weitere Informationen finden Sie unter [Elemental Live](https://www.elemental.com/products/aws-elemental-appliances-software/#elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

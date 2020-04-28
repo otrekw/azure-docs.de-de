@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 767e91af7fb5ff3de517a79ac4df55af5057c76f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 53e5bf4f770ce986af2f3572bd6c1ef4cd9e3c2b
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677755"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605245"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: Resource Manager-Vorlage
 
@@ -55,12 +55,12 @@ Stellen Sie die Resource Manager-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden eine Azure Firewall-Instanz, die Netzwerkinfrastruktur und zwei virtuelle Computer erstellt.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json"><img src="./media/quick-create-ipgroup-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 2. Geben Sie im Portal auf der Seite **Create an Azure Firewall with IpGroups** (Erstellen einer Azure Firewall-Instanz mit IP-Adressgruppen) die folgenden Werte ein, oder wählen Sie sie aus:
    - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus. 
    - Ressourcengruppe:  Wählen Sie aus den vorhandenen Ressourcengruppen aus, oder wählen Sie **Neu erstellen** und anschließend **OK** aus.
-   - Standort: Wählen Sie einen Standort aus.
+   - Standort: Standort auswählen
    - Name des virtuellen Netzwerks: Geben Sie einen Namen für das neue virtuelle Netzwerk (VNET) ein. 
    - Name der IP-Adressgruppe 1: Geben Sie einen Namen für die IP-Adressgruppe 1 ein. 
    - Name der IP-Adressgruppe 2: Geben Sie einen Namen für die IP-Adressgruppe 2 ein. 

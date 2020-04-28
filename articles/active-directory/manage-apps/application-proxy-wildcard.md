@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406732"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770301"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -48,8 +48,6 @@ Sie können Anwendungen mit Platzhaltern veröffentlichen, wenn sowohl interne a
 Beispiel: `http(s)://*.adventure-works.com`.
 
 Obwohl die internen und externen URLs unterschiedliche Domänen verwenden können, hat es sich bewährt, wenn diese identisch sind. Beim Veröffentlichen der Anwendung wird ein Fehler angezeigt, wenn eine der URLs keinen Platzhalter aufweist.
-
-Wenn weitere Anwendungen mit anderen Konfigurationseinstellungen vorhanden sind, müssen Sie diese Ausnahmen als separate Anwendungen veröffentlichen, um die für den Platzhalter festgelegten Standardwerte zu überschreiben. Anwendungen ohne Platzhalter haben stets Vorrang vor Platzhalteranwendungen. Aus Sicht der Konfiguration sind diese „nur“ normale Anwendungen.
 
 Die Erstellung einer Platzhalteranwendung basiert auf demselben [Ablauf für die Anwendungsveröffentlichung](application-proxy-add-on-premises-application.md), der auch für alle anderen Anwendungen gilt. Der einzige Unterschied besteht darin, dass Sie einen Platzhalter in den URLs und ggf. in der SSO-Konfiguration verwenden.
 

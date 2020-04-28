@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476048"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024692"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
+
+*Dieser Artikel gilt für Operatoren und Geräteentwickler.*
 
 In diesem Artikel werden die Optionen zum Verbinden Ihrer Geräte mit einer Azure IoT Central-Anwendung beschrieben.
 
@@ -45,7 +50,7 @@ Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Gerä
 
 ![SAS-Schlüssel für ein einzelnes Gerät](./media/concepts-get-connected/single-device-sas.png)
 
-Weitere Informationen finden Sie im Tutorial [Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](./tutorial-connect-device.md).
+Weitere Informationen finden Sie im Tutorial [Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](./tutorial-connect-device-nodejs.md).
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Verbinden von Geräten nach Maß mit SAS
 
@@ -265,7 +270,8 @@ Alle Daten, die zwischen Geräten und Azure IoT Central ausgetauscht werden, wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich mit der Gerätekonnektivität in Azure IoT Central vertraut gemacht haben, werden Ihnen als Nächstes die folgenden Schritte empfohlen:
+Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
 
-- [Vorbereiten und Verbinden eines DevKit-Geräts](howto-connect-devkit.md)
-- [C SDK: Provisioning Device Client SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) (C SDK: Bereitstellung des Geräteclient-SDK)
+- Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).
+- Informieren Sie sich über [Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung](./howto-set-up-template.md).
+- Informieren Sie sich über [Azure IoT Edge-Geräte und Azure IoT Central](./concepts-iot-edge.md).

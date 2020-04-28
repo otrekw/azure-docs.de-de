@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521317"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676354"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -22,7 +22,7 @@ Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Z
 - Berechtigungen, die von der SAS gewährt werden. Beispielsweise kann eine SAS für einen Event Hubs-Namespace die Berechtigung „Lauschen“, jedoch nicht die Berechtigung „Senden“ gewähren.
 - Nur Clients, die gültige Anmeldeinformationen bereitstellen, können Daten an einen Event Hub senden.
 - Ein Client kann nicht die Identität eines anderen Clients annehmen.
-- Ein nicht autorisierter Client kann daran gehindert werden, Daten an einen Event Hub zu senden.
+- Ein nicht autorisierter Client kann daran gehindert werden, Daten an einen Event Hub zu senden.
 
 In diesem Artikel wird die Authentifizierung des Zugriffs auf Event Hubs-Ressourcen mit SAS behandelt. Informationen zum **Autorisieren** des Zugriffs auf Event Hubs-Ressourcen mit SAS finden Sie in [diesem Artikel](authorize-access-shared-access-signature.md). 
 

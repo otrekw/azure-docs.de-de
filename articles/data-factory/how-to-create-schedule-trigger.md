@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414481"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641529"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ In den folgenden Abschnitten werden die Schritte zum Erstellen eines Zeitplantri
 Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführung der Pipeline (stündlich, täglich usw.) festzulegen. 
 
 > [!NOTE]
-> Eine vollständige exemplarische Vorgehensweise zum Erstellen einer Pipeline und eines Zeitplantriggers, zum Zuordnen des Triggers zur Pipeline und zum Ausführen sowie Überwachen der Pipeline finden Sie im Schnellstart [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md).
+> Eine vollständige exemplarische Vorgehensweise zum Erstellen einer Pipeline und eines Zeitplantriggers, worin der Trigger der Pipeline zugeordnet sowie die Pipeline ausgeführt und überwacht wird, finden Sie im [Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md).
 
-1. Wechseln Sie zur Registerkarte **Bearbeiten**. 
+1. Wechseln Sie zur Registerkarte **Bearbeiten**, die mit einem Stiftsymbol angezeigt wird. 
 
     ![Wechseln zur Registerkarte „Bearbeiten“](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. Klicken Sie im Menü auf **Trigger** und dann auf **Neu/Bearbeiten**. 
+
+1. Wählen Sie im Menü **Trigger** und dann **Neu/Bearbeiten** aus. 
 
     ![Menü „Neuer Trigger“](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. Klicken Sie auf der Seite **Add Triggers** (Trigger hinzufügen) auf **Choose trigger...** (Trigger auswählen...) und dann auf **Neu**. 
+
+1. Wählen Sie auf der Seite **Trigger hinzufügen** die Option **Trigger auswählen...** und dann **+Neu** aus. 
 
     ![Hinzufügen von Triggern – neuer Trigger](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. Führen Sie auf der Seite **Neuer Trigger** die folgenden Schritte durch: 
+
+1. Führen Sie auf der Seite **Neuer Trigger** die folgenden Schritte aus: 
 
     1. Überprüfen Sie, ob **Zeitplan** als **Typ** ausgewählt ist. 
-    2. Geben Sie unter **Startdatum (UTC)** den Startzeitpunkt des Triggers an. Dieser ist standardmäßig auf das aktuelle Datum und die aktuelle Uhrzeit festgelegt. 
-    3. Legen Sie für den Trigger **Wiederholen** fest. Wählen Sie einen Wert aus der Dropdownliste aus („Minütlich“, „Stündlich“, „Täglich“, „Wöchentlich“ und „Monatlich“). Geben Sie den Multiplikator in das Textfeld ein. Beispiel: Wenn der Trigger einmal alle 15 Minuten ausgeführt werden soll, wählen Sie **Minütlich** aus, und geben Sie **15** in das Textfeld ein. 
-    4. Wenn kein Enddatum bzw. keine Endzeit für den Trigger angegeben werden soll, wählen Sie im Feld **Ende** die Option **Kein Ende** aus. Um ein Enddatum bzw. eine Endzeit anzugeben, wählen Sie **Am [Datum]** aus, geben Sie Enddatum/-zeit an, und klicken Sie auf **Übernehmen**. Für jede Pipelineausführung fallen Gebühren an. Wenn Sie Tests durchführen, sollten Sie darauf achten, dass die Pipeline nur ein paar Mal ausgelöst wird. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst wirksam, nachdem Sie die Lösung in Data Factory veröffentlicht haben, nicht beim Speichern des Triggers auf der Benutzeroberfläche.
+    1. Geben Sie unter **Startdatum (UTC)** den Startzeitpunkt des Triggers an. Dieser ist standardmäßig auf das aktuelle Datum und die aktuelle Uhrzeit festgelegt. 
+    1. Legen Sie für den Trigger **Wiederholen** fest. Wählen Sie einen Wert aus der Dropdownliste aus („Minütlich“, „Stündlich“, „Täglich“, „Wöchentlich“ und „Monatlich“). Geben Sie den Multiplikator in das Textfeld ein. Beispiel: Wenn der Trigger einmal alle 15 Minuten ausgeführt werden soll, wählen Sie **Minütlich** aus, und geben Sie **15** in das Textfeld ein. 
+    1. Wenn kein Enddatum bzw. keine Endzeit für den Trigger angegeben werden soll, wählen Sie im Feld **Ende** die Option **Kein Ende** aus. Soll aber ein Enddatum bzw. eine Endzeit angegeben werden, wählen Sie **Am Datum** aus, geben Sie Enddatum/Endzeit an, und wählen Sie **OK** aus. Für jede Pipelineausführung fallen Gebühren an. Wenn Sie Tests durchführen, sollten Sie darauf achten, dass die Pipeline nur ein paar Mal ausgelöst wird. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst wirksam, nachdem Sie die Lösung in Data Factory veröffentlicht haben, nicht beim Speichern des Triggers auf der Benutzeroberfläche.
 
         ![Triggereinstellungen](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. Aktivieren Sie im Fenster **Neuer Trigger** die Option **Aktiviert**, und klicken Sie dann auf **Weiter**. Über dieses Kontrollkästchen können Sie den Trigger später deaktivieren. 
+
+1. Wählen Sie im Fenster **Neuer Trigger** in der Option **Aktiviert** die Schaltfläche **Ja** und dann **OK** aus. Über dieses Kontrollkästchen können Sie den Trigger später deaktivieren. 
 
     ![Triggereinstellungen – Schaltfläche „Weiter“](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. Überprüfen Sie auf der Seite **Neuer Trigger** die Warnmeldung, und klicken Sie auf **Fertig stellen**.
+
+1. Überprüfen Sie im Fenster **Neuer Auslöser** die Warnmeldung, und wählen Sie **OK** aus.
 
     ![Triggereinstellungen – Schaltfläche „Fertig stellen“](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Klicken Sie auf **Veröffentlichen**, um die Änderungen in Data Factory zu veröffentlichen. Trigger werden erst gestartet und die Pipeline wird ausgeführt, wenn die Änderungen in der Data Factory veröffentlicht wurden. 
+
+1. Wählen Sie **Alle veröffentlichen** aus, um die Änderungen in Data Factory zu veröffentlichen. Der Trigger startet die Pipelineausführung erst, wenn die Änderungen in Data Factory veröffentlicht wurden. 
 
     ![Schaltfläche "Veröffentlichen"](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Sie können die Pipelineausführungen anzeigen, die vom geplanten Trigger ausgelöst werden. Beachten Sie die Werte in der Spalte **Ausgelöst durch**. Wenn Sie die Option **Jetzt auslösen** verwenden, wird der manuelle Trigger in der Liste ausgeführt. 
+
+1. Wechseln Sie auf der linken Seite zur Registerkarte **Pipelineausführung**, und wählen Sie **Aktualisieren** aus, um die Liste zu aktualisieren. Dann werden die Pipelineausführungen angezeigt, die vom geplanten Trigger ausgelöst wurden. Beachten Sie die Werte in der Spalte **Ausgelöst durch**. Wenn Sie die Option **Jetzt auslösen** verwenden, wird die manuelle Triggerausführung in der Liste angezeigt. 
 
     ![Überwachen ausgelöster Ausführungen](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. Klicken Sie neben **Pipelineausführungen** auf den Pfeil nach unten, um zur Ansicht **Triggerausführungen** zu wechseln. 
+
+1. Wechseln Sie zur Ansicht **Triggerausführungen**. 
 
     ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
     - Der Trigger ist der Pipeline **Adfv2QuickStartPipeline** zugeordnet. Um einen Trigger mehreren Pipelines zuzuordnen, fügen Sie weitere **pipelineReference**-Abschnitte hinzu.
     - Die Pipeline im Schnellstart akzeptiert zwei **parameter**-Werte: **inputPath** und **outputPath**. Aus diesem Grund übergeben Sie Werte für diese Parameter aus dem Trigger.
 
-2. Erstellen Sie mit dem Cmdlet **Set-AzDataFactoryV2Trigger** einen Trigger:
+1. Erstellen Sie mit dem Cmdlet **Set-AzDataFactoryV2Trigger** einen Trigger:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+1. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**:
+1. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**:
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+1. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
+1.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"

@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233218"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732315"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -25,7 +28,7 @@ IoT Hub ist kein voll funktionsfähiger MQTT-Broker und unterstützt nicht alle 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Die gesamte Gerätekommunikation mit IoT Hub muss mithilfe von TLS/SSL gesichert werden. Daher unterstützt IoT Hub keine nicht sicheren Verbindungen über Port 1883.
+Die gesamte Gerätekommunikation mit IoT Hub muss mithilfe von TLS/SSL gesichert werden. Daher unterstützt IoT Hub keine unsicheren Verbindungen über Port 1883.
 
 ## <a name="connecting-to-iot-hub"></a>Herstellen einer Verbindung mit einem IoT Hub
 
@@ -93,7 +96,7 @@ Dabei sollten Sie die folgenden Punkte beachten:
 
 * Bei AMQP werden Fehler für viele Bedingungen zurückgegeben, bei MQTT wird dagegen die Verbindung beendet. Daher müssen an der Ausnahmebehandlungslogik möglicherweise einige Änderungen vorgenommen werden.
 
-* MQTT unterstützt beim Empfang von *Cloud-zu-Gerät-Nachrichten* keine [reject](iot-hub-devguide-messaging.md)-Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
+* MQTT unterstützt beim Empfang von [Cloud-zu-Gerät-Nachrichten](iot-hub-devguide-messaging.md) keine *reject*-Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
 
 * AMQP wird im Python SDK nicht unterstützt.
 
@@ -103,7 +106,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
 * Verwenden Sie für das Feld **ClientId** die **deviceId**-Eigenschaft.
 
-* Verwenden Sie **für das Feld**Benutzername`{iothubhostname}/{device_id}/?api-version=2018-06-30`, wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
+* Verwenden Sie `{iothubhostname}/{device_id}/?api-version=2018-06-30` für das Feld **Benutzername**, wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** Folgendes enthalten:
 
@@ -118,7 +121,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
   Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT-Hub-Sicherheitstoken](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) im Abschnitt zu Geräten.
 
-  Beim Testen können Sie auch die plattformübergreifenden [Azure IoT-Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder das Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
+  Beim Testen können Sie auch die plattformübergreifenden [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder den CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
 
 ### <a name="for-azure-iot-tools"></a>Für Azure IoT Tools
 
@@ -129,16 +132,6 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 3. Legen Sie die **Ablaufzeit** fest, und drücken Sie die EINGABETASTE.
   
 4. Das SAS-Token wird erstellt und in die Zwischenablage kopiert.
-
-### <a name="for-device-explorer"></a>Für Device Explorer
-
-1. Klicken Sie in **Device Explorer** auf die Registerkarte **Verwaltung**.
-
-2. Klicken Sie auf **SAS Token** (oben rechts).
-
-3. Wählen Sie unter **SASTokenForm** Ihr Gerät in der Dropdownliste **DeviceID** aus. Legen Sie Ihre **TTL**fest.
-
-4. Klicken Sie auf **Generieren** , um Ihr Token zu erstellen.
 
    Das generierte SAS-Token weist die folgende Struktur auf:
 

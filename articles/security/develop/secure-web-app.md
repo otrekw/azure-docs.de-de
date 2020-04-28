@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811236"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686808"
 ---
 # <a name="develop-a-secure-web-app"></a>Entwickeln einer sicheren Web-App
 
@@ -803,7 +803,7 @@ Konfigurieren Sie die App im Azure-Portal für die Verwendung der erforderlichen
 Nachdem Sie die Azure AD-Konfiguration und die Geheimnisse zu Key Vault hinzugefügt haben, können Benutzer mithilfe der Azure OAuth-Authentifizierung authentifiziert werden.
 Im App-Code wird dies von der Azure Active Directory-Authentifizierungsbibliothek (ADAL) verarbeitet.
 
-Sobald sich die Geheimnisse in Key Vault befinden und die Anwendung über Zugriff auf die Geheimnisse und die Datenbank verfügt, ist der Anwendungsdienst über die Anwendungs-URL (https://GATEWAY_HASH.cloudapp.net) ) des Gateways erreichbar, die Sie über das entsprechende Blatt abrufen können.
+Sobald sich die Geheimnisse in Key Vault befinden und die Anwendung Zugriff auf die Geheimnisse und die Datenbank hat, ist der Anwendungsdienst über die Anwendungs-URL des Gateways (https:\//GATEWAY_HASH.cloudapp.net) erreichbar, die Sie über das entsprechende Blatt abrufen können.
 
 Wenn Sie versuchen sich bei Azure Active Directory anmelden und die Fehlermeldung „User is not registered in the directory you're trying to log into“ (Der Benutzer ist nicht in dem Verzeichnis registriert, in der Sie versuchen sich anzumelden), müssen Sie den Benutzer hinzufügen. Öffnen Sie die Azure Active Directory-Registerkarte **Benutzer**, und fügen Sie den Benutzer manuell hinzu, indem Sie ihre Informationen eingeben. Alternativ können Sie den Benutzer einladen, indem Sie seine E-Mail-Adresse als Gastbenutzer im Blatt **Gast einladen** in Azure Active Directory eingeben.
 
@@ -978,7 +978,7 @@ Bei dem [ZAP-Tool von OWASP](https://www.zaproxy.org/) handelt es sich um eine O
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Suchen und Beheben von Sicherheitsrisiken in App-Abhängigkeiten
 
-Sie können die [Abhängigkeitsüberprüfung von OWASP](https://www.owasp.org/index.php/OWASP_Dependency_Check) zum Suchen und Beheben von Anwendungsabhängigkeiten verwenden.
+Sie können die [Abhängigkeitsüberprüfung von OWASP](https://owasp.org/www-project-dependency-check/) zum Suchen und Beheben von Anwendungsabhängigkeiten verwenden.
 
 „Safety“ ist eine ähnliche Anwendung, die Abhängigkeiten überprüft. Sie können Sie auf [GitHub](https://github.com/pyupio/safety) finden. Safety scannt nach Sicherheitsrisiken, die in bekannten Datenbanken für Sicherheitsrisiken dokumentiert wurden.
 

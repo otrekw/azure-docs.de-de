@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978031"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769869"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Tutorial: Verwenden von Custom Vision mit einem IoT-Gerät zum Melden von visuellen Zuständen
 
-Diese Beispiel-App veranschaulicht, wie Sie Custom Vision verwenden, um ein Gerät mit einer Kamera für das Erkennen von visuellen Zuständen trainieren. Sie können dieses Erkennungsszenario auf einem IoT-Gerät ausführen, indem Sie ein aus dem Custom Vision-Dienst exportiertes ONNX-Modell verwenden.
+Diese Beispiel-App veranschaulicht, wie Sie Custom Vision verwenden, um ein Gerät mit einer Kamera für das Erkennen von visuellen Zuständen trainieren. Sie können dieses Erkennungsszenario auf einem IoT-Gerät ausführen, indem Sie ein exportiertes ONNX-Modell verwenden.
 
 Ein visueller Zustand beschreibt den Inhalt eines Bilds: ein leerer Raum oder ein Raum mit Personen, eine leere Straße oder eine Straße mit einem LKW usw. Im Bild unten wird gezeigt, wie die App erkennt, dass eine Banane oder ein Apfel vor die Kamera gelegt wird.
 
@@ -92,7 +92,7 @@ Um ein Modell einzurichten, müssen Sie die App in den Zustand **Erfassen von Tr
 * Wenn Sie die App auf einem PC ausführen, verwenden Sie die Schaltfläche in der oberen rechten Ecke der Benutzeroberfläche.
 * Wenn Sie die App auf einem IoT-Gerät ausführen, rufen Sie über den IoT Hub die Methode `EnterLearningMode` auf dem Gerät auf. Sie können die Methode über den Geräteeintrag im IoT Hub-Menü im Azure-Portal oder mit einem Tool wie [IoT Hub-Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) aufrufen.
  
-Wenn die App in den Zustand **Erfassen von Trainingsbildern** versetzt wird, erfasst sie zwei Bilder pro Sekunde, bis die Zielanzahl von Bildern erreicht ist. Die Anzahl beträgt standardmäßig 30 Bilder, aber Sie können diesen Parameter festlegen, indem Sie die gewünschte Zahl als Argument an die IoT Hub-Methode `EnterLearningMode` übergeben. 
+Wenn die App in den Zustand **Erfassen von Trainingsbildern** versetzt wird, erfasst sie zwei Bilder pro Sekunde, bis die Zielanzahl von Bildern erreicht ist. Das Ziel beträgt standardmäßig 30 Bilder, aber Sie können diesen Parameter festlegen, indem Sie die gewünschte Zahl als Argument an die IoT Hub-Methode `EnterLearningMode` übergeben. 
 
 Während die App Bilder erfasst, müssen Sie die Kamera auf die Arten von visuellen Zuständen richten, die Sie erkennen möchten (z. B. einen leeren Raum, einen Raum mit Personen, einen leeren Schreibtisch, einen Schreibtisch mit einem Spielzeuglaster usw.).
 

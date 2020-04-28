@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 68186e777051e77deca7b6e5891eb392cac23260
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237350"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729036"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
 
@@ -45,7 +46,7 @@ Die Microsoft Azure IoT-Geräte-SDKs enthalten Code, der das Erstellen von Anwen
 
 Azure IoT Hub Device SDK für .NET: 
 
-* Download über [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  Der Namespace ist Microsoft.Azure.Devices.Clients, worin IoT Hub-Geräteclients (DeviceClient, ModuleClient) enthalten sind.
+* Download über [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  Der Namespace ist Microsoft.Azure.Devices.Clients, worin IoT Hub-Geräteclients (DeviceClient, ModuleClient) enthalten sind.
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-Referenz](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [Modulreferenz](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
@@ -93,7 +94,7 @@ Die Azure IoT-Dienst-SDKs enthalten Code zum Erstellen von Anwendungen, die dire
 
 Azure IoT Hub Service SDK für .NET:
 
-* Download über [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  Der Namespace ist Microsoft.Azure.Devices, worin IoT Hub-Dienstclients (RegistryManager, ServiceClients) enthalten sind.
+* Download über [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  Der Namespace ist Microsoft.Azure.Devices, worin IoT Hub-Dienstclients (RegistryManager, ServiceClients) enthalten sind.
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-Referenz](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
@@ -116,7 +117,7 @@ Azure IoT Hub Service SDK für Python:
 
 Azure IoT Hub Service SDK für C: 
 
-* Download über [apt-get, MBED, Arduino-IDE oder Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
+* Download über [apt-get, MBED, Arduino-IDE oder NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-c)
 
 Azure IoT Hub Service SDK für iOS: 
@@ -157,7 +158,7 @@ Geräte- und Dienst-SDKs für die Azure Bereitstellung für Node.js:
 
 Geräte- und Dienst-SDKs für die Azure Bereitstellung für Python:
 
-* [Quellcode](https://github.com/Azure/azure-iot-device)
+* [Quellcode](https://github.com/Azure/azure-iot-sdk-python)
 * Laden Sie [Geräte-SDK](https://pypi.org/project/azure-iot-device/) und [Dienst-SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) von pip herunter.
 
 ## <a name="next-steps"></a>Nächste Schritte

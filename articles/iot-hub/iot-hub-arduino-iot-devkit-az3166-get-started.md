@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235680"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733599"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -82,7 +83,13 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     ```
 
    > [!NOTE]
-   > Wenn bei der Ausführung von `device-identity` eine Fehlermeldung angezeigt wird, installieren Sie die [Azure IOT-Erweiterung für Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md), um mehr zu dem Fehler zu erfahren.
+   > Wenn bei der Ausführung von `device-identity` eine Fehlermeldung angezeigt wird, installieren Sie die [Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
+   > Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
@@ -169,9 +176,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 
     ![Installieren von Azure IoT-Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Sie können auch diesen direkten Link verwenden:
-    > [!div class="nextstepaction"]
-    > [Installation des Azure IoT Tools-Erweiterungspakets](vscode:extension/vsciot-vscode.azure-iot-tools)
+    Oder kopieren Sie diese URL, und fügen Sie sie in ein Browserfenster ein: `vscode:extension/vsciot-vscode.azure-iot-tools`.
 
     > [!NOTE]
     > Das Erweiterungspaket Azure IoT Tools enthält die [Azure IoT Device Workbench](https://aka.ms/iot-workbench), mit der das Entwickeln und Debuggen auf verschiedenen IoT Devkit-Geräten durchgeführt werden kann. Die [Azure IoT Hub-Erweiterung](https://aka.ms/iot-toolkit), die auch im Azure IoT Tools-Erweiterungspaket enthalten ist, wird zur Verwaltung und Interaktion mit Azure IoT Hubs verwendet.
@@ -321,6 +326,17 @@ Die Beispielanwendung wird erfolgreich ausgeführt, wenn folgende Ergebnisse ang
 * Die LED auf dem MXChip IoT DevKit-Board blinkt.
 
 ![Ausgabe des seriellen Monitors](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> Möglicherweise tritt während des Tests ein Fehler auf, bei dem die LED nicht blinkt, das Azure-Portal keine eingehenden Daten vom Gerät anzeigt, aber im OLED-Bildschirm des Geräts **Wird ausgeführt...** angezeigt wird. Wechseln Sie zur Behebung des Problems über das Azure-Portal zum Gerät im IoT-Hub, und senden Sie eine Nachricht an das Gerät. Wenn im seriellen Monitor die folgende Antwort in VS Code angezeigt wird, ist es möglich, dass die direkte Kommunikation vom Gerät auf Routerebene blockiert wird. Überprüfen Sie die für die Verbindungsgeräte konfigurierten Firewall- und Routerregeln. Vergewissern Sie sich außerdem, dass der ausgehende Port 1833 geöffnet ist.
+> 
+> FEHLER: mqtt_client.c (ln 454): Fehler: Fehler beim Öffnen der Verbindung mit dem Endpunkt  
+> INFO: >>>Verbindungsstatus: getrennt  
+> FEHLER: tlsio_mbedtls. c (ln 604): Fehler beim Öffnen der zugrunde liegenden E/A  
+> ERROR: mqtt_client.c (ln 1042): Fehler: io_open fehlgeschlagen  
+> FEHLER: iothubtransport_mqtt_common.c (ln 2283): Fehler beim Herstellen einer Verbindung mit der Adresse atcsliothub.azure-devices.net.  
+> INFO: >>>Stellen Sie erneut eine Verbindung her.  
+> INFO: IoT Hub-Version: 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Anzeigen der von Azure IoT Hub empfangenen Telemetriedaten
 

@@ -1,19 +1,19 @@
 ---
 title: Verwenden der Azure IoT-Erweiterung für Azure CLI zum Interagieren mit IoT Plug & Play-Vorschaugeräten | Microsoft-Dokumentation
 description: Installieren Sie die Azure IoT-Erweiterung für Azure CLI, und verwenden Sie sie zum Interagieren mit den IoT Plug &Play-Geräten, die mit Ihrem IoT-Hub verbunden sind.
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b5907c0fb127947e90352e68b2726a22f5afea0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234682"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770456"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Installieren und Verwenden der Azure IoT-Erweiterung für die Azure CLI
 

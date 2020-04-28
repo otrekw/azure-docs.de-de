@@ -9,20 +9,23 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637860"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679337"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
 Dieser Artikel bietet Informationen zur Problembehandlung für Hybrid Runbook Worker.
 
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+
 ## <a name="general"></a>Allgemein
 
-Der Hybrid Runbook Worker ist von einem Agent abhängig, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbookaufträge zu erhalten und den Status zu melden. Für Windows ist dies der Log Analytics-Agent für Windows (früher Microsoft Monitoring Agent (MMA) genannt). Für Linux handelt es sich um den Log Analytics-Agent für Linux.
+Der Hybrid Runbook Worker ist von einem Agent abhängig, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbookaufträge zu erhalten und den Status zu melden. Für Windows ist dieser Agent der Log Analytics-Agents für Windows. Für Linux handelt es sich um den Log Analytics-Agent für Linux.
 
 ### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>Szenario: Fehler bei der Runbookausführung
 
@@ -41,10 +44,8 @@ Kurze Zeit nach drei Ausführungsversuchen wird Ihr Runbook angehalten. Es gibt 
 Folgende Ursachen kommen in Betracht:
 
 * Die Runbooks können nicht bei lokalen Ressourcen authentifiziert werden.
-
 * Der Hybrid Worker befindet sich hinter einem Proxy oder einer Firewall.
-
-* Der für die Ausführung des Hybrid Runbook Worker-Features konfigurierte Computer erfüllt die Hardwaremindestanforderungen nicht.
+* Der für die Ausführung des Hybrid Runbook Workers konfigurierte Computer erfüllt die Hardwaremindestanforderungen nicht.
 
 #### <a name="resolution"></a>Lösung
 
@@ -103,20 +104,20 @@ Starten Sie den Workercomputer, und registrieren Sie ihn erneut in Azure Automat
 Ein Runbook, das auf einem Hybrid Runbook Worker ausgeführt wird, schlägt mit der folgenden Fehlermeldung fehl.
 
 ```error
-Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
 At line:3 char:1
-+ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein [„Ausführen als“-Konto](../manage-runas-account.md) in einem Runbook zu verwenden, das auf einem Hybrid Runbook Worker ausgeführt wird, auf dem das Zertifikat des „Ausführen als“-Kontos nicht vorhanden ist. Der Hybrid Runbook Worker enthält das Zertifikatobjekt, das für die ordnungsgemäße Funktion des „Ausführen als“-Kontos erforderlich ist. nicht standardmäßig lokal.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein [„Ausführen als“-Konto](../manage-runas-account.md) in einem Runbook zu verwenden, das auf einem Hybrid Runbook Worker ausgeführt wird, auf dem das Zertifikat des „Ausführen als“-Kontos nicht vorhanden ist. Der Hybrid Runbook Worker enthält das Zertifikatobjekt nicht standardmäßig lokal. Dieses Objekt ist aber für die ordnungsgemäße Funktion des ausführenden Kontos erforderlich.
 
 #### <a name="resolution"></a>Lösung
 
-Wenn es sich bei Ihrem Hybrid Runbook Worker um eine Azure-VM handelt, können Sie stattdessen [verwaltete Identitäten für Azure-Ressourcen](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) verwenden. Dieses Szenario gestattet Ihnen die Authentifizierung bei Azure-Ressourcen mithilfe der verwalteten Identität der Azure-VM anstelle des „Ausführen als“-Kontos, was die Authentifizierung vereinfacht. Wenn der Hybrid Runbook Worker ein lokaler Computer ist, müssen Sie das Zertifikat des „Ausführen als“-Kontos auf dem Computer installieren. Sehen Sie sich die Schritte an, die für die Ausführung des PowerShell-Runbooks „Export-RunAsCertificateToHybridWorker“ erforderlich sind und in [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) erläutert werden, wenn Sie Informationen zum Installieren des Zertifikats erhalten möchten.
+Wenn es sich bei Ihrem Hybrid Runbook Worker um eine Azure-VM handelt, können Sie stattdessen [verwaltete Identitäten für Azure-Ressourcen](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) verwenden. Dieses Szenario gestattet Ihnen die Authentifizierung bei Azure-Ressourcen mithilfe der verwalteten Identität der Azure-VM anstelle des „Ausführen als“-Kontos, was die Authentifizierung vereinfacht. Wenn der Hybrid Runbook Worker ein lokaler Computer ist, müssen Sie das Zertifikat des „Ausführen als“-Kontos auf dem Computer installieren. Sehen Sie sich die Schritte an, die für die Ausführung des PowerShell-Runbooks **Export-RunAsCertificateToHybridWorker** erforderlich sind und in [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) erläutert werden, wenn Sie Informationen zum Installieren des Zertifikats erhalten möchten.
 
 ### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>Szenario: Fehler 403 während der Registrierung eines Hybrid Runbook Workers
 
@@ -193,15 +194,15 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Der Windows Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Für den Fall, dass bei der Registrierung des Workers ein Fehler auftritt, werden in diesem Abschnitt einige mögliche Gründe hierfür erläutert.
 
-### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>Szenario: Microsoft Monitoring Agent wird nicht ausgeführt.
+### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Szenario: Der Log Analytics-Agent für Windows wird nicht ausgeführt.
 
 #### <a name="issue"></a>Problem
 
-Auf dem Computer mit dem Hybrid Runbook Worker wird der Dienst `healthservice` nicht ausgeführt.
+Auf dem Computer mit dem Hybrid Runbook Worker wird der `healthservice` nicht ausgeführt.
 
 #### <a name="cause"></a>Ursache
 
-Wenn der Microsoft Monitoring Agent-Dienst nicht ausgeführt wird, verhindert dies, dass der Hybrid Runbook Worker mit Azure Automation kommuniziert.
+Wenn der Log Analytics-Agent für Windows-Dienst nicht ausgeführt wird, kann der Hybrid Runbook Worker nicht mit Azure Automation kommunizieren.
 
 #### <a name="resolution"></a>Lösung
 
@@ -272,7 +273,7 @@ Dieses Problem kann durch einen beschädigten Cache für den Hybrid Runbook Work
 
 #### <a name="resolution"></a>Lösung
 
-Melden Sie sich zur Behebung dieses Problems beim Hybrid Runbook Worker an, und führen Sie das folgende Skript aus. Dieses Skript beendet den Microsoft Monitoring Agent, entfernt den dazugehörigen Cache und startet den Dienst neu. Dadurch muss der Hybrid Runbook Worker seine Konfiguration erneut aus Azure Automation herunterladen.
+Melden Sie sich zur Behebung dieses Problems beim Hybrid Runbook Worker an, und führen Sie das folgende Skript aus. Dieses Skript beendet den Log Analytics-Agent für Windows, entfernt den dazugehörigen Cache und startet den Dienst neu. Dadurch muss der Hybrid Runbook Worker seine Konfiguration erneut aus Azure Automation herunterladen.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -304,8 +305,8 @@ Entfernen Sie den folgenden Registrierungsschlüssel, starten Sie `HealthService
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-* Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.

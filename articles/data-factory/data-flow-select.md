@@ -1,5 +1,5 @@
 ---
-title: 'Zuordnungsdatenfluss: Auswahltransformation'
+title: Auswählen von Transformationen im Zuordnungsdatenfluss
 description: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
 author: kromerm
 ms.author: makromer
@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/18/2020
-ms.openlocfilehash: 498ce053e8a52897d9087091b92fa51a04e195a4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413247"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686493"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Auswählen von Transformationen im Zuordnungsdatenfluss
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie die Auswahltransformation, um Spalten umzubenennen, zu löschen oder neu anzuordnen. Diese Transformation ändert keine Zeilendaten, sondern wählt aus, welche Spalten nachgelagert weitergegeben werden. 
 
@@ -53,7 +53,7 @@ Verwenden Sie die `$$`-Syntax, um auf den eingegebenen Namen einer übereinstimm
 
 Muster stimmen sowohl mit abweichenden als auch definierten Spalten überein. Um zu prüfen, welche definierten Spalten von einer Regel zugeordnet werden, klicken Sie neben der Regel auf das Brillensymbol. Überprüfen Sie die Ausgabe mithilfe der Datenvorschau.
 
-### <a name="regex-mapping"></a>Zuordnung mit RegEx (regulärem Ausdruck)
+### <a name="regex-mapping"></a>Zuordnung mit regulärem Ausdruck
 
 Wenn Sie auf das nach unten zeigende Chevronsymbol klicken, können Sie eine RegEx-Zuordnungsbedingung angeben. Eine RegEx-Zuordnungsbedingung gleicht alle Spaltennamen ab, die der angegebenen RegEx-Bedingung entsprechen. Sie kann in Kombination mit standardmäßigen regelbasierten Zuordnungen verwendet werden.
 

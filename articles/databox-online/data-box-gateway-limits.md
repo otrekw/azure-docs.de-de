@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755191"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683350"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Für Azure Data Box Gateway geltende Einschränkungen
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box Gateway-Lösung. 
-
 
 ## <a name="data-box-gateway-service-limits"></a>Für den Data Box Gateway-Dienst geltende Einschränkungen
 
@@ -30,7 +29,7 @@ In der folgenden Tabelle werden die für das Data Box Gateway-Gerät geltenden E
 
 | BESCHREIBUNG | Wert |
 |---|---|
-|Nein. der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
+|Nein. der Dateien pro Gerät |100 Mio. <br> Für jeweils 25 Millionen hinzugefügte Dateien (maximales Limit 100 Millionen) sollten Sie 2 TB Speicherplatz auf dem Datenträger, 8 GB RAM und 4 CPU-Kerne hinzufügen. |
 |Nein. der Freigaben pro Gerät |24 |
 |Nein. von Freigaben pro Azure-Speichercontainer |1 |
 |Maximale in eine Freigabe geschriebene Dateigröße|Für ein virtuelles Gerät mit 2 TB beträgt die maximale Dateigröße 500 GB. <br> Die maximale Dateigröße steigt mit der Größe des Datenträgers im vorhergehenden Verhältnis an, bis ein Maximum von 5 TB erreicht wird. |

@@ -1,44 +1,44 @@
 ---
 title: 'Gewusst wie: Verwenden der systemseitig zugewiesenen verwalteten Identität für den Zugriff auf Azure Cosmos DB'
-description: Erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Azure AD-Identität für den Zugriff auf Schlüssel aus Azure Cosmos DB konfigurieren. MSI, verwaltete Dienstidentität, AAD, Azure Active Directory, Identität
+description: Hier erfahren Sie, wie Sie eine vom System zugewiesene verwaltete Azure Active Directory (Azure AD)-Identität (verwaltete Dienstidentität) für den Zugriff auf Schlüssel aus Azure Cosmos DB konfigurieren.
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 102efba5d028eef621f392ef1739ea9ebeca0b44
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80416975"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641232"
 ---
-# <a name="how-to-use-a-system-assigned-managed-identity-to-access-azure-cosmos-db-data"></a>Gewusst wie: Verwenden der systemseitig zugewiesenen verwalteten Identität für den Zugriff auf Azure Cosmos DB
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Verwenden von systemseitig zugewiesenen verwalteten Identitäten für den Zugriff auf Azure Cosmos DB-Daten
 
-In diesem Artikel richten Sie eine **robuste, schlüsselrotationsunabhängige** Lösung für den Zugriff auf Azure Cosmos DB-Schlüssel durch Nutzung [verwalteter Identitäten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) ein. Das Beispiel in diesem Artikel verwendet eine Azure-Funktion. Sie können diese Lösung jedoch mit jedem Dienst erreichen, der verwaltete Identitäten unterstützt. 
+In diesem Artikel richten Sie eine *robuste, schlüsselrotationsunabhängige* Lösung für den Zugriff auf Azure Cosmos DB-Schlüssel durch Verwendung [verwalteter Identitäten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) ein. Im Beispiel in diesem Artikel wird Azure Functions verwendet, aber Sie können jeden beliebigen Dienst verwenden, der verwaltete Identitäten unterstützt. 
 
-Sie erfahren, wie Sie eine Azure-Funktion erstellen, die auf Azure Cosmos DB zugreifen kann, ohne Azure Cosmos DB-Schlüssel kopieren zu müssen. Die Funktion wird jede Minute aktiviert und zeichnet die aktuelle Temperatur eines Aquariums auf. Informationen zum Einrichten einer durch einen Timer ausgelösten Azure-Funktion finden Sie im Artikel [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](../azure-functions/functions-create-scheduled-function.md).
+Sie erfahren, wie Sie eine Funktions-App erstellen, die auf Azure Cosmos DB-Daten zugreifen kann, ohne Azure Cosmos DB-Schlüssel kopieren zu müssen. Die Funktions-App wird jede Minute aktiviert und zeichnet die aktuelle Temperatur eines Aquariums auf. Informationen zum Einrichten einer per Timer ausgelösten Funktions-App finden Sie im Artikel [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](../azure-functions/functions-create-scheduled-function.md).
 
-Zur Vereinfachung des Szenarios erfolgt die Bereinigung älterer Temperaturdokumente durch eine bereits konfigurierte Einstellung für die [Gültigkeitsdauer](./time-to-live.md). 
+Zur Vereinfachung des Szenarios wurde die Einstellung [Gültigkeitsdauer](./time-to-live.md) bereits konfiguriert, um ältere Temperaturdokumente zu bereinigen. 
 
-## <a name="assign-a-system-assigned-managed-identity-to-an-azure-function"></a>Zuweisen einer vom System zugewiesenen verwalteten Identität zu einer Azure-Funktion
+## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Zuweisen einer vom System zugewiesenen verwalteten Identität zu einer Funktions-App
 
-In diesem Schritt weisen Sie Ihrer Azure-Funktion eine vom System zugewiesene verwaltete Identität zu.
+In diesem Schritt weisen Sie Ihrer Funktions-App eine vom System zugewiesene verwaltete Identität zu.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Bereich **Azure-Funktion** und navigieren Sie zu Ihrer Funktions-App. 
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Bereich **Azure-Funktion**, und wechseln Sie zu Ihrer Funktions-App. 
 
 1. Öffnen Sie die Registerkarte **Plattformfeatures** > **Identität**: 
 
-   ![Registerkarte „Identität“](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   ![Screenshot von Plattformfeatures und Identitätsoptionen für die Funktions-App](./media/managed-identity-based-authentication/identity-tab-selection.png)
 
-1. Legen Sie auf der Registerkarte **Identität** den Status der **Systemidentität** auf **Ein** fest. Wählen Sie **Speichern** aus, und bestätigen Sie, dass Sie die Systemidentität aktivieren möchten. Danach sollte der Bereich **Systemidentität** folgendermaßen aussehen:  
+1. Legen Sie auf der Registerkarte **Identität** den **Status** der Systemidentität auf **Ein** fest, und wählen Sie **Speichern** aus. Der Bereich **Identität** sollte so aussehen:  
 
-   ![Systemidentität aktiviert](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   ![Screenshot, auf dem der „Status“ der Systemidentität auf „Ein“ festgelegt ist](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
 
-## <a name="grant-the-managed-identity-access-to-your-azure-cosmos-account"></a>Gewähren der verwalteten Identität Zugriff auf Ihr Azure Cosmos-Konto
+## <a name="grant-access-to-your-azure-cosmos-account"></a>Gewähren des Zugriffs auf Ihr Azure Cosmos-Konto
 
-In diesem Schritt weisen Sie der vom System zugewiesenen verwalteten Identität der Azure-Funktion eine Rolle zu. Azure Cosmos DB umfasst mehrere integrierte Rollen, die Sie der verwalteten Identität zuweisen können. Im Rahmen dieser Lösung verwenden Sie die beiden folgenden Rollen:
+In diesem Schritt weisen Sie der vom System zugewiesenen verwalteten Identität der Funktions-App eine Rolle zu. Azure Cosmos DB umfasst mehrere integrierte Rollen, die Sie der verwalteten Identität zuweisen können. Im Rahmen dieser Lösung verwenden Sie die beiden folgenden Rollen:
 
 |Integrierte Rolle  |BESCHREIBUNG  |
 |---------|---------|
@@ -46,44 +46,44 @@ In diesem Schritt weisen Sie der vom System zugewiesenen verwalteten Identität 
 |[Cosmos DB-Kontoleser](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kann Azure Cosmos DB-Kontodaten lesen. Ermöglicht das Abrufen von Leseschlüsseln. |
 
 > [!IMPORTANT]
-> Die RBAC-Unterstützung in Azure Cosmos DB gilt nur für Vorgänge auf Steuerungsebene. Vorgänge auf Datenebene werden mithilfe von Hauptschlüsseln oder Ressourcentoken abgesichert. Weitere Informationen finden Sie im Artikel [Sicherer Zugriff auf Daten](secure-access-to-data.md).
+> Die Unterstützung für rollenbasierte Zugriffssteuerung in Azure Cosmos DB gilt nur für Vorgänge auf Steuerungsebene. Vorgänge auf Datenebene werden über Hauptschlüssel oder Ressourcentoken abgesichert. Weitere Informationen finden Sie im Artikel [Sicherer Zugriff auf Daten](secure-access-to-data.md).
 
 > [!TIP] 
-> Weisen Sie bei der Zuweisung von Rollen nur die erforderlichen Zugriffsrechte zu. Wenn Ihr Dienst nur Daten lesen muss, weisen Sie der verwalteten Identität die Rolle **Cosmos DB-Kontoleser** zu. Weitere Informationen zur Bedeutung des Zugriffs mit geringsten Rechten finden Sie im Artikel [Senken der Gefährdung privilegierter Konten](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts).
+> Weisen Sie beim Zuweisen von Rollen nur den erforderlichen Zugriff zu. Wenn Ihr Dienst Daten nur lesen muss, weisen Sie der verwalteten Identität die Rolle **Cosmos DB-Kontoleser** zu. Weitere Informationen zur Bedeutung des Zugriffs mit geringsten Rechten finden Sie im Artikel [Senken der Gefährdung privilegierter Konten](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts).
 
-In Ihrem Szenario lesen Sie die Temperatur und schreiben die betreffenden Daten dann in einen Container in Azure Cosmos DB. Da Sie die Daten schreiben müssen, verwenden Sie die Rolle **DocumentDB-Kontomitwirkender**. 
+In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schreibt diese Daten dann in Azure Cosmos DB in einen Container. Weil die Funktions-App die Daten schreiben muss, müssen Sie die Rolle **DocumentDB-Kontomitwirkender** zuweisen. 
 
-1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Zugriffsverwaltung (IAM)** und dann die Registerkarte **Rollenzuweisungen**:
+1. Melden Sie sich beim Azure-Portal an, und wechseln Sie zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Zugriffssteuerung (IAM)** und dann die Registerkarte **Rollenzuweisungen**:
 
-   ![IAM-Bereich](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   ![Screenshot des Bereichs „Zugriffssteuerung“ und der Registerkarte „Rollenzuweisungen“](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
 
-1. Klicken Sie auf die Schaltfläche **+ Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**.
+1. Wählen Sie **+Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
 
-1. Der Bereich **Rollenzuweisung hinzufügen** wird rechts geöffnet:
+1. Rechts wird der Bereich **Rollenzuweisung hinzufügen** geöffnet:
 
-   ![Rolle hinzufügen](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   ![Screenshot des Bereichs „Rollenzuweisung hinzufügen“](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
 
-   * **Rolle** – Wählen Sie **DocumentDB-Kontomitwirkender** aus.
-   * **Zugriff zuweisen zu** – Wählen Sie im Unterabschnitt **Systemseitig zugewiesene verwaltete Identität** die Option **Funktions-App** aus.
-   * **Auswählen** – Im Bereich werden alle Funktions-Apps in Ihrem Abonnement eingetragen, die über eine **verwaltete Systemidentität** verfügen. In unserem Fall wird die Funktions-App **SummaryService** ausgewählt: 
+   * **Rolle**: Wählen Sie **DocumentDB-Kontomitwirkender** aus.
+   * **Zugriff zuweisen zu**: Wählen Sie im Unterabschnitt **Systemseitig zugewiesene verwaltete Identität** die Option **Funktions-App** aus.
+   * **Select**: Im Bereich werden alle Funktions-Apps in Ihrem Abonnement eingetragen, die über eine **verwaltete Systemidentität** verfügen. Wählen Sie in diesem Fall die Funktions-App **FishTankTemperatureService** aus: 
 
-      ![Zuweisung auswählen](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      ![Screenshot des Bereichs „Rollenzuweisung hinzufügen“ mit Beispielen](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
 
-1. Klicken Sie nach Auswahl der Identität der Funktions-App auf **Speichern**.
+1. Nachdem Sie Ihre Funktions-App ausgewählt haben, wählen Sie **Speichern** aus.
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys-from-the-azure-function"></a>Programmgesteuerter Zugriff auf die Azure Cosmos DB-Schlüssel in der Azure-Funktion
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programmgesteuerter Zugriff auf die Azure Cosmos DB-Schlüssel
 
-Jetzt verfügen wir über eine Funktions-App mit einer vom System zugewiesenen verwalteten Identität. Dieser Identität wurde die Rolle **DocumentDB-Kontomitwirkender** in den Azure Cosmos DB-Berechtigungen zugewiesen. Der folgende Funktions-App-Code ruft die Azure Cosmos DB-Schlüssel ab, erstellt ein CosmosClient-Objekt, ruft die Temperatur ab und speichert diese dann in Cosmos DB.
+Nun haben Sie eine Funktions-App, die in den Azure Cosmos DB-Berechtigungen über eine vom System zugewiesene verwaltete Identität mit der Rolle **DocumentDB-Kontomitwirkender** verfügt. Der folgende Funktions-App-Code ruft die Azure Cosmos DB-Schlüssel ab, erstellt ein CosmosClient-Objekt, ruft die Temperatur des Aquariums ab und speichert sie dann in Azure Cosmos DB.
 
 In diesem Beispiel wird die [List Keys-API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) verwendet, um auf die Azure Cosmos DB Kontoschlüssel zuzugreifen.
 
 > [!IMPORTANT] 
-> Wenn Sie die [Rolle **Cosmos DB-Kontoleser** zuweisen](#grant-the-managed-identity-access-to-your-azure-cosmos-account) möchten, müssen Sie die schreibgeschützte [List Keys-API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) verwenden. Dadurch werden nur die schreibgeschützten Schlüssel abgerufen.
+> Wenn Sie die Rolle [„Cosmos DB-Kontoleser“ zuweisen](#grant-access-to-your-azure-cosmos-account) möchten, müssen Sie die [schreibgeschützte List Keys-API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) verwenden. Damit werden nur die schreibgeschützten Schlüssel aufgefüllt.
 
 Die List Keys-API gibt das `DatabaseAccountListKeysResult`-Objekt zurück. Dieser Typ ist in den C# Bibliotheken nicht definiert. Im folgenden Codebeispiel wird die Implementierung dieser Klasse veranschaulicht:  
 
 ```csharp 
-namespace SummarizationService 
+namespace Monitor 
 {
   public class DatabaseAccountListKeysResult
   {
@@ -95,7 +95,7 @@ namespace SummarizationService
 }
 ```
 
-Im Beispiel wird außerdem ein einfaches Dokument mit dem Namen „TemperatureRecord“ verwendet, das wie folgt definiert ist:
+Im Beispiel wird außerdem ein einfaches Dokument mit dem Namen „TemperatureRecord“ verwendet, das folgendermaßen definiert ist:
 
 ```csharp
 using System;
@@ -112,7 +112,8 @@ namespace Monitor
 }
 ```
 
-Sie verwenden die [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)-Bibliothek, um das vom System zugewiesene verwaltete Identitätstoken abzurufen. Weitere Möglichkeiten zum Abrufen des Tokens und weitere Informationen zur `Microsoft.Azure.Service.AppAuthentication`-Bibliothek finden Sie im Artikel [Dienst-zu-Dienst-Authentifizierung](../key-vault/service-to-service-authentication.md).
+Sie verwenden die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) zum Abrufen des vom System zugewiesenen verwalteten Identitätstokens. Weitere Möglichkeiten zum Abrufen des Tokens und weitere Informationen zur Bibliothek `Microsoft.Azure.Service.AppAuthentication` finden Sie im Artikel [Dienst-zu-Dienst-Authentifizierung](../key-vault/general/service-to-service-authentication.md).
+
 
 ```csharp
 using System;
@@ -126,7 +127,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Monitor
 {
-    public static class TemperatureMonitor
+    public static class FishTankTemperatureService
     {
         private static string subscriptionId =
         "<azure subscription id>";
@@ -141,7 +142,7 @@ namespace Monitor
         private static string containerName =
         "<container to store the temperature in>";
 
-        [FunctionName("TemperatureMonitor")]
+        [FunctionName("FishTankTemperatureService")]
         public static async Task Run([TimerTrigger("0 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"Starting temperature monitoring: {DateTime.Now}");
@@ -149,20 +150,20 @@ namespace Monitor
             // AzureServiceTokenProvider will help us to get the Service Managed token.
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
 
-            // In order to get the Service Managed token we need to authenticate to the Azure Resource Manager.
+            // Authenticate to the Azure Resource Manager to get the Service Managed token.
             string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
 
-            // To get the Azure Cosmos DB keys setup the List Keys API:
+            // Setup the List Keys API to get the Azure Cosmos DB keys.
             string endpoint = $"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys?api-version=2019-12-12";
 
-            // setup an HTTP Client and add the access token.
+            // Setup an HTTP Client and add the access token.
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             // Post to the endpoint to get the keys result.
             var result = await httpClient.PostAsync(endpoint, new StringContent(""));
 
-            // Get the Result back as a DatabaseAccountListKeysResult.
+            // Get the result back as a DatabaseAccountListKeysResult.
             DatabaseAccountListKeysResult keys = await result.Content.ReadAsAsync<DatabaseAccountListKeysResult>();
 
             log.LogInformation("Starting to create the client");
@@ -187,7 +188,7 @@ namespace Monitor
 
         private static int GetTemperature()
         {
-            // fake the temperature sensor for this demo
+            // Fake the temperature sensor for this demo.
             Random r = new Random(DateTime.UtcNow.Second);
             return r.Next(0, 120);
         }
@@ -195,10 +196,10 @@ namespace Monitor
 }
 ```
 
-Sie können jetzt Ihre [Azure-Funktion bereitstellen](../azure-functions/functions-create-first-function-vs-code.md).
+Jetzt können Sie [Ihre Funktions-App bereitstellen](../azure-functions/functions-create-first-function-vs-code.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Zertifikatbasierte Authentifizierung mit Azure Cosmos DB und Active Directory](certificate-based-authentication.md)
-* [Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault](access-secrets-from-keyvault.md)
+* [Zertifikatbasierte Authentifizierung mit Azure Cosmos DB und Azure Active Directory](certificate-based-authentication.md)
+* [Sichern von Azure Cosmos DB-Schlüsseln mit Azure Key Vault](access-secrets-from-keyvault.md)
 * [Sicherheitsbaseline für Azure Cosmos DB](security-baseline.md)

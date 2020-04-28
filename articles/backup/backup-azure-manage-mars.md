@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673252"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025100"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -79,8 +79,8 @@ Sie können Ausschlussregeln hinzufügen, um Dateien und Ordner zu überspringen
 
     ![Auswählen der Elemente](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> Gehen Sie mit Bedacht vor, wenn Sie ein Volume vollständig aus der Richtlinie entfernen.  Wenn Sie es erneut hinzufügen müssen, wird es als neues Volume behandelt. Die nächste geplante Sicherung wird als Erstsicherung (vollständige Sicherung) und nicht als inkrementellen Sicherung ausgeführt. Wenn Sie zu einem späteren Zeitpunkt Elemente temporär entfernen und hinzufügen müssen, empfiehlt es sich, **Ausschlusseinstellungen** anstelle von **Elemente entfernen** zu verwenden, damit statt einer vollständigen Sicherung eine inkrementelle Sicherung erfolgt.
+    > [!NOTE]
+    > Gehen Sie mit Bedacht vor, wenn Sie ein Volume vollständig aus der Richtlinie entfernen.  Wenn Sie es erneut hinzufügen müssen, wird es als neues Volume behandelt. Die nächste geplante Sicherung wird als Erstsicherung (vollständige Sicherung) und nicht als inkrementellen Sicherung ausgeführt. Wenn Sie zu einem späteren Zeitpunkt Elemente temporär entfernen und hinzufügen müssen, empfiehlt es sich, **Ausschlusseinstellungen** anstelle von **Elemente entfernen** zu verwenden, damit statt einer vollständigen Sicherung eine inkrementelle Sicherung erfolgt.
 
 2. Führen Sie die nachfolgenden Schritte aus, und klicken Sie zum Abschließen des Vorgangs auf **Fertig stellen**.
 
@@ -90,7 +90,7 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
 
 - **Schutz beenden und Sicherungsdaten beibehalten**.
   - Mit dieser Option werden alle zukünftigen Sicherungsaufträge beendet.
-  - Der Azure Backup-Dienst behält die Wiederherstellungspunkte bei, die gemäß der Aufbewahrungsrichtlinie gesichert wurden.
+  - Der Azure Backup-Dienst behält alle vorhandenen Wiederherstellungspunkte weiterhin bei.  
   - Sie können die gesicherten Daten für nicht abgelaufene Wiederherstellungspunkte wiederherstellen.
   - Mit der Option *Aktivieren Sie den Sicherungszeitplan erneut* können Sie bei Bedarf den Schutz fortsetzen. Anschließend werden die Daten basierend auf der neuen Aufbewahrungsrichtlinie aufbewahrt.
 - **Schutz beenden und Sicherungsdaten löschen**.
@@ -167,7 +167,6 @@ Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während de
 
     ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase2.png)
 - Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

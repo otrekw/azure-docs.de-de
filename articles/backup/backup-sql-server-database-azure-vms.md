@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233886"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685712"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -112,7 +112,7 @@ Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
 * Semikolon ';'
 * Schrägstrich '/'
 
-Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 >[!NOTE]
 >Der Vorgang **Schutz konfigurieren** wird für Datenbanken mit Sonderzeichen wie „+“ oder „&“ im Namen nicht unterstützt. Sie können entweder den Datenbanknamen ändern oder **Automatischen Schutz** aktivieren, sodass diese Datenbanken erfolgreich geschützt werden können.

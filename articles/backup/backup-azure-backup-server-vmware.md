@@ -3,12 +3,12 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529504"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537405"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -96,11 +96,11 @@ Wenn in Ihrer Organisation sichere Grenzen eingerichtet wurden und Sie nicht das
 
 1. Kopieren Sie den folgenden Text, und fügen Sie ihn in eine TXT-Datei ein.
 
-```text
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-"IgnoreCertificateValidation"=dword:00000001
-```
+    ```text
+    Windows Registry Editor Version 5.00
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+    "IgnoreCertificateValidation"=dword:00000001
+    ```
 
 2. Speichern Sie die Datei unter dem Namen **DisableSecureAuthentication.reg** auf dem Azure Backup Server-Computer.
 
@@ -130,27 +130,49 @@ Azure Backup Server benötigt ein Benutzerkonto mit Berechtigungen für den Zugr
 
 ### <a name="role-permissions"></a>Rollenberechtigungen
 
-| **Berechtigungen für vCenter 6.7-Benutzerkonto**              | **Berechtigungen für vCenter 6.5-Benutzerkonto**             |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| Datastore.Allocate Space                                  | Datastore.Allocate Space                                 |
-| Global.Log Event                                          | Global.Log Event                                         |
-| Global.Manage Custom Attributes                           | Global.Manage Custom Attributes                          |
-| Network.Assign                                            | Network.Assign                                           |
-| Resource. Virtuellen Computer dem Ressourcenpool zuweisen        | Resource. Virtuellen Computer dem Ressourcenpool zuweisen       |
-| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
-| VirtualMachine.Configuration. Gerät hinzufügen oder entfernen       | VirtualMachine.Configuration. Gerät hinzufügen oder entfernen      |
-| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
-| VirtualMachine.Configuration.Toggle Disk Change Tracking | VirtualMachine.Configuration.Disk Change Tracking       |
-| VirtualMachine.Configuration.Configure Host USB Device   | VirtualMachine.Configuration.Host USB Device            |
-| VirtualMachine.Configuration.Query Unowned Files         | VirtualMachine.Configuration.Query Unowned Files        |
-| VirtualMachine.Configuration.Change Swapfile Placement   | VirtualMachine.Configuration.Swapfile Placement         |
-| VirtualMachine.Interaction.Power Off                      | VirtualMachine.Interaction.Power Off                     |
-| VirtualMachine.Inventory.Create New                       | VirtualMachine.Inventory.Create New                      |
-| VirtualMachine.Provisioning.Allow Disk Access            | VirtualMachine.Provisioning.Allow Disk Access           |
-| VirtualMachine.Provisioning.Allow File Access            | VirtualMachine.Provisioning.Allow File Access           |
-| VirtualMachine.Provisioning.Allow Read-only Disk Access  | VirtualMachine.Provisioning.Allow Read-only Disk Access |
-| VirtualMachine.Snapshot  Management.Create Snapshot       | VirtualMachine.Snapshot  Management.Create Snapshot      |
-| VirtualMachine.Snapshot  Management.Remove Snapshot       | VirtualMachine.Snapshot  Management.Remove Snapshot      |
+| Berechtigungen für vCenter 6.7-Benutzerkonto                     | Berechtigungen für vCenter 6.5-Benutzerkonto                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Datastore cluster.Configure a datastore cluster            | Datastore cluster.Configure a datastore cluster            |
+| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
+| Datastore.Browse datastore                                   | Datastore.Browse datastore                                   |
+| Datastore.Low-level file operations                          | Datastore.Low-level file operations                          |
+| Global.Disable methods                                       | Global.Disable methods                                       |
+| Global.Enable methods                                        | Global.Enable methods                                        |
+| Global.Licenses                                              | Global.Licenses                                              |
+| Global.Log event                                             | Global.Log event                                             |
+| Global.Manage custom attributes                              | Global.Manage custom attributes                              |
+| Global.Set custom attribute                                  | Global.Set custom attribute                                  |
+| Host.Local operations.Create virtual machine                | Host.Local operations.Create virtual machine                |
+| Network.Assign network                                       | Network.Assign network                                       |
+| Resource. Zuweisen eines virtuellen Computers zum Ressourcenpool           | Resource. Zuweisen eines virtuellen Computers zum Ressourcenpool           |
+| vApp.Add virtual machine                                     | vApp.Add virtual machine                                     |
+| vApp.Assign resource pool                                    | vApp.Assign resource pool                                    |
+| vApp.Unregister                                              | vApp.Unregister                                              |
+| VirtualMachine.Configuration. Hinzufügen oder Entfernen eines Geräts          | VirtualMachine.Configuration. Hinzufügen oder Entfernen eines Geräts          |
+| Virtual machine.Configuration.Acquire disk lease            | Virtual machine.Configuration.Disk lease                     |
+| Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Add new disk                   |
+| Virtual machine.Configuration.Advanced configuration        | Virtual machine.Configuration.Advanced                       |
+| Virtual machine.Configuration.Toggle disk change tracking   | Virtual machine.Configuration.Disk change tracking          |
+| Virtual machine.Configuration.Configure Host USB device     | Virtual machine.Configuration.Host USB device               |
+| Virtual machine.Configuration.Extend virtual disk           | Virtual machine.Configuration.Extend virtual disk           |
+| Virtual machine.Configuration.Query unowned files           | Virtual machine.Configuration.Query unowned files           |
+| Virtual machine.Configuration.Change Swapfile placement     | Virtual machine.Configuration.Swapfile placement            |
+| Virtual machine.Guest Operations.Guest Operation Program Execution | Virtual machine.Guest Operations.Guest Operation Program Execution |
+| Virtual machine.Guest Operations.Guest Operation Modifications | Virtual machine.Guest Operations.Guest Operation Modifications |
+| Virtual machine.Guest Operations.Guest Operation Queries    | Virtual machine.Guest Operations.Guest Operation Queries    |
+| Virtual machine.Interaction.Device connection             | Virtual machine.Interaction.Device connection             |
+| Virtual machine.Interaction.Guest operating system management by VIX API | Virtual machine.Interaction.Guest operating system management by VIX API |
+| Virtual machine.Interaction.Power Off                      | Virtual machine.Interaction.Power Off                      |
+| Virtual machine.Inventory.Create new                        | Virtual machine.Inventory.Create new                        |
+| Virtual machine .Inventory.Remove                            | Virtual machine .Inventory.Remove                            |
+| Virtual machine .Inventory.Register                          | Virtual machine .Inventory.Register                          |
+| Virtual machine.Provisioning.Allow disk access             | Virtual machine.Provisioning.Allow disk access             |
+| Virtual machine.Provisioning.Allow file access             | Virtual machine.Provisioning.Allow file access             |
+| Virtual machine.Provisioning.Allow read-only disk access   | Virtual machine.Provisioning.Allow read-only disk access   |
+| Virtual machine.Provisioning.Allow virtual machine download | Virtual machine.Provisioning.Allow virtual machine download |
+| Virtual machine .Snapshot management.  Erstellen einer Momentaufnahme       | Virtual machine .Snapshot management.  Erstellen einer Momentaufnahme       |
+| Virtual machine.Snapshot management.Remove Snapshot        | Virtual machine.Snapshot management.Remove Snapshot        |
+| Virtual machine.Snapshot management.Revert to snapshot     | Virtual machine.Snapshot management.Revert to snapshot     |
 
 <br>
 
@@ -174,8 +196,6 @@ Azure Backup Server benötigt ein Benutzerkonto mit Berechtigungen für den Zugr
 | Virtual machine.Provisioning. Schreibgeschützten Datenträgerzugriff zulassen |                                             |
 | Virtual machine.Snapshot management.Create snapshot       |                                             |
 | Virtual machine.Snapshot management.Remove Snapshot       |                                             |
-
-
 
 ## <a name="create-a-vmware-account"></a>Erstellen eines VMware-Kontos
 

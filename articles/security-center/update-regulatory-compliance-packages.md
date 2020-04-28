@@ -1,6 +1,6 @@
 ---
 title: Aktualisieren auf die dynamische Überwachung der Einhaltung gesetzlicher Bestimmungen in Ihrem Azure Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen | Microsoft-Dokumentation
-description: Aktualisieren der Compliancepakete (Vorschau)
+description: Aktualisieren der Compliancepakete für die Einhaltung gesetzlicher Vorschriften
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159284"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537779"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Aktualisieren auf dynamische Compliancepakete in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen (Vorschau)
+# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>Aktualisieren auf dynamische Compliancepakete in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
 Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Compliancevorgaben und -anforderungen.
 
@@ -28,7 +28,7 @@ Ein Standard, für den Sie den Compliancestatus verfolgen können, ist [Azure CI
 
 Die Darstellung von Azure CIS, die zu Beginn in Ihrem Compliance-Dashboard angezeigt wird, basiert auf einem statischen Satz von Regeln, der in Security Center enthalten ist.
 
-Mit der Funktion **dynamischer Compliancepakete (Vorschauversion)** verbessert Security Center automatisch die Abdeckung von Branchenstandards. Compliancepakete sind im Wesentlichen in Azure Policy definierte Initiativen. Sie können dem ausgewählten Bereich (Abonnement, Verwaltungsgruppe usw.) zugewiesen werden. Um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen, fügen Sie der Verwaltungsgruppe oder dem Abonnement innerhalb der Sicherheitsrichtlinie ein Compliancepaket hinzu. Durch das Hinzufügen eines Compliancepakets wird die gesetzliche Complianceinitiative dem ausgewählten Bereich zugewiesen. Auf diese Weise können Sie neu veröffentlichte gesetzliche Initiativen als Compliancestandards in Ihrem Dashboard nachverfolgen. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht (neue Richtlinien, die mehr Regeln im Standard entsprechen), werden die zusätzlichen Inhalte automatisch in Ihrem Dashboard hinzugefügt.
+Mit dem Feature **dynamische Compliancepakete** verbessert Security Center automatisch seine Abdeckung von Branchenstandards. Compliancepakete sind im Wesentlichen in Azure Policy definierte Initiativen. Sie können dem ausgewählten Bereich (Abonnement, Verwaltungsgruppe usw.) zugewiesen werden. Um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen, fügen Sie der Verwaltungsgruppe oder dem Abonnement innerhalb der Sicherheitsrichtlinie ein Compliancepaket hinzu. Durch das Hinzufügen eines Compliancepakets wird die gesetzliche Complianceinitiative dem ausgewählten Bereich zugewiesen. Auf diese Weise können Sie neu veröffentlichte gesetzliche Initiativen als Compliancestandards in Ihrem Dashboard nachverfolgen. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht (neue Richtlinien, die mehr Regeln im Standard entsprechen), werden die zusätzlichen Inhalte automatisch in Ihrem Dashboard hinzugefügt.
 
 Das dynamische Compliancepaket für den Azure CIS-Benchmark, **Azure CIS 1.1.0 (neu)** , verbessert die ursprüngliche *statische* Version durch Folgendes:
 
@@ -47,7 +47,7 @@ In den folgenden Schritten wird erläutert, wie Sie das dynamische Paket zum Üb
 
 1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das bzw. die Sie den Status der Einhaltung gesetzlicher Bestimmungen verwalten möchten. Es wird empfohlen, den höchsten Bereich auszuwählen, für den der Standard gilt, damit Compliancedaten für alle geschachtelten Ressourcen aggregiert und nachverfolgt werden. 
 
-1. Im Abschnitt „Industrie- und gesetzliche Standards (Vorschau)“ wird angezeigt, dass Azure CIS 1.1.0 für neue Inhalte aktualisiert werden kann. Klicken Sie auf **Jetzt aktualisieren**. 
+1. Im Abschnitt „Branchen- und gesetzliche Standards“ wird angezeigt, dass Azure CIS 1.1.0 für neue Inhalte aktualisiert werden kann. Klicken Sie auf **Jetzt aktualisieren**. 
 
 1. Klicken Sie optional auf **Weitere Standards hinzufügen**, um die Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** zu öffnen. Dort können Sie manuell nach **Azure CIS 1.1.0 (neu)** und dynamischen Paketen für andere Compliancestandards wie **NIST SP 800-53 R4**, **SWIFT CSP CSCF-v2020**, **UKO und UK NHS** und **Canada PBMM** suchen.
     

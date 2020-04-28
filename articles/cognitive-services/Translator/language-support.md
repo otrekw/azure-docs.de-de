@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206122"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684825"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -63,6 +63,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |Französisch|    `fr`    |   Neuronal|
 |Deutsch|    `de`    |   Neuronal|
 |Griechisch| `el`    |   Neuronal|
+|Gujarati|  `gu`    |   Neuronal|
 |Haitianisches Kreolisch|    `ht`        |Statistisch|
 |Hebräisch |`he`   |Neuronal
 |Hindi| `hi`    |   Neuronal|
@@ -85,6 +86,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |Malayalam| `ml` | Neuronal
 |Maltesisch|   `mt`    |   Statistisch|
 |Maori| `mi`  | Neuronal|
+|Marathi| `mr`  | Neuronal|
 |Norwegisch| `nb`    |   Neuronal|
 |Persisch|   `fa`    |   Neuronal|
 |Polnisch|    `pl`    |   Neuronal|

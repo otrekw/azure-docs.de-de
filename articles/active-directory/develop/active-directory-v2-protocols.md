@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309671"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680087"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 und OpenID Connect-Protokolle auf der Microsoft Identity Platform
 
 Der Microsoft Identity Platform-Endpunkt ist eine Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind hilfreich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer [Open-Source-Bibliotheken](reference-v2-libraries.md) zu nutzen.
-
-> [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure AD werden vom Microsoft Identity Platform-Endpunkt unterstützt. Informieren Sie sich über die [Einschränkungen der Microsoft Identity Platform](active-directory-v2-limitations.md), um zu ermitteln, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
 ## <a name="the-basics"></a>Grundlagen
 
@@ -58,7 +55,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
-| value | BESCHREIBUNG |
+| Wert | BESCHREIBUNG |
 | --- | --- |
 | `common` | Ermöglicht Benutzern mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |
 | `organizations` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |
@@ -68,7 +65,7 @@ Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 Um zu erfahren, wie Sie mit diesen Endpunkten interagieren, wählen Sie im Abschnitt [Protokolle](#protocols) einen bestimmten App-Typ aus, und folgen Sie den Links für weitere Informationen.
 
 > [!TIP]
-> Jede in Azure AD registrierte App kann den Microsoft Identity Platform-Endpunkt verwenden, selbst wenn keine persönlichen Konten angemeldet werden.  Auf diese Weise können Sie vorhandene Anwendungen zu Microsoft Identity Platform und [MSAL](reference-v2-libraries.md) migrieren, ohne Ihre Anwendung neu erstellen zu müssen.  
+> Jede in Azure AD registrierte App kann den Microsoft Identity Platform-Endpunkt verwenden, selbst wenn keine persönlichen Konten angemeldet werden.  Auf diese Weise können Sie vorhandene Anwendungen zu Microsoft Identity Platform und [MSAL](reference-v2-libraries.md) migrieren, ohne Ihre Anwendung neu erstellen zu müssen.
 
 ## <a name="tokens"></a>Token
 

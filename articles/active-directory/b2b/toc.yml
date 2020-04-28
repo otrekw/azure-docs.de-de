@@ -17,7 +17,7 @@
       items:
         - name: Masseneinladung über PowerShell
           href: bulk-invite-powershell.md
-        - name: Masseneinladung über das Portal (Vorschau)
+        - name: Masseneinladung über das Portal
           href: tutorial-bulk-invite.md
         - name: Erzwingen der Multi-Factor Authentication
           href: b2b-tutorial-require-mfa.md

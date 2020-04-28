@@ -108,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: Anzeigen von Supportinformationen (Kursleiter)
           href: lab-creator-support-information.md
+        - name: Zugreifen auf virtuelle Computer von Kursteilnehmern über die Kursleiteransicht
+          href: instructor-access-virtual-machines.md
     - name: Herstellen einer Verbindung mit virtuellen Computern in Classroom-Labs (Kursteilnehmer)
       items:
         - name: Zugreifen auf Classroom-Labs

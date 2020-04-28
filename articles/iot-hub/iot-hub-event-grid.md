@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237338"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732501"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -184,7 +187,7 @@ Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, könne
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
-Um Geräteverbindungsstatus-Ereignisse zu empfangen, muss ein Gerät einen D2C-Vorgang zum Senden von Telemetrie oder einen C2D-Vorgang zum Empfangen von Nachrichten bei IoT Hub ausführen. Beachten Sie jedoch: Wenn ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfiehlt sich der C2D-Vorgang zum Empfangen einer Nachricht, andernfalls können die Benachrichtigungen zum Verbindungszustand um einige Minuten verzögert werden. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [Receive Async-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) für das IoT Hub-C-SDK oder den [Geräteclient für AMQP](iot-hub-amqp-support.md#device-client) aufrufen.
+Damit Geräteverbindungsstatus-Ereignisse empfangen werden, muss ein Gerät einen D2C-Vorgang zum Senden von Telemetrie oder einen C2D-Vorgang zum Empfangen von Nachrichten bei IoT Hub ausführen. Beachten Sie jedoch: Wenn ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfiehlt sich der C2D-Vorgang zum Empfangen einer Nachricht. Andernfalls werden die Benachrichtigungen zum Verbindungszustand möglicherweise um einige Minuten verzögert. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [Receive Async-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) für das IoT Hub-C-SDK oder den [Geräteclient für AMQP](iot-hub-amqp-support.md#device-client) aufrufen.
 
 Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. 
 

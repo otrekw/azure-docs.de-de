@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74422527"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481965"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -78,7 +78,7 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 | | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
-| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank<br/>– Hohe Wartungskosten |
+| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus eine Azure SQL-Einzeldatenbank oder -Pooldatenbank<br/>– Hohe Wartungskosten |
 
 ## <a name="get-started-with-sql-data-sync"></a>Erste Schritte mit der SQL-Datensynchronisierung
 
@@ -134,6 +134,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
 - Tabellen mit demselben Namen, aber unterschiedlichem Schema (z. B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
+- Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 

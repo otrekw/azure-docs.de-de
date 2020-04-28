@@ -3,7 +3,7 @@ title: Integrieren von Microsoft Azure mit Oracle Cloud Infrastructure | Microso
 description: Hier finden Sie Informationen zu Lösungen, die in Microsoft Azure ausgeführte Oracle-Apps mit Datenbanken in Oracle Cloud Infrastructure (OCI) integrieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: BorisB2015
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
-ms.author: rogirdh
+ms.date: 03/16/2020
+ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e70eedcfcdf548965b79e4a48a3a8bfa643f0396
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300552"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687427"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure (Vorschauversion)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure
 
 Microsoft und Oracle haben sich zusammengetan, um cloudübergreifende Konnektivität mit geringer Wartezeit und hohem Durchsatz bereitzustellen, sodass Sie von den Vorteilen beider Clouds profitieren können. 
 
 Dank dieser cloudübergreifenden Konnektivität können Sie eine mehrschichtige Anwendung partitionieren, um Ihre Datenbankschicht in Oracle Cloud Infrastructure (OCI) und die Anwendung sowie andere Schichten in Microsoft Azure auszuführen. Dies ist vergleichbar mit der Ausführung des gesamten Lösungsstapels in einer einzelnen Cloud. 
-
-> [!IMPORTANT]
-> Das cloudübergreifende Feature befindet sich derzeit in der Vorschauphase und unterliegt [Einschränkungen](#region-availability). Damit Verbindungen mit geringer Latenz zwischen Azure und OCI eingerichtet werden können, muss diese Funktion zunächst für Ihr Azure-Abonnement aktiviert werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 Wenn Sie Oracle-Lösungen vollständig in der Azure-Infrastruktur bereitstellen möchten, lesen Sie [Oracle VM images and their deployment on Microsoft Azure](oracle-vm-solutions.md) (Oracle-VM-Images und deren Bereitstellung in Microsoft Azure).
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
 Mit cloudübergreifender Konnektivität können Sie die branchenführenden Anwendungen von Oracle sowie Ihre eigenen benutzerdefinierten Anwendungen auf virtuellen Azure-Computern ausführen und gleichzeitig von den Vorteilen gehosteter Datenbankdienste in OCI profitieren. 
+
+> [!IMPORTANT]
+> Oracle zertifiziert diese Anwendungen für die Ausführung in Azure, wenn die Azure/Oracle Cloud Interconnect-Lösung bis Mai 2020 verwendet wird.
 
 Zu den Anwendungen, die Sie in einer cloudübergreifenden Konfiguration ausführen können, zählen unter anderem:
 
@@ -55,6 +55,7 @@ Die cloudübergreifende Konnektivität ist auf folgende Regionen beschränkt:
 * Azure „Vereinigtes Königreich, Süden“ (uksouth) und OCI „London“ (Vereinigtes Königreich, Süden)
 * Azure „Kanada, Mitte“ (canadacentral) und OCI „Toronto“ (Kanada, Südosten)
 * Azure „Europa, Westen“ (westeurope) und OCI „Amsterdam“ (Niederlande, Nordwesten)
+* Azure „Japan, Osten“ (japaneast) und OCI „Tokyo“ (Japan, Osten)
 
 ## <a name="networking"></a>Netzwerk
 
