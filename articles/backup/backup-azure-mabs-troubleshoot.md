@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421291"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688051"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -62,7 +62,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Übertragen von Agents auf geschützte Server mithilfe von Push | Fehler beim Agent-Vorgang. Bei der Kommunikation mit dem DPM-Agent-Koordinator-Dienst auf \<Servername> ist ein Fehler aufgetreten. | **Falls die im Produkt empfohlene Aktion nicht funktioniert, können Sie die folgenden Schritte ausführen**: <ul><li> Falls Sie einen Computer aus einer nicht vertrauenswürdigen Domäne anfügen, führen Sie [diese Schritte](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) aus. <br> (ODER) </li><li> Falls Sie einen Computer aus einer vertrauenswürdigen Domäne anfügen, verwenden Sie die Problembehandlungsschritte aus [diesem Blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(ODER)</li><li> Deaktivieren Sie die Antivirensoftware als Problembehandlungsschritt. Wird das Problem dadurch behoben, ändern Sie die Antivireneinstellungen, wie in [diesem Artikel](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)) beschrieben.</li></ul> |
+| Übertragen von Agents auf geschützte Server mithilfe von Push | Fehler beim Agent-Vorgang. Bei der Kommunikation mit dem DPM-Agent-Koordinator-Dienst auf \<Servername> ist ein Fehler aufgetreten. | **Falls die im Produkt empfohlene Aktion nicht funktioniert, können Sie die folgenden Schritte ausführen**: <ul><li> Falls Sie einen Computer aus einer nicht vertrauenswürdigen Domäne anfügen, führen Sie [diese Schritte](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) aus. <br> (ODER) </li><li> Falls Sie einen Computer aus einer vertrauenswürdigen Domäne anfügen, verwenden Sie die Problembehandlungsschritte aus [diesem Blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(ODER)</li><li> Deaktivieren Sie die Antivirensoftware als Problembehandlungsschritt. Wird das Problem dadurch behoben, ändern Sie die Antivireneinstellungen, wie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019) beschrieben.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Setup konnte Registrierungsmetadaten nicht aktualisieren.
 
@@ -96,7 +96,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Backup | Wenn nur der Systemstatus gesichert werden soll, überprüfen Sie, ob ausreichend freier Speicherplatz auf dem geschützten Computer vorhanden ist, um die Systemstatussicherung zu speichern. | <ol><li>Stellen Sie sicher, dass die Windows Server-Sicherung auf dem geschützten Computer installiert ist.</li><li>Stellen Sie sicher, dass genügend Speicherplatz auf dem geschützten Computer für den Systemstatus vorhanden ist. Der einfachste Weg, dies zu überprüfen, besteht darin, zum geschützten Computer zu navigieren, die Windows Server-Sicherung zu öffnen, die Auswahlmöglichkeiten zu durchlaufen und dann „BMR“ auszuwählen. Auf der Benutzeroberfläche wird dann der erforderliche Speicherplatz angezeigt. Öffnen Sie **WSB** > **Lokale Sicherung** > **Sicherungszeitplan** > **Sicherungskonfiguration auswählen** > **Vollständiger Server** (die Größe wird angezeigt). Verwenden Sie diese Größe zur Überprüfung.</li></ol>
 | Backup | Sicherungsfehler bei BMR | Wenn die BMR sehr groß ist, verschieben Sie einige Anwendungsdateien auf das Betriebssystemlaufwerk, und versuchen Sie es erneut. |
 | Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers in einer neuen Microsoft Azure Backup Server-Instanz wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie das Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
-| Backup | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Versuchen Sie, die Einstellungen der Antivirensoftware zu ändern (wie in diesem Artikel [Ausführen von Antivirensoftware auf dem DPM-Server](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)) beschrieben).|
+| Backup | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Versuchen Sie, die Einstellungen der Antivirensoftware zu ändern (wie in diesem Artikel [Ausführen von Antivirensoftware auf dem DPM-Server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019) beschrieben).|
 
 ## <a name="change-passphrase"></a>Ändern der Passphrase
 

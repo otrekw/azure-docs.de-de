@@ -8,12 +8,15 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813790"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731320"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 
@@ -21,7 +24,7 @@ Das **Azure IoT-Geräte-SDK** ist ein Satz von Bibliotheken, die dazu dienen, de
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Das Azure IoT-Geräte-SDK für C wurde für optimale Portabilität in ANSI C (C99) geschrieben. Dank dieses Features sind die Bibliotheken bestens für Einsatz auf mehreren Plattformen und Geräten geeignet – vor allem, wenn es darauf ankommt, die Größe von Festplatten und Arbeitsspeicher zu reduzieren.
+Das Azure IoT-Geräte-SDK für C wurde für optimale Portabilität in ANSI C (C99) geschrieben. Dank dieses Features sind die Bibliotheken bestens für den Einsatz auf mehreren Plattformen und Geräten geeignet – insbesondere dann, wenn es wichtig ist, die Größe von Festplatten und Arbeitsspeicher zu reduzieren.
 
 Es gibt eine Vielzahl von Plattformen, auf denen das SDK getestet wurde. (Einzelheiten finden Sie im [Katalog mit für Azure zertifizierten IoT-Geräten](https://catalog.azureiotsolutions.com/).) Der Artikel enthält zwar exemplarische Vorgehensweisen mit Beispielcode, der auf der Windows-Plattform ausgeführt wird, der in diesem Artikel beschriebene Code ist jedoch für alle unterstützten Plattformen identisch.
 
@@ -41,9 +44,9 @@ Die aktuelle Version der Bibliotheken finden Sie in der Verzweigung **master** d
 
 * Die Hauptimplementierung des SDKs befindet sich im Ordner **iothub\_client**, der die Implementierung der niedrigsten API-Ebene im SDK enthält: die Bibliothek **IoTHubClient**. Die Bibliothek **IoTHubClient** enthält APIs, die das Messaging zum Senden von Nachrichten an IoT Hub sowie zum Empfangen von Nachrichten von IoT Hub implementieren. Wenn Sie diese Bibliothek verwenden, müssen Sie sich um die Implementierung der Nachrichtenserialisierung kümmern. Andere Details für die Kommunikation mit IoT Hub werden Ihnen jedoch abgenommen.
 
-* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Bei Verwendung der Bibliothek **serializer** definieren Sie ein Modell, das sowohl die Daten, die an IoT Hub gesendet werden sollen, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Ist das Modell definiert, stellt das SDK eine API-Oberfläche bereit, über die Sie problemlos mit D2C- und C2D-Nachrichten arbeiten können, ohne sich um die Details der Serialisierung zu kümmern. Die Bibliothek hängt von anderen Open-Source-Bibliotheken ab, die den Datentransport mit Protokollen wie MQTT und AMQP implementieren.
+* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Bei Verwendung der Bibliothek **serializer** definieren Sie ein Modell, das sowohl die Daten, die an IoT Hub gesendet werden sollen, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Ist das Modell definiert, stellt das SDK eine API-Oberfläche bereit, über die Sie problemlos mit D2C- und C2D-Nachrichten arbeiten können, ohne sich um die Details der Serialisierung zu kümmern. Die Bibliothek hängt von anderen Open Source-Bibliotheken ab, die den Datentransport mit Protokollen wie MQTT und AMQP implementieren.
 
-* Die Bibliothek **IoTHubClient** hängt von anderen Open-Source-Bibliotheken ab:
+* Die Bibliothek **IoTHubClient** hängt von anderen Open Source-Bibliotheken ab:
 
   * Der Bibliothek [Azure C shared utility](https://github.com/Azure/azure-c-shared-utility), die allgemeine Funktionen für grundlegende Aufgaben (etwa Zeichenfolgen, Listenbearbeitung und E/A) bereitstellt, die von mehreren Azure-bezogenen SDKs für C benötigt werden.
 
@@ -71,15 +74,15 @@ Den Beispielanwendungscodes erhalten Sie, indem Sie eine Kopie des SDKs von GitH
 
 Nachdem Sie nun über den Beispielquellcode verfügen, müssen Sie als Nächstes verschiedene Geräteanmeldeinformationen abrufen. Damit ein Gerät auf einen IoT-Hub zugreifen kann, müssen Sie das Gerät zuerst der IoT Hub-Identitätsregistrierung hinzufügen. Wenn Sie Ihr Gerät hinzufügen, erhalten Sie einen Satz von Geräteanmeldeinformationen. Diese sind erforderlich, damit das Gerät eine Verbindung mit der IoT Hub-Instanz herstellen kann. Für die im nächsten Abschnitt behandelten Beispielanwendungen müssen diese Anmeldeinformationen in Form einer **Geräteverbindungszeichenfolge** vorliegen.
 
-Für die Verwaltung Ihrer IoT Hub-Instanz stehen mehrere Open-Source-Tools zur Verfügung.
+Für die Verwaltung Ihrer IoT Hub-Instanz stehen verschiedene Open Source-Tools zur Verfügung.
 
-* Eine Windows-Anwendung namens [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Eine Windows-Anwendung namens [Azure IoT-Explorer](https://github.com/Azure/azure-iot-explorer).
 
 * Eine plattformübergreifende Visual Studio Code-Erweiterung namens [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 * Eine plattformübergreifende Python CLI hat die [IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension) aufgerufen.
 
-In diesem Tutorial wird der grafische *Geräte-Explorer* verwendet. Sie können die *Azure IoT-Tools für VS Code* bei der Entwicklung in VS Code verwenden. Falls Sie lieber mit einem CLI-Tool arbeiten, können Sie auch das Tool für die *IoT-Erweiterung für Azure CLI 2.0* verwenden.
+In diesem Tutorial wird der grafische *Geräte-Explorer* verwendet. Sie können die *Azure IoT-Tools für VS Code* bei der Entwicklung in VS Code verwenden. Falls Sie lieber mit einem CLI-Tool arbeiten, können Sie auch die *IoT-Erweiterung für Azure CLI 2.0* verwenden.
 
 Der Geräte-Explorer führt mithilfe der Azure IoT-Dienstbibliotheken verschiedene Aufgaben in IoT Hub durch – etwa das Hinzufügen von Geräten. Wenn Sie mithilfe des Geräte-Explorers ein Gerät hinzufügen, erhalten Sie eine Verbindungszeichenfolge für Ihr Gerät. Diese Verbindungszeichenfolge wird zum Ausführen der Beispielanwendungen benötigt.
 

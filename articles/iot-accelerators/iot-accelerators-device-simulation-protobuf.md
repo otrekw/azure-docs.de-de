@@ -6,15 +6,17 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250222"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684002"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisieren von Telemetriedaten mithilfe von Protocol Buffers
 
@@ -70,7 +72,7 @@ Laden Sie den [Microservice "Gerätesimulation"](https://github.com/Azure/device
 
 Um den Microservice für Speicheradapter lokal auszuführen, klicken Sie auf **Debuggen \> Debuggen starten**.
 
-Im Fenster **Terminal** in Visual Studio Code wird die Ausgabe aus dem ausgeführten Microservice angezeigt, einschließlich einer URL für die Webdienst-Integritätsprüfung: <http://127.0.0.1:9022/v1/status>. Wenn Sie zu dieser Adresse navigieren, sollte der Status "OK: aktiv und gut" lauten.
+Im Fenster **Terminal** in Visual Studio Code wird die Ausgabe aus dem ausgeführten Microservice angezeigt, einschließlich einer URL für die Webdienst-Integritätsprüfung: <http://127.0.0.1:9022/v1/status>. Wenn Sie zu dieser Adresse navigieren, sollte der Status „OK: aktiv und gut“ lauten.
 
 Führen Sie den Microservice für Speicheradapter weiterhin in dieser Instanz von Visual Studio Code aus, während Sie die folgenden Schritte ausführen.
 
@@ -204,7 +206,7 @@ In diesem Abschnitt testen Sie das in den vorherigen Abschnitten erstellte Gerä
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Konfigurieren der Lösung mit den neuen Gerätemodelldateien
 
-Die JSON- und JS-Dateien des neuen Gerätemodells werden nicht automatisch in die erstellte Lösung kopiert. Sie müssen sie explizit einfügen.
+Standardmäßig werden die JSON- und JS-Dateien des neuen Gerätemodells nicht automatisch in die erstellte Lösung kopiert. Sie müssen sie explizit einfügen.
 
 Fügen Sie der Datei **services\services.csproj** einen Eintrag für jede Datei hinzu, die enthalten sein soll. Beispiel:
 

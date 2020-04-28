@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71199997"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686937"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Erstellen und Bereitstellen des OPC Vault-Zertifikatverwaltungsdiensts
 
@@ -107,7 +107,7 @@ Verwenden Sie einen kurzen und einfachen Ressourcengruppennamen. Der Name wird a
 
 ### <a name="website-name-already-in-use"></a>Websitename wird bereits verwendet.
 
-Es ist möglich, dass der Name der Website bereits verwendet wird. Sie müssen einen anderen Ressourcengruppennamen verwenden. Die vom Bereitstellungsskript verwendeten Hostnamen lauten: https://resourcegroupname.azurewebsites.net und https://resourgroupname-service.azurewebsites.net.
+Es ist möglich, dass der Name der Website bereits verwendet wird. Sie müssen einen anderen Ressourcengruppennamen verwenden. Die vom Bereitstellungsskript verwendeten Hostnamen lauten: „https:\//resourcegroupname.azurewebsites.net“ und „https:\//resourcegroupname-service.azurewebsites.net“.
 Andere Namen für Dienste werden durch die Kombination von Kurznamenhashes erstellt und wahrscheinlich keinen Konflikt mit anderen Diensten verursachen.
 
 ### <a name="azure-ad-registration"></a>Azure AD-Registrierung 

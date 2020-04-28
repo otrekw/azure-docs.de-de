@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160967"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Tutorial: Azure Active Directory-Integration mit Splunk Enterprise und Splunk Cloud
 
@@ -113,7 +113,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an den [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an den [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Splunk Enterprise und Splunk Cloud
 
-Um einmaliges Anmelden bei **Splunk Enterprise und Splunk Cloud** zu konfigurieren, müssen Sie die heruntergeladene **Datei mit den XML-Verbundmetadaten** und ordnungsgemäß kopierte URLs aus dem Azure-Portal an den [Support von Splunk Enterprise und Splunk Cloud ](https://www.splunk.com/about-us/contact.html#tabs/customer-support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um einmaliges Anmelden bei **Splunk Enterprise und Splunk Cloud** zu konfigurieren, müssen Sie die heruntergeladene **Datei mit den XML-Verbundmetadaten** und ordnungsgemäß kopierte URLs aus dem Azure-Portal an den [Support von Splunk Enterprise und Splunk Cloud ](https://www.splunk.com/en_us/about-splunk/contact-us.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -176,7 +176,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Erstellen eines Testbenutzers für Splunk Enterprise und Splunk Cloud
 
-In diesem Abschnitt erstellen Sie in Splunk Enterprise und Splunk Cloud einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem  [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support) zusammen, um die Benutzer zur Plattform von Splunk Enterprise und Splunk Cloud hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Splunk Enterprise und Splunk Cloud einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem  [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) zusammen, um die Benutzer zur Plattform von Splunk Enterprise und Splunk Cloud hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

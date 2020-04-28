@@ -10,14 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158234"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758939"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung
+
+*Dieser Artikel gilt für Lösungs- und Geräteentwickler.*
 
 In diesem Artikel wird beschrieben, wie Sie als Lösungsentwickler einen RuuviTag-Sensor mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden können.
 
@@ -74,4 +76,7 @@ So erstellen Sie ein simuliertes RuuviTag-Gerät
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Sie ein RuuviTag-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden können, wird im nächsten Schritt empfohlen, sich über das [Anpassen Ihrer IoT Central-Anwendung](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md) zu informieren, um eine vollständige Lösung entwickeln zu können.
+Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
+
+- Informieren Sie sich über [Gerätekonnektivität in Azure IoT Central](./concepts-get-connected.md).
+- Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).

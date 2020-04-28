@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234622"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766865"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-Agent (ehemals „Statusmonitor v2“): Ausführliche Anleitungen
 
@@ -219,7 +219,7 @@ Das Application Insights SDK muss die Telemetrie Ihrer App an Microsoft senden. 
 
 Verwenden Sie den Befehl `Enable-ApplicationInsightsMonitoring` zum Aktivieren der Überwachung.
 
-Lesen Sie die [API-Referenz](status-monitor-v2-api-enable-monitoring.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 
@@ -227,7 +227,7 @@ Lesen Sie die [API-Referenz](status-monitor-v2-api-enable-monitoring.md) mit ein
 
  Anzeigen der Telemetrie:
 
-- [Untersuchen Sie Metriken](../../azure-monitor/app/metrics-explorer.md) zum Überwachen der Leistung und Nutzung.
+- [Untersuchen Sie Metriken](../../azure-monitor/platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 - [Durchsuchen Sie Ereignisse und Protokolle](../../azure-monitor/app/diagnostic-search.md), um Probleme zu diagnostizieren.
 - Verwenden Sie [Analytics](../../azure-monitor/app/analytics.md) für erweiterte Abfragen.
 - [Erstellen Sie Dashboards](../../azure-monitor/app/overview-dashboard.md).

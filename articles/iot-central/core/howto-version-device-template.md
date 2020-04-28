@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157567"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756724"
 ---
 # <a name="create-a-new-device-template-version"></a>Erstellen einer neuen Gerätevorlagenversion
 
-
+*Dieser Artikel gilt für Lösungs- und Geräteentwickler.*
 
 Azure IoT Central ermöglicht die schnelle Entwicklung von IoT-Anwendungen. Sie können Ihre Entwürfe für Gerätevorlagen schnell durchlaufen, indem Sie Gerätefunktionen, Ansichten und Anpassungen hinzufügen, bearbeiten oder löschen. Nachdem Sie Ihre Gerätevorlage veröffentlicht haben, wird das Gerätefunktionsmodell als **Veröffentlicht** angezeigt, und neben dem Modell befinden sich Sperrsymbole. Um Änderungen am Gerätefunktionsmodell vorzunehmen, müssen Sie eine neue Version der Gerätevorlage erstellen. Cloudeigenschaften, Anpassungen und Ansichten dagegen können jederzeit bearbeitet werden, ohne dass eine neue Version der Gerätevorlage erstellt werden muss. Sobald Sie Ihre Änderungen gespeichert haben, können Sie die Gerätevorlage veröffentlichen, um dem Operator die neuesten Änderungen zur Ansicht im Geräte-Explorer zur Verfügung zu stellen.
 
@@ -81,7 +81,4 @@ Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Gerätevorlageversionen in Ihrer Azure IoT Central-Anwendung verwendet werden, wird als Nächstes der folgende Schritt empfohlen:
-
-> [!div class="nextstepaction"]
-> [Erstellen von Telemetrieregeln](tutorial-create-telemetry-rules.md)
+Wenn Sie ein Geräteentwickler sind, sollten Sie sich als Nächstes über [Azure IoT Edge-Geräte und Azure IoT Central](./concepts-iot-edge.md) informieren.

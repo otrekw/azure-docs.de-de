@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671153"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732951"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
@@ -116,7 +116,7 @@ Führen Sie den Befehl `Get-ApplicationInsightsMonitoringStatus -PowerShellModul
    - Version des Application Insights SDK
    - Dateipfade des PowerShell-Moduls
     
-Lesen Sie die [API-Referenz](status-monitor-v2-api-get-status.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 ### <a name="troubleshooting-running-processes"></a>Problembehandlung bei aktuell ausgeführten Prozessen
@@ -126,7 +126,7 @@ Wenn die Überwachung funktioniert, sollten mindestens 12 DLLS geladen worden se
 
 Verwenden Sie den Befehl `Get-ApplicationInsightsMonitoringStatus -InspectProcess` zum Überprüfen der DLLs.
 
-Lesen Sie die [API-Referenz](status-monitor-v2-api-get-status.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>Sammeln von ETW-Protokollen mit PerfView

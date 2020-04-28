@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819941"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687757"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Getting started with JSON features in Azure SQL Database (Erste Schritte mit JSON-Features in der Azure SQL-Datenbank)
 In Azure SQL-Datenbank können Sie Daten analysieren und abfragen, die im JavaScript Object Notation-Format [(JSON)](https://www.json.org/) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren. Die folgenden JSON-Szenarien stehen in Azure SQL-Datenbank zur Verfügung:
@@ -30,7 +30,7 @@ Für einen Webdienst, der Daten aus der Datenbankschicht entnimmt und eine Antwo
 
 Im folgenden Beispiel werden Zeilen aus der Tabelle „Sales.Customer“ mithilfe der FOR JSON-Klausel im JSON-Format formatiert:
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 Die FOR JSON PATH-Klausel formatiert die Ergebnisse der Abfrage als JSON-Text. Spaltennamen werden als Schlüssel verwendet, während die Zellenwerte als JSON-Werte generiert werden:
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ Das Resultset wird als JSON-Array formatiert, in dem jede Zeile als separates JS
 
 PATH gibt an, dass Sie das Ausgabeformat für Ihr JSON-Ergebnis mithilfe der Punktnotation in Spaltenaliasen anpassen können. Die folgende Abfrage ändert den Namen des Schlüssels „CustomerName“ in das Ausgabe-JSON-Format und fügt Telefon- und Faxnummern in das Unterobjekt „Contact“ ein:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 Die Ausgabe dieser Abfrage sieht folgendermaßen aus:
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -73,7 +73,7 @@ In diesem Beispiel wird durch Angabe der Option [WITHOUT_ARRAY_WRAPPER](https://
 
 Der größte Vorteil der FOR JSON-Klausel ist, dass sie damit komplexe hierarchische Daten aus Ihrer Datenbank als geschachtelte JSON-Objekte oder -Arrays formatiert zurückgeben können. Das folgende Beispiel zeigt, wie die Zeilen aus der `Orders`-Tabelle, die zu `Customer` gehören, als geschachteltes Array von `Orders` einbezogen werden können:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 Statt einzelne Abfragen zu senden, um Daten des Kunden zu erhalten, und dann eine Liste der zugehörigen Aufträge abzurufen, können Sie alle erforderlichen Daten, wie in der folgenden Beispielausgabe gezeigt, mit einer einzigen Abfrage erhalten:
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ Statt einzelne Abfragen zu senden, um Daten des Kunden zu erhalten, und dann ein
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ Wenn Sie nicht über streng strukturierte Daten verfügen, komplexe Unterobjekte
 
 JSON ist ein Textformat, das wie jeder andere Stringtyp in Azure SQL-Datenbank verwendet werden kann. Sie können JSON-Daten im standardmäßigen NVARCHAR-Datentyp senden oder speichern:
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 Die in diesem Beispiel verwendeten JSON-Daten werden mithilfe des NVARCHAR(MAX)-Datentyps dargestellt. JSON kann in diese Tabelle eingefügt oder mithilfe von Transact-SQL-Standardsyntax als Argument der gespeicherten Prozedur bereitgestellt werden, wie im folgenden Beispiel gezeigt:
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ Wenn Sie im JSON-Format formatierte Daten in Azure SQL-Tabellen gespeichert habe
 
 Mit JSON-Funktionen, die in Azure SQL-Datenbank zur Verfügung stehen, können Sie im JSON-Format formatierte Daten wie jeden anderen SQL-Datentyp behandeln. Sie können problemlos Werte aus dem JSON-Text extrahieren und JSON-Daten in beliebigen Abfragen verwenden:
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ Mit der JSON_MODIFY-Funktion können Sie die Pfadangabe des Werts in dem JSON-Te
 
 Da JSON in einem Standardtext gespeichert wird, gibt es keine Garantie, dass die in Textspalten gespeicherten Werte ordnungsgemäß formatiert sind. Sie können mithilfe standardmäßiger Azure SQL-Datenbank-CHECK-Einschränkungen und der ISJSON-Funktion überprüfen, ob in der JSON-Spalte gespeicherter Text ordnungsgemäß formatiert ist:
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ Im obigen Beispiel können wir angeben, wo das JSON-Array zu suchen ist, das ge�
 
 Wir können ein JSON-Array in der Variablen @orders in einen Satz von Zeilen transformieren, dieses Resultset analysieren oder Zeilen in eine Standardtabelle einfügen:
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 Die als JSON-Array formatierte und der gespeicherten Prozedur als Parameter bereitgestellte Auflistung der Aufträge kann analysiert und in die Tabelle „Orders“ eingefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

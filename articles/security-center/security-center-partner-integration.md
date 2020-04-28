@@ -11,20 +11,17 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435752"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758037"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
-
-> [!NOTE]
-> Eine Teilmenge der Sicherheitslösungen lief am 31. Juli 2019 aus. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrierte Azure-Sicherheitslösungen
 Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in Azure aktivieren. Dies hat unter anderem folgende Vorteile:
@@ -37,52 +34,57 @@ Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertun
 
 > [!NOTE]
 > Security Center installiert den Log Analytics-Agent nicht auf virtuellen Appliances von Partnern, da die meisten Sicherheitsanbieter die Ausführung externer Agents auf ihren Appliances untersagen.
->
->
+
+Weitere Informationen zur Integration von Qualys-Scan-Tools für Sicherheitsrisiken, einschließlich einer integrierten Überprüfung, die für Kunden mit Standard-Tarif zur Verfügung steht, finden Sie unter: 
+
+- [Integrierte Überprüfung auf Sicherheitsrisiken für virtuelle Computer](built-in-vulnerability-assessment.md).
+- [Bereitstellen einer Partnerlösung zur Überprüfung auf Sicherheitsrisiken](partner-vulnerability-assessment.md).
+
+Azure Security Center bietet auch eine Sicherheitsrisikoanalyse für Folgendes:
+
+* SQL-Datenbanken – siehe [Untersuchen der Berichte zur Sicherheitsrisikobewertung im Dashboard „Sicherheitsrisikobewertung“](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* Azure-Containerregistrierungsimages – siehe [Integration von Security Center in Azure Container Registry (Vorschau)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Informationen zur Integration von Sicherheitslösungen
 Über Security Center bereitgestellte Azure-Sicherheitslösungen werden automatisch verbunden. Sie können auch andere Sicherheitsdatenquellen verwenden, so auch Computer, die lokal oder in anderen Clouds ausgeführt werden.
 
-![Integration von Partnerlösungen](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+[![Integration von Partnerlösungen](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Verwalten integrierter Azure-Sicherheitslösungen und anderer Datenquellen
 
-1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
+1. Öffnen Sie im [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) das **Security Center**.
 
-2. Wählen Sie im **Microsoft Azure-Menü** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
+1. Wählen Sie im Menü von Security Center **Sicherheitslösungen** aus.
 
-3. Klicken Sie im Menü von Security Center auf **Sicherheitslösungen**.
-
-   ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
-
-Unter **Sicherheitslösungen** können Sie die Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben ausführen.
+Auf der Seite **Sicherheitslösungen** können Sie die Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben ausführen.
 
 ### <a name="connected-solutions"></a>Verbundene Lösungen
 
 Der Abschnitt **Verbunde Lösungen** enthält alle Sicherheitslösungen, die derzeit mit Security Center verbunden sind. Außerdem wird der Integritätsstatus der einzelnen Lösungen angezeigt.  
 
-![Verbundene Lösungen](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![Verbundene Lösungen](./media/security-center-partner-integration/connected-solutions.png)
 
 Eine Partnerlösung kann den folgenden Status aufweisen:
 
-* Fehlerfrei (grün): Es liegen keine Integritätsprobleme vor.
-* Fehlerhaft (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
-* Integritätsprobleme (orange): Die Lösung hat das Melden der Integrität beendet.
-* Nicht gemeldet (grau): Die Lösung hat noch nichts gemeldet, und es sind keine Integritätsdaten verfügbar. Der Status einer Lösung kann möglicherweise nicht gemeldet werden, wenn Sie erst vor kurzem angeschlossen wurde und noch bereitgestellt wird.
+* **Fehlerfrei** (grün): Es liegen keine Integritätsprobleme vor.
+* **Fehlerhaft** (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
+* **Berichterstellung beendet** (orange): Die Lösung hat die Berichterstattung über ihre Integrität beendet.
+* **Nicht berichtet** (grau): Die Lösung hat noch nichts berichtet, und es sind keine Integritätsdaten verfügbar. Der Status einer Lösung kann möglicherweise nicht gemeldet werden, wenn Sie erst vor kurzem angeschlossen wurde und noch bereitgestellt wird.
 
 > [!NOTE]
 > Wenn keine Integritätsstatusdaten verfügbar sind, zeigt Security Center das Datum und die Uhrzeit des letzten empfangenen Ereignisses an, um anzugeben, ob die Lösung Berichte übermittelt. Wenn keine Integritätsdaten verfügbar sind und innerhalb der letzten 14 Tage keine Warnungen empfangen wurden, gibt Security Center an, dass die Lösung fehlerhaft ist oder nicht berichtet.
 >
 >
 
-1. Wählen Sie **ANZEIGEN** aus, um zusätzliche Informationen und Optionen anzuzeigen, z. B.:
+Wählen Sie **ANZEIGEN** aus, um zusätzliche Informationen und Optionen anzuzeigen, z. B.:
 
-   - **Lösungskonsole**. Öffnet die Verwaltungsoberfläche für diese Lösung.
-   - **Virtuellen Computer verknüpfen**. Öffnet die Seite „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
-   - **Lösung löschen**.
-   - **Konfigurieren**.
+   - **Lösungskonsole**: Öffnet die Verwaltungsoberfläche für diese Lösung.
+   - **Virtuellen Computer verknüpfen**: Öffnet die Seite „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+   - **Lösung löschen**
+   - **Konfigurieren**
 
-   ![Details der Partnerlösung](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![Details der Partnerlösung](./media/security-center-partner-integration/partner-solutions-detail.png)
+
 
 ### <a name="discovered-solutions"></a>Ermittelte Lösungen
 
@@ -91,7 +93,6 @@ Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgefüh
 > [!NOTE]
 > Für das ermittelte Lösungsfeature ist der Standardtarif von Security Center ist auf Abonnementebene erforderlich. Weitere Informationen zu den Tarifen finden Sie unter [Preise](security-center-pricing.md).
 >
->
 
 Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
 
@@ -99,57 +100,13 @@ Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration
 
 Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenquellen, mit denen eine Verbindung hergestellt werden kann. Klicken Sie **HINZUFÜGEN**, um eine Anleitung zum Hinzufügen von Daten aus einer dieser Quellen anzuzeigen.
 
-![Datenquellen](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+![Datenquellen](./media/security-center-partner-integration/add-data-sources.png)
 
-## <a name="exporting-data-to-a-siem"></a>Exportieren von Daten in ein SIEM-Tool
-
-> [!NOTE]
-> Ausführliche Informationen zu einer einfacheren Methode (derzeit in der Vorschau) zum Exportieren von Daten in SIEM finden Sie unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md). Die neue Methode verwendet nicht das Aktivitätsprotokoll als Vermittler und ermöglicht den direkten Export von Security Center in Event Hubs (und anschließend in SIEM). Außerdem wird der Export von Sicherheitsempfehlungen unterstützt.
-
-
-Sie können Ihre SIEMs oder anderen Überwachungstools für den Empfang von Azure Security Center-Ereignissen konfigurieren.
-
-Alle Ereignisse aus Azure Security Center werden im Azure-[Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) von Azure Monitor veröffentlicht. Azure Monitor verwendet [eine konsolidierte Pipeline](../azure-monitor/platform/stream-monitoring-data-event-hubs.md), um die Daten an einen Event Hub zu streamen, wo sie in das Überwachungstool eingelesen werden können.
-
-In den nächsten Abschnitten wird beschrieben, wie Sie Daten zum Streamen an einen Event Hub konfigurieren können. Die Schritte setzen voraus, dass Sie bereits Azure Security Center in Ihrem Azure-Abonnement konfiguriert haben.
-
-### <a name="high-level-overview"></a>Allgemeine Übersicht
-
-![Allgemeine Übersicht](media/security-center-export-data-to-siem/overview.png)
-
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Was sind die für SIEM verfügbar gemachten Azure-Sicherheitsdaten?
-
-In dieser Version stellen wir die [Sicherheitswarnungen](../security-center/security-center-managing-and-responding-alerts.md) zur Verfügung. In zukünftigen Versionen wird das Dataset mit Empfehlungen zur Sicherheit erweitert.
-
-### <a name="how-to-set-up-the-pipeline"></a>Einrichten der Pipeline
-
-#### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
-
-Bevor Sie beginnen, [erstellen Sie einen Namespace „Event Hubs“](../event-hubs/event-hubs-create.md), der das Ziel für sämtliche Ihrer Überwachungsdaten ist.
-
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
-
-Weitere Informationen finden Sie im Artikel [Streamen des Aktivitätsprotokolls an Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md).
-
-#### <a name="install-a-partner-siem-connector"></a>Installieren eines Partner-SIEM-Connectors 
-
-Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor ermöglicht eine einfache Integration in SIEM- und Überwachungstools von Partnern.
-
-Im folgenden Artikel finden Sie die Liste der [unterstützten SIEMs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
-
-### <a name="example-for-querying-data"></a>Beispiel zum Abfragen von Daten 
-
-Im folgenden finden Sie einige Splunk-Abfragen, die Sie zum Abrufen von Warnungsdaten verwenden können:
-
-| **Beschreibung der Abfrage** | **Abfrage** |
-|----|----|
-| Alle Warnungen| index=main Microsoft.Security/locations/alerts|
-| Zusammenfassen der Anzahl der Vorgänge nach deren Namen| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| Abrufen von Informationen zu Warnungen: Zeit, Name, Status, ID und Abonnement | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Partnerlösungen in Security Center integrieren. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie erfahren, wie Sie Partnerlösungen in Security Center integrieren. Weitere Informationen finden Sie in den folgenden Artikeln:
 
+* [Exportieren von Sicherheitswarnungen und -empfehlungen](continuous-export.md). Einrichten einer Integration in Azure Sentinel oder eine andere SIEM.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.

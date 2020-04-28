@@ -126,6 +126,8 @@
       maintainContext: true
 - name: Anleitungen
   items:
+    - name: Regionsübergreifendes Verschieben
+      href: move-across-regions.md
     - name: Verwenden von Blob Storage als Prüfpunktspeicher in Azure Stack Hub
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
@@ -164,6 +166,10 @@
       items:
         - name: Kafka-Entwicklerhandbuch für Event Hubs
           href: apache-kafka-developer-guide.md
+        - name: Kafka-Migrationsleitfaden für Event Hubs
+          href: apache-kafka-migration-guide.md
+        - name: Kafka-Leitfaden zur Problembehandlung für Event Hubs
+          href: apache-kafka-troubleshooting-guide.md
         - name: Spiegeln eines Kafka-Brokers in einem Event Hub
           href: event-hubs-kafka-mirror-maker-tutorial.md
         - name: Verbinden von Apache Spark mit einem Event Hub
@@ -174,6 +180,8 @@
           href: event-hubs-kafka-connect-tutorial.md
         - name: Verbinden von Akka Streams mit einem Event Hub
           href: event-hubs-kafka-akka-streams-tutorial.md
+        - name: 'Häufig gestellte Fragen: Event Hubs für Kafka'
+          href: apache-kafka-frequently-asked-questions.md
     - name: Verwalten und Überwachen
       items:
         - name: Überwachen von Event Hubs mit Azure-Überwachung

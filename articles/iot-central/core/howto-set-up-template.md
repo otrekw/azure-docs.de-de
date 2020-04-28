@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157669"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756652"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
+
+*Dieser Artikel gilt für Lösungsersteller und Geräteentwickler.*
 
 Eine Gerätevorlage ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit einer Azure IoT Central-Anwendung herstellt.
 
@@ -253,18 +255,6 @@ Wenn Sie eine Gerätevorlage veröffentlichen möchten, navigieren Sie zu der Ge
 
 Nachdem Sie eine Gerätevorlage veröffentlicht haben, kann ein Bediener zur Seite **Geräte** wechseln und echte oder simulierte Geräte hinzufügen, die Ihre Gerätevorlage verwenden. Sie können Ihre Gerätevorlage weiter bearbeiten und speichern, während Sie Änderungen vornehmen. Immer wenn Sie diese Änderungen auf der Seite **Geräte** an die Bediener übermitteln möchten, müssen Sie **Veröffentlichen** auswählen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-* Erstellen einer neuen IoT-Gerätevorlage
-* Erstellen von Cloudeigenschaften
-* Erstellen von Anpassungen
-* Definieren einer Visualisierung für die Gerätetelemetriedaten
-* Veröffentlichen Ihrer Gerätevorlage
-
-Als Nächstes haben Sie folgende Möglichkeiten:
-
-> [!div class="nextstepaction"]
-> [Herstellen einer Verbindung mit einem Gerät](howto-connect-devkit.md)
+Wenn Sie ein Geräteentwickler sind, sollten Sie sich als Nächstes über [Versionsverwaltung für Gerätevorlagen](./howto-version-device-template.md) informieren.

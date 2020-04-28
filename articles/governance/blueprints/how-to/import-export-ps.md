@@ -3,12 +3,12 @@ title: Importieren und Exportieren von Blaupausen mit PowerShell
 description: Erfahren Sie, wie Sie mit Blaupausendefinitionen als Code arbeiten. Verwenden Sie die Export- und Importbefehle für Freigabe, Quellcodeverwaltung und Verwaltung.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677135"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686838"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
 
@@ -88,7 +88,7 @@ Die Schritte zum Exportieren Ihrer Blaupausendefinition sind ganz einfach. Das E
 
 Wenn Sie entweder [eine exportierte Blaupausendefinition](#export-your-blueprint-definition) oder eine manuell erstellte Blaupausendefinition in der [erforderlichen Ordnerstruktur](#folder-structure-of-a-blueprint-definition) haben, können Sie diese Blaupausendefinition in eine andere Verwaltungsgruppe oder ein anderes Abonnement importieren.
 
-Beispiele für integrierte Blaupausendefinitionen finden Sie im [GitHub-Repository „Azure Blueprints“](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
+Beispiele für integrierte Blaupausendefinitionen finden Sie im [GitHub-Repository „Azure Blueprints“](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins).
 
 - **Name** [erforderlich]
   - Gibt den Namen für die neue Blaupausendefinition an.
