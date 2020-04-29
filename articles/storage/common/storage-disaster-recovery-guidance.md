@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7340f419912324e488dc38e5aa0d884b150a44b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79365361"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176378"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
@@ -54,8 +54,8 @@ Es ist wichtig, Ihre Anwendung von Anfang an auf Hochverfügbarkeit auszurichten
 Beachten Sie außerdem diese Best Practices zur Aufrechterhaltung der Hochverfügbarkeit Ihrer Azure Storage-Daten:
 
 - **Datenträger:** Verwenden Sie den [Azure Backup](https://azure.microsoft.com/services/backup/), um die von Ihrem virtuellen Computer verwendeten VM-Datenträger zu sichern. Erwägen Sie auch, [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) zu verwenden, um Ihre VMs im Falle eines regionalen Ausfalls zu schützen.
-- **Blockblobs:** Aktivieren Sie [Vorläufiges Löschen](../blobs/storage-blob-soft-delete.md), um das versehentliche Löschen und Überschreiben von Objekten zu verhindern, oder kopieren Sie die Blockblobs in ein anderes Speicherkonto in einer andere Region mithilfe von [AzCopy](storage-use-azcopy.md), [Azure PowerShel](storage-powershell-guide-full.md)l oder [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-- **Dateien:** Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
+- **Blockblobs:** Aktivieren Sie [Vorläufiges Löschen](../blobs/storage-blob-soft-delete.md), um das versehentliche Löschen und Überschreiben von Objekten zu verhindern, oder kopieren Sie die Blockblobs in ein anderes Speicherkonto in einer andere Region mithilfe von [AzCopy](storage-use-azcopy.md), [Azure PowerShel](/powershell/module/az.storage/)l oder [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+- **Dateien:** Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](/powershell/module/az.storage/), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 - **Tabellen:** Verwenden Sie [AzCopy](storage-use-azcopy.md), um die Tabellendaten in ein anderes Speicherkonto in einer anderen Region zu exportieren.
 
 ## <a name="track-outages"></a>Nachverfolgen von Ausfällen
@@ -167,7 +167,7 @@ Die folgenden Funktionen und Dienste werden für das Kontofailover in der Vorsch
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopieren von Daten als Alternative zum Failover
 
-Wenn Ihr Speicherkonto für RA-GRS konfiguriert ist, haben Sie Lesezugriff auf Ihre Daten über den sekundären Endpunkt. Wenn Sie bei einem Ausfall in der primären Region kein Failover ausführen möchten, können Sie Werkzeuge wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) oder die [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten von Ihrem Speicherkonto in der sekundären Region in ein anderes Speicherkonto in einer nicht betroffenen Region zu kopieren. Sie können Ihre Anwendungen dann auf dieses Speicherkonto verweisen, sowohl für die Lese- als auch für die Schreibverfügbarkeit.
+Wenn Ihr Speicherkonto für RA-GRS konfiguriert ist, haben Sie Lesezugriff auf Ihre Daten über den sekundären Endpunkt. Wenn Sie bei einem Ausfall in der primären Region kein Failover ausführen möchten, können Sie Werkzeuge wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/) oder die [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten von Ihrem Speicherkonto in der sekundären Region in ein anderes Speicherkonto in einer nicht betroffenen Region zu kopieren. Sie können Ihre Anwendungen dann auf dieses Speicherkonto verweisen, sowohl für die Lese- als auch für die Schreibverfügbarkeit.
 
 > [!CAUTION]
 > Ein Kontofailover sollte im Rahmen Ihrer Migrationsstrategie für Daten nicht verwendet werden.

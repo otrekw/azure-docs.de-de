@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230674"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534464"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
 
@@ -106,11 +106,11 @@ Der Umleitungs-URI ist der URI, an den der Identitätsanbieter die Sicherheitsto
 ### <a name="redirect-uri-for-public-client-apps"></a>Umleitungs-URI für öffentliche Client-Apps
 
 Wenn Sie eine öffentliche Client-App entwickeln und die MSAL verwenden, gilt Folgendes:
-- Sie verwenden `.WithDefaultRedirectUri()` in Desktop- oder UWP-Anwendungen (MSAL.NET 4.1 und höher). Diese Methode legt die Umleitungs-URI-Eigenschaft der öffentlichen Clientanwendung auf den empfohlenen Standardumleitungs-URI für öffentliche Clientanwendungen fest. 
+- Sie verwenden `.WithDefaultRedirectUri()` in Desktop- oder UWP-Anwendungen (MSAL.NET 4.1 und höher). Diese Methode legt die Umleitungs-URI-Eigenschaft der öffentlichen Clientanwendung auf den empfohlenen Standardumleitungs-URI für öffentliche Clientanwendungen fest.
 
-  Plattform  | Umleitungs-URI  
+  Plattform  | Umleitungs-URI
   ---------  | --------------
-  Desktop-App (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  Desktop-App (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | Wert von `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Dies ermöglicht SSO mit dem Browser, indem der Wert auf das Ergebnis von WebAuthenticationBroker.GetCurrentApplicationCallbackUri() festgelegt wird, das Sie aufzeichnen müssen.
   .NET Core | `https://localhost`. Dies ermöglicht dem Benutzer, den Systembrowser für die interaktive Authentifizierung zu verwenden, da .NET Core derzeit keine Benutzeroberfläche für die eingebettete Webansicht hat.
 

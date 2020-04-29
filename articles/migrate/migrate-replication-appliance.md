@@ -3,12 +3,12 @@ title: Azure Migrate-Replikationsappliance
 description: Hier erhalten Sie Informationen zur Azure Migrate-Replikationsappliance für die Agent-basierte VMware-Migration.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225434"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535212"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
@@ -28,8 +28,11 @@ Die Replikationsappliance wird bereitgestellt, wenn Sie die Agent-basierte Migra
 
 **Verwendung** | **Details**
 --- |  ---
-Agent-basierte Migration virtueller VMware-Computer | Sie laden die OVA-Vorlage aus dem Azure Migrate-Hub herunter und importieren sie in vCenter Server, um die Appliance-VM zu erstellen.
-Agent-basierte Migration physischer Computer | Falls Sie keine VMware-Infrastruktur besitzen oder keinen virtuellen VMware-Computer mithilfe einer OVA-Vorlage erstellen können, laden Sie ein Softwareinstallationsprogramm vom Azure Migrate-Hub herunter und führen es zum Einrichten des Appliancecomputers aus.
+**Agent-basierte Migration virtueller VMware-Computer** | Sie laden die OVA-Vorlage aus dem Azure Migrate-Hub herunter und importieren sie in vCenter Server, um die Appliance-VM zu erstellen.
+**Agent-basierte Migration physischer Computer** | Falls Sie keine VMware-Infrastruktur besitzen oder keinen virtuellen VMware-Computer mithilfe einer OVA-Vorlage erstellen können, laden Sie ein Softwareinstallationsprogramm vom Azure Migrate-Hub herunter und führen es zum Einrichten des Appliancecomputers aus.
+
+> [!NOTE]
+> Verwenden Sie bei der Bereitstellung in Azure Government die Installationsdatei, um die Replikationsappliance bereitzustellen.
 
 ## <a name="appliance-requirements"></a>Appliance-Anforderungen
 
@@ -74,7 +77,7 @@ Herunterladen und Installieren in Azure Migrate | Wenn Sie die Appliance install
 
 ## <a name="url-access"></a>URL-Zugriff
 
-Die Replikationsappliance benötigt Zugriff auf die folgenden URLs:
+Die Replikationsappliance benötigt Zugriff auf die folgenden URLs in der öffentlichen Azure-Cloud.
 
 **URL** | **Details**
 --- | ---
@@ -84,10 +87,26 @@ Die Replikationsappliance benötigt Zugriff auf die folgenden URLs:
 \*.hypervrecoverymanager.windowsazure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
 https:\//management.azure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
 *.services.visualstudio.com | Wird für Telemetriezwecke (optional) verwendet
-time.nist.gov | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
 time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Bei der OVF-Einrichtung ist Zugriff auf diese URLs erforderlich. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Beim Einrichten der Appliance wird Zugriff auf diese URLs benötigt. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie in dem Fall sicher, dass die CDN-URL ebenfalls zulässig ist.
+
+
+## <a name="azure-government-url-access"></a>Zugriff auf Azure Government-URLs
+
+Die Replikationsappliance benötigt Zugriff auf die folgenden URLs in Azure Government.
+
+**URL** | **Details**
+--- | ---
+\*.backup.windowsazure.us | Wird für die Übertragung und Koordinierung replizierter Daten verwendet
+\*.store.core.windows.net | Wird für die Übertragung und Koordinierung replizierter Daten verwendet
+\*.blob.core.windows.net | Wird für den Zugriff auf das Speicherkonto verwendet, in dem replizierte Daten gespeichert werden
+\*.hypervrecoverymanager.windowsazure.us | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
+https:\//management.usgovcloudapi.net | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
+*.services.visualstudio.com | Wird für Telemetriezwecke (optional) verwendet
+time.nist.gov | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Beim Einrichten der Appliance mit OVA wird Zugriff auf diese URLs benötigt. Sie werden für die Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory verwendet.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie in dem Fall sicher, dass die CDN-URL ebenfalls zulässig ist.
 
 ## <a name="port-access"></a>Portzugriff
 
@@ -107,7 +126,7 @@ Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und ver
     - VMs kommunizieren mit dem Replikationsserver über den Port HTTPS 443 für eingehenden Datenverkehr, um die Replikationsverwaltung durchzuführen.
     - Die Replikationsappliance orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
     - Virtuelle Computer senden Replikationsdaten an den Prozessserver (der auf der Replikationsappliance ausgeführt wird) über Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
-    - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an den Azure-Speicher.
+    - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.
 5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem verwalteten Azure-Datenträger gespeichert.
 
 ![Aufbau](./media/migrate-replication-appliance/architecture.png)

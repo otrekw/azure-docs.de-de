@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4aea624c2127c9b0a61d72b8d14929ce6f47df24
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272660"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142491"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Herstellen einer Verbindung mit Ihrem Azure-basierten virtuellen Computer
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer).
 
-In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit den virtuellen Computern (VMs) herstellen, die Sie in Azure erstellt haben, und sich daran anmelden.  Nachdem Sie die Verbindung erfolgreich hergestellt haben, können Sie so mit dem virtuellen Computer arbeiten, als ob Sie lokal auf dem Hostserver angemeldet wären. 
+In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit den virtuellen Computern (VMs) herstellen, die Sie in Azure erstellt haben, und sich daran anmelden.  Nachdem Sie die Verbindung erfolgreich hergestellt haben, können Sie so mit dem virtuellen Computer arbeiten, als ob Sie lokal auf dem Hostserver angemeldet wären.
 
 ## <a name="connect-to-a-windows-based-vm"></a>Herstellen einer Verbindung mit einem Windows-basierten virtuellen Computer
 

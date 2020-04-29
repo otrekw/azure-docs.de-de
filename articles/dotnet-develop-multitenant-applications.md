@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425900"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481837"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
 Eine mehrinstanzenfähige Anwendung ist eine gemeinsam verwendete Ressource, mit der Benutzer in getrennten Mandanten die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis der Anwendung von verschiedenen Mandanten individualisieren möchten, aber davon abgesehen gleiche grundlegende Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.
@@ -30,13 +30,13 @@ Im Folgenden finden Sie eine Liste der wichtigsten Anforderungen aus Sicht des A
 
 * **Bereitstellung**: Sie müssen neue Mandanten für die Anwendung bereitstellen können.  Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
 * **Wartbarkeit**: Sie müssen in der Lage sein, Upgrades der Anwendung und weitere Wartungsaufgaben durchzuführen, während diese von mehreren Mandanten verwendet wird.
-* **Monitoring**: Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
+* **Überwachung:** Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
 
 Eine korrekt implementierte mehrinstanzenfähige Anwendung bietet Benutzern die folgenden Vorteile.
 
-* **Isolation**: Die Aktivitäten einzelner Mandanten beeinflussen nicht die Nutzung der Anwendung durch andere Mandanten. Mandanten können untereinander nicht auf ihre Daten zugreifen. Dem Mandanten erscheint es so, als ob er die Anwendung exklusiv nutzt.
-* **Verfügbarkeit**: Für einzelne Mandanten muss die Anwendung konstant verfügbar sein, unter Umständen mit Garantien, die in einem SLA festgelegt sind. Erneut, die Aktivitäten anderer Mandanten sollten die Verfügbarkeit der Anwendung nicht beeinträchtigen.
-* **Skalierbarkeit**: Die Anwendung kann über Skalierung die Anforderungen einzelner Mandanten erfüllen. Die Präsenz und Aktivitäten anderer Mandanten sollten die Leistung der Anwendung nicht beeinträchtigen.
+* **Isolation:** : Die Aktivitäten einzelner Mandanten beeinflussen nicht die Nutzung der Anwendung durch andere Mandanten. Mandanten können untereinander nicht auf ihre Daten zugreifen. Dem Mandanten erscheint es so, als ob er die Anwendung exklusiv nutzt.
+* **Verfügbarkeit:** Für einzelne Mandanten muss die Anwendung konstant verfügbar sein, unter Umständen mit Garantien, die in einem SLA festgelegt sind. Erneut, die Aktivitäten anderer Mandanten sollten die Verfügbarkeit der Anwendung nicht beeinträchtigen.
+* **Skalierbarkeit:** Die Anwendung kann über Skalierung die Anforderungen einzelner Mandanten erfüllen. Die Präsenz und Aktivitäten anderer Mandanten sollten die Leistung der Anwendung nicht beeinträchtigen.
 * **Kosten**: Die Kosten sind niedriger als bei der Ausführung einer dedizierten Einzelinstanzanwendung, da Mehrinstanzenfähigkeit die gemeinsame Nutzung von Ressourcen ermöglicht.
 * **Individualisierbarkeit**. Die Möglichkeit, die Anwendung für einen einzelnen Mandanten auf verschiedene Weisen zu individualisieren, beispielsweise durch das Hinzufügen oder Entfernen von Funktionen, Ändern von Farben und Logos oder sogar durch das Hinzufügen eigener Codes oder Skripte.
 
@@ -48,7 +48,7 @@ Azure bietet viele Funktionen, mit denen Sie die entscheidenden Probleme lösen 
 
 **Isolation**
 
-* Segmentieren Sie Websitemandanten nach Hostheadern mit oder ohne SSL-Kommunikation.
+* Segmentieren von Websitemandanten nach Hostheadern mit oder ohne TLS-Kommunikation
 * Segmentieren Sie Websitemandanten nach Abfrageparametern.
 * Webdienste in Workerrollen
   * Workerrollen, die typischerweise Daten im Hintergrund einer Anwendung verarbeiten

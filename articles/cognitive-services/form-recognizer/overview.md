@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399448"
+ms.locfileid: "81529891"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -92,7 +92,7 @@ Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cogn
 
 Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
 
-* Als Format muss JPEG, PNG, BMP, PDF (Text oder gescannt) oder TIFF verwendet werden.
+* Das Format muss JPEG, PNG, PDF (Text oder Scan) oder TIFF sein.
 * Die Dateigröße muss weniger als 20 MB betragen.
 * Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
 * Die Abmessungen bei PDFs dürfen maximal 17 x 17 Zoll betragen. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.

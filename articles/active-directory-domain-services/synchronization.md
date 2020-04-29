@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944430"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639908"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD Domain Services-Domäne
 
@@ -31,6 +31,8 @@ In der folgenden Abbildung ist die Funktionsweise der Synchronisierung zwischen 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronisierung aus Azure AD mit Azure AD DS
 
 Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden unidirektional aus Azure AD mit Azure AD DS synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Die erste Synchronisierung kann von einigen wenigen Stunden bis hin zu mehreren Tagen dauern – dies hängt von der Anzahl der Objekte im Azure AD-Verzeichnis ab. Nach Abschluss der Erstsynchronisierung werden in Azure AD vorgenommene Änderungen wie Kennwort- oder Attributänderungen automatisch mit Azure AD DS synchronisiert.
+
+Wenn ein Benutzer in Azure AD erstellt wird, erfolgt die Synchronisierung mit Azure AD DS erst, wenn der Benutzer sein Kennwort in Azure AD ändert. Diese Kennwortänderung führt dazu, dass die Kennworthashes für die Kerberos- und NTLM-Authentifizierung in Azure AD generiert und gespeichert werden. Die Kennworthashes sind erforderlich, um einen Benutzer in Azure AD DS erfolgreich authentifizieren zu können.
 
 Der Synchronisierungsvorgang wird unidirektional durchgeführt. Es erfolgt keine umgekehrte Synchronisierung von Änderungen aus Azure AD DS mit Azure AD. Eine verwaltete Azure AD DS-Domäne ist größtenteils schreibgeschützt, mit Ausnahme von benutzerdefinierten Organisationseinheiten, die Sie erstellen können. Sie können keine Änderungen an den Benutzerattributen, Benutzerkennwörtern oder Gruppenmitgliedschaften in einer verwalteten Azure AD DS-Domäne vornehmen.
 
@@ -134,7 +136,7 @@ Die Verschlüsselungsschlüssel sind für jeden Azure AD-Mandanten eindeutig. D
 
 Legacykennworthashes werden dann aus Azure AD mit den Domänencontrollern für eine verwaltete Azure AD DS-Domäne synchronisiert. Die Datenträger für diese verwalteten Domänencontroller in Azure AD DS werden im Ruhezustand verschlüsselt. Die Kennworthashes werden auf diesen Domänencontrollern in ähnlicher Weise gespeichert und geschützt wie Kennwörter in einer lokalen AD DS-Umgebung.
 
-Für reine Azure AD-Cloudumgebungen [müssen Benutzer ihr Kennwort zurücksetzen oder ändern](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit die erforderlichen Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. Bei diesen neuen Konten muss das Kennwort nicht zurückgesetzt oder geändert werden, um die Legacykennworthashes zu generieren.
+Für reine Azure AD-Cloudumgebungen [müssen Benutzer ihr Kennwort zurücksetzen oder ändern](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit die erforderlichen Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. Für alle Cloudbenutzerkonten müssen die Kennwörter geändert werden, bevor sie mit Azure AD DS synchronisiert werden.
 
 Für hybride Benutzerkonten, die unter Verwendung von Azure AD Connect aus der lokalen AD DS-Umgebung synchronisiert werden, müssen Sie [Azure AD Connect zum Synchronisieren von Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten konfigurieren](tutorial-configure-password-hash-sync.md).
 

@@ -2,17 +2,17 @@
 title: Bewerten physischer Server für die Migration mit der Azure Migrate-Serverbewertung
 description: Es wird beschrieben, wie Sie lokale physische Server mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990299"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535433"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Bewerten physischer Server mit Azure Migrate: Migrate-Serverbewertung
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Bewerten physischer Server mit der Azure Migrate-Serverbewertung
 
-In diesem Artikel erfahren Sie, wie Sie lokale physische Server mit Azure Migrate bewerten: Migrate-Serverbewertung bewerten.
+In diesem Artikel erfahren Sie, wie Sie lokale physische Server mithilfe des Azure Migrate-Serverbewertungstools bewerten.
 
 [Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
 
@@ -34,8 +34,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-physical.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
 - Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
-    - [Einrichten von Azure-Berechtigungen](tutorial-prepare-physical.md#prepare-azure) für Azure Migrate
+    - [Einrichten von Azure-Berechtigungen](tutorial-prepare-physical.md) für Azure Migrate
     - [Vorbereiten physischer Server](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) auf die Bewertung. Applianceanforderungen müssen überprüft werden. Außerdem muss ein Konto für die Ermittlung physischer Server eingerichtet worden sein. Die erforderlichen Ports müssen verfügbar sein, und Ihnen müssen die URLs bekannt sein, die für den Zugriff auf Azure benötigt werden.
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
@@ -49,8 +51,8 @@ Richten Sie wie folgt ein neues Azure Migrate-Projekt ein:
     ![Ermitteln und Bewerten von Servern](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. Klicken Sie unter **Erste Schritte** auf **Tools hinzufügen**.
-5. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.     
-6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Unterstützt werden Asien, Europa, das Vereinigte Königreich und die USA.
+5. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.  
+6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Beachten Sie die unterstützten geografischen Regionen für [öffentliche](migrate-support-matrix.md#supported-geographies-public-cloud) Clouds und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
     - Die geografische Region des Projekts dient nur zum Speichern der Metadaten, die von lokalen Servern erfasst werden.
     - Beim Ausführen einer Migration kann eine beliebige Zielregion ausgewählt werden.
@@ -98,14 +100,22 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Beispielverwendung für die Azure Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Überprüfen der Hashwerte:
+ 
+    - Für die öffentliche Cloud (für die aktuelle Applianceversion):
 
-3.  Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen Einstellungen entsprechen.
+        **Algorithmus** | **Hashwert**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - Für Azure Government (für die aktuelle Applianceversion):
+
+        **Algorithmus** | **Hashwert**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
 
@@ -116,28 +126,26 @@ Das Installationsskript führt folgende Schritte aus:
 - Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
 - Erstellung der folgenden Dateien in diesem Pfad:
-    - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
-    - **Protokolldateien**: %ProgramData%\Microsoft Azure\Logs
+    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
+    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
 Führen Sie das Skript wie folgt aus:
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Computer auf einer vorhandenen Azure Migrate-Appliance aus.
 2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
+
+    - Für die öffentliche Cloud: ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Für Azure Government: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+
+    Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
 
 Bei Problemen können Sie unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log“ auf die Skriptprotokolle zugreifen, um die Problembehandlung durchzuführen.
 
-> [!NOTE]
-> Achten Sie darauf, dass Sie das Azure Migrate-Installationsprogrammskript nicht auf einer vorhandenen Azure Migrate-Appliance ausführen.
-
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance eine Verbindung mit [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
+Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) Clouds und [Azure Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
@@ -173,7 +181,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden physischen Servern her, und starten Sie die Ermittlung.
 
 1. Klicken Sie auf **Anmeldeinformationen hinzufügen**, um die Kontoanmeldeinformationen anzugeben, die die Appliance für die Serverermittlung verwendet.  
-2. Geben Sie das **Betriebssystem**, einen Anzeigenamen für die Anmeldeinformationen, **Benutzername** und **Kennwort** ein, und klicken Sie auf **Hinzufügen**.
+2. Geben Sie das **Betriebssystem**, einen Anzeigenamen für die Anmeldeinformationen sowie den Benutzernamen und das Kennwort ein. Klicken Sie anschließend auf **Hinzufügen**.
 Sie können für Windows- und Linux-Server je einen Satz Anmeldeinformationen angeben.
 4. Klicken Sie auf **Server hinzufügen**, und geben Sie für die Verbindungsherstellung mit dem Server Details zum Server an: FQDN/IP-Adresse und einen Anzeigenamen für die Anmeldeinformationen (ein Eintrag pro Zeile).
 3. Klicken Sie auf **Überprüfen**. Nach der Überprüfung wird die Liste der Server angezeigt, die ermittelt werden können.

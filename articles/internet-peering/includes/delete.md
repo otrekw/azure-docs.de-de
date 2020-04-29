@@ -8,11 +8,11 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3f866064790fb3936fb76c1deef15ee2a38773
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773657"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678676"
 ---
-Die Aufhebung der Bereitstellung über das Portal oder PowerShell wird derzeit nicht unterstützt. Senden Sie eine E-Mail an [Microsoft-Peering](mailto:peeringexperience@microsoft.com), um die Bereitstellung aufzuheben.
+Die Aufhebung der Bereitstellung über das Azure-Portal oder PowerShell wird derzeit nicht unterstützt. Wenden Sie sich zum Aufheben des Peerings an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).

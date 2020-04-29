@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587956"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461632"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
 
@@ -60,11 +60,11 @@ Gehen Sie zum Bereitstellen von CMK wie folgt vor: 
     > [!NOTE]
     >  Azure Key Vault muss als wiederherstellbar konfiguriert werden, um Ihren Schlüssel und den Zugriff zu schützen.
 
-1.  [Aktivieren Sie die Wiederherstellungsoptionen:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [Aktivieren Sie die Wiederherstellungsoptionen:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Stellen Sie sicher, dass [Vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md) aktiviert ist.
+    -   Stellen Sie sicher, dass [Vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) aktiviert ist.
 
-    -   Aktivieren Sie den [Bereinigungsschutz](../key-vault/key-vault-ovw-soft-delete.md#purge-protection) zum Schutz vor erzwungenem Löschen des Geheimnisses/Tresors (auch nach vorläufigem Löschen).
+    -   Aktivieren Sie den [Bereinigungsschutz](../key-vault/general/overview-soft-delete.md#purge-protection) zum Schutz vor erzwungenem Löschen des Geheimnisses/Tresors (auch nach vorläufigem Löschen).
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>SCHRITT 2: Aktivieren von CMK in Ihrem Log Analytics-Arbeitsbereich
 

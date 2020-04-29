@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482312"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531099"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python
 
@@ -40,7 +40,7 @@ Stellen Sie sicher, dass alle Trainingsdokumente im selben Format vorliegen. Wen
 
 Um ein Modell mit beschrifteten Daten zu trainieren, benötigen Sie folgende Dateien als Eingaben im Unterordner. Im Folgenden erfahren Sie, wie Sie diese Dateien erstellen.
 
-* **Quellformulare**: Die Formulare, aus denen die Daten extrahiert werden sollen. Unterstützt werden die Typen JPEG, PNG, BMP, PDF und TIFF.
+* **Quellformulare**: Die Formulare, aus denen die Daten extrahiert werden sollen. Unterstützt werden die Typen JPEG, PNG, PDF und TIFF.
 * **OCR-Layoutdateien**: JSON-Dateien, die die Größe und Position jedes lesbaren Textelements in jedem Quellformular beschreiben. Zum Generieren dieser Dateien verwenden Sie die Layout-API der Formularerkennung. 
 * **Beschriftungsdateien**: JSON-Dateien, die Datenbeschriftungen beschreiben, die von einem Benutzer manuell eingegeben wurden.
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ Wenn der Vorgang abgeschlossen ist, erhalten Sie eine `202 (Success)`-Antwort mi
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

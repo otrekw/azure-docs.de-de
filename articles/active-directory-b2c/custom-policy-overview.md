@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225490"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678165"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -43,7 +43,9 @@ Es werden die folgenden drei Typen von Richtliniendateien verwendet:
 - **Erweiterungsdatei**: Sie enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten.
 - **Datei der vertrauenden Seite (Relying Party, RP)** : Dabei handelt es sich um die einzige aufgabenorientierte Datei, die direkt von der Anwendung oder dem Dienst (auch als „vertrauende Seite“ bezeichnet) aufgerufen wird. Jede eindeutige Aufgabe erfordert eine eigene RP, und die Anzahl kann abhängig von den Branding-Anforderungen die „Gesamtzahl von Anwendungen multipliziert mit der Gesamtzahl von Anwendungsfällen“ betragen.
 
-Benutzerflows in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Azure-Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
+Benutzerflows in Azure AD B2C folgen dem oben dargestellten Dateimuster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Azure-Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
+
+Es sind drei Typen von Richtliniendateien verfügbar. Sie sind jedoch nicht nur auf drei Dateien beschränkt. Sie können mehrere Dateien jedes Dateityps verwenden. Wenn Sie beispielsweise keine Änderungen an der Erweiterungsdatei vornehmen möchten, können Sie eine Extensions2-Datei erstellen, um die Erweiterungsdatei zu erweitern.
 
 ## <a name="custom-policy-core-concepts"></a>Wichtige Konzepte für benutzerdefinierte Richtlinien
 

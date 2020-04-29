@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886346"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535892"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -59,12 +59,12 @@ Abhängig vom jeweiligen Szenario können Unternehmenskunden jederzeit Richtlini
 
 Einige Szenarien erfordern Änderungen am Code, um den bedingten Zugriff nutzen zu können, während andere ohne Änderungen funktionieren. Hier finden Sie einige Szenarien, die den bedingten Zugriff für die mehrstufige Authentifizierung verwenden und Einblick in die Unterschiede geben.
 
-* Sie erstellen eine iOS-App mit nur einem Mandanten und wenden eine Richtlinie für den bedingten Zugriff an. Die App meldet einen Benutzer an, aber fordert keinen Zugriff auf eine API an. Wenn sich der Benutzer anmeldet, wird die Richtlinie automatisch aufgerufen. Der Benutzer muss eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ausführen. 
+* Sie erstellen eine iOS-App mit nur einem Mandanten und wenden eine Richtlinie für den bedingten Zugriff an. Die App meldet einen Benutzer an, aber fordert keinen Zugriff auf eine API an. Wenn sich der Benutzer anmeldet, wird die Richtlinie automatisch aufgerufen. Der Benutzer muss eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ausführen.
 * Sie erstellen eine native App, die einen Dienst der mittleren Ebene für den Zugriff auf eine Downstream-API verwendet. Ein Unternehmenskunde, der diese App verwendet, wendet eine Richtlinie für die Downstream-API an. Wenn sich ein Endbenutzer anmeldet, fordert die native App Zugriff auf die mittlere Ebene an und sendet das Token. Die mittlere Ebene führt den „Im Auftrag von“-Ablauf aus, um Zugriff auf die Downstream-API anzufordern. An diesem Punkt wird der mittleren Ebene eine Anspruchanforderung übermittelt. Die mittlere Ebene sendet die Anforderung wieder an die native App, die ihrerseits die Richtlinie für den bedingten Zugriff erfüllen muss.
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-Für Microsoft Graph gelten besondere Überlegungen beim Erstellen von Apps in Umgebungen mit bedingtem Zugriff. Im Allgemeinen verhalten sich die Mechanismen des bedingtem Zugriffs gleich, aber die Richtlinien, die Ihre Benutzer sehen, basieren auf den zugrunde liegenden Daten, die Ihre App vom Diagramm anfordert. 
+Für Microsoft Graph gelten besondere Überlegungen beim Erstellen von Apps in Umgebungen mit bedingtem Zugriff. Im Allgemeinen verhalten sich die Mechanismen des bedingtem Zugriffs gleich, aber die Richtlinien, die Ihre Benutzer sehen, basieren auf den zugrunde liegenden Daten, die Ihre App vom Diagramm anfordert.
 
 Insbesondere stellen alle Microsoft Graph-Bereiche ein bestimmtes Dataset dar, auf das individuelle Richtlinien angewendet werden können. Da den Richtlinien für den bedingten Zugriff die spezifischen Datasets zugeordnet sind, erzwingt Azure AD die Richtlinien für den bedingten Zugriff auf der Grundlage der Daten die dem Diagramm zugrunde liegen, und nicht auf der Grundlage von Microsoft Graph selbst.
 
@@ -74,13 +74,13 @@ Wenn eine App beispielsweise die folgenden Microsoft Graph-Bereiche anfordert,
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-Eine App kann von ihren Benutzern fordern, dass alle Richtlinien erfüllt werden, die in „Buchungen“ und „Exchange“ festgelegt sind. Einigen Bereichen können mehrere Datasets zugeordnet sein, wenn der Zugriff gewährt wird. 
+Eine App kann von ihren Benutzern fordern, dass alle Richtlinien erfüllt werden, die in „Buchungen“ und „Exchange“ festgelegt sind. Einigen Bereichen können mehrere Datasets zugeordnet sein, wenn der Zugriff gewährt wird.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Einhalten einer Richtlinie für den bedingten Zugriff
 
 Bei mehreren verschiedenen App-Topologien wird beim Einrichten der Sitzung eine Richtlinie für den bedingten Zugriff ausgewertet. Da Richtlinien für den bedingten Zugriff auf App- und Dienstebene ausgeführt werden, hängt der Zeitpunkt ihres Aufrufs stark vom jeweiligen Szenario ab.
 
-Wenn Ihre App versucht, über eine Richtlinie für den bedingten Zugriff auf einen Dienst zuzugreifen, muss sie möglicherweise eine Anforderung für den bedingten Zugriff erfüllen. Diese Anforderung wird im `claims`-Parameter codiert, der in einer Antwort von Azure AD empfangen wird. Dies ist ein Beispiel für diesen Anforderungsparameter: 
+Wenn Ihre App versucht, über eine Richtlinie für den bedingten Zugriff auf einen Dienst zuzugreifen, muss sie möglicherweise eine Anforderung für den bedingten Zugriff erfüllen. Diese Anforderung wird im `claims`-Parameter codiert, der in einer Antwort von Azure AD empfangen wird. Dies ist ein Beispiel für diesen Anforderungsparameter:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ In den folgenden Abschnitten werden allgemeine Szenarien beschrieben, die komple
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: App für den Ablauf vom Typ „Im Auftrag von“
 
-In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft. Der Dienst wiederum führt den Flow „On-Behalf-Of“ aus, um einen Downstreamdienst aufzurufen. In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App. 
+In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft. Der Dienst wiederum führt den Flow „On-Behalf-Of“ aus, um einen Downstreamdienst aufzurufen. In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App.
 
 ![Flussdiagramm für Apps mit „Im Auftrag von“-Ablauf](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
