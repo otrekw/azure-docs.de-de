@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: charwen
 ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618620"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Abrufen von ARP-Tabellen im klassischen Bereitstellungsmodell
