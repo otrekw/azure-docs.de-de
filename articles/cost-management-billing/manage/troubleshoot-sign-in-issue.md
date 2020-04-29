@@ -1,19 +1,20 @@
 ---
 title: Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 description: Hilft bei der Behebung von Problemen, aufgrund derer Sie sich nicht beim Azure-Portal oder Azure-Kontocenter anmelden können.
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4213df57423f5211517b019a8b58be99d2e12e7a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 08f278d56e742659ebe197695fae8dfa35383b17
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409338"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639205"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 
@@ -36,7 +37,7 @@ Dieses Problem kann auftreten, wenn Sie mehrere Benutzerkonten in einem Internet
 Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
 - Löschen Sie Cache und Internetcookies. Klicken Sie in Internet Explorer auf **Extras** > **Internetoptionen** > **Löschen**. Stellen Sie sicher, dass die Kontrollkästchen für temporäre Dateien, Cookies, Kennwort und Verlauf aktiviert sind, und klicken Sie dann auf „Löschen“.
-- Setzen Sie die Internet Explorer-Einstellungen zurück, um alle persönlichen Einstellungen wiederherstellen, die Sie vorgenommen haben. Klicken Sie hierzu auf **Extras** > **Internetoptionen** > **Erweitert**. Wählen Sie das Feld **Persönliche Einstellungen löschen** und dann **Zurücksetzen** aus.
+- Setzen Sie die Internet Explorer-Einstellungen zurück, um alle persönlichen Einstellungen wiederherzustellen, die Sie vorgenommen haben. Klicken Sie hierzu auf **Extras** > **Internetoptionen** > **Erweitert**. Wählen Sie das Feld **Persönliche Einstellungen löschen** und dann **Zurücksetzen** aus.
 - Verwenden Sie den privaten Modus in Ihrem Browser. Für Internet Explorer:  Klicken Sie auf **Extras** > **Sicherheit** > **InPrivate-Browsen**, und navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions).
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Ich kann mich zwar anmelden, aber es wird *Keine Abonnements gefunden* angezeigt

@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336210"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606218"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Das benutzerdefinierte Setup für eine Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) bietet eine Schnittstelle zum Hinzufügen Ihrer eigenen Schritte während der Einrichtung oder Neukonfiguration Ihrer Azure-SSIS IR. 
 
@@ -32,7 +34,7 @@ Es gibt zwei Möglichkeiten zur Durchführung benutzerdefinierter Setups auf Ihr
 Sie können sowohl kostenlose, nicht lizenzierte als auch kostenpflichtige, lizenzierte Komponenten mit benutzerdefinierten Express- und Standard-Setups installieren. Wenn Sie ein unabhängiger Softwareanbieter (Independent Software Vendor, ISV) sind, finden Sie weitere Informationen unter [Entwickeln kostenpflichtiger oder lizenzierter Komponenten für eine Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
 
 > [!IMPORTANT]
-> Weil sich Knoten der v2-Serie einer Azure-SSIS IR nicht für ein benutzerdefiniertes Setup eignen, verwenden Sie stattdessen Knoten der v3-Serie. Wenn Sie bereits Knoten der v2-Serie verwenden, wechseln Sie so bald wie möglich zu Knoten der v3-Serie.
+> Um von zukünftigen Verbesserungen zu profitieren, empfehlen wir die Verwendung von mindestens V3 für Ihre Azure-SSIS IR mit benutzerdefiniertem Setup.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

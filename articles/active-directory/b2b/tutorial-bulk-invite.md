@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166450"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603404"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit (Vorschau)
-
-|     |
-| --- |
-| In diesem Artikel wird eine öffentliche Previewfunktion von Azure Active Directory beschrieben. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
-> [!NOTE]
-> Am 22.12.2019 wurde das Vorschaufeature für Massenbenutzereinladungen vorübergehend deaktiviert.
-> Aktuell ist nicht bekannt, wann dieses Feature wieder im Azure-Portal aktiviert wird. Informationen zur Masseneinladung von Gastbenutzern mithilfe von PowerShell finden Sie im [Tutorial zur B2B-Masseneinladung](bulk-invite-powershell.md) oder unter [Azure Active Directory B2B-Zusammenarbeit: Code- und PowerShell-Beispiele](code-samples.md).
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
 
 Wenn Sie Azure Active Directory (Azure AD) für die B2B-Zusammenarbeit mit externen Partnern verwenden, können Sie mehrere Gastbenutzer gleichzeitig in Ihre Organisation einladen. In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Portal Masseneinladungen an externe Benutzer senden. Das Tutorial umfasst vor allem die folgenden Aufgaben:
 
 > [!div class="checklist"]
-> * Vorbereiten einer CSV-Datei mit den Benutzerinformationen und Einladungseinstellungen mithilfe von **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau))
+> * Vorbereiten einer CSV-Datei mit den Benutzerinformationen und Einladungseinstellungen mithilfe von **Massenbenutzereinladung**
 > * Hochladen der CSV-Datei in Azure AD
 > * Überprüfen, ob Benutzer dem Verzeichnis hinzugefügt wurden
 
-Sollten Sie keine Azure Active Directory-Instanz haben, erstellen Sie zunächst ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Sollten Sie keine Azure Active Directory-Instanz haben, erstellen Sie zunächst ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +38,7 @@ Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen se
 1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 3. Wählen Sie unter **Verwalten** die Optionen **Benutzer** > **Masseneinladung** aus.
-4. Wählen Sie auf der Seite **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau)) die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Einladungseigenschaften zu erhalten.
+4. Wählen Sie auf der Seite **Massenbenutzereinladung** die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Einladungseigenschaften zu erhalten.
 
     ![Downloadschaltfläche für Masseneinladungen](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen se
    > Verwenden Sie unter **Benutzerdefinierte Einladungsnachricht** keine Kommas, da die Nachricht sonst nicht erfolgreich analysiert werden kann.
 
 6. Speichern Sie die Datei .
-7. Navigieren Sie auf der Seite **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau)) unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen. 
+7. Navigieren Sie auf der Seite **Massenbenutzereinladung** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen. 
 8. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
 9. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Hinzufügen der Einladungen zu starten. 
-10. Wählen Sie zum Anzeigen des Auftragsstatus **Klicken Sie hier, um den Status für jeden Vorgang anzuzeigen.** aus. Alternativ können Sie im Abschnitt **Aktivität** die Option **Ergebnisse von Massenvorgängen (Vorschau)** auswählen. Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte in der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
+10. Wählen Sie zum Anzeigen des Auftragsstatus **Klicken Sie hier, um den Status für jeden Vorgang anzuzeigen.** aus. Alternativ können Sie im Abschnitt **Aktivität** die Option **Ergebnisse von Massenvorgängen** auswählen. Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte in der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
 
     ![Beispiel für Ergebnisse von Massenvorgängen](media/tutorial-bulk-invite/bulk-operation-results.png)
 

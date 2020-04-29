@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 02/25/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee463f573fcc1c8affe3966d58ca2bb1f6636495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32f972b177e004612856db91e790c5c2781a2b44
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334838"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536431"
 ---
 Die folgenden Limits gelten nur, wenn Sie Verwaltungsvorgänge mithilfe von Azure Resource Manager mit Azure Storage ausführen.
 
 | Resource | Begrenzung |
 | --- | --- |
 | Storage-Kontoverwaltungsvorgänge (Lesen) |800 pro 5 Minuten |
-| Storage-Kontoverwaltungsvorgänge (Schreiben) |1\.200 pro Stunde |
+| Storage-Kontoverwaltungsvorgänge (Schreiben) |10 pro Sekunde/1.200 pro Stunde |
 | Storage-Kontoverwaltungsvorgänge (Liste) |100 pro 5 Minuten |

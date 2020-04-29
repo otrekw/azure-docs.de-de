@@ -3,12 +3,12 @@ title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536793"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
  Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
@@ -34,7 +34,7 @@ Die intelligente Erkennung entdeckt eine Reihe von Problemen und gibt Benachrich
 
 * [Intelligente Erkennung – Fehlerabweichungen](../../azure-monitor/app/proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
 * [Intelligente Erkennung – Leistungsabweichungen](../../azure-monitor/app/proactive-performance-diagnostics.md). Sie erhalten Benachrichtigungen, wenn sich die Reaktionszeit eines Vorgangs oder die Abhängigkeitsdauer im Vergleich zu den typischen Verlaufsdaten verschlechtert oder wenn für die Reaktionszeit oder die Seitenladezeit ein anomales Muster erkannt wird.   
-* Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung des Schweregrads der Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [Speicherverlust](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [anormaler Anstieg im Ausnahmevolume](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) und [Verdachtsmomente für ein Sicherheitsproblem](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung der Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [Speicherverlust](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [anomaler Anstieg im Ausnahmevolume](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) und [Verdachtsmomente für ein Sicherheitsproblem](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
 
@@ -53,7 +53,7 @@ Alternativ können Sie die Konfiguration mithilfe von Azure Resource Manager-Vor
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
-* [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md)
+* [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)
 * [Suchexplorer](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics: Leistungsfähige Abfragesprache](../../azure-monitor/log-query/get-started-portal.md)
 

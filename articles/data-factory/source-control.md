@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130870"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604602"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Die Benutzeroberfläche von Azure Data Factory bietet zwei Möglichkeiten zur visuellen Erstellung:
 
@@ -77,7 +78,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 | **Azure Repos-Organisation** | Der Name Ihrer Azure Repos-Organisation. Sie können den Namen Ihrer Azure Repos-Organisation unter `https://{organization name}.visualstudio.com` finden. Sie können sich [bei Ihrer Azure Repos-Organisation anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | `<your organization name>` |
 | **Projektname** | Der Name Ihres Azure Repos-Projekts. Sie können den Namen Ihres Azure Repos-Projekts unter `https://{organization name}.visualstudio.com/{project name}` finden. | `<your Azure Repos project name>` |
 | **Repositoryname** | Der Name Ihres Azure Repos-Coderepositorys. Azure Repos-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt umfangreicher wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | `<your Azure Repos code repository name>` |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Dies ist standardmäßig `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Dieser lautet standardmäßig `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
 | **Stammordner** | Ihr Stammordner im Branch für die Azure Repos-Kollaboration. | `<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem **Dokumenterstellungsbereich** in ein Azure Repos Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -228,16 +229,16 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 
 ### <a name="permissions"></a>Berechtigungen
 
-Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung hat, die Factory zu aktualisieren. Die folgenden Berechtigungseinstellungen werden empfohlen:
+Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung zum Aktualisieren der Factory hat. Die folgenden Berechtigungseinstellungen werden empfohlen:
 
 *   Alle Teammitglieder sollten über Leseberechtigungen für die Data Factory verfügen.
-*   Nur eine ausgewählte Gruppe von Personen sollte in der Factory veröffentlichen dürfen. Zu diesem Zweck müssen Sie über die Rolle **Data Factory-Mitwirkender** für die Factory verfügen. Weitere Informationen zu Berechtigungen finden Sie unter [Rollen und Berechtigungen für Azure Data Factory](concepts-roles-permissions.md).
+*   Nur eine ausgewählte Gruppe von Personen sollte in der Factory veröffentlichen dürfen. Zu diesem Zweck müssen Sie über die Rolle **Data Factory-Mitwirkender** für die Ressourcengruppe verfügen, in der sich die Factory befindet. Weitere Informationen zu Berechtigungen finden Sie unter [Rollen und Berechtigungen für Azure Data Factory](concepts-roles-permissions.md).
    
 Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzulassen. Diese Einschränkung kann dazu beitragen, Fehler zu vermeiden, da jeder Eincheckvorgang einen Pull Request-Prozess durchläuft, der unter [Erstellen von Featurebranches](source-control.md#creating-feature-branches) beschrieben ist.
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Verwenden von Kennwörtern aus Azure Key Vault
 
-Es wird empfohlen, Azure Key Vault zum Speichern von Verbindungszeichenfolgen oder Kennwörtern für verknüpfte Data Factory-Dienste zu verwenden. Aus Sicherheitsgründen speichern wir diese geheimen Informationen nicht in Git, sodass Änderungen an verknüpften Diensten sofort im Azure Data Factory-Dienst veröffentlicht werden.
+Es wird empfohlen, Azure Key Vault zum Speichern von Verbindungszeichenfolgen oder Kennwörtern für verknüpfte Data Factory-Dienste zu verwenden. Aus Sicherheitsgründen speichern wir diese geheimen Informationen nicht in Git, sodass Änderungen an verknüpften Diensten stattdessen sofort im Azure Data Factory-Dienst veröffentlicht werden.
 
 Durch die Verwendung von Key Vault werden Continuous Integration und Continuous Deployment vereinfacht, da Sie diese Geheimnisse nicht während der Bereitstellung von Ressourcen-Manager-Vorlagen angeben müssen.
 

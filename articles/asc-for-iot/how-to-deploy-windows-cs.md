@@ -1,5 +1,5 @@
 ---
-title: Windows-Installation des Azure Security Center für IoT-Agents | Microsoft-Dokumentation
+title: Installieren des C#-basierten Agents auf einem Windows-Gerät
 description: Hier erfahren Sie, wie Sie den Azure Security Center für IoT-Agent auf Geräten unter Windows (32 Bit oder 64 Bit) installieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,33 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: acc99f260931de7fd8c7566a3ff6daf43f34c5ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68597216"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537609"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Bereitstellen eines C#-basierten Sicherheits-Agents von Azure Security Center für IoT unter Windows
 
 In diesem Leitfaden erfahren Sie, wie Sie den C#-basierten Sicherheits-Agent von Azure Security Center für IoT unter Windows installieren.
 
-In diesem Artikel lernen Sie Folgendes: 
+In diesem Artikel lernen Sie Folgendes:
+
 > [!div class="checklist"]
 > * Installieren
 > * Überprüfen der Bereitstellung
 > * Deinstallieren des Agents
-> * Problembehandlung 
+> * Problembehandlung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Informationen zu anderen Plattformen und Agent-Varianten finden Sie unter [Choose the right security agent](how-to-deploy-agent.md) (Auswählen des richtigen Sicherheits-Agents).
 
-1. Lokale Administratorrechte auf dem Computer, auf dem Sie installieren möchten. 
+1. Lokale Administratorrechte auf dem Computer, auf dem Sie installieren möchten.
 
 1. [Erstellen Sie ein Sicherheitsmodul](quickstart-create-security-twin.md) für das Gerät.
 
-## <a name="installation"></a>Installation 
+## <a name="installation"></a>Installation
 
 Verwenden Sie zum Installieren des Sicherheits-Agents den folgenden Workflow:
 
@@ -49,54 +50,53 @@ Verwenden Sie zum Installieren des Sicherheits-Agents den folgenden Workflow:
 
 1. Extrahieren Sie den Inhalt des Pakets, und navigieren Sie zum Ordner „/Install“.
 
-1. Öffnen Sie Windows PowerShell als Administrator. 
-1. Führen Sie Folgendes aus, um dem Skript „InstallSecurityAgent“ Ausführungsberechtigungen hinzuzufügen:<br>
+1. Öffnen Sie Windows PowerShell als Administrator.
+1. Führen Sie Folgendes aus, um dem Skript „InstallSecurityAgent“ Ausführungsberechtigungen hinzuzufügen:
+
     ```
     Unblock-File .\InstallSecurityAgent.ps1
     ```
-    
+
     Führen Sie anschließend Folgendes aus:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
-    
+
     Beispiel:
-    
+
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
-    
+
     Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Authentifizierungsmethoden des Sicherheits-Agents](concept-security-agent-authentication-methods.md).
 
 Das Skript bewirkt Folgendes:
 
-- Installieren der erforderlichen Komponenten
+* Installieren der erforderlichen Komponenten
+* Hinzufügen eines Dienstbenutzers (mit deaktivierter interaktiver Anmeldung)
+* Installieren des Agents als **Systemdienst**
+* Konfigurieren des Agents mit den angegebenen Authentifizierungsparametern
 
-- Hinzufügen eines Dienstbenutzers (mit deaktivierter interaktiver Anmeldung)
+Weitere Hilfe erhalten Sie bei Bedarf mithilfe des Befehls „Get-Help“ in PowerShell.
 
-- Installieren des Agents als **Systemdienst**
-
-- Konfigurieren des Agents mit den angegebenen Authentifizierungsparametern
-
-
-Weitere Hilfe erhalten Sie bei Bedarf mithilfe des Befehls „Get-Help“ in PowerShell. <br>Beispiel für „Get-Help“:  
-    ```Get-Help .\InstallSecurityAgent.ps1```
+Beispiel für „Get-Help“: ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>Überprüfen des Bereitstellungsstatus
 
-- Führen Sie Folgendes aus, um den Bereitstellungsstatus des Agents zu überprüfen:<br>
-    ```sc.exe query "ASC IoT Agent"```
+Führen Sie Folgendes aus, um den Bereitstellungsstatus des Agents zu überprüfen:
+
+```sc.exe query "ASC IoT Agent"```
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 
 So deinstallieren Sie den Agent:
 
-1. Führen Sie das folgende PowerShell-Skript aus, und legen Sie dabei den Parameter **-mode** auf **Uninstall** fest:  
+1. Führen Sie das folgende PowerShell-Skript aus, und legen Sie dabei den Parameter **-mode** auf **Uninstall** fest:
 
     ```
     .\InstallSecurityAgent.ps1 -Uninstall
-    ``` 
+    ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -110,37 +110,39 @@ So aktivieren Sie die Protokollierung:
 
    ```xml
    <add key="logLevel" value="Debug" />
-   <add key="fileLogLevel" value="Debug"/> 
-   <add key="diagnosticVerbosityLevel" value="Some" /> 
+   <add key="fileLogLevel" value="Debug"/>
+   <add key="diagnosticVerbosityLevel" value="Some" />
    <add key="logFilePath" value="IoTAgentLog.log" />
    ```
 
     > [!NOTE]
-    > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung. 
+    > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
 
 1. Starten Sie den Agent über PowerShell oder über die Befehlszeile neu:
 
     **PowerShell**
+
      ```
      Restart-Service "ASC IoT Agent"
      ```
-     
+
    oder
 
     **Befehlszeile**
+
      ```
-     sc.exe stop "ASC IoT Agent" 
-     sc.exe start "ASC IoT Agent" 
+     sc.exe stop "ASC IoT Agent"
+     sc.exe start "ASC IoT Agent"
      ```
 
-1. Sehen Sie sich die Protokolldatei an, um mehr über den Fehler zu erfahren.
+1. Sehen Sie sich die Protokolldatei an, um mehr über den Fehler zu erfahren. Die Protokolldatei befindet sich in dem Arbeitsverzeichnis, in dem das Skript ausgeführt wird. 
 
-   Speicherort der Protokolldatei: `%WinDir%/System32/IoTAgentLog.log`
-
+   Speicherort der Protokolldatei: `.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
-- Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
-- Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
-- Lesen Sie die [häufig gestellten Fragen](resources-frequently-asked-questions.md).
-- Machen Sie sich mit [Warnungen](concept-security-alerts.md) vertraut.
+
+* Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
+* Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
+* Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
+* Lesen Sie die [häufig gestellten Fragen](resources-frequently-asked-questions.md).
+* Machen Sie sich mit [Warnungen](concept-security-alerts.md) vertraut.

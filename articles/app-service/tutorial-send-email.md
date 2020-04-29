@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892569"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604850"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Dieser Code wurde zu Demonstrationszwecken vereinfacht. In der Praxis sollten Sie nicht für jede Anforderung ein `HttpClient`-Objekt instanziieren. Befolgen Sie die Anleitung unter [Verwenden von IHttpClientFactory zur Implementierung robuster HTTP-Anforderungen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient -http-requests).
+> Dieser Code wurde zu Demonstrationszwecken vereinfacht. In der Praxis sollten Sie nicht für jede Anforderung ein `HttpClient`-Objekt instanziieren. Befolgen Sie die Anleitung unter [Verwenden von IHttpClientFactory zur Implementierung robuster HTTP-Anforderungen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
 Wenn Sie diesen Code für die Beispiel-App aus [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md) testen, können Sie hiermit eine E-Mail-Bestätigung per [Create-Aktion](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65) senden, nachdem das `Todo`-Element hinzugefügt wurde.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655131"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617556"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Einbinden eines virtuellen Ubuntu Linux-Computers in eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 Wenn für die VM der Prozess der Einbindung in die Domäne nicht erfolgreich abgeschlossen werden kann, stellen Sie sicher, dass die Netzwerksicherheitsgruppe der VM ausgehenden Kerberos-Datenverkehr über TCP und UDP-Port 464 an das Subnetz des virtuellen Netzwerks für Ihre durch Azure AD DS verwaltete Domäne zulässt.
+
+Wenn Sie die Fehlermeldung *Nicht angegebener GSS-Fehler.  Untergeordneter Code kann weitere Informationen enthalten (Server nicht in der Kerberos-Datenbank gefunden)* erhalten haben, öffnen Sie die Datei */etc/krb5.conf*, fügen Sie den folgenden Code im Abschnitt `[libdefaults]` hinzu, und versuchen Sie es noch mal:
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>Aktualisieren der SSSD-Konfiguration
 
