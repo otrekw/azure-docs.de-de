@@ -1,30 +1,30 @@
 ---
-title: Azure Event Grid-Ereignisschema für Event Hubs
+title: Azure-Event Hubs als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Event Hubs-Ereignisse bereitgestellt werden
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561827"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393338"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid-Ereignisschema für Event Hubs
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Event Hubs-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-Eine Liste der Beispielskripts und Tutorials finden Sie unter [Event Hubs-Ereignisquelle](event-sources.md#event-hubs).
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
 ### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Event Hubs gibt den Ereignistyp **Microsoft.EventHub.CaptureFileCreated** aus, wenn eine Erfassungsdatei erstellt wird.
 
-## <a name="example-event"></a>Beispielereignis
+### <a name="example-event"></a>Beispielereignis
 
 In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über das Feature „Erfassen“ gespeichert wird: 
 
@@ -53,7 +53,7 @@ In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestel
 ]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
@@ -81,6 +81,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | lastSequenceNumber | integer | Die größte Sequenznummer aus der Warteschlange. |
 | firstEnqueueTime | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
 | lastEnqueueTime | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
+
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Tutorial: Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md) | Wenn Event Hubs eine Capture-Datei erstellt, sendet Event Grid ein Ereignis an eine Funktions-App. Die App ruft die Capture-Datei ab und migriert Daten zu einem Data Warehouse. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

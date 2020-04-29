@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528588"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308971"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -113,6 +113,78 @@ Aktionen des Befehls [yum](https://access.redhat.com/articles/yum-cheat-sheet) w
 
 Aktionen des Befehls [zypper](https://en.opensuse.org/Portal:Zypper) wie Installation und Entfernung von Paketen werden in der `/var/log/zypper.log`-Protokolldatei protokolliert. 
 
+## <a name="about-the-azcmagent-tool"></a>Informationen zum Azcmagent-Tool
+
+Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent von Azure Arc für Server (Vorschau) während der Installation zu konfigurieren, oder um die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
+
+* **Connect**: Verbindet den Computer mit Azure Arc.
+
+* **Disconnect**: Trennt den Computer von Azure Arc.
+
+* **Reconnect**: Verbindet einen getrennten Computer erneut mit Azure Arc.
+
+* **Show**: Zeigt den Agent-Status und seine Konfigurationseigenschaften an (Name der Ressourcengruppe, Abonnement-ID, Version usw.), die bei der Behandlung eines Problems mit dem Agent helfen können.
+
+* **-h oder -help**: Zeigt verfügbare Befehlszeilenparameter an.
+
+    Um beispielsweise ausführliche Hilfeinformationen für den Parameter **Reconnect** anzuzeigen, geben Sie `azcmagent reconnect -h` ein. 
+
+* **-v oder -verbose**: Aktiviert die ausführliche Protokollierung.
+
+Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc für Server (Vorschau) verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
+
+### <a name="connect"></a>Verbinden
+
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure erstellten Computer darstellt. Die Ressource befindet sich im angegebenen Abonnement und der angegebenen Ressourcengruppe, und die Daten zu dem Computer werden in der durch den `--location`-Parameter angegebenen Azure-Region gespeichert. Der Standardname der Ressource ist der Hostname dieses Computers, wenn nichts angegeben wird.
+
+Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen der Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit der Azure Arc für Server (Vorschau).
+
+Führen Sie den folgenden Befehl aus, um eine Verbindung mithilfe des Dienstprinzipals herzustellen:
+
+`azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Um mithilfe eines Zugriffstokens eine Verbindung herzustellen, führen Sie den folgenden Befehl aus:
+
+`azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinformationen mit erhöhten Rechten (interaktiv), mit denen Sie angemeldet sind, herzustellen:
+
+`azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+### <a name="disconnect"></a>Trennen
+
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem der Computer getrennt wurde, und wenn Sie ihn beim Azure Arc für Server (Vorschau) erneut registrieren möchten, verwenden Sie `azcmagent connect`, damit eine neue Ressource in Azure erstellt wird.
+
+Führen Sie den folgenden Befehl aus, um die Verbindung mithilfe des Dienstprinzipals zu trennen:
+
+`azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Um mithilfe eines Zugriffstokens die Verbindung zu trennen, führen Sie den folgenden Befehl aus:
+
+`azcmagent disconnect --access-token <accessToken>`
+
+Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinformationen mit erhöhten Rechten (interaktiv), mit denen Sie angemeldet sind, zu trennen:
+
+`azcmagent disconnect --tenant-id <tenantID>`
+
+### <a name="reconnect"></a>Verbindung wiederherstellen
+
+Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc für Server (Vorschau) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
+
+Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](overview.md#required-permissions).
+
+Führen Sie den folgenden Befehl aus, um erneut eine Verbindung mithilfe des Dienstprinzipals herzustellen:
+
+`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Um mithilfe eines Zugriffstokens eine Verbindung erneut herzustellen, führen Sie den folgenden Befehl aus:
+
+`azcmagent reconnect --access-token <accessToken>`
+
+Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinformationen mit erhöhten Rechten (interaktiv), mit denen Sie angemeldet sind, erneut herzustellen:
+
+`azcmagent reconnect --tenant-id <tenantID>`
+
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
 Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Wenn Sie den Agent entfernen, wird die Registrierung des Computers bei Arc für Server (Vorschau) nicht aufgehoben. Dies ist ein gesonderter Prozess, den Sie ausführen, wenn Sie den Computer nicht mehr in Azure verwalten müssen.
@@ -184,7 +256,7 @@ Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Bet
 
 ## <a name="unregister-machine"></a>Aufheben der Registrierung eines Computers
 
-Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Arc für Server (Vorschau) aufzuheben. Sie können diesen Schritt entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
+Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Arc für Server (Vorschau) aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
 
 1. Öffnen Sie Azure Arc für Server (Vorschauversion), indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
 
