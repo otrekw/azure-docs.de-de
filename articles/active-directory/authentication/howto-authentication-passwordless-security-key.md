@@ -4,19 +4,19 @@ description: Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüs
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504944"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450920"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -48,7 +48,7 @@ Auf in Azure AD Hybrid eingebundenen Geräten muss mindestens der Build 18945 
 
 ### <a name="enable-the-combined-registration-experience"></a>Aktivieren der kombinierten Registrierung
 
-Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der Vorschauversion der kombinierten Registrierung abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die Vorschauversion der kombinierten Registrierung zu aktivieren.
+Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der kombinierten Registrierungsfunktion abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die kombinierte Registrierung zu aktivieren.
 
 ### <a name="enable-fido2-security-key-method"></a>Aktivieren der Methode „FIDO2-Sicherheitsschlüssel“
 

@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Azure Active Directory-App-Manifest | Microsoft-Dokumentation
+title: Grundlegendes zum Azure Active Directory-App-Manifest
 description: Sie erhalten ausführliche Informationen über das Azure Active Directory-App-Manifest, das die Identitätskonfiguration einer Anwendung in einem Azure AD-Mandanten darstellt, und für die OAuth-Autorisierung, den Zustimmungsprozess und andere Zwecke genutzt wird.
 services: active-directory
 author: rwike77
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6d9a4af5ee814282589959fcf840c1061358ca18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383938"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450879"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
-Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungsobjekts auf der Microsoft Identity Platform. Darüber hinaus dient es als Mechanismus für die Aktualisierung des Anwendungsobjekts. Weitere Informationen zur Anwendungsentität und zum zugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity).
+Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungsobjekts auf der Microsoft Identity Platform. Darüber hinaus dient es als Mechanismus für die Aktualisierung des Anwendungsobjekts. Weitere Informationen zur Anwendungsentität und zum zugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
 
 Sie können die Attribute einer App über das Azure-Portal oder programmgesteuert mit der [REST-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) oder [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) konfigurieren. Es gibt aber einige Szenarien, in denen Sie das App-Manifest bearbeiten müssen, um das Attribut einer App zu konfigurieren. Zu diesen Szenarien gehören:
 
@@ -40,6 +40,20 @@ Konfigurieren Sie das Anwendungsmanifest wie folgt:
 ## <a name="manifest-reference"></a>Manifestreferenz
 
 In diesem Abschnitt werden die Attribute im Anwendungsmanifest beschrieben.
+
+### <a name="id-attribute"></a>id-Attribut
+
+| Schlüssel | Werttyp |
+| :--- | :--- |
+| id | String |
+
+Ein eindeutiger Bezeichner für die App im Verzeichnis. Diese ID ist nicht der Bezeichner, der verwendet wird, um die App in einer Protokolltransaktion zu bezeichnen. Sie dient dazu, in Verzeichnisabfragen auf das Objekt zu verweisen.
+
+Beispiel:
+
+```json
+    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
+```
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion-Attribut
 
@@ -230,19 +244,7 @@ Beispiel:
     "optionalClaims": null,
 ```
 
-### <a name="id-attribute"></a>id-Attribut
 
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| id | String |
-
-Ein eindeutiger Bezeichner für die App im Verzeichnis. Diese ID ist nicht der Bezeichner, der verwendet wird, um die App in einer Protokolltransaktion zu bezeichnen. Sie dient dazu, in Verzeichnisabfragen auf das Objekt zu verweisen.
-
-Beispiel:
-
-```json
-    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
 
 ### <a name="identifieruris-attribute"></a>identifierUris-Attribut
 

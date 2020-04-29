@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676741"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450988"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -115,7 +115,7 @@ Bevor Sie die Self-Service-Kennwortzurücksetzung bereitstellen, können Sie wah
 
 Microsoft empfiehlt Organisationen, die kombinierte Registrierungs-Benutzeroberfläche für SSPR und mehrstufige Authentifizierung zu aktivieren. Wenn Sie diese kombinierte Registrierungs-Benutzeroberfläche aktivieren, brauchen Benutzer ihre Registrierung nur einmal auszuwählen, um beide Funktionen zu aktivieren.
 
-Durch die kombinierte Registrierungsumgebung sind Organisationen nicht gezwungen, sowohl SSPR als auch Azure Multi-Factor Authentication zu aktivieren. Die kombinierte Registrierung sorgt in Organisationen für eine höhere Benutzerfreundlichkeit. Weitere Informationen finden Sie unter [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md).
+Durch die kombinierte Registrierungsumgebung sind Organisationen nicht gezwungen, sowohl SSPR als auch Azure Multi-Factor Authentication zu aktivieren. Die kombinierte Registrierung sorgt in Organisationen für eine höhere Benutzerfreundlichkeit. Weitere Informationen finden Sie unter [Kombinierte Registrierung von Sicherheitsinformationen](concept-registration-mfa-sspr-combined.md).
 
 ## <a name="plan-the-deployment-project"></a>Planen des Bereitstellungsprojekts
 
