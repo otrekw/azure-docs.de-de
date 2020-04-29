@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416269"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
 Der Clusterressourcen-Manager von Service Fabric unterstützt dynamische Laständerungen und reagiert auf hinzugefügte oder entfernte Knoten oder Dienste. Er korrigiert Einschränkungsverletzungen automatisch und gleicht die Last des Clusters proaktiv aus. Doch wie oft werden diese Aktionen ausgeführt, und was löst sie aus?
@@ -76,7 +76,7 @@ Derzeit werden die Aktionen des Clusterressourcen-Managers einzeln nacheinander 
 
 Wenn beispielsweise Knoten ausfallen, kann dies nacheinander für gesamte Fehlerdomänen erfolgen. Alle diese Fehler werden während der nächsten Zustandsaktualisierung nach *PLBRefreshGap* erfasst. Die Korrekturen werden während der folgenden Platzierung, Einschränkungsüberprüfung und Ausführung von Ausgleichsvorgängen bestimmt. Standardmäßig geht der Clusterressourcen-Manager nicht die Clusteränderungen mehrerer Stunden durch und versucht, alle gleichzeitig zu behandeln. Dies hätte immer wieder kurze Phasen mit hohem Änderungsaufkommen zur Folge.
 
-Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* und *Aktivitätsschwellenwerte*.
+Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* (BalancingThresholds) und *Aktivitätsschwellenwerte* (ActivityThresholds).
 
 ## <a name="balancing-thresholds"></a>Ausgleichsschwellenwerte
 Ein Ausgleichsschwellenwert ist das Hauptsteuerinstrument für das Auslösen eines erneuten Ausgleichs. Der Ausgleichsschwellenwert für eine Metrik ist ein _Verhältnis_. Wenn die Last für eine Metrik auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten den *Ausgleichsschwellenwert* dieser Metrik überschreitet, ist der Cluster unausgeglichen. Bei der nächsten Ausführung des Clusterressourcen-Managers wird deshalb ein Ausgleich ausgelöst. Der *MinLoadBalancingInterval*-Timer bestimmt, wie oft der Clusterressourcen-Manager prüfen soll, ob ein erneuter Ausgleich erforderlich ist. Die Überprüfung bedeutet nicht, dass etwas passiert. 
@@ -185,7 +185,7 @@ Gelegentlich wird jedoch ein Dienst, der selbst nicht unausgeglichen war, versch
 - Service3 meldet die Metriken Metric3 und Metric4.
 - Service4 meldet die Metrik Metric99. 
 
-Sicherlich können Sie erkennen, was hier vorliegt: eine Kette. Wir verfügen nicht wirklich über vier unabhängige Dienste, sondern vielmehr über drei Dienste, die in Bezug zueinander stehen, sowie über einen weiteren unabhängigen Dienst.
+Sicherlich können Sie erkennen, was hier vorliegt: eine Kette! Wir verfügen nicht wirklich über vier unabhängige Dienste, sondern vielmehr über drei Dienste, die in Bezug zueinander stehen, sowie über einen weiteren unabhängigen Dienst.
 
 <center>
 
@@ -205,6 +205,7 @@ Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste verknüpft s
 * Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 * Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
 * Der Clusterressourcen-Manager bietet mehrere Drosselungen, die Sie konfigurieren können, um Änderungen im Cluster zu verlangsamen. Sie sind normalerweise nicht erforderlich, aber bei Bedarf finden Sie [hier](service-fabric-cluster-resource-manager-advanced-throttling.md)
+* Der Clusterressourcen-Manager kann Subclustering erkennen und verarbeiten (eine Situation, die manchmal auftritt, wenn Sie Platzierungseinschränkungen und Lastenausgleich verwenden). Informationen dazu, wie sich Subclustering auf den Lastenausgleich auswirken kann und wie Sie damit umgehen können, finden Sie [hier](cluster-resource-manager-subclustering.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
