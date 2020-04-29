@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/28/2020
+ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804757"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231304"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -28,9 +28,7 @@ Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuelle
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
-```json
-extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
-```
+`extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
 
@@ -108,9 +106,7 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 
 ## <a name="list"></a>list*
 
-```json
-list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
-```
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
 Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys` und `listSecrets` verwendet.
 
@@ -356,9 +352,7 @@ Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die A
 
 ## <a name="providers"></a>providers
 
-```json
-providers(providerNamespace, [resourceType])
-```
+`providers(providerNamespace, [resourceType])`
 
 Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Ressourcentypen zurück. Wenn Sie keinen Ressourcentyp angeben, gibt die Funktion alle unterstützten Typen für den Ressourcenanbieter zurück.
 
@@ -433,9 +427,7 @@ Für den Ressourcenanbieter **Microsoft.Web** und den Ressourcentyp **sites** wi
 
 ## <a name="reference"></a>Referenz
 
-```json
-reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
-```
+`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
@@ -670,9 +662,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-```json
-resourceGroup()
-```
+`resourceGroup()`
 
 Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt.
 
@@ -750,9 +740,7 @@ Im vorherigen Beispiel wird ein Objekt im folgenden Format zurückgegeben:
 
 ## <a name="resourceid"></a>resourceId
 
-```json
-resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
-```
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Das Format des zurückgegebenen Bezeichners variiert abhängig davon, ob die Bereitstellung im Bereich einer Ressourcengruppe, eines Abonnements, einer Verwaltungsgruppe oder eines Mandanten erfolgt.
 
@@ -907,9 +895,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="subscription"></a>Abonnement
 
-```json
-subscription()
-```
+`subscription()`
 
 Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück.
 
@@ -950,9 +936,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ## <a name="subscriptionresourceid"></a>subscriptionResourceId
 
-```json
-subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
-```
+`subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnementebene bereitgestellt wird.
 
@@ -1034,9 +1018,7 @@ Mit der folgenden Vorlage wird eine integrierte Rolle zugewiesen. Sie können di
 
 ## <a name="tenantresourceid"></a>tenantResourceId
 
-```json
-tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
-```
+`tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandantenebene bereitgestellt wird.
 
