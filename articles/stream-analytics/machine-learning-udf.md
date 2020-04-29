@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 354b0eae1620c49006b350371aae38f8867c18b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124669"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481972"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie ein Machine Learning-Modell al
 
 3. Stellen Sie sicher, dass Ihr Webdienst serialisierte JSON-Daten akzeptiert und zurückgibt.
 
-4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt.
+4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt. In Azure Container Instances bereitgestellte Modelle werden zurzeit nicht unterstützt, dies wird aber in den kommenden Monaten verfügbar sein.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Hinzufügen eines Machine Learning-Modells zu Ihrem Auftrag
 

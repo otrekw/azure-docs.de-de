@@ -8,20 +8,20 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 6f5d2dc30ac0f6316587fa0836b87cbd4efc0a8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773693"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678618"
 ---
-Das PowerShell-Cmdlet **Get-AzPeeringLocation** gibt mit dem obligatorischen Parameter `Kind` eine Liste der Peeringstandorte zurück, die Sie in späteren Schritten verwenden:
+Das PowerShell-Cmdlet **Get-AzPeeringLocation** gibt mit dem obligatorischen Parameter `Kind` eine Liste der Peeringstandorte zurück, die Sie in späteren Schritten verwenden.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-Exchange Peering-Standorte enthalten die folgenden Felder:
+Exchange-Peeringstandorte enthalten die folgenden Felder:
 * ExchangeName
 * PeeringLocation
 * Country
@@ -32,7 +32,7 @@ Exchange Peering-Standorte enthalten die folgenden Felder:
 
 Überprüfen Sie anhand von [PeeringDB](https://wwww.peeringdb.com), ob Sie in der gewünschten Peeringeinrichtung vorhanden sind.
 
-Unten sehen Sie ein Beispiel, das zeigt, wie Sie Seattle als Peeringstandort zum Erstellen eines Peerings verwenden:
+In diesem Beispiel wird gezeigt, wie Sie Seattle als Peeringstandort zum Erstellen eines Peerings verwenden.
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

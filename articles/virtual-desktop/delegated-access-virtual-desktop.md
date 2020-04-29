@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128038"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683914"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegierter Zugriff in Windows Virtual Desktop
 
@@ -37,8 +37,8 @@ Beim delegierten Zugriff von Windows Virtual Desktop werden für jedes Element d
 Der delegierte Zugriff in Windows Virtual Desktop verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern und Dienstprinzipalen zuweisen können.
 
 * RDS-Besitzer können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
-* RDS-Mitwirkende können alles mit Ausnahme des Zugriffs auf Ressourcen verwalten.
-* RDS-Leser können alles anzeigen, aber keine Änderungen vornehmen.
+* RDS-Mitwirkende können alles verwalten, haben jedoch keinen Zugriff auf Ressourcen.
+* RDS-Leser können alles anzeigen, jedoch keine Änderungen vornehmen.
 * RDS-Bediener können Diagnoseaktivitäten anzeigen.
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>PowerShell-Cmdlets für Rollenzuweisungen

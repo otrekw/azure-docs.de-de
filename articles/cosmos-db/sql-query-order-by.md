@@ -4,18 +4,18 @@ description: Erfahren Sie mehr über die ORDER BY-Klausel von SQL für Azure Cos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188729"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641394"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-Klausel in Azure Cosmos DB
 
-Die optionale ORDER BY-Klausel gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an.
+Die optionale `ORDER BY`-Klausel gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an.
 
 ## <a name="syntax"></a>Syntax
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    Gibt eine Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll. Eine Sortierspalte kann als Name oder Eigenschaftenalias angegeben werden.  
   
-   Mehrere Eigenschaften können angegeben werden. Namen von Eigenschaften müssen eindeutig sein. Die Sequenz der Sortiereigenschaften in der ORDER BY-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
+   Mehrere Eigenschaften können angegeben werden. Namen von Eigenschaften müssen eindeutig sein. Die Sequenz der Sortiereigenschaften in der `ORDER BY`-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
   
-   Die Eigenschaftennamen, auf die in der ORDER BY-Klausel verwiesen wird, müssen entweder einer Eigenschaft in der Auswahlliste oder einer Eigenschaft entsprechen, die in der Sammlung definiert ist, die in der FROM-Klausel eindeutig angegeben ist.  
+   Die Eigenschaftennamen, auf die in der `ORDER BY`-Klausel verwiesen wird, müssen entweder einer Eigenschaft in der Auswahlliste oder einer Eigenschaft entsprechen, die in der Sammlung definiert ist, die in der `FROM`-Klausel eindeutig angegeben ist.  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Gibt an, dass die Werte in der angegebenen Spalte in aufsteigender oder absteigender Reihenfolge sortiert werden sollen. ASC sortiert vom niedrigsten Wert zum höchsten Wert. DESC sortiert vom höchsten Wert zum niedrigsten Wert. ASC ist die Standardsortierreihenfolge. NULL-Werte werden als die niedrigsten Werte behandelt, die möglich sind.  
+   Gibt an, dass die Werte in der angegebenen Spalte in aufsteigender oder absteigender Reihenfolge sortiert werden sollen. `ASC` sortiert vom niedrigsten Wert zum höchsten Wert. `DESC` sortiert vom höchsten Wert zum niedrigsten Wert. `ASC` ist die Standardsortierreihenfolge. NULL-Werte werden als die niedrigsten Werte behandelt, die möglich sind.  
   
 ## <a name="remarks"></a>Bemerkungen  
   
@@ -152,7 +152,7 @@ Die Ergebnisse enthalten nur das Dokument, für das der `lastName` definiert ist
     ]
 ```
 
-Wenn wir die Indizierungsrichtlinie des Containers so aktualisieren, das ein Pfad für `lastName` explizit eingeschlossen wird, nehmen wir Dokumente mit einer nicht definierten Sortiereigenschaft in die Abfrageergebnisse auf. Sie müssen den Pfad explizit definieren, um zu diesem skalaren Wert zu gelangen (und nicht darüber hinaus). Sie sollten das Zeichen `?` in Ihrer Pfaddefinition in der Indizierungsrichtlinie verwenden, um sicherzustellen, dass Sie die Eigenschaften `lastName` explizit indizieren und keine darüber hinausgehenden geschachtelten Pfade.
+Wenn wir die Indizierungsrichtlinie des Containers so aktualisieren, das ein Pfad für `lastName` explizit eingeschlossen wird, nehmen wir Dokumente mit einer nicht definierten Sortiereigenschaft in die Abfrageergebnisse auf. Sie müssen den Pfad explizit definieren, um zu diesem skalaren Wert zu gelangen (und nicht darüber hinaus). Sie sollten das Zeichen `?` in Ihrer Pfaddefinition in der Indizierungsrichtlinie verwenden, um sicherzustellen, dass Sie die Eigenschaften `lastName` explizit indizieren und keine darüber hinausgehenden geschachtelten Pfade. Wenn in der `Order By`-Abfrage ein [zusammengesetzter Index](index-policy.md#composite-indexes) verwendet wird, enthalten die Ergebnisse immer Dokumente mit einer nicht definierten Sortiereigenschaft in den Abfrageergebnissen.
 
 Im Folgenden finden Sie eine Beispielindizierungsrichtlinie, die gestattet, dass Dokumente ohne definierten `lastName` in den Abfrageergebnissen angezeigt werden:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e6eafc4e2f6ae4a0cf1d99cb63bfed53db77f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029153"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461872"
 ---
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -38,7 +38,7 @@ Eine [Netzwerkschnittstelle (NIC)](../articles/virtual-network/virtual-network-n
 
 Sie können eine VM mit mehreren Netzwerkkarten erstellen und über den Lebenszyklus einer VM hinweg Netzwerkkarten hinzufügen oder entfernen. Bei mehreren Netzwerkkarten kann eine VM eine Verbindung mit verschiedenen Subnetzen herstellen und Datenverkehr über die am besten geeignete Schnittstelle senden oder empfangen. In einer Verfügbarkeitsgruppe können VMs mit bis zu der von der VM-Größe unterstützten Anzahl von Netzwerkschnittstellen vertreten sein. 
 
-Jede NIC, die an eine VM angefügt ist, muss sich an demselben Standort und unter demselben Abonnement wie die VM befinden. Jede NIC muss mit einem VNET verbunden werden, das in derselben Azure-Region und unter demselben Abonnement wie die NIC vorhanden ist. Sie können das Subnetz, mit dem eine VM verbunden ist, nach der Erstellung ändern, aber eine Änderung des VNet ist nicht möglich. Jeder NIC, die an eine VM angefügt ist, wird eine MAC-Adresse zugewiesen, die sich nicht ändert, bis die VM gelöscht wird.
+Jede NIC, die an eine VM angefügt ist, muss sich an demselben Standort und unter demselben Abonnement wie die VM befinden. Jede NIC muss mit einem VNET verbunden werden, das in derselben Azure-Region und unter demselben Abonnement wie die NIC vorhanden ist. Sie können das Subnetz, mit dem eine VM verbunden ist, nach der Erstellung ändern, aber eine Änderung des VNet ist nicht möglich. Jeder NIC, die an eine VM angefügt ist, wird eine MAC-Adresse zugewiesen, die unverändert bleibt, bis die VM gelöscht wird.
 
 In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Netzwerkschnittstelle verwenden können.
 
@@ -83,13 +83,13 @@ Wenn Sie in einer Organisation arbeiten, in der eine andere Person als Sie für 
 
 Standardmäßig besteht keine Sicherheitsgrenze zwischen Subnetzen, sodass VMs in diesen Subnetzen miteinander kommunizieren können. Sie können aber Netzwerksicherheitsgruppen (NSGs) einrichten, mit denen Sie den Datenverkehrsfluss für Subnetze und VMs in eingehender und ausgehender Richtung steuern können. 
 
-In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines VNet und von Subnetzen verwenden können. 
+In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines VNet und von Subnetzen verwenden können.    
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
 | [Azure portal](../articles/virtual-network/quick-create-portal.md) | Wenn Sie bei der Erstellung einer VM zulassen, dass von Azure ein VNet erstellt wird, ist der Name eine Kombination aus dem Namen der Ressourcengruppe, die das VNet enthält, und dem Zusatz **-vnet**. Der Adressraum ist 10.0.0.0/24, der erforderliche Subnetzname lautet **default**, und der Adressbereich des Subnetzes ist 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | Sie verwenden [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) und [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork), um ein Subnetz und ein VNET zu erstellen. Sie können auch [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) verwenden, um ein Subnetz in einem vorhandenen VNET hinzuzufügen. |
-| [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/quick-create-cli.md) | Das Subnetz und das VNet werden gleichzeitig erstellt. Geben Sie für **az network vnet create** den Parameter [--subnet-name](https://docs.microsoft.com/cli/azure/network/vnet) mit dem Subnetznamen an. |
+| [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/quick-create-cli.md) | Das Subnetz und das VNet werden gleichzeitig erstellt. Geben Sie für [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) den Parameter **--subnet-name** mit dem Subnetznamen an. |
 | Vorlage | Die einfachste Möglichkeit zum Erstellen eines VNet und von Subnetzen ist das Herunterladen einer vorhandenen Vorlage, z.B. [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets) (Virtuelles Netzwerk mit zwei Subnetzen), und die anschließende Anpassung gemäß Ihren Anforderungen. |
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
@@ -121,11 +121,12 @@ Der Lastenausgleich ordnet eingehenden und ausgehenden Datenverkehr zwischen der
 
 Beim Erstellen eines Lastenausgleichs müssen Sie auch die folgenden Konfigurationselemente berücksichtigen:
 
-- **Front-End-IP-Konfiguration** – Ein Lastenausgleichsmodul kann eine oder mehrere Front-End-IP-Adressen umfassen, die auch als virtuelle IPs (VIPs) bezeichnet werden. Diese IP-Adressen dienen als Eingang für den Datenverkehr.
+- **Front-End-IP-Konfiguration**: Ein Lastenausgleichsmodul kann eine oder mehrere Front-End-IP-Adressen umfassen. Diese IP-Adressen dienen als Eingang für den Datenverkehr.
 - **Back-End-Adresspool**: IP-Adressen, die der NIC zugeordnet sind, auf die die Last verteilt wird.
-- **NAT-Regeln**: Definieren, wie eingehender Datenverkehr über die Front-End-IP verläuft und an die Back-End-IP verteilt wird.
+- **[Portweiterleitung](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)** : Definiert mithilfe von NAT-Regeln für eingehenden Datenverkehr, wie eingehender Datenverkehr durch die Front-End-IP-Adressen geleitet und an die Back-End-IP-Adressen verteilt wird.
 - **Lastenausgleichsregeln**: Dienen zum Zuordnen einer bestimmten Front-End-IP-/Port-Kombination zu einer Back-End-IP-Adressen-/Port-Kombination. Ein einzelnes Lastenausgleichsmodul kann mehrere Lastenausgleichsregeln umfassen. Jede Regel ist eine Kombination aus der Front-End-IP und dem Front-End-Port sowie der Back-End-IP und dem Back-End-Port von virtuellen Computern.
 - **[Tests](../articles/load-balancer/load-balancer-custom-probe-overview.md)** : Dienen zum Überwachen der Integrität von VMs. Wenn ein Test nicht reagiert, beendet der Lastenausgleich das Senden neuer Verbindungen an die fehlerhafte VM. Die vorhandenen Verbindungen sind nicht betroffen, und neue Verbindungen werden an fehlerfreie VMs gesendet.
+- **[Ausgangsregeln](../articles/load-balancer/load-balancer-outbound-rules-overview.md)** : Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool Ihrer Load Balancer Standard-Instanz für die Front-End-Übersetzung identifiziert wurden.
 
 In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines Lastenausgleichs für den Internetzugriff verwenden können.
 
@@ -140,10 +141,14 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines int
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| Azure-Portal | Sie können die [interne Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal ausgleichen](../articles/load-balancer/tutorial-load-balancer-basic-internal-portal.md). |
+| Azure-Portal | Sie können die [interne Datenverkehrslast mithilfe eines Lastenausgleichsmoduls im Azure-Portal ausgleichen](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | Verwenden Sie zum Angeben einer privaten IP-Adresse im Netzwerksubnetz [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) mit dem Parameter **-PrivateIpAddress**. Verwenden Sie [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig), um die Konfiguration des Back-End-Adresspools zu erstellen. Verwenden Sie [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig), um NAT-Regeln für den eingehenden Datenverkehr zu erstellen, die der von Ihnen erstellten Front-End-IP-Konfiguration zugeordnet sind. Verwenden Sie [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig), um die erforderlichen Tests zu erstellen. Verwenden Sie [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig), um die Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer), um den Lastenausgleich zu erstellen.|
 | [Azure-Befehlszeilenschnittstelle](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Verwenden Sie den Befehl [az network lb create](https://docs.microsoft.com/cli/azure/network/lb), um die erste Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie zum Definieren der privaten IP-Adresse [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) mit dem Parameter **--private-ip-address**. Verwenden Sie [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool), um die Konfiguration des Back-End-Adresspools hinzuzufügen. Verwenden Sie [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule), um NAT-Regeln hinzuzufügen. Verwenden Sie [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule), um die Lastenausgleichsregeln hinzuzufügen. Verwenden Sie [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe), um die Tests hinzuzufügen.|
 | [Vorlage](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md) | Verwenden Sie [2 VMs in a Load Balancer and configure NAT rules on the LB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) (Zwei VMs in einem Load Balancer und Konfiguration von NAT-Regeln für den LB) als Anleitung zum Bereitstellen eines Lastenausgleichs mit einer Vorlage. |
+
+### <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
+
+Weitere Informationen zu Lastenausgleich und VM-Skalierungsgruppen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking).
 
 ## <a name="vms"></a>VMs
 

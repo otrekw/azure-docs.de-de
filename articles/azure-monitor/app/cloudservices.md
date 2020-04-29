@@ -4,10 +4,10 @@ description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application 
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537592"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services

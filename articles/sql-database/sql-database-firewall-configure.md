@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531276"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606092"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ Wenn ein Computer versucht, über das Internet eine Verbindung mit dem Datenbank
 
 ### <a name="connections-from-inside-azure"></a>Verbindungen aus Azure
 
-Wenn Sie in Azure gehosteten Anwendungen die Verbindungsherstellung mit Ihrer SQL Server-Instanz ermöglichen möchten, müssen Azure-Verbindungen aktiviert sein. Wenn eine Anwendung in Azure versucht, eine Verbindung mit Ihrem Datenbankserver herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind. Eine Firewalleinstellung, bei der die Start- und Endadresse den Wert *0.0.0.0* besitzt, gibt an, dass Azure-Verbindungen zulässig sind. Dies kann direkt über das Azure-Portalblatt aktiviert werden, indem Sie Firewallregeln und die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** in den Einstellungen **Firewalls und virtuelle Netzwerke** festlegen. Ist die Verbindung nicht zulässig, erreicht die Anforderung den SQL-Datenbank-Server nicht.
+Wenn Sie in Azure gehosteten Anwendungen die Verbindungsherstellung mit Ihrer SQL Server-Instanz ermöglichen möchten, müssen Azure-Verbindungen aktiviert sein. Wenn eine Anwendung in Azure versucht, eine Verbindung mit Ihrem Datenbankserver herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind. Dies kann direkt über das Azure-Portalblatt aktiviert werden, indem Sie Firewallregeln und die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** in den Einstellungen **Firewalls und virtuelle Netzwerke** festlegen. Ist die Verbindung nicht zulässig, erreicht die Anforderung den SQL-Datenbank-Server nicht.
 
 > [!IMPORTANT]
 > Diese Option konfiguriert die Firewall so, dass alle von Azure ausgehenden Verbindungen zugelassen werden (einschließlich Verbindungen von den Abonnements anderer Kunden). Stellen Sie bei Verwendung dieser Option sicher, dass Ihre Anmelde- und Benutzerberechtigungen den Zugriff auf autorisierte Benutzer beschränken.

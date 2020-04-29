@@ -1,38 +1,66 @@
 ---
-title: 'Mapping Data Flow: Transformation zum Sortieren'
+title: Transformation zum Sortieren in einem Zuordnungsdatenfluss
 description: 'Azure Data Factory Mapping-Daten: Transformation zum Sortieren'
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/08/2018
-ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930223"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606335"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory-Datenfluss: Transformationen zum Sortieren
+# <a name="sort-transformation-in-mapping-data-flow"></a>Transformation zum Sortieren in einem Zuordnungsdatenfluss
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+Mit der Transformation zum Sortieren können Sie die eingehenden Zeilen im aktuellen Datenstrom sortieren. Sie können einzelne Spalten auswählen und in aufsteigender oder absteigender Reihenfolge sortieren.
+
+> [!NOTE]
+> Zuordnungsdatenflüsse werden auf Spark-Clustern ausgeführt, die Daten auf mehrere Knoten und Partitionen verteilen. Wenn Sie Ihre Daten in einer nachfolgenden Transformation neu partitionieren möchten, geht Ihre Sortierung möglicherweise aufgrund dieser Umverteilung von Daten verloren.
+
+## <a name="configuration"></a>Konfiguration
 
 ![Sortiereinstellungen](media/data-flow/sort.png "Sortieren")
 
-Mit der Transformation zum Sortieren können Sie die eingehenden Zeilen im aktuellen Datenstrom sortieren. Die ausgehenden Zeilen aus der Transformation zum Sortieren folgen anschließend den von Ihnen festgelegten Sortierregeln. Sie können einzelne Spalten auswählen und mithilfe des Pfeilindikators neben jedem Feld auf- oder absteigend sortieren. Wenn Sie eine Spalte vor dem Anwenden der Sortierung ändern müssen, klicken Sie auf „Berechnete Spalten“, um den Ausdrucks-Editor zu starten. Sie haben dann die Möglichkeit, einen Ausdruck für den Sortiervorgang zu erstellen, statt einfach eine Spalte für die Sortierung anzuwenden.
+**Keine Beachtung von Groß-/Kleinschreibung**: Legen Sie fest, ob die Groß-/Kleinschreibung beim Sortieren von Zeichenfolgen- oder Textfeldern ignoriert werden soll.
 
-## <a name="case-insensitive"></a>Groß-/Kleinschreibung nicht beachten
-Sie können „Groß-/Kleinschreibung nicht beachten“ aktivieren, wenn die Groß-/Kleinschreibung beim Sortieren von Zeichenfolgen- oder Textfeldern ignoriert werden soll.
+**Nur innerhalb von Partitionen sortieren**: Wenn Datenflüsse auf Spark ausgeführt werden, wird jeder Datenfluss in Partitionen unterteilt. Mit dieser Einstellung werden Daten nur innerhalb der eingehenden Partitionen und nicht im gesamten Datenstrom sortiert. 
 
-Die Option „Nur innerhalb von Partitionen sortieren“ nutzt die Spark-Datenpartitionierung. Durch die Sortierung eingehender Daten nur in jeder Partition können Datenflüsse partitionierte Daten sortieren, statt den gesamten Datenstrom zu sortieren.
+**Sortierbedingungen**: Wählen Sie aus, welche Spalten sortiert werden sollen und in welcher Reihenfolge die Sortierung erfolgt. Die Reihenfolge bestimmt die Sortierpriorität. Legen Sie fest, ob Nullen am Anfang und Ende des Datenstroms gezeigt werden.
 
-Jede Sortierbedingung in der Transformation zum Sortieren kann neu angeordnet werden. Wenn Sie also eine Spalte in der Sortierreihenfolge weiter nach oben verschieben müssen, ziehen Sie diese Zeile mit der Maus, und verschieben Sie die Zeile in der Sortierliste nach oben oder unten.
+### <a name="computed-columns"></a>Berechnete Spalten
 
-Die Partitionierung hat Auswirkungen auf die Sortierung
+Um einen Spaltenwert vor der Sortierung zu ändern oder zu extrahieren, zeigen Sie auf die Spalte und wählen „Berechnete Spalte“ aus. Dadurch wird für die Sortierung kein Spaltenwert verwendet, sondern der Ausdrucks-Generator geöffnet, um einen Ausdruck für den Sortiervorgang zu erstellen.
 
-ADF-Datenfluss wird für Spark-Big-Data-Cluster ausgeführt, deren Daten auf mehrere Knoten und Partitionen verteilt sind. Es ist wichtig, dass Sie dies beim Entwerfen Ihres Datenflusses beachten, wenn die Transformation zum Sortieren verwendet werden soll, um die Datensortierreihenfolge beizubehalten. Wenn Sie Ihre Daten in einer nachfolgenden Transformation neu partitionieren möchten, geht Ihre Sortierung möglicherweise aufgrund dieser Umverteilung von Daten verloren.
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream>
+    sort(
+        desc(<sortColumn1>, { true | false }),
+        asc(<sortColumn2>, { true | false }),
+        ...
+    ) ~> <sortTransformationName<>
+```
+
+### <a name="example"></a>Beispiel
+
+![Sortiereinstellungen](media/data-flow/sort.png "Sortieren")
+
+Der nachfolgende Codeausschnitt zeigt das Datenflussskript für die obige Konfiguration der Sortierung.
+
+```
+BasketballStats sort(desc(PTS, true),
+    asc(Age, true)) ~> Sort1
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

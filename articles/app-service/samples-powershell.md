@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74687024"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532424"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-Beispiele für Azure App Service
 
@@ -27,7 +27,7 @@ Die folgende Tabelle enthält Links zu PowerShell-Skripts, die mithilfe von Azur
 | [Erstellen einer App und Bereitstellen von Code in einer Stagingumgebung](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine App Service-App mit einem Bereitstellungsslot für Änderungen am Stagingcode. |
 |**Konfigurieren der App**||
 | [Zuordnen einer benutzerdefinierten Domäne zu einer App](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine App Service-App und ordnet ihr einen benutzerdefinierten Domänennamen zu. |
-| [Binden eines benutzerdefinierten SSL-Zertifikats an eine App](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine App Service-App und bindet das SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |
+| [Binden eines benutzerdefinierten TLS-/SSL-Zertifikats an eine App](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine App Service-App und bindet das TLS-/SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |
 |**Skalieren der App**||
 | [Manuelles Skalieren einer App](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine App Service-App und skaliert sie über zwei Instanzen. |
 | [Weltweites Skalieren einer App mit einer Hochverfügbarkeitsarchitektur](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt zwei App Service-Apps in zwei verschiedenen geografischen Regionen und macht sie mithilfe von Azure Traffic Manager über einen zentralen Endpunkt verfügbar. |

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230762"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680071"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -243,19 +243,25 @@ Anhand dieses Beispiels können Sie eine Richtlinie erstellen, die es den Benutz
         }')
         ```
 
-    2. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:
+    1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
+    1. Führen Sie den folgenden Befehl aus, um alle Leerzeichen zu entfernen:
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Aktualisieren Sie die Richtlinie.
+1. Aktualisieren Sie die Richtlinie.
 
     Unter Umständen möchten Sie erreichen, dass die erste Richtlinie, die Sie in diesem Beispiel festlegen, nicht so streng ist, wie es für den Dienst eigentlich erforderlich ist. Führen Sie den folgenden Befehl aus, um für Ihr Single-Factor-Aktualisierungstoken festzulegen, dass es nach zwei Tagen abläuft:
 
@@ -277,13 +283,13 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, d
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
+    1. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab.
+1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab.
 
     1. Verwenden Sie das Cmdlet [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal), um alle Dienstprinzipale Ihrer Organisation oder einen einzelnen Dienstprinzipal anzuzeigen.
         ```powershell
@@ -291,7 +297,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, d
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. Führen Sie den folgenden Befehl aus, wenn Sie den Dienstprinzipal gefunden haben:
+    1. Führen Sie den folgenden Befehl aus, wenn Sie den Dienstprinzipal gefunden haben:
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der sich Benutzer weniger 
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie abzurufen:
+    1. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie abzurufen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Weisen Sie die Richtlinie Ihrer Web-API zu. Außerdem müssen Sie die **ObjectId** Ihrer Anwendung abrufen. Verwenden Sie das Cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) oder das [Azure-Portal](https://portal.azure.com/), um die **ObjectId** Ihrer App zu finden.
+1. Weisen Sie die Richtlinie Ihrer Web-API zu. Außerdem müssen Sie die **ObjectId** Ihrer Anwendung abrufen. Verwenden Sie das Cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) oder das [Azure-Portal](https://portal.azure.com/), um die **ObjectId** Ihrer App zu finden.
 
     Rufen Sie wie im folgenden Codebeispiel die **ObjectId** Ihrer App ab, und weisen Sie die Richtlinie zu:
 
@@ -337,19 +343,19 @@ Anhand dieses Beispiels können Sie einige Richtlinien erstellen, um zu erfahren
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie abzurufen:
+    1. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie abzurufen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Weisen Sie die Richtlinie einem Dienstprinzipal zu.
+1. Weisen Sie die Richtlinie einem Dienstprinzipal zu.
 
     Sie verfügen jetzt über eine Richtlinie, die für die gesamte Organisation gilt. Es kann beispielsweise sein, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, während die Organisationsstandardrichtlinie so geändert wird, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert.
 
     1. Verwenden Sie das Cmdlet [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal), um alle Dienstprinzipale Ihrer Organisation abzurufen.
 
-    2. Führen Sie den folgenden Befehl aus, wenn Sie den Dienstprinzipal gefunden haben:
+    1. Führen Sie den folgenden Befehl aus, wenn Sie den Dienstprinzipal gefunden haben:
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ Anhand dieses Beispiels können Sie einige Richtlinien erstellen, um zu erfahren
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. Legen Sie das Flag `IsOrganizationDefault` auf „false“ fest:
+1. Legen Sie das Flag `IsOrganizationDefault` auf „false“ fest:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. Erstellen Sie eine neue Organisationsstandardrichtlinie:
+1. Erstellen Sie eine neue Organisationsstandardrichtlinie:
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

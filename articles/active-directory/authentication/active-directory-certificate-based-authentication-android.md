@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654382"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680209"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
 
@@ -66,7 +66,7 @@ Als bewährte Methode sollten Sie die AD FS-Fehlerseiten Ihrer Organisation mit 
 
 Weitere Informationen finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https://technet.microsoft.com/library/dn280950.aspx).
 
-Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden '*prompt=login*' in der Anforderung an Azure AD. Azure AD übersetzt '*prompt=login*' in der Anforderung an AD FS standardmäßig in '*wauth=usernamepassworduri*' (fordert ADFS zum Durchführen der U/P-Authentifizierung auf) und '*wfresh=0*' (fordert ADFS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach '*PromptLoginBehavior*' in den Einstellungen der Verbunddomäne auf '*Deaktiviert*' fest.
+Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden *prompt=login* in der Anforderung an Azure AD. Azure AD übersetzt *prompt=login* in der Anforderung an AD FS standardmäßig in *wauth=usernamepassworduri* (fordert ADFS zum Durchführen der U/P-Authentifizierung auf) und *wfresh=0* (fordert ADFS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach '*PromptLoginBehavior*' in den Einstellungen der Verbunddomäne auf '*Deaktiviert*' fest.
 Für diese Aufgabe können Sie das Cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) verwenden:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

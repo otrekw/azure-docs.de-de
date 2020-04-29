@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f2d7f1725623dcc031f3c2b36bacd6dbc9ad339d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519306"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639953"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz mit erweiterten Konfigurationsoptionen
 
@@ -207,7 +207,7 @@ Zum Generieren und Speichern dieser Kennworthashes müssen für in Azure AD ers
 > [!TIP]
 > Wenn Ihr Azure AD-Mandant über eine Kombination aus reinen Cloudbenutzern und Benutzern aus Ihrem lokalen Active Directory verfügt, müssen beide Prozeduren durchgeführt werden.
 
-Bei reinen Cloudbenutzerkonten müssen Benutzer ihre Kennwörter ändern, bevor sie Azure AD DS verwenden können. Diese Kennwortänderung führt dazu, dass die Kennworthashes für die Kerberos- und NTLM-Authentifizierung in Azure AD generiert und gespeichert werden. Sie können die Kennwörter für alle Benutzer im Mandanten, die Azure AD DS verwenden müssen, als „abgelaufen“ markieren, wodurch bei der nächsten Anmeldung eine Kennwortänderung erzwungen wird. Alternativ dazu können Sie diese Benutzer anweisen, ihre Kennwörter manuell zu ändern. In diesem Tutorial ändern wir ein Benutzerkennwort manuell.
+Bei reinen Cloudbenutzerkonten müssen Benutzer ihre Kennwörter ändern, bevor sie Azure AD DS verwenden können. Diese Kennwortänderung führt dazu, dass die Kennworthashes für die Kerberos- und NTLM-Authentifizierung in Azure AD generiert und gespeichert werden. Das Konto wird erst von Azure AD mit Azure AD DS synchronisiert, wenn das Kennwort geändert wurde. Markieren Sie die Kennwörter für alle Cloudbenutzer im Mandanten, die Azure AD DS verwenden müssen, als „abgelaufen“, wodurch bei der nächsten Anmeldung eine Kennwortänderung erzwungen wird. Alternativ dazu können Sie Cloudbenutzer anweisen, ihre Kennwörter manuell zu ändern. In diesem Tutorial ändern wir ein Benutzerkennwort manuell.
 
 Bevor ein Benutzer sein Kennwort zurücksetzen kann, muss der Azure AD-Mandant für die [Self-Service-Kennwortzurücksetzung konfiguriert][configure-sspr] werden.
 

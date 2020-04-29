@@ -2,18 +2,18 @@
 title: Vorbereiten von Hyper-V-VMs für die Bewertung/Migration mit Azure Migrate
 description: Es wird beschrieben, wie Sie die Bewertung/Migration von Hyper-V-VMs mit Azure Migrate vorbereiten.
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436224"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641633"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Vorbereiten auf die Bewertung und Migration von virtuellen Hyper-V-Computern zu Azure
 
-In diesem Artikel wird beschrieben, wie Sie die Bewertung lokaler Hyper-V-VMs mit der Azure Migrate-Serverbewertung(migrate-services-overview.md#azure-migrate-server-assessment-tool) sowie die Migration von Hyper-V-VMs mit der [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) vorbereiten.
+In diesem Artikel wird beschrieben, wie Sie die Bewertung lokaler Hyper-V-VMs mit der [Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) und die Migration von Hyper-V-VMs mit der [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) vorbereiten.
 
 
 Dieses Tutorial ist das erste in einer Reihe, die Ihnen zeigt, wie Sie virtuelle Hyper-V-Computer bewerten und zu Azure migrieren. In diesem Tutorial lernen Sie Folgendes:
@@ -214,9 +214,11 @@ Beim Einrichten der Appliance schließen Sie die Einrichtung von CredSSP durch [
 Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit der Bewertung beginnen, müssen Sie die Appliance-Bereitstellung vorbereiten.
 
 1. [Überprüfen](migrate-appliance.md#appliance---hyper-v) Sie Appliance-Anforderungen.
-2. [Überprüfen](migrate-appliance.md#url-access) Sie die Azure-URLs, auf die die Appliance zugreifen muss.
+2. Überprüfen Sie die Azure-URLs, die die Appliance für den Zugriff in [öffentlichen Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) benötigt. Sollten Sie eine URL-basierte Firewall oder einen Proxy verwenden, lassen Sie unbedingt den Zugriff auf die erforderlichen URLs zu.
 3. Überprüfen Sie die Daten, die die Appliance während der Ermittlung und Bewertung sammelt.
-4. [Beachten](migrate-appliance.md#collected-data---hyper-v) Sie die Portzugriffsanforderungen für die Appliance.
+4. [Überprüfen](migrate-appliance.md#collected-data---hyper-v) Sie die Portzugriffsanforderungen für die Appliance.
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Vorbereiten der Hyper-V-Migration

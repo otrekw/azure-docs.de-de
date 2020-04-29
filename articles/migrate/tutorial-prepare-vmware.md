@@ -2,14 +2,14 @@
 title: Vorbereiten von VMware-VMs für die Bewertung/Migration mit Azure Migrate
 description: Hier erfahren Sie, wie Sie virtuelle VMware-Computer auf die Bewertung/Migration mit Azure Migrate vorbereiten.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619430"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677297"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -123,7 +123,7 @@ Azure Migrate muss auf die vCenter Server-Instanz zugreifen, um VMs für die Be
 Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit der Bewertung beginnen, müssen Sie die Appliance-Bereitstellung vorbereiten.
 
 1. [Überprüfen](migrate-appliance.md#appliance---vmware) Sie die Anforderungen für die Azure Migrate-Appliance.
-2. [Überprüfen](migrate-appliance.md#url-access) Sie die Azure-URLs, auf die die Appliance zugreifen muss. Sollten Sie eine URL-basierte Firewall oder einen Proxy verwenden, lassen Sie unbedingt den Zugriff auf die erforderlichen URLs zu.
+2. Überprüfen Sie die Azure-URLs, die die Appliance für den Zugriff in [öffentlichen Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) benötigt.
 3. [Überprüfen Sie die Daten](migrate-appliance.md#collected-data---vmware), die die Appliance während der Ermittlung und Bewertung sammelt.
 4. [Beachten](migrate-support-matrix-vmware.md#port-access) Sie die Portzugriffsanforderungen für die Appliance.
 
@@ -138,7 +138,8 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 2. [Überprüfen Sie die Berechtigungen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers), die Azure Migrate für den Zugriff auf vCenter Server benötigt.
 3. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) Sie die Anforderungen für VMware-VMs.
 4. [Überprüfen](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) Sie die Anforderungen für die Azure Migrate-Appliance.
-5. Beachten Sie die Anforderungen für den [URL-Zugriff](migrate-appliance.md#url-access) und [Portzugriff](migrate-support-matrix-vmware-migration.md#agentless-ports).
+5. Berücksichtigen Sie den erforderlichen URL-Zugriff für [öffentliche Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls).
+6. Überprüfen Sie die [Portzugriffsanforderungen](migrate-support-matrix-vmware-migration.md#agentless-ports).
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Vorbereiten der Agent-basierten VMware-Migration
 
@@ -150,7 +151,8 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 3. Bei der Migration mit Agent wird eine Replikationsappliance verwendet:
     - [Überprüfen](migrate-replication-appliance.md#appliance-requirements) Sie die Bereitstellungsanforderungen für die Replikationsappliance.
     - [Überprüfen Sie die Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
-    - Überprüfen Sie die [URL-](migrate-replication-appliance.md#url-access) und [Portzugriffsanforderungen](migrate-replication-appliance.md#port-access) für die Replikationsappliance.
+    - Berücksichtigen Sie den erforderlichen URL-Zugriff für [öffentliche Clouds](migrate-replication-appliance.md#url-access) und [Azure Government-Clouds](migrate-replication-appliance.md#azure-government-url-access).
+    - Überprüfen Sie die [Portzugriffsanforderungen](migrate-replication-appliance.md#port-access) für die Replikationsappliance.
     
 ## <a name="next-steps"></a>Nächste Schritte
 

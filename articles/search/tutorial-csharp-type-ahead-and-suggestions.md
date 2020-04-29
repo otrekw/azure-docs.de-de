@@ -1,23 +1,23 @@
 ---
-title: C#-Tutorial zu AutoVervollständigen und Vorschlägen
+title: AutoVervollständigen und Vorschläge
 titleSuffix: Azure Cognitive Search
 description: In diesem Tutorial wird veranschaulicht, wie Sie mit AutoVervollständigen und Vorschlägen die Suchbegriffeingaben von Benutzern per Dropdownliste erfassen. Es basiert auf einem vorhandenen „hotels“-Projekt.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121534"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641069"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Cognitive Search
 
-Es wird beschrieben, wie Sie die AutoVervollständigen-Funktion (Textvervollständigung und Vorschläge) implementieren, die genutzt wird, wenn ein Benutzer mit der Eingabe in Ihrem Suchfeld beginnt. In diesem Tutorial veranschaulichen wir die Ergebnisse der Textvervollständigung und Vorschläge separat. Anschließend zeigen wir ein Verfahren, wie dies kombiniert werden kann, um eine höhere Benutzerfreundlichkeit zu erzielen. Ein Benutzer muss ggf. nur zwei oder drei Eingaben vornehmen, um alle verfügbaren Ergebnisse zu ermitteln. Dieses Tutorial baut auf dem Projekt auf, das unter [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) zum unendlichen Scrollen erstellt wurde.
+Es wird beschrieben, wie Sie die AutoVervollständigen-Funktion (Textvervollständigung und vorgeschlagene Dokumente) implementieren, die genutzt wird, wenn ein Benutzer mit der Eingabe in einem Suchfeld beginnt. In diesem Tutorial veranschaulichen wir die Ergebnisse von Textvervollständigungsabfragen und Vorschlägen zunächst separat und anschließend zusammen. Ein Benutzer muss ggf. nur zwei oder drei Zeichen eingeben, um alle verfügbaren Ergebnisse zu ermitteln.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -28,23 +28,21 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Dieses Tutorial ist Teil einer Reihe und baut auf dem Projekt auf, das unter [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) erstellt wurde.
 
-Das Projekt [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, die Sie im vorherigen Tutorial erstellt haben, oder Sie können es über GitHub installieren: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Alternativ können Sie die Projektmappe für dieses spezielle Tutorial herunterladen und ausführen: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Hinzufügen von Vorschlägen
 
 Wir beginnen mit der einfachsten Möglichkeit zum Anbieten von Alternativen für den Benutzer: eine Dropdownliste mit Vorschlägen.
 
-1. Ändern Sie in der Datei „index.cshtml“ die **TextBoxFor**-Anweisung wie folgt.
+1. Ändern Sie in der Datei „index.cshtml“ das `@id`-Element der **TextBoxFor**-Anweisung in **azureautosuggest**.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    Der Schlüssel ist hierbei, dass wir die ID des Suchfelds auf **azureautosuggest** festgelegt haben.
-
-2. Geben Sie nach dieser Anweisung nach dem schließenden **&lt;/div&gt;** -Tag dieses Skript ein.
+2. Geben Sie nach dieser Anweisung nach dem schließenden **&lt;/div&gt;** -Tag dieses Skript ein. Dieses Skript nutzt das [AutoVervollständigen-Widget](https://api.jqueryui.com/autocomplete/) aus der jQuery UI-Open-Source-Bibliothek, um die Dropdownliste der vorgeschlagenen Ergebnisse darzustellen. 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ Wir beginnen mit der einfachsten Möglichkeit zum Anbieten von Alternativen für
     </script>
     ```
 
-    Wir haben dieses Skript über die gleiche ID mit dem Suchfeld verbunden. Außerdem werden mindestens zwei Zeichen benötigt, um die Suche auszulösen. Wir rufen die **Suggest**-Aktion im Home-Controller mit zwei Abfrageparametern auf: **highlights** und **fuzzy**. In diesem Fall sind beide auf „false“ festgelegt.
+    Mit der ID „azureautosuggest“ wird das oben genannte Skript mit dem Suchfeld verknüpft. Die source-Option des Widgets wird auf eine Suggest-Methode festgelegt, die die Vorschlags-API mit zwei Abfrageparametern aufruft: **highlights** und **fuzzy**. In diesem Fall werden beide auf „false“ festgelegt. Außerdem sind mindestens zwei Zeichen erforderlich, um die Suche zu initiieren.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hinzufügen von Verweisen auf jquery-Skripts zur Ansicht
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hinzufügen von Verweisen auf jQuery-Skripts zur Ansicht
 
-Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müssen wir nicht selbst schreiben. Sie ist in der jquery-Bibliothek verfügbar. 
-
-1. Ändern Sie zum Zugreifen auf die jquery-Bibliothek den Abschnitt &lt;head&gt; der Ansichtsdatei in den folgenden Code.
+1. Ändern Sie zum Zugreifen auf die jQuery-Bibliothek den Abschnitt &lt;head&gt; der Ansichtsdatei in den folgenden Code:
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
     </head>
     ```
 
-2. Wir müssen auch eine Zeile entfernen bzw. auskommentieren, mit der in der Datei „_Layout.cshtml“ auf jquery verwiesen wird (im Ordner **Views/Shared**). Suchen Sie nach den folgenden Zeilen, und kommentieren Sie wie gezeigt die erste Skriptzeile aus. Mit dieser Änderung wird vermieden, dass für Verweise auf jquery ein Konflikt auftritt.
+2. Da ein neuer jQuery-Verweis eingeführt wird, müssen Sie auch den jQuery-Standardverweis in der Datei „_Layout.cshtml“ (im Ordner **Views/Shared**) entfernen bzw. auskommentieren. Suchen Sie nach den folgenden Zeilen, und kommentieren Sie wie gezeigt die erste Skriptzeile aus. Mit dieser Änderung wird vermieden, dass für Verweise auf jQuery ein Konflikt auftritt.
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
     </environment>
     ```
 
-    Wir können nun die vordefinierten jquery-Funktionen für AutoVervollständigen verwenden.
+    Sie können nun die vordefinierten jQuery-Funktionen für AutoVervollständigen verwenden.
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>Hinzufügen der „Suggest“-Aktion zum Controller
 
@@ -114,7 +110,8 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
 
     Mit dem Parameter **Top** wird angegeben, wie viele Ergebnisse zurückgegeben werden sollen (wenn nichts angegeben ist, wird der Standardwert „5“ verwendet). Im Azure-Index wird ein _suggester_-Element (Vorschlagsfunktion) angegeben. Dies erfolgt beim Einrichten der Daten und nicht durch eine Client-App (wie in diesem Tutorial). In diesem Fall hat die Vorschlagsfunktion den Namen „sg“ und durchsucht ausschließlich das Feld **HotelName**. 
 
-    Per Fuzzyübereinstimmung können auch Ergebnisse, die nicht ganz richtig sind, in die Ausgabe einbezogen werden. Wenn der Parameter **highlights** auf „true“ festgelegt ist, werden fettgedruckte HTML-Tags der Ausgabe hinzugefügt. Wir legen diese beiden Parameter im nächsten Abschnitt auf „true“ fest.
+    Per Fuzzyübereinstimmung können auch Ergebnisse, die nicht ganz richtig sind, bis zu einer Editierdistanz in die Ausgabe einbezogen werden. Wenn der Parameter **highlights** auf „true“ festgelegt ist, werden fettgedruckte HTML-Tags der Ausgabe hinzugefügt. Wir legen diese beiden Parameter im nächsten Abschnitt auf „true“ fest.
 
 2. Unter Umständen erhalten Sie einige Syntaxfehler. Fügen Sie in diesem Fall oben in der Datei die folgenden beiden **using**-Anweisungen hinzu.
 
@@ -151,7 +148,7 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Hinzufügen der Hervorhebung für die Vorschläge
 
-Wir können die Darstellung der Vorschläge für den Benutzer etwas verbessern, indem wir den Parameter **highlights** auf „true“ festlegen. Zuerst müssen wir der Ansicht aber Code hinzufügen, um den fettgedruckten Text anzuzeigen.
+Sie können die Darstellung der Vorschläge für den Benutzer verbessern, indem Sie den Parameter **highlights** auf „true“ festlegen. Zuerst müssen wir der Ansicht aber Code hinzufügen, um den fettgedruckten Text anzuzeigen.
 
 1. Fügen Sie in der Ansicht (index.cshtml) nach dem Skript **azureautosuggest**, das Sie oben eingegeben haben, das folgende Skript hinzu.
 
@@ -194,11 +191,11 @@ Wir können die Darstellung der Vorschläge für den Benutzer etwas verbessern, 
 
 4. Die Logik, die oben im Skript für die Hervorhebung verwendet wird, ist nicht narrensicher. Wenn Sie einen Begriff eingeben, der in demselben Namen zweimal enthalten ist, sieht der Fettdruck nicht wie gewünscht aus. Versuchen Sie es mit der Eingabe von „mo“.
 
-    Entwickler müssen eine Antwort auf die Frage finden, wann ein Skript „gut genug“ funktioniert und wann darin enthaltene Fehler korrigiert werden sollten. Wir gehen in diesem Tutorial nicht weiter auf Hervorhebungen ein. Die Ermittlung eines präzisen Algorithmus ist aber ein gutes Ziel, falls Sie sich weiter mit Hervorhebungen beschäftigen möchten.
+    Entwickler müssen eine Antwort auf die Frage finden, wann ein Skript „gut genug“ funktioniert und wann darin enthaltene Fehler korrigiert werden sollten. In diesem Tutorial wird nicht weiter auf Hervorhebungen eingegangen. Die Ermittlung eines präzisen Algorithmus sollte aber ggf. in Erwägung gezogen werden, wenn Hervorhebungen für Ihre Daten nicht effektiv sind. Weitere Informationen finden Sie unter [Treffermarkierung](search-pagination-page-layout.md#hit-highlighting).
 
-## <a name="add-autocompletion"></a>Hinzufügen von AutoVervollständigen
+## <a name="add-autocomplete"></a>Hinzufügen von AutoVervollständigen
 
-Eine andere Variante, die sich leicht von Vorschlägen unterscheidet, ist AutoVervollständigen (auch als „Textvervollständigung“ bezeichnet). Wir beginnen wieder mit der einfachsten Implementierung, bevor wir die Benutzeroberfläche dann verbessern.
+Eine andere Variante, die sich leicht von Vorschlägen unterscheidet, ist AutoVervollständigen (auch als „Textvervollständigung“ bezeichnet). Mit dieser Methode wird ein Abfragebegriff vervollständigt. Sie beginnen wieder mit der einfachsten Implementierung, bevor Sie die Benutzeroberfläche dann verbessern.
 
 1. Geben Sie das folgende Skript nach Ihren vorherigen Skripts in die Ansicht ein.
 
@@ -246,7 +243,7 @@ Eine andere Variante, die sich leicht von Vorschlägen unterscheidet, ist AutoVe
 
     Beachten Sie, dass wir für die Suche mit AutoVervollständigen die gleiche *suggester*-Funktion mit dem Namen „sg“ wie für die Vorschläge verwenden (es sollen also nur die Hotelnamen automatisch vervollständigt werden).
 
-    Es sind verschiedene **AutocompleteMode**-Einstellungen vorhanden, von denen wir **OneTermWithContext** verwenden. Eine Beschreibung dieser Optionen finden Sie unter [Autocomplete (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) (AutoVervollständigen (REST-API des Azure Search-Diensts)).
+    Es sind verschiedene **AutocompleteMode**-Einstellungen vorhanden, von denen wir **OneTermWithContext** verwenden. Eine Beschreibung zusätzlicher Optionen finden Sie im Artikel zur [AutoVervollständigen-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete).
 
 4. Führen Sie die App aus. Beachten Sie, dass es sich bei den Optionen in der Dropdownliste um einzelne Wörter handelt. Versuchen Sie es mit der Eingabe von Wörtern, die mit „re“ beginnen. Sie sehen, dass sich die Anzahl von Optionen reduziert, je mehr Buchstaben Sie eingeben.
 

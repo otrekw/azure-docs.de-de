@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773653"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680765"
 ---
-Dieser Abschnitt beschreibt, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
+In diesem Abschnitt wird beschrieben, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
 
-* Hinzufügen von Direct Peering-Verbindungen
-* Entfernen von Direct Peering-Verbindungen
+* Hinzufügen von Direct-Peeringverbindungen
+* Entfernen von Direct-Peeringverbindungen
 * Upgrade oder Downgrade der Bandbreite in aktiven Verbindungen
-* Hinzufügen einer IPv4/IPv6-Sitzung in aktiven Verbindungen
-* Entfernen einer IPv4/IPv6-Sitzung aus aktiven Verbindungen
+* Hinzufügen von IPv4-/IPv6-Sitzungen in aktiven Verbindungen
+* Entfernen von IPv4-/IPv6-Sitzungen aus aktiven Verbindungen
 
 ### <a name="add-direct-peering-connections"></a>Hinzufügen von Direct Peering-Verbindungen
 
-Das folgende Beispiel beschreibt, wie Sie einem vorhandenen direkten Peering Verbindungen hinzufügen.
+Das folgende Beispiel beschreibt, wie Sie einem vorhandenen Direct-Peering Verbindungen hinzufügen.
 
 ```powershell
 
@@ -46,7 +46,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-direct-peering-connections"></a>Entfernen von Direct Peering-Verbindungen
 
-Das Entfernen einer Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft Peering-Team](mailto:peeringexperience@microsoft.com).
+Das Entfernen einer Verbindung mit PowerShell wird derzeit nicht unterstützt. Wenden Sie sich für weitere Informationen an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -58,7 +58,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Upgrade oder Downgrade der Bandbreite in aktiven Verbindungen
 
-Das folgende Beispiel beschreibt, wie Sie 10 Gbit/s zu einer vorhandenen Verbindung hinzufügen.
+Dieses Beispiel beschreibt, wie Sie einer Direct-Verbindung 10 GBit/s hinzufügen.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Hinzufügen einer IPv4/IPv6-Sitzung in aktiven Verbindungen
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>Hinzufügen von IPv4-/IPv6-Sitzungen in aktiven Verbindungen
 
-Das folgende Beispiel beschreibt, wie Sie eine IPv6-Sitzung zu einer vorhandenen direkten Verbindung hinzufügt, die nur über eine IPv4-Sitzung verfügt. 
+In diesem Beispiel wird beschrieben, wie Sie einer vorhandenen Direct-Verbindung, die nur über eine IPv4-Sitzung verfügt, eine IPv6-Sitzung hinzufügen. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Entfernen einer IPv4/IPv6-Sitzung aus aktiven Verbindungen
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>Entfernen von IPv4-/IPv6-Sitzungen aus aktiven Verbindungen
 
-Das Entfernen einer IPv4/IPv6-Sitzung aus einer vorhandenen Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft Peering-Team](mailto:peeringexperience@microsoft.com).
+Das Entfernen einer IPv4-/IPv6-Sitzung aus einer vorhandenen Verbindung wird mit PowerShell derzeit nicht unterstützt. Wenden Sie sich für weitere Informationen an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).

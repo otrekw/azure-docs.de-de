@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5f7157ef8f3645dd03ec93684238dd8bbc067e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773641"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678487"
 ---
 Bevor Sie mit der Konfiguration beginnen, installieren und importieren Sie die erforderlichen Module. Zum Installieren der Module in PowerShell benötigen Sie Administratorberechtigungen.
 
@@ -27,11 +27,11 @@ Bevor Sie mit der Konfiguration beginnen, installieren und importieren Sie die e
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Überprüfen Sie mithilfe des folgenden Befehls, ob die Module ordnungsgemäß importiert wurden.
+1. Überprüfen Sie mithilfe des folgenden Befehls, ob die Module ordnungsgemäß importiert wurden:
     ```powershell
     Get-Module
     ```
-1. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an.
+1. Melden Sie sich mit diesem Befehl bei Ihrem Azure-Konto an:
     ```powershell
     Connect-AzAccount
     ```
@@ -46,8 +46,8 @@ Bevor Sie mit der Konfiguration beginnen, installieren und importieren Sie die e
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Wenn Sie Ihr ASN und Ihr Abonnement noch nicht zugeordnet haben, führen Sie die Schritte zum [Zuordnen eines Peer-ASN](../howto-subscription-association-powershell.md) aus. Dies ist erforderlich, um ein Peering anzufordern.
+> Wenn Sie Ihre ASN und Ihr Abonnement noch nicht zugeordnet haben, führen Sie die Schritte zum [Zuordnen einer Peer-ASN](../howto-subscription-association-powershell.md) aus. Diese Aktion ist erforderlich, um ein Peering anzufordern.
 
 > [!NOTE]
-> Der Speicherort der Ressourcengruppe ist unabhängig von dem Speicherort, an dem Sie ein Peering einrichten möchten.
+> Der Speicherort einer Ressourcengruppe ist unabhängig vom Speicherort, an dem Sie ein Peering einrichten möchten.
 &nbsp;

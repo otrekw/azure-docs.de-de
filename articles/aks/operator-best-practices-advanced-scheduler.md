@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices des Clusteroperators für die Verwend
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668355"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617531"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ Weitere Informationen zur Verwendung von Knotenselektoren finden Sie unter [Zuwe
 
 Ein Knotenselektor ist eine grundlegende Methode, um einem bestimmten Knoten Pods zuzuordnen. Mehr Flexibilität ist anhand von *Knotenaffinität* möglich. Mit Knotenaffinität definieren Sie, was passiert, wenn der Pod nicht mit einem Knoten abgeglichen werden kann. Sie können *anfordern*, dass der Kubernetes-Scheduler einem Pod mit einem bezeichneten Host entspricht. Oder Sie können *eine Übereinstimmung bevorzugen*, aber erlauben, dass der Pod auf einem anderen Host geplant wird, wenn keine Übereinstimmung verfügbar ist.
 
-Im folgenden Beispiel wird die Knotenaffinität auf *RequiredDuringSchedulingIgnoredDuringExecution* festgelegt. Aufgrund dieser Affinität muss der Kubernetes-Scheduler einen Knoten mit einer übereinstimmenden Bezeichnung verwenden. Wenn kein Knoten verfügbar ist, muss der Pod warten, bis die Planung fortgesetzt wird. Damit der Pod auf einem anderen Knoten geplant werden kann, können Sie den Wert stattdessen auf *preferredDuringScheduledIgnoreDuringExecution* festlegen:
+Im folgenden Beispiel wird die Knotenaffinität auf *RequiredDuringSchedulingIgnoredDuringExecution* festgelegt. Aufgrund dieser Affinität muss der Kubernetes-Scheduler einen Knoten mit einer übereinstimmenden Bezeichnung verwenden. Wenn kein Knoten verfügbar ist, muss der Pod warten, bis die Planung fortgesetzt wird. Damit der Pod auf einem anderen Knoten geplant werden kann, können Sie den Wert stattdessen auf *preferredDuringSchedulingIgnoreDuringExecution* festlegen:
 
 ```yaml
 kind: Pod

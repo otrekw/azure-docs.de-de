@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437608"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529687"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -31,6 +31,15 @@ Weitere Informationen zur Azure Migrate-Appliance:
 
 [Weitere Informationen](migrate-appliance.md) zur Appliance.
 
+## <a name="how-can-i-deploy-the-appliance"></a>Wie kann ich die Appliance bereitstellen?
+
+Die Appliance kann wie folgt bereitgestellt werden:
+
+- Mithilfe einer Vorlage für VMware-VMs und Hyper-V-VMs (OVA-Vorlage für VMware oder VHD für Hyper-V).
+- Wenn Sie keine Vorlage verwenden möchten oder in Azure Government arbeiten, können Sie die Appliance für VMware oder Hyper-V mithilfe eines PowerShell-Skripts bereitstellen.
+- Bei physischen Servern stellen Sie die Appliance immer mithilfe eines Skripts bereit.
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Wie stellt die Appliance eine Verbindung mit Azure her?
 
 Die Verbindung der Appliance kann über das Internet oder über ExpressRoute mit öffentlichem/Microsoft-Peering erfolgen.
@@ -45,11 +54,8 @@ Wenn Sie die Appliance-VM mithilfe der heruntergeladenen Vorlage erstellen, kön
 
 ## <a name="what-network-connectivity-is-required"></a>Welche Netzwerkkonnektivität ist erforderlich?
 
-In den folgenden Artikeln finden Sie Informationen zu den Anforderungen hinsichtlich der Netzwerkkonnektivität für die Azure Migrate-Appliance:
 
-- **VMware-Bewertung**: [URL-Zugriff](migrate-appliance.md#url-access) und [Portzugriff](migrate-support-matrix-vmware.md#port-access)
-- **VMware-Migration ohne Agent**: [URL-Zugriff](migrate-appliance.md#url-access) und [Portzugriff](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V-Bewertung**: [URL-Zugriff](migrate-appliance.md#url-access) und [Portzugriff](migrate-support-matrix-hyper-v.md#port-access)
+Die Appliance benötigt Zugriff auf Azure-URLs. [Überprüfen](migrate-appliance.md#url-access) Sie die URL-Liste.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Welche Daten werden von der Appliance erfasst?
 

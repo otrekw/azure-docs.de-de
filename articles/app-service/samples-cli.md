@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971501"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535620"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-Beispiele für Azure App Service
 
@@ -28,7 +28,7 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 | [Erstellen einer ASP.NET Core-App in einem Docker-Container](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App unter Linux und lädt ein Docker-Image aus Docker Hub. |
 |**Konfigurieren der App**||
 | [Zuordnen einer benutzerdefinierten Domäne zu einer App](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und ordnet ihr einen benutzerdefinierten Domänennamen zu. |
-| [Binden eines benutzerdefinierten SSL-Zertifikats an eine App](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und bindet das SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |
+| [Binden eines benutzerdefinierten TLS-/SSL-Zertifikats an eine App](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und bindet das TLS-/SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |
 |**Skalieren der App**||
 | [Manuelles Skalieren einer App](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App und skaliert sie über zwei Instanzen. |
 | [Weltweites Skalieren einer App mit einer Hochverfügbarkeitsarchitektur](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt zwei App Service-Apps in zwei verschiedenen geografischen Regionen und macht sie mithilfe von Azure Traffic Manager über einen zentralen Endpunkt verfügbar. |

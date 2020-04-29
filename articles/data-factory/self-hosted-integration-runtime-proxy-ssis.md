@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346631"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605489"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration Services) in einer Azure-SSIS Integration Runtime (Azure-SSIS IR) in Azure Data Factory mit einer selbstgehosteten Integration Runtime (selbstgehostete IR) ausführen, die als Proxy konfiguriert wurde. 
 
@@ -52,7 +54,7 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
 
 Falls dies noch nicht geschehen ist, erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in derselben Data Factory, in der Ihre Azure-SSIS IR eingerichtet wurde. Informationen dazu finden Sie unter [Erstellen eines mit Azure Data Factory verknüpften Diensts](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Führen Sie unbedingt die folgenden Schritte aus:
 - Wählen Sie **Azure Blob Storage** als **Datenspeicher** aus.  
-- Wählen Sie für **Verbinden über Integration Runtime** die Option **AutoResolveIntegrationRuntime** (nicht Ihre Azure-SSIS IR oder Ihre selbstgehostete IR) aus, da Sie die Standard-Azure IR zum Abrufen von Zugriffsanmeldeinformationen für Ihre Azure Blob Storage-Instanz verwenden.  
+- Wählen Sie für **Connect via integration runtime** (Über Integration Runtime verbinden) die Option **AutoResolveIntegrationRuntime** (nicht Ihre Azure-SSIS IR oder Ihre selbstgehostete IR) aus, da Sie die Standard-Azure IR zum Abrufen von Zugriffsanmeldeinformationen für Ihre Azure Blob Storage-Instanz verwenden.
 - Wählen Sie unter **Authentifizierungsmethode** eine der Optionen **Kontoschlüssel**, **SAS-URI** oder **Dienstprinzipal** aus.  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Wenn Sie starke Kryptografie und ein sichereres Netzwerkprotokoll (TLS 1.2) ver
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Derzeit werden nur Datenflusstasks mit ODBC- (Open Database Connectivity), OLE DB- oder Flatfilequellen unterstützt. 
+- Derzeit werden nur Datenflussaufgaben mit ODBC- (Open Database Connectivity), OLE DB- oder Flatfilequellen oder mit OLE DB-Zielen unterstützt. 
 - Derzeit werden nur mit Azure Blob Storage verknüpfte Dienste unterstützt, die mit einer der Authentifizierungen *Kontoschlüssel*, *Shared Access Signature (SAS)-URI* oder *Dienstprinzipal* konfiguriert wurden.
 - *ParameterMapping* in der OLE DB-Quelle wird noch nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Eine Veranschaulichung finden Sie im Paket *ParameterMappingSample.dtsx* im Ordner *SelfHostedIRProxy/Limitations* in unserem öffentlichen Vorschaucontainer. Wenn Sie Azure Storage-Explorer verwenden, können Sie eine Verbindung mit unserem öffentlichen Vorschaucontainer herstellen, indem Sie den obigen SAS-URI eingeben.
 

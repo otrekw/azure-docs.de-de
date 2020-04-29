@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75722127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535399"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Behandeln von Problemen bei Azure Migrate-Projekten
 
@@ -32,7 +32,7 @@ Die Suche nach einem bestehenden Azure Migrate-Projekt hängt davon ab, ob Sie d
 
 ## <a name="cant-find-a-geography"></a>Geografie kann nicht gefunden werden
 
-Sie können ein Azure Migrate-Projekt in [unterstützten Geografien](migrate-support-matrix.md#supported-geographies) erstellen. Beachten Sie, dass die Geografie des Projekts zur Speicherung der gefundenen Metadaten des Computers verwendet wird. Sie können auch Computer an anderen Standorten bewerten oder migrieren.
+Sie können ein Azure Migrate-Projekt in unterstützten geografischen Regionen für [öffentliche](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government) erstellen.
 
 ## <a name="what-are-vm-limits"></a>Was sind Grenzwerte für virtuelle Computer?
 

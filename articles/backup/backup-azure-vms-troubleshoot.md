@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297389"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677340"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -191,6 +191,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
 | **Fehlercode**:  UserErrorRequestDisallowedByPolicy <BR> **Fehlermeldung**: Auf der VM wurde eine ungültige Richtlinie konfiguriert, die den Momentaufnahmevorgang verhindert. | Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in Ihrer Umgebung verwaltet wird](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), entweder die Änderung der Richtlinie von der [Auswirkung „Deny“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) in die [Auswirkung „Modify“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), oder erstellen Sie die Ressourcengruppe manuell gemäß des [für Azure Backup erforderlichen Benennungsschemas](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
+
 ## <a name="jobs"></a>Aufträge
 
 | Fehlerdetails | Problemumgehung |
@@ -229,12 +230,12 @@ Normalerweise ist der VM-Agent auf virtuellen Computern, die über den Azure-Kat
 #### <a name="windows-vms"></a>Virtuelle Windows-Computer
 
 * Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Sie benötigen Administratorberechtigungen, um die Installation ausführen zu können.
-* [Aktualisieren Sie die VM-Eigenschaft](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 #### <a name="linux-vms"></a>Virtuelle Linux-Computer
 
 * Installieren Sie die neueste Version des Agents über das Repository der Distribution. Ausführliche Informationen zum Paketnamen finden Sie im [Linux-Agent-Repository](https://github.com/Azure/WALinuxAgent).
-* Aktualisieren Sie die VM-Eigenschaft auf mit dem klassischen Bereitstellungsmodell erstellten VMs [mithilfe dieses Blogs](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 ### <a name="update-the-vm-agent"></a>Aktualisieren des VM-Agents
 
@@ -280,4 +281,3 @@ Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von Po
 
 * [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
-
