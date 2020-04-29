@@ -63,7 +63,7 @@
       href: tutorial-secure-web-server.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -564,14 +564,14 @@
             - name: Vorbereiten von vorhandenen virtuellen Computer für Cloud-init
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: ../../jenkins/overview.md
+          href: /azure/developer/jenkins/overview.md
           items:
             - name: Erstellen eines Jenkins-Servers
-              href: ../../jenkins/install-jenkins-solution-template.md
+              href: /azure/developer/jenkins/configure-on-linux-vm.md
             - name: Skalierung mit VM-Agents
-              href: ../../jenkins/jenkins-azure-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
             - name: Veröffentlichen von Artefakten in Storage
-              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
             - name: Schützen von Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Ausführen von Containern
@@ -640,7 +640,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -758,7 +758,7 @@
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azureps-cmdlets-docs

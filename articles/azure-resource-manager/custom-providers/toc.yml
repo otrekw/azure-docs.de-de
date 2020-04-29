@@ -9,7 +9,7 @@
   items:
     - name: Erstellen eines benutzerdefinierten Ressourcenanbieters
       href: create-custom-provider.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erste Schritte mit benutzerdefinierten Anbietern
       href: tutorial-get-started-with-custom-providers.md
@@ -27,7 +27,7 @@
       href: concepts-built-in-policy.md
     - name: Onboarding von Ressourcen
       href: concepts-resource-onboarding.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Hinzufügen benutzerdefinierter Aktionen zu Azure
       href: custom-providers-action-endpoint-how-to.md
