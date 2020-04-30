@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882385"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868846"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
 
@@ -108,7 +108,7 @@ Zum Verfügbarmachen von Anwendungsberechtigungen müssen Sie das Manifest bearb
 
 Das folgende Beispiel enthält die Inhalte von `appRoles`, wobei der Wert `id` eine beliebige eindeutige GUID sein kann.
 
-```JSon
+```json
 "appRoles": [
     {
     "allowedMemberTypes": [ "Application" ],

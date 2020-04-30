@@ -2,27 +2,22 @@
 title: OAuth 2.0-Flow für die implizite Genehmigung – Microsoft Identity Platform | Azure
 description: Schützen Sie Single-Page-Apps mit dem impliziten Fluss von Microsoft Identity Platform.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297692"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868411"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -32,14 +27,11 @@ Mit dem Microsoft Identity Platform-Endpunkt können Sie Benutzer sowohl mit per
 * Zahlreiche Autorisierungsserver und Identitätsanbieter unterstützen keine CORS-Anforderungen.
 * Umleitungen auf ganzseitige Browserseiten stören die Benutzererfahrung erheblich.
 
-Bei diesen Anwendungen (AngularJS, Ember.js, React.js usw.) unterstützt Microsoft Identity Platform den impliziten OAuth 2.0-Gewährungsablauf. Der implizite Fluss wird in der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-4.2) beschrieben. Der größte Vorteil besteht darin, dass die App Token aus Microsoft Identity Platform abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes. Bei der Verwendung des impliziten Flusses gibt es einige wichtige Sicherheitsaspekte zu beachten, insbesondere in Bezug auf [Clients](https://tools.ietf.org/html/rfc6749#section-10.3) und [Identitätswechsel](https://tools.ietf.org/html/rfc6749#section-10.3).
+Bei diesen Anwendungen (Angular, Ember.js, React.js usw.) unterstützt Microsoft Identity Platform den impliziten OAuth 2.0-Genehmigungsablauf. Der implizite Fluss wird in der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-4.2) beschrieben. Der größte Vorteil besteht darin, dass die App Token aus Microsoft Identity Platform abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes. Bei der Verwendung des impliziten Flusses gibt es einige wichtige Sicherheitsaspekte zu beachten, insbesondere in Bezug auf [Clients](https://tools.ietf.org/html/rfc6749#section-10.3) und [Identitätswechsel](https://tools.ietf.org/html/rfc6749#section-10.3).
 
 In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
 Wenn Sie jedoch in Ihrer Single-Page-App keine Bibliothek verwenden und Protokollmeldungen selbst senden möchten, führen Sie die folgenden allgemeinen Schritte aus.
-
-> [!NOTE]
-> Es werden nicht alle Azure Active Directory-Szenarien und -Features (Azure AD) vom Microsoft Identity Platform-Endpunkt unterstützt. Informieren Sie sich über die [Einschränkungen der Microsoft Identity Platform](active-directory-v2-limitations.md), um zu ermitteln, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Geeignete Szenarien für die implizite OAuth2-Gewährung
 
@@ -47,7 +39,7 @@ Gemäß Deklaration der OAuth2-Spezifikation wurde die implizite Gewährung entw
 
 Extrembeispiele für Anwendungen mit der JavaScript-basierten Methode sind die sogenannten Single-Page-Webanwendungen (Single-Page Applications, SPAs). Diese Anwendungen sind nur für die Versorgung einer HTML-Startseite und des dazugehörigen JavaScript-Codes konzipiert. Alle nachfolgenden Interaktionen werden mithilfe von Web-API-Aufrufen über JavaScript ausgeführt. Hybride Methoden, bei denen Anwendungen größtenteils Postback-orientiert sind, aber auch einzelne JS-Aufrufe ausführen, sind allerdings nichts Ungewöhnliches, und die Informationen zur Verwendung impliziter Abläufe sind auch für diese Methoden relevant.
 
-Auf Umleitungen basierende Anwendungen schützen ihre Anforderungen in der Regel mithilfe von Cookies. Bei JavaScript-Anwendungen funktioniert diese Methode jedoch nicht so gut. Cookies können nur für die Domäne verwendet werden, für die sie erstellt wurden. JavaScript-Aufrufe können dagegen an andere Domänen weitergeleitet werden. Das kommt in der Praxis auch recht häufig vor – etwa bei Anwendungen, die die Microsoft Graph-API, Office-API oder Azure-API aufrufen: Diese befinden sich alle außerhalb der Domäne, von der aus die Anwendung bereitgestellt wird. Bei JavaScript-Anwendungen geht der Trend zunehmend dahin, dass kein Back-End vorhanden ist und sie zur Implementierung der Geschäftsfunktion zu 100 % auf Web-APIs basieren.
+Auf Umleitungen basierende Anwendungen schützen ihre Anforderungen in der Regel mithilfe von Cookies. Bei JavaScript-Anwendungen funktioniert diese Methode jedoch nicht so gut. Cookies können nur für die Domäne verwendet werden, für die sie erstellt wurden. JavaScript-Aufrufe können dagegen an andere Domänen weitergeleitet werden. Das kommt in der Praxis auch recht häufig vor – etwa bei Anwendungen, die die Microsoft Graph-API, Office-API oder Azure-API aufrufen: Diese befinden sich alle außerhalb der Domäne, von der aus die Anwendung bereitgestellt wird. Bei JavaScript-Anwendungen geht der Trend zunehmend dahin, dass kein Back-End vorhanden ist und sie zur Implementierung der Geschäftsfunktion zu 100 % auf Web-APIs von Drittanbietern basieren.
 
 Aktuell wird zum Schutz von Web-API-Aufrufen die Verwendung der OAuth2-Bearertoken-Methode empfohlen. Bei dieser Methode wird jeder Aufruf von einem OAuth2-Zugriffstoken begleitet. Die Web-API untersucht das eingehende Zugriffstoken und gewährt dem angeforderten Vorgang Zugriff, wenn das Token in den erforderlichen Bereichen gefunden wurde. Der implizite Ablauf ist eine praktische Methode, mit der JavaScript-Anwendungen Zugriffstoken für eine Web-API beziehen können. Gegenüber Cookies bietet er diverse Vorteile:
 
@@ -56,7 +48,7 @@ Aktuell wird zum Schutz von Web-API-Aufrufen die Verwendung der OAuth2-Bearertok
 * HTML5-Features wie Sitzungen oder lokale Speicher ermöglichen es, das Zwischenspeichern von Token und die Lebensdauerverwalltung vollständig zu steuern, wobei die Verwaltung von Cookies für die App nicht transparent ist.
 * Zugriffstoken sind für websiteübergreifende Anforderungsfälschungen (CSRF) nicht anfällig.
 
-Bei der impliziten Gewährung werden insbesondere aus Sicherheitsgründen keine Aktualisierungstoken ausgegeben. Ein Aktualisierungstoken hat einen breiteren Umfang als Zugriffstoken und gewährt mehr Rechte, weshalb der Schaden bei Verlust auch größer sein kann. Beim impliziten Ablauf werden Token in der URL übermittelt, weshalb die Gefahr eines Abfangens höher ist als bei der Gewährung über einen Autorisierungscode.
+Bei der impliziten Gewährung werden insbesondere aus Sicherheitsgründen keine Aktualisierungstoken ausgegeben. Ein Aktualisierungstoken ist weniger eng umgrenzt als ein Zugriffstoken und gewährt weitaus mehr Rechte, weshalb der Schaden bei Verlust auch größer sein kann. Beim impliziten Ablauf werden Token in der URL übermittelt, weshalb die Gefahr eines Abfangens höher ist als bei der Gewährung über einen Autorisierungscode.
 
 JavaScript-Anwendungen verfügen jedoch über andere Möglichkeiten, um Zugriffstoken zu erneuern, bei denen der Benutzer nicht wiederholt zur Eingabe der Anmeldeinformationen aufgefordert wird. Zum Ausführen neuer Tokenanforderungen in Bezug auf den Autorisierungsendpunkt von Azure AD kann die Anwendung ein ausgeblendetes iFrame verwenden: Wenn der Browser über eine aktive Sitzung mit der Azure AD-Domäne (d.h. über ein Sitzungscookie) verfügt, kann die Authentifizierungsanforderung ausgeführt werden, ohne dass eine Benutzerinteraktion erforderlich ist.
 
@@ -125,7 +117,7 @@ Sobald der Benutzer authentifiziert ist und seine Zustimmung erteilt hat, gibt d
 
 Eine erfolgreiche Antwort mithilfe von `response_mode=fragment` und `response_type=id_token+token` sieht wie folgt aus, wobei die Zeilenumbrüche der Lesbarkeit dienen:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -146,7 +138,7 @@ GET https://localhost/myapp/#
 
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -161,7 +153,7 @@ error=access_denied
 
 Nachdem Sie den Benutzer bei der Single-Page-App angemeldet haben, können Sie Zugriffstoken zum Aufrufen der von der Microsoft Identity Platform gesicherten Web-APIs automatisch abrufen, z. B. [Microsoft Graph](https://developer.microsoft.com/graph). Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
 
-Im herkömmlichen OpenID Connect/OAuth-Fluss senden Sie dazu eine Anforderung an den Microsoft Identity Platform-Endpunkt `/token`. Der Microsoft Identity Platform-Endpunkt unterstützt jedoch keine CORS-Anforderungen, daher kommen AJAX-Aufrufe zum Abrufen und Aktualisieren von Token nicht infrage. Stattdessen können Sie den impliziten Fluss in einem ausgeblendeten IFrame verwenden, um neue Token für andere Web-APIs zu erhalten: 
+Im herkömmlichen OpenID Connect/OAuth-Fluss senden Sie dazu eine Anforderung an den Microsoft Identity Platform-Endpunkt `/token`. Der Microsoft Identity Platform-Endpunkt unterstützt jedoch keine CORS-Anforderungen, daher kommen AJAX-Aufrufe zum Abrufen und Aktualisieren von Token nicht infrage. Stattdessen können Sie den impliziten Fluss in einem ausgeblendeten IFrame verwenden, um neue Token für andere Web-APIs zu erhalten:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +162,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910
@@ -192,7 +184,7 @@ Dank des Parameters `prompt=none` ist diese Anforderung entweder erfolgreich ode
 
 Eine erfolgreiche Antwort mit `response_mode=fragment` sieht wie folgt aus:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -214,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann: Im Fall von `prompt=none` wird folgender Fehler erwartet:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently

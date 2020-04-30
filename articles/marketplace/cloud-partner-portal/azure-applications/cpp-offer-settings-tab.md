@@ -7,34 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: d111471e909a091d8c887f13ad89d1da50cf72b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3150c3498cb3f0c87b74f86179f552c56d580c12
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280115"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870154"
 ---
 # <a name="azure-application-offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“ für eine Azure-Anwendung
 
-In diesem Artikel wird das Konfigurieren der Angebotseinstellungen für eine Azure-Anwendung beschrieben.
+Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Azure-Anwendungsangeboten nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Informationen hierzu finden Sie unter [Erstellen eines Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-Die Seite **Azure-Anwendungen > Neues Angebot** wird geöffnet, wobei die Registerkarte **Angebotseinstellungen** ausgewählt ist. Mit einem Sternchen (*) gekennzeichnete Felder sind Pflichtfelder.
-
-![Formular für Angebots-ID](./media/azureapp-offer-settings-tab.png)
-
-## <a name="offer-identity-settings"></a>Einstellungen unter „Angebotsidentität“
-
-Unter **Angebotsidentität** müssen Sie Informationen in den in der nachfolgenden Tabelle beschriebenen Feldern angeben.  
-
-|    Feld         |       BESCHREIBUNG                                                            |
-|  ---------       |     ---------------                                                          |
-| **Angebots-ID\***       | Ein (innerhalb eines Herausgeberprofils) eindeutiger Bezeichner für das Angebot. Dieser Bezeichner wird in Produkt-URLs und Insights-Berichten angezeigt. Er hat eine maximale Länge von 50 Zeichen und kann alphanumerische Kleinbuchstaben und Bindestriche (-) enthalten. (Der Bezeichner darf nicht mit einem Bindestrich enden.) **Hinweis:** Nachdem ein Angebot live geschaltet wurde, kann dieses Feld nicht mehr geändert werden. <br> Wenn also beispielsweise Contoso ein Angebot mit der Angebots-ID **sample-container** veröffentlicht, wird ihm die Azure Marketplace-URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview` zugewiesen. |
-| **Herausgeber-ID\***     | Der eindeutige Bezeichner Ihrer Organisation im Azure Marketplace. Alle Ihre Angebote sollten mit Ihrer Herausgeber-ID verknüpft sein. Dieser Wert kann nicht mehr geändert werden, nachdem das Angebot gespeichert wurde. |
-| **Name\***          | Der Anzeigenamen für Ihr Angebot. Dieser Name wird im Azure Marketplace und im Cloud-Partnerportal angezeigt. Er darf aus höchstens 50 Zeichen bestehen. Es empfiehlt sich, einen Markennamen mit hohem Wiedererkennungswert für Ihr Produkt zu verwenden. Verwenden Sie nicht den Namen Ihrer Organisation, es sei denn, das Produkt wird unter diesem Namen beworben. Wenn Sie dieses Angebot auf anderen Websites und in anderen Publikationen vermarkten, achten Sie darauf, überall exakt den gleichen Namen zu verwenden. |
-|  |  |
-
-Wählen Sie **Speichern** aus, um die Angebotseinstellungen zu speichern.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Konfigurieren Sie auf der Registerkarte [SKUs](./cpp-skus-tab.md) die SKUs für Ihr Angebot.
+Bevor Sie ein neues Azure-Angebot erstellen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer), um Ihr Angebot zu erstellen.

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 10d5449cb77ea09f62db0a2f2bbdab6761646738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ec62095f14b38d0c4ffebfabc14c4a0a27a70fb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295460"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869824"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -214,6 +214,9 @@ Hier müssen Sie mindestens ein und höchstens zugehörige Marketingdokumente an
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
 In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeigen Ihres Angebots für Kunden verwendet werden. Alle Bilder müssen das PNG-Format aufweisen.
+
+>[!Note]
+>Wenn ein Problem beim Hochladen von Dateien auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 

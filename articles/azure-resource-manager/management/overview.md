@@ -2,17 +2,17 @@
 title: Übersicht
 description: Es wird beschrieben, wie Sie den Azure-Ressourcen-Manager für die Bereitstellung, Verwaltung und Zugriffssteuerung von Ressourcen unter Azure verwenden.
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258140"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870489"
 ---
 # <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
-Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Abonnement ermöglicht. Mithilfe von Verwaltungsfeatures wie Zugriffssteuerung, Sperren und Tags können Sie Ihre Ressourcen nach der Bereitstellung schützen und organisieren.
+Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Konto ermöglicht. Mithilfe von Verwaltungsfeatures wie Zugriffssteuerung, Sperren und Tags können Sie Ihre Ressourcen nach der Bereitstellung schützen und organisieren.
 
 Informationen zu Azure Resource Manager-Vorlagen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
 
@@ -30,10 +30,10 @@ Alle Funktionen, die über das Azure-Portal verfügbar sind, stehen auch über P
 
 Wenn Sie mit dem Azure Resource Manager noch nicht vertraut sind, kennen Sie unter Umständen einige Begriffe noch nicht.
 
-* **Ressource** : Ein verwaltbares Element, das über Azure verfügbar ist. Virtuelle Computer, Speicherkonten, Web-Apps, Datenbanken und virtuelle Netzwerke sind Beispiele für Ressourcen.
+* **Ressource** : Ein verwaltbares Element, das über Azure verfügbar ist. Virtuelle Computer, Speicherkonten, Web-Apps, Datenbanken und virtuelle Netzwerke sind Beispiele für Ressourcen. Ressourcengruppen, Abonnements, Verwaltungsgruppen und Tags sind ebenfalls Beispiele für Ressourcen.
 * **Ressourcengruppe** : Ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe enthält die Ressourcen, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, welche Ressourcen in eine Ressourcengruppen gehören. Weitere Informationen finden Sie unter [Ressourcengruppen](#resource-groups).
 * **Ressourcenanbieter:** Ein Dienst, der Azure-Ressourcen bereitstellt. Ein allgemeiner Ressourcenanbieter ist beispielsweise „Microsoft.Compute“, der die VM-Ressource bereitstellt. „Microsoft.Storage“ ist ein weiterer allgemeiner Ressourcenanbieter. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](resource-providers-and-types.md).
-* **Resource Manager-Vorlage:** Eine JSON-Datei (JavaScript Object Notation), mit der eine oder mehrere Ressourcen zum Bereitstellen einer Ressourcengruppe oder eines Abonnements definiert werden. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden. Weitere Informationen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
+* **Resource Manager-Vorlage:** Eine JSON-Datei (JavaScript Object Notation), mit der eine oder mehrere Ressourcen zum Bereitstellen einer Ressourcengruppe, eines Abonnements, einer Verwaltungsgruppe oder eines Mandanten definiert werden. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden. Weitere Informationen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
 * **Deklarative Syntax** : Bei dieser Syntax können Sie beispielsweise „Here is what I intend to create“ (Dies möchte ich erstellen) eingeben, ohne dafür die Folge der Programmierbefehle für die Erstellung schreiben zu müssen. Die Resource Manager-Vorlage ist ein Beispiel für die deklarative Syntax. In der Datei definieren Sie die Eigenschaften für die Infrastruktur zum Bereitstellen für Azure.  Weitere Informationen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Vorteile der Verwendung des Ressourcen-Managers
@@ -48,7 +48,7 @@ Resource Manager ermöglicht Folgendes:
 
 * Definieren der Abhängigkeiten zwischen Ressourcen, sodass diese in der korrekten Reihenfolge bereitgestellt werden
 
-* Anwenden der Zugriffssteuerung auf alle Dienste in der Ressourcengruppe, da die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) standardmäßig in die Verwaltungsplattform integriert ist
+* Anwenden der Zugriffssteuerung auf alle Dienste, da die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) nativ in die Verwaltungsplattform integriert ist
 
 * Anwenden von Tags auf Ressourcen, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren
 
@@ -58,11 +58,11 @@ Resource Manager ermöglicht Folgendes:
 
 Azure bietet vier Bereichsebenen: [Verwaltungsgruppen](../../governance/management-groups/overview.md), Abonnements, [Ressourcengruppen](#resource-groups) und Ressourcen. Die folgende Abbildung zeigt ein Beispiel dieser Ebenen.
 
-![`Scope`](./media/overview/scope-levels.png)
+![Verwaltungsebenen](./media/overview/scope-levels.png)
 
 Sie wenden die Verwaltungseinstellungen auf einer dieser Bereichsebenen an. Die von Ihnen ausgewählte Ebene bestimmt, wie umfassend die Einstellung angewendet wird. Niedrigere Ebenen erben die Einstellungen von höheren Ebenen. Wenn Sie also beispielsweise eine [Richtlinie](../../governance/policy/overview.md) auf das Abonnement anwenden, gilt diese für alle Ressourcengruppen und Ressourcen in Ihrem Abonnement. Wenn Sie eine Richtlinie auf die Ressourcengruppe anwenden, gilt diese für die Ressourcengruppe und alle dazugehörigen Ressourcen. Andere Ressourcengruppen sind von der Richtlinienzuweisung dagegen nicht betroffen.
 
-Sie können Vorlagen für Verwaltungsgruppen, Abonnements oder Ressourcengruppen bereitstellen.
+Sie können Vorlagen für Mandanten, Verwaltungsgruppen, Abonnements oder Ressourcengruppen bereitstellen.
 
 ## <a name="resource-groups"></a>Ressourcengruppen
 
@@ -71,6 +71,8 @@ Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
 * Alle Ressourcen einer Gruppe sollten über den gleichen Lebenszyklus verfügen. Sie werden von Ihnen zusammen bereitgestellt, aktualisiert und gelöscht. Falls eine Ressource, z. B. ein Datenbankserver, in einem anderen Entwicklungszyklus vorhanden sein muss, sollte er in einer anderen Ressourcengruppe enthalten sein.
 
 * Jede Ressource kann nur in einer Ressourcengruppe vorhanden sein.
+
+* Einige Ressourcen können außerhalb einer Ressourcengruppe vorhanden sein. Diese Ressourcen werden im [Abonnement](../templates/deploy-to-subscription.md), in der [Verwaltungsgruppe](../templates/deploy-to-management-group.md) oder im [Mandanten](../templates/deploy-to-tenant.md) bereitgestellt. In diesen Bereichen werden nur bestimmte Ressourcentypen unterstützt.
 
 * Sie können eine Ressource einer Ressourcengruppe jederzeit hinzufügen bzw. die Ressource daraus entfernen.
 

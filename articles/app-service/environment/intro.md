@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057386"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770645"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
@@ -34,7 +34,7 @@ App Service-Umgebungen (App Service Environments, ASEs) sind ideal geeignet für
 
 Kunden können mehrere ASEs innerhalb einer einzelnen Azure-Region oder über mehrere Azure-Regionen verteilt einrichten. Durch diese Flexibilität eignen sich ASEs hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
-Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung. Anwendungen können schnelle, sichere Verbindungen über VPNs mit lokalen Unternehmensressourcen einrichten.
+ASEs hosten Anwendungen von nur einem Kunden in einem seiner VNETs. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung. Anwendungen können schnelle, sichere Verbindungen über VPNs mit lokalen Unternehmensressourcen einrichten.
 
 * Für ASE gilt ein eigener Tarif. Informieren Sie sich darüber, wie das [isolierte Angebot](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment) zur Hyperskalierung und Sicherheit beiträgt.
 * [App Service-Umgebungen v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) bieten eine Umgebung zum Schutz Ihrer Apps in einem Subnetz Ihres Netzwerks sowie eine eigene private Azure App Service-Bereitstellung.

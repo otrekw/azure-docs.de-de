@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095909"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Tutorial: Azure Active Directory-Integration mit Oneteam
 
@@ -118,7 +118,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Oneteam 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Oneteam-Client](https://support.one-team.com/hc/requests/new), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom Supportteam für den Oneteam-Client. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -136,7 +136,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Oneteam 
 
 ### <a name="configure-oneteam-single-sign-on"></a>Einmaliges Anmelden für Oneteam konfigurieren
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Oneteam** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Oneteam](https://support.one-team.com/hc/requests/new) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Oneteam** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das Supportteam von Oneteam senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -194,7 +194,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt wird eine Benutzerin mit dem Namen „Britta Simon“ in Oneteam erstellt. Oneteam unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Oneteam vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 >[!NOTE]
->Falls Sie einen Benutzer manuell erstellen müssen, können Sie das Supportticket für das [Supportteam von Oneteam](https://support.one-team.com/hc/requests/new) erstellen.
+>Falls Sie einen Benutzer manuell erstellen müssen, können Sie das Supportticket für das Supportteam von Oneteam erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

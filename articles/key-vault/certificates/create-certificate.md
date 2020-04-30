@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427362"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866253"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -80,10 +80,10 @@ Der adressierbare Schlüssel und der geheime Schlüssel erhalten ihre Attribute 
 ## <a name="partnered-ca-providers"></a>Partnerzertifikataussteller
 Die Zertifikatserstellung kann manuell oder über einen „Self“-Zertifikataussteller erfolgen. Key Vault arbeitet auch mit bestimmten Zertifikatausstellern zusammen, um die Erstellung von Zertifikaten zu vereinfachen. Die folgenden Zertifikatstypen können für den Schlüsseltresor bei diesen Partnerzertifikatausstellern bestellt werden.  
 
-|Anbieter|Zertifikattyp|  
-|--------------|----------------------|  
-|DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert|
-|GlobalSign|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign|
+|Anbieter|Zertifikattyp|Konfigurationssetup  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert| [Integrationsleitfaden](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign| [Integrationsleitfaden](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
 

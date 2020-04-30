@@ -1,24 +1,16 @@
 ---
-title: 'Schnellstart: Abrufen der Absicht im Browser – LUIS'
-titleSuffix: Azure Cognitive Services
+title: 'Schnellstart: Abfragen zur Vorhersage mit einem Browser – LUIS'
 description: In dieser Schnellstartanleitung bestimmen Sie im Browser mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/03/2020
-ms.author: diberry
-ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/21/2020
+ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987953"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769983"
 ---
-# <a name="quickstart-get-intent-with-a-browser"></a>Schnellstart: Abrufen der Absicht im Browser
+# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Schnellstart: Abfragen der Vorhersagelaufzeit mit Benutzertext
 
 Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vorhersageergebnis in einem Webbrowser an.
 
@@ -26,13 +18,15 @@ Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vor
 
 Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
-* Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel (Language Understanding), der über das [LUIS-Portal (Vor)](https://preview.luis.ai/) abgerufen werden kann. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
-* Die ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Informationen zu Ihrer LUIS-Ressource (Language Understanding):
+    * **Vorhersageschlüssel:** Kann über das [LUIS-Portal](https://www.luis.ai/) abgerufen werden. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
+    * **Unterdomäne des Vorhersageendpunkts:** Die Unterdomäne ist gleichzeitig der **Name** Ihrer LUIS-Ressource.
+* Eine LUIS-App-ID: Verwenden Sie die öffentliche IoT-App-ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Die im Schnellstartcode verwendete Benutzerabfrage ist spezifisch für diese App.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Verwenden des Browsers zum Anzeigen von Vorhersagen
 
 1. Öffnen Sie einen Webbrowser.
-1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel als Abfragezeichenfolgen-Parameter.
+1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Vorhersageschlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Vorhersageschlüssel als Abfragezeichenfolgenparameter.
 
     #### <a name="v3-prediction-request"></a>[V3-Vorhersageanforderung](#tab/V3-1-1)
 
@@ -40,7 +34,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     Das Format der V3-URL für eine **GET**-Endpunktanforderung (nach Slots) ist wie folgt:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY
     `
 
     #### <a name="v2-prediction-request"></a>[V2-Vorhersageanforderung](#tab/V2-1-2)
@@ -48,7 +42,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     Das Format der V2-URL für eine **GET**-Endpunktanforderung ist wie folgt:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-LUIS-PREDICTION-KEY&q=turn on all lights
     `
 
 1. Fügen Sie die URL in ein Browserfenster ein, und drücken Sie die EINGABETASTE. Das im Browser angezeigte JSON-Ergebnis gibt an, dass LUIS die Absicht `HomeAutomation.TurnOn` als die am höchsten bewertete Absicht und die Entität `HomeAutomation.Operation` mit dem Wert `on` erkennt.
@@ -104,7 +98,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     Fügen Sie `show-all-intents=true` am Ende der Abfragezeichenfolge hinzu, um **alle Absichten anzuzeigen**:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY&show-all-intents=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
     `
 
     ```JSON
@@ -137,7 +131,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     Fügen Sie `verbose=true` am Ende der Abfragezeichenfolge hinzu, um **alle Absichten anzuzeigen**:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key={your-key}&verbose=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true
     `
 
     ```json
@@ -173,12 +167,11 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     }
     ```
 
-
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
+Weitere Informationen:
+* [V3-Vorhersageendpunkt](luis-migration-api-v3.md)
+* [Benutzerdefinierte Unterdomänen](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
 > [Erstellen einer App im LUIS-Portal](get-started-portal-build-app.md)

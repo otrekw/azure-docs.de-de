@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869007"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktop-App, die Web-APIs aufruft: Codekonfiguration

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272524"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769989"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -23,7 +23,7 @@ In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Az
 >
 >
 
-|type|Plattform|Position|BESCHREIBUNG|
+|type|Plattform|Standort|BESCHREIBUNG|
 |-|-|-|-|
 | Anwendungsprotokollierung | Windows, Linux | App Service-Dateisystem und/oder Azure Storage-Blobs | Protokolliert Meldungen, die von Ihrem Anwendungscode generiert werden. Die Meldungen können durch das von Ihnen ausgewählte Webframework oder direkt aus Ihrem Anwendungscode mithilfe des Standardprotokollierungsmusters Ihrer Sprache generiert werden. Jede Meldung wird einer der folgenden Kategorien zugewiesen: **Critical (Kritisch)** , **Error (Fehler)** , **Warning (Warnung)** , **Info (Information)** , **Debug (Debuggen)** und **Trace (Ablaufverfolgung)** . Sie können auswählen, wie ausführlich die Protokollierung erfolgen soll, indem Sie den Schweregrad beim Aktivieren der Anwendungsprotokollierung festlegen.|
 | Webserverprotokollierung| Windows | App Service-Dateisystem oder Azure Storage-Blobs| Unformatierte HTTP-Anforderungsdaten im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Jede Protokollmeldung enthält Daten, etwa die HTTP-Methode, den Ressourcen-URI, die Client-IP, den Clientport, den Benutzer-Agent, den Antwortcode usw. |
@@ -38,6 +38,9 @@ In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Az
 >
 
 ## <a name="enable-application-logging-windows"></a>Aktivieren der Anwendungsprotokollierung (Windows)
+
+> [!NOTE]
+> Bei der Anwendungsprotokollierung für Blob Storage können nur Speicherkonten in derselben Region wie App Service verwendet werden.
 
 Um Anwendungsprotokollierung für Windows-Apps im [Azure-Portal](https://portal.azure.com) zu aktivieren, navigieren Sie zu Ihrer App und wählen **App Service-Protokolle** aus.
 
