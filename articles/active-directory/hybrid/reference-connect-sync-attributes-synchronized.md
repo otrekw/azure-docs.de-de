@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227818"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082117"
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
+# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
 Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
@@ -375,7 +375,7 @@ Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute
 * Yammer (nur „Benutzer“ wird genutzt)
 * [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
+Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen. Beachten Sie, dass für das einmalige Anmelden oder die Bereitstellung für einige Drittanbieteranwendungen zusätzlich zu den hier beschriebenen Attributen das Konfigurieren der Synchronisierung von Attributen erforderlich ist. Die Anwendungsanforderungen werden im [Tutorial zur Saas-Anwendung](../saas-apps/tutorial-list.md) für jede Anwendung beschrieben.
 
 | Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
@@ -425,11 +425,11 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | Attributname (lokales AD) | Attributname (Connect-Benutzeroberfläche) | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
-| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online-Archiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Onlinearchiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
 | msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
-| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Online-Voicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Onlinevoicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
 | msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
 | proxyAddresses| proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |Ermöglicht einem Exchange Online-Postfach, dass Benutzern mit lokalem Exchange-Postfach SendOnBehalfTo-Rechte erteilt werden. Erfordert Azure AD Connect Build 1.1.552.0 oder höher |

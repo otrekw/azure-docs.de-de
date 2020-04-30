@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365471"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024896"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -25,6 +25,10 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 > [!IMPORTANT]
 > Benutzerdefinierte Richtlinien für Gastkonfigurationen sind eine Previewfunktion.
+>
+> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
+> Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen:
+>   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
@@ -73,7 +77,11 @@ Eine Übersicht über DSC-Konzepte und die Terminologie finden Sie in der [Über
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Unterschiede zwischen Gastkonfigurationsmodulen und Windows PowerShell DSC-Modulen
 
-Wenn die Gastkonfiguration einen Computer überwacht, führt sie zunächst `Test-TargetResource` aus, um festzustellen, ob er den richtigen Zustand aufweist. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll. Im nächsten Schritt führt der Anbieter `Get-TargetResource` aus, um den aktuellen Zustand der einzelnen Einstellungen zurückzugeben. Dadurch sind Details dazu verfügbar, weshalb ein Computer nicht konform ist, bzw. Angaben dazu, dass der aktuelle Zustand konform ist.
+Wenn die Gastkonfiguration einen Computer überwacht:
+
+1. Der Agent führt zuerst `Test-TargetResource` aus, um zu ermitteln, ob die Konfiguration den richtigen Status aufweist.
+1. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll.
+1. Der Anbieter führt `Get-TargetResource` aus, um den aktuellen Zustand der einzelnen Einstellungen zurückzugeben. Dadurch sind Details dazu verfügbar, warum ein Computer nicht konform ist, bzw. eine Bestätigung, dass der aktuelle Zustand konform ist.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource-Anforderungen
 
@@ -102,6 +110,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+Die Reasons-Eigenschaft muss auch dem Schema-MOF für die Ressource als eingebettete Klasse hinzugefügt werden.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
 Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Resource Manager-Vorlage müssen identisch sein.
@@ -134,7 +161,7 @@ Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Schrittanleitung: Erstellen einer benutzerdefinierten Überwachungsrichtlinie für Gastkonfigurationen für Windows
 
-Erstellen Sie eine DSC-Konfiguration. Im folgenden PowerShell-Beispielskript wird eine Konfiguration mit dem Namen **AuditBitLocker** erstellt, das Ressourcenmodul **PsDscResources** importiert und die Ressource `Service` verwendet, um eine Überwachung für einen ausgeführten Dienst durchzuführen. Das Konfigurationsskript kann von einem Windows- oder macOS-Computer aus ausgeführt werden.
+Erstellen Sie eine DSC-Konfiguration zum Überwachen von Einstellungen. Im folgenden PowerShell-Beispielskript wird eine Konfiguration mit dem Namen **AuditBitLocker** erstellt, das Ressourcenmodul **PsDscResources** importiert und die Ressource `Service` verwendet, um eine Überwachung für einen ausgeführten Dienst durchzuführen. Das Konfigurationsskript kann von einem Windows- oder macOS-Computer aus ausgeführt werden.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -153,14 +180,16 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+Speichern Sie diese Datei mit dem Namen `config.ps1` im Projektordner. Führen Sie sie in PowerShell aus, indem Sie `./config.ps1` im Terminal ausführen. Eine neue MOF-Datei wird erstellt.
 
 Der Befehl `Node AuditBitlocker` ist aus technischer Sicht nicht erforderlich, doch wird damit eine Datei namens `AuditBitlocker.mof` anstelle der Standarddatei `localhost.mof` erstellt. Wenn der Name der MOF-Datei der Konfiguration folgt, können beim Arbeiten in großem Umfang viele Dateien problemlos organisiert werden.
 
 Nachdem die MOF-Datei kompiliert wurde, müssen die unterstützenden Dateien in einem Paket zusammengefasst werden. Das fertige Paket wird von der Gastkonfiguration verwendet, um die Azure Policy-Definitionen zu erstellen.
 
-Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Parameter des Cmdlets `New-GuestConfigurationPackage` beim Erstellen von Windows-Inhalten:
+Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Module, die für die Konfiguration erforderlich sind, müssen in `$Env:PSModulePath` verfügbar sein. Parameter des Cmdlets `New-GuestConfigurationPackage` beim Erstellen von Windows-Inhalten:
 
 - **Name**: Name des Pakets mit der Gastkonfiguration.
 - **Konfiguration:** Vollständiger Pfad für das kompilierte DSC-Konfigurationsdokument.
@@ -176,7 +205,7 @@ New-GuestConfigurationPackage `
 
 Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
 
-Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten.
+Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten. Der Test verwendet nur im Inhaltspaket enthaltene Module.
 
 Parameter des Cmdlets `Test-GuestConfigurationPackage`:
 

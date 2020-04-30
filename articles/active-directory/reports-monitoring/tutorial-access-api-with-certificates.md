@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014263"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081709"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
@@ -44,7 +44,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
     - Zugriffstoken für Benutzer, Anwendungsschlüssel und Zertifikate mit Verwendung von ADAL
     - Graph-API zur Verarbeitung von auf Seiten aufgeteilten Ergebnissen
 
-6. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Andernfalls können Sie es mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
 
@@ -63,13 +63,13 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), wählen Sie **Azure Active Directory** aus und dann **App-Registrierungen**, und wählen Sie Ihre Anwendung aus der Liste aus. 
 
-2. Wählen Sie **Einstellungen** > **Schlüssel** und dann **Öffentlichen Schlüssel** hochladen aus.
+2. Wählen Sie auf dem Blatt „Anwendungsregistrierung“ im Abschnitt **Verwalten** die Option **Zertifikate und Geheimnisse** aus, und wählen Sie dann **Zertifikat hochladen** aus.
 
-3. Wählen Sie die Zertifikatdatei aus dem vorherigen Schritt aus, und wählen Sie dann **Speichern** aus. 
+3. Wählen Sie die Zertifikatdatei aus dem vorherigen Schritt aus, und wählen Sie dann **Hinzufügen** aus. 
 
-4. Notieren Sie die Anwendungs-ID und den Fingerabdruck des Zertifikats, das Sie gerade in Ihrer Anwendung registriert haben. Um den Fingerabdruck zu finden, wechseln Sie auf Ihrer Anwendungsseite im Portal zu **Einstellungen**, und klicken Sie auf **Schlüssel**. Der Fingerabdruck befindet sich unter der Liste **Öffentliche Schlüssel**.
+4. Notieren Sie die Anwendungs-ID und den Fingerabdruck des Zertifikats, das Sie gerade in Ihrer Anwendung registriert haben. Um den Fingerabdruck zu finden, navigieren Sie auf Ihrer Anwendungsseite im Portal im Abschnitt **Verwalten** zu **Zertifikate und Geheimnisse**. Der Fingerabdruck befindet sich unter der Liste **Zertifikate**.
 
-5. Öffnen Sie das Anwendungsmanifest im Inline-Manifest-Editor, und ersetzen Sie die Eigenschaft *keyCredentials* durch Ihre neuen Zertifikatinformationen, indem Sie das folgende Schema verwenden. 
+5. Öffnen Sie das Anwendungsmanifest im Inline-Manifest-Editor, und überprüfen Sie, ob die Eigenschaft *keyCredentials* mit Ihren neuen Zertifikatinformationen aktualisiert wurde, wie unten dargestellt. 
 
    ```
    "keyCredentials": [
@@ -81,23 +81,20 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
-
-6. Speichern Sie das Manifest. 
-  
-7. Jetzt können Sie mit diesem Zertifikat ein Zugriffstoken für die MS Graph-API abrufen. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
+   ``` 
+6. Jetzt können Sie mit diesem Zertifikat ein Zugriffstoken für die MS Graph-API abrufen. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
 
    ![Azure-Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript zum Abfragen der Graph-API. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
+7. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript, um die Graph-API abzufragen. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
 
-9. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
+8. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
    ![Azure portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
+9. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
     ![Azure portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
+10. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

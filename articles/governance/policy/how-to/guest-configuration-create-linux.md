@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Linux
 description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Linux erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365405"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024981"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -24,6 +24,10 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 > [!IMPORTANT]
 > Benutzerdefinierte Richtlinien für Gastkonfigurationen sind eine Previewfunktion.
+>
+> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
+> Weisen Sie die folgende Richtliniendefinition zu, um die Erweiterung auf allen Linux-Computern im gewünschten Umfang bereitzustellen:
+>   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
@@ -42,7 +46,7 @@ Betriebssysteme, unter denen das Modul installiert werden kann:
 
 Für das Ressourcenmodul für Gastkonfigurationen wird die folgende Software benötigt:
 
-- PowerShell 6.2 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/scripting/install/installing-powershell).
+- PowerShell 6.2 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/scripting/install/installing-powershell).
 - Azure PowerShell 1.5.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
   - Nur die AZ-Module „Az.Accounts“ und „Az.Resources“ sind erforderlich.
 
@@ -89,7 +93,7 @@ supports:
     - os-family: unix
 ```
 
-Speichern Sie diese Datei in einem Ordner mit dem Namen `linux-path` in Ihrem Projektverzeichnis.
+Speichern Sie diese Datei mit dem Namen `inspec.yml` in einem Ordner namens `linux-path` in Ihrem Projektverzeichnis.
 
 Erstellen Sie dann die Ruby-Datei mit der InSpec-Sprachabstraktion, die zum Überwachen des Computers verwendet wird.
 
@@ -99,9 +103,9 @@ describe file('/tmp') do
 end
 ```
 
-Speichern Sie diese Datei in einem neuen Ordner mit dem Namen `controls` im Verzeichnis `linux-path`.
+Speichern Sie diese Datei mit dem Namen `linux-path.rb` in einem neuen Ordner namens `controls` im Verzeichnis `linux-path`.
 
-Zum Schluss erstellen Sie eine Konfiguration, importieren das Ressourcenmodul **GuestConfiguration** und verwenden die Ressource `ChefInSpecResource`, um den Namen des InSpec-Profils festzulegen.
+Erstellen Sie abschließend eine Konfiguration, importieren Sie das Ressourcenmodul **PSDesiredStateConfiguration**, und kompilieren Sie die Konfiguration.
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +123,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+Speichern Sie diese Datei mit dem Namen `config.ps1` im Projektordner. Führen Sie sie in PowerShell aus, indem Sie `./config.ps1` im Terminal ausführen. Eine neue MOF-Datei wird erstellt.
+
 Der Befehl `Node AuditFilePathExists` ist aus technischer Sicht nicht erforderlich, doch wird damit eine Datei namens `AuditFilePathExists.mof` anstelle der Standarddatei `localhost.mof` erstellt. Wenn der Name der MOF-Datei der Konfiguration folgt, können beim Arbeiten in großem Umfang viele Dateien problemlos organisiert werden.
+
+
 
 Sie sollten jetzt über folgende Projektstruktur verfügen:
 
@@ -150,11 +159,11 @@ Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
-Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie die das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
+Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
 
 Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten.
 
@@ -168,7 +177,7 @@ Führen Sie den folgenden Befehl aus, um das im vorherigen Schritt erstellte Pak
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie die Ausgabe des Cmdlets `New-GuestConfigurationPackage` per Pipezeichen an das Cmdlet `Test-GuestConfigurationPackage` an.

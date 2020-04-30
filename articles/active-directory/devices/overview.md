@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331808"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024437"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
@@ -53,6 +53,9 @@ Um ein Gerät in Azure AD aufzunehmen, haben Sie mehrere Möglichkeiten:
 
 ![Auf dem Blatt „Azure AD-Geräte“ angezeigte Geräte](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> Ein Hybridzustand ist mehr als nur der Zustand eines Geräts. Für einen gültigen Hybridzustand ist zudem ein gültiger Azure AD-Benutzer erforderlich.
+
 ## <a name="device-management"></a>Geräteverwaltung
 
 Geräte in Azure AD können mithilfe von Tools für die mobile Geräteverwaltung (Mobile Device Management, MDM) wie z. B. Microsoft Intune, Microsoft Endpoint Configuration Manager, Gruppenrichtlinie (eingebunden in Hybrid Azure AD), Tools für die mobile Anwendungsverwaltung (Mobile Application Management, MAM) oder anderen Tools von Drittanbietern verwaltet werden.
@@ -63,6 +66,8 @@ Das Registrieren und Hinzufügen von Geräten zu Azure AD ermöglicht Ihren Benu
 
 > [!NOTE]
 > Gerätebasierte Richtlinien für den bedingten Zugriff erfordern entweder hybride in Azure AD eingebundene Geräte oder kompatible in Azure AD eingebundene oder bei Azure AD registrierte Geräte.
+
+Das primäre Aktualisierungstoken (Primary Refresh Token, PRT) enthält Informationen zum Gerät und ist für einmaliges Anmelden erforderlich. Wenn Sie für eine Anwendung eine gerätebasierte Richtlinie für bedingten Zugriff festgelegt haben, wird der Zugriff ohne PRT verweigert. Für Richtlinien für bedingten Hybridzugriff sind ein Gerät mit Hybridzustand und ein gültiger angemeldeter Benutzer erforderlich.
 
 Für Geräte, die in Azure AD oder in Hybrid Azure AD eingebunden sind, kann das einmalige Anmelden für die lokalen Ressourcen sowie die Cloudressourcen Ihrer Organisation genutzt werden. Weitere Informationen finden Sie unter [Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten](azuread-join-sso.md).
 

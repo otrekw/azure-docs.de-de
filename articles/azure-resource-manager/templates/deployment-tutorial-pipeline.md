@@ -1,15 +1,15 @@
 ---
 title: Continuous Integration mit Azure Pipelines
 description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Testen und Bereitstellen von Azure Resource Manager-Vorlagen.
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255072"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084327"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -57,11 +57,7 @@ Sollten Sie kein GitHub-Konto besitzen, sehen Sie sich die [Voraussetzungen](#pr
 
 1. Wählen Sie die grüne Schaltfläche **New** (Neu) aus.
 1. Geben Sie unter **Repository Name** (Repositoryname) einen Repositorynamen ein.  Beispiel: **AzureRmPipeline-repo**. Denken Sie daran, alle Vorkommen von **AzureRmPipeline** durch Ihren Projektnamen zu ersetzen. In diesem Tutorial können Sie entweder **Public** (Öffentlich) oder **Private** (Privat) auswählen. Wählen Sie anschließend **Create Repository** (Repository erstellen) aus.
-1. Notieren Sie sich die URL. Die Repository-URL hat das folgende Format:
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. Notieren Sie sich die URL. Die Repository-URL hat das folgende Format: **https://github.com/ [IhrKontoname]/[IhrRepositoryname]** .
 
 Dieses Repository wird als *Remoterepository* bezeichnet. Jeder Entwickler des gleichen Projekts kann sein eigenes *lokales Repository* klonen und die Änderungen mit dem Remoterepository zusammenführen.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906853"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024879"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -62,11 +62,11 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
 1. Wählen Sie in den verfügbaren Optionen auf dieser Seite aus:
 
-    1. Wenn Sie mit Branchenrichtlinien arbeiten möchten, klicken Sie auf **Weitere Standards hinzufügen**. Weitere Informationen finden Sie unter [Aktualisieren von dynamischen Compliancepaketen](update-regulatory-compliance-packages.md).
+    1. Wenn Sie mit Branchenrichtlinien arbeiten möchten, wählen Sie **Weitere Standards hinzufügen** aus. Weitere Informationen finden Sie unter [Aktualisieren von dynamischen Compliancepaketen](update-regulatory-compliance-packages.md).
 
-    1. Um benutzerdefinierte Initiativen zuzuweisen und zu verwalten, klicken Sie auf **Benutzerdefinierte Initiativen hinzufügen**. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
+    1. Um benutzerdefinierte Initiativen zuzuweisen und zu verwalten, wählen Sie **Benutzerdefinierte Initiativen hinzufügen** aus. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
 
-    1. Zum Anzeigen und Bearbeiten der Standardrichtlinie klicken Sie auf **Effektive Richtlinie anzeigen** und fahren wie unten beschrieben fort. 
+    1. Zum Anzeigen und Bearbeiten der Standardrichtlinie wählen Sie **Effektive Richtlinie anzeigen** aus und fahren wie unten beschrieben fort. 
 
        ![Bildschirm mit Richtlinien](./media/security-center-policies/policy-screen.png)
        
@@ -96,20 +96,20 @@ Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Acces
 Wenn die Standardsicherheitsrichtlinie eine Empfehlung generiert, die für Ihre Umgebung nicht relevant ist, können Sie dies beenden, indem Sie die Richtliniendefinition deaktivieren, die diese Empfehlung sendet.
 Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
 
-1. Klicken Sie im Security Center im Abschnitt **Richtlinie und Konformität** auf **Sicherheitsrichtlinie**.
+1. Wählen Sie in Security Center im Abschnitt **Richtlinie und Konformität** die Option **Sicherheitsrichtlinie** aus.
 
    ![Richtlinienverwaltung](./media/tutorial-security-policy/policy-management.png)
 
-2. Klicken Sie auf das Abonnement, für das Sie die Empfehlung deaktivieren möchten.
+2. Wählen Sie das Abonnement aus, für das Sie die Empfehlung deaktivieren möchten.
 
    > [!NOTE]
    > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Aus diesem Grund erhalten Sie weiterhin Richtlinienempfehlungen, wenn Sie eine Abonnementrichtlinie deaktivieren und das Abonnement zu einer Verwaltungsgruppe gehört, die immer noch dieselbe Richtlinie verwendet. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
 
-1. Klicken Sie auf **Effektive Richtlinie anzeigen**.
+1. Wählen Sie **Effektive Richtlinie anzeigen** aus.
 
    ![Richtlinie deaktivieren](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. Klicken Sie auf die zugewiesene Richtlinie.
+1. Wählen Sie die zugewiesene Richtlinie aus.
 
    ![Richtlinie deaktivieren](./media/tutorial-security-policy/security-policy.png)
 
@@ -117,7 +117,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
    ![Richtlinie deaktivieren](./media/tutorial-security-policy/disable-policy.png)
 
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
    > [!NOTE]
    > Es kann bis zu 12 Stunden dauern, bis die Änderungen zum Deaktivieren der Richtlinie wirksam werden.

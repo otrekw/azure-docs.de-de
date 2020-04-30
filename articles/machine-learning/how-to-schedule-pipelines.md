@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116760"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024556"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planen von Machine Learning-Pipelines mit dem Azure Machine Learning-SDK für Python
 
@@ -91,13 +91,17 @@ Wenn die Pipeline mit [DataPath](https://docs.microsoft.com/python/api/azureml-c
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
 
-reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on time",
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Optionale Argumente beim Erstellen eines Plans
 
 Neben den zuvor beschriebenen Argumenten können Sie das `status`-Argument auf `"Disabled"` einstellen, um einen inaktiven Plan zu erstellen. Schließlich können Sie noch mit `continue_on_step_failure` einen booleschen Wert übergeben, der das standardmäßige Fehlerverhalten der Pipeline überschreibt.
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Verwenden von Azure Logic Apps für komplexere Workflows
+
+Azure Logic Apps unterstützt komplexere Workflows und ist wesentlich umfassender integriert als Azure Machine Learning-Pipelines. Weitere Informationen finden Sie unter [Auslösen der Ausführung einer Pipeline des maschinellen Lernens aus einer Logik-App](how-to-trigger-published-pipeline.md).
 
 ## <a name="view-your-scheduled-pipelines"></a>Anzeigen der geplanten Pipelines
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215968"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082321"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 
@@ -75,7 +75,7 @@ Für Umleitungs-URIs gelten gewisse Einschränkungen. Weitere Informationen find
 
 Je nachdem, welche Anwendung Sie registrieren, müssen Sie möglicherweise einige zusätzliche Einstellungen konfigurieren, wie z.B. folgende:
 
-* **Abmelde-URL**
+* **Abmelde-URL**:
 * Bei Einzelseiten-Apps können Sie **Implizite Genehmigung** aktivieren und die Token auswählen, die vom Autorisierungsendpunkt ausgegeben werden sollen.
 * Legen Sie für Desktop-Apps, die Token per integrierter Windows-Authentifizierung, Gerätecodeflow oder Benutzername/Kennwort im Abschnitt **Standardclienttyp** erhalten, die Einstellung **Anwendung als öffentlichen Client behandeln** auf **Ja** fest.
 * Bei Legacy-Apps, die das Live SDK für die Integration in den Microsoft-Kontodienst verwendet haben, konfigurieren Sie **Live SDK-Unterstützung**. Für neue Apps ist diese Einstellung nicht erforderlich.
@@ -110,7 +110,10 @@ Um Anwendungseinstellungen basierend auf der Plattform oder dem Gerät zu konfig
    | **Web**              | Geben Sie den **Umleitungs-URI** für Ihre Anwendung ein. |
    | **iOS/macOS**              | Geben Sie die **Bundle-ID** der App ein. Diese finden Sie in Xcode in der Datei „Info.plist“ oder in den Buildeinstellungen. Durch Hinzufügen der Bundle-ID wird automatisch ein Umleitungs-URI für die Anwendung erstellt. |
    | **Android**          | Geben Sie den **Paketnamen** der App an. Dieser befindet sich in der Datei „AndroidManifest.xml“.<br/>Generieren Sie den **Signaturhash**, und geben Sie ihn ein. Durch Hinzufügen des Signaturhashs wird automatisch ein Umleitungs-URI für die Anwendung erstellt.  |
-   | **Mobile Anwendungen und Desktopanwendungen**  | Optional. Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, wenn Sie Apps für Desktops und Geräte erstellen.<br/>Optional. Geben Sie einen **benutzerdefinierten Umleitungs-URI** ein, an den Benutzer als Antwort auf Authentifizierungsanforderungen von Azure AD umgeleitet werden. Verwenden Sie beispielsweise `https://localhost` für .NET Core-Anwendungen, bei denen eine Interaktion erwünscht ist. |
+   | **Mobile Anwendungen und Desktopanwendungen**  | Optional. Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, wenn Sie Apps für Desktops und Geräte erstellen.<br/>Optional. Geben Sie einen **benutzerdefinierten Umleitungs-URI** ein, an den Benutzer als Antwort auf Authentifizierungsanforderungen von Azure AD umgeleitet werden. Verwenden Sie beispielsweise `http://localhost` für .NET Core-Anwendungen, bei denen eine Interaktion erwünscht ist. |
+
+   > [!NOTE]
+   > In Active Directory-Verbunddienste (AD FS) und Azure AD B2C müssen Sie außerdem eine Portnummer angeben.  Beispiel: `http://localhost:1234`. 
 
    > [!IMPORTANT]
    > Bei mobilen Anwendungen, die nicht die neueste Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) oder keinen Broker verwenden, müssen die Umleitungs-URIs für diese Anwendungen unter **Desktop + Geräte** konfiguriert werden.

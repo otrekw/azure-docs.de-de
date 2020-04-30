@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216741"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085024"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer Java Spring-App
 
@@ -140,6 +140,14 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualisieren des Codes für die Verwendung eines Key Vault-Verweises
 
+1. Erstellen Sie eine Umgebungsvariable namens **APP_CONFIGURATION_ENDPOINT**. Legen Sie ihren Wert auf den Endpunkt Ihres App Configuration-Speichers fest. Den Endpunkt finden Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel**.
+
+1. Öffnen Sie die Datei *bootstrap.properties* im Ordner *Ressourcen*. Aktualisieren Sie diese Datei, sodass der App Configuration-Endpunkt anstelle einer Verbindungszeichenfolge verwendet wird.
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. Öffnen Sie *MessageProperties.java*. Fügen Sie eine neue Variable mit dem Namen *keyVaultMessage* hinzu:
 
     ```java
@@ -166,7 +174,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 1. Erstellen Sie eine neue Datei mit dem Namen *AzureCredentials.java*, und fügen Sie den folgenden Code hinzu:
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 1. Erstellen Sie eine neue Datei mit dem Namen *AppConfiguration.java*. Fügen Sie den folgenden Code hinzu:
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Erstellen Sie Ihre Spring Boot-Anwendung mit Maven, und führen Sie sie aus. Beispiel:
