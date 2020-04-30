@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten – PowerShell
+title: Konfigurieren von TLS-Terminierung mit Key Vault-Zertifikaten – PowerShell
 titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die einem HTTPS-fähigen Listener zugeordnet sind.
 services: application-gateway
@@ -8,20 +8,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457840"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurieren von TLS-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) ist ein als Plattform verwalteter Geheimnisspeicher, mit dem Sie Geheimnisse, Schlüssel und SSL-Zertifikate schützen können. Azure Application Gateway unterstützt die Integration mit Key Vault für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Diese Unterstützung ist auf die Application Gateway v2-SKU beschränkt.
+[Azure Key Vault](../key-vault/general/overview.md) ist ein als Plattform verwalteter Geheimnisspeicher, mit dem Sie Geheimnisse, Schlüssel und TLS/SSL-Zertifikate schützen können. Azure Application Gateway unterstützt die Integration mit Key Vault für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Diese Unterstützung ist auf die Application Gateway v2-SKU beschränkt.
 
-Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
+Weitere Informationen finden Sie unter [TLS-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
 
-In diesem Artikel wird gezeigt, wie ein Azure PowerShell-Skript verwendet wird, um Ihren Schlüsseltresor (Key Vault) mit Ihrem Application Gateway für SSL-Terminierungszertifikate integrieren.
+In diesem Artikel erfahren Sie, wie Sie ein Azure PowerShell-Skript verwenden, um Ihren Schlüsseltresor in Ihr Anwendungsgateway für TLS/SSL-Terminierungszertifikate zu integrieren.
 
 Für diesen Artikel ist das Azure PowerShell-Modul in der Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Artikel auszuführen, müssen Sie auch eine Verbindung mit Azure herstellen, indem Sie `Connect-AzAccount` ausführen.
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> Das EnableSoftDelete-Flag muss verwendet werden, damit die SSL-Terminierung ordnungsgemäß funktioniert. Wenn Sie die [Key Vault-Funktion „Vorläufiges Löschen“ über das Portal](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior) konfigurieren, muss für den Aufbewahrungszeitraum der Standardwert von 90 Tagen festgelegt werden. Application Gateway unterstützt noch keinen anderen Aufbewahrungszeitraum. 
+> Das -EnableSoftDelete-Flag muss verwendet werden, damit die TLS-Terminierung ordnungsgemäß funktioniert. Wenn Sie die [Key Vault-Funktion „Vorläufiges Löschen“ über das Portal](../key-vault/general/overview-soft-delete.md#soft-delete-behavior) konfigurieren, muss für den Aufbewahrungszeitraum der Standardwert von 90 Tagen festgelegt werden. Application Gateway unterstützt noch keinen anderen Aufbewahrungszeitraum. 
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Verknüpfen des SSL-Zertifikats mit Ihrem Schlüsseltresor
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Verknüpfen des TLS/SSL-Zertifikats mit Ihrem Schlüsseltresor
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zur SSL-Terminierung](ssl-overview.md)
+[Weitere Informationen zur TLS-Terminierung](ssl-overview.md)

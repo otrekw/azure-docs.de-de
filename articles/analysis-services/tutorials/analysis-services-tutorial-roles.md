@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406242"
+ms.locfileid: "81454253"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
@@ -67,7 +67,7 @@ In den übrigen Aufgaben verwenden Sie SSMS, um eine Verbindung mit Ihrem Server
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Hinzufügen eines Benutzerkontos zur Serveradministratorrolle
 
-In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Wenn Sie eine Sicherheitsgruppe hinzufügen, muss die Eigenschaft `MailEnabled` auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
+In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Serveradministratorrolle hinzu. Verwenden Sie beim Angeben einer Sicherheitsgruppe `obj:groupid@tenantid`.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Servernamen, und klicken Sie dann auf **Eigenschaften**. 
 2. Klicken Sie im Fenster **Eigenschaften für Analysis-Server** auf **Sicherheit** > **Hinzufügen**.

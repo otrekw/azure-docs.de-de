@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671951"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457296"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -120,7 +120,7 @@ Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte
 
 ## <a name="user-actions"></a>Benutzeraktionen
 
-Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden können. Die einzige derzeit unterstützte Aktion ist **Sicherheitsinformationen registrieren (Vorschauversion)** . Dadurch kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, ihre Sicherheitsinformationen zu registrieren versuchen. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)](../authentication/concept-registration-mfa-sspr-combined.md).
+Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden können. Die einzige derzeit unterstützte Aktion ist **Sicherheitsinformationen registrieren**. Dadurch kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, ihre Sicherheitsinformationen zu registrieren versuchen. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

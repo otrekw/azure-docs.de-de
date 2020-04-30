@@ -12,12 +12,13 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74462114"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453148"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) und SQL Server
 
@@ -31,7 +32,7 @@ SQL Server bietet Unterstützung für R und Python über das [Erweiterbarkeitsfr
 
 - R ist die einzige unterstützte Sprache in SQL-Datenbank. Momentan ist keine Unterstützung für Python vorhanden.
 - Die Version von R ist 3.4.4.
-- Es ist nicht erforderlich, `external scripts enabled` über `sp_configure` zu konfigurieren. Sobald Sie [registriert](sql-database-machine-learning-services-overview.md#signup) sind, wird Machine Learning für Ihre SQL-Datenbank aktiviert.
+- Es ist nicht erforderlich, `external scripts enabled` über `sp_configure` zu konfigurieren.
 
 ## <a name="package-management"></a>Paketverwaltung
 

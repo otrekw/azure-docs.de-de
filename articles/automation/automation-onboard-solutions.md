@@ -1,18 +1,18 @@
 ---
-title: Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
+title: Durchführen des Onboardings von Update-, Änderungsnachverfolgungs- und Bestandslösungen in Azure Automation
 description: Es wird beschrieben, wie Sie Update- und Änderungsnachverfolgungslösungen in Azure Automation integrieren.
 services: automation
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 721157c333e381799ef08930c667c51a51a4fd6a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75421843"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457619"
 ---
-# <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
+# <a name="onboard-update-change-tracking-and-inventory-solutions-to-azure-automation"></a>Durchführen des Onboardings von Update-, Änderungsnachverfolgungs- und Bestandslösungen in Azure Automation
 
 In diesem Tutorial wird beschrieben, wie Sie Update-, Änderungsnachverfolgungs- und Inventarlösungen für VMs in Azure Automation integrieren:
 
@@ -22,6 +22,9 @@ In diesem Tutorial wird beschrieben, wie Sie Update-, Änderungsnachverfolgungs-
 > * Installieren und Aktualisieren von Modulen
 > * Importieren des Runbooks für die Integration
 > * Starten des Runbooks
+
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,79 +40,84 @@ Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung
 
 ### <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-Die Lösung für Änderungsnachverfolgung und Bestand bietet die Möglichkeit zum Nachverfolgen von [Änderungen](automation-vm-change-tracking.md) und [Bestand](automation-vm-inventory.md) in Ihren virtuellen Computern. In diesem Schritt aktivieren Sie die Lösung auf einem virtuellen Computer.
+Die Lösungen für Änderungsnachverfolgung und Bestand bieten die Möglichkeit zum Nachverfolgen von [Änderungen](automation-vm-change-tracking.md) und [Bestand](automation-vm-inventory.md) auf Ihren virtuellen Computern. In diesem Schritt aktivieren Sie die Lösungen auf einem virtuellen Computer.
 
-1. Klicken Sie im Menü links auf die Option **Automation-Konten**, und wählen Sie dann Ihr Automation-Konto in der Liste aus.
-1. Klicken Sie unter **KONFIGURATIONSVERWALTUNG** auf **Bestand**.
-1. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich, oder erstellen Sie einen neuen. Klicken Sie auf die Schaltfläche **Aktivieren**.
+1. Wählen Sie im Azure-Portal die Option **Automation-Konten**, und wählen Sie dann in der Liste Ihr Automation-Konto aus.
+1. Wählen Sie unter **Konfigurationsverwaltung** die Option **Bestand** aus.
+1. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich, oder erstellen Sie einen neuen. 
+1. Klicken Sie auf **Aktivieren**.
 
-![Integrieren der Updatelösung](media/automation-onboard-solutions/inventory-onboard.png)
-
-Wenn Sie die Benachrichtigung erhalten haben, dass die Lösung für Änderungsnachverfolgung und Bestand integriert wurde, klicken Sie unter **KONFIGURATIONSVERWALTUNG** auf **Updateverwaltung**.
+    ![Integrieren der Updatelösung](media/automation-onboard-solutions/inventory-onboard.png)
 
 ### <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
 
 Mithilfe der Lösung zur Updateverwaltung können Sie Updates und Patches für Ihre Azure-Windows-VMs verwalten. Sie können den Status der verfügbaren Updates bewerten, die Installation der erforderlichen Updates planen und Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf die VM angewendet wurden. In diesem Schritt aktivieren Sie die Lösung für Ihre VM.
 
-1. Wählen Sie in Ihrem Automation-Konto unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
-1. Der ausgewählte Log Analytics-Arbeitsbereich ist derselbe, der im vorherigen Schritt verwendet wurde. Klicken Sie auf **Aktivieren**, um die Lösung für die Updateverwaltung zu integrieren.
+1. Wählen Sie in Ihrem Automation-Konto im Abschnitt **Updateverwaltung** die Option **Updateverwaltung** aus.
+1. Der ausgewählte Log Analytics-Arbeitsbereich ist derselbe, der im vorherigen Schritt verwendet wurde. Klicken Sie auf **Aktivieren**, um die Lösung für die Updateverwaltung zu integrieren. Während die Lösung zur Updateverwaltung installiert wird, wird ein blaues Banner angezeigt. 
 
-![Integrieren der Updatelösung](media/automation-onboard-solutions/update-onboard.png)
-
-Während die Lösung zur Updateverwaltung installiert wird, wird ein blaues Banner angezeigt. Wenn die Lösung aktiviert wurde, klicken Sie unter **KONFIGURATIONSVERWALTUNG** auf **Änderungsnachverfolgung**, um zum nächsten Schritt zu wechseln.
+    ![Integrieren der Updatelösung](media/automation-onboard-solutions/update-onboard.png)
 
 ### <a name="select-azure-vm-to-be-managed"></a>Auswählen der zu verwaltenden VM
 
 Nachdem die Lösungen aktiviert wurden, können Sie eine Azure-VM hinzufügen, die in diese Lösungen integriert werden soll.
 
-1. Wählen Sie in Ihrem Automation-Konto auf der Seite **Änderungsnachverfolgung** die Option **+ Azure-VM hinzufügen** aus, um Ihren virtuellen Computer hinzuzufügen.
+1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** aus. 
+2. Klicken Sie auf der Seite „Änderungsnachverfolgung“ auf **Azure-VMs hinzufügen**, um Ihren virtuellen Computer hinzuzufügen.
 
-1. Wählen Sie Ihre VM aus der Liste aus, und klicken Sie auf **Aktivieren**. Hierdurch wird die Lösung für Änderungsnachverfolgung und Bestand für den virtuellen Computer aktiviert.
+3. Wählen Sie Ihren virtuellen Computer aus der Liste aus, und klicken Sie auf **Aktivieren**. Dadurch werden die Lösungen für Änderungsnachverfolgung und Bestand für den virtuellen Computer aktiviert.
 
    ![Aktivieren der Updatelösung für die VM](media/automation-onboard-solutions/enable-change-tracking.png)
 
-1. Wenn Sie die Benachrichtigung erhalten haben, dass die VM integriert wurde, klicken Sie in Ihrem Automation-Konto unter **UPDATEVERWALTUNG** auf **Updateverwaltung**.
+4. Wenn Sie die Benachrichtigung erhalten haben, dass die VM integriert wurde, wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-1. Wählen Sie **+ Azure-VM hinzufügen** aus, um Ihren virtuellen Computer hinzuzufügen.
+5. Wählen Sie **Azure-VMs hinzufügen**, um Ihren virtuellen Computer hinzuzufügen
 
-1. Wählen Sie Ihre VM aus der Liste aus, und klicken Sie auf **Aktivieren**. Hierdurch wird die Lösung zur Updateverwaltung für den virtuellen Computer aktiviert.
+6. Wählen Sie Ihre VM aus der Liste aus, und klicken Sie auf **Aktivieren**. Dadurch wird die Lösung zur Updateverwaltung für den virtuellen Computer aktiviert.
 
    ![Aktivieren der Updatelösung für die VM](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Wenn Sie nicht auf den Abschluss der anderen Lösung warten, erhalten Sie beim Aktivieren der nächsten Lösung eine Nachricht folgenden Inhalts: *Eine andere Lösung wird zurzeit auf diesem oder einem anderen virtuellen Computer installiert. Nach Abschluss dieser Installation wird die Schaltfläche „Aktivieren“ aktiviert, und Sie können die Installation der Lösung auf diesem virtuellen Computer anfordern.*
+> Wenn Sie nicht auf den Abschluss der anderen Lösung warten, erhalten Sie beim Aktivieren der nächsten Lösung die folgende Meldung: `Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="install-and-update-modules"></a>Installieren und Aktualisieren von Modulen
 
-Es ist erforderlich, dass Sie ein Update auf die aktuellen Azure-Module durchführen und `AzureRM.OperationalInsights` importieren, um die Lösungsintegration erfolgreich zu automatisieren.
+Für ein erfolgreiches Automatisieren der Lösungsintegration müssen Sie das Update auf die aktuellen Azure-Module durchführen und das Modul [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) importieren.
 
 ## <a name="update-azure-modules"></a>Aktualisieren von Azure-Modulen
 
-Wählen Sie in Ihrem Automation-Konto unter **FREIGEGEBENE RESSOURCEN** die Option **Module** aus. Klicken Sie auf **Azure-Module aktualisieren**, um die Azure-Module auf die neueste Version zu aktualisieren. Klicken Sie bei Aufforderung auf **Ja**, um alle vorhandenen Azure-Module auf die aktuelle Version zu aktualisieren.
+1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. 
+2. Klicken Sie auf **Azure-Module aktualisieren**, um die Azure-Module auf die neueste Version zu aktualisieren. 
+3. Klicken Sie auf **Ja**, um alle vorhandenen Azure-Module auf die aktuelle Version zu aktualisieren.
 
-![Aktualisieren von Modulen](media/automation-onboard-solutions/update-modules.png)
+![Aktualisieren von Modulen](media/automation-onboard-solutions/update-modules.png) A
 
-### <a name="install-azurermoperationalinsights-module"></a>Installieren des AzureRM.OperationalInsights-Moduls
+### <a name="install-azoperationalinsights-module"></a>Installieren des Moduls „Az.OperationalInsights“
 
-Wählen Sie auf der Seite **Module** die Option **Katalog durchsuchen** aus, um den Modulkatalog zu öffnen. Suchen Sie nach AzureRM.OperationalInsights, und importieren Sie dieses Modul in das Automation-Konto.
+1. Wählen Sie im Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. 
+2. Wählen Sie die Option **Katalog durchsuchen** aus, um den Modulkatalog zu öffnen. 
+3. Suchen Sie nach „Az.OperationalInsights“, und importieren Sie dieses Modul in das Automation-Konto.
 
 ![Importieren des OperationalInsights-Moduls](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>Importieren des Runbooks für die Integration
 
-1. Wählen Sie in Ihrem Automation-Konto unter **PROZESSAUTOMATISIERUNG** die Option **Runbooks** aus.
+1. Wählen Sie in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbooks** aus.
 1. Klicken Sie auf **Katalog durchsuchen**.
-1. Suchen Sie nach **Update und Änderungsnachverfolgung**, klicken Sie auf das Runbook, und wählen Sie auf der Seite **Quelle anzeigen** die Option **Importieren** aus. Klicken Sie auf **OK**, um das Runbook in das Automation-Konto zu importieren.
+1. Suchen Sie nach `update and change tracking`.
+3. Wählen Sie das Runbook aus, und klicken Sie auf der Seite „Quelle anzeigen“ auf **Importieren**. 
+4. Klicken Sie auf **OK**, um das Runbook in das Automation-Konto zu importieren.
 
    ![Importieren des Runbooks für die Integration](media/automation-onboard-solutions/import-from-gallery.png)
 
-1. Klicken Sie auf der Seite **Runbook** auf **Bearbeiten**, und wählen Sie **Veröffentlichen** aus. Klicken Sie im Dialogfeld **Runbook veröffentlichen** auf **Ja**, um das Runbook zu veröffentlichen.
+6. Klicken Sie auf der Seite „Runbook“ auf **Bearbeiten**, und wählen Sie dann **Veröffentlichen** aus. 
+7. Klicken Sie im Bereich „Runbook veröffentlichen“ auf **Ja**, um das Runbook zu veröffentlichen.
 
 ## <a name="start-the-runbook"></a>Starten des Runbooks
 
 Sie müssen entweder eine Änderungsnachverfolgungs- oder Updatelösung in eine Azure-VM integriert haben, um dieses Runbook starten zu können. Hierfür sind ein vorhandener virtueller Computer und eine Ressourcengruppe sowie die integrierte Lösung für Parameter erforderlich.
 
-1. Öffnen Sie das Runbook „Enable-MultipleSolution“.
+1. Öffnen Sie das Runbook **Enable-MultipleSolution**.
 
    ![Runbooks für mehrere Lösungen](media/automation-onboard-solutions/runbook-overview.png)
 
@@ -131,8 +139,8 @@ Sie müssen entweder eine Änderungsnachverfolgungs- oder Updatelösung in eine 
 
 So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 
-* Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-* Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+1. Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
+2. Entfernen Sie den [Log Analytics-Agent für Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics-Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

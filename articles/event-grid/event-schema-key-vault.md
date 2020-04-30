@@ -1,40 +1,42 @@
 ---
-title: Azure Event Grid-Ereignisschema für Azure Key Vault
+title: Azure Key Vault als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Key Vault-Ereignisse im Azure Event Grid verfügbar sind
 services: event-grid
-author: msmbaldwin
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/25/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082873"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458248"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid-Ereignisschema für Azure Key Vault (Vorschau)
+# <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid-Quelle
 
 Dieser Artikel enthält die Eigenschaften und das Schema für Ereignisse in [Azure Key Vault](../key-vault/index.yml), derzeit als Vorschauversion verfügbar. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+
+### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Ein Azure Key Vault Konto generiert die folgenden Ereignistypen:
 
 | Vollständiger Ereignisname | Anzeigename des Ereignisses | BESCHREIBUNG |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionCreated | Certificate New Version Created (Neue Zertifikatversion erstellt) | Wird ausgelöst, wenn ein neues Zertifikat oder eine neue Zertifikatversion erstellt wird. |
-| Microsoft.KeyVault.CertificateNearExpiry | Certificate Near Expiry (Zertifikat läuft bald ab) | Wird ausgelöst, wenn die aktuelle Version des Zertifikats abläuft. (Der Standardwert ist 30 Tage vor dem Ablaufdatum.) |
+| Microsoft.KeyVault.CertificateNearExpiry | Certificate Near Expiry (Zertifikat läuft bald ab) | Wird ausgelöst, wenn die aktuelle Version des Zertifikats abläuft. (Das Ereignis wird 30 Tage vor dem Ablaufdatum ausgelöst.) |
 | Microsoft.KeyVault.CertificateExpired | Zertifikat abgelaufen | Wird ausgelöst, wenn das Zertifikat abgelaufen ist. |
 | Microsoft.KeyVault.KeyNewVersionCreated | Key New Version Created (Neue Schlüsselversion erstellt) | Wird ausgelöst, wenn ein neuer Schlüssel oder eine neue Schlüsselversion erstellt wird. |
-| Microsoft.KeyVault.KeyNearExpiry | Key Near Expiry (Schlüssel läuft bald ab) | Wird ausgelöst, wenn die aktuelle Version eines Schlüssels demnächst abläuft. (Der Standardwert ist 30 Tage vor dem Ablaufdatum.) |
+| Microsoft.KeyVault.KeyNearExpiry | Key Near Expiry (Schlüssel läuft bald ab) | Wird ausgelöst, wenn die aktuelle Version eines Schlüssels demnächst abläuft. (Das Ereignis wird 30 Tage vor dem Ablaufdatum ausgelöst.) |
 | Microsoft.KeyVault.KeyExpired | Schlüssel abgelaufen | Wird ausgelöst, wenn ein Schlüssel abgelaufen ist. |
 | Microsoft.KeyVault.SecretNewVersionCreated | Secret New Version Created (Neue Version des Geheimnisses erstellt) | Wird ausgelöst, wenn ein neues Geheimnis oder eine neue Geheimnisversion erstellt wird. |
-| Microsoft.KeyVault.SecretNearExpiry | Secret Near Expiry (Geheimnis läuft demnächst ab) | Wird ausgelöst, wenn die aktuelle Version eines Geheimnisses demnächst abläuft. (Der Standardwert ist 30 Tage vor dem Ablaufdatum.) |
+| Microsoft.KeyVault.SecretNearExpiry | Secret Near Expiry (Geheimnis läuft demnächst ab) | Wird ausgelöst, wenn die aktuelle Version eines Geheimnisses demnächst abläuft. (Das Ereignis wird 30 Tage vor dem Ablaufdatum ausgelöst.) |
 | Microsoft.KeyVault.SecretExpired | Secret Expired (Geheimnis abgelaufen) | Wird ausgelöst, wenn ein Geheimnis abgelaufen ist. |
 
-## <a name="event-examples"></a>Ereignisbeispiele
+### <a name="event-examples"></a>Ereignisbeispiele
 
 Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersionCreated**:
 
@@ -61,29 +63,35 @@ Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersio
 ]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+### <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | ---------- | ----------- |---|
-| id | string | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
-| vaultName | string | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectType | string | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectName | string | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
-| version | string | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
+| id | Zeichenfolge | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
+| vaultName | Zeichenfolge | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
+| objectType | Zeichenfolge | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
+| objectName | Zeichenfolge | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
+| version | Zeichenfolge | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
 | nbf | number | Das Anfangsdatum in Sekunden seit 1970-01-01t00:00:00Z für das Objekt, das dieses Ereignis ausgelöst hat. |
 | exp | number | Das Ablaufdatum in Sekunden seit 1970-01-01t00:00:00Z des Objekts, das dieses Ereignis ausgelöst hat. |
+
+## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Überwachen von Key Vault-Ereignissen mit Azure Event Grid](../key-vault/general/event-grid-overview.md) | Übersicht über die Integration von Key Vault in Event Grid. |
+| [Tutorial: Erstellen und Überwachen von Key Vault-Ereignissen mit Event Grid](../key-vault/general/event-grid-tutorial.md) | Erfahren Sie, wie Sie Event Grid-Benachrichtigungen für Key Vault einrichten. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
-* Weitere Informationen über die Integration von Key Vault in Event Grid finden Sie unter [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/event-grid-overview.md).
-* Ein Tutorial zur Key Vault-Integration in Event Grid finden Sie unter [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/event-grid-tutorial.md).
+* Weitere Informationen über die Integration von Key Vault in Event Grid finden Sie unter [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-overview.md).
+* Ein Tutorial zur Key Vault-Integration in Event Grid finden Sie unter [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-tutorial.md).
 * Weitere Anleitungen für Key Vault und Azure Automation finden Sie unter:
-    - [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
-    - [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/event-grid-overview.md)
-    - [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/event-grid-tutorial.md)
+    - [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
+    - [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-overview.md)
+    - [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-tutorial.md)
     - [Azure Automation – Übersicht](../automation/index.yml)

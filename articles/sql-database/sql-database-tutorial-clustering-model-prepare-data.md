@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345846"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452875"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Vorbereiten von Daten zum Durchführen von Clustering in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
@@ -43,13 +44,11 @@ In [Teil 2](sql-database-tutorial-clustering-model-build.md) erfahren Sie, wie S
 
 In [Teil 3](sql-database-tutorial-clustering-model-deploy.md) erlernen Sie das Erstellen einer gespeicherten Prozedur in einer Azure SQL-Datenbank, die Clustering in R basierend auf neuen Daten ausführen kann.
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: Falls Sie nicht über ein Azure-Abonnement verfügen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-* Azure SQL-Datenbank-Server mit aktivierten Machine Learning Services: Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
+* [Azure SQL-Datenbank mit Machine Learning Services (mit R)](sql-database-machine-learning-services-overview.md) muss aktiviert sein.
 
 * RevoScaleR-Paket: Unter [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) finden Sie Optionen zum lokalen Installieren dieses Pakets.
 
