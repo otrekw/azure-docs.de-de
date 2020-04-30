@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476653"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580606"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
 Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen und erläutert, wie Sie selbst Modelle in der Azure Time Series Insights Preview-Umgebung erstellen und aktualisieren.
 
 > [!TIP]
->  * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
+>
+> * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
 > * Informieren Sie sich über den [Azure Time Series Insights Preview-Explorer](time-series-insights-update-explorer.md), um zu erfahren, wie Sie in der Benutzeroberfläche ihres Zeitreihenmodells navigieren können.
 > * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](time-series-insights-update-how-to-tsm.md) mithilfe des Time Series Insights-Web-Explorers.
 
@@ -51,9 +52,9 @@ Ein **Zeitreihenmodell bietet eine praktische Lösung** für viele Szenarien in 
 
 [![Beispiel für intelligentes Herddiagramm des Zeitreihenmodells](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Das Zeitreihenmodell spielt eine wichtige Rolle bei Abfragen und Navigation, weil es Daten in Kontext bringt, indem es Vergleiche über Zeitbereiche hinweg und zwischen verschiedenen Arten von Sensoren und Geräten ermöglicht. (**A**) 
+* Das Zeitreihenmodell spielt eine wichtige Rolle bei Abfragen und Navigation, weil es Daten in Kontext bringt, indem es Vergleiche über Zeitbereiche hinweg und zwischen verschiedenen Arten von Sensoren und Geräten ermöglicht. (**A**)
 * Der Kontext wird für Daten weiter konkretisiert, weil im Zeitreihenmodell gespeicherte Daten Berechnungen von Zeitreihenabfragen als Variablen beibehalten und diese zur Abfragezeit erneut verwenden.
-* Das Zeitreihenmodell organisiert und aggregiert Daten, um Funktionen für Visualisierung und Verwaltung zu verbessern. (**B**) 
+* Das Zeitreihenmodell organisiert und aggregiert Daten, um Funktionen für Visualisierung und Verwaltung zu verbessern. (**B**)
 
 ### <a name="key-capabilities"></a>Wichtige Funktionen
 
@@ -290,7 +291,7 @@ Time Series Insights-Typen können über viele Variablen verfügen, die Formel- 
 
 Jede Variable kann eine der drei folgenden *Arten* aufweisen: *numerisch*, *kategorisch* und *aggregiert*.
 
-* **Numerische** Variablen arbeiten mit kontinuierlichen Werten. 
+* **Numerische** Variablen arbeiten mit kontinuierlichen Werten.
 * **Kategorische** Variablen arbeiten mit einem definierten Satz diskreter Werte.
 * Bei **aggregierten** Werten werden mehrere Variablen einer einzigen Art kombiniert (entweder nur „numerisch“ oder nur „kategorisch“).
 

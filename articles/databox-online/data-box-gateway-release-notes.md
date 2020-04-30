@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231446"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561055"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Anmerkungen zum Release zur allgemeinen Verfügbarkeit von Azure Data Box Edge/Azure Data Box Gateway
 
 ## <a name="overview"></a>Übersicht
 
-In den folgenden Versionshinweisen werden die schwerwiegenden offenen und die gelösten Probleme für das Release zur allgemeinen Verfügbarkeit (General Availability, GA) von Azure Data Box Edge und Azure Data Box Gateway beschrieben.
+In den folgenden Versionshinweisen werden die schwerwiegenden offenen und die gelösten Probleme für das Release zur allgemeinen Verfügbarkeit (General Availability, GA) von Azure Data Box Edge und Azure Data Box Gateway beschrieben. 
 
 Die Versionshinweise werden fortlaufend aktualisiert, und wenn schwerwiegende Probleme festgestellt werden, die eine Problemumgehung erfordern, werden sie hinzugefügt. Lesen Sie vor der Bereitstellung Ihres Data Box Edge/Data Box Gateway die Informationen in den Anmerkungen zu dieser Version sorgfältig durch.
 
@@ -50,4 +50,4 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme bei de
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Vorbereiten der Bereitstellung von Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [Vorbereiten der Bereitstellung von Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

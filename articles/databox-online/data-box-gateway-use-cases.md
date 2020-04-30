@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022680"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562392"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 
@@ -77,7 +77,7 @@ Diese Massenübertragung schließt die anfängliche Auffüllphase ab.
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Kontinuierliche Auffüllung mit Data Box Gateway
 
-Führen Sie für die kontinuierliche Erfassung mit Data Box Gateway die folgenden Schritte aus.
+Führen Sie für die kontinuierliche Erfassung mit Data Box Gateway die folgenden Schritte aus. 
 
 1. Erstellen Sie in Data Box Gateway eine Cloudfreigabe. Diese Freigabe lädt automatisch alle Daten in das Azure Storage-Konto hoch. Wechseln Sie in Ihrer Data Box Gateway-Ressource zu **Freigaben**, und klicken Sie auf **+ Freigabe hinzufügen**.
 

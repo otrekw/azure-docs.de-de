@@ -4,14 +4,15 @@ description: Hier finden Sie Anweisungen und Informationen zum Konfigurieren von
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 8a691b6d3f28800ab1cb38a72f124e950d485084
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422337"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580566"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>Konfigurieren von TLS in Azure Database for PostgreSQL – Hyperscale (Citus)
 Verbindungen von Clientanwendungen mit dem Koordinatorknoten von Hyperscale (Citus) erfordern TLS (Transport Layer Security), früher als SSL (Secure Sockets Layer) bezeichnet. Durch das Erzwingen von TLS-Verbindungen zwischen Ihrem Datenbankserver und Ihren Clientanwendungen können Sie sich vor Man-in-the-Middle-Angriffen schützen, indem Sie den Datenstrom zwischen dem Server und Ihrer Anwendung verschlüsseln.

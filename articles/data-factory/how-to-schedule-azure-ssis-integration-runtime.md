@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606072"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584024"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 
@@ -353,7 +353,7 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Erstellen von Zeitplänen für das Runbook zum Starten/Beenden der Azure-SSIS IR
 
-Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das eine Azure-SSIS IR starten oder beenden kann. In diesem Abschnitt erstellen Sie zwei Zeitpläne für das Runbook. Beim Konfigurieren des ersten Zeitplans geben Sie **START** für **VORGANG** ein. Gleichermaßen geben Sie beim Konfigurieren des zweiten Zeitplans **STOPP** für **VORGANG** an. Ausführliche Schritte zum Erstellen von Zeitplänen finden Sie im Artikel [Erstellen eines Zeitplans](../automation/shared-resources/schedules.md#creating-a-schedule).
+Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das eine Azure-SSIS IR starten oder beenden kann. In diesem Abschnitt erstellen Sie zwei Zeitpläne für das Runbook. Beim Konfigurieren des ersten Zeitplans geben Sie **START** für **VORGANG** ein. Gleichermaßen geben Sie beim Konfigurieren des zweiten Zeitplans **STOPP** für **VORGANG** an. Ausführliche Schritte zum Erstellen von Zeitplänen finden Sie im Artikel [Erstellen eines Zeitplans](../automation/shared-resources/schedules.md#create-a-schedule).
 
 1. Wählen Sie im Fenster **Runbook** die Option **Zeitpläne** aus, und wählen Sie auf der Symbolleiste **+ Zeitplan hinzufügen** aus. 
 
