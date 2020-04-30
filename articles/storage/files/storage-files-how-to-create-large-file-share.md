@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060994"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537677"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
 
@@ -20,7 +20,7 @@ Wenn Sie große Dateifreigaben in Ihrem Speicherkonto aktivieren, können Ihre D
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
@@ -43,11 +43,11 @@ Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig ge
     ![Screenshot: Erstellen einer Ressourcengruppe im Portal](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls 3 bis 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
-1. Wählen Sie einen Speicherort für Ihr Speicherkonto aus, und vergewissern Sie sich, dass es sich um [eine der für große Dateifreigaben unterstützte Replikation](storage-files-planning.md#regional-availability) handelt.
+1. Wählen Sie einen Standort für Ihr Speicherkonto aus.
 1. Legen Sie die Replikation auf **lokal redundanten Speicher** oder **zonenredundanten Speicher** fest.
 1. Behalten Sie die Standardwerte für die folgenden Felder bei:
 
-   |Feld  |value  |
+   |Feld  |Wert  |
    |---------|---------|
    |Bereitstellungsmodell     |Ressourcen-Manager         |
    |Leistung     |Standard         |

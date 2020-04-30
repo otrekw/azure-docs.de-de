@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677030"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604672"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -40,13 +40,13 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
 
-Nach dem Aktivieren der Updateverwaltung wird die Seite **Updateverwaltung** geöffnet. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
+Nach dem Aktivieren der Updateverwaltung wird die Seite „Updateverwaltung“ geöffnet. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
 
 Wählen Sie unter **Informationslink** den Updatelink aus, um den Supportartikel für das Update zu öffnen. Dort finden Sie wichtige Informationen zum Update.
 
 ![Anzeigen des Updatestatus](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Klicken Sie im Update auf eine andere Stelle, um den Bereich **Protokollsuche** für das ausgewählte Update zu öffnen. Die Abfrage für die Protokollsuche ist für das jeweilige Update vordefiniert. Sie können diese Abfrage ändern oder eine eigene Abfrage erstellen, um ausführliche Informationen zu Updates anzuzeigen, die in Ihrer Umgebung bereitgestellt wurden oder fehlen.
+Klicken Sie im Update auf eine andere Stelle, um den Bereich „Protokollsuche“ für das ausgewählte Update zu öffnen. Die Abfrage für die Protokollsuche ist für das jeweilige Update vordefiniert. Sie können diese Abfrage ändern oder eine eigene Abfrage erstellen, um ausführliche Informationen zu Updates anzuzeigen, die in Ihrer Umgebung bereitgestellt wurden oder fehlen.
 
 ![Anzeigen des Updatestatus](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -58,11 +58,11 @@ In diesem Schritt erfahren Sie, wie Sie eine Warnung einrichten, um über den St
 
 Navigieren Sie in Ihrem Automation-Konto unter **Überwachung** zu **Warnungen**, und klicken Sie auf **Neue Warnungsregel**.
 
-Ihr Automation-Konto ist bereits als Ressource ausgewählt. Falls Sie sie ändern möchten, klicken Sie auf **Auswählen**. Wählen Sie auf der Seite **Ressource auswählen** im Dropdownmenü **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie anschließend auf **Fertig**.
+Ihr Automation-Konto ist bereits als Ressource ausgewählt. Falls Sie sie ändern möchten, klicken Sie auf **Auswählen**. Wählen Sie auf der Seite „Ressource auswählen“ im Dropdownmenü **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie anschließend auf **Fertig**.
 
 Klicken Sie auf **Bedingung hinzufügen**, um das geeignete Signal für Ihre Updatebereitstellung auszuwählen. Die folgende Tabelle enthält die Details der beiden verfügbaren Signale:
 
-|Signalname|Dimensionen|Beschreibung|
+|Signalname|Dimensionen|BESCHREIBUNG|
 |---|---|---|
 |`Total Update Deployment Runs`|- Name der Updatebereitstellung<br>- Status|Dieses Signal wird für Warnungen im Zusammenhang mit dem allgemeinen Status einer Updatebereitstellung verwendet.|
 |`Total Update Deployment Machine Runs`|- Name der Updatebereitstellung</br>- Status</br>- Zielcomputer</br>- ID der Updatebereitstellungsausführung|Dieses Signal wird für Warnungen im Zusammenhang mit dem Status einer Updatebereitstellung auf bestimmten Computern verwendet.|
@@ -85,11 +85,11 @@ Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung sowie 
 
 Geben Sie unter **Aktionen** einen Namen für die Aktion ein (beispielsweise **Email Notification**). Wählen Sie unter **Aktionstyp** die Option **E-Mail/SMS/Push/Sprachanruf** aus. Wählen Sie unter **Details** die Option **Details bearbeiten** aus.
 
-Geben Sie auf der Seite **E-Mail/SMS/Push/Sprachanruf** einen Namen ein. Aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie eine gültige E-Mail-Adresse ein.
+Geben Sie auf der Seite „E-Mail/SMS/Push/Sprachanruf“ einen Namen ein. Aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie eine gültige E-Mail-Adresse ein.
 
 ![Konfigurieren der E-Mail-Aktionsgruppe](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-Klicken Sie im Bereich **E-Mail/SMS/Push/Sprachanruf** auf **OK**. Klicken Sie im Bereich **Aktionsgruppe hinzufügen** auf **OK**.
+Klicken Sie im Bereich „E-Mail/SMS/Push/Sprachanruf“ auf **OK**. Klicken Sie im Bereich „Aktionsgruppe hinzufügen“ auf **OK**.
 
 Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, wählen Sie unter **Regel erstellen** > **Aktionen anpassen** die Option **E-Mail-Betreff** aus. Klicken Sie abschließend auf **Warnungsregel erstellen**. Die Warnung informiert Sie, wann die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der Updatebereitstellung waren.
 
@@ -116,7 +116,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
   Es gibt die folgenden Klassifizierungstypen:
 
-   |OS  |Typ  |
+   |OS  |type  |
    |---------|---------|
    |Windows     | Kritische Updates</br>Sicherheitsupdates</br>Updaterollups</br>Feature Packs</br>Service Packs</br>Definitionsupdates</br>Tools</br>Aktualisierungen<br>Treiber        |
    |Linux     | Kritische Updates und Sicherheitsupdates</br>Andere Updates       |
@@ -132,7 +132,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 > Sie können keine Updates angeben, die für die Aufnahme in die Updatebereitstellung ersetzt wurden.
 >
 
-* **Zeitplaneinstellungen**: Der Bereich **Zeitplaneinstellungen** wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
+* **Zeitplaneinstellungen**: Der Bereich „Zeitplaneinstellungen“ wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie unter **Wiederholung** die Option **Einmal**. Übernehmen Sie den Standardwert „1 Tag“, und klicken Sie auf **OK**. Durch diese Einträge wird eine Zeitplanserie eingerichtet.
 

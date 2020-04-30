@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161187"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537235"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover von Signaturschlüsseln in Azure Active Directory
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es sollte beachtet werden, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, müssen den Schlüsselrolloverprozess programmgesteuert abwickeln können oder über einen regelmäßigen manuellen Rolloverprozess verfügen. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Übersicht über Signaturschlüssel in Azure AD
-Azure AD verwendet die auf Branchenstandards basierende Verschlüsselung mit öffentlichem Schlüssel zum Einrichten einer Vertrauensstellung zwischen sich selbst und den Anwendungen, die Azure AD verwenden. Konkret funktioniert dies wie folgt: Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn sich ein Benutzer bei einer Anwendung anmeldet, die Azure AD für die Authentifizierung verwendet, erstellt Azure AD ein Sicherheitstoken, das Informationen zum Benutzer enthält. Das Token wird von Azure AD mithilfe seines privaten Schlüssels signiert, bevor es zur Anwendung zurückgesendet wird. Um zu überprüfen, ob das Token gültig ist und von Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Hierzu wird der öffentliche, von Azure AD verfügbar gemachte Schlüssel verwendet, der im [OpenID Connect-Ermittlungsdokument](https://openid.net/specs/openid-connect-discovery-1_0.html) oder im SAML/WS-Fed-[Verbundmetadaten-Dokument](../azuread-dev/azure-ad-federation-metadata.md) des Mandanten enthalten ist.
+Azure AD verwendet die auf Branchenstandards basierende Verschlüsselung mit öffentlichem Schlüssel zum Einrichten einer Vertrauensstellung zwischen sich selbst und den Anwendungen, die Azure AD verwenden. In der Praxis funktioniert dies wie folgt: Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn sich ein Benutzer bei einer Anwendung anmeldet, die Azure AD für die Authentifizierung verwendet, erstellt Azure AD ein Sicherheitstoken, das Informationen zum Benutzer enthält. Das Token wird von Azure AD mithilfe seines privaten Schlüssels signiert, bevor es zur Anwendung zurückgesendet wird. Um zu überprüfen, ob das Token gültig ist und von Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Hierzu wird der öffentliche, von Azure AD verfügbar gemachte Schlüssel verwendet, der im [OpenID Connect-Ermittlungsdokument](https://openid.net/specs/openid-connect-discovery-1_0.html) oder im SAML/WS-Fed-[Verbundmetadaten-Dokument](../azuread-dev/azure-ad-federation-metadata.md) des Mandanten enthalten ist.
 
 Aus Sicherheitsgründen wird für den Signaturschlüssel von Azure AD regelmäßig ein Rollover durchgeführt, und bei einem Notfall kann auch sofort ein Rollover erfolgen. Jede in Azure AD integrierte Anwendung muss in der Lage sein, ein Schlüsselrollover zu verarbeiten, unabhängig davon, wie häufig dies geschieht. Wenn dies nicht der Fall ist und die Anwendung versucht, einen abgelaufenen Schlüssel zum Überprüfen der Signatur auf einem Token zu verwenden, schlägt die Anmeldeanforderung fehl.
 
@@ -308,4 +308,3 @@ Sie können überprüfen, ob Ihre Anwendung automatische Schlüsselrollover unte
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Gewusst wie: Durchführen eines manuellen Rollovers, falls die Anwendung keinen automatischen Rollover unterstützt
 Falls Ihre Anwendung **keinen** automatischen Rollover unterstützt, müssen Sie einen Prozess einrichten, der in regelmäßigen Abständen die Signaturschlüssel von Azure AD überprüft und ggf. einen manuellen Rollover durchführt. Entsprechende Skripts und Anweisungen finden Sie in [diesem GitHub-Repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey).
-

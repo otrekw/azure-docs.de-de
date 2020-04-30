@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die Verwendung von verwalteten Identitäten
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461445"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric (Vorschau)
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric
 
 Eine gängige Herausforderung beim Entwickeln von Cloudanwendungen ist die sichere Verwaltung der Anmeldeinformationen in Ihrem Code für die Authentifizierung bei verschiedenen Diensten, ohne diese lokal auf einer Entwicklerarbeitsstation oder in der Quellcodeverwaltung zu speichern. *Verwaltete Identitäten für Azure* lösen dieses Problem für alle Ihre Ressourcen in Azure Active Directory (Azure AD), indem sie automatisch verwaltete Identitäten in Azure AD bereitstellen. Sie können die Identität eines Diensts für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code gespeichert werden.
 
@@ -47,7 +47,7 @@ Verwaltete Identitäten für Service Fabric werden nur in Service Fabric-Cluster
 
 Die vom System zugewiesene Identität einer Anwendung ist eindeutig für diese Anwendung. Eine vom Benutzer zugewiesene Identität ist eine eigenständige Ressource, die mehreren Anwendungen zugewiesen werden kann. Innerhalb einer Anwendung kann eine einzelne (vom System oder vom Benutzer zugewiesene) Identität mehreren Diensten der Anwendung zugewiesen werden, jedem einzelnen Dienst kann jedoch nur eine einzige Identität zugewiesen werden. Schließlich muss einem Dienst explizit eine Identität zugewiesen werden, um auf diese Funktion zugreifen zu können. Tatsächlich ermöglicht die Zuordnung der Identitäten einer Anwendung zu den zugehörigen einzelnen Diensten eine Isolation in der Anwendung. In einem Dienst kann nur die ihm zugewiesene Identität verwendet werden.  
 
-Zurzeit werden die folgenden Szenarien für diese Vorschaufunktion unterstützt:
+Zurzeit werden die folgenden Szenarien für dieses Feature unterstützt:
 
 - Bereitstellen einer neuen Anwendung mit einem oder mehreren Diensten und einer oder mehreren zugewiesenen Identitäten
 
@@ -57,12 +57,7 @@ Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten
 
 - Entfernen oder Ändern der Identitäten, die einer Anwendung zugewiesen sind. Wenn Sie Änderungen vornehmen möchten, übermitteln Sie separate Bereitstellungen, um zunächst die Zuweisung einer neuen Identität hinzuzufügen und dann eine zuvor zugewiesene Identität zu entfernen. Das Entfernen einer Identität aus einer vorhandenen Anwendung kann unerwünschte Auswirkungen haben und z. B. die Anwendung in einen nicht aktualisierbaren Zustand bringen. Die Anwendung kann vollständig gelöscht werden, wenn das Entfernen einer Identität erforderlich ist. Beachten Sie, dass dadurch die der Anwendung zugeordnete vom System zugewiesene Identität gelöscht wird (sofern definiert) und alle Zuordnungen mit den der Anwendung vom Benutzer zugewiesenen Identitäten entfernt werden.
 
-- Die Service Fabric-Unterstützung für verwaltete Identitäten ist zurzeit nicht in [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md) integriert. Die Integration wird bis zum Ende der Vorschauphase für das Feature „Verwaltete Identität“ implementiert.
-
->
-> [!NOTE]
->
-> Dieses Feature befindet sich in der Vorschauphase. Möglicherweise unterliegt es häufigen Änderungen und ist nicht für Produktionsbereitstellungen geeignet.
+- Die Unterstützung für verwaltete Identitäten durch Service Fabric ist zurzeit nicht in [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md) integriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

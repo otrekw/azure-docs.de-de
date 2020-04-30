@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538085"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -132,6 +132,8 @@ Prüfen Sie zur Behandlung von Konnektivitätsproblemen Folgendes:
    ```
 
 - Stellen Sie beim VNET-Peering sicher, dass Sie die Anweisungen für die Einstellung [„Gatewaytransit zulassen“ und „Remotegateways verwenden“](#connect-from-on-premises-with-vnet-peering) befolgt haben.
+
+- Wenn Sie das VNET-Peering zum Verbinden einer in Azure App Service gehosteten Anwendung verwenden und das VNET der verwalteten Instanz über einen öffentlichen IP-Adressbereich verfügt, stellen Sie sicher, dass die Einstellungen Ihrer gehosteten Anwendung das Weiterleiten des ausgehenden Datenverkehrs an öffentliche IP-Netzwerke zulassen. Befolgen Sie die Anweisungen unter [Regionale VNET-Integration](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration).
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Erforderliche Versionen von Treibern und Tools
 

@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517141"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533536"
 ---
-# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Herunterladen einer Liste von Gruppen in einem Massenvorgang (Vorschau) in Azure Active Directory
+# <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Herunterladen einer Liste von Gruppen in einem Massenvorgang in Azure Active Directory
 
 Im Azure Active Directory-Portal (Azure AD) können Sie die Liste aller Gruppen in Ihrer Organisation per Massenvorgang in eine CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) herunterladen.
 
@@ -34,9 +34,9 @@ Im Azure Active Directory-Portal (Azure AD) können Sie die Liste aller Gruppen 
 
 ## <a name="check-download-status"></a>Überprüfen des Downloadstatus
 
-Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen (Vorschau)** anzeigen.
+Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-   ![Die Seite „Ergebnisse von Massenvorgängen“ zeigt Ihnen den Status von Massenanforderungen.](./media/groups-bulk-download/bulk-center.png)
+[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
 
