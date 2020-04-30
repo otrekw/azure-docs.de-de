@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679200"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687080"
 ---
 # <a name="get-service-access-tokens"></a>Abrufen von Dienstzugriffstoken
 
@@ -24,7 +24,7 @@ In diesem Artikel wird das Erstellen solcher Zugriffstoken beschrieben.
 
 ## <a name="token-service-rest-api"></a>REST-API des Tokendiensts
 
-Zum Erstellen von Zugriffstoken stellt der *Sicherheitstokendienst (STS)* eine einzelne Rest-API bereit. Die URL für den STS-Dienst von ARR ist [https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com).
+Zum Erstellen von Zugriffstoken stellt der *Sicherheitstokendienst (STS)* eine einzelne Rest-API bereit. Die URL für den STS-Dienst von ARR lautet „https:\//sts.mixedreality.azure.com“.
 
 ### <a name="get-token-request"></a>Anforderung „Token abrufen“
 

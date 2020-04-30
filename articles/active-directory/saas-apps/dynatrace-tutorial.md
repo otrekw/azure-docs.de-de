@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968698"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Dynatrace
 
@@ -140,7 +140,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-dynatrace-sso"></a>Konfigurieren des einmaligen Anmeldens für Dynatrace
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Dynatrace** müssen Sie die heruntergeladene **Verbundmetadaten-XML-Datei** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Dynatrace](https://www.dynatrace.com/services-support/) senden. Das Team konfiguriert diese Einstellung, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Dynatrace** müssen Sie die heruntergeladene **Verbundmetadaten-XML-Datei** und die kopierten URLs aus dem Azure-Portal an [Dynatrace](https://www.dynatrace.com/support/help/shortlink/users-sso-hub) senden. Sie können die Anweisungen auf der Dynatrace-Website befolgen, um die SAML-SSO-Verbindung auf beiden Seiten zu konfigurieren.
 
 ### <a name="create-dynatrace-test-user"></a>Erstellen eines Dynatrace-Testbenutzers
 

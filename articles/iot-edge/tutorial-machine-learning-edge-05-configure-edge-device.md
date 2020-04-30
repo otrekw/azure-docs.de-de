@@ -8,12 +8,13 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372693"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733007"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Tutorial: Konfigurieren eines IoT Edge-Geräts
 
@@ -26,7 +27,7 @@ Die Schritte in diesem Artikel werden normalerweise von einem Cloudentwickler au
 
 ## <a name="create-certificates"></a>Erstellen von Zertifikaten
 
-Damit ein Gerät als Gateway fungieren kann, muss es in der Lage sein, sich sicher mit nachgeschalteten Geräten zu verbinden. Mit Azure IoT Edge können Sie mithilfe der Public Key-Infrastruktur sichere Verbindungen zwischen Geräten einrichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes IoT-Gerät eine Verbindung mit einem IoT Edge-Gerät herstellt, das als transparentes Gateway fungiert. Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des IoT Edge-Geräts bestätigen. Weitere Informationen dazu, wie IoT Edge-Geräte Zertifikate verwenden, finden Sie unter [Details zur Verwendung von Azure IoT Edge-Zertifikaten](iot-edge-certs.md).
+Damit ein Gerät als Gateway fungieren kann, muss es in der Lage sein, sich sicher mit nachgeschalteten Geräten zu verbinden. Mit Azure IoT Edge können Sie mithilfe der Public Key-Infrastruktur sichere Verbindungen zwischen Geräten einrichten. In diesem Fall lassen Sie zu, dass ein nachgeschaltetes IoT-Gerät eine Verbindung mit einem IoT Edge-Gerät herstellt, das als transparentes Gateway fungiert. Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des IoT Edge-Geräts bestätigen. Weitere Informationen dazu, wie IoT Edge-Geräte Zertifikate verwenden, finden Sie unter [Details zur Verwendung von Azure IoT Edge-Zertifikaten](iot-edge-certs.md).
 
 In diesem Abschnitt erstellen wir die selbstsignierten Zertifikate mit einem Docker-Image, das wir anschließend erstellen und ausführen. Wir haben uns bei diesem Schritt für ein Docker-Image entschieden, weil sich hierdurch der Aufwand zum Erstellen der Zertifikate auf dem Windows-Entwicklungscomputer deutlich verringert. Informationen zu den mit dem Docker-Image automatisierten Komponenten finden Sie unter [Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten](how-to-create-test-certificates.md).
 
@@ -282,7 +283,7 @@ Als Nächstes aktualisieren wir die Zertifikate und den Hostnamen, indem wir die
     sudo systemctl restart iotedge
     ```
 
-7. Überprüfen Sie den Status des IoT Edge-Daemon. (Geben Sie nach dem Befehl „:q“ ein, um den Vorgang zu beenden.)
+7. Überprüfen Sie den Status des IoT Edge-Daemon. (Geben Sie nach dem Befehl „:q“ ein, um den Vorgang zu beenden.)
 
     ```bash
     systemctl status iotedge
@@ -296,7 +297,7 @@ Als Nächstes aktualisieren wir die Zertifikate und den Hostnamen, indem wir die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wir haben die Konfiguration einer Azure-VM als transparentes Azure IoT Edge-Gateway durchgeführt. Zunächst haben wir Testzertifikate generiert, die wir in Azure Key Vault hochgeladen haben. Anschließend haben wir ein Skript und eine Resource Manager-Vorlage verwendet, um den virtuellen Computer mit dem Image „Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime“ aus dem Azure Marketplace bereitzustellen. Als der virtuelle Computer bereit war, haben wir eine SSH-Verbindung hergestellt, uns bei Azure angemeldet und Zertifikate aus Key Vault heruntergeladen. Wir haben die Datei „config.yaml“ aktualisiert, um verschiedene Aspekte der IoT Edge-Runtimekonfiguration zu aktualisieren.
+Wir haben die Konfiguration einer Azure-VM als transparentes Azure IoT Edge-Gateway durchgeführt. Zunächst haben wir Testzertifikate generiert, die wir in Azure Key Vault hochgeladen haben. Anschließend haben Sie ein Skript und eine Resource Manager-Vorlage verwendet, um den virtuellen Computer mit dem Image „Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime“ aus dem Azure Marketplace bereitzustellen. Als der virtuelle Computer bereit war, haben wir eine SSH-Verbindung hergestellt, uns bei Azure angemeldet und Zertifikate aus Key Vault heruntergeladen. Wir haben die Datei „config.yaml“ aktualisiert, um verschiedene Aspekte der IoT Edge-Runtimekonfiguration zu aktualisieren.
 
 Weitere Informationen finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](iot-edge-as-gateway.md) sowie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
 

@@ -4,12 +4,12 @@ description: Informationen zum Authentifizieren von Anforderungen und Verwenden 
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294621"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687411"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 
@@ -311,7 +311,7 @@ Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für säm
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &interval= *{timeGrain}* &aggregation= *{aggreation}* &api-version= *{apiVersion}*
+**Anforderungs-URI:** https:\//management.azure.com/subscriptions/ *{Abonnement-ID}* /resourceGroups/ *{Ressourcengruppenname}* /providers/ *{Ressourcenanbieter-Namespace}* / *{Ressourcentyp}* / *{Ressourcenname}* /providers/microsoft.insights/metrics?metricnames= *{Metrik}* &timespan= *{Start-/Entdzeit}* &$filter= *{Filter}* &interval= *{Zeitintervall}* &aggregation= *{Aggreation}* &api-version= *{API-Version}*
 
 Die Anforderung zum Abrufen der drei zuerst aufgeführten APIs in absteigender Reihenfolge in Bezug auf die Anzahl von „Transactions“ während eines Zeitraums von fünf Minuten, wobei „GeoType = Primary“ gilt, würde beispielsweise wie folgt lauten:
 
@@ -463,7 +463,7 @@ Sobald die verfügbaren Metrikdefinitionen bekannt sind, können die entsprechen
 
 **Methode**: GET
 
-**Anforderungs-URI:** `https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Anforderungs-URI:** `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Um zum Beispiel RunsSucceeded-Metrikdatenpunkte für einen bestimmten Zeitraum und ein Aggregationsintervall von einer Stunde abzurufen, sähe die Anforderung wie folgt aus:
 

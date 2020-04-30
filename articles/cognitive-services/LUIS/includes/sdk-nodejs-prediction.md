@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372143"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732080"
 ---
 Verwenden Sie die LUIS-Runtime-Clientbibliothek (Language Understanding) für Node.js für Folgendes:
 
@@ -28,6 +28,7 @@ Verwenden Sie die LUIS-Runtime-Clientbibliothek (Language Understanding) für No
 
 * Language Understanding-Runtimeressource: [Im Azure-Portal erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
+* Eine LUIS-App-ID: Verwenden Sie die öffentliche IoT-App-ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Die im Schnellstartcode verwendete Benutzerabfrage ist spezifisch für diese App.
 
 ## <a name="setting-up"></a>Einrichten
 

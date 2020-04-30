@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 8a72d20101aacaf59b4be5c4a231b132237113f3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634095"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729626"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka-Entwicklerleitfaden für Azure Event Hubs
 Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Apache Kafka-Anwendungen in Azure Event Hubs integrieren können. 
@@ -75,8 +75,16 @@ Weitere Informationen finden Sie in den folgenden Schrittanleitungen in unserer 
 | [Verbinden von Apache Flink mit einem Event Hub](event-hubs-kafka-flink-tutorial.md) | Zeigt, wie Sie Apache Flink mit einem Event Hub verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. |
 | [Integrieren von Apache Kafka Connect in einen Event Hub (Vorschau)](event-hubs-kafka-connect-tutorial.md) | Führt Sie schrittweise durch die Vorgehensweise zum Integrieren von Kafka Connect in einen Event Hub und zum Bereitstellen von einfachen FileStreamSource- und FileStreamSink-Connectors. |
 | [Verbinden von Akka Streams mit einem Event Hub](event-hubs-kafka-akka-streams-tutorial.md) | Veranschaulicht, wie Sie Akka Streams mit einem Event Hub verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. |
-| [Verwenden von Spring Boot Starter für Apache Kafka mit Azure Event Hubs](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Beschreibt, wie Sie eine mit Spring Boot Initializer erstellte Java-basierte Spring Cloud Stream Binder-Anwendung zur Verwendung von Apache Kafka mit Azure Event Hubs konfigurieren. |
+| [Verwenden von Spring Boot Starter für Apache Kafka mit Azure Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Beschreibt, wie Sie eine mit Spring Boot Initializer erstellte Java-basierte Spring Cloud Stream Binder-Anwendung zur Verwendung von Apache Kafka mit Azure Event Hubs konfigurieren. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die Beispiele im GitHub-Repository [azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) unter den Schnellstart- und Tutorialordnern an.
+
+Lesen Sie auch die folgenden Artikel:
+
+- [Apache Kafka-Leitfaden zur Problembehandlung für Event Hubs](apache-kafka-troubleshooting-guide.md)
+- [Häufig gestellte Fragen (FAQ) zu Event Hubs für Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Apache Kafka-Migrationsleitfaden für Event Hubs](apache-kafka-migration-guide.md)
+
+
 

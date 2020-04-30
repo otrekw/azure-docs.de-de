@@ -3,12 +3,12 @@ title: Vorlage zum Erstellen von Resource Health-Warnungen
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062912"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759021"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -228,6 +228,9 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
 ```
 
 Wenn Sie bei allen vier Phasen der Integritätsereignisse informiert werden möchten, können Sie diese Bedingung vollständig entfernen, und Sie werden unabhängig von der Eigenschaft `status` benachrichtigt.
+
+> [!NOTE]
+> Jeder Abschnitt „anyOf“ sollte nur einen Feldtypwert enthalten.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Anpassen der Resource Health-Warnungen, um Ereignisse vom Typ „Unknown“ (Unbekannt) zu vermeiden
 

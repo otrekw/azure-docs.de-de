@@ -7,16 +7,19 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b7aebb5b9c1aa6566cedda869f97f2d1aa20df83
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: mqtt
+ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674652"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758201"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Tutorial: Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*Dieser Artikel richtet sich an Lösungs- und Geräteentwickler.*
 
 In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie eine Node.js-Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Diese Node.js-Anwendung simuliert das Verhalten eines Umgebungssensorgeräts. Sie verwenden ein exemplarisches _Gerätefunktionsmodell_, um in IoT Central eine _Gerätevorlage_ zu erstellen. Sie fügen der Gerätevorlage Ansichten hinzu, um einem Bediener die Interaktion mit einem Gerät zu ermöglichen.
 
@@ -325,7 +328,12 @@ Sie können sehen, wie das Gerät auf Befehle und Eigenschaftsaktualisierungen r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Gerätefunktionsmodellen und zur Erstellung Ihrer eigenen Gerätevorlagen finden Sie in der folgenden Schrittanleitung:
+Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Node.js kennengelernt. Vorschläge für die nächsten Schritte:
+
+- In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
+- Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
+
+Wenn Sie mit den Tutorials zu IoT Central fortfahren und mehr über das Erstellen einer IoT Central-Lösung erfahren möchten, lesen Sie den folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Definieren eines neuen IoT-Gerätetyps](./howto-set-up-template.md)
+> [Erstellen einer Gatewaygerätevorlage](./tutorial-define-gateway-device-type.md)

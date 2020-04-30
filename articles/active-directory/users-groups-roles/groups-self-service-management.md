@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298002"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768545"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory 
 
@@ -49,12 +49,15 @@ Erstellte Gruppen in | Standardverhalten von Sicherheitsgruppen | Standardverhal
 1. Legen Sie **Zugriff auf Gruppen im Zugriffspanel beschränken** auf **Nein** fest.
 1. Legen Sie **Benutzer können Sicherheitsgruppen erstellen** oder **Benutzer können Office 365-Gruppen erstellen** auf
 
-    - **Ja** fest: Alle Benutzer in Ihrer Azure AD-Organisation können neue Sicherheitsgruppen erstellen und Mitglieder zu diesen Gruppen hinzufügen. Diese neuen Gruppen werden auch für alle Benutzer im Zugriffsbereich angezeigt. Wenn die Richtlinieneinstellung der Gruppe dies zulässt, können andere Benutzer Anforderungen in Bezug auf den Beitritt zu diesen Gruppen erstellen.
+    - **Ja**: Alle Benutzer in Ihrer Azure AD-Organisation können neue Sicherheitsgruppen erstellen und Mitglieder zu diesen Gruppen hinzufügen. Diese neuen Gruppen werden auch für alle Benutzer im Zugriffsbereich angezeigt. Wenn die Richtlinieneinstellung der Gruppe dies zulässt, können andere Benutzer Anforderungen in Bezug auf den Beitritt zu diesen Gruppen erstellen.
     - **Nein**: Benutzer können keine Gruppen erstellen und keine vorhandenen Gruppen ändern, deren Besitzer sie sind. Sie können aber trotzdem die Mitgliedschaften dieser Gruppen verwalten und Anforderungen anderer Benutzer zum Beitreten zu diesen Gruppen genehmigen.
 
 Sie können auch **Besitzer, die in Azure-Portalen Mitglieder als Gruppenbesitzer zuweisen können** verwenden, um eine **detailliertere Zugriffssteuerung** über die Gruppenverwaltung nach dem Self-Service-Prinzip für Ihre Benutzer zu erreichen.
 
 Wenn Benutzer Gruppen erstellen können, dürfen alle Benutzer in Ihrer Organisation neue Gruppen erstellen und können dann als Standardbesitzer Mitglieder diesen Gruppen hinzufügen. Sie können keine Personen angeben, die ihre eigenen Gruppen erstellen können. Sie können lediglich Personen angeben, die ein anderes Gruppenmitglied als Gruppenbesitzer festlegen.
+
+> [!NOTE]
+> Eine Azure Active Directory Premium-Lizenz (P1 oder P2) ist erforderlich, damit Benutzer den Beitritt einer Sicherheitsgruppe oder Office 365-Gruppe anfordern und Besitzer Mitgliedsanforderungen genehmigen oder verweigern können. Ohne eine Azure Active Directory Premium-Lizenz können Benutzer ihre Gruppen weiterhin im Zugriffsbereich verwalten, sie können jedoch keine Gruppe erstellen, die im Zugriffsbereich eine Genehmigung durch den Besitzer erfordert, und sie können keinen Gruppenbeitritt anfordern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

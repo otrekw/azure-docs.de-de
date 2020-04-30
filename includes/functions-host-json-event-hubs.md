@@ -4,13 +4,41 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: b5d8f67a70961aab21312b6f241081dcb33f66fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67177885"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791674"
 ---
+### <a name="functions-2x-and-higher"></a>Functions 2.x und höher
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "eventHubs": {
+            "batchCheckpointFrequency": 5,
+            "eventProcessorOptions": {
+                "maxBatchSize": 256,
+                "prefetchCount": 512
+            }
+        }
+    }
+}  
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|maxBatchSize|10|Die maximale Ereignisanzahl, die pro Empfangsschleife empfangen wird.|
+|prefetchCount|300|Die standardmäßige Vorabrufanzahl, die vom zugrunde liegenden `EventProcessorHost` verwendet wird.|
+|batchCheckpointFrequency|1|Die Anzahl der zu verarbeitenden Ereignisbatches, bevor ein EventHub-Cursorprüfpunkt erstellt wird.|
+
+> [!NOTE]
+> Eine Referenz für „host.json“ in Azure Functions 2x und höheren Versionen finden Sie in der [host.json-Referenz für Azure Functions 2.x oder höher](../articles/azure-functions/functions-host-json.md).
+
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
     "eventHub": {
@@ -24,5 +52,9 @@ ms.locfileid: "67177885"
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |maxBatchSize|64|Die maximale Ereignisanzahl, die pro Empfangsschleife empfangen wird.|
-|prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden EventProcessorHost verwendet wird.| 
+|prefetchCount|–|Die standardmäßige Vorabrufanzahl, die vom zugrunde liegenden `EventProcessorHost` verwendet wird| 
 |batchCheckpointFrequency|1|Die Anzahl der zu verarbeitenden Ereignisbatches, bevor ein EventHub-Cursorprüfpunkt erstellt wird.| 
+
+> [!NOTE]
+> Eine Referenz für „host.json“ in Azure Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md).
+

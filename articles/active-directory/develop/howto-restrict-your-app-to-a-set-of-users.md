@@ -13,14 +13,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cccd2df334828c0b8103e4da2ffcd8549673b69c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bdc7e6e3795719128a8ecfb1e8bc97c1a9a08c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696995"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759032"
 ---
-# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern in einem Azure AD-Mandanten
 
 Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registriert sind, sind standardmäßig für alle Benutzer des Mandanten verfügbar, deren Authentifizierung erfolgreich war.
 
@@ -28,7 +28,7 @@ Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registri
 
 Für Mandantenadministratoren und Entwickler ist es häufig erforderlich, dass eine App auf eine bestimmte Gruppe von Benutzern beschränkt werden muss. Entwickler können dies erreichen, indem sie beliebte Autorisierungsmuster nutzen, z.B. die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC). Dieser Ansatz ist für Entwickler aber mit einem erheblichen Arbeitsaufwand verbunden.
 
-Azure AD ermöglicht Mandantenadministratoren und Entwicklern die Beschränkung einer App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen im Mandanten.
+Mandantenadministratoren und Entwickler können auch durch Verwendung dieser integrierten Funktion von Azure AD eine App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen im Mandanten beschränken.
 
 ## <a name="supported-app-configurations"></a>Unterstützte App-Konfigurationen
 
@@ -62,7 +62,7 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 
 1. Wählen Sie in der Liste die Anwendung aus, der Sie einen Benutzer oder eine Sicherheitsgruppe zuweisen möchten.
 1. Wählen Sie auf der Seite **Übersicht** der Anwendung im linken Navigationsmenü der Anwendung die Option **Eigenschaften** aus.
-1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer zuerst dieser Anwendung zugewiesen werden, bevor sie darauf zugreifen können.
+1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja**festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
 1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
 
 ### <a name="app-registration"></a>App-Registrierung
@@ -75,7 +75,7 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 1. Erstellen Sie die App, die Sie verwalten möchten, oder wählen Sie die App aus. Sie müssen der **Besitzer** dieser App-Registrierung sein.
 1. Folgen Sie auf der Seite **Übersicht** der Anwendung dem Link **Verwaltete Anwendung in lokalem Verzeichnis** unter der Zusammenfassung oben auf der Seite. Dadurch gelangen Sie zur _verwalteten Unternehmensanwendung_ Ihrer App-Registrierung.
 1. Wählen Sie auf dem Navigationsblatt auf der linken Seite die Option **Eigenschaften** aus.
-1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer zuerst dieser Anwendung zugewiesen werden, bevor sie darauf zugreifen können.
+1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja**festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
 1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Zuweisen von Benutzern und Gruppen zur App
@@ -89,6 +89,14 @@ Nachdem Sie Ihre App für die Aktivierung der Benutzerzuweisung konfiguriert hab
      Eine Liste mit Benutzern und Sicherheitsgruppen wird mit einem Textfeld angezeigt, mit dem bestimmte Benutzer oder Gruppen gesucht werden können. Auf diesem Bildschirm können Sie mehrere Benutzer und Gruppen auf einmal auswählen.
 
 1. Nachdem Sie mit dem Auswählen der Benutzer und Gruppen fertig sind, können Sie unten die Schaltfläche **Auswählen** verwenden, um mit dem nächsten Teil fortzufahren.
+1. (Optional) Wenn Sie App-Rollen in Ihrer Anwendung definiert haben, können mit der Option **Rolle auswählen** die ausgewählten Benutzer und Gruppen einer der Anwendungsrollen zuweisen. 
 1. Wählen Sie unten die Schaltfläche **Zuweisen** aus, um die Zuweisungen von Benutzern und Gruppen zur App abzuschließen. 
 1. Vergewissern Sie sich, dass die hinzugefügten Benutzer und Gruppen in der aktualisierten Liste **Benutzer und Gruppen** angezeigt werden.
 
+## <a name="more-information"></a>Weitere Informationen
+
+- [Vorgehensweise: Hinzufügen von App-Rollen in Ihrer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [Hinzufügen von Autorisierung zu einer ASP.NET Core-Web-App mit App-Rollen und Rollenansprüchen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM) (Verwenden von Sicherheitsgruppen und Anwendungsrollen in Ihren Apps (Video))
+- [Azure Active Directory, now with Group Claims and Application Roles](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
+- [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

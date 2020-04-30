@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390174"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731934"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -59,7 +59,7 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 
 * Operatortyp – Typ des Vergleichs.
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Sie können eine Zahl, boolescher Wert oder Zeichenfolge eingeben.
-* Wert oder Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
+* Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
 Wenn Sie einen einzelnen Filter mit mehreren Werten angeben, wird ein **OR**-Vorgang ausgeführt, daher muss das Schlüsselfeld einen der folgenden Werte aufweisen. Beispiel:
 
@@ -120,7 +120,7 @@ Die verfügbaren Operatoren für Zeichenfolgen sind:
 
 Bei allen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.
 
-### <a name="key"></a>Key
+### <a name="key"></a>Schlüssel
 
 Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den Schlüssel:
 
@@ -146,7 +146,7 @@ Verwenden Sie für ein benutzerdefiniertes Eingabeschema die Ereignisdatenfelder
 Diese Werte sind möglich:
 
 * number
-* string
+* Zeichenfolge
 * boolean
 * array
 

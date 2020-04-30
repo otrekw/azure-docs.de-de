@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187592"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756760"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
@@ -223,6 +223,39 @@ Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus
 - Ausgabeansprüche:
     - **extractedClaim**: 6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+Ruft das erste Element aus einem JSON-Datenelement ab.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputJson | Zeichenfolge | Die Anspruchstypen (ClaimTypes), die von der Anspruchstransformation verwendet werden, um das Element aus den JSON-Daten abzurufen. |
+| OutputClaim | Schlüssel | Zeichenfolge | Der erste Elementschlüssel im JSON-Code. |
+| OutputClaim | value | Zeichenfolge | Der erste Elementwert im JSON-Code. |
+
+Im folgenden Beispiel extrahiert die Anspruchstransformation das erste Element (den Vornamen) aus den JSON-Daten.
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+  - **inputJson**: {"givenName": "Emily", "lastName": "Smith"}
+- Ausgabeansprüche:
+  - **key**: givenName
+  - **value:** Emily
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 Abrufen des ersten Elements aus dem JSON-Datenarray.
@@ -294,3 +327,5 @@ Ausgabeanspruch:
   }
 }
 ```
+
+

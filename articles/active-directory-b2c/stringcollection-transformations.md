@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186776"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729720"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformationen von StringCollection-Ansprüchen
 
@@ -159,4 +159,38 @@ Im folgenden Beispiel wird überprüft, ob der stringCollection-Anspruchstyp `ro
 - Ausgabeansprüche:
     - **outputClaim**: "true"
 
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
+Überprüft, ob ein StringCollection-Anspruchstyp einen Anspruchswert enthält.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | collection | stringCollection | Der Anspruchstyp, der gesucht werden soll. |
+| InputClaim | item|Zeichenfolge| Der Anspruchstyp, der den zu suchenden Wert enthält.|
+|InputParameter|ignoreCase|Zeichenfolge|Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll.|
+| OutputClaim | outputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Ein boolescher Indikator, wenn die Auflistung eine derartige Zeichenfolge enthält |
+
+Im folgenden Beispiel wird überprüft, ob der stringCollection-Anspruchstyp `roles` den Wert des Anspruchstyps `role` enthält.
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- Eingabeansprüche:
+    - **collection**: ["reader", "author", "admin"]
+    - **item**: "Admin"
+- Eingabeparameter:
+    - **ignoreCase**: "true"
+- Ausgabeansprüche:
+    - **outputClaim**: "true"

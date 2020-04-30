@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260859"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758802"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
 
@@ -281,7 +281,7 @@ Aktualisieren Sie „KeyVaultProperties“ der *Clusterressource* mit Schlüssel
 
 **Aktualisieren**
 
-Diese Resource Manager-Anforderung ist ein asynchroner Vorgang.
+Diese Resource Manager-Anforderung ist beim Aktualisieren der Schlüsselbezeichnerdetails ein asynchroner Vorgang, während sie beim Aktualisieren des Kapazitätswerts ein synchroner Vorgang ist.
 
 > [!Warning]
 > Sie müssen einen vollständigen Text in der Aktualisierung der *Clusterressource* angeben, der *identity*, *sku*, *KeyVaultProperties* und *location* enthält. Wenn die *KeyVaultProperties*-Angaben fehlen, wird der Schlüsselbezeichner aus der *Clusterressource* entfernt, und eine [Schlüsselsperrung](#cmk-kek-revocation) wird ausgelöst.
@@ -314,7 +314,7 @@ Content-type: application/json
 **Antwort**
 
 200 OK und Header.
-Die Weitergabe des Schlüsselbezeichners dauert einige Minuten. Sie können den Bereitstellungsstatus auf zwei Arten überprüfen:
+Die Weitergabe des Schlüsselbezeichners dauert einige Minuten. Sie können den Aktualisierungsstatus auf zwei Arten überprüfen:
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
 2. Senden Sie eine GET-Anforderung für die *Clusterressource*, und überprüfen Sie die Eigenschaften *KeyVaultProperties*. Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
 
@@ -436,13 +436,13 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
 
 - Die maximale Anzahl von *Clusterressourcen* pro Abonnement ist auf zwei begrenzt.
 
-- Die Zuordnung der *Clusterressource* zum Arbeitsbereich sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Bereitstellung des ADX-Clusters abgeschlossen wurde. Daten, die vor dieser Bereitstellung gesendet werden, werden gelöscht und können nicht wiederhergestellt werden.
+- Die Zuordnung der *Clusterressource* zum Arbeitsbereich sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Bereitstellung des ADX-Clusters abgeschlossen wurde. Daten, die vor Abschluss der Bereitstellung an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
 - Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
 
-- Sobald der Arbeitsbereich einer *Clusterressource* zugeordnet ist, kann die Zuordnung zur *Clusterressource* nicht aufgehoben werden, da die Daten mit Ihrem Schlüssel verschlüsselt werden und ohne den KEK in Azure Key Vault nicht darauf zugegriffen werden kann.
+- Sie können die Zuordnung eines Arbeitsbereichs zu einer *Clusterressource* aufheben, wenn Sie entscheiden, dass CMK für einen bestimmten Arbeitsbereich nicht erforderlich ist. Nach dem Aufheben der Zuordnung werden neue erfasste Daten im freigegebenen Log Analytics-Speicher gespeichert, wie es auch vor der Zuordnung zur *Clusterressource* der Fall war. Sie können Daten, die vor und nach dem Aufheben der Zuordnung erfasst wurden, nahtlos abfragen, wenn Ihre *Clusterressource* mit gültigem Key Vault-Schlüssel bereitgestellt und konfiguriert wurde.
 
-- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI und PowerShell konfiguriert werden:
+- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:
 
   - [Vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) muss aktiviert werden.
   - Der [Bereinigungsschutz](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
@@ -470,6 +470,8 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
 
 - Wenn Sie versuchen, eine *Clusterressource* zu löschen, die einem Arbeitsbereich zugeordnet ist, tritt beim Löschvorgang ein Fehler auf.
 
+- Wenn beim Erstellen einer *Clusterressource* ein Konfliktfehler auftritt, haben Sie möglicherweise Ihre *Clusterressource* in den letzten 14 Tagen gelöscht und diese befindet sich nun im Zeitraum des vorläufigen Löschens. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn die *Clusterressource* dauerhaft gelöscht wird.
+
 - Rufen Sie alle *Clusterressourcen* für eine Ressourcengruppe ab:
 
   ```rst
@@ -488,6 +490,11 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
   **Antwort**
     
   Dieselbe Antwort wie bei *Clusterressourcen* für eine Ressourcengruppe, jedoch im Abonnementbereich.
-    
-- Löschen Sie die *Clusterressource*: Es wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung der Clusterressource, der Daten und verbundener Arbeitsbereiche innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Nach Ablauf des Zeitraums des vorläufigen Löschens können die *Clusterressource* und die Daten nicht wiederhergestellt werden. Die Zuordnung von Arbeitsbereichen zur *Clusterressource* wird aufgehoben, und es werden neue Daten im freigegebenen Speicher erfasst und mit dem Microsoft-Schlüssel verschlüsselt.
+
+- Aktualisieren Sie die *Kapazitätsreservierung* für die *Clusterressource*: Wenn sich das Datenvolumen für die zugeordneten Arbeitsbereiche ändert und Sie die Kapazitätsreservierungsebene aus Abrechnungsgründen aktualisieren möchten, folgen Sie den Anweisungen zum [Aktualisieren einer *Clusterressource*](#update-cluster-resource-with-key-identifier-details), und geben Sie Ihren neuen Kapazitätswert an. Die Kapazitätsreservierungsebene kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie eine Ebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt.
+
+- Löschen Sie die *Clusterressource*: Es wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung der *Clusterressource*, einschließlich der Daten, innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Nach Ablauf des Zeitraums des vorläufigen Löschens wird der Name der *Clusterressource* freigegeben, und die *Clusterressource* sowie die Daten werden dauerhaft gelöscht und können nicht wiederhergestellt werden. Alle Zuordnungen von Arbeitsbereichen zur *Clusterressource* werden beim Löschvorgang aufgehoben. Neue erfasste Daten werden im freigegebenen Log Analytics-Speicher gespeichert und mit dem Microsoft-Schlüssel verschlüsselt. Das Aufheben der Zuordnung von Arbeitsbereichen ist ein asynchroner Vorgang.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
 
   200 – OK
 
-- Stellen Sie die *Clusterressource* und die Daten wieder her: Erstellen Sie während des Zeitraums des vorläufigen Löschens eine *Clusterressource* mit demselben Namen und in demselben Abonnement, derselben Ressourcengruppe und derselben Region. Führen Sie den Schritt **Erstellen einer *Clusterresource*** aus, um die *Clusterressource* wiederherzustellen.
-
+- Stellen Sie die *Clusterressource* und die Daten wieder her: Eine *Clusterressource*, die in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann wiederhergestellt werden. Dies wird derzeit manuell von der Produktgruppe durchgeführt. Verwenden Sie Ihren Microsoft-Kanal für Wiederherstellungsanfragen.
 
 ## <a name="appendix"></a>Anhang
 

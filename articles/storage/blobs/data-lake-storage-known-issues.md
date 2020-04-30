@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061511"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767977"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -25,7 +25,7 @@ Immer mehr Blob Storage-Features funktionieren nun mit Konten, die über einen h
 
 ## <a name="supported-azure-service-integrations"></a>Unterstützte Azure-Dienstintegrationen
 
-Data Lake Storage Gen2 unterstützt verschiedene Azure-Dienste, die Sie zum Erfassen von Daten, zum Durchführen von Analysen und zum Erstellen visueller Darstellungen verwenden können. Eine Liste der unterstützten Azure-Dienste finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md).
+Azure Data Lake Storage Gen2 unterstützt verschiedene Azure-Dienste, die Sie zum Erfassen von Daten, zum Durchführen von Analysen und zum Erstellen visueller Darstellungen verwenden können. Eine Liste der unterstützten Azure-Dienste finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md).
 
 Siehe [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md).
 
@@ -62,14 +62,11 @@ Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchisc
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Dateisystemunterstützung in SDKs
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Dateisystemunterstützung in SDKs, PowerShell und der Azure CLI
 
-Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>Dateisystemunterstützung in PowerShell und der Azure CLI
-
-- Unterstützung für [PowerShell](data-lake-storage-directory-file-acl-powershell.md) und [Azure CLI](data-lake-storage-directory-file-acl-cli.md) befinden sich in der Public Preview.
 - Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
+- Die Unterstützung der [Azure CLI](data-lake-storage-directory-file-acl-cli.md) befindet sich in der öffentlichen Vorschau.
+
 
 ## <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
 
@@ -112,11 +109,8 @@ Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin,
 
 Wenn [anonymer Lesezugriff](storage-manage-access-to-resources.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>WASB-Treiber (Windows Azure Storage Blob)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>WASB-Treiber (Windows Azure Storage Blob) (bei Data Lake Storage Gen2 nicht unterstützt)
 
-Derzeit gibt es mehrere Probleme im Zusammenhang mit der Verwendung des WASB-Treibers in Verbindung mit Konten mit einem hierarchischen Namespace. Es wird empfohlen, in Ihren Workloads den [ABFS](data-lake-storage-abfs-driver.md)-Treiber (Azure Blob File System) zu verwenden. 
+Derzeit treten beim WASB-Treiber, der nur für die Verwendung mit der Blob-API entwickelt wurde, in einigen gängigen Szenarien Probleme auf. Dies gilt insbesondere, wenn es sich um einen Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace handelt. Durch einen Multiprotokollzugriff für Data Lake Storage lassen sich diese Probleme nicht beheben. 
 
-
-
-
-
+Zum gegenwärtigen Zeitpunkt (und wahrscheinlich auch in absehbarer Zukunft) werden Kunden, die den WASB-Treiber als Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace verwenden, nicht unterstützt. Stattdessen wird empfohlen, den [ABFS](data-lake-storage-abfs-driver.md)-Treiber (Azure Blob File System) in der Hadoop-Umgebung zu verwenden. Wenn Sie versuchen, eine Migration von einer lokalen Hadoop-Umgebung mit einer früheren Version als Hadoop Branch-3 durchzuführen, öffnen Sie ein Azure-Supportticket, damit wir uns mit Ihnen in Verbindung setzen können, um den richtigen Weg für Sie und Ihre Organisation zu finden.

@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Spring Boot-Apps Featureflags hinzufüg
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944338"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687364"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -57,7 +57,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Öffnen Sie die Datei *pom.xml* in einem Text-Editor, und fügen Sie der Abhängigkeitenliste (`<dependencies>`) Folgendes hinzu:
 
-### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+    **Spring Cloud 1.2.x**
 
     ```xml
     <dependency>
@@ -103,7 +103,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 1. Navigieren Sie zum Verzeichnis `resources` Ihrer App, und öffnen Sie `bootstrap.properties`.  Sollte die Datei nicht vorhanden sein, erstellen Sie sie. Fügen Sie der Datei die folgende Zeile hinzu:
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Wählen Sie im App Configuration-Portal für Ihren Konfigurationsspeicher die Option `Access keys` auf der Seitenleiste aus. Wählen Sie die Registerkarte „Schreibgeschützte Schlüssel“ aus. Kopieren Sie den Wert der primären Verbindungszeichenfolge.
@@ -283,7 +283,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
     mvn spring-boot:run
     ```
 
-1. Öffnen Sie ein Browserfenster, und navigieren Sie zur Standard-URL für eine lokal gehostete Web-App: `https://localhost:8080`.
+1. Öffnen Sie ein neues Browserfenster, und navigieren Sie zur URL `http://localhost:8080/welcome`.
 
     ![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

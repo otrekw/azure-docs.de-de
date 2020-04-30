@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-E
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222727"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757179"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -20,7 +20,7 @@ Im dritten Teil der Serie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Definieren eines HTTPS-Endpunkts im Dienst
 > * Konfigurieren von Kestrel für die Verwendung von HTTPS
-> * Installieren des SSL-Zertifikats auf den Remoteclusterknoten
+> * Installieren des TLS-/SSL-Zertifikats auf den Remoteclusterknoten
 > * Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 > * Öffnen von Port 443 im Azure-Lastenausgleich
 > * Bereitstellen der Anwendung in einem Remotecluster
@@ -41,7 +41,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/) (Version 15.5 oder höher) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+* Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/) (Version 16.5 oder höher) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Beziehen eines Zertifikats oder Erstellen eines selbstsignierten Entwicklungszertifikats
@@ -156,27 +156,42 @@ Ersetzen Sie „&lt;your_CN_value&gt;“ durch „mytestcert“, falls Sie mithi
 Beachten Sie, dass bei einer lokalen Bereitstellung in `localhost` die Verwendung von „CN=localhost“ empfohlen wird, um Authentifizierungsausnahmen zu vermeiden.
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 
-In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\LocalMachine\My` auf dem Entwicklungscomputer importiert.  Gewähren Sie nun dem Konto, das den Dienst ausführt (standardmäßig „NETWORK SERVICE“), explizit Zugriff auf den privaten Schlüssel des Zertifikats. Dieser Schritt kann manuell über das Tool „certlm.msc“ ausgeführt werden. Es empfiehlt sich jedoch, automatisch ein PowerShell-Skript auszuführen. Hierzu können Sie unter [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) im Dienstmanifest **ein Startskript konfigurieren**.
+In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\LocalMachine\My` auf dem Entwicklungscomputer importiert.  Gewähren Sie nun dem Konto, das den Dienst ausführt (standardmäßig „NETWORK SERVICE“), explizit Zugriff auf den privaten Schlüssel des Zertifikats. Dieser Schritt kann manuell über das Tool „certlm.msc“ ausgeführt werden. Es empfiehlt sich jedoch, automatisch ein PowerShell-Skript auszuführen. Hierzu können Sie unter **SetupEntryPoint** im Dienstmanifest [ein Startskript konfigurieren](service-fabric-run-script-at-service-startup.md).
+
+>[!NOTE]
+> Service Fabric unterstützt das Deklarieren von Endpunktzertifikaten nach Fingerabdruck oder allgemeinem Antragstellernamen. In diesem Fall richtet die Runtime die Bindung und eine Zugriffssteuerungsliste für den privaten Schlüssel des Zertifikats für die Identität ein, als die der Dienst ausgeführt wird. Die Laufzeit überwacht außerdem das Zertifikat auf Änderungen/Verlängerungen und richtet eine neue Zugriffssteuerungsliste für den entsprechenden privaten Schlüssel ein.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurieren des Setupeinstiegspunkts für Dienste
 
@@ -385,7 +400,7 @@ $slb | Set-AzLoadBalancer
 
 Speichern Sie alle Dateien, wechseln Sie vom Debug- in den Releasemodus, und drücken Sie F6, um das Projekt neu zu erstellen.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und klicken Sie auf **Veröffentlichen**. Wählen Sie den Verbindungsendpunkt des Clusters aus, den Sie im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellt haben, oder wählen Sie einen anderen Cluster aus.  Klicken Sie auf **Veröffentlichen**, und veröffentlichen Sie die Anwendung für den Remotecluster.
 
-Wenn die Anwendung bereitgestellt wurde, navigieren Sie in einem Webbrowser zu [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443). (Aktualisieren Sie die URL mit dem Verbindungsendpunkt für Ihren Cluster.) Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
+Wenn die Anwendung bereitgestellt wurde, navigieren Sie in einem Webbrowser zu `https://mycluster.region.cloudapp.azure.com:443`. (Aktualisieren Sie die URL mit dem Verbindungsendpunkt für Ihren Cluster.) Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
 
 ![Voting-Anwendung][image3]
 
@@ -396,7 +411,7 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Definieren eines HTTPS-Endpunkts im Dienst
 > * Konfigurieren von Kestrel für die Verwendung von HTTPS
-> * Installieren des SSL-Zertifikats auf den Remoteclusterknoten
+> * Installieren des TLS-/SSL-Zertifikats auf den Remoteclusterknoten
 > * Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 > * Öffnen von Port 443 im Azure-Lastenausgleich
 > * Bereitstellen der Anwendung in einem Remotecluster

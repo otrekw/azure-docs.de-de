@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472774"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756792"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -369,7 +369,7 @@ Kopiert lokalisierte Zeichenfolgen in Ansprüche.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | Der Name der lokalisierten Zeichenfolge. | Zeichenfolge | Die Liste mit den Anspruchstypen, die erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| OutputClaim | Der Name der lokalisierten Zeichenfolge. | Zeichenfolge | Die Liste der Anspruchstypen, die nach dem Aufrufen dieser Anspruchstransformation erstellt werden. |
 
 Verwenden Sie die Anspruchstransformation „GetLocalizedStringsTransformation“ wie folgt:
 
@@ -615,13 +615,17 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 | inputClaim | claimToMatch | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
 | InputParameter | matchTo | Zeichenfolge | Der reguläre Ausdruck, mit dem eine Übereinstimmung bestehen soll. |
 | InputParameter | outputClaimIfMatched | Zeichenfolge | Der Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
+| InputParameter | extractGroups | boolean | [Optional] Gibt an, ob die Regex-Übereinstimmung Gruppenwerte extrahieren soll. Mögliche Werte sind `true` oder `false` (Standardwert). | 
 | OutputClaim | outputClaim | Zeichenfolge | Wenn es eine Übereinstimmung mit dem regulären Ausdruck gibt, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder Null, wenn keine Übereinstimmung vorliegt. |
 | OutputClaim | regexCompareResultClaim | boolean | Der Ausgabeanspruchstyp des Übereinstimmungsergebnisses mit dem regulären Ausdruck, der anhand des Übereinstimmungsergebnisses auf `true` oder `false` festgelegt werden muss. |
+| OutputClaim| Der Name des Anspruchs| Zeichenfolge | Die Liste der Anspruchstypen, die nach dem Aufrufen dieser Anspruchstransformation erstellt werden, wenn der Eingabeparameter „extractGroups“ auf „true“ festgelegt ist. Der Name des Anspruchstyps (ClaimType) muss mit dem Regex-Gruppennamen übereinstimmen. | 
 
-Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft, ob die angegebene Telefonnummer gültig ist.
+### <a name="example-1"></a>Beispiel 1
+
+Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft, ob die angegebene Telefonnummer gültig ist.
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird �
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Beispiel
-
 - Eingabeansprüche:
     - **claimToMatch:** "64854114520"
 - Eingabeparameter:
@@ -647,6 +649,39 @@ Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird �
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>Beispiel 2
+
+Überprüft, ob die angegebene E-Mail-Adresse gültig ist, und gibt den E-Mail-Alias zurück.
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Eingabeansprüche:
+    - **claimToMatch**: „emily@contoso.com“
+- Eingabeparameter:
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: „isEmail“
+    - **extractGroups**: true
+- Ausgabeansprüche:
+    - **outputClaim**: „isEmail“
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Überprüft, ob ein Zeichenfolgen-Anspruch und der Eingabeparameter `matchTo` gleich sind, und legt die Ausgabeansprüche mit dem Wert in den Eingabeparametern `stringMatchMsg` und `stringMatchMsgCode` fest, zusammen mit dem Ausgabeanspruch „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss.

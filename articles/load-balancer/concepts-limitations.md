@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064278"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768256"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Komponenten und Einschränkungen von Load Balancer
 Azure Load Balancer enthält mehrere wichtige Komponenten für den Betrieb.  Diese Komponenten können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder über Azure PowerShell konfiguriert werden.  
@@ -171,6 +171,8 @@ Der Lastenausgleich unterstützt sowohl Basic- als auch Standard-SKUs. Diese SKU
 
 Die Konfiguration des gesamten Szenarios kann sich je nach SKU leicht unterscheiden. In der Lastenausgleichsdokumentation wird darauf hingewiesen, wenn ein Artikel nur für eine bestimmte SKU gilt. Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](load-balancer-standard-overview.md).
 
+Informationen zum Aktualisieren einer Load Balancer-Instanz im Tarif „Basic“ auf Load Balancer Standard finden Sie unter [Upgraden einer öffentlichen Azure Load Balancer-Instanz](upgrade-basic-standard.md).
+
 >[!NOTE]
 > Microsoft empfiehlt Load Balancer Standard.
 Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgruppen können nur mit einer SKU, nie mit beiden verbunden werden. Die Load Balancer-SKU muss mit der SKU für öffentliche IP-Adressen übereinstimmen, wenn Sie sie mit öffentlichen IP-Adressen verwenden. Load Balancer-SKUs und SKUs für öffentliche IP-Adressen sind nicht änderbar.
@@ -207,6 +209,7 @@ Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://docs.m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Unter [Upgraden einer öffentlichen Azure Load Balancer-Instanz](upgrade-basic-standard.md) erfahren Sie, wie Sie eine Load Balancer-Instanz im Tarif „Basic“ auf Load Balancer Standard aktualisieren.
 - Informationen zu den ersten Schritten mit einer Load Balancer-Instanz finden Sie unter [Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal](quickstart-load-balancer-standard-public-portal.md). Dort erfahren Sie, wie Sie eine Load Balancer-Instanz und virtuelle Computer mit einer installierten benutzerdefinierten IIS-Erweiterung erstellen und den Lastenausgleich für die Web-App zwischen den virtuellen Computern vornehmen.
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
 - Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)

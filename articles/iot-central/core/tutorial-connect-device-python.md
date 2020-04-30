@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891593"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758189"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>Tutorial: Erstellen einer Python-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*Dieser Artikel richtet sich an Lösungs- und Geräteentwickler.*
 
 In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie eine Python-Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Diese Python-Anwendung simuliert das Verhalten eines Umgebungssensorgeräts. Sie verwenden ein exemplarisches _Gerätefunktionsmodell_, um in IoT Central eine _Gerätevorlage_ zu erstellen. Sie fügen der Gerätevorlage Ansichten hinzu, um einem Bediener die Interaktion mit einem Gerät zu ermöglichen.
 
@@ -239,7 +241,7 @@ In den folgenden Schritten wird eine Python-Clientanwendung erstellt, die sich m
             )
     ```
 
-    Wenn der Bediener eine beschreibbare Eigenschaft in der IoT Central-Anwendung festlegt, verwendet die Anwendung eine vom Gerätezwilling gewünschte Eigenschaft, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mit einer vom Gerätezwilling gemeldeten Eigenschaft. Wenn IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Synchronisiert** aktualisiert.
+    Wenn der Bediener eine beschreibbare Eigenschaft in der IoT Central-Anwendung festlegt, verwendet die Anwendung eine vom Gerätezwilling gewünschte Eigenschaft, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mit einer gemeldeten Eigenschaft des Gerätezwillings. Wenn IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Synchronisiert** aktualisiert.
 
     Die Namen der Eigenschaften (`name` und `brightness`) müssen mit den in der Gerätevorlage verwendeten Namen übereinstimmen.
 
@@ -303,7 +305,12 @@ Sie können sehen, wie das Gerät auf Befehle und Eigenschaftsaktualisierungen r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Gerätefunktionsmodellen und zur Erstellung Ihrer eigenen Gerätevorlagen finden Sie in der folgenden Schrittanleitung:
+Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Node.js kennengelernt. Vorschläge für die nächsten Schritte:
+
+- In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
+- Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
+
+Wenn Sie mit den Tutorials zu IoT Central fortfahren und mehr über das Erstellen einer IoT Central-Lösung erfahren möchten, lesen Sie den folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Definieren eines neuen IoT-Gerätetyps](./howto-set-up-template.md)
+> [Erstellen einer Gatewaygerätevorlage](./tutorial-define-gateway-device-type.md)
