@@ -3,12 +3,12 @@ title: Sichern von SQL Server in Azure als eine DPM-Workload
 description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe des Azure Backup-Diensts
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8cbb8c833bc2933afac300bcc848fd50861011d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01504fcfd81040d75e57ce62a9f77a5bb248d59b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505935"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183788"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 
@@ -24,13 +24,14 @@ Zum Sichern und Wiederherstellen einer SQL Server-Datenbank in Azure führen Si
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Hier sind einige der erforderlichen Aufgaben: 
+Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Hier sind einige der erforderlichen Aufgaben:
+
 * Erstellen eines Sicherungstresors.
-* Herunterladen der Tresoranmeldeinformationen. 
+* Herunterladen der Tresoranmeldeinformationen.
 * Installieren des Azure-Sicherungs-Agents.
 * Registrieren des Servers beim Tresor.
 
-## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie 
+## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
 Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken in Azure zu schützen:
 
@@ -74,7 +75,7 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
     Für die Erstsicherungskopie muss die gesamte Datenquelle (SQL Server-Datenbank) übertragen werden. Die Sicherungsdaten werden vom Produktionsserver (SQL Server-Computer) zum DPM-Server verschoben. Bei umfangreichen Sicherungen kommt es unter Umständen zu einer Überlastung der Bandbreite, wenn die Daten über das Netzwerk übertragen werden. Aus diesem Grund können Administratoren die Option **Manuell** auswählen, um die Erstsicherung mithilfe von Wechselmedien zu übertragen. Alternativ können sie die Option **Automatisch über das Netzwerk** verwenden und die Daten zu einem bestimmten Zeitpunkt automatisch über das Netzwerk übertragen.
 
     Im Anschluss an die Erstsicherung werden inkrementelle Sicherungen auf der Grundlage der Erstsicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
-    
+
 1. Wählen Sie aus, wann eine Konsistenzprüfung ausgeführt werden soll. Wählen Sie **Weiter**aus.
 
     ![Auswählen des Zeitpunkts für eine Konsistenzprüfung](./media/backup-azure-backup-sql/pg-consistent.png)
@@ -106,7 +107,7 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
     * Die Sicherung von Samstag, 12:00 Uhr, wird 104 Wochen aufbewahrt.
     * Die Sicherung von 12:00 Uhr am letzten Samstag des Monats wird 60 Monate aufbewahrt.
     * Die Sicherung von 12:00 Uhr am letzten Samstag im März wird zehn Jahre aufbewahrt.
-    
+
     Wählen Sie nach der Wahl einer Aufbewahrungsrichtlinie **Weiter** aus.
 
 1. Wählen Sie aus, wie die Erstsicherungskopie an Azure übertragen werden soll.

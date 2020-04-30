@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c8be0882452dc120f538394a5481769e26e3fa15
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682807"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189853"
 ---
 # <a name="create-python-model-module"></a>Modul „Create Python Model“
 
@@ -36,7 +36,7 @@ Die Verwendung dieses Moduls setzt gute oder fortgeschrittene Kenntnisse von Pyt
 > Gehen Sie beim Schreiben Ihres Skripts sehr vorsichtig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, z. B. das Verwenden eines nicht deklarierten Objekts oder eines nicht importierten Moduls.
 
 > [!NOTE]
-Widmen Sie außerdem der Liste der vorinstallierten Module in [Ausführen des Python-Skripts](execute-python-script.md) besondere Aufmerksamkeit. Importieren Sie nur vorinstallierte Module. Installieren Sie in diesem Skript keine zusätzlichen Pakete, wie z. B. „pip install xgboost“, da andernfalls Fehler beim Lesen von Modellen in Downstreammodulen ausgelöst werden.
+> Widmen Sie außerdem der Liste der vorinstallierten Module in [Ausführen des Python-Skripts](execute-python-script.md) besondere Aufmerksamkeit. Importieren Sie nur vorinstallierte Module. Installieren Sie in diesem Skript keine zusätzlichen Pakete, wie z. B. „pip install xgboost“, da andernfalls Fehler beim Lesen von Modellen in Downstreammodulen ausgelöst werden.
   
 In diesem Artikel wird anhand einer einfachen Pipeline erläutert, wie Sie **Create Python Model** verwenden. Hier folgt ein Diagramm der Pipeline:
 
@@ -88,9 +88,9 @@ In diesem Artikel wird anhand einer einfachen Pipeline erläutert, wie Sie **Cre
 
    ```
 
-1. Verbinden Sie das soeben erstellte **Create Python Model**-Modul mit **Train Model** und **Score Model**.
+2. Verbinden Sie das soeben erstellte **Create Python Model**-Modul mit **Train Model** und **Score Model**.
 
-1. Wenn Sie das Modell auswerten müssen, fügen Sie ein [Execute Python Script](execute-python-script.md)-Modul hinzu, und bearbeiten Sie das Python-Skript.
+3. Wenn Sie das Modell auswerten müssen, fügen Sie ein [Execute Python Script](execute-python-script.md)-Modul hinzu, und bearbeiten Sie das Python-Skript.
 
    Das folgende Skript ist ein Beispiel für einen Auswertungscode:
 
@@ -103,7 +103,7 @@ In diesem Artikel wird anhand einer einfachen Pipeline erläutert, wie Sie **Cre
    # imports up here can be used to 
    import pandas as pd
 
-   # The entry point function can contain up to two input arguments:
+   # The entry point function MUST have two input arguments:
    #   Param<dataframe1>: a pandas.DataFrame
    #   Param<dataframe2>: a pandas.DataFrame
    def azureml_main(dataframe1 = None, dataframe2 = None):

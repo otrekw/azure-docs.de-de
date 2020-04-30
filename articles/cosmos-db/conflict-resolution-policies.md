@@ -4,15 +4,15 @@ description: Dieser Artikel beschreibt die Konfliktkategorien und Konfliktauflö
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441987"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182751"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Konflikttypen und Konfliktauflösungsrichtlinien
 

@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backu
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586392"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186769"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -21,10 +21,10 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 
 > [!NOTE]
 > Sicherheitsfeatures sollten nicht aktiviert werden, wenn Sie eine Infrastructure-as-a-Service-VM-Sicherung (IaaS) verwenden. Sie stehen für die IaaS-VM-Sicherung noch nicht zur Verfügung, die Aktivierung hat also keine Auswirkungen. Die Sicherheitsfeatures sollten nur aktiviert werden, wenn Sie die folgenden Elemente verwenden: <br/>
->  * **Azure Backup-Agent**. Agent-Mindestversion: 2.0.9052. Nach der Aktivierung dieser Features sollten Sie auf diese Agent-Version aktualisieren, um kritische Vorgänge auszuführen. <br/>
->  * **Azure Backup Server**. Azure Backup-Agent-Mindestversion: 2.0.9052 mit Azure Backup Server-Update 1. <br/>
->  * **System Center Data Protection Manager**. Azure Backup-Agent-Mindestversion 2.0.9052 mit Data Protection Manager 2012 R2 UR12 oder Data Protection Manager 2016 UR2. <br/>
-
+>
+> - **Azure Backup-Agent**. Agent-Mindestversion: 2.0.9052. Nach der Aktivierung dieser Features sollten Sie auf diese Agent-Version aktualisieren, um kritische Vorgänge auszuführen. <br/>
+> - **Azure Backup Server**. Azure Backup-Agent-Mindestversion: 2.0.9052 mit Azure Backup Server-Update 1. <br/>
+> - **System Center Data Protection Manager**. Azure Backup-Agent-Mindestversion 2.0.9052 mit Data Protection Manager 2012 R2 UR12 oder Data Protection Manager 2016 UR2. <br/>
 
 > [!NOTE]
 > Diese Features sind nur für den Recovery Services-Tresor verfügbar. Bei allen neu erstellten Recovery Services-Tresoren sind diese Features standardmäßig aktiviert. Für vorhandene Recovery Services-Tresore müssen die Benutzer diese Features anhand der Schritte im folgenden Abschnitt aktivieren. Nach der Aktivierung gelten die Features für alle Recovery Services-Agent-Computer, Azure Backup Server-Instanzen und Data Protection Manager-Server, die im Tresor registriert sind. Die Aktivierung dieser Einstellung ist eine einmalige Aktion, und die Features können nach der Aktivierung nicht wieder deaktiviert werden.

@@ -6,13 +6,14 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 0fc067f0be4ac5d2b8fa7db9ad7999efe06625a0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804502"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189363"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -107,7 +108,7 @@ Um zu vermeiden, dass bei ausgeführten Aufträgen bei einem Vorgang zum zentral
 
 Um eine Liste der ausstehenden und ausgeführten Aufträge anzuzeigen, können Sie mit folgenden Schritten die YARN **Resource Manager-Benutzeroberfläche** verwenden:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](./hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird auf einer neuen Portalseite geöffnet.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Der Cluster wird auf einer neuen Portalseite geöffnet.
 2. Navigieren Sie in der Hauptansicht zu **Clusterdashboards** > **Ambari-Startseite**. Geben Sie Ihre Clusteranmeldeinformationen ein.
 3. Wählen Sie auf der Benutzeroberfläche von Ambari in der Liste mit den Diensten im linken Menü **YARN** aus.  
 4. Wählen Sie auf der Seite „YARN“ die Option **Quicklinks** aus. Zeigen Sie auf den aktiven Hauptknoten, und klicken Sie auf **Resource Manager-Benutzeroberfläche**.
@@ -251,4 +252,3 @@ Regionsserver werden innerhalb weniger Minuten nach Abschluss eines Skalierungsv
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Automatisches Skalieren von Azure HDInsight-Clustern](hdinsight-autoscale-clusters.md)
-* [Einführung in Azure HDInsight](hadoop/apache-hadoop-introduction.md)

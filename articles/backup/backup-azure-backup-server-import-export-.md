@@ -4,12 +4,12 @@ description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Impor
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 080b0bc53b2058bd186e90f354b8f5bcda510414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d45716fea92a25b0deea6ee5c1972820341d64a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197055"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183856"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 
@@ -137,7 +137,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung a
     ![Seite „Importieren“](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
 
     Hier ist die entsprechende Seite in DPM. <br/>
-    
+
     ![DPM und Azure Backup Server – Seite „Importieren“](./media/backup-azure-backup-import-export/dpmoffline.png)
 
     Folgende Felder sind auszufüllen:
@@ -242,7 +242,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
     ![Versandinformationen speichern](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass die Laufwerke das Azure-Rechenzentrum innerhalb von zwei Wochen nach der Bereitstellung der Versandinformationen mithilfe des Hilfsprogramms *AzureOfflineBackupDiskPrep* erreichen. Andernfalls werden die Laufwerke nicht bearbeitet. 
+   > Stellen Sie sicher, dass die Laufwerke das Azure-Rechenzentrum innerhalb von zwei Wochen nach der Bereitstellung der Versandinformationen mithilfe des Hilfsprogramms *AzureOfflineBackupDiskPrep* erreichen. Andernfalls werden die Laufwerke nicht bearbeitet.
 
 Nachdem Sie die vorstehenden Schritte abgeschlossen haben, kann das Azure-Rechenzentrum die Laufwerke annehmen und weiter verarbeiten, um die zu sichernden Daten von den Laufwerken in das klassische Azure Storage-Konto zu übertragen, das Sie erstellt haben.
 

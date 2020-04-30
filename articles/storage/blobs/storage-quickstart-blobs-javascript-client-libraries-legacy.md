@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619125"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82161124"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -28,7 +28,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs per JavaScript-Code 
 - Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
 - Lokaler Webserver. In diesem Artikel wird [Node.js](https://nodejs.org) genutzt, um einen einfachen Server zu öffnen.
 - [Visual Studio Code](https://code.visualstudio.com)
-- Eine VS Code-Erweiterung für das Debuggen des Browsers, z. B. [Debugger for Chrome](vscode:extension/msjsdiag.debugger-for-chrome) oder [Debugger for Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge).
+- Eine VS Code-Erweiterung für das Debuggen des Browsers, z. B. [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) oder [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Einrichten von CORS-Regeln für das Speicherkonto
 
@@ -94,7 +94,7 @@ Nachdem die SAS generiert wurde, kopieren Sie den Rückgabewert, und speichern S
 
 ## <a name="implement-the-html-page"></a>Implementieren der HTML-Seite
 
-In diesem Abschnitt erstellen Sie eine einfache Webseite und konfigurieren VS Code für den Start und das Debuggen der Seite. Bevor der Start möglich ist, müssen Sie jedoch über Node.js einen lokalen Webserver starten und die Seite bereitstellen, wenn sie von Ihrem Browser angefordert wird. Als Nächstes fügen Sie JavaScript-Code hinzu, um verschiedene Blobspeicher-APIs aufzurufen und die Ergebnisse auf der Seite anzuzeigen. Die Ergebnisse dieser Aufrufe werden auch im [Azure-Portal](https://portal.azure.com), im [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer) und in der [Azure Storage-Erweiterung](vscode:extension/ms-azuretools.vscode-azurestorage) für VS Code angezeigt.
+In diesem Abschnitt erstellen Sie eine einfache Webseite und konfigurieren VS Code für den Start und das Debuggen der Seite. Bevor der Start möglich ist, müssen Sie jedoch über Node.js einen lokalen Webserver starten und die Seite bereitstellen, wenn sie von Ihrem Browser angefordert wird. Als Nächstes fügen Sie JavaScript-Code hinzu, um verschiedene Blobspeicher-APIs aufzurufen und die Ergebnisse auf der Seite anzuzeigen. Die Ergebnisse dieser Aufrufe werden auch im [Azure-Portal](https://portal.azure.com), im [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer) und in der [Azure Storage-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) für VS Code angezeigt.
 
 ### <a name="set-up-the-web-application"></a>Einrichten der Webanwendung
 

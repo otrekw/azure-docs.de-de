@@ -3,16 +3,16 @@ title: EventCounters in Application Insights | Microsoft-Dokumentation
 description: Überwachen Sie systemeigene und benutzerdefinierte .NET/.NET Core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663588"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187094"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
 
-`EventCounter` ist ein .NET/.NET Core-Mechanismus zum Veröffentlichen und Verwenden von Indikatoren oder Statistiken. [Dieses](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) Dokument gibt einen Überblick über `EventCounters` und zeigt Beispiele, wie diese veröffentlicht und verwendet werden. EventCounters werden auf allen Betriebssystemplattformen unterstützt: Windows, Linux und macOS. Sie können als plattformübergreifende Entsprechung für [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) angesehen werden, die nur auf Windows-Systemen unterstützt werden.
+`EventCounter` ist ein .NET/.NET Core-Mechanismus zum Veröffentlichen und Verwenden von Indikatoren oder Statistiken. [Dieses](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) Dokument gibt einen Überblick über `EventCounters` und zeigt Beispiele, wie diese veröffentlicht und verwendet werden. EventCounters werden auf allen Betriebssystemplattformen unterstützt: Windows, Linux und macOS. Sie können als plattformübergreifende Entsprechung für [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) angesehen werden, die nur auf Windows-Systemen unterstützt werden.
 
 Während Benutzer beliebige benutzerdefinierte `EventCounters` veröffentlichen können, um ihre Anforderungen zu erfüllen, veröffentlicht die .NET Core 3.0-Runtime standardmäßig einen Satz dieser Indikatoren. In diesem Dokument werden Sie durch die erforderlichen Schritte zum Erfassen und Anzeigen von `EventCounters` (systemdefiniert oder benutzerdefiniert) in Azure Application Insights geführt.
 

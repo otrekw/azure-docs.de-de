@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
-ms.openlocfilehash: 77627ab846999ea5ba42fde7a9c49b9cc7559fba
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873290"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82169567"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Helm
 
@@ -181,7 +181,7 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Ausführen Ihres Helm-Diagramms
 
-Verwenden Sie den Befehl `helm create`, um Ihre Anwendung mithilfe Ihres Helm-Diagramms zu installieren.
+Verwenden Sie den Befehl `helm install`, um Ihre Anwendung mithilfe Ihres Helm-Diagramms zu installieren.
 
 ```console
 helm install webfrontend webfrontend/

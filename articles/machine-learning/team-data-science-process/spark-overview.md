@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63148b99e65a5ccc49d54d4ae6c58adebc72c6d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718513"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189282"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
 
@@ -145,7 +145,7 @@ Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihre
 
 ![Cluster-Dashboards](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Für den Zugriff auf die Jupyter-Notebooks können Sie auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
+Für den Zugriff auf die Jupyter-Notebooks können Sie auch zu ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** navigieren. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
 ![Durchsuchen von Jupyter-Notebooks](./media/spark-overview/spark-jupyter-notebook.png)
 

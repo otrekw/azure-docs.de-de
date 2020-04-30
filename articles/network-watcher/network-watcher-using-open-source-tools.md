@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840654"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189061"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr mithilfe von Open Source-Tools
 
@@ -47,7 +47,7 @@ Sie können eine mit Network Watcher erstellte Paketerfassung direkt hochladen, 
 
 Achten Sie beim Angeben eines Links zu CapAnalysis darauf, ein SAS-Token an die Speicherblob-URL anzufügen.  Navigieren Sie hierzu vom Speicherkonto zu „Shared Access Signature“, geben Sie die zulässigen Berechtigungen an, und klicken Sie auf die Schaltfläche „SAS generieren“, um ein Token zu erstellen. Anschließend können Sie das SAS-Token an die Speicherblob-URL der Paketerfassung anfügen.
 
-Die sich ergebende URL sieht dann in etwa wie folgt aus: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Die sich ergebende URL sieht dann in etwa wie folgt aus: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Analysieren von Paketerfassungen

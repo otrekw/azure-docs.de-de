@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69015075"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176820"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal  
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "69015075"
 
 Damit Sie Benutzern eine URL zum Streamen oder Herunterladen Ihrer Inhalte zur Verfügung stellen können, müssen Sie zunächst einen Locator erstellen, um das Medienobjekt zu veröffentlichen. Locator bieten Zugriff auf Medienobjektdateien. Azure Media Services unterstützt zwei Arten von Locators: 
 
-* **Streaminglocators (OnDemandOrigin)** . Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. Beispiel: http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Streaminglocators (OnDemandOrigin)** . Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. Beispiel: `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`.
 * **Progressive Locators (Shared Access Signature, SAS)** . Progressive Locators werden verwendet, um Videos per progressivem Download bereitzustellen.
 
 Eine HLS-Streaming-URL können Sie erstellen, indem Sie *(format=m3u8-aapl)* an die URL anhängen:

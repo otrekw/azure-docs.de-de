@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 7c66507989357569828d4ef933cfdca735f71570
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085410"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182513"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
 
@@ -77,7 +77,7 @@ Verwenden Sie AzCopy v10, um die lokale VHD-Datei auf einen verwalteten Datentr�
 Der Durchsatz für diesen Upload entspricht dem des gleichwertigen [HDD Standard-Datenträgers](disks-types.md#standard-hdd). Wenn Sie beispielsweise als Größe S4 verwenden, beträgt der Durchsatz bis zu 60 MiB/s. Verwenden Sie hingegen als Größe S70, beträgt der Durchsatz bis zu 500 MiB/s.
 
 ```
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
+AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
 Nachdem der Upload abgeschlossen wurde und Sie keine Daten mehr auf den Datenträger schreiben müssen, widerrufen Sie die SAS. Dadurch ändert sich der Zustand des verwalteten Datenträgers, und Sie können den Datenträger an eine VM anfügen.

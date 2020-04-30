@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 25ca8eecaeb615f071340188a23fae7978ddb75c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0494ce8016ff8b09265dd7ced8dc0926fd0c1a43
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409812"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186803"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -49,7 +49,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
     ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
- 
+
    > [!TIP]
    > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien bis maximal 80 GB und bietet während der Wiederherstellung Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MB/s. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
 

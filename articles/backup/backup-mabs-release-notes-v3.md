@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu bekannten Problemen und Pr
 ms.topic: conceptual
 ms.date: 11/22/2018
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172274"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185624"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Anmerkungen zu dieser Version für Microsoft Azure Backup Server
 
@@ -60,14 +60,14 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 4. [Installieren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) Sie SQL Server Management Studio (SSMS).
 5. Konfigurieren Sie die Berichterstellung mit den Parametern, wie in [SSRS-Konfiguration mit SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs) dokumentiert.
 6. [Installieren](backup-azure-microsoft-azure-backup.md) Sie MABS V3.
-7. Führen Sie das [Wiederherstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) von SQL mithilfe von SSMS durch, und führen Sie anschließend das DPM-Synchronisierungstool wie [hier](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)) beschrieben aus.
+7. Führen Sie das [Wiederherstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) von SQL mithilfe von SSMS durch, und führen Sie anschließend das DPM-Synchronisierungstool wie [hier](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync) beschrieben aus.
 8. Aktualisieren Sie die Eigenschaft „DataBaseVersion“ in der dbo.tbl_DLS_GlobalSetting-Tabelle mit folgendem Befehl:
 
-```sql
-        UPDATE dbo.tbl_DLS_GlobalSetting
-        set PropertyValue = '13.0.415.0'
-        where PropertyName = 'DatabaseVersion'
-```
+    ```sql
+            UPDATE dbo.tbl_DLS_GlobalSetting
+            set PropertyValue = '13.0.415.0'
+            where PropertyName = 'DatabaseVersion'
+    ```
 
 9. Starten Sie den MSDPM-Dienst.
 

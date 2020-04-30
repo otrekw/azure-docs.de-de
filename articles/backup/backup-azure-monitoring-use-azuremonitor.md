@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 547cef66be9902468f4e2755c31e5f586eccad5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459513"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183652"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -135,13 +135,12 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     (AddonAzureBackupStorage
     | where OperationName == "StorageAssociation"
     //Get latest record for each Backup Item
-    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId
     | project BackupItemUniqueId , StorageConsumedInMBs)
     on BackupItemUniqueId
-    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs
     | sort by StorageConsumedInMBs desc
     ````
-
 
 ### <a name="diagnostic-data-update-frequency"></a>Häufigkeit der Aktualisierung der Diagnosedaten
 

@@ -1,27 +1,27 @@
 ---
 title: Verwenden der Azure CLI zum Konfigurieren von kundenseitig verwalteten Schlüsseln
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle von Kunden verwaltete Schlüssel mit Azure Key Vault für die Azure Storage-Verschlüsselung konfigurieren. Mit von Kunden verwalteten Schlüsseln können Sie Zugriffssteuerungen erstellen, rotieren, deaktivieren und widerrufen.
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle von Kunden verwaltete Schlüssel mit Azure Key Vault für die Azure Storage-Verschlüsselung konfigurieren.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bf21cd27fa290b9b9b863803aef043eccc815573
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 893c953562e0d150bd5e8110e5473fd24a2aff83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912716"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176344"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault mithilfe der Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure Key Vault-Instanz mit von Kunden verwalteten Schlüsseln mithilfe der Azure-Befehlszeilenschnittstelle konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über die Azure-Befehlszeilenschnittstelle finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](../../key-vault/quick-create-cli.md).
+In diesem Artikel wird beschrieben, wie Sie eine Azure Key Vault-Instanz mit von Kunden verwalteten Schlüsseln mithilfe der Azure-Befehlszeilenschnittstelle konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über die Azure-Befehlszeilenschnittstelle finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](../../key-vault/secrets/quick-create-cli.md).
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Zuweisen einer Identität zum Speicherkonto
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Informationen zum Aktivieren von **Vorläufiges Löschen** und **Nicht bereinigen** in einem vorhandenen Schlüsseltresor mithilfe der Azure-Befehlszeilenschnittstelle finden Sie in den Abschnitten **Aktivieren des vorläufigen Löschens** und **Aktivieren des Löschschutzes** unter [Verwenden des vorläufigen Löschens mit der Befehlszeilenschnittstelle](../../key-vault/key-vault-soft-delete-cli.md).
+Informationen zum Aktivieren von **Vorläufiges Löschen** und **Nicht bereinigen** in einem vorhandenen Schlüsseltresor mithilfe der Azure-Befehlszeilenschnittstelle finden Sie in den Abschnitten **Aktivieren des vorläufigen Löschens** und **Aktivieren des Löschschutzes** unter [Verwenden des vorläufigen Löschens mit der Befehlszeilenschnittstelle](../../key-vault/general/soft-delete-cli.md).
 
 ## <a name="configure-the-key-vault-access-policy"></a>Konfigurieren der Zugriffsrichtlinie für den Schlüsseltresor
 
@@ -73,7 +73,7 @@ az keyvault set-policy \
     --name <key-vault> \
     --resource-group <resource_group>
     --object-id $storage_account_principal \
-    --key-permissions get recover unwrapKey wrapKey
+    --key-permissions get unwrapKey wrapKey
 ```
 
 ## <a name="create-a-new-key"></a>Erstellen eines neuen Schlüssels
@@ -81,10 +81,12 @@ az keyvault set-policy \
 Als Nächstes erstellen Sie einen Schlüssel im Schlüsseltresor. Rufen Sie hierzu den Befehl [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) auf. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
-az keyvault key create
+az keyvault key create \
     --name <key> \
     --vault-name <key-vault>
 ```
+
+Für die Azure Storage-Verschlüsselung werden nur 2048-Bit-RSA- und RSA-HSM-Schlüssel unterstützt. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
 
@@ -120,11 +122,21 @@ Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie das Speicher
 
 Um den Schlüssel zu ändern, der für die Azure Storage-Verschlüsselung verwendet wird, rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie unter [Konfigurieren der Verschlüsselung mit vom Kunden verwalteten Schlüsseln](#configure-encryption-with-customer-managed-keys) beschrieben auf, und geben Sie den neuen Schlüsselnamen und die neue Version an. Wenn sich der neue Schlüssel in einem anderen Schlüsseltresor befindet, aktualisieren Sie auch den Schlüsseltresor-URI.
 
+## <a name="revoke-customer-managed-keys"></a>Widerrufen von kundenseitig verwalteten Schlüsseln
+
+Wenn Sie den Verdacht haben, dass ein Schlüssel kompromittiert wurde, können Sie kundenseitig verwaltete Schlüssel widerrufen, indem Sie die Key Vault-Zugriffsrichtlinie entfernen. Zum Widerrufen eines kundenseitig verwalteten Schlüssels rufen Sie den Befehl [az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy) auf, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+
+```azurecli-interactive
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>Deaktivieren von vom Kunden verwalteten Schlüsseln
 
-Wenn Sie vom Kunden verwaltete Schlüssel deaktivieren, wird Ihr Speicherkonto mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um vom Kunden verwaltete Schlüssel zu deaktivieren, rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, und legen Sie `--encryption-key-source parameter` auf `Microsoft.Storage` fest, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+Wenn Sie kundenseitig verwaltete Schlüssel deaktivieren, wird Ihr Speicherkonto wieder mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um vom Kunden verwaltete Schlüssel zu deaktivieren, rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, und legen Sie `--encryption-key-source parameter` auf `Microsoft.Storage` fest, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
 
-```powershell
+```azurecli-interactive
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

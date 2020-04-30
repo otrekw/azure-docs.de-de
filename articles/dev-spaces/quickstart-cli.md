@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und der Befehlszeile eine Anwendung in Azure Kubernetes Service entwickeln.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8ee5cba06d9a526640d9057ee88a681d46392f4f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 337c3cb139e1fe0c35344e49271503b98a59fa7b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80239708"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166001"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Schnellstart: Entwickeln einer Anwendung unter Kubernetes – Azure Dev Spaces
 In diesem Leitfaden lernen Sie Folgendes:
@@ -107,12 +107,12 @@ Step 7/8 : COPY . .
 Step 8/8 : CMD ["npm", "start"]
 Built container image in 6m 17s
 Waiting for container...13s
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at `http://webfrontend.1234567890abcdef1234.eus.azds.io/`
 Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche URL öffnen, die in der Ausgabe des Befehls `azds up` angezeigt wird. In diesem Beispiel lautet die öffentliche URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche URL öffnen, die in der Ausgabe des Befehls `azds up` angezeigt wird. In diesem Beispiel lautet die öffentliche URL *`http://webfrontend.1234567890abcdef1234.eus.azds.io/`* .
 
 > [!NOTE]
 > Wenn Sie während der Ausführung von `azds up` zu Ihrem Dienst navigieren, werden die Ablaufverfolgungen der HTTP-Anforderung ebenfalls in der Ausgabe des Befehls `azds up` angezeigt. Diese Ablaufverfolgungen können Sie bei der Problembehandlung und beim Debuggen Ihres Diensts unterstützen. Sie können diese Ablaufverfolgungen bei der Ausführung von `azds up` mit `--disable-http-traces` deaktivieren.

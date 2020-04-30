@@ -3,12 +3,12 @@ title: Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüss
 description: Informationen zum Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel in Azure Backup mithilfe von PowerShell
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 35bcb919cadd46c603b1f2ad49742c5435f873d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75450055"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186820"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup
 
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * Der Wert für „$secretname“ kann über die Ausgabe von „$encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl“ und den Text nach „secrets/“ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
+> * Der Wert für „$secretname“ kann über die Ausgabe von „$encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl“ und den Text nach „secrets/“ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
 > * Der Wert des Tags „DiskEncryptionKeyFileName“ ist mit dem Geheimnisnamen identisch.
 >
 >
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * Der Wert für $secretname kann über die Ausgabe von $rp1.KeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
+> * Der Wert für $secretname kann über die Ausgabe von $rp1.KeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
 > * Der Wert der Markierung „DiskEncryptionKeyFileName“ ist mit dem Namen des Geheimnisses identisch.
 > * Der Wert für „DiskEncryptionKeyEncryptionKeyURL“ kann mithilfe des Cmdlet [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) aus dem Schlüsseltresor abgerufen werden, nachdem die Schlüssel wiederhergestellt wurden.
 >

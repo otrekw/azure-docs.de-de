@@ -10,15 +10,9 @@
   items:
     - name: Testen von Content Moderator im Web
       href: quick-start.md
-    - name: Verwenden des Client-SDK
-      items:
-        - name: Verwenden des .NET SDK
-          href: dotnet-sdk-quickstart.md
-        - name: Verwenden des Python SDK
-          href: python-sdk-quickstart.md
-        - name: Verwenden des Java SDK
-          href: java-sdk-quickstart.md
-- name: Lernprogramme
+    - name: Verwenden der Clientbibliothek
+      href: client-libraries.md
+- name: Tutorials
   items:
     - name: Moderieren von E-Commerce-Bildern
       href: ecommerce-retail-catalog-moderation.md
@@ -38,7 +32,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 'Überprüfungen, Workflows und Aufträge'
       href: review-api.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Moderieren von Inhalten
       items:

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129593"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181533"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -46,8 +46,6 @@ Nachdem Sie sich angemeldet haben, sollten Sie die Benutzerprofilinformationen s
 |**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |**Ablaufdatum des Tokens** |Datetime |Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 
-
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
 Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Anwendungsregistrierungsportal registriert wird. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen.
@@ -56,7 +54,5 @@ Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu könne
 
 >[!NOTE]
 >Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

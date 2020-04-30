@@ -3,12 +3,12 @@ title: Übersicht über die Offlinesicherung
 description: Erfahren Sie mehr über die Komponenten der Offlinesicherung. Dazu zählen Offlinesicherungen basierend auf Azure Data Box und Offlinesicherungen basierend auf dem Azure Import/Export-Dienst.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4dae68c46e0072a726bba13139e405b44be0f008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196157"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160920"
 ---
 # <a name="overview-of-offline-backup"></a>Übersicht über die Offlinesicherung
 
@@ -27,7 +27,7 @@ Die Offlinesicherung wird in zwei Modi angeboten, die auf dem Besitz der Speiche
 
 ## <a name="offline-backup-based-on-azure-data-box-preview"></a>Offlinesicherung basierend auf Azure Data Box (Vorschau)
 
-Dieser Modus wird derzeit für den Microsoft Azure Recovery Services (MARS)-Agent in der Vorschauversion unterstützt. Bei dieser Option wird [Azure Data Box](https://azure.microsoft.com/services/databox/) genutzt, um sichere und vor Manipulation geschützte Microsoft-Geräte für die Datenübertragung mit USB-Connectors an Ihr Rechenzentrum oder Remotebüro zu senden. Die Sicherungsdaten werden dabei direkt auf diese Geräte geschrieben. Somit müssen Sie also keine Azure-kompatiblen Datenträger und Connectors erwerben oder temporären Speicher als Stagingspeicherort bereitstellen. Microsoft übernimmt zudem die End-to-End-Transportlogistik, die Sie über das Azure-Portal verfolgen können. 
+Dieser Modus wird derzeit für den Microsoft Azure Recovery Services (MARS)-Agent in der Vorschauversion unterstützt. Bei dieser Option wird [Azure Data Box](https://azure.microsoft.com/services/databox/) genutzt, um sichere und vor Manipulation geschützte Microsoft-Geräte für die Datenübertragung mit USB-Connectors an Ihr Rechenzentrum oder Remotebüro zu senden. Die Sicherungsdaten werden dabei direkt auf diese Geräte geschrieben. Somit müssen Sie also keine Azure-kompatiblen Datenträger und Connectors erwerben oder temporären Speicher als Stagingspeicherort bereitstellen. Microsoft übernimmt zudem die End-to-End-Transportlogistik, die Sie über das Azure-Portal verfolgen können.
 
 Nachfolgend ist eine Architektur dargestellt, die die Verschiebung von Sicherungsdaten mithilfe dieser Option veranschaulicht.
 
@@ -44,7 +44,7 @@ Informationen zur Verwendung der Offlinesicherung basierend auf Azure Data Box f
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Offlinesicherung basierend auf dem Azure Import/Export-Dienst
 
-Diese Option wird von Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A und dem MARS-Agent unterstützt. Sie verwendet den [Azure Import/Export-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). Sie können die anfänglichen Sicherungsdaten mithilfe Ihrer eigenen Azure-kompatiblen Datenträger und Connectors nach Azure übertragen. Diese Vorgehensweise erfordert die Bereitstellung eines temporären Speichers, der als Stagingspeicherort bezeichnet wird, sowie die Verwendung von vorgefertigten Dienstprogrammen zum Formatieren und Kopieren der Sicherungsdaten auf Datenträger von Kunden. 
+Diese Option wird von Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A und dem MARS-Agent unterstützt. Sie verwendet den [Azure Import/Export-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). Sie können die anfänglichen Sicherungsdaten mithilfe Ihrer eigenen Azure-kompatiblen Datenträger und Connectors nach Azure übertragen. Diese Vorgehensweise erfordert die Bereitstellung eines temporären Speichers, der als Stagingspeicherort bezeichnet wird, sowie die Verwendung von vorgefertigten Dienstprogrammen zum Formatieren und Kopieren der Sicherungsdaten auf Datenträger von Kunden.
 
 Nachfolgend ist eine Architektur dargestellt, die die Verschiebung von Sicherungsdaten mithilfe dieser Option veranschaulicht.
 
@@ -81,6 +81,6 @@ In der folgenden Tabelle werden die beiden verfügbaren Optionen verglichen, sod
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
-* [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md) 
-* [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
+- [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md)
+- [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export-.md)

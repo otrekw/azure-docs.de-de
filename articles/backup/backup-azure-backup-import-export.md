@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Backup verwenden können, um mithilfe d
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 1359616e074f36a1324a418d5b2c889076ced52d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206757"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183890"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -36,7 +36,7 @@ Diese Azure Backup-Features oder -Workloads unterstützen die Verwendung der Off
 > * Sichern von Dateien und Ordnern mit dem Microsoft Azure Recovery Services-Agent (MARS; auch Azure Backup-Agent genannt).
 > * Sichern aller Workloads und Dateien mit dem System Center Data Protection Manager (DPM).
 > * Sichern aller Workloads und Dateien mit dem Microsoft Azure Backup Server.
- 
+
    > [!NOTE]
    > Die Offlinesicherung wird für Sicherungen des Systemstatus mithilfe des Azure Backup-Agents nicht unterstützt.
 

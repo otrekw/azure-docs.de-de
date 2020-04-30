@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671629"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188925"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>Aktualisierter Profiler-Agent
-Die Triggerfunktionen funktionieren nur mit Version 2.6 oder höher des Profiler-Agents. Wenn Sie eine Azure App Service ausführen, wird Ihr Agent automatisch aktualisiert. Sie können sehen, welche Version des Agents ausgeführt wird, wenn Sie die Kudu-URL für Ihre Website aufrufen und „\DiagnosticServices“ am Ende anfügen, wie hier gezeigt: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Der Application Insights Profiler-Webauftrag solle Version 2.6 oder höher haben. Sie können ein Upgrade erzwingen, indem Sie Ihre Web-App neu starten. 
+Die Triggerfunktionen funktionieren nur mit Version 2.6 oder höher des Profiler-Agents. Wenn Sie eine Azure App Service ausführen, wird Ihr Agent automatisch aktualisiert. Sie können sehen, welche Version des Agents ausgeführt wird, wenn Sie die Kudu-URL für Ihre Website aufrufen und „\DiagnosticServices“ am Ende anfügen, wie hier gezeigt: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`. Der Application Insights Profiler-Webauftrag solle Version 2.6 oder höher haben. Sie können ein Upgrade erzwingen, indem Sie Ihre Web-App neu starten. 
 
 Wenn Sie den Profiler auf einem virtuellen Computer oder in einem Clouddienst ausführen, müssen Sie die Windows Azure-Diagnoseerweiterung (WAD) Version 16.0.4 oder höher installiert haben. Sie können die Version von WAD überprüfen, indem Sie sich bei Ihrem virtuellen Computer anmelden und dieses Verzeichnis anzeigen: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Der Verzeichnisname ist die Version von der WAD, die installiert ist. Der Azure-VM-Agent aktualisiert WAD automatisch, wenn neue Versionen verfügbar sind.
 

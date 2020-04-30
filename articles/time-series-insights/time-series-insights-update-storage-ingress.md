@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189180"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -23,7 +23,7 @@ In diesem Artikel werden Updates für Datenspeicherung und Dateneingang für Azu
 
 ## <a name="data-ingress"></a>Dateneingang
 
-Ihre Azure Time Series Insights-Umgebung (TSI) enthält eine *Erfassungs-Engine*, mit der Zeitreihendaten gesammelt, verarbeitet und gespeichert werden. 
+Ihre Azure Time Series Insights-Umgebung (TSI) enthält eine *Erfassungs-Engine*, mit der Zeitreihendaten gesammelt, verarbeitet und gespeichert werden.
 
 Beim [Planen Ihrer Umgebung](time-series-insights-update-plan.md) sollten einige Aspekte berücksichtigt werden, um die Verarbeitung aller eingehenden Daten sicherzustellen, ein hohes Eingangsvolumen zu erzielen und die *Latenz bei der Erfassung* zu minimieren (dies ist die Zeit, die Time Series Insights benötigt, um Daten aus der Ereignisquelle zu lesen und zu verarbeiten).
 
@@ -31,7 +31,7 @@ Bei Time Series Insights (Vorschauversion) wird mit Richtlinien für den Datenei
 
 ### <a name="ingress-policies"></a>Eingangsrichtlinien
 
-Beim *Dateneingang* geht es auch darum, wie Daten an eine Azure Time Series Insights-Umgebung (Vorschauversion) gesendet werden. 
+Beim *Dateneingang* geht es auch darum, wie Daten an eine Azure Time Series Insights-Umgebung (Vorschauversion) gesendet werden.
 
 Die Informationen zur Schlüsselkonfiguration, zur Formatierung und zu den bewährten Methoden sind unten zusammengefasst.
 
@@ -42,10 +42,11 @@ Azure Time Series Insights Preview unterstützt die folgenden Ereignisquellen:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz. Wenn Sie eine Ereignisquelle verbinden, liest Ihre TSI-Umgebung alle Ereignisse, die aktuell in Ihrem IoT Hub oder Event Hub gespeichert sind. Dabei wird mit dem ältesten Ereignis begonnen. 
+Azure Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz. Wenn Sie eine Ereignisquelle verbinden, liest Ihre TSI-Umgebung alle Ereignisse, die aktuell in Ihrem IoT Hub oder Event Hub gespeichert sind. Dabei wird mit dem ältesten Ereignis begonnen.
 
-> [!IMPORTANT] 
-> * Beim Anfügen einer Ereignisquelle an die Vorschau-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf. 
+> [!IMPORTANT]
+>
+> * Beim Anfügen einer Ereignisquelle an die Vorschau-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf.
 > Die Latenz der Ereignisquelle hängt von der Anzahl der Ereignisse ab, die sich aktuell in Ihrem IoT Hub oder Event Hub befinden.
 > * Eine hohe Latenz lässt nach der erstmaligen Erfassung der Ereignisquelldaten nach. Senden Sie ein Supportticket über das Azure-Portal, falls es bei Ihnen zu einer dauerhaft hohen Latenz kommt.
 
@@ -64,7 +65,7 @@ Die unterstützten Datentypen lauten:
 
 #### <a name="objects-and-arrays"></a>Objekte und Arrays
 
-Sie können komplexe Typen wie Objekte und Arrays als Teil Ihrer Ereignisnutzlast senden, aber Ihre Daten werden bei der Speicherung einem Vereinfachungsprozess unterzogen. 
+Sie können komplexe Typen wie Objekte und Arrays als Teil Ihrer Ereignisnutzlast senden, aber Ihre Daten werden bei der Speicherung einem Vereinfachungsprozess unterzogen.
 
 Ausführliche Informationen zur Beschreibung, wie Sie Ihre JSON-Ereignisse strukturieren, komplexe Typen senden und geschachtelte Objekte vereinfachen, finden Sie unter [Strukturieren von Ereignissen in Azure Time Series Insights Preview](./time-series-insights-update-how-to-shape-events.md). Diese Informationen dienen Ihnen als Hilfe bei der Planung und Optimierung.
 
@@ -78,7 +79,7 @@ Folgende Best Practices werden empfohlen:
 
 * Informieren Sie sich unter [Gestalten von JSON für Abfragen](./time-series-insights-update-how-to-shape-events.md) über die Optimierung und Gestaltung Ihrer JSON-Daten sowie über die aktuellen Einschränkungen der Vorschau.
 
-### <a name="ingress-scale-and-preview-limitations"></a>Dateneingangsvolumen und Einschränkungen der Vorschauversion 
+### <a name="ingress-scale-and-preview-limitations"></a>Dateneingangsvolumen und Einschränkungen der Vorschauversion
 
 Unten sind die Eingangseinschränkungen von Azure Time Series Insights Preview beschrieben.
 
@@ -93,7 +94,8 @@ Im Allgemeinen werden Eingangsraten als Faktor der Anzahl von Geräten in Ihrer 
 
 Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rate von **bis zu 1 MB pro Sekunde (MBit/s) pro Time Series Insights-Umgebung** erfassen. Es gelten zusätzliche Einschränkungen [pro Hubpartition](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits).
 
-> [!TIP] 
+> [!TIP]
+>
 > * Die Umgebungsunterstützung für Erfassungsgeschwindigkeiten von bis zu 16 MBit/s kann auf Anfrage bereitgestellt werden.
 > * Falls Sie einen höheren Durchsatz benötigen, können Sie sich an uns wenden, indem Sie über das Azure-Portal ein Supportticket senden.
  
@@ -117,7 +119,7 @@ Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rat
 
 Bei der Planung Ihrer Time Series Insights-Umgebung ist es wichtig, die Konfiguration der Ereignisquellen zu berücksichtigen, die Sie mit Time Series Insights verbinden möchten. Sowohl Azure IoT Hub als auch Event Hubs verwenden Partitionen, um die horizontale Skalierung für die Ereignisverarbeitung zu ermöglichen. 
 
-Eine *Partition* ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Die Partitionsanzahl wird beim Erstellen des Hubs festgelegt und kann nicht geändert werden. 
+Eine *Partition* ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Die Partitionsanzahl wird beim Erstellen des Hubs festgelegt und kann nicht geändert werden.
 
 Informationen zu den bewährten Methoden für die Event Hubs-Partitionierung finden Sie unter [Wie viele Partitionen benötige ich?](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need).
 
@@ -132,7 +134,7 @@ Für Azure Time Series Insights Preview gilt derzeit ein allgemeiner **Grenzwert
 
 Wenn ein Gerät in IoT Hub erstellt wird, wird es einer Partition dauerhaft zugewiesen. Auf diese Weise kann von IoT Hub die Ereignisreihenfolge sichergestellt werden (da sich die Zuweisung niemals ändert).
 
-Eine feste Partitionszuweisung wirkt sich auch auf Time Series Insights-Instanzen aus, mit denen Daten erfasst werden, die von IoT Hub nachfolgend gesendet werden. Wenn Nachrichten von mehreren Geräten mit derselben Gatewaygeräte-ID an den Hub weitergeleitet werden, kommen sie ggf. gleichzeitig in derselben Partition an, und dies kann unter Umständen dazu führen, dass die Skalierungslimits pro Partition überschritten werden. 
+Eine feste Partitionszuweisung wirkt sich auch auf Time Series Insights-Instanzen aus, mit denen Daten erfasst werden, die von IoT Hub nachfolgend gesendet werden. Wenn Nachrichten von mehreren Geräten mit derselben Gatewaygeräte-ID an den Hub weitergeleitet werden, kommen sie ggf. gleichzeitig in derselben Partition an, und dies kann unter Umständen dazu führen, dass die Skalierungslimits pro Partition überschritten werden.
 
 **Auswirkung**:
 
@@ -145,6 +147,7 @@ Wir empfehlen Ihnen die folgenden bewährten Methoden, um dieses Problem zu umge
 
 > [!IMPORTANT]
 > In Umgebungen, die IoT Hub als Ereignisquelle verwenden, berechnen Sie die Erfassungsrate anhand der Anzahl der verwendeten Hubgeräte, um sicherzugehen, dass die Rate unter 0,5 MBit/s pro Partitionseinschränkung in der Preview fällt.
+>
 > * Auch wenn mehrere Ereignisse gleichzeitig eintreffen, wird das Limit der Vorschauversion nicht überschritten.
 
   ![IoT Hub-Partitionsdiagramm](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
@@ -186,7 +189,7 @@ Eine ausführliche Beschreibung des Azure Blobspeichers finden Sie in der [Einf�
 
 Wenn Sie eine Azure Time Series Insights Preview-Umgebung mit nutzungsbasierter Bezahlung erstellen, wird ein Azure Storage-Blobkonto vom Typ „Universell V1“ als langfristiger Speicher für kalte Daten erstellt.  
 
-Azure Time Series Insights Preview behält bis zu zwei Kopien jedes Ereignisses in Ihrem Azure Storage-Konto bei. Eine Kopie speichert Ereignisse nach Erfassungszeit, wobei der Zugriff auf Ereignisse in einer zeitlich geordneten Sequenz immer zulässig ist. Im Laufe der Zeit wird in Time Series Insights Preview auch eine neu partitionierte Kopie der Daten erstellt, um die leistungsfähige Time Series Insights-Abfragen zu optimieren. 
+Azure Time Series Insights Preview behält bis zu zwei Kopien jedes Ereignisses in Ihrem Azure Storage-Konto bei. Eine Kopie speichert Ereignisse nach Erfassungszeit, wobei der Zugriff auf Ereignisse in einer zeitlich geordneten Sequenz immer zulässig ist. Im Laufe der Zeit wird in Time Series Insights Preview auch eine neu partitionierte Kopie der Daten erstellt, um die leistungsfähige Time Series Insights-Abfragen zu optimieren.
 
 Während der öffentlichen Vorschauphase werden Daten mit unbegrenzter Dauer in Ihrem Azure-Speicherkonto gespeichert.
 
@@ -194,7 +197,7 @@ Während der öffentlichen Vorschauphase werden Daten mit unbegrenzter Dauer in 
 
 Um Abfrageleistung und Datenverfügbarkeit sicherzustellen, bearbeiten oder löschen Sie keine Blobs, die von Time Series Insights Preview erstellt werden.
 
-#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Zugreifen auf Daten des kalten Speichers von Time Series Insights Preview 
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Zugreifen auf Daten des kalten Speichers von Time Series Insights Preview
 
 Zusätzlich zum Zugriff auf Ihre Daten über den [Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md) und [Time Series-Abfragen](./time-series-insights-update-tsq.md) können Sie auch direkt über die im kalten Speicher gespeicherten Parquet-Dateien auf Ihre Daten zugreifen. Beispielsweise können Sie Daten in einem Jupyter-Notebook lesen, transformieren und bereinigen und dann verwenden, um Ihr Azure Machine Learning-Modell im gleichen Spark-Workflow zu trainieren.
 
@@ -223,6 +226,7 @@ Time Series Insights Preview speichert wie folgt Kopien Ihrer Daten:
 In beiden Fällen entspricht die time-Eigenschaft der Parquet-Datei der Erstellungszeit des Blobs. Daten im Ordner `PT=Time` werden ohne Änderungen beibehalten, nachdem sie in die Datei geschrieben wurden. Daten im Ordner `PT=TsId` werden im Lauf der Zeit für Abfragen optimiert und sind nicht statisch.
 
 > [!NOTE]
+>
 > * `<YYYY>` entspricht einer vierstelligen Jahresdarstellung.
 > * `<MM>` entspricht einer zweistelligen Monatsdarstellung.
 > * `<YYYYMMDDHHMMSSfff>` entspricht einer Zeitstempeldarstellung mit folgendem Format: vierstellige Jahresangabe (`YYYY`), zweistellige Monatsangabe (`MM`), zweistellige Tagesangabe (`DD`), zweistellige Stundenangabe (`HH`), zweistellige Minutenangabe (`MM`), zweistellige Sekundenangabe (`SS`) und dreistellige Millisekundenangabe (`fff`).

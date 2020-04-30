@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie mit dem Backup-Explorer
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: fa30a061dfe0d9f7721bd2405280f8a01bea87fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87780124d531212a141520df65ff7408cc120e55
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131807"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160988"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Überwachen von Sicherungen mit dem Backup-Explorer
 
@@ -17,17 +17,18 @@ Da Organisationen zunehmend mehr Computer in der Cloud sichern, wird es immer wi
 
 Der Backup-Explorer ist eine integrierte Azure Monitor-Arbeitsmappe, die Azure Backup-Kunden als einen solchen zentralen Ort nutzen können. Mit dem Backup-Explorer können Sie operative Aktivitäten in der gesamten Sicherungsumgebung von Azure über Mandanten, Standorte, Abonnements, Ressourcengruppen und Tresore hinweg überwachen. Allgemein stehen mit dem Backup-Explorer die folgenden Funktionen zur Verfügung:
 
-* **Skalierbare Ansicht:** Für die noch nicht für die Sicherung konfigurierten Sicherungselemente, Aufträge, Warnungen, Richtlinien und Ressourcen im gesamten Sicherungsbereich ist eine aggregierte Ansicht verfügbar. 
+* **Skalierbare Ansicht:** Für die noch nicht für die Sicherung konfigurierten Sicherungselemente, Aufträge, Warnungen, Richtlinien und Ressourcen im gesamten Sicherungsbereich ist eine aggregierte Ansicht verfügbar.
 * **Detailinformationen zur Analyse:** Sie können an einem zentralen Ort detaillierte Informationen zu den einzelnen Aufträgen, Warnungen, Richtlinien und Sicherungselementen anzeigen.
 * **Interaktive Schnittstellen:** Sie können ein identifiziertes Problem beheben, indem Sie direkt zum entsprechenden Sicherungselement oder der betreffenden Azure-Ressource navigieren.
 
 Diese Funktionen werden standardmäßig durch die native Integration mit Azure Resource Graph und Azure Monitor-Arbeitsmappen bereitgestellt.
 
 > [!NOTE]
+>
 > * Der Backup-Explorer ist derzeit nur für Daten von virtuellen Azure-Computern verfügbar.
 > * Er ist als operatives Dashboard zum Anzeigen von Informationen zu Ihren Sicherungen in den letzten 7 Tagen (maximal) gedacht.
 > * Backup-Explorer wird in nationalen Clouds derzeit nicht unterstützt.
-> * Derzeit kann die Vorlage für den Backup-Explorer nicht angepasst werden. 
+> * Derzeit kann die Vorlage für den Backup-Explorer nicht angepasst werden.
 > * Es wird davon abgeraten, benutzerdefinierte Automatisierungen für Azure Resource Graph-Daten zu programmieren.
 
 ## <a name="get-started"></a>Erste Schritte
@@ -48,13 +49,11 @@ Im Backup-Explorer werden mehrere Registerkarten angezeigt, die jeweils ausführ
 
 Die Registerkarte **Zusammenfassung** bietet eine Übersicht über den allgemeinen Zustand Ihrer Sicherungsumgebung. Sie können beispielsweise die Anzahl der geschützten Elemente, die Anzahl der Elemente ohne aktivierten Schutz oder die Anzahl der erfolgreichen Aufträge in den letzten 24 Stunden anzeigen.
 
-
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYd]
 
 ### <a name="the-backup-items-tab"></a>Registerkarte „Sicherungselemente“
 
 Sie können alle Sicherungselemente nach Abonnement, Tresor und anderen Parametern filtern und anzeigen. Wenn Sie den Namen eines Sicherungselements auswählen, können Sie den Azure-Bereich für dieses Sicherungselement öffnen. Beispielsweise können Sie in der Tabelle sehen, dass die letzte Sicherung für das Element *X* fehlerhaft war. Wenn Sie *X* auswählen, wird der Bereich **Sicherung** für dieses Element geöffnet, in dem Sie bedarfsgesteuert einen Sicherungsvorgang initiieren können.
-
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
@@ -62,20 +61,17 @@ Sie können alle Sicherungselemente nach Abonnement, Tresor und anderen Paramete
 
 Wählen Sie die Registerkarte **Aufträge** aus, um die Details aller Aufträge anzuzeigen, die in den letzten 7 Tagen ausgelöst wurden. Hier können Sie nach *Auftragsvorgang*, *Auftragsstatus* und *Fehlercode* (bei fehlerhaften Aufträgen) filtern.
 
-
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
 ### <a name="the-alerts-tab"></a>Registerkarte „Warnungen“
 
 Wählen Sie die Registerkarte **Warnungen** aus, um Details zu allen Warnungen anzuzeigen, die in den letzten 7 Tagen in Ihren Tresoren ausgelöst wurden. Sie können Warnungen nach dem Typ (*Sicherungsfehler* oder *Wiederherstellungsfehler*), dem aktuellen Status (*Aktiv* oder *Gelöst*) und dem Schweregrad (*Kritisch*, *Warnung* oder *Information*) filtern. Sie können auch einen Link auswählen, um zum entsprechenden virtuellen Azure-Computer zu navigieren und die gewünschte Aktion auszuführen.
 
-
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
 ### <a name="the-policies-tab"></a>Registerkarte „Richtlinien“
 
 Wählen Sie die Registerkarte **Richtlinien** aus, um wichtige Informationen zu allen Sicherungsrichtlinien anzuzeigen, die in Ihrer Sicherungsumgebung erstellt wurden. Sie können die Anzahl der den einzelnen Richtlinien zugeordneten Elemente sowie den Aufbewahrungszeitraum und die Sicherungshäufigkeit für die einzelnen Richtlinien anzeigen.
-
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nLKV]
 
@@ -84,7 +80,6 @@ Wählen Sie die Registerkarte **Richtlinien** aus, um wichtige Informationen zu 
 Die Sicherung muss für alle Computer aktiviert werden, die Schutz erfordern. Mit dem Backup-Explorer können Sicherungsadministratoren schnell feststellen, welche Computer in einer Organisation noch nicht durch eine Sicherung geschützt sind. Wählen Sie zum Anzeigen dieser Informationen die Registerkarte **Backup Not Enabled** (Sicherung nicht aktiviert) aus.
 
 Im Bereich **Backup Not Enabled** (Sicherung nicht aktiviert) wird eine Tabelle mit einer Liste nicht geschützter Computer angezeigt. In Ihrer Organisation werden möglicherweise unterschiedliche Tags für Produktions- und Testcomputer oder für Computer zugewiesen, die verschiedene Funktionen erfüllen. Da für jede Klasse von Computern eine separate Sicherungsrichtlinie festgelegt werden muss, können Sie durch Filtern nach Tags die für jede Klasse spezifischen Informationen anzeigen. Wenn Sie den Namen eines Computers auswählen, werden Sie zu dem Bereich **Sicherung konfigurieren** für diesen Computer weitergeleitet, in dem Sie eine geeignete Sicherungsrichtlinie anwenden können.
-
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQXZ]
 

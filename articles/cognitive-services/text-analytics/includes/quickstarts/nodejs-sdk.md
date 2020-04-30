@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986712"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82095943"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 Installieren Sie die NPM-Pakete vom Typ `@azure/ai-text-analytics`:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.3
+npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
@@ -88,7 +88,7 @@ Erstellen Sie eine Datei namens `index.js`, und fügen Sie Folgendes hinzu:
 ```javascript
 "use strict";
 
-const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
 #### <a name="version-21"></a>[Version 2.1](#tab/version-2)
@@ -106,7 +106,7 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 
 ```javascript
 const key = '<paste-your-text-analytics-key-here>';
-const endpoint = `<paste-your-text-analytics-endpoint-here>`;
+const endpoint = '<paste-your-text-analytics-endpoint-here>';
 ```
 
 ## <a name="object-model"></a>Objektmodell
@@ -133,7 +133,7 @@ Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokumen
 Erstellen Sie ein neues Objekt vom Typ `TextAnalyticsClient` mit Ihrem Schlüssel und Ihrem Endpunkt als Parameter.
 
 ```javascript
-const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
 #### <a name="version-21"></a>[Version 2.1](#tab/version-2)
@@ -266,7 +266,6 @@ Document ID: 3 , Language: Chinese_Simplified
 
 > [!NOTE]
 > In Version `3.0-preview`:
-> * Die Erkennung benannter Entitäten enthält separate Methoden zum Erkennen personenbezogener Informationen. 
 > * Die Entitätsverknüpfung ist eine separate Anforderung.
 
 Erstellen Sie ein Zeichenfolgenarray, das das zu analysierende Dokument enthält. Rufen Sie die Methode `recognizeEntities()` des Clients auf, und rufen Sie das Objekt `RecognizeEntitiesResult` ab. Durchlaufen Sie die Liste mit den Ergebnissen, und geben Entitätsname, Typ, Untertyp, Offset, Länge und Bewertung aus.
@@ -318,40 +317,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.31
-```
-
-## <a name="using-ner-to-detect-personal-information"></a>Verwenden der NER zum Erkennen personenbezogener Informationen
-
-Erstellen Sie ein Zeichenfolgenarray, das das zu analysierende Dokument enthält. Rufen Sie die Methode `recognizePiiEntities()` des Clients auf, und rufen Sie das Objekt `EntitiesBatchResult` ab. Durchlaufen Sie die Liste mit den Ergebnissen, und geben Entitätsname, Typ, Untertyp, Offset, Länge und Bewertung aus.
-
-
-```javascript
-async function entityPiiRecognition(client){
-
-    const entityPiiInput = [
-        "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ];
-    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
-
-    entityPiiResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
-        });
-    });
-}
-entityPiiRecognition(textAnalyticsClient);
-```
-
-Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
-
-### <a name="output"></a>Output
-
-```console
-Document ID: 0
-        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>Entitätsverknüpfung
