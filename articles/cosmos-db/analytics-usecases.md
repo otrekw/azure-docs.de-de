@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
-ms.date: 09/26/2019
+ms.date: 04/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b1c3435222ada52c01f21c2c242dc886f566a81
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757077"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192849"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Anwendungsfälle für integrierte Analysen mit Azure Cosmos DB.
 
@@ -37,7 +37,7 @@ Mit dem nativen, integrierten Apache Spark-Modul bietet Azure Cosmos DB eine sch
 
 In einigen Fällen müssen Sie ggf. Fragen auf der Grundlage von Daten beantworten, die zu einem gegebenen Zeitpunkt über Ereignisse in der Vergangenheit vorlagen. Beispielsweise, um die CRM-Aktivitätsstatus-Anzahl für ein bestimmtes Datum in der Vergangenheit zu ermitteln. Wenn Sie den Bericht vor einer Woche ausgeführt haben, würde die Statusanzahl der Statusanzahl einzelner Aktivitäten zum damaligen Zeitpunkt entsprechen. Würden Sie den gleichen Bericht heute ausführen, erhielten Sie die Anzahl der Aktivitäten mit der aktuellen Statusanzahl. Diese könnte sich seit der letzten Woche geändert haben, da der Lebenszyklus von Anfang bis Ende durchlaufen wird. Folglich müssen Sie Momentaufnahmen in jeder Phase des Lebenszyklus eines Anwendungsfalls dokumentieren.
 
-In herkömmlichen Data Warehouse-Szenarien werden Momentaufnahmen nicht unterstützt, da Data Warehouses nicht darauf ausgelegt sind und die Daten nur eine aktuelle Ansicht der Ereignisse widerspiegeln. Mit Azure Cosmos DB haben Benutzer die Möglichkeit, das Zeitreise-Konzept zu implementieren. Auf diese Weise lassen sich Daten retrospektiv abfragen und analysieren, um zu ermitteln, wie sich die Daten zu einem bestimmten Zeitpunkt in der Vergangenheit darstellten. Dies bedeutet, dass Benutzer problemlos sowohl die aktuelle als auch die historische Ansicht der Daten anzeigen und die Daten analysieren können.
+Mit Azure Cosmos DB haben Benutzer die Möglichkeit, das Zeitreise-Konzept zu implementieren. Auf diese Weise lassen sich Daten retrospektiv abfragen und analysieren, um zu ermitteln, wie sich die Daten zu einem bestimmten Zeitpunkt in der Vergangenheit darstellten. Dies bedeutet, dass Benutzer problemlos sowohl die aktuelle als auch die historische Ansicht der Daten anzeigen und die Daten analysieren können.
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>Global verteiltes Machine Learning und KI
 

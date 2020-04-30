@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758643"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203960"
 ---
 In diesem Schnellstart auf Postman-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -40,7 +40,7 @@ Verwenden Sie diese Vorgehensweise, um Postman zu konfigurieren, und lesen Sie a
     |Name|Einstellung|Zweck und Wert|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|HTTP-Methode und Route für die URL.|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Der URL-Host. Verketten Sie den Host- und den POST-Wert, um die vollständige generateAnswer-URL zu erhalten.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Der URL-Host. Verketten Sie den Host- und den POST-Wert, um die vollständige generateAnswer-URL zu erhalten.|
     |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Headerwert für die Autorisierung der an Azure gerichteten Anforderung. |
     |`Content-type`|`application/json`|Headerwert für Ihren Inhalt.|
     ||`{"question":"<Your question>"}`|Text der POST-Anforderung als JSON-Objekt. Dieser Wert ändert sich in jedem der folgenden Abschnitte abhängig vom Zweck der jeweiligen Abfrage.|

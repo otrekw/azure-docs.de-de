@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 03/06/2020
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218285"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191633"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst
 
@@ -252,12 +252,3 @@ Löschen Sie in dem Designer, in dem Sie Ihr Experiment erstellt haben, einzelne
 
 Verwenden Sie zum Löschen von Datasets im Designer das Azure-Portal oder Storage-Explorer, um zu verbundenen Speicherkonten zu navigieren und die Datasets dort zu löschen. Durch die Aufhebung der Registrierung von Datasets im Designer wird nur der Referenzpunkt im Speicher entfernt.
 
-## <a name="export-data-in-the-designer"></a>Exportieren von Daten im Designer
-
-Exportieren Sie in dem Designer, in dem Sie Ihr Experiment erstellt haben, von Ihnen hinzugefügte Daten:
-
-1. Wählen Sie links die Option **Datasets** aus.
-
-1. Wählen Sie in der Liste das zu exportierende Dataset aus.
-
-    ![Herunterladen der Daten](./media/how-to-export-delete-data/unregister-dataset.png)

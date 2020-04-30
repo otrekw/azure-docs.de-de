@@ -83,7 +83,7 @@
       href: sql-api-python-samples.md
     - name: PowerShell
       href: powershell-samples-sql.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
@@ -136,10 +136,10 @@
         - name: Bereitstellen des Durchsatzes für Container und Datenbanken
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 'Bereitstellungsdurchsatz: Autopilot'
-          href: provision-throughput-autopilot.md
-        - name: Häufig gestellte Fragen zu Autopilot
-          href: autopilot-faq.md
+        - name: 'Bereitstellungsdurchsatz: Modus für die Autoskalierung'
+          href: provision-throughput-autoscale.md
+        - name: Häufig gestellte Fragen zur Autoskalierung
+          href: autoscale-faq.md
     - name: SQL-Abfrage (SQL query)
       items:
         - name: Erste Schritte
@@ -518,6 +518,7 @@
         - name: Gesamtkosten
           href: total-cost-ownership.md
         - name: Erläuterungen zur Rechnung
+          displayName: free tier
           href: understand-your-bill.md
         - name: Optimieren der Kosten für den bereitgestellten Durchsatz
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: Optimieren von Kosten für mehrere Regionen
           href: optimize-cost-regions.md
         - name: Optimieren der Kosten für Entwicklung/Tests
+          displayName: free tier
           href: optimize-dev-test.md
         - name: Optimieren der Kosten mit Reservekapazität
           href: cosmos-db-reserved-capacity.md

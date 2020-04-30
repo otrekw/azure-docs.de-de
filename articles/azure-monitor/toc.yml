@@ -243,11 +243,13 @@
             - name: 'Eigenständig: beliebige Umgebung'
               items:
                 - name: Java (Vorschau)
-                  href: app/java-in-process-agent.md
-                - name: Java-JVM-Konfiguration
-                  href: app/java-standalone-arguments.md
-                - name: Java-Konfigurationsoptionen
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: Übersicht
+                      href: app/java-in-process-agent.md
+                    - name: Konfigurationsoptionen
+                      href: app/java-standalone-config.md
+                    - name: Setup von JVM-Argumenten
+                      href: app/java-standalone-arguments.md
             - name: Lokale Server
               items:
                 - name: ASP.NET
@@ -690,8 +692,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Aktivieren für einen Hybridcluster
                   href: insights/container-insights-hybrid-setup.md
-                - name: Aktivieren für Azure Red Hat OpenShift
+                - name: Aktivieren für Azure Red Hat OpenShift v3
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: Aktivieren für Azure Red Hat OpenShift v4
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: Regionszuordnungen
                   href: insights/container-insights-region-mapping.md
             - name: Überwachen der Leistung
@@ -724,10 +728,16 @@
               href: insights/container-insights-update-metrics.md
             - name: Konfiguration für die Systemüberwachung
               href: insights/container-insights-health-monitors-config.md
-            - name: Deaktivieren der Überwachung von AKS
-              href: insights/container-insights-optout.md
-            - name: Deaktivieren der Überwachung von Red Hat OpenShift
-              href: insights/container-insights-optout-openshift.md
+            - name: Deaktivieren der Überwachung
+              items:
+                - name: Deaktivieren der Überwachung von AKS
+                  href: insights/container-insights-optout.md
+                - name: Deaktivieren der Überwachung von Red Hat OpenShift v3
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: Deaktivieren der Überwachung von Red Hat OpenShift v4
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: Deaktivieren der Überwachung des Hybridclusters
+                  href: insights/container-insights-optout-hybrid.md
             - name: Problembehandlung
               href: insights/container-insights-troubleshoot.md
         - name: Überwachen von Docker- und Windows-Containern
@@ -1201,7 +1211,7 @@
           href: platform/activity-log-schema.md
     - name: Tabellenverweis für Azure Monitor-Protokolle
       href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: 'Azure CLI: Application Insights (Vorschau)'
       href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'

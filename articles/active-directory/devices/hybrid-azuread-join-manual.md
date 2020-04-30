@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80802551"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201022"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -140,7 +140,7 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
 * Es verwendet das Active Directory-PowerShell-Modul und die Tools von Azure Active Directory Domain Services (Azure AD DS). Diese Tools basieren auf Active Directory-Webdiensten, die auf einem Domänencontroller ausgeführt werden. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
-* Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) herunterladen.
+* Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0) herunterladen.
 * Wenn die AD DS-Tools nicht installiert sind, ist `Initialize-ADSyncDomainJoinedComputerSync` nicht erfolgreich. Die AD DS-Tools können über den Server-Manager unter **Features** > **Remoteserver-Verwaltungstools** > **Rollenverwaltungstools** installiert werden.
 
 Verwenden Sie für Domänencontroller mit Windows Server 2008 oder älteren Versionen das folgende Skript, um den Dienstverbindungspunkt zu erstellen. Verwenden Sie bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen das folgende Skript, um den Dienstverbindungsendpunkt in allen Gesamtstrukturen zu erstellen, in denen Computer vorhanden sind.
@@ -185,7 +185,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktiviere
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** dürfen nur als Endpunkte mit Intranetzugriff aktiviert und NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 > [!NOTE]
 >Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.

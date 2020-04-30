@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682873"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204218"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -817,9 +817,9 @@ Führen Sie die folgenden erforderlichen Schritte aus, damit aus der DSVM auf Az
 1. Das Azure Cosmos DB Python SDK ist bereits auf der DSVM installiert. Um es zu aktualisieren, führen Sie ```pip install pydocumentdb --upgrade``` an einer Eingabeaufforderung aus.
 2. Erstellen Sie über das [Azure-Portal](https://portal.azure.com) ein Azure Cosmos DB-Konto und eine Azure Cosmos DB-Datenbank.
 3. Laden Sie das Datenmigrationstool für Azure Cosmos DB aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) herunter, und extrahieren Sie es in das gewünschte Verzeichnis.
-4. Importieren Sie JSON-Daten (Vulkandaten), die in einem [öffentlichen Blob](https://dotnet.microsoft.com/) gespeichert sind, in Azure Cosmos DB. Verwenden Sie dazu die folgenden Befehlsparameter für das Migrationstool. (Verwenden Sie „dtui. exe“ aus dem Verzeichnis, in dem Sie das Datenmigrationstool für Azure Cosmos DB installiert haben.) Geben Sie die Quell-und Zielposition mit diesen Parametern ein:
+4. Importieren Sie JSON-Daten (Vulkandaten), die in einem [öffentlichen Blob](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) gespeichert sind, in Azure Cosmos DB. Verwenden Sie dazu die folgenden Befehlsparameter für das Migrationstool. (Verwenden Sie „dtui. exe“ aus dem Verzeichnis, in dem Sie das Datenmigrationstool für Azure Cosmos DB installiert haben.) Geben Sie die Quell-und Zielposition mit diesen Parametern ein:
    
-    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
+    `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 Nachdem Sie die Daten importiert haben, können Sie zu Jupyter wechseln und das Notebook *DocumentDBSample* öffnen. Es enthält Python-Code, mit dem auf Azure Cosmos DB zugegriffen wird und einige einfache Abfragen ausgeführt werden können. Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Dokumentationsseite](https://docs.microsoft.com/azure/cosmos-db/) für den Dienst.
 

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026313"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201991"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -104,7 +104,7 @@ Um Benutzer über die Kontoaktivität auf dem Laufenden zu halten, können Sie E
 Wenn Benutzer zusätzliche Hilfe beim SSPR-Prozess benötigen, können Sie den Link für „Wenden Sie sich an Ihren Administrator.“ anpassen. Dieser Link wird im SSPR-Registrierungsprozess verwendet, wenn ein Benutzer sein Konto entsperrt oder das Kennwort zurücksetzt. Um sicherzustellen, dass Ihre Benutzer die erforderliche Unterstützung erhalten, wird dringend empfohlen, eine benutzerdefinierte Helpdesk-E-Mail-Adresse oder -URL bereitzustellen.
 
 1. Navigieren Sie über das Menü auf der linken Seite zur Seite **Anpassung**, und legen Sie *Benutzerdefinierter Helpdesklink* auf **Ja** fest.
-1. Geben Sie im Feld **Benutzerdefinierte Helpdesk-E-Mail oder -URL** eine E-Mail-Adresse oder eine Webseiten-URL (etwa *https://support.contoso.com/* ) an, unter der Benutzer weitere Unterstützung von Ihrer Organisation anfordern können.
+1. Geben Sie im Feld **Benutzerdefinierte Helpdesk-E-Mail oder -URL** eine E-Mail-Adresse oder eine Webseiten-URL (etwa *`https://support.contoso.com/`* ) an, unter der Benutzer weitere Unterstützung von Ihrer Organisation anfordern können.
 1. Wählen Sie zum Übernehmen des benutzerdefinierten Links **Speichern** aus.
 
 ## <a name="test-self-service-password-reset"></a>Testen der Self-Service-Kennwortzurücksetzung

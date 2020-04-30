@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60244827"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82200886"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -120,7 +120,7 @@ https://(Ihr_FS_Name)/federationmetadata/2007-06/federationmetadata.xml
 
 Dabei wird `(your_FS_name)` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. „fs.contoso.com“.  Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.  
 
-Beispiel: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+Beispiel: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>Manuelles Erneuern des Tokensignaturzertifikats <a name="manualrenew"></a>
 Sie können die Tokensignaturzertifikate auch manuell signieren. Beispielsweise funktionieren die folgenden Szenarien unter Umständen besser für die manuelle Erneuerung:
 

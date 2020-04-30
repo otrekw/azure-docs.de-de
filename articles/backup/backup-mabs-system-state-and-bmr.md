@@ -3,12 +3,12 @@ title: Systemstatus- und Bare-Metal-Recovery-Schutz
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und BMR-Schutz (Bare-Metal-Recovery) bereitzustellen.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 358a1c96d598788170993fc48e60daae2b6b036c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505876"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192364"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
 
@@ -43,14 +43,14 @@ In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstel
 
 ## <a name="how-system-state-backup-works"></a>Funktionsweise der Systemstatussicherung
 
-Wenn eine Systemstatussicherung ausgeführt wird, kommuniziert Azure Backup Server mit der Windows Server-Sicherung und fordert eine Sicherung des Systemstatus des Servers an. Azure Backup Server und die Windows Server-Sicherung verwenden standardmäßig das Laufwerk, das über den meisten verfügbaren freien Speicherplatz verfügt. Informationen zu diesem Laufwerk werden in der Datei *PSDataSourceConfig.xml* gespeichert. 
+Wenn eine Systemstatussicherung ausgeführt wird, kommuniziert Azure Backup Server mit der Windows Server-Sicherung und fordert eine Sicherung des Systemstatus des Servers an. Azure Backup Server und die Windows Server-Sicherung verwenden standardmäßig das Laufwerk, das über den meisten verfügbaren freien Speicherplatz verfügt. Informationen zu diesem Laufwerk werden in der Datei *PSDataSourceConfig.xml* gespeichert.
 
-Das Laufwerk, das von Azure Backup Server für die Systemstatussicherung verwendet wird, kann wie folgt angepasst werden: 
+Das Laufwerk, das von Azure Backup Server für die Systemstatussicherung verwendet wird, kann wie folgt angepasst werden:
 
-1. Navigieren Sie auf dem geschützten Server zu *C:\Programme\Microsoft Data Protection Manager\MABS\Datasources*. 
-1. Öffnen Sie die Datei *PSDataSourceConfig.xml*, um sie zu bearbeiten. 
-1. Ändern Sie den Wert von \<FilesToProtect\> entsprechend dem Laufwerkbuchstaben. 
-1. Speichern und schließen Sie die Datei. 
+1. Navigieren Sie auf dem geschützten Server zu *C:\Programme\Microsoft Data Protection Manager\MABS\Datasources*.
+1. Öffnen Sie die Datei *PSDataSourceConfig.xml*, um sie zu bearbeiten.
+1. Ändern Sie den Wert von \<FilesToProtect\> entsprechend dem Laufwerkbuchstaben.
+1. Speichern und schließen Sie die Datei.
 
 Wenn eine Schutzgruppe zum Schützen des Systemstatus des Computers festgelegt ist, führen Sie eine Konsistenzprüfung durch. Sollte eine Warnung generiert werden, wählen Sie in der Warnung **Schutzgruppe ändern** aus, und durchlaufen Sie anschließend die Seiten des Assistenten. Führen Sie danach eine weitere Konsistenzprüfung aus.
 
@@ -117,7 +117,7 @@ So sichern Sie Systemstatus und BMR:
 
     Zur Erinnerung: Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert. Weitere Informationen finden Sie unter [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
 
-1. Wählen Sie auf der Seite **Datenschutzmethode auswählen** den gewünschten Umgang mit der kurz- und langfristigen Sicherung aus. 
+1. Wählen Sie auf der Seite **Datenschutzmethode auswählen** den gewünschten Umgang mit der kurz- und langfristigen Sicherung aus.
 
     Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger – mit der Option, Daten vom Datenträger per Azure Backup in der Azure-Cloud zu sichern (kurz- oder langfristig). Eine Alternative zur langfristigen Sicherung in der Cloud ist das Einrichten einer langfristigen Sicherung auf einem eigenständigen Bandgerät oder in einer Bandbibliothek, das bzw. die mit Backup Server verbunden ist.
 
@@ -139,23 +139,23 @@ So sichern Sie Systemstatus und BMR:
     * **Für Azure Backup Server bereitzustellender Speicherplatz** ist der Speicherplatz, den Backup Server für die Schutzgruppe empfiehlt. Backup Server wählt auf der Grundlage dieser Einstellungen das ideale Sicherungsvolume aus. Die Sicherungsvolumeoptionen können jedoch unter **Details zur Datenspeicherzuordnung** bearbeitet werden.
     * Wählen Sie für Workloads im Dropdownmenü den bevorzugten Speicher aus. Durch Ihre Änderungen verändern sich im Bereich **Verfügbarer Speicherplatz** die Werte für **Gesamtspeicher** und **Freier Speicher**. Nicht ausreichend bereitgestellter Speicherplatz ist die Menge an Speicher, die dem Volume laut Backup Server hinzugefügt werden sollte, um reibungslose Sicherungen zu gewährleisten.
 
-1. Wählen Sie auf der Seite **Replikaterstellungsmethode auswählen** die gewünschte Vorgehensweise bei der ersten vollständigen Datenreplikation aus. 
+1. Wählen Sie auf der Seite **Replikaterstellungsmethode auswählen** die gewünschte Vorgehensweise bei der ersten vollständigen Datenreplikation aus.
 
     Wenn Sie sich für die Replikation über das Netzwerk entscheiden, sollten Sie hierfür eine Nebenzeit auswählen. Ziehen Sie bei großen Datenmengen oder nicht optimalen Netzwerkbedingungen die Offlinereplikation der Daten mit Wechselmedien in Betracht.
 
-1. Legen Sie im Bildschirm **Konsistenzprüfungsoptionen auswählen** fest, wie Konsistenzprüfungen automatisiert werden sollen. 
+1. Legen Sie im Bildschirm **Konsistenzprüfungsoptionen auswählen** fest, wie Konsistenzprüfungen automatisiert werden sollen.
 
     Sie haben nur dann die Wahl der Ausführung einer Überprüfung, wenn Replikatdaten inkonsistent werden, oder gemäß einem Zeitplan. Wenn Sie keine automatische Konsistenzprüfung konfigurieren möchten, können Sie jederzeit eine manuelle Überprüfung ausführen. Klicken Sie zum Ausführen einer manuellen Prüfung im Bereich **Schutz** der Backup Server-Administratorkonsole mit der rechten Maustaste auf die Schutzgruppe, und wählen Sie **Konsistenzprüfung ausführen** aus.
 
 1. Wenn Sie sich für die Sicherung in der Cloud mithilfe von Azure Backup entschieden haben, wählen Sie auf der Seite **Online zu schützende Daten angeben** die Workloads aus, die Sie in Azure sichern möchten.
 
-1. Wählen Sie auf der Seite **Onlinesicherungszeitplan angeben** aus, wie oft inkrementelle Sicherungen in Azure erfolgen sollen. 
+1. Wählen Sie auf der Seite **Onlinesicherungszeitplan angeben** aus, wie oft inkrementelle Sicherungen in Azure erfolgen sollen.
 
     Sicherungen können täglich, wöchentlich, monatlich und jährlich ausgeführt werden. Darüber hinaus können Sie den gewünschten Ausführungszeitpunkt (Uhrzeit und Datum) für Sicherungen auswählen. Sicherungen können bis zu zweimal täglich erfolgen. Bei jeder Ausführung einer Sicherung wird auf der Grundlage der auf dem Backup Server-Datenträger gespeicherten Sicherungsdatenkopie ein Datenwiederherstellungspunkt in Azure erstellt.
 
 1. Wählen Sie auf der Seite **Onlineaufbewahrungsrichtlinie angeben** aus, wie die Wiederherstellungspunkte in Azure aufbewahrt werden sollen, die auf der Grundlage der täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen erstellt werden.
 
-1. Wählen Sie auf der Seite **Onlinereplikation wählen** aus, wie die erste vollständige Replikation der Daten erfolgt. 
+1. Wählen Sie auf der Seite **Onlinereplikation wählen** aus, wie die erste vollständige Replikation der Daten erfolgt.
 
     Daten können über das Netzwerk repliziert oder offline gesichert werden (Offlineseeding). Bei der Offlinesicherung wird das Importfeature von Azure verwendet. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](offline-backup-azure-data-box.md).
 
@@ -175,23 +175,23 @@ So führen Sie die Wiederherstellung auf dem Backup Server-Computer aus:
 
 1. Wählen Sie auf der Seite **Wiederherstellungstyp auswählen** die Option **In einen Netzwerkordner kopieren** aus.
 
-1. Wählen Sie auf der Seite **Ziel angeben** das Ziel für die kopierten Daten aus. 
+1. Wählen Sie auf der Seite **Ziel angeben** das Ziel für die kopierten Daten aus.
 
     Zur Erinnerung: Am Ziel muss genügend Speicherplatz für die Daten zur Verfügung stehen. Es empfiehlt sich, einen neuen Ordner für das Ziel zu erstellen.
 
 1. Wählen Sie auf der Seite **Wiederherstellungsoptionen angeben** die gewünschten Sicherheitseinstellungen aus. Wählen Sie anschließend aus, ob Sie SAN-basierte (Storage Area Network) Hardwaremomentaufnahmen verwenden möchten, um die Wiederherstellung zu beschleunigen. Diese Option ist nur verfügbar, wenn folgende Voraussetzungen erfüllt sind:
-    * Sie verfügen über ein SAN, das die Verwendung dieser Funktion ermöglicht. 
+    * Sie verfügen über ein SAN, das die Verwendung dieser Funktion ermöglicht.
     * Sie können einen Klon erstellen und teilen, um ihn beschreibbar zu machen.
     * Der geschützte Computer und der Backup Server-Computer sind mit dem gleichen Netzwerk verbunden.
 
-1. Richten Sie Benachrichtigungsoptionen ein. 
+1. Richten Sie Benachrichtigungsoptionen ein.
 1. Klicken Sie auf der Seite **Bestätigung** auf **Wiederherstellen**.
 
 So richten Sie den Speicherort der Freigabe ein:
 
 1. Wechseln Sie am Wiederherstellungsspeicherort zum Ordner mit der Sicherung.
 
-1. Geben Sie den Ordner frei, der sich eine Ebene über *WindowsImageBackup* befindet, damit der Stamm des freigegebenen Ordners der Ordner *WindowsImageBackup* ist. 
+1. Geben Sie den Ordner frei, der sich eine Ebene über *WindowsImageBackup* befindet, damit der Stamm des freigegebenen Ordners der Ordner *WindowsImageBackup* ist.
 
     Wenn Sie diesen Ordner nicht freigeben, wird die Sicherung nicht gefunden. Für die Verbindungsherstellung mittels WinRE benötigen Sie eine Freigabe, auf die Sie in WinRE zugreifen können (mit der richtigen IP-Adresse und den richtigen Anmeldeinformationen).
 
@@ -219,16 +219,16 @@ So führen Sie die Wiederherstellung in Backup Server aus:
 
 1. Wählen Sie auf der Seite **Wiederherstellungstyp auswählen** die Option **In einen Netzwerkordner kopieren** aus.
 
-1. Wählen Sie auf der Seite **Ziel angeben** aus, wohin die Daten kopiert werden sollen. 
+1. Wählen Sie auf der Seite **Ziel angeben** aus, wohin die Daten kopiert werden sollen.
 
     Zur Erinnerung: Am gewählten Ziel muss genügend Speicherplatz für die Daten zur Verfügung stehen. Es empfiehlt sich, einen neuen Ordner für das Ziel zu erstellen.
 
-1. Wählen Sie auf der Seite **Wiederherstellungsoptionen angeben** die gewünschten Sicherheitseinstellungen aus. Wählen Sie anschließend aus, ob Sie SAN-basierte Hardwaremomentaufnahmen verwenden möchten, um die Wiederherstellung zu beschleunigen. Diese Option ist nur verfügbar, wenn folgende Voraussetzungen erfüllt sind: 
+1. Wählen Sie auf der Seite **Wiederherstellungsoptionen angeben** die gewünschten Sicherheitseinstellungen aus. Wählen Sie anschließend aus, ob Sie SAN-basierte Hardwaremomentaufnahmen verwenden möchten, um die Wiederherstellung zu beschleunigen. Diese Option ist nur verfügbar, wenn folgende Voraussetzungen erfüllt sind:
     * Sie verfügen über ein SAN, das die Verwendung dieser Funktion ermöglicht.
-    * Sie können einen Klon erstellen und teilen, um ihn beschreibbar zu machen. 
+    * Sie können einen Klon erstellen und teilen, um ihn beschreibbar zu machen.
     * Der geschützte Computer und der Backup Server-Computer sind mit dem gleichen Netzwerk verbunden.
 
-1. Richten Sie Benachrichtigungsoptionen ein. 
+1. Richten Sie Benachrichtigungsoptionen ein.
 1. Klicken Sie auf der Seite **Bestätigung** auf **Wiederherstellen**.
 
 So führen Sie die Windows Server-Sicherung aus:
@@ -241,22 +241,22 @@ So führen Sie die Windows Server-Sicherung aus:
 
 1. Wählen Sie auf der Seite **Speicherort für Wiederherstellung des Systemstatus auswählen** die Option **Ursprungsspeicherort** aus.
 
-1. Klicken Sie auf der Seite **Bestätigung** auf **Wiederherstellen**. 
+1. Klicken Sie auf der Seite **Bestätigung** auf **Wiederherstellen**.
 
 1. Starten Sie den Server nach der Wiederherstellung neu.
 
-Sie können die Systemstatuswiederherstellung auch an einer Eingabeaufforderung ausführen: 
+Sie können die Systemstatuswiederherstellung auch an einer Eingabeaufforderung ausführen:
 
-1. Starten Sie die Windows Server-Sicherung auf dem Computer, den Sie wiederherstellen möchten. 
+1. Starten Sie die Windows Server-Sicherung auf dem Computer, den Sie wiederherstellen möchten.
 
 1. Geben Sie zum Abrufen des Versionsbezeichners an der Eingabeaufforderung Folgendes ein:
 
    ```wbadmin get versions -backuptarget \<servername\sharename\>```
 
-1. Verwenden Sie den Versionsbezeichner zum Starten der Systemstatuswiederherstellung. Geben Sie an der Eingabeaufforderung Folgendes ein: 
+1. Verwenden Sie den Versionsbezeichner zum Starten der Systemstatuswiederherstellung. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
     ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
 
-1. Bestätigen Sie, dass Sie die Wiederherstellung starten möchten. Der Prozess wird im Eingabeaufforderungsfenster angezeigt. Ein Wiederherstellungsprotokoll wird erstellt. 
+1. Bestätigen Sie, dass Sie die Wiederherstellung starten möchten. Der Prozess wird im Eingabeaufforderungsfenster angezeigt. Ein Wiederherstellungsprotokoll wird erstellt.
 
 1. Starten Sie den Server nach der Wiederherstellung neu.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73570579"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201345"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Tutorial: Integrieren von Sage Intacct in Azure Active Directory
 
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | ---------------| --------------- |
     | Name des Unternehmens | **Sage Intacct-Unternehmens-ID** |
     | name | Der Wert muss der Sage Intacct-**Benutzer-ID** entsprechen, die Sie später in diesem Tutorial im Abschnitt **Erstellen eines Sage Intacct-Testbenutzers** eingeben. |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | Der Wert muss der **Verbund-SSO-Benutzer-ID** für Sage Intacct entsprechen, die Sie später in diesem Tutorial im Abschnitt **Erstellen eines Sage Intacct-Testbenutzers** eingeben. |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | Der Wert muss der **Verbund-SSO-Benutzer-ID** für Sage Intacct entsprechen, die Sie später in diesem Tutorial im Abschnitt **Erstellen eines Sage Intacct-Testbenutzers** eingeben. |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 

@@ -3,12 +3,12 @@ title: Sichern von Windows-Computern mit dem MARS-Agent
 description: Verwenden Sie den Microsoft Azure Recovery Services-Agent (MARS) zum Sichern von Windows-Computern.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 12463f33a6fa97b33e70b77fb2fcf6b0a27b5790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408911"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193291"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Sichern von Windows-Computern mit dem Azure Backup-MARS-Agent
 
@@ -159,4 +159,3 @@ Weitere Informationen finden Sie unter [Erstellen einer Sicherungsrichtlinie](#c
 
 * Erfahren Sie mehr über das [Wiederherstellen von Dateien in Azure](backup-azure-restore-windows-server.md).
 * Nutzen Sie [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.md).
-

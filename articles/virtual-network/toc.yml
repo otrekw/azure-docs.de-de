@@ -29,7 +29,7 @@
       href: tutorial-create-validate-nat-gateway-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -135,7 +135,7 @@
               href: tutorial-create-route-table-portal.md
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
@@ -155,7 +155,7 @@
               items:
                 - name: Azure PowerShell
                   href: tutorial-connect-virtual-networks-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: tutorial-connect-virtual-networks-cli.md
             - name: Gleiches Bereitstellungsmodell – andere Abonnements
               href: create-peering-different-subscriptions.md
@@ -189,13 +189,13 @@
               items:
                 - name: Azure PowerShell
                   href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ipv6-add-to-existing-vnet-cli.md
             - name: Öffentliche Load Balancer-Instanz im Tarif „Basic“
               items:
                 - name: Azure PowerShell
                   href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Resource Manager-Vorlage
                   href: ipv6-configure-template-json.md
@@ -203,7 +203,7 @@
               items:
                 - name: Azure PowerShell
                   href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
                 - name: Resource Manager-Vorlage
                   href: ipv6-configure-standard-load-balancer-template-json.md
@@ -223,23 +223,13 @@
               href: virtual-network-network-interface-addresses.md
     - name: Sicherheit
       items:
-        - name: Einschränken des Zugriffs mithilfe von Netzwerksicherheitsgruppen
-          items:
-            - name: Azure-Portal
-              href: tutorial-restrict-network-access-to-resources.md
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
-              href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: Verwalten von Netzwerksicherheitsgruppen
-              href: manage-network-security-group.md
         - name: Filtern des Netzwerkdatenverkehrs
           items:
             - name: Azure-Portal
               href: tutorial-filter-network-traffic.md
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
         - name: Netzwerkisolation
           items:
@@ -249,7 +239,7 @@
                   href: ../private-link/create-private-endpoint-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                 - name: Azure PowerShell
                   href: ../private-link/create-private-endpoint-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../private-link/create-private-endpoint-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Verwenden von Dienstendpunkten
               items:
@@ -257,7 +247,7 @@
                   href: tutorial-restrict-network-access-to-resources.md
                 - name: Azure PowerShell
                   href: tutorial-restrict-network-access-to-resources-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: tutorial-restrict-network-access-to-resources-cli.md
             - name: Verwenden von Dienstendpunktrichtlinien
               items:
@@ -265,12 +255,14 @@
                   href: virtual-network-service-endpoint-policies-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-service-endpoint-policies-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: Verwalten des DDoS-Schutzes
           href: manage-ddos-protection.md
         - name: Durchführen des Onboardings von Partnern für DDoS Protection Standard
           href: ddos-protection-partner-onboarding.md
+        - name: Verwalten von Netzwerksicherheitsgruppen
+          href: manage-network-security-group.md
         - name: Sicherheitsszenarien
           items:
             - name: Schützen von Netzwerken mit virtuellen Geräten
@@ -285,7 +277,7 @@
               href: virtual-network-deploy-static-pip-arm-portal.md
             - name: Azure PowerShell
               href: virtual-network-deploy-static-pip-arm-ps.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: virtual-network-deploy-static-pip-arm-cli.md
             - name: Hinzufügen einer öffentlichen IP-Adresse zu einem vorhanden virtuellen Computer
               href: associate-public-ip-address-vm.md
@@ -297,7 +289,7 @@
               href: virtual-networks-static-private-ip-arm-pportal.md
             - name: Azure PowerShell
               href: virtual-networks-static-private-ip-arm-ps.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: virtual-networks-static-private-ip-arm-cli.md
         - name: 'Erstellen eines virtuellen Computers: Statische private IP-Adresse (klassisch)'
           items:
@@ -311,7 +303,7 @@
               href: virtual-network-multiple-ip-addresses-portal.md
             - name: Azure PowerShell
               href: virtual-network-multiple-ip-addresses-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: virtual-network-multiple-ip-addresses-cli.md
             - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
               href: virtual-network-network-interface-vm.md
@@ -319,13 +311,13 @@
               items:
                 - name: Azure PowerShell
                   href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: 'Erstellen eines virtuellen Computers: beschleunigter Netzwerkbetrieb'
           items:
             - name: Azure PowerShell
               href: create-vm-accelerated-networking-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: create-vm-accelerated-networking-cli.md
               items:
                 - name: Einrichten des DPDK
@@ -393,7 +385,7 @@
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

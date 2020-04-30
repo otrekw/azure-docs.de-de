@@ -4,18 +4,18 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.author: rohogue
-ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/23/2020
+ms.author: v-erkel
+ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233442"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195042"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
-*Speicherziele* sind Back-End-Speicher für Dateien, auf die über eine Azure HPC Cache-Instanz zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten in Azure Blob Storage speichern.
+*Speicherziele* sind Back-End-Speicher für Dateien, auf die über einen Azure HPC Cache zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten in Azure Blob Storage speichern.
 
 Es können bis zu zehn verschiedene Speicherziele für einen Cache definiert werden. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
 
@@ -35,9 +35,9 @@ Für ein neues Blobspeicherziel ist ein leerer Blobcontainer oder ein Container 
 
 Sie können auf dieser Seite unmittelbar vor dem Hinzufügen einen neuen Container erstellen.
 
-Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
-
 ![Screenshot der Seite „Speicherziel hinzufügen“, aufgefüllt mit Informationen für ein neues Azure-Blobspeicherziel](media/hpc-cache-add-blob.png)
+
+Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 * **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * **Zieltyp**: Wählen Sie **Blob** aus.
@@ -79,7 +79,7 @@ Schritte zum Hinzufügen der RBAC-Rollen:
 1. Suchen Sie im Feld **Auswählen** nach „hpc“.  Diese Zeichenfolge sollte mit einem Dienstprinzipal mit dem Namen "HPC Cache-Ressourcenanbieter" übereinstimmen. Klicken Sie auf diesen Prinzipal, um ihn auszuwählen.
 
    > [!NOTE]
-   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die (vor der allgemeinen Verfügbarkeit) an der Vorschau teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
+   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die an Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
 
 1. Klicken Sie unten auf die Schaltfläche **Speichern**.
 
@@ -91,7 +91,10 @@ Schritte zum Hinzufügen der RBAC-Rollen:
 
 Ein NFS-Speicherziel verfügt über mehr Felder als das Blobspeicherziel. Diese Felder geben an, wie auf den Speicherexport zugegriffen werden soll und wie seine Daten effizient zwischengespeichert werden sollen. Außerdem können Sie mit einem NFS-Speicherziel mehrere Namespacepfade erstellen, wenn der NFS-Host über mehrere Exporte verfügt.
 
-![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/hpc-cache-add-nfs-target.png)
+![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/add-nfs-target.png)
+
+> [!NOTE]
+> Stellen Sie vor dem Erstellen eines NFS-Speicherziels sicher, dass das Speichersystem über den Azure HPC Cache zugänglich ist und die Berechtigungsanforderungen erfüllt. Das Erstellen des Speicherziels schlägt fehl, wenn der Cache auf das Speichersystem nicht zugreifen kann. Einzelheiten dazu finden Sie in [NFS-Speicheranforderungen](hpc-cache-prereqs.md#nfs-storage-requirements) und [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
 
 Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
 
@@ -115,8 +118,6 @@ Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
 * **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
 
-<!--  The virtual path should start with a slash ``/``. -->
-
 * **NFS-Exportpfad**: Geben Sie den Pfad zum NFS-Export ein.
 
 * **Unterverzeichnispfad**: Wenn Sie ein bestimmtes Unterverzeichnis des Exports einbinden möchten, geben Sie es hier ein. Lassen Sie dieses Feld andernfalls leer.
@@ -126,7 +127,7 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 ### <a name="choose-a-usage-model"></a>Auswählen eines Nutzungsmodells
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das *Nutzungsmodell* für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
+Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das Nutzungsmodell für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 
 Drei Optionen stehen zur Verfügung:
 
@@ -138,7 +139,7 @@ Drei Optionen stehen zur Verfügung:
 
 * **Mehr als 15 % Schreibvorgänge**: Diese Option beschleunigt die Lese-und Schreibleistung. Wenn diese Option verwendet wird, müssen alle Clients über den Azure HPC-Cache auf Dateien zugreifen, anstatt den Back-End-Speicher direkt einzubinden. Die zwischengespeicherten Dateien enthalten aktuelle Änderungen, die nicht auf dem Back-End gespeichert werden.
 
-  Bei diesem Nutzungsmodell werden Dateien im Cache nicht mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird nur dann in das Back-End-Speichersystem geschrieben, nachdem sie sich für eine Stunde ohne zusätzliche Änderungen im Cache befunden hat.
+  Bei diesem Nutzungsmodell werden Dateien im Cache nicht mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird in das Back-End-Speichersystem geschrieben, nachdem sie sich eine Stunde lang ohne zusätzliche Änderungen im Cache befunden hat.
 
 * **Clients umgehen den Cache und schreiben in das NFS-Ziel**: Wählen Sie diese Option aus, wenn Clients in Ihrem Workflow Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben. Die von Clients angeforderten Dateien werden zwischengespeichert, aber alle Änderungen an diesen Dateien vom Client werden sofort an das Back-End-Speichersystem zurückgegeben.
 

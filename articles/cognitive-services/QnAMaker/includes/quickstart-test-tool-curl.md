@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758134"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203959"
 ---
 In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -296,120 +296,7 @@ In der JSON-Antwort wird das gleiche Schema verwendet wie in der Abfrage der ver
 
     Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Smalltalk zurückgegeben.
 
-## <a name="use-curl-with-threshold-and-default-answer"></a>Verwenden von cURL mit Schwellenwert und Standardantwort
-
-Sie können einen Mindestschwellenwert für die Antwort anfordern. Sollte der Schwellenwert nicht erreicht werden, wird die Standardantwort zurückgegeben.
-
-1. Verwenden Sie den folgenden cURL-Befehl mit Ihren eigenen Werten für Ressourcenname, Wissensdatenbank-ID und Endpunktschlüssel, um für `size` eine Antwort mit einem Schwellenwert von mindestens 80 Prozent anzufordern. Diese Antwort sollte von der Wissensdatenbank nicht gefunden werden, da die Frage mit 71 Prozent bewertet wurde. Stattdessen sollte die Standardantwort zurückgeben werden, die Sie beim Erstellen der Wissensdatenbank angegeben haben.
-
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
-    ```
-
-1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten.
-
-    ```json
-    {
-        "answers": [
-            {
-                "questions": [],
-                "answer": "No good match found in KB.",
-                "score": 0.0,
-                "id": -1,
-                "source": null,
-                "metadata": []
-            }
-        ],
-        "debugInfo": null,
-        "activeLearningEnabled": true
-    }
-    ```
-
-    QnA Maker hat als Bewertung den Wert `0` (nicht überzeugt) zurückgegeben. Darüber hinaus wurde die Standardantwort zurückgegeben.
-
-    ```json
-    {
-      "answers": [
-          {
-              "questions": [
-                  "I thank you",
-                  "Oh, thank you",
-                  "My sincere thanks",
-                  "My humblest thanks to you",
-                  "Marvelous, thanks",
-                  "Marvelous, thank you kindly",
-                  "Marvelous, thank you",
-                  "Many thanks to you",
-                  "Many thanks",
-                  "Kthx",
-                  "I'm grateful, thanks",
-                  "Ahh, thanks",
-                  "I'm grateful for that, thank you",
-                  "Perfecto, thanks",
-                  "I appreciate you",
-                  "I appreciate that",
-                  "I appreciate it",
-                  "I am very thankful for that",
-                  "How kind, thank you",
-                  "Great, thanks",
-                  "Great, thank you",
-                  "Gracias",
-                  "Gotcha, thanks",
-                  "Gotcha, thank you",
-                  "Awesome thanks!",
-                  "I'm grateful for that, thank you kindly",
-                  "thank you pal",
-                  "Wonderful, thank you!",
-                  "Wonderful, thank you very much",
-                  "Why thank you",
-                  "Thx",
-                  "Thnx",
-                  "That's very kind",
-                  "That's great, thanks",
-                  "That is lovely, thanks",
-                  "That is awesome, thanks!",
-                  "Thanks bot",
-                  "Thanks a lot",
-                  "Okay, thanks!",
-                  "Thank you so much",
-                  "Perfect, thanks",
-                  "Thank you my friend",
-                  "Thank you kindly",
-                  "Thank you for that",
-                  "Thank you bot",
-                  "Thank you",
-                  "Right on, thanks very much",
-                  "Right on, thanks a lot",
-                  "Radical, thanks",
-                  "Rad, thanks",
-                  "Rad thank you",
-                  "Wonderful, thanks!",
-                  "Thanks"
-              ],
-              "answer": "You're welcome.",
-              "score": 100.0,
-              "id": 75,
-              "source": "qna_chitchat_Professional.tsv",
-              "metadata": [
-                  {
-                      "name": "editorial",
-                      "value": "chitchat"
-                  }
-              ],
-              "context": {
-                  "isContextOnly": false,
-                  "prompts": []
-              }
-          }
-      ],
-      "debugInfo": null,
-      "activeLearningEnabled": true
-    }
-    ```
-
-    Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Smalltalk zurückgegeben.
-
-## <a name="use-curl-with-threshold-and-default-answer"></a>Verwenden von cURL mit Schwellenwert und Standardantwort
+## <a name="use-threshold-and-default-answer"></a>Verwenden von Schwellenwert und Standardantwort
 
 Sie können einen Mindestschwellenwert für die Antwort anfordern. Sollte der Schwellenwert nicht erreicht werden, wird die Standardantwort zurückgegeben.
 

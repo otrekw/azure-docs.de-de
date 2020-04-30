@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866678"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202535"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
 
@@ -75,7 +75,7 @@ Wenn die Anwendung cookiebasierte Affinität nicht verarbeiten kann, müssen Sie
 
 #### <a name="symptom"></a>Symptom
 
-Sie haben die Einstellung „Cookiebasierte Affinität“ aktiviert. Wenn Sie in Internet Explorer über eine Kurznamen-URL auf das Anwendungsgateway zugreifen, z. B. [http://website](http://website/), wird die Anforderung dennoch zwischen Back-End-Servern weitergeleitet.
+Sie haben die Einstellung „Cookiebasierte Affinität“ aktiviert. Wenn Sie in Internet Explorer über eine Kurznamen-URL auf das Anwendungsgateway zugreifen, z. B. `http://website`, wird die Anforderung dennoch zwischen Back-End-Servern weitergeleitet.
 
 Gehen Sie zum Beheben dieses Problems wie folgt vor:
 

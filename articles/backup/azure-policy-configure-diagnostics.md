@@ -3,18 +3,18 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77584505"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195705"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
 Die von Azure Backup bereitgestellte Berichterstellungslösung nutzt Log Analytics (LA). Damit die Daten eines beliebigen Tresors an La gesendet werden, muss für diesen Tresor eine [Diagnoseeinstellung](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) erstellt werden.
 
-Häufig ist das manuelle Hinzufügen einer Diagnoseeinstellung pro Tresor eine mühselige Aufgabe. Außerdem müssen für jeden neu erstellten Tresor auch Diagnoseeinstellungen aktiviert sein, damit für diesen Tresor Berichte angezeigt werden können. 
+Häufig ist das manuelle Hinzufügen einer Diagnoseeinstellung pro Tresor eine mühselige Aufgabe. Außerdem müssen für jeden neu erstellten Tresor auch Diagnoseeinstellungen aktiviert sein, damit für diesen Tresor Berichte angezeigt werden können.
 
 Um das Erstellen von Diagnoseeinstellungen nach Maß (mit LA als Ziel) zu vereinfachen, bietet Azure Backup eine integrierte [Azure Policy](https://docs.microsoft.com/azure/governance/policy/). Diese Richtlinie fügt allen Tresoren in einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe eine LA-Diagnoseeinstellung hinzu. Die folgenden Abschnitte enthalten Anweisungen zur Verwendung dieser Richtlinie.
 
@@ -36,30 +36,30 @@ Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Si
 2. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
 3. Filtern Sie die Liste nach **Category=Monitoring**. Suchen Sie die Richtlinie mit dem Namen **[Vorschau]: Bereitstellen von Diagnoseeinstellungen für den Recovery Services-Tresor im Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien**.
 
-![Blatt „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+    ![Blatt „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
 4. Klicken Sie auf den Namen der Richtlinie. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
 
-![Detaillierte Richtliniendefinition](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
+    ![Detaillierte Richtliniendefinition](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
 5. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Zuweisen**. Dadurch werden Sie zum Blatt **Richtlinie zuweisen** umgeleitet.
 
 6. Klicken Sie unter **Grundlagen** auf die drei Punkte neben dem Feld **Bereich**. Dadurch wird ein Blatt mit dem richtigen Kontextgeöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für Tresore in einer bestimmten Ressourcengruppe angewendet wird.
 
-![Grundlegendes zur Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
+    ![Grundlegendes zur Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. Geben Sie unter **Parameter** folgende Informationen ein:
 
-* **Profilname**: der Name, der den von der Richtlinie erstellten Diagnoseeinstellungen zugewiesen wird.
-* **Log Analytics-Arbeitsbereich**: der Log Analytics-Arbeitsbereich, dem die Diagnoseeinstellung zugeordnet werden soll. Die Diagnosedaten aller Tresore im Gültigkeitsbereich der Richtlinienzuweisung werden per Pushvorgang an den angegebenen LA-Arbeitsbereich übermittelt.
+    * **Profilname**: der Name, der den von der Richtlinie erstellten Diagnoseeinstellungen zugewiesen wird.
+    * **Log Analytics-Arbeitsbereich**: der Log Analytics-Arbeitsbereich, dem die Diagnoseeinstellung zugeordnet werden soll. Die Diagnosedaten aller Tresore im Gültigkeitsbereich der Richtlinienzuweisung werden per Pushvorgang an den angegebenen LA-Arbeitsbereich übermittelt.
 
-* **„Name des Ausschlusstags (optional)“ und „Wert des Ausschlusstags (optional)“** : Sie können auswählen, ob Tresore mit einem bestimmten Tagnamen und -wert von der Richtlinienzuweisung ausgeschlossen werden sollen. Wenn Sie z. B. **nicht** möchten, dass diesen Tresoren eine Diagnoseeinstellung hinzugefügt wird, in der ein Tag „isTest“ auf den Wert „yes“ festgelegt ist, müssen Sie im Feld **Name des Ausschlusstags** „isTest“ und im Feld **Wert des Ausschlusstags** „yes“ eingeben. Wenn eines der beiden Felder (oder beide) leer bleibt, wird die Richtlinie unabhängig von den darin enthaltenen Tags auf alle relevanten Tresore angewendet.
+    * **„Name des Ausschlusstags (optional)“ und „Wert des Ausschlusstags (optional)“** : Sie können auswählen, ob Tresore mit einem bestimmten Tagnamen und -wert von der Richtlinienzuweisung ausgeschlossen werden sollen. Wenn Sie z. B. **nicht** möchten, dass diesen Tresoren eine Diagnoseeinstellung hinzugefügt wird, in der ein Tag „isTest“ auf den Wert „yes“ festgelegt ist, müssen Sie im Feld **Name des Ausschlusstags** „isTest“ und im Feld **Wert des Ausschlusstags** „yes“ eingeben. Wenn eines der beiden Felder (oder beide) leer bleibt, wird die Richtlinie unabhängig von den darin enthaltenen Tags auf alle relevanten Tresore angewendet.
 
-![Parameter der Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
+    ![Parameter der Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
-8. **Korrekturtask erstellen**: Sobald die Richtlinie einem Bereich zugewiesen ist, werden für alle neuen Tresore, die in diesem Bereich erstellt werden, automatisch die LA-Diagnoseeinstellungen konfiguriert (innerhalb von 30 Minuten ab dem Zeitpunkt der Erstellung des Tresors). Wenn Sie vorhandenen Tresoren im Gültigkeitsbereich eine Diagnoseeinstellung hinzufügen möchten, können Sie bei der Zuweisung der Richtlinie einen Korrekturtask auslösen. Um einen Korrekturtask auszulösen, aktivieren Sie das Kontrollkästchen **Korrekturtask erstellen**. 
+8. **Korrekturtask erstellen**: Sobald die Richtlinie einem Bereich zugewiesen ist, werden für alle neuen Tresore, die in diesem Bereich erstellt werden, automatisch die LA-Diagnoseeinstellungen konfiguriert (innerhalb von 30 Minuten ab dem Zeitpunkt der Erstellung des Tresors). Wenn Sie vorhandenen Tresoren im Gültigkeitsbereich eine Diagnoseeinstellung hinzufügen möchten, können Sie bei der Zuweisung der Richtlinie einen Korrekturtask auslösen. Um einen Korrekturtask auszulösen, aktivieren Sie das Kontrollkästchen **Korrekturtask erstellen**.
 
-![Korrektur der Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
+    ![Korrektur der Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
 9. Navigieren Sie zu **Überprüfen + erstellen**, und klicken Sie auf **Erstellen**.
 
@@ -68,7 +68,7 @@ Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Si
 Der Korrekturtask wird auf Tresore angewendet, die gemäß der Definition der Richtlinie nicht kompatibel sind. Ein Tresor ist nicht kompatibel, wenn er eine der folgenden Bedingungen erfüllt:
 
 * Für den Tresor ist keine Diagnoseeinstellung vorhanden.
-* Für den Tresor sind Diagnoseeinstellungen vorhanden, aber für keine der Einstellungen sind **alle** ressourcenspezifischen Ereignisse mit LA als Ziel aktiviert und **Ressourcenspezifisch** in der Umschaltfläche ausgewählt. 
+* Für den Tresor sind Diagnoseeinstellungen vorhanden, aber für keine der Einstellungen sind **alle** ressourcenspezifischen Ereignisse mit LA als Ziel aktiviert und **Ressourcenspezifisch** in der Umschaltfläche ausgewählt.
 
 Also auch wenn ein Benutzer über einen Tresor verfügt, für den das AzureBackupReport-Ereignis im AzureDiagnostics-Modus (der von Sicherungsberichten unterstützt wird) aktiviert ist, wird der Korrekturtask weiterhin für diesen Tresor angewendet, da der ressourcenspezifische Modus [zukünftig](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) die empfohlene Methode zum Erstellen von Diagnoseeinstellungen ist.
 
@@ -76,7 +76,7 @@ Außerdem wird dann, wenn ein Benutzer über einen Tresor verfügt, für den nur
 
 > [!NOTE]
 >
-> Wenn für eine Diagnoseeinstellung eines Tresors **eine Teilmenge ressourcenspezifischer** Kategorien aktiviert ist, die zum Senden von Daten an einen bestimmten LA-Arbeitsbereich konfiguriert ist (z. B. Arbeitsbereich X), tritt bei Anwendung des Korrekturtasks (nur für diesen Tresor) ein Fehler auf, wenn dieser Arbeitsbereich mit dem in der Richtlinienzuweisung angegebenen Ziel-LA-Arbeitsbereich **identisch** ist. 
+> Wenn für eine Diagnoseeinstellung eines Tresors **eine Teilmenge ressourcenspezifischer** Kategorien aktiviert ist, die zum Senden von Daten an einen bestimmten LA-Arbeitsbereich konfiguriert ist (z. B. Arbeitsbereich X), tritt bei Anwendung des Korrekturtasks (nur für diesen Tresor) ein Fehler auf, wenn dieser Arbeitsbereich mit dem in der Richtlinienzuweisung angegebenen Ziel-LA-Arbeitsbereich **identisch** ist.
 >
 >Dies liegt daran, dass die Einstellungen nicht denselben LA-Arbeitsbereich als Ziel haben können, wenn sich die von zwei verschiedenen Diagnoseeinstellungen in derselben Ressource aktivierten Ereignisse **überlappen**. Sie müssen diesen Fehler manuell beheben, indem Sie zum relevanten Tresor navigieren und eine Diagnoseeinstellung mit einem anderen LA-Arbeitsbereich als Ziel konfigurieren.
 >

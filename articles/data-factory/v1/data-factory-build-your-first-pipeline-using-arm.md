@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: db767a8d2f0452a9bedeaf8495152ef337255111
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6a14cbb758426203a46ac508fe8e4bfdf3090cf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439024"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203895"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ Das Grundgerüst einer Resource Manager-Vorlage zum Definieren einer Data Factor
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "westus",
             "resources": [
                 { ... },
@@ -116,7 +116,7 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
       {
         "name": "[variables('dataFactoryName')]",
         "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
+        "type": "Microsoft.DataFactory/factories",
         "location": "West US",
         "resources": [
           {
@@ -367,7 +367,7 @@ Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data F
 {
     "name": "[variables('dataFactoryName')]",
     "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
+    "type": "Microsoft.DataFactory/factories",
     "location": "West US"
 }
 ```
@@ -598,11 +598,11 @@ Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gat
         {
             "name": "[variables('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "eastus",
             "resources": [
                 {
-                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+                    "dependsOn": [ "[concat('Microsoft.DataFactory/factories/', variables('dataFactoryName'))]" ],
                     "type": "gateways",
                     "apiVersion": "[variables('apiVersion')]",
                     "name": "GatewayUsingARM",

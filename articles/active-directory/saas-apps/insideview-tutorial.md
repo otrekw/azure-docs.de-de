@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100088"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
 
@@ -143,13 +143,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
     1. Öffnen Sie das Rohdatenzertifikat, das Sie aus dem Azure-Portal heruntergeladen haben. Kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn ins Feld **STS Certificate** (STS-Zertifikat) ein.
 
-    1. Geben Sie im Feld **Crm User Id Mapping** (CRM-Benutzer-ID-Zuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    1. Geben Sie im Feld **Crm User Id Mapping** (CRM-Benutzer-ID-Zuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ein.
 
-    1. Geben Sie im Feld **Crm Email Mapping** (CRM-E-Mail-Adresszuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    1. Geben Sie im Feld **Crm Email Mapping** (CRM-E-Mail-Adresszuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ein.
 
-    1. Geben Sie im Feld **Crm First Name Mapping** (CRM-Vornamenzuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
+    1. Geben Sie im Feld **Crm First Name Mapping** (CRM-Vornamenzuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** ein.
 
-    1. Geben Sie im Feld **Crm lastName Mapping** (CRM-Nachnamenzuordnung) die Zeichenfolge **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.  
+    1. Geben Sie im Feld **Crm lastName Mapping** (CRM-Nachnamenzuordnung) die Zeichenfolge **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** ein.  
 
     1. Wählen Sie **Speichern** aus.
 

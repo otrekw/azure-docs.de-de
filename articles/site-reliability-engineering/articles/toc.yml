@@ -1,0 +1,7 @@
+- name: 'Dokumentation zum Websitezuverlässigkeits-Engineering (Site Reliability Engineering, SRE)'
+  href: ../index.yml
+- name: Häufig gestellte Fragen
+  expanded: true
+  items:
+    - name: SRE und DevOps
+      href: devops.md

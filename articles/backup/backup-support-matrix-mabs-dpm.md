@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77582652"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193274"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -125,17 +125,17 @@ Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verf�
 
 Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
 
 Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
 
-* Azure Active Directory (12076:5060)
-* Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
-* Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
+- Azure Active Directory (12076:5060)
+- Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
+- Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
 
 Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
