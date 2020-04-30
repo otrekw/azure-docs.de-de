@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810309"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232409"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection mit Azure Security Center
 
@@ -39,10 +39,6 @@ Die folgenden Funktionen sind ab sofort in Azure Security Center verfügbar:
 - **Automatisiertes Onboarding**: Der Microsoft Defender ATP-Sensor wird automatisch für Windows-Server aktiviert, die in Azure Security Center integriert sind (mit Ausnahme von Servern, auf denen Windows Server 2019 ausgeführt wird).
 
 - **Zentralisierte Benutzeroberfläche**: Die Azure Security Center-Konsole zeigt Microsoft Defender ATP-Warnungen an.
-
-- **Detaillierte Untersuchung des Computers**: Azure Security Center-Kunden können die Microsoft Defender ATP-Konsole verwenden, um den Umfang einer Sicherheitsverletzung durch eine detaillierte Untersuchung zu erkennen.
-
-![Azure Security Center zeigt eine Liste der Warnungen und allgemeine Informationen zu jeder Warnung an.](media/security-center-wdatp/image1.png)
 
 Verwenden Sie Microsoft Defender ATP, um weitere Informationen zu erhalten. Microsoft Defender ATP zeigt zusätzliche Informationen wie die Warnprozessstruktur und den Ereignisgraph an. Sie können auch eine detaillierte Computerzeitachse verwenden, die jedes Verhalten über einen historischen Zeitraum von bis zu sechs Monaten anzeigt.
 
