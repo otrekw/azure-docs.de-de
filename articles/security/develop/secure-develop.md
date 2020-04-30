@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255656"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685745"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -44,15 +44,15 @@ Azure Marketplace bietet [Entwicklertools](https://azuremarketplace.microsoft.co
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Überprüfen und Bereinigen aller Eingaben für Ihre Anwendung
 
-Behandeln Sie alle Eingaben als nicht vertrauenswürdig, um Ihre Anwendung vor den häufigsten Sicherheitsrisiken für Webanwendungen zu schützen. Nicht vertrauenswürdige Daten sind ein Transportmittel für Einschleusungsangriffe. Eingaben für Ihre Anwendung umfassen Parameter in der URL, Eingaben des Benutzers, Daten aus der Datenbank oder von einer API sowie alles, das als Eingabe übergeben wird, das ein Benutzer möglicherweise manipulieren könnte. Eine Anwendung sollte [überprüfen](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs), ob Daten syntaktisch und semantisch gültig sind, bevor die Anwendung die Daten in irgendeiner Weise (einschließlich der Anzeige für den Benutzer) verwendet.
+Behandeln Sie alle Eingaben als nicht vertrauenswürdig, um Ihre Anwendung vor den häufigsten Sicherheitsrisiken für Webanwendungen zu schützen. Nicht vertrauenswürdige Daten sind ein Transportmittel für Einschleusungsangriffe. Eingaben für Ihre Anwendung umfassen Parameter in der URL, Eingaben des Benutzers, Daten aus der Datenbank oder von einer API sowie alles, das als Eingabe übergeben wird, das ein Benutzer möglicherweise manipulieren könnte. Eine Anwendung sollte [überprüfen](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs), ob Daten syntaktisch und semantisch gültig sind, bevor die Anwendung die Daten in irgendeiner Weise (einschließlich der Anzeige für den Benutzer) verwendet.
 
-Überprüfen Sie Eingaben zu einem frühen Zeitpunkt im Datenfluss, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in den Workflow gelangen. Sie möchten keine falsch formatierten Daten dauerhaft in Ihrer Datenbank speichern oder eine Fehlfunktion in einer Downstreamkomponente auslösen.
+Überprüfen Sie Eingaben zu einem frühen Zeitpunkt im Datenfluss, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in den Workflow gelangen. Sie möchten vermeiden, dass falsch formatierte Daten dauerhaft in Ihrer Datenbank gespeichert werden oder eine Fehlfunktion in einer Downstreamkomponente auslösen.
 
 Blacklisting und Whitelisting sind zwei allgemeine Ansätze zur Durchführung einer Syntaxüberprüfung der Eingabe:
 
-  - Blacklisting versucht, zu überprüfen, ob eine bestimmte Benutzereingabe keinen Inhalt enthält, von dem „bekannt ist, dass er bösartig ist“.
+  - Beim Blacklisting wird versucht, zu bestätigen, dass eine Benutzereingabe keinen „bekannt bösartigen“ Inhalt aufweist.
 
-  - Whitelisting versucht, zu überprüfen, ob eine bestimmte Benutzereingabe einem Satz „bekannter gutartiger“ Eingaben entspricht. Zeichenbasiertes Whitelisting ist eine Form des Whitelistings, bei der eine Anwendung überprüft, ob die Benutzereingabe nur als „gutartig bekannte“ Zeichen enthält, bzw. ob die Eingabe ein bekanntes Format hat.
+  - Beim Whitelisting wird versucht, zu bestätigen, dass eine Benutzereingabe einem Satz „bekannt gutartiger“ Eingaben entspricht. Zeichenbasiertes Whitelisting ist eine Form des Whitelistings, bei der eine Anwendung überprüft, ob die Benutzereingabe nur „bekannt gutartige“ Zeichen enthält bzw. ob die Eingabe einem bekannten Format entspricht.
     Dies kann beispielsweise die Überprüfung umfassen, ob ein Benutzername nur alphanumerische Zeichen enthält, oder ob er genau zwei Zahlen enthält.
 
 Whitelisting ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
@@ -105,7 +105,7 @@ Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu
 
 ### <a name="dont-cache-sensitive-content"></a>Speichern Sie keine vertraulichen Inhalte zwischen.
 
-Speichern Sie keine vertraulichen Inhalte im Browser zwischen. Browser können Informationen für die Zwischenspeicherung und den Verlauf/die Chronik speichern. Zwischengespeicherte Dateien werden in einem Ordner abgelegt, z. B. dem Ordner „Temporäre Internetdateien“ bei Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser diese Seiten aus dem Cache an. Falls dem Benutzer vertrauliche Informationen (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername) angezeigt werden, werden diese Informationen möglicherweise im Cache des Browsers gespeichert. Sie können dann abgerufen werden, indem der Cache des Browsers untersucht wird, oder indem im Browser einfach auf die Schaltfläche **Zurück** geklickt wird.
+Speichern Sie keine vertraulichen Inhalte im Browser zwischen. Browser können Informationen für die Zwischenspeicherung und den Verlauf/die Chronik speichern. Zwischengespeicherte Dateien werden in einem Ordner abgelegt, z. B. dem Ordner „Temporäre Internetdateien“ bei Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser diese Seiten aus dem Cache an. Falls dem Benutzer vertrauliche Informationen (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername) angezeigt werden, können diese Informationen im Cache des Browsers gespeichert werden und abrufbar sein, indem der Cache des Browsers untersucht wird oder im Browser einfach auf die Schaltfläche **Zurück** geklickt wird.
 
 ## <a name="verification"></a>Überprüfung
 Die Überprüfungsphase beinhaltet umfassende Bemühungen, um sicherzustellen, dass der Code die Grundsätze für Sicherheit und Datenschutz erfüllt, die in den vorangehenden Phasen festgelegt wurden.
@@ -128,7 +128,7 @@ Dynamische Anwendungssicherheitstests (DAST) sind ein Prozess des Testens einer 
 
 DAST unterscheidet sich von statischen Anwendungssicherheitstests (SAST). SAST-Tools analysieren Quellcode oder kompilierte Versionen von Code, wenn der Code nicht ausgeführt wird, um Sicherheitslücken zu finden.
 
-Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](../fundamentals/pen-testing.md) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie einen DAST-Scanner zu einem möglichst führen Zeitpunkt ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)-Site.
+Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](../fundamentals/pen-testing.md) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie früh einen DAST-Scanner ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)-Site.
 
 ### <a name="perform-fuzz-testing"></a>Durchführen von Fuzzing
 

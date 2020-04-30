@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756418"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683178"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetriedaten für Azure SQL-Datenbank
 
@@ -363,7 +363,7 @@ Sie können die SQL-Analyse als ein hierarchisches Dashboard verwenden, um Ihre 
 
 ## <a name="stream-into-event-hubs"></a>Streamen an Event Hubs
 
-Sie können Metriken und Ressourcenprotokolle für SQL-Datenbank mit der integrierten Option **An einen Event Hub streamen** im Azure-Portal in Event Hubs streamen. Sie können die Service Bus-Regel-ID auch aktivieren, indem Sie Diagnoseeinstellungen über PowerShell-Cmdlets, die Azure-Befehlszeilenschnittstelle oder die Azure Monitor-REST-API verwenden.
+Sie können Metriken und Ressourcenprotokolle für SQL-Datenbank mit der integrierten Option **An einen Event Hub streamen** im Azure-Portal in Event Hubs streamen. Sie können die Service Bus-Regel-ID auch aktivieren, indem Sie Diagnoseeinstellungen über PowerShell-Cmdlets, die Azure-Befehlszeilenschnittstelle oder die Azure Monitor-REST-API verwenden. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>Welche Vorgänge können mit Metriken und Ressourcenprotokollen in Event Hubs ausgeführt werden?
 

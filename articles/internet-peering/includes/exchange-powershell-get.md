@@ -8,20 +8,20 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 33ae3c3f9a2a213bd8135af846b4e72901b3df0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34a23ce76ed0e9285a686073e1cbeb95347f7b7d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773709"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678695"
 ---
-Führen Sie zum Abrufen der Liste der Peerings den Befehl `Get-AzPeering` aus:
+Führen Sie zum Abrufen der Liste der Peerings den Befehl **Get-AzPeering** aus.
 
 ```powershell
 Get-AzPeering ResourceGroupName "PeeringResourceGroup" -Name "SeattleExchangePeering"
 ```
 
-Unten sehen Sie eine Beispielantwort, wenn die End-to-End-Bereitstellung erfolgreich abgeschlossen wurde:
+Diese Beispielantwort wird angezeigt, wenn die End-to-End-Bereitstellung erfolgreich abgeschlossen wurde.
 
 ```powershell
     Name                     : SeattleExchangePeering

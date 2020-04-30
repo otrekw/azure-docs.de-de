@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229790"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676410"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
 
@@ -47,7 +47,7 @@ Um den Zugriff auf einen Auftrag zu beschränken, können Sie folgende Aktionen 
 - Weisen Sie eine Rolle auf Auftragsebene zu. Der Benutzer verfügt nur über diese durch die Rollen definierten Berechtigungen für die Interaktion mit diesem spezifischen Data Box-Auftrag und kann nichts anderes ausführen.
 - Weisen Sie eine Rolle auf Ebene der Ressourcengruppe zu. Der Benutzer hat Zugriff auf alle Data Box-Aufträge innerhalb einer Ressourcengruppe.
 
-Weitere Informationen über die vorgeschlagene RBAC-Nutzung finden Sie unter [Bewährte Methoden für RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac).
+Weitere Informationen zur vorgeschlagenen RBAC-Nutzung finden Sie unter [Bewährte Methoden für Azure-RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 

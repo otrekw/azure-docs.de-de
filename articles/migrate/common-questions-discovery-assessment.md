@@ -2,13 +2,13 @@
 title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460805"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681900"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -19,9 +19,20 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Ermitt
 - Fragen zur [Servermigration](common-questions-server-migration.md)
 - Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Welche geografischen Regionen werden für die Ermittlung und Bewertung mit Azure Migrate unterstützt?
+
+In der Unterstützungsmatrix für Azure Migrate finden Sie die unterstützten geografischen Regionen für die [öffentliche Cloud](migrate-support-matrix.md#supported-geographies-public-cloud) und für [Azure Government](migrate-support-matrix.md#supported-geographies-azure-government).
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Wie viele VMs können mit einer Appliance ermittelt werden?
 
 Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 250 physische Server mithilfe einer einzigen Appliance ermitteln. Wenn Sie mehr Computer haben, informieren Sie sich über die Skalierung der [Hyper-V-](scale-hyper-v-assessment.md), [VMware-](scale-vmware-assessment.md) oder [physischen](scale-physical-assessment.md) Bewertung.
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Einige VM-Typen werden in Azure Government nicht angezeigt
+
+Die für die Bewertung und Migration unterstützten VM-Typen hängen von der Verfügbarkeit am Azure Government-Standort ab. Sie können die VM-Typen in Azure Government [hier anzeigen und vergleichen](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines).
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Die Größe meiner VM hat sich geändert. Kann ich die Bewertung erneut ausführen?
 
@@ -80,7 +91,7 @@ Bei importbasierten Bewertungen handelt es sich um Bewertungen, die mit Computer
 Anhand der Visualisierung von Abhängigkeiten können Sie Gruppen von VMs für eine Migration mit größerer Sicherheit bewerten. Die Visualisierung von Abhängigkeiten überprüft die Abhängigkeiten zwischen Computern, bevor Sie eine Bewertung ausführen. Sie stellt sicher, dass nichts übersehen wird, und hilft, unerwartete Ausfälle bei der Migration zu Azure zu vermeiden. Azure Migrate verwendet die Dienstzuordnungslösung in Azure Monitor, um Abhängigkeitsvisualisierung zu ermöglichen. [Weitere Informationen](concepts-dependency-visualization.md)
 
 > [!NOTE]
-> Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
+> Die Agent-basierte Abhängigkeitsanalyse ist in Azure Government nicht verfügbar. Sie können die Abhängigkeitsanalyse ohne Agent verwenden.
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Was ist der Unterschied zwischen „Agent-basiert“ und „ohne Agent“?
 

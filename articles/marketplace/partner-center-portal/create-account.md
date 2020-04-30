@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281356"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684138"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
-Zum Veröffentlichen von Angeboten im [Azure Marketplace](https://azuremarketplace.microsoft.com/) oder in [AppSource](https://appsource.microsoft.com/) müssen Sie im Partner Center ein Konto im Programm „Kommerzieller Marketplace“ erstellen. In diesem Artikel erfahren Sie, wie Sie ein Partner Center-Konto erstellen und dem Programm „Kommerzieller Marketplace“ neue Herausgeber hinzufügen.
+Zum Veröffentlichen von Angeboten im [Azure Marketplace](https://azuremarketplace.microsoft.com/) oder in [Microsoft AppSource](https://appsource.microsoft.com/) müssen Sie im Partner Center ein Konto im Programm „Kommerzieller Marketplace“ erstellen. In diesem Artikel erfahren Sie, wie Sie ein Partner Center-Konto erstellen und dem Programm „Kommerzieller Marketplace“ neue Herausgeber hinzufügen.
 
 >[!IMPORTANT]
 >Wenn Sie ein Konto im [Cloud-Partnerportal (CPP)](https://cloudpartner.azure.com) hatten, das zu Partner Center verschoben wurde, müssen Sie kein neues Konto erstellen. Weitere Informationen finden Sie unter [Vom CPP migrierte Herausgeber](#publishers-moving-from-cpp).
@@ -100,7 +100,7 @@ Halten Sie dazu Ihre Kontoinformationen bereit.
 
 Wenn Sie bereits bei Microsoft Partner Network registriert sind, verwenden Sie diesen Abschnitt, um Ihr Konto direkt über Partner Center zu erstellen.
 
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/) mit Ihrem Microsoft Partner Network-Konto an, damit Sie die E-Mail-Kontodomäne Ihres Unternehmens mit Ihrem neuen Partner Center-Konto verknüpfen. Durch Verknüpfen dieser Konten können sich die Mitarbeiter Ihres Unternehmens mithilfe des Benutzernamens und Kennworts ihres Geschäftskontos bei Partner Center anmelden.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) mit Ihrem Microsoft Partner Network-Konto an, damit Sie die E-Mail-Kontodomäne Ihres Unternehmens mit Ihrem neuen Partner Center-Konto verknüpfen. Durch Verknüpfen dieser Konten können sich die Mitarbeiter Ihres Unternehmens mithilfe des Benutzernamens und Kennworts ihres Geschäftskontos bei Partner Center anmelden.
 
 >[!NOTE]
 >Um zu überprüfen, ob Ihr Unternehmen bereits über ein Partner Center-Geschäftskonto verfügt, und zu erfahren, wie Sie ein neues Geschäftskonto erstellen und mehrere Geschäftskonten zur Verwendung mit Partner Center einrichten, rufen Sie [Geschäftskonten und Partner Center](./company-work-accounts.md) auf.
@@ -130,7 +130,7 @@ Wenn Sie bereits bei einem Partner Center-Entwicklerprogramm registriert sind, v
 >
 >Persönliche Konten sind für einzelne Entwickler gedacht, die selbstständig arbeiten. Unternehmenskonten sind für Organisationen und Unternehmen vorgesehen. Mit Unternehmenskonten können Sie Anwendungen mit zusätzlichen Funktionen übermitteln. Nach der Registrierung führen wir eine umfassende Überprüfung durch, um zu ermitteln, ob Sie berechtigt sind, das Konto für Ihr Unternehmen einzurichten. Die Überprüfung kann einige Tage bis hin zu einigen Wochen dauern und beinhaltet häufig auch einen Anruf bei Ihrem Unternehmen. Mit beiden Kontotypen können Sie Anwendungen, Add-Ins und Dienste übermitteln. Weitere Informationen finden Sie unter  [Kontotypen, Standorte und Gebühren](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/) mit Ihrem Microsoft Partner Center-Konto an, um sich unter demselben Konto beim Programm für den kommerziellen Marketplace zu registrieren. Wenn Sie sich mit demselben Konto für den kommerziellen Marketplace registrieren, werden Ihre vorhandenen Registrierungen bei Programmen sowie der kommerzielle Marketplace im linken Navigationsmenü von Partner Center angezeigt.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) mit Ihrem Microsoft Partner Center-Konto an, um sich unter demselben Konto beim Programm für den kommerziellen Marketplace zu registrieren. Wenn Sie sich mit demselben Konto für den kommerziellen Marketplace registrieren, werden Ihre vorhandenen Registrierungen bei Programmen sowie der kommerzielle Marketplace im linken Navigationsmenü von Partner Center angezeigt.
 
 Nachdem Sie sich angemeldet haben, führen Sie die folgenden Schritte aus, um die Einrichtung des Kontos abzuschließen:
 
@@ -164,13 +164,13 @@ Eine Organisation kann über mehrere Herausgeber verfügen, die einem „Kommerz
 
 Ein anderer Benutzer desselben Azure Active Directory-Mandanten kann einen neuen Herausgeber mit folgenden Schritte hinzufügen:
 
-1. Starten Sie den Registrierungsfluss unter [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Starten Sie den Registrierungsfluss unter [Microsoft Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).
 2. Wählen Sie **Anmelden mit einem Geschäftskonto** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
 3. Wählen Sie die Schaltfläche **Herausgeber hinzufügen** aus.
 4. Wählen Sie die MPN-ID aus, die Sie dem Herausgeber zuordnen möchten.
 5. Aktualisieren Sie die **Herausgeberdetails**  im Formular.
 
-   1. **Name des Herausgebers**: Der Name, der in Azure Marketplace oder AppSource mit dem Angebot angezeigt wird.
+   1. **Name des Herausgebers**: Der Name, der im kommerziellen Marketplace mit dem Angebot angezeigt wird
    1. **PublisherID**: Ein Bezeichner, der von Partner Center verwendet wird, um Ihren Herausgeber eindeutig zu identifizieren. Der Standardwert für dieses Feld wird einer vorhandenen und eindeutigen `PublisherID` im System zugeordnet, die nicht wiederverwendet werden kann. Daher muss dieses Feld aktualisiert werden.
    1. **Kontaktinformationen**: Aktualisieren Sie ggf. die Kontaktinformationen.
 

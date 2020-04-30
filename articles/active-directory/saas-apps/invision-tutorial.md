@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300354"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682695"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit InVision
 
@@ -157,13 +157,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     e. Öffnen Sie die heruntergeladene **Zertifikatdatei (Base64)** im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld „**SAML Certificate“ (SAML-Zertifikat)** ein.
 
-    f. Wählen Sie im Dropdownmenü **HASH Algorithm** (Hashalgorithmus) die Option **SHA-256** aus.
+    f. Verwenden Sie `Unspecified` im Textfeld **Name ID Format** **(Format der Namens-ID)** .
 
-    g. Geben Sie unter **SSO Button Label** (Bezeichnung für Schaltfläche „SSO“) einen entsprechenden Namen ein.
+    g. Wählen Sie im Dropdownmenü **HASH Algorithm** (Hashalgorithmus) die Option **SHA-256** aus.
 
-    h. Aktivieren Sie die Option **Allow Just-in-Time provisioning** (Just-in-Time-Bereitstellung zulassen).
+    h. Geben Sie unter **SSO Button Label** (Bezeichnung für Schaltfläche „SSO“) einen entsprechenden Namen ein.
 
-    i. Klicken Sie auf **Aktualisieren**.
+    i. Aktivieren Sie die Option **Allow Just-in-Time provisioning** (Just-in-Time-Bereitstellung zulassen).
+
+    j. Klicken Sie auf **Aktualisieren**.
 
 ### <a name="create-invision-test-user"></a>Erstellen eines InVision-Testbenutzers
 

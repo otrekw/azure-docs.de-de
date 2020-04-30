@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364202"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684693"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
 In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes in Azure Machine Learning Designer (Preview) beschrieben, um Ihnen bei der Problembehandlung Ihrer Machine Learning-Pipelines zu helfen.
 
-Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Designer abzurufen:  
+Sie können die Fehlermeldung im Designer finden, indem Sie die folgenden Schritte ausführen:  
 
-- Klicken Sie im rechten Bereich auf den Link zum **Anzeigen des Ausgabeprotokolls** und scrollen Sie zum Ende. Die ausführliche Fehlermeldung wird in den letzten beiden Zeilen des Fensters angezeigt.  
-  
-- Wählen Sie das Modul mit dem Fehler aus, und klicken Sie auf das rote X. Es wird nur der relevante Fehlertext angezeigt.
+- Wählen Sie das fehlerhafte Modul aus, und wechseln Sie zur Registerkarte **Outputs+logs** (Ausgaben und Protokolle). Sie finden das ausführliche Protokoll in der Datei **70_driver_log.txt** unter der Kategorie **azureml-logs**.
+
+- Ausführliche Informationen zum Modulfehler finden Sie in der Datei „error_info.json“ unter der Kategorie **module_statistics**.
+
+Im Folgenden finden Sie die Fehlercodes von Modulen im Designer.
 
 ## <a name="error-0001"></a>Fehler 0001  
  Eine Ausnahme tritt auf, wenn eine oder mehrere angegebene Spalten des Datasets nicht gefunden werden konnten.  
@@ -143,6 +145,7 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Der Wert des Parameters „{arg_name}“ sollte kleiner als oder gleich dem Wert von Parameter „{upper_boundary_parameter_name}“ sein.|
 |Der Parameter „{arg_name}“ besitzt den Wert „{actual_value}“, der kleiner als oder gleich {upper_boundary} sein sollte.|
 |Der Wert {actual_value} des Parameters „{arg_name}“ sollte kleiner als oder gleich dem Wert {upper_boundary} von Parameter „{upper_boundary_parameter_name}“ sein.|
+|Der Wert „{actual_value}“ des Parameters „{arg_name}“ sollte kleiner als oder gleich dem Wert „{upper_boundary}“ des Parameters „{upper_boundary_meaning}“ sein.|
 
 
 ## <a name="error-0008"></a>Fehler 0008  
@@ -269,6 +272,7 @@ Wenn das Modell mit einem der speziellen Trainingsmodule trainiert wurde, verbin
 |Learner mit ungültigem Typ wird übergeben.|
 |Learner "{arg_name}" has invalid type.|
 |Learner "{arg_name}" has invalid type "{learner_type}".|
+|Learner mit ungültigem Typ wird übergeben. Ausnahmemeldung: {exception_message}|
 
 
 ## <a name="error-0014"></a>Fehler 0014  
@@ -391,6 +395,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |Die Werte in der Spalte sind nicht sortiert.|
 |Die Werte in der Spalte „{col_index}“ sind nicht sortiert.|
 |Die Werte in der Spalte „{col_index}“ von Dataset „{dataset}“ sind nicht sortiert.|
+|Werte im Argument „{arg_name}“ werden nicht in der Reihenfolge „{sorting_order}“ sortiert.|
 
 
 ## <a name="error-0020"></a>Fehler 0020  
@@ -631,6 +636,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |------------------------|
 |Das Argument muss endlich sein.|
 |„{arg_name}“ ist nicht endlich.|
+|Die Spalte „{column_name}“ enthält unendliche Werte.|
 
 
 ## <a name="error-0034"></a>Fehler 0034  
@@ -1490,6 +1496,18 @@ Lösung:
 |------------------------------------------------------------|
 |Das angegebene TransformationDirectory ist ungültig.|
 |TransformationDirectory „{arg_name}“ ist ungültig. Reason: {Grund}. Führen Sie das Trainingsexperiment, das die Transformationsdatei generiert, erneut aus. Wenn das Trainingsexperiment gelöscht wurde, erstellen Sie die Transformationsdatei erneut, und speichern Sie sie.|
+|TransformationDirectory „{arg_name}“ ist ungültig. Reason: {Grund}. {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>Fehler 0159
+ Die Ausnahme tritt auf, wenn das an das Modul übergebene Modellverzeichnis ungültig ist. 
+
+|Ausnahmemeldungen|
+|------------------------------------------------------------|
+|Das angegebene ModelDirectory ist ungültig.|
+|ModelDirectory „{arg_name}“ ist ungültig.|
+|ModelDirectory „{arg_name}“ ist ungültig. Reason: {Grund}.|
+|ModelDirectory „{arg_name}“ ist ungültig. Reason: {Grund}. {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>Fehler 1000  

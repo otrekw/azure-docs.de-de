@@ -8,38 +8,40 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d9ff01cf0180dae7f75d9753ba889d0caddad937
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773985"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681074"
 ---
-Dieser Abschnitt beschreibt, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
+In diesem Abschnitt wird beschrieben, wie Sie die folgenden Änderungsvorgänge für Direct-Peering ausführen.
 
 ### <a name="add-direct-peering-connections"></a>Hinzufügen von Direct Peering-Verbindungen
-1. Klicken Sie oben auf die Schaltfläche **+ Verbindungen hinzufügen**, und konfigurieren Sie eine neue Peeringverbindung.
+1. Wählen Sie die Schaltfläche **+ Verbindungen hinzufügen** aus, und konfigurieren Sie eine neue Peeringverbindung.
     > [!div class="mx-imgBorder"]
     > ![Peeringressourcenansicht](../media/setup-direct-modify-addconnection.png)
-1. Füllen Sie das Formular **Direct Peering-Verbindung** aus, und klicken Sie auf **Speichern**. Hilfe zum Konfigurieren einer Peeringverbindung finden Sie oben in den Schritten unter „Erstellen und Bereitstellen eines Direct Peerings“.
+
+1. Füllen Sie das Formular **Direct Peering Connection** (Direct-Peeringverbindung) aus, und wählen Sie **Speichern** aus. Hilfe zum Konfigurieren einer Peeringverbindung finden Sie in den Schritten zum Erstellen und Bereitstellen einer Direct-Peeringverbindung.
     > [!div class="mx-imgBorder"]
-    > ![Peeringressourcenansicht](../media/setup-direct-modify-savenewconnection.png)
+    > ![Formular für Direct-Peeringverbindungen](../media/setup-direct-modify-savenewconnection.png)
 
 ### <a name="remove-direct-peering-connections"></a>Entfernen von Direct Peering-Verbindungen
 
-Das Entfernen einer Verbindung wird derzeit im Portal nicht unterstützt. Wenden Sie sich an das [Microsoft Peering-Team](mailto:peeringexperience@microsoft.com).
+Das Entfernen einer Verbindung über das Azure-Portal wird derzeit nicht unterstützt. Wenden Sie sich für weitere Informationen an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Upgrade oder Downgrade der Bandbreite in aktiven Verbindungen
-1. Klicken Sie auf eine Peeringverbindung, die Sie ändern möchten, und klicken Sie dann auf die Schaltfläche **...**  > **Verbindung bearbeiten**.
+1. Wählen Sie eine Peeringverbindung aus, die Sie ändern möchten, und wählen Sie dann **...**  > **Verbindung bearbeiten** aus.
     > [!div class="mx-imgBorder"]
-    > ![Peeringverbindung: Bearbeiten](../media/setup-direct-modify-editconnection.png)
-1. Ändern Sie die Bandbreite wie unten dargestellt, und klicken Sie dann auf **Speichern**.
+    > ![Bearbeiten der Verbindung](../media/setup-direct-modify-editconnection.png)
+
+1. Ändern Sie die Bandbreite, indem Sie den Schieberegler verschieben, und wählen Sie dann **Speichern** aus.
     > [!div class="mx-imgBorder"]
-    > ![Peeringverbindung – Bandbreite ändern](../media/setup-direct-modify-editconnectionsettings.png)
+    > ![Ändern der Bandbreite](../media/setup-direct-modify-editconnectionsettings.png)
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Hinzufügen einer IPv4/IPv6-Sitzung in aktiven Verbindungen
-1. Klicken Sie auf eine Peeringverbindung, die Sie ändern möchten, und klicken Sie dann auf die Schaltfläche **...**  > **Verbindung bearbeiten**, wie oben dargestellt.
-1. Fügen Sie Informationen zum **IPv4-Sitzungspräfix** oder **IPv6-Sitzungspräfix** hinzu, und klicken Sie auf **Speichern**.
+### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>Hinzufügen von IPv4-/IPv6-Sitzungsinformationen in aktiven Verbindungen
+1. Wählen Sie eine Peeringverbindung aus, die Sie ändern möchten, und wählen Sie dann **...**  > **Verbindung bearbeiten** wie in Schritt 1 gezeigt aus.
+1. Geben Sie Informationen zum **IPv4-Sitzungspräfix** oder zum **IPv6-Sitzungspräfix** ein, und wählen Sie **Speichern** aus.
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Entfernen einer IPv4/IPv6-Sitzung aus aktiven Verbindungen
-    Removing a **Session IPv4 prefix** or **Session IPv6 prefix** info is not currently supported on portal. Contact [Microsoft peering](mailto:peeringexperience@microsoft.com).
+### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>Entfernen von IPv4-/IPv6-Sitzungsinformationen aus aktiven Verbindungen
+Das Entfernen von Informationen zum **IPv4-Sitzungspräfix** oder zum **IPv6-Sitzungspräfix** über das Portal wird derzeit nicht unterstützt. Wenden Sie sich für weitere Informationen an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).

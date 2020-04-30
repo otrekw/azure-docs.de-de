@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: 563ac8748e9d4f8a254a151814491113b9c816e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685138"
 ---
 In diesem Schritt werden ein Azure SQL-Datenbank-Server und eine Einzeldatenbank mit AdventureWorksLT-Beispieldaten erstellt. Sie können die Datenbank über Menüs und Bildschirme des Azure-Portals erstellen oder die Azure-Befehlszeilenschnittstelle oder ein PowerShell-Skript in Azure Cloud Shell verwenden.
