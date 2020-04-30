@@ -1,18 +1,18 @@
 ---
-title: Kontomigration vom Cloud-Partnerportal zu Partner Center – Kommerzieller Marketplace für Azure
-description: Hier erfahren Sie, wie Sie Ihr Konto von CPP zu Partner Center migrieren. – Kommerzieller Marketplace für Azure
+title: 'Kontomigration vom Cloud-Partnerportal zu Partner Center: kommerzieller Marketplace für Azure'
+description: 'Migration Ihres Kontos von CPP zu Partner Center: kommerzieller Marketplace für Azure'
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279809"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024420"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Kontomigration vom Cloud-Partnerportal zu Partner Center
 
@@ -43,11 +43,21 @@ Klicken Sie auf das Banner, um den Prozess der Kontomigration zu starten. Es wer
 
     Falls Ihr CPP-Konto keine Microsoft Partner Network-ID aufweist oder die ID ungültig ist, müssen Sie sich im Rahmen des Aktivierungsprozesses für das Microsoft Partner Network-Programm registrieren.
 
+## <a name="publishers-moving-from-cpp"></a>Vom CPP migrierte Herausgeber
+
+Wenn Ihr Konto vom [Cloud-Partnerportal (CPP)](https://cloudpartner.azure.com) migriert wurde, müssen Sie kein neues Partner Center-Konto erstellen. Sie sollten einen angepassten Link zu Ihrem neuen Partner Center-Konto per E-Mail und in einer Bannerbenachrichtigung nach dem Anmelden bei Ihrem vorhandenen CPP-Konto erhalten haben.
+
+Nachdem Sie Ihr neues Partner Center-Konto durch Aufrufen des benutzerdefinierten Links aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in Partner Center öffnen.
+
+Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zusammen mit zuvor eingerichteten Informationen zum Auszahlungsprofil des Kontos, Benutzerkonten und -berechtigungen und den dem CPP-Konto zugeordneten aktiven Angeboten zu Ihrem neuen Partner Center-Konto migriert.
+
+Nachdem Ihre Kontoinformationen vom CPP zum Partner Center verschoben wurden, verwenden Sie CPP nicht mehr, um Konten zu aktualisieren oder Benutzer, Berechtigungen und Abrechnung zu verwalten. Für begrenzte Zeit werden Kontoupdates, die Sie im Partner Center vornehmen, automatisch in Ihrem schreibgeschützten CPP-Konto durchgeführt, bis das CPP-Portal schließlich eingestellt wird.
+
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Registrieren für das Microsoft Partner Network-Programm
 
 Unternehmen, die mit Microsoft zusammenarbeiten möchten, müssen Mitglied im Microsoft Partner Network (MPN) werden und eine MPN-ID erhalten. Wenn Sie bereits Mitglied des Microsoft Partner Network sind und über eine MPN-ID verfügen, halten Sie die Informationen bereit, da Sie sie während der Kontoaktivierung benötigen.  
 
-Wenn Sie noch kein Mitglied des Microsoft Partner Network sind, können Sie [hier beitreten](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new), um eine MPN-ID zu erhalten. Notieren Sie sich Ihre MPN-ID, da Sie sie während der Kontoaktivierung eingeben müssen.
+Wenn Sie noch kein Mitglied des Microsoft Partner Network sind, können Sie [hier beitreten](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new), um eine MPN-ID zu erhalten. Notieren Sie sich Ihre MPN-ID, da Sie sie während der Kontoaktivierung eingeben müssen.
 
 Weitere Informationen zum Microsoft Partner Network finden Sie unter [Mitglied werden im Microsoft Partner Network](https://partner.microsoft.com/en-US/membership) auf der Partnerwebsite. Weitere Informationen zu den ISV-Vorteilen des Microsoft Partner Network finden Sie unter [ISV-Ressourcenhub](https://partner.microsoft.com/isv-resource-hub).  
 
@@ -61,7 +71,7 @@ Spezifische Informationen dazu, was Sie bis zum **15. Oktober 2019** für Ihre D
 > Dies gilt nicht für Dynamics 365 Business Central-Angebote.  
 
 1. Wenn Ihr MPN-Mitgliedschaftskonto ursprünglich in Partner Membership Center (PMC) erstellt wurde, melden Sie sich bei [Partner Center](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) an, um zu bestätigen, dass Ihr Konto migriert wurde. Wenn ein Profilbildschirm mit Ihrer MPN-ID angezeigt wird, können Sie fortfahren. Wenn das nicht der Fall ist, müssen Sie mit der Kontomigration beginnen, indem Sie den Anweisungen im [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx) folgen. Wenn Sie Hilfe benötigen, besuchen Sie den [Support](https://partner.microsoft.com/support?issueid=100-0077).
-2. Rufen Sie die [Seite mit dem Überblick über den kommerziellen Marketplace in Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) auf. Wenn im linken Navigationsbereich „Kommerzieller Marketplace“ angezeigt wird, sind Sie registriert und sollten mit dem nächsten Schritt fortfahren. Wenn nicht, [registrieren Sie sich jetzt beim kommerziellen Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv).
+2. Rufen Sie die [Seite mit dem Überblick über den kommerziellen Marketplace in Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) auf. Wenn im linken Navigationsbereich „Kommerzieller Marketplace“ angezeigt wird, sind Sie registriert und sollten mit dem nächsten Schritt fortfahren. Wenn nicht, [registrieren Sie sich jetzt beim kommerziellen Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).
 3. Vergewissern Sie sich, dass Ihre Angebote in AppSource vorhanden sind, indem Sie [nach Ihren Angeboten suchen](https://appsource.microsoft.com/). Sind Ihre Angebote bereits in AppSource vorhanden, fahren Sie mit dem nächsten Schritt fort. Für jedes Angebot, das nicht in AppSource enthalten ist, erstellen Sie ein [neues Dynamics 365 Customer Engagement-Angebot](create-new-customer-engagement-offer.md) oder ein [neues Dynamics 365 Operations-Angebot](create-new-operations-offer.md).
 4. Stellen Sie sicher, dass Sie auf der [Seite „Vereinbarungen“](https://partner.microsoft.com/dashboard/account/agreements) in Partner Center das **Business Applications ISV Addendum** gelesen und akzeptiert haben.
 5. Stellen Sie sicher, dass die Abrechnungsinformationen in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile) von Partner Center vollständig sind.
@@ -73,10 +83,10 @@ Spezifische Informationen dazu, was Sie bis zum **15. Oktober 2019** für Ihre D
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-Nehmen Sie am wöchentlichen [Dynamics ISV-Community-Call](https://aka.ms/DynamicsISV-CommunityCall) teil, um Support und Updates zu erhalten.
+Greifen Sie auf der Seite zu [Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0) auf Blogs, Webinare, Videos, Ereignisse und mehr zu, um Hilfe von Experten oder anderen Mitgliedern der Community zu erhalten.
 
-Wenn Sie Hilfe bei der Veröffentlichung, Zertifizierung oder Verwaltung Ihrer Marketplace-Angebote benötigen, [senden Sie ein Supportticket](https://aka.ms/MarketplacePublisherSupport).
+Wenn Sie Hilfe bei der Veröffentlichung, Zertifizierung oder Verwaltung Ihrer Marketplace-Angebote benötigen, [senden Sie ein Supportticket](https://partner.microsoft.com/support/v2/?stage=1).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-step"></a>Nächster Schritt
 
 - [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](./manage-account.md)

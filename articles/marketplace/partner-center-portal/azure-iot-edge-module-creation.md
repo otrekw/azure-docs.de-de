@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674945"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869145"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -39,7 +39,7 @@ Damit Sie ein IoT Edge-Modulangebot erstellen können, benötigen Sie ein Konto 
 
 Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
-- Diese ID wird für Kunden in der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
+- Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
 - Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - Nachdem Sie Erstellen ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
@@ -79,7 +79,7 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
     > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
-3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach ihrer Veröffentlichung im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
+3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
 4. Achten Sie darauf, dass die Verbindung mit dem Leadziel immer auf dem neuesten Stand ist, damit keine Leads verloren gehen.
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
@@ -134,7 +134,7 @@ Hier definieren Sie die Angebotsdetails, die im Marketplace angezeigt werden. Da
 
 ### <a name="name"></a>Name
 
-Der Name, den Sie hier eingeben, wird als Titel Ihres Angebots angezeigt. Dieses Feld ist mit dem Text voraufgefüllt, den Sie beim Erstellen des Angebots im Feld **Angebotsalias** eingegeben haben. Sie können diesen Namen zu einem späteren Zeitpunkt ändern.
+Der Name, den Sie hier eingeben, wird als Titel Ihres Angebots angezeigt. Dieses Feld ist bereits mit dem Text ausgefüllt, den Sie beim Erstellen des Angebots im Feld **Angebotsalias** eingegeben haben. Sie können diesen Namen später ändern.
 
 Der Name:
 
@@ -152,7 +152,7 @@ Geben Sie eine detailliertere Beschreibung Ihres Angebots. Sie kann bis zu 256 
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
 
 Schließen Sie eine oder mehrere der folgenden Informationen in die Beschreibung ein:
 
@@ -169,7 +169,7 @@ Hier folgen einige Tipps zum Verfassen Ihrer Beschreibung:
 
 - Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich den Nutzen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
     - Beschreibung des Angebots.
-    - Benutzertyp, der von dem Produkt profitiert.
+    - Typ von Benutzern, die von dem Produkt profitieren.
     - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
 - Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
 - Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
@@ -209,7 +209,7 @@ Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den ko
 Sie müssen den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt** und einen **Technischen Ansprechpartner** angeben. Diese Informationen werden Kunden nicht angezeigt. Sie sind für Microsoft verfügbar und dürfen gegenüber CSP-Partnern (Cloud Solution Provider) angegeben werden.
 
 - Supportkontakt (erforderlich): Für allgemeine Supportfragen.
-- Technischer Ansprechpartner (erforderlich): Für technische Fragen und Zertifizierungprobleme.
+- Technischer Ansprechpartner (erforderlich): Für technische Fragen und Zertifizierungsprobleme.
 - CSP-Programm-Kontakt (optional): Für Fragen von Handelspartnern zum CSP-Programm.
 
 Geben Sie im Abschnitt **Supportkontakt** die Webadresse der **Supportwebsite** an, auf der Partner Support zu Ihrem Angebot finden können, je nachdem, ob Ihr Angebot global in Azure, in Azure Government oder in beiden verfügbar ist.
@@ -223,6 +223,9 @@ Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bew�
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
+
+>[!Note]
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 
@@ -322,9 +325,9 @@ Auf dieser Registerkarte können Sie konfigurieren, in welchen Clouds der Plan v
 
 Jeder Plan muss mithilfe von Azure IoT Hub in mindestens einer Cloud verfügbar gemacht werden.
 
-Wählen Sie die Option **Azure Global** aus, damit Ihr Plan von Kunden in allen Azure-Regionen weltweit verwendet werden kann, die den Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](https://aka.ms/AzureGovCurrencies).
+Wählen Sie die Option **Azure Global** aus, damit Ihr Plan von Kunden in allen Azure-Regionen weltweit verwendet werden kann, die den Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Wählen Sie die Option [Azure Government-Cloud](https://aka.ms/WhatIsAzureGovernment) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](https://aka.ms/azuregovpublish) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Fordern Sie für Staging und Test Ihrer Lösung ein Testkonto bei der [Microsoft Azure Government-Testversion](https://aka.ms/AzureGovernmentTrial) an.
+Wählen Sie die Option [Azure Government-Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Fordern Sie für Staging und Test Ihrer Lösung ein Testkonto bei der [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/) an.
 
 > [!NOTE]
 > Nachdem ihr Plan veröffentlicht und in einer bestimmten Cloud verfügbar gemacht wurde, können Sie diese Cloud nicht mehr entfernen.
@@ -378,11 +381,11 @@ Dieses Feld wird häufig in folgenden Fällen verwendet:
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
-Der Angebotstyp **IoT Edge-Modul** ist ein spezifischer Typ Container, der auf einem IoT Edge-Gerät ausgeführt wird. Auf der Registerkarte **Technische Konfiguration** geben Sie Referenzinformationen für Ihr Containerimagerepository innerhalb der [Azure Container Registry](https://aka.ms/ContainerRegistry) zusammen mit Konfigurationseinstellungen an, mit denen Kunden das Modul komfortabel verwenden können.
+Der Angebotstyp **IoT Edge-Modul** ist ein spezifischer Typ Container, der auf einem IoT Edge-Gerät ausgeführt wird. Auf der Registerkarte **Technische Konfiguration** geben Sie Referenzinformationen für Ihr Containerimagerepository innerhalb der [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) zusammen mit Konfigurationseinstellungen an, mit denen Kunden das Modul komfortabel verwenden können.
 
 Nach dem Veröffentlichen des Angebots wird Ihr IoT Edge-Containerimage in Azure Marketplace in eine bestimmte öffentliche Containerregistrierung kopiert. Alle Anforderungen von Azure-Benutzern zur Verwendung Ihres Moduls werden von der öffentlichen Containerregistrierung von Azure Marketplace bedient, nicht von Ihrer privaten Containerregistrierung.
 
-Mithilfe von Tags können Sie mehrere Plattformen anzielen und verschiedene Versionen des Containerimages Ihres Moduls bereitstellen. Weitere Informationen zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](https://aka.ms/AzureIoTTechAsset).
+Mithilfe von Tags können Sie mehrere Plattformen anzielen und verschiedene Versionen des Containerimages Ihres Moduls bereitstellen. Weitere Informationen zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset).
 
 ### <a name="image-repository-details"></a>Details des Imagerepositorys
 
@@ -392,25 +395,25 @@ Auf der Registerkarte **Image repository details** (Details des Imagerepositorys
 
 **Azure-Abonnement-ID**: Geben Sie die Abonnement-ID an, unter der die Ressourcennutzung gemeldet und Dienste für die Azure Container Registry abgerechnet werden, die Ihr Containerimage enthält. Sie finden diese ID auf der Seite [Abonnements](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal.
 
-**Name der Azure-Ressourcengruppe**: Geben Sie den Namen der [Ressourcengruppe](https://aka.ms/ResourceManagerAzurePortal) an, die die Azure Container Registry mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
+**Name der Azure-Ressourcengruppe**: Geben Sie den Namen der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) an, die die Azure Container Registry mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
 
-**Name der Azure-Containerregistrierung**: Geben Sie den Namen der [Azure Container Registry](https://aka.ms/DockerContainerRegistriesAzure) an, die Ihr Containerimage enthält. Die Containerregistrierung muss in der Azure-Ressourcengruppe vorhanden sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungs Namen und nicht den vollständigen Anmelde Servernamen an. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
+**Name der Azure-Containerregistrierung**: Geben Sie den Namen der [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) an, die Ihr Containerimage enthält. Die Containerregistrierung muss in der Azure-Ressourcengruppe vorhanden sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungs Namen und nicht den vollständigen Anmelde Servernamen an. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
 
-**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](https://aka.ms/AdminAccountContainerRegistry) ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
+**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
 
-**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](https://aka.ms/azacrcredentialshow) verwenden.
+**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) verwenden.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Darstellung des Zugriffsschlüssel-Bildschirms im Azure-Portal.":::
 
-**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image per Push an die Registrierung übertragen. Sie finden den Namen des Repositorys auf der Seite [Container Registry](https://aka.ms/ContainerRegistry) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Azure Container Registry-Repositorys im Azure-Portal](https://aka.ms/ContainerRegistryRepositoriesAzure). Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.
+**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image per Push an die Registrierung übertragen. Sie finden den Namen des Repositorys auf der Seite [Container Registry](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Azure Container Registry-Repositorys im Azure-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Imagetags für neue Versionen Ihres Angebots
 
 Kunden müssen imstande sein, Updates beim Azure Marketplace automatisch abzurufen, wenn Sie ein Update veröffentlichen. Wenn sie kein Update ausführen möchten, müssen sie die Möglichkeit haben, bei einer bestimmten Version Ihres Images zu bleiben. Sie können dies erreichen, indem Sie für jedes Update des Images neue Imagetags hinzufügen.
 
-**Imagetag**. Dieses Feld muss ein **aktuellstes** Tag enthalten, das auf die letzte Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://aka.ms/GitHubmanifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können. Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y- oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein aktuellstes Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen diesem Feld diese sechs Tags hinzugefügt werden. Weitere Details zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT-Edge-Modul.](https://aka.ms/PrepareIoTEdgeModTechAssets)
+**Imagetag**. Dieses Feld muss ein **aktuellstes** Tag enthalten, das auf die letzte Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://github.com/estesp/manifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können. Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y- oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein aktuellstes Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen diesem Feld diese sechs Tags hinzugefügt werden. Weitere Details zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT-Edge-Modul.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
 
 ### <a name="default-deployment-settings-optional"></a>Standardeinstellungen für die Bereitstellung (optional)
 
@@ -418,7 +421,7 @@ Definieren Sie die am häufigsten verwendeten Einstellungen zum Bereitstellen de
 
 **Standardrouten**. Der IoT Edge-Hub verwaltet die Kommunikation zwischen Modulen, IoT Hub und Geräten. Sie können Routen für die Datenein- und -ausgabe zwischen Modulen und dem IoT Hub festlegen. So können Sie Nachrichten flexibel an das gewünschte Ziel senden, ohne zusätzliche Dienste zum Verarbeiten von Nachrichten zu benötigen oder zusätzlichen Code schreiben zu müssen. Routen werden mit Name-Wert-Paaren erstellt. Sie können Namen für bis zu fünf Standardrouten definieren, von denen jeder bis zu 512 Zeichen lang sein darf.
 
-Achten Sie darauf, die ordnungsgemäße [Routensyntax](https://aka.ms/DeclareRoutesAzureIoT) in Ihrem Routenwert zu verwenden (normalerweise definiert als FROM/message/* INTO $upstream). Dies bedeutet, dass alle Nachrichten, die von beliebigen Modulen gesendet werden, an Ihren IoT Hub geleitet werden. Um auf Ihr Modul zu verweisen, verwenden Sie seinen Standardmodulnamen, der aus Ihrem **Angebotsnamen** ohne Leerzeichen und Sonderzeichen besteht. Um auf weitere Module zu verweisen, die derzeit noch nicht bekannt sind, verwenden Sie die Konvention <VON_MODULNAME>, um Ihren Kunden deutlich zu machen, dass sie diese Informationen aktualisieren müssen. Ausführliche Informationen zu IoT Edge-Routen finden Sie unter [Deklarieren von Routen](https://aka.ms/DeclareRoutesAzureIoT).
+Achten Sie darauf, die ordnungsgemäße [Routensyntax](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) in Ihrem Routenwert zu verwenden (normalerweise definiert als FROM/message/* INTO $upstream). Dies bedeutet, dass alle Nachrichten, die von beliebigen Modulen gesendet werden, an Ihren IoT Hub geleitet werden. Um auf Ihr Modul zu verweisen, verwenden Sie seinen Standardmodulnamen, der aus Ihrem **Angebotsnamen** ohne Leerzeichen und Sonderzeichen besteht. Um auf weitere Module zu verweisen, die derzeit noch nicht bekannt sind, verwenden Sie die Konvention <VON_MODULNAME>, um Ihren Kunden deutlich zu machen, dass sie diese Informationen aktualisieren müssen. Ausführliche Informationen zu IoT Edge-Routen finden Sie unter [Deklarieren von Routen](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
 
 Wenn beispielsweise das Modul ContosoModule an ContosoInput nach Eingaben und an ContosoOutput nach Ausgaben lauscht, ist es sinnvoll, die folgenden beiden Standardrouten zu definieren:
 
@@ -427,7 +430,7 @@ Wenn beispielsweise das Modul ContosoModule an ContosoInput nach Eingaben und an
 - Name 2: FromContosoModuleToCloud
 - Wert 2: FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**Gewünschte Standardeigenschaften für Modulzwilling**. Ein Modulzwilling ist ein auf dem IoT Hub gespeichertes JSON-Dokument mit den Zustandsinformationen für eine Modulinstanz, einschließlich der gewünschten Eigenschaften. Gewünschte Eigenschaften werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die vom Modul gelesen werden können. Das Modul kann außerdem Änderungsbenachrichtigungen zu den gewünschten Eigenschaften erhalten. Gewünschte Eigenschaften werden aus bis zu fünf Name-Wert-Paaren erstellt, und jeder Standardwert muss weniger als 512 Zeichen umfassen. Sie können bis zu fünf Namen und Werte für gewünschte Eigenschaften von Gerätezwillingen definieren. Die Werte für gewünschte Eigenschaften von Gerätezwillingen müssen gültige JSON-Werte ohne Escapezeichen und ohne Arrays sein. Sie können eine geschachtelte Hierarchie mit maximal vier Ebenen aufweisen. In einem Szenario, in dem ein für einen Standardwert erforderlicher Parameter nicht sinnvoll ist (z. B. die IP-Adresse eines Kundenservers), können Sie einen Parameter als Standardwert hinzufügen. Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](https://aka.ms/DefineUpdateProperties).
+**Gewünschte Standardeigenschaften für Modulzwilling**. Ein Modulzwilling ist ein auf dem IoT Hub gespeichertes JSON-Dokument mit den Zustandsinformationen für eine Modulinstanz, einschließlich der gewünschten Eigenschaften. Gewünschte Eigenschaften werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die vom Modul gelesen werden können. Das Modul kann außerdem Änderungsbenachrichtigungen zu den gewünschten Eigenschaften erhalten. Gewünschte Eigenschaften werden aus bis zu fünf Name-Wert-Paaren erstellt, und jeder Standardwert muss weniger als 512 Zeichen umfassen. Sie können bis zu fünf Namen und Werte für gewünschte Eigenschaften von Gerätezwillingen definieren. Die Werte für gewünschte Eigenschaften von Gerätezwillingen müssen gültige JSON-Werte ohne Escapezeichen und ohne Arrays sein. Sie können eine geschachtelte Hierarchie mit maximal vier Ebenen aufweisen. In einem Szenario, in dem ein für einen Standardwert erforderlicher Parameter nicht sinnvoll ist (z. B. die IP-Adresse eines Kundenservers), können Sie einen Parameter als Standardwert hinzufügen. Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
 
 Wenn ein Modul z. B. mithilfe von gewünschten Eigenschaften von Gerätezwillingen eine dynamisch konfigurierbare Aktualisierungsrate unterstützt, empfiehlt es sich, die folgende gewünschte Standardeigenschaft für Gerätezwillinge zu definieren:
 
@@ -441,7 +444,7 @@ Wenn vor dem Start eines Moduls beispielsweise die Zustimmung zu den Nutzungsbed
 - Name 1: ACCEPT_EULA
 - Wert 1: J
 
-**Standardoptionen für die Containererstellung**. Optionen für die Containererstellung steuern die Erstellung des Docker-Containers für das IoT Edge-Modul. IOT Edge unterstützt Optionen zur Containererstellung der Docker-Engine-API. Alle Optionen finden Sie unter [Container auflisten](https://aka.ms/ContainerList). Das Feld mit den Erstellungsoptionen muss gültigen JSON-Code ohne Escapezeichen und mit weniger als 512 Zeichen enthalten.
+**Standardoptionen für die Containererstellung**. Optionen für die Containererstellung steuern die Erstellung des Docker-Containers für das IoT Edge-Modul. IOT Edge unterstützt Optionen zur Containererstellung der Docker-Engine-API. Alle Optionen finden Sie unter [Container auflisten](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList). Das Feld mit den Erstellungsoptionen muss gültigen JSON-Code ohne Escapezeichen und mit weniger als 512 Zeichen enthalten.
 
 Wenn für ein Modul beispielsweise die Bindung an einen Port erforderlich ist, definieren Sie die folgenden Erstellungsoptionen:
 

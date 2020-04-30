@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564719"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867976"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
@@ -148,7 +148,7 @@ Die VLAN/Subnetz wird erstellt.  Sie können jetzt diese VLAN-ID verwenden, um e
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Verbinden Ihrer Umgebung mit einem virtuellen Azure-Netzwerk
 
-CloudSimple stellt Ihnen eine ExpressRoute-Leitung für Ihre private Cloud bereit. Sie können Ihr virtuelles Netzwerk in Azure mit der ExpressRoute-Verbindung verbinden. Ausführliche Informationen zum Einrichten der Verbindung finden Sie in den Schritten unter [Verbindung mit dem virtuellen Azure-Netzwerk mithilfe von ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/).
+CloudSimple stellt Ihnen eine ExpressRoute-Leitung für Ihre private Cloud bereit. Sie können Ihr virtuelles Netzwerk in Azure mit der ExpressRoute-Verbindung verbinden. Ausführliche Informationen zum Einrichten der Verbindung finden Sie in den Schritten unter [Verbindung mit dem virtuellen Azure-Netzwerk mithilfe von ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection).
 
 ## <a name="sign-in-to-vcenter"></a>Anmelden bei vCenter
 
@@ -159,8 +159,8 @@ Sie können sich jetzt bei vCenter anmelden, um virtuelle Computer sowie Richtli
     ![VSphere-Client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Wählen Sie Ihren bevorzugten vSphere-Client aus, über den Sie auf vCenter zugreifen möchten, und melden Sie sich mit Ihrem Benutzernamen und Kennwort an.  Die Standardwerte sind:
-    * Benutzername: **CloudOwner\@cloudsimple.local**
-    * Password (Kennwort): **CloudSimple123!**  
+    * Benutzername: `CloudOwner@cloudsimple.local`
+    * Kennwort: `CloudSimple123!`
 
 Die vCenter-Bildschirme in den nächsten Schritten stammen vom vSphere-Client für HTML5.
 

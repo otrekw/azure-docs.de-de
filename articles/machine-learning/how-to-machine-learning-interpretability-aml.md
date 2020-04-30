@@ -1,5 +1,5 @@
 ---
-title: Erläutern von Machine Learning-Modellen und Vorhersagen
+title: Interpretieren und Erläutern von ML-Modellen in Python
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden der Azure Machine Learning-SDK Vorhersagen trifft.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257199"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769806"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>Erläutern von Machine Learning-Modellen und Vorhersagen
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ Weitere Informationen zu den unterstützten Interpretierbarkeitstechniken und de
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generieren des Werts für die Featurerelevanz auf Ihrem persönlichen Computer 
 Das folgende Beispiel zeigt, wie Sie das Interpretierbarkeitspaket auf Ihrem persönlichen Computer verwenden, ohne auf Azure-Dienste zurückzugreifen.
 
-1. Installieren Sie die Pakete `azureml-interpret` und `azureml-interpret-contrib`.
+1. Installieren Sie die Pakete `azureml-interpret` und `azureml-contrib-interpret`.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. Trainieren Sie ein Beispielmodell in einem lokalen Jupyter-Notebook.

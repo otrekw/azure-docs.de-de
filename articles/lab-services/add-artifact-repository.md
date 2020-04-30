@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295506"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770244"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird.
@@ -52,13 +52,13 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 4. Speichern Sie die URL. Sie benötigen die URL später.
 5. Um ein persönliches Zugriffstoken zu erstellen, wählen Sie im Dropdownmenü Ihres Benutzerkontos **Mein Profil**.
 6. Wählen Sie auf der Seite mit den Profilinformationen **Sicherheit**.
-7. Wählen Sie auf der Registerkarte **Sicherheit** die Option **Hinzufügen** aus.
-8. Gehen Sie auf der Seite **Persönliches Zugriffstoken erstellen** folgendermaßen vor:
-   1. Geben Sie eine **Beschreibung** für das Token ein.
-   2. Wählen Sie **180 Tagen** in der Liste **Läuft ab in** aus.
-   3. Wählen Sie **Alle verfügbaren Konten** in der Liste **Konten** aus.
-   4. Wählen Sie die Option **Alle Bereiche** aus.
-   5. Wählen Sie **Token erstellen** aus.
+7. Wählen Sie auf der Registerkarte **Sicherheit > Persönliche Zugriffstoken** die Option **+ Neues Token** aus.
+8. Gehen Sie auf der Seite **Neues persönliches Zugriffstoken erstellen** folgendermaßen vor:
+   1. Geben Sie unter **Name** einen Namen für das Token ein.
+   2. Wählen Sie in der Liste **Organisation** die Option **Alle zugänglichen Organisationen** aus.
+   3. Wählen Sie in der Liste **Ablaufzeit (UTC)** die Option **90 Tage** oder einen benutzerdefinierten Zeitraum aus.
+   4. Wählen Sie für „Bereiche“ die Option **Vollzugriff** aus.
+   5. Klicken Sie auf **Erstellen**.
 9. Das neue Token wird in der Liste **Persönliche Zugriffstokens** angezeigt. Wählen Sie **Token kopieren**, und speichern Sie den Tokenwert für die spätere Verwendung.
 10. Fahren Sie mit dem Abschnitt zum Herstellen der Verbindung zwischen Ihrem Lab und dem Repository fort.
 

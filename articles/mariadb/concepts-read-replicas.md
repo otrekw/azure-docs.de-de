@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527910"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024624"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -33,9 +33,6 @@ Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist ni
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
-
-> [!NOTE]
-> Regionsübergreifende Replikation ist Vorschauversion verfügbar.
 
 Sie können einen Masterserver in jeder [Azure Database for MariaDB-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Masterregion verfügbar sind.
 
@@ -73,7 +70,7 @@ Wenn Sie den Workflow zum Erstellen von Replikaten starten, wird ein leerer Azur
 
 ## <a name="connect-to-a-replica"></a>Herstellen einer Verbindung mit einem Replikat
 
-Ein Replikat erbt bei der Erstellung weder die Firewallregeln noch den VNET-Dienstendpunkt des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
+Ein Replikat erbt bei der Erstellung die Firewallregeln des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
 
 Das Replikat erbt das Administratorkonto vom Masterserver. Alle Benutzerkonten auf dem Masterserver werden auf die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Masterserver verfügbar sind.
 
@@ -126,7 +123,7 @@ Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erst
 > [!IMPORTANT]
 > Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
 
-Firewallregeln, VNET-Regeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Masterserver geerbt. Danach sind die Regeln des Replikats unabhängig.
+Firewallregeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Masterserver geerbt. Danach sind die Regeln des Replikats unabhängig.
 
 ### <a name="stopped-replicas"></a>Beendete Replikate
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167346"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767892"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -45,7 +45,6 @@ Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhän
 
 *„USA, Westen 2“ steht vorübergehend nicht als Standort für die regionsübergreifende Replikation zur Verfügung.
 
-
 ### <a name="paired-regions"></a>Regionspaare
 Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
 
@@ -71,7 +70,7 @@ Jedes Replikat ist für die [automatische Vergrößerung](concepts-pricing-tiers
 
 ## <a name="connect-to-a-replica"></a>Herstellen einer Verbindung mit einem Replikat
 
-Ein Replikat erbt bei der Erstellung weder die Firewallregeln noch den VNET-Dienstendpunkt des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
+Ein Replikat erbt bei der Erstellung die Firewallregeln des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
 
 Das Replikat erbt das Administratorkonto vom Masterserver. Alle Benutzerkonten auf dem Masterserver werden auf die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Masterserver verfügbar sind.
 
@@ -124,7 +123,7 @@ Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erst
 > [!IMPORTANT]
 > Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
 
-Firewallregeln, VNET-Regeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Masterserver geerbt. Danach sind die Regeln des Replikats unabhängig.
+Firewallregeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Masterserver geerbt. Danach sind die Regeln des Replikats unabhängig.
 
 ### <a name="stopped-replicas"></a>Beendete Replikate
 

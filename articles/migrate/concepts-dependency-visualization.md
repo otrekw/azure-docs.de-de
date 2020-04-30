@@ -2,13 +2,13 @@
 title: Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
 description: Hier wird beschrieben, wie Sie die Abhängigkeitsanalyse zur Bewertung mithilfe der Azure Migrate-Serverbewertung verwenden.
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455637"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024760"
 ---
 # <a name="dependency-analysis"></a>Abhängigkeitsanalyse
 
@@ -30,7 +30,7 @@ Es gibt zwei Optionen für die Bereitstellung der Abhängigkeitsanalyse:
 - **Ohne Agent:** Bei der Analyse ohne Agent müssen Sie keine Agents auf Computern installieren, die Sie überprüfen möchten. Diese Option befindet sich derzeit in der Vorschauphase und ist nur für VMware-VMs verfügbar.
 
 > [!NOTE]
-> Die Abhängigkeitsanalyse ist in Azure Government nicht verfügbar.
+> Die Agent-basierte Abhängigkeitsanalyse ist in Azure Government nicht verfügbar. Sie können die Abhängigkeitsanalyse ohne Agent verwenden.
 
 ## <a name="agentless-analysis"></a>Analyse ohne Agent
 
@@ -51,7 +51,7 @@ Bei der Agent-basierten Analyse verwendet die Serverbewertung die [Dienstzuordnu
 
 ### <a name="collected-data"></a>Gesammelte Daten
 
-Bei der Agent-basierten Visualisierung werden folgende Daten gesammelt:
+Bei der Agent-basierten Analyse werden folgende Daten gesammelt:
 
 - Servername des Quellcomputers, Prozess, Anwendungsname.
 - Servername des Zielcomputers, Prozess, Anwendungsname und Port.

@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437047"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023604"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
 ![Office 365-Logo](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Lösungsaktualisierung
@@ -36,8 +35,8 @@ ms.locfileid: "80437047"
 >
 > ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 30. April durchzuführen?
-> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 30. April entfernt.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 30. Juli durchzuführen?
+> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 30. Juli entfernt.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>F: Werden die Tabellen und Schemas geändert?
 > Der Name und das Schema der Tabelle **OfficeActivity** bleiben gegenüber der aktuellen Lösung unverändert. Sie können in der neuen Lösung weiterhin die gleichen Abfragen verwenden, mit Ausnahme von Abfragen, die auf Azure AD-Daten verweisen.
@@ -103,11 +102,11 @@ ms.locfileid: "80437047"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>F: Stellt Azure Sentinel zusätzliche Connectors als Teil der Lösung bereit?
 > Ja. Informationen dazu finden Sie unter [Herstellen einer Verbindung mit Datenquellen in Azure Sentinel](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. April? Muss ich vorab ein Offboarding durchführen?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. Juli? Muss ich vorab ein Offboarding durchführen?
 > 
 > - Sie können keine Daten mehr von der **Office 365**-Lösung empfangen. Die Lösung ist nicht mehr im Marketplace verfügbar.
 > - Für Azure Sentinel-Kunden wird die Log Analytics-Arbeitsbereichslösung **Office365** in die Azure Sentinel-Lösung **SecurityInsights** eingeschlossen.
-> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. April automatisch getrennt.
+> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. Juli automatisch getrennt.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>F: Werden meine Daten in die neue Lösung übertragen?
 > Ja. Wenn Sie die **Office 365**-Lösung aus Ihrem Arbeitsbereich entfernen, sind die Daten vorübergehend nicht verfügbar, da das Schema entfernt wird. Sobald Sie den neuen **Office 365**-Connector in Sentinel aktivieren, wird das Schema im Arbeitsbereich wiederhergestellt, und alle bereits erfassten Daten sind wieder verfügbar. 
@@ -273,7 +272,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 | ResultStatus | Gibt an, ob die Aktion (angegeben in der Eigenschaft „Operation“) erfolgreich war oder nicht. Mögliche Werte sind „Succeeded“, „PartiallySucceeded“ oder „Failed“. Bei Exchange-Administratoraktivitäten ist der Wert entweder „True“ oder „False“. |
 | UserId | Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers, der die Aktion ausgeführt hat, die zum Protokollieren des Datensatzes geführt hat, beispielsweise my_name@my_domain_name. Beachten Sie, dass auch Datensätze für die von Systemkonten ausgeführten Aktivitäten (z.B. „SHAREPOINT\system“ oder „NTAUTHORITY\SYSTEM“) enthalten sind. | 
 | UserKey | Eine alternative ID für den Benutzer, der in der Eigenschaft „UserId“ identifiziert wird.  Beispiel: Diese Eigenschaft wird für Ereignisse, die von Benutzern in SharePoint, OneDrive for Business und Exchange ausgeführt werden, mit der eindeutigen Passport-ID (PUID) aufgefüllt. Diese Eigenschaft kann für Ereignisse, die in anderen Diensten und Ereignissen von Systemkonten ausgeführt werden, auch den gleichen Wert wie die Eigenschaft „UserID“ angeben.|
-| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Admin<br>Application<br>DcAdmin<br>Regulär<br>Reserved<br>ServicePrincipal<br>System |
+| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Admin<br>Application<br>DcAdmin<br>Regulär <br>Reserved<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-Basis

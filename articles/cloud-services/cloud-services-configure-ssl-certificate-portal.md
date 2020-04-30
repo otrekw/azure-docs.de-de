@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811681"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024845"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurieren von TLS für eine Anwendung in Azure
 
@@ -32,7 +32,7 @@ Wenn Sie TLS für eine Anwendung konfigurieren möchten, müssen Sie zuerst ein 
 
 Das Zertifikat muss die folgenden Anforderungen für TLS/SSL-Zertifikate in Azure erfüllen:
 
-* Das Zertifikat muss einen privaten Schlüssel enthalten.
+* Das Zertifikat muss einen öffentlichen Schlüssel enthalten.
 * Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
 * Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die auf den Clouddienst zugegriffen wird. Für die Domäne „cloudapp.net“ können Sie kein TLS/SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie müssen einen benutzerdefinierten Domänennamen erwerben, den Sie für den Zugriff auf Ihren Dienst verwenden können. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat der Domäne entsprechen, über die auf Ihre Anwendung zugegriffen wird. Wenn beispielsweise der benutzerdefinierte Domänenname **contoso.com** lautet, fordern Sie von Ihrer Zertifizierungsstelle ein Zertifikat für * **.contoso.com** oder **www\..contoso.com** an.
 * Das Zertifikat muss mindestens eine 2048-Bit-Verschlüsselung haben.

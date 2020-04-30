@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899990"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867446"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -50,9 +50,7 @@ Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken 
 
 ## <a name="who-can-do-what"></a>Berechtigungen und Rollen
 
-Wenn Sie der erste Benutzer von Privileged Identity Management sind, werden Ihnen automatisch die Rollen [Sicherheitsadministrator](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) und [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) im Verzeichnis zugewiesen.
-
-Für Azure AD-Rollen in Privileged Identity Management gilt: Nur Benutzer mit der Rolle „Administrator für privilegierte Rollen“ können Zuweisungen für andere Administratoren verwalten. Sie können [anderen Administratoren Zugriff für die Verwaltung von Privileged Identity Management gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren, globale Leser und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können auch Azure AD-Rollenzuweisungen in Privileged Identity Management anzeigen.
+Für Azure AD-Rollen in Privileged Identity Management gilt: Nur Benutzer mit der Rolle „Administrator für privilegierte Rollen“ oder der Rolle „Globaler Administrator“ können Zuweisungen für andere Administratoren verwalten. Sie können [anderen Administratoren Zugriff für die Verwaltung von Privileged Identity Management gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren, globale Leser und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können auch Azure AD-Rollenzuweisungen in Privileged Identity Management anzeigen.
 
 Bei Azure-Ressourcenrollen in Privileged Identity Management können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben standardmäßig keinen Zugriff auf Azure-Ressourcenrollenzuweisungen in Privileged Identity Management.
 
