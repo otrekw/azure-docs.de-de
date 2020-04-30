@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 9dc4047b9e95b088bb614858091f43286cefe361
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82096298"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -47,7 +47,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um vorherzusagen, ob eine 
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Erstellen einer Apache Spark-MLlib-Machine Learning-App
 
-1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](./apache-spark-notebook-create-spark-use-sql.md#create-a-notebook).
+1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](../quickstart-apache-spark-notebook.md#create-a-notebook).
 2. Importieren Sie die Typen, die für diese Anwendung benötigt werden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine leere Zelle ein, und drücken Sie dann **UMSCHALT+EINGABE**, oder führen Sie die Zelle aus, indem Sie das blaue Wiedergabesymbol links neben dem Code verwenden.
 
     ```python
@@ -301,4 +301,4 @@ Nachdem Sie die Ausführung der Anwendung abgeschlossen haben, fahren Sie das No
 - [Offizielle Apache Spark-Dokumentation](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> In der offiziellen Apache Spark-Dokumentation wird teilweise die Spark-Konsole verwendet, diese ist in Azure Synapse Spark jedoch nicht verfügbar. Verwenden Sie stattdessen das [Notebook](../spark/apache-spark-notebook-create-spark-use-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) oder [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> In der offiziellen Apache Spark-Dokumentation wird teilweise die Spark-Konsole verwendet, diese ist in Azure Synapse Spark jedoch nicht verfügbar. Verwenden Sie stattdessen das [Notebook](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) oder [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

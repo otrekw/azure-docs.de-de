@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868893"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82098899"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive` weist nur einen obligatorischen Parameter auf: `scopes`. Der `scopes`-Parameter enumeriert Zeichenfolgen , die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs. Navigieren Sie in der Referenz zum Abschnitt „Berechtigungen“.
 
-Um beispielsweise die [Kontakte des Benutzers aufzulisten](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), verwenden Sie den Bereich „User.Read“, „Contacts.Read“. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Um beispielsweise die [Kontakte des Benutzers aufzulisten](https://docs.microsoft.com/graph/api/user-list-contacts), verwenden Sie den Bereich „User.Read“, „Contacts.Read“. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Unter Android können Sie beim Erstellen der App mithilfe von `PublicClientApplicationBuilder` eine übergeordnete Aktivität angeben. Wenn Sie die übergeordnete Aktivität nicht zu diesem Zeitpunkt festlegen, können Sie sie später mithilfe von `.WithParentActivityOrWindow` angeben, wie im folgenden Abschnitt zu sehen. Wenn Sie die übergeordnete Aktivität angeben, wird das Token nach der Interaktion wieder an diese übergeordnete Aktivität übergeben. Wenn Sie sie nicht angeben, wird durch den `.ExecuteAsync()`-Aufruf eine Ausnahme ausgelöst.
 

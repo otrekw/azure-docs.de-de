@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d5354f5bca7a4c9ab00066167ad19890536629
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82112761"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
@@ -128,15 +128,19 @@ Stellen Sie zunächst sicher, dass das [MSOnline-V1-PowerShell-Modul](https://do
 
 Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben. Mit dieser Gruppe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können.
 
-```Get-MsolUser -All | Where-Object {$.StrongAuthenticationMethods -ne $null -and $.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName```
+```powershell
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+```
 
 Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben. Mit dieser Gruppe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können.
 
-```Get-MsolUser -All | Where-Object {$.StrongAuthenticationMethods.Count -eq 0 -and $.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName```
+```powershell
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+```
 
 Identifizieren Sie die registrierten Benutzer und Ausgabemethoden. 
 
-```PowerShell
+```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
 
 @{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},

@@ -1,25 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Windows-Computer erstellen.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214748"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097998"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen einer virtuellen Windows-Maschine im Azure-Portal
 
@@ -59,7 +53,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
-Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In dieser Anleitung wird erläutert, wie Sie über einen Windows-Computer eine Verbindung mit Ihrem virtuellen Computer herstellen. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)t aus dem Mac App Store.
+Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In dieser Anleitung wird erläutert, wie Sie über einen Windows-Computer eine Verbindung mit Ihrem virtuellen Computer herstellen. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)t aus dem Mac App Store.
 
 1. Klicken Sie auf der Seite „Übersicht“ des virtuellen Computers auf die Schaltfläche **Verbinden**. 
 

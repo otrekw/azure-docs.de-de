@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194508"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096621"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -66,7 +66,7 @@ Durch Abbrechen des Fensters können Sie den Migrationsprozess hinauszögern. Si
 * **Optional**: Speichern Sie für jede App deren Liste der Projektmitarbeiter. Diese E-Mail-Liste wird als Bestandteil des Migrationsprozesses bereitgestellt.
 
 
-**Das Erstellen Ihrer LUIS-App ist kostenlos**, wie der `F0`-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-boundaries.md#key-limits).
+**Das Erstellen Ihrer LUIS-App ist kostenlos**, wie der `F0`-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-limits.md#key-limits).
 
 Wenn Sie kein Azure-Abonnement haben, [registrieren Sie sich](https://azure.microsoft.com/free/).
 

@@ -1,26 +1,20 @@
 ---
 title: Erstellen einer VM auf der Grundlage eines spezialisierten Datenträgers in Azure
 description: Erstellen Sie einen neuen virtuellen Computer, indem Sie im Resource Manager-Bereitstellungsmodell einen spezialisierten nicht verwalteten Datenträger anfügen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: storage-accounts
+ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073345"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099647"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 

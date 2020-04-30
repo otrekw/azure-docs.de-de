@@ -1,32 +1,25 @@
 ---
 title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit Azure PowerShell'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen Windows-Computer erstellen.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 45160e8bc406318f3b3924142899e33640ee6b73
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74073453"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097947"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit PowerShell in Azure
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers in Azure mit PowerShell
 
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit dem Azure PowerShell-Modul einen virtuellen Computer unter Windows Server 2016 in Azure bereitstellen. Außerdem stellen Sie eine RDP-Verbindung mit dem virtuellen Computer her und installieren den IIS-Webserver, um den virtuellen Computer in Aktion zu erleben.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 

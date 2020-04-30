@@ -1,24 +1,21 @@
 ---
 title: Veröffentlichen einer Web-App auf einem virtuellen Azure-Computer aus Visual Studio
 description: Veröffentlichen einer ASP.NET-Webanwendung auf einem virtuellen Azure-Computer aus Visual Studio
-services: virtual-machines-windows
 author: ghogen
 manager: jillfra
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abf0570ee9f01a2378e8c0370cfc3ba5fecc7406
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71970864"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82098231"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Veröffentlichen einer ASP.NET-Web-App auf einer Azure-VM aus Visual Studio
 

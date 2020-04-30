@@ -1,20 +1,15 @@
 ---
 title: Bereitstellen eines Pools in einem virtuellen Netzwerk – Azure Batch | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 ms.date: 04/03/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a653b645fb8713698e8baf283b3ab6226841dfcd
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657490"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82111894"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 

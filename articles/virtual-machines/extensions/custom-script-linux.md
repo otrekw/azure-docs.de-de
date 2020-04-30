@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 7afba24d6334991a694d43b2258244ec425884d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 959e473cb52e23c9d04586f0b24da34537f4e660
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985506"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115600"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -99,7 +99,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
        "storageAccountName": "<storage-account-name>",
        "storageAccountKey": "<storage-account-key>",
        "fileUris": ["https://.."],
-        "managedIdentity" : "<managed-identity-identifier>"
+       "managedIdentity" : "<managed-identity-identifier>"
     }
   }
 }

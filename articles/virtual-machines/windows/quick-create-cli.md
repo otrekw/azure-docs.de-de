@@ -1,32 +1,25 @@
 ---
 title: 'Schnellstart: Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen virtuellen Windows-Computer erstellen.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 32e7b67cb3dda715127204d77c4988d41ed3f9d3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240278"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82098015"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Windows-VM mit der Azure CLI
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird gezeigt, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen virtuellen Computer mit Windows Server 2016 in Azure bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie anschließend eine RDP-Verbindung mit dem virtuellen Computer her und installieren den IIS-Webserver.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 

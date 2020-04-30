@@ -3,12 +3,12 @@ title: 'Tutorial: Listenentität – LUIS'
 description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9530719c43260751d64d7ccf446bc7941078d6e9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79297406"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101126"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung mit Listenentität
 
@@ -33,7 +33,7 @@ Erstellen Sie für die importierte Pizza-App eine Listenentität für die versch
 Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
 * Bei den Datenwerten handelt es sich um einen bekannten Satz.
-* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
+* Für den Satz werden die maximalen LUIS-[Grenzen](luis-limits.md) dieses Entitätstyps nicht überschritten.
 * Der Text in der Äußerung stimmt mit einem Synonym oder dem kanonischen Namen überein (ohne Berücksichtigung der Groß-/Kleinschreibung). Die Liste wird von LUIS nicht über die Übereinstimmung hinaus verwendet. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
 > [!CAUTION]

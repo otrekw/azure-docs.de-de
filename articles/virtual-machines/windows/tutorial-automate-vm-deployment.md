@@ -1,26 +1,19 @@
 ---
 title: 'Tutorial: Installieren von Anwendungen auf einem virtuellen Windows-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung zum Ausführen von Skripts und Bereitstellen von Anwendungen auf virtuellen Windows-Computern in Azure verwenden.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 610f8efad473b5f4bed1abc6b2c063ec0ead66ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74065362"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100463"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Tutorial: Bereitstellen von Anwendungen auf einem virtuellen Windows-Computer in Azure mit der benutzerdefinierten Skripterweiterung
 

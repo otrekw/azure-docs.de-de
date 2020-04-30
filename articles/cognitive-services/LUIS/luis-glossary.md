@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f764b0d42e08e68b45d49a5aae8542f05707ccde
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219152"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82099358"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
@@ -30,7 +30,7 @@ Bei der Erstellung handelt es sich um die Fähigkeit zum Erstellen, Verwalten un
 
 ## <a name="authoring-key"></a><a name="authoring-key"></a>Erstellungsschlüssel
 
-Früherer Name: „Programmierschlüssel“. Er wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-boundaries.md#key-limits).
+Früherer Name: „Programmierschlüssel“. Er wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits).
 
 ## <a name="batch-test-json-file"></a><a name="batch-test-json-file"></a>JSON-Datei für Batchtests
 
@@ -51,7 +51,7 @@ Ein Mitwirkender ist das gleiche wie ein [Mitarbeiter](#collaborator).
 
 ## <a name="descriptor"></a><a name="descriptor"></a>Deskriptor
 
-Ein Deskriptor ist ein [Feature](#features), das zur Trainingszeit auf ein Modell angewendet wird, einschließlich [Ausdruckslisten](#phrase-list) und [Entitäten](#entity). 
+Ein Deskriptor ist ein [Feature](#features), das zur Trainingszeit auf ein Modell angewendet wird, einschließlich [Ausdruckslisten](#phrase-list) und [Entitäten](#entity).
 
 ## <a name="domain"></a><a name="domain"></a>Domäne
 
@@ -121,7 +121,7 @@ Umbenannt in [Erstellungsschlüssel](#authoring-key).
 
 ## <a name="publish"></a><a name="publish"></a>Veröffentlichen
 
-Veröffentlichen bedeutet, dass die aktive Version einer LUIS-App auf einem [Endpunkt](#endpoint) für Staging oder Produktion verfügbar gemacht wird.  
+Veröffentlichen bedeutet, dass die aktive Version einer LUIS-App auf einem [Endpunkt](#endpoint) für Staging oder Produktion verfügbar gemacht wird.
 
 ## <a name="quota"></a><a name="quota"></a>Kontingent
 

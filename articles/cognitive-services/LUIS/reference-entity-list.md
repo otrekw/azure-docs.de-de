@@ -3,12 +3,12 @@ title: Entität vom Typ „List“ – LUIS
 description: Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Empfehlungsfeatures nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297236"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097573"
 ---
 # <a name="list-entity"></a>Entität vom Typ „List“
 
@@ -20,7 +20,7 @@ Eine Listenentität wird nicht maschinell gelernt. Sie stellt eine genaue Textü
 
 * Es handelt sich um einen bekannten Satz.
 * Sie werden nicht oft geändert. Wenn Sie die Liste häufig ändern oder möchten, dass die Liste selbstständig erweitert wird, stellt eine einfache Entität, die um eine Begriffsliste erweitert wurde, eine bessere Wahl dar.
-* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
+* Für den Satz werden die maximalen LUIS-[Grenzen](luis-limits.md) dieses Entitätstyps nicht überschritten.
 * Der Text in der Äußerung stimmt mit einem Synonym oder dem kanonischen Namen überein (ohne Berücksichtigung der Groß-/Kleinschreibung). Die Liste wird von LUIS nicht über die Übereinstimmung hinaus verwendet. Fuzzyübereinstimmung, Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
 ![Entität vom Typ „List“](./media/luis-concept-entities/list-entity.png)

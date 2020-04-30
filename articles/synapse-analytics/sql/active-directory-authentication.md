@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421084"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086095"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit Synapse SQL
 
 Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure Synapse Analytics](../overview-faq.md), bei dem Identitäten in Azure Active Directory (Azure AD) verwendet werden.
 
-Mit der Azure AD-Authentifizierung können Sie zur Vereinfachung der Berechtigungsverwaltung die Identitäten von Benutzern zentral verwalten, die Zugriff auf Azure Synapse haben. Daraus ergeben sich u. a. die folgenden Vorteile:
+Mit der Azure AD-Authentifizierung können Sie zur Vereinfachung der Berechtigungsverwaltung die Benutzeridentitäten zentral verwalten, die Zugriff auf Azure Synapse haben. Daraus ergeben sich u. a. die folgenden Vorteile:
 
 - Sie bietet eine Alternative zur regulären Benutzernamen- und Kennwortauthentifizierung.
 - Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Datenbankserver hinweg Einhalt geboten.
@@ -48,26 +48,34 @@ Wenn Sie für die Dateien und Daten Zugriffsrechte festlegen, die in verschieden
 
 Das folgende Diagramm bietet eine Übersicht über die Lösungsarchitektur für die Azure AD-Authentifizierung mit Synapse SQL. Zur Unterstützung des nativen Benutzerkennworts von Azure AD werden nur der Cloudanteil und Azure AD/Synapse SQL berücksichtigt. Zur Unterstützung der Verbundauthentifizierung (oder von Benutzername und Kennwort für Windows-Anmeldeinformationen) ist die Kommunikation mit dem AD FS-Block erforderlich. Die Pfeile zeigen die Kommunikationswege.
 
-![Diagramm zur AAD-Authentifizierung][1]
+![Diagramm zur AAD-Authentifizierung](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-Das folgende Diagramm zeigt die Verbund-, Vertrauensstellungs- und Hostbeziehungen, die einem Client durch Übermittlung eines Tokens die Verbindungsherstellung mit einer Datenbank ermöglichen. Das Token wird von einem Azure Active Directory authentifiziert, und die Datenbank vertraut dem Token. Bei „Customer1“ kann es sich um ein Azure Active Directory mit nativen Benutzern oder um ein Azure AD mit Verbundbenutzern handeln. „Customer2“ stellt eine mögliche Lösung einschließlich importierter Benutzer dar. In diesem Beispiel stammen diese aus einem dem Verbund angehörenden Azure Active Directory, und AD FS wird mit Azure Active Directory synchronisiert. Wichtig: Für den Zugriff auf eine Datenbank mithilfe der Azure AD-Authentifizierung muss das Abonnement, das als Host fungiert, dem Azure AD zugeordnet sein. Das gleiche Abonnement muss auch verwendet werden, um die SQL Server-Instanz zu erstellen, in der Azure SQL-Datenbank oder der SQL-Pool gehostet wird.
+Das folgende Diagramm zeigt die Verbund-, Vertrauensstellungs- und Hostbeziehungen, die einem Client durch Übermittlung eines Tokens die Verbindungsherstellung mit einer Datenbank ermöglichen. Das Token wird von einem Azure Active Directory authentifiziert, und die Datenbank vertraut dem Token. 
 
-![Abonnementbeziehung][2]
+Bei „Customer1“ kann es sich um ein Azure Active Directory mit nativen Benutzern oder um ein Azure AD mit Verbundbenutzern handeln. „Customer2“ stellt eine mögliche Lösung einschließlich importierter Benutzer dar. In diesem Beispiel stammen diese aus einem dem Verbund angehörenden Azure Active Directory, und AD FS wird mit Azure Active Directory synchronisiert. 
+
+Wichtig: Für den Zugriff auf eine Datenbank mithilfe der Azure AD-Authentifizierung muss das Abonnement, das als Host fungiert, dem Azure AD zugeordnet sein. Das gleiche Abonnement muss auch verwendet werden, um die SQL Server-Instanz zu erstellen, in der Azure SQL-Datenbank oder der SQL-Pool gehostet wird.
+
+![Abonnementbeziehung](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>Administratorstruktur
 
-Bei Verwendung der Azure AD-Authentifizierung sind zwei Administratorkonten für Synapse SQL vorhanden: der ursprüngliche SQL Server-Administrator und der Azure AD-Administrator. Nur der auf einem Azure AD-Konto basierende Administrator kann den ersten eigenständigen Azure AD-Datenbankbenutzer in einer Benutzerdatenbank erstellen. Das Konto für die Azure AD-Administratoranmeldung kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. 
+Bei Verwendung der Azure AD-Authentifizierung sind zwei Administratorkonten für Synapse SQL vorhanden: der ursprüngliche SQL Server-Administrator und der Azure AD-Administrator. Nur der auf einem Azure AD-Konto basierende Administrator kann den ersten eigenständigen Azure AD-Datenbankbenutzer in einer Benutzerdatenbank erstellen. 
 
-Wenn es sich bei dem Administrator um ein Gruppenkonto handelt, kann es von einem beliebigen Gruppenmitglied verwendet werden, sodass mehrere Azure AD-Administratoren die Synapse SQL-Instanz verwalten können. Die Verwendung eines Gruppenkontos für den Administrator verbessert die Verwaltbarkeit und ermöglicht es Ihnen, Gruppenmitglieder in Azure AD zentral hinzuzufügen und zu entfernen, ohne die Benutzer oder Berechtigungen im Synapse Analytics-Arbeitsbereich zu ändern. Es kann jeweils nur ein Azure AD-Administrator (ein Benutzer oder eine Gruppe) konfiguriert werden.
+Das Konto für die Azure AD-Administratoranmeldung kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn es sich bei dem Administrator um ein Gruppenkonto handelt, kann es von einem beliebigen Gruppenmitglied verwendet werden, sodass mehrere Azure AD-Administratoren die Synapse SQL-Instanz verwalten können. 
 
-![Administratorstruktur][3]
+Die Verwendung eines Gruppenkontos für den Administrator verbessert die Verwaltbarkeit und ermöglicht es Ihnen, Gruppenmitglieder in Azure AD zentral hinzuzufügen und zu entfernen, ohne die Benutzer oder Berechtigungen im Synapse Analytics-Arbeitsbereich zu ändern. Es kann jeweils nur ein Azure AD-Administrator (ein Benutzer oder eine Gruppe) konfiguriert werden.
+
+![Administratorstruktur](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>Berechtigungen
 
 Um neue Benutzer zu erstellen, müssen Sie über die Berechtigung `ALTER ANY USER` in der Datenbank verfügen. Die Berechtigung `ALTER ANY USER` kann jedem Datenbankbenutzer gewährt werden. Die Berechtigung `ALTER ANY USER` haben auch Serveradministratorkonten inne, ebenso wie Datenbankbenutzer mit der Berechtigung `CONTROL ON DATABASE` oder `ALTER ON DATABASE` für diese Datenbank sowie Mitglieder der Datenbankrolle `db_owner`.
 
-Für die Erstellung eines Benutzer für die eigenständige Datenbank in Synapse SQL müssen Sie unter Verwendung einer Azure AD-Identität eine Verbindung mit der Datenbank oder Instanz herstellen. Um den ersten eigenständigen Datenbankbenutzer zu erstellen, müssen Sie unter Verwendung eines Azure AD-Administrators (dieser ist der Besitzer der Datenbank) eine Verbindung mit der Datenbank herstellen. Eine Azure AD-Authentifizierung ist nur möglich, wenn der Azure AD-Administrator für Synapse SQL erstellt wurde. Falls der Azure Active Directory-Administrator vom Server entfernt wurde, können vorhandene Azure Active Directory-Benutzer, die zuvor in Synapse SQL erstellt wurden, mithilfe ihrer Azure Active Directory-Anmeldeinformationen keine Verbindung mehr mit der Datenbank herstellen.
+Für die Erstellung eines Benutzer für die eigenständige Datenbank in Synapse SQL müssen Sie unter Verwendung einer Azure AD-Identität eine Verbindung mit der Datenbank oder Instanz herstellen. Um den ersten eigenständigen Datenbankbenutzer zu erstellen, müssen Sie unter Verwendung eines Azure AD-Administrators (dieser ist der Besitzer der Datenbank) eine Verbindung mit der Datenbank herstellen. 
 
+Eine Azure AD-Authentifizierung ist nur möglich, wenn der Azure AD-Administrator für Synapse SQL erstellt wurde. Falls der Azure Active Directory-Administrator vom Server entfernt wurde, können vorhandene Azure Active Directory-Benutzer, die zuvor in Synapse SQL erstellt wurden, mithilfe ihrer Azure Active Directory-Anmeldeinformationen keine Verbindung mehr mit der Datenbank herstellen.
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Funktionen und Einschränkungen von Azure AD
 
 - Die folgenden Elemente von Azure AD können in Synapse SQL Server bereitgestellt werden:
@@ -120,21 +128,8 @@ Die folgenden Authentifizierungsmethoden werden für Azure AD-Serverprinzipale (
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über den Zugriff und die Steuerung in Synapse SQL finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines](../sql/access-control.md). Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx). Weitere Informationen zu Datenbankrollen finden Sie im Artikel zu [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx).
+- Eine Übersicht über den Zugriff und die Steuerung in Synapse SQL finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines](../sql/access-control.md).
+- Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Weitere Informationen zu Datenbankrollen finden Sie unter [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

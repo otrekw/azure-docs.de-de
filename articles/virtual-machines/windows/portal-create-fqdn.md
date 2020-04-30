@@ -1,26 +1,20 @@
 ---
 title: Erstellen eines FQDN für Windows-VMs im Azure-Portal
 description: Enthält Informationen zum Erstellen eines vollqualifizierten Domänennamens (FQDN) für einen Resource Manager-basierten virtuellen Computer im Azure-Portal.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: a2ae5887-76df-485e-ae19-0efd96df8600
 ms.service: virtual-machines-windows
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ece0877c97d3c2cda30aab1b3f7fe56f20080996
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371274"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101653"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Windows-VM
 

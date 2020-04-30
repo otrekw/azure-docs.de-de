@@ -1,21 +1,21 @@
 ---
 title: Tarife – Azure Database for MariaDB
 description: Erfahren Sie mehr über die verschiedenen Tarife für Azure Database for MariaDB einschließlich Computegeneration, Speichertypen, Speichergröße, V-Kerne, Arbeitsspeicher und Aufbewahrungszeiträume für Sicherungen.
-author: jan-eng
-ms.author: janeng
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 39af6850810fa471003cea27ed274972fb2ff046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528029"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097658"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB – Tarife
 
-Sie können eine Azure Database for MariaDB-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MariaDB-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
+Sie können eine Azure Database for MariaDB-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MariaDB-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
 |    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|

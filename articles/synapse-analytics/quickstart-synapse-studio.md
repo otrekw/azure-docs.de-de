@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419814"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096332"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>Schnellstart: Verwenden von Synapse Studio (Vorschauversion)
 
@@ -52,7 +52,7 @@ Mithilfe der Links auf der Symbolleiste können Sie neue Ordner erstellen und Da
 > Sie müssen ein Mitglied der Rolle `Storage Blob Reader` im zugrunde liegenden Speicher sein, um die Dateien abfragen zu können. Lesen Sie, wie Sie die [RBAC-Berechtigung **Storage-Blobdatenleser** oder **Mitwirkender an Storage-Blobdaten** für Azure Storage zuweisen](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
 
 1. Laden Sie einige `PARQUET`-Dateien hoch.
-2. Wählen Sie mindestens eine Datei aus, und erstellen Sie dann ein neues SQL-Skript oder ein Spark-Notebook, um den Inhalt der Dateien anzuzeigen. Wenn Sie ein Notebook erstellen möchten, müssen Sie einen [Apache Spark-Pool im Arbeitsbereich](spark/apache-spark-notebook-create-spark-use-sql.md) erstellen.
+2. Wählen Sie mindestens eine Datei aus, und erstellen Sie dann ein neues SQL-Skript oder ein Spark-Notebook, um den Inhalt der Dateien anzuzeigen. Wenn Sie ein Notebook erstellen möchten, müssen Sie einen [Apache Spark-Pool im Arbeitsbereich](quickstart-create-apache-spark-pool.md) erstellen.
 
    ![Abfragen von Dateien im Speicher](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -66,5 +66,5 @@ Mithilfe der Links auf der Symbolleiste können Sie neue Ordner erstellen und Da
 
 - Ermöglichen Sie Azure AD-Benutzern das Abfragen von Dateien, indem Sie die [RBAC-Berechtigung **Storage-Blobdatenleser** oder **Mitwirkender an Storage-Blobdaten** für Azure Storage zuweisen](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
 - [Abfragen von Dateien in Azure Storage mithilfe von SQL On-Demand](sql/on-demand-workspace-overview.md)
-- [Erstellen eines Apache Spark-Pools](spark/apache-spark-notebook-create-spark-use-sql.md)
+- [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool.md)
 - [Erstellen eines Power BI-Berichts für in Azure Storage gespeicherte Dateien](sql/tutorial-connect-power-bi-desktop.md)

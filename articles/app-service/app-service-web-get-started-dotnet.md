@@ -3,14 +3,14 @@ title: 'Schnellstart: Erstellen einer C#-ASP.NET Core-App'
 description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige C#-ASP.NET Core-Web-App-Vorlage über Visual Studio bereitstellen.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313285"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086044"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um Ihre App Service-Instanz zu erstellen
 
 1. Übernehmen Sie für **Application Insights** die Einstellung auf *Keine*.
 
-1. Wählen Sie im Dialogfeld **App Service: Neu erstellen** die Option **Erstellen** aus, um mit der Erstellung der Azure-Ressourcen zu beginnen.
+1. Verwenden Sie im Dialogfeld **App Service: Neu erstellen** die Option **Erstellen** aus, um mit der Erstellung der Azure-Ressourcen zu beginnen.
 
    ![Erstellen einer neuen App Service-Instanz](./media/app-service-web-get-started-dotnet/create-new-app-service-vs2019.png)
 
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Web-App zu aktualisieren und ern
 
 1. Öffnen Sie im **Projektmappen-Explorer** unter Ihrem Projekt **Seiten** > **Index.cshtml**.
 
-1. Ersetzen Sie die zwei `<div>`-Tags durch den folgenden Code:
+1. Ersetzen Sie das gesamte `<div>`-Tag durch den folgenden Code:
 
    ```HTML
    <div class="jumbotron">

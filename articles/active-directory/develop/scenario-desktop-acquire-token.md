@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a5942a9d614bbb06fadb1d4b16d4c68c007434c7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885317"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097760"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Erforderliche Parameter
 
-`AcquireTokenInteractive` verfügt über nur einen obligatorischen Parameter (``scopes``) mit einer Enumeration von Zeichenfolgen, die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs im Abschnitt „Berechtigungen“. Zum [Auflisten der Kontakte des Benutzers](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts) muss beispielsweise der Bereich „User.Read“, „Contacts.Read“ verwendet werden. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive` verfügt über nur einen obligatorischen Parameter (``scopes``) mit einer Enumeration von Zeichenfolgen, die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs im Abschnitt „Berechtigungen“. Zum [Auflisten der Kontakte des Benutzers](https://docs.microsoft.com/graph/api/user-list-contacts) muss beispielsweise der Bereich „User.Read“, „Contacts.Read“ verwendet werden. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Bei Android müssen Sie außerdem mit `.WithParentActivityOrWindow` die übergeordnete Aktivität angeben (siehe Abbildung), sodass das Token nach der Interaktion wieder an die betreffende übergeordnete Aktivität zurückgegeben wird. Wenn Sie diese nicht angeben, wird beim Aufrufen von `.ExecuteAsync()` eine Ausnahme ausgelöst.
 

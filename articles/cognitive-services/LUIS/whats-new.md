@@ -3,12 +3,12 @@ title: Neuigkeiten – Language Understanding (LUIS)
 description: Dieser Artikel wird regelmäßig mit Neuigkeiten über die Language Understanding-API von Azure Cognitive Services aktualisiert.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538017"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097726"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
@@ -38,7 +38,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
     * [Zerlegbare, durch maschinelles Lernen erworbene Entität](tutorial-machine-learned-entity.md)
 * Erweiterte Funktionen zum Sprachverständnis: [Erstellen ausgereifter Sprachmodelle](luis-concept-entity-types.md) mit weniger Aufwand.
 * Definieren Sie Machine Learning-Funktionen auf Modellebene, und ermöglichen Sie die Verwendung von Modellen als Signale für andere Modelle, beispielsweise durch das Verwenden von Entitäten als Features für Absichten und weitere Entitäten.
-* Neue, erweiterte [Grenzwerte](luis-boundaries.md): höheres Maximum für Ausdruckslisten und ganze Ausdrücke, neues Modell als Featuregrenzwert
+* Neue, erweiterte [Grenzwerte](luis-limits.md): höheres Maximum für Ausdruckslisten und ganze Ausdrücke, neues Modell als Featuregrenzwert
 * Extrahieren von Informationen aus Text im Format einer tiefen Hierarchiestruktur, wodurch Dialoganwendungen noch leistungsfähiger werden.
 
     ![Abbildung einer durch maschinelles Lernen erworbenen Entität](./media/whats-new/deep-entity-extraction-example.png)

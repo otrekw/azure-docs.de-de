@@ -1,22 +1,14 @@
 ---
 title: Kopieren von Anwendungen und Daten auf Poolknoten
 description: Erfahren Sie, wie Sie Anwendungen und Daten auf Poolknoten kopieren.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/17/2020
-ms.author: labrenne
-ms.openlocfilehash: 226a0d69ac387142ecf580537e35f8754ac848a6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385355"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115583"
 ---
 # <a name="copying-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
 

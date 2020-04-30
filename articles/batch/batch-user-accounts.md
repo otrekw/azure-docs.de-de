@@ -1,34 +1,21 @@
 ---
 title: Ausführen von Aufgaben unter Benutzerkonten – Azure Batch
 description: Es ist hilfreich, das Benutzerkonto, unter dem eine Aufgabe ausgeführt werden soll, konfigurieren zu können. Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 11/18/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227406"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82111741"
 ---
 > [!NOTE] 
 > Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell). 
 >
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Linux-VM-Konfiguration über SSH ausgeführt wird, lesen Sie den Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Um eine Verbindung mit Knoten herzustellen, auf denen Windows über RDP ausgeführt wird, lesen Sie den Artikel [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).<br /><br />
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Clouddienstkonfiguration über RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
->
->
-
 
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 

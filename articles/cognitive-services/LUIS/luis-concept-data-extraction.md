@@ -4,12 +4,12 @@ description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Ent
 author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cea4a46564210ad8c37fdeda68e24337091d0bb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219200"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100293"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -31,7 +31,7 @@ Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 * * *
 
-Die App-ID (`appID`) finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie sich mit LUIS vertraut machen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
+Die App-ID (`appID`) finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie sich mit LUIS vertraut machen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-limits.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
 
 Die **HTTPS-Antwort** enthält alle Informationen zur Absicht und den Entitäten, die LUIS anhand des aktuell veröffentlichten Modells auf dem Staging- oder Produktionsendpunkt ermitteln konnte. Die Endpunkt-URL befindet sich auf der [LUIS](luis-reference-regions.md)-Website auf der Seite **Schlüssel und Endpunkte** im Abschnitt **Verwalten**.
 

@@ -2,17 +2,17 @@
 title: Beheben von Verbindungsproblemen – Azure Database for PostgreSQL – Einzelserver
 description: Erfahren Sie, wie Sie Verbindungsprobleme mit einem Azure Database for PostgreSQL-Einzelserver beheben.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
-author: jan-eng
-ms.author: janeng
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c74b819893133116b8ac6905988f3fe11220ed95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770066"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100208"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
 

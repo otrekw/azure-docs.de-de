@@ -1,22 +1,15 @@
 ---
 title: 'Azure Batch: Ereignis zum Starten der Größenänderung von Pools'
 description: Referenz zum Batch-Ereignis zum Starten der Größenänderung von Pools. Das Beispiel zeigt den Text eines Ereignisses zum Starten der Größenänderung von Pools für einen Pool, der manuell von 0 auf 2 Knoten vergrößert wurde.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: 1866e51da30fe5ed148d019c8720755e99757df7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4aa503c5dfbe00a77216277bdaf7e4c0dc3b1bd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023581"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115872"
 ---
 # <a name="pool-resize-start-event"></a>Ereignis zum Starten der Größenänderung von Pools: Azure
 

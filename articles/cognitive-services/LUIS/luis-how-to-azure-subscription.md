@@ -4,12 +4,12 @@ description: Wenn Sie Language Understanding (LUIS) zum ersten Mal verwenden, m�
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: ea2799e7b8bb18ad4a729a70ae1477cde9f97e95
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754354"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101024"
 ---
 # <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
@@ -70,7 +70,7 @@ Ressource `kind`:
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Erstellen Sie eine **LUIS-Vorhersagen-Endpunktressource** der Art `LUIS` mit dem Namen `my-luis-prediction-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als den Free-Tarif wünschen, ändern Sie `F0` in `S0`. Weitere Informationen zu [Tarifen und Durchsatz](luis-boundaries.md#key-limits).
+1. Erstellen Sie eine **LUIS-Vorhersagen-Endpunktressource** der Art `LUIS` mit dem Namen `my-luis-prediction-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als den Free-Tarif wünschen, ändern Sie `F0` in `S0`. Weitere Informationen zu [Tarifen und Durchsatz](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
