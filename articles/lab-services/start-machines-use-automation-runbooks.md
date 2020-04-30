@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76166312"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580589"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
 Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Beispiel ist das Szenario, in dem eine Jumpbox-VM in einem Lab vor den anderen VMs zuerst gestartet werden muss, da die Jumpbox als Zugriffspunkt für die anderen VMs verwendet wird.  In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
-[Erstellen Sie im Automation-Konto einen Zeitplan](../automation/shared-resources/schedules.md#creating-a-schedule), wenn dieses Skript täglich ausgeführt werden soll. [Verknüpfen Sie den Zeitplan nach der Erstellung mit dem Runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+[Erstellen Sie im Automation-Konto einen Zeitplan](../automation/shared-resources/schedules.md#create-a-schedule), wenn dieses Skript täglich ausgeführt werden soll. [Verknüpfen Sie den Zeitplan nach der Erstellung mit dem Runbook](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook). 
 
 In einem umfassenderen Fall, wenn mehrere Abonnements mit mehreren Labs verwendet werden, sollten Sie die Parameterinformationen für verschiedene Labs in einer zentralen Datei speichern und die Datei anstelle der einzelnen Parameter an das Skript übergeben. Das Skript müsste geändert werden, aber die eigentliche Ausführung wäre identisch. In diesem Beispiel wird Azure Automation zum Ausführen des PowerShell-Skripts verwendet, aber es gibt auch andere Optionen, z. B. die Verwendung einer Aufgabe in einer Build-/Releasepipeline.
 

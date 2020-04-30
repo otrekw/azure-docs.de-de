@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4633a3fcafcb2b3151270715036e7940eb1c91
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71099447"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561846"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Versionshinweise zu Azure Data Box Edge und Azure Data Box Gateway 1906
 
-In den folgenden Versionshinweisen werden die schwerwiegenden offenen und die gelösten Probleme für das Release 1906 von Azure Data Box Edge und Azure Data Box Gateway beschrieben.
+In den folgenden Versionshinweisen werden die schwerwiegenden offenen und die gelösten Probleme für das Release 1906 von Azure Data Box Edge und Azure Data Box Gateway beschrieben. 
 
 Die Versionshinweise werden fortlaufend aktualisiert, und wenn schwerwiegende Probleme festgestellt werden, die eine Problemumgehung erfordern, werden sie hinzugefügt. Lesen Sie vor der Bereitstellung Ihres Data Box Edge/Data Box Gateway die Informationen in den Anmerkungen zu dieser Version sorgfältig durch.
 
@@ -31,8 +31,8 @@ Dieses Release entspricht den folgenden Softwareversionen:
 
 ## <a name="whats-new"></a>Neues
 
-- **Fehlerbehebung im Workflow zur Verwaltung des Wiederherstellungsschlüssels**: In der früheren Version gab es einen Fehler, durch den der Wiederherstellungsschlüssel nicht angewendet wurde. Dieser Fehler wurde in dieser Version behoben. Es wird dringend empfohlen, dieses Update anzuwenden, da mit dem Wiederherstellungsschlüssel die Daten auf dem Gerät wiederhergestellt werden können, falls das Gerät nicht gestartet wird. Weitere Informationen finden Sie unter der Vorgehensweise zum [Speichern des Wiederherstellungsschlüssels beim Bereitstellen von Data Box Edge oder Data Box Gateway](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
-- **Verbesserungen bei der FPGA-Protokollierung (Field Programmable Gate Array):** Ab Version 1905 wurden Verbesserungen bei der Protokollierung und den Warnungen im Zusammenhang mit FPGA vorgenommen. Dies ist weiterhin ein erforderliches Update für Data Box Edge, wenn Sie die Edgecomputingfunktion mit dem FPGA verwenden. Weitere Informationen finden Sie unter [Transformieren von Daten mit Edgecomputing unter Data Box Edge](data-box-edge-deploy-configure-compute-advanced.md).
+- **Fehlerbehebung im Workflow zur Verwaltung des Wiederherstellungsschlüssels**: In der früheren Version gab es einen Fehler, durch den der Wiederherstellungsschlüssel nicht angewendet wurde. Dieser Fehler wurde in dieser Version behoben. Es wird dringend empfohlen, dieses Update anzuwenden, da mit dem Wiederherstellungsschlüssel die Daten auf dem Gerät wiederhergestellt werden können, falls das Gerät nicht gestartet wird. Weitere Informationen finden Sie unter der Vorgehensweise zum [Speichern des Wiederherstellungsschlüssels beim Bereitstellen von Data Box Edge oder Data Box Gateway](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
+- **Verbesserungen bei der FPGA-Protokollierung (Field Programmable Gate Array):** Ab Version 1905 wurden Verbesserungen bei der Protokollierung und den Warnungen im Zusammenhang mit FPGA vorgenommen. Dies ist weiterhin ein erforderliches Update für Data Box Edge, wenn Sie die Edgecomputingfunktion mit dem FPGA verwenden. Weitere Informationen finden Sie unter [Transformieren von Daten mit Edgecomputing unter Data Box Edge](azure-stack-edge-deploy-configure-compute-advanced.md).
 
 ## <a name="known-issues-in-ga-release"></a>Bekannte Probleme im Release zur allgemeinen Verfügbarkeit
 
@@ -42,4 +42,4 @@ Für dieses Release werden keine neuen Probleme aufgeführt. Alle in den Version
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Vorbereiten der Bereitstellung von Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [Vorbereiten der Bereitstellung von Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

@@ -2,17 +2,17 @@
 title: Azure IoT Hub-Unterstützung für virtuelle Netzwerke
 description: Hier erfahren Sie mehr über die Verwendung von Konnektivitätsmustern für virtuelle Netzwerke mit IoT Hub.
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.author: rezas
-ms.openlocfilehash: 34f66c13b0e7eb7092332a48744f9abfd8f0db80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: jlian
+ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501438"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231440"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>IoT Hub-Unterstützung für virtuelle Netzwerke
 
@@ -199,7 +199,7 @@ Eine verwaltete Dienstidentität kann Ihrem Hub zum Zeitpunkt der Ressourcenbere
 Nachdem Sie die Werte für Ihre Ressourcen `name`, `location`, `SKU.name` und `SKU.tier` ersetzt haben, können Sie die Ressource mithilfe der Azure CLI in einer vorhandenen Ressourcengruppe bereitstellen, indem Sie Folgendes verwenden:
 
 ```azurecli-interactive
-az group deployment create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
 ```
 
 Nachdem die Ressource erstellt wurde, können Sie die verwaltete Dienstidentität, die Ihrem Hub zugewiesen ist, mithilfe der Azure CLI abrufen:
