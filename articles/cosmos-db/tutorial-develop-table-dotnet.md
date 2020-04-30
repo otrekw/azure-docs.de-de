@@ -31,7 +31,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
-* [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table): Diese Bibliothek ist derzeit für .NET Standard und das .NET Framework verfügbar. 
+* [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table): Diese Bibliothek ist derzeit für .NET Standard und das .NET Framwork verfügbar. 
 
 * [Konto für die Azure Cosmos DB-Tabellen-API](create-table-dotnet.md#create-a-database-account).
 
