@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148273"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Vorbereiten Ihrer technischen Containerressourcen
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Vorbereiten Ihrer technischen Containerressourcen](https://aka.ms/CreateContainerTechAssets).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Vorbereiten Ihrer technischen Containerressourcen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
 
 Dieser Artikel beschreibt die Schritte und Anforderungen für die Konfiguration eines Containerangebots im Azure Marketplace.
 

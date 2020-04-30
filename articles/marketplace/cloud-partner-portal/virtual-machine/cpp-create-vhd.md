@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 642c6964aaad8d6e8750fca67efb11eb3feaf19d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273935"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147011"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Erstellen einer Azure-kompatiblen VHD
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer).
 
 Dieser Artikel beschreibt die Schritte, die ausgeführt werden müssen, um eine virtuelle Festplatte (VHD) für ein VM-Angebot im Azure Marketplace zu erstellen.  Er beschreibt auch bewährte Methoden für verschiedene Aspekte, z.B. die Verwendung des Remotedesktopprotokolls (RDP), die Auswahl einer Größe für die VM, die Installation der neuesten Windows-Updates und die Generalisierung des VF-Images.  In den folgenden Abschnitten geht es primär um Windows-basierte VHDs. Informationen zum Erstellen von Linux-basierten VHDs finden Sie unter [Linux auf von Azure unterstützten Distributionen](../../../virtual-machines/linux/endorsed-distros.md). 
 

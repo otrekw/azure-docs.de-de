@@ -3,12 +3,12 @@ title: Azure Application Insights für ASP.NET Core-Anwendungen | Microsoft-Doku
 description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284788"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145260"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -162,11 +162,11 @@ Wenn Sie die vorherigen Schritte ausgeführt haben, können Sie serverseitige Te
     
 Alternativ zur Verwendung von `FullScript` ist ab SDK v2.14 `ScriptBody` verfügbar. Verwenden Sie dieses Element, wenn Sie das `<script>`-Tag so steuern müssen, dass eine Inhaltssicherheitsrichtlinie festgelegt wird:
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 Die `.cshtml`-Dateinamen, auf die vorher verwiesen wurde, stammen aus der Standardvorlage für MVC-Anwendungen. Wenn Sie die clientseitige Überwachung für Ihre Anwendung ordnungsgemäß aktivieren möchten, muss der JavaScript-Codeausschnitt im `<head>`-Abschnitt jeder Anwendungsseite vorhanden sein, die Sie überwachen möchten. Für diese Anwendungsvorlage müssen Sie dazu den JavaScript-Codeausschnitt `_Layout.cshtml` hinzufügen. 
 
@@ -454,11 +454,6 @@ Dieses SDK erfordert `HttpContext` und kann daher nicht in Nicht-HTTP-Anwendunge
 ## <a name="open-source-sdk"></a>Open Source SDK
 
 [Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
-
-## <a name="video"></a>Video
-
-- In diesem externen Video finden Sie ausführliche Informationen zur [grundlegenden Konfiguration von Application Insights mit .NET Core und Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- In diesem externen Video finden Sie ausführliche Informationen zur [grundlegenden Konfiguration von Application Insights mit .NET Core und Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

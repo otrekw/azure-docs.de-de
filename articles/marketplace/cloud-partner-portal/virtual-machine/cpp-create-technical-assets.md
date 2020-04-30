@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c6ca017e18a83f0745140cba15d9c894e5a21c32
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273969"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148139"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Erstellen von technischen Ressourcen für ein VM-Angebot
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer).
 
 In diesem Abschnitt wird die Erstellung und Konfiguration der technischen Ressourcen für ein VM-Angebot für den Azure Marketplace Schritt für Schritt beschrieben.  Eine VM enthält zwei Komponenten: die Lösungs-VHD und einen optional zugeordneten Datenträger.  
 

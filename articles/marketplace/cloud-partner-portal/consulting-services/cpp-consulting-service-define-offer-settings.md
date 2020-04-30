@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 406a37a1ef946b1c3ceb0d7b02ba318f423dcf53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985115"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146690"
 ---
 # <a name="offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer).
 
 Der erste Schritt unter **Neues Angebot** besteht darin, die Angebots-ID zu erstellen. Eine Angebots-ID besteht aus drei Teilen: **Angebots-ID**, **Herausgeber-ID** und **Name**. Jeder dieser Teile ist in den nachstehenden Abschnitten beschrieben.
 

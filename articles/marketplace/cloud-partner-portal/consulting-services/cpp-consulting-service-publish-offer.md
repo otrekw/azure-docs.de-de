@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c602bbee128c3338d841cb4564add26ba1c9e841
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985081"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146645"
 ---
 # <a name="publish-a-consulting-service-offer"></a>Veröffentlichen eines Beratungsdienstangebots
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://aka.ms/AzureCreateConsultingService).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Beratungsdienstangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen in der [Übersicht über die Erstellung von Beratungsdiensten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer).
 
 Nachdem Sie die Felder **Angebotseinstellungen**, **Details der digitalen Ladenzeile** und **Kontakte** ausgefüllt haben, wählen Sie **Veröffentlichen** aus, und geben Sie eine E-Mail-Adresse an. Sobald Microsoft zum Veröffentlichen Ihres Angebots bereit ist, erhalten Sie eine E-Mail, damit Sie eine Vorschau Ihres Angebots anzeigen können, bevor es freigeschaltet wird. Sie können zum Portal zurückkehren, um jederzeit den Status Ihres Angebots zu prüfen.
 

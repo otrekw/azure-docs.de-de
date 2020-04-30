@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9d82d50769925480d461c122096c3919d7e8940d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273952"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146566"
 ---
 # <a name="create-a-user-vm-image"></a>Erstellen eines Benutzer-VM-Images
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://aka.ms/AzureVMTechAsset).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen Ihrer technischen Ressourcen für Azure Virtual Machines](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer).
 
 In diesem Artikel sind die beiden allgemeinen Schritte beschrieben, die erforderlich sind, um ein nicht verwaltetes Image aus einer generalisierten VHD zu erstellen.  Über Referenzen werden Sie durch die einzelnen Schritte geführt: Erfassen des Images und Generalisieren des Images.
 

@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
-ms.date: 04/08/2020
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 19c4d1a4bd0ffd7c0162cbf7f20c49a5b219b9bc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991908"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146742"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -72,7 +72,7 @@ Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 |**Ist dies ein privater Plan?**     | Gibt an, ob es sich um eine private oder öffentliche SKU handelt. Der Standardwert lautet **Nein** (öffentlich). Wenn Sie diese Auswahl unverändert lassen, wird Ihr Plan nicht auf bestimmte Kunden (oder eine bestimmte Anzahl von Kunden) beschränkt. Nachdem Sie einen öffentlichen Plan veröffentlicht haben, können Sie ihn später nicht mehr in „Privat“ ändern. Um diesen Plan nur für bestimmte Kunden verfügbar zu machen, wählen Sie **Ja** aus. Wenn Sie dies tun, müssen Sie die Kunden identifizieren, indem Sie ihre Abonnement-IDs angeben. Diese können einzeln (für bis zu 10 Abonnements) oder durch Hochladen einer CSV-Datei (für bis zu 20.000 Abonnements) eingegeben werden. Stellen Sie sicher, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie das Angebot testen und validieren können. Weitere Informationen finden Sie unter [Private SKUs und Pläne](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
 
 > [!IMPORTANT]
-> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](onboard-customer.md#remove-access-to-a-delegation), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
+> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](remove-delegation.md), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 #### <a name="manifest-details"></a>Manifestdetails
 
@@ -100,7 +100,7 @@ Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie könne
 - **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen**[verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkungen.)
 
 > [!TIP]
-> Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](onboard-customer.md#remove-access-to-a-delegation) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
+> Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](remove-delegation.md) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 Nachdem Sie die Informationen eingegeben haben, können Sie so häufig wie nötig **Neuer Plan** auswählen, um zusätzliche Pläne zu erstellen. Wenn Sie die Bearbeitung abgeschlossen haben, wählen Sie **Speichern** aus, und fahren Sie dann mit dem Abschnitt **Marketplace** fort.
 
@@ -116,7 +116,7 @@ Vervollständigen Sie im Abschnitt **Übersicht** die folgenden Felder:
 |**Zusammenfassung**     | Kurze Beschreibung des Zwecks oder der Funktion Ihres Angebots. Diese wird in der Regel unterhalb des Titels angezeigt. Die maximale Länge beträgt 100 Zeichen.        |
 |**Long Summary** (Lange Zusammenfassung)     | Eine längere Zusammenfassung von Zweck und Funktion Ihres Angebots. Die maximale Länge beträgt 256 Zeichen.        |
 |**Beschreibung**     | Weitere Informationen zu Ihrem Angebot. Die maximale Länge des Felds beträgt 3000 Zeichen, und es unterstützt einfache HTML-Formatierung. Sie müssen die Begriffe „verwalteter Dienst“ oder „verwaltete Dienste“ in Ihrer Beschreibung verwenden.       |
-|**Marketing Identifier** (Marketingbezeichner)     | Ein eindeutiger, aussagekräftiger URL-Bezeichner. Dieser Bezeichner darf nur aus klein geschriebenen alphanumerischen Zeichen und Bindestrichen (-) bestehen. Er wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet *contoso* und Ihr Marketingbezeichner lautet *sampleApp*, dann ist die URL für Ihr Angebot im Azure Marketplace gleich *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
+|**Marketing Identifier** (Marketingbezeichner)     | Ein eindeutiger, aussagekräftiger URL-Bezeichner. Dieser Bezeichner darf nur aus klein geschriebenen alphanumerischen Zeichen und Bindestrichen (-) bestehen. Er wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet *contoso* und Ihr Marketingbezeichner lautet *sampleApp*, dann ist die URL für Ihr Angebot im Azure Marketplace gleich `https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp` .       |
 |**Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion)     | Sie können zwischen 1 und 100 Abonnement-IDs hinzufügen. Die diesem Abonnement zugeordneten Kunden können das Angebot in Azure Marketplace anzeigen, bevor es live geschaltet wird. Wir schlagen vor, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie eine Vorschau anzeigen können, wie Ihr Angebot im Azure Marketplace angezeigt wird, bevor Sie es für Kunden verfügbar machen.  (Microsoft-Support- und -Technikteams können Ihr Angebot auch während dieses Vorschauzeitraums anzeigen.)   |
 |**Nützliche Links**     | URLs im Zusammenhang mit Ihrem Angebot, z. B. Dokumentation, Anmerkungen zu dieser Version, FAQs usw.        |
 |**Vorgeschlagene Kategorien (max. 5)**     | Mindestens eine Kategorie (bis zu fünf), die auf Ihr Angebot zutrifft. Diese Kategorien helfen Kunden dabei, Ihr Angebot in Azure Marketplace und im Azure-Portal zu ermitteln.        |

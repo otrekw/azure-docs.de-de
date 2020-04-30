@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187243"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159334"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Erfassen von Event Hubs-Daten in Azure Storage und Lesen dieser Daten mithilfe von Python (azure-eventhub, Version 5)
 
@@ -46,7 +46,7 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 - Ein Azure-Speicherkonto, ein Blobcontainer im Speicherkonto und eine Verbindungszeichenfolge für das Speicherkonto. Besitzen Sie diese Elemente nicht, führen Sie die folgenden Schritte aus:  
     1. [Erstellen eines Azure-Speicherkontos](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
     1. [Erstellen eines Blobcontainers im Speicherkonto](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [Abrufen der Verbindungszeichenfolge für das Speicherkonto](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+    1. [Abrufen der Verbindungszeichenfolge für das Speicherkonto](../storage/common/storage-configure-connection-string.md)
 
     Notieren Sie sich die Verbindungszeichenfolge und den Containernamen zur späteren Verwendung in dieser Schnellstartanleitung.  
 - Aktivieren Sie das Erfassungsfeature für den Event Hub. Befolgen Sie hierzu die Anweisungen in [Aktivieren der Erfassung von über Azure Event Hubs gestreamten Ereignissen](event-hubs-capture-enable-through-portal.md). Wählen Sie das Speicherkonto und den Blobcontainer aus, die Sie im vorherigen Schritt erstellt haben. Sie können das Feature auch aktivieren, wenn Sie einen Event Hub erstellen.  

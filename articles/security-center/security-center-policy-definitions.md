@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5550f8feb2b93537bdcc508aa0da062681fe9aab
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 00a5c8e824575b8928aed7e0b0018219e9a51039
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673872"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147102"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>In Security Center überwachte Azure-Sicherheitsrichtlinien
 
@@ -23,13 +23,13 @@ Dieser Artikel enthält eine Liste mit Definitionen und Initiativen von [Azure P
 
 Informationen zu den integrierten Richtlinien, die von Security Center überwacht werden, finden Sie in der folgenden Tabelle:
 
-[!INCLUDE [azure-policy-samples-init-asc](../../includes/azure-policy-samples-init-asc.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/policy/samples/custom/init-asc.md)]
 
 ## <a name="built-in-policy-initiatives"></a>Integrierte Richtlinieninitiativen
 
 Informationen zu den integrierten Initiativen, die von Security Center überwacht werden, finden Sie in der folgenden Tabelle:
 
-[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
+[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

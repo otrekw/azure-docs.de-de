@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273918"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148045"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>Bereitstellungsvorlage für eine virtuelle Festplatte
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification).
 
-Über die folgende Azure Resource Manager-Vorlage wird eine neue Instanz eines virtuellen Azure-Computers definiert, der aus einer lokalen virtuellen Festplatte (VHD) erstellt wurde.  Diese Vorlage wird in dem Artikel [Bereitstellen einer Azure-VM aus einer Benutzer-VHD](./cpp-deploy-vm-user-image.md) verwendet. 
+Über die folgende Azure Resource Manager-Vorlage wird eine neue Instanz eines virtuellen Azure-Computers definiert, der aus einer lokalen virtuellen Festplatte (VHD) erstellt wurde.  Diese Vorlage wird in dem Artikel [Bereitstellen einer Azure-VM aus einer Benutzer-VHD](./cpp-deploy-vm-user-image.md) verwendet.
 
 ```json
 {

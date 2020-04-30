@@ -3,12 +3,12 @@ title: Sichern von SQL Server mithilfe von Azure Backup Server
 description: Dieser Artikel enthält Informationen zur Konfiguration für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 4a4d4b7e70e2df0e014ea4b4d23027aa7c48f2fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505951"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159249"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Sichern von SQL Server in Azure mithilfe von Azure Backup Server
 
@@ -24,7 +24,7 @@ Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung vo
 
 Vergewissern Sie sich zunächst, dass [Azure Backup Server installiert und vorbereitet](backup-azure-microsoft-azure-backup.md) ist.
 
-## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie 
+## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
 Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken in Azure zu schützen:
 
@@ -87,7 +87,6 @@ Erstellen Sie als Erstes eine Sicherungsrichtlinie, um SQL Server-Datenbanken i
     > Verwenden Sie Data Protection Manager (DPM), um Azure-Sicherungen im Anschluss an die lokalen Datenträgersicherungen zu planen. Bei dieser Vorgehensweise wird die aktuelle Datenträgersicherung in Azure kopiert.
     >
 
-
 1. Wählen Sie den Zeitplan für die Aufbewahrungsrichtlinie. Weitere Informationen zur Funktionsweise der Aufbewahrungsrichtlinie finden Sie im Artikel [Verschieben langfristiger Speicher von Bändern in die Azure-Cloud](backup-azure-backup-cloud-as-tape.md).
 
     ![Auswählen einer Aufbewahrungsrichtlinie in MABS](./media/backup-azure-backup-sql/pg-retentionschedule.png)
@@ -123,7 +122,7 @@ Ein Wiederherstellungspunkt wird erstellt, wenn die erste Sicherung durchgeführ
 1. Wählen Sie im Dropdownmenü die Option **Onlineschutz** aus. Wählen Sie anschließend **OK** aus, um die Erstellung eines Wiederherstellungspunkts in Azure zu starten.
 
     ![Starten der Erstellung eines Wiederherstellungspunkts in Azure](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-1. Der Status des Auftrags kann im Arbeitsbereich **Überwachung** verfolgt werden. 
+1. Der Status des Auftrags kann im Arbeitsbereich **Überwachung** verfolgt werden.
 
     ![Anzeigen des Auftragsstatus im Arbeitsbereich „Überwachung“](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 

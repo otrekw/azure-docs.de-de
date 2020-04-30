@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 46b3764fe2a1e09875f2b92a461591b6ff08540f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273850"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147889"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie die Anweisungen unter [Abrufen des Shared Access Signature-URI für Ihr VM-Image](https://aka.ms/GetSASURI), um Ihre migrierten Angebote zu verwalten.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie die Anweisungen unter [Abrufen des Shared Access Signature-URI für Ihr VM-Image](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues), um Ihre migrierten Angebote zu verwalten.
 
 Während des Veröffentlichungsprozesses müssen Sie einen Uniform Resource Identifier (URI) für jede virtuelle Festplatte (Virtual Hard Disk, VHD) bereitstellen, die Ihren SKUs zugeordnet ist. Microsoft benötigt während des Zertifizierungsprozesses Zugriff auf diese VHDs. In diesem Artikel wird erläutert, wie Sie einen Shared Access Signature-URI (SAS) für jede virtuelle Festplatte generieren. Sie müssen diesen URI im Cloud-Partnerportal auf der Registerkarte **SKUs** eingeben.
 

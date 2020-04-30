@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273833"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147021"
 ---
 # <a name="key-vault-deployment-template"></a>Key Vault-Bereitstellungsvorlage
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification).
 
-Die folgende Azure Resource Manager-Vorlage definiert eine neue Azure Key Vault-Instanz.  Sie wird in dem Artikel [Erstellen eines Key Vault-Zertifikats](cpp-create-key-vault-cert.md) verwendet. 
+Die folgende Azure Resource Manager-Vorlage definiert eine neue Azure Key Vault-Instanz.  Sie wird in dem Artikel [Erstellen eines Key Vault-Zertifikats](cpp-create-key-vault-cert.md) verwendet.
 
 ```json
 {

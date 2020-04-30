@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 81dec159a8a84adce97750666baba455ae3fdd93
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273493"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147075"
 ---
 # <a name="certify-your-vm-image"></a>Zertifizieren Ihres VM-Images
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage).
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Azure-VM-Imagezertifizierung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification).
 
 Nachdem Sie Ihren virtuellen Computer (VM) erstellt und bereitgestellt haben, müssen Sie das VM-Image für die Azure Marketplace-Zertifizierung testen und übermitteln. In diesem Artikel wird erläutert, wo Sie das *Certification Test Tool for Azure Certified* herunterladen können, wie Sie dieses Tool verwenden, um Ihr VM-Image zu zertifizieren und wie Sie die Ergebnisse der Überprüfung in den Azure-Container hochladen, in dem sich Ihre virtuellen Festplatten befinden. 
 

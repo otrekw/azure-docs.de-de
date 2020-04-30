@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: e24e78d5661c2fbb60a96c2fb6d6192ffade9579
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804519"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159693"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 
@@ -50,7 +50,7 @@ Nachdem die Datei *azuredeploy.parameters.json* für eine ILB-ASE ausgefüllt wu
 Nachdem die Azure Resource Manager-Vorlage übermittelt wurde, dauert es einige Stunden, bis die ILB-ASE erstellt wird.  Nach Abschluss der Erstellung wird die ILB-ASE auf der Benutzeroberfläche des Portals in der Liste mit den App Service-Umgebungen für das Abonnement angezeigt, über das die Bereitstellung ausgelöst wurde.
 
 ## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>Hochladen und Konfigurieren des TLS/SSL-Standardzertifikats
-Nach der Erstellung der ILB-ASE sollte ein TLS/SSL-Zertifikat der ASE als TLS/SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von TLS/SSL-Verbindungen mit Apps verwendet wird.  Für das Beispiel mit der fiktiven Contoso Corporation gilt: Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit *https://some-random-app.internal-contoso.com* ein TLS/SSL-Zertifikat erforderlich, das für „* *.internal-contoso.com*“ gültig ist. 
+Nach der Erstellung der ILB-ASE sollte ein TLS/SSL-Zertifikat der ASE als TLS/SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von TLS/SSL-Verbindungen mit Apps verwendet wird.  Für das Beispiel mit der fiktiven Contoso Corporation gilt: Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit *`https://some-random-app.internal-contoso.com`* ein TLS/SSL-Zertifikat erforderlich, das für „* *.internal-contoso.com*“ gültig ist. 
 
 Es gibt viele Möglichkeiten, ein gültiges TLS/SSL-Zertifikat zu beschaffen, z. B. interne Zertifizierungsstellen, Erwerb eines Zertifikats von einem externen Aussteller und Verwendung eines selbstsignierten Zertifikats.  Unabhängig von der Quelle des TLS/SSL-Zertifikats müssen die folgenden Zertifikatattribute richtig konfiguriert werden:
 
@@ -122,7 +122,7 @@ Nachdem die Daten in die Datei *azuredeploy.parameters.json* eingefügt wurden, 
 
 Nachdem die Azure Resource Manager-Vorlage übermittelt wurde, dauert die Anwendung der Änderung ca. 40 Minuten pro ASE-Front-End.  Bei einer ASE mit Standardgröße, für die zwei Front-Ends genutzt werden, dauert es beispielsweise ungefähr eine Stunde und 20 Minuten, bis der Vorgang für die Vorlage abgeschlossen ist.  Während der Ausführung der Vorlage kann die ASE nicht skaliert werden.  
 
-Nachdem die Vorlage abgeschlossen wurde, kann auf die Apps in der ILB-ASE per HTTPS zugegriffen werden, und die Verbindungen werden mit dem TLS/SSL-Standardzertifikat geschützt.  Das TLS/SSL-Standardzertifikat wird verwendet, wenn Apps in der ILB-ASE mit einer Kombination aus dem Anwendungsnamen und dem Standardhostnamen adressiert werden.  Für *https://mycustomapp.internal-contoso.com* wird beispielsweise das TLS/SSL-Standardzertifikat für „* *.internal-contoso.com*“ verwendet.
+Nachdem die Vorlage abgeschlossen wurde, kann auf die Apps in der ILB-ASE per HTTPS zugegriffen werden, und die Verbindungen werden mit dem TLS/SSL-Standardzertifikat geschützt.  Das TLS/SSL-Standardzertifikat wird verwendet, wenn Apps in der ILB-ASE mit einer Kombination aus dem Anwendungsnamen und dem Standardhostnamen adressiert werden.  Für *`https://mycustomapp.internal-contoso.com`* wird beispielsweise das TLS/SSL-Standardzertifikat für „* *.internal-contoso.com*“ verwendet.
 
 Wie bei Apps, die unter dem öffentlichen mehrinstanzenfähigen Dienst ausgeführt werden, können Entwickler für einzelne Apps auch benutzerdefinierte Hostnamen und dann eindeutige SNI-basierte TLS/SSL-Zertifikatbindungen konfigurieren.  
 
