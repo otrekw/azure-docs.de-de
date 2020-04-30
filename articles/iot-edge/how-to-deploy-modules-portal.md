@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133916"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
 Nachdem Sie IoT Edge-Module mit Ihrer Geschäftslogik erstellen, sollten Sie sie auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln, mit denen sie verbunden werden, deklarieren.
 
-In diesem Artikel wird gezeigt, wie das Azure-Portal Sie durch das Erstellen eines Bereitstellungsmanifests und die Übertragung der Bereitstellung auf einem IoT Edge-Gerät führt. Informationen zum Erstellen einer Bereitstellung für mehrere Geräte – basierend auf deren freigegebenen Tags – finden Sie unter [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md) (Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab).
+In diesem Artikel wird gezeigt, wie das Azure-Portal Sie durch das Erstellen eines Bereitstellungsmanifests und die Übertragung der Bereitstellung auf einem IoT Edge-Gerät führt. Informationen zum Erstellen einer Bereitstellung für mehrere Geräte – basierend auf deren freigegebenen Tags – finden Sie unter [Deploy and monitor IoT Edge modules at scale](how-to-deploy-at-scale.md) (Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -106,4 +106,4 @@ Klicken Sie auf **Weiter: Routen**, und fahren Sie mit der Bereitstellung fort, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [IoT Edge-Module im großen Maßstab bereitstellen und überwachen](how-to-deploy-monitor.md).
+Erfahren Sie, wie Sie [IoT Edge-Module im großen Maßstab bereitstellen und überwachen](how-to-deploy-at-scale.md).

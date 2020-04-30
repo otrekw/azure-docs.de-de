@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f16d26fa95254282e453cd7bf35d85f8b81ed73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273153"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143212"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Erstellen eines Selbsttestclients zur Vorabüberprüfung eines Azure-VM-Images
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Folgen Sie den Anweisungen unter [Azure-VM-Imagezertifizierung](https://aks.ms/CertifyVMimage), um Ihre migrierten Angebote zu verwalten.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Folgen Sie den Anweisungen unter [Azure-VM-Imagezertifizierung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification), um Ihre migrierten Angebote zu verwalten.
 
 Verwenden Sie diesen Artikel als Anleitung zum Erstellen eines Clientdiensts, der die Selbsttest-API verwendet. Sie können die Selbsttest-API zur Vorabüberprüfung eines virtuellen Computers (VM) verwenden, um sicherzustellen, dass er den aktuellen Veröffentlichungsvoraussetzungen von Azure Marketplace entspricht. Dieser Clientdienst ermöglicht Ihnen, einen virtuellen Computer zu testen, bevor Sie Ihr Angebot zur Zertifizierung an Microsoft senden.
 

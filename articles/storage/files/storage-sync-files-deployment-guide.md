@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232266"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137721"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -410,7 +410,7 @@ Dies ermöglicht ein leistungsfähiges Szenario, das häufig als Self-Service-Wi
 VSS-Momentaufnahmen und Vorherige Versionen funktionieren unabhängig von der Azure-Dateisynchronisierung. Das Cloudtiering muss aber auf einen kompatiblen Modus festgelegt werden. Auf einem Volume können mehrere Serverendpunkte der Azure-Dateisynchronisierung angeordnet sein. Sie müssen den folgenden PowerShell-Aufruf für jedes Volume durchführen. Dies gilt auch, wenn nur ein Serverendpunkt vorhanden ist, für den Sie das Cloudtiering nutzen möchten bzw. bereits nutzen.
 
 ```powershell
-Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
 Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
 ```
 
@@ -426,7 +426,7 @@ VSS-Momentaufnahmen werden für ein gesamtes Volume erstellt. Standardmäßig k�
 Sie können das folgende Cmdlet ausführen, um zu ermitteln, ob Kompatibilität für die Self-Service-Wiederherstellung besteht.
 
 ```powershell
-    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
 Hiermit werden alle Volumes des Servers aufgelistet, und es wird jeweils die Anzahl von Tagen mit Kompatibilität für das Cloudtiering angegeben. Diese Anzahl wird basierend auf den maximal möglichen Momentaufnahmen pro Volume und dem Standardzeitplan für Momentaufnahmen automatisch berechnet. Standardmäßig können also alle vorherigen Versionen, die einem Information-Worker angezeigt werden, für die Wiederherstellung verwendet werden. Dies gilt auch, wenn Sie den Standardzeitplan ändern, um weitere Momentaufnahmen zu erstellen.

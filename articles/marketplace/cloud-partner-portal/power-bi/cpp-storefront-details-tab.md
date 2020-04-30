@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9db01941c21dbd26d149f3623319557e4c625350
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981289"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141798"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails) für Power BI-Apps
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://aka.ms/AzureCreatePBIServiceApp).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
 
 Verwenden Sie die Registerkarte **Storefront Details** (Storefrontdetails) der Seite **New Offer** (Neues Angebot), um Informationen zu Marketing, Vertrieb und rechtlichen Fragen für Ihre potenziellen Kunden bereitzustellen. Über diese Registerkarte können Sie auch Vertriebsleads des Azure Marketplace verwalten. Dieses lange Formular ist in sechs Abschnitte unterteilt: **Angebotsdetails**, **Auflistungsdetails**, **Marketingartefakte**, **Rechtliche Hinweise**, **Kundensupport** und **Leadverwaltung**.  Ein Sternchen (*) am Ende einer Feldbezeichnung bedeutet, dass das Feld erforderlich ist.
 

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 88941b334a9c218365bd2d97046dbb6c32d50f35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273034"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142766"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows-Remoteverwaltung über HTTPS
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure Virtual Machines-Angebots](https://aka.ms/CreateAzureVMoffer), um Ihre migrierten Angebote zu verwalten.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure Virtual Machines-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure Virtual Machines-Angebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer), um Ihre migrierten Angebote zu verwalten.
 
 In diesem Abschnitt wird erläutert, wie ein in Azure gehosteter Windows-basierter virtueller Computer so konfiguriert wird, dass er mit Remotezugriff über PowerShell verwaltet und bereitgestellt werden kann.  Um PowerShell-Remoting zu aktivieren, muss der virtuelle Zielcomputer einen HTTPS-Endpunkt für Windows-Remoteverwaltung (WinRM) verfügbar machen.  Weitere Informationen über PowerShell-Remoting finden Sie unter [Ausführen von Remotebefehlen](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands).  Weitere Informationen über WinRM finden Sie unter [Windows-Remoteverwaltung](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 

@@ -8,18 +8,18 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76895967"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127604"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
 Mithilfe von automatischen Bereitstellungen und einer mehrstufigen Bereitstellung können Sie Module auf einer großen Anzahl von IoT Edge Geräten verwalten und konfigurieren.
 
-Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge Geräten ausgeführt werden sollen. Die erste Methode ist die Bereitstellung von Modulen pro Gerät. Sie erstellen ein Bereitstellungsmanifest und wenden es dann auf ein bestimmtes Gerät nach Name an. Die zweite Methode ist die automatische Bereitstellung auf einem beliebigen registrierten Gerät, das eine Reihe von definierten Bedingungen erfüllt. Sie erstellen ein Bereitstellungsmanifest und definieren dann, auf welche Geräte es angewendet werden soll, basierend auf [Tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) im Gerätezwilling.
+Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge Geräten ausgeführt werden sollen. Die erste Methode ist die Bereitstellung von Modulen pro Gerät. Sie erstellen ein Bereitstellungsmanifest und wenden es dann auf ein bestimmtes Gerät nach Name an. Die zweite Methode ist die automatische Bereitstellung auf einem beliebigen registrierten Gerät, das eine Reihe von definierten Bedingungen erfüllt. Sie erstellen ein Bereitstellungsmanifest und definieren dann, auf welche Geräte es angewendet werden soll, basierend auf [Tags](../iot-edge/how-to-deploy-at-scale.md#identify-devices-using-tags) im Gerätezwilling.
 
 Der Schwerpunkt dieses Artikels liegt auf dem Konfigurieren und Überwachen von größeren Gerätebeständen, die zusammen als *automatische IoT Edge-Bereitstellungen* bezeichnet werden. Die grundlegenden Schritte zur Bereitstellung lauten wie folgt:
 
@@ -28,7 +28,7 @@ Der Schwerpunkt dieses Artikels liegt auf dem Konfigurieren und Überwachen von 
 3. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und macht diese für den Operator verfügbar.  Beispielsweise kann ein Bediener sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt.
 4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert.
 
-In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen](how-to-deploy-monitor.md).
+In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen](how-to-deploy-at-scale.md).
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -197,5 +197,5 @@ Führen Sie die Schritte für Rollbacks in der folgenden Reihenfolge aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md) aus.
+* Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-at-scale.md) aus.
 * Erfahren Sie mehr über andere IoT Edge-Konzepte wie die [IoT Edge-Runtime](iot-edge-runtime.md) und [IoT-Edge-Module](iot-edge-modules.md).

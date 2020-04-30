@@ -1,23 +1,17 @@
 ---
 title: Ausführen eines Azure Batch-Auftrags mit der Python-API
 description: Enthält eine Schnellstartanleitung zur Ausführung eines Azure Batch-Beispielauftrags und von Aufgaben mit der Batch Python-Clientbibliothek. Erfahren Sie mehr über die wichtigsten Konzepte des Batch-Diensts.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77086043"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117198"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Schnellstart: Ausführen eines Azure Batch-Auftrags mit der Python-API
 

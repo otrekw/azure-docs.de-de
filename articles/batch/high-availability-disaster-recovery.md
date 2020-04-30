@@ -1,24 +1,14 @@
 ---
 title: 'Hochverfügbarkeit und Notfallwiederherstellung: Azure Batch'
 description: Enthält Informationen zum Entwerfen Ihrer Batch-Anwendung für einen regionalen Ausfall. Für Workloads sollte ein Failover in eine andere Region oder eine Aufteilung auf zwei oder mehr Regionen ausgeführt werden.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: labrenne
-ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da46753906e27a94e3c76fcaf9c4a26861bba6c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026080"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117436"
 ---
 # <a name="design-your-application-for-high-availability"></a>Entwerfen Ihrer Anwendung für Hochverfügbarkeit
 

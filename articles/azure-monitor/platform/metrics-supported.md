@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991891"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128444"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -2407,7 +2407,7 @@ Die Metriken werden nach Namespace organisiert. Eine Liste der Dienste und Names
 |Http5xx|HTTP-Serverfehler|Anzahl|Gesamt|HTTP-Serverfehler|Instanz|
 |MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Average|Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Average|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Instanz|
-|ResponseTime|Antwortzeit|Sekunden|Gesamt|Antwortzeit|Instanz|
+|HttpResponseTime|Antwortzeit|Sekunden|Gesamt|Antwortzeit|Instanz|
 |AverageResponseTime|Durchschnittliche Antwortzeit (veraltet)|Sekunden|Average|Durchschnittliche Antwortzeit|Instanz|
 |AppConnections|Verbindungen|Anzahl|Average|Verbindungen|Instanz|
 |Ziehpunkte|Anzahl von Handles|Anzahl|Average|Anzahl von Handles|Instanz|

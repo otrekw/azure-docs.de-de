@@ -3,12 +3,12 @@ title: Konformität mithilfe von Azure Policy
 description: Zuweisen integrierter Richtlinien in Azure Policy, um die Konformität Ihrer Azure-Containerregistrierungen zu überwachen
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330735"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145007"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy
 
@@ -25,7 +25,7 @@ Die Verwendung von Azure Policy ist gebührenfrei.
 
 Für Azure Container Registry gelten die folgenden integrierten Richtliniendefinitionen:
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/azure-policy-samples-policies-container-registry.md)]
+[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
 Weitere Informationen finden Sie in der integrierten Netzwerkrichtliniendefinition: [[Vorschauversion] Container Registry sollte einen VNET-Dienstendpunkt verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 

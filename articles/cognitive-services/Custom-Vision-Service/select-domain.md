@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1569b6081adad4cae0855f9adfb4e14e910bf819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899420"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82127771"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
@@ -68,6 +68,6 @@ Wenn _Vision AI Dev Kit_ ausgewählt ist, sind die kompakten Domänen _Generisch
 >Die Domäne __Allgemein (kompakt)__ für die Objekterkennung erfordert eine spezielle Nachverarbeitungslogik. Die Einzelheiten entnehmen Sie einem Beispielskript im exportierten ZIP-Paket. Wenn Sie ein Modell ohne die Nachverarbeitungslogik benötigen, verwenden Sie __Allgemein (kompakt) [S1]__ .
 
 >[!IMPORTANT]
->Es gibt keine Garantie dafür, dass die exportierten Modelle genau das gleiche Ergebnis wie die Vorhersage-API in der Cloud liefern. Geringfügige Unterschiede bei der Ausführungsplattform oder der Vorverarbeitungsimplementierung können größere Unterschiede in den Modellausgaben verursachen. Die Einzelheiten zur Vorverarbeitungslogik finden Sie in [diesem Dokument](python-tutorial.md).
+>Es gibt keine Garantie dafür, dass die exportierten Modelle genau das gleiche Ergebnis wie die Vorhersage-API in der Cloud liefern. Geringfügige Unterschiede bei der Ausführungsplattform oder der Vorverarbeitungsimplementierung können größere Unterschiede in den Modellausgaben verursachen. Die Einzelheiten zur Vorverarbeitungslogik finden Sie in [diesem Dokument](quickstarts/image-classification.md).
 
 \[1\] Intel Xeon E5-2690 CPU und NVIDIA Tesla M60
