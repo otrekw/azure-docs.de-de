@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Migration virtueller VMware-Com
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535314"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509311"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -57,7 +57,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüll
 
 Hinzufügen des Tools für die Azure Migrate-Servermigration
 
-- Wenn Sie das zweite Tutorial zum [Bewerten virtueller VMware-Computer](/tutorial-assess-vmware.md) durchgearbeitet haben, können Sie das Tool jetzt hinzufügen.
+- Wenn Sie das zweite Tutorial zum [Bewerten virtueller VMware-Computer](tutorial-assess-vmware.md) durchgearbeitet haben, können Sie das Tool jetzt hinzufügen.
 - Wenn Sie das zweite Tutorial nicht abgeschlossen haben, [befolgen Sie diese Anweisungen](how-to-add-tool-first-time.md) zum Einrichten eines Azure Migrate-Projekts.  Sie fügen Sie das Tool für die Azure Migrate-Servermigration beim Erstellen des Projekts hinzu.
 
 Wenn Sie ein Projekt eingerichtet haben, fügen Sie das Tool wie folgt hinzu:

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: bf47a352542be0ad4467ed420cc38f62da0d47dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 66c34206b96acf0414f2f2285ca267fa5c9c2e03
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534856"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583177"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -44,7 +44,7 @@ Anwendungen lassen sich wie folgt kategorisieren:
 - [Geschützte Ressourcen oder Clientanwendungen:](#protected-resources-vs-client-applications) In einigen Szenarien steht der Schutz von Ressourcen (beispielsweise Web-Apps oder Web-APIs) im Vordergrund. In anderen Szenarien geht es darum, ein Sicherheitstoken zum Aufrufen einer geschützten Web-API abzurufen.
 - [Mit Benutzern oder ohne Benutzer:](#with-users-or-without-users) Bei einigen Szenarien gibt es einen angemeldeten Benutzer, bei anderen ist kein Benutzer beteiligt (etwa bei Daemon-Szenarien).
 - [Single-Page-Webanwendungen, öffentliche Clientanwendungen und vertrauliche Clientanwendungen:](#single-page-public-client-and-confidential-client-applications) Diese Anwendungsarten bilden drei große Kategorien von Anwendungen. Jede wird mit unterschiedlichen Bibliotheken und Objekten verwendet.
-- [Zielgruppe für die Anmeldung:](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types) Die verfügbaren Authentifizierungsflows hängen von der Zielgruppe für die Anmeldung ab. Einige Flows stehen nur für Geschäfts-, Schul- oder Unikonten zur Verfügung. Andere sind sowohl für Geschäfts-, Schul- oder Unikonten als auch für persönliche Microsoft-Konten verfügbar. Die zulässige Zielgruppe hängt von den Authentifizierungsflows ab.
+- [Zielgruppe für die Anmeldung:](v2-supported-account-types.md) Die verfügbaren Authentifizierungsflows hängen von der Zielgruppe für die Anmeldung ab. Einige Flows stehen nur für Geschäfts-, Schul- oder Unikonten zur Verfügung. Andere sind sowohl für Geschäfts-, Schul- oder Unikonten als auch für persönliche Microsoft-Konten verfügbar. Die zulässige Zielgruppe hängt von den Authentifizierungsflows ab.
 - [Unterstützte OAuth 2.0-Authentifizierungsflows:](#scenarios-and-supported-authentication-flows)  Authentifizierungsflows dienen zur Implementierung der Anwendungsszenarien mit Tokenanforderung. Anwendungsszenarien und Authentifizierungsflows lassen sich nicht eins zu eins zuordnen.
 - [Unterstützte Plattformen:](#scenarios-and-supported-platforms-and-languages) Nicht alle Anwendungsszenarien sind für jede Plattform verfügbar.
 
