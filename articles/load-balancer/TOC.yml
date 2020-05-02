@@ -30,14 +30,18 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
 - name: Konzepte
   items:
-    - name: Komponenten und Einschränkungen
-      href: concepts-limitations.md
+    - name: Komponenten
+      href: components.md
+    - name: Konzepte
+      href: concepts.md
+    - name: Typen
+      href: types.md
     - name: Systemüberwachung
       items:
         - name: Integritätstests
@@ -84,13 +88,13 @@
       items:
         - name: Azure-Portal
           href: configure-load-balancer-outbound-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
         - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
@@ -99,7 +103,7 @@
           displayName: ARM
     - name: Konfigurieren des internen Lastenausgleichs
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
@@ -113,7 +117,7 @@
     - name: Verwenden mehrerer IP-Konfigurationen
       href: load-balancer-multiple-ip.md
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -133,13 +137,15 @@
       items:
         - name: Beheben von Problemen mit Azure Load Balancer
           href: load-balancer-troubleshoot.md
+        - name: Beheben von häufigen Bereitstellungsfehlern
+          href: load-balancer-common-deployment-errors.md
 - name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

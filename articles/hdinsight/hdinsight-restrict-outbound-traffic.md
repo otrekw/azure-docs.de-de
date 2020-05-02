@@ -6,27 +6,28 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/17/2020
+ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370184"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189380"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mittels Firewall
 
-In diesem Artikel werden die Schritte beschrieben, mit denen Sie aus Ihrem HDInsight-Cluster ausgehenden Datenverkehr mithilfe von Azure Firewall schützen. Die folgenden Schritte setzen voraus, dass Sie eine Azure Firewall-Instanz für einen vorhandenen Cluster konfigurieren. Wenn Sie einen neuen Cluster hinter einer Firewall bereitstellen, erstellen Sie zunächst Ihren HDInsight-Cluster und das Subnetz, und führen Sie dann die Schritte in diesem Leitfaden aus.
+In diesem Artikel werden die Schritte beschrieben, mit denen Sie aus Ihrem HDInsight-Cluster ausgehenden Datenverkehr mithilfe von Azure Firewall schützen. Die folgenden Schritte setzen voraus, dass Sie eine Azure Firewall-Instanz für einen vorhandenen Cluster konfigurieren. Wenn Sie einen neuen Cluster hinter einer Firewall bereitstellen, erstellen Sie zunächst Ihren HDInsight-Cluster und das Subnetz. Führen Sie anschließend die Schritte in dieser Anleitung aus.
 
 ## <a name="background"></a>Hintergrund
 
-Azure HDInsight-Cluster werden normalerweise in Ihrem eigenen virtuellen Netzwerk bereitgestellt. Der Cluster verfügt über Abhängigkeiten von Diensten außerhalb dieses virtuellen Netzwerks, die erfordern, dass der Netzwerkzugriff ordnungsgemäß funktioniert.
+HDInsight-Cluster werden normalerweise in einem virtuellen Netzwerk bereitgestellt. Der Cluster weist Abhängigkeiten mit Diensten außerhalb dieses virtuellen Netzwerks auf.
 
 Mehrere Abhängigkeiten erfordern eingehenden Datenverkehr. Der eingehende Verwaltungsdatenverkehr kann nicht über ein Firewallgerät gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden [hier](hdinsight-management-ip-addresses.md) veröffentlicht. Sie können auch Netzwerksicherheitsgruppen-Regeln (NSG) mit diesen Informationen erstellen, um bei den Clustern eingehenden Datenverkehr zu sichern.
 
-Die Abhängigkeiten des ausgehenden HDInsight-Datenverkehrs werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen IP-Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen (NSGs) nicht verwendet werden können, um den ausgehenden Datenverkehr eines Clusters zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit eingerichtet werden können.
+Die Abhängigkeiten des ausgehenden HDInsight-Datenverkehrs werden fast ausschließlich mit FQDNs definiert. Hinter diesen FQDNs stehen keine statischen IP-Adressen. Das Fehlen statischer Adressen bedeutet, dass keine Netzwerksicherheitsgruppen (NSGs) verwendet werden können, um den ausgehenden Datenverkehr eines Clusters einzuschränken. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt werden können.
 
-Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall kann ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf den FQDN des Ziels oder [FQDN-Tags](../firewall/fqdn-tags.md) beschränken.
+Sichern Sie ausgehende Adressen mit einer Firewall, die den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall schränkt ausgehenden Datenverkehr basierend auf dem FQDN des Ziels oder [FQDN-Tags](../firewall/fqdn-tags.md) ein.
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurieren von Azure Firewall mit HDInsight
 
@@ -74,7 +75,7 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
 
     **Abschnitt „Ziel-FQDNs“**
 
-    | Name | Quelladressen | Protokoll:Port | Ziel-FQDNs | Notizen |
+    | Name | Quelladressen | `Protocol:Port` | Ziel-FQDNs | Notizen |
     | --- | --- | --- | --- | --- |
     | Regel 2 | * | https:443 | login.windows.net | Lässt Windows Anmeldeaktivität zu |
     | Regel 3 | * | https:443 | login.microsoftonline.com | Lässt Windows Anmeldeaktivität zu |
@@ -106,14 +107,14 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
     | --- | --- | --- | --- | --- | --- |
     | Regel 1 | UDP | * | * | 123 | Zeitdienst |
     | Regel 2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | * | Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht. Die IP-Adressen der Domänencontroller finden Sie im Abschnitt „AAD-DS“ im Portal. |
-    | Regel 3 | TCP | * | IP-Adresse Ihres Data Lake Storage-Kontos | * | Wenn Sie Azure Data Lake Storage verwenden, können Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel zur Behandlung eines SNI-Problems mit ADLS Gen1 und Gen2 hinzufügen. Diese Option leitet den Datenverkehr an die Firewall weiter, was bei großen Datenmengen zu höheren Kosten führen kann, der Datenverkehr wird jedoch in Firewallprotokollen protokolliert und überwacht. Bestimmen Sie die IP-Adresse für Ihr Data Lake Storage-Konto. Sie können mit einem PowerShell-Befehl wie `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` den FQDN in eine IP-Adresse auflösen.|
+    | Regel 3 | TCP | * | IP-Adresse Ihres Data Lake Storage-Kontos | * | Wenn Sie Azure Data Lake Storage verwenden, können Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel zur Behandlung eines SNI-Problems mit ADLS Gen1 und Gen2 hinzufügen. Bei dieser Option wird der Datenverkehr an die Firewall weitergeleitet. Dies kann bei großen Datenmengen zu höheren Kosten führen, der Datenverkehr kann jedoch mit Firewallprotokollen protokolliert und überwacht werden. Bestimmen Sie die IP-Adresse für Ihr Data Lake Storage-Konto. Sie können mit einem PowerShell-Befehl wie `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` den FQDN in eine IP-Adresse auflösen.|
     | Regel 4 | TCP | * | * | 12000 | (Optional) Wenn Sie Log Analytics verwenden, erstellen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel, um die Kommunikation mit Ihrem Log Analytics-Arbeitsbereich zu ermöglichen. |
 
     **Abschnitt „Diensttags“**
 
     | Name | Protocol | Quelladressen | Diensttags | Zielports | Notizen |
     | --- | --- | --- | --- | --- | --- |
-    | Regel 7 | TCP | * | SQL | 1433 | Konfigurieren Sie im Abschnitt „Diensttags“ eine Regel für SQL, die es Ihnen ermöglicht, SQL-Datenverkehr zu protokollieren und zu überwachen, sofern Sie im HDInsight-Subnetz keine Dienstendpunkte für SQL Server konfiguriert haben, wodurch die Firewall umgangen wird. |
+    | Regel 7 | TCP | * | SQL | 1433 | Konfigurieren Sie eine Netzwerkregel im Abschnitt mit Diensttags für SQL, um den SQL-Datenverkehr protokollieren und überwachen zu können. Es sei denn, Sie haben Dienstendpunkte für SQL Server im HDInsight-Subnetz konfiguriert, wodurch die Firewall umgangen wird. |
 
    ![Titel: Eingeben einer Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -153,7 +154,7 @@ Schließen Sie die Konfiguration der Routingtabelle ab:
 
 1. Wählen Sie **+ Zuordnen** aus.
 
-1. Wählen Sie im Bildschirm **Subnetz zuordnen** das virtuelle Netzwerk, in dem Ihr Cluster erstellt wurde, und das **Subnetz** aus, das Sie für Ihren HDInsight-Cluster verwendet haben.
+1. Wählen Sie im Bildschirm **Subnetz zuordnen** das virtuelle Netzwerk aus, in dem Ihr Cluster erstellt wurde. Geben Sie außerdem das **Subnetz** an, das Sie für Ihren HDInsight-Cluster verwendet haben.
 
 1. Klicken Sie auf **OK**.
 
@@ -171,13 +172,13 @@ Wenn Ihre Anwendungen andere Abhängigkeiten aufweisen, müssen diese Ihrer Azur
 
 Azure Firewall kann Protokolle an ein paar andere Speichersysteme senden. Anweisungen zum Konfigurieren der Protokollierung für Ihre Firewall finden Sie in den Schritten von [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](../firewall/tutorial-diagnostics.md).
 
-Nachdem Sie die Protokollierung eingerichtet haben, können Sie, wenn Sie bei Log Analytics eingehende Daten protokollieren, blockierten Datenverkehr mit einer Abfrage wie der folgenden anzeigen:
+Nachdem Sie die Protokollierung eingerichtet haben, können Sie bei Verwendung von Log Analytics den blockierten Datenverkehr mit einer Abfrage wie der folgenden anzeigen:
 
 ```Kusto
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Die Integration von Azure Firewall und Azure Monitor-Protokollen ist nützlich, wenn Sie eine Anwendung erstmalig einrichten. Dies gilt insbesondere dann, wenn Sie nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
 Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.md).
 
@@ -185,14 +186,14 @@ Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu An
 
 Nach erfolgreicher Einrichtung der Firewall können Sie den internen Endpunkt (`https://CLUSTERNAME-int.azurehdinsight.net`) verwenden, um innerhalb des virtuellen Netzwerks auf Ambari zuzugreifen.
 
-Wenn Sie den öffentlichen Endpunkt (`https://CLUSTERNAME.azurehdinsight.net`) oder den SSH-Endpunkt (`CLUSTERNAME-ssh.azurehdinsight.net`) verwenden möchten, vergewissern Sie sich, dass in der Routingtabelle und den NSG-Regeln die richtigen Routen festgelegt wurden, um das [hier](../firewall/integrate-lb.md) beschriebene Problem mit asymmetrischem Routing zu vermeiden. Insbesondere in diesem Fall müssen Sie die Client-IP-Adresse in den eingehenden NSG-Regeln zulassen und sie auch der benutzerdefinierten Routingtabelle hinzufügen, wobei der nächste Hop als `internet` festgelegt sein muss. Ist dies nicht ordnungsgemäß eingerichtet, tritt ein Timeoutfehler auf.
+Wenn Sie den öffentlichen Endpunkt (`https://CLUSTERNAME.azurehdinsight.net`) oder den SSH-Endpunkt (`CLUSTERNAME-ssh.azurehdinsight.net`) verwenden möchten, vergewissern Sie sich, dass in der Routingtabelle und den NSG-Regeln die richtigen Routen festgelegt wurden, um das [hier](../firewall/integrate-lb.md) beschriebene Problem mit asymmetrischem Routing zu vermeiden. Insbesondere in diesem Fall müssen Sie die Client-IP-Adresse in den eingehenden NSG-Regeln zulassen und sie auch der benutzerdefinierten Routingtabelle hinzufügen, wobei der nächste Hop als `internet` festgelegt sein muss. Wenn das Routing nicht ordnungsgemäß eingerichtet ist, kommt es zu einem Timeoutfehler.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Konfigurieren eines anderen virtuellen Netzwerkgeräts
 
 > [!Important]
 > Die folgenden Informationen sind **nur** erforderlich, wenn Sie ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) als Azure Firewall konfigurieren möchten.
 
-Mit den vorherigen Anweisungen können Sie Azure Firewall zum Einschränken des ausgehenden Datenverkehrs Ihres HDInsight-Clusters konfigurieren. Azure Firewall wird automatisch dazu konfiguriert, den Datenverkehr für viele der häufigen, wichtigen Szenarien zuzulassen. Wenn Sie ein anderes virtuelles Netzwerkgerät nutzen möchten, müssen Sie eine Reihe zusätzlicher Features manuell konfigurieren. Bedenken Sie beim Konfigurieren Ihres virtuellen Netzwerkgeräts Folgendes:
+Mit den vorherigen Anweisungen können Sie Azure Firewall zum Einschränken des ausgehenden Datenverkehrs Ihres HDInsight-Clusters konfigurieren. Azure Firewall wird automatisch dazu konfiguriert, den Datenverkehr für viele der häufigen, wichtigen Szenarien zuzulassen. Bei Verwendung einer anderen virtuellen Netzwerkappliance müssen Sie eine Reihe zusätzlicher Features konfigurieren. Bedenken Sie beim Konfigurieren Ihrer virtuellen Netzwerkappliance Folgendes:
 
 * Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
 * IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
@@ -213,7 +214,7 @@ Mit den vorherigen Anweisungen können Sie Azure Firewall zum Einschränken des 
 | **Endpunkt** | **Details** |
 |---|---|
 | \*:123 | NTP-Uhrzeitüberprüfung. Datenverkehr wird an mehreren Endpunkten am Port 123 überprüft. |
-| [Hier](hdinsight-management-ip-addresses.md) veröffentlichte IP-Adressen | Diese gehören zum HDInsight-Dienst. |
+| [Hier](hdinsight-management-ip-addresses.md) veröffentlichte IP-Adressen | Diese IP-Adressen gehören zum HDInsight-Dienst. |
 | AAD-DS – private IP-Adressen für ESP-Cluster |
 | \*:16800 für KMS-Aktivierung von Windows |
 | \*12000 für Log Analytics |
@@ -221,7 +222,7 @@ Mit den vorherigen Anweisungen können Sie Azure Firewall zum Einschränken des 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten
 
 > [!Important]
-> Die folgende Liste enthält nur ein paar der wichtigsten FQDNs. Sie erhalten die vollständige Liste der FQDNs für die Konfiguration Ihres virtuellen Netzwerkgeräts [in dieser Datei](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
+> Die folgende Liste enthält nur ein paar der wichtigsten FQDNs. Sie finden [in dieser Datei](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json) zusätzliche FQDNs (meist Azure Storage und Azure Service Bus) zur Konfiguration Ihres virtuellen Netzwerkgeräts.
 
 | **Endpunkt**                                                          |
 |---|

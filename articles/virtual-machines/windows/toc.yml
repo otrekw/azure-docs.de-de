@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NVv4-Serie
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Einrichten von GPU-Treibern
+            - name: Einrichten von NVIDIA-GPU-Treibern
               href: n-series-driver-setup.md
             - name: Einrichten von AMD GPU-Treibern
               href: n-series-amd-driver-setup.md
@@ -737,7 +737,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azureps-cmdlets-docs

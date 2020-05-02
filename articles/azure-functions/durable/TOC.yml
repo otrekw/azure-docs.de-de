@@ -19,7 +19,7 @@
     - name: Erstellen einer langlebigen Funktion – JavaScript
       displayName: 'get started, chaining'
       href: quickstart-js-vscode.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Funktionsverkettung
       href: durable-functions-sequence.md
@@ -35,7 +35,7 @@
   items:
     - name: Codebeispiele
       href: /samples/browse/?products=azure-functions&term=durable
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: Konzepte
   items:
@@ -83,7 +83,9 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
-- name: Gewusst-wie-Anleitungen
+    - name: Node.js-API
+      href: /javascript/api/durable-functions/?view=azure-node-latest
+- name: Anleitungen
   items:
     - name: Entwickeln
       items:
