@@ -1,22 +1,22 @@
 ---
-title: Go-To-Market-Dienste – Bewährte Methoden zur Angebotslistung | Azure
+title: Go-To-Market-Dienste – bewährte Methoden zum Listing von Angeboten | Azure Marketplace
 description: Go-To-Market-Dienste – In diesem Abschnitt werden bewährte Methoden für die Angebotslistung beschrieben.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286250"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684580"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
-Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien verwenden Sie das [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights). 
+Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights). 
 
 ## <a name="storefront-offer-details"></a>Storefront-Angebotsdetails
 
@@ -25,14 +25,14 @@ Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechend
 | Angebotsname | Geben Sie einen aussagekräftigen Titel an:<br> <ul> <li> Der Name Ihrer App muss den Mehrwert für Ihre Kunden vermitteln. </li> <li> Schließen Sie Suchbegriffe in den Titel Ihrer App ein, um eine höhere Bewertung bei den Suchmaschinenergebnissen zu erhalten. </li> </ul> Halten Sie ein festes Titelformat für Dienstangebote ein:<br>[Angebotsname]: [Dauer] [Angebotstyp] (z. B. *Contoso: 2-Wochen-Implementierung*) <br><br> Befolgen Sie Markenvorgaben:<br>Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx). |
 | Beschreibung des Angebots | Geben Sie eine klare Angebotsbeschreibung an:<br> <ul> <li> Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. </li> <li> Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können. </li> <li> Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. </li> <li> Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.</li> <li> In Listungen von Beratungsdiensten muss darüber hinaus deutlich der von Ihnen bereitgestellte professionelle Service angeben werden. </li></ul> Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:<ul><li>Beschreibung des Produkts.</li><li>Benutzertyp, der von dem Produkt profitiert.</li><li>Ansprüche oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.</li></ul> |
 
-Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien verwenden Sie das [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights). 
+Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights). 
 
 ## <a name="storefront-listing-details"></a>Storefront-Listungsdetails
 
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
-| Branchen: Nur AppSource-Apps und Beratungsdienste | Wählen Sie Branchen aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt: <ul><li> Führen Sie diese branchenspezifischen Funktionen in Ihrer Angebotsbeschreibung auf.</li> </ul> **Hinweis**: Die maximale Anzahl von Optionen hängt vom Angebotstyp ab und ist im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) angegeben. |
-| Kategorien | Wählen Sie Kategorien aus, zu denen Ihr Angebot am besten passt:<br> <ul> <li> Wählen Sie diese Kategorien sorgfältig aus, da die Kunden sie für die Suche nach relevanten Apps nutzen. </li> <li> Stellen Sie sicher, dass Sie in der Angebotsbeschreibung angeben, wie Ihr Angebot kategoriespezifische Anforderungen berücksichtigt. </li> </ul> **Hinweis**: Die maximale Anzahl von Optionen hängt vom Angebotstyp ab und ist im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) angegeben. |
+| Branchen: Nur AppSource-Apps und Beratungsdienste | Wählen Sie Branchen aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt: <ul><li> Führen Sie diese branchenspezifischen Funktionen in Ihrer Angebotsbeschreibung auf.</li> </ul> **Hinweis**: Die maximale Anzahl von Optionen richtet sich nach dem Angebotstyp und ist in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) angegeben. |
+| Kategorien | Wählen Sie Kategorien aus, zu denen Ihr Angebot am besten passt:<br> <ul> <li> Wählen Sie diese Kategorien sorgfältig aus, da die Kunden sie für die Suche nach relevanten Apps nutzen. </li> <li> Stellen Sie sicher, dass Sie in der Angebotsbeschreibung angeben, wie Ihr Angebot kategoriespezifische Anforderungen berücksichtigt. </li> </ul> **Hinweis**: Die maximale Anzahl von Optionen richtet sich nach dem Angebotstyp und ist in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) angegeben. |
 | Produkte, mit denen Ihre App zusammenarbeitet (maximal 3): Nur AppSource-Apps | Listen Sie weitere Produkte und Technologien auf, die von Ihrer Lösung genutzt oder erweitert werden. Beispiele: Azure IoT Hub oder Azure Machine Learning. |
 | Suchbegriffe (maximal 3) | Anhand von Suchbegriffen können Geschäftsbenutzer Ihr Angebot finden bei der Suche <ul> <li> im Azure Marketplace </li> <li> in AppSource </li> <li> mit Suchmaschinen </li> </ul> Damit Ihre Listung in diesen Suchvorgängen angezeigt wird, müssen Sie folgendermaßen vorgehen: <ul> <li> Identifizieren Sie die obersten drei Suchbegriffe für Ihr Angebot. </li> <li> Integrieren Sie die Suchbegriffe in Ihre Angebotszusammenfassung und die Beschreibung. </li> <li> Listen Sie hier die Suchbegriffe auf. </li> </ul> |
 
@@ -89,12 +89,12 @@ Wenn Sie auf Ihrer Website einen Link von Ihrem AppSource- oder Azure Marketplac
 
 Die folgende Beispiel-URL enthält beide oben stehenden Abfrageparameter: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne im Analysedashboard des [Cloud-Partnerportals](https://cloudpartner.azure.com/#insights) überprüfen.
+Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne im Analysedashboard in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md).
 
-Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 
 ---
