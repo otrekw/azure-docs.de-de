@@ -40,8 +40,6 @@
       href: components.md
     - name: Konzepte
       href: concepts.md
-    - name: Typen
-      href: types.md
     - name: Systemüberwachung
       items:
         - name: Integritätstests
