@@ -6,19 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/20/2019
+ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 965d6b206bb64e90fe59798ce0c37ccf029117f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849512"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165772"
 ---
 # <a name="workspace-mappings"></a>Arbeitsbereichzuordnungen
 
-Beim Aktivieren von Lösungen, z. B. Updateverwaltung, Änderungsnachverfolgung und Bestand oder der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“, werden in Bezug auf das Verknüpfen eines Log Analytics-Arbeitsbereichs mit einem Automation-Konto nur bestimmte Regionen unterstützt. Diese Zuordnung gilt nur für das Automation-Konto und den Log Analytics-Arbeitsbereich. Die Ressourcen, die Daten an Ihr Automation-Konto oder den Log Analytics-Arbeitsbereich melden, können sich in anderen Regionen befinden.
+Beim Aktivieren von Updateverwaltung, Änderungsnachverfolgung und Bestand oder „VMs außerhalb der Geschäftszeiten starten/beenden“ werden in Bezug auf das Verknüpfen eines Log Analytics-Arbeitsbereichs mit einem Automation-Konto nur bestimmte Regionen in Ihrem Abonnement unterstützt. Diese Zuordnung gilt nur für das Automation-Konto und den Log Analytics-Arbeitsbereich. Der Log Analytics-Arbeitsbereich und das Automation-Konto müssen sich im selben Abonnement befinden, können sich aber in unterschiedlichen Ressourcengruppen befinden, die in derselben Region bereitgestellt sind.
+
+Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereich und das Automation-Konto](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Unterstützte Zuordnungen
 
@@ -49,44 +51,44 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 
 ## <a name="unlink-workspace"></a>Aufheben der Verknüpfung mit dem Arbeitsbereich
 
-Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Vor dem Fortfahren müssen Sie zuerst die Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand bzw. die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen, falls Sie sie nutzen. Wenn Sie das Entfernen nicht durchführen, wird der Prozess nicht fortgesetzt. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Vor dem Fortfahren müssen Sie zuerst Updateverwaltung, Änderungsnachverfolgung und Bestand bzw. „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen, falls Sie sie nutzen. Wenn Sie sie nicht entfernen, können Sie den Vorgang zum Aufheben der Verknüpfung nicht durchführen. Lesen Sie den Artikel für jede Lösung, die Sie aktivieren, um zu erfahren, welche Schritte zu ihrer Entfernung erforderlich sind.
 
-Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
+Nachdem Sie sie entfernt haben, können Sie die folgenden Schritte ausführen, um die Verknüpfung mit Ihrem Automation-Konto aufzuheben.
 
 > [!NOTE]
 > Einige Lösungen – einschließlich früherer Versionen der Azure SQL-Überwachungslösung – haben möglicherweise Automatisierungsressourcen erstellt und müssen möglicherweise vor dem Aufheben der Verknüpfung des Arbeitsbereichs entfernt werden.
 
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto. Wählen Sie auf der Automation-Kontoseite unter **Verwandte Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
 2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**. Sie werden gefragt, ob Sie fortfahren möchten.
 
 3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
 
-Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
+4. Wenn Sie die „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
-* Zeitpläne für Updates: Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
+    * Zeitpläne für Updates: Jeder weist einen Namen auf, der einer Updatebereitstellung entspricht, die Sie erstellt haben.
+    * Für die Lösung erstellte Hybrid Worker-Gruppen (jeweils mit einem ähnlichen Namen wie `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
 
-* Für die Lösung erstellte Hybrid Worker-Gruppen (jeweils mit einem Namen wie `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
+5. Wenn Sie „VMs außerhalb der Geschäftszeiten starten/beenden“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
-Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
+    * Starten und beenden Sie Zeitpläne für VM-Runbooks.
+    * Starten und beenden Sie VM-Runbooks.
+    * Variables
 
-* Starten und beenden Sie Zeitpläne für VM-Runbooks.
-* Starten und beenden Sie VM-Runbooks.
-* Variables
+Alternativ können Sie Ihren Arbeitsbereich von Ihrem Automation-Konto im Arbeitsbereich trennen.
 
-Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
+1. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. 
+2. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich, wie Sie das Onboarding für die folgenden Lösungen durchführen:
+* Erfahren Sie, wie Sie die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren:
 
-Updateverwaltung, Änderungsnachverfolgung und Bestand:
+    * Über einen [virtuellen Computer](../automation-onboard-solutions-from-vm.md)
+    * Über Ihr [Automation-Konto](../automation-onboard-solutions-from-automation-account.md)
+    * Über das [Durchsuchen mehrerer Computer](../automation-onboard-solutions-from-browse.md)
+    * Über ein [Runbook](../automation-onboard-solutions.md)
 
-* Über einen [virtuellen Computer](../automation-onboard-solutions-from-vm.md)
-* Über Ihr [Automation-Konto](../automation-onboard-solutions-from-automation-account.md)
-* Über das [Durchsuchen mehrerer Computer](../automation-onboard-solutions-from-browse.md)
-* Über ein [Runbook](../automation-onboard-solutions.md)
+* Informationen, wie Sie das Onboarding von „VMs außerhalb der Geschäftszeiten starten/beenden“ durchführen, finden Sie unter
 
-Starten/Beenden von VMs außerhalb der Kernzeit
-
-* [Bereitstellen der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](../automation-solution-vm-management.md)
+    * [VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht](../automation-solution-vm-management.md).

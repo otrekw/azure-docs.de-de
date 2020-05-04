@@ -2,13 +2,13 @@
 title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden des copy-Vorgangs und von Arrays in einer Azure Resource Manager-Vorlage, um einen Ressourcentyp mehrere Male bereitzustellen.
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153317"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583385"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Ressourceniteration in ARM-Vorlagen
 
@@ -18,9 +18,9 @@ In diesem Artikel erfahren Sie, wie mehr als eine Instanz einer Ressource in Ihr
 
 Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
 
-## <a name="resource-iteration"></a>Ressourceniteration
+## <a name="syntax"></a>Syntax
 
-Das „copy“-Element weist das folgende allgemeine Format auf:
+Das copy-Element hat das folgende allgemeine Format:
 
 ```json
 "copy": {
@@ -34,6 +34,23 @@ Das „copy“-Element weist das folgende allgemeine Format auf:
 Die Eigenschaft **name** ist ein beliebiger Wert, der die Schleife identifiziert. Die Eigenschaft **count** gibt die für den Ressourcentyp gewünschte Anzahl von Iterationen an.
 
 Verwenden Sie die Eigenschaften **mode** und **batchSize**, um anzugeben, ob die Ressourcen parallel oder nacheinander bereitgestellt werden. Diese Eigenschaften werden unter [Seriell oder parallel](#serial-or-parallel) beschrieben.
+
+## <a name="copy-limits"></a>Einschränkungen für „copy“
+
+Der Wert von „count“ darf 800 nicht überschreiten.
+
+Der Wert von „count“ darf nicht negativ sein. Er kann Null sein, wenn Sie die Vorlage mit einer neueren Version von Azure CLI, PowerShell oder der REST-API bereitstellen. Insbesondere müssen Sie Folgendes verwenden:
+
+* Azure PowerShell **2.6** oder höher
+* Azure CLI **2.0.74** oder höher
+* REST-API-Version **2019-05-10** oder höher
+* [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
+
+Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
+
+Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit Kopieren mit Vorsicht an. Wenn Sie mit dem vollständigen Modus erneut in einer Ressourcengruppe bereitstellen, werden alle Ressourcen, die nicht in der Vorlage angegeben sind, nach dem Auflösen der Kopierschleife gelöscht.
+
+## <a name="resource-iteration"></a>Ressourceniteration
 
 Im folgenden Beispiel wird die Anzahl von Speicherkonten erstellt, die im Parameter **storageCount** angegeben ist.
 
@@ -258,14 +275,6 @@ Das folgende Beispiel zeigt die Implementierung:
 }]
 ```
 
-## <a name="copy-limits"></a>Einschränkungen für „copy“
-
-Der Wert von „count“ darf 800 nicht überschreiten.
-
-Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azure PowerShell 2.6 oder höher, Azure CLI 2.0.74 oder höher oder mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
-
-Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit Kopieren mit Vorsicht an. Wenn Sie mit dem vollständigen Modus erneut in einer Ressourcengruppe bereitstellen, werden alle Ressourcen, die nicht in der Vorlage angegeben sind, nach dem Auflösen der Kopierschleife gelöscht.
-
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Ressourcen oder Eigenschaften.
@@ -280,12 +289,12 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen (ARM)](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
   * [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
   * [Variableniteration in ARM-Vorlagen](copy-variables.md)
   * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
 * Informationen zur Verwendung des „copy“-Elementes mit geschachtelten Vorlagen finden Sie unter [Verwenden des „copy“-Elements](linked-templates.md#using-copy).
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von ARM-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer ARM-Vorlage](deploy-powershell.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 

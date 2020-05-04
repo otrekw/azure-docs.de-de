@@ -262,9 +262,11 @@
       items:
         - name: Arbeiten mit Ergebnissen
           href: search-pagination-page-layout.md
-        - name: Relevanzoptimierung (Bewertungsprofile)
+        - name: Relevanzbewertung
+          href: index-similarity-and-scoring.md
+        - name: Bewertungsprofile
           href: index-add-scoring-profiles.md
-        - name: Relevanzoptimierung (Ähnlichkeitsalgorithmus)
+        - name: Ähnlichkeitsalgorithmus
           href: index-ranking-similarity.md
     - name: Planen
       items:
@@ -346,7 +348,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search

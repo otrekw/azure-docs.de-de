@@ -252,7 +252,7 @@
         - name: Anzeigen von Containerdaten in Echtzeit
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: Verwenden von Windows Server-Containern (Vorschauversion)
+    - name: Verwenden von Windows Server-Containern
       items:
         - name: Erstellen eines AKS-Clusters
           href: windows-container-cli.md
@@ -380,7 +380,7 @@
           href: troubleshoot-linux.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

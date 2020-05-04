@@ -291,7 +291,7 @@
       items:
         - name: Alle Funktionen
           href: template-functions.md
-        - name: Array- und Objektfunktionen
+        - name: Arrayfunktionen
           href: template-functions-array.md
         - name: Vergleichsfunktionen
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: Numerische Funktionen
           href: template-functions-numeric.md
+        - name: Objektfunktionen
+          href: template-functions-object.md
         - name: Ressourcenfunktionen
           href: template-functions-resource.md
         - name: Zeichenfolgenfunktionen
@@ -311,7 +313,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

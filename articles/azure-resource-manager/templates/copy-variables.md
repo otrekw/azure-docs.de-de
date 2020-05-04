@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Variablen
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage, um sie beim Erstellen einer Variablen mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153300"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583373"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variableniteration in ARM-Vorlagen
 
@@ -16,9 +16,9 @@ In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Variable i
 
 Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Ausgaben](copy-outputs.md) verwenden.
 
-## <a name="variable-iteration"></a>Variableniteration
+## <a name="syntax"></a>Syntax
 
-Das „copy“-Element weist das folgende allgemeine Format auf:
+Das copy-Element hat das folgende allgemeine Format:
 
 ```json
 "copy": [
@@ -33,6 +33,21 @@ Das „copy“-Element weist das folgende allgemeine Format auf:
 Die Eigenschaft **name** ist ein beliebiger Wert, der die Schleife identifiziert. Die Eigenschaft **count** gibt die für die Variable gewünschte Anzahl von Iterationen an.
 
 Die Eigenschaft **input** gibt die Eigenschaften an, die Sie wiederholen möchten. Sie erstellen ein Array von Elementen, das aus dem Wert in der **input**-Eigenschaft erstellt wird. Es kann sich um eine einzelne Eigenschaft handeln (z. B. eine Zeichenfolge) oder um ein Objekt mit mehreren Eigenschaften.
+
+## <a name="copy-limits"></a>Einschränkungen für „copy“
+
+Der Wert von „count“ darf 800 nicht überschreiten.
+
+Der Wert von „count“ darf nicht negativ sein. Er kann Null sein, wenn Sie die Vorlage mit einer neueren Version von Azure CLI, PowerShell oder der REST-API bereitstellen. Insbesondere müssen Sie Folgendes verwenden:
+
+* Azure PowerShell **2.6** oder höher
+* Azure CLI **2.0.74** oder höher
+* REST-API-Version **2019-05-10** oder höher
+* [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
+
+Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
+
+## <a name="variable-iteration"></a>Variableniteration
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie ein Array mit Zeichenfolgenwerten erstellen:
 
@@ -295,12 +310,6 @@ Im nächsten Beispiel werden die verschiedenen Möglichkeiten gezeigt, mit denen
 }
 ```
 
-## <a name="copy-limits"></a>Einschränkungen für „copy“
-
-Der Wert von „count“ darf 800 nicht überschreiten.
-
-Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azure PowerShell 2.6 oder höher, Azure CLI 2.0.74 oder höher oder mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
-
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Werte für eine Variable.
@@ -312,11 +321,11 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen (ARM)](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
   * [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
   * [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
   * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
-* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von ARM-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer ARM-Vorlage](deploy-powershell.md).
+* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 

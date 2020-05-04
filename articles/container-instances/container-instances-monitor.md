@@ -3,12 +3,12 @@ title: Überwachen von Containerinstanzen
 description: Vorgehensweise zur Überwachung des Verbrauchs von Computeressourcen, z. B. CPU und Arbeitsspeicher, durch Ihre Container in Azure Container Instances.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250035"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116366"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Überwachen von Containerressourcen in Azure Container Instances
 
@@ -25,13 +25,13 @@ Derzeit sind Azure Monitor-Metriken nur für Linux-Container verfügbar.
 
 ## <a name="available-metrics"></a>Verfügbare Metriken
 
-Azure Monitor stellt die folgenden [Metriken für Azure Container Instances][supported-metrics] bereit. Diese Metriken sind sowohl für eine Containergruppe als auch für einzelne Container verfügbar.
+Azure Monitor stellt die folgenden [Metriken für Azure Container Instances][supported-metrics] bereit. Diese Metriken sind sowohl für eine Containergruppe als auch für einzelne Container verfügbar. Standardmäßig werden die Metriken als Mittelwerte aggregiert.
 
-* **CPU-Auslastung**: gemessen in **Millicores**. Ein Millicore ist ein Tausendstel eines CPU-Kerns. 500 Millicore (bzw. 500 m) geben für einen CPU-Kern also eine Auslastung von 50 % an. Wird über alle Kerne als **durchschnittliche Auslastung** aggregiert.
+* **CPU-Auslastung**: gemessen in **Millicores**. Ein Millicore ist ein Tausendstel eines CPU-Kerns. 500 Millicore geben also eine Auslastung von 0,5 CPU-Kernen an.
 
-* **Arbeitsspeicherauslastung**: aggregiert als **Durchschnittliche Bytes**.
+* **Arbeitsspeicherauslastung** in Bytes.
 
-* **Empfangene Netzwerkbytes pro Sekunde** und **Übertragene Netzwerkbytes pro Sekunde**: aggregiert als **Durchschnittliche Bytes pro Sekunde**. 
+* **Empfangene Netzwerkbytes pro Sekunde** und **Übertragene Netzwerkbytes pro Sekunde**. 
 
 ## <a name="get-metrics---azure-portal"></a>Abrufen von Metriken – Azure-Portal
 

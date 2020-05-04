@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115072"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580632"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 
@@ -36,6 +36,9 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 * Zugriff auf den Computer mit dem Dateisystem, das Sie verwenden. Wenn Sie z.B. das Datengateway auf dem gleichen Computer installieren, auf dem sich Ihr Dateisystem befindet, benötigen Sie die Anmeldeinformationen für diesen Computer.
 
 * Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
+
+  > [!IMPORTANT]
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Für dieses Beispiel benötigen Sie eine leere Logik-App.
 
@@ -69,8 +72,8 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
    | -------- | -------- | ----- | ----------- |
    | **Verbindungsname** | Ja | <*connection-name*> | Der gewünschte Name für die Verbindung. |
    | **Stammordner** | Ja | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise, wenn Sie Ihr lokales Datengateway installiert haben, ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. |
-   | **Authentifizierungstyp** | Nein | <*Authentifizierungstyp*> | Der Typ der Authentifizierung, der von Ihrem Dateisystem verwendet wird: **Windows** |
-   | **Benutzername** | Ja | <*Domäne*>\\<*Benutzername*> | Der Benutzername für den Computer, auf dem sich das Dateisystem befindet |
+   | **Authentifizierungstyp** | Nein  | <*Authentifizierungstyp*> | Der Typ der Authentifizierung, der von Ihrem Dateisystem verwendet wird: **Windows** |
+   | **Benutzername** | Ja | <*Domäne*>\\<*Benutzername*> <p>Oder <p><*lokaler-Computer*>\\<*Benutzername*> | Der Benutzername für den Computer, auf dem sich Ihr Dateisystemordner befindet. <p>Wenn sich Ihr Dateisystemordner auf demselben Computer wie das lokale Datengateway befindet, können Sie <*lokaler-Computer*>\\<*Benutzername*> verwenden. |
    | **Kennwort** | Ja | <*Ihr Kennwort*> | Das Kennwort für den Computer, auf dem sich das Dateisystem befindet |
    | **Gateway** | Ja | <*Name des installierten Gateways*> | Der Name für das zuvor installierte Gateway. |
    |||||

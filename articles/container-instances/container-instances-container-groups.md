@@ -1,15 +1,15 @@
 ---
 title: Einführung in Containergruppen
-description: Informationen zu Containergruppen in Azure Container Instances, einer Sammlung von Instanzen mit dem gleichen Lebenszyklus, die Ressourcen gemeinsam nutzen, z. B. Speicher und Netzwerk
+description: Informationen zu Containergruppen in Azure Container Instances, einer Sammlung von Instanzen mit dem gleichen Lebenszyklus, die Ressourcen gemeinsam nutzen, z. B. CPUs, Speicher und Netzwerk
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225850"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583832"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -56,7 +56,10 @@ Jeder Containerinstanz in einer Gruppe sind die Ressourcen zugeordnet, die in de
     
 In einer Gruppe mit zwei Containerinstanzen, die jeweils eine CPU anfordern, kann beispielsweise eine Workload für einen Ihrer Container ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
 
-In diesem Szenario könnten Sie einen Ressourcengrenzwert von zwei CPUs für die Containerinstanz festlegen. Diese Konfiguration erlaubt es der Containerinstanz, bis zu zwei CPUs vollständig zu nutzen, sofern diese verfügbar sind.
+In diesem Szenario könnten Sie einen Ressourcengrenzwert von bis zu 2 CPUs für die Containerinstanz festlegen. Diese Konfiguration erlaubt es der Containerinstanz, bis zu zwei CPUs zu nutzen, sofern diese verfügbar sind.
+
+> [!NOTE]
+> Ein kleiner Teil der Ressourcen einer Containergruppe wird von der zugrunde liegenden Infrastruktur des Diensts verwendet. Ihre Container können auf die meisten, aber nicht alle Ressourcen zugreifen, die der Gruppe zugeordnet sind. Planen Sie aus diesem Grund einen kleinen Ressourcenpuffer ein, wenn Sie Ressourcen für Container in der Gruppe anfordern.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimale und maximale Zuordnung
 
@@ -66,7 +69,7 @@ In diesem Szenario könnten Sie einen Ressourcengrenzwert von zwei CPUs für die
 
 ## <a name="networking"></a>Netzwerk
 
-Containergruppen können eine externe IP-Adresse, mindestens einen Port für diese IP-Adresse sowie eine DNS-Bezeichnung mit einem vollqualifizierter Domänennamen teilen. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. Die IP-Adresse und der vollqualifizierte Domänenname einer Containergruppe werden freigegeben, wenn die Containergruppe gelöscht wird. 
+Containergruppen können eine externe IP-Adresse, mindestens einen Port für diese IP-Adresse sowie eine DNS-Bezeichnung mit einem vollqualifizierter Domänennamen teilen. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Die IP-Adresse und der vollqualifizierte Domänenname einer Containergruppe werden freigegeben, wenn die Containergruppe gelöscht wird. 
 
 Innerhalb einer Containergruppe können sich Containerinstanzen über localhost auf jedem Port gegenseitig erreichen, auch wenn diese Ports nicht extern über die IP-Adresse der Gruppe oder aus dem Container verfügbar gemacht werden.
 
@@ -115,7 +118,7 @@ Informieren Sie sich über das Bereitstellen einer Gruppe mit mehreren Container
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

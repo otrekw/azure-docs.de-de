@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Hier erfahren Sie, wie Sie den Kopiervorgang in einer Azure Resource Manager-Vorlage verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391340"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583411"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
@@ -16,7 +16,7 @@ In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlag
 
 „copy“ kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
-## <a name="property-iteration"></a>Iteration von Eigenschaften
+## <a name="syntax"></a>Syntax
 
 Das copy-Element hat das folgende allgemeine Format:
 
@@ -35,6 +35,21 @@ Geben Sie für **name** den Namen der Ressourceneigenschaft an, die Sie erstelle
 Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für die Eigenschaft an.
 
 Die Eigenschaft **input** gibt die Eigenschaften an, die Sie wiederholen möchten. Sie erstellen ein Array von Elementen, das auf der Grundlage des Werts in der Eigenschaft **input** erstellt wird.
+
+## <a name="copy-limits"></a>Einschränkungen für „copy“
+
+Der Wert von „count“ darf 800 nicht überschreiten.
+
+Der Wert von „count“ darf nicht negativ sein. Er kann Null sein, wenn Sie die Vorlage mit einer neueren Version von Azure CLI, PowerShell oder der REST-API bereitstellen. Insbesondere müssen Sie Folgendes verwenden:
+
+* Azure PowerShell **2.6** oder höher
+* Azure CLI **2.0.74** oder höher
+* REST-API-Version **2019-05-10** oder höher
+* [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
+
+Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
+
+## <a name="property-iteration"></a>Iteration von Eigenschaften
 
 Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigenschaft auf einem virtuellen Computer angewendet wird:
 
@@ -232,12 +247,6 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
   }
 }
 ```
-
-## <a name="copy-limits"></a>Einschränkungen für „copy“
-
-Der Wert von „count“ darf 800 nicht überschreiten.
-
-Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azure PowerShell 2.6 oder höher, Azure CLI 2.0.74 oder höher oder mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
 
 ## <a name="example-templates"></a>Beispielvorlagen
 

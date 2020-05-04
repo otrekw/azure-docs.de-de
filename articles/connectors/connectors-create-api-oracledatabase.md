@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789425"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147819"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -72,7 +72,7 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle prüfen möchten, senden Sie durch einen der Connectors zum Senden von E-Mails (z.B. Office 365 oder Gmail) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
+7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle prüfen möchten, senden Sie durch einen der Connectors zum Senden von E-Mails (z. B. Office 365 oder Outlook) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 

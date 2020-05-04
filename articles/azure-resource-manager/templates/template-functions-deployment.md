@@ -2,15 +2,15 @@
 title: Vorlagenfunktionen – Bereitstellung
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156326"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203793"
 ---
-# <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen 
+# <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen
 
 Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung Ihrer ARM-Vorlage (Azure Resource Manager) bereit:
 
@@ -29,7 +29,12 @@ Gibt Informationen zum aktuellen Bereitstellungsvorgang zurück.
 
 ### <a name="return-value"></a>Rückgabewert
 
-Diese Funktion gibt das Objekt zurück, das während der Bereitstellung übergeben wird. Die Eigenschaften im zurückgegebenen Objekt hängen davon ab, ob das Bereitstellungsobjekt als Link oder als Inlineobjekt übergeben wird. Wenn das Bereitstellungsobjekt als Inlineobjekt übergeben wird, z.B. bei Verwendung des **-TemplateFile**-Parameters in Azure PowerShell zum Verweisen auf eine lokale Datei, hat das zurückgegebene Objekt das folgende Format:
+Diese Funktion gibt das Objekt zurück, das während der Bereitstellung übergeben wird. Die Eigenschaften in dem zurückgegebenen Objekt unterscheiden sich abhängig davon, wo Sie sich befinden:
+
+* Bereitstellen einer Vorlage, bei der es sich um eine lokale Datei handelt, oder Bereitstellen einer Vorlage, bei der es sich um eine Remotedatei handelt, auf die über einen URI zugegriffen wird.
+* Bereitstellen in einer Ressourcengruppe oder Bereitstellen in einem der anderen Bereiche ([Azure-Abonnement](deploy-to-subscription.md), [Verwaltungsgruppe](deploy-to-management-group.md) oder [Mandant](deploy-to-tenant.md)).
+
+Beim Bereitstellen einer lokalen Vorlage in einer Ressourcengruppe gibt die Funktion das folgende Format zurück:
 
 ```json
 {
@@ -44,6 +49,7 @@ Diese Funktion gibt das Objekt zurück, das während der Bereitstellung übergeb
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -51,7 +57,7 @@ Diese Funktion gibt das Objekt zurück, das während der Bereitstellung übergeb
 }
 ```
 
-Wenn das Objekt als Link übergeben wird, z.B. bei Verwendung des **-TemplateUri**-Parameters zum Verweisen auf ein Remoteobjekt, hat das zurückgegebene Objekt folgendes Format: 
+Beim Bereitstellen einer Remotevorlage in einer Ressourcengruppe gibt die Funktion das folgende Format zurück:
 
 ```json
 {
@@ -68,6 +74,7 @@ Wenn das Objekt als Link übergeben wird, z.B. bei Verwendung des **-TemplateUri
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -75,7 +82,26 @@ Wenn das Objekt als Link übergeben wird, z.B. bei Verwendung des **-TemplateUri
 }
 ```
 
-Wenn Sie die Vorlage nicht in einer Ressourcengruppe, sondern [in einem Azure-Abonnement bereitstellen](deploy-to-subscription.md), enthält das Rückgabeobjekt eine `location`-Eigenschaft. Die location-Eigenschaft ist beim Bereitstellen einer lokalen Vorlage oder einer externen Vorlage enthalten.
+Wenn Sie in einem Azure-Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitstellen, enthält das Rückgabeobjekt eine `location`-Eigenschaft. Die location-Eigenschaft ist beim Bereitstellen einer lokalen Vorlage oder einer externen Vorlage enthalten. Das Format lautet:
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -99,7 +125,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -118,20 +144,19 @@ Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
   }
 }
 ```
-
-Eine Vorlage auf Abonnementebene, die die Bereitstellungsfunktion verwendet, finden Sie unter [Subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json) (Bereitstellungsfunktion für Abonnements). Sie wird mit den Befehlen `az deployment create` oder `New-AzDeployment` bereitgestellt.
 
 ## <a name="environment"></a>Environment
 
@@ -428,8 +453,5 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 Weitere Informationen zur Verwendung von Variablen finden Sie unter [Variablen in einer Azure Resource Manager-Vorlage](template-variables.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
-* Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
 
+* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

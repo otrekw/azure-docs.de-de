@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen eines Ausgabewerts
 description: Verwenden des „copy“-Vorgangs in einer Azure Resource Manager-Vorlage, um das Zurückgeben eines Werts aus einer Bereitstellung mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583426"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Ausgabeiteration in ARM-Vorlagen
 
@@ -16,7 +16,7 @@ In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Ausgabe in
 
 Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Variablen](copy-variables.md) verwenden.
 
-## <a name="outputs-iteration"></a>Ausgabeniteration
+## <a name="syntax"></a>Syntax
 
 Das copy-Element hat das folgende allgemeine Format:
 
@@ -30,6 +30,21 @@ Das copy-Element hat das folgende allgemeine Format:
 Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für den Ausgabewert an.
 
 Die Eigenschaft **input** gibt die Eigenschaften an, die Sie wiederholen möchten. Sie erstellen ein Array von Elementen, das aus dem Wert in der **input**-Eigenschaft erstellt wird. Es kann sich um eine einzelne Eigenschaft handeln (z. B. eine Zeichenfolge) oder um ein Objekt mit mehreren Eigenschaften.
+
+## <a name="copy-limits"></a>Einschränkungen für „copy“
+
+Der Wert von „count“ darf 800 nicht überschreiten.
+
+Der Wert von „count“ darf nicht negativ sein. Er kann Null sein, wenn Sie die Vorlage mit einer neueren Version von Azure CLI, PowerShell oder der REST-API bereitstellen. Insbesondere müssen Sie Folgendes verwenden:
+
+* Azure PowerShell **2.6** oder höher
+* Azure CLI **2.0.74** oder höher
+* REST-API-Version **2019-05-10** oder höher
+* [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
+
+Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
+
+## <a name="outputs-iteration"></a>Ausgabeniteration
 
 Im folgenden Beispiel wird eine Variable Anzahl von Speicherkonten erstellt und für jedes Speicherkonto ein Endpunkt zurückgegeben:
 
@@ -151,11 +166,11 @@ Das vorangehende Beispiel gibt ein Array mit den folgenden Werten zurück:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen (ARM)](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
   * [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
   * [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
   * [Variableniteration in ARM-Vorlagen](copy-variables.md)
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von ARM-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer ARM-Vorlage](deploy-powershell.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 

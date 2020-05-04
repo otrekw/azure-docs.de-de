@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649566"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508127"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Verwaltete Azure-Anwendung mit verwalteter Identität
 
@@ -54,7 +54,7 @@ Eine verwaltete Anwendung kann über [CreateUIDefinition.json](./create-uidefini
 
 ```json
 "outputs": {
-    "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
+    "managedIdentity": { "Type": "SystemAssigned" }
 }
 ```
 
@@ -66,71 +66,65 @@ Im Folgenden finden Sie einige Empfehlungen zur Verwendung von CreateUIDefinitio
 - Der verwaltete Identität erfordert komplexe Consumereingaben.
 - Die verwaltete Identität wird zum Erstellen der verwalteten Anwendung benötigt.
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="managed-identity-createuidefinition-control"></a>Steuerelement für verwaltete Identitäten in CreateUIDefinition
 
-Eine grundlegende CreateUIDefinition, die die SystemAssigned-Identität für die verwaltete Anwendung ermöglicht.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-  "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-        ],
-        "outputs": {
-            "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
-        }
-    }
-}
-```
-
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
-
-Eine grundlegende CreateUIDefinition, die eine **vom Benutzer zugewiesene Identität** als Ressource als Eingabe akzeptiert und die UserAssigned-Identität für die verwaltete Anwendung aktiviert.
+CreateUIDefinition unterstützt ein integriertes [Steuerelement für verwaltete Identitäten](./microsoft-managedidentity-identityselector.md).
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "manageIdentity",
-                "label": "Identity",
-                "subLabel": {
-                    "preValidation": "Manage Identities",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Identity",
-                "elements": [
-                    {
-                        "name": "userAssignedText",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "User assigned managed identity",
-                        "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userassignedidentites/myuserassignedidentity",
-                        "visible": true
-                    }
-                ]
-            }
-        ],
-        "outputs": {
-            "managedIdentity": "[parse(concat('{\"Type\":\"UserAssigned\",\"UserAssignedIdentities\":{',string(steps('manageIdentity').userAssignedText),':{}}}'))]"
-        }
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "applicationSettings",
+        "label": "Application Settings",
+        "subLabel": {
+          "preValidation": "Configure your application settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Application Settings",
+        "elements": [
+          {
+            "name": "appName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Managed application Name",
+            "toolTip": "Managed application instance name",
+            "visible": true
+          },
+          {
+            "name": "appIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false,
+              "readOnlySystemAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationResourceName": "[steps('applicationSettings').appName]",
+      "location": "[location()]",
+      "managedIdentity": "[steps('applicationSettings').appIdentity]"
     }
+  }
 }
 ```
 
-Die oben genannte Datei „CreateUIDefinition.json“ generiert eine Erstellungsbenutzeroberfläche mit einem Textfeld, wo der Consumer die Azure-Ressourcen-ID der **vom Benutzer zugewiesenen Identität** eingeben kann. Die generierte Benutzeroberfläche würde so aussehen:
-
-![Beispiel für vom Benutzer zugewiesene Identität – CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![Verwaltete Identität – CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 

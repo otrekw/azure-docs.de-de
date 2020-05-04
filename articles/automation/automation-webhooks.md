@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367022"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582433"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -88,7 +88,7 @@ Sie können Logik in ein Runbook einschließen, um zu bestimmen, ob es von einem
 
 Eine andere Strategie besteht darin, dass das Runbook eine externe Bedingung überprüft, wenn es eine Webhookanforderung empfängt. Betrachten Sie z. B. ein Runbook, das von GitHub aufgerufen wird, sobald ein neuer Commit für ein GitHub-Repository vorhanden ist. Das Runbook kann eine Verbindung mit GitHub herstellen, um zu überprüfen, ob ein neuer Commit durchgeführt wurde, bevor es mit der Ausführung fortfährt.
 
-## <a name="creating-a-webhook"></a>Erstellen eines Webhooks
+## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 
 Gehen Sie wie folgt vor, um einen neuen Webhook zu erstellen, der mit einem Runbook im Azure-Portal verknüpft ist
 
@@ -106,7 +106,7 @@ Gehen Sie wie folgt vor, um einen neuen Webhook zu erstellen, der mit einem Runb
 1. Klicken Sie auf **Parameter** , um Werte für die Runbookparameter bereitzustellen. Wenn das Runbook über obligatorische Parameter verfügt, können Sie einen Webhook nur dann erstellen, wenn Sie Werte bereitstellen.
 1. Klicken Sie auf **Erstellen** , um das Projekt zu erstellen.
 
-## <a name="using-a-webhook"></a>Verwenden eines Webhooks
+## <a name="use-a-webhook"></a>Verwenden eines Webhooks
 
 Damit ein Webhook nach dem Erstellen verwendet werden kann, muss Ihr Client eine HTTP-`POST`-Anforderung mit der URL für den Webhook ausgeben. Die Syntax ist:
 
@@ -131,7 +131,7 @@ Wenn die Anforderung erfolgreich ist, enthält die Antwort des Webhooks wie im F
 
 Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z. B. mit [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>Erneuern eines Webhooks
+## <a name="renew-a-webhook"></a>Verlängern eines Webhooks
 
 Wenn ein Webhook erstellt wird, verfügt er über einen Gültigkeitszeitraum von zehn Jahren, nach dem er automatisch abläuft. Wenn ein Webhook abgelaufen ist, kann er nicht reaktiviert werden. Sie können ihn nur entfernen und anschließend neu erstellen. 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>Testen des Beispiels
+## <a name="test-the-sample"></a>Testen des Beispiels
 
 Im folgenden Beispiel wird Windows PowerShell verwendet, um ein Runbook mit einem Webhook zu starten. Jede Sprache, die eine HTTP-Anforderung durchführen kann, kann einen Webhook verwenden. Windows PowerShell wird hier als Beispiel verwendet.
 

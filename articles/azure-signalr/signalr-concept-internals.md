@@ -6,20 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74157596"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105759"
 ---
 # <a name="azure-signalr-service-internals"></a>Ausführliche Informationen zu Azure SignalR Service
 
-Azure SignalR Service basiert auf dem ASP.NET Core SignalR-Framework. Es unterstützt ASP.NET SignalR auch als Previewfunktion.
+Azure SignalR Service basiert auf dem ASP.NET Core SignalR-Framework. Er unterstützt auch ASP.NET SignalR, indem das Datenprotokoll von ASP.NET SignalR erneut über das ASP.NET Core-Framework implementiert wird.
 
-> Zur Unterstützung von ASP.NET SignalR implementiert Azure SignalR Service das Datenprotokoll von ASP.NET SignalR erneut über das ASP.NET Core-Framework
-
-Sie können eine lokale ASP.NET Core SignalR-Anwendung problemlos migrieren, damit Sie mit SignalR Service funktioniert, indem Sie nur ein paar Zeilen Code ändern.
+Sie können eine lokale ASP.NET Core SignalR-Anwendung oder ASP.NET SignalR-Anwendung problemlos migrieren, damit Sie mit SignalR Service funktioniert, indem Sie nur ein paar Zeilen Code ändern.
 
 Das folgende Diagramm beschreibt die typische Architektur, wenn Sie den SignalR Service mit Ihrem Anwendungsserver verwenden.
 

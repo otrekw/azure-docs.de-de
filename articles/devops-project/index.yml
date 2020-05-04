@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Azure DevOps Projects-Dokumentation
-summary: Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine der Beispielanwendungen auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
+title: Azure DevOps Starter-Dokumentation
+summary: Azure DevOps Starter bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine der Beispielanwendungen auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
 metadata:
-  title: Azure DevOps Projects-Dokumentation
+  title: Azure DevOps Starter-Dokumentation
   description: Verwenden Sie Ihren vorhandenen Code und Ihr Git-Repository, oder wählen Sie eine Beispiel-App aus, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942463"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231464"
 landingContent:
-- title: Informationen zu Azure DevOps Projects
+- title: Über Azure DevOps Starter
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Azure DevOps Projects?
+    - text: Was ist Azure DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: Create CI/CD with the DevOps Projects video (Video zum Erstellen Ihrer CI/CD-Pipeline mit DevOps Projects) (8:53)
+    - text: Video zum Erstellen Ihrer CI/CD-Pipeline mit DevOps Starter (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: Erstellen einer CI/CD-Pipeline
   linkLists:

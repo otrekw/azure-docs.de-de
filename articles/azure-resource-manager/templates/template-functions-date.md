@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Datumsangaben
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Datumsangaben verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084786"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192296"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datumsfunktionen für ARM-Vorlagen
 
@@ -29,7 +29,7 @@ Hiermit wird einem Basiswert eine Dauer hinzugefügt. ISO 8601-Format wird erwa
 |:--- |:--- |:--- |:--- |
 | base | Ja | Zeichenfolge | Der datetime-Startwert für die Hinzufügung. Verwenden Sie das [Zeitstempelformat nach ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | duration | Ja | Zeichenfolge | Der Zeitwert, der der Basis hinzugefügt werden soll. Dieser darf kein negativer Wert sein. Verwenden Sie das [Format der Zeitspanne nach ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| format | Nein | Zeichenfolge | Das Ausgabeformat für das datetime-Ergebnis. Ist dieser Wert nicht angegeben, wird das Format des Basiswerts verwendet. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format | Nein  | Zeichenfolge | Das Ausgabeformat für das datetime-Ergebnis. Ist dieser Wert nicht angegeben, wird das Format des Basiswerts verwendet. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -144,7 +144,7 @@ Gibt den aktuellen datetime-Wert (UTC) im festgelegten Format zurück. Wenn kein
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| format |Nein |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Nein  |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -242,3 +242,7 @@ Im folgenden Beispiel wird gezeigt, wie ein Wert der Funktion beim Festlegen ein
     }
 }
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

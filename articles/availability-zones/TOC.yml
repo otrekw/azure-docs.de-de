@@ -8,10 +8,12 @@
   items:
     - name: Hochverfügbarkeit für Azure-Anwendungen
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Regionen und Verfügbarkeitszonen
+      href: az-overview.md
     - name: Dokumentation zu Verfügbarkeitszonen
       items:
-        - name: Was sind Verfügbarkeitszonen?
-          href: az-overview.md
+        - name: 'Regionen, die Verfügbarkeitszonen unterstützen'
+          href: az-region.md
         - name: Virtuelle Computer
           items:
             - name: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI

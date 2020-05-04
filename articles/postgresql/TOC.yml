@@ -43,7 +43,7 @@
           items:
             - name: Azure-Portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
         - name: '2: Erstellen einer Web-App – Python'
           href: ../app-service/containers/tutorial-python-postgresql-app.md
@@ -58,7 +58,7 @@
           href: tutorial-design-database-hyperscale-realtime.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: sample-scripts-azure-cli.md
 - name: Konzepte
   items:
@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Konfigurieren von SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Sichern und Wiederherstellen
+              href: concepts-hyperscale-backup.md
         - name: Überwachen und Optimieren
           items:
             - name: Überwachen und Optimieren
@@ -207,13 +211,13 @@
           items:
             - name: Azure-Portal
               href: howto-manage-firewall-using-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-manage-firewall-using-cli.md
         - name: Wiederherstellen eines Servers
           items:
             - name: Azure-Portal
               href: howto-restore-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restore-server-cli.md
         - name: Migrieren einer Datenbank
           items:
@@ -227,19 +231,19 @@
           items:
             - name: Azure-Portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
         - name: Automatische Speichervergrößerung
           items:
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
         - name: Zugriffsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
         - name: Überwachen
           items:
@@ -259,25 +263,27 @@
           items:
             - name: Azure-Portal
               href: howto-manage-vnet-using-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
         - name: Private Link
           items:
             - name: Azure-Portal
               href: howto-configure-privatelink-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-privatelink-cli.md
         - name: Datenverschlüsselung
           items:
             - name: Azure-Portal
               href: howto-data-encryption-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: Validierung der Datenverschlüsselung
+              href: howto-data-encryption-validation.md
         - name: Neustarten des Servers
           items:
             - name: Azure-Portal
               href: howto-restart-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restart-server-cli.md
         - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
           items:
@@ -311,7 +317,7 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql

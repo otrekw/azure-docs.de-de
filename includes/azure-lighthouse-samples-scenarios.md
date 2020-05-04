@@ -5,20 +5,21 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 04/24/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 4c50ca2449787d681d8b9571083a92077d95dcd8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 4a6d9ef04a33c84d68dff1429fb39a193a249280
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986742"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204568"
 ---
 Diese Beispiele veranschaulichen verschiedene Aufgaben, die in mandantenübergreifenden Verwaltungsszenarien ausgeführt werden können.
 
 | **Vorlage** | **Beschreibung** |
 |---------|---------|
+| [create-keyvault-secret](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) | Erstellt eine Key Vault-Instanz im Mandanten des Kunden und erstellt Zugriffsrichtlinien.
 | [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/cross-rg-deployment) | Stellt Speicherkonten in zwei verschiedenen Ressourcengruppen bereit.|
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-mgmt-services) | Erstellt Azure-Verwaltungsdienste, verknüpft sie miteinander und stellt zusätzliche Lösungen bereit. Verwenden Sie für eine End-to-End-Bereitstellung die Vorlage **rgWithAzureMgmt.json**. |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-security-center) | Aktiviert und konfiguriert das Azure Security Center innerhalb des gewünschten Azure-Abonnements. |

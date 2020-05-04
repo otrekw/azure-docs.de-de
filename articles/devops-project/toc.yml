@@ -1,8 +1,8 @@
-- name: Azure DevOps Projects-Dokumentation
+- name: Azure DevOps Starter-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Azure DevOps Projects?
+    - name: Was ist Azure DevOps Starter?
       href: overview.md
 - name: Schnellstarts
   expanded: true
@@ -28,9 +28,9 @@
     - name: Go
       href: /azure/devops-project/azure-devops-project-go
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   items:
-    - name: '1: GitHub und DevOps Projects'
+    - name: '1: GitHub und DevOps Starter'
       href: azure-devops-project-github.md
       maintainContext: true
     - name: '2: Bereitstellen auf VMs'

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: c64483f18b2deb061704a4eb7171e575fdd561e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164626"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144155"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 
@@ -36,7 +36,12 @@ In diesen Beispielen werden häufig verwendete Trigger beschrieben:
     * [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Tutorial: Erstellen automatisierter, zeitplanbasierter periodischer Workflows mithilfe von Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * Mit dem Trigger **Wenn eine E-Mail empfangen wird** können Sie Ihre Logik-App von jedem E-Mail-Anbieter, der von Logic Apps unterstützt wird, z. B. [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/) usw., auf neue E-Mails überprüfen. Weitere Informationen finden Sie in den folgenden Themen:<p>
+  * Mit dem Trigger **Wenn eine E-Mail empfangen wird** können Sie Ihre Logik-App von jedem E-Mail-Anbieter, der von Logic Apps unterstützt wird, z. B. [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/) usw., auf neue E-Mails überprüfen.
+
+    > [!IMPORTANT]
+    > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+    Weitere Informationen finden Sie in den folgenden Themen:<p>
 
     * [Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
     * [Tutorial: Automatisieren von Aufgaben zur Verarbeitung von E-Mails mithilfe von Azure Logic Apps, Azure Functions und Azure Storage](../logic-apps/tutorial-process-email-attachments-workflow.md)

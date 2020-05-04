@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 04ef72f7ec70b370305395ae8de8180f4594b43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277348"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145126"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -38,9 +38,9 @@ Die Azure-Verfügbarkeitszone erreicht die Hochverfügbarkeit durch Platzieren v
 > Die Azure-Verfügbarkeitszone ist noch nicht für alle Regionen verfügbar. Sehen Sie sich die neueste [Ankündigung für die Liste der unterstützten Regionen](https://docs.microsoft.com/azure/availability-zones/az-overview) an. Für die Cloud Foundry-Plattform im Open Source-Modus lesen Sie den Artikel [Azure Availability Zone for open source Cloud Foundry guidance (Azure-Verfügbarkeitszone für die Open Source-Cloud Foundry-Plattform (Leitfaden))](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone).
 
 ## <a name="2-network-routing"></a>2. Netzwerkrouting
-Standardmäßig wird der Lastenausgleich von Azure im Tarif „Basic“ für eingehende CF-API/Apps-Anforderungen verwendet, der diese an Gorouters weiterleitet. CF-Komponenten wie Diego Brain, MySQL und ERT können ebenso den Lastenausgleich verwenden, um den Datenverkehr für die Hochverfügbarkeit auszugleichen. Azure stellt außerdem eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen bereit. Wenn Sie nach Informationen zu TLS-Terminierung („SSL-Auslagerung“) oder Verarbeitung pro HTTP/HTTPS-Anforderungsanwendungsschicht suchen, lesen Sie „Application Gateway“. Weitere Informationen zur Hochverfügbarkeit und zum Lastenausgleich der Skalierbarkeit auf Ebene 4 finden Sie im Abschnitt „Load Balancer Standard“.
+Standardmäßig wird der Lastenausgleich von Azure im Tarif „Basic“ für eingehende CF-API/Apps-Anforderungen verwendet, der diese an Gorouters weiterleitet. CF-Komponenten wie Diego Brain, MySQL und ERT können ebenso den Lastenausgleich verwenden, um den Datenverkehr für die Hochverfügbarkeit auszugleichen. Azure stellt außerdem eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen bereit. Wenn Sie nach Informationen zu TLS/SSL-Terminierung („SSL-Auslagerung“) oder Verarbeitung pro HTTP/HTTPS-Anforderungsanwendungsschicht suchen, lesen Sie „Application Gateway“. Weitere Informationen zur Hochverfügbarkeit und zum Lastenausgleich der Skalierbarkeit auf Ebene 4 finden Sie im Abschnitt „Load Balancer Standard“.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) bietet unterschiedliche Lastenausgleichsfunktionen für Ebene 7, einschließlich SSL-Abladung, End-to-End-SSL, Web Application Firewall, auf Cookies basierende Sitzungsaffinität usw. Sie können [Application Gateway auf der Open Source-Cloud Foundry-Plattform konfigurieren](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Sehen Sie sich für PCF die [Versionshinweise zu PCF 2.1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) an, um Informationen zum POC-Test (Proof of Concept) zu erhalten.
+[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) bietet unterschiedliche Lastenausgleichsfunktionen für Ebene 7, einschließlich TLS-Abladung, End-to-End-SSL, Web Application Firewall, auf Cookies basierende Sitzungsaffinität usw. Sie können [Application Gateway auf der Open Source-Cloud Foundry-Plattform konfigurieren](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Sehen Sie sich für PCF die [Versionshinweise zu PCF 2.1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) an, um Informationen zum POC-Test (Proof of Concept) zu erhalten.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer ist eine Lastenausgleichskomponente der Ebene 4. Sie wird verwendet, um den Datenverkehr zwischen Dienstinstanzen in einer Gruppe mit Lastenausgleich zu verteilen. Die Standardversion stellt zusätzlich zu den Features der Basisversion [erweiterte Features](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) bereit. Beispiele: 1. Der der maximale Back-End-Pool wird von 100 auf 1000 VMs erweitert.  2. Die Endpunkte unterstützen nun mehrere Verfügbarkeitsgruppen anstatt nur einer einzelnen Verfügbarkeitsgruppe.  3. Zusätzliche Features wie Hochverfügbarkeitsports, umfangreichere Überwachungsdaten usw. Wenn Sie zur Azure-Verfügbarkeitszone wechseln, ist der Load Balancer Standard erforderlich. Es empfiehlt sich, für eine neue Bereitstellung mit dem Azure Load Balancer Standard zu beginnen. 

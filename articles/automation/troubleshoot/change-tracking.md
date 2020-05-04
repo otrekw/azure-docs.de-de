@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679346"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582144"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Behandeln von Problemen mit Änderungsnachverfolgung und Bestand
 
-In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfolgung und dem Bestand beheben.
+In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfolgung und dem Bestand in Azure Automation beheben.
 
 >[!NOTE]
 >Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
@@ -35,14 +35,14 @@ Es werden keine Ergebnisse für die Änderungsnachverfolgung oder den Bestand vo
 
 Dieser Fehler kann folgende Ursachen haben:
 
-* Der Log Analytics-Agent für Windows wird nicht ausgeführt.
+* Der Azure Log Analytics-Agent für Windows wird nicht ausgeführt.
 * Die Kommunikation an das Automation-Konto wird blockiert.
 * Die Management Packs für Änderungsnachverfolgung und Bestand wurden nicht heruntergeladen.
 * Die VM, für die das Onboarding durchgeführt wird, stammt möglicherweise von einem geklonten Computer, der nicht über Sysprep mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
 
 #### <a name="resolution"></a>Lösung
 
-Navigieren Sie auf dem Computer mit dem Log Analytics-Agent zu **C:\Programme\Microsoft Monitoring Agent\Agent\Tools**, und führen Sie die folgenden Befehle aus:
+Wechseln Sie auf dem Computer mit dem Log Analytics-Agent zu **C:\Programme\Microsoft Monitoring Agent\Agent\Tools**, und führen Sie die folgenden Befehle aus:
 
 ```cmd
 net stop healthservice
@@ -51,7 +51,7 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-Wenn Sie weitere Hilfe benötigen, können Sie Diagnoseinformationen sammeln und sich an den Support wenden. 
+Wenn Sie weitere Hilfe benötigen, können Sie Diagnoseinformationen sammeln und sich an den Support wenden.
 
 > [!NOTE]
 > Der Log Analytics-Agent aktiviert standardmäßig die Fehlerablaufverfolgung. Um ausführliche Fehlermeldungen wie im vorherigen Beispiel zu aktivieren, verwenden Sie den Parameter `VER`. Für Ablaufverfolgungen zur Information verwenden Sie `INF` beim Aufrufen von `StartTracing.cmd`.
@@ -84,7 +84,7 @@ Wenn Sie ein geklontes Image verwenden, bereiten Sie das Image zunächst mit Sys
 
 #### <a name="issue"></a>Problem
 
-Es werden keine Ergebnisse für den Bestand oder die Änderungsnachverfolgung für Linux-Computer angezeigt, die in die Lösung integriert sind. 
+Es werden keine Ergebnisse für die Änderungsnachverfolgung und den Bestand für Linux-Computer angezeigt, die in die Lösung integriert sind. 
 
 #### <a name="cause"></a>Ursache
 Im Folgenden sind mögliche Ursachen für dieses Problem aufgeführt:
@@ -103,7 +103,7 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten den Agent neu installieren. Weitere Informationen zur Installation und Konfiguration finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten den Agent neu installieren. Weitere Informationen zur Installation und Konfiguration finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
 
 Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, überprüfen Sie die Bereichskonfiguration. Weitere Informationen finden Sie unter [Zielgruppenadressierung für Überwachungslösungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
@@ -119,8 +119,8 @@ Das FIM-Feature von Azure Security Center kann die Integrität Ihrer Linux-Datei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem hier nicht aufgeführt wird, oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Stellen Sie eine Verbindung mit [@AzureSupport](https://twitter.com/azuresupport) her, dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Der Azure-Support verbindet die Azure-Community mit Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Wechseln Sie zur [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und wählen Sie **Support erhalten** aus.

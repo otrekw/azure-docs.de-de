@@ -1,6 +1,6 @@
 ---
-title: Aktivieren der Diagnoseprotokollierung in Azure Traffic Manager
-description: Es wird beschrieben, wie Sie die Diagnoseprotokollierung für Ihr Traffic Manager-Profil aktivieren und auf die Protokolldateien zugreifen, die sich bei dem Vorgang ergeben.
+title: Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager
+description: Es wird beschrieben, wie Sie die Ressourcenprotokollierung für Ihr Traffic Manager-Profil aktivieren und auf die Protokolldateien zugreifen, die sich bei dem Vorgang ergeben.
 services: traffic-manager
 author: rohinkoul
 manager: twooley
@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938676"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133903"
 ---
-# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Aktivieren der Diagnoseprotokollierung in Azure Traffic Manager
+# <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager
 
-In diesem Artikel wird beschrieben, wie Sie die Diagnoseprotokollierung aktivieren und auf die Protokolldaten für ein Traffic Manager-Profil zugreifen.
+In diesem Artikel wird beschrieben, wie Sie die Erfassung von Diagnoseressourcenprotokollen aktivieren und auf die Protokolldaten für ein Traffic Manager-Profil zugreifen.
 
-Azure Traffic Manager-Diagnoseprotokolle können Erkenntnisse zum Verhalten der Traffic Manager-Profilressource liefern. Beispielsweise können Sie die Protokolldaten des Profils verwenden, um zu ermitteln, warum für einzelne Tests eines Endpunkts ein Timeout aufgetreten ist.
+Azure Traffic Manager-Ressourcenprotokolle können Erkenntnisse zum Verhalten der Traffic Manager-Profilressource liefern. Beispielsweise können Sie die Protokolldaten des Profils verwenden, um zu ermitteln, warum für einzelne Tests eines Endpunkts ein Timeout aufgetreten ist.
 
-## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
+## <a name="enable-resource-logging"></a>Aktivieren der Ressourcenprotokollierung
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,15 +32,15 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
 
 1. **Rufen Sie das Traffic Manager-Profil ab:**
 
-    Zum Aktivieren der Diagnoseprotokollierung benötigen Sie die ID eines Traffic Manager-Profils. Rufen Sie das Traffic Manager-Profil ab, für das Sie die Diagnoseprotokollierung aktivieren möchten, indem Sie [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) verwenden. Die Ausgabe enthält die Informationen zur ID des Traffic Manager-Profils.
+    Zum Aktivieren der Ressourcenprotokollierung benötigen Sie die ID eines Traffic Manager-Profils. Rufen Sie das Traffic Manager-Profil ab, für das Sie die Ressourcenprotokollierung aktivieren möchten, indem Sie [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) verwenden. Die Ausgabe enthält die Informationen zur ID des Traffic Manager-Profils.
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
-2. **Aktivieren der Diagnoseprotokollierung für das Traffic Manager-Profil:**
+2. **Aktivieren der Ressourcenprotokollierung für das Traffic Manager-Profil:**
 
-    Aktivieren Sie mit [Set-AzureDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) die Diagnoseprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
+    Aktivieren Sie mit [Set-AzureDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) die Ressourcenprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
@@ -65,7 +65,7 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager-Protokollschema
 
-Für alle Diagnoseprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben. Informationen zum Diagnoseprotokollschema der obersten Ebene finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../azure-monitor/platform/tutorial-dashboards.md).
+Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben. Informationen zum Ressourcenprotokollschema der obersten Ebene finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../azure-monitor/platform/tutorial-dashboards.md).
 
 Die folgende Tabelle enthält das Protokollschema für die Azure Traffic Manager-Profilressource.
 

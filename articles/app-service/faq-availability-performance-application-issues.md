@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229742"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159982"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -46,7 +46,7 @@ Sie können PowerShell-Cmdlets verwenden, um App Service-Web-Apps zu verwalten u
 
 So zeigen Sie die Ereignisprotokolle für Ihre Web-App an
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie im Menü **Debug Console** > **CMD** aus.
 3. Wählen Sie den Ordner **LogFiles** aus.
 4. Zum Überprüfen von Ereignisprotokollen aktivieren Sie das Stiftsymbol neben **eventlog.xml**.
@@ -56,7 +56,7 @@ So zeigen Sie die Ereignisprotokolle für Ihre Web-App an
 
 So erfassen Sie ein Speicherabbild im Benutzermodus Ihrer Web-App
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie das Menü **Process Explorer** aus.
 3. Klicken Sie mit der rechten Maustaste auf den Prozess **w3wp.exe** oder Ihren WebJob-Prozess.
 4. Wählen Sie **Download Memory Dump** > **Download Memory Dump** (Speicherabbild herunterladen > Vollständiges Speicherabbild) aus.
@@ -69,7 +69,7 @@ Sie haben zwei Optionen zum Anzeigen von Informationen auf Prozessebene für Ihr
     1. Öffnen Sie den **Prozess-Explorer** für die Web-App.
     2. Um die Details anzuzeigen, wählen Sie den Prozess **w3wp.exe** aus.
 *   Gehen Sie in der Kudu-Konsole so vor:
-    1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+    1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
     2. Wählen Sie das Menü **Process Explorer** aus.
     3. Wählen Sie für den Prozess **w3wp.exe** die Option **Properties** (Eigenschaften) aus.
 

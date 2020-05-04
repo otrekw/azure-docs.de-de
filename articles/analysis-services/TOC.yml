@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: Unterstützte Datenquellen
       href: analysis-services-datasource.md
+    - name: Häufig gestellte Fragen zu Netzwerkkonnektivität
+      href: analysis-services-network-faq.md
 - name: Vorgehensweise
   items:
     - name: Server

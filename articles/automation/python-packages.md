@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9f52dfd92d430abffe5857d231898dd4b0e7745e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679923"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508988"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -36,7 +36,7 @@ Azure Automation löst Abhängigkeiten für Python-Pakete während des Importvor
 
 ### <a name="manually-download"></a>Manuelles Herunterladen
 
-Führen Sie auf einem Windows-Computer (64-Bit), auf dem [python2.7](https://www.python.org/downloads/release/latest/python2) und [pip](https://pip.pypa.io/en/stable/) installiert sind, den folgenden Befehl aus, um ein Paket mit allen seinen Abhängigkeiten herunterzuladen:
+Führen Sie auf einem Windows-Computer (64-Bit), auf dem [Python2.7](https://www.python.org/downloads/release/latest/python2) und [pip](https://pip.pypa.io/en/stable/) installiert sind, den folgenden Befehl aus, um ein Paket mit allen seinen Abhängigkeiten herunterzuladen:
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
@@ -46,7 +46,7 @@ Sobald die Pakete heruntergeladen sind, können Sie sie in Ihr Automation-Konto 
 
 ### <a name="runbook"></a>Runbook
 
-Importieren Sie das Python-Runbook [Python 2-Pakete aus pypi in Azure Automation-Konto importieren](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) aus dem Katalog in Ihr Automation-Konto. Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
+ Um ein Runbook zu erhalten, importieren Sie aus dem Katalog [Python 2-Pakete aus pypi in Ihr Azure Automation-Konto](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509). Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>

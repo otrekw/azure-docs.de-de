@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 77413e6ae43a61d4ef06ed7190efbef275f6ad38
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679337"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582065"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
@@ -151,6 +151,22 @@ Möglicherweise müssen Sie auch das Datum und die Zeitzone auf Ihrem Computer a
 ## <a name="linux"></a>Linux
 
 Der Linux Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, gibt es mehrere mögliche Gründe dafür:
+
+### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Szenario: Beim Signieren eines Runbooks erhält der Linux-Hybrid Runbook Worker eine Aufforderung zum Eingeben eines Kennworts
+
+#### <a name="issue"></a>Problem
+
+Wenn Sie den Befehl `sudo` für einen Linux-Hybrid Runbook Worker ausführen, wird eine unerwartete Aufforderung für die Eingabe eines Kennworts abgerufen.
+
+#### <a name="cause"></a>Ursache
+
+Das **nxautomationuser**-Konto für den Log Analytics-Agent für Linux ist in der **sudoers**-Datei nicht ordnungsgemäß konfiguriert. Der Hybrid Runbook Worker benötigt die entsprechende Konfiguration der Kontobenachrichtigungen und anderer Daten, damit Runbooks auf dem Linux-Runbook Worker signiert werden können.
+
+#### <a name="resolution"></a>Lösung
+
+* Stellen Sie sicher, dass der Hybrid Runbook Worker auf dem Computer über die ausführbare Datei „GnuPG (GPG)“ verfügt.
+
+* Überprüfen Sie die Konfiguration des **nxautomationuser**-Kontos in der **sudoers**-Datei. Lesen Sie sich den Artikel [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) durch.
 
 ### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Szenario: Der Log Analytics-Agent für Linux wird nicht ausgeführt
 

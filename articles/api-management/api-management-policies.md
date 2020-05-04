@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71219468"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128718"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -50,7 +50,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [Variable festlegen](api-management-advanced-policies.md#set-variable) – speichert einen Wert in einer benannten Kontextvariablen, um später darauf zugreifen zu können.  
     -   [Anforderungsmethode festlegen](api-management-advanced-policies.md#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
     -   [Statuscode festlegen](api-management-advanced-policies.md#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  
-    -   [Ablaufverfolgung](api-management-advanced-policies.md#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Diagnoseprotokollen.  
+    -   [Ablaufverfolgung](api-management-advanced-policies.md#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Ressourcenprotokollen.  
     -   [Warten](api-management-advanced-policies.md#Wait) – wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.  
 -   [Authentifizierungsrichtlinien](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.  
