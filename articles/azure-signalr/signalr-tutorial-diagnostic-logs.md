@@ -1,35 +1,35 @@
 ---
-title: Diagnoseprotokolle für Azure SignalR Service
-description: Erfahren Sie, wie Sie Diagnoseprotokolle für Azure SignalR Service einrichten und diese für die eigenständige Problembehandlung nutzen.
+title: Ressourcenprotokolle für Azure SignalR Service
+description: Erfahren Sie, wie Sie Ressourcenprotokolle für Azure SignalR Service einrichten und diese für die eigenständige Problembehandlung nutzen.
 author: wanlwanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 72f57ba4bbbbde07f6d26edc88c158f301ebe2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536733"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131007"
 ---
-# <a name="diagnostic-logs-for-azure-signalr-service"></a>Diagnoseprotokolle für Azure SignalR Service
+# <a name="resource-logs-for-azure-signalr-service"></a>Ressourcenprotokolle für Azure SignalR Service
 
-In diesem Tutorial wird erläutert, was Diagnoseprotokolle für den Azure SignalR Service sind, wie Diagnoseprotokolle eingerichtet werden und wie Probleme mit Diagnoseprotokollen behoben werden.
+In diesem Tutorial wird besprochen, was Ressourcenprotokolle für den Azure SignalR Service sind, wie sie eingerichtet und wie Probleme mit ihnen behoben werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Aktivieren der Diagnoseprotokolle benötigen Sie einen Ort zum Speichern Ihrer Protokolldaten. In diesem Tutorial werden Azure Storage und Log Analytics verwendet.
+Zum Aktivieren der Ressourcenprotokolle benötigen Sie einen Ort zum Speichern Ihrer Protokolldaten. In diesem Tutorial werden Azure Storage und Log Analytics verwendet.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) speichert die Diagnoseprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung.
+* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) speichert die Ressourcenprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung.
 * [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
 
-## <a name="set-up-diagnostic-logs-for-an-azure-signalr-service"></a>Einrichten von Diagnoseprotokollen für Azure SignalR Service
+## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Einrichten von Ressourcenprotokollen für einen Azure SignalR Service
 
-Sie können Diagnoseprotokolle für Azure SignalR Service anzeigen. Diese Protokolle bieten einen umfassenderen Überblick über die Konnektivität mit Ihrer Azure SignalR Service-Instanz. Die Diagnoseprotokolle bieten detaillierte Informationen zu jeder Verbindung. Dies sind z. B. grundlegende Informationen (Benutzer-ID, Verbindungs-ID, Transporttyp usw.) und Ereignisinformationen (Verbinden-, Trennen-, Abbrechen-Ereignis usw.) zu der Verbindung. Diagnoseprotokolle können zur Identifizierung von Problemen sowie zur Verbindungsverfolgung und -analyse verwendet werden.
+Sie können Ressourcenprotokolle für Azure SignalR Service anzeigen. Diese Protokolle bieten einen umfassenderen Überblick über die Konnektivität mit Ihrer Azure SignalR Service-Instanz. Die Ressourcenprotokolle bieten detaillierte Informationen zu jeder Verbindung. Dies sind z. B. grundlegende Informationen (Benutzer-ID, Verbindungs-ID, Transporttyp usw.) und Ereignisinformationen (Verbinden-, Trennen-, Abbrechen-Ereignis usw.) zu der Verbindung. Ressourcenprotokolle können zur Identifizierung von Problemen sowie zur Verbindungsverfolgung und -analyse verwendet werden.
 
-### <a name="enable-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
+### <a name="enable-resource-logs"></a>Aktivieren von Ressourcenprotokollen
 
-Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schritte aus, um die Diagnoseprotokolle zu aktivieren:
+Ressourcenprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schritte aus, um die Ressourcenprotokolle zu aktivieren:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung** auf **Diagnoseeinstellungen**.
 
@@ -37,7 +37,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
 1. Klicken Sie dann auf **Diagnoseeinstellung hinzufügen**.
 
-    ![Hinzufügen von Diagnoseprotokollen](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
+    ![Hinzufügen von Ressourcenprotokollen](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
 1. Legen Sie das gewünschte Archivierungsziel fest. Zurzeit unterstützen wir **In einem Speicherkonto archivieren** und **An Log Analytics senden**.
 
@@ -50,17 +50,17 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md).
 
-### <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
+### <a name="resource-logs-categories"></a>Ressourcenprotokollkategorien
 
-Azure SignalR Service erfasst Diagnoseprotokolle in einer Kategorie:
+Azure SignalR Service erfasst Ressourcenprotokolle in einer Kategorie:
 
 * **Alle Protokolle**: Nachverfolgen von Verbindungen mit Azure SignalR Service. Die Protokolle enthalten Informationen zum Verbinden/Trennen, zur Authentifizierung und zur Drosselung. Weitere Informationen finden Sie im nächsten Abschnitt.
 
 ### <a name="archive-to-a-storage-account"></a>In einem Speicherkonto archivieren
 
-Die Protokolle werden in dem Speicherkonto gespeichert, das im Bereich **Diagnoseprotokolle** konfiguriert ist. Ein Container mit dem Namen `insights-logs-alllogs` wird automatisch erstellt, um Diagnoseprotokolle zu speichern. In dem Container werden Protokolle in der Datei `resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json` gespeichert. Im Grunde stellt der Pfad eine Kombination aus `resource ID` und `Date Time` dar. Die Protokolldateien werden anhand der `hour` aufgeteilt. Daher sind die Minuten immer `m=00`.
+Die Protokolle werden in dem Speicherkonto gespeichert, das im Bereich **Diagnoseprotokolle** konfiguriert ist. Ein Container mit dem Namen `insights-logs-alllogs` wird automatisch erstellt, um Ressourcenprotokolle zu speichern. In dem Container werden Protokolle in der Datei `resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json` gespeichert. Im Grunde stellt der Pfad eine Kombination aus `resource ID` und `Date Time` dar. Die Protokolldateien werden anhand der `hour` aufgeteilt. Daher sind die Minuten immer `m=00`.
 
 Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im nachfolgend beschriebenen Format.
 
@@ -116,13 +116,13 @@ Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 ### <a name="archive-logs-schema-for-log-analytics"></a>Archivprotokollschema für Log Analytics
 
-Um Diagnoseprotokolle anzuzeigen, führen Sie diese Schritte aus:
+Führen Sie folgende Schritte aus, um die Ressourcenprotokolle anzuzeigen:
 
 1. Klicken Sie in Ihrem Ziel-Log Analytics auf `Logs`.
 
     ![Log Analytics-Menüelement](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Geben Sie `SignalRServiceDiagnosticLogs` ein, und wählen Sie den Zeitraum für die Abfrage der Diagnoseprotokolle aus. Informationen zu komplexeren Abfragen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
+2. Geben Sie `SignalRServiceDiagnosticLogs` ein, und wählen Sie den Zeitraum für die Abfrage der Ressourcenprotokolle aus. Informationen zu komplexeren Abfragen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
 
     ![Abfragen des Protokolls in Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -133,7 +133,7 @@ Name | BESCHREIBUNG
 TimeGenerated | Protokollereigniszeit
 Collection | Sammlung des Protokollereignisses. Zulässige Werte sind `Connection`, `Authorization` und `Throttling`.
 Vorgangsname | Vorgangsname des Ereignisses.
-Position | Standort Ihres Azure SignalR Service.
+Standort | Standort Ihres Azure SignalR Service.
 Ebene | Protokollereignisebene
 CallerIpAddress | IP-Adresse Ihres Servers/Clients.
 `Message` | Ausführliche Meldung des Protokollereignisses.
@@ -142,11 +142,11 @@ ConnectionId | Identität der Verbindung.
 ConnectionType | Typ der Verbindung. Zulässige Werte sind: `Server` \| `Client`. `Server`: serverseitige Verbindung; `Client`: clientseitige Verbindung
 TransportType | Transporttyp der Verbindung. Zulässige Werte sind: `Websockets` \| `ServerSentEvents` \| `LongPolling`.
 
-### <a name="troubleshooting-with-diagnostic-logs"></a>Problembehandlung mit Diagnoseprotokollen
+### <a name="troubleshooting-with-resource-logs"></a>Problembehandlung mit Ressourcenprotokollen
 
-Für die Problembehandlung des Azure SignalR Service können Sie server-/clientseitige Protokolle aktivieren, um Fehler zu erfassen. Derzeit stellt der Azure SignalR Service Diagnoseprotokolle bereit, Sie können Protokolle aber auch dienstseitig aktivieren.
+Für die Problembehandlung des Azure SignalR Service können Sie server-/clientseitige Protokolle aktivieren, um Fehler zu erfassen. Derzeit stellt der Azure SignalR Service Ressourcenprotokolle bereit, Sie können Protokolle aber auch dienstseitig aktivieren.
 
-Wenn die Auslastung der Verbindung unerwartet zunimmt oder sie unterbrochen wird, können Sie die Diagnoseprotokolle für die Problembehandlung nutzen.
+Wenn die Auslastung der Verbindung unerwartet zunimmt oder sie unterbrochen wird, können Sie die Ressourcenprotokolle für die Problembehandlung nutzen.
 
 Typische Probleme sind häufig unerwartete Auslastungsveränderungen bei Verbindungen, das Erreichen von Verbindungslimits bei Verbindungen sowie Autorisierungsfehler. Informationen zur Vorgehensweise bei der Problembehandlung finden Sie in den nächsten Abschnitten.
 
@@ -156,7 +156,7 @@ Typische Probleme sind häufig unerwartete Auslastungsveränderungen bei Verbind
 
 Wenn bei Ihnen unerwartete Verbindungsunterbrechungen auftreten, aktivieren Sie zuerst die Protokolle auf Dienst-, Server- und Clientseite.
 
-Wird eine Verbindung getrennt, zeichnet das Diagnoseprotokoll dieses Trennungsereignis auf, und Sie sehen `ConnectionAborted` oder `ConnectionEnded` in `operationName`.
+Wird eine Verbindung getrennt, zeichnet das Ressourcenprotokoll dieses Trennungsereignis auf, und Sie sehen `ConnectionAborted` oder `ConnectionEnded` in `operationName`.
 
 Der Unterschied zwischen `ConnectionAborted` und `ConnectionEnded` besteht darin, dass `ConnectionEnded` eine erwartete Verbindungstrennung ist, die vom Client oder Server ausgelöst wird. Während es sich bei `ConnectionAborted` in der Regel um ein unerwartetes Verbindungsunterbrechungsereignis handelt, und der Grund für den Abbruch wird in `message` bereitgestellt.
 
@@ -173,20 +173,20 @@ Serververbindung unterbrochen. | Die Serververbindung wird mit unbekanntem Fehle
 
 ##### <a name="unexpected-connection-growing"></a>Unerwarteter Anstieg der Verbindungsauslastung.
 
-Um unerwartete Anstiege der Verbindungsauslastung zu behandeln, müssen Sie zuerst die zusätzlichen Verbindungen ausfiltern. Sie können Ihrer Testclientverbindung eine eindeutige Testbenutzer-ID hinzufügen. Verifizieren Sie diese dann in den Diagnoseprotokollen. Wenn Sie dort mehr als eine Clientverbindung mit derselben Testbenutzer-ID oder IP-Adresse vorfinden, ist es wahrscheinlich, dass der Client mehr Verbindungen erstellt und unterhält als erwartet. Überprüfen Sie die Clientseite.
+Um unerwartete Anstiege der Verbindungsauslastung zu behandeln, müssen Sie zuerst die zusätzlichen Verbindungen ausfiltern. Sie können Ihrer Testclientverbindung eine eindeutige Testbenutzer-ID hinzufügen. Verifizieren Sie diese dann in den Ressourcenprotokollen. Wenn Sie dort mehr als eine Clientverbindung mit derselben Testbenutzer-ID oder IP-Adresse vorfinden, ist es wahrscheinlich, dass der Client mehr Verbindungen erstellt und unterhält als erwartet. Überprüfen Sie die Clientseite.
 
 #### <a name="authorization-failure"></a>Autorisierungsfehler
 
-Wenn Sie bei Clientanforderungen die Rückgabe „401 – Nicht autorisiert“ erhalten, überprüfen Sie Ihre Diagnoseprotokolle. Wenn `Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>` auftritt, bedeutet dies, dass alle Zielgruppen in Ihrem Zugriffstoken ungültig sind. Versuchen Sie, die im Protokoll vorgeschlagenen gültigen Zielgruppen zu verwenden.
+Wenn Sie bei Clientanforderungen die Rückgabe „401 – Nicht autorisiert“ erhalten, überprüfen Sie Ihre Ressourcenprotokolle. Wenn `Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>` auftritt, bedeutet dies, dass alle Zielgruppen in Ihrem Zugriffstoken ungültig sind. Versuchen Sie, die im Protokoll vorgeschlagenen gültigen Zielgruppen zu verwenden.
 
 
 #### <a name="throttling"></a>Drosselung
 
-Wenn Sie feststellen, dass Sie keine SignalR-Clientverbindungen mit dem Azure SignalR Service herstellen können, überprüfen Sie Ihre Diagnoseprotokolle. Wenn im Diagnoseprotokoll `Connection count reaches limit` auftritt, stellen Sie zu viele Verbindungen mit dem SignalR Service her, die das Limit für die Verbindungsanzahl erreichen. Erwägen Sie, Ihren SignalR Service zentral hochzuskalieren. Wenn im Diagnoseprotokoll `Message count reaches limit` auftritt, bedeutet dies, dass Sie den kostenlosen Tarif verwenden und das Kontingent der Nachrichten verbrauchen. Wenn Sie weitere Nachrichten senden möchten, sollten Sie einen Wechsel für den SignalR Service in den Standardtarif erwägen, um zusätzliche Nachrichten zu senden. Weitere Informationen finden Sie unter [Azure SignalR Service – Preise](https://azure.microsoft.com/pricing/details/signalr-service/).
+Wenn Sie feststellen, dass Sie keine SignalR-Clientverbindungen mit dem Azure SignalR Service herstellen können, überprüfen Sie Ihre Ressourcenprotokolle. Wenn im Ressourcenprotokoll `Connection count reaches limit` auftritt, stellen Sie zu viele Verbindungen mit dem SignalR Service her, die das Limit für die Verbindungsanzahl erreichen. Erwägen Sie, Ihren SignalR Service zentral hochzuskalieren. Wenn im Ressourcenprotokoll `Message count reaches limit` auftritt, bedeutet dies, dass Sie den kostenlosen Tarif verwenden und das Kontingent der Nachrichten verbrauchen. Wenn Sie weitere Nachrichten senden möchten, sollten Sie einen Wechsel für den SignalR Service in den Standardtarif erwägen, um zusätzliche Nachrichten zu senden. Weitere Informationen finden Sie unter [Azure SignalR Service – Preise](https://azure.microsoft.com/pricing/details/signalr-service/).
 
 ### <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Wir empfehlen Ihnen, zuerst eine eigenständige Problembehandlung durchzuführen. Die meisten Probleme werden vom App-Server oder durch Netzwerkprobleme verursacht. Befolgen Sie das [Handbuch zur Problembehandlung mit Diagnoseprotokollen](#troubleshooting-with-diagnostic-logs) sowie das [Handbuch zur Behandlung grundlegender Probleme](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md), um die Grundursachen zu ermitteln.
+Wir empfehlen Ihnen, zuerst eine eigenständige Problembehandlung durchzuführen. Die meisten Probleme werden vom App-Server oder durch Netzwerkprobleme verursacht. Befolgen Sie das [Handbuch zur Problembehandlung mit Ressourcenprotokollen](#troubleshooting-with-resource-logs) sowie das [Handbuch zur Behandlung grundlegender Probleme](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md), um die Grundursachen zu ermitteln.
 Wenn das Problem immer noch nicht gelöst werden kann, sollten Sie ein Problem in GitHub öffnen oder ein Ticket im Azure-Portal erstellen.
 Stellen Sie Folgendes bereit:
 1. Zeitraum von etwa 30 Minuten, wann das Problem auftritt
