@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a860b005457c6e02187423a3ffbbc63fe7c758b1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314064"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187527"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
@@ -31,7 +31,7 @@ Bevor Sie Microsoft Teams in Windows Virtual Desktop verwenden können, müssen 
 
 ## <a name="use-unoptimized-microsoft-teams"></a>Verwenden der nicht optimierten Microsoft Teams-Version
 
-Sie können die nicht optimierte Microsoft Teams-Version in Ihrer Windows Virtual Desktop-Umgebung verwenden, um die vollständigen Chat- und Zusammenarbeitsfeatures von Microsoft Teams sowie Audioaufrufe zu nutzen. Die Audioqualität bei Aufrufen variiert in Abhängigkeit von Ihrer Hostkonfiguration, da bei nicht optimierten Anrufen mehr Host-CPU verwendet wird.
+Sie können Microsoft Teams in Ihrer Windows Virtual Desktop-Umgebung verwenden, um die Chat- und Zusammenarbeitsfeatures von Microsoft Teams zu nutzen. Windows Virtual Desktop unterstützt Teams für VDI-Audio-/Videooptimierungen nicht. Anrufe und Besprechungen werden nicht unterstützt. Wenn die Richtlinien Ihrer Organisation dies zulassen, können Sie trotzdem Audioanrufe durchführen und an Besprechungen mit Audiodaten teilnehmen. Die nicht optimierte Audioqualität in den Anrufen variiert jedoch je nach Hostkonfiguration und ist möglicherweise nicht zuverlässig. Weitere Informationen finden Sie unter [Teams und VDI-Leistungsüberlegungen](https://docs.microsoft.com/microsoftteams/teams-for-vdi#teams-on-vdi-performance-considerations).
 
 ### <a name="prepare-your-image-for-teams"></a>Vorbereiten des Images für Teams
 
@@ -66,8 +66,8 @@ Sie können die Teams-Desktop-App mit einer computerspezifischen Installation be
       ```
 
       > [!NOTE]
-      > Wenn Sie Teams mit der MSI-Einstellung „ALLUSER=1“ installieren, werden automatische Updates deaktiviert. Es wird empfohlen, Teams mindestens einmal im Monat zu aktualisieren.
-      
-### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Anpassen der Remotedesktopprotokoll-Eigenschaften für einen Hostpool
+      > Wenn Sie Teams mit der MSI-Einstellung „ALLUSER=1“ installieren, werden automatische Updates deaktiviert. Es wird empfohlen, Teams mindestens einmal im Monat zu aktualisieren. Weitere Informationen zum Bereitstellen der Teams-Desktop-App finden Sie unter [Bereitstellen der Teams-Desktop-App auf der VM](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm).
+
+## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Anpassen der Remotedesktopprotokoll-Eigenschaften für einen Hostpool
 Durch Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z. B. Unterstützung mehrerer Monitore, Aktivieren des Mikrofons und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die ihren Anforderungen entspricht. RDP-Eigenschaften können Sie in Windows Virtual Desktop über den **-CustomRdpProperty**-Parameter im **Set-RdsHostPool**-Cmdlet anpassen.
 Eine vollständige Liste der unterstützten Eigenschaften samt deren Standardwerten finden Sie unter [Unterstützte RDP-Dateieinstellungen](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).

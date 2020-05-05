@@ -6,22 +6,22 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: c709890ae6c57a001c6a0e9df4e973bd3bd24602
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d703ea38c39ed556102271ac0cf9a609ce449bc3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258259"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195917"
 ---
 # <a name="using-custom-security-policies"></a>Verwenden benutzerdefinierter Sicherheitsrichtlinien
 
 Um Ihre Systeme und Ihre Umgebung zu sichern, generiert Azure Security Center Sicherheitsempfehlungen. Diese Empfehlungen basieren auf bewährten Methoden der Branche, die in die generische Standardsicherheitsrichtlinie integriert sind, die für alle Kunden bereitgestellt wird. Sie können auch aus Branchenwissen von Security Center und regulatorische Normen stammen.
 
-Mit diesem Feature können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, das im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
+Mit diesem Feature können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, wie im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
 
-Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in der Azure Policy-Dokumentation erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
+Wie in der [Azure Policy-Dokumentation](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu 
 
@@ -53,7 +53,7 @@ Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/conce
     1. Wählen Sie die einzuschließenden Richtlinien aus, und klicken Sie auf **Hinzufügen**.
     1. Geben Sie die gewünschten Parameter ein.
     1. Klicken Sie auf **Speichern**.
-    1. Klicken Sie auf der Seite „Benutzerdefinierte Initiativen hinzufügen“ auf „Aktualisieren“, und die neue Initiative wird als verfügbar angezeigt.
+    1. Klicken Sie auf der Seite „Benutzerdefinierte Initiativen hinzufügen“ auf „Aktualisieren“. Ihre neue Initiative wird als verfügbar angezeigt.
     1. Klicken Sie auf **Hinzufügen**, und weisen Sie sie Ihrem Abonnement zu.
 
     > [!NOTE]
@@ -68,6 +68,75 @@ Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/conce
 1. Um die resultierenden Empfehlungen für Ihre Richtlinie anzuzeigen, klicken Sie in der Randleiste auf **Empfehlungen**, um die Seite „Empfehlungen“ zu öffnen. Die Empfehlungen werden mit der Bezeichnung „Benutzerdefiniert“ angezeigt und sind innerhalb einer Stunde verfügbar.
 
     [![Benutzerdefinierte Empfehlungen](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>Verbessern der benutzerdefinierten Empfehlungen mit ausführlichen Informationen
+
+Die integrierten Empfehlungen, die mit Azure Security Center bereitgestellt werden, enthalten Details wie Schweregrade und Korrekturanweisungen. Wenn Sie Ihren benutzerdefinierten Empfehlungen diese Art von Informationen hinzufügen möchten, damit Sie im Azure-Portal oder wenn Sie auf Ihre Empfehlungen zugreifen angezeigt werden, müssen Sie die REST-API verwenden. 
+
+Folgende zwei Arten von Informationen können Sie hinzufügen:
+
+- **RemediationDescription**: Zeichenfolge
+- **Severity**: Enumeration [Niedrig, Mittel, Hoch]
+
+Die Metadaten sollten der Richtliniendefinition für eine Richtlinie hinzugefügt werden, die Teil der benutzerdefinierten Initiative ist. Sie sollten in der Eigenschaft „securityCenter“ vorliegen, wie hier gezeigt:
+
+```json
+ "metadata": {
+    "securityCenter": {
+        "RemediationDescription": "Custom description goes here",
+        "Severity": "High",
+    },
+```
+
+Im Folgenden finden Sie ein Beispiel für eine benutzerdefinierte Richtlinie mit der Eigenschaft metadata/securityCenter:
+
+  ```json
+  {
+"properties": {
+    "displayName": "Security - ERvNet - AuditRGLock",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Audit required resource groups lock",
+    "metadata": {
+        "securityCenter": {
+            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "severity": "High",
+        },
+    },
+    "parameters": {
+        "expressRouteLockLevel": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Lock level",
+                "description": "Required lock level for ExpressRoute resource groups."
+            },
+            "allowedValues": [
+                "CanNotDelete",
+                "ReadOnly"
+            ]
+        }
+    },
+    "policyRule": {
+        "if": {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        },
+        "then": {
+            "effect": "auditIfNotExists",
+            "details": {
+                "type": "Microsoft.Authorization/locks",
+                "existenceCondition": {
+                    "field": "Microsoft.Authorization/locks/level",
+                    "equals": "[parameters('expressRouteLockLevel')]"
+                }
+            }
+        }
+    }
+}
+}
+  ```
+
+Ein weiteres Beispiel für die Verwendung der securityCenter-Eigenschaft finden Sie in [diesem Abschnitt der REST-API-Dokumentation](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168485"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194991"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung: Methode manuelles Kopieren
 
@@ -35,9 +35,9 @@ Nach der Ausführung dieses Befehls zeigt der Befehl `jobs` an, dass zwei Thread
 
 ## <a name="copy-data-with-predictable-file-names"></a>Kopieren von Daten mit vorhersagbaren Dateinamen
 
-Wenn Ihre Dateinamen vorhersagbar sind, können Sie Ausdrücke verwenden, um parallele Kopierthreads zu erstellen. 
+Wenn Ihre Dateinamen vorhersagbar sind, können Sie Ausdrücke verwenden, um parallele Kopierthreads zu erstellen.
 
-Wenn Ihr Verzeichnis z. B. 1000 Dateien enthält, die von `0001` bis `1000` durchnummeriert sind, können Sie die folgenden Ausdrücke verwenden, um zehn parallele Threads zu erstellen, die jeweils 100 Dateien kopieren:
+Wenn Ihr Verzeichnis z. B. 1.000 Dateien enthält, die von `0001` bis `1000` durchnummeriert sind, können Sie die folgenden Ausdrücke verwenden, um 10 parallele Threads zu erstellen, die jeweils 100 Dateien kopieren:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -54,7 +54,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 ## <a name="copy-data-with-unstructured-file-names"></a>Kopieren von Daten mit unstrukturierten Dateinamen
 
-Wenn Ihre Dateinamenstruktur nicht vorhersagbar ist, können Sie Dateien nach Verzeichnisnamen gruppieren. 
+Wenn Ihre Dateinamenstruktur nicht vorhersagbar ist, können Sie Dateien nach Verzeichnisnamen gruppieren.
 
 In diesem Beispiel werden ganze Verzeichnisse gesammelt, um sie an ``cp``-Befehle zu senden, die als Hintergrundaufgaben ausgeführt werden:
 
@@ -72,16 +72,16 @@ Nachdem die Dateien gesammelt wurden, können Sie parallele Kopierbefehle ausfü
 
 ```bash
 cp /mnt/source/* /mnt/destination/
-mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ & 
+mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ &
 cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1c1 via recursion
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
 ## <a name="when-to-add-mount-points"></a>Zeitpunkt für das Hinzufügen von Bereitstellungspunkten
 
-Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zieldateisystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.  
+Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zieldateisystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.
 
 In diesem Fall können Sie clientseitige Bereitstellungspunkte anderen Einbindungsadressen von Azure HPC Cache hinzufügen und dabei denselben Einbindungspfad des Remotedateisystems verwenden:
 
@@ -92,7 +92,7 @@ In diesem Fall können Sie clientseitige Bereitstellungspunkte anderen Einbindun
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Das Hinzufügen von clientseitigen Bereitstellungspunkten ermöglicht es Ihnen, weitere Kopierbefehle für die zusätzlichen `/mnt/destination[1-3]`-Bereitstellungspunkte abzuspalten, um die Parallelität zu erhöhen.  
+Das Hinzufügen von clientseitigen Bereitstellungspunkten ermöglicht es Ihnen, weitere Kopierbefehle für die zusätzlichen `/mnt/destination[1-3]`-Bereitstellungspunkte abzuspalten, um die Parallelität zu erhöhen.
 
 Wenn Sie z. B. sehr große Dateien verwenden, können Sie die Kopierbefehle so definieren, dass sie unterschiedliche Zielpfade verwenden und mehr Befehle parallel vom Client aus senden, der den Kopiervorgang durchführt.
 
@@ -112,7 +112,7 @@ Im obigen Beispiel sind die Kopiervorgänge der Clientdateien auf alle drei Ziel
 
 ## <a name="when-to-add-clients"></a>Zeitpunkt zum Hinzufügen von Clients
 
-Wenn Sie die Kapazitäten des Clients erreicht haben, führt das Hinzufügen weiterer Kopierthreads oder zusätzlicher Bereitstellungspunkte nicht zu einer weiteren Erhöhung der „Dateien/Sekunde“ oder „Bytes/Sekunde“. In dieser Situation können Sie einen weiteren Client mit demselben Satz von Bereitstellungspunkten bereitstellen, der auch eigene Sätze von Dateikopiervorgängen ausführen wird. 
+Wenn Sie die Kapazitäten des Clients erreicht haben, führt das Hinzufügen weiterer Kopierthreads oder zusätzlicher Bereitstellungspunkte nicht zu einer weiteren Erhöhung der „Dateien/Sekunde“ oder „Bytes/Sekunde“. In dieser Situation können Sie einen weiteren Client mit demselben Satz von Bereitstellungspunkten bereitstellen, der auch eigene Sätze von Dateikopiervorgängen ausführen wird.
 
 Beispiel:
 
@@ -158,7 +158,7 @@ Leiten Sie dieses Ergebnis in eine Datei um: `find . -mindepth 4 -maxdepth 4 -ty
 Dann können Sie das Manifest mithilfe von BASH-Befehlen durchlaufen, um Dateien zu zählen und die Größe der Unterverzeichnisse zu bestimmen:
 
 ```bash
-ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
+ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
 244    3.5M    ./atj5b5ab44b7f-02/support/gsi/2018-07-18T00:07:03EDT
 9      172K    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-18T05:01:00UTC
 124    5.8M    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-19T01:01:01UTC
@@ -194,7 +194,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Schließlich müssen Sie die eigentlichen Befehle zum Kopieren von Dateien an die Clients anpassen.  
+Schließlich müssen Sie die eigentlichen Befehle zum Kopieren von Dateien an die Clients anpassen.
 
 Wenn Sie über vier Clients verfügen, verwenden Sie den folgenden Befehl:
 
@@ -214,7 +214,7 @@ Und für sechs Befehle... Extrapolieren Sie bei Bedarf.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Sie erhalten *N* Ergebnisdateien, eine für jeden Ihrer *N* Clients, der über die Pfadnamen zu den Level-4-Verzeichnissen verfügt, die als Teil der Ausgabe des Befehls `find` erhalten wurden. 
+Sie erhalten *N* Ergebnisdateien, eine für jeden Ihrer *N* Clients, der über die Pfadnamen zu den Level-4-Verzeichnissen verfügt, die als Teil der Ausgabe des Befehls `find` erhalten wurden.
 
 Verwenden Sie die einzelnen Dateien, um den Kopierbefehl zu erstellen:
 
@@ -222,6 +222,6 @@ Verwenden Sie die einzelnen Dateien, um den Kopierbefehl zu erstellen:
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Das obige Beispiel liefert Ihnen *N* Dateien, jede mit einem Kopierbefehl pro Zeile, die als BASH-Skript auf dem Client ausgeführt werden können. 
+Das obige Beispiel liefert Ihnen *N* Dateien, jede mit einem Kopierbefehl pro Zeile, die als BASH-Skript auf dem Client ausgeführt werden können.
 
 Ziel ist es, mehrere Threads dieser Skripts gleichzeitig pro Client parallel auf mehreren Clients auszuführen.

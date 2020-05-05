@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f508de35470043cc71bfc8607367f28c04440b57
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408301"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193121"
 ---
 # <a name="security-control-network-security"></a>Sicherheitskontrolle: Netzwerksicherheit
 
@@ -118,7 +118,7 @@ Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organi
 |--|--|--|
 | 1.7 | 12.9, 12.10 | Kunde |
 
-Stellen Sie Azure Application Gateway für Webanwendungen mit aktiviertem HTTPS/SSL für vertrauenswürdige Zertifikate bereit.
+Stellen Sie Azure Application Gateway für Webanwendungen mit aktiviertem HTTPS/TLS für vertrauenswürdige Zertifikate bereit.
 
 - [Bereitstellen von Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 

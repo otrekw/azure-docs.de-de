@@ -1,32 +1,32 @@
 ---
-title: Problembehandlung für Azure Stream Analytics mit Diagnoseprotokollen
-description: In diesem Artikel wird beschrieben, wie Sie Diagnoseprotokolle in Azure Stream Analytics analysieren.
+title: Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
+description: In diesem Artikel wird beschrieben, wie Sie Ressourcenprotokolle in Azure Stream Analytics analysieren.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: cdb6629441becd0a8356debe3360830ff11a7a9d
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398423"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127751"
 ---
-# <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
+# <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
 
-In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Fehler können durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht werden. Durch die Diagnoseprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
+In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Fehler können durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht werden. Durch die Ressourcenprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
 
-Diagnoseprotokolle sollten unbedingt für alle Aufträge aktiviert werden, da dies beim Debuggen und Überwachen sehr hilfreich ist.
+Ressourcenprotokolle sollten unbedingt für alle Aufträge aktiviert werden, da dies beim Debuggen und Überwachen sehr hilfreich ist.
 
 ## <a name="log-types"></a>Protokolltypen
 
 Stream Analytics bietet zwei Typen von Protokollen:
 
-* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (immer aktiviert) bieten Einblicke in die Vorgänge, die bei Aufträgen durchgeführt werden.
+* [Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md) (immer aktiviert) bieten Einblicke in die Vorgänge, die bei Aufträgen durchgeführt werden.
 
-* [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Diagnoseprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
+* [Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Ressourcenprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
 
 > [!NOTE]
 > Sie können Dienste wie Azure Storage, Azure Event Hubs und Azure Monitor-Protokolle verwenden, um nicht konforme Daten zu analysieren. Gebühren werden basierend auf dem Preismodell für diese Dienste in Rechnung gestellt.
@@ -53,33 +53,33 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
 5. Sie können basierend auf der Fehlermeldung im JSON-Format Korrekturmaßnahmen vornehmen. In diesem Beispiel müssen Prüfungen, ob der Breitengradwert zwischen -90 Grad und 90 Grad liegt, der Abfrage hinzugefügt werden.
 
-6. Wenn die Fehlermeldung in den Aktivitätsprotokollen bei der Identifizierung der Grundursache nicht hilfreich ist, aktivieren Sie Diagnoseprotokolle, und verwenden Sie Azure Monitor-Protokolle.
+6. Wenn die Fehlermeldung in den Aktivitätsprotokollen bei der Identifizierung der Grundursache nicht hilfreich ist, aktivieren Sie Ressourcenprotokolle, und verwenden Sie Azure Monitor-Protokolle.
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>Senden von Diagnosedaten an Azure Monitor-Protokolle
 
-Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Azure Monitor-Protokolle senden. Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokolle zu aktivieren, führen Sie folgende Schritte aus:
+Sie sollten unbedingt Ressourcenprotokolle aktivieren und an Azure Monitor-Protokolle senden. Sie sind standardmäßig **deaktiviert**. Um sie zu aktivieren, führen Sie die folgenden Schritte aus:
 
 1.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
 
-    ![Blattnavigation zu Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
+    ![Blattnavigation zu Ressourcenprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
 2.  Erstellen Sie einen **Namen** in **Diagnoseeinstellungen**, und aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**. Fügen Sie dann einen bereits vorhandenen **Log Analytics-Arbeitsbereich** hinzu, oder erstellen Sie einen neuen. Aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **LOG** und **AllMetrics** unter **METRIK**. Klicken Sie auf **Speichern**. Es wird empfohlen, einen Log Analytics-Arbeitsbereich in derselben Azure-Region zu verwenden, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird, um zusätzliche Kosten zu vermeiden.
 
-    ![Einstellungen für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Einstellungen für Ressourcenprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Diagnoseprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Wenn Sie Diagnoseprotokolle für Ihren Auftrag anzeigen möchten, wählen Sie die Option **Protokolle** im Abschnitt **Überwachung** aus.
+3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Ressourcenprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Wenn Sie Ressourcenprotokolle für Ihren Auftrag anzeigen möchten, wählen Sie die Option **Protokolle** im Abschnitt **Überwachung** aus.
 
-   ![Diagnoseprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
 4. Stream Analytics bietet vordefinierte Abfragen, mit denen Sie problemlos nach den für Sie interessanten Protokollen suchen können. Die drei Kategorien sind **Allgemein**, **Eingabedatenfehler** und **Ausgabedatenfehler**. Wenn Sie z. B. eine Zusammenfassung aller Fehler ihres Auftrags in den letzten 7 Tagen anzeigen möchten, können Sie das **Ausführen** der entsprechenden vordefinierten Abfrage auswählen. 
 
-   ![Diagnoseprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
+   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
    ![Ergebnisse von Protokollen](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
-## <a name="diagnostics-log-categories"></a>Kategorien der Diagnoseprotokolle
+## <a name="resource-log-categories"></a>Ressourcenprotokollkategorien
 
-Azure Stream Analytics erfasst zwei Kategorien von Diagnoseprotokollen:
+Azure Stream Analytics erfasst zwei Kategorien von Ressourcenprotokollen:
 
 * **Erstellung**: Erfasst Protokollereignisse zu Auftragserstellungsvorgängen wie Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage sowie Starten und Beenden des Auftrags.
 
@@ -90,7 +90,7 @@ Azure Stream Analytics erfasst zwei Kategorien von Diagnoseprotokollen:
         * Fehler bei der Auswertung von Ausdrücken
     * Andere Ereignisse und Fehler
 
-## <a name="diagnostics-logs-schema"></a>Diagnoseprotokollschema
+## <a name="resource-logs-schema"></a>Ressourcenprotokollschema
 
 Alle Protokolle werden im JSON-Format gespeichert. Jeder Eintrag enthält folgende allgemeine Zeichenfolgenfelder:
 

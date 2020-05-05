@@ -1,53 +1,22 @@
 ---
-title: Wartungssteuerung
-description: Es wird beschrieben, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung auf Ihre virtuellen Azure-Computer angewendet wird.
+title: Wartungssteuerung für virtuelle Azure-Computer mit der CLI
+description: Es wird beschrieben, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung und der CLI auf Ihre virtuellen Azure-Computer angewendet wird.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226762"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137500"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Vorschau: Steuern von Updates mit der Wartungssteuerung und der Azure CLI
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Steuern von Updates mit der Wartungssteuerung und der Azure CLI
 
-Verwalten Sie mit der Wartungssteuerung Plattformupdates, die keinen Neustart erfordern. Azure aktualisiert die eigene Infrastruktur häufig, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern oder neue Features zu integrieren. Die meisten Updates sind für Benutzer transparent. Einige empfindlichen Workloads wie Gaming, Medienstreaming und Finanzbuchungen können nicht einmal wenige Sekunden tolerieren, in denen eine VM zur Wartung eingefroren oder getrennt ist. Die Wartungssteuerung bietet Ihnen die Möglichkeit, auf Plattformupdates zu warten und diese innerhalb eines 35-tägigen rollierenden Zeitfensters anzuwenden. 
-
-Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre isolierten VMs und Azure Dedicated Host-Instanzen anwenden.
-
-Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
-- Batchupdates in ein Updatepaket
-- Warten von bis zu 35 Tagen bis zur Anwendung der Updates 
-- Automatisieren von Plattformupdates für Ihr Wartungsfenster mit Azure Functions
-- Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend. 
-
-> [!IMPORTANT]
-> Die Wartungssteuerung ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
-## <a name="limitations"></a>Einschränkungen
-
-- Virtuelle Computer müssen sich auf einem [dedizierten Host](./linux/dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](./linux/isolation.md) erstellt werden.
-- Nach 35 Tagen wird automatisch ein Update angewendet.
-- Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
-
-
-## <a name="install-the-maintenance-extension"></a>Installieren der Wartungserweiterung
-
-Wenn Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) lokal installieren möchten, benötigen Sie die Version 2.0.76 oder höher.
-
-Installieren Sie die `maintenance`-CLI-Vorschauerweiterung lokal oder in Cloud Shell. 
-
-```azurecli-interactive
-az extension add -n maintenance
-```
-
+Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre isolierten VMs und dedizierten Azure-Hosts anwenden. In diesem Thema werden die Azure CLI-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zu den Vorteilen der Verwendung der Wartungssteuerung, ihren Einschränkungen und anderen Verwaltungsoptionen finden Sie unter [Verwalten von Plattformupdates mit der Wartungssteuerung](maintenance-control.md).
 
 ## <a name="create-a-maintenance-configuration"></a>Erstellen einer Wartungskonfiguration
 
@@ -61,7 +30,7 @@ az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location  eastus
+   --location eastus
 ```
 
 Kopieren Sie die Konfigurations-ID aus der Ausgabe, um sie später zu verwenden.

@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587208"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187969"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Löschen von Speicherblobs für Flowprotokolle für Netzwerksicherheitsgruppen in Network Watcher
 
-Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus Blob Storage gelöscht werden. Sie müssen nun ein PowerShell-Skript ausführen, um Flowprotokolle wie in diesem Artikel beschrieben manuell aus dem Speicherkonto zu löschen.
+Wenn Sie Datenflussprotokolle manuell aus Ihrem Speicherkonto löschen müssen, können Sie das folgende PowerShell-Skript verwenden.
+Mit diesem Skript werden nur Speicherblobs gelöscht, die älter sind als die vorhandene Aufbewahrungsrichtlinie, die vom Benutzer angegeben wurde.
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>Ausführen des PowerShell-Skripts zum Löschen von NSG-Flowprotokollen
  

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655659"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106507"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -22,7 +22,7 @@ Stellen Sie sicher, dass Ihre Umgebung diese Anforderungen erfüllt, bevor Sie d
 Ein kostenpflichtiges Abonnement wird empfohlen.
 
 > [!NOTE]
-> In den ersten Monaten muss das Azure HPC Cache-Team Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cache-Instanz verwendet werden kann. Mithilfe dieser Vorgehensweise wird sichergestellt, dass jeder Kunde gute Reaktionszeiten von seinen Caches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
+> Das Azure HPC Cache-Team muss Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cacheinstanz verwendet werden kann. Mithilfe dieser Vorgehensweise wird sichergestellt, dass jeder Kunde gute Reaktionszeiten von seinen Caches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
 
 ## <a name="network-infrastructure"></a>Netzwerkinfrastruktur
 
@@ -84,11 +84,11 @@ Verwenden Sie diese Einstellungen, um ein kompatibles Speicherkonto zu erstellen
 * Zugriffsebene (Standard): **Heiße Ebene**
 
 Es wird empfohlen, ein Speicherkonto am Standort Ihres Caches zu verwenden.
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Außerdem müssen Sie der Cacheanwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben (wie weiter oben unter [Berechtigungen](#permissions) beschrieben). Befolgen Sie das Verfahren unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die erforderlichen Zugriffsrollen zuzuweisen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
 
 ### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
+<!-- linked from configuration.md -->
 
 Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise eines lokalen hardwarebasierten NAS-Systems), dass es die folgenden Anforderungen erfüllt. Arbeiten Sie bei der Überprüfung dieser Einstellungen ggf. mit den Netzwerkadministratoren oder den Firewall-Managern Ihres Speichersystems (oder Rechenzentrums) zusammen.
 

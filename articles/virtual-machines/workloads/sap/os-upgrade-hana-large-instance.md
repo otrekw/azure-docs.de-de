@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fea0f74a90bc7b786a9b302d6282f9fb70e5412
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991482"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192415"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
@@ -62,17 +62,28 @@ Die Betriebssystemkonfiguration kann sich im Lauf der Zeit aufgrund angewendeter
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3b           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP2            |   3.2.3i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3i           |  2.3.0.45    |   1.6.0.37   |
   |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Befehle für das Treiberupgrade und zum Bereinigen alter RPM-Pakete
+
+#### <a name="command-to-check-existing-installed-drivers"></a>Befehl zum Überprüfen vorhandener installierter Treiber
 ```
-rpm -U driverpackage.rpm
-rpm -e olddriverpackage.rpm
+rpm -qa | grep enic/fnic 
+```
+#### <a name="delete-existing-enicfnic-rpm"></a>Löschen vorhandener eNIC/fNIC rpm
+```
+rpm -e <old-rpm-package>
+```
+#### <a name="install-the-recommended-enicfnic-driver-packages"></a>Installieren der empfohlenen eNIC-/fNIC-Treiberpakete
+```
+rpm -ivh <enic/fnic.rpm> 
 ```
 
-#### <a name="commands-to-confirm"></a>Befehle zur Bestätigung
+#### <a name="commands-to-confirm-the-installation"></a>Befehle zum Bestätigen der Installation
 ```
 modinfo enic
 modinfo fnic

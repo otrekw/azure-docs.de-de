@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 1e92a9f0b9ba007b289c634995b04f4f1575310a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caea8d515964510fce432eb0497e3af19ecc1369
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300593"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101636"
 ---
 # <a name="update-pricing-tier"></a>Aktualisieren des Tarifs 
 In diesem Artikel wird gezeigt, wie Sie den Tarif eines Azure Event Grid-Themas oder einer -Domäne mithilfe des Azure-Portals, der Azure CLI und Azure PowerShell aktualisieren. 
@@ -42,7 +42,7 @@ Auf der Seite **Netzwerk** können Sie ein **Upgrade** aus dem Basic-Tarif in de
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Seite Ihres Themas oder Ihrer Domäne. 
 2. Wechseln Sie auf der Seite **Netzwerk** zur Registerkarte **Private Endpunktverbindungen (Vorschau)** . 
-3. Wenn der aktuelle Tarif **Basic** ist, wird die folgende Meldung angezeigt. Wählen Sie diese aus. 
+3. Wenn der aktuelle Tarif **Basic** ist, wird die folgende Meldung angezeigt. Wählen Sie dies aus. 
 
     ![Aktualisieren des Tarifs auf der Seite „Private Endpunktverbindungen“.](./media/update-tier/private-endpoint-connections-page.png)
 4. Wählen Sie auf der Seite **Update auf Premium-Tarif** die Option **Ja** aus. 
@@ -55,40 +55,40 @@ Auf der Seite **Netzwerk** können Sie ein **Upgrade** aus dem Basic-Tarif in de
 
 
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
-In diesem Abschnitt wird gezeigt, wie der Tarif eines Themas oder einer Domäne mit Azure CLI-Befehlen geändert wird. 
+In diesem Abschnitt wird gezeigt, wie der Tarif eines Themas mit Azure CLI-Befehlen geändert wird. Um den Tarif einer Domäne zu aktualisieren, verwenden Sie den Befehl `az eventgrid domain update` auf ähnliche Weise.
+
+### <a name="prerequisites"></a>Voraussetzungen
+Aktualisieren Sie die Azure Event Grid-Erweiterung für die CLI, indem Sie den folgenden Befehl ausführen: 
+
+```azurecli-interactive
+az extension update -n eventgrid
+```
+
+Wenn die Erweiterung nicht installiert ist, führen Sie den folgenden Befehl aus, um sie zu installieren: 
+
+```azurecli-interactive
+az extension add -n eventgrid
+```
 
 ### <a name="upgrade-a-topic-from-basic-to-premium"></a>Upgrade eines Themas aus Basic in Premium
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Premium" 
 ```
 
 ### <a name="downgrade-a-topic-from-premium-to-basic"></a>Herabstufen eines Themas aus Premium in Basic
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Basic" 
 ```
-
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Upgrade einer Domäne aus Basic in Premium
-
-```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
-```
-
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Herabstufen einer Domäne aus Premium in Basic
-
-```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
-```
-
 
 
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell

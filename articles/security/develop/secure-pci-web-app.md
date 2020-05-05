@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: terrylan
-ms.openlocfilehash: 4fe612db65d985be2f1f1c81d03c3ee735c03889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ab3697824ff4a47e7b8f281b531cae610ffdc3b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69992390"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187578"
 ---
 # <a name="develop-a-secure-infrastructure-for-a-pci-app"></a>Entwickeln einer sicheren Infrastruktur für eine PCI-App
 
@@ -48,10 +48,10 @@ Bei der Entwicklung und Bereitstellung dieser App lernen Sie Folgendes:
 
 - Erstellen einer Azure Key Vault-Instanz sowie Speichern und Abrufen von Geheimnissen
 - Bereitstellen von Azure SQL-Datenbank, Einrichten sicherer Daten und Autorisieren des Zugriffs
-- Bereitstellen der Azure-Web-App mit App Service-Umgebung (dedizierte, isolierte Umgebung mit Front-End-Firewallzugriff)
+- Bereitstellen der Azure-Web-App mit App Service-Umgebung (dedizierte, isolierte Umgebung mit Front-End-Firewallzugriff).
 - Erstellen und Konfigurieren einer Azure Application Gateway-Instanz mit einer Firewall, die das [Top 10 OWASP-Regelwerk](https://coreruleset.org/) anwendet
 - Aktivieren der Verschlüsselung von Daten während der Übertragung und im Ruhezustand mithilfe von Azure-Diensten
-- Einrichten der Azure-Richtlinie und der Blaupausen zur Evaluierung der Compliance
+- Einrichten von Azure Policy und Azure Blueprints zur Evaluierung der Compliance.
 
 Sobald Sie diese App entwickelt und bereitgestellt haben, haben Sie die folgende Beispiel-Web-App sowie die beschriebene Konfiguration und Sicherheitsmaßnahmen eingerichtet.
 
@@ -118,7 +118,7 @@ Es gibt viele Methoden für die Bereitstellung von Apps in Azure, einschließlic
 
 - Azure-Ressourcen-Manager-Vorlagen
 - PowerShell
-- Azure-Befehlszeilenschnittstelle
+- Azure CLI
 - Azure-Portal
 - Azure DevOps
 

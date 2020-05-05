@@ -1,0 +1,215 @@
+---
+title: 'Azure Red Hat OpenShift mit OpenShift 4: Konfigurieren von Azure Active Directory-Authentifizierung über die Befehlszeile'
+description: Erfahren Sie, wie Sie Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift-Cluster mit OpenShift 4 mithilfe der Befehlszeile konfigurieren.
+ms.service: container-service
+ms.topic: article
+ms.date: 03/12/2020
+author: sabbour
+ms.author: asabbour
+keywords: aro, openshift, az aro, red hat, cli
+ms.custom: mvc
+ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204799"
+---
+# <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Konfigurieren von Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift 4-Cluster (CLI)
+
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.75 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+Rufen Sie die clusterspezifischen URLs ab, die zum Konfigurieren der Azure Active Directory-Anwendung verwendet werden.
+
+Erstellen Sie die OAuth-Rückruf-URL des Clusters, und speichern Sie sie in einer Variablen **oauthCallbackURL**. Stellen Sie sicher, dass Sie **aro-rg** durch den Namen Ihrer Ressourcengruppe ersetzen und **aro-cluster** durch den Namen Ihres Clusters.
+
+> [!NOTE]
+> Der `AAD` Abschnitt in der OAuth-Rückruf-URL sollte mit dem Namen des OAuth-Identitätsanbieters identisch sein, den Sie später einrichten.
+
+```azurecli-interactive
+domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
+apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
+oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+```
+
+## <a name="create-an-azure-active-directory-application-for-authentication"></a>Erstellen einer Azure Active Directory Anwendung für die Authentifizierung
+
+Erstellen Sie eine Azure Active Directory Anwendung, und rufen Sie den erstellten Anwendungsbezeichner ab. Ersetzen Sie **\<ClientSecret>** durch ein sicheres Kennwort.
+
+```azurecli-interactive
+az ad app create \
+  --query appId -o tsv \
+  --display-name aro-auth \
+  --reply-urls $oauthCallbackURL \
+  --password '<ClientSecret>'
+```
+
+Es sollte etwas in der folgenden Art zurückgegeben werden. Notieren Sie sich diese Angabe, da es sich hierbei um die **AppId** handelt, die Sie in späteren Schritten benötigen.
+
+```output
+6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+```
+
+Rufen Sie die Mandanten-ID des Abonnements ab, das Besitzer der Anwendung ist.
+
+```azure
+az account show --query tenantId -o tsv
+```
+
+Es sollte etwas in der folgenden Art zurückgegeben werden. Notieren Sie sich diese Angabe, da es sich hierbei um die **TenantId** handelt, die Sie in späteren Schritten benötigen.
+
+```output
+72f999sx-8sk1-8snc-js82-2d7cj902db47
+```
+
+## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>Erstellen einer Manifestdatei zum Definieren der optionalen Ansprüche, die im ID-Token enthalten sein sollen
+
+Anwendungsentwickler können [optionale Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) in ihren Azure AD-Anwendungen verwenden, um anzugeben, welche Ansprüche in Token vorhanden sein sollen, die an ihre Anwendungen gesendet werden.
+
+Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
+
+- Auswählen zusätzlicher Ansprüche, die in Token für Ihre Anwendung aufgenommen werden sollen
+- Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
+- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
+
+Wir konfigurieren OpenShift so, dass der `email`-Anspruch verwendet wird und ein Fallback auf `upn` erfolgt, um den bevorzugten Benutzernamen festzulegen, indem der `upn` als Teil des von Azure Active Directory zurückgegebenen ID-Tokens hinzugefügt wird.
+
+Erstellen Sie eine Datei **manifest.json**, um die Azure Active Directory-Anwendung zu konfigurieren.
+
+```bash
+cat > manifest.json<< EOF
+[{
+  "name": "upn",
+  "source": null,
+  "essential": false,
+  "additionalProperties": []
+},
+{
+"name": "email",
+  "source": null,
+  "essential": false,
+  "additionalProperties": []
+}]
+EOF
+```
+
+## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Aktualisieren der optionalClaims der Azure Active Directory-Anwendung mit einem Manifest
+
+Ersetzen Sie **\<AppId>** durch die ID, die Sie zuvor abgerufen haben.
+
+```azurecli-interactive
+az ad app update \
+  --set optionalClaims.idToken=@manifest.json \
+  --id <AppId>
+```
+
+## <a name="update-the-azure-active-directory-application-scope-permissions"></a>Aktualisieren der Bereichsberechtigungen der Azure Active Directory-Anwendung
+
+Um die Benutzerinformationen aus Azure Active Directory lesen zu können, müssen wir die richtigen Bereiche definieren.
+
+Ersetzen Sie **\<AppId>** durch die ID, die Sie zuvor abgerufen haben.
+
+Fügen Sie die Berechtigung für den Bereich **Azure Active Directory Graph.User.Read** hinzu, um die Anmeldung zu ermöglichen und das Benutzerprofil zu lesen.
+
+```azurecli-interactive
+az ad app permission add \
+ --api 00000002-0000-0000-c000-000000000000 \
+ --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
+ --id <AppId>
+```
+
+> [!NOTE]
+> Wenn Sie für dieses Azure Active Directory nicht als globaler Administrator authentifiziert sind, können Sie die Meldung ignorieren, um die Zustimmung zu erteilen, da Sie bei der Anmeldung bei Ihrem eigenen Konto dazu aufgefordert werden.
+
+## <a name="assign-users-and-groups-to-the-cluster-optional"></a>Zuweisen von Benutzern und Gruppen zum Cluster (optional)
+
+Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registriert sind, sind standardmäßig für alle Benutzer des Mandanten verfügbar, deren Authentifizierung erfolgreich war. Azure AD ermöglicht Mandantenadministratoren und Entwicklern die Beschränkung einer App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen im Mandanten.
+
+Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration).
+
+## <a name="configure-openshift-openid-authentication"></a>Konfigurieren von OpenShift OpenID-Authentifizierung
+
+Rufen Sie die `kubeadmin`-Anmeldeinformationen ab. Führen Sie den folgenden Befehl aus, um das Kennwort für den Benutzer `kubeadmin` zu suchen:
+
+```azurecli-interactive
+az aro list-credentials \
+  --name aro-cluster \
+  --resource-group aro-rg
+```
+
+Die folgende Beispielausgabe zeigt, dass sich das Kennwort in `kubeadminPassword` befindet.
+
+```json
+{
+  "kubeadminPassword": "<generated password>",
+  "kubeadminUsername": "kubeadmin"
+}
+```
+
+Melden Sie sich mit dem folgenden Befehl beim API-Server des OpenShift-Clusters an. Die `$apiServer`-Variable wurde [bereits früher]() festgelegt. Ersetzen Sie **\<kubeadmin password>** durch das Kennwort, das Sie abgerufen haben.
+
+```azurecli-interactive
+oc login $apiServer -u kubeadmin -p <kubeadmin password>
+```
+
+Erstellen Sie ein OpenShift-Geheimnis, um das Azure Active Directory-Anwendungsgeheimnis zu speichern, und ersetzen Sie **\<ClientSecret>** durch das zuvor abgerufene Geheimnis.
+
+```azurecli-interactive
+oc create secret generic openid-client-secret-azuread \
+  --namespace openshift-config \
+  --from-literal=clientSecret=<ClientSecret>
+```    
+
+Erstellen Sie eine Datei **oidc.yaml**, um OpenShift OpenID-Authentifizierung für Azure Active Directory zu konfigurieren. Ersetzen Sie **\<AppId>** und **\<TenantId>** durch die Werte, die Sie zuvor abgerufen haben.
+
+```bash
+cat > oidc.yaml<< EOF
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+  - name: AAD
+    mappingMethod: claim
+    type: OpenID
+    openID:
+      clientID: <AppId>
+      clientSecret: 
+        name: openid-client-secret-azuread
+      extraScopes: 
+      - email
+      - profile
+      extraAuthorizeParameters: 
+        include_granted_scopes: "true"
+      claims:
+        preferredUsername: 
+        - email
+        - upn
+        name: 
+        - name
+        email: 
+        - email
+      issuer: https://login.microsoftonline.com/<TenantId>
+EOF
+```
+
+Wenden Sie die Konfiguration auf den Cluster an.
+
+```azurecli-interactive
+oc apply -f oidc.yaml
+```
+
+Sie erhalten eine Antwort, die in etwa der folgenden entspricht.
+
+```output
+oauth.config.openshift.io/cluster configured
+```
+
+## <a name="verify-login-through-azure-active-directory"></a>Überprüfen der Anmeldung über Azure Active Directory
+
+Wenn Sie sich jetzt von der OpenShift-Webkonsole abmelden und versuchen, sich erneut anzumelden, wird Ihnen eine neue Option angezeigt, mit der Sie sich mit **AAD** anmelden können. Möglicherweise müssen Sie einige Minuten warten.
+
+![Anmeldebildschirm mit Azure Active Directory-Option](media/aro4-login-2.png)

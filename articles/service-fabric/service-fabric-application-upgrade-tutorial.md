@@ -3,12 +3,12 @@ title: 'Tutorial: Service Fabric-Anwendungsupgrades'
 description: Dieser Artikel bietet eine exemplarische Vorgehensweise für das Bereitstellen einer Service Fabric-Anwendung, das Ändern des Codes und das Einführen eines Upgrades mithilfe von Visual Studio.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464823"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195866"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Tutorial für das Upgraden von Service Fabric-Anwendungen mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "75464823"
 
 Azure Service Fabric vereinfacht das Upgraden von Cloudanwendungen, indem sichergestellt wird, dass nur geänderte Dienste aktualisiert werden und die Anwendungsintegrität während des gesamten Upgradeprozesses überwacht wird. Falls ein Fehler auftritt, wird die Anwendung automatisch auf die vorherigen Version zurückgesetzt. Upgrades von Service Fabric-Anwendungen erfolgen *ohne Ausfallzeiten*, da die Anwendung ohne Ausfallzeiten aktualisiert werden kann. In diesem Tutorial wird beschrieben, wie ein paralleles Upgrade über Visual Studio erfolgt.
 
-## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Schritt 1: Erstellen und Veröffentlichen des Beispiels Visual Objects
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Schritt 1: Erstellen und Veröffentlichen des Visual Objects-Beispiels
 Laden Sie zuerst die Anwendung [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) von GitHub herunter. Erstellen und veröffentlichen Sie dann die Anwendung, indem Sie mit der rechten Maustaste auf das Anwendungsprojekt **VisualObjects** klicken und im Menü „Service Fabric“ den Befehl **Veröffentlichen** auswählen.
 
 ![Kontextmenü einer Service Fabric-Anwendung][image1]
@@ -30,11 +30,11 @@ Durch Auswahl von **Veröffentlichen** wird ein Popupfenster geöffnet. Sie kön
 
 ![Veröffentlichen einer Service Fabric-Anwendung][image2]
 
-Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung Visual Objects enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie in die Adressleiste [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
+Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung Visual Objects enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie `http://localhost:8081/visualobjects/` in die Adressleiste eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
 
 **HINWEIS:** Bei Bereitstellen im Profil `Cloud.xml` (Azure Service Fabric) sollte die Anwendung unter **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** verfügbar sein. Stellen Sie sicher, dass Sie `8081/TCP` im Load Balancer konfiguriert haben (der Load Balancer befindet sich in derselben Ressourcengruppe wie die Service Fabric-Instanz).
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Schritt 2: Aktualisieren des Beispiels „Visual Objects“
+## <a name="step-2-update-the-visual-objects-sample"></a>Schritt 2: Aktualisieren des Beispiels „Visual Objects“
 Sie werden feststellen, dass sich die visuellen Objekte mit der Version, die in Schritt 1 bereitgestellt wurde, nicht drehen. Wir aktualisieren diese Anwendung so, dass sich die visuellen Objekte drehen.
 
 Wählen Sie das Projekt „VisualObjects.ActorService“ in der Projektmappe „VisualObjects“ aus, und öffnen Sie die Datei **VisualObjectActor.cs** . Navigieren Sie in der Datei zur `MoveObject`-Methode, kommentieren Sie `visualObject.Move(false)` aus, und heben Sie die Auskommentierung für `visualObject.Move(true)` auf. Diese Codeänderung bewirkt, dass sich die Objekte nach dem Upgrade des Diensts drehen.  **Jetzt können Sie die Projektmappe erstellen (nicht neu erstellen)** , die die geänderten Projekte erstellt. Wenn Sie die Option *Alles neu erstellen*auswählen, müssen Sie die Versionen für alle Projekte aktualisieren.
@@ -51,7 +51,7 @@ Die Visual Studio-Tools können automatische Rollups von Versionen durchführen,
 
 Speichern Sie die Änderungen, und aktivieren Sie nun das Kontrollkästchen **Anwendungs- und Dienstversionen automatisch aktualisieren** .
 
-## <a name="step-3--upgrade-your-application"></a>Schritt 3: Upgrade der Anwendung
+## <a name="step-3--upgrade-your-application"></a>Schritt 3:  Upgraden Ihrer Anwendung
 Machen Sie sich mit den [Parametern für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md) und dem [Upgradeprozess](service-fabric-application-upgrade.md) vertraut, um ein tieferes Verständnis der verschiedenen anwendbaren Upgradeparameter, Timeouts und Integritätskriterien zu erhalten. In dieser exemplarischen Vorgehensweise ist das Kriterium für die Evaluierung der Systemintegrität auf die Standardeinstellung (nicht überwachter Modus) festgelegt. Sie können diese Einstellungen konfigurieren, indem Sie **Upgradeeinstellungen konfigurieren** auswählen und die Parameter anschließend wie gewünscht ändern.
 
 Nun können wir das Anwendungsupgrade über die Schaltfläche **Veröffentlichen** starten. Dadurch wird die Anwendung auf Version 2.0.0 aktualisiert, in der sich die Objekte drehen. Service Fabric aktualisiert Updatedomänen nacheinander (einige Objekte werden zuerst aktualisiert, dann folgen andere). Auf den Dienst kann während des Upgrades zugegriffen werden. Der Zugriff auf den Dienst kann mit Ihrem Client (Browser) überprüft werden.  

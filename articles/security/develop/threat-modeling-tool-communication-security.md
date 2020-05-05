@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688000"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203742"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -30,13 +30,13 @@ ms.locfileid: "81688000"
 | **Dynamics CRM** | <ul><li>[Überprüfen Sie die Dienstkontoberechtigungen, und vergewissern Sie sich, dass die benutzerdefinierten Dienste oder ASP.NET-Seiten die CRM-Sicherheit respektieren.](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[Verwenden Sie das Datenverwaltungsgateway, um eine Verbindung zwischen einer lokalen SQL Server-Instanz und Azure Data Factory herzustellen.](#sqlserver-factory)</li></ul> |
 | **Identity Server** | <ul><li>[Stellen Sie sicher, dass der gesamte an Identity Server gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#identity-https)</li></ul> |
-| **Web Application** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
+| **Web Application** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein TLS/SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.](#sqlserver-validation)</li><li>[Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie das Anheften von Zertifikaten.](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Aktivieren Sie den sicheren HTTPS-Transportkanal.](#https-transport)</li><li>[WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.](#message-protection)</li><li>[WCF: Führen Sie den WCF-Dienst mit einem Konto mit möglichst wenigen Berechtigungen aus.](#least-account-wcf)</li></ul> |
 | **Web-API** | <ul><li>[Erzwingen Sie, dass der gesamte an Web-APIs gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#webapi-https)</li></ul> |
-| **Azure Cache for Redis** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Cache for Redis über SSL abgewickelt wird.](#redis-ssl)</li></ul> |
+| **Azure Cache for Redis** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Cache for Redis über TLS abgewickelt wird.](#redis-ssl)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Schützen Sie die Kommunikation zwischen Gerät und zwischengeschaltetem Gateway.](#device-field)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Schützen Sie die Kommunikation zwischen Gerät und Cloudgateway mithilfe von SSL/TLS.](#device-cloud)</li></ul> |
 
@@ -82,7 +82,7 @@ ms.locfileid: "81688000"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [IdentityServer3 - Keys, Signatures and Cryptography](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) (IdentityServer3: Schlüssel, Signaturen und Kryptografie), [IdentityServer3 - Deployment](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) (IdentityServer3: Bereitstellung) |
-| **Schritte** | Bei Identity Server muss für alle eingehenden Verbindungen standardmäßig HTTPS verwendet werden. Wichtig: Die Kommunikation mit Identity Server darf ausschließlich über geschützte Transportkanäle erfolgen. In bestimmten Bereitstellungsszenarien (etwa bei der SSL-Abladung) kann diese Anforderung gelockert werden. Weitere Informationen finden Sie auf der unter „Referenzen“ angegebenen Seite zur Identity Server-Bereitstellung. |
+| **Schritte** | Bei Identity Server muss für alle eingehenden Verbindungen standardmäßig HTTPS verwendet werden. Wichtig: Die Kommunikation mit Identity Server darf ausschließlich über geschützte Transportkanäle erfolgen. In bestimmten Bereitstellungsszenarien (etwa bei der TLS-Abladung) kann diese Anforderung gelockert werden. Weitere Informationen finden Sie auf der unter „Referenzen“ angegebenen Seite zur Identity Server-Bereitstellung. |
 
 ## <a name="verify-x509-certificates-used-to-authenticate-ssl-tls-and-dtls-connections"></a><a id="x509-ssltls"></a>Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.
 
@@ -95,7 +95,7 @@ ms.locfileid: "81688000"
 | **Referenzen**              | –  |
 | **Schritte** | <p>Anwendungen, die SSL, TLS oder DTLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Hierzu muss für die Zertifikate Folgendes überprüft werden:</p><ul><li>Domänenname</li><li>Gültigkeitsdaten (Anfangsdatum und Ablaufdatum)</li><li>Sperrstatus</li><li>Verwendung (beispielsweise Serverauthentifizierung bei Servern und Clientauthentifizierung bei Clients)</li><li>Vertrauenskette Zertifikate müssen mit einer Stammzertifizierungsstelle (Certification Authority, CA) verkettet sein, die von der Plattform als vertrauenswürdig eingestuft wird oder vom Administrator explizit konfiguriert wurde.</li><li>Der öffentliche Schlüssel des Zertifikats muss über 2048 Bit lang sein.</li><li>Als Hashalgorithmus muss mindestens SHA256 verwendet werden. |
 
-## <a name="configure-ssl-certificate-for-custom-domain-in-azure-app-service"></a><a id="ssl-appservice"></a>Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.
+## <a name="configure-tlsssl-certificate-for-custom-domain-in-azure-app-service"></a><a id="ssl-appservice"></a>Konfigurieren eines TLS/SSL-Zertifikats für eine benutzerdefinierte Domäne in Azure App Service
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -104,7 +104,7 @@ ms.locfileid: "81688000"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | EnvironmentType: Azure |
 | **Referenzen**              | [Aktivieren von HTTPS für eine App in Azure App Service](../../app-service/configure-ssl-bindings.md) |
-| **Schritte** | Standardmäßig aktiviert Azure HTTPS bereits für jede App mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“. Platzhalterdomänen sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit eigenem Zertifikat. (Weitere Informationen finden Sie [hier](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/).) Es empfiehlt sich, SSL für die benutzerdefinierte Domäne zu aktivieren, über die auf die bereitgestellte App zugegriffen wird.|
+| **Schritte** | Standardmäßig aktiviert Azure HTTPS bereits für jede App mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“. Platzhalterdomänen sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit eigenem Zertifikat. (Weitere Informationen finden Sie [hier](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/).) Es empfiehlt sich, TLS für die benutzerdefinierte Domäne zu aktivieren, über die auf die bereitgestellte App zugegriffen wird.|
 
 ## <a name="force-all-traffic-to-azure-app-service-over-https-connection"></a><a id="appservice-https"></a>Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.
 
@@ -159,7 +159,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Zutreffende Technologien** | SQL Azure  |
 | **Attribute**              | SQL-Version: V12 |
 | **Referenzen**              | [Best Practices on Writing Secure Connection Strings for SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) (Bewährte Methoden zum Schreiben sicherer Verbindungszeichenfolgen für SQL-Datenbank) |
-| **Schritte** | <p>Die gesamte Kommunikation zwischen SQL-Datenbank und einer Clientanwendung wird jederzeit mithilfe von SSL (Secure Sockets Layer) verschlüsselt. SQL-Datenbank unterstützt keine unverschlüsselten Verbindungen. Um Zertifikate mit Anwendungscode oder Tools zu überprüfen, sollten Sie explizit eine verschlüsselte Verbindung anfordern und den Serverzertifikaten nicht vertrauen. Verschlüsselte Verbindungen werden auch dann verwendet, wenn von Ihrem Anwendungscode oder von Ihren Tools keine verschlüsselte Verbindung angefordert wird.</p><p>Es kann aber sein, dass hierbei die Serverzertifikate nicht überprüft werden, sodass die Gefahr von Man-in-the-Middle-Angriffen besteht. Legen Sie `Encrypt=True` und `TrustServerCertificate=False` in der Datenbank-Verbindungszeichenfolge fest, um Zertifikate mit ADO.NET-Anwendungscode zu überprüfen. Um Zertifikate über SQL Server Management Studio zu überprüfen, öffnen Sie das Dialogfeld „Verbindung mit Server herstellen“. Klicken Sie auf der Registerkarte „Verbindungseigenschaften“ auf „Verbindung verschlüsseln“.</p>|
+| **Schritte** | <p>Die gesamte Kommunikation zwischen SQL-Datenbank und einer Clientanwendung wird mit Transport Layer Security (TLS) verschlüsselt, früher als Secure Sockets Layer (SSL) bezeichnet. SQL-Datenbank unterstützt keine unverschlüsselten Verbindungen. Um Zertifikate mit Anwendungscode oder Tools zu überprüfen, sollten Sie explizit eine verschlüsselte Verbindung anfordern und den Serverzertifikaten nicht vertrauen. Verschlüsselte Verbindungen werden auch dann verwendet, wenn von Ihrem Anwendungscode oder von Ihren Tools keine verschlüsselte Verbindung angefordert wird.</p><p>Es kann aber sein, dass hierbei die Serverzertifikate nicht überprüft werden, sodass die Gefahr von Man-in-the-Middle-Angriffen besteht. Legen Sie `Encrypt=True` und `TrustServerCertificate=False` in der Datenbank-Verbindungszeichenfolge fest, um Zertifikate mit ADO.NET-Anwendungscode zu überprüfen. Um Zertifikate über SQL Server Management Studio zu überprüfen, öffnen Sie das Dialogfeld „Verbindung mit Server herstellen“. Klicken Sie auf der Registerkarte „Verbindungseigenschaften“ auf „Verbindung verschlüsseln“.</p>|
 
 ## <a name="force-encrypted-communication-to-sql-server"></a><a id="encrypted-sqlserver"></a>Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.
 
@@ -170,7 +170,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Zutreffende Technologien** | Lokal |
 | **Attribute**              | SQL-Version: MsSQL2016, SQL-Version: MsSQL2012, SQL-Version: MsSQL2014 |
 | **Referenzen**              | [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine](https://msdn.microsoft.com/library/ms191192)  |
-| **Schritte** | Die Aktivierung der SSL-Verschlüsselung erhöht die Sicherheit von Daten, die über Netzwerke zwischen Instanzen von SQL Server und Anwendungen übertragen werden. |
+| **Schritte** | Die Aktivierung der TLS-Verschlüsselung erhöht die Sicherheit von Daten, die über Netzwerke zwischen Instanzen von SQL Server und Anwendungen übertragen werden. |
 
 ## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.
 
@@ -214,7 +214,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Zutreffende Technologien** | Allgemein, Windows Phone |
 | **Attribute**              | –  |
 | **Referenzen**              | [Certificate and Public Key Pinning](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) (Anheften von Zertifikaten und öffentlichen Schlüsseln) |
-| **Schritte** | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen SSL-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim SSL-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
+| **Schritte** | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen TLS-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim TLS-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
 
 ### <a name="example"></a>Beispiel
 ```csharp
@@ -345,7 +345,7 @@ string GetData(int value);
 | **Schritte** | Wenn eine Anwendung sowohl über eine HTTPS-Bindung als auch über eine HTTP-Bindung verfügt, können Clients weiterhin über HTTP auf die Website zugreifen. Stellen Sie daher mithilfe eines Aktionsfilters sicher, dass Anforderungen an geschützte APIs immer über HTTPS abgewickelt werden.|
 
 ### <a name="example"></a>Beispiel 
-Der folgende Code zeigt einen Web-API-Authentifizierungsfilter mit Überprüfung auf SSL: 
+Der folgende Code zeigt einen Web-API-Authentifizierungsfilter mit Überprüfung auf TLS: 
 ```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
@@ -365,7 +365,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
     }
 }
 ```
-Fügen Sie diesen Filter allen Web-API-Aktionen hinzu, die SSL erfordern: 
+Fügen Sie diesen Filter allen Web-API-Aktionen hinzu, die TLS erfordern: 
 ```csharp
 public class ValuesController : ApiController
 {
@@ -374,7 +374,7 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a name="ensure-that-communication-to-azure-cache-for-redis-is-over-ssl"></a><a id="redis-ssl"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Cache for Redis über SSL abgewickelt wird.
+## <a name="ensure-that-communication-to-azure-cache-for-redis-is-over-tls"></a><a id="redis-ssl"></a>Sicherstellen, dass die Kommunikation mit Azure Cache for Redis über TLS abgewickelt wird
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -382,8 +382,8 @@ public class ValuesController : ApiController
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Schritte** | Der Redis-Server bietet keine integrierte SSL-Unterstützung, Azure Cache for Redis dagegen schon. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client SSL unterstützt (wie etwa StackExchange.Redis), sollten Sie SSL verwenden. Bei neuen Azure Cache for Redis-Instanzen ist der SSL-fremde Port standardmäßig deaktiviert. Die sicheren Standardeinstellungen sollten nur geändert werden, wenn Redis-Clients auf SSL-Unterstützung angewiesen sind. |
+| **Referenzen**              | [Azure Redis: TLS-Unterstützung](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **Schritte** | Der Redis-Server bietet keine integrierte TLS-Unterstützung, Azure Cache for Redis dagegen schon. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client TLS unterstützt (z. B. StackExchange.Redis), sollten Sie TLS verwenden. Bei neuen Azure Cache for Redis-Instanzen ist der TLS-fremde Port standardmäßig deaktiviert. Die sicheren Standardeinstellungen sollten nur geändert werden, wenn Redis-Clients auf TLS-Unterstützung angewiesen sind. |
 
 Redis ist für den Zugriff durch vertrauenswürdige Clients in vertrauenswürdigen Umgebungen konzipiert. Es empfiehlt sich daher in der Regel nicht, die Redis-Instanz direkt dem Internet auszusetzen (oder ganz allgemein einer Umgebung, in der nicht vertrauenswürdige Clients direkt auf den Redis-TCP-Port oder UNIX-Socket zugreifen können). 
 

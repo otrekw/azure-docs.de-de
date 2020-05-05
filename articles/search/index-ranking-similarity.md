@@ -8,27 +8,29 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c327440649300533c94c2a1956e3c45f433c9780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409960"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231610"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Ähnlichkeitsalgorithmus für die Rangfolge in Azure Cognitive Search
 
 > [!IMPORTANT]
-> Ab dem 15. Juli 2020 verwenden neu erstellte Suchdienste die BM25-Rangfolgefunktion, die sich in den meisten Fällen bewährt hat, um Suchrangfolgen bereitzustellen, die mit den Benutzererwartungen besser übereinstimmen als die aktuelle Standardrangfolge.  Neben der höheren Rangfolge ermöglicht BM25 auch Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können.  
+> Ab dem 15. Juli 2020 verwenden neu erstellte Suchdienste die BM25-Rangfolgefunktion automatisch, die sich in den meisten Fällen bewährt hat, um Suchrangfolgen bereitzustellen, die mit den Benutzererwartungen besser übereinstimmen als die aktuelle Standardrangfolge. Neben der höheren Rangfolge ermöglicht BM25 auch Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können.  
 >
-> Mit dieser Änderung wird die Reihenfolge Ihrer Suchergebnisse wahrscheinlich geringfügige Änderungen aufweisen.   Für alle, die die Auswirkung dieser Änderung testen möchten, haben wir in der 2019-05-06-Preview-API ermöglicht, die BM25-Bewertung für neue Indizes zu aktivieren.  
+> Mit dieser Änderung wird die Reihenfolge Ihrer Suchergebnisse wahrscheinlich geringfügige Änderungen aufweisen. Für diejenigen, die die Auswirkung dieser Änderung testen möchten, ist der BM25-Algorithmus in der API-Version 2019-05-06-Preview verfügbar.  
 
-In diesem Artikel wird beschrieben, wie Sie einen vor dem 15. Juli 2020 erstellten Dienst aktualisieren können, um den neuen BM25-Rangfolgealgorithmus zu verwenden.
+Dieser Artikel beschreibt, wie Sie den neuen BM25- Rangfolgealgorithmus bei vorhandenen Suchdiensten für neue Indizes verwenden können, die mit der Vorschau-API erstellt und abgefragt werden.
 
-Azure Cognitive Search verwendet die offizielle Lucene-Implementierung des Okapi BM25-Algorithmus, *BM25Similarity*, die die zuvor verwendete *ClassicSimilarity*-Implementierung ersetzt. Wie der ältere ClassicSimilarity-Algorithmus ist BM25Similarity eine TF-IDF-ähnliche Abruffunktion, bei der die Begriffshäufigkeit (Term Frequency, TF) und die inverse Dokumenthäufigkeit (Inverse Document Frequency, IDF) als Variablen verwendet werden, um die Relevanzbewertungen für jedes Dokument/Abfrage-Paar zu berechnen, die dann für die Rangfolge verwendet werden. BM25 ist konzeptionell dem älteren klassischen Ähnlichkeitsalgorithmus ähnlich und verwendet seinen Kern zum Abruf probabilistischer Informationen, um ihn zu verbessern. BM25 bietet auch erweiterte Anpassungsoptionen, z. B. kann der Benutzer entscheiden, wie weit die Relevanzbewertung von der Häufigkeit übereinstimmender Begriffe abhängt.
+Azure Cognitive Search übernimmt zurzeit die offizielle Lucene-Implementierung des Okapi BM25-Algorithmus, *BM25Similarity*, die die zuvor verwendete *ClassicSimilarity*-Implementierung ersetzt. Wie der ältere ClassicSimilarity-Algorithmus ist BM25Similarity eine TF-IDF-ähnliche Abruffunktion, bei der die Begriffshäufigkeit (Term Frequency, TF) und die inverse Dokumenthäufigkeit (Inverse Document Frequency, IDF) als Variablen verwendet werden, um die Relevanzbewertungen für jedes Dokument/Abfrage-Paar zu berechnen, die dann für die Rangfolge verwendet werden. 
+
+BM25 ist konzeptionell dem älteren klassischen Ähnlichkeitsalgorithmus ähnlich und verwendet seinen Kern zum Abruf probabilistischer Informationen, um ihn zu verbessern. BM25 bietet auch erweiterte Anpassungsoptionen, z. B. kann der Benutzer entscheiden, wie weit die Relevanzbewertung von der Häufigkeit übereinstimmender Begriffe abhängt.
 
 ## <a name="how-to-test-bm25-today"></a>Wie BM25 heute getestet werden kann
 
-Wenn Sie einen neuen Index erstellen, können Sie eine „Ähnlichkeits“-Eigenschaft festlegen. Sie müssen die Version *2019-05-06-Preview* wie unten gezeigt verwenden.
+Wenn Sie einen neuen Index erstellen, können Sie eine **Ähnlichkeitseigenschaft** festlegen, um den Algorithmus anzugeben. Sie müssen `api-version=2019-05-06-Preview` wie unten gezeigt verwenden.
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -57,16 +59,19 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-Für Dienste, die vor dem 15. Juli 2020 erstellt werden: Wenn die Ähnlichkeit ausgelassen oder auf NULL festgelegt wird, verwendet der Index den alten klassischen Ähnlichkeitsalgorithmus.
+Die **Ähnlichkeitseigenschaft** ist während dieser Übergangszeit, in der beide Algorithmen verfügbar sind, nur für vorhandene Dienste nützlich. 
 
-Für Dienste, die nach dem 15. Juli 2020 erstellt werden: Wenn die Ähnlichkeit ausgelassen oder auf NULL festgelegt wird, verwendet der Index den neuen BM25-Ähnlichkeitsalgorithmus.
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| Ähnlichkeit | Optional. Gültige Werte sind *„#Microsoft.Azure.Search.ClassicSimilarity“* und *„#Microsoft.Azure.Search.BM25Similarity“* . <br/> Erfordert `api-version=2019-05-06-Preview` oder höher für einen Suchdienst, der vor dem 15. Juli 2020 erstellt wurde. |
 
-Sie können den Ähnlichkeitswert auch explizit auf einen der folgenden beiden Werte festlegen: *„#Microsoft.Azure.Search.ClassicSimilarity“* oder *„#Microsoft.Azure.Search.BM25Similarity“* .
+Für neue Dienste, die nach dem 15. Juli 2020 erstellt werden, wird BM25 automatisch verwendet und ist der einzige Ähnlichkeitsalgorithmus. Wenn Sie versuchen, **Ähnlichkeit** für einen neuen Dienst auf `ClassicSimilarity` festzulegen, wird ein Fehler „400“ zurückgegeben, da dieser Algorithmus für einen neuen Dienst nicht unterstützt wird.
 
+Für vorhandene Dienste, die vor dem 15. Juli 2020 erstellt wurden, bleibt die klassische Ähnlichkeit der Standardalgorithmus. Wenn die Eigenschaft **Ähnlichkeit** ausgelassen oder auf NULL festgelegt wird, verwendet der Index den klassischen Algorithmus. Wenn Sie den neuen Algorithmus verwenden möchten, müssen Sie **Ähnlichkeit** wie oben beschrieben festlegen.
 
 ## <a name="bm25-similarity-parameters"></a>BM25-Ähnlichkeitsparameter
 
-BM25-Ähnlichkeit fügt zwei durch Benutzer anpassbare Parameter hinzu, um die berechnete Relevanzbewertung zu steuern:
+BM25-Ähnlichkeit fügt zwei durch Benutzer anpassbare Parameter hinzu, um die berechnete Relevanzbewertung zu steuern.
 
 ### <a name="k1"></a>k1
 
@@ -98,10 +103,9 @@ Der Ähnlichkeitsalgorithmus kann nur zum Zeitpunkt der Indexerstellung festgele
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-
 ## <a name="see-also"></a>Weitere Informationen  
 
- [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/)   
- [Hinzufügen von Bewertungsprofilen zum Index](index-add-scoring-profiles.md)    
- [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-  [.NET SDK für die kognitive Azure-Suche](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST-API-Referenz](https://docs.microsoft.com/rest/api/searchservice/)   
++ [Hinzufügen von Bewertungsprofilen zum Index](index-add-scoring-profiles.md)    
++ [Indexerstellungs-API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [.NET SDK für die kognitive Azure-Suche](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

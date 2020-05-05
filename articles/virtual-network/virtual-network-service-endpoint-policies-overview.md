@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 926da07ffaf0c61ca2a7fd02351ef3635ec4d73b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651292"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133751"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Richtlinien für VNET-Dienstendpunkte für Azure Storage
 
@@ -90,7 +90,7 @@ Werfen Sie einen kurzen Blick auf das Objekt „Dienstendpunktrichtlinie“.
 - **Filtern von Datenverkehr aus der lokalen Umgebung für Azure-Dienste**: Dienstendpunktrichtlinien gelten nur für den Datenverkehr aus Subnetzen, die den Richtlinien zugeordnet sind. Um den Zugriff auf bestimmte Azure-Dienstressourcen aus lokalen Netzwerken zuzulassen, sollte der Datenverkehr mithilfe von virtuellen Netzwerkappliances oder Firewalls gefiltert werden.
 
 ## <a name="logging-and-troubleshooting"></a>Protokollierung und Problembehandlung
-Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur Verfügung. Informationen zu Dienstdiagnoseprotokollen finden Sie unter [Protokollierung für Dienstendpunkte](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).
+Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur Verfügung. Informationen zu Dienstressourcenprotokollen finden Sie unter [Protokollierung für Dienstendpunkte](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).
 
 ### <a name="troubleshooting-scenarios"></a>Problembehandlungsszenarien
 - Der Zugriff auf Speicherkonten, die in der Vorschau (nicht in der geografisch gekoppelten Region) funktionierten, wurde verweigert.

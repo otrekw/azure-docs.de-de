@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 436428c8f4a30706ab16ddace2d491287e620646
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225058"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559843"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
 
@@ -36,9 +36,7 @@ Wenn Sie bereits über ein VPN-Gateway verfügen, haben Sie folgende Möglichkei
 Sie können dies kombinieren, um eine komplexere Netzwerktopologie mit hoher Verfügbarkeit zu erstellen, die Ihre Anforderungen erfüllt.
 
 > [!IMPORTANT]
-> Im Aktiv/Aktiv-Modus werden nur die folgenden SKUs verwendet: 
->   * VpnGw1, VpnGw2, VpnGw3
->   * HighPerformance (für alte SKUs)
+> Der Aktiv/Aktiv-Modus ist für alle SKUs mit Ausnahme von Basic verfügbar.
 
 ## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>Teil 1: Erstellen und Konfigurieren von Aktiv/Aktiv-VPN-Gateways
 Mit den folgenden Schritten wird Ihr Azure VPN Gateway in Aktiv/Aktiv-Modi konfiguriert. Die wichtigsten Unterschiede zwischen Aktiv/Aktiv- und Aktiv/Standby-Gateways sind:

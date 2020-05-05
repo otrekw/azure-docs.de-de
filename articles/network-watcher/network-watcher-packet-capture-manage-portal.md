@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7a61438187534a05a7d3f0307a1a4ded89fc147
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840826"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204082"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -27,10 +27,14 @@ In diesem Artikel wird beschrieben, wie Sie eine Paketerfassung starten, beenden
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für die Paketerfassung sind folgende Verbindungen erforderlich:
-* Ausgehende Verbindung mit einem Speicherkonto über Port 443
-* Eingehende und ausgehende Verbindung mit 169.254.169.254
-* Eingehende und ausgehende Verbindung mit 168.63.129.16
+Für Paketerfassung sind folgende ausgehende TCP-Verbindungen erforderlich:
+- mit dem ausgewählten Speicherkonto über Port 443
+- mit 169.254.169.254 über Port 80
+- mit 168.63.129.16 über Port 8037
+
+> [!NOTE]
+> Die in den beiden letztgenannten Fällen erwähnten Ports sind allen Network Watcher-Funktionen, die die Network Watcher-Erweiterung beinhalten, gemeinsam und können sich gelegentlich ändern.
+
 
 Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. Auf ähnliche Weise kann das Hinzufügen von benutzerdefinierten Datenverkehrsrouten zu Ihrem Netzwerk Verbindungen mit den oben erwähnten IP-Adressen und Ports verhindern. Stellen Sie sicher, dass diese erreichbar sind. 
 
@@ -39,26 +43,26 @@ Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz
 1. Browsen Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** und dann **Network Watcher** im Abschnitt **Netzwerk** aus.
 2. Wählen Sie unter **Netzwerkdiagnosetools** die Option **Paketerfassung** aus. Alle vorhandenen Paketerfassungen werden unabhängig von ihrem Status aufgelistet.
 3. Wählen Sie **Hinzufügen** aus, um eine Paketerfassung zu erstellen. Sie können Werte für die folgenden Eigenschaften auswählen:
-   - **Abonnement:** das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
-   - **Ressourcengruppe:** die Ressourcengruppe des virtuellen Computers.
-   - **Virtueller Zielcomputer:** der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
-   - **Paketerfassungsname:** ein Name für die Paketerfassung.
-   - **Speicherkonto oder Datei:** Wählen Sie **Speicherkonto**, **Datei** oder beide Werte aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
-   - **Lokaler Dateipfad:** der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
-   - **Speicherkonten:** Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
+   - **Abonnement**: Das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
+   - **Ressourcengruppe**: Die Ressourcengruppe des virtuellen Computers.
+   - **Virtueller Zielcomputer**: Der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
+   - **Paketerfassungsname**: Ein Name für die Paketerfassung.
+   - **Speicherkonto oder Datei**: Wählen Sie **Speicherkonto**, **Datei** oder beides aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
+   - **Lokaler Dateipfad**: Der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
+   - **Speicherkonten**: Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
    
      > [!NOTE]
      > Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.
 
-   - **Maximale Anzahl von Bytes pro Paket:** die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
-   - **Maximale Anzahl von Bytes pro Sitzung:** die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
-   - **Zeitlimit (Sekunden):** das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
+   - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
+   - **Maximale Anzahl von Bytes pro Sitzung**: Die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
+   - **Zeitlimit (Sekunden)** : Das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
    - Filterung (optional). Wählen Sie **+ Filter hinzufügen** aus.
-     - **Protokoll:** das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
-     - **Lokale IP-Adresse:** filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
-     - **Lokaler Port:** filtert die Paketerfassung für Pakete, deren lokaler Port mit diesem Wert übereinstimmt.
-     - **Remote-IP-Adresse:** filtert die Paketerfassung für Pakete, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
-     - **Remoteport:** filtert die Paketerfassung für Pakete, deren Remoteport mit diesem Wert übereinstimmt.
+     - **Protokoll:** Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
+     - **Lokale IP-Adresse**: Filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
+     - **Lokaler Port**: Filtert die Paketerfassung nach Paketen, deren lokaler Port mit diesem Wert übereinstimmt.
+     - **Remote-IP-Adresse**: Filtert die Paketerfassung nach Paketen, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
+     - **Remoteport**: Filtert die Paketerfassung nach Paketen, deren Remoteport mit diesem Wert übereinstimmt.
     
      > [!NOTE]
      > Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Bereich handeln, z.B. 80–1024 für den Port. Sie können beliebig viele Filter definieren.

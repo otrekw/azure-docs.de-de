@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885751"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583249"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-Um eine höhere Sicherheitsstufe zu gewährleisten, deaktiviert Notification Hubs Unterstützung für die TLS-Versionen 1.0 und 1.1 am 31. Mai 2020 (verlängert vom 30. April 2020). Diese älteren Protokolle bieten eine schwache Kryptografie und sind anfällig für BEAST- und POODLE-Angriffe. Anwendungen, die auf Geräten mit Android Version 5 oder höher oder iOS Version 5 oder höher bereitgestellt werden, sind von dieser Änderung nicht betroffen, da diese Betriebssysteme TLS 1.2 unterstützen, und der Client und der Server verhandeln die höchste gegenseitig unterstützte Version des Protokolls beim Herstellen einer Verbindung.
+Um eine höhere Sicherheitsstufe zu gewährleisten, deaktiviert Notification Hubs Unterstützung für die TLS-Versionen 1.0 und 1.1 am **31. Dezember 2020** (verlängert vom 30. April 2020). Diese älteren Protokolle bieten eine schwache Kryptografie und sind anfällig für BEAST- und POODLE-Angriffe. Anwendungen, die auf Geräten mit Android Version 5 oder höher oder iOS Version 5 oder höher bereitgestellt werden, sind von dieser Änderung nicht betroffen, da diese Betriebssysteme TLS 1.2 unterstützen, und der Client und der Server verhandeln die höchste gegenseitig unterstützte Version des Protokolls beim Herstellen einer Verbindung.
 
 Es wird empfohlen, alle Anwendungen, die Azure Notification Hubs verwenden, zu überprüfen, um sicherzustellen, dass Sie die am besten anwendbaren Bibliotheken und TLS-Stapel verwenden, die TLS 1.2 unterstützen.
 

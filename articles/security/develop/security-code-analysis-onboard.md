@@ -1,10 +1,10 @@
 ---
 title: Anleitung zum Onboarding der Microsoft-Sicherheitscodeanalyse
 description: In diesem Artikel wird beschrieben, wie die Erweiterung „Microsoft-Sicherheitscodeanalyse“ installiert wird.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197004"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147683"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding und Installation
 
@@ -44,11 +44,12 @@ Wenn Sie über keine der oben genannten Supportvereinbarungen verfügen, können
 
 **Nächste Schritte:**
 
-Wenden Sie sich an einen Partner aus der untenstehenden Liste, und fragen Sie nach dem Kauf der Erweiterung für die Analyse des Microsoft-Sicherheitscodes.
+Wenn Sie die oben genannten Qualifikationen erfüllen, wenden Sie sich an einen Partner aus der Liste unten, um die Erweiterung für die Microsoft-Sicherheitscodeanalyse zu erwerben. Wenden Sie sich andernfalls an den [Support für die Microsoft-Sicherheitscodeanalyse](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
 
 >**Partner:**
 
 - Zonen – Kontaktinformationen: cloudsupport@zones.com
+- Wortell – Kontaktinformationen: info@wortell.nl
 
 ### <a name="become-a-partner"></a>Partner werden
 

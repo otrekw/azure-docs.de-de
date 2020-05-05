@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046191"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131249"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problembehandlung für die Web Application Firewall (WAF) für Azure Application Gateway
 
@@ -178,7 +178,7 @@ Dies ist ein Feld, das Sie ausschließen können. Weitere Informationen zu Aussc
 
 ![WAF-Ausschluss](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-Sie können auch die Firewallprotokolle überprüfen, um Informationen dazu zu erhalten, was Sie der Ausschlussliste hinzufügen müssen. Informationen zum Aktivieren der Protokollierung finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
+Sie können auch die Firewallprotokolle überprüfen, um Informationen dazu zu erhalten, was Sie der Ausschlussliste hinzufügen müssen. Informationen zum Aktivieren der Protokollierung finden Sie unter [Back-End-Integrität, Ressourcenprotokolle und Metriken für Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
 Überprüfen Sie das Firewallprotokoll, und sehen Sie sich die Datei „PT1H.json“ für die Stunde an, in der die zu untersuchende Anforderung aufgetreten ist.
 

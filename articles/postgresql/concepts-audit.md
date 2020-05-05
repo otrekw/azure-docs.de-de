@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842468"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131246"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
@@ -26,14 +26,14 @@ Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Sp
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
 Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. In Azure Database for PostgreSQL können diese LOG-Dateien über das Azure-Portal oder die CLI herunterladen werden. Der maximale Speicherplatz für die Sammlung von Dateien beträgt 1 GB, und jede Datei ist für maximal sieben Tage verfügbar (der Standardwert ist drei Tage). Bei diesem Dienst handelt es sich um eine kurzfristige Speicheroption.
 
-Alternativ können Sie alle Protokolle so konfigurieren, dass sie an den Diagnoseprotokolldienst von Azure Monitor ausgegeben werden. Wenn Sie die Azure Monitor-Diagnoseprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
+Alternativ können Sie alle Protokolle so konfigurieren, dass sie an den Azure Monitor-Protokollspeicher für spätere Analysen in Log Analytics gesendet werden. Wenn Sie die Azure Monitor-Ressourcenprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
 
-Durch das Aktivieren von pgAudit wird ein großes Volumen von Protokollierung auf einem Server generiert, was sich auf die Leistung und den Protokollspeicher auswirkt. Wir empfehlen, dass Sie den Azure-Diagnoseprotokolldienst verwenden, der langfristigere Speicheroptionen sowie Analyse- und Benachrichtigungsfunktionen bietet. Es wird empfohlen, die Standardprotokollierung zu deaktivieren, um die Auswirkungen der zusätzlichen Protokollierung auf die Leistung zu reduzieren:
+Durch das Aktivieren von pgAudit wird ein großes Volumen von Protokollierung auf einem Server generiert, was sich auf die Leistung und den Protokollspeicher auswirkt. Es wird empfohlen, Azure Monitor-Protokolle zu verwenden, die langfristigere Speicheroptionen sowie Analyse- und Benachrichtigungsfunktionen bieten. Es wird empfohlen, die Standardprotokollierung zu deaktivieren, um die Auswirkungen der zusätzlichen Protokollierung auf die Leistung zu reduzieren:
 
    1. Legen Sie den Parameter `logging_collector` auf „OFF“ fest. 
    2. Starten Sie den Server neu, um diese Änderung zu übernehmen.
 
-Weitere Informationen zum Einrichten der Protokollierung für Azure Storage, Event Hubs oder Azure Monitor-Protokolle finden Sie im Abschnitt „Diagnoseprotokolle“ des Artikels [Serverprotokolle](concepts-server-logs.md).
+Weitere Informationen zum Einrichten der Protokollierung für Azure Storage, Event Hubs oder Azure Monitor-Protokolle finden Sie im Abschnitt „Ressourcenprotokolle“ des Artikels [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="installing-pgaudit"></a>Installieren von pgAudit
 
@@ -88,7 +88,7 @@ Legen Sie zum schnellen Einstieg `pgaudit.log` auf `WRITE` fest, und öffnen Sie
 ## <a name="viewing-audit-logs"></a>Anzeigen von Überwachungsprotokollen
 Wenn Sie LOG-Dateien verwenden, sind Ihre Überwachungsprotokolle in derselben Datei enthalten wie Ihre PostgreSQL-Fehlerprotokolle. Sie können Protokolldateien aus dem Azure-[Portal](howto-configure-server-logs-in-portal.md) oder der [CLI](howto-configure-server-logs-using-cli.md) herunterladen. 
 
-Wenn Sie Azure-Diagnoseprotokollierung verwenden, hängt die Art und Weise, wie Sie auf die Protokolle zugreifen, vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Wenn Sie Azure-Ressourcenprotokollierung verwenden, hängt die Art und Weise, wie Sie auf die Protokolle zugreifen, vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 

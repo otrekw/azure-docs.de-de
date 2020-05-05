@@ -1,21 +1,21 @@
 ---
-title: Unterstützte Ressourcen für Azure Red Hat OpenShift
+title: Unterstützte Ressourcen für Azure Red Hat OpenShift 3.11
 description: Sie erfahren, welche Azure-Regionen und VM-Größen von Microsoft Azure Red Hat OpenShift unterstützt werden.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224758"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203674"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-Ressourcen
 
-In diesem Thema werden die Azure-Regionen und VM-Größen aufgeführt, die vom Microsoft Azure Red Hat OpenShift-Dienst unterstützt werden.
+In diesem Thema werden die Azure-Regionen und VM-Größen aufgeführt, die vom Microsoft Azure Red Hat OpenShift 3.11-Dienst unterstützt werden.
 
 ## <a name="azure-regions"></a>Azure-Regionen
 

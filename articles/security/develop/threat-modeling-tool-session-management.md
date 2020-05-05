@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73161516"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203861"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
 | Produkt/Dienst | Artikel |
@@ -221,7 +221,7 @@ Für alle HTTP-basierten Anwendungen, die Cookies verwenden, sollte in der Cooki
 | **Zutreffende Technologien** | Web Forms |
 | **Attribute**              | –  |
 | **Referenzen**              | [FormsAuthentication.RequireSSL-Eigenschaft](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Schritte** | Der RequireSSL-Eigenschaftswert wird in der Konfigurationsdatei für eine ASP.NET-Anwendung festgelegt, indem das requireSSL-Attribut des Konfigurationselements verwendet wird. Sie können in der Datei „Web.config“ für Ihre ASP.NET-Anwendung angeben, ob SSL (Secure Sockets Layer) zum Zurückgeben des Forms-Authentifizierungscookies an den Server erforderlich ist, indem Sie das Attribut „requireSSL“ festlegen.|
+| **Schritte** | Der RequireSSL-Eigenschaftswert wird in der Konfigurationsdatei für eine ASP.NET-Anwendung festgelegt, indem das requireSSL-Attribut des Konfigurationselements verwendet wird. Sie können in der Datei „Web.config“ für Ihre ASP.NET-Anwendung angeben, ob TLS (Transport Layer Security), früher als SSL (Secure Sockets Layer) bezeichnet, zum Zurückgeben des Forms-Authentifizierungscookies an den Server erforderlich ist, indem Sie das Attribut requireSSL festlegen.|
 
 ### <a name="example"></a>Beispiel 
 Im folgenden Codebeispiel wird das Attribut „requireSSL“ in der Datei „Web.config“ festgelegt.

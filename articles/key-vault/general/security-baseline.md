@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427034"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185114"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-Sicherheitsbaseline für Key Vault
 
@@ -905,7 +905,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Anleitung:** Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Ressourcen mit aktiviertem Azure Key Vault zu erzwingen. 
+**Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Ressourcen mit aktiviertem Azure Key Vault zu erzwingen. 
 
 Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung:
 
@@ -1175,7 +1175,7 @@ Wiederherstellen von Key Vault-Geheimnissen: https://docs.microsoft.com/powershe
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Sicherstellen des Schutzes von Sicherungen und von kundenseitig verwalteten Schlüsseln
 
-**Anleitung:** Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist. Vorläufiges Löschen ermöglicht die Wiederherstellung gelöschter Schlüsseltresore und Tresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate. 
+**Leitfaden**: Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist. Vorläufiges Löschen ermöglicht die Wiederherstellung gelöschter Schlüsseltresore und Tresorobjekte wie Schlüssel, Geheimnisse und Zertifikate. 
 
 Verwenden des vorläufigen Löschens für Azure Key Vault: 
 

@@ -7,37 +7,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: dc47afe9cb6eca1b10f8caca7b85087023c5eadf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060132"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82136531"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Vorschau: Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
+# <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
-Verwalten Sie mit der Wartungssteuerung Plattformupdates, die keinen Neustart erfordern. Azure aktualisiert die eigene Infrastruktur häufig, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern oder neue Features zu integrieren. Die meisten Updates sind für Benutzer transparent. Einige empfindlichen Workloads wie Gaming, Medienstreaming und Finanzbuchungen können nicht einmal wenige Sekunden tolerieren, in denen eine VM zur Wartung eingefroren oder getrennt ist. Die Wartungssteuerung bietet Ihnen die Möglichkeit, auf Plattformupdates zu warten und diese innerhalb eines 35-tägigen rollierenden Zeitfensters anzuwenden. 
-
-Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre isolierten VMs anwenden.
-
-Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
-- Batchupdates in ein Updatepaket
-- Warten von bis zu 35 Tagen bis zur Anwendung der Updates 
-- Automatisieren von Plattformupdates für Ihr Wartungsfenster mit Azure Functions
-- Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend. 
-
-> [!IMPORTANT]
-> Die Wartungssteuerung ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
-
-## <a name="limitations"></a>Einschränkungen
-
-- Virtuelle Computer müssen sich auf einem [dedizierten Host](./linux/dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](./linux/isolation.md) erstellt werden.
-- Nach 35 Tagen wird automatisch ein Update angewendet.
-- Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
-
-
+Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre isolierten VMs und dedizierten Azure-Hosts anwenden. In diesem Thema werden die Azure PowerShell-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zu den Vorteilen der Verwendung der Wartungssteuerung, ihren Einschränkungen und anderen Verwaltungsoptionen finden Sie unter [Verwalten von Plattformupdates mit der Wartungssteuerung](maintenance-control.md).
+ 
 ## <a name="enable-the-powershell-module"></a>Aktivieren des PowerShell-Moduls
 
 Stellen Sie sicher, dass `PowerShellGet` auf dem neuesten Stand ist.
@@ -46,16 +26,9 @@ Stellen Sie sicher, dass `PowerShellGet` auf dem neuesten Stand ist.
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
 
-Die Az.Maintenance-Cmdlets der PowerShell befinden sich in der Vorschauphase, weshalb Sie das Modul mit dem Parameter `AllowPrerelease` in Cloud Shell oder Ihrer lokalen PowerShell-Installation installieren müssen.   
-
-```azurepowershell-interactive
-Install-Module -Name Az.Maintenance -AllowPrerelease
-```
-
 Wenn Sie lokal installieren, stellen Sie sicher, dass Sie die PowerShell-Eingabeaufforderung als Administrator öffnen.
 
 Möglicherweise werden Sie auch aufgefordert zu bestätigen, dass Sie aus einem *nicht vertrauenswürdigen Repository* installieren möchten. Geben Sie `Y` ein, oder wählen Sie **Ja, alle** aus, um das Modul zu installieren.
-
 
 
 ## <a name="create-a-maintenance-configuration"></a>Erstellen einer Wartungskonfiguration

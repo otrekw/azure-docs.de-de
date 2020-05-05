@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcenverwaltung integrieren, sodass Sie von Ihrem eigenen Mandanten aus auf dessen Ressourcen zugreifen und sie verwalten können.
-ms.date: 04/16/2020
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22c96d43f3d5f284c2cba995eb33f5f8cd238659
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481690"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82161107"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
@@ -48,7 +48,7 @@ Ihre Mandanten-ID können Sie anzeigen, indem Sie rechts oben im Azure-Portal au
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -89,7 +89,7 @@ Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, 
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -107,7 +107,7 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 az role definition list --name "<roleName>" | grep name
 ```
 > [!TIP]
-> Beim Onboarding eines Kunden empfiehlt es sich, die [Rolle „Registrierungszuweisung für verwaltete Dienste“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zuzuweisen, damit Benutzer in Ihrem Mandanten später bei Bedarf [den Zugriff auf die Delegierung entfernen](#remove-access-to-a-delegation) können. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
+> Beim Onboarding eines Kunden empfiehlt es sich, die [Rolle „Registrierungszuweisung für verwaltete Dienste“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zuzuweisen, damit Benutzer in Ihrem Mandanten später bei Bedarf [den Zugriff auf die Delegierung entfernen](remove-delegation.md) können. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
 
@@ -199,6 +199,8 @@ Da es sich hierbei um eine Bereitstellung auf Abonnementebene handelt, kann sie 
 
 > [!IMPORTANT]
 > Diese Bereitstellung auf Abonnementebene muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+>
+> Wenn das Abonnement über das [CSP-Programm (Cloud Solution Provider)](../concepts/cloud-solution-provider.md) erstellt wurde, kann jeder Benutzer, der die Rolle [Administrator-Agent](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in Ihrem Dienstanbietermandanten ausübt, die Bereitstellung ausführen.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -220,7 +222,7 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -272,7 +274,7 @@ Im Mandanten des Kunden:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -280,77 +282,8 @@ Get-AzContext
 az account list
 ```
 
-## <a name="remove-access-to-a-delegation"></a>Entfernen des Zugriffs auf eine Delegierung
-
-Standardmäßig können Benutzer im Mandanten des Kunden, die über die entsprechenden Berechtigungen verfügen, auf der Seite [Dienstanbieter](view-manage-service-providers.md#add-or-remove-service-provider-offers) des Azure-Portals den Zugriff des Dienstanbieters auf delegierte Ressourcen entfernen. In diesem Fall können keine Benutzer im Mandanten des Dienstanbieters auf die zuvor delegierten Ressourcen zugreifen.
-
-Wenn Sie beim Onboarding des Kunden für die delegierte Azure-Ressourcenverwaltung Benutzer mit der Rolle [Löschen von Zuweisungen für Registrierungen bei verwalteten Diensten](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) eingeschlossen haben, können diese Benutzer die Delegierung ebenfalls entfernen.
-
-Im Beispiel unten wird eine Zuweisung gezeigt, die die Rolle **Löschen von Zuweisungen für Registrierungen bei verwalteten Diensten** erteilt. Diese kann in einer Parameterdatei enthalten sein:
-
-```json
-    "authorizations": [ 
-        { 
-            "principalId": "cfa7496e-a619-4a14-a740-85c5ad2063bb", 
-            "principalIdDisplayName": "MSP Operators", 
-            "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46" 
-        } 
-    ] 
-```
-
-Ein Benutzer mit dieser Berechtigung kann eine Delegierung auf eine der folgenden Arten entfernen.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-1. Navigieren Sie zur Seite [Meine Kunden](view-manage-customers.md).
-2. Wählen Sie **Delegierungen** aus.
-3. Suchen Sie die Delegierung, die Sie entfernen möchten, und wählen Sie dann das Papierkorbsymbol aus, das in der Zeile angezeigt wird.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-# Sign in as a user from the managing tenant directory 
-
-Login-AzAccount
-
-# Select the subscription that is delegated - or contains the delegated resource group(s)
-
-Select-AzSubscription -SubscriptionName "<subscriptionName>"
-
-# Get the registration assignment
-
-Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}"
-
-# Delete the registration assignment
-
-Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
-```
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-# Sign in as a user from the managing tenant directory
-
-az login
-
-# Select the subscription that is delegated – or contains the delegated resource group(s)
-
-az account set -s <subscriptionId/name>
-
-# List registration assignments
-
-az managedservices assignment list
-
-# Delete the registration assignment
-
-az managedservices assignment delete --assignment <id or full resourceId>
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
 - [Anzeigen und Verwalten von Kunden](view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.
+- Erfahren Sie, wie Sie den [Zugriff auf eine Delegierung entfernen](remove-delegation.md), für die zuvor ein Onboarding durchgeführt wurde.

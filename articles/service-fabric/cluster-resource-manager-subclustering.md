@@ -5,12 +5,12 @@ author: nipavlo
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
-ms.openlocfilehash: 23782a86d31251cb1a3474e0395df716a2e832df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427266"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183114"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Ausgleichen von Subclustered-Metriken
 
@@ -24,11 +24,11 @@ Wenn die von den Diensten auf verschiedenen Knoten gemeldete Last erheblich abwe
 
 Angenommen, es sind vier Dienste vorhanden, die alle eine Last für die Metrik Metric1 melden:
 
-* Dienst A: Hat eine Platzierungseinschränkung „NodeType==Type1“, meldet eine Last von 10
-* Dienst B: Hat eine Platzierungseinschränkung „NodeType==Type1“, meldet eine Last von 10
-* Dienst C: Hat eine Platzierungseinschränkung „NodeType==Type2“, meldet eine Last von 100
-* Dienst D: Hat eine Platzierungseinschränkung „NodeType==Type2“, meldet eine Last von 100
-* Und wir haben vier Knoten. Für zwei von ihnen ist“ NodeType“ als „Type1“ festgelegt, für die anderen beiden als „Type2“.
+* Dienst A: Hat eine Platzierungseinschränkung „NodeType==Frontend“, meldet eine Last von 10
+* Dienst B: Hat eine Platzierungseinschränkung „NodeType==Frontend“, meldet eine Last von 10
+* Dienst C: Hat eine Platzierungseinschränkung „NodeType==Backend“, meldet eine Last von 100
+* Dienst D: Hat eine Platzierungseinschränkung „NodeType==Backend“, meldet eine Last von 100
+* Und wir haben vier Knoten. Für zwei von ihnen ist NodeType auf „Frontend“ festgelegt, für die anderen beiden auf „Backend“.
 
 Außerdem liegt die die folgende Platzierung vor:
 
@@ -60,8 +60,8 @@ Diese Situation tritt ein, wenn eine Gruppe von Knoten, die für einen Dienst zu
 Beispiel:
 
 * Dienst A: Keine Platzierungseinschränkung
-* Dienst B: Platzierungseinschränkung „NodeType==Type1“
-* Dienst C: Platzierungseinschränkung „NodeType==Type2“
+* Dienst B: Platzierungseinschränkung „NodeType==Frontend“
+* Dienst C: Platzierungseinschränkung „NodeType==Backend“
 
 Diese Konfiguration erstellt eine Teilmengen-/Obermengenbeziehung zwischen Knotengruppen für verschiedene Dienste.
 
@@ -72,7 +72,7 @@ Diese Konfiguration erstellt eine Teilmengen-/Obermengenbeziehung zwischen Knote
 
 In dieser Situation besteht die Möglichkeit, dass ein suboptimaler Ausgleich vorgenommen wird.
 
-Resource Manager erkennt diese Situation und generiert einen Integritätsbericht, der empfiehlt, Dienst A in zwei Dienste aufzuteilen: Dienst A1, der auf Type1-Knoten platziert werden kann, und Dienst A2, der auf Type2-Knoten platziert werden kann. Damit kommen wir zurück zur Situation der ersten Kategorie, die optimal ausgeglichen werden kann.
+Resource Manager erkennt diese Situation und generiert einen Integritätsbericht, der empfiehlt, Dienst A in zwei Dienste aufzuteilen: Dienst A1, der auf Frontend-Knoten platziert werden kann, und Dienst A2, der auf Backend-Knoten platziert werden kann. Damit kommen wir zurück zur Situation der ersten Kategorie, die optimal ausgeglichen werden kann.
 
 ### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>Dritte Kategorie: Subclustering mit partieller Überschneidung zwischen Knotensätzen
 
