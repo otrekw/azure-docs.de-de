@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335973"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233481"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>Kontakt
-* [Wie kann ich dem Team von Microsoft Azure API Management eine Frage stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 * [Was bedeutet es, wenn sich ein Feature in der Vorschauphase befindet?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -48,15 +45,8 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu 
 * [Kann ich einen API Management-Dienst in ein anderes Abonnement verschieben?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [Sind Einschränkungen oder Probleme hinsichtlich des Imports meiner API bekannt?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Wie kann ich dem Team von Microsoft Azure API Management eine Frage stellen?
-Sie können uns folgendermaßen kontaktieren:
-
-* Stellen Sie Ihre Fragen im [MSDN-Forum zu API Management](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
-* Senden Sie eine E-Mail an <mailto:apimgmt@microsoft.com>.
-* Featureanfragen können im [Azure-Feedbackforum](https://feedback.azure.com/forums/248703-api-management) an uns gesendet werden.
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Was bedeutet es, wenn sich ein Feature in der Vorschauphase befindet?
-Wenn sich ein Feature in der Vorschauphase befindet, bedeutet das, dass wir sehr an Benutzerfeedback zu diesem Feature interessiert sind. Ein Feature in der Vorschauphase ist funktionell abgeschlossen. Als Reaktion auf Kundenfeedback nehmen wir jedoch unter Umständen noch eine grundlegende Änderung am Feature vor. Es wird empfohlen, sich in einer Produktionsumgebung nicht auf ein Feature in der Vorschauphase zu verlassen. Wenn Sie Feedback zu Vorschaufeatures haben, können Sie uns Ihre Kommentare über eine der unter [Wie kann ich dem Microsoft Azure API Management-Team eine Frage stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question) beschriebenen Kontaktoptionen senden.
+Wenn sich ein Feature in der Vorschauphase befindet, bedeutet das, dass wir sehr an Benutzerfeedback zu diesem Feature interessiert sind. Ein Feature in der Vorschauphase ist funktionell abgeschlossen. Als Reaktion auf Kundenfeedback nehmen wir jedoch unter Umständen noch eine grundlegende Änderung am Feature vor. Es wird empfohlen, sich in einer Produktionsumgebung nicht auf ein Feature in der Vorschauphase zu verlassen.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Wie kann ich die Verbindung zwischen dem API Management-Gateway und meinen Back-End-Diensten sichern?
 Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gateway und Ihren Back-End-Diensten zu sichern. Ihre Möglichkeiten:

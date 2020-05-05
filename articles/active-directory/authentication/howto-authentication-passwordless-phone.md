@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654056"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450971"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -41,7 +41,7 @@ Einem Benutzer, der die Anmeldung per Telefon über die Microsoft Authenticator-
 
 ### <a name="enable-the-combined-registration-experience"></a>Aktivieren der kombinierten Registrierung
 
-Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der Vorschauversion der kombinierten Registrierung abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die Vorschauversion der kombinierten Registrierung zu aktivieren.
+Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der kombinierten Registrierungsfunktion abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die kombinierte Registrierung zu aktivieren.
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Aktivieren von Authentifizierungsmethoden für die kennwortlose Anmeldung per Telefon
 

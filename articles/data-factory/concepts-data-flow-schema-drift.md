@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418421"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81606112"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Eine Schemaabweichung liegt vor, wenn Ihre Quellen Metadaten häufig ändern. Felder, Spalten und Typen können bei laufendem Betrieb hinzugefügt, entfernt oder geändert werden. Ohne Vorkehrungen bei Schemaabweichungen wird Ihr Datenfluss anfällig für Änderungen an vorgelagerten Datenquellen. Wenn sich eingehende Spalten und Felder ändern, treten bei typischen ETL-Mustern Fehler auf, da sie dazu neigen, an diesen Quellennamen gebunden zu sein.
 
@@ -30,6 +30,10 @@ Zum Schutz gegen Schemaabweichung muss ein Datenflusstool Funktionen bieten, die
 Flexible und sich von Ausführung zu Ausführung ändernde Schemas werden von Azure Data Factory nativ unterstützt, sodass Sie eine generische Datentransformationslogik erstellen können, ohne die Datenflüsse erneut kompilieren zu müssen.
 
 Sie müssen eine architektonische Entscheidung in Ihrem Datenfluss treffen, um die Schemaabweichung in Ihrem Fluss zu akzeptieren. Wenn Sie dies tun, können Sie Schutz gegen Schemaänderungen aus den Quellen bieten. Allerdings verlieren Sie die frühe Bindung Ihrer Spalten und Typen im gesamten Datenfluss. Azure Data Factory behandelt Schemaabweichungsflüsse als Flüsse mit später Bindung, sodass die abweichenden Spaltennamen bei der Erstellung Ihrer Transformationen Ihnen nicht im gesamten Fluss in den Schemaansichten zur Verfügung stehen.
+
+Dieses Video bietet eine Einführung in einige der komplexen Lösungen, die Sie in ADF mithilfe der Schemaabweichungsfunktion für den Datenfluss einfach erstellen können. In diesem Beispiel erstellen wir basierend auf flexiblen Datenbankschemas wiederverwendbare Muster:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>Schemaabweichung in der Quelle
 

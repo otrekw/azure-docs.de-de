@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fe029cdec5bca8885a78267c45bace51e7b3c141
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 018e7f9bc389e3d148ff6860dae9fef88991e5c4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882368"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537167"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Geschützte Web-API: Überprüfen von Bereichen und App-Rollen
 
@@ -89,7 +89,7 @@ Mit der `VerifyUserHasAnyAcceptedScope`-Methode werden in etwa folgende Schritte
     /// method throws an HTTP Unauthorized error with a message noting which scopes are expected in the token.
     /// </summary>
     /// <param name="acceptedScopes">Scopes accepted by this API</param>
-    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to 
+    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to
     /// <see cref="HttpStatusCode.Unauthorized"/>
     public static void VerifyUserHasAnyAcceptedScope(this HttpContext context,
                                                      params string[] acceptedScopes)

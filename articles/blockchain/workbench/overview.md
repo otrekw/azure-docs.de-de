@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79203643"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Was ist Azure Blockchain Workbench?
@@ -49,7 +49,7 @@ Azure Blockchain Workbench vereinfacht das Analysieren von Blockchain-Ereignisse
 
 Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microsoft.com/blog/topics/blockchain/) bleiben Sie in Bezug auf Blockchain-Dienstangebote und Informationen vom Azure Blockchain-Technikteam immer auf dem Laufenden.
 
-Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder über Ideen abstimmen.
+Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder für Ideen abstimmen.
 
 ### <a name="community-support"></a>Communityunterstützung
 

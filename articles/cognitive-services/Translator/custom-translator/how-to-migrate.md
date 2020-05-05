@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75446780"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
@@ -134,9 +134,9 @@ In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Cu
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | V2    | V3  |
-| SMT-Anpassung | Ja   | Nein |
-| NMT-Anpassung | Nein    | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
+| SMT-Anpassung | Ja   | Nein  |
+| NMT-Anpassung | Nein     | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
 | Keine Ablaufverfolgung | Ja | Ja |
 
 ## <a name="new-languages"></a>Neue Sprachen

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477983"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81768117"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics-Arbeitsbereichen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -153,7 +153,7 @@ Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsres
    >* "name": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Erstellen Sie ggf. eine [Resource Manager-Parameterdatei](../../azure-resource-manager/templates/parameter-files.md), anstatt Parameter als Inlinewerte zu übergeben. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
+2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Erstellen Sie ggf. eine [Resource Manager-Parameterdatei](../../azure-resource-manager/templates/parameter-files.md), anstatt Parameter als Inlinewerte zu übergeben. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces). 
 
 3. Speichern Sie diese Datei unter dem Namen **deploylaworkspacetemplate.json** in einem lokalen Ordner.
 
@@ -180,14 +180,15 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
 1. Hinzufügen von Lösungen zum Arbeitsbereich
 2. Erstellen gespeicherter Suchvorgänge. Um sicherzustellen, dass gespeicherte Suchvorgänge nicht versehentlich von Bereitstellungen überschrieben werden, sollte in der Ressource „savedSearches“ eine eTag-Eigenschaft zum Überschreiben und Beibehalten der Idempotenz gespeicherter Suchen hinzugefügt werden.
-3. Erstellen einer Computergruppe
-4. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-5. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
-6. Sammeln von Syslog-Ereignissen auf Linux-Computern
-7. Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
-8. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
-9. Sammeln von IIS-Protokollen und Windows-Ereignisprotokollen, die von der Azure-Diagnose in ein Speicherkonto geschrieben werden
-10. Sammeln von benutzerdefinierten Protokollen auf Windows-Computern
+3. Erstellen einer gespeicherten Funktion. Das eTag sollte hinzugefügt werden, um die Funktion zu überschreiben und Idempotenz aufrechtzuerhalten.
+4. Erstellen einer Computergruppe
+5. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
+6. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
+7. Sammeln von Syslog-Ereignissen auf Linux-Computern
+8. Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
+9. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
+10. Sammeln von IIS-Protokollen und Windows-Ereignisprotokollen, die von der Azure-Diagnose in ein Speicherkonto geschrieben werden
+11. Sammeln von benutzerdefinierten Protokollen auf Windows-Computern
 
 ```json
 {
@@ -228,35 +229,35 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "type": "bool",
       "defaultValue": "[bool('false')]",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+        "description": "If set to true, changing retention to 30 days will immediately delete older data. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "australiacentral", 
-        "australiaeast", 
-        "australiasoutheast", 
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
         "brazilsouth",
-        "canadacentral", 
-        "centralindia", 
-        "centralus", 
-        "eastasia", 
-        "eastus", 
-        "eastus2", 
-        "francecentral", 
-        "japaneast", 
-        "koreacentral", 
-        "northcentralus", 
-        "northeurope", 
-        "southafricanorth", 
-        "southcentralus", 
-        "southeastasia", 
-        "uksouth", 
-        "ukwest", 
-        "westcentralus", 
-        "westeurope", 
-        "westus", 
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westus",
         "westus2"
       ],
       "metadata": {
@@ -264,38 +265,38 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       }
     },
     "applicationDiagnosticsStorageAccountName": {
-        "type": "string",
-        "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "Name of the storage account with Azure diagnostics output"
+      }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
-        "type": "string",
-        "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "The resource group name containing the storage account with Azure diagnostics output"
+      }
     },
     "customLogName": {
-    "type": "string",
-    "metadata": {
-      "description": "The custom log name"
+      "type": "string",
+      "metadata": {
+        "description": "The custom log name"
       }
-     }
+    }
+  },
+  "variables": {
+    "Updates": {
+      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "Updates"
     },
-    "variables": {
-      "Updates": {
-        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "Updates"
-      },
-      "AntiMalware": {
-        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "AntiMalware"
-      },
-      "SQLAssessment": {
-        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "SQLAssessment"
-      },
-      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "AntiMalware": {
+      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "AntiMalware"
+    },
+    "SQLAssessment": {
+      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "SQLAssessment"
+    },
+    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -321,11 +322,31 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "category": "VMSS",
             "eTag": "*",
+            "category": "VMSS",
             "displayName": "VMSS Instance Count",
             "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "version": 1
+          }
+        },
+        {
+          "apiVersion": "2017-04-26-preview",
+          "name": "Cross workspace function",
+          "type": "savedSearches",
+            "dependsOn": [
+             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+              "etag": "*",
+              "displayName": "failedLogOnEvents",
+              "category": "Security",
+              "FunctionAlias": "failedlogonsecurityevents",
+              "query": "
+                union withsource=SourceWorkspace
+                workspace('workspace1').SecurityEvent,
+                workspace('workspace2').SecurityEvent,
+                workspace('workspace3').SecurityEvent,
+                | where EventID == 4625"
           }
         },
         {
@@ -519,8 +540,8 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "containers": [ 
-              "wad-iis-logfiles" 
+            "containers": [
+              "wad-iis-logfiles"
             ],
             "tables": [
               "WADWindowsEventLogsTable"
@@ -616,7 +637,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
-    "immediatePurgeDataOn30Days": {  
+    "immediatePurgeDataOn30Days": {
       "type": "bool",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
     },

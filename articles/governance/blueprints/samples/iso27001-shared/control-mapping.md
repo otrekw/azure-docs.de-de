@@ -4,10 +4,10 @@ description: 'Steuerungszuordnung für das Blaupausenbeispiel für „ISO 27001
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922517"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Steuerelementzuordnung für das Beispiel „Blaupause für ISO 27001: gemeinsame Dienste“

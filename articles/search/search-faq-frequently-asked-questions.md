@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792909"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81618043"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Kognitive Azure-Suche – Häufig gestellte Fragen (FAQ)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792909"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Wie unterscheidet sich die kognitive Azure-Suche von der Volltextsuche in meinem DBMS?
 
 Die kognitive Azure-Suche unterstützt mehrere Datenquellen, die [linguistische Analyse für viele Sprachen](https://docs.microsoft.com/rest/api/searchservice/language-support), die [benutzerdefinierte Analyse für interessante und ungewöhnliche Dateneingaben](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), Suchrangsteuerungen mithilfe von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) und Benutzeroberflächenfunktionen wie automatische Vervollständigungen, Treffermarkierung und Facettennavigation. Darüber hinaus sind weitere Features vorhanden, z.B. Synonyme und umfassende Abfragesyntax, aber dies sind normalerweise keine außergewöhnlichen Features.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Was ist der Unterschied zwischen der kognitiven Azure-Suche und Elasticsearch?
-
-Beim Vergleichen von Suchtechnologie fragen Kunden häufig danach, worin sich die kognitive Azure-Suche genau von Elasticsearch unterscheidet. Kunden, die die kognitive Azure-Suche anstelle von Elasticsearch für ihre Suchanwendungsprojekte nutzen, entscheiden sich meistens für diese Vorgehensweise, weil wir eine wichtige Aufgabe vereinfacht haben oder weil sie die integrierte Integration in andere Microsoft-Technologie benötigen:
-
-+ Die kognitive Azure-Suche ist ein vollständig verwalteter Clouddienst mit Vereinbarungen zum Servicelevel (SLAs) von 99,9 %, wenn die Bereitstellung mit ausreichender Redundanz erfolgt (zwei Replikate für Lesezugriff, drei Replikate für Lese-/Schreibzugriff).
-+ Die [NLPs (Natural Language Processors)](https://docs.microsoft.com/rest/api/searchservice/language-support) von Microsoft ermöglichen eine professionelle linguistische Analyse.  
-+ [Indexer der kognitiven Azure-Suche](search-indexer-overview.md) können für die anfängliche und inkrementelle Indizierung für viele verschiedene Azure-Datenquellen einen Crawlvorgang durchführen.
-+ Wenn Sie eine schnelle Reaktion auf Schwankungen des Abfrage- oder Indizierungsvolumens benötigen, können Sie [Schieberegler-Steuerelemente](search-manage.md#scale-up-or-down) im Azure-Portal verwenden oder ein [PowerShell-Skript](search-manage-powershell.md) ausführen und die Shardverwaltung direkt umgehen.  
-+ [Features für die Bewertung und Optimierung](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) ermöglichen eine Beeinflussung der Suchrangbewertungen über die Funktionen des Suchmoduls hinaus.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Kann ich den Dienst für die kognitive Azure-Suche anhalten und so die Abrechnung von Gebühren stoppen?
 
@@ -92,6 +82,14 @@ Die meisten Platzhaltersuchabfragen wie Präfix-, Fuzzy- und RegEx-Abfragen werd
 Standardmäßig werden Suchergebnisse nach den [statistischen Eigenschaften übereinstimmender Ausdrücke](search-lucene-query-architecture.md#stage-4-scoring) bewertet und im Resultset von hoch bis niedrig sortiert. Einige Abfragetypen (Platzhalter, Präfix, regulärer Ausdruck) tragen aber immer eine konstante Bewertungspunktzahl zur Gesamtbewertung des Dokuments bei. Dieses Verhalten ist beabsichtigt. Die kognitive Azure-Suche wendet eine konstante Bewertungspunktzahl an, damit per Abfrageerweiterung ermittelte Übereinstimmungen in die Ergebnisse eingebunden werden können, ohne dass die Rangfolge beeinträchtigt wird.
 
 Beispiel: Angenommen, die Eingabe von „tour*“ für eine Platzhaltersuche in englischem Text führt zu den Übereinstimmungen „tours“, „tourettes“ und „tourmaline“. Aufgrund der Art dieser Ergebnisse lässt sich nicht sicher ableiten, welche Begriffe „wertvoller“ als andere sind. Daher werden Begriffshäufigkeiten beim Bewerten von Ergebnissen in Abfragen vom Typ Platzhalter, Präfix und regulärer Ausdruck ignoriert. Suchergebnisse erhalten basierend auf einer Teileingabe eine konstante Bewertung, um eine Bevorzugung von potenziell unerwarteten Übereinstimmungen zu vermeiden.
+
+## <a name="skillset-operations"></a>Skillsetvorgänge
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>Gibt es Tipps oder Tricks zum Verringern der Cognitive Services-Gebühren für die Erfassung?
+
+Verständlicherweise möchten Sie integrierte oder benutzerdefinierte Skills nicht häufiger als unbedingt notwendig ausführen – insbesondere dann nicht, wenn Sie Millionen von Dokumenten verarbeiten müssen. Aus diesem Grund haben wir der Skillsetausführung Funktionen für die „inkrementelle Anreicherung“ hinzugefügt. Im Wesentlichen können Sie einen Cachespeicherort (eine Blobspeicher-Verbindungszeichenfolge) angeben, der zum Speichern der Ausgabe von „Zwischenschritten“ bei der Anreichung verwendet wird.  Auf diese Weise erhalten Sie eine intelligente Anreicherungspipeline und wenden beim Bearbeiten Ihres Skillsets nur Anreicherungen an, die benötigt werden. Gleichzeitig wird so Zeit bei der Indizierung eingespart, und die Pipeline wird effizienter.
+
+Erfahren Sie mehr über die [inkrementelle Anreicherung](cognitive-search-incremental-indexing-conceptual.md).
 
 ## <a name="design-patterns"></a>Entwurfsmuster
 

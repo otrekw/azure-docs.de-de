@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582469"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81451430"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -67,7 +67,7 @@ Für eine kennwortlose Bereitstellung müssen Organisationen die folgenden Vorau
 
 | Voraussetzung | Authenticator-App | FIDO2-Sicherheitsschlüssel |
 | --- | --- | --- |
-| [Kombinierte Registrierung für Azure MFA und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](howto-registration-mfa-sspr-combined.md) ist aktiviert (Previewfunktion). | √ | √ |
+| [Kombinierte Registrierung für Azure MFA und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](howto-registration-mfa-sspr-combined.md) ist aktiviert. | √ | √ |
 | [Benutzer können Azure MFA (Multi-Factor Authentication) nutzen.](howto-mfa-getstarted.md) | √ | √ |
 | [Benutzer haben sich für Azure MFA und SSPR registriert.](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Benutzer haben ihre mobilen Geräte für Azure Active Directory registriert](../devices/overview.md) | √ |   |

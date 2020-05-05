@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 625b7fc8d49c91a9f2b1c09e1add72993e828d43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27e3f0ef7539f3fb875c087ff7d1351916877d19
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597808"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536482"
 ---
-Standarddateifreigaben mit einer Kapazitätsgrenze von 100 TiB sind in allen Azure-Regionen allgemein verfügbar – mit folgenden Ausnahmen:
+Für Standarddateifreigaben mit einer Kapazität von 100 TiB gelten bestimmte Einschränkungen.
 
-- Lokal redundanter Speicher: Alle Regionen mit Ausnahme von „Südafrika, Norden“, „Südafrika, Westen“, „Deutschland, Westen-Mitte“ und „Deutschland, Norden“.
-- Zonenredundanter Speicher: Wird für alle Regionen unterstützt, in denen zonenredundanter Speicher unterstützt wird, mit Ausnahme von „Japan, Osten“, „Europa, Norden“ und „Südafrika, Norden“.
-- Georedundanter/geozonenredundanter Speicher: Wird nicht unterstützt.
+- Derzeit werden nur LRS-Konten (Locally Redundant Storage, lokal redundanter Speicher) und ZRS-Konten (Zone Redundant Storage, zonenredundanter Speicher) unterstützt.
+- Nach der Aktivierung großer Dateifreigaben können Sie Speicherkonten nicht in GRS-Konten (Geo-Redundant Storage, georedundanter Speicher) oder in GZRS-Konten (Geo-Zone Redundant Storage, geozonenredundanter Speicher) konvertieren.
+- Die Aktivierung großer Dateifreigaben kann nicht rückgängig gemacht werden.

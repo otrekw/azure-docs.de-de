@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063783"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Datenbank mithilfe des Azure-Portals
@@ -58,7 +58,7 @@ Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Grup
     Serveradministratoranmeldung | **myadmin** | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto ein. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Position | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
+    Standort | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
     Version | *Die aktuelle Version*| Die aktuelle Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif | Siehe Beschreibung. | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Klicken Sie auf **Tarif** > **Universell**. Übernehmen Sie die Standardwerte für die folgenden Einstellungen:<br><ul><li>**Computegeneration** (Gen 5)</li><li>**Virtuelle Kerne** (4 virtuelle Kerne)</li><li>**Speicher** (100 GB)</li><li>**Aufbewahrungszeit für Sicherung** (sieben Tage)</li></ul><br>Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. <br><br>Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
     

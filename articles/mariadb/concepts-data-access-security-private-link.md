@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79367719"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Private Link für Azure Database for MariaDB
@@ -28,7 +28,7 @@ Datenexfiltration in Azure Database for MariaDB bedeutet, dass ein autorisierter
 
 Stellen Sie sich ein Szenario vor, in dem ein Benutzer die MariaDB-Workbench auf einer Azure-VM mit einer Verbindung mit einer Azure Database for MariaDB-Instanz ausführt. Diese MariaDB-Instanz befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in Azure Database for MariaDB unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
 
-* Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zu Azure Database for MariaDB über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf „AUS“ festlegen. Stellen Sie entweder über [Firewallregeln](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) oder über [VNET-Dienstendpunkte](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet) sicher, dass keine IP-Adressen oder IP-Adressbereiche auf den Server zugreifen dürfen.
+* Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zu Azure Database for MariaDB über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf „AUS“ festlegen. Stellen Sie entweder mithilfe von [Firewallregeln](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) oder mithilfe von [VNET-Dienstendpunkten](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet) sicher, dass keine IP-Adressen oder IP-Adressbereiche auf den Server zugreifen können.
 
 * Lassen Sie nur Datenverkehr an Azure Database for MariaDB mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver](concepts-data-access-security-vnet.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](howto-manage-vnet-portal.md).
 
@@ -45,7 +45,7 @@ Mit Private Link können Sie nun Netzwerkzugriffssteuerungen wie NSGs einrichten
 
 Wenn Sie von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss Ihre IP-Adresse mithilfe einer Firewallregel auf Serverebene der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
 
-Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend können Sie den gesamten Zugriff über einen öffentlichen Endpunkt deaktivieren, ohne die IP-basierte Firewall zu verwenden.
+Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend kann der gesamte Zugriff über einen öffentlichen Endpunkt deaktiviert und auf die Verwendung der IP-basierten Firewall verzichtet werden.
 
 ## <a name="configure-private-link-for-azure-database-for-mariadb"></a>Konfigurieren von Private Link für Azure Database for MariaDB
 

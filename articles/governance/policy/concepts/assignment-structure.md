@@ -1,14 +1,14 @@
 ---
 title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231414"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81683215"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -20,6 +20,7 @@ Eine Richtlinienzuweisung wird mithilfe von JSON erstellt. Die Richtlinienzuweis
 - description
 - metadata
 - Erzwingungsmodus
+- Ausgeschlossene Bereiche
 - Richtliniendefinition
 - parameters
 
@@ -34,6 +35,7 @@ Der folgende JSON-Code zeigt z. B. eine Richtlinienzuweisung im _DoNotEnforce_-M
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -62,9 +64,13 @@ Diese Eigenschaft weist die folgenden Werte auf:
 |Mode |JSON-Wert |type |Manuelle Behebung |Aktivitätsprotokolleintrag |BESCHREIBUNG |
 |-|-|-|-|-|-|
 |Aktiviert |Standard |Zeichenfolge |Ja |Ja |Die Richtlinienauswirkung wird während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
-|Disabled |DoNotEnforce |Zeichenfolge |Ja |Nein | Die Richtlinienauswirkung wird nicht während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
+|Disabled |DoNotEnforce |Zeichenfolge |Ja |Nein  | Die Richtlinienauswirkung wird nicht während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
 
 Wenn **enforcementMode** nicht in einer Richtlinie oder Initiativendefinition angegeben ist, wird der Wert _Default_ verwendet. [Aufgaben zur Bereinigung](../how-to/remediate-resources.md) können für [deployIfNotExists](./effects.md#deployifnotexists)-Richtlinien gestartet werden, auch wenn **enforcementMode** auf _DoNotEnforce_ festgelegt ist.
+
+## <a name="excluded-scopes"></a>Ausgeschlossene Bereiche
+
+Der **scope** der Zuweisung umfasst alle untergeordneten Ressourcencontainer und untergeordneten Ressourcen. Wenn die Definition für untergeordnete Ressourcencontainer oder untergeordnete Ressourcen nicht angewendet werden soll, können diese durch Festlegung von **notScopes** von der Auswertung ausgeschlossen werden. Diese Eigenschaft ist ein Array, mit dem ein oder mehrerer Ressourcencontainer oder Ressourcen von der Auswertung ausgeschlossen werden können. **notScopes** können nach dem Erstellen der anfänglichen Zuweisung hinzugefügt oder aktualisiert werden.
 
 ## <a name="policy-definition-id"></a>Richtliniendefinitions-ID
 

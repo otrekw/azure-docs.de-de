@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/10/2020
+ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232835"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -128,6 +128,9 @@ Weitere Informationen zu Speicheroptionen mit HDInsight finden Sie unter [Vergle
 Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blobcontainer für ein Azure-Speicherkonto oder eine Data Lake Storage-Instanz an. Der Standardspeicher enthält Anwendungs- und Systemprotokolle. Optional können Sie zusätzliche verknüpfte Azure-Speicherkonten und Data Lake Storage-Konten angeben, auf die der Cluster zugreifen kann. Der HDInsight-Cluster und die abhängigen Speicherkonten müssen sich an demselben Azure-Standort befinden.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
+> [!IMPORTANT]
+> Das Aktivieren der sicheren Speicherübertragung nach dem Erstellen eines Clusters kann zu Fehlern bei der Verwendung Ihres Speicherkontos führen und wird daher nicht empfohlen. Es ist besser, einen neuen Cluster mit einem Speicherkonto zu erstellen, bei dem die sichere Übertragung bereits aktiviert ist.
 
 ### <a name="metastore-settings"></a>Metastore-Einstellungen
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298332"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
@@ -134,7 +134,7 @@ Führen Sie zum Installieren des Gateways mit dem Setup-Assistenten die folgende
    a. Geben Sie die für das Gateway zu verwendende TCP-Portnummer ein. Das Setup verwendet diese Portnummer, um eine Eingangsregel für die Windows-Firewall zu konfigurieren.  Der Standardwert ist 8080.
       Zulässig sind Portnummern im Bereich zwischen 1 und 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
 
-   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. `http://myorgname.corp.contoso.com:80` ein  Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
+   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. `http://myorgname.corp.contoso.com:80` ein   Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
 
    c. Wählen Sie **Weiter** aus.
 

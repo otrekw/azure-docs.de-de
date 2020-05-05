@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050815"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
@@ -24,7 +24,7 @@ ms.locfileid: "80050815"
 Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
 
    > [!IMPORTANT]
-   > **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch Erstellen nicht verwalteter Azure AD-Konten und Mandanten für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Als Vorbereitung ermutigen wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, dass sich in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
+   > **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch Erstellen nicht verwalteter Azure AD-Konten und Mandanten für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, dass sich in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Können wir unsere Anmeldeseite anpassen, damit sie für Gastbenutzer der B2B-Zusammenarbeit intuitiver ist?
 Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](../fundamentals/customize-branding.md).
@@ -61,7 +61,7 @@ B2B Collaboration-Benutzer benötigen keinen Zugriff auf das Azure-Portal, falls
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
 
-Ja. Sie können eine Richtlinie für bedingten Zugriff erstellen, durch die der Zugriff auf das Azure-Portal für alle Gast- und externen Benutzer blockiert wird. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
+ Ja. Sie können eine Richtlinie für bedingten Zugriff erstellen, durch die der Zugriff auf das Azure-Portal für alle Gast- und externen Benutzer blockiert wird. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 2. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus. 

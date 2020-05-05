@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237206"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81605900"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
 
@@ -101,7 +101,9 @@ Nachdem Sie nun Ihre Azure-Funktion erstellt haben, können Sie die Schritte zum
 
 ## <a name="create-functions-inside-logic-apps"></a>Erstellen von Funktionen innerhalb von Logik-Apps
 
-Bevor Sie eine Azure-Funktion erstellen können, indem Sie in Ihrer Logik-App im Logik-App-Designer beginnen, müssen Sie zuerst über eine Azure-Funktions-App verfügen. Hierbei handelt es sich um einen Container für Ihre Funktionen. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+Sie können Azure-Funktionen direkt aus dem Workflow Ihrer Logik-App erstellen, indem Sie die integrierte Azure Functions-Aktion im Logik-App-Designer verwenden. Sie können diese Methode jedoch nur für in JavaScript geschriebene Azure-Funktionen verwenden. Für andere Sprachen können Sie Azure Functions-Instanzen auf der Azure Functions-Oberfläche im Azure-Portal erstellen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+
+Bevor Sie jedoch eine Azure-Funktion erstellen können, müssen Sie bereits über eine Azure-Funktions-App verfügen, die ein Container für Ihre Funktionen ist. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 

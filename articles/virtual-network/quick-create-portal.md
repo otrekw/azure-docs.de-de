@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214788"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
@@ -41,9 +41,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
     | Name | Geben Sie *myVirtualNetwork* ein. |
-    | Position | Wählen Sie **USA, Osten** aus.|
+    | Standort | Wählen Sie **USA, Osten** aus.|
 
-1. Wählen Sie **Weiter: IP-Adressen** aus, und geben Sie unter **IPv4-Adressraum** den Adressraum *10.1.0.0/16* ein.
+1. Klicken Sie auf **Weiter: IP-Adressen** aus, und geben Sie unter **IPv4-Adressraum** den Adressraum *10.1.0.0/16* ein.
 
 1. Wählen Sie **Subnetz hinzufügen** aus, und geben Sie unter **Subnetzname** den Namen *myVirtualSubnet* und unter **Subnetzadressbereich** den Bereich *10.1.0.0/24* ein.
 
@@ -84,9 +84,9 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | **Sparen Sie Geld** |  |
     | Windows-Lizenz bereits vorhanden? | Verwenden Sie die Standardeinstellung **Nein**. |
 
-1. Wählen Sie **Weiter: Datenträger** aus.
+1. Klicken Sie auf **Weiter: Datenträger**.
 
-1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk** aus.
+1. Übernehmen Sie unter **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
@@ -99,7 +99,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | Öffentliche Eingangsports | Verwenden Sie die Standardeinstellung **Ausgewählte Ports zulassen**. |
     | Eingangsports auswählen | Verwenden Sie die Standardeinstellungen **HTTP** und **RDP**.
 
-1. Wählen Sie **Weiter: Verwaltung** aus.
+1. Klicken Sie auf **Weiter: Verwaltung** aus.
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Verwaltung** für **Diagnosespeicherkonto** **Neu erstellen** aus.
 

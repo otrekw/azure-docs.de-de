@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie in Azure eine Verbindung mit Analysis Service
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411312"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81676647"
 ---
 # <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
@@ -23,6 +23,9 @@ Dieser Artikel beschreibt das Herstellen einer Verbindung mit einem Server mithi
 [Abrufen der neuesten Clientbibliotheken](analysis-services-data-providers.md)
 
 Für alle Verbindungen mit einem Server sind unabhängig vom Typ aktualisierte AMO-, ADOMD.NET- und OLEDB-Clientbibliotheken erforderlich, um eine Verbindung mit einem Analysis Services-Server herzustellen und mit ihm zu kommunizieren. Für SSMS, Visual Studio, Excel 2016 und höhere Versionen sowie Power BI werden die neuesten Clientbibliotheken installiert oder mit monatlichen Releases aktualisiert. In einigen Fällen ist es jedoch möglich, dass eine Anwendung nicht über die neuesten Clientbibliotheken verfügt. Dies kann beispielsweise der Fall sein, wenn Updates durch Richtlinien verzögert werden oder wenn Office 365-Updates über den verzögerten Kanal erfolgen.
+
+> [!NOTE]
+> Die Clientbibliotheken können keine Verbindung mit Azure Analysis Services über Proxyserver herstellen, die einen Benutzernamen und ein Kennwort erfordern. 
 
 ## <a name="server-name"></a>Servername
 

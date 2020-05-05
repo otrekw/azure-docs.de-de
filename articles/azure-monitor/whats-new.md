@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
 ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80802603"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
@@ -42,7 +42,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Häufig gestellte Fragen zu Azure Monitor](faq.md): Azure Monitor für Container aktualisiert.
 - [Konfigurieren der GPU-Überwachung mit Azure Monitor für Container](insights/container-insights-gpu-monitoring.md): Neuer Artikel.
 
-### <a name="insights"></a>Insights
+### <a name="insights"></a>Einblicke
 - [Office 365-Verwaltungslösung in Azure (Vorschau)](insights/solution-office-365.md): Das Veraltungsdatum wurde aktualisiert.
 
 ### <a name="logs"></a>Protokolle

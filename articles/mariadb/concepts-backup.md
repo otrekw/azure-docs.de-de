@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369242"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
@@ -48,8 +48,8 @@ Wenn in Azure Database for MariaDB eine Wiederherstellung ausgeführt wird, wird
 
 Es gibt zwei Arten der Wiederherstellung:
 
-- Die **Point-in-Time-Wiederherstellung** ist für beide Sicherungsredundanzoptionen verfügbar. Es wird unter Verwendung der Kombination von vollständigen und Transaktionsprotokollsicherungen in derselben Region wie der ursprüngliche Server ein neuer Server erstellt.
-- Die **Geowiederherstellung** ist nur verfügbar, wenn Sie Ihren Server für georedundanten Speicher konfiguriert haben. Hierbei können Sie den Server unter Verwendung der aktuellen Sicherung in einer anderen Region wiederherstellen.
+- Die **Point-in-Time-Wiederherstellung** ist für beide Sicherungsredundanzoptionen verfügbar. Es wird unter Verwendung einer Kombination aus vollständigen Sicherungen und Transaktionsprotokollsicherungen in der Region des ursprünglichen Servers ein neuer Server erstellt.
+- Die **Geowiederherstellung** ist nur verfügbar, wenn Sie Ihren Server für georedundanten Speicher konfiguriert haben. Hierbei können Sie den Server unter Verwendung der aktuellsten Sicherung in einer anderen Region wiederherstellen.
 
 Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
@@ -66,7 +66,7 @@ Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsiche
 
 ### <a name="geo-restore"></a>Geowiederherstellung
 
-Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die letzte Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
+Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 
 Während der Geowiederherstellung können folgende Serverkonfigurationen geändert werden: Computegeneration, virtueller Kern, Aufbewahrungszeitraum für die Sicherung und Sicherungsredundanzoptionen. Allerdings wird während der Geowiederherstellung nicht das Ändern des Tarifs („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Speichergröße unterstützt.
 
@@ -75,7 +75,7 @@ Während der Geowiederherstellung können folgende Serverkonfigurationen geände
 Nach beiden Wiederherstellungsverfahren sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in den betriebsbereiten Zustand zu versetzen:
 
 - Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll
-- Sicherstellen, dass geeignete VNET-Regeln vorhanden sind, damit Benutzer eine Verbindung herstellen können. Diese Regeln werden nicht vom ursprünglichen Server kopiert.
+- Stellen Sie sicher, dass geeignete VNET-Regeln vorhanden sind, damit Benutzer eine Verbindung herstellen können. Diese Regeln werden nicht vom ursprünglichen Server kopiert.
 - Sicherstellen, dass geeignete Anmeldungen und Berechtigungen auf Datenbankebene vorhanden sind
 - Konfigurieren der erforderlichen Warnungen
 
@@ -83,4 +83,4 @@ Nach beiden Wiederherstellungsverfahren sollten Sie die folgenden Aufgaben durch
 
 - Weitere Informationen zur Geschäftskontinuität finden Sie in der  [Übersicht über die Geschäftskontinuität](concepts-business-continuity.md).
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter  [Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal](howto-restore-server-portal.md).
-- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über die Azure-Befehlszeilenschnittstelle finden Sie unter  [Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure-Befehlszeilenschnittstelle](howto-restore-server-cli.md).
+- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über die Azure-Befehlszeilenschnittstelle finden Sie unter  [Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure CLI](howto-restore-server-cli.md).

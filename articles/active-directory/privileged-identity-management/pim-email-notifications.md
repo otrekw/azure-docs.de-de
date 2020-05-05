@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/05/2019
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72756397"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232307"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
@@ -51,8 +51,8 @@ Wer diese E-Mails für Azure AD-Rollen erhält, hängt von der Rolle, dem Ereign
 | Benutzer | Für die Rollenaktivierung steht Genehmigung aus | Anforderung zur Rollenaktivierung ist abgeschlossen | PIM ist aktiviert |
 | --- | --- | --- | --- |
 | Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | Ja</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | Ja |
-| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein | Ja* | Ja |
-| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein | Ja* | Ja |
+| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
+| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
 
 \* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md#notifications) auf **Aktivieren** festgelegt ist.
 
@@ -62,7 +62,7 @@ Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn ein Benutze
 
 ### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Wöchentliche Privileged Identity Management-Zusammenfassungs-E-Mail für Azure AD-Rollen
 
-Eine wöchentliche Privileged Identity Management-Zusammenfassung für Azure AD-Rollen wird per E-Mail an Administratoren für privilegierte Rollen, Sicherheitsadministratoren und globale Administratoren gesendet, die Privileged Identity Management aktiviert haben. Diese wöchentliche E-Mail enthält eine Momentaufnahme der Privileged Identity Management-Aktivitäten der Woche sowie der Zuweisungen privilegierter Rollen. Sie ist nur für Mandanten in der öffentlichen Cloud verfügbar. Hier sehen Sie eine Beispiel-E-Mail:
+Eine wöchentliche Privileged Identity Management-Zusammenfassung für Azure AD-Rollen wird per E-Mail an Administratoren für privilegierte Rollen, Sicherheitsadministratoren und globale Administratoren gesendet, die Privileged Identity Management aktiviert haben. Diese wöchentliche E-Mail enthält eine Momentaufnahme der Privileged Identity Management-Aktivitäten der Woche sowie der Zuweisungen privilegierter Rollen. Sie ist nur für Azure AD-Organisationen in der öffentlichen Cloud verfügbar. Hier sehen Sie eine Beispiel-E-Mail:
 
 ![Wöchentliche Privileged Identity Management-Zusammenfassungs-E-Mail für Azure AD-Rollen](./media/pim-email-notifications/email-directory-weekly.png)
 
@@ -70,12 +70,24 @@ Die E-Mail enthält vier Kacheln:
 
 | Kachel | BESCHREIBUNG |
 | --- | --- |
-| **Users activated** (Benutzer aktiviert) | Zeigt an, wie oft Benutzer ihre berechtigte Rolle im Mandanten aktiviert haben. |
+| **Users activated** (Benutzer aktiviert) | Zeigt an, wie oft Benutzer ihre berechtigte Rolle in der Organisation aktiviert haben. |
 | **Users made permanent** (Benutzer als permanent festgelegt) | Zeigt an, wie oft Benutzer mit einer berechtigten Zuweisung als permanent festgelegt werden. |
 | **Rollenzuweisungen in Privileged Identity Management** | Zeigt an, wie oft Benutzern eine berechtigte Rolle in Privileged Identity Management zugewiesen wird. |
 | **Role assignments outside of PIM** (Rollenzuweisungen außerhalb von PIM) | Zeigt an, wie oft Benutzern eine permanente Rolle außerhalb von Privileged Identity Management (in Azure AD) zugewiesen wird. |
 
-Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrem Mandanten basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird der [PIM-Assistent](pim-security-wizard.md) geöffnet, in dem Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
+Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrer Organisation basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird der [PIM-Assistent](pim-security-wizard.md) geöffnet, in dem Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
+
+## <a name="email-timing-for-activation-approvals"></a>E-Mail-Timing für Aktivierungsgenehmigungen
+
+Wenn Benutzer ihre Rolle aktivieren und die Rolleneinstellung genehmigt werden muss, erhalten genehmigende Personen für jede Genehmigung drei E-Mails:
+
+- Anforderung zum Genehmigen oder Ablehnen der Aktivierungsanforderung des Benutzers (vom Genehmigungsanforderungsmodul gesendet)
+- Die Anforderung des Benutzers wird genehmigt (vom Genehmigungsanforderungsmodul gesendet)
+- Die Rolle des Benutzers wird aktiviert (von Privileged Identity Management gesendet)
+
+Bei den ersten beiden vom Genehmigungsanforderungsmodul gesendeten E-Mails können Verzögerungen auftreten. Bei 90 % der E-Mails dauert das Versenden derzeit drei bis zehn Minuten, aber bei 1 % der Kunden kann es viel länger dauern, bis zu fünfzehn Minuten.
+
+Wird im Azure-Portal eine Genehmigungsanforderung vor dem Senden der ersten E-Mail genehmigt, wird die erste E-Mail nicht mehr ausgelöst, und andere genehmigende Personen werden nicht per E-Mail über die Genehmigungsanforderung benachrichtigt. Es mag den Anschein haben, als hätten sie keine E-Mail erhalten, aber dies ist das erwartete Verhalten.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>PIM-E-Mails für Azure-Ressourcenrollen
 

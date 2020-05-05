@@ -2,27 +2,25 @@
 title: Änderungen an Vorhersageendpunkten in der V3-API
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 9a8e8cb331dd11eebaddbcbf8f603c1148415aef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117371"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81530384"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
 Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 **Status der allgemeinen Verfügbarkeit**: Diese V3-APIs enthalten erhebliche Änderungen an JSON-Anforderungen und -Antworten gegenüber der V2-API.
 
 Die V3-API bietet die folgenden neuen Features:
 
-* [Externe Entitäten](#external-entities-passed-in-at-prediction-time)
-* [Dynamische Listen](#dynamic-lists-passed-in-at-prediction-time)
+* [Externe Entitäten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
+* [Dynamische Listen](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [JSON-Anpassungen für vordefinierte Entitäten](#prebuilt-entity-changes)
 
 An [Anforderungen](#request-changes) und [Antworten](#response-changes) von Vorhersageendpunkten wurden erhebliche Änderungen zur Unterstützung der oben aufgelisteten neuen Features vorgenommen, darunter die folgenden:
@@ -100,11 +98,11 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 |Parametername|type|Version|Standard|Zweck|
 |--|--|--|--|--|
 |`log`|boolean|V2 und V3|false|Speichern Sie die Abfrage in der Protokolldatei. Der Standardwert ist „false“.|
-|`query`|string|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
+|`query`|Zeichenfolge|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
 |`show-all-intents`|boolean|Nur V3|false|Alle Absichten mit der entsprechenden Bewertung werden innerhalb des **prediction.intents**-Objekts zurückgegeben. Absichten werden als Objekte in einem übergeordneten `intents`-Objekt zurückgegeben. `prediction.intents.give` ermöglicht den programmgesteuerten Zugriff, ohne die Absicht im Array suchen zu müssen. In V2 werden diese Absichten in einem Array zurückgegeben. |
 |`verbose`|boolean|V2 und V3|false|Wenn **in V2** TRUE festgelegt wird, werden alle vorhergesagten Absichten zurückgegeben. Wenn Sie alle vorhergesagten Absichten abrufen müssen, verwenden Sie den V3-Parameter von `show-all-intents`.<br><br>**In V3** stellt dieser Parameter nur Details zu Entitätsmetadaten einer Entitätsvorhersage bereit.  |
-|`timezoneOffset`|string|V2|-|Zeitzone angewendet auf datetimeV2-Entitäten.|
-|`datetimeReference`|string|V3|-|[Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) angewendet auf datetimeV2-Entitäten. Ersetzt `timezoneOffset` aus V2.|
+|`timezoneOffset`|Zeichenfolge|V2|-|Zeitzone angewendet auf datetimeV2-Entitäten.|
+|`datetimeReference`|Zeichenfolge|V3|-|[Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) angewendet auf datetimeV2-Entitäten. Ersetzt `timezoneOffset` aus V2.|
 
 
 ### <a name="v3-post-body"></a>V3 POST-Text
@@ -123,13 +121,11 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 
 |Eigenschaft|type|Version|Standard|Zweck|
 |--|--|--|--|--|
-|`dynamicLists`|array|Nur V3|Nicht erforderlich.|Mit [dynamischen Listen](#dynamic-lists-passed-in-at-prediction-time) können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.|
-|`externalEntities`|array|Nur V3|Nicht erforderlich.|Mit [externen Entitäten](#external-entities-passed-in-at-prediction-time) kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. |
-|`options.datetimeReference`|string|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet. Das Format für „datetimeReference“ ist [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|boolean|Nur V3|false|Gibt an, ob die [externe Entität (mit dem gleichen Namen wie die vorhandene Entität)](#override-existing-model-predictions) des Benutzers oder die vorhandene Entität im Modell für die Vorhersage genutzt wird. |
-|`query`|string|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
-
-
+|`dynamicLists`|array|Nur V3|Nicht erforderlich.|Mit [dynamischen Listen](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.|
+|`externalEntities`|array|Nur V3|Nicht erforderlich.|Mit [externen Entitäten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. |
+|`options.datetimeReference`|Zeichenfolge|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet. Das Format für „datetimeReference“ ist [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.preferExternalEntities`|boolean|Nur V3|false|Gibt an, ob die [externe Entität (mit dem gleichen Namen wie die vorhandene Entität)](schema-change-prediction-runtime.md#override-existing-model-predictions) des Benutzers oder die vorhandene Entität im Modell für die Vorhersage genutzt wird. |
+|`query`|Zeichenfolge|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
 
 ## <a name="response-changes"></a>Änderungen an Antworten
 
@@ -281,185 +277,12 @@ In V3 wird das gleiche Ergebnis mit dem `verbose`-Flag zur Rückgabe von Entitä
 }
 ```
 
-## <a name="external-entities-passed-in-at-prediction-time"></a>Externe Entitäten, die zum Zeitpunkt der Vorhersage übergeben werden
+<a name="external-entities-passed-in-at-prediction-time"></a>
+<a name="override-existing-model-predictions"></a>
 
-Mit externen Entitäten kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. Dadurch können Sie eigene separate und benutzerdefinierte Entitätsextraktionen verwenden, bevor Abfragen an den Vorhersageendpunkt gesendet werden. Da dies am Endpunkt der Abfragevorhersage geschieht, müssen Sie Ihr Modell nicht erneut trainieren und veröffentlichen.
+## <a name="extend-the-app-at-prediction-time"></a>Erweitern der App zur Vorhersagezeit
 
-Die Clientanwendung stellt eine eigene Entitätsextraktion bereit, indem sie die Ermittlung von Entitätsübereinstimmungen verwaltet und innerhalb der Äußerung die Position der gefundenen Entität bestimmt. Anschließend übergibt sie diese Informationen der Anforderung, die gesendet wird.
-
-Externe Entitäten werden zur Erweiterung von Entitätstypen genutzt. Gleichzeitig werden sie weiterhin als Signale für andere Modelle wie Rollen oder Verbundentitäten verwendet.
-
-Dies ist nützlich für eine Entität, der nur zur Laufzeit der Abfragevorhersage Daten zur Verfügung stehen. Beispiele für diese Art von Daten sind benutzerspezifische oder sich ständig verändernde Daten. Sie können eine LUIS-Kontaktentität um externe Informationen aus der Kontaktliste eines Benutzers erweitern.
-
-### <a name="entity-already-exists-in-app"></a>Bereits in der App vorhandene Entität
-
-Der `entityName`-Wert für die externe Entität, der mit dem POST-Anforderungstext an den Endpunkt übergeben wird, muss zum Zeitpunkt der Anforderung bereits in der trainierten und veröffentlichten App vorhanden sein. Der Entitätstyp spielt keine Rolle, da alle Typen unterstützt werden.
-
-### <a name="first-turn-in-conversation"></a>Erster Gesprächsbeitrag in einer Unterhaltung
-
-Sehen Sie sich die folgende unvollständige Äußerung an, die ein Benutzer zu Beginn einer Chatbotunterhaltung eingeben könnte:
-
-`Send Hazem a new message`
-
-In den Text der POST-Anforderung, die der Chatbot an LUIS sendet, können Informationen zu `Hazem` integriert werden. Dadurch wird der Name direkt als Kontakt des Benutzers identifiziert.
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 5,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
-
-### <a name="second-turn-in-conversation"></a>Zweiter Gesprächsbeitrag in einer Unterhaltung
-
-Die nächste Äußerung des Benutzers in der Chatbotunterhaltung ist durch die Verwendung eines anderen Worts ungenauer:
-
-`Send him a calendar reminder for the party.`
-
-In dieser Äußerung wird mit `him` auf `Hazem` verwiesen. Der Chatbot kann im POST-Anforderungstext `him` dem Entitätswert `Hazem` zuordnen, der aus der ersten Äußerung extrahiert wurde.
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 3,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
-
-### <a name="override-existing-model-predictions"></a>Außerkraftsetzen von vorhandenen Modellvorhersagen
-
-Mit der `preferExternalEntities`-Optionseigenschaft wird Folgendes angegeben: Wenn der Benutzer eine externe Entität sendet, die sich mit einer vorhergesagten Entität mit dem gleichen Namen überschneidet, wird von LUIS die übergebene Entität oder die im Modell vorhandene Entität ausgewählt.
-
-Sehen Sie sich dies beispielsweise für die Abfrage `today I'm free` an. LUIS erkennt `today` als datetimeV2-Element mit der folgenden Antwort:
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-Wenn der Benutzer die externe Entität sendet:
-
-```JSON
-{
-    "entityName": "datetimeV2",
-    "startIndex": 0,
-    "entityLength": 5,
-    "resolution": {
-        "date": "2019-06-21"
-    }
-}
-```
-
-Wenn `preferExternalEntities` auf `false` festgelegt ist, gibt LUIS eine Antwort zurück, die dem Fall entspricht, in dem die externe Entität nicht gesendet wurde.
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-Wenn `preferExternalEntities` auf `true` festgelegt ist, gibt LUIS eine Antwort mit folgendem Inhalt zurück:
-
-```JSON
-"datetimeV2": [
-    {
-        "date": "2019-06-21"
-    }
-]
-```
-
-
-
-#### <a name="resolution"></a>Lösung
-
-Die _optionale_ `resolution`-Eigenschaft wird in der Vorhersageantwort zurückgegeben. Dadurch können Sie Metadaten für die externe Entität übergeben und diese Daten dann wieder aus der Antwort abrufen.
-
-Diese Vorgehensweise dient vor allem der Erweiterung vordefinierter Entitäten, kann aber auch auf andere Entitätstypen angewendet werden.
-
-Die `resolution`-Eigenschaft kann eine Zahl, eine Zeichenfolge, ein Objekt oder ein Array sein:
-
-* "Dallas"
-* {"text": "value"}
-* 12345
-* ["a", "b", "c"]
-
-
-
-## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Dynamische Listen, die zum Zeitpunkt der Vorhersage übergeben werden
-
-Mit dynamischen Listen können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.
-
-Verwenden Sie dieses Feature, wenn die Werte Ihrer Listenentität regelmäßig angepasst werden müssen. Sie können die bereits trainierte und veröffentlichte Listenentität unter folgenden Umständen erweitern:
-
-* Die Erweiterung findet zum Zeitpunkt der Anforderung für den Endpunkt der Abfragevorhersage statt.
-* Die Erweiterung betrifft eine einzelne Anforderung.
-
-Die Listenentität in der LUIS-App kann leer sein, muss aber existieren. Diese Entität wird nicht geändert, aber die Vorhersagefunktion am Endpunkt wird so erweitert, dass zwei Listen mit ca. 1000 Elementen verwendet werden.
-
-### <a name="dynamic-list-json-request-body"></a>JSON-Anforderungstext für dynamische Listen
-
-Wenn Sie den folgenden JSON-Anforderungstext senden, wird der Liste eine neue Unterliste mit Synonymen hinzugefügt. Mit der `LUIS`-Anforderung für die Abfragevorhersage können Sie die Listenentität dann für den Text (`POST`) vorhersagen:
-
-```JSON
-{
-    "query": "Send Hazem a message to add an item to the meeting agenda about LUIS.",
-    "options":{
-        "timezoneOffset": "-8:00"
-    },
-    "dynamicLists": [
-        {
-            "listEntity*":"ProductList",
-            "requestLists":[
-                {
-                    "name": "Azure Cognitive Services",
-                    "canonicalForm": "Azure-Cognitive-Services",
-                    "synonyms":[
-                        "language understanding",
-                        "luis",
-                        "qna maker"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-
-Die Vorhersageantwort enthält die Listenentität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
+Lernen Sie [Konzepte](schema-change-prediction-runtime.md) kennen, wie Sie die Anwendung zur Vorhersagelaufzeit erweitern können.
 
 ## <a name="deprecation"></a>Eingestellte Unterstützung
 

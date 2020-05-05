@@ -5,22 +5,22 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743871"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617419"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Azure Monitor-Protokollen
 
-Zusätzlich zu den Details, die in der Updateverwaltungslösung bereitgestellt werden, können Sie die in Ihrem Log Analytics-Arbeitsbereich gespeicherten Protokolle durchsuchen. Wählen Sie auf der Lösungsseite im linken Bereich **Protokolle** aus. Die Seite **Protokollsuche** wird geöffnet.
+Zusätzlich zu den Details, die in der Updateverwaltungslösung bereitgestellt werden, können Sie die in Ihrem Log Analytics-Arbeitsbereich gespeicherten Protokolle durchsuchen. Wählen Sie auf der Lösungsseite im linken Bereich **Protokolle** aus. Die Seite „Protokollsuche“ wird geöffnet.
 
-Weitere Informationen (etwa zum Anpassen der Abfragen oder Verwenden der Abfragen mit anderen Clients) finden Sie hier:  [Dokumentation zur Such-API von Log Analytics](https://dev.loganalytics.io/).
+Sie erfahren außerdem, wie Sie die Abfragen anpassen oder auf verschiedenen Clients verwenden können. Weitere Informationen finden Sie in der [Dokumentation zur Such-API von Log Analytics](https://dev.loganalytics.io/).
 
 ## <a name="update-records"></a>Updatedatensätze
 
-Datensätze, die von der Updateverwaltung für Windows und Linux-VMs gesammelt werden sowie die Datentypen, die in Protokollsuchergebnissen angezeigt werden. In den folgenden Abschnitten werden diese Datensätze beschrieben.
+Die Updateverwaltung sammelt Datensätze für Windows- und Linux-VMs und die Datentypen, die in den Protokollsuchergebnissen enthalten sind. In den folgenden Abschnitten werden diese Datensätze beschrieben.
 
 ### <a name="required-updates"></a>Erforderliche Updates
 
@@ -49,36 +49,36 @@ Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer ve
 
 | Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
-| ApprovalSource | Gilt nur für das Windows-Betriebssystem. Der Wert ist *Microsoft Update*. |
-| Genehmigt | *True* oder *False* |
-| Klassifizierung | *Updates* |
+| ApprovalSource | Gilt nur für das Windows-Betriebssystem. Quelle der Genehmigung für den Datensatz. Der Wert ist „Microsoft Update“. |
+| Genehmigt | TRUE, wenn der Datensatz genehmigt wird, andernfalls FALSE. |
+| Klassifizierung | Genehmigungsklassifizierung. Der Wert ist „Updates“. |
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
-| ComputerEnvironment | *Azure* oder *Nicht-Azure*. |
-| MSRCBulletinID | ID-Nummer des Sicherheitsbulletins | 
-| MSRCSeverity | Bewertung des Schweregrads des Sicherheitsrisiko. Werte:<br> *Critical* (Kritisch)<br> *Wichtig*<br> *Mittel*<br> *Niedrig* |  
+| ComputerEnvironment | Umgebung. Mögliche Werte sind „Azure“ oder „Non-Azure“. |
+| MSRCBulletinID | ID-Nummer des Sicherheitsbulletins. | 
+| MSRCSeverity | Bewertung des Schweregrads des Sicherheitsrisiko. Werte:<br> Kritisch<br> Wichtig<br> Moderat<br> Niedrig |  
 | KBID | ID des Knowledge Base-Artikels für das Windows Update. |
-| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder Log Analytics-Arbeitsbereichs. |
 | UpdateID | Eindeutiger Bezeichner des Softwareupdates. |
 | RevisionNumber | Die Revisionsnummer einer bestimmten Revision eines Updates. |
-| Optional | *True* oder *False* | 
+| Optional | TRUE, wenn der Datensatz optional ist, andernfalls FALSE. | 
 | RebootBehavior | Das Neustartverhalten nach der Installation/Deinstallation eines Updates. |
 | _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
-| type | *Aktualisieren* |
+| type | Der Datensatztyp. Der Wert ist „Update“. |
 | VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
 | MG | Eindeutiger Bezeichner für die Verwaltungsgruppe oder den Log Analytics-Arbeitsbereich. | 
 | TenantId | Eindeutiger Bezeichner, der die Azure Active Directory-Instanz Ihrer Organisation darstellt. | 
-| SourceSystem | *OperationsManager* | 
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes | 
+| SourceSystem | Das Quellsystem des Datensatzes. Der Wert ist `OperationsManager`. | 
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes. | 
 | SourceComputerId | Eindeutiger Bezeichner, der den Quellcomputer darstellt. | 
 | Titel | Der Titel des Updates. |
 | PublishedDate (UTC) | Das Datum, an dem das Update zum Download und zur Installation von Windows Update bereit steht.  |
 | UpdateState | Der aktuelle Zustand des Updates. | 
-| Produkt | Die Produkte, auf die das Update anwendbar ist. |
+| Produkt | Die Produkte, für die das Update gilt. |
 | SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. | 
-| ResourceGroup | Name der Ressourcengruppe, deren Mitglied die Ressource ist. | 
-| ResourceProvider | Gibt den Ressourcenanbieter an. | 
+| ResourceGroup | Name der Ressourcengruppe, zu der die Ressource gehört. | 
+| ResourceProvider | Der Ressourcenanbieter. | 
 | Resource | Der Name der Ressource. | 
-| ResourceType | Name des Ressourcentyps | 
+| ResourceType | Der Ressourcentyp. | 
 
 ### <a name="update-agent"></a>Agentupdate ausführen
 
@@ -94,12 +94,12 @@ Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Ag
 | OSVersion | Die Version des Betriebssystems. |
 | Server | |
 | SourceHealthServiceId | Eindeutiger Bezeichner für die Log Analytics Windows-Agent-ID. |
-| SourceSystem | *OperationsManager* | 
+| SourceSystem | Das Quellsystem des Datensatzes. Der Wert ist `OperationsManager`. | 
 | TenantId | Eindeutiger Bezeichner, der die Azure Active Directory-Instanz Ihrer Organisation darstellt. |
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
-| type | *Aktualisieren* | 
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes. |
+| type | Der Datensatztyp. Der Wert ist „Update“. | 
 | WindowsUpdateAgentVersion | Version des Windows Update-Agents. |
-| WSUSServer | Zeigt Fehler an, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
+| WSUSServer | Fehlermeldungen, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
 
 ### <a name="update-deployment-status"></a>Bereitstellungsstatus des Updates 
 
@@ -108,30 +108,30 @@ Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstell
 | Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
-| ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
+| ComputerEnvironment | Umgebung. Die Werte sind „Azure“ oder „Non-Azure“. | 
 | CorrelationId | Eindeutiger Bezeichner für die Runbookauftragsausführung für das Update. |
 | EndTime | Der Zeitpunkt, an dem der Synchronisierungsprozess beendet wurde. | 
 | ErrorResult | Generierter Windows Update-Fehlercode, wenn die Installation eines Updates fehlschlägt. | 
-| InstallationStatus | Die folgenden Installationszustände sind für Updates auf dem Clientcomputer möglich:<br> *NotStarted:* Der Auftrag wurde noch nicht ausgelöst.<br> *FailedToStart:* Der Auftrag konnte nicht auf dem Computer gestartet werden.<br> *Failed:* Der Auftrag wurde gestartet, ist aber mit einer Ausnahme fehlgeschlagen.<br> *InProgress:* Der Auftrag ist in Bearbeitung.<br> *MaintenanceWindowExceeded:* Die Ausführung wurde noch nicht fertiggestellt, aber das Wartungsfenster ist abgelaufen.<br> *Succeeded:* Der Auftrag wurde erfolgreich abgeschlossen.<br> *InstallFailed:* Die Installation des Updates ist fehlgeschlagen.<br> *NotIncluded*<br> *Excluded* |
+| InstallationStatus | Die folgenden Installationszustände sind für Updates auf dem Clientcomputer möglich:<br> `NotStarted`: Der Auftrag wurde noch nicht ausgelöst.<br> `FailedToStart`: Der Auftrag konnte nicht auf dem Computer gestartet werden.<br> `Failed`: Der Auftrag wurde gestartet, ist aber mit einer Ausnahme fehlgeschlagen.<br> `InProgress`: Der Auftrag ist in Bearbeitung.<br> `MaintenanceWindowExceeded`: Wenn die Ausführung noch nicht erfolgt ist, aber das Wartungsfenster erreicht wurde.<br> `Succeeded`: Der Auftrag war erfolgreich.<br> `InstallFailed`: Die Installation des Updates ist fehlgeschlagen.<br> `NotIncluded`<br> `Excluded` |
 | KBID | ID des Knowledge Base-Artikels für das Windows Update. | 
 | ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
-| OSType | Gibt den Typ des Betriebssystems an, entweder *Windows* oder *Linux*. | 
-| Produkt | Die Produkte, auf die das Update anwendbar ist. |
+| OSType | Typ des Betriebssystems. Werte sind Windows oder Linux. | 
+| Produkt | Die Produkte, für die das Update gilt. |
 | Resource | Der Name der Ressource. | 
 | resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
-| ResourceProvider | Gibt den Ressourcenanbieter an. | 
-| ResourceType | Name des Ressourcentyps | 
+| ResourceProvider | Der Ressourcenanbieter. | 
+| ResourceType | Der Ressourcentyp. | 
 | SourceComputerId | Eindeutiger Bezeichner, der den Quellcomputer darstellt. | 
-| SourceSystem | *OperationsManager* |
+| SourceSystem | Das Quellsystem des Datensatzes. Der Wert ist `OperationsManager`. |
 | StartTime | Die Uhrzeit, für die die Installation des Updates geplant ist. |
 | SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. | 
-| SucceededOnRetry | Zeigt an, wann die Updateausführung beim ersten Versuch fehlgeschlagen ist und dass der aktuelle Vorgang ein Wiederholungsversuch ist. |
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
+| SucceededOnRetry | Wert, der angibt, wann die Updateausführung beim ersten Versuch fehlgeschlagen ist und dass der aktuelle Vorgang ein Wiederholungsversuch ist. |
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes. |
 | Titel | Der Titel des Updates. |
-| type | *UpdateRunProgress* |
+| type | Der Typ des Updates. Der Wert ist `UpdateRunProgress`. |
 | UpdateId | Eindeutiger Bezeichner des Softwareupdates. |
 | VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
-| _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
+| resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
 
 ### <a name="update-summary"></a>Aktualisieren der Zusammenfassung 
 
@@ -140,31 +140,31 @@ Ein Datensatz mit dem Typ `UpdateSummary` wird erstellt, der eine Updatezusammen
 | Eigenschaft | BESCHREIBUNG | 
 |----------|-------------|
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
-| ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
-| CriticalUpdatesMissing | Anzahl der fehlenden wichtigen Updates, die anwendbar sind. | 
+| ComputerEnvironment | Umgebung. Die Werte sind „Azure“ oder „Non-Azure“. | 
+| CriticalUpdatesMissing | Anzahl der anwendbaren wichtigen Updates, die fehlen. | 
 | ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
 | NETRuntimeVersion | Version des auf dem Windows-Computer installierten .NET Frameworks. |
-| OldestMissingSecurityUpdateBucket | Werte:<br> *Aktuell*, wenn der Wert unter 30 Tagen liegt<br> *Vor 30 Tagen*<br> *Vor 60 Tagen*<br> *Vor 90 Tagen*<br> *Vor 120 Tagen*<br> *Vor 150 Tagen*<br> *Vor 180 Tagen*<br> *Älter*, wenn der Wert über 180 Tagen liegt | 
+| OldestMissingSecurityUpdateBucket | Der Spezifizierer des ältesten fehlenden Sicherheitsbuckets. Werte:<br> Aktuell, wenn der Wert unter 30 Tagen liegt<br> Vor 30 Tagen<br> Vor 60 Tagen<br> Vor 90 Tagen<br> Vor 120 Tagen<br> Vor 150 Tagen<br> Vor 180 Tagen<br> Älter, wenn der Wert größer als 180 Tage ist. | 
 | OldestMissingSecurityUpdateInDays | Die Gesamtanzahl von Tagen für das älteste erkannte Update, das nicht installiert wurde (sofern zutreffend). |
 | OsVersion | Die Version des Betriebssystems. |
 | OtherUpdatesMissing | Anzahl der erkannten fehlenden Updates. |
-| Resource |  Der Name der Ressource. | 
-| ResourceGroup | Name der Ressourcengruppe, deren Mitglied die Ressource ist. |
+| Resource | Name der Ressource für den Datensatz. | 
+| ResourceGroup | Name der Ressourcengruppe mit der Ressource. |
 | resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
-| ResourceProvider | Gibt den Ressourcenanbieter an. |
-| ResourceType | Name des Ressourcentyps |
-| RestartPending | *True* und *False*. |
-| SecurityUpdatesMissing | Anzahl der anwendbaren, fehlenden Sicherheitsupdates.| 
+| ResourceProvider | Der Ressourcenanbieter. |
+| ResourceType | Der Ressourcentyp. |
+| RestartPending | TRUE, wenn ein Neustart aussteht, andernfalls FALSE. |
+| SecurityUpdatesMissing | Anzahl der fehlenden anwendbaren Sicherheitsupdates.| 
 | SourceComputerId | Eindeutiger Bezeichner für den virtuellen Computer. |
-| SourceSystem | *OpsManager* | 
+| SourceSystem | Das Quellsystem des Datensatzes. Der Wert ist `OpsManager`. | 
 | SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. |
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
-| TotalUpdatesMissing | Gesamtzahl der anwendbaren fehlenden Updates. | 
-| type | *UpdateSummary* |
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes. |
+| TotalUpdatesMissing | Gesamtanzahl der fehlenden anwendbaren Updates. | 
+| type | Der Datensatztyp. Der Wert ist `UpdateSummary`. |
 | VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
 | WindowsUpdateAgentVersion | Version des Windows Update-Agents. |
-| WindowsUpdateSetting | Zeigt den Status des Windows Update-Agent an. Mögliche Werte:<br> *Geplante Installation*<br> *Vor der Installation benachrichtigen*<br> Fehler von fehlerhaftem WUA-Agent zurückgegeben. | 
-| WSUSServer | Zeigt Fehler an, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
+| WindowsUpdateSetting | Status des Windows Update-Agents. Mögliche Werte:<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
+| WSUSServer | Fehlermeldungen, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
 | _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
 
 ## <a name="sample-queries"></a>Beispielabfragen
@@ -237,7 +237,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Linux)
 
-Für einige Linux-Distributionen besteht ein Konflikt der [Bytereihenfolge](https://en.wikipedia.org/wiki/Endianness) mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Azure Mit-Protokollen gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Azure Monitor-Protokollen ausführen: `Update | where Computer == "<machine name>"
+Für einige Linux-Distributionen besteht ein Konflikt der [Bytereihenfolge](https://en.wikipedia.org/wiki/Endianness) mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Azure Monitor-Protokollen gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Azure Monitor-Protokollen ausführen: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
@@ -306,8 +306,6 @@ on SourceComputerId
 | summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
 | summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
-
-
 ```
 
 #### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
