@@ -5,18 +5,16 @@ description: Erfahren Sie, wie Sie eine RDP-Verbindung mit Windows Server-Knoten
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886788"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208039"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung
 
 Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Windows Server-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können auf den AKS-Windows Server-Knoten über RDP zugreifen. Wenn Sie mit SSH auf den AKS-Windows Server-Knoten zugreifen möchten und Zugriff auf das gleiche Schlüsselpaar haben, das während der Clustererstellung verwendet wurde, können Sie alternativ die Schritte in [Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)][ssh-steps] ausführen. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht.
-
-Die Unterstützung von Windows Server-Knoten in AKS befindet sich derzeit in der Vorschauphase.
 
 In diesem Artikel wird gezeigt, wie Sie eine RDP-Verbindung mit einem AKS-Knoten über die privaten IP-Adressen erstellen.
 
@@ -91,7 +89,7 @@ Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeil
 az aks install-cli
 ```
 
-Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
+Mit dem Befehl `kubectl`az aks get-credentials[ können Sie ][az-aks-get-credentials] für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

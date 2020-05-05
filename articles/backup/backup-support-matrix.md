@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505868"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537320"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -32,10 +32,10 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 --- | ---
 **Tresore im Abonnement** | Bis zu 500 Recovery Services-Tresore pro Abonnement.
 **Computer in einem Tresor** | Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
-**Datenquelle im Tresorspeicher** | Maximal 54.400 GB. Für Azure-VM-Sicherungen gilt kein Grenzwert.
+**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) ist 54.400 GB. Die Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
 **Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
-**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault). Das Verschieben von Tresoren über Regionen hinweg wird jedoch nicht unterstützt.
+**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
 
@@ -84,7 +84,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von Linux-
 
 ## <a name="daylight-saving-time-support"></a>Unterstützung für die Sommerzeit
 
-Azure Backup unterstützt keine automatische Uhrzeitanpassung an die Sommerzeit für die Sicherungen von Azure-VMs. Sicherungsrichtlinien können bei Bedarf angepasst werden.
+Azure Backup unterstützt keine automatische Uhrzeitanpassung an die Sommerzeit für die Sicherungen von Azure-VMs. Die Sicherung wird also nicht entsprechend um eine Stunde verschoben. Um sicherzustellen, dass die Sicherung zur gewünschten Zeit erfolgt, müssen die Sicherungsrichtlinien bei Bedarf manuell angepasst werden.
 
 ## <a name="disk-deduplication-support"></a>Unterstützung für Datenträgerdeduplizierung
 
@@ -151,12 +151,10 @@ Azure Backup hat das Feature zur regionsübergreifenden Wiederherstellung hinzug
 
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja. Eingeschränkte Public Preview: Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | USA, Westen-Mitte   |
-| MARS-Agent/lokal | Nein                                                           | –               |
-| SQL/SAP HANA          | Nein                                                           | –               |
-| AFS                    | Nein                                                           | –               |
-
-
+| Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
+| MARS-Agent/lokal | Nein                                                            | –               |
+| SQL/SAP HANA          | Nein                                                            | –               |
+| AFS                    | Nein                                                            | –               |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

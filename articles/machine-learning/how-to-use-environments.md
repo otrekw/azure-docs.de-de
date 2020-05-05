@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 3b1fc5dc427a8a9a1987b0ef916b99edb25e292a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc30318027962247f7504b734385d7642550ec87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536351"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Wiederverwenden von Umgebungen für Training und Bereitstellung mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -141,7 +141,7 @@ Sie fügen einer Umgebung Pakete mithilfe von Conda-, pip- oder Private Wheels-D
 
 Wenn ein Paket in einem Conda-Paketrepository verfügbar ist, empfehlen wir, die Conda-Installation anstelle der pip-Installation zu verwenden. Conda-Pakete verfügen in der Regel über vorgefertigte Binärdateien, die die Installation zuverlässiger machen.
 
-Das folgende Beispiel zeigt eine Hinzufügung zur Umgebung. Sie fügt Version 0.21.3 von `scikit-learn` hinzu. Außerdem wird das `pillow`-Paket `myenv` hinzugefügt. Im Beispiel wird die [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-)-Methode bzw. die [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-)-Methode verwendet.
+Das folgende Beispiel zeigt eine Hinzufügung zur Umgebung. Sie fügt Version 1.17.0 von `numpy` hinzu. Außerdem wird das `pillow`-Paket `myenv` hinzugefügt. Im Beispiel wird die [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-)-Methode bzw. die [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-)-Methode verwendet.
 
 ```python
 from azureml.core.environment import Environment
@@ -150,8 +150,11 @@ from azureml.core.conda_dependencies import CondaDependencies
 myenv = Environment(name="myenv")
 conda_dep = CondaDependencies()
 
-# Installs scikit-learn version 0.21.3 conda package
-conda_dep.add_conda_package("scikit-learn==0.21.3")
+# Installs numpy version 1.17.0 conda package
+conda_dep.add_conda_package("numpy==1.17.0")
+
+# Installs pillow package
+conda_dep.add_pip_package("pillow")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep

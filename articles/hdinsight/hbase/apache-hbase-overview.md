@@ -6,26 +6,26 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/03/2020
-ms.openlocfilehash: 97814f4d22629fd74f395887a7361a3aabe55012
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: afbf9aff09999a34a84d55634a868250fbb6d1ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271848"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188959"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Was ist Apache HBase in Azure HDInsight?
 
-[Apache HBase](https://hbase.apache.org/) ist eine Open-Source-NoSQL-Datenbank, die auf [Apache Hadoop](https://hadoop.apache.org/) basiert und nach dem Vorbild von [Google BigTable](https://cloud.google.com/bigtable/) erstellt wurde. HBase bietet wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten in einer schemalosen Datenbank, die nach Spaltenfamilien gegliedert ist.
+[Apache HBase](https://hbase.apache.org/) ist eine Open-Source-NoSQL-Datenbank, die auf Apache Hadoop basiert und nach dem Vorbild von [Google BigTable](https://cloud.google.com/bigtable/) erstellt wurde. HBase bietet wahlfreien Zugriff und starke Konsistenz für große Datenmengen in einer schemalosen Datenbank. Die Datenbank ist nach Spaltenfamilien organisiert.
 
-Aus der Benutzerperspektive ähnelt HBase einer Datenbank. Daten werden in den Zeilen und Spalten einer Tabelle gespeichert und die Daten in einer Zeile zu einer Spaltenfamilie zusammengefasst. HBase ist eine schemalose Datenbank in dem Sinne, dass weder die Spalten noch der Typ der darin gespeicherten Daten vor der Verwendung definiert werden müssen. Der Open-Source-Code lässt sich linear skalieren, sodass Petabytes von Daten auf Tausenden von Knoten verarbeitet werden können. HBase nutzt Datenredundanz, Stapelverarbeitung und andere Funktionen, die von verteilten Anwendungen im Hadoop-Ökosystem zur Verfügung gestellt werden.
+Aus der Benutzerperspektive ähnelt HBase einer Datenbank. Daten werden in den Zeilen und Spalten einer Tabelle gespeichert und die Daten in einer Zeile zu einer Spaltenfamilie zusammengefasst. HBase ist eine schemalose Datenbank. Die Spalten und Datentypen können vor der Verwendung undefiniert sein. Der Open-Source-Code lässt sich linear skalieren, sodass Petabytes von Daten auf Tausenden von Knoten verarbeitet werden können. HBase nutzt Datenredundanz, Stapelverarbeitung und andere Funktionen, die von verteilten Anwendungen in der Hadoop-Umgebung zur Verfügung gestellt werden.
 
 ## <a name="how-is-apache-hbase-implemented-in-azure-hdinsight"></a>Wie wird Apache HBase in Azure HDInsight implementiert?
 
-HDInsight HBase wird als verwalteter Cluster angeboten, der in die Azure-Umgebung integriert ist. Die Cluster sind so konfiguriert, dass Daten direkt in [Azure Storage](./../hdinsight-hadoop-use-blob-storage.md) gespeichert werden. Dies sorgt für geringe Latenz und mehr Flexibilität bei Entscheidungen bezüglich Leistung und Kosten. So können Kunden interaktive Websites erstellen, die mit großen Datensätzen arbeiten, und Dienste entwickeln, die Sensor- und Telemetriedaten aus Millionen von Endpunkten speichern. Diese Daten können dann mit Hadoop-Jobs analysiert werden. HBase und Hadoop sind gute Ausgangspunkte für Big-Data-Projekte in Azure – sie ermöglichen besonders in Echtzeitanwendungen die Verarbeitung großer Datensätze.
+HDInsight HBase wird als verwalteter Cluster angeboten, der in die Azure-Umgebung integriert ist. Die Cluster sind so konfiguriert, dass Daten direkt in [Azure Storage](./../hdinsight-hadoop-use-blob-storage.md) gespeichert werden. Dies sorgt für geringe Latenz und mehr Flexibilität bei Entscheidungen bezüglich Leistung und Kosten. Dank dieser Eigenschaft können Kunden interaktive Websites für große Datasets erstellen, Dienste erstellen, die Sensor- und Telemetriedaten von Millionen von Endpunkten speichern, und diese Daten mit Hadoop-Aufträgen analysieren. HBase und Hadoop sind gute Ausgangspunkte für Big Data-Projekte in Azure. Die Dienste ermöglichen in Echtzeitanwendungen die Verarbeitung großer Datasets.
 
-Die HDInsight-Implementierung nutzt die skalierbare Architektur von HBase für automatische Partitionierung von Tabellen, starke Konsistenz für Lese- und Schreibvorgänge sowie automatisches Failover. Die Leistung wird durch speicherinterne Zwischenspeicherung für Lesevorgänge und Schreibvorgänge mit hohem Durchsatz optimiert. Ein HBase-Cluster kann in einem virtuellen Netzwerk erstellt werden. Details hierzu finden Sie unter [Erstellen von HDInsight-Clustern im virtuellen Azure-Netzwerk](./apache-hbase-provision-vnet.md).
+Die HDInsight-Implementierung nutzt die Architektur mit horizontaler Skalierung von HBase für automatisches Sharding von Tabellen, für starke Konsistenz bei Lese- und Schreibvorgängen sowie für automatisches Failover. Die Leistung wird durch speicherinterne Zwischenspeicherung für Lesevorgänge und Schreibvorgänge mit hohem Durchsatz optimiert. Ein HBase-Cluster kann in einem virtuellen Netzwerk erstellt werden. Details hierzu finden Sie unter [Erstellen von HDInsight-Clustern im virtuellen Azure-Netzwerk](./apache-hbase-provision-vnet.md).
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Wie werden Daten in HDInsight HBase verwaltet?
 
@@ -41,9 +41,9 @@ Der kanonische Anwendungsfall, für den BigTable (und daher auch HBase) aus der 
 |Szenario |BESCHREIBUNG |
 |---|---|
 |Schlüssel-Wert-Speicherung|HBase kann für die Schlüssel-Wert-Speicherung verwendet werden und ist für die Verwaltung von Nachrichtensystemen geeignet. Facebook nutzt HBase für sein Nachrichtensystem. HBase ist ideal für die Speicherung und Verwaltung von Internetkommunikation. WebTable nutzt HBase, um Tabellen, die aus Webseiten extrahiert wurden, zu suchen und zu verwalten.|
-|Sensordaten|HBase kann für das Erfassen von Daten verwendet werden, die schrittweise aus verschiedenen Quellen gesammelt werden. Dies umfasst Analysen sozialer Netzwerke, Zeitreihen, Gewährleistung der Aktualität interaktiver Dashboards mit Trends und Indikatoren sowie die Verwaltung von Prüfungsprotokollierungssystemen. Zu den Beispielen zählen das Bloomberg Trader Terminal und die Open Time Series Database (OpenTSDB), die Metriken speichert, die zum Status von Serversystemen gesammelt wurden, und den Zugriff darauf ermöglicht.|
+|Sensordaten|HBase kann für das Erfassen von Daten verwendet werden, die schrittweise aus verschiedenen Quellen gesammelt werden. Diese Daten umfassen Analysen sozialer Netzwerke, Zeitreihen, Gewährleistung der Aktualität interaktiver Dashboards mit Trends und Indikatoren sowie die Verwaltung von Überwachungsprotokollierungssystemen. Zu den Beispielen zählen das Bloomberg Trader Terminal und die Open Time Series Database (OpenTSDB). OpenTSDB speichert Metriken, die zum Status von Serversystemen gesammelt wurden, und ermöglicht den Zugriff darauf.|
 |Echtzeitabfrage|[Apache Phoenix](https://phoenix.apache.org/) ist eine SQL-Abfrage-Engine für Apache HBase. Der Zugriff erfolgt als JDBC-Treiber. So können Sie HBase-Tabellen mit SQL abfragen und verwalten.|
-|HBase als Plattform|Anwendungen können auf HBase ausgeführt werden, indem sie HBase als Datenspeicher nutzen. Beispiele hierfür sind Phoenix, [OpenTSDB](http://opentsdb.net/), Kiji und Titan. Es ist auch ein Integration von Anwendungen mit HBase möglich. Beispiele hierfür sind [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](https://lucene.apache.org/solr/), [Apache Storm](https://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [Apache Impala](https://impala.apache.org/), [Apache Spark](https://spark.apache.org/), [Ganglia](http://ganglia.info/) und [Apache Drill](https://drill.apache.org/).|
+|HBase als Plattform|Anwendungen können auf HBase ausgeführt werden, indem sie HBase als Datenspeicher nutzen. Beispiele hierfür sind Phoenix, OpenTSDB, `Kiji` und Titan. Es ist auch ein Integration von Anwendungen mit HBase möglich. Beispiele: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia` und Apache Drill|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

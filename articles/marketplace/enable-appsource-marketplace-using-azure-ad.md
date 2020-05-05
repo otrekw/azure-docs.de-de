@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286318"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160612"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
 
@@ -34,18 +34,18 @@ Die verschiedenen [Listenoptionen und Angebotsarten](https://docs.microsoft.com/
 | **Angebotstyp**    | **Azure AD-SSO erforderlich?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktformular | Testversion | Testversion | Transaktion |
-| Virtual Machine | – | Nein | Nein | Nein |
+| Virtual Machine | – | Nein  | Nein  | Nein  |
 | Azure-Apps (Lösungsvorlage)  | – | – | – | – |
-| Verwaltete Apps  | – | – | – | Nein |
-| SaaS  | Nein | Ja | Ja | Ja |
-| Container  | – | – | – | Nein |
-| Beratungsdienste  | Nein | – | – | – |
+| Verwaltete Apps  | – | – | – | Nein  |
+| SaaS  | Nein  | Ja | Ja | Ja |
+| Container  | – | – | – | Nein  |
+| Beratungsdienste  | Nein  | – | – | – |
 
 Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 ## <a name="azure-ad-integration"></a>Azure AD-Integration
 
-- Informationen zum Aktivieren der einmaligen Anmeldung (Single Sign-On) durch die Integration von Azure AD in Ihr Angebot finden Sie unter [Azure Active Directory für Entwickler]( https://aka.ms/aaddev).
+- Informationen zum Aktivieren der einmaligen Anmeldung (Single Sign-On) durch die Integration von Azure AD in Ihr Angebot finden Sie unter [Azure Active Directory für Entwickler]( https://docs.microsoft.com/azure/active-directory/develop/).
 - Weitere Informationen zur einmaligen Anmeldung mit Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="enable-a-trial-listing"></a>Aktivieren einer Testauflistung
@@ -87,5 +87,10 @@ Mit Azure AD können Sie eine der folgenden Aktionen unterstützen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Stellen Sie sicher, dass Sie für den [Azure Marketplace registriert](https://azuremarketplace.microsoft.com/sell) sind.
-- Weitere Informationen zum Erstellen oder Vervollständigen Ihres Angebots finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Falls Sie dies noch nicht getan haben, 
+
+- [Erfahren Sie mehr](https://azuremarketplace.microsoft.com/sell) über den Marketplace.
+
+Um sich in Partner Center zu registrieren, ein neues Angebot zu erstellen oder an einem vorhandenen zu arbeiten, gehen Sie wie folgt vor:
+
+- [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.

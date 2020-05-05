@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 847b6c4616cbbb7fd9c6ccad18ec426dc38a887a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427330"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617903"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault-Funktionen für Kundendaten
 
@@ -40,7 +40,7 @@ Die folgenden Informationen identifizieren Kundendaten in Azure Key Vault:
 
 Mit den REST-APIs, Portal-Oberflächenelementen und SDKs, die zum Erstellen von Tresoren, Schlüsseln, Geheimnissen, Zertifikaten und verwalteten Speicherkonten verwendet werden, können diese Objekte auch aktualisiert und gelöscht werden.
 
-Durch vorläufiges Löschen haben Sie die Möglichkeit, gelöschte Daten bis zu 90 Tage nach dem Löschen wiederherzustellen. Beim vorläufigen Löschen können die Daten vor Ablauf der Beibehaltungsdauer von 90 Tagen durch Ausführen eines Bereinigungsvorgangs dauerhaft gelöscht werden. Wenn der Tresor oder das Abonnement so konfiguriert ist, dass Bereinigungsvorgänge blockiert werden, können die Daten erst nach Ablauf der geplanten Beibehaltungsdauer dauerhaft gelöscht werden.
+Durch vorläufiges Löschen haben Sie die Möglichkeit, gelöschte Daten bis zu 90 Tage nach dem Löschen wiederherzustellen. Beim vorläufigen Löschen können die Daten vor Ablauf der Beibehaltungsdauer von 90 Tagen durch Ausführen eines Löschvorgangs endgültig gelöscht werden. Wenn der Tresor oder das Abonnement so konfiguriert ist, dass Bereinigungsvorgänge blockiert werden, können die Daten erst nach Ablauf der geplanten Beibehaltungsdauer dauerhaft gelöscht werden.
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 

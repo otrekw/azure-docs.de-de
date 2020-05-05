@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408829"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81639990"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
@@ -109,10 +109,11 @@ Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisierung mit Ihrem Azure AD-Mandanten |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
-| 636         | TCP      | Any                                | Any         | Allow  | Nein       | Nur aktiviert, wenn Sie sicheres LDAP (LDAPS) konfigurieren |
 
 > [!WARNING]
 > Bearbeiten Sie diese Netzwerkressourcen und Konfigurationen nicht manuell. Wenn Sie eine falsch konfigurierte Netzwerksicherheitsgruppe oder eine benutzerdefinierte Routingtabelle mit dem Subnetz verknüpfen, in dem Azure AD DS bereitgestellt wird, können Sie die Möglichkeiten von Microsoft zur Wartung und Verwaltung der Domäne beeinträchtigen. Die Synchronisierung zwischen Ihrem Azure AD-Mandanten und Ihrer von Azure AD DS verwalteten Domäne ist ebenfalls beeinträchtigt.
+>
+> Wenn Sie Secure LDAP verwenden, können Sie bei Bedarf eine Regel für den erforderlichen TCP-Port 636 hinzufügen, um externen Datenverkehr zuzulassen. Das Hinzufügen dieser Regel hat nicht zur Folge, dass Ihre NSG-Regeln in einen nicht unterstützten Zustand versetzt werden. Weitere Informationen finden Sie unter [Beschränken des Secure LDAP-Zugriffs über das Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet).
 >
 > Standardregeln für *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound* und *DenyAllOutBound* sind auch für die Netzwerksicherheitsgruppe vorhanden. Diese Standardregeln sollten nicht bearbeitet oder gelöscht werden.
 >

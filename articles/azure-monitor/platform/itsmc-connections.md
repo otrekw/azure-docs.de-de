@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: eb3b09c6f349024d30d68a6c970770e2a78924ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81870592"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](../../azure-monitor/platform/itsmc-overview.md).
@@ -97,7 +97,7 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Position
+- Standort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.
@@ -194,7 +194,15 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     - [OAuth-Setup für Istanbul](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-Setup für Helsinki](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-Setup für Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> Im Rahmen der Definition von „OAuth-Setup“ wird Folgendes empfohlen:
+>
+> 1) **Aktualisieren Sie die Lebensdauer des Aktualisierungstokens auf 90 Tage (7.776.000 Sekunden):** Im Rahmen von [OAuth-Setup](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) in Phase 2: [Erstellen eines Endpunkts für Clients zum Zugreifen auf die Instanz](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) Suchen Sie nach der Definition des Endpunkts auf dem ServiceNow-Blatt nach „System-OAuth“, und wählen Sie dann „Anwendungsregistrierung“ aus. Wählen Sie den Namen des definierten OAuth aus, und aktualisieren Sie das Feld für die Lebensdauer des Aktualisierungstokens auf 7.776.000 (90 Tage in Sekunden).
+> Klicken Sie zum Schluss auf „Aktualisieren“.
+> 2) **Es wird empfohlen, eine interne Prozedur einzurichten, um sicherzustellen, dass die Verbindung aktiv bleibt:** Gemäß der Lebensdauer des Aktualisierungstokens zum Aktualisieren des Tokens. Stellen Sie sicher, dass die folgenden Vorgänge vor der erwarteten Ablaufzeit des Aktualisierungstokens ausgeführt werden (einige Tage vor Ablauf der Lebensdauer des Aktualisierungstokens wird empfohlen):
+>
+>>  1) [Ausführen eines manuellen Synchronisierungsprozesses für die Konfiguration des ITSM-Connectors](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+ >> 2) Widerrufen Sie das alte Aktualisierungstoken, da aus Sicherheitsgründen davon abgeraten wird, alte Schlüssel aufzubewahren. Suchen Sie auf dem ServiceNow-Blatt nach „System-OAuth“, und wählen Sie dann „Token verwalten“ aus. Wählen Sie das alte Token nach OAuth-Name und Ablaufdatum aus der Liste aus. Klicken Sie auf „Zugriff widerrufen“ und dann auf „Widerrufen“.
 
 - Installieren der Benutzer-App für die Microsoft Log Analytics-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )
 - Erstellen der Benutzerrolle „Integration“ für die installierte Benutzer-App. Informationen zum Erstellen der Benutzerrolle „Integration“ finden Sie [hier](#create-integration-user-role-in-servicenow-app).

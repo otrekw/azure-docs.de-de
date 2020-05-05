@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Indizierungsrichtlinien verwalten, eine Eigenschaft in die Indizierung aufnehmen oder davon ausschließen und die Indizierung mithilfe verschiedener Azure Cosmos DB SDKs definieren.
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: thweiss
-ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: tisande
+ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227346"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233929"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -137,7 +137,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** zu verwenden, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Modell hinzugefügt werden, proaktiv indizieren kann.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
@@ -173,6 +173,9 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
 ## <a name="composite-indexing-policy-examples"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
 
 Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich. Außerdem bedeuten zusammengesetzte Indizes einen Leistungsvorteil für Abfragen, die über einen Filter und über eine ORDER BY-Klausel für verschiedene Eigenschaften verfügen.
+
+> [!NOTE]
+> Zusammengesetzte Pfade weisen die implizite Angabe `/?` auf, weil nur der Skalarwert unter diesem Pfad indiziert wird. Der Platzhalter `/*` wird in zusammengesetzten Pfaden nicht unterstützt. Sie sollten in einem zusammengesetzten Pfad weder `/?` noch `/*` angeben.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name asc, age desc):
 

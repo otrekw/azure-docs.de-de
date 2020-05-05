@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821736"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684955"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichen Endpunkten
 
@@ -35,7 +35,7 @@ Auch wenn dies nicht unbedingt erforderlich ist, werden verwaltete Instanzen mit
 
 ## <a name="secure-data-in-motion"></a>Sichern von Daten während der Übertragung
 
-Der Datenverkehr verwalteter Instanzen wird immer verschlüsselt, wenn der Clienttreiber Verschlüsselung unterstützt. Datenübertragungen zwischen der verwalteten Instanz und anderen virtuellen Computern in Azure oder Azure-Diensten bleibt immer auf dem Backbone von Azure. Wenn eine Verbindung zwischen der verwalteten Instanz und einem lokalen Netzwerk besteht, sollten Sie Azure ExpressRoute mit Microsoft-Peering verwenden. Mit ExpressRoute vermeiden Sie das Verschieben von Daten über das öffentliche Internet. Für die private Konnektivität der verwalteten Instanz kann nur privates Peering verwendet werden.
+Der Datenverkehr verwalteter Instanzen wird immer verschlüsselt, wenn der Clienttreiber Verschlüsselung unterstützt. Datenübertragungen zwischen der verwalteten Instanz und anderen virtuellen Computern in Azure oder Azure-Diensten bleibt immer auf dem Backbone von Azure. Wenn eine Verbindung zwischen der verwalteten Instanz und einem lokalen Netzwerk besteht, empfiehlt sich die Verwendung von Azure ExpressRoute. Mit ExpressRoute vermeiden Sie das Verschieben von Daten über das öffentliche Internet. Für die private Konnektivität der verwalteten Instanz kann nur privates Peering verwendet werden.
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>Sperren eingehender und ausgehender Konnektivität
 

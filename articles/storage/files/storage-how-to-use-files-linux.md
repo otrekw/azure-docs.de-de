@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: fcc9876caf0c002650ab30b7eaed7dc44e2f135e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411609"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137738"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -248,22 +248,22 @@ Ab der Linux-Kernelversion 4.18 stellt das SMB-Kernelmodul (`cifs` genannt, wei
 
 | Distribution | SMB 1 deaktivierbar |
 |--------------|-------------------|
-| Ubuntu 14.04–16.04 | Nein |
+| Ubuntu 14.04–16.04 | Nein  |
 | Ubuntu 18.04 | Ja |
 | Ubuntu 19.04 und höher | Ja |
-| Debian 8–9 | Nein |
+| Debian 8–9 | Nein  |
 | Debian 10 und höher | Ja |
 | Fedora 29 und höher | Ja |
-| CentOS 7: | Nein | 
+| CentOS 7: | Nein  | 
 | CentOS 8 und höher | Ja |
-| Red Hat Enterprise Linux 6.x–7.x | Nein |
+| Red Hat Enterprise Linux 6.x–7.x | Nein  |
 | Red Hat Enterprise Linux 8 und höher | Ja |
-| openSUSE Leap 15.0 | Nein |
+| openSUSE Leap 15.0 | Nein  |
 | openSUSE Leap 15.1 und höher | Ja |
 | openSUSE Tumbleweed | Ja |
-| SUSE Linux Enterprise 11.x–12.x | Nein |
-| SUSE Linux Enterprise 15 | Nein |
-| SUSE Linux Enterprise 15.1 | Nein |
+| SUSE Linux Enterprise 11.x–12.x | Nein  |
+| SUSE Linux Enterprise 15 | Nein  |
+| SUSE Linux Enterprise 15.1 | Nein  |
 
 Mithilfe des folgenden Befehls können Sie überprüfen, ob Ihre Linux-Distribution den Modulparameter `disable_legacy_dialects` unterstützt.
 
@@ -319,11 +319,6 @@ Wenn Sie das SMB-Modul laden, können Sie überprüfen, ob der Vorgang erfolgrei
 sudo modprobe cifs
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
-
-## <a name="feedback"></a>Feedback
-Linux-Benutzer, wir möchten von Ihnen hören!
-
-Die Benutzergruppe „Azure Files for Linux“ bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure Files Linux Users](mailto:azurefiles@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Files finden Sie unter diesen Links:

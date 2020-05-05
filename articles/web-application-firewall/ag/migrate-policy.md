@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174243"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536623"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrieren von Web Application Firewall-Richtlinien unter Verwendung von Azure PowerShell
 
@@ -28,6 +28,13 @@ Gehen Sie folgendermaßen vor, um das Migrationsskript auszuführen:
 2. Kopieren Sie das Skript in das Cloud Shell-Fenster, und führen Sie es aus.
 3. Das Skript fordert Sie auf, die Abonnement-ID, den Ressourcengruppennamen, den Namen des Anwendungsgateways, dem die WAF-Konfiguration zugeordnet ist, und den Namen der neuen WAF-Richtlinie, die erstellt werden soll, anzugeben. Nachdem Sie diese Angaben gemacht haben, wird das Skript ausgeführt und erstellt die neue WAF-Richtlinie.
 4. Ordnen Sie die neue WAF-Richtlinie Ihrem Anwendungsgateway zu. Wechseln Sie im Portal zur WAF-Richtlinie, und wählen Sie die Registerkarte **Zugeordnete Anwendungsgateways** aus. Wählen Sie **Anwendungsgateway zuordnen** und dann das Anwendungsgateway aus, dem die WAF-Richtlinie zugeordnet werden soll.
+
+> [!NOTE]
+> Das Skript schließt eine Migration nicht ab, wenn die folgenden Bedingungen vorliegen:
+> - Eine gesamte Regel ist deaktiviert. Stellen Sie zum Abschließen einer Migration sicher, dass eine gesamte Regelgruppe nicht deaktiviert ist.
+> - Ausschlusseinträge mit dem Operator *Gleich beliebige*. Stellen Sie zum Ausführen einer Migration sicher, dass Ausschlusseinträge mit dem Operator *Gleich beliebige* nicht vorhanden sind.
+>
+> Weitere Informationen finden Sie in den Angaben zur *ValidateInput*-Funktion im Skript.
 
 ```azurepowershell-interactive
 <#PSScriptInfo

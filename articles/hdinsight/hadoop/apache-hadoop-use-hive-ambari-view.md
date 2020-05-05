@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/06/2020
-ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745098"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192679"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -162,8 +162,4 @@ Sie können verschiedene Hive-Einstellungen ändern, z.B. die Ausführungs-Engin
 Allgemeine Informationen zu Hive in HDInsight:
 
 * [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
-
-Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
-
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden des Apache Beeline-Clients mit Apache Hive](apache-hadoop-use-hive-beeline.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790096"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117568"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Modellieren von relationalen SQL-Daten für Import und Indizierung in der kognitiven Azure-Suche
 
@@ -107,7 +107,7 @@ Die Lösung besteht darin, die Zimmerdetails als geschachtelten JSON-Code zu erf
 Dieses Rowset kann nun in die kognitive Azure-Suche importiert werden.
 
 > [!NOTE]
-> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. Sollten Ihre Daten zu groß sein, können Sie eine programmgesteuerte Vorgehensweise ausprobieren, wie unter [Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für die kognitive Azure-Suche](search-example-adventureworks-modeling.md) gezeigt.
+> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Verwenden einer komplexen Sammlung für die „n“-Seite einer 1: n-Beziehung
 

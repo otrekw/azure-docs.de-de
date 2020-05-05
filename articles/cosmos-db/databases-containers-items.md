@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225718"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161689"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Sie können unter Ihrem Konto eine oder mehrere Azure Cosmos-Datenbanken erstell
 
 Mit einer Azure Cosmos-Datenbank können Sie über die Azure Cosmos-APIs in der folgenden Tabelle interagieren:
 
-| Vorgang | Azure-Befehlszeilenschnittstelle | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
+| Vorgang | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- |
 |Auflisten aller Datenbanken| Ja | Ja | Ja (Datenbank ist einem Keyspace zugeordnet) | Ja | Nicht verfügbar | Nicht verfügbar |
 |Lesen der Datenbank| Ja | Ja | Ja (Datenbank ist einem Keyspace zugeordnet) | Ja | Nicht verfügbar | Nicht verfügbar |
@@ -64,9 +64,9 @@ Ein Azure Cosmos-Container ist ein schemaunabhängiger Container für Elemente. 
 
 Sie können die [Gültigkeitsdauer (TTL)](time-to-live.md) für ausgewählte Elemente in einem Azure Cosmos-Container oder für den gesamten Container festlegen, um die Elemente ordnungsgemäß aus dem System zu löschen. Die Elemente werden nach Ablauf der Gültigkeitsdauer in Azure Cosmos DB automatisch gelöscht. Zudem wird sichergestellt, dass eine für den Container ausgeführte Abfrage die abgelaufenen Elemente innerhalb einer festen Grenze nicht zurückgibt. Weitere Informationen finden Sie unter [Konfigurieren der Gültigkeitsdauer in Ihrem Container](how-to-time-to-live.md).
 
-Über den [Änderungsfeed](change-feed.md) können Sie das Vorgangsprotokoll abonnieren, das für jede logische Partition des Containers verwaltet wird. Der Änderungsfeed enthält das Protokoll aller Aktualisierungen, die für den Container durchgeführt wurden, sowie die Vorher- und Nachher-Images der Elemente. Weitere Informationen finden Sie unter [Erstellen reaktiver Anwendungen mithilfe des Änderungsfeeds](serverless-computing-database.md). Sie können auch die Vermerkdauer für den Änderungsfeed über die Änderungsfeedrichtlinie für den Container konfigurieren. 
+Über den [Änderungsfeed](change-feed.md) können Sie das Vorgangsprotokoll abonnieren, das für jede logische Partition des Containers verwaltet wird. Der Änderungsfeed enthält das Protokoll aller Aktualisierungen, die für den Container durchgeführt wurden, sowie die Vorher- und Nachher-Images der Elemente. Weitere Informationen finden Sie unter [Erstellen reaktiver Anwendungen mithilfe des Änderungsfeeds](serverless-computing-database.md). Sie können auch die Vermerkdauer für den Änderungsfeed über die Änderungsfeedrichtlinie für den Container konfigurieren.
 
-Sie können [gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs)](stored-procedures-triggers-udfs.md) und [Mergeprozeduren](how-to-manage-conflicts.md) beim Azure Cosmos-Container registrieren. 
+Sie können [gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs)](stored-procedures-triggers-udfs.md) und [Mergeprozeduren](how-to-manage-conflicts.md) beim Azure Cosmos-Container registrieren.
 
 Sie können eine [eindeutige Schlüsseleinschränkung](unique-keys.md) für den Azure Cosmos-Container angeben. Durch Erstellen einer Richtlinie für eindeutige Schlüssel wird die Eindeutigkeit von einem oder mehreren Werten pro logischem Partitionsschlüssel sichergestellt. Wenn Sie einen Container mit einer Richtlinie für eindeutige Schlüssel erstellen, sind keine neuen oder aktualisierten Elemente mit Werten möglich, die die durch die Einschränkung für eindeutige Schlüssel festgelegten Werte duplizieren. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md).
 
@@ -76,27 +76,30 @@ Ein Azure Cosmos-Container wird wie in der folgenden Tabelle gezeigt in API-spez
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos-Container | Container | Tabelle | Collection | Graph | Tabelle |
 
+> [!NOTE]
+> Stellen Sie beim Erstellen von Containern sicher, dass Sie nicht zwei Container mit demselben Namen, aber unterschiedlicher Groß-/Kleinschreibung erstellen. Der Grund dafür ist, dass bei einigen Teilen der Azure-Plattform die Groß-/Kleinschreibung nicht beachtet wird, und dies kann zu Verwechslungen/Kollisionen von Telemetriedaten und Aktionen für Container mit solchen Namen führen.
+
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschaften eines Azure Cosmos-Containers
 
 Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaften. Abhängig von der verwendeten API können einige Eigenschaften möglicherweise nicht direkt verfügbar gemacht werden. In der folgenden Tabelle werden die systemdefinierten Eigenschaften beschrieben:
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar | Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein | Nein | Nein | Nein |
-|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
-|\_ts | Vom System generiert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein | Nein | Nein | Nein |
-|\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein | Nein | Nein | Nein |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_ts | Vom System generiert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
 |id | Vom Benutzer konfigurierbar | Benutzerdefinierter eindeutiger Name des Containers | Ja | Ja | Ja | Ja | Ja |
-|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern | Ja | Nein | Nein | Nein | Ja |
-|timeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein | Nein | Nein | Ja |
-|changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie unter [Änderungsfeed](change-feed.md). | Ja | Nein | Nein | Nein | Ja |
-|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Stellt die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md). | Ja | Nein | Nein | Nein | Ja |
+|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern | Ja | Nein  | Nein  | Nein  | Ja |
+|timeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein  | Nein  | Nein  | Ja |
+|changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie unter [Änderungsfeed](change-feed.md). | Ja | Nein  | Nein  | Nein  | Ja |
+|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Stellt die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md). | Ja | Nein  | Nein  | Nein  | Ja |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Vorgänge in einem Azure Cosmos-Container
 
 In einem Azure Cosmos-Container werden die folgenden Vorgänge über die Azure Cosmos-APIs unterstützt:
 
-| Vorgang | Azure-Befehlszeilenschnittstelle | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
+| Vorgang | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- |
 | Auflisten von Containern in einer Datenbank | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
 | Lesen eines Containers | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
@@ -118,10 +121,10 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar| Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein | Nein | Nein | Nein |
-|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
-|\_ts | Vom System generiert | Zeitstempel der letzten Aktualisierung des Elements | Ja | Nein | Nein | Nein | Nein |
-|\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein | Nein | Nein | Nein |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_ts | Vom System generiert | Zeitstempel der letzten Aktualisierung des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
 |id | Sowohl als auch | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. | Ja | Ja | Ja | Ja | Ja |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (einschließlich JSON, BSON und CQL) dargestellt werden | Ja | Ja | Ja | Ja | Ja |
 
@@ -132,9 +135,9 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 Azure Cosmos-Elemente unterstützen die folgenden Vorgänge. Sie können für die Vorgänge beliebige der Azure-Cosmos-APIs verwenden.
 
-| Vorgang | Azure-Befehlszeilenschnittstelle | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
+| Vorgang | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Einfügen, Ersetzen, Löschen, Upsert, Lesen | Nein | Ja | Ja | Ja | Ja | Ja |
+| Einfügen, Ersetzen, Löschen, Upsert, Lesen | Nein  | Ja | Ja | Ja | Ja | Ja |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421294"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116246"
 ---
 # <a name="overview-query-data-in-storage"></a>Übersicht: Abfragen von Daten im Speicher
 
@@ -35,7 +35,7 @@ Für Abfragen erforderliche Tools:
 
 Zusätzlich folgende Parameter:
 
-| Parameter                                 | Beschreibung                                                   |
+| Parameter                                 | BESCHREIBUNG                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
 | Dienstendpunktadresse von SQL On-Demand    | Wird als Servername verwendet.                                   |
 | Dienstendpunktregion von SQL On-Demand     | Wird verwendet, um den in den Beispielen verwendeten Speicher zu bestimmen. |
@@ -72,9 +72,6 @@ Sie müssen Anmeldeinformationen erstellen, damit Sie Abfragen ausführen könne
 > Von SQL On-Demand wird standardmäßig immer AAD-Pass-Through verwendet.
 
 Weitere Informationen zum Verwalten der Speicherzugriffssteuerung finden Sie unter [diesem Link](develop-storage-files-storage-access-control.md).
-
-> [!WARNING]
-> Sie müssen Anmeldeinformationen für ein Speicherkonto erstellen, das sich in der Region Ihres Endpunkts befindet. SQL On-Demand kann zwar auf Speicher aus unterschiedlichen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich Speicher und Endpunkt in derselben Region befinden.
 
 Führen Sie den folgenden Code aus, um Anmeldeinformationen für CSV-, JSON- und Parquet-Container zu erstellen:
 
@@ -124,7 +121,7 @@ Die Demodaten enthalten die folgenden Datasets:
 - Bücher (JSON)
   - JSON-Format
 
-| Ordnerpfad                                                  | Beschreibung                                                  |
+| Ordnerpfad                                                  | BESCHREIBUNG                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /csv/                                                        | Übergeordneter Ordner für Daten im CSV-Format                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Ordner mit Bevölkerungsdatendateien in verschiedenen CSV-Formaten |

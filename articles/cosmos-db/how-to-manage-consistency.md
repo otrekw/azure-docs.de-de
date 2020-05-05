@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Konsistenzebenen in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie Konsistenzebenen in Azure Cosmos DB mithilfe des Azure-Portals, .NET SDK, Java SDK und verschiedener anderer SDKs konfigurieren und verwalten.
+description: Hier erfahren Sie, wie Sie Konsistenzebenen in Azure Cosmos DB mithilfe des Azure-Portals, .NET SDK, Java SDK und verschiedener anderer SDKs konfigurieren und verwalten.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369402"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184281"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -21,42 +21,32 @@ In diesem Artikel wird beschrieben, wie Sie Konsistenzebenen in Azure Cosmos DB 
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 
-Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, die Clients standardmäßig verwenden. Sie kann von Clients immer außer Kraft gesetzt werden.
+Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, die Clients standardmäßig verwenden.
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
+Erstellen Sie ein Cosmos-Konto mit Sitzungskonsistenz, und aktualisieren Sie dann die Standardkonsistenz.
+
 ```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
 
 # update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-In diesem Beispiel wird ein neues Azure Cosmos-Konto mit Aktivierung mehrerer Schreibregionen in den Regionen „USA, Osten“ und „USA, Westen“ erstellt. Die Standardkonsistenzebene ist auf die Konsistenz *Sitzung* festgelegt.
+Erstellen Sie ein Cosmos-Konto mit Sitzungskonsistenz, und aktualisieren Sie dann die Standardkonsistenz.
 
 ```azurepowershell-interactive
-$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
-             @{"locationName"="West US"; "failoverPriority"=1})
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
 
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "East US" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -68,6 +58,9 @@ Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure
 ## <a name="override-the-default-consistency-level"></a>Außerkraftsetzen der Standardkonsistenzebene
 
 Clients können die vom Dienst festgelegte Standardkonsistenzebene außer Kraft setzen. Die Konsistenzebene kann auf Anforderung festgelegt werden. Dabei wird die auf Kontoebene festgelegte Standardkonsistenzebene überschrieben.
+
+> [!TIP]
+> Konsistenz kann nur auf der Anforderungsebene **gelockert** werden. Aktualisieren Sie die Standardkonsistenz für das Cosmos-Konto, um von einer schwächeren zu einer stärkeren Konsistenz zu gelangen.
 
 ### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
@@ -89,8 +82,8 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
 
@@ -234,7 +227,6 @@ item = client.ReadItem(doc_link, options)
 Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Veraltung im Hinblick auf Versionsverlauf und Zeit anbieten. Die [**PBS-Metrik (Probabilistically Bounded Staleness)** ](https://pbs.cs.berkeley.edu/) versucht, die Wahrscheinlichkeit der Veraltung zu bestimmen und zeigt sie als Metrik an. Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Metriken**, und wählen Sie die Registerkarte **Konsistenz**. Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
 
 ![PBS-Graph im Azure-Portal](./media/how-to-manage-consistency/pbs-metric.png)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,22 +1,22 @@
 ---
-title: Geografische Verfügbarkeit und Unterstützung von Währungen | Azure
-description: Geografische Verfügbarkeit in Azure Marketplace und AppSource
+title: Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace | Azure Marketplace
+description: Geografische Verfügbarkeit im kommerziellen Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288426"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687581"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
-Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen durchgeführt werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
+Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
 
 |   Name des Landes/der Region               |   ISO-2   |   Währung   |
 |-------------------------------------|-----------|--------------|

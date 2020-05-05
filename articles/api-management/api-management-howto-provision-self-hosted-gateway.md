@@ -10,21 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075289"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203130"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Bereitstellen eines selbstgehosteten Gateways in Azure API Management
 
 Das Bereitstellen einer Gatewayressource in Ihrer Azure API Management-Instanz ist eine Voraussetzung für die Bereitstellung eines selbstgehosteten Gateways. Dieser Artikel führt Sie schrittweise durch die Bereitstellung einer Gatewayressource in API Management.
-
-> [!NOTE]
-> Das Feature „selbstgehostetes Gateway“ ist als Vorschauversion verfügbar. Während der Vorschauphase ist das selbstgehostete Gateway nur in den Tarifen „Developer“ und „Premium“ ohne zusätzliche Kosten verfügbar. Der Tarif „Developer“ ist auf eine Bereitstellung mit einem einzelnen selbstgehosteten Gateway beschränkt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,9 +39,6 @@ Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management
 
 4. Geben Sie optional eine **Beschreibung** der Gatewayressource ein.
 5. Wählen Sie optional **+** unter **APIs** aus, um dieser Gatewayressource mindestens eine API zuzuordnen.
-> [!TIP]
-> Sie können eine API einem Gateway auf der Registerkarte **Einstellungen** der API zuordnen bzw. aus ihr entfernen.
-
 > [!IMPORTANT]
 > Standardmäßig wird keine der vorhandenen APIs der neuen Gatewayressource zugeordnet. Daher führt der Versuch, sie über das neue Gateway aufzurufen, zu Antworten des Typs `404 Resource Not Found`.
 
@@ -55,5 +49,5 @@ Die Gatewayressource wurde nun in Ihrer API Management-Instanz bereitgestellt. S
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
-* Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
-* Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+* Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
+* Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Docker](how-to-deploy-self-hosted-gateway-docker.md)

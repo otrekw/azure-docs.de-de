@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844818"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617380"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -53,9 +53,9 @@ Nachdem die Bereitstellung abgeschlossen ist, wird die Statusleiste nicht mehr a
 
 Standardmäßig sind Software, Windows-Dienste und Linux-Daemons für die Sammlung konfiguriert. Konfigurieren Sie die Einstellungen der Bestandserfassung, um auch Bestandsdaten zur Windows-Registrierung und zu den Dateien zu sammeln.
 
-1. Wählen Sie in der Ansicht **Inventory** am oberen Rand des Fensters die Schaltfläche **Einstellungen bearbeiten**.
-2. Navigieren Sie zum Hinzufügen einer neuen Sammlungseinstellung zu der Einstellungskategorie, die Sie hinzufügen möchten, indem Sie die Registerkarten **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien** wählen.
-3. Wählen Sie die entsprechende Kategorie aus, und klicken Sie oben im Fenster auf **Hinzufügen**.
+1. Klicken Sie oben auf der Seite „Bestand“ auf **Einstellungen bearbeiten**.
+2. Navigieren Sie zum Hinzufügen einer neuen Sammlungseinstellung zu der Einstellungskategorie, die Sie hinzufügen möchten, indem Sie die Registerkarte **Windows-Registrierung**, **Windows-Dateien** oder **Linux-Dateien** auswählen.
+3. Wählen Sie die entsprechende Kategorie aus, und klicken Sie oben auf der Seite auf **Hinzufügen**.
 
 Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, die für die verschiedenen Kategorien konfiguriert werden können.
 
@@ -72,23 +72,23 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“
+|Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei.        |
+|Group     | Gruppenname für die logische Gruppierung von Dateien       |
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. **c:\temp\meinedatei.txt**.
 
 ### <a name="linux-files"></a>Linux-Dateien
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
-|Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
-|Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
-|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
+|Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei.        |
+|Group     | Gruppenname für die logische Gruppierung von Dateien        |
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. **/etc/*.conf**.       |
+|Pfadtyp     | Der Typ des Elements, das nachverfolgt werden soll. Werte sind „Datei“ und „Verzeichnis“.        |
+|Rekursion     | TRUE, wenn ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird, andernfalls FALSE.        |
+|Sudo verwenden     | TRUE, wenn sudo bei der Suche nach dem Element verwendet wird, andernfalls FALSE.         |
+|Links     | Wert, der angibt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden. Mögliche Werte: <br> Ignorieren: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>Folgen: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>Verwalten: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
 
 ## <a name="manage-machine-groups"></a>Verwalten von Computergruppen
 
@@ -104,9 +104,9 @@ Wenn Sie in der Liste eine Computergruppe auswählen, wird die Seite „Computer
 
 ![Anzeigen der Seite „Computergruppe“](./media/automation-vm-inventory/machine-group-page.png)
 
-Klicken Sie auf die Schaltfläche **+ Klonen**, um die Computergruppe zu klonen. Hier müssen Sie für die Gruppe einen neuen Namen und einen Alias angeben. Die Definition kann jetzt geändert werden. Wählen Sie nach dem Ändern der Abfrage die Option **Abfrage validieren**, um eine Vorschau für die Computer anzuzeigen, die ausgewählt werden sollen. Wenn Sie mit der Gruppe zufrieden sind, können Sie auf **Erstellen** klicken, um die Computergruppe zu erstellen.
+Klicken Sie auf **+ Klonen**, um die Computergruppe zu klonen. Sie müssen für die Gruppe einen neuen Namen und einen Alias angeben. Die Definition kann jetzt geändert werden. Klicken Sie nach dem Ändern der Abfrage auf **Abfrage validieren**, um eine Vorschau für die Computer anzuzeigen, die ausgewählt werden sollen. Wenn Sie mit der Gruppe zufrieden sind, können Sie auf **Erstellen** klicken, um die Computergruppe zu erstellen.
 
-Wählen Sie **+ Computergruppe erstellen** aus, um eine neue Computergruppe zu erstellen. Mit dieser Schaltfläche wird die Seite **Create a machine group** (Computergruppe erstellen) geöffnet, auf der Sie die neue Gruppe definieren können. Klicken Sie auf **Erstellen**, um die Gruppe zu erstellen.
+Klicken Sie auf **+ Computergruppe erstellen**, um eine neue Computergruppe zu erstellen. Mit dieser Schaltfläche wird die Seite **Computergruppe erstellen** geöffnet, auf der Sie die neue Gruppe definieren können. Klicken Sie auf **Erstellen**, um die Gruppe zu erstellen.
 
 ![Erstellen der neuen Computergruppe](./media/automation-vm-inventory/create-new-group.png)
 
@@ -115,18 +115,17 @@ Wählen Sie **+ Computergruppe erstellen** aus, um eine neue Computergruppe zu e
 Gehen Sie wie folgt vor, um Ihren virtuellen Computer aus der Bestandsverwaltung herauszunehmen:
 
 1. Wählen Sie im linken Bereich des Azure-Portals die Option **Log Analytics** und dann den Arbeitsbereich, den Sie beim Onboarding Ihres virtuellen Computers verwendet haben.
-2. Wählen Sie im Fenster **Log Analytics** im Menü **Ressource** unter der Kategorie **Arbeitsbereichsdatenquellen** die Option **Virtuelle Computer**.
-3. Wählen Sie in der Liste den virtuellen Computer aus, den Sie trennen möchten. Der virtuelle Computer ist in der Spalte **OMS-Verbindung** neben **Dieser Arbeitsbereich** mit einem grünen Häkchen gekennzeichnet.
+2. Öffnen Sie auf der Seite „Log Analytics“ das Menü **Ressourcen**.
+3. Wählen Sie unter **Arbeitsbereichsdatenquellen** die Option **Virtuelle Computer** aus.
+4. Wählen Sie in der Liste den virtuellen Computer aus, den Sie trennen möchten. Der virtuelle Computer ist in der Spalte **OMS-Verbindung** neben **Dieser Arbeitsbereich** mit einem grünen Häkchen gekennzeichnet.
 
    >[!NOTE]
-   >OMS wird jetzt als „Azure Monitor-Protokolle“ bezeichnet.
+   >OMS (Operations Management Suite) wird jetzt als „Azure Monitor-Protokolle“ bezeichnet.
    
-4. Wählen Sie oben auf der nächsten Seite die Option **Disconnect** (Trennen).
-5. Wählen Sie im Bestätigungsfenster die Option **Ja**.
-    Mit dieser Aktion wird der Computer von der Verwaltung getrennt.
+5. Klicken Sie oben auf der nächsten Seite auf **Trennen**.
+6. Klicken Sie im Bestätigungsfenster auf **Ja**, um den Computer von der Verwaltung zu trennen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zur Verwaltung von Änderungen in Dateien und Registrierungseinstellungen auf Ihren virtuellen Computern finden Sie unter [Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung](../log-analytics/log-analytics-change-tracking.md).
 * Informationen zur Verwaltung von Windows- und Paketupdates auf Ihren virtuellen Computern finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
-

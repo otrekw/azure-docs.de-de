@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288715"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687493"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von VM-Angeboten
 
@@ -53,7 +53,7 @@ Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance f
 | Anforderung | Details |  
 |:--- |:--- | 
 | Abrechnung und Messung | Ihre VM muss entweder BYOL oder die monatliche nutzungsbasierte Bezahlung unterstützen. |  
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. <ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen einer Azure-kompatiblen VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. <ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen einer Azure-kompatiblen VHD](./partner-center-portal/azure-vm-create-offer.md).</li> </ul> |  
 
 >[!Note]
 >Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](./cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
@@ -62,9 +62,9 @@ Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance f
 
 Falls Sie dies noch nicht getan haben, 
 
-- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
+- [Erfahren Sie mehr](https://azuremarketplace.microsoft.com/sell) über den Marketplace.
 
 Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
 
-- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
-- Weitere Informationen finden Sie unter [VM-Angebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer).
+- [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.
+- Weitere Informationen finden Sie unter [Erstellen eines VM-Angebots](./partner-center-portal/azure-vm-create-offer.md).
