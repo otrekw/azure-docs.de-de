@@ -1,22 +1,20 @@
-- name: Windows Virtual Desktop
+- name: Windows Virtual Desktop Spring 2020 Release
   href: index.yml
 - name: Übersicht
   items:
     - name: Was ist Windows Virtual Desktop?
       href: overview.md
+    - name: Dokumentation zum Fall 2019 Release
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Tutorials
   items:
-    - name: 1. Erstellen eines Mandanten in Windows Virtual Desktop
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
-      href: create-service-principal-role-powershell.md
-    - name: 3. Erstellen eines Hostpools mit dem Azure Marketplace
+    - name: 1. Erstellen eines Hostpools mit dem Azure-Portal
       href: create-host-pools-azure-marketplace.md
-    - name: 4. Verwalten von App-Gruppen
+    - name: 2. Verwalten von App-Gruppen
       href: manage-app-groups.md
-    - name: 5. Erstellen eines Hostpools zum Überprüfen von Dienstupdates
+    - name: 3. Erstellen eines Hostpools zum Überprüfen von Dienstupdates
       href: create-validation-host-pool.md
-    - name: 6. Einrichten von Dienstwarnungen
+    - name: 4. Einrichten von Dienstwarnungen
       href: set-up-service-alerts.md
 - name: Vorgehensweise
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: Herstellen einer Verbindung mit dem iOS-Client
           href: connect-ios.md
+    - name: Einrichten des PowerShell-Moduls
+      href: powershell-module.md
     - name: Einen Hostpool und Sitzungshosts erstellen
       items:
-        - name: Azure Resource Manager-Vorlage
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
-          href: deploy-windows-7-virtual-machine.md
         - name: Bereitstellen eines GPU-basierten Sitzungshosts
           href: configure-vm-gpu.md
         - name: Erweitern eines vorhandenen Hostpools
           href: expand-existing-host-pool.md
+        - name: Verwalten von App-Gruppen mit PowerShell
+          href: manage-app-groups-powershell.md
     - name: Erstellen eines Profilcontainers
       items:
         - name: Verwenden einer VM-basierten Dateifreigabe
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: Installieren von Office für ein VHD-Masterimage
           href: install-office-on-wvd-master-image.md
-    - name: Automatisches Skalieren von Sitzungshosts
-      href: set-up-scaling-script.md
     - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Bereitstellen des Verwaltungstools
-      items:
-        - name: Azure Resource Manager-Vorlage
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: Verwenden der Service-Diagnose
       items:
-        - name: Bereitstellen des Diagnosetools
-          href: deploy-diagnostics.md
         - name: Verwenden von Diagnosedaten mit Log Analytics
           href: diagnostics-log-analytics.md
     - name: Veröffentlichen von integrierten Apps
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
-    - name: "Problembehandlung für virtuelle Windows\_7-Computer in Windows Virtual Desktop"
-      href: troubleshoot-windows-7-vm.md
-    - name: Problembehandlung für das Windows Virtual Desktop-Verwaltungstool
-      href: troubleshoot-management-tool.md
     - name: Verbindungen des Remotedesktopdiensts
       href: troubleshoot-service-connection.md
     - name: Probleme des Remotedesktopclients
@@ -140,10 +124,6 @@
   items:
     - name: Linux-Unterstützung
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST-API
-      href: /rest/api/virtual-desktop/
     - name: Unterstützte RDP-Dateieinstellungen
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: Netzwerkleitfaden

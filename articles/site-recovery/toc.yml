@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
               href: azure-to-azure-customize-networking.md
-            - name: Konfigurieren von Proxyeinstellungen für den Mobilitätsdienst
-              href: configure-mobility-service-proxy-settings.md
             - name: Einrichten der Netzwerkzuordnung und Beibehalten von IP-Adressen nach einem Failover
               href: azure-to-azure-network-mapping.md
             - name: Beispiele für die Beibehaltung von IP-Adressen nach einem Failover
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Aktivieren der Notfallwiederherstellung zwischen Zonen
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Verwalten
           items:
             - name: Aktualisieren des Mobilitätsdiensts für virtuelle Azure-Computer
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: Bereitstellen des Mobilitätsdiensts
               items:
-                - name: Informationen zur Installation des Mobilitätsdiensts
+                - name: 'Mobility Service: Übersicht und Installation'
                   href: vmware-physical-mobility-service-overview.md
                 - name: Vorbereiten der Pushinstallation
                   href: vmware-azure-install-mobility-service.md

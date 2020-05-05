@@ -1,9 +1,9 @@
-- name: Dokumentation zur RBAC für Azure-Ressourcen
+- name: Azure RBAC-Dokumentation
   href: index.yml
   items: null
 - name: Übersicht
   items:
-    - name: Was ist RBAC?
+    - name: Was ist Azure RBAC?
       href: overview.md
     - name: Grundlegendes zu den verschiedenen Rollen
       href: rbac-and-directory-admin-roles.md
@@ -58,7 +58,7 @@
           href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST-API
           href: deny-assignments-rest.md
-    - name: Erstellen von benutzerdefinierten Rollen
+    - name: Erstellen oder Aktualisieren von benutzerdefinierten Rollen
       items:
         - name: Übersicht
           href: custom-roles.md
@@ -82,7 +82,7 @@
           href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: custom-roles-cli.md
         - name: REST-API
           href: custom-roles-rest.md
@@ -100,11 +100,11 @@
       href: built-in-roles.md
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
-    - name: RBAC-Grenzwerte
+    - name: Azure RBAC-Grenzwerte
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST-API
       href: /rest/api/authorization/

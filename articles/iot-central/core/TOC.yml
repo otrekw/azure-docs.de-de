@@ -131,14 +131,6 @@
               href: howto-show-hide-chat.md
 - name: Ressourcen
   items:
-    - name: Neueste Updates (entweder Abfrage)
-      href: 'https://azure.microsoft.com/updates/?category=iot&query=azure%20iot%20central'
-    - name: Neueste Updates (oder Liste…)
-      items:
-        - name: April 2020
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
-        - name: "März\_2020"
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
     - name: Support- und Hilfeoptionen
       href: /azure/iot-fundamentals/iot-support-help
     - name: Vorlagen für Branchenanwendungen
