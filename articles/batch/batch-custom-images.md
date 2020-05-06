@@ -1,19 +1,14 @@
 ---
-title: Bereitstellen eines benutzerdefinierten Pools über ein verwaltetes Image – Azure Batch | Microsoft-Dokumentation
+title: Bereitstellen eines benutzerdefinierten Pools aus einem verwalteten Image
 description: Erstellen Sie einen Batch-Pool über eine verwaltete Imageressource, um Serverknoten mit den Softwarekomponenten und Daten für Ihre Anwendung bereitzustellen.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: labrenne
-ms.openlocfilehash: 1ef6be2ba9364203dceba54ab51325c05dbbbe41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020147"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117317"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines verwalteten Images zum Erstellen eines VM-Pools
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294013"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128140"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Sichern des Windows-Systemstatus in der Ressourcen Manager-Bereitstellung
 
@@ -224,10 +224,10 @@ Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Kon
 
 ## <a name="questions"></a>Fragen?
 
-Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://aka.ms/azurebackup_feedback).
+Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich ausführlicher über das [Sichern von Windows-Computern](backup-configure-vault.md).
+* Informieren Sie sich ausführlicher über das [Sichern von Windows-Computern](backup-windows-with-mars-agent.md).
 * Nachdem Sie nun Ihren Windows Server-Systemstatus gesichert haben, können Sie Ihre [Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 * Informationen zum Wiederherstellen einer Sicherung finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481098"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677165"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank
 
@@ -306,6 +306,7 @@ Folgende Features von virtuellen Netzwerken werden derzeit von der verwalteten I
 - **Microsoft-Peering**: Die Aktivierung von [Microsoft-Peering](../expressroute/expressroute-faqs.md#microsoft-peering) für ExpressRoute-Leitungen, die direkt oder transitiv mit einem virtuellen Netzwerk verbunden sind, in dem sich die verwaltete Instanz befindet, wirkt sich auf den Datenverkehrsfluss zwischen den Komponenten der verwalteten Instanz innerhalb des virtuellen Netzwerks und den Diensten aus, von denen sie abhängt, wodurch Verfügbarkeitsprobleme verursacht werden. Bereitstellungen verwalteter Instanzen im virtuellen Netzwerk mit bereits aktiviertem Microsoft-Peering dürften fehlschlagen.
 - **Globales Peering virtueller Netzwerke**: Die Azure-Regionen übergreifende Konnektivität durch [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md) funktioniert für eine verwaltete Instanz aufgrund der [dokumentierten Einschränkungen beim Lastenausgleich](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) nicht.
 - **AzurePlatformDNS**: Die Verwendung des Servicetags [AzurePlatformDNS](../virtual-network/service-tags-overview.md) zur Blockierung der DNS-Auflösung der Plattform würde dazu führen, dass die verwaltete Instanz nicht mehr verfügbar ist. Wenngleich die verwaltete Instanz kundenspezifisches DNS für die DNS-Auflösung innerhalb der Engine unterstützt, besteht eine Abhängigkeit vom Plattform-DNS für Plattformvorgänge.
+- **NAT-Gateway**: Die Verwendung von [Virtual Network NAT](../virtual-network/nat-overview.md) zur Steuerung der ausgehenden Konnektivität mit einer bestimmten öffentlichen IP-Adresse würde dazu führen, dass Managed Instance unerreichbar ist. Der Managed Instance-Dienst ist aktuell auf die Verwendung eines Basislastenausgleichs beschränkt, der keine parallelen eingehenden und ausgehenden Flows für Virtual Network NAT zulässt.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[Veraltet] Netzwerkanforderungen ohne dienstgestützte Subnetzkonfiguration
 

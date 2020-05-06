@@ -10,17 +10,23 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081844"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137359"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen trainieren. Das Konfigurieren eines Vorhersagemodells ähnelt zwar der Einrichtung eines Standard-Regressionsmodells mit automatisiertem maschinellem Lernen, die Verwendung von Zeitreihendaten erfordert jedoch bestimmte Konfigurationsoptionen und Vorverarbeitungsschritte. In den Beispielen dieses Artikels wird Folgendes gezeigt:
+In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen in Azure Machine Learning konfigurieren und trainieren. 
+
+Das Konfigurieren eines Vorhersagemodells ähnelt zwar der Einrichtung eines Standard-Regressionsmodells mit automatisiertem maschinellem Lernen, die Verwendung von Zeitreihendaten erfordert jedoch bestimmte Konfigurationsoptionen und Vorverarbeitungsschritte. 
+
+Sie können beispielsweise [konfigurieren](#config), wie weit die Vorhersage in die Zukunft reichen soll (Vorhersagehorizont), und ob es Verzögerungen geben soll. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
+
+In den Beispielen dieses Artikels wird Folgendes gezeigt:
 
 * Vorbereiten von Daten für die Zeitreihenmodellierung
 * Konfigurieren spezifischer Zeitreihenparameter in einem Objekt vom Typ [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
@@ -28,21 +34,12 @@ In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning ein Regression
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-Sie können automatisiertes maschinelles Lernen verwenden, um verschiedene Techniken und Ansätze zu kombinieren. Außerdem erhalten Sie dabei eine beliebte und hochwertige Zeitreihenprognose. Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor.
+Im Gegensatz zu klassischen Methoden für Zeitreihen werden beim automatisierten maschinellen Lernen Zeitreihenwerte aus der Vergangenheit „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz umfasst mehrere Kontextvariablen und deren Beziehung zueinander beim Training. Da sich mehrere Faktoren auf eine Vorhersage auswirken können, richtet sich diese Methode gut an realen Vorhersageszenarios aus. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Interaktionen von Trends aus der Vergangenheit, des Wechselkurses und des Preises berechnet. 
 
-Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. In der Praxis können bei Vorhersageanwendungen mehrere Faktoren die Vorhersage beeinflussen. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Interaktionen von Trends aus der Vergangenheit, des Wechselkurses und des Preises berechnet. Ein weiterer Vorteil ist, dass alle aktuellen Innovationen bei Regressionsmodellen direkt auf die Vorhersagen angewendet werden.
-
-Sie können u. a. [konfigurieren](#config), wie weit die Vorhersage in die Zukunft reichen soll (Vorhersagehorizont), und ob es Verzögerungen geben soll. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
-
-Features, die aus den Trainingsdaten extrahiert werden, spielen eine wichtige Rolle. Zudem werden beim automatisierten Machine Learning einige Standardschritte für die Vorverarbeitung durchgeführt, und es werden zusätzliche Zeitreihenfeatures generiert, um saisonale Auswirkungen zu erfassen und die Vorhersage so genau wie möglich zu gestalten.
+Features, die aus den Trainingsdaten extrahiert werden, spielen eine wichtige Rolle. Zudem werden beim automatisierten maschinellen Lernen einige Standardschritte für die Vorverarbeitung durchgeführt, und es werden zusätzliche Zeitreihenfeatures generiert, um saisonale Auswirkungen zu erfassen und die Vorhersage so genau wie möglich zu gestalten.
 
 ## <a name="time-series-and-deep-learning-models"></a>Zeitreihen- und Deep Learning-Modelle
 
-
-Automatisiertes maschinelles Lernen bietet Benutzern sowohl native Zeitreihen- als auch Deep Learning-Modelle als Teil des Empfehlungssystems. Zu diesen Lernmodellen gehören:
-+ Prophet
-+ Auto-ARIMA
-+ ForecastTCN
 
 Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
 
@@ -51,11 +48,16 @@ Deep Learning-Modelle weisen drei intrinsische Funktionen auf:
 1. Sie unterstützen mehrere Eingaben und Ausgaben.
 1. Sie können automatisch Muster in Eingabedaten extrahieren, die lange Folgen umfassen.
 
-Mit größeren Daten können Deep Learning-Modelle wie ForecastTCN von Microsoft die Scores des resultierenden Modells verbessern. 
+Mit größeren Daten können Deep Learning-Modelle wie ForecastTCN von Microsoft die Scores des resultierenden Modells verbessern. Erfahren Sie, wie Sie [Ihr Experiment für Deep Learning konfigurieren](#configure-a-dnn-enable-forecasting-experiment).
 
-Native Zeitreihenlernmodelle werden auch als Teil von automatisiertem maschinellem Lernen bereitgestellt. Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. Prophet ist schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen. 
+Automatisiertes maschinelles Lernen bietet Benutzern sowohl native Zeitreihen- als auch Deep Learning-Modelle als Teil des Empfehlungssystems. 
 
-Der autoregressive integrierte gleitende Mittelwert (Autoregressive Integrated Moving Average, ARIMA) ist eine beliebte statistische Methode für Zeitreihenvorhersagen. Diese Vorhersagemethode wird häufig in kurzfristigen Vorhersageszenarien verwendet, in denen die Daten Hinweise auf Trends wie z. B. Zyklen enthalten. Solche Trends können unerwartet und schwierig zu modellieren oder vorherzusagen sein. Auto-ARIMA transformiert Ihre Daten in stationäre Daten, um konsistente, zuverlässige Ergebnisse zu erhalten.
+
+Modelle| BESCHREIBUNG | Vorteile
+----|----|---
+Prophet (Vorschauversion)|Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. | Schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen
+Auto-ARIMA (Vorschauversion)|Die ARIMA-Methode (autoregressiver integrierter gleitender Mittelwert) erzielt die optimale Leistung, wenn die Daten stationär sind. Das bedeutet, dass die statistischen Eigenschaften wie der Mittelwert und Varianz für das gesamte Dataset konstant sind. Wenn Sie beispielsweise eine Münze werfen, ist Ihre Wahrscheinlichkeit für Kopf 50 %, ganz egal, ob Sie die Münze heute, morgen oder im nächsten Jahr werfen.| Dies eignet sich für univariate Reihen, da vergangene Werte für die Vorhersage zukünftiger Werte verwendet werden.
+ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für die aufwändigsten Vorhersageaufgaben konzipiert wurde und nicht lineare lokale und globale Trends in Ihren Daten sowie Beziehungen zwischen Zeitreihen erfasst.|Es kann komplexe Trends in Ihren Daten nutzen und problemlos auf die größten Datasets skaliert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -101,6 +103,25 @@ test_labels = test_data.pop(label).values
 > Stellen Sie beim Trainieren eines Modells für die Vorhersage zukünftiger Werte sicher, dass alle während des Trainings verwendeten Features beim Ausführen von Vorhersagen für Ihren gewünschten Vorhersagehorizont verwendet werden können. Wenn Sie also beispielsweise eine Nachfrageprognose erstellen, lässt sich die Trainingsgenauigkeit durch die Einbeziehung eines Features für den aktuellen Aktienkurs erheblich verbessern. Wenn Sie bei Ihrer Vorhersage allerdings einen Vorhersagehorizont verwenden, der weit in der Zukunft liegt, lassen sich zukünftige Aktienkurse für zukünftige Zeitreihenpunkte ggf. nicht präzise vorhersagen, was sich nachteilig auf die Modellgenauigkeit auswirken kann.
 
 <a name="config"></a>
+
+## <a name="train-and-validation-data"></a>Trainings- und Überprüfungsdaten
+Sie können separate Datensätze für Training und Überprüfung direkt im `AutoMLConfig`-Konstruktor angeben.
+
+### <a name="rolling-origin-cross-validation"></a>Kreuzvalidierung mit rollierendem Ursprung
+Die ROCV (Kreuzvalidierung mit rollierendem Ursprung) wird bei der Zeitreihenvorhersage verwendet, um Zeitreihen auf temporal konsistente Weise zu trennen. Die ROCV teilt die Reihe in Trainings- und Validierungsdaten mit einem Ursprungszeitpunkt auf. Wenn der Ursprung zeitlich verschoben wird, werden Teilmengen für die Kreuzvalidierung erstellt.  
+
+![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
+
+Mit dieser Strategie wird die Datenintegrität von Zeitreihen beibehalten und das Risiko von Datenlecks vermieden. Die ROCV wird automatisch für Vorhersageaufgaben verwendet, indem die Trainings- und Validierungsdaten gemeinsam übergeben und die Anzahl der Teilmengen für die Kreuzvalidierung mithilfe von `n_cross_validations` festgelegt wird. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             n_cross_validations=3,
+                             ...
+                             **time_series_settings)
+```
+Erfahren Sie mehr über [AutoMLConfig](#configure-and-run-experiment).
+
 ## <a name="configure-and-run-experiment"></a>Konfigurieren und Ausführen des Experiments
 
 Bei Vorhersageaufgaben nutzt das automatisierte maschinelle Lernen spezifische Vorverarbeitungs- und Schätzschritte für Zeitreihendaten. Folgende Vorverarbeitungsschritte werden ausgeführt:
@@ -182,10 +203,32 @@ Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/M
 
 Um DNNs für die Vorhersage zu nutzen, müssen Sie den Parameter `enable_dnn` in AutoMLConfig auf TRUE festlegen. 
 
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+Erfahren Sie mehr über [AutoMLConfig](#configure-and-run-experiment).
+
+Alternativ können Sie die Option `Enable deep learning` in Studio auswählen.
+![Alternativer Text](./media/how-to-auto-train-forecast/enable_dnn.png)
+
 Es wird die Verwendung eines AML-Computeclusters mit GPU-SKUs und mindestens zwei Knoten als Computeziel empfohlen. Es wird empfohlen, das Experimenttimeout auf mindestens einige Stunden festzulegen, damit ausreichend Zeit für das DNN-Training zur Verfügung steht.
 Weitere Informationen zu AML-Compute und den VM-Größen mit GPUs finden Sie in den Dokumentationen [AML-Compute](how-to-set-up-training-targets.md#amlcompute) und [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 Ein detailliertes Codebeispiel für die Nutzung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
+
+### <a name="target-rolling-window-aggregation"></a>Rollierende Zeitfensteraggregationen als Ziel
+In vielen Fällen ist die beste Information, über die ein Vorhersagemodell verfügen kann, der aktuelle Wert des Ziels. Durch das Erstellen kumulativer Statistiken des Ziels kann die Genauigkeit Ihrer Vorhersagen erhöht werden. Wenn Sie rollierende Zeitfensteraggregationen als Ziel verwenden, können Sie eine rollierende Aggregation von Datenwerten als Features hinzufügen. Legen Sie `target_rolling_window_size` auf Ihre gewünschte ganzzahlige Zeitfensterlänge fest, um rollierende Zeitfenster als Ziel zu ermöglichen. 
+
+Ein Beispiel hierfür finden Sie beim Vorhersagen des Energiebedarfs. Angenommen, Sie fügen ein Feature für rollierende Zeitfenster von drei Tagen hinzu, um thermische Veränderungen beheizter Räume zu erfassen. Im folgenden Beispiel wurde dieses Zeitfenster mit dem Wert 3 erstellt, indem `target_rolling_window_size=3` im `AutoMLConfig`-Konstruktor festgelegt wurde. In der Tabelle wird das Feature Engineering dargestellt, das auftritt, wenn die Zeitfensteraggregation angewendet wird. Spalten für die Werte „minimum“, „maximum“ und „sum“ werden in einem gleitenden Fenster über drei Einträge basierend auf den definierten Einstellungen generiert. Jede Zeile verfügt über ein neues berechnetes Feature, für den Zeitstempel „8. September 2017, 4:00 Uhr“ werden die Werte „maximum“, „minimum“ und „sum“ mithilfe der Anforderungswerte für den Zeitstempel „8. September 2017, 3:00 Uhr“ berechnet. Dieses drei Einträge umfassende Fenster wird verschoben, um die verbleibenden Zeilen mit Daten aufzufüllen.
+
+![alt text](./media/how-to-auto-train-forecast/target-roll.svg)
+
+Durch Erzeugen und Verwenden dieser zusätzlichen Features als zusätzliche Kontextdaten wird die Genauigkeit des Trainingsmodells gesteigert.
+
+Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) verwendet wird.
 
 ### <a name="view-feature-engineering-summary"></a>Anzeigen der Zusammenfassung der Featureentwicklung
 
@@ -205,12 +248,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 Verwenden Sie die beste Modelliteration, um Werte für das Testdataset vorherzusagen.
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-Alternativ können Sie anstelle von `forecast()` die Funktion `predict()` verwenden, die die Festlegung ermöglicht, wann Vorhersagen beginnen sollen. Im folgenden Beispiel ersetzen Sie zunächst alle Werte in `y_pred` durch `NaN`. Der Ursprung der Vorhersage liegt in diesem Fall am Ende der Trainingsdaten, wie es normalerweise bei der Verwendung von `predict()` der Fall wäre. Wenn Sie jedoch nur die zweite Hälfte von `y_pred` durch `NaN` ersetzen, lässt die Funktion die numerischen Werte in der ersten Hälfte unverändert, sagt aber die `NaN`-Werte in der zweiten Hälfte voraus. Die Funktion gibt sowohl die vorhergesagten Werte als auch die angepassten Features zurück.
+Die `forecast()`-Funktion sollte anstelle von `predict()` verwendet werden. Dadurch kann festgelegt werden, wann Vorhersagen beginnen sollen. Im folgenden Beispiel ersetzen Sie zunächst alle Werte in `y_pred` durch `NaN`. Der Ursprung der Vorhersage liegt in diesem Fall am Ende der Trainingsdaten, wie es normalerweise bei der Verwendung von `predict()` der Fall wäre. Wenn Sie jedoch nur die zweite Hälfte von `y_pred` durch `NaN` ersetzen, lässt die Funktion die numerischen Werte in der ersten Hälfte unverändert, sagt aber die `NaN`-Werte in der zweiten Hälfte voraus. Die Funktion gibt sowohl die vorhergesagten Werte als auch die angepassten Features zurück.
 
 Sie können den Parameter `forecast_destination` in der Funktion `forecast()` auch verwenden, um Werte bis zu einem bestimmten Datum vorherzusagen.
 

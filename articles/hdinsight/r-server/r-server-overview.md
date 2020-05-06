@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657035"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188241"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
 
@@ -23,7 +23,7 @@ ML Services in HDInsight verfügt über die aktuellen Funktionen für R-basierte
 
 Der Edgeknoten ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Über den Edgeknoten können Sie die parallelisierten verteilten ScaleR-Funktionen übergreifend für die Kerne des Servers ausführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR verwenden. Sie können auch Apache Spark-Computekontexte nutzen.
 
-Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die lokale Verwendung heruntergeladen werden. Diese können auch an anderer Stelle in Azure operationalisiert werden. Genauer gesagt per [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) und [Webdienst](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
+Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert (`operationalized`) werden. Genauer gesagt per [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) und [Webdienst](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Erste Schritte mit ML Services in HDInsight
 
@@ -63,18 +63,18 @@ Die folgenden Features sind in ML Services in HDInsight enthalten.
 | R-fähig | [R-Pakete](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) für in R erstellte Lösungen mit einer Open-Source-Distribution von R und einer Laufzeitinfrastruktur für die Skriptausführung. |
 | Python-fähig | [Python-Module](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) für in Python erstellte Lösungen mit einer Open-Source-Distribution von Python und einer Laufzeitinfrastruktur für die Skriptausführung.
 | [Vortrainierte Modelle](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Für visuelle Analyse und Textempfindungsanalyse, bereit zur Bewertung der Daten, die Sie zur Verfügung stellen. |
-| [Bereitstellen und Nutzen](r-server-operationalize.md) | Operationalisieren Sie Ihren Server, und stellen Sie Lösungen als Webdienst bereit. |
+| [Bereitstellen und Nutzen](r-server-operationalize.md) | Führen Sie für Ihren Server einen `Operationalize`-Vorgang aus, und stellen Sie Lösungen als Webdienst bereit. |
 | [Remoteausführung](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Starten Sie Remotesitzungen auf ML Services-Clustern in Ihrem Netzwerk von Ihrer Clientarbeitsstation aus. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Datenspeicherungsoptionen für ML Services in HDInsight
 
-Der Standardspeicher für das HDFS-Dateisystem kann ein Azure Storage-Konto oder Azure Data Lake Storage sein. Die Daten, die während der Analyse in den Clusterspeicher hochgeladen werden, werden dauerhaft gespeichert. Sie stehen daher auch nach dem Löschen des Clusters zur Verfügung. Die Datenübertragung an den Speicher kann mit verschiedenen Tools durchgeführt werden. Zu diesen Tools gehören beispielsweise die Uploadfunktion des Speicherkontos im Portal und das Hilfsprogramm [AzCopy](../../storage/common/storage-use-azcopy.md).
+Der Standardspeicher für das HDFS-Dateisystem kann ein Azure Storage-Konto oder Azure Data Lake Storage sein. Die Daten, die während der Analyse in den Clusterspeicher hochgeladen werden, werden dauerhaft gespeichert. Sie stehen daher auch nach dem Löschen des Clusters zur Verfügung. Die Datenübertragung an den Speicher kann mit verschiedenen Tools durchgeführt werden. Zu diesen Tools gehören beispielsweise die Uploadfunktion des Speicherkontos im Portal und das Hilfsprogramm AzCopy.
 
 Sie können den Zugriff auf weiteren Blobspeicher und Data Lake Storage während der Clustererstellung aktivieren. Sie sind bei der Nutzung nicht auf die primäre Speicheroption beschränkt.  Weitere Informationen zur Verwendung von mehreren Speicherkonten finden Sie unter [Azure Storage-Optionen für ML Services in HDInsight](./r-server-storage.md).
 
-Außerdem können Sie [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Azure Files ermöglicht die Nutzung von in Azure Storage erstellten Dateifreigaben für das Linux-Dateisystem. Weitere Informationen finden Sie unter [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md).
+Außerdem können Sie Azure Files als Speicheroption für den Edgeknoten wählen. Azure Files ermöglicht die Nutzung von in Azure Storage erstellten Dateifreigaben für das Linux-Dateisystem. Weitere Informationen finden Sie unter [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Zugreifen auf ML Services-Edgeknoten
+## <a name="access-ml-services-edge-node"></a>Zugreigen auf ML Services-Edgeknoten
 
 Sie können über einen Browser oder SSH/PuTTY eine Verbindung mit ML Server auf dem Edgeknoten herstellen. Die R-Konsole wird standardmäßig während der Clustererstellung installiert.  
 
@@ -82,9 +82,9 @@ Sie können über einen Browser oder SSH/PuTTY eine Verbindung mit ML Server auf
 
 Für Ihre R-Skripts können alle Open-Source-Pakete der Serie 8000+ von R verwendet werden. Sie können auch die parallelisierten und verteilten Routinen aus der ScaleR-Bibliothek verwenden. Auf dem Edgeknoten ausgeführte Skripts werden über den R-Interpreter des Knotens ausgeführt. Eine Ausnahme stellen die Schritte dar, bei denen ScaleR-Funktionen mit einem Computetext vom Typ MapReduce (RxHadoopMR) oder Spark (RxSpark) aufgerufen werden. Die Funktionen werden auf verteilte Weise auf den Datenknoten ausgeführt, die den Daten zugeordnet sind. Weitere Informationen zu den Kontextoptionen finden Sie unter [Computekontextoptionen für ML Services in HDInsight](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>Operationalisieren eines Modells
+## <a name="operationalize-a-model"></a>Ausführen eines `Operationalize`-Vorgangs für ein Modell
 
-Nach Abschluss der Datenmodellierung können Sie das Modell operationalisieren, um in Azure oder lokal Vorhersagen über neue Daten treffen zu können. Dieser Prozess wird als Bewertung bezeichnet. Eine Bewertung kann in HDInsight, Azure Machine Learning oder lokal ausgeführt werden.
+Führen Sie nach Abschluss der Datenmodellierung für das Modell einen `operationalize`-Vorgang aus, um in Azure oder lokal Vorhersagen über neue Daten treffen zu können. Dieser Prozess wird als Bewertung bezeichnet. Eine Bewertung kann in HDInsight, Azure Machine Learning oder lokal ausgeführt werden.
 
 ### <a name="score-in-hdinsight"></a>Bewertung in HDInsight
 
@@ -96,7 +96,7 @@ Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azur
 
 ### <a name="score-on-premises"></a>Lokale Bewertung
 
-Gehen Sie wie folgt vor, um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen: Serialisieren Sie das Modell in R, laden Sie es herunter, deserialisieren Sie es, und verwenden Sie es anschließend für die Bewertung neuer Daten. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter [Bewertung in HDInsight](#score-in-hdinsight) beschriebenen Ansatz verwenden oder [Webdienste](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
+Gehen Sie wie folgt vor, um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen: Serialisieren Sie das Modell in R, laden Sie es herunter, deserialisieren Sie es, und verwenden Sie es anschließend für die Bewertung neuer Daten. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter „Bewertung in HDInsight“ beschriebenen Ansatz verwenden oder [Webdienste](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
 
 ## <a name="maintain-the-cluster"></a>Verwalten des Clusters
 
@@ -130,7 +130,7 @@ Während der Wartung kann es für aktive Aufträge zu einer Verlangsamung kommen
 
 Der Linux-Edgeknoten auf einem HDInsight-Cluster stellt die Landezone für R-basierte Analysen dar. Neuere Versionen von HDInsight verfügen über eine browserbasierte IDE von RStudio auf dem Edgeknoten. RStudio Server weist in Bezug auf die Entwicklung und Ausführung eine höhere Produktivität als die R-Konsole auf.
 
-Eine Desktop-IDE verfügt per MapReduce- oder Spark-Remote-Computekontext über Zugriff auf den Cluster. Beispiele für Optionen: [R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) von Microsoft, RStudio und das auf Eclipse basierende [StatET](http://www.walware.de/goto/statet) von Walware.
+Eine Desktop-IDE verfügt per MapReduce- oder Spark-Remote-Computekontext über Zugriff auf den Cluster. Beispiele für Optionen: [R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) von Microsoft, RStudio und die auf Eclipse basierende Anwendung StatET von Walware
 
 Greifen Sie auf die R-Konsole auf dem Edgeknoten zu, indem Sie an der Eingabeaufforderung **R** eingeben. Bei Nutzung der Konsolenoberfläche ist es ratsam, R-Skripts in einem Text-Editor zu entwickeln. Sie können die Abschnitte Ihres Skripts dann je nach Bedarf ausschneiden und in die R-Konsole einfügen.
 

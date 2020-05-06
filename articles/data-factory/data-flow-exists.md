@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a303c8fa1e23460fb906232eedb6bfb1930b4bc9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606465"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232468"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Exists-Transformation in einem Zuordnungsdatenfluss
 
@@ -42,6 +42,14 @@ Zum Erstellen eines Freiformausdrucks, der andere Operatoren als „und“ und �
 
 ![Benutzerdefinierte Exists-Einstellungen](media/data-flow/exists1.png "Benutzerdefinierter Exists-Ausdruck")
 
+## <a name="broadcast-optimization"></a>Broadcastoptimierung
+
+![Broadcastjoin](media/data-flow/broadcast.png "Broadcastjoin")
+
+Wenn bei Joins, Suchvorgängen und Exists-Tranformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
+
+Es wird nicht empfohlen, die Übertragung über die Option**Off** (Aus) zu deaktivieren, es sei denn, für Ihre Joins treten Timeoutfehler auf.
+
 ## <a name="data-flow-script"></a>Datenflussskript
 
 ### <a name="syntax"></a>Syntax
@@ -51,7 +59,7 @@ Zum Erstellen eines Freiformausdrucks, der andere Operatoren als „und“ und �
     exists(
         <conditionalExpression>,
         negate: { true | false },
-        broadcast: {'none' | 'left' | 'right' | 'both'}
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <existsTransformationName>
 ```
 
@@ -70,7 +78,7 @@ NameNorm2, TypeConversions
     exists(
         NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
         negate:false,
-        broadcast: 'none'
+        broadcast: 'auto'
     ) ~> checkForChanges
 ```
 

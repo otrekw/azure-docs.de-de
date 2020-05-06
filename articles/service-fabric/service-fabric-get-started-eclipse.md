@@ -5,12 +5,12 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229298"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193427"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
 Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Hier erfahren Sie, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse bereitstellen. 
@@ -102,7 +102,7 @@ Nachdem Sie Ihre Service Fabric-Anwendung erstellt haben, gehen Sie folgenderma�
 
 3.  Klicken Sie im Kontextmenü auf **Anwendung bereitstellen**.
 4.  Sie können den Fortschritt des Bereitstellungsvorgangs im Konsolenfenster verfolgen.
-5.  Um sicherzustellen, dass Ihre Anwendung ausgeführt wird, öffnen Sie den Service Fabric Explorer in Ihrem lokalen Cluster in einem Browserfenster [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie den Knoten **Anwendungen**, und stellen Sie sicher, dass die Anwendung ausgeführt wird. 
+5.  Öffnen Sie Service Fabric Explorer in Ihrem lokalen Cluster in einem Browserfenster (`http://localhost:19080/Explorer`), um zu überprüfen, ob Ihre Anwendung ausgeführt wird. Erweitern Sie den Knoten **Anwendungen**, und stellen Sie sicher, dass die Anwendung ausgeführt wird. 
 
 Wie Sie Ihre Anwendung in Eclipse mit dem lokalen Cluster debuggen, lernen Sie unter [Debuggen eines Java-Diensts in Eclipse](./service-fabric-debugging-your-application-java.md).
 

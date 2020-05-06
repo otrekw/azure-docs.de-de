@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598373"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82084820"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-Zertifizierungen und -Konfigurationen in Microsoft Azure
 
-SAP und Microsoft können auf eine lange Geschichte enger Zusammenarbeit in einer starken Partnerschaft zurückblicken, die den Kunden beider Unternehmen Vorteile bringt. Microsoft führt kontinuierlich Aktualisierungen seiner Plattform durch und übermittelt stets neue Zertifizierungsinformationen an SAP, um sicherzustellen, dass Microsoft Azure die optimale Plattform zum Ausführen von SAP-Workloads ist. In den folgenden Tabellen werden die in Azure unterstützten Konfigurationen und die anwachsende Liste von SAP-Zertifizierungen beschrieben. 
+SAP und Microsoft können auf eine lange Geschichte enger Zusammenarbeit in einer starken Partnerschaft zurückblicken, die den Kunden beider Unternehmen Vorteile bringt. Microsoft führt kontinuierlich Aktualisierungen seiner Plattform durch und übermittelt stets neue Zertifizierungsinformationen an SAP, um sicherzustellen, dass Microsoft Azure die optimale Plattform zum Ausführen von SAP-Workloads ist. In den folgenden Tabellen werden die in Azure unterstützten Konfigurationen und die anwachsende Liste von SAP-Zertifizierungen beschrieben. Diese Liste ist eine Übersicht, die hier und da von den offiziellen SAP-Listen abweichen kann. Wie Sie die detaillierten Daten erhalten, erfahren Sie im Artikel [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure).
 
 ## <a name="sap-hana-certifications"></a>SAP HANA-Zertifizierungen
 Referenzen:
@@ -47,7 +47,7 @@ Beachten Sie, dass SAP den Begriff „Clustering“ bei [zertifizierten SAP HANA
 Microsoft Azure ist für die folgenden SAP-Produkte zertifiziert. Microsoft und SAP bieten vollständigen Support für die Plattform.
 Referenzen:
 
-- [1928533 – SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen](https://launchpad.support.sap.com/#/notes/1928533) für alle SAP NetWeaver-basierten Anwendungen, einschließlich SAP TREX, SAP LiveCache und SAP Content Server, sowie alle Datenbanken mit Ausnahme von SAP HANA
+- [1928533 – SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen](https://launchpad.support.sap.com/#/notes/1928533) für alle SAP NetWeaver-basierten Anwendungen, einschließlich SAP TREX, SAP LiveCache und SAP Content Server. sowie alle Datenbanken mit Ausnahme von SAP HANA
 
 
 | SAP-Produkt | Gastbetriebssystem | RDBMS | VM-Typ (virtueller Computer) |
@@ -65,4 +65,7 @@ Referenzen:
 | SAP BPC 10.01 MS SP08 | Windows und Linux | | Alle NetWeaver-zertifizierten VM-Typen<br /> SAP-Hinweis 2451795 |
 | SAP Business Objects BI-Plattform | Windows und Linux | | SAP-Hinweis 2145537 |
 | SAP Data Services 4.2 | | | SAP-Hinweis 2288344 |
-| SAP Hybris Commerce-Plattform 5.x und 6.x | Windows | SQL Server, Oracle | Alle NetWeaver-zertifizierten VM-Typen<br /> [Hybris-Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce-Plattform  | Windows | SQL Server, Oracle | Alle NetWeaver-zertifizierten VM-Typen <br /> [Hybris-Dokumentation](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce-Plattform  | SLES 12 oder aktueller | SAP HANA | Alle NetWeaver-zertifizierten VM-Typen <br /> [Hybris-Dokumentation](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce-Plattform  | RHEL 7 oder aktueller | SAP HANA | Alle NetWeaver-zertifizierten VM-Typen <br /> [Hybris-Dokumentation]https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP (Hybris) Commerce-Plattform 1811 und höher  | Windows, SLES oder RHEL | SQL Azure-Datenbank | Alle NetWeaver-zertifizierten VM-Typen <br /> [Hybris-Dokumentation](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

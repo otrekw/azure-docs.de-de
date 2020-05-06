@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des Agents zum Verknüpfen von CEF-Daten mit Azure Sentinel (Vorschau) | Microsoft-Dokumentation
+title: Bereitstellen der Protokollweiterleitung zum Verbinden von CEF-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Agent zum Verknüpfen von CEF-Daten mit Azure Sentinel bereitstellen.
 services: sentinel
 documentationcenter: na
@@ -12,41 +12,122 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: b0c9335357cb793ea76e1dbe68575f716a50372a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588466"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81731660"
 ---
-# <a name="step-1-deploy-the-agent"></a>Schritt 1: Bereitstellen des Agents
+# <a name="step-1-deploy-the-log-forwarder"></a>Schritt 1: Bereitstellen der Protokollweiterleitung
 
 
-In diesem Schritt müssen Sie den Linux-Computer auswählen, der als Proxy zwischen Azure Sentinel und Ihrer Sicherheitslösung fungieren soll. Sie müssen auf dem Proxycomputer ein Skript ausführen, das die folgenden Aufgaben übernimmt:
-- Installieren des Log Analytics-Agents und Konfigurieren nach Bedarf, um auf Syslog-Nachrichten zu lauschen
-- Konfigurieren des Syslog-Daemons, um auf Syslog-Nachrichten über den TCP-Port 514 zu lauschen und dann Weiterleiten von nur CEF-Nachrichten an den Log Analytics-Agent über den TCP-Port 25226
-- Festlegen des Syslog-Agents für das Erfassen von Daten und sicheres Senden der Daten an Azure Sentinel, um sie dort zu analysieren und anzureichern
+In diesem Schritt bestimmen und konfigurieren Sie den Linux-Computer, der die Protokolle von Ihrer Sicherheitslösung an Ihren Azure Sentinel-Arbeitsbereich weiterleiten soll. Bei diesem Computer kann es sich um einen physischen oder virtuellen Computer in Ihrer lokalen Umgebung, eine Azure-VM oder eine VM in einer anderen Cloud handeln. Mithilfe des bereitgestellten Links führen Sie ein Skript auf dem festgelegten Computer aus, das die folgenden Aufgaben ausführt:
+- Es installiert den Log Analytics-Agent für Linux (auch als OMS-Agent bezeichnet) und konfiguriert ihn für die folgenden Zwecke:
+    - Lauschen auf CEF-Nachrichten vom integrierten Linux-Syslog-Daemon am TCP-Port 25226
+    - Sicheres Senden der Nachrichten über TLS an Ihren Azure Sentinel-Arbeitsbereich, wo sie analysiert und ergänzt werden
+
+- Es konfiguriert den integrierten Linux-Syslog-Daemon (rsyslog.d/syslog-ng) für die folgenden Zwecke:
+    - Lauschen auf Syslog-Nachrichten von Ihren Sicherheitslösungen an TCP-Port 514
+    - Weiterleiten nur der Nachrichten, die mit dem Log Analytics-Agent auf localhost als CEF identifiziert werden, über TCP-Port 25226
  
-## <a name="deploy-the-agent"></a>Bereitstellen des Agents
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie müssen über erhöhte Berechtigungen (sudo) auf dem festgelegten Linux-Computer verfügen.
+- Auf dem Linux-Computer muss Python installiert sein.<br>Verwenden Sie den Befehl `python -version` zum Überprüfen dieser Voraussetzung.
+- Der Linux-Computer darf nicht mit Azure-Arbeitsbereichen verbunden sein, bevor Sie den Log Analytics-Agent installieren.
+
+## <a name="run-the-deployment-script"></a>Ausführen des Bereitstellungsskripts
  
-1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors), und wählen Sie **Common Event Format (CEF)** und dann **Open connector page** (Connectorseite öffnen) aus. 
+1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Datenconnectors** aus. Klicken Sie in der Liste der Connectors auf die Kachel **Common Event Format (CEF)** und dann rechts unten auf die Schaltfläche **Connectorseite öffnen**. 
 
-1. Wählen Sie unter **Syslog-Agent installieren und konfigurieren** Ihren Computertyp aus: Azure, andere Cloud oder lokal. 
-   > [!NOTE]
-   > Da das Skript im nächsten Schritt den Log Analytics-Agent installiert und den Computer mit Ihrem Azure Sentinel-Arbeitsbereich verbindet, stellen Sie sicher, dass dieser Computer nicht mit einem anderen Arbeitsbereich verbunden ist.
-1. Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. Stellen Sie mithilfe des folgenden Befehls sicher, dass Sie auf dem Computer über Python verfügen: `python –version`
+1. Kopieren Sie unter **1.2 CEF-Collector auf dem Linux-Computer installieren** den unter **Run the following script to install and apply the CEF collector** (Folgendes Skript zum Installieren und Anwenden des CEF-Collectors ausführen) oder im nachstehenden Text aufgeführten Link:
 
-1. Führen Sie das folgende Skript auf dem Proxycomputer aus.
-   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+     `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+
 1. Wenn das Skript ausgeführt wird, stellen Sie sicher, dass keine Fehler- oder Warnmeldungen angezeigt werden.
 
 Fahren Sie mit [SCHRITT 2 fort: Konfigurieren Ihrer Sicherheitslösung zum Weiterleiten von CEF-Nachrichten](connect-cef-solution-config.md) .
 
+## <a name="deployment-script-explained"></a>Erläuterung des Bereitstellungsskripts
+
+Im Folgenden finden Sie eine Beschreibung der Aktionen des Bereitstellungsskripts in einzelnen Befehlen.
+
+Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeigen.
+
+# <a name="rsyslog-daemon"></a>[rsyslog-Daemon](#tab/rsyslog)
+
+1. **Herunterladen und Installieren des Log Analytics-Agents:**
+
+    - Herunterladen des Installationsskripts für den Log Analytics-Linux-Agent (OMS)<br>
+        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+
+    - Installieren des Log Analytics-Agents<br>
+        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+
+1. **Konfigurieren des Syslog-Daemons:**
+
+    1. Öffnen von Port 514 für TCP-Kommunikation mithilfe der Syslog-Konfigurationsdatei `/etc/rsyslog.conf`
+
+    1. Konfigurieren des Daemons zum Weiterleiten von CEF-Nachrichten an den Log Analytics-Agent an TCP-Port 25226 durch Einfügen einer speziellen Konfigurationsdatei `security-config-omsagent.conf` in das Verzeichnis `/etc/rsyslog.d/` des Syslog-Daemons
+
+        Inhalt der Datei `security-config-omsagent.conf`:
+
+            :rawmsg, regex, "CEF\|ASA" ~
+            *.* @@127.0.0.1:25226
+
+1. **Neustarten des Syslog-Daemons**
+
+    `service rsyslog restart`
+
+1. **Festlegen der Konfiguration des Log Analytics-Agents zum Lauschen an Port 25226 und Weiterleiten von CEF-Nachrichten an Azure Sentinel**
+
+    1. Herunterladen der Konfiguration aus dem GitHub-Repository für den Log Analytics-Agent<br>
+        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+
+
+    1. Neustarten des Log Analytics-Agents<br>
+        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+
+# <a name="syslog-ng-daemon"></a>[syslog-ng daemon](#tab/syslogng)
+
+1. **Herunterladen und Installieren des Log Analytics-Agents:**
+
+    - Herunterladen des Installationsskripts für den Log Analytics-Linux-Agent (OMS)<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+
+    - Installieren des Log Analytics-Agents<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+
+1. **Konfigurieren des Syslog-Daemons:**
+
+    1. Öffnen von Port 514 für TCP-Kommunikation mithilfe der Syslog-Konfigurationsdatei `/etc/syslog-ng/syslog-ng.conf`
+
+    1. Konfigurieren des Daemons zum Weiterleiten von CEF-Nachrichten an den Log Analytics-Agent an TCP-Port 25226 durch Einfügen einer speziellen Konfigurationsdatei `security-config-omsagent.conf` in das Verzeichnis `/etc/syslog-ng/conf.d/` des Syslog-Daemons
+
+        Inhalt der Datei `security-config-omsagent.conf`:
+
+            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+
+1. **Neustarten des Syslog-Daemons**
+
+    `service syslog-ng restart`
+
+1. **Festlegen der Konfiguration des Log Analytics-Agents zum Lauschen an Port 25226 und Weiterleiten von CEF-Nachrichten an Azure Sentinel**
+
+    1. Herunterladen der Konfiguration aus dem GitHub-Repository für den Log Analytics-Agent<br>
+        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+
+
+    1. Neustarten des Log Analytics-Agents<br>
+        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie CEF-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie gelernt, wie Sie den Log Analytics-Agent bereitstellen, um CEF-Appliances mit Azure Sentinel zu verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

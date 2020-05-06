@@ -1,21 +1,18 @@
 ---
-title: Verwenden von Näherungsplatzierungsgruppen für Linux-VMs
-description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Linux-VMs in Azure.
-services: virtual-machines-linux
+title: Verwenden von Näherungsplatzierungsgruppen
+description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für VMs in Azure.
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73171058"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81759253"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit Azure CLI
 

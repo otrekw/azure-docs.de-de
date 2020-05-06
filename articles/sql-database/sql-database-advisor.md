@@ -4,19 +4,19 @@ description: Von Azure SQL-Datenbank werden Empfehlungen für Einzel- und Poolda
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: bd7473813722fd413947535413b98d493058634a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5b0aeec851c8f514492e32792f48e955597ced5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82096570"
 ---
 # <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>Database Advisor: Empfehlungen zur Leistung für Einzel- und Pooldatenbanken
 
@@ -39,10 +39,10 @@ Für Einzel- und Pooldatenbanken in Azure SQL-Datenbank sind die folgenden Optio
 
 | Leistungsempfehlung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
-| **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
-| **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
-| **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer der gleiche Abfrageausführungsplan daraus hervorgeht. | Ja | Nein |
-| **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
+| **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein  |
+| **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein  |
+| **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer der gleiche Abfrageausführungsplan daraus hervorgeht. | Ja | Nein  |
+| **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein  |
 
 ![Leistungsempfehlungen für Azure SQL-Datenbank](./media/sql-database-performance/performance-recommendations-annotated.png)
 
@@ -52,7 +52,7 @@ Sie können auch den vollständigen Verlauf der Aktionen zur Leistungsoptimierun
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index
 
-SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erkennt die Indizes, die die Leistung verbessern könnten. Sobald genügend Vertrauen besteht, dass ein bestimmter Index fehlt, wird eine neue Empfehlung **Index erstellen** erstellt.
+Azure SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erkennt die Indizes, die die Leistung verbessern könnten. Sobald genügend Vertrauen besteht, dass ein bestimmter Index fehlt, wird eine neue Empfehlung **Index erstellen** erstellt.
 
 Azure SQL-Datenbank baut Vertrauen auf, indem berechnet wird, zu welchem Leistungsgewinn der Index mit der Zeit führen würde. Je nach geschätztem Leistungsgewinn werden Empfehlungen als „Hoch“, „Mittel“ oder „Niedrig“ eingestuft.
 
@@ -60,7 +60,7 @@ Indizes, die mit Empfehlungen erstellt wurden, sind immer als automatisch erstel
 
 Wenn Sie versuchen, die Spalte mit einem automatisch erstellten Index zu löschen, wird der Befehl übergeben. Der automatisch erstellte Index wird ebenfalls mit dem Befehl gelöscht. Reguläre Indizes blockieren den Befehl ALTER/RENAME für Spalten, die indiziert sind.
 
-Nachdem die Empfehlung zum Erstellen eines Indexes angewendet wurde, vergleicht Azure SQL-Datenbank die Leistung der Abfragen mit der Baselineleistung. Wenn der neue Index die Leistung verbessert, wird die Empfehlung als erfolgreich gekennzeichnet, und der Auswirkungsbericht steht zur Verfügung. Wenn der Index nicht zu einer Leistungsverbesserung geführt hat, wird er automatisch rückgängig gemacht. SQL-Datenbank verwendet diesen Prozess, um sicherzustellen, dass Empfehlungen die Leistung der Datenbank verbessern.
+Nachdem die Empfehlung zum Erstellen eines Indexes angewendet wurde, vergleicht Azure SQL-Datenbank die Leistung der Abfragen mit der Baselineleistung. Wenn der neue Index die Leistung verbessert, wird die Empfehlung als erfolgreich gekennzeichnet, und der Auswirkungsbericht steht zur Verfügung. Wenn der Index nicht zu einer Leistungsverbesserung geführt hat, wird er automatisch rückgängig gemacht. Azure SQL-Datenbank verwendet diesen Prozess, um sicherzustellen, dass Empfehlungen die Leistung der Datenbank verbessern.
 
 Jede Empfehlung **Index erstellen** verfügt über eine Backoffrichtlinie, die verhindert, dass die Empfehlung bei einem hohen Ressourcenverbrauch einer Datenbank oder eines Pools angewendet wird. In der Backoffrichtlinie werden CPU, Daten-E/A, Protokoll-E/A und verfügbarer Speicher berücksichtigt.
 
@@ -70,7 +70,7 @@ Dieser Prozess wird wiederholt, bis genügend freier Speicherplatz zum Erstellen
 
 ## <a name="drop-index-recommendations"></a>Empfehlungen zum Löschen eines Indexes
 
-Zusätzlich zum Erkennen fehlender Indizes analysiert die SQL-Datenbank kontinuierlich die Leistung der vorhandenen Indizes. Wenn der Index nicht verwendet wird, empfiehlt die Azure SQL-Datenbank seine Löschung. Das Löschen eines Indexes wird in zwei Fällen empfohlen:
+Zusätzlich zum Erkennen fehlender Indizes analysiert Azure SQL-Datenbank kontinuierlich die Leistung der vorhandenen Indizes. Wenn der Index nicht verwendet wird, empfiehlt die Azure SQL-Datenbank seine Löschung. Das Löschen eines Indexes wird in zwei Fällen empfohlen:
 
 - Der Index ist ein Duplikat eines anderes Indexes (gleiche indizierte und enthaltene Spalte, gleiches Partitionsschema und gleiche Filter).
 - Der Index wurde für einen längeren Zeitraum (93 Tage) nicht verwendet.
@@ -96,7 +96,7 @@ Nachdem Sie diese Empfehlung angewendet haben, wird innerhalb von Minuten erzwun
 > [!IMPORTANT]
 > Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. Wir empfehlen die Verwendung von [Intelligent Insights](sql-database-intelligent-insights.md) zum Überwachen Ihrer Datenbankleistungsprobleme, einschließlich der Schemaprobleme, die zuvor durch die Empfehlungen zum Beheben von Schemaproblemen abgedeckt wurden.
 
-Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
+Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der Azure SQL-Datenbank-Dienst eine Anomalie in Bezug auf die Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
 
 „Schemaprobleme“ sind eine Klasse von Syntaxfehlern in SQL Server. Sie treten auf, wenn die Definition der SQL-Abfrage und die Definition des Datenbankschemas nicht übereinstimmen. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt.
 

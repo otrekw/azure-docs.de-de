@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b7bd85508851df7c7a664862b02141bf4d3bea1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427022"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81616480"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Sicherheitsempfehlungen für Azure Key Vault
 
@@ -30,7 +30,7 @@ Einige der in diesem Artikel enthaltenen Empfehlungen können automatisch durch 
 
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|
-|Aktivieren von „Vorläufiges Löschen“ | Durch das [vorläufige Löschen](overview-soft-delete.md) haben Sie die Möglichkeit, gelöschte Tresore und Tresorobjekte wiederherzustellen. |  - |
+|Vorläufiges Löschen aktivieren | [Vorläufiges Löschen](overview-soft-delete.md) bietet die Möglichkeit, gelöschte Tresore und Tresorobjekte wiederherzustellen. |  - |
 | Beschränken des Zugriffs auf Tresordaten  | Befolgen Sie das Prinzip der geringsten Rechte und schränken Sie ein, welche Mitglieder Ihrer Organisation Zugriff auf Tresordaten haben. |  - |
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung

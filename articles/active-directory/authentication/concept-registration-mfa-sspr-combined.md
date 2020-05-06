@@ -1,26 +1,31 @@
 ---
 title: 'Azure Active Directory: Kombinierte Registrierung für SSPR und MFA'
-description: Registrierung für Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung (Vorschauversion)
+description: Registrierung für Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309915"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143916"
 ---
-# <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
+# <a name="combined-security-information-registration-overview"></a>Kombinierte Registrierung von Sicherheitsinformationen – Übersicht
 
 Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen.
+
+In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicherheitsinformationen ist. Erste Informationen zur kombinierten Registrierung von Sicherheitsinformationen finden Sie im folgenden Artikel:
+
+> [!div class="nextstepaction"]
+> [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined.md)
 
 ![Eigenes Profil zeigt registrierte Sicherheitsinformationen für einen Benutzer an](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gericht
 
 Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure US Government, Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar.
 
-|     |
-| --- |
-| Die kombinierte Registrierung von Sicherheitsinformationen für die mehrstufige Authentifizierung und die Azure AD-Self-Service-Kennwortzurücksetzung (Azure Active Directory) ist eine Funktion der öffentlichen Vorschau von Azure AD. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
 > [!IMPORTANT]
 > Wenn Benutzer für die ursprüngliche Vorschauversion und für die erweiterte kombinierte Registrierung aktiviert sind, können sie das neue Verhalten sehen. Benutzer, die für beide Funktionen aktiviert sind, sehen nur die neue Oberfläche „Mein Profil“. Die neue Oberfläche „Mein Profil“ hat das Erscheinungsbild der kombinierten Registrierung und bietet Benutzern eine einheitliche Oberfläche. Benutzer können „Mein Profil“ anzeigen, indem sie zu [https://myprofile.microsoft.com](https://myprofile.microsoft.com) navigieren.
-
-> [!NOTE] 
-> Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, auf die Option „Sicherheitsinformation“ zuzugreifen. Beispielsweise „Anmeldung nicht möglich“. Vergewissern Sie sich in diesem Fall, dass Cookies von Drittanbietern im Webbrowser nicht durch eine Konfiguration oder ein Gruppenrichtlinienobjekt blockiert werden. 
+>
+> Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, auf die Option „Sicherheitsinformation“ zuzugreifen. Beispielsweise „Anmeldung nicht möglich“. Vergewissern Sie sich in diesem Fall, dass Cookies von Drittanbietern im Webbrowser nicht durch eine Konfiguration oder ein Gruppenrichtlinienobjekt blockiert werden.
 
 Die Seiten von „Mein Profil“ sind entsprechend den aktuellen Spracheinstellungen auf dem Computer lokalisiert, über den auf die Seite zugegriffen wird. Microsoft speichert die aktuell verwendete Sprache im Browsercache, sodass nachfolgende Zugriffsversuche auf die Seiten weiterhin in der zuletzt verwendeten Sprache angezeigt werden. Wenn Sie den Cache löschen, werden die Seiten neu gerendert. Wenn Sie eine bestimmte Sprache erzwingen möchten, können Sie am Ende der URL `?lng=<language>` hinzufügen. Dabei ist `<language>` der Code der Sprache, in der Sie rendern möchten.
 
@@ -47,17 +46,17 @@ Die Seiten von „Mein Profil“ sind entsprechend den aktuellen Spracheinstellu
 
 Bei der kombinierten Registrierung werden die folgenden Authentifizierungsmethoden und -aktionen unterstützt:
 
-|   | Register | Change | Löschen |
+|   | Register  | Change | Löschen |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ja (maximal 5) | Nein | Ja |
-| Andere Authenticator-App | Ja (maximal 5) | Nein | Ja |
-| Hardwaretoken | Nein | Nein | Ja |
+| Microsoft Authenticator | Ja (maximal 5) | Nein  | Ja |
+| Andere Authenticator-App | Ja (maximal 5) | Nein  | Ja |
+| Hardwaretoken | Nein  | Nein  | Ja |
 | Phone | Ja | Ja | Ja |
 | Alternatives Telefon | Ja | Ja | Ja |
-| Bürotelefon | Nein | Nein | Nein |
+| Bürotelefon | Nein  | Nein  | Nein  |
 | Email | Ja | Ja | Ja |
-| Sicherheitsfragen | Ja | Nein | Ja |
-| App-Kennwörter | Ja | Nein | Ja |
+| Sicherheitsfragen | Ja | Nein  | Ja |
+| App-Kennwörter | Ja | Nein  | Ja |
 | FIDO2-Sicherheitsschlüssel<br />*Verwalteter Modus nur auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info)“*| Ja | Ja | Ja |
 
 > [!NOTE]
@@ -77,10 +76,9 @@ Da wir weiterhin weitere Authentifizierungsmethoden hinzufügen, z. B. Azure A
 Zwei Modi der kombinierten Registrierung sind verfügbar: Interruptmodus und Verwaltungsmodus.
 
 - Beim **Interruptmodus** handelt es sich um eine assistentenähnliche Oberfläche, die für Benutzer angezeigt wird, wenn sie ihre Sicherheitsinformationen bei der Anmeldung registrieren oder aktualisieren.
-
 - Der **Verwaltungsmodus** ist Teil des Benutzerprofils und ermöglicht Benutzern die Verwaltung ihrer Sicherheitsinformationen.
 
-In beiden Modi müssen Benutzer, die bereits eine Methode registriert haben, die für die mehrstufige Authentifizierung verwendet werden kann, eine mehrstufige Authentifizierung ausführen, bevor sie auf ihre Sicherheitsinformationen zugreifen können.
+In beiden Modi müssen Benutzer, die bereits eine Methode registriert haben, die für die mehrstufige Authentifizierung verwendet werden kann, eine mehrstufige Authentifizierung ausführen, bevor sie auf ihre Sicherheitsinformationen zugreifen können. Benutzer müssen ihre Informationen bestätigen, bevor sie ihre zuvor registrierten Methoden weiterhin verwenden können. 
 
 ### <a name="interrupt-mode"></a>Interruptmodus
 
@@ -139,14 +137,8 @@ Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erzwingen der erneuten Registrierung von Authentifizierungsmethoden durch Benutzer](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+Erste Informationen finden Sie unter [Aktivieren der Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Aktivieren der Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
-[Aktivieren der kombinierten Registrierung in Ihrem Mandanten](howto-registration-mfa-sspr-combined.md)
+Erfahren Sie, wie Sie die [kombinierte Registrierung in Ihrem Mandanten aktivieren](howto-registration-mfa-sspr-combined.md) oder [die erneute Registrierung von Authentifizierungsmethoden durch Benutzer erzwingen](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-[Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
-
-[Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md)
-
-[Konfigurieren der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-
-[Konfigurieren von Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+Sie können auch den Artikel [Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md) lesen.

@@ -3,12 +3,12 @@ title: Sichern von Azure Files mit PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell sichern.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233950"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101177"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Sichern von Azure Files mit PowerShell
 
@@ -26,7 +26,6 @@ In diesem Artikel wird Folgendes erläutert:
 ## <a name="before-you-start"></a>Vorbereitung
 
 * [Lesen Sie weitere Informationen](backup-azure-recovery-services-vault-overview.md) zu Recovery Services-Tresoren.
-* Informieren Sie sich über die Previewfeatures zum [Sichern von Azure-Dateifreigaben](backup-afs.md).
 * Sehen Sie sich die PowerShell-Objekthierarchie für Recovery Services an.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services-Objekthierarchie
@@ -35,7 +34,7 @@ Die Objekthierarchie ist im folgenden Diagramm zusammengefasst.
 
 ![Recovery Services-Objekthierarchie](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-**Sehen Sie sich die** Cmdlet-Referenz zu [Az.RecoveryServices](/powershell/module/az.recoveryservices) in der Azure-Bibliothek an.
+[Sehen Sie sich die ](/powershell/module/az.recoveryservices)Cmdlet-Referenz zu **Az.RecoveryServices** in der Azure-Bibliothek an.
 
 ## <a name="set-up-and-install"></a>Einrichten und Installieren
 
@@ -45,12 +44,12 @@ Richten Sie PowerShell wie folgt ein:
 
 1. [Laden Sie die neueste Version von Azure PowerShell](/powershell/azure/install-az-ps) herunter. Version 1.0.0 ist die erforderliche Mindestversion.
 
-> [!WARNING]
-> Die für die Vorschau erforderliche Mindestversion von PowerShell war Az 1.0.0. Aufgrund bevorstehender Änderungen für die allgemeine Verfügbarkeit ist die erforderliche PowerShell-Mindestversion nun Az.RecoveryServices 2.6.0. Alle vorhandenen PowerShell-Versionen müssen unbedingt auf diese Version aktualisiert werden. Andernfalls treten bei den vorhandenen Skripts nach der allgemeinen Verfügbarkeit Fehler auf. Installieren Sie die Mindestversion mit den folgenden PowerShell-Befehlen.
+    > [!WARNING]
+    > Die erforderliche PS-Mindestversion für die Azure-Dateifreigabesicherung ist **Az.RecoveryServices 2.6.0**. Führen Sie ein Upgrade Ihrer Version durch, um Probleme mit den vorhandenen Skripts zu vermeiden. Installieren Sie die Mindestversion mit den folgenden PowerShell-Befehlen:
 
-```powershell
-Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
-```
+    ```powershell
+    Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+    ```
 
 2. Ermitteln Sie die PowerShell-Cmdlets für Azure Backup mit dem folgenden Befehl:
 
@@ -287,14 +286,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 Momentaufnahmen von Azure-Dateifreigaben werden beim Erstellen von Sicherungen verwendet. Daher ist der Auftrag in der Regel abgeschlossen, bis der Befehl diese Ausgabe zurückgibt.
 
-### <a name="using-on-demand-backups-to-extend-retention"></a>Verwenden von bedarfsgesteuerten Sicherungen zum Verlängern der Aufbewahrung
+### <a name="using-a-runbook-to-schedule-backups"></a>Verwenden eines Runbooks zum Planen von Sicherungen
 
-Durch Verwendung von bedarfsgesteuerten Sicherungen können Ihre Momentaufnahmen 10 Jahre lang aufbewahrt werden. Sie können Scheduler verwenden, um bedarfsgesteuerte PowerShell-Skripts mit ausgewählter Aufbewahrung auszuführen und so Momentaufnahmen in regelmäßigen Abständen (wöchentlich, monatlich oder jährlich) zu erstellen. Informationen zum Erstellen regelmäßiger Momentaufnahmen unter Verwendung von Azure Backup finden Sie unter den [Einschränkungen von bedarfsgesteuerten Sicherungen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share).
+Wenn Sie nach Beispielskripts suchen, können Sie mit einem Azure Automation-Runbook auf das [Beispielskript auf GitHub](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) verweisen.
 
-Ein Beispielskript finden Sie auf GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>). Mit diesem Skript können Sie unter Verwendung eines Azure Automation-Runbooks Sicherungen regelmäßig planen und sogar bis zu 10 Jahre aufbewahren.
-
-> [!WARNING]
-> Stellen Sie sicher, dass die PS-Version in den Automatisierungs-Runbooks auf die Mindestversion für Az.RecoveryServices 2.6.0 für AFS-Sicherungen aktualisiert wird. Sie müssen das alte Modul „AzureRM“ durch das Modul „Az“ ersetzen. Mit dieser Version ist der Filter „friendlyName“ für den Befehl ```Get-AzRecoveryServicesBackupItem``` verfügbar. Übergeben Sie den Namen der Azure-Dateifreigabe an den Parameter „friendlyName“. Wenn Sie den Namen der Azure-Dateifreigabe an den Parameter „Name“ übergeben, löst diese Version eine Warnung aus, dass dieser Anzeigename an den Parameter „friendlyName“ übergeben werden muss.
+>[!NOTE]
+> Die Azure-Sicherungsrichtlinie für Dateifreigaben unterstützt jetzt die Sicherung mit täglicher/wöchentlicher/monatlicher oder jährlicher Aufbewahrung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

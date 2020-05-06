@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678948"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617882"
 ---
 # <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -27,6 +27,9 @@ Die genauen Netzwerkanforderungen variieren je nach Anwendungsfall und sind z. 
 * **Vermeiden Sie konkurrierenden Datenverkehr mit hoher Bandbreite** im selben Netzwerk, der z. B. durch das Streaming von Videos oder Computerspielen entsteht.
 * Ein gutes **WLAN-Signal** ist essenziell. Wenn möglich, sollten Sie sich in der Nähe Ihres WLAN-Zugangspunkts befinden und Hindernisse zwischen Ihrem Clientgerät und den Zugangspunkten vermeiden.
 * Stellen Sie sicher, dass Sie immer eine Verbindung mit dem **nächstgelegenen Azure-Rechenzentrum** für Ihre [Region](regions.md) herstellen. Je näher das Rechenzentrum gelegen ist, desto geringer ist die Netzwerklatenz, die eine enorme Auswirkung auf die Hologrammstabilität hat.
+
+> [!NOTE]
+> Die Downstreambandbreite wird zum größten Teil durch den Videostream beansprucht, der wiederum in Farb- und Tiefeninformationen (beide 60 Hz, Stereo) aufgeteilt ist.
 
 ## <a name="network-performance-tests"></a>Netzwerkleistungstests
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969320"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641711"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -79,7 +79,7 @@ Verschiedene DNS-Cachingpakete, z.B. dnsmasq, stehen zur Verfügung. Es folgen d
 5. Starten Sie den Netzwerkdienst neu („service network restart“), um den Cache als lokale DNS-Auflösung festzulegen.
 
 > [!NOTE]
-> Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
+> decodiert werden: Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
 >
 >
 
@@ -97,7 +97,7 @@ Wechseln Sie zum Überprüfen der aktuellen Einstellungen auf einem virtuellen L
 Die Datei „resolv.conf“ wird automatisch generiert und darf nicht bearbeitet werden. Die entsprechenden Schritte zum Hinzufügen der Zeile „options“ variieren je nach Distribution:
 
 **Ubuntu** (verwendet resolvconf)
-1. Fügen Sie in „/etc/resolveconf/resolv.conf.d/head“ die Zeile „options“ hinzu.
+1. Fügen Sie die Zeile „options“ in „/etc/resolvconf/resolv.conf.d/head“ ein.
 2. Führen Sie „resolvconf -u“ zum Aktualisieren aus.
 
 **SUSE** (verwendet netconf)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136158"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141667"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Definieren Sie Ihre Anwendungs- und Dienstarchitektur, inventarisieren Sie die a
 | Erstellen eines Migrationsplans |Durch die Vorausplanung kann die Migration reibungsloser verlaufen. Weitere Informationen zur [Benutzermigration](user-migration.md).|
 | Nutzbarkeit und Sicherheit | Ihre Lösung muss das richtige Gleichgewicht zwischen der Verwendbarkeit der Anwendung und einer akzeptablen Risikostufe für Ihre Organisation finden. |
 | Verschieben lokaler Abhängigkeiten in die Cloud | Um eine robuste Lösung zu gewährleisten, sollten Sie vorhandene Anwendungsabhängigkeiten in die Cloud verschieben. |
-| Migrieren vorhandener Apps zu b2clogin.com | Die Außerbetriebnahme von login.microsoftonline.com trat für alle Azure AD B2C-Mandanten am 04. Dezember 2020 in Kraft. [Weitere Informationen](b2clogin.md) |
+| Migrieren vorhandener Apps zu b2clogin.com | Die Außerbetriebnahme von login.microsoftonline.com erfolgt für alle Azure AD B2C-Mandanten am 4. Dezember 2020. [Weitere Informationen](b2clogin.md) |
 
 ## <a name="implementation"></a>Implementierung
 

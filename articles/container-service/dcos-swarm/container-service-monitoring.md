@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcb005e39f89298b35bf0f3a0ad1e19601ae4d13
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275251"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166143"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(VERALTET) Überwachen eines Azure Container Service-DC/OS-Clusters mit Datadog
 
@@ -31,7 +31,7 @@ Datadog ist ein Überwachungsdienst, der Überwachungsdaten von den Containern i
 ## <a name="configure-a-datadog-deployment-with-marathon"></a>Konfigurieren einer Datadog-Bereitstellung mit Marathon
 Diese Schritte verdeutlichen, wie Sie Datadog-Anwendungen für Ihren Cluster mit Marathon konfigurieren und bereitstellen. 
 
-Greifen Sie über [http://localhost:80/](http://localhost:80/) auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie in der DC/OS-Benutzeroberfläche zur Option „Universe“ unten links. Suchen Sie darin nach „Datadog“, und klicken Sie auf „Install“ (Installieren).
+Greifen Sie über `http://localhost:80/` auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie in der DC/OS-Benutzeroberfläche zur Option „Universe“ unten links. Suchen Sie darin nach „Datadog“, und klicken Sie auf „Install“ (Installieren).
 
 ![Datadog-Paket innerhalb von DC/OS Universe](./media/container-service-monitoring/datadog1.png)
 

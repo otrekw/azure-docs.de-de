@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250233"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133274"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Fehler beim Bilden eines Quorums durch den Apache ZooKeeper-Server in Azure HDInsight
 
@@ -40,13 +40,13 @@ Wenn das Volume mit den Momentaufnahmedateien groß oder beschädigt ist, kann d
 
 ## <a name="resolution"></a>Lösung
 
-Überprüfen Sie das ZooKeeper `/hadoop/zookeeper/version-2`-Datenverzeichnis `/hadoop/hdinsight-zookeeper/version-2`, und stellen Sie fest, ob die Momentaufnahmendatei groß ist. Wenn große Momentaufnahmen vorhanden sind, führen Sie folgende Schritte aus:
+Überprüfen Sie das ZooKeeper `/hadoop/hdinsight-zookeeper/version-2`-Datenverzeichnis `/hadoop/zookeeper/version-2`, und stellen Sie fest, ob die Momentaufnahmendatei groß ist. Wenn große Momentaufnahmen vorhanden sind, führen Sie folgende Schritte aus:
 
-1. Sichern Sie Momentaufnahmen in `/hadoop/zookeeper/version-2` und `/hadoop/hdinsight-zookeeper/version-2`.
+1. Überprüfen Sie den Status anderer ZooKeeper-Server im selben Quorum, um sicherzustellen, dass sie mit dem Befehl „`echo stat | nc {zk_host_ip} 2181 (or 2182)`“ einwandfrei funktionieren.  
 
-1. Bereinigen Sie Momentaufnahmen in `/hadoop/zookeeper/version-2` und `/hadoop/hdinsight-zookeeper/version-2`.
+1. Melden Sie sich bei dem problematischen ZooKeeper-Host an, sichern Sie Momentaufnahmen und Transaktionsprotokolle in `/hadoop/zookeeper/version-2` und `/hadoop/hdinsight-zookeeper/version-2`, und bereinigen Sie dann diese Dateien in den beiden Verzeichnissen. 
 
-1. Starten Sie alle ZooKeeper-Server über die Apache Ambari-Benutzeroberfläche.
+1. Starten Sie den problematischen ZooKeeper-Server in Ambari oder den ZooKeeper-Host neu. Starten Sie dann den Dienst neu, bei dem Probleme auftreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

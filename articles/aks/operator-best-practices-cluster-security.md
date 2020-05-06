@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668324"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208090"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -195,7 +195,7 @@ Weitere Informationen zu Upgrades in AKS finden Sie unter [Unterstützte Kuberne
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Verarbeiten von Updates und Neustarts von Linux-Knoten mithilfe von kured
 
-**Best Practice-Anleitung:** AKS lädt automatisch Behebungen von Sicherheitsproblemen für jeden einzelnen Linux-Knoten herunter und installiert diese. Allerdings werden notwendige Neustarts nicht automatisch durchgeführt. Verwenden Sie `kured`, um auf ausstehende Neustarts zu achten, und sperren Sie den Knoten dann sicher ab, und gleichen Sie ihn aus, um dem Knoten einen Neustart zu ermöglichen. Wenden Sie anschließend die Updates an, und gehen Sie so umsichtig wie möglich mit Ihrem Betriebssystem um. Führen Sie für Windows Server-Knoten (derzeit in der Vorschau in AKS) regelmäßig ein AKS-Upgrade durch, um die Pods sicher abzusperren und zu leeren und aktualisierte Knoten bereitzustellen.
+**Best Practice-Anleitung:** AKS lädt automatisch Behebungen von Sicherheitsproblemen für jeden einzelnen Linux-Knoten herunter und installiert diese. Allerdings werden notwendige Neustarts nicht automatisch durchgeführt. Verwenden Sie `kured`, um auf ausstehende Neustarts zu achten, und sperren Sie den Knoten dann sicher ab, und gleichen Sie ihn aus, um dem Knoten einen Neustart zu ermöglichen. Wenden Sie anschließend die Updates an, und gehen Sie so umsichtig wie möglich mit Ihrem Betriebssystem um. Führen Sie für Windows Server-Knoten regelmäßig ein AKS-Upgrade durch, um die Pods sicher abzusperren und zu leeren und aktualisierte Knoten bereitzustellen.
 
 Jeden Abend werden über die Updateverteilungskanäle Sicherheitspatches für Linux-Knoten in AKS zur Verfügung gestellt. Dieses Verhalten ist im Rahmen der Bereitstellung von Knoten in einem AKS-Cluster automatisch konfiguriert. Neustarts werden für Knoten nicht automatisch ausgeführt, wenn ein Sicherheitspatch oder Kernelupdate es erfordern würde, um Störungen und eventuelle negative Einflüsse auf ausgeführte Workloads zu minimieren.
 

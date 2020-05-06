@@ -1,18 +1,18 @@
 ---
-title: Markteinführungsdienste – Wie Sie sich im Marketplace präsentieren können | Azure
+title: 'Go-To-Market-Dienste: So können Sie sich im Marketplace präsentieren | Azure Marketplace'
 description: Markteinführungsdienste – In diesem Abschnitt wird beschrieben, wie Sie eine Listung im Azure Marketplace erhalten.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286284"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684605"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Marketplace
 
@@ -38,7 +38,7 @@ Sie können die folgenden Maßnahmen ergreifen, um Ihre Punktzahl zu verbessern:
 Die „Ausgewählte Apps“-Höherstufungen erfolgen unabhängig vom Suchalgorithmus.
 
 >[!Note]
->Wenn Ihre Lösung in den Suchergebnissen nicht richtig angezeigt wird, reichen Sie über das Hilfemenü im [Cloud-Partnerportal](https://cloudpartner.azure.com/) ein Supportticket ein.
+>Wenn Ihre Lösung in den Suchergebnissen nicht richtig angezeigt wird, reichen Sie über das Hilfemenü in [Partner Center](https://partner.microsoft.com/) ein Supportticket ein.
 
 Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibliothek mit Vorlagen zur Selbsthilfe, Webinhalten, Trainings und Tools, die Ihnen helfen, Ihre Listungen und Ihr Unternehmen besser zu bewerben.
 
@@ -46,6 +46,6 @@ Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibl
 
 Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 
 ---

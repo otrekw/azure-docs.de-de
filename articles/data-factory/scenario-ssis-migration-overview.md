@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b23ffec76de3fa644abe3b65876a60c65c05eb8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929790"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686004"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrieren von lokalen SSIS-Workloads zu SSIS in ADF
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -63,7 +65,7 @@ In Abhängigkeit von den [Speichertypen](#four-storage-types-for-ssis-packages) 
 | **Paketspeichertyp** |Batchmigration von SSIS-Paketen|Batchmigration von SSIS-Aufträgen|
 |-|-|-|
 |SSISDB|[Migrieren von **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[Migrieren von SSIS-Aufträgen zu einem Agent einer verwalteten Azure SQL-Datenbank-Instanz](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
-|Dateisystem|Stellen Sie sie in Dateifreigaben/Azure Files über „dtinstall/dtutil/manual copy“ erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Dateisystem|Stellen Sie sie in Dateifreigaben/Azure Files über „dtinstall/dtutil/manual copy“ erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrieren mit dem [SSIS-Auftragsmigrations-Assistenten in SSMS](how-to-migrate-ssis-job-ssms.md) <li>Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportieren Sie sie über SSMS/dtutil in Dateisysteme/Dateifreigaben/Azure Files. Weitere Informationen finden Sie unter [Exportieren von SSIS-Paketen](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paketspeicher|Exportieren Sie sie über SSMS/dtutil in Dateisystme/Dateifreigaben/Azure Files, oder stellen Sie sie in Dateifreigaben/Azure Files über dtinstall/dtutil/manuelle Kopie erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter „dtutil-Hilfsprogramm“. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
@@ -72,7 +74,7 @@ In Abhängigkeit von den [Speichertypen](#four-storage-types-for-ssis-packages) 
 | **Paketspeichertyp** |Batchmigration von SSIS-Paketen|Batchmigration von Aufträgen|
 |-|-|-|
 |SSISDB|Stellen Sie sie über SSDT/SSMS erneut in Azure-SSISDB bereit. Weitere Informationen finden Sie unter [Bereitstellen von SSIS-Paketen in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
-|Dateisystem|Stellen Sie sie in Dateifreigaben/Azure Files über „dtinstall/dtutil/manual copy“ erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Dateisystem|Stellen Sie sie in Dateifreigaben/Azure Files über „dtinstall/dtutil/manual copy“ erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrieren mit dem [SSIS-Auftragsmigrations-Assistenten in SSMS](how-to-migrate-ssis-job-ssms.md) <li> Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportieren Sie sie über SSMS/dtutil in Dateisysteme/Dateifreigaben/Azure Files. Weitere Informationen finden Sie unter [Exportieren von SSIS-Paketen](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paketspeicher|Exportieren Sie sie über SSMS/dtutil in Dateisystme/Dateifreigaben/Azure Files, oder stellen Sie sie in Dateifreigaben/Azure Files über dtinstall/dtutil/manuelle Kopie erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter „dtutil-Hilfsprogramm“. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 

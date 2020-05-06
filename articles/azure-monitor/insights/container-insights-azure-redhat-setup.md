@@ -1,18 +1,18 @@
 ---
-title: Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
+title: Konfigurieren von Azure Red Hat OpenShift, Version 3.x mit Azure Monitor für Container | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift, Version 3 und höher gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234558"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204133"
 ---
-# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Azure Monitor für Container
 
-Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azure Kubernetes Service- (AKS) und AKS-Engine-Cluster. In diesem Artikel wird beschrieben, wie Sie die Überwachung von auf [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) gehosteten Kubernetes-Clustern aktivieren, um eine ähnliche Überwachung zu erreichen.
+Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azure Kubernetes Service- (AKS) und AKS-Engine-Cluster. In diesem Artikel wird beschrieben, wie Sie die Überwachung von auf [Azure Red Hat OpenShift,](../../openshift/intro-openshift.md) Version 3 und der aktuell unterstützten Unterversion gehosteten Kubernetes-Clustern aktivieren, um eine ähnliche Überwachung zu erreichen.
 
 >[!NOTE]
 >Die Unterstützung für Azure Red Hat OpenShift ist zurzeit als Feature in der öffentlichen Vorschauversion verfügbar.
@@ -38,7 +38,7 @@ Azure Monitor für Container unterstützt wie im Artikel [Übersicht](container-
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Aktivieren eines neuen Clusters mithilfe einer Azure Resource Manager-Vorlage
 
-Führen Sie die folgenden Schritte aus, um einen Azure Red Hat OpenShift-Cluster mit aktivierter Überwachung bereitzustellen. Lesen Sie sich vor den nächsten Schritten das Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](../../openshift/tutorial-create-cluster.md#prerequisites) durch, um mehr über die Abhängigkeiten zu erfahren, die Sie konfigurieren müssen, damit Ihre Umgebung ordnungsgemäß eingerichtet ist.
+Führen Sie die folgenden Schritte aus, um einen Azure Red Hat OpenShift-Cluster mit aktivierter Überwachung bereitzustellen. Lesen Sie sich vor den nächsten Schritten das Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](../../openshift/tutorial-create-cluster.md) durch, um mehr über die Abhängigkeiten zu erfahren, die Sie konfigurieren müssen, damit Ihre Umgebung ordnungsgemäß eingerichtet ist.
 
 Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zum Bereitstellen des Clusters mit aktivierter Überwachung an, während die andere Vorlage die zu konfigurierenden Parameterwerte enthält, mit denen Folgendes festgelegt wird:
 
@@ -204,5 +204,9 @@ Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachun
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die [Verwendung von Azure Monitor für Container](container-insights-analyze.md), um bei aktivierter Überwachung die Integrität und Ressourcennutzung Ihres RedHat OpenShift-Clusters und der darauf ausgeführten Workloads zu erfassen.
+
+- Standardmäßig sammelt der Container-Agent die Containerprotokolle stdout und stderr aller Container, die in allen Namespaces mit Ausnahme von kube-system ausgeführt werden. Wenn Sie die Containerprotokollsammlung bestimmter Namespaces konfigurieren möchten, finden Sie weitere Informationen unter [Agent-Konfiguration für Container Insights](container-insights-agent-config.md). In diesem Artikel wird beschrieben, wie Sie die gewünschten Einstellungen für die Datensammlung für Ihre ConfigMap-Konfigurationsdatei konfigurieren.
+
+- Weitere Informationen zum Auslesen und Analysieren von Prometheus-Metriken aus Ihrem Cluster finden Sie unter [Konfigurieren des Abrufs von Prometheus-Metriken](container-insights-prometheus-integration.md).
 
 - Informationen zum Beenden der Überwachung Ihres Clusters mit Azure Monitor für Container finden Sie unter [Beenden der Überwachung von Azure Red Hat OpenShift-Clustern](container-insights-optout-openshift.md).

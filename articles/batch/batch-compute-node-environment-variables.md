@@ -1,22 +1,15 @@
 ---
-title: Umgebungsvariablen für Aufgabenlaufzeit – Azure Batch | Microsoft-Dokumentation
+title: Umgebungsvariablen der Aufgabenlaufzeit
 description: Anleitung und Referenz zu Umgebungsvariablen für Aufgabenlaufzeit für Azure Batch-Analysen.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
 ms.date: 09/12/2019
 ms.author: labrenne
-ms.openlocfilehash: ebaa06acf309a0f941b8b4efd76fa4e9e7460810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053945"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117334"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 

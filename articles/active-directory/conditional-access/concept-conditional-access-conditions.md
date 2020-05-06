@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14369275a111476867f2263766e1bb87b7c87d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295335"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160714"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -43,6 +43,9 @@ Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstü
 - Windows Phone
 - Windows
 - macOS
+
+> [!WARNING]
+> Microsoft ist ein Problem im Zusammenhang mit Richtlinien für bedingten Zugriff und Geräten auf Basis von macOS 10.15.4 bekannt. Weitere Informationen finden Sie im Blogbeitrag [Bekanntes Problem: Bedingter Zugriff blockiert unerwartet native Mail-Clients/andere Apps unter macOS 10.15.4](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch die Geräteplattform als Bedingung festlegen.
 

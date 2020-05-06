@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414629"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188394"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -78,7 +78,7 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorg
 Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen werden nur für Vorgänge im Arbeitsbereich und Machine Learning Compute unterstützt. Benutzerdefinierte Rollen können Lese-, Schreib- oder Löschberechtigungen für den Arbeitsbereich und die Computeressource in diesem Arbeitsbereich haben. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 > [!WARNING]
-> Azure Machine Learning wird derzeit nicht mit B2B Collaboration von Azure Active Directory unterstützt.
+> Azure Machine Learning wird mit der Azure Active Directory-Business-to-Business-Zusammenarbeit unterstützt, jedoch derzeit noch nicht mit der Azure Active Directory-Business-to-Consumer-Zusammenarbeit.
 
 ### <a name="securing-compute-targets-and-data"></a>Sichern von Computezielen und Daten
 
@@ -183,7 +183,7 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
         > [!NOTE]
         > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Diese Cosmos DB-Instanz wird in einer von Microsoft verwalteten Ressourcengruppe in Ihrem Abonnement erstellt. 
+Diese Cosmos DB-Instanz wird in einer von Microsoft verwalteten Ressourcengruppe in Ihrem Abonnement erstellt. Die verwaltete Ressourcengruppe wird im Format `<AML Workspace Resource Group Name><GUID>` benannt.
 
 > [!IMPORTANT]
 > * Wenn Sie diese Cosmos DB-Instanz löschen müssen, müssen Sie den Azure Machine Learning-Arbeitsbereich löschen, der diese verwendet. 
@@ -385,10 +385,7 @@ Es folgen die Details:
 
 * [Sichere Azure Machine Learning-Webdienste mit TLS](how-to-secure-web-service.md)
 * [Nutzen eines als Webdienst bereitgestellten Machine Learning-Modells](how-to-consume-web-service.md)
-* [How to run batch predictions (Ausführen von Batchvorhersagen)](how-to-use-parallel-run-step.md)
-* [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
-* [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Verwenden von Azure Machine Learning hinter Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Verwenden von Azure Machine Learning mit einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md)
 * [Bewährte Methoden für das Erstellen von Empfehlungssystemen](https://github.com/Microsoft/Recommenders)
 * [Erstellen einer Echtzeitempfehlungs-API in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

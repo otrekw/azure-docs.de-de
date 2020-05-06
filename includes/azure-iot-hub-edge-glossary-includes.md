@@ -4,15 +4,15 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178210"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131815"
 ---
 ## <a name="automatic-device-management"></a>Automatische Geräteverwaltung
-Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.  Umfasst [automatische Gerätekonfigurationen](../articles/iot-hub/iot-hub-auto-device-config.md) und [automatische IoT Edge-Bereitstellungen](../articles/iot-edge/how-to-deploy-monitor.md).
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.  Umfasst [automatische Gerätekonfigurationen](../articles/iot-hub/iot-hub-auto-device-config.md) und [automatische IoT Edge-Bereitstellungen](../articles/iot-edge/how-to-deploy-at-scale.md).
 
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten und lösungsspezifischem Code auf lokalen Geräten. IoT Edge-Geräte können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor die Daten an die Cloud gesendet werden. Weitere Informationen finden Sie unter [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/).
@@ -60,4 +60,4 @@ Die IoT Edge-Laufzeit enthält alles, was Microsoft für die Installation auf ei
 Ein Vorgang, der den Inhalt eines IoT Edge-Manifests auf dem Gerätezwilling eines einzelnen Geräts kopiert. Die zugrunde liegende API ist ein generischer Vorgang vom Typ „Konfiguration anwenden“, der einfach ein IoT Edge-Manifest als Eingabe akzeptiert.
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge-Zielbedingung
-In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Auswahl der Zielgeräte für die Bereitstellung, beispielsweise **tag.environment = prod**. Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen erhalten Sie unter[Zielbedingung](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition).
+In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Auswahl der Zielgeräte für die Bereitstellung, z. B. **tag.environment = prod**. Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen erhalten Sie unter[Zielbedingung](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition).

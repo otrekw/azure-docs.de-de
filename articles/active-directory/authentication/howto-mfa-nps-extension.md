@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393052"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617663"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -143,6 +143,14 @@ Führen Sie die folgende Schritte aus, um ein Testkonto einzurichten:
 2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
 3. [Erstellen Sie eine Richtlinie für bedingten Zugriff](howto-mfa-getstarted.md#create-conditional-access-policy), um für das Testkonto eine mehrstufige Authentifizierung zu erzwingen.
 
+> [!IMPORTANT]
+>
+> Vergewissern Sie sich, dass Benutzer sich erfolgreich für Azure Multi-Factor Authentication registriert haben. Wenn sich Benutzer zuvor nur für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) registriert haben, wird für ihr Konto *StrongAuthenticationMethods* aktiviert. Azure Multi-Factor Authentication wird erzwungen, wenn *StrongAuthenticationMethods* konfiguriert ist, auch wenn sich der Benutzer nur für SSPR registriert hat.
+>
+> Es kann eine kombinierte Sicherheitsregistrierung aktiviert werden, die SSPR und Azure Multi-Factor Authentication gleichzeitig konfiguriert. Weitere Informationen finden Sie unter [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen in Azure Active Directory](howto-registration-mfa-sspr-combined.md).
+>
+> Sie können auch [Benutzer zur erneuten Registrierung von Authentifizierungsmethoden](howto-mfa-userdevicesettings.md#manage-user-authentication-options) zwingen, wenn sie zuvor nur SSPR aktiviert hatten.
+
 ## <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
 > [!IMPORTANT]
@@ -243,7 +251,7 @@ Wenn es Benutzer gibt, die nicht für MFA registriert sind, können Sie bestimme
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Nicht festgelegt (gleichwertig mit TRUE) |
 
-Diese Einstellung dient zum Bestimmen, was zu tun, wenn ein Benutzer nicht für MFA registriert ist. Wenn der Schlüssel nicht vorhanden, nicht festgelegt oder auf TRUE festgelegt ist und der Benutzer nicht registriert ist, erfüllt die Erweiterung die MFA-Abfrage nicht. Wenn der Schlüssel auf FALSE festgelegt und der Benutzer nicht registriert ist, wird die Authentifizierung ohne MFA fortgesetzt. Wenn ein Benutzer für MFA registriert ist, muss er sich mit MFA authentifizieren, auch wenn REQUIRE_USER_MATCH auf FALSE festgelegt ist.
+Der Zweck dieser Einstellung besteht darin, die Vorgehensweise für den Fall festzulegen, dass ein Benutzer nicht für die MFA registriert ist. Wenn der Schlüssel nicht vorhanden, nicht festgelegt oder auf TRUE festgelegt ist und der Benutzer nicht registriert ist, erfüllt die Erweiterung die MFA-Abfrage nicht. Wenn der Schlüssel auf FALSE festgelegt und der Benutzer nicht registriert ist, wird die Authentifizierung ohne MFA fortgesetzt. Wenn ein Benutzer für MFA registriert ist, muss er sich mit MFA authentifizieren, auch wenn REQUIRE_USER_MATCH auf FALSE festgelegt ist.
 
 Sie können diesen Schlüssel erstellen und auf FALSE festlegen, während Ihre Benutzer eingebunden werden und möglicherweise noch nicht alle für Azure MFA registriert sind. Da das Festlegen des Schlüssels Benutzern, die nicht für MFA registriert sind, die Anmeldung erlaubt, müssen Sie diesen Schlüssel vor dem Wechsel in die Produktionsumgebung entfernen.
 

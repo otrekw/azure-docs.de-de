@@ -1,45 +1,46 @@
 ---
-title: HTTPS-Endpunkt | Azure Marketplace
-description: Konfigurieren Sie die Leadverwaltung für einen HTTPS-Endpunkt.
+title: Konfigurieren der Leadverwaltung mithilfe eines HTTPS-Endpunkts | Azure Marketplace
+description: Hier erfahren Sie, wie Sie einen HTTP-Endpunkt zur Handhabung von Microsoft AppSource- und Azure Marketplace-Leads verwenden.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288596"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81770200"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
 
-Sie können einen HTTPS-Endpunkt für die Verarbeitung von Azure Marketplace- und AppSource-Leads verwenden. Diese Leads können in ein CRM-System (Customer Relationship Management) geschrieben oder als E-Mail-Benachrichtigung gesendet werden. In diesem Artikel erfahren Sie, wie Sie die Leadverwaltung mithilfe des Automatisierungsdiensts [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) konfigurieren.
+Sie können einen HTTPS-Endpunkt zur Handhabung von Microsoft AppSource- und Azure Marketplace-Leads verwenden. Diese Leads können in ein CRM-System (Customer Relationship Management) geschrieben oder als E-Mail-Benachrichtigung gesendet werden. In diesem Artikel erfahren Sie, wie Sie den Automatisierungsdienst [Microsoft Power Automate](https://powerapps.microsoft.com/automate-processes/) zum Konfigurieren der Leadverwaltung verwenden.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Erstellen eines Flows mit Microsoft Flow
+## <a name="create-a-flow-using-microsoft-power-automate"></a>Erstellen eines Flows mit Microsoft Power Automate
 
-1. Öffnen Sie die [Flow](https://flow.microsoft.com/)-Webseite. Wählen Sie **Anmelden** aus, oder wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Flow-Konto zu erstellen.
+1. Rufen Sie die [Power Automate](https://flow.microsoft.com/)-Webseite auf. Wählen Sie **Anmelden** aus, oder wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Flow-Konto zu erstellen.
 
-2. Melden Sie sich an, und wählen Sie **Meine Flows** in der Menüleiste aus.
+1. Melden Sie sich an, und wählen Sie **Meine Flows** in der Menüleiste aus.
+    > [!div class="mx-imgBorder"]
+    > ![Meine Flows](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![Meine Workflows](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. Wählen Sie unter **+ Neu** die Option **+ Sofort – ohne Vorlage** aus.
+    > [!div class="mx-imgBorder"]
+    > ![Ohne Vorlage erstellen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. Wählen Sie **+ Ohne Vorlage erstellen** aus.
+1. Geben Sie dem Flow einen Namen, und wählen Sie dann unter **Auslöser für diesen Flow auswählen** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-    ![Ohne Vorlage erstellen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen des Auslösers „Beim Empfang einer HTTP-Anforderung“](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. Wählen Sie **Ohne Vorlage erstellen** aus.
+1. Klicken Sie auf den Flowschritt, um ihn zu erweitern.
 
-    ![Ohne Vorlage erstellen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![Erweitern des Flowschritts](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. Geben Sie im Feld **Connectors und Trigger durchsuchen** den Suchbegriff „Anforderung“ ein, um den Anforderungsconnector zu finden.
-6. Wählen Sie unter **Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus. 
-
-    ![Auswählen des Triggers „Beim Empfang einer HTTP-Anforderung“](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. Führen Sie einen der folgenden Schritte aus, um das **JSON-Schema für Anforderungstext** zu konfigurieren:
+1. Verwenden Sie eine der folgenden Methoden, um das **JSON-Schema für Anforderungstext** zu konfigurieren:
 
    - Kopieren Sie das [JSON-Schema](#json-schema) am Ende dieses Artikels in das Textfeld **JSON-Schema für Anforderungstext**.
    - Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus. Fügen Sie im Textfeld **Geben oder fügen Sie eine JSON-Beispielnutzlast ein.** das [JSON-Beispiel](#json-example) ein. Wählen Sie **Fertig** aus, um das Schema zu erstellen.
@@ -90,6 +91,7 @@ Sie können einen HTTPS-Endpunkt für die Verarbeitung von Azure Marketplace- un
    ![Hinzufügen einer E-Mail-Aktion](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. Wählen Sie **Speichern** aus, um den Flow fertigzustellen.
+
 6. In der Anforderung wird eine HTTP-POST-URL erstellt. Kopieren Sie diese URL, und verwenden Sie sie als HTTPS-Endpunkt.
 
     ![HTTP-POST-URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
@@ -100,7 +102,7 @@ Wenn Sie die Informationen zur Leadverwaltung für Ihr Angebot konfigurieren, w�
 
 ![Dynamischen Inhalt hinzufügen](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Generierte Leads werden von Microsoft an den Flow gesendet und anschließend an das konfigurierte CRM-System oder an die konfigurierte E-Mail-Adresse weitergeleitet.
+Generierte Leads werden von Microsoft an Ihren Power Automate-Flow gesendet und anschließend an das konfigurierte CRM-System oder an die konfigurierte E-Mail-Adresse weitergeleitet.
 
 ## <a name="json-schema-and-example"></a>JSON-Schema und Beispiel
 
@@ -124,6 +126,10 @@ Das JSON-Testbeispiel verwendet folgendes Schema:
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ Das JSON-Testbeispiel verwendet folgendes Schema:
 }
 ```
 
-Sie können das folgende JSON-Beispiel kopieren und bearbeiten, um es als Test in Ihrem MS-Flow zu verwenden.
+Sie können das folgende JSON-Beispiel kopieren und bearbeiten, um es als Test in Ihrem Flow zu verwenden.
 
 ### <a name="json-example"></a>JSON-Beispiel
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 
