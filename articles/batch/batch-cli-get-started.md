@@ -1,25 +1,15 @@
 ---
-title: Erste Schritte mit der Azure CLI für Batch | Microsoft-Dokumentation
+title: Erste Schritte mit der Azure CLI für Batch
 description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der Azure-Befehlszeilenschnittstelle zum Verwalten von Ressourcen des Azure Batch-Diensts.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020181"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117368"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -167,7 +157,7 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 * Verwenden Sie `-h` , um **Hilfetext** für Befehle der Befehlszeilenschnittstelle anzuzeigen.
 * Verwenden Sie `-v` und `-vv`, um eine **ausführliche** Befehlsausgabe anzuzeigen. Wenn das `-vv`-Flag enthalten ist, zeigt die Azure CLI die tatsächlichen REST-Anforderungen und -Antworten. Mit diesen praktischen Switches können Sie die vollständige Fehlerausgabe anzeigen.
-* Mit der Option **können Sie die**Befehlsausgabe als JSON`--json` anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter „JSON-Dateien“).
+* Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter „JSON-Dateien“).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>Nächste Schritte

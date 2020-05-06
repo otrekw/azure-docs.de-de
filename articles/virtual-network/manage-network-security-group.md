@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 9ed4ce6befda76069e965501a320dc110129a024
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 62972be5b363c0a22a24a9056b6f3f8b11829566
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521029"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182904"
 ---
-# <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
+# <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
 
 Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md). Absolvieren Sie als Nächstes das Tutorial [Filtern von Netzwerkdatenverkehr](tutorial-filter-network-traffic.md), um sich mit Netzwerksicherheitsgruppen vertraut zu machen.
 
@@ -67,7 +67,7 @@ Die Anzahl der Netzwerksicherheitsgruppen, die Sie pro Azure-Standort und -Abonn
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
+| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
 
 ### <a name="view-all-network-security-groups"></a>Anzeigen aller Netzwerksicherheitsgruppen
@@ -78,7 +78,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Netzwerksiche
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list) |
+| Azure CLI | [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="view-details-of-a-network-security-group"></a>Anzeigen von Details einer Netzwerksicherheitsgruppe
@@ -103,7 +103,7 @@ Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Si
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) |
+| Azure CLI | [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="change-a-network-security-group"></a>Ändern einer Netzwerksicherheitsgruppe
@@ -118,7 +118,7 @@ Die gängigsten Änderungen sind das [Hinzufügen einer Sicherheitsregel](#creat
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update) |
+| Azure CLI | [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einer Netzwerkschnittstelle oder einem Subnetz bzw. deren Trennung davon
@@ -139,7 +139,7 @@ Wenn eine Netzwerksicherheitsgruppe Subnetzen bzw. Netzwerkschnittstellen zugeor
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete) |
+| Azure CLI | [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete) |
 | PowerShell | [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
 
 ## <a name="work-with-security-rules"></a>Arbeiten mit Sicherheitsregeln
@@ -182,7 +182,7 @@ Die Anzahl der Regeln pro Netzwerksicherheitsgruppe, die Sie für Azure-Standort
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
+| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
 ### <a name="view-all-security-rules"></a>Anzeigen aller Sicherheitsregeln
@@ -201,7 +201,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
+| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
@@ -221,7 +221,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
+| Azure CLI | [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="change-a-security-rule"></a>Ändern einer Sicherheitsregel
@@ -237,7 +237,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
+| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
 
 ### <a name="delete-a-security-rule"></a>Löschen einer Sicherheitsregel
@@ -253,7 +253,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
+| Azure CLI | [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
 | PowerShell | [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>Arbeiten mit Anwendungssicherheitsgruppen
@@ -285,7 +285,7 @@ Eine Anwendungssicherheitsgruppe muss keine Netzwerkschnittstellen enthalten, ka
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network asg create](/cli/azure/network/asg#az-network-asg-create) |
+| Azure CLI | [az network asg create](/cli/azure/network/asg#az-network-asg-create) |
 | PowerShell | [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
 
 ### <a name="view-all-application-security-groups"></a>Anzeigen aller Anwendungssicherheitsgruppen
@@ -296,7 +296,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network asg list](/cli/azure/network/asg#az-network-asg-list) |
+| Azure CLI | [az network asg list](/cli/azure/network/asg#az-network-asg-list) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>Anzeigen von Details einer bestimmten Anwendungssicherheitsgruppe
@@ -309,7 +309,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network asg show](/cli/azure/network/asg#az-network-asg-show) |
+| Azure CLI | [az network asg show](/cli/azure/network/asg#az-network-asg-show) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="change-an-application-security-group"></a>Ändern einer Anwendungssicherheitsgruppe
@@ -329,7 +329,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network asg update](/cli/azure/network/asg#az-network-asg-update) |
+| Azure CLI | [az network asg update](/cli/azure/network/asg#az-network-asg-update) |
 | PowerShell | Kein PowerShell-Cmdlet |
 
 ### <a name="delete-an-application-security-group"></a>Löschen einer Anwendungssicherheitsgruppe
@@ -346,7 +346,7 @@ Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn sie Netzwerksc
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network asg delete](/cli/azure/network/asg#az-network-asg-delete) |
+| Azure CLI | [az network asg delete](/cli/azure/network/asg#az-network-asg-delete) |
 | PowerShell | [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
 
 ## <a name="permissions"></a>Berechtigungen
@@ -358,7 +358,7 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 | Aktion                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Netzwerksicherheitsgruppe abrufen                                          |
-| Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                             |
+| Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                              |
 | Microsoft.Network/networkSecurityGroups/delete                |   Netzwerksicherheitsgruppe löschen                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   Netzwerksicherheitsgruppe einem Subnetz oder einer Netzwerkschnittstelle zuordnen 
 
@@ -383,4 +383,4 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erstellen einer Netzwerk- oder Anwendungssicherheitsgruppe mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder Azure [Resource Manager-Vorlagen](template-samples.md)
-- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke
+- Erstellen und Zuweisen von [Azure Policy-Definitionen](policy-samples.md) für virtuelle Netzwerke

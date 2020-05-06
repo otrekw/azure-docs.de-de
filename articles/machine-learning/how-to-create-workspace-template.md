@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 9403cc05ed5b31f3b76c16c4232506e2ddc5da2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402917"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81682761"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ Die folgende Beispielvorlage zeigt, wie Sie einen Arbeitsbereich mit drei Einste
 
 * Aktivierung einer hohen Vertraulichkeit für den Arbeitsbereich
 * Aktivierung der Verschlüsselung für den Arbeitsbereich
-* Verwendung eines vorhandenen Azure-Schlüsseltresors
+* Verwendung einer vorhandenen Azure Key Vault-Instanz zum Abrufen von kundenseitig verwalteten Schlüsseln
+
+Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
 
 ```json
 {
@@ -121,7 +123,7 @@ Die folgende Beispielvorlage zeigt, wie Sie einen Arbeitsbereich mit drei Einste
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ Die folgende Beispielvorlage zeigt, wie Sie einen Arbeitsbereich mit drei Einste
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbi_workspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-Sie können die ID des Schlüsseltresors und den Schlüssel-URI, die bzw. der von dieser Vorlage benötigt wird, über die Azure-Befehlszeilenschnittstelle abrufen. Der folgende Befehl ist ein Beispiel für die Verwendung der Azure-Befehlszeilenschnittstelle, um die Key Vault-Ressourcen-ID und den URI abzurufen:
+Sie können die ID des Schlüsseltresors und den Schlüssel-URI, die bzw. der von dieser Vorlage benötigt wird, über die Azure-Befehlszeilenschnittstelle abrufen. Der folgende Befehl ruft die Key Vault-ID ab:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Dieser Befehl gibt einen Wert zurück, der in etwa wie folgt aussieht. Der erste Wert ist die ID, der zweite Wert ist der URI:
+Der Befehl gibt einen Wert zurück, der `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"` ähnelt.
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+Um den URI für den kundenseitig verwalteten Schlüssel abzurufen, verwenden Sie folgenden Befehl:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+Der Befehl gibt einen Wert zurück, der `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"` ähnelt.
+
+> [!IMPORTANT]
+> Nachdem ein Arbeitsbereich erstellt wurde, können Sie die Einstellungen für vertrauliche Daten, Verschlüsselung, Key Vault-ID oder Schlüsselbezeichner nicht mehr ändern. Um diese Werte zu ändern, müssen Sie einen neuen Arbeitsbereich erstellen und dabei neue Werte verwenden.
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 

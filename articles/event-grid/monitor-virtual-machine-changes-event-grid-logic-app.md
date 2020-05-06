@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982566"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144093"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
 
@@ -48,6 +48,9 @@ In diesem Tutorial lernen Sie Folgendes:
 * Ein E-Mail-Konto bei einem von Logic Apps unterstützten E-Mail-Anbieter wie Office 365 Outlook, Outlook.com oder Gmail zum Senden von Benachrichtigungen. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/).
 
   Dieses Tutorial verwendet ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
+
+  > [!IMPORTANT]
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Ein [virtueller Computer](https://azure.microsoft.com/services/virtual-machines), der als einziger Computer in einer eigenen Azure-Ressourcengruppe enthalten ist. Erstellen Sie eine VM mithilfe des [Tutorials zum Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md), wenn Sie dies nicht bereits getan haben. Zur Veröffentlichung von Ereignissen auf dem virtuellen Computer [müssen Sie keine weiteren Aktionen durchführen](../event-grid/overview.md).
 
@@ -103,8 +106,8 @@ Fügen Sie nun den Event Grid-Trigger hinzu, den Sie zum Überwachen der Ressour
    | **Abonnement** | Ja | <*event-publisher-Azure-subscription-name*> | Wählen Sie den Namen für das Azure-Abonnement aus, das dem *Ereignisherausgeber* zugeordnet ist. Wählen Sie für dieses Tutorial den Namen des Azure-Abonnements für Ihren virtuellen Computer aus. |
    | **Ressourcentyp** | Ja | <*event-publisher-Azure-resource-type*> | Wählen Sie den Azure-Ressourcentyp für den Ereignisherausgeber aus. Weitere Informationen zu Azure-Ressourcentypen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md). Wählen Sie für dieses Tutorial den Wert `Microsoft.Resources.ResourceGroups` aus, um Azure-Ressourcengruppen zu überwachen. |
    | **Ressourcenname** |  Ja | <*event-publisher-Azure-resource-name*> | Wählen Sie den Azure-Ressourcennamen für den Ereignisherausgeber aus. Diese Liste variiert, basierend auf dem von Ihnen ausgewählten Ressourcentyp. Wählen Sie für dieses Tutorial den Namen der Azure-Ressourcengruppe aus, die Ihren virtuellen Computer enthält. |
-   | **Ereignistypelement** |  Nein | <*event-types*> | Wählen Sie mindestens einen spezifischen Ereignistyp aus, um zu filtern und an Ihr Event Grid zu senden. Beispielsweise können Sie optional diese Ereignistypen hinzufügen, um zu erkennen, wenn Ressourcen geändert oder gelöscht werden: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Azure Event Grid-Ereignisschema für Ressourcengruppen](../event-grid/event-schema-resource-groups.md) <br>- [Grundlegendes zur Ereignisfilterung](../event-grid/event-filtering.md) <br>- [Filtern von Ereignissen für das Event Grid](../event-grid/how-to-filter-events.md) |
-   | Wählen Sie zum Hinzufügen von optionalen Eigenschaften die Option **Neuen Parameter hinzufügen** und dann die gewünschten Eigenschaften aus. | Nein | {siehe Beschreibungen} | * **Präfixfilter:** Lassen Sie diese Eigenschaft für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Allerdings können Sie als Filter eine Präfixzeichenfolge wie einen Pfad und einen Parameter für eine bestimmte Ressource angeben. <p>* **Suffixfilter:** Lassen Sie diese Eigenschaft für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Wenn nur bestimmte Dateitypen angezeigt werden sollen, können Sie als Filter jedoch eine Suffixzeichenfolge wie eine Dateinamenerweiterung angeben. <p>* **Abonnementname:** In diesem Tutorial können Sie einen eindeutigen Namen für Ihr Ereignisabonnement angeben. |
+   | **Ereignistypelement** |  Nein  | <*event-types*> | Wählen Sie mindestens einen spezifischen Ereignistyp aus, um zu filtern und an Ihr Event Grid zu senden. Beispielsweise können Sie optional diese Ereignistypen hinzufügen, um zu erkennen, wenn Ressourcen geändert oder gelöscht werden: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Azure Event Grid-Ereignisschema für Ressourcengruppen](../event-grid/event-schema-resource-groups.md) <br>- [Grundlegendes zur Ereignisfilterung](../event-grid/event-filtering.md) <br>- [Filtern von Ereignissen für das Event Grid](../event-grid/how-to-filter-events.md) |
+   | Wählen Sie zum Hinzufügen von optionalen Eigenschaften die Option **Neuen Parameter hinzufügen** und dann die gewünschten Eigenschaften aus. | Nein  | {siehe Beschreibungen} | * **Präfixfilter:** Lassen Sie diese Eigenschaft für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Allerdings können Sie als Filter eine Präfixzeichenfolge wie einen Pfad und einen Parameter für eine bestimmte Ressource angeben. <p>* **Suffixfilter:** Lassen Sie diese Eigenschaft für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Wenn nur bestimmte Dateitypen angezeigt werden sollen, können Sie als Filter jedoch eine Suffixzeichenfolge wie eine Dateinamenerweiterung angeben. <p>* **Abonnementname:** In diesem Tutorial können Sie einen eindeutigen Namen für Ihr Ereignisabonnement angeben. |
    |||
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus. Um die Details einer Aktion in Ihrer Logik-App zu reduzieren und auszublenden, wählen Sie die Titelleiste der Aktion aus.

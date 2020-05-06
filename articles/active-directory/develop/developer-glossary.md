@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2019
+ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230722"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161723"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -26,6 +26,8 @@ Dieser Artikel enthält Definitionen für einige der zentralen Entwicklerkonzept
 ## <a name="access-token"></a>Zugriffstoken
 
 Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für den Zugriff auf einen [geschützten Ressourcenserver](#resource-server) verwendet. Das Token liegt in der Regel in Form eines [JSON Web Token (JWT)][JWT] vor und stellt die Autorisierung dar, die dem Client durch den [Ressourcenbesitzer](#resource-owner) für eine angeforderte Zugriffsstufe gewährt wurde. Das Token enthält alle geltenden [Ansprüche](#claim) für den Antragsteller und kann von der Clientanwendung beim Zugriff auf eine bestimmte Ressource als eine Art von Anmeldeinformationen verwendet werden. Der Ressourcenbesitzer muss somit gegenüber dem Client keine Anmeldeinformationen angeben.
+
+Zugriffstoken sind nur für kurze Zeit gültig und können nicht widerrufen werden. Ein Autorisierungsserver kann auch ein [Aktualisierungstoken](#refresh-token) ausgeben, wenn das Zugriffstoken ausgestellt wird. Aktualisierungstoken werden in der Regel nur für vertrauliche Clientanwendungen bereitgestellt.
 
 Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegentlich auch als „Benutzer- und App-Token“ oder als „ App-exklusives Token“ bezeichnet. Beispielverwendungsszenarien für die Clientanwendung:
 
@@ -138,6 +140,12 @@ Darüber hinaus werden sie im Rahmen des [Zustimmungsprozesses](#consent) verwen
 
 Berechtigungsanforderungen für eine Anwendung werden im [Azure-Portal][AZURE-portal] auf der Seite **API-Berechtigungen** konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) die Anmeldeinformationen nicht sicher verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][Graph-App-Resource].
 
+## <a name="refresh-token"></a>Aktualisierungstoken
+
+Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für die Anforderung eines neuen [Zugriffstokens](#access-token) verwendet, ehe das aktuelle Zugriffstoken abläuft. In der Regel in Form eines [JSON-Webtokens (JWT)][JWT].
+
+Im Gegensatz zu Zugriffstoken können Aktualisierungstoken widerrufen werden. Wenn eine Clientanwendung versucht, mithilfe eines widerrufenen Aktualisierungstokens ein neues Zugriffstoken anzufordern, lehnt der Autorisierungsserver die Anforderung ab, und die Clientanwendung hat keine Berechtigung mehr, im Auftrag des [Ressourcenbesitzer](#resource-owner) auf den [Ressourcenserver](#resource-server) zuzugreifen.
+
 ## <a name="resource-owner"></a>Ressourcenbesitzers
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Entität, die Zugriff auf eine geschützte Ressource gewähren kann. Handelt es sich bei dem Ressourcenbesitzer um eine Person, wird er als Endbenutzer bezeichnet. Wenn also beispielsweise eine [Clientanwendung](#client-application) über die [Microsoft Graph-API][Microsoft-Graph] auf das Postfach eines Benutzers zugreifen möchte, benötigt sie die Berechtigung des Ressourcenbesitzers für das Postfach.
@@ -146,7 +154,7 @@ Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine E
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] ein Server, der geschützte Ressourcen hostet und von [Clientanwendungen](#client-application), die ein [Zugriffstoken](#access-token) vorlegen, Anforderungen für geschützte Ressourcen akzeptieren und darauf reagieren kann. Wird auch als geschützter Ressourcenserver oder als Ressourcenanwendung bezeichnet.
 
-Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die [Microsoft Graph-API][Microsoft-Graph] (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente). 
+Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die [Microsoft Graph-API][Microsoft-Graph] (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente).
 
 Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer Ressourcenanwendung mittels [Registrierung](#application-registration) bei einem Azure AD-Mandanten eingerichtet und sowohl ein Anwendungs- als auch ein Dienstprinzipalobjekt bereitgestellt. Einige von Microsoft bereitgestellte APIs (etwa die Microsoft Graph-API) verfügen über vorab registrierte Dienstprinzipale, die bei der Bereitstellung in allen Mandanten verfügbar gemacht wurden.
 
@@ -168,7 +176,7 @@ Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung
 
 ## <a name="security-token"></a>Sicherheitstoken
 
-Ein signiertes Dokument mit Ansprüchen (etwa ein OAuth2-Token oder eine SAML 2.0-Assertion). Im Falle einer OAuth2-[Autorisierungsgewährung](#authorization-grant) handelt es sich bei einem [Zugriffstoken](#access-token) (OAuth2) und einem [ID-Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) um Arten von Sicherheitstoken, und beide werden jeweils als [JSON Web Token (JWT)][JWT] implementiert.
+Ein signiertes Dokument mit Ansprüchen (etwa ein OAuth2-Token oder eine SAML 2.0-Assertion). Bei einer OAuth2-[Autorisierungsgewährung](#authorization-grant) zählen [Zugriffstoken](#access-token) (OAuth2), [Aktualisierungstoken](#refresh-token) und [ID-Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) zu den Sicherheitstoken, die alle als [JSON Web Token (JWT)][JWT] implementiert werden.
 
 ## <a name="service-principal-object"></a>Dienstprinzipalobjekt
 

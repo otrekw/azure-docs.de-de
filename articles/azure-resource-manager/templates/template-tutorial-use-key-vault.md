@@ -2,20 +2,20 @@
 title: Verwenden von Azure Key Vault in Vorlagen
 description: Hier erfahren Sie, wie Sie bei der Resource Manager-Vorlagenbereitstellung sichere Parameterwerte mithilfe von Azure Key Vault übergeben.
 author: mumian
-ms.date: 05/23/2019
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260699"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185012"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
-Es wird beschrieben, wie Sie bei der Bereitstellung einer ARM-Vorlage (Azure Resource Manager) Geheimnisse aus einer Azure Key Vault-Instanz abrufen und als Parameter übergeben. Der Parameterwert wird nie verfügbar gemacht, da lediglich die Key Vault-ID als Verweis verwendet wird. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
+Es wird beschrieben, wie Sie bei der Bereitstellung einer ARM-Vorlage (Azure Resource Manager) Geheimnisse aus einer Azure Key Vault-Instanz abrufen und als Parameter übergeben. Der Parameterwert wird nie verfügbar gemacht, da lediglich die Key Vault-ID als Verweis verwendet wird. Sie können mithilfe einer statischen oder dynamischen ID auf das Schlüsseltresorgeheimnis verweisen. In diesem Tutorial wird eine statische ID verwendet. Bei der Herangehensweise mit statischer ID verweisen Sie auf den Schlüsseltresor in der Vorlagenparameterdatei, nicht in der Vorlagendatei. Weitere Informationen zu beiden Herangehensweisen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
 
 Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./template-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer (VM). Sie müssen den Administratorbenutzernamen und das Kennwort für den virtuellen Computer angeben. Anstatt das Kennwort einzugeben, können Sie es in Azure Key Vault vorab speichern und die Vorlage anschließend anpassen, um das Kennwort während der Bereitstellung aus dem Schlüsseltresor abzurufen.
 
@@ -33,8 +33,6 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
@@ -49,7 +47,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-key-vault"></a>Vorbereiten eines Schlüsseltresors
 
-In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Geheimnis hinzu, damit Sie dieses beim Bereitstellen der Vorlage abrufen können. Es gibt zahlreiche Möglichkeiten zum Erstellen eines Schlüsseltresors. In diesem Tutorial verwenden Sie Azure PowerShell, um eine [ARM-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json) bereitzustellen. Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
+In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Geheimnis hinzu, damit Sie dieses beim Bereitstellen der Vorlage abrufen können. Es gibt zahlreiche Möglichkeiten zum Erstellen eines Schlüsseltresors. In diesem Tutorial verwenden Sie Azure PowerShell, um eine [ARM-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json) bereitzustellen. Mit dieser Vorlage werden zwei Schritte ausgeführt:
 
 * Erstellen eines Schlüsseltresors mit aktivierter `enabledForTemplateDeployment`-Eigenschaft. Diese Eigenschaft muss auf *true* festgelegt sein, damit der Vorlagenbereitstellungsprozess auf die im Schlüsseltresor definierten Geheimnisse zugreifen kann.
 * Hinzufügen eines Geheimnisses zum Schlüsseltresor. Das Geheimnis enthält das Administratorkennwort für den virtuellen Computer.
@@ -72,14 +70,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * Der Ressourcengruppenname entspricht dem Projektnamen mit dem Zusatz **rg**. Um das [Bereinigen der in diesem Tutorial erstellten Ressourcen](#clean-up-resources) zu vereinfachen, verwenden Sie beim [Bereitstellen der nächsten Vorlage](#deploy-the-template) den gleichen Projekt- und Ressourcengruppennamen.
 > * Der Standardname für das Geheimnis lautet **vmAdminPassword**. Er ist in der Vorlage hartcodiert.
-> * Damit die Vorlage das Geheimnis abrufen kann, müssen Sie die Zugriffsrichtlinie „Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren“ für den Schlüsseltresor aktivieren. Diese Richtlinie ist in der Vorlage aktiviert. Weitere Informationen zu dieser Zugriffsrichtlinie finden Sie unter [Bereitstellen von Schlüsseltresoren und Geheimnissen](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
+> * Damit die Vorlage das Geheimnis abrufen kann, müssen Sie die Zugriffsrichtlinie **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** für den Schlüsseltresor aktivieren. Diese Richtlinie ist in der Vorlage aktiviert. Weitere Informationen zu dieser Zugriffsrichtlinie finden Sie unter [Bereitstellen von Schlüsseltresoren und Geheimnissen](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Die Vorlage enthält einen Ausgabewert mit dem Namen *keyVaultId*. Notieren Sie sich den ID-Wert zur späteren Verwendung, wenn Sie den virtuellen Computer bereitstellen. Die Ressourcen-ID hat das folgende Format:
+Die Vorlage enthält einen Ausgabewert mit dem Namen *keyVaultId*. Sie verwenden diese ID zusammen mit dem Geheimnisnamen, um den Geheimniswert später in diesem Tutorial abzurufen. Die Ressourcen-ID hat das folgende Format:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -108,13 +108,14 @@ Damit haben Sie einen Schlüsseltresor und ein Geheimnis vorbereitet. In den fol
     ```
 
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Das Szenario entspricht dem verwendeten Szenario unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md).
-   Die Vorlage definiert fünf Ressourcen:
+   Die Vorlage definiert sechs Ressourcen:
 
-   * `Microsoft.Storage/storageAccounts` Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 
@@ -128,7 +129,7 @@ Damit haben Sie einen Schlüsseltresor und ein Geheimnis vorbereitet. In den fol
 
 ## <a name="edit-the-parameters-file"></a>Bearbeiten der Parameterdatei
 
-Die Vorlagendatei muss nicht geändert werden.
+Bei der Methode mit statischer ID muss die Vorlagendatei nicht geändert werden. Der Geheimniswert wird durch Konfigurieren der Vorlagenparameterdatei abgerufen.
 
 1. Öffnen Sie *azuredeploy.parameters.json* in Visual Studio Code, falls die Datei noch nicht geöffnet ist.
 1. Ändern Sie den `adminPassword`-Parameter wie folgt:
@@ -145,7 +146,7 @@ Die Vorlagendatei muss nicht geändert werden.
     ```
 
     > [!IMPORTANT]
-    > Ersetzen Sie den Wert für **id** durch die Ressourcen-ID des zuvor erstellten Schlüsseltresors.
+    > Ersetzen Sie den Wert für **id** durch die Ressourcen-ID des zuvor erstellten Schlüsseltresors. „secretName“ wird als **vmAdminPassword** hartcodiert.  Informationen finden Sie unter [Vorbereiten eines Schlüsseltresors](#prepare-a-key-vault).
 
     ![Integrieren von Key Vault und Resource Manager-Vorlage: VM-Bereitstellung – Parameterdatei](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
@@ -160,22 +161,30 @@ Die Vorlagendatei muss nicht geändert werden.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Befolgen Sie die Anweisungen unter [Bereitstellen der Vorlage](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Laden Sie *azuredeploy.json* und *azuredeploy.parameters.json* in Cloud Shell hoch, und stellen Sie anschließend die Vorlage mithilfe des folgenden PowerShell-Skripts bereit:
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
-$location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile "$HOME/azuredeploy.json" `
-    -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-Write-Host "Press [ENTER] to continue ..."
-```
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Laden Sie *azuredeploy.json* und *azuredeploy.parameters.json* in Cloud Shell hoch. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
-Verwenden Sie beim Bereitstellen der Vorlage die gleiche Ressourcengruppe wie für den Schlüsseltresor. Auf diese Weise lassen sich die Ressourcen einfacher bereinigen, da Sie statt zwei nur eine Ressourcengruppe löschen müssen.
+1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
+    $location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroupDeployment `
+        -ResourceGroupName $resourceGroupName `
+        -TemplateFile "$HOME/azuredeploy.json" `
+        -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    Verwenden Sie beim Bereitstellen der Vorlage die gleiche Ressourcengruppe wie für den Schlüsseltresor. Auf diese Weise lassen sich die Ressourcen einfacher bereinigen, da Sie statt zwei nur eine Ressourcengruppe löschen müssen.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 

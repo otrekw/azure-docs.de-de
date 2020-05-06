@@ -5,15 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/30/2020
-ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/23/2020
+ms.openlocfilehash: 58dbb52cd906d91daec7e4b16625bc264135e90c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437542"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82114852"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
+
 Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
 
 > [!NOTE]
@@ -26,6 +27,7 @@ ms.locfileid: "80437542"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
+
 Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspace installierte Lösung eine Kachel angezeigt. 
 
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Überwachen**, und wählen Sie diese Option aus.
@@ -37,7 +39,8 @@ Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspa
 
 Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z.B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit [Protokollabfragen](../log-query/log-query-overview.md) eine Ad-hoc-Analyse durchführen.
 
-## <a name="list-installed-monitoring-solutions"></a>Auflisten installierter Überwachungslösungen 
+## <a name="list-installed-monitoring-solutions"></a>Auflisten installierter Überwachungslösungen
+
 Gehen Sie wie folgt vor, um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.
 
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Lösungen**, und wählen Sie diese Option aus.
@@ -51,9 +54,8 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 
 ![Lösungseigenschaften](media/solutions/solution-properties.png)
 
-
-
 ## <a name="install-a-monitoring-solution"></a>Installieren einer Überwachungslösung
+
 Überwachungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
 1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**.
@@ -65,6 +67,7 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 ![Installieren einer Lösung](media/solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>Installieren einer Lösung aus der Community
+
 Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvorlagen senden. Sie können diese Lösungen entweder direkt installieren oder Vorlagen für eine spätere Installation herunterladen.
 
 1. Führen Sie den unter [Log Analytics-Arbeitsbereich und Automation-Konto](#log-analytics-workspace-and-automation-account) beschriebenen Prozess aus, um einen Arbeitsbereich und ein Konto zu verknüpfen.
@@ -75,28 +78,29 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
 6. Sie werden aufgefordert, Informationen wie die Ressourcengruppe und den Standort sowie Werte für Parameter in der Lösung anzugeben.
 7. Klicken Sie auf **Kaufen**, um die Lösung zu installieren.
 
-
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-Arbeitsbereich und Automation-Konto
+
 Für alle Überwachungslösungen wird ein [Log Analytics-Arbeitsbereich](../platform/manage-access.md) zum Speichern der von der Lösung gesammelten Daten sowie zum Hosten der Protokollsuchvorgänge und Ansichten benötigt. Einige Lösungen erfordern auch ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen. Der Arbeitsbereich und das Konto müssen den folgenden Anforderungen entsprechen.
 
 * Eine Lösungsinstallation kann jeweils nur einen Log Analytics-Arbeitsbereich und ein einzelnes Automation-Konto verwenden. Sie können die Lösung separat in mehreren Arbeitsbereichen installieren.
 * Sollte eine Lösung ein Automation-Konto benötigen, müssen der Log Analytics-Arbeitsbereich und das Automation-Konto miteinander verknüpft werden. Ein Log Analytics-Arbeitsbereich kann nur mit einem Automation-Konto verknüpft werden, und ein Automation-Konto kann nur mit einem Log Analytics-Arbeitsbereich verknüpft werden.
-* Damit sie verknüpft werden können, müssen sich der Log Analytics-Arbeitsbereich und das Automation-Konto in der gleichen Ressourcengruppe und im gleichen Bereich befinden. (Ausnahme: Ein Arbeitsbereich befindet sich in der Region „USA, Osten“ und ein Automation-Konto in der Region „USA, Osten 2“.)
+* Für eine Verknüpfung müssen sich der Log Analytics-Arbeitsbereich und das Automation-Konto im selben Abonnement befinden, können sich aber in unterschiedlichen Ressourcengruppen befinden, die in derselben Region bereitgestellt sind. (Ausnahme: Ein Arbeitsbereich befindet sich in der Region „USA, Osten“ und ein Automation-Konto in der Region „USA, Osten 2“.)
 
 Wenn Sie die Lösung über den Azure Marketplace installieren, werden Sie zur Angabe eines Arbeitsbereichs und eines Automation-Kontos aufgefordert. Die Verknüpfung zwischen beiden wird für Sie erstellt, sofern sie noch nicht besteht.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Überprüfen der Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und einem Automation-Konto
+
 Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und einem Automation-Konto mithilfe des folgenden Verfahrens überprüfen.
 
 1. Wählen Sie im Azure-Portal das Automation-Konto aus.
-1. Scrollen Sie im Menü zum Abschnitt **Zugehörige Ressourcen**.
-1. Wenn die Einstellung **Arbeitsbereich** aktiviert ist, ist dieses Konto mit einem Log Analytics-Arbeitsbereich verknüpft. Wenn Sie die Details des Arbeitsbereichs anzeigen möchten, klicken Sie auf **Arbeitsbereich**.
+1. Scrollen Sie zum Abschnitt **Zugehörige Ressourcen** des Menüs, und wählen Sie **Verknüpfter Arbeitsbereich** aus.
+1. Wenn der **Arbeitsbereich** mit einem Automation-Konto verknüpft ist, wird auf dieser Seite der Arbeitsbereich aufgelistet, mit dem es verknüpft ist. Wenn Sie den Namen des aufgelisteten Arbeitsbereichs auswählen, werden Sie zur Übersichtsseite für diesen Arbeitsbereich weitergeleitet.
 
 ## <a name="remove-a-monitoring-solution"></a>Entfernen einer Überwachungslösung
+
 Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der [Liste mit den installierten Lösungen](#list-installed-monitoring-solutions). Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Rufen Sie eine [Liste mit Überwachungslösungen von Microsoft](solutions-inventory.md) ab.
 * Machen Sie sich mit dem [Erstellen von Abfragen](../log-query/log-query-overview.md) für die Analyse der von Überwachungslösungen gesammelten Daten vertraut.
-

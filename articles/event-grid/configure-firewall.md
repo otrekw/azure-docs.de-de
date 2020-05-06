@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300509"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100990"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen (Vorschau)
 Standardmäßig kann auf Themen und Domänen über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken. Herausgeber, die von einer anderen IP-Adresse stammen, werden abgelehnt und erhalten eine 403-Antwort (Verboten). Weitere Informationen zu Netzwerksicherheitsfunktionen, die von Event Grid unterstützt werden, finden Sie unter [Netzwerksicherheit für Event Grid](network-security.md).
@@ -39,55 +39,134 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eingehende IP-Fir
 In diesem Abschnitt wird gezeigt, wie Sie Azure CLI-Befehle verwenden, um Themen mit eingehenden IP-Regeln zu erstellen. Die in diesem Abschnitt beschriebenen Schritte beziehen sich auf Themen. Sie können ähnliche Schritte verwenden, um Regeln für eingehende IP-Adressen für **Domänen** zu erstellen. 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Aktivieren öffentlichen Netzwerkzugriffs für ein vorhandenes Thema
-Standardmäßig ist der öffentliche Netzwerkzugriff für Themen und Domänen aktiviert. Sie können den Datenverkehr einschränken, indem Sie eingehende IP-Firewallregeln konfigurieren. 
+### <a name="prerequisites"></a>Voraussetzungen
+Aktualisieren Sie die Azure Event Grid-Erweiterung für die CLI, indem Sie den folgenden Befehl ausführen: 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Deaktivieren öffentlichen Netzwerkzugriffs für ein vorhandenes Thema
-Wenn öffentlicher Netzwerkzugriff für ein Thema oder eine Domäne deaktiviert ist, ist Datenverkehr über das öffentliche Internet unzulässig. Nur private Endpunktverbindungen dürfen auf diese Ressourcen zugreifen. 
+Wenn die Erweiterung nicht installiert ist, führen Sie den folgenden Befehl aus, um sie zu installieren: 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
+az extension add -n eventgrid
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>Erstellen eines Themas mit eingehenden IP-Regeln
-Der folgende CLI-Beispielbefehl erstellt ein Event Grid-Thema mit eingehenden IP-Regeln in einem Schritt. 
+### <a name="enable-or-disable-public-network-access"></a>Aktivieren oder Deaktivieren des Zugriffs auf das öffentliche Netzwerk
+Standardmäßig ist der öffentliche Netzwerkzugriff für Themen und Domänen aktiviert. Sie können ihn auch explizit aktivieren oder deaktivieren. Sie können den Datenverkehr einschränken, indem Sie eingehende IP-Firewallregeln konfigurieren. 
+
+#### <a name="enable-public-network-access-while-creating-a-topic"></a>Aktivieren des öffentlichen Netzwerkzugriffs beim Erstellen eines Themas
 
 ```azurecli-interactive
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Erstellen des Themas und anschließendes Hinzufügen eingehender IP-Regeln
+
+#### <a name="disable-public-network-access-while-creating-a-topic"></a>Deaktivieren des öffentlichen Netzwerkzugriffs beim Erstellen eines Themas
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access disabled
+```
+
+> [!NOTE]
+> Wenn öffentlicher Netzwerkzugriff für ein Thema oder eine Domäne deaktiviert ist, ist Datenverkehr über das öffentliche Internet unzulässig. Nur private Endpunktverbindungen dürfen auf diese Ressourcen zugreifen. 
+
+
+#### <a name="enable-public-network-access-for-an-existing-topic"></a>Aktivieren öffentlichen Netzwerkzugriffs für ein vorhandenes Thema
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled 
+```
+
+#### <a name="disable-public-network-access-for-an-existing-topic"></a>Deaktivieren öffentlichen Netzwerkzugriffs für ein vorhandenes Thema 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
+```
+
+### <a name="create-a-topic-with-single-inbound-ip-rule"></a>Erstellen eines Themas mit einer einzelnen eingehenden IP-Regel
+Der folgende CLI-Beispielbefehl erstellt ein Event Grid-Thema mit eingehenden IP-Regeln. 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow 
+```
+
+### <a name="create-a-topic-with-multiple-inbound-ip-rules"></a>Erstellen eines Themas mit mehreren eingehenden IP-Regeln
+
+Der folgende CLI-Beispielbefehl erstellt ein Event Grid-Thema mit zwei eingehenden IP-Regeln in einem Schritt: 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="update-an-existing-topic-to-add-inbound-ip-rules"></a>Aktualisieren eines vorhandenen Themas zum Hinzufügen eingehender IP-Regeln
 In diesem Beispiel wird zunächst ein Event Grid-Thema erstellt, dann werden eingehende IP-Regeln für das Thema in einem separaten Befehl hinzugefügt. Außerdem werden die eingehenden IP-Regeln aktualisiert, die im zweiten Befehl festgelegt wurden. 
 
 ```azurecli-interactive
 
 # create the event grid topic first
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\""}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location
 
-# add inbound IP rules
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# add inbound IP rules to an existing topic
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow
 
-# later, update topic with additional ip rules or remove them. 
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""}, {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# later, update topic with additional ip rules
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="remove-an-inbound-ip-rule"></a>Entfernen eingehender IP-Regeln
+Der folgende Befehl entfernt die zweite Regel, die Sie im vorherigen Schritt erstellt haben, indem Sie beim Aktualisieren der Einstellung nur die erste Regel angeben. 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow
 ```
 
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 In diesem Abschnitt wird gezeigt, wie Sie Azure PowerShell-Befehle verwenden, um Azure Event Grid-Themen mit eingehenden IP-Firewallregeln zu erstellen. Die in diesem Abschnitt beschriebenen Schritte beziehen sich auf Themen. Sie können ähnliche Schritte verwenden, um Regeln für eingehende IP-Adressen für **Domänen** zu erstellen. 
 
-### <a name="prerequisite"></a>Voraussetzung
+### <a name="prerequisites"></a>Voraussetzungen
 Befolgen Sie die Anweisungen unter [Vorgehensweise: Verwenden des Portals zum Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals, der auf Ressourcen zugreifen kann](../active-directory/develop/howto-create-service-principal-portal.md), um eine Azure Active Directory-Anwendung zu erstellen, und notieren Sie sich die folgenden Werte:
 
 - Verzeichnis-ID (Mandant)
@@ -144,7 +223,7 @@ Invoke-RestMethod -Method 'Patch' `
 ```azurepowershell-interactive
 
 # prepare the body for the REST PUT method. Notice that inbound IP rules are included. 
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -180,7 +259,7 @@ Invoke-RestMethod -Method 'Get' `
     | ConvertTo-Json -Depth 5
 
 # prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"}, @{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `

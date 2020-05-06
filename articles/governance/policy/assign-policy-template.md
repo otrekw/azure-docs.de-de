@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie mit einer Resource Ma
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606605"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82187782"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer Resource Manager-Vorlage
 
@@ -51,7 +51,7 @@ In der Vorlage ist die folgende Ressource definiert:
    |------|-------|
    | Subscription | Wählen Sie Ihr Azure-Abonnement. |
    | Resource group | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. Im Screenshot lautet der Name der Ressourcengruppe _mypolicyquickstart\<Datum in MMTT\>rg_. |
-   | Position | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
+   | Standort | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
    | Name der Richtlinienzuweisung | Geben Sie einen Namen für die Richtlinienzuweisung an. Bei Bedarf können Sie die Anzeige für die Richtliniendefinitionen verwenden. Beispiel: **Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden**. |
    | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
    | Richtliniendefinitions-ID | Geben Sie **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** an. |
@@ -70,7 +70,7 @@ Einige zusätzliche Ressourcen:
 
 Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie dann die von Ihnen erstellte Richtlinienzuweisung **Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden**.
 
-![Übersichtsseite zur Richtlinienkonformität](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Übersichtsseite zur Richtlinienkonformität" border="false":::
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -84,7 +84,7 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung **Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden**, und wählen Sie **Zuweisung löschen**.
 
-   ![Löschen einer Zuweisung auf der Übersichtsseite zur Konformität](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Löschen einer Zuweisung auf der Übersichtsseite zur Konformität" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

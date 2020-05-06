@@ -1,22 +1,16 @@
 ---
-title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität – Azure Batch | Microsoft-Dokumentation
+title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität
 description: Erfahren Sie, wie Sie VMs mit niedriger Priorität bereitstellen, um die Kosten von Azure Batch-Workloads zu verringern.
-services: batch
 author: mscurrell
-manager: evansma
-ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
-ms.service: batch
 ms.topic: article
-ms.workload: na
 ms.date: 03/19/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053909"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116042"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 

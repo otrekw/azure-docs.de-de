@@ -2,27 +2,102 @@
 title: Vorlagenfunktionen – Vergleich
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Vergleichen von Werten verwendet werden können.
 ms.topic: conceptual
-ms.date: 09/05/2017
-ms.openlocfilehash: 42009e8543e307f2d3e4643ddaa79f492f9bdfee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156360"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203776"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Vergleichsfunktionen für ARM-Vorlagen
 
 Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Ihren Azure Resource Manager-Vorlagen (ARM) bereit.
 
+* [coalesce](#coalesce)
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [less](#less)
 * [lessOrEquals](#lessorequals)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+## <a name="coalesce"></a>coalesce
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+Gibt den ersten Wert aus den Parametern zurück, der nicht NULL ist. Leere Zeichenfolgen, leere Arrays und leere Objekte sind nicht NULL.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | type | BESCHREIBUNG |
+|:--- |:--- |:--- |:--- |
+| arg1 |Ja |int, string, array oder object |Der erste Wert, der auf NULL getestet werden soll. |
+| weitere arg-Parameter |Nein  |int, string, array oder object |Weitere Werte, die auf NULL getestet werden sollen. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Der Wert des ersten Parameters ungleich NULL, der Zeichenfolge, ganze Zahl, Array oder Objekt sein kann. NULL, wenn alle Parameter NULL sind.
+
+### <a name="example"></a>Beispiel
+
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) zeigt die Ausgabe bei unterschiedlichen Verwendungen von „coalesce“:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | type | Wert |
+| ---- | ---- | ----- |
+| stringOutput | String | default |
+| intOutput | Int | 1 |
+| objectOutput | Object | {"first": "default"} |
+| arrayOutput | Array | [1] |
+| emptyOutput | Bool | True |
 
 ## <a name="equals"></a>equals
+
 `equals(arg1, arg2)`
 
 Überprüft, ob zwei Werte einander entsprechen.
@@ -131,18 +206,6 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkArrays | Bool | True |
 | checkObjects | Bool | True |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wird [not](template-functions-logical.md#not) mit „**equals**“ verwendet.
 
 ```json
@@ -166,19 +229,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
 ## <a name="greater"></a>greater
+
 `greater(arg1, arg2)`
 
 Überprüft, ob der erste Wert größer als der zweite Wert ist.
@@ -242,19 +294,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
-
 ## <a name="greaterorequals"></a>greaterOrEquals
+
 `greaterOrEquals(arg1, arg2)`
 
 Überprüft, ob der erste Wert größer als oder gleich Wert 2 ist.
@@ -318,19 +359,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
-
 ## <a name="less"></a>less
+
 `less(arg1, arg2)`
 
 Überprüft, ob der erste Wert kleiner als der zweite Wert ist.
@@ -394,19 +424,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
-
 ## <a name="lessorequals"></a>lessOrEquals
+
 `lessOrEquals(arg1, arg2)`
 
 Überprüft, ob der erste Wert kleiner als oder gleich Wert 2 ist.
@@ -470,21 +489,6 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
-* Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
 
+* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

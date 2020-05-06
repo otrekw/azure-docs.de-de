@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: 35f6b74f3b6cce5a0af812d4613f9da2f9fbd552
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/27/2020
+ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606262"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204337"
 ---
 # <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory-Zuordnungsdatenfluss: Vereinigungstransformation
 
@@ -22,6 +22,10 @@ ms.locfileid: "81606262"
 Union kombiniert mehrere Datenströme zu einem einzigen, wobei die SQL Union dieser Datenströme die neue Ausgabe der Union-Transformation ist. Alle Schemas aus jedem Eingabestream werden innerhalb Ihres Datenflusses kombiniert, ohne dass Sie einen Joinschlüssel benötigen.
 
 Sie können die n-Anzahl von Streams in der Einstellungstabelle kombinieren, indem Sie neben jeder konfigurierten Zeile auf das Symbol „+“ klicken, einschließlich sowohl Quelldaten als auch Streams aus vorhandenen Transformationen in Ihrem Datenfluss.
+
+In diesem kurzen Video sehen Sie eine exemplarische Vorgehensweise für eine Vereinigungstransformation in einem Zuordnungsdatenfluss in ADF:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
 
 ![Vereinigungstransformation](media/data-flow/union.png "Union")
 

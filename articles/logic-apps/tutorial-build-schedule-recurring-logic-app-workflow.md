@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456627"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146525"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter, zeitplanbasierter periodischer Workflows mithilfe von Azure Logic Apps
 
@@ -37,6 +37,9 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 * Ein Azure-Abonnement. Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 * Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters (beispielsweise Office 365 Outlook, Outlook.com oder Gmail). Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Schnellstartanleitung wird ein Office 365 Outlook-Konto verwendet. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche unterscheidet sich aber ggf. etwas.
+
+  > [!IMPORTANT]
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Um die Reisezeit für eine Route zu ermitteln, benötigen Sie einen Zugriffsschlüssel für die Bing Maps-API. Führen Sie zum Abrufen dieses Schlüssels die Schritte zum [Abrufen eines Bing Maps-Schlüssels](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) aus.
 
@@ -162,9 +165,9 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
    |----------|----------|-------|-------------|
    | **Wegpunkt 1** | Ja | <*Start*> | Ausgangspunkt für die Route |
    | **Wegpunkt 2** | Ja | <*Ziel*> | Ziel der Route |
-   | **Optimieren** | Nein | timeWithTraffic | Ein Parameter zur Optimierung der Route, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. Wählen Sie den Parameter „timeWithTraffic“ aus. |
-   | **Distance unit** (Einheit für Entfernung) | Nein | <*Ihre Präferenz*> | Die Einheit der Entfernung für die Route. In diesem Beispiel wird „Meile“ als Einheit verwendet. |
-   | **Travel mode** (Reisemodus) | Nein | Driving (Auto) | Der Reisemodus für die Route. Wählen Sie den Modus „Driving“ (Auto) aus. |
+   | **Optimieren** | Nein  | timeWithTraffic | Ein Parameter zur Optimierung der Route, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. Wählen Sie den Parameter „timeWithTraffic“ aus. |
+   | **Distance unit** (Einheit für Entfernung) | Nein  | <*Ihre Präferenz*> | Die Einheit der Entfernung für die Route. In diesem Beispiel wird „Meile“ als Einheit verwendet. |
+   | **Travel mode** (Reisemodus) | Nein  | Driving (Auto) | Der Reisemodus für die Route. Wählen Sie den Modus „Driving“ (Auto) aus. |
    ||||
 
    Weitere Informationen zu diesen Parametern finden Sie unter [Calculate a route](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route) (Berechnen einer Route).
@@ -193,7 +196,7 @@ Die vorherige Aktion **Get route** (Route ermitteln) gibt standardmäßig die ak
    |----------|----------|-------|-------------|
    | **Name** | Ja | travelTime | Der Name für Ihre Variable. In diesem Beispiel wird „travelTime“ verwendet. |
    | **Typ** | Ja | Integer | Der Datentyp für die Variable |
-   | **Wert** | Nein| Ein Ausdruck, der die aktuelle Reisezeit von Sekunden in Minuten umwandelt. (Sehen Sie sich die Schritte unterhalb dieser Tabelle an.) | Der Anfangswert für die Variable |
+   | **Wert** | Nein | Ein Ausdruck, der die aktuelle Reisezeit von Sekunden in Minuten umwandelt. (Sehen Sie sich die Schritte unterhalb dieser Tabelle an.) | Der Anfangswert für die Variable |
    ||||
 
    1. Klicken Sie zum Erstellen des Ausdrucks für die Eigenschaft **Wert** innerhalb des Felds, sodass die Liste mit den dynamischen Inhalten angezeigt wird. Verbreitern Sie ggf. das Browserfenster, bis die Liste angezeigt wird. Wählen Sie in der Liste mit den dynamischen Inhalten die Option **Ausdruck** aus.

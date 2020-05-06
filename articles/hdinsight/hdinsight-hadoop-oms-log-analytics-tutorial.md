@@ -6,19 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162785"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192041"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
-Erfahren Sie, wie Sie Azure Monitor-Protokolle für die Überwachung von Hadoop-Clustervorgängen in HDInsight aktivieren und eine HDInsight-Überwachungslösung hinzufügen.
+In diesem Artikel erfahren Sie, wie Sie Azure Monitor-Protokolle zum Überwachen von Hadoop-Clustervorgängen in HDInsight verwenden. Außerdem erfahren Sie, wie Sie eine HDInsight-Überwachungslösung hinzufügen.
 
-[Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) ist ein Dienst in Azure Monitor, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um deren Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
+Bei [Azure Monitor-Protokollen](../log-analytics/log-analytics-overview.md) handelt es sich um einen Azure Monitor-Dienst, der Ihre Cloud- und lokalen Umgebungen überwacht. Die Überwachung dient der Aufrechterhaltung der Verfügbarkeit und Leistung Ihrer Umgebungen. Der Dienst sammelt Daten, die von Ressourcen in Ihrer Cloud- und in Ihrer lokalen Umgebung generiert werden, sowie von anderen Überwachungstools. Die Daten werden verwendet, um Analysen für mehrere Quellen bereitstellen zu können.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,9 +47,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Aktivieren von Azure Monitor-Protokollen im Azure-Portal
 
-In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs zum Überwachen von Aufträgen, Debugprotokollen usw.
+In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs, z. B. zum Überwachen von Aufträgen und Debugprotokollen.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](./hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird auf einer neuen Portalseite geöffnet.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus. Der Cluster wird auf einer neuen Portalseite geöffnet.
 
 1. Wählen Sie links unter **Überwachung** die Option **Azure Monitor** aus.
 
@@ -102,9 +103,9 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Installieren von HDInsight-Clusterverwaltungslösungen
 
-HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Monitor-Protokollen hinzufügen können. [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang von Azure Monitor-Protokollen und stellen zusätzliche Daten und Analysetools bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster und stellen die Tools bereit, um die Metriken zu durchsuchen. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen.
+HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Monitor-Protokollen hinzufügen können. [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang von Azure Monitor-Protokollen und stellen zusätzliche Daten und Analysetools bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihren HDInsight-Clustern. Außerdem stellen sie die Tools bereit, um die Metriken durchsuchen zu können. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen.
 
-Dies sind die verfügbaren HDInsight-Lösungen:
+Verfügbare HDInsight-Lösungen:
 
 * HDInsight Hadoop-Überwachung
 * HDInsight HBase-Überwachung
@@ -113,7 +114,7 @@ Dies sind die verfügbaren HDInsight-Lösungen:
 * HDInsight Spark-Überwachung
 * HDInsight Storm-Überwachung
 
-Die Anleitung zum Installieren einer Verwaltungslösung finden Sie unter [Verwaltungslösungen in Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Installieren Sie zum Experimentieren eine HDInsight Hadoop-Überwachungslösung. Wenn der Vorgang abgeschlossen ist, wird unter **Zusammenfassung** die Kachel **HDInsightHadoop** angezeigt. Wählen Sie die Kachel **HDInsightHadoop** aus. Die HDInsightHadoop-Lösung sieht wie folgt aus:
+Eine Anleitung für eine Verwaltungslösung finden Sie unter [Installieren einer Überwachungslösung](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Installieren Sie zum Experimentieren eine HDInsight Hadoop-Überwachungslösung. Wenn der Vorgang abgeschlossen ist, wird unter **Zusammenfassung** die Kachel **HDInsightHadoop** angezeigt. Wählen Sie die Kachel **HDInsightHadoop** aus. Die HDInsightHadoop-Lösung sieht wie folgt aus:
 
 ![HDInsight-Überwachungslösung – Ansicht](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -121,7 +122,7 @@ Im Bericht werden keine Aktivitäten angezeigt, da es sich um einen brandneuen C
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
 
-Azure Monitor unterstützt auch das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen zum Aktivieren und Konfigurieren dieses Features finden Sie unter [Linux-Leistungsdatenquellen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+Azure Monitor unterstützt das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen finden Sie unter [Leistungsindikatoren von Linux](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Clusterüberwachung
 
@@ -135,3 +136,4 @@ HDInsight unterstützt die Clusterüberwachung mit Azure Monitor-Protokollen, in
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Überwachen der Clusterverfügbarkeit mit Apache Ambari und Azure Monitor-Protokollen](./hdinsight-cluster-availability.md)

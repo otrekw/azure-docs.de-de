@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475475"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202875"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management
 
@@ -148,7 +148,7 @@ Es folgt eine kurze Übersicht über die Schritte:
 5. Wechseln Sie zurück zur Registerkarte „HttpTrigger1“, klicken Sie auf „Funktions-URL abrufen“, und kopieren Sie die angezeigte URL.
 
    > [!NOTE]
-   > Die Bindungen, die Sie soeben erstellt haben, weisen Functions nur an, auf anonyme HTTP GET-Anforderungen an die kopierte URL zu antworten. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) Sie verfügen damit über eine skalierbare, serverlose HTTPS-API, die eine sehr einfache Nutzlast zurückgeben kann.
+   > Die Bindungen, die Sie soeben erstellt haben, weisen Functions nur an, auf anonyme HTTP GET-Anforderungen an die kopierte URL zu antworten. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Sie verfügen damit über eine skalierbare, serverlose HTTPS-API, die eine sehr einfache Nutzlast zurückgeben kann.
    > Sie können den Aufruf dieser API nun über einen Webbrowser mithilfe der obigen URL testen. Sie können auch den Teil „?code=secret“ aus der URL entfernen, um zu bestätigen, dass Azure Functions einen 401-Fehler zurückgibt.
 
 ## <a name="configure-and-secure-the-function-api"></a>Konfigurieren und Schützen der Funktions-API

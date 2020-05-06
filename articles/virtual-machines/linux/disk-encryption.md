@@ -2,17 +2,17 @@
 title: Serverseitige Verschlüsselung von Azure Managed Disks – Azure CLI
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer verwalteten Datenträger nutzen, oder Sie können mit vom Kunden verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten.
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 027efd268ee80fbaf921b42d09cc424c8e8483ba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754301"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82136922"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 
@@ -34,7 +34,7 @@ Verwaltete Datenträger verwenden standardmäßig von der Plattform verwaltete V
 
 ## <a name="customer-managed-keys"></a>Vom Kunden verwaltete Schlüssel
 
-Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../../key-vault/key-vault-hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
+Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../../key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
 
 Die Verschlüsselung und Entschlüsselung von verwalteten Azure-Datenträgern erfolgt durch [Umschlagverschlüsselung](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) vollständig transparent. Daten werden mithilfe eines [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)-256 basierten Datenverschlüsselungsschlüssels (DEK) verschlüsselt, der wiederum mit Ihren Schlüsseln geschützt wird. Der Speicherdienst generiert Datenverschlüsselungsschlüssel und verschlüsselt sie mit vom Kunden verwalteten Schlüsseln unter Verwendung der RSA-Verschlüsselung. Mithilfe der Umschlagverschlüsselung können Sie Ihre Schlüssel gemäß Ihren Kompatibilitätsrichtlinien regelmäßig rotieren (ändern), ohne Ihre VMs zu beeinträchtigen. Wenn Sie Ihre Schlüssel rotieren, verschlüsselt der Speicherdienst die Datenverschlüsselungsschlüssel mit den neuen, vom Kunden verwalteten Schlüsseln neu. 
 
@@ -72,7 +72,7 @@ Vorerst gelten für vom Kunden verwaltete Schlüssel die folgenden Einschränkun
 
 - Wenn dieses Feature für Ihren Datenträger aktiviert ist, können Sie es nicht deaktivieren.
     Bei Bedarf müssen Sie [alle Daten auf einen anderen verwalteten Datenträger ohne kundenseitig verwaltete Schlüssel kopieren](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk).
-- Es werden ausschließlich [„Soft“- und „Hard“-RSA-Schlüssel](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) der Größe 2048 unterstützt, keine anderen Schlüssel oder Größen.
+- Es werden ausschließlich [„Soft“- und „Hard“-RSA-Schlüssel](../../key-vault/keys/about-keys.md) der Größe 2048 unterstützt, keine anderen Schlüssel oder Größen.
 - Datenträger, die aus benutzerdefinierten Images erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden und sich im selben Abonnement befinden.
 - Momentaufnahmen, die von Datenträgern erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden.
 - Benutzerdefinierte Images, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, können nicht im Katalog mit freigegebenen Images verwendet werden.
@@ -148,7 +148,7 @@ az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --
 ```
 
 
-#### <a name="encrypt-existing-unattached-managed-disks"></a>Verschlüsseln vorhandener, nicht angefügter verwalteter Datenträger 
+#### <a name="encrypt-existing-managed-disks"></a>Verschlüsseln vorhandener verwalteter Datenträger 
 
 Die vorhandenen Datenträger dürfen nicht an einen laufenden virtuellen Computer angefügt werden, damit Sie sie mithilfe des folgenden Skripts verschlüsseln können:
 
@@ -238,7 +238,7 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Untersuchen der Azure Resource Manager-Vorlagen zum Erstellen verschlüsselter Datenträger mit vom Kunden verwalteten Schlüsseln](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md)
+- [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)
 - [Replizieren von Computern mit Datenträgern, die für kundenseitig verwaltete Schlüssel aktiviert sind](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

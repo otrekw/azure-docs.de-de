@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine Teamentwicklung in einer .NET Core-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245055"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166035"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Entwicklung im Team mit .NET Core und Visual Studio über Azure Dev Spaces
 
@@ -102,7 +102,7 @@ Gehen Sie wie folgt vor, um einen neuen Bereich zu erstellen:
 
 ### <a name="update-code-for-mywebapi"></a>Aktualisieren von Code für *mywebapi*
 
-1. Ändern Sie im Projekt *mywebapi* in der Datei `string Get(int id)` den Code der `Controllers/ValuesController.cs`-Methode wie folgt:
+1. Ändern Sie im Projekt *mywebapi* in der Datei `Controllers/ValuesController.cs` den Code der `string Get(int id)`-Methode wie folgt:
  
     ```csharp
     [HttpGet("{id}")]
@@ -122,7 +122,7 @@ Hier sehen Sie ein Diagramm, in dem die Funktionsweise der verschiedenen Bereich
 Mit dieser integrierten Funktion von Azure Dev Spaces können Sie End-to-End-Tests für Code in einer gemeinsamen Umgebung ausführen, ohne dass die einzelnen Entwickler den kompletten Dienststapel in ihrem Bereich neu erstellen müssen. Für dieses Routing müssen Weitergabeheader in Ihrem App-Code weitergeleitet werden, wie im vorherigen Schritt in diesem Leitfaden erläutert.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>Testen von Code, der im Bereich _dev/scott_ ausgeführt wird
-Wenn Sie Ihre neue Version von *mywebapi* in Verbindung mit *webfrontend* testen möchten, öffnen Sie in Ihrem Browser die URL des öffentlichen Zugriffspunkts für *webfrontend* (beispielsweise http://dev.webfrontend.123456abcdef.eus.azds.io), und navigieren Sie zur Seite „Info“. Die ursprüngliche Nachricht „Hello from webfrontend and Hello from mywebapi“ sollte angezeigt werden.
+Wenn Sie Ihre neue Version von *mywebapi* in Verbindung mit *webfrontend* testen möchten, öffnen Sie in Ihrem Browser die URL des öffentlichen Zugriffspunkts für *webfrontend* (beispielsweise `http://dev.webfrontend.123456abcdef.eus.azds.io`), und navigieren Sie zur Seite „Info“. Die ursprüngliche Nachricht „Hello from webfrontend and Hello from mywebapi“ sollte angezeigt werden.
 
 Fügen Sie nun den Teil „scott.s.“ -Teil in die URL ein, sodass sie „http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io“ lautet, und aktualisieren Sie den Browser. Der im Projekt *mywebapi* festgelegte Breakpoint sollte erreicht werden. Klicken Sie auf F5, um den Vorgang fortzusetzen. Im Browser sollte jetzt die neue Nachricht „Hello from webfrontend and mywebapi now says something new.“ angezeigt werden. Der Grund hierfür ist, dass der Pfad zum aktualisierten Code in *mywebapi* im Bereich _dev/scott_ ausgeführt wird.
 

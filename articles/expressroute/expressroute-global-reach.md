@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c326a556530fd778c1178f11b79d2aba613b4c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538503"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82136582"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Sie können aus Ihrem privaten Rechenzentrum oder Ihrem Unternehmensnetzwerk auf viele Microsoft-Clouddienste wie beispielsweise Azure und Office 365 zugreifen. Angenommen, Sie haben eine Niederlassung in San Francisco mit einer ExpressRoute-Leitung im Silicon Valley und eine weitere Niederlassung in London mit einer ExpressRoute-Leitung in derselben Stadt. Beide Niederlassungen erhalten Highspeedkonnektivität mit Azure-Ressourcen in den Regionen „USA, Westen“ und „Vereinigtes Königreich, Süden“. Allerdings können die Niederlassungen nicht direkt Daten miteinander austauschen. Anders ausgedrückt: 10.0.1.0/24 kann Daten an 10.0.3.0/24 und 10.0.4.0/24 senden, jedoch NICHT an 10.0.2.0/24.
@@ -49,9 +49,9 @@ ExpressRoute Global Reach wird derzeit in den folgenden Ländern unterstützt:
 Ihre ExpressRoute-Leitungen müssen an den [ExpressRoute-Peeringstandorten](expressroute-locations.md) in den oben aufgeführten Ländern oder Regionen eingerichtet werden. Um ExpressRoute Global Reach zwischen [verschiedenen geopolitischen Regionen](expressroute-locations.md) zu erstellen, ist für Ihre Leitungen die SKU „Premium“ erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. [Weitere Informationen zu ExpressRoute Global Reach](expressroute-faqs.md)
-2. [Konfigurieren von ExpressRoute Global Reach (Vorschau)](expressroute-howto-set-global-reach.md)
-3. [Verknüpfen einer ExpressRoute-Leitung mit einem virtuellen Azure-Netzwerk](expressroute-howto-linkvnet-arm.md)
+1. [Sehen Sie sich die Global Reach-FAQ an.](expressroute-faqs.md#globalreach)
+2. [Erfahren Sie, wie Sie Global Reach aktivieren.](expressroute-howto-set-global-reach.md)
+3. [Erfahren Sie, wie Sie eine ExpressRoute-Verbindung mit Ihrem virtuellen Netzwerk verknüpfen.](expressroute-howto-linkvnet-arm.md)
 
 
 <!--Image References-->

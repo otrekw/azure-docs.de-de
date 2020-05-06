@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614042"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159948"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
 
@@ -100,7 +100,7 @@ Folgende Schritte sind für das Einrichten des NuGet-Pakets erforderlich:
 3. Suchen Sie nach `Microsoft.ApplicationInsights.ServiceFabric.Native`, und klicken Sie auf das entsprechende NuGet-Paket.
 4. Klicken Sie auf der rechten Seite auf die zwei Kontrollkästchen neben den beiden Diensten der Anwendung (**VotingWeb** und **VotingData**), und klicken Sie auf **Installieren**.
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. Klicken Sie im angezeigten Dialogfeld **Änderungen überprüfen** auf *OK*, und akzeptieren Sie die *Lizenzbedingungen*. Dadurch wird das Hinzufügen des NuGet-Pakets zu den Diensten abgeschlossen.
+5. Klicken Sie im angezeigten Dialogfeld *Änderungen überprüfen* auf **OK**, und akzeptieren Sie die *Lizenzbedingungen*. Dadurch wird das Hinzufügen des NuGet-Pakets zu den Diensten abgeschlossen.
 6. Sie müssen nun den Telemetrieinitialisierer in beiden Diensten einrichten. Öffnen Sie dazu *VotingWeb.cs* und *VotingData.cs*. Führen Sie für beide folgende Schritte aus:
     1. Fügen Sie diese zwei *using*-Anweisungen jeweils vor *\<ServiceName>.cs* und nach den vorhandenen *using*-Anweisungen hinzu:
 
@@ -168,7 +168,7 @@ An diesem Punkt können Sie Ihre Anwendung bereitstellen. Klicken Sie oben auf *
 >[!NOTE]
 >Unter Umständen wird ein Buildfehler angezeigt, wenn keine aktuelle Version des .NET Core SDK installiert ist.
 
-Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080). Dort sollte Ihnen die einseitige Beispielanwendung „Voting“ angezeigt werden. Stimmen Sie für einige verschiedene Elemente Ihrer Wahl ab, um Beispieldaten und eine Beispieltelemetrie zu erstellen – ich habe mich für Desserts entschieden.
+Sobald die Anwendung bereitgestellt ist, navigieren Sie zu `localhost:8080`. Dort sollte Ihnen die Single-Page-Beispielanwendung „Voting“ angezeigt werden. Stimmen Sie für einige verschiedene Elemente Ihrer Wahl ab, um Beispieldaten und eine Beispieltelemetrie zu erstellen – ich habe mich für Desserts entschieden.
 
 ![AI-Beispielabstimmungen](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -251,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080), und fügen Sie einige Abstimmungsoptionen hinzu oder löschen Sie vorhandene. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt oder gelöscht haben, sollte nun „Benutzerdefiniertes Ereignis“\* zusammen mit der Antworttelemetrie angezeigt werden.
+Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu `localhost:8080`, und fügen Sie Abstimmungsoptionen hinzu, oder löschen Sie sie. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt oder gelöscht haben, sollte nun „Benutzerdefiniertes Ereignis“\* zusammen mit der Antworttelemetrie angezeigt werden.
 
 ![Benutzerdefinierte Ereignisse](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8bc36dfdf3010b2bde485228f6ee110b0b826d31
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654748"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105725"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Sichern des Remotezugriffs auf virtuelle Computer in Azure Active Directory Domain Services
 
@@ -61,6 +61,7 @@ Die Bereitstellung der RD-Umgebung umfasst eine Reihe von Schritten. Das vorhand
 
 1. Melden Sie bei für die RD-Umgebung erstellten VMs mit einem Konto an, das zur Gruppe *Azure AD DC-Administratoren* gehört, z. B. mit *contosoadmin*.
 1. Verwenden Sie zum Erstellen und Konfigurieren von RDS das vorhandene [Bereitstellungshandbuch für die Remotedesktopumgebung][deploy-remote-desktop]. Verteilen Sie die RD-Serverkomponenten entsprechend den jeweiligen Anforderungen auf die Azure-VMs.
+    * Spezifisch für Azure AD DS: Wenn Sie die RD-Lizenzierung konfigurieren, legen Sie anstelle des im Bereitstellungshandbuch angegebenen Modus **Pro Benutzer** den Modus **Pro Gerät** fest.
 1. Wenn Sie den Zugriff mithilfe eines Webbrowsers ermöglichen möchten, [richten Sie den Remotedesktop-Webclient für Ihre Benutzer ein][rd-web-client].
 
 Wenn RD in der verwalteten Azure AD DS-Domäne bereitgestellt ist, können Sie den Dienst genau wie eine lokale AD DS-Domäne verwalten und nutzen.

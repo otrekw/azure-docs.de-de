@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75768961"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190298"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -36,7 +36,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 + Ein aktives [Twitter](https://twitter.com/)-Konto 
 + Ein [Outlook.com](https://outlook.com/)-Konto (zum Senden von Benachrichtigungen)
-+ In diesem Artikel werden als Ausgangspunkt die Ressourcen verwendet, die unter [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt wurden.  
+
+> [!NOTE]
+> Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkungen in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie den Gmail-Connector nur mit bestimmten von Google genehmigten Apps und Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung in Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
++ In diesem Artikel werden als Ausgangspunkt die Ressourcen verwendet, die unter [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt wurden.
 Führen Sie nun diese Schritte zum Erstellen Ihrer Funktionen-App durch, sofern dies noch nicht geschehen ist.
 
 ## <a name="create-a-cognitive-services-resource"></a>Erstellen einer Cognitive Services-Ressource

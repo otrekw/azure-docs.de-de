@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d0798c77135b15e26c9787d9844cd9525cf12c5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532016"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146415"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -116,7 +116,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | Bietet eine Möglichkeit zum Anzeigen von Sperrinformationen auf Zeilenebene. |
 > | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | Bietet eine Möglichkeit zum Anzeigen von Statistiken auf Tupelebene. |
 > | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | Wrapper für programmfremde Daten, um auf in externen PostgreSQL-Servern gespeicherten Daten zuzugreifen Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“.|
-> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informationen zu SSL-Zertifikaten. |
+> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informationen zu TLS-/SSL-Zertifikaten |
 > | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert. |
 > | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE-Methode, die die Zeit in Millisekunden als Grenzwert akzeptiert. |
 > | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Stellt eine Möglichkeit zum Erstellen hypothetischer Indizes bereit, die weder CPU noch Speicherplatz benötigen. |

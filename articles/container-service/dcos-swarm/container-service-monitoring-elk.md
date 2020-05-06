@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 586b8d25a9f391487640e9b1f8adb3be0e4be6db
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277773"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166171"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit ELK
 
@@ -28,7 +28,7 @@ Sie müssen einen per Azure Container Service konfigurierten DC/OS-Cluster [bere
 Beim ELK-Stapel handelt es sich um eine Kombination aus Elasticsearch, Logstash und Kibana für einen End-to-End-Stapel, der zum Überwachen und Analysieren von Protokollen in Ihrem Cluster verwendet werden kann.
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>Konfigurieren des ELK-Stapels in einem DC/OS-Cluster
-Greifen Sie über [http://localhost:80/](http://localhost:80/) auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie anschließend zu **Universe**. Suchen und installieren Sie Elasticsearch, Logstash und Kibana in DC/OS Universe in genau dieser Reihenfolge. Weitere Informationen zur Konfiguration finden Sie unter dem Link **Advanced Installation** (Erweiterte Installation).
+Greifen Sie über `http://localhost:80/` auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie anschließend zu **Universe** (Universum). Suchen und installieren Sie Elasticsearch, Logstash und Kibana in DC/OS Universe in genau dieser Reihenfolge. Weitere Informationen zur Konfiguration finden Sie unter dem Link **Advanced Installation** (Erweiterte Installation).
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 

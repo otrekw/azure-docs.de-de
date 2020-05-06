@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617437"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208158"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 
 - **CPU:** Die reservierten CPU-Ressourcen hängen vom Knotentyp und der Clusterkonfiguration ab. Dies kann dazu führen, dass weniger CPU-Ressourcen zugewiesen werden können, da zusätzliche Features ausgeführt werden.
 
-| CPU-Kerne auf dem Host | 1 | 2 | 4 | 8 | 16 | 32|64|
+| CPU-Kerne auf dem Host | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
 |Kube-reserviert (Millicore)|60|100|140|180|260|420|740|
 
@@ -126,7 +126,7 @@ Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unte
 
 ### <a name="node-selectors"></a>Knotenselektoren
 
-In einem AKS-Cluster mit mehreren Knotenpools müssen Sie dem Kubernetes-Scheduler möglicherweise mitteilen, welcher Knotenpool für eine bestimmte Ressource verwendet werden soll. Beispielsweise sollten Eingangscontroller nicht auf Windows Server-Knoten (derzeit in der Vorschau in AKS) ausgeführt werden. Mit Knotenselektoren können Sie verschiedene Parameter festlegen, wie z.B. das Betriebssystem des Knotens, um zu steuern, wo ein Pod geplant werden soll.
+In einem AKS-Cluster mit mehreren Knotenpools müssen Sie dem Kubernetes-Scheduler möglicherweise mitteilen, welcher Knotenpool für eine bestimmte Ressource verwendet werden soll. Beispielsweise sollten Eingangscontroller nicht auf Windows Server-Knoten ausgeführt werden. Mit Knotenselektoren können Sie verschiedene Parameter festlegen, wie z.B. das Betriebssystem des Knotens, um zu steuern, wo ein Pod geplant werden soll.
 
 Das folgende einfache Beispiel plant eine NGINX-Instanz auf einem Linux-Knoten unter Verwendung des Knotenselektors *"beta.kubernetes.io/os": linux*:
 

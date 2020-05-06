@@ -3,19 +3,19 @@ title: 'Spracherkennungs-API-Referenz (REST): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: trevorbye
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: trbye
-ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/23/2020
+ms.author: yinhew
+ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400182"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82131295"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -54,6 +54,7 @@ Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalte
 | `language` | Identifiziert die gesprochene Sprache, die erkannt wird. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text). | Erforderlich |
 | `format` | Gibt das Ergebnisformat an. Zulässige Werte sind `simple` und `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Detaillierte Antworten enthalten mehrere Ergebnisse mit Zuverlässigkeitswerten und vier unterschiedliche Darstellungen. Die Standardeinstellung ist `simple`. | Optional |
 | `profanity` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `raw` (Obszönitäten sind im Ergebnis enthalten). Die Standardeinstellung ist `masked`. | Optional |
+| `pronunciationScoreParams` | Gibt die Parameter für das Anzeigen von Aussprachebewertungen in Erkennungsergebnissen an, mit denen die Aussprachequalität der Spracheingabe mit Indikatoren für Genauigkeit, Flüssigkeit, Vollständigkeit usw. bewertet wird. Dieser Parameter ist base64-codierter JSON-Code, der viele ausführliche Parameter enthält. Informationen zum Erstellen dieses Parameters finden Sie unter [Parameter für die Aussprachebewertung](#pronunciation-assessment-parameters). | Optional |
 | `cid` | Wenn Sie das [Custom Speech-Portal](how-to-custom-speech.md) zum Erstellen von benutzerdefinierten Modellen verwenden, können Sie benutzerdefinierte Modelle über ihre **Endpunkt-ID** verwenden, die Sie auf der Seite **Bereitstellung** finden. Verwenden Sie die **Endpunkt-ID** als Argument für den Parameter `cid` der Abfragezeichenfolge. | Optional |
 
 ## <a name="request-headers"></a>Anforderungsheader
@@ -80,6 +81,38 @@ Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in e
 
 >[!NOTE]
 >Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig das WAV-Format mit dem PCM-Codec sowie [weitere Formate](how-to-use-codec-compressed-audio-input-streams.md).
+
+## <a name="pronunciation-assessment-parameters"></a>Parameter für die Aussprachebewertung
+
+In dieser Tabelle sind die erforderlichen und optionalen Parameter für die Aussprachebewertung aufgeführt.
+
+| Parameter | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| ReferenceText | Der Text, für den die Aussprache ausgewertet wird. | Erforderlich |
+| GradingSystem | Das Punktesystem zur Kalibrierung der Bewertung. Zulässige Werte sind `FivePoint` und `HundredMark`. Die Standardeinstellung ist `FivePoint`. | Optional |
+| Granularität | Die Granularität der Auswertung. Akzeptierte Werte sind `Phoneme`, für das die Bewertung auf Volltext-, Wort- und Phonemebene, `Word`, für das die Bewertung auf Volltext und Wortebene und `FullText`, für das nur die Bewertung auf der Volltextebene angezeigt wird. Die Standardeinstellung ist `Phoneme`. | Optional |
+| Dimension | Definiert die Ausgabekriterien. Die akzeptierten Werte sind `Basic`, das nur die Genauigkeitsbewertung anzeigt, und `Comprehensive`, für das Bewertungen in weiteren Dimensionen angezeigt wird (z. B. Flüssigkeitsbewertung und Vollständigkeitsbewertung auf der Volltextebene, Fehlertyp auf der Wortebene). In den [Antwortparametern](#response-parameters) finden Sie Definitionen verschiedener Bewertungsdimensionen und Wortfehlertypen. Die Standardeinstellung ist `Basic`. | Optional |
+| EnableMiscue | Aktiviert die Fehlschlagsberechnung. Wenn diese Option aktiviert ist, werden die ausgesprochenen Wörter mit dem Referenztext verglichen und auf der Grundlage des Vergleichs mit Auslassung/Einfügung gekennzeichnet. Zulässige Werte sind `False` und `True`. Die Standardeinstellung ist `False`. | Optional |
+| ScenarioId | Eine GUID, die ein benutzerdefiniertes Punktesystem angibt. | Optional |
+
+Unten finden Sie ein JSON-Beispiel mit den Parametern für die Aussprachebewertung:
+
+```json
+{
+  "ReferenceText": "Good morning.",
+  "GradingSystem": "HundredMark",
+  "Granularity": "FullText",
+  "Dimension": "Comprehensive"
+}
+```
+
+Der folgende Beispielcode zeigt, wie die Parameter für die Aussprachebewertung in den URL-Abfrageparameter integriert werden:
+
+```csharp
+var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
+var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+```
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -178,6 +211,11 @@ Jedes Objekt in der `NBest`-Liste enthält:
 | `ITN` | Die inverse Textnormalisierung („kanonische Form“) des erkannten Texts mit Telefonnummern, Zahlen, Abkürzungen („doctor smith“ in „dr. smith“) und anderen angewendeten Transformationen. |
 | `MaskedITN` | Die ITN-Form mit angewendeter Obszönitätenmaskierung, wenn angefordert. |
 | `Display` | Die Anzeigeform des erkannten Texts mit hinzugefügten Satzzeichen und Großschreibung. Dieser Parameter ist derselbe wie `DisplayText`, wenn das Format `simple` entspricht. |
+| `AccuracyScore` | Der Score, der die Aussprachegenauigkeit des übergebenen Sprachtexts angibt. |
+| `FluencyScore` | Der Score, der die Flüssigkeit des übergebenen Sprachtexts angibt. |
+| `CompletenessScore` | Der Score, der die Vollständigkeit des übergebenen Sprachtexts durch Berechnen des Verhältnisses ausgesprochener Wörter zur Gesamteingabe angibt. |
+| `PronScore` | Der Gesamtscore, der die Aussprachequalität des übergebenen Sprachtexts angibt. Dieser wird aus `AccuracyScore`, `FluencyScore` und `CompletenessScore` mit Gewichtung berechnet. |
+| `ErrorType` | Dieser Wert gibt an, ob ein Wort im Vergleich zu `ReferenceText`ausgelassen, eingefügt oder schlecht ausgesprochen wird. Die möglichen Werte sind `None` (d. h. kein Fehler in diesem Wort), `Omission`, `Insertion` und `Mispronunciation`. |
 
 ## <a name="sample-responses"></a>Beispielantworten
 
@@ -213,6 +251,45 @@ Eine typische Antwort für die `detailed` Erkennung:
         "ITN" : "rewind me to buy 5 pencils",
         "MaskedITN" : "rewind me to buy 5 pencils",
         "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
+Eine typische Antwort für Erkennung mit Bewertung der Aussprache:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronScore" : 84.4,
+        "AccuracyScore" : 100.0,
+        "FluencyScore" : 74.0,
+        "CompletenessScore" : 100.0,
+        "Words": [
+            {
+              "Word" : "Good",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 500000,
+              "Duration" : 2700000
+            },
+            {
+              "Word" : "morning",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 5300000,
+              "Duration" : 900000
+            }
+        ]
       }
   ]
 }

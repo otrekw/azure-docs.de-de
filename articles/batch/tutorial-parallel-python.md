@@ -1,21 +1,16 @@
 ---
-title: Ausführen einer parallelen Workload – Azure Batch Python
+title: Ausführen einer parallelen Workload
 description: Tutorial – Paralleles Verarbeiten von Mediendateien mit ffmpeg in Azure Batch per Batch Python-Clientbibliothek
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77023088"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117113"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die Python-API
 

@@ -3,17 +3,17 @@ title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe
 description: In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service (DPS) und stellen es bereit.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 04/26/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f0c95e495e222cc72f0a6fc432404fcbaa47df65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216348"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190355"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten X.509-Geräts mithilfe des Azure IoT C SDK
 
@@ -172,7 +172,7 @@ Aktualisieren Sie in diesem Abschnitt den Beispielcode, um die Startsequenz des 
 
 7. Navigieren Sie im Portal zu dem mit Ihrem Bereitstellungsdienst verknüpften IoT-Hub, und wählen Sie die Registerkarte **IoT-Geräte** aus. Nach erfolgreicher Bereitstellung des simulierten X.509-Geräts auf dem Hub wird die zugehörige Geräte-ID auf dem Blatt **IoT-Geräte** angezeigt, und der *STATUS* lautet **Aktiviert**. Unter Umständen müssen Sie oben auf die Schaltfläche **Aktualisieren** klicken. 
 
-    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device/hub-registration.png) 
+    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device-x509/hub-registration.png) 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

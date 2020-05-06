@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76937128"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160765"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal
 
-Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen *contoso.xyz* von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS für das Hosten der Domäne *contoso.xyz* und das Auflösen von *www.contoso.xyz* in die IP-Adresse Ihres Webservers oder Ihrer Web-App konfigurieren.
+Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen *contoso.xyz* von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS zum Hosten der Domäne *contoso.xyz* und zum Auflösen von *`www.contoso.xyz`* in die IP-Adresse Ihres Webservers oder Ihrer Web-App konfigurieren.
 
 In dieser Schnellstartanleitung erstellen Sie eine Testdomäne und anschließend einen Adresseintrag zum Auflösen von *www* in die IP-Adresse *10.10.10.10*.
 

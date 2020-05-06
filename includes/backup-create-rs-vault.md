@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 6167774171affda7e5469d5852a79657a6da700d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78262404"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204643"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -45,10 +45,10 @@ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu er
    - **Name**: Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
    - **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
    - **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource in der Dropdownliste aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/management/overview.md).
-   - **Speicherort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zum Schutz virtueller Computer zu erstellen, *muss* sich dieser in derselben Region wie die virtuellen Computer befinden.
+   - **Standort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zum Schutz von Datenquellen zu erstellen, *muss* sich dieser in derselben Region wie die Datenquelle befinden.
 
       > [!IMPORTANT]
-      > Wenn Sie den Speicherort des virtuellen Computers nicht kennen, schließen Sie das Dialogfeld. Wechseln Sie zur Liste der virtuellen Computer im Portal. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Speicherort, bevor Sie den Tresor für einen anderen Speicherort erstellen. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und Azure Backup führen diesen Schritt automatisch aus.
+      > Wenn Sie den Speicherort der Datenquelle nicht kennen, schließen Sie das Dialogfeld. Navigieren Sie zur Liste Ihrer Ressourcen im Portal. Falls Sie über Datenquellen in mehreren Regionen verfügen, erstellen Sie für jede Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Speicherort, bevor Sie den Tresor für einen anderen Speicherort erstellen. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und Azure Backup führen diesen Schritt automatisch aus.
       >
       >
 

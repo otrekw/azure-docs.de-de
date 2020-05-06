@@ -5,18 +5,18 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369967"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82112965"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
-Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) und insbesondere der Kubernetes-Cloudanbieter einen *Dienstprinzipal*, um zusätzliche Ressourcen wie Lastenausgleich und verwaltete Datenträger in Azure zu erstellen. Entweder müssen Sie einen Dienstprinzipal bereitstellen, oder AKS erstellt einen Dienstprinzipal in Ihrem Namen. Dienstprinzipale haben in der Regel ein Ablaufdatum. Cluster erreichen letztendlich einen Zustand, in dem der Dienstprinzipal erneuert werden muss, damit der Cluster ordnungsgemäß funktioniert. Die Verwaltung von Dienstprinzipalen erhöht die Komplexität.
+Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) – genauer gesagt, der Kubernetes-Cloudanbieter – eine Identität, um zusätzliche Ressourcen wie Lastenausgleichsmodule und verwaltete Datenträger in Azure zu erstellen. Diese Identität kann eine *verwaltete Identität* oder ein *Dienstprinzipal* sein. Wenn Sie einen [Dienstprinzipal](kubernetes-service-principal.md) verwenden, müssen Sie diesen bereitstellen oder in Ihrem Namen durch AKS erstellen lassen. Wenn Sie eine verwaltete Identität verwenden, wird diese automatisch von AKS erstellt. Cluster mit Dienstprinzipalen erreichen irgendwann einen Zustand, in dem der Dienstprinzipal erneuert werden muss, damit der Cluster ordnungsgemäß funktioniert. Das Verwalten von Dienstprinzipalen erhöht die Komplexität, daher ist es einfacher, stattdessen verwaltete Identitäten zu verwenden. Dieselben Berechtigungsanforderungen gelten sowohl für Dienstprinzipale als auch für verwaltete Identitäten.
 
 *Verwaltete Identitäten* stellen im Wesentlichen einen Wrapper um Dienstprinzipale dar und vereinfachen deren Verwaltung. Weitere Informationen finden Sie im Artikel über [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
@@ -25,7 +25,7 @@ AKS erstellt zwei verwaltete Identitäten:
 - **Systemseitig zugewiesene verwaltete Identität**: die Identität, die der Kubernetes-Cloudanbieter zum Erstellen von Azure-Ressourcen im Auftrag des Benutzers verwendet. Der Lebenszyklus der systemseitig zugewiesenen Identität ist an den des Clusters gebunden. Die Identität wird gelöscht, wenn der Cluster gelöscht wird.
 - **Benutzerseitig zugewiesene verwaltete Identität**: die Identität, die für die Autorisierung im Cluster verwendet wird. Die benutzerseitig zugewiesene Identität wird beispielsweise verwendet, um AKS zum Verwenden von Azure Container Registrys (ACRs) oder das Kubelet zum Abrufen von Metadaten aus Azure zu autorisieren.
 
-Add-Ons authentifizieren auch über eine verwaltete Identität. Für jedes Add-On wird eine verwaltete Identität von AKS erstellt und für die Lebensdauer des Add-Ons beibehalten. Verwenden Sie zum Erstellen und Verwenden Ihres eigenen VNET, Ihrer eigenen statischen IP-Adresse oder Ihres eigenen angeschlossenen Azure-Datenträgers, auf dem sich die Ressourcen außerhalb der Ressourcengruppe MC_ * befinden, die PrincipalID des Clusters, um eine Rollenzuweisung auszuführen. Weitere Informationen zur Rollenzuweisung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+Add-Ons authentifizieren auch über eine verwaltete Identität. Für jedes Add-On wird eine verwaltete Identität von AKS erstellt und für die Lebensdauer des Add-Ons beibehalten. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -58,6 +58,11 @@ Bei einer erfolgreichen Clustererstellung mit verwalteten Identitäten sind folg
     "secret": null
   }
 ```
+
+> [!NOTE]
+> Verwenden Sie zum Erstellen und Verwenden Ihres eigenen VNET, Ihrer eigenen statischen IP-Adresse oder Ihres eigenen angeschlossenen Azure-Datenträgers, auf dem sich die Ressourcen außerhalb der Ressourcengruppe „MC_*“ befinden, die Prinzipal-ID der systemseitig zugewiesenen verwalteten Identität des Clusters, um eine Rollenzuweisung auszuführen. Weitere Informationen zur Rollenzuweisung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+>
+> Es kann bis zu 60 Minuten dauern, bis die vom Azure-Cloudanbieter verwendeten Berechtigungszuweisungen für die Erstellung von Clustern für verwaltete Identitäten übernommen werden.
 
 Rufen Sie schließlich Anmeldeinformationen für den Zugriff auf den Cluster ab:
 

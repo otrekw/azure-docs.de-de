@@ -3,12 +3,12 @@ title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249761"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535484"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
@@ -68,14 +68,36 @@ Jetzt können Sie Ereignisse an das Thema senden.
 
 Suchen Sie in Ihrem Durable Functions-Projekt nach der Datei `host.json`.
 
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
+
 Fügen Sie `eventGridTopicEndpoint` und `eventGridKeySettingName` einer `durableTask`-Eigenschaft hinzu.
 
 ```json
 {
+  "durableTask": {
+    "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+    "eventGridKeySettingName": "EventGridKey"
+  }
+}
+```
+
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
+
+Fügen Sie den Abschnitt `notifications` zur Eigenschaft `durableTask` der Datei hinzu, und ersetzen Sie `<topic_name>` durch den von Ihnen gewählten Namen. Wenn die Eigenschaften `durableTask` oder `extensions` nicht vorhanden sind, erstellen Sie sie wie in diesem Beispiel:
+
+```json
+{
+  "version": "2.0",
+  "extensions": {
     "durableTask": {
-        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "eventGridKeySettingName": "EventGridKey"
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+          "keySettingName": "EventGridKey"
+        }
+      }
     }
+  }
 }
 ```
 

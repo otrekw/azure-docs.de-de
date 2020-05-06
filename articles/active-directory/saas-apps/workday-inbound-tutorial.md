@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370361"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201634"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -281,6 +281,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
     ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_06.png "Domänensicherheitsrichtlinien")  
 2. Suchen Sie im Textfeld **Domäne** nach den folgenden Domänen, und fügen Sie sie einzeln dem Filter hinzu.  
    * *External Account Provisioning* (Externe Kontobereitstellung)
+   * *Worker Data: Worker*
    * *Worker Data: Public Worker Reports* (Mitarbeiterdaten: öffentliche Mitarbeiterberichte)
    * *Person Data: Work Contact Information* (Personendaten: Kontaktinformationen von Mitarbeitern)
    * *Worker Data: All Positions* (Mitarbeiterdaten: alle Positionen)
@@ -312,6 +313,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    | ---------- | ---------- |
    | Get und Put | Mitarbeiterdaten: öffentliche Mitarbeiterberichte |
    | Get und Put | Personendaten: Kontaktinformationen von Mitarbeitern |
+   | Herunterladen | Mitarbeiterdaten: Worker |
    | Herunterladen | Mitarbeiterdaten: alle Positionen |
    | Herunterladen | Mitarbeiterdaten: aktuelle Personalinformationen |
    | Herunterladen | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
@@ -327,17 +329,18 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
 
     ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
-2. Suchen Sie im Textfeld **Business Process Type** (Geschäftsprozesstyp) nach *Contact* (Kontakt), wählen Sie den Geschäftsprozess **Contact Change** (Kontakt ändern) aus, und klicken Sie auf **OK**.
+2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen*, wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK**.
 
     ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
-3. Scrollen Sie auf der Seite **Edit Business Process Security Policy** (Sicherheitsrichtlinien für Geschäftsprozesse bearbeiten) zum Abschnitt **Maintain Contact Information (Web Service)** (Kontaktinformationen verwalten (Webdienst)).
+3. Scrollen Sie auf der Seite **Sicherheitsrichtlinien für Geschäftsprozesse bearbeiten** zum Abschnitt **Kontaktinformationen von Mitarbeitern ändern (Webdienst)** .
+    
 
-    ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_14.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
-
-4. Wählen Sie die neue Sicherheitsgruppe des Integrationssystems aus, und fügen Sie sie der Liste der Sicherheitsgruppen hinzu, die Anforderungen an Webdienste initiieren können. Klicken Sie auf **Done** (Fertig). 
+4. Wählen Sie die neue Sicherheitsgruppe des Integrationssystems aus, und fügen Sie sie der Liste der Sicherheitsgruppen hinzu, die Anforderungen an Webdienste initiieren können. 
 
     ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_15.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+
+5. Klicken Sie auf **Done** (Fertig). 
 
 ### <a name="activating-security-policy-changes"></a>Aktivieren von Sicherheitsrichtlinienänderungen
 
@@ -451,11 +454,18 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
 
 1. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Es sollte etwa so aussehen: **benutzername\@mandantenname**
+   * **Workday-Benutzername:** Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Es sollte etwa so aussehen: **benutzername\@mandantenname**
 
-   * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
+   * **Workday-Kennwort:** Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+   * **URL der Workday Web Services-API:** Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: `https://wd3-impl-services1.workday.com/ccx/service/contoso4`. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+
+     > [!NOTE]
+     > Standardmäßig verwendet die App Workday Web Services (WWS) v21.1, wenn in der URL keine Versionsinformationen angegeben sind. Um eine bestimmte Version der Workday Web Services-API zu verwenden, verwenden Sie das URL-Format https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.#. <br>
+     > Beispiel: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
+     
+     > [!NOTE]
+     > Wenn Sie eine WWS-API der Version 30.0 und höher verwenden, müssen Sie, bevor Sie den Bereitstellungsauftrag aktivieren, unter **Attributzuordnung -> Erweiterte Optionen -> Attributliste für Workday bearbeiten** die **XPATH-API-Ausdrücke** aktualisieren (entsprechende Verweise finden Sie im Abschnitt [Verwalten Ihrer Konfiguration](#managing-your-configuration) und in der [Workday-Attributreferenz](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)).  
 
    * **Active Directory-Gesamtstruktur:** Der „Name“ Ihrer Active Directory-Domäne, mit dem diese beim Agent registriert wurde. Wählen Sie über die Dropdownliste die Zieldomäne für die Bereitstellung aus. Dieser Wert ist meist eine Zeichenfolge wie: *contoso.com*
 
@@ -552,7 +562,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **WorkerID**  |  EmployeeID | **Ja** | Wird nur bei der Erstellung geschrieben |
 | **PreferredNameData**    |  cn    |   |   Wird nur bei der Erstellung geschrieben |
 | **SelectUniqueValue( Join("\@", Join(".", \[FirstName\], \[LastName\]), "contoso.com"), Join("\@", Join(".", Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("\@", Join(".", Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Wird nur bei der Erstellung geschrieben 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Wird nur bei der Erstellung geschrieben |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Wird nur bei der Erstellung geschrieben |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Erstellen und aktualisieren |
 | **Vorname**   | givenName       |     |    Erstellen und aktualisieren |
 | **Nachname**   |   sn   |     |  Erstellen und aktualisieren |
@@ -607,11 +617,16 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Dies sollte ungefähr wie folgt aussehen: username@contoso4
+   * **Workday-Benutzername:** Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Dies sollte ungefähr wie folgt aussehen: username@contoso4
 
-   * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
+   * **Workday-Kennwort:** Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* durch die ordnungsgemäße Umgebungszeichenfolge ersetzt. Ist diese URL nicht bekannt, erkundigen Sie sich bei Ihrem Workday-Integrationspartner oder bei einem Supportmitarbeiter nach der korrekten URL.
+   * **URL der Workday Web Services-API:** Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: `https://wd3-impl-services1.workday.com/ccx/service/contoso4`. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* durch die ordnungsgemäße Umgebungszeichenfolge ersetzt. Ist diese URL nicht bekannt, erkundigen Sie sich bei Ihrem Workday-Integrationspartner oder bei einem Supportmitarbeiter nach der korrekten URL.
+
+     > [!NOTE]
+     > Standardmäßig verwendet die App Workday Web Services v21.1, wenn in der URL keine Versionsinformationen angegeben sind. Um eine bestimmte Version der Workday Web Services-API zu verwenden, verwenden Sie das URL-Format https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.#. <br>
+     > Beispiel: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
+
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -708,7 +723,7 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* (bei Bedarf) durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Dieser Wert sollte wie folgt lauten: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`. Dabei wird *contoso4* durch den Namen Ihres Mandanten und *wd3-impl* (bei Bedarf) durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -807,9 +822,13 @@ Diese Funktion wird derzeit nicht unterstützt. Eine empfohlene Problemumgehung 
 
 Die Lösung verwendet derzeit die folgenden Workday-APIs:
 
-* Get_Workers (v21.1) zum Abrufen von Workerinformationen
-* Maintain_Contact_Information (v26.1) für die Writeback-Funktion für geschäftliche E-Mails
-* Update_Workday_Account (v31.2) für das Feature zum Zurückschreiben von Benutzernamen
+* Das Format der **Workday Web Services-API-URL**, das im Abschnitt **Administratoranmeldeinformationen** verwendet wird, bestimmt die für Get_Workers verwendete API-Version.
+  * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/Mandantenname“ lautet, wird API v21.1 verwendet. 
+  * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources“ lautet, wird API v21.1 verwendet. 
+  * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources/v\#\#\.\#“ lautet, wird die angegebene API-Version verwendet. (Beispiel: Wenn v34.0 angegeben ist, wird diese Version verwendet.)  
+   
+* Change_Work_Contact_Information (v30.0) für das Feature zum Rückschreiben von Workday-E-Mails 
+* Update_Workday_Account (v31.2) für das Feature zum Rückschreiben von Workday-Benutzernamen 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Kann ich meinen Workday-HCM-Mandanten mit zwei Azure AD-Mandanten konfigurieren?
 
@@ -1239,7 +1258,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 1. Laden Sie [Workday Studio](https://community.workday.com/studio-download), herunter, und installieren Sie es. Sie benötigen ein Workday-Communitykonto, um auf das Installationsprogramm zuzugreifen.
 
-2. Laden Sie die WSDL-Datei „Workday Human_Resources“ über diese URL herunter: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. Laden Sie entsprechend der WWS-API-Version, die Sie aus dem [Workday Web Services-Verzeichnis](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html) verwenden möchten, die Workday-WSDL-Datei **Human_Resources** herunter.
 
 3. Starten Sie Workday Studio.
 
@@ -1259,7 +1278,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 9. Klicken Sie auf **OK**.
 
-10. Fügen Sie im Bereich **Anforderung** den unten stehenden XML-Code ein, und legen Sie **Employee_ID** auf die Mitarbeiter-ID eines realen Benutzers in Ihrem Workday-Mandanten fest. Wählen Sie einen Benutzer aus, für den das Attribut aufgefüllt ist, das Sie extrahieren möchten.
+10. Fügen Sie im Bereich **Anforderung** den folgenden XML-Code ein. Legen Sie **Employee_ID** auf die Mitarbeiter-ID eines realen Benutzers in Ihrem Workday-Mandanten fest. Legen Sie **wd:version** auf die WWS-Version fest, die Sie verwenden möchten. Wählen Sie einen Benutzer aus, für den das Attribut aufgefüllt ist, das Sie extrahieren möchten.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01704030ee3142cac9a328e1a3edc024651919a0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67605230"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127908"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Einrichten von Warnungen zu VPN Gateway-Metriken
 
@@ -71,4 +71,4 @@ Die folgenden Beispielschritte erstellen für Folgendes eine Warnung für ein Ga
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren von Warnungen für Tunneldiagnoseprotokolle finden Sie unter [Einrichten von Warnungen für Diagnoseprotokolle von VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
+Informationen zum Konfigurieren von Warnungen für Tunnelressourcenprotokolle finden Sie unter [Einrichten von Warnungen für Ressourcenprotokolle von VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).

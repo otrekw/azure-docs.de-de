@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da995afba1dc8eff295c9b724a78da95b9caac85
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653977"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105657"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -98,11 +98,11 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 ### <a name="view-fraud-reports"></a>Anzeigen von Betrugsberichten
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Anmeldungen** aus. Der Betrugsbericht ist jetzt Teil...
-
+2. Klicken Sie auf **Azure Active Directory** > **Anmeldungen** > **Details zur Authentifizierung**. Der Betrugsbericht ist nun Bestandteil des Azure AD-Standardanmeldungsberichts und wird unter **Ergebnisdetails** angezeigt, da die mehrstufige Authentifizierung verweigert und Betrugscode eingegeben wurde.
+ 
 ## <a name="notifications"></a>Benachrichtigungen
 
-Konfigurieren Sie hier E-Mail-Adressen für Benutzer, die E-Mails mit Betrugswarnungen erhalten.
+Konfigurieren Sie hier Ihre E-Mail-Adressen für Benutzer, die unter **Azure Active Directory** > **Sicherheit** > **Multi-Factor Authentication** > **Benachrichtigungen** E-Mails mit Betrugswarnungen erhalten.
 
 ![Benachrichtigungsbeispiel für eine E-Mail mit Betrugswarnung](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 

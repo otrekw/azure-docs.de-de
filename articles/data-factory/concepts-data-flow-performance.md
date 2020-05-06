@@ -6,15 +6,17 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/27/2020
+ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409841"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188761"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Mapping Data Flow-Funktion in Azure Data Factory bietet eine codefreie Schnittstelle zum Entwerfen, Bereitstellen und Orchestrieren von Datentransformationen in beliebigen Größenordnungen. Wenn Sie mit der Mapping Data Flow-Funktion nicht vertraut sind, finden Sie weitere Informationen in der [Übersicht über Mapping Data Flow](concepts-data-flow-overview.md).
 
@@ -37,7 +39,7 @@ Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests fü
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Vergrößern der Computegröße in Azure Integration Runtime
 
-Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten.
+Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten. ADF-Datenflüsse nutzen Spark für die Compute-Engine. Die Spark-Umgebung funktioniert sehr gut für speicheroptimierte Ressourcen.
 * Versuchen Sie es mit einem **computeoptimierten** Cluster, wenn die Verarbeitungsrate höher als die Eingaberate sein soll.
 * Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit höher.
 
@@ -49,7 +51,11 @@ Weitere Informationen zum Erstellen einer Integration Runtime finden Sie unter [
 
 Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure Integration Runtime verwendet, die automatisch für jede Data Factory erstellt wird. Diese standardmäßige Azure Integration Runtime ist auf acht Kerne festgelegt, d.h. vier für einen Treiberknoten und vier für einen Workerknoten, wobei die Eigenschaften für „Compute allgemein“ verwendet werden. Beim Testen mit größeren Datenmengen können Sie Ihren Debugcluster vergrößern, indem Sie eine Azure Integration Runtime mit umfangreicheren Konfigurationen erstellen und diese neue Azure Integration Runtime auswählen, wenn Sie das Debuggen aktivieren. Dadurch wird ADF angewiesen, diese Azure Integration Runtime für die Datenvorschau und das Debuggen der Pipeline mit Datenflüssen zu verwenden.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimierung für Azure SQL-Datenbank und Azure SQL Data Warehouse
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Verkürzen der Computestartzeit für Cluster mit TTL
+
+In der Azure IR gibt es unter den Datenflusseigenschaften eine Eigenschaft, mit der Sie einen Pool aus Clustercomputeressourcen für Ihre Factory einrichten können. Mit diesem Pool können Sie Datenflussaktivitäten sequenziell zur Ausführung übermitteln. Wenn der Pool eingerichtet ist, benötigt der bedarfsgesteuerte Spark-Cluster 1-2 Minuten für jeden nachfolgenden Auftrag. Die anfängliche Einrichtung des Ressourcenpools dauert etwa 6 Minuten. Geben Sie in der TTL-Einstellung (Time-To-Live) an, wie lange der Ressourcenpool beibehalten werden soll.
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimierung für Azure SQL-Datenbank und Azure SQL Data Warehouse – Synapse
 
 ### <a name="partitioning-on-source"></a>Partitionierung für die Quelle
 
@@ -145,7 +151,13 @@ Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken g
 
 ## <a name="join-performance"></a>Verknüpfungsleistung
 
-Das Verwalten der Leistung von Verknüpfungen in Ihrem Datenfluss ist ein sehr gängiger Vorgang, den Sie während des Lebenszyklus Ihrer Datentransformationen ausführen. In ADF müssen Daten in Datenflüssen nicht vor Verknüpfungen sortiert werden, da diese Vorgänge in Spark als Hashjoins ausgeführt werden. Sie können jedoch mit der Optimierung der Verknüpfung „Broadcast“ von einer verbesserten Leistung profitieren. Hierdurch werden Zufallswiedergaben vermieden, indem die Inhalte von beiden Seiten Ihrer Verknüpfungsbeziehung per Push in den Spark-Knoten übertragen werden. Dies funktioniert gut bei kleineren Tabellen, die für Verweissuchvorgänge verwendet werden. Größere Tabellen, die möglicherweise nicht in den Arbeitsspeicher des Knotens passen, sind für die Broadcastoptimierung wenig geeignet.
+Das Verwalten der Leistung von Verknüpfungen in Ihrem Datenfluss ist ein sehr gängiger Vorgang, den Sie während des Lebenszyklus Ihrer Datentransformationen ausführen. In ADF müssen Daten in Datenflüssen nicht vor Verknüpfungen sortiert werden, da diese Vorgänge in Spark als Hashjoins ausgeführt werden. Sie können jedoch von der verbesserten Leistung mit der Join-Optimierung „Broadcast“ (Übertragen) profitieren, die für die Transformationen „Joins“, „Exists“ und „Lookup“ gilt.
+
+Hierdurch werden dynamische Zufallswiedergaben vermieden, indem die Inhalte von beiden Seiten Ihrer Verknüpfungsbeziehung per Push in den Spark-Knoten übertragen werden. Dies funktioniert gut bei kleineren Tabellen, die für Verweissuchvorgänge verwendet werden. Größere Tabellen, die möglicherweise nicht in den Arbeitsspeicher des Knotens passen, sind für die Broadcastoptimierung wenig geeignet.
+
+Die empfohlene Konfiguration für Datenflüsse mit vielen Join-Vorgängen ist die Beibehaltung der Optimierung auf „Auto“ (für „Broadcast“) und die Verwendung einer arbeitsspeicheroptimierten Azure Integration Runtime-Konfiguration. Wenn bei den Datenflussausführungen Speicherfehler oder Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung. Optional können Sie den Datenfluss anweisen, nur die linke oder rechte Seite des Joins bzw. beide Seiten weiterzugeben.
+
+![Broadcasteinstellungen](media/data-flow/newbroad.png "Broadcasteinstellungen")
 
 Eine andere Optimierung der Verknüpfung besteht darin, ihre Verknüpfungen so zu erstellen, dass die Spark-Tendenz zum Implementieren von Kreuzprodukten vermieden wird. Wenn Sie beispielsweise Literalwerte in Ihre Verknüpfungsbedingungen einbeziehen, kann Spark dies zuerst als eine Anforderung zur Ausführung eines vollständigen kartesischen Produkts erkennen und dann die verknüpften Werte herausfiltern. Wenn Sie aber sicherstellen, dass es auf beiden Seiten Ihrer Verknüpfungsbedingung Spaltenwerte gibt, können Sie dieses durch Spark ausgelöste kartesische Produkt vermeiden und die Leistung Ihrer Verknüpfungen und Datenflüsse verbessern.
 

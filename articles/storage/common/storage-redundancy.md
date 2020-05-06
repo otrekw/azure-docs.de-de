@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228326"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81481936"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -100,7 +100,7 @@ Ein Schreibvorgang wird zunächst an den primären Speicherort übertragen und m
 
 Mit geozonenredundantem Speicher (GZRS, Vorschauversion) wird die Hochverfügbarkeit durch Redundanz über Verfügbarkeitszonen hinweg mit dem Schutz vor regionalen Ausfällen kombiniert, der durch Georeplikation bereitgestellt wird. Daten in einem GZRS-Speicherkonto werden über drei [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) in die primäre Region kopiert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen. Microsoft empfiehlt die Verwendung von GZRS für Anwendungen, die maximale Konsistenz, Dauerhaftigkeit und Verfügbarkeit, hervorragende Leistung und Resilienz bei der Notfallwiederherstellung erfordern.
 
-Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall beständig gespeichert, nach dem die primäre Region nicht mehr wiederherstellbar ist. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen.
+Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall, nach dem die primäre Region nicht mehr wiederhergestellt werden kann, beständig gespeichert. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen.
 
 Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md). GZRS und RA-GZRS unterstützen Blockblobs, Seitenblobs (mit Ausnahme von VHD-Datenträgern), Dateien, Tabellen und Warteschlangen.
 
@@ -148,9 +148,9 @@ In der folgenden Tabelle wird gezeigt, wie dauerhaft und verfügbar Ihre Daten i
 | Szenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (Vorschauversion)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Ein Knoten innerhalb eines Rechenzentrums steht nicht mehr zur Verfügung.                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
-| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                              | Ja                              | Ja                                  | Ja                                  |
-| Ein regionsweiter Ausfall tritt auf.                                                                                     | Nein                              | Nein                               | Ja                                  | Ja                                  |
-| Wenn die primäre Region nicht verfügbar ist, erfolgt der Lesezugriff in der sekundären Region. | Nein                              | Nein                               | Ja (mit RA-GRS)                                   | Ja (mit RA-GZRS)                                 |
+| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                               | Ja                              | Ja                                  | Ja                                  |
+| Ein regionsweiter Ausfall tritt auf.                                                                                     | Nein                               | Nein                                | Ja                                  | Ja                                  |
+| Wenn die primäre Region nicht verfügbar ist, erfolgt der Lesezugriff in der sekundären Region. | Nein                               | Nein                                | Ja (mit RA-GRS)                                   | Ja (mit RA-GZRS)                                 |
 | Prozentuale Dauerhaftigkeit von Objekten über ein bestimmtes Jahr<sup>1</sup>                                          | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
 | Unterstützte Speicherkontotypen<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
 | Verfügbarkeits-SLA für Leseanforderungen<sup>1</sup>  | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GRS | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GZRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GZRS |
@@ -160,7 +160,7 @@ In der folgenden Tabelle wird gezeigt, wie dauerhaft und verfügbar Ihre Daten i
 
 <sup>2</sup> Weitere Informationen zu Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
-Alle Daten für alle Typen von Speicherkonten werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert.
+Alle Daten für alle Typen von Speicherkonten und [alle Ebenen (einschließlich Archiv)](../blobs/storage-blob-storage-tiers.md) werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert.
 
 Die Preise für die verschiedenen Redundanzoptionen finden Sie unter [Azure Storage – Preise](https://azure.microsoft.com/pricing/details/storage/).
 

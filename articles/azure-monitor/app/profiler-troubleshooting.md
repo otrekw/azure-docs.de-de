@@ -6,19 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671561"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81640962"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
 ## <a name="active-issues"></a>Aktive Issues
 
-* Die Profilerstellung für ASP.NET Core 3.x-Anwendungen wird noch nicht unterstützt.
-  * Wenn Sie einen Profiler benötigen, können Sie als Problemumgehung [Application Insights Profiler für ASP.NET Core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) verwenden. Der Profiler ist für Linux angegeben, funktioniert aber auch mit .NET Core-Anwendungen ab Version 3.0 unter Windows. Weitere Informationen finden Sie unter [Unterstützte Versionen](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions).
+* Ab sofort bietet Azure App Services Unterstützung für die Profilerstellung für ASP.NET Core 3.x-Anwendungen.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Allgemeine Problembehandlung
 
