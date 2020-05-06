@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75748663"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129204"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
 
@@ -164,10 +164,10 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 | CorrelationId | Die optionale GUID, die vom Client übergeben wird. Dieser Wert kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
 | Identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
 | Ebene | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
-| Position | Gibt den Standort der Anmeldeaktivität an. |
+| Standort | Gibt den Standort der Anmeldeaktivität an. |
 | Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
-* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
+* [Weitere Informationen zu Protokollen der Azure-Plattform](../../azure-monitor/platform/platform-logs-overview.md)

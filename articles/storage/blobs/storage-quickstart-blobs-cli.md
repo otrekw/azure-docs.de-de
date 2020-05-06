@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 04/23/2020
 ms.author: tamram
-ms.openlocfilehash: 2e1b1ac2ea315759b18dc882b98837bca0a84d46
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061444"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176684"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle
 
@@ -72,7 +72,7 @@ az storage account create \
     --resource-group <resource-group> \
     --location <location> \
     --sku Standard_ZRS \
-    --encryption blob
+    --encryption-services blob
 ```
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
@@ -163,7 +163,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie Dateien zwischen einem lokalen Dateisystem und einem Container in Azure Blobspeicher übertragen. Weitere Informationen zum Arbeiten mit Blobs in Azure Storage finden Sie im Tutorial zum Arbeiten mit Azure Blob Storage.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie Dateien zwischen einem lokalen Dateisystem und einem Container in Azure Blobspeicher übertragen. Weitere Informationen zur Verwendung des Blobspeichers mit der Azure CLI finden Sie im Artikel mit den Azure CLI-Beispielen für Blobspeicher.
 
 > [!div class="nextstepaction"]
-> [Vorgehensweise: Blob Storage-Vorgänge mit der Azure-Befehlszeilenschnittstelle](storage-how-to-use-blobs-cli.md)
+> [Azure CLI-Beispiele für Azure Blob Storage](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

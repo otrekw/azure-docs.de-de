@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969243"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185590"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -247,7 +247,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer HDInsightSpark-Aktivitä
 
 ### <a name="verify-the-results"></a>Überprüfen der Ergebnisse
 
-1. Starten Sie Jupyter Notebook für Ihren HDInsight Spark-Cluster, indem Sie [diese Website](https://CLUSTERNAME.azurehdinsight.net/jupyter) aufrufen. Sie können auch ein Clusterdashboard für Ihren HDInsight Spark-Cluster und dann Jupyter Notebook starten.
+1. Starten Sie Jupyter Notebook für Ihren HDInsight Spark-Cluster, indem Sie zu `https://CLUSTERNAME.azurehdinsight.net/jupyter` wechseln. Sie können auch ein Clusterdashboard für Ihren HDInsight Spark-Cluster und dann Jupyter Notebook starten.
 
 1. Wählen Sie auf **Neu** > **PySpark** aus, um ein neues Notebook zu starten.
 
@@ -327,17 +327,17 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Der Name der Aktivität in der Pipeline. | Ja |
-| description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein |
+| description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
 | type | Diese Eigenschaft muss auf „HDInsightSpark“ festgelegt werden. | Ja |
 | linkedServiceName | Name des mit HDInsight verknüpften Diensts, in dem das Spark-Programm ausgeführt wird. | Ja |
 | rootPath | Der Blobcontainer und -ordner mit der Spark-Datei. Für den Dateinamen wird zwischen Groß- und Kleinschreibung unterschieden. | Ja |
 | entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
-| className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein |
-| Argumente | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein |
-| proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein |
-| sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt werden. | Nein |
-| getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Speicher kopiert werden, der vom HDInsight-Cluster verwendet oder von „sparkJobLinkedService“ angegeben wird. Zulässige Werte sind “Keine“, „Immer“ oder „Fehler“. Der Standardwert lautet „Keine“. | Nein |
-| sparkJobLinkedService | Der verknüpfte Speicherdienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält. Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. | Nein |
+| className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein  |
+| Argumente | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein  |
+| proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein  |
+| sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt sind. | Nein  |
+| getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Speicher kopiert werden, der vom HDInsight-Cluster verwendet oder von „sparkJobLinkedService“ angegeben wird. Zulässige Werte sind “Keine“, „Immer“ oder „Fehler“. Der Standardwert lautet „Keine“. | Nein  |
+| sparkJobLinkedService | Der verknüpfte Speicherdienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält. Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. | Nein  |
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten keine Inlineskripts. Spark-Aufträge lassen sich zudem besser erweitern als Pig- oder Hive-Aufträge. Bei Spark-Aufträgen können Sie mehrere Abhängigkeiten wie z.B. JAR-Pakete (im Java-CLASSPATH platziert), Python-Dateien (im PYTHONPATH platziert) sowie beliebige andere Dateien bereitstellen.
@@ -348,11 +348,11 @@ Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpf
 | ---- | ----------- | -------- | ---- |
 | erforderlich. | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |
-| ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein | Ordner |
-| ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein | Ordner |
-| ./files | Alle Dateien in diesem Ordner werden hochgeladen und im Executor-Arbeitsverzeichnis platziert. | Nein | Ordner |
-| ./archives | Alle Dateien in diesem Ordner sind nicht komprimiert. | Nein | Ordner |
-| ./logs | Der Ordner, in dem Protokolle aus dem Spark-Cluster gespeichert werden.| Nein | Ordner |
+| ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein  | Ordner |
+| ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein  | Ordner |
+| ./files | Alle Dateien in diesem Ordner werden hochgeladen und im Executor-Arbeitsverzeichnis platziert. | Nein  | Ordner |
+| ./archives | Alle Dateien in diesem Ordner sind nicht komprimiert. | Nein  | Ordner |
+| ./logs | Der Ordner, in dem Protokolle aus dem Spark-Cluster gespeichert werden.| Nein  | Ordner |
 
 Hier finden Sie ein Beispiel für einen Speicher mit zwei Spark-Auftragsdateien in dem Azure-Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist:
 

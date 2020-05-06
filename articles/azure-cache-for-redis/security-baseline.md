@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 364b87e4d64b8cc65fdf293032f4340bddec957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474167"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195985"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-Sicherheitsbaseline für Azure Cache for Redis
 
@@ -28,7 +28,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
 
-**Leitfaden**: Stellen Sie Azure Cache for Redis in einem virtuellen Netzwerk (VNet) bereit. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden.
+**Leitfaden**: Stellen Sie Azure Cache for Redis in einem virtuellen Netzwerk (VNet) bereit. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden.
 
 Sie können auch Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. Wenn Firewallregeln konfiguriert werden, können nur Clientverbindungen aus dem angegebenen IP-Adressbereich eine Verbindung mit dem Cache herstellen.
 
@@ -44,7 +44,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von VNets, Subnetzen und Netzwerkkarten (NICs)
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von VNETs, Subnetzen und Netzwerkkarten (NICs)
 
 **Leitfaden**: Wenn virtuelle Computer (VMs) im gleichen virtuellen Netzwerk wie Ihre Azure Cache for Redis-Instanz bereitgestellt werden, können Sie Netzwerksicherheitsgruppen (NSG) verwenden, um das Risiko der Datenexfiltration zu verringern. Aktivieren Sie NSG-Flussprotokolle, und senden Sie Protokolle zwecks Datenverkehrsüberwachung an ein Azure Storage-Konto. Sie können auch NSG-Flussprotokolle an einen Log Analytics-Arbeitsbereich senden und Traffic Analytics verwenden, um Einblicke in den Datenverkehrsfluss in Ihrer Azure-Cloud zu ermöglichen. Einige Vorteile von Traffic Analytics sind die Möglichkeit, die Netzwerkaktivität zu visualisieren und Hotspots zu erkennen, Sicherheitsbedrohungen zu identifizieren, Datenverkehrsflussmuster zu verstehen und Netzwerkfehlkonfigurationen zu ermitteln.
 
@@ -104,7 +104,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Bereitstellen von netzwerkbasierten Angriffserkennungs-/Eindringschutzsystemen (IDS/IPS)
 
-**Leitfaden**: Bei Verwendung von Azure Cache for Redis mit Ihren Webanwendungen, die in Azure App Service- oder Compute-Instanzen ausgeführt werden, stellen Sie alle Ressourcen innerhalb eines virtuellen Azure-Netzwerks (VNet) bereit und schützen diese mit einer Azure Web Application Firewall (WAF) für Web Application Gateway. Konfigurieren Sie für WAF die Ausführung im „Präventionsmodus“. In diesem Modus werden Eindringversuche und Angriffe blockiert, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme des Typs 403 (nicht autorisierter Zugriff), und die Verbindung wird getrennt. Der Schutzmodus hält solche Angriffe weiterhin in den WAF-Protokollen fest.
+**Leitfaden**: Bei Verwendung von Azure Cache for Redis mit Ihren Webanwendungen, die in Azure App Service- oder Compute-Instanzen ausgeführt werden, stellen Sie alle Ressourcen innerhalb eines virtuellen Azure-Netzwerks (VNet) bereit und schützen diese mit einer Azure Web Application Firewall (WAF) für Web Application Gateway. Konfigurieren Sie für WAF die Ausführung im „Präventionsmodus“. In diesem Modus werden Eindringversuche und Angriffe blockiert, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme vom Typ 403 (nicht autorisierter Zugriff), und die Verbindung wird getrennt. Der Schutzmodus hält solche Angriffe weiterhin in den WAF-Protokollen fest.
 
 Wählen Sie alternativ ein Angebot in Azure Marketplace aus, das IDS-/IPS-Funktionalität mit Funktionen zur Nutzlastuntersuchung und/oder Anomalieerkennung unterstützt.
 
@@ -406,7 +406,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 Bereitstellen von Azure AD Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Grundlegendes zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Informationen zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -709,9 +709,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Leitfaden**: Verwenden Sie nach Bedarf Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Azure Cache for Redis-Instanzen und damit verbundenen Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für die Ressourcentypen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
 
-- Nicht zulässige Ressourcentypen
+- Not allowed resource types (Unzulässige Ressourcentypen)
 
 - Zulässige Ressourcentypen
 
@@ -727,7 +727,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Verwalten eines Bestands genehmigter Azure-Ressourcen und Softwaretitel
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung gilt für Computeressourcen und Azure allgemein.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen und Azure als Ganzes vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -735,7 +735,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -765,7 +765,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Entfernen nicht genehmigter Azure-Ressourcen und Softwareanwendungen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung gilt für Computeressourcen und Azure allgemein.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen und Azure als Ganzes vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -863,7 +863,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
+**Leitfaden**: Verwenden Sie die Azure Policy-Einstellungen [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre Azure-Ressourcen zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

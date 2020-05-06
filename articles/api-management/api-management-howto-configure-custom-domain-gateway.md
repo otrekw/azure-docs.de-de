@@ -9,21 +9,18 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335944"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203181"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
 Wenn Sie ein [selbstgehostetes Azure API Management-Gateway](self-hosted-gateway-overview.md) bereitstellen, wird ihm kein Hostname zugewiesen, und es muss über seine IP-Adresse darauf verwiesen werden. In diesem Artikel erfahren Sie, wie Sie einem selbstgehosteten Gateway einen vorhandenen benutzerdefinierten DNS-Namen (auch als Hostname bezeichnet) zuordnen.
-
-> [!NOTE]
-> Das Feature „selbstgehostetes Gateway“ ist als Vorschauversion verfügbar. Während der Vorschauphase ist das selbstgehostete Gateway nur in den Tarifen „Developer“ und „Premium“ ohne zusätzliche Kosten verfügbar. Der Tarif „Developer“ ist auf eine Bereitstellung mit einem einzelnen selbstgehosteten Gateway beschränkt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +42,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 1. Wählen Sie **Zertifikate** unter **Sicherheit** aus.
 2. Wählen Sie **+ Hinzufügen**.
-3. Geben Sie im Feld **Id** einen Ressourcennamen für das Zertifikat ein.
+3. Geben Sie in das Feld **ID** einen Ressourcennamen für das Zertifikat ein.
 4. Wählen Sie die Datei aus, die das Zertifikat (.PFX) enthält, indem Sie das Feld **Zertifikat** oder das Ordnersymbol daneben auswählen.
 5. Geben Sie das Kennwort für das Zertifikat in das Feld **Kennwort** ein.
 6. Wählen Sie **Erstellen** aus, um das Zertifikat dem API Management-Dienst hinzuzufügen.

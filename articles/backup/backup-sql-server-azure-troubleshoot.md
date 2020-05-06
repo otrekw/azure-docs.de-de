@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 8d49adb0ab741903ccb2989cfeb4ceaef2e8a38d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408615"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183329"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -171,27 +171,25 @@ Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbi
 
 Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere der folgenden Symptome vorhanden sind:
 
-* Für alle Vorgänge (z.B. Sicherung, Wiederherstellung und Sicherungskonfiguration) tritt auf der VM ein Fehler mit einem der folgenden Fehlercodes auf: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Wenn im Bereich **Sicherungsstatus** für das Sicherungselement der Status **Nicht erreichbar** angezeigt wird, schließen Sie alle anderen Gründe aus, die zum gleichen Status führen könnten:
+- Für alle Vorgänge (z.B. Sicherung, Wiederherstellung und Sicherungskonfiguration) tritt auf der VM ein Fehler mit einem der folgenden Fehlercodes auf: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+- Wenn im Bereich **Sicherungsstatus** für das Sicherungselement der Status **Nicht erreichbar** angezeigt wird, schließen Sie alle anderen Gründe aus, die zum gleichen Status führen könnten:
 
-  * Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM
-  * Herunterfahren des virtuellen Computers, sodass die Sicherungen nicht durchgeführt werden können
-  * Netzwerkfehler
+  - Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM
+  - Herunterfahren des virtuellen Computers, sodass die Sicherungen nicht durchgeführt werden können
+  - Netzwerkfehler
 
    ![Wiederkehrende Registrierung der VM](./media/backup-azure-sql-database/re-register-vm.png)
 
-
-
-* Bei einer Always On-Verfügbarkeitsgruppe: Für die Sicherungen ist ein Fehler aufgetreten, nachdem Sie die Sicherungseinstellung geändert haben, oder nach einem Failover.
+- Bei einer Always On-Verfügbarkeitsgruppe: Für die Sicherungen ist ein Fehler aufgetreten, nachdem Sie die Sicherungseinstellung geändert haben, oder nach einem Failover.
 
 Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursachen kommen:
 
-* Eine Erweiterung wurde gelöscht oder im Portal deinstalliert.
-* Eine Erweiterung wurde in der **Systemsteuerung** der VM unter **Programm deinstallieren oder ändern** deinstalliert.
-* Die VM wurde über eine direkte Datenträgerwiederherstellung rechtzeitig wiederhergestellt.
-* Die VM wurde für längere Zeit heruntergefahren, sodass die Erweiterungskonfiguration dafür abgelaufen ist.
-* Die VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt.
-* Einer der Verfügbarkeitsgruppenknoten hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann passieren, wenn die Verfügbarkeitsgruppe im Tresor registriert ist, oder wenn ein neuer Knoten hinzugefügt wird.
+- Eine Erweiterung wurde gelöscht oder im Portal deinstalliert.
+- Eine Erweiterung wurde in der **Systemsteuerung** der VM unter **Programm deinstallieren oder ändern** deinstalliert.
+- Die VM wurde über eine direkte Datenträgerwiederherstellung rechtzeitig wiederhergestellt.
+- Die VM wurde für längere Zeit heruntergefahren, sodass die Erweiterungskonfiguration dafür abgelaufen ist.
+- Die VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt.
+- Einer der Verfügbarkeitsgruppenknoten hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann passieren, wenn die Verfügbarkeitsgruppe im Tresor registriert ist, oder wenn ein neuer Knoten hinzugefügt wird.
 
 In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf der VM auszulösen. Anweisungen zum Durchführen dieser Aufgabe in PowerShell finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup).
 
@@ -221,7 +219,7 @@ Wenn die Zeichenfolgegröße des Inhalts 20.000 Bytes überschreitet, werden die
 
 ### <a name="override-the-default-target-restore-file-path"></a>Außerkraftsetzen des Standard-Zieldateipfads für die Wiederherstellung
 
-Sie können den Zieldateipfad für die Wiederherstellung während des Wiederherstellungsvorgangs außer Kraft setzen, indem Sie eine JSON-Datei mit der Zuordnung der Datenbankdatei zum Wiederherstellungszielpfad platzieren. Erstellen Sie eine Datei `database_name.json`, und speichern Sie sie am Speicherort *C:\Programme\Azure Workload Backup\bin\plugins\SQL*.
+Sie können den Zieldateipfad für die Wiederherstellung während des Wiederherstellungsvorgangs außer Kraft setzen, indem Sie eine JSON-Datei mit der Zuordnung der Datenbankdatei zum Wiederherstellungszielpfad platzieren. Erstellen Sie eine `database_name.json`-Datei, und platzieren Sie sie am Speicherort `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`.
 
 Der Inhalt der Datei sollte dieses Format haben:
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/12/2019
+ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457446"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81870516"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
@@ -25,7 +25,7 @@ Wenn eine sichere Übertragung erforderlich ist, müssen Aufrufe von Azure Stora
 
 Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Verschlüsselung führt zu einem Fehler, wenn für das Speicherkonto eine sichere Übertragung erforderlich ist. Beispiele für unsichere Verbindungen sind solche, die über SMB 2.1, SMB 3.0 ohne Verschlüsselung oder einige Versionen des Linux-SMB-Clients vorgenommen werden.
 
-Standardmäßig ist die Eigenschaft **Sichere Übertragung erforderlich** aktiviert, wenn Sie ein Speicherkonto im Azure-Portal erstellen. Sie ist jedoch deaktiviert, wenn Sie mit dem SDK ein Speicherkonto erstellen.
+Die Eigenschaft **Sichere Übertragung erforderlich** ist standardmäßig aktiviert, wenn Sie ein Speicherkonto erstellen.
 
 > [!NOTE]
 > Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird. Zudem werden klassische Speicherkonten nicht unterstützt.
@@ -65,7 +65,7 @@ Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen S
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Für dieses Beispiel ist Az-Version 0.7 des Azure PowerShell-Moduls oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für dieses Beispiel ist Az-Version 0.7 des Azure PowerShell-Moduls oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 

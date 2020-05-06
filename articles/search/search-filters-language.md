@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112067"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116280"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filtern nach Sprache in der kognitiven Azure-Suche 
 
@@ -32,7 +32,7 @@ Der Erfolg dieser Methode hängt von der Integrität der Feldinhalte ab. Die kog
 
 In der kognitiven Azure-Suche sind Abfragen auf einen einzelnen Index ausgerichtet. Entwickler, die sprachspezifische Zeichenfolgen in einer einzelnen Suchumgebung bereitstellen möchten, definieren üblicherweise dedizierte Felder, um die Werte zu speichern – also ein Feld für englische Zeichenfolgen, ein Feld für Französisch und so weiter. 
 
-In unseren Beispielen (etwa im [Immobilienbeispiel](search-get-started-portal.md) weiter unten) sind Ihnen wahrscheinlich bereits Felddefinitionen wie auf dem folgenden Screenshot aufgefallen. Dieses Beispiel zeigt die Sprachanalysezuweisungen für die Felder in diesem Index. Aus Leistungsgründen empfiehlt es sich, Felder mit Textinhalt bei der Volltextsuche mit einer Analysekomponente zu kombinieren, die die linguistischen Regeln der Zielsprache behandelt.
+Das folgende Beispiel stammt aus dem [Immobilienbeispiel](search-get-started-portal.md), das über mehrere Zeichenfolgenfelder verfügt, die Inhalte in verschiedenen Sprachen enthalten. Sehen Sie sich die Sprachanalysezuweisungen für die Felder in diesem Index an. Aus Leistungsgründen empfiehlt es sich, Felder mit Textinhalt bei der Volltextsuche mit einer Analysekomponente zu kombinieren, die die linguistischen Regeln der Zielsprache behandelt.
 
   ![](./media/search-filters-language/lang-fields.png)
 
@@ -58,7 +58,7 @@ parameters =
     };
 ```
 > [!Note]
-> Die Abfrage enthält zwar kein $filter-Argument, der Anwendungsfall ist jedoch eng mit Filterkonzepten verwandt, weshalb wir ihn als Filterszenario präsentieren.
+> Die Abfrage enthält zwar kein $filter-Argument, allerdings ist dieser Anwendungsfall eng mit Filterkonzepten verwandt, weshalb er als Filterszenario präsentiert wird.
 
 ## <a name="see-also"></a>Weitere Informationen
 

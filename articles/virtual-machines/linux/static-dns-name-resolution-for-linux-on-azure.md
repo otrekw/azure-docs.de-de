@@ -1,26 +1,19 @@
 ---
 title: Verwenden des internen DNS für die Auflösung von virtuellen Computernamen mit der Azure CLI
-description: Erfahren Sie, wie Sie über die Azure CLI virtuelle Netzwerkkarten erstellen und das interne DNS für die Auflösung von virtuellen Computernamen in Azure verwenden.
-services: virtual-machines-linux
-documentationcenter: ''
+description: Erfahren Sie, wie Sie mit der Azure CLI virtuelle Netzwerkkarten erstellen und das interne DNS für die VM-Namensauflösung in Azure verwenden.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034744"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81757846"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Erstellen von virtuellen Netzwerkkarten und Verwenden des internen DNS für die Auflösung von virtuellen Computernamen in Azure
 
@@ -34,7 +27,7 @@ Folgende Anforderungen müssen erfüllt sein:
 ## <a name="quick-commands"></a>Schnellbefehle
 Falls Sie die Aufgabe schnell durchführen müssen, finden Sie im folgenden Abschnitt eine Erläuterung der erforderlichen Befehle. Ausführlichere Informationen und Kontext zu den einzelnen Schritten finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)). Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
-Voraussetzungen: Ressourcengruppe, virtuelles Netzwerk und Subnetz, Netzwerksicherheitsgruppe mit eingehenden SSH-Verbindungen.
+Voraussetzungen: Ressourcengruppe, virtuelles Netzwerk und Subnetz, Netzwerksicherheitsgruppe mit eingehenden SSH-Verbindungen
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Erstellen einer virtuellen Netzwerkkarte mit einem statischen internen DNS-Namen
 Erstellen Sie mit [az network nic create](/cli/azure/network/nic) die vNIC. Das Befehlszeilenschnittstellen-Flag `--internal-dns-name` dient zum Festlegen der DNS-Bezeichnung, die den statischen DNS-Namen für die vNIC bereitstellt. Das folgende Beispiel erstellt eine vNIC namens `myNic`, verbindet diese mit dem virtuellen Netzwerk `myVnet` und erstellt den internen DNS-Namenseintrag `jenkins`:

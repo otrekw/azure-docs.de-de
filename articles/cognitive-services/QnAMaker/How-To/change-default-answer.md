@@ -1,20 +1,20 @@
 ---
 title: 'Abrufen der Standardantwort: QnA Maker'
 description: Die Standardantwort wird zurückgegeben, wenn keine Entsprechung für die Frage vorliegt. Sie können die Standardantwort bei Bedarf anpassen.
-ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: fae5c38fd64435a3fae56862bad04e000916e88b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/22/2020
+ms.openlocfilehash: db5a79ec612a73066ac37365a1815841fafb3862
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76843275"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097097"
 ---
-# <a name="set-default-answer-for-a-knowledge-base"></a>Festlegen der Standardantwort für eine Wissensdatenbank
+# <a name="change-default-answer-for-a-qna-maker-resource"></a>Ändern der Standardantwort für eine QnA Maker-Ressource
 
 Die Standardantwort wird zurückgegeben, wenn keine Entsprechung für die Frage vorliegt. Sie können die Standardantwort bei Bedarf anpassen.
 
-## <a name="change-default-answer"></a>Ändern der Standardantwort
+## <a name="change-default-answer-in-the-azure-portal"></a>Ändern der Standardantwort im Azure-Portal
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und navigieren Sie zu der Ressourcengruppe, die den von Ihnen erstellten QnA Maker-Dienst darstellt.
 
@@ -32,4 +32,4 @@ Die Standardantwort wird zurückgegeben, wenn keine Entsprechung für die Frage 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Bots mit QnA Maker und LUIS](../tutorials/integrate-qnamaker-luis.md)
+* [Erstellen einer Wissensdatenbank](../How-to/manage-knowledge-bases.md)

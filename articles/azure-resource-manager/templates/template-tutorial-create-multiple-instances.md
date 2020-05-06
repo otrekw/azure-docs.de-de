@@ -2,15 +2,15 @@
 title: Erstellen mehrerer Ressourceninstanzen
 description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, um mehrere Azure-Ressourceninstanzen bereitzustellen.
 author: mumian
-ms.date: 04/08/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83afff3aa15caa1743f66eea9eaee541492b8d1c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260835"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82183829"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen
 
@@ -112,9 +112,40 @@ Weitere Informationen zum Erstellen mehrerer Instanzen finden Sie unter [Bereits
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie in der Visual Studio Code-Schnellstartanleitung im Abschnitt [Bereitstellen der Vorlage](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template).
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
+
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
+
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
+
+1. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
+
+    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
+    ```
+
+    ---
 
 Lassen Sie zum Auflisten aller drei Speicherkonten den --name-Parameter aus:
 
@@ -133,6 +164,7 @@ echo "Press [ENTER] to continue ..."
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
 $resourceGroupName = "${projectName}rg"
+
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```

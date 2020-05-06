@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a4140ffc0d4e97afabb1c3080951eeb75c792a8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76961577"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82109596"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -32,7 +32,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
 * [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
-* [Verwenden von Scheduled Events für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]
 * [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
 * [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]

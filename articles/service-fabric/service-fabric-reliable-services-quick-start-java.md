@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614212"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184145"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Erste Schritte mit Reliable Services in Java
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Wenn Sie sie einrichten müssen, wechseln Sie zu [Einrichten Ihrer Entwicklungsu
 Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
 
 * **Diensttyp**: Dies ist Ihre Dienstimplementierung. Sie wird durch die von Ihnen geschriebene Klasse definiert, mit der `StatelessService` und alle anderen darin verwendeten Codeelemente oder Abhängigkeiten erweitert werden, einschließlich eines Namens und der Versionsnummer.
-* **Instanz des benannten Diensts**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse.
+* **Benannte Dienstinstanz**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse.
 * **Diensthost**: Die benannten Dienstinstanzen, die Sie erstellen, müssen in einem Host ausgeführt werden. Der Diensthost ist nur ein Prozess, für den Instanzen Ihres Diensts ausgeführt werden können.
 * **Dienstregistrierung**: Bei der Registrierung werden alle Elemente zusammengeführt. Der Diensttyp muss bei der Service Fabric-Laufzeit in einem Diensthost registriert werden, damit von Service Fabric Instanzen davon für die Ausführung erstellt werden können.  
 
@@ -255,7 +255,7 @@ Bei der Bereitstellung der erstellten Anwendung wird genau wie bei anderen Servi
 
 Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendungspaket.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie unter `http://localhost:19080/Explorer` zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 > [!IMPORTANT]
 > Wenn Sie die Anwendung in einem sicheren Linux-Cluster in Azure bereitstellen möchten, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Services-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
