@@ -3,12 +3,12 @@ title: Übersicht über Service Health | Microsoft-Dokumentation
 description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuellen und zukünftigen Problemen und Wartungen der Azure-Dienste betroffen sind.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898436"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146913"
 ---
 # <a name="service-health-overview"></a>Service Health-Übersicht
 
@@ -20,7 +20,7 @@ Service Health verfolgt vier Typen von Integritätsereignissen nach, die sich au
 
 1. **Dienstprobleme**: Probleme in den Azure-Diensten, die Sie momentan betreffen. 
 2. **Geplante Wartung**: Anstehende Wartung, die sich in der Zukunft auf die Verfügbarkeit Ihrer Dienste auswirken kann.  
-3. **Integritätsempfehlungen**: Änderungen in Azure-Diensten, die Ihre Aufmerksamkeit erfordern. Beispielsweise, wenn Azure-Funktionen veraltet sind oder Sie ein Nutzungskontingent überschreiten.
+3. **Integritätsempfehlungen**: Änderungen in Azure-Diensten, die Ihre Aufmerksamkeit erfordern. Beispiele hierfür sind das Einstellen von Azure-Features oder Upgradeanforderungen (z. B. ein Upgrade auf ein unterstütztes PHP-Framework).
 4. **Sicherheitsempfehlungen (Vorschau)** : Sicherheitsbezogene Benachrichtigungen, die sich auf die Verfügbarkeit Ihrer Azure-Dienste auswirken können.
 
 > [!NOTE]
@@ -41,6 +41,12 @@ Die Ansicht **Dienstprobleme** zeigt laufende Probleme in Azure-Diensten an, die
 Wählen Sie die Registerkarte **Potenzielle Auswirkung** aus, um die spezifische Liste der Ressourcen in Ihrem Besitz anzuzeigen, die von dem Problem betroffen sein könnten. Sie können eine CSV-Liste dieser Ressourcen herunterladen, um diese für Ihr Team freizugeben.
 
 ![Verwalten von Dienstproblemen – Auswirkung](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>Anzeigen von neu auftretenden Problemen, die sich möglicherweise auf Ihre Dienste auswirken
+
+Es gibt Situationen, in denen weitverbreitete Dienstprobleme möglicherweise auf der [Azure-Statusseite](https://status.azure.com) gepostet werden, bevor eine gezielte Kommunikation an betroffene Kunden gesendet werden kann. Aktive Probleme auf der Azure-Statusseite werden in Service Health als *Neu auftretende Probleme* angezeigt, um sicherzustellen, dass Azure Service Health einen umfassenden Überblick über Probleme bietet, von denen Sie möglicherweise betroffen sind. Wenn ein Ereignis auf der Azure-Statusseite aktiv ist, wird in Service Health ein Banner mit neu auftretenden Problemen angezeigt. Klicken Sie auf das Banner, um die vollständigen Details für das Problem anzuzeigen.
+
+![Neu auftretendes Dienstproblem](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Abrufen von Links und herunterladbaren Erläuterungen 
 

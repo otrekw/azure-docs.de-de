@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – logisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156309"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192313"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logikfunktionen für ARM-Vorlagen
 
@@ -32,7 +32,7 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in I
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
-| zusätzliche Argumente |Nein |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
+| zusätzliche Argumente |Nein  |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -295,6 +295,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
@@ -315,7 +316,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
-| zusätzliche Argumente |Nein |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
+| zusätzliche Argumente |Nein  |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -357,8 +358,5 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
-* Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
+* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
 

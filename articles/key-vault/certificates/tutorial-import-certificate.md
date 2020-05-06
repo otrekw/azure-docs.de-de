@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 754f30f7931f9fad6a95328cbf8ab34f70cb75a0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426109"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82105572"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Tutorial: Importieren eines Zertifikats in Azure Key Vault
 
@@ -45,7 +45,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
 4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
 5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diesen Schnellstart verwenden wir **Example-Vault**. 
+    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diese Schnellstartanleitung verwenden wir **Example-Vault**. 
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
@@ -76,11 +76,14 @@ Zum Importieren eines Zertifikats in den Tresor benötigen Sie eine PEM- oder PF
     - **Methode der Zertifikaterstellung**: Importieren.
     - **Zertifikatsname**: ExampleCertificate
     - **Zertifikatdatei hochladen**: Wählen Sie die Zertifikatsdatei vom Datenträger aus.
-    - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Erstellen**.
+    - **Kennwort**: Wenn Sie eine kennwortgeschützte Zertifikatsdatei hochladen, geben Sie das Kennwort hier an. Lassen Sie dieses Feld andernfalls leer. Nachdem die Zertifikatsdatei erfolgreich importiert wurde, entfernt Key Vault das Kennwort.
+4. Klicken Sie auf **Erstellen**.
 
 ![Zertifikateigenschaften](../media/certificates/tutorial-import-cert/cert-import.png)
 
-Nachdem Sie die Meldung erhalten haben, dass das Zertifikat erfolgreich importiert wurde, können Sie in der Liste auf das Zertifikat klicken. Daraufhin werden einige der Eigenschaften angezeigt. 
+Wenn Sie ein Zertifikat durch **Importieren** hinzufügen, füllt Azure Key Vault die Zertifikatsparameter automatisch auf (z. B. Gültigkeitsdauer, Ausstellername, Aktivierungsdatum usw.).
+
+Nachdem Sie die Meldung erhalten haben, dass das Zertifikat erfolgreich importiert wurde, können Sie in der Liste darauf klicken, um seine Eigenschaften anzuzeigen. 
 
 ![Zertifikateigenschaften](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
@@ -101,6 +104,22 @@ az keyvault certificate import --file
 ```
 Weitere Informationen zu Parametern finden Sie [hier](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
 
+Nachdem Sie das Zertifikat importiert haben, können Sie es mit dem Befehl [certificate show](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) anzeigen.
+
+
+```azurecli
+az keyvault certificate show [--id]
+                             [--name]
+                             [--only-show-errors]
+                             [--subscription]
+                             [--vault-name]
+                             [--version]
+```
+
+
+
+Nun haben Sie einen Schlüsseltresor erstellt, ein Zertifikat importiert und die Eigenschaften des Zertifikats angezeigt.
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Andere Schnellstartanleitungen und Tutorials für Key Vault bauen auf dieser Schnellstartanleitung auf. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
@@ -115,6 +134,6 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 In diesem Tutorial haben Sie eine Key Vault-Instanz erstellt und ein Zertifikat importiert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
-- Informieren Sie sich ausführlicher über die [Verwaltung von Zertifikaten in Azure Key Vault](/archive/blogs/kv/manage-certificates-via-azure-key-vault).
+- Informieren Sie sich ausführlicher über die [Verwaltung der Zertifikaterstellung in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
 - Sehen Sie sich Beispiele für das [Importieren von Zertifikaten mithilfe von Rest-APIs](/rest/api/keyvault/importcertificate/importcertificate) an.
 - [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)

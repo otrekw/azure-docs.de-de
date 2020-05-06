@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78397569"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181157"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-Codebeispiele
 
@@ -47,3 +47,9 @@ Die folgenden Tabellen enthalten Links zu Beispielen für Anwendungen, z.B. iOS,
 | Beispiel | BESCHREIBUNG |
 |--------| ----------- |
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Eine Single-Page-Anwendung (SPA), die eine Web-API aufruft. Die Authentifizierung erfolgt mit Azure AD B2C über „MSAL.js“. |
+
+## <a name="saml-test-application"></a>SAML-Testanwendung
+
+| Beispiel | BESCHREIBUNG |
+|--------| ----------- |
+| [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML-Testanwendung zum Testen der Azure AD B2C-Instanz, die als SAML-Identitätsanbieter konfiguriert ist |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8997f5cd1bed06fab8ca90e7b1cdfcb3e5ec6b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313776"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186928"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -323,7 +323,8 @@ run = experiment.submit(automl_config, show_output=True)
 >Abhängigkeiten werden zunächst auf einem neuen Computer installiert.  Es dauert bis zu 10 Minuten, bevor die Ausgabe angezeigt wird.
 >Wenn Sie `show_output` auf `True` festlegen, wird die Ausgabe auf der Konsole angezeigt.
 
-### <a name="exit-criteria"></a>Beendigungskriterium
+### <a name="exit-criteria"></a><a name="exit"></a> Beendigungskriterien
+
 Es gibt einige Optionen, die Sie definieren können, um Ihr Experiment zu beenden.
 1. Keine Kriterien: Wenn Sie keine Beendigungsparameter definieren, wird das Experiment fortgesetzt, bis kein weiterer Fortschritt bei Ihrer primären Metrik erzielt wird.
 1. Nach einer Zeitspanne beenden: Wenn Sie `experiment_timeout_minutes` in Ihren Einstellungen verwenden, können Sie definieren, wie lange ein Experiment in Minuten ausgeführt werden soll.

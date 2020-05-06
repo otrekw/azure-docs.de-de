@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072699"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203266"
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
 
@@ -35,24 +35,14 @@ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Mana
 
 ## <a name="create-an-api"></a>Erstellen einer API
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und wählen Sie im Menü **APIs** aus.
 2. Wählen Sie im linken Menü die Option **+ API hinzufügen** aus.
-3. Wählen Sie in der Liste **Leere API** aus.
-
-    ![Leere API](media/add-api-manually/blank-api.png)
-4. Geben Sie Einstellungen für die API ein.
-
-    |**Name**|**Wert**|**Beschreibung**|
-    |---|---|---|
-    |**Anzeigename**|*Leere API*|Dieser Name wird im Entwicklerportal angezeigt.|
-    |**Name**|*blank-api*|Stellt einen eindeutigen Namen für die API bereit.|
-    |**Webdienst-URL** (optional)|*https://httpbin.org*| Wenn Sie eine API simulieren möchten, müssen Sie nichts eingeben. <br/>In diesem Fall geben Sie [https://httpbin.org](https://httpbin.org) ein. Dies ist ein öffentlicher Testdienst. <br/>Wenn Sie eine API importieren möchten, die automatisch einem Back-End zugeordnet wird, sehen Sie sich die Themen im Abschnitt [Verwandte Themen](#related-topics) an.|
-    |**URL-Schema**|*HTTPS*|Obwohl das Back-End in diesem Fall keinen sicheren HTTP-Zugriff hat, geben wir einen sicheren HTTPS-APIM-Zugriff auf das Back-End an. <br/>Diese Art von Szenario (HTTPS nach HTTP) wird als HTTPS-Beendigung bezeichnet. Sie können dies verwenden, wenn sich Ihre API in einem virtuellen Netzwerk befindet (in dem Sie wissen, dass der Zugriff sicher ist, auch wenn nicht HTTPS verwendet wird). <br/>Sie können die „HTTPS-Beendigung“ auch verwenden, um einige CPU-Zyklen zu sparen.|
-    |**URL-Suffix**|*hbin*| Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.|
-    |**Produkte**|*Unbegrenzt*|Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.<br/><br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/><br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unbegrenzt**.| 
+3. Wählen Sie in der Liste **Leere API** aus.  
+    ![Leere API](media/add-api-manually/blank-api.png)  
+4. Geben Sie Einstellungen für die API ein. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#-import-and-publish-a-backend-api) erläutert.
 5. Klicken Sie auf **Erstellen**.
 
-An diesem Punkt enthält APIM noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über APIM verfügbar gemacht wird, erhalten Sie den Fehler **404**.
+Zu diesem Zeitpunkt enthält API Management noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über API Management verfügbar gemacht wird, erhalten Sie den Fehler **404**.
 
 >[!NOTE] 
 > Wenn Sie eine API hinzufügen, macht APIM standardmäßig Vorgänge erst verfügbar, wenn Sie diese auf die Whitelist setzen. Dies gilt auch dann, wenn die API mit einem Back-End-Dienst verbunden ist. Um einen Vorgang Ihres Back-End-Diensts auf die Whitelist zu setzen, erstellen Sie einen APIM-Vorgang, der dem Back-End-Vorgang zugeordnet ist.

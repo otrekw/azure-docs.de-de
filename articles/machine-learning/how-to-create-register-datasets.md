@@ -11,18 +11,18 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 23984bdbcfc649c2bfe04a08787bc10149a1ed91
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682772"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231885"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets erstellen, um auf Daten für Ihre lokalen oder remotebasierten Experimente zuzugreifen.
+In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets erstellen, um auf Daten für Ihre lokalen oder remotebasierten Experimente zuzugreifen. Informationen dazu, welche Rolle Datasets im Workflow für den Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Datenzugriff in Azure Machine Learning](concept-data.md#data-workflow).
 
 Azure Machine Learning-Datasets ermöglichen Folgendes:
 
@@ -60,13 +60,11 @@ Es gibt zwei Arten von Datasettypen – abhängig davon, wie Benutzer sie beim 
 
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Dadurch erhalten Sie die Möglichkeit, die Daten in einem Pandas- oder Spark-Datenrahmen (DataFrame) zu materialisieren. Ein Objekt vom Typ `TabularDataset` kann auf der Grundlage von CSV-, TSV-, Parquet- und JSONL-Dateien sowie auf der Grundlage von SQL-Abfrageergebnissen erstellt werden. Eine umfassende Liste finden Sie unter [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
 
-* Die Klasse [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder unter öffentlichen URLs. Mithilfe dieser Methode können Sie die Dateien als FileDataset-Objekt in Ihre Compute-Instanz herunterladen oder einbinden. Die Dateien können in einem beliebigen Format vorliegen. Dies ermöglicht eine größere Bandbreite an Machine Learning-Szenarien (einschließlich Deep Learning).
-
-Weitere Informationen zu anstehenden API-Änderungen finden Sie im [Änderungshinweis für die Dataset-API](https://aka.ms/tabular-dataset).
+* Die Klasse [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder unter öffentlichen URLs. Mithilfe dieser Methode können Sie die Dateien als FileDataset-Objekt in Ihre Compute-Instanz herunterladen oder einbinden. Die Dateien können in einem beliebigen Format vorliegen. Dies ermöglicht eine größere Bandbreite an Machine Learning-Szenarien (einschließlich Deep Learning). 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 
-Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Da die Daten an ihrem Speicherort verbleiben, fallen keine zusätzlichen Speicherkosten an. Sowohl Datasets des Typs `TabularDataset` als auch des Typs `FileDataset` können mithilfe des Python SDK oder https://ml.azure.com erstellt werden.
+Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Da die Daten an ihrem Speicherort verbleiben, fallen keine zusätzlichen Speicherkosten an. Sowohl Datasets des Typs `TabularDataset` als auch des Typs `FileDataset` können mithilfe des Python SDK oder von Azure Machine Learning Studio unter https://ml.azure.com erstellt werden.
 
 Damit Azure Machine Learning auf die Daten zugreifen kann, müssen Datasets auf der Grundlage von Pfaden in [Azure-Datenspeichern](how-to-access-data.md) oder auf der Grundlage öffentlicher Web-URLs erstellt werden. 
 
@@ -77,12 +75,15 @@ So erstellen Sie Datasets auf der Grundlage eines [Azure-Datenspeichers](how-to-
 1. Vergewissern Sie sich, dass Sie für den registrierten Azure-Datenspeicher über Zugriff vom Typ `contributor` oder `owner` verfügen.
 
 2. Erstellen Sie das Dataset, indem Sie auf Pfade im Datenspeicher verweisen.
+
 > [!Note]
 > Ein Dataset kann aus mehreren Pfaden in mehreren Datenspeichern erstellt werden. Es gibt keine festen Grenzwerte für die Anzahl der Dateien oder die Datengröße, mit denen Sie ein Dataset erstellen können. Für jeden Datenpfad werden jedoch einige Anforderungen an den Speicherdienst gesendet, um zu prüfen, ob er auf eine Datei oder einen Ordner verweist. Dieser Aufwand kann zu einer Beeinträchtigung der Leistung oder zu einem Fehler führen. Ein Dataset, das auf einen Ordner mit 1000 Dateien verweist, bezieht sich auf einen Datenpfad. Es wird empfohlen, für eine optimale Leistung ein Dataset zu erstellen, das auf weniger als 100 Pfade in Datenspeichern verweist.
 
 #### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
 Verwenden Sie die Methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
+
+Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der gewünschte Datenspeicher anhand des Namens abgerufen. Anschließend werden die Speicherorte von Datenspeicher und Datei dem `path`-Parameter übergeben, um ein neues TabularDataset `weather_ds` zu erstellen.
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -95,14 +96,15 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 
-# create a TabularDataset from 3 paths in datastore
+# create a TabularDataset from 3 file paths in datastore
 datastore_paths = [(datastore, 'weather/2018/11.csv'),
                    (datastore, 'weather/2018/12.csv'),
                    (datastore, 'weather/2019/*.csv')]
+
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Beim Erstellen eines TabularDataset-Objekts werden Spaltendatentypen standardmäßig automatisch abgeleitet. Sollten die abgeleiteten Typen nicht Ihren Erwartungen entsprechen, können Sie den folgenden Code verwenden, um Spaltentypen anzugeben. Der Parameter `infer_column_type` ist nur für Datasets anwendbar, die aus durch Trennzeichen getrennten Dateien erstellt wurden. Sie können auch [mehr über unterstützte Datentypen erfahren](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
+Beim Erstellen eines TabularDataset-Objekts werden Spaltendatentypen standardmäßig automatisch abgeleitet. Sollten die abgeleiteten Typen nicht Ihren Erwartungen entsprechen, können Sie den folgenden Code verwenden, um Spaltentypen anzugeben. Der Parameter `infer_column_type` ist nur für Datasets anwendbar, die aus durch Trennzeichen getrennten Dateien erstellt wurden. Weitere Informationen zu unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
 
 > [!IMPORTANT] 
 > Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, wird nur die Erstellung eines Datasets über das SDK unterstützt. Achten Sie beim Erstellen Ihres Datasets darauf, dass Sie die Parameter `validate=False` und `infer_column_types=False` in Ihre `from_delimited_files()`-Methode einbeziehen. Dadurch wird die anfängliche Validierungsüberprüfung umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. 
@@ -124,7 +126,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7.2500||E
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38,0|1|0|PC 17599|71.2833|C85|C
 2|3|True|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||E
-
 
 Um ein Dataset aus einem In-Memory-Pandas-Dataframe zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine CSV-Datei, und erstellen Sie Ihr Dataset aus dieser Datei. Der folgende Code veranschaulicht diesen Workflow.
 
@@ -215,7 +216,7 @@ So erstellen Sie ein Dataset im Studio
 
 ## <a name="register-datasets"></a>Registrieren von Datasets
 
-Registrieren Sie Ihre Datasets bei einem Arbeitsbereich, um den Erstellungsprozess abzuschließen. Verwenden Sie die Methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-), um Datasets bei Ihrem Arbeitsbereich zu registrieren, damit sie für andere freigegeben und für unterschiedliche Experimente wiederverwendet werden können:
+Registrieren Sie Ihre Datasets bei einem Arbeitsbereich, um den Erstellungsprozess abzuschließen. Verwenden Sie die Methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-), um Datasets bei Ihrem Arbeitsbereich zu registrieren, damit sie für andere freigegeben und für Experimente in Ihrem Arbeitsbereich wiederverwendet werden können:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

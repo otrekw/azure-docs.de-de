@@ -7,35 +7,34 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66388f14949b4f398de18c9162ca453e7fb3cbe1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209277"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143629"
 ---
 In diesem Abschnitt installieren Sie den Azure-Dateisynchronisierungs-Agent auf Ihrer Windows Server-Instanz.
-Im [Bereitstellungshandbuch](../articles/storage/files/storage-sync-files-deployment-guide.md) erfahren Sie, dass Sie die **erweiterte IE-Sicherheit** deaktivieren müssen. Bei der erweiterten IE-Sicherheit handelt es sich um eine Sicherheitsmaßnahme, die für die Azure-Dateisynchronisierung nicht relevant ist. Wenn Sie sie deaktivieren, können Sie sich problemlos gegenüber Azure authentifizieren.
 
-Öffnen Sie PowerShell, und installieren Sie die erforderlichen PowerShell-Module mit den folgenden Befehlen. Stellen Sie sicher, dass Sie das vollständige Modul und den NuGet-Anbieter installieren, wenn Sie dazu aufgefordert werden:
+Im [Bereitstellungshandbuch](../articles/storage/files/storage-sync-files-deployment-guide.md) erfahren Sie, dass Sie die **verstärkte Sicherheitskonfiguration für Internet Explorer** deaktivieren müssen. Diese Sicherheitsmaßnahme trifft auf die Azure-Dateisynchronisierung nicht zu. Durch das Deaktivieren können Sie sich problemlos bei Azure authentifizieren.
+
+Öffnen Sie PowerShell, und installieren Sie die erforderlichen PowerShell-Module mithilfe der folgenden Befehle. Stellen Sie sicher, dass Sie das vollständige Modul und den NuGet-Anbieter installieren, wenn Sie dazu aufgefordert werden.
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Wenn auf Ihrem Server Probleme mit der Internetverbindung auftreten, sollten Sie diese Probleme jetzt beheben. Bei der Azure-Dateisynchronisierung wird eine beliebige verfügbare Internetverbindung verwendet.
-Konfigurationen, in denen für die Internetverbindung ein Proxyserver erforderlich ist, werden ebenfalls unterstützt. Sie können entweder jetzt einen computerweiten Proxy konfigurieren oder während der Agentinstallation einen Proxy angeben, der ausschließlich für die Dateisynchronisierung verwendet wird.
+Wenn auf Ihrem Server Probleme mit der Internetverbindung auftreten, sollten Sie diese Probleme jetzt beheben. Bei der Azure-Dateisynchronisierung wird eine beliebige verfügbare Internetverbindung verwendet. Konfigurationen, in denen für die Internetverbindung ein Proxyserver erforderlich ist, werden ebenfalls unterstützt. Sie können entweder jetzt einen computerweiten Proxy konfigurieren oder während der Agentinstallation einen Proxy angeben, der ausschließlich für die Azure-Dateisynchronisierung verwendet wird.
 
-Möglicherweise müssen Sie Ihre Firewalls auf dem betroffenen Server öffnen. Am Ende der Serverinstallation und nach abgeschlossener Serverregistrierung wird ein Bericht zur Netzwerkkonnektivität angezeigt, der die genauen Endpunkt-URLs in Azure umfasst, mit denen die Dateisynchronisierung für Ihre ausgewählte Region kommunizieren muss. Der Bericht enthält zudem Informationen dazu, weshalb diese Kommunikation erforderlich ist. Sie können den Bericht darüber hinaus verwenden, um die Firewalls auf diesem Server zu sperren und nur bestimmte URLs zuzulassen.
+Möglicherweise müssen Sie zum Konfigurieren eines Proxys Ihre Firewalls auf dem betroffenen Server öffnen. Am Ende der Serverinstallation und nach abgeschlossener Serverregistrierung werden in einem Bericht zur Netzwerkkonnektivität die genauen Endpunkt-URLs in Azure angezeigt, mit denen die Azure-Dateisynchronisierung für Ihre ausgewählte Region kommunizieren muss. Der Bericht enthält zudem Informationen dazu, weshalb diese Kommunikation erforderlich ist. Sie können den Bericht darüber hinaus verwenden, um die Firewalls auf diesem Server zu sperren und nur bestimmte URLs zuzulassen.
 
-Sie können auch eine konservativere Vorgehensweise wählen, bei der Sie die Firewalls nicht öffnen, sondern die Kommunikation der Server stattdessen auf DNS-Namespaces einer höheren Ebene beschränken. Weitere Informationen dazu finden Sie im Artikel [Proxy- und Firewalleinstellungen für die Azure-Dateisynchronisierung](../articles/storage/files/storage-sync-files-firewall-and-proxy.md). Halten Sie sich an ihre eigenen bewährten Methoden für Netzwerke.
+Sie können auch eine konservativere Vorgehensweise wählen, bei der Sie die Firewalls nicht öffnen, sondern die Kommunikation der Server stattdessen auf DNS-Namespaces einer höheren Ebene beschränken. Weitere Informationen finden Sie unter [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](../articles/storage/files/storage-sync-files-firewall-and-proxy.md). Halten Sie sich an ihre eigenen bewährten Methoden für Netzwerke.
 
-Am Ende des Assistenten für die *Serverinstallation* wird ein Assistent zur *Serverregistrierung* geöffnet.
-Registrieren Sie den Server bei der zuvor genannten Azure-Speichersynchronisierungsdienst-Ressource.
+Am Ende des Assistenten für die *Serverinstallation* wird ein Assistent zur *Serverregistrierung* geöffnet. Registrieren Sie den Server bei der zuvor genannten Azure-Speichersynchronisierungsdienst-Ressource.
 
-Im Bereitstellungshandbuch sind diese Schritte näher beschrieben. Dabei wird auch auf die oben stehenden PowerShell-Module eingegangen, die zuerst installiert werden sollten: [Installation des Azure-Dateisynchronisierungs-Agents](../articles/storage/files/storage-sync-files-deployment-guide.md).
+Im Bereitstellungshandbuch sind diese Schritte näher beschrieben. Dabei wird auch auf die PowerShell-Module eingegangen, die zuerst installiert werden sollten: [Installation des Azure-Dateisynchronisierungs-Agents](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-Sie sollten die aktuelle Version des Agents verwenden, die im Microsoft Download Center heruntergeladen werden kann: [Azure-Dateisynchronisierungs-Agent](https://aka.ms/AFS/agent "Download des Azure-Dateisynchronisierungs-Agents").
+Verwenden Sie den neuesten Agent. Sie können ihn aus dem Microsoft Download Center herunterladen: [Azure-Dateisynchronisierungs-Agent](https://aka.ms/AFS/agent "Download des Azure-Dateisynchronisierungs-Agents").
 
-Nach der Installation und Registrierung des Servers können Sie überprüfen, ob dieser Schritt erfolgreich ausgeführt wurde: Wechseln Sie im Azure-Portal zur Speichersynchronisierungsdienst-Ressource, und rufen Sie über das Menü links „Registrierte Server“ auf. Sie sollten umgehend Ihren Server in der Liste sehen.
+Nach der Installation und Registrierung des Servers können Sie überprüfen, ob dieser Schritt erfolgreich ausgeführt wurde. Navigieren Sie im Azure-Portal zur Speichersynchronisierungsdienst-Ressource, und rufen Sie über das Menü links **Registrierte Server** auf. Ihr Server sollte in dieser Liste enthalten sein.

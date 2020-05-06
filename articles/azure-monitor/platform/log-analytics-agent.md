@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520718"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207223"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/) und [Azure Automation](../../automation/automation-intro.md).
@@ -88,8 +88,12 @@ Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log An
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
 * Windows Server 2019
-* Windows Server 2008 SP2 (x64), 2008 R2, 2012, 2012 R2, 2016, Version 1709 und 1803
-* Windows 7 SP1, Windows 8 Enterprise und Pro sowie Windows 10 Enterprise und Pro
+* Windows Server 2016, Version 1709 und 1803
+* Windows Server 2012, 2012 R2
+* Windows Server 2008 SP2 (x64), 2008 R2
+* Windows 10 Enterprise und Pro
+* Windows 8 Enterprise und Pro 
+* Windows 7 SP1
 
 >[!NOTE]
 >Während der Log Analytics-Agent für Windows für die Unterstützung von Serverüberwachungsszenarios konzipiert wurde, führen Sie möglicherweise den Windows-Client aus, um Workloads zu unterstützen, die für das Serverbetriebssystem konfiguriert und optimiert wurden. Der Agent unterstützt den Windows-Client, unsere Überwachungslösungen konzentrieren sich jedoch nicht auf Clientüberwachungsszenarios, sofern nicht explizit angegeben.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 79310ddf121d6ada10755b198b515fdc9c1114d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247060"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182853"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
@@ -61,7 +61,7 @@ Die Anzahl von Routingtabellen, die Sie pro Azure-Standort und -Abonnement erste
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
+| Azure CLI | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
 | PowerShell | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) |
 
 ## <a name="view-route-tables"></a>Anzeigen von Routingtabellen
@@ -72,7 +72,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihr virtuelles N
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table list](/cli/azure/network/route-table#az-network-route-table-list) |
+| Azure CLI | [az network route-table list](/cli/azure/network/route-table#az-network-route-table-list) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="view-details-of-a-route-table"></a>Anzeigen von Details einer Routingtabelle
@@ -95,7 +95,7 @@ Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folge
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table show](/cli/azure/network/route-table#az-network-route-table-show) |
+| Azure CLI | [az network route-table show](/cli/azure/network/route-table#az-network-route-table-show) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="change-a-route-table"></a>Ändern einer Routingtabelle
@@ -110,7 +110,7 @@ Die gängigsten Änderungen umfassen das [Hinzufügen](#create-a-route) von Rout
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table update](/cli/azure/network/route-table#az-network-route-table-update) |
+| Azure CLI | [az network route-table update](/cli/azure/network/route-table#az-network-route-table-update) |
 | PowerShell | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Zuordnen einer Routingtabelle zu einem Subnetz
@@ -135,7 +135,7 @@ Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen S
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Aufheben der Zuordnung einer Routingtabelle zu einem Subnetz
@@ -158,7 +158,7 @@ Wenn Sie die Zuordnung einer Routingtabelle zu einem Subnetz aufheben, wird Date
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="delete-a-route-table"></a>Löschen einer Routingtabelle
@@ -175,7 +175,7 @@ Sie können eine Routingtabelle nicht löschen, die einem Subnetz zugeordnet ist
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table delete](/cli/azure/network/route-table#az-network-route-table-delete) |
+| Azure CLI | [az network route-table delete](/cli/azure/network/route-table#az-network-route-table-delete) |
 | PowerShell | [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable) |
 
 ## <a name="create-a-route"></a>Erstellen einer Route
@@ -202,7 +202,7 @@ Die Anzahl von Routen pro Routingtabelle, die Sie pro Azure-Standort und -Abonne
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
+| Azure CLI | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
 | PowerShell | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig) |
 
 ## <a name="view-routes"></a>Anzeigen von Routen
@@ -219,7 +219,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table route list](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
+| Azure CLI | [az network route-table route list](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="view-details-of-a-route"></a>Anzeigen von Details einer Route
@@ -236,7 +236,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table route show](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
+| Azure CLI | [az network route-table route show](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="change-a-route"></a>Ändern einer Route
@@ -255,7 +255,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table route update](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
+| Azure CLI | [az network route-table route update](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
 | PowerShell | [Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig) |
 
 ## <a name="delete-a-route"></a>Löschen einer Route
@@ -274,7 +274,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network route-table route delete](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
+| Azure CLI | [az network route-table route delete](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
 | PowerShell | [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig) |
 
 ## <a name="view-effective-routes"></a>Anzeigen effektiver Routen
@@ -297,7 +297,7 @@ Die effektiven Routen für jede an eine VM angefügte Netzwerkschnittstelle sind
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
+| Azure CLI | [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
 | PowerShell | [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) |
 
 ## <a name="validate-routing-between-two-endpoints"></a>Überprüfen des Routings zwischen zwei Endpunkten
@@ -326,7 +326,7 @@ Nach einer kurzen Wartezeit gibt Azure den Typ des nächsten Hops und die ID der
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure-Befehlszeilenschnittstelle | [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
+| Azure CLI | [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
 | PowerShell | [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) |
 
 ## <a name="permissions"></a>Berechtigungen
@@ -348,4 +348,4 @@ Zum Durchführen von Aufgaben für Routingtabellen und Routen muss Ihr Konto der
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erstellen einer Routingtabelle mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder mithilfe von [Azure Resource Manager-Vorlagen](template-samples.md)
-- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke
+- Erstellen und Zuweisen von [Azure Policy-Definitionen](policy-samples.md) für virtuelle Netzwerke

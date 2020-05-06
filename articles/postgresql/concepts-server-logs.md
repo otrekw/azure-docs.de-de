@@ -6,14 +6,15 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236090"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131219"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
+
 Azure Database for PostgreSQL ermöglicht es Ihnen, die Standardprotokolle von Postgres zu konfigurieren und darauf zuzugreifen. Die Protokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Beispiele für Protokollierungsinformationen, für die die Konfiguration und der Zugriff möglich sind, sind Fehler, Abfrageinformationen, Autovacuum-Datensätze, Verbindungen und Prüfpunkte. (Der Zugriff auf Transaktionsprotokolle ist nicht verfügbar.)
 
 Die Überwachungsprotokollierung wird über eine Postgres-Erweiterung (pgaudit) bereitgestellt. Weitere Informationen finden Sie im Artikel zu den [Konzepten zur Überwachung](concepts-audit.md).
@@ -46,7 +47,8 @@ Wenn Sie für Protokolle und Protokollanalysen eine Langzeitaufbewahrung wünsch
 
 Sie können die Erstellung von LOG-Dateien beenden, indem Sie den Parameter `logging_collector` auf „Aus“ festlegen. Wir empfehlen Ihnen das Deaktivieren der Erstellung von LOG-Dateien, wenn Sie die Azure Monitor-Diagnoseeinstellungen verwenden. Mit dieser Konfiguration werden die Leistungseinbußen aufgrund der zusätzlichen Protokollierung verringert.
 
-## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+## <a name="resource-logs"></a>Ressourcenprotokolle
+
 Azure Database for PostgreSQL ist in die Azure Monitor-Diagnoseeinstellungen integriert. Mit Diagnoseeinstellungen können Sie Ihre Postgres-Protokolle im JSON-Format an Azure Monitor-Protokolle (Analyse und Warnungen), Event Hubs (Streaming) und Azure Storage (Archivierung) senden. 
 
 > [!IMPORTANT]
@@ -54,9 +56,10 @@ Azure Database for PostgreSQL ist in die Azure Monitor-Diagnoseeinstellungen int
 
 
 ### <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
+
 Sie können die Diagnoseeinstellungen für Ihren Postgres-Server aktivieren, indem Sie das Azure-Portal, die CLI, die REST-API und PowerShell verwenden. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs**. (Sie können auch andere Protokolle konfigurieren, wenn Sie den [Abfragespeicher](concepts-query-store.md) nutzen.)
 
-So aktivieren Sie Diagnoseprotokolle über das Azure-Portal:
+So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 
    1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen*.
    2. Wählen Sie *Diagnoseeinstellung hinzufügen*  aus.
@@ -65,9 +68,9 @@ So aktivieren Sie Diagnoseprotokolle über das Azure-Portal:
    5. Wählen Sie den Protokolltyp **PostgreSQLLogs** aus.
    7. Speichern Sie die Einstellungen.
 
-Informationen zum Aktivieren der Diagnoseprotokolle per PowerShell, CLI oder REST-API finden Sie im Artikel zu den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md).
+Informationen zum Aktivieren von Ressourcenprotokollen über PowerShell, die CLI oder die REST-API finden Sie im Artikel zu den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md).
 
-### <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
+### <a name="access-resource-logs"></a>Zugreifen auf Ressourcenprotokolle
 
 Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
@@ -108,7 +111,7 @@ In der folgenden Tabelle sind die Felder für den Typ **PostgreSQLLogs** beschri
 | Resource | Name des Servers |
 | Category | `PostgreSQLLogs` |
 | Vorgangsname | `LogEvent` |
-| errorLevel | Protokollierungsstufe, z.B.: LOG, ERROR, NOTICE |
+| errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
 | `Message` | Primäre Protokollmeldung | 
 | Domain | Serverversion, Beispiel: postgres-10 |
 | Detail | Sekundäre Protokollmeldung (falls zutreffend) |

@@ -8,12 +8,12 @@ ms.date: 03/30/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 537369c9466b1083723642ec9e93fcdf25056c5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d8add293a2ba8f14dc2d2fb8ba3b4228f455b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855338"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176225"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migration von Azure Storage-Metriken
 

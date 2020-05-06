@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure F
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803533"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207682"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -105,7 +105,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>Verwenden des persistenten Volumes
 
-Mit dem folgenden YAML-Code wird ein Pod erstellt, der den Anspruch auf das persistente Volume *azurefile* verwendet, um die Azure-Dateifreigabe im Pfad */mnt/azure* einzubinden. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
+Mit dem folgenden YAML-Code wird ein Pod erstellt, der den Anspruch auf das persistente Volume *azurefile* verwendet, um die Azure-Dateifreigabe im Pfad */mnt/azure* einzubinden. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an (z. B. *D:* ).
 
 Erstellen Sie eine Datei mit dem Namen `azure-pvc-files.yaml`, und fügen Sie den folgenden YAML-Code ein. Stellen Sie sicher, dass *claimName* dem PVC, den Sie im letzten Schritt erstellt haben, entspricht.
 

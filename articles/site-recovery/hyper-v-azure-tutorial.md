@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224037"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182343"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -127,7 +127,7 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 2. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
 3. In diesem Tutorial behalten wir die Standardwerte bei:
     - **Kopierhäufigkeit** gibt an, wie oft Deltadaten nach der ersten Replikation repliziert werden. Die Standardhäufigkeit ist alle fünf Minuten.
-    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden.
+    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden. Der maximal zulässige Wert für die Aufbewahrung beim Schutz virtueller Computer, die auf Hyper-V-Hosts gehostet werden, beträgt 24 Stunden.
     - **App-konsistente Momentaufnahmehäufigkeit** gibt an, dass Wiederherstellungspunkte mit anwendungskonsistenten Momentaufnahmen jede Stunde erstellt werden sollen.
     - **Startzeit der ersten Replikation** gibt an, dass die erste Replikation sofort beginnen soll.
 4. Nachdem die Richtlinie erstellt wurde, wählen Sie **OK** aus. Wenn Sie eine neue Richtlinie erstellen, wird sie der angegebenen Hyper-V-Site automatisch zugeordnet. In diesem Tutorial ist das **ContosoHyperVSite**.

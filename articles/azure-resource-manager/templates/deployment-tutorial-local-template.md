@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage von Ihrem
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8e3eb62fa52caeaa63808b6b9ea199bdff5c4da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081819"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188823"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Tutorial: Bereitstellen einer lokalen Azure Resource Manager-Vorlage
 
@@ -37,9 +37,7 @@ Vorlagen sind JSON-Dateien. Zum Bewerten/Bearbeiten von Vorlagen benötigen Sie 
 
 ## <a name="review-template"></a>Überprüfen der Vorlage
 
-Die in diesem Tutorial verwendete Vorlage ähnelt der Vorlage, die im [Tutorial zu Schnellstartvorlagen](template-tutorial-quickstart-template.md) verwendet wird. Wenn Sie die Vorlage erstellen möchten, können Sie dieses Tutorial durchgehen. Für den Abschluss dieses Tutorials ist es jedoch nicht erforderlich.
-
-Die Vorlage stellt ein Speicherkonto, einen App Service-Plan und eine Web-App bereit.
+Die Vorlage stellt ein Speicherkonto, einen App Service-Plan und eine Web-App bereit. Wenn Sie die Vorlage erstellen möchten, können Sie das [Tutorial zu Schnellstartvorlagen](template-tutorial-quickstart-template.md) durchgehen. Für den Abschluss dieses Tutorials ist es jedoch nicht erforderlich.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 

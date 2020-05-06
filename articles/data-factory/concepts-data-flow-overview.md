@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 01/28/2020
+ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224798"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187850"
 ---
 # <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
-Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die horizontal hochskalierte Spark-Cluster verwendet werden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne dass das Schreiben von Code erforderlich ist. Ihre Datenflüsse werden in Ihrem eigenen Ausführungscluster für die Datenverarbeitung mit horizontaler Hochskalierung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
+Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die erweiterte Apache Spark-Cluster verwendet werden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory aktiviert werden.
+
+Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code geschrieben werden muss. Ihre Datenflüsse werden in Ihrem eigenen Ausführungscluster für erweiterte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -27,7 +29,7 @@ Wählen Sie zum Erstellen eines Datenflusses unter **Factory Resources** (Factor
 
 ![Neuer Datenfluss](media/data-flow/newdataflow2.png "neuer Datenfluss")
 
-Dadurch gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
+Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
 ## <a name="data-flow-canvas"></a>Datenflusscanvas
 
@@ -45,41 +47,41 @@ Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quel
 
 ![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
 
-Wenn Sie in ADF mit der Verwendung von Datenflüssen beginnen, ist es ratsam, oben in der Benutzeroberfläche des Browsers die Option „Debuggen“ für Datenflüsse zu aktivieren. Hiermit wird ein Azure Databricks-Cluster erstellt, der für das interaktive Debuggen, die Datenvorschau und die Ausführung von Debugvorgängen für die Pipeline verwendet wird. Sie können die Größe des verwendeten Clusters festlegen, indem Sie eine benutzerdefinierte [Azure Integration Runtime](concepts-integration-runtime.md)-Instanz auswählen. Die Debugsitzung bleibt nach Ihrer letzten Datenvorschau bzw. letzten Ausführung eines Debugvorgangs für die Pipeline bis zu 60 Minuten lang aktiv.
+Wenn Sie in ADF mit der Verwendung von Datenflüssen beginnen, sollten Sie oben in der Benutzeroberfläche des Browsers die Option „Debuggen“ für Datenflüsse aktivieren. Hiermit wird ein Spark-Cluster erstellt, der für das interaktive Debuggen, die Datenvorschau und die Ausführung von Debugvorgängen für die Pipeline verwendet wird. Sie können die Größe des verwendeten Clusters festlegen, indem Sie eine benutzerdefinierte [Azure Integration Runtime](concepts-integration-runtime.md)-Instanz auswählen. Die Debugsitzung bleibt nach Ihrer letzten Datenvorschau bzw. letzten Ausführung eines Debugvorgangs für die Pipeline bis zu 60 Minuten lang aktiv.
 
 Wenn Sie Ihre Pipelines mit Datenflussaktivitäten operationalisieren, wird von ADF die Azure Integration Runtime-Instanz verwendet, die in der „Run On“-Eigenschaft der [Aktivität](control-flow-execute-data-flow-activity.md) zugeordnet ist.
 
-Die Azure Integration Runtime-Standardinstanz ist ein einzelner kleiner Workerknotencluster mit vier Kernen, der Ihnen das Anzeigen einer Datenvorschau und das schnelle Ausführen von Debugpipelines zu geringen Kosten ermöglichen soll. Legen Sie eine höhere Azure IR-Konfiguration fest, wenn Sie Vorgänge für große Datasets durchführen.
+Die Azure Integration Runtime-Standardinstanz ist ein einzelner kleiner Workerknotencluster mit vier Kernen, der Ihnen das Anzeigen einer Datenvorschau und das schnelle Ausführen von Debugpipelines zu geringen Kosten ermöglicht. Legen Sie eine höhere Azure IR-Konfiguration fest, wenn Sie Vorgänge für große Datasets durchführen.
 
-Sie können ADF anweisen, einen Pool mit Clusterressourcen (VMs) vorzuhalten, indem Sie in den Datenflusseigenschaften der Azure IR-Instanz eine Gültigkeitsdauer angeben. Dies führt für nachfolgende Aktivitäten zu einer schnelleren Auftragsausführung.
+Sie können ADF anweisen, einen Pool mit Clusterressourcen (VMs) vorzuhalten, indem Sie in den Datenflusseigenschaften der Azure IR-Instanz eine Gültigkeitsdauer angeben. Diese Aktion führt bei nachfolgenden Aktivitäten zu einer schnelleren Auftragsausführung.
 
 #### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration Runtime und Datenflussstrategien
 
 ##### <a name="execute-data-flows-in-parallel"></a>Paralleles Ausführen von Datenflüssen
 
-Wenn Sie Datenflüsse in einer Pipeline parallel ausführen, erstellt ADF separate Azure Databricks-Cluster für jede Ausführung einer Aktivität. Dies erfolgt basierend auf den Einstellungen in Ihrer Azure Integration Runtime-Instanz, die jeder Aktivität zugeordnet ist. Fügen Sie zum Entwerfen von parallelen Ausführungen in ADF-Pipelines Ihre Datenflussaktivitäten ohne Rangfolgeneinschränkung in der Benutzeroberfläche hinzu.
+Wenn Sie Datenflüsse in einer Pipeline parallel ausführen, erstellt ADF separate Spark-Cluster für jede Ausführung einer Aktivität. Dies erfolgt basierend auf den Einstellungen in Ihrer Azure Integration Runtime-Instanz, die jeder Aktivität zugeordnet ist. Fügen Sie zum Entwerfen von parallelen Ausführungen in ADF-Pipelines Ihre Datenflussaktivitäten ohne Rangfolgeneinschränkung in der Benutzeroberfläche hinzu.
 
-Diese Option der drei verfügbaren Optionen weist normalerweise die kürzeste Ausführungsdauer auf. Da jeder parallele Datenfluss gleichzeitig in separaten Clustern ausgeführt wird, ist die Sortierung der Ereignisse nicht deterministisch.
+Von diesen drei Optionen weist diese Option normalerweise die kürzeste Ausführungsdauer auf. Da jeder parallele Datenfluss gleichzeitig in separaten Clustern ausgeführt wird, ist die Sortierung der Ereignisse nicht deterministisch.
 
-Wenn Sie Ihre Datenflussaktivitäten in ihren Pipelines parallel ausführen, wird empfohlen, keine TTL zu verwenden. Dies liegt daran, dass die gleichzeitige parallele Ausführung von Datenflüssen mit derselben Azure Integration Runtime zu mehreren aktiven Poolinstanzen für Ihre Data Factory führt.
+Wenn Sie Ihre Datenflussaktivitäten in ihren Pipelines parallel ausführen, sollten Sie nicht TTL verwenden. Dies liegt daran, dass die gleichzeitige parallele Ausführung Ihrer Datenflüsse mit derselben Azure Integration Runtime zu mehreren aktiven Poolinstanzen für Ihre Data Factory führt.
 
 ##### <a name="overload-single-data-flow"></a>Überladen eines einzelnen Datenflusses
 
 Wenn Sie Ihre gesamte Logik in einem einzelnen Datenfluss anordnen, verwendet ADF für die gesamte Ausführung denselben Auftragsausführungskontext in einer einzelnen Spark-Clusterinstanz.
 
-Bei dieser Option ist die Verfolgung und Problembehandlung unter Umständen schwieriger, weil Ihre Geschäftsregeln und die Geschäftslogik durcheinander geworfen werden. Zudem weist diese Option keine gute Wiederverwendbarkeit auf.
+Bei dieser Option kann die Verfolgung und Problembehandlung unter Umständen eine größere Herausforderung sein, weil Ihre Geschäftsregeln und die Geschäftslogik durcheinander geworfen werden können. Zudem bietet diese Option keine gute Wiederverwendbarkeit.
 
-##### <a name="execute-data-flows-serially"></a>Serielles Ausführen von Datenflüssen
+##### <a name="execute-data-flows-sequentially"></a>Sequenzielles Ausführen von Datenflüssen
 
-Wenn Sie Ihre Datenflussaktivitäten in der Pipeline seriell ausführen und für die Azure IR-Konfiguration eine Gültigkeitsdauer festgelegt haben, werden die Computeressourcen (VMs) von ADF wiederverwendet. Dies führt zu kürzeren Dauern bei den nachfolgenden Ausführungen. Sie erhalten weiterhin einen neuen Spark-Kontext für jede Ausführung.
+Wenn Sie Ihre Datenflussaktivitäten in der Pipeline nacheinander ausführen und für die Azure IR-Konfiguration eine Gültigkeitsdauer festgelegt haben, werden die Computeressourcen (VMs) von ADF wiederverwendet. Dies führt zu kürzeren nachfolgenden Ausführungszeiten. Sie erhalten weiterhin einen neuen Spark-Kontext für jede Ausführung.
 
-Diese Option der drei verfügbaren Optionen weist normalerweise die längste Ausführungsdauer des Gesamtprozesses auf. Sie ermöglicht aber eine saubere Trennung der logischen Vorgänge in jedem Datenflussschritt.
+Von diesen drei Optionen weist diese Aktion normalerweise die längste Ausführungsdauer des Gesamtprozesses auf. Sie ermöglicht aber eine saubere Trennung der logischen Vorgänge in jedem Datenflussschritt.
 
 ### <a name="configuration-panel"></a>Konfigurationsbereich
 
 Im Konfigurationsbereich werden die spezifischen Einstellungen für die derzeit ausgewählte Transformation angezeigt. Wenn keine Transformation ausgewählt ist, wird der Datenfluss angezeigt. In der allgemeinen Datenflusskonfiguration können Sie den Namen und die Beschreibung auf der Registerkarte **Allgemein** bearbeiten oder Parameter über die Registerkarte **Parameter** hinzufügen. Weitere Informationen finden Sie unter [Mapping Data Flow-Parameter](parameters-data-flow.md).
 
-Jede Transformation verfügt über mindestens vier Registerkarten für die Konfiguration.
+Jede Transformation enthält mindestens vier Registerkarten für die Konfiguration.
 
 #### <a name="transformation-settings"></a>Transformationseinstellungen
 
@@ -99,7 +101,7 @@ Es gibt Fälle, in denen es ratsam sein kann, die Partitionierung anzupassen. We
 
 Ein weiterer Fall, in dem die Steuerung der Partitionierungsschemas ggf. ratsam ist, ist die Optimierung der Leistung. Das Anpassen der Partitionierung bietet Kontrolle über die Verteilung Ihrer Daten auf Computeknoten und Datenstandortoptimierungen, die sowohl positive als auch negative Auswirkungen auf die gesamte Datenflussleistung haben können. Weitere Informationen finden Sie in der [Anleitung zur Leistung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md).
 
-Wenn Sie die Partitionierung für eine Transformation ändern möchten, wählen Sie die Registerkarte **Optimieren** und das Optionsfeld **Partitionierung festlegen** aus. Daraufhin werden mehrere Optionen für die Partitionierung angezeigt. Die beste Methode der Partitionierung richtet sich jeweils nach den Datenmengen, Kandidatenschlüsseln, Nullwerten und der Kardinalität. 
+Wenn Sie die Partitionierung für eine Transformation ändern möchten, wählen Sie die Registerkarte **Optimieren** und das Optionsfeld **Partitionierung festlegen** aus. Ihnen werden mehrere Optionen für die Partitionierung angezeigt. Die beste Methode der Partitionierung richtet sich jeweils nach den Datenmengen, Kandidatenschlüsseln, NULL-Werten und der Kardinalität. 
 
 Eine bewährte Methode besteht darin, mit der Standardpartitionierung zu beginnen und dann verschiedene Partitionierungsoptionen auszuprobieren. Sie können Tests anhand von Debugausführungen der Pipeline durchführen und die Ausführungszeit sowie die Verwendung der Partition in jeder Transformationsgruppierung in der Ansicht „Überwachung“ anzeigen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
 
@@ -115,7 +117,7 @@ Azure Data Factory erzeugt einen Hash von Spalten, um einheitliche Partitionen z
 
 ##### <a name="dynamic-range"></a>Dynamischer Bereich
 
-Bei dieser Option werden dynamische Spark-Bereiche basierend auf den von Ihnen angegebenen Spalten oder Ausdrücken verwendet. Sie können die Anzahl der physischen Partitionen festlegen. 
+Bei dieser Option werden die dynamischen Spark-Bereiche basierend auf den von Ihnen angegebenen Spalten oder Ausdrücken verwendet. Sie können die Anzahl der physischen Partitionen festlegen. 
 
 ##### <a name="fixed-range"></a>Fester Bereich
 

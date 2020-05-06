@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881467"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181629"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Web-App für Benutzeranmeldungen: Überführen in die Produktion
 
@@ -26,12 +26,23 @@ Da Sie nun wissen, wie Sie ein Token zum Abrufen von Web-APIs aufrufen, erfahren
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+### <a name="troubleshooting"></a>Problembehandlung
+
+> [!NOTE]
+> Wenn Benutzer sich das erste Mal bei der Webanwendung anmelden, ist eine Einwilligung erforderlich. In manchen Organisationen wird Benutzern jedoch eine Meldung ähnlich der folgenden angezeigt:
+>
+> *Name_der_App benötigt für den Zugriff auf Ressourcen in Ihrer Organisation Berechtigungen, die nur ein Administrator erteilen kann. Bitten Sie einen Administrator, die Berechtigungen für diese App zu erteilen, damit Sie die App verwenden können.*
+>
+> Dies liegt daran, dass Ihr Mandantenadministrator die Möglichkeit für Benutzer zur Zustimmung **deaktiviert** hat. In diesem Fall müssen Sie sich an Ihre Mandantenadministratoren wenden, damit diese eine Administratorzustimmung für die Bereiche erteilen, die für die Anwendung erforderlich sind.
+
 ### <a name="same-site"></a>Gleiche Website
 
 Informieren Sie sich über mögliche Probleme im Zusammenhang mit neuen Versionen des Chrome-Browsers:
 
 > [!div class="nextstepaction"]
 > [Verarbeiten von SameSite-Cookieänderungen im Chrome-Browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
+Das Microsoft.Identity.Web-NuGet-Paket verarbeitet die häufigsten SameSite-Probleme.
 
 ### <a name="scenario-for-calling-web-apis"></a>Szenario zum Aufrufen von Web-APIs
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70eb2449c5c54750831c30ff7d5c948173a38594
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426349"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183210"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen, die die Authentifizierung mit einem einzelnen Benutzer/Kennwort verwenden
 
@@ -263,7 +263,7 @@ Wechseln Sie zur bereitgestellten App, und wählen Sie die URL aus:
  
 ![Auswählen der URL](../media/rotate10.png)
 
-Der generierte Geheimniswert sollte mit dem Wert „true“ für „Mit Datenbank verbunden“ angezeigt werden.
+Wenn die Anwendung im Browser geöffnet wird, wird für den Wert **Generated Secret Value** (Geheimniswert generiert) und **Database Connected** (Datenbank verbunden) der Wert *true* angezeigt.
 
 ## <a name="learn-more"></a>Weitere Informationen
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67fe9ef4ad2b025d11f88976973658c9cd8ae693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 183fe1604cc363a9121d5eef3737751c54e9bdf1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187949"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229713"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Anmeldung für Benutzer einer Salesforce-Organisation mithilfe [benutzerdefinierter Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie ein [technisches SAML-Profil](saml-technical-profile.md) hinzufügen.
+In diesem Artikel wird beschrieben, wie Sie die Anmeldung für Benutzer einer Salesforce-Organisation mithilfe [benutzerdefinierter Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie ein [technisches Profil des SAML-Idenditätsanbieters](saml-identity-provider-technical-profile.md) hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -103,7 +103,7 @@ Sie müssen das erstellte Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 Wenn Sie möchten, dass sich Benutzer mit einem Salesforce-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
-Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines technischen SAML-Profils](saml-technical-profile.md).
+Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines technischen Profils des SAML-Identitätsanbieters](saml-identity-provider-technical-profile.md).
 
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
 1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
@@ -203,13 +203,13 @@ Das **ClaimsProviderSelection**-Element entspricht einer Schaltfläche für eine
 Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit dem Salesforce-Konto kommunizieren, um ein Token zu empfangen.
 
 1. Suchen Sie nach dem **OrchestrationStep**-Element, das `Order="2"` in der User Journey enthält.
-2. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, um sicherzustellen, dass Sie für **Id** den gleichen Wert verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
+2. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, und stellen Sie dabei sicher, dass Sie den gleichen Wert für die **ID** verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
 
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
-    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `LinkedIn-OAUTH`.
+    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **ID** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `LinkedIn-OAUTH`.
 
 3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
 
