@@ -1,28 +1,28 @@
 ---
-title: 'Azure-VPN Gateway: Konfigurieren von Warnungen für Diagnoseprotokollereignisse'
-description: Schritte zum Konfigurieren von Warnungen für Diagnoseprotokollereignisse vom VPN Gateway
+title: 'Azure-VPN Gateway: Konfigurieren von Warnungen für Diagnoseressourcenprotokollereignisse'
+description: Hier werden die Schritte zum Konfigurieren von Warnungen für Diagnoseressourcenprotokollereignisse von VPN Gateway beschrieben.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878900"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127977"
 ---
-# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Einrichten von Warnungen für Diagnoseprotokollereignisse vom VPN Gateway
+# <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Einrichten von Warnungen für Ressourcenprotokollereignisse von VPN Gateway
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Log Analytics Warnungen einrichten, die auf Diagnoseprotokollereignissen von Azure VPN Gateway basieren. 
+In diesem Artikel erfahren Sie, wie Sie mit Azure Monitor Log Analytics Warnungen einrichten, die auf Ressourcenprotokollereignissen von Azure VPN Gateway basieren. 
 
-Die folgenden Protokolle sind in Azure verfügbar:
+Die folgenden Ressourcenprotokolle sind in Azure verfügbar:
 
 |***Name*** | ***Beschreibung*** |
 |---        | ---               |
-|GatewayDiagnosticLog | Enthält Diagnoseprotokolle für Konfigurationsereignisse, wichtige Änderungen und Wartungsereignisse, die das Gateway betreffen. |
+|GatewayDiagnosticLog | Dieses Protokoll enthält Ressourcenprotokolle für Konfigurationsereignisse, wichtige Änderungen und Wartungsereignisse, die das Gateway betreffen. |
 |TunnelDiagnosticLog | Enthält Ereignisse, die die Änderung des Tunnelzustands betreffen. Ereignisse im Zusammenhang mit der Herstellung und Trennung der Tunnelverbindung beinhalten ggf. eine Zusammenfassung, in der die Ursache der Zustandsänderung beschrieben wird. |
 |RouteDiagnosticLog | Enthält Änderungen an statische Routen und BGP-Ereignisse, die am Gateway auftreten. |
 |IKEDiagnosticLog | Enthält IKE-Kontrollnachrichten und -ereignisse, die am Gateway erfasst werden. |
@@ -30,7 +30,7 @@ Die folgenden Protokolle sind in Azure verfügbar:
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Einrichten von Warnungen im Azure-Portal
 
-Die folgenden Beispielschritte erstellen eine Warnung für ein Trennungsereignis, das einen Site-to-Site-VPN-Tunnel umfasst:
+Mit den folgenden Beispielschritten wird eine Warnung für ein Trennungsereignis mit einem Site-to-Site-VPN-Tunnel erstellt:
 
 
 1. Suchen Sie im Azure-Portal unter **Alle Dienste** nach **Log Analytics**, und wählen Sie **Log Analytics-Arbeitsbereiche** aus.

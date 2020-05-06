@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a1440dcda27a487c89be4ac63e624a2bb6b393a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129743"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82111877"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Erstellen von ereignisgesteuerten Workflows für maschinelles Lernen (Vorschauversion)
 
@@ -91,11 +91,9 @@ Beim Einrichten von Ereignissen können Sie Filter anwenden, damit nur bei besti
 
     :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Filtern von Ereignissen":::
 
-## <a name="sample-scenarios"></a>Beispielszenarien
+## <a name="sample-send-email-alerts"></a>Beispiel: Senden von E-Mail-Benachrichtigungen
 
-### <a name="use-a-logic-app-to-send-email-alerts"></a>Verwenden einer Logik-App, um E-Mail-Warnungen zu senden
-
-Nutzen Sie [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/), um E-Mails für Ihre Ereignisse zu konfigurieren. Passen Sie diese mit Bedingungen an, und geben Sie Empfänger an, um die Zusammenarbeit und Beachtung zwischen Teams zu ermöglichen, die zusammenarbeiten.
+Verwenden Sie [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/), um E-Mails für Ihre Ereignisse zu konfigurieren. Passen Sie diese mit Bedingungen an, und geben Sie Empfänger an, um die Zusammenarbeit und Beachtung zwischen Teams zu ermöglichen, die zusammenarbeiten.
 
 1. Wechseln Sie im Azure-Portal zu Ihrem Azure Machine Learning-Arbeitsbereich, und wählen Sie in der linken Leiste die Registerkarte „Ereignisse“ aus. Wählen Sie dort die Option __Logik-Apps__ aus. 
 
@@ -126,7 +124,7 @@ Nutzen Sie [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/), um 
     ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
-### <a name="use-a-logic-app-to-trigger-retraining-workflows-when-data-drift-occurs"></a>Verwenden einer Logik-App, um ein erneutes Trainieren von Workflows auszulösen, wenn Datendrift auftritt
+## <a name="sample-trigger-retraining-when-data-drift-occurs"></a>Beispiel: Auslösen von Nachtraining beim Auftreten von Datendrift
 
 Modelle werden mit der Zeit zu veralteten Modellen, sodass sie in dem Kontext, in dem sie ausgeführt werden, nicht länger nützlich sind. Eine Möglichkeit zum Feststellen, ob es an der Zeit ist, das Modell erneut zu trainieren, ist das Erkennen von Datendrift. 
 
@@ -173,7 +171,7 @@ Ab jetzt wird die Data Factory-Pipeline ausgelöst, wenn eine Datendrift auftrit
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Verwenden von Azure Functions, um ein Modell auf Basis von Tags bereitzustellen
+## <a name="sample-deploy-a-model-based-on-tags"></a>Beispiel: Bereitstellen eines Modells auf der Grundlage von Tags
 
 Ein Azure Machine Learning-Modellobjekt enthält Parameter, über die Sie Bereitstellungen abwickeln können, so z. B. Modellname, Version, Tag und Eigenschaft. Das Modellregistrierungsereignis kann einen Endpunkt auslösen, und Sie können eine Azure-Funktion verwenden, um ein Modell entsprechend den Werten dieser Parameter bereitzustellen.
 

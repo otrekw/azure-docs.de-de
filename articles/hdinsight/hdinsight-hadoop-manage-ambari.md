@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: bceafc5c9c238db7b73a9a3a781fa0fe26274984
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866574"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232852"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -135,7 +135,7 @@ Wenn Sie einen dieser Links öffnen, wird eine Registerkarte im Browser geöffne
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari-Benutzer, -Gruppen und -Berechtigungen
 
-Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines in die Domäne eingebundenen HDInsight-Clusters unterstützt. Informationen zur Verwendung der Ambari-Verwaltungsoberfläche in einem in die Domäne eingebundenen Cluster finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/hdinsight-security-overview.md).
+Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird unterstützt. Informationen zur lokalen Verwaltung finden Sie unter [Autorisieren von Benutzern für Apache Ambari-Ansichten](./hdinsight-authorize-users-to-ambari.md). Informationen zu Clustern, die in die Domäne eingebunden sind, finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Ändern Sie nicht das Kennwort für den Ambari-Watchdog (hdinsightwatchdog) in Ihrem Linux-basierten HDInsight-Cluster. Durch eine Kennwortänderung wird die Möglichkeit zum Verwenden von Skriptaktionen oder zum Durchführen von Skalierungsvorgängen mit Ihren Cluster deaktiviert.

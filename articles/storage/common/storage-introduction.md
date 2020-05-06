@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456344"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133783"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Einführung in die zentralen Azure Storage-Dienste
 
@@ -29,7 +29,7 @@ Die Azure Storage-Plattform ist die Cloudspeicherlösung von Microsoft für mode
 
 Die Azure Storage-Plattform umfasst die folgenden Datendienste:
 
-- [Azure-Blobs](../blobs/storage-blobs-introduction.md): Ein hochgradig skalierbarer Objektspeicher für Text- und Binärdaten. Er verfügt auch über Unterstützung für Big Data-Analysen mit Data Lake Storage Gen2.
+- [Azure-Blobs](../blobs/storage-blobs-introduction.md): Ein überaus skalierbarer Objektspeicher für Text- und Binärdaten. Er verfügt auch über Unterstützung für Big Data-Analysen mit Data Lake Storage Gen2.
 - [Azure Files](../files/storage-files-introduction.md): Verwaltete Dateifreigaben für Bereitstellungen lokal oder in der Cloud.
 - [Azure-Warteschlangen](../queues/storage-queues-introduction.md): Ein Messagingspeicher für zuverlässiges Messaging zwischen Anwendungskomponenten.
 - [Azure-Tabellen](../tables/table-storage-overview.md): Ein NoSQL-Speicher für die schemalose Speicherung von strukturierten Daten.
@@ -77,7 +77,7 @@ Dateifreigaben können in zahlreichen Szenarien verwendet werden:
 
 - Konfigurationsdateien können auf einer Dateifreigabe gespeichert und von mehreren virtuellen Computern genutzt werden. Tools und Hilfsprogramme, die von mehreren Entwicklern in einer Gruppe verwendet werden, können auf einer Dateifreigabe gespeichert werden, um sicherzustellen, dass sie von allen gefunden werden und dass alle die gleiche Version verwenden.
 
-- Diagnoseprotokolle, Metriken und Absturzabbilder sind nur drei Beispiele für Daten, die zur späteren Verarbeitung oder Analyse auf eine Dateifreigabe geschrieben werden können.
+- Ressourcenprotokolle, Metriken und Absturzabbilder sind nur drei Beispiele für Daten, die zur späteren Verarbeitung oder Analyse auf eine Dateifreigabe geschrieben werden können.
 
 Weitere Informationen zu Azure Files finden Sie unter [Einführung in Azure Files](../files/storage-files-introduction.md).
 

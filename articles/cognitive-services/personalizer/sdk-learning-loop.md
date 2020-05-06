@@ -2,14 +2,14 @@
 title: 'Schnellstart: Erstellen und Verwenden einer Lernschleife mit dem SDK – Personalisierung'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Wissensdatenbank mit dem Client-SDK erstellen und verwalten.
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c65be6c68372ffe92ffd942bf71d2b635ec2fd16
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524868"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188858"
 ---
 # <a name="quickstart-personalizer-client-library"></a>Schnellstart: Personalisierungsclientbibliothek
 
@@ -17,7 +17,7 @@ Zeigen Sie personalisierten Inhalt in dieser Schnellstartanleitung mit dem Perso
 
 Führen Sie erste Schritte mit der Personalisierungsclientbibliothek aus. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 
- * Rangfolge-API: Basierend auf den Echtzeitinformationen, die Sie für den Inhalt und zum Kontext angeben, wird das beste Element aus den Inhaltselementen ausgewählt.
+ * Rangfolge-API: Basierend auf den Echtzeitinformationen, die Sie zum Inhalt und zum Kontext angeben, wird das beste Element aus den Aktionen ausgewählt.
  * Relevanz-API: Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen und senden sie mit dieser API an die Personalisierung. Diese Bewertung kann ein einzelner Wert (z. B. „1“ für „Gut“ und „0“ für „Schlecht“) oder ein Algorithmus sein, den Sie anhand Ihrer Geschäftsanforderungen erstellt haben.
 
 ::: zone pivot="programming-language-csharp"

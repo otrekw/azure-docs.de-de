@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660664"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116688"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
 Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Sitzungen können mit FIFO- (First in, First Out) und Anforderung/Antwort-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
@@ -64,7 +64,7 @@ Wenn mehrere gleichzeitige Empfänger auf die Warteschlange zugreifen, werden di
 
 Die vorherige Abbildung zeigt drei gleichzeitige Sitzungsempfänger. Eine Sitzung mit `SessionId` = 4 verfügt über keinen aktiven, besitzenden Client, was bedeutet, dass von dieser bestimmten Sitzung keine Nachrichten übermittelt werden. Eine Sitzung fungiert in vielerlei Hinsicht wie eine untergeordnete Warteschlange.
 
-Die vom Sitzungsempfänger gehaltene Sitzungssperre ist ein Schirm für die Nachrichtensperren, die vom *peek-lock*-Abstimmungsmodus verwendet werden. Ein Empfänger darf nicht gleichzeitig zwei Nachrichten aufweisen, denn die Nachrichten müssen nacheinander verarbeitet werden. Eine neue Nachricht kann nur dann abgerufen werden, sobald die vorherige Nachricht abgeschlossen oder nicht zugestellt wurde. Das Abbrechen einer Nachricht bewirkt, dass dieselbe Nachricht beim nächsten Empfangsvorgang erneut abgearbeitet wird.
+Die vom Sitzungsempfänger gehaltene Sitzungssperre ist ein Schirm für die Nachrichtensperren, die vom *peek-lock*-Abstimmungsmodus verwendet werden. Nur ein Empfänger kann eine Sperre für eine Sitzung haben. Ein Empfänger kann viele übermittelte Nachrichten haben, aber die Nachrichten werden in Reihenfolge empfangen. Das Abbrechen einer Nachricht bewirkt, dass dieselbe Nachricht beim nächsten Empfangsvorgang erneut abgearbeitet wird.
 
 ### <a name="message-session-state"></a>Nachrichtensitzungszustand
 
@@ -78,7 +78,7 @@ Die APIs zum Verwalten des Sitzungszustands, [SetState](/dotnet/api/microsoft.se
 
 Der Sitzungszustand bleibt erhalten, bis er gelöscht wird (Rückgabe: **NULL**), auch wenn alle Nachrichten in einer Sitzung verarbeitet werden.
 
-Alle vorhandenen Sitzungen in einer Warteschlange oder einem Abonnement können in der Java-API mit der **SessionBrowser**-Methode und im .NET-Client mit [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) für [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) und [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) aufgelistet werden.
+Alle vorhandenen Sitzungen in einer Warteschlange oder einem Abonnement können in der Java-API mit der **SessionBrowser**-Methode und im .NET Framework-Client mit [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) für [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) und [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) aufgelistet werden.
 
 Der Sitzungszustand, der in einer Warteschlange oder in einem Abonnement gespeichert ist, wird auf das Speicherkontingent dieser Entität angerechnet. Wenn die Anwendung mit einer Sitzung fertig ist, empfiehlt es sich daher für die Anwendung, ihren beibehaltenen Zustand zu bereinigen, um externe Verwaltungskosten zu vermeiden.
 
@@ -89,7 +89,7 @@ Die Definition der Übermittlungsanzahl pro Nachricht im Kontext von Sitzungen w
 | Szenario | Übermittlungsanzahl der Nachricht inkrementiert? |
 |----------|---------------------------------------------|
 | Die Sitzung wird akzeptiert, aber die Sitzungssperre läuft ab (aufgrund eines Timeouts). | Ja |
-| Die Sitzung wird akzeptiert, die Nachrichten innerhalb der Sitzung werden nicht abgeschlossen (selbst wenn sie gesperrt sind), und die Sitzung wird geschlossen. | Nein |
+| Die Sitzung wird akzeptiert, die Nachrichten innerhalb der Sitzung werden nicht abgeschlossen (selbst wenn sie gesperrt sind), und die Sitzung wird geschlossen. | Nein  |
 | Die Sitzung wird akzeptiert, Nachrichten werden abgeschlossen, und die Sitzung wird explizit geschlossen. | Nicht zutreffend (Standardflow. Hier werden die Nachrichten aus der Sitzung entfernt.) |
 
 ## <a name="request-response-pattern"></a>Anforderung/Antwort-Muster

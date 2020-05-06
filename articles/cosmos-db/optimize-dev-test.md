@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225686"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194515"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimieren der Entwicklungs- und Testkosten in Azure Cosmos DB
 
@@ -21,8 +21,9 @@ In diesem Artikel werden die unterschiedlichen Optionen zur kostenlosen Verwendu
 
 [Azure Cosmos DB-Emulator](local-emulator.md) ist eine Version, die lokal heruntergeladen werden kann und den Azure Cosmos DB-Clouddienst imitiert. Sie können ohne jegliche Kosten Code schreiben und testen, der die Azure Cosmos DB-APIs verwendet, selbst wenn Sie keine Verbindung zum Netzwerk haben. Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung für Entwicklungszwecke mit hoher Wiedergabetreue für den Clouddienst bereit. Sie können Ihre Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen. Wenn Sie soweit sind, dass Sie Ihre Anwendung in der Cloud bereitstellen möchten, aktualisieren Sie einfach die Verbindungszeichenfolge, um eine Verbindung mit dem Azure Cosmos DB-Endpunkt in der Cloud herzustellen. Weitere Änderungen sind nicht erforderlich. Um Tests auszuführen, können Sie auch [eine CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps einrichten](tutorial-setup-ci-cd.md). Informationen zum Einstieg finden Sie im Artikel [Azure Cosmos DB-Emulator](local-emulator.md).
 
-## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB: Free-Tarif 
-Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 400 RU/s und 5 GB Speicher für das Konto kostenlos. Sie können auch eine Datenbank mit gemeinsam genutztem Durchsatz mit 25 Containern erstellen, für die 400 RU/s unter dem Free-Tarif auf Datenbankebene gemeinsam genutzt werden (maximal fünf Datenbanken mit gemeinsam genutztem Durchsatz pro Free-Tarif-Konto). Der Free-Tarif gilt unbegrenzt während der Lebensdauer des Kontos und verfügt über alle [Vorteile und Features](introduction.md#key-benefits) eines regulären Azure Cosmos DB-Kontos, z. B. unbegrenzter Speicher und Durchsatz (RU/s), SLAs, Hochverfügbarkeit, globale, sofort einsatzbereite Verteilung in allen Azure-Regionen usw. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. [Erstellen Sie als Einstieg ein neues Konto mit aktiviertem Free-Tarif](create-cosmosdb-resources-portal.md). Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/). 
+## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB: Free-Tarif
+
+Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 400 RU/s und 5 GB Speicher für das Konto kostenlos. Sie können auch eine Datenbank mit gemeinsam genutztem Durchsatz mit 25 Containern erstellen, für die 400 RU/s unter dem Free-Tarif auf Datenbankebene gemeinsam genutzt werden (maximal fünf Datenbanken mit gemeinsam genutztem Durchsatz pro Free-Tarif-Konto). Der Free-Tarif gilt unbegrenzt während der Lebensdauer des Kontos und verfügt über alle [Vorteile und Features](introduction.md#key-benefits) eines regulären Azure Cosmos DB-Kontos, z. B. unbegrenzter Speicher und Durchsatz (RU/s), SLAs, Hochverfügbarkeit, globale, sofort einsatzbereite Verteilung in allen Azure-Regionen usw. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. [Erstellen Sie zunächst ein neues Konto im Azure-Portal mit aktiviertem Free-Tarif](create-cosmosdb-resources-portal.md), oder verwenden Sie eine [Resource Manager-Vorlage](manage-sql-with-resource-manager.md#free-tier). Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen
 
@@ -30,11 +31,11 @@ Unter [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosd
 
 ## <a name="azure-free-account"></a>Kostenloses Azure-Konto
 
-Azure Cosmos DB ist in dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free) enthalten. Mit diesem Konto erhalten Sie ein kostenloses Azure-Guthaben und -Ressourcen für einen bestimmten Zeitraum. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und bereitgestellten Durchsatz von 400 RU/s für das ganze Jahr. Diese Funktion ermöglicht jedem Entwickler ganz einfach und kostenlos das Testen der Funktionen von Azure Cosmos DB oder der Integration mit anderen Azure-Diensten. Mit dem kostenlosen Azure-Konto erhalten Sie ein Guthaben von 200 US-Dollar, das Sie in den ersten 30 Tagen verbrauchen können. Selbst wenn Sie die Dienste schon nutzen, fallen Kosten erst an, wenn Sie ein Upgrade durchführen. Informationen zum Einstieg finden Sie auf der Seite [Kostenloses Azure-Konto](https://azure.microsoft.com/free).
+Azure Cosmos DB ist in dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free) enthalten. Mit diesem Konto erhalten Sie ein kostenloses Azure-Guthaben und -Ressourcen für einen bestimmten Zeitraum. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und bereitgestellten Durchsatz von 400 RUs/Sek. für das ganze Jahr. Diese Funktion ermöglicht jedem Entwickler ganz einfach und kostenlos das Testen der Funktionen von Azure Cosmos DB oder der Integration mit anderen Azure-Diensten. Mit dem kostenlosen Azure-Konto erhalten Sie ein Guthaben von 200 US-Dollar, das Sie in den ersten 30 Tagen verbrauchen können. Selbst wenn Sie die Dienste schon nutzen, fallen Kosten erst an, wenn Sie ein Upgrade durchführen. Informationen zum Einstieg finden Sie auf der Seite [Kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
 ## <a name="use-shared-throughput-databases"></a>Verwenden von Datenbanken mit gemeinsam genutztem Durchsatz
 
-Bei einer [Datenbank mit gemeinsam genutztem Durchsatz](set-throughput.md#set-throughput-on-a-database) wird der bereitgestellte Datenbankdurchsatz (RU/s) für alle Container der Datenbank genutzt. Wenn Sie beispielsweise eine Datenbank mit 400 RU/s bereitstellen und vier Container verwenden, wird der Durchsatz von 400 RU/s von allen vier Containern genutzt. In einer Entwicklungs- oder Testumgebung, in der auf die einzelnen Container ggf. weniger häufig zugegriffen wird und somit weniger als 400 RU/s benötigt werden, kann die Anordnung von Containern in einer Datenbank mit gemeinsam genutztem Durchsatz eine Kostenoptimierung bewirken. 
+Bei einer [Datenbank mit gemeinsam genutztem Durchsatz](set-throughput.md#set-throughput-on-a-database) wird der bereitgestellte Datenbankdurchsatz (RU/s) für alle Container der Datenbank genutzt. Wenn Sie beispielsweise eine Datenbank mit 400 RU/s bereitstellen und vier Container verwenden, wird der Durchsatz von 400 RU/s von allen vier Containern genutzt. In einer Entwicklungs- oder Testumgebung, in der auf die einzelnen Container ggf. weniger häufig zugegriffen wird und somit weniger als 400 RU/s benötigt werden, kann die Anordnung von Containern in einer Datenbank mit gemeinsam genutztem Durchsatz eine Kostenoptimierung bewirken.
 
 Angenommen, Ihr Entwicklungs- oder Testkonto verfügt über vier Container. Wenn Sie vier Container mit einem dedizierten Durchsatz erstellen (mindestens 400 RU/s), beträgt der Gesamtwert 1.600 RU/s. Wenn Sie dagegen eine Datenbank mit gemeinsam genutztem Durchsatz erstellen (mindestens 400 RU/s) und Ihre Container darin anordnen, beträgt der Gesamtwert nur 400 RU/s. Im Allgemeinen eignen sich Datenbanken mit gemeinsam genutztem Durchsatz gut für Szenarien, in denen Sie für einzelne Container keinen garantierten Durchsatz benötigen.  Erfahren Sie mehr zu [Datenbanken mit gemeinsam genutztem Durchsatz](set-throughput.md#set-throughput-on-a-database).
 
@@ -49,4 +50,3 @@ Zum Einstieg in die Verwendung des Emulators oder des kostenlosen Azure Cosmos D
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
-

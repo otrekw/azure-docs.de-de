@@ -4,12 +4,12 @@ description: Beschreibt, wie Ressourcengruppen und Ressourcen gelöscht werden. 
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234098"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82136480"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 
@@ -53,6 +53,9 @@ Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die G
 * Größer als 500
 
 Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht durchführen.
+
+> [!IMPORTANT]
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.
 
 ## <a name="delete-resource-group"></a>Ressourcengruppe löschen
 

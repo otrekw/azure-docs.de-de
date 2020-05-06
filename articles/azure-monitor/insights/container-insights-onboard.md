@@ -2,13 +2,13 @@
 title: Aktivieren von Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktivieren und konfigurieren, damit Sie erfahren, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234494"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185930"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Aktivieren von Azure Monitor für Container
 
@@ -20,7 +20,9 @@ In diesem Artikel finden Sie eine Übersicht der verfügbaren Optionen für die 
 
 - Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) oder lokal mit der AKS-Engine gehostet werden.
 
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) Version 3.x und 4.x
+
+- [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) Version 4.x
 
 Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bereitstellung von Kubernetes mit den folgenden unterstützten Methoden aktiviert werden:
 
@@ -62,8 +64,7 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 |Agent-Ressource|Ports |
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 | 
-| *.blob.core.windows.net | 443 |
+| *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
 | *.monitoring.azure.com | 443 |
@@ -75,7 +76,6 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | Datenerfassung |
 | *.oms.opinsights.azure.cn | 443 | OMS-Onboarding |
-| *.blob.core.windows.net | 443 | Wird zum Überwachen der ausgehenden Konnektivität verwendet. |
 | microsoft.com | 80 | Wird für Netzwerkkonnektivität verwendet. Dies ist nur erforderlich, wenn es sich bei der Version des Agent-Images um ciprod09262019 oder eine frühere Version handelt. |
 | dc.services.visualstudio.com | 443 | Für Agent-Telemetrie mithilfe von Application Insights in der öffentlichen Azure-Cloud. |
 
@@ -85,7 +85,6 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | Datenerfassung |
 | *.oms.opinsights.azure.us | 443 | OMS-Onboarding |
-| *.blob.core.windows.net | 443 | Wird zum Überwachen der ausgehenden Konnektivität verwendet. |
 | microsoft.com | 80 | Wird für Netzwerkkonnektivität verwendet. Dies ist nur erforderlich, wenn es sich bei der Version des Agent-Images um ciprod09262019 oder eine frühere Version handelt. |
 | dc.services.visualstudio.com | 443 | Für Agent-Telemetrie mithilfe von Application Insights in der öffentlichen Azure-Cloud. |
 

@@ -1,18 +1,16 @@
 ---
-title: Renderingfunktionen – Azure Batch
+title: Renderingfunktionen
 description: Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -Apps auszuführen. Batch enthält bestimmte Funktionen zur Unterstützung von Renderingworkloads.
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75449726"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115753"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -48,7 +46,7 @@ Andere Optionen sind verfügbar, wenn weitere Anwendungen für die virtuellen Co
 
 Die Anwendungen, die verwendet werden und für die eine Lizenzgebühr anfällt, müssen in der Poolkonfiguration angegeben werden.
 
-* Geben Sie beim `applicationLicenses`Erstellen eines Pools[ die ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
+* Geben Sie beim [Erstellen eines Pools](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) die `applicationLicenses`-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
 * Wenn Sie eine oder mehrere Anwendungen angeben, werden die Kosten für diese Anwendungen mit den Kosten der virtuellen Computer addiert.  Anwendungspreise sind auf der [Seite mit den Preisen für Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering) aufgeführt.
 
 > [!NOTE]

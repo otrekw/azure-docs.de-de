@@ -2,13 +2,13 @@
 title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/27/2020
+ms.openlocfilehash: a15e7dfdf01a99cd23b216fafcfb44320a716d16
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982377"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231287"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
@@ -19,14 +19,12 @@ Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerd
 Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Einige Funktionen können nicht in allen Bereichen verwendet werden. Diese sind in den folgenden Listen aufgeführt.
 
 <a id="array" aria-hidden="true" />
-<a id="coalesce" aria-hidden="true" />
 <a id="concatarray" aria-hidden="true" />
 <a id="contains" aria-hidden="true" />
 <a id="createarray" aria-hidden="true" />
 <a id="empty" aria-hidden="true" />
 <a id="first" aria-hidden="true" />
 <a id="intersection" aria-hidden="true" />
-<a id="json" aria-hidden="true" />
 <a id="last" aria-hidden="true" />
 <a id="length" aria-hidden="true" />
 <a id="min" aria-hidden="true" />
@@ -36,19 +34,17 @@ Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Re
 <a id="take" aria-hidden="true" />
 <a id="union" aria-hidden="true" />
 
-## <a name="array-and-object-functions"></a>Array- und Objektfunktionen
+## <a name="array-functions"></a>Arrayfunktionen
 
-Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten bereit.
+Der Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Arrays bereit:
 
 * [array](template-functions-array.md#array)
-* [coalesce](template-functions-array.md#coalesce)
 * [concat](template-functions-array.md#concat)
 * [contains](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [first](template-functions-array.md#first)
 * [intersection](template-functions-array.md#intersection)
-* [json](template-functions-array.md#json)
 * [last](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
 * [min](template-functions-array.md#min)
@@ -58,6 +54,7 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 * [take](template-functions-array.md#take)
 * [union](template-functions-array.md#union)
 
+<a id="coalesce" aria-hidden="true" />
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
 <a id="lessorequals" aria-hidden="true" />
@@ -68,6 +65,7 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 
 Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Vorlagen bereit.
 
+* [coalesce](template-functions-comparison.md#coalesce)
 * [equals](template-functions-comparison.md#equals)
 * [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
@@ -135,6 +133,19 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
+
+<a id="json" aria-hidden="true" />
+
+## <a name="object-functions"></a>Objektfunktionen
+
+Der Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Objekten bereit:
+
+* [contains](template-functions-object.md#contains)
+* [empty](template-functions-object.md#empty)
+* [intersection](template-functions-object.md#intersection)
+* [json](template-functions-object.md#json)
+* [length](template-functions-object.md#length)
+* [union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />

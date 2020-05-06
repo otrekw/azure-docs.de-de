@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3dd2be9a9f618f19ae71de8b19115013896b10cf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418608"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195552"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurieren einer Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) für die Verknüpfung mit einem virtuellen Netzwerk
 
@@ -53,7 +53,7 @@ Dazu müssen folgende Schritte ausgeführt werden:
 
     - Stellen Sie sicher, dass für die Ressourcengruppe/das Abonnement, zu der bzw. dem das virtuelle Netzwerk gehört, keine [Ressourcensperre](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) besteht. Wenn Sie eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden Ihrer Azure-SSIS IR ein Fehler auftreten oder die IR nicht mehr reagieren.
 
-    - Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe/dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört:
+    - Stellen Sie sicher, dass Sie keine Azure Policy-Zuweisung aufweisen, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe/dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört:
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 

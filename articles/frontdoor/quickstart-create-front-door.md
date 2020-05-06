@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen eines Front Door-Profils für Hochverfügbarkeit von Anwendungen'
-description: In diesem Schnellstartartikel wird die Vorgehensweise zum Erstellen einer Front Door-Instanz für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung beschrieben.
+title: 'Schnellstart: Einrichten von Hochverfügbarkeit mit Azure Front Door Service'
+description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwenden von Azure Front Door für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung beschrieben.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,106 +11,159 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2018
+ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: 2b44c0cdbe2d955efe20a5f9473a29bc9f500a07
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521452"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82133414"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
-In diesem Schnellstart wird beschrieben, wie Sie ein Front Door-Profil erstellen, das Hochverfügbarkeit und hohe Leistung für Ihre globale Webanwendung sicherstellt. 
+Führen Sie erste Schritte mit Azure Front Door aus, indem Sie Hochverfügbarkeit für eine Webanwendung über das Azure-Portal einrichten.
 
-Das in dieser Schnellstartanleitung beschriebene Szenario umfasst zwei Instanzen einer Webanwendung, die in verschiedenen Azure-Regionen ausgeführt werden. Es wird eine Front Door-Konfiguration auf der Grundlage von [Back-Ends mit gleicher Gewichtung und Priorität](front-door-routing-methods.md) erstellt, die dabei hilft, Benutzerdatenverkehr an die nächstgelegenen Standort-Back-Ends, auf denen die Anwendung ausgeführt wird, weiterzuleiten. Front Door überwacht kontinuierlich die Webanwendung und bietet automatisches Failover zum nächsten verfügbaren Back-End, wenn der nächstgelegene Standort nicht verfügbar ist.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+In dieser Schnellstartanleitung fasst Azure Front Door zwei Instanzen einer Webanwendung in einem Pool zusammen, die in verschiedenen Azure-Regionen ausgeführt werden. Sie erstellen eine Front Door-Konfiguration auf der Grundlage von Back-Ends mit gleicher Gewichtung und gleicher Priorität. Diese Konfiguration leitet Datenverkehr an den nächstgelegenen Standort weiter, an dem die Anwendung ausgeführt wird. Die Webanwendung wird von Azure Front Door ständig überwacht. Der Dienst bietet automatisches Failover auf den nächsten verfügbaren Standort, wenn der nächstgelegene Standort nicht verfügbar ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für diesen Schnellstart müssen Sie zwei Instanzen einer Webanwendung bereitgestellt haben, die in verschiedenen Azure-Regionen (*USA, Osten* und *Europa, Westen*) ausgeführt werden. Beide Webanwendungsinstanzen werden im Aktiv/Aktiv-Modus ausgeführt, d.h., jede von ihnen kann jederzeit Datenverkehr annehmen. Im Gegensatz dazu dient in einer Aktiv/Standby-Konfiguration ein Knoten als Failover.
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Web** > **Web-App**.
-2. Geben Sie unter **Web-App** die folgenden Informationen ein, oder wählen Sie sie aus, und geben Sie Standardeinstellungen ein, wenn noch keine Angaben gemacht wurden:
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-     | Einstellung         | Wert     |
-     | ---              | ---  |
-     | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD1* ein. |
-     | Name           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
-     | Laufzeitstapel          | Wählen Sie einen Runtimestapel für Ihre App aus |
-     |      Region  |   USA (Westen)        |
-     | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanEastUS* ein, und klicken Sie dann auf **OK**.| 
-     |SKU und Größe  | Wählen Sie **Größe ändern** aus. Wählen Sie **Standard S1, 100 ACU insgesamt, 1,75 GB Arbeitsspeicher** aus |
-     
-3. Klicken Sie auf **Überprüfen + erstellen**.
-4. Überprüfen Sie die Informationen in der Zusammenfassung für die Web-App. Klicken Sie auf **Erstellen**.
-5. Wenn die Web-App erfolgreich bereitgestellt wurde, wird nach ca. fünf Minuten eine Standardwebsite erstellt.
-6. Wiederholen Sie die Schritte 1 bis 3, um eine zweite Website in einer anderen Azure-Region mit den folgenden Einstellungen zu erstellen:
+## <a name="create-two-instances-of-a-web-app"></a>Erstellen von zwei Instanzen einer Web-App
 
-     | Einstellung         | Wert     |
-     | ---              | ---  |
-     | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD2* ein. |
-     | Name           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
-     | Laufzeitstapel          | Wählen Sie einen Runtimestapel für Ihre App aus |
-     |      Region  |   Europa, Westen      |
-     | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanWestEurope* ein, und klicken Sie dann auf **OK**.|   
-     |SKU und Größe  | Wählen Sie **Größe ändern** aus. Wählen Sie **Standard S1, 100 ACU insgesamt, 1,75 GB Arbeitsspeicher** aus |
-    
+Für diese Schnellstartanleitung sind zwei Instanzen einer Webanwendung erforderlich, die in verschiedenen Azure-Regionen ausgeführt werden. Beide Webanwendungsinstanzen werden im *Aktiv/Aktiv*-Modus ausgeführt, sodass jede von ihnen Datenverkehr annehmen kann. Diese Konfiguration unterscheidet sich von einer *Aktiv/Standby*-Konfiguration, bei der eine Instanz als Failover fungiert.
+
+Wenn Sie noch nicht über eine Web-App verfügen, richten Sie anhand der folgenden Schritte Beispielwebanwendungen ein.
+
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+
+1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus.
+
+1. Wählen Sie **Web** > **Web-App** aus.
+
+   ![Erstellen einer Web-App im Azure-Portal](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
+
+1. Wählen Sie unter **Web-App** das zu verwendende **Abonnement** aus.
+
+1. Wählen Sie für **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie unter **Name** den Namen *FrontDoorQS_rg1* ein, und wählen Sie **OK** aus.
+
+1. Geben Sie unter **Instanzendetails** im Feld **Name** einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-1* verwendet.
+
+1. Wählen Sie unter **Runtimestapel** eine Option aus. In diesem Beispiel wird *.NET Core 2.1 (LTS)* verwendet.
+
+1. Wählen Sie eine Region aus, etwa *USA, Mitte*.
+
+1. Wählen Sie unter **Windows-Plan** die Option **Neu erstellen** aus. Geben Sie unter **Name** den Namen *myAppServicePlanCentralUS* ein, und wählen Sie **OK** aus.
+
+1. Legen Sie für **SKU und Größe** die Option **Standard S1, 100 ACU insgesamt, 1,75 GB Arbeitsspeicher** aus.
+
+1. Wählen Sie **Überprüfen und erstellen** aus, überprüfen Sie die **Zusammenfassung**, und wählen Sie dann die Option **Erstellen** aus. Es kann mehrere Minuten dauern, bis die Bereitstellung abgeschlossen ist.
+
+   ![Überprüfen der Zusammenfassung für die Web-App](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
+
+Erstellen Sie nach Abschluss der Bereitstellung eine zweite Web-App. Verwenden Sie dieselbe Prozedur mit denselben Werten, mit Ausnahme der folgenden Werte:
+
+| Einstellung          | Wert     |
+| ---              | ---  |
+| **Ressourcengruppe**   | Wählen Sie **Neu** aus, und geben Sie *FrontDoorQS_rg2* ein. |
+| **Name**             | Geben Sie einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-2* verwendet.  |
+| **Region**           | Geben Sie eine andere Region ein. In diesem Beispiel wird *USA, Süden-Mitte* verwendet. |
+| **App Service-Plan** > **Windows-Plan**         | Wählen Sie **Neu** aus, geben Sie *myAppServicePlanSouthCentralUS* ein, und wählen Sie dann **OK** aus. |
+
 ## <a name="create-a-front-door-for-your-application"></a>Erstellen einer Front Door-Instanz für Ihre Anwendung
-### <a name="a-add-a-frontend-host-for-front-door"></a>A. Hinzufügen eines Front-End-Hosts für Front Door
-Erstellen Sie eine Front Door-Konfiguration, die den Benutzerdatenverkehr basierend auf der geringsten Wartezeit zwischen zwei Back-Ends weiterleitet.
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Front Door**.
-2. Geben Sie unter **Frontdoor-Instanz erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, und geben Sie Standardeinstellungen ein, wenn noch keine Angaben gemacht wurden:
+Konfigurieren Sie Azure Front Door zum Weiterleiten des Benutzerdatenverkehrs basierend auf der geringsten Wartezeit zwischen den beiden Web-App-Servern. Fügen Sie zunächst einen Front-End-Host für Azure Front Door hinzu.
 
-     | Einstellung         | Wert     |
-     | ---              | ---  |
-     |Subscription  | Wählen Sie das gewünschte Abonnement aus, in dem die Front Door-Instanz erstellt werden soll.|
-     | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD0* ein |
-     | Ressourcengruppenstandort  |   USA (Mitte)        |
-     
-     > [!NOTE]
-     > Sie müssen keine neue Ressourcengruppe erstellen, um Front Door bereitzustellen.  Sofern möglich, können Sie auch eine vorhandene Ressourcengruppe auswählen.
-     
-3. Klicken Sie auf **Weiter: Konfiguration** aus.
-4. Klicken Sie auf der Karte „Front-Ends/Domänen“ auf das Pluszeichen.  Geben Sie für **Hostname** Folgendes ein: `<Your Initials>frontend`. Dieser Hostname muss global eindeutig sein, dies wird durch Front Door geprüft.
-5. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **Front Door** aus.
 
-### <a name="b-add-application-backend-and-backend-pools"></a>B. Hinzufügen des Anwendung-Back-Ends und von Back-End-Pools
+1. Wählen Sie unter **Frontdoor-Instanz erstellen** ein **Abonnement** aus.
 
-Als Nächstes müssen Sie Ihre Front-Ends/Domänen und Anwendungs-Back-Ends in einem Back-End-Pool konfigurieren, damit Front Door weiß, wo sich Ihre Anwendung befindet. 
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu** aus, geben Sie *FrontDoorQS_rg0* ein, und wählen Sie dann **OK** aus.  Sie können stattdessen eine vorhandene Ressourcengruppe verwenden.
 
-1. Klicken Sie auf der Karte „Back-End-Pools“ auf das Pluszeichen, um einen Back-End-Pool hinzuzufügen. Geben Sie für **Name** für Ihren Back-End-Pool `myBackendPool` ein.
-2. Klicken Sie anschließend auf **Back-End hinzufügen**, um die zuvor erstellten Websites hinzuzufügen.
-3. Wählen Sie für **Back-End-Hosttyp** die Option „App Service“ aus. Wählen Sie das Abonnement aus, in dem Sie die Website erstellt haben, und wählen Sie dann die erste Website in der Dropdownliste **Zielhostname** aus.
-4. Lassen Sie die übrigen Felder zunächst unverändert, und klicken Sie auf **Hinzufügen**.
-5. Wählen Sie für **Back-End-Hosttyp** die Option „App Service“ aus. Wählen Sie das Abonnement aus, in dem Sie die Website erstellt haben, und wählen Sie dann die **zweite** Website in der Dropdownliste **Zielhostname** aus.
-6. Lassen Sie die übrigen Felder zunächst unverändert, und klicken Sie auf **Hinzufügen**.
-7. Optional können Sie die Integritätstests und Lastenausgleichseinstellungen für den Back-End-Pool aktualisieren, aber die Standardwerte sollten ebenfalls funktionieren. Klicken Sie in einem solchen Fall auf **Hinzufügen**.
+1. Wenn Sie eine Ressourcengruppe erstellt haben, wählen Sie einen **Ressourcengruppenstandort** und anschließend **Weiter: Konfiguration** aus.
 
+1. Wählen Sie unter **Front-Ends/Domänen** das Symbol **+** aus, um **Front-End-Host hinzufügen** auszuwählen.
 
-### <a name="c-add-a-routing-rule"></a>C. Hinzufügen einer Routingregel
-1. Klicken Sie abschließend auf der Karte „Routingregeln“ auf das Pluszeichen, um eine Routingregel zu konfigurieren. Dies ist erforderlich, um die Front-End-Hosts dem Back-End-Adresspool zuzuordnen. Dabei wird letztlich konfiguriert, dass bei `myappfrontend.azurefd.net` eingehende Anforderungen an den Back-End-Pool `myBackendPool` weitergeleitet werden sollen. 
-2. Geben Sie für **Name** „LocationRule“ ein.
-3. Klicken Sie auf **Hinzufügen**, um die Routingregel für Ihre Front Door-Instanz hinzuzufügen. 
-4. Klicken Sie auf **Überprüfen und erstellen**.
-5. Überprüfen Sie die Einstellungen zum Erstellen der Front Door-Instanz. Klicken Sie auf **Erstellen**
+1. Geben Sie unter **Hostname** einen global eindeutigen Hostnamen ein. In diesem Beispiel wird *contoso-frontend* verwendet. Wählen Sie **Hinzufügen**.
 
->[!WARNING]
-> Sie **müssen** sicherstellen, dass jeder Front-End-Host in Ihrer Front Door-Instanz eine Routingregel mit einem Standardpfad („/\*“) aufweist. Das bedeutet, für alle Ihre Routingregeln muss mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad („/\*“) definiert sein. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
+   ![Hinzufügen eines Front-End-Hosts für Azure Front Door](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
-## <a name="view-front-door-in-action"></a>Anzeigen von Front Door in Aktion
-Nachdem Sie eine Front Door-Instanz erstellt haben, dauert es einige Minuten, bis die Konfiguration global bereitgestellt ist. Greifen Sie dann auf den erstellten Front-End-Host zu, d.h., wechseln Sie zu einem Webbrowser, und rufen Sie die URL `myappfrontend.azurefd.net` auf. Ihre Anforderung wird automatisch an das Ihnen nächstgelegene Back-End aus den angegebenen Back-Ends im Back-End-Pool weitergeleitet. 
+Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthält.
 
-### <a name="view-front-door-handle-application-failover"></a>Anzeigen des Anwendungsfailovers für das Front Door-Handle
-Wenn Sie das sofortige globale Front Door-Failover in Aktion testen möchten, können Sie zu einer der erstellten Websites wechseln und diese beenden. Entsprechend den definierten Integritätstesteinstellungen für den Back-End-Pool findet unverzüglich ein Failover des Datenverkehrs zur anderen Websitebereitstellung statt. Sie können das Verhalten auch testen, indem Sie das Back-End in der Back-End-Poolkonfiguration für Ihre Front Door-Instanz deaktivieren. 
+1. Wählen Sie unter **Frontdoor-Instanz erstellen** im Bereich **Back-End-Pools** das Symbol **+** aus, um **Back-End-Pool hinzufügen** zu öffnen.
+
+1. Geben Sie *myBackendPool* als **Name** ein.
+
+1. Wählen Sie **Back-End hinzufügen** aus. Wählen Sie unter **Back-End-Hosttyp** die Option *App Service* aus.
+
+1. Wählen Sie Ihr Abonnement und dann unter **Back-End-Hostname** die erste Web-App aus, die Sie erstellt haben. In diesem Beispiel wurde die Web-App *WebAppContoso-1* verwendet. Wählen Sie **Hinzufügen**.
+
+1. Wählen Sie erneut **Back-End hinzufügen** aus. Wählen Sie unter **Back-End-Hosttyp** die Option *App Service* aus.
+
+1. Wählen Sie erneut Ihr Abonnement und dann unter **Back-End-Hostname** die zweite Web-App aus, die Sie erstellt haben. Wählen Sie **Hinzufügen**.
+
+   ![Hinzufügen eines Back-End-Hosts zu Front Door](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
+
+Fügen Sie zum Schluss eine Routingregel hinzu. Eine Routingregel ordnet Ihren Front-End-Host dem Back-End-Pool zu. Die Regel leitet eine Anforderung für `contoso-frontend.azurefd.net` an **myBackendPool** weiter.
+
+1. Wählen Sie unter **Frontdoor-Instanz erstellen** im Bereich **Routingregeln** das Symbol **+** aus, um eine Routingregel zu konfigurieren.
+
+1. Geben Sie unter **Regel hinzufügen** für **Name** den Namen *LocationRule* ein. Übernehmen Sie alle Standardwerte, und wählen Sie anschließend **Hinzufügen** aus, um die Routingregel hinzuzufügen.
+
+   >[!WARNING]
+   > Sie **müssen** sicherstellen, dass jeder Front-End-Host in Ihrer Front Door-Instanz eine Routingregel mit einem Standardpfad (`\*`) aufweist. Das bedeutet, dass für alle Ihre Routingregeln mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad (`\*`) definiert sein muss. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
+
+1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
+
+   ![Konfigurierte Azure Front Door-Instanz](media/quickstart-create-front-door/configuration-azure-front-door.png)
+
+## <a name="view-azure-front-door-in-action"></a>Anzeigen von Azure Front Door in Aktion
+
+Nachdem Sie eine Front Door-Instanz erstellt haben, dauert es einige Minuten, bis die Konfiguration global bereitgestellt ist. Greifen Sie nach Abschluss des Vorgangs auf den von Ihnen erstellten Front-End-Host zu. Navigieren Sie in einem Browser zu `contoso-frontend.azurefd.net`. Ihre Anforderung wird automatisch an den nächstgelegenen Server aus den angegebenen Servern im Back-End-Pool weitergeleitet.
+
+Wenn Sie diese Apps in dieser Schnellstartanleitung erstellt haben, wird eine Seite mit Informationen angezeigt.
+
+Führen Sie die folgenden Schritte aus, um das sofortige globale Failover in Aktion zu testen:
+
+1. Öffnen Sie wie oben beschrieben einen Browser, und navigieren Sie zur Front-End-Adresse: `contoso-frontend.azurefd.net`.
+
+1. Suchen Sie im Azure-Portal nach *App Services*, und wählen Sie den Eintrag aus. Scrollen Sie nach unten zu einer Ihrer Web-Apps. In diesem Beispiel wird **WebAppContoso-1** verwendet.
+
+1. Wählen Sie Ihre Web-App und anschließend **Beenden** und zum Bestätigen **Ja** aus.
+
+1. Aktualisieren Sie Ihren Browser. Die gleiche Seite mit Informationen sollte angezeigt werden.
+
+   >[!TIP]
+   >Bei diesen Aktionen tritt eine kleine Verzögerung auf. Möglicherweise müssen Sie den Browser erneut aktualisieren.
+
+1. Navigieren Sie zur anderen Web-App, und beenden Sie sie ebenfalls.
+
+1. Aktualisieren Sie Ihren Browser. Dieses Mal sollte eine Fehlermeldung angezeigt werden.
+
+   ![Beide Instanzen der Web-App beendet](media/quickstart-create-front-door/web-app-stopped-message.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn die Ressourcengruppen **myResourceGroupFD1**, **myResourceGroupFD2** und **myResourceGroupFD0** nicht mehr benötigt werden, löschen Sie die Gruppen:
+
+Wenn Sie fertig sind, können Sie alle erstellten Elemente entfernen. Wenn eine Ressourcengruppe gelöscht wird, werden auch die darin befindlichen Inhalte gelöscht. Wenn Sie diese Front Door-Instanz nicht weiter verwenden möchten, sollten Sie Ressourcen entfernen, um unnötige Gebühren zu vermeiden.
+
+1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie den Eintrag aus, oder wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus.
+
+1. Zum Suchen einer Ressourcengruppe (etwa **FrontDoorQS_rg0**) können Sie filtern oder nach unten scrollen.
+
+1. Wählen Sie die Ressourcengruppe und dann **Ressourcengruppe löschen** aus.
+
+   >[!WARNING]
+   >Diese Aktion kann nicht rückgängig gemacht werden.
+
+1. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und wählen Sie dann **Löschen** aus.
+
+Wiederholen Sie den Vorgang für die anderen beiden Gruppen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie eine Front Door-Instanz erstellt, mit der Sie den Benutzerdatenverkehr für Webanwendungen, die Hochverfügbarkeit und maximale Leistung erfordern, weiterleiten können. Weitere Informationen zum Weiterleiten von Datenverkehr finden unter den von Front Door verwendeten [Routingmethoden](front-door-routing-methods.md).
+
+Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie Ihrer Front Door-Instanz eine benutzerdefinierte Domäne hinzufügen.
+> [!div class="nextstepaction"]
+> [Hinzufügen einer benutzerdefinierten Domäne](front-door-custom-domain.md)
+
+Weitere Informationen zum Weiterleiten von Datenverkehr finden unter [Datenverkehrsrouting in Azure Front Door Service](front-door-routing-methods.md).

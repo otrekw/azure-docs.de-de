@@ -5,14 +5,14 @@ author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
-ms.openlocfilehash: 536b95eb07619d0ce2d02ec01e1f51ed52c1b5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649202"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190128"
 ---
-# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Bereitstellen von Zuordnungen für einen benutzerdefinierten Anbieter per Azure-Richtlinie
+# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Bereitstellen von Zuordnungen für einen benutzerdefinierten Anbieter mit Azure Policy
 
 Azure-Richtlinien können zum Bereitstellen von Zuordnungen verwendet werden, um Ressourcen einem benutzerdefinierten Anbieter zuzuordnen. In diesem Artikel wird eine integrierte Richtlinie beschrieben, die Zuordnungen bereitstellt, und es wird erläutert, wie Sie diese Richtlinie verwenden können.
 

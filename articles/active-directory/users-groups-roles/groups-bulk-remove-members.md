@@ -1,11 +1,11 @@
 ---
 title: Massenentfernung von Gruppenmitgliedern durch Hochladen einer CSV-Datei – Azure Active Directory | Microsoft-Dokumentation
-description: Fügen Sie Benutzer in einem Massenvorgang im Azure Admin Center hinzu.
+description: Entfernen Sie Gruppenmitglieder in Massenvorgängen in Azure Admin Center.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,16 +13,37 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203449"
 ---
-# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern (Vorschau) in Azure Active Directory
+# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern in Azure Active Directory
 
 Über das Azure AD-Portal (Azure Active Directory) können Sie eine große Anzahl von Mitgliedern aus einer Gruppe entfernen, indem Sie mithilfe einer CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) eine Massenentfernung von Gruppenmitgliedern ausführen.
+
+## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
+
+Laden Sie die CSV-Vorlage für Massenuploads herunter, und füllen Sie sie aus, um mehrere Azure AD-Gruppenmitglieder in einem Vorgang hinzuzufügen. Ihre CSV-Vorlage ähnelt möglicherweise dem folgenden Beispiel:
+
+![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/groups-bulk-remove-members/template-example.png)
+
+### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
+
+Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
+
+- **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
+- **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen. Für Änderungen der Gruppenmitgliedschaft können Sie den Bezeichner auswählen: Mitgliedsobjekt-ID oder Benutzerprinzipalname.
+- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+
+### <a name="additional-guidance"></a>Zusätzliche Anleitungen
+
+- Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
+- Die erforderlichen Spalten werden zuerst aufgelistet.
+- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird empfohlen, dass Sie möglichst häufig die neueste Version der CSV-Vorlage herunterladen.
 
 ## <a name="to-bulk-remove-group-members"></a>So entfernen Sie Gruppenmitglieder in einem Massenvorgang
 
@@ -30,7 +51,7 @@ ms.locfileid: "72517091"
 1. Wählen Sie in Azure AD **Gruppen** > **Alle Gruppen** aus.
 1. Öffnen Sie die Gruppe, aus der Sie Mitglieder entfernen möchten, und wählen Sie **Mitglieder** aus.
 1. Wählen Sie auf der Seite **Mitglieder** die Option **Mitglieder entfernen** aus.
-1. Wählen Sie auf der Seite **Massenentfernung von Gruppenmitgliedern (Vorschau)** die Option **Herunterladen** aus, um die CSV-Dateivorlage mit den erforderlichen Gruppenmitgliedseigenschaften zu erhalten.
+1. Wählen Sie auf der Seite **Massenentfernung von Gruppenmitgliedern** die Option **Herunterladen** aus, um die CSV-Dateivorlage mit den erforderlichen Gruppenmitgliedseigenschaften zu erhalten.
 
    ![Der Befehl „Mitglieder entfernen“ ist auf der Profilseite für die Gruppe zu finden.](./media/groups-bulk-remove-members/remove-panel.png)
 
@@ -38,16 +59,16 @@ ms.locfileid: "72517091"
 
    ![Die CSV-Datei enthält Namen und IDs der zu entfernenden Mitglieder.](./media/groups-bulk-remove-members/csv-file.png)
 
-1. Navigieren Sie auf der Seite **Massenentfernung von Gruppenmitgliedern (Vorschau)** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen.
+1. Navigieren Sie auf der Seite **Massenentfernung von Gruppenmitgliedern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird auf der Seite für den Massenimport die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
 1. Wenn die Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zu starten, der die Gruppenmitglieder aus der Gruppe entfernt.
 1. Nach Abschluss des Entfernungsvorgangs wird eine Benachrichtigung angezeigt, dass der Massenvorgang erfolgreich abgeschlossen wurde.
 
 ## <a name="check-removal-status"></a>Überprüfen des Status für Entfernen
 
-Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen (Vorschau)** anzeigen.
+Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-   ![Die Seite „Ergebnisse von Massenvorgängen“ zeigt Ihnen den Status von Massenanforderungen.](./media/groups-bulk-remove-members/bulk-center.png)
+[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte unter der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
 

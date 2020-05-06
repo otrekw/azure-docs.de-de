@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025995"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233532"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -325,7 +325,7 @@ Nachdem Sie nun die Testbenutzer identifiziert haben, konfigurieren Sie in diese
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Informieren der betroffenen Projektbeteiligten über Privileged Identity Management
 
-Die Bereitstellung von Privileged Identity Management bringt zusätzliche Schritte für Benutzer von privilegierten Rollen mit sich. Zwar werden Sicherheitsprobleme im Zusammenhang mit privilegierten Identitäten durch Privileged Identity Management erheblich reduziert, die Änderung muss jedoch vor der mandantenweiten Bereitstellung effektiv kommuniziert werden. Je nach Anzahl der betroffenen Administratoren entscheiden sich Organisationen häufig für die Erstellung eines internen Dokuments, eines Videos oder einer E-Mail zu dieser Änderung. Folgende Informationen sind in diesen Mitteilungen häufig enthalten:
+Die Bereitstellung von Privileged Identity Management bringt zusätzliche Schritte für Benutzer von privilegierten Rollen mit sich. Zwar werden Sicherheitsprobleme im Zusammenhang mit privilegierten Identitäten durch Privileged Identity Management erheblich reduziert, die Änderung muss jedoch vor der organisationsweiten Bereitstellung effektiv kommuniziert werden. Je nach Anzahl der betroffenen Administratoren entscheiden sich Organisationen häufig für die Erstellung eines internen Dokuments, eines Videos oder einer E-Mail zu dieser Änderung. Folgende Informationen sind in diesen Mitteilungen häufig enthalten:
 
 - Was ist PIM?
 - Was ist der Vorteil für die Organisation?
@@ -371,7 +371,7 @@ Die erfolgreiche Bereitstellung von Privileged Identity Management in der Produk
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Verwenden von Privileged Identity Management-Warnungen zum Schützen des privilegierten Zugriffs
 
-Verwenden Sie die integrierte Warnungsfunktion von Privileged Identity Management, um Ihren Mandanten besser zu schützen. Weitere Informationen finden Sie unter [Sicherheitswarnungen](pim-how-to-configure-security-alerts.md#security-alerts). Diese Warnungen umfassen Folgendes: Administratoren verwenden keine privilegierten Rollen, Rollen sind außerhalb von Privileged Identity Management zugewiesen, Rollen werden zu häufig aktiviert und mehr. Zum vollständigen Schutz Ihrer Organisation sollten Sie die Liste der Warnungen regelmäßig prüfen und die Probleme beheben. So können Sie Ihre Warnungen anzeigen und beheben:
+Verwenden Sie die integrierte Warnungsfunktion von Privileged Identity Management, um Ihre Organisation besser zu schützen. Weitere Informationen finden Sie unter [Sicherheitswarnungen](pim-how-to-configure-security-alerts.md#security-alerts). Diese Warnungen umfassen Folgendes: Administratoren verwenden keine privilegierten Rollen, Rollen sind außerhalb von Privileged Identity Management zugewiesen, Rollen werden zu häufig aktiviert und mehr. Zum vollständigen Schutz Ihrer Organisation sollten Sie die Liste der Warnungen regelmäßig prüfen und die Probleme beheben. So können Sie Ihre Warnungen anzeigen und beheben:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**.

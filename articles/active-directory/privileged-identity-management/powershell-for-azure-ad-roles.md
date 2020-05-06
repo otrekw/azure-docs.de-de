@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa241a261b8dcb21dd39b5dacacac9aa4889304
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519646"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233991"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell für Azure AD-Rollen in Privileged Identity Management (PIM)
 
@@ -45,16 +45,16 @@ Dieser Artikel enthält Anweisungen für die Verwendung von Azure Active Directo
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. Suchen Sie Ihre Mandanten-ID, indem Sie zu **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** navigieren. Verwenden Sie diese ID im Cmdlet-Bereich, wenn Sie die „resourceId“ bereitstellen müssen.
+1. Suchen Sie die Mandanten-ID für Ihre Azure AD-Organisation, indem Sie zu **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** navigieren. Verwenden Sie diese ID im Cmdlet-Bereich, wenn Sie die „resourceId“ bereitstellen müssen.
 
-    ![Suchen der Mandanten-ID in den Eigenschaften für die Azure AD-Organisation](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
+    ![Suchen der Organisations-ID in den Eigenschaften für die Azure AD-Organisation](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Unter https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management finden Sie eine ausführlichere Dokumentation zu den folgenden Cmdlets. Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Mandanten-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
+> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Unter https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management finden Sie eine ausführlichere Dokumentation zu den folgenden Cmdlets. Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Organisations-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
 
 ## <a name="retrieving-role-definitions"></a>Abrufen von Rollendefinitionen
 
-Verwenden Sie das folgende Cmdlet, um alle integrierten und benutzerdefinierten Azure AD-Rollen in Ihrer Azure AD-Organisation (Mandant) abzurufen. Durch diesen wichtigen Schritt erhalten Sie die Zuordnung zwischen Rollenname und „roleDefinitionId“. „roleDefinitionId“ wird in all diesen Cmdlets zum Verweis auf eine bestimmte Rolle verwendet.
+Verwenden Sie das folgende Cmdlet, um alle integrierten und benutzerdefinierten Azure AD-Rollen in Ihrer Azure AD-Organisation abzurufen. Durch diesen wichtigen Schritt erhalten Sie die Zuordnung zwischen Rollenname und „roleDefinitionId“. „roleDefinitionId“ wird in all diesen Cmdlets zum Verweis auf eine bestimmte Rolle verwendet.
 
 Der Wert von „roleDefinitionId“ ist spezifisch für Ihre Azure AD-Organisation und unterscheidet sich von dem Wert für „roleDefinitionId“, der von der Rollenverwaltungs-API zurückgegeben wird.
 

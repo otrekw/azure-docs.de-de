@@ -4,12 +4,12 @@ description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azur
 author: dkkapur
 ms.topic: article
 ms.date: 04/10/2020
-ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261617"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115226"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -55,9 +55,12 @@ Verwenden Sie das kleinste Image, das Ihre Anforderungen erfüllt. Unter Linux k
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Wie viele Kerne und Arbeitsspeicher sollte ich für meine Container oder die Containergruppe zuweisen?
 
-Das hängt ganz von Ihrer Workload ab. Fangen Sie klein an, und testen Sie die Leistung, um herauszufinden, ob sie für Ihre Container ausreicht. [Überwachen Sie die Auslastung der CPU- und Arbeitsspeicherressourcen](container-instances-monitor.md), und fügen Sie Kerne oder Arbeitsspeicher je nach Art der Prozesse hinzu, die Sie im Container bereitstellen. 
+Das hängt ganz von Ihrer Workload ab. Fangen Sie klein an, und testen Sie die Leistung, um herauszufinden, ob sie für Ihre Container ausreicht. [Überwachen Sie die Auslastung der CPU- und Arbeitsspeicherressourcen](container-instances-monitor.md), und fügen Sie Kerne oder Arbeitsspeicher je nach Art der Prozesse hinzu, die Sie im Container bereitstellen.
 
 Stellen Sie außerdem sicher, dass Sie die [Ressourcenverfügbarkeit](container-instances-region-availability.md#availability---general) für die Region prüfen, in der die Bereitstellung erfolgt, um die Obergrenzen für CPU-Kerne und Arbeitsspeicher pro Containergruppe zu ermitteln. 
+
+> [!NOTE]
+> Ein kleiner Teil der Ressourcen einer Containergruppe wird von der zugrunde liegenden Infrastruktur des Diensts verwendet. Ihre Container können auf die meisten, aber nicht alle Ressourcen zugreifen, die der Gruppe zugeordnet sind. Planen Sie aus diesem Grund einen kleinen Ressourcenpuffer ein, wenn Sie Ressourcen für Container in der Gruppe anfordern.
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>In welcher zugrunde liegenden Infrastruktur wird ACI ausgeführt?
 

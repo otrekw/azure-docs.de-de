@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 957fee48397bc0b23737157dec0e74cf6505fab5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160131"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Tutorial: Azure Active Directory-Integration mit SAML SSO for Jira by resolution GmbH
 
@@ -291,7 +291,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SAML SSO for Jira by resolution GmbH“ klicken, sollten Sie automatisch bei Ihrer SAML SSO for Jira by resolution GmbH-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Sie können das einmalige Anmelden auch testen. Navigieren Sie hierzu zu [https://\<Basis-URL des Servers>/plugins/servlet/samlsso](https://\<server-base-url>/plugins/servlet/samlsso). Ersetzen Sie **\<Basis-URL des Servers>** durch die Basis-URL Ihrer Jira-Instanz.
+Sie können einmaliges Anmelden auch testen, wenn Sie zu `https://<server-base-url>/plugins/servlet/samlsso` navigieren. Ersetzen Sie **\<Basis-URL des Servers>** durch die Basis-URL Ihrer Jira-Instanz.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Aktivieren der SSO-Umleitung für Jira
@@ -311,7 +311,7 @@ Gehen Sie in **Ihrer Jira-Instanz** wie folgt vor, um die SSO-Umleitung zu aktiv
 
 1. Klicken Sie in der rechten oberen Ecke auf die Schaltfläche **Save Settings** (Einstellungen speichern).
 
-Nach Aktivierung der Option ist die Eingabeaufforderung für Benutzername und Kennwort weiterhin unter [https://\<Basis-URL des Servers>/login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso) erreichbar, wenn das Kontrollkästchen **Enable nosso** („nosso“ aktivieren) aktiviert ist. **\<Basis-URL des Servers>** muss wie immer durch Ihre Basis-URL ersetzt werden.
+Nach Aktivierung der Option ist die Eingabeaufforderung für Benutzername und Kennwort weiterhin unter `https://\<server-base-url>/login.jsp?nosso` erreichbar, wenn das Kontrollkästchen **Enable nosso** („nosso“ aktivieren) aktiviert ist. **\<Basis-URL des Servers>** muss wie immer durch Ihre Basis-URL ersetzt werden.
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

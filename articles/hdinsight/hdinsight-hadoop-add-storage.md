@@ -6,17 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206706"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192483"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
-Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azure Storage-*Konten* hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen HDInsight-Cluster ein Azure Storage-*Konto* hinzu. Dieser Artikel bezieht sich auf Storage-*Konten* (nicht auf das standardmäßige Clusterspeicherkonto) sowie auf nicht zusätzlichen Speicher wie z. B. [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) und [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azure Storage-*Konten* hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen HDInsight-Cluster ein Azure Storage-*Konto* hinzu. Dieser Artikel bezieht sich auf *Speicherkonten* und nicht auf das Standardclusterspeicherkonto oder weitere Speicher wie [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) und [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
 > Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlicher Speicherkonten zu einem Cluster, nachdem dieser erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
@@ -39,7 +40,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 * Das Speicherkonto wird der core-site.xml-Datei hinzugefügt.
 
-* Beendet die Dienste [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) und [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) und startet sie neu. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
+* Die Dienste Apache Oozie, Apache Hadoop YARN, Apache Hadoop MapReduce2 und Apache Hadoop HDFS werden beendet. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
 
 > [!WARNING]  
 > Die Verwendung eines Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
@@ -48,7 +49,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 Verwenden Sie eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster), um die Änderungen anzuwenden. Beachten Sie Folgendes:
 
-|Eigenschaft | value |
+|Eigenschaft | Wert |
 |---|---|
 |Bash-Skript-URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |Knotentyp(en)|Head|
@@ -118,13 +119,13 @@ Nachdem Sie diese Schlüssel entfernt und die Konfiguration gespeichert haben, m
 
 ### <a name="storage-firewall"></a>Speicherfirewall
 
-Wenn Sie sich dazu entscheiden, Ihr Speicherkonto mit den **Firewalls und virtuelle Netzwerke**-Einschränkungen auf **Ausgewählte Netzwerke** zu schützen, denken Sie daran, die Ausnahme **Vertrauenswürdige Microsoft-Dienste zulassen…** zu aktivieren, damit HDInsight auf Ihr Speicherkonto zugreifen kann.
+Denken Sie daran, die Ausnahme **Vertrauenswürdige Microsoft-Dienste zulassen** zu aktivieren, damit HDInsight auf Ihr Speicherkonto zugreifen kann, wenn Sie Ihr Speicherkonto mit den **Firewalls und virtuelle Netzwerke**-Einschränkungen für **Ausgewählte Netzwerke** schützen.
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Zugriff auf den Speicher ist nach dem Ändern des Schlüssels nicht möglich
 
 Wenn Sie den Schlüssel für ein Speicherkonto ändern, kann HDInsight nicht mehr auf das Speicherkonto zugreifen. HDInsight verwendet eine zwischengespeicherte Kopie des Schlüssels in der Datei „core-site.xml“ für den Cluster. Diese zwischengespeicherte Kopie muss mit dem neuen Schlüssel aktualisiert werden.
 
-Das erneute Ausführen der Skriptaktion aktualisiert den Schlüssel __nicht__, da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
+Das wiederholte Ausführen der Skriptaktion aktualisiert den Schlüssel **nicht**, da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
 
 So umgehen Sie dieses Problem:  
 1. Entfernen Sie das Speicherkonto.
@@ -135,7 +136,7 @@ So umgehen Sie dieses Problem:
 
 ### <a name="poor-performance"></a>Schlechte Leistung
 
-Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums und über das öffentliche Internet verbunden, was zu Latenz führen kann.
+Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums verbunden. Außerdem erfolgt dies über das öffentliche Internet, was zu einer längeren Wartezeit führen kann.
 
 ### <a name="additional-charges"></a>Zusätzliche Gebühren
 

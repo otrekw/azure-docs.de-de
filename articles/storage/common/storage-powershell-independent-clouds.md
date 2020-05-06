@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74895235"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176208"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Verwalten von Speicher in den unabhängigen Azure-Clouds mithilfe von PowerShell
 
@@ -60,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 Die folgende Tabelle enthält die für die Deutschland-Cloud zurückgegebenen Standorte:
 
-|Position | Anzeigename |
+|Standort | Anzeigename |
 |----|----|
 | `germanycentral` | Deutschland, Mitte|
 | `germanynortheast` | Deutschland, Nordosten |
@@ -152,7 +152,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>Nach dem Einrichten der Umgebung
 
-Ab hier können Sie die gleiche PowerShell-Instanz verwenden, mit der Sie auch Ihre Speicherkonten verwalten und auf die Datenebene zugreifen. Dies wird im Artikel [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md) beschrieben.
+Sie können nun PowerShell verwenden, um Ihre Speicherkonten zu verwalten und auf Blob-, Warteschlangen-, Datei- und Tabellendaten zuzugreifen. Weitere Informationen finden Sie unter [Az.Storage](/powershell/module/az.storage).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

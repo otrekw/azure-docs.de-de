@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239205"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184978"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats (Vorschau)
 
@@ -48,13 +48,12 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Verwenden Sie das folgende PowerShell-Skript, um die ID abzurufen, indem Sie den Namen der Ressourcengruppe und den Identitätsnamen angeben.
+  Verwenden Sie das folgende CLI-Skript, um die ID abzurufen, indem Sie den Namen der Ressourcengruppe und den Identitätsnamen angeben.
 
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  az identity list -g $resourceGroupName
   ```
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
@@ -285,35 +284,43 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Öffnen der Cloud Shell und Hochladen der Vorlagendatei in die Shell finden Sie in der Visual Studio Code-Schnellstartanleitung im Abschnitt [Bereitstellen der Vorlage](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template). Führen Sie anschließend das folgende PowerShell-Skript aus:
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
-$identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 
-$adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
-$resourceGroupName = "${projectName}rg"
-$keyVaultName = "${projectName}kv"
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot.  Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
+1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
-Write-Host "Press [ENTER] to continue ..."
-```
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
+    $identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
-Vom Bereitstellungsskript-Dienst müssen zusätzliche Bereitstellungsskriptressourcen für die Skriptausführung erstellt werden. Die Vorbereitung und der Bereinigungsprozess können zusammen bis zu eine Minute in Anspruch nehmen – zusätzlich zur Ausführungsdauer des eigentlichen Skripts.
+    $adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
+    $resourceGroupName = "${projectName}rg"
+    $keyVaultName = "${projectName}kv"
 
-Die Bereitstellung ist nicht erfolgreich, weil im Skript der ungültige Befehl **Write-Output1** verwendet wird. Sie erhalten die folgende Fehlermeldung:
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-```error
-The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
-program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
-```
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
 
-Das Ergebnis der Ausführung des Bereitstellungsskripts wird für die Problembehandlung in den Bereitstellungsskriptressourcen gespeichert.
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    Vom Bereitstellungsskript-Dienst müssen zusätzliche Bereitstellungsskriptressourcen für die Skriptausführung erstellt werden. Die Vorbereitung und der Bereinigungsprozess können zusammen bis zu eine Minute in Anspruch nehmen – zusätzlich zur Ausführungsdauer des eigentlichen Skripts.
+
+    Die Bereitstellung ist nicht erfolgreich, weil im Skript der ungültige Befehl **Write-Output1** verwendet wird. Sie erhalten die folgende Fehlermeldung:
+
+    ```error
+    The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
+    program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
+    ```
+
+    Das Ergebnis der Ausführung des Bereitstellungsskripts wird für die Problembehandlung in den Bereitstellungsskriptressourcen gespeichert.
 
 ## <a name="debug-the-failed-script"></a>Debuggen des fehlerhaften Skripts
 

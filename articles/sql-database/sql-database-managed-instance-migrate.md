@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208943"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100276"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -30,7 +30,7 @@ Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 ![Migrationsprozess](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [Bewerten Sie die Kompatibilität der verwalteten Instanz](#assess-managed-instance-compatibility), wobei Sie sicherstellen sollten, dass es keine blockierenden Probleme gibt, die Ihre Migrationen verhindern können.
-  - Dieser Schritt umfasst auch das Erstellen [einer Leistungsbaseline](#create-performance-baseline), um die Ressourcennutzung für Ihre SQL Server-Quellinstanz zu bestimmen. Der Schritt ist erforderlich, wenn Sie eine verwaltete Instanz von richtiger Größe bereitstellen und überprüfen möchten, ob die Leistungen nach der Migration beeinträchtigt sind.
+  - Dieser Schritt umfasst auch das Erstellen [einer Leistungsbaseline](#create-performance-baseline), um die Ressourcennutzung für Ihre SQL Server-Quellinstanz zu bestimmen. Er ist erforderlich, wenn Sie eine verwaltete Instanz von richtiger Größe bereitstellen und sicherstellen möchten, dass die Leistungen nach der Migration nicht beeinträchtigt sind.
 - [Auswählen von App-Konnektivitätsoptionen](sql-database-managed-instance-connect-app.md)
 - [Stellen Sie eine verwaltete Instanz mit optimaler Größe bereit](#deploy-to-an-optimally-sized-managed-instance), in der Sie technische Merkmale (Anzahl von virtuellen Kernen, verfügbarer Arbeitsspeicher) und Leistungsstufe („Unternehmenskritisch“, „Universell“) für Ihre verwaltete Instanz auswählen.
 - [Wählen Sie eine Migrationsmethode und den Speicherort aus,](#select-migration-method-and-migrate) an den Sie Ihre Datenbanken mithilfe der Offlinemigration (native Sicherung/Wiederherstellung, Datenbankimport/-export) oder der Onlinemigration (Datenmigrationsdienst, Transaktionsreplikation) migrieren möchten.
@@ -41,7 +41,7 @@ Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
 ## <a name="assess-managed-instance-compatibility"></a>Bewerten der Kompatibilität der verwalteten Instanz
 
-Stellen Sie zunächst fest, ob die verwaltete Instanz mit den Datenbankanforderungen Ihrer Anwendung kompatibel ist. Die Bereitstellungsoption „Verwaltete Instanz“ wurde konzipiert, um eine einfache Migration per Lift & Shift für die meisten bestehenden Anwendungen zu ermöglichen, die SQL Server lokal oder auf virtuellen Computern verwenden. Es kann jedoch vorkommen, dass Sie Features oder Funktionen benötigen, die noch nicht unterstützt werden und die Kosten für die Implementierung eines Workarounds zu hoch sind.
+Stellen Sie zunächst fest, ob die verwaltete Instanz mit den Datenbankanforderungen Ihrer Anwendung kompatibel ist. Die Bereitstellungsoption „Verwaltete Instanz“ wurde konzipiert, um eine einfache Migration per Lift & Shift für die meisten bestehenden Anwendungen zu ermöglichen, die SQL Server lokal oder auf virtuellen Computern verwenden. Es kann jedoch vorkommen, dass Sie Features oder Funktionen benötigen, die noch nicht unterstützt werden, und die Kosten für die Implementierung eines Workarounds zu hoch sind.
 
 Verwenden Sie den [Datenmigrations-Assistenten (DMA)](https://docs.microsoft.com/sql/dma/dma-overview), um mögliche Kompatibilitätsprobleme zu erkennen, die die Datenbankfunktionalität der Azure SQL-Datenbank beeinträchtigen. Der DMA unterstützt noch keine verwalteten Instanzen als Migrationsziel, aber es wird empfohlen, die Bewertung der Azure SQL-Datenbank durchzuführen und die Liste der gemeldeten Funktionsparitäten und Kompatibilitätsprobleme anhand der Produktdokumentation sorgfältig zu überprüfen. Unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md) können Sie überprüfen, ob gemeldete Blockierungsprobleme vorliegen, die keine Blockierungen in einer verwalteten Instanz sind, da die meisten Blockierungsprobleme, die eine Migration zu Azure SQL-Datenbank verhindern, mit der verwalteten Instanz beseitigt wurden. Beispielsweise stehen Features wie datenbankübergreifende Abfragen, datenbankübergreifende Transaktionen innerhalb derselben Instanz, verknüpfte Server mit anderen SQL-Quellen, CLR, globale temporäre Tabellen, Ansichten auf Instanzebene, Service Broker und ähnliches in verwalteten Instanzen zur Verfügung.
 

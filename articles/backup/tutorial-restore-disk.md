@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222447"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160937"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 
@@ -25,7 +25,7 @@ Informationen dazu, wie Sie mithilfe von PowerShell einen Datenträger wiederher
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,8 +87,21 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
         --target-resource-group targetRG
     ```
 
-> [!WARNING]
-> Ohne Angabe von „target-resource-group“ werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt.
+    > [!WARNING]
+    > Ohne Angabe von „target-resource-group“ werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt. Nur bei Angabe des Parameters „target-resource-group“ können Kunden die Vorteile einer sofortigen Wiederherstellung nutzen. Geben Sie den Parameter „target-resource-group“ nicht an, wenn verwaltete Datenträger als nicht verwaltete Datenträger wiederhergestellt werden sollen. In diesem Fall geben Sie stattdessen wie unten gezeigt den Parameter „restore-as-unmanaged-disk“ an. Dieser Parameter ist ab Az 3.4.0 verfügbar.
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --container-name myVM \
+    --item-name myVM \
+    --storage-account mystorageaccount \
+    --rp-name myRecoveryPointName
+    --restore-as-unmanaged-disk
+    ```
+
+Dadurch werden verwaltete Datenträger als nicht verwaltete Datenträger im angegebenen Speicherkonto wiederhergestellt, und die Funktion für die sofortige Wiederherstellung wird nicht genutzt. In zukünftigen Versionen der CLI wird die Angabe des Parameters „target-resource-group“ oder „restore-as-unmanaged-disk“ obligatorisch sein.
 
 ### <a name="unmanaged-disks-restore"></a>Wiederherstellung nicht verwalteter Datenträger
 

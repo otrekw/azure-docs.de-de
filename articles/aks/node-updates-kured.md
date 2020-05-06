@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Servic
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 8006baa3025ee1e794359bed854094cc9005dd14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668385"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208073"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 
 Sicherheitsupdates werden automatisch auf Linux-Knoten in AKS angewendet, um Ihre Cluster zu schützen. Diese Updates enthalten Sicherheitsfixes für das Betriebssystem oder Kernelupdates. Einige dieser Updates erfordern den Neustart eines Knotens, um den Vorgang abzuschließen. AKS startet diese Linux-Knoten nicht automatisch neu, um das Update abzuschließen.
 
-Der Prozess, Windows Server-Knoten (derzeit in der Vorschau in AKS) aktuell zu halten, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
+Der Prozess, mit dem Windows Server-Knoten aktuell gehalten werden, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Open-Source-Daemon [kured (KUbernetes REboot Daemon)][kured] nach Linux-Knoten suchen, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
 

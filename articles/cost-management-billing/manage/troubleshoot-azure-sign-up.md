@@ -1,31 +1,35 @@
 ---
-title: Beheben von Problemen bei der Azure-Anmeldung
+title: Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
 description: Lösen eines Problems beim Registrieren eines neuen Kontos beim Microsoft Azure-Portal oder beim Azure-Kontocenter.
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409451"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133183"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Beheben von Problemen bei der Azure-Anmeldung
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
 
-Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Portal oder beim Azure-Kontocenter für ein neues Konto registrieren. Überprüfen Sie Folgendes, bevor Sie mit der Problembehandlung beginnen:
+Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Portal oder beim Azure-Kontocenter für ein neues Konto registrieren. Überprüfen Sie Folgendes, bevor Sie mit der Problembehandlung beginnen:
 
 - Die für Ihr Azure-Kontoprofil angegebenen Informationen (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) sind richtig.
 - Die Kreditkarteninformationen sind richtig.
 - Sie verfügen nicht bereits über ein Microsoft-Konto mit denselben Informationen.
 
+> [!NOTE]
+> Wenn Sie bereits über ein Konto verfügen und Anleitungen zur Behandlung von Anmeldeproblemen suchen, lesen Sie die Informationen unter [Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
+
 ## <a name="resolutions"></a>Lösungen
 
-Zum Beheben des Fehlers wählen Sie das Problem aus, das auftritt, wenn Sie versuchen, sich bei Azure zu registrieren.
+Wählen Sie zum Beheben von Fehlern das Problem aus, das auftritt, wenn Sie versuchen, sich bei Azure zu registrieren.
 
 ### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Error: *Die Anmeldung kann aufgrund eines Problems mit Ihrem Konto nicht fortgesetzt werden. Wenden Sie sich an den Abrechnungssupport.*
 
@@ -114,7 +118,7 @@ Um dieses Problem zu beheben, überprüfen Sie, ob die folgenden Punkte zutreffe
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>Error: *Ihr aktueller Kontotyp wird nicht unterstützt*
 
-Dieses Problem kann auftreten, wenn das Konto in einem [nicht verwalteten Azure AD-Verzeichnis](../../active-directory/users-groups-roles/directory-self-service-signup.md) registriert ist und nicht im Azure AD Verzeichnis Ihrer Organisation vorhanden ist.
+Dieses Problem kann auftreten, wenn das Konto in einem [nicht verwalteten Azure AD-Verzeichnis](../../active-directory/users-groups-roles/directory-self-service-signup.md) registriert ist und nicht im Azure AD-Verzeichnis Ihrer Organisation vorhanden ist.
 
 Um dieses Problem zu beheben, registrieren Sie das Azure-Konto unter Verwendung eines anderen Kontos, oder übernehmen Sie das nicht verwaltete AD-Verzeichnis. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md).
 

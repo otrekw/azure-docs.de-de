@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: c1dea6925bad96be178f875567077fafa4db9326
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938146"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101289"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Sichern von Azure-Dateifreigaben in einem Recovery Services-Tresor
 
@@ -23,19 +23,7 @@ In diesem Artikel lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](#create-a-recovery-services-vault) in derselben Region wie das Speicherkonto, das die Dateifreigabe hostet.
-* Stellen Sie sicher, dass sich die Dateifreigabe in einem der [unterstützten Speicherkontotypen](#limitations-for-azure-file-share-backup-during-preview) befindet.
-
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
-
-Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Einschränkungen gelten für das Sichern von Azure-Dateifreigaben:
-
-* Unterstützung für die Sicherung von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) (Zone Redundant Storage, zonenredundanter Speicher) ist momentan auf [diese Regionen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#in-which-geos-can-i-back-up-azure-file-shares) beschränkt.
-* Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben.
-* Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
-* Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
-* Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
-* Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten oder zu Wiederherstellungsfehlern führen.
-* Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
+* Stellen Sie sicher, dass sich die Dateifreigabe in einem der [unterstützten Speicherkontotypen](azure-file-share-support-matrix.md) befindet.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -80,19 +68,22 @@ So ändern Sie den Speicherreplikationstyp
 
 1. Wenn Sie **Sicherung** ausgewählt haben, wird der Bereich **Sicherung** geöffnet, und Sie werden aufgefordert, ein Speicherkonto aus einer Liste der ermittelten unterstützten Speicherkonten auszuwählen. Sie sind entweder diesem Tresor zugeordnet oder befinden sich in derselben Region wie der Tresor, sind aber noch keinem Recovery Services-Tresor zugeordnet.
 
-   ![Auswählen des Speicherkontos](./media/backup-afs/select-storage-account.png)
-
 1. Wählen Sie aus der Liste der ermittelten Speicherkonten ein Speicherkonto und dann **OK** aus. Azure durchsucht das Speicherkonto nach Dateifreigaben, die gesichert werden können. Falls Sie die Dateifreigaben erst kürzlich hinzugefügt haben und diese nicht in der Liste angezeigt werden, warten Sie einen Moment, bis die Dateifreigaben angezeigt werden.
 
     ![Ermitteln von Dateifreigaben](./media/backup-afs/discovering-file-shares.png)
 
 1. Wählen Sie in der Liste **Dateifreigaben** mindestens eine zu sichernde Dateifreigabe aus. Klicken Sie auf **OK**.
 
+   ![Auswählen der Dateifreigaben](./media/backup-afs/select-file-shares.png)
+
 1. Nachdem Sie Ihre Dateifreigaben ausgewählt haben, wechselt das Menü **Sicherung** zu **Sicherheitsrichtlinie**. Wählen Sie in diesem Menü entweder eine vorhandene Sicherheitsrichtlinie aus, oder erstellen Sie eine neue. Wählen Sie dann **Sicherung aktivieren** aus.
 
     ![Auswählen der Sicherungsrichtlinie](./media/backup-afs/select-backup-policy.png)
 
 Nachdem Sie eine Sicherungsrichtlinie festgelegt haben, wird zum geplanten Zeitpunkt eine Momentaufnahme der Dateifreigaben erstellt. Der Wiederherstellungspunkt wird ebenfalls für den gewählten Zeitraum beibehalten.
+
+>[!NOTE]
+>Azure Backup unterstützt jetzt Richtlinien mit täglicher/wöchentlicher/monatlicher oder jährlicher Aufbewahrung für die Sicherung von Azure-Dateifreigaben.
 
 ## <a name="create-an-on-demand-backup"></a>Erstellen einer bedarfsgesteuerten Sicherung
 
@@ -124,8 +115,18 @@ Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederh
 
 1. Überwachen Sie die Portalbenachrichtigungen, um den Abschluss der Ausführung des Sicherungsauftrags zu verfolgen. Sie können den Auftragsstatus im Dashboard des Tresors überwachen. Wählen Sie dazu **Sicherungsaufträge** > **In Bearbeitung** aus.
 
+>[!NOTE]
+>Azure Backup sperrt das Speicherkonto, wenn Sie Schutz für eine beliebige Dateifreigabe im entsprechenden Konto konfigurieren. Dies bietet Schutz vor dem versehentlichen Löschen eines Speicherkontos mit gesicherten Dateifreigaben.
+
+## <a name="best-practices"></a>Bewährte Methoden
+
+* Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
+
+* Entfernen Sie die von Azure Backup gesetzte Sperre für das Speicherkonto nicht. Wenn Sie die Sperre löschen, ist Ihr Speicherkonto für versehentliches Löschen anfällig, und wenn es gelöscht wird, verlieren Sie Ihre Momentaufnahmen oder Sicherungen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel werden folgende Themen erläutert:
+
 * [Wiederherstellen von Azure-Dateifreigaben](restore-afs.md)
 * [Verwalten der Sicherungen von Azure-Dateifreigaben](manage-afs-backup.md)

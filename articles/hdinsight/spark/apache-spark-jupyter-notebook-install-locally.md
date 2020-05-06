@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/02/2020
-ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: b2394c580b871105fee84d63c478c3c490b56a0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632664"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191922"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung mit Apache Spark in HDInsight
 
@@ -182,5 +182,5 @@ Gründe, um Jupyter auf dem Computer zu installieren und mit einem Apache Spark-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark mit BI: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight](apache-spark-use-bi-tools.md)
-* [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
+* [Kernel für Jupyter-Notebook in Apache Spark](apache-spark-jupyter-notebook-kernels.md)
+* [Verwenden von externen Paketen mit Jupyter Notebooks in Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

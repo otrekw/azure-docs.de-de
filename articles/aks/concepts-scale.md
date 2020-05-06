@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 396e5bc31723768ada334dd5043bca724af5e84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595857"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232529"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -46,7 +46,7 @@ Informationen zu den ersten Schritten mit der horizontalen automatischen Podskal
 
 Da die horizontale automatische Podskalierung die Metriken-API alle 30 Sekunden überprüft, werden vorherige Skalierungsereignisse möglicherweise nicht erfolgreich abgeschlossen, bevor eine andere Überprüfung erfolgt. Dieses Verhalten kann dazu führen, dass die horizontale automatische Podskalierung die Anzahl der Replikate ändert, bevor das vorherige Skalierungsereignis die Anwendungsworkload empfangen und die Ressourcenanforderungen entsprechend anpassen konnte.
 
-Zum Minimieren dieser Raceereignisse werden Abkühlungs- oder Verzögerungswerte festgelegt. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für das Hochskalieren 3 Minuten und für das Herunterskalieren 5 Minuten.
+Um Raceereignisse zu minimieren, wird ein Verzögerungswert festgelegt. Dieser Wert definiert, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. Es gibt [keine Verzögerung für Hochskalierungsereignisse ab Kubernetes 1.12](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay), jedoch ist die Verzögerung bei Herunterskalierungsereignissen auf 5 Minuten voreingestellt.
 
 Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 

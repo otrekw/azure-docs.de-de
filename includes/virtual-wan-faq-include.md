@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386126"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204559"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -49,7 +49,7 @@ Es gibt zwei Optionen zum Hinzufügen von DNS-Servern für die P2S-Clients.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Für Benutzer-VPN (Point-to-Site): Wie viele Clients werden unterstützt?
 
-Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 10 werden 5.000 Verbindungen und für Skalierungseinheit 11 und höher werden bis zu 10.000 Verbindungen unterstützt. Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Sie erhalten pro Gateway 2 x 500 Verbindungen, aber Sie planen für diese Skalierungseinheit trotzdem nicht 1.000 Verbindungen ein, sondern nur 500. Der Grund ist, dass die Instanzen ggf. gewartet werden müssen und während dieses Zeitraums die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, falls Sie die empfohlene Verbindungsanzahl überschreiten.
+Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen und für Skalierungseinheit 13-20 werden bis zu 10.000 Verbindungen unterstützt. Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Sie erhalten pro Gateway 2 x 500 Verbindungen, aber Sie planen für diese Skalierungseinheit trotzdem nicht 1.000 Verbindungen ein, sondern nur 500. Der Grund ist, dass die Instanzen ggf. gewartet werden müssen und während dieses Zeitraums die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, falls Sie die empfohlene Verbindungsanzahl überschreiten.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Worin besteht der Unterschied zwischen einem virtuellen Azure-Netzwerkgateway (VPN-Gateway) und einem Azure Virtual WAN-VPN-Gateway?
 
@@ -131,6 +131,8 @@ Ja. Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricin
 
 * Wenn Sie das ExpressRoute-Gateway nutzen, weil für ExpressRoute-Leitungen eine Verbindung mit einem virtuellen Hub hergestellt wird, zahlen Sie den Preis für Skalierungseinheiten. Jede Skalierungseinheit von ExpressRoute verfügt über 2 GBit/s, und jede Verbindungseinheit wird zu demselben Preis wie für die VPN-Verbindungseinheit berechnet.
 
+* Wenn Sie Spoke-VNETs mit dem Hub verbinden, fallen dennoch Peeringgebühren für die Spoke-VNETs an. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Wie erfolgt das Onboarding für neue Partner, die nicht in der Liste mit den Einführungspartnern aufgeführt sind?
 
 Alle virtuellen WAN-APIs sind offene APIs. Informationen zur Bewertung der technischen Durchführbarkeit finden Sie in der Dokumentation. Senden Sie bei Fragen eine E-Mail an azurevirtualwan@microsoft.com. Ein idealer Partner verfügt über ein Gerät, das für IKEv1- oder IKEv2-IPSec-Konnektivität bereitgestellt werden kann.
@@ -206,6 +208,17 @@ Ja. Eine Internetverbindung und ein physisches Gerät, das IPsec unterstützt �
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Vorgehensweise beim Aktivieren der Standardroute (0.0.0.0/0) für eine Verbindung (VPN, ExpressRoute oder Virtual Network):
 
 Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden. Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist.
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Wie wählt der virtuelle Hub in einer Virtual WAN-Instanz den besten Pfad für eine Route von mehreren Hubs aus?
+
+Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen erhält, wird folgende Entscheidungsreihenfolge verwendet:
+1) Routenursprung  a) Netzwerkrouten (von den Gateways virtueller Hubs direkt erhaltene VNET-Präfixe)  b) Hubroutingtabelle (statisch konfigurierte Routen)  c) BGP  d) Routen zwischen Hubs
+2)  Routenmetrik: Virtual WAN gibt ExpressRoute den Vorzug vor VPN. Der ExpressRoute-Peer hat verglichen mit dem VPN-Peer eine höhere Gewichtung.
+3)  AS-Pfadlänge
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
+
+IPv6 wird für den Virtual WAN-Hub und seine Gateways nicht unterstützt. Falls Sie ein VNET mit IPv6-Unterstützung besitzen und das VNET mit Virtual WAN verbinden möchten, wird dies ebenfalls nicht unterstützt. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Welche Unterschiede bestehen zwischen den Virtual WAN-Typen („Basic“ und „Standard“)?
 

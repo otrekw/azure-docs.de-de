@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383645"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148198"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Integrieren von Azure Event Hubs in Azure Private Link (Vorschau)
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -21,11 +21,26 @@ Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher 
 
 Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
-> [!NOTE]
+> [!IMPORTANT]
 > Diese Funktion wird nur für den **Dedicated**-Tarif unterstützt. Weitere Informationen zum Dedicated-Tarif finden Sie unter [Übersicht über Event Hubs Dedicated](event-hubs-dedicated-overview.md). 
 >
 > Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
 
+>[!WARNING]
+> Durch das Aktivieren von privaten Endpunkten kann verhindert werden, dass andere Azure-Dienste mit Event Hubs interagieren.
+>
+> Vertrauenswürdige Microsoft-Dienste werden bei Verwendung von Virtual Networks nicht unterstützt.
+>
+> Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
+> - Azure Monitor (Diagnoseeinstellungen)
+> - Azure Stream Analytics
+> - Integration in Azure Event Grid
+> - Azure IoT Hub-Routen
+> - Azure IoT Device Explorer
+>
+> Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
+> - Azure-Web-Apps 
+> - Azure-Funktionen
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Hinzufügen eines privaten Endpunkts über das Azure-Portal
 
@@ -71,7 +86,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
         
             ![Erstellen des privaten Endpunkts: Seite „Ressourcen“](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Wenn Sie **Verbindung mit einer Azure-Ressource mithilfe einer Ressourcen-ID oder eines Alias herstellen** auswählen, führen Sie die folgenden Schritte aus:
-        1. Geben Sie die **Ressourcen-ID** oder den **Alias** ein. Dabei kann es sich um die Ressourcen-ID oder den Alias handeln, die jemand für Sie freigegeben hat.
+        1. Geben Sie die **Ressourcen-ID** oder den **Alias** ein. Dabei kann es sich um die Ressourcen-ID oder den Alias handeln, den jemand für Sie freigegeben hat. Der einfachste Weg, diese Ressourcen-ID abzurufen, ist, zum Event Hubs-Namespace im Azure-Portal zu navigieren und den Teil des URI zu kopieren, der mit `/subscriptions/` beginnt. Die folgende Abbildung zeigt ein Beispiel dafür. 
         2. Geben Sie für **Zielunterressource** **Namespace** ein. Dabei handelt es sich um den Unterressourcentyp, auf den der private Endpunkt zugreifen kann.
         3. (Optional) Geben Sie eine **Anforderungsnachricht** ein. Der Ressourcenbesitzer sieht diese Nachricht beim Verwalten der Verbindung mit dem privaten Endpunkt.
         4. Wählen Sie anschließend **Weiter: Konfiguration >** unten auf der Seite aus.

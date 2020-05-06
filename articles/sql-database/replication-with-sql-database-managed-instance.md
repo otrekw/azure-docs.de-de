@@ -10,17 +10,20 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
-ms.date: 02/07/2019
-ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 9ac30b6d502bb0fbdb454d7a3c36cde23a57fb6b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299072"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231627"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
-Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren. 
+Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren.
+
+> [!NOTE]
+> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit der aktiven Georeplikation oder [Failovergruppen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group). Dieses verwaltete Azure SQL-Datenbank-Instanz-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen.
 
 In diesem Artikel wird beschrieben, wie Sie die Replikation zwischen einem Verleger/Verteiler einer verwalteten Instanz und einem Abonnenten der verwalteten Instanz konfigurieren. 
 

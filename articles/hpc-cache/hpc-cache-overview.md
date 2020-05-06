@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536640"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82106456"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Was ist Azure HPC Cache?
 
@@ -63,6 +63,12 @@ Azure HPC Cache ist in diesen Azure-Regionen verfügbar:
 * USA, Westen 2
 
 Aktuelle Informationen zur Verfügbarkeit finden Sie auf der [Produktseite für Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache).
+
+## <a name="service-availability"></a>Dienstverfügbarkeit
+
+Sie müssen für jedes Abonnement, das Sie mit Azure HPC Cache verwenden möchten, Zugriff anfordern. Diese Einschränkung trägt zur Sicherstellung der Dienstqualität bei.
+
+Fordern Sie den Zugriff an, indem Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) ausfüllen. Nachdem Ihr Abonnement der Zugriffsliste hinzugefügt wurde, können Sie Caches erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

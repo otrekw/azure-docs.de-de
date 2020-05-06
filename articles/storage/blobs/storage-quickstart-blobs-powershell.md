@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474002"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176650"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 
@@ -116,10 +116,10 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie Dateien zwischen einer lokalen Festplatte und Azure Blob Storage übertragen. Weitere Informationen zur Verwendung des Blobspeichers mit PowerShell finden Sie im Artikel zur Verwendung von Azure PowerShell mit Azure Storage.
+In dieser Schnellstartanleitung haben Sie Dateien zwischen einem lokalen Dateisystem und Azure Blob Storage übertragen. Weitere Informationen zur Verwendung des Blobspeichers mit PowerShell finden Sie im Artikel mit den Azure PowerShell-Beispielen für Blobspeicher.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Azure PowerShell mit Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure PowerShell-Beispiele für Azure Blob Storage](storage-samples-blobs-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Referenz zu Microsoft Azure PowerShell Storage-Cmdlets
 

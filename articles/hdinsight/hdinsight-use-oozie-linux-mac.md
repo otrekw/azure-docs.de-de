@@ -6,13 +6,14 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75744913"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204116"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -26,7 +27,7 @@ Hier erfahren Sie, wie Sie Apache Oozie mit Apache Hadoop in Azure HDInsight ver
 Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu planen, beispielsweise Java-Programme oder Shellskripts.
 
 > [!NOTE]  
-> Eine weitere Option zum Definieren von Workflows mit HDInsight ist die Verwendung von Azure Data Factory. Weitere Informationen zu Data Factory finden Sie unter [Verwenden von Apache Pig und Apache Hive mit Data Factory][azure-data-factory-pig-hive]. Informationen zur Verwendung von Oozie in Clustern mit dem Enterprise-Sicherheitspaket finden Sie unter [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
+> Eine weitere Option zum Definieren von Workflows mit HDInsight ist die Verwendung von Azure Data Factory. Weitere Informationen zu Data Factory finden Sie unter [Verwenden von Apache Pig und Apache Hive mit Data Factory](../data-factory/transform-data.md). Informationen zur Verwendung von Oozie in Clustern mit dem Enterprise-Sicherheitspaket finden Sie unter [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +37,7 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 
 * **Eine Azure SQL-Datenbank**.  Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](../sql-database/sql-database-get-started.md).  Der Artikel verwendet eine Datenbank namens **oozietest**.
 
-* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
+* Das URI-Schema für Ihren primären Clusterspeicher. `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Beispielworkflow
 
@@ -52,12 +53,12 @@ Der in diesem Dokument verwendeten Workflows weist zwei Aktionen auf. Aktionen s
 
     Das in diesem Dokument verwendete Hive-Skript zählt die gesamten Besuche jeder Plattform (z.B. Android oder iPhone) und speichert die Werte in einer neuen Hive-Tabelle.
 
-    Weitere Informationen zu Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive].
+    Weitere Informationen zu Hive finden Sie unter „[Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]“.
 
-2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop].
+2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Sqoop mit Hadoop in HDInsight](hadoop/apache-hadoop-use-sqoop-mac-linux.md).
 
 > [!NOTE]  
-> Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions].
+> Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md).
 
 ## <a name="create-the-working-directory"></a>Erstellen des Arbeitsverzeichnisses
 
@@ -89,7 +90,7 @@ Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben 
 
 ## <a name="add-a-database-driver"></a>Hinzufügen eines Datenbanktreibers
 
-Da dieser Workflow Sqoop zum Exportieren von Daten in die SQL-Datenbank verwendet, müssen Sie eine Kopie des JDBC-Treibers bereitstellen, der für die Interaktion mit der SQL-Datenbank genutzt wird. Führen Sie den folgenden Befehl in der SSH-Sitzung aus, um den JDBC-Treiber in das Arbeitsverzeichnis zu kopieren:
+Dieser Workflow verwendet Sqoop zum Exportieren von Daten in die SQL-Datenbank. Deshalb müssen Sie eine Kopie des JDBC-Treibers bereitstellen, der für die Interaktion mit der SQL-Datenbank verwendet wird. Führen Sie den folgenden Befehl in der SSH-Sitzung aus, um den JDBC-Treiber in das Arbeitsverzeichnis zu kopieren:
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozie/
@@ -405,7 +406,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-3. Geben Sie Folgendes an, um den Auftrag zu übermitteln:
+3. Geben Sie zum Übermitteln des Auftrags Folgendes an:
 
     ```bash
     oozie job -config job.xml -submit
@@ -526,7 +527,7 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
    * **Auftrags-DAG:** Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
 
-       ![HDInsight – Apache Oozie-Auftrags-DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       ![„HDInsight – Apache Oozie-Auftrags-DAG“](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. Wenn Sie eine der Aktionen auf der Registerkarte **Auftragsinformationen** auswählen, werden Informationen zur Aktion eingeblendet. Wählen Sie z.B. die Aktion **RunSqoopExport** aus.
 
@@ -643,78 +644,11 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
 
     ![Oozie-Webkonsole – Registerkarte mit Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Problembehandlung
-
-Mithilfe der Oozie-Benutzeroberfläche können Sie die Oozie-Protokolle anzeigen. Die Oozie-Benutzeroberfläche enthält darüber hinaus Links zu den JobTracker-Protokollen für die MapReduce-Aufgaben, die vom Workflow gestartet werden. Im Allgemeinen sollten Sie zur Problembehandlung wie folgt vorgehen:
-
-   1. Zeigen Sie den Auftrag auf der Oozie-Webbenutzeroberfläche an.
-
-   2. Wenn eine bestimmte Aktion nicht erfolgreich war, wählen Sie die Aktion aus, um festzustellen, ob das Feld **Fehlermeldung** weitere Informationen zum Fehler enthält.
-
-   3. Falls verfügbar, verwenden Sie die URL der Aktion, um weitere Details (z.B. JobTracker-Protokolle) für die Aktion anzuzeigen.
-
-Im Folgenden sehen Sie Fehlermeldungen, die auftreten können, und Möglichkeiten zur Behebung.
-
-### <a name="ja009-cannot-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden.
-
-**Symptome:** Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**Ursache:** Die in der Datei **job.xml** verwendeten Azure-Blobspeicheradressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das Format der Blob-Speicheradresse muss `wasbs://containername@storageaccountname.blob.core.windows.net` sein.
-
-**Lösung:** Ändern Sie die Blobspeicheradressen für den Auftrag.
-
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Oozie darf nicht die Identität von &lt;USER&gt; annehmen.
-
-**Symptome:** Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**Ursache:** Die aktuellen Berechtigungseinstellungen lassen nicht zu, dass Oozie die Identität des angegebenen Benutzerkontos annimmt.
-
-**Lösung:** Oozie kann die Identität von Benutzern in der Gruppe **users** annehmen. Verwenden Sie `groups USERNAME` , um die Gruppen anzuzeigen, denen das Benutzerkonto als Mitglied angehört. Wenn der Benutzer nicht Mitglied der Gruppe **users** ist, verwenden Sie den folgenden Befehl, um den Benutzer der Gruppe hinzuzufügen:
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> Es kann einige Minuten dauern, bis HDInsight erkennt, dass der Benutzer der Gruppe hinzugefügt wurde.
-
-### <a name="launcher-error-sqoop"></a>Launcher ERROR (Sqoop)
-
-**Symptome:** Der Auftragsstatus ändert sich in **KILLED**. In den Auftragsdetails wird der Status von `RunSqoopExport` als **ERROR** (Fehler) angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**Ursache:** Sqoop kann den Datenbanktreiber nicht laden, der für den Zugriff auf die Datenbank erforderlich ist.
-
-**Lösung:** Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber zusammen mit den anderen vom Auftrag verwendeten Ressourcen (beispielsweise die Datei „workflow.xml“) angeben. Verweisen Sie im Abschnitt `<sqoop>...</sqoop>` von „workflow.xml“ auf das Archiv mit dem Datenbanktreiber.
-
-Für den Auftrag in diesem Dokument würden Sie z. B. folgendermaßen die folgenden Schritte ausführen:
-
-1. Kopieren Sie die Datei `mssql-jdbc-7.0.0.jre8.jar` in das Verzeichnis **/tutorials/useoozie**:
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. Ändern Sie die Datei `workflow.xml`, indem Sie den folgenden XML-Code einer neuen Zeile oberhalb von `</sqoop>` hinzufügen:
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie gelernt, wie ein Oozie-Workflow definiert und Oozie-Auftrag ausgeführt wird. Weitere Informationen zum Arbeiten mit HDInsight finden Sie in den folgenden Artikeln:
 
-* [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
-* [Verwenden von Apache Sqoop mit Apache Hadoop in HDInsight][hdinsight-use-sqoop]
-* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight][hdinsight-use-hive]
-* [Entwickeln von Java MapReduce-Programmen für HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-[azure-data-factory-pig-hive]: ../data-factory/transform-data.md
-[hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
+* [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md)
+* [Verwenden von Apache Sqoop mit Apache Hadoop in HDInsight](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hadoop/hdinsight-use-hive.md)
+* [Problembehandlung für Apache Oozie](./troubleshoot-oozie.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrieren von Gruppen aus einer Gesamtstruktur zu einer anderen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Migrieren von Gruppen aus einer Gesamtstruktur in eine andere'
 description: In diesem Artikel werden die erforderlichen Schritte zum erfolgreichen Migrieren von Gruppen aus einer Gesamtstruktur in eine andere mit Azure AD Connect beschrieben.
 services: active-directory
 author: billmath
@@ -11,27 +11,29 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729700"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229798"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Migrieren von Gruppen aus einer Gesamtstruktur zu einer anderen mit Azure AD Connect
 
-In diesem Artikel werden die erforderlichen Schritte zum erfolgreichen Migrieren von Gruppen aus einer Gesamtstruktur in eine andere beschrieben, sodass die migrierten Gruppenobjekte mit den in der Cloud vorhandenen Objekten übereinstimmen.
+In diesem Artikel wird beschrieben, wie Gruppen aus einer Gesamtstruktur in eine andere migriert werden, sodass die migrierten Gruppenobjekte mit den in der Cloud vorhandenen Objekten übereinstimmen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure AD Connect-Version 1.5.18.0 oder höher
-- Das Quellankerattribut ist `mS-DS-ConsistencyGuid`.
+- Azure AD Connect Version 1.5.18.0 oder höher
+- Quellankerattribut auf `mS-DS-ConsistencyGuid` festgelegt
 
-Ab Version 1.5.18.0 unterstützt Azure AD Connect die Verwendung von `mS-DS-ConsistencyGuid` für Gruppen. Wenn `mS-DS-ConsistencyGuid` als Quellankerattribut ausgewählt und der Wert in AD aufgefüllt wird, verwendet Azure AD Connect den Wert `mS-DS-ConsistencyGuid` für „immutableId“. Andernfalls wird ein Fallback auf `objectGUID` ausgeführt. Beachten Sie jedoch, dass Azure AD Connect den Wert **NICHT** an das `mS-DS-ConsistencyGuid`-Attribut in AD zurückschreibt.
+## <a name="migrate-groups"></a>Migrieren von Gruppen
 
-Während einem gesamtstrukturübergreifenden Verschiebungsszenario, bei dem ein Gruppenobjekt von einer Gesamtstruktur (z. B. F1) in eine andere Gesamtstruktur (z. B. F2) verschoben wird, muss entweder der `mS-DS-ConsistencyGuid`-Wert (sofern vorhanden) oder der `objectGUID`-Wert des Objekts in der Gesamtstruktur F1 in das `mS-DS-ConsistencyGuid`-Attribut des Objekts in der Gesamtstruktur F2 kopiert werden. 
+Ab Version 1.5.18.0 unterstützt Azure AD Connect die Verwendung des Attributs `mS-DS-ConsistencyGuid` für Gruppen. Wenn `mS-DS-ConsistencyGuid` als Quellankerattribut ausgewählt und der Wert in Active Directory aufgefüllt wird, verwendet Azure AD Connect den Wert `mS-DS-ConsistencyGuid` als `immutableId`. Andernfalls wird ein Fallback auf `objectGUID` ausgeführt. Beachten Sie jedoch, dass Azure AD Connect den Wert NICHT an das Attribut `mS-DS-ConsistencyGuid` in Active Directory zurückschreibt.
 
-Für die Migration einer einzelnen Gruppe aus der Gesamtstruktur F1 in die Gesamtstruktur F2 können Sie sich an den folgenden Skripts orientieren. Diese Skripts können auch als Richtlinie für die Migration mehrerer Gruppen dienen.
+Bei einer Verschiebung zwischen Gesamtstrukturen, bei der ein Gruppenobjekt von einer Gesamtstruktur (z. B. F1) in eine andere Gesamtstruktur (z. B. F2) verschoben wird, müssen Sie entweder den Wert `mS-DS-ConsistencyGuid` (sofern vorhanden) oder den Wert `objectGUID` des Objekts in Gesamtstruktur F1 in das Attribut `mS-DS-ConsistencyGuid` des Objekts in Gesamtstruktur F2 kopieren.
+
+Verwenden Sie die folgenden Skripts als Leitfaden, um zu erfahren, wie Sie eine einzelne Gruppe von einer Gesamtstruktur in eine andere migrieren. Sie können diese Skripts auch als Leitfaden für die Migration mehrerer Gruppen verwenden. In den Skripts wird für die Quellgesamtstruktur der Name F1 und für die Zielgesamtstruktur der Name F2 verwendet.
 
 Zunächst werden die Werte `objectGUID` und `mS-DS-ConsistencyGuid` des Gruppenobjekts in der Gesamtstruktur F1 abgerufen. Diese Attribute werden in eine CSV-Datei exportiert.
 ```
@@ -41,7 +43,7 @@ DESCRIPTION
 This script will take DN of a group as input.
 It then copies the objectGUID and mS-DS-ConsistencyGuid values along with other attributes of the given group to a CSV file.
 
-This CSV file can then be used as input to Export-Group script
+This CSV file can then be used as input to the Export-Group script.
 #>
 Param(
        [ValidateNotNullOrEmpty()]
@@ -81,15 +83,15 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Anschließend verwenden Sie die generierte CSV-Ausgabedatei, um das `mS-DS-ConsistencyGuid`-Attribut für das Zielobjekt in der Gesamtstruktur F2 zu stempeln.
+Anschließend verwenden Sie die generierte CSV-Ausgabedatei, um das Attribut `mS-DS-ConsistencyGuid` für das Zielobjekt in der Gesamtstruktur F2 zu stempeln:
 
 
 ```
 <#
 DESCRIPTION
 ============
-This script will take DN of a group as input and the CSV file that was generated by Import-Group script
-It copies either the objectGUID or mS-DS-ConsistencyGuid value from CSV file to the given object.
+This script will take DN of a group as input and the CSV file that was generated by the Import-Group script.
+It copies either the objectGUID or the mS-DS-ConsistencyGuid value from the CSV file to the given object.
 
 #>
 Param(
@@ -123,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
+Erfahren Sie mehr zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

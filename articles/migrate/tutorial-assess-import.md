@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115056"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82114563"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Bewerten von Servern anhand von importierten Daten
 
@@ -68,7 +68,7 @@ So richten Sie ein neues Azure Migrate-Projekt ein:
 5. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
 6. Geben Sie unter **PROJEKTDETAILS** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Weitere Informationen finden Sie unter:
 
-    - Überprüfen Sie die [unterstützten geografischen Regionen](migrate-support-matrix.md#supported-geographies). Die geografische Region des Projekts dient nur zum Speichern der Metadaten, die von den lokalen VMs erfasst werden.
+    - Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
     - Beim Ausführen einer Migration kann eine beliebige Zielregion ausgewählt werden.
 
     ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-import/migrate-project.png)
@@ -106,27 +106,27 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **Feldname** | **Obligatorisch** | **Details**
 --- | --- | ---
 **Servername** | Ja | Wir empfehlen, den vollqualifizierten Domänennamen anzugeben.
-**IP-Adresse** | Nein | Serveradresse
+**IP-Adresse** | Nein  | Serveradresse
 **Kerne** | Ja | Anzahl von Prozessorkernen, die dem Server zugeordnet sind
 **Memory** | Ja | Gesamter Arbeitsspeicher, der dem Server zugeordnet ist (in MB)
 **OS name** (Betriebssystemname) | Ja | Serverbetriebssystem <br/> Betriebssystemnamen, die den Namen in [dieser Liste](#supported-operating-system-names) entsprechen oder diese Namen enthalten, werden von der Bewertung erkannt.
-**Betriebssystemversion** | Nein | Betriebssystemversion des Servers
-**Anzahl der Datenträger** | Nein | Nicht erforderlich, wenn Details zu den einzelnen Datenträgern angegeben werden.
-**Disk 1 size** (Größe von Datenträger 1)  | Nein | Die maximale Größe des Datenträgers (in GB).<br/>Sie können Details zu weiteren Datenträgern hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-disks). Es ist möglich, bis zu acht Datenträger hinzuzufügen.
-**Disk 1 read ops** (Lesevorgänge für Datenträger 1) | Nein | Datenträger-Lesevorgänge pro Sekunde
-**Disk 1 write ops** (Schreibvorgänge für Datenträger 1) | Nein | Datenträger-Schreibvorgänge pro Sekunde
-**Disk 1 read throughput** (Lesedurchsatz für Datenträger 1) | Nein | Vom Datenträger gelesenen Daten pro Sekunde (in MB pro Sekunde)
-**Disk 1 write throughput** (Schreibdurchsatz für Datenträger 1) | Nein | Daten, die pro Sekunde auf den Datenträger geschrieben werden (in MB pro Sekunde)
-**Prozentsatz der CPU-Auslastung** | Nein | CPU-Auslastung in Prozent
-**Memory utilization percentage** (Prozentuale Auslastung des Arbeitsspeichers) | Nein | Auslastung des Arbeitsspeichers in Prozent
-**Total disks read ops** (Gesamte Lesevorgänge für Datenträger) | Nein | Datenträger-Lesevorgänge pro Sekunde
-**Total disks write ops** (Gesamte Schreibvorgänge für Datenträger) | Nein | Datenträger-Schreibvorgänge pro Sekunde
-**Total disks read throughput** (Gesamter Lesedurchsatz für Datenträger) | Nein | Vom Datenträger gelesene Daten (in MB pro Sekunde)
-**Total disks write throughput** (Gesamter Schreibdurchsatz für Datenträger) | Nein | Auf den Datenträger geschriebene Daten (in MB pro Sekunden)
-**Network In throughput** (Eingehender Netzwerkdurchsatz) | Nein | Vom Server empfangene Daten (in MB pro Sekunde)
-**Network Out throughput** (Ausgehender Netzwerkdurchsatz) | Nein | Vom Server übertragene Daten (in MB pro Sekunde)
-**Firmware type** (Firmwaretyp) | Nein | Serverfirmware. Mögliche Werte: „BIOS“ und „UEFI“.
-**MAC address** (MAC-Adresse)| Nein | MAC-Adresse des Servers
+**Betriebssystemversion** | Nein  | Betriebssystemversion des Servers
+**Anzahl der Datenträger** | Nein  | Nicht erforderlich, wenn Details zu den einzelnen Datenträgern angegeben werden.
+**Disk 1 size** (Größe von Datenträger 1)  | Nein  | Die maximale Größe des Datenträgers (in GB).<br/>Sie können Details zu weiteren Datenträgern hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-disks). Es ist möglich, bis zu acht Datenträger hinzuzufügen.
+**Disk 1 read ops** (Lesevorgänge für Datenträger 1) | Nein  | Datenträger-Lesevorgänge pro Sekunde
+**Disk 1 write ops** (Schreibvorgänge für Datenträger 1) | Nein  | Datenträger-Schreibvorgänge pro Sekunde
+**Disk 1 read throughput** (Lesedurchsatz für Datenträger 1) | Nein  | Vom Datenträger gelesenen Daten pro Sekunde (in MB pro Sekunde)
+**Disk 1 write throughput** (Schreibdurchsatz für Datenträger 1) | Nein  | Daten, die pro Sekunde auf den Datenträger geschrieben werden (in MB pro Sekunde)
+**Prozentsatz der CPU-Auslastung** | Nein  | CPU-Auslastung in Prozent
+**Memory utilization percentage** (Prozentuale Auslastung des Arbeitsspeichers) | Nein  | Auslastung des Arbeitsspeichers in Prozent
+**Total disks read ops** (Gesamte Lesevorgänge für Datenträger) | Nein  | Datenträger-Lesevorgänge pro Sekunde
+**Total disks write ops** (Gesamte Schreibvorgänge für Datenträger) | Nein  | Datenträger-Schreibvorgänge pro Sekunde
+**Total disks read throughput** (Gesamter Lesedurchsatz für Datenträger) | Nein  | Vom Datenträger gelesene Daten (in MB pro Sekunde)
+**Total disks write throughput** (Gesamter Schreibdurchsatz für Datenträger) | Nein  | Auf den Datenträger geschriebene Daten (in MB pro Sekunden)
+**Network In throughput** (Eingehender Netzwerkdurchsatz) | Nein  | Vom Server empfangene Daten (in MB pro Sekunde)
+**Network Out throughput** (Ausgehender Netzwerkdurchsatz) | Nein  | Vom Server übertragene Daten (in MB pro Sekunde)
+**Firmware type** (Firmwaretyp) | Nein  | Serverfirmware. Mögliche Werte: „BIOS“ und „UEFI“.
+**MAC address** (MAC-Adresse)| Nein  | MAC-Adresse des Servers
 
 
 ### <a name="add-operating-systems"></a>Hinzufügen von Betriebssystemen
@@ -248,6 +248,8 @@ In dieser Ansicht werden die geschätzten Compute- und Speicherkosten für die A
 > Zuverlässigkeitsstufen werden keinen Bewertungen von Servern zugewiesen, die per CSV-Datei in die Serverbewertung importiert wurden.
 
 ## <a name="supported-operating-system-names"></a>Namen von unterstützten Betriebssystemen
+
+Die in der CSV-Datei angegebenen Betriebssystemnamen müssen mit den Namen in dieser Liste identisch sein oder diese enthalten. Dies ist erforderlich, damit die angegebenen Namen bei der Bewertung als gültig erkannt werden.
 
 <!-- BEGIN A - H -->
 

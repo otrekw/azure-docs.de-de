@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: c6b845eda1df39ccf5e4b2b1d6a615f3bc932b66
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474942"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133620"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 
@@ -196,7 +196,7 @@ In diesem Abschnitt werden die Azure-Netzwerkdienste beschrieben, mit denen Sie 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt. Weitere Informationen finden Sie unter [Was ist Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute-Monitor
-Weitere Informationen zum Anzeigen von ExpressRoute-Verbindungsmetriken, -Diagnoseprotokollen und -Warnungen finden Sie unter [ExpressRoute-Überwachung, -Metriken und -Warnungen](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Weitere Informationen zum Anzeigen von ExpressRoute-Verbindungsmetriken, -Ressourcenprotokollen und -Warnungen finden Sie unter [ExpressRoute-Überwachung, -Metriken und -Warnungen](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Azure Monitor maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen. Weitere Informationen finden Sie unter [Überblick über Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 ### <a name="virtual-network-tap"></a><a name="vnettap"></a>Terminalzugangspunkt für virtuelle Netzwerke

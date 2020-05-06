@@ -2,16 +2,16 @@
 title: Verwenden der Vorlagenreferenz
 description: Hier erfahren Sie, wie Sie die Referenz zu Azure Resource Manager-Vorlagen verwenden, um eine Vorlage zu erstellen.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878493"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185046"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Tutorial: Verwenden der Referenz zu Resource Manager-Vorlagen
 
@@ -102,21 +102,42 @@ Fügen Sie über Visual Studio Code wie im folgenden Screenshot die zusätzliche
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie in der Visual Studio Code-Schnellstartanleitung im Abschnitt [Bereitstellen der Vorlage](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template). Geben Sie beim Bereitstellen der Vorlage den Parameter **storageAccountType** mit einem neu hinzugefügten Wert an, z. B. **Premium_ZRS**. Die Bereitstellung ist nicht erfolgreich, wenn Sie die ursprüngliche Schnellstartvorlage verwenden, weil **Premium_ZRS** kein zulässiger Wert ist.  Fügen Sie dem Bereitstellungsbefehl die folgende Option hinzu, um den Parameterwert zu übergeben:
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
 
----
+    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ Geben Sie beim Bereitstellen der Vorlage den Parameter **storageAccountType** mit einem neu hinzugefügten Wert an, z. B. **Standard_RAGRS**. Die Bereitstellung ist nicht erfolgreich, wenn Sie die ursprüngliche Schnellstartvorlage verwenden, weil **Standard_RAGRS** kein zulässiger Wert ist.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

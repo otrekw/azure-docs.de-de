@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047949"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Azure AD SAML Toolkit
 
@@ -89,6 +88,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://samltoolkit.azurewebsites.net/SAML/Consume`.
 
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL, Bezeichner und Antwort-URL. Darauf wird später im Tutorial eingegangen.
+
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Rohdaten)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificateraw.png)
@@ -154,6 +156,8 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
     1. Klicken Sie auf **Choose File** (Datei auswählen), um die **Zertifikatdatei (Rohdaten)** hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben.
 
     1. Klicken Sie auf **Erstellen**.
+
+    1. Kopieren Sie die Werte für Anmelde-URL, Bezeichner und ACS-URL auf der Konfigurationsseite für einmaliges Anmelden für SAML Toolkit, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in die entsprechenden Textfelder ein.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Erstellen des Testbenutzers für Azure AD SAML Toolkit
 

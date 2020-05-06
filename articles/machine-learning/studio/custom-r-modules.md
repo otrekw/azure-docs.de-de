@@ -1,7 +1,7 @@
 ---
-title: Definieren benutzerdefinierter R-Module
+title: Erstellen und Bereitstellen benutzerdefinierter R-Module
 titleSuffix: ML Studio (classic) - Azure
-description: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio (klassisch) erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren.
+description: In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes R-Modul in ML Studio (Classic) erstellen und bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218169"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208430"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio (klassisch)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio (klassisch) erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
 
-
-
-## <a name="what-is-a-custom-r-module"></a>Was ist ein benutzerdefiniertes R-Modul?
 Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, das in Ihren Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Studio-Experiments (klassisch) ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
 
 Benutzerdefinierte Module haben in Azure Machine Learning Studio (klassisch) einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure KI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kann.

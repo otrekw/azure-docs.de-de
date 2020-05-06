@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 1c4ed77112e8c06db1946d756239e02cb187f3ef
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b8958d9a035c3cc502384e2f378bf428d517a1fc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618504"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208702"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Azure SQL-Datenbank wird auf der aktuellen stabilen Version der SQL Server-Daten
 
 ## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Verfügbarkeit der Dienstebenen „Basic“, „Standard“ und „Universell“
 
-Diese Dienstebenen nutzen die Standardverfügbarkeitsarchitektur. In der folgenden Abbildung werden vier Knoten mit getrennter Compute- und Speicherebene veranschaulicht.
+Die Dienstebenen „Basic“, „Standard“ und „Universell“ nutzen die standardmäßige Verfügbarkeitsarchitektur sowohl für serverloses als auch bereitgestelltes Computing. In der folgenden Abbildung werden vier Knoten mit getrennter Compute- und Speicherebene veranschaulicht.
 
 ![Trennung der Compute- und Speicherebene](media/sql-database-high-availability/general-purpose-service-tier.png)
 
@@ -78,7 +78,7 @@ In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügb
 Da die zonenredundanten Datenbanken über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügen, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist ein Onlinevorgang und ähnelt dem regulären Dienstebenen-Upgrade. Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
-> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../availability-zones/az-overview.md#services-support-by-region).  
+> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../availability-zones/az-region.md).  
 > Dieses Feature steht in einer verwalteten Instanz nicht zur Verfügung.
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:

@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 04/02/2020
-ms.openlocfilehash: fa33861d86ff8bee3e2a34fb3d93032ac6180880
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879622"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203640"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,9 +29,9 @@ In diesem Tutorial verwenden Sie Bilder von Katzen und Hunden.  Da jedes Bild en
 > [!div class="checklist"]
 >
 > * Erstellen eines Azure-Speicherkontos und Hochladen von Bildern in das Konto
-> * Erstellen eines Azure Machine Learning-Arbeitsbereichs
+> * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
 > * Erstellen eines mehrklassigen Bildbeschriftungsprojekts
-> * Beschriften Ihrer Daten  , was von Ihnen oder Ihren Beschriftungserstellern durchgeführt werden kann
+> * Beschriften Ihrer Daten.  Dieser Vorgang kann von Ihnen oder Ihren Beschriftungserstellern durchgeführt werden.
 > * Abschließen des Projekts durch Prüfen und Exportieren der Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -64,7 +64,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 1. Füllen Sie das Formular mit den folgenden Einstellungen aus:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
     Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
@@ -74,18 +74,6 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
     Kontoschlüssel | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Wählen Sie **Erstellen** aus, um den Datenspeicher zu erstellen.
-
-### <a name="add-labelers-to-workspace"></a>Hinzufügen von Beschriftungserstellern zum Arbeitsbereich
-
-Richten Sie Ihren Arbeitsbereich so ein, dass er alle Personen enthält, die Daten für Ihre Projekte beschriften sollen.  Später fügen Sie diese Beschriftungsersteller Ihrem spezifischen Beschriftungsprojekt hinzu.
-
-1. Wählen Sie auf der linken Seite **Datenbeschriftung** aus.
-
-1. Wählen Sie oben auf der Seite **Beschriftungsersteller** aus.
-
-1. Wählen Sie **Beschriftungsersteller hinzufügen** aus, um die E-Mail-Adresse eines Beschriftungserstellers hinzuzufügen.
-
-1. Fügen Sie eventuell weitere Beschriftungsersteller hinzu.
 
 ### <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
 
@@ -101,7 +89,7 @@ Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten habe
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Projektname | Geben Sie dem Projekt einen Namen.  Hier verwenden wir **tutorial-cats-n-dogs**.
     Beschriftungsaufgabentyp | Wählen Sie **Bildklassifizierung mit mehreren Klassen** aus.  
@@ -114,7 +102,7 @@ Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten habe
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Dataset aus Datenspeicher erstellen**:
 
-    1. Fügen Sie auf dem Formular **Grundlegende Infos** einen Namen hinzu. Hier verwenden wir **images-for-tutorial**.  Fügen Sie nach Wunsch eine Beschreibung hinzu.  Wählen Sie **Weiter** aus.
+    1. Fügen Sie auf dem Formular **Grundlegende Infos** einen Namen hinzu. Hier verwenden wir **images-for-tutorial**.  Fügen Sie nach Wunsch eine Beschreibung hinzu.  Wählen Sie **Weiter**aus.
     1. Verwenden Sie im Formular **Datenspeicherauswahl** die Dropdownliste, um Ihren **zuvor erstellten Datenspeicher** auszuwählen, z. B. **tutorial_images (Azure Blob Storage)** .
     1. Wählen Sie als Nächstes weiterhin im Formular **Datenspeicherauswahl** die Option **Durchsuchen** und dann **MultiClass - DogsCats** aus.  Wählen Sie **Speichern** aus, um **/MultiClass - DogsCats** als Pfad zu verwenden.
     1. Wählen Sie **Weiter** aus, um Details zu bestätigen, und dann **Erstellen**, um das Dataset zu erstellen.
@@ -142,51 +130,21 @@ Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten habe
 
 Diese Seite wird nicht automatisch aktualisiert. Aktualisieren Sie die Seite nach einer Pause manuell, bis sich der Status des Projekts in **Erstellt** ändert.
 
-### <a name="add-labelers-to-your-project"></a>Hinzufügen von Beschriftungserstellern zu Ihrem Projekt
-
-Fügen Sie diesem Projekt einige oder alle Beschriftungsersteller hinzu.
-
-1. Wählen Sie den Projektnamen aus, um das Projekt zu öffnen.  
-
-1. Wählen Sie oben auf der Seite **Teams** aus.
-
-1. Wählen Sie den Link **labeling_tutorial Default Team** aus.
-
-1. Verwenden Sie nun **Beschriftungsersteller zuweisen**, um die Beschriftungsersteller hinzuzufügen, die an diesem Projekt teilnehmen sollen. 
-
-1. Treffen Sie in der zuvor erstellten Liste der Beschriftungsersteller eine Auswahl.  Nachdem Sie alle gewünschten Beschriftungsersteller ausgewählt haben, wählen Sie **Beschriftungsersteller zuweisen**, um sie zu Ihrem Standardprojektteam hinzuzufügen.
-
 ## <a name="start-labeling"></a>Starten der Beschriftung
 
 Sie haben nun Ihre Azure-Ressourcen eingerichtet und ein Datenbeschriftungsprojekt konfiguriert. Es ist an der Zeit, Ihren Daten Beschriftungen hinzuzufügen.
 
-### <a name="notify-labelers"></a>Benachrichtigen von Beschriftungserstellern
+### <a name="tag-the-images"></a>Versehen der Bilder mit Tags
 
-Wenn viele Bilder zu beschriften sind, haben Sie hoffentlich auch viele Beschriftungsersteller, die diese Aufgabe erledigen.  Sie können ihnen nun Anweisungen senden, wie sie auf die Daten zugreifen und mit der Beschriftung beginnen können.
+In diesem Teil des Tutorials wechseln Sie von der Rolle des *Projektadministrators* zu der eines *Beschriftungserstellers*.  Jeder Benutzer mit Zugriff für Mitwirkende für Ihren Arbeitsbereich kann zu einem Beschriftungsersteller werden.
 
 1. Wählen Sie in [Machine Learning Studio](https://ml.azure.com) auf der linken Seite **Datenbeschriftung** aus, um Ihr Projekt zu finden.  
 
-1. Wählen Sie den Link mit dem Projektnamen aus.
+1. Wählen Sie in der Liste den Projektnamen aus.
 
-1. Wählen Sie oben auf der Seite **Details** aus.  Sie sehen eine Zusammenfassung Ihres Projekts.
+1. Wählen Sie unter dem Projektnamen die Option **Daten beschriften** aus.
 
-    ![Projektdetails](media/tutorial-labeling/project-details.png)
-
-1. Kopieren Sie den Link **URL für Beschriftungsportal**, und senden Sie ihn an Ihre Beschriftungsersteller.
-
-1. Wählen Sie nun oben **Team** aus, um Ihr Beschriftungsteam zu finden.  
-
-1. Wählen Sie den Link mit dem Teamnamen aus.
-
-1. Wählen Sie oben auf der Seite **E-Mail an Team** aus, um Ihre E-Mail zu öffnen.  Fügen Sie die URL des Beschriftungsportals ein, die Sie soeben kopiert haben.  
-
-Jedes Mal, wenn ein Beschriftungsersteller die URL des Portals aufruft, werden ihm weitere Bilder zum Beschriften angeboten, bis die Warteschlange leer ist.  
-
-### <a name="tag-the-images"></a>Versehen der Bilder mit Tags
-
-In diesem Teil des Tutorials wechseln Sie von der Rolle des *Projektadministrators* zu der eines *Beschriftungserstellers*.  Verwenden Sie die URL, die Sie an das Team gesendet haben.  Mit dieser URL gelangen Sie zum Beschriftungsportal Ihres Projekts.  Wenn Sie Anweisungen hinzugefügt hätten, würden Sie sie hier auf der Seite sehen.
-
-1. Wählen Sie oben auf der Seite **Aufgaben** aus, um mit der Beschriftung zu beginnen.
+1. Lesen Sie die Anweisungen, und wählen Sie dann **Aufgaben** aus.
 
 1. Wählen Sie auf der rechten Seite eine Miniaturansicht aus, um die Anzahl der Bilder anzuzeigen, die Sie in einem Durchgang beschriften möchten. Sie müssen alle diese Bilder beschriften, bevor Sie fortfahren können. Wechseln Sie das Layout nur, wenn Sie über eine neue Seite mit Daten ohne Bezeichnung verfügen. Durch das Wechseln von Layouts werden die bereits ausgeführten Bezeichnungen der Seite gelöscht.
 
