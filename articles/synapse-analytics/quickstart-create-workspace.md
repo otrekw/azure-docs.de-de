@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676728"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792206"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Schnellstart: Erstellen eines Azure Synapse Analytics-Arbeitsbereichs (Vorschauversion)
 
@@ -41,7 +41,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
     | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
     | **Abonnement** | *Ihr Abonnement* | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-    | **Ressourcengruppe** | *Beliebige Ressourcengruppe* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Benennungsregeln und Einschränkungen). |
+    | **Ressourcengruppe** | *Beliebige Ressourcengruppe* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Benennungsregeln und Einschränkungen). |
     | **Arbeitsbereichsname** | mysampleworkspace | Gibt den Namen des Arbeitsbereichs an, der auch für Verbindungsendpunkte verwendet wird.|
     | **Region** | USA (Ost 2) | Gibt den Standort des Arbeitsbereichs an.|
     | **Data Lake Storage Gen2** | Konto: `storage account name` </br> Dateisystem: `root file system to use` | Gibt den Namen des ADLS Gen2-Speicherkontos, das als primärer Speicher verwendet werden soll, sowie das zu verwendende Dateisystem an.|

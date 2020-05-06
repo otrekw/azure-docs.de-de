@@ -17,7 +17,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -78,7 +78,12 @@
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
 - name: Beispiele
-  href: event-hubs-samples.md
+  items:
+    - name: Codebeispiele
+      href: event-hubs-samples.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Event Hubs-Terminologie

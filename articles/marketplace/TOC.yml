@@ -449,6 +449,8 @@
           items:
             - name: Erstellen eines Azure-Anwendungsangebots
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Getaktete Abrechnung für Azure-Anwendungen
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: Verarbeiten von Prüfungsfeedback
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: API für das Onboarding
@@ -515,11 +517,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: Getaktete SaaS-Abrechnung
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Marketplace-Messungsdienst-APIs
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS-Fulfillment-APIs
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +543,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Marketplace-Messungsdienst
+          items:
+            - name: Authentifizierungsstrategien
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Marketplace-Messungsdienst-APIs
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Testen Ihres Angebots
           href: ./partner-center-portal/test-drive.md
         - name: Co-Selling-Option
@@ -589,11 +594,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: Einrichten von Auszahlungskonten und Steuerformularen
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: Abrechnungsdetails
-          href: ./partner-center-portal/billing-details.md
         - name: 'Zahlungsschwellenwerte, -methoden und -zeitrahmen'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Auszahlungszusammenfassung
+        - name: Übersicht über die Auszahlungszusammenfassung
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: Auszahlungszusammenfassungen
           href: ./partner-center-portal/payout-summary.md
+        - name: Auszahlungsrichtliniendetails
+          href: ./partner-center-portal/payout-policy-details.md
         - name: Steuerdetails
           href: ./partner-center-portal/tax-details-paid-transactions.md

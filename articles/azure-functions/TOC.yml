@@ -74,7 +74,7 @@
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: functions-cli-samples.md
 - name: Konzepte
   items:
@@ -125,6 +125,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: 'functions-reference-node.md#typescript'
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Diagnose
       href: functions-diagnostics.md
     - name: Kosten des Verbrauchstarifs

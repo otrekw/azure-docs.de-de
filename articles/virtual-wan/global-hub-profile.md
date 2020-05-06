@@ -5,18 +5,21 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 1/31/2020
+ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: 3b7e765dbd024d46939e8989993f0c882b2a8f4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76965347"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81733182"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Herunterladen eines globalen oder hubbasierten Profils für Benutzer-VPN-Clients
 
-Azure Virtual WAN bietet zwei Arten von Konnektivität für Remotebenutzer: Global und hubbasiert. In den folgenden Abschnitten können Sie mehr über ein Profil erfahren und es herunterladen.
+Azure Virtual WAN bietet zwei Arten von Konnektivität für Remotebenutzer: Global und hubbasiert. In den folgenden Abschnitten können Sie mehr über ein Profil erfahren und es herunterladen. 
+
+> [!IMPORTANT]
+> Die RADIUS-Authentifizierung unterstützt nur das hubbasierte Profil.
 
 ## <a name="global-profile"></a>Globales Profil
 

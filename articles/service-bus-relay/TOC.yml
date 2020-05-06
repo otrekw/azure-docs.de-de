@@ -4,7 +4,7 @@
   items:
     - name: Was ist ein Relay?
       href: relay-what-is-it.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hybridverbindungen
       items:
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: Verwalten
+    - name: Verwalten und Überwachen
       items:
         - name: Überwachen von Azure Relay mit Azure-Überwachung
           href: relay-metrics-azure-monitor.md
+        - name: Einrichten von Diagnoseprotokollen
+          href: diagnostic-logs.md
 - name: Verweis
   items:
     - name: .NET

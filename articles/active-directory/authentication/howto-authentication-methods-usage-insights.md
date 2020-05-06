@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654145"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81680183"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Authentifizierungsmethoden: Nutzung und Erkenntnisse (Vorschau)
 
@@ -93,6 +93,8 @@ Mit den Steuerelementen oben in der Liste können Sie nach einem Benutzer suchen
 Die in diesen Berichten angezeigten Daten sind um bis zu 60 Minuten zeitverzögert. Im Azure-Portal können Sie mithilfe des Felds „Zuletzt aktualisiert“ feststellen, wie aktuell Ihre Daten sind.
 
 Die Daten im Bericht „Nutzung und Erkenntnisse“ sind kein Ersatz für die Aktivitätsberichte von Azure Multi-Factor Authentication oder für die Informationen, die im Azure AD-Anmeldebericht enthalten sind.
+
+Der Bericht kann derzeit nicht gefiltert werden, um externe Benutzer auszuschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

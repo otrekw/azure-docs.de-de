@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502007"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184672"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services
 
 Momentan können Sie mithilfe von Azure Lab Services in einem Lab eine Vorlage für virtuelle Computer einrichten und jedem Ihrer Benutzer jeweils eine Kopie zur Verfügung zu stellen. Wenn Sie aber ein Dozent sind und Unterricht zu Netzwerken, Sicherheit oder IT geben, müssen Sie möglicherweise für jeden Ihrer Kursteilnehmer eine Umgebung bereitstellen, in der mehrere VMs über ein Netzwerk miteinander kommunizieren können.
 
-Geschachtelte Virtualisierung ermöglicht Ihnen, innerhalb einer Vorlage für virtuelle Computer in einem Lab eine Umgebung mit mehreren virtuellen Computern zu erstellen. Wenn diese Vorlage veröffentlicht wird, wird für jeden Benutzer im Lab ein eingerichteter virtueller Computer bereitgestellt, in dem weitere virtuelle Computer eingeschlossen sind.  Dieser Artikel behandelt die Vorgehensweise zum Einrichten der geschachtelten Virtualisierung auf einem Vorlagencomputer in Azure Lab Services.
+Eine geschachtelte Virtualisierung ermöglicht Ihnen, innerhalb einer Vorlage für virtuelle Computer in einem Lab eine Umgebung mit mehreren virtuellen Computern zu erstellen. Wenn diese Vorlage veröffentlicht wird, wird für jeden Benutzer im Lab ein eingerichteter virtueller Computer bereitgestellt, in dem weitere virtuelle Computer eingeschlossen sind.  Dieser Artikel behandelt die Vorgehensweise zum Einrichten der geschachtelten Virtualisierung auf einem Vorlagencomputer in Azure Lab Services.
 
 ## <a name="what-is-nested-virtualization"></a>Was ist geschachtelte Virtualisierung?
 
@@ -40,8 +40,8 @@ Weitere Informationen zur geschachtelten Virtualisierung finden Sie in den folge
 Vor dem Einrichten eines Labs mit geschachtelter Virtualisierung sind folgende Punkte zu berücksichtigen.
 
 - Wenn Sie ein neues Lab erstellen, wählen Sie als Größe des virtuellen Computers **Medium (Nested virtualization)** (Mittel (geschachtelte Virtualisierung)) oder **Large (Nested virtualization)** (Groß (geschachtelte Virtualisierung)) aus. Diese Größen virtueller Computer unterstützen geschachtelte Virtualisierung.
-- Wählen Sie eine Größe aus, die sowohl für den Host als auch für den virtuellen Clientcomputer gute Leistung bereitstellt.  Denken Sie daran, dass bei der Verwendung von Virtualisierung die Größe, die Sie auswählen, nicht nur für einen Computer ausreichend sein muss, sondern sowohl für den Host als auch für alle Clientcomputer, die gleichzeitig ausgeführt werden sollen.
-- Virtuelle Clientcomputer haben keinen Zugriff auf Azure-Ressourcen, z. B. DNS-Server im virtuellen Azure-Netzwerk.
+- Wählen Sie eine Größe aus, die sowohl für den Host als auch für den virtuellen Clientcomputer gute Leistung bereitstellt.  Denken Sie daran, dass bei der Verwendung von Virtualisierung die Größe, die Sie auswählen, nicht nur für einen Computer ausreichend sein muss, sondern sowohl für den Host als auch für alle Hyper-V-Computer, die gleichzeitig ausgeführt werden.
+- Virtuelle Clientcomputer haben keinen Zugriff auf Azure-Ressourcen, z. B. DNS-Server im virtuellen Azure-Netzwerk.
 - Beim virtuellen Hostcomputer muss die Einrichtung berücksichtigen, dass der Clientcomputer eine Internetverbindung besitzen muss.
 - Virtuelle Clientcomputer werden als unabhängige Computer lizenziert. Informationen zur Lizenzierung für Microsoft-Betriebssysteme und -Produkte finden Sie unter [Microsoft-Lizenzierung](https://www.microsoft.com/licensing/default). Überprüfen Sie die Lizenzverträge für jegliche andere verwendete Software, bevor Sie den Vorlagencomputer einrichten.
 
@@ -53,6 +53,17 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Labkonto erstellt
 >Wählen Sie bei der Erstellung des Labs als Größe für die VM **Large (nested virtualization)** (Groß (geschachtelte Virtualisierung)) oder **Medium (nested virtualization)** (Mittel (geschachtelte Virtualisierung)) aus.  Andernfalls funktioniert die verschachtelte Virtualisierung nicht.  
 
 Informationen zum Herstellen einer Verbindung mit dem Vorlagencomputer finden Sie unter [Erstellen und Verwalten einer Classroom-Vorlage](how-to-create-manage-template.md).
+
+Es müssen einige Aufgaben erledigt werden, um eine geschachtelte Virtualisierung zu ermöglichen.  
+
+- **Aktivieren Sie die Hyper-V-Rolle**. Die Hyper-V-Rolle muss für die Erstellung und Ausführung von virtuellen Hyper-V-Computern auf dem virtuellen Lab Services-Computer aktiviert sein.
+- **Aktivieren Sie DHCP**.  Wenn die DHCP-Rolle auf dem virtuellen Lab Services-Computer aktiviert ist, kann den virtuellen Hyper-V-Computern automatisch eine IP-Adresse zugewiesen werden.
+- **Erstellen Sie ein NAT-Netzwerk für virtuelle Hyper-V-Computer**.  Das NAT-Netzwerk ist so eingerichtet, dass die virtuellen Hyper-V-Computer Zugang zum Internet haben.  Die virtuellen Hyper-V-Computer können miteinander kommunizieren.
+
+>[!NOTE]
+>Das auf dem virtuellen Lab Services-Computer erstellte NAT-Netzwerk ermöglicht einem virtuellen Hyper-V-Computer den Zugriff auf das Internet und auf andere virtuelle Hyper-V-Computer auf demselben virtuellen Lab Services-Computer.  Der virtuelle Hyper-V-Computer wird nicht in der Lage sein, auf Azure-Ressourcen wie DNS-Server im virtuellen Azure-Netzwerk zuzugreifen.
+
+Die Ausführung der oben aufgeführten Aufgaben kann mithilfe eines Skripts oder mit Windows-Tools erfolgen.  Weitere Informationen finden Sie in den folgenden Abschnitten.
 
 ### <a name="using-script-to-enable-nested-virtualization"></a>Verwenden eines Skripts zum Aktivieren geschachtelter Virtualisierung
 
