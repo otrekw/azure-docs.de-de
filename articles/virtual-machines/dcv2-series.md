@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256928"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82085721"
 ---
-# <a name="preview-dcsv2-series"></a>Vorschau: DCsv2-Serie
+# <a name="dcsv2-series"></a>DCsv2-Serie
 
 
 Die DCsv2-Serie kann Ihnen beim Schutz der Vertraulichkeit und Integrität Ihrer Daten und Ihres Codes während der Verarbeitung in der öffentlichen Cloud helfen. Diese Computer werden von der neuesten Generation von Intel XEON E-2288G-Prozessoren mit SGX-Technologie unterstützt. Mit der Intel Turbo Boost Technology können diese Computer bis zu 5,0 GHz erreichen. Instanzen der DCsv2-Serie ermöglichen es Kunden, Secure Enclave-basierte Anwendungen zu erstellen, um ihren Code und Daten während der Verwendung zu schützen.
@@ -41,9 +41,9 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - Virtuelle Computer der DCsv2-Serie sind [VMs der Generation 2](./linux/generation-2.md#creating-a-generation-2-vm) und unterstützen nur `Gen2`-Images.
-- Derzeit nur in den Regionen „Vereinigtes Königreich, Süden“ und „Kanada, Mitte“ verfügbar
-- Vorherige Generation vertraulicher Compute-VMs: [DC-Serie](sizes-previous-gen.md)
-- Erstellen von DCsv2-VMs mithilfe des Azure-Portals: [Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal](./linux/quick-create-portal.md)
+- Derzeit nur in den Regionen „Vereinigtes Königreich, Süden“, „Kanada, Mitte“ und „USA, Osten“ verfügbar.
+- Vorherige Generation vertraulicher Compute-VMs: [DC-Serie](sizes-previous-gen.md#preview-dc-series)
+- Erstellen Sie DCsv2-VMs mithilfe von [Azure-Portal](./linux/quick-create-portal.md) oder [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview).
 
 
 

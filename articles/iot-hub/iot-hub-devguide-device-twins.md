@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237550"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81731466"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -58,7 +59,7 @@ Ein Gerätezwilling ist ein JSON-Dokument, das Folgendes enthält:
 
 * **Gemeldete Eigenschaften** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Die Geräte-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
 
-* **Geräteidentitätseigenschaften**. Der Stamm des JSON-Dokuments für einen Gerätezwilling enthält die schreibgeschützten Eigenschaften der zugehörigen Geräteidentität aus der [Identitätsregistrierung](iot-hub-devguide-identity-registry.md).
+* **Geräteidentitätseigenschaften**. Der Stamm des JSON-Dokuments für einen Gerätezwilling enthält die schreibgeschützten Eigenschaften der zugehörigen Geräteidentität aus der [Identitätsregistrierung](iot-hub-devguide-identity-registry.md). Die Eigenschaften `connectionStateUpdatedTime` und `generationId` werden nicht einbezogen.
 
 ![Screenshot: Eigenschaften von Gerätezwillingen](./media/iot-hub-devguide-device-twins/twin.png)
 

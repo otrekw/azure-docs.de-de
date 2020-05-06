@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81605477"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Verfügbare RHEL-Images (Red Hat Enterprise Linux) in Azure
 Azure bietet eine Vielzahl von RHEL-Images für verschiedene Anwendungsfälle.
@@ -47,8 +47,12 @@ RHEL          | 6.7      | RAW    | Linux-Agent |
 |             | 7.6      | RAW    | Linux-Agent | Ab Mai 2019 standardmäßig mit EUS-Repositorys verknüpft.
 |             | 76-gen2  | RAW    | Linux-Agent | Standardmäßig mit EUS-Repositorys verknüpft.
 |             | 7,7      | LVM    | Linux-Agent | Standardmäßig mit EUS-Repositorys verknüpft.
-|             | 8        | LVM    | Linux-Agent | RHEL 8.x-Imagefamilie
-|             | 8-gen2   | LVM    | Linux-Agent | Hyper-V Generation 2 – RHEL 8.x-Imagefamilie.
+|             | 8-LVM    | LVM    | Linux-Agent | RHEL 8.x-Imagefamilie. An reguläre Repositorys angefügt.
+|             | 8-lvm-gen2| LVM    | Linux-Agent | Hyper-V Generation 2 – RHEL 8.x-Imagefamilie. An reguläre Repositorys angefügt.
+|             | 8        | LVM    | Linux-Agent | RHEL 8.0-Images
+|             | 8-gen2   | LVM    | Linux-Agent | Hyper-V-Generation 2: RHEL 8.0-Images.
+|             | 8.1      | LVM    | Linux-Agent | RHEL 8.1-Images. Derzeit an reguläre Repositorys angefügt.
+|             | 81gen2   | LVM    | Linux-Agent | Hyper-V-Generation 2: RHEL 8.1-Images. Derzeit an reguläre Repositorys angefügt.
 RHEL-SAP      | 7.4      | LVM    | Linux-Agent | RHEL 7.4 for SAP HANA und Geschäfts-Apps. An E4S-Repositorys angefügt, Premium-Berechnung für SAP und RHEL sowie Grundgebühr für Computekapazität.
 |             | 74sap-gen2| LVM    | Linux-Agent | RHEL 7.4 for SAP HANA und Geschäfts-Apps. Image der Generation 2. An E4S-Repositorys angefügt, Premium-Berechnung für SAP und RHEL sowie Grundgebühr für Computekapazität.
 |             | 7,5       | LVM    | Linux-Agent | RHEL 7.5 for SAP HANA und Geschäfts-Apps. An E4S-Repositorys angefügt, Premium-Berechnung für SAP und RHEL sowie Grundgebühr für Computekapazität.
@@ -76,6 +80,9 @@ rhel-byos     |rhel-lvm74| LVM    | Linux-Agent | Bei RHEL 7.4 BYOS-Images, die 
 |             |rhel-lvm76| LVM    | Linux-Agent | Bei RHEL 7.6 BYOS-Images, die nicht an eine Quelle für Updates angefügt sind, erfolgt keine Premium-Berechnung für RHEL.
 |             |rhel-lvm77| LVM    | Linux-Agent | Bei RHEL 7.7 BYOS-Images, die nicht an eine Quelle für Updates angefügt sind, erfolgt keine Premium-Berechnung für RHEL.
 |             |rhel-lvm8 | LVM    | Linux-Agent | Bei RHEL 8-BYOS-Images (die RHEL-Nebenversion wird im Wert der Imageversion angezeigt), die nicht an eine Quelle für Updates angefügt sind, erfolgt keine Premium-Berechnung für RHEL.
+
+> [!NOTE]
+> Das RHEL-SAP-HANA-Produktangebot wird von Red Hat als am Ende des Lebenszyklus angesehen. Vorhandene Bereitstellungen funktionieren weiterhin normal, aber Red Hat empfiehlt Kunden, von den RHEL-SAP-HANA-Images zu den RHEL-SAP-HA-Images zu migrieren, die die SAP HANA-Repositorys und das Hochverfügbarkeits-Add-In beinhalten. Weitere Informationen zu den SAP-Cloud-Angeboten von Red Hat finden Sie [hier](https://access.redhat.com/articles/3751271).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über die [Red Hat-Images in Azure](./redhat-images.md).

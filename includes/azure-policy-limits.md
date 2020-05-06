@@ -4,14 +4,14 @@ description: include file
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 04/23/2020
 ms.author: dacoulte
-ms.openlocfilehash: 19b43c857058b3af50db3bc1b42ec1ae558ee884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04e607296478520298a2febab61a7edac911a59c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80272748"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82132252"
 ---
 Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Eintrag (Bereich) gilt entweder für das Abonnement oder die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md).
 
@@ -26,4 +26,4 @@ Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Ei
 | Initiativdefinition | Parameter | 100 |
 | Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 400 |
 | Richtlinienregel | Geschachtelte konditionelle Abschnitte | 512 |
-| Wartungstask | Ressourcen | 1000 |
+| Wartungstask | Ressourcen | 500 |

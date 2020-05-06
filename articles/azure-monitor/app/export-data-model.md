@@ -3,17 +3,17 @@ title: Azure Application Insights-Datenmodell | Microsoft-Dokumentation
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663874"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536844"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
 In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDKs an das Portal gesendet werden.
 Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](export-telemetry.md).
-Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) angezeigt.
+Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) und in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) angezeigt.
 
 Beachten Sie Folgendes:
 
@@ -127,16 +127,16 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.device.roleName |Zeichenfolge | |
 | context.device.screenResolution |Zeichenfolge | |
 | context.device.type |Zeichenfolge |PC, Browser, ... |
-| context.location |Objekt (object) |Abgeleitet von „clientip“. |
-| context.location.city |Zeichenfolge |Abgeleitet von „clientip“, falls bekannt |
+| context.location |Objekt (object) |Abgeleitet von `clientip`. |
+| context.location.city |Zeichenfolge |Abgeleitet von `clientip`, sofern bekannt. |
 | context.location.clientip |Zeichenfolge |Letztes Oktagon wird als 0 anonymisiert. |
 | context.location.continent |Zeichenfolge | |
 | context.location.country |Zeichenfolge | |
 | context.location.province |Zeichenfolge |Bundesland oder Kanton |
-| context.operation.id |Zeichenfolge |Elemente mit derselben Vorgangs-ID werden im Portal als verwandte Elemente angezeigt. Üblicherweise die Anforderungs-ID. |
+| context.operation.id |Zeichenfolge |Elemente mit derselben `operation id` werden im Portal als verwandte Elemente angezeigt. Normalerweise `request id`. |
 | context.operation.name |Zeichenfolge |URL oder Anforderungsname |
 | context.operation.parentId |Zeichenfolge |Ermöglicht geschachtelte verwandte Elemente. |
-| context.session.id |Zeichenfolge |ID einer Gruppe von Vorgängen derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
+| context.session.id |Zeichenfolge |`Id` einer Gruppe von Vorgängen aus derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |Zeichenfolge | |
 | context.user.accountId |Zeichenfolge | |
@@ -147,7 +147,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |Zeichenfolge | |
 | internal.data.documentVersion |Zeichenfolge | |
-| internal.data.id |Zeichenfolge | Eindeutige ID, die beim Erfassen eines Elements in Application Insights zugewiesen wird. |
+| internal.data.id |Zeichenfolge | `Unique id`, die beim Erfassen eines Elements in Application Insights zugewiesen wird. |
 
 ## <a name="events"></a>Events
 Von [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse.
@@ -173,7 +173,7 @@ Melden [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) auf dem Server
 | basicException [0] failedUserCodeAssembly |Zeichenfolge | |
 | basicException [0] handledAt |Zeichenfolge | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |Zeichenfolge | |
+| basicException [0] `id` |Zeichenfolge | |
 | basicException [0] method |Zeichenfolge | |
 | basicException [0] message |Zeichenfolge |Ausnahmemeldung. Max. Länge: 10.000 |
 | basicException [0] outerExceptionMessage |Zeichenfolge | |
@@ -210,7 +210,7 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |Zeichenfolge |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
-| remoteDependency [0] id |Zeichenfolge | |
+| remoteDependency [0] `id` |Zeichenfolge | |
 | remoteDependency [0] name |Zeichenfolge |URL, Max. Länge: 250 |
 | remoteDependency [0] resultCode |Zeichenfolge |Aus HTTP-Abhängigkeit |
 | remoteDependency [0] success |boolean | |
@@ -227,7 +227,7 @@ Gesendet von [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md
 | --- | --- | --- |
 | request [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
-| request [0] id |Zeichenfolge |Vorgangs-ID |
+| request [0] `id` |Zeichenfolge |`Operation id` |
 | request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Länge: 250 |
 | request [0] responseCode |integer |HTTP-Antwort, die an den Client gesendet wird. |
 | request [0] success |boolean |Standard == (responseCode &lt; 400) |

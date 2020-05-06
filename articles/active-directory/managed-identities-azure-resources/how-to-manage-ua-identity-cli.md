@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231810"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81639762"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -37,6 +37,12 @@ In diesem Artikel erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle
     - Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
     - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
     - [Installieren Sie die neueste Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. Melden Sie sich mit `az login` mit einem Konto, das mit dem Azure-Abonnement verknüpft ist, unter dem Sie die vom Benutzer zugewiesene verwaltete Identität bereitstellen möchten, bei Azure an.
+
+
+> [!NOTE]
+> Um Benutzerberechtigungen bei Verwendung eines App Service-Prinzipals mithilfe der Befehlszeilenschnittstelle zu ändern, müssen Sie dem Dienstprinzipal zusätzliche Berechtigungen in der Azure AD Graph-API zuweisen, da Teile der Get-Anforderungen in der Befehlszeilenschnittstelle für die Graph-API ausgeführt werden. Andernfalls erhalten Sie möglicherweise eine Meldung über unzureichende Berechtigungen zum Durchführen des Vorgangs. Dazu müssen Sie die App-Registrierung in Azure Active Directory aufrufen, Ihre App auswählen, auf „API-Berechtigungen“ klicken, nach unten scrollen und „Azure Active Directory Graph“ auswählen. Wählen Sie anschließend „Anwendungsberechtigungen“ aus, und fügen Sie dann die entsprechenden Berechtigungen hinzu. 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

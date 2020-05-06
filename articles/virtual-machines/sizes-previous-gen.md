@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985727"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82081539"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
@@ -216,6 +216,8 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 <br>
 
 ## <a name="preview-dc-series"></a>Vorschau: DC-Serie
+
+**Neuere Größenempfehlung**: [DCsv2-Serie](dcv2-series.md)
 
 Storage Premium Unterstützt
 

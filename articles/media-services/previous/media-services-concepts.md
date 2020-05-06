@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475250"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160221"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
 
@@ -111,7 +111,7 @@ Informationen zu unterstützten Encodern finden Sie unter [Encoder](media-servic
 ## <a name="live-streaming"></a>Livestreaming
 In Azure Media Services repräsentiert ein Kanal eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:
 
-* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision-Encoder. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 * Ein Datenstrom mit nur einer Bitrate (in einem der folgenden Formate: RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 ### <a name="channel"></a>Channel
@@ -192,7 +192,7 @@ Der progressive Download ermöglicht die Wiedergabe von Medien, bevor die gesamt
 
 Um Benutzern URLs für den progressiven Download bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt. Anschließend müssen Sie den Namen der MP4-Datei anhängen. Beispiel:
 
-http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 ### <a name="streaming-urls"></a>Streaming-URLs
 Streamen Ihre Inhalte auf Clients. Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt mit den Inhalten, die Sie streamen möchten. Um diese Inhalte streamen zu können, müssen Sie diesen Pfad jedoch ändern. Zum Erstellen einer vollständigen URL für die Streaming-Manifestdatei müssen Sie den Pfadwert des Locators mit dem Dateinamen des Manifests (dateiname.ism) verketten. Fügen Sie dem Locatorpfad anschließend "/Manifest" und ein geeignetes Format (falls erforderlich) hinzu.

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610120"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790846"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgraden der Konfiguration eines eigenständigen Clusters 
 
@@ -75,7 +75,7 @@ Vier Optionen werden unterstützt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie](service-fabric-cluster-fabric-settings.md).
-* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md) vertraut.
+* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md) vertraut.
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md) vertraut.
 
 <!--Image references-->

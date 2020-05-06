@@ -1,18 +1,18 @@
 ---
 title: Löschen eines Microsoft Azure Recovery Services-Tresors
-description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Microsoft Azure Backup-Recovery Services-Tresors (MARS) aufheben und diesen dann löschen.
+description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500388"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183754"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
-In diesem Artikel wird beschrieben, wie Sie einen Microsoft [Azure Backup](backup-overview.md)-Recovery Services-Tresor (MARS) löschen. Außerdem enthält er Anweisungen zum Entfernen von Abhängigkeiten und anschließenden Löschen eines Tresors.
+In diesem Artikel wird beschrieben, wie Sie einen Recovery Services-Tresor von [Azure Backup](backup-overview.md) löschen. Außerdem enthält er Anweisungen zum Entfernen von Abhängigkeiten und anschließenden Löschen eines Tresors.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -90,6 +90,7 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 
      Lesen Sie die Warnmeldung und die Anweisungen im Kontrollkästchen für die Zustimmung.
     > [!NOTE]
+    >
     >- Wenn der geschützte Server mit Azure-Diensten synchronisiert wird und Sicherungselemente vorhanden sind, werden im Kontrollkästchen für die Zustimmung die Anzahl von abhängigen Sicherungselementen und der Link angezeigt, unter dem die Sicherungselemente angezeigt werden können.
     >- Wenn der geschützte Server nicht mit Azure-Diensten synchronisiert wird und Sicherungselemente vorhanden sind, wird im Kontrollkästchen für die Zustimmung nur die Anzahl von Sicherungselementen angezeigt.
     >- Wenn keine Sicherungselemente vorhanden sind, zeigt das Kontrollkästchen für die Zustimmung eine Aufforderung zum Löschen an.

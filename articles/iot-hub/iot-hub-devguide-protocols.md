@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237362"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81729117"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
@@ -39,7 +42,7 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 
 * **C2D-Muster**. HTTPS bietet keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTPS IoT Hub nach C2D-Nachrichten ab. Dieser Ansatz ist für das Gerät und auch für IoT Hub sehr ineffizient. Gemäß den aktuellen HTTPS-Richtlinien muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach Nachrichten durchführen. MQTT und AMQP unterstützen Serverpush beim Empfangen von C2D-Nachrichten. Sie ermöglichen sofortiges Nachrichtenpushen von IoT Hub zum Gerät. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, sind MQTT oder AMQP die zu bevorzugenden Protokolle. Bei nur selten verbundenen Geräten funktioniert auch HTTPS.
 
-* **Bereichsgateways**. Bei Verwendung von MQTT und HTTPS ist es nicht möglich, mehrere Geräte (jedes mit eigenen gerätebezogenen Anmeldeinformationen) mithilfe der gleichen TLS-Verbindung zu verbinden. Für [Bereichsgatewayszenarien](iot-hub-devguide-endpoints.md#field-gateways), die für jedes verbundene Gerät eine TLS-Verbindung zwischen dem Bereichsgateway und IoT Hub benötigen, sind diese Protokolle nicht optimal.
+* **Bereichsgateways**. MQTT und HTTPS unterstützen nur eine einzelne Geräteidentität (Geräte-ID plus Anmeldeinformationen) pro TLS-Verbindung. Aus diesem Grund werden diese Protokolle für [Szenarien mit Bereichsgateways](iot-hub-devguide-endpoints.md#field-gateways) nicht unterstützt, die ein Multiplexing von Nachrichten unter Verwendung von mehreren Geräteidentitäten über einzelne oder mehrere Upstreamverbindungen mit IoT Hub erfordern. Solche Gateways können für den Upstreamdatenverkehr ein Protokoll verwenden, das mehrere Geräteidentitäten pro Verbindung unterstützt, wie z. B. AMQP.
 
 * **Geräte mit eingeschränkten Ressourcen**. Die MQTT- und HTTPS-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über beschränkte Ressourcen verfügt (beispielsweise weniger als 1 MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
 

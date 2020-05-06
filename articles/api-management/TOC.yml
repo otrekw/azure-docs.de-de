@@ -15,7 +15,7 @@
       href: get-started-create-service-instance.md
     - name: Erstellen einer Instanz – PowerShell
       href: powershell-create-service-instance.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Importieren Ihrer ersten API'
       href: import-and-publish.md
@@ -65,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: Übersicht über das selbstgehostete Gateway
       href: self-hosted-gateway-overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Definieren von APIs
       items:
@@ -101,10 +101,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Bereitstellen eines selbstgehosteten Gateways
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Bereitstellen eines selbstgehosteten Gateways für Kubernetes
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Bereitstellen eines selbstgehosteten Gateways für Docker
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: Konfigurieren einer benutzerdefinierte Domäne für ein selbstgehostetes Gateway
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: Cache
@@ -209,12 +211,20 @@
           href: api-management-transformation-policies.md
     - name: Verwalten in Produktion
       items:
+        - name: Exportieren von APIs in Power Platform
+          href: export-api-power-platform.md
         - name: Verwalten von Gruppen
           href: api-management-howto-create-groups.md
         - name: Abrufen von IP-Adressen
           href: api-management-howto-ip-addresses.md
         - name: Protokollieren von Ereignissen in Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Protokollieren von Anforderungen mit Azure Application Insights
+          href: api-management-howto-app-insights.md
+        - name: Konfigurieren von Cloudmetriken und -protokollen für selbstgehostete Gateways
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways
+          href: how-to-configure-local-metrics-logs.md
         - name: Protokollieren von Anforderungen mit Azure Application Insights
           href: api-management-howto-app-insights.md
         - name: Einrichten der Notfallwiederherstellung mithilfe von Sicherung/Wiederherstellung

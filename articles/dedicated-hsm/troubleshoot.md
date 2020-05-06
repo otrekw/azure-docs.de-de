@@ -14,10 +14,10 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80337219"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
@@ -100,7 +100,7 @@ Speichern Sie die Anmeldeinformationen beim Initialisieren des HSM auf sichere W
 
 Die Angabe falscher Anmeldeinformationen für HSMs kann sehr negative Folgen haben. Unten ist das Standardverhalten für HSM-Rollen angegeben.
 
-| Rolle | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
+| Role | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
 |--|--|--|--|
 | HSM-Anmeldung | 3 |  HSM wird auf Null zurückgesetzt (alle HSM-Objektidentitäten und alle Partitionen sind verloren)  |  Das HSM muss neu initialisiert werden. Inhalte können aus Sicherungen wiederhergestellt werden. | 
 | Partitionsanmeldung | 10 |  Die Partition wird auf Null zurückgesetzt. |  Die Partition muss neu initialisiert werden. Inhalte können aus der Sicherung wiederhergestellt werden. |  

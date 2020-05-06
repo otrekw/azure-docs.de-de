@@ -10,20 +10,23 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231806"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867753"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Sicherheitsassistent für Azure AD-Rollen in Privileged Identity Management
 
 Wenn Sie die erste Person sind, die Privileged Identity Management (PIM) in Ihrer Azure Active Directory (Azure AD)-Organisation ausführt, wird Ihnen ein Assistent für die ersten Schritte angezeigt. Der Assistent bietet Einblick in die Sicherheitsrisiken privilegierter Identitäten und informiert darüber, wie Sie diese Risiken mithilfe von Privileged Identity Management reduzieren können. Sie müssen die vorhandenen Rollenzuweisungen im Assistenten nicht ändern, wenn Sie dies lieber später machen möchten.
+
+> [!Important]
+> Der Sicherheits-Assistent ist vorübergehend nicht verfügbar. Vielen Dank für Ihre Geduld.
 
 ## <a name="wizard-overview"></a>Übersicht über den Assistenten
 
@@ -32,7 +35,7 @@ Bevor Ihre Organisation mit der Verwendung von Privileged Identity Management be
 Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisungen des Administrators zu ändern.  
 
 > [!WARNING]
-> Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation Privileged Identity Management nicht mehr verwalten, sollte dieses Konto gelöscht werden.
+> Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Geschäfts-, Schul- oder Unikonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation Privileged Identity Management nicht mehr verwalten, sollte dieses Konto gelöscht werden.
 > Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype und Outlook.com). Wenn Sie planen, zur Aktivierung dieser Rolle die mehrstufige Authentifizierung als erforderlich festzulegen, kann der Benutzer sie nicht übernehmen.
 
 ## <a name="run-the-wizard"></a>Ausführen des Assistenten

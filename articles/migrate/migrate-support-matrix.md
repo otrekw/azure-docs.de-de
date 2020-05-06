@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für Azure Migrate
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Migrate-Dienst.
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127699"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81680696"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -25,6 +25,8 @@ Die Tabelle enthält eine Übersicht über die unterstützten Ermittlungs-, Bewe
 **Lokale Bewertung** | Bewerten Sie lokale Workloads und Daten, die auf VMware-VMs, Hyper-V-VMs und physischen Servern ausgeführt werden. Verwenden Sie für die Bewertung die Azure Migrate-Serverbewertung und den Microsoft-Datenmigrations-Assistenten (DMA) sowie andere Tools und ISV-Angebote.
 **Migration von einem lokalen Standort zu Azure** | Migrieren Sie auf physischen Servern, VMware-VMs, Hyper-V-VMs und cloudbasierten VMs ausgeführte Workloads und Daten zu Azure. Verwenden Sie für die Migration die Azure Migrate-Serverbewertung und Azure Database Migration Service (DMS) sowie andere Tools und ISV-Angebote.
 
+> [!NOTE]
+> Zurzeit können ISV-Tools in Azure Government keine Daten an Azure Migrate senden. Unabhängig davon können Sie integrierte Microsoft-Tools oder Partnertools verwenden.
 
 ## <a name="supported-tools"></a>Unterstützte Tools
 
@@ -66,16 +68,15 @@ Damit Azure Migrate mit Azure verwendet werden kann, benötigen Sie die folgende
 **Aufgabe** | **Berechtigungen** | **Details**
 --- | --- | ---
 Erstellen eines Azure Migrate-Projekts | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Projekts. | Einrichtung für [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project) oder [physische Server](tutorial-prepare-physical.md#assign-permissions-to-create-project)
-Registrieren der Azure Migrate-Appliance| Azure Migrate verwendet eine einfache [Azure Migrate-Appliance](migrate-appliance.md), um Computer mit der Azure Migrate-Serverbewertung zu bewerten und die [Migration ohne Agent](server-migrate-overview.md) für die virtuellen VMware-Computer mit der Azure Migrate-Servermigration durchzuführen. Diese Appliance ermittelt Computer und sendet Meta- und Leistungsdaten an Azure Migrate.<br/><br/> Bei der Registrierung werden die Registrierungsanbieter (Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault) bei dem Abonnement registriert, das in der Appliance ausgewählt wurde, damit das Abonnement mit dem Ressourcenanbieter funktioniert. Um sich zu registrieren, benötigen Sie Mitwirkender- oder Besitzerzugriff auf das Abonnement.<br/><br/> **VMware-** : Während des Onboardings erstellt Azure Migrate zwei Azure Active Directory-Apps (Azure AD-Apps). Die erste App kommuniziert mit den Appliance-Agents und dem Azure Migrate-Dienst. Die App verfügt nicht über Berechtigungen zum Ausführen von Azure Resource Management-Aufrufen und besitzt keinen RBAC-Zugriff auf Ressourcen. Die zweite App greift nur auf einen Azure Key Vault zu, der im Benutzerabonnement nur für die VMware-Migration ohne Agent erstellt wurde. Bei der Migration ohne Agents erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Azure Migrate verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten), wenn die Ermittlung von der Appliance initiiert wird.<br/><br/> **Hyper-V**: Während des Onboardings. Azure Migrate erstellt eine Azure AD-App. Die App kommuniziert mit den Appliance-Agents und dem Azure Migrate-Dienst. Die App verfügt nicht über Berechtigungen zum Ausführen von Azure Resource Management-Aufrufen und besitzt keinen RBAC-Zugriff auf Ressourcen. | Einrichtung für [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance) oder [physische Server](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)
+Registrieren der Azure Migrate-Appliance| Azure Migrate verwendet eine einfache [Azure Migrate-Appliance](migrate-appliance.md), um Computer mit der Azure Migrate-Serverbewertung zu bewerten und die [Migration ohne Agent](server-migrate-overview.md) für die virtuellen VMware-Computer mit der Azure Migrate-Servermigration durchzuführen. Diese Appliance ermittelt Computer und sendet Meta- und Leistungsdaten an Azure Migrate.<br/><br/> Bei der Registrierung werden die Registrierungsanbieter (Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault) bei dem Abonnement registriert, das in der Appliance ausgewählt wurde, sodass das Abonnement mit dem Ressourcenanbieter funktioniert. Um sich zu registrieren, benötigen Sie Mitwirkender- oder Besitzerzugriff auf das Abonnement.<br/><br/> **VMware-** : Während des Onboardings erstellt Azure Migrate zwei Azure Active Directory-Apps (Azure AD-Apps). Die erste App kommuniziert mit den Appliance-Agents und dem Azure Migrate-Dienst. Die App verfügt nicht über Berechtigungen zum Ausführen von Azure Resource Management-Aufrufen und besitzt keinen RBAC-Zugriff auf Ressourcen. Die zweite App greift nur auf einen Azure Key Vault zu, der im Benutzerabonnement nur für die VMware-Migration ohne Agent erstellt wurde. Bei der Migration ohne Agents erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Azure Migrate verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten), wenn die Ermittlung von der Appliance initiiert wird.<br/><br/> **Hyper-V**: Während des Onboardings. Azure Migrate erstellt eine Azure AD-App. Die App kommuniziert mit den Appliance-Agents und dem Azure Migrate-Dienst. Die App verfügt nicht über Berechtigungen zum Ausführen von Azure Resource Management-Aufrufen und besitzt keinen RBAC-Zugriff auf Ressourcen. | Einrichtung für [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance) oder [physische Server](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)
 Erstellen eines Schlüsseltresors für die VMware-Migration ohne Agent | Für die Migration ohne Agent von virtuellen VMware-Computern mithilfe der Azure Migrate-Servermigration erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Für die Tresorerstellung müssen Berechtigungen (Besitzer oder Mitwirkender und Benutzerzugriffsadministrator) für die Ressourcengruppe festgelegt werden, in der sich das Azure Migrate-Projekt befindet. | [Einrichten von Berechtigungen](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)
 
-## <a name="supported-geographies"></a>Unterstützte geografischer Regionen
+## <a name="supported-geographies-public-cloud"></a>Unterstützte geografische Regionen (öffentliche Cloud)
 
-Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen erstellen. Obwohl Sie Projekte nur in diesen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
+Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen in der öffentlichen Cloud erstellen. Obwohl Sie Projekte nur in diesen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
 
 **Geografie** | **Speicherort der Metadaten**
 --- | ---
-Azure Government | US Government, Virginia
 Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
 Australien | „Australien, Osten“ oder „Australien, Südosten“
 Brasilien | Brasilien Süd
@@ -89,9 +90,13 @@ United Kingdom | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Köni
 USA | „USA, Mitte“ oder „USA, Westen 2“
 
 
- > [!NOTE]
- > Der Support für Azure Government ist derzeit nur für die [ältere Version](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) von Azure Migrate verfügbar.
+## <a name="supported-geographies-azure-government"></a>Unterstützte geografische Regionen (Azure Government)
 
+**Aufgabe** | **Geografie** | **Details**
+--- | --- | ---
+Projekt erstellen | USA | Metadaten werden in „US Gov Arizona“ und „US Gov Virginia“ gespeichert.
+Zielbewertung | USA | Zielregionen: „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“
+Zielreplikation | USA | Zielregionen: „US DoD, Mitte“, „US DoD, Osten“, „US Gov Arizona“, „US Gov Iowa“, „US Gov Texas“, „US Gov Virginia“
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware-Bewertung und -Migration

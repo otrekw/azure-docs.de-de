@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236990"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677459"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -721,7 +721,7 @@ Zur Ausführung von Hive-Abfragen im [Import Data][import-data]-Modul von Machin
 
 Hier finden Sie einige Details zum [Import Data][import-data]-Modul und zu den Parametern für die Eingabe:
 
-**HCatalog-Server-URI**: Wenn der Clustername **abc123** lautet, verwenden Sie https://abc123.azurehdinsight.net.
+**HCatalog-Server-URI**: Wenn der Clustername **abc123** lautet, verwenden Sie: https:\//abc123.azurehdinsight.net.
 
 **Hadoop user account name**: Der für den Cluster ausgewählte Benutzername (nicht der Benutzername für den Remotezugriff).
 
