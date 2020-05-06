@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67707838"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594796"
 ---
 # <a name="scaling-hpc-applications"></a>Skalieren von HPC-Anwendungen
 
@@ -37,7 +37,7 @@ Clang ist ein C-, C++- und Objective-C-Compiler für die Verarbeitung, Analyse, 
 
 ### <a name="flang"></a>FLANG
 
-Der FLANG-Compiler wurde der AOCC erst vor Kurzem (im April 2018) hinzugefügt und kann derzeit von Entwicklern als Vorabversion heruntergeladen und getestet werden. AMD erweitert die GitHub-Version von FLANG (https://github.com/flangcompiler/flang) auf der Grundlage von Fortran 2008. Der FLANG-Compiler unterstützt alle Clang-Compileroptionen sowie zahlreiche FLANG-spezifische Compileroptionen.
+Der FLANG-Compiler wurde der AOCC erst vor Kurzem (im April 2018) hinzugefügt und kann derzeit von Entwicklern als Vorabversion heruntergeladen und getestet werden. AMD erweitert die GitHub-Version von FLANG (https://github.com/flang-compiler/flang) auf der Grundlage von Fortran 2008. Der FLANG-Compiler unterstützt alle Clang-Compileroptionen sowie zahlreiche FLANG-spezifische Compileroptionen.
 
 ### <a name="dragonegg"></a>DragonEgg
 

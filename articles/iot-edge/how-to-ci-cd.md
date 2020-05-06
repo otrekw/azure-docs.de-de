@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131408"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561034"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
@@ -100,6 +100,13 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
    * **Standardplattform**: Wählen Sie die entsprechende Plattform für die Module auf dem gewünschten IoT Edge-Gerät basierend aus.
    * **Ausgabevariablen**: Die Ausgabevariablen enthalten einen Verweisnamen, mit dem Sie den Dateipfad konfigurieren können, in dem die deployment.json-Datei generiert wird. Wählen Sie einen einprägsamen Verweisnamen wie **edge**.
 
+
+   Diese Konfigurationen verwenden das Imagerepository und -tag, die in der `module.json`-Datei definiert sind, um das Modulimage zu benennen und zu kennzeichnen. Das **Erstellen von Modulimages** hilft auch dabei, die Variablen durch die exakten Werte zu ersetzen, die Sie in der Datei `module.json` definiert haben. In Visual Studio oder Visual Studio Code geben Sie den tatsächlichen Wert in einer `.env`-Datei an. In Azure Pipelines legen Sie den Wert auf der Registerkarte **Pipelinevariablen** fest. Wählen Sie die Registerkarte **Variablen** aus, und konfigurieren Sie Name und Wert wie folgt:
+
+    * **ACR_ADDRESS**: Die Adresse Ihrer Azure Container Registry. 
+
+    Wenn in Ihrem Projekt noch weitere Variablen vorhanden sind, können Sie die Namen und Werte auf diese Registerkarte angeben. Das **Erstellen von Modulimages** erkennt nur Variablen, die im `${VARIABLE}`-Format vorliegen. Stellen Sie sicher, dass Sie dieses Format in ihren `**/module.json`-Dateien verwenden.
+    
 7. Wählen Sie die zweite **Azure IoT Edge**-Aufgabe aus, um sie zu bearbeiten. Diese Aufgabe überträgt alle Modulimages in die von Ihnen ausgewählte Containerregistrierung.
 
    * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird.

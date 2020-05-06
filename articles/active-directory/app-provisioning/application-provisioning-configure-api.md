@@ -2,26 +2,21 @@
 title: Verwenden von Microsoft Graph-APIs zum Konfigurieren der Bereitstellung – Azure Active Directory | Microsoft-Dokumentation
 description: Sie müssen die Bereitstellung für mehrere Instanzen einer Anwendung einrichten? Erfahren Sie, wie Sie Zeit sparen können, indem Sie die Konfiguration der automatischen Bereitstellung mithilfe von Microsoft Graph-APIs automatisieren.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 585cafc548b3458c6e9cc0ef91c44f163fb7fa2f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481465"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593946"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 

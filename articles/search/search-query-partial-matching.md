@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262875"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592042"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Platzhalter, reguläre Ausdrücke, Muster)
 
@@ -24,7 +24,7 @@ Die Suche nach Teilausdrücken und Mustern kann problematisch sein, wenn der Ind
 Die Lösung besteht darin, ein Analysetool aufzurufen, das eine vollständige Zeichenfolge beibehält, ggf. einschließlich Leerzeichen und Sonderzeichen, damit Teilausdrücke und Muster gefunden werden können. Grundlage für die Lösung ist das Erstellen eines zusätzlichen Felds für eine intakte Zeichenfolge und die Verwendung eines Analysetools, das den Inhalt beibehält.
 
 > [!TIP]
-> Sie sind mit Postman und REST-APIs vertraut? [Laden Sie die Sammlung von Abfragebeispielen herunter](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples), um die in diesem Artikel beschriebenen Teilausdrücke und Sonderzeichen abzufragen.
+> Sie sind mit Postman und REST-APIs vertraut? [Laden Sie die Sammlung von Abfragebeispielen herunter](https://github.com/Azure-Samples/azure-search-postman-samples/), um die in diesem Artikel beschriebenen Teilausdrücke und Sonderzeichen abzufragen.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Was ist die Suche nach Teilausdrücken in Azure Search?
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114740"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582901"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -31,7 +31,7 @@ Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System al
 - Sie können keine Gerätegruppe basierend auf den Attributen der Gerätebesitzer erstellen. Regeln für die Gerätemitgliedschaft können nur Geräteattribute referenzieren.
 
 > [!NOTE]
-> Dieses Feature erfordert für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder dynamischer Gruppen werden können, aber Sie müssen die Mindestanzahl von Lizenzen im Mandanten haben, um alle diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
+> Dieses Feature erfordert für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder dynamischer Gruppen werden können, aber Sie müssen die Mindestanzahl von Lizenzen in der Azure AD-Organisation haben, um alle diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihrer Organisation verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
 > Für Geräte, die Mitglied einer dynamischen Gerätegruppe sind, ist keine Lizenz erforderlich.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 Die folgenden Tipps können helfen, die Regel ordnungsgemäß zu verwenden.
 
 - Die **Manager-ID** ist die Objekt-ID des Managers. Sie finden sie im **Profil** des Managers.
-- Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
+- Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrer Organisation korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
 - Diese Regel unterstützt nur die dem Manager direkt unterstellten Mitarbeiter. Sie können also keine Gruppe mit dem Manager direkt unterstellten Mitarbeitern *und* den ihnen unterstellten Mitarbeitern erstellen.
 - Diese Regel kann nicht mit anderen Mitgliedschaftsregeln kombiniert werden.
 
 ### <a name="create-an-all-users-rule"></a>Erstellen einer Regel für alle Benutzer
 
-Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern innerhalb eines Mandanten erstellen. Wenn Benutzer in Zukunft zum Mandanten hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
+Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern innerhalb einer Organisation erstellen. Wenn Benutzer in Zukunft zur Organisation hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
 
 Die Regel für alle Benutzer wird mit einem einzelnen Ausdruck mit dem -ne-Operator und dem null-Wert erstellt. Mit dieser Regel werden B2B-Gastbenutzer und Mitgliedsbenutzer der Gruppe hinzugefügt.
 
 ```
 user.objectId -ne null
 ```
-Wenn Ihre Gruppe Gastbenutzer ausschließen und nur Mitglieder Ihres Mandanten enthalten soll, können Sie die folgende Syntax verwenden:
+Wenn Ihre Gruppe Gastbenutzer ausschließen und nur Mitglieder Ihrer Organisation enthalten soll, können Sie die folgende Syntax verwenden:
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ Wenn Ihre Gruppe Gastbenutzer ausschließen und nur Mitglieder Ihres Mandanten e
 
 ### <a name="create-an-all-devices-rule"></a>Erstellen einer Regel für alle Geräte
 
-Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Geräten innerhalb eines Mandanten erstellen. Wenn Geräte in Zukunft zum Mandanten hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
+Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Geräten innerhalb einer Organisation erstellen. Wenn Geräte in Zukunft zur Organisation hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
 
 Die Regel für alle Geräte wird mit einem einzelnen Ausdruck mit dem -ne-Operator und dem null-Wert erstellt:
 

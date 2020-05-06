@@ -1,7 +1,7 @@
 ---
 title: Merkmale der Interaktion mehrerer Mandanten – Azure AD | Microsoft-Dokumentation
-description: Enthält grundlegende Informationen zu Ihren Azure Active Directory-Mandanten als vollständig unabhängige Organisationen.
-services: active-tenant
+description: Grundlegendes zur Datenunabhängigkeit Ihrer Azure Active Directory-Organisationen
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878118"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582744"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Grundlegendes zur Interaktion mehrerer Azure Active Directory-Organisationen
 
-In Azure Active Directory (Azure AD) ist jeder Mandant eine vollständig unabhängige Organisation: gleichgestellt und logisch unabhängig von anderen Azure AD-Organisationen, die Sie verwalten. Diese Unabhängigkeit zwischen den Organisationen umfasst die Unabhängigkeit in Bezug auf Ressourcen, Verwaltung und Synchronisierung. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Organisationen.
+In Azure Active Directory (Azure AD) ist jede Azure AD-Organisation vollständig unabhängig: gleichgestellt und logisch unabhängig von anderen Azure AD-Organisationen, die Sie verwalten. Diese Unabhängigkeit zwischen den Organisationen umfasst die Unabhängigkeit in Bezug auf Ressourcen, Verwaltung und Synchronisierung. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Organisationen.
 
 ## <a name="resource-independence"></a>Ressourcenunabhängigkeit
 

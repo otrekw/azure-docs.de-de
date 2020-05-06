@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619501"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594966"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -23,7 +23,7 @@ Eine Liste der weltweiten Regionen, in denen Azure Red Hat OpenShift unterstütz
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Kann ich einen Cluster in einem vorhandenen virtuellen Netzwerk bereitstellen?
 
-Nein. Aber Sie können einen Azure Red Hat OpenShift-Cluster über Peering mit einem vorhandenen VNET verbinden. Weitere Informationen finden Sie unter [Verbinden des virtuellen Netzwerks eines Clusters mit einem bestehenden virtuellen Netzwerk ](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network).
+Nein. Sie können einen Azure Red Hat OpenShift-Cluster jedoch über Peering mit einem vorhandenen virtuellen Netzwerk verbinden. Weitere Informationen finden Sie unter [Verbinden des virtuellen Netzwerks eines Clusters mit einem bestehenden virtuellen Netzwerk ](tutorial-create-cluster.md#create-the-cluster).
 
 ## <a name="what-cluster-operations-are-available"></a>Welche Clustervorgänge sind verfügbar?
 
@@ -135,7 +135,7 @@ Kunden können auf CPU-/Arbeitsspeichermetriken auf Knotenebene zugreifen, indem
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Wie sieht die Standardkonfiguration für den Pod-Planer für ARO aus?
 
-ARO verwendet den Standardplaner, der mit OpenShift bereitgestellt wird. Es gibt einige zusätzliche Mechanismen, die in ARO nicht unterstützt werden. Ausführlichere Informationen hierzu finden Sie in der [Default Scheduling-Dokumentation](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) und in der [master scheduler-Dokumentation](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json).
+ARO verwendet den Standardplaner, der mit OpenShift bereitgestellt wird. Es gibt einige zusätzliche Mechanismen, die in ARO nicht unterstützt werden. Ausführlichere Informationen hierzu finden Sie in der [Default Scheduling-Dokumentation](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) und in der [master scheduler-Dokumentation](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json).
 
 Erweiterte/benutzerdefinierte Zeitplanung wird derzeit nicht unterstützt. Weitere Informationen hierzu finden Sie in der [Scheduling-Dokumentation](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html).
 

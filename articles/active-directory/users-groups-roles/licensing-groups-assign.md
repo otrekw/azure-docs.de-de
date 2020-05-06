@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227650"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582714"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory
 
 Dieser Artikel führt Sie durch die Zuweisung von Produktlizenzen zu einer Benutzergruppe und die Überprüfung, ob die Lizenzierung in Azure Active Directory (Azure AD) ordnungsgemäß durchgeführt wurde.
 
-In diesem Beispiel enthält der Mandant eine Sicherheitsgruppe namens **HR Department** (Personalabteilung). Diese Gruppe enthält alle Mitglieder der Personalabteilung (etwa 1.000 Benutzer). Sie möchten der gesamten Abteilung Office 365 Enterprise E3-Lizenzen zuweisen. Der in dem Produkt enthaltene Yammer Enterprise-Dienst muss vorübergehend deaktiviert werden, bis die Abteilung für dessen Verwendung bereit ist. Sie möchten außerdem Enterprise Mobility + Security-Lizenzen für die gleiche Benutzergruppe bereitstellen.
+In diesem Beispiel enthält die Azure AD-Organisation eine Sicherheitsgruppe namens **HR Department** (Personalabteilung). Diese Gruppe enthält alle Mitglieder der Personalabteilung (etwa 1.000 Benutzer). Sie möchten der gesamten Abteilung Office 365 Enterprise E3-Lizenzen zuweisen. Der in dem Produkt enthaltene Yammer Enterprise-Dienst muss vorübergehend deaktiviert werden, bis die Abteilung für dessen Verwendung bereit ist. Sie möchten außerdem Enterprise Mobility + Security-Lizenzen für die gleiche Benutzergruppe bereitstellen.
 
 > [!NOTE]
 > Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft „Verwendungsstandort“ für den Benutzer angeben.
@@ -37,7 +37,7 @@ In diesem Beispiel enthält der Mandant eine Sicherheitsgruppe namens **HR Depar
 
 1. Melden Sie sich mit einem Lizenzadministratorkonto beim [**Azure AD Admin Center**](https://aad.portal.azure.com) an. Zum Verwalten von Lizenzen muss das Konto ein Lizenzadministrator, Benutzeradministrator oder globaler Administrator sein.
 
-1. Wählen Sie **Lizenzen** aus, um eine Seite zu öffnen, auf der Sie alle lizenzierbaren Produkte im Mandanten anzeigen und verwalten können.
+1. Wählen Sie **Lizenzen** aus, um eine Seite zu öffnen, auf der Sie alle lizenzierbaren Produkte in der Organisation anzeigen und verwalten können.
 
 1. Wählen Sie unter **Alle Produkte** sowohl Office 365 Enterprise E5 als auch Enterprise Mobility + Security E3 aus, indem Sie die Produktnamen auswählen. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Zuweisung zu starten.
 

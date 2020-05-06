@@ -1,56 +1,58 @@
 ---
 title: Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in Azure HDInsight
-description: Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen, der als Client verwendet werden kann, und wie Sie Ihre HDInsight-Anwendungen testen/hosten.
+description: Erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Wird als Client verwendet und testet oder hostet dann Ihre HDInsight-Anwendungen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 01/27/2020
-ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233662"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537796"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
-Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie auf den Hauptknoten, aber keine [Apache Hadoop](https://hadoop.apache.org/)-Dienste ausgeführt werden. Sie können den Edgeknoten zum Zugreifen auf den Cluster sowie zum Testen und Hosten Ihrer Clientanwendungen verwenden.
+Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie im Hauptknoten. Aber ohne ausgeführte [Apache Hadoop](./hadoop/apache-hadoop-introduction.md)-Dienste. Sie können den Edgeknoten zum Zugreifen auf den Cluster sowie zum Testen und Hosten Ihrer Clientanwendungen verwenden.
 
 Sie können einen leeren Edgeknoten zu einem vorhandenen HDInsight-Cluster oder zu einem neuen Cluster hinzufügen, wenn Sie den Cluster erstellen. Einen leeren Edgeknoten fügen Sie mit der Azure Resource Manager-Vorlage hinzu.  Im folgenden Beispiel sehen Sie, wie dazu eine Vorlage verwendet wird:
 
-    "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "2015-03-01-preview",
-            "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "{}"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "[parameters('installScriptAction')]",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
+```json
+"resources": [
+    {
+        "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+        "type": "Microsoft.HDInsight/clusters/applications",
+        "apiVersion": "2015-03-01-preview",
+        "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
+        "properties": {
+            "marketPlaceIdentifier": "EmptyNode",
+            "computeProfile": {
+                "roles": [{
+                    "name": "edgenode",
+                    "targetInstanceCount": 1,
+                    "hardwareProfile": {
+                        "vmSize": "{}"
+                    }
+                }]
+            },
+            "installScriptActions": [{
+                "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+                "uri": "[parameters('installScriptAction')]",
+                "roles": ["edgenode"]
+            }],
+            "uninstallScriptActions": [],
+            "httpsEndpoints": [],
+            "applicationType": "CustomApplication"
         }
-    ],
+    }
+],
+```
 
-Wie im Beispiel gezeigt, können Sie optional eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md) aufrufen, um zusätzliche Konfigurationsschritte wie z.B. die Installation von [Apache Hue](hdinsight-hadoop-hue-linux.md) in den Edgeknoten auszuführen. Das Skriptaktionsskript muss öffentlich im Internet verfügbar sein.  Wenn das Skript beispielsweise in Azure Storage gespeichert ist, verwenden Sie öffentliche Container oder öffentliche Blobs.
+Wie im Beispiel gezeigt, können Sie optional eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md) aufrufen, um zusätzliche Konfigurationsschritte auszuführen. Beispielsweise das Installieren von [Apache Hue](hdinsight-hadoop-hue-linux.md) auf dem Edgeknoten. Das Skriptaktionsskript muss öffentlich im Internet verfügbar sein.  Wenn das Skript beispielsweise in Azure Storage gespeichert ist, verwenden Sie öffentliche Container oder öffentliche Blobs.
 
 Die Größe des Edgeknotens des virtuellen Computers muss den VM-Größenanforderungen des HDInsight-Clusterworkerknotens entsprechen. Die empfohlene VM-Größe des Workerknotens finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
@@ -81,7 +83,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgekn
     |---|---|
     |Subscription|Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Wählen Sie die Ressourcengruppe aus, die für den vorhandenen HDInsight-Cluster verwendet wird.|
-    |Position|Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.|
+    |Standort|Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.|
     |Clustername|Geben Sie den Namen eines vorhandenen HDInsight-Clusters ein.|
 
 1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus, um den Edgeknoten zu erstellen.
@@ -105,7 +107,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
     |---|---|
     |Subscription|Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Erstellen Sie eine neue Ressourcengruppe für den Cluster.|
-    |Position|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
+    |Standort|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
     |Clustername|Geben Sie einen Namen für den neu zu erstellenden Cluster ein.|
     |Benutzername für Clusteranmeldung|Geben Sie den Namen des Hadoop-HTTP-Benutzers ein.  Der Standardname lautet **admin**.|
     |Kennwort für Clusteranmeldung|Geben Sie das Kennwort des Hadoop-HTTP-Benutzers ein.|
@@ -119,7 +121,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
 
 ## <a name="add-multiple-edge-nodes"></a>Hinzufügen mehrerer Edgeknoten
 
-Sie können zu einem HDInsight-Cluster mehrere Edgeknoten hinzufügen.  Die Konfiguration mehrerer Edgeknoten kann nur mithilfe von Azure Resource Manager-Vorlagen durchgeführt werden.  Sehen Sie sich auch das Vorlagenbeispiel am Anfang dieses Artikels an.  Sie müssen **targetInstanceCount** auf die Anzahl der zu erstellenden Edgeknoten aktualisieren.
+Sie können zu einem HDInsight-Cluster mehrere Edgeknoten hinzufügen.  Die Konfiguration mehrerer Edgeknoten kann nur mithilfe von Azure Resource Manager-Vorlagen durchgeführt werden.  Sehen Sie sich auch das Vorlagenbeispiel am Anfang dieses Artikels an.  Ändern Sie **targetInstanceCount** entsprechend der Anzahl der Edgeknoten, die Sie erstellen möchten.
 
 ## <a name="access-an-edge-node"></a>Zugreifen auf einen Edgeknoten
 
