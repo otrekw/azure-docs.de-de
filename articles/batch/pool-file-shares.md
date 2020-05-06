@@ -1,25 +1,14 @@
 ---
-title: Azure-Dateifreigabe für Azure Batch-Pools | Microsoft-Dokumentation
+title: Azure-Dateifreigabe für Azure Batch-Pools
 description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computeknoten in einen Linux- oder Windows-Pool in Azure Batch einbinden.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: labrenne
-ms.custom: ''
-ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022510"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115447"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 

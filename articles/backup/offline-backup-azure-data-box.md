@@ -3,19 +3,19 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672967"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160954"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
 Sie können [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) verwenden, um ein Offlineseeding (ohne Verwendung eines Netzwerks) für eine große Menge an Microsoft Azure Recovery Services (MARS)-Erstsicherungsdateien in einen Recovery Services-Tresor auszuführen. Mit diesem Verfahren können Sie sowohl Zeit als auch Netzwerkbandbreite einsparen, die andernfalls erforderlich wären, um die große Menge an Sicherungsdaten über ein Netzwerk mit hoher Latenz online zu stellen. Diese Optimierung befindet sich zurzeit in der Vorschauphase. Mit einer Offlinesicherung mit Azure Data Box entstehen Ihnen zwei entscheidende Vorteile gegenüber der [Offlinesicherung mit dem Azure Import/Export-Dienst](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export):
 
-* Sie benötigen keine eigenen mit Azure kompatiblen Datenträger und Connectors. Die der ausgewählten [Data Box-SKU](https://azure.microsoft.com/services/databox/data/) zugeordneten Datenträger sind in Azure Data Box enthalten.
-* Azure Backup (der MARS-Agent) kann die Sicherungsdaten direkt in die unterstützten SKUs des Azure Data Box-Diensts schreiben. Dadurch entfällt die Notwendigkeit, einen Stagingspeicherort für Ihre Erstsicherungsdaten bereitzustellen. Sie benötigen auch keine Hilfsprogramme zum Formatieren dieser Daten und zum Kopieren der Daten auf die Datenträger.
+- Sie benötigen keine eigenen mit Azure kompatiblen Datenträger und Connectors. Die der ausgewählten [Data Box-SKU](https://azure.microsoft.com/services/databox/data/) zugeordneten Datenträger sind in Azure Data Box enthalten.
+- Azure Backup (der MARS-Agent) kann die Sicherungsdaten direkt in die unterstützten SKUs des Azure Data Box-Diensts schreiben. Dadurch entfällt die Notwendigkeit, einen Stagingspeicherort für Ihre Erstsicherungsdaten bereitzustellen. Sie benötigen auch keine Hilfsprogramme zum Formatieren dieser Daten und zum Kopieren der Daten auf die Datenträger.
 
 ## <a name="azure-data-box-with-the-mars-agent"></a>Azure Data Box mit dem MARS-Agent
 
@@ -60,10 +60,10 @@ Der Seedingprozess für Daten vom MARS-Agent mithilfe von Azure Data Box wird f�
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure-Abonnement und erforderliche Berechtigungen
 
-* Für den Prozess ist ein Azure-Abonnement erforderlich.
-* Für den Prozess ist erforderlich, dass der Benutzer, der die Offlinesicherungsrichtlinie ausführen soll, „Besitzer“ des Azure-Abonnements ist.
-* Der Data Box-Auftrag und der Recovery Services-Tresor (das Ziel des Datenseedings) müssen sich im selben Abonnement befinden.
-* Das Zielspeicherkonto für den Azure Data Box-Auftrag und der Recovery Services-Tresor sollten sich in derselben Region befinden. Dies ist jedoch keine Voraussetzung.
+- Für den Prozess ist ein Azure-Abonnement erforderlich.
+- Für den Prozess ist erforderlich, dass der Benutzer, der die Offlinesicherungsrichtlinie ausführen soll, „Besitzer“ des Azure-Abonnements ist.
+- Der Data Box-Auftrag und der Recovery Services-Tresor (das Ziel des Datenseedings) müssen sich im selben Abonnement befinden.
+- Das Zielspeicherkonto für den Azure Data Box-Auftrag und der Recovery Services-Tresor sollten sich in derselben Region befinden. Dies ist jedoch keine Voraussetzung.
 
 ### <a name="get-azure-powershell-370"></a>Abrufen von Azure PowerShell 3.7.0
 
@@ -77,7 +77,7 @@ Der Seedingprozess für Daten vom MARS-Agent mithilfe von Azure Data Box wird f�
     Get-Module -ListAvailable AzureRM*
     ```
 
-1.  Führen Sie Schritt 2 aus, wenn in der Ausgabe eine Version höher als Version 3.7.0 angezeigt wird. Fahren Sie andernfalls mit Schritt 3 fort.
+1. Führen Sie Schritt 2 aus, wenn in der Ausgabe eine Version höher als Version 3.7.0 angezeigt wird. Fahren Sie andernfalls mit Schritt 3 fort.
 
 #### <a name="step-2-uninstall-the-powershell-version"></a>Schritt 2: Deinstallieren der PowerShell-Version
 
@@ -99,11 +99,11 @@ Deinstallieren Sie die aktuelle Version von PowerShell.
 
 Nachdem Sie sich vergewissert haben, dass keine AzureRM-Module mehr vorhanden sind, installieren Sie die Version 3.7.0 mithilfe einer der folgenden Methoden:
 
-* Verwenden Sie [diesen Link](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017) in GitHub.
+- Verwenden Sie [diesen Link](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017) in GitHub.
 
 Alternative:
 
-* Führen Sie den folgenden Befehl im PowerShell-Fenster aus:
+- Führen Sie den folgenden Befehl im PowerShell-Fenster aus:
 
     ```powershell
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
@@ -148,7 +148,7 @@ Führen Sie die hier genannten Schritte zum [Einrichten Ihrer Data Box-Instanz](
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Einbinden von Azure Data Box-Instanzen als lokales System
 
-Der MARS-Agent wird im Kontext des lokalen Systems ausgeführt. Deshalb ist es erforderlich, dass für den Einbindungspfad, mit dem die Azure Data Box-Instanz verbunden ist, dieselben Berechtigungen gewährt werden. 
+Der MARS-Agent wird im Kontext des lokalen Systems ausgeführt. Deshalb ist es erforderlich, dass für den Einbindungspfad, mit dem die Azure Data Box-Instanz verbunden ist, dieselben Berechtigungen gewährt werden.
 
 So stellen Sie sicher, dass Sie Ihr Data Box-Gerät mithilfe des NFS-Protokolls als lokales System einbinden können
 
@@ -238,14 +238,14 @@ Nachdem die Sicherung der Daten abgeschlossen ist, wird eine Seite des MARS-Agen
 
 In diesem Abschnitt werden die Schritte erläutert, die ausgeführt werden müssen, nachdem die Datensicherung auf Azure Data Box Disk erfolgreich war.
 
-* Führen Sie die Schritte in diesem Artikel zum [Zurücksenden des Azure Data Box-Datenträgers](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) aus. Führen Sie diese Schritte zum [Zurücksenden des Azure Data Box-Geräts an Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) aus, wenn Sie ein Azure Data Box-Gerät mit 100 TB verwendet haben.
+- Führen Sie die Schritte in diesem Artikel zum [Zurücksenden des Azure Data Box-Datenträgers](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) aus. Führen Sie diese Schritte zum [Zurücksenden des Azure Data Box-Geräts an Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) aus, wenn Sie ein Azure Data Box-Gerät mit 100 TB verwendet haben.
 
-* [Überprüfen Sie den Datenupload aus Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) im Azure-Portal. Nachdem der Azure Data Box-Auftrag abgeschlossen ist, verschiebt der MARS-Agent die Daten zum Zeitpunkt der nächsten geplanten Sicherung automatisch vom Speicherkonto in den Recovery Services-Tresor. Der Sicherungsauftrag wird dann als *Auftrag abgeschlossen* gekennzeichnet, sobald erfolgreich ein Wiederherstellungspunkt erstellt wurde.
+- [Überprüfen Sie den Datenupload aus Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) im Azure-Portal. Nachdem der Azure Data Box-Auftrag abgeschlossen ist, verschiebt der MARS-Agent die Daten zum Zeitpunkt der nächsten geplanten Sicherung automatisch vom Speicherkonto in den Recovery Services-Tresor. Der Sicherungsauftrag wird dann als *Auftrag abgeschlossen* gekennzeichnet, sobald erfolgreich ein Wiederherstellungspunkt erstellt wurde.
 
     >[!NOTE]
     >Der MARS-Agent löst zu den Zeitpunkten, die während der Erstellung der Richtlinie festgelegt wurden, Sicherungen aus. Diese Aufträge werden als „Warten auf Abschluss des Azure Data Box-Auftrags“ gekennzeichnet, bis der Auftrag abgeschlossen ist.
 
-* Nachdem der MARS-Agent erfolgreich einen der Erstsicherung entsprechenden Wiederherstellungspunkt erstellt hat, können Sie das mit dem Azure Data Box-Auftrag verbundene Speicherkonto oder darin enthaltene spezifische Inhalte löschen.
+- Nachdem der MARS-Agent erfolgreich einen der Erstsicherung entsprechenden Wiederherstellungspunkt erstellt hat, können Sie das mit dem Azure Data Box-Auftrag verbundene Speicherkonto oder darin enthaltene spezifische Inhalte löschen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -307,8 +307,8 @@ Führen Sie auf dem Server, den Sie für die Offlinesicherung konfigurieren möc
     >[!NOTE]
     > Führen Sie einen der folgenden Aktionen aus, um die Azure-Benutzer-ID zu ermitteln:
     >
-    >* Führen Sie in PowerShell mit Azure-Verbindung den Befehl `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` aus.
-    > * Gehen Sie zum Registrierungspfad *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup* mit dem Namen *CurrentUserId*.
+    >- Führen Sie in PowerShell mit Azure-Verbindung den Befehl `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` aus.
+    > - Navigieren Sie zum Registrierungspfad `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` mit dem Namen *CurrentUserId*.
 
 6. Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt hinzugefügte Zeichenfolge, und wählen Sie **Ändern** aus. Geben Sie als Wert den Fingerabdruck des Zertifikats an, das Sie in Schritt 2 exportiert haben. Klicken Sie auf **OK**.
 

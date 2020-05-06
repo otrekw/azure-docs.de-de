@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169946"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82129857"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
@@ -134,8 +134,4 @@ Wenn Sie die Anwendung ausführen, werden Sie aufgefordert, einen Pfad zu einer 
 
 In dieser Anleitung haben Sie erfahren, wie Sie Bilder an Ihren benutzerdefinierten Bildklassifizierer bzw. an die Bilderkennung senden und eine programmgesteuerte Antwort mit dem C# SDK erhalten. Als Nächstes erfahren Sie, wie Sie End-to-End-Szenarien mit C# abschließen oder die ersten Schritte mit einem SDK für eine andere Sprache durchführen können.
 
-* [Schnellstart: .NET SDK](csharp-tutorial.md)
-* [Schnellstart: Python SDK](python-tutorial.md)
-* [Schnellstart: Java SDK](java-tutorial.md)
-* [Schnellstart: Node SDK](node-tutorial.md)
-* [Schnellstart: Go SDK](go-tutorial.md)
+* [Schnellstart: Custom Vision SDK](quickstarts/image-classification.md)

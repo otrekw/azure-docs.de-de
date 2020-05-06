@@ -3,12 +3,12 @@ title: Java-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673004"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145331"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -159,24 +159,33 @@ Mit Functions können Sie die Java Virtual Machine (JVM) anpassen, mit der Sie I
 
 Sie können weitere Argumente in einer App-Einstellung namens `JAVA_OPTS` angeben. Sie können App-Einstellungen zu Ihrer Funktions-App hinzufügen, die im Azure-Portal oder über die Azure CLI in Azure bereitgestellt wird.
 
+> [!IMPORTANT]  
+> Im Verbrauchstarif müssen Sie auch die Einstellung WEBSITE_USE_PLACEHOLDER mit einem Wert von null (0) hinzufügen, damit die Anpassung funktioniert. Diese Einstellung erhöht die Kaltstartzeiten für Java-Funktionen.
+
 ### <a name="azure-portal"></a>Azure-Portal
 
 Verwenden Sie im [Azur-Portal](https://portal.azure.com) die Registerkarte [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings), um die Einstellung `JAVA_OPTS` hinzuzufügen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) können Sie `JAVA_OPTS` wie im folgenden Beispiel einstellen:
 
+#### <a name="consumption-plan"></a>[Verbrauchstarif](#tab/consumption)
 ```azurecli-interactive
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-In diesem Beispiel wird der monitorlose Modus aktiviert. Ersetzen Sie `<APP_NAME>` durch den Namen Ihrer Funktions-App und `<RESOURCE_GROUP>` durch die Ressourcengruppe.
+#### <a name="dedicated-plan--premium-plan"></a>[Dedizierter Tarif/Premium-Tarif](#tab/dedicated+premium)
+```azurecli-interactive
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+---
 
-> [!WARNING]  
-> Im [Verbrauchsplan](functions-scale.md#consumption-plan) müssen Sie die Einstellung `WEBSITE_USE_PLACEHOLDER` mit dem Wert `0` hinzufügen.  
-Diese Einstellung erhöht die Kaltstartzeiten für Java-Funktionen.
+In diesem Beispiel wird der monitorlose Modus aktiviert. Ersetzen Sie `<APP_NAME>` durch den Namen Ihrer Funktions-App und `<RESOURCE_GROUP>` durch die Ressourcengruppe. 
 
 ## <a name="third-party-libraries"></a>Drittanbieterbibliotheken 
 
@@ -446,6 +455,9 @@ public class Function {
 }
 
 ```
+
+> [!NOTE]
+> Der Wert von AppSetting FUNCTIONS_EXTENSION_VERSION sollte ~2 oder ~3 sein, um eine optimierte Kaltstarterfahrung zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

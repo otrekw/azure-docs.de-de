@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 80881d96d713f3dc4127c94fd324e925e3c68792
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382934"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82165721"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -150,7 +150,7 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
-Navigieren Sie zu [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions), wenn in der Ausgabe der `HttpExample`-Endpunkt angezeigt wird. Im Browser sollte eine Begrüßungsnachricht mit `Functions` (dem für den Abfrageparameter `name` angegebenen Wert) angezeigt werden.
+Navigieren Sie zu `http://localhost:7071/api/HttpExample?name=Functions`, nachdem in der Ausgabe der `HttpExample`-Endpunkt angezeigt wird. Im Browser sollte eine Begrüßungsnachricht mit `Functions` (dem für den Abfrageparameter `name` angegebenen Wert) angezeigt werden.
 
 Verwenden Sie **STRG**-**C**, um den Host zu beenden.
 
@@ -179,7 +179,7 @@ Wenn das Image in einem lokalen Container ausgeführt wird, können Sie in einem
 
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-Wenn das Image in einem lokalen Container ausgeführt wird, navigieren Sie in einem Browser zu [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions). Daraufhin sollte die gleiche Begrüßungsnachricht wie zuvor angezeigt werden. Da der Maven-Archetyp eine durch HTTP ausgelöste Funktion generiert, die die anonyme Autorisierung verwendet, können Sie die Funktion weiterhin aufrufen, auch wenn sie im Container ausgeführt wird. 
+Wenn das Image in einem lokalen Container ausgeführt wird, navigieren Sie in einem Browser zu `http://localhost:8080/api/HttpExample?name=Functions`. Daraufhin sollte die gleiche Begrüßungsnachricht wie zuvor angezeigt werden. Da der Maven-Archetyp eine durch HTTP ausgelöste Funktion generiert, die die anonyme Autorisierung verwendet, können Sie die Funktion weiterhin aufrufen, auch wenn sie im Container ausgeführt wird. 
 ::: zone-end  
 
 Nachdem Sie die Funktions-App im Container überprüft haben, beenden Sie Docker mit **STRG**+**C**.

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 0a394c14842fe0c4eb4baa18cbb13acb8ca3170a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983329"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142456"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Registerkarte „SKUs“ für ein IoT Edge-Modul
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://aka.ms/AzureCreateIoT).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation).
 
 Auf der Registerkarte **SKUs** auf der Seite **Neues Angebot** können Sie eine oder mehrere SKUs erstellen und Ihrem neuen Angebot zuordnen.  Mit unterschiedlichen SKUs können Sie eine Lösung nach Funktionsgruppen, Abrechnungsmodellen oder einem anderen Merkmal unterscheiden.
 
@@ -52,7 +52,7 @@ In der folgenden Tabelle werden der Zweck, der Inhalt und die Formatierung der F
 
 |  **Feld**       |     **Beschreibung**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Titel\***        | Der Titel der SKU. Die maximale Länge beträgt 50 Zeichen. <br/> Er wird im Azure-Portal angezeigt und als Standardname für das Modul verwendet (ohne Leerzeichen und Sonderzeichen), wenn es bereitgestellt wird. In den Abbildungen unten können Sie sehen, wo genau dieses Feld angezeigt wird.|
+| **Titel\***        | Der Titel der SKU. Die maximale Länge beträgt 50 Zeichen. <br/> Er wird im Azure-Portal angezeigt und beim Bereitstellen des Moduls als Standardname verwendet (ohne Leerzeichen und Sonderzeichen). In den Abbildungen unten können Sie sehen, wo genau dieses Feld angezeigt wird.|
 | **Zusammenfassung\***      | Kurze Zusammenfassung zur SKU. Die maximale Länge beträgt 100 Zeichen. Geben Sie **KEINE** Zusammenfassung für das Angebot, sondern nur für die SKU ein.  Diese Zusammenfassung wird im Azure Marketplace angezeigt. In den Abbildungen unten können Sie sehen, wo genau dieses Feld angezeigt wird.|
 | **Beschreibung\***  | Kurze Beschreibung der SKU. Die maximale Länge beträgt 3.000 Zeichen. Geben Sie KEINE Beschreibung des Angebots, sondern nur eine der SKU ein. Die Beschreibung wird im Azure Marketplace und im Azure-Portal angezeigt. Im Azure-Portal wird sie der Marketplace-Beschreibung hinzugefügt, mit der das auf der Registerkarte „Marketplace“ definierte Angebot beschrieben wird.  Die Beschreibung kann identisch sein mit der Zusammenfassung für die SKU. In den Abbildungen unten können Sie sehen, wo genau dieses Feld angezeigt wird.|
 | **Diese SKU ausblenden\*** | Behalten Sie die Standardeinstellung **Nein** bei. |
