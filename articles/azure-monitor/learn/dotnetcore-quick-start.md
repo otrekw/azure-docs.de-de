@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78894811"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144847"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -99,11 +99,6 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 5. Klicken Sie auf der linken Seite auf **Metriken**. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können auf **Neues Diagramm hinzufügen** klicken, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder auf **Bearbeiten** klicken, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
      ![Registerkarte „Metriken“: Diagramm der durchschnittlichen Ladezeit der Browserseite](./media/dotnetcore-quick-start/8metrics.png)
-
-## <a name="video"></a>Video
-
-- Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit .NET Core und Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) von Grund auf.
-- Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit .NET Core und Visual Studio Code](https://youtu.be/ygGt84GDync) von Grund auf
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und alle dazugehörigen Ressourcen löschen. Gehen Sie dazu wie folgt vor:

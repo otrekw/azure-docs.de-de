@@ -9,19 +9,20 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954618"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81759787"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung des Portals und eines .NET-Geräts
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts. Außerdem geben sie Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen Modulidentitäten und Modulzwillinge isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
+> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen Modulidentitäten und Modulzwillinge isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
 >
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -106,7 +107,7 @@ Sie benötigen die Verbindungszeichenfolge des Moduls für Ihre Konsolen-App. Fo
 
 Führen Sie die folgenden Schritte aus, um Ihre App zu erstellen:
 
-1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

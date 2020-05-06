@@ -8,12 +8,15 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237446"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81730908"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
@@ -85,7 +88,7 @@ Der [IoT Edge-Sicherheits-Daemon](iot-edge-security-manager.md) startet den IoT 
 Jedes Element im Bereitstellungsmanifest enthält spezifische Informationen zu einem Modul und wird vom IoT Edge-Agent zum Steuern des Lebenszyklus des Moduls verwendet. Einige der wichtigeren Eigenschaften lauten:
 
 * **settings.image:** der Container, der vom IoT Edge-Agent zum Starten des Moduls verwendet wird. Der IoT Edge-Agent muss mit den Anmeldeinformationen für die Containerregistrierung konfiguriert werden, wenn das Image mit einem Kennwort geschützt ist. Anmeldeinformationen für die Containerregistrierung können remote mit dem Bereitstellungsmanifest konfiguriert werden oder auf dem IoT Edge-Gerät selbst durch Aktualisieren der Datei `config.yaml` im IoT Edge-Programmordner.
-* **settings.createOptions** – Eine Zeichenfolge, die beim Starten des Containers eines Moduls direkt an den Moby-Container-Daemon übergeben wird. Das Hinzufügen von Optionen in dieser Eigenschaft ermöglicht erweiterte Konfigurationen, z.B. Portweiterleitung oder das Bereitstellen von Volumes im Container eines Moduls.  
+* **settings.createOptions**: Eine Zeichenfolge, die beim Starten des Containers eines Moduls direkt an den Moby-Container-Daemon übergeben wird. Das Hinzufügen von Optionen in dieser Eigenschaft ermöglicht erweiterte Konfigurationen, z. B. Portweiterleitung oder das Bereitstellen von Volumes im Container eines Moduls.  
 * **status:** der Status, in den der IoT Edge-Agent das Modul versetzt. Dieser Wert wird in der Regel auf *running* festgelegt, da die meisten Personen möchten, dass der IoT Edge-Agent alle Module auf dem Gerät sofort startet. Sie können jedoch festlegen, dass der Anfangsstatus eines Moduls „Beendet“ lautet, und den IoT Edge-Agent zu einem zukünftigen Zeitpunkt zum Starten eines Moduls auffordern. Der IoT Edge-Agent meldet der Cloud den Status jedes Moduls in den gemeldeten Eigenschaften. Weicht die gemeldete Eigenschaft von der gewünschten Eigenschaft ab, ist dies ein Indikator für ein fehlerhaftes Gerät. Die unterstützten Status lauten:
 
   * Herunterladen
@@ -119,7 +122,7 @@ Weitere Informationen finden Sie unter [Informationen zum Bereitstellen von Modu
 
 ### <a name="security"></a>Sicherheit
 
-Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge-Geräts. Er überprüft beispielsweise das Image eines Moduls, bevor er es startet.
+Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge-Geräts. Er überprüft beispielsweise das Image eines Moduls, bevor es gestartet wird.
 
 Weitere Informationen zum Azure IoT Edge-Sicherheitsframework finden Sie in der Dokumentation zu [IoT Edge Security Manager](iot-edge-security-manager.md).
 

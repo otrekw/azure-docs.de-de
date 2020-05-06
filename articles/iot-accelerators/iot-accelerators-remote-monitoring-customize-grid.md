@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447096"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186287"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
@@ -182,7 +182,7 @@ Wenn die Webbenutzeroberfläche nicht lokal ausgeführt wird, führen Sie den fo
 npm start
 ```
 
-Der vorherige Befehl führt die Benutzeroberfläche lokal unter [http://localhost:3000/dashboard](http://localhost:3000/dashboard) aus. Navigieren Sie zur Seite **Beispiel**. Dort finden Sie die Rasteranzeigedaten aus dem Dienst.
+Der vorherige Befehl führt die Benutzeroberfläche lokal unter `http://localhost:3000/dashboard` aus. Navigieren Sie zur Seite **Beispiel**. Dort finden Sie die Rasteranzeigedaten aus dem Dienst.
 
 ## <a name="select-rows"></a>Zeilen auswählen
 

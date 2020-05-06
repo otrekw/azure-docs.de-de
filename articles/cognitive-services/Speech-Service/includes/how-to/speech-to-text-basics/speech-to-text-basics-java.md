@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2de836a63eed79b7d166db220218e0c11ef11e70
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d59f2ef564da710d084dc027950bc983a88143de
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399781"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204566"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -83,7 +83,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 Von der Klasse [SpeechRecognizer](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) für das Speech SDK für Java werden verschiedene Methoden für die Spracherkennung verfügbar gemacht.
 
 * Einzelerkennung (asynchron): Führt die Erkennung in einem nicht blockierenden (asynchronen) Modus durch. Dient zum Erkennen einer einzelnen Äußerung. Zur Erkennung des Endes einer einzelnen Äußerung wird auf Stille am Ende gelauscht oder gewartet, bis maximal 15 Sekunden an Audiodaten verarbeitet wurden.
-* Kontinuierliche Erkennung (asynchron): Initialisiert asynchron einen kontinuierlichen Erkennungsvorgang. Eine Audiokonfiguration ist auch erforderlich, wenn Sie anstelle eines Mikrofons eine Audiodatei verwenden möchten. Zum Beenden der asynchronen kontinuierlichen Erkennung muss [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) aufgerufen werden.
+* Kontinuierliche Erkennung (asynchron): Initialisiert asynchron einen kontinuierlichen Erkennungsvorgang. Eine Audiokonfiguration (`audioConfig`) ist auch erforderlich, wenn Sie anstelle eines Mikrofons eine Audiodatei verwenden möchten. Zum Beenden der asynchronen kontinuierlichen Erkennung muss [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) aufgerufen werden.
 
 > [!NOTE]
 > Weitere Informationen zum Auswählen eines Spracherkennungsmodus finden Sie [hier](../../../how-to-choose-recognition-mode.md).

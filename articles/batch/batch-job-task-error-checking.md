@@ -1,18 +1,16 @@
 ---
-title: 'Überprüfen auf Auftrags- und Taskfehler: Azure Batch | Microsoft-Dokumentation'
+title: Ermitteln von Auftrags- und Aufgabenfehlern
 description: Fehler, auf die geprüft werden sollte, und Problembehandlung von Aufträgen und Tasks
-services: batch
 author: mscurrell
-ms.service: batch
 ms.topic: article
 ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c58bdf50f3e69b2b7d18f750f94fecdb512af85
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087012"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116025"
 ---
 # <a name="job-and-task-error-checking"></a>Überprüfung auf Auftrags- und Taskfehler
 

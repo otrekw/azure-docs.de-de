@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587897"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686630"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
-Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Bedrohungssuch- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
+Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Such- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
 
 Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten Prozesse, die in Ihrer Infrastruktur ausgeführt werden – Sie möchten nicht, dass bei jeder Ausführung eines solchen Prozesse eine Benachrichtigung erfolgt, denn er könnte völlig unproblematisch sein, aber Sie möchten die Abfrage gelegentlich ausführen, um zu sehen, ob es etwas Ungewöhnliches gibt. 
 
@@ -54,7 +54,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 3. Nehmen Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage im Bereich für Abfragedetails vor, oder klicken Sie auf **Abfrageergebnis anzeigen** (View query result), um die Abfrage in Log Analytics zu öffnen. Überprüfen Sie im unteren Bereich die Übereinstimmungen für die Abfrage.
 
-4.  Klicken Sie auf die Zeile, und wählen **Lesezeichen hinzufügen** (Add bookmark) aus, um die Zeilen hinzuzufügen, die ausgewertet werden sollen. Sie können dies für jeden Eintrag ausführen, der verdächtig aussieht. 
+4.    Klicken Sie auf die Zeile, und wählen **Lesezeichen hinzufügen** (Add bookmark) aus, um die Zeilen hinzuzufügen, die ausgewertet werden sollen. Sie können dies für jeden Eintrag ausführen, der verdächtig aussieht. 
 
 5. Kehren Sie dann zur Hauptseite von **Suche** (Hunting) zurück, und klicken Sie auf die Registerkarte **Lesezeichen** (Bookmarks), um alle verdächtigen Aktivitäten anzuzeigen. 
 
@@ -66,7 +66,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 ## <a name="query-language"></a>Abfragesprache 
 
-Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](https://docs.loganalytics.io/docs/Language-Reference/).
+Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](/azure/azure-monitor/log-query/get-started-queries).
 
 ## <a name="public-hunting-query-github-repository"></a>Öffentliches GitHub-Repository für Bedrohungssuchabfragen (Hunting-Abfragen)
 

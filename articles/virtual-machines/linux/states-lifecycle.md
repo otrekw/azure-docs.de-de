@@ -1,24 +1,19 @@
 ---
 title: Lebenszyklus und Status eines virtuellen Linux-Computers in Azure
-description: Übersicht über den Lebenszyklus eines virtuellen Linux-Computers in Azure, einschließlich Beschreibungen der verschiedenen Status, in denen sich ein virtueller Computer zu einem beliebigen Zeitpunkt befinden kann.
-services: virtual-machines-linux
-documentationcenter: ''
+description: Übersicht über den Lebenszyklus einer VM in Azure, einschließlich Beschreibungen der verschiedenen möglichen Zustände von VMs zu einem beliebigen Zeitpunkt.
+services: virtual-machines
 author: shandilvarun
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 1ddd245b03d8886d686daba34a00c63ec64ffb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1452252e6cbd7b741c14c2ea52728ba144c65a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034780"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81757856"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Lebenszyklus und Status virtueller Computer
 

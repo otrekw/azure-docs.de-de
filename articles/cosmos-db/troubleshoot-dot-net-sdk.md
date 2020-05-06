@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137953"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208736"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [.NET SDK](sql-api-sdk-dotnet.md) mit Azure Cosmos DB-SQL-API-Konten.
 Das .NET SDK bietet eine clientseitige logische Darstellung für den Zugriff auf die Azure Cosmos DB-SQL-API. Dieser Artikel beschreibt hilfreiche Tools und Vorgehensweisen für Problemfälle.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Checkliste für die Problembehandlung:
+## <a name="checklist-for-troubleshooting-issues"></a>Checkliste für die Problembehandlung
 Gehen Sie die folgende Prüfliste durch, bevor Sie Ihre Anwendung in die Produktion überführen. Mithilfe der Prüfliste werden einige häufige Probleme vermieden, die möglicherweise auftreten. Sie können ein Problem auch schnell diagnostizieren, sobald es auftritt:
 
 *    Verwenden Sie das neueste [SDK](sql-api-sdk-dotnet-standard.md). SDKs in der Vorschauversion sollten nicht für die Produktion verwendet werden. Dadurch wird verhindert, dass bekannte Probleme, die bereits behoben wurden, erneut auftreten.
@@ -101,6 +101,30 @@ Anhand der [Metriken zu Abfragen](sql-api-query-metrics.md) können Sie bestimme
 * Wenn die Back-End-Abfrage schnell zurückgegeben wird und viel Zeit auf den Client verbringt, überprüfen Sie die Last auf dem Computer. Es ist wahrscheinlich, dass nicht genügend Ressourcen vorhanden sind und das SDK darauf wartet, dass Ressourcen für die Bearbeitung der Antwort verfügbar werden.
 * Wenn die Back-End-Abfrage langsam ist, versuchen Sie, [die Abfrage zu optimieren](optimize-cost-queries.md), und sehen Sie sich die aktuelle [Indexierungsrichtlinie](index-overview.md) an. 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur
+Die 401-Fehlermeldung „Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur.“ kann durch die folgenden Szenarien verursacht werden.
+
+1. Der Schlüssel wurde rotiert und entsprach nicht den [bewährten Methoden](secure-access-to-data.md#key-rotation). Dies ist normalerweise der Fall. Abhängig von der Größe des Cosmos DB-Kontos kann die Schlüsselrotation für das Cosmos DB-Konto nur wenige Sekunden bis möglicherweise Tage dauern.
+   1. Die 401-MAC-Signatur wird kurz nach der Schlüsselrotation angezeigt und schließlich ohne Änderungen angehalten. 
+2. Der Schlüssel ist für die Anwendung falsch konfiguriert, sodass er nicht mit dem Konto übereinstimmt.
+   1. Das Problem mit der 401-MAC-Signatur ist konsistent und tritt bei allen Aufrufen auf.
+3. Es liegt eine Racebedingung bei der Containererstellung vor. Eine Anwendungsinstanz versucht, auf den Container zuzugreifen, bevor die Containererstellung abgeschlossen ist. Dies ist das häufigste Szenario, wenn die Anwendung ausgeführt wird und der Container gelöscht und mit demselben Namen neu erstellt wird, während die Anwendung ausgeführt wird. Das SDK versucht, den neuen Container zu verwenden, aber die Containererstellung wird noch ausgeführt, sodass die Schlüssel noch nicht verfügbar sind.
+   1. Das Problem mit der 401-MAC-Signatur tritt kurz nach der Erstellung eines Containers auf und besteht nur, bis die Containererstellung abgeschlossen ist.
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-Statuscode 400: Die Anforderungsheader sind zu lang.
+ Der Header ist zu groß geworden und überschreitet die maximal zulässige Größe. Es wird immer empfohlen, das aktuelle SDK zu verwenden. Stellen Sie sicher, dass Sie mindestens Version [3.x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) oder [2.x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md) verwenden. In dieser Version wird der Ausnahmemeldung die Verfolgung der Headergröße hinzugefügt.
+
+Ursachen:
+ 1. Das Sitzungstoken ist zu groß geworden. Die Größe des Sitzungstokens nimmt mit der steigenden Anzahl von Partitionen im Container zu.
+ 2. Das Fortsetzungstoken ist zu groß geworden. Bei verschiedenen Abfragen sind die Fortsetzungstoken unterschiedlich groß.
+ 3. Der Fehler wird durch eine Kombination aus Sitzungstoken und Fortsetzungstoken verursacht.
+
+Lösung:
+   1. Befolgen Sie die [Leistungstipps](performance-tips.md), und konvertieren Sie die Anwendung in den Verbindungsmodus „Direkt + TCP“. Bei „Direkt + TCP“ besteht keine Größenbeschränkung für Header wie bei HTTP, wodurch dieses Problem vermieden wird.
+   2. Wenn das Sitzungstoken die Ursache ist, besteht eine vorübergehende Minderung darin, die Anwendung neu zu starten. Durch einen Neustart der Anwendungsinstanz wird das Sitzungstoken zurückgesetzt. Wenn die Ausnahmen nach dem Neustart nicht mehr auftreten, bestätigt dies, dass das Sitzungstoken die Ursache ist. Es nimmt schließlich wieder die Größe an, die die Ausnahme verursacht.
+   3. Wenn die Anwendung nicht in „Direkt + TCP“ konvertiert werden kann und das Sitzungstoken die Ursache ist, kann die Minderung durch Ändern der [Konsistenzebene](consistency-levels.md) des Clients erfolgen. Das Sitzungstoken wird nur für die Sitzungskonsistenz verwendet. Dabei handelt es sich um die Standardkonsistenzebene für Cosmos DB. Für andere Konsistenzebenen wird das Sitzungstoken nicht verwendet. 
+   4. Wenn die Anwendung nicht in „Direkt + TCP“ konvertiert werden kann und das Fortsetzungstoken die Ursache ist, versuchen Sie, die Option „ResponseContinuationTokenLimitInKb“ festzulegen. Die Option finden Sie in V2 unter „FeedOptions“ oder in V3 unter „QueryRequestOptions“.
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ Anhand der [Metriken zu Abfragen](sql-api-query-metrics.md) können Sie bestimme
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

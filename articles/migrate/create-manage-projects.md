@@ -2,13 +2,13 @@
 title: Erstellen und Verwalten von Azure Migrate-Projekten
 description: Suchen, erstellen, verwalten und löschen Sie Projekte in Azure Migrate.
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232750"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81676389"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Erstellen und Verwalten von Azure Migrate-Projekten
 
@@ -23,7 +23,7 @@ Wenn Sie Azure Migrate zum ersten Mal einrichten, erstellen Sie ein Projekt und 
 
 Wenn Sie bereits über ein Azure Migrate-Projekt verfügen und ein zusätzliches Projekt erstellen möchten, gehen Sie wie folgt vor:  
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Migrate**.
+1. Suchen Sie im [öffentlichen Azure-Portal](https://portal.azure.com) oder in [Azure Government](https://portal.azure.us) nach **Azure Migrate**.
 2. Rufen Sie im Dashboard von Azure Migrate **Server** auf, und wählen Sie oben rechts in der Ecke **Ändern** aus.
 
    ![Ändern des Azure Migrate-Projekts](./media/create-manage-projects/switch-project.png)

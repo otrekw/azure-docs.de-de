@@ -1,20 +1,15 @@
 ---
 title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – Portal
 description: Hier erfahren Sie, wie Sie über das Azure-Portal ein Batch-Konto, einen Pool mit Computeknoten sowie einen Auftrag erstellen, um einfache Aufgaben für den Pool auszuführen.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215308"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82114138"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 

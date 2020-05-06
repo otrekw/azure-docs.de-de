@@ -1,31 +1,26 @@
 ---
 title: Behandeln von Problemen mit der kombinierten Registrierung – Azure Active Directory
-description: Problembehandlung für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) von Azure AD und die Self-Service-Kennwortzurücksetzung mit kombinierten Registrierungen (Preview)
+description: Problembehandlung für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) von Azure AD und die Self-Service-Kennwortzurücksetzung mit kombinierten Registrierungen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847387"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450937"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen (Preview)
+# <a name="troubleshooting-combined-security-information-registration"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen
 
 Mit den in diesem Artikel bereitgestellten Informationen können Administratoren Probleme von Benutzern mit kombinierten Registrierungen beheben.
-
-|     |
-| --- |
-| Die kombinierte Registrierung von Sicherheitsinformationen für Azure Multi-Factor Authentication und die Azure AD-Self-Service-Kennwortzurücksetzung (Azure Active Directory) ist eine Funktion der öffentlichen Vorschau von Azure AD. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
@@ -150,16 +145,16 @@ Führen Sie in einem PowerShell-Fenster den folgenden Befehl aus, und geben Sie 
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Deaktivieren der Oberfläche der Vorschauversion
+### <a name="disable-the-updated-experience"></a>Deaktivieren der aktualisierten Oberfläche
 
-Um die Oberfläche der Vorschauversion für Ihre Benutzer zu deaktivieren, führen Sie die folgenden Schritte aus:
+Um die aktualisierte Oberfläche für Ihre Benutzer zu deaktivieren, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich als Benutzeradministrator beim Azure-Portal an.
 2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
 3. Legen Sie für **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden** die Option **Keine** fest, und wählen Sie dann **Speichern** aus.
 
-Benutzer werden nicht mehr aufgefordert, sich bei der Oberfläche der Vorschauversion zu registrieren.
+Benutzer werden nicht mehr aufgefordert, sich bei der aktualisierten Oberfläche zu registrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr über die Public Preview der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication.](concept-registration-mfa-sspr-combined.md)
+* [Erfahren Sie mehr über die kombinierte Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

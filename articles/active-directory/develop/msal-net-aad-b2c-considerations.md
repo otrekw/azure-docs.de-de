@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230650"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81533954"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -34,7 +34,7 @@ Diese Seite gilt für MSAL 3.x. Wenn Sie Informationen zu MSAL 2.x suchen, les
 Die zu verwendende Autorität ist `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`. Dabei gilt Folgendes:
 
 - `azureADB2CHostname` ist der Name des Azure AD B2C-Mandanten einschließlich des Hosts (beispielsweise `{your-tenant-name}.b2clogin.com`),
-- `tenant` ist der vollständige Name des Azure AD B2C-Mandanten (z. B. `{your-tenant-name}.onmicrosoft.com`) oder die GUID für den Mandanten, 
+- `tenant` ist der vollständige Name des Azure AD B2C-Mandanten (z. B. `{your-tenant-name}.onmicrosoft.com`) oder die GUID für den Mandanten,
 - `policyName` ist der Name der anzuwendenden Richtlinie bzw. des anzuwendenden Benutzerflows (z. B. „b2c_1_susi“ für Registrieren/Anmelden).
 
 Weitere Informationen zu den Azure AD B2C-Autoritäten finden Sie in dieser [Dokumentation](/azure/active-directory-b2c/b2clogin).
@@ -121,7 +121,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 ## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Ressourcenbesitzer-Kennwortanmeldeinformationen (ROPC) mit Azure AD B2C
 Weitere Informationen zum ROPC-Flow finden Sie in dieser [Dokumentation](v2-oauth-ropc.md).
 
-Dieser Flow wird **nicht empfohlen**, da die Abfrage des Kennworts von einem Benutzer durch eine Anwendung nicht sicher ist. Weitere Informationen zu diesem Problem finden Sie in [diesem Artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+Dieser Flow wird **nicht empfohlen**, da die Abfrage des Kennworts von einem Benutzer durch eine Anwendung nicht sicher ist. Weitere Informationen zu diesem Problem finden Sie in [diesem Artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/).
 
 Die Verwendung von Benutzername/Kennwort birgt eine Reihe von Nachteilen und Risiken:
 - Grundsätzlich gilt für moderne Identitäten, dass Kennwörter durch Phishing entwendet und wiedergegeben werden können. Dies liegt am Konzept des gemeinsamen geheimen Schlüssels, der abgefangen werden kann. Dies ist inkompatibel mit einem Szenario ohne Kennwort.
@@ -155,15 +155,15 @@ Wenn Sie ein Azure AD B2C-Entwickler sind und Google als Identitätsanbieter ve
 
 Wir werden ein Update zu diesem [Problem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) bereitstellen, sobald dies geändert wurde.
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Zwischenspeicherung mit Azure AD B2C in MSAL.NET 
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Zwischenspeicherung mit Azure AD B2C in MSAL.NET
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Bekanntes Problem mit Azure AD B2C
 
-MSAL.NET unterstützt einen [Tokencache](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Der Schlüssel für den Tokencache basiert auf den Ansprüchen vom Identitätsanbieter. Derzeit erfordert MSAL.NET zwei Ansprüche, um einen Tokencacheschlüssel zu erstellen:  
-- `tid` (die Azure AD-Mandanten-ID) und 
-- `preferred_username` 
+MSAL.NET unterstützt einen [Tokencache](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Der Schlüssel für den Tokencache basiert auf den Ansprüchen vom Identitätsanbieter. Derzeit erfordert MSAL.NET zwei Ansprüche, um einen Tokencacheschlüssel zu erstellen:
+- `tid` (die Azure AD-Mandanten-ID) und
+- `preferred_username`
 
-Diese beiden Ansprüche fehlen in vielen Azure AD B2C-Szenarien. 
+Diese beiden Ansprüche fehlen in vielen Azure AD B2C-Szenarien.
 
 Für Kunden bedeutet dies, dass beim Versuch, das Feld mit dem Benutzernamen anzuzeigen, als Wert zurückgegeben wird, dass dieser in der Tokenantwort fehlt. Wenn dies der Fall ist, hat Azure AD B2C im ID-Token keinen Wert für „preferred_username“ zurückgegeben, da für Konten sozialer Netzwerke und externe Identitätsanbieter (IdP) einige Einschränkungen gelten. Azure AD gibt einen Wert für „preferred_username“ zurück, wenn bekannt ist, wer der Benutzer ist. Da sich ein Benutzer aber bei Azure AD B2C mit einem lokalen Konto oder mit Facebook, Google, GitHub usw. anmelden kann, gibt es für Azure AD B2C keinen einheitlichen Wert für „preferred_username“. Um Cachekompatibilität zwischen MSAL und ADAL erreichen zu können, haben wir beschlossen, das „Fehlen in der Tokenantwort“ auf unserer Seite bei Azure AD B2C-Konten zu verwenden, wenn im ID-Token nicht für „preferred_username“ zurückgegeben wird. MSAL muss einen Wert für „preferred_username“ zurückgeben, um Cachekompatibilität zwischen den Bibliotheken zu erzielen.
 
@@ -178,7 +178,7 @@ Alternativ können Sie den `tid`-Anspruch verwenden, wenn Sie die [benutzerdefin
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Problemumgehung für „Fehlt in der Tokenantwort“
 Eine Möglichkeit ist es, den „Name“-Anspruch als bevorzugten Benutzernamen zu verwenden. Die Vorgehensweise wird in diesem [B2C-Dokument](../../active-directory-b2c/user-flow-overview.md) wie folgt beschrieben: „Wählen Sie in der Spalte mit den zurückgegebenen Ansprüchen diejenigen aus, die nach einer erfolgreichen Profilbearbeitung in den Autorisierungstoken an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. den Anzeigenamen oder die Postleitzahl aus.“
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum interaktiven Abrufen von Token mit MSAL.NET für Azure AD B2C-Anwendungen finden Sie im folgenden Beispiel.
 

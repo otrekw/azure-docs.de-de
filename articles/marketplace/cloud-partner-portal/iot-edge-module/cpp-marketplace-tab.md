@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b4a3aa4e92fcabf354de7d550ec53ead5872596d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983397"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144781"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Registerkarte „Marketplace“ für ein IoT Edge-Modul
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://aka.ms/AzureCreateIoT).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer IoT Edge-Modulangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Erstellen eines IoT Edge-Modulangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation).
 
 Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Dieses lange Formular ist in vier Abschnitte unterteilt: **Übersicht**, **Marketingartefakte**, **Leadverwaltung** und **Rechtliche Hinweise**.
 
@@ -35,8 +35,8 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben. Erfo
 | **Titel\***                 | Der Titel des Angebots. Er wird im Marketplace gut sichtbar angezeigt.  Die maximale Länge beträgt 50 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Zusammenfassung\***               | Kurze Zusammenfassung zum Angebot. Die maximale Länge beträgt 100 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Lange Zusammenfassung\***          | Längere Zusammenfassung zum Angebot (kann auch mit **Zusammenfassung** identisch sein).  Die maximale Länge beträgt 256 Zeichen. <!--ADD PICTURE IN ACTION-->|
-| **Beschreibung\***           | Beschreibung des Angebots.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt.<br/> Die Beschreibung muss unten einen Absatz zu den *Mindesthardwareanforderungen* enthalten. Beispiel: <br/> <p><u>Mindestanforderungen für Hardware</u>: Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher</p>
-| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Beschreibung\***           | Beschreibung des Angebots.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt.<br/> Die Beschreibung muss unten einen Absatz zu den *Mindesthardwareanforderungen* enthalten. Beispiel: <br/> <p><u>Mindesthardwareanforderungen:</u> Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher</p>
+| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion) | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal 10 Kategorien können ausgewählt werden. Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) hinzu. |
 | **Vorgeschlagene Kategorien\*** | Wählen Sie bis zu fünf Kategorien aus. Diese werden auf Ihrer Produktdetailseite angezeigt. Auf den Seiten zum Durchsuchen werden alle IoT Edge-Module unter der Kategorie *Internet der Dinge \> IoT Edge-Modul* angezeigt.|
@@ -78,7 +78,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben. Erfo
 
 ## <a name="marketing-artifacts"></a>Marketingartefakte
 
-Dieser Abschnitt enthält die folgenden Unterabschnitte: **Logos**, **Screenshot** und **Videos**. 
+Dieser Abschnitt enthält folgende Unterabschnitte: **Logos**, **Screenshots** und **Videos**. 
 
 >[!Note]
 >Nur bei Logos handelt es sich um erforderliche Marketingartefakte, aber es ist ratsam, alle Angaben vorzunehmen, um die Attraktivität für die Kunden zu erhöhen.

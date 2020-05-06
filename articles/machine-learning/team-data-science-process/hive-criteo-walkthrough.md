@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760809"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677605"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern für ein Dataset mit 1 TB
 
@@ -52,7 +52,7 @@ In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprob
 1. **Binäre Klassifizierung**: Sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
 
    * Klasse 0: Kein Klick
-   * Klasse 1: Klicken Sie auf
+   * Klasse 1: Klicken Sie auf 
 2. **Regression:** Sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
@@ -434,7 +434,7 @@ Für das Modul **Daten importieren** sind die Werte der in der Grafik enthaltene
 
 1. Auswählen von „Hive-Abfrage“ als **Datenquelle**
 2. Im Feld **Hive database query** reicht „SELECT * FROM <Name_Ihrer_\_Datenbank\_.Name_Ihrer\_Tabelle\_> -“ aus.
-3. **Hcatalog server URI**: Wenn Ihr Cluster „abc“ ist, lautet dieser einfach: https://abc.azurehdinsight.net.
+3. **Hcatalog server URI**: Wenn Ihr Cluster „abc“ heißt, ist dies einfach: https:\//abc.azurehdinsight.net
 4. **Hadoop user account name**: Der bei der Bereitstellung des Clusters ausgewählte Benutzername. (NICHT der Benutzername für den Remotezugriff!)
 5. **Hadoop user account password**: Das bei der Bereitstellung des Clusters für den Benutzernamen ausgewählte Kennwort. (NICHT das Kennwort für den Remotezugriff!)
 6. **Location of output data**: Wählen Sie „Azure“ aus.

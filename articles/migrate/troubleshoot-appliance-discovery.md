@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336722"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677320"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -41,6 +41,15 @@ Dies kann der Fall sein, wenn sich der Appliancecomputer hinter einem Proxy befi
 - Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
 - Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die [folgenden URLs](migrate-appliance.md#url-access) einer Zulassungsliste hinzu.
 - Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](https://docs.microsoft.com/azure/migrate/concepts-collector) in die Appliance-VM.
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Anmeldung bei Azure über die Appliance-Web-App ist nicht möglich
+
+Wenn Sie das falsche Konto zur Anmeldung bei Azure verwenden, wird der Fehler „Leider können wir Sie nicht anmelden“ angezeigt. Dieser Fehler hat folgende Gründe:
+
+- Sie melden sich bei der Webanwendung der Appliance für die öffentliche Cloud mit den Anmeldeinformationen des Benutzerkontos für das Portal der Government-Cloud an.
+- Sie melden sich bei der Webanwendung der Appliance für die Government-Cloud mit den Anmeldeinformationen des Benutzerkontos für das Portal der öffentlichen Cloud an.
+
+Stellen Sie sicher, dass Sie die richtigen Anmeldeinformationen verwenden.
 
 ##  <a name="datetime-synchronization-error"></a>Datums-/Zeitsynchronisierungsfehler
 

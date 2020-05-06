@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411153"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133235"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbank-Dienst?
 
@@ -99,7 +99,7 @@ Azure SQL-Datenbank bietet erweiterte Funktionen und Tools für die Überwachung
 
 [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), eine integrierte SQL Server-Überwachungsfunktion, zeichnet die Leistung Ihrer Abfragen in Echtzeit auf und ermöglicht Ihnen, die potenziellen Leistungsprobleme und die wichtigsten Ressourcenverbraucher zu identifizieren. Über die automatische Optimierung und Empfehlungen werden Tipps für Abfragen mit Leistungsproblemen sowie für fehlende oder duplizierte Indizes bereitgestellt. Die automatische Optimierung in Azure SQL-Datenbank ermöglicht Ihnen, entweder manuell die Skripts auszuführen, die die Probleme beheben können, oder die Behebung von Azure SQL-Datenbank durchführen zu lassen. Azure SQL-Datenbank kann auch testen und bestätigen, dass die Korrektur einen gewissen Nutzen bietet, und die Änderung je nach Ergebnis beibehalten oder rückgängig machen. Neben dem Abfragespeicher und den automatischen Optimierungsfunktionen können Sie standardmäßige [DMVs und XEvent](sql-database-monitoring-with-dmvs.md) verwenden, um die Workloadleistung zu überwachen.
 
-Mithilfe der integrierten Tools für [Leistungsüberwachung](sql-database-performance-guidance.md) und [Warnungen](sql-database-insights-alerts-portal.md) von Azure können Sie in Kombination mit den Leistungsbewertungen den Status mehrerer tausend Datenbanken überwachen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren aktuellen oder projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
+Mithilfe der integrierten Tools für [Leistungsüberwachung](sql-database-performance-guidance.md) und [Warnungen](sql-database-insights-alerts-portal.md) von Azure können Sie in Kombination mit den Leistungsbewertungen den Status mehrerer tausend Datenbanken überwachen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren aktuellen oder projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Ressourcenprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
 - **Azure Storage**: Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten
 - **Azure Event Hubs**: Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines

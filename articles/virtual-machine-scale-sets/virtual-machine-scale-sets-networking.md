@@ -1,19 +1,19 @@
 ---
 title: Netzwerk für Azure-VM-Skalierungsgruppen
 description: Vorgehensweise zum Konfigurieren einiger komplexerer Netzwerkeigenschaften für Azure VM-Skalierungsgruppen.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
-ms.author: manayar
-ms.openlocfilehash: d0b7288d5232e296a36708a08ea2ad9f8df5ee1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531055"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81461349"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -41,34 +41,27 @@ Der beschleunigte Netzwerkbetrieb von Azure ermöglicht die E/A-Virtualisierung 
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Erstellen einer Skalierungsgruppe, die auf einen vorhandenen Azure Load Balancer verweist
-Wenn eine Skalierungsgruppe über das Azure-Portal erstellt wird, wird für die meisten Konfigurationsoptionen ein neuer Load Balancer erstellt. Wenn Sie eine Skalierungsgruppe erstellen möchten, die auf einen vorhandenen Load Balancer verweisen soll, können Sie hierfür die Befehlszeilenschnittstelle verwenden. Das folgende Beispielskript erstellt einen Load Balancer und anschließend eine Skalierungsgruppe, die darauf verweist:
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure-VM-Skalierungsgruppen mit Azure Load Balancer
 
-```azurecli
-az network lb create \
-    -g lbtest \
-    -n mylb \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --public-ip-address-allocation Static \
-    --backend-pool-name mybackendpool
+Bei der Arbeit mit VM-Skalierungsgruppen und Lastenausgleich müssen folgende Aspekte berücksichtigt werden:
 
-az vmss create \
-    -g lbtest \
-    -n myvmss \
-    --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --admin-username negat \
-    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
-    --upgrade-policy-mode Automatic \
-    --instance-count 3 \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --lb mylb \
-    --backend-pool-name mybackendpool
-```
+* **Mehrere VM-Skalierungsgruppen können nicht denselben Lastenausgleich verwenden**.
+* **Portweiterleitung und NAT-Regeln für eingehenden Datenverkehr**:
+  * Jede VM-Skalierungsgruppe muss über eine NAT-Regel für eingehenden Datenverkehr verfügen.
+  * Nachdem die Skalierungsgruppe erstellt wurde, kann der Back-End-Port für eine Lastenausgleichsregel, die von einem Integritätstest des Load Balancers verwendet wird, nicht mehr geändert werden. Zum Ändern des Ports können Sie den Integritätstest entfernen, indem Sie die Azure-VM-Skalierungsgruppe aktualisieren, den Port aktualisieren und dann den Integritätstest erneut konfigurieren.
+  * Bei Verwendung der VM-Skalierungsgruppe im Back-End-Pool des Lastenausgleichsmoduls werden die standardmäßigen NAT-Regeln für eingehenden Datenverkehr automatisch erstellt.
+* **Lastenausgleichsregeln:**
+  * Bei Verwendung der VM-Skalierungsgruppe im Back-End-Pool des Lastenausgleichsmoduls werden die standardmäßigen Lastenausgleichsregeln automatisch erstellt.
+* **Ausgangsregeln**:
+  *  Um eine Ausgangsregel für einen Back-End-Pool zu erstellen, der bereits durch eine Lastenausgleichsregel referenziert wird, müssen Sie im Portal zuerst die Option **Implizite Ausgangsregeln erstellen** auf **Nein** festlegen, wenn die Lastenausgleichsregel für eingehenden Datenverkehr erstellt wird.
 
->[!NOTE]
-> Nachdem die Skalierungsgruppe erstellt wurde, kann der Back-End-Port für eine Lastenausgleichsregel, die von einem Integritätstest des Load Balancers verwendet wird, nicht mehr geändert werden. Zum Ändern des Ports können Sie den Integritätstest entfernen, indem Sie die Azure-VM-Skalierungsgruppe aktualisieren, den Port aktualisieren und dann den Integritätstest erneut konfigurieren. 
+  :::image type="content" source="./media/vmsslb.png" alt-text="Erstellen einer Lastenausgleichsregel" border="true":::
+
+Mit den folgenden Methoden können Sie eine VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz bereitstellen.
+
+* [Konfigurieren einer VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz mithilfe des Azure-Portals](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
+* [Konfigurieren einer VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
+* [Konfigurieren einer VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz mithilfe der Azure CLI](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Erstellen einer Skalierungsgruppe, die auf ein Application Gateway verweist
 Um eine Skalierungsgruppe zu erstellen, die ein Application Gateway verwendet, verweisen Sie wie in dieser ARM-Vorlagenkonfiguration im Abschnitt „ipConfigurations“ Ihrer Skalierungsgruppe auf den Back-End-Adresspool des Application Gateways:

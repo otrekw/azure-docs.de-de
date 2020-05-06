@@ -1,17 +1,17 @@
 ---
 title: Beheben von Verbindungsproblemen – Azure Database for MariaDB
 description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for MariaDB beheben können, einschließlich vorübergehender Fehler, die Wiederholungsversuche erfordern, Firewallprobleme und Ausfälle.
-author: jan-eng
-ms.author: janeng
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536359"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101449"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Beheben von Verbindungsproblemen mit Azure Database for MariaDB
 

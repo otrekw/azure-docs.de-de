@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80576761"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81604725"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Abfragen von Protokollen aus der Lösung zum Starten/Beenden von VMs
 
@@ -71,4 +71,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-log.md).
+Die Lösung **VMs außerhalb der Geschäftszeiten starten/beenden** umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-log.md).

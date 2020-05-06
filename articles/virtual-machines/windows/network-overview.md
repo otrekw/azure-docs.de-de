@@ -1,25 +1,19 @@
 ---
 title: Virtuelle Netzwerke und virtuelle Windows-Computer in Azure
-description: Enthält Informationen zu Netzwerken in Bezug auf die Grundlagen der Erstellung von virtuellen Windows-Computern in Azure.
-services: virtual-machines-windows
-documentationcenter: ''
+description: Erfahren Sie mehr über Netzwerke in Bezug auf die Grundlagen der Erstellung von virtuellen Computern in Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5493e9f7-7d45-4e98-be9a-657a53708746
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 105a91d8bfddeae3ed12c4ebb5b761d5989b91a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc00c751111fca0e1b87eac2b8e5f85011ea901e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033088"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81870327"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuelle Netzwerke und virtuelle Computer in Azure 
 

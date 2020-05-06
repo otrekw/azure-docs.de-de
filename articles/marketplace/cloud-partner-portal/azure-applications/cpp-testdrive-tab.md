@@ -7,70 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 2f35dd69c1f29350049ed8f62dd9cbb0e60a7718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ba3779b219cf1ec2c2b2a25a8fd9f955f8b6126
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289004"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867925"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Registerkarte „Testversion“ für Azure-Anwendungen
 
-Über die Registerkarte „Testversion“ können Sie eine Testversion für Ihre Kunden bereitstellen.
+Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Azure-Anwendungsangeboten nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Informationen hierzu finden Sie unter [Erstellen eines Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-## <a name="test-drive-benefits"></a>Vorteile einer Testversion
-
-Das Erstellen einer Testversion für Ihre Kunden ist eine bewährte Methode, um sicherzustellen, dass sie ruhigen Gewissens kaufen können. Unter den verfügbaren Testoptionen ist „Testversion“ die wirksamste Option, um aussichtsreiche Leads zu gewinnen und eine vermehrte Umwandlung dieser Leads zu erreichen.
-
-Diese Option bietet Kunden einen praktischen, selbstgesteuerten Test der wichtigsten Funktionen und Vorteile Ihres Produkts, die in einem realitätsnahen Implementierungsszenario veranschaulicht werden.
-
-## <a name="how-a-test-drive-works"></a>So funktioniert eine Testversion
-
-Ein potenzieller Kunde hat Ihre Anwendung im Marketplace entdeckt. Der Kunde meldet sich an und stimmt den Nutzungsbedingungen zu. An diesem Punkt empfängt der Kunde Ihre vorkonfigurierte Umgebung, die er für eine feste Anzahl von Stunden testen kann, und Sie empfangen einen aussichtsreichen Lead, den Sie nachverfolgen können. Weitere Informationen finden Sie unter [Was ist die Testversion?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
-
-## <a name="setting-up-a-test-drive"></a>Einrichten einer Testversion
-
-Gehen Sie wie folgt vor, um eine Testversion zu aktivieren und zu konfigurieren.
-
-### <a name="to-enable-a-test-drive"></a>So aktivieren Sie eine Testversion:
-
-1. Wählen Sie unter **Neues Angebot** die Registerkarte **Testversion** aus.
-2. Wählen Sie unter **Testversion** die Option **Ja** für **Testversion aktivieren** aus.
-
-   ![Aktivieren einer Testversion](./media/managed-app-enable-testdrive.png)
-
-### <a name="to-configure-a-test-drive"></a>So konfigurieren Sie eine Testversion:
-
-Nachdem Sie eine kostenlose Testversion aktiviert haben, füllen Sie die folgenden Formulare aus, um die Testversion einzurichten:
-  
- - Details
- - Technische Konfiguration
- - Abonnementdetails für Bereitstellung der Testversion
-
-In der nächsten Bildschirmaufnahme sind alle Formulare für eine Testversion dargestellt. Mit einem Sternchen (*) gekennzeichnete Felder sind Pflichtfelder. 
-
-![Konfigurieren einer Testversion](./media/managed-app-configure-testdrive.png)
-
-In der folgenden Tabelle sind die Felder beschrieben, die zum Einrichten der Testversion für Ihre verwaltete Anwendung erforderlich sind.  Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
-
-|      Feld         |  BESCHREIBUNG      |
-|  ---------------   |  ---------------  |
-| **Beschreibung\***  |  Beschreiben Sie, wozu Ihre Testversion verwendet werden kann. Sie können einfache HTML-Tags verwenden, um diese Beschreibung zu formatieren. Zum Beispiel &lt;p&gt;, &lt;Em&gt;, &lt;Ul&gt;, &lt;li&gt;, &lt;Ol&gt; und Überschriften.                |
-| **Benutzerhandbuch\***  |  Laden Sie ein Benutzerhandbuch hoch, über das Ihre Kunden die Benutzeroberfläche der Testversion durchlaufen können. Dieses Dokument muss eine PDF-Datei sein.    |
-| **Test Drive Demo Video** (Demovideo für Testversion) |  Optionale Videoanleitung für Ihre Testversion. Ein Kunde kann sich dieses Video vor dem Nutzen der Testversion ansehen. Geben Sie die URL zu dem auf YouTube oder Vimeo befindlichen Video an. Wenn Sie **+ Video hinzufügen** auswählen, werden Sie aufgefordert, die folgenden Informationen bereitzustellen:<ul><li>Name</li><li>URL</li><li>Vorschauminiatur (im PNG-Format, 533 x 324 Pixel)</li></ul>  |
-| **Instanzen\***      | Konfigurieren Sie die Anzahl der gewünschten Instanzen, die Regionen und wie schnell Kunden die Testversion erhalten können. Weitere Informationen finden Sie unter [Veröffentlichen einer Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
-| **Dauer der Testversion (Stunden)\*** | Geben Sie eine ganze Zahl für die Anzahl der Stunden ein. Der zulässige Bereich liegt zwischen 1 und 999. |
-| **ARM-Vorlage für Testversion\***     | Laden Sie eine komprimierte Datei (ZIP-Datei) hoch, die Ihre Azure Resource Manager-Vorlagen für Ihre App enthält. Weitere Informationen finden Sie unter [Azure Resource Manager-Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
-| **Zugriffsinformationen\***          | Geben Sie die Informationen an, die Ihr Kunde nach dem Abrufen der Testversion für den Zugriff benötigt. Zum Beispiel eine URL für den Zugriff auf die Testversion und Anmeldeinformationen. erforderlich. Sie können einfache HTML-Tags verwenden, um diese Beschreibung zu formatieren. Zum Beispiel &lt;p&gt;, &lt;Em&gt;, &lt;Ul&gt;, &lt;li&gt;, &lt;Ol&gt; und Überschriften. |
-| **Azure-Abonnement-ID\***       | Diese gewährt Zugriff auf Azure-Dienste und das Azure-Portal. Im Abonnement werden die Ressourcenverwendung protokolliert und die Dienste abgerechnet. Wenn Sie noch kein separates Azure-Abonnement nur für Testversionen haben, erstellen Sie ein Abonnement.  |
-| **Azure AD-Mandanten-ID\***          | Geben Sie einen in Azure Active Directory vorhandenen Mandanten an, oder erstellen Sie einen Mandanten für diese Testversion.  |
-| **Azure AD-App-ID\***             | Erstellen und registrieren Sie eine neue Anwendung. Microsoft verwendet diese Anwendung, um Vorgänge in Ihrer Testversionsinstanz auszuführen.  |
-| **Azure AD-App-Schlüssel\***            | Erstellen Sie einen Authentifizierungsschlüssel für die App, und fügen Sie ihn in dieses Feld.   |
-|  |  |
-
-Nachdem Sie alle erforderlichen Informationen angegeben haben, wählen Sie **Speichern** aus, um das Einrichten der Testversion abzuschließen.
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[Registerkarte „Marketplace“](./cpp-marketplace-tab.md)
+Bevor Sie ein neues Azure-Anwendungsangebot erstellen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer), um Ihr Angebot zu erstellen.

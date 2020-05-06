@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
 ms.openlocfilehash: cde8d6932400966ae22720b1e86f3c5164f25b30
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81603445"
 ---
 # <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erstellen eines ML Services-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage
@@ -49,7 +49,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
-    |Position|Als Wert wird automatisch der Speicherort für die Ressourcengruppe eingefügt.|
+    |Standort|Als Wert wird automatisch der Speicherort für die Ressourcengruppe eingefügt.|
     |Clustername|Geben Sie einen global eindeutigen Namen ein. Verwenden Sie für diese Vorlage nur Kleinbuchstaben und Zahlen.|
     |Benutzername für Clusteranmeldung|Geben Sie den Benutzernamen an, der Standardwert ist **admin**.|
     |Kennwort für Clusteranmeldung|Geben Sie ein Kennwort an. Das Kennwort muss mindestens zehn Zeichen lang sein und mindestens eine Ziffer, einen Groß- und einen Kleinbuchstaben sowie ein nicht alphanumerisches Zeichen enthalten (mit Ausnahme folgender Zeichen: ' " `). |

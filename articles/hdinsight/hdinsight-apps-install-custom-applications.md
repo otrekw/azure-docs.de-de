@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768249"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
@@ -83,7 +83,7 @@ Sie können für **Hue** die folgenden Schritte verwenden:
 1. Wählen Sie in der Liste **Hue** aus, um die Eigenschaften anzuzeigen.  
 1. Wählen Sie den Webseitenlink aus, um die Website zu überprüfen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Ersetzen Sie `CLUSTERNAME` und `RESOURCEGROUP` durch die entsprechenden Werte, und geben Sie dann die folgenden Befehle ein:
 
@@ -131,7 +131,7 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie Fehlermeldun
 1. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und wählen Sie dann **Löschen** aus.
 1. Klicken Sie auf **Ja**, um zu bestätigen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Ersetzen Sie `NAME`, `CLUSTERNAME` und `RESOURCEGROUP` durch die entsprechenden Werte, und geben Sie dann den folgenden Befehl ein:
 

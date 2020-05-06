@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd2706b6a6880d7c9454619e1315b2b5b5404561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244272"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195246"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-Sicherheitsbaseline für Cosmos DB
 
@@ -594,7 +594,7 @@ Verfügbare unterstützte Features in Azure Security Center: https://docs.micros
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -603,7 +603,7 @@ Verfügbare unterstützte Features in Azure Security Center: https://docs.micros
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -612,7 +612,7 @@ Verfügbare unterstützte Features in Azure Security Center: https://docs.micros
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4 Vergleichen von kaskadierenden Sicherheitsrisikoscans
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -621,7 +621,7 @@ Verfügbare unterstützte Features in Azure Security Center: https://docs.micros
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Verwenden eines Risikobewertungsprozesses, um die Behebung von erkannten Sicherheitsrisiken zu priorisieren
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -638,7 +638,7 @@ Verfügbare unterstützte Features in Azure Security Center: https://docs.micros
 
 Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
 
-Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -684,7 +684,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -720,7 +720,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 ### <a name="68-use-only-approved-applications"></a>6.8: Ausschließliche Verwendung genehmigter Anwendungen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -745,7 +745,7 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -764,7 +764,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -802,7 +802,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -811,7 +811,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
+**Leitfaden**: Verwenden Sie die Azure Policy-Einstellungen [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre Azure-Ressourcen zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -823,7 +823,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -832,7 +832,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
-**Leitfaden**: Wenn Sie für Cosmos DB oder verwandte Ressourcen benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
+**Leitfaden**: Wenn Sie für Ihre Cosmos DB-Ressourcen oder für verwandte Ressourcen benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure Repos, um Ihren Code sicher zu speichern und zu verwalten.
 
 Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -842,7 +842,7 @@ Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/inde
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -860,7 +860,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -868,7 +868,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
 
-**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DocumentDB“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie die Azure Policy-Einstellungen [audit] (überwachen), [deny] (verweigern) und [deploy if not existent] (bereitstellen, falls nicht vorhanden), um Konfigurationen für Ihre Azure Cosmos DB-Instanzen und verwandte Ressourcen automatisch zu erzwingen. 
+**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DocumentDB“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie die Azure Policy-Einstellungen [audit] (Überwachen), [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um Konfigurationen für Ihre Azure Cosmos DB-Instanzen und die zugehörigen Ressourcen automatisch zu erzwingen. 
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -878,7 +878,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 2a876349af2bd53a46737dda82961afe442bae05
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81401086"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82113832"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -36,12 +36,12 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Gebietsschema  | Sprache                          | Unterstützt | Anpassungen                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
-| `ar-AE` | Arabisch (VAE)                      | Ja       | Nein                                                |
+| `ar-AE` | Arabisch (VAE)                      | Ja       | Nein                                                 |
 | `ar-BH` | Arabisch (Bahrain), modernes Hocharabisch | Ja       | Sprachmodell                                    |
 | `ar-EG` | Arabisch (Ägypten)                    | Ja       | Sprachmodell                                    |
-| `ar-KW` | Arabisch (Kuwait)                   | Ja       | Nein                                                |
-| `ar-QA` | Arabisch (Katar)                    | Ja       | Nein                                                |
-| `ar-SA` | Arabisch (Saudi-Arabien)             | Ja       | Nein                                                |
+| `ar-KW` | Arabisch (Kuwait)                   | Ja       | Nein                                                 |
+| `ar-QA` | Arabisch (Katar)                    | Ja       | Nein                                                 |
+| `ar-SA` | Arabisch (Saudi-Arabien)             | Ja       | Nein                                                 |
 | `ar-SY` | Arabisch (Syrien)                    | Ja       | Sprachmodell                                    |
 | `ca-ES` | Katalanisch                           | Ja       | Sprachmodell                                    |
 | `da-DK` | Dänisch (Dänemark)                  | Ja       | Sprachmodell                                    |
@@ -71,9 +71,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ru-RU` | Russisch (Russische Föderation)                  | Ja       | Akustische Modell<br>Sprachmodell                  |
 | `sv-SE` | Schwedisch (Schweden)                  | Ja       | Sprachmodell                                    |
 | `ta-IN` | Tamil (Indien)                     | Ja       | Sprachmodell                                    |
-| `te-IN` | Telugu (Indien)                    | Ja       | Nein                                                |
-| `th-TH` | Thai (Thailand)                   | Ja       | Nein                                                |
-| `tr-TR` | Türkisch (Türkei)                  | Ja       | Nein                                                |
+| `te-IN` | Telugu (Indien)                    | Ja       | Nein                                                 |
+| `th-TH` | Thai (Thailand)                   | Ja       | Nein                                                 |
+| `tr-TR` | Türkisch (Türkei)                  | Ja       | Nein                                                 |
 | `zh-CN` | Chinesisch (Mandarin, vereinfacht)    | Ja       | Akustische Modell<br>Sprachmodell                  |
 | `zh-HK` | Chinesisch (Kantonesisch, traditionell)  | Ja       | Sprachmodell                                    |
 | `zh-TW` | Chinesisch (Taiwanesisch, Mandarin)      | Ja       | Sprachmodell                                    |
@@ -241,6 +241,7 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 | Französisch                  | `fr`          |
 | Deutsch                  | `de`          |
 | Griechisch                   | `el`          |
+| Gujarati                | `gu`          |
 | Haitianisches Kreolisch          | `ht`          |
 | Hebräisch                  | `he`          |
 | Hindi                   | `hi`          |
@@ -261,6 +262,8 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 | Malaiisch                   | `ms`          |
 | Malayalam               | `ml`          |
 | Maltesisch                 | `mt`          |
+| Maori                   | `mi`          |
+| Marathi                 | `mr`          |
 | Norwegisch               | `nb`          |
 | Persisch                 | `fa`          |
 | Polnisch                  | `pl`          |

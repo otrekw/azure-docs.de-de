@@ -4,17 +4,17 @@ description: Aktivieren Sie Ihre Blobs aus der Archivzugriffsebene, sodass Sie a
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684101"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Aktivieren von Blobdaten aus der Archivzugriffsebene
 
@@ -31,15 +31,21 @@ Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Kopieren eines archivierten Blobs auf eine Onlineebene
 
-Wenn Sie das Archivblob nicht aktivieren möchten, können Sie einen Vorgang vom Typ [Blob kopieren](https://docs.microsoft.com/rest/api/storageservices/copy-blob) ausführen. Das ursprüngliche Blob bleibt unverändert im Archiv, während ein neues Blobs auf der heißen oder kalten Onlineebene erstellt wird, mit dem Sie arbeiten können. Beim Vorgang „Blob kopieren“ können Sie auch die optionale Eigenschaft *x-ms-rehydrate-priority* auf „Standard“ oder „Hoch“ (Vorschau) festlegen, um die Priorität anzugeben, mit der die Blobkopie erstellt werden soll.
-
-Archivblobs können nur auf Onlinezielebenen innerhalb desselben Speicherkontos kopiert werden. Das Kopieren eines Archivblobs in ein anderes Archivblob wird nicht unterstützt.
+Wenn Sie das Archivblob nicht aktivieren möchten, können Sie einen Vorgang vom Typ [Blob kopieren](https://docs.microsoft.com/rest/api/storageservices/copy-blob) ausführen. Das ursprüngliche Blob bleibt unverändert im Archiv, während ein neues Blobs auf der heißen oder kalten Onlineebene erstellt wird, mit dem Sie arbeiten können. Beim Vorgang „Blob kopieren“ können Sie auch die optionale Eigenschaft *x-ms-rehydrate-priority* auf „Standard“ oder „Hoch“ festlegen, um die Priorität anzugeben, mit der die Blobkopie erstellt werden soll.
 
 Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungspriorität mehrere Stunden dauern. Im Hintergrund liest der Vorgang **Blob kopieren** das Archivblob, um ein neues Onlineblob auf der ausgewählten Zielebene zu erstellen. Das neue Blob ist beim Auflisten von Blobs möglicherweise sichtbar, aber die Daten sind erst verfügbar, wenn der Lesevorgang aus dem Quellarchivblob abgeschlossen ist und Daten in das neue Onlinezielblob geschrieben werden. Das neue Blob ist eine unabhängige Kopie, und jegliche Änderungen oder Löschungen wirken sich nicht auf das Quellarchivblob aus.
 
+Archivblobs können nur auf Onlinezielebenen innerhalb desselben Speicherkontos kopiert werden. Das Kopieren eines Archivblobs in ein anderes Archivblob wird nicht unterstützt. In der folgenden Tabelle sind die Funktionen von CopyBlob angegeben.
+
+|                                           | **Quelle: Heiße Ebene**   | **Quelle: Kalte Ebene** | **Quelle: Archivebene**    |
+| ----------------------------------------- | --------------------- | -------------------- | ------------------- |
+| **Ziel: Heiße Ebene**                  | Unterstützt             | Unterstützt            | Innerhalb desselben Kontos unterstützt, Aktivierung steht aus               |
+| **Ziel: Kalte Ebene**                 | Unterstützt             | Unterstützt            | Innerhalb desselben Kontos unterstützt, Aktivierung steht aus               |
+| **Ziel: Archivebene**              | Unterstützt             | Unterstützt            | Nicht unterstützt         |
+
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Die Vorgänge zum Aktivieren von Blobs aus dem Archiv auf einer heißen oder kalten Zugriffsebene werden als Lese- und Datenabrufvorgänge abgerechnet. Vorgänge mit hoher Priorität (Vorschau) verursachen höhere Vorgangs- und Datenabrufkosten als Vorgänge mit Standardpriorität. Aktivierungsvorgänge mit hoher Priorität werden auf Ihrer Rechnung als separater Posten ausgewiesen. Wenn eine Anforderung zum Abruf eines einige Gigabytes großen Archivblobs mit hoher Priorität über fünf Stunden dauert, werden Ihnen nicht die Gebühren für einen Abruf mit hoher Priorität berechnet. Die Standardgebühren für Abrufvorgänge gelten jedoch weiterhin, da die Aktivierung gegenüber anderen Anforderungen priorisiert wurde.
+Die Vorgänge zum Aktivieren von Blobs aus dem Archiv auf einer heißen oder kalten Zugriffsebene werden als Lese- und Datenabrufvorgänge abgerechnet. Vorgänge mit hoher Priorität verursachen höhere Vorgangs- und Datenabrufkosten als Vorgänge mit Standardpriorität. Aktivierungsvorgänge mit hoher Priorität werden auf Ihrer Rechnung als separater Posten ausgewiesen. Wenn eine Anforderung zum Abruf eines einige Gigabytes großen Archivblobs mit hoher Priorität über fünf Stunden dauert, werden Ihnen nicht die Gebühren für einen Abruf mit hoher Priorität berechnet. Die Standardgebühren für Abrufvorgänge gelten jedoch weiterhin, da die Aktivierung gegenüber anderen Anforderungen priorisiert wurde.
 
 Die Vorgänge zum Kopieren von Blobs aus dem Archiv auf eine heiße oder kalte Zugriffsebene werden als Lese- und Datenabrufvorgänge abgerechnet. Für die Erstellung der neuen Blobkopie wird ein Schreibvorgang in Rechnung gestellt. Gebühren für frühes Löschen fallen beim Kopieren in ein Onlineblob nicht an, weil das Quellblob auf der Archivzugriffsebene unverändert bleibt. Gebühren für einen Abruf mit hoher Priorität gelten, wenn dieser ausgewählt ist.
 
@@ -58,7 +64,7 @@ Blobs auf Archivzugriffsebene müssen mindestens 180 Tage lang gespeichert werd
 
 1. Wählen Sie dann Ihr Speicherkonto aus.
 
-1. Wählen Sie den Container und dann das Blob aus.
+1. Wählen Sie Ihren Container und dann Ihr Blob aus.
 
 1. Wählen Sie unter **Blob-Eigenschaften** die Option **Ebene ändern** aus.
 
@@ -69,6 +75,7 @@ Blobs auf Archivzugriffsebene müssen mindestens 180 Tage lang gespeichert werd
 1. Wählen Sie unten **Speichern** aus.
 
 ![Ändern der Speicherkontoebene](media/storage-tiers/blob-access-tier.png)
+![Überprüfen des Aktivierungsstatus](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Das nachstehende PowerShell-Skript kann verwendet werden, um die Blobebene eines Archivblobs zu ändern. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden. Die Variable `$containerName` muss mit Ihrem Containernamen initialisiert werden. Die Variable `$blobName` muss mit Ihrem Blobnamen initialisiert werden. 

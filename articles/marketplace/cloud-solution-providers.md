@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281662"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160646"
 ---
 # <a name="cloud-solution-providers"></a>Cloud Solution Provider (CSP)
 
@@ -105,7 +105,7 @@ Wenn Sie einen Partner im CSP-Programm autorisiert haben und dieser Partner das 
 
 Wenn ein Partner im CSP-Programm Ihr Produkt noch nicht an seine Kunden verkauft hat und Sie den CSP entfernen möchten, nachdem das Angebot veröffentlicht wurde, gehen Sie folgendermaßen vor:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -127,7 +127,7 @@ Verwenden Sie diesen Abschnitt, um zwischen den drei Optionen für CSP-Handelspa
 
 Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgewählt ist und Sie zu einer der beiden anderen Optionen wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -145,7 +145,7 @@ Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgew�
 
 Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 1: Alle Partner im CSP-Programm** wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -158,7 +158,7 @@ Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partne
 
  Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 3: Keine Partner im CSP-Programm** wechseln möchten, können Sie nur dann zu dieser Option wechseln, wenn die zuvor autorisierten Partner im CSP-Programm Ihr Angebot noch nicht an Endkunden verkauft haben. Gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -195,4 +195,4 @@ Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSourc
 
 Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-GTM-Diensten zu erhalten.
 
-Melden Sie sich beim [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) oder [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.

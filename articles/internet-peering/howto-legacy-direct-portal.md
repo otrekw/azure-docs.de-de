@@ -1,40 +1,40 @@
 ---
-title: Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource über das Portal
+title: Konvertieren einer Legacyinstanz für direktes Peering in eine Azure-Ressource über das Azure-Portal
 titleSuffix: Azure
-description: Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource über das Portal
+description: Konvertieren einer Legacyinstanz für direktes Peering in eine Azure-Ressource über das Azure-Portal
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 9900414d38bd597d08a80d15e908228c06ce06ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e49e4d5debe63b99039bbafbc14f7788367314f3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773897"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678864"
 ---
-# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-the-portal"></a>Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource über das Portal
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Konvertieren einer Legacyinstanz für direktes Peering in eine Azure-Ressource über das Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe des Portals ein vorhandenes älteres direktes Peering in eine Azure-Ressource konvertieren.
+In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals eine vorhandene Instanz für direktes Peering in eine Azure-Ressource konvertieren.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShell](howto-legacy-direct-powershell.md) ausführen.
+Sie können diese Anleitung auch mithilfe von [PowerShell](howto-legacy-direct-powershell.md) ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
+* Informieren Sie sich vor der Konfiguration zunächst über die [Voraussetzungen](prerequisites.md), und lesen Sie den Artikel [Exemplarische Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
 
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Konvertieren eines älteren direkten Peerings in eine Azure-Ressource
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Konvertieren einer Legacyinstanz für direktes Peering in eine Azure-Ressource
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="convert-legacy-direct-peering"></a><a name=create></a>Konvertieren eines älteren direkten Peerings
+### <a name="convert-a-legacy-direct-peering"></a><a name=create></a> Konvertieren einer Legacyinstanz für direktes Peering
 
-Sie können ältere Peeringverbindungen mithilfe einer **Peeringressource** konvertieren.
+Sie können Legacy-Peeringverbindungen mithilfe der **Peeringressource** konvertieren.
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>Konfigurieren von Verbindungen und Übermitteln

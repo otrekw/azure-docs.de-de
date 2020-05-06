@@ -11,10 +11,10 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769806"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets

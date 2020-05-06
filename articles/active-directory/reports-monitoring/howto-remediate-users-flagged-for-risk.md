@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68989693"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100786"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -87,7 +87,6 @@ Darüber hinaus empfiehlt sich Folgendes:
 
 - Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](https://aka.ms/fixaccount). 
 - [Aktivieren Sie die Überwachungspipeline](https://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
-- Verwenden Sie [dieses Skript, um die Postfachüberwachung für alle Ihre Konten zu aktivieren](https://aka.ms/mailboxaudit1). 
 - Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](https://aka.ms/delegateforwardrules) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte

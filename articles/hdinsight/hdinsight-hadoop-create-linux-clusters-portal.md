@@ -1,19 +1,19 @@
 ---
 title: Erstellen von Apache Hadoop-Clustern mit einem Webbrowser – Azure HDInsight
-description: Erfahren Sie, wie Sie mit einem Webbrowser und dem Azure-Portal Apache Hadoop-, Apache HBase-, Apache Storm- oder Apache Spark-Cluster unter Linux für HDInsight erstellen.
+description: Erfahren Sie, wie Sie Apache Hadoop-, Apache HBase-, Apache Storm- und Apache Spark-Cluster in HDInsight erstellen. Verwenden Sie einen Webbrowser und das Azure-Portal.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623275"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192092"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 
@@ -51,7 +51,7 @@ Geben Sie auf der Registerkarte **Grundlagen** die folgenden Informationen an:
 |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
 |Clustername|Geben Sie einen global eindeutigen Namen ein.|
 |Region|Wählen Sie in der Dropdownliste eine Region für die Erstellung des Clusters aus.|
-|Clustertyp|Wählen Sie **Clustertyp auswählen** aus, um eine Liste zu öffnen. Wählen Sie in der Liste den gewünschten Clustertyp aus. Es gibt unterschiedliche Typen von HDInsight-Clustern. Diese entsprechen der Workload oder Technologie, für die der Cluster optimiert wurde. Es gibt keine unterstützte Methode zum Erstellen eines Clusters, in dem mehrere Typen kombiniert sind.|
+|Clustertyp|Klicken Sie auf **Clustertyp auswählen**, um eine Liste zu öffnen. Wählen Sie in der Liste den gewünschten Clustertyp aus. Es gibt unterschiedliche Typen von HDInsight-Clustern. Diese entsprechen der Workload oder Technologie, für die der Cluster optimiert wurde. Es gibt keine unterstützte Methode zum Erstellen eines Clusters, in dem mehrere Typen kombiniert sind.|
 |Version|Wählen Sie in der Dropdownliste eine **Version** aus. Verwenden Sie die Standardversion, wenn Sie nicht wissen, was Sie auswählen sollen. Weitere Informationen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).|
 |Benutzername für Clusteranmeldung|Geben Sie den Benutzernamen an, der Standardwert ist **admin**.|
 |Kennwort für Clusteranmeldung|Geben Sie das Kennwort an.|
@@ -67,7 +67,7 @@ Klicken Sie auf **Weiter: Speicher >>** , um zur nächsten Registerkarte zu gela
 
 ### <a name="primary-storage"></a>Primärer Speicher
 
-Wählen Sie in der Dropdownliste für **Primärer Speichertyp** Ihren Standardspeichertyp aus. Die nachfolgenden Felder, die vervollständigt werden sollen, variieren je nach Ihrer Auswahl. Für **Azure Storage**:
+Wählen Sie in der Dropdownliste für **Primärer Speichertyp** Ihren Standardspeichertyp aus. Die später auszufüllenden Felder fallen je nach Ihrer Auswahl unterschiedlich aus. Für **Azure Storage**:
 
 1. Wählen Sie für **Auswahlmethode** entweder **Aus Liste auswählen** oder **Zugriffsschlüssel verwenden** aus.
     * Wählen Sie **Aus Liste auswählen** und dann Ihr **Primäres Speicherkonto** in der Dropdownliste aus, oder wählen Sie **Neu erstellen** aus.
@@ -81,7 +81,7 @@ Optional: Wählen Sie **Azure Storage hinzufügen** für zusätzlichen Clustersp
 
 ### <a name="metastore-settings"></a>Metastore-Einstellungen
 
-Optional: Geben Sie eine vorhandene SQL Datenbank-Instanz an, um Apache Hive-, Apache Oozie- und/oder Apache Ambari-Metadaten außerhalb des Clusters zu speichern. Die für den Metastore verwendete Azure SQL-Datenbank muss für die Konnektivität mit anderen Azure-Diensten, z. B. Azure HDInsight, konfiguriert sein. Verwenden Sie beim Erstellen eines Metastore für die Namen einer Datenbank keine Binde- oder Gedankenstriche. Diese Zeichen können dazu führen, dass der Prozess der Clustererstellung fehlschlägt.
+Optional: Geben Sie eine vorhandene SQL-Datenbank-Instanz an, um Apache Hive-, Apache Oozie- oder Apache Ambari-Metadaten außerhalb des Clusters zu speichern. Die für den Metastore verwendete Azure SQL-Datenbank muss für die Konnektivität mit anderen Azure-Diensten, z. B. Azure HDInsight, konfiguriert sein. Verwenden Sie beim Erstellen eines Metastore für die Namen einer Datenbank keine Binde- oder Gedankenstriche. Diese Zeichen können dazu führen, dass der Prozess der Clustererstellung fehlschlägt.
 
 Klicken Sie auf **Weiter: Sicherheit + Netzwerkbetrieb >>** , um zur nächsten Registerkarte zu gelangen.
 
@@ -94,7 +94,7 @@ Geben Sie auf der Registerkarte **Sicherheit + Netzwerkbetrieb** die folgenden I
 |Eigenschaft |BESCHREIBUNG |
 |---|---|
 |Sicherheitspaket für Unternehmen|Optional: Aktivieren Sie das Kontrollkästchen, um das **Enterprise-Sicherheitspaket** zu verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
-|TLS|Optional: Wählen Sie in der Dropdownliste eine TLS-Version aus. Weitere Informationen finden Sie unter [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security).|
+|TLS|Optional: Wählen Sie in der Dropdownliste eine TLS-Version aus. Weitere Informationen finden Sie unter [Transport Layer Security](./transport-layer-security.md).|
 |Virtuelles Netzwerk|Optional: Wählen Sie in der Dropdownliste ein vorhandenes virtuelles Netzwerk und Subnetz aus. Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks für Azure HDInsight](hdinsight-plan-virtual-network-deployment.md). Der Artikel enthält die spezifischen Konfigurationsanforderungen für das virtuelle Netzwerk.|
 |Datenträgerverschlüsselungseinstellungen|Optional: Aktivieren Sie das Kontrollkästchen, um die Verschlüsselung zu verwenden. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](./disk-encryption.md).|
 |Kafka-REST-Proxy|Diese Einstellung ist nur für den Clustertyp Kafka verfügbar. Weitere Informationen finden Sie unter [Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys](./kafka/rest-proxy.md).|
@@ -141,11 +141,6 @@ Einige der Symbole im Fenster stehen für Folgendes:
 |SSH + Clusteranmeldung|Enthält die Informationen zum Zugreifen auf den Cluster per SSH.|
 |Löschen|Löscht den HDInsight-Cluster.|
 
-## <a name="customize-clusters"></a>Anpassen von Clustern
-
-* [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md)
-* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md)
-
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
 Weitere Informationen finden Sie unter [Löschen eines HDInsight-Clusters mithilfe von Browser, PowerShell oder Azure-Befehlszeilenschnittstelle](./hdinsight-delete-cluster.md).
@@ -158,25 +153,6 @@ Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich d
 
 Sie haben die Erstellung eines HDInsight-Clusters erfolgreich abgeschlossen. Als Nächstes wird beschrieben, wie Sie mit Ihrem Cluster arbeiten.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop-Cluster
-
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Apache HBase Cluster
-
 * [Erste Schritte mit Apache HBase in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Entwickeln von Java-Anwendungen für Apache HBase in HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Apache Storm-Cluster
-
-* [Entwickeln von Java-Topologien für Apache Storm in HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Verwenden von Python-Komponenten in Apache Storm in HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Bereitstellen und Überwachen von Topologien mit Apache Storm in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Apache Spark-Cluster
-
-* [Erstellen einer eigenständigen Anwendung mit Scala](spark/apache-spark-create-standalone-application.md)
-* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md)

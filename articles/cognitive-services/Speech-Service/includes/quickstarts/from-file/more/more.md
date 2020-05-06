@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 5ebd56e102ab2ac113e509ea44966aa5f67e9b75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400459"
 ---
 ## <a name="additional-language-and-platform-support"></a>Zusätzliche Sprach- und Plattformunterstützung
@@ -18,9 +18,9 @@ Wenn Sie auf diese Registerkarte geklickt haben, wurde wahrscheinlich keine Schn
 | Sprache | Weitere Schnellstartanleitungen | Codebeispiele |
 |--|--|--|
 | C# | [Von Mikro][1-mic], [Aus Blob][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Von Mikro][2-mic][Aus Blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
+| C++ | [Von Mikro][2-mic], [Aus Blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
 | Java | [Von Mikro][3-mic], [Aus Blob][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Browser von Mikro][js-browser], [Node.js aus Datei][js-node] | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Browser von Mikro][js-browser], [Node.js aus einer Datei][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS von Mikro][obj-iOS-qck], [macOS von Mikro][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
 | Python | [Von Mikro][4-mic], [Aus Blob][4-blob] | [Windows, Linux, macOS][python] |
 | Swift | [iOS von Mikro][swift-iOS-qck], [macOS von Mikro][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |

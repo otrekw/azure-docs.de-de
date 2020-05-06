@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374297"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81482155"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -38,6 +38,9 @@ Für virtuelle Azure-Computer mit SQL Server kann das [automatisierte Patchen](v
 ## <a name="automated-backups"></a>Automatisierte Sicherungen
 
 Für virtuelle Azure-Computer mit SQL Server kann die [automatisierte Sicherung](virtual-machines-windows-sql-automated-backup-v2.md)verwendet werden, bei der regelmäßig Sicherungen Ihrer Datenbank im Blobspeicher erstellt werden. Sie können dieses Verfahren auch manuell verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](virtual-machines-windows-use-storage-sql-server-backup-restore.md).
+
+Azure bietet auch eine Sicherungslösung der Unternehmensklasse für SQL Server-Instanzen auf Azure-VMs. Es handelt sich um eine vollständig verwaltete Sicherungslösung, die Always On-Verfügbarkeitsgruppen, Langzeitaufbewahrung Zeitpunktwiederherstellung sowie zentrale Verwaltung und Überwachung unterstützt. Weitere Informationen finden Sie unter [Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+  
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

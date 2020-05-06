@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 04/22/2020
+ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117219"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184196"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -35,7 +35,7 @@ Denken Sie nach dem Ausführen der Schritte in diesem Dokument daran, die Cluste
 
 * Kenntnisse im Umgang mit [Jupyter Notebooks](https://jupyter.org/) mit Spark in HDInsight. Weitere Informationen finden Sie im Dokument [Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight](spark/apache-spark-load-data-run-query.md).
 
-* Kenntnisse in der Programmiersprache [Scala](https://www.scala-lang.org/). Der in diesem Tutorial verwendete Code ist in Scala geschrieben.
+* Kenntnisse in der Programmiersprache Scala. Der in diesem Tutorial verwendete Code ist in Scala geschrieben.
 
 * Kenntnisse im Erstellen von Kafka-Themen. Weitere Informationen finden Sie im Dokument [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](kafka/apache-kafka-get-started.md).
 
@@ -144,7 +144,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     | --- | --- |
     | Subscription | Ihr Azure-Abonnement |
     | Resource group | Die Ressourcengruppe mit den Ressourcen. |
-    | Position | Die Azure-Region, in der die Ressourcen erstellt werden. |
+    | Standort | Die Azure-Region, in der die Ressourcen erstellt werden. |
     | Spark Cluster Name (Spark-Clustername) | Der Name des Spark-Clusters. Die ersten sechs Zeichen müssen sich vom Kafka-Clusternamen unterscheiden. |
     | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. Die ersten sechs Zeichen müssen sich vom Spark-Clusternamen unterscheiden. |
     | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |
@@ -277,7 +277,7 @@ Dieses Beispiel zeigt, wie Sie strukturiertes Spark-Streaming mit Kafka in HDIns
     println("Schema declared")
     ```
 
-1. Wählen Sie Daten aus, und starten Sie den Stream. Der folgende Befehl zeigt, wie Daten mithilfe einer Batchabfrage aus Kafka abgerufen und die Ergebnisse anschließend in das Hadoop Distributed File System (HDFS) auf dem Spark-Cluster geschrieben werden. In diesem Beispiel ruft `select` die Nachricht (Wertfeld) aus Kafka ab und wendet das Schema an. Die Daten werden dann im Parquet-Format in das Hadoop Distributed File System (WASB oder ADL) geschrieben. Geben Sie den Befehl in der nächsten Jupyter-Zelle ein.
+1. Wählen Sie Daten aus, und starten Sie den Stream. Der folgende Befehl zeigt, wie Sie mithilfe einer Batchabfrage Daten aus Kafka abrufen. Anschließend schreiben Sie die Ergebnisse in HDFS im Spark-Cluster. In diesem Beispiel ruft `select` die Nachricht (Wertfeld) aus Kafka ab und wendet das Schema an. Die Daten werden dann im Parquet-Format in das Hadoop Distributed File System (WASB oder ADL) geschrieben. Geben Sie den Befehl in der nächsten Jupyter-Zelle ein.
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Dieses Beispiel zeigt, wie Sie strukturiertes Spark-Streaming mit Kafka in HDIns
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie die Ressourcengruppe löschen. Dadurch werden auch der zugeordnete HDInsight-Cluster sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie die Ressourcengruppe löschen. Beim Löschen der Ressourcengruppe wird auch der zugehörige HDInsight-Cluster gelöscht. Darüber hinaus werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
 
 So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
@@ -331,7 +331,7 @@ So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie das [strukturierte Apache Spark-Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) zum Schreiben und Lesen von Daten aus [Apache Kafka](./kafka/apache-kafka-introduction.md) in HDInsight verwenden. Unter dem folgenden Link erfahren Sie, wie Sie [Apache Storm](./storm/apache-storm-overview.md) mit Kafka verwenden:
+In diesem Tutorial haben Sie erfahren, wie Sie strukturiertes Apache Spark-Streaming zum Schreiben und Lesen von Daten aus Apache Kafka in HDInsight verwenden. Unter dem folgenden Link erfahren Sie, wie Sie Apache Storm mit Kafka verwenden:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight](hdinsight-apache-storm-with-kafka.md)

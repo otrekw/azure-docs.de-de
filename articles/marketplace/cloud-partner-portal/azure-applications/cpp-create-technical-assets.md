@@ -7,77 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7bfc74b2d27a879352f54df0772784a98e15e46d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393537"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81865539"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Vorbereiten der technischen Ressourcen einer Azure-Anwendung
 
-In diesem Artikel sind die Ressourcen für ein Vorbereiten der technischen Ressourcen für ein Azure-Anwendungsangebot beschrieben.
+Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Azure-Anwendungsangeboten nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Informationen hierzu finden Sie unter [Erstellen eines Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-## <a name="before-you-begin"></a>Voraussetzungen
-
-Sehen Sie sich das folgende Video, [Building Solution Templates, and Managed Applications for the Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) (Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace) an, das erläutert, wie Sie eine Azure Resource Manager-Vorlage erstellen, um eine Azure-Anwendungslösung zu definieren, und das Anwendungsangebot danach im Azure Marketplace veröffentlichen.
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
-
-
-Lesen Sie die folgende Dokumentation zu Azure-Anwendungen. Diese Dokumentation enthält Schnellstarts, Tutorials und Beispiele.
-
-- [Verstehen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-- Schnellstartanleitungen:
-
-  - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/)
-  - [Azure-Schnellstartvorlagen auf GitHub](https://github.com/azure/azure-quickstart-templates)
-  - [Veröffentlichen der Anwendungsdefinition](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Bereitstellen einer Dienstkatalog-App](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
-
-  
-- Tutorials:
-
-  - [Erstellen von Definitionsdateien](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Veröffentlichen der Marketplace-Anwendung](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
-
-  - Beispiele:
-
-    - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [Verwaltete Anwendungslösungen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
-
-## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
-
-Das Entwerfen, Erstellen und Testen dieser Ressourcen dauert lange, und es sind technische Kenntnisse in Bezug auf die Azure Platform und die Technologien erforderlich, um das Angebot zu erstellen.
-
-Ihr Entwicklerteam sollte sich mit den folgenden Microsoft-Technologien auskennen:
-
-- Grundkenntnisse in Bezug auf [Azure-Dienste](https://azure.microsoft.com/services/)
-- [Entwerfen und Erstellen der Architektur für Azure-Anwendungen](https://azure.microsoft.com/solutions/architecture/)
-- Erweiterte Grundkenntnisse in Bezug auf [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) und [Azure-Netzwerk](https://azure.microsoft.com/services/?filter=networking)
-- Erweiterte Grundkenntnisse in Bezug auf [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
-- Fundierte Kenntnisse zu [JSON](https://www.json.org/)
-
-## <a name="suggested-tools"></a>Vorgeschlagene Tools
-
-Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung bei der Verwaltung Ihrer Azure-Anwendung aus:
-
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
-
-Es empfiehlt sich, dass Sie Ihrer Entwicklungsumgebung die folgenden Tools hinzufügen:
-
-- [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-- [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
-
-  - Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Erweiterung: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
-
-Außerdem empfehlen wir Ihnen, sich die verfügbaren Tools auf der Seite [Azure-Entwicklungstools](https://azure.microsoft.com/tools/) und – bei Verwendung von Visual Studio – den [Visual Studio Marketplace](https://marketplace.visualstudio.com/) anzusehen.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[Erstellen eines Azure-Anwendungsangebots](./cpp-create-offer.md)
-
+Bevor Sie ein neues Azure-Anwendungsangebot erstellen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines Azure-Anwendungsangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer), um Ihr Angebot zu erstellen.

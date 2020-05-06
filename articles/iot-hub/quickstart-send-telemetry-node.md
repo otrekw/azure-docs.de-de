@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - mqtt
 ms.date: 06/21/2019
-ms.openlocfilehash: 24b6d2eca2eaa12e3e04647d403a015bdbf24ec6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 5c34dcc606e87e11a3a018df1b2d6bbedb262d04
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770028"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209110"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)
 
@@ -86,19 +86,19 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     Dieser Wert wird später in der Schnellstartanleitung benötigt.
 
-1. Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_, damit die Back-End-Anwendung eine Verbindung mit Ihrer IoT Hub-Instanz herstellen und die Nachrichten abrufen kann. Der folgende Befehl ruft die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab:
+1. Darüber hinaus benötigen Sie den mit _Event Hubs kompatiblen Endpunkt_, den mit _Event Hubs kompatiblen Pfad_ und den _Dienstprimärschlüssel_ Ihres IoT-Hubs, um der Back-End-Anwendung das Herstellen einer Verbindung mit Ihrem IoT-Hub und das Abrufen der Nachrichten zu ermöglichen. Die folgenden Befehle rufen diese Werte für Ihre IoT Hub-Instanz ab:
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --policy-name service --output table
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    Notieren Sie sich die Dienstverbindungszeichenfolge, die wie folgt aussieht:
-
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
-
-    Dieser Wert wird später in der Schnellstartanleitung benötigt. Die Dienstverbindungszeichenfolge unterscheidet sich von der Geräteverbindungszeichenfolge, die Sie sich im vorherigen Schritt notiert haben.
+    Notieren Sie sich diese drei Werte. Sie benötigen sie später in der Schnellstartanleitung.
 
 ## <a name="send-simulated-telemetry"></a>Senden simulierter Telemetriedaten
 
@@ -127,9 +127,13 @@ Die Back-End-Anwendung stellt eine Verbindung mit dem dienstseitigen Endpunkt **
 
 1. Öffnen Sie ein weiteres lokales Terminalfenster, und navigieren Sie zum Stammordner des Node.js-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\read-d2c-messages**.
 
-1. Öffnen Sie die Datei **ReadDeviceToCloudMessages.js** in einem Text-Editor Ihrer Wahl.
+1. Öffnen Sie die Datei **ReadDeviceToCloudMessages.js** in einem Text-Editor Ihrer Wahl. Aktualisieren Sie die folgenden Variablen, und speichern Sie Ihre Änderungen an der Datei.
 
-    Ersetzen Sie den Wert der Variablen `connectionString` durch die Dienstverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **ReadDeviceToCloudMessages.js**.
+    | Variable | Wert |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | Ersetzen Sie den Wert der Variablen durch den mit Event Hubs kompatiblen Endpunkt, den Sie sich zuvor notiert haben. |
+    | `eventHubsCompatiblePath`     | Ersetzen Sie den Wert der Variablen durch den mit Event Hubs kompatiblen Pfad, den Sie sich zuvor notiert haben. |
+    | `iotHubSasKey`                | Ersetzen Sie den Wert der Variablen durch den Dienstprimärschlüssel, den Sie sich zuvor notiert haben. |
 
 1. Führen Sie im lokalen Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Back-End-Anwendung auszuführen:
 

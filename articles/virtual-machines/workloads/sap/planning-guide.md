@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7ddcc5165f5588ff9015d7fafbc2b822268ffea7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337161"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
@@ -1031,7 +1031,7 @@ Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht akti
 
   Weitere Informationen zum Cmdlet „Save-AzVhd“ finden Sie hier: <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>.
 
-#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure CLI
 * Herunterladen eines verwalteten Datenträgers  
   Zunächst brauchen Sie Zugriff auf den zugrundeliegenden Blob des verwalteten Datenträgers. Dann können Sie den zugrundeliegenden Blob in ein neues Speicherkonto kopieren und den Blob aus diesem Speicherkonto herunterladen.
 
@@ -1073,7 +1073,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+##### <a name="azure-cli"></a>Azure CLI
 
 Sie können die Azure CLI zum Kopieren einer VHD verwenden. Um einen neuen verwalteten Datenträger zu erstellen, verwenden Sie *az disk create*, so wie in folgendem Beispiel gezeigt.
 
@@ -1118,7 +1118,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 
 $vm | Update-AzVM
 ```
 
-##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+##### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 
@@ -1162,7 +1162,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Beispiele finden Sie in [diesem Artikel][storage-powershell-guide-full-copy-vhd].
 
-##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+##### <a name="azure-cli"></a>Azure CLI
 * Starten Sie die Kopie mit:
 
 ```azurecli
@@ -1612,7 +1612,7 @@ Schulungs- oder Demo-Landschaften können aus folgenden Gründen durch virtuelle
 
 Weitere Informationen zu virtuellen Azure-Netzwerken und deren Definition finden Sie [in diesem Artikel][virtual-networks-create-vnet-arm-pportal].
 
-## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>Bereitstellen von SAP-VMs mit (standortübergreifender) Verbindung zum Unternehmensnetzwerk
+## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>Bereitstellen von SAP-VMs mit (standortübergreifender) Verbindung zum Unternehmensnetzwerk 
 
 Sie führen eine SAP-Landschaft aus und möchten die Bereitstellung auf Bare-Metal-Umgebungen für High-End-DBMS-Server, lokale virtualisierte Umgebungen für Anwendungsschichten und kleinere SAP-Systeme mit 2-Tier-Konfiguration sowie Azure IaaS aufteilen. Die Grundannahme ist, dass SAP-Systeme innerhalb einer SAP-Landschaft ungeachtet der Bereitstellungsform untereinander und mit zahlreichen anderen Softwarekomponenten innerhalb des Unternehmens kommunizieren müssen. Es sollte auch nicht zu Abweichungen aufgrund der Bereitstellungsform für Endbenutzer kommen, die über SAP GUI oder andere Schnittstellen auf SAP-Systeme zugreifen. Diese Bedingung können nur erfüllt werden, wenn wir das lokale Active Directory/OpenLDAP und DNS-Dienste über Site-to-Site-/Multi-Site- oder private Verbindungen wie Azure ExpressRoute erweitern.
 

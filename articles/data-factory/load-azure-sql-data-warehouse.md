@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/22/2018
-ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/16/2020
+ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415887"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81461104"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Laden von Daten in Azure SQL Data Warehouse mit Azure Data Factory
 
@@ -49,13 +49,9 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
 
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+2. Geben Sie auf der Seite **Neue Data Factory** Werte für folgende Elemente an:
 
-2. Geben Sie auf der Seite **Neue Data Factory** die in der folgenden Abbildung gezeigten Werte für die Felder an:
-
-   ![Seite „Neue Data Factory“](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
-
-    * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadSQLDWDemo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+    * **Name**: Geben Sie als Namen *LoadSQLDWDemo* ein. Der Name der Data Factory muss global eindeutig sein. Wenn die Fehlermeldung „Data Factory mit dem Namen ‚LoadSQLDWDemo‘ ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
     * **Version**: Wählen Sie **V2** aus.
@@ -64,58 +60,57 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 3. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung navigieren Sie zu Ihrer Data Factory. Die Startseite **Data Factory** wird wie in der folgenden Abbildung dargestellt angezeigt:
 
-   ![Data Factory-Startseite](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
+   ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
 
    Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Datenintegrationsanwendung auf einer separaten Registerkarte zu starten.
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Laden von Daten in Azure SQL Data Warehouse
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Kachel **Daten kopieren** aus, um das Tool zum Kopieren von Daten zu starten:
+1. Wählen Sie auf der Seite **Erste Schritte** die Kachel **Daten kopieren** aus, um das Tool Daten kopieren zu starten.
 
-   ![Kachel für das Tool zum Kopieren von Daten](./media/load-azure-sql-data-warehouse/copy-data-tool-tile.png)
-1. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** den Namen **CopyFromSQLToSQLDW** ein, und klicken Sie dann auf **Weiter**:
+1. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** den Namen **CopyFromSQLToSQLDW** ein, und wählen Sie dann **Weiter** aus.
 
     ![Eigenschaftenseite](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
+    >[!TIP]
+    >In diesem Tutorial verwenden Sie die *SQL-Authentifizierung* als Authentifizierungstyp für Ihren Quelldatenspeicher, Sie können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden auswählen: *Dienstprinzipal* oder *Verwaltete Identität*. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties).
+    >Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault).
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**:
-
-    ![Seite „Quelldatenspeicher“](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+    a. Klicken Sie auf **+ Neue Verbindung erstellen**.
 
     b. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
 
     ![Auswählen der Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen** aus.
+    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
 
     ![Konfigurieren von Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle aus, und klicken Sie auf **Weiter**.
 
-    ![Auswählen des verknüpften Quelldiensts](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
-
-1. Geben Sie auf der Seite **Tabellen auswählen, aus denen die Daten kopiert werden sollen, oder eine benutzerdefinierte Abfrage verwenden** die Zeichenfolge **SalesLT** ein, um die Tabellen zu filtern. Aktivieren Sie das Kontrollkästchen **(Alles auswählen)** , um alle Tabellen für den Kopiervorgang zu verwenden, und klicken Sie dann auf **Weiter**:
+1. Geben Sie auf der Seite **Tabellen auswählen, aus denen die Daten kopiert werden sollen, oder eine benutzerdefinierte Abfrage verwenden** die Zeichenfolge **SalesLT** ein, um die Tabellen zu filtern. Aktivieren Sie das Kontrollkästchen **(Alles auswählen)** , um alle Tabellen für den Kopiervorgang zu verwenden, und wählen Sie dann **Weiter** aus.
 
     ![Auswählen von Quelltabellen](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
+1. Geben Sie auf der Seite **Filter anwenden** die Einstellungen an, oder wählen Sie **Weiter** aus.
+
 1. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
+    >[!TIP]
+    >In diesem Tutorial verwenden Sie die *SQL-Authentifizierung* als Authentifizierungstyp für Ihren Zieldatenspeicher, Sie können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden auswählen: *Dienstprinzipal* oder *Verwaltete Identität*. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties).
+    >Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault).
 
     a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
 
-    ![Seite „Senkendatenspeicher“](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
-
-    b. Wählen Sie im Katalog **Azure SQL Data Warehouse** und dann **Weiter** aus.
+    b. Wählen Sie im Katalog **Azure Synapse Analytics (früher SQL DW)** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
 
     ![Auswählen von Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen** aus.
+    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
 
     ![Konfigurieren von Azure SQL DW](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Wählen Sie den neu erstellten verknüpften Dienst als Senke aus, und klicken Sie auf **Weiter**.
-
-    ![Auswählen des verknüpften Senkendiensts](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
 1. Überprüfen Sie den Inhalt der Seite **Tabellenmapping**, und klicken Sie dann auf **Weiter**. Eine intelligente Tabellenzuordnung wird angezeigt. Die Quelltabellen werden den Zieltabellen auf Grundlage der Tabellennamen zugeordnet. Wenn eine Quelltabelle im Ziel nicht vorhanden ist, wird von Azure Data Factory standardmäßig eine Zieltabelle mit dem gleichen Namen erstellt. Sie können eine Quelltabelle auch einer vorhandenen Zieltabelle zuordnen.
 
@@ -124,40 +119,36 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
    ![Seite „Tabellenmapping“](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. Überprüfen Sie den Inhalt der Seite **Schemazuordnung**, und klicken Sie dann auf **Weiter**. Die intelligente Tabellenzuordnung basiert auf dem Spaltennamen. Wenn Sie Data Factory die Tabellen automatisch erstellen lassen, kann eine Datentypkonvertierung erfolgen, wenn zwischen den Quell- und Zielspeichern Inkompatibilitäten vorliegen. Wenn es eine nicht unterstützte Datentypkonvertierung zwischen der Quell- und Zielspalte gibt, wird eine Fehlermeldung neben der entsprechenden Tabelle angezeigt.
+1. Überprüfen Sie den Inhalt der Seite **Spaltenzuordnung**, und wählen Sie dann **Weiter** aus. Die intelligente Tabellenzuordnung basiert auf dem Spaltennamen. Wenn Sie Data Factory die Tabellen automatisch erstellen lassen, kann eine Datentypkonvertierung erfolgen, wenn zwischen den Quell- und Zielspeichern Inkompatibilitäten vorliegen. Wenn es eine nicht unterstützte Datentypkonvertierung zwischen der Quell- und Zielspalte gibt, wird eine Fehlermeldung neben der entsprechenden Tabelle angezeigt.
 
-    ![Seite „Schemazuordnung“](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    ![Seite „Spaltenzuordnung“](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
 1. Führen Sie auf der Seite **Einstellungen** die folgenden Schritte aus:
 
-    a. Klicken Sie im Abschnitt **Stagingeinstellungen** auf **+ Neu**, um einen neuen Stagingspeicher zu erstellen. Der Speicher wird für das Staging der Daten verwendet, bevor diese mit PolyBase in SQL Data Warehouse geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten in Azure Storage automatisch bereinigt.
+    a. Klicken Sie im Abschnitt **Stagingeinstellungen** auf **+ Neu**, um einen neuen Stagingspeicher zu erstellen. Der Speicher wird für das Staging der Daten verwendet, bevor diese mit PolyBase in SQL Data Warehouse geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten in Azure Blob Storage automatisch bereinigt.
 
-    ![Konfigurieren des Stagings](./media/load-azure-sql-data-warehouse/configure-staging.png)
-
-    b. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** Ihr Speicherkonto und dann **Fertig stellen** aus.
-
-    ![Konfigurieren von Azure Storage](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+    b. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** Ihr Speicherkonto und dann **Erstellen** aus, um den verknüpften Dienst bereitzustellen.
 
     c. Deaktivieren Sie im Abschnitt **Erweiterte Einstellungen** die Option **Use type default** (Typstandard verwenden), und wählen Sie dann **Weiter** aus.
 
     ![Konfigurieren von PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**:
+1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**.
 
     ![Seite „Zusammenfassung“](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen:
+1. Wählen Sie auf der Seite **Bereitstellung** die Option **Überwachen** aus, um die Pipeline (Aufgabe) zu überwachen.
 
-    ![Bereitstellungsseite](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. In der Spalte **Aktionen** werden Links zum Anzeigen von Aktivitätsausführungsdetails und zum erneuten Ausführen der Pipeline angezeigt:
+1. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wählen Sie den Link **CopyFromSQLToSQLDW** unter der Spalte **PIPELINENAME** aus, um Details zur Aktivitätsausführung anzuzeigen und die Pipeline erneut auszuführen.
 
-    ![Überwachen der Pipelineausführungen](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**, um mit der Pipelineausführung verknüpfte Aktivitätsausführungen anzuzeigen. Klicken Sie oben auf den Link **Pipelines**, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
+    [![Überwachen der Pipelineausführungen](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+1. Wählen Sie oben den Link **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
     ![Überwachung der Aktivitätsausführungen](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-1. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Aktivitätsüberwachungsansicht unter **Aktionen** den Link **Details** aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen:
+1. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Ansicht der Aktivitätsausführungen unter **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen.
+    ![Überwachen von Details zur Aktivitätsausführung](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![Überwachen der Details zur Aktivitätsausführung](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
+    ![Überwachen der Details zur Aktivitätsausführung](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

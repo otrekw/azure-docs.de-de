@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226098"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677406"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -141,6 +141,13 @@ Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten
 **Fehlermeldung**: Fehler bei der Sicherung. Weitere Informationen finden Sie in den Details zur Auftragsfehlermeldung.
 
 Dieser Fehler wird von der IaaS-VM gemeldet. Um die Grundursache des Problems zu ermitteln, gehen Sie zu den Recovery Services-Tresoreinstellungen. Wählen Sie im Abschnitt **Überwachung** die Option **Sicherungsaufträge** aus, um den Status zu filtern und anzuzeigen. Klicken Sie auf **Fehler**, um die Details zur zugrunde liegenden Fehlermeldung zu überprüfen. Ergreifen Sie weitere Maßnahmen entsprechend den Empfehlungen auf der Fehlerdetailseite.
+
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent – Sicherungsfehler: Diese VM wird nicht (aktiv) über Azure Backup geschützt.
+
+**Fehlercode**: UserErrorBcmDatasourceNotPresent <br>
+**Fehlermeldung**: Sicherungsfehler: Diese VM wird nicht (aktiv) über Azure Backup geschützt.
+
+Überprüfen Sie, ob die angegebene VM aktiv durch Azure Backup geschützt wird (sich nicht im Zustand „Angehalten“ befindet). Starten Sie zur Behebung dieses Problem die VM neu, und versuchen Sie es noch mal.
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 

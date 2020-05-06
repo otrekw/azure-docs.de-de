@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349335"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81453198"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Arbeiten mit R- und SQL-Daten in Azure SQL-Datenbank mit Machine Learning Services (Vorschauversion)
 
@@ -37,7 +38,7 @@ Beispiele für häufige Probleme, die auftreten können:
 
 - Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-- Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine Azure SQL-Datenbank-Instanz mit Machine Learning Services (mit R) aktivieren. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
+- Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine [Azure SQL-Datenbank-Instanz mit Machine Learning Services (mit R)](sql-database-machine-learning-services-overview.md) aktivieren.
 
 - Vergewissern Sie sich, dass die aktuelle Version von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) installiert ist. In diesem Schnellstart verwenden Sie SSMS, obwohl Sie auch mithilfe anderer Datenbankverwaltungen oder Abfragetools R-Skripts ausführen können.
 
@@ -116,7 +117,7 @@ $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Sie sehen, dass eine geringfügige Änderung der R-Syntax eine große Auswirkung auf das Schema mit den Ergebnissen hat. Die Unterschiede der R-Datentypen sind in *„Advanced R“ von Hadley Wickham* im Abschnitt [Data Structures](http://adv-r.had.co.nz) ausführlich beschrieben.
+Sie sehen, dass eine geringfügige Änderung der R-Syntax eine große Auswirkung auf das Schema mit den Ergebnissen hat. Die Unterschiede der R-Datentypen sind in [„Advanced R“ von Hadley Wickham](http://adv-r.had.co.nz) im Abschnitt *Data Structures* ausführlich beschrieben.
 
 Vorerst sollten Sie nur bedenken, dass Sie die erwarteten Ergebnisse überprüfen sollten, wenn Sie für R-Objekte Datenrahmen verwenden.
 

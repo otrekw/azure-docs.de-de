@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231634"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81532580"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -67,7 +67,7 @@ Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer
 
 ## <a name="enforce-ftps"></a>Erzwingen von FTPS
 
-Aus Sicherheitsgründen sollten Sie nur FTP über SSL zulassen. Sie können auch FTP und FTPS deaktivieren, wenn Sie keine FTP-Bereitstellung verwenden.
+Aus Sicherheitsgründen sollten Sie nur FTP über TLS/SSL zulassen. Sie können auch FTP und FTPS deaktivieren, wenn Sie keine FTP-Bereitstellung verwenden.
 
 Wählen Sie auf der Ressourcenseite Ihrer App im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
 

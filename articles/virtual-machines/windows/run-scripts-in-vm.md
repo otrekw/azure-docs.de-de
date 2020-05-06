@@ -2,18 +2,18 @@
 title: Ausführen von Skripts in einer Azure Windows-VM
 description: In diesem Thema wird das Ausführen von Skripts auf einem virtuellen Windows-Computer beschrieben.
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
-ms.topic: article
+ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: e10cab5261d6bd970135273bd4632b7c916641de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67476758"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099766"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Ausführen von Skripts in Ihrer Windows-VM
 

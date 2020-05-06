@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990989"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181612"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -70,10 +70,8 @@ In diesem Abschnitt werden das Installieren und Konfigurieren der Authentifizier
     Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
-<!--start-collapse-->
-> ### <a name="about-these-libraries"></a>Informationen zu diesen Bibliotheken
-> Diese Bibliotheken ermöglichen einmaliges Anmelden (Single Sign-On, SSO) mithilfe von OpenID Connect über die cookiebasierte Authentifizierung. Nachdem die Authentifizierung abgeschlossen ist und das Token, das den Benutzer darstellt, an Ihre Anwendung gesendet wurde, erstellt die OWIN-Middleware ein Sitzungscookie. Der Browser verwendet dann dieses Cookie bei nachfolgenden Anforderungen, damit der Benutzer sein Kennwort nicht erneut eingeben muss. Außerdem ist keine weitere Überprüfung erforderlich.
-<!--end-collapse-->
+### <a name="about-these-libraries"></a>Informationen zu diesen Bibliotheken
+Diese Bibliotheken ermöglichen einmaliges Anmelden (Single Sign-On, SSO) mithilfe von OpenID Connect über die cookiebasierte Authentifizierung. Nachdem die Authentifizierung abgeschlossen ist und das Token, das den Benutzer darstellt, an Ihre Anwendung gesendet wurde, erstellt die OWIN-Middleware ein Sitzungscookie. Der Browser verwendet dann dieses Cookie bei nachfolgenden Anforderungen, damit der Benutzer sein Kennwort nicht erneut eingeben muss. Außerdem ist keine weitere Überprüfung erforderlich.
 
 ## <a name="configure-the-authentication-pipeline"></a>Konfigurieren der Authentifizierungspipeline
 
@@ -117,7 +115,7 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -171,10 +169,9 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
 > Zur Vereinfachung dieser Schnellstartanleitung wird `ValidateIssuer = false` festgelegt. In echten Anwendungen müssen Sie den Aussteller überprüfen.
 > Informationen dazu finden Sie in den Beispielen.
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die Anwendung zur Kommunikation mit Microsoft Identity Platform. Da die OpenID Connect-Middleware im Hintergrund Cookies verwendet, müssen Sie außerdem die Cookieauthentifizierung einrichten, wie im Code oben gezeigt. Der *ValidateIssuer*-Wert weist OpenIdConnect an, den Zugriff nicht auf eine bestimmte Organisation zu beschränken.
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+
+Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die Anwendung zur Kommunikation mit Microsoft Identity Platform. Da die OpenID Connect-Middleware im Hintergrund Cookies verwendet, müssen Sie außerdem die Cookieauthentifizierung einrichten, wie im Code oben gezeigt. Der *ValidateIssuer*-Wert weist OpenIdConnect an, den Zugriff nicht auf eine bestimmte Organisation zu beschränken.
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Hinzufügen eines Controllers zum Verarbeiten von An- und Abmeldeanforderungen
 
@@ -208,7 +205,7 @@ Führen Sie die folgenden Schritte zum Erstellen eines neuen Controllers aus, um
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -266,10 +263,8 @@ Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmeld
     </html>
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Brandingrichtlinien").
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Brandingrichtlinien").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
 Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, um einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller, indem nur authentifizierte Benutzer zugelassen werden. Der folgende Code verwendet das Attribut zum Anzeigen von Benutzeransprüchen, die als Teil der Anmeldung abgerufen wurden:
@@ -291,28 +286,26 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>Weitere Informationen
-> Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt. 
-<!--end-collapse-->
+### <a name="more-information"></a>Weitere Informationen
+Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Erstellen einer Ansicht zum Anzeigen der Ansprüche des Benutzers
 
@@ -403,16 +396,16 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Az
 <br/><br/>
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-<!--start-collapse-->
-> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
->  Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer mit Microsoft Identity Platform für den Zugriff auf diese Anwendung authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
->  > - Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
->  > - Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
->
-> Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
-<!--end-collapse-->
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
-#### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
+Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer mit Microsoft Identity Platform für den Zugriff auf diese Anwendung authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
+
+- Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
+- Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
+
+Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+
+### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
 Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite werden die Willkommensnachricht *„Hallo \<Benutzer>“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche gelangen Sie zum zuvor erstellten Claims-Controller.
 
@@ -446,14 +439,13 @@ Sie werden für die Verwendung der geschützten Controlleransicht zur Authentifi
 
 ## <a name="advanced-options"></a>Erweiterte Optionen
 
-<!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Schutz der gesamten Website
+
 Zum Schutz der gesamten Website fügen Sie in der Datei **Global.asax** unter der Methode `Application_Start`dem Filter `GlobalFilters` das `AuthorizeAttribute`-Attribut hinzu:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
-<!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Einschränken des Anmeldezugriffs auf Ihre Anwendung
 

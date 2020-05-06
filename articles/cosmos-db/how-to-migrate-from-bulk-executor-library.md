@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Ihre Anwendung von der Verwendung der Bulk Ex
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755975"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146294"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrieren von der Bulk Executor-Bibliothek zur Unterstützung von Massenvorgängen im .NET SDK V3 von Azure Cosmos DB
 
@@ -27,13 +27,13 @@ Sie aktivieren die Unterstützung von Massenvorgängen für die `CosmosClient`-I
 
 Für die Unterstützung von Massenvorgängen im .NET SDK werden die [Task Parallel Library](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) und parallel ausgeführte Gruppierungsvorgänge genutzt. 
 
-Es gibt keine einzelne Methode, die Ihre Liste mit Dokumenten oder Vorgängen als Eingabeparameter übernimmt, sondern Sie müssen eine Aufgabe für jeden Vorgang erstellen, den Sie in einem Massenvorgang ausführen möchten.
+Im SDK gibt es keine einzelne Methode, die Ihre Liste mit Dokumenten oder Vorgängen als Eingabeparameter übernimmt. Sie müssen also eine Aufgabe für jeden Vorgang erstellen, den Sie in einem Massenvorgang ausführen möchten, und dann können Sie einfach warten, bis alle Aufgaben ausgeführt wurden.
 
 Angenommen, die anfängliche Eingabe ist beispielsweise eine Liste von Elementen mit folgendem Schema:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Wenn Sie einen Massenimport ausführen möchten (ähnlich der Verwendung von BulkExecutor.BulkImportAsync), erfordert dies gleichzeitige Aufrufe von `CreateItemAsync` mit jedem Elementwert. Beispiel:
+Wenn Sie einen Massenimport ausführen möchten (ähnlich der Verwendung von „BulkExecutor.BulkImportAsync“), erfordert dies gleichzeitige Aufrufe von `CreateItemAsync`. Beispiel:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
@@ -47,7 +47,7 @@ Wenn Sie eine *Massenlöschung* ausführen möchten (ähnlich der Verwendung von
 
 ## <a name="capture-task-result-state"></a>Ergebniszustand der Erfassungsaufgabe
 
-In den vorherigen Codebeispielen haben Sie eine Liste paralleler Aufgaben erstellt und für jede dieser Aufgaben die `CaptureOperationResponse`-Methode aufgerufen. Bei dieser Methode handelt es sich um eine Erweiterung, mit der Sie ein *ähnliches Antwortschema* wie bei BulkExecutor verwalten können, indem Sie Fehler erfassen und die [Verwendung von Anforderungseinheiten](request-units.md) verfolgen.
+In den vorherigen Codebeispielen haben wir eine Liste paralleler Aufgaben erstellt und für jede dieser Aufgaben die `CaptureOperationResponse`-Methode aufgerufen. Bei dieser Methode handelt es sich um eine Erweiterung, mit der Sie ein *ähnliches Antwortschema* wie bei BulkExecutor verwalten können, indem Sie Fehler erfassen und die [Verwendung von Anforderungseinheiten](request-units.md) verfolgen.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
@@ -57,7 +57,11 @@ Dabei ist die `OperationResponse` deklariert als:
 
 ## <a name="execute-operations-concurrently"></a>Paralleles Ausführen von Vorgängen
 
-Nachdem die Aufgabenliste definiert wurde, warten Sie, bis alle abgeschlossen wurden. Sie können den Abschluss der Aufgaben nachverfolgen, indem Sie den Bereich des Massenvorgangs wie im folgenden Codeausschnitt gezeigt definieren:
+Um den Umfang der gesamten Aufgabenliste nachzuverfolgen, verwenden wir die folgende Hilfsklasse:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkOperationsHelper":::
+
+Die `ExecuteAsync`-Methode wartet, bis alle Vorgänge abgeschlossen sind, und Sie können sie wie folgt verwenden:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="WhenAll":::
 

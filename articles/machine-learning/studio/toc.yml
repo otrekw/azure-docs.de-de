@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: Verwalten
           href: manage-workspace.md
-        - name: Problembehandlung
-          href: troubleshooting-creating-ml-workspace.md
         - name: Bereitstellen mithilfe von ARM
           href: deploy-with-resource-manager-template.md
     - name: Importieren von Trainingsdaten
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: Interpretieren von Ergebnissen
               href: interpret-model-results.md
-            - name: Debuggen
-              href: debug-models.md
         - name: Erneutes Trainieren von Modellen
           items:
             - name: „Neue“ Webdienste
@@ -96,19 +92,12 @@
           items:
             - name: Erste Schritte mit R
               href: r-get-started.md
-            - name: Ausführen von R-Skripts
-              href: extend-your-experiment-with-r.md
             - name: Erstellen benutzerdefinierter R-Module
               href: custom-r-modules.md
             - name: Ausführen von Python-Skripts
               href: execute-python-scripts.md
     - name: Auswählen eines Algorithmus
-      items:
-        - name: Auswählen von Algorithmen
-          href: algorithm-choice.md
-        - name: Algorithmusbeispiele
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: Bereitstellen von Modellen
       items:
         - name: Bereitstellen eines Webdiensts
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Verwenden des Excel-Add-Ins
           href: excel-add-in-for-web-services.md
-    - name: Anwendungsfälle
-      items:
-        - name: Kundenabwanderung
-          href: azure-ml-customer-churn-scenario.md
-        - name: Stimmungsanalyse
-          href: text-analytics-module-tutorial.md
-        - name: Migrieren von Analysen von Excel zu Studio (klassisch)
-          href: use-case-excel-studio.md
     - name: Löschen und Exportieren von Kundendaten
       items:
         - name: Studio-Daten (klassisch)

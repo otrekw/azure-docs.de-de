@@ -3,18 +3,18 @@ title: Verwendungsbereich und Vorgehensweise – Personalisierung
 description: Personalisierung kann in jeder Situation angewendet werden, in der Ihre Anwendung das richtige Element oder Produkt bzw. die richtige Aktion auswählen kann, das/die angezeigt werden soll – um die Erfahrung zu verbessern, bessere Geschäftsergebnisse zu erzielen oder die Produktivität zu steigern.
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218560"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81617678"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Verwendungsbereich und Vorgehensweise – Personalisierung
 
 Verwenden Sie Personalisierung in jeder Situation, in der Ihre Anwendung die richtige Aktion (Inhalt) auswählen muss, die angezeigt werden soll – um die Erfahrung zu verbessern, bessere Geschäftsergebnisse zu erzielen oder die Produktivität zu steigern.
 
-Personalisierung verwendet maschinelles Lernen, um die dem Benutzer anzuzeigende Aktion (Inhalt) auszuwählen. Die Auswahl kann drastisch variieren, abhängig von der Menge, Qualität und Verteilung der an den Dienst gesendeten Daten.
+Personalisierung verwendet vertiefendes Lernen, um die dem Benutzer anzuzeigende Aktion (Inhalt) auszuwählen. Die Auswahl kann drastisch variieren, abhängig von der Menge, Qualität und Verteilung der an den Dienst gesendeten Daten.
 
 ## <a name="example-use-cases-for-personalizer"></a>Beispielanwendungsfall für die Personalisierung
 

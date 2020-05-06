@@ -2,15 +2,15 @@
 title: Bereitstellen von VM-Erweiterungen mit einer Vorlage
 description: Hier erfahren Sie, wie Sie Azure-VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen.
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477589"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184961"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen
 
@@ -23,7 +23,6 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Öffnen einer Schnellstartvorlage
 > * Bearbeiten der Vorlage
 > * Bereitstellen der Vorlage
-> * Überprüfen der Bereitstellung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -42,29 +41,34 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-powershell-script"></a>Vorbereiten eines PowerShell-Skripts
 
-Ein PowerShell-Skript mit folgendem Inhalt ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) verfügbar:
+Sie können ein PowerShell-Inlineskript oder eine Skriptdatei verwenden.  In diesem Tutorial wird die Verwendung einer Skriptdatei erläutert. Ein PowerShell-Skript mit folgendem Inhalt ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) verfügbar:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie später in diesem Tutorial das Element `fileUri` in der Vorlage aktualisieren.
+Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, aktualisieren Sie später in diesem Tutorial das Element `fileUri` in der Vorlage.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
 „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
-1. Fügen Sie in das Feld **Dateiname** die folgende URL ein: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json.
+1. Fügen Sie im Feld **Dateiname** die folgende URL ein:
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
     Die Vorlage definiert fünf Ressourcen:
 
-   * **Microsoft.Storage/storageAccounts**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAddresses**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 
@@ -77,7 +81,7 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiter
 * **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
 * **commandToExecute:** Dieser Befehl ruft das Skript auf.
 
+Wenn Sie ein Inlineskript verwenden möchten, entfernen Sie **fileUris**, und aktualisieren Sie **commandToExecute** wie folgt:
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+Dieses Inlineskript aktualisiert auch den Inhalt der Datei „iisstart.html“.
+
 Außerdem müssen Sie den HTTP-Port öffnen, um auf den Webserver zugreifen zu können.
 
 1. Suchen Sie in der Vorlage nach **securityRules**.
@@ -130,10 +142,13 @@ Außerdem müssen Sie den HTTP-Port öffnen, um auf den Webserver zugreifen zu k
 
 Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstellen der Vorlage“ unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
 
-## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+Rufen Sie mithilfe des folgenden Befehls in Cloud Shell die öffentliche IP-Adresse des virtuellen Computers ab:
 
-1. Wählen Sie im Azure-Portal den virtuellen Computer aus.
-1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.** , und fügen Sie sie anschließend in eine Browserregisterkarte ein. Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+Fügen Sie die IP-Adresse in einen Webbrowser ein. Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
 
 ![Die Begrüßungsseite von Internetinformationsdienste](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market-Dienste – Bewährte Marketingmethoden | Azure
+title: 'Go-To-Market-Dienste: bewährte Marketingmethoden | Azure Marketplace'
 description: Go-To-Market-Dienste – In diesem Abschnitt werden bewährte Marketingmethoden für Azure Marketplace-Herausgeber beschrieben
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 6/24/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2926752884576bcf3a7a15d68eecb6f1248f7e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684601"
 ---
 # <a name="marketing-best-practices"></a>Bewährte Marketingmethoden
 
@@ -22,6 +22,6 @@ Eine optimierte Listung in Marketplace und Markteinführungskampagnen können Ih
 
 Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-Diensten zu erhalten.
 
-Melden Sie sich am [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 
 ---

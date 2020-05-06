@@ -4,12 +4,12 @@ description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234334"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81769769"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -125,7 +125,10 @@ Klicken Sie auf **Warnungsregeln verwalten**, um die Seite **Regeln** anzuzeigen
 
 
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
-Sie können Warnungen unabhängig vom Überwachungsdienst oder Signaltyp auf konsistente Weise erstellen. Alle ausgelösten Warnungen und zugehörigen Details sind auf einer einzelnen Seite verfügbar.
+Sie können Warnungsregeln unabhängig vom Überwachungsdienst oder Signaltyp auf konsistente Weise erstellen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
+
  
 Gehen Sie zum Erstellen einer neuen Warnungsregel wie folgt vor:
 1. Wählen Sie das _Ziel_ für die Warnung aus.

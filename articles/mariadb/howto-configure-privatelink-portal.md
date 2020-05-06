@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79370337"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über das Portal
@@ -41,7 +41,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Position | Wählen Sie **Europa, Westen** aus.|
+    | Standort | Wählen Sie **Europa, Westen** aus.|
     | Subnetzname | Geben Sie *mySubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
     |||
@@ -112,7 +112,7 @@ In diesem Abschnitt erstellen Sie einen Azure Database for MariaDB-Server in Azu
     |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Administratorbenutzername| Geben Sie einen Administratornamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Position | Wählen Sie eine Azure-Region aus, in der sich Ihr MariaDB-Server befinden soll. |
+    | Standort | Wählen Sie eine Azure-Region aus, in der sich Ihr MariaDB-Server befinden soll. |
     |Version  | Wählen Sie die gewünschte Datenbankversion des MariaDB-Servers aus.|
     | Compute und Speicher| Wählen Sie den für den Server erforderlichen Tarif basierend auf der Workload aus. |
     |||

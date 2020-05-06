@@ -1,17 +1,15 @@
 ---
 title: Einrichten einer Azure Migrate-Appliance für physische Server
 description: Erfahren Sie, wie eine Azure Migrate-Appliance für die Bewertung physischer Server eingerichtet wird.
-author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598169"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81538272"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
@@ -49,11 +47,24 @@ Laden Sie gezippte Datei für die Appliance herunter.
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-2. Führen Sie den folgenden Befehl aus, um den Hash für die VHD zu generieren:
+2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Für die aktuelle Applianceversion muss der generierte Hash den folgenden [Einstellungen](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) entsprechen.
+    - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Beispielverwendung für die Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Überprüfen der Hashwerte:
+ 
+    - Für die öffentliche Cloud (für die aktuelle Applianceversion):
 
+        **Algorithmus** | **Hashwert**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+
+    - Für Azure Government (für die aktuelle Applianceversion):
+
+        **Algorithmus** | **Hashwert**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
@@ -69,23 +80,23 @@ Das Installationsskript führt folgende Schritte aus:
 
 Führen Sie das Skript wie folgt aus:
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Computer auf einer vorhandenen Azure Migrate-Appliance aus.
 2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
 
-Bei Problemen können Sie unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log“ auf die Skriptprotokolle zugreifen, um die Problembehandlung durchzuführen.
+    - Für die öffentliche Cloud: ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Für Azure Government: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Achten Sie darauf, dass Sie das Azure Migrate-Installationsprogrammskript nicht auf einer vorhandenen Azure Migrate-Appliance ausführen.
+    Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
+
+Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
+
+
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit den erforderlichen [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
+Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ## <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -120,7 +131,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 Stellen Sie eine Verbindung zwischen der Appliance und den physischen Servern her, und starten Sie die Ermittlung.
 
 1. Klicken Sie auf **Anmeldeinformationen hinzufügen**, um die Kontoanmeldeinformationen anzugeben, die die Appliance für die Serverermittlung verwendet.  
-2. Geben Sie das **Betriebssystem**, einen Anzeigenamen für die Anmeldeinformationen, **Benutzername** und **Kennwort** ein, und klicken Sie auf **Hinzufügen**.
+2. Geben Sie das **Betriebssystem**, einen Anzeigenamen für die Anmeldeinformationen sowie den Benutzernamen und das Kennwort ein. Klicken Sie anschließend auf **Hinzufügen**.
 Sie können für Windows- und Linux-Server je einen Satz Anmeldeinformationen angeben.
 4. Klicken Sie auf **Server hinzufügen**, und geben Sie für die Verbindungsherstellung mit dem Server Details zum Server an: FQDN/IP-Adresse und einen Anzeigenamen für die Anmeldeinformationen (ein Eintrag pro Zeile).
 3. Klicken Sie auf **Überprüfen**. Nach der Überprüfung wird die Liste der Server angezeigt, die ermittelt werden können.

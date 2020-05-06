@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598186"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537694"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -45,7 +45,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     Azure Files ist eigentlich ein Dateisystem. Azure Files verfügt über alle Datei-Abstracts, die Sie bei der jahrelangen Arbeit mit lokalen Betriebssystemen kennen und schätzen gelernt haben. Wie Azure Blob Storage auch, verfügt Azure Files über eine REST-Schnittstelle und REST-basierte Clientbibliotheken. Im Gegensatz zu Azure Blob Storage ermöglicht Azure Files den SMB-Zugriff auf Azure-Dateifreigaben. Per SMB können Sie eine Azure-Dateifreigabe direkt unter Windows, Linux oder macOS (lokal oder auf Cloud-VMs) bereitstellen, ohne Codes schreiben oder dem Dateisystem spezielle Treiber hinzufügen zu müssen. Außerdem können Sie Azure-Dateifreigaben auf lokalen Dateiservern per Azure-Dateisynchronisierung zwischenspeichern, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen. 
    
-    Eine ausführliche Beschreibung der Unterschiede zwischen Azure Files und dem Azure Blob Storage finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](../common/storage-decide-blobs-files-disks.md). Weitere Informationen zum Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../blobs/storage-blobs-introduction.md).
+    Eine ausführlichere Beschreibung der Unterschiede zwischen Azure Files und Azure Blob Storage finden Sie in der [Einführung in die zentralen Azure Storage-Dienste](../common/storage-introduction.md). Weitere Informationen zum Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Warum sollte ich eine Azure-Dateifreigabe anstelle von Azure-Datenträgern verwenden?**  
     Unter Azure-Datenträger ist ein Datenträger nicht mehr als ein einfacher Datenträger. Sie erhöhen den Nutzen von Azure-Datenträgern, indem Sie einen Datenträger an einen virtuellen Computer anfügen, der in Azure ausgeführt wird. Azure-Datenträger können für alle Zwecke verwendet werden, die auch für einen Datenträger auf einem lokalen Server gelten. Sie können sie als Betriebssystemdatenträger, als Auslagerungsbereich für ein Betriebssystem oder als dedizierten Speicher für eine Anwendung einsetzen. Ein interessanter Einsatzzweck von Azure-Datenträgern ist die Erstellung eines Dateiservers in der Cloud, der in denselben Situationen wie bei einer Azure-Dateifreigabe verwendet wird. Die Bereitstellung eines Dateiservers auf Azure Virtual Machines ist ein auf hohe Leistung ausgelegtes Verfahren, um Dateispeicher in Azure freizugeben, wenn Sie Bereitstellungsoptionen benötigen (z.B. NFS-Protokollunterstützung oder Storage Premium), die derzeit nicht von Azure Files unterstützt werden. 
@@ -54,7 +54,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     Ein Ansatz, bei dem Sie jeweils die Vorteile von Azure Files sowie eines unter Azure Virtual Machines gehosteten Dateiservers (zusätzlich zur Verwendung von Azure-Datenträgern als Back-End-Speicher) nutzen können, ist die Installation der Azure-Dateisynchronisierung auf einem Dateiserver, der auf einer Cloud-VM gehostet wird. Wenn sich die Azure-Dateifreigabe in derselben Region wie Ihr Dateiserver befindet, können Sie das Cloudtiering aktivieren und den Prozentsatz des freien Volumespeicherplatzes auf den Maximalwert (99%) festlegen. So wird die minimale Duplizierung von Daten sichergestellt. Außerdem können Sie für Ihre Dateiserver beliebige Anwendungen nutzen, z.B. Anwendungen, die eine Unterstützung des NFS-Protokolls benötigen.
 
-    Informationen zu einer Möglichkeit, wie Sie einen leistungsstarken und hochverfügbaren Dateiserver in Azure einrichten, finden Sie unter [Deploying IaaS VM Guest Clusters in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/) (Bereitstellen von IaaS-VM-Gastclustern in Microsoft Azure). Eine ausführliche Beschreibung der Unterschiede zwischen Azure Files und Azure-Datenträgern finden Sie unter [Entscheidung zwischen Azure Blob Storage, Azure Files und Azure-Datenträger](../common/storage-decide-blobs-files-disks.md). Weitere Informationen zu Azure-Datenträgern finden Sie unter [Azure Managed Disks – Übersicht](../../virtual-machines/windows/managed-disks-overview.md).
+    Informationen zu einer Möglichkeit, wie Sie einen leistungsstarken und hochverfügbaren Dateiserver in Azure einrichten, finden Sie unter [Deploying IaaS VM Guest Clusters in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/) (Bereitstellen von IaaS-VM-Gastclustern in Microsoft Azure). Eine ausführlichere Beschreibung der Unterschiede zwischen Azure Files und Azure-Datenträgern finden Sie in der [Einführung in die zentralen Azure Storage-Dienste](../common/storage-introduction.md). Weitere Informationen zu Azure-Datenträgern finden Sie unter [Azure Managed Disks – Übersicht](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
   **Wie kann ich mich mit Azure Files vertraut machen?**  
@@ -81,6 +81,9 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
   **Ich wünsche mir, dass Azure Files ein bestimmtes Feature hinzugefügt wird. Können Sie es hinzufügen?**  
     Das Azure Files-Team legt großen Wert darauf, Ihr Feedback zu unserem Dienst zu erhalten. Stimmen Sie in [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) über Funktionsanfragen ab! Wir hoffen, dass wir Sie mit vielen neuen Funktionen begeistern können.
 
+  **Unterstützt Azure Files das Sperren von Dateien?**  
+    Ja. Die Dateisperrung im SMB-/Windows-Stil wird von Azure Files vollständig unterstützt. Ausführliche Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 * <a id="afs-region-availability"></a>
@@ -161,7 +164,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="ad-support"></a>
 **Unterstützt Azure Files die identitätsbasierte Authentifizierung und Zugriffssteuerung?**  
     
-    Ja, Azure Files unterstützt identitätsbasierte Authentifizierung und Zugriffssteuerung. Sie können eine von zwei Methoden zur Verwendung von identitätsbasierter Zugriffssteuerung auswählen: Active Directory (AD) (Vorschau) oder Azure Active Directory Domain Services (Azure AD DS) (GA). AD unterstützt Authentifizierung mithilfe von in die Domäne eingebundenen AD-Computern, entweder lokal oder in Azure, um über SMB auf Azure-Dateifreigaben zuzugreifen. Die Azure AD DS-Authentifizierung per SMB für Azure Files ermöglicht es in die Domäne eingebundenen Azure AD DS-Windows-VMs, mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Weitere Informationen finden Sie unter [Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff](storage-files-active-directory-overview.md). 
+    Ja, Azure Files unterstützt identitätsbasierte Authentifizierung und Zugriffssteuerung. Sie können die identitätsbasierte Zugriffssteuerung auf zwei unterschiedliche Weisen nutzen: über lokale Active Directory Domain Services (Vorschau) oder über Azure Active Directory Domain Services (Azure AD DS). Lokale Active Directory Domain Services (AD DS) unterstützen die Authentifizierung unter Verwendung von Computern, die entweder lokal oder in Azure in eine AD DS-Domäne eingebunden sind, für den Zugriff auf Azure-Dateifreigaben über SMB. Die Azure AD DS-Authentifizierung per SMB für Azure Files ermöglicht es in die Domäne eingebundenen Azure AD DS-Windows-VMs, mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Weitere Informationen finden Sie unter [Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff](storage-files-active-directory-overview.md). 
 
     Azure Files verfügt noch über zwei weitere Möglichkeiten zur Verwaltung der Zugriffssteuerung:
 
@@ -179,38 +182,33 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="ad-support-rest-apis"></a>
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für NTFS-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
-    Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (oder höher) erfassen, festlegen oder kopieren.
+    Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren.
 
 * <a id="ad-vm-subscription"></a>
-**Kann ich auf Azure Files mit Azure AD-Anmeldeinformationen von einer VM unter einem anderen Abonnement zugreifen?**
+**Kann ich auf Azure-Dateifreigaben mit Azure AD-Anmeldeinformationen von einer VM unter einem anderen Abonnement zugreifen?**
 
-    Wenn das Abonnement, unter dem die Dateifreigabe bereitgestellt wurde, demselben Azure AD-Mandanten wie die Azure AD Domain Services-Bereitstellung (mit Einbindung der VM) zugeordnet ist, können Sie auf Azure Files mit den gleichen Azure AD-Anmeldeinformationen zugreifen. Die Einschränkung bezieht sich nicht auf das Abonnement, sondern auf den zugeordneten Azure AD-Mandanten.    
+    Wenn das Abonnement, unter dem die Dateifreigabe bereitgestellt wurde, demselben Azure AD-Mandanten wie die Azure AD DS-Bereitstellung zugeordnet ist, in die die VM eingebunden ist, können Sie mit denselben Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. Die Einschränkung bezieht sich nicht auf das Abonnement, sondern auf den zugeordneten Azure AD-Mandanten.
     
 * <a id="ad-support-subscription"></a>
-**Kann ich die Azure Files Azure AD DS- oder AD-Authentifizierung für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
+**Kann ich die Authentifizierung mit Azure AD DS oder lokalen AD DS für Azure-Dateifreigaben mit einem Azure AD-Mandanten aktivieren, der sich vom primären Mandanten der Azure-Dateifreigabe unterscheidet?**
 
-    Nein. Azure Files unterstützt nur die Azure AD DS- oder AD-Integration mit einem Azure AD-Mandanten, der sich unter demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein. Diese Einschränkung gilt für Azure AD DS- und AD-Authentifizierungsmethoden. Wenn Sie AD für die Authentifizierung verwenden, müssen die AD-Anmeldeinformationen mit dem Azure AD synchronisiert werden, dem das Speicherkonto zugeordnet ist.
+    Nein. Azure Files unterstützen nur die Integration von Azure AD DS oder lokalen AD DS und einem Azure AD-Mandanten, der sich im selben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein. Diese Einschränkung gilt für Authentifizierungsmethoden für Azure AD DS und lokale AD DS. Wenn Sie lokale AD DS für die Authentifizierung verwenden, [müssen die AD DS-Anmeldeinformationen mit dem Azure AD synchronisiert werden](../../active-directory/hybrid/how-to-connect-install-roadmap.md), dem das Speicherkonto zugeordnet ist.
 
 * <a id="ad-linux-vms"></a>
-**Unterstützt die Azure Files AD DS- oder AD-Authentifizierung Linux-VMs?**
+**Unterstützt die Authentifizierung für Azure-Dateifreigaben mit Azure AD DS oder lokalen AD DS virtuelle Linux-Computer?**
 
     Nein. Die Authentifizierung von virtuellen Linux-Computern wird nicht unterstützt.
 
-* <a id="ad-multiple-forest"></a>
-**Unterstützt die Azure Files AD-Authentifizierung Integration in eine AD-Umgebung mit mehreren Gesamtstrukturen?**    
-
-    Azure Files AD-Authentifizierung ist nur in die Gesamtstruktur des AD-Domänendiensts integriert, bei dem das Speicherkonto registriert ist. Zur Unterstützung der Authentifizierung von einer anderen AD-Gesamtstruktur muss die Gesamtstrukturvertrauensstellung in Ihrer Umgebung ordnungsgemäß konfiguriert sein. Die Art und Weise, Azure Files bei einem AD-Domänendienst registriert wird, ist größtenteils identisch mit einem regulären Dateiserver, auf dem eine Identität (Computer- oder Dienstanmeldekonto) in AD für die Authentifizierung erstellt wird. Der einzige Unterschied besteht darin, dass der registrierte SPN des Speicherkontos auf „file.core.windows.net“ endet, was nicht mit dem Domänensuffix übereinstimmt. Wenden Sie sich an Ihren Domänenadministrator, um festzustellen, ob ein Update Ihrer DNS-Routingrichtlinie erforderlich ist, um die Authentifizierung mit mehreren Gesamtstrukturen aufgrund des unterschiedlichen Domänensuffixes zu aktivieren.
-
-* <a id=""></a>
-**Welche Regionen sind für Azure Files AD-Authentifizierung (Vorschau) verfügbar?**
-
-    Weitere Informationen finden Sie unter [Regionale AD-Verfügbarkeit](storage-files-identity-auth-active-directory-enable.md#regional-availability).
-
 * <a id="ad-aad-smb-afs"></a>
-**Kann ich Azure Files Azure AD DS-Authentifizierung oder Active Directory-Authentifizierung (AD) (Vorschau) für Dateifreigaben nutzen, die durch Azure-Dateisynchronisierung verwaltet werden?**
+**Unterstützen von der Azure-Dateisynchronisierung verwaltete Dateifreigaben die Authentifizierung mit Azure AD DS oder lokalen AD DS (Vorschau)?**
 
-    Ja, Sie können Azure AD DS- oder AD-Authentifizierung für eine von der Azure-Dateisynchronisierung verwaltete Dateifreigabe aktivieren. Änderungen an den NTFS-ACLs der Verzeichnisse/Dateien auf lokalen Dateiservern werden in Azure Files gestaffelt und umgekehrt.
+    Ja, Sie können die Authentifizierung mit Azure AD DS oder lokalen AD DS für eine von der Azure-Dateisynchronisierung verwaltete Dateifreigabe aktivieren. Änderungen an den NTFS-ACLs der Verzeichnisse/Dateien auf lokalen Dateiservern werden in Azure Files gestaffelt und umgekehrt.
 
+* <a id="ad-aad-smb-files"></a>
+**Wie kann ich überprüfen, ob die AD DS-Authentifizierung für mein Speicherkonto aktiviert wurde, und die Domäneninformationen abrufen?**
+
+    Anweisungen dazu finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+    
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
 
@@ -235,6 +233,37 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Welche Richtlinien zur Datenkonformität werden von Azure Files unterstützt?**  
 
    Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings) und im [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
+   
+### <a name="ad-authentication"></a>AD-Authentifizierung
+* <a id=""></a>
+**Unterstützt die Azure AD-Authentifizierung für Azure Files virtuelle Linux-Computer?**
+
+    Nein. Die Authentifizierung von virtuellen Linux-Computern wird nicht unterstützt.
+
+* <a id="ad-multiple-forest"></a>
+**Unterstützt die Authentifizierung mit lokalen AD DS für Azure-Dateifreigaben die Integration in eine AD DS-Umgebung mit mehreren Gesamtstrukturen?**    
+
+    Die Azure Files-Authentifizierung mit lokalen AD DS ist nur in die Gesamtstruktur des Domänendiensts integriert, bei dem das Speicherkonto registriert ist. Zur Unterstützung der Authentifizierung von einer anderen Gesamtstruktur muss die Gesamtstruktur-Vertrauensstellung in Ihrer Umgebung ordnungsgemäß konfiguriert sein. Die Registrierung von Azure Files bei AD DS entspricht größtenteils der Registrierung eines regulären Dateiservers. Dabei wird in AD DS eine Identität (Computer- oder Dienstanmeldekonto) für die Authentifizierung erstellt. Der einzige Unterschied besteht darin, dass der registrierte SPN des Speicherkontos auf „file.core.windows.net“ endet, was nicht mit dem Domänensuffix übereinstimmt. Wenden Sie sich an Ihren Domänenadministrator, um festzustellen, ob ein Update Ihrer DNS-Routingrichtlinie erforderlich ist, um die Authentifizierung mit mehreren Gesamtstrukturen aufgrund des unterschiedlichen Domänensuffixes zu aktivieren.
+
+* <a id=""></a>
+**Welche Regionen sind für die AD DS-Authentifizierung (Vorschau) von Azure Files verfügbar?**
+
+    Ausführliche Informationen finden Sie unter [Regionale AD DS-Verfügbarkeit](storage-files-identity-auth-active-directory-enable.md#regional-availability).
+    
+* <a id="ad-aad-smb-afs"></a>
+**Kann ich die Azure Files Active Directory-Authentifizierung (AD) (Vorschau) für Dateifreigaben nutzen, die durch Azure-Dateisynchronisierung verwaltet werden?**
+
+    Ja, Sie können die AD-Authentifizierung für eine von der Azure-Dateisynchronisierung verwaltete Dateifreigabe aktivieren. Änderungen an den NTFS-ACLs der Verzeichnisse/Dateien auf lokalen Dateiservern werden in Azure Files gestaffelt und umgekehrt.
+
+* <a id="ad-aad-smb-files"></a>
+**Wie kann ich überprüfen, ob die AD-Authentifizierung für mein Speicherkonto aktiviert ist, und die AD-Domäneninformationen abrufen?**
+
+    In der [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) bereitgestellten Anleitung erfahren Sie, wie Sie überprüfen, ob die AD-Authentifizierung von Azure Files für Ihr Speicherkonto aktiviert ist und wie Sie die AD-Domäneninformationen abrufen.
+
+* <a id="ad-aad-smb-files"></a>
+**Macht es für die Darstellung meines Speicherkontos in AD einen Unterschied, ob ich ein Computerkonto oder ein Dienstanmeldekonto erstelle?**
+
+    Ob Sie ein [Computerkonto](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standard) oder ein [Dienstanmeldekonto](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) erstellen, hat keine Auswirkung darauf, wie die Authentifizierung mit Azure Files erfolgt. Sie können festlegen, wie ein Speicherkonto als Identität in Ihrer AD-Umgebung dargestellt werden soll. Der im Join-AzStorageAccountForAuth-Cmdlet standardmäßig festgelegte DomainAccountType ist Computerkonto. Das in Ihrer AD-Umgebung konfigurierte Kennwort für den Ablauf des Kennworts kann jedoch für das Computer- oder Dienstanmeldekonto abweichen. Berücksichtigen Sie dies beim [Aktualisieren des Kennworts Ihrer Speicherkontoidentität in AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
 
 ## <a name="on-premises-access"></a>Lokaler Zugriff
 
@@ -345,7 +374,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="need-larger-share"></a>
 **Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
-    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
 
 * <a id="lfs-performance-impact"></a>
 **Wirkt sich eine Erweiterung meines Dateifreigabekontingents auf meine Workloads oder die Azure-Dateisynchronisierung aus?**

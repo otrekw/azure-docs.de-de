@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521840"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81730562"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
@@ -218,6 +218,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932120|Ausführung eines Remotebefehls = Windows PowerShell-Befehl gefunden|
 |932130|Ausführung eines Remotebefehls = Unix Shell-Ausdruck gefunden|
 |932140|Ausführung eines Remotebefehls = Windows-FOR/IF-Befehl gefunden|
+|932150|Remotebefehlsausführung: Direkte Ausführung von UNIX-Befehlen|
 |932160|Ausführung eines Remotebefehls = Unix Shell-Code gefunden|
 |932170|Ausführung eines Remotebefehls = Shellshock (CVE-2014-6271)|
 |932171|Ausführung eines Remotebefehls = Shellshock (CVE-2014-6271)|

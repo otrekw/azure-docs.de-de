@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 724c2ffebd34b838c19f3296363c38c83e142b96
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270297"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148236"
 ---
 # <a name="container-marketplace-tab"></a>Marketplace-Registerkarte „Container“
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure-Containerangebots](https://aka.ms/CreateContainerOffer), um Ihre migrierten Angebote zu verwalten.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure-Containerangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer), um Ihre migrierten Angebote zu verwalten.
 
 Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Fügen Sie Ihre Marketing-spezifischen Inhalt zum Abschnitt **Übersicht** hinzu.
 

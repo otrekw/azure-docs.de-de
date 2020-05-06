@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5f37d157e11b8cd7cf093fa558e81d9a1ce345a9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270195"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146204"
 ---
 # <a name="container-skus-tab"></a>Registerkarte für Container-SKUs
 
 > [!IMPORTANT]
-> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure-Containerangebots](https://aka.ms/CreateContainerOffer), um Ihre migrierten Angebote zu verwalten.
+> Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Azure-Containerangebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Folgen Sie den Anweisungen unter [Erstellen eines Azure-Containerangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer), um Ihre migrierten Angebote zu verwalten.
 
 Auf der Registerkarte **SKUs** auf der Seite **Neues Angebot** können Sie eine oder mehrere SKUs erstellen und Ihrem neuen Angebot zuordnen.  Mit unterschiedlichen SKUs können Sie eine Lösung nach Funktionsgruppen, Abrechnungsmodellen oder einem anderen Merkmal unterscheiden.
 

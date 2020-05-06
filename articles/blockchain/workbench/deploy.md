@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943202"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
@@ -69,7 +69,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
     | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
-    | Position | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
+    | Location | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 
 1. Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
@@ -84,7 +84,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
-    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
+    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
     | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
     Für **Vorhandene verwenden**:
@@ -103,7 +103,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
      | Einstellung | BESCHREIBUNG  |
      |---------|--------------|
      | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
-     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
+     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
      | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
 1. Klicken Sie auf **OK**, um die Konfiguration der erweiterten Einstellungen abzuschließen.

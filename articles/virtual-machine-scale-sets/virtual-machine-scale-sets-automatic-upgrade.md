@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 70810b21def1672758683abd49f92b86776c9d7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393794"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81458980"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -158,7 +158,7 @@ az provider register --namespace Microsoft.Compute
 - Die neue Imageversion sollte nicht aus der aktuellen Version für das betreffende Katalogimage ausgeschlossen werden. Für Imageversionen, die aus der aktuellen Version des Katalogimages ausgeschlossen werden, erfolgt durch das automatische Upgrade von Betriebssystemimages kein Rollout in der Skalierungsgruppe.
 
 > [!NOTE]
->Es kann bis zu 2 Stunden dauern, bis eine Skalierungsgruppe das erste Imagerollout erhält, nachdem die Skalierungsgruppe für automatische Betriebssystemupgrades konfiguriert wurde. Dies ist eine einmalige Verzögerung pro Skalierungsgruppe. Nachfolgende Imagerollouts werden ohne diese Verzögerung auf die Skalierungsgruppe angewendet.
+>Es kann bis zu drei Stunden dauern, bis eine Skalierungsgruppe den ersten Rollout für das Imageupgrade auslöst, nachdem sie für automatische Betriebssystemupgrades konfiguriert wurde. Dies ist eine einmalige Verzögerung pro Skalierungsgruppe. Nachfolgende Imagerollouts werden für die Skalierungsgruppe innerhalb von 30 Minuten ausgelöst.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurieren des automatischen Upgrades von Betriebssystemimages
