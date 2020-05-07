@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Clus
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251794"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788820"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -84,7 +84,7 @@ Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die
 
 Indem Sie also den Wert von *nt1InstanceCount* aktualisieren, ändern Sie die Anzahl der Knoten im zweiten Knotentyp.  Denken Sie daran, dass Sie einen Knotentyp nicht auf mehr als 100 Knoten horizontal hochskalieren können.  Andere (nicht primäre) Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen. Andere (nicht primäre) Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
 
-Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ horizontal herunterskalieren (Knoten von ihm entfernen), müssen Sie [den Zustand dieser Knoten manuell entfernen](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Für die Dauerhaftigkeitsstufen „Silber“ und „Gold“ werden diese Schritte automatisch von der Plattform ausgeführt.
+Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ horizontal herunterskalieren (Knoten von ihm entfernen), müssen Sie [den Zustand dieser Knoten manuell entfernen](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Für die Dauerhaftigkeitsstufen „Silber“ und „Gold“ werden diese Schritte automatisch von der Plattform ausgeführt.
 
 ### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
 Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:

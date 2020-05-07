@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c660f7e05af43c2aad6f7283e32cfc1d85571ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066829"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188568"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
-Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Linux-Computern verhindern möchten, können Sie mithilfe der CLI eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
+Wenn Sie die Verwendung oder Installation bestimmter Erweiterungen auf Ihren Linux-VMs verhindern möchten, können Sie mithilfe der Befehlszeilenschnittstelle eine Azure Policy-Definition zum Einschränken von Erweiterungen für VMs in einer Ressourcengruppe erstellen. 
 
-Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
