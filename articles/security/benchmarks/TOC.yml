@@ -1,8 +1,9 @@
-- name: Vergleichstests für die Azure-Sicherheit
+- name: Vergleichstest für die Azure-Sicherheit
   href: index.yml
 - name: Einführung
   href: introduction.md
 - name: Einstellungen für einmaliges Anmelden
+  expanded: true
   items:
     - name: Übersicht über Azure-Sicherheitssteuerungen
       href: overview.md
@@ -12,7 +13,7 @@
       href: security-control-logging-monitoring.md
     - name: Identität und Zugriffssteuerung
       href: security-control-identity-access-control.md
-    - name: Datenschutz
+    - name: Schutz von Daten
       href: security-control-data-protection.md
     - name: Verwaltung von Sicherheitsrisiken
       href: security-control-vulnerability-management.md
@@ -26,12 +27,14 @@
       href: security-control-data-recovery.md
     - name: Reaktion auf Vorfälle
       href: security-control-incident-response.md
-    - name: Penetrationstests und Red Team-Übungen
+    - name: "Penetrationstests und Red\_Team-Übungen"
       href: security-control-penetration-tests-red-team-exercises.md
-- name: Sicherheitsbaselines
+- name: Sicherheitsbaselines für Azure
   items:
-    - name: Übersicht über Azure-Sicherheitsbaselines
+    - name: Übersicht über Sicherheitsbaselines für Azure
       href: security-baselines-overview.md
+    - name: API Management-Sicherheitsbaseline
+      href: ../../api-management/security-baseline.md
     - name: Azure Cache for Redis-Sicherheitsbaseline
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup-Sicherheitsbaseline
@@ -44,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Daten-Explorer-Sicherheitsbaseline
       href: /azure/data-explorer/security-baseline
+    - name: Databricks-Sicherheitsbaseline
+      href: ../../azure-databricks/security-baseline.md
     - name: "Event\_Hubs-Sicherheitsbaseline"
       href: ../../event-hubs/security-baseline.md
+    - name: Functions-Sicherheitsbaseline
+      href: ../../azure-functions/security-baseline.md
     - name: HDInsight-Sicherheitsbaseline
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault-Sicherheitsbaseline

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380756"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508087"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>Langzeitaufbewahrung von Azure SQL-Datenbank
 
@@ -84,8 +84,7 @@ Für die langfristige Sicherungsaufbewahrung bei Instanzen, die über Azure SQL-
 - **Eingeschränkte öffentliche Vorschau**: Diese Vorschauversion ist nur für EA- und CSP-Abonnements verfügbar. Es gelten die Bestimmungen der eingeschränkten Verfügbarkeit.  
 - [**Nur PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md): Das Azure-Portal wird derzeit nicht unterstützt. Die Langzeitaufbewahrung muss über PowerShell aktiviert werden. 
 
-Um die Registrierung anzufordern, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/) im Supportthema **Sicherung, Wiederherstellung und Geschäftskontinuität/langfristige Sicherungsaufbewahrung**.
-
+Wenn Sie eine Registrierung anfordern möchten, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/). Wählen Sie bei „Issuetyp“ die Option „Technisches Problem“, bei „Dienst“ die Option „Verwaltete SQL-Datenbank-Instanz“ und bei „Problemtyp“ die Option **Sicherung, Wiederherstellung und Geschäftskontinuität/Langfristige Sicherungsaufbewahrung**aus. Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für eine verwaltete Instanz registriert werden möchten.
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung
 
@@ -93,7 +92,7 @@ Informationen zum Konfigurieren der langfristigen Aufbewahrung mit dem Azure-Por
 
 ## <a name="restore-database-from-ltr-backup"></a>Wiederherstellen einer Datenbank aus der LTR-Sicherung
 
-Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. Informationen zum Wiederherstellen Ihrer Datenbank aus einer LTR-Sicherung mit dem Azure-Portal oder PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](sql-database-long-term-backup-retention-configure.md).
+Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. Informationen zum Wiederherstellen Ihrer Datenbank aus einer LTR-Sicherung mit dem Azure-Portal oder PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](sql-database-long-term-backup-retention-configure.md). Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für eine verwaltete Instanz registriert werden möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

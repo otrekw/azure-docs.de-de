@@ -40,6 +40,8 @@
       href: components.md
     - name: Konzepte
       href: concepts.md
+    - name: SKUs
+      href: skus.md
     - name: Systemüberwachung
       items:
         - name: Integritätstests

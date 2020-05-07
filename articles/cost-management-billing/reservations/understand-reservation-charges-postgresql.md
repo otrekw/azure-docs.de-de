@@ -1,20 +1,17 @@
 ---
-title: Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
-description: Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
+title: 'Grundlegendes zum Reservierungsrabatt: Azure Database for PostgreSQL-Einzelserver'
+description: Hier erfahren Sie, wie Sie einen Reservierungsrabatt auf einen Azure Database for PostgreSQL-Einzelserver anwenden.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199295"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509396"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
 
@@ -44,5 +41,6 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Kapazit
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283887"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581361"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im vierten Quartal 2019 und im ersten Quartal 2020 vorgenommen wurden.

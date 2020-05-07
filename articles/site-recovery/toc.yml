@@ -11,6 +11,9 @@
   items:
     - name: Replizieren eines virtuellen Azure-Computers in einer anderen Region
       href: azure-to-azure-quickstart.md
+    - name: 'Erstellen eines Tresors: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: Tutorials
   items:
     - name: Notfallwiederherstellung von virtuellen Azure-Computern in Azure

@@ -10,18 +10,18 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 41d68c58c43262b36b93af0008e7d35de13dff4d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472219"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562269"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Es wird beschrieben, wie Sie eine Pipeline in Azure Machine Learning erstellen, um einen Batchbewertungsauftrag auszuführen. Machine Learning-Pipelines optimieren Ihren Workflow durch eine Verbesserung in den Bereichen Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Machine Learning konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen. Nach dem Erstellen und Veröffentlichen einer Pipeline konfigurieren Sie einen REST-Endpunkt, mit dem Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus auslösen. 
+In diesem fortgeschrittenen Tutorial erfahren Sie, wie Sie eine Pipeline in Azure Machine Learning erstellen, um einen Batchbewertungsauftrag auszuführen. Machine Learning-Pipelines optimieren Ihren Workflow durch eine Verbesserung in den Bereichen Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Machine Learning konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen. Nach dem Erstellen und Veröffentlichen einer Pipeline konfigurieren Sie einen REST-Endpunkt, mit dem Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus auslösen. 
 
 In diesem Beispiel wird ein vorab trainiertes Modell [Inception-V3](https://arxiv.org/abs/1512.00567) eines künstlichen neuronalen Netzes (Convolutional Neural Network, CNN) verwendet, das in TensorFlow implementiert wird, um Bilder ohne Bezeichnung zu klassifizieren. [Weitere Informationen zu Machine Learning-Pipelines](concept-ml-pipelines.md)
 

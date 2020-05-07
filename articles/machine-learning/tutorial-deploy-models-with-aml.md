@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159071"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801109"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,14 +27,13 @@ In diesem Teil des Tutorials verwenden Sie Azure Machine Learning für Folgendes
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
 > * Abrufen des Modells aus Ihrem Arbeitsbereich
-> * Lokales Testen des Modells
 > * Bereitstellen eines Modells in Container Instances
 > * Testen des bereitgestellten Modells
 
 Container Instances ist eine hervorragende Lösung für das Testen und Verstehen des Workflows. Für skalierbare Produktionsbereitstellungen sollten Sie Azure Kubernetes Service verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning Service](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 1.0.41 des Azure Machine Learning SDK getestet.
+> Der Code in diesem Artikel wurde mit Version 1.0.83 des Azure Machine Learning SDK getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,78 +53,177 @@ Zunächst richten Sie eine Testumgebung ein.
 
 ### <a name="import-packages"></a>Importieren von Paketen
 
-Importieren Sie die für dieses Tutorial erforderlichen Python-Pakete:
+Importieren Sie die für dieses Tutorial erforderlichen Python-Pakete.
+
 
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
  
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
 
 # Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="retrieve-the-model"></a>Abrufen des Modells
+## <a name="deploy-as-web-service"></a>Bereitstellen als Webdienst
 
-Im vorherigen Tutorial haben Sie ein Modell in Ihrem Arbeitsbereich registriert. Laden Sie nun diesen Arbeitsbereich, und laden Sie das Modell in Ihr lokales Verzeichnis herunter:
+Stellen Sie das Modell als in ACI gehosteten Webdienst bereit. 
+
+Zum Erstellen der richtigen Umgebung für ACI ist folgendes erforderlich:
+* Ein Bewertungsskript zur Veranschaulichung der Verwendung des Modells
+* Eine Konfigurationsdatei zum Erstellen der ACI
+* Das zuvor trainierte Modell
+
+### <a name="create-scoring-script"></a>Erstellen des Bewertungsskripts
+
+Erstellen Sie das Bewertungsskript score.py, das vom Webdienstaufruf verwendet wird, um zu zeigen, wie das Modell verwendet wird.
+
+Sie müssen zwei erforderliche Funktionen in das Bewertungsskript einschließen:
+* Die `init()`-Funktion, die das Modell in der Regel in ein globales Objekt lädt. Diese Funktion wird nur dann ausgeführt, wenn der Docker-Container gestartet wird. 
+
+* Die `run(input_data)`-Funktion verwendet das Modell zur Vorhersage eines Werts, der auf den Eingabedaten basiert. Ein- und Ausgaben zur Ausführung verwenden in der Regel JSON für die Serialisierung und Deserialisierung, allerdings werden auch andere Formate unterstützt.
+
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+import joblib
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment.
+    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    model = joblib.load(model_path)
+
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
+```
+
+### <a name="create-configuration-file"></a>Erstellen einer Konfigurationsdatei
+
+Erstellen Sie eine Konfigurationsdatei für die Bereitstellung und geben Sie die Anzahl der CPUs und Gigabyte-RAM an, die für Ihren ACI-Container benötigt werden. Obwohl die Anforderungen von Ihrem Modell abhängen, ist der Standard von 1 Kern und 1 Gigabyte-RAM für viele Modelle in der Regel ausreichend. Wenn Sie das Gefühl haben, dass Sie später mehr brauchen, müssen Sie das Image neu erstellen und den Dienst neu bereitstellen.
 
 
 ```python
+from azureml.core.webservice import AciWebservice
+
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+                                               description='Predict MNIST with sklearn')
+```
+
+### <a name="deploy-in-aci"></a>Bereitstellen in ACI
+Geschätzter Zeitaufwand: **Ca. 2-5 Minuten**
+
+Konfigurieren Sie das Image und stellen Sie es bereit. Der folgende Code durchläuft diese Schritte:
+
+1. Erstellen Sie mit der während des Trainings gespeicherten Umgebung (`tutorial-env`) ein Umgebungsobjekt, das die vom Modell benötigten Abhängigkeiten enthält.
+1. Erstellen Sie die Rückschlusskonfiguration, die zum Bereitstellen des Modells als Webdienst erforderlich ist. Verwenden Sie dazu Folgendes:
+   * Der Bewertungsdatei (`score.py`)
+   * Das im vorherigen Schritt erstellte Umgebungsobjekt
+1. Stellen Sie das Modell im ACI-Container bereit.
+1. Rufen Sie den Webdienst-HTTP-Endpunkt ab.
+
+
+```python
+%%time
+from azureml.core.webservice import Webservice
+from azureml.core.model import InferenceConfig
+from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os
+
 ws = Workspace.from_config()
 model = Model(ws, 'sklearn_mnist')
 
-model.download(target_dir=os.getcwd(), exist_ok=True)
 
-# verify the downloaded model file
-file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
+inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 
-os.stat(file_path)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc3', 
+                       models=[model], 
+                       inference_config=inference_config, 
+                       deployment_config=aciconfig)
+
+service.wait_for_deployment(show_output=True)
 ```
 
-## <a name="test-the-model-locally"></a>Lokales Testen des Modells
+Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Dieser Endpunkt kann von jedem genutzt werden, der den Webdienst testen oder in eine Anwendung integrieren möchte.
 
-Vergewissern Sie sich vor der Bereitstellung, dass Ihr Modell lokal funktioniert:
-* Laden Sie Testdaten.
-* Verwenden Sie die Testdaten für Vorhersagen.
-* Überprüfen Sie die Konfusionsmatrix.
+
+```python
+print(service.scoring_uri)
+```
+
+## <a name="test-the-model"></a>Testen des Modells
+
+
+### <a name="download-test-data"></a>Herunterladen der Testdaten
+Laden Sie die Testdaten in das Verzeichnis **./data/** herunter.
+
+
+```python
+import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
+
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok=True)
+
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
+```
 
 ### <a name="load-test-data"></a>Laden von Testdaten
 
-Laden Sie die Testdaten aus dem Verzeichnis **./data/** , das im Rahmen des Trainingstutorials erstellt wurde:
+Laden Sie die Testdaten aus dem Verzeichnis **./data/** , das während des Trainingstutorials erstellt wurde.
+
 
 ```python
 from utils import load_data
 import os
+import glob
 
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>Vorhersagen von Testdaten
 
-Laden Sie das Testdataset in das Modell, um Vorhersagen zu erhalten:
+Laden Sie das Test-Dataset in das Modell, um Vorhersagen zu erhalten.
+
+
+Der folgende Code durchläuft diese Schritte:
+1. Senden Sie die Daten als JSON-Array an den in ACI gehosteten Webdienst. 
+
+1. Verwenden Sie die `run`-API des SDK, um den Dienst aufzurufen. Sie können auch unformatierte Daten mit einem beliebigen HTTP-Tool, z.B. Curl, aufrufen.
+
 
 ```python
-import pickle
-from sklearn.externals import joblib
-
-clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
-y_hat = clf.predict(X_test)
+import json
+test = json.dumps({"data": X_test.tolist()})
+test = bytes(test, encoding='utf8')
+y_hat = service.run(input_data=test)
 ```
 
 ###  <a name="examine-the-confusion-matrix"></a>Überprüfen der Konfusionsmatrix
 
-Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falschen Vorhersagen: 
+Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falsche Vorhersage.
+
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -150,7 +248,7 @@ Die Ausgabe zeigt die Konfusionsmatrix:
     Overall accuracy: 0.9204
    
 
-Verwenden Sie `matplotlib`, um die Konfusionsmatrix als Diagramm anzuzeigen. In diesem Diagramm wird die X-Achse für die Ist-Werte und die Y-Achse für die vorhergesagten Werte verwendet: Die Farbe in den einzelnen Rastern gibt jeweils die Fehlerrate an. Je heller die Farbe, desto höher ist die Fehlerrate. Beispielsweise sind viele 5en falsch als 3en klassifiziert. Dies führt zu einem hellen Raster bei (5,3):
+Verwenden Sie `matplotlib`, um die Konfusionsmatrix als Diagramm anzuzeigen. In diesem Diagramm stellt die X-Achse die Ist-Werte und die Y-Achse die vorhergesagten Werte dar. Die Farbe in jedem Raster stellt die Fehlerrate dar. Je heller die Farbe, desto höher ist die Fehlerrate. Beispielsweise sind viele 5en falsch als 3en klassifiziert. Dies führt zu einem hellen Raster bei (5,3).
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -175,141 +273,17 @@ plt.show()
 
 ![Diagramm mit Konfusionsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-a-web-service"></a>Bereitstellen als Webdienst
 
-Nachdem Sie das Modell getestet haben und mit den Ergebnissen zufrieden sind, stellen Sie das Modell als in Container Instances gehosteten Webdienst bereit. 
+## <a name="show-predictions"></a>Anzeigen von Vorhersagen
 
-Für die Erstellung der korrekten Umgebung für Container Instances sind folgende Komponenten erforderlich:
-* Ein Bewertungsskript zur Veranschaulichung der Verwendung des Modells
-* Eine Umgebungsdatei, um anzugeben, welche Pakete installiert werden müssen
-* Eine Konfigurationsdatei zum Erstellen der Containerinstanz
-* Das zuvor trainierte Modell
+Testen Sie das bereitgestellte Modell mit einer zufälligen Stichprobe von 30 Bildern aus den Testdaten.  
 
-<a name="make-script"></a>
-
-### <a name="create-scoring-script"></a>Erstellen des Bewertungsskripts
-
-Erstellen Sie das Bewertungsskript (**score.py**). Der Aufruf des Webdiensts verwendet dieses Skript, um zu zeigen, wie das Modell verwendet wird.
-
-Schließen Sie die beiden folgenden erforderlichen Funktionen in das Bewertungsskript ein:
-* Die `init()`-Funktion, die das Modell in der Regel in ein globales Objekt lädt. Diese Funktion wird nur dann ausgeführt, wenn der Docker-Container gestartet wird. 
-
-* Die `run(input_data)`-Funktion verwendet das Modell zur Vorhersage eines Werts, der auf den Eingabedaten basiert. Ein- und Ausgaben zur Ausführung verwenden in der Regel JSON für die Serialisierung und Deserialisierung, allerdings werden auch andere Formate unterstützt.
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-
-from azureml.core.model import Model
-
-def init():
-    global model
-    # retrieve the path to the model file using the model name
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-    model = joblib.load(model_path)
-
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
-    return y_hat.tolist()
-```
-
-<a name="make-myenv"></a>
-
-### <a name="create-environment-file"></a>Erstellen einer Umgebungsdatei
-
-Erstellen Sie als Nächstes eine Umgebungsdatei namens **myenv.yml**, die alle Paketabhängigkeiten des Skripts angibt. Diese Datei wird verwendet, um sicherzustellen, dass alle diese Abhängigkeiten im Docker-Image installiert sind. Dieses Modell benötigt `scikit-learn` und `azureml-sdk`. Alle benutzerdefinierten Umgebungsdateien müssen „azureml-defaults“ mit einer Version größer gleich 1.0.45 als Pip-Abhängigkeit auflisten. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
-
-```python
-from azureml.core.conda_dependencies import CondaDependencies
-
-myenv = CondaDependencies()
-myenv.add_conda_package("scikit-learn")
-myenv.add_pip_package("azureml-defaults")
-
-with open("myenv.yml", "w") as f:
-    f.write(myenv.serialize_to_string())
-```
-Überprüfen Sie den Inhalt der Datei `myenv.yml`:
-
-```python
-with open("myenv.yml", "r") as f:
-    print(f.read())
-```
-
-### <a name="create-a-configuration-file"></a>Erstellen einer Konfigurationsdatei
-
-Erstellen Sie eine Bereitstellungskonfigurationsdatei. Geben Sie an, wie viele CPUs und wie viele Gigabyte Arbeitsspeicher für Ihren Container Instances-Container benötigt werden. Die Anforderungen hängen zwar von Ihrem Modell ab, die Standardwerte von einem Kern und einem Gigabyte Arbeitsspeicher sind jedoch für viele Modelle ausreichend. Sollten Sie später höhere Werte benötigen, erstellen Sie das Image neu, und stellen Sie den Dienst erneut bereit.
-
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  
-                                                     "method": "sklearn"},
-                                               description='Predict MNIST with sklearn')
-```
-
-### <a name="deploy-in-container-instances"></a>Bereitstellen in Container Instances
-Der Bereitstellungsvorgang dauert voraussichtlich **sieben bis acht Minuten**.
-
-Konfigurieren Sie das Image und stellen Sie es bereit. Der folgende Code durchläuft diese Schritte:
-
-1. Erstellen Sie ein Image mit folgenden Dateien:
-   * Bewertungsdatei: `score.py`
-   * Umgebungsdatei: `myenv.yml`
-   * Der Modelldatei.
-1. Registrieren Sie das Image im Arbeitsbereich. 
-1. Senden Sie das Bild an den Container Instances-Container.
-1. Starten Sie einen Container in Container Instances mithilfe des Bilds.
-1. Rufen Sie den Webdienst-HTTP-Endpunkt ab.
-
-Beachten Sie, dass Sie beim Definieren einer eigenen Umgebungsdatei „azureml-defaults“ mit einer Version größer gleich 1.0.45 als Pip-Abhängigkeit auflisten müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
-
-```python
-%%time
-from azureml.core.webservice import Webservice
-from azureml.core.model import InferenceConfig
-from azureml.core.environment import Environment
-
-myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
-service = Model.deploy(workspace=ws,
-                       name='sklearn-mnist-svc',
-                       models=[model], 
-                       inference_config=inference_config,
-                       deployment_config=aciconfig)
-
-service.wait_for_deployment(show_output=True)
-```
-
-Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Sie können diesen Endpunkt für jeden freigeben, der den Webdienst testen oder in eine Anwendung integrieren möchte: 
-
-```python
-print(service.scoring_uri)
-```
-
-## <a name="test-the-deployed-service"></a>Testen des bereitgestellten Diensts
-
-Zuvor haben Sie alle Testdaten mit der lokalen Version des Modells bewertet. Sie können nun das bereitgestellte Modell mit einer zufälligen Stichprobe von 30 Bildern aus den Testdaten testen.  
-
-Der folgende Code durchläuft diese Schritte:
-1. Senden Sie die Daten als JSON-Array an den in Container Instances gehosteten Webdienst. 
-
-1. Verwenden Sie die `run`-API des SDK, um den Dienst aufzurufen. Sie können auch unformatierte Daten mit einem beliebigen HTTP-Tool (beispielsweise **curl**) aufrufen.
 
 1. Drucken Sie die zurückgegebenen Vorhersagen und stellen Sie sie zusammen mit den eingehenden Bildern grafisch dar. Rote Schrift und ein inverses Bild (weiß auf schwarz) heben falsch klassifizierte Stichproben hervor. 
 
-Da die Modellgenauigkeit hoch ist, müssen Sie möglicherweise den folgenden Code einige Male ausführen, bevor Sie eine falsch klassifizierte Stichprobe sehen:
+ Da die Modellgenauigkeit hoch ist, müssen Sie möglicherweise den folgenden Code einige Male ausführen, bevor Sie eine falsch klassifizierte Stichprobe sehen.
+
+
 
 ```python
 import json
@@ -326,7 +300,7 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize=(20, 1))
+plt.figure(figsize = (20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
@@ -344,11 +318,8 @@ for s in sample_indices:
 plt.show()
 ```
 
-Das folgende Ergebnis stammt aus einer zufälligen Stichprobe an Testbildern:
+Sie können auch unformatierte HTTP-Anforderung zum Testen des Webdiensts senden.
 
-![Grafik mit Ergebnissen](./media/tutorial-deploy-models-with-aml/results.png)
-
-Sie können auch eine unformatierte HTTP-Anforderung zum Testen des Webdiensts senden:
 
 ```python
 import requests

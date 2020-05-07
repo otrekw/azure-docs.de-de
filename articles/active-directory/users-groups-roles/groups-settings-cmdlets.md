@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048152"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582797"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -160,7 +160,7 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Office 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: String<li>Standardeinstellung: "" | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
-|  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist. <br>Diese Einstellung kann außer Kraft gesetzt und schreibgeschützt werden, wenn *EnableMIPLabels* auf *True* festgelegt ist und der der Gruppe zugeordneten Vertraulichkeitsbezeichnung eine Gastrichtlinie zugeordnet ist.<br>Wenn die Einstellung AllowToAddGuests auf Mandantenebene auf FALSE festgelegt ist, wird jede AllowToAddGuest-Einstellung auf Gruppenebene ignoriert. Wenn Sie den Gastzugriff nur für einige wenige Gruppen aktivieren möchten, müssen Sie AllowToAddGuests auf Mandantenebene auf TRUE festlegen und dann für bestimmte Gruppen selektiv deaktivieren. |
+|  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist. <br>Diese Einstellung kann außer Kraft gesetzt und schreibgeschützt werden, wenn *EnableMIPLabels* auf *True* festgelegt ist und der der Gruppe zugeordneten Vertraulichkeitsbezeichnung eine Gastrichtlinie zugeordnet ist.<br>Wenn die Einstellung AllowToAddGuests auf Organisationsebene auf FALSE festgelegt ist, wird jede AllowToAddGuest-Einstellung auf Gruppenebene ignoriert. Wenn Sie den Gastzugriff nur für einige wenige Gruppen aktivieren möchten, müssen Sie AllowToAddGuests auf Organisationsebene auf TRUE festlegen und dann für bestimmte Gruppen selektiv deaktivieren. |
 |  <ul><li>ClassificationList<li>Typ: String<li>Standardeinstellung: "" | Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. <br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
 |  <ul><li>EnableMIPLabels<li>Typ: Boolean<li>Standardwert: „False“ |Das Flag, das angibt, ob die im Microsoft 365 Compliance Center veröffentlichten Vertraulichkeitsbezeichnungen auf Office 365-Gruppen angewendet werden können. Weitere Informationen finden Sie unter [Zuweisen von Vertraulichkeitsbezeichnungen für Office 365-Gruppen](groups-assign-sensitivity-labels.md). |
 

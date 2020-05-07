@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 25cff0d0ea007bdd55131ab334a5813344991d0e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 29baead8dbb41b004a9ace8576029c9bd8af3290
+  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78672128"
+  ms.lasthandoff: 05/05/2020
+  ms.locfileid: "82790778"
 landingContent:
 - title: Informationen zu Azure App Configuration
   linkLists:
@@ -76,6 +76,8 @@ landingContent:
     links:
     - text: Integrieren in eine CI/CD-Pipeline
       url: integrate-ci-cd-pipeline.md
+    - text: Integrieren in eine Kubernetes-Bereitstellung mit Helm
+      url: integrate-kubernetes-deployment-helm.md
   - linkListType: tutorial
     links:
     - text: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
@@ -120,7 +122,7 @@ landingContent:
       url: cli-samples.md
   - linkListType: reference
     links:
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
     - text: .NET Core-Anbieter
       url: https://go.microsoft.com/fwlink/?linkid=2074664

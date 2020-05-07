@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720383"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780435"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
 
@@ -54,7 +54,7 @@ Fehlerbeschreibung enthält: „Fehler beim Herstellen der Verbindung mit dem Az
 
 ### <a name="cause"></a>Ursache
 
-Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir ausgehende Verbindungen zu allen IP-Adressen zulassen, um den Zugriff auf diese Dienste zu ermöglichen. Die genauen Lösungsschritte sind davon abhängig, ob Sie eine Netzwerksicherheitsgruppe (NSG) oder benutzerdefinierte Regeln (UDRs) eingerichtet haben. Details zu diesen Konfigurationen finden Sie im Abschnitt zum Thema [Steuern des Netzwerkdatenverkehrs über HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip).
+Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir ausgehende Verbindungen zu allen IP-Adressen zulassen, um den Zugriff auf diese Dienste zu ermöglichen. Die genauen Lösungsschritte sind davon abhängig, ob Sie eine Netzwerksicherheitsgruppe (NSG) oder benutzerdefinierte Regeln (UDRs) eingerichtet haben. Details zu diesen Konfigurationen finden Sie im Abschnitt zum Thema [Steuern des Netzwerkdatenverkehrs über HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](../control-network-traffic.md).
 
 ### <a name="resolution"></a>Lösung
 
