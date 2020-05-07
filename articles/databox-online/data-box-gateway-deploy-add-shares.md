@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79213571"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561723"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Tutorial: Übertragen von Daten mit Azure Data Box Gateway
 
@@ -115,7 +115,7 @@ Stellen Sie über Ihren Windows Server-Client, der mit Ihrem Data Box Gateway-G
 
 ### <a name="connect-to-an-nfs-share"></a>Herstellen einer Verbindung mit einer NFS-Freigabe
 
-Führen Sie auf dem mit Ihrem Data Box Edge-Gerät verbundenen Linux-Client die folgenden Schritte aus:
+Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client die folgenden Schritte aus:
 
 1. Stellen Sie sicher, dass der NFSv4-Client auf dem Client installiert ist. Verwenden Sie zum Installieren des NFS-Clients den folgenden Befehl:
 

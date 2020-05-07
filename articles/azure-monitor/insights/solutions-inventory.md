@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87179c79489bf781619b70b19ca8982f2e38dff
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663128"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509481"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Bestand und Datensammlungsdetails für Überwachungslösungen in Azure
-[Überwachungslösungen](solutions.md) nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Überwachungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
+[Überwachungslösungen](solutions.md) nutzen Dienste in Azure, um Erkenntnisse über den Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu gewinnen. Überwachungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
 
 Dieser Artikel enthält eine Liste mit verfügbaren [Überwachungslösungen](solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Azure Monitor.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Überwachungslösungen nachvollziehen.
 
@@ -26,11 +26,11 @@ Die folgende Tabelle enthält die von Microsoft bereitgestellten [Überwachungsl
 
 Erläuterung der Spalten:
 
-- **Microsoft Monitoring Agent**: Agent, der unter Windows und Linux zum Ausführen des Managements Packs (SCOM) sowie zum Ausführen von Überwachungslösungen (Azure) verwendet wird. In dieser Konfiguration ist der Agent direkt mit Azure Monitor und mit keiner Operations Manager-Verwaltungsgruppe verbunden. 
+- **Microsoft Monitoring Agent**: Agent, der unter Windows und Linux zum Ausführen des Management Packs von Microsoft System Center Operations Manager (OM) sowie zum Ausführen von Überwachungslösungen von Azure verwendet wird. In dieser Konfiguration ist der Agent direkt mit Azure Monitor und mit keiner Operations Manager-Verwaltungsgruppe verbunden. 
 - **Operations Manager**: Gleicher Agent wie Microsoft Monitoring Agent. In dieser Konfiguration besteht eine [Verbindung mit einer Operations Manager-Verwaltungsgruppe](../platform/om-agents.md), die wiederum mit Azure Monitor verbunden ist. 
--  **Azure Storage**: Die Lösung sammelt Daten aus einem Azure-Speicherkonto. 
+-  **Azure Storage**: Die Lösung sammelt Daten aus einem Azure Storage-Konto. 
 - **Operations Manager erforderlich?** Für die Datensammlung durch die Überwachungslösung wird eine verbundene Operations Manager-Verwaltungsgruppe benötigt. 
-- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten:** Wenn der Agent [mit einer SCOM-Verwaltungsgruppe verbunden](../platform/om-agents.md) ist, werden Daten vom Verwaltungsserver an Azure Monitor gesendet. In diesem Fall muss der Agent nicht direkt mit Azure Monitor verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Azure Monitor gesendet, auch wenn der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist. Dazu muss er über das [Log Analytics-Gateway](../platform/gateway.md) mit Azure Monitor kommunizieren können.
+- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten:** Wenn der Agent [mit einer OM-Verwaltungsgruppe verbunden](../platform/om-agents.md) ist, werden Daten vom Verwaltungsserver an Azure Monitor gesendet. In diesem Fall muss der Agent nicht direkt mit Azure Monitor verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Azure Monitor gesendet, auch wenn der Agent mit einer OM-Verwaltungsgruppe verbunden ist. Dazu muss er über das [Log Analytics-Gateway](../platform/gateway.md) mit Azure Monitor kommunizieren können.
 - **Sammlungshäufigkeit**: Gibt an, wie häufig Daten von der Überwachungslösung gesammelt werden. 
 
 
@@ -53,8 +53,8 @@ Erläuterung der Spalten:
 | [Azure SQL Analytics (Vorschau)](azure-sql.md) | Windows | | | | | | 1 Minute |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | Bei Benachrichtigung |
 | [Kapazität und Leistung (Vorschau)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |Bei der Ankunft |
-| [Änderungsnachverfolgung](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[variiert](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Änderungsnachverfolgung](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[variiert](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Änderungsnachverfolgung](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[variiert](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
+| [Änderungsnachverfolgung](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[variiert](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
 | [Container](containers.md) | Windows und Linux | &#8226; | &#8226; |  |  |  | 3 Minuten |
 | [Key Vault-Analysen](azure-key-vault.md) |Windows | | | | | |Bei Benachrichtigung |
 | [Bewertung von Schadsoftware](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |Stündlich |
@@ -66,7 +66,7 @@ Erläuterung der Spalten:
 | [SQL-Bewertung](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |
 | [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |Bei der Ankunft |
 | [System Center Operations Manager-Bewertung (Vorschau)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | sieben Tage |
-| [Updateverwaltung](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |Mindestens zweimal pro Tag und 15 Minuten nach Installation eines Updates |
+| [Updateverwaltung](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |Mindestens zweimal pro Tag und 15 Minuten nach Installation eines Updates |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 Tage |
 | [VMware-Überwachung (Veraltet)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 Minuten |
 | [Wire Data 2.0 (Vorschau)](wire-data.md) |Windows (2012 R2 / 8.1 oder höher) |&#8226; |&#8226; | | | | 1 Minute |

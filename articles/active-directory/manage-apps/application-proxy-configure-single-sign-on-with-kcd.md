@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227770"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583139"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -100,11 +100,13 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 
 ## <a name="sso-for-non-windows-apps"></a>SSO für Nicht-Windows-Apps
 
-Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. 
+Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. 
 
-Es gibt mehrere Protokolle, die definieren, wie solche Anforderungen gesendet werden. Die meisten Nicht-Windows Server erwarten, dass die Aushandlung über SPNEGO erfolgt. Dieses Protokoll wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Server kann für SPNEGO oder die standardmäßige KCD konfiguriert werden, jedoch nicht für beide.
+In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. 
 
-Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die eine standardmäßige KCD erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind.
+Es gibt mehrere Mechanismen, die definieren, wie das Kerberos-Ticket in solchen Anforderungen gesendet wird. Die meisten Nicht-Windows-Server erwarten, es in Form eines SPNEGO-Tokens zu erhalten. Dieser Mechanismus wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Connector kann für SPNEGO oder das standardmäßige Kerberos-Token konfiguriert werden, jedoch nicht für beide.
+
+Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die ein standardmäßiges Kerberos-Token erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind.
  
 
 So aktivieren Sie SPNEGO:

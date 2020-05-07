@@ -3,14 +3,14 @@ title: Was-wäre-wenn für Vorlagenbereitstellung (Preview)
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010187"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581203"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
 
@@ -19,11 +19,11 @@ Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager) können Sie ein
 > [!NOTE]
 > Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
-Sie können den Was-wäre-wenn-Vorgang mit PowerShell-Befehlen oder REST-API-Vorgänge verwenden.
+Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden.
 
 ## <a name="install-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Um Was-wäre-wenn in PowerShell zu verwenden, installieren Sie eine Vorschauversion des Az.Resources-Moduls aus dem PowerShell-Katalog.
+Um Was-wäre-wenn in PowerShell zu verwenden, müssen Sie eine Vorschauversion des Az.Resources-Moduls aus dem PowerShell-Katalog installieren. Stellen Sie vor der Installation des Moduls jedoch sicher, dass Sie über PowerShell Core (6.x oder 7.x) verfügen. Wenn Sie über PowerShell 5.x oder früher verfügen, [aktualisieren Sie Ihre PowerShell-Version](/powershell/scripting/install/installing-powershell). Sie können das Vorschaumodul nicht in PowerShell 5.x oder früher installieren.
 
 ### <a name="install-preview-version"></a>Installieren der Vorschauversion
 
@@ -58,9 +58,13 @@ Wenn Sie zuvor eine Alphaversion des Was-wäre-wenn-Moduls installiert hatten, d
 
 Sie sind für die Verwendung von Was-wäre-wenn bereit.
 
+## <a name="install-azure-cli-module"></a>Installieren des Azure CLI-Moduls
+
+Um Was-wäre-wenn in Azure CLI zu verwenden, müssen Sie über Azure CLI 2.5.0 oder höher verfügen. Bei Bedarf [installieren Sie die neueste Version von Azure CLI](/cli/azure/install-azure-cli).
+
 ## <a name="see-results"></a>Anzeigen der Ergebnisse
 
-In PowerShell enthält die Ausgabe farbcodierte Ergebnisse, die Ihnen helfen, die verschiedenen Arten von Änderungen anzuzeigen.
+Wenn Sie Was-wäre-wenn in PowerShell oder Azure CLI verwenden, enthält die Ausgabe farbcodierte Ergebnisse, die Ihnen helfen, die verschiedenen Arten von Änderungen anzuzeigen.
 
 ![Resource Manager-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang fullresourcepayload und Änderungstypen](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -95,11 +99,9 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>Was-wäre-wenn-Befehle
 
-Sie können Azure PowerShell oder die Azure-REST-API für den Was-wäre-wenn-Vorgang verwenden.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, fügen Sie dem Bereitstellungsbefehl den Parameterschalter `-Whatif` hinzu.
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, fügen Sie den Parameterschalter `-Whatif` zum Bereitstellungsbefehl hinzu.
 
 * `New-AzResourceGroupDeployment -Whatif` für Bereitstellungen von Ressourcengruppen
 * `New-AzSubscriptionDeployment -Whatif` und `New-AzDeployment -Whatif` für Bereitstellungen auf Abonnementebene
@@ -113,6 +115,23 @@ Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuel
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` für Bereitstellungen von Ressourcengruppen
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult` oder `$results = Get-AzDeploymentWhatIfResult` für Bereitstellungen auf Abonnementebene
+
+### <a name="azure-cli"></a>Azure CLI
+
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie `what-if` mit dem Bereitstellungsbefehl.
+
+* `az deployment group what-if` für Bereitstellungen von Ressourcengruppen
+* `az deployment sub what-if` für Bereitstellungen auf Abonnementebene
+
+Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden.
+
+* `az deployment group create --confirm-with-what-if` oder `-c` für Bereitstellungen von Ressourcengruppen
+* `az deployment sub create --confirm-with-what-if` oder `-c` für Bereitstellungen auf Abonnementebene
+
+Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Um ein JSON-Objekt zu erhalten, das Sie programmgesteuert auf Änderungen überprüfen können, verwenden Sie Folgendes:
+
+* `az deployment group what-if --no-pretty-print` für Bereitstellungen von Ressourcengruppen
+* `az deployment sub what-if --no-pretty-print` für Bereitstellungen auf Abonnementebene
 
 ### <a name="azure-rest-api"></a>Azure-REST-API
 
@@ -139,10 +158,17 @@ Der Was-wäre-wenn-Vorgang listet sechs verschiedene Typen von Änderungen auf:
 
 ## <a name="result-format"></a>Ergebnisformat
 
-Sie können den Grad der Detailliertheit der Informationen steuern, die in Bezug auf die vorhergesagten Änderungen zurückgegeben werden. Verwenden Sie in den Bereitstellungsbefehlen (`New-Az*Deployment`) den Parameter **-WhatIfResultFormat**. Verwenden Sie in den Befehlen für programmgesteuerte Objekte (`Get-Az*DeploymentWhatIf`) den Parameter **ResultFormat**.
+Sie können den Grad der Detailliertheit der Informationen steuern, die in Bezug auf die vorhergesagten Änderungen zurückgegeben werden. Sie haben zwei Möglichkeiten:
 
-Legen Sie den Formatparameter auf **FullResourcePayloads** fest, um eine Liste der Ressourcen, die sich ändern, sowie Details zu den Eigenschaften, die sich ändern, zu erhalten. Legen Sie den Formatparameter auf **ResourceIdOnly** fest, um eine Liste der Ressourcen zu erhalten, die sich ändern. Der Standardwert ist **FullResourcePayloads**.  
+* **FullResourcePayloads**: Gibt eine Liste der Ressourcen zurück, die sich ändern, sowie Details zu den Eigenschaften, die sich ändern.
+* **ResourceIdOnly**: Gibt eine Liste der Ressourcen zurück, die sich ändern.
 
+Der Standardwert ist **FullResourcePayloads**.
+
+Verwenden Sie für PowerShell-Bereitstellungsbefehle den Parameter `-WhatIfResultFormat`. Verwenden Sie in den Befehlen für programmgesteuerte Objekte den Parameter `ResultFormat`.
+
+Verwenden Sie für die Azure CLI den Parameter `--result-format`.
+ 
 Die folgenden Ergebnisse zeigen die zwei unterschiedlichen Ausgabeformate:
 
 - Vollständige Ressourcennutzlasten
@@ -195,6 +221,8 @@ Die folgenden Ergebnisse zeigen die zwei unterschiedlichen Ausgabeformate:
 
 Um zu sehen, wie Was-wäre-wenn funktioniert, führen wir nun einige Tests aus. Stellen Sie zunächst eine [Vorlage zum Erstellen eines virtuellen Netzwerks](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json) bereit. Sie verwenden dieses virtuelle Netzwerk, um zu testen, wie Änderungen bei Was-wäre-wenn gemeldet werden.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -204,9 +232,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>Testen der Änderung
 
-Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Stellen Sie dieses Mal eine [Vorlage zum Ändern des virtuellen Netzwerks](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) bereit. Es fehlt eins der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert.
+Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Diesmal stellen Sie eine [Vorlage zum Ändern des virtuellen Netzwerks](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) bereit. Es fehlt eins der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -214,6 +257,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 Die Was-wäre-wenn-Ausgabe ähnelt der folgenden:
 
@@ -258,6 +311,8 @@ Einige der als gelöscht aufgeführten Eigenschaften werden sich tatsächlich ni
 
 Nun können Sie die Was-wäre-wenn-Ergebnisse programmgesteuert auswerten, indem Sie den Befehl auf eine Variable festlegen.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -273,19 +328,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>Löschvorgang bestätigen
 
 Der Was-wäre-wenn-Vorgang unterstützt die Verwendung von [Bereitstellungsmodi](deployment-modes.md). Wenn er auf den Modus „Vollständig“ festgelegt ist, werden Ressourcen, die nicht in der Vorlage enthalten sind, gelöscht. Im folgenden Beispiel wird eine [Vorlage im Modus „Vollständig“ bereitgestellt, für die keine Ressourcen definiert sind](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json).
 
-Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie den Parameterschalter `-Confirm` für den Bereitstellungsbefehl. Wenn die Änderungen Ihren Erwartungen entsprechen, bestätigen Sie, dass Sie die Bereitstellung fertig stellen möchten.
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie den Parameterschalter „confirm“ mit dem Bereitstellungsbefehl. Wenn die Änderungen Ihren Erwartungen entsprechen, bestätigen Sie, dass Sie die Bereitstellung fertig stellen möchten.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 Da in der Vorlage keine Ressourcen definiert sind und der Bereitstellungsmodus auf „Vollständig“ festgelegt ist, wird das virtuelle Netzwerk gelöscht.
 
@@ -324,4 +401,5 @@ Die erwarteten Änderungen werden angezeigt, und Sie können bestätigen, dass d
 
 - Wenn Sie falsche Ergebnisse von Was-wäre-wenn aus der Previewversion bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 - Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
+- Informationen zum Bereitstellen von Vorlagen mit Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure CLI](deploy-cli.md).
 - Informationen zum Bereitstellen von Vorlagen mit REST finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Resource Manager-REST-API](deploy-rest.md).

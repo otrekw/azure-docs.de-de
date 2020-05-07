@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083528"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838721"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Bewährte Methoden für die Auswahl einer Time Series-ID
 
@@ -27,6 +27,7 @@ Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Das Auswählen ein
 
 > [!IMPORTANT]
 > Für Zeitreihen-IDs gilt Folgendes:
+>
 > * Bei ihnen wird nach *Groß-/Kleinschreibung* unterschieden: Die Groß- und Kleinschreibung von Buchstaben und Zeichen wird bei Suchvorgängen, Vergleichen, Updates und der Partitionierung berücksichtigt.
 > * Sie sind *unveränderliche* Eigenschaften: Nach dem Erstellen können sie nicht mehr geändert werden.
 
@@ -56,7 +57,7 @@ Die folgenden Szenarien beschreiben die Auswahl von mehr als einer Schlüsseleig
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Beispiel 2: Time Series-ID mit einem zusammengesetzten Schlüssel
 
-* Ihre Anforderung ist, dass mehrere Eigenschaften innerhalb derselben Gruppe von Ressourcen eindeutig sind. 
+* Ihre Anforderung ist, dass mehrere Eigenschaften innerhalb derselben Gruppe von Ressourcen eindeutig sind.
 * Sie sind ein Hersteller von intelligenten Gebäuden und stellen in jedem Raum Sensoren bereit. In jedem Raum haben Sie normalerweise dieselben Werte für **sensorId**. Beispiele sind **sensor1**, **sensor2** und **sensor3**.
 * Ihr Gebäude besitzt sich überlappende Stockwerk- und Raumnummern zwischen Standorten in der Eigenschaft **flrRm**. Diese Nummern haben Werte wie **1a**, **2b** und **3a**.
 * Sie haben eine Eigenschaft, **location** (Ort), die Werte wie **Redmond**, **Barcelona** und **Tokio** enthält. Um Eindeutigkeit herzustellen, legen Sie die folgenden drei Eigenschaften als Ihre Time Series-ID-Schlüssel fest: **sensorId**, **flrRm** und **location**.
@@ -72,7 +73,7 @@ Beispielrohereignis:
 }
 ```
 
-Im Azure-Portal können Sie diesen zusammengesetzten Schlüssel dann folgendermaßen eingeben: 
+Im Azure-Portal können Sie diesen zusammengesetzten Schlüssel dann folgendermaßen eingeben:
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

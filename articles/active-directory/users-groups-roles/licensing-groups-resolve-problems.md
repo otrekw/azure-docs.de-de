@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025695"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582700"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -100,7 +100,7 @@ Sie können dieses Problem beheben, indem Sie Benutzer von nicht unterstützten 
 
 ## <a name="duplicate-proxy-addresses"></a>Doppelte Proxyadressen
 
-Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihrem Mandanten fälschlicherweise mit dem gleichen Proxyadresswert konfiguriert. Wenn bei der gruppenbasierten Lizenzierung versucht wird, einem dieser Benutzer eine Lizenz zuzuweisen, tritt ein Fehler auf, und ein Hinweis der Art „Proxyadresse wird bereits verwendet“ wird angezeigt.
+Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihrer Organisation fälschlicherweise mit dem gleichen Proxyadresswert konfiguriert. Wenn bei der gruppenbasierten Lizenzierung versucht wird, einem dieser Benutzer eine Lizenz zuzuweisen, tritt ein Fehler auf, und ein Hinweis der Art „Proxyadresse wird bereits verwendet“ wird angezeigt.
 
 > [!TIP]
 > Um zu ermitteln, ob eine doppelte Proxyadresse vorhanden ist, führen Sie das folgende PowerShell-Cmdlet für Exchange Online aus:

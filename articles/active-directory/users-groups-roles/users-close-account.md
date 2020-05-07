@@ -1,5 +1,5 @@
 ---
-title: Schließen eines Geschäfts-, Schul- oder Unikontos in einem nicht verwalteten Azure AD-Verzeichnis
+title: Schließen eines Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 description: Es wird beschrieben, wie Sie Ihr Geschäfts-, Schul- oder Unikonto in einer nicht verwalteten Azure Active Directory-Instanz schließen.
 services: active-directory
 author: rolyon
@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73815723"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582536"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Schließen Ihres Geschäfts-, Schul- oder Uni-Kontos in einem nicht verwalteten Verzeichnis
+# <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Schließen Ihres Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 
-Wenn Sie ein Benutzer in einer Organisation mit einer nicht verwalteten Azure AD-Instanz (Azure Active Directory) sind und Sie die Apps dieser Organisation nicht mehr benötigen bzw. keine Verbindung damit mehr aufrechterhalten müssen, können Sie Ihr Konto jederzeit schließen. Ein nicht verwaltetes Verzeichnis verfügt nicht über einen globalen Administrator. Benutzer mit einem nicht verwalteten Verzeichnis können ihre Konten selbst schließen, ohne sich an einen Administrator wenden zu müssen.
+Wenn Sie ein Benutzer in einer nicht verwalteten Azure Active Directory-Organisation (Azure AD-Organisation) sind und Sie die Apps dieser Organisation nicht mehr benötigen bzw. keine Verbindung damit mehr aufrechterhalten müssen, können Sie Ihr Konto jederzeit schließen. Eine nicht verwaltete Organisation verfügt nicht über einen Unternehmensadministrator. Benutzer mit einer nicht verwalteten Organisation können ihre Konten selbst schließen, ohne sich an einen Administrator wenden zu müssen.
 
-Benutzer, die einem nicht verwalteten Verzeichnis zugeordnet sind, werden häufig im Rahmen der Self-Service-Registrierung erstellt. Ein Beispiel hierfür ist ein Information-Worker in einer Organisation, der sich für einen kostenlosen Dienst registriert. Weitere Informationen zur Self-Service-Registrierung finden Sie unter [Was ist die Self-Service-Registrierung für Azure Active Directory?](directory-self-service-signup.md).
+Benutzer, die einer nicht verwalteten Organisation zugeordnet sind, werden häufig im Rahmen der Self-Service-Registrierung erstellt. Ein Beispiel hierfür ist ein Information-Worker in einer Organisation, der sich für einen kostenlosen Dienst registriert. Weitere Informationen zur Self-Service-Registrierung finden Sie unter [Was ist die Self-Service-Registrierung für Azure Active Directory?](directory-self-service-signup.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ Benutzer, die einem nicht verwalteten Verzeichnis zugeordnet sind, werden häufi
 
 Bevor Sie Ihr Konto schließen, sollten Sie Folgendes sicherstellen:
 
-* Vergewissern Sie sich, dass Sie ein Benutzer eines nicht verwalteten Verzeichnisses unter Azure Active Directory sind. Sie können Ihr Konto nicht schließen, wenn Sie einem verwalteten Verzeichnis zugeordnet sind. Falls eine Zuordnung zu einem verwalteten Verzeichnis besteht und Sie Ihr Konto schließen möchten, müssen Sie sich an Ihren Administrator wenden. Informationen zur Ermittlung, ob Sie einem nicht verwalteten Konto zugeordnet sind, finden Sie unter [Löschen des Benutzers aus einem nicht verwalteten Mandanten](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Vergewissern Sie sich, dass Sie ein Benutzer einer nicht verwalteten Azure AD-Organisation sind. Sie können Ihr Konto nicht schließen, wenn Sie einer verwalteten Organisation zugeordnet sind. Falls eine Zuordnung zu einer verwalteten Organisation besteht und Sie Ihr Konto schließen möchten, müssen Sie sich an Ihren Administrator wenden. Informationen zur Ermittlung, ob Sie einer nicht verwalteten Organisation zugeordnet sind, finden Sie unter [Löschen des Benutzers aus einem nicht verwalteten Mandanten](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
 * Speichern Sie alle Daten, die Sie beibehalten möchten. Informationen dazu, wie Sie eine Exportanforderung übermitteln, finden Sie unter [Accessing and exporting system-generated logs for Unmanaged Tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants) (Zugreifen auf und Exportieren von Systemprotokollen für nicht verwaltete Mandanten).
 

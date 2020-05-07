@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397303"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559978"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen
 
@@ -71,7 +71,7 @@ Weitere Informationen zum Änderungsverlauf finden Sie unter [Abrufen von Ressou
 Verwenden Sie das Cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog), um das Aktivitätsprotokoll über PowerShell abzurufen. Im Folgenden sind einige allgemeine Beispiele aufgeführt.
 
 > [!NOTE]
-> `Get-AzLog` stellt nur den Verlauf für 15 Tage bereit. Verwenden Sie den Parameter **-MaxEvents**, um die letzten N Ereignisse für mehr als 15 Tage abzufragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK. Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
+> `Get-AzLog` stellt nur den Verlauf für 15 Tage bereit. Verwenden Sie den Parameter **-MaxRecord**, um die letzten N Ereignisse für mehr als 15 Tage abzufragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK. Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
 
 
 Abrufen von Protokolleinträgen, die nach einem bestimmten Zeitpunkt erstellt wurden:
@@ -107,7 +107,7 @@ Get-AzLog -Caller 'myname@company.com'
 Abrufen der letzten 1000 Ereignisse:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 

@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046336"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583017"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen
 
@@ -60,7 +60,7 @@ Neue Azure AD-Administratorrollen werden derzeit hinzugefügt. Im Azure-Portal o
 
 ## <a name="assign-app-access"></a>Zuweisen des App-Zugriffs
 
-Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrem Azure AD-Mandanten bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
+Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrer Azure AD-Organisation bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
 
 Mit Azure AD können Sie auch die Daten präzise steuern, die zwischen der App und den Gruppen ausgetauscht werden, denen Sie die Zugriffsberechtigung zuweisen. Öffnen Sie in [Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) eine App, und wählen Sie **Bereitstellung**, um Folgendes durchzuführen:
 
