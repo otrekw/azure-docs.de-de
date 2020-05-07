@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74026543"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582733"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Beheben von Problemen bei Gruppen
 
@@ -43,7 +43,7 @@ So deaktivieren Sie die Gruppenerstellung für Benutzer ohne Administratorrechte
    ```
 
 <br/>**Beim Erstellen einer dynamischen Gruppe in PowerShell wird ein Fehler zur maximal zulässigen Anzahl von Gruppen angezeigt**<br/>
-Wenn in PowerShell die Fehlermeldung _Die maximal zulässige Anzahl von Gruppen dynamischer Gruppenrichtlinien wurde erreicht_ angezeigt wird, bedeutet das, dass Sie das maximale Limit für dynamische Gruppen in Ihrem Mandanten erreicht haben. Die maximale Anzahl von dynamischen Gruppen pro Mandant ist 5.000.
+Wenn in PowerShell die Fehlermeldung _Die maximal zulässige Anzahl von Gruppen dynamischer Gruppenrichtlinien wurde erreicht_ angezeigt wird, bedeutet das, dass Sie das maximale Limit für dynamische Gruppen in Ihrer Organisation erreicht haben. Die maximale Anzahl von dynamischen Gruppen pro Organisation beträgt 5.000.
 
 Um neue dynamische Gruppen erstellen zu können, müssen Sie zunächst einige vorhandene dynamische Gruppen löschen. Das Limit kann nicht erhöht werden.
 
@@ -53,11 +53,11 @@ Um neue dynamische Gruppen erstellen zu können, müssen Sie zunächst einige vo
 1. Überprüfen Sie die Werte für Benutzer- oder Geräteattribute in der Regel. Stellen Sie sicher, dass Benutzer vorhanden sind, die die Regel erfüllen. Überprüfen Sie für Geräte die Geräteeigenschaften, um sicherzustellen, dass synchronisierte Attribute die erwarteten Werte enthalten.<br/>
 2. Überprüfen Sie den Status der Mitgliedschaftsverarbeitung, um zu sehen, ob sie abgeschlossen ist. Auf der Seite **Übersicht** für die Gruppe können Sie den [Verarbeitungsstatus der Mitgliedschaft](groups-create-rule.md#check-processing-status-for-a-rule) und das zuletzt geänderte Datum prüfen.
 
-Wenn alles korrekt aussieht, warten Sie einen Augenblick, bis die Gruppe aufgefüllt ist. Je nach Größe Ihres Mandanten kann das erstmalige Auffüllen der Gruppe oder das Auffüllen nach einer Änderung der Regel bis zu 24 Stunden dauern.
+Wenn alles korrekt aussieht, warten Sie einen Augenblick, bis die Gruppe aufgefüllt ist. Je nach Größe Ihrer Azure AD-Organisation kann das erstmalige Auffüllen der Gruppe oder das Auffüllen nach einer Änderung der Regel bis zu 24 Stunden dauern.
 
 **Ich habe eine Regel konfiguriert, aber jetzt werden die vorhandenen Mitglieder der Regel entfernt.**<br/>Dieses Verhalten wird erwartet. Vorhandene Mitglieder der Gruppe werden entfernt, wenn eine Regel aktiviert oder geändert wird. Die nach der Auswertung der Regel verbleibenden Benutzer werden der Gruppe als Mitglieder hinzugefügt.
 
-**Warum werden Änderungen an der Mitgliedschaft nicht sofort angezeigt, wenn ich eine Regel hinzufüge oder ändere?**<br/>Die dedizierte Mitgliedschaftsauswertung erfolgt in regelmäßigen Abständen in einem asynchronen Hintergrundprozess. Die Dauer dieses Prozesses hängt von der Anzahl der Benutzer in Ihrem Verzeichnis und der Größe der Gruppe, die aufgrund der Regel erstellt wird, ab. Bei Verzeichnissen mit einer geringen Benutzeranzahl werden Änderungen der Gruppenmitgliedschaft üblicherweise innerhalb weniger Minuten angezeigt. Bei Verzeichnissen mit einer hohen Benutzeranzahl kann das Auffüllen 30 Minuten oder länger dauern.
+**Warum werden Änderungen an der Mitgliedschaft nicht sofort angezeigt, wenn ich eine Regel hinzufüge oder ändere?**<br/> Die dedizierte Mitgliedschaftsauswertung erfolgt in regelmäßigen Abständen in einem asynchronen Hintergrundprozess. Die Dauer dieses Prozesses hängt von der Anzahl der Benutzer in Ihrem Verzeichnis und der Größe der Gruppe, die aufgrund der Regel erstellt wird, ab. Bei Verzeichnissen mit einer geringen Benutzeranzahl werden Änderungen der Gruppenmitgliedschaft üblicherweise innerhalb weniger Minuten angezeigt. Bei Verzeichnissen mit einer hohen Benutzeranzahl kann das Auffüllen 30 Minuten oder länger dauern.
 
 **Wie kann ich erzwingen, dass die Gruppe jetzt verarbeitet wird?**<br/>
 Derzeit besteht keine Möglichkeit, die bedarfsgesteuerte Verarbeitung der Gruppe automatisch auszulösen. Sie können jedoch die erneute Verarbeitung manuell auslösen, indem Sie die Mitgliedschaftsregel aktualisieren und am Ende ein Leerzeichen hinzufügen.  

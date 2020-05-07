@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74fa6949716119d85eac5b142ac9e3c651a0a5d0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: a58ea58ebf6fdc7d8521d204ac42fcbadeca39a4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398259"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189299"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -184,7 +184,7 @@ Das Trainingsskript berechnet den `val_accuracy`-Wert und protokolliert ihn als 
 
 <a name='specify-early-termination-policy'/>
 
-## <a name="specify-early-termination-policy"></a>Festlegen einer Richtlinie für vorzeitige Beendigung
+## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Festlegen einer Richtlinie für vorzeitige Beendigung
 
 Sie können Läufe mit schlechter Leistung automatisch mit einer Richtlinie für vorzeitige Beendigung beenden. Durch die Beendigung wird die Vergeudung von Ressourcen verringert, die stattdessen zur Untersuchung weiterer Parameterkonfigurationen eingesetzt werden.
 
@@ -319,7 +319,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 
 Häufig kann das Finden der besten Hyperparameterwerte für Ihr Modell ein iterativer Prozess sein, der mehrere Optimierungsläufe erfordert, die von vorherigen Läufen zur Hyperparameteroptimierung lernen. Durch die Wiederverwendung des Wissens aus diesen vorherigen Läufen wird der Prozess der Hyperparameteroptimierung beschleunigt. Dadurch werden die Kosten für die Optimierung des Modells reduziert und die primäre Metrik des resultierenden Modells möglicherweise verbessert. Beim Warmstart eines Experiments zur Hyperparameteroptimierung mit bayesschem Sampling werden Versuche aus dem vorherigen Lauf als Vorkenntnisse verwendet, um intelligent neue Stichproben mit dem Ziel auszuwählen, die primäre Metrik zu verbessern. Darüber hinaus werden beim Zufalls- oder Rastersampling bei vorzeitigen Beendigungsentscheidungen Metriken aus den vorangegangenen Läufen herangezogen, um schlecht abschneidende Trainingsläufe zu ermitteln. 
 
-Azure Machine Learning ermöglicht Ihnen einen Warmstart Ihres Laufs zur Hyperparameteroptimierung, indem Sie das Wissen von bis zu 5 zuvor abgeschlossenen/abgebrochenen übergeordneten Läufen zur Hyperparameteroptimierung nutzen. Sie können die Liste der übergeordneten Läufe für einen Warmstart angeben, indem Sie diesen Codeausschnitt verwenden:
+Azure Machine Learning ermöglicht Ihnen einen Warmstart Ihrer Ausführung zur Hyperparameteroptimierung, indem Sie das Wissen von bis zu fünf zuvor abgeschlossenen/abgebrochenen übergeordneten Ausführungen zur Hyperparameteroptimierung nutzen. Sie können die Liste der übergeordneten Läufe für einen Warmstart angeben, indem Sie diesen Codeausschnitt verwenden:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveRun
@@ -329,7 +329,7 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-Darüber hinaus kann es vorkommen, dass einzelne Trainingsläufe eines Experiments zur Hyperparameteroptimierung aus Budgetgründen abgebrochen werden oder aus anderen Gründen nicht stattfinden. Es ist nun möglich, solche individuellen Trainingsläufe ab dem letzten Prüfpunkt fortzusetzen (vorausgesetzt, Ihr Trainingsskript unterstützt Prüfpunkte). Wenn Sie einen einzelnen Trainingslauf fortsetzen, wird die gleiche Hyperparameterkonfiguration verwendet und der Ordner mit den Ausgaben eingebunden, der für diesen Lauf verwendet wird. Das Trainingsskript muss das Argument `resume-from` akzeptieren, das die Prüfpunkt- oder Modelldateien enthält, mit denen der Trainingslauf fortgesetzt werden kann. Mithilfe des folgenden Codeausschnitts können Sie einzelne Trainingsläufe fortsetzen:
+Darüber hinaus kann es vorkommen, dass einzelne Trainingsausführungen eines Experiments zur Hyperparameteroptimierung aus Budgetgründen oder anderen Gründen abgebrochen bzw. mit Fehlern beendet werden. Es ist nun möglich, solche individuellen Trainingsläufe ab dem letzten Prüfpunkt fortzusetzen (vorausgesetzt, Ihr Trainingsskript unterstützt Prüfpunkte). Wenn Sie einen einzelnen Trainingslauf fortsetzen, wird die gleiche Hyperparameterkonfiguration verwendet und der Ordner mit den Ausgaben eingebunden, der für diesen Lauf verwendet wird. Das Trainingsskript muss das Argument `resume-from` akzeptieren, das die Prüfpunkt- oder Modelldateien enthält, mit denen der Trainingslauf fortgesetzt werden kann. Mithilfe des folgenden Codeausschnitts können Sie einzelne Trainingsläufe fortsetzen:
 
 ```Python
 from azureml.core.run import Run

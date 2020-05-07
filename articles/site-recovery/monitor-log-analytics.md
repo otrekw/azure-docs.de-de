@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133416"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131188"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
 In diesem Artikel wird beschrieben, wie Sie die von [Azure Site Recovery](site-recovery-overview.md) replizierten Computer mithilfe von [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) und [Log Analytics](../azure-monitor/log-query/log-query-overview.md) überwachen.
 
-Azure Monitor-Protokolle bieten eine Protokolldatenplattform, die Aktivitäts- und Diagnoseprotokolle zusammen mit anderen Überwachungsdaten erfasst. Sie können in Azure Monitor-Protokollen Protokollabfragen mit Log Analytics schreiben und testen und Protokolldaten interaktiv analysieren. Sie können die Protokollergebnisse visualisieren und abfragen, und Sie können Warnungen konfigurieren, damit Aktionen basierend auf überwachten Daten durchgeführt werden.
+Azure Monitor-Protokolle bieten eine Protokolldatenplattform, die Aktivitäts- und Ressourcenprotokolle zusammen mit anderen Überwachungsdaten sammelt. Sie können in Azure Monitor-Protokollen Protokollabfragen mit Log Analytics schreiben und testen und Protokolldaten interaktiv analysieren. Sie können die Protokollergebnisse visualisieren und abfragen, und Sie können Warnungen konfigurieren, damit Aktionen basierend auf überwachten Daten durchgeführt werden.
 
 Für Site Recovery können Sie Azure Monitor-Protokolle für folgende Aufgaben verwenden:
 
@@ -44,7 +44,7 @@ Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monit
 
 1. Klicken Sie im Tresor auf **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen**.
 
-    ![Auswählen der Diagnoseprotokollierung](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Auswählen der Ressourcenprotokollierung](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. Geben Sie unter **Diagnoseeinstellungen** einen Namen an, und aktivieren Sie das Kontrollkästchen **An Log Analytics senden**.
 3. Wählen Sie das Abonnement der Azure Monitor-Protokolle und den Log Analytics-Arbeitsbereich aus.

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 119f9c28b5413b8d2db5fa14ea839d1743f3d64a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188292"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Point-to-Site-Verbindungsprobleme
 
@@ -39,7 +39,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 
 2. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Position |
+    | Zertifikat | Standort |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -115,7 +115,7 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
 
 1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Position |
+    | Zertifikat | Standort |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -282,7 +282,7 @@ Wenn der Client mithilfe einer Point-to-Site-VPN-Verbindung eine Verbindung mit 
 
 ### <a name="cause"></a>Ursache
 
-Der Point-to-Site-VPN-Client verwendet Azure DNS-Server, die im virtuellen Azure-Netzwerk konfiguriert sind. Die Azure DNS-Server haben gegenüber den im Client konfigurierten lokalen DNS-Servern Vorrang, sodass alle DNS-Abfragen an die Azure DNS-Server gesendet werden. Wenn die Azure DNS-Server nicht die Datensätze für die lokalen Ressourcen beinhalten, tritt ein Fehler bei der Abfrage auf.
+Der Point-to-Site-VPN-Client verwendet normalerweise Azure DNS-Server, die im virtuellen Azure-Netzwerk konfiguriert sind. Die Azure DNS-Server haben gegenüber den im Client konfigurierten lokalen DNS-Servern Vorrang (sofern die Metrik der Ethernet-Schnittstelle nicht geringer ist), sodass alle DNS-Abfragen an die Azure DNS-Server gesendet werden. Wenn die Azure DNS-Server nicht die Datensätze für die lokalen Ressourcen beinhalten, tritt ein Fehler bei der Abfrage auf.
 
 ### <a name="solution"></a>Lösung
 

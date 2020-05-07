@@ -1,19 +1,19 @@
 ---
-title: Technischer Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen
+title: Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen
 description: Schrittanleitung und Prüflisten für die Veröffentlichung von SaaS-Anwendungen im Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/23/2020
+ms.author: dsindona
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544281"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117232"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -21,19 +21,14 @@ SaaS-Anwendungen können im Marketplace mit drei verschiedenen Aktionsaufrufen v
 
 ## <a name="offer-overview"></a>Angebotsübersicht  
 
-SaaS-Anwendungen stehen in beiden Azure-Storefronts zur Verfügung. In der folgenden Tabelle werden die derzeit verfügbaren Optionen beschrieben:
-
-| Storefront-Option | Auflisten | Trial/Transact (Testversion/Transaktion) |  
-| --- | --- | --- |  
-| AppSource | Ja | Ja |
-| Azure Marketplace | Nein | Ja |   
+SaaS-Anwendungen sind in Microsoft AppSource und Azure Marketplace verfügbar.  Beide Storefronts unterstützen das Auflisten von Angeboten, Testversionen und Transaktionsangebote.
 
 **Liste**:  Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
 **Testversion/Transaktion**:  Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
-| **Kontaktaufnahme** | Ja | Nein |  
+| **Kontaktaufnahme** | Ja | Nein  |  
 | **Power BI/Dynamics** | Ja | Ja (Azure AD-Integration) |  
 | **SaaS-Apps**| Ja | Ja (Azure AD-Integration) |     
 
@@ -110,8 +105,8 @@ Führen Sie die Zertifizierung der Azure AD-Integration auf verschiedene Arten d
 **Vorgehensweise für mehrinstanzenfähige Anwendungen:**  
 
 Wenn Sie Azure AD bereits unterstützt, gehen Sie wie folgt vor:
-1.  Registrieren Sie Ihre Anwendung im Azure-Portal
-2.  Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um eine Testversion mit Ein-Klick-Feature zu erhalten. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+1.    Registrieren Sie Ihre Anwendung im Azure-Portal
+2.    Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um eine Testversion mit Ein-Klick-Feature zu erhalten. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
 Wenn die einmalige Azure AD-Verbundanmeldung für Sie neu ist, gehen Sie wie folgt vor: 
 1.  Registrieren Sie Ihre Anwendung im Azure-Portal
@@ -144,9 +139,9 @@ Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnun
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie dies noch nicht getan haben,
 
-- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
+* [Erfahren Sie mehr](https://azuremarketplace.microsoft.com/sell) über den Marketplace.
 
-Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
+Um sich in Partner Center zu registrieren, ein neues Angebot zu erstellen oder an einem vorhandenen zu arbeiten, gehen Sie wie folgt vor:
 
-- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
-- Unter [Azure-SaaS-Anwendungsangebot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) finden Sie weitere Informationen.
+* [Melden Sie sich bei Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen oder abzuschließen.
+* Weitere Informationen finden Sie unter [Erstellen eines SaaS-Anwendungsangebots](./partner-center-portal/create-new-saas-offer.md).

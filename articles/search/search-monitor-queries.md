@@ -1,23 +1,23 @@
 ---
 title: Überwachen von Abfragen
 titleSuffix: Azure Cognitive Search
-description: Überwachen Sie die Abfragemetriken im Hinblick auf Leistung und Durchsatz. Erfassen und analysieren Sie die Abfragezeichenfolgen-Eingaben in Diagnoseprotokollen.
+description: Überwachen Sie die Abfragemetriken im Hinblick auf Leistung und Durchsatz. Erfassen und analysieren Sie die eingegebenen Abfragezeichenfolgen in Ressourcenprotokollen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462519"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127695"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
-In diesem Artikel erfahren Sie, wie Sie Abfrageleistung und -volumen mit Metriken und Diagnoseprotokollierung messen können. Außerdem wird erläutert, wie Sie die in Abfragen verwendeten Eingabebegriffe sammeln – notwendige Informationen, wenn Sie das den Nutzen und die Effektivität Ihres Suchkorpus beurteilen müssen.
+In diesem Artikel erfahren Sie, wie Sie Abfrageleistung und -volumen mit Metriken und Ressourcenprotokollierung messen können. Außerdem wird erläutert, wie Sie die in Abfragen verwendeten Eingabebegriffe sammeln – notwendige Informationen, wenn Sie das den Nutzen und die Effektivität Ihres Suchkorpus beurteilen müssen.
 
 Verlaufsdaten, die in Metriken einfließen, werden 30 Tage lang aufbewahrt. Zur längeren Aufbewahrung, oder um operative Daten und Abfragezeichenfolgen zu erfassen, stellen Sie sicher, dass eine [Diagnoseeinstellung aktiviert ist](search-monitor-logs.md), die festlegt, dass protokollierte Ereignisse und Metriken beibehalten werden.
 
@@ -118,7 +118,7 @@ Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü *
 
 ## <a name="identify-strings-used-in-queries"></a>Identifizieren von Zeichenfolgen in Abfragen
 
-Wenn Sie die Diagnoseprotokollierung aktivieren, erfasst das System Abfrageanforderungen in der Tabelle **AzureDiagnostics**. Als Voraussetzung müssen Sie die [Diagnoseprotokollierung](search-monitor-logs.md) bereits aktiviert haben und einen Log Analytics-Arbeitsbereich oder eine andere Speicheroption angeben.
+Wenn Sie die Ressourcenprotokollierung aktivieren, erfasst das System Abfrageanforderungen in der Tabelle **AzureDiagnostics**. Als Voraussetzung müssen Sie die [Ressourcenprotokollierung](search-monitor-logs.md) bereits aktiviert und einen Log Analytics-Arbeitsbereich oder eine andere Speicheroption angegeben haben.
 
 1. Wählen Sie im Abschnitt „Überwachung“ die Option **Protokolle** aus, um in Log Analytics ein leeres Abfragefenster zu öffnen.
 

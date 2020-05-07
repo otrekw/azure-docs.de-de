@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131376"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097233"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
 In diesem Artikel werden Sie durch einen allgemeinen empfohlenen Ansatz für die Problembehandlung von Abfragen in Azure Cosmos DB geführt. Sie sollten die in diesem Artikel beschriebenen Schritte zwar nicht als umfassende Verteidigung gegen mögliche Abfrageprobleme ansehen, hier sind jedoch die gängigsten Leistungstipps zusammengefasst. Sie können diesen Artikel als Ausgangspunkt für das Troubleshooting von langsamen oder aufwendigen Abfragen in der Core (SQL)-API von Azure Cosmos DB verwenden. Sie können auch [Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) verwenden, um Abfragen zu identifizieren, die langsam sind oder beträchtliche Durchsatzmengen verbrauchen.
 
-Sie können Abfrageoptimierungen in Azure Cosmos DB umfassend kategorisieren: 
+Sie können Abfrageoptimierungen in Azure Cosmos DB umfassend kategorisieren:
 
 - Optimierungen, die die Anzahl der verbrauchten Anforderungseinheiten (Request Units, RUs) der Abfrage verringern
 - Optimierungen ausschließlich zum Verringern der Latenz
@@ -28,29 +28,30 @@ Durch Reduzieren der Anzahl der verbrauchten RUs einer Abfrage können Sie mit z
 
 Dieser Artikel enthält Beispiele, die Sie mit dem Dataset [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) neu erstellen können.
 
-## <a name="important"></a>Wichtig
+## <a name="common-sdk-issues"></a>Allgemeine SDK-Probleme
 
-- Befolgen Sie unsere [Tipps zur Leistungssteigerung](performance-tips.md), um die bestmögliche Leistung zu erzielen.
+Bevor Sie diesen Leitfaden lesen, sollten Sie sich mit einigen gängigen SDK-Problemen vertraut machen, die nicht im Zusammenhang mit der Abfrage-Engine stehen.
+
+- Befolgen Sie diese [Tipps zur Leistungssteigerung](performance-tips.md), um eine bestmögliche Leistung zu erzielen.
     > [!NOTE]
     > Für eine bessere Leistung wird die Windows-64-Bit-Hostverarbeitung empfohlen. Das SQL SDK enthält die native Datei „ServiceInterop.dll“, um Abfragen lokal zu analysieren und zu optimieren. „ServiceInterop.dll“ wird nur auf der Windows x64-Plattform unterstützt. Bei Linux und anderen nicht unterstützten Plattformen, bei denen die Datei „ServiceInterop.dll“ nicht verfügbar ist, erfolgt ein zusätzlicher Netzwerkaufruf an das Gateway, um die optimierte Abfrage zu erhalten.
-- Bei der Azure Cosmos DB-Abfrage wird keine Mindestelementanzahl unterstützt.
-    - Der Code sollte jede Seitengröße von 0 bis zur maximalen Anzahl von Elementen verarbeiten können.
-    - Die Anzahl der Elemente auf einer Seite kann und wird ohne vorherige Ankündigung geändert.
-- Leere Seiten sind bei Abfragen zu erwarten und können jederzeit auftreten.
-    - Leere Seiten werden in SDKs verfügbar gemacht, da sie so mehr Gelegenheiten zum Abbrechen einer Abfrage bieten. Außerdem wird so deutlich, dass das SDK mehrere Netzwerkaufrufe tätigt.
-    - Leere Seiten können in vorhandenen Workloads auftreten, wenn eine physische Partition in Azure Cosmos DB aufgeteilt wird. Die erste Partition enthält 0 Ergebnisse und verursacht die leere Seite.
-    - Leere Seiten werden dadurch verursacht, dass das Back-End eine Abfrage vorzeitig entfernt, da diese mehr als eine bestimmte Zeitspanne auf dem Back-End zum Abrufen der Dokumente benötigt. Wenn Azure Cosmos DB eine Abfrage vorzeitig entfernt, wird ein Fortsetzungstoken zurückgegeben, mit dem die Abfrage fortgesetzt werden kann.
-- Stellen Sie sicher, die Abfrage vollständig ablaufen zu lassen. Sehen Sie sich die SDK-Beispiele an, und verwenden Sie eine `while`-Schleife für `FeedIterator.HasMoreResults`, um die gesamte Abfrage ablaufen zu lassen.
+- Das SDK ermöglicht das Festlegen eines `MaxItemCount`-Werts für Ihre Abfragen, Sie können jedoch keine Mindestanzahl von Elementen angeben.
+    - Der Code sollte jede Seitengröße von 0 bis zur `MaxItemCount` verarbeiten können.
+    - Die Anzahl von Elementen auf einer Seite entspricht immer maximal dem `MaxItemCount`-Wert. Weil `MaxItemCount` jedoch grundsätzlich ein Maximum ist, könnte die Anzahl der Ergebnisse geringer als dieser Wert sein.
+- Manchmal können Abfragen sogar dann leere Seiten enthalten, wenn auf einer zukünftigen Seite Ergebnisse vorhanden sind. Dies könnte folgende Gründe haben:
+    - Das SDK führt mehrere Netzwerkaufrufe durch.
+    - Die Abfrage benötigt lange Zeit zum Abrufen der Dokumente.
+- Bei allen Abfragen gibt es ein Fortsetzungstoken, das die Fortsetzung der jeweiligen Abfrage zulässt. Stellen Sie sicher, die Abfrage vollständig ablaufen zu lassen. Sehen Sie sich die SDK-Beispiele an, und verwenden Sie eine `while`-Schleife für `FeedIterator.HasMoreResults`, um die gesamte Abfrage ablaufen zu lassen.
 
 ## <a name="get-query-metrics"></a>Abrufen von Abfragemetriken
 
-Beim Optimieren einer Abfrage in Azure Cosmos DB ist der erste Schritt immer das [Abrufen der Abfragemetriken](profile-sql-api-query.md) für Ihre Abfrage. Diese Metriken sind auch über das Azure-Portal verfügbar:
+Beim Optimieren einer Abfrage in Azure Cosmos DB ist der erste Schritt immer das [Abrufen der Abfragemetriken](profile-sql-api-query.md) für Ihre Abfrage. Diese Metriken sind auch über das Azure-Portal verfügbar. Sobald Sie Ihre Abfrage im Data Explorer ausführen, werden die Abfragemetriken neben der Registerkarte **Ergebnisse** angezeigt:
 
 [ ![Abrufen von Abfragemetriken](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-Vergleichen Sie nach dem Abrufen der Abfragemetriken die Anzahl der abgerufenen Dokumente mit der Anzahl der Ausgabedokumente für Ihre Abfrage. Verwenden Sie diesen Vergleich zum Identifizieren der relevanten Abschnitte, auf die in diesem Artikel verwiesen werden soll.
+Vergleichen Sie nach dem Abrufen der Abfragemetriken die **Anzahl der abgerufenen Dokumente** mit der **Anzahl der Ausgabedokumente** für Ihre Abfrage. Verwenden Sie diesen Vergleich zum Identifizieren der relevanten Abschnitte, auf die in diesem Artikel verwiesen werden soll.
 
-Bei der Anzahl der abgerufenen Dokumente handelt es sich um die Anzahl von Dokumenten, die für die Abfrage geladen werden mussten. Bei der Anzahl der Ausgabedokumente handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die Anzahl der abgerufenen Dokumente deutlich höher ist als die Anzahl der Ausgabedokumente, konnte mindestens ein Teil der Abfrage den Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Bei der **Anzahl der Ausgabedokumente** handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierungen für Ihr Szenario besser zu verstehen.
 
@@ -62,7 +63,9 @@ Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierunge
 
 - [Informieren Sie sich, welche Systemfunktionen den Index verwenden.](#understand-which-system-functions-use-the-index)
 
-- [Ändern Sie Abfragen mit einem Filter und einer ORDER BY-Klausel.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [Informieren Sie sich, welche Aggregatabfragen den Index verwenden.](#understand-which-aggregate-queries-use-the-index)
+
+- [Optimieren Sie Abfragen, die sowohl über einen Filter als auch über eine ORDER BY-Klausel verfügen.](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
 - [Optimieren Sie JOIN-Ausdrücken mithilfe einer Unterabfrage.](#optimize-join-expressions-by-using-a-subquery)
 
@@ -70,11 +73,11 @@ Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierunge
 
 #### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Die Anzahl der abgerufenen Dokumente entspricht ungefähr der Anzahl der Ausgabedokumente
 
-- [Vermeiden Sie partitionsübergreifende Abfragen.](#avoid-cross-partition-queries)
+- [Minimieren Sie partitionsübergreifende Abfragen.](#minimize-cross-partition-queries)
 
 - [Optimieren Sie Abfragen mit Filtern für mehrere Eigenschaften.](#optimize-queries-that-have-filters-on-multiple-properties)
 
-- [Ändern Sie Abfragen mit einem Filter und einer ORDER BY-Klausel.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [Optimieren Sie Abfragen, die sowohl über einen Filter als auch über eine ORDER BY-Klausel verfügen.](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
 <br>
 
@@ -90,7 +93,7 @@ Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierunge
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Abfragen, bei denen die Anzahl der abgerufenen Dokumente die Anzahl der Ausgabedokumente überschreitet
 
- Bei der Anzahl der abgerufenen Dokumente handelt es sich um die Anzahl von Dokumenten, die für die Abfrage geladen werden mussten. Bei der Anzahl der Ausgabedokumente handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die Anzahl der abgerufenen Dokumente deutlich höher ist als die Anzahl der Ausgabedokumente, konnte mindestens ein Teil der Abfrage den Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+ Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Die **Anzahl der Ausgabedokumente** ist die Anzahl von Dokumenten, die von der Abfrage zurückgegebenen wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Nachstehend finden Sie ein Beispiel für eine Überprüfungsabfrage, die nicht vollständig vom Index bedient wurde:
 
@@ -128,20 +131,25 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-Die Anzahl abgerufener Dokumente (60.951) ist deutlich höher als die Anzahl der Ausgabedokumente (7). Daher musste diese Abfrage eine Überprüfung durchführen. In diesem Fall wird der Index von der Systemfunktion [UPPER()](sql-query-upper.md) nicht verwendet.
+Die **Anzahl der abgerufenen Dokumente** (60.951) ist deutlich höher als die **Anzahl der Ausgabedokumente** (7). Dies ist der Grund, weshalb diese Abfrage zu einer Dokumentüberprüfung geführt hat. In diesem Fall verwendet die Systemfunktion [UPPER()](sql-query-upper.md) keinen Index.
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>Einschließen der erforderlichen Pfade in die Indizierungsrichtlinie
 
-Ihre Indizierungsrichtlinie sollte alle Eigenschaften abdecken, die in `WHERE`-Klauseln, `ORDER BY`-Klauseln, `JOIN` und den meisten Systemfunktionen enthalten sind. Der in der Indizierungsrichtlinie angegebene Pfad sollte der Eigenschaft in den JSON-Dokumenten entsprechen (Groß-/Kleinschreibung beachten).
+Ihre Indizierungsrichtlinie sollte alle Eigenschaften abdecken, die in `WHERE`-Klauseln, `ORDER BY`-Klauseln, `JOIN` und den meisten Systemfunktionen enthalten sind. Der in der Indizierungsrichtlinie angegebene gewünschte Pfad sollte den Eigenschaften in den JSON-Dokumenten entsprechen.
 
-Wenn Sie eine einfache Abfrage für das [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)-Dataset ausführen, können Sie eine deutlich niedrigere Anzahl der verbrauchten RUs beobachten, wenn die Eigenschaft in der `WHERE`-Klausel indiziert wird:
+> [!NOTE]
+> Bei Eigenschaften in der Azure Cosmos DB-Indizierungsrichtlinie wird die Groß-/Kleinschreibung beachtet
+
+Wenn Sie die folgende einfache Abfrage für das [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)-Dataset ausführen, werden Sie eine deutlich niedrigere Anzahl von verbrauchten RUs beobachten, wenn die Eigenschaft in der `WHERE`-Klausel indiziert wird:
 
 #### <a name="original"></a>Original
 
 Abfrage:
 
 ```sql
-SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
+SELECT *
+FROM c
+WHERE c.description = "Malabar spinach, cooked"
 ```
 
 Indizierungsrichtlinie:
@@ -190,7 +198,7 @@ Sie können der Indizierungsrichtlinie jederzeit Eigenschaften hinzufügen, ohne
 
 Wenn der Ausdruck in einen Bereich von Zeichenfolgenwerten übersetzt werden kann, kann der Index genutzt werden. Andernfalls ist dies nicht möglich.
 
-Die Zeichenfolgenfunktionen in der folgenden Liste können den Index verwenden:
+Hier ist die Liste einiger allgemeiner Zeichenfolgenfunktionen, die den Index verwenden können:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -208,7 +216,64 @@ Nachstehend sind einige allgemeine Systemfunktionen aufgeführt, die den Index n
 
 Andere Teile der Abfrage verwenden möglicherweise weiterhin den Index, auch wenn die für die Systemfunktionen nicht gilt.
 
-### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Ändern von Abfragen mit einem Filter und einer ORDER BY-Klausel
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Verstehen, welche Aggregatabfragen den Index verwenden
+
+In den meisten Fällen wird der Index von Aggregatsystemfunktionen in Azure Cosmos DB verwendet. Je nach den Filtern oder zusätzlichen Klauseln in einer Aggregatabfrage muss die Abfrage-Engine jedoch möglicherweise eine große Anzahl von Dokumenten laden. Normalerweise wendet die Abfrage-Engine zuerst Gleichheits-und Bereichsfilter an. Nach Anwendung dieser Filter kann die Abfrage-Engine zusätzliche Filter auswerten und neu sortieren, um die übrigen Dokumente bei Bedarf zum Berechnen des Aggregats zu laden.
+
+So ist bei diesen zwei Beispielabfragen die Abfrage mit einem Gleichheits- und `CONTAINS`-Systemfunktionsfilter generell effizienter als eine Abfrage mit nur einem `CONTAINS`-Systemfunktionsfilter. Der Grund: Der Gleichheitsfilter wird zuerst angewendet und verwendet den Index, bevor Dokumente für den teureren `CONTAINS`-Filter geladen werden müssen.
+
+Abfrage mit nur `CONTAINS`-Filter – höhere RU-Gebühr:
+
+```sql
+SELECT COUNT(1)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
+```
+
+Abfrage sowohl mit Gleichheitsfilter als auch `CONTAINS`-Filter – niedrigere RU-Gebühr:
+
+```sql
+SELECT AVG(c._ts)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+Nachfolgend sind zusätzliche Beispiele für Aggregatabfragen aufgeführt, die den Index nicht vollständig verwenden:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Abfragen mit Systemfunktionen, die den Index nicht verwenden
+
+Sie sollten sich auf der relevanten [Seite für die Systemfunktion](sql-query-system-functions.md) informieren, ob sie den Index verwendet.
+
+```sql
+SELECT MAX(c._ts)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Aggregatabfragen mit benutzerdefinierten Funktionen (User-Defined Functions, UDFs)
+
+```sql
+SELECT AVG(c._ts)
+FROM c
+WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>Abfragen mit GROUP BY
+
+Die RU-Gebühr von Abfragen mit `GROUP BY` steigt, wenn die Multiplizität der Eigenschaften in der `GROUP BY`-Klausel zunimmt. In der unten stehenden Abfrage steigt die RU-Gebühr der Abfrage beispielsweise, wenn die Anzahl von eindeutigen Beschreibungen zunimmt.
+
+Die RU-Gebühr einer Aggregatfunktion mit einer `GROUP BY`-Klausel ist höher als die RU-Gebühr einer reinen Aggregatfunktion. Weil die Abfrage-Engine in diesem Beispiel jedes Dokument laden muss, das mit dem Filter `c.foodGroup = "Sausages and Luncheon Meats"` übereinstimmt, wird die RU-Gebühr erwartungsgemäß hoch sein.
+
+```sql
+SELECT COUNT(1)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats"
+GROUP BY c.description
+```
+
+Wenn Sie vorhaben, dieselben Aggregatabfragen häufig auszuführen, ist es möglicherweise effizienter, eine materialisierte Sicht in Echtzeit mit dem [Azure Cosmos DB-Änderungsfeed](change-feed.md) zu erstellen, als einzelne Abfragen auszuführen.
+
+### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Optimieren Sie Abfragen, die sowohl über einen Filter als auch über eine ORDER BY-Klausel verfügen
 
 Obwohl Abfragen mit einem Filter und einer `ORDER BY`-Klausel normalerweise einen Bereichsindex verwenden, sind sie effizienter, wenn sie von einem zusammengesetzten Index bedient werden können. Zusätzlich zum Ändern der Indizierungsrichtlinie sollten Sie der `ORDER BY`-Klausel alle Eigenschaften im zusammengesetzten Index hinzufügen. Durch diese Änderung der Abfrage wird sichergestellt, dass der zusammengesetzte Index verwendet wird.  Sie können die Auswirkung beobachten, indem Sie eine Abfrage für das [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)-Dataset ausführen:
 
@@ -217,7 +282,10 @@ Obwohl Abfragen mit einem Filter und einer `ORDER BY`-Klausel normalerweise eine
 Abfrage:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
+SELECT *
+FROM c
+WHERE c.foodGroup = "Soups, Sauces, and Gravies"
+ORDER BY c._ts ASC
 ```
 
 Indizierungsrichtlinie:
@@ -243,7 +311,8 @@ Indizierungsrichtlinie:
 Aktualisierte Abfrage (enthält beide Eigenschaften in der `ORDER BY`-Klausel):
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies"
 ORDER BY c.foodGroup, c._ts ASC
 ```
@@ -279,6 +348,7 @@ Aktualisierte Indizierungsrichtlinie:
 **Verbrauchte RUs:** 8,86 RUs
 
 ### <a name="optimize-join-expressions-by-using-a-subquery"></a>Optimieren von JOIN-Ausdrücken mithilfe einer Unterabfrage
+
 Mehrwertige Unterabfragen können `JOIN`-Ausdrücke optimieren, indem Prädikate nach jedem select-many-Ausdruck statt nach allen Kreuzprodukten in der `WHERE`-Klausel gepusht werden.
 
 Angenommen, die folgende Abfrage wird ausgeführt:
@@ -295,7 +365,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 **Verbrauchte RUs:** 167,62 RUs
 
-Für diese Abfrage vergleicht der Index jedes Dokument, das ein Tag mit dem Namen „infant formula“, einen „nutritionValue“ größer als 0 und eine Portionsmenge größer als 1 enthält. Der `JOIN`-Ausdruck ermittelt hier das Kreuzprodukt aller Elemente der tags-, nutrients- und servings-Arrays für jedes übereinstimmende Dokument, bevor ein Filter angewendet wird. Die `WHERE`-Klausel wendet dann das Filterprädikat auf jedes `<c, t, n, s>`-Tupel an.
+Bei dieser Abfrage ermittelt der Index alle Dokumente, die ein Tag mit dem Namen `infant formula`, `nutritionValue` größer 0 und `amount` größer 1 aufweisen. Der `JOIN`-Ausdruck ermittelt hier das Kreuzprodukt aller Elemente der tags-, nutrients- und servings-Arrays für jedes übereinstimmende Dokument, bevor ein Filter angewendet wird. Die `WHERE`-Klausel wendet dann das Filterprädikat auf jedes `<c, t, n, s>`-Tupel an.
 
 Wenn z. B. ein übereinstimmendes Dokument 10 Elemente in jedem der drei Arrays hat, wird auf 1 × 10 × 10 × 10 (d. h. 1.000) Tupel erweitert. Die Verwendung von Unterabfragen kann hier helfen, indem verknüpfte Arrayelemente herausgefiltert werden, bevor der Joinvorgang mit dem nächsten Ausdruck ausgeführt wird.
 
@@ -315,9 +385,9 @@ Es wird davon ausgegangen, dass nur ein Element im tags-Array dem Filter entspri
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Abfragen, bei denen die Anzahl der abgerufenen Dokumente der Anzahl der Ausgabedokumente entspricht
 
-Wenn die Anzahl der abgerufenen Dokumente ungefähr der Anzahl der Ausgabedokumente entspricht, musste die Abfrage nicht viele unnötige Dokumente überprüfen. Bei vielen Abfragen, z. B. bei Abfragen, die das TOP-Schlüsselwort verwenden, kann die Anzahl der abgerufenen Dokumente die Anzahl der Ausgabedokumente um 1 überschreiten. Sie müssen sich darum nicht kümmern.
+Wenn die **Anzahl der abgerufenen Dokumente** ungefähr der **Anzahl der Ausgabedokumente** entspricht, musste die Abfrage-Engine nicht viele unnötige Dokumente überprüfen. Bei vielen Abfragen, z. B. bei Abfragen, die das `TOP`-Schlüsselwort verwenden, kann die **Anzahl der abgerufenen Dokumente** die **Anzahl der Ausgabedokumente** um 1 überschreiten. Sie müssen sich darum nicht kümmern.
 
-### <a name="avoid-cross-partition-queries"></a>Vermeiden partitionsübergreifender Abfragen
+### <a name="minimize-cross-partition-queries"></a>Minimieren Sie partitionsübergreifende Abfragen
 
 Azure Cosmos DB verwendet die [Partitionierung](partitioning-overview.md), um einzelne Container zu skalieren, wenn die Anzahl von Anforderungseinheiten und die Datenspeicheranforderungen steigen. Jede physische Partition verfügt über einen separaten und unabhängigen Index. Wenn Ihre Abfrage einen Gleichheitsfilter enthält, der mit dem Partitionsschlüssel Ihres Containers übereinstimmt, müssen Sie nur den Index der relevanten Partition überprüfen. Durch diese Optimierung wird die Gesamtanzahl der für die Abfrage erforderlichen RUs reduziert.
 
@@ -326,26 +396,30 @@ Im Fall einer großen Anzahl von bereitgestellten Anforderungseinheiten (über 3
 Wenn Sie beispielsweise einen Container mit dem Partitionsschlüssel „foodGroup“ erstellen, müssen die folgenden Abfragen nur eine einzige physische Partition überprüfen:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Diese Abfragen könnten auch durch Hinzufügen des Partitionsschlüssels zur Abfrage optimiert werden:
+Abfragen, die über einen `IN`-Filter mit dem Partitionsschlüssel verfügen, überprüfen lediglich die relevanten Partitionen, sodass es nicht zu einer Auffächerung kommt:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
-Abfragen, die Bereichsfilter für den Partitionsschlüssel oder keine Filter für den Partitionsschlüssel enthalten, müssen den Index jeder physischen Partition auf Ergebnisse überprüfen:
+Abfragen, die Bereichsfilter für den Partitionsschlüssel oder keine Filter für den Partitionsschlüssel enthalten, müssen „aufgefächert“ werden und den Index jeder physischen Partition überprüfen:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.description = "Mushroom, oyster, raw"
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
@@ -356,12 +430,14 @@ Obwohl Abfragen mit Filtern für mehrere Eigenschaften normalerweise einen Berei
 Nachstehend finden Sie einige Beispiele für Abfragen, die mit einem zusammengesetzten Index optimiert werden könnten:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts = 1575503264
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 ```
 

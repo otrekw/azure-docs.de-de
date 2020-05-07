@@ -6,13 +6,13 @@ author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/01/2020
-ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873887"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231219"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -22,9 +22,9 @@ Das Beschriften großer Datenmengen in Projekten für maschinelles Lernen bereit
  
 [Azure Machine Learning](https://ml.azure.com/) ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten (öffentliche Vorschau). Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
 
-Machine Learning verfolgt den Fortschritt nach und verwaltet die Warteschlange mit unvollständigen Beschriftungsaufgaben. Beschriftungsersteller benötigen kein Azure-Konto für die Teilnahme. Nachdem sie mit Ihrem Microsoft-Konto oder über [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) authentifiziert sind, können sie sich Beschriftungsaufgaben widmen, so wie es ihre Zeit erlaubt.
+Azure Machine Learning verfolgt den Fortschritt nach und verwaltet die Warteschlange der unvollständigen Bezeichnungsaufgaben.
 
-Sie können das Projekt starten und beenden, Beschriftungsersteller und Teams hinzufügen und entfernen sowie den Beschriftungsstatus überwachen. Sie können beschriftete Daten im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
+Sie können das Projekt starten und beenden und den Bezeichnungsfortschritt überwachen. Sie können beschriftete Daten im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
 
 > [!Important]
 > Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.)
@@ -34,7 +34,6 @@ In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Projekts
 > * Angeben der Daten und Struktur des Projekts
-> * Verwalten der Teams und Personen, die am Projekt arbeiten
 > * Ausführen und Überwachen des Projekts
 > * Exportieren der Beschriftungen
 
@@ -50,7 +49,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
 
-Beschriftungsprojekte werden in Azure Machine Learning verwaltet. Auf der Seite **Beschriftungsprojekte** verwalten Sie Projekte und Personen. Einem Projekt können ein oder mehrere Teams zugewiesen sein, und ein Team kann aus einem oder mehreren Personen bestehen.
+Beschriftungsprojekte werden in Azure Machine Learning verwaltet. Auf der Seite **Beschriftungsprojekte** verwalten Sie Ihre Projekte.
 
 Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ein Beispiel zum Verwenden eines Datenspeichers finden Sie unter [Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung](tutorial-labeling.md).
 
@@ -168,23 +167,11 @@ Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten train
 
 Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projekts unveränderlich. Sie können den Aufgabentyp oder das Dataset nicht ändern. Beschriftungen sowie die URL für die Aufgabenbeschreibung *können* dagegen geändert werden. Überprüfen Sie die Einstellungen sorgfältig, bevor Sie das Projekt erstellen. Nachdem Sie das Projekt übermittelt haben, gelangen Sie wieder zur Startseite von **Datenbeschriftung**, wo das Projekt mit dem Status **Initialisierung** angezeigt wird. Diese Seite wird nicht automatisch aktualisiert. Aktualisieren Sie die Seite nach einer Pause manuell, um den Status des Projekts als **Erstellt** anzuzeigen.
 
-## <a name="manage-teams-and-people"></a>Verwalten von Teams und Personen
-
-Standardmäßig wird für jedes Beschriftungsprojekt, das Sie erstellen, ein neues Team mit Ihnen als Mitglied angezeigt. Teams können aber auch von Projekten gemeinsam genutzt werden. Und Projekte können über mehrere Teams verfügen. Zum Erstellen eines Teams wählen Sie auf der Seite **Teams** die Option **Team hinzufügen** aus. 
-
-Personen werden auf der Seite **Beschriftungsersteller** verwaltet. Personen werden per E-Mail-Adresse hinzugefügt und entfernt. Jeder Beschriftungsersteller muss sich mit Ihrem Microsoft-Konto oder über Azure Active Directory authentifizieren, falls Sie es verwenden.  
-
-Nachdem Sie eine Person hinzugefügt haben, können Sie diese einem oder mehreren Teams zuweisen: Wechseln Sie zur Seite **Teams**, wählen Sie das Team aus, und wählen Sie dann **Personen zuweisen** oder **Personen entfernen** aus.
-
-Zum Senden einer E-Mail an das Team wählen Sie das Team aus, um die Seite **Details zum Team** anzuzeigen. Wählen Sie auf dieser Seite **E-Mail an Team** aus, um einen E-Mail-Entwurf mit den Adressen aller Personen im Team zu öffnen.
-
 ## <a name="run-and-monitor-the-project"></a>Ausführen und Überwachen des Projekts
 
 Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus, um zu **Projektdetails** zu gelangen. Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
 
 Auf der Registerkarte**Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
-
-Auf der Registerkarte **Team** können Sie dem Projekt Teams zuweisen oder eine Zuweisung aufheben.
 
 Um das Projekt anzuhalten oder neu zu starten, wählen Sie die Schaltfläche **Anhalten**/**Starten** aus. Sie können Daten nur dann beschriften, wenn das Projekt ausgeführt wird.
 

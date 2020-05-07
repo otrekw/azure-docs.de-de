@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: b8c4248b7275ac96acce96f890f6ff0148116f48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473819"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141945"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Integrieren von Azure Service Bus in den Azure Private Link-Dienst (Vorschau)
 
@@ -22,7 +22,21 @@ Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher 
 
 Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
-> [!NOTE]
+>[!WARNING]
+> Durch das Implementieren privater Endpunkte kann verhindert werden, dass andere Azure-Dienste mit Service Bus interagieren.
+>
+> Vertrauenswürdige Microsoft-Dienste werden bei Verwendung von Virtual Networks nicht unterstützt.
+>
+> Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
+> - Integration in Azure Event Grid
+> - Azure IoT Hub-Routen
+> - Azure IoT Device Explorer
+>
+> Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
+> - Azure App Service
+> - Azure-Funktionen
+
+> [!IMPORTANT]
 > Dieses Feature wird mit dem Tarif **Premium** von Azure Service Bus unterstützt. Weitere Informationen zum Premium-Tarif finden Sie im Artikel [Service Bus Premium- und Standard-Tarif für Messaging](service-bus-premium-messaging.md).
 >
 > Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
@@ -58,7 +72,7 @@ Wenn Sie bereits über einen Namespace verfügen, können Sie wie folgt einen pr
     2. Wählen Sie die **Ressourcengruppe** für die private Endpunktressource aus.
     3. Geben Sie einen **Namen** für den privaten Endpunkt ein. 
     5. Wählen Sie eine **Region** für den privaten Endpunkt aus. Ihr privater Endpunkt muss sich in derselben Region wie Ihr virtuelles Netzwerk befinden, kann aber in einer anderen Region als die Private Link-Ressource enthalten sein, mit der Sie eine Verbindung herstellen. 
-    6. Wählen Sie die Schaltfläche **Weiter: Ressource >** unten auf der Seite aus.
+    6. Klicken Sie auf **Weiter: Ressource >** unten auf der Seite aus.
 
         ![Erstellen des privaten Endpunkts: Seite „Grundlagen“](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Führen Sie auf der Seite **Ressource** die folgenden Schritte aus:
@@ -67,20 +81,20 @@ Wenn Sie bereits über einen Namespace verfügen, können Sie wie folgt einen pr
         2. Wählen Sie für den **Ressourcentyp** **Microsoft.ServiceBus/namespaces** als **Ressourcentyp** aus.
         3. Wählen Sie als **Ressource** in der Dropdownliste einen Service Bus-Namespace aus. 
         4. Vergewissern Sie sich, dass die **Unterressource des Ziels** auf **Namespace** festgelegt ist.
-        5. Wählen Sie die Schaltfläche **Weiter: Konfiguration >** unten auf der Seite aus. 
+        5. Klicken Sie auf **Weiter: Konfiguration >** unten auf der Seite aus. 
         
             ![Erstellen des privaten Endpunkts: Seite „Ressourcen“](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. Wenn Sie **Verbindung mit einer Azure-Ressource mithilfe einer Ressourcen-ID oder eines Alias herstellen** auswählen, führen Sie die folgenden Schritte aus:
-        1. Geben Sie die **Ressourcen-ID** oder den **Alias** ein. Dabei kann es sich um die Ressourcen-ID oder den Alias handeln, die jemand für Sie freigegeben hat.
+        1. Geben Sie die **Ressourcen-ID** oder den **Alias** ein. Dabei kann es sich um die Ressourcen-ID oder den Alias handeln, den jemand für Sie freigegeben hat. Die einfachste Möglichkeit zum Abrufen dieser Ressourcen-ID besteht darin, im Azure-Portal zum Service Bus-Namespace zu navigieren und den Teil des URI ab `/subscriptions/` zu kopieren. Die folgende Abbildung zeigt ein Beispiel dafür. 
         2. Geben Sie für **Zielunterressource** **Namespace** ein. Dabei handelt es sich um den Unterressourcentyp, auf den der private Endpunkt zugreifen kann. 
         3. (Optional) Geben Sie eine **Anforderungsnachricht** ein. Der Ressourcenbesitzer sieht diese Nachricht beim Verwalten der Verbindung mit dem privaten Endpunkt. 
-        4. Wählen Sie anschließend die Schaltfläche **Weiter: Konfiguration >** unten auf der Seite aus. 
+        4. Wählen Sie anschließend **Weiter: Konfiguration >** unten auf der Seite aus. 
 
             ![Erstellen des privaten Endpunkts: Verbinden mithilfe der Ressourcen-ID](./media/private-link-service/connect-resource-id.png)
 9. Wählen Sie auf der Seite **Konfiguration** das Subnetz in einem virtuellen Netzwerk aus, in dem Sie den privaten Endpunkt bereitstellen möchten. 
     1. Wählen Sie ein **virtuelles Netzwerk** aus. Nur virtuelle Netzwerke im aktuell ausgewählten Abonnement und am aktuell ausgewählten Standort werden in der Dropdownliste aufgeführt. 
     2. Wählen Sie ein **Subnetz** innerhalb des ausgewählten virtuellen Netzwerks aus. 
-    3. Wählen Sie die Schaltfläche **Weiter: Tags >** unten auf der Seite aus. 
+    3. Klicken Sie auf **Weiter: Tags >** unten auf der Seite aus. 
 
         ![Erstellen des privaten Endpunkts: Seite „Konfiguration“](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. Erstellen Sie auf der Seite **Tags** beliebige Tags (Namen und Werte), die Sie der privaten Endpunktressource zuordnen möchten. Wählen Sie dann am unteren Rand der Seite die Schaltfläche **Überprüfen und erstellen** aus. 

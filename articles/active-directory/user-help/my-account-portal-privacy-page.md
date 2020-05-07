@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a97b79f7927c56a737723060cd9cb3218b12bf55
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062437"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625492"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Anzeigen, wie Ihre Organisation Ihre datenschutzrelevanten Daten verwendet
 
@@ -24,7 +24,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Datenschutz** anzeigen, wie
 
 ## <a name="view-your-privacy-related-info"></a>Anzeigen der datenschutzrelevanten Informationen
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
 2. Wählen Sie im linken Navigationsbereich **Datenschutz** aus, oder wählen Sie im Block **Datenschutz** den Link **Datenschutz überprüfen** aus.
 

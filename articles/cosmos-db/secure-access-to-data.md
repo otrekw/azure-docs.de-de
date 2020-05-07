@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227266"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208719"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 
@@ -43,7 +43,15 @@ Primäre, sekundäre und schreibgeschützte Hauptschlüssel sowie Hauptschlüsse
 
 ![Zugriffssteuerung (IAM) im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-Der Hauptschlüssel kann ganz einfach gewechselt werden. Rufen Sie über das Azure-Portal Ihren sekundären Schlüssel ab, ersetzen Sie den primären Schlüssel in Ihrer Anwendung durch Ihren sekundären Schlüssel, und wechseln Sie anschließend den primären Schlüssel über das Azure-Portal.
+### <a name="key-rotation"></a>Schlüsselrotation<a id="key-rotation"></a>
+
+Der Hauptschlüssel kann ganz einfach gewechselt werden. 
+
+1. Navigieren Sie zum Azure-Portal, um Ihren sekundären Schlüssel abzurufen.
+2. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren sekundären Schlüssel. Stellen Sie sicher, dass alle Cosmos DB-Clients in sämtlichen Bereitstellungen umgehend neu gestartet werden und mit der Verwendung des aktualisierten Schlüssels beginnen.
+3. Rotieren Sie den Primärschlüssel im Azure-Portal.
+4. Überprüfen Sie, ob der neue Primärschlüssel mit allen Ressourcen funktioniert. Der Schlüsselrotationsvorgang kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von weniger als einer Minute bis hin zu mehreren Stunden.
+5. Ersetzen Sie den sekundären Schlüssel durch den neuen Primärschlüssel.
 
 ![Wechsel des Hauptschlüssels im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 

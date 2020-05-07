@@ -1,26 +1,27 @@
 ---
-title: Präfix für öffentliche Azure-IP-Adressen | Microsoft-Dokumentation
+title: Präfix für öffentliche Azure-IP-Adressen
 description: Erfahren Sie, was ein Präfix für öffentliche Azure-IP-Adressen ist und wie Sie mit einem solchen Präfix Ihren Ressourcen vorhersagbare öffentliche IP-Adressen zuweisen können.
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
-ms.author: anavin
-ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: allensu
+ms.openlocfilehash: 0f71f845ef3209146ead79cafae2f3aa5c8c6d7d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985302"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144520"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 

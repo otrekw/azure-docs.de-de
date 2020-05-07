@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: a82481c5cb3d12b11179b41999f73e67583ec43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab6bb116c93aad8501da21dc5688d7e39f4195fe
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277749"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166188"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(VERALTET) Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace SaaS/Managed
 
@@ -33,7 +33,7 @@ Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstel
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Konfigurieren einer Dynatrace-Bereitstellung mit Marathon
 Im Folgenden wird erläutert, wie Sie Dynatrace-Anwendungen für Ihren Cluster mit Marathon konfigurieren und bereitstellen.
 
-1. Greifen Sie über [http://localhost:80/](http://localhost:80/) auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie in der DC/OS-Benutzeroberfläche zur Registerkarte **Universe**, und suchen Sie nach **Dynatrace**.
+1. Greifen Sie über `http://localhost:80/` auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie in der DC/OS-Benutzeroberfläche zur Registerkarte **Universe**, und suchen Sie nach **Dynatrace**.
 
     ![Dynatrace in DC/OS Universe](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 

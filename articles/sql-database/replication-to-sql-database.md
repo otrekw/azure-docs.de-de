@@ -10,19 +10,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: f28269b067ee98d69a97799911fd2d84a7f91e34
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/28/2020
+ms.openlocfilehash: 49be53febc1783edfa16fd019a094a7e80e1cdf7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381147"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231644"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und -Pooldatenbanken
 
 Die SQL Server-Replikation kann für Einzel- und Pooldatenbanken auf einem [SQL Datenbank-Server](sql-database-servers.md) in Azure SQL-Datenbank konfiguriert werden.  
 
-## <a name="supported-configurations"></a>**Unterstützte Konfigurationen**:
+> [!NOTE]
+> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL-Datenbank beschrieben. Sie steht nicht im Zusammenhang mit der [aktiven Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication), einer Azure SQL-Datenbank-Funktion, mit der Sie umfassende lesbare Replikate einzelner Datenbanken erstellen können.
+
+## <a name="supported-configurations"></a>Unterstützte Konfigurationen
   
 - SQL Server kann eine SQL Server-Instanz sein, die lokal oder auf einem virtuellen Azure-Computer in der Cloud ausgeführt wird. Weitere Informationen finden Sie unter [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/).  
 - Azure SQL-Datenbank muss ein Pushabonnent eines SQL Server-Verlegers sein.  

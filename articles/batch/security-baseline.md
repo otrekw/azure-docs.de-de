@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: e850f719f64d1d845ca11ccefeefea2c8dc7fa26
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81756620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195654"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-Sicherheitsbaseline für Batch
 
@@ -152,7 +152,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentieren von Datenverkehrskonfigurationsregeln
 
-**Leitfaden**: Verwenden Sie Tags für Netzwerkdienstgruppen (NSGs) und andere Ressourcen im Zusammenhang mit Netzwerksicherheit und Datenverkehrsfluss, die mit ihren Azure Batch-Pools verknüpft sind. Verwenden Sie für einzelne NSG-Regeln das Feld „Beschreibung“, um geschäftliche Anforderungen und/oder deren Dauer (usw.) für alle Regeln festzulegen, die Datenverkehr in das bzw. aus einem Netzwerk zulassen.
+**Leitfaden**: Verwenden Sie Tags für Netzwerkdienstgruppen (NSGs) und andere Ressourcen im Zusammenhang mit Netzwerksicherheit und Datenverkehrsfluss, die mit ihren Azure Batch-Pools verknüpft sind. Verwenden Sie für einzelne NSG-Regeln das Feld „Beschreibung“, um geschäftliche Anforderungen und/oder deren Dauer (usw.) für alle Regeln festzulegen, die Datenverkehr in ein bzw. aus einem Netzwerk zulassen.
 
 Verwenden Sie eine der integrierten Azure Policy-Definitionen zum Tagging, z. B. „Tag und zugehörigen Wert erzwingen“, um sicherzustellen, dass alle Ressourcen mit Tags erstellt werden und Sie über vorhandene nicht markierte Ressourcen benachrichtigt werden.
 
@@ -771,7 +771,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
@@ -816,7 +816,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9: Ausschließliche Verwendung genehmigter Azure-Dienste
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
@@ -899,7 +899,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Verwalten sicherer Konfigurationen für alle Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für die Azure-Ressourcen zu erzwingen, die mit Ihrem Batch-Konto und Ihren Pools verknüpft sind (z. B. virtuelle Netzwerke, Subnetze, Azure Firewalls, Azure Storage-Konten usw.). Sie können Azure Policy-Aliase aus den folgenden Namespaces verwenden, um benutzerdefinierte Richtlinien zu erstellen:
+**Leitfaden**: Verwenden Sie die Azure Policy-Richtlinien [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für die Azure-Ressourcen zu erzwingen, die mit Ihrem Batch-Konto und Ihren Pools verknüpft sind (z. B. virtuelle Netzwerke, Subnetze, Azure Firewall-Instanzen, Azure Storage-Konten usw.). Sie können Azure Policy-Aliase aus den folgenden Namespaces verwenden, um benutzerdefinierte Richtlinien zu erstellen:
 
 - Microsoft.Batch
 
@@ -926,7 +926,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Azure-Richtliniendefinitionen für Azure Batch-Konten, -Pools oder verwandte Ressourcen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
+**Leitfaden**: Wenn Sie benutzerdefinierte Azure Policy-Definitionen für Azure Batch-Konten, -Pools oder verwandte Ressourcen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
 Speichern von Code in Azure DevOps:
 

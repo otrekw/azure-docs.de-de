@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 03/05/2020
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 51cd464da417bfd1d6d4ff52e2a2595a7ce77fe6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402087"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201702"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -25,11 +25,7 @@ Um Azure-Ressourcen für einen Kunden zu verwalten, müssten sich Dienstanbieter
 
 Mit der delegierten Azure-Ressourcenverwaltung gibt der Onboardingprozess Benutzer im Mandanten des Dienstanbieters an, die auf Abonnements, Ressourcengruppen und Ressourcen im Mandanten des Kunden zugreifen und diese verwalten können sollen. Diese Benutzer können sich dann beim Azure-Portal mit ihren eigenen Anmeldeinformationen anmelden. Innerhalb des Azure-Portals können Sie Ressourcen verwalten, die zu allen Kunden gehören, auf die sie Zugriff haben. Hierzu können Sie die Seite [Meine Kunden](../how-to/view-manage-customers.md) im Azure-Portal besuchen oder direkt im Kontext des Abonnements dieses Kunden arbeiten, entweder im Azure-Portal oder mittels APIs.
 
-Die delegierte Azure-Ressourcenverwaltung ermöglicht größere Flexibilität bei der Verwaltung von Ressourcen für mehrere Kunden, ohne sich bei verschiedenen Konten in unterschiedlichen Mandanten anmelden zu müssen. So kann ein Dienstanbieter beispielsweise drei Kunden mit unterschiedlichen Zuständigkeiten und Zugriffsebenen haben, wie hier gezeigt:
-
-![Drei Kundenmandanten, die die Zuständigkeiten des Dienstanbieters anzeigen](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-Mithilfe der delegierten Azure-Ressourcenverwaltung können sich autorisierte Benutzer beim Mandanten des Dienstanbieters anmelden, um auf diese Ressourcen zuzugreifen, wie hier gezeigt:
+Die delegierte Azure-Ressourcenverwaltung ermöglicht größere Flexibilität bei der Verwaltung von Ressourcen für mehrere Kunden, ohne sich bei verschiedenen Konten in unterschiedlichen Mandanten anmelden zu müssen. So kann ein Dienstanbieter beispielsweise zwei Kunden mit unterschiedlichen Zuständigkeiten und Zugriffsebenen haben. Mithilfe der delegierten Azure-Ressourcenverwaltung können sich autorisierte Benutzer beim Mandanten des Dienstanbieters anmelden, um auf diese Ressourcen zuzugreifen.
 
 ![Über einen Dienstanbietermandanten verwaltete Kundenressourcen](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -63,6 +59,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Sichern und Wiederherstellen von Kundendaten in Kundenmandanten
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
+- Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
@@ -74,6 +71,14 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
+
+[Azure-Netzwerkoptionen](../../networking/networking-overview.md):
+
+- Bereitstellen und Verwalten eines [Azure Virtual Network (VNET)](../../virtual-network/index.yml) und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb von Kundenmandanten
+- Bereitstellen und Konfigurieren von [Azure Firewall](../../firewall/overview.md), um die Virtual Network-Ressourcen der Kunden zu schützen
+- Verwalten von Konnektivitätsdiensten wie [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md) und [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) für Kunden
+- Verwenden von Azure Lighthouse zur Unterstützung wichtiger Szenarien für das [Azure Networking MSP-Programm](../../networking/networking-partners-msp.md)
+
 
 [Azure Policy](../../governance/policy/index.yml):
 
@@ -90,7 +95,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Security Center](../../security-center/index.yml):
 
 - Mandantenübergreifende Sichtbarkeit
-  - Überwachen der Compliance mit Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
+  - Überwachen der Einhaltung von Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
   - Kontinuierliche Überwachung der Einhaltung gesetzlicher Bestimmungen für mehrere Kunden in einer einzigen Ansicht
   - Überwachen, Selektieren und Priorisieren von umsetzbaren Sicherheitsempfehlungen mit Sicherheitsbewertungsberechnung
 - Mandantenübergreifende Sicherheitsstatusverwaltung
@@ -123,11 +128,8 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Verwenden von VM-Erweiterungen, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern in Kundenmandanten auszuführen
 - Verwenden der Startdiagnose zur Problembehandlung von Azure-VMs in Kundenmandanten
 - Zugreifen auf VMs mit der seriellen Konsole in Kundenmandanten
-- Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung bei einem virtuellen Computer verwenden können, und dass Sie keine VM mit einem Key Vault für Kennwörter, geheime Schlüssel oder Kryptografieschlüssel für die Datenträgerverschlüsselung integrieren können.
-
-[Azure Virtual Network](../../virtual-network/index.yml):
-
-- Bereitstellen und Verwalten virtueller Netzwerke und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb von Kundenmandanten
+- Integrieren von VMs in Azure Key Vault mit einer [verwalteten Identität über Richtlinien](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), um Kennwörter, Geheimnisse oder kryptografische Schlüssel für die Datenträgerverschlüsselung zu verwenden und dabei sicherzustellen, dass Geheimnisse in einem Schlüsseltresor in Kundenmandanten gespeichert werden
+- Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung auf virtuellen Computern in Kundenmandanten verwenden können.
 
 Supportanfragen:
 
@@ -136,10 +138,11 @@ Supportanfragen:
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
-- Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (z. B. Zugriff auf Key Vault-Geheimnisse oder Zugriff auf Speicherdaten) verarbeitet werden, werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge. 
+- Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (etwa Zugriff auf Key Vault-Geheimnisse oder auf Speicherdaten), werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge. 
 - Rollenzuweisungen müssen [integrierte Rollen](../../role-based-access-control/built-in-roles.md) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
-- Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
+- Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
 - Sie können zwar Abonnements und Ressourcengruppen mit Ressourcensperren in die delegierte Azure-Ressourcenverwaltung integrieren, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
+- Benutzer im Verwaltungsmandanten verfügen über keinen Zugriff auf Abrechnungsinformationen für delegierte Kundenabonnements, selbst wenn sie über eine integrierte Rolle verfügen, die diesen Zugriff normalerweise gewährt. Das liegt daran, dass der Zugriff auf Abrechnungsinformationen zusätzliche Schritte erfordert, die derzeit nur für Benutzer im gleichen Mandanten unterstützt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

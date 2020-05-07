@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064052"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625951"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto auf der Seite „Kennwort ändern“
 
@@ -27,7 +27,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Kennwort ändern** ein vorh
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Aktualisieren eines Kennworts auf der Seite „Kennwort ändern“
 
-1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myprofile.microsoft.com/).
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myaccount.microsoft.com/).
 
 2. Wählen Sie im linken Navigationsbereich **Kennwort** aus, oder wählen Sie im Block **Kennwort** den Link **Kennwort ändern** aus.
 

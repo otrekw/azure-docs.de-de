@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535407"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594711"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 
@@ -124,7 +124,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | publisher | Microsoft.OSTCExtensions | Zeichenfolge |
 | type | CustomScriptForLinux | Zeichenfolge |
 | typeHandlerVersion | 1.5 | INT |
-| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (Beispiel) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | Zeichenfolge |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |

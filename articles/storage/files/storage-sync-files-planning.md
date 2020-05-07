@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228282"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176089"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
-[Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
+
+:::row:::
+    :::column:::
+        [![Interview und Demo von Azure-Dateisynchronisierung. Klicken Sie hierauf, um die Wiedergabe zu starten.](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure-Dateisynchronisierung ist ein Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer mit Windows Server oder einer Cloud-VM zwischenspeichern können. 
+        
+        In diesem Artikel werden die Konzepte und Features von Azure-Dateisynchronisierung vorgestellt. Sobald Sie mit Azure-Dateisynchronisierung vertraut sind, finden Sie im [Bereitstellungsleitfaden für Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md) eine Anleitung, wie Sie diesen Dienst ausprobieren können.        
+    :::column-end:::
+:::row-end:::
+
+Die Dateien werden in der Cloud in [Azure-Dateifreigaben](storage-files-introduction.md) gespeichert. Azure-Dateifreigaben können auf zwei Weisen genutzt werden: durch direktes Einbinden dieser serverlosen Azure-Dateifreigaben (SMB) oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie wählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
 
 - **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files SMB-Zugriff bietet, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe des standardmäßigen SMB-Clients einbinden, der unter Windows, macOS und Linux verfügbar ist. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
 
 - **Lokales Zwischenspeichern von Azure-Dateifreigaben mit Azure-Dateisynchronisierung**: Die Azure-Dateisynchronisierung ermöglicht das Zentralisieren der Dateifreigaben Ihrer Organisation in Azure Files, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Die Azure-Dateisynchronisierung transformiert Ihre lokalen Windows Server-Computer in einen schnellen Cache für Ihre Azure-Dateifreigabe. 
-
-In diesem Artikel werden die Bereitstellungsüberlegungen zum Bereitstellen von Azure-Dateisynchronisierung behandelt. Informationen zum Planen einer Bereitstellung von Azure-Dateifreigaben, die direkt von einem lokalen oder cloudbasierten Client eingebunden werden sollen, finden Sie unter [Planen einer Azure Files-Bereitstellung](storage-files-planning.md).
 
 ## <a name="management-concepts"></a>Verwaltungskonzepte
 Eine Azure-Dateisynchronisierungsbereitstellung umfasst drei grundlegende Verwaltungsobjekte:
@@ -227,7 +237,7 @@ Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien 
 Es sollten keine anderen HSM-Lösungen in Verbindung mit der Azure-Dateisynchronisierung verwendet werden.
 
 ## <a name="identity"></a>Identity
-Die Azure-Dateisynchronisierung funktioniert mit Ihrer AD-basierten Standardidentität, ohne dass ein besonderes Setup über das Einrichten der Synchronisierung hinaus erforderlich ist. Wenn Sie Azure-Dateisynchronisierung verwenden, besteht die allgemeine Erwartung darin, dass die meisten Zugriffe die Azure-Dateisynchronisierungs-Cacheserver und nicht die Azure-Dateifreigabe durchlaufen. Da sich die Serverendpunkte unter Windows Server befinden und Windows Server seit sehr langer Zeit ACLs im AD- und Windows-Stil unterstützt, ist nichts weiter erforderlich, als sicherzustellen, dass die beim Speichersynchronisierungsdienst registrierten Windows-Dateiserver zur Domäne gehören. Die Azure-Dateisynchronisierung speichert ACLs für die Dateien in der Azure-Dateifreigabe und repliziert sie auf alle Serverendpunkte.
+Die Azure-Dateisynchronisierung funktioniert mit Ihrer AD-basierten Standardidentität, ohne dass ein besonderes Setup über das Einrichten der Synchronisierung hinaus erforderlich ist. Wenn Sie Azure-Dateisynchronisierung verwenden, besteht die allgemeine Erwartung darin, dass die meisten Zugriffe die Azure-Dateisynchronisierungs-Cacheserver und nicht die Azure-Dateifreigabe durchlaufen. Da sich die Serverendpunkte unter Windows Server befinden und Windows Server seit langer Zeit ACLs im AD- und Windows-Stil unterstützt, ist nichts weiter erforderlich, als sicherzustellen, dass die beim Speichersynchronisierungsdienst registrierten Windows-Dateiserver zur Domäne gehören. Die Azure-Dateisynchronisierung speichert ACLs für die Dateien in der Azure-Dateifreigabe und repliziert sie auf alle Serverendpunkte.
 
 Auch wenn Änderungen, die direkt an der Azure-Dateifreigabe vorgenommen werden, für die Synchronisierung mit den Serverendpunkten in der Synchronisierungsgruppe länger dauern, können Sie dennoch sicherstellen, dass Sie Ihre AD-Berechtigungen für Ihre Dateifreigabe auch direkt in der Cloud erzwingen können. Zu diesem Zweck müssen Sie Ihr Speicherkonto mit Ihrem lokalen AD in die Domäne einbinden, ebenso wie die Windows-Dateiserver in die Domäne eingebunden werden. Weitere Informationen zum Domänenbeitritt Ihres Speicherkontos zu einem Active Directory im Besitz des Kunden finden Sie unter [Azure Files Active Directory: Übersicht](storage-files-active-directory-overview.md).
 
@@ -256,13 +266,17 @@ Es gibt zwei Strategien für die Verschlüsselung von Daten unter Windows Server
 
 Um Verschlüsselung unterhalb des Dateisystems bereitzustellen, bietet Windows Server einen BitLocker-Posteingang. BitLocker ist für die Azure-Dateisynchronisierung vollständig transparent. Der Hauptgrund für die Verwendung eines Verschlüsselungsmechanismus wie BitLocker besteht darin, die physische Exfiltration von Daten durch Diebstahl der Datenträger aus Ihrem lokalen Rechenzentrum zu verhindern, sowie das Querladen eines nicht autorisierten Betriebssystems zu verhindern, um nicht autorisierte Lese- und Schreibvorgänge für Ihre Daten auszuführen. Weitere Informationen zu BitLocker finden Sie unter [BitLocker: Übersicht](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview).
 
-Produkte von Drittanbietern, die ähnlich wie BitLocker funktionieren, da sie sich unter dem NTFS-Volume befinden, sollten auf ähnliche Weise vollständig transparent mit der Azure-Dateisynchronisierung zusammenarbeiten. 
+Produkte von Drittanbietern, die ähnlich wie BitLocker funktionieren, da sie sich unterhalb des NTFS-Volumes befinden, sollten auf ähnliche Weise vollständig transparent mit der Azure-Dateisynchronisierung zusammenarbeiten. 
 
 Die andere Hauptmethode zum Verschlüsseln von Daten besteht darin, den Datenstrom der Datei zu verschlüsseln, wenn die Datei von der Anwendung gespeichert wird. Einige Anwendungen können dies nativ ausführen. Dies ist jedoch in der Regel nicht der Fall. Ein Beispiel für eine Methode zum Verschlüsseln des Datenstroms der Datei ist Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS. Der Hauptgrund für die Verwendung eines Verschlüsselungsmechanismus wie AIP/RMS besteht darin, die Exfiltration von Daten aus Ihrer Dateifreigabe durch Benutzer zu verhindern, die sie an andere Speicherorte kopieren (z. B. auf ein Flashlaufwerk) oder per E-Mail an eine nicht autorisierte Person senden. Wenn der Datenstrom einer Datei als Teil des Dateiformats verschlüsselt ist, wird diese Datei weiterhin auf der Azure-Dateifreigabe verschlüsselt sein. 
 
-Die Azure-Dateisynchronisierung kann nicht mit NTFS EFS (NTFS Encrypted File System) oder Verschlüsselungslösungen von Drittanbietern zusammenarbeiten, die sich über dem Dateisystem, aber unterhalb des Datenstroms der Datei befinden. 
+Azure-Dateisynchronisierung kann nicht mit NTFS EFS (NTFS Encrypted File System) oder Verschlüsselungslösungen von Drittanbietern zusammenarbeiten, die sich oberhalb des Dateisystems, aber unterhalb des Datenstroms der Datei befinden. 
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
+
+> [!NOTE]
+> Die Unterstützung für TLS 1.0 und 1.1 im Azure-Dateisynchronisierungsdienst wird im August 2020 entfernt. Alle unterstützten Versionen des Azure-Dateisynchronisierungs-Agents verwenden standardmäßig bereits TLS 1.2. Die Verwendung einer früheren Version von TLS kann auftreten, wenn TLS 1.2 auf dem Server deaktiviert wurde oder ein Proxy verwendet wird. Wenn Sie einen Proxy verwenden, sollten Sie die Proxykonfiguration überprüfen. Alle Regionen für den Azure-Dateisynchronisierungsdienst, die nach dem 01.05.2020 hinzugefügt werden, unterstützen ausschließlich TLS 1.2. Die Unterstützung für TLS 1.0 und 1.1 wird in den vorhandenen Regionen im August 2020 entfernt.  Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
+
 Der Azure-Dateisynchronisierungs-Agent kommuniziert mit dem Speichersynchronisierungsdienst und der Azure-Dateifreigabe unter Verwendung des Azure-Dateisynchronisierungs-REST-Protokolls und des FileREST-Protokolls. Beide Protokolle verwenden immer HTTPS über Port 443. Die Azure-Dateisynchronisierung sendet keine unverschlüsselten Anforderungen über HTTP. 
 
 Azure-Speicherkonten enthalten einen Switch, der Verschlüsselung während der Übertragung erfordert. Dieser ist standardmäßig aktiviert. Auch wenn der Switch auf Speicherkontoebene deaktiviert ist (was bedeutet, dass unverschlüsselte Verbindungen mit Ihren Azure-Dateifreigaben möglich sind), verwendet die Azure-Dateisynchronisierung weiterhin nur verschlüsselte Kanäle für den Zugriff auf Ihre Dateifreigabe.

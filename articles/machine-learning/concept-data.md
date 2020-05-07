@@ -1,7 +1,7 @@
 ---
-title: Daten in Azure Machine Learning
+title: Sicherer Datenzugriff in der Cloud
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Azure Machine Learning eine sichere Verbindung mit Ihren Daten herstellt und diese Daten für Machine Learning-Aufgaben verwendet.
+description: Erfahren Sie, wie Sie eine sichere Verbindung mit Ihren Daten von Azure Machine Learning herstellen und wie Sie Datasets und Datenspeicher für ML-Aufgaben verwenden. Datenspeicher können für die Speicherung von Daten aus einem Azure-Blob, Azure Data Lake Gen 1 und 2, SQL-DB, Databricks u. a. verwendet werden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/20/2020
-ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128491"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144483"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Datenzugriff in Azure Machine Learning
+# <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
 Azure Machine Learning macht es einfach, eine Verbindung mit Ihren Daten in der Cloud herzustellen.  Es wird eine Abstraktionsschicht über dem zugrunde liegenden Speicherdienst bereitgestellt, sodass Sie sicher auf Ihre Daten zugreifen und diese bearbeiten können, ohne für Ihren Speichertyp spezifischen Code schreiben zu müssen. Azure Machine Learning bietet auch folgende Datenfunktionen:
 
@@ -37,7 +37,7 @@ Wenn Sie bereit sind, die Daten in ihrer cloudbasierten Speicherlösung zu verwe
 3. Um dieses Dataset in Ihrem Machine Learning-Experiment zu verwenden, können Sie es entweder
     1. in das Computeziel Ihres Experiments zum Modelltraining einbinden,
 
-        **ODER** 
+        **OR** 
 
     1. direkt in Azure Machine Learning-Lösungen, z. B. Experimentausführungen für automatisiertes maschinelles Lernen (automatisiertes ML), Machine Learning-Pipelines oder [Azure Machine Learning-Designer](concept-designer.md), verwenden.
 

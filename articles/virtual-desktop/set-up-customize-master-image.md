@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aba444e618a6ee2c6808b7f6d9d706fdf18fe546
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209042"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611958"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -203,7 +203,7 @@ In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azur
 
 Nachdem Sie nun über ein Image verfügen, können Sie Hostpools erstellen oder aktualisieren. Weitere Informationen zum Erstellen und Aktualisieren von Hostpools finden Sie in den folgenden Artikeln:
 
-- [Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage](create-host-pools-arm-template.md)
+- [Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
 - [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
 - [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md)

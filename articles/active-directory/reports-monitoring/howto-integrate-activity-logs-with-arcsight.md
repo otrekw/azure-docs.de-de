@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75608379"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129231"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor
 
@@ -53,7 +53,7 @@ Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azu
     * Die Anwendungseinstellungen aus Ihrer Bereitstellung werden in den Anwendungseinstellungen in Azure-Funktions-Apps dauerhaft gespeichert. 
     * In Azure wird eine neue Ressourcengruppe für ArcSight erstellt, die eine Azure AD-Anwendung für den ArcSight-Connector und Speicherkonten mit den zugeordneten Dateien im CEF-Format umfasst.
 
-4. Führen Sie abschließend die Schritte nach der Bereitstellung im Abschnitt **Post-Deployment Configurations** (Konfigurationsschritte nach der Bereitstellung) des Konfigurationsleitfadens durch. In diesem Abschnitt werden die zusätzlichen Konfigurationsschritte erläutert, die bei Verwendung eines App Service-Plans verhindern, dass die Funktions-Apps nach einem Zeitlimit in den Leerlauf wechseln. Zudem wird beschrieben, wie Sie das Streamen von Diagnoseprotokollen aus dem Event Hub konfigurieren und das SysLog NG Daemon SmartConnector-Keystorezertifikat aktualisieren, um es einem neu erstellten Speicherkonto zuzuordnen.
+4. Führen Sie abschließend die Schritte nach der Bereitstellung im Abschnitt **Post-Deployment Configurations** (Konfigurationsschritte nach der Bereitstellung) des Konfigurationsleitfadens durch. In diesem Abschnitt werden die zusätzlichen Konfigurationsschritte erläutert, die bei Verwendung eines App Service-Plans verhindern, dass die Funktions-Apps nach einem Zeitlimit in den Leerlauf wechseln. Zudem wird beschrieben, wie Sie das Streamen von Ressourcenprotokollen aus dem Event Hub konfigurieren und das SysLog NG Daemon SmartConnector-Keystorezertifikat aktualisieren, um es einem neu erstellten Speicherkonto zuzuordnen.
 
 5. Ferner wird im Konfigurationsleitfaden die Anpassung von Connectoreigenschaften in Azure sowie das Aktualisieren und Deinstallieren des Connectors erläutert. Es gibt auch einen Abschnitt zu Möglichkeiten der Leistungssteigerung, darunter das Upgrade auf einen [Azure Consumption-Plan](https://azure.microsoft.com/pricing/details/functions) und die Konfiguration von ArcSight Load Balancer, wenn die Ereignislast die Kapazitäten eines einzelnen Syslog NG Daemon SmartConnectors übersteigt.
 

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731934"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509651"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -97,9 +97,9 @@ Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgefüh
 ]
 ```
 
-### <a name="operator"></a>Operator
+### <a name="operators"></a>Operatoren
 
-Die verfügbaren Operatoren für Zahlen sind:
+Die verfügbaren Operatoren für **Zahlen** sind:
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -108,9 +108,10 @@ Die verfügbaren Operatoren für Zahlen sind:
 * NumberIn
 * NumberNotIn
 
-Der verfügbare Operator für boolesche Werte ist: BoolEquals
+Der verfügbare Operator für **boolesche Werte** ist: 
+- BoolEquals
 
-Die verfügbaren Operatoren für Zeichenfolgen sind:
+Die verfügbaren Operatoren für **Zeichenfolgen** sind:
 
 * StringContains
 * StringBeginsWith
@@ -118,7 +119,7 @@ Die verfügbaren Operatoren für Zeichenfolgen sind:
 * StringIn
 * StringNotIn
 
-Bei allen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.
+Bei sämtlichen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung **nicht** beachtet.
 
 ### <a name="key"></a>Schlüssel
 
@@ -159,6 +160,155 @@ Für die erweiterte Filterung gelten folgende Einschränkungen:
 * Fünf Werte für **in**- und **not in**-Operatoren
 
 Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.
+
+### <a name="examples"></a>Beispiele
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
