@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756027"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780877"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -84,7 +84,7 @@ Wenn Sie nur Dateien herunterladen möchten, überprüfen Sie, ob der [Leser von
 
 Wenn Sie Dateien hochladen möchten, dann überprüfen Sie, ob Ihrem Sicherheitsprinzipal eine dieser Rollen zugewiesen wurde:
 
-- [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [Besitzer von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Diese Rollen können Ihrem Sicherheitsprinzipal in jedem dieser Bereiche zugewiesen werden:
@@ -273,8 +273,8 @@ Mit diesem Befehl erhalten Sie den Link:
 
 | Betriebssystem  | Get-Help |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
-| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+| **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
 > Bei Linux entfernt `--strip-components=1` im `tar`-Befehl den oberen Ordner, der den Versionsnamen enthält, und extrahiert stattdessen die Binärdatei direkt in den aktuellen Ordner. So kann das Skript mit einer neuen Version von `azcopy` aktualisiert werden, indem nur die `wget`-URL aktualisiert wird.

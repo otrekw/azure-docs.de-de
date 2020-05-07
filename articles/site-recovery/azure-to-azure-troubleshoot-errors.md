@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390384"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738115"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -172,8 +172,6 @@ Führen Sie die folgenden Schritte aus, da SUSE Linux zum Verwalten einer Zertif
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>Ausgehende URLs oder IP-Bereiche (Fehlercode 151037 oder 151072)
 
 Damit die Site Recovery-Replikation funktioniert, ist für die VM ausgehende Konnektivität zu bestimmten URLs erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt. Der ausgehende Zugriff über URLs wird zwar weiterhin unterstützt, die Verwendung einer Zulassungsliste mit IP-Bereichen jedoch nicht mehr.
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>Problem 1: Fehler beim Registrieren der Azure-VM bei Site Recovery (151195)
 
 #### <a name="possible-causes"></a>Mögliche Ursachen
 

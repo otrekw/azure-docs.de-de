@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380806"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612281"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -93,7 +93,7 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
    1. Das Token kann dann im `Authorization`-Header übergeben werden, wenn die Anwendung die Time Series Insights-API aufruft.
 
-* Alternativ können Entwickler sich für die Authentifizierung mit MSAL entscheiden. Weitere Informationen finden Sie unter [Migrieren zu MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) sowie in dem Artikel [Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#](time-series-insights-manage-reference-data-csharp.md). 
+* Alternativ können Entwickler sich für die Authentifizierung mit MSAL entscheiden. Weitere Informationen finden Sie unter [Migrieren zu MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) sowie in dem Artikel [Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#](time-series-insights-manage-reference-data-csharp.md).
 
 ## <a name="common-headers-and-parameters"></a>Allgemeine Parameter und Header
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden allgemeine HTTP-Anforderungsheader und Parameter besc
 
 ### <a name="authentication"></a>Authentication
 
-Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden. 
+Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden.
 
 > [!TIP]
 > Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://tsiclientsample.azurewebsites.net/) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
@@ -115,7 +115,7 @@ Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
 | Erforderlicher Anforderungsheader | BESCHREIBUNG |
 | --- | --- |
-| Authorization | Für die Authentifizierung bei Time Series Insights muss im **Autorisierungsheader** ein gültiges OAuth 2.0-Bearertoken übergeben werden. | 
+| Authorization | Für die Authentifizierung bei Time Series Insights muss im **Autorisierungsheader** ein gültiges OAuth 2.0-Bearertoken übergeben werden. |
 
 > [!IMPORTANT]
 > Das Token muss spezifisch für die `https://api.timeseries.azure.com/`-Ressource (auch als „Zielgruppe“ des Tokens bezeichnet) ausgestellt werden.

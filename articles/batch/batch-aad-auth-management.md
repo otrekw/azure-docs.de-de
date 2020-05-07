@@ -3,12 +3,13 @@ title: Verwenden von Azure Active Directory zum Authentifizieren von Batch Manag
 description: Es wird beschrieben, wie Azure Active Directory zum Authentifizieren von Anwendungen verwendet werden kann, für die die Batch Management .NET-Bibliothek genutzt wird.
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114784"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608454"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -28,7 +29,7 @@ Führen Sie die Schritte im Abschnitt [Adding an Application](../active-director
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Nachdem Sie den Registrierungsprozess abgeschlossen haben, werden die Anwendungs-ID und die Objekt-ID (Dienstprinzipal) angezeigt, die für Ihre Anwendung aufgeführt sind.  
+Nachdem Sie den Registrierungsprozess abgeschlossen haben, werden die Anwendungs-ID und die Objekt-ID (Dienstprinzipal) angezeigt, die für Ihre Anwendung aufgeführt sind.
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
     ![Suchen nach Ihrem Anwendungsnamen](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. Zeigen Sie das Blatt **Einstellungen** an. Wählen Sie im Abschnitt **API-Zugriff** die Option **Erforderliche Berechtigungen**.
-4. Klicken Sie auf **Hinzufügen**, um eine neue erforderliche Berechtigung hinzuzufügen. 
+4. Klicken Sie auf **Hinzufügen**, um eine neue erforderliche Berechtigung hinzuzufügen.
 5. Geben Sie in Schritt 1 **Windows Azure-Service-Verwaltungs-API** ein, wählen Sie diese API in der Liste mit den Ergebnissen aus, und klicken Sie auf die Schaltfläche **Auswählen**.
 6. Aktivieren Sie in Schritt 2 das Kontrollkästchen neben **Access Azure classic deployment model as organization users** (Als Organisationsbenutzer auf das klassische Azure-Bereitstellungsmodell zugreifen), und klicken Sie auf die Schaltfläche **Auswählen**.
 7. Klicken Sie auf die Schaltfläche **Fertig**.
@@ -70,11 +71,11 @@ Die Beispielanwendung „AccountManagement“ definiert Konstanten für diese En
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>Verweisen Sie auf Ihre Anwendungs-ID. 
+## <a name="reference-your-application-id"></a>Verweisen Sie auf Ihre Anwendungs-ID.
 
 Ihre Clientanwendung verwendet die Anwendungs-ID (auch als Client-ID bezeichnet) zum Zugreifen auf Azure AD zur Laufzeit. Nachdem Sie die Anwendung im Azure-Portal registriert haben, können Sie Ihren Code aktualisieren, damit die Anwendungs-ID verwendet wird, die von Azure AD für Ihre registrierte Anwendung bereitgestellt wurde. Kopieren Sie Ihre Anwendungs-ID in der AccountManagement-Beispielanwendung aus dem Azure-Portal in die entsprechende Konstante:
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Abrufen eines Azure AD-Authentifizierungstokens
 
-Nach dem Registrieren des AccountManagement-Beispiels im Azure AD-Mandanten und Aktualisieren des Quellcodes des Beispiels mit Ihren Werten ist das Beispiel für die Authentifizierung mit Azure AD bereit. Wenn Sie das Beispiel ausführen, wird für ADAL versucht, ein Authentifizierungstoken abzurufen. In diesem Schritt werden Sie zum Eingeben Ihrer Microsoft-Anmeldeinformationen aufgefordert: 
+Nach dem Registrieren des AccountManagement-Beispiels im Azure AD-Mandanten und Aktualisieren des Quellcodes des Beispiels mit Ihren Werten ist das Beispiel für die Authentifizierung mit Azure AD bereit. Wenn Sie das Beispiel ausführen, wird für ADAL versucht, ein Authentifizierungstoken abzurufen. In diesem Schritt werden Sie zum Eingeben Ihrer Microsoft-Anmeldeinformationen aufgefordert:
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-Nach dem Angeben der Anmeldeinformationen kann die Beispielanwendung damit fortfahren, authentifizierte Anforderungen für den Batch Management-Dienst auszustellen. 
+Nach dem Angeben der Anmeldeinformationen kann die Beispielanwendung damit fortfahren, authentifizierte Anforderungen für den Batch Management-Dienst auszustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -117,7 +118,7 @@ Weitere Informationen zum Ausführen der [AccountManagement-Beispielanwendung][a
 
 Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
 
-Informationen zum Authentifizieren von Batch-Dienstanwendungen mit Azure AD finden Sie unter [Authentifizieren von Batch-Dienstlösungen mit Active Directory](batch-aad-auth.md). 
+Informationen zum Authentifizieren von Batch-Dienstanwendungen mit Azure AD finden Sie unter [Authentifizieren von Batch-Dienstlösungen mit Active Directory](batch-aad-auth.md).
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Was ist Azure Active Directory?"
