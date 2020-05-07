@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416223"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791288"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continuous Integration und Continuous Deployment für Data Warehousing
 
@@ -46,7 +46,7 @@ Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem 
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Continuous Deployment mit der Bereitstellungsaufgabe für Azure SQL Data Warehouse (oder SQL-Datenbank)
 
-1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt. Sie können auch die [Azure SQL Data Warehouse-Bereitstellungsaufgabe](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) verwenden.
+1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](/azure/devops/pipelines/targets/azure-sqldb) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt. Sie können auch die [Azure SQL Data Warehouse-Bereitstellungsaufgabe](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) verwenden.
 
       ![Bereitstellungsaufgabe](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Bereitstellungsaufgabe")
 

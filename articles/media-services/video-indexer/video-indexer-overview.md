@@ -1,5 +1,5 @@
 ---
-title: Was ist Video Indexer?
+title: Was ist Azure Media Services Video Indexer?
 titleSuffix: Azure Media Services
 description: Dieser Artikel enthält eine Übersicht über den Azure Media Services Video Indexer-Dienst.
 services: media-services
@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163589"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788852"
 ---
-# <a name="what-is-video-indexer"></a>Was ist Video Indexer?
+# <a name="what-is-azure-media-services-video-indexer"></a>Was ist Azure Media Services Video Indexer?
 
 Video Indexer (VI) ist die KI-Lösung von Azure Media Services und Teil der Marke Azure Cognitive Services. Video Indexer bietet die Möglichkeit, tiefe Einblicke zu gewinnen (ohne Datenanalyse oder Programmierkenntnisse), indem es Machine Learning-Modelle verwendet, die auf mehreren Kanälen (Sprache, Gesang, Bild) basieren. Sie können die Modelle weiter anpassen und trainieren. Der Dienst ermöglicht eine intensive Suche, reduziert die Betriebskosten, ermöglicht neue Monetarisierungsmöglichkeiten und bringt neue Benutzererfahrungen für umfangreiche Videoarchive (mit niedrigen Eintrittsbarrieren).
 
@@ -70,9 +70,9 @@ In der folgenden Liste sind die Erkenntnisse aufgeführt, die Sie aus Ihren Vide
 
 ### <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 
-* **Automatische Sprachenerkennung:** Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch. Falls die Sprache nicht zuverlässig identifiziert werden kann, geht Video Indexer davon aus, dass die gesprochene Sprache Englisch ist. Weitere Informationen finden Sie unter [Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung](language-identification-model.md).
+* **Audiotranskription:** konvertiert Sprache in Text in 12 Sprachen und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Hindi, Italienisch, Japanisch, Koreanisch, Portugiesisch (Brasilien), Russisch und Spanisch.
+* **Automatische Sprachenerkennung:** Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch. Falls die Sprache nicht zuverlässig identifiziert werden kann, geht Video Indexer davon aus, dass die gesprochene Sprache Englisch ist. Weitere Informationen finden Sie unter [Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung](language-identification-model.md).
 * **Spracherkennung und Transkription für mehrere Sprachen** (Vorschau): Erkennt die gesprochene Sprache in verschiedenen Segmenten automatisch anhand der Audiodaten. Die Funktion sendet jedes Segment der zu transkribierenden Mediendatei und kombiniert die Transkriptionen dann wieder zu einer einzigen Transkription. Weitere Informationen finden Sie unter [Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte](multi-language-identification-transcription.md).
-* **Audiotranskription:** konvertiert Sprache in Text in 12 Sprachen und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, brasilianisches Portugiesisch, Spanisch, Russisch, Hindi und Koreanisch.
 * **Untertitelung:** erstellt Untertitel in drei Formaten: VTT, TTML und SRT.
 * **Verarbeitung von zwei Kanälen:** erkennt automatisch ein getrenntes Transkript und sorgt für eine Zusammenführung auf einer einzelnen Zeitachse.
 * **Rauschunterdrückung:** bereinigt (basierend auf Skype-Filtern) Telefonaudio oder verrauschte Aufnahmen.

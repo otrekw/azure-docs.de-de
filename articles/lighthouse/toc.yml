@@ -10,6 +10,9 @@
     - name: Index
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: Konzepte
   items:
     - name: Delegierte Azure-Ressourcenverwaltung
@@ -33,6 +36,9 @@
     - name: Azure Lighthouse in Unternehmensszenarien
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse und verwaltete Azure-Anwendungen
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: Anleitungen
   items:
     - name: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
@@ -73,7 +79,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest'
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services'

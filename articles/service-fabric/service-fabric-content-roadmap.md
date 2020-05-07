@@ -3,12 +3,12 @@ title: Weitere Informationen zu Azure Service Fabric
 description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458150"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791849"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -136,7 +136,7 @@ Die Szenarien für die Clustersicherheit sind:
 Weitere Informationen hierzu finden Sie unter [Schützen eines Clusters](service-fabric-cluster-security.md).
 
 ### <a name="scaling"></a>Skalierung
-Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate und Instanzen auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen. Sie können Cluster in Azure entweder [manuell](service-fabric-cluster-scale-up-down.md) oder [programmgesteuert](service-fabric-cluster-programmatic-scaling.md) skalieren. Eigenständige Cluster können [manuell](service-fabric-cluster-windows-server-add-remove-nodes.md) skaliert werden.
+Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate und Instanzen auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen. Sie können Cluster in Azure entweder [manuell](service-fabric-cluster-scale-in-out.md) oder [programmgesteuert](service-fabric-cluster-programmatic-scaling.md) skalieren. Eigenständige Cluster können [manuell](service-fabric-cluster-windows-server-add-remove-nodes.md) skaliert werden.
 
 ### <a name="cluster-upgrades"></a>Clusterupgrades
 Es werden Regelmäßig neue Versionen der Service Fabric-Runtime veröffentlicht. Führen Sie Runtime-Upgrades (oder Fabric-Upgrades) auf Ihrem Cluster aus, damit Sie immer eine [unterstützte Version](service-fabric-support.md) ausführen. Zusätzlich zu Fabric-Upgrades können Sie auch die Clusterkonfiguration aktualisieren, z. B. Zertifikate oder Anwendungsports.

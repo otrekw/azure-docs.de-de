@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Über ein Automation-Runbook
                   href: automation-onboard-solutions.md
-            - name: Anzeigen der Inhalte von nachverfolgten Dateien
+            - name: Verwalten der Änderungsnachverfolgung und des Bestands
               href: change-tracking-file-contents.md
             - name: Verwalten der Bestandserfassung von virtuellen Computern
               href: automation-vm-inventory.md
@@ -230,7 +230,7 @@
           href: updatemgmt-mecmintegration.md
         - name: "Konfigurieren des Windows\_Update-Clients"
           href: automation-configure-windows-update.md
-        - name: Mithilfe von dynamischen Gruppen
+        - name: Verwenden von dynamischen Gruppen
           href: automation-update-management-groups.md
         - name: Abfragen von Protokollen der Updateverwaltung
           href: automation-update-management-query-logs.md

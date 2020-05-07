@@ -1,22 +1,16 @@
 ---
-title: Ausführen einer parallelen Workload – Azure Batch .NET
+title: Ausführen einer parallelen Workload
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254596"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733072"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -199,7 +193,7 @@ Als Nächstes erstellt das Beispiel im Batch-Konto durch Aufrufen von `CreatePoo
 Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festgelegt. Batch unterstützt dedizierte Knoten und [Knoten mit niedriger Priorität](batch-low-pri-vms.md), und Sie können eine oder beide Arten von Knoten in Ihren Pools verwenden. Dedizierte Knoten sind für Ihren Pool reserviert. Knoten mit niedriger Priorität werden zu einem reduzierten Preis basierend auf überschüssiger VM-Kapazität in Azure angeboten. Knoten mit niedriger Priorität sind nicht mehr verfügbar, wenn in Azure nicht genügend Kapazität vorhanden ist. Im Beispiel wird standardmäßig ein Pool mit nur fünf Knoten mit niedriger Priorität und der Größe *Standard_A1_v2* erstellt.
 
 >[!Note]
->Überprüfen Sie Ihre Knotenkontingente. Eine Anleitung zum Erstellen einer Kontingentanforderung finden Sie unter [Batch-Dienst – Kontingente und Limits](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0).
+>Überprüfen Sie Ihre Knotenkontingente. Eine Anleitung zum Erstellen einer Kontingentanforderung finden Sie unter [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md#increase-a-quota).
 
 Die Anwendung ffmpeg wird auf den Computeknoten bereitgestellt, indem der Poolkonfiguration ein [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)-Element hinzugefügt wird.
 

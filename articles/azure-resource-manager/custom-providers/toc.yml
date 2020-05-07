@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: Erweitern von Ressourcen
       href: tutorial-resource-onboarding.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Azure Policy für Zuordnungen

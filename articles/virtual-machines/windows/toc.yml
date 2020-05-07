@@ -140,6 +140,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Konzepte
   items:
+    - name: Bilder
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Regions
@@ -524,19 +526,64 @@
         - name: Abrufen von Nutzungsmetriken mit REST
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Verwenden von Images
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Freigegebene Images
+        - name: Erstellen und Freigeben von Images
           items:
-            - name: Übersicht
-              href: shared-image-galleries.md
             - name: PowerShell
-              href: shared-images.md
-            - name: Portal
-              href: shared-images-portal.md
+              items:
+                - name: Erstellen eines Katalogs
+                  href: ../shared-images-powershell.md
+                - name: Erstellen eines Images
+                  items:
+                    - name: Von einem virtuellen Computer
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrieren von einem verwalteten Image
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopieren aus einem anderen Katalog
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Erstellen einer VM
+                  items:
+                    - name: Generalisiert
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Spezialisiert
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Aktualisieren von Imageressourcen
+                  href: ../update-image-resources-powershell.md
             - name: Befehlszeilenschnittstelle (CLI)
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: App-Registrierung für die Freigabe
-              href: share-images-across-tenants.md
+              items:
+                - name: Erstellen eines Katalogs
+                  href: ../linux/shared-images.md
+                - name: Erstellen eines Images
+                  items:
+                    - name: Von einem virtuellen Computer
+                      href: ../image-version-vm-cli.md
+                    - name: Migrieren von einem verwalteten Image
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopieren aus einem anderen Katalog
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Kopieren aus einem anderen Katalog
+                      href: ../image-version-another-gallery-cli.md
+                - name: Erstellen einer VM
+                  items:
+                    - name: Generalisiert
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Aktualisieren von Imageressourcen
+                  href: ../update-image-resources-cli.md
+            - name: Portal
+              items:
+                - name: 'Erstellen eines Katalogs, eines Images und eines virtuellen Computers'
+                  href: shared-images-portal.md
+            - name: Resource Manager-Vorlagen
+              items:
+                - name: Erstellen einer Shared Image Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Erstellen einer Imagedefinition in einer Shared Image Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Erstellen einer Imageversion in einer Shared Image Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Erstellen eines virtuellen Computers aus einer Imageversion
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problembehandlung für freigegebene Images
               href: troubleshooting-shared-images.md
         - name: Image Builder (Vorschau)

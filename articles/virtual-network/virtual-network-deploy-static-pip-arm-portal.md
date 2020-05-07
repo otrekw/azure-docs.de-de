@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148021"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790166"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
 
@@ -49,7 +49,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
    ![Auswählen der Option „Statisch“](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, wählen Sie unter **SKU** die Option **Standard** aus. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
+   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, wählen Sie unter **SKU** die Option **Standard** aus. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/skus.md).
 
 6. Wählen Sie unter **Öffentliche eingehende Ports hinzufügen** einen Port oder keine Ports aus. Port 3389 ist ausgewählt, um den Remotezugriff auf den virtuellen Windows Server-Computer über das Internet zu aktivieren. Bei Produktionsworkloads wird vom Öffnen von Port 3389 über das Internet abgeraten.
 

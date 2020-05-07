@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fec54c19b9040e7cb44f1a5d2b7909510ab7313
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014877"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734602"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Auswählen einer Lastenausgleichslösung für private CloudSimple-Clouds
 
@@ -37,7 +37,7 @@ Weitere Informationen zum Konfigurieren dieser Lösung finden Sie im Lösungslei
 
 Wenn Sie Ihre Anwendung in einer Hybridbereitstellung ausführen möchten, bei der die Web-Front-End-Schicht innerhalb eines Azure vNet in Ihrem Azure-Abonnement und die DB-Schicht der Anwendung in VMware-VMs in der privaten CloudSimple-Cloud ausgeführt wird, können Sie den internen Lastausgleich (L4-Lastenausgleich) von Azure vor Ihren VMs der DB-Schicht für die Datenverkehrsverwaltung verwenden.
 
-Weitere Informationen finden Sie in der Azure-Dokumentation zum [internen Lastenausgleich](../load-balancer/concepts-limitations.md#internalloadbalancer).
+Weitere Informationen finden Sie in der Azure-Dokumentation zum [internen Lastenausgleich](../load-balancer/components.md#frontend-ip-configurations).
 
 ## <a name="global-server-load-balancer"></a>Globaler Serverlastenausgleich
 
