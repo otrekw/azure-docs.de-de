@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537065"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734313"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
 
@@ -33,20 +33,26 @@ Die Anmeldung besteht aus zwei Teilen:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core wird die Anmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn kein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer noch nicht angemeldet oder sich zuvor abgemeldet hat.
+In ASP.NET Core wird für Microsoft Identity Platform-Anwendungen die Schaltfläche **Anmelden** in `Views\Shared\_LoginPartial.cshtml` (für eine MVC-App) oder `Pages\Shared\_LoginPartial.cshtm` (für eine Razor-App) verfügbar gemacht. Sie wird nur angezeigt, wenn der Benutzer nicht authentifiziert ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer noch nicht angemeldet oder sich zuvor abgemeldet hat. Im Gegensatz dazu wird die Schaltfläche **Abmelden** angezeigt, wenn der Benutzer bereits angemeldet ist. Beachten Sie, dass der Kontocontroller im NuGet-Paket **Microsoft.Identity.Web.UI** im Bereich **MicrosoftIdentity** definiert ist.
 
 ```html
-@using Microsoft.Identity.Web
-@if (User.Identity.IsAuthenticated)
-{
- // Code omitted code for clarity
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Sign in</a></li>
-    </ul>
-}
+<ul class="navbar-nav">
+  @if (User.Identity.IsAuthenticated)
+  {
+    <li class="nav-item">
+        <span class="navbar-text text-dark">Hello @User.Identity.Name!</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+    </li>
+  }
+  else
+  {
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    </li>
+  }
+</ul>
 ```
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -68,7 +74,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-In unserem Java-Schnellstart befindet sich die Anmeldeschaltfläche in der Datei [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html).
+In unserem Java-Schnellstart befindet sich die Anmeldeschaltfläche in der Datei [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html).
 
 ```html
 <!DOCTYPE html>
@@ -106,9 +112,9 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-+In ASP.NET wird durch Auswahl der Schaltfläche **Anmelden** in der Web-App die Aktion `SignIn` auf dem `AccountController`-Controller ausgelöst. In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des ASP.NET Core-Frameworks ist.
++In ASP.NET wird durch Auswahl der Schaltfläche **Anmelden** in der Web-App die Aktion `SignIn` auf dem `AccountController`-Controller ausgelöst. In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des NuGet-Pakets **Microsoft.Identity.Web.UI** ist. Weitere Informationen finden Sie unter [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs).
 
-Der Code für den `AccountController` steht im ASP.NET Core-Repository in [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) zur Verfügung. Die Kontensteuerung fordert den Benutzer auf, indem er an den Microsoft Identity Platform-Endpunkt umgeleitet wird. Weitere Informationen finden Sie unter der [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31)-Methode, die als Teil von ASP.NET Core bereitgestellt wird.
+Dieser Controller behandelt auch die Azure AD B2C-Anwendungen.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -235,23 +241,26 @@ Bei der Anwendungsregistrierung müssen Sie keine zusätzliche Abmelde-URL regis
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core wird die Abmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn ein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer zuvor angemeldet hat.
+In ASP.NET wird durch Auswahl der Schaltfläche **Abmelden** in der Web-App die Aktion `SignOut` auf dem `AccountController`-Controller ausgelöst (siehe unten).
 
 ```html
-@using Microsoft.Identity.Web
-@if (User.Identity.IsAuthenticated)
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">Hello @User.GetDisplayName()!</li>
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Sign out</a></li>
-    </ul>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Sign in</a></li>
-    </ul>
-}
+<ul class="navbar-nav">
+  @if (User.Identity.IsAuthenticated)
+  {
+    <li class="nav-item">
+        <span class="navbar-text text-dark">Hello @User.Identity.Name!</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+    </li>
+  }
+  else
+  {
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    </li>
+  }
+</ul>
 ```
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -320,15 +329,13 @@ Im Python-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei [temp
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET wird durch Auswahl der Schaltfläche **Abmelden** in der Web-App die Aktion `SignOut` auf dem `AccountController`-Controller ausgelöst. In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des ASP.NET Core-Frameworks ist.
-
-Der Code für den `AccountController` steht im ASP.NET Core-Repository in [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) zur Verfügung. Die Kontosteuerung führt folgende Aktionen durch:
+In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des NuGet-Pakets **Microsoft.Identity.Web.UI** ist. Weitere Informationen finden Sie unter [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs).
 
 - Sie legt einen OpenID-Umleitungs-URI auf `/Account/SignedOut` fest, damit der Controller zurückgerufen wird, wenn Azure AD die Abmeldung abgeschlossen hat.
 - Sie ruft `Signout()` auf, damit die OpenID Connect-Middleware den `logout`-Endpunkt der Microsoft Identity Platform kontaktieren kann. Der Endpunkt führt dann folgende Aktionen aus:
 
   - Er löscht den Sitzungscookie im Browser.
-  - Er ruft die Abmelde-URL zurück. Standardmäßig zeigt die Abmelde-URL die Abmeldeseite [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) an. Diese Seite wird auch als Teil von ASP.NET Core bereitgestellt.
+  - Er ruft die Abmelde-URL zurück. Standardmäßig zeigt die Abmelde-URL die Abmeldeseite [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) an. Diese Seite wird auch als Teil von Microsoft.Identity.Web bereitgestellt.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -390,15 +397,7 @@ Der URI nach der Abmeldung ermöglicht Anwendungen, an der globalen Abmeldung te
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Mit der OpenID Connect-Middleware von ASP.NET Core kann Ihre App den Aufruf an den `logout`-Endpunkt der Microsoft Identity Platform durch die Bereitstellung des OpenID Connect-Ereignisses `OnRedirectToIdentityProviderForSignOut` abfangen. Ein Beispiel für das Abonnieren dieses Ereignisses (um den Tokencache zu löschen) finden Sie unter [Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
-
-```csharp
-    // Handling the global sign-out
-    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-    {
-        // Forget about the signed-in user
-    };
-```
+Mit der OpenID Connect-Middleware von ASP.NET Core kann Ihre App den Aufruf an den `logout`-Endpunkt der Microsoft Identity Platform durch die Bereitstellung des OpenID Connect-Ereignisses `OnRedirectToIdentityProviderForSignOut` abfangen. Dies erfolgt automatisch durch Microsoft.Identity.Web (indem Konten gelöscht werden, wenn Ihre Web-App Web-APIs aufruft).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

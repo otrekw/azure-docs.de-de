@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a92da04f5b883661d53fd291dc72351a1c4eafb1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804791"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610835"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.
@@ -187,23 +187,23 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | domainservices | Nein | Nein |
+> | domainservices | Nein  | Nein  |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | tenants | Nein | Nein |
+> | tenants | Nein  | Nein  |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | Konfigurationen | Nein | Nein |
-> | empfehlungen | Nein | Nein |
-> | suppressions | Nein | Nein |
+> | Konfigurationen | Nein  | Nein  |
+> | empfehlungen | Nein  | Nein  |
+> | suppressions | Nein  | Nein  |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -211,8 +211,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | actionRules | Ja | Ja |
-> | alerts | Nein | Nein |
-> | alertssummary | Nein | Nein |
+> | alerts | Nein  | Nein  |
+> | alertssummary | Nein  | Nein  |
 > | smartdetectoralertrules | Ja | Ja |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -251,9 +251,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | apiapps | Nein | Nein |
-> | appidentities | Nein | Nein |
-> | gateways | Nein | Nein |
+> | apiapps | Nein  | Nein  |
+> | appidentities | Nein  | Nein  |
+> | gateways | Nein  | Nein  |
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
@@ -263,17 +263,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | checkaccess | Nein | Nein |
-> | denyassignments | Nein | Nein |
-> | findorphanroleassignments | Nein | Nein |
-> | locks | Nein | Nein |
-> | Berechtigungen | Nein | Nein |
-> | policyassignments | Nein | Nein |
-> | policydefinitions | Nein | Nein |
-> | policysetdefinitions | Nein | Nein |
-> | roleassignments | Nein | Nein |
-> | roleassignmentsusagemetrics | Nein | Nein |
-> | roledefinitions | Nein | Nein |
+> | checkaccess | Nein  | Nein  |
+> | denyassignments | Nein  | Nein  |
+> | findorphanroleassignments | Nein  | Nein  |
+> | locks | Nein  | Nein  |
+> | Berechtigungen | Nein  | Nein  |
+> | policyassignments | Nein  | Nein  |
+> | policydefinitions | Nein  | Nein  |
+> | policysetdefinitions | Nein  | Nein  |
+> | roleassignments | Nein  | Nein  |
+> | roleassignmentsusagemetrics | Nein  | Nein  |
+> | roledefinitions | Nein  | Nein  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -299,9 +299,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hybriddatamanagers | Nein | Nein |
-> | postgresinstances | Nein | Nein |
-> | sqlinstances | Nein | Nein |
+> | hybriddatamanagers | Nein  | Nein  |
+> | postgresinstances | Nein  | Nein  |
+> | sqlinstances | Nein  | Nein  |
 > | sqlserverregistrations | Ja | Ja |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
@@ -323,59 +323,59 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
-> | fileservers | Nein | Nein |
-> | jobs | Nein | Nein |
-> | workspaces | Nein | Nein |
+> | clusters | Nein  | Nein  |
+> | fileservers | Nein  | Nein  |
+> | jobs | Nein  | Nein  |
+> | workspaces | Nein  | Nein  |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | billingperiods | Nein | Nein |
-> | billingpermissions | Nein | Nein |
-> | billingroleassignments | Nein | Nein |
-> | billingroledefinitions | Nein | Nein |
-> | createbillingroleassignment | Nein | Nein |
+> | billingperiods | Nein  | Nein  |
+> | billingpermissions | Nein  | Nein  |
+> | billingroleassignments | Nein  | Nein  |
+> | billingroledefinitions | Nein  | Nein  |
+> | createbillingroleassignment | Nein  | Nein  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | mapapis | Nein | Nein |
+> | mapapis | Nein  | Nein  |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | biztalk | Nein | Nein |
+> | biztalk | Nein  | Nein  |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | blockchainmembers | Nein | Nein |
-> | cordamembers | Nein | Nein |
-> | watchers | Nein | Nein |
+> | blockchainmembers | Nein  | Nein  |
+> | cordamembers | Nein  | Nein  |
+> | watchers | Nein  | Nein  |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | tokenservices | Nein | Nein |
+> | tokenservices | Nein  | Nein  |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | blueprintassignments | Nein | Nein |
-> | blueprints | Nein | Nein |
+> | blueprintassignments | Nein  | Nein  |
+> | blueprints | Nein  | Nein  |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -418,8 +418,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | domainnames | Ja | Nein |
-> | virtualmachines | Ja | Nein |
+> | domainnames | Ja | Nein  |
+> | virtualmachines | Ja | Nein  |
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
@@ -429,9 +429,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | networksecuritygroups | Nein | Nein |
-> | reservedips | Nein | Nein |
-> | virtualnetworks | Nein | Nein |
+> | networksecuritygroups | Nein  | Nein  |
+> | reservedips | Nein  | Nein  |
+> | virtualnetworks | Nein  | Nein  |
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
@@ -441,7 +441,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Ja | Nein |
+> | storageaccounts | Ja | Nein  |
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
@@ -451,7 +451,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | syntheticsaccounts | Nein | Nein |
+> | syntheticsaccounts | Nein  | Nein  |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -466,21 +466,21 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | availabilitysets | Ja | Ja |
-> | diskencryptionsets | Nein | Nein |
+> | diskencryptionsets | Nein  | Nein  |
 > | disks | Ja | Ja |
-> | galleries | Nein | Nein |
-> | galleries/images | Nein | Nein |
-> | galleries/images/versions | Nein | Nein |
-> | hostgroups | Nein | Nein |
-> | hostgroups/hosts | Nein | Nein |
+> | galleries | Nein  | Nein  |
+> | galleries/images | Nein  | Nein  |
+> | galleries/images/versions | Nein  | Nein  |
+> | hostgroups | Nein  | Nein  |
+> | hostgroups/hosts | Nein  | Nein  |
 > | images | Ja | Ja |
 > | proximityplacementgroups | Ja | Ja |
-> | restorepointcollections | Nein | Nein |
-> | sharedvmextensions | Nein | Nein |
-> | sharedvmimages | Nein | Nein |
-> | sharedvmimages/versions | Nein | Nein |
+> | restorepointcollections | Nein  | Nein  |
+> | sharedvmextensions | Nein  | Nein  |
+> | sharedvmimages | Nein  | Nein  |
+> | sharedvmimages/versions | Nein  | Nein  |
 > | snapshots | Ja | Ja |
-> | sshpublickeys | Nein | Nein |
+> | sshpublickeys | Nein  | Nein  |
 > | virtualmachines | Ja | Ja |
 > | virtualmachines/extensions | Ja | Ja |
 > | virtualmachinescalesets | Ja | Ja |
@@ -493,43 +493,43 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | aggregatedcost | Nein | Nein |
-> | balances | Nein | Nein |
-> | budgets | Nein | Nein |
-> | charges | Nein | Nein |
-> | costtags | Nein | Nein |
-> | credits | Nein | Nein |
-> | events | Nein | Nein |
-> | forecasts | Nein | Nein |
-> | lots | Nein | Nein |
-> | marketplaces | Nein | Nein |
-> | operationresults | Nein | Nein |
-> | operationstatus | Nein | Nein |
-> | pricesheets | Nein | Nein |
-> | products | Nein | Nein |
-> | reservationdetails | Nein | Nein |
-> | reservationrecommendations | Nein | Nein |
-> | reservationsummaries | Nein | Nein |
-> | reservationtransactions | Nein | Nein |
-> | tags | Nein | Nein |
-> | tenants | Nein | Nein |
-> | terms | Nein | Nein |
-> | usagedetails | Nein | Nein |
+> | aggregatedcost | Nein  | Nein  |
+> | balances | Nein  | Nein  |
+> | budgets | Nein  | Nein  |
+> | charges | Nein  | Nein  |
+> | costtags | Nein  | Nein  |
+> | credits | Nein  | Nein  |
+> | events | Nein  | Nein  |
+> | forecasts | Nein  | Nein  |
+> | lots | Nein  | Nein  |
+> | marketplaces | Nein  | Nein  |
+> | operationresults | Nein  | Nein  |
+> | operationstatus | Nein  | Nein  |
+> | pricesheets | Nein  | Nein  |
+> | products | Nein  | Nein  |
+> | reservationdetails | Nein  | Nein  |
+> | reservationrecommendations | Nein  | Nein  |
+> | reservationsummaries | Nein  | Nein  |
+> | reservationtransactions | Nein  | Nein  |
+> | tags | Nein  | Nein  |
+> | tenants | Nein  | Nein  |
+> | terms | Nein  | Nein  |
+> | usagedetails | Nein  | Nein  |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | containergroups | Nein | Nein |
+> | containergroups | Nein  | Nein  |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | containergroups | Nein | Nein |
-> | serviceassociationlinks | Nein | Nein |
+> | containergroups | Nein  | Nein  |
+> | serviceassociationlinks | Nein  | Nein  |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -537,7 +537,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | registries | Ja | Ja |
-> | registries/agentpools | Nein | Nein |
+> | registries/agentpools | Nein  | Nein  |
 > | registries/buildtasks | Ja | Ja |
 > | registries/replications | Ja | Ja |
 > | registries/taskruns | Ja | Ja |
@@ -549,55 +549,55 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | containerservices | Nein | Nein |
-> | managedclusters | Nein | Nein |
-> | openshiftmanagedclusters | Nein | Nein |
+> | containerservices | Nein  | Nein  |
+> | managedclusters | Nein  | Nein  |
+> | openshiftmanagedclusters | Nein  | Nein  |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applications | Nein | Nein |
+> | applications | Nein  | Nein  |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | alerts | Nein | Nein |
-> | budgets | Nein | Nein |
+> | alerts | Nein  | Nein  |
+> | budgets | Nein  | Nein  |
 > | connectors | Ja | Ja |
-> | dimensions | Nein | Nein |
-> | exports | Nein | Nein |
-> | externalsubscriptions | Nein | Nein |
-> | forecast | Nein | Nein |
-> | Abfrage | Nein | Nein |
-> | reportconfigs | Nein | Nein |
-> | reports | Nein | Nein |
-> | showbackrules | Nein | Nein |
-> | views | Nein | Nein |
+> | dimensions | Nein  | Nein  |
+> | exports | Nein  | Nein  |
+> | externalsubscriptions | Nein  | Nein  |
+> | forecast | Nein  | Nein  |
+> | Abfrage | Nein  | Nein  |
+> | reportconfigs | Nein  | Nein  |
+> | reports | Nein  | Nein  |
+> | showbackrules | Nein  | Nein  |
+> | views | Nein  | Nein  |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hubs | Nein | Nein |
+> | hubs | Nein  | Nein  |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | associations | Nein | Nein |
+> | associations | Nein  | Nein  |
 > | resourceproviders | Ja | Ja |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
@@ -605,21 +605,21 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | jobs | Nein | Nein |
+> | jobs | Nein  | Nein  |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | databoxedgedevices | Nein | Nein |
+> | databoxedgedevices | Nein  | Nein  |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
+> | workspaces | Nein  | Nein  |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -627,22 +627,22 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | catalogs | Ja | Ja |
-> | datacatalogs | Nein | Nein |
+> | datacatalogs | Nein  | Nein  |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | connectionmanagers | Nein | Nein |
+> | connectionmanagers | Nein  | Nein  |
 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | packages | Nein | Nein |
-> | plans | Nein | Nein |
+> | packages | Nein  | Nein  |
+> | plans | Nein  | Nein  |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -657,7 +657,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | datalakeaccounts | Nein | Nein |
+> | datalakeaccounts | Nein  | Nein  |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -678,16 +678,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | services | Nein | Nein |
-> | services/projects | Nein | Nein |
-> | slots | Nein | Nein |
+> | services | Nein  | Nein  |
+> | services/projects | Nein  | Nein  |
+> | slots | Nein  | Nein  |
 
 ## <a name="microsoftdataprotection"></a>Microsoft.DataProtection
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | backupvaults | Nein | Nein |
+> | backupvaults | Nein  | Nein  |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -715,7 +715,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | servergroups | Nein | Nein |
+> | servergroups | Nein  | Nein  |
 > | servers | Ja | Ja |
 > | serversv2 | Ja | Ja |
 > | singleservers | Ja | Ja |
@@ -737,17 +737,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applicationgroups | Nein | Nein |
-> | hostpools | Nein | Nein |
-> | workspaces | Nein | Nein |
+> | applicationgroups | Nein  | Nein  |
+> | hostpools | Nein  | Nein  |
+> | workspaces | Nein  | Nein  |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | elasticpools | Nein | Nein |
-> | elasticpools/iothubtenants | Nein | Nein |
+> | elasticpools | Nein  | Nein  |
+> | elasticpools/iothubtenants | Nein  | Nein  |
 > | iothubs | Ja | Ja |
 > | provisioningservices | Ja | Ja |
 
@@ -770,11 +770,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | labcenters | Nein | Nein |
-> | labs | Ja | Nein |
+> | labcenters | Nein  | Nein  |
+> | labs | Ja | Nein  |
 > | labs/environments | Ja | Ja |
 > | labs/servicerunners | Ja | Ja |
-> | labs/virtualmachines | Ja | Nein |
+> | labs/virtualmachines | Ja | Nein  |
 > | schedules | Ja | Ja |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -782,7 +782,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | digitaltwinsinstances | Nein | Nein |
+> | digitaltwinsinstances | Nein  | Nein  |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -813,9 +813,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | domains | Ja | Ja |
 > | eventSubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
 > | eventsubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
-> | extensiontopics | Nein | Nein |
+> | extensiontopics | Nein  | Nein  |
 > | partnernamespaces | Ja | Ja |
-> | partnerregistrations | Nein | Nein |
+> | partnerregistrations | Nein  | Nein  |
 > | partnertopics | Ja | Ja |
 > | systemtopics | Ja | Ja |
 > | topics | Ja | Ja |
@@ -833,7 +833,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | Nein | Nein |
+> | experimentworkspaces | Nein  | Nein  |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -847,26 +847,26 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | automanagedaccounts | Nein | Nein |
-> | automanagedvmconfigurationprofiles | Nein | Nein |
-> | guestconfigurationassignments | Nein | Nein |
-> | software | Nein | Nein |
-> | softwareupdateprofile | Nein | Nein |
-> | softwareupdates | Nein | Nein |
+> | automanagedaccounts | Nein  | Nein  |
+> | automanagedvmconfigurationprofiles | Nein  | Nein  |
+> | guestconfigurationassignments | Nein  | Nein  |
+> | software | Nein  | Nein  |
+> | softwareupdateprofile | Nein  | Nein  |
+> | softwareupdates | Nein  | Nein  |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hanainstances | Nein | Nein |
+> | hanainstances | Nein  | Nein  |
 > | sapmonitors | Ja | Ja |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
@@ -894,7 +894,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | machines | Ja | Ja |
-> | machines/extensions | Nein | Nein |
+> | machines/extensions | Nein  | Nein  |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -908,8 +908,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | components | Nein | Nein |
-> | networkscopes | Nein | Nein |
+> | components | Nein  | Nein  |
+> | networkscopes | Nein  | Nein  |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
@@ -924,32 +924,32 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | actiongroups | Ja | Ja |
-> | activitylogalerts | Nein | Nein |
+> | activitylogalerts | Nein  | Nein  |
 > | alertrules | Ja | Ja |
 > | autoscalesettings | Ja | Ja |
-> | baseline | Nein | Nein |
-> | calculatebaseline | Nein | Nein |
+> | baseline | Nein  | Nein  |
+> | calculatebaseline | Nein  | Nein  |
 > | components | Ja | Ja |
-> | datacollectionrules | Nein | Nein |
-> | diagnosticsettings | Nein | Nein |
-> | diagnosticsettingscategories | Nein | Nein |
-> | eventtypes | Nein | Nein |
-> | extendeddiagnosticsettings | Nein | Nein |
-> | guestdiagnosticsettings | Nein | Nein |
-> | logdefinitions | Nein | Nein |
-> | logs | Nein | Nein |
-> | metricalerts | Nein | Nein |
-> | metricbaselines | Nein | Nein |
-> | metricdefinitions | Nein | Nein |
-> | metricnamespaces | Nein | Nein |
-> | metrics | Nein | Nein |
-> | myworkbooks | Nein | Nein |
-> | notificationgroups | Nein | Nein |
+> | datacollectionrules | Nein  | Nein  |
+> | diagnosticsettings | Nein  | Nein  |
+> | diagnosticsettingscategories | Nein  | Nein  |
+> | eventtypes | Nein  | Nein  |
+> | extendeddiagnosticsettings | Nein  | Nein  |
+> | guestdiagnosticsettings | Nein  | Nein  |
+> | logdefinitions | Nein  | Nein  |
+> | logs | Nein  | Nein  |
+> | metricalerts | Nein  | Nein  |
+> | metricbaselines | Nein  | Nein  |
+> | metricdefinitions | Nein  | Nein  |
+> | metricnamespaces | Nein  | Nein  |
+> | metrics | Nein  | Nein  |
+> | myworkbooks | Nein  | Nein  |
+> | notificationgroups | Nein  | Nein  |
 > | privatelinkscopes | Ja | Ja |
 > | scheduledqueryrules | Ja | Ja |
-> | Topologie | Nein | Nein |
-> | Transaktionen | Nein | Nein |
-> | vminsightsonboardingstatuses | Nein | Nein |
+> | Topologie | Nein  | Nein  |
+> | Transaktionen | Nein  | Nein  |
+> | vminsightsonboardingstatuses | Nein  | Nein  |
 > | webtests | Ja | Ja |
 > | workbooks | Ja | Ja |
 > | workbooktemplates | Ja | Ja |
@@ -977,7 +977,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hsmpools | Nein | Nein |
+> | hsmpools | Nein  | Nein  |
 > | vaults | Ja | Ja |
 
 > [!IMPORTANT]
@@ -988,7 +988,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | connectedclusters | Nein | Nein |
+> | connectedclusters | Nein  | Nein  |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -1002,32 +1002,32 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | labaccounts | Nein | Nein |
+> | labaccounts | Nein  | Nein  |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hostingenvironments | Nein | Nein |
+> | hostingenvironments | Nein  | Nein  |
 > | integrationaccounts | Ja | Ja |
-> | integrationserviceenvironments | Ja | Nein |
-> | integrationserviceenvironments/managedapis | Ja | Nein |
-> | isolatedenvironments | Nein | Nein |
+> | integrationserviceenvironments | Ja | Nein  |
+> | integrationserviceenvironments/managedapis | Ja | Nein  |
+> | isolatedenvironments | Nein  | Nein  |
 > | workflows | Ja | Ja |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
@@ -1035,8 +1035,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | commitmentplans | Nein | Nein |
-> | webservices | Ja | Nein |
+> | commitmentplans | Nein  | Nein  |
+> | webservices | Ja | Nein  |
 > | workspaces | Ja | Ja |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
@@ -1044,77 +1044,77 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | operationalizationclusters | Nein | Nein |
+> | operationalizationclusters | Nein  | Nein  |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
-> | accounts/workspaces | Nein | Nein |
-> | accounts/workspaces/projects | Nein | Nein |
-> | teamaccounts | Nein | Nein |
-> | teamaccounts/workspaces | Nein | Nein |
-> | teamaccounts/workspaces/projects | Nein | Nein |
+> | accounts | Nein  | Nein  |
+> | accounts/workspaces | Nein  | Nein  |
+> | accounts/workspaces/projects | Nein  | Nein  |
+> | teamaccounts | Nein  | Nein  |
+> | teamaccounts/workspaces | Nein  | Nein  |
+> | teamaccounts/workspaces/projects | Nein  | Nein  |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hostingaccounts | Nein | Nein |
+> | hostingaccounts | Nein  | Nein  |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
-> | workspaces/computes | Nein | Nein |
+> | workspaces | Nein  | Nein  |
+> | workspaces/computes | Nein  | Nein  |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applyupdates | Nein | Nein |
-> | configurationassignments | Nein | Nein |
+> | applyupdates | Nein  | Nein  |
+> | configurationassignments | Nein  | Nein  |
 > | maintenanceconfigurations | Ja | Ja |
-> | updates | Nein | Nein |
+> | updates | Nein  | Nein  |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | Identitäten | Nein | Nein |
-> | userassignedidentities | Nein | Nein |
+> | Identitäten | Nein  | Nein  |
+> | userassignedidentities | Nein  | Nein  |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | managednetworks | Nein | Nein |
-> | managednetworks/managednetworkgroups | Nein | Nein |
-> | managednetworks/managednetworkpeeringpolicies | Nein | Nein |
-> | Benachrichtigung | Nein | Nein |
+> | managednetworks | Nein  | Nein  |
+> | managednetworks/managednetworkgroups | Nein  | Nein  |
+> | managednetworks/managednetworkpeeringpolicies | Nein  | Nein  |
+> | Benachrichtigung | Nein  | Nein  |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | registrationassignments | Nein | Nein |
-> | registrationdefinitions | Nein | Nein |
+> | registrationassignments | Nein  | Nein  |
+> | registrationdefinitions | Nein  | Nein  |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
@@ -1129,7 +1129,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | classicdevservices | Nein | Nein |
+> | classicdevservices | Nein  | Nein  |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -1145,7 +1145,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | appclusters | Nein | Nein |
+> | appclusters | Nein  | Nein  |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -1154,40 +1154,40 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | assessmentprojects | Ja | Ja |
 > | migrateprojects | Ja | Ja |
-> | movecollections | Nein | Nein |
-> | projects | Nein | Nein |
+> | movecollections | Nein  | Nein  |
+> | projects | Nein  | Nein  |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | netappaccounts | Nein | Nein |
-> | netappaccounts/backuppolicies | Nein | Nein |
-> | netappaccounts/capacitypools | Nein | Nein |
-> | netappaccounts/capacitypools/volumes | Nein | Nein |
-> | netappaccounts/capacitypools/volumes/mounttargets | Nein | Nein |
-> | netappaccounts/capacitypools/volumes/snapshots | Nein | Nein |
+> | netappaccounts | Nein  | Nein  |
+> | netappaccounts/backuppolicies | Nein  | Nein  |
+> | netappaccounts/capacitypools | Nein  | Nein  |
+> | netappaccounts/capacitypools/volumes | Nein  | Nein  |
+> | netappaccounts/capacitypools/volumes/mounttargets | Nein  | Nein  |
+> | netappaccounts/capacitypools/volumes/snapshots | Nein  | Nein  |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applicationgateways | Nein | Nein |
-> | applicationgatewaywebapplicationfirewallpolicies | Nein | Nein |
+> | applicationgateways | Nein  | Nein  |
+> | applicationgatewaywebapplicationfirewallpolicies | Nein  | Nein  |
 > | applicationsecuritygroups | Ja | Ja |
 > | azurefirewalls | Ja | Ja |
-> | bastionhosts | Nein | Nein |
+> | bastionhosts | Nein  | Nein  |
 > | connections | Ja | Ja |
 > | ddoscustompolicies | Ja | Ja |
-> | ddosprotectionplans | Nein | Nein |
+> | ddosprotectionplans | Nein  | Nein  |
 > | dnszones | Ja | Ja |
-> | expressroutecircuits | Nein | Nein |
-> | expressroutegateways | Nein | Nein |
+> | expressroutecircuits | Nein  | Nein  |
+> | expressroutegateways | Nein  | Nein  |
 > | firewallpolicies | Ja | Ja |
-> | frontdoors | Nein | Nein |
-> | frontdoorwebapplicationfirewallpolicies | Nein | Nein |
+> | frontdoors | Nein  | Nein  |
+> | frontdoorwebapplicationfirewallpolicies | Nein  | Nein  |
 > | ipgroups | Ja | Ja |
 > | loadbalancers | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | localnetworkgateways | Ja | Ja |
@@ -1195,33 +1195,33 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | networkexperimentprofiles | Ja | Ja |
 > | networkintentpolicies | Ja | Ja |
 > | networkinterfaces | Ja | Ja |
-> | networkprofiles | Nein | Nein |
+> | networkprofiles | Nein  | Nein  |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Ja | Nein |
-> | networkwatchers/connectionmonitors | Ja | Nein |
-> | networkwatchers/flowlogs | Ja | Nein |
-> | networkwatchers/pingmeshes | Ja | Nein |
-> | p2svpngateways | Nein | Nein |
+> | networkwatchers | Ja | Nein  |
+> | networkwatchers/connectionmonitors | Ja | Nein  |
+> | networkwatchers/flowlogs | Ja | Nein  |
+> | networkwatchers/pingmeshes | Ja | Nein  |
+> | p2svpngateways | Nein  | Nein  |
 > | privatednszones | Ja | Ja |
 > | privatednszones/virtualnetworklinks | Ja | Ja |
-> | privateendpointredirectmaps | Nein | Nein |
+> | privateendpointredirectmaps | Nein  | Nein  |
 > | privateendpoints | Ja | Ja |
-> | privatelinkservices | Nein | Nein |
+> | privatelinkservices | Nein  | Nein  |
 > | publicipaddresses | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | publicipprefixes | Ja | Ja |
-> | routefilters | Nein | Nein |
+> | routefilters | Nein  | Nein  |
 > | routetables | Ja | Ja |
 > | serviceendpointpolicies | Ja | Ja |
 > | trafficmanagerprofiles | Ja | Ja |
-> | virtualhubs | Nein | Nein |
+> | virtualhubs | Nein  | Nein  |
 > | virtualnetworkgateways | Ja | Ja |
 > | virtualnetworks | Ja | Ja |
-> | virtualnetworktaps | Nein | Nein |
+> | virtualnetworktaps | Nein  | Nein  |
 > | virtualrouters | Ja | Ja |
-> | virtualwans | Nein | Nein |
-> | vpngateways (Virtual WAN) | Nein | Nein |
-> | vpnserverconfigurations | Nein | Nein |
-> | vpnsites (Virtual WAN) | Nein | Nein |
+> | virtualwans | Nein  | Nein  |
+> | vpngateways (Virtual WAN) | Nein  | Nein  |
+> | vpnserverconfigurations | Nein  | Nein  |
+> | vpnsites (Virtual WAN) | Nein  | Nein  |
 > | webapplicationfirewallpolicies | Ja | Ja |
 
 > [!IMPORTANT]
@@ -1247,8 +1247,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
-> | storageinsightconfigs | Nein | Nein |
+> | clusters | Nein  | Nein  |
+> | storageinsightconfigs | Nein  | Nein  |
 > | workspaces | Ja | Ja |
 
 > [!IMPORTANT]
@@ -1259,7 +1259,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | managementassociations | Nein | Nein |
+> | managementassociations | Nein  | Nein  |
 > | managementconfigurations | Ja | Ja |
 > | solutions | Ja | Ja |
 > | views | Ja | Ja |
@@ -1270,17 +1270,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | peerings | Ja | Ja |
-> | peeringservices | Nein | Nein |
+> | peeringservices | Nein  | Nein  |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | policyevents | Nein | Nein |
-> | policystates | Nein | Nein |
-> | policytrackedresources | Nein | Nein |
-> | remediations | Nein | Nein |
+> | policyevents | Nein  | Nein  |
+> | policystates | Nein  | Nein  |
+> | policytrackedresources | Nein  | Nein  |
+> | remediations | Nein  | Nein  |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
@@ -1294,7 +1294,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | rootresources | Nein | Nein |
+> | rootresources | Nein  | Nein  |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
@@ -1315,36 +1315,36 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | accounts | Nein  | Nein  |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | rollouts | Nein | Nein |
+> | rollouts | Nein  | Nein  |
 
 ## <a name="microsoftquantum"></a>Microsoft.Quantum
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
+> | workspaces | Nein  | Nein  |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | backupprotecteditems | Nein | Nein |
-> | replicationeligibilityresults | Nein | Nein |
+> | backupprotecteditems | Nein  | Nein  |
+> | replicationeligibilityresults | Nein  | Nein  |
 > | vaults | Ja | Ja |
 
 > [!IMPORTANT]
@@ -1355,7 +1355,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | openshiftclusters | Nein | Nein |
+> | openshiftclusters | Nein  | Nein  |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1376,27 +1376,27 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | availabilitystatuses | Nein | Nein |
-> | childavailabilitystatuses | Nein | Nein |
-> | childresources | Nein | Nein |
-> | events | Nein | Nein |
-> | Benachrichtigungen | Nein | Nein |
+> | availabilitystatuses | Nein  | Nein  |
+> | childavailabilitystatuses | Nein  | Nein  |
+> | childresources | Nein  | Nein  |
+> | events | Nein  | Nein  |
+> | Benachrichtigungen | Nein  | Nein  |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | deploymentscripts | Nein | Nein |
-> | Verknüpfungen | Nein | Nein |
-> | tags | Nein | Nein |
+> | deploymentscripts | Nein  | Nein  |
+> | Verknüpfungen | Nein  | Nein  |
+> | tags | Nein  | Nein  |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applications | Ja | Nein |
+> | applications | Ja | Nein  |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1413,44 +1413,44 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | adaptivenetworkhardenings | Nein | Nein |
-> | advancedthreatprotectionsettings | Nein | Nein |
-> | assessmentmetadata | Nein | Nein |
-> | assessments | Nein | Nein |
+> | adaptivenetworkhardenings | Nein  | Nein  |
+> | advancedthreatprotectionsettings | Nein  | Nein  |
+> | assessmentmetadata | Nein  | Nein  |
+> | assessments | Nein  | Nein  |
 > | automations | Ja | Ja |
-> | complianceresults | Nein | Nein |
-> | compliances | Nein | Nein |
-> | datacollectionagents | Nein | Nein |
-> | devicesecuritygroups | Nein | Nein |
-> | informationprotectionpolicies | Nein | Nein |
+> | complianceresults | Nein  | Nein  |
+> | compliances | Nein  | Nein  |
+> | datacollectionagents | Nein  | Nein  |
+> | devicesecuritygroups | Nein  | Nein  |
+> | informationprotectionpolicies | Nein  | Nein  |
 > | iotsecuritysolutions | Ja | Ja |
-> | servervulnerabilityassessments | Nein | Nein |
+> | servervulnerabilityassessments | Nein  | Nein  |
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | aggregations | Nein | Nein |
-> | alertrules | Nein | Nein |
-> | alertruletemplates | Nein | Nein |
-> | bookmarks | Nein | Nein |
-> | cases | Nein | Nein |
-> | dataconnectors | Nein | Nein |
-> | dataconnectorscheckrequirements | Nein | Nein |
-> | entities | Nein | Nein |
-> | entityqueries | Nein | Nein |
-> | incidents | Nein | Nein |
-> | officeconsents | Nein | Nein |
-> | settings | Nein | Nein |
+> | aggregations | Nein  | Nein  |
+> | alertrules | Nein  | Nein  |
+> | alertruletemplates | Nein  | Nein  |
+> | bookmarks | Nein  | Nein  |
+> | cases | Nein  | Nein  |
+> | dataconnectors | Nein  | Nein  |
+> | dataconnectorscheckrequirements | Nein  | Nein  |
+> | entities | Nein  | Nein  |
+> | entityqueries | Nein  | Nein  |
+> | incidents | Nein  | Nein  |
+> | officeconsents | Nein  | Nein  |
+> | settings | Nein  | Nein  |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | gateways | Nein | Nein |
-> | nodes | Nein | Nein |
+> | gateways | Nein  | Nein  |
+> | nodes | Nein  | Nein  |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -1464,16 +1464,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applications | Nein | Nein |
+> | applications | Nein  | Nein  |
 > | clusters | Ja | Ja |
-> | clusters/applications | Nein | Nein |
-> | containergroups | Nein | Nein |
-> | containergroupsets | Nein | Nein |
-> | edgeclusters | Nein | Nein |
-> | managedclusters | Nein | Nein |
-> | networks | Nein | Nein |
-> | secretstores | Nein | Nein |
-> | volumes | Nein | Nein |
+> | clusters/applications | Nein  | Nein  |
+> | containergroups | Nein  | Nein  |
+> | containergroupsets | Nein  | Nein  |
+> | edgeclusters | Nein  | Nein  |
+> | managedclusters | Nein  | Nein  |
+> | networks | Nein  | Nein  |
+> | secretstores | Nein  | Nein  |
+> | volumes | Nein  | Nein  |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
@@ -1481,7 +1481,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | applications | Ja | Ja |
-> | containergroups | Nein | Nein |
+> | containergroups | Nein  | Nein  |
 > | gateways | Ja | Ja |
 > | networks | Ja | Ja |
 > | secrets | Ja | Ja |
@@ -1492,7 +1492,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | rollouts | Nein | Nein |
+> | rollouts | Nein  | Nein  |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
@@ -1506,25 +1506,26 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hybridusebenefits | Nein | Nein |
+> | hybridusebenefits | Nein  | Nein  |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | applicationdefinitions | Nein | Nein |
-> | applications | Nein | Nein |
-> | jitrequests | Nein | Nein |
+> | applicationdefinitions | Nein  | Nein  |
+> | applications | Nein  | Nein  |
+> | jitrequests | Nein  | Nein  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | instancepools | Nein | Nein |
-> | managedinstances | Nein | Nein |
-> | managedinstances/databases | Nein | Nein |
+> | instancepools | Nein  | Nein  |
+> | locations | Ja | Ja |
+> | managedinstances | Nein  | Nein  |
+> | managedinstances/databases | Nein  | Nein  |
 > | servers | Ja | Ja |
 > | servers/databases | Ja | Ja |
 > | servers/elasticpools | Ja | Ja |
@@ -1548,7 +1549,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | dwvm | Nein | Nein |
+> | dwvm | Nein  | Nein  |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -1562,7 +1563,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | caches | Nein | Nein |
+> | caches | Nein  | Nein  |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1576,21 +1577,21 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices | Nein | Nein |
+> | storagesyncservices | Nein  | Nein  |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices | Nein | Nein |
+> | storagesyncservices | Nein  | Nein  |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | managers | Nein | Nein |
+> | managers | Nein  | Nein  |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -1607,42 +1608,42 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | environments | Nein | Nein |
-> | environments/eventsources | Nein | Nein |
-> | instances | Nein | Nein |
-> | instances/environments | Nein | Nein |
-> | instances/environments/eventsources | Nein | Nein |
+> | environments | Nein  | Nein  |
+> | environments/eventsources | Nein  | Nein  |
+> | instances | Nein  | Nein  |
+> | instances/environments | Nein  | Nein  |
+> | instances/environments/eventsources | Nein  | Nein  |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | createsubscription | Nein | Nein |
+> | createsubscription | Nein  | Nein  |
 
 ## <a name="microsoftsupport"></a>microsoft.support
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | supporttickets | Nein | Nein |
+> | supporttickets | Nein  | Nein  |
 
 ## <a name="microsoftsynapse"></a>Microsoft.Synapse
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
-> | workspaces/bigdatapools | Nein | Nein |
-> | workspaces/sqlpools | Nein | Nein |
+> | workspaces | Nein  | Nein  |
+> | workspaces/bigdatapools | Nein  | Nein  |
+> | workspaces/sqlpools | Nein  | Nein  |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | providerregistrations | Nein | Nein |
-> | ressourcen | Nein | Nein |
+> | providerregistrations | Nein  | Nein  |
+> | ressourcen | Nein  | Nein  |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1665,14 +1666,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | imagetemplates | Nein | Nein |
+> | imagetemplates | Nein  | Nein  |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | account | Nein | Nein |
+> | account | Nein  | Nein  |
 > | account/extension | Ja | Ja |
 > | account/project | Ja | Ja |
 
@@ -1684,17 +1685,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | dedicatedcloudnodes | Nein | Nein |
-> | dedicatedcloudservices | Nein | Nein |
-> | virtualmachines | Nein | Nein |
+> | dedicatedcloudnodes | Nein  | Nein  |
+> | dedicatedcloudservices | Nein  | Nein  |
+> | virtualmachines | Nein  | Nein  |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | devices | Nein | Nein |
-> | vnfs | Nein | Nein |
+> | devices | Nein  | Nein  |
+> | vnfs | Nein  | Nein  |
 
 ## <a name="microsoftvsonline"></a>Microsoft.VSOnline
 
@@ -1709,17 +1710,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | certificates | Nein | Ja |
+> | certificates | Nein  | Ja |
 > | connectiongateways | Ja | Ja |
 > | connections | Ja | Ja |
 > | customapis | Ja | Ja |
-> | hostingenvironments | Nein | Nein |
+> | hostingenvironments | Nein  | Nein  |
 > | kubeenvironments | Ja | Ja |
 > | serverfarms | Ja | Ja |
 > | sites | Ja | Ja |
 > | sites/premieraddons | Ja | Ja |
 > | sites/slots | Ja | Ja |
-> | staticsites | Nein | Nein |
+> | staticsites | Nein  | Nein  |
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
@@ -1729,24 +1730,24 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | multipleactivationkeys | Nein | Nein |
+> | multipleactivationkeys | Nein  | Nein  |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | deviceservices | Nein | Nein |
+> | deviceservices | Nein  | Nein  |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | components | Nein | Nein |
-> | monitorinstances | Nein | Nein |
-> | monitors | Nein | Nein |
-> | notificationsettings | Nein | Nein |
+> | components | Nein  | Nein  |
+> | monitorinstances | Nein  | Nein  |
+> | monitors | Nein  | Nein  |
+> | notificationsettings | Nein  | Nein  |
 
 ## <a name="third-party-services"></a>Dienste von Drittanbietern
 

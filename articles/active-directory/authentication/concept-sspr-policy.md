@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e8b6d08dd2073de80ac0f7fd08f510d9cda80545
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393033"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143236"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Richtlinien und Einschränkungen für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -102,7 +102,7 @@ Diese Anleitung gilt für andere Anbieter wie Intune und Office 365, die ebenfal
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
 
-Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Nachdem das Modul installiert wurde, können Sie jedes Feld mit den folgenden Schritten konfigurieren.
+Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). [Verbinden Sie es anschließend mit Ihrem Azure AD-Mandanten](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples). Nachdem das Modul installiert wurde, können Sie jedes Feld mit den folgenden Schritten konfigurieren.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602940"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734993"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -125,7 +125,7 @@ In Version 3.*x* ist die Verbindungsanzahl standardmäßig nicht beschränkt. We
 
 In Version 2.*x* steuern die Anzahl gleichzeitiger Verbindungen mit einem Host über die API [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit). Es empfiehlt sich, in Version 2.*x* den Standardwert „2“ zu erhöhen, bevor Sie Ihren WebJobs-Host starten.
 
-Alle ausgehenden HTTP-Anforderungen, die Sie über eine Funktion mit `HttpClient` ausführen, durchlaufen `ServicePointManager`. Nachdem Sie den in `DefaultConnectionLimit` festgelegten Wert erreicht haben, startet `ServicePointManager` das Queueing von Anforderungen, bevor er sie sendet. Angenommen, Ihr `DefaultConnectionLimit` ist auf 2 festgelegt, und Ihr Code führt 1.000 HTTP-Anforderungen aus. In diesem Fall werden zunächst nur zwei Anforderungen an das Betriebssystem übermittelt. Die anderen 998 Anforderungen werden in die Warteschlange eingereiht, bis genügend Platz für sie vorhanden ist. Dies bedeutet: Möglicherweise tritt ein Timeout für Ihren `HttpClient` auf, weil es so scheint, als hätte er die Anforderung vorgenommen, die aber nie vom Betriebssystem an den Zielserver gesendet wurde. So tritt möglicherweise ein Verhalten auf, das scheinbar keinen Sinn ergibt: Ihr lokaler `HttpClient` benötigt 10 Sekunden, um eine Anforderung abzuschließen, aber Ihr Dienst gibt jede Anforderung in 200 ms zurück. 
+Alle ausgehenden HTTP-Anforderungen, die Sie über eine Funktion mit `HttpClient` ausführen, durchlaufen `ServicePointManager`. Nachdem Sie den in `DefaultConnectionLimit` festgelegten Wert erreicht haben, startet `ServicePointManager` das Queueing von Anforderungen, bevor er sie sendet. Angenommen, Ihr `DefaultConnectionLimit` ist auf 2 festgelegt, und Ihr Code führt 1.000 HTTP-Anforderungen aus. In diesem Fall werden zunächst nur zwei Anforderungen an das Betriebssystem übermittelt. Die verbleibenden 998 Anforderungen werden in die Warteschlange eingereiht, bis genügend Platz für sie vorhanden ist. Dies bedeutet: Möglicherweise tritt ein Timeout für Ihren `HttpClient` auf, weil es so scheint, als hätte er die Anforderung vorgenommen, die aber nie vom Betriebssystem an den Zielserver gesendet wurde. So tritt möglicherweise ein Verhalten auf, das scheinbar keinen Sinn ergibt: Ihr lokaler `HttpClient` benötigt 10 Sekunden, um eine Anforderung abzuschließen, aber Ihr Dienst gibt jede Anforderung in 200 ms zurück. 
 
 Der Standardwert für ASP.NET-Anwendungen ist `Int32.MaxValue`. Und dies funktioniert wahrscheinlich gut, wenn WebJobs in einem App Service-Plan des Typs „Basic“ oder höher ausgeführt wird. Für WebJobs ist in der Regel die „Always On“-Einstellung erforderlich, und diese wird nur von einem App Service-Plan des Typs „Basic“ oder höher unterstützt.
 
@@ -155,14 +155,14 @@ Automatische Trigger rufen eine Funktion als Reaktion auf ein Ereignis auf. Sehe
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-Das `QueueTrigger`-Attribut weist die Runtime an, die Funktion jedes Mal aufzurufen, wenn eine Warteschlangennachricht in der `myqueue-items`-Warteschlange angezeigt wird. Das `Blob`-Attribut weist die Runtime an, die Warteschlangennachricht zum Lesen eines Blobs im Container *Beispielarbeitselemente* zu verwenden. Der Inhalt der Warteschlangennachricht, der im `myQueueItem`-Parameter an die Funktion übergeben wird, ist der Name des Blobs.
+Das `QueueTrigger`-Attribut weist die Runtime an, die Funktion jedes Mal aufzurufen, wenn eine Warteschlangennachricht in der `myqueue-items`-Warteschlange angezeigt wird. Das `Blob`-Attribut weist die Runtime an, die Warteschlangennachricht zum Lesen eines Blobs im Container *Beispielarbeitselemente* zu verwenden. Der Name des Blobelements im `samples-workitems`-Container wird als Bindungsausdruck (`{queueTrigger}`) direkt aus dem Warteschlangentrigger abgerufen.
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Weitere Informationen finden Sie im Artikel [Event Hubs-Bindung](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings).
+Weitere Informationen finden Sie im Artikel [Event Hubs-Bindung](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json).
 
 ### <a name="queue-storage-trigger-configuration"></a>Konfiguration des Queue Storage-Triggers
 
@@ -956,9 +956,9 @@ In Version 3.*x* muss der [`TelemetryClient`] nicht mehr geleert werden, wenn de
 
 #### <a name="version-2x"></a>Version 2.*x*
 
-In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-Der Telemetrieclient ([`TelemetryClient`]) wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Das ist standardmäßig [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+Der Telemetrieclient ([`TelemetryClient`]) wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Das ist standardmäßig [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 
 Wenn Sie einen Teil der Application Insights-Pipeline ändern möchten, können Sie Ihre eigene Telemetrieclientfactory (`ITelemetryClientFactory`) angeben. Daraufhin verwendet der Host Ihre Klasse, um einen Telemetrieclient ([`TelemetryClient`]) zu konstruieren. Dieser Code überschreibt z. B. `DefaultTelemetryClientFactory`, um eine Eigenschaft von `ServerTelemetryChannel` zu ändern:
 

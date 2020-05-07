@@ -7,24 +7,23 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/12/2020
-ms.openlocfilehash: 066190ff6b735d30db351ff90c0b6e5173b7f583
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/24/2020
+ms.openlocfilehash: dfd75ad2c6ae246bfe6ee8b983744b3db07a841f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258863"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194940"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
 
-Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). 
+Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-In der kognitiven Azure-Suche (Azure Cognitive Search) schließt die einfache Abfragesyntax Fuzzysuchvorgänge aus. Verwenden Sie stattdessen die vollständige Lucene-Syntax für die [Fuzzysuche](search-query-fuzzy.md).
+Der einfache Parser ist flexibler und versucht auch dann, eine Anforderung zu interpretieren, wenn sie nicht perfekt zusammengesetzt ist. Aufgrund dieser Flexibilität ist er die Standardeinstellung für Abfragen in Azure Cognitive Search. 
 
-> [!NOTE]
-> Die einfache Abfragesyntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Diese unterschiedlichen Syntaxen verfügen über eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
->
-> Für komplexere Abfragen verfügt Azure Cognitive Search im Parameter **search** über eine alternative [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md). Weitere Informationen über die Abfrageanalysearchitektur und die Vorteile der einzelnen Syntaxen finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
+Die einfache Syntax wird für Abfrageausdrücke verwendet, die im Parameter `search` einer [Anforderung zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) zu verwechseln, die für den Parameter [$filter expressions](search-filters.md) dieser API zum Durchsuchen von Dokumenten verwendet wird. Die Parameter `search` und `$filter` weisen eine unterschiedliche Syntax mit jeweils eigenen Regeln für Abfrageerstellung, Escapezeichen für Zeichenfolgen usw. auf.
+
+Der einfache Parser basiert zwar auf der [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)-Klasse, die Implementierung in Azure Cognitive Search schließt jedoch die Fuzzysuche aus. Wenn Sie [Fuzzysuche](search-query-fuzzy.md) oder andere erweiterte Abfrageformen benötigen, sollten Sie stattdessen die alternative [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md) in Betracht ziehen.
 
 ## <a name="invoke-simple-parsing"></a>Aufrufen der einfachen Analyse
 
@@ -38,24 +37,24 @@ So einfach das klingt, es gibt einen Aspekt der Abfrageausführung in der kognit
 
 ### <a name="precedence-operators-grouping"></a>Rangfolgenoperatoren (Gruppierung)
 
-Sie können mithilfe von Klammern Unterabfragen erstellen, die Operatoren innerhalb der Anweisung in Klammern enthalten. Beispielsweise sucht `motel+(wifi||luxury)` nach Dokumenten, die den Begriff „motel“ und entweder „wifi“ oder „luxury“ (oder beides) enthalten.
+Sie können mithilfe von Klammern Unterabfragen erstellen, die Operatoren innerhalb der Anweisung in Klammern enthalten. Beispielsweise sucht `motel+(wifi|luxury)` nach Dokumenten, die den Begriff „motel“ und entweder „wifi“ oder „luxury“ (oder beides) enthalten.
 
-Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch auf ein einzelnes Feld. Beispielsweise durchsucht `hotelAmenities:(gym+(wifi||pool))` das Feld „hotelAmenities“ nach „gym“ und „wifi“ oder nach „gym“ und „pool“.  
+Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch auf ein einzelnes Feld. Beispielsweise durchsucht `hotelAmenities:(gym+(wifi|pool))` das Feld „hotelAmenities“ nach „gym“ und „wifi“ oder nach „gym“ und „pool“.  
 
 ### <a name="escaping-search-operators"></a>Escaping-Suchoperatoren  
 
-Wenn Sie einen der Suchoperatoren in Suchtext einbeziehen möchten, machen Sie ihn zu einem Escapezeichen, indem Sie davor einen einzelnen umgekehrten Schrägstrich (`\`) setzen. So würden Sie beispielsweise für eine Platzhaltersuche nach `https://`, in der `://` ein Teil der Abfragezeichenfolge ist, `search=https\:\/\/*` angeben. Entsprechend könnte ein Telefonnummernmuster mit Escapezeichen so aussehen: `\+1 \(800\) 642\-7676`.
+In der einfachen Syntax schließen die Suchoperatoren die folgenden Zeichen ein: `+ | " ( ) ' \`  
 
-Zu den Sonderzeichen, die Escapezeichen erfordern, gehören die folgenden: `- * ? \ /`  
+Wenn eines dieser Zeichen Teil eines Tokens im Index ist, versehen Sie es mit einem einzelnen umgekehrten Schrägstrich (`\`) als Escapezeichen in der Abfrage. Angenommen, Sie haben eine benutzerdefinierte Analyse für die gesamte begriffsbasierte Tokenisierung verwendet, und Ihr Index enthält die Zeichenfolge „Luxury+Hotel“. Fügen Sie ein Escapezeichen ein, um eine genaue Übereinstimmung für dieses Token zu erhalten:  `search=luxury\+hotel`. 
 
-Um es für die typischeren Fälle einfach zu machen, gibt es zwei Ausnahmen von dieser Regel, bei denen ein Escape nicht erforderlich ist:  
+Zur Vereinfachung für typischere Fälle gibt es zwei Ausnahmen von dieser Regel, bei denen kein Escapezeichen erforderlich ist:  
 
-+ Der NOT-Operator `-` muss nur dann escaped werden, wenn es sich um das erste Zeichen nach Leerzeichen handelt, nicht, wenn es sich um die Mitte eines Begriffs handelt. So ist beispielsweise die folgende GUID ohne Escapezeichen gültig: `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`.
++ Der NOT-Operator `-` muss nur dann mit einem Escapezeichen versehen werden, wenn es sich um das erste Zeichen nach einem Leerzeichen handelt. Wenn das `-` in der Mitte auftritt (z. B. in `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`), können Sie das Escapezeichen auslassen.
 
-+ Der Suffix-Operator `*` muss nur dann escaped werden, wenn es sich um das letzte Zeichen vor dem Leerzeichen handelt, nicht, wenn es sich um die Mitte eines Begriffs handelt. Beispielsweise erfordert `4*4=16` keinen umgekehrten Schrägstrich.
++ Der Suffix-Operator `*` muss nur dann mit einem Escapezeichen versehen werden, wenn es sich um das letzte Zeichen vor einem Leerzeichen handelt. Wenn das `*` in der Mitte auftritt (z. B. in `4*4=16`), ist kein Escapezeichen erforderlich.
 
 > [!NOTE]  
-> Obwohl Token durch die Verwendung von Escapezeichen zusammengehalten werden, können sie durch eine [lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) während der Indizierung eventuell entfernt werden. Die Lucene-Standardanalyse löscht und teilt z. B. Wörter an Bindestrichen, Leerzeichen und anderen Zeichen auf. Wenn in der Abfragezeichenfolge Sonderzeichen erforderlich sind, benötigen Sie möglicherweise ein Analysetool, das sie im Index beibehält. Zu den Optionen gehören Microsoft Natural [Language Analyzer](index-add-language-analyzers.md) (Analysetool für natürliche Sprache), bei dem Wörter mit Bindestrichen beibehalten werden, oder ein benutzerdefiniertes Analysetool für komplexere Muster. Weitere Informationen finden Sie unter [Teilausdrücke, Muster und Sonderzeichen](search-query-partial-matching.md).
+> Die Lucene-Standardanalyse löscht bei der [lexikalischen Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) standardmäßig Bindestriche, Leerzeichen, kaufmännische Und-Zeichen und andere Zeichen in Wörtern und teilt die Wörter an diesen Stellen auf. Wenn Sonderzeichen in der Abfragezeichenfolge beibehalten werden müssen, benötigen Sie möglicherweise ein Analysetool, das sie im Index belässt. Zu den Optionen gehören Microsoft Natural [Language Analyzer](index-add-language-analyzers.md) (Analysetool für natürliche Sprache), bei dem Wörter mit Bindestrichen beibehalten werden, oder ein benutzerdefiniertes Analysetool für komplexere Muster. Weitere Informationen finden Sie unter [Teilausdrücke, Muster und Sonderzeichen](search-query-partial-matching.md).
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Codierung von unsicheren und reservierten Zeichen in URLs
 
@@ -73,7 +72,7 @@ Sie können boolesche Operatoren (AND, OR, NOT) in eine Abfragezeichenfolge einb
 
 ### <a name="and-operator-"></a>AND-Operator `+`
 
-Der AND-Operator ist ein Pluszeichen (+). Zum Beispiel sucht `wifi+luxury` nach Dokumenten, die sowohl `wifi` als auch `luxury` enthalten.
+Der AND-Operator ist ein Pluszeichen (+). Zum Beispiel sucht `wifi + luxury` nach Dokumenten, die sowohl `wifi` als auch `luxury` enthalten.
 
 ### <a name="or-operator-"></a>OR-Operator`|`
 
@@ -109,8 +108,9 @@ Eine Begriffsuche ist eine Abfrage für einen oder mehrere Begriffe, bei denen j
 
 ## <a name="see-also"></a>Weitere Informationen  
 
++ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Abfragebeispiele für die einfache Suche](search-query-simple-examples.md)
 + [Abfragebeispiele für die vollständige Lucene-Suche](search-query-lucene-examples.md)
-+ [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
 + [Lucene-Abfragesyntax](query-lucene-syntax.md)
 + [OData-Ausdruckssyntax](query-odata-filter-orderby-syntax.md) 
