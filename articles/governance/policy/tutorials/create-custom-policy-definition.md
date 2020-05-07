@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222747"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190706"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -73,7 +73,7 @@ Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../az
 Am einfachsten finden Sie Eigenschaften, indem Sie sich eine vorhandene Ressource desselben Typs ansehen. Ressourcen, die bereits mit der zu erzwingenden Einstellung konfiguriert sind, enthalten auch den Wert für den Vergleich.
 Sehen Sie sich im Azure-Portal die Seite **Exportvorlage** (unter **Einstellungen**) für die jeweilige Ressource an.
 
-![Seite zum Exportieren der Vorlage für eine vorhandene Ressource](../media/create-custom-policy-definition/export-template.png)
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Seite zum Exportieren der Vorlage für eine vorhandene Ressource" border="false":::
 
 Wenn Sie so für ein Speicherkonto vorgehen, wird eine Vorlage bereitgestellt, die der Vorlage in diesem Beispiel ähnelt:
 
@@ -164,7 +164,7 @@ Wir haben die Ressourceneigenschaft identifiziert, aber wir müssen diese Eigens
 Es gibt verschiedene Möglichkeiten, die Aliase für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
 - Azure Policy-Erweiterung für VS Code
-- Azure-Befehlszeilenschnittstelle
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
@@ -172,7 +172,7 @@ Es gibt verschiedene Möglichkeiten, die Aliase für eine Azure-Ressource zu erm
 
 Mit der Azure Policy-Erweiterung für die VS Code-Erweiterung können Sie ganz einfach Ihre Ressourcen durchsuchen und [Aliase ermitteln](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 In der Azure-Befehlszeilenschnittstelle wird die Befehlsgruppe `az provider` verwendet, um nach Ressourcenaliasen zu suchen. Wir filtern anhand der Details, die wir zuvor zur Azure-Ressource erhalten haben, nach dem Namespace **Microsoft.Storage**.
 

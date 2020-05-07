@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672428"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159965"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -26,7 +26,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problem
 
 So aktivieren Sie die PHP-Protokollierung
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie im obersten Menü **Debug Console** > **CMD** aus.
 3. Wählen Sie den Ordner **Site** aus.
 4. Wählen Sie den Ordner **wwwroot** aus.
@@ -56,7 +56,7 @@ Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden 
   1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
   2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
   3. In **App-Einstellungen** können Sie WEBSITE_NODE_DEFAULT_VERSION als Schlüssel und die gewünschte Version von Node.js als Wert hinzufügen.
-  4. Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net).
+  4. Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net`).
   5. Um die Node.js-Version zu überprüfen, geben Sie den folgenden Befehl ein:  
      ```
      node -v
@@ -91,7 +91,7 @@ Wenn Sie diesen Fehler in Ihren Dateien „debug.log“ oder „php_errors.log�
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Wie debugge ich eine Node.js-app, die in App Service gehostet wird?
 
-1.  Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole).
+1.  Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`).
 2.  Wechseln Sie zu Ihrem Ordner mit den Anwendungsprotokollen (D:\home\LogFiles\Application).
 3.  Überprüfen Sie den Inhalt der Datei „logging_errors.txt“.
 
@@ -183,7 +183,7 @@ Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domä
 
 WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
-Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, siehe [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL).
+Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL) beschrieben vor.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 

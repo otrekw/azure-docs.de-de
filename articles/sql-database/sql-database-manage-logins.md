@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 98c15fe11b64e8c177e60a2ea1eb7c50eaf69353
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124799"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106439"
 ---
 # <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Autorisieren des Datenbankzugriffs für in SQL-Datenbank und Azure Synapse Analytics authentifizierte Benutzer mithilfe von Anmeldungen und Benutzerkonten
 
@@ -39,7 +39,7 @@ Wenn ein Benutzer versucht, eine Verbindung mit einer Datenbank herzustellen, gi
 
 - [SQL-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-  Bei dieser Authentifizierungsmethode übergibt der Benutzer einen Benutzerkontonamen und das zugehörige Kennwort, um eine Verbindung herzustellen. Dieses Kennwort wird in der Masterdatenbank für Benutzerkonten, die mit einer Anmeldung verknüpft sind, oder in der Datenbank gespeichert, die die Benutzerkonten enthält, die nicht mit einer Anmeldung verknüpft sind.
+  Bei dieser Authentifizierungsmethode übergibt der Benutzer einen Benutzerkontonamen und das zugehörige Kennwort, um eine Verbindung herzustellen. Dieses Kennwort wird in der Masterdatenbank für Benutzerkonten, die mit einer Anmeldung verknüpft sind, oder in der Datenbank mit den Benutzerkonten gespeichert, die *nicht* mit einer Anmeldung verknüpft sind.
 - [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 
   Bei dieser Authentifizierungsmethode gibt der Benutzer einen Benutzerkontonamen an und fordert an, dass der Dienst die Anmeldeinformationen verwendet, die in Azure Active Directory gespeichert sind.

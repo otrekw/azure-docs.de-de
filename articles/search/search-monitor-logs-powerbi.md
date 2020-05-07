@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 618033e24236d26601fafaf7b0678ee83ec973e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650146"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127871"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Visualisieren von Azure Cognitive Search-Protokollen und -Metriken mit Power BI
 Mit [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) können Sie Vorgangsprotokolle und Dienstmetriken zu Ihrem Suchdienst in einem Azure Storage-Konto speichern. Diese Seite enthält Anweisungen dazu, wie Sie diese Informationen über eine Power BI-Vorlagen-App visualisieren können. Die App bietet detaillierte Einblicke in ihren Suchdienst, einschließlich Informationen zu Suchen, Indizierung, Vorgängen und Dienstmetriken.
@@ -20,7 +20,9 @@ Mit [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what
 Sie finden die Power BI-Vorlagen-App **Azure Cognitive Search: Analyze Logs and Metrics** im [Power BI-Apps-Marketplace](https://appsource.microsoft.com/marketplace/apps).
 
 ## <a name="how-to-get-started-with-the-app"></a>Erste Schritte mit der App
-1. Aktivieren der Diagnoseprotokollierung für Ihren Suchdienst:
+
+1. Aktivieren Sie Metriken und Ressourcenprotokollierung für Ihren Suchdienst:
+
     1. Erstellen oder identifizieren Sie ein vorhandenes [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), in dem Sie die Protokolle archivieren können.
     1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cognitive Search-Dienst.
     1. Wählen Sie in der linken Spalte im Abschnitt „Überwachung“ die Option **Diagnoseeinstellungen** aus.

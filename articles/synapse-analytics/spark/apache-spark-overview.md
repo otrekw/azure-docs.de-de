@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4155e419bb03613abad808ca09d84bcb6583291f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b6af42f09351df60beb2aa449f8fcd2ff6a554e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419504"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116654"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Was ist Apache Spark in Azure Synapse Analytics?
 
@@ -32,10 +32,10 @@ Apache Spark stellt Primitive für In-Memory-Clustercomputing bereit. Bei einem 
 
 Spark-Pools in Azure Synapse bieten einen vollständig verwalteten Spark-Dienst. Im Anschluss werden die Vorteile der Erstellung eines Spark-Pools in Synapse Analytics aufgeführt:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
 | Geschwindigkeit und Effizienz |Spark-Instanzen werden in etwa zwei Minuten (weniger als 60 Knoten) bzw. in etwa fünf Minuten (mehr als 60 Knoten) gestartet. Die Instanz wird standardmäßig fünf Minuten nach dem letzten ausgeführten Auftrag heruntergefahren, sofern sie nicht durch eine Notebookverbindung aufrechterhalten wird. |
-| Einfache Erstellung |Über das Azure-Portal, mithilfe von Azure PowerShell oder über das Synapse Analytics .NET SDK lässt sich innerhalb weniger Minuten ein neuer Spark-Pool in Azure Synapse erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](apache-spark-notebook-create-spark-use-sql.md). |
+| Einfache Erstellung |Über das Azure-Portal, mithilfe von Azure PowerShell oder über das Synapse Analytics .NET SDK lässt sich innerhalb weniger Minuten ein neuer Spark-Pool in Azure Synapse erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](../quickstart-create-apache-spark-pool.md). |
 | Einfache Bedienung |Synapse Analytics enthält ein benutzerdefiniertes, von [Nteract](https://nteract.io/) abgeleitetes Notebook. Diese Notebooks können Sie für die interaktive Datenverarbeitung und -visualisierung verwenden.|
 | REST-APIs |Spark in Synapse Analytics beinhaltet [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), einen auf der REST-API basierenden Spark-Auftragsserver für die Remoteübermittlung und -überwachung von Aufträgen. |
 | Unterstützung von Azure Data Lake Storage der zweiten Generation| Spark-Pools in Azure Synapse können Azure Data Lake Storage der zweiten Generation sowie Blobspeicher nutzen. Weitere Informationen zu Data Lake Storage finden Sie unter [Übersicht über Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md). |
@@ -78,7 +78,8 @@ Mit [MLlib](https://spark.apache.org/mllib/) verfügt Apache Spark über eine Sp
 
 Die folgenden Artikel enthalten weitere Informationen zu Apache Spark in Synapse Analytics:
 
-- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](./apache-spark-notebook-create-spark-use-sql.md)
+- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](../quickstart-create-apache-spark-pool.md)
+- [Schnellstart: Erstellen eines Apache Spark-Notebooks](../quickstart-apache-spark-notebook.md)
 - [Tutorial: Machine Learning mit Apache Spark](./apache-spark-machine-learning-mllib-notebook.md)
 - [Offizielle Apache Spark-Dokumentation](https://spark.apache.org/docs/latest/)
 
@@ -89,4 +90,4 @@ Die folgenden Artikel enthalten weitere Informationen zu Apache Spark in Synapse
 
 In dieser Übersicht wurden einige grundlegende Informationen zu Apache Spark in Azure Synapse Analytics vermittelt. Im nächsten Artikel erfahren Sie, wie Sie einen Spark-Pool in Azure Synapse Analytics erstellen:
 
-- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](./apache-spark-notebook-create-spark-use-sql.md)
+- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](../quickstart-create-apache-spark-pool.md)

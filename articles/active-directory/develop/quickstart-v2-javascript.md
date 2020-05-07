@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: aad830ba7c7198077fe6073d6351c72ac9a8e662
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536096"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144394"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -25,7 +25,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure-Abonnement ([kostenloses Azure-Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (zum Bearbeiten der Projektdateien)
 
@@ -165,7 +165,7 @@ Wählen Sie **Anmelden** aus, wenn die Anwendung im Browser geladen wurde. Bei d
 
 ### <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
 
-![Funktionsweise der Beispiel-App in diesem Schnellstart](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![Funktionsweise der JavaScript-Beispiel-SPA: 1. Die SPA initiiert die Anmeldung. 2. Die SPA ruft ein ID-Token von Microsoft Identity Platform ab. 3. Die SPA ruft Abruftoken auf. 4. Microsoft Identity Platform gibt ein Zugriffstoken an die SPA zurück. 5. Die SPA sendet eine HTTP GET-Anforderung mit dem Zugriffstoken an die Microsoft Graph-API. 6. Die Graph-API gibt eine HTTP-Antwort an die SPA zurück.](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 
