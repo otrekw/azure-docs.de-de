@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4989f8dce32e2340357e30541548b3e7e9d8a44
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234654"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508886"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -22,7 +22,7 @@ Bei der Anzeige im Portal werden die Metrikergebnisse zur Berücksichtigung der 
 
 * Es gibt drei verschiedene Arten der Stichprobenerstellung: adaptive Stichprobenerstellung, Stichprobenerstellung mit festem Prozentsatz und Erfassungs-Stichprobenerstellung.
 * Die adaptive Stichprobenerstellung ist in allen aktuellen Versionen der Application Insights ASP.NET und ASP.NET Core Software Development Kits (SDKs) standardmäßig aktiviert. Sie wird auch von [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) verwendet.
-* Die Stichprobenerstellung mit festem Prozentsatz ist in den neuesten Versionen der Application Insights SDKs für ASP.NET, ASP.NET Core, Java und Python verfügbar.
+* Die Stichprobenerstellung mit festem Prozentsatz ist in den neuesten Versionen der Application Insights-SDKs für ASP.NET, ASP.NET Core, Java (sowohl Agent als auch SDK) und Python verfügbar.
 * Die Erfassungs-Stichprobenerstellung wird auf dem Application Insights-Dienstendpunkt vorgenommen. Sie wird nur angewendet, wenn keine andere Stichprobenerstellung aktiv ist. Wenn das SDK Stichproben Ihrer Telemetriedaten erstellt, ist die Erfassungs-Stichprobenerstellung deaktiviert.
 * Wenn Sie im Fall von Webanwendungen benutzerdefinierte Ereignisse protokollieren und dabei sicherstellen müssen, dass eine Gruppe von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen die Ereignisse den gleichen Wert für `OperationId` aufweisen.
 * Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](../../azure-monitor/log-query/aggregations.md). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
@@ -34,10 +34,10 @@ In der folgenden Tabelle sind die für die jeweiligen SDKs und Anwendungstypen v
 |-|-|-|-|
 | ASP.NET | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | ASP.NET Core | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
-| Azure-Funktionen | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-azure-functions) | Nein | Nur wenn keine andere Stichprobenerstellung aktiv ist |
-| Java | Nein | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
-| Python | Nein | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
-| Alle anderen | Nein | Nein | [Ja](#ingestion-sampling) |
+| Azure-Funktionen | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-azure-functions) | Nein  | Nur wenn keine andere Stichprobenerstellung aktiv ist |
+| Java | Nein  | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
+| Python | Nein  | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
+| Alle anderen | Nein  | Nein  | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
 > Der Großteil der Informationen auf dieser Seite bezieht sich auf die aktuellen Versionen der Application Insights SDKs. Informationen zu älteren Versionen der SDKs [finden Sie im Abschnitt weiter unten](#older-sdk-versions).
@@ -306,7 +306,29 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz für Java-Anwendungen
 
-Standardmäßig ist keine Stichprobenerstellung im Java SDK aktiviert. Derzeit wird nur die Stichprobenerstellung mit festem Prozentsatz unterstützt. Die adaptive Stichprobenerstellung wird im Java SDK nicht unterstützt.
+Standardmäßig ist im Java-Agent und im Java SDK keine Stichprobenerstellung aktiviert. Derzeit wird nur die Stichprobenerstellung mit festem Prozentsatz unterstützt. Adaptive Stichprobenerstellung wird in Java nicht unterstützt.
+
+#### <a name="configuring-java-agent"></a>Konfigurieren des Java-Agents
+
+1. Laden Sie [applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) herunter.
+
+1. Fügen Sie der Datei `ApplicationInsights.json` Folgendes hinzu, um die Stichprobenerstellung zu aktivieren:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Konfigurieren des Java SDK
 
 1. Laden Sie Ihre Webanwendung mit dem aktuellen [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md) herunter, und konfigurieren Sie sie.
 
@@ -366,7 +388,7 @@ tracer = Tracer(
 Sie können die Stichprobenentnahme mit festem Prozentsatz für `AzureLogHandler` konfigurieren, indem Sie das optionale Argument `logging_sampling_rate` ändern. Wenn kein Argument angegeben wird, wird eine Samplingrate von 1,0 verwendet. Eine Stichprobenhäufigkeit von 1,0 steht für 100 %. Das bedeutet, dass Ihre gesamten Anforderungen als Telemetriedaten an Application Insights gesendet werden.
 
 ```python
-exporter = metrics_exporter.new_metrics_exporter(
+handler = AzureLogHandler(
     instrumentation_key='00000000-0000-0000-0000-000000000000',
     logging_sampling_rate=0.5,
 )
@@ -534,7 +556,7 @@ Die Genauigkeit der Annäherung hängt weitgehend vom konfigurierten Prozentsatz
 
 * Die Erfassungs-Stichprobenerstellung kann automatisch für alle Telemetriedaten oberhalb eines bestimmten Volumens auftreten, wenn das SDK keine Stichprobenerstellung ausführt. Diese Konfiguration würde z. B. funktionieren, wenn Sie eine ältere Version des ASP.NET SDK oder Java SDK verwenden.
 * Bei Verwendung des aktuellen ASP.NET SDK oder ASP.NET Core SDK (gehostet in Azure oder auf Ihrem eigenen Server) erhalten Sie standardmäßig adaptive Stichprobenerstellung, aber Sie können, wie oben beschrieben, zu festem Prozentsatz wechseln. Bei Stichprobenerstellung mit festem Prozentsatz wird das Browser-SDK automatisch mit stichprobenbezogenen Ereignissen synchronisiert. 
-* Wenn Sie das aktuelle Java SDK verwenden, können Sie `ApplicationInsights.xml` für das Aktivieren von Stichprobenerstellung mit festem Prozentsatz konfigurieren. Stichprobenerstellung ist standardmäßig deaktiviert. Bei Stichprobenerstellung mit festem Prozentsatz werden das Browser-SDK und der Server automatisch mit stichprobenbezogenen Ereignissen synchronisiert.
+* Bei Verwendung des aktuellen Java-Agents können Sie `ApplicationInsights.json` konfigurieren, um die Stichprobenerstellung mit festem Prozentsatz zu aktivieren. (Für das Java SDK muss `ApplicationInsights.xml` konfiguriert werden.) Stichprobenerstellung ist standardmäßig deaktiviert. Bei Stichprobenerstellung mit festem Prozentsatz werden das Browser-SDK und der Server automatisch mit stichprobenbezogenen Ereignissen synchronisiert.
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596248"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509243"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -44,7 +44,7 @@ Sowohl über die horizontale automatische Podskalierung als auch über die Autos
 
 Weitere Informationen dazu, warum ein zentrales Herunterskalieren über die Autoskalierung für Cluster möglicherweise nicht möglich ist, finden Sie unter [What types of pods can prevent the cluster autoscaler from removing a node?][autoscaler-scaledown] (Welche Podtypen können das Entfernen eines Knotens durch die Autoskalierung für Cluster verhindern?).
 
-Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Diese Parameter werden über die Azure-Plattform definiert und können aktuell nicht von Ihnen angepasst werden. Weitere Informationen zu den von der Autoskalierung für Cluster verwendeten Parametern finden Sie unter [What are the cluster autoscaler parameters?][autoscaler-parameters] (Welche Parameter verwendet die Autoskalierung für Cluster?).
+Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Weitere Informationen zu den von der Autoskalierung für Cluster verwendeten Parametern finden Sie unter [What are the cluster autoscaler parameters?][autoscaler-parameters] (Welche Parameter verwendet die Autoskalierung für Cluster?).
 
 Die automatische Clusterskalierung und die horizontale automatische Podskalierung können zusammenarbeiten und werden häufig beide in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
 
@@ -117,6 +117,7 @@ Sie können auch differenziertere Details der Clusterautoskalierung konfiguriere
 | scale-down-unready-time          | Wie lange ein nicht bereiter Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist         | 20 Minuten    |
 | scale-down-utilization-threshold | Auslastungsgrad des Knotens, definiert als Summe der angeforderten Ressourcen dividiert durch die Kapazität, unterhalb derer ein Knoten für das zentrale Herunterskalieren in Betracht gezogen werden kann | 0.5 |
 | max-graceful-termination-sec     | Maximale Anzahl von Sekunden, die die Clusterautoskalierung beim Versuch, einen Knoten herunterzuskalieren, auf die Beendigung des Pods wartet | 600 Sekunden   |
+| balance-similar-node-groups | Erkennt ähnliche Knotenpools und gleicht die Anzahl der Knoten zwischen ihnen aus | false |
 
 > [!IMPORTANT]
 > Das Profil der Clusterautoskalierung betrifft alle Knotenpools, die die Clusterautoskalierung verwenden. Sie können kein Autoskalierungsprofil pro Knotenpool festlegen.
@@ -212,7 +213,7 @@ AKS verwaltet die automatische Clusterskalierung in Ihrem Namen und führt sie i
 
 Führen Sie die folgenden Schritte aus, um zu konfigurieren, dass Protokolle per Push aus der automatischen Clusterskalierung in Log Analytics übertragen werden.
 
-1. Richten Sie eine Regel für Diagnoseprotokolle ein, um Protokolle der automatischen Clusterskalierung per Push in Log Analytics zu übertragen. [Die Anweisungen werden hier erläutert](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs). Stellen Sie sicher, dass Sie das Kontrollkästchen für `cluster-autoscaler` aktivieren, wenn Sie Optionen für „Protokolle“ auswählen.
+1. Richten Sie eine Regel für Ressourcenprotokolle ein, um Protokolle der automatischen Clusterskalierung per Push in Log Analytics zu übertragen. [Die Anweisungen werden hier erläutert](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs). Stellen Sie sicher, dass Sie das Kontrollkästchen für `cluster-autoscaler` aktivieren, wenn Sie Optionen für „Protokolle“ auswählen.
 1. Klicken Sie im Azure-Portal in Ihrem Cluster auf den Abschnitt „Protokolle“.
 1. Geben Sie die folgende Beispielabfrage in Log Analytics ein:
 

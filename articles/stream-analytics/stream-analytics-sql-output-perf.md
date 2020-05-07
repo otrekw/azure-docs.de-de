@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443601"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839112"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 
@@ -24,7 +24,7 @@ Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mi
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Partitionierung erben** – Diese Konfigurationsoption für die SQL-Ausgabe ermöglicht das Erben des Partitionierungsschemas des vorherigen Abfrageschritts oder der vorherigen Eingabe. Wenn diese Option aktiviert ist, sind beim Schreiben in eine datenträgerbasierte Tabelle und beim Verwenden einer [vollständig parallelen](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) Topologie für Ihren Auftrag bessere Durchsatzwerte zu erwarten. Diese Partitionierung erfolgt für viele weitere [Ausgaben](stream-analytics-parallelization.md#partitions-in-sources-and-sinks) bereits automatisch. Die Tabellensperre (TABLOCK) wird für mit dieser Option durchgeführte Masseneinfügungen ebenfalls deaktiviert.
+- **Partitionierung erben** – Diese Konfigurationsoption für die SQL-Ausgabe ermöglicht das Erben des Partitionierungsschemas des vorherigen Abfrageschritts oder der vorherigen Eingabe. Wenn diese Option aktiviert ist, sind beim Schreiben in eine datenträgerbasierte Tabelle und beim Verwenden einer [vollständig parallelen](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) Topologie für Ihren Auftrag bessere Durchsatzwerte zu erwarten. Diese Partitionierung erfolgt für viele weitere [Ausgaben](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs) bereits automatisch. Die Tabellensperre (TABLOCK) wird für mit dieser Option durchgeführte Masseneinfügungen ebenfalls deaktiviert.
 
 > [!NOTE] 
 > Wenn mehr als acht Eingabepartitionen vorliegen, ist das Erben des Eingabepartitionierungsschemas möglicherweise keine geeignete Option. Die Obergrenze wurde für eine Tabelle mit einer einzigen Identitätsspalte und einem gruppierten Index festgestellt. Erwägen Sie in diesem Fall die Verwendung von [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 in Ihrer Abfrage, um die Zahl der Ausgabeschreiber explizit anzugeben. Basierend auf Ihrem Schema und Ihrer Auswahl von Indizes können Ihre Beobachtungen abweichen.

@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252403"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509532"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
 
-Bei Apache Hive Warehouse Connector (HWC) handelt es sich um eine Bibliothek, die Ihnen die Verwendung von Apache Spark und Apache Hive vereinfacht. Sie unterstützt Aufgaben wie das Verschieben von Daten zwischen Spark-Datenrahmen und Hive-Tabellen und außerdem das Leiten von Spark-Streamingdaten an Hive-Tabellen. Hive Warehouse Connector fungiert quasi als Brücke zwischen Spark und Hive. Für die Entwicklung werden Scala, Java und Python unterstützt.
+Der Apache Hive Warehouse Connector (HWC) ist eine Bibliothek, die Ihnen ein einfacheres Arbeiten mit Apache Spark und Apache Hive ermöglicht. Einfacher durch die Unterstützung von Aufgaben wie dem Verschieben von Daten zwischen Spark-Datenrahmen und Hive-Tabellen. Und das Weiterleiten von Spark-Streamingdaten in Hive-Tabellen. Hive Warehouse Connector fungiert quasi als Brücke zwischen Spark und Hive. Für die Entwicklung werden Scala, Java und Python unterstützt.
 
-Mit Hive Warehouse Connector können Sie die einzigartigen Features von Hive und Spark nutzen, um leistungsfähige Big Data-Anwendungen zu entwickeln. Apache Hive verfügt über Unterstützung für Datenbanktransaktionen, die atomisch, konsistent, isoliert und dauerhaft sind (Atomic, Consistent, Isolated and Durable, ACID). Weitere Informationen zu ACID und Transaktionen in Hive finden Sie im Artikel zu [Hive-Transaktionen](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Darüber hinaus verfügt Hive über ausführliche Sicherheitskontrollen per Apache Ranger und Low Latency Analytical Processing (Analytische Verarbeitung mit geringer Latenz), die in Apache Spark nicht verfügbar sind.
+Der Hive Warehouse Connector ermöglicht es Ihnen, die Vorteile der einzigartigen Features von Hive und Spark zu nutzen. Features, mit denen leistungsstarke Big Data-Anwendungen erstellt werden. Apache Hive verfügt über Unterstützung für Datenbanktransaktionen, die atomisch, konsistent, isoliert und dauerhaft sind (Atomic, Consistent, Isolated and Durable, ACID). Weitere Informationen zu ACID und Transaktionen in Hive finden Sie im Artikel zu [Hive-Transaktionen](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Darüber hinaus verfügt Hive über ausführliche Sicherheitskontrollen per Apache Ranger und Low Latency Analytical Processing (Analytische Verarbeitung mit geringer Latenz), die in Apache Spark nicht verfügbar sind.
 
-Apache Spark enthält eine API für strukturierte Streams, mit der Streamingfunktionen ermöglicht werden, die in Apache Hive nicht verfügbar sind. Ab HDInsight 4.0 weisen Apache Spark 2.3.1 und Apache Hive 3.1.0 separate Metastores auf, sodass die Interoperabilität erschwert werden kann. Der Hive Warehouse-Connector vereinfacht die gemeinsame Nutzung von Spark und Hive. Die HWC-Bibliothek lädt Daten von LLAP-Daemons parallel in Spark-Executors. Dies ist effizienter und besser skalierbar als die Verwendung einer JDBC-Standardverbindung von Spark zu Hive.
+Apache Spark enthält eine API für strukturierte Streams, mit der Streamingfunktionen ermöglicht werden, die in Apache Hive nicht verfügbar sind. Ab HDInsight 4.0 gibt es in Apache Spark 2.3.1 und Apache Hive 3.1.0 separate Metastores. Diese separaten Metastores können die Interoperabilität erschweren. Der Hive Warehouse-Connector vereinfacht die gemeinsame Nutzung von Spark und Hive. Die HWC-Bibliothek lädt Daten aus LLAP-Daemons (Low Latency Analytical Processing, Analytische Verarbeitung mit niedriger Latenz) parallel in Spark-Executors. Diese Aktion führt zu besserer Effizienz und Anpassbarkeit als die Verwendung einer standardmäßigen JDBC-Verbindung von Spark zu Hive.
 
 ![Hive Warehouse Connector-Architektur](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Navigieren Sie auf der Spark Ambari-Webbenutzeroberfläche zu **Spark2** > **CON
 
 ![Apache Ambari Spark2-Konfiguration](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Klicken Sie bei Bedarf auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen bzw. zu aktualisieren:
+Wählen Sie bei Bedarf **Eigenschaft hinzufügen** aus, um den folgenden Wert hinzuzufügen bzw. zu aktualisieren:
 
 | Schlüssel | Wert |
 |----|----|
@@ -111,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um eine spark-shell-Sitzung zu starten:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Eine Begrüßungsnachricht und eine `scala>`-Eingabeaufforderung zum Eingeben von Befehlen werden angezeigt.
+    Daraufhin werden eine Begrüßungsnachricht und eine `scala>`-Eingabeaufforderung zum Eingeben von Befehlen angezeigt.
 
 1. Nachdem spark-shell gestartet wurde, kann mit den folgenden Befehlen eine Hive Warehouse Connector-Instanz gestartet werden:
 
@@ -122,13 +123,13 @@ Führen Sie die folgenden Schritte aus, um eine spark-shell-Sitzung zu starten:
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Herstellen einer Verbindung und Ausführen von Abfragen für ESP-Cluster (Enterprise-Sicherheitspaket)
 
-Das Enterprise-Sicherheitspaket (ESP) umfasst Unternehmensfunktionen wie Active Directory-basierte Authentifizierung, Mehrbenutzerunterstützung und rollenbasierte Zugriffssteuerung für Apache Hadoop-Cluster in Azure HDInsight. Weitere Informationen zu Enterprise-Sicherheitspaketen finden Sie unter [Verwendung des Enterprise-Sicherheitspakets in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Das Enterprise-Sicherheitspaket (ESP) bietet Funktionen auf Unternehmensniveau wie Active Directory-basierte Authentifizierung. Außerdem Unterstützung für mehrere Benutzer und rollenbasierte Zugriffssteuerung für Apache Hadoop-Cluster in Azure HDInsight. Weitere Informationen zu Enterprise-Sicherheitspaketen finden Sie unter [Verwendung des Enterprise-Sicherheitspakets in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
-1. Stellen Sie eine SSH-Verbindung mit dem Hauptknoten Ihres Apache Spark-Clusters her. Informationen zum Herstellen einer SSH-Verbindung mit Ihrem Cluster finden Sie unter [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Stellen Sie eine SSH-Verbindung mit dem Hauptknoten Ihres Apache Spark-Clusters her.
 
 1. Geben Sie `kinit` ein, und melden Sie sich mit einem Domänenbenutzer an.
 
-1. Starten Sie spark-shell mit der vollständigen Liste der Konfigurationsparameter. Dies ist unten dargestellt. Alle Werte in Großbuchstaben, die in spitze Klammern gesetzt sind, müssen gemäß Ihrem Cluster angegeben werden. Falls Sie die Werte ermitteln möchten, die für die unten angegebenen Parameter eingegeben werden müssen, hilft Ihnen der Abschnitt [Hive Warehouse Connector-Setup](#hive-warehouse-connector-setup) weiter:
+1. Starten Sie spark-shell mit der vollständigen Liste der Konfigurationsparameter. Dies ist unten dargestellt. Alle Werte in Großbuchstaben, die in spitze Klammern gesetzt sind, müssen gemäß Ihrem Cluster angegeben werden. Wenn Sie die Werte ermitteln müssen, die für die unten angegebenen Parameter einzugeben sind, finden Sie weitere Informationen im Abschnitt [Hive Warehouse Connector-Setup](#hive-warehouse-connector-setup).
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ Spark verfügt nicht über native Unterstützung für das Schreiben in verwaltet
 
 Mit Hive Warehouse Connector können Sie das Spark-Streaming nutzen, um Daten in Hive-Tabellen zu schreiben.
 
-Führen Sie die unten angegebenen Schritte aus, um ein Hive Warehouse Connector-Beispiel zu erstellen, mit dem Daten aus einem Spark-Stream über den localhost-Port 9999 in einer Hive-Tabelle erfasst werden.
+Führen Sie die folgenden Schritte zum Erstellen eines Hive Warehouse Connectors aus. Im Beispiel werden Daten aus einem Spark-Datenstrom auf dem Localhost-Port „9999“ in einer Hive-Tabelle erfasst.
 
 1. Führen Sie die Schritte unter [Herstellen der Verbindung und Ausführen von Abfragen](#connecting-and-running-queries) aus.
 
@@ -193,7 +194,7 @@ Führen Sie die unten angegebenen Schritte aus, um ein Hive Warehouse Connector-
 
 1. Generieren Sie Daten für den von Ihnen erstellten Spark-Stream, indem Sie die folgenden Schritte ausführen:
     1. Richten Sie im selben Spark-Cluster eine zweite SSH-Sitzung ein.
-    1. Geben Sie an der Eingabeaufforderung `nc -lk 9999` ein: Für diesen Befehl wird das Hilfsprogramm netcat verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
+    1. Geben Sie an der Eingabeaufforderung `nc -lk 9999` ein: Bei diesem Befehl wird das Hilfsprogramm `netcat` verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
 
 1. Kehren Sie zur ersten SSH-Sitzung zurück, und erstellen Sie für die Streamingdaten eine neue Hive-Tabelle. Geben Sie in spark-shell den folgenden Befehl ein:
 
@@ -224,7 +225,7 @@ Führen Sie die unten angegebenen Schritte aus, um ein Hive Warehouse Connector-
     hive.table("stream_table").show()
     ```
 
-Drücken Sie **STRG+C**, um netcat in der zweiten SSH-Sitzung zu beenden. Verwenden Sie `:q`, um spark-shell in der ersten SSH-Sitzung zu beenden.
+Drücken Sie **STRG+C**, um `netcat` in der zweiten SSH-Sitzung zu beenden. Verwenden Sie `:q`, um spark-shell in der ersten SSH-Sitzung zu beenden.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Schützen von Daten in Spark-ESP-Clustern
 
@@ -253,7 +254,7 @@ Drücken Sie **STRG+C**, um netcat in der zweiten SSH-Sitzung zu beenden. Verwen
 
         ![Hive Warehouse Connector – Ranger Hive-Richtlinienliste](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Geben Sie den gewünschten Namen für die Richtlinie ein. Wählen Sie Folgendes aus. Datenbank: **Standard**, Hive-Tabelle: **demo**, Hive-Spalte: **name**, Benutzer: **rsadmin2**, Zugriffstypen: **Auswählen** und **Teilmaske: Letzte 4 anzeigen** (Menü **Maskierungsfunktion auswählen**). Klicken Sie auf **Hinzufügen**.
+    a. Geben Sie einen Richtliniennamen an. Wählen Sie Folgendes aus. Datenbank: **Standard**, Hive-Tabelle: **demo**, Hive-Spalte: **name**, Benutzer: **rsadmin2**, Zugriffstypen: **Auswählen** und **Teilmaske: Letzte 4 anzeigen** (Menü **Maskierungsfunktion auswählen**). Klicken Sie auf **Hinzufügen**.
                 ![Richtlinie erstellen](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Zeigen Sie den Inhalt der Tabelle erneut an. Nachdem die Ranger-Richtlinie angewendet wurde, werden nur die letzten vier Zeichen der Spalte angezeigt.
 

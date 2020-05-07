@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598101"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793141"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgraden der in Ihrem Cluster ausgeführten Service Fabric-Version 
 
@@ -162,7 +162,7 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-Ser
 ## <a name="next-steps"></a>Nächste Schritte
 * [Upgraden der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md)
 * Anpassen von [Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md)
-* [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md)
+* [Skalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md)
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

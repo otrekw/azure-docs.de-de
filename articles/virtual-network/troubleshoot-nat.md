@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: allensu
-ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396085"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508427"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
 
@@ -40,7 +40,7 @@ Führen Sie die Schritte im folgenden Abschnitt aus, um diese Probleme zu behebe
 
 Für eine einzelne [NAT-Gatewayressource](nat-gateway-resource.md) werden jeweils 64.000 bis maximal 1 Million gleichzeitige Datenflüsse unterstützt.  Jede IP-Adresse stellt 64.000 SNAT-Ports für den verfügbaren Bestand bereit. Sie können bis zu 16 IP-Adressen pro NAT-Gatewayressource nutzen.  Eine ausführlichere Beschreibung des SNAT-Mechanismus finden Sie [hier](nat-gateway-resource.md#source-network-address-translation).
 
-Die Grundursache für eine SNAT-Auslastung ist häufig ein Antimuster bei der Einrichtung und Verwaltung der ausgehenden Konnektivität oder bei der Änderung des Standardwerts von konfigurierbaren Zeitgebern.  Lesen Sie diesen Abschnitt sorgfältig.
+Die Grundursache für eine SNAT-Auslastung ist häufig ein Antimuster bei der Einrichtung und Verwaltung der ausgehenden Konnektivität oder bei der Änderung des Standardwerts von konfigurierbaren Zeitgebern.  Lesen Sie diesem Abschnitt sorgfältig.
 
 #### <a name="steps"></a>Schritte
 
@@ -101,6 +101,7 @@ Die folgende Tabelle kann als Ausgangspunkt dafür dienen, welche Tools für den
 
 Konnektivitätsprobleme mit [Virtual Network NAT](nat-overview.md) können unterschiedliche Ursachen haben:
 
+* Permanente Fehler aufgrund von Konfigurationsfehlern
 * Vorübergehende oder dauerhafte [SNAT-Auslastung](#snat-exhaustion) des NAT-Gateways
 * Vorübergehende Fehler in der Azure-Infrastruktur 
 * Vorübergehende Fehler im Pfad zwischen Azure und dem öffentlichen Internetziel 
@@ -112,6 +113,13 @@ Verwenden Sie Tools wie die folgenden, um die Konnektivität zu überprüfen. [I
 |---|---|---|---|
 | Linux | nc (allgemeiner Verbindungstest) | curl (TCP-Anwendungsschichttest) | Anwendungsspezifisch |
 | Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | Anwendungsspezifisch |
+
+#### <a name="configuration"></a>Konfiguration
+
+Überprüfen Sie folgende Punkte:
+1. Verfügt die NAT-Gatewayressource über mindestens eine öffentliche IP-Ressource oder eine Präfixressource für öffentliche IP-Adressen? Dem NAT-Gateway muss mindestens eine IP-Adresse zugeordnet sein, damit es ausgehende Verbindungen bereitstellen kann.
+2. Ist das Subnetz des virtuellen Netzwerks zur Verwendung des NAT-Gateways konfiguriert?
+3. Verwenden Sie die benutzerdefinierte Route (User-Defined Route, UDR), und setzen Sie das Ziel außer Kraft?  NAT-Gatewayressourcen werden zur Standardroute (0/0) in konfigurierten Subnetzen.
 
 #### <a name="snat-exhaustion"></a>SNAT-Auslastung
 

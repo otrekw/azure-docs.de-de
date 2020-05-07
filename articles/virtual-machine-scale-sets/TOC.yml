@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Verwalten von Fehlerdomänen in Skalierungsgruppen
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Bilder
+      href: shared-image-galleries.md
     - name: Arten und Größen von virtuellen Computern
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: Grundlegendes zu Instanz-IDs
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: Verwenden von Images
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Kataloge mit freigegebenen Images
+          items:
+            - name: PowerShell
+              items:
+                - name: Erstellen eines Katalogs
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: Erstellen eines Images
+                  items:
+                    - name: Von einem virtuellen Computer
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: Migrieren von einem verwalteten Image
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: Kopieren aus einem anderen Katalog
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: Erstellen einer Skalierungsgruppe
+                  items:
+                    - name: Spezialisiert
+                      href: instance-specialized-image-version-powershell.md
+                    - name: Generalisiert
+                      href: instance-generalized-image-version-powershell.md
+                - name: Aktualisieren von Imageressourcen
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: Befehlszeilenschnittstelle (CLI)
+              items:
+                - name: Erstellen eines Katalogs
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: Erstellen eines Images
+                  items:
+                    - name: Von einem virtuellen Computer
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: Migrieren von einem verwalteten Image
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: Kopieren aus einem anderen Katalog
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: Erstellen einer Skalierungsgruppe
+                  items:
+                    - name: Spezialisiert
+                      href: instance-specialized-image-version-cli.md
+                    - name: Generalisiert
+                      href: instance-generalized-image-version-cli.md
+                - name: Aktualisieren von Imageressourcen
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: Erstellen einer Vorlage
       items:
         - name: Informationen zu Skalierungsgruppenvorlagen
