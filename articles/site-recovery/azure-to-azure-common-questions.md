@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547889"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738047"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -194,10 +194,10 @@ In einer Replikationsgruppe können 16 virtuelle Computer zusammen repliziert we
 Das Aktivieren von Multi-VM-Konsistenz kann die Workloadleistung beeinträchtigen, da diese Option CPU-intensiv ist. Multi-VM-Konsistenz sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und Konsistenz für mehrere Computer erforderlich ist. Wenn Sie beispielsweise in einer Anwendung zwei SQL Server-Instanzen und zwei Webserver haben, sollten Sie die Multi-VM-Konsistenz nur für die SQL Server-Instanzen einrichten.
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Können Sie einer Replikationsgruppe einen virtuellen Computer hinzufügen, der bereits repliziert wird?
-
 Sie können einer neuen Replikationsgruppe einen virtuellen Computer hinzufügen, während Sie die Replikation aktivieren. Sie können auch einer vorhandenen Replikationsgruppe einen virtuellen Computer hinzufügen, während Sie die Replikation aktivieren. Es ist jedoch nicht möglich, einer neuen oder vorhandenen Replikationsgruppe einen virtuellen Computer hinzuzufügen, der bereits repliziert wird.
-
+ 
 ## <a name="failover"></a>Failover
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
 

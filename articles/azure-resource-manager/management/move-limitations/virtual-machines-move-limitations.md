@@ -3,12 +3,12 @@ title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in ein
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478668"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744633"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 
@@ -29,19 +29,22 @@ Folgende Szenarios werden noch nicht unterstützt:
 
 Um mit Azure Backup konfigurierte virtuelle Computer zu verschieben, müssen Sie die Wiederherstellungspunkte im Tresor löschen.
 
-Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md) für Ihren virtuellen Computer aktiviert ist, können Sie den virtuellen Computer nicht verschieben, solange diese Wiederherstellungspunkte noch vorhanden sind. [Deaktivieren Sie entweder vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete), oder warten Sie 14 Tage nach dem Löschen der Wiederherstellungspunkte.
+Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md) für Ihren virtuellen Computer aktiviert ist, können Sie den virtuellen Computer nicht verschieben, solange diese Wiederherstellungspunkte noch vorhanden sind. [Deaktivieren Sie entweder vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete), oder warten Sie 14 Tage nach dem Löschen der Wiederherstellungspunkte.
 
 ### <a name="portal"></a>Portal
 
-1. Wählen Sie den virtuellen Computer aus, der für die Sicherung konfiguriert wurde.
+1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
+2. Gehen Sie folgendermaßen vor, um mit Azure Backup konfigurierte virtuelle Computer zu verschieben:
 
-1. Wählen Sie im linken Bereich **Sicherung** aus.
+   1. Ermitteln Sie den Speicherort Ihres virtuellen Computers.
+   2. Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`. Beispiel: *AzureBackupRG_westus2_1*
+   3. Aktivieren Sie im Azure-Portal die Option **Ausgeblendete Typen anzeigen**.
+   4. Suchen Sie die Ressource mit dem Typ **Microsoft.Compute/restorePointCollections** und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
+   5. Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+   6. Nach Abschluss des Löschvorgangs können Sie den virtuellen Computer verschieben.
 
-1. Wählen Sie **Sicherung beenden** aus.
-
-1. Wählen Sie **Sicherungsdaten löschen** aus.
-
-1. Nach Abschluss des Löschvorgangs können Sie den Tresor und den virtuellen Computer in das Zielabonnement verschieben. Nach dem Verschieben können Sie mit den Sicherungen fortfahren.
+3. Verschieben Sie die VM in die Zielressourcengruppe.
+4. Nehmen Sie die Sicherung wieder auf.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -51,7 +54,7 @@ Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud
 * Suchen Sie nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
 * Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 * Ermitteln Sie den Speicherort Ihres virtuellen Computers.
 * Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z. B. „AzureBackupRG_westus2_1“

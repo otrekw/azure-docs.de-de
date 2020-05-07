@@ -2,7 +2,7 @@
 title: Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0 | Azure
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d3e071d5f2f181f5b17e79f2f1097394d0ebaf3
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868425"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689550"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -187,7 +187,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 Abhängig von der Architektur oder der Verwendung Ihrer Anwendung können Sie verschiedene Strategien in Betracht ziehen, um einen erfolgreichen OBO-Flow sicherzustellen. In allen Fällen soll ultimativ die Erteilung einer ordnungsgemäßen Zustimmung sichergestellt werden, damit die Client-App die App der mittleren Ebene aufrufen kann und die App der mittleren Ebene über die Berechtigung zum Aufrufen der Back-End-Ressource verfügt.
 
 > [!NOTE]
-> Bisher wurde das Feld „Bekannte Clientanwendung“ vom Microsoft-Kontosystem (persönliche Konten) weder unterstützt noch konnte eine kombinierte Zustimmung angezeigt werden.  Dies wurde nun hinzugefügt. Alle Apps von Microsoft Identity Platform können jetzt bei OBO-Aufrufen für das Abrufen der Zustimmung diesen Ansatz („bekannte Clientanwendung“) verwenden.
+> Bisher wurde das Feld „Bekannte Clientanwendung“ vom Microsoft-Kontosystem (persönliche Konten) weder unterstützt noch konnte eine kombinierte Zustimmung angezeigt werden.  Dies wurde nun hinzugefügt. Alle Apps in Microsoft Identity Platform können jetzt bei OBO-Aufrufen für das Abrufen der Einwilligung diesen Ansatz („bekannte Clientanwendung“) verwenden.
 
 ### <a name="default-and-combined-consent"></a>/.default und kombinierten Einwilligung
 
