@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637178"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204065"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -158,7 +158,11 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Neben der Verwendung des Azure-Portals oder der Azure PowerShell-Cmdlets zum Steuern der Speicherprotokollierung können Sie auch eine der Azure Storage-APIs verwenden. Wenn Sie beispielsweise eine .NET-Programmiersprache verwenden, können Sie die Speicherclientbibliothek verwenden.  
 
- Die Klassen **CloudBlobClient**, **CloudQueueClient** und **CloudTableClient** verfügen alle über Methoden wie z. B. **SetServiceProperties** und **SetServicePropertiesAsync**, die ein **ServiceProperties**-Objekt als Parameter verwenden. Mit dem **ServiceProperties**-Objekt können Sie die Speicherprotokollierung konfigurieren. Mit dem folgenden C#-Codeausschnitt wird beispielsweise veranschaulicht, wie die protokollierten Daten und der Aufbewahrungszeitraum für die Protokollierung von Warteschlangen geändert werden:  
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -170,6 +174,9 @@ serviceProperties.Logging.RetentionDays = 2;
 
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
+
+---
+
 
  Weitere Informationen zum Verwenden einer .NET-Programmiersprache zum Konfigurieren der Speicherprotokollierung finden Sie in der [Referenz zur Speicherclientbibliothek](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
 

@@ -6,21 +6,22 @@ ms.service: virtual-machines-windows
 ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086231"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583920"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)zur Verfügung.
 
 
 ## <a name="av2---general-compute"></a>Av2 – Compute allgemein
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 mit 2,20 GHz | 12 | 14,2 | 0,3 | 
@@ -45,9 +46,14 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 10 | 104,5 | 5,1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 mit 2,20 GHz | 13 | 111,6 | 2.3 | 
 
-Hinweis: Virtuelle Computer der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden (wie oben gezeigt wurde). Die Konfigurationen für CPU-Leistung und Arbeitsspeicher bei virtuellen Computern der Av2-Serie eignen sich am besten für Workloads der Einstiegsebene wie Entwicklung und Tests. Die Größe wird gedrosselt, um eine relativ konsistente Prozessorleistung für die laufende Instanz zu bieten – unabhängig von der Hardware, auf der sie bereitgestellt wird. Software, die bestimmte neuere Prozessoroptimierungen nutzt, kann allerdings signifikantere Abweichungen zwischen den Prozessortypen erkennen.
+
+> [!NOTE]
+> Virtuelle Computer der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden (wie oben gezeigt wurde). Die Konfigurationen für CPU-Leistung und Arbeitsspeicher bei virtuellen Computern der Av2-Serie eignen sich am besten für Workloads der Einstiegsebene wie Entwicklung und Tests. Die Größe wird gedrosselt, um eine relativ konsistente Prozessorleistung für die laufende Instanz zu bieten – unabhängig von der Hardware, auf der sie bereitgestellt wird. Software, die bestimmte neuere Prozessoroptimierungen nutzt, kann allerdings signifikantere Abweichungen zwischen den Prozessortypen erkennen.
 
 ## <a name="b---burstable"></a>B – Burstfähig
+
+(2019-10-23 auf 2019-11-03 PBI:5604451 aktualisiert)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 9 | 6.3 | 0.2 | 
@@ -59,12 +65,20 @@ Hinweis: Virtuelle Computer der Av2-Reihe können auf vielen verschiedenen Hardw
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 43 | 28,3 | 0,7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 25 | 41,4 | 0.9 | 
+| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 19 | 58,9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 18 | 75,4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4| 2 | 90,6 | 1.3 |
 
-Hinweis: Virtuelle Computer der B-Serie sind für Workloads mit burstfähigen Leistungsanforderungen vorgesehen. VM-Instanzen sammeln Guthaben an, wenn sie weniger als ihre Baseline verwenden. Wenn der virtuelle Computer Guthaben angesammelt hat, kann sein Burst die Baseline mit bis zu 100 % überschreiten, um kurze CPU-Burstanforderungen zu erfüllen. Die Burstzeit hängt von verfügbaren Guthaben ab. Dies ist eine Funktion der VM-Größe und -Zeit.  
 
-SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren Burstguthaben ausschöpft.  Deshalb entsprechen die oben genannten Zahlen eher der Baselineleistung des virtuellen Computers (obwohl sie möglicherweise eine bestimmte Burstzeit widerspiegeln, die zwischen den Ausführungen angesammelt wurde).  Bei kurzen, intensiven Workloads (typisch für die B-Serie) entspricht die Leistung normalerweise eher derjenigen der DSv3-Serie.
+>[!NOTE]
+> Virtuelle Computer der B-Serie sind für Workloads mit burstfähigen Leistungsanforderungen vorgesehen. VM-Instanzen sammeln Guthaben an, wenn sie weniger als ihre Baseline verwenden. Wenn der virtuelle Computer Guthaben angesammelt hat, kann sein Burst die Baseline mit bis zu 100 % überschreiten, um kurze CPU-Burstanforderungen zu erfüllen. Die Burstzeit hängt von verfügbaren Guthaben ab. Dies ist eine Funktion der VM-Größe und -Zeit.  
+>
+> SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren Burstguthaben ausschöpft.  Deshalb entsprechen die oben genannten Zahlen eher der Baselineleistung des virtuellen Computers (obwohl sie möglicherweise eine bestimmte Burstzeit widerspiegeln, die zwischen den Ausführungen angesammelt wurde).  Bei kurzen, intensiven Workloads (typisch für die B-Serie) entspricht die Leistung normalerweise eher derjenigen der DSv3-Serie.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – Compute allgemein + Storage Premium
+
+(2019-10-23 auf 2019-11-03 PBI:5604451 aktualisiert)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 10 | 40,8 | 2.3 | 
@@ -77,9 +91,17 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 38 | 298,2 | 4.4 | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 24 | 545,8 | 10,5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 9 | 535,6 | 12,6 | 
+| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 6 | 166,0 | 8,8 |
+| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 300,8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 1 | 838,0 | 0,0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 35 | 1070,6 | 2.4 | 
+| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 340,0 | 21,4 |
+| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 592,3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 – Compute allgemein
+
+(2019-10-23 auf 2019-11-03 PBI:5604451 aktualisiert)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 10 | 38,6 | 1.8 | 
@@ -92,9 +114,11 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 32 | 300,7 | 8,8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 24 | 549,3 | 11,1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 7 | 538,6 | 9,4 | 
+| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 839,7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 32 | 1070,6 | 12,4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 – Datenspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 12 | 33,0 | 1.1 | 
@@ -132,6 +156,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_DS15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 45 | 546,1 | 10,5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2 – Compute allgemein
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 30 | 33,5 | 1.7 | 
@@ -156,6 +181,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_D15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 37 | 558,8 | 8,4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 – Arbeitsspeicheroptimiert + Storage Premium
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 39 | 42,5 | 2.2 | 
@@ -176,11 +202,13 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_E64-32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 4 | 592,5 | 4.4 | 
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 – Arbeitsspeicheroptimierung und Storage Premium (isoliert)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 28 | 1\.073,9 | 5.7 | 
 
 ## <a name="ev3---memory-optimized"></a>Ev3 – Arbeitsspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 41 | 41,2 | 2.4 | 
@@ -192,11 +220,13 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_E64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 31 | 1\.080,0 | 11,3 | 
 
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 – Arbeitsspeicheroptimiert (isoliert)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64i_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 28 | 1\.081,4 | 11,1 | 
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 – Compute + Datenspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F2s_v2 | 2 | 1 | Intel(R) Xeon(R) Platinum 8168 CPU mit 2,70 GHz | 46 | 56,5 | 2.4 | 
@@ -208,6 +238,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_F72s_v2 | 72 | 2 | Intel(R) Xeon(R) Platinum 8168 CPU mit 2,70 GHz | 29 | 1\.372,1 | 8,2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>Fs – Compute- und Datenspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1s | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 31 | 33,2 | 1.0 | 
@@ -222,6 +253,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_F16s | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 36 | 471,8 | 7,5 | 
 
 ## <a name="f---compute-optimized"></a>F – Compute-optimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 15 | 32,8 | 1.8 | 
@@ -237,6 +269,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_F16 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 6 | 472,3 | 13.2 | 
 
 ## <a name="gs---storage-optimized"></a>GS – Datenspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_GS1 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 29 | 63,6 | 4,7 | 
@@ -259,6 +292,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_G5 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 31 | 774,1 | 4,1 | 
 
 ## <a name="h---high-performance-compute-hpc"></a>H – High Performance Computing (HPC)
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_H8 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2667 v3 mit 3,20 GHz | 31 | 296,1 | 1.4 | 
@@ -269,6 +303,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_H16r | 16 | 2 | Intel(R) Xeon(R) CPU E5-2667 v3 mit 3,20 GHz | 17 | 562,2 | 4,2 | 
 
 ## <a name="ls---storage-optimized"></a>Ls – Datenspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_L4s | 4 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 29 | 122,7 | 6.6 | 
@@ -277,6 +312,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_L32s | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 31 | 766,1 | 3,5 | 
 
 ## <a name="m---memory-optimized"></a>M – Arbeitsspeicheroptimiert
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_M8-2 ms | 2 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 mit 2,50 GHz | 15 | 42.1 | 2.1 | 
@@ -306,6 +342,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_M8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 mit 2,50 GHz | 13 | 158,2 | 5.5 | 
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 – GPU-fähig
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v3 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 6 | 230,2 | 1.6 | 
@@ -314,6 +351,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_NC24s_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 3 | 809,3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 – GPU-fähig
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 227,0 | 6.2 | 
@@ -322,6 +360,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_NC24s_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 811,5 | 4.4 | 
 
 ## <a name="nc---gpu-enabled"></a>NC – GPU-fähig
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 27 | 209,6 | 4.4 | 
@@ -330,6 +369,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_NC24r | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 27 | 752,9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>NDs – GPU-fähig
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 8 | 230,1 | 1.2 | 
@@ -338,6 +378,7 @@ SPEC Int ist ein relativ zeitintensiver Test, der normalerweise die verfügbaren
 | Standard_ND24s | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 812,6 | 4.4 | 
 
 ## <a name="nv---gpu-enabled"></a>NV – GPU-fähig
+
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NV6 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 28 | 210,5 | 6.1 | 

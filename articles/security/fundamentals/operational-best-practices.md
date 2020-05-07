@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500304"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188585"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -108,7 +108,7 @@ Es folgen einige bewährte Methoden zum Verhindern, Erkennen und Reagieren auf B
 **Detail**: Untersuchen Sie die Features und Funktionen von [Azure Sentinel](/azure/sentinel/overview), und vergleichen Sie diese mit den Funktionen der derzeit von Ihnen lokal verwendeten Lösung. Erwägen Sie den Einsatz von Azure Sentinel, wenn damit die SIEM-Anforderungen Ihrer Organisation erfüllt werden.
 
 **Bewährte Methode**: Ermitteln Sie die schwerwiegendsten Sicherheitsrisiken, damit Sie die Untersuchung priorisieren können.   
-**Detail**: Überprüfen Sie Ihren [Azure Secure Score](../../security-center/security-center-secure-score.md), um die Empfehlungen zu sehen, die sich aus den in Azure Security Center integrierten Azure-Richtlinien und -Initiativen ergeben. Mithilfe dieser Empfehlungen können die wichtigsten Risiken wie Sicherheitsupdates, Endpunktschutz, Verschlüsselung, Sicherheitskonfigurationen, fehlende WAF, VMs mit Internetzugriff und vieles mehr angegangen werden.
+**Detail**: Überprüfen Sie Ihren [Azure Secure Score](../../security-center/secure-score-security-controls.md), um die Empfehlungen zu sehen, die sich aus den in Azure Security Center integrierten Azure-Richtlinien und -Initiativen ergeben. Mithilfe dieser Empfehlungen können die wichtigsten Risiken wie Sicherheitsupdates, Endpunktschutz, Verschlüsselung, Sicherheitskonfigurationen, fehlende WAF, VMs mit Internetzugriff und vieles mehr angegangen werden.
 
 Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Internet Security) basiert, können Sie ein Benchmarking für die Azure-Sicherheit Ihrer Organisation gegenüber externen Quellen durchführen. Mithilfe einer externen Überprüfung können Sie die Sicherheitsstrategie Ihres Teams überprüfen und erweitern.
 
@@ -116,7 +116,7 @@ Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Interne
 **Detail**: Befolgen Sie die [Sicherheitsempfehlungen](../../security-center/security-center-recommendations.md) in Security Center, beginnend mit den Elementen mit der höchsten Priorität.
 
 **Bewährte Methode**: Integrieren Sie Security Center-Warnungen in Ihre SIEM-Lösung (Security Information and Event Management).   
-**Detail**: Die meisten Organisationen mit einer SIEM-Lösung verwenden diese als ein zentrales Clearinghouse für Sicherheitswarnungen, die eine Analystenantwort erfordern. Von Security Center erzeugte verarbeitete Ereignisse werden im Azure-Aktivitätsprotokoll veröffentlicht, einem der über Azure Monitor verfügbaren Protokolle. Azure Monitor bietet eine konsolidierte Pipeline zum Routing beliebiger Überwachungsdaten zu einem SIEM-Tool. Anweisungen finden Sie unter [Integrieren von Sicherheitslösungen in Azure Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem). Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Detail**: Die meisten Organisationen mit einer SIEM-Lösung verwenden diese als ein zentrales Clearinghouse für Sicherheitswarnungen, die eine Analystenantwort erfordern. Von Security Center erzeugte verarbeitete Ereignisse werden im Azure-Aktivitätsprotokoll veröffentlicht, einem der über Azure Monitor verfügbaren Protokolle. Azure Monitor bietet eine konsolidierte Pipeline zum Routing beliebiger Überwachungsdaten zu einem SIEM-Tool. Anweisungen finden Sie unter [Exportieren von Sicherheitswarnungen und -empfehlungen](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs). Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Bewährte Methode**: Integrieren von Azure-Protokollen in Ihr SIEM-System.   
 **Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](/azure/azure-monitor/overview#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).
@@ -216,7 +216,7 @@ Weitere Informationen finden Sie unter [Erstellen und Verwalten von Richtlinien 
 **Detail**: Lassen Sie über das [Azure-Portal](../../governance/policy/how-to/get-compliance-data.md#portal) oder über die [Befehlszeile](../../governance/policy/how-to/get-compliance-data.md#command-line) die zugewiesene Rolle die Einhaltung überwachen.
 
 **Bewährte Methode**: Azure Policy ist eine technische Darstellung der schriftlichen Richtlinien einer Organisation. Ordnen Sie alle Azure-Richtlinien Organisationsrichtlinien zu, um Verwirrung zu vermeiden und die Konsistenz zu steigern.   
-**Detail**: Dokumentieren Sie die Zuordnung in der Dokumentation Ihrer Organisation oder in der Azure-Richtlinie selbst, indem Sie einen Verweis auf die Organisationsrichtlinie in der Azure-[Richtlinienbeschreibung](../../governance/policy/concepts/definition-structure.md#display-name-and-description) oder der Beschreibung der Azure Policy-[Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) hinzufügen.
+**Detail**: Dokumentieren Sie die Zuordnung in der Dokumentation Ihrer Organisation oder direkt in der Azure Policy-Definition, indem Sie einen Verweis auf die Organisationsrichtlinie in der [Azure Policy-Definition](../../governance/policy/concepts/definition-structure.md#display-name-and-description) oder der Beschreibung der [Azure Policy-Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) hinzufügen.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Überwachen der Azure AD-Risikoberichte
 Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als [Risikoerkennung](../../active-directory/reports-monitoring/concept-risk-events.md) bezeichnet wird. Risikoerkennungen werden in Azure AD-Sicherheitsberichten erfasst. Weitere Informationen finden Sie unter [Bericht „Benutzer mit Risikomarkierung“](../../active-directory/reports-monitoring/concept-user-at-risk.md) und unter [Bericht „Riskante Anmeldungen“](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).

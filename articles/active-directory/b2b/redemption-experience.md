@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050839"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160738"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -32,8 +32,8 @@ Wenn Sie Ihrem Verzeichnis einen Gastbenutzer hinzufügen, hat das Gastbenutzerk
 Wenn Sie Ihrem Verzeichnis [über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) einen Gastbenutzer hinzufügen, wird dabei eine Einladungs-E-Mail an den Gast gesendet. Sie können auch Einladungs-E-Mails senden, wenn Sie Ihrem Verzeichnis [mit PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) Gastbenutzer hinzufügen. Hier ist eine Beschreibung der Erfahrungen des Gasts, wenn er den Link in der E-Mail einlöst.
 
 1. Der Gast erhält eine [Einladungs-E-Mail](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements), die über **Microsoft-Einladungen** gesendet wird.
-2. Der Gast klickt in der E-Mail auf **Erste Schritte**.
-3. Wenn der Gast kein Azure AD-Konto, kein Microsoft-Konto (MSA) und kein E-Mail-Konto in einer Verbundorganisation besitzt, wird er aufgefordert, ein MSA zu erstellen (es sei denn, die Funktion [Einmaliger Passcode](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) ist aktiviert, die kein MSA erfordert).
+2. Der Gast wählt **Einladung annehmen** in der E-Mail aus.
+3. Der Gast verwendet seine eigenen Anmeldeinformationen, um sich bei Ihrem Verzeichnis anzumelden. Wenn der Gast kein Konto hat, das über einen Verbund in Ihrem Verzeichnis verwendet werden kann, und die Funktion für die [E-Mail-Einmalkennung](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) (One-Time Passcode, OTP) nicht aktiviert ist, wird der Gast aufgefordert, ein persönliches [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) oder ein [Azure AD-Self-Service-Konto](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) zu erstellen. Ausführliche Informationen finden Sie unter [Flow beim Einlösen der Einladung](#invitation-redemption-flow).
 4. Der Gast wird schrittweise durch die im Folgenden beschriebene [Zustimmungsbenutzeroberfläche](#consent-experience-for-the-guest) geführt.
 
 ## <a name="redemption-through-a-direct-link"></a>Einlösung über einen direkten Link
@@ -52,6 +52,38 @@ Es gibt einige Fälle, in denen die Einladungs-E-Mail über einen direkten Link 
  - Manchmal verfügt das eingeladene Benutzerobjekt aufgrund eines Konflikts mit einem Kontaktobjekt (beispielsweise ein Outlook-Kontaktobjekt) möglicherweise über keine E-Mail-Adresse. In diesem Fall muss der Benutzer auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
  - Der Benutzer meldet sich möglicherweise mit einem Alias für die eingeladene E-Mail-Adresse an. (Ein Alias ist eine zusätzliche E-Mail-Adresse, die einem E-Mail-Konto zugeordnet ist.) In diesem Fall muss der Benutzer auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
 
+## <a name="invitation-redemption-flow"></a>Flow beim Einlösen der Einladung
+
+Wenn ein Benutzer in einer [Einladungs-E-Mail](invitation-email-elements.md) auf den Link **Einladung annehmen** klickt, löst Azure AD die Einladung automatisch ein, und zwar auf Grundlage des nachstehend gezeigten Einlösungsflows:
+
+![Screenshot mit Diagramm des Einlösungsflows](media/redemption-experience/invitation-redemption-flow.png)
+
+**Wenn der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers mit einem vorhandenen Azure AD-Konto und einem persönlichen MSA-Konto übereinstimmt, wird der Benutzer aufgefordert, das Konto für das Einlösen auszuwählen.*
+
+1. Azure AD führt eine benutzerbasierte Ermittlung durch, um festzustellen, ob der Benutzer in einem [bestehenden Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b#easily-add-guest-users-in-the-azure-ad-portal) vorhanden ist.
+
+2. Wenn ein Administrator [Direktverbund](https://docs.microsoft.com/azure/active-directory/b2b/direct-federation) aktiviert hat, prüft Azure AD, ob das Domänensuffix des Benutzers mit der Domäne eines konfigurierten SAML/WS-Fed-Identitätsanbieters übereinstimmt und leitet den Benutzer zum vorkonfigurierten Identitätsanbieter um.
+
+3. Wenn ein Administrator [Verbund mit Google](https://docs.microsoft.com/azure/active-directory/b2b/google-federation) aktiviert hat, prüft Azure AD, ob das Domänensuffix des Benutzers gmail.com oder googlemail.com ist und leitet den Benutzer zu Google um.
+
+4. Der Einlösungsprozess prüft, ob der Benutzer bereits ein [Microsoft-Konto (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) hat.
+
+5. Sobald das **Basisverzeichnis** des Benutzers bestimmt wurde, wird der Benutzer zur Anmeldung an den entsprechenden Identitätsanbieter weitergeleitet.  
+
+6. Wenn in den Schritten 1 bis 4 kein Basisverzeichnis für den eingeladenen Benutzer gefunden wird, ermittelt Azure AD, ob der einladende Mandant das Feature [Einmalkennung per E-Mail für Gastbenutzer](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) aktiviert hat.
+
+7. Wenn [Einmalkennung per E-Mail für Gastbenutzer](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode) aktiviert ist, wird in der Einladungs-E-Mail eine Kennung an den Benutzer gesendet. Der Benutzer ruft diese Kennung ab und gibt sie auf der Anmeldeseite von Azure AD ein.
+
+8. Wenn „Einmalkennung per E-Mail für Gastbenutzer“ deaktiviert ist, überprüft Azure AD, ob das Domänensuffix zu einem Consumerkonto gehört. In diesem Fall wird der Benutzer aufgefordert, ein persönliches [Microsoft-Konto](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) zu erstellen. Andernfalls wird der Benutzer aufgefordert, ein [Azure AD-Self-Service-Konto](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) zu erstellen.
+
+9. Azure AD versucht, ein [Azure AD-Self-Service-Konto](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) zu erstellen, indem der Zugriff auf die E-Mail-Adresse überprüft wird. Die Überprüfung des Kontos erfolgt, indem ein Code an die E-Mail-Adresse gesendet wird, den der Benutzer abruft und an Azure AD sendet. Wenn der Mandant des eingeladenen Benutzers jedoch zu einem Verbund gehört oder das Feld AllowEmailVerifiedUsers im Mandanten des eingeladenen Benutzers auf FALSE festgelegt ist, kann der Benutzer die Einlösung nicht abschließen, wodurch der Flow mit einem Fehler endet. Weitere Informationen finden Sie unter [Problembehandlung für die Azure Active Directory B2B Collaboration](https://docs.microsoft.com/azure/active-directory/b2b/troubleshoot#the-user-that-i-invited-is-receiving-an-error-during-redemption).
+
+10. Der Benutzer wird aufgefordert, ein persönliches [Microsoft-Konto (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) zu erstellen.
+
+11. Nach Authentifizierung beim richtigen Identitätsanbieter wird der Benutzer zu Azure AD umgeleitet, um den [Einwilligungsvorgang](https://docs.microsoft.com/azure/active-directory/b2b/redemption-experience#consent-experience-for-the-guest) abzuschließen.  
+
+Für Just-in-Time-Einlösungen (JIT), bei denen die Einlösung über einen Link zur Mandantenanwendung erfolgt, sind die Schritte 8 bis 10 nicht verfügbar. Wenn ein Benutzer Schritt 6 erreicht und das Feature „Einmalkennung per E-Mail“ nicht aktiviert ist, erhält der Benutzer eine Fehlermeldung und kann die Einladung nicht einlösen. Um diesen Fehler zu vermeiden, müssen Administratoren entweder [Einmalkennung per E-Mail aktivieren](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode) oder sicherstellen, dass der Benutzer auf einen Einladungslink klickt.
+
 ## <a name="consent-experience-for-the-guest"></a>Einwilligungsbenutzeroberfläche für den Gast
 
 Wenn sich ein Gast zum ersten Mal anmeldet, um auf Ressourcen in einer Partnerorganisation zuzugreifen, wird er schrittweise durch die folgenden Seiten geführt. 
@@ -67,8 +99,7 @@ Wenn sich ein Gast zum ersten Mal anmeldet, um auf Ressourcen in einer Partneror
 
    ![Screenshot mit neuen Nutzungsbedingungen](media/redemption-experience/terms-of-use-accept.png) 
 
-   > [!NOTE]
-   > Sie können die [Nutzungsbedingungen](../governance/active-directory-tou.md) unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** konfigurieren.
+   Sie können die [Nutzungsbedingungen](../governance/active-directory-tou.md) unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** konfigurieren.
 
 3. Sofern nicht anders angegeben, wird der Gast zum Zugriffsbereich für Apps weitergeleitet, der die Anwendungen auflistet, auf die der Gast zugreifen kann.
 

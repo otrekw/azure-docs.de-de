@@ -1,23 +1,20 @@
 ---
-title: Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen – Azure Batch
+title: Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 description: Erfahren Sie, wie Sie eine Build-/Releaseepipeline für eine in Azure Batch ausgeführte HPC-Anwendung bereitstellen.
 author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
-ms.custom: fasttrack-new
-services: batch
-ms.service: batch
-ms.openlocfilehash: 50cb711dfd16c2a8718d13ba9255ace1e7e3e26d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533129"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117385"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
-Azure DevOps-Dienste bieten eine Reihe von Tools, die von Entwicklungsteams beim Erstellen einer benutzerdefinierten Anwendung verwendet werden. Tools von Azure DevOps dienen zum Übersetzen in das automatische Erstellen und Testen von Hochleistungscomputelösungen. In diesem Artikel wird die Einrichtung einer Continuous Integration (CI) und Continuous Deployment (CD) mit Azure Pipelines für eine unter Azure Batch bereitgestellte Hochleistungscomputelösung veranschaulicht.
+Azure DevOps Services bietet eine Reihe von Tools, die von Entwicklungsteams beim Erstellen einer benutzerdefinierten Anwendung verwendet werden. Tools von Azure DevOps dienen zum Übersetzen in das automatische Erstellen und Testen von Hochleistungscomputelösungen. In diesem Artikel wird die Einrichtung einer Continuous Integration (CI) und Continuous Deployment (CD) mit Azure Pipelines für eine unter Azure Batch bereitgestellte Hochleistungscomputelösung veranschaulicht.
 
 Azure Pipelines bietet eine Reihe von modernen CI-/CD-Prozessen für das Erstellen, Bereitstellen, Testen und Überwachen von Software. Diese Prozesse beschleunigen die Auslieferung Ihrer Software, sodass Sie sich auf den Code konzentrieren können, anstatt sich um die Infrastruktur und sonstige Abläufe kümmern zu müssen.
 

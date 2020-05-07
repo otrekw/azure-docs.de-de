@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228010"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612451"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer
 
@@ -23,7 +23,7 @@ Die Windows Virtual Desktop-Lizenzierung gestattet es Ihnen, eine Lizenz auf jed
 
 Es gibt einige Möglichkeiten, die Windows Virtual Desktop-Lizenz zu verwenden:
 - Sie können das [Azure Marketplace-Angebot](./create-host-pools-azure-marketplace.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
-- Sie können die [Azure Resource Manager-GitHub-Vorlage](./create-host-pools-arm-template.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
+- Sie können die [Azure Resource Manager-GitHub-Vorlage](./virtual-desktop-fall-2019/create-host-pools-arm-template.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
 - Sie können eine Lizenz auf einen vorhandenen virtuellen Sitzungshostcomputer anwenden. Führen Sie dazu zunächst die Schritte aus, die in [Erstellen eines Hostpools mit PowerShell](./create-host-pools-powershell.md) aufgeführt sind, um eine Hostpool und zugehörige virtuelle Computer zu erstellen, und kehren Sie dann zu diesem Artikel zurück, um zu erfahren, wie Sie die Lizenz anwenden.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Anwenden einer Windows-Lizenz auf einen virtuellen Sitzungshostcomputer

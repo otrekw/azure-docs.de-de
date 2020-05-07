@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74024251"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582558"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Verhalten bei der Startbereichsermittlung für Azure Active Directory-Anmeldeseiten
 
@@ -28,7 +28,7 @@ Wir ändern das Anmeldeverhalten in Azure Active Directory (Azure AD), um neue A
 
 In der Vergangenheit wurde die Startbereichsermittlung von der Domäne gesteuert, die bei der Anmeldung angegeben wird, oder bei einigen älteren Anwendungen von einer Richtlinie für die Startbereichsermittlung. So konnte beispielsweise bei unserem Ermittlungsverhalten ein Azure Active Directory-Benutzer seinen Benutzernamen falsch eingeben und wurde trotzdem zur Seite mit den Anmeldeinformationen seiner Organisation weitergeleitet. Dies erfolgt immer dann, wenn der Benutzer den Domänennamen der Organisation „contoso.com“ richtig angibt. Dieses Verhalten bietet jedoch nicht dieselben Möglichkeiten zum Anpassen der Umgebung für einzelne Benutzer.
 
-Um eine größere Anzahl von Anmeldeinformationen zu unterstützen und die Benutzerfreundlichkeit zu erhöhen, wurde das Nachschlageverhalten von Azure Active Directory während des Anmeldeprozesses aktualisiert. Beim neuen Veralten werden intelligente Entscheidungen durch das Lesen von Einstellungen auf Mandanten- und Benutzerebene basierend auf dem Benutzernamen getroffen, der auf der Anmeldeseite eingegeben wird. Um dies zu ermöglichen, überprüft Azure Active Directory, ob der auf der Anmeldeseite eingegebene Benutzername in der angegebenen Domäne vorhanden ist, oder leitet den Benutzer um, damit er seine Anmeldeinformationen angeben kann.
+Um eine größere Anzahl von Anmeldeinformationen zu unterstützen und die Benutzerfreundlichkeit zu erhöhen, wurde das Nachschlageverhalten von Azure Active Directory während des Anmeldeprozesses aktualisiert. Beim neuen Verhalten werden intelligente Entscheidungen durch das Lesen von Einstellungen auf Organisations- und Benutzerebene basierend auf dem Benutzernamen getroffen, der auf der Anmeldeseite eingegeben wird. Um dies zu ermöglichen, überprüft Azure Active Directory, ob der auf der Anmeldeseite eingegebene Benutzername in der angegebenen Domäne vorhanden ist, oder leitet den Benutzer um, damit er seine Anmeldeinformationen angeben kann.
 
 Ein weiterer Vorteil dieses Verhaltens sind bessere Fehlermeldungen. Es folgen einige Beispiele für die verbesserten Fehlermeldungen bei Anmeldung bei einer Anwendung, die nur Azure Active Directory-Benutzer unterstützt.
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: lahugh
-ms.openlocfilehash: 764dc93608ae3b8882b7048a722c6d3415cbc644
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7df8dd439008258ea1b4986054660fb0fb9070ce
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885785"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204184"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -37,7 +37,7 @@ Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-m
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5\.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
 
-<sup>1</sup> VMs der Mv2-Serie sind nur als Generation 2 erhältlich. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. Wenn Sie Windows verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./windows/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. Die mindestens erforderlichen Betriebssystemversionen für alle vier verschiedenen VM-Typen der Mv2-Serie lauten wie folgt:
+<sup>1</sup> VMs der Mv2-Serie sind nur Generation 2 und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Im Folgenden finden Sie eine vollständige Liste der unterstützten Images für die Mv2-Serie. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. Wenn Sie Windows verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./windows/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. 
 
 - Windows Server 2019 oder höher
 - SUSE Linux Enterprise Server 12 SP4 oder höher, oder SUSE Linux Enterprise Server 15 SP1 oder höher

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152ff52ce52b573d7f24cbb2fafc944b1794f6d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129260"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181323"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -94,7 +94,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Jeder vorhandene Azure AD-Registrierungsstatus für einen Benutzer wird nach der <i>Azure AD-Hybrideinbindung des Geräts und der Anmeldung desselben Benutzers</i> automatisch entfernt. Wenn Benutzer A beispielsweise einen Azure AD-Registrierungsstatus auf dem Gerät hat, wird der Doppelstatus für Benutzer A nur dann bereinigt, wenn sich Benutzer A beim Gerät anmeldet. Bei mehreren Benutzer auf demselben Gerät wird der Doppelstatus individuell bei der Anmeldung der jeweiligen Benutzer bereinigt.
-- Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
+- Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie den folgenden Registrierungsschlüssel in „HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin“ hinzufügen: "BlockAADWorkplaceJoin"=dword:00000001.
 - Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
 
 > [!NOTE]

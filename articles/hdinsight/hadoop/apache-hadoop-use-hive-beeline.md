@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.custom: seoapr2020
+ms.date: 04/17/2020
+ms.openlocfilehash: 2396207c88716420d299382006a270eb747ddc03
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383553"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192662"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -40,7 +41,8 @@ Beim Herstellen einer Verbindung von einem Client zu HDInsight über ein virtuel
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>Ersetzen Sie `<headnode-FQDN>` durch den vollqualifizierten Domänennamen eines Clusterhauptknotens. Verwenden Sie die Informationen im Dokument [Verwalten von HDInsight mithilfe der Apache Ambari-REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes), um den vollqualifizierten Domänennamen eines Hauptknotens zu ermitteln.
+Ersetzen Sie `<headnode-FQDN>` durch den vollqualifizierten Domänennamen eines Clusterhauptknotens. Verwenden Sie die Informationen im Dokument [Verwalten von HDInsight mithilfe der Apache Ambari-REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes), um den vollqualifizierten Domänennamen eines Hauptknotens zu ermitteln.
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Mit einem Cluster des HDInsight-Enterprise-Sicherheitspakets (ESP) mit Kerberos
@@ -84,7 +86,7 @@ Private Endpunkte zeigen auf einen Load Balancer im Tarif „Basic“, auf den n
 
 ### <a name="use-beeline-with-apache-spark"></a>Verwenden von Beeline mit Apache Spark
 
-Apache Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manchmal als Spark Thrift-Server bezeichnet wird. Bei diesem Dienst wird Spark SQL anstelle von Hive zum Auflösen von Abfragen verwendet und ermöglicht je nach Abfrage ggf. eine bessere Leistung.
+Apache Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manchmal als Spark Thrift-Server bezeichnet wird. Dieser Dienst verwendet Spark SQL anstelle von Hive zum Auflösen von Abfragen. Die Leistung kann abhängig von Ihrer Abfrage besser ausfallen.
 
 #### <a name="through-public-or-private-endpoints"></a>Durch öffentliche oder private Endpunkte
 
@@ -118,7 +120,7 @@ Wenn Sie direkt vom Clusterhauptknoten oder von einer Ressource, die sich in der
 
 * Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Beachten Sie das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für den primären Speicher Ihres Clusters. Beispiele: `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Weitere Informationen finden Sie unter [Sichere Übertragung](../../storage/common/storage-require-secure-transfer.md).
+* Beachten Sie das URI-Schema für den primären Speicher Ihres Clusters. Beispiele: `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Weitere Informationen finden Sie unter [Sichere Übertragung](../../storage/common/storage-require-secure-transfer.md).
 
 * Option 1: Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). In den meisten Schritten in diesem Dokument wird davon ausgegangen, dass Sie Beeline aus einer SSH-Sitzung für den Cluster verwenden.
 
@@ -177,7 +179,7 @@ Dieses Beispiel basiert auf der Verwendung des Beeline-Clients über eine SSH-Ve
 
     Diese Information beschreibt die Spalten in der Tabelle.
 
-5. Geben Sie die folgenden Anweisungen ein, um eine Tabelle mit dem Namen **log4jLogs** zu erstellen, indem Sie die über das HDInsight-Cluster bereitgestellten Beispieldaten verwenden: (Überarbeiten Sie dies je nach Bedarf basierend auf Ihrem [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme).)
+5. Geben Sie die folgenden Anweisungen ein, um eine Tabelle mit dem Namen **log4jLogs** zu erstellen, indem Sie die über das HDInsight-Cluster bereitgestellten Beispieldaten verwenden: (Überarbeiten Sie dies je nach Bedarf basierend auf Ihrem URI-Schema.)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +246,7 @@ Dieses Beispiel basiert auf der Verwendung des Beeline-Clients über eine SSH-Ve
 
 ## <a name="run-a-hiveql-file"></a>Ausführen einer HiveQL-Datei
 
-Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden Schritte, um eine Datei zu erstellen und sie dann mit Beeline auszuführen.
+Dieses Beispiel ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden Schritte, um eine Datei zu erstellen und sie dann mit Beeline auszuführen.
 
 1. Verwenden Sie den folgenden Befehl, um eine Datei mit dem Namen **query.hql**zu erstellen:
 
@@ -300,7 +302,7 @@ Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden 
 
 ## <a name="install-beeline-client"></a>Installieren des Beeline-Clients
 
-Zwar ist Beeline auf den Hauptknoten Ihres HDInsight-Clusters enthalten, doch möchten Sie den Client möglicherweise auf einem lokalen Computer installieren.  Die nachfolgenden Schritte zum Installieren von Beeline auf einem lokalen Computer basieren auf einem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+Obwohl Beeline auf den Hauptknoten enthalten ist, können Sie es lokal installieren.  Die Schritte zum Installieren von Beeline auf einem lokalen Computer basieren auf einem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10).
 
 1. Aktualisieren Sie die Paketlisten. Geben Sie in der Bash-Shell den folgenden Befehl ein:
 
@@ -316,7 +318,7 @@ Zwar ist Beeline auf den Hauptknoten Ihres HDInsight-Clusters enthalten, doch m�
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Öffnen Sie die BASHRC-Datei (normalerweise in „~/.bashrc“): `nano ~/.bashrc`.
+    1. Öffnen Sie die BASHRC-Datei (häufig enthalten in „~/.bashrc“): `nano ~/.bashrc`.
 
     1. Ergänzen Sie die BASHRC-Datei. Fügen Sie am Ende der Datei die folgende Zeile hinzu:
 

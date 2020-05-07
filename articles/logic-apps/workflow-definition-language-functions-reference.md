@@ -3,24 +3,24 @@ title: Referenzhandbuch für Funktionen in Ausdrücken
 description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/30/2020
+ms.openlocfilehash: e1ebc0257082ecfacc708352ba0a68e38e10717f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237142"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607791"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
-Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Power Automate](https://docs.microsoft.com/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten. 
+Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Power Automate](https://docs.microsoft.com/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten.
 
 > [!NOTE]
 > Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Power Automate, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-Apps bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-Apps. Weitere Informationen zu Funktionen und Ausdrücken in Power Automate finden Sie unter [Verwenden von Ausdrücken in Bedingungen](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktionen wie die [add()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#add) verwenden, wenn Sie die Summe aus ganzen Zahlen oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
+Beispielsweise können Sie Werte berechnen, indem Sie mathematische Funktionen wie die [add()](../logic-apps/workflow-definition-language-functions-reference.md#add)-Funktion verwenden, wenn Sie die Summe aus Integer- oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
 
 | Aufgabe | Funktionssyntax | Ergebnis |
 | ---- | --------------- | ------ |
@@ -31,8 +31,7 @@ So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktione
 In den nachfolgenden Tabellen finden Sie Funktionen [basierend auf dem allgemeinen Zweck](#ordered-by-purpose) aufgeführt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list).
 
 > [!NOTE]
-> In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist.
-> Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
+> In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist. Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
 
 ## <a name="functions-in-expressions"></a>Funktionen in Ausdrücken
 
@@ -74,8 +73,7 @@ Hier sind die verfügbaren Funktionen nach allgemeinem Zweck sortiert. Unter [Fu
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
 
-Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden.
-Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden.
+Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden. Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden.
 
 | Zeichenfolgenfunktion | Aufgabe |
 | --------------- | ---- |
@@ -119,8 +117,7 @@ Für die Arbeit mit Sammlungen (in der Regel Arrays, Zeichenfolgen und manchmal 
 
 ## <a name="logical-comparison-functions"></a>Logische Vergleichsfunktionen
 
-Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden.
-Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Logische Vergleichsfunktion | Aufgabe |
 | --------------------------- | ---- |
@@ -139,10 +136,10 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 
 ## <a name="conversion-functions"></a>Konvertierungsfunktionen
 
-Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern.
-So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern.
-Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md).
-Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern. So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern. Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md). Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+> [!NOTE]
+> Mit Azure Logic Apps werden Werte automatisch zwischen einigen Datentypen konvertiert, sodass Sie diese Konvertierungen nicht manuell ausführen müssen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 | Konvertierungsfunktion | Aufgabe |
 | ------------------- | ---- |
@@ -169,6 +166,35 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Gibt die Zeichenfolgenversion für eine URI-codierte Zeichenfolge zurück. |
 | [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Gibt die XML-Version für eine Zeichenfolge zurück. |
 |||
+
+<a name="implicit-data-conversions"></a>
+
+## <a name="implicit-data-type-conversions"></a>Implizite Datentypkonvertierungen
+
+Mit Azure Logic Apps werden Werte automatisch oder implizit zwischen einigen Datentypen konvertiert, sodass Sie diese Typen nicht manuell konvertieren müssen. Wenn Sie z. B. Werte verwenden, die keine Zeichenfolgen sind, und Zeichenfolgen als Eingaben erwartet werden, konvertiert Logic Apps die Nicht-Zeichenfolgenwerte automatisch in Zeichenfolgen.
+
+Angenommen, ein Auslöser gibt einen numerischen Wert als Ausgabe zurück:
+
+`triggerBody()?['123']`
+
+Wenn Sie diese numerische Ausgabe verwenden und eine Zeichenfolgeneingabe wie z. B. eine URL erwartet wird, konvertiert Logic Apps den Wert mithilfe von geschweiften Klammern (`{}`) automatisch in eine Zeichenfolge:
+
+`@{triggerBody()?['123']}`
+
+### <a name="base64-encoding-and-decoding"></a>Base64-Codierung und -Decodierung
+
+Logic Apps führt automatisch oder implizit eine Base64-Codierung oder -Decodierung durch, daher müssen Sie diese Vorgänge nicht mithilfe der entsprechenden Ausdrücke manuell ausführen:
+
+* `base64(<value>)`
+* `base64ToBinary(<value>)`
+* `base64ToString(<value>)`
+* `base64(decodeDataUri(<value>))`
+* `concat('data:;base64,',<value>)`
+* `concat('data:,',encodeUriComponent(<value>))`
+* `decodeDataUri(<value>)`
+
+> [!NOTE]
+> Wenn Sie Ihrer Logik-App diese Ausdrücke manuell hinzufügen, beispielsweise mit dem Ausdrucks-Editor, vom Logik-App-Designer weg und dann wieder zu diesem zurück navigieren, zeigt der Designer nur die Parameterwerte an. Die Ausdrücke werden nur dann in der Codeansicht beibehalten, wenn Sie die Parameterwerte nicht bearbeiten. Andernfalls entfernt Logic Apps die Ausdrücke aus der Codeansicht und behält nur die Parameterwerte bei. Dieses Verhalten wirkt sich nicht auf die Codierung oder Decodierung aus, sondern nur auf die Anzeige der Ausdrücke.
 
 <a name="math-functions"></a>
 
@@ -321,7 +347,7 @@ action().outputs.body.<property>
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | Nein | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*property*> | Nein  | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -459,7 +485,7 @@ actions('<actionName>').outputs.body.<property>
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | Ja | String | Der Name des Aktionsobjekts, dessen Ausgabe Sie abrufen möchten  |
-| <*property*> | Nein | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*property*> | Nein  | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -521,7 +547,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*days*> | Ja | Integer | Die positive oder negative Anzahl von Tagen, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -563,7 +589,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*hours*> | Ja | Integer | Die positive oder negative Anzahl von Stunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -605,7 +631,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*minutes*> | Ja | Integer | Die positive oder negative Anzahl von Minuten, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -746,7 +772,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*seconds*> | Ja | Integer | Die positive oder negative Anzahl von Sekunden, die hinzugefügt werden sollen |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -790,7 +816,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -908,6 +934,9 @@ Dies ist das zurückgegebene Ergebnis: `["hello"]`
 
 Gibt die base64-codierte Version für eine Zeichenfolge zurück.
 
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
+
 ```
 base64('<value>')
 ```
@@ -937,6 +966,9 @@ Dies ist das zurückgegebene Ergebnis: `"aGVsbG8="`
 ### <a name="base64tobinary"></a>base64ToBinary
 
 Gibt die Binärversion für eine base64-codierte Zeichenfolge zurück.
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 base64ToBinary('<value>')
@@ -968,9 +1000,10 @@ Dies ist das zurückgegebene Ergebnis:
 
 ### <a name="base64tostring"></a>base64ToString
 
-Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert.
-Sie sollten diese Funktion anstelle von [decodeBase64()](#decodeBase64) verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
+Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert. Verwenden Sie diese Funktion anstelle der veralteten Funktion [decodeBase64()](#decodeBase64).
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 base64ToString('<value>')
@@ -1236,7 +1269,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1279,7 +1312,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
 | <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1321,7 +1354,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1535,7 +1568,7 @@ In diesem Beispiel wird die Zahl für den Wochentag aus diesem Zeitstempel zurü
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `3`
+Dies ist das zurückgegebene Ergebnis: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1569,43 +1602,18 @@ Dies ist das zurückgegebene Ergebnis: `74`
 
 <a name="decodeBase64"></a>
 
-### <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64-deprecated"></a>decodeBase64 (deprecated)
 
-Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert.
-Sie sollten [base64ToString()](#base64ToString) anstelle von `decodeBase64()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
-
-```
-decodeBase64('<value>')
-```
-
-| Parameter | Erforderlich | type | BESCHREIBUNG |
-| --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | String | Die base64-codierte Zeichenfolge, die decodiert werden soll |
-|||||
-
-| Rückgabewert | type | BESCHREIBUNG |
-| ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | String | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
-||||
-
-*Beispiel*
-
-In diesem Beispiel wird eine Zeichenfolge für eine base64-codierte Zeichenfolge erstellt:
-
-```
-decodeBase64('aGVsbG8=')
-```
-
-Dies ist das zurückgegebene Ergebnis: `"hello"`
+Diese Funktion ist veraltet. Verwenden Sie daher stattdessen [base64ToString()](#base64ToString).
 
 <a name="decodeDataUri"></a>
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück.
-Sie sollten [dataUriToBinary()](#dataUriToBinary) anstelle von `decodeDataUri()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriToBinary()` bevorzugt.
+Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Sie sollten [dataUriToBinary()](#dataUriToBinary) anstelle von `decodeDataUri()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriToBinary()` bevorzugt.
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 decodeDataUri('<value>')
@@ -1703,9 +1711,10 @@ Dies ist das zurückgegebene Ergebnis: `2`
 
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 
-Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden.
-Sie sollten [uriComponent()](#uriComponent) anstelle von `encodeUriComponent()` verwenden.
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
+Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. Sie sollten [uriComponent()](#uriComponent) anstelle von `encodeUriComponent()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
+
+> [!NOTE]
+> Azure Logic Apps führt automatisch eine Base64-Codierung und -Decodierung durch, daher müssen Sie diese Konvertierungen nicht manuell ausführen. Führen Sie diese dennoch aus, tritt möglicherweise ein unerwartetes Anzeigeverhalten auf, das sich nicht auf die eigentlichen Konvertierungen auswirkt, sondern nur auf ihre Anzeige. Weitere Informationen finden Sie unter [Implizite Datentypkonvertierungen](#implicit-data-conversions).
 
 ```
 encodeUriComponent('<value>')
@@ -1924,7 +1933,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2019,7 +2028,7 @@ formatNumber(<number>, <format>, <locale>?)
 | --------- | -------- | ---- | ----------- |
 | <*number*> | Ja | Integer oder Double | Der Wert, den Sie formatieren möchten. |
 | <*format*> | Ja | String | Eine kombinierten Formatzeichenfolge, die das Format angibt, das Sie verwenden möchten. Informationen zu den unterstützten Formatzeichenfolgen für Zahlen finden Sie unter [Standardformatzeichenfolgen für Zahlen](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), die von `number.ToString(<format>, <locale>)` unterstützt werden. |
-| <*locale*> | Nein | String | Das zu verwendende Gebietsschema gemäß der Unterstützung durch `number.ToString(<format>, <locale>)`. Wenn Sie hier nichts angeben, lautet der Standardwert `en-us`. |
+| <*locale*> | Nein  | String | Das zu verwendende Gebietsschema gemäß der Unterstützung durch `number.ToString(<format>, <locale>)`. Wenn Sie hier nichts angeben, lautet der Standardwert `en-us`. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2073,7 +2082,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2117,7 +2126,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2239,7 +2248,7 @@ guid('<format>')
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | String | Ein einzelner [Formatbezeichner](https://msdn.microsoft.com/library/97af8hh4) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
+| <*format*> | Nein  | String | Ein einzelner [Formatbezeichner](https://msdn.microsoft.com/library/97af8hh4) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2426,9 +2435,11 @@ iterationIndexes('<loopName>')
 
 *Beispiel* 
 
-In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iteration einer „Until“-Schleife um den Wert 1 inkrementiert wird, bis der Zählerwert 5 erreicht ist. Außerdem wird im Beispiel eine Variable erstellt, mit der der aktuelle Index für jede Iteration nachverfolgt wird. In der „Until“-Schleife wird der Zähler bei jeder Iteration inkrementiert, und dann wird der Zählerwert dem aktuellen Indexwert zugewiesen. Anschließend wird der Zähler inkrementiert. Sie können den aktuellen Iterationswert jederzeit ermitteln, indem Sie den aktuellen Indexwert abrufen.
+In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iteration einer „Until“-Schleife um den Wert 1 inkrementiert wird, bis der Zählerwert 5 erreicht ist. Außerdem wird im Beispiel eine Variable erstellt, mit der der aktuelle Index für jede Iteration nachverfolgt wird. In der „Until“-Schleife wird der Zähler bei jeder Iteration inkrementiert, und dann wird der Zählerwert dem aktuellen Indexwert zugewiesen. Anschließend wird der Zähler inkrementiert. Innerhalb der Schliefe verweist dieses Beispiel mithilfe der Funktion `iterationIndexes` auf den aktuellen Iterationsindex:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2470,7 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2483,15 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {
@@ -2481,7 +2501,7 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"
@@ -3654,7 +3674,7 @@ startOfDay('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3685,7 +3705,7 @@ startOfHour('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3716,7 +3736,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3897,7 +3917,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
 | <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4533,7 +4553,7 @@ Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | String | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4606,7 +4626,7 @@ workflow().<property>
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
+| <*property*> | Nein  | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
 |||||
 
 *Beispiel*
@@ -4643,7 +4663,7 @@ In diesem Beispiel wird die XML-Version für diese Zeichenfolge erstellt, die ei
 
 `xml(json('{ \"name\": \"Sophia Owen\" }'))`
 
-Dies ist das zurückgegebene XML-Objekt:
+Dies ist das zurückgegebene XML-Objekt: 
 
 ```xml
 <name>Sophia Owen</name>
@@ -4666,7 +4686,7 @@ In diesem Beispiel wird das XML-Objekt für eine Zeichenfolge erstellt, die dies
 
 `xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
 
-Dies ist das zurückgegebene XML-Objekt:
+Dies ist das zurückgegebene XML-Objekt: 
 
 ```xml
 <person>

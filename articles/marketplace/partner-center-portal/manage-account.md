@@ -1,22 +1,22 @@
 ---
-title: Verwalten eines Kontos im kommerziellen Marketplace in Partner Center
-description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Partner Center verwalten
+title: Verwalten eines Kontos im kommerziellen Marketplace in Microsoft Partner Center
+description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Microsoft Partner Center verwalten.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275814"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208396"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
+# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
-Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie Ihr Konto und Angebote über das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwalten.
+Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
 
 In diesem Artikel wird erläutert, wie Sie Ihr Partner Center-Konto verwalten. Dabei wird Folgendes beschrieben:
 
@@ -35,12 +35,12 @@ In diesem Artikel wird erläutert, wie Sie Ihr Partner Center-Konto verwalten. D
 
 Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisation) zu folgenden Zwecken auf die [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/management) Ihres Partner Center-Kontos zugreifen:
 - Überprüfen des Verifizierungsstatus Ihres Unternehmenskontos
-- Bestätigen Ihrer Symantec-ID, Verkäufer-ID, MPN-ID, Herausgeber-ID und Kontaktinformationen, einschließlich der Informationen zum Genehmiger des Unternehmens und die Kontaktinformationen des Verkäufers
+- Bestätigen Ihrer Symantec-ID, Verkäufer-ID, Microsoft Partner Network-ID (MPN-ID), Herausgeber-ID und Kontaktinformationen, einschließlich der Kontaktinformationen der genehmigenden Person im Unternehmen und des Verkäufers
 - Erstellen von Benutzerkonten für alle Benutzer, die Ihr Geschäftskonto in Partner Center verwenden
 
 ### <a name="open-developer-settings"></a>Öffnen der Entwicklereinstellungen
 
-Die Kontoeinstellungen befinden sich in der oberen rechten Ecke Ihres [Dashboards „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace) im Partner Center. Wählen Sie das Zahnradsymbol (nahe der oberen rechten Ecke des Dashboards) und dann  **Entwicklereinstellungen** aus.
+Die **Kontoeinstellungen** befinden sich in Partner Center in der oberen rechten Ecke Ihres [Dashboards des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace). Wählen Sie das Zahnradsymbol (nahe der oberen rechten Ecke des Dashboards) und dann  **Entwicklereinstellungen** aus.
 
 ![Menü „Kontoeinstellungen“ in Partner Center](./media/dashboard-developer-settings.png)
 
@@ -66,15 +66,12 @@ Im Abschnitt „Kontaktinformation“ werden Ihr **Anzeigename des Herausgebers*
 
 Ein Auszahlungskonto ist das Bankkonto, auf das Ihre Verkaufserlöse übertragen werden. Dieses Bankkonto muss sich in demselben Land befinden, in dem Sie Ihr Partner Center-Konto registriert haben.
 
-Um Ihr Auszahlungskonto einzurichten, müssen Sie **Ihr Microsoft-Konto zuordnen**:
-1. Rufen Sie die [Übersichtsseite zum kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in Partner Center auf.
-2. Wählen Sie im Abschnitt „Profil“ die Option **Ihrem Microsoft-Konto zuordnen** aus.
-3. Melden Sie sich bei der entsprechenden Aufforderung mit Ihrem Microsoft-Konto (MSA) an. Dieses Konto darf nicht bereits einem anderen Partner Center-Konto zugeordnet sein.
-4. Um die Einrichtung Ihres Auszahlungskontos abzuschließen, melden Sie sich vollständig aus Partner Center ab und melden Sie sich dann erneut mit Ihrem Microsoft-Konto (und nicht mit Ihrem Geschäftskonto) an.
+So richten Sie Ihr Auszahlungskonto ein
 
-Ihr Microsoft-Konto ist nun zugeordnet. Um ein Auszahlungskonto hinzuzufügen, müssen Sie wie folgt vorgehen:
-- **Zahlungsmethode auswählen**: Bankkonto oder PayPal
-- **Zahlungsinformationen hinzufügen**: Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. \* Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+1. Navigieren Sie in Partner Center zur [Übersichtsseite des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
+2. Wählen Sie im Abschnitt „Profil“ neben **Auszahlungsprofil** die Option **Aktualisieren** aus.
+3. **Zahlungsmethode auswählen**: Bankkonto oder PayPal.
+4. **Zahlungsinformationen hinzufügen**: Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. \* Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Auszahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.  
@@ -91,7 +88,7 @@ Es ist keine US-Steueridentifikationsnummer (ITIN) erforderlich, um Zahlungen vo
 
 Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und übermitteln. In den meisten Fällen müssen Sie keine Formulare drucken und per E-Mail senden.
 
-In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihre Angebote verkaufen. Microsoft zahlt in einigen Ländern die Mehrwertsteuer und Verbrauchssteuer für Sie. Diese Länder werden beim Auflisten Ihres Angebots angegeben. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern möglicherweise die Mehrwert- und Verbrauchssteuer für Ihre Verkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Microsoft-Verkaufstransaktionen zu bestimmen.
+In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihre Angebote verkaufen. Microsoft zahlt in einigen Ländern die Mehrwertsteuer und die Verbrauchssteuer für Sie. Diese Länder werden beim Auflisten Ihres Angebots angegeben. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern möglicherweise die Mehrwert- und Verbrauchssteuer für Ihre Verkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Microsoft-Verkaufstransaktionen zu bestimmen.
 
 ##### <a name="withholding-rates"></a>Quellensteuer
 Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Entwicklern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land ein Einkommenssteuerabkommen mit den USA getätigt hat.
@@ -120,14 +117,14 @@ Der Einstellungen für die Geräteverwaltung gelten nur für UWP-Veröffentlichu
 
 GUIDs (Globally Unique Identifiers) sind eindeutige Referenznummern (mit 32 Hexadezimalstellen), die für die Nachverfolgung Ihrer Azure-Nutzung verwendet werden können. 
 
-Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://aka.ms/StoragePartners) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
+Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
 
 Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll.
 
-Wenn Sie ein Produkt mit einer Vorlage bereitstellen und das Produkt sowohl im Azure Marketplace als auch auf GitHub verfügbar ist, können Sie zwei unterschiedliche GUIDs erstellen und registrieren:
+Wenn Sie ein Produkt mithilfe einer Vorlage bereitstellen und das Produkt sowohl im Azure Marketplace als auch auf GitHub verfügbar ist, können Sie zwei unterschiedliche GUIDs erstellen und registrieren:
 
-*   Produkt A im Azure Marketplace
-*   Produkt A auf GitHub
+*    Produkt A im Azure Marketplace
+*    Produkt A auf GitHub
 
 Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUIDs. Sie können GUIDs auch auf einer detaillierteren Ebene nachverfolgen und an jedem Plan innerhalb Ihres Angebots ausrichten.
 
@@ -145,23 +142,20 @@ Partner Center nutzt [Azure Active Directory](https://docs.microsoft.com/azure/a
 
 ## <a name="manage-users"></a>Verwalten von Benutzern
 
-Im Abschnitt **Benutzer** im Partner Center (unter **Kontoeinstellungen**) können Sie Azure AD verwenden, um die Benutzer, Gruppen und Azure AD-Anwendungen zu verwalten, die über Zugriff auf Ihr Partner Center-Konto verfügen. Um Benutzer zu verwalten, müssen Sie bei Ihrem [Geschäftskonto](./company-work-accounts.md) (dem zugeordneten Azure AD-Mandanten) angemeldet sein. Zum Verwalten von Benutzern in einem anderen Geschäftskonto/Mandanten müssen Sie sich abmelden und dann als Benutzer mit **Manager**-Berechtigungen für das betreffende Geschäftskonto/den betreffenden Mandanten wieder anmelden.
+In Partner Center können Sie (unter **Kontoeinstellungen**) im Abschnitt **Benutzer** Azure AD verwenden, um die Benutzer, Gruppen und Azure AD-Anwendungen zu verwalten, die über Zugriff auf Ihr Partner Center-Konto verfügen. Ihr Konto muss über Berechtigungen auf [**Managerebene**](#define-user-roles-and-permissions) für das [Geschäftskonto (Azure AD-Mandant)](./company-work-accounts.md) verfügen, in dem Sie Benutzer hinzufügen oder bearbeiten möchten. Zum Verwalten von Benutzern in einem anderen Geschäftskonto/Mandanten müssen Sie sich abmelden und dann als Benutzer mit **Manager**-Berechtigungen für das betreffende Geschäftskonto/den betreffenden Mandanten wieder anmelden.
 
 Wenn Sie bei Ihrem Geschäftskonto (Azure AD-Mandanten) angemeldet sind, können Sie folgende Schritte ausführen:
-- [Hinzufügen oder Entfernen von Benutzern](#add-or-remove-users)
+
+- [Hinzufügen oder Entfernen von Benutzern](#add-existing-users)
 - [Ändern eines Benutzerkennworts](#change-a-user-password)
-- [Hinzufügen oder Entfernen von Gruppen](#add-or-remove-users)
+- [Hinzufügen oder Entfernen von Gruppen](#manage-groups)
 - [Hinzufügen oder Entfernen von Azure AD-Anwendungen](#add-new-azure-ad-applications)
 - [Verwalten von Schlüsseln für eine Azure AD-Anwendung](#manage-keys-for-an-azure-ad-application)
 - [Definieren von Benutzerrollen und Berechtigungen](#define-user-roles-and-permissions)
 
 Denken Sie daran, dass alle Partner Center-Benutzer (einschließlich von Gruppen und Azure AD-Anwendungen) über ein aktives Geschäftskonto in einem [Azure AD-Mandanten](#manage-tenants) verfügen müssen, das Ihrem Partner Center-Konto zugeordnet ist.
 
-### <a name="add-or-remove-users"></a>Hinzufügen oder Entfernen von Benutzern
-
-Ihr Konto muss über Berechtigungen auf [**Managerebene**](#define-user-roles-and-permissions) für das [Geschäftskonto (Azure AD-Mandant)](./company-work-accounts.md) verfügen, in dem Sie Benutzer hinzufügen oder bearbeiten möchten.
-
-#### <a name="add-existing-users"></a>Hinzufügen vorhandener Benutzer
+### <a name="add-existing-users"></a>Hinzufügen vorhandener Benutzer
 
 So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschäftskonto (Azure AD-Mandant)](./company-work-accounts.md) Ihres Unternehmens vorhanden sind
 
@@ -172,7 +166,7 @@ So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschä
 4. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für den oder die ausgewählten Benutzer an.
 5. Wählen Sie **Speichern** aus.
 
-#### <a name="create-new-users"></a>Erstellen neuer Benutzer
+### <a name="create-new-users"></a>Erstellen neuer Benutzer
 
 Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [**Globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
 
@@ -186,7 +180,7 @@ Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigu
 
 Wenn Sie einen neuen Benutzer in Partner Center erstellen, wird für diesen Benutzer auch ein Konto im Geschäftskonto (Azure AD-Mandant) erstellt, in dem Sie angemeldet sind. Wenn Sie Änderungen am Namen eines Benutzers in Partner Center vornehmen, werden diese Änderungen im Geschäftskonto (Azure AD-Mandant) Ihrer Organisation ebenfalls vorgenommen.
 
-#### <a name="invite-new-users-by-email"></a>Einladen neuer Benutzer per E-Mail
+### <a name="invite-new-users-by-email"></a>Einladen neuer Benutzer per E-Mail
 
 Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [**globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
@@ -202,11 +196,11 @@ Wenn Sie eine Einladung erneut senden möchten, wechseln Sie auf die Seite **Ben
 > [!NOTE]
 > Wenn Ihre Organisation [Verzeichnisintegration](https://go.microsoft.com/fwlink/p/?LinkID=724033) verwendet, um den lokalen Verzeichnisdienst mit Ihrem Azure AD zu synchronisieren, können Sie keine neuen Benutzer, Gruppen oder Azure AD-Anwendungen in Partner Center erstellen. Diese müssen Sie (oder ein anderer Administrator in Ihrem lokalen Verzeichnis) direkt im lokalen Verzeichnis erstellen, bevor Sie sie im Partner Center anzeigen und hinzufügen können.
 
-#### <a name="remove-a-user"></a>Benutzer entfernen
+### <a name="remove-a-user"></a>Benutzer entfernen
 
 Um einen Benutzer aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), wählen Sie über das Kontrollkästchen in der Spalte ganz rechts den Benutzer aus, den Sie entfernen möchten, und wählen Sie anschließend aus den verfügbaren Aktionen **Entfernen** aus. In einem Popupfenster können Sie bestätigen, dass Sie den bzw. die ausgewählten Benutzer entfernen möchten.
 
-#### <a name="change-a-user-password"></a>Ändern eines Benutzerkennworts
+### <a name="change-a-user-password"></a>Ändern eines Benutzerkennworts
 
 Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine **E-Mail-Adresse zur Kenntwortwiederherstellung** angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [**globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) angemeldet sein. Beachten Sie, dass hierdurch das Kennwort des Benutzers in Ihrem Azure AD-Mandanten sowie das Kennwort geändert werden, das er zum Zugriff auf Partner Center verwendet.
 
@@ -218,7 +212,7 @@ Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erste
 
 Mithilfe von Gruppen können Sie mehrere Benutzerrollen und Berechtigungen gleichzeitig verwalten.
 
-#### <a name="add-an-existing-group"></a>Hinzufügen einer vorhandenen Gruppe
+### <a name="add-an-existing-group"></a>Hinzufügen einer vorhandenen Gruppe
 
 So fügen Sie Ihrem Partner Center-Konto eine Gruppe hinzu, die bereits im Geschäftskonto (Azure AD-Mandant) Ihrer Organisation vorhanden ist
 
@@ -231,7 +225,7 @@ Wenn Sie mehrere Gruppen auswählen, die Ihrem Partner Center-Konto hinzugefügt
 
 Wenn Sie eine vorhandene Gruppe hinzufügen, kann jeder Benutzer, der Mitglied dieser Gruppe ist, mit den Berechtigungen auf Ihr Partner Center-Konto zugreifen, die der zugewiesenen Rolle der Gruppe zugeordnet sind.
 
-#### <a name="add-a-new-group"></a>Neue Gruppe hinzufügen
+### <a name="add-a-new-group"></a>Neue Gruppe hinzufügen
 
 So fügen Sie Ihrem Partner Center-Konto eine neue Gruppe hinzu
 
@@ -245,7 +239,7 @@ So fügen Sie Ihrem Partner Center-Konto eine neue Gruppe hinzu
 
 Beachten Sie, dass diese neue Gruppe im Geschäftskonto (Azure AD-Mandant) Ihrer Organisation und nicht nur in Ihrem Partner Center-Konto erstellt wird.
 
-#### <a name="remove-a-group"></a>Entfernen einer Gruppe
+### <a name="remove-a-group"></a>Entfernen einer Gruppe
 
 Um eine Gruppe aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), wählen Sie über das Kontrollkästchen in der Spalte ganz rechts die Gruppe aus, die Sie entfernen möchten, und wählen Sie anschließend aus den verfügbaren Aktionen **Entfernen** aus. In einem Popupfenster können Sie bestätigen, dass Sie die ausgewählten Gruppen entfernen möchten.
 
@@ -253,7 +247,7 @@ Um eine Gruppe aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wechse
 
 Sie können Anwendungen oder Diensten, die zum Azure AD Ihres Unternehmen gehören, Zugriff auf Ihr Partner Center-Konto gewähren.
 
-#### <a name="add-existing-azure-ad-applications"></a>Hinzufügen vorhandener Azure AD-Anwendungen
+### <a name="add-existing-azure-ad-applications"></a>Hinzufügen vorhandener Azure AD-Anwendungen
 
 So fügen Sie Anwendungen hinzu, die bereits im Azure Active Directory Ihres Unternehmens vorhanden sind
 
@@ -263,7 +257,7 @@ So fügen Sie Anwendungen hinzu, die bereits im Azure Active Directory Ihres Unt
 4. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die ausgewählten Azure AD-Anwendungen an.
 5. Wählen Sie **Speichern** aus.
 
-#### <a name="add-new-azure-ad-applications"></a>Hinzufügen neuer Azure AD-Anwendungen
+### <a name="add-new-azure-ad-applications"></a>Hinzufügen neuer Azure AD-Anwendungen
 
 Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren möchten, erstellen Sie dieses im Abschnitt **Benutzer**. Beachten Sie, dass hierdurch ein neues Konto im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens und nicht nur in Ihrem Partner Center-Konto erstellt wird. Wenn Sie diese Azure AD-Anwendung in erster Linie für die Partner Center-Authentifizierung verwenden und die Benutzer keinen direkten Zugriff benötigen, können Sie alle gültigen Adressen für die **Antwort-URL** und den **App-ID-URI** eingeben, sofern diese Werte noch nicht von einer anderen Azure AD-Anwendung in Ihrem Verzeichnis verwendet werden.
 
@@ -276,11 +270,11 @@ Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren m
 
 Nachdem Sie eine Azure AD-Anwendung hinzugefügt oder erstellt haben, können Sie zum Abschnitt **Benutzer** zurückkehren und den Anwendungsnamen auswählen, um die Einstellungen für die Anwendung zu überprüfen, zum Beispiel die Mandanten-ID, Client-ID, Antwort-URL und App-ID-URI.
 
-#### <a name="remove-an-application"></a>Entfernen einer Anwendung
+### <a name="remove-an-azure-ad-application"></a>Entfernen einer Azure AD-Anwendung
 
 Um eine Anwendung aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), wählen Sie über das Kontrollkästchen in der Spalte ganz rechts die Anwendung aus, die Sie entfernen möchten, und wählen Sie anschließend aus den verfügbaren Aktionen **Entfernen** aus. In einem Popupfenster können Sie bestätigen, dass Sie die ausgewählten Anwendungen entfernen möchten.
 
-#### <a name="manage-keys-for-an-azure-ad-application"></a>Verwalten von Schlüsseln für eine Azure AD-Anwendung
+### <a name="manage-keys-for-an-azure-ad-application"></a>Verwalten von Schlüsseln für eine Azure AD-Anwendung
 
 Wenn Ihre Azure AD-Anwendung Daten in Microsoft Azure AD liest und schreibt, benötigt sie einen Schlüssel. Sie können Schlüssel für eine Azure AD-Anwendung erstellen, indem Sie die zugehörigen Informationen in Partner Center bearbeiten. Außerdem können Sie nicht mehr benötigte Schlüssel entfernen.
 
@@ -350,7 +344,3 @@ Wenn Sie einen Mandanten entfernen, kann sich kein Benutzer mehr bei dem Konto a
 Im Abschnitt **Verträge** in Partner Center (unter **Kontoeinstellungen**) können Sie eine Liste der veröffentlichten Verträge anzeigen, die Sie autorisiert haben. Diese Verträge sind nach Name und Versionsnummer aufgeführt. Ebenfalls angezeigt werden das Datum, an dem sie akzeptiert wurden, und der Name des Benutzers, der den Vertrag akzeptiert hat.
 
 Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angezeigt, wenn Vertragsaktualisierungen vorliegen, die Ihre Aufmerksamkeit erfordern. Um einen aktualisierten Vertrag zu akzeptieren, müssen Sie zunächst die verknüpfte Vertragsversion lesen. Wählen Sie dann **Verträge akzeptieren** aus.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-- [Erstellen eines neuen SaaS-Angebots](./create-new-saas-offer.md)

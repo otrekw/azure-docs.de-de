@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 95dd7be118e869aed02bb55918ab0cefa0d05d03
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998868"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186015"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -111,7 +111,7 @@ In Azure wird die [rollenbasierte Zugriffssteuerung](../role-based-access-contro
 
 Mit Azure Policy können Sie Richtliniendefinitionen erstellen, zuweisen und verwalten. Richtliniendefinitionen erzwingen unterschiedliche Regeln für Ihre Ressourcen, damit diese stets mit den Standards Ihrer Organisation und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy führt eine Auswertung Ihrer Ressourcen durch, um zu prüfen, welche Ressourcen nicht den festgelegten Richtliniendefinitionen entsprechen. Sie können beispielsweise eine Richtlinie definieren und anwenden, welche die Erstellung von virtuellen Netzwerken nur in einer bestimmten Ressourcengruppe oder Region zulässt. In einer anderen Richtlinie können Sie festlegen, dass jedem Subnetz eine Netzwerksicherheitsgruppe zugeordnet werden muss. Die Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen ausgewertet.
 
-Richtlinien werden in der folgenden Hierarchie angewendet: Verwaltungsgruppe, Abonnement und Ressourcengruppe. Erfahren Sie mehr über [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), oder stellen Sie Beispiele für [ Richtlinienvorlagen](policy-samples.md) für virtuelle Netzwerke bereit.
+Richtlinien werden in der folgenden Hierarchie angewendet: Verwaltungsgruppe, Abonnement und Ressourcengruppe. Erfahren Sie mehr über [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), oder stellen Sie einige [Azure Policy-Definitionen](policy-samples.md) für virtuelle Netzwerke bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

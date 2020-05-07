@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100208"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562218"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
 
@@ -49,6 +49,7 @@ Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for PostgreSQL 
 * Konfiguration der Serverfirewall: Stellen Sie sicher, dass die Firewall auf dem Azure Database for PostgreSQL-Server so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie PostgreSQL müssen in einigen Firewalls zugelassen sein.
 * Benutzerfehler: Sie haben möglicherweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *\@Servername* im Benutzernamen.
+* Sollte ein Fehler mit dem Hinweis angezeigt werden, dass der _Server nicht für das Zulassen von IPv6-Verbindungen konfiguriert ist_, beachten Sie, dass im Basic-Tarif keine VNET-Dienstendpunkte unterstützt werden. Entfernen Sie den Endpunkt „Microsoft.Sql“ aus dem Subnetz, das mit dem Basic-Server verbunden werden soll.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 

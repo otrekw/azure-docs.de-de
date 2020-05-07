@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411865"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82096655"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL-Überwachung
 
@@ -41,28 +41,28 @@ Sie können die SQL-Datenbank-Überwachung für folgende Zwecke verwenden:
 > [!IMPORTANT]
 > - Die Überwachung in Azure SQL-Datenbank ist für Verfügbarkeit und Leistung optimiert. Bei sehr hoher Aktivität erlaubt Azure SQL-Datenbank, dass Vorgänge fortgesetzt werden, und einige überwachte Ereignisse werden dabei möglicherweise nicht gespeichert.
 
-#### <a name="auditing-limitations"></a>Einschränkungen der Überwachung
+### <a name="auditing-limitations"></a>Einschränkungen der Überwachung
 
 - **Storage Premium** wird derzeit **nicht unterstützt**.
 - Der **hierarchische Namespace** für ein **Azure Data Lake Storage Gen2-Speicherkonto** wird derzeit **nicht unterstützt**.
 - Das Aktivieren der Überwachung für eine angehaltene **Azure SQL Data Warehouse**-Instanz wird nicht unterstützt. Um die Überwachung fortzusetzen,m setezen Sie das Data Warehouse fort.
 
-## <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Definieren von Überwachungsrichtlinien auf Serverebene und auf Datenbankebene
+#### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Definieren von Überwachungsrichtlinien auf Serverebene und auf Datenbankebene
 
 Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Standardserverrichtlinie definiert werden:
 
 - Eine Serverrichtlinie wird auf alle vorhandenen und neu erstellten Datenbanken auf dem Server angewendet.
 
-- Wenn die *Serverblobüberwachung aktiviert ist*, gilt sie *immer für die Datenbank*. Die Datenbank wird unabhängig von den Datenbanküberwachungseinstellungen überwacht.
+- Wenn die *Serverüberwachung aktiviert ist*, gilt sie *immer für die Datenbank*. Die Datenbank wird unabhängig von den Datenbanküberwachungseinstellungen überwacht.
 
-- Die Aktivierung der Blobüberwachung in der Datenbank oder im Data Warehouse sowie auf dem Server hebt die Einstellungen der Serverblobüberwachung *nicht* auf und ändert sie nicht. Beide Überwachungen existieren nebeneinander. Das heißt, die Datenbank wird zweimal parallel überwacht: einmal anhand der Serverrichtlinie und einmal anhand der Datenbankrichtlinie.
+- Die Aktivierung der Überwachung in der Datenbank oder im Data Warehouse sowie auf dem Server hebt die Einstellungen der Serverüberwachung *nicht* auf und ändert sie nicht. Beide Überwachungen existieren nebeneinander. Das heißt, die Datenbank wird zweimal parallel überwacht: einmal anhand der Serverrichtlinie und einmal anhand der Datenbankrichtlinie.
 
    > [!NOTE]
-   > Aktivieren Sie die Serverblobüberwachung und die Datenbankblobüberwachung nicht zusammen, es sei denn:
+   > Aktivieren Sie die Serverüberwachung und die Datenbankblobüberwachung nicht zusammen, es sei denn:
     > - Sie möchten ein anderes *Speicherkonto*, eine andere *Beibehaltungsdauer* oder einen anderen *Log Analytics-Arbeitsbereich* für eine bestimmte Datenbank verwenden.
     > - Sie möchten andere Ereignistypen oder Kategorien für eine bestimmte Datenbank überwachen als die, die für die restlichen Datenbanken auf dem Server überwacht werden. Beispielsweise sollen Tabelleneinfügungen nur für eine bestimmte Datenbank überwacht werden.
    >
-   > Andernfalls wird empfohlen, die Blobüberwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
+   > Andernfalls wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Einrichten der Überwachung für Ihren Server
 
@@ -89,7 +89,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
   
    ![Speicheroptionen](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a name=""></a><a id="audit-storage-destination">Überwachung in Speicherziel</a>
+### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Überwachung in Speicherziel
 
 Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurieren, wählen Sie **Storage** aus, und öffnen Sie **Speicherdetails**. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Klicken Sie dann auf **OK**. Protokolle, die älter als die Aufbewahrungsdauer sind, werden gelöscht.
 
@@ -108,16 +108,13 @@ Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurie
 - Wenn Sie die AAD-Authentifizierung verwenden, werden Datensätze zu Fehlern bei Anmeldungen im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
 - Die Überwachung von [schreibgeschützten Replikaten](sql-database-read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](sql-database-audit-log-format.md). 
 
-### <a name=""></a><a id="audit-log-analytics-destination">Überwachen in Log Analytics-Ziel</a>
+### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Überwachen in Log Analytics-Ziel
   
 Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbereich zu konfigurieren, wählen Sie **Log Analytics (Vorschau)** aus und öffnen **Log Analytics-Details**. Wählen Sie den Log Analytics-Arbeitsbereich aus (oder erstellen Sie ihn), in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**.
-    
-  > [!WARNING]
-   > Wenn Sie die Überwachung mit Log Analytics aktivieren, fallen Kosten an, deren Höhe sich nach der Erfassungsrate richtet. Beachten Sie die entsprechenden Kosten bei der Verwendung dieser [Option](https://azure.microsoft.com/pricing/details/monitor/), oder speichern Sie die Überwachungsprotokolle in einem Azure-Speicherkonto.
    
    ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-### <a name=""></a><a id="audit-event-hub-destination">Überwachen in Event Hub-Ziel</a>
+### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
 > [!WARNING]
 > Das Aktivieren der Überwachung auf einem Server, der über einen SQL-Pool verfügt, **führt dazu, dass der Pool fortgesetzt und wieder angehalten wird**. Dies kann Abrechnungsgebühren verursachen.
@@ -202,7 +199,7 @@ Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möcht
 
 <!--The description in this section refers to preceding screen captures.-->
 
-#### <a name="auditing-geo-replicated-databases"></a>Überwachung von georeplizierten Datenbanken
+### <a name="auditing-geo-replicated-databases"></a>Überwachung von georeplizierten Datenbanken
 
 Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Datenbank aktivieren, verfügt die sekundäre Datenbank über eine identische Überwachungsrichtlinie. Es ist auch möglich, die Überwachung für die sekundäre Datenbank einzurichten, indem Sie die Überwachung auf dem **sekundären Server** unabhängig von der primären Datenbank aktivieren.
 
@@ -214,7 +211,7 @@ Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Date
     >[!IMPORTANT]
     >Bei der Überwachung auf Datenbankebene sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Es wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
 
-#### <a name="storage-key-regeneration"></a>Erneute Speicherschlüsselgenerierung
+### <a name="storage-key-regeneration"></a>Erneute Speicherschlüsselgenerierung
 
 In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Wenn Sie Überwachungsprotokolle in Azure Storage schreiben, müssen Sie Ihre Überwachungsrichtlinie neu speichern, wenn Sie die Schlüssel aktualisieren. Der Prozess sieht folgendermaßen aus:
 
@@ -229,7 +226,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 ## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>Verwalten der Überwachung von Azure SQL Server und Azure SQL-Datenbank
 
-#### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
 
 **PowerShell-Cmdlets (einschließlich Unterstützung der WHERE-Klausel für zusätzliche Filterung)** :
 
@@ -242,7 +239,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-#### <a name="using-rest-api"></a>Verwenden der REST-API
+### <a name="using-rest-api"></a>Verwenden der REST-API
 
 **REST-API**:
 
@@ -258,7 +255,7 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 - [Abrufen einer *erweiterten* Datenbanküberwachungsrichtlinie ](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Abrufen einer *erweiterten* Serverüberwachungsrichtlinie ](/rest/api/sql/server%20auditing%20settings/get)
 
-#### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
 Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](../azure-resource-manager/management/overview.md) verwalten, wie die folgenden Beispiele zeigen:
 

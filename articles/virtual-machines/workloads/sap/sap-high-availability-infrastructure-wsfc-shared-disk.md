@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235894"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594813"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -177,9 +177,9 @@ Die Vorlagen mit drei Ebenen in Azure Resource Manager unterstützen auch Hochve
 
 Hier können Sie die Azure Resource Manager-Vorlagen für das in diesem Artikel beschriebene Beispielszenario abrufen:
 
-* [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace image by using Azure Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md) (Azure Marketplace-Image mit Azure Managed Disks)  
-* [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/)
 * [Benutzerdefiniertes Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 So bereiten Sie die Infrastruktur für Architekturvorlage 1 vor
@@ -270,9 +270,9 @@ Sie können diese Azure Resource Manager-Vorlage für SAP zur Vereinfachung der 
 
 Azure Resource Manager-Vorlagen für dieses Bereitstellungsszenario sind hier verfügbar:
 
-* [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace-Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/)
 * [Benutzerdefiniertes Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 

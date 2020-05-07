@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cbfdd358fdfd5403c677c067376142169cdc6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77015455"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185692"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Verwenden von Azure Application Gateway mit virtuellen VMware-Computern in der privaten CloudSimple-Cloudumgebung
 
 Sie können das Azure Application Gateway verwenden, um eingehenden Webdatenverkehr für Webserver zu verwalten, die in virtuellen VMware-Computern in Ihrer privaten CloudSimple-Cloudumgebung ausgeführt werden.
 
-Durch die Nutzung von Azure Application Gateway in einer öffentlich-privaten Hybridbereitstellung können Sie den Webdatenverkehr für Ihre Anwendungen verwalten, ein sicheres Front-End bereitstellen und die SSL-Verarbeitung für die in der VMware-Umgebung ausgeführten Dienste entlasten. Azure Application Gateway leitet eingehenden Webdatenverkehr an Back-End-Poolinstanzen weiter, die in VMware-Umgebungen gemäß konfigurierten Regeln und Integritätstests ausgeführt werden.
+Durch die Nutzung von Azure Application Gateway in einer öffentlich-privaten Hybridbereitstellung können Sie den Webdatenverkehr für Ihre Anwendungen verwalten, ein sicheres Front-End bereitstellen und die TLS-Verarbeitung für die in der VMware-Umgebung ausgeführten Dienste entlasten. Azure Application Gateway leitet eingehenden Webdatenverkehr an Back-End-Poolinstanzen weiter, die in VMware-Umgebungen gemäß konfigurierten Regeln und Integritätstests ausgeführt werden.
 
 Diese Azure Application Gateway-Lösung erfordert Folgendes:
 

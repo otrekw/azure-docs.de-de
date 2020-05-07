@@ -1,20 +1,15 @@
 ---
-title: 'Zählen der Status für Tasks und Knoten: Azure Batch | Microsoft-Dokumentation'
+title: Zählen der Zustände für Aufgaben und Knoten
 description: Zählen der Status von Azure Batch-Tasks und -Computeknoten zum Verwalten und Überwachen von Batch-Lösungen.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.topic: article
 ms.date: 09/07/2018
-ms.author: labrenne
+ms.topic: article
 ms.custom: seodec18
-ms.openlocfilehash: a7b58e96918d26851812aa96c18043121c081e94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023921"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116093"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Überwachen von Batch-Lösungen durch Zählen von Tasks und Knoten nach Status
 

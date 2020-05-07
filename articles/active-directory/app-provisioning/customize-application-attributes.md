@@ -2,24 +2,20 @@
 title: Anpassen von Azure AD-Attributzuordnungen | Microsoft-Dokumentation
 description: Erfahren Sie, was Attributzuordnungen für SaaS-Apps in Azure Active Directory sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231042"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593861"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -73,7 +69,7 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
 - **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
 - **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt. Wenn Sie z. B. alle vorhandenen Benutzer im Zielsystem mit einer bestimmten Position (die im Quellsystem den Wert NULL hat) bereitstellen möchten, können Sie den folgenden [Ausdruck](../app-provisioning/functions-for-customizing-application-data.md)verwenden: Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]). Stellen Sie sicher, dass Sie „Default Value“ durch den Wert ersetzen, den Sie beim Wert NULL im Quellsystem bereitstellen möchten. 
 - **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
-- **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
+- **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet. Obwohl Sie beliebig viele übereinstimmende Attribute festlegen können, sollten Sie berücksichtigen, ob die Attribute, die Sie als übereinstimmende Attribute verwenden, tatsächlich eindeutig sind und übereinstimmen müssen. Im Allgemeinen verfügen Kunden in Ihrer Konfiguration über 1 oder 2 übereinstimmende Attribute. 
 - **Diese Zuordnung anwenden**
   - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
   - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
@@ -143,7 +139,10 @@ Die SCIM-RFC definiert ein zentrales Benutzer- und Gruppenschema, erlaubt aber g
    4. Wählen Sie **Attributliste für Anwendungsname bearbeiten** aus.
    5. Geben Sie unten in der Attributliste Informationen zum benutzerdefinierten Attribut in den angezeigten Feldern ein. Wählen Sie dann **Attribut hinzufügen** aus.
 
-Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel folgen. „CustomExtensionName“ und „CustomAttribute“ können gemäß den Anforderungen Ihrer Anwendung angepasst werden, z. B.: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute – oder – urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel folgen. „CustomExtensionName“ und „CustomAttribute“ können in Abstimmung auf die Anforderungen Ihrer Anwendung angepasst werden, beispielsweise:  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
+ * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
 
 Diese Anweisungen gelten nur für SCIM-konforme Anwendungen. Anwendungen wie ServiceNow und Salesforce sind nicht per SCIM mit Azure AD integriert. Aus diesem Grund benötigen sie nicht diesen spezifischen Namespace, wenn ein benutzerdefiniertes Attribut hinzugefügt wird.
 
@@ -313,8 +312,10 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 - Das Aktualisieren von Attributzuordnungen hat Auswirkungen auf die Leistung eines Synchronisierungszyklus. Nach einer Aktualisierung der Attributzuordnungskonfiguration müssen alle verwalteten Objekte erneut ausgewertet werden.
 - Es hat sich bewährt, die Anzahl der aufeinanderfolgenden Änderungen an Attributzuordnungen so gering wie möglich zu halten.
 - Das Hinzufügen eines Fotoattributs, das für eine App bereitgestellt werden soll, wird derzeit nicht unterstützt, da das Format zur Synchronisierung des Fotos nicht angegeben werden kann. Sie können das Feature über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory) anfordern.
-- Das Attribut „IsSoftDeleted“ ist häufig Teil der Standardzuordnungen für eine Anwendung. „IsSoftdeleted“ kann in einem von vier Szenarien „true“ sein (der Benutzer ist außerhalb des gültigen Bereichs, weil seine Zuweisung zur Anwendung aufgehoben wurde, der Benutzer ist außerhalb des gültigen Bereichs, da er nicht dem Bereichsfilter entspricht, der Benutzer wurde in Azure AD vorläufig gelöscht, oder die Eigenschaft „AccountEnabled“ ist für den Benutzer auf „false“ festgelegt). 
-- Der Azure AD-Bereitstellungsdienst unterstützt nicht die Bereitstellung von NULL-Werten.
+- Das Attribut „IsSoftDeleted“ ist häufig Teil der Standardzuordnungen für eine Anwendung. „IsSoftdeleted“ kann in einem von vier Szenarien „true“ sein (der Benutzer ist außerhalb des gültigen Bereichs, weil seine Zuweisung zur Anwendung aufgehoben wurde, der Benutzer ist außerhalb des gültigen Bereichs, da er nicht dem Bereichsfilter entspricht, der Benutzer wurde in Azure AD vorläufig gelöscht, oder die Eigenschaft „AccountEnabled“ ist für den Benutzer auf „false“ festgelegt). Es wird nicht empfohlen, das IsSoftDeleted-Attribut aus den Attributzuordnungen zu entfernen.
+- Der Azure AD-Bereitstellungsdienst unterstützt nicht die Bereitstellung von NULL-Werten.
+- Der Primärschlüssel (in der Regel „ID“) sollte nicht als Zielattribut in den Attributzuordnungen enthalten sein. 
+- Das role-Attribut muss in der Regel mithilfe eines Ausdrucks zugeordnet werden, nicht direkt. Weitere Informationen zu Rollenzuordnungen finden Sie im Abschnitt weiter oben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79497875"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582862"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
-Um einheitliche Benennungskonventionen für Office 365-Gruppen zu erzwingen, die von Ihren Benutzern erstellt oder bearbeitet werden, richten Sie eine Gruppenbenennungsrichtlinie für Ihre Mandanten in Azure Active Directory (Azure AD) ein. Beispielsweise können Sie mithilfe der Benennungsrichtlinie die Funktion einer Gruppe, die Mitgliedschaft, die geografische Region oder den Ersteller der Gruppe kommunizieren. Sie können mit der Benennungsrichtlinie auch die Kategorisierung von Gruppen im Adressbuch unterstützen. Es ist auch möglich, die Richtlinie zu verwenden, um bestimmte Wörter in Gruppennamen und Aliasen zu verhindern.
+Um einheitliche Benennungskonventionen für Office 365-Gruppen zu erzwingen, die von Ihren Benutzern erstellt oder bearbeitet werden, richten Sie eine Gruppenbenennungsrichtlinie für Ihre Organisationen in Azure Active Directory (Azure AD) ein. Beispielsweise können Sie mithilfe der Benennungsrichtlinie die Funktion einer Gruppe, die Mitgliedschaft, die geografische Region oder den Ersteller der Gruppe kommunizieren. Sie können mit der Benennungsrichtlinie auch die Kategorisierung von Gruppen im Adressbuch unterstützen. Es ist auch möglich, die Richtlinie zu verwenden, um bestimmte Wörter in Gruppennamen und Aliasen zu verhindern.
 
 > [!IMPORTANT]
 > Zur Verwendung der Azure AD-Benennungsrichtlinie für Office 365-Gruppen müssen Sie für jeden einzelnen Benutzer, der Mitglied einer Ihrer Office 365-Gruppen ist, über eine Azure Active Directory Premium P1-Lizenz oder eine Azure AD Basic EDU-Lizenz verfügen. Sie müssen diese Lizenzen jedoch nicht zuweisen.
@@ -42,7 +42,7 @@ Sie können Benennungsrichtlinien für Gruppen auf zwei unterschiedliche Arten e
 
 ### <a name="prefix-suffix-naming-policy"></a>Präfix-Suffix-Benennungsrichtlinie
 
-Die allgemeine Struktur der Namenskonvention lautet: „Präfix[Gruppenname]Suffix“. Sie können zwar mehrere Präfixe und Suffixe definieren, es darf jedoch nur eine Instanz von [Gruppenname] in der Einstellung geben. Die Präfixe und Suffixe können feste Zeichenfolgen oder Benutzerattribute wie z.B. \[Abteilung\] sein, die basierend auf dem Benutzer, der die Gruppe erstellt, ersetzt werden. Die zulässige Gesamtanzahl von Zeichen für die Präfix- und Suffixzeichenfolgen beträgt zusammen 53 Zeichen. 
+Die allgemeine Struktur der Namenskonvention lautet: „Präfix[Gruppenname]Suffix“. Sie können zwar mehrere Präfixe und Suffixe definieren, es darf jedoch nur eine Instanz von [Gruppenname] in der Einstellung geben. Die Präfixe und Suffixe können feste Zeichenfolgen oder Benutzerattribute wie z.B. \[Abteilung\] sein, die basierend auf dem Benutzer, der die Gruppe erstellt, ersetzt werden. Die zulässige Gesamtanzahl von Zeichen für die Präfix- und Suffixzeichenfolgen beträgt inklusive Gruppenname 53 Zeichen. 
 
 Präfixe und Suffixe können alle Sonderzeichen enthalten, die bei Gruppennamen und Gruppenaliasen unterstützt werden. Alle Zeichen im Präfix oder Suffix, die beim Gruppenalias nicht unterstützt werden, werden zwar weiterhin auf den Gruppennamen angewendet, aber aus dem Gruppenalias entfernt. Aufgrund dieser Einschränkung können sich die Präfixe und Suffixe, die auf den Gruppennamen angewendet werden, von den auf den Gruppenalias angewendeten unterscheiden. 
 
@@ -138,7 +138,7 @@ Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-P
 
    Geben Sie auf dem angezeigten Bildschirm **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
 
-1. Um Gruppeneinstellungen für diesen Mandanten zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](groups-settings-cmdlets.md) aus.
+1. Um Gruppeneinstellungen für diese Organisation zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](groups-settings-cmdlets.md) aus.
 
 ### <a name="view-the-current-settings"></a>Anzeigen der aktuellen Einstellungen
 

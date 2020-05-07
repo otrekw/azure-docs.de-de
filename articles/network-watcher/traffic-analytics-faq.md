@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189044"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -134,7 +134,7 @@ Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbei
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
-Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
+Ja. Sie können NSG-Flowprotokolle so konfigurieren, dass sie an ein Speicherkonto in einem anderen Abonnement gesendet werden, sofern Sie über die entsprechenden Berechtigungen verfügen und sich das Speicherkonto in derselben Region wie die NSG befindet. Die NSG und das Zielspeicherkonto müssen außerdem demselben Azure Active Directory-Mandanten angehören.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 

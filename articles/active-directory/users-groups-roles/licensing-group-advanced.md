@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231718"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582782"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -100,7 +100,7 @@ Zuerst erbt der Benutzer die Lizenz nur von der *Basic E3-Dienste*-Gruppe, sodas
 
 ## <a name="managing-new-services-added-to-products"></a>Verwalten von neuen Diensten, die Produkten hinzugefügt werden
 
-Wenn Microsoft einem Produktlizenzplan einen neuen Dienst hinzufügt, wird er standardmäßig in allen Gruppen aktiviert, denen Sie die Produktlizenz zugewiesen haben. Benutzer in Ihrem Mandanten, die Benachrichtigungen zu Produktänderungen abonniert haben, erhalten vorab E-Mails mit der Benachrichtigung über die anstehenden neuen Dienste.
+Wenn Microsoft einem Produktlizenzplan einen neuen Dienst hinzufügt, wird er standardmäßig in allen Gruppen aktiviert, denen Sie die Produktlizenz zugewiesen haben. Benutzer in Ihrer Organisation, die Benachrichtigungen zu Produktänderungen abonniert haben, erhalten vorab E-Mails mit der Benachrichtigung über die anstehenden neuen Dienste.
 
 Als Administrator können Sie alle Gruppen überprüfen, die von der Änderung betroffen sind, und Maßnahmen ergreifen, z.B. das Deaktivieren des neuen Diensts in jeder Gruppe. Wenn Sie beispielsweise Gruppen erstellt haben, die nur auf bestimmte Dienste für die Bereitstellung abzielen, können Sie erneut auf diese Gruppen zugreifen und sicherstellen, dass alle neu hinzugefügten Dienste deaktiviert sind.
 
@@ -108,7 +108,7 @@ Hier ist ein Beispiel dafür angegeben, wie dieser Prozess aussehen kann:
 
 1. Ursprünglich haben Sie das Produkt *Office 365 Enterprise E5* mehreren Gruppen zugewiesen. Eine dieser Gruppen mit dem Namen *O365 E5 – Exchange only* wurde dafür ausgelegt, für die jeweiligen Mitglieder nur *Exchange Online (Plan 2)* zu aktivieren.
 
-2. Sie haben eine Benachrichtigung von Microsoft erhalten, dass das E5-Produkt um den neuen Dienst *Microsoft Stream* erweitert wird. Wenn der Dienst in Ihrem Mandanten verfügbar ist, können Sie Folgendes ausführen:
+2. Sie haben eine Benachrichtigung von Microsoft erhalten, dass das E5-Produkt um den neuen Dienst *Microsoft Stream* erweitert wird. Wenn der Dienst in Ihrer Organisation verfügbar ist, können Sie Folgendes ausführen:
 
 3. Navigieren Sie zum Blatt [**Azure Active Directory > Lizenzen > Alle Produkte**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products), und wählen Sie *Office 365 Enterprise E5* und dann **Lizenzierte Gruppen**, um eine Liste mit allen Gruppen mit diesem Produkt anzuzeigen.
 
@@ -128,9 +128,9 @@ Hier ist ein Beispiel dafür angegeben, wie dieser Prozess aussehen kann:
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Verwenden von PowerShell, um anzuzeigen, wer über geerbte direkte Lizenzen verfügt
 Sie können ein PowerShell-Skript verwenden, um zu prüfen, ob Benutzern eine Lizenz direkt zugewiesen oder ob sie von einer Gruppe geerbt wurde.
 
-1. Führen Sie das `connect-msolservice`-Cmdlet aus, um die Authentifizierung durchzuführen und eine Verbindung mit Ihrem Mandanten herzustellen.
+1. Führen Sie das Cmdlet `connect-msolservice` aus, um die Authentifizierung durchzuführen und eine Verbindung mit Ihrer Organisation herzustellen.
 
-2. `Get-MsolAccountSku` kann verwendet werden, um alle bereitgestellten Produktlizenzen im Mandanten zu ermitteln.
+2. `Get-MsolAccountSku` kann verwendet werden, um alle bereitgestellten Produktlizenzen in der Azure AD-Organisation zu ermitteln.
 
    ![Screenshot: Get-Msolaccountsku-Cmdlet](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

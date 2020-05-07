@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: f1dd33425a57689974fc98a28724adf7b130ab40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536342"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82130972"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -33,10 +33,10 @@ Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden s
 |Automatische Angriffsgegenmaßnahmen                    |Ja                                   |Ja                                           |
 |Verfügbarkeitsgarantie                          |Azure-Region                          |Application                                   |
 |Risikominderungsrichtlinien                             |Optimiert für Volume der Azure-Datenverkehrsregion |Optimiert für Volume des Anwendungsdatenverkehrs          |
-|Metriken und Warnungen                                |Nein                                    |Angriffsmetriken in Echtzeit und Diagnoseprotokolle über Azure Monitor                                 |
-|Risikominderungsberichte                              |Nein                                    |Risikominderungsberichte nach dem Angriff                |
-|Protokolle des Risikominderungsflusses                            |Nein                                    |NRT-Protokollstream für die SIEM-Integration           |
-|Anpassung der Risikominderungsrichtlinie                 |Nein                                    |Einbinden von DDoS-Experten                           |
+|Metriken und Warnungen                                |Nein                                     |Angriffsmetriken in Echtzeit und Ressourcenprotokolle über Azure Monitor                                 |
+|Risikominderungsberichte                              |Nein                                     |Risikominderungsberichte nach dem Angriff                |
+|Protokolle des Risikominderungsflusses                            |Nein                                     |NRT-Protokollstream für die SIEM-Integration           |
+|Anpassung der Risikominderungsrichtlinie                 |Nein                                     |Einbinden von DDoS-Experten                           |
 |Support                                         |Bestmögliche Leistung                           |Zugang zu DDoS-Experten während eines aktiven Angriffs|
 |SLA                                             |Azure-Region                          |Anwendungsgarantie und Kostenschutz       |
 |Preise                                         |Kostenlos                                  |Monatlich und nutzungsbasiert                         |

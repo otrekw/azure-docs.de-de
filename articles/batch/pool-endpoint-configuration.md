@@ -1,19 +1,14 @@
 ---
-title: Konfigurieren von Knotenendpunkten im Azure Batch-Pool | Microsoft-Dokumentation
+title: Konfigurieren von Knotenendpunkten in Azure Batch-Pools
 description: Konfigurieren oder Deaktivieren des Zugriffs auf SSH- oder RDP-Ports auf Computeknoten in einem Azure Batch-Pool.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: labrenne
-ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b0ae4b80757bfa647cd5322668d793fa66ffca3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77017223"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113849"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool
 

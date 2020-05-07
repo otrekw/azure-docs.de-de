@@ -1,25 +1,19 @@
 ---
-title: Sichern und Verwenden von Richtlinien auf Ihren Windows-VMs in Azure
-description: Erfahren Sie mehr über Sicherheit und Richtlinien für Windows und virtuelle Computer in Azure.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Absichern und Verwenden von Richtlinien auf Ihren VMs in Azure
+description: Erfahren Sie mehr über Sicherheit und Richtlinien für virtuelle Computer in Azure.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 4ae87a7a7a62d2cbf9b712fdd99b9a275aaf4f22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4910acd99abd6059de40e67a1b1629259c8215cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073292"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099409"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331842"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583196"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -83,7 +83,6 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 - Microsoft Kaizala
 - Microsoft Launcher
 - Microsoft Office
-- Microsoft Office Hub
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook

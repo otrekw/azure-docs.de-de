@@ -1,11 +1,11 @@
 ---
-title: Massenwiederherstellung gelöschter Benutzer (Vorschau) im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Massenwiederherstellung gelöschter Benutzer im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Gelöschte Benutzer in einem Massenvorgang im Azure AD Admin Center in Azure Active Directory wiederherstellen
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,16 +13,37 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174245"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203295"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer (Vorschau) in Azure Active Directory
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer in Azure Active Directory
 
-Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung und Massenlöschung von Benutzern, Masseneinladung für Gäste sowie das Herunterladen von Listen von Benutzern, Gruppen und Gruppenmitgliedern.
+Azure Active Directory (Azure AD) unterstützt Vorgänge zur Massenwiederherstellung von Benutzern sowie das Herunterladen von Listen von Benutzern, Gruppen und Gruppenmitgliedern.
+
+## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
+
+Laden Sie die CSV-Vorlage herunter, und füllen Sie sie aus, um mehrere Azure AD-Benutzer gleichzeitig wiederherzustellen. Die heruntergeladene CSV-Vorlage ähnelt möglicherweise dem folgenden Beispiel:
+
+![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und zu den Werten für jede Zeile und Spalte](./media/users-bulk-restore/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
+
+Die heruntergeladene CSV-Vorlage umfasst folgende Zeilen:
+
+- **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
+- **Spaltenüberschriften**: Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Object ID [objectId] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
+- **Beispielzeile**: In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+
+### <a name="additional-guidance"></a>Zusätzliche Anleitungen
+
+- Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
+- Die erforderlichen Spalten werden zuerst aufgelistet.
+- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird empfohlen, dass Sie möglichst häufig die neueste Version der CSV-Vorlage herunterladen.
 
 ## <a name="to-bulk-restore-users"></a>So stellen Sie Benutzer in einem Massenvorgang wieder her
 
@@ -32,11 +53,11 @@ Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung un
 
    ![Auf der Seite „Gelöschte Benutzer“ den Benutzer „Massenwiederherstellung“ auswählen](./media/users-bulk-restore/bulk-restore.png)
 
-1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie wiederherstellen möchten. Der einzige erforderliche Wert ist **ObjectID**. Speichern Sie dann die Datei.
+1. Öffnen Sie die CSV-Vorlage, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie wiederherstellen möchten. Der einzige erforderliche Wert ist **ObjectID**. Speichern Sie dann die Datei.
 
    ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten.](./media/users-bulk-restore/upload-button.png)
 
-1. Navigieren Sie auf der Seite **Massenwiederherstellung von Benutzern (Vorschau)** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
+1. Navigieren Sie auf der Seite **Massenwiederherstellung von Benutzern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
 1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Wiederherstellen der Benutzer zu starten.
 1. Nach Abschluss des Wiederherstellungsvorgangs wird eine Benachrichtigung angezeigt, dass der Massenvorgang erfolgreich abgeschlossen wurde.
@@ -45,9 +66,9 @@ Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse 
 
 ## <a name="check-status"></a>Status überprüfen
 
-Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen (Vorschau)** anzeigen.
+Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-   ![Überprüfen des Uploadstatus auf der Seite „Ergebnisse von Massenvorgängen“](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Als Nächstes können Sie entweder im Azure-Portal oder mithilfe von PowerShell überprüfen, ob die wiederhergestellten Benutzer in der Azure AD-Organisation vorhanden sind.
 

@@ -1,20 +1,19 @@
 ---
 title: Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight
 description: Erfahren Sie mehr über die PySpark-, PySpark3- und Spark-Kernel für in Spark-Clustern in HDInsight Linux verfügbare Jupyter-Notebooks.
-keywords: Jupyter-Notebook unter Spark, Jupyter Spark
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/20/2020
-ms.openlocfilehash: a04b8fee31ffa5280bc8ad0fca35495bb87e0e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064468"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191956"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter Notebook in Apache Spark-Clustern in Azure HDInsight
 
@@ -53,7 +52,7 @@ Einen Apache Spark-Cluster unter HDInsight Eine Anleitung finden Sie unter [Erst
 
 Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Notebook in Spark HDInsight-Clustern.
 
-- **Voreingestellte Kontexte** Bei Verwendung der **PySpark**-, **PySpark3**- oder **Spark**-Kernel müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit Ihren Anwendungen arbeiten zu können. Diese sind standardmäßig verfügbar. Diese Kontexte sind:
+- **Voreingestellte Kontexte** Bei Verwendung der **PySpark**-, **PySpark3**- oder **Spark**-Kernel müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit Ihren Anwendungen arbeiten zu können. Diese Kontexte sind standardmäßig verfügbar. Diese Kontexte sind:
 
   - **sc** (Spark-Kontext)
   - **sqlContext** – für Hive-Kontext
@@ -73,9 +72,9 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
    | --- | --- | --- |
    | help |`%%help` |Generiert eine Tabelle mit allen verfügbaren Magics mit Beispiel und Beschreibung. |
    | info |`%%info` |Gibt Sitzungsinformationen für den aktuellen Livy-Endpunkt heraus. |
-   | KONFIGURIEREN |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguriert die Parameter für das Erstellen einer neuen Sitzung. Das Force-Flag (-f) ist obligatorisch, wenn bereits eine Sitzung erstellt wurde, um sicherzustellen, dass die Sitzung gelöscht und neu erstellt wird. Unter [„Request Body“ in „POST /sessions“ für Livy](https://github.com/cloudera/livy#request-body) finden Sie eine Liste der gültigen Parameter. Parameter müssen als JSON-Zeichenfolge übergeben werden und in der nächsten Zeile nach dem Magic-Befehl stehen, wie in der Beispielspalte gezeigt. |
+   | KONFIGURIEREN |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguriert die Parameter für das Erstellen einer neuen Sitzung. Das Erzwingungsflag (`-f`) ist obligatorisch, wenn bereits eine Sitzung erstellt wurde, um sicherzustellen, dass die Sitzung gelöscht und neu erstellt wird. Unter [„Request Body“ in „POST /sessions“ für Livy](https://github.com/cloudera/livy#request-body) finden Sie eine Liste der gültigen Parameter. Parameter müssen als JSON-Zeichenfolge übergeben werden und in der nächsten Zeile nach dem Magic-Befehl stehen, wie in der Beispielspalte gezeigt. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](https://pandas.pydata.org/) -Dataframe beibehalten. |
-   | local |`%%local`<br>`a=1` |Der gesamte Code in den folgenden Zeilen wird lokal ausgeführt. Der Code muss gültiger Python2-Code sein, unabhängig vom verwendeten Kernel. Sogar wenn Sie beim Erstellen des Notebooks **PySpark3**- oder **Spark**-Kernels gewählt haben und die `%%local`-Magic in einer Zelle verwenden, darf diese Zelle nur gültigen Python2-Code enthalten. |
+   | local |`%%local`<br>`a=1` |Der gesamte Code in späteren Zeilen wird lokal ausgeführt. Der Code muss gültiger Python 2-Code sein, unabhängig vom verwendeten Kernel. Sogar wenn Sie beim Erstellen des Notebooks **PySpark3**- oder **Spark**-Kernels gewählt haben und die `%%local`-Magic in einer Zelle verwenden, darf diese Zelle nur gültigen Python2-Code enthalten. |
    | logs |`%%logs` |Gibt die Protokolle für die aktuelle Livy-Sitzung aus. |
    | delete |`%%delete -f -s <session number>` |Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Die Sitzung, die für den Kernel selbst initiiert wird, können Sie nicht löschen. |
    | cleanup |`%%cleanup -f` |Löscht alle Sitzungen für den aktuellen Livy-Endpunkt, einschließlich dieser Notebook-Sitzung. Das Force-Flag „-f“ ist obligatorisch |
@@ -92,8 +91,8 @@ Die `%%sql`-Magic unterstützt verschiedene Parameter, mit denen Sie steuern kö
 | Parameter | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](https://pandas.pydata.org/) -Dataframe beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
-| -q |`-q` |Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z.B. zum Ausführen einer SQL-Abfrage wie etwa einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
-| -M |`-m <METHOD>` |Dabei ist **METHOD** entweder **take** oder **sample** (der Standardwert ist **take**). Wenn die Methode **take**ist, wählt der Kernel Elemente von der obersten Position des Resultdatasets gemäß MAXROWS (weiter unten in dieser Tabelle beschrieben). Wenn die Methode **sample** ist, wählt der Kernel nach dem Zufallsprinzip Elemente des Datasets gemäß des `-r`-Parameters, der in dieser Tabelle beschrieben wird. |
+| -q |`-q` |Verwenden Sie diesen Parameter, um die Visualisierungen für die Zelle zu deaktivieren. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z.B. zum Ausführen einer SQL-Abfrage wie etwa einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
+| -M |`-m <METHOD>` |Dabei ist **METHOD** entweder **take** oder **sample** (der Standardwert ist **take**). Wenn die Methode **`take`** ist, wählt der Kernel Elemente von der obersten Position des Ergebnisdatasets gemäß MAXROWS (weiter unten in dieser Tabelle beschrieben) aus. Wenn die Methode **sample** ist, wählt der Kernel nach dem Zufallsprinzip Elemente des Datasets gemäß des `-r`-Parameters, der in dieser Tabelle beschrieben wird. |
 | -r |`-r <FRACTION>` |Hier ist **FRACTION** eine Gleitkommazahl zwischen 0,0 und 1,0. Wenn die Methode für die SQL-Abfrage `sample` ist, dann wählt der Kernel nach dem Zufallsprinzip den angegebenen Bruchteil der Elemente des Resultsets aus. Wenn Sie z.B. eine SQL-Abfrage mit den Argumenten `-m sample -r 0.01` ausführen, wird 1% der Ergebniszeilen nach dem Zufallsprinzip entnommen. |
 | -n |`-n <MAXROWS>` |**MAXROWS** ist ein Ganzzahlwert. Der Kernel schränkt die Anzahl der Ausgabezeilen auf **MAXROWS** ein. Wenn **MAXROWS** eine negative Zahl ist, z.B. **-1**, dann ist die Anzahl der Zeilen im Resultset nicht begrenzt. |
 
@@ -102,31 +101,31 @@ Die `%%sql`-Magic unterstützt verschiedene Parameter, mit denen Sie steuern kö
     %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
-Die obige Anweisung führt Folgendes aus:
+Die obige Anweisung führt folgende Aktionen aus:
 
 - Wählt alle Datensätze aus **hivesampletable**aus.
 - Da wir „-q“ verwenden, wird die automatische Visualisierung deaktiviert.
-- Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10% der Zeilen in „hivesampletable“ ausgewählt, und die Größe des Resultsets wird auf 500 Zeilen beschränkt.
+- Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10 % der Zeilen in „hivesampletable“ ausgewählt, und die Größe des Resultsets wird auf 500 Zeilen beschränkt.
 - Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2**gespeichert.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Überlegungen bei der Verwendung der neuen Kernel
 
-Unabhängig vom verwendeten Kernel werden von ausgeführten Notebooks immer Clusterressourcen beansprucht.  Da die Kontexte für diese Kernels voreingestellt sind, werden die Kontexte durch ein einfaches Beenden der Notebooks nicht ebenfalls beendet, sondern beanspruchen weiterhin Clusterressourcen. Daher empfiehlt sich die Verwendung der Option zum **Schließen und Anhalten** aus dem Menü **Datei** des Notebooks. Dadurch wird die Beendigung des Kontexts erzwungen und das Notebook beendet.
+Unabhängig vom verwendeten Kernel werden von ausgeführten Notebooks immer Clusterressourcen beansprucht.  Da die Kontexte für diese Kernels voreingestellt sind, wird der Kontext durch ein einfaches Beenden der Notebooks nicht ebenfalls beendet. Die Clusterressourcen werden somit weiterhin verwendet. Es wird empfohlen, nach der Verwendung des Notebooks die Option zum **Schließen und Anhalten** im Menü **Datei** zu verwenden. Durch das Schließen wird die Beendigung des Kontexts erzwungen und das Notebook beendet.
 
 ## <a name="where-are-the-notebooks-stored"></a>Wo werden die Notebooks gespeichert?
 
-Wenn Ihr Cluster Azure Storage als Standardspeicherkonto verwendet, werden Jupyter Notebooks unter dem Ordner **/HdiNotebooks** im Speicherkonto gespeichert.  Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt über das Speicherkonto.  Wenn Sie z.B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie im Speicherkonto unter `/HdiNotebooks/myfolder/mynotebook.ipynb` auf dieses Notebook zugreifen.  Das gilt auch umgekehrt, d.h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar.  Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+Wenn Ihr Cluster Azure Storage als Standardspeicherkonto verwendet, werden Jupyter Notebooks unter dem Ordner **/HdiNotebooks** im Speicherkonto gespeichert.  Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt über das Speicherkonto.  Wenn Sie z. B. Jupyter verwenden, um den Ordner **`myfolder`** und das Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie im Speicherkonto unter `/HdiNotebooks/myfolder/mynotebook.ipynb` auf dieses Notebook zugreifen.  Das gilt auch umgekehrt, d.h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar.  Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
 
 > [!NOTE]  
 > HDInsight-Cluster mit Azure Data Lake Storage als Standardspeicher speichern Notebooks nicht im zugehörigen Speicher.
 
-Der Vorgang des Speicherns von Notebooks im Speicherkonto ist mit [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibel. Wenn Sie also eine SSH-Verbindung mit dem Cluster herstellen, können Sie Dateiverwaltungsbefehle wie im folgenden Codeausschnitt verwenden:
+Der Vorgang des Speicherns von Notebooks im Speicherkonto ist mit [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibel. Wenn Sie eine SSH-Verbindung mit dem Cluster herstellen, können Sie die Dateiverwaltungsbefehle verwenden:
 
     hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
     hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
 
-Unabhängig davon, ob der Cluster Azure Storage oder Azure Data Lake Storage als das Standardspeicherkonto verwendet, werden die Notebooks auch auf dem Clusterhauptknoten unter `/var/lib/jupyter` gespeichert.
+Unabhängig davon, ob der Cluster Azure Storage oder Azure Data Lake Storage als Standardspeicherkonto verwendet, werden die Notebooks auch auf dem Clusterhauptknoten unter `/var/lib/jupyter` gespeichert.
 
 ## <a name="supported-browser"></a>Unterstützte Browser
 
@@ -134,33 +133,11 @@ Jupyter Notebooks in Spark HDInsight-Clustern werden nur von Google Chrome unter
 
 ## <a name="feedback"></a>Feedback
 
-Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Zuge dieser Entwicklung ändern sich unter Umständen auch APIs. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Dies hilft uns bei der Gestaltung der endgültigen Kernelversion. Kommentare/Feedback können Sie im **Feedbackabschnitt** am Ende dieses Artikels hinterlassen.
+Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Lauf dieser Entwicklung werden unter Umständen auch die APIs geändert. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Das Feedback hilft uns bei der Gestaltung des endgültigen Kernelrelease. Kommentare/Feedback können Sie im **Feedbackabschnitt** am Ende dieses Artikels hinterlassen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Szenarien
-
-- [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
-- [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
-- [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-- [Websiteprotokollanalyse mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
-
-- [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
-- [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Tools und Erweiterungen
-
-- [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)
-- [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 - [Verwenden von Apache Zeppelin Notebooks mit einem Apache Spark-Cluster unter HDInsight](apache-spark-zeppelin-notebook.md)
 - [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 - [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Ressourcen verwalten
-
-- [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
-- [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

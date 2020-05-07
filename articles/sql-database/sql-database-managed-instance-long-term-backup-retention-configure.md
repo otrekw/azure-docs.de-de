@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677100"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509702"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Verwalten der Langfristige Sicherungsaufbewahrung für verwaltete Azure SQL-Datenbank-Instanzen (PowerShell)
 
 In einer verwalteten Azure SQL-Datenbank-Instanz können Sie eine Richtlinie für die [Langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md#managed-instance-support) (Long-Term Retention, LTR) als Previewfunktion der eingeschränkten Public Preview konfigurieren. Dies ermöglicht Ihnen, Datenbanksicherungen automatisch bis zu 10 Jahre in separaten Azure Blob Storage-Containern beizubehalten. Sie können dann mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
 
    > [!IMPORTANT]
-   > Die Langzeitaufbewahrung für verwaltete Instanzen befindet sich derzeit in der eingeschränkten Vorschauphase und ist fallbasiert für EA- und CSP-Abonnements verfügbar. Um die Registrierung anzufordern, erstellen Sie ein [Azure-Support-Ticket](https://azure.microsoft.com/support/create-ticket/) im Supportthema **Sicherung, Wiederherstellung und Geschäftskontinuität/langfristige Sicherungsaufbewahrung**. 
-
+   > Die Langzeitaufbewahrung für verwaltete Instanzen befindet sich derzeit in der eingeschränkten Vorschauphase und ist fallbasiert für EA- und CSP-Abonnements verfügbar. Wenn Sie eine Registrierung anfordern möchten, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/). Wählen Sie bei „Issuetyp“ die Option „Technisches Problem“, bei „Dienst“ die Option „Verwaltete SQL-Datenbank-Instanz“ und bei „Problemtyp“ die Option **Sicherung, Wiederherstellung und Geschäftskontinuität/Langfristige Sicherungsaufbewahrung** aus. Geben Sie in Ihrer Anforderung an, dass Sie für die eingeschränkte Public Preview der LTR für eine verwaltete Instanz registriert werden möchten.
 
 In den folgenden Abschnitten wird erläutert, wie Sie mithilfe von PowerShell die langfristige Sicherungsaufbewahrung konfigurieren, Sicherungen in Azure SQL-Speicher anzeigen und eine Sicherung in Azure SQL-Speicher wiederherstellen.
 

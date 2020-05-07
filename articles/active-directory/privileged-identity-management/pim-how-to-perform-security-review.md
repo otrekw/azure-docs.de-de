@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76eccb5d62b68865b7a117312be62753f203e2cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6aacf45bf33663c448aa21d63900d69d5d870e0d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73847089"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183397"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Überprüfen des Zugriffs auf Azure AD-Rollen in Privileged Identity Management
 
@@ -31,10 +31,10 @@ Wenn Sie Administrator für privilegierte Rollen oder globaler Administrator sin
 
 ## <a name="add-a-pim-dashboard-tile"></a>Hinzufügen einer PIM-Dashboardkachel
 
-Wenn Sie den Azure AD Privileged Identity Management-Dienst nicht im Azure-Portal an Ihr Dashboard angeheftet haben, führen Sie die folgenden Schritte aus, um zu beginnen.
+Wenn Sie den Privileged Identity Management-Dienst nicht im Azure-Portal an Ihr Dashboard angeheftet haben, führen Sie die folgenden Schritte aus, um zu beginnen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie in der oberen rechten Ecke des Azure-Portals Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie arbeiten möchten.
+2. Wählen Sie in der rechten oberen Ecke des Azure-Portals Ihren Benutzernamen und die Azure AD-Organisation aus, in der Sie arbeiten möchten.
 3. Wählen Sie **Alle Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
 4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
@@ -49,7 +49,6 @@ Gehen Sie wie folgt vor, um die Zugriffsüberprüfung zu finden und abzuschließ
 4. Wählen Sie entweder **Genehmigen** oder **Verweigern** aus. Möglicherweise müssen Sie einen Grund für Ihre Entscheidung im Textfeld **Grund angeben** eingeben.  
 5. Schließen Sie das Blatt **Azure AD-Rollen überprüfen** .
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ausführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-perform-access-review.md)

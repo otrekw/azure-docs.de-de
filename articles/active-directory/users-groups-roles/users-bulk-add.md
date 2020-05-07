@@ -1,11 +1,11 @@
 ---
-title: Massenerstellung von Benutzern (Vorschau) im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Massenerstellung von Benutzern im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Fügen Sie Benutzer in einem Massenvorgang im Azure Admin Center in Azure Active Directory hinzu.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/27/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,41 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174310"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203397"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Massenerstellung von Benutzern (Vorschau) in Azure Active Directory
+# <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
 
-Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung und Massenlöschung von Benutzern, Masseneinladung für Gäste sowie das Herunterladen von Listen von Benutzern, Gruppen und Gruppenmitgliedern.
+Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung und -löschung von Benutzern sowie das Herunterladen von Benutzerlisten. Füllen Sie einfach die CSV-Vorlage aus, die Sie im Azure AD-Portal herunterladen können.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 Zur Massenerstellung von Benutzern im Verwaltungsportal müssen Sie als globaler Administrator oder Benutzeradministrator angemeldet sein.
+
+## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
+
+Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie aus, um mehrere Azure AD-Benutzer gleichzeitig zu erstellen. Die heruntergeladene CSV-Vorlage ähnelt etwa dem folgenden Beispiel:
+
+![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/users-bulk-add/create-template-example.png)
+
+### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
+
+Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
+
+- **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
+- **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Name [displayName] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
+- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+
+### <a name="additional-guidance"></a>Zusätzliche Anleitungen
+
+- Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
+- Die erforderlichen Spalten werden zuerst aufgelistet.
+- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
 
 ## <a name="to-create-users-in-bulk"></a>So erstellen Sie Benutzer in einem Massenvorgang
 
@@ -38,9 +59,9 @@ Zur Massenerstellung von Benutzern im Verwaltungsportal müssen Sie als globaler
 
 1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie erstellen möchten. Die einzigen erforderlichen Werte sind **Name**, **Benutzerprinzipalname**, **Anfängliches Kennwort** und **Anmeldung blockieren (Ja/Nein)** . Speichern Sie dann die Datei.
 
-   ![Die CSV-Datei enthält Namen und IDs der zu erstellenden Benutzer.](./media/users-bulk-add/add-csv-file.png)
+   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
 
-1. Navigieren Sie auf der Seite **Massenerstellung von Benutzern (Vorschau)** unter „CSV-Datei hochladen“ zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
+1. Navigieren Sie auf der Seite **Massenerstellung von Benutzern** unter „CSV-Datei hochladen“ zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
 1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Importieren der neuen Benutzer zu starten.
 1. Nach Abschluss des Importvorgangs wird eine Benachrichtigung mit dem Auftragsstatus des Massenvorgangs angezeigt.
@@ -49,9 +70,9 @@ Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse 
 
 ## <a name="check-status"></a>Status überprüfen
 
-Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen (Vorschau)** anzeigen.
+Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-   ![Überprüfen des Uploadstatus auf der Seite „Ergebnisse von Massenvorgängen“](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 Als Nächstes können Sie entweder im Azure-Portal oder mithilfe von PowerShell überprüfen, ob die erstellten Benutzer in der Azure AD-Organisation vorhanden sind.
 

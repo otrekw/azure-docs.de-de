@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062488"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625832"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Verwalten von verbundenen Geräten auf der Seite „Geräte“
 
@@ -31,7 +31,7 @@ Auf der Seite **Geräte** im Portal **Mein Konto** können Sie die mit Ihrem Ges
 
 ## <a name="view-your-connected-devices"></a>Anzeigen Ihrer verbundenen Geräte
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myprofile.microsoft.com/).
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myaccount.microsoft.com/).
 
 2. Wählen Sie im Navigationsbereich auf der linken Seite **Geräte** aus, oder klicken Sie auf den Link **Geräte verwalten** im Block **Geräte**.
 

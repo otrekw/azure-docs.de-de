@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933860"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131204"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,45 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="april-2020"></a>April 2020
+
+### <a name="new-widget-parameters-capabilities"></a>Neue Funktionen für Widgetparameter
+
+Das Widget **Insights** weist neue Parameter auf: `language` und `control`.
+
+Das Widget **Player** weist den neuen Parameter `locale` auf. Die Parameter `locale` und `language` steuern die Sprache des Players.
+
+Weitere Informationen finden Sie im Abschnitt [Widgettypen](video-indexer-embed-widgets.md#widget-types). 
+
+### <a name="new-player-skin"></a>Neue Playerskin
+
+Eine neue Playerskin mit aktualisiertem Design wurde herausgegeben.
+
+### <a name="prepare-for-upcoming-changes"></a>Vorbereitung auf bevorstehende Änderungen
+
+* Heute geben die folgenden APIs ein Kontoobjekt zurück:
+
+    * [Create-Paid-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)
+    * [Get-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account)
+    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
+    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
+ 
+    Das Account-Objekt weist ein Feld `Url` auf, das auf den Speicherort der [Video Indexer-Website](https://www.videoindexer.ai/) verweist.
+Für kostenpflichtige Konten verweist das Feld `Url` zurzeit auf eine interne URL anstelle der öffentlichen Website.
+In den nächsten Wochen werden wir dies ändern und die URL der [Video Indexer-Website](https://www.videoindexer.ai/) für alle Konten zurückgeben (Testkonten und kostenpflichtige Konten).
+
+    Verwenden Sie nicht die internen URLs, Sie sollten die [öffentlichen Video Indexer-APIs](https://api-portal.videoindexer.ai/) verwenden.
+* Wenn Sie Video Indexer-URLs in Ihre Anwendungen einbetten und die URLs nicht auf die [Video Indexer-Website](https://www.videoindexer.ai/) oder den [Video Indexer-API-Endpunkt](https://api.videoindexer.ai) sondern stattdessen auf einen regionalen Endpunkt verweisen (beispielsweise `https://wus2.videoindexer.ai`), generieren Sie die URLs erneut.
+
+   Dies kann auf einer der folgenden Weisen erfolgen:
+
+    * Ersetzen der URL durch eine URL, die auf die Video Indexer-Widget-APIs verweist (beispielsweise das [Widget „Kognitive Erkenntnisse“](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
+    * Verwenden der Video Indexer-Website zum Generieren einer neuen eingebetteten URL:
+         
+         Drücken Sie **Wiedergabe**, um zur Seite Ihres Videos zu gelangen > klicken Sie auf die Schaltfläche **&lt;/&gt; Einbinden** > kopieren Sie die URL in Ihre Anwendung:
+   
+    Die regionalen URLs werden nicht unterstützt und werden in den nächsten Wochen blockiert.
 
 ## <a name="january-2020"></a>Januar 2020
  
