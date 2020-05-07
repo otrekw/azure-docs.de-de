@@ -56,9 +56,11 @@
       href: use-key-vault-references-spring-boot.md
     - name: Integrieren in eine CI/CD-Pipeline
       href: integrate-ci-cd-pipeline.md
+    - name: Integrieren in eine Kubernetes-Bereitstellung mit Helm
+      href: integrate-kubernetes-deployment-helm.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
 - name: Konzepte
   items:
@@ -104,7 +106,7 @@
   items:
     - name: Konfiguration
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
