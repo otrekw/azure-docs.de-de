@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bca9c0e4c0695b6180775051d8b018930f8b808f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256466"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186168"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-Sicherheitsbaseline für Azure Database for MariaDB
 
@@ -500,7 +500,7 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Leitfaden**: Azure Database for MariaDB unterstützt die Verbindung Ihres Servers mit Azure Database for MariaDB mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Stellen Sie im Azure-Portal sicher, dass „SSL-Verbindung erzwingen“ für alle MariaDB-Instanzen aktiviert ist.
+**Leitfaden**: Azure Database for MariaDB unterstützt die Verbindung Ihres Azure Database for MariaDB-Servers mit Clientanwendungen über TLS (Transport Layer Security ehemals Secure Sockets Layer, SSL). Durch das Erzwingen von TLS-Verbindungen zwischen Ihrem Datenbankserver und Ihren Clientanwendungen können Sie sich vor Man-in-the-Middle-Angriffen schützen, indem Sie den Datenstrom zwischen dem Server und Ihrer Anwendung verschlüsseln. Stellen Sie im Azure-Portal sicher, dass „SSL-Verbindung erzwingen“ für alle MariaDB-Instanzen aktiviert ist.
 
 Konfigurieren der Verschlüsselung während der Übertragung für MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
 
@@ -620,7 +620,7 @@ Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse: https://docs.
 
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (einschließlich Azure Database for MariaDB-Server) innerhalb Ihrer Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass Sie über entsprechende (Lese-)Berechtigungen in Ihrem Mandanten verfügen und alle Azure-Abonnements und Ressourcen in Ihren Abonnements auflisten können.
 
-Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -664,7 +664,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -710,7 +710,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9: Ausschließliche Verwendung genehmigter Azure-Dienste
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -794,7 +794,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
+**Leitfaden**: Verwenden Sie die Azure Policy-Einstellungen [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre Azure-Ressourcen zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -816,7 +816,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
-**Leitfaden**: Nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure-Richtliniendefinitionen für Azure Database for MariaDB-Server oder zugehörige Ressourcen verwenden.
+**Leitfaden**: Nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure Policy-Definitionen für Azure Database for MariaDB-Server oder zugehörige Ressourcen verwenden.
 
 Speichern von Code in Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -856,7 +856,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
 
-**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforMariaDB“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie Azure Policy ([Überwachen], [Verweigern] und [Bereitstellen, falls nicht vorhanden]), um Konfigurationen für Ihre Azure Database for MariaDB Instanzen und zugehörige Ressourcen automatisch zu erzwingen.
+**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforMariaDB“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie Azure Policy ([Überwachen], [Verweigern] und [Bereitstellen, falls nicht vorhanden]), um Konfigurationen für Ihre Azure Database for MariaDB-Instanzen und zugehörige Ressourcen automatisch zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666753"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144339"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -31,13 +31,15 @@ Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Beispiel benötigen Sie Folgendes:
-
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/).
+Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Ein E-Mail-Konto bei einem [von Azure Logic Apps unterstützten E-Mail-Anbieter](../connectors/apis-list.md)
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+  > [!IMPORTANT]
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Um anstelle des Azure-Portals Visual Studio zu verwenden, müssen Sie [Visual Studio zur Verwendung mit Logik Apps einrichten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
@@ -83,9 +85,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
    2. Geben Sie im Suchfeld den Begriff „E-Mail senden“ als Filter ein.
    Wählen Sie basierend auf Ihrem E-Mail-Anbieter einen E-Mail-Connector aus.
 
-      Beispiel: Wenn Sie ein persönliches Konto wie @outlook.com oder @hotmail.com besitzen, wählen Sie den Outlook.com-Connector aus. 
-      Wenn Sie ein Gmail-Konto besitzen, wählen Sie den Gmail-Connector aus. 
-      In diesem Beispiel wird Office 365 Outlook verwendet. 
+      Beispiel: Wenn Sie ein persönliches Konto wie @outlook.com oder @hotmail.com besitzen, wählen Sie den Outlook.com-Connector aus. In diesem Beispiel wird der Office 365 Outlook-Connector verwendet.
 
    3. Wählen Sie diese Aktion aus: **E-Mail senden – <*E-Mail-Anbieter*>**
 
