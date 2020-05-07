@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544501"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836664"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -28,11 +28,11 @@ Azure Application Gateway stellt einen Application Deliver Controller (ADC) als 
 
 ### <a name="what-features-does-application-gateway-support"></a>Welche Funktionen werden von Application Gateway unterstützt?
 
-Application Gateway unterstützt automatische Skalierung, SSL-Abladung und End-to-End-SSL, Web Application Firewall (WAF), cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Hosting für mehrere Standorte und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+Application Gateway unterstützt automatische Skalierung, TLS-Abladung und End-to-End-TLS, Web Application Firewall (WAF), cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Hosting für mehrere Standorte und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?
 
-Application Gateway ist ein Layer-7-Lastenausgleich und somit nur für Webdatenverkehr (HTTP/HTTPS/WebSocket und HTTP/2) geeignet. Er unterstützt Funktionen wie SSL-Terminierung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer nimmt einen Lastausgleich des Datenverkehrs auf Schicht 4 (TCP/UDP) vor.
+Application Gateway ist ein Layer-7-Lastenausgleich und somit nur für Webdatenverkehr (HTTP/HTTPS/WebSocket und HTTP/2) geeignet. Er unterstützt Funktionen wie TLS-Terminierung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer nimmt einen Lastausgleich des Datenverkehrs auf Schicht 4 (TCP/UDP) vor.
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Welche Protokolle werden von Application Gateway unterstützt?
 
@@ -72,7 +72,7 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, finden Sie die Inf
 
 *Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. 
 
-Der *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. 
+Der *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. Sie können diese Werte nicht ändern.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer des Anwendungsgateways?
 
@@ -121,6 +121,15 @@ Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und W
 ### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Wird die Application Gateway v1-SKU weiterhin unterstützt?
 
 Ja. Die Application Gateway v1-SKU wird weiterhin unterstützt. Es wird jedoch dringend empfohlen, zu v2 zu wechseln, um die Funktionsupdates in dieser SKU zu nutzen. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](application-gateway-autoscaling-zone-redundant.md).
+
+### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Unterstützt Application Gateway V2 Proxyanforderungen mit NTLM-Authentifizierung?
+
+Nein. Application Gateway V2 unterstützt noch keine Proxyanforderungen mit NTLM-Authentifizierung.
+
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Unterstützt das Affinitätscookie von Application Gateway das SameSite-Attribut?
+Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt erstmals ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Das bedeutet, dass das Affinitätscookie von Application Gateway nicht vom Browser in einem Drittanbieterkontext gesendet wird. 
+
+Zur Unterstützung dieses Szenarios fügt Application Gateway zusätzlich zum vorhandenen Cookie *ApplicationGatewayAffinity* ein weiteres Cookie namens *ApplicationGatewayAffinityCORS* ein.  Diese Cookies sind ähnlich, aber dem Cookie *ApplicationGatewayAffinityCORS* wurden zwei weitere Attribute hinzugefügt: *SameSite=None; Secure*. Diese Attribute behalten persistente Sitzungen selbst bei quellenübergreifenden Anforderungen bei. Weitere Informationen finden Sie im [Abschnitt zur cookiebasierten Affinität](configuration-overview.md#cookie-based-affinity).
 
 ## <a name="performance"></a>Leistung
 
@@ -216,7 +225,30 @@ Nein.
 
 Von Application Gateway v2 wird IPv6 derzeit nicht unterstützt. Es kann in einem Dual Stack-VNet betrieben werden, wo nur IPv4 verwendet wird, aber nur in Verbindung mit einem IPv4-Gatewaysubnetz. Application Gateway v1 bietet keine Unterstützung für Dual Stack-VNets. 
 
-## <a name="configuration---ssl"></a>Konfiguration: SSL
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Wie verwende ich Application Gateway v2 mit einer rein privaten Front-End-IP-Adresse?
+
+Application Gateway v2 unterstützt derzeit nicht den rein privaten IP-Modus. Es unterstützt die folgenden Kombinationen:
+* Private IP- und öffentliche IP-Adresse
+* Nur öffentliche IP-Adresse
+
+Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden möchten, können Sie das folgende Verfahren befolgen:
+1. Erstellen einer Application Gateway-Instanz sowohl mit öffentlicher als auch privater Front-End-IP-Adresse
+2. Erstellen Sie keine Listener für die öffentliche Front-End-IP-Adresse. Application Gateway lauscht nicht über die öffentliche IP-Adresse auf Datenverkehr, wenn keine Listener dafür erstellt werden.
+3. Erstellen Sie für das Application Gateway-Subnetz eine [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) mit der folgenden Konfiguration in der Reihenfolge der Priorität:
+    
+    a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager**-Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
+    
+    b. Lassen Sie Datenverkehr von der Quelle als **AzureLoadBalancer**-Diensttag und Ziel und Zielport als **Beliebig** zu.
+    
+    c. Lehnen Sie sämtlichen eingehenden Datenverkehr von der Quelle als **Internet**-Diensttag und Ziel und Zielport als **Beliebig** ab. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
+    
+    d. Behalten Sie die Standardregeln wie das Zulassen des VirtualNetwork-Eingangs bei, sodass der Zugriff auf die private IP-Adresse nicht blockiert wird.
+    
+    e. Die ausgehende Internetverbindung kann nicht blockiert sein. Andernfalls treten Probleme mit der Protokollierung, den Metriken usw. auf.
+
+Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen: ![Application Gateway v2-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen](./media/application-gateway-faq/appgw-privip-nsg.png)
+
+## <a name="configuration---tls"></a>Konfiguration: TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Welche Zertifikate werden von Application Gateway unterstützt?
 
@@ -255,13 +287,13 @@ Application Gateway unterstützt die folgenden Verschlüsselungssammlungen:
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-Informationen zum Anpassen von SSL-Optionen finden Sie unter [Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway](application-gateway-configure-ssl-policy-powershell.md).
+Informationen zum Anpassen von TLS-Optionen finden Sie unter [Konfigurieren von TLS-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway](application-gateway-configure-ssl-policy-powershell.md).
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Unterstützt Application Gateway eine erneute Verschlüsselung des Datenverkehrs an das Back-End?
 
-Ja. Application Gateway unterstützt SSL-Abladung sowie End-to-End-SSL, das den Datenverkehr an das Back-End erneut verschlüsselt.
+Ja. Application Gateway unterstützt TLS-Abladung sowie End-to-End-TLS, das den Datenverkehr an das Back-End erneut verschlüsselt.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Kann ich die SSL-Richtlinie für die Steuerung von SSL-Protokollversionen konfigurieren?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Kann ich die TLS-Richtlinie konfigurieren, um TLS-Protokollversionen zu steuern?
 
 Ja. Sie können Application Gateway zum Abweisen von TLS1.0, TLS1.1 und TLS1.2 konfigurieren. Standardmäßig sind SSL 2.0 und 3.0 bereits deaktiviert und nicht konfigurierbar.
 
@@ -278,9 +310,9 @@ Ja. In Application Gateway können Sie [Verschlüsselungssammlungen konfiguriere
 
 Application Gateway verwendet SHA256 für die Back-End-Verwaltung.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Wie viele Zertifikate werden von Application Gateway unterstützt?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Wie viele TLS-/SSL-Zertifikate werden von Application Gateway unterstützt?
 
-Application Gateway unterstützt bis zu 100 SSL-Zertifikate.
+Application Gateway unterstützt bis zu 100 TLS-/SSL-Zertifikate.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Wie viele Authentifizierungszertifikate für die erneute Back-End-Verschlüsselung werden von Application Gateway unterstützt?
 
@@ -288,7 +320,7 @@ Application Gateway unterstützt bis zu 100 Authentifizierungszertifikate.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Lässt sich Application Gateway nativ in Azure Key Vault integrieren?
 
-Ja, die Application Gateway v2-SKU unterstützt Key Vault. Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
+Ja, die Application Gateway v2-SKU unterstützt Key Vault. Weitere Informationen finden Sie unter [TLS-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Wie konfiguriere ich HTTPS-Listener für Websites vom Typ „.com“ und „.net“? 
 
@@ -298,47 +330,11 @@ Für das Routing auf der Grundlage mehrerer Domänen (hostbasiertes Routing) kö
 
 Nein, verwenden Sie nur alphanumerische Zeichen in Ihrem PFX-Dateikennwort.
 
-## <a name="configuration---web-application-firewall-waf"></a>Konfiguration: Web Application Firewall (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>Bietet die WAF-SKU alle Funktionen, die in der Standard-SKU verfügbar sind?
-
-Ja. WAF unterstützt alle Funktionen in der Standard-SKU.
-
-### <a name="how-do-i-monitor-waf"></a>Wie überwache ich WAF?
-
-Überwachen Sie WAF über die Diagnoseprotokollierung. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
-
-### <a name="does-detection-mode-block-traffic"></a>Wird Datenverkehr durch den Erkennungsmodus blockiert?
-
-Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
-
-### <a name="can-i-customize-waf-rules"></a>Kann ich WAF-Regeln anpassen?
-
-Ja. Weitere Informationen finden Sie unter [Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal](application-gateway-customize-waf-rules-portal.md).
-
-### <a name="what-rules-are-currently-available-for-waf"></a>Welche Regeln sind derzeit für WAF verfügbar?
-
-WAF unterstützt derzeit CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3.0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30) und [3.1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Diese Regeln bieten grundlegende Sicherheit für die meisten der zehn wichtigsten, von Open Web Application Security Project (OWASP) identifizierten Sicherheitsrisiken. 
-
-* Schutz vor Einschleusung von SQL-Befehlen
-* Schutz vor websiteübergreifendem Skripting
-* Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion.
-* Schutz vor Verletzungen des HTTP-Protokolls
-* Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
-* Verhindern von Bots, Crawlern und Scannern
-* Erkennung allgemeiner Fehler bei der Anwendungskonfiguration (in Bezug auf Apache, IIS usw.)
-
-Weitere Informationen finden Sie im Artikel zu den [zehn wichtigsten, von OWASP identifizierten Sicherheitsrisiken](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
-
-### <a name="does-waf-support-ddos-protection"></a>Unterstützt WAF DDoS-Schutz?
-
-Ja. Sie können DDoS-Schutz im virtuellen Netzwerk aktivieren, in dem das Anwendungsgateway bereitgestellt wird. Mit dieser Einstellung wird sichergestellt, dass der Azure DDoS Protection-Dienst auch die VIP-Adresse des Anwendungsgateways schützt.
-
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguration: Eingangscontroller für AKS
 
 ### <a name="what-is-an-ingress-controller"></a>Was ist ein Eingangscontroller?
 
-Kubernetes ermöglicht die Erstellung von `deployment`- und `service`-Ressourcen, um eine Gruppe von Pods intern im Cluster bereitzustellen. Um denselben Dienst extern verfügbar zu machen, wird eine [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)-Ressource definiert, die Lastenausgleich, SSL-Beendigung und namensbasiertes virtuelles Hosting bereitstellt.
+Kubernetes ermöglicht die Erstellung von `deployment`- und `service`-Ressourcen, um eine Gruppe von Pods intern im Cluster bereitzustellen. Um denselben Dienst extern verfügbar zu machen, wird eine [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)-Ressource definiert, die Lastenausgleich, TLS-Terminierung und namensbasiertes virtuelles Hosting bereitstellt.
 Um diese `Ingress`-Ressource zu bedienen, ist ein Eingangscontroller erforderlich, der auf Änderungen an `Ingress`-Ressourcen lauscht und die Lastenausgleichsrichtlinien konfiguriert.
 
 Der Application Gateway-Eingangscontroller ermöglicht die Verwendung von [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) als Eingangsressource für einen [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), der auch als AKS-Cluster bezeichnet wird.
