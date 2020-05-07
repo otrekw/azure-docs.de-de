@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324298"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench (Vorschauversion)
@@ -35,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Führen Sie das Skript aus.
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Führen Sie das `collectBlockchainWorkbenchTroubleshooting.ps1`-Skript aus, um Protokolle zu sammeln und eine ZIP-Datei zu erstellen, die einen Ordner mit Informationen zur Problembehebung enthält. Beispiel:
+Führen Sie das `collectBlockchainWorkbenchTroubleshooting.ps1`-Skript aus, um Protokolle zu sammeln und eine ZIP-Datei zu erstellen, die einen Ordner mit Informationen zur Problembehebung enthält. Beispiel: 
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -46,11 +46,11 @@ Das Skript akzeptiert die folgenden Parameter:
 |---------|---------|----|
 | SubscriptionID | SubscriptionID zum Erstellen oder Suchen aller Ressourcen. | Ja |
 | ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | Ja |
-| OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein |
-| LookbackHours | Die Anzahl der beim Abrufen von Telemetriedaten zu verwendenden Stunden. Der Standardwert ist 24 Stunden. Der Höchstwert ist 90 Stunden. | Nein |
-| OmsSubscriptionId | Die Abonnement-ID, für die Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein |
-| OmsResourceGroup |Die Ressourcengruppe, in der Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein |
-| OmsWorkspaceName | Name des Log Analytics-Arbeitsbereichs. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein |
+| OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein  |
+| LookbackHours | Die Anzahl der beim Abrufen von Telemetriedaten zu verwendenden Stunden. Der Standardwert ist 24 Stunden. Der Höchstwert ist 90 Stunden. | Nein  |
+| OmsSubscriptionId | Die Abonnement-ID, für die Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsResourceGroup |Die Ressourcengruppe, in der Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsWorkspaceName | Name des Log Analytics-Arbeitsbereichs. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
 
 ## <a name="what-is-collected"></a>Was wird gesammelt?
 

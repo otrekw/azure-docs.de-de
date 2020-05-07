@@ -1,20 +1,22 @@
 ---
-title: Konvertieren von Machine Learning-Experimentcode in Produktionscode
+title: Konvertieren von Notebook-Code in Python-Skripts
 titleSuffix: Azure Machine Learning
-description: Es wird beschrieben, wie Sie Machine Learning-Experimentcode in Produktionscode konvertieren, indem Sie die MLOpsPython-Codevorlage verwenden.
+description: Konvertieren Sie Ihre experimentellen Notebooks für maschinelles Lernen (ML) mit der MLOpsPython-Codevorlage in produktionsreifen Code. Anschließend können Sie diesen Code testen, bereitstellen und automatisieren.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521442"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559666"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Tutorial: Konvertieren von ML-Experimentcode in Produktionscode
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Tutorial: Konvertieren von ML-Experimenten in Python-Produktionscode
+
+In diesem Tutorial erfahren Sie, wie Sie Jupyter-Notebooks mit der MLOpsPython-Codevorlage und Azure Machine Learning in Python-Skripts konvertieren, damit sie leichter getestet und automatisiert werden können. In der Regel wird dieser Prozess verwendet, um Experiment-/Trainingscode aus einem Jupyter-Notebook in Python-Skripts zu konvertieren. Diese Skripts können dann für Tests und zur CI/CD-Automatisierung in Ihrer Produktionsumgebung verwendet werden. 
 
 Für ein Projekt für maschinelles Lernen (Machine Learning) sind Experimente erforderlich, bei denen Hypothesen mit flexiblen Tools wie Jupyter Notebook und realen Datasets überprüft werden. Wenn das Modell für die Produktion bereit ist, sollte der Modellcode in einem Repository für Produktionscode platziert werden. In einigen Fällen muss der Modellcode in Python-Skripts konvertiert werden, damit er in ein Repository für Produktionscode eingefügt werden kann. In diesem Tutorial geht es um einen empfohlenen Ansatz für den Export von Experimentcode in Python-Skripts.
 

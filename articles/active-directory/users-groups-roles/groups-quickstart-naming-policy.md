@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026933"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582825"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory
 
-In dieser Schnellstartanleitung richten Sie eine Benennungsrichtlinie in Ihrem Azure Active Directory-Mandanten (Azure AD) für von Benutzern erstellte Office 365-Gruppen ein, um das Sortieren und Durchsuchen der Gruppen in Ihrem Mandanten zu erleichtern. Sie können die Benennungsrichtlinie beispielsweise für Folgendes verwenden:
+In dieser Schnellstartanleitung richten Sie eine Benennungsrichtlinie in Ihrer Azure Active Directory-Organisation (Azure AD) für von Benutzern erstellte Office 365-Gruppen ein, um das Sortieren und Durchsuchen der Gruppen in Ihrer Organisation zu erleichtern. Sie können die Benennungsrichtlinie beispielsweise für Folgendes verwenden:
 
 * Kommunizieren der Funktion einer Gruppe, die Mitgliedschaft, die geografische Region oder den Ersteller der Gruppe
 * Kategorisieren von Gruppen im Adressbuch
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung richten Sie eine Benennungsrichtlinie in Ihrem A
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurieren der Benennungsrichtlinie für Gruppen für einen Mandanten im Azure-Portal
+## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>Konfigurieren der Benennungsrichtlinie für Gruppen im Azure-Portal
 
 1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann **Benennungsrichtlinie** aus, um die Seite „Benennungsrichtlinie“ zu öffnen.

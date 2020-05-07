@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990904"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583084"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -95,6 +95,10 @@ Wenn sich die Connectorserver und das Webanwendungsdienstkonto in derselben Dom�
 
 Wenn sich die Connectorserver und das Webanwendungsdienstkonto in unterschiedlichen Domänen befinden, wird die ressourcenbasierte Delegierung verwendet. Die Delegierungsberechtigungen werden für den Zielwebserver und das Webanwendungsdienstkonto konfiguriert. Diese Methode der eingeschränkten Delegierung ist relativ neu. Die Methode wurde in Windows Server 2012 eingeführt. Dieses Betriebssystem unterstützt die domänenübergreifende Delegierung, indem der Besitzer der Ressource (des Webdiensts) steuern kann, welche Computer- und Dienstkonten die Delegierung ausführen können. Es gibt keine Benutzeroberfläche, die Sie bei dieser Konfiguration unterstützt, daher müssen Sie PowerShell verwenden.
 Weitere Informationen finden Sie im Whitepaper [Grundlegendes zur eingeschränkten Kerberos-Delegierung mit dem Anwendungsproxy](https://aka.ms/kcdpaper).
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Funktioniert die NTLM-Authentifizierung mit dem Azure AD-Anwendungsproxy?
+
+Die NTLM-Authentifizierung kann nicht als Vorauthentifizierung oder SSO-Methode verwendet werden. Die NTLM-Authentifizierung kann nur verwendet werden, wenn sie direkt zwischen dem Client und der veröffentlichten Webanwendung ausgehandelt werden kann. Bei Verwendung der NTLM-Authentifizierung wird in der Regel eine Anmeldeaufforderung im Browser angezeigt.
 
 ## <a name="pass-through-authentication"></a>Passthrough-Authentifizierung
 

@@ -1,20 +1,17 @@
 ---
-title: Anwendung eines Reservierungsrabatts auf Azure Database for MySQL
-description: Anwendung eines Reservierungsrabatts auf Azure Database for MySQL
+title: 'Grundlegendes zum Reservierungsrabatt: Azure Database for MySQL'
+description: Hier erfahren Sie, wie ein Reservierungsrabatt auf Azure Database for MySQL angewendet wird.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199312"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509430"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Anwendung eines Reservierungsrabatts auf Azure Database for MySQL
 
@@ -44,5 +41,6 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Azure D
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

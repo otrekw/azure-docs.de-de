@@ -2,26 +2,21 @@
 title: Anwendungsbereitstellungsstatus „Quarantäne“ | Microsoft-Dokumentation
 description: Wenn Sie eine Anwendung für die automatische Benutzerbereitstellung konfiguriert haben, lesen Sie diesen Artikel, um zu erfahren, was der Bereitstellungsstatus „Quarantäne“ bedeutet und wie Sie ihn löschen können.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154626"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593929"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -33,7 +28,7 @@ In der Quarantäne wird die Häufigkeit der inkrementellen Zyklen allmählich au
 
 Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quarantäne befindet:
   
-- Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen** > &lt;*Anwendungsname*&gt; > **Bereitstellung**, und scrollen Sie nach unten zur Statusanzeige.  
+- Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen** > &lt;*Anwendungsname*&gt; > **Bereitstellung**, und suchen Sie in der Statusanzeige nach einer Quarantänenachricht.   
 
   ![Statusanzeige für die Bereitstellung mit dem Quarantänestatus](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,7 +46,13 @@ Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quara
 
 ## <a name="why-is-my-application-in-quarantine"></a>Warum befindet sich meine Anwendung in Quarantäne?
 
-Eine Microsoft Graph-Anforderung zum Abrufen des Status des Bereitstellungsauftrags zeigt den folgenden Grund für die Quarantäne an:
+|BESCHREIBUNG|Empfohlene Maßnahme|
+|---|---|
+|**SCIM-Konformitätsproblem:** Anstelle der erwarteten Antwort „HTTP/200 OK“ wurde die Antwort „HTTP/404 Nicht gefunden“ zurückgegeben. In diesem Fall hat der Azure AD-Bereitstellungsdienst eine Anforderung an die Zielanwendung gesendet und eine unerwartete Antwort empfangen.|Überprüfen Sie im Abschnitt „Administratoranmeldeinformationen“, ob die Anwendung das Angeben der Mandanten-URL erfordert, und stellen Sie sicher, dass die URL korrekt ist. Wenn Sie kein Problem feststellen können, wenden Sie sich an den Anwendungsentwickler, um sicherzustellen, dass der Dienst SCIM-konform ist. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
+|**Ungültige Anmeldeinformationen:** Beim Versuch, den Zugriff auf die Zielanwendung zu autorisieren, wurde eine Antwort von der Zielanwendung empfangen, derzufolge die angegebenen Anmeldeinformationen ungültig sind.|Navigieren Sie auf der Benutzeroberfläche für die Bereitstellungskonfiguration zum Abschnitt „Administratoranmeldeinformationen“, und autorisieren Sie den Zugriff noch mal mit gültigen Anmeldeinformationen. Wenn sich die Anwendung im Katalog befindet, sehen Sie sich das Tutorial zur Anwendungskonfiguration an, um etwaige weitere erforderliche Schritte auszuführen.|
+|**Doppelte Rollen:** Rollen, die aus bestimmten Anwendungen wie Salesforce oder Zendesk importiert werden, müssen eindeutig sein. |Navigieren Sie im Azure-Portal zum [Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) der Anwendung, und entfernen Sie die doppelte Rolle.|
+
+ Eine Microsoft Graph-Anforderung zum Abrufen des Status des Bereitstellungsauftrags zeigt den folgenden Grund für die Quarantäne an:
 
 - `EncounteredQuarantineException` gibt an, dass ungültige Anmeldeinformationen angegeben wurden. Der Bereitstellungsdienst kann keine Verbindung zwischen dem Quellsystem und dem Zielsystem herstellen.
 

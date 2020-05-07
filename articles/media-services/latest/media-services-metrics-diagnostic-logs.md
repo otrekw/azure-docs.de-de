@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585274"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559527"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen über Azure Monitor
 
@@ -63,7 +63,7 @@ Die folgenden [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/str
 |Metrikname|`Display name`|BESCHREIBUNG|
 |---|---|---|
 |Requests|Requests|Gibt die Gesamtzahl der HTTP-Anforderungen an, die vom Streamingendpunkt behandelt werden.|
-|Ausgehende Daten|Ausgehende Daten|Die Gesamtzahl der ausgehenden Bytes. Beispiel: Vom Streamingendpunkt gestreamte Bytes.|
+|Ausgehende Daten|Ausgehende Daten|Ausgehende Bytes gesamt pro Minute pro Streamingendpunkt.|
 |SuccessE2ELatency|End-to-End-Wartezeit bei Erfolg|Die Zeitspanne zwischen dem Empfang der Anforderung durch den Streamingendpunkt und dem Senden des letzten Bytes der Antwort.|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>Warum sollte ich Metriken verwenden?

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 643f326952f72f952aa946079e56f1fb56373c9f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236010"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182870"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -180,4 +180,4 @@ Zur Durchführung von Aufgaben für virtuelle Netzwerke muss Ihr Konto der Rolle
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erstellen eines virtuellen Netzwerks mithilfe von Beispielskripts für [PowerShell](powershell-samples.md) oder für die [Azure CLI](cli-samples.md) oder mithilfe von [Azure Resource Manager-Vorlagen](template-samples.md)
-- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke
+- Erstellen und Zuweisen von [Azure Policy-Definitionen](policy-samples.md) für virtuelle Netzwerke
