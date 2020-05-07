@@ -2,26 +2,21 @@
 title: Bekannte Probleme bei der Einhaltung des SCIM 2.0-Protokolls – Azure AD
 description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Protokoll beim Hinzufügen einer Anwendung, die nicht aus dem Katalog stammt und die SCIM 2.0 unterstützt, in Azure AD beheben.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff0d4f8f0062c00351b60174c63d9c19bdfa15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522933"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594031"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 

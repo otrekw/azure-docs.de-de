@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983633"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit DocuSign
 
@@ -45,7 +45,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * DocuSign unterstützt SP-initiiertes (Service Provider, Dienstanbieter) einmaliges Anmelden.
 
-* DocuSign unterstützt die *Just-in-Time*-Benutzerbereitstellung.
+* DocuSign unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 * DocuSign unterstützt die [automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
 * Nach dem Konfigurieren von DocuSign können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
@@ -87,12 +87,20 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    b. Geben Sie im Feld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
+
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+    
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > Die Werte in Klammern sind Platzhalter. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Ausführliche Informationen hierzu finden Sie weiter unten in diesem Tutorial im Abschnitt „View SAML 2.0 Endpoints“ (SAML 2.0-Endpunkte anzeigen).
+    > Die Werte in Klammern sind Platzhalter. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL, Bezeichner und Antwort-URL. Ausführliche Informationen hierzu finden Sie weiter unten in diesem Tutorial im Abschnitt „View SAML 2.0 Endpoints“ (SAML 2.0-Endpunkte anzeigen).
 
 1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -206,20 +214,23 @@ In diesem Abschnitt gewähren Sie B. Simon Zugriff auf DocuSign, damit sie das 
        ![Identity Providers (Identitätsanbieter)/Endpoints (Endpunkte)][59]
 
     l. Führen Sie im DocuSign-Verwaltungsportal im Abschnitt **View SAML 2.0 Endpoints** (SAML 2.0-Endpunkte anzeigen) die folgenden Schritte aus:
-       1. Kopieren Sie den Wert unter **Service Provider Issuer URL** (Aussteller-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Bezeichner** ein.
-
-       1. Kopieren Sie den Wert unter **Service Provider Login URL** (Anmelde-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Anmelde-URL** ein.
-
-       1. Klicken Sie auf **Schließen**.
 
        ![View SAML 2.0 Endpoints (SAML 2.0-Endpunkte anzeigen)][60]
+       
+       1. Kopieren Sie den Wert unter **Service Provider Issuer URL** (Aussteller-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Bezeichner** ein.
+       
+       1. Kopieren Sie den Wert unter **Service Provider Assertion Consumer Service URL** (Assertionsverbraucherdienst-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Antwort-URL** ein.
+       
+       1. Kopieren Sie den Wert unter **Service Provider Login URL** (Anmelde-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Anmelde-URL** ein. Am Ende der **Anmelde-URL des Dienstanbieters** erhalten Sie den IDPID-Wert.
+
+       1. Klicken Sie auf **Schließen**.
 
 ### <a name="create-docusign-test-user"></a>Erstellen eines DocuSign-Testbenutzers
 
 In diesem Abschnitt wird in DocuSign ein Benutzer namens B. Simon erstellt. DocuSign unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in DocuSign vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
->[!Note]
->Setzen Sie sich mit dem[Supportteam von DocuSign](https://support.docusign.com/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> [!Note]
+> Setzen Sie sich mit dem[Supportteam von DocuSign](https://support.docusign.com/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

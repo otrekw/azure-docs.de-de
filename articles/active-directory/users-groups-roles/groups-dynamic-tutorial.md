@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74027106"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582873"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern
 
-In Azure Active Directory (Azure AD) können Sie Benutzer automatisch zu Sicherheitsgruppen oder Office 365-Gruppen hinzufügen bzw. aus diesen Gruppen entfernen, sodass Sie diese Schritte nicht immer manuell ausführen müssen. Wenn sich die Eigenschaften eines Benutzers oder Geräts ändern, wertet Azure AD alle Regeln für dynamische Gruppen in Ihrem Mandanten aus, um zu ermitteln, ob aufgrund der Änderung Mitglieder hinzugefügt oder entfernt werden müssen.
+In Azure Active Directory (Azure AD) können Sie Benutzer automatisch zu Sicherheitsgruppen oder Office 365-Gruppen hinzufügen bzw. aus diesen Gruppen entfernen, sodass Sie diese Schritte nicht immer manuell ausführen müssen. Wenn sich die Eigenschaften eines Benutzers oder Geräts ändern, wertet Azure AD alle dynamischen Gruppenregeln in Ihrer Azure AD-Organisation aus, um zu ermitteln, ob aufgrund der Änderung Mitglieder hinzugefügt oder entfernt werden müssen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Feature ist eine Azure AD Premium-Lizenz für Sie als globaler Administrator des Mandanten erforderlich. Falls Sie keine Lizenz besitzen, wählen Sie in Azure AD **Lizenzen** > **Produkte** > **Ausprobieren/Kaufen**.
+Für dieses Feature ist eine Azure AD Premium-Lizenz für Sie als globaler Administrator der Organisation erforderlich. Falls Sie keine Lizenz besitzen, wählen Sie in Azure AD **Lizenzen** > **Produkte** > **Ausprobieren/Kaufen**.
 
-Sie müssen Benutzern keine Lizenzen zuweisen, damit sie Mitglieder in dynamischen Gruppen sein können. Sie benötigen lediglich die Mindestanzahl verfügbarer Azure AD Premium P1-Lizenzen im Mandanten, um diese Benutzer abzudecken. 
+Sie müssen Benutzern keine Lizenzen zuweisen, damit sie Mitglieder in dynamischen Gruppen sein können. Sie benötigen lediglich die Mindestanzahl verfügbarer Azure AD Premium P1-Lizenzen in der Organisation, um diese Benutzer abzudecken. 
 
 ## <a name="create-a-group-of-guest-users"></a>Erstellen einer Gruppe mit Gastbenutzern
 
 Zunächst erstellen Sie eine Gruppe für Ihre Gastbenutzer, die alle aus einem Partnerunternehmen stammen. Für sie ist eine spezielle Lizenzierung erforderlich, daher ist es häufig effizienter, zu diesem Zweck eine Gruppe zu erstellen.
 
-1. Melden Sie sich beim https://portal.azure.com) Azure-Portal über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
+1. Melden Sie sich beim Azure-Portal (https://portal.azure.com) mit einem Konto an, das als globaler Administrator für Ihre Organisation konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Neue Gruppe**.
    ![Befehl auswählen, um eine neue Gruppe zu starten](./media/groups-dynamic-tutorial/new-group.png)
 3. Auf dem Blatt **Gruppe**:
@@ -80,7 +80,7 @@ Sie besitzen nun eine Gruppe und können die Lizenzen zuweisen, die diese Partne
 
 ## <a name="remove-guests-from-all-users-group"></a>Entfernen von Gästen aus der Gruppe „Alle Benutzer“
 
-Unter Umständen möchten Sie zu Verwaltungszwecken letztendlich alle Gastbenutzer nach Unternehmen ihren eigenen Gruppen zuweisen. Nun können Sie auch die Gruppe **Alle Benutzer** so ändern, dass sie nur für Mitgliedsbenutzer in Ihrem Mandanten reserviert ist. Anschließend können Sie sie zum Zuweisen von Apps und Lizenzen verwenden, die spezifisch für Ihre eigene Organisation sind.
+Unter Umständen möchten Sie zu Verwaltungszwecken letztendlich alle Gastbenutzer nach Unternehmen ihren eigenen Gruppen zuweisen. Nun können Sie auch die Gruppe **Alle Benutzer** so ändern, dass sie nur für Mitgliedsbenutzer in Ihrer Organisation reserviert ist. Anschließend können Sie sie zum Zuweisen von Apps und Lizenzen verwenden, die spezifisch für Ihre eigene Organisation sind.
 
    ![Ändern der Gruppe „Alle Benutzer“ nur für Mitglieder](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ Unter Umständen möchten Sie zu Verwaltungszwecken letztendlich alle Gastbenutz
 
 **So entfernen Sie die Gruppe der Gastbenutzer**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das als globaler Administrator für Ihre Organisation konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen**. Wählen Sie die Gruppe **Guest users Contoso** (Gastbenutzer Contoso) aus, und klicken Sie auf die Ellipse (...) und dann auf **Löschen**. Wenn Sie die Gruppe löschen, werden alle zugewiesenen Lizenzen entfernt.
 
 **So stellen Sie die Gruppe „Alle Benutzer“ wieder her**

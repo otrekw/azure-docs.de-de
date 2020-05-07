@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78329731"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582954"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Office 365-Gruppen in Azure Active Directory (Vorschau)
 
@@ -112,10 +112,10 @@ Nachdem Sie diese Funktion aktiviert haben, werden die „klassischen“ Klassif
 
 Die Option „Vertraulichkeitsbezeichnung“ wird nur für Gruppen angezeigt, wenn alle der folgenden Bedingungen erfüllt sind:
 
-1. Für diesen Mandanten werden die Bezeichnungen im Microsoft 365 Compliance Center veröffentlicht.
+1. Für diese Azure AD-Organisation werden die Bezeichnungen im Microsoft 365 Compliance Center veröffentlicht.
 1. Das Feature ist aktiviert, „EnableMIPLabels“ ist in PowerShell auf „True“ festgelegt.
 1. Die Gruppe ist eine Office 365-Gruppe.
-1. Der Mandant verfügt über eine Active Azure Active Directory Premium P1-Lizenz.
+1. Die Organisation verfügt über eine Active Azure Active Directory Premium P1-Lizenz.
 1. Der aktuell angemeldete Benutzer verfügt über ausreichende Berechtigungen, um Bezeichnungen zuzuweisen. Der Benutzer muss entweder ein globaler Administrator, ein Gruppenadministrator oder der Gruppenbesitzer sein.
 
 Stellen Sie sicher, dass alle Bedingungen erfüllt sind, damit Sie einer Gruppe Bezeichnungen zuweisen können.

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011717"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182479"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
-NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und stellen die Internetverbindung in ausgehender Richtung für ein oder mehrere Subnetze eines virtuellen Netzwerks bereit. Im Subnetz des virtuellen Netzwerks wird angegeben, welches NAT-Gateway verwendet wird. NAT ermöglicht die „Übersetzung der Quellnetzwerkadresse“ (Source Network Address Translation, SNAT) für ein Subnetz.  Mit NAT-Gatewayressourcen wird angegeben, welche statischen IP-Adressen von virtuellen Computern beim Erstellen ausgehender Datenflüsse verwendet werden. Statische IP-Adressen stammen von Ressourcen für öffentliche IP-Adressen, Präfixressourcen für öffentliche IP-Adressen oder aus beiden Quellen. Für eine NAT-Gatewayressource können für die beiden Quellen jeweils bis zu 16 statische IP-Adressen verwendet werden.
+NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und stellen die Internetverbindung in ausgehender Richtung für ein oder mehrere Subnetze eines virtuellen Netzwerks bereit. Im Subnetz des virtuellen Netzwerks wird angegeben, welches NAT-Gateway verwendet wird. NAT ermöglicht die „Übersetzung der Quellnetzwerkadresse“ (Source Network Address Translation, SNAT) für ein Subnetz.  Mit NAT-Gatewayressourcen wird angegeben, welche statischen IP-Adressen von virtuellen Computern beim Erstellen ausgehender Datenflüsse verwendet werden. Statische IP-Adressen stammen von Ressourcen für öffentliche IP-Adressen, Präfixressourcen für öffentliche IP-Adressen oder aus beiden Quellen. Wird eine Präfixressource für öffentliche IP-Adressen verwendet, werden alle IP-Adressen der gesamten Präfixressource für öffentliche IP-Adressen von einer NAT-Gatewayressource genutzt. Für eine NAT-Gatewayressource können für die beiden Quellen jeweils insgesamt bis zu 16 statische IP-Adressen verwendet werden.
 
 
 <p align="center">
@@ -60,7 +60,8 @@ Im folgenden Diagramm sind die schreibbaren Verweise zwischen den verschiedenen 
 
 NAT wird für die meisten Workloads empfohlen, sofern bei Ihnen nicht eine spezifische Abhängigkeit von [poolbasierter Load Balancer-Konnektivität in ausgehender Richtung](../load-balancer/load-balancer-outbound-connections.md) besteht.  
 
-Sie können die Migration von Standardszenarien für den Lastenausgleich, einschließlich [Ausgangsregeln](../load-balancer/load-balancer-outbound-rules-overview.md), zu einem NAT-Gateway durchführen. Verschieben Sie zur Durchführung der Migration die Ressourcen bzw. Präfixressourcen für öffentliche IP-Adressen von den Front-Ends des Lastenausgleichs auf das NAT-Gateway. Neue IP-Adressen für das NAT-Gateway sind nicht erforderlich. Öffentliche Standard-IP-Adressen und -Präfixe können wiederverwendet werden, sofern die Gesamtzahl von 16 IP-Adressen nicht überschritten wird. Planen Sie die Migration so, dass die Dienstunterbrechung während der Umstellung berücksichtigt wird.  Sie können die Unterbrechungsdauer verringern, indem Sie den Prozess automatisieren. Testen Sie die Migration zuerst in einer Stagingumgebung.  Während der Umstellung werden Datenflüsse, die ursprünglich in eingehender Richtung erfolgt sind, nicht beeinträchtigt.
+Sie können die Migration von Standardszenarien für den Lastenausgleich, einschließlich [Ausgangsregeln](../load-balancer/load-balancer-outbound-rules-overview.md), zu einem NAT-Gateway durchführen. Verschieben Sie zur Durchführung der Migration die Ressourcen bzw. Präfixressourcen für öffentliche IP-Adressen von den Front-Ends des Lastenausgleichs auf das NAT-Gateway. Neue IP-Adressen für das NAT-Gateway sind nicht erforderlich. Öffentliche Standard-IP-Adressressourcen und die Präfixressource für öffentliche IP-Adressen können wiederverwendet werden, sofern die Gesamtzahl von 16 IP-Adressen nicht überschritten wird. Planen Sie die Migration so, dass die Dienstunterbrechung während der Umstellung berücksichtigt wird.  Sie können die Unterbrechungsdauer verringern, indem Sie den Prozess automatisieren. Testen Sie die Migration zuerst in einer Stagingumgebung.  Während der Umstellung werden Datenflüsse, die ursprünglich in eingehender Richtung erfolgt sind, nicht beeinträchtigt.
+
 
 Bei dem folgenden Beispiel handelt es sich um einen Ausschnitt aus einer Azure Resource Manager-Vorlage.  Diese Vorlage stellt mehrere Ressourcen bereit, einschließlich eines NAT-Gateways.  In dem Beispiel besitzt die Vorlage folgende Parameter:
 
@@ -200,7 +201,7 @@ Wenn Sie Endpunkte für eingehenden Datenverkehr benötigen, haben Sie zwei Opti
 | Option | Muster | Beispiel | Vorteil | Nachteil |
 |---|---|---|---|---|
 | (1) | Führen Sie die **Ausrichtung** der Endpunkte für eingehenden Datenverkehr mit den jeweiligen **Zonenstapeln** durch, die Sie für ausgehenden Datenverkehr erstellen. | Erstellen Sie eine Load Balancer Standard-Instanz mit Zonen-Front-End. | Gleiches Integritätsmodell und gleicher Fehlermodus für ein- und ausgehenden Datenverkehr. Einfacherer Betrieb. | Einzelne IP-Adressen pro Zone müssen ggf. durch einen gemeinsamen DNS-Namen maskiert werden. |
-| (2) | Führen Sie die **Überlagerung** der Zonenstapel mit einem **zonenübergreifenden** Endpunkt für eingehenden Datenverkehr durch. | Erstellen Sie eine Load Balancer Standard-Instanz mit zonenredundantem Front-End. | Nur eine IP-Adresse für den Endpunkt für eingehenden Datenverkehr. | Unterschiede bei Integritätsmodell und Fehlermodus für ein- und ausgehenden Datenverkehr.  Komplexerer Betrieb. |
+|  (2) | Führen Sie die **Überlagerung** der Zonenstapel mit einem **zonenübergreifenden** Endpunkt für eingehenden Datenverkehr durch. | Erstellen Sie eine Load Balancer Standard-Instanz mit zonenredundantem Front-End. | Nur eine IP-Adresse für den Endpunkt für eingehenden Datenverkehr. | Unterschiede bei Integritätsmodell und Fehlermodus für ein- und ausgehenden Datenverkehr.  Komplexerer Betrieb. |
 
 >[!NOTE]
 > Für ein NAT-Gateway mit Zonenisolation müssen die IP-Adressen mit der Zone des NAT-Gateways übereinstimmen. NAT-Gatewayressourcen mit IP-Adressen aus einer anderen Zone oder ohne Zone sind nicht zulässig.
@@ -224,6 +225,12 @@ Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und d
 
 >[!NOTE] 
 >IP-Adressen allein sind nicht zonenredundant, wenn keine Zone angegeben wird.  Das Front-End einer [Load Balancer Standard-Instanz ist zonenredundant](../load-balancer/load-balancer-standard-availability-zones.md#frontend), wenn in einer bestimmten Zone keine IP-Adresse erstellt wird.  Dies gilt nicht für NAT.  Nur die Regions- oder Zonenisolation wird unterstützt.
+
+## <a name="performance"></a>Leistung
+
+Jede NAT-Gatewayressource kann einen Durchsatz von bis zu 50 GBit/s bereitstellen. Zum Aufskalieren können Sie Ihre Bereitstellungen in mehrere Subnetze unterteilen und jedem Subnetz oder jeder Gruppe von Subnetzen ein NAT-Gateway zuweisen.
+
+Jedes NAT-Gateway kann 64.000 Verbindungen pro zugewiesener ausgehender IP-Adresse unterstützen.  Ausführlichere Informationen finden Sie im folgenden Abschnitt zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT). Spezifische Informationen zur Problembehandlung finden Sie im Artikel [Problembehandlung für Azure Virtual Network NAT-Konnektivität](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat).
 
 ## <a name="source-network-address-translation"></a>Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT)
 
@@ -277,7 +284,10 @@ Nach der Freigabe eines SNAT-Ports kann dieser von allen virtuellen Computern in
 
 ### <a name="scaling"></a>Skalierung
 
-Die Skalierung von NAT ist hauptsächlich eine Funktion, bei der es um die Verwaltung des freigegebenen verfügbaren SNAT-Portbestands geht. Für NAT ist ein ausreichender Bestand an SNAT-Ports erforderlich, um für alle Subnetze einer NAT-Gatewayressource die erwartete Spitzenlast für ausgehende Datenflüsse abdecken zu können.  Sie können öffentliche IP-Adressressourcen, öffentliche IP-Präfixressourcen oder beides verwenden, um einen Bestand an SNAT-Ports zu erstellen.
+Die Skalierung von NAT ist hauptsächlich eine Funktion, bei der es um die Verwaltung des freigegebenen verfügbaren SNAT-Portbestands geht. Für NAT ist ein ausreichender Bestand an SNAT-Ports erforderlich, um für alle Subnetze einer NAT-Gatewayressource die erwartete Spitzenlast für ausgehende Datenflüsse abdecken zu können.  Sie können öffentliche IP-Adressressourcen, öffentliche IP-Präfixressourcen oder beides verwenden, um einen Bestand an SNAT-Ports zu erstellen.  
+
+>[!NOTE]
+>Wenn Sie eine Präfixressource für öffentliche IP-Adressen zuweisen, wird das gesamte Präfix für öffentliche IP-Adressen verwendet.  Sie können keine Präfixressource für öffentliche IP-Adressen zuweisen und dann einzelne IP-Adressen anderen Ressourcen zuweisen.  Wenn Sie einzelne IP-Adressen aus einem Präfix für öffentliche IP-Adressen mehreren Ressourcen zuweisen möchten, müssen Sie einzelne öffentliche IP-Adressen aus der Präfixressource für öffentliche IP-Adressen erstellen und sie bei Bedarf anstelle dieser Präfixressource zuweisen.
 
 Bei SNAT werden private Adressen mindestens einer öffentlichen IP-Adresse zugeordnet. Hierbei werden die Quelladresse und der Quellport neu erstellt. Für eine NAT-Gatewayressource werden für diesen Übersetzungsvorgang 64.000 Ports (SNAT-Ports) pro konfigurierter öffentlicher IP-Adresse verwendet. NAT-Gatewayressourcen können auf bis zu 16 IP-Adressen und 1 Million SNAT-Ports hochskaliert werden. Wenn eine öffentliche IP-Präfixressource bereitgestellt wird, wird für jede IP-Adresse des Präfixbereichs ein Bestand an SNAT-Ports angelegt. Wenn Sie weitere öffentliche IP-Adressen hinzufügen, wird die Anzahl von verfügbaren SNAT-Ports des Bestands erhöht. Für TCP und UDP werden separate SNAT-Portbestände verwendet, die nicht miteinander in Beziehung stehen.
 

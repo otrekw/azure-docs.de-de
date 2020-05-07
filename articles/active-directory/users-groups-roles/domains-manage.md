@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77559232"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582972"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -41,7 +41,7 @@ Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispiels
 
 Sie können den primären Domänennamen für Ihr Verzeichnis in eine beliebige andere überprüfte benutzerdefinierte Domäne (keine Verbunddomäne) ändern. Durch Ändern der primären Domäne für Ihr Verzeichnis werden die Benutzernamen vorhandener Benutzer nicht geändert.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Hinzufügen benutzerdefinierter Domänennamen zum Azure AD-Mandanten
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Hinzufügen benutzerdefinierter Domänennamen zur Azure AD-Organisation
 
 Sie können bis zu 900 Namen für verwaltete Domänen hinzufügen. Wenn Sie all Ihre Domänen für den Verbund mit der lokalen Active Directory-Instanz konfigurieren, können Sie in jedem Verzeichnis bis zu 450 Domänennamen hinzufügen.
 
@@ -72,7 +72,7 @@ Sie können das Löschen eines Domänennamens im [Azure AD Admin Center](https:/
 Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dazu gehören E-Mail-aktivierte Exchange-Sicherheitsgruppen und verteilte Listen. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
 
 * Sie haben eine Domäne über Office 365-Domänenabonnementdienste erworben.
-* Sie sind Partner und führen die Verwaltung im Auftrag eines anderen Mandanten des Kunden aus.
+* Sie sind Partner und führen die Verwaltung im Auftrag einer anderen Organisation des Kunden aus.
 
 Folgende Aktionen werden im Rahmen des **ForceDelete**-Vorgangs ausgeführt:
 

@@ -2,13 +2,13 @@
 title: Trennen von Telemetriedaten in Azure Application Insights
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536776"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562150"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
 
@@ -20,13 +20,24 @@ Wenn Sie die nächste Version einer Webanwendung entwickeln, möchten Sie die [A
 
 Wenn Sie Application Insights-Überwachung für Ihre Web App einrichten, erstellen Sie in Microsoft Azure eine Application Insights-*Ressource*. Sie öffnen diese Ressource im Azure-Portal, um die in Ihrer App gesammelten Telemetriedaten anzuzeigen und zu analysieren. Die Ressource wird durch einen *Instrumentierungsschlüssel* (ikey) identifiziert. Wenn Sie das Application Insights-Paket installieren, um Ihre App zu überwachen, konfigurieren Sie sie mit diesem Instrumentierungsschlüssel und teilen ihr so mit, wohin die Telemetriedaten gesendet werden sollen.
 
-Normalerweise entscheiden Sie sich in unterschiedlichen Szenarien für die Verwendung von getrennten Ressourcen oder einer einzelnen, geteilten Ressource:
+Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfügbar sind. Wenn vollständig getrennte Komponenten an dieselbe Application Insights-Ressource berichten, ist es möglicherweise nicht sinnvoll, diese Metriken für Dashboards/Warnungen zu verwenden.
 
-* Verschiedene, unabhängige Anwendungen: Verwenden Sie eine separate Ressource und einen separaten ikey für jede App.
-* Mehrere Komponenten oder Rollen der gleichen Geschäftsanwendung – Verwenden Sie eine [einzelne geteilte Ressource](../../azure-monitor/app/app-map.md) für alle Komponentenanwendungen. Die Telemetrie kann anhand der cloud_RoleName-Eigenschaft gefiltert oder aufgeteilt werden.
-* Entwicklung, Testen und Release: Verwenden Sie eine separate Ressource und separate ikeys für Versionen des Systems je nach Produktionsabschnitt oder -phase.
-* A | B-Tests: Verwenden Sie eine einzelne Ressource. Erstellen Sie einen Telemetrie-Initialisierer, um den Telemetriedaten eine Eigenschaft zum Identifizieren der Varianten hinzuzufügen.
+### <a name="use-a-single-application-insights-resource"></a>Verwenden einer einzelnen Application Insights-Ressource
 
+-   Für Anwendungskomponenten, die gemeinsam bereitgestellt werden. Normalerweise von einem einzelnen Team entwickelt und von der gleichen Gruppe von DevOps/ITOps-Benutzern verwaltet.
+-   Wenn es sinnvoll ist, KPIs (Key Performance Indicators), wie z. B. Antwortzeiten, Fehlerraten in Dashboards usw., standardmäßig für alle Komponenten zu aggregieren (Sie können auf der Metriken-Explorer-Benutzeroberfläche eine Segmentierung nach Rollenname auswählen).
+-   Wenn die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zwischen den Anwendungskomponenten nicht unterschiedlich verwaltet werden muss.
+-   Wenn Sie keine Warnungskriterien für Metriken benötigen, die sich zwischen den Komponenten unterscheiden.
+-   Wenn Sie fortlaufende Exporte zwischen den Komponenten nicht unterschiedlich verwalten müssen.
+-   Wenn Sie die Abrechnung/Kontingente zwischen den Komponenten nicht unterschiedlich verwalten müssen.
+-   Wenn es in Ordnung ist, dass ein API-Schlüssel den gleichen Zugriff auf Daten von allen Komponenten hat. und 10 API-Schlüssel für die Anforderungen aller Komponenten ausreichend sind.
+-   Wenn es in Ordnung ist, dass alle Rollen die gleichen Einstellungen für die intelligente Erkennung und Arbeitselementintegration aufweisen.
+
+### <a name="other-things-to-keep-in-mind"></a>Weitere zu beachtende Punkte
+
+-   Möglicherweise müssen Sie benutzerdefinierten Code hinzufügen, um sicherzustellen, dass aussagekräftige Werte im Attribut [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) festgelegt werden. Wenn für dieses Attribut keine aussagekräftigen Werte festgelegt werden, funktioniert *KEINE* der Benutzeroberflächen im Portal.
+- Bei Service Fabric-Anwendungen und klassischen Clouddiensten liest das SDK automatisch aus der Azure-Rollenumgebung und legt diese fest. Bei allen anderen App-Typen müssen Sie dies wahrscheinlich explizit festlegen.
+-   Die Benutzeroberfläche für Livemetriken unterstützt kein Aufteilen nach Rollenname.
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 
@@ -47,7 +58,7 @@ Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "globa
 In diesem Beispiel werden die iKeys für die verschiedenen Ressourcen in verschiedenen Versionen der Webkonfigurationsdatei platziert. Wenn Sie die Webkonfigurationsdatei austauschen – z.B. im Rahmen des Releaseskripts – wird die Zielressource ausgetauscht.
 
 ### <a name="web-pages"></a>Webseiten
-Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf dem Blatt „Schnellstart“ erhalten haben](../../azure-monitor/app/javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
+Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie im Bereich „Schnellstart“ erhalten haben](../../azure-monitor/app/javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
 
 *JavaScript in Razor*
 
@@ -63,26 +74,11 @@ Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf 
 
 
 ## <a name="create-additional-application-insights-resources"></a>Erstellen zusätzlicher Application Insights-Ressourcen
-Um die Telemetriedaten für verschiedene Anwendungskomponenten oder für verschiedene Einsatzzwecke der gleichen Komponente (Entwicklung/Test und Produktion) zu trennen, müssen Sie eine neue Application Insights-Ressource erstellen.
 
-Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Application Insights-Ressource hinzu:
-
-![Klicken Sie auf "Neu > Application Insights"](./media/separate-resources/01-new.png)
-
-* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
-* **Ressourcengruppe** ist eine benutzerfreundliche Möglichkeit zum Verwalten von Eigenschaften wie der [Zugriffssteuerung](../../azure-monitor/app/resources-roles-access-control.md)gespeichert und verarbeitet. Sie können separate Ressourcengruppen für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
-* **Abonnement** ist Ihr Zahlungskonto in Azure.
-* **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden. 
-* **Zu Dashboard hinzufügen** legt eine Schnellzugriffskachel für die Ressource auf Ihrer Azure-Startseite ab. 
-
-Das Erstellen der Ressource dauert einige Sekunden. Wenn es abgeschlossen ist, sehen Sie eine Warnung.
-
-(Sie können ein [PowerShell-Skript](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) schreiben, um eine Ressource automatisch zu erstellen.)
+Zum Erstellen einer Application Insights-Ressource befolgen Sie den [Leitfaden zum Erstellen einer Ressource ](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
 
 ### <a name="getting-the-instrumentation-key"></a>Abrufen des Instrumentierungsschlüssels
-Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben. 
-
-![Klicken Sie auf "Essentials", klicken Sie auf den Instrumentierungsschlüssel, STRG+C.](./media/separate-resources/02-props.png)
+Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben.
 
 Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App Daten sendet.
 
@@ -90,8 +86,6 @@ Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App
 Wenn Sie eine neue Version Ihrer App veröffentlichen, sollten Sie die Telemetrie aus verschiedenen Builds trennen können.
 
 Sie können die Eigenschaft „Anwendungsversion“ festlegen, sodass Sie die Ergebnisse in der [Suche](../../azure-monitor/app/diagnostic-search.md) und im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) filtern können.
-
-![Filtern nach einer Eigenschaft](./media/separate-resources/050-filter.png)
 
 Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulegen.
 
@@ -146,7 +140,6 @@ Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engi
 ### <a name="release-annotations"></a>Versionsanmerkungen
 Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
 
-![Screenshot eines Beispiels für eine Versionsanmerkung in einem Diagramm](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Freigegebene Ressourcen für mehrere Rollen](../../azure-monitor/app/app-map.md)

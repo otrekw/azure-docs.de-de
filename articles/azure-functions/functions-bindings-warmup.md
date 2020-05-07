@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167326"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559993"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
 
@@ -240,7 +240,7 @@ Wenn eine Aufwärmfunktion aufgerufen wird, werden keine weiteren Informationen 
 ## <a name="trigger---limits"></a>Trigger – Grenzwerte
 
 * Der Trigger für die Aufwärmphase ist nur für Apps verfügbar, die im [Premium-Plan](./functions-premium-plan.md) ausgeführt werden.
-* Der Trigger für die Aufwärmphase wird nur während des Hochskalierens aufgerufen und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
+* Der Trigger für die Aufwärmphase wird nur während des horizontalen Skalierens aufgerufen und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
 * Der Trigger für die Aufwärmphase kann nicht aufgerufen werden, sobald eine Instanz bereits ausgeführt wird.
 * Pro Funktions-App kann nur eine Triggerfunktion für die Aufwärmphase vorhanden sein.
 

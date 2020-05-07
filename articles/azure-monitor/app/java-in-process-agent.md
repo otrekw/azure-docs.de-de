@@ -3,12 +3,12 @@ title: Überwachen von Java-Anwendungen in beliebiger Umgebung – Azure Monitor
 description: Überwachen der Anwendungsleistung für Java-Anwendungen, die in einer beliebigen Umgebung ausgeführt werden, ohne die App zu instrumentieren. Verteilte Ablaufverfolgung und Anwendungszuordnung.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5a62be45320523ee0577d56eb557a4f87a58a1cc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886856"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508070"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights – Public Preview
 
@@ -24,20 +24,27 @@ Sie können weiterhin benutzerdefinierte Telemetriedaten aus Ihrer Anwendung sen
 
 **1. Herunterladen des Agents**
 
-Laden Sie [applicationinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar) herunter.
+Laden Sie [applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) herunter.
 
 **2. Verweisen der JVM auf den Agent**
 
-Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.2.jar` hinzu.
+Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` hinzu.
 
 Typische JVM-Argumente sind `-Xmx512m` und `-XX:+UseG1GC`. Wenn Sie wissen, wo diese hinzugefügt werden, wissen Sie auch, wo dieses Argument hinzuzufügen ist.
 
-Weitere Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [3.0 Preview: Tipps zum Aktualisieren Ihrer JVM-Argumente](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args).
+Weitere Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [3.0 Preview: Tipps zum Aktualisieren Ihrer JVM-Argumente](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
 **3. Verweisen des Agents auf die Application Insights-Ressource**
 
 Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, können Sie eine neue Ressource erstellen, indem Sie die Schritte im [Leitfaden zum Erstellen einer Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ausführen.
-Erstellen Sie eine Konfigurationsdatei mit dem Namen `ApplicationInsights.json`, und legen Sie sie im gleichen Verzeichnis wie `applicationinsights-agent-3.0.0-PREVIEW.2.jar` mit folgendem Inhalt ab:
+
+Verweisen Sie den Agent auf Ihre Application Insights-Ressource, indem Sie eine Umgebungsvariable festlegen:
+
+```
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+```
+
+Sie können aber auch eine Konfigurationsdatei mit dem Namen `ApplicationInsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.0.0-PREVIEW.4.jar` mit folgendem Inhalt ablegen:
 
 ```json
 {
@@ -73,11 +80,11 @@ In der Datei `ApplicationInsights.json` können Sie zusätzlich Folgendes konfig
 * HTTP-Proxy
 * Selbstdiagnose
 
-Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurationsoptionen](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options).
+Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurationsoptionen](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automatisch gesammelte Anforderungen, Abhängigkeiten, Protokolle und Metriken
 
-### <a name="requests"></a>Anforderungen
+### <a name="requests"></a>Requests
 
 * JMS-Consumer
 * Kafka-Consumer
@@ -110,7 +117,7 @@ Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurations
 
 ### <a name="metrics"></a>Metriken
 
-* Micrometer
+* Micrometer (einschließlich Metriken des Spring Boot-Aktors)
 * JMX-Metriken
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>Senden benutzerdefinierter Telemetriedaten aus Ihrer Anwendung
@@ -143,7 +150,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 und verwenden Sie diesen zum Senden benutzerdefinierter Telemetriedaten.
 
-### <a name="events"></a>Ereignisse
+### <a name="events"></a>Events
 
   ```java
 telemetryClient.trackEvent("WinGame");

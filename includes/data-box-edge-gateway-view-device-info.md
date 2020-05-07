@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178551"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561760"
 ---
 1. [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](#connect-to-the-powershell-interface).
 2. Verwenden Sie `Get-HcsApplianceInfo` zum Abrufen der Informationen für Ihr Gerät.
@@ -49,9 +49,9 @@ ms.locfileid: "67178551"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | Dies ist der Anzeigename des Geräts gemäß Konfiguration über die lokale Web-UI während der Gerätebereitstellung. Der Standardanzeigename ist die Seriennummer des Geräts.  |   |
     | SerialNumber                   | Die Seriennummer des Geräts ist eine eindeutige Nummer, die im Werk zugewiesen wird.                                                                             |   |
-    | Modell                          | Das Modell für Ihr Data Box Edge- oder Data Box Gateway-Gerät. Das Modell ist virtuell für Data Box Gateway und physisch für Data Box Edge.                   |   |
+    | Modell                          | Das Modell für Ihr Azure Stack Edge- oder Data Box Gateway-Gerät. Das Modell ist für Azure Stack Edge physisch und für Data Box Gateway virtuell.                   |   |
     | FriendlySoftwareVersion        | Die benutzerfreundliche Zeichenfolge, die der Version der Gerätesoftware entspricht. Für ein System, auf dem eine Vorschau ausgeführt wird, lautet der Anzeigename der Softwareversion „Data Box Edge 1902“. |   |
-    | HcsVersion                     | Die Version der HCS-Software, die auf Ihrem Gerät ausgeführt wird. Die HCS-Softwareversion für Update Data Box Edge 1902 lautet beispielsweise 1.4.771.324.            |   |
+    | HcsVersion                     | Die Version der HCS-Software, die auf Ihrem Gerät ausgeführt wird. Beispielsweise lautet die HCS-Softwareversion, die Data Box Edge 1902 entspricht, „1.4.771.324“.            |   |
     | LocalCapacityInMb              | Die lokale Gesamtkapazität des Geräts in MB.                                                                                                        |   |
     | IsRegistered                   | Dieser Wert gibt an, ob Ihr Gerät mit dem Dienst aktiviert wurde.                                                                                         |   |
 

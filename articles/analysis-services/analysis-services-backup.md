@@ -4,15 +4,15 @@ description: In diesem Artikel wird das Sichern und Wiederherstellen von Modellm
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 02ca7f268f2998d3b7d73ab9fc00bbd688b5f50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408655"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582528"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -22,6 +22,9 @@ Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Service
 > Wenn Sie ein Speicherkonto erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 > 
 > 
+
+> [!NOTE]
+> Wenn sich das Speicherkonto in einer anderen Region befindet, müssen die Firewalleinstellungen so konfiguriert werden, dass der Zugriff von **allen Netzwerken** aus möglich ist. Firewalleinstellungen, die für ausgewählte Netzwerke mit IP-Adressen in der Whitelist und der Ausnahme „Vertrauenswürdige Microsoft-Dienste zulassen“ konfiguriert sind, werden nicht unterstützt.
 
 Sicherungen werden mit der Erweiterung ABF gespeichert. Für tabellarische In-Memory-Modelle werden sowohl die Modelldaten als auch die Metadaten gespeichert. Für tabellarische DirectQuery-Modelle werden nur die Modellmetadaten gespeichert. Sicherungen können in Abhängigkeit von den gewählten Optionen komprimiert und verschlüsselt werden.
 
@@ -104,5 +107,5 @@ Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powersh
 ## <a name="related-information"></a>Verwandte Informationen
 
 [Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)  
-[Hochverfügbarkeit](analysis-services-bcdr.md)     
-[Verwalten von Azure Analysis Services](analysis-services-manage.md)
+[Hochverfügbarkeit](analysis-services-bcdr.md)      
+[Häufig gestellte Fragen zu Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md)

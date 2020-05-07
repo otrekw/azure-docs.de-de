@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371598"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509821"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -47,6 +47,25 @@ Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagram
 ### <a name="order-or-delete-multiple-charts"></a>Sortieren oder Löschen mehrerer Diagramme
 
 Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen ( **...** ), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
+
+## <a name="changing-aggregation"></a>Ändern der Aggregation
+
+Wenn Sie einem Diagramm eine Metrik hinzufügen, wählt der Metrik-Explorer automatisch deren Standardaggregation aus. In den grundlegenden Szenarien ist die Standardeinstellung sinnvoll, doch Sie können eine andere Aggregation verwenden, um zusätzliche Einblicke in die Metrik zu erhalten. Wenn Sie verschiedene Aggregationen in einem Diagramm anzeigen möchten, müssen Sie verstehen, wie diese vom Metrik-Explorer verarbeitet werden. 
+
+Bei Metriken handelt es sich um die Reihe von Messwerten (oder „Metrikwerte“), die über den Zeitraum erfasst werden. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metrik separat über das *Aggregationsintervall* aggregiert. Sie wählen die Dauer des Aggregationsintervalls [mithilfe des Zeitauswahlbereichs im Metrik-Explorer](metrics-getting-started.md#select-a-time-range) aus. Wenn Sie das Aggregationsintervall nicht explizit auswählen, wird die Zeitgranularität automatisch basierend auf dem aktuell ausgewählten Zeitraum ausgewählt. Sobald das Aggregationsintervall festgelegt ist, werden die Metrikwerte, die während jedes Aggregationsintervalls erfasst wurden, aggregiert und in das Diagramm eingefügt (jeweils ein Datenpunkt pro Aggregationsintervall).
+
+Angenommen, das Diagramm zeigt die Metrik **Serverantwortzeit** mit dem Aggregationstyp **Average** (Durchschnitt) über den Zeitraum **letzte 24 Stunden**:
+
+- Wenn die Zeitgranularität auf 30 Minuten festgelegt ist, wird das Diagramm aus 48 aggregierten Datenpunkten gezeichnet (z. B. werden beim Liniendiagramm 48 Punkte auf der Diagrammzeichnungsfläche verbunden). Das heißt, 24 Stunden x 2 Datenpunkte pro Stunde. Jeder Datenpunkt stellt den *Durchschnitt* aller erfassten Antwortzeiten für Serveranforderungen dar, die während des jeweils relevanten 30-Minuten-Zeitraums aufgetreten sind.
+- Wenn Sie die Zeitgranularität auf 15 Minuten festlegen, erhalten Sie 96 aggregierte Datenpunkte.  Das heißt, 24 Stunden x 4 Datenpunkte pro Stunde.
+
+Im Metrik-Explorer sind fünf Aggregationstypen für grundlegende Statistiken verfügbar: **Sum**, **Count**, **Min**, **Max** und **Average**. Der Aggregationstyp **Sum** wird manchmal auch als **Total** bezeichnet. Bei vielen Metriken blendet Metrik-Explorer die Aggregationen aus, die vollkommen irrelevant sind und nicht verwendet werden können.
+
+- **Sum**: Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
+- **Count**: Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum**. Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
+- **Average**: Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
+- **Min**: Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
+- **Max**: Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
 
 ## <a name="apply-filters-to-charts"></a>Anwenden von Filtern auf Diagramme
 

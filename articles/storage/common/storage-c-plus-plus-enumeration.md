@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74269444"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591685"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
 
@@ -62,7 +62,7 @@ Die Antwort für einen Vorgang mit segmentierter Auflistung enthält Folgendes:
 * *_segment*, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
 * *continuation_token*, das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
 
-Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)verfügbar:
+Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)verfügbar:
 
 ```cpp
 // List blobs in the blob container
