@@ -73,7 +73,6 @@
       "searchScope": [
         "Azure"
       ],
-      "recommendations": true,
       "disable_contribution_on_translation_quality": [
         "MT",
         "MTE75",
