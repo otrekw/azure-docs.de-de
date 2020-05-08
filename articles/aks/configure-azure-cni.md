@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure CNI-Netzwerke – „Advanced“ (Erwei
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617382"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207495"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -39,7 +39,7 @@ IP-Adressen für die Pods und die Knoten des Clusters werden über das angegeben
 > Die Anzahl der erforderlichen IP-Adressen sollte Überlegungen für Upgrade- und Skalierungsvorgänge beinhalten. Wenn Sie den IP-Adressbereich so einstellen, dass er nur eine feste Anzahl von Knoten unterstützt, können Sie Ihren Cluster nicht aktualisieren oder skalieren.
 >
 > - Wenn Sie Ihren AKS-Cluster **aktualisieren**, wird im Cluster ein neuer Knoten bereitgestellt. Dienste und Workloads werden auf dem neuen Knoten ausgeführt, und ein älterer Knoten wird aus dem Cluster entfernt. Dieser rollende Aktualisierungsprozess erfordert, dass mindestens ein zusätzlicher Block von IP-Adressen verfügbar ist. Die Knotenanzahl ist dann `n + 1`.
->   - Dieser Aspekt ist besonders wichtig, wenn Sie Windows Server-Knotenpools (derzeit in der Vorschau in AKS) verwenden. Bei Windows Server-Knoten in AKS erfolgt die Anwendung von Windows Updates nicht automatisch, sondern Sie führen ein Upgrade im Knotenpool durch. Dieses Upgrade stellt neue Knoten mit dem neuesten Window Server 2019-Basisknotenimage und Sicherheitspatches bereit. Weitere Informationen zum Upgrade eines Windows Server-Knotenpools finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
+>   - Dieser Aspekt ist besonders wichtig, wenn Sie Windows Server-Knotenpools verwenden. Bei Windows Server-Knoten in AKS erfolgt die Anwendung von Windows Updates nicht automatisch, sondern Sie führen ein Upgrade im Knotenpool durch. Dieses Upgrade stellt neue Knoten mit dem neuesten Window Server 2019-Basisknotenimage und Sicherheitspatches bereit. Weitere Informationen zum Upgrade eines Windows Server-Knotenpools finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 >
 > - Wenn Sie Ihren AKS-Cluster **skalieren**, wird im Cluster ein neuer Knoten bereitgestellt. Dienste und Workloads werden auf dem neuen Knoten ausgeführt. Bei Ihrem IP-Adressbereich muss berücksichtigt werden, wie Sie die Anzahl der Knoten und Pods, die Ihr Cluster unterstützen kann, vergrößern können. Es sollte auch ein zusätzlicher Knoten für Aktualisierungsvorgänge integriert werden. Die Knotenanzahl ist dann `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
 
@@ -61,9 +61,9 @@ Die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster ist 250. *Standardm
 
 | Bereitstellungsmethode | Kubenet-Standardeinstellung | Azure CNI-Standardeinstellung | Bei der Bereitstellung konfigurierbar |
 | -- | :--: | :--: | -- |
-| Azure-Befehlszeilenschnittstelle | 110 | 30 | Ja (bis zu 250) |
+| Azure CLI | 110 | 30 | Ja (bis zu 250) |
 | Resource Manager-Vorlage | 110 | 30 | Ja (bis zu 250) |
-| Portal | 110 | 30 | Nein |
+| Portal | 110 | 30 | Nein  |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurieren des Höchstwerts: Neue Cluster
 

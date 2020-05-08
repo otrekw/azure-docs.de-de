@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7167cbb26e69941cade01ab8c0b8d9dc633f0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72168379"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204628"
 ---
 Beachten Sie bei der Arbeit mit benutzerdefinierten IPsec-Richtlinien die folgenden Anforderungen:
 
@@ -28,9 +28,9 @@ Beachten Sie bei der Arbeit mit benutzerdefinierten IPsec-Richtlinien die folgen
 
 | Einstellung | Parameter |
 |--- |--- |
-| IKE-Verschlüsselung | AES256, AES192, AES128 |
-| IKE-Integrität | SHA384, SHA256, SHA1 |
-| DH-Gruppe | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2 |
-| IPsec-Verschlüsselung | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128 |
-| IPsec-Integrität | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1 |
-| PFS-Gruppe | PFS24, ECP384, ECP256, PFS2048, PFS2 |
+| IKE-Verschlüsselung | GCMAES256, GCMAES128, AES256, AES128 |
+| IKE-Integrität | SHA384, SHA256 |
+| DH-Gruppe | ECP384, ECP256, DHGroup24, DHGroup14 |
+| IPsec-Verschlüsselung | GCMAES256, GCMAES128, AES256, AES128, Keine |
+| IPsec-Integrität | GCMAES256, GCMAES128, SHA256 |
+| PFS-Gruppe | ECP384, ECP256, PFS24, PFS14, Keine |

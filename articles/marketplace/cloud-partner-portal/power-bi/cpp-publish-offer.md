@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: a5eb5b652f7a419c6c2d1b3e6880c3c3003fb679
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: eb31520c81a4064edbe54a0256b694c4ad88fb49
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985523"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141716"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Veröffentlichen eines Power BI-App-Angebots
 
 >[!Important]
->Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote in Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://aka.ms/AzureCreatePBIServiceApp).
+>Ab dem 13. April 2020 beginnen wir mit der Umstellung der Verwaltung Ihrer Power BI-App-Angebote auf Partner Center. Nach der Migration erstellen und verwalten Sie Ihre Angebote im Partner Center. Befolgen Sie zum Verwalten Ihrer migrierten Angebote die Anweisungen unter [Übersicht über die App-Erstellung mit Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
 
 Nachdem Sie das Angebot im Cloud-Partnerportal definiert und die zugehörigen technischen Ressourcen erstellt haben, wird das Angebot im letzten Schritt zur Veröffentlichung übermittelt. Wählen Sie im linken Bereich des Fensters **Neues Angebot** die Option **Veröffentlichen** aus, um diesen Vorgang zu starten. Weitere Informationen finden Sie unter [Veröffentlichen von Azure Marketplace- und AppSource-Angeboten](../manage-offers/cpp-publish-offer.md).
 

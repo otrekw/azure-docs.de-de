@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128471"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207243"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -93,7 +93,13 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 ### <a name="reprocess-a-request"></a>Erneutes Verarbeiten einer Anforderung
 
-Sollte bei einer Anforderung ein Fehler auftreten, können Sie die Anforderung erneut verarbeiten, um den Vorgang zu wiederholen. Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlungsfehler** oder **Teilweise übermittelt** und einem Abschlussdatum möglich, das weniger eine Woche zurückliegt.
+Wenn nach dem Auslösen einer Anforderung zum erneuten Verarbeiten eines Zugriffspakets ein Fehler auftritt, müssen Sie warten, bis die Anforderung vom System erneut verarbeitet wurde. Das System versucht über mehrere Stunden mehrmals, eine erneute Verarbeitung durchzuführen, daher können Sie während dieser Zeit keine erneute Verarbeitung erzwingen. 
+
+Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlungsfehler** oder **Teilweise übermittelt** und einem Abschlussdatum möglich, das weniger eine Woche zurückliegt.
+
+- Wenn der Fehler während dieses Versuchsintervalls korrigiert wird, ändert sich der Anforderungsstatus in **Wird übermittelt**. Die Anforderung wird ohne zusätzliche Aktionen vom Benutzer erneut verarbeitet.
+
+- Wenn der Fehler während des Versuchsintervalls nicht korrigiert wurde, lautet der Anforderungsstatus **Übermittlungsfehler** oder **Teilweise geliefert**. Sie können dann die Schaltfläche **Erneut verarbeiten** verwenden. Sie haben sieben Tage Zeit, die Anforderung erneut zu verarbeiten.
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 

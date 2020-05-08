@@ -4,12 +4,12 @@ description: Application Insights führt eine intelligente Analyse Ihrer App-Tel
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671731"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687694"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -71,7 +71,7 @@ Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanom
 
   * Das ist leider noch nicht möglich. Jedoch ist Folgendes möglich:
     * [Einrichten von Warnungen](../../azure-monitor/app/alerts.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
-    * [Exportieren von Telemetriedaten](../../azure-monitor/app/export-telemetry.md) in eine [Datenbank](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) oder [in PowerBI](../../azure-monitor/app/export-power-bi.md ), mit denen Sie selbst eine Analyse durchführen können.
+    * [Exportieren von Telemetriedaten](../../azure-monitor/app/export-telemetry.md) in eine [Datenbank](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) oder [in Power BI](../../azure-monitor/app/export-power-bi.md ), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse ausgeführt?*
 
   * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt (ganzer Tag in Zeitzone UTC).
@@ -107,7 +107,7 @@ Wo liegt das Problem? Reagiert der Server langsam, ist die Seite sehr lang oder 
 ### <a name="improve-slow-pages"></a>Verbessern langsamer Seiten
 Da Sie im Web viele Ratschläge zur Verbesserung der Serverreaktionszeit und Seitenladezeiten finden, soll dies hier nicht alles wiederholt werden. Sie erhalten aber einige Tipps, die Sie vielleicht bereits kennen, aber die hier noch einmal in Erinnerung gerufen werden sollen:
 
-* Langsames Laden aufgrund von großen Dateien: Laden Sie die Skripts und anderen Teile asynchron. Verwenden Sie die Skriptbündelung. Unterteilen Sie die Hauptseite in Widgets, für die die Daten separat geladen werden. Kein Senden von reinen „alten“ HTML-Daten für lange Tabellen: Verwenden Sie ein Skript, um die Daten als JSON oder in einem anderen kompakten Format anzufordern, und füllen Sie anschließend die Tabelle mit Daten. Es gibt gute Frameworks, die hierfür hilfreich sind. (Die natürlich mit großen Skripts verbunden sind.)
+* Langsames Laden aufgrund großer Dateien: Laden Sie die Skripts und anderen Teile asynchron. Verwenden Sie die Skriptbündelung. Unterteilen Sie die Hauptseite in Widgets, für die die Daten separat geladen werden. Kein Senden von reinen „alten“ HTML-Daten für lange Tabellen: Verwenden Sie ein Skript, um die Daten als JSON oder in einem anderen kompakten Format anzufordern, und füllen Sie anschließend die Tabelle mit Daten. Es gibt gute Frameworks, die hierfür hilfreich sind. (Die natürlich mit großen Skripts verbunden sind.)
 * Langsame Serverabhängigkeiten: Sehen Sie sich die geografischen Standorte der Komponenten an. Stellen Sie bei Verwendung von Azure beispielsweise sicher, dass sich der Webserver und die Datenbank in derselben Region befinden. Werden bei Abfragen mehr Informationen als nötig abgerufen? Würde das Zwischenspeichern oder eine Batchverarbeitung helfen?
 * Kapazitätsprobleme: Sehen Sie sich die Servermetriken von Reaktionszeiten und die Anforderungsanzahl an. Wenn für die Antwortzeiten unverhältnismäßige Spitzen gegenüber den Spitzen bei der Anzahl der Anforderungen zu beobachten sind, ist die Wahrscheinlichkeit hoch, dass Ihre Server überlastet sind.
 
@@ -129,7 +129,7 @@ Die Benachrichtigung über die beeinträchtigte Antwortzeit enthält folgende In
 
 ## <a name="dependency-duration-degradation"></a>Beeinträchtigung der Abhängigkeitsdauer
 
-Moderne Anwendungen verwenden zunehmend den Mikroservices-Entwurfsansatz, der in vielen Fällen zur Abhängigkeit von externen Diensten führt. Wenn beispielsweise Ihre Anwendung von einer Datenplattform abhängt oder Sie einen eigenen Botdienst entwickeln, benötigen Sie wahrscheinlich einen Cognitive Services-Anbieter, um eine menschlichere Interaktion Ihrer Bots zu ermöglichen, und einen Datenspeicherdienst, aus dem der Bot Anworten abrufen kann.  
+Moderne Anwendungen verwenden zunehmend einen Mikroservices-Entwurfsansatz, der in vielen Fällen zur Abhängigkeit von externen Diensten führt. Wenn beispielsweise Ihre Anwendung von einer Datenplattform abhängt oder Sie einen eigenen Botdienst entwickeln, benötigen Sie wahrscheinlich einen Cognitive Services-Anbieter, um eine menschlichere Interaktion Ihrer Bots zu ermöglichen, und einen Datenspeicherdienst, aus dem der Bot Anworten abrufen kann.  
 
 Beispiel einer Benachrichtigung über beeinträchtigte Abhängigkeit:
 
