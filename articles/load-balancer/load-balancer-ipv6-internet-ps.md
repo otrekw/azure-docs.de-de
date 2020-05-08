@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045469"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629472"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
 
@@ -61,7 +61,7 @@ Zum Bereitstellen eines Load Balancers erstellen und konfigurieren Sie die folge
 * NAT-Eingangsregeln: Enthält Regeln für das Zuordnen eines öffentlichen Ports des Load Balancers zu einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool.
 * Tests: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
-Weitere Informationen finden Sie unter [Azure Load Balancer-Komponenten](./concepts-limitations.md#load-balancer-components).
+Weitere Informationen finden Sie unter [Azure Load Balancer-Komponenten](./components.md).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Einrichten von PowerShell für die Verwendung des Resource Managers
 
