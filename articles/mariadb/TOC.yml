@@ -23,12 +23,15 @@
       items:
         - name: Azure-Portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: tutorial-design-database-cli.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Datenbank und Server
@@ -108,13 +111,13 @@
       items:
         - name: Azure-Portal
           href: howto-manage-firewall-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-manage-firewall-cli.md
     - name: Wiederherstellen eines Servers
       items:
         - name: Azure-Portal
           href: howto-restore-server-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-restore-server-cli.md
     - name: Migrieren einer Datenbank
       items:
@@ -132,13 +135,13 @@
       items:
         - name: Azure-Portal
           href: howto-server-parameters.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
     - name: Automatische Speichervergrößerung
       items:
         - name: Azure-Portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
     - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
       items:
@@ -150,13 +153,13 @@
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-cli.md
         - name: Überwachungsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
     - name: Überwachen
       items:
@@ -184,23 +187,23 @@
       items:
         - name: Azure-Portal
           href: howto-manage-vnet-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-manage-vnet-cli.md
     - name: Private Link
       items:
         - name: Azure-Portal
           href: howto-configure-privatelink-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-configure-privatelink-cli.md
     - name: Neustarten des Servers
       items:
         - name: Azure-Portal
           href: howto-restart-server-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-restart-server-cli.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/mariadb
     - name: REST-API
       href: /rest/api/mariadb
