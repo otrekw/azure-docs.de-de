@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271131"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731762"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
 
@@ -102,7 +102,7 @@ Damit verfügen Sie über einen Cluster und können nun mit dem Befehl [az acs k
 
 
 1. Laden Sie Draft für Ihre Umgebung von „ https://github.com/Azure/draft/releases “ herunter, und installieren Sie Draft in PATH, damit der Befehl verwendet werden kann.
-2. Laden Sie Helm für Ihre Umgebung von „ https://github.com/kubernetes/helm/releases “ herunter, und [installieren Sie Helm in PATH, damit der Befehl verwendet werden kann](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+2. Laden Sie Helm für Ihre Umgebung von „ https://github.com/kubernetes/helm/releases “ herunter, und [installieren Sie Helm in PATH, damit der Befehl verwendet werden kann](https://helm.sh/docs/intro/quickstart#install-helm).
 3. Konfigurieren Sie Draft so, dass Ihre Registrierung verwendet wird und für jedes erstellte Helm-Diagramm Unterdomänen erstellt werden. Für die Konfiguration von Draft benötigen Sie Folgendes:
    - Ihren Azure Container Registry-Namen (in diesem Beispiel `draftacsdemo`)
    - Ihren Registrierungsschlüssel oder Ihr Kennwort aus `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`

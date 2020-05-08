@@ -3,32 +3,32 @@ title: Dokumentation zu Vergleichstests für die Azure-Sicherheit
 summary: Anhand unserer bewährten Methoden und Anleitungen erfahren Sie, wie Sie Ihre Cloudlösungen in Azure schützen.
 metadata:
   title: Vergleichstests für die Azure-Sicherheit
-  description: Der Vergleichstest für die Azure-Sicherheitskontrolle enthält Empfehlungen, die Sie dabei unterstützen, die Sicherheit Ihrer Anwendungen und Daten auf Azure zu verbessern.
+  description: Der Vergleichstest für die Azure-Sicherheit enthält Empfehlungen, die Sie dabei unterstützen, die Sicherheit Ihrer Anwendungen und Daten auf Azure zu verbessern.
   services: security
   ms.service: security
   ms.subservice: fundamentals
-  ms.custom: security-baselines
+  ms.custom: security-benchmark
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c2b36e098314af78ca3d6f28534c3d3e97697363
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393834"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607746"
 landingContent:
 - title: Informationen zum Vergleichstest für die Azure-Sicherheit
   linkLists:
   - linkListType: overview
     links:
-    - text: Einführung eines Vergleichstests für die Azure-Sicherheit
+    - text: Einführung zum Azure Security-Vergleichstest
       url: introduction.md
     - text: Übersicht über Azure-Sicherheitssteuerungen
       url: overview.md
-- title: Einstellungen für einmaliges Anmelden
+- title: Sicherheitskontrollen
   linkLists:
   - linkListType: overview
     links:
@@ -38,7 +38,7 @@ landingContent:
       url: security-control-logging-monitoring.md
     - text: Identität und Zugriffssteuerung
       url: security-control-identity-access-control.md
-    - text: Datenschutz
+    - text: Schutz von Daten
       url: security-control-data-protection.md
     - text: Verwaltung von Sicherheitsrisiken
       url: security-control-vulnerability-management.md
@@ -48,7 +48,7 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Grundlegenden Azure-Sicherheitsinformationen
+    - text: Grundlegende Azure-Sicherheitsinformationen
       url: ../fundamentals/index.yml
     - text: Gemeinsame Verantwortung in der Cloud
       url: ../fundamentals/shared-responsibility.md

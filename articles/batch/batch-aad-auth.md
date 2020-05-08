@@ -3,12 +3,13 @@ title: Authentifizieren von Azure Batch-Diensten mit Azure Active Directory
 description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus. Erfahren Sie, wie Sie sich auf eine von zwei Arten authentifizieren.
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116178"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608471"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -35,9 +36,9 @@ Verwenden Sie zur Authentifizierung bei Azure AD diesen Endpunkt zusammen mit de
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> Der mandantenspezifische Endpunkt ist erforderlich, wenn Sie einen Dienstprinzipal zur Authentifizierung verwenden. 
-> 
+> [!NOTE]
+> Der mandantenspezifische Endpunkt ist erforderlich, wenn Sie einen Dienstprinzipal zur Authentifizierung verwenden.
+>
 > Der mandantenspezifische Endpunkt ist optional, wenn Sie mithilfe der integrierten Authentifizierung authentifizieren, wird jedoch empfohlen. Sie können jedoch auch den gemeinsamen Endpunkt für Azure AD verwenden. Der allgemeine Endpunkt bietet eine generische Schnittstelle für die Erfassung von Anmeldeinformationen, wenn kein bestimmter Mandant bereitgestellt wird. Der gemeinsame Endpunkt ist `https://login.microsoftonline.com/common`.
 >
 >
@@ -126,7 +127,7 @@ Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung RBAC
 1. Wählen Sie im Abschnitt **Einstellungen** des Batch-Kontos die Option **Zugriffssteuerung (IAM)** aus.
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle *Mitwirkender* oder *Leser* für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
+1. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle *Mitwirkender* oder *Leser* für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 1. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste und anschließend die Option **Speichern** aus.
 
 Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen RBAC-Rolle angezeigt werden.
@@ -209,7 +210,7 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 Die Codebeispiele in diesem Abschnitt zeigen das Authentifizieren bei Azure AD mit der integrierten Authentifizierung und einem Dienstprinzipal. Die meisten dieser Codebeispiele verwenden .NET, aber die Konzepte sind für andere Sprachen ähnlich.
 
 > [!NOTE]
-> Ein Azure AD-Authentifizierungstoken läuft nach einer Stunde ab. Bei Verwendung eines langlebigen **BatchClient**-Objekts empfehlen wir Ihnen, bei jeder Anforderung ein Token aus ADAL abzurufen, um sicherzustellen, dass Sie immer über ein gültiges Token verfügen. 
+> Ein Azure AD-Authentifizierungstoken läuft nach einer Stunde ab. Bei Verwendung eines langlebigen **BatchClient**-Objekts empfehlen wir Ihnen, bei jeder Anforderung ein Token aus ADAL abzurufen, um sicherzustellen, dass Sie immer über ein gültiges Token verfügen.
 >
 >
 > Schreiben Sie in .NET hierfür eine Methode, mit der das Token aus Azure AD abgerufen wird, und übergeben Sie diese Methode als Delegat an ein **BatchTokenCredentials**-Objekt. Die Delegatmethode wird bei jeder Anforderung an den Batch-Dienst aufgerufen, um sicherzustellen, dass ein gültiges Token bereitgestellt wird. Standardmäßig werden Token von ADAL zwischengespeichert, sodass nur dann ein neues Token aus Azure AD abgerufen wird, wenn dies erforderlich ist. Weitere Informationen zu Token in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD][aad_auth_scenarios].
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ Verweisen Sie auf den Azure AD-Endpunkt in Ihrem Code einschließlich der Mandan
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:  
+Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ Wenn Sie einen Dienstprinzipal verwenden, müssen Sie die Mandanten-ID angeben. 
 TENANT_ID = "<tenant-id>"
 ```
 
-Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:  
+Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"
