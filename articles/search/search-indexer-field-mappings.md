@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275151"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791917"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -28,10 +28,7 @@ Feldzuordnungen sind beispielsweise in folgenden Situationen hilfreich:
 * Sie müssen Ihre Daten mit Base64 codieren oder decodieren. Feldzuordnungen unterstützen mehrere **Zuordnungsfunktionen**, einschließlich Funktionen für die Base64-Codierung und -Decodierung.
 
 > [!NOTE]
-> Die Feldzuordnungsfunktion von Indexern der kognitiven Azure-Suche bietet eine einfache Möglichkeit zum Zuordnen von Datenfeldern zu Indexfeldern mit einigen Optionen für die Datenkonvertierung. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine einfach zu indizierende Form umzuwandeln.
->
-> Microsoft Azure Data Factory ist eine leistungsstarke cloudbasierte Lösung für das Importieren und Transformieren von Daten. Sie können auch Code zum Transformieren der Quelldaten vor der Indizierung schreiben. Codebeispiele finden Sie unter [Modellieren von relationalen Daten](search-example-adventureworks-modeling.md) und [Modellieren von Facets mit mehreren Ebenen](search-example-adventureworks-multilevel-faceting.md).
->
+> Feldzuordnungen in Indexern sind eine einfache Möglichkeit, um Datenfelder Indexfeldern zuzuordnen, wobei in gewissem Umfang eine einfache Datenkonvertierung möglich ist. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine für die Indizierung geeignete Form umzuwandeln. Eine Option, die Sie ggf. in Betracht ziehen sollten, ist [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Einrichten von Feldzuordnungen
 
@@ -182,7 +179,7 @@ Wenn der Parameter `useHttpServerUtilityUrlTokenEncode` zum Codieren bzw. `useHt
 > [!WARNING]
 > Wenn `base64Encode` verwendet wird, um Schlüsselwerte zu erzeugen, muss `useHttpServerUtilityUrlTokenEncode` auf „true“ festgelegt werden. Für Schlüsselwerte kann nur die URL-sichere Base64-Codierung verwendet werden. Weitere Informationen zum vollständigen Satz der Einschränkungen für Zeichen in Schlüsselwerten finden Sie unter [Benennungsregeln &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules).
 
-Die .NET-Bibliotheken in Azure Cognitive Search setzen das vollständige .NET Framework voraus, das integrierte Codierung bereitstellt. Die Optionen `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` nutzen diese integrierten Funktionen. Wenn Sie .NET Core oder ein anderes Framework verwenden, empfiehlt es sich, diese Optionen auf `false` festzulegen und die Codierungs- und Decodierungsfunktionen Ihres Frameworks direkt aufzurufen.
+Die .NET-Bibliotheken in Azure Cognitive Search setzen das vollständige .NET Framework voraus, das integrierte Codierung bereitstellt. Die Optionen `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` nutzen diese integrierte Funktion. Wenn Sie .NET Core oder ein anderes Framework verwenden, empfiehlt es sich, diese Optionen auf `false` festzulegen und die Codierungs- und Decodierungsfunktionen Ihres Frameworks direkt aufzurufen.
 
 In der folgenden Tabelle werden verschiedene Base64-Codierungen der Zeichenfolge `00>00?00` verglichen. Um die erforderliche weitere Verarbeitung (sofern vorhanden) für die Base64-Funktionen zu ermitteln, wenden Sie die Codierfunktion der Bibliothek auf die Zeichenfolge `00>00?00` an und vergleichen die Ausgabe mit der erwarteten Ausgabe `MDA-MDA_MDA`.
 
@@ -245,8 +242,6 @@ Azure SQL-Datenbank verfügt nicht über einen integrierten Datentyp, der `Colle
     "mappingFunction" : { "name" : "jsonArrayToStringCollection" }
   }]
 ```
-
-Ein ausführliches Beispiel, in dem relationale Daten in Indexsammlungsfelder transformiert werden, finden Sie unter [Modellieren von relationalen Daten](search-example-adventureworks-modeling.md).
 
 <a name="urlEncodeFunction"></a>
 

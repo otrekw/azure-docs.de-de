@@ -8,8 +8,6 @@
       href: overview.md
     - name: Vergleich von Messagingdiensten
       href: compare-messaging-services.md
-    - name: Die Tarife „Premium“ und „Basic“
-      href: premium-basic-tiers.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -17,7 +15,7 @@
       items:
         - name: Portal
           href: blob-event-quickstart-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
@@ -28,7 +26,7 @@
       items:
         - name: Portal
           href: custom-event-quickstart-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
@@ -60,7 +58,7 @@
       href: custom-event-to-hybrid-connection.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
       items:
         - name: Erstellen eines benutzerdefinierten Themas
@@ -149,6 +147,8 @@
           href: event-filtering.md
         - name: Übermittlung und Wiederholung
           href: delivery-and-retry.md
+        - name: Webhook-Ereignisbereitstellung
+          href: webhook-event-delivery.md
     - name: Notfallwiederherstellung
       items:
         - name: Notfallwiederherstellung mit Georeplikation
@@ -161,20 +161,18 @@
           href: security-authorization.md
         - name: Netzwerksicherheit
           href: network-security.md
+    - name: Überwachen und Behandeln von Problemen
+      items:
+        - name: Diagnoseprotokolle
+          href: diagnostic-logs.md
+        - name: Metriken
+          href: metrics.md
 - name: Anleitungen
   items:
-    - name: Konfigurieren privater Endpunkte (Vorschau)
-      href: configure-private-endpoints.md
-    - name: Konfigurieren der IP-Firewall (Vorschau)
-      href: configure-firewall.md
-    - name: Aktualisieren des Tarifs
-      href: update-tier.md
     - name: Posten eines Beitrags in einem benutzerdefinierten Thema
       href: post-to-custom-topic.md
     - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md
-    - name: Schützen eines Webhooks mit AAD
-      href: secure-webhook-delivery.md
     - name: Unzustellbare Nachrichten und Wiederholung
       href: manage-event-delivery.md
     - name: Filtern von Ereignissen
@@ -191,17 +189,29 @@
       href: how-to-event-domains.md
     - name: Implementieren des clientseitigen Failovers
       href: custom-disaster-recovery.md
+    - name: Nachverfolgen asynchroner REST-Vorgänge
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Sicher
+      items:
+        - name: Konfigurieren privater Endpunkte (Vorschau)
+          href: configure-private-endpoints.md
+        - name: Konfigurieren der IP-Firewall (Vorschau)
+          href: configure-firewall.md
+        - name: Schützen eines Webhooks mit AAD
+          href: secure-webhook-delivery.md
     - name: Problembehandlung
       items:
-        - name: Aktivieren von Diagnoseprotokollen für ein Thema
+        - name: Aktivieren von Diagnoseprotokollen
           href: enable-diagnostic-logs-topic.md
         - name: Beheben von Fehlern
           href: troubleshoot-errors.md
+        - name: Problembehandlung für die Abonnementüberprüfung
+          href: troubleshoot-subscription-validation.md
         - name: Überwachen der Ereignisbereitstellung
           href: monitor-event-delivery.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/eventgrid
     - name: PowerShell
       href: /powershell/module/az.eventgrid
