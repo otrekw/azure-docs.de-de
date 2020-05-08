@@ -24,6 +24,11 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Erstellen eines Python-Runbooks
       href: learn/automation-tutorial-runbook-textual-python2.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Übersicht über die Automation-Kontoauthentifizierung

@@ -57,12 +57,15 @@
       href: tutorial-send-email.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
     - name: Resource Manager-Vorlagen
       href: samples-resource-manager-templates.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: App Service-Pläne
@@ -229,7 +232,7 @@
           href: webjobs-sdk-how-to.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: '/powershell/module/az.websites/#app_service'

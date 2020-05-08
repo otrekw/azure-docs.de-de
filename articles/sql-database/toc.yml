@@ -56,6 +56,11 @@
       href: sql-database-single-database-quickstart-guide.md
     - name: Verwaltete SQL-Instanzen
       href: sql-database-managed-instance-quickstart-guide.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Funktionsvergleiche
@@ -189,7 +194,7 @@
               href: /sql/connect/sql-server-drivers
               items:
                 - name: ADO.NET
-                  href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+                  href: /sql/connect/ado-net/microsoft-ado-net-sql-server
                 - name: JDBC
                   href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
                 - name: Node.js
@@ -674,7 +679,7 @@
               href: elastic-jobs-migrate.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=single-database
         - name: Azure PowerShell
           href: sql-database-powershell-samples.md?tabs=single-database
@@ -790,7 +795,7 @@
           href: sql-database-managed-instance-alerts.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=managed-instance
         - name: Azure PowerShell
           href: sql-database-powershell-samples.md?tabs=managed-instance
@@ -800,7 +805,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

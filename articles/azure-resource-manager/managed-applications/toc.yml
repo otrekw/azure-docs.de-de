@@ -19,12 +19,15 @@
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
     - name: Verwaltete Anwendungslösungen
       href: sample-projects.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Anzeigen des Definitionsartefakts
@@ -69,7 +72,7 @@
           href: reference-main-template-artifact.md
         - name: Anzeigen der Definition
           href: reference-view-definition-artifact.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell
       href: /powershell/module/az.resources
