@@ -4,15 +4,16 @@ description: Erfahren Sie mehr über Azure Image Builder für virtuelle Computer
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: d0644fca56b852bb34a001a73511f4df33a5f441
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.reviewer: danis
+ms.openlocfilehash: 4cacc96975d6a366e2d353580d22c9818b19a321
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78944989"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792053"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Vorschau: Übersicht über Azure Image Builder
 

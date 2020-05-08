@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085642"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790897"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
-Azure Disk Encryption für virtuelle Windows-Computer (VMs) bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und des Datenträgers für Daten. Darüber hinaus wird die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt, wenn der VolumeType-Parameter auf „All“ festgelegt ist.
+Azure Disk Encryption für virtuelle Windows-Computer (VMs) bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und des Datenträgers für Daten. Darüber hinaus wird die Verschlüsselung des temporären Datenträgers bereitgestellt, wenn der VolumeType-Parameter auf „All“ festgelegt ist.
 
 Azure Disk Encryption ist [mit Azure Key Vault integriert](disk-encryption-key-vault.md), um Ihnen die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel und -geheimnisse zu erleichtern. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für virtuelle Windows-Computer](disk-encryption-overview.md).
 

@@ -4,12 +4,12 @@ description: Sie erhalten einen Überblick, warum das Erstellen von Cloudanwendu
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750618"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792867"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservices-Ansatz zum Erstellen von Anwendungen
 
@@ -35,7 +35,7 @@ Während der Client/Server-Ära haben wir eher Anwendungen mit mehreren Ebenen e
 
 Dieser monolithische Entwurfsansatz hat auch Vorteile. Monolithische Anwendungen sind häufig einfacher zu entwerfen und verfügen über schnellere Aufrufe zwischen Komponenten, da diese Aufrufe oft per prozessübergreifender Kommunikation (Interprocess Communication, IPC) durchgeführt werden. Außerdem wird jeweils ein einzelnes Produkt getestet, was in Bezug auf den Personalaufwand meist effizienter ist. Der Nachteil ist, dass eine enge Kopplung zwischen mehrstufigen Ebenen entsteht und Sie einzelne Komponenten nicht skalieren können. Wenn Sie Probleme beheben oder Upgrades durchführen möchten, müssen Sie warten, bis andere Personen ihre Tests abgeschlossen haben. Agilität ist schwieriger umzusetzen.
 
-Microservices stellen die Antwort auf diese Nachteile dar, und sie sind enger an die oben beschriebenen geschäftlichen Anforderungen angelehnt. Aber auch sie haben sowohl Vor- als auch Nachteile. Der Vorteil von Microservices ist, dass jeder Microservice normalerweise einfachere Geschäftsfunktionen kapselt, die Sie einzeln hoch- und herunterskalieren, testen, bereitstellen und verwalten können. Ein wichtiger Vorteil des Microservice-Ansatzes ist, dass Teams stärker durch Geschäftsszenarien als durch Technologie beeinflusst werden. Kleinere Teams entwickeln basierend auf einem Kundenszenario unter Verwendung beliebiger Technologien ihrer Wahl einen Microservice.
+Microservices stellen die Antwort auf diese Nachteile dar, und sie sind enger an die oben beschriebenen geschäftlichen Anforderungen angelehnt. Aber auch sie haben sowohl Vor- als auch Nachteile. Der Vorteil von Microservices ergibt sich daraus, dass jeder Microservice normalerweise einfachere Geschäftsfunktionen kapselt, die Sie einzeln auf- und abskalieren, testen, bereitstellen und verwalten können. Ein wichtiger Vorteil des Microservice-Ansatzes ist, dass Teams stärker durch Geschäftsszenarien als durch Technologie beeinflusst werden. Kleinere Teams entwickeln basierend auf einem Kundenszenario unter Verwendung beliebiger Technologien ihrer Wahl einen Microservice.
 
 Anders ausgedrückt: Das Unternehmen muss Technologie nicht zur Verwaltung von Microserviceanwendungen standardisieren. Einzelne für Dienste zuständige Teams können die Vorgehensweise wählen, die aufgrund des Know-hows im Team sinnvoll oder am besten zur Behebung des Problems geeignet ist. In der Praxis ist eine Gruppe empfohlener Technologien vorzuziehen, z. B. ein bestimmter NoSQL-Speicher oder ein Webanwendungsframework.
 

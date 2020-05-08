@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460136"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786987"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption für Linux-VMs
 
@@ -21,7 +21,7 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Azure Disk
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Was ist Azure Disk Encryption für Linux-VMs?
 
-Azure Disk Encryption für Linux-VMs bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers* und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des [EncryptFormatAll-Features](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms) die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt. Der Inhalt wird verschlüsselt von der VM zum Speicher-Back-End übertragen. Auf diese Weise wird eine End-to-End-Verschlüsselung mit einem vom Kunden verwalteten Schlüssel erreicht.
+Azure Disk Encryption für Linux-VMs bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers* und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des [EncryptFormatAll-Features](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms) Verschlüsselung des temporären Datenträgers bereitstellt. Der Inhalt wird verschlüsselt von der VM zum Speicher-Back-End übertragen. Auf diese Weise wird eine End-to-End-Verschlüsselung mit einem vom Kunden verwalteten Schlüssel erreicht.
  
 Weitere Informationen finden Sie unter [Unterstützte VMs und Betriebssysteme](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
@@ -61,7 +61,7 @@ Bei der serverseitigen Speicherverschlüsselung werden verwaltete Azure-Datentr�
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Wie unterscheidet sich Azure Disk Encryption von der serverseitigen Speicherverschlüsselung mit einem vom Kunden verwalteten Schlüssel, und wann sollte ich die beiden Lösungen verwenden?
 
-Azure Disk Encryption bietet End-to-End-Verschlüsselung für den Betriebssystemdatenträger, Datenträger für Daten und den Datenträger für kurzlebige Ressourcen mit einem vom Kunden verwalteten Schlüssel.
+Azure Disk Encryption bietet End-to-End-Verschlüsselung für den Betriebssystemdatenträger, Datenträger für Daten und den temporären Datenträger mit einem vom Kunden verwalteten Schlüssel.
 - Wenn Ihre Anforderungen das Verschlüsseln der genannten Datenträger sowie End-to-End-Verschlüsselung einschließen, verwenden Sie Azure Disk Encryption. 
 - Wenn Ihre Anforderungen das Verschlüsseln von ruhenden Daten mit einem vom Kunden verwalteten Schlüssel einschließen, verwenden Sie die [serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln](disk-encryption.md). Sie können einen Datenträger nicht sowohl mit Azure Disk Encryption als auch mit der serverseitigen Speicherverschlüsselung mit vom Kunden verwalteten Schlüsseln verschlüsseln. 
 - Wenn Ihre Linux-Distribution nicht unter den [unterstützten Betriebssystemen für Azure Disk Encryption](disk-encryption-overview.md#supported-operating-systems) aufgeführt ist oder Ihr Szenario in den [nicht unterstützten Szenarien für Windows](disk-encryption-linux.md#unsupported-scenarios) aufgeführt ist, sollten Sie die [serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln](disk-encryption.md) in Betracht ziehen.
