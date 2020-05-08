@@ -63,6 +63,8 @@
           href: ./ag/policy-overview.md
         - name: Überblick über den Bot-Schutz
           href: ./ag/bot-protection-overview.md
+        - name: Häufig gestellte Fragen
+          href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
         - name: Benutzerdefinierte Regeln
@@ -85,7 +87,7 @@
           items:
             - name: Azure PowerShell
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: ./ag/tutorial-restrict-web-traffic-cli.md
         - name: Richtlinien pro Website
           href: ./ag/per-site-policies.md
@@ -97,7 +99,7 @@
               href: ./ag/application-gateway-customize-waf-rules-portal.md
             - name: Azure PowerShell
               href: ./ag/application-gateway-customize-waf-rules-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: ./ag/application-gateway-customize-waf-rules-cli.md
         - name: "Konfigurieren einer benutzerdefinierten WAF\_v2-Regel\_– PowerShell"
           href: ./ag/configure-waf-custom-rules.md
@@ -139,7 +141,7 @@
   items:
     - name: CRS-Regeln
       href: ./ag/application-gateway-crs-rulegroups-rules.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       items:
         - name: Front Door
           href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
