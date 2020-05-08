@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e4de91034de0d036cd99e265949ba85a5939180
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393471"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629326"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
 Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse in der [JSON-Implementierung von CloudEvents 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) und in der [HTTP-Bindung](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) ist eine [offene Spezifikation](https://github.com/cloudevents/spec/blob/v1.0/spec.md) zur Beschreibung von Ereignisdaten.
@@ -139,7 +139,7 @@ New-AzureRmEventGridSubscription `
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
 
-Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Event Grid-Überprüfungshandshake für Endpunkte, mit dem Missbrauch verhindert werden soll. CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](security-authentication.md#webhook-event-delivery) über die HTTP OPTIONS-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
+Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Event Grid-Überprüfungshandshake für Endpunkte, mit dem Missbrauch verhindert werden soll. CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die HTTP OPTIONS-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
 
 <a name="azure-functions"></a>
 
@@ -147,7 +147,7 @@ Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch de
 
 Die [Azure Functions Event Grid-Bindung](../azure-functions/functions-bindings-event-grid.md) unterstützt CloudEvents nicht nativ, sodass durch HTTP ausgelöste Funktionen zum Lesen von CloudEvents-Nachrichten verwendet werden. Bei Verwendung eines HTTP-Triggers zum Lesen von CloudEvents müssen Sie Code für folgende Vorgänge schreiben, die über den Event Grid-Trigger automatisch ausgeführt werden:
 
-* Senden einer Überprüfungsantwort an eine [Anforderung zur Abonnementüberprüfung](../event-grid/security-authentication.md#webhook-event-delivery)
+* Senden einer Überprüfungsantwort an eine [Anforderung zur Abonnementüberprüfung](../event-grid/webhook-event-delivery.md)
 * Aufrufen der Funktion einmal pro Element des im Anforderungstext enthaltenen Ereignisarrays
 
 Informationen zu der zum lokalen Aufrufen der Funktion verwendeten URL oder ihrer Ausführung in Azure finden Sie in der [Referenzdokumentation zu HTTP-Triggerbindungen](../azure-functions/functions-bindings-http-webhook.md).

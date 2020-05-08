@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 57bb897978f47a66adebac069d8892d596ba78f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cf8d461485cefd37b9508031f5cce7ae0a070ef5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427334"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653194"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
@@ -44,4 +44,4 @@ Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres [Schlüsseltres
 ## <a name="turn-on-recovery-options"></a>Aktivieren von Wiederherstellungsoptionen
 
 1. Aktivieren Sie [Vorläufiges Löschen](overview-soft-delete.md).
-2. Aktivieren Sie den Bereinigungsschutz, wenn Sie sich auch nach dem Aktivieren des vorläufigen Löschens vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
+2. Aktivieren Sie den Löschschutz, wenn Sie sich auch nach dem Aktivieren des vorläufigen Löschens vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.

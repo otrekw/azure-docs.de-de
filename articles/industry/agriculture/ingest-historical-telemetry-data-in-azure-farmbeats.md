@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136905"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613267"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -58,7 +59,7 @@ Folgen Sie diesen Schritten:
 5. Wechseln Sie zu Ihrem Basisverzeichnis.
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
@@ -73,7 +74,7 @@ Folgen Sie diesen Schritten:
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ Folgen Sie diesen Schritten:
 - /**DeviceModel:** DeviceModel entspricht den Metadaten des Geräts, beispielsweise dem Hersteller und dem Gerätetyp, bei dem es sich um ein Gateway oder einen Knoten handeln kann.
 - /**Device:** „Gerät“ (Device) entspricht einem physischen Gerät, das in dem landwirtschaftlichen Betrieb vorhanden ist.
 - /**SensorModel:** „SensorModel“ entspricht den Metadaten des Sensors. Hierzu zählen beispielsweise der Hersteller, der Sensortyp – analog oder digital – und die Sensormessung, z. B. Umgebungstemperatur und Luftdruck.
-- /**Sensor:** „Sensor“ entspricht einem physischen Sensor, der Werte aufzeichnet. Ein Sensor ist in der Regel mit einem Gerät mit einer Geräte-ID verbunden.  
+- /**Sensor:** „Sensor“ entspricht einem physischen Sensor, der Werte aufzeichnet. Ein Sensor ist in der Regel mit einem Gerät mit einer Geräte-ID verbunden.
 
 
 |        DeviceModel   |  Vorschläge   |
@@ -108,7 +109,7 @@ Folgen Sie diesen Schritten:
 |   DeviceModelId     |     ID des zugeordneten Gerätemodells  |
 |  HardwareId          | Eindeutige ID für das Gerät, z. B. die MAC-Adresse
 |  ReportingInterval        |   Berichtsintervall in Sekunden
-|  Position            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts   
+|  Position            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts
 |ParentDeviceId       |    ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf.  |
 |    Name            | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden.|
 |     BESCHREIBUNG       |      Eine aussagekräftige Beschreibung |
@@ -139,7 +140,7 @@ Weitere Informationen zu Objekten finden Sie unter [Swagger](https://aka.ms/Farm
 
 ### <a name="api-request-to-create-metadata"></a>API-Anforderung zum Erstellen von Metadaten
 
-Für eine API-Anforderung kombinieren Sie die HTTP-Methode (POST), die URL des API-Diensts und den URI einer Ressource zum Abfragen, Übermitteln, Erstellen oder Löschen einer Anforderung. Dann fügen Sie mindestens einen HTTP-Anforderungsheader hinzu. Die URL des API-Diensts ist der API-Endpunkt, d. h. die Datenhub-URL (https://\<ihrdatenhub>.azurewebsites.net).  
+Für eine API-Anforderung kombinieren Sie die HTTP-Methode (POST), die URL des API-Diensts und den URI einer Ressource zum Abfragen, Übermitteln, Erstellen oder Löschen einer Anforderung. Dann fügen Sie mindestens einen HTTP-Anforderungsheader hinzu. Die URL des API-Diensts ist der API-Endpunkt, d. h. die Datenhub-URL (https://\<ihrdatenhub>.azurewebsites.net).
 
 ### <a name="authentication"></a>Authentifizierung
 
@@ -297,10 +298,10 @@ Sensor
 Mit der folgenden Beispielanforderung wird ein Gerät erstellt. Diese Anforderung enthält eine JSON-Eingabe als Nutzlast mit dem Anforderungstext.
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 
