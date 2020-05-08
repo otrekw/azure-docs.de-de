@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0658a775e40c1fc433c7c2e1d853493544e74ee4
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743204"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133462"
 ---
 # <a name="monitor-workload---azure-portal"></a>Überwachen von Workloads – Azure-Portal
 
@@ -38,7 +38,7 @@ Navigieren Sie im Suchfeld zu den Log Analytics-Arbeitsbereichen, und erstellen 
 
 Weitere Informationen zu Arbeitsbereichen finden Sie in dieser [Dokumentation](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 
-## <a name="turn-on-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
+## <a name="turn-on-resource-logs"></a>Aktivieren von Ressourcenprotokollen
 
 Konfigurieren Sie die Diagnoseeinstellungen, um Protokolle aus Ihrem SQL-Pool auszugeben. Protokolle bestehen aus Telemetriesichten, die den am häufigsten verwendeten Leistungsproblemen bei dynamischen Verwaltungssichten (DMVs) entsprechen. Aktuell werden die folgenden Ansichten unterstützt:
 
@@ -48,7 +48,7 @@ Konfigurieren Sie die Diagnoseeinstellungen, um Protokolle aus Ihrem SQL-Pool au
 - [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-![Aktivieren von Diagnoseprotokollen](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
+![Aktivieren von Ressourcenprotokollen](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
 Protokolle können an Azure Storage, Stream Analytics oder Log Analytics ausgegeben werden. Wählen Sie für dieses Tutorial „Log Analytics“ aus.
 

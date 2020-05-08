@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313928"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209059"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -39,7 +39,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 * Bei Verwendung von C# muss die Version von Visual Studio 2013 oder höher sein.
 
-* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dieses Schema ist für Azure Storage `wasb://`, für Azure Data Lake Storage Gen2 `abfs://` und für Azure Data Lake Storage Gen1 `adl://`. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
+* Das URI-Schema für Ihr Speicherkonto. Dieses Schema ist für Azure Storage `wasb://`, für Azure Data Lake Storage Gen2 `abfs://` und für Azure Data Lake Storage Gen1 `adl://`. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`.
 
 * Ein vorhandener HDInsight-Cluster, dem eine Shared Access Signature hinzugefügt werden kann. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 
@@ -435,5 +435,5 @@ Befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Spe
 
 Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingeschränktem Zugriff hinzufügen, können Sie sich mit anderen Möglichkeiten des Arbeitens mit Daten in Ihrem Cluster vertraut machen:
 
-* [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [Autorisieren von Benutzern für Apache Ambari-Ansichten](hdinsight-authorize-users-to-ambari.md)

@@ -33,6 +33,8 @@
   items:
     - name: Übersicht über Sicherheitsbaselines für Azure
       href: security-baselines-overview.md
+    - name: API Management-Sicherheitsbaseline
+      href: ../../api-management/security-baseline.md
     - name: Azure Cache for Redis-Sicherheitsbaseline
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup-Sicherheitsbaseline
@@ -45,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Daten-Explorer-Sicherheitsbaseline
       href: /azure/data-explorer/security-baseline
+    - name: Databricks-Sicherheitsbaseline
+      href: ../../azure-databricks/security-baseline.md
     - name: "Event\_Hubs-Sicherheitsbaseline"
       href: ../../event-hubs/security-baseline.md
+    - name: Functions-Sicherheitsbaseline
+      href: ../../azure-functions/security-baseline.md
     - name: HDInsight-Sicherheitsbaseline
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault-Sicherheitsbaseline

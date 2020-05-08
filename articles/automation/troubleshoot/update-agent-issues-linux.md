@@ -1,6 +1,6 @@
 ---
-title: Diagnose von Linux Hybrid Runbook Worker – Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Azure Automation Runbook Worker unter Linux behandeln und beheben, der die Updateverwaltung unterstützt.
+title: Beheben von Problemen mit dem Linux Update-Agent in der Azure Automation-Updateverwaltung
+description: Erfahren Sie, wie Sie Fehler und Probleme mit dem Linux Update-Agent mithilfe der Lösung für die Updateverwaltung beheben können.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235414"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81679071"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Linux für die Updateverwaltung und zur Problembehebung
+# <a name="troubleshoot-linux-update-agent-issues"></a>Beheben von Problemen mit dem Linux Update-Agent
 
-Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
+Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als „bereit“ (fehlerfrei) angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen. 
 
 In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich ein Computer befinden kann:
 
-* **Bereit:** Der Hybrid Runbook Worker ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt gesehen.
-* **Verbindung getrennt:** Der Hybrid Runbook Worker ist bereitgestellt und wurde vor über 1 Stunde zuletzt gesehen.
-* **Nicht konfiguriert:** Der Hybrid Runbook Worker wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
+* Bereit: Der Hybrid Runbook Worker ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt gesehen.
+* Verbindung getrennt: Der Hybrid Runbook Worker ist bereitgestellt und wurde vor über 1 Stunde zuletzt gesehen.
+* Nicht konfiguriert: Der Hybrid Runbook Worker wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
 
 > [!NOTE]
-> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige des Azure-Portals und dem aktuellen Zustand des Computers.
+> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige im Azure-Portal und dem aktuellen Zustand eines Computers.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der Offlineanleitung erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
+Bei Azure-Computern klicken Sie im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung**, um die Seite „Problembehandlung von Update-Agent“ zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der Offlineanleitung erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
 
 ![Seite „VM-Liste“](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Für die Überprüfungen muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, wird eine Schaltfläche angezeigt, mit der Sie die **VM starten** können.
+> Für die Überprüfungen muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, wird die Schaltfläche **VM starten** angezeigt.
 
-Klicken Sie auf der Seite **Problembehandlung von Update-Agent** auf **Überprüfungen ausführen**. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/linux/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
+Klicken Sie auf der Seite „Problembehandlung von Update-Agent“ auf **Überprüfungen ausführen**. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/linux/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
 
 ![Seite „Problembehandlung“](../media/update-agent-issues-linux/troubleshoot-page.png)
 

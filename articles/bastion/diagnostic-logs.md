@@ -1,5 +1,5 @@
 ---
-title: Aktivieren und Verwenden von Azure Bastion-Diagnoseprotokollen
+title: Aktivieren und Verwenden von Azure Bastion-Ressourcenprotokollen
 description: In diesem Artikel erfahren Sie, wie Sie Azure Bastion-Diagnoseprotokolle aktivieren und verwenden.
 services: bastion
 author: charwen
@@ -7,18 +7,18 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619278"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131276"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Aktivieren und Verwenden von Bastion-Diagnoseprotokollen
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Aktivieren und Verwenden von Bastion-Ressourcenprotokollen
 
 Wenn Benutzer mithilfe von Azure Bastion eine Verbindung mit Workloads herstellen, können Diagnosedaten der Remotesitzungen von Bastion protokolliert werden. Anschließend können Sie anhand der Diagnose feststellen, welche Benutzer wann und von wo aus eine Verbindung mit welchen Workloads hergestellt haben, und weitere relevante Protokollinformationen einsehen. Um die Diagnose verwenden zu können, müssen Sie Diagnoseprotokolle in Azure Bastion aktivieren. Dieser Artikel unterstützt Sie dabei, Diagnoseprotokolle zu aktivieren und anschließend die Protokolle anzuzeigen.
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>Aktivieren der Diagnoseprotokolle
+## <a name="enable-the-resource-log"></a><a name="enable"></a>Aktivieren des Ressourcenprotokolls
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Diagnoseeinstellungen** aus.
 
@@ -43,7 +43,7 @@ Um auf die Diagnoseprotokolle zuzugreifen, können Sie direkt das Speicherkonto 
 2. Wenn Sie innerhalb des Containers navigieren, sehen Sie verschiedene Ordner im Blob. Diese Ordner spiegeln die Ressourcenhierarchie für ihre Azure Bastion-Ressource wider.
 
    ![Diagnoseeinstellung hinzufügen](./media/diagnostic-logs/2-resource-h.png)
-3. Navigieren Sie zur vollständigen Hierarchie der Azure Bastion-Ressource, deren Diagnoseprotokolle Sie aufrufen/anzeigen möchten. „y=“, „m=“, „d=“, „h=“ und „m=“ geben das Jahr, den Monat, den Tag, die Stunde und die Minute der Diagnoseprotokollerstellung an.
+3. Navigieren Sie zur vollständigen Hierarchie der Azure Bastion-Ressource, deren Diagnoseprotokolle Sie aufrufen/anzeigen möchten. „y=“, „m=“, „d=“, „h=“ und „m=“ geben das Jahr, den Monat, den Tag, die Stunde und die Minute der Ressourcenprotokollerstellung an.
 
    ![Speicherort auswählen](./media/diagnostic-logs/3-resource-location.png)
 4. Suchen Sie die von Azure Bastion erstellte JSON-Datei, die die Diagnoseprotokolldaten für den Zeitraum enthält, zu dem Sie navigiert sind.

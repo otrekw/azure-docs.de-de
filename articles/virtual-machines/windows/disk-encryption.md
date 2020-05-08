@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 930fcb4c023dc58fe0eeea65aa3fa5f78569e628
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085670"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137789"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 
@@ -189,7 +189,7 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 
-#### <a name="encrypt-existing-unattached-managed-disks"></a>Verschlüsseln vorhandener, nicht angefügter verwalteter Datenträger 
+#### <a name="encrypt-existing-managed-disks"></a>Verschlüsseln vorhandener verwalteter Datenträger 
 
 Die vorhandenen Datenträger dürfen nicht an einen laufenden virtuellen Computer angefügt werden, damit Sie sie mithilfe des folgenden Skripts verschlüsseln können:
 

@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083292"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203878"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
-In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für [Apache Storm](https://storm.apache.org/) erstellen. Hier erstellen Sie eine Storm-Topologie, die eine Anwendung zur Wortzählung implementiert. Sie verwenden [Apache Maven](https://maven.apache.org/) zum Erstellen und Verpacken des Projekts. Anschließend erfahren Sie, wie Sie die Topologie mit dem [Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html)-Framework definieren.
+In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für Apache Storm erstellen. Sie erstellen eine Storm-Topologie, die eine Anwendung zur Wortzählung implementiert. Sie verwenden Apache Maven zum Erstellen und Packen des Projekts. Anschließend erfahren Sie, wie Sie die Topologie mit dem Apache Storm Flux-Framework definieren.
 
 Nach Abschluss der Schritte in diesem Dokument können Sie die Topologie für Apache Storm in HDInsight bereitstellen.
 
@@ -197,7 +197,7 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
 
 * **Apache Maven Compiler-Plug-In**
 
-    Ein weiteres nützliches Plug-In ist das [Apache Maven Compiler-Plug-In](https://maven.apache.org/plugins/maven-compiler-plugin/), das zum Ändern von Kompilierungsoptionen verwendet wird. Ändern Sie die Java-Version, die Maven für die Quelle und das Ziel Ihrer Anwendung verwendet.
+    Das [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) ist ein weiteres nützliches Plug-In, das zum Ändern von Kompilierungsoptionen verwendet wird. Ändern Sie die Java-Version, die Maven für die Quelle und das Ziel Ihrer Anwendung verwendet.
 
   * Für HDInsight __3.4 oder früher__ legen Sie Java-Version __1.7__ für Quelle und Ziel fest.
 
@@ -239,13 +239,13 @@ Eine Java-basierte Apache Storm-Topologie besteht aus drei Komponenten, die Sie 
 
 * **Spouts**: Liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
 
-* **Bolts**: Verarbeitet Datenströme, die von Spouts oder anderen Bolts ausgegeben werden, und gibt einen oder mehrere Datenströme aus.
+* **Bolts**: Mit dieser Komponente werden Datenströme verarbeitet, die von Spouts oder anderen Bolts ausgegeben werden, und ein oder mehrere Datenströme ausgegeben.
 
 * **Topology**: Definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
 
 ### <a name="create-the-spout"></a>Erstellen des Spouts
 
-Um die Anforderungen für das Einrichten von externen Datenquellen zu verringern, gibt der folgende Spout willkürliche Sätze aus. Es handelt sich um eine modifizierte Version eines Spouts, der mit den [Storm-Startbeispielen](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)bereitgestellt wird.  Obwohl in dieser Topologie nur ein Spout verwendet wird, verfügen andere Topologien möglicherweise über mehrere Spouts, die der Topologie Daten aus verschiedenen Quellen zuführen.
+Um die Anforderungen für das Einrichten von externen Datenquellen zu verringern, gibt der folgende Spout willkürliche Sätze aus. Es handelt sich um eine modifizierte Version eines Spouts, der mit den [Storm-Startbeispielen](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)bereitgestellt wird.  Obwohl in dieser Topologie ein Spout verwendet wird, verfügen andere Topologien möglicherweise über mehrere Spouts, die der Topologie Daten aus verschiedenen Quellen zuführen.
 
 Geben Sie den folgenden Befehl ein, um die neue Datei `RandomSentenceSpout.java` zu erstellen und zu öffnen:
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>Definieren der Topologie
 
-Die Topologie verbindet die Spouts und Bolts in einem Diagramm, in dem definiert ist, wie die Daten zwischen den Komponenten verlaufen. Darüber hinaus bietet sie Hinweise zu Parallelität, die von Storm beim Erstellen von Instanzen der Komponenten innerhalb des Clusters verwendet werden.
+Die Topologie verknüpft die Spouts und Bolts in einem Diagramm. Das Diagramm definiert, wie Datenflüsse zwischen den Komponenten übertragen werden. Darüber hinaus bietet sie Hinweise zu Parallelität, die von Storm beim Erstellen von Instanzen der Komponenten innerhalb des Clusters verwendet werden.
 
 Nachfolgend sehen Sie eine einfache Abbildung des Komponentendiagramms für diese Topologie.
 
@@ -613,15 +613,15 @@ Während der Ausführung zeigt die Topologie zunächst Startinformationen an. De
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Dieses Beispielprotokoll gibt an, dass das Wort „und“ 113 Mal ausgegeben wurde. Diese Anzahl steigt weiter an, solange die Topologie ausgeführt wird, da der Spout fortlaufend die gleichen Sätze ausgibt.
+Dieses Beispielprotokoll gibt an, dass das Wort „und“ 113 Mal ausgegeben wurde. Die Anzahl nimmt weiterhin zu, solange die Topologie ausgeführt wird. Diese Zunahme ist darauf zurückzuführen, dass der Spout fortlaufend die gleichen Sätze ausgibt.
 
 Zwischen der Ausgabe von Wörtern und der Anzahl liegt außerdem ein Intervall von fünf Sekunden. Die **WordCount**-Komponente wird so konfiguriert, dass nur Informationen ausgegeben werden, wenn ein „Tick“-Tupel eingeht. Es wird angefordert, dass „Tick“-Tupel nur alle fünf Sekunden zugestellt werden.
 
 ## <a name="convert-the-topology-to-flux"></a>Konvertieren der Topologie in Flux
 
-[Flux](https://storm.apache.org/releases/2.0.0/flux.html) ist ein neues Framework von Storm 0.10.0 und höher, mit dem Sie die Konfiguration von der Implementierung trennen können. Ihre Komponenten werden weiterhin in Java definiert, aber die Topologie wird mit einer YAML-Datei definiert. Sie können eine Standardtopologiedefinition mit Ihrem Projekt verpacken oder eine eigenständige Datei verwenden, wenn Sie die Topologie übermitteln. Wenn Sie die Topologie an Storm übermitteln, können Sie Umgebungsvariablen oder Konfigurationsdateien verwenden, um die YAML-Topologiedefinition mit Werten aufzufüllen.
+[Flux](https://storm.apache.org/releases/2.0.0/flux.html) ist ein neues Framework, das mit Storm 0.10.0 und höher verfügbar ist. Mit Flux können Sie die Konfiguration von der Implementierung trennen. Ihre Komponenten werden weiterhin in Java definiert, aber die Topologie wird mit einer YAML-Datei definiert. Sie können eine Standardtopologiedefinition mit Ihrem Projekt verpacken oder eine eigenständige Datei verwenden, wenn Sie die Topologie übermitteln. Wenn Sie die Topologie an Storm übermitteln, können Sie Umgebungsvariablen oder Konfigurationsdateien verwenden, um YAML-Topologiedefinitionswerte aufzufüllen.
 
-Die YAML-Datei definiert die für die Topologie zu verwendenden Komponenten und den Datenfluss zwischen ihnen. Sie können eine YAML-Datei als Teil der JAR-Datei einfügen, oder Sie können eine externe YAML-Datei verwenden.
+Die YAML-Datei definiert die für die Topologie zu verwendenden Komponenten und den Datenfluss zwischen ihnen. Sie können eine YAML-Datei als Teil der JAR-Datei einschließen. Sie können aber auch eine externe YAML-Datei verwenden.
 
 Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
@@ -818,7 +818,7 @@ Weitere Informationen zu diesen und anderen Features des Flux-Frameworks finden 
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) ist eine von Storm bereitgestellte hohe Abstraktionsebene. Trident ermöglicht eine statusbehaftete Verarbeitung. Der wichtigste Vorteil von Trident ist die Gewährleistung, dass jede Nachricht, die in die Topologie eingegeben wird, nur einmal verarbeitet wird. Ohne Trident kann Ihre Topologie nur sicherstellen, dass Nachrichten mindestens einmal verarbeitet werden. Es gibt noch weitere Unterschiede, z. B. integrierte Komponenten, die Anstelle der Erstellung von Bolts verwendet werden können. Tatsächlich werden Bolts durch weniger generische Komponenten wie Filter, Projektionen und Funktionen ersetzt.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) ist eine von Storm bereitgestellte hohe Abstraktionsebene. Trident ermöglicht eine statusbehaftete Verarbeitung. Der wichtigste Vorteil von Trident ist, dass jede Nachricht, die in die Topologie eingegeben wird, nur einmal verarbeitet wird. Ohne Trident kann Ihre Topologie nur sicherstellen, dass Nachrichten mindestens einmal verarbeitet werden. Es gibt noch weitere Unterschiede, z. B. integrierte Komponenten, die Anstelle der Erstellung von Bolts verwendet werden können. Bolts werden durch weniger generische Komponenten wie Filter, Projektionen und Funktionen ersetzt.
 
 Trident-Anwendungen können mithilfe von Maven-Projekten erstellt werden. Sie verwenden die gleichen Schritte wie weiter oben – nur der Code ist unterschiedlich. Trident kann (derzeit) auch nicht mit dem Flux-Framework verwendet werden.
 
@@ -830,6 +830,6 @@ Sie haben gelernt, wie Sie eine Apache Storm-Topologie mit Java erstellen. Nun l
 
 * [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Entwickeln von Topologien mit Python](apache-storm-develop-python-topology.md)
 
 Weitere beispielhafte Apache Storm-Topologien finden Sie unter [Beispieltopologien für Apache Storm in HDInsight](apache-storm-example-topology.md).

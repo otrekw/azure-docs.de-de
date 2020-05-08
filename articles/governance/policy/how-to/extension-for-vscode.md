@@ -3,12 +3,12 @@ title: Azure Policy-Erweiterung für Visual Studio Code
 description: Erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code zum Suchen nach Resource Manager-Aliasen verwenden.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231222"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182564"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -52,7 +52,7 @@ Führen Sie für Benutzer der nationalen Cloud die folgenden Schritte aus, um zu
 
 1. Wählen Sie in der Liste die nationale Cloud aus:
 
-   ![Festlegen der Anmeldung bei der Azure-Standardcloud für Visual Studio Code](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Festlegen der Standardanmeldung bei der Azure-Cloud für Visual Studio Code" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Verbinden mit einem Azure-Konto
 
@@ -64,13 +64,13 @@ Zum Auswerten von Ressourcen und Suchen nach Aliasen müssen Sie eine Verbindung
 
      Wählen Sie in der Azure Policy-Erweiterung die Option **Bei Azure anmelden** aus.
 
-     ![Azure Cloud-Anmeldung für Visual Studio Code über die Azure Policy-Erweiterung](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Anmeldung bei der Azure-Cloud für Visual Studio Code über die Azure Policy-Erweiterung" border="false":::
 
    - Befehlspalette
 
      Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure: Anmelden** ein.
 
-     ![Azure Cloud-Anmeldung für Visual Studio Code über die Befehlspalette](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Anmeldung bei der Azure-Cloud für Visual Studio Code über die Befehlspalette" border="false":::
 
 1. Befolgen Sie die Anleitung für die Anmeldung, um sich bei Azure anzumelden. Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname unten im Visual Studio Code-Fenster in der Statusleiste angezeigt.
 
@@ -121,11 +121,11 @@ Kunden mit Hunderten oder Tausenden von Ressourcen in einem einzelnen Abonnement
 
 ## <a name="discover-aliases-for-resource-properties"></a>Ermitteln von Aliasen für Ressourceneigenschaften
 
-Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle oder durch Auswahl in der Strukturansicht) öffnet die Azure Policy-Erweiterung die JSON-Datei, die diese Ressource und alle zugehörigen Resource Manager-Eigenschaftswerte darstellt.
+Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle oder durch Auswahl in der Strukturansicht) öffnet die Azure Policy-Erweiterung die JSON-Datei, die diese Ressource und alle zugehörigen Resource Manager-Eigenschaftswerte repräsentiert.
 
 Sobald eine Ressource geöffnet ist, wird beim Zeigen auf den Namen oder den Wert der Resource Manager-Eigenschaft der Azure Policy-Alias angezeigt (sofern vorhanden). In diesem Beispiel ist die Ressource vom Typ `Microsoft.Compute/virtualMachines`, und es wird auf die Eigenschaft **properties.storageProfile.imageReference.offer** gezeigt. Beim Zeigen werden die entsprechenden Aliase eingeblendet.
 
-![Zeigen in der Azure Policy-Erweiterung zum Einblenden des Resource Manager-Eigenschaftenalias](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Zeigen in der Azure Policy-Erweiterung zum Einblenden des Resource Manager-Eigenschaftenalias" border="false":::
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Suchen nach und Anzeigen von Richtlinien und Zuweisungen
 
