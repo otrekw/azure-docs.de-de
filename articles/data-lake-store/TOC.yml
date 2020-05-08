@@ -22,6 +22,11 @@
       href: data-lake-store-get-started-powershell.md
     - name: Verwenden der Azure-Befehlszeilenschnittstelle
       href: data-lake-store-get-started-cli-2.0.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Anleitung
   items:
     - name: Laden und Verschieben von Daten
@@ -163,14 +168,14 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-store'
     - name: Python (Kontoverwaltung)
-      href: 'https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python'
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-datalake-store/azure.mgmt.datalake.store?view=azure-python'
     - name: Python (Dateisystemverwaltung)
       href: 'https://azure-datalake-store.readthedocs.io/en/latest'
     - name: REST
       href: /rest/api/datalakestore
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.datalakestore/allversions
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
 - name: Ressourcen
   items:
