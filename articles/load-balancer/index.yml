@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 12/05/2019
-  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
-  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.date: 05/07/2020
+  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/03/2020
-  ms.locfileid: "82732987"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930623"
 landingContent:
 - title: Informationen zu Load Balancer
   linkLists:
@@ -28,11 +28,13 @@ landingContent:
       url: concepts.md
     - text: Load Balancer-Komponenten
       url: components.md
+    - text: Load Balancer-SKUs
+      url: skus.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer
+    - text: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -54,25 +56,27 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
+    - text: Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: Erstellen eines Lastenausgleichs mit Internetzugriff und IPv6 über PowerShell
+    - text: Erstellen einer Load Balancer-Instanz mit Internetzugriff und IPv6 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: Konfigurieren des Verteilungsmodus
       url: load-balancer-distribution-mode.md
+    - text: Aktualisieren von „Basic“ auf „Standard“
+      url: upgrade-basic-standard.md
 - title: Bereitstellen
   linkLists:
   - linkListType: concept
     links:
     - text: Load Balancer Standard und Verfügbarkeitszonen
       url: load-balancer-standard-availability-zones.md
-    - text: Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
+    - text: Load Balancer mit TCP-Rücksetzung bei Leerlauf
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: Erstellen einer Load Balancer Standard-Instanz mit zonenredundantem Front-End
+    - text: Erstellen eines Lastenausgleichs mit zonenredundantem Front-End
       url: load-balancer-get-started-internet-az-portal.md
-    - text: Erstellen einer Load Balancer Standard-Instanz mit Zonen-Front-End
+    - text: Erstellen einer Load Balancer-Instanz mit einem Zonen-Front-End
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
       url: load-balancer-multiple-ip.md
@@ -94,3 +98,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+    - text: ARM-Vorlagen
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: Häufig gestellte Fragen zu Load Balancer
+      url: load-balancer-faqs.md
