@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 462326fb16663a6f25ff4b51ea11791201086fd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528727"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792036"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -81,7 +81,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Anforderungen an die Konfiguration der TDE-Schutzvorrichtung
 
-- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA 2048- oder RSA HSM 2048-Schlüssel sein.
+- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA- oder RSA HSM-Schlüssel sein. Unterstützte Schlüssellängen sind 2.048 und 3.072 Byte.
 
 - Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
 
@@ -93,7 +93,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 ### <a name="recommendations-when-configuring-akv"></a>Empfehlungen für die Konfiguration von AKV
 
-- Ordnen Sie einem Schlüsseltresor in einem Einzelabonnement insgesamt höchstens 500 universelle oder 200 unternehmenskritische Datenbanken zu, um Hochverfügbarkeit sicherzustellen, wenn der Server auf die TDE-Schutzvorrichtung im Schlüsseltresor zugreift. Diese Zahlen basieren auf Erfahrungen und sind in den [Key Vault-Dienstgrenzwerten](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits) dokumentiert. Damit sollen Probleme nach einem Serverfailover verhindert werden, da dabei so viele Schlüsselvorgänge für den Tresor ausgeführt werden, wie Datenbanken auf diesem Server vorhanden sind.
+- Ordnen Sie einem Schlüsseltresor in einem Einzelabonnement insgesamt höchstens 500 universelle oder 200 unternehmenskritische Datenbanken zu, um Hochverfügbarkeit sicherzustellen, wenn der Server auf die TDE-Schutzvorrichtung im Schlüsseltresor zugreift. Diese Zahlen basieren auf Erfahrungen und sind in den [Key Vault-Dienstgrenzwerten](https://docs.microsoft.com/azure/key-vault/general/service-limits) dokumentiert. Damit sollen Probleme nach einem Serverfailover verhindert werden, da dabei so viele Schlüsselvorgänge für den Tresor ausgeführt werden, wie Datenbanken auf diesem Server vorhanden sind.
 
 - Legen Sie eine Ressourcensperre für den Schlüsseltresor fest, um zu steuern, wer diese wichtige Ressource löschen kann, und um ein versehentliches oder nicht autorisiertes Löschen zu verhindern. Erfahren Sie mehr über [Ressourcensperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 

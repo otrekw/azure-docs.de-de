@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 1560a67d73b712ba1f295992fce4f7f1a2ae75bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100701"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792138"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Erstellen einer Azure Shared Image Gallery-Instanz über das Portal
 
@@ -25,26 +25,11 @@ Der Katalog ist eine Ressource der obersten Ebene, die vollständige rollenbasie
 
 Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Ressourcentypen. Wir werden diese in diesem Artikel verwenden oder erstellen:
 
-| Resource | BESCHREIBUNG|
-|----------|------------|
-| **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus [generalisierten](shared-image-galleries.md#generalized-and-specialized-images) virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
-| **Momentaufnahme** | Eine Kopie einer VHD, die zum Erstellen einer **Imageversion** verwendet werden kann. Momentaufnahmen können von einem [spezialisierten](shared-image-galleries.md#generalized-and-specialized-images) virtuellen Computer (einem virtuellen Computer, der nicht generalisiert wurde) erstellt und dann allein oder mit Momentaufnahmen von Datenträgern verwendet werden, um eine spezialisierte Imageversion zu erstellen.
-| **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
-| **Imagedefinition** | Images sind innerhalb eines Katalogs definiert und enthalten Informationen über das jeweilige Image und die Anforderungen für dessen Verwendung in Ihrer Organisation. Sie können Informationen einbinden, etwa, ob das Image ein generalisiertes oder spezialisiertes Image ist, das Betriebssystem, Anforderungen hinsichtlich minimalem und maximalem Arbeitsspeicher und Versionshinweise. Es ist eine Definition eines Imagetyps. |
-| **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 
-
-> [!IMPORTANT]
-> Spezialisierte Images befinden sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**: Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
-
-## <a name="before-you-begin"></a>Voraussetzungen
-
-Für das Beispiel in diesem Artikel muss ein verwaltetes Image eines generalisierten virtuellen Computers oder eine Momentaufnahme eines spezialisierten virtuellen Computers vorhanden sein. Sie können im [Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell](tutorial-custom-images.md) lesen, wie ein verwaltetes Image erstellt wird, oder [erstellen Sie eine Momentaufnahme](snapshot-copy-managed-disk.md) für einen spezialisierten virtuellen Computer. Für verwaltete Images und Momentaufnahmen darf der Datenträger nicht größer als 1 TB sein.
 
 Ersetzen Sie beim Durcharbeiten dieses Artikels bei Bedarf den Namen der Ressourcengruppe und des virtuellen Computers.
 
