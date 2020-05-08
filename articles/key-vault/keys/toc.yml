@@ -23,11 +23,16 @@
       href: hsm-protected-keys-vendor-agnostic-byok.md
     - name: Importieren von HSM-geschützten Schlüsseln (Legacy)
       href: hsm-protected-keys-legacy.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Verweis
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
