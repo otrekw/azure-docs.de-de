@@ -26,11 +26,11 @@
         - name: Leitfaden zur Veröffentlichung nach Angebotstyp
           href: ./publisher-guide-by-offer-type.md
           items:
-            - name: Virtual Machines
+            - name: Virtuelle Computer
               href: ./marketplace-virtual-machines.md
-            - name: 'Azure-Anwendungen: Lösungsvorlagen'
+            - name: 'Azure-Apps: Lösungsvorlagen'
               href: ./marketplace-solution-templates.md
-            - name: 'Azure-Anwendungen: Verwaltete Anwendungen'
+            - name: 'Azure-Apps: Verwaltete Anwendungen'
               href: ./marketplace-managed-apps.md
             - name: SaaS-Apps
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: "Office\_365, Dynamics\_365 und Power\_BI"
               href: ./appsource-offer-publishing-guide.md
-            - name: Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
+            - name: Aktivieren der Angebotsauthentifizierung mit Azure AD
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: Integrierte Lösungen
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: Bewährte Methoden für Angebotslistung
               href: ./gtm-offer-listing-best-practices.md
-            - name: Kriterien für eine Empfehlung
+            - name: Aufnahme in die Empfehlungen
               href: ./gtm-how-to-get-featured.md
             - name: Überprüfung von Marketplace-Inhalten
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: Unterstützung für den kommerziellen Marketplace
           href: ./support-azure-marketplace.md
           items:
-            - name: Marketplace – häufig gestellte Fragen
+            - name: Häufig gestellte Fragen zum kommerziellen Marketplace
               href: ./marketplace-faq-publisher-guide.md
             - name: Geografische Verfügbarkeit und Währungen
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: Hilfe-Wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge-Modulangebot
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: Erstellen eines IoT Edge-Modulangebots
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: Registerkarte „SKUs“
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Registerkarte „Marketplace“
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: Registerkarte „Support“
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: Erstellen von technischen Ressourcen für das IoT Edge-Modul
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: Veröffentlichen eines IoT Edge-Modulangebots
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: Aktualisieren eines vorhandenen Angebots
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI-App-Angebot
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Erstellen eines Power BI-App-Angebots
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: Registerkarte „Technische Informationen“
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: Registerkarte „Storefront Details“ (Storefrontdetails)
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: Registerkarte „Kontakte“
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Erstellen technischer Ressourcen für eine Power BI-App
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Veröffentlichen eines Power BI-App-Angebots
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: Aktualisieren eines vorhandenen Angebots
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS-Anwendungsangebot
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: VM-Angebot
@@ -495,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: "IoT\_Edge-Modulangebote"
           items:
-            - name: "Vorbereiten der technischen Ressourcen für das IoT\_Edge-Modul"
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: "Erstellen eines IoT\_Edge-Modulangebots"
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: "Vorbereiten der technischen Ressourcen für das IoT\_Edge-Modul"
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: Angebote für verwaltete Dienste
           items:
             - name: Erstellen eines Angebots für einen verwalteten Dienst
