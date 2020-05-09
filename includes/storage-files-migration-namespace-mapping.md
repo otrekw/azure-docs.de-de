@@ -7,50 +7,51 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 25c333aae49bff8d0596d4f5403c18576bf198b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124734"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143581"
 ---
-In diesem Schritt ermitteln Sie, wie viele Azure-Dateifreigaben Sie benötigen. Eine einzelne Windows Server-Instanz (oder ein Cluster) kann bis zu 30 Azure-Dateifreigaben synchronisieren.
+In diesem Schritt ermitteln Sie, wie viele Azure-Dateifreigaben Sie benötigen. Eine einzelne Windows Server-Instanz (oder ein Cluster) kann bis zu 30 Azure-Dateifreigaben synchronisieren.
 
-Möglicherweise verfügen Sie über weitere Ordner auf Ihren Volumes, die Sie derzeit lokal als SMB-Freigaben für Ihre Benutzer und Apps freigeben. Am einfachsten wäre es, wenn sich eine lokale Freigabe 1:1 einer Azure-Dateifreigabe zuordnen ließe. Bei einer ausreichend geringen Anzahl (weniger als 30 für eine einzelne Windows Server-Instanz) wird eine 1:1-Zuordnung empfohlen.
+Möglicherweise verfügen Sie über weitere Ordner auf Ihren Volumes, die Sie derzeit lokal als SMB-Freigaben für Ihre Benutzer und Apps freigeben. Am einfachsten ist es, wenn sich eine lokale Freigabe 1:1 einer Azure-Dateifreigabe zuordnen lässt. Bei einer ausreichend geringen Anzahl (weniger als 30 für eine einzelne Windows Server-Instanz) wird eine 1:1-Zuordnung empfohlen.
 
-Wenn Sie über mehr als 30 Dateifreigaben verfügen, ist es häufig nicht nötig oder sinnvoll, eine lokale Dateifreigabe 1:1 einer Azure-Dateifreigabe zuzuordnen.
-Ziehen Sie folgende Möglichkeiten in Betracht:
+Wenn Sie über mehr als 30 Freigaben verfügen, ist es häufig nicht nötig oder sinnvoll, eine lokale Freigabe 1:1 einer Azure-Dateifreigabe zuzuordnen. Ziehen Sie folgende Möglichkeiten in Betracht.
 
 #### <a name="share-grouping"></a>Gruppierung von Freigaben
 
-Wenn Ihre Personalabteilung beispielsweise über insgesamt 15 Freigaben verfügt, könnten Sie die Speicherung aller Personaldaten in einer einzelnen Azure-Dateifreigabe in Erwägung ziehen. Wenn Sie mehrere lokale Freigaben in einer Azure-Dateifreigabe speichern, können Sie trotzdem die üblichen 15 SMB-Freigaben auf Ihrer lokalen Windows Server-Instanz erstellen. Die Gruppierung der Freigaben bedeutet lediglich, dass Sie die Stammordner dieser 15 Freigaben als Unterordner in einem gemeinsamen Ordner organisieren. Anschließend synchronisieren Sie diesen gemeinsamen Ordner mit einer Azure-Dateifreigabe. Dadurch wird für diese Gruppe lokaler Freigaben nur eine einzige Azure-Dateifreigabe in der Cloud benötigt.
+Wenn Ihre Personalabteilung beispielsweise über insgesamt 15 Freigaben verfügt, können Sie die Speicherung aller Personaldaten in einer einzelnen Azure-Dateifreigabe in Erwägung ziehen. Wenn Sie mehrere lokale Freigaben in einer Azure-Dateifreigabe speichern, können Sie trotzdem die üblichen 15 SMB-Freigaben auf Ihrer lokalen Windows Server-Instanz erstellen. Die Gruppierung der Freigaben bedeutet lediglich, dass Sie die Stammordner dieser 15 Freigaben als Unterordner in einem gemeinsamen Ordner organisieren. Anschließend synchronisieren Sie diesen gemeinsamen Ordner mit einer Azure-Dateifreigabe. Dadurch wird für diese Gruppe lokaler Freigaben nur eine einzige Azure-Dateifreigabe in der Cloud benötigt.
 
 #### <a name="volume-sync"></a>Volumesynchronisierung
 
-Die Azure-Dateisynchronisierung unterstützt das Synchronisieren eines Volumestamms mit einer Azure-Dateifreigabe.
-Wenn Sie den Stammordner synchronisieren, werden alle Unterordner und Dateien in derselben Azure-Dateifreigabe abgelegt.
+Die Azure-Dateisynchronisierung unterstützt das Synchronisieren eines Volumestamms mit einer Azure-Dateifreigabe. Wenn Sie den Stammordner synchronisieren, werden alle Unterordner und Dateien in derselben Azure-Dateifreigabe abgelegt.
 
-Das Synchronisieren des Volumestamms ist daher nicht immer empfehlenswert. Mitunter kann es von Vorteil sein, verschiedene Speicherorte separat zu synchronisieren. Auf diese Weise lässt sich die Anzahl von Elementen pro Synchronisierungsvorgang reduzieren. Das Einrichten der Azure-Dateisynchronisierung mit einer geringeren Anzahl von Elementen ist nicht nur für die Dateisynchronisierung von Vorteil. Von einer geringeren Anzahl von Elementen profitieren auch andere Szenarien wie die folgenden:
+Das Synchronisieren des Volumestamms ist daher nicht immer empfehlenswert. Das Synchronisieren mehrerer Speicherorte hat auch Vorteile. Auf diese Weise lässt sich beispielsweise die Anzahl von Elementen pro Synchronisierungsvorgang reduzieren. Das Einrichten der Azure-Dateisynchronisierung mit einer geringeren Anzahl von Elementen ist nicht nur für die Dateisynchronisierung von Vorteil. Von einer geringeren Anzahl von Elementen profitieren auch Szenarien wie die folgenden:
 
-* Cloudseitige Wiederherstellung aus einer Azure-Dateifreigabemomentaufnahme, die als Sicherung erstellt wurde
-* Notfallwiederherstellung eines lokalen Servers kann erheblich beschleunigt werden
-* Änderungen, die direkt in einer Azure-Dateifreigabe vorgenommen wurden (außerhalb der Synchronisierung), können schneller erkannt und synchronisiert werden
+* Die cloudseitige Wiederherstellung aus einer Azure-Dateifreigabemomentaufnahme kann als Sicherung verwendet werden.
+* Die Notfallwiederherstellung eines lokalen Servers kann erheblich beschleunigt werden.
+* Änderungen, die direkt in einer Azure-Dateifreigabe vorgenommen wurden (außerhalb der Synchronisierung), können schneller erkannt und synchronisiert werden.
 
 #### <a name="a-structured-approach-to-a-deployment-map"></a>Strukturierte Vorgehensweise für eine Bereitstellungszuordnung
 
-Vor der Bereitstellung von Cloudspeicher in einem späteren Schritt ist es wichtig, eine Zuordnung zwischen lokalen Ordnern und Azure-Dateifreigaben zu erstellen. Diese Zuordnung informiert dann darüber, wie viele und welche Ressourcen in der „Synchronisierungsgruppe“ für die Azure-Dateisynchronisierung bereitgestellt werden. Eine Synchronisierungsgruppe bindet die Azure-Dateifreigabe an den Ordner auf dem Server und stellt eine Synchronisierungsverbindung her.
+Vor der Bereitstellung von Cloudspeicher in einem späteren Schritt ist es wichtig, eine Zuordnung zwischen lokalen Ordnern und Azure-Dateifreigaben zu erstellen. Diese Zuordnung informiert dann darüber, wie viele und welche Ressourcen in der *Synchronisierungsgruppe* für die Azure-Dateisynchronisierung bereitgestellt werden. Eine Synchronisierungsgruppe bindet die Azure-Dateifreigabe an den Ordner auf dem Server und stellt eine Synchronisierungsverbindung her.
 
-Um zu entscheiden, wie viele Azure-Dateifreigaben benötigt werden, sehen Sie sich die folgenden Grenzwerte und bewährten Methoden an. Auf diese Weise können Sie die Zuordnung optimieren:
+Um zu entscheiden, wie viele Azure-Dateifreigaben benötigt werden, sehen Sie sich die folgenden Grenzwerte und bewährten Methoden an. Auf diese Weise können Sie die Zuordnung optimieren.
 
 * Ein Server, auf dem der Azure-Dateisynchronisierungs-Agent installiert ist, kann eine Synchronisierung mit bis zu 30 Azure-Dateifreigaben durchführen.
-* Eine Azure-Dateifreigabe wird in einem Speicherkonto bereitgestellt. Das macht das Speicherkonto zu einem Skalierungsziel für Leistungswerte wie IOPS und Durchsatz. Zwei Azure-Dateifreigaben vom Standardtyp (nicht Premium) könnten theoretisch die maximale Leistung abdecken, die ein Speicherkonto bereitstellen kann. Wenn Sie die Azure-Dateisynchronisierung nur an diese Dateifreigaben anfügen möchten, wird durch das Gruppieren mehrerer Azure-Dateifreigaben im selben Speicherkonto kein Problem verursacht. Prüfen Sie die Leistungsziele der Azure-Dateifreigabe, um tiefere Einblicke in die relevanten Metriken zu erhalten. Wenn Sie beabsichtigen, eine App in Azure zu verschieben, die die Azure-Dateifreigabe nativ verwendet, benötigen Sie möglicherweise mehr Leistung von der Azure-Dateifreigabe. Wenn diese Möglichkeit (auch in Zukunft) besteht, ist die Zuordnung einer Azure-Dateifreigabe zu einem eigenen Speicherkonto die beste Lösung.
+* Eine Azure-Dateifreigabe wird in einem Speicherkonto bereitgestellt. Das macht das Speicherkonto zu einem Skalierungsziel für Leistungswerte wie IOPS und Durchsatz. 
+
+  Zwei Azure-Dateifreigaben vom Standardtyp (nicht Premium) können theoretisch die maximale Leistung abdecken, die ein Speicherkonto bereitstellen kann. Wenn Sie die Azure-Dateisynchronisierung nur an diese Dateifreigaben anfügen möchten, wird durch das Gruppieren mehrerer Azure-Dateifreigaben im selben Speicherkonto kein Problem verursacht. Prüfen Sie die Leistungsziele der Azure-Dateifreigabe, um tiefere Einblicke in die relevanten Metriken zu erhalten. 
+
+  Wenn Sie beabsichtigen, eine App in Azure zu verschieben, die die Azure-Dateifreigabe nativ verwendet, benötigen Sie möglicherweise mehr Leistung von der Azure-Dateifreigabe. Wenn diese Möglichkeit (auch in Zukunft) besteht, ist die Zuordnung einer Azure-Dateifreigabe zu einem eigenen Speicherkonto die beste Lösung.
 * Es besteht ein Grenzwert von 250 Speicherkonten pro Abonnement in einer einzigen Azure-Region.
 
 > [!TIP]
-> Auf Grundlage dieser Information ist es oft erforderlich, mehrere Ordner der obersten Ebene auf Ihren Volumes in einem gemeinsamen, neuen Stammverzeichnis zu gruppieren. Anschließend synchronisieren Sie dieses neue Stammverzeichnis und alle darin gruppierten Ordner mit einer einzelnen Azure-Dateifreigabe.                                                    
-
-Diese Vorgehensweise ermöglicht es Ihnen, den Grenzwert für die Synchronisierung von 30 Azure-Dateifreigaben pro Server einzuhalten.
-Diese Gruppierung unter einem gemeinsamen Stamm hat keine Auswirkung auf den Datenzugriff. Ihre ACLs bleiben unverändert. Sie müssen lediglich Freigabepfade (wie SMB- oder NFS-Freigaben) anpassen, die möglicherweise für die Serverordner bestehen, die Sie nun in einen gemeinsamen Stamm geändert haben. Ansonsten ändert sich nichts.
+> Auf Grundlage dieser Information ist es oft erforderlich, mehrere Ordner der obersten Ebene auf Ihren Volumes in einem gemeinsamen, neuen Stammverzeichnis zu gruppieren. Anschließend synchronisieren Sie dieses neue Stammverzeichnis und alle darin gruppierten Ordner mit einer einzelnen Azure-Dateifreigabe. Diese Vorgehensweise ermöglicht es Ihnen, den Grenzwert für die Synchronisierung von 30 Azure-Dateifreigaben pro Server einzuhalten.
+>
+> Diese Gruppierung unter einem gemeinsamen Stamm hat keine Auswirkung auf den Datenzugriff. Ihre ACLs bleiben unverändert. Sie müssen lediglich Freigabepfade (wie SMB- oder NFS-Freigaben) anpassen, die möglicherweise für die Serverordner bestehen, die Sie nun in einen gemeinsamen Stamm geändert haben. Ansonsten ändert sich nichts.
 
 Ein weiterer wichtiger Aspekt der Azure-Dateisynchronisierung und einer ausgewogenen Leistung und Benutzerfreundlichkeit sind Kenntnisse der Skalierungsfaktoren für die Leistung der Azure-Dateisynchronisierung. Wenn Dateien über das Internet synchronisiert werden, werden bei größeren Dateien natürlich mehr Zeit und Bandbreite für die Synchronisierung benötigt.
 
@@ -59,9 +60,9 @@ Ein weiterer wichtiger Aspekt der Azure-Dateisynchronisierung und einer ausgewog
 
 Die Azure-Dateisynchronisierung unterstützt die Synchronisierung von bis zu 100.000 Elementen mit einer einzelnen Azure-Dateifreigabe. Dieser Grenzwert kann überschritten werden und gibt nur an, was das Azure-Dateisynchronisierungsteam regelmäßig testet.
 
-Es wird empfohlen, die Anzahl der Elemente pro Synchronisierungsbereich gering zu halten. Dieser Aspekt ist ein wichtiger Faktor, der bei der Zuordnung von Ordnern zu Azure-Dateifreigaben berücksichtigt werden muss.
+Es wird empfohlen, die Anzahl der Elemente pro Synchronisierungsbereich gering zu halten. Dies ist ein wichtiger Faktor, der bei der Zuordnung von Ordnern zu Azure-Dateifreigaben zu berücksichtigen ist.
 
-Auch wenn in Ihrem Fall eine Gruppe von Ordnern logisch mit derselben Azure-Dateifreigabe synchronisiert werden kann (mithilfe des oben beschriebenen neuen, gemeinsamen Stammordners), ist es möglicherweise trotzdem besser, Ordner so neu zu gruppieren, dass Sie nicht mit einer, sondern mit zwei Azure-Dateifreigaben synchronisiert werden. Mit dieser Methode kann die Anzahl der Dateien und Ordner pro Dateifreigabe auf dem Server ausgeglichen werden.
+Möglicherweise kann in Ihrem Fall eine Gruppe von Ordnern logisch mit derselben Azure-Dateifreigabe synchronisiert werden (mithilfe des oben beschriebenen neuen, gemeinsamen Stammordners). Trotzdem kann es besser sein, die Ordner so zu gruppieren, dass sie nicht mit einer, sondern mit zwei Azure-Dateifreigaben synchronisiert werden. Mit dieser Methode kann die Anzahl der Dateien und Ordner pro Dateifreigabe auf dem Server ausgeglichen werden.
 
 #### <a name="create-a-mapping-table"></a>Erstellen einer Zuordnungstabelle
 
