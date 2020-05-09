@@ -30,7 +30,7 @@
           href: quickstarts/go.md
         - name: Verwenden von Ruby
           href: quickstarts/ruby.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -52,7 +52,9 @@
       href: language-support.md
     - name: Textversätze
       href: concepts/text-offsets.md
-- name: Anleitungen
+    - name: Datengrenzwerte
+      href: concepts/data-limits.md
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Aufrufen der Textanalyse-API
       href: How-tos/text-analytics-how-to-call-api.md

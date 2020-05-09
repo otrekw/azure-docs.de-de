@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: aschhab
 ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79475988"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netzwerksicherheit für Azure Service Bus 
@@ -41,7 +41,7 @@ Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksic
 ## <a name="ip-firewall"></a>IP-Firewall 
 Standardmäßig kann auf Service Bus-Namespaces über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
-Diese Funktion ist hilfreich in Szenarien, in denen Azure Service Bus nur von bestimmten bekannten Websites aus zugänglich sein sollte. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie z. B. Service Bus mit [Azure Express Route] [express-route] verwenden, können Sie eine **Firewallregel** erstellen, um Datenverkehr nur von den IP-Adressen Ihrer lokalen Infrastruktur oder von Adressen eines NAT-Gateways eines Unternehmen zuzulassen. 
+Diese Funktion ist in Szenarien hilfreich, in denen Azure Service Bus nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie z. B. Service Bus mit [Azure Express Route] [express-route] verwenden, können Sie eine **Firewallregel** erstellen, um Datenverkehr nur von den IP-Adressen Ihrer lokalen Infrastruktur oder von Adressen eines NAT-Gateways eines Unternehmen zuzulassen. 
 
 Die IP-Firewallregeln werden auf der Service Bus-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch über eine IP-Adresse, die nicht mit einer IP-Zulassungsregel im Service Bus-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
@@ -83,7 +83,7 @@ Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem 
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
-Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md)
+Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
 > [!NOTE]
 > Dieses Feature wird mit dem Tarif **Premium** von Azure Service Bus unterstützt. Weitere Informationen zum Premium-Tarif finden Sie im Artikel [Service Bus Premium- und Standard-Tarif für Messaging](service-bus-premium-messaging.md).
