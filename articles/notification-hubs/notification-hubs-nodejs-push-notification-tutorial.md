@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71213197"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592008"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 
@@ -100,7 +100,7 @@ Das `NotificationHubService`-Objekt enthält die folgenden Objektinstanzen für 
 - **Windows Phone**: Verwenden Sie das `MpnsService`-Objekt unter `notificationHubService.mpns`.
 - **Universelle Windows-Plattform**: Verwenden Sie das `WnsService`-Objekt unter `notificationHubService.wns`.
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Apps
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Anwendungen
 
 Das `GcmService`-Objekt enthält eine `send`-Methode, mit der Sie Pushbenachrichtigungen an Android-Apps senden können. Die `send`-Methode nimmt die folgenden Parameter entgegen:
 
@@ -133,7 +133,7 @@ Wie auch bei den oben beschriebenen Android-Apps enthält das `ApnsService`-Obje
 - **Payload:** die Nutzlast der Nachricht als JSON oder Zeichenfolge.
 - **Callback:** die Rückruffunktion.
 
-Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Notification Payload** (Benachrichtigungsnutzlast) im Dokument [Local and Push Notification Programming Guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) (Leitfaden zur Programmierung von lokalen und Pushbenachrichtigungen).
+Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Benachrichtigungsinhalt** des [UserNotifications-Leitfadens](https://developer.apple.com/documentation/usernotifications).
 
 Der folgende Code verwendet die `ApnsService`-Instanz, die vom `NotificationHubService` verfügbar gemacht wurde, um eine Warnmeldung an alle Clients zu schicken:
 

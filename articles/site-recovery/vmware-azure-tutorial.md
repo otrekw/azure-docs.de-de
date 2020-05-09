@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222637"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610682"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -65,11 +65,11 @@ In Ihrer Quellumgebung benötigen Sie einen einzelnen, hochverfügbaren, lokalen
 - **Masterzielserver**: Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
 
 
-All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer installiert, der als *Konfigurationsserver* bezeichnet wird. Für die VMware-Notfallwiederherstellung richten wir den Konfigurationsserver standardmäßig als hochverfügbare VMware-VM ein. Hierzu laden Sie eine vorbereitete OVA-Vorlage (Open Virtualization Application) herunter, die Sie dann zum Erstellen der VM in VMware importieren. 
+All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer installiert, der als *Konfigurationsserver* bezeichnet wird. Für die VMware-Notfallwiederherstellung richten wir den Konfigurationsserver standardmäßig als hochverfügbare VMware-VM ein. Hierzu laden Sie eine vorbereitete OVA-Vorlage (Open Virtualization Application) herunter, die Sie dann zum Erstellen der VM in VMware importieren.
 
 - Die aktuelle Version des Konfigurationsservers steht im Portal zur Verfügung. Sie können sie auch direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
 - Falls Sie die OVA-Vorlage aus irgendeinem Grund nicht zum Einrichten einer VM verwenden können, befolgen Sie [diese Anweisungen](physical-manage-configuration-server.md), um den Konfigurationsserver manuell einzurichten.
-- Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Die auf dem virtuellen Computer ausgeführte Windows-Anwendung muss mit der erforderlichen Lizenz aktiviert werden. 
+- Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Die auf dem virtuellen Computer ausgeführte Windows-Anwendung muss mit der erforderlichen Lizenz aktiviert werden.
 
 
 ### <a name="download-the-vm-template"></a>Herunterladen der Vorlage
@@ -77,7 +77,7 @@ All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer install
 1. Navigieren Sie im Tresor zu **Infrastruktur vorbereiten** > **Quelle**.
 2. Klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver**.
 3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver für VMware** angezeigt wird.
-4. Laden Sie die OVF-Vorlage für den Konfigurationsserver herunter.
+4. Laden Sie die OVA-Vorlage für den Konfigurationsserver herunter.
 
 
 
@@ -85,7 +85,7 @@ All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer install
 
 
 1. Melden Sie sich mit dem VMWare vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
-2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten. 
+2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten.
 
      ![OVF-Vorlage](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
 2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Wählen Sie **Weiter**aus.
-3. Wählen Sie einen Adaptertyp und ein Netzwerk aus. 
+3. Wählen Sie einen Adaptertyp und ein Netzwerk aus.
 4. Um die virtuelle NIC zu verbinden, wenn der virtuelle Computer eingeschaltet wird, wählen Sie **Connect at power on** (Beim Einschalten verbinden) aus. Klicken Sie auf **Weiter** > **Fertig stellen**. Klicken Sie anschließend auf **OK**.
 
 
-## <a name="register-the-configuration-server"></a>Registrieren des Konfigurationsservers 
+## <a name="register-the-configuration-server"></a>Registrieren des Konfigurationsservers
 
 Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
 
@@ -179,7 +179,7 @@ Aktivieren Sie die Replikation für VMs wie folgt:
 3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer**.
 4. Wählen Sie unter **vCenter-/vSphere-Hypervisor** den vSphere-Host oder den vCenter-Server aus, der den Host verwaltet.
 5. Wählen Sie den Prozessserver aus (wird standardmäßig auf dem virtuellen Computer mit dem Konfigurationsserver installiert). Klicken Sie anschließend auf **OK**. Der Integritätsstatus der einzelnen Prozessserver wird gemäß der empfohlenen Grenzwerte und anderer Parameter angezeigt. Wählen Sie einen fehlerfreien Prozessserver aus. Ein [kritischer](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Prozessserver kann nicht ausgewählt werden. Sie können entweder die Fehler [behandeln und beheben](vmware-physical-azure-troubleshoot-process-server.md)**oder** einen [horizontal hochskalierten Prozessserver](vmware-azure-set-up-process-server-scale.md) einrichten.
-6. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. in der Sie die virtuellen Computer erstellen möchten, für die ein Failover durchgeführt wurde. Hier wird das Resource Manager-Bereitstellungsmodell verwendet. 
+6. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. in der Sie die virtuellen Computer erstellen möchten, für die ein Failover durchgeführt wurde. Hier wird das Resource Manager-Bereitstellungsmodell verwendet.
 7. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer, die nach einem Failover erstellt werden, eine Verbindung herstellen sollen.
 8. Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellungen auf alle virtuellen Computer anzuwenden, auf denen Sie die Replikation aktivieren. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen.
 9. Wählen Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen** die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie anschließend auf **OK**. Sollten Sie eine bestimmte VM nicht anzeigen/auswählen können, finden Sie [hier](https://aka.ms/doc-plugin-VM-not-showing) Informationen zum Beheben des Problems.

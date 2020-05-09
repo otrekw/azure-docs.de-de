@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6436059cc8b3637edfc2a146d0aab3e2beae6a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154337"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612689"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
 > Gilt für: Windows 7, Windows 10 und Windows 10 IoT Enterprise
 
 Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7, Windows 10 und Windows 10 IoT Enterprise auf Windows Virtual Desktop-Ressourcen zugreifen.
+
+>[!NOTE]
+>Der Windows-Client verwendet standardmäßig automatisch das Windows Virtual Desktop-Release aus dem Herbst 2019. Wenn der Client jedoch erkennt, dass der Benutzer auch über Azure Resource Manager-Ressourcen verfügt, werden die Ressourcen automatisch hinzugefügt, oder der Benutzer wird benachrichtigt, dass sie verfügbar sind. 
 
 > [!IMPORTANT]
 > Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
