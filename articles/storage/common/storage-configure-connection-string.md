@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 04/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232354"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176361"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
@@ -25,11 +25,9 @@ Eine Verbindungszeichenfolge enthält die erforderlichen Autorisierungsinformati
 * Zugreifen auf ein Speicherkonto in Azure
 * Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
 
+Informationen zum Anzeigen der Zugriffsschlüssel für Ihr Konto und zum Kopieren einer Verbindungszeichenfolge finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](storage-account-keys-manage.md).
+
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
-
-## <a name="view-and-copy-a-connection-string"></a>Anzeigen und Kopieren einer Verbindungszeichenfolge
-
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ## <a name="store-a-connection-string"></a>Speichern einer Verbindungszeichenfolge
 

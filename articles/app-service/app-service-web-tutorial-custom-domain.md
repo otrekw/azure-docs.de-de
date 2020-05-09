@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, Domänenzuordnung, Domänenname, vorha
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811790"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559884"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -93,6 +93,12 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>Abrufen der Verifizierungs-ID für eine Domäne
+
+Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen Sie den Besitz der Domäne bestätigen, indem Sie bei Ihrem Domänenanbieter eine Verifizierungs-ID als TXT-Datensatz hinzufügen. Klicken Sie im linken Navigationsbereich der App-Seite unter **Entwicklungstools** auf **Ressourcen-Explorer** und anschließend auf **Starten**.
+
+Suchen Sie in der JSON-Ansicht der App-Eigenschaften nach `customDomainVerificationId`, und kopieren Sie den Wert in doppelten Anführungszeichen. Sie benötigen diese Verifizierungs-ID für den nächsten Schritt.
+
 ## <a name="map-your-domain"></a>Zuordnen Ihrer Domäne
 
 Verwenden Sie für die Zuordnung eines benutzerdefinierten DNS-Namens zu App Service entweder einen **CNAME-Eintrag** oder einen **A-Eintrag**. Führen Sie die entsprechenden Schritte aus:
@@ -114,11 +120,14 @@ Im Tutorialbeispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (
 
 #### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist) eine Unterdomäne zuzuordnen.
+Ordnen Sie dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist) eine Unterdomäne zu. Erstellen Sie zwei Einträge, um eine CNAME-Zuordnung für die Unterdomäne `www` zu erstellen:
 
-Fügen Sie für das Domänenbeispiel `www.contoso.com` einen CNAME-Eintrag hinzu, mit dem der Name `www` dem Element `<app_name>.azurewebsites.net` zugeordnet wird.
+| Eintragstyp | Host | Wert | Kommentare |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | Die Domänenzuordnung selbst |
+| TXT | `asuid.www` | [Die zuvor abgerufene Verifizierungs-ID](#get-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
 
-Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
+Nach dem Hinzufügen des CNAME- und des TXT-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der Ap
 
 #### <a name="create-the-a-record"></a>Erstellen des A-Eintrags
 
-Um einer App einen A-Eintrag zuzuordnen, sind für App Service **zwei** DNS-Einträge erforderlich:
+Erstellen Sie zwei Einträge, um einer App (in der Regel der Stammdomäne) einen A-Eintrag zuzuordnen:
 
-- Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
-- Ein **TXT**-Eintrag, um den Standarddomänennamen der App `<app_name>.azurewebsites.net` zuzuordnen. App Service nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde, können Sie diesen TXT-Eintrag löschen.
-
-Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden Tabelle die A- und TXT-Einträge (`@` stellt in der Regel die Stammdomäne dar).
-
-| Eintragstyp | Host | Wert |
+| Eintragstyp | Host | Wert | Kommentare |
 | - | - | - |
-| Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) | Die Domänenzuordnung selbst (`@` stellt in der Regel die Stammdomäne dar.) |
+| TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#get-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. Verwenden Sie für die Stammdomäne `asuid`. |
 
 > [!NOTE]
 > Wenn Sie zum Hinzufügen einer Unterdomäne (wie `www.contoso.com`) einen A-Eintrag anstelle eines empfohlenen [CNAME-Eintrags](#map-a-cname-record) verwenden möchten, sollten Ihr A-Eintrag und TXT-Eintrag stattdessen wie in der folgenden Tabelle aussehen:
@@ -201,7 +205,7 @@ Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden T
 > | Eintragstyp | Host | Wert |
 > | - | - | - |
 > | Ein | `www` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
@@ -327,7 +331,7 @@ Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite unter dem Stammpf
 
 Durch die [Azure CLI](/cli/azure/install-azure-cli) oder durch [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts die Verwaltung von benutzerdefinierten Domänen automatisieren. 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+### <a name="azure-cli"></a>Azure CLI 
 
 Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt. 
 

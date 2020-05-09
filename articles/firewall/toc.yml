@@ -23,6 +23,9 @@
     - name: Bereitstellen mit mehreren Adressen
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Bereitstellen mit Verfügbarkeitszonen
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: Beispiele
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Bereitstellen über die Azure-Befehlszeilenschnittstelle
       href: deploy-cli.md
-    - name: Mithilfe einer Vorlage bereitstellen
-      href: deploy-template.md
     - name: Bereitstellen mit mehreren öffentlichen IP-Adressen
       href: deploy-multi-public-ip-powershell.md
     - name: Bereitstellen mit Verfügbarkeitszonen
@@ -75,9 +76,11 @@
       href: snat-private-range.md
     - name: Erstellen von IP-Adressgruppen
       href: create-ip-group.md
+    - name: Schützen von Windows Virtual Desktop
+      href: protect-windows-virtual-desktop.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
