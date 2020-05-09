@@ -3,12 +3,12 @@ title: 'CAF-Basisblaupausenbeispiel: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458470"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901299"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -31,7 +31,7 @@ Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung
   - Zulässige Azure-Region für Ressourcen und Ressourcengruppen
   - Zulässige SKUs für Speicherkonten (werden bei der Bereitstellung ausgewählt)
   - Zulässige SKUs für virtuelle Azure-Computer (werden bei der Bereitstellung ausgewählt)
-  - Erzwingung der Bereitstellung der Netzwerküberwachung 
+  - Erzwingung der Bereitstellung von Network Watcher 
   - Erzwingung der sicheren Übertragungsverschlüsselung für das Azure Storage-Konto
   - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)  
 - Initiativen

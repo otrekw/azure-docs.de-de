@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 7f4ce292ad507eb0208633db7743b881508a8e58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582547"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144452"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -40,7 +40,7 @@ Die Verwaltung des Zugriffs von Mitarbeitern auf Ressourcen stellt Unternehmen h
 
 Diese Probleme sind für Benutzer, die Zugriff aus einer anderen Organisation benötigen, z. B. externe Benutzer in Lieferkettenorganisationen oder bei Geschäftspartnern, noch größer. Beispiel:
 
-- Kein Einziger kann alle Personen in den Verzeichnissen anderer Organisationen kennen und einladen.
+- Kein Einzelner kann alle Personen in den Verzeichnissen anderer Organisationen kennen und einladen.
 - Selbst wenn sie diese Benutzer einladen könnten, kann niemand in der betreffenden Organisation den Zugriff aller Benutzer konsistent verwalten.
 
 Diese Herausforderungen können mit der Azure AD-Berechtigungsverwaltung leichter bewältigt werden.  Wenn Sie mehr darüber erfahren möchten, wie Kunden die Berechtigungsverwaltung von Azure AD verwendet haben, können Sie die [Avanade-Fallstudie](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) und die [Centrica-Fallstudie](https://customers.microsoft.com/story/757467-centrica-energy-azure) lesen.  Dieses Video bietet einen Überblick über die Berechtigungsverwaltung und ihren Nutzen:

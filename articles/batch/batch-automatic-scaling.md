@@ -1,25 +1,16 @@
 ---
-title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool | Microsoft Azure
+title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 398b6d9c3fc05a6cf164b4003f57b94ecd6c1972
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054018"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113560"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -149,7 +140,7 @@ Folgende Typen werden in einer Formel unterstützt:
 * double
 * doubleVec
 * doubleVecList
-* Zeichenfolge
+* string
 * timestamp – „timestamp“ ist eine Verbundstruktur, die folgende Member enthält:
 
   * year
@@ -222,7 +213,7 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | time(string dateTime="") |timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
 | val(doubleVec v, double i) |double |Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben. |
 
-Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
+Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel: 
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -242,7 +233,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden. |
 | Count() |Liefert die Gesamtzahl der Stichprobenwerte im Metrikverlauf zurück. |
 | HistoryBeginTime() |Gibt den Zeitstempel des ältesten verfügbaren Stichprobenwerts für die Metrik zurück. |
-| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
+| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel: <br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Stichproben, Prozentsatz für die Stichprobe und die *GetSample()* -Methode
 Das Abrufen von Metrikdaten zu Aufgaben und Ressourcen sowie das anschließende Anpassen der Poolgröße basierend auf diesen Daten ist die Kernfunktion einer Formel für die automatische Skalierung. Daher ist es wichtig, sich damit vertraut zu machen, wie Formeln für die automatische Skalierung mit Metrikdaten (Stichproben) interagieren.
@@ -267,7 +258,7 @@ Verwenden Sie hierzu `GetSample(interval look-back start, interval look-back end
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel:
+Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel: 
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -288,7 +279,7 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 >
 >
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch Aufgabenmetriken verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
@@ -382,7 +373,7 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Erstellen eines Pools mit aktivierter Autoskalierung mit Batch SDKs
 
-Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) der [Batch REST-API](https://docs.microsoft.com/rest/api/batchservice/) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
+Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](https://docs.microsoft.com/rest/api/batchservice/) der [Batch REST-API](batch-powershell-cmdlets-get-started.md) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
 
 ### <a name="net"></a>.NET
 
@@ -408,7 +399,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von **CreatePool** nicht den Parameter _targetDedicatedNodes_ oder den Parameter _targetLowPriorityNodes_ an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
+> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von _CreatePool_ nicht den Parameter _targetDedicatedNodes_ oder den Parameter **targetLowPriorityNodes** an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
 >
 >
 
@@ -472,7 +463,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Aktivieren der automatischen Skalierung für einen vorhandenen Pool
 
-Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel:
+Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel: 
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Aktivieren des automatischen Skalierens für einen Pool][rest_enableautoscale] (REST-API)

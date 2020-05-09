@@ -7,17 +7,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: b06000d6b3cd7a429b7ad0fc9c453595f21bd893
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: 18099e853aa44e4434a14d7ea913f968593021ec
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687913"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben, sollten Sie Ihren Datenfluss so planen, dass er nach einem Zeitplan im Rahmen einer Pipeline ausgeführt wird. Sie können die Pipeline von Azure Data Factory mit Hilfe von Auslösern planen. Oder Sie können die Option „Jetzt auslösen“ aus dem Azure Data Factory Pipeline Builder verwenden, um eine einmalige Ausführung auszuführen, um Ihren Datenfluss im Kontext der Pipeline zu testen.
 
@@ -32,6 +32,10 @@ Auf dieser Ebene werden neben Statistikdaten auch die Laufzeiten und der Status 
 Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, sehen Sie eine vereinfachte reine Ansichtsversion Ihres Datenflussdiagramms.
 
 ![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussüberwachung")
+
+Hier sehen Sie ein Video mit einer Übersicht über die Überwachungsleistung Ihre Datenflüsse auf dem ADF-Überwachungsbildschirm:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
 
 ## <a name="view-data-flow-execution-plans"></a>Anzeigen der Ausführungspläne für den Datenfluss
 

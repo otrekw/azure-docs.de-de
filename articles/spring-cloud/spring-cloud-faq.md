@@ -6,16 +6,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 62623bcadb35f21117ddc2601195e34598c2dff5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298771"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176769"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
-In diesem Artikel finden Sie häufig gestellte Fragen zu Azure Spring Cloud. 
+In diesem Artikel finden Sie häufig gestellte Fragen zu Azure Spring Cloud.
 
 ## <a name="general"></a>Allgemein
 
@@ -92,6 +92,10 @@ Derzeit werden drei Dienste unterstützt: Azure Cosmos DB, Azure Database for My
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kann ich persistente Volumes innerhalb meiner Anwendungen anzeigen, hinzufügen oder verschieben?
 
 Ja.
+
+### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Werden beim Löschen oder Verschieben einer Azure Spring Cloud-Dienstinstanz auch die Erweiterungsressourcen gelöscht bzw. verschoben?
+
+Dies hängt von der Logik der Ressourcenanbieter ab, denen die Erweiterungsressourcen angehören. Die Erweiterungsressourcen einer `Microsoft.AppPlatform`-Instanz gehören nicht zum selben Namespace, sodass das Verhalten je nach Ressourcenanbieter variiert. Der Vorgang zum Löschen oder Verschieben wird z. B. nicht an die Ressourcen der **Diagnoseeinstellungen** weitergegeben. Wenn eine neue Azure Spring Cloud-Instanz mit derselben Ressourcen-ID wie die gelöschte Instanz bereitgestellt oder die vorherige Azure Spring Cloud-Instanz zurück verschoben wird, erweitern die vorherigen Ressourcen der **Diagnoseeinstellungen** diese weiterhin.
 
 ## <a name="deployment"></a>Bereitstellung
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024992"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187476"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple-Sicherheit: Übersicht
 
@@ -49,7 +49,7 @@ Für ruhende Daten in der Private Cloud-Umgebung können Sie die vSAN-Verschlüs
 
 ### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>Schutz von Daten, die über öffentliche Netzwerke übertragen werden müssen
 
-Zum Schützen von Daten, die über öffentliche Netzwerke übertragen werden, können Sie IPsec- und SSL-VPN-Tunnel für Ihre Private Clouds erstellen. Die gängigen Verschlüsselungsmethoden werden unterstützt, z. B. 128-Byte- und 256-Byte-AES. Daten während der Übertragung (einschließlich Authentifizierung, Administratorzugriff und Kundendaten) werden mit Standardmechanismen (SSH, TLS 1.2 und Secure RDP) verschlüsselt. Für die Kommunikation, bei der vertrauliche Informationen übermittelt werden, werden die Standardmechanismen für die Verschlüsselung genutzt.
+Zum Schützen von Daten, die über öffentliche Netzwerke übertragen werden, können Sie IPsec- und TLS-VPN-Tunnel für Ihre privaten Clouds erstellen. Die gängigen Verschlüsselungsmethoden werden unterstützt, z. B. 128-Byte- und 256-Byte-AES. Daten während der Übertragung (einschließlich Authentifizierung, Administratorzugriff und Kundendaten) werden mit Standardmechanismen (SSH, TLS 1.2 und Secure RDP) verschlüsselt. Für die Kommunikation, bei der vertrauliche Informationen übermittelt werden, werden die Standardmechanismen für die Verschlüsselung genutzt.
 
 ### <a name="secure-disposal"></a>Sicheres Löschen
 

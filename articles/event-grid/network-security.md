@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
 ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79300597"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
@@ -29,7 +29,7 @@ Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksich
 
 | Diensttag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein | Nein |
+| AzureEventGrid | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein  | Nein  |
 
 
 ## <a name="ip-firewall"></a>IP-Firewall 
@@ -85,9 +85,9 @@ In der folgenden Tabelle werden die verschiedenen Zustände der Verbindung mit d
 | Verbindungsstatus   |  Veröffentlichung erfolgreich (Ja/Nein) |
 | ------------------ | -------------------------------|
 | Genehmigt           | Ja                            |
-| Rejected (Abgelehnt)           | Nein                             |
-| Ausstehend            | Nein                             |
-| Getrennt       | Nein                             |
+| Rejected (Abgelehnt)           | Nein                              |
+| Ausstehend            | Nein                              |
+| Getrennt       | Nein                              |
 
 Damit die Veröffentlichung erfolgreich ist, sollte der Verbindungsstatus des privaten Endpunkts **Genehmigt** sein. Wenn eine Verbindung abgelehnt wird, kann sie nicht mithilfe des Azure-Portals genehmigt werden. Die einzige Möglichkeit besteht darin, die Verbindung zu löschen und eine neue Verbindung zu erstellen.
 

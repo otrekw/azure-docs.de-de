@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653715"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611380"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -66,9 +67,9 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 
 Manchmal können Ihren Benutzern Meldungen von Multi-Factor Authentication angezeigt werden, da ihre Authentifizierungsanforderung fehlgeschlagen ist. Dies sind keine Fehler als Folge der Konfiguration, sondern absichtliche Warnungen, die erläutern, warum eine Authentifizierungsanforderung verweigert wurde.
 
-| Fehlercode | Fehlermeldung | Empfohlene Schritte | 
+| Fehlercode | Fehlermeldung | Empfohlene Schritte |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Falscher Code wurde eingegeben/der OATH-Code ist falsch | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. | 
+| **OathCodeIncorrect** | Falscher Code wurde eingegeben/der OATH-Code ist falsch | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximal zulässige Anzahl von Codewiederholungen erreicht | Der Benutzer hat die Überprüfung zu oft nicht bestanden. Abhängig von Ihren Einstellungen muss die Sperre jetzt möglicherweise durch einen Administrator aufgehoben werden.  |
 | **SMSAuthFailedWrongCodeEntered** | Falscher Code eingegeben/OTP der Textmeldung ist falsch | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. |
 

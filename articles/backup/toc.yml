@@ -44,6 +44,11 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: "Verwalten von gesicherten SAP HANA-Datenbanken\_– CLI"
           href: tutorial-sap-hana-manage-cli.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Supportmatrizen
@@ -342,10 +347,18 @@
           href: security-overview.md
         - name: Rollenbasierte Access Control
           href: backup-rbac-rs-vault.md
-        - name: Sicherheit für Cloudworkloads
-          href: backup-azure-security-feature-cloud.md
+        - name: Vorläufiges Löschen
+          items:
+            - name: Übersicht
+              href: backup-azure-security-feature-cloud.md
+            - name: Für virtuelle Computer
+              href: soft-delete-virtual-machines.md
+            - name: Für SQL Server und SAP HANA auf virtuellen Azure-Computern
+              href: soft-delete-sql-saphana-in-azure-vm.md
         - name: Sicherheit für Hybrid-Sicherungen
           href: backup-azure-security-feature.md
+        - name: Verschlüsselung
+          href: backup-encryption.md
         - name: Integrierte Sicherheitskontrollen
           href: backup-security-controls.md
         - name: Sicherheitsbaseline
@@ -376,7 +389,7 @@
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/backup?view=azure-cli-latest
     - name: PowerShell
       href: /powershell/module/az.recoveryservices

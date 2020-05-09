@@ -4,12 +4,12 @@ description: Lassen Sie sich per SMS, Webhook und E-Mail usw. benachrichtigen, w
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669012"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137704"
 ---
 # <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll
 
@@ -41,7 +41,7 @@ Aktivitätsprotokollwarnungen verfügen über einige allgemeine Optionen:
 - **Ressourcengruppe**: Standardmäßig wird die Warnungsregel in der Ressourcengruppe des im Bereich definierten Ziels gespeichert. Der Benutzer kann auch die Ressourcengruppe definieren, in der die Warnungsregel gespeichert werden soll.
 - **Ressourcentyp:** Der von Resource Manager definierte Namespace für das Ziel der Warnung.
 - **Vorgangsname:** Der Name des [Azure Resource Manager-Vorgangs](../../role-based-access-control/resource-provider-operations.md), der für die rollenbasierte Zugriffssteuerung verwendet wird. Vorgänge, die nicht in Azure Resource Manager registriert sind, können nicht in Warnungsregeln des Aktivitätsprotokolls verwendet werden.
-- **Ebene**: Der Schweregrad des Ereignisses („Ausführlich“, „Information“, „Warnung“, „Fehler“ oder „Kritisch“).
+- **Ebene**: der Schweregrad des Ereignisses (Information, Warnung, Fehler oder Kritisch).
 - **Status:** Der Status des Ereignisses (beispielsweise „Gestartet“, „Fehler“ oder „Erfolgreich“).
 - **Ereignis initiiert von:** Wird auch als „Aufrufer“ bezeichnet. Die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang durchgeführt hat.
 

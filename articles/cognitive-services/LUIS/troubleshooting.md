@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu L
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 59d9b1f21e1936b7d03293ec3d338677380a7c99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530231"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101109"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -120,10 +120,10 @@ Um das nicht deterministische Training zu entfernen, können Sie die [Anwendungs
 Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md).
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Warum fügt LUIS vor und nach Wörtern oder in der Mitte von Wörtern Leerzeichen in die Abfrage ein?
-LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
+LUIS nutzt für die [Tokenisierung](luis-glossary.md#token) der Äußerung deren [Kultur](luis-language-support.md#tokenization). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](luis-how-to-azure-subscription.md) den [Endpunktschlüssel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.
@@ -152,7 +152,7 @@ Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endp
 ## <a name="working-within-luis-limits"></a>LUIS-Grenzwerte
 
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Wie viele Absichten und Entitäten kann eine LUIS-App maximal unterstützen?
-Informationen hierzu finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-boundaries.md).
+Informationen hierzu finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-limits.md).
 
 ### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Ich möchte eine LUIS-App erstellen, die mehr als die maximale Absichtsanzahl unterstützt. Wie sollte ich vorgehen?
 
@@ -163,10 +163,10 @@ Informationen hierzu finden Sie unter [Best Practices für Absichten](luis-conce
 Informationen hierzu finden Sie unter [Best Practices für Entitäten](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities).
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Welche Grenzwerte gelten für die Anzahl und den Umfang von Begriffslisten?
-Informationen zur maximalen Länge einer [Begriffsliste](./luis-concept-feature.md) finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-boundaries.md).
+Informationen zur maximalen Länge einer [Begriffsliste](./luis-concept-feature.md) finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-limits.md).
 
 ### <a name="what-are-the-limits-on-example-utterances"></a>Welche Grenzwerte gelten für Beispieläußerungen?
-Informationen hierzu finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-boundaries.md).
+Informationen hierzu finden Sie in der Referenzdokumentation zu [Begrenzungen](luis-limits.md).
 
 ## <a name="testing-and-training"></a>Testen und Trainieren von LUIS
 

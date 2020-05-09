@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127574"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692235"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -82,6 +82,16 @@ Bei Verwendung mit Windows Virtual Desktop bietet ControlUp zusätzliche Funktio
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Zur Partnerwebsite](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="dell"></a>Dell
+
+![Dell-Logo](./media/partners/dell.png)
+
+Thin Clients der Dell-Technologien sind für den Zugriff auf Microsoft Azure und Windows Virtual Desktop-Dienste optimiert. Wyse Thin Clients sind in der Lage, die Anforderungen von kollaborativen Wissensarbeitern bis hin zu grafikintensiven Powerusern zu erfüllen und bieten ein hochwertiges Computingerlebnis, um die wachsende Anzahl von Apps und Inhalten umfassend zu nutzen. Die Thin Clients von Wyse eignen sich ideal für Umgebungen mit begrenztem Platzangebot und passen sich mit ihren vielseitigen Formfaktoren und einer großen Auswahl an Einbindungsmöglichkeiten an die Art und Weise an, wie Menschen arbeiten.
+
+Wyse Thin Clients wurden mit Blick auf Sicherheit mit begrenzter Angriffsfläche, Unterstützung von Sicherheitscompliancestandards und fortschrittlichen Lösungen für mehrstufige Authentifizierung (MFA) entwickelt. Stellen Sie hochsichere Thin Clients mit dem exklusiven Wyse ThinOS von Dell bereit, oder nutzen Sie den sicheren Zugriff auf Cloudanwendungen und virtuelle Arbeitsbereiche von gehärtetem Wyse ThinLinux mit einem kommerziell bewährten Design und Windows 10 IoT Enterprise mit zusätzlichen Sicherheitsfunktionen von Dell. Mit sicherer, HTTPS-basierter Kommunikation und Active Directory-Authentifizierung für rollenbasierte Verwaltung hält die Wyse Management Suite die Wyse-Endgeräte immer auf dem neuesten Stand. Die mobile App für WMS Pro ermöglicht es der IT-Abteilung, kritische Warnungen anzuzeigen und mit einem Tippen jederzeit Befehle in Echtzeit zu senden.
+
+- [Zur Partnerwebsite](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST-Logo](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL ist ein genehmigter und verifizierter Partner von Microsoft Azure und Windo
  
 IGEL OS unterstützt alle gängigen Clientprotokolle für virtuelle Apps, Desktops und Cloudarbeitsbereiche von Citrix, Microsoft und VMware. Es enthält integrierte Technologien von 85 Peripherie-, Schnittstellen- und Protokollpartnern, die Organisationen dabei helfen, Windows Virtual Desktop-Dienste schnell in ihre eigenen individuellen Benutzerumgebungen übernehmen zu können. IGEL OS ist ein schreibgeschütztes, modulares Endpunkt-Betriebssystem und dadurch besser vor Manipulationen geschützt. Es enthält jetzt auch eine vollständige Vertrauenskette, die die Integrität aller wichtigen Hauptprozesse, die auf dem Endpunkt ausgeführt werden, von der Endpunkthardware (einige ausgewählte Modelle) bzw. dem UEFI-Prozess bis hin zu den Azure-Clouddiensten und Windows Virtual Desktop-Diensten überprüft. Mit IGEL OS können Unternehmen Windows Virtual Desktop aus der Azure-Cloud abonnieren und dabei voll auf die Integrität, Sicherheit und Verwaltbarkeit der Endpunktgeräte ihrer Benutzer vertrauen.
 
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
 - [Zur Partnerwebsite](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
@@ -118,7 +129,7 @@ IGEL OS unterstützt alle gängigen Clientprotokolle für virtuelle Apps, Deskt
 
 Ivanti User Workspace Manager ist ein Windows Virtual Desktop-Zusatzdienst, der die Desktopbereitstellung und -verwaltung vereinfacht, indem Benutzerdaten für nahtlose Portabilität vom Desktop getrennt werden. Mit Ivanti können Benutzer komplexe Projekte bereitstellen, z. B. Migrieren zu Windows 10, Einführen von Office 365 oder schnelleres Verschieben von Diensten in die Cloud. 
 
-In Verbindung mit Windows Virtual Desktop bietet Ivanti User Workspace Manager eine einfache kontextabhängige Verwaltung der Benutzerdesktoperfahrung, die lange Anmeldungszeiten und übermäßig komplizierte Gruppenrichtlinien beseitigt. Mit den direkt verwendbaren Vorlagen von Ivanti User Workspace Manager wird die Installation für Benutzer über Agents und die vorhandene Konsole vereinfacht. Ivanti User Workspace Manager bietet reaktionsschnelle, sichere, bei Benutzern beliebte Desktops, die Geld für Server einsparen, Benutzer effektiver verwalten und Endpunkt-Sicherheitsrisiken reduzieren. 
+In Verbindung mit Windows Virtual Desktop bietet Ivanti User Workspace Manager eine einfache kontextabhängige Verwaltung der Benutzerdesktoperfahrung, die lange Anmeldungszeiten und übermäßig komplizierte Gruppenrichtlinien beseitigt. Mit den direkt verwendbaren Vorlagen von Ivanti User Workspace Manager wird die Installation für Benutzer über Agents und die vorhandene Konsole vereinfacht. Ivanti User Workspace Manager bietet reaktionsschnelle, sichere, bei Benutzern beliebte Desktops, die Geld für Server einsparen, Benutzer effektiver verwalten und Endpunktsicherheitsrisiken reduzieren. 
 
 - [Zur Partnerwebsite](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -191,6 +202,7 @@ PolicyPak Software ist ein Windows Virtual Desktop-Partner, der die gesamte Eins
 
 Die wichtigsten Anwendungsfälle für PolicyPak sind das Entfernen lokaler Administratorrechte und Überwinden von UAC-Eingabeaufforderungen, Blockieren von Ransomware, Verwalten mehrerer Browser, Verwalten der Enterprise- und Kompatibilitätsmodi von Internet Explorer, Verringern der Anzahl der GPOs, Verwalten von Windows 10-Dateizuordnungen, Verwalten des Windows 10-Startmenüs und der Taskleiste sowie Verwalten von Windows 10-Funktionen und optionalen Funktionen.  
 
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Zur Partnerwebsite](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix ist ein Windows Virtual Desktop-Mehrwert-Dienstanbieter, der die Benutze
 
 Das Drucken ist eine grundlegende Aufgabe in fast jedem Büro und jeder Umgebung von kleinen Unternehmen. Um die Vorteile von Windows Virtual Desktop voll auszuschöpfen und ein hervorragendes Benutzererlebnis zu bieten, ist es wichtig, dass Ihre Benutzer mit minimalem Aufwand und maximaler Zuverlässigkeit eine Verbindung zu Druckern herstellen können. Mit Printix können Sie Windows Virtual Desktop durch einmaliges Anmelden (SSO), automatische Konfiguration, regelmäßige Updates und kontinuierliche Überwachung Ihrer Druckumgebung optimal nutzen.
 
-- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Zur Partnerwebsite wechseln](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2).
+- [Zur Partnerwebsite](https://www.printix.net/printix-for-windows-virtual-desktop).
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft ist ein Windows Virtual Desktop-Partner, der leistungsstarke und kosteng
  
 Die Remote Desktop Commander-Lösungen von RDPSoft verbessern die Verwaltung von Windows Virtual Desktop. Premiumverwaltungsfeatures vereinfachen die Delegierung von Windows Virtual Desktop-Verwaltungsaufgaben zur Unterstützung von Büromitarbeitern durch Bereitstellen von Remoteunterstützung, Benutzersitzungen und Prozessverwaltung. Gleichzeitig sammelt die Remote Desktop Commander-Suite umfassende Metriken zur Leistung und Auslastung pro Benutzer, Benutzeraktivität und Überwachung, Windows Virtual Desktop-Verbindungsqualität (Latenz und Bandbreite), Lizenzierung und Sicherheit in einer zentralen Azure SQL-Datenbank-Instanz zur dortigen Überprüfung. Mit RDPSoft sind detaillierte Verlaufsberichte und umfassende Dashboards nur einen Mausklick entfernt.
 
-- [Zur Partnerwebsite wechseln](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Zur Partnerwebsite](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago wurde 2002 von vier Freunden in Köln gegründet. Heute ist sepago ein Be
 
 Im Innovation & Development Lab von sepago werden mit Big Data- und KI-Technologie intelligente Lösungen erstellt. Bei diesen Lösungen geht es hauptsächlich um die Verbesserung der Geschäftsabläufe, der Benutzererfahrung und der Verwaltung von Partnerprodukten, z. B. Windows Virtual Desktop.
 
-- [Zur Partnerwebsite wechseln](https://www.sepago.de/wvd-value-add-tools/)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
+- [Zur Partnerwebsite](https://www.sepago.de/wvd-value-add-tools/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ vast limits, das uberAgent-Unternehmen, bietet Sichtbarkeit in Windows Virtual D
 
 Bei uberAgent handelt es sich um ein Überwachungs- und Analyseprodukt, das für Endbenutzercomputing konzipiert ist und nicht nur Daten erfasst – es stellt Kunden die Informationen zur Verfügung, die relevant sind. uberAgent verfügt über eigene Metriken, die wichtige Aspekte der Benutzererfahrung, Anwendungsleistung und Endpunktsicherheit abdecken und Sie über alles informieren, was Sie zu Ihren Windows Virtual Desktop-VMs wissen müssen, ohne die Benutzerdichte Ihrer Systeme zu beeinträchtigen. uberAgent vereinfacht die Problembehandlung, hilft bei der Dimensionierung und bietet umfassende Informationen, die für die Informationssicherheit wesentlich sind.
 
-- [Zur Partnerwebsite wechseln](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [Zur Partnerwebsite](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
+
+## <a name="workspace-365"></a>Workspace 365
+
+![Workspace 365-Logo](./media/partners/workspace-365.png)
+
+Workspace 365 vereinigt alle Ihre Informationen (Geschäftsdaten, Dokumente, Kommunikation und Micro-Apps) und ermöglicht den Zugriff auf alle lokalen, Web- oder gehosteten Anwendungen in einem Arbeitsbereich. Die Anwendung passt sich automatisch an Ihre Rolle, Ihren Standort, Ihr Gerät, Ihren Browser und mehr an, um einen personalisierten Arbeitsbereich bereitzustellen. Benutzer erhalten eine vereinfachte und konsistente Benutzeroberfläche, unabhängig davon, welche Technologie unter der Oberfläche verwendet wird. Sie können Ihre aktuellen Lösungen integrieren (z. B. RDP, Citrix und ältere Anwendungen) und sie in Windows Virtual Desktop verschieben, während die gleiche Benutzeroberfläche beibehalten wird. Darüber hinaus können Sie alle Dateispeicherorte (z. B. SharePoint, OneDrive, Teams und Dateiserver) in eine Dokumentverwaltungs-App integrieren.
+
+Mit Workspace 365 können IT-Administratoren für Windows Virtual Desktop aktivierte Anwendungen für Benutzer auf der Grundlage von Berechtigungen zur Verfügung stellen. Der Administrator kann diese Anwendungen dann einer freigegebenen Anwendungsgruppe hinzufügen. Wenn die Windows Virtual Desktop-Anwendung in Workspace 365 sichtbar ist, können Benutzer sie aus Ihrem Arbeitsbereich öffnen, ohne sich erneut anmelden zu müssen. 
+
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
+- [Zur Partnerwebsite](https://workspace365.net/product-tour/hybrid-workspace-365/).
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ Workspot steigert den Nutzen von Windows Virtual Desktop, indem es den Bereitste
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Weitere Informationen zu Windows Virtual Desktop](overview.md).
-- [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

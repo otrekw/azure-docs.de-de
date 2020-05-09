@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 63996d5e654f22235ab1c243067389653bfaabd8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65798434"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735248"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Bing-Websuche-SDK: Beispiele
 
@@ -31,11 +31,11 @@ Das Bing-Websuche-SDK ist in Python, Node.js, C# und Java verfügbar. Codebeispi
 Verwenden Sie die folgenden Links, um auf das SDK für Ihre bevorzugte Sprache zuzugreifen.
 
 * Erste Schritte mit [Python-Beispielen](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
-  * In den [Python-Bibliotheken](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) finden Sie Definitionen und Informationen zu Abhängigkeiten.
+  * In den [Python-Bibliotheken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-websearch) finden Sie Definitionen und Informationen zu Abhängigkeiten.
 * Erste Schritte mit [Node.js-Beispielen](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
   * Siehe auch den Artikel zur [Node.js-Websuche](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
 * Erste Schritte mit [.NET-Beispielen](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
-  * In den [.NET-Bibliotheken](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch) finden Sie Definitionen und Informationen zu Abhängigkeiten.
+  * In den [.NET-Bibliotheken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingWebSearch) finden Sie Definitionen und Informationen zu Abhängigkeiten.
 * Erste Schritte mit [Java-Beispielen](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
   * In den [Java-Bibliotheken](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) finden Sie Definitionen und Informationen zu Abhängigkeiten.

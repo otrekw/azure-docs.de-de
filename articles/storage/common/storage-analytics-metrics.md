@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232370"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692729"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriken von Azure Storage Analytics (klassisch)
 
@@ -23,7 +23,7 @@ Von der Speicheranalyse können Metriken gespeichert werden, zu denen aggregiert
 
 > [!NOTE]
 > Storage Analytics-Metriken sind für die Blob-, Warteschlangen-, Tabellen- und Dateidienste verfügbar.
-> Storage Analytics-Metriken sind jetzt klassische Metriken. Microsoft empfiehlt, anstelle von Storage Analytics-Metriken [Azure Storage-Metriken in Azure Monitor](storage-metrics-in-azure-monitor.md) zu verwenden.
+> Storage Analytics-Metriken sind jetzt klassische Metriken. Microsoft empfiehlt, anstelle von Storage Analytics-Metriken [Azure Storage-Metriken in Azure Monitor](monitor-storage.md) zu verwenden.
 
 ## <a name="transaction-metrics"></a>Transaktionsmetriken  
  Ein umfassender Datensatz wird stündlich oder minütlich für jeden Speicherdienst und jeden angeforderten API-Vorgang aufgezeichnet, einschließlich Eingang/Ausgang, Verfügbarkeit, Fehlern und nach Prozentanteil kategorisierten Anforderungen. Eine vollständige Liste der Transaktionsdetails finden Sie im Thema [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/storage-analytics-metrics-table-schema) .  

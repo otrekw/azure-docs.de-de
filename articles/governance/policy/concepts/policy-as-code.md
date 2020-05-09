@@ -3,12 +3,12 @@ title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74267280"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187731"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -25,7 +25,7 @@ Der Validierungsschritt sollte auch Teil anderer Continuous Integration- oder Co
 
 Der empfohlene allgemeine Workflow für Policy-as-Code sieht in etwa wie das folgende Diagramm aus:
 
-![Übersicht über Policy-as-Code](../media/policy-as-code/policy-as-code-workflow.png)
+:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Übersicht über Policy-as-Code" border="false":::
 
 ### <a name="create-and-update-policy-definitions"></a>Erstellen und Aktualisieren von Richtliniendefinitionen
 
@@ -92,7 +92,7 @@ Die Zuweisung sollte den [enforcementMode](./assignment-structure.md#enforcement
 > [!NOTE]
 > Dieser Modus ist zwar hilfreich, darf aber gründliche Tests einer Richtliniendefinition unter verschiedenen Bedingungen nicht ersetzen. Die Richtliniendefinition sollte mit den REST-API-Aufrufen `PUT` und `PATCH`, konformen und nicht konformen Ressourcen sowie für Sonderfälle wie fehlenden Ressourceneigenschaften getestet werden.
 
-Verwenden Sie nach dem Bereitstellen der Zuweisung das Policy SDK zum [Abrufen von Compliancedaten](../how-to/get-compliance-data.md) für die neue Zuweisung. Die zum Testen der Richtlinien und Zuweisungen verwendete Umgebung sollte sowohl konforme als auch nicht konforme Ressourcen enthalten. Ebenso wie bei einem sorgfältigen Komponententest für Code sollten Sie überprüfen, ob die Ressourcen den Erwartungen entsprechen und dass Sie keine falsch positiven oder falsch negativen Ergebnisse erhalten. Wenn Sie nur auf Ergebnisse testen, die Sie erwarten, kann die Richtlinie unerwartete und nicht identifizierte Auswirkungen nach sich ziehen. Weitere Informationen finden Sie unter [Auswerten der Auswirkung einer neuen Azure-Richtlinie](./evaluate-impact.md).
+Verwenden Sie nach dem Bereitstellen der Zuweisung das Policy SDK zum [Abrufen von Compliancedaten](../how-to/get-compliance-data.md) für die neue Zuweisung. Die zum Testen der Richtlinien und Zuweisungen verwendete Umgebung sollte sowohl konforme als auch nicht konforme Ressourcen enthalten. Ebenso wie bei einem sorgfältigen Komponententest für Code sollten Sie überprüfen, ob die Ressourcen den Erwartungen entsprechen und dass Sie keine falsch positiven oder falsch negativen Ergebnisse erhalten. Wenn Sie nur auf Ergebnisse testen, die Sie erwarten, kann die Richtlinie unerwartete und nicht identifizierte Auswirkungen nach sich ziehen. Weitere Informationen finden Sie unter [Auswerten der Auswirkung einer neuen Azure Policy-Definition](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Ermöglichen von Korrekturtasks
 

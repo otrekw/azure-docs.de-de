@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991140"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853960"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
 In diesem Schnellstart verwenden Sie ein Codebeispiel, um zu lernen, wie eine ASP. NET-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.  (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
@@ -43,7 +43,7 @@ In diesem Schnellstart verwenden Sie ein Codebeispiel, um zu lernen, wie eine AS
 > 1. Wählen Sie **Neue Registrierung** aus.
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `ASPNET-Quickstart`).
->      - Fügen Sie `http://localhost:44368/` unter **Umleitungs-URI** hinzu, und klicken Sie auf **Registrieren**.
+>      - Fügen Sie `https://localhost:44368/` unter **Umleitungs-URI** hinzu, und klicken Sie auf **Registrieren**.
 >      - Wählen Sie im linken Navigationsbereich im Abschnitt „Verwalten“ die Option **Authentifizierung** aus.
 >          - Wählen Sie im Unterabschnitt **Implizite Genehmigung** die Option **ID-Token** aus.
 >          - Wählen Sie anschließend **Speichern** aus.

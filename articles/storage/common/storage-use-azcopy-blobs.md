@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263436"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137194"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
@@ -58,13 +58,12 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Hochladen bestimmter Dateien
 
 > [!TIP]
-> Sie können den Uploadvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+> Sie können den Uploadvorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
 >
 > |Szenario|Flag|
 > |---|---|
 > |Dateien sollen als Anfügeblobs oder Seitenblobs hochgeladen werden.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |Der Upload soll auf eine bestimmte Zugriffsebene erfolgen (z. B. auf die Archivebene).|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
-> |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
+> |Hochladen auf eine bestimmte Zugriffsebene (z. B. die Archivebene)|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > 
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
@@ -155,11 +154,11 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Herunterladen bestimmter Dateien
 
 > [!TIP]
-> Sie können den Downloadvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+> Sie können den Downloadvorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
 >
 > |Szenario|Flag|
 > |---|---|
-> |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
+> |Automatisches Dekomprimieren von Dateien|**DECOMPRESS**|
 > |Geben Sie an, wie detailliert die kopierbezogenen Protokolleinträge sein sollen.|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > |Geben Sie an, ob und wie die in Konflikt stehenden Dateien und Blobs im Ziel überschrieben werden sollen.|**--overwrite**=\[true\|false\|ifSourceNewer\|prompt\]|
 > 
@@ -256,12 +255,12 @@ Dieser Abschnitt enthält folgende Beispiele:
 Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden.
 
 > [!TIP]
-> Sie können den Kopiervorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+> Sie können den Kopiervorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
 >
 > |Szenario|Flag|
 > |---|---|
 > |Dateien sollen als Anfügeblobs oder Seitenblobs kopiert werden.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |Der Kopiervorgang soll auf eine bestimmte Zugriffsebene erfolgen (z. B. auf die Archivebene).|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |Kopieren auf eine bestimmte Zugriffsebene (z. B. die Archivebene)|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
 > 
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
@@ -321,13 +320,13 @@ Wenn Sie das `--delete-destination`-Flag auf `true` festlegen, löscht AzCopy Da
 > Um ein versehentliches Löschen zu verhindern, aktivieren Sie das Feature [Vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), bevor Sie das Flag `--delete-destination=prompt|true` verwenden.
 
 > [!TIP]
-> Sie können den Synchronisierungsvorgang mit optionalen Flags optimieren. Hier sehen Sie einige Beispiele.
+> Sie können den Synchronisierungsvorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
 >
 > |Szenario|Flag|
 > |---|---|
-> |Geben Sie an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollen.|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
-> |Dateien sollen basierend auf einem Muster ausgeschlossen werden.|**--exclude-path**|
-> |Geben Sie an, wie detailliert die synchronisierungsbezogenen Protokolleinträge sein sollen.|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> |Angeben, wie streng MD5-Hashes beim Herunterladen überprüft werden sollen|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |Ausschließen von Dateien basierend auf einem Muster|**--exclude-path**|
+> |Angeben, wie detailliert die synchronisierungsbezogenen Protokolleinträge sein sollen|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > 
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-sync.md#options).
 

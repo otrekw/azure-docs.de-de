@@ -19,7 +19,7 @@
       href: cache-nodejs-get-started.md
     - name: Python-App
       href: cache-python-get-started.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden von Caching mit Bestenlisten
       href: cache-web-app-cache-aside-leaderboard.md
@@ -27,10 +27,13 @@
   items:
     - name: Beispiele für Azure Cache for Redis
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Sicherheit
@@ -43,7 +46,7 @@
       href: cache-best-practices.md
     - name: 'Architektur: bewährte Methoden für die Zwischenspeicherung'
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Planen
       items:
@@ -125,12 +128,12 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
     - name: Azure PowerShell
       href: /powershell/module/az.rediscache
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/redis
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis-Clients
       href: 'https://redis.io/clients'
     - name: Redis-Befehle

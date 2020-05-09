@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480282"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
@@ -377,7 +377,7 @@ suspicious_users_that_later_logged_in
 
 Mit dem Datentyp `Usage` kann die erfasste Datenmenge nach Lösung oder Datentyp nachverfolgt werden. Es gibt weitere Methoden, mit denen erfasste Datenmengen nach [Computer](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) oder [Azure-Abonnement, Ressourcengruppe oder Ressourcen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription) untersucht werden können.
 
-#### <a name="data-volume-by-solution"></a>Datenmenge nach Lösung
+#### <a name="data-volume-by-solution"></a>Datenvolumen nach Lösung
 
 Die Abfrage, mit der die abrechenbare Datenmenge nach Lösung während des letzten Monats (ohne den letzten angebrochenen Tag) angezeigt wird, lautet wie folgt:
 
