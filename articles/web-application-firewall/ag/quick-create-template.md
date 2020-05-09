@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
 ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81617989"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Schnellstart: Erstellen einer Azure WAF (v2) für Application Gateway: Resource Manager-Vorlage
@@ -57,7 +57,7 @@ Stellen Sie die Resource Manager-Vorlage in Azure bereit:
    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 

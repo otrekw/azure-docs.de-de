@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd1f59d5cf33ae7f1f2e33e6c3f1312b5a13e61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458722"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127591"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
 
@@ -60,13 +60,13 @@ Zur Überwachung der Leistung des Stream Analytics-Auftrags werden die folgenden
 |Metrik|Bedingung|Zeitaggregation|Schwellenwert|Korrekturmaßnahmen|
 |-|-|-|-|-|
 |Nutzung der Speichereinheit in %|Größer als|Maximum|80|Die SU-Nutzung in Prozent lässt sich durch mehrere Faktoren erhöhen. Sie können eine Skalierung mit Abfrageparallelisierung durchführen oder die Anzahl der Streamingeinheiten erhöhen. Weitere Informationen finden Sie unter [Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Laufzeitfehler|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Diagnoseprotokolle, und nehmen Sie entsprechende Änderungen an den Eingaben, der Abfrage oder den Ausgaben vor.|
+|Laufzeitfehler|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Ressourcenprotokolle, und nehmen Sie entsprechende Änderungen an den Eingaben, der Abfrage oder den Ausgaben vor.|
 |Wasserzeichenverzögerung|Größer als|Maximum|Wenn der durchschnittliche Wert dieser Metrik innerhalb der letzten 15 Minuten größer ist als die Toleranz für Eingangsverzögerung (in Sekunden). Wenn Sie die Toleranz für Eingangsverzögerung nicht geändert haben, ist der Standardwert auf 5 Sekunden festgelegt.|Versuchen Sie, die Anzahl der Streamingeinheiten zu erhöhen oder die Abfrage zu parallelisieren. Weitere Informationen zu Streamingeinheiten finden Sie unter [Übersicht über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Weitere Informationen zur Parallelisierung der Abfrage finden Sie unter [Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Eingabefehler bei Deserialisierung|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Diagnoseprotokolle, und nehmen Sie entsprechende Änderungen an der Eingabe vor. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md)|
+|Eingabefehler bei Deserialisierung|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Ressourcenprotokolle, und nehmen Sie entsprechende Änderungen an der Eingabe vor. Weitere Informationen zu Ressourcenprotokollen finden Sie unter [Problembehandlung bei Azure Stream Analytics mit Ressourcenprotokollen](stream-analytics-job-diagnostic-logs.md)|
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Weitere Informationen zum Konfigurieren von Warnungen im Azure-Portal finden Sie unter [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Weitere Informationen zum Konfigurieren von Warnungen im Azure-Portal finden Sie unter [Empfangen von Warnbenachrichtigungen](../azure-monitor/platform/alerts-overview.md).  
 
 Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

@@ -2,19 +2,19 @@
 title: Vorlage mit abhängigen Ressourcen
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage mit mehreren Ressourcen erstellen und über das Azure-Portal bereitstellen.
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: cf876d3c7c100f001ba81082d792e81a777c7315
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239317"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82193036"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen
 
-Es wird beschrieben, wie Sie eine ARM-Vorlage (Azure Resource Manager) erstellen, um mehrere Ressourcen bereitzustellen und die Bereitstellungsreihenfolge zu konfigurieren. Nach der Erstellung der Vorlage stellen Sie sie mithilfe von Cloud Shell über das Azure-Portal bereit.
+Es wird beschrieben, wie Sie eine ARM-Vorlage (Azure Resource Manager) erstellen, um mehrere Ressourcen bereitzustellen und die Bereitstellungsreihenfolge zu konfigurieren. Nach der Erstellung der Vorlage stellen Sie sie mithilfe der Cloud Shell über das Azure-Portal bereit.
 
 In diesem Tutorial erstellen Sie ein Speicherkonto, eine VM, ein virtuelles Netzwerk und einige andere abhängigen Ressourcen. Einige der Ressourcen können erst bereitgestellt werden, wenn eine andere Ressource vorhanden ist. Sie können den virtuellen Computer beispielsweise erst erstellen, wenn sein Speicherkonto und seine Netzwerkschnittstelle vorhanden sind. Diese Beziehung definieren Sie, indem Sie eine Ressource von den anderen Ressourcen abhängig machen. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der Reihenfolge ihrer Abhängigkeiten bereit. Wenn Ressourcen nicht voneinander abhängig sind, stellt Resource Manager sie parallel bereit. Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./define-resource-dependency.md).
 
@@ -39,6 +39,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```console
     openssl rand -base64 32
     ```
+
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
@@ -51,6 +52,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
 4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
@@ -67,33 +69,43 @@ Sehen Sie sich die Vorlage in diesem Abschnitt an, und versuchen Sie, die folgen
 
     ![Azure Resource Manager-Vorlagen in Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
+    Es gibt sechs Ressourcen, die von der Vorlage definiert werden:
 
-   * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+     Es empfiehlt sich, vor dem Anpassen einer Vorlage die Referenz zu dieser Vorlage zu lesen.
 
-2. Erweitern Sie die erste Ressource. Es handelt sich um ein Speicherkonto. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+1. Erweitern Sie die erste Ressource. Es handelt sich um ein Speicherkonto. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Azure Resource Manager-Vorlagen in Visual Studio Code: Speicherkontodefinition](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. Erweitern Sie die zweite Ressource. Der Ressourcentyp lautet `Microsoft.Network/publicIPAddresses`. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+1. Erweitern Sie die zweite Ressource. Der Ressourcentyp lautet `Microsoft.Network/publicIPAddresses`. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](/azure/templates/microsoft.network/publicipaddresses).
 
     ![Azure Resource Manager-Vorlagen in Visual Studio Code: Definition der öffentlichen IP-Adresse](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Erweitern Sie die vierte Ressource. Der Ressourcentyp lautet `Microsoft.Network/networkInterfaces`:
 
-    ![„dependsOn“ für Azure Resource Manager-Vorlagen in Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+1. Erweitern Sie die dritte Ressource. Der Ressourcentyp lautet `Microsoft.Network/networkSecurityGroups`. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](/azure/templates/microsoft.network/networksecuritygroups).
 
-    Das Element „dependsOn“ bietet die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Die Ressource hängt von zwei weiteren Ressourcen ab:
+    ![Azure Resource Manager-Vorlagen in Visual Studio Code: Definition der Netzwerksicherheitsgruppe](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+
+1. Erweitern Sie die vierte Ressource. Der Ressourcentyp lautet `Microsoft.Network/virtualNetworks`:
+
+    ![Azure Resource Manager-Vorlagen in Visual Studio Code: „dependsOn“ für virtuelles Netzwerk](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+
+    Das Element „dependsOn“ bietet die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Diese Ressource hängt von einer weiteren Ressource ab:
+
+    * `Microsoft.Network/networkSecurityGroups`
+
+1. Erweitern Sie die fünfte Ressource. Der Ressourcentyp lautet `Microsoft.Network/networkInterfaces`. Die Ressource hängt von zwei weiteren Ressourcen ab:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
 
-5. Erweitern Sie die fünfte Ressource. Diese Ressource ist ein virtueller Computer. Sie hängt von zwei weiteren Ressourcen ab:
+1. Erweitern Sie die sechste Ressource. Diese Ressource ist ein virtueller Computer. Sie hängt von zwei weiteren Ressourcen ab:
 
     * `Microsoft.Storage/storageAccounts`
     * `Microsoft.Network/networkInterfaces`
@@ -106,27 +118,41 @@ Durch die Angabe der Abhängigkeiten wird die Lösung von Resource Manager effiz
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwenden Sie Cloud Shell aus dem Azure-Portal.
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 
-1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
-1. Wählen Sie links oben in der Cloudshell die Option **PowerShell** aus, und wählen Sie dann **Bestätigen**.  In diesem Tutorial können Sie PowerShell verwenden.
-1. Klicken Sie in Cloud Shell auf **Datei hochladen**:
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-1. Wählen Sie die Vorlage aus, die Sie zuvor im Tutorial gespeichert haben. Der Standardname lautet **azuredeploy.json**.  Falls Sie eine Datei mit dem gleichen Dateinamen besitzen, wird die alte Datei ohne Benachrichtigung überschrieben.
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie zuvor gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
-    Sie können optional den Befehl **ls $HOME** und den Befehl **cat $HOME/azuredeploy.json** verwenden, um zu überprüfen, ob die Dateien hochgeladen wurden.
+1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
-1. Führen Sie in Cloud Shell die folgenden PowerShell-Befehle aus. Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Siehe [Voraussetzungen](#prerequisites).
+    # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    echo "Enter the virtual machine admin username:" &&
+    read adminUsername &&
+    echo "Enter the DNS label prefix:" &&
+    read dnsLabelPrefix &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location $location &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters adminUsername=$adminUsername dnsLabelPrefix=$dnsLabelPrefix
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
@@ -135,18 +161,11 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwe
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Führen Sie den folgenden PowerShell-Befehl zum Auflisten des neu erstellen virtuellen Computers aus:
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    Der Name des virtuellen Computers ist in der Vorlage als **SimpleWinVM** hartcodiert.
+    ---
 
 1. Stellen Sie per RDP eine Verbindung mit dem virtuellen Computer her, um sich zu vergewissern, dass der virtuelle Computer erstellt wurde.
 
@@ -156,7 +175,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
 2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
-3. Klicken Sie auf den Namen der Ressourcengruppe.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
+3. Klicken Sie auf den Namen der Ressourcengruppe. Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
 4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

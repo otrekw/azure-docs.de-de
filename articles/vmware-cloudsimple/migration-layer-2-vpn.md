@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083226"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81602689"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -108,7 +108,7 @@ Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Priv
 
 Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logischen Routerinstanz für die Notfallwiederherstellung der Ebene 0 der IPsec- und L2VPN-Dienste abrufen. Die ID des logischen Routers wird später bei der Implementierung des L2VPN benötigt.
 
-1. Melden Sie sich beim NSX-T-Manager https://*nsx-t-manager-ip-address* an, und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
+1. Melden Sie sich beim NSX-T-Manager `https://*nsx-t-manager-ip-address*` an, und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
 
     ![Auswählen von „active-standby“](media/l2vpn-fetch01.png)
 
@@ -180,7 +180,7 @@ Die IP-Adressen, die für die Loopback-und Tunnelschnittstellen für L2VPN ausge
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 Für den folgenden POST-Befehl ist die ID des L2VPN-Diensts die ID, die Sie soeben abgerufen haben, und die ID der IPsec-VPN-Sitzung ist die ID, die Sie im vorherigen Abschnitt abgerufen haben.
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {

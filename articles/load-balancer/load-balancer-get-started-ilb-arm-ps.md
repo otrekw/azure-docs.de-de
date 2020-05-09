@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 485afaa4b7009731784cf5da6f8c28e0a787c1d9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045477"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629421"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Erstellen eines internen Lastenausgleichs mit dem Azure PowerShell-Modul
 
@@ -48,7 +48,7 @@ Für die Bereitstellung eines Lastenausgleichs müssen die folgenden Objekte ers
 * Testkonfiguration: Die Tests des Integritätsstatus für virtuelle Computer.
 * NAT-Eingangsregeln: Die Portregeln für den direkten Zugriff auf virtuelle Computer.
 
-Weitere Informationen zu den Komponenten des Lastenausgleichs finden Sie unter [Azure Load Balancer-Komponenten](concepts-limitations.md#load-balancer-components).
+Weitere Informationen zu den Komponenten des Lastenausgleichs finden Sie unter [Azure Load Balancer-Komponenten](components.md).
 
 Die folgenden Schritte zeigen, wie Sie einen Load Balancer zwischen zwei virtuellen Computern konfigurieren.
 

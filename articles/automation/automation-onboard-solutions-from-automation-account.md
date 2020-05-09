@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235530"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81457653"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
@@ -82,7 +82,7 @@ Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM 
 
 Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** eine der Optionen **Bestand** oder **Änderungsnachverfolgung** bzw. unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Diese Aktion öffnet ein neues Browserfenster mit den [Anweisungen zum Installieren und Konfigurieren von Microsoft Monitoring Agent auf dem Computer](../azure-monitor/platform/log-analytics-agent.md), sodass der Computer mit der Berichterstellung für die Lösung beginnen kann. Wenn Sie einen Computer integrieren, der aktuell von System Center Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
+Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Diese Aktion öffnet ein neues Browserfenster mit [Anweisungen zum Installieren und Konfigurieren des Log Analytics-Agents für Windows](../azure-monitor/platform/log-analytics-agent.md), sodass der Computer mit dem Erstellen von Berichten zur Lösung beginnen kann. Wenn Sie das Onboarding für einen Computer durchführen, der aktuell von System Center Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Integrierte Computer im Arbeitsbereich
 
@@ -150,7 +150,7 @@ Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in I
 So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 
 * Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-* Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Entfernen Sie den [Log Analytics-Agent für Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics-Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

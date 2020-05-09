@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606422"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233419"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Join-Transformation in einem Zuordnungsdatenfluss
 
@@ -69,7 +69,9 @@ Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist die Join-Transformation k
 
 ![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
 
-Wenn mindestens einer der Datenströme in den Arbeitsspeicher des Workerknotens passt, können Sie die Leistung weiter optimieren, indem Sie auf der Registerkarte „Optimieren“ die Option **Broadcast** aktivieren. Darüber hinaus können Sie Ihre Daten im Join-Vorgang neu partitionieren, damit sie besser in den workerspezifischen Arbeitsspeicher passen.
+Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
+
+Es wird nicht empfohlen, die Übertragung über die Option **Off** (Aus) zu deaktivieren, es sei denn, für Ihre Joins treten Timeoutfehler auf.
 
 ## <a name="self-join"></a>Selbstverknüpfung
 
@@ -90,7 +92,7 @@ Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Join-Transformati
     join(
         <conditionalExpression>,
         joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <joinTransformationName>
 ```
 

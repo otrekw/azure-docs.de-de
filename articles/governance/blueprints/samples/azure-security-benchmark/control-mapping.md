@@ -3,16 +3,16 @@ title: Steuerungen des Blaupausenbeispiels für den Vergleichstest für die Azur
 description: Steuerungszuordnung des Blaupausenbeispiels für den Vergleichstest für die Azure-Sicherheit zu Azure Policy
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538662"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691310"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels für den Vergleichstest für die Azure-Sicherheit
 
-Im folgenden Artikel wird erläutert, wie das Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit von Azure Blueprints den Steuerungen des Vergleichstests für die Azure-Sicherheit zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
+Im folgenden Artikel wird erläutert, wie das Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit von Azure Blueprints den Steuerungen des Vergleichstests für die Azure-Sicherheit zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Vergleichstest für die Azure-Sicherheit](../../../../security/benchmarks/overview.md).
 
 Es gibt die folgenden Zuordnungen zu den Steuerungen im **Vergleichstest für die Azure-Sicherheit**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Die zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: Azure Security Benchmark-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen**.
 

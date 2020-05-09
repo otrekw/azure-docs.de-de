@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5954c8eda370c0734985c47cfff6d073f5d76d17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258021"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186321"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -200,7 +200,7 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 || |**Monatliche Gesamtkosten**  | |**38.688 US-Dollar**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>Abrechnungsbeispiele mit Free-Tarif-Konten
-Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autopilot (Vorschau) und Multimasterkonfiguration.  
+Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autoskalierung und Multimasterkonfiguration.  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit bereitgestelltem Durchsatz
 - Angenommen, Sie erstellen eine Datenbank oder einen Container in einem Free-Tarif-Konto mit 400 RUs/Sek. und 5 GB Speicher.
@@ -208,8 +208,8 @@ Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5
 - Nehmen Sie jetzt an, in demselben Konto fügen Sie eine weitere Datenbank oder einen weiteren Container mit 1.000 RUs/Sek. und 10 GB Speicher hinzu.
 - Dann zeigt Ihre Rechnung eine Gebühr für die 1.000 RUs/Sek. und 10 GB Speicher an. 
 
-### <a name="billing-example---container-or-database-with-autopilot-throughput-preview"></a>Abrechnungsbeispiel: Container oder Datenbank mit Autopilot-Durchsatz (Vorschau)
-- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit aktiviertem Autopilot mit einer maximalen Anzahl RUs/Sek. von 4.000 RUs/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert. 
+### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit automatisch skaliertem Durchsatz
+- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit aktivierter Autoskalierung mit maximal 4000 RUs/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert. 
 - Angenommen, in Stunde 1 bis 10 erfolgt der Durchsatz bei der Ressource mit dem minimalen Wert 400 RUs/Sek. Während Stunde 11 wird die Ressource auf 1.000 RUs/Sek. zentral hochskaliert und anschließend innerhalb dieser Stunde wieder auf 400 RUs/Sek. herunterskaliert.
 - In den Stunden 1 bis 10 werden Ihnen 0 US-Dollar für den Durchsatz in Rechnung gestellt, da die 400 RUs/Sek. durch den Free-Tarif abgedeckt wurden. 
 - In Stunde 11 werden Ihnen effektive 1.000 RUs/Sek. – 400 RUs/Sek. = 600 RUs/Sek. in Rechnung gestellt, da dies der höchste RUs/Sek.-Wert in dieser Stunde ist. Dies sind 6 Einheiten von 100 RUs/Sek. für die Stunde. Damit belaufen sich die gesamten Durchsatzkosten für diese Stunde auf 6 Einheiten x 0,012 US-Dollar = 0,072 US-Dollar. 

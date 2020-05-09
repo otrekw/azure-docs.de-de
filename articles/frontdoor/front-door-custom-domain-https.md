@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878033"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160084"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
 In diesem Tutorial erfahren Sie, wie Sie im Abschnitt mit den Front-End-Hosts das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die Ihrer Front Door-Instanz zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (Beispiel: https:\//www.contoso.com) stellen Sie sicher, dass Ihre sensiblen Daten per TLS/SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Dieser Prozess sorgt für Sicherheit und schützt Ihre Webanwendungen vor Angriffen.
 
-Azure Front Door unterstützt HTTPS standardmäßig für einen Front Door-Standardhostnamen. Wenn Sie beispielsweise eine Front Door-Instanz erstellen (z.B. „https:\//contoso.azurefd.net“), wird HTTPS automatisch für Anforderungen an https://contoso.azurefd.net aktiviert. Nachdem Sie jedoch die benutzerdefinierte Domäne „www.contoso.com“ integriert haben, müssen Sie zusätzlich HTTPS für den Front-End-Host aktivieren.   
+Azure Front Door unterstützt HTTPS standardmäßig für einen Front Door-Standardhostnamen. Wenn Sie beispielsweise eine Front Door-Instanz erstellen (z. B. `https://contoso.azurefd.net`), wird HTTPS automatisch für Anforderungen an `https://contoso.azurefd.net` aktiviert. Nachdem Sie jedoch die benutzerdefinierte Domäne „www.contoso.com“ integriert haben, müssen Sie zusätzlich HTTPS für den Front-End-Host aktivieren.   
 
 Zu den wichtigsten Attributen des benutzerdefinierten HTTPS-Features zählen unter anderem folgende:
 
