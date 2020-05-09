@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688058"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609220"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -99,6 +99,10 @@ Dieses Feature steht in folgenden Azure-Regionen zur Verfügung:
 - USA, Westen 2
 
 - Australien (Osten)
+
+- Japan, Osten
+
+- Nordeuropa
 
 > [!NOTE]
 > Wenn Sie Verfügbarkeitszonen für ein Azure Cosmos-Konto mit einer einzelnen Region aktivieren, fallen die gleichen Kosten an wie beim Hinzufügen einer weiteren Region zu Ihrem Konto. Ausführliche Informationen zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/) sowie im Artikel [Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB](optimize-cost-regions.md).

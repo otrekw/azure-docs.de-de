@@ -1,23 +1,32 @@
 ---
 title: Verwaltetes Datenträgerbursting
-description: Weitere Informationen zu Datenträgerbursting und dessen Funktionsweise für Azure Premium-SSDs.
-author: roygara
-ms.author: rogarana
-ms.date: 03/28/2019
+description: Erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und Datenträgerbursting für virtuelle Azure-Computer.
+author: albecker1
+ms.author: albecker
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 1693e7f1916f6941f6aa19748a38b03bb4cec77e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082678"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594421"
 ---
-# <a name="premium-ssd-bursting"></a>SSD Premium-Bursting
-
+# <a name="disk-bursting"></a>Datenträgerbursting
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
+Bingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen Cloud für diese unterstützten Größen aktiviert: 
+- [Lsv2-Serie](../lsv2-series.md)
 
-[Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal](attach-managed-disk-portal.md)
+Bursting ist für virtuelle Computer, die diese Technologie unterstützen, standardmäßig aktiviert.
+
+## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
+Bursting steht auch für unsere [Premium-SSDs](disks-types.md#premium-ssd) für Datenträgergrößen P20 und kleiner in allen Regionen zur Verfügung. Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden: 
+- **Neustarten der VM** 
+- **Trennen und erneutes Anfügen des Datenträgers**
+
+
+[!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting-2.md)]

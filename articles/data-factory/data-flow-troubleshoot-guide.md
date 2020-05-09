@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/02/2020
-ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/27/2020
+ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417809"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187278"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
 
@@ -44,7 +44,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 
 - **Meldung**: Broadcast join timeout error, make sure broadcast stream produces data within 60 secs in debug runs and 300 secs in job runs (Übertragungsjoin-Timeoutfehler: Stellen Sie sicher, dass der Übertragungsdatenstrom in Debugausführungen Daten innerhalb von 60 Sekunden und in Auftragsausführungen innerhalb von 300 Sekunden Daten erzeugt.)
 - **Ursachen**: Das Zeitlimit für Übertragungen beträgt standardmäßig 60 Sekunden bei Debugausführungen und 300 Sekunden bei Auftragsausführungen. Der Datenstrom, der für die Übertragung ausgewählt wurde, ist anscheinend zu groß, um innerhalb dieser Zeitspanne Daten zu erzeugen.
-- **Empfehlung**: Vermeiden Sie es, große Datenströme zu übertragen, deren Verarbeitung länger als 60 Sekunden dauern kann. Wählen Sie stattdessen einen kleineren Datenstrom für die Übertragung. Große SQL/DW-Tabellen und -Quelldateien sind hierfür eher ungeeignet.
+- **Empfehlung**: Überprüfen Sie die Registerkarte „Optimieren“ auf Ihren Datenflusstransformationen auf „Join“, „Exists“ und „Lookup“. Die Standardoption für die Übertragung ist „Auto“. Wenn diese Option festgelegt ist oder wenn Sie die linke oder rechte Seite manuell unter „Fixed“ für die Übertragung festlegen, dann können Sie entweder eine größere Azure Integration Runtime-Konfiguration festlegen oder die Übertragung deaktivieren. Der empfohlene Ansatz für die optimale Leistung bei Datenflüssen besteht darin, Spark zu erlauben, mit „Auto“ zu übertragen und ein arbeitsspeicheroptimiertes Azure IR zu verwenden.
 
 ### <a name="error-code-df-executor-conversion"></a>Fehlercode: DF-Executor-Conversion
 

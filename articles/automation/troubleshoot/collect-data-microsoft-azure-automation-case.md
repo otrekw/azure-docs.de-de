@@ -1,6 +1,6 @@
 ---
 title: Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation | Microsoft-Dokumentation
-description: In diesem Artikel werden einige der grundlegenden Informationen beschrieben, die Sie sammeln sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage für Azure Automation öffnen.
+description: In diesem Artikel werden einige der Informationen beschrieben, die Sie zusammenstellen sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage zu Azure Automation erstellen.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,46 +13,36 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849376"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81679404"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation
 
-In diesem Artikel werden einige der grundlegenden Informationen beschrieben, die Sie sammeln sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage für Azure Automation öffnen. Diese Informationen sind nicht erforderlich, um eine Anfrage zu öffnen. Sie können Microsoft aber dabei helfen, Ihr Problem schneller zu lösen. Darüber hinaus besteht die Möglichkeit, dass der Supportmitarbeiter Sie nach dem Öffnen der Anfrage um diese Daten bittet.
+In diesem Artikel werden einige der Informationen beschrieben, die Sie zusammenstellen sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage zu Azure Automation erstellen. Diese Informationen sind nicht erforderlich, um eine Anfrage zu öffnen. Sie können Microsoft aber dabei helfen, Ihr Problem schneller zu lösen. Darüber hinaus besteht die Möglichkeit, dass der Supportmitarbeiter Sie nach dem Öffnen der Anfrage um diese Daten bittet.
 
-## <a name="collect-more-information"></a>Sammeln weiterer Informationen
+## <a name="basic-data"></a>Grundlegende Daten
 
-Bevor Sie eine Anfrage beim Support für Microsoft Azure Automation öffnen, empfehlen wir Ihnen, die folgenden Informationen zu sammeln.
+Erfassen Sie die grundlegenden Daten, die im Knowledge Base-Artikel [4034605 – skriptbasiertes Erfassen von Diagnosedaten zu Azure Automation](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) beschrieben werden.
 
-### <a name="basic-data-collection"></a>Grundlegende Datensammlung
-
-Sammelt die Daten, die im folgenden Knowledge Base-Artikel beschrieben werden:
-
-* [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) How to capture Azure Automation-scripted diagnostics (Skriptgesteuerte Erfassung von Azure Automation-Diagnosedaten)
-
-## <a name="collect-data-depending-on-issue"></a>Problembezogenes Sammeln von Daten
- 
-### <a name="for-issues-that-affect-update-management-on-linux"></a>Für Probleme, die die Updateverwaltung unter Linux betreffen
+## <a name="data-for-update-management-issues-on-linux"></a>Daten für Probleme mit der Updateverwaltung in Linux
 
 1. Führen Sie über die in KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) aufgeführten Punkte hinaus das folgende Tool zur Protokollerfassung aus:
 
    [OMS Linux Agent-Protokollsammler](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. Komprimieren Sie den Inhalt des folgenden Ordners, und senden Sie die komprimierte Datei dann an den Azure-Support:
-
-   ``/var/opt/microsoft/omsagent/run/automationworker/``
+2. Komprimieren Sie den Inhalt des Ordners **/var/opt/microsoft/omsagent/run/automationworker/** , und senden Sie die komprimierte Datei an den Azure-Support.
  
-3. Überprüfen Sie, ob die Arbeitsbereichs-ID, an die der OMS Linux-Agent berichtet, mit dem Arbeitsbereich übereinstimmt, der auf Updates überwacht wird.
+3. Überprüfen Sie, ob die ID für den Arbeitsbereich, für den der Protokollanalyse-Agent für Linux Berichte erstellt, der ID für den Arbeitsbereich entspricht, der auf Updates überwacht wird.
 
-### <a name="for-issues-that-affect-update-management-on-windows"></a>Für Probleme, die die Updateverwaltung unter Windows betreffen
+## <a name="data-for-update-management-issues-on-windows"></a>Daten für Probleme mit der Updateverwaltung in Windows
 
-Führen Sie über die in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) aufgelisteten Punkte hinaus Folgendes aus:
+1. Erfassen Sie Daten für die Elemente, die im KB-Artikel [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) aufgeführt sind.
 
-1. Exportieren Sie die folgenden Ereignisprotokolle in das EVTX-Format:
+2. Exportieren Sie die folgenden Ereignisprotokolle in das EVTX-Format:
 
    * System
    * Application
@@ -60,50 +50,47 @@ Führen Sie über die in [4034605](https://support.microsoft.com/help/4034605/ho
    * Operations Manager
    * Microsoft-SMA/Operational
 
-2. Überprüfen Sie, ob die Arbeitsbereichs-ID, an die der Agent berichtet, mit dem Arbeitsbereich übereinstimmt, der von Windows Updates überwacht wird.
+3. Überprüfen Sie, ob die ID für den Arbeitsbereich, für den der Agent Berichte erstellt, der ID für den Arbeitsbereich entspricht, der von Windows Updates überwacht wird.
 
-### <a name="for-issues-that-affect-a-job"></a>For Probleme, die einen Auftrag betreffen
+## <a name="data-for-job-issues"></a>Daten für Probleme mit Aufträgen
 
-Erfassen Sie über die in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) aufgelisteten Punkte hinaus folgende Informationen:
+1. Erfassen Sie Daten für die Elemente, die im KB-Artikel [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) aufgeführt sind.
 
-1. Erfassen Sie die **JobID**-Nummer (für den Auftrag, bei dem ein Problem auftritt):
+2. Erfassen Sie die Auftrags-ID für den Auftrag, bei dem ein Problem besteht:
 
-   1. Navigieren Sie im Azure-Portal zum Blatt **Automation-Konten**.
-   2. Wählen Sie das **Automation-Konto** aus, für das Sie die Problembehandlung durchführen.
+   1. Navigieren Sie im Azure-Portal zu **Automation-Konten**.
+   2. Wählen Sie das Automation-Konto aus, für das Sie die Problembehandlung durchführen, und notieren Sie sich den Namen.
    3. Wählen Sie **Aufträge** aus.
    4. Wählen Sie den Auftrag aus, für den Sie die Problembehandlung durchführen.
-   5. Suchen Sie unter **Auftragszusammenfassung** nach einer **Auftrags-ID** (GUID).
+   5. Suchen Sie im Bereich „Auftragszusammenfassung“ nach dem GUID-Wert in **Auftrags.ID**.
 
    ![Auftrags-ID im Bereich „Auftragszusammenfassung“](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
-2. Erfassen Sie den Kontonamen:
-
-   1. Navigieren Sie im Azure-Portal zum Blatt **Automation-Konten**.
-   2. Rufen Sie den Namen des **Automation-Kontos** ab, für das Sie die Problembehandlung durchführen.
-
-3. Erfassen Sie eine Stichprobe des Skripts, das Sie ausführen.
+3. Erfassen Sie ein Beispiel des Skripts, das Sie ausführen.
 
 4. Sammeln der Protokolldateien:
 
-   1. Navigieren Sie im Azure-Portal zum Blatt **Automation-Konten**.
-   2. Wählen Sie das **Automation-Konto** aus, für das Sie die Problembehandlung durchführen.
+   1. Navigieren Sie im Azure-Portal zu **Automation-Konten**.
+   2. Wählen Sie das Automation-Konto aus, für das Sie die Problembehandlung durchführen.
    3. Wählen Sie **Aufträge** aus.
    4. Wählen Sie den Auftrag aus, für den Sie die Problembehandlung durchführen.
    5. Wählen Sie **Alle Protokolle** aus.
-   6. Sammeln Sie die Daten auf dem resultierenden Blatt.
+   6. Erfassen Sie die Daten im resultierenden Bereich.
 
    ![Unter „Alle Protokolle“ aufgeführte Daten](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-### <a name="for-issues-that-affect-modules"></a>For Probleme, die Module betreffen
+## <a name="data-for-module-issues"></a>Daten für Probleme mit Modulen
 
-Sammeln Sie über die unter „Grundlegende Datensammlung“ aufgeführten Punkte hinaus die folgenden Informationen:
+Erfassen Sie zusätzlich zu den [grundlegenden Datenelementen](#basic-data) die folgenden Informationen:
 
 * Die Schritte, die Sie ausgeführt haben, damit das Problem reproduziert werden kann.
-* Einen Screenshot von jeder Fehlermeldung.
-* Einen Screenshot der aktuellen Module und ihrer Versionsnummern.
+* Screenshots von allen Fehlermeldungen.
+* Screenshots der aktuellen Module und ihrer Versionsnummern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, wenden Sie sich an die Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/).
+Wenn Sie weitere Hilfe benötigen, gehen Sie folgendermaßen vor:
 
-Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
+* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
