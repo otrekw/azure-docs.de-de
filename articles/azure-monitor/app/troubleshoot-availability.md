@@ -4,14 +4,14 @@ description: Behandeln von Problemen mit Webtests in Azure Application Insights 
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 09/19/2019
+ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255446"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233957"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -67,6 +67,10 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ich habe die Webhookbenachrichtigung nicht empfangen.
 
 Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook).
+
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Ich erhalte die Fehler „Unzulässig – 403“, was bedeutet das?
+
+Dieser Fehler zeigt an, dass Sie Firewallausnahmen hinzufügen müssen, damit die Verfügbarkeits-Agents Ihre Ziel-URL testen können. Eine vollständige Liste der zuzulassenden Agent-IP-Adressen finden Sie im Artikel zur [IP-Ausnahme](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung ist aufgetreten.
 
