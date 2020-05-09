@@ -1,23 +1,24 @@
 ---
-title: Sicherheitskontrollen für Azure Storage
+title: Sicherheitskontrollen
+titleSuffix: Azure Storage
 description: Eine Prüfliste mit Sicherheitskontrollen zur Evaluierung von Azure Storage
 services: storage
 author: msmbaldwin
+ms.author: mbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/11/2020
+ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061111"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128021"
 ---
 # <a name="security-controls-for-azure-storage"></a>Sicherheitskontrollen für Azure Storage
 
-In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen beschrieben. 
+In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen beschrieben.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -36,8 +37,9 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja |  |
+| Unterstützung von Diensttags| Ja | Weitere Informationen zu den von Azure Storage unterstützten Diensttags finden Sie unter [Übersicht über Azure-Diensttags](../../virtual-network/service-tags-overview.md). |
 | Unterstützung der VNet-Einschleusung| – |  |
-| Unterstützung von Netzwerkisolation und Firewall| Ja | |
+| Netzwerkisolation und Firewallunterstützung| Ja | |
 | Unterstützung der Tunnelerzwingung| – |  |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
@@ -45,8 +47,8 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
 | Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Azure Monitor-Metriken|
-| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene | Ja | Azure Resource Manager-Aktivitätsprotokoll |
-| Protokollierung und Überwachung auf Datenebene| Ja | Dienstdiagnoseprotokolle|
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene | Ja | Azure-Aktivitätsprotokoll |
+| Protokollierung und Überwachung auf Datenebene| Ja | Azure Monitor-Ressourcenprotokolle |
 
 ## <a name="identity"></a>Identity
 
