@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454661"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176622"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -23,9 +23,49 @@ Microsoft empfiehlt die Verwendung von Azure Key Vault zum Verwalten Ihrer Zugri
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Anzeigen von Zugriffsschlüsseln und Verbindungszeichenfolge
+## <a name="view-account-access-keys"></a>Anzeigen von Kontozugriffsschlüsseln
 
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+Sie können Ihre Kontozugriffsschlüssel mit dem Azure-Portal, PowerShell oder der Azure CLI anzeigen und kopieren. Das Azure-Portal stellt auch eine Verbindungszeichenfolge für Ihr Speicherkonto bereit, die Sie kopieren können.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Führen Sie folgende Schritte durch, um die Zugriffsschlüssel oder Verbindungszeichenfolge Ihres Speicherkontos aus dem Azure-Portal anzuzeigen oder zu kopieren:
+
+1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+1. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche zum **Kopieren**, um den Kontoschlüssel zu kopieren.
+1. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
+
+    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Rufen Sie den Befehl [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) auf, um Ihre Kontozugriffsschlüssel mit PowerShell abzurufen.
+
+Im folgenden Beispiel wird der erste Schlüssel abgerufen. Verwenden Sie `Value[1]` anstelle von `Value[0]`, um den zweiten Schlüssel abzurufen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+
+```powershell
+$storageAccountKey = `
+    (Get-AzStorageAccountKey `
+    -ResourceGroupName <resource-group> `
+    -Name <storage-account>).Value[0]
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Rufen Sie, wie im folgenden Beispiel zu sehen, den Befehl [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) auf, um Ihre Kontozugriffsschlüssel mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen. 
+
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <resource-group> \
+  --account-name <storage-account>
+```
+
+---
+
+Sie können jeden der beiden Schlüssel verwenden, um auf Azure Storage zuzugreifen. Im Allgemeinen empfiehlt es sich jedoch, den ersten Schlüssel zu verwenden und den zweiten Schlüssel zur Verwendung bei der Rotation von Schlüsseln zu reservieren.
+
+Zum Anzeigen oder Lesen der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/listkeys/action** enthält. Einige integrierte RBAC-Rollen, die diese Aktion beinhalten, sind die Rollen **Besitzer**, **Mitwirkender** und **Dienstrolle „Speicherkonto-Schlüsseloperator“** . Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Verwenden von Azure Key Vault zum Verwalten Ihrer Zugriffsschlüssel
 
@@ -43,12 +83,51 @@ Es werden zwei Zugriffsschlüssel zugewiesen, sodass Sie Ihre Schlüssel rotiere
 > [!WARNING]
 > Das erneute Generieren Ihrer Zugriffsschlüssel kann sich auf Anwendungen oder Azure-Dienste auswirken, die von dem Speicherkontoschlüssel abhängig sind. Alle Clients, die den Kontoschlüssel verwenden, um auf das Speicherkonto zuzugreifen, müssen aktualisiert werden, damit der neue Schlüssel verwendet wird, einschließlich Media Services, Cloud-, Desktop- und mobiler Anwendungen sowie grafischer Benutzeroberflächenanwendungen für Azure Storage wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-Befolgen Sie diesen Prozess, um Ihre Speicherkontoschlüssel zu rotieren:
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Anwendungscode, um den sekundären Schlüssel zu verwenden.
-2. Generieren Sie den primären Zugriffsschlüssel für das Speicherkonto neu. Klicken Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel** auf **Schlüssel 1 erneut generieren** und dann auf **Ja**, um das Generieren eines neuen Schlüssels zu bestätigen.
-3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
-4. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
+Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel im Azure-Portal zu rotieren:
+
+1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
+1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+1. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Zugriffsschlüssel, um den primären Zugriffsschlüssel für Ihr Speicherkonto neu zu generieren.
+1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
+1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit PowerShell zu rotieren:
+
+1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
+1. Rufen Sie den Befehl [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
+
+    ```powershell
+    New-AzStorageAccountKey -ResourceGroupName <resource-group> `
+      -Name <storage-account> `
+      -KeyName key1
+    ```
+
+1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
+1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit der Azure CLI zu rotieren:
+
+1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
+1. Rufen Sie den Befehl [az storage account keys renew](/cli/azure/storage/account/keys#az-storage-account-keys-renew) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
+
+    ```azurecli-interactive
+    az storage account keys renew \
+      --resource-group <resource-group> \
+      --account-name <storage-account>
+      --key primary
+    ```
+
+1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
+1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
+
+---
 
 > [!NOTE]
 > Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.

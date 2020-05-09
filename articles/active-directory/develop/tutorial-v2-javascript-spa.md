@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990955"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181561"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
 In diesem Leitfaden werden folgende Aktionen für eine JavaScript-Single-Page-Anwendung (SPA) beschrieben:
-- Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten 
+- Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten
 - Abrufen eines Zugriffstokens
 - Aufrufen der Microsoft Graph-API oder anderer APIs, für die Zugriffstoken des *Microsoft Identity Platform-Endpunkts* erforderlich sind
 
@@ -32,14 +32,10 @@ In diesem Leitfaden werden folgende Aktionen für eine JavaScript-Single-Page-An
 
 ![Zeigt, wie die in diesem Tutorial generierte Beispiel-App funktioniert](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
 Die über diesen Leitfaden erstellte Beispiel-App ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die Token vom Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen über den Autorisierungsheader hinzugefügt. Dieses Token wird verwendet, um das Profil und die E-Mails des Benutzers über die **MS Graph-API** abzurufen. Tokenabruf und -verlängerung werden von der **Microsoft Authentication Library (MSAL) für JavaScript** verarbeitet.
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>Bibliotheken
 
 In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
@@ -47,12 +43,6 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 |Bibliothek|BESCHREIBUNG|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript|
-
-> [!NOTE]
-> *msal.js* verwendet als Ziel den Microsoft Identity Platform-Endpunkt, was persönlichen Konten sowie Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Beziehen von Token ermöglicht. Für den Microsoft Identity Platform-Endpunkt gelten [einige Einschränkungen](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
-> Die Unterschiede zwischen v1.0- und v2.0-Endpunkten werden unter [Endpunktvergleich](../azuread-dev/azure-ad-endpoint-comparison.md) erläutert.
-
-<!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>Einrichten Ihres Webservers oder Projekts
 
@@ -68,7 +58,7 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 
-Vergewissern Sie sicher, dass [Node.js](https://nodejs.org/en/download/) installiert ist, und erstellen Sie einen Ordner für Ihre Anwendung. Dort implementieren wir einen einfachen [Express](https://expressjs.com/)-Webserver, um die `index.html` Datei zu verarbeiten. 
+Vergewissern Sie sicher, dass [Node.js](https://nodejs.org/en/download/) installiert ist, und erstellen Sie einen Ordner für Ihre Anwendung. Dort implementieren wir einen einfachen [Express](https://expressjs.com/)-Webserver, um die `index.html` Datei zu verarbeiten.
 
 1. Suchen Sie zunächst mithilfe des integrierten Terminals von Visual Studio Code Ihren Projektordner, und installieren Sie dann Express mithilfe von NPM.
 
@@ -170,7 +160,7 @@ Sie verfügen jetzt über einen einfachen Server zum Bereitstellen Ihrer SPA. Di
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +178,7 @@ Sie verfügen jetzt über einen einfachen Server zum Bereitstellen Ihrer SPA. Di
 
    > [!TIP]
    > Sie können die Version von „MSAL.js“ im obigen Skript durch die neueste veröffentlichte Version unter [MSAL.js-Releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) ersetzen.
-   
+
 2. Erstellen Sie nun eine JS-Datei mit dem Namen `ui.js`, die auf DOM-Elemente zugreift und diese aktualisiert, und fügen Sie den folgenden Code hinzu:
 
    ```JavaScript
@@ -304,7 +294,7 @@ Erstellen Sie eine neue JS-Datei mit dem Namen `authConfig.js`, die die Konfigur
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +340,7 @@ Erstellen Sie eine neue JS-Datei mit dem Namen `authPopup.js`, die Ihre Authenti
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -404,7 +394,6 @@ Erstellen Sie eine neue JS-Datei mit dem Namen `authPopup.js`, die Ihre Authenti
    }
    ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
 Wenn ein Benutzer das erste Mal die Schaltfläche **Anmelden** auswählt, ruft die `signIn`-Methode `loginPopup` auf, um den Benutzer anzumelden. Diese Methode öffnet ein Popupfenster mit dem *Microsoft Identity Platform-Endpunkt*, um die Anmeldeinformationen des Benutzers anzufordern und zu überprüfen. Nach erfolgreicher Anmeldung wird der Benutzer zur ursprünglichen Indexseite (*index.html*) umgeleitet. Ein Token wird empfangen und von `msal.js` verarbeitet, und die im Token enthaltenen Informationen werden zwischengespeichert. Dieses Token ist das sogenannte *ID-Token*, das grundlegende Informationen zum Benutzer enthält, beispielsweise den Benutzeranzeigenamen. Wenn Sie von diesem Token bereitgestellte Daten nutzen möchten, müssen Sie sicherstellen, dass das Token durch Ihren Back-End-Server überprüft wird. So wird garantiert, dass das Token für einen gültigen Benutzer Ihrer Anwendung ausgestellt wurde.
@@ -430,8 +419,7 @@ Die Methode `acquireTokenSilent` wickelt den Bezug und die Verlängerung von Tok
 1. Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden – beispielsweise, wenn in der Anwendung nicht authentifizierte Inhalte vorhanden sind. In diesem Fall kann der Benutzer entscheiden, wann er sich anmelden möchte, um auf die geschützte Ressource zuzugreifen oder die veralteten Informationen zu aktualisieren.
 
 > [!NOTE]
-> In diesem Schnellstart werden standardmäßig die Methoden `loginPopup` und `acquireTokenPopup` verwendet. Wenn Sie Internet Explorer als Browser verwenden, empfiehlt es sich, die Methoden `loginRedirect` und `acquireTokenRedirect` zu verwenden, da ein [bekanntes](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) Problem damit vorliegt, wie Popupfenster in Internet Explorer behandelt werden. Wenn Sie erfahren möchten, wie Sie mit `Redirect methods`dasselbe Ergebnis erzielen, sehen Sie [hier](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js) nach. 
-<!--end-collapse-->
+> In diesem Schnellstart werden standardmäßig die Methoden `loginPopup` und `acquireTokenPopup` verwendet. Wenn Sie Internet Explorer als Browser verwenden, empfiehlt es sich, die Methoden `loginRedirect` und `acquireTokenRedirect` zu verwenden, da ein [bekanntes](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) Problem damit vorliegt, wie Popupfenster in Internet Explorer behandelt werden. Wenn Sie erfahren möchten, wie Sie mit `Redirect methods`dasselbe Ergebnis erzielen, sehen Sie [hier](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js) nach.
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Aufrufen der Microsoft Graph-API unter Verwendung des zuvor bezogenen Tokens
 
@@ -462,7 +450,7 @@ Die Methode `acquireTokenSilent` wickelt den Bezug und die Verlängerung von Tok
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))
@@ -470,13 +458,9 @@ Die Methode `acquireTokenSilent` wickelt den Bezug und die Verlängerung von Tok
    }
    ```
 
-<!--start-collapse-->
-
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Weitere Informationen zum Richten eines REST-Aufrufs an eine geschützte API
 
 In der Beispielanwendung aus diesem Leitfaden wird die Methode `callMSGraph()` verwendet, um eine HTTP-Anforderung vom Typ `GET` für eine geschützte Ressource auszuführen, die ein Token erfordert. Der Inhalt wird anschließend an den Aufrufer zurückgegeben. Diese Methode fügt das abgerufene Token in den *HTTP-Autorisierungsheader* ein. In der Beispielanwendung aus diesem Leitfaden ist die Ressource der Endpunkt *me* der Microsoft Graph-API, der die Profilinformationen des Benutzers anzeigt.
-
-<!--end-collapse-->
 
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -506,7 +490,6 @@ Nach der Anmeldung werden Ihre Benutzerprofilinformationen in der angezeigten An
 
 ![Ergebnisse des Aufrufs der Microsoft Graph-API](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
 Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die beim Registrierungsportal registriert wird. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt beispielsweise den Bereich *Mail.Read*, um die E-Mails des Benutzers aufzuführen.
@@ -515,7 +498,5 @@ Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil
 > Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
 Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie in den Aufrufen zum Beziehen von Token *clientId* als Bereich verwenden.
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

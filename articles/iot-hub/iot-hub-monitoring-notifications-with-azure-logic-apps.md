@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81680722"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
 
@@ -212,7 +212,7 @@ Im vorherigen Abschnitt haben Sie Ihren IoT-Hub eingerichtet, um Nachrichten, di
       Rufen Sie die SMTP-Informationen für [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970), [Gmail](https://support.google.com/a/answer/176600?hl=en) und [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) ab.
 
       > [!NOTE]
-      > Unter Umständen muss SSL deaktiviert werden, um die Verbindung herstellen zu können. Falls dies der Fall ist und Sie SSL nach dem Herstellen der Verbindung wieder aktivieren möchten, führen Sie den optionalen Schritt am Ende dieses Abschnitts aus.
+      > Möglicherweise müssen Sie TLS/SSL deaktivieren, um die Verbindung herstellen zu können. Wenn dies der Fall ist und Sie TLS nach dem Herstellen der Verbindung wieder aktivieren möchten, führen Sie den optionalen Schritt am Ende dieses Abschnitts aus.
 
    1. Wählen Sie in der Dropdownliste **Neuen Parameter hinzufügen** des Schritts **E-Mail senden** die Optionen **Von**, **An**, **Betreff** und **Text** aus. Klicken oder tippen Sie auf eine beliebige Stelle des Bildschirms, um das Auswahlfeld zu schließen.
 
@@ -224,7 +224,7 @@ Im vorherigen Abschnitt haben Sie Ihren IoT-Hub eingerichtet, um Nachrichten, di
 
    1. Wählen Sie **Speichern** aus, um die SMTP-Verbindung zu speichern.
 
-1. (Optional) Gehen Sie wie folgt vor, wenn Sie für die Verbindungsherstellung mit Ihrem E-Mail-Anbieter SSL deaktivieren mussten und es nun wieder aktivieren möchten:
+1. (Optional) Wenn Sie für die Verbindungsherstellung mit Ihrem E-Mail-Anbieter TLS deaktivieren mussten und es nun wieder aktivieren möchten, gehen Sie wie folgt vor:
 
    1. Wählen Sie im Bereich **Logik-App** unter **Entwicklungstools** die Option **API-Verbindungen** aus.
 

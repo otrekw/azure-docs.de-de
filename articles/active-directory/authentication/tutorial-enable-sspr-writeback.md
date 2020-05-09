@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 04/24/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3578cb1326ebd701c3f00618c19a501a1476372
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332140"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143752"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -57,7 +57,7 @@ Damit Sie das SSPR-Rückschreiben ordnungsgemäß verwenden können, müssen fü
    * Das Stammobjekt von *jeder Domäne* in dieser Gesamtstruktur
    * Der Benutzerorganisationseinheiten, für die SSPR möglich sein soll
 
-Wenn Sie diese Berechtigungen nicht zuweisen, ist das Rückschreiben scheinbar ordnungsgemäß konfiguriert, Benutzer erhalten jedoch Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten.
+Wenn Sie diese Berechtigungen nicht zuweisen, ist das Rückschreiben scheinbar ordnungsgemäß konfiguriert, Benutzer erhalten jedoch Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten. Berechtigungen müssen für **Dieses und alle untergeordneten Objekte** angewendet werden, damit „Abgelaufenes Kennwort wiederherstellen“ angezeigt wird.  
 
 Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichten, führen Sie die folgenden Schritte aus:
 
@@ -67,7 +67,7 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 1. Wählen Sie auf der Registerkarte **Berechtigungen** die Option **Hinzufügen** aus.
 1. Wählen Sie unter **Prinzipal** das Konto aus, auf das die Berechtigungen angewendet werden sollen (das von Azure AD Connect verwendete Konto).
 1. Wählen Sie in der Dropdownliste **Gilt für** den Eintrag **Nachfolgerbenutzerobjekte** aus.
-1. Aktivieren Sie unter *Berechtigungen* die Kontrollkästchen für folgende Optionen:
+1. Aktivieren Sie unter *Berechtigungen* das Kontrollkästchen für die folgende Option:
     * **Zurücksetzen des Kennworts**
 1. Aktivieren Sie unter *Eigenschaften* die Kontrollkästchen für folgende Optionen. Sie müssen durch die Liste scrollen, um zu diesen Optionen zu gelangen. Möglicherweise sind sie bereits standardmäßig festgelegt:
     * **lockoutTime schreiben**
@@ -79,7 +79,7 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 
 Wenn Sie Berechtigungen aktualisieren, kann es bis zu einer Stunde oder länger dauern, bis diese Berechtigungen an alle Objekte in Ihrem Verzeichnis repliziert wurden.
 
-Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Damit Kennwortrückschreiben möglichst effizient funktioniert, muss die Gruppenrichtlinie für *Minimales Kennwortalter* auf „0“ festgelegt werden. Diese Einstellung finden Sie in `gpedit.msc` unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**. 
+Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Damit Kennwortrückschreiben möglichst effizient funktioniert, muss die Gruppenrichtlinie für *Minimales Kennwortalter* auf „0“ festgelegt werden. Diese Einstellung finden Sie in `gpedit.msc` unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**.
 
 Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl `gpupdate /force`.
 
