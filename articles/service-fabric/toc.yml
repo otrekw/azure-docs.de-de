@@ -655,7 +655,7 @@
             - name: Skalieren
               items:
                 - name: Manuelles Aufskalieren
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: Programmgesteuertes Aufskalieren
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Hochskalieren des primären Knotentyps

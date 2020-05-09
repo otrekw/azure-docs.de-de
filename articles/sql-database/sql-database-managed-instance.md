@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879070"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598537"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -63,7 +63,7 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere |
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 |
 | VNET – Azure Resource Manager-Bereitstellung | Ja |
-| VNET – Klassisches Bereitstellungsmodell | Nein |
+| VNET – Klassisches Bereitstellungsmodell | Nein  |
 | Portal-Unterstützung | Ja|
 | Integrierter Integrationsdienst (SSIS) | Nein – SSIS ist Teil von [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrierter Analysedienst (SSAS) | Nein – SSAS ist ein separater [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -167,19 +167,31 @@ In der folgenden Tabelle sind die Vorgänge und die typischen Gesamtdauern zusam
 
 \*\*\* Bei der aktuellen Konfiguration wird „12 Stunden“ verwendet, aber da sich dies in Zukunft ändern kann, sollten Sie hierfür keine festen Abhängigkeiten einrichten. Falls Sie einen virtuellen Cluster früher löschen müssen (z. B. um das Subnetz freizugeben), helfen Ihnen die Informationen unter [Löschen eines Subnetzes nach Löschen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-delete-virtual-cluster.md) weiter.
 
-### <a name="instance-availability-during-management"></a>Instanzverfügbarkeit während der Verwaltung
+### <a name="instance-availability-during-management-operations"></a>Instanzverfügbarkeit während Verwaltungsvorgängen
 
-Verwaltete Instanzen sind bei Bereitstellungs-und Löschvorgängen für Clientanwendungen nicht verfügbar.
+Verwaltete Instanzen sind während Bereitstellungs- und Löschvorgängen für Clientanwendungen nicht verfügbar.
 
-Verwaltete Instanzen sind bei Updatevorgängen verfügbar, aber es kommt zu einem kurzen Ausfall aufgrund des Failovers, das am Ende von Updates ausgeführt wird. Dies dauert normalerweise maximal zehn Sekunden. Eine Ausnahme hiervon ist die Aktualisierung des reservierten Speichers auf die Dienstebene „Universell“, für die kein Failover ausgelöst wird und die keinen Einfluss auf die Verfügbarkeit von Instanzen hat.
-
-> [!IMPORTANT]
-> Die Dauer eines Failovers kann bei Transaktionen mit langer Ausführungsdauer, die für die Datenbanken durchgeführt werden, aufgrund einer [verlängerten Wiederherstellungszeit](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process) erheblich variieren. Daher raten wir Ihnen davon ab, die Compute- oder Speicherkapazität der verwalteten Azure SQL-Datenbank-Instanzen zu skalieren oder die Dienstebene gleichzeitig mit den Transaktionen mit langer Ausführungsdauer (Datenimport, Datenverarbeitungsaufträge, Neuerstellung des Index usw.) zu ändern. Beim Datenbankfailover, das am Ende des Vorgangs ausgeführt wird, werden laufende Transaktionen abgebrochen. Dies führt zu einer verlängerten Wiederherstellungszeit.
+Verwaltete Instanzen sind bei Updatevorgängen verfügbar, aber es kommt zu einem kurzen Ausfall aufgrund des Failovers, das am Ende von Updates ausgeführt wird. Er dauert dank der [beschleunigten Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) in der Regel bis zu 10 Sekunden, auch bei unterbrochenen Transaktionen mit langer Ausführungszeit.
 
 > [!TIP]
 > Bei einer Aktualisierung des reservierten Speichers auf die Dienstebene „Universell“ wird kein Failover ausgeführt, und sie hat keinen Einfluss auf die Verfügbarkeit von Instanzen.
 
-Die [Schnellere Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) ist für verwaltete Azure SQL-Datenbank-Instanzen derzeit nicht verfügbar. Nach der Aktivierung wird mit diesem Feature die Variabilität der Failoverzeit erheblich reduziert. Dies gilt auch für Transaktionen mit langer Ausführungsdauer.
+> [!IMPORTANT]
+> Es wird nicht empfohlen, die Compute- oder Speicherkapazität der verwalteten Azure SQL-Datenbank-Instanzen zu skalieren oder die Dienstebene gleichzeitig mit den Transaktionen mit langer Ausführungsdauer (Datenimport, Datenverarbeitungsaufträge, Neuerstellung des Index usw.) zu ändern. Beim Datenbankfailover, das am Ende des Vorgangs ausgeführt wird, werden alle laufenden Transaktionen abgebrochen.
+
+
+### <a name="management-operations-cross-impact"></a>Wechselseitige Auswirkungen von Verwaltungsvorgängen
+
+Verwaltungsvorgänge für verwaltete Instanzen können sich auf andere Verwaltungsvorgänge der Instanzen auswirken, die sich im gleichen virtuellen Cluster befinden. Dies umfasst Folgendes:
+
+- **Wiederherstellungsvorgänge mit langer Ausführungszeit** in einem virtuellen Cluster stellen Instanzerstellungs- oder Skalierungsvorgänge anderer Instanzen im gleichen Subnetz zurück.<br/>**Beispiel:** Wenn ein Wiederherstellungsvorgang mit langer Laufzeit ausgeführt wird und eine Anforderung zum Erstellen oder Skalieren im gleichen Subnetz vorhanden ist, dauert es bis zum Abschluss länger, weil gewartet wird, bis der Wiederherstellungsvorgang beendet ist.
+    
+- **Nachfolgende Instanzerstellungs- oder Skalierungsvorgänge** werden durch zuvor initiierte Instanzerstellungen oder -skalierungen zurückgestellt, die die Größenänderung des virtuellen Clusters veranlasst haben.<br/>**Beispiel:** Wenn es in demselben Subnetz unter demselben virtuellen Cluster mehrere Anforderungen zum Erstellen und/oder Skalieren gibt und eine davon die Größenänderung des virtuellen Clusters initiiert, dauern alle Anforderungen, die mehr als 5 Minuten nach der Anforderung der Größenänderung des virtuellen Clusters übermittelt wurden, länger als erwartet, da diese Anforderungen auf den Abschluss der Größenänderung warten müssen, bevor sie fortgesetzt werden können.
+
+- **Erstellungs-/Skalierungsvorgänge, die im 5-minütigen Fenster übermittelt werden**, werden in einem Batch zusammengefasst und parallel ausgeführt.<br/>**Beispiel:** Für alle Vorgänge, die in einem 5-minütigen Fenster übermittelt werden, wird nur eine Größenänderung des virtuellen Clusters ausgeführt (gemessen ab dem Zeitpunkt der Ausführung der ersten Vorgangsanforderung). Wenn eine andere Anforderung mehr als 5 Minuten nach der Übermittlung der ersten Anforderung übermittelt wird, wartet sie, bis die Größenänderung des virtuellen Clusters abgeschlossen ist, bevor die Ausführung beginnt.
+
+> [!IMPORTANT]
+> Verwaltungsvorgänge, die aufgrund eines anderen aktuell ausgeführten Vorgangs zurückgestellt werden, werden automatisch fortgesetzt, sobald die Bedingungen für eine Fortsetzung erfüllt sind. Es ist keine Benutzeraktion erforderlich, um den temporär angehaltenen Verwaltungsvorgang fortzusetzen.
 
 ### <a name="canceling-management-operations"></a>Abbrechen von Verwaltungsvorgängen
 
@@ -187,14 +199,14 @@ In der folgenden Tabelle sind die Möglichkeit zum Abbrechen von speziellen Verw
 
 Category  |Vorgang  |Kann abgebrochen werden  |Geschätzte Abbruchdauer  |
 |---------|---------|---------|---------|
-|Bereitstellung |Erstellen einer Instanz |Nein |  |
-|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (universell) |Nein |  |
+|Bereitstellung |Erstellen einer Instanz |Nein  |  |
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (universell) |Nein  |  |
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (unternehmenskritisch) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
 |Aktualisieren |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
-|Löschen |Instanzlöschung |Nein |  |
-|Löschen |Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang) |Nein |  |
+|Löschen |Instanzlöschung |Nein  |  |
+|Löschen |Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang) |Nein  |  |
 
 Um den Verwaltungsvorgang abzubrechen, wechseln Sie zum Blatt „Übersicht“, und klicken Sie auf das Benachrichtigungsfeld des laufenden Vorgangs. Auf der rechten Seite wird ein Bildschirm mit dem laufenden Vorgang und einer Schaltfläche zum Abbrechen des Vorgangs angezeigt. Nach dem ersten Klick werden Sie aufgefordert, erneut zu klicken und zu bestätigen, dass Sie den Vorgang abbrechen möchten.
 

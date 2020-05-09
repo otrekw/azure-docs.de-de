@@ -9,12 +9,19 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer Datenbank – Portal
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: Erstellen einer Datenbank – Azure-CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
-      href: quickstart-create-server-up-azure-cli.md
+    - name: Erstellen einer Datenbank
+      items:
+        - name: Erstellen einer Datenbank – Portal
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: Erstellen einer Datenbank – Azure-CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
+          href: quickstart-create-server-up-azure-cli.md
+        - name: Erstellen einer Datenbank – Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: Erstellen einer Datenbank – ARM-Vorlage
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: Verbinden und abfragen
       items:
         - name: PHP
@@ -41,8 +48,10 @@
       items:
         - name: Azure-Portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure Resource Manager-Vorlage
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: '2: Erstellen einer Web-App'
@@ -55,10 +64,13 @@
           maintainContext: true
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: sample-scripts-azure-cli.md
     - name: Java-Verbindungspool
       href: sample-scripts-java-connection-pooling.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Datenbank und Server
@@ -152,14 +164,16 @@
       items:
         - name: Azure-Portal
           href: howto-manage-firewall-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-manage-firewall-using-cli.md
     - name: Wiederherstellen eines Servers
       items:
         - name: Azure-Portal
           href: howto-restore-server-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: Migrieren einer Datenbank
       items:
         - name: Sicherung und Wiederherstellung
@@ -184,27 +198,31 @@
       items:
         - name: Azure-Portal
           href: howto-server-parameters.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: Automatische Speichervergrößerung
       items:
         - name: Azure-Portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: Zugreifen auf Serverprotokolle
       items:
         - name: Protokolle für langsame Abfragen
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
         - name: Überwachungsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
     - name: Überwachen
       items:
@@ -218,6 +236,8 @@
           href: howto-read-replicas-portal.md
         - name: 'Erstellen von Lesereplikaten mit der Azure CLI, REST-API'
           href: howto-read-replicas-cli.md
+        - name: Erstellen von Lesereplikaten mit Azure PowerShell
+          href: howto-read-replicas-powershell.md
     - name: Problembehandlung
       items:
         - name: Beheben von Verbindungsproblemen
@@ -236,20 +256,22 @@
       items:
         - name: Azure-Portal
           href: howto-manage-vnet-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-manage-vnet-using-cli.md
     - name: Private Link
       items:
         - name: Azure-Portal
           href: howto-configure-privatelink-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-configure-privatelink-cli.md
     - name: Datenverschlüsselung
       items:
         - name: Azure-Portal
           href: howto-data-encryption-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-data-encryption-cli.md
+        - name: Validierung der Datenverschlüsselung
+          href: howto-data-encryption-validation.md
     - name: Azure AD-Integration
       items:
         - name: "Konfigurieren der Azure\_AD-Integration"
@@ -262,11 +284,13 @@
       items:
         - name: Azure-Portal
           href: howto-restart-server-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql

@@ -1,28 +1,27 @@
 ---
 title: IP-Firewallregeln
-description: Hier erfahren Sie, wie Sie IP-Firewallregeln auf Serverebene für eine SQL-Datenbank- oder SQL Data Warehouse-Firewall konfigurieren. Außerdem erfahren Sie, wie Sie den Zugriff verwalten und IP-Firewallregeln auf Datenbankebene für eine Einzel- oder Pooldatenbank konfigurieren.
+description: Hier erfahren Sie, wie Sie IP-Firewallregeln auf Serverebene für eine SQL-Datenbank- oder Azure Synapse Analytics-Firewall konfigurieren. Außerdem erfahren Sie, wie Sie den Zugriff verwalten und IP-Firewallregeln auf Datenbankebene für eine Einzel- oder Pooldatenbank konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606092"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629234"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse Analytics-IP-Firewallregelen
 
 > [!NOTE]
-> Dieser Artikel gilt für Azure SQL Server-Instanzen und sowohl für Azure SQL-Datenbank- als auch für Azure SQL Data Warehouse-Datenbanken in einer Azure SQL Server-Instanz. Der Einfachheit halber wird *SQL-Datenbank* als Sammelbegriff für SQL-Datenbank und SQL Data Warehouse verwendet.
+> Dieser Artikel gilt für Azure SQL Server-Instanzen und sowohl für Azure SQL-Datenbank- als auch für Azure Synapse Analytics-Datenbanken in einer Azure SQL Server-Instanz. Der Einfachheit halber wird *SQL-Datenbank* verwendet, um sowohl auf SQL-Datenbank als auch auf Azure Synapse zu verweisen.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für *verwaltete Azure SQL-Datenbank-Instanzen*. Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
@@ -30,7 +29,7 @@ ms.locfileid: "81606092"
 Wenn Sie beispielsweise eine neue Azure SQL Server-Instanz namens *mysqlserver* erstellen, blockiert die SQL-Datenbank-Firewall jeglichen Zugriff auf den öffentlichen Endpunkt für den Server (auf den unter *mysqlserver.database.windows.net* zugegriffen werden kann).
 
 > [!IMPORTANT]
-> SQL Data Warehouse unterstützt nur IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt.
+> Azure Synapse unterstützt nur IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt.
 
 ## <a name="how-the-firewall-works"></a>Funktionsweise der Firewall
 Verbindungsversuche über das Internet und Azure müssen die Firewall durchlaufen, bevor sie Ihre SQL Server-Instanz oder Ihre SQL-Datenbank erreichen, wie im folgenden Diagramm dargestellt:
@@ -253,7 +252,7 @@ In diesem Abschnitt finden Sie einige Punkte für den Fall, dass sich der Zugrif
 
 - **Anmeldung nicht autorisiert oder falsches Kennwort verwendet:**
 
-  Wenn eine Anmeldung nicht über Berechtigungen für den SQL-Datenbank-Server verfügt oder das Kennwort falsch ist, wird die Verbindung mit dem Server verweigert. Durch Erstellen einer Firewalleinstellung wird Clients lediglich die *Möglichkeit* gegeben, eine Verbindung mit dem Server herzustellen. Der Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen. Weitere Informationen zum Vorbereiten von Anmeldungen finden Sie unter [Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse](sql-database-manage-logins.md).
+  Wenn eine Anmeldung nicht über Berechtigungen für den SQL-Datenbank-Server verfügt oder das Kennwort falsch ist, wird die Verbindung mit dem Server verweigert. Durch Erstellen einer Firewalleinstellung wird Clients lediglich die *Möglichkeit* gegeben, eine Verbindung mit dem Server herzustellen. Der Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen. Weitere Informationen zum Vorbereiten von Anmeldungen finden Sie unter [Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und Azure Synapse](sql-database-manage-logins.md).
 
 - **Dynamische IP-Adresse**:
 

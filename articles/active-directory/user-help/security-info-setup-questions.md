@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4714a78ed03a9b861f3a266cfd0d7bca456b3c4
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063967"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628349"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Einrichten von Sicherheitsfragen als Überprüfungsmethode
 
@@ -55,7 +55,7 @@ Wenn Sie Sicherheitsfragen verwenden, wird empfohlen, diese in Verbindung mit ei
 
 ### <a name="to-set-up-your-security-questions"></a>So richten Sie Ihre Sicherheitsfragen ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
