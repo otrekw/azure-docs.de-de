@@ -14,8 +14,13 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in Python
           href: tutorial-python-windows-virtual-machine.md
-    - name: Verwenden von Azure Key Vault mit einer Azure-Web-App in .NET
+    - name: Herstellen einer Verbindung zwischen Key Vault und einer Web-App mit einer verwalteten Identität und .NET
       href: tutorial-net-create-vault-azure-web-app.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Konzepte
   items:
     - name: Grundlegende Konzepte
@@ -96,6 +101,10 @@
           href: soft-delete-powershell.md
     - name: Verschieben von Key Vault
       items:
+        - name: Verschieben von Key Vault in eine andere Ressourcengruppe
+          href: keyvault-moveresourcegroup.md
+        - name: Verschieben von Key Vault in ein anderes Abonnement
+          href: keyvault-move-subscription.md
         - name: Verschieben von Key Vault in eine andere Region
           href: keyvault-moveregion.md
     - name: Problembehandlung
