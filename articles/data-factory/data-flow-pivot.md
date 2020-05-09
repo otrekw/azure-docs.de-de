@@ -1,5 +1,5 @@
 ---
-title: 'Zuordnungsdatenfluss: Pivottransformation'
+title: Pivottransformation im Zuordnungsdatenfluss
 description: Pivotieren Sie Daten aus Zeilen in Spalten mithilfe der Pivottransformation des Azure Data Factory-Zuordnungsdatenflusses.
 author: kromerm
 ms.author: makromer
@@ -7,73 +7,103 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a2276f5714db427586dbd56027e51c167b8c604f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413595"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686429"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory-Pivottransformation
+# <a name="pivot-transformation-in-mapping-data-flow"></a>Pivottransformation im Zuordnungsdatenfluss
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Verwenden Sie Pivot in ADF-Datenfluss als Aggregation, bei der die unterschiedlichen Zeilenwerte einer oder mehrerer Gruppierungsspalten in einzelne Spalten transformiert wurden. Im Wesentlichen können Sie Zeilenwerte in neue Spalten pivotieren (Daten in Metadaten umwandeln).
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-![Pivotoptionen](media/data-flow/pivot1.png "Pivot 1")
+Verwenden Sie die Pivottransformation, um aus den eindeutigen Zeilenwerten einer einzelnen Spalte mehrere Spalten zu erstellen. Pivotieren ist eine Aggregationstransformation, bei der Sie die Option „Nach Spalten gruppieren“ auswählen und mithilfe von [Aggregatfunktionen](data-flow-expression-functions.md#aggregate-functions) Pivotspalten erstellen.
 
-## <a name="group-by"></a>Gruppieren nach
+## <a name="configuration"></a>Konfiguration
 
-![Pivotoptionen](media/data-flow/pivot2.png "Pivot 2")
+Für die Pivottransformation sind drei verschiedene Eingaben erforderlich: „Nach Spalten gruppieren“, der Pivotschlüssel und Angaben zum Generieren der pivotierten Spalten.
 
-Legen Sie zuerst die Spalten fest, nach denen Sie für Ihre Pivotaggregation gruppieren möchten. Sie können mit dem Pluszeichen (+) neben der Spaltenliste mehr als 1 Spalte festlegen.
+### <a name="group-by"></a>Gruppieren nach
 
-## <a name="pivot-key"></a>Pivotschlüssel
+![Gruppierungsoptionen](media/data-flow/pivot2.png "[Optionen für „Gruppieren nach“")
 
-![Pivotoptionen](media/data-flow/pivot3.png "Pivot 3")
+Wählen Sie aus, über welche Spalten die pivotierten Spalten aggregiert werden sollen. Die Ausgabedaten gruppieren alle Zeilen mit denselben Werten für „Gruppieren nach“ in eine Zeile. Die in der pivotierten Spalte ausgeführte Aggregation erfolgt in jeder Gruppe.
 
-Der Pivotschlüssel ist die Spalte, die ADF von Zeile in Spalte pivotiert. Standardmäßig wird jeder eindeutige Wert im Dataset für dieses Feld in eine Spalte pivotiert. Sie können jedoch die Werte aus dem Dataset optional eingeben, die in Spaltenwerte pivotiert werden sollen. Dies ist die Spalte, die die neuen, zu erstellenden Spalten bestimmt.
+Dieser Abschnitt ist optional. Wenn keine Gruppieren nach-Spalten ausgewählt werden, wird der gesamte Datenstrom aggregiert und nur eine Zeile ausgegeben.
 
-## <a name="pivoted-columns"></a>Pivotierte Spalten
+### <a name="pivot-key"></a>Pivotschlüssel
 
-![Pivotoptionen](media/data-flow/pivot4.png "Pivot 4")
+![Pivotschlüssel](media/data-flow/pivot3.png "Pivotschlüssel")
 
-Wählen Sie abschließend die für die pivotierten Werte zu verwendende Aggregation aus, und wählen Sie aus, wie die Spalten in der neuen Ausgabeprojektion der Transformation angezeigt werden sollen.
+Der Pivotschlüssel ist die Spalte, deren Zeilenwerte in neue Spalten pivotiert werden. Standardmäßig erstellt die Pivottransformation eine neue Spalte für jeden eindeutigen Zeilenwert.
 
-(Optional) Sie können ein Benennungsmuster mit einem Präfix, einem Mittelteil und einem Suffix festlegen, das/der jedem neuen Spaltennamen aus den Zeilenwerten hinzugefügt wird.
+Im Abschnitt **Wert** können Sie bestimmte Zeilenwerte eingeben, die pivotiert werden sollen. Nur die in diesem Abschnitt eingegebenen Zeilenwerte werden pivotiert. Durch Aktivieren von **NULL-Wert** wird eine pivotierte Spalte für die NULL-Werte in der Spalte erstellt.
 
-Wenn Sie beispielsweise „Umsatz“ nach „Region“ pivotieren, erhalten Sie neue Spaltenwerte aus den einzelnen Umsatzzahlen. Beispiel: „25“, „50“, „1000“ usw. Wenn Sie jedoch den Präfixwert „Sales-“ festlegen, wird „Sales-“ am Anfang jedes Spaltenwerts hinzugefügt.
+### <a name="pivoted-columns"></a>Pivotierte Spalten
 
-![Pivotoptionen](media/data-flow/pivot5.png "Pivot 5")
+![Pivotierte Spalten](media/data-flow/pivot4.png "Pivotierte Spalten")
 
-Wenn Sie die Spaltenanordnung auf „Normal“ festlegen, werden alle pivotierten Spalten zusammen mit ihren aggregierten Werten gruppiert. Wenn Sie die Spaltenanordnung auf „Lateral“ festlegen, wird zwischen Spalte und Wert gewechselt.
+Generieren Sie für jeden eindeutigen Pivotschlüsselwert, der zu einer Spalte transformiert wird, einen aggregierten Zeilenwert für jede Gruppe. Sie können mehrere Spalten pro Pivotschlüssel erstellen. Jede Pivotspalte muss mindestens eine [Aggregatfunktion](data-flow-expression-functions.md#aggregate-functions) enthalten.
 
-### <a name="aggregation"></a>Aggregation
+**Spaltennamensmuster**: Wählen Sie aus, wie der Spaltenname jeder Pivotspalte formatiert werden soll. Der ausgegebene Spaltenname ist eine Kombination aus dem Pivotschlüsselwert, dem Spaltenpräfix sowie optionalen Zeichen für Präfix, Suffix und Zeichen in der Mitte. 
 
-Klicken Sie zum Festlegen der für die Pivotwerte zu verwendenden Aggregation auf das Feld am unteren Rand des Bereichs „Pivotierte Spalten“. Der ADF-Datenfluss-Ausdrucks-Generator wird geöffnet, in dem Sie einen Aggregationsausdruck erstellen und einen beschreibenden Aliasnamen für Ihre neuen aggregierten Werte angeben können.
+**Spaltenanordnung**: Wenn Sie mehr als eine Pivotspalte pro Pivotschlüssel generieren, wählen Sie aus, wie die Spalten angeordnet werden sollen. 
 
-Verwenden Sie die ADF-Datenfluss-Ausdruckssprache, um die Transformationen der pivotierten Spalten im Ausdrucks-Generator zu beschreiben: https://aka.ms/dataflowexpressions.
+**Spaltenpräfix**: Wenn Sie mehr als eine Pivotspalte pro Pivotschlüssel generieren, geben Sie ein Spaltenpräfix für jede Spalte ein. Diese Einstellung ist optional, wenn Sie nur über eine pivotierte Spalte verfügen.
+
+## <a name="help-graphic"></a>Hilfegrafik
+
+Die folgende Hilfegrafik zeigt, wie die verschiedenen Pivotkomponenten miteinander interagieren:
+
+![Hilfegrafik für Pivotfunktion](media/data-flow/pivot5.png "Hilfegrafik für Pivotfunktion")
 
 ## <a name="pivot-metadata"></a>Pivotmetadaten
 
-Die Pivottransformation generiert auf der Basis Ihrer eingehenden Daten neue, dynamische Spaltendaten. Der Pivotschlüssel produziert die Werte für jeden neuen Spaltennamen. Wenn Sie keine einzelnen Namen angeben und dynamische Spaltennamen für jeden eindeutigen Wert in Ihrem Pivotschlüssel erstellen möchten, werden die Metadaten auf der Benutzeroberfläche nicht in „Untersuchen“ angezeigt, und es gibt keine Spaltenweitergabe an die Sink-Transformation. Wenn Sie Werte für den Pivotschlüssel festlegen, kann ADF die neuen Spaltennamen bestimmen, und diese Spaltennamen stehen Ihnen in der Inspect- und Sink-Zuordnung zur Verfügung.
+Wenn in der Pivotschlüsselkonfiguration keine Werte angegeben sind, werden die pivotierten Spalten dynamisch zur Laufzeit generiert. Die Anzahl von pivotierten Spalten entspricht der Anzahl von eindeutigen Pivotschlüsselwerte multipliziert mit der Anzahl von Pivotspalten. Da diese Zahl veränderlich ist, werden die Spaltenmetadaten auf der Benutzeroberfläche auf der Registerkarte **Untersuchen** nicht angezeigt, und es erfolgt keine Spaltenweitergabe. Verwenden Sie zum Transformieren dieser Spalten die [Spaltenmuster](concepts-data-flow-column-pattern.md)-Funktionen des Zuordnungsdatenflusses. 
 
-### <a name="generate-a-new-model-from-dynamic-columns"></a>Generieren eines neuen Modells aus dynamischen Spalten
+Wenn bestimmte Pivotschlüsselwerte festgelegt sind, werden die pivotierten Spalten in den Metadaten angezeigt. Spaltennamen stehen Ihnen in der Zuordnung für Untersuchung und Senke zur Verfügung.
 
-Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie können diese neuen Spalten in Metadaten umwandeln, auf die später im Datenfluss verwiesen werden kann. Klicken Sie hierzu auf die Registerkarte „Datenvorschau“. Alle neuen Spalten, die von Ihrer Pivot-Transformation generiert werden, werden mit einem „abweichenden“ Symbol in der Tabellenkopfzeile angezeigt. Klicken Sie auf die Schaltfläche „Abweichende zuordnen“, um diese neuen Spalten in Metadaten umzuwandeln, sodass Sie zu einem Teil des Modells des Datenflusses werden.
+### <a name="generate-metadata-from-drifted-columns"></a>Generieren von Metadaten aus Driftspalten
+
+Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie können diese neuen Spalten zu den Metadaten hinzufügen, auf die später im Datenfluss verwiesen werden kann. Verwenden Sie hierzu die Schnellaktion [Abweichende zuordnen](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) in der Datenvorschau. 
 
 ![Pivotspalten](media/data-flow/newpivot1.png "Zuordnen abweichender Pivotspalten")
 
-### <a name="landing-new-columns-in-sink"></a>Bereitstellen neuer Spalten in Sink
+### <a name="sinking-pivoted-columns"></a>Senken für pivotierte Spalten
 
-Trotz dynamischer Spaltennamen in Pivot können Sie Ihre neuen Spaltennamen und -werte in Ihren Zieldatenspeicher senken. Legen Sie einfach in Ihren Sink-Einstellungen „Schemaabweichung zulassen“ fest. Die neuen dynamischen Namen werden nicht in Ihren Spaltenmetadaten angezeigt, die Option zur Schemaabweichung ermöglicht Ihnen aber trotzdem die Bereitstellung der Daten.
+Pivotierte Spalten sind zwar dynamisch, können aber trotzdem in Ihren Zieldatenspeicher geschrieben werden. Aktivieren Sie in Ihren Senkeneinstellungen die Option **Schemaabweichung zulassen**. So können Sie in Spalten schreiben, die in den Metadaten nicht enthalten sind. Die Option zur Schemaabweichung ermöglicht Ihnen dennoch die Bereitstellung der Daten.
 
-### <a name="view-metadata-in-design-mode"></a>Anzeigen von Metadaten im Entwurfsmodus
+### <a name="rejoin-original-fields"></a>Erneutes Verknüpfen der ursprünglichen Felder
 
-Wenn Sie die neuen Spaltennamen in „Untersuchen“ als Metadaten anzeigen und die Weitergabe der Spalten an die Sink-Transformation explizit sehen möchten, legen Sie auf der Registerkarte Pivotschlüssel explizite Werte fest.
+Die Pivottransformation wird nur für die Gruppieren nach-Spalten und die pivotierten Spalten ausgeführt. Wenn die Ausgabedaten auch andere Eingabespalten enthalten sollen, verwenden Sie ein [Selbstverknüpfungsmuster](data-flow-join.md#self-join).
 
-### <a name="how-to-rejoin-original-fields"></a>So verknüpfen Sie die ursprünglichen Felder erneut
-Die Pivottransformation projiziert nur die in der Aggregation, Gruppierung und Pivotaktion verwendeten Spalten. Wenn Sie die anderen Spalten aus dem vorherigen Schritt in Ihren Datenfluss einbeziehen möchten, verwenden Sie eine neue Verzweigung aus dem vorherigen Schritt, und verwenden Sie dann das Selbstverknüpfungsmuster, um den Datenfluss mit den ursprünglichen Metadaten zu verbinden.
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>Beispiel
+
+Den im Konfigurationsabschnitt gezeigten Screenshots liegt das folgende Datenflussskript zugrunde:
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

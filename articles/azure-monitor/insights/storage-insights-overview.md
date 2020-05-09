@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662518"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691109"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)
 
@@ -67,7 +67,7 @@ Die Zählerkachel unter den Dropdownlisten führt ein Rollup der Gesamtanzahl de
 Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
 
 >[!NOTE]
->Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
+>Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/common/monitor-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
 
 Der Standardschwellenwert für **Verfügbarkeit** lautet:
 

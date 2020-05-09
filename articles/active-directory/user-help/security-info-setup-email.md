@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 9488b96dda15b0ffb794f83826dc299a5f397b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c3dd3e7e0bc899b87a16f66dc4d049a2876dbb4
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064001"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628366"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>Einrichten einer E-Mail-Adresse als Überprüfungsmethode
 
@@ -49,7 +49,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als
 
 ### <a name="to-set-up-your-email-address"></a>So richten Sie Ihre E-Mail-Adresse ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 

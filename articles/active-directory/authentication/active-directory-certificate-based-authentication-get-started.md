@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654351"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610648"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -45,7 +46,7 @@ Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss 
 - Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.
 
 >[!IMPORTANT]
->Eine Zertifikatsperrliste darf maximal 20 MB groß sein, damit sie erfolgreich von Azure Active Directory heruntergeladen und zwischengespeichert werden kann, und der Download der Zertifikatsperrliste darf maximal zehn Sekunden dauern.  Wenn Azure Active Directory eine Zertifikatsperrliste nicht herunterladen kann, sind zertifikatbasierte Authentifizierungen mit Zertifikaten, die von der entsprechenden Zertifizierungsstelle ausgestellt wurden, nicht erfolgreich. Zur Einhaltung der Größenbeschränkungen für CRL-Dateien empfiehlt es sich, eine angemessene Zertifikatlebensdauer zu verwenden und abgelaufene Zertifikate zu bereinigen. 
+>Eine Zertifikatsperrliste darf maximal 20 MB groß sein, damit sie erfolgreich von Azure Active Directory heruntergeladen und zwischengespeichert werden kann, und der Download der Zertifikatsperrliste darf maximal zehn Sekunden dauern.  Wenn Azure Active Directory eine Zertifikatsperrliste nicht herunterladen kann, sind zertifikatbasierte Authentifizierungen mit Zertifikaten, die von der entsprechenden Zertifizierungsstelle ausgestellt wurden, nicht erfolgreich. Zur Einhaltung der Größenbeschränkungen für CRL-Dateien empfiehlt es sich, eine angemessene Zertifikatlebensdauer zu verwenden und abgelaufene Zertifikate zu bereinigen.
 
 ## <a name="step-1-select-your-device-platform"></a>Schritt 1: Auswählen Ihrer Geräteplattform
 

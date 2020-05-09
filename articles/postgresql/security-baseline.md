@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261159"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183159"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
 
@@ -130,7 +130,7 @@ Grundlegendes zur Verwendung von Diensttags für Azure Database for PostgreSQL: 
 
 - DDoS Protection Standard sollte aktiviert sein.
 
-- Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
+- Erzwingen einer TLS-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -197,7 +197,7 @@ Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 
-**Leitfaden**: Aktivieren Sie Diagnoseeinstellungen für Ihre Azure Database for PostgreSQL-Instanzen für den Zugriff auf Überwachungs-, Sicherheits- und Diagnoseprotokolle. Stellen Sie sicher, dass das PostgreSQL-Überwachungsprotokoll explizit aktiviert wird. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. Sie können auch die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll aktivieren und die Protokolle an denselben Log Analytics-Arbeitsbereich oder dasselbe Speicherkonto senden.
+**Leitfaden**: Aktivieren Sie Diagnoseeinstellungen für Ihre Azure Database for PostgreSQL-Instanzen für den Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle. Stellen Sie sicher, dass das PostgreSQL-Überwachungsprotokoll explizit aktiviert wird. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. Sie können auch die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll aktivieren und die Protokolle an denselben Log Analytics-Arbeitsbereich oder dasselbe Speicherkonto senden.
 
 Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
@@ -525,7 +525,7 @@ Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Leitfaden**: Azure Database for PostgreSQL unterstützt die Verbindung Ihres PostgreSQL-Servers mit Clientanwendungen unter Verwendung von Secure Sockets Layer (SSL). Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Stellen Sie im Azure-Portal sicher, dass „SSL-Verbindung erzwingen“ für alle Azure Database for PostgreSQL-Instanzen standardmäßig aktiviert ist.
+**Leitfaden**: Azure Database for PostgreSQL unterstützt die Verbindung Ihres PostgreSQL-Servers mit Clientanwendungen über TLS (Transport Layer Security), ehemals SSL (Secure Sockets Layer). Durch das Erzwingen von TLS-Verbindungen zwischen Ihrem Datenbankserver und Ihren Clientanwendungen können Sie sich vor Man-in-the-Middle-Angriffen schützen, indem Sie den Datenstrom zwischen dem Server und Ihrer Anwendung verschlüsseln. Stellen Sie im Azure-Portal sicher, dass „SSL-Verbindung erzwingen“ für alle Azure Database for PostgreSQL-Instanzen standardmäßig aktiviert ist.
 
 Derzeit werden die TLS-Versionen TLS 1.0, TLS 1.1, TLS 1.2 für Azure Database for PostgreSQL unterstützt.
 
@@ -652,7 +652,7 @@ Featureabdeckung für Azure PaaS-Dienste in Azure Security Center: https://docs.
 
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (einschließlich Azure Database for PostgreSQL-Instanzen) innerhalb Ihrer Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass Sie über entsprechende (Lese-)Berechtigungen in Ihrem Mandanten verfügen und alle Azure-Abonnements und Ressourcen in Ihren Abonnements auflisten können.
 
-Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -696,7 +696,7 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -738,7 +738,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9: Ausschließliche Verwendung genehmigter Azure-Dienste
 
-**Leitfaden**: Verwenden Sie eine Azure-Richtlinie, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
+**Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie hierzu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
 
@@ -794,7 +794,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 **Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für Ihre Azure Database for PostgreSQL-Instanzen mit Azure Policy. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforPostgreSQL“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Database for PostgreSQL-Instanzen zu erstellen. Sie können auch vordefinierte Richtliniendefinitionen verwenden, die sich auf Ihre Azure Database for PostgreSQL-Instanzen beziehen, z. B.:
 
-- Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
+- Erzwingen einer TLS-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
 
 - Die Protokollierung von Verbindungen sollte für PostgreSQL-Datenbankserver aktiviert sein.
 
@@ -816,7 +816,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
+**Leitfaden**: Verwenden Sie die Azure Policy-Einstellungen [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre Azure-Ressourcen zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -836,7 +836,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
-**Leitfaden**: Nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure-Richtliniendefinitionen für Azure Database for PostgreSQL-Instanzen oder zugehörige Ressourcen verwenden.
+**Leitfaden**: Nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure Policy-Definitionen für Azure Database for PostgreSQL-Instanzen oder zugehörige Ressourcen verwenden.
 
 Speichern von Code in Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -874,7 +874,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
 
-**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforPostgreSQL“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie Azure Policy ([Überwachen], [Verweigern] und [Bereitstellen, falls nicht vorhanden]), um Konfigurationen für Ihre Azure Database for PostgreSQL Instanzen und zugehörige Ressourcen automatisch zu erzwingen.
+**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforPostgreSQL“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie Azure Policy ([Überwachen], [Verweigern] und [Bereitstellen, falls nicht vorhanden]), um Konfigurationen für Ihre Azure Database for PostgreSQL-Instanzen und zugehörige Ressourcen automatisch zu erzwingen.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
