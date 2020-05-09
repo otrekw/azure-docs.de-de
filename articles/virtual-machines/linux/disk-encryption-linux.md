@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313626"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792580"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
 
-Azure Disk Encryption für virtuelle Linux-Computer (VMs) bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des EncryptFormatAll-Features die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt.
+Azure Disk Encryption für virtuelle Linux-Computer (VMs) bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des EncryptFormatAll-Features Verschlüsselung des temporären Datenträgers bereitstellt.
 
 Azure Disk Encryption ist [mit Azure Key Vault integriert](disk-encryption-key-vault.md), um Ihnen die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel und -geheimnisse zu erleichtern. Eine Übersicht über den Dienst finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md).
 
@@ -40,7 +40,7 @@ In allen Fällen sollten Sie [eine Momentaufnahme](snapshot-copy-managed-disk.md
 
 Azure Disk Encryption kann über die [Azure CLI](/cli/azure) und [Azure PowerShell](/powershell/azure/new-azureps-module-az) aktiviert und verwaltet werden. Zu diesem Zweck müssen Sie die Tools lokal installieren und eine Verbindung mit Ihrem Azure-Abonnement herstellen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Die [Azure CLI 2.0](/cli/azure) ist ein Befehlszeilentool zum Verwalten von Azure-Ressourcen. Sie wurde entwickelt, um Daten flexible abzufragen, Vorgänge mit langer Ausführungsdauer als nicht blockierende Prozesse zu unterstützen und das Erstellen von Skripts zu vereinfachen. Sie können sie lokal installieren, indem Sie die Schritte unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ausführen.
 
@@ -209,9 +209,9 @@ Weitere Informationen zum Konfigurieren zur Datenträgerverschlüsselungsvorlage
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Verwenden des Features EncryptFormatAll für Datenträger auf virtuellen Linux-Computern
 
-Mit dem Parameter **EncryptFormatAll** wird die Zeit reduziert, die zum Verschlüsseln von Linux-Datenträgern benötigt wird. Partitionen, die bestimmte Kriterien erfüllen, werden formatiert (mit dem aktuellen Dateisystem) und dann erneut an dem Speicherort eingebunden, an dem sie sich vor der Befehlsausführung befunden haben. Wenn Sie einen Datenträger ausschließen möchten, der die Kriterien erfüllt, können Sie die Bereitstellung vor dem Ausführen des Befehls aufheben.
+Mit dem Parameter **EncryptFormatAll** wird die Zeit reduziert, die zum Verschlüsseln von Linux-Datenträgern benötigt wird. Partitionen, die bestimmte Kriterien erfüllen, werden formatiert (zusammen mit ihrem aktuellen Dateisystem) und dann erneut an dem Speicherort eingebunden, an dem sie sich vor der Befehlsausführung befunden haben. Wenn Sie einen Datenträger ausschließen möchten, der die Kriterien erfüllt, können Sie die Bereitstellung vor dem Ausführen des Befehls aufheben.
 
- Nach der Ausführung dieses Befehls werden alle zuvor eingebundenen Laufwerke formatiert, und die Verschlüsselungsschicht wird über dem jetzt leeren Laufwerk gestartet. Bei Auswahl dieser Option wird auch der kurzlebige Ressourcendatenträger verschlüsselt, der an die VM angefügt ist. Nachdem das kurzlebige Laufwerk zurückgesetzt wurde, wird es erneut formatiert und bei der nächsten Gelegenheit von der Azure Disk Encryption-Lösung für die VM erneut verschlüsselt. Nachdem der Ressourcendatenträger verschlüsselt wurde, kann der [Microsoft Azure-Agent für Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) den Ressourcendatenträger nicht mehr verwalten und die Auslagerungsdatei nicht mehr aktivieren. Sie können die Auslagerungsdatei jedoch manuell konfigurieren.
+ Nach der Ausführung dieses Befehls werden alle zuvor eingebundenen Laufwerke formatiert, und die Verschlüsselungsschicht wird über dem jetzt leeren Laufwerk gestartet. Bei Auswahl dieser Option wird auch der temporäre Datenträger verschlüsselt, der an die VM angefügt ist. Nachdem der temporäre Datenträger zurückgesetzt wurde, wird er erneut formatiert und bei der nächsten Gelegenheit von der Azure Disk Encryption-Lösung für die VM erneut verschlüsselt. Nachdem der Ressourcendatenträger verschlüsselt wurde, kann der [Microsoft Azure-Agent für Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) den Ressourcendatenträger nicht mehr verwalten und die Auslagerungsdatei nicht mehr aktivieren. Sie können die Auslagerungsdatei jedoch manuell konfigurieren.
 
 >[!WARNING]
 > EncryptFormatAll sollte nicht verwendet werden, wenn sich auf den Datenvolumes der VM erforderliche Daten befinden. Sie können Datenträger von der Verschlüsselung ausschließen, indem Sie deren Bereitstellung aufheben. Sie sollten EncryptFormatAll zuerst auf einer Test-VM ausprobieren und sich mit dem Featureparameter und dessen Auswirkungen vertraut machen, bevor Sie das Feature auf einer VM für die Produktion einsetzen. Mit der EncryptFormatAll-Option wird der Datenträger formatiert, und alle darauf befindlichen Daten gehen verloren. Stellen Sie vor dem Fortfahren sicher, dass die Bereitstellung der auszuschließenden Datenträger ordnungsgemäß aufgehoben wird. </br></br>
@@ -408,9 +408,10 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Verschlüsselung freigegebener/verteilter Dateisysteme, einschließlich der folgenden, aber nicht auf diese begrenzt: DFS, GFS, DRDB und CephFS.
 - Verschieben eines verschlüsselten virtuellen Computers in ein anderes Abonnement.
 - Kernel-Absturzabbild (kdump).
-- Oracle-ACFS (ASM-Clusterdateisystem)
-- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
-- VMs der Lsv2-Serie (siehe: [Lsv2-Serie](../lsv2-series.md))
+- Oracle-ACFS (ASM-Clusterdateisystem).
+- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
+- Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

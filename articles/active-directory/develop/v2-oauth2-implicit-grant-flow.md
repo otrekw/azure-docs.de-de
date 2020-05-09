@@ -2,7 +2,7 @@
 title: OAuth 2.0-Flow für die implizite Genehmigung – Microsoft Identity Platform | Azure
 description: Schützen Sie Single-Page-Apps mit dem impliziten Fluss von Microsoft Identity Platform.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 944b4f7872a2784a65221afda17100e7ee8b663a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868411"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689696"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 

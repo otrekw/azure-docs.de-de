@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18~~~~
-ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087245"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838517"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -78,7 +78,7 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
    [![Auswählen von Datentypen in den Spaltenüberschriften.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. Benennen Sie die Spaltenüberschriften ggf. um. Der Name der Schlüsselspalte ist für die Verknüpfung mit der entsprechenden Eigenschaft in Ihrer Ereignisquelle erforderlich. 
+1. Benennen Sie die Spaltenüberschriften ggf. um. Der Name der Schlüsselspalte ist für die Verknüpfung mit der entsprechenden Eigenschaft in Ihrer Ereignisquelle erforderlich.
 
    > [!IMPORTANT]
    > Stellen Sie sicher, dass die Namen der Referenzdaten-Spaltennamen exakt mit dem Ereignisnamen der eingehenden Daten übereinstimmen. Dabei muss auch die Groß- und Kleinschreibung beachtet werden. Die Namen der Spalten, bei denen es sich nicht um Schlüsselspalten handelt, werden dazu verwendet, die eingehenden Daten mit den entsprechenden Referenzdatenwerten zu ergänzen.

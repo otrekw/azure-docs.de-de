@@ -3,12 +3,12 @@ title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 582a4bbc1ec21e231d2a9f1feb1cfef34b3cce37
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383531"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594269"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -18,6 +18,7 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 
 |  |  |
 |---------|---------|
+| [ISM PROTECTED der australischen Regierung](./ism-protected/control-mapping.md) | Stellt Schutzmaßnahmen für die Konformität mit ISM PROTECTED der australischen Regierung bereit. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Enthält Leitlinien für die Einhaltung von PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark helfen. |
 | [DoD-Auswirkungsstufe 4](./dod-impact-level-4/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 4 helfen. |

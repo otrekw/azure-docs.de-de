@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77189105"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734823"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
 
@@ -129,7 +129,7 @@ Stellen Sie nach der Einrichtung von VAMP einen Dienst aus einer Blaupause berei
 
 In der einfachsten Form beschreibt eine [VAMP-Blaupause](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
 
-In diesem Szenario wird eine monolithische Beispielanwendung namens [**sava**](https://github.com/magneticio/sava) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
+In diesem Szenario wird eine monolithische Beispielanwendung namens [**sava**](https://github.com/magneticio/sava-product) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
 
 1. Navigieren Sie zu **Bereitstellungen**.
 

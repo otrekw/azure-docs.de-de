@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108394"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202773"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Importieren einer Logik-App als API
 
@@ -33,14 +33,14 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
--   Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
+-   Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 -   Stellen Sie sicher, dass Ihr Abonnement eine Logik-App enthält, die einen HTTP-Endpunkt verfügbar macht. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und wählen Sie im Menü **APIs** aus.
 2. Wählen Sie **Logik-App** in der Liste **Neue API hinzufügen** aus.
 
     ![Logik-App](./media/import-logic-app-as-api/logic-app-api.png)
@@ -57,7 +57,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
     - **Starter**
     - **Unbegrenzt**
 
-7. Klicken Sie auf **Erstellen**.
+7. Geben Sie weitere API-Einstellungen ein. Sie können die Werte während der Erstellung festlegen oder später über die Registerkarte **Einstellungen** konfigurieren. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#-import-and-publish-a-backend-api) erläutert.
+8. Klicken Sie auf **Erstellen**.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Testen der API im Azure-Portal
 

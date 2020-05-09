@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c1ffb4b1c0018cf56771d3fea56fe56d151bae3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295374"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612927"
 ---
 # <a name="connect-with-the-android-client"></a>Herstellen einer Verbindung mit dem Android-Client
 
 > Gilt für: Android 4.1 und höher, Chromebooks mit ChromeOS 53 und höher.
+
+>[!IMPORTANT]
+>Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/connect-android-2019.md).
+>
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > Die Möglichkeit, auf Windows Virtual Desktop-Ressourcen über den Android-Client zuzugreifen, ist zurzeit als Vorschau verfügbar.
@@ -36,7 +42,7 @@ Abonnieren Sie einen Feed wie folgt:
 
 1. Tippen Sie im Connection Center auf **+** und dann auf **Remote Resource Feed**.
 2. Geben Sie die Feed-URL in das Feld **Feed-URL** ein. Die Feed-URL kann eine URL oder eine E-Mail-Adresse sein.
-   - Wenn Sie eine URL verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat, normalerweise <https://rdweb.wvd.microsoft.com>.
+   - Wenn Sie eine URL verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat, normalerweise <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>.
    - Geben Sie Ihre E-Mail-Adresse ein, um E-Mail zu verwenden. Wenn Ihr Administrator den Server entsprechend konfiguriert hat, sucht der Client nach einer Ihrer E-Mail-Adresse zugeordneten URL.
 3. Tippen Sie auf **WEITER**.
 4. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden.

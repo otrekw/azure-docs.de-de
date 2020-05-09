@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 8bb56db9eed962ac8f8202c61a7446527c15dfc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060900"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82086614"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Sicherheitsempfehlungen für Queue Storage
 
@@ -29,7 +29,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|
-| Verwenden des Azure Resource Manager-Bereitstellungsmodells | Erstellen Sie neue Speicherkonten mit dem Azure Resource Manager-Bereitstellungsmodell, um von wichtigen Sicherheitsverbesserungen zu profitieren. Dazu gehören eine differenzierte Zugriffssteuerung (RBAC) und Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Azure Key Vault für Geheimnisse sowie Azure AD-basierte Authentifizierung und Autorisierung für den Zugriff auf Azure Storage-Daten und -Ressourcen. Migrieren Sie nach Möglichkeit vorhandene Speicherkonten, die das klassische Bereitstellungsmodell verwenden, zu Azure Resource Manager. Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview). | - |
+| Verwenden des Azure Resource Manager-Bereitstellungsmodells | Erstellen Sie neue Speicherkonten mit dem Azure Resource Manager-Bereitstellungsmodell, um von wichtigen Sicherheitsverbesserungen zu profitieren. Dazu gehören eine differenzierte Zugriffssteuerung (RBAC) und Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Azure Key Vault für Geheimnisse sowie Azure AD-basierte Authentifizierung und Autorisierung für den Zugriff auf Azure Storage-Daten und -Ressourcen. Migrieren Sie nach Möglichkeit vorhandene Speicherkonten, die das klassische Bereitstellungsmodell verwenden, zu Azure Resource Manager. Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview). | - |
 | Aktivieren der Option **Sichere Übertragung erforderlich** für alle Speicherkonten | Wenn Sie die Option **Sichere Übertragung erforderlich** aktivieren, müssen alle an das Speicherkonto gerichteten Anforderungen über sichere Verbindungen erfolgen. Bei Anforderungen über HTTP treten Fehler auf. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md). | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Aktivieren von Advanced Threat Protection für alle Speicherkonten | Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Sicherheitswarnungen werden in Azure Security Center bei Auftreten von Anomalien in Bezug auf Aktivitäten ausgelöst und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet. Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure Storage](../common/storage-advanced-threat-protection.md). | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Beschränken von SAS-Token (Shared Access Signature) auf HTTPS-Verbindungen | Durch das verbindliche Verwenden von HTTPS, wenn ein Client ein SAS-Token für den Zugriff auf Warteschlangendaten nutzt, kann das Risiko eines Lauschangriffs reduziert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md). | - |
@@ -53,6 +53,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 | Aktivieren von Firewallregeln | Konfigurieren Sie Firewallregeln, um den Zugriff auf Ihr Speicherkonto auf Anforderungen zu beschränken, die aus angegebenen IP-Adressen oder -Adressbereichen oder einer Liste von Subnetzen in einem virtuellen Azure-Netzwerk (VNET) stammen. Weitere Informationen zum Konfigurieren von Firewallregeln finden Sie unter [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](../files/storage-sync-files-firewall-and-proxy.md). | - |
 | Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto | Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNet) agiert, oder aus zulässigen öffentlichen IP-Adressen. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. Sie können Anforderungen von anderen Azure-Diensten zulassen, indem Sie eine Ausnahme hinzufügen, um vertrauenswürdigen Microsoft-Diensten den Zugriff auf das Speicherkonto zu gewähren. Weitere Informationen zum Hinzufügen einer Ausnahme für vertrauenswürdige Microsoft-Dienste finden Sie unter [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](../files/storage-sync-files-firewall-and-proxy.md).| - |
 | Verwenden privater Endpunkte | Ein privater Endpunkt weist dem Speicherkonto eine private IP-Adresse aus Ihrem Azure Virtual Network (VNET) zu. Er sichert den gesamten Datenverkehr zwischen Ihrem VNET und dem Speicherkonto über einen privaten Link. Weitere Informationen zu privaten Endpunkten finden Sie unter [Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts](../../private-link/create-private-endpoint-storage-portal.md). | - |
+| Verwenden von VNET-Diensttags | Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Weitere Informationen zu den von Azure Storage unterstützten Diensttags finden Sie unter [Übersicht über Azure-Diensttags](../../virtual-network/service-tags-overview.md). Ein Tutorial, das veranschaulicht, wie mithilfe von Diensttags Netzwerk-Ausgangsregeln erstellt werden, finden Sie unter [Einschränken des Zugriffs auf PaaS-Ressourcen](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
 | Einschränken des Netzwerkzugriffs auf bestimmte Netzwerke | Das Einschränken des Netzwerkzugriffs auf Netzwerke, auf denen Clients mit erforderlichem Zugriff gehostet werden, verringert die Gefährdung Ihrer Ressourcen durch Netzwerkangriffe. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Protokollierung/Überwachung
