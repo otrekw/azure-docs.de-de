@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie für Azure Service Fabric-Cluster da
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229382"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793175"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skalieren von Azure Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -29,13 +29,13 @@ Beachten Sie beim Skalieren eines Azure-Clusters die folgenden Richtlinien:
 - Andere Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen.
 - Andere Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
 - Jeder Knotentyp mit der [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Gold“ oder „Silber“ sollte immer über mindestens fünf Knoten verfügen.
-- Entfernen Sie keine zufälligen VM-Instanzen/Knoten für einen Knotentyp, sondern verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann sich negativ auf die Fähigkeit des Systems zur Durchführung eines korrekten Lastenausgleichs auswirken.
+- Entfernen Sie keine zufälligen VM-Instanzen/Knoten für einen Knotentyp, sondern verwenden Sie immer die Abskalierungsfunktion für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann sich negativ auf die Fähigkeit des Systems zur Durchführung eines korrekten Lastenausgleichs auswirken.
 - Wenn Sie Regeln für die automatische Skalierung verwenden, sollten Sie diese so festlegen, dass das horizontale Herunterskalieren (Entfernen von VM-Instanzen) jeweils nur für einen Knoten erfolgt. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
 
-Da die Service Fabric-Knotentypen in Ihrem Cluster auf dem Back-End aus VM-Skalierungsgruppen bestehen, können Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe [Regeln für die automatische oder manuelle Skalierung einrichten](service-fabric-cluster-scale-up-down.md).
+Da die Service Fabric-Knotentypen in Ihrem Cluster auf dem Back-End aus VM-Skalierungsgruppen bestehen, können Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe [Regeln für die automatische oder manuelle Skalierung einrichten](service-fabric-cluster-scale-in-out.md).
 
 ### <a name="programmatic-scaling"></a>Programmgesteuerte Skalierung
-In vielen Szenarien ist das [Skalieren eines Clusters mit einem manuellen Vorgang oder mit Regeln für die automatische Skalierung](service-fabric-cluster-scale-up-down.md) eine gute Lösung. Für anspruchsvollere Szenarien ist diese Vorgehensweise aber unter Umständen nicht geeignet. Mögliche Nachteile dieser Ansätze:
+In vielen Szenarien ist das [Skalieren eines Clusters mit einem manuellen Vorgang oder mit Regeln für die automatische Skalierung](service-fabric-cluster-scale-in-out.md) eine gute Lösung. Für anspruchsvollere Szenarien ist diese Vorgehensweise aber unter Umständen nicht geeignet. Mögliche Nachteile dieser Ansätze:
 
 - Das manuelle Skalieren erfordert, dass Sie sich anmelden und Skalierungsvorgänge explizit anfordern. Wenn Skalierungsvorgänge häufig oder zu unvorhersehbaren Zeiten erforderlich sind, ist dieser Ansatz u.U. keine geeignete Lösung.
 - Wenn Regeln für automatische Skalierung eine Instanz aus einer VM-Skalierungsgruppe entfernen, entfernen sie nicht automatisch Informationen dieses Knotens aus dem zugeordneten Service Fabric-Cluster, es sei denn, der Knotentyp weist die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ auf. Da Regeln für automatische Skalierung auf Skalierungsgruppenebene gelten (anstatt auf Service Fabric-Ebene), können sie Service Fabric-Knoten entfernen, ohne diese ordnungsgemäß heruntergefahren. Diese grobe Knotenentfernung hinterlässt Service Fabric-Knoten nach Vorgängen zum horizontalen Herunterskalieren in verwaistem Zustand. Eine Person (oder ein Dienst) müsste den Zustand entfernter Knoten im Service Fabric-Cluster in regelmäßigen Abständen bereinigen.

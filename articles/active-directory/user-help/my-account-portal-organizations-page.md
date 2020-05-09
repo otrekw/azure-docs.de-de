@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79136f86c647c0453d600fe2601be56571ee6fed
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062471"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625883"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Verwalten Ihrer verbundenen Organisationen auf der Seite „Organisationen“
 
@@ -34,7 +34,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organi
 
 ## <a name="view-your-organizations"></a>Anzeigen Ihrer Organisationen
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myprofile.microsoft.com/).
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myaccount.microsoft.com/).
 
 2. Wählen Sie im linken Navigationsbereich **Organisationen** aus, oder wählen Sie im Block **Organisationen** den Link **Organisationen verwalten** aus.
 
