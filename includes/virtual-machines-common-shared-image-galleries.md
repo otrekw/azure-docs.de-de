@@ -1,42 +1,41 @@
 ---
 title: include file
 description: include file
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117107"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789034"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
 - Verwaltete globale Replikation von Images.
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
 - Hochverfügbare Images mit ZRS-Konten (zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
+- Storage Premium-Support (Premium_LRS).
 - Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über RBAC.
 - Skalieren Ihrer Bereitstellungen mit Imagereplikaten in jeder Region.
 
 Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
 
-Ein verwaltetes Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie Sie das Image erstellen. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das verwaltete Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
+Ein Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie es erstellt wird. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
 
-Wenn Sie eine große Anzahl verwalteter Images haben, die Sie verwalten müssen und im gesamten Unternehmen zur Verfügung stellen möchten, können Sie einen Katalog mit geteilten Images als Repository verwenden, mit dem Sie Ihre Images ganz einfach freigeben können. 
+Wenn Sie eine große Anzahl Images haben, die Sie verwalten müssen und im gesamten Unternehmen zur Verfügung stellen möchten, können Sie eine Shared Image Gallery als Repository verwenden. 
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
 | Resource | BESCHREIBUNG|
 |----------|------------|
-| **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus [generalisierten](#generalized-and-specialized-images) virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
-| **Momentaufnahme** | Eine Kopie einer VHD, die zum Erstellen einer **Imageversion** verwendet werden kann. Momentaufnahmen können von einem [spezialisierten](#generalized-and-specialized-images) virtuellen Computer (einem virtuellen Computer, der nicht generalisiert wurde) erstellt und dann allein oder mit Momentaufnahmen von Datenträgern verwendet werden, um eine spezialisierte Imageversion zu erstellen.
+| **Imagequelle** | Dies ist eine Ressource, die zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Eine Imagequelle kann eine vorhandene Azure-VM sein, die entweder [generalisiert oder spezialisiert](#generalized-and-specialized-images) ist, ein verwaltetes Image, eine Momentaufnahme oder eine Imageversion in einem anderen Imagekatalog. |
 | **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
-| **Imagedefinition** | Images sind innerhalb eines Katalogs definiert und enthalten Informationen über das jeweilige Image und die Anforderungen für dessen Verwendung in Ihrer Organisation. Sie können Informationen einbinden, etwa, ob das Image ein generalisiertes oder spezialisiertes Image ist, das Betriebssystem, Anforderungen hinsichtlich minimalem und maximalem Arbeitsspeicher und Versionshinweise. Es ist eine Definition eines Imagetyps. |
+| **Imagedefinition** | Imagedefinitionen werden in einem Katalog erstellt und enthalten Informationen zum Image und den Anforderungen für seine interne Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Es ist eine Definition eines Imagetyps. |
 | **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
 
 <br>
@@ -45,7 +44,7 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 ## <a name="image-definitions"></a>Imagedefinitionen
 
-Eine Imagedefinition ist eine logische Gruppierung für Versionen eines Images. Die Imagedefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Eine Imagedefinition ist wie ein Plan für alle Details rund um das Erstellen eines bestimmten Image. Sie stellen einen virtuellen Computer nicht aus einer Imagedefinition, sondern aus der Imageversion bereit, die aus der Definition erstellt wurde.
+Eine Imagedefinition ist eine logische Gruppierung für Versionen eines Images. Die Imagedefinition enthält Informationen dazu, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Eine Imagedefinition ist wie ein Plan für alle Details rund um das Erstellen eines bestimmten Image. Sie stellen eine VM nicht aus einer Imagedefinition, sondern aus den Imageversionen bereit, die aus der Definition erstellt wurden.
 
 Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet werden **Herausgeber**, **Angebot** und **SKU**. Diese Parameter werden verwendet, um eine spezielle Imagedefinition zu finden. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei.  Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
 
@@ -68,23 +67,18 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 * Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
 * Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 * Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
+* Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der Generation 2 erstellt wurde.
 
 ## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
 
 Die Shared Image Gallery unterstützt zwei Betriebssystemzustände. In der Regel ist es erforderlich, dass der zum Erstellen des Images verwendete virtuelle Computer generalisiert wurde, bevor das Image verwendet wird. Durch das Generalisieren werden computer- und benutzerspezifische Informationen aus dem virtuellen Computer entfernt. Für Windows wird Sysprep ebenfalls verwendet. Für Linux können Sie den [waagent](https://github.com/Azure/WALinuxAgent)-Parameter `-deprovision` oder `-deprovision+user` verwenden.
 
-Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informationen und Konten entfernt. Virtuellen Computern, die aus spezialisierten Images erstellt wurden, ist zudem kein `osProfile` zugeordnet. Dies bedeutet, dass spezialisierte Images einige Einschränkungen aufweisen.
+Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informationen und Konten entfernt. Virtuellen Computern, die aus spezialisierten Images erstellt wurden, ist zudem kein `osProfile` zugeordnet. Dies bedeutet, dass spezialisierte Images neben Vorteilen auch einige Einschränkungen aufweisen.
 
+- VMs und Skalierungsgruppen, die aus spezialisierten Images erstellt wurden, können schneller aktiv sein und ausgeführt werden. Da sie aus einer Quelle erstellt werden, für die bereits der erste Start erfolgt ist, werden VMs, die aus diesen Images erstellt wurden, schneller gestartet.
 - Konten, die für die Anmeldung beim virtuellen Computer verwendet werden können, können auch auf jedem virtuellen Computer verwendet werden, der mit dem aus ihm erstellten spezialisierten Image erstellt wurde.
 - Virtuelle Computer haben den **Computernamen** des virtuellen Computers, aus dem das Image erstellt wurde. Sie sollten den Computernamen ändern, um Konflikte zu vermeiden.
 - Das `osProfile` gibt an, wie sensible Informationen mithilfe von `secrets` an den virtuellen Computer übermittelt werden. Dies kann Probleme bei KeyVault, WinRM und anderen Funktionen verursachen, die `secrets` im `osProfile` verwenden. In einigen Fällen können Sie verwaltete Dienstidentitäten (Managed Service Identities, MSIs) verwenden, um diese Einschränkungen zu umgehen.
-
-> [!IMPORTANT]
-> Spezialisierte Images befinden sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**: Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
-
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
@@ -113,6 +107,7 @@ Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ress
 - 100 Kataloge mit freigegebenen Images pro Abonnement und Region
 - 1\.000 Imagedefinitionen pro Abonnement und Region
 - 10.000 Imageversionen pro Abonnement und Region
+- 10 Replikate der Imageversionen pro Abonnement und Region
 - Alle an das Image angefügten Datenträger dürfen höchstens 1 TB groß sein.
 
 Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
@@ -151,7 +146,7 @@ Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der
 | Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Imagedefinition | Imageversion |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | Ja                  | Ja          | Ja                  |
-| Imagedefinition     | Nein                   | Ja          | Ja                  |
+| Imagedefinition     | Nein                    | Ja          | Ja                  |
 
 Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -217,31 +212,32 @@ Sie können einen Katalog mit freigegebenen Images mithilfe von Vorlagen erstell
 * [Welche Gebühren fallen für die Verwendung des Katalogs mit geteilten Images an?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images, eine Imagedefinition und eine Imageversion zu erstellen?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images oder eine Skalierungsgruppe für virtuelle Computer aus der Imageversion zu erstellen?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Wie kann ich alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg auflisten?
 
 Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg aufzulisten, auf die Sie im Azure-Portal Zugriff haben, führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-1. Wechseln Sie zu **Alle Ressourcen**.
+1. Scrollen Sie auf der Seite nach unten, und wählen Sie **Alle Ressourcen** aus.
 1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
-1. Suchen Sie nach Ressourcen vom Typ **Privater Katalog**.
- 
-   Um die Imagedefinitionen und Imageversionen anzuzeigen, sollten Sie ebenfalls **Ausgeblendete Typen anzeigen** auswählen.
- 
-   Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
+1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery**.
+  
+Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+Weitere Informationen finden Sie unter **Verwalten von Katalogressourcen** mithilfe der [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) oder mit [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md).
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Kann ich mein vorhandenes Image in den Katalog mit geteilten Images verschieben?
  
 Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben können.
 
- Szenario 1: Wenn Sie im gleichen Abonnement wie für Ihren Katalog mit freigegebenen Images über ein verwaltetes Image verfügen, können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
+ Szenario 1: Wenn Sie ein verwaltetes Image haben, können Sie daraus eine Imagedefinition und eine Imageversion erstellen. Weitere Informationen finden Sie unter **Migrieren von einem verwalteten Image zu einer Imageversion** mithilfe der [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) oder mit [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md).
 
- Szenario 2: Wenn Sie gleichen Abonnement wie für Ihren Katalog mit freigegebenen Images über ein nicht verwaltetes Image verfügen, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
+ Szenario 2: Wenn Sie ein nicht verwaltetes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
 
  Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD in ein verwaltetes Image hochladen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
 
@@ -250,11 +246,17 @@ Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben k�
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
-Ja, die Unterstützung von spezialisierten Datenträgern als Images ist als Vorschauversion verfügbar. Sie können einen virtuellen Computer nur aus einem spezialisierten Image erstellen, indem Sie das Portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) oder [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) und die API verwenden. In der Vorschauversion wird PowerShell nicht unterstützt.
+Ja, die Unterstützung von spezialisierten Datenträgern als Images ist als Vorschauversion verfügbar. Sie können eine VM aus einem spezialisierten Image erstellen, indem Sie das Portal, PowerShell oder die API verwenden. 
+
+
+Verwenden von [PowerShell, um ein Image einer spezialisierten VM zu erstellen](../articles/virtual-machines/image-version-vm-powershell.md).
+
+Verwenden des Portals zum Erstellen eines [Windows](../articles/virtual-machines/linux/shared-images-portal.md)- oder [Linux]-Images (../articles/virtual-machines/linux/shared-images-portal.md). 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kann ich die Katalogressource mit geteilten Images nach der Erstellung in ein anderes Abonnement verschieben?
 
-Nein, Sie können Katalogressource mit geteilten Images nicht in ein anderes Abonnement verschieben. Sie können allerdings die Imageversionen im Katalog nach Bedarf in andere Regionen replizieren.
+Nein, Sie können die Shared Image Gallery-Ressource nicht in ein anderes Abonnement verschieben. Sie können die Imageversionen im Katalog in andere Regionen replizieren oder ein Image aus einem anderen Katalog mithilfe der [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) oder mit [PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md) kopieren.
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Kann ich meine Imageversionen zwischen Clouds replizieren, beispielsweise Azure China 21Vianet, Azure Deutschland und Azure Government Cloud?
 
@@ -308,3 +310,7 @@ Um mit Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen zu a
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images oder eine Skalierungsgruppe für virtuelle Computer aus der Imageversion zu erstellen?
 
 Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imageversion wird die Verwendung der API-Version 2018-04-01 oder höher empfohlen.
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?
+
+Ja, Sie können die Imagereferenz der Skalierungsgruppe von einem verwalteten Image in ein Shared Image Gallery-Image aktualisieren, sofern der Betriebssystemtyp, die Hyper-V-Generation und das Datenträgerlayout zwischen den Images übereinstimmen. 

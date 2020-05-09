@@ -4,6 +4,8 @@
   items:
     - name: Was versteht man unter Azure Load Balancer?
       href: load-balancer-overview.md
+    - name: Häufig gestellte Fragen
+      href: load-balancer-faqs.md
 - name: Schnellstart
   items:
     - name: Lastenausgleich erstellen – Portal

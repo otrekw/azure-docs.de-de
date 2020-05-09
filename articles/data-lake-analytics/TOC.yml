@@ -14,8 +14,13 @@
       href: data-lake-analytics-data-lake-tools-for-vscode.md
     - name: Azure PowerShell
       href: data-lake-analytics-get-started-powershell.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: data-lake-analytics-get-started-cli.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Anleitung
   items:
     - name: Verwalten von Data Lake Analytics
@@ -24,7 +29,7 @@
           href: data-lake-analytics-manage-use-portal.md
         - name: Befehlszeile
           items:
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: data-lake-analytics-manage-use-cli.md
             - name: Azure PowerShell
               href: data-lake-analytics-manage-use-powershell.md

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672848"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744938"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -121,7 +121,7 @@ Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die 
 
 - **Speicherreplikationstyp** ist standardmäßig auf **Georedundant** festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) aus, um die Einstellungen zu überprüfen und zu ändern.
 
-- **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) aus, um die Einstellungen zu überprüfen und zu ändern.
+- **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) aus, um die Einstellungen zu überprüfen und zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

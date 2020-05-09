@@ -4,14 +4,14 @@ description: In diesem Artikel werden das Konfigurieren und Ändern der Standard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292067"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232069"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -97,6 +97,26 @@ Ohne Angabe haben diese Eigenschaften die folgenden Standardwerte:
 
 Exemplarische Indizierungsrichtlinien zum Ein- und Ausschließen von Pfaden finden Sie in [diesem Abschnitt](how-to-manage-indexing-policy.md#indexing-policy-examples).
 
+## <a name="includeexclude-precedence"></a>Vorrang beim Einschließen/Ausschließen
+
+Wenn es bei Ihren eingeschlossenen und ausgeschlossenen Pfaden zu einem Konflikt kommt, hat der genauere Pfad Vorrang.
+
+Hier sehen Sie ein Beispiel:
+
+**Eingeschlossener Pfad:** `/food/ingredients/nutrition/*`
+
+**Ausgeschlossener Pfad:** `/food/ingredients/*`
+
+In diesem Fall hat der eingeschlossene Pfad Vorrang vor dem ausgeschlossenen Pfad, da dieser präziser ist. Basierend auf diesen Pfaden würden alle Daten im `food/ingredients`-Pfad oder Daten, die darin geschachtelt sind, vom Index ausgeschlossen werden. Die Ausnahme wären Daten innerhalb des eingeschlossenen Pfads `/food/ingredients/nutrition/*`. Diese würden indiziert werden.
+
+Hier finden Sie einige Regeln für den Vorrang bei eingeschlossenen und ausgeschlossenen Pfaden in Azure Cosmos DB:
+
+- Tiefere Pfade sind präziser als enger gefasste Pfade. Beispielsweise ist `/a/b/?` präziser als `/a/?`.
+
+- `/?` ist präziser als `/*`. `/a/?` ist beispielsweise präziser als `/a/*`, `/a/?` hat also Vorrang.
+
+- Der Pfad `/*` muss entweder ein eingeschlossener oder ein ausgeschlossener Pfad sein.
+
 ## <a name="spatial-indexes"></a>Räumlichkeitsindizes
 
 Wenn Sie in der Indizierungsrichtlinie einen räumlichen Pfad definieren, müssen Sie definieren, welche Art (```type```) von Index auf diesen Pfad angewendet werden soll. Für räumliche Indizes stehen folgende Arten zur Verfügung:
@@ -114,6 +134,8 @@ Azure Cosmos DB erstellt standardmäßig keine räumlichen Indizes. Wenn Sie in
 ## <a name="composite-indexes"></a>Zusammengesetzte Indizes
 
 Für Abfragen, die eine `ORDER BY`-Klausel mit zwei oder mehr Eigenschaften besitzen, ist ein zusammengesetzter Index erforderlich. Ein zusammengesetzter Index kann auch definiert werden, um die Leistung vieler Gleichheits- und Bereichsabfragen zu verbessern. Standardmäßig sind keine zusammengesetzten Indizes definiert, weshalb Sie [zusammengesetzte Indizes ](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) je nach Bedarf hinzufügen müssen.
+
+Im Gegensatz zu eingeschlossenen oder ausgeschlossenen Pfaden können Sie keinen Pfad mit dem `/*`-Platzhalter erstellen. Jeder zusammengesetzte Pfad muss am Ende des Pfads implizit `/?` aufweisen, was nicht angegeben werden muss. Zusammengesetzte Pfade führen zu einem Skalarwert, und dieser ist der einzige Wert, der im zusammengesetzten Index eingeschlossen wird.
 
 Beim Definieren eines zusammengesetzten Indexes geben Sie Folgendes an:
 
