@@ -8,13 +8,13 @@
       href: cdn-features.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Profils und Endpunkts
-      href: cdn-create-new-endpoint.md
     - name: Integrieren eines Speicherkontos
       href: cdn-create-a-storage-account-with-cdn.md
+    - name: Erstellen eines Profils und Endpunkts
+      href: cdn-create-new-endpoint.md
     - name: Erstellen eines Profils mit einer Azure Resource Manager-Vorlage
       href: create-profile-resource-manager-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hinzufügen von Azure CDN zu einer Web-App
       href: cdn-add-to-web-app.md
@@ -46,7 +46,7 @@
       href: cdn-migrate.md
     - name: DDoS-Schutz
       href: cdn-ddos.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Optimieren von Inhalten
       href: cdn-optimization-overview.md

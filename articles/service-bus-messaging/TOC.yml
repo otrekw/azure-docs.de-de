@@ -17,7 +17,7 @@
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: service-bus-quickstart-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -72,6 +72,9 @@
   items:
     - name: 'Service Bus-Beispiele:'
       href: service-bus-samples.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Premium-Messaging

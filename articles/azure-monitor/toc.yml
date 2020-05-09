@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: Aktivitätsprotokollwarnungen
           href: platform/activity-log-alerts.md
-        - name: Ändern der Analyse
-          href: app/change-analysis.md
     - name: Visualisieren von Daten
       href: visualizations.md
     - name: Partnerintegrationen
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Streamen von Daten an Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: Ändern der Analyse
+          href: app/change-analysis.md
     - name: Überwachen von virtuellen Computern und Gastbetriebssystemen
       items:
         - name: Überwachen virtueller Azure-Computer
