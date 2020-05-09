@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 16b4fca475f91a8cb5b7f9a20ea5aa74b6b674a3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683914"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612859"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegierter Zugriff in Windows Virtual Desktop
+
+>[!IMPORTANT]
+>Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md).
+>
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Windows Virtual Desktop verfügt über ein Modell mit delegiertem Zugriff, mit dem Sie für Benutzer eine bestimmte Zugriffsebene festlegen können, indem Sie ihnen eine Rolle zuweisen. Eine Rollenzuweisung besteht aus drei Komponenten: Sicherheitsprinzipal, Rollendefinition und Bereich. Das Modell für delegierten Zugriff von Windows Virtual Desktop basiert auf dem Azure RBAC-Modell (rollenbasierte Zugriffssteuerung). Weitere Informationen zu bestimmten Rollenzuweisungen und den zugehörigen Komponenten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md).
 
@@ -23,48 +29,38 @@ Beim delegierten Zugriff von Windows Virtual Desktop werden für jedes Element d
 
 * Sicherheitsprinzipal
     * Benutzer
+    * Benutzergruppen
     * Dienstprinzipale
 * Rollendefinition
     * Integrierte Rollen
+    * Benutzerdefinierte Rollen
 * `Scope`
-    * Mandantengruppen
-    * Mandanten
     * Hostpools
     * App-Gruppen
-
-## <a name="built-in-roles"></a>Integrierte Rollen
-
-Der delegierte Zugriff in Windows Virtual Desktop verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern und Dienstprinzipalen zuweisen können.
-
-* RDS-Besitzer können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
-* RDS-Mitwirkende können alles verwalten, haben jedoch keinen Zugriff auf Ressourcen.
-* RDS-Leser können alles anzeigen, jedoch keine Änderungen vornehmen.
-* RDS-Bediener können Diagnoseaktivitäten anzeigen.
+    * Arbeitsbereiche
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>PowerShell-Cmdlets für Rollenzuweisungen
 
-Sie können die folgenden Cmdlets ausführen, um Rollenzuweisungen zu erstellen, anzuzeigen und zu entfernen:
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md) befolgt haben, um das Windows Virtual Desktop PowerShell-Modul einzurichten, falls dies noch nicht geschehen ist.
 
-* Mit **Get-RdsRoleAssignment** wird eine Liste mit Rollenzuweisungen angezeigt.
-* Mit **New-RdsRoleAssignment** wird eine neue Rollenzuweisung erstellt.
-* Mit **Remove-RdsRoleAssignment** werden Rollenzuweisungen gelöscht.
+Windows Virtual Desktop verwendet rollenbasierte Zugriffssteuerung (RBAC) von Azure beim Veröffentlichen von App-Gruppen für Benutzer oder Benutzergruppen. Die Benutzerrolle „Desktopvirtualisierung“ wird dem Benutzer oder der Benutzergruppe zugewiesen, und der Bereich ist die App-Gruppe. Diese Rolle gewährt dem Benutzer speziellen Datenzugriff auf die App-Gruppe.  
 
-### <a name="accepted-parameters"></a>Akzeptierte Parameter
+Führen Sie das folgende Cmdlet aus, um einer App-Gruppe Azure Active Directory-Benutzer hinzuzufügen:
 
-Sie können die drei grundlegenden Cmdlets mit den folgenden Parametern ändern:
+```powershell
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+```
 
-* **AadTenantId**: Gibt die ID des Azure Active Directory-Mandanten an, dessen Mitglied der Dienstprinzipal ist.
-* **AppGroupName**: Der Name der Remotedesktop-App-Gruppe.
-* **Diagnostics**: Gibt den Diagnosebereich an. (Muss entweder mit dem Parameter **Infrastructure** oder **Tenant** gekoppelt werden.)
-* **HostPoolName**: Name des Remotedesktop-Hostpools.
-* **Infrastructure**: Gibt den Infrastrukturbereich an.
-* **RoleDefinitionName**: Der Name der Remotedesktopdienste-Rolle der rollenbasierten Zugriffssteuerung, die dem Benutzer, der Gruppe oder der App zugewiesen ist. (Beispiel: Remotedesktopdienste-Besitzer, Remotedesktopdienste-Leser usw.)
-* **ServerPrincipleName**: Der Name der Azure Active Directory-Anwendung.
-* **SignInName**: Die E-Mail-Adresse oder der Benutzerprinzipalname des Benutzers.
-* **TenantName**: Der Name des Remotedesktop-Mandanten.
+Führen Sie das folgende Cmdlet aus, um einer App-Gruppe eine Azure Active Directory-Benutzergruppe hinzuzufügen:
+
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Eine vollständigere Liste mit PowerShell-Cmdlets, die von den einzelnen Rollen verwendet werden können, finden Sie in der [PowerShell-Referenz](/powershell/windows-virtual-desktop/overview).
+
+Eine vollständige Liste der Rollen, die in Azure RBAC unterstützt werden, finden Sie unter [Integrierten Azure-Rollen](../role-based-access-control/built-in-roles.md).
 
 Eine Anleitung zum Einrichten einer Windows Virtual Desktop-Umgebung finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
