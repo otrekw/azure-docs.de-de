@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024692"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509515"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -42,7 +42,7 @@ In diesem Artikel werden die folgenden Anwendungsfälle beschrieben:
 - [Verbinden von Geräten in jeder Größenordnung mit X.509-Zertifikaten](#connect-devices-using-x509-certificates) – die empfohlene Vorgehensweise für Produktionsumgebungen.
 - [Verbinden von Geräten ohne vorherige Registrierung](#connect-without-registering-devices)
 - [Verbinden von Geräten, die einzelne DPS-Registrierungen verwenden](#individual-enrollment-based-device-connectivity)
-- [Verbinden von Geräten mithilfe von IoT Plug & Play-Features (Vorschauversion)](#connect-devices-with-iot-plug-and-play-preview)
+- [Automatisches Zuordnen eines Geräts zu einer Gerätevorlage](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>Verbinden eines einzelnen Geräts
 
@@ -139,7 +139,7 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
     Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen**, ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
 
     > [!NOTE]
-    > Informationen zum automatischen Zuordnen einer Gerätevorlage zu einem Gerät finden Sie unter [Verbinden von Geräten mit IoT Plug & Play (Vorschauversion)](#connect-devices-with-iot-plug-and-play-preview).
+    > Informationen zum automatischen Zuordnen eines Geräts zu einer Gerätevorlage finden Sie unter [Automatisches Zuordnen eines Geräts zu einer Gerätevorlage](#automatically-associate-with-a-device-template).
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Verbinden von Geräten, die X.509-Zertifikate verwenden, ohne Registrierung
 
@@ -156,7 +156,7 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
     Auf der Seite **Verwaltung > Geräteverbindung** steuert die Option **Automatisch genehmigen**, ob Sie das Gerät manuell genehmigen müssen, bevor es mit dem Senden von Daten beginnen kann.
 
     > [!NOTE]
-    > Informationen zum automatischen Zuordnen einer Gerätevorlage zu einem Gerät finden Sie unter [Verbinden von Geräten mit IoT Plug & Play (Vorschauversion)](#connect-devices-with-iot-plug-and-play-preview).
+    > Informationen zum automatischen Zuordnen eines Geräts zu einer Gerätevorlage finden Sie unter [Automatisches Zuordnen eines Geräts zu einer Gerätevorlage](#automatically-associate-with-a-device-template).
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Auf individueller Registrierung basierende Gerätekonnektivität
 
@@ -165,7 +165,7 @@ Kunden, die Geräte mit gerätespezifischen Authentifizierungsanmeldeinformation
 > [!NOTE]
 > Wenn Sie eine individuelle Registrierung für ein Gerät erstellen, hat diese Vorrang vor den Standardoptionen für Gruppenregistrierungen in Ihrer IoT Central-Anwendung.
 
-### <a name="creating-individual-enrollments"></a>Erstellen individueller Registrierungen
+### <a name="create-individual-enrollments"></a>Erstellen individueller Registrierungen
 
 IoT Central unterstützt die folgenden Nachweismechanismen für individuelle Registrierungen:
 
@@ -181,14 +181,22 @@ IoT Central unterstützt die folgenden Nachweismechanismen für individuelle Re
 
 - **Nachweis mit Trusted Platform Module (TPM):** Ein [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) ist ein Typ von Hardwaresicherheitsmodulen. Die Verwendung eines TPM stellt eine der sichersten Möglichkeiten dar, ein Gerät zu verbinden. In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder für Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Verwenden Sie keine Software-TPMs in Produktionsumgebungen. Öffnen Sie zum Erstellen einer individuellen Registrierung mit TPM die Seite **Geräteverbindung**, und wählen Sie **Individuelle Registrierung** als Verbindungsmethode und **TPM** als Mechanismus aus. Geben Sie den TPM-Endorsement Key ein, und speichern Sie die Geräteverbindungsinformationen.
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Verbinden von Geräten mit IoT Plug & Play (Vorschauversion)
+## <a name="automatically-associate-with-a-device-template"></a>Automatisches Zuordnen zu einer Gerätevorlage
 
-Eine der wichtigsten Funktionen von IoT Plug & Play (Vorschauversion) mit IoT Central ist die Möglichkeit, Gerätevorlagen beim Verbinden mit Geräten automatisch zuzuordnen. Geräte können jetzt zusammen mit den Geräteanmeldeinformationen die **CapabilityModelId** als Teil des Geräteregistrierungsaufrufs senden. Durch diese Funktion kann IoT Central die Gerätevorlage ermitteln und dem Gerät zuordnen. Der Ermittlungsvorgang funktioniert wie folgt:
+Eine der wichtigsten Funktionen von IoT Central ist die Möglichkeit, Gerätevorlagen automatisch für Geräteverbindungen zuzuordnen. Geräte können zusammen mit den Geräteanmeldeinformationen eine **CapabilityModelId** als Teil des Geräteregistrierungsaufrufs senden. Die **CapabilityModelID** ist eine URN, die das vom Gerät implementierte Funktionsmodell identifiziert. Die IoT Central-Anwendung kann die **CapabilityModelID** verwenden, um die zu verwendende Gerätevorlage zu identifizieren und das Gerät dann automatisch der Gerätevorlage zuzuordnen. Der Ermittlungsvorgang funktioniert wie folgt:
 
-1. Wird der Gerätevorlage zugeordnet, wenn sie bereits in der IoT Central-Anwendung veröffentlicht wurde.
-1. Ruft Daten aus dem öffentlichen Repository veröffentlichter und zertifizierter Funktionsmodelle ab.
+1. Wenn die Gerätevorlage bereits in der IoT Central-Anwendung veröffentlicht ist, ist das Gerät der Gerätevorlage zugeordnet.
+1. Bei vorab zertifizierten IoT Plug & Play-Geräten wird die Gerätevorlage aus dem öffentlichen Repository abgerufen, wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist.
 
-Nachstehend sehen Sie das Format der zusätzlichen Nutzlast, die das Gerät während des DPS-Registrierungsaufrufs sendet.
+Die folgenden Ausschnitte zeigen das Format der zusätzlichen Nutzlast, die das Gerät während des DPS-Registrierungsaufrufs senden muss, damit die automatische Zuordnung funktioniert.
+
+Dies ist das Format für Geräte, die das allgemein verfügbare Geräte-SDK verwenden, das IoT Plug & Play nicht unterstützt:
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+Dies ist das Format für Geräte, die das Geräte-SDK der öffentlichen Vorschau verwenden, das IoT Plug & Play unterstützt:
 
 ```javascript
 '__iot:interfaces': {
@@ -197,7 +205,7 @@ Nachstehend sehen Sie das Format der zusätzlichen Nutzlast, die das Gerät wäh
 ```
 
 > [!NOTE]
-> Beachten Sie, dass die Option **Automatisch genehmigen** unter **Verwaltung > Geräteverbindung** aktiviert sein muss, damit Geräte automatisch eine Verbindung herstellen, die Gerätevorlage ermitteln und mit dem Senden von Daten beginnen können.
+> Die Option **Automatisch genehmigen** muss unter **Verwaltung > Geräteverbindung** aktiviert sein, damit Geräte automatisch eine Verbindung herstellen, die Gerätevorlage ermitteln und mit dem Senden von Daten beginnen können.
 
 ## <a name="device-status-values"></a>Werte für den Gerätestatus
 

@@ -161,7 +161,7 @@
           items:
             - name: Azure-Portal
               href: how-to-deploy-modules-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: how-to-deploy-modules-cli.md
             - name: Visual Studio Code
               href: how-to-deploy-modules-vscode.md
@@ -169,7 +169,7 @@
           items:
             - name: Azure-Portal
               href: how-to-deploy-at-scale.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
               href: how-to-deploy-vscode-at-scale.md
@@ -206,7 +206,11 @@
         - name: IoT Edge-Plug-In für Jenkins
           href: how-to-devops-plugins.md
     - name: Problembehandlung
-      href: troubleshoot.md
+      items:
+        - name: Standarddiagnoseschritte
+          href: troubleshoot.md
+        - name: Lösungen für allgemeine Fehler
+          href: troubleshoot-common-errors.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475916"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81685513"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Verwenden des Identitätsbrokers (Vorschauversion) für die Verwaltung von Anmeldeinformationen
 
@@ -46,6 +46,46 @@ Mit der Funktion „Identitätsbroker“ wird im Cluster ein zusätzlicher virtu
 
 ![Option zum Aktivieren des Identitätsbrokers](./media/identity-broker/identity-broker-enable.png)
 
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+Wenn Sie dem Computeprofil Ihrer Vorlage eine neue Rolle namens `idbrokernode` mit den folgenden Attributen hinzufügen, wird der Cluster mit aktiviertem Identitätsbrokerknoten erstellt:
+
+```json
+.
+.
+.
+"computeProfile": {
+    "roles": [
+        {
+            "autoscale": null,
+            "name": "headnode",
+           ....
+        },
+        {
+            "autoscale": null,
+            "name": "workernode",
+            ....
+        },
+        {
+            "autoscale": null,
+            "name": "idbrokernode",
+            "targetInstanceCount": 1,
+            "hardwareProfile": {
+                "vmSize": "Standard_A2_V2"
+            },
+            "virtualNetworkProfile": {
+                "id": "string",
+                "subnet": "string"
+            },
+            "scriptActions": [],
+            "dataDisksGroups": null
+        }
+    ]
+}
+.
+.
+.
+```
+
 ## <a name="tool-integration"></a>Toolintegration
 
 Das HDInsight [IntelliJ-Plug-In](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) wird für die Unterstützung von OAuth aktualisiert. Sie können dieses Plug-In verwenden, um eine Verbindung mit dem Cluster herzustellen und Aufträge zu übermitteln.
@@ -55,6 +95,14 @@ Das HDInsight [IntelliJ-Plug-In](https://docs.microsoft.com/azure/hdinsight/spar
 Nach dem Aktivieren des Identitätsbrokers müssen Sie dennoch einen Kennworthash in Azure AD DS für SSH-Szenarien mit Domänenkonten speichern. Sie müssen ein Kennwort angeben, um eine SSH-Verbindung mit einem in eine Domäne eingebundenen virtuellen Computer herzustellen oder um den Befehl `kinit` auszuführen. 
 
 Für die SSH-Authentifizierung muss der Hash in Azure AD DS verfügbar sein. Wenn Sie SSH nur für administrative Szenarien verwenden möchten, können Sie ein ausschließliches Cloudkonto erstellen und für die SSH-Verbindung mit dem Cluster verwenden. Andere Benutzer können weiterhin Ambari- oder HDInsight-Tools (z. B. das IntelliJ-Plug-In) verwenden, ohne dass der Kennworthash in Azure AD DS verfügbar ist.
+
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients, die OAuth zum Herstellen einer Verbindung mit dem HDInsight-Gateway mithilfe des Identitätsbrokersetups verwenden
+
+Im Identitätsbrokersetup können benutzerdefinierte Apps und Clients aktualisiert werden, die eine Verbindung mit dem Gateway herstellen, um zuerst das erforderliche OAuth-Token abzurufen. Sie können die Schritte in diesem [Dokument](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ausführen, um das Token mit den folgenden Informationen abzurufen:
+
+*   OAuth-Ressourcen-URI: https://hib.azurehdinsight.net 
+* AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   Berechtigung: (Name: Cluster.ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

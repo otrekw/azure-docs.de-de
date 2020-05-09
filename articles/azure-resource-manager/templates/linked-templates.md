@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 3525c89c0db30c2061108b4d185c65552c73af28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583794"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609305"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -367,7 +367,7 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die **parameters**-Eigensc
 
 Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
 
-## `contentVersion`
+## <a name="contentversion"></a>contentVersion
 
 Sie müssen die `contentVersion`-Eigenschaft für die `templateLink`- oder `parametersLink`- Eigenschaft nicht angeben. Wenn Sie keinen Wert für `contentVersion` angeben, wird die aktuelle Version der Vorlage bereitgestellt. Wenn Sie einen Wert für die Inhaltsversion angeben, muss diese mit der Version in der verknüpften Vorlage übereinstimmen. Andernfalls tritt bei der Bereitstellung ein Fehler auf.
 

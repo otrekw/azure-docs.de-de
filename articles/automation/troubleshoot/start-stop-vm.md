@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung beim Starten und Beenden von VMs – Azure Automation
-description: Dieser Artikel bietet Informationen zur Problembehandlung beim Starten und Beenden von VMs mit Azure Automation.
+title: Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
+description: Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Lösung zum Starten/Beenden von VMs.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,21 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 003c2c5a2c09957e7a3a4ac0a26b87a9ac43dace
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586093"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81679160"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
-## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Szenario: Fehler bei der ordnungsgemäßen Bereitstellung der Lösung zum Starten/Beenden von VMs
+Dieser Artikel enthält Informationen zur Behandlung von Problemen, die bei der Arbeit mit der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten auftreten können.
+
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+
+## <a name="scenario-the-startstop-vms-during-off-hours-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Szenario: Fehler bei der ordnungsgemäßen Bereitstellung der Lösung zum Starten/Beenden von VMs während der Geschäftszeiten
 
 ### <a name="issue"></a>Problem
 
@@ -56,104 +61,105 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 
-1. Es ist bereits ein Automation-Konto mit dem gleichen Namen in der ausgewählten Region vorhanden.
-2. Es ist eine Richtlinie vorhanden, die die Bereitstellung der Lösung zum Starten/Beenden von VMs nicht zulässt.
-3. Die `Microsoft.OperationsManagement`-, `Microsoft.Insights`- oder `Microsoft.Automation`-Ressourcentypen sind nicht registriert.
-4. Ihr Log Analytics-Arbeitsbereich ist mit einer Sperre versehen.
-5. Sie verfügen über eine veraltete Version der AzureRM-Module oder der Lösung zum Starten/Beenden.
+1. Es ist bereits ein Automation-Konto mit demselben Namen in der ausgewählten Region vorhanden.
+2. Eine Richtlinie lässt die Bereitstellung der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten nicht zu.
+3. Der Ressourcentyp `Microsoft.OperationsManagement`, `Microsoft.Insights` oder `Microsoft.Automation` ist nicht registriert.
+4. Ihr Log Analytics-Arbeitsbereich ist gesperrt.
+5. Sie verwenden eine veraltete Version der AzureRM-Module oder der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten.
 
 ### <a name="resolution"></a>Lösung
 
-Überprüfen Sie die folgende Liste auf mögliche Lösungen für Ihr Problem oder Stellen zum Nachschlagen:
+Sehen Sie sich die folgenden möglichen Lösungen für Ihr Problem an:
 
-1. Automation-Konten müssen innerhalb einer Azure-Region eindeutig sein, auch wenn sie sich in unterschiedlichen Ressourcengruppen befinden. Überprüfen Sie Ihre vorhandenen Automation-Konten in der Zielregion.
-2. Eine vorhandene Richtlinie verhindert, dass eine Ressource, die für die Lösung zum Starten/Beenden von VMs erforderlich ist, bereitgestellt werden kann. Navigieren Sie zu Ihren Richtlinienzuweisungen im Azure-Portal, und überprüfen Sie, ob Sie eine Richtlinienzuweisung verwenden, die die Bereitstellung dieser Ressource nicht zulässt. Weitere Informationen hierzu finden Sie unter [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
-3. Um die Lösung zum Starten/Beenden von VMs bereitzustellen, muss Ihr Abonnement in den folgenden Azure-Ressourcennamespaces registriert werden:
+* Automation-Konten müssen innerhalb einer Azure-Region eindeutig sein, auch wenn sie sich in unterschiedlichen Ressourcengruppen befinden. Überprüfen Sie Ihre vorhandenen Automation-Konten in der Zielregion.
+* Eine vorhandene Richtlinie verhindert, dass eine Ressource, die für die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten erforderlich ist, bereitgestellt werden kann. Navigieren Sie zu Ihren Richtlinienzuweisungen im Azure-Portal, und überprüfen Sie, ob Sie eine Richtlinienzuweisung verwenden, die die Bereitstellung dieser Ressource nicht zulässt. Weitere Informationen hierzu finden Sie unter [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
+* Um die Lösung zum Starten/Beenden von VMs bereitzustellen, muss Ihr Abonnement in den folgenden Azure-Ressourcennamespaces registriert sein:
+
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
    Weitere Informationen zu Fehlern beim Registrieren von Anbietern finden Sie unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/templates/error-register-resource-provider.md).
-4. Wenn eine Sperre für Ihren Log Analytics-Arbeitsbereich vorhanden ist, navigieren Sie im Azure-Portal zu Ihrem Arbeitsbereich, und entfernen Sie alle Sperren für die Ressource.
-5. Wenn die oben genannten Lösungen Ihr Problem nicht beheben, befolgen Sie die Anleitungen unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution), um die Lösung zum Starten/Beenden erneut bereitzustellen.
+* Wenn eine Sperre für Ihren Log Analytics-Arbeitsbereich vorhanden ist, navigieren Sie im Azure-Portal zu Ihrem Arbeitsbereich, und entfernen Sie alle Sperren für die Ressource.
+* Wenn die oben genannten Lösungen Ihr Problem nicht beheben, befolgen Sie die Anleitungen unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution), um die Lösung zum Starten/Beenden erneut bereitzustellen.
 
-## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>Szenario: Alle virtuellen Computer können nicht gestartet/beendet werden
+## <a name="scenario-all-vms-fail-to-start-or-stop"></a><a name="all-vms-fail-to-startstop"></a>Szenario: Keine VM kann gestartet oder beendet werden
 
 ### <a name="issue"></a>Problem
 
-Sie haben die Starten/Beenden-VM-Lösung konfiguriert, aber alle konfigurierten virtuellen Computer werden nicht gestartet/beendet.
+Sie haben die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten konfiguriert, aber keine VM wird gestartet oder beendet.
 
 ### <a name="cause"></a>Ursache
 
 Dieser Fehler kann einen der folgenden Gründe haben:
 
 1. Ein Zeitplan ist nicht ordnungsgemäß konfiguriert.
-2. Das RunAs-Konto wurde möglicherweise nicht ordnungsgemäß konfiguriert.
+2. Das ausführende Konto wurde möglicherweise nicht ordnungsgemäß konfiguriert.
 3. Bei der Ausführung eines Runbooks sind möglicherweise Fehler aufgetreten.
-4. Die virtuellen Computer wurden möglicherweise ausgeschlossen.
+4. Die VMs wurden möglicherweise ausgeschlossen.
 
 ### <a name="resolution"></a>Lösung
 
-Überprüfen Sie die folgende Liste auf mögliche Lösungen für Ihr Problem oder Stellen zum Nachschlagen:
+Sehen Sie sich die folgenden möglichen Lösungen für Ihr Problem an:
 
-* Überprüfen Sie, ob Sie einen Zeitplan für die Starten/Beenden-VM-Lösung ordnungsgemäß konfiguriert haben. Wie Sie einen Zeitplan konfigurieren, erfahren Sie im Artikel [Planen eines Runbooks in Azure Automation](../automation-schedules.md).
+* Überprüfen Sie, ob der Zeitplan für die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten ordnungsgemäß konfiguriert wurde. Wie Sie einen Zeitplan konfigurieren, erfahren Sie im Artikel [Planen eines Runbooks in Azure Automation](../automation-schedules.md).
 
-* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus. Suchen Sie auf der Seite **Aufträge** nach Aufträgen aus einem der folgenden Runbooks:
+* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Suchen Sie nach Aufträgen von einem der folgenden Runbooks:
 
-  * AutoStop_CreateAlert_Child
-  * AutoStop_CreateAlert_Parent
-  * AutoStop_Disable
-  * AutoStop_VM_Child
-  * ScheduledStartStop_Base_Classic
-  * ScheduledStartStop_Child_Classic
-  * ScheduledStartStop_Child
-  * ScheduledStartStop_Parent
-  * SequencedStartStop_Parent
+  * **AutoStop_CreateAlert_Child**
+  * **AutoStop_CreateAlert_Parent**
+  * **AutoStop_Disable**
+  * **AutoStop_VM_Child**
+  * **ScheduledStartStop_Base_Classic**
+  * **ScheduledStartStop_Child_Classic**
+  * **ScheduledStartStop_Child**
+  * **ScheduledStartStop_Parent**
+  * **SequencedStartStop_Parent**
 
-* Überprüfen Sie, ob Ihr [RunAs-Konto](../manage-runas-account.md) über die erforderlichen Berechtigungen für die virtuellen Computer verfügt, die Sie starten oder beenden möchten. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+* Überprüfen Sie, ob Ihr [ausführendes Konto](../manage-runas-account.md) über die erforderlichen Berechtigungen für die VMs verfügt, die Sie starten oder beenden möchten. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal wechseln, unter **Kontoeinstellungen** die Option **Ausführende Konten** auswählen und auf das entsprechende ausführende Konto klicken.
 
-* Virtuelle Computer können nicht gestartet oder beendet werden, wenn sie explizit ausgeschlossen sind. Ausgeschlossene VMs werden im Automation-Konto, das der Lösung bereitgestellt wird, in der **External_ExcludeVMNames**-Variablen festgelegt. Das folgende Beispiel zeigt, wie Sie diesen Wert mit PowerShell abfragen können.
+* Virtuelle Computer können nicht gestartet oder beendet werden, wenn sie explizit ausgeschlossen sind. Ausgeschlossene VMs sind in dem Automation-Konto, in dem die Lösung bereitgestellt ist, in der Variablen `External_ExcludeVMNames` festgelegt. Das folgende Beispiel zeigt, wie Sie diesen Wert mit PowerShell abfragen können.
 
   ```powershell-interactive
-  Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
+  Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
 ## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>Szenario: Einige meiner virtuellen Computer können nicht gestartet oder beendet werden
 
 ### <a name="issue"></a>Problem
 
-Sie haben die Starten/Beenden-VM-Lösung konfiguriert, aber einige der konfigurierten virtuellen Computer werden nicht gestartet/beendet.
+Sie haben die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten konfiguriert, aber einige der konfigurierten VMs werden nicht gestartet bzw. beendet.
 
 ### <a name="cause"></a>Ursache
 
 Dieser Fehler kann einen der folgenden Gründe haben:
 
-1. Wenn Sie das Sequenzszenario verwenden, könnte ein Tag fehlen oder fehlerhaft sein.
-2. Der virtuelle Computer könnte ausgeschlossen sein.
-3. Das RunAs-Konto verfügt möglicherweise auf dem virtuellen Computer nicht über genügend Berechtigungen.
-4. Bei dem virtuellen Computer könnte etwas vorliegen, das sein Starten oder Beenden verhindert hat.
+1. Im Sequenzszenario könnte ein Tag fehlen oder falsch sein.
+2. Die VM könnte ausgeschlossen sein.
+3. Das ausführende Konto verfügt möglicherweise nicht über ausreichende Berechtigungen auf der VM.
+4. Möglicherweise verhindert ein Problem auf der VM das Starten oder Beenden der VM.
 
 ### <a name="resolution"></a>Lösung
 
 Überprüfen Sie die folgende Liste auf mögliche Lösungen für Ihr Problem oder Stellen zum Nachschlagen:
 
-* Bei Verwendung des [Sequenzszenarios](../automation-solution-vm-management.md) der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten müssen Sie sicherstellen, dass jeder virtuelle Computer, den Sie starten oder beenden möchten, über das richtige Tag verfügt. Stellen Sie sicher, dass die VMs, die Sie starten möchten, über das `sequencestart`-Tag verfügen, und die virtuellen Computer, die Sie beenden möchten, über das `sequencestop`-Tag. Beide Tags müssen einen positiven Ganzzahlwert haben. Sie können eine Abfrage wie im folgenden Beispiel verwenden, um nach allen virtuellen Computern mit den Tags und deren Werten zu suchen.
+* Wenn Sie das [Sequenzszenario](../automation-solution-vm-management.md) der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten verwenden, müssen Sie sicherstellen, dass jede VM, die Sie starten oder beenden möchten, über das richtige Tag verfügt. Stellen Sie sicher, dass die VMs, die Sie starten möchten, über das `sequencestart`-Tag verfügen, und die virtuellen Computer, die Sie beenden möchten, über das `sequencestop`-Tag. Beide Tags müssen einen positiven Ganzzahlwert haben. Sie können eine Abfrage wie im folgenden Beispiel verwenden, um nach allen virtuellen Computern mit den Tags und deren Werten zu suchen.
 
   ```powershell-interactive
-  Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
+  Get-AzResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Virtuelle Computer können nicht gestartet oder beendet werden, wenn sie explizit ausgeschlossen sind. Ausgeschlossene VMs werden im Automation-Konto, das der Lösung bereitgestellt wird, in der **External_ExcludeVMNames**-Variablen festgelegt. Das folgende Beispiel zeigt, wie Sie diesen Wert mit PowerShell abfragen können.
+* VMs können nicht gestartet oder beendet werden, wenn sie explizit ausgeschlossen wurden. Ausgeschlossene VMs sind in dem Automation-Konto, in dem die Lösung bereitgestellt ist, in der Variablen `External_ExcludeVMNames` festgelegt. Das folgende Beispiel zeigt, wie Sie diesen Wert mit PowerShell abfragen können.
 
   ```powershell-interactive
-  Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
+  Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Um VMs zu starten und zu beenden, muss das RunAs-Konto für das Automation-Konto über die entsprechenden Berechtigungen auf dem virtuellen Computer verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+* Um VMs zu starten und zu beenden, muss das ausführende Konto für das Automation-Konto über die entsprechenden Berechtigungen für die VM verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal wechseln, unter **Kontoeinstellungen** die Option **Ausführende Konten** auswählen und auf das entsprechende ausführende Konto klicken.
 
-* Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.yml).
+* Wenn beim Starten oder Aufheben der Zuordnung der VM Probleme auftreten, kann ein Problem auf der VM selbst vorliegen. Möglicherweise wird ein Update angewendet, während die VM versucht herunterzufahren, oder ein Dienst reagiert nicht mehr. Weitere Gründe sind möglich. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei der VM anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.yml).
 
-* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
+* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Wechseln Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht
 
@@ -163,11 +169,15 @@ Sie haben ein benutzerdefiniertes Runbook erstellt oder eines aus dem PowerShell
 
 ### <a name="cause"></a>Ursache
 
-Es kommen viele Ursachen für diesen Fehler infrage. Gehen Sie zu Ihrem Automation-Konto im Azure-Portal, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus. Suchen Sie auf der Seite **Aufträge** nach Aufträgen aus Ihrem Runbook, um ggf. fehlerhafte Aufträge anzuzeigen.
+Dieser Fehler kann vielfältige Ursachen haben. Wechseln Sie im Azure-Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus. Suchen Sie auf der Seite „Aufträge“ nach Aufträgen von Ihrem Runbook, um mögliche Auftragsfehler anzuzeigen.
 
 ### <a name="resolution"></a>Lösung
 
-Sie sollten die [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation](../automation-solution-vm-management.md) zum Starten und Beenden von virtuellen Computern in Azure Automation verwenden. Diese Lösung stammt von Microsoft. Benutzerdefinierte Runbooks werden von Microsoft nicht unterstützt. Möglicherweise finden Sie eine Lösung für Ihr benutzerdefiniertes Runbook in dem Artikel [Beheben von Fehlern bei Runbooks](runbooks.md). Dieser Artikel enthält allgemeine Richtlinien und Problembehandlung für Runbooks aller Typen. Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
+Folgendes wird empfohlen:
+
+* Verwenden Sie die [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten](../automation-solution-vm-management.md), um virtuelle Computer in Azure Automation zu starten und zu beenden. Diese Lösung stammt von Microsoft. 
+
+* Beachten Sie, dass Microsoft keine benutzerdefinierten Runbooks unterstützt. Möglicherweise finden Sie eine Lösung für Ihr benutzerdefiniertes Runbook im Artikel [Beheben von Fehlern bei Runbooks](runbooks.md). Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. 
 
 ## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Szenario: Virtuelle Computer werden nicht in der richtigen Reihenfolge gestartet oder beendet
 
@@ -177,7 +187,7 @@ Die virtuellen Computer, die Sie in der Lösung konfiguriert haben, werden nicht
 
 ### <a name="cause"></a>Ursache
 
-Dies wird durch falsche Tags der virtuellen Computer verursacht.
+Dieses Problem wird durch falsche Tags auf den VMs verursacht.
 
 ### <a name="resolution"></a>Lösung
 
@@ -185,29 +195,28 @@ Stellen Sie mit den folgenden Schritten sicher, dass die Lösung ordnungsgemäß
 
 1. Stellen sicher, dass alle zu startenden oder beendenden virtuellen Computer je nach Situation mit einem `sequencestart`- oder `sequencestop`-Tag versehen sind. Diese Tags benötigen eine positive ganze Zahl als Wert. VMs werden basierend auf diesem Wert in aufsteigender Reihenfolge verarbeitet.
 2. Stellen Sie sicher, dass die Ressourcengruppen für die zu startenden oder beendenden virtuellen Computer sich je nach Situation in der Variablen `External_Start_ResourceGroupNames` oder `External_Stop_ResourceGroupNames` befinden.
-3. Testen Sie Ihre Änderungen durch Ausführung des `SequencedStartStop_Parent`-Runbooks mit auf „true“ festgelegtem WHATIF-Parameter, um Ihre Änderungen in der Vorschau anzuzeigen.
+3. Testen Sie Ihre Änderungen durch Ausführung des `SequencedStartStop_Parent`-Runbooks mit auf „true“ festgelegtem `WHATIF`-Parameter, um eine Vorschau der Änderungen anzuzeigen.
+4. Weitere Informationen zum Verwenden der Lösung zum Starten und Beenden von VMs in einer bestimmten Reihenfolge finden Sie unter [Starten/Beenden von VMs der Reihe nach](../automation-solution-vm-management.md).
 
-Ausführliche und zusätzliche Anleitungen zum Verwenden der Lösung zum Starten und Beenden von VMs in einer Sequenz finden Sie unter [Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags](../automation-solution-vm-management.md).
-
-## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf
+## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Szenario: Fehler „403 – verboten“ bei Aufträgen zum Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
 ### <a name="issue"></a>Problem
 
-Sie finden Aufträge, bei denen ein `403 forbidden`-Fehler bei den Runbooks zum Starten/Beenden von VMs außerhalb der Geschäftszeiten aufgetreten ist.
+Sie finden Aufträge, bei denen in den Runbooks zum Starten/Beenden von VMs außerhalb der Geschäftszeiten ein `403 forbidden`-Fehler aufgetreten ist.
 
 ### <a name="cause"></a>Ursache
 
-Dieses Problem kann durch ein nicht ordnungsgemäß konfiguriertes oder abgelaufenes RunAs-Konto verursacht werden. Unzureichende Berechtigungen des RunAs-Kontos der Automation-Konten für die VM-Ressourcen kommen auch als Ursache infrage.
+Dieses Problem kann durch ein nicht ordnungsgemäß konfiguriertes oder abgelaufenes ausführendes Konto verursacht werden. Unzureichende Berechtigungen des ausführenden Kontos für die VM-Ressourcen kommen auch als Ursache infrage.
 
 ### <a name="resolution"></a>Lösung
 
-Um zu überprüfen, ob Ihr RunAs-Konto ordnungsgemäß konfiguriert ist, wechseln Sie zu Ihrem Automation-Konto im Azure-Portal, und wählen Sie **RunAs-Konten** unter **Kontoeinstellungen** aus. Hier sehen Sie den Status Ihrer RunAs-Konten; wenn ein RunAs-Konto falsch konfiguriert oder abgelaufen ist, zeigt dies der Status.
+Um zu überprüfen, ob Ihr ausführendes Konto ordnungsgemäß konfiguriert ist, wechseln Sie im Azure-Portal zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** aus. Wenn ein ausführendes Konto abgelaufen oder nicht ordnungsgemäß konfiguriert ist, wird diese Bedingung im Status angezeigt.
 
-Wenn Ihr ausführendes Konto falsch konfiguriert ist, sollten Sie es löschen und neu erstellen. Weitere Informationen finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](../manage-runas-account.md).
+Wenn Ihr ausführendes Konto falsch konfiguriert ist, müssen Sie es löschen und neu erstellen. Weitere Informationen finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](../manage-runas-account.md).
 
-Wenn das Zertifikat für Ihr RunAs-Konto abgelaufen ist, befolgen Sie die Schritte unter [Erneuerung eines selbstsignierten Zertifikat](../manage-runas-account.md#cert-renewal) zur Erneuerung des Zertifikats.
+Wenn das Zertifikat für Ihr ausführendes Konto abgelaufen ist, befolgen Sie die Schritte unter [Erneuerung eines selbstsignierten Zertifikat](../manage-runas-account.md#cert-renewal), um das Zertifikat zu erneuern.
 
-Das Problem wird möglicherweise durch fehlende Berechtigungen verursacht. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+Wenn Berechtigungen fehlen, finden Sie weitere Informationen unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal wechseln, unter **Kontoeinstellungen** die Option **Ausführende Konten** auswählen und auf das entsprechende ausführende Konto klicken.
 
 ## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
 
@@ -220,16 +229,16 @@ Ihr Problem oder unerwartetes Ergebnis bei Verwendung der Lösung zum Starten/Be
 Oft können Fehler durch Verwendung einer alten und veralteten Version der Lösung verursacht werden.
 
 > [!NOTE]
-> Die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Azure Automation-Konto, mit dem Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ ausführen. Sie können in Ihren anderen Azure Automation-Konten weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) beschrieben.
+> Die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Automation-Konto, mit dem Sie die Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten ausführen. In Ihren anderen Automation-Konten können Sie weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) beschrieben.
 
 ### <a name="resolution"></a>Lösung
 
-Zum Beheben vieler Fehler sollten Sie die Lösung entfernen und aktualisieren. Wie Sie die Lösung aktualisieren, erfahren Sie unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution). Überprüfen Sie außerdem die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
+Entfernen und [aktualisieren Sie die Lösung zum Starten/Beheben von VMs außerhalb der Geschäftszeiten](../automation-solution-vm-management.md#update-the-solution) – damit lassen sich viele Fehler beseitigen. Überprüfen Sie außerdem die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-* Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.

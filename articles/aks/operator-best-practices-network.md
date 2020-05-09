@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392714"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208056"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkress
 
 Weitere Informationen zur AKS-Dienstprinzipaldelegierung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation]. Anstelle eines Dienstprinzipals können Sie für Berechtigungen auch die vom System zugewiesene verwaltete Identität verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
-Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Aufskalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container (zurzeit als Vorschauversion in AKS) verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewandt werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
+Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Aufskalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewandt werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
 Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
 
@@ -99,7 +99,7 @@ spec:
 
 Ein Eingangscontroller ist ein Daemon, der auf einem AKS-Knoten ausgeführt wird und diesen auf eingehende Anforderungen überwacht. Datenverkehr wird dann entsprechend den in der Eingangsressource definierten Regeln verteilt. Der am häufigsten verwendete Eingangscontroller basiert auf [NGINX]. AKS beschränkt Sie nicht auf einen bestimmten Controller, Sie können daher auch andere Controller wie [Contour][contour], [HAProxy][haproxy] oder [Traefik][traefik] verwenden.
 
-Eingangscontroller müssen auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Verwenden Sie einen Knotenselektor in Ihrem YAML-Manifest oder der Bereitstellung des Helm-Charts, um anzugeben, dass die Ressource auf einem Linux-basierten Knoten ausgeführt werden soll. Weitere Informationen finden Sie unter [Verwenden von Knotenselektoren, um zu steuern, wo Pods in AKS geplant werden][concepts-node-selectors].
+Eingangscontroller müssen auf einem Linux-Knoten geplant werden. Windows Server-Knoten dürfen nicht auf dem Eingangscontroller ausgeführt werden. Verwenden Sie einen Knotenselektor in Ihrem YAML-Manifest oder der Bereitstellung des Helm-Charts, um anzugeben, dass die Ressource auf einem Linux-basierten Knoten ausgeführt werden soll. Weitere Informationen finden Sie unter [Verwenden von Knotenselektoren, um zu steuern, wo Pods in AKS geplant werden][concepts-node-selectors].
 
 Es gibt viele Szenarien für Eingangsdatenverkehr, einschließlich der folgenden Anleitungen:
 
@@ -110,7 +110,7 @@ Es gibt viele Szenarien für Eingangsdatenverkehr, einschließlich der folgenden
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Absichern des Datenverkehrs mit einer Web Application Firewall (WAF)
 
-**Best Practices-Anleitung**: Verwenden Sie eine Web Application Firewall (WAF) wie [Barracuda WAF für Azure][barracuda-waf] oder Azure Application Gateway, um eingehenden Datenverkehr auf mögliche Angriffe zu überprüfen. Diese fortschrittlicheren Netzwerkressourcen können den Datenverkehr auch über reine HTTP- und HTTPS-Verbindungen oder eine einfache SSL-Terminierung hinaus routen.
+**Best Practices-Anleitung**: Verwenden Sie eine Web Application Firewall (WAF) wie [Barracuda WAF für Azure][barracuda-waf] oder Azure Application Gateway, um eingehenden Datenverkehr auf mögliche Angriffe zu überprüfen. Diese fortschrittlicheren Netzwerkressourcen können den Datenverkehr auch über reine HTTP- und HTTPS-Verbindungen oder eine einfache TLS-Terminierung hinaus routen.
 
 Ein Eingangscontroller, der den Datenverkehr an Dienste und Anwendungen verteilt, ist normalerweise eine Kubernetes-Ressource in Ihrem AKS-Cluster. Der Controller wird als Daemon auf einem AKS-Knoten ausgeführt und verbraucht einige der Ressourcen des Knotens wie CPU, Speicher und Netzwerkbandbreite. In größeren Umgebungen möchten Sie einen Teil dieses Datenverkehrsroutings oder der TLS-Terminierung häufig auf eine Netzwerkressource außerhalb des AKS-Clusters auslagern. Zudem möchten Sie den eingehenden Datenverkehr auf mögliche Angriffe überprüfen.
 

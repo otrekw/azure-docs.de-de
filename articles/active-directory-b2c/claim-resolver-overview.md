@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396068"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229645"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -90,7 +90,14 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {Context:IPAddress} | Die Benutzer-IP-Adresse. | 11.111.111.11 |
 | {Context:KMSI} | Gibt an, ob das Kontrollkästchen [Angemeldet bleiben](custom-policy-keep-me-signed-in.md) aktiviert ist. |  true |
 
-### <a name="non-protocol-parameters"></a>Nicht-Protokoll-Parameter
+### <a name="claims"></a>Ansprüche 
+
+| Anspruch | BESCHREIBUNG | Beispiel |
+| ----- | ----------- | --------|
+| {Claim:claim type} | Ein Bezeichner eines Anspruchstyps, der bereits im Abschnitt „ClaimsSchema“ in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist.  Beispiel: `{Claim:displayName}` oder `{Claim:objectId}` | Ein Wert eines Anspruchstyps.|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2-Schlüssel-Wert-Parameter
 
 Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung eingeschlossen wird, kann einem Anspruch in der User Journey zugeordnet werden. Beispielsweise kann die Anforderung von der Anwendung einen Abfragezeichenfolgen-Parameter mit einem der Namen `app_session` oder `loyalty_number` oder eine beliebige benutzerdefinierte Abfragezeichenfolge enthalten.
 
@@ -118,6 +125,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 | {SAML:AllowCreate} | Der Wert des `AllowCreate`-Attributs aus dem `NameIDPolicy`-Element der SAML-Anforderung. | True |
 | {SAML:ForceAuthn} | Der Wert des `ForceAuthN`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung. | True |
 | {SAML:ProviderName} | Der Wert des `ProviderName`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung.| Contoso.com |
+| {SAML:RelayState} | Der Abfragezeichenfolgen-Parameter `RelayState`.| 
 
 ## <a name="using-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern
 
@@ -131,7 +139,7 @@ Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden:
 |[OpenID Connect](openid-connect-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Anspruchstransformation](claims-transformation-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[RESTful-Anbieter](restful-technical-profile.md): technisches Profil| `InputClaim`| 1, 2|
-|[SAML2](saml-technical-profile.md): technisches Profil| `OutputClaim`| 1, 2|
+|[SAML-Identitätsanbieter](saml-identity-provider-technical-profile.md): technisches Profil| `OutputClaim`| 1, 2|
 |[Selbstbestätigt](self-asserted-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
