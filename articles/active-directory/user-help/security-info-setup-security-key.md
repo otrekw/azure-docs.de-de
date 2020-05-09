@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062335"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628332"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode
 
@@ -63,7 +63,7 @@ Bevor Sie Ihren Sicherheitsschlüssel registrieren können, müssen folgende Vor
 
 Sie müssen Ihren Sicherheitsschlüssel erstellen und dabei eine eindeutige PIN angeben, bevor Sie sich mit dem Schlüssel bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden können. Sie können für Ihr Konto maximal zehn Schlüssel registrieren. 
 
-1. Wechseln Sie zur Seite **Mein Profil** unter https://myprofile.microsoft.com, und melden Sie sich an, wenn Sie dies nicht bereits getan haben.
+1. Wechseln Sie zur Seite **Mein Profil** unter https://myaccount.microsoft.com, und melden Sie sich an, wenn Sie dies nicht bereits getan haben.
 
 2. Wählen Sie **Sicherheitsinformationen** aus, wählen Sie **Methode hinzufügen** aus, und wählen Sie dann in der Dropdownliste **Methode hinzufügen** den Eintrag **Sicherheitsschlüssel** aus.
 

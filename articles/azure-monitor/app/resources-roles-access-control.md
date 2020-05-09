@@ -3,12 +3,12 @@ title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473131"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628234"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -40,11 +40,6 @@ Zunächst einige Definitionen:
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
 
 Es ist wichtig zu wissen, dass es zusätzlich zu den Ressource, die Sie für Ihre Anwendung erstellt haben, auch separate, ausgeblendete Ressourcen für Warnungen und Webtests gibt. Sie sind derselben [Ressourcengruppe](#resource-group) zugeordnet wie Ihre Application Insights-Ressource. Möglicherweise haben Sie auch andere Azure-Dienste dort aufgenommen, z. B. Websites oder Speicher.
-
-Zum Steuern des Zugriffs auf diese Ressourcen empfiehlt es sich daher, folgendermaßen vorzugehen:
-
-* Steuern Sie den Zugriff auf **Ressourcengruppen- oder Abonnementebene** .
-* Weisen Sie Benutzern die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch können sie Webtests, Warnungen und Application Insights-Ressourcen bearbeiten, ohne dass Zugriff auf alle anderen Dienste in der Gruppe erteilt wird.
 
 ## <a name="to-provide-access-to-another-user"></a>So erteilen Sie einem anderen Benutzer Zugriffsberechtigungen
 

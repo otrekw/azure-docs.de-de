@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 5/4/2020
+ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767892"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792104"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -56,7 +56,6 @@ Es gibt jedoch einige Einschränkungen:
     
 * Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
    Das bedeutet, dass ein Masterserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Masterserver in der Region „Indien, Süden“ kann jedoch kein Replikat in „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
-
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 
@@ -146,6 +145,8 @@ Die folgenden Serverparameter sind sowohl auf dem Master- als auch auf dem Repli
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. 
+
+Um einen der oben genannten Parameter auf dem Masterserver zu aktualisieren, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert auf dem Master, und erstellen Sie Replikate neu.
 
 ### <a name="other"></a>Andere
 

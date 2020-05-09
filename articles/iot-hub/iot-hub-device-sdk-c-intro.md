@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731320"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629353"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 
@@ -88,7 +88,7 @@ Der Geräte-Explorer führt mithilfe der Azure IoT-Dienstbibliotheken verschiede
 
 Sollten Sie noch nicht mit dem Geräte-Explorer vertraut sein, erfahren Sie im folgenden Verfahren, wie Sie mithilfe des Geräte-Explorers ein Gerät hinzufügen und eine Geräteverbindungszeichenfolge beziehen.
 
-1. Informationen zum Installieren des Geräte-Explorers finden Sie unter [How to use Device Explorer for IoT Hub devices](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) (Verwenden des Geräte-Explorers für IoT Hub-Geräte).
+1. Informationen zum Installieren des Geräte-Explorers finden Sie unter [How to use Device Explorer for IoT Hub devices](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) (Verwenden des Geräte-Explorers für IoT Hub-Geräte).
 
 1. Wenn Sie das Programm ausführen, wird die folgende Oberfläche angezeigt:
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77619f7bc24943b2b7051ff51f92cf96d439775e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064069"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628417"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
@@ -45,7 +45,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 ### <a name="to-create-a-new-app-password"></a>So erstellen Sie ein neues App-Kennwort
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 

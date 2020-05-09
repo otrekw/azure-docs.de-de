@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e7a2611312ffc33703dd5cc9d0a2d7142ddb0532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368927"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627686"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid-Ausgabebindung für Azure Functions
 
-Verwenden Sie die Event Grid-Ausgabebindung, um Ereignisse in ein benutzerdefiniertes Thema zu schreiben. Sie müssen einen gültigen [Zugriffsschlüssel für das benutzerdefinierte Thema](../event-grid/security-authentication.md#custom-topic-publishing) besitzen.
+Verwenden Sie die Event Grid-Ausgabebindung, um Ereignisse in ein benutzerdefiniertes Thema zu schreiben. Sie müssen einen gültigen [Zugriffsschlüssel für das benutzerdefinierte Thema](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key) besitzen.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](./functions-bindings-event-grid.md).
 
