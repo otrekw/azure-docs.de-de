@@ -5,24 +5,18 @@ description: Informationen zu den bekannten Einschränkungen beim Ausführen von
 services: container-service
 ms.topic: article
 ms.date: 12/18/2019
-ms.openlocfilehash: 934acf06a779c1c3b0b13e74b196b174dd944e66
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886669"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208005"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
 In Azure Kubernetes Service (AKS) können Sie einen Knotenpool erstellen, der Windows Server als Gastbetriebssystem auf den Knoten ausführt. Auf diesen Knoten können native Windows-Containeranwendungen ausgeführt werden, z. B. die in .NET Framework integrierten Anwendungen. Da es große Unterschiede in der Art und Weise gibt, wie Container unter Linux- und Windows-Betriebssystemen unterstützt werden, sind einige allgemeine Kubernetes- und podbezogene Funktionen derzeit nicht für Windows-Knotenpools verfügbar.
 
-In diesem Artikel werden einige Einschränkungen und Betriebssystemkonzepte für Windows Server-Knoten in AKS erläutert. Knotenpools für Windows Server befinden sich derzeit in der Vorschauphase.
-
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
->
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
-> * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
+In diesem Artikel werden einige Einschränkungen und Betriebssystemkonzepte für Windows Server-Knoten in AKS erläutert.
 
 ## <a name="which-windows-operating-systems-are-supported"></a>Welche Windows-Betriebssysteme werden unterstützt?
 
@@ -66,7 +60,7 @@ Windows Server-Knoten in AKS müssen *aktualisiert* werden, um die neuesten Patc
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Wie rotiere ich den Dienstprinzipal für meinen Windows-Knotenpool?
 
-Während der Vorschauphase unterstützen Windows-Knotenpools keine Rotation des Dienstprinzipals. Dies ist eine Einschränkung der Vorschauversion. Um den Dienstprinzipal zu aktualisieren, erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
+Windows-Knotenpools unterstützen die Rotation von Dienstprinzipalen nicht. Um den Dienstprinzipal zu aktualisieren, erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Wie viele Knotenpools kann ich erstellen?
 
@@ -120,6 +114,5 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
-[preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

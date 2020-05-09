@@ -3,12 +3,12 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396280"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105742"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
@@ -17,6 +17,7 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Wichtige Vorteile der Sicherung von Azure-Dateifreigaben
 
 * Keine Infrastrukturanforderungen: Zum Konfigurieren des Schutzes für Ihre Dateifreigaben sind keine Bereitstellungen erforderlich.
+* Benutzerdefinierte Aufbewahrung: Sie können für den Aufbewahrungszeitraum von Sicherungen eine bestimmte Anzahl von Tagen/Wochen/Monaten/Jahren konfigurieren, ganz nach Ihren Anforderungen.
 * Integrierte Verwaltungsfunktionen: Sie können Sicherungen planen und den gewünschten Aufbewahrungszeitraum ohne zusätzlichen Aufwand für die Datenbereinigung angeben.
 * Sofortige Wiederherstellung: Für die Sicherung von Azure-Dateifreigaben werden Dateifreigabe-Momentaufnahmen verwendet, sodass Sie einfach die Dateien auswählen können, die Sie sofort wiederherstellen möchten.
 * Warnungen und Berichte: Sie können Warnungen bei Sicherungs- und Wiederherstellungsfehlern konfigurieren und die von Azure Backup bereitgestellte Berichterstellungslösung verwenden, um Erkenntnisse zu Sicherungen für Ihre Dateifreigaben zu erhalten.
@@ -38,7 +39,7 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 5. Der Azure Backup-Scheduler löst die Sicherungen basierend auf der angegebenen Richtlinie zum geplanten Zeitpunkt aus. Im Rahmen dieses Auftrags wird die Dateifreigabe-Momentaufnahme mit der Dateifreigabe-API erstellt. Nur die Momentaufnahme-URL wird im Metadatenspeicher gespeichert.
 
     >[!NOTE]
-    >Die Dateifreigabedaten werden nicht an den Backup-Dienst übertragen, da dieser die Momentaufnahmen erstellt und verwaltet, die Teil Ihres Speicherkontos sind.
+    >Die Dateifreigabedaten werden nicht an den Azure Backup-Dienst übertragen, da dieser die Momentaufnahmen erstellt und verwaltet, die Teil Ihres Speicherkontos sind. Außerdem werden Sicherungen nicht an den Tresor übertragen.
 
 6. Sie können den Inhalt der Azure-Dateifreigabe (einzelne Dateien oder die gesamte Freigabe) aus den in der ursprünglichen Dateifreigabe verfügbaren Momentaufnahmen wiederherstellen. Nachdem der Vorgang ausgelöst wurde, wird die Momentaufnahme-URL aus dem Metadatenspeicher abgerufen, und die Daten werden aufgelistet und aus der Quellmomentaufnahme in die Zieldateifreigabe Ihrer Wahl übertragen.
 
@@ -46,12 +47,7 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 
 ## <a name="backup-costs"></a>Sicherungskosten
 
-Das Sichern von Azure-Dateifreigaben ist eine auf Momentaufnahmen basierende Lösung, und die für Momentaufnahmen anfallenden Speichergebühren werden zusammen mit der Azure Files-Nutzung gemäß den [hier](https://azure.microsoft.com/pricing/details/storage/files/) aufgeführten Preisen in Rechnung gestellt.
-
-Die Gebühr für die geschützte Instanz für die Nutzung der Sicherungslösung entspricht jedoch dem im Abschnitt zum [Sichern von Azure Files](https://azure.microsoft.com/pricing/details/backup/) beschriebenen Preismodell. Der tatsächliche Preis wurde aktuell nur für die USA (USA, Westen-Mitte) aktualisiert. Für andere Regionen werden die genauen Preise in Kürze aktualisiert, mit geringfügigen regionalen Variationen, aber unter Verwendung des gleichen Preismodells.
-
->[!NOTE]
->Während der Vorschau gibt es keine „Gebühr für geschützte Instanzen“, und Ihnen werden nur Momentaufnahmen gemäß den [hier](https://azure.microsoft.com/pricing/details/storage/files/) aufgeführten Preisen in Rechnung gestellt.
+Zurzeit werden Ihnen nur Gebühren für Momentaufnahmen in Rechnung gestellt, da Sicherungen von Azure-Dateifreigaben eine auf Momentaufnahmen basierte Lösung sind. Azure Storage-Gebühren für Momentaufnahmen werden zusammen mit der Azure Files-Nutzung entsprechend der [unter diesem Link](https://azure.microsoft.com/pricing/details/storage/files/) verfügbaren Preisinformationen abgerechnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

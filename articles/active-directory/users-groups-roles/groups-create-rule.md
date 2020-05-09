@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231746"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582917"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Erstellen oder Aktualisieren einer dynamischen Gruppe in Azure Active Directory
 
@@ -46,7 +46,7 @@ Beispiele für Syntax, unterstützte Eigenschaften, Operatoren und Werte für ei
 
 ## <a name="to-create-a-group-membership-rule"></a>So erstellen Sie eine Regel für die Gruppenmitgliedschaft
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle des globalen Administrators, Intune-Administrators oder Benutzeradministrators in dem Mandanten angehört.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle „Globaler Administrator“, „Intune-Administrator“ oder „Benutzeradministrator“ in der Azure AD-Organisation angehört.
 1. Suchen Sie nach **Gruppen**, und wählen Sie diese Option aus.
 1. Wählen Sie **Alle Gruppen** und **Neue Gruppe** aus.
 
@@ -66,7 +66,7 @@ Sollte die eingegebene Regel ungültig sein, wird über eine Azure-Benachrichtig
 
 ## <a name="to-update-an-existing-rule"></a>So aktualisieren Sie eine vorhandene Rolle
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle „Globaler Administrator“, „Gruppenadministrator“, „Intune-Administrator“ oder „Benutzeradministrator“ in dem Mandanten angehört.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle „Globaler Administrator“, „Gruppenadministrator“, „Intune-Administrator“ oder „Benutzeradministrator“ in der Azure AD-Organisation angehört.
 1. Wählen Sie **Gruppen** > **Alle Gruppen** aus.
 1. Wählen Sie eine Gruppe aus, um ihr Profil zu öffnen.
 1. Wählen Sie auf der Profilseite für die Gruppe **Dynamische Mitgliedschaftsregeln** aus. Der Regel-Generator unterstützt bis zu fünf Ausdrücke. Falls Sie mehr als fünf Ausdrücke hinzufügen möchten, müssen Sie das Textfeld verwenden.
@@ -102,7 +102,7 @@ Für **Letzte Aktualisierung der Mitgliedschaft** können die folgenden Statusme
 - **In Bearbeitung**: Aktualisierungen sind derzeit in Bearbeitung.
 - **Unbekannt:** Der Zeitpunkt der letzten Aktualisierung kann nicht abgerufen werden. Die Gruppe ist möglicherweise neu.
 
-Wenn bei der Verarbeitung der Mitgliedschaftsregel für eine bestimmte Gruppe ein Fehler auftritt, wird oben auf der Seite **Übersicht** der Gruppe eine Warnung angezeigt. Wenn für alle Gruppen innerhalb des Mandanten für mehr als 24 Stunden keine ausstehenden Aktualisierungen der dynamischen Mitgliedschaft verarbeitet werden können, wird oben in **Alle Gruppen** eine Warnung angezeigt.
+Wenn bei der Verarbeitung der Mitgliedschaftsregel für eine bestimmte Gruppe ein Fehler auftritt, wird oben auf der Seite **Übersicht** der Gruppe eine Warnung angezeigt. Wenn für alle Gruppen innerhalb der Organisation für mehr als 24 Stunden keine ausstehenden Aktualisierungen der dynamischen Mitgliedschaft verarbeitet werden können, wird oben in **Alle Gruppen** eine Warnung angezeigt.
 
 ![Warnungen aufgrund von Verarbeitungsfehlern](./media/groups-create-rule/processing-error.png)
 
