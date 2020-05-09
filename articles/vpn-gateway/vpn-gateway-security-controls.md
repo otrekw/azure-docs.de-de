@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972280"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127849"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Sicherheitskontrollen für Azure VPN Gateway
 
@@ -34,9 +34,9 @@ In diesem Artikel sind die in Azure VPN Gateway integrierten Sicherheitskontroll
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Weitere Informationen finden Sie unter [Azure Monitor-Diagnoseprotokolle/Warnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor-Metriken/Warnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Weitere Informationen finden Sie unter [Azure Monitor-Protokollwarnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor-Metrikwarnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Azure Resource Manager-Aktivitätsprotokoll. |
-| Protokollierung und Überwachung auf Datenebene | Ja | [Azure Monitor-Diagnoseprotokolle](../azure-resource-manager/management/view-activity-logs.md) für die Protokollierung und Überwachung von VPN-Verbindungen. |
+| Protokollierung und Überwachung auf Datenebene | Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-resource-manager/management/view-activity-logs.md) für die Überwachung und Protokollierung von VPN-Verbindungen. |
 
 ## <a name="identity"></a>Identity
 
@@ -51,7 +51,7 @@ In diesem Artikel sind die in Azure VPN Gateway integrierten Sicherheitskontroll
 |---|---|--|
 | Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | – | VPN Gateway überträgt Kundendaten, speichert diese aber NICHT. |
 | Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, Verschlüsselung im VNET und VNET-zu-VNET-Verschlüsselung)| Ja | VPN Gateway verschlüsselt Kundenpakete zwischen Azure VPN Gateways und lokalen VPN-Geräte (S2S) oder VPN-Clients (P2S) des Kunden. VPN Gateways unterstützen auch die VNet-zu-VNet-Verschlüsselung. |
-| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein | Kundenspezifische vorinstallierte Schlüssel werden im Ruhezustand verschlüsselt; aber noch nicht in die CMK integriert. |
+| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein  | Kundenspezifische vorinstallierte Schlüssel werden im Ruhezustand verschlüsselt; aber noch nicht in die CMK integriert. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | Über [Azure Resource Manager](../azure-resource-manager/index.yml) und HTTPS.  |
 

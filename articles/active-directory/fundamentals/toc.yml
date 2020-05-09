@@ -50,7 +50,7 @@
     - name: Bereitstellungshandbuch
       items:
         - name: 'Bereitstellung 30, 90 und höher'
-      href: active-directory-deployment-checklist-p2.md
+          href: active-directory-deployment-checklist-p2.md
     - name: Datenspeicher
       items:
         - name: Identitätsdatenspeicher für Europa

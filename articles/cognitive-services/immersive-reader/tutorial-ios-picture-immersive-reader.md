@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: f9bb8743f0b0852e46b440de22038e3f84272e93
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561007"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735129"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Tutorial: Erstellen einer iOS-App, die den plastischen Reader mit Inhalt aus einem Foto startet (Swift)
 
@@ -22,7 +22,7 @@ Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv 
 
 Die [Cognitive Services-Lese-API für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) erkennt mithilfe der neuesten Erkennungsmodelle von Microsoft Textinhalte eines Bilds und konvertiert den erkannten Text in einen computerlesbaren Zeichendatenstrom.
 
-In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und integrieren die Lese-API und den plastischen Reader mithilfe des SDK für den plastischen Reader. Ein vollständiges funktionierendes Beispiel dieses Tutorials finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/picture-to-immersive-reader-swift).
+In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und integrieren die Lese-API und den plastischen Reader mithilfe des SDK für den plastischen Reader. Ein vollständiges funktionierendes Beispiel dieses Tutorials finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

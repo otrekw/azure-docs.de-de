@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787c15c11c995c7eb30662131302658175c7f877
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393018"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127847"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -130,6 +130,7 @@ Kennwörter werden in den folgenden Situationen zurückgeschrieben:
    * Jegliche erzwungene Self-Service-Kennwortänderung durch einen Administrator, beispielsweise bei Ablauf des Kennworts
    * Jegliche Self-Service-Kennwortzurücksetzung durch einen Administrator über das [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com)
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch einen Endbenutzer über das [Azure-Portal](https://portal.azure.com)
+   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung über die [Betaversion der Microsoft Graph-API](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http).
 
 ## <a name="unsupported-writeback-operations"></a>Nicht unterstützte Rückschreibevorgänge
 
@@ -138,7 +139,7 @@ Kennwörter werden in folgenden Situationen nicht zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Endbenutzer**
    * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Microsoft Graph-API
 * **Nicht unterstützte Vorgänge für Administratoren**
-   * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch den Endbenutzer mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API
+   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API (die [Betaversion der Microsoft Graph-API](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) wird unterstützt).
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch den Endbenutzer über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
 
 > [!WARNING]
