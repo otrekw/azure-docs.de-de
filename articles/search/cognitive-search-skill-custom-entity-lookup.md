@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369776"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82085738"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
 + Die maximal unterstützte Größe für den Eingabedatensatz beträgt 256 MB. Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Qualifikation „Benutzerdefinierte Entitätssuche“ senden, denken Sie daran, die [Qualifikation „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
-+ Die maximal unterstützte Größe der Tabelle für Entitätsdefinitionen beträgt 10 MB, wenn sie mithilfe des Parameters *entitiesDefitionUri* bereitgestellt wird. 
++ Die maximal unterstützte Größe der Tabelle für Entitätsdefinitionen beträgt 10 MB, wenn sie mithilfe des Parameters *entitiesDefinitionUri* bereitgestellt wird. 
 + Wenn die Entitäten inline mit dem Parameter *inlineEntitiesDefinition* definiert werden, beträgt die maximal unterstützte Größe 10 KB.
 
 ## <a name="skill-parameters"></a>Skillparameter
@@ -63,13 +63,13 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 Es gibt drei verschiedene Möglichkeiten, die Liste der benutzerdefinierten Entitäten für die Qualifikation „Benutzerdefinierte Entitätssuche“ bereitzustellen. Sie können die Liste in einer CSV-Datei, einer JSON-Datei oder als Inlinedefinition als Teil der Qualifikationsdefinition zur Verfügung stellen.  
 
-Wenn es sich bei der Definitionsdatei um eine CSV- oder JSON-Datei handelt, muss der Pfad der Datei als Teil des *entitiesDefitionUri*-Parameters bereitgestellt werden. In diesem Fall wird die Datei einmal am Anfang jeder Indexerausführung heruntergeladen. Die Datei muss verfügbar sein, solange der Indexer ausgeführt werden soll. Außerdem muss die Datei UTF-8-codiert sein.
+Wenn es sich bei der Definitionsdatei um eine CSV- oder JSON-Datei handelt, muss der Pfad der Datei als Teil des *entitiesDefinitionUri*-Parameters bereitgestellt werden. In diesem Fall wird die Datei einmal am Anfang jeder Indexerausführung heruntergeladen. Die Datei muss verfügbar sein, solange der Indexer ausgeführt werden soll. Außerdem muss die Datei UTF-8-codiert sein.
 
 Wenn die Definition inline bereitgestellt wird, sollte Sie inline als Inhalt des *inlineEntitiesDefinition*-Skillparameters bereitgestellt werden. 
 
 ### <a name="csv-format"></a>CSV-Format
 
-Sie können die Definition der benutzerdefinierten Entitäten, nach denen gesucht werden soll, in einer CSV-Datei (Comma-Separated Value) bereitstellen, indem Sie den Pfad zur Datei angeben und ihn im Skillparameter *entitiesDefitionUri* festlegen. Der Pfad sollte sich an einem https-Speicherort befinden. Die Definitionsdatei kann bis zu 10 MB groß sein.
+Sie können die Definition der benutzerdefinierten Entitäten, nach denen gesucht werden soll, in einer CSV-Datei (Comma-Separated Value) bereitstellen, indem Sie den Pfad zur Datei angeben und ihn im Skillparameter *entitiesDefinitionUri* festlegen. Der Pfad sollte sich an einem https-Speicherort befinden. Die Definitionsdatei kann bis zu 10 MB groß sein.
 
 Das CSV-Format ist einfach. Jede Zeile stellt eine einzelne Einheit dar, wie unten dargestellt:
 
@@ -85,7 +85,7 @@ In diesem Fall gibt es drei Entitäten, die als gefundene Entitäten zurückgege
 
 Sie können auch die Definition der benutzerdefinierten Entitäten angeben, nach denen in einer JSON-Datei gesucht werden soll. Das JSON-Format bietet Ihnen etwas mehr Flexibilität, da es Ihnen erlaubt, Übereinstimmungsregeln pro Begriff zu definieren. Sie können z. B. die Fuzzyübereinstimmungsdistanz (Damerau-Levenshtein-Distanz) für jeden Begriff festlegen oder angeben, ob bei der Übereinstimmung Groß-/Kleinschreibung beachtet werden soll oder nicht. 
 
- Genau wie bei CSV-Dateien müssen Sie den Pfad zur JSON-Datei angeben und ihn im Skillparameter *entitiesDefitionUri* festlegen. Der Pfad sollte sich an einem https-Speicherort befinden. Die Definitionsdatei kann bis zu 10 MB groß sein.
+ Genau wie bei CSV-Dateien müssen Sie den Pfad zur JSON-Datei angeben und ihn im Skillparameter *entitiesDefinitionUri* festlegen. Der Pfad sollte sich an einem https-Speicherort befinden. Die Definitionsdatei kann bis zu 10 MB groß sein.
 
 Die einfachste JSON-Definition einer benutzerdefinierten Entitätsliste kann eine Liste von Entitäten sein, die übereinstimmen müssen:
 

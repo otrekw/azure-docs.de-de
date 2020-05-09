@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127921"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612366"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
 
+>[!IMPORTANT]
+>Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/environment-setup-2019.md).
+>
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Windows Virtual Desktop ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Windows Virtual Desktop-Umgebung näher erläutert.
-
-## <a name="tenants"></a>Mandanten
-
-Der Windows Virtual Desktop-Mandant ist die primäre Schnittstelle zur Verwaltung Ihrer Windows Virtual Desktop-Umgebung. Jeder Windows Virtual Desktop-Mandant muss der Azure Active Directory-Instanz zugeordnet sein, in der die Benutzer enthalten sind, die sich an der Umgebung anmelden. Über den Windows Virtual Desktop-Mandanten können Sie mit dem Erstellen von Hostpools zum Ausführen der Workloads Ihrer Benutzer beginnen.
 
 ## <a name="host-pools"></a>Hostpools
 
@@ -45,12 +47,12 @@ Standardmäßig wird jeweils automatisch eine Desktop-App-Gruppe (mit dem Namen 
 
 Zum Veröffentlichen von Ressourcen für Benutzer müssen Sie sie App-Gruppen zuweisen. Beachten Sie Folgendes, wenn Sie Benutzer App-Gruppen zuweisen:
 
-- Ein Benutzer kann in einem Hostpool sowohl einer Desktop-App-Gruppe als auch einer RemoteApp-App-Gruppe zugewiesen sein.
+- Ein Benutzer kann im gleichen Hostpool sowohl einer Desktop-App-Gruppe als auch einer RemoteApp-App-Gruppe zugewiesen sein. Benutzer können jedoch nur einen Typ von App-Gruppe pro Sitzung starten. Benutzer können nicht beide Typen von App-Gruppen gleichzeitig in einer einzigen Sitzung starten.
 - Ein Benutzer kann in einem Hostpool mehreren App-Gruppen zugewiesen sein, und der Feed gilt dann gemeinsam für beide App-Gruppen.
 
-## <a name="tenant-groups"></a>Mandantengruppen
+## <a name="workspaces"></a>Arbeitsbereiche
 
-Unter Windows Virtual Desktop werden die meisten Einrichtungs- und Konfigurationsschritte auf dem Windows Virtual Desktop-Mandanten ausgeführt. Der Windows Virtual Desktop-Mandant enthält die Hostpools, App-Gruppen und App-Gruppen-Benutzerzuweisungen. Es kann aber bestimmte Situationen geben, in denen Sie mehrere Windows Virtual Desktop-Mandanten gleichzeitig verwalten müssen. Dies gilt besonders, wenn Sie ein Clouddienstanbieter (Cloud Service Provider, CSP) oder ein Hostingpartner sind. In diesen Situationen können Sie eine benutzerdefinierte Windows Virtual Desktop-Mandantengruppe verwenden, um die einzelnen Windows Virtual Desktop-Mandanten der Kunden zu platzieren und den Zugriff zentral zu verwalten. Falls Sie aber nicht mehr als einen Windows Virtual Desktop-Mandanten verwalten, trifft das Konzept der Mandantengruppe nicht zu. Sie können Ihren Mandanten, der in der Standardmandantengruppe vorhanden ist, dann weiter betreiben und verwalten.
+Ein Arbeitsbereich ist eine logische Gruppierung von Anwendungsgruppen in Windows Virtual Desktop. Jede Windows Virtual Desktop-Anwendungsgruppe muss einem Arbeitsbereich zugeordnet sein, damit Benutzer die Remote-Apps und Desktops anzeigen können, die für sie veröffentlicht wurden.  
 
 ## <a name="end-users"></a>Endbenutzer
 
@@ -60,9 +62,12 @@ Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit belie
 
 Informieren Sie sich unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop.md) weiter über den delegierten Zugriff und das Zuweisen von Rollen zu Benutzern.
 
-Informationen zur Einrichtung Ihres Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+Informationen zum Einrichten des Windows Virtual Desktop-Hostpools finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
 
 Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop finden Sie in einem der folgenden Artikel:
 
-- [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
-- [Herstellen einer Verbindung über einen Webbrowser](connect-web.md)
+- [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit einem Webbrowser](connect-web.md)
+- [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
+- [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)
+- [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
