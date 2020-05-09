@@ -6,13 +6,13 @@ author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879427"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204320"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
 
@@ -25,21 +25,24 @@ Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsof
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die Bezeichnungsportal-URL für ein laufendes Datenbeschriftungsprojekt
 * Ein [Microsoft-Konto](https://account.microsoft.com/account) oder ein Azure Active Directory-Konto für die Organisation und das Projekt
+* Zugriffsebene „Mitwirkender“ für den Arbeitsbereich, der das Bezeichnungsprojekt enthält
 
-> [!NOTE]
-> Der Projektadministrator findet die URL des Bezeichnungsportals auf der Registerkarte **Details** der Seite **Projektdetails**.
+## <a name="sign-in-to-the-workspace"></a>Anmelden beim Arbeitsbereich
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>Anmelden beim Bezeichnungsportal des Projekts
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
-Navigieren Sie zu der vom Projektadministrator bereitgestellten Bezeichnungsportal-URL. Melden Sie sich mit dem E-Mail-Konto an, das der Administrator verwendet hat, um Sie dem Team hinzuzufügen. Bei den meisten Benutzern handelt es sich dabei um ihr Microsoft-Konto. Sollte für das Bezeichnungsprojekt Azure Active Directory verwendet werden, melden Sie sich darüber an.
+1. Wählen Sie das Abonnement und den Arbeitsbereich mit dem Bezeichnungsprojekt aus.  Diese Informationen erhalten Sie vom Projektadministrator.
+
+1. Wählen Sie auf der linken Seite **Datenbeschriftung** aus, um nach dem Projekt zu suchen.  
+
+1. Wählen Sie in der Liste den Projektnamen aus.
 
 ## <a name="understand-the-labeling-task"></a>Grundlegendes zur Bezeichnungsaufgabe
 
-Nach der Anmeldung wird die Übersichtsseite des Projekts angezeigt.
+Nachdem Sie das Projekt ausgewählt haben, wählen Sie oben auf der Seite die Option **Daten beschriften** aus.
 
-Navigieren Sie zu **Detaillierte Anweisungen anzeigen**. Diese Anweisungen sind projektspezifisch. Sie enthalten relevante Informationen wie etwa die Art der vorliegenden Daten und Hinweise zum Treffen von Entscheidungen. Nachdem Sie die Informationen gelesen haben, kehren Sie zur Projektseite zurück, und wählen Sie **Start labeling** (Bezeichnen beginnen) aus.
+Es werden projektspezifische Anweisungen angezeigt. Sie enthalten relevante Informationen wie etwa die Art der vorliegenden Daten und Hinweise zum Treffen von Entscheidungen. Lesen Sie diese Informationen, und wählen Sie anschließend oben auf der Seite **Aufgaben** aus.  Stattdessen können Sie auch am unteren Rand der Seite auf **Beschriftung starten** klicken.
 
 ## <a name="common-features-of-the-labeling-task"></a>Allgemeine Features der Bezeichnungsaufgabe
 

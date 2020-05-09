@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/20/2020
-ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233566"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195348"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
-Azure Data Lake Storage Gen2 ist ein Cloudspeicherdienst für Big Data-Analysen, der auf Azure Blob Storage basiert. Data Lake Storage Gen2 vereint die Funktionen von Azure Blob Storage und Azure Data Lake Storage Gen1. Der so entstandene Dienst bietet Funktionen von Azure Data Lake Storage Gen1, z.B. Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene sowie Skalierbarkeit, und Funktionen von Azure Blob Storage wie einen kostengünstigen mehrstufigen Speicher, Hochverfügbarkeit und Funktionen zur Notfallwiederherstellung.
+Azure Data Lake Storage Gen2 ist ein Cloudspeicherdienst für Big Data-Analysen, der auf Azure Blob Storage basiert. Data Lake Storage Gen2 vereint die Funktionen von Azure Blob Storage und Azure Data Lake Storage Gen1. Der daraus resultierende Dienst bietet Features aus Azure Data Lake Storage Gen1. Zu diesen Features gehören: Dateisystemsemantik, Sicherheit auf Verzeichnisebene und auf Dateiebene sowie Flexibilität. Sie werden ergänzt durch die geringen Kosten, den mehrstufigen Speicher, die Hochverfügbarkeit und die Notfallwiederherstellung von Azure Blob Storage.
 
 ## <a name="data-lake-storage-gen2-availability"></a>Verfügbarkeit von Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto.
 1. Klicken Sie auf **Erstellen**.
 1. Auf dem Bildschirm **Speicherkonto erstellen**:
     1. Wählen Sie das richtige Abonnement und die Ressourcengruppe aus.
-    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
+    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein.
     1. Klicken Sie auf die Registerkarte **Erweitert**.
     1. Klicken Sie auf **Aktiviert** neben **Hierarchischer Namespace** unter **Data Lake Storage Gen2**.
     1. Klicken Sie auf **Überprüfen + erstellen**.
@@ -136,7 +136,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Melden Sie sich als Nächstes beim Portal an. Fügen Sie die neue benutzerseitig zugewiesene verwaltete Identität der Rolle **Mitwirkender an Storage-Blobdaten** für das Speicherkonto hinzu. Dies wird in Schritt 3 oben unter [Verwenden des Azure-Portals](hdinsight-hadoop-use-data-lake-storage-gen2.md) beschrieben.
+Melden Sie sich als Nächstes beim Portal an. Fügen Sie die neue benutzerseitig zugewiesene verwaltete Identität zu der Rolle **Mitwirkender an Storage-Blobdaten** im Speicherkonto zu. Dieser Schritt wird in Schritt 3 unter [Verwenden des Azure-Portals](hdinsight-hadoop-use-data-lake-storage-gen2.md) beschrieben.
 
 Stellen Sie die Vorlage mit dem folgenden Codeausschnitt bereit, nachdem Sie die Rolle für die benutzerseitig zugewiesene verwaltete Identität zugewiesen haben.
 
@@ -165,15 +165,15 @@ Weitere Informationen zu Dateiberechtigungen mit ACLs finden Sie im Abschnitt �
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Wie steuere ich in Data Lake Storage Gen2 den Zugriff auf meine Daten?
 
-In Data Lake Storage Gen2 steuern verwaltete Identitäten den Zugriff auf Dateien durch Ihren HDInsight-Cluster. Eine verwaltete Identität ist eine in Azure Active Directory (Azure AD) registrierte Identität, deren Anmeldeinformationen von Azure verwaltet werden. Mit verwalteten Identitäten müssen Sie keine Dienstprinzipale in Azure AD registrieren und keine Anmeldeinformationen wie z. B. Zertifikate verwalten.
+In Data Lake Storage Gen2 steuern verwaltete Identitäten den Zugriff auf Dateien durch Ihren HDInsight-Cluster. Eine verwaltete Identität ist eine in Azure Active Directory (Azure AD) registrierte Identität, deren Anmeldeinformationen von Azure verwaltet werden. Bei Verwendung von verwalteten Identitäten müssen Sie in Azure AD keine Dienstprinzipale registrieren. Sie müssen auch keine Anmeldeinformationen, z. B. Zertifikate, verwalten.
 
-Es gibt zwei Arten verwalteter Identitäten für Azure-Dienste: durch das System zugewiesene und durch den Benutzer zugewiesene Identitäten. HDInsight verwendet durch den Benutzer zugewiesene verwaltete Identitäten, um auf Data Lake Storage Gen2 zuzugreifen. Eine vom Benutzer zugewiesene verwaltete Identität wird als eigenständige Azure-Ressource erstellt. Azure erstellt eine Identität in dem Azure AD-Mandanten, der vom verwendeten Abonnement als vertrauenswürdig eingestuft wird. Nachdem die Identität erstellt wurde, kann sie einer oder mehreren Azure-Dienstinstanzen zugewiesen werden.
+Es gibt zwei Arten verwalteter Identitäten für Azure-Dienste: durch das System zugewiesene und durch den Benutzer zugewiesene Identitäten. HDInsight verwendet durch den Benutzer zugewiesene verwaltete Identitäten, um auf Data Lake Storage Gen2 zuzugreifen. Benutzerseitig zugewiesene verwaltete Identitäten werden als eigenständige Azure-Ressourcen erstellt. Azure erstellt eine Identität in dem Azure AD-Mandanten, der vom verwendeten Abonnement als vertrauenswürdig eingestuft wird. Nachdem die Identität erstellt wurde, kann sie einer oder mehreren Azure-Dienstinstanzen zugewiesen werden.
 
 Der Lebenszyklus einer vom Benutzer zugewiesenen Identität wird getrennt vom Lebenszyklus der Azure-Dienstinstanzen verwaltet, denen sie zugewiesen ist. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Wie richte ich Berechtigungen für Azure AD-Benutzer zum Abfragen von Daten in Data Lake Storage Gen2 mit Hive oder anderen Diensten ein?
 
-Verwenden Sie Azure AD-Sicherheitsgruppen als zugewiesenen Prinzipal in ACLs, um Benutzern Berechtigungen zum Abfragen von Daten zu erteilen. Weisen Sie einzelnen Benutzern oder Dienstprinzipalen nicht direkt Dateizugriffsberechtigungen zu. Wenn Sie Azure AD-Sicherheitsgruppen zum Steuern des Flusses von Berechtigungen verwenden, können Sie Benutzer oder Dienstprinzipale hinzufügen und entfernen, ohne erneut ACLs auf eine gesamte Verzeichnisstruktur anwenden zu müssen. Sie müssen die Benutzer einfach der entsprechenden Azure AD-Sicherheitsgruppe hinzufügen oder sie aus ihr entfernen. ACLs werden nicht vererbt, und die erneute Anwendung von ACLs erfordert daher eine Aktualisierung der ACL für jede Datei und jedes Unterverzeichnis.
+Verwenden Sie Azure AD-Sicherheitsgruppen als zugewiesenen Prinzipal in ACLs, um Benutzern Berechtigungen zum Abfragen von Daten zu erteilen. Weisen Sie einzelnen Benutzern oder Dienstprinzipalen nicht direkt Dateizugriffsberechtigungen zu. Wenn Sie Azure AD-Sicherheitsgruppen zum Steuern des Flusses von Berechtigungen verwenden, können Sie Benutzer oder Dienstprinzipale hinzufügen und entfernen, ohne erneut ACLs auf eine gesamte Verzeichnisstruktur anzuwenden. Sie müssen die Benutzer einfach der entsprechenden Azure AD-Sicherheitsgruppe hinzufügen oder sie aus ihr entfernen. ACLs werden nicht vererbt, und die erneute Anwendung von ACLs erfordert daher eine Aktualisierung der ACL für jede Datei und jedes Unterverzeichnis.
 
 ## <a name="access-files-from-the-cluster"></a>Zugreifen auf Dateien aus dem Cluster
 
