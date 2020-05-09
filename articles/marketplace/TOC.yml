@@ -199,19 +199,7 @@
             - name: Aktualisieren eines vorhandenen Angebots
               href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
         - name: Beratungsdienste
-          href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
-            - name: Erstellen eines Beratungsdienstangebots
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
-                - name: Registerkarte „Storefront Details“ (Storefrontdetails)
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
-            - name: Veröffentlichen eines Beratungsdienstangebots
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
+          href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Containerangebot
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
