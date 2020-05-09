@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418353"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562201"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 
@@ -285,9 +285,9 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Objekt (object) | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | number | Nein | 1 | 1 bis 1.000 | `"interval":10` |
+| **interval** | number | Nein  | 1 | 1 bis 1.000 | `"interval":10` |
 | **endTime** | Zeichenfolge | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | Objekt (object) | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | Objekt (object) | Nein  | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft
 Die folgende Tabelle zeigt, wie die **startTime**-Eigenschaft eine Triggerausführung steuert:
@@ -326,6 +326,9 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der **schedule**-E
 Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
 
 Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
+
+> [!NOTE]
+> Mit der Ausführung des Triggers für ein rollierendes Fenster *wird gewartet, bis die ausgelöste Pipelineausführung* beendet ist. Der Ausführungszustand gibt den Status der ausgelösten Pipelineausführung wieder. Wenn beispielsweise eine ausgelöste Pipelineausführung abgebrochen wird, wird die entsprechende Ausführung des Triggers für ein rollierendes Fenster als abgebrochen gekennzeichnet. Dies unterscheidet sich vom „Fire-and-Forget“-Verhalten (Auslösen und Vergessen) des Zeitplantriggers, das als erfolgreich gekennzeichnet wird, sofern eine Pipelineausführung gestartet wurde.
 
 ## <a name="event-based-trigger"></a>Ereignisbasierter Trigger
 

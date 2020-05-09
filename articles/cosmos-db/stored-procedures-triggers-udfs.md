@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010544"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509668"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -64,6 +64,9 @@ Transaktionen sind nativ in das JavaScript-Programmiermodell von Azure Cosmos DB
 ### <a name="data-consistency"></a>Datenkonsistenz
 
 Gespeicherte Prozeduren und Trigger werden immer auf dem primären Replikat eines Azure Cosmos-Containers ausgeführt. Dadurch wird sichergestellt, dass Lesevorgänge in gespeicherten Prozeduren eine [hohe Konsistenz](consistency-levels-tradeoffs.md) aufweisen. Abfragen mit benutzerdefinierten Funktionen können auf dem primären oder einem sekundären Replikat ausgeführt werden. Gespeicherte Prozeduren und Trigger dienen zur Unterstützung von transaktionalen Schreibvorgängen. Schreibgeschützte Logik lässt sich jedoch am besten als anwendungsseitige Logik implementieren, und Abfragen mit den [SDKs der SQL-API von Azure Cosmos DB](sql-api-dotnet-samples.md) helfen Ihnen, den Datenbankdurchsatz vollständig zu nutzen. 
+
+> [!TIP]
+> Bei innerhalb einer gespeicherten Prozedur oder eines Triggers ausgeführten Abfragen werden möglicherweise keine Änderungen angezeigt, die von derselben Skripttransaktion an Elementen vorgenommen wurden. Dies gilt sowohl für SQL-Abfragen wie z. B. `getContent().getCollection.queryDocuments()` als auch für integrierte Sprachabfragen wie z. B. `getContext().getCollection().filter()`.
 
 ## <a name="bounded-execution"></a>Gebundene Ausführung
 

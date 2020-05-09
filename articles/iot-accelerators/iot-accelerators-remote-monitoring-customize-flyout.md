@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447113"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193172"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
@@ -133,7 +133,7 @@ Wenn die Webbenutzeroberfläche nicht lokal ausgeführt wird, führen Sie den fo
 npm start
 ```
 
-Der vorherige Befehl führt die Benutzeroberfläche lokal unter [http://localhost:3000/dashboard](http://localhost:3000/dashboard) aus. Navigieren Sie zur Seite **Beispiel**, und klicken Sie auf **Flyout öffnen**.
+Der vorherige Befehl führt die Benutzeroberfläche lokal unter `http://localhost:3000/dashboard` aus. Navigieren Sie zur Seite **Beispiel**, und klicken Sie auf **Flyout öffnen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

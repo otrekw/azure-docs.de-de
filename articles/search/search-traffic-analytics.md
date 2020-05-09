@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: db8c1781061f038cc90310fcd00c220fa6f5d1a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258208"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128066"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Sammeln von Telemetriedaten für „Datenverkehrsanalyse durchsuchen“
 
@@ -22,7 +22,7 @@ ms.locfileid: "80258208"
 Dieses Muster ist abhängig von [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) (einem Feature von [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)) zur Sammlung von Benutzerdaten. Es erfordert, dass Sie Ihrem Clientcode Instrumentierung hinzufügen, wie in diesem Artikel beschrieben wird. Abschließend benötigen Sie einen Berichtserstellungsmechanismus, um die Daten zu analysieren. Wir empfehlen Power BI, aber Sie können das Anwendungsdashboard oder ein beliebiges Tool verwenden, das eine Verbindung mit Application Insights herstellt.
 
 > [!NOTE]
-> Das in diesem Artikel beschriebene Muster gilt für erweiterte Szenarien und Clickstreamdaten, die von den Ihrem Client hinzugefügten Code generiert werden. Im Gegensatz dazu lassen sich Dienstprotokolle auf einfache Weise einrichten, bieten einen Bereich von Metriken und können im Portal ohne erforderlichen Code ausgeführt werden. Eine Aktivierung der Diagnoseprotokollierung wird für alle Szenarien empfohlen. Weitere Informationen finden Sie unter [Collect and analyze log data](search-monitor-logs.md) (Sammeln und Analysieren von Protokolldaten).
+> Das in diesem Artikel beschriebene Muster gilt für erweiterte Szenarien und Clickstreamdaten, die von den Ihrem Client hinzugefügten Code generiert werden. Im Gegensatz dazu lassen sich Dienstprotokolle auf einfache Weise einrichten, bieten einen Bereich von Metriken und können im Portal ohne erforderlichen Code ausgeführt werden. Eine Aktivierung der Protokollierung wird für alle Szenarios empfohlen. Weitere Informationen finden Sie unter [Collect and analyze log data](search-monitor-logs.md) (Sammeln und Analysieren von Protokolldaten).
 
 ## <a name="identify-relevant-search-data"></a>Identifizieren von relevanten Suchdaten
 

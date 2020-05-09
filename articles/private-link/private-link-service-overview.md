@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202212"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -61,7 +61,7 @@ Ein Private Link-Dienst legt die folgenden Eigenschaften fest:
 
 ### <a name="details"></a>Details
 
-- Auf den Private Link-Dienst kann von genehmigten privaten Endpunkten in der gleichen Region aus zugegriffen werden. Der private Endpunkt kann über dasselbe virtuelle Netzwerk, regionale VNets mit Peering, globale VNets mit Peering und lokal über private VPN- oder ExpressRoute-Verbindungen erreicht werden. 
+- Auf den Private Link-Dienst kann von genehmigten privaten Endpunkten in einer beliebigen öffentlichen Region aus zugegriffen werden. Der private Endpunkt kann über dasselbe virtuelle Netzwerk, regionale VNets mit Peering, globale VNets mit Peering und lokal über private VPN- oder ExpressRoute-Verbindungen erreicht werden. 
  
 - Beim Erstellen eines Private Link-Diensts wird für die Lebensdauer der Ressource eine Netzwerkschnittstelle erstellt. Diese Schnittstelle kann vom Kunden nicht verwaltet werden.
  

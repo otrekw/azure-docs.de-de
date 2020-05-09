@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
 description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
 ms.date: 03/24/2020
 ms.topic: tutorial
-ms.openlocfilehash: 15a6c3df26938332d42ecbcfff43f958577062c4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239957"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190825"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -126,7 +126,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
    Die Eigenschaft _field_ in der Richtlinienregel muss auf einen unterstützten Wert festgelegt sein. Eine vollständige Liste der Werte finden Sie im Artikel „Struktur von Azure Policy-Definitionen“ unter [Felder](../concepts/definition-structure.md#fields). Ein Beispiel für einen Alias wäre `"Microsoft.Compute/VirtualMachines/Size"`.
 
-   Weitere Beispiele für Azure-Richtlinien finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
+   Weitere Azure Policy-Beispiele finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
 
 1. Wählen Sie **Speichern** aus.
 

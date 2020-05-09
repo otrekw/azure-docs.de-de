@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228286"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536433"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -51,8 +51,7 @@ Diese Grenzwerte finden Sie im Abschnitt [Skalierbarkeitsziele für das Azure-Sp
 ### <a name="file-share-and-file-scale-targets"></a>Skalierungsziele für Dateifreigaben und Dateien
 
 > [!NOTE]
-> Standarddateifreigaben über 5 TiB unterliegen neben regionalen auch bestimmten anderen Einschränkungen.
-> Eine Liste der Einschränkungen, regionale Informationen und Anweisungen dazu, wie Sie diese größeren Dateifreigaben aktivieren, finden Sie im Abschnitt [Onboarding für größere Dateifreigaben](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs.
+> Für Standarddateifreigaben über 5 TiB gelten bestimmte Einschränkungen. Eine Liste der Einschränkungen und Anweisungen dazu, wie Sie Dateifreigaben vergrößern, finden Sie im Abschnitt [Aktivieren größerer Dateifreigaben für Standarddateifreigaben](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

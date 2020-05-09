@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81454678"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -45,13 +45,13 @@ In der Praxis erfordern Szenarios der Schlüsselverwaltung und -steuerung sowie 
 
 ## <a name="the-purpose-of-encryption-at-rest"></a>Welchen Zweck erfüllt die Verschlüsselung ruhender Daten?
 
-Die Verschlüsselung ruhender Daten bietet Schutz für gespeicherte Daten (im Ruhezustand). Zu Angriffen auf ruhende Daten zählen Versuche, physischen Zugriff auf die Hardware zu erhalten, auf der die Daten gespeichert sind, und die enthaltenen Daten zu kompromittieren. In einem derartigen Angriff wurde die Festplatte eines Servers während der Wartung möglicherweise nicht angemessen behandelt, sodass ein Angreifer die Festplatte entfernen konnte. Dann kann der Angreifer die Festplatte später in einen Computer einbauen, den er steuert, und erhält Zugriff auf die Daten.
+Die Verschlüsselung ruhender Daten bietet Schutz für gespeicherte Daten (im Ruhezustand). Zu Angriffen auf ruhende Daten zählen Versuche, physischen Zugriff auf die Hardware zu erhalten, auf der die Daten gespeichert sind, und die enthaltenen Daten zu kompromittieren. Bei einem solchen Angriff wurde die Festplatte eines Servers während der Wartung möglicherweise unsachgemäß behandelt, sodass ein Angreifer die Festplatte entfernen konnte. Dann kann der Angreifer die Festplatte später in einen Computer einbauen, den er steuert, und erhält Zugriff auf die Daten.
 
 Die Verschlüsselung ruhender Daten wurde entwickelt, um dem Angreifer den Zugriff auf die unverschlüsselten Daten zu verwehren, indem die Daten auf der Festplatte verschlüsselt sind. Wenn ein Angreifer sich Zugriff auf eine Festplatte mit verschlüsselten Daten verschafft, aber nicht über die Verschlüsselungsschlüssel verfügt, muss er die Verschlüsselung zum Lesen der Daten umgehen. Dieser Angriff ist weitaus komplexer und ressourcenintensiver als der Zugriff auf nicht verschlüsselte Daten auf einer Festplatte. Aus diesem Grund wird die Verschlüsselung ruhender Daten dringend empfohlen und stellt für viele Organisationen eine Anforderung höchster Priorität dar.
 
-Die Verschlüsselung ruhender Daten ist ggf. auch zur Erfüllung der Anforderungen einer Organisation an Datengovernance und Konformität erforderlich. Branchenspezifische und gesetzliche Vorschriften wie HIPAA, PCI und FedRAMP geben spezifische Sicherheitsmechanismen für Datenschutz- und Verschlüsselungsanforderungen vor. Die Verschlüsselung ruhender Daten ist eine verpflichtende Maßnahme, die für die Erfüllung dieser Vorschriften erforderlich ist. Weitere Informationen über den Ansatz von Microsoft zur FIPS 140-2-Validierung finden Sie in der [Publikation 140-2 des Federal Information Processing Standard (FIPS)](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2). 
+Die Verschlüsselung ruhender Daten ist ggf. auch erforderlich, um die Anforderungen einer Organisation an Datengovernance und Konformität zu erfüllen. Branchenspezifische und gesetzliche Vorschriften wie HIPAA, PCI und FedRAMP geben spezifische Sicherheitsmechanismen für Datenschutz- und Verschlüsselungsanforderungen vor. Die Verschlüsselung ruhender Daten ist eine verpflichtende Maßnahme, die für die Erfüllung dieser Vorschriften erforderlich ist. Weitere Informationen über den Ansatz von Microsoft zur FIPS 140-2-Validierung finden Sie in der [Publikation 140-2 des Federal Information Processing Standard (FIPS)](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2). 
 
-Zusätzlich zur Erfüllung von Konformitäts- und rechtlichen Anforderungen bietet die Verschlüsselung im Ruhezustand einen umfassenden Schutz. Microsoft Azure stellt eine konforme Plattform für Dienste, Anwendungen und Daten bereit. Darüber hinaus bietet Azure umfassende Sicherheit für Einrichtungen, physische Sicherheit, Datenzugriffskontrolle und Überwachung. Es ist jedoch wichtig, für zusätzliche sich „überschneidende“ Sicherheitsmaßnahmen zu sorgen, falls eine der anderen Sicherheitsmaßnahmen ausfällt und die Verschlüsselung im Ruhezustand eine solche Sicherheitsmaßnahme ermöglicht.
+Zusätzlich zur Erfüllung von Konformitäts- und rechtlichen Anforderungen bietet die Verschlüsselung im Ruhezustand einen umfassenden Schutz. Microsoft Azure stellt eine konforme Plattform für Dienste, Anwendungen und Daten bereit. Darüber hinaus bietet Azure umfassende Sicherheit für Einrichtungen, physische Sicherheit, Datenzugriffskontrolle und Überwachung. Es ist jedoch wichtig, für zusätzliche sich „überschneidende“ Sicherheitsmaßnahmen zu sorgen, falls eine der anderen Sicherheitsmaßnahmen fehlschlägt und die Verschlüsselung der ruhenden Daten eine solche Sicherheitsmaßnahme bereitstellt.
 
 Microsoft hat es sich zum Ziel gesetzt, Optionen für die Verschlüsselung im Ruhezustand clouddienstübergreifend bereitzustellen, und gibt seinen Kunden die Kontrolle über Verschlüsselungsschlüssel und Protokolle der Schlüsselverwendung. Darüber hinaus arbeitet Microsoft daran, alle ruhenden Kundendaten standardmäßig zu verschlüsseln.
 
@@ -131,7 +131,7 @@ Für viele Kunden ist die wichtigste Anforderung, sicherzustellen, dass die Date
 
 Durch die serverseitige Verschlüsselung mit vom Dienst verwalteten Schlüsseln wurde deshalb schnell auf die Anforderung reagiert, eine Verschlüsselung ruhender Daten mit geringem Mehraufwand für den Kunden bereitzustellen. Wenn sie zur Verfügung steht, kann der Kunde das Azure-Portal für das Zielabonnement und den Zielressourcenanbieter öffnen und ein Kontrollkästchen aktivieren, das angibt, dass die Daten verschlüsselt werden sollen. Bei einigen Ressourcen-Managern ist die serverseitige Verschlüsselungen mit vom Dienst verwalteten Schlüssel standardmäßig aktiviert.
 
-Die serverseitige Verschlüsselung mit von Microsoft verwalteten Schlüsseln impliziert nicht, dass der Dienst über Vollzugriff zum Speichern und Verwalten der Schlüssel verfügt. Während einige Kunden möglicherweise die Schlüssel verwalten möchten, weil sie das Gefühl haben, dass sie so eine höhere Sicherheit erreichen können, sollten die Kosten und das Risiko, die mit einer kundenspezifischen Schlüsselspeicherlösung verbunden sind, bei der Bewertung eines Modells berücksichtigt werden. In vielen Fällen kann eine Organisation zu dem Schluss kommen, dass Ressourceneinschränkungen oder die Risiken einer lokalen Lösung höher sind als das Risiko der Cloudverwaltung der Schlüssel für die Verschlüsselung ruhender Daten.  Dieses Modell kann allerdings für Organisation unzureichend sein, die die Erstellung oder die Lebensdauer der Verschlüsselungsschlüssel steuern müssen, oder bei denen anderes Personal die Verschlüsselungsschlüssel eines Diensts verwaltet als das Personal, das den Dienst verwaltet (d.h. die Trennung der Schlüsselverwaltung vom allgemeinen Verwaltungsmodell des Diensts).
+Die serverseitige Verschlüsselung mit von Microsoft verwalteten Schlüsseln impliziert nicht, dass der Dienst über Vollzugriff zum Speichern und Verwalten der Schlüssel verfügt. Während einige Kunden möglicherweise die Schlüssel verwalten möchten, weil sie das Gefühl haben, dass sie so eine höhere Sicherheit erreichen können, sollten die Kosten und das Risiko, die mit einer kundenspezifischen Schlüsselspeicherlösung verbunden sind, bei der Bewertung eines Modells berücksichtigt werden. In vielen Fällen kann eine Organisation zu dem Schluss kommen, dass Ressourceneinschränkungen oder die Risiken einer lokalen Lösung höher sind als das Risiko der Cloudverwaltung der Schlüssel für die Verschlüsselung ruhender Daten.  Dieses Modell ist jedoch möglicherweise nicht für Organisationen ausreichend, die die Erstellung oder die Lebensdauer der Verschlüsselungsschlüssel steuern müssen, oder in denen die Verschlüsselungsschlüssel eines Diensts nicht von denselben Mitarbeitern verwaltet werden, die den Dienst verwalten (d. h. in Fällen, in denen die Schlüsselverwaltung vom allgemeinen Verwaltungsmodell des Diensts getrennt erfolgt).
 
 ##### <a name="key-access"></a>Schlüsselzugriff
 
@@ -163,11 +163,11 @@ Für Vorgänge mit Verschlüsselungsschlüsseln kann einer Dienstidentität Zugr
 Um einen Schlüssel zum Ver- oder Entschlüsseln von ruhenden Daten abzurufen, muss die Dienstidentität, als die die Dienstinstanz des Ressourcen-Managers ausgeführt wird, „UnwrapKey“ (zum Abrufen den Schlüssels für die Entschlüsselung) und „WrapKey“ (um einen Schlüssel beim Erstellen eines neuen Schlüssels in den Schlüsseltresor einzufügen) aufweisen.
 
 >[!NOTE]
->Weitere Informationen zur Authentifizierung bei Key Vault finden Sie auf der Seite „Sichern Ihres Schlüsseltresors“ in der [Dokumentation zu Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md).
+>Weitere Informationen zur Authentifizierung bei Key Vault finden Sie auf der Seite „Sichern Ihres Schlüsseltresors“ in der [Dokumentation zu Azure Key Vault](../../key-vault/general/secure-your-key-vault.md).
 
 **Vorteile**
 
-- Vollständige Steuerung der verwendeten Schlüssel: Verschlüsselungsschlüssel werden im Key Vault des Kunden und mit dessen Steuerung verwaltet.
+- Vollständige Steuerung der verwendeten Schlüssel: Verschlüsselungsschlüssel werden im Key Vault des Kunden unter dessen Kontrolle verwaltet.
 - Die Fähigkeit, mehrere Dienste für einen Master zu verschlüsseln
 - Die Schlüsselverwaltung kann vom allgemeinen Verwaltungsmodell für den Dienst getrennt werden.
 - Der Dienst- und Schlüsselspeicherort kann regionsübergreifend definiert werden.
@@ -180,7 +180,7 @@ Um einen Schlüssel zum Ver- oder Entschlüsseln von ruhenden Daten abzurufen, m
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln auf kundengesteuerter Hardware
 
-Einige Azure-Dienste ermöglichen das Schlüsselverwaltungsmodell HYOK (Host Your Own Key, Eigenen Schlüssel hosten). Dieser Verwaltungsmodus ist in Szenarien nützlich, in denen es notwendig ist, die ruhenden Daten zu verschlüsseln und die Schlüssel in einem geschützten Repository außerhalb der Kontrolle von Microsoft zu verwalten. In diesem Modell muss der Dienst den Schlüssel von einer externen Website abrufen. Leistungs- und Verfügbarkeitsgarantien werden beeinträchtigt, und die Konfiguration ist komplexer. Zusätzlich ähneln die allgemeinen Sicherheitsgarantien für dieses Modell denen für eine Umgebung, in der die Schlüssel vom Kunden in Azure Key Vault verwaltet werden, weil der Dienst bei Verschlüsselungs- und Entschlüsselungsvorgängen Zugriff auf den DEK hat.  Daraus folgt, dass das Modell für die meisten Organisationen ungeeignet ist, es sei denn, sie haben besondere Schlüsselverwaltungsanforderungen. Aufgrund dieser Einschränkungen unterstützen die meisten Azure-Dienste die serverseitige Verschlüsselung mit vom Server verwalteten Schlüsseln auf von Kunden verwalteter Hardware nicht.
+Einige Azure-Dienste ermöglichen das Schlüsselverwaltungsmodell HYOK (Host Your Own Key, Eigenen Schlüssel hosten). Dieser Verwaltungsmodus ist in Szenarios nützlich, in denen es erforderlich ist, die ruhenden Daten zu verschlüsseln und die Schlüssel in einem geschützten Repository außerhalb der Kontrolle von Microsoft zu verwalten. In diesem Modell muss der Dienst den Schlüssel von einer externen Website abrufen. Leistungs- und Verfügbarkeitsgarantien werden beeinträchtigt, und die Konfiguration ist komplexer. Zusätzlich ähneln die allgemeinen Sicherheitsgarantien für dieses Modell denen für eine Umgebung, in der die Schlüssel vom Kunden in Azure Key Vault verwaltet werden, weil der Dienst bei Verschlüsselungs- und Entschlüsselungsvorgängen Zugriff auf den DEK hat.  Daraus folgt, dass das Modell für die meisten Organisationen ungeeignet ist, es sei denn, sie haben besondere Schlüsselverwaltungsanforderungen. Aufgrund dieser Einschränkungen unterstützen die meisten Azure-Dienste die serverseitige Verschlüsselung mit vom Server verwalteten Schlüsseln auf von Kunden verwalteter Hardware nicht.
 
 ##### <a name="key-access"></a>Schlüsselzugriff
 
@@ -263,18 +263,26 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit vom Client verwaltetem Schlüssel**      |
 | **KI und Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
+| Azure Cognitive Services         | Ja                | Ja                | -                  |
 | Azure Machine Learning           | Ja                | Ja                | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
+| Content Moderator                | Ja                | Ja                | -                  |
+| Gesicht                             | Ja                | Ja                | -                  |
+| Language Understanding           | Ja                | Ja                | -                  |
+| Personalisierung                     | Ja                | Ja                | -                  |
+| QnA Maker                        | Ja                | Ja                | -                  |
+| Spracherkennungsdienste                  | Ja                | Ja                | -                  |
+| Textübersetzung                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | -                  | -                  |
+| Azure Stream Analytics           | Ja                | N/V\*            | -                  |
 | Event Hubs                       | Ja                | Ja, alle RSA-Längen. | -                  |
 | Functions                        | Ja                | Ja, alle RSA-Längen. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
-| Apache Kafka in Azure HDInsight  | Ja                | Alle RSA-Längen   | -                  |
+| Azure HDInsight                  | Ja                | All                | -                  |
 | Azure Monitor Application Insights | Ja                | Ja                | -                  |
-| Azure Monitor Log Analytics | Ja                | Ja                | -                  |
+| Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure-Daten-Explorer              | Ja                | Ja                | -                  |
 | Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  |
@@ -286,11 +294,12 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Virtual Machines                 | Ja                | Ja, RSA 2048 Bit  | -                  |
 | VM-Skalierungsgruppe        | Ja                | Ja, RSA 2048 Bit  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048 Bit  | -                  |
-| App Service                      | Ja                | Ja                | -                  |
-| Automation                       | Ja                | Ja                | -                  |
-| Azure-Portal                     | Ja                | Ja                | -                  |
+| App Service                      | Ja                | Ja\*\*            | -                  |
+| Automation                       | Ja                | Ja\*\*            | -                  |
+| Azure-Funktionen                  | Ja                | Ja\*\*            | -                  |
+| Azure-Portal                     | Ja                | Ja\*\*            | -                  |
 | Logic Apps                       | Ja                | Ja                | -                  |
-| Azure Managed Applications       | Ja                | Ja                | -                  |
+| Azure Managed Applications       | Ja                | Ja\*\*            | -                  |
 | Service Bus                      | Ja                | Ja                | -                  |
 | Site Recovery                    | Ja                | Ja                | -                  |
 | **Datenbanken**                    |                    |                    |                    |
@@ -304,8 +313,9 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
+| Azure Database Migration Service | Ja                | N/V\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Ja                | -                  | Ja                |
+| Azure DevOps Services            | Ja                | -                  | Ja                |
 | Azure Repos                      | Ja                | -                  | Ja                |
 | **Identität**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
@@ -316,24 +326,38 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-Dienste**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | Ja                | Ja                |
+| IoT Hub Device Provisioning      | Ja                | Ja                | -                  |
 | **Verwaltung und Governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | -                  | -                  |
+| Azure Migrate                    | Ja                | Ja                | -                  |
 | **Medien**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
+| **Security**                     |                    |                    |                    |
+| Azure Security Center für IoT    | Ja                | Ja                | -                  |
+| Azure Sentinel                   | Ja                | Ja                | -                  |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Blob Storage Premium             | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Disk Storage                     | Ja                | Ja                | -                  |
+| Disk Storage Ultra               | Ja                | Ja                | -                  |
 | Speicher für verwaltete Datenträger             | Ja                | Ja                | -                  |
 | File Storage                     | Ja                | Ja, RSA 2048 Bit  | -                  |
+| Storage Premium für Dateien             | Ja                | Ja, RSA 2048 Bit  | -                  |
+| Dateisynchronisierung                        | Ja                | Ja, RSA 2048 Bit  | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
-| Azure NetApp Files               | Ja                | -                  | -                  |
+| Azure Cache for Redis            | Ja                | N/V\*              | -                  |
+| Azure NetApp Files               | Ja                | Ja                | -                  |
 | Archivspeicher                  | Ja                | Ja, RSA 2048 Bit  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 | Data Box Edge                    | Ja                | Ja                | -                  |
 
+\* Dieser Dienst speichert keine Daten. Vorübergehende Caches werden ggf. mit einem Microsoft-Schlüssel verschlüsselt.
+
+\*\* Dieser Dienst unterstützt das Speichern von Daten in Ihrem eigenen Schlüsseltresor, Speicherkonto oder einem anderen Dienst zur persistenten Datenspeicherung, der bereits die serverseitige Verschlüsselung mit vom Kunden verwaltetem Schlüssel unterstützt.
+
 ## <a name="conclusion"></a>Zusammenfassung
 
-Der Schutz von Kundendaten, die in Azure-Diensten gespeichert sind, ist für Microsoft von größter Bedeutung. Alle in Azure gehosteten Dienste sollen Optionen für die Verschlüsselung ruhender Daten bereitstellen. Grundlegende Dienste wie Azure Storage, Azure SQL-Datenbank und wichtige Analyse- und Informationsdienste bieten bereits Optionen für die Verschlüsselung ruhender Daten. Einige dieser Dienste unterstützen entweder vom Kunden gesteuerte Schlüssel und clientseitige Verschlüsselung oder vom Dienst verwaltete Schlüssel und serverseitige Verschlüsselung. Microsoft Azure-Dienste verbessern die Verfügbarkeit der Verschlüsselung ruhender Daten deutlich. Zudem sind für die nächsten Monate bereits neue Optionen für die Vorschau und die allgemeinen Verfügbarkeit geplant.
+Der Schutz von Kundendaten, die in Azure-Diensten gespeichert sind, ist für Microsoft von größter Bedeutung. Alle in Azure gehosteten Dienste sollen Optionen für die Verschlüsselung ruhender Daten bereitstellen. Azure-Dienste unterstützen entweder dienstseitig verwaltete Schlüssel, kundenseitig verwaltete Schlüssel oder die clientseitige Verschlüsselung. Azure-Dienste verbessern die Verfügbarkeit der Verschlüsselung ruhender Daten deutlich. Zudem sind für die nächsten Monate bereits neue Optionen für die Vorschau und die allgemeinen Verfügbarkeit geplant.

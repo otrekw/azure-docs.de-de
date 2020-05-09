@@ -1,28 +1,26 @@
 ---
-title: 'Azure-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten verwalteter Anwendungen'
-description: In diesem Artikel werden die Anforderungen für die Veröffentlichung verwalteter Anwendungen im Marketplace beschrieben.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: 'Azure-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten verwalteter Anwendungen | Azure Marketplace'
+description: In diesem Artikel werden die Anforderungen für die Veröffentlichung verwalteter Anwendungen im Azure Marketplace beschrieben.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 38323ecfee69460b16542a3e004513f6a7389c41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 946e7524eada600d5ef17b2663a3fea066dcfaa2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288409"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82084871"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten verwalteter Anwendungen
+# <a name="azure-applications-managed-application-offer-publishing-requirements"></a>Azure-Anwendungen: Anforderungen für die Veröffentlichung von Angeboten verwalteter Anwendungen
 
-Verwaltete Anwendungen zählen zu den wichtigsten Verfahren, um eine Lösung im Marketplace zu veröffentlichen. Informieren Sie sich in diesem Handbuch über die Anforderungen für dieses Angebot. 
+In diesem Artikel werden die Anforderungen für den Angebotstyp „verwaltete Anwendung“ erläutert. Hierbei handelt es sich um eine Möglichkeit, ein Azure-Anwendungsangebot im Azure Marketplace zu veröffentlichen. Verwaltete Anwendungen sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Die Benutzer sehen hier den Aktionsaufruf „Jetzt kaufen“.
 
-Hierbei handelt es sich um Transaktionsangebote, die über den Marketplace bereitgestellt und abgerechnet werden. Die Benutzer sehen hier den Aktionsaufruf „Jetzt kaufen“.
+Verwenden Sie den Angebotstyp „Verwaltete Anwendung“, wenn die folgenden Bedingungen erforderlich sind:
 
-Verwenden der Azure-App: Angebotstyp „Verwaltete App“, wenn die folgenden Bedingungen erforderlich sind:
-- Sie stellen entweder eine Abonnement-basierte Lösung für Ihren Kunden mit einer VM oder eine vollständig IaaS-basierte Lösung bereit.
+- Sie stellen eine Lösung auf Abonnementbasis für Ihren Kunden mit einer VM oder einer vollständig IaaS-basierten Lösung bereit.
 - Sie oder Ihr Kunde setzen voraus, dass die Lösung von einem Partner verwaltet wird.
 
 >[!NOTE]
@@ -32,21 +30,18 @@ Verwenden der Azure-App: Angebotstyp „Verwaltete App“, wenn die folgenden Be
 
 |Requirements (Anforderungen) |Details  |
 |---------|---------|
-|Für das Azure-Abonnement eines Kunden bereitgestellt | Verwaltete Apps müssen im Abonnement des Kunden bereitgestellt werden und können von einem Drittanbieter verwaltet werden. | 
+|Für das Azure-Abonnement eines Kunden bereitgestellt | Verwaltete Apps müssen im Abonnement des Kunden bereitgestellt werden und können von einem Drittanbieter verwaltet werden. |
 |Abrechnung und Messung    |  Die Ressourcen werden im Azure-Abonnement des Kunden bereitgestellt. Für virtuelle Computer mit nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYGO) wird die Transaktion mit dem Kunden über Microsoft und die Abrechnung über das Azure-Abonnement des Kunden (PAYGO) abgewickelt. <br> Im Fall von Bring-Your-Own-License rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen.        |
-|Azure-kompatible virtuelle Festplatte (VHD)    |   VMs müssen unter Windows oder Linux erstellt werden.<ul> <ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen einer Azure-kompatiblen VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
+|Azure-kompatible virtuelle Festplatte (VHD)    |   VMs müssen unter Windows oder Linux erstellt werden.<ul> <ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen eines Azure-Anwendungsangebots](./partner-center-portal/create-new-azure-apps-offer.md).</li> </ul> |
 
 >[!NOTE]
 > Verwaltete Apps müssen im gesamten Marketplace bereitgestellt werden können. In Bezug auf die Kundenkommunikation ist zu beachten, dass Sie interessierte Kunden erreichen können, nachdem der gemeinsame Zugriff auf Leads aktiviert ist.  
 
 >[!Note]
->Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](./cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
+>Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar. Unter [Cloud Solution Providers](./cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Falls Sie dies noch nicht getan haben, 
 
-- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
-
-Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
-
-- [Melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
+- [Informieren Sie sich](https://azuremarketplace.microsoft.com/sell) über den Azure Marketplace, sofern noch nicht geschehen.
+- [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.
+- Weitere Informationen finden Sie unter [Erstellen eines Azure-Anwendungsangebots](./partner-center-portal/create-new-azure-apps-offer.md).
