@@ -10,20 +10,19 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
-ms.custom: aaddev
-ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.custom: aaddev, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 549df101e2bab81766b7b40e659b31457c9994d3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536028"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592790"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App
 
 In dieser Schnellstartanleitung wird die Integration einer Python-Webanwendung in Microsoft Identity Platform beschrieben. Ihre App meldet einen Benutzer an, ruft ein Zugriffstoken zum Aufrufen der Microsoft Graph-API ab und sendet eine Anforderung an die Microsoft Graph-API.
 
 Am Ende dieses Leitfadens akzeptiert Ihre Anwendung Anmeldungen von persönlichen Microsoft-Konten (z.B. outlook.com, live.com u.a.) sowie von Geschäfts,- Schul- oder Unikonten von allen Unternehmen oder Organisationen, die Azure Active Directory nutzen. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

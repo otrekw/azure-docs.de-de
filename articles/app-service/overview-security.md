@@ -5,12 +5,12 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475373"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535654"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
@@ -31,14 +31,14 @@ In den folgenden Abschnitten wird gezeigt, wie Sie Ihre App Service-App noch bes
 
 ## <a name="https-and-certificates"></a>HTTPS und Zertifikate
 
-App Service ermöglicht den Schutz von Apps mit [HTTPS](https://wikipedia.org/wiki/HTTPS). Der Standarddomänenname (\<App-Name>.azurewebsites.net) Ihrer App ist nach der App-Erstellung bereits über HTTPS zugänglich. Wenn Sie [eine benutzerdefinierte Domäne für Ihre App konfigurieren](app-service-web-tutorial-custom-domain.md), sollten Sie sie auch [mit einem SSL-Zertifikat schützen](configure-ssl-bindings.md), damit Clientbrowser sichere HTTPS-Verbindungen mit Ihrer benutzerdefinierten Domäne herstellen können. Es gibt mehrere Arten von Zertifikaten, die von App Service unterstützt werden:
+App Service ermöglicht den Schutz von Apps mit [HTTPS](https://wikipedia.org/wiki/HTTPS). Der Standarddomänenname (\<App-Name>.azurewebsites.net) Ihrer App ist nach der App-Erstellung bereits über HTTPS zugänglich. Wenn Sie [eine benutzerdefinierte Domäne für Ihre App konfigurieren](app-service-web-tutorial-custom-domain.md), sollten Sie sie auch [mit einem TLS-/SSL-Zertifikat schützen](configure-ssl-bindings.md), damit Clientbrowser sichere HTTPS-Verbindungen mit Ihrer benutzerdefinierten Domäne herstellen können. Es gibt mehrere Arten von Zertifikaten, die von App Service unterstützt werden:
 
 - Kostenloses, von App Service verwaltetes Zertifikat
 - App Service-Zertifikat
 - Zertifikat von Drittanbietern
 - Aus Azure Key Vault importiertes Zertifikat
 
-Weitere Informationen finden Sie unter [Hinzufügen eines SSL-Zertifikats in Azure App Service](configure-ssl-certificate.md).
+Weitere Informationen finden Sie unter [Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service](configure-ssl-certificate.md).
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Unsichere Protokolle (HTTP, TLS 1.0, FTP)
 

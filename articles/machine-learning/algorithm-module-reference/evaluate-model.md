@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/24/2020
-ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456403"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129851"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -33,36 +33,15 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
 > Wenn Sie mit der Modellauswertung noch nicht vertraut sind, empfehlen wir Ihnen die Videoreihe von Dr. Stephen Elston im Rahmen des [Kurses zum maschinellen Lernen](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) von EdX. 
 
 
-Es gibt drei Möglichkeiten zum Verwenden des Moduls **Evaluate Model**:
+## <a name="how-to-use-evaluate-model"></a>Verwenden von Evaluate Model
+1. Verbinden Sie die Ausgabe **Scored dataset** (Dataset mit Score) des Moduls [Score Model](./score-model.md) mit dem linken Eingang des Moduls **Evaluate Model**. 
 
-+ Generieren Sie Ergebnisse zu Ihren Trainingsdaten, und werten Sie das Modell anhand dieser Ergebnisse aus.
-+ Generieren Sie Ergebnisse für das Modell, vergleichen Sie diese aber mit Ergebnissen für ein reserviertes Testdataset.
-+ Vergleichen Sie die Ergebnisse für zwei verschiedene, aber zusammengehörige Modelle unter Verwendung desselben Datasets.
+2. [Optional:] Verbinden Sie die Ausgabe **Scored dataset** (Dataset mit Score) von [Score Model](./score-model.md) für das zweite Modell mit dem **rechten** Eingang von **Evaluate Model**. Sie können die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen. Die beiden Eingabealgorithmen sollten denselben Algorithmustyp aufweisen. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
 
-## <a name="use-the-training-data"></a>Verwenden der Trainingsdaten
+    > [!NOTE]
+    > Als Algorithmustyp sind zweiklassige Klassifizierung, mehrklassige Klassifizierung, Regression oder Clustering unter den Algorithmen für maschinelles Lernen möglich. 
 
-Zur Auswertung eines Modells müssen Sie eine Verbindung mit einem Dataset herstellen, das mehrere Eingabespalten und Ergebnisse enthält.  Wenn keine anderen Daten verfügbar sind, können Sie Ihr ursprüngliches Dataset verwenden.
-
-1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](./score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
-2. Klicken Sie auf das Modul **Evaluate Model**, und führen Sie die Pipeline aus, um die Auswertungsergebnisse zu generieren.
-
-## <a name="use-testing-data"></a>Verwenden von Testdaten
-
-Ein typisches Szenario beim maschinellen Lernen ist die Aufteilung Ihres ursprünglichen Datasets in Trainings- und Testdatasets unter Verwendung des Moduls [Split](./split-data.md) (Aufteilen) oder des Moduls [Partition and Sample](./partition-and-sample.md) (Partitionieren und Stichproben nehmen). 
-
-1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
-2. Verbinden Sie die Ausgabe des Moduls „Split“, das die Testdaten enthält, mit der rechten Eingabe von **Evaluate Model**.
-2. Klicken Sie auf das Modul **Evaluate Model** und dann auf **Run selected** (Ausgewählte ausführen), um die Auswertungsergebnisse zu generieren.
-
-## <a name="compare-scores-from-two-models"></a>Vergleichen von Ergebnissen zweier Modelle
-
-Sie können auch eine zweite Menge von Ergebnissen mit **Evaluate Model** verbinden.  Die Ergebnisse können eine gemeinsame Bewertungsmenge mit bekannten Ergebnissen oder eine Menge von Ergebnissen aus einem anderen Modell für dieselben Daten sein.
-
-Dieses Feature ist nützlich, da Sie die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen können. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
-
-1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
-2. Verbinden Sie die Ausgabe des Moduls „Score Model“ für das zweite Modell mit der rechten Eingabe des **Moduls „Evaluate Model“** .
-3. Übermitteln Sie die Pipeline.
+3. Übermitteln Sie die Pipeline, um die Bewertungsscores zu generieren.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -139,9 +118,9 @@ Die folgenden Metriken werden für die Auswertung von Clusteringmodellen herange
   
      Wenn die Anzahl der den Clustern zugeordneten Datenpunkte geringer ist als die Gesamtanzahl der verfügbaren Datenpunkte, bedeutet dies, dass die Datenpunkte keinem Cluster zugeordnet werden konnten.  
   
--   Die Werte in der Spalte **Maximal Distance to Cluster Center** (Maximaler Abstand zum Clusterzentrum) stellen die Summe der Abstände zwischen jedem Punkt und dem Schwerpunkt des Clusters des betreffenden Punkts dar.  
+-   Die Scores in der Spalte **Maximal Distance to Cluster Center** (Maximaler Abstand zum Clusterzentrum) stellen die Summen der Abstände zwischen jedem Punkt und dem Schwerpunkt des Clusters des betreffenden Punkts dar.  
   
-     Wenn dieser Wert hoch ist, kann dies bedeuten, dass der Cluster weit verstreut ist. Überprüfen Sie diese Statistik zusammen mit **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum), um die Streuung des Clusters zu bestimmen.   
+     Wenn dieser Wert hoch ist, kann dies bedeuten, dass der Cluster weit verstreut ist. Überprüfen Sie diese Statistik zusammen mit **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum), um die Streuung des Clusters zu ermitteln.   
 
 -   Der Wert **Combined Evaluation** (Kombinierte Bewertung) am Ende jedes Ergebnisabschnitts listet die gemittelten Werte für die in diesem bestimmten Modell erstellten Cluster auf.  
   
