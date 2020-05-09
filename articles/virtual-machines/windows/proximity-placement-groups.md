@@ -3,17 +3,17 @@ title: 'Mit PowerShell: Verwenden von Näherungsplatzierungsgruppen'
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen mit Azure PowerShell
 services: virtual-machines
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: zivr
+ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208524"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82098525"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit PowerShell
 

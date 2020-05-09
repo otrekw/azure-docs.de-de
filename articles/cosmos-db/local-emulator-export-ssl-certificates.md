@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: b4283ea7d500ca038d9f1cade89c772880ece199
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c72dbf24df850d8b0f7e5f26a873b78f5664c9e0
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409061"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82200937"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js
 
@@ -70,7 +70,7 @@ Sie können beide Zertifikate erneut generieren, indem Sie im Azure Cosmos DB-Em
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Verwenden des Zertifikats in Java
 
-Wenn Sie Java-Anwendungen oder MongoDB-Anwendungen ausführen, die den Java-Client verwenden, ist es einfacher, das Zertifikat im standardmäßigen Java-Zertifikatspeicher zu installieren, als die Flags `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` zu übergeben. Die enthaltene [Java-Demoanwendung](https://localhost:8081/_explorer/index.html) beispielsweise ist vom Standardzertifikatspeicher abhängig.
+Wenn Sie Java-Anwendungen oder MongoDB-Anwendungen ausführen, die den Java-Client verwenden, ist es einfacher, das Zertifikat im standardmäßigen Java-Zertifikatspeicher zu installieren, als die Flags `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` zu übergeben. Die enthaltene Java-Demoanwendung (`https://localhost:8081/_explorer/index.html`) beispielsweise ist vom Standardzertifikatspeicher abhängig.
 
 Befolgen Sie die Anweisungen unter [Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher](https://docs.microsoft.com/azure/java-add-certificate-ca-store), um das X.509-Zertifikat in den standardmäßigen Java-Zertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis „%JAVA_HOME%“ arbeiten, wenn Sie „keytool“ ausführen.
 

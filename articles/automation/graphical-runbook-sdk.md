@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509005"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690734"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Verwenden des SDK für grafische Azure Automation-Runbooks
 
@@ -18,7 +18,7 @@ ms.locfileid: "82509005"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Importieren Sie das `Microsoft.Azure.Management.Automation.GraphicalRunbook.Model`-Paket in Ihr Projekt.
+Importieren Sie das `Orchestrator.GraphRunbook.Model.dll`-Paket in Ihr Projekt.
 
 ## <a name="create-a-runbook-object-instance"></a>Erstellen einer Runbookobjektinstanz
 

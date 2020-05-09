@@ -39,8 +39,11 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Repository für Batch-Beispiele
           href: 'https://github.com/Azure/azure-batch-samples'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Sicherheit
@@ -194,7 +197,7 @@
       href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

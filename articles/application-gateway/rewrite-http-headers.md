@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: d0b28770940f0e1adeec16aa89cd087299bd4abc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132998"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562235"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Erneutes Generieren von HTTP-Headern mit Application Gateway
 
@@ -56,7 +56,7 @@ Mit Aktionen für das erneute Generieren geben Sie die Anforderungs- und Antwort
 
 ## <a name="server-variables"></a>Servervariablen
 
-Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten.
+Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten. Um den Wert von Servervariablen zum erneuten Generieren von Headern zu verwenden, müssen Sie diese Variablen in der Syntax {var_*serverVariable*} angeben.
 
 Application Gateway unterstützt diese Servervariablen:
 
@@ -69,20 +69,21 @@ Application Gateway unterstützt diese Servervariablen:
 | client_port                | Der Port des Clients.                                                  |
 | client_tcp_rtt             | Informationen zur TCP-Verbindung des Clients. Verfügbar auf Systemen, die die TCP_INFO-Socketoption unterstützen. |
 | client_user                | Wenn HTTP-Authentifizierung verwendet wird, der Benutzername, der bei der Authentifizierung angegeben wird. |
-| host                       | In dieser Reihenfolge: Hostname aus der Anforderungszeile, Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. |
+| host                       | In dieser Reihenfolge: Hostname aus der Anforderungszeile, Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. Beispiel: In der Anforderung *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* wird der Hostwert zu *contoso.com* |
 | cookie_*Name*              | Das *name*-Cookie.                                            |
 | http_method                | Die Methode, die für die URL-Anforderung verwendet wird. Beispielsweise GET oder POST. |
 | http_status                | Der Sitzungsstatus. Beispielsweise 200, 400 oder 403.                       |
 | http_version               | Das Anforderungsprotokoll. In der Regel HTTP/1.0, HTTP/1.1 oder HTTP/2.0. |
-| query_string               | Die Liste der Variablen/Wert-Paare nach dem „?“ in der angeforderten URL. |
+| query_string               | Die Liste der Variablen/Wert-Paare nach dem „?“ in der angeforderten URL. Beispiel: In der Anforderung *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* lautet der query_string-Wert *id=123&title=fabrikam*. |
 | received_bytes             | Die Länge der Anforderung (einschließlich Anforderungszeile, Header und Anforderungstext). |
 | request_query              | Die Argumente in der Anforderungszeile.                                |
 | request_scheme             | Das Anforderungsschema: „http“ oder „https“.                            |
-| request_uri                | Der vollständige ursprüngliche Anforderungs-URI (mit Argumenten).                   |
+| request_uri                | Der vollständige ursprüngliche Anforderungs-URI (mit Argumenten). Beispiel: In der Anforderung *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* lautet der request_uri-Wert */article.aspx?id=123&title=fabrikam*.   |
 | sent_bytes                 | Die Anzahl der an einen Client gesendeten Bytes.                             |
 | server_port                | Der Port des Servers, der eine Anforderung akzeptiert hat.                 |
 | ssl_connection_protocol    | Das Protokoll einer hergestellten TLS-Verbindung.        |
 | ssl_enabled                | „Ein“, wenn die Verbindung im TLS-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
+| uri_path                   | Identifiziert die bestimmte Ressource auf dem Host, auf die der Webclient zugreifen möchte. Dies ist der Teil des Anforderungs-URI ohne die Argumente. Beispiel: In der Anforderung *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* lautet der uri_path-Wert */article.aspx*.  |
 
 ## <a name="rewrite-configuration"></a>Konfiguration für das erneute Generieren
 
@@ -156,6 +157,8 @@ Sie können einen HTTP-Anforderungs- oder -Antwortheader auf das Vorhandensein e
 ## <a name="limitations"></a>Einschränkungen
 
 - Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen der anderen Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort zwei Set-Cookie-Header: einen vom App-Dienst verwendeten (z. B. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) und einen anderen für die Anwendungsgatewayaffinität (z. B. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
+
+- Das erneute Generieren wird nicht unterstützt, wenn das Anwendungsgateway so konfiguriert ist, dass die Anforderungen umgeleitet werden oder eine benutzerdefinierte Fehlerseite angezeigt wird.
 
 - Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird derzeit nicht unterstützt.
 

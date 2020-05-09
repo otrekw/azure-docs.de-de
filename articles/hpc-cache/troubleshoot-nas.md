@@ -4,14 +4,14 @@ description: Tipps zur Vermeidung und Behebung von Konfigurationsfehlern und and
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651956"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186616"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel
 
@@ -50,7 +50,7 @@ rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+t
 
 Stellen Sie sicher, dass alle von der ``rpcinfo``-Abfrage zurückgegebenen Ports uneingeschränkten Datenverkehr aus dem Azure HPC Cache-Subnetz zulassen.
 
-Überprüfen Sie diese Einstellungen sowohl im NAS selbst als auch auf allen Firewalls zwischen dem Speichersystem und dem Cachesubnetz.
+Überprüfen Sie diese Einstellungen im NAS und auch auf allen Firewalls zwischen dem Speichersystem und dem Cachesubnetz.
 
 ## <a name="check-root-access"></a>Überprüfen des Root-Zugriffs
 
@@ -62,6 +62,9 @@ Bei unterschiedlichen Speichersystemen werden verschiedene Methoden verwendet, u
 * Bei NetApp- und EMC-Systemen wird der Zugriff in der Regel mit Exportregeln gesteuert, die an bestimmte IP-Adressen oder Netzwerke gebunden sind.
 
 Beachten Sie bei Verwendung von Exportregeln, dass der Cache mehrere verschiedene IP-Adressen aus dem Cachesubnetz verwenden kann. Genehmigen Sie den Zugriff aus dem gesamten Bereich möglicher Subnetz-IP-Adressen.
+
+> [!NOTE]
+> Standardmäßig wird der Root-Zugriff durch Azure HPC Cache gelöscht. Weitere Informationen finden Sie [Konfigurieren zusätzlicher Cacheeinstellungen](configuration.md#configure-root-squash).
 
 Arbeiten Sie mit Ihrem NAS-Speicheranbieter zusammen, um die richtige Zugriffsebene für den Cache zu ermöglichen.
 
@@ -100,7 +103,7 @@ Verwenden Sie nach Möglichkeit einen Linux-Client aus demselben virtuellen Netz
 Wenn mit diesem Befehl die Exporte nicht aufgelistet werden, hat der Cache Probleme beim Herstellen einer Verbindung mit Ihrem Speichersystem. Arbeiten Sie mit Ihrem NAS-Anbieter zusammen, um die Exportauflistung zu ermöglichen.
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>Anpassen der Größenbeschränkungen für VPN-Pakete
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 Wenn zwischen dem Cache und dem NAS-Gerät ein VPN vorhanden ist, kann es sein, dass 1500-Byte-Ethernet-Pakete in voller Größe vom VPN blockiert werden. Dieses Problem liegt möglicherweise vor, wenn große Austauschvorgänge zwischen NAS und der Azure HPC Cache-Instanz nicht beendet werden, kleinere Updates jedoch erwartungsgemäß funktionieren.
 
@@ -128,7 +131,11 @@ Es gibt keine einfache Möglichkeit, um festzustellen, ob Ihr System dieses Prob
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Wenn der Ping-Befehl bei 1472 Bytes fehlschlägt, müssen Sie möglicherweise MSS-Clamping für das VPN konfigurieren, damit das Remotesystem die maximale Framegröße ordnungsgemäß erkennt. Weitere Informationen finden Sie in der [Dokumentation zu IPSec-/IKE-Parametern für VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec).
+  Wenn das Ping-Signal mit 1472 Bytes fehlschlägt, liegt wahrscheinlich ein Problem mit der Paketgröße vor.
+
+Um dieses Problem zu beheben, müssen Sie möglicherweise MSS-Clamping für das VPN konfigurieren, damit das Remotesystem die maximale Framegröße ordnungsgemäß erkennt. Weitere Informationen finden Sie in der [Dokumentation zu IPSec-/IKE-Parametern für VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec).
+
+In einigen Fällen kann es hilfreich sein, die MTU-Einstellung für Azure HPC Cache in 1400 zu ändern. Wenn Sie jedoch die MTU für den Cache einschränken, müssen Sie auch die MTU-Einstellungen für Clients und Back-End-Speichersysteme einschränken, die mit dem Cache interagieren. Weitere Informationen finden Sie [Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen](configuration.md#adjust-mtu-value).
 
 ## <a name="check-for-acl-security-style"></a>Prüfen auf ACL-Sicherheitsstil
 

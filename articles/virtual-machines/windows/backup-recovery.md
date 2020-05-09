@@ -1,25 +1,20 @@
 ---
-title: Übersicht über Sicherungsoptionen für virtuelle Azure Windows-Computer
+title: Übersicht über Sicherungsoptionen
 description: Übersicht über Sicherungsoptionen für virtuelle Azure Windows-Computer
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: recovery
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 4216d14cfdbebabf912f8a407dbd8777150ff88f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79ce6ee6b15b0e9bdf5e0f48c44731c476069d93
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039240"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82083562"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Sicherungs- und Wiederherstellungsoptionen für virtuelle Computer in Azure
 Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Abhängig von Ihrem Anwendungsfall stehen mehrere Sicherungsoptionen für VMs zur Verfügung.
