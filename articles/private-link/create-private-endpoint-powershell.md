@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430343"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583772"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Erstellen eines privaten Endpunkts mit Azure PowerShell
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
 
 1. Öffnen Sie auf dem Remotedesktop von myVM PowerShell.
-2. Geben Sie `nslookup myserver.database.windows.net` ein. 
+2. Geben Sie `nslookup myserver.database.windows.net` ein. Denken Sie daran, `myserver` durch Ihren SQL-Servernamen zu ersetzen.
 
     Sie erhalten eine Meldung wie die folgende:
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,13 +210,20 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. Installieren von SQL Server Management Studio
-4. Geben Sie in „Mit Server verbinden“ diese Informationen ein, oder wählen Sie sie aus: Festlegen des Servertyps   Wählen Sie die Datenbank-Engine aus.
-      Servername   Wählen Sie „myserver.database.windows.net“ aus Benutzername  Geben Sie einen während der Erstellung angegebenen Benutzernamen ein.
-      Kennwort  Geben Sie ein während der Erstellung angegebenes Kennwort ein.
-      Kennwort speichern Wählen Sie „Ja“ aus.
-5. Wählen Sie „Verbinden“ aus.
-6. Durchsuchen Sie Datenbanken im linken Menü. 
+    
+3. Installieren Sie SQL Server Management Studio.
+4. Geben Sie unter **Mit Server verbinden** diese Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | --- | --- |
+    | Servertyp | Datenbank-Engine |
+    | Servername | myserver.database.windows.net |
+    | Username | Geben Sie den während der Erstellung angegebenen Benutzernamen ein. |
+    | Kennwort | Geben Sie das während der Erstellung angegebene Kennwort ein. |
+    | Kennwort speichern | Ja |
+    
+5. Wählen Sie **Verbinden**.
+6. Durchsuchen Sie **Datenbanken** im linken Menü. 
 7. (Optional) Erstellen Sie oder fragen Sie Informationen aus „mydatabase“ ab.
 8. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
 

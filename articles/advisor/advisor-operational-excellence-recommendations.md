@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs für Ihre Azure-Abonnements mit Azure A
 description: Verwenden von Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187415"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -37,7 +37,7 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 2. Erzwingen von geografischen Konformitätsanforderungen mit Azure Policy: Mit der Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. 
 3. Angeben von zulässigen VM-SKUs für Bereitstellungen: Über diese Richtlinie können Sie einen Satz von SKUs für virtuelle Computer angeben, die Ihre Organisation bereitstellen kann.
 4. Erzwingen von „Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden“ mit Azure Policy
-5. Verwenden von „Tag von der Ressourcengruppe erben“ mithilfe von Azure Policy: Die Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Bereits vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
+5. Verwenden der Option „Inherit a tag from resource groups“ (Tag von der Ressourcengruppe erben) mithilfe von Azure Policy: Die Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Bereits vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

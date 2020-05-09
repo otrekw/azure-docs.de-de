@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: fe9dc6c04fe033fd518218d1b5ea971e573405fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696556"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128043"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Leitfaden für die Migration von ADAL zu MSAL für Python
 
@@ -43,6 +43,10 @@ Weitere Informationen finden Sie unter [Neuerungen des Microsoft Identity Platfo
 ### <a name="scopes-not-resources"></a>Geltungsbereiche im Gegensatz zu Ressourcen
 
 ADAL Python ruft Token für Ressourcen ab, während MSAL Python Token für Geltungsbereiche abruft. Die API-Oberfläche in MSAL Python weist keinen Ressourcenparameter mehr auf. Sie müssten Geltungsbereiche in Form einer Liste von Zeichenfolgen bereitstellen, welche die gewünschten Berechtigungen und Ressourcen deklarieren, die angefordert werden. Einige Beispiele für Geltungsbereiche finden Sie unter [Geltungsbereiche von Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
+
+Sie können der Ressource das Bereichssuffix `/.default` hinzufügen, um die Migration Ihrer Apps vom v1.0-Endpunkt (ADAL) zum Microsoft Identity Platform-Endpunkt (MSAL) zu unterstützen. Beispielsweise entspricht dem Ressourcenwert `https://graph.microsoft.com` der entsprechende Bereichswert `https://graph.microsoft.com/.default`.  Wenn sich die Ressource nicht im URL-Format befindet, aber eine Ressourcen-ID im Format `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` vorliegt, können Sie weiterhin den Bereichswert `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` verwenden.
+
+Weitere Informationen zu den verschiedenen Bereichstypen finden Sie in den Artikeln [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) und [Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes).
 
 ### <a name="error-handling"></a>Fehlerbehandlung
 

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849189"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562065"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -184,8 +184,8 @@ Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapes
 Das requestOverrides-Objekt definiert Änderungen an der Anforderung, wenn die Back-End-Ressource aufgerufen wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
 * **backend.request.method**: Die HTTP-Methode, mit der das Back-End aufgerufen wird.
-* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn die leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
-* **backend.request.headers.\<Headername\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Back-End-Anforderung einbezogen.
+* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
+* **backend.request.headers.\<Headername\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
 
 Die Werte können auf Anwendungseinstellungen und Parameter aus der ursprünglichen Clientanforderung verweisen.
 

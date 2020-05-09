@@ -13,12 +13,12 @@ ms.date: 11/07/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085152"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81534583"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Abrufen und Zwischenspeichern von Token mithilfe der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
 
@@ -63,18 +63,18 @@ MSAL verwaltet einen Tokencache (bzw. zwei Caches im Fall von vertraulichen Clie
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>Empfohlene Aufrufmuster für öffentliche Clientanwendungen
 
-Der Anwendungscode sollte zunächst versuchen, ein Token automatisch (aus dem Cache) abzurufen.  Wenn der Methodenaufruf einen Fehler oder eine Ausnahme vom Typ „UI erforderlich“ zurückgibt, sollten Sie andere Methoden für den Tokenabruf probieren. 
+Der Anwendungscode sollte zunächst versuchen, ein Token automatisch (aus dem Cache) abzurufen.  Wenn der Methodenaufruf einen Fehler oder eine Ausnahme vom Typ „UI erforderlich“ zurückgibt, sollten Sie andere Methoden für den Tokenabruf probieren.
 
 Eine Ausnahme bilden zwei Flows, für die Token **nicht** automatisch abgerufen werden sollten:
 
 - der [Flow für Clientanmeldeinformationen](msal-authentication-flows.md#client-credentials), für den statt des Benutzertokencaches ein Anwendungstokencache verwendet wird. Bei dieser Methode wird der Anwendungstokencache überprüft, bevor eine Anforderung an den STS gesendet wird.
-- der [Flow für Autorisierungscode](msal-authentication-flows.md#authorization-code) in Web-Apps. In diesem Fall wird der von der Anwendung abgerufene Code eingelöst, indem der Benutzer angemeldet und seine Einwilligung für weitere Geltungsbereiche eingeholt wird. Da ein Code als Parameter und nicht als Konto übergeben wird, sind bei dieser Methode vor dem Einlösen des Codes keine Einblicke in den Cache möglich. Schon allein deshalb ist der Aufruf des Diensts erforderlich.
+- Der [Flow für Autorisierungscode](msal-authentication-flows.md#authorization-code) in Web-Apps. In diesem Fall wird der von der Anwendung abgerufene Code eingelöst, indem der Benutzer angemeldet und seine Einwilligung für weitere Geltungsbereiche eingeholt wird. Da ein Code als Parameter und nicht als Konto übergeben wird, sind bei dieser Methode vor dem Einlösen des Codes keine Einblicke in den Cache möglich. Schon allein deshalb ist der Aufruf des Diensts erforderlich.
 
 ### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Empfohlene Aufrufmuster in Web-Apps bei Verwendung des Flows für Autorisierungscode
 
 Für Webanwendungen, die den [Autorisierungscodeflow „OpenID Connect“](v2-protocols-oidc.md) verwenden, wird das folgende Muster in Controllern empfohlen:
 
-- Instanziieren einer vertraulichen Clientanwendung mit einem Tokencache unter Verwendung der benutzerdefinierten Serialisierung 
+- Instanziieren einer vertraulichen Clientanwendung mit einem Tokencache unter Verwendung der benutzerdefinierten Serialisierung
 - Abrufen des Tokens mithilfe des Flows für Autorisierungscode
 
 ## <a name="acquiring-tokens"></a>Abrufen von Token
@@ -92,7 +92,7 @@ Die Vorgehensweise bei öffentlichen Clientanwendungen (Desktopanwendung oder mo
 ### <a name="confidential-client-applications"></a>Vertrauliche Clientanwendungen
 
 Die Vorgehensweise bei vertraulichen Clientanwendungen (Web-App, Web-API oder Daemon-Anwendung wie ein Windows-Dienst):
-- Token werden über den **Flow für Clientanmeldeinformationen**[für die Anwendung selbst](msal-authentication-flows.md#client-credentials) und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten. 
+- Token werden über den [Flow für Clientanmeldeinformationen](msal-authentication-flows.md#client-credentials)**für die Anwendung selbst** und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten.
 - Der [OBO-Flow (On Behalf Of)](msal-authentication-flows.md#on-behalf-of) wird für den Aufruf einer Web-API verwendet, die eine API im Namen des Benutzers aufruft. Die Anwendung wird anhand von Clientanmeldeinformationen identifiziert, um ein Token basierend auf einer Benutzerassertion (SAML oder ein JWT-Token) abzurufen. Dieser Flow wird von Anwendungen verwendet, die für Dienst-zu-Dienst-Aufrufe auf Ressourcen eines bestimmten Benutzers zugreifen müssen.
 - Token werden in Web-Apps über den [Flow für Autorisierungscode](msal-authentication-flows.md#authorization-code) abgerufen, nachdem sich der Benutzer über die URL für Autorisierungsanforderungen angemeldet hat. OpenID Connect-Anwendungen verwenden in der Regel diesen Mechanismus, der die Benutzeranmeldung über Open ID Connect sowie den Zugriff auf Web-APIs im Namen des Benutzers zulässt.
 

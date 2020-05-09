@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81264950"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607281"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>Erstellen eines FSLogix-Profilcontainers mit Azure Files
 
@@ -219,7 +219,7 @@ Jetzt müssen Sie nur noch sicherstellen, dass das von Ihnen erstellte Profil vo
 
 So überprüfen Sie Ihr Profil
 
-1. Öffnen Sie einen Browser, und wechseln Sie zum [Windows Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/webclient/index.html).
+1. Öffnen Sie einen Browser, und wechseln Sie zum [Windows Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
 
 2. Melden Sie sich mit dem Benutzerkonto an, das der Remotedesktopgruppe zugewiesen ist.
 

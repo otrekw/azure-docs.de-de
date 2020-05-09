@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/06/2020
-ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927563"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187595"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -122,7 +122,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Machine Learning-Ress
 | StartTaskEndTime | Zeitpunkt, zu dem die einem Knoten zugewiesene Aufgabe beendet wurde |
 | TotalE2ETimeInSeconds | Gesamtzeit, die der Knoten aktiv war |
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 In den folgenden Tabellen sind die für Azure Machine Learning gesammelten Metriken aufgeführt. Alle Metriken werden im Namespace **Azure Machine Learning Workspace** gespeichert.
 
@@ -164,6 +164,22 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Kontingentmetriken gefilte
 | Vm Family Name (Name der VM-Familie) | Quota utilization percentage (Prozentsatz der Kontingentnutzung) | Der Name der vom Cluster verwendeten VM-Familie |
 | Vm Priority (VM-Priorität) | Quota utilization percentage (Prozentsatz der Kontingentnutzung) | Die Priorität des virtuellen Computers (VM)
 
+**Ressource**
+
+| Metrik | Einheit | BESCHREIBUNG |
+| ----- | ----- | ----- |
+| CpuUtilization | Percent | Wie viel Prozent der CPU-Auslastung für einen bestimmten Knoten während eines Laufs/eines Auftrags verwendet wurden. Diese Metrik wird nur veröffentlicht, wenn ein Auftrag auf einem Knoten ausgeführt wird. Ein Auftrag kann einen oder mehrere Knoten verwenden. Diese Metrik wird pro Knoten veröffentlicht. |
+| GpuUtilization | Percent | Gibt an, welcher Prozentsatz der GPU-Auslastung für einen bestimmten Knoten während eines Laufs/eines Auftrags verwendet wurde. Ein Knoten kann eine oder mehrere GPUs aufweisen. Diese Metrik wird pro GPU pro Knoten veröffentlicht. |
+
+Die folgenden Dimensionen sind Dimensionen, mit denen Ressourcenmetriken gefiltert werden können:
+
+| Dimension | BESCHREIBUNG |
+| ----- | ----- |
+| CreatedTime | |
+| deviceId | ID des Geräts (GPU). Nur für GpuUtilization verfügbar. |
+| NodeId | ID des erstellten Knotens, auf dem der Auftrag ausgeführt wird. |
+| RunId | ID des Laufs/Auftrags. |
+
 **Ausführen**
 
 Informationen zu Trainingsausführungen
@@ -185,7 +201,7 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Ausführungsmetriken gefil
 
 Gültige Werte für die RunType-Dimension sind:
 
-| value | BESCHREIBUNG |
+| Wert | BESCHREIBUNG |
 | ----- | ----- |
 | Experiment | Nicht-Pipelineausführungen |
 | PipelineRun | Eine Pipelineausführung, die das übergeordnete Element einer Schrittausführung (StepRun) ist |

@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409439"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133311"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
 In diesem Artikel werden häufige Probleme bei der Entwicklung von Stream Analytics-Abfragen und deren Behebung beschrieben.
 
-Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream Analytics-Abfragen, die Behandlung von Abfrageproblemen und die Behebung der Probleme. Viele Schritte zur Problembehandlung erfordern die Aktivierung von Diagnoseprotokollen für Ihren Stream Analytics-Auftrag. Wenn Sie die Diagnoseprotokolle nicht aktiviert haben, finden Sie weitere Informationen unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md).
+Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream Analytics-Abfragen, die Behandlung von Abfrageproblemen und die Behebung der Probleme. Viele Troubleshootingschritte erfordern die Aktivierung von Ressourcenprotokollen für Ihren Stream Analytics-Auftrag. Wenn Sie Ressourcenprotokolle nicht aktiviert haben, finden Sie weitere Informationen unter [Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen](stream-analytics-job-diagnostic-logs.md).
 
 ## <a name="query-is-not-producing-expected-output"></a>Die Abfrage erzeugt nicht die erwartete Ausgabe.
 
@@ -43,9 +43,9 @@ Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream
 
 5.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen**, und wählen Sie [**Ereignisreihenfolge**](stream-analytics-out-of-order-and-late-events.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags. 
 
-6. Führen Sie ein Debuggen mithilfe von Überwachungs- und Diagnoseprotokollen durch:
-    - Verwenden Sie [Überwachungsprotokolle](../azure-resource-manager/resource-group-audit.md), und filtern Sie diese, um Fehler festzustellen und zu debuggen.
-    - Verwenden Sie [Auftragsdiagnoseprotokolle](stream-analytics-job-diagnostic-logs.md), um Fehler festzustellen und zu debuggen.
+6. Debuggen mithilfe von Aktivitäts- und Ressourcenprotokollen:
+    - Verwenden Sie [Aktivitätsprotokolle](../azure-resource-manager/resource-group-audit.md), und filtern Sie diese, um Fehler zu ermitteln und zu debuggen.
+    - Verwenden Sie [Auftragsressourcenprotokolle](stream-analytics-job-diagnostic-logs.md), um Fehler zu ermitteln und zu debuggen.
 
 ## <a name="resource-utilization-is-high"></a>Die Ressourcenverwendung ist hoch
 

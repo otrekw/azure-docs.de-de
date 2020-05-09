@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199715"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787132"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 
@@ -26,7 +26,7 @@ Die folgende Abbildung zeigt einen Cluster mit den beiden Knotentypen *FrontEnd*
 
 Wie in der Abbildung oben gezeigt, beginnen Skalierungsgruppeninstanzen mit der Instanz 0. Die Instanznummer wird dann jeweils um 1 erhöht. Die Knotennamen spiegeln die Nummerierung wider. Der Knoten „BackEnd_0“ ist z.B. die Instanz 0 der Skalierungsgruppe „BackEnd“. Diese bestimmte Skalierungsgruppe hat fünf Instanzen mit den Namen „BackEnd_0“, „BackEnd_1“, „BackEnd_2“, „BackEnd_3“ und „BackEnd_4“.
 
-Wenn Sie eine Skalierungsgruppe hochskalieren, wird eine neue Instanz erstellt. Der neue Skalierungsgruppen-Instanzname hat in der Regel folgendes Format: Skalierungsgruppenname + Nummer der nächsten Instanz. In diesem Beispiel lautet er „BackEnd_5“.
+Wenn Sie eine Skalierungsgruppe aufskalieren, wird eine neue Instanz erstellt. Der neue Skalierungsgruppen-Instanzname hat in der Regel folgendes Format: Skalierungsgruppenname + Nummer der nächsten Instanz. In diesem Beispiel lautet er „BackEnd_5“.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Zuordnen des Lastenausgleichs von Skalierungsgruppen zu Knotentypen und Skalierungsgruppen
 

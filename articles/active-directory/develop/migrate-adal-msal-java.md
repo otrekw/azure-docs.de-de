@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886499"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128010"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Leitfaden für die Migration von ADAL zu MSAL für Java
 
@@ -42,6 +42,10 @@ Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt (und ADAL4J) g
 ## <a name="scopes-not-resources"></a>Geltungsbereiche im Gegensatz zu Ressourcen
 
 ADAL4J ruft Token für Ressourcen auf, während MSAL für Java Token für Geltungsbereiche abruft. Eine Reihe von Klassen in MSAL für Java erfordern einen scopes-Parameter. Bei diesem Parameter handelt es sich um eine Liste von Zeichenfolgen, die die gewünschten Berechtigungen und Ressourcen deklarieren, die angefordert werden. Beispiele für Geltungsbereiche finden Sie unter [Geltungsbereiche von Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
+
+Sie können der Ressource das Bereichssuffix `/.default` hinzufügen, um die Migration Ihrer Apps vom v1.0-Endpunkt (ADAL) zum Microsoft Identity Platform-Endpunkt (MSAL) zu unterstützen. Beispielsweise entspricht dem Ressourcenwert `https://graph.microsoft.com` der entsprechende Bereichswert `https://graph.microsoft.com/.default`.  Wenn sich die Ressource nicht im URL-Format befindet, aber eine Ressourcen-ID im Format `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` vorliegt, können Sie weiterhin den Bereichswert `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` verwenden.
+
+Weitere Informationen zu den verschiedenen Bereichstypen finden Sie in den Artikeln [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) und [Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes).
 
 ## <a name="core-classes"></a>Core-Klassen
 
@@ -109,7 +113,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-`IAuthenticationResult` gibt ein Zugriffstoken und ein ID-Token zurück, während Ihr neues Aktualisierungstoken im Cache gespeichert wird. Die Anwendung enthält nun auch ein IAccount:
+`IAuthenticationResult` gibt ein Zugriffstoken und ein ID-Token zurück, während Ihr neues Aktualisierungstoken im Cache gespeichert wird.
+Die Anwendung enthält nun auch ein IAccount:
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +123,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 Rufen Sie zum Verwenden der nun im Cache enthaltenen Token Folgendes auf:
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
