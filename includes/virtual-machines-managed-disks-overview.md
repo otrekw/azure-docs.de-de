@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75913779"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147772"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -37,7 +37,7 @@ Verwaltete Datenträger unterstützen [Verfügbarkeitszonen](../articles/availab
 
 ### <a name="azure-backup-support"></a>Azure Backup-Unterstützung
 
-Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu vier Tebibyte (TiB).  Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
+Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie nach Belieben Wiederherstellungen von virtuellen Computern oder verwalteten Datenträgern ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu 32 Tebibyte (TiB). [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
@@ -115,7 +115,7 @@ Das folgende Diagramm zeigt die Echtzeitzuweisung von Bandbreite und IOPS für D
 
 ![Dreistufiges Bereitstellungssystem, das die Zuweisung von Bandbreite und IOPS zeigt](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
 
-Die Bereitstellung auf der ersten Stufe legt die Zuweisung von IOPS und Bandbreite pro Datenträger fest.  Auf der zweiten Stufe implementiert der Compute-Serverhost die SSD-Bereitstellung und wendet sie nur auf Daten an, die auf der SSD des Servers gespeichert sind. Dies umfasst Datenträger mit Caching (ReadWrite und ReadOnly) sowie lokale und temporäre Datenträger. Schließlich erfolgt die VM-Netzwerkbereitstellung auf der dritten Stufe für alle E/A-Vorgänge, die der Computehost an das Back-End von Azure Storage sendet. Bei diesem Schema hängt die Leistung einer VM von einer Vielzahl von Faktoren ab, z. B. wie die VM die lokale SSD verwendet, von der Anzahl der angeschlossenen Datenträger sowie von der Leistung und dem Cachetyp der angeschlossenen Datenträger.
+Die Bereitstellung auf der ersten Stufe legt die Zuweisung von IOPS und Bandbreite pro Datenträger fest.  Auf der zweiten Stufe implementiert der Computeserverhost die SSD-Bereitstellung und wendet sie nur auf Daten an, die auf der SSD des Servers gespeichert sind. Dies umfasst Datenträger mit Caching (ReadWrite und ReadOnly) sowie lokale und temporäre Datenträger. Schließlich erfolgt die VM-Netzwerkbereitstellung auf der dritten Stufe für alle E/A-Vorgänge, die der Computehost an das Back-End von Azure Storage sendet. Bei diesem Schema hängt die Leistung einer VM von einer Vielzahl von Faktoren ab, z. B. wie die VM die lokale SSD verwendet, von der Anzahl der angeschlossenen Datenträger sowie von der Leistung und dem Cachetyp der angeschlossenen Datenträger.
 
 Als Beispiel für diese Einschränkungen wird eine Standard_DS1v1-VM daran gehindert, das Potenzial von 5.000 IOPS eines P30-Datenträgers aufgrund von Einschränkungen auf SSD- und Netzwerkebene zu erreichen, unabhängig davon, ob ein Cache verwendet wird:
 

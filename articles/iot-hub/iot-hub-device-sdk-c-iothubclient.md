@@ -8,12 +8,13 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
-ms.openlocfilehash: fd3e02101f206ebdb183da87089eadcbc9619b33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68883178"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732598"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 
@@ -66,9 +67,9 @@ Für jede dieser APIs gibt es Begleitfunktionen:
 
 Der API-Name jeder dieser Funktionen beinhaltet die Zeichenfolge **LL**. Abgesehen vom Namensbestandteil **LL** sind die Parameter jeder dieser Funktionen identisch mit ihren Nicht-LL-Gegenstücken. Das Verhalten dieser Funktionen unterscheidet sich jedoch in einem wichtigen Punkt.
 
-Beim Aufruf von **IoTHubClient\_CreateFromConnectionString** erstellen die zugrunde liegenden Bibliotheken einen neuen Thread, der im Hintergrund ausgeführt wird. Dieser Thread sendet Ereignisse an den IoT Hub und empfängt Nachrichten vom IoT Hub. Bei der Arbeit mit den **LL**-APIs wird kein solcher Thread erstellt. Die Erstellung des Hintergrundthreads stellt eine Vereinfachung für den Entwickler dar. Sie müssen sich nicht darum kümmern, dass Ereignisse explizit an den IoT Hub gesendet und Nachrichten vom IoT Hub empfangen werden; dies erfolgt automatisch im Hintergrund. Im Gegensatz dazu bieten Ihnen die **LL**-APIs bei Bedarf die explizite Kontrolle über die Kommunikation mit IoT Hub.
+Beim Aufruf von **IoTHubClient\_CreateFromConnectionString** erstellen die zugrunde liegenden Bibliotheken einen neuen Thread, der im Hintergrund ausgeführt wird. Dieser Thread sendet Ereignisse an den IoT Hub und empfängt Nachrichten vom IoT Hub. Bei der Arbeit mit den **LL**-APIs wird kein solcher Thread erstellt. Die Erstellung des Hintergrundthreads stellt eine Vereinfachung für den Entwickler dar. Sie müssen sich nicht darum kümmern, dass Ereignisse explizit an den IoT Hub gesendet und Nachrichten vom IoT Hub empfangen werden – dies erfolgt automatisch im Hintergrund. Im Gegensatz dazu bieten Ihnen die **LL**-APIs bei Bedarf die explizite Kontrolle über die Kommunikation mit IoT Hub.
 
-Sehen Sie sich zur Veranschaulichung dieses Konzepts das folgende Beispiel an:
+Sehen wir uns zur Veranschaulichung dieses Konzepts das folgende Beispiel an:
 
 Beim Aufruf von **IoTHubClient\_SendEventAsync** wird im Grunde das Ereignis in einem Puffer platziert. Der beim Aufrufen von **IoTHubClient\_CreateFromConnectionString** erstellte Hintergrundthread überwacht diesen Puffer kontinuierlich und sendet alle darin enthaltenen Daten an IoT Hub. Dies geschieht im Hintergrund, während der Hauptthread gleichzeitig andere Aufgaben durchführt.
 
@@ -116,7 +117,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 
 Dieser Code ruft **IoTHubClient\_LL\_DoWork** auf, bis alle Ereignisse im Puffer an den IoT Hub gesendet wurden. Achtung: Das bedeutet nicht, dass alle Nachrichten in der Warteschlange empfangen wurden. Das liegt zum Teil daran, dass die Überprüfung auf „alle“ Nachrichten keine allzu deterministische Aktion ist. Was würde geschehen, wenn Sie „alle“ Nachrichten abrufen und dann eine weitere direkt danach an das Gerät gesendet wird? Eine bessere Möglichkeit für dieses Problem ist ein programmierter Timeout. Die Nachrichtenrückruffunktion könnte beispielsweise jedes Mal einen Timer zurücksetzen, wenn sie aufgerufen wird. Anschließend schreiben Sie die Logik, um die Verarbeitung fortzusetzen, wenn z. B. in den letzten *x* Sekunden keine Nachrichten empfangen wurden.
 
-Stellen Sie nach Abschluss der Übergabe von Ereignissen und des Empfangs von Nachrichten sicher, dass Sie die entsprechende Funktion aufrufen, um die Ressourcen zu bereinigen.
+Stellen Sie nach Abschluss des Eingangs von Ereignissen und des Empfangs von Nachrichten sicher, dass Sie die entsprechende Funktion aufrufen, um die Ressourcen zu bereinigen.
 
 ```C
 IoTHubClient_LL_Destroy(iotHubClientHandle);
@@ -158,7 +159,7 @@ Zunächst wird **IoTHubMessage\_Properties** aufgerufen, an die die Verarbeitung
 
 Wenn das Ereignis vom **Event Hub** gelesen wird, kann der Empfänger die Eigenschaften auflisten und die entsprechenden Werte abrufen. In .NET würde dies z. B. durch den Zugriff auf die [Properties-Sammlung des EventData-Objekts](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx) durchgeführt werden.
 
-Im vorherigen Beispiel werden Eigenschaften an ein Ereignis angefügt, das an den IoT Hub gesendet wird. Eigenschaften können jedoch auch an Nachrichten angefügt werden, die vom IoT Hub empfangen wurden. Wenn Eigenschaften aus einer Nachricht abgerufen werden sollen, können wir Code wie den Folgenden in der Nachrichtenrückruffunktion verwenden:
+Im vorherigen Beispiel werden Eigenschaften an ein Ereignis angefügt, das an IoT Hub gesendet wird. Eigenschaften können jedoch auch an Nachrichten angefügt werden, die vom IoT Hub empfangen wurden. Wenn Eigenschaften aus einer Nachricht abgerufen werden sollen, können wir Code wie den Folgenden in der Nachrichtenrückruffunktion verwenden:
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -196,7 +197,7 @@ Sie müssen keine Eigenschaften in der Anwendung verwenden. Wenn Sie sie jedoch 
 
 ## <a name="message-handling"></a>Behandlung von Nachrichten
 
-Wie bereits erwähnt reagiert die **IoTHubClient** -Bibliothek auf den Empfang von Nachrichten vom IoT Hub durch den Aufruf einer registrierten Rückruffunktion. Es gibt einen Rückgabeparameter dieser Funktion, der einer zusätzlichen Erläuterung bedarf. Hier ist ein Auszug der Rückruffunktion in der **iothub\_client\_sample\_http**-Beispielanwendung:
+Wie bereits erwähnt reagiert die **IoTHubClient** -Bibliothek auf den Empfang von Nachrichten vom IoT Hub durch den Aufruf einer registrierten Rückruffunktion. Es gibt einen Rückgabeparameter dieser Funktion, der einer zusätzlichen Erläuterung bedarf. Hier sehen Sie einen Auszug aus der Rückruffunktion in der **iothub\_client\_sample\_http**-Beispielanwendung:
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -216,7 +217,7 @@ Beachten Sie, dass der Rückgabetyp **IOTHUBMESSAGE\_DISPOSITION\_RESULT** ist u
 
 Bei den ersten beiden Rückgabecodes sendet die **IoTHubClient** -Bibliothek eine Nachricht an den IoT Hub und gibt an, dass die Nachricht aus der Warteschlange des Geräts gelöscht und nicht erneut übermittelt werden soll. Das Endergebnis ist dasselbe (die Nachricht wird aus der Warteschlange des Geräts gelöscht), aber darüber hinaus wird weiterhin aufgezeichnet, ob die Nachricht akzeptiert oder abgelehnt wurde.  Die Aufzeichnung dieses Unterschieds ist nützlich für Absender der Nachricht, die damit Feedback abrufen und herausfinden können, ob ein Gerät eine bestimmte Nachricht akzeptiert oder abgelehnt hat.
 
-Im zweiten Fall wird eine Nachricht auch an den IoT Hub gesendet, in der jedoch darauf hingewiesen wird, dass die Nachricht erneut zugestellt werden soll. In der Regel verwerfen Sie eine Nachricht, wenn ein Fehler auftritt, Sie die Verarbeitung der Nachricht jedoch erneut versuchen möchten. Im Gegensatz dazu ist eine Ablehnung der Nachricht angemessen, wenn ein nicht behebbarer Fehler auftritt (oder wenn Sie einfach entscheiden, dass Sie die Nachricht nicht verarbeiten möchten).
+Im zweiten Fall wird eine Nachricht auch an den IoT Hub gesendet, in der jedoch darauf hingewiesen wird, dass die Nachricht erneut zugestellt werden soll. In der Regel brechen Sie eine Nachricht ab, wenn ein Fehler auftritt, Sie die Verarbeitung der Nachricht jedoch erneut versuchen möchten. Im Gegensatz dazu ist eine Ablehnung der Nachricht angemessen, wenn ein nicht behebbarer Fehler auftritt (oder wenn Sie einfach entscheiden, dass Sie die Nachricht nicht verarbeiten möchten).
 
 Beachten Sie auf jeden Fall die unterschiedlichen Rückgabecodes, damit Sie das gewünschte Verhalten der **IoTHubClient** -Bibliothek auslösen können.
 
@@ -268,7 +269,7 @@ Es gibt eine Reihe von Optionen, die häufig verwendet werden:
 
 * **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTPS-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
 
-Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bibliothek Eingangsereignisse einzeln (alles, was Sie an **IoTHubClient\_LL\_SendEventAsync** übergeben, ist ein einzelnes Ereignis). Aber wenn die Batchverarbeitungsoption auf **true**festgelegt ist, erfasst die Bibliothek so viele Ereignisse wie möglich aus dem Puffer (bis zur maximalen Nachrichtengröße, die der IoT Hub akzeptiert).  Der Ereignisbatch wird in einem einzigen HTTPS-Aufruf an IoT Hub gesendet (die einzelnen Ereignisse werden in einem JSON-Array zusammengefasst). Mit der Batchverarbeitung erzielen Sie in der Regel große Leistungsgewinne, da Sie die Netzwerkroundtrips reduzieren. Zugleich wird die Bandbreite deutlich reduziert, da Sie eine Gruppe von HTTPS-Headern mit einem Ereignisbatch senden, anstatt eine Gruppe von Headern für jedes einzelne Ereignis zu senden. In der Regel sollten Sie die Batchverarbeitung einsetzen, sofern kein bestimmter Grund dagegen spricht.
+Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bibliothek Eingangsereignisse einzeln (alles, was Sie an **IoTHubClient\_LL\_SendEventAsync** übergeben, ist ein einzelnes Ereignis). Aber wenn die Batchverarbeitungsoption auf **true**festgelegt ist, erfasst die Bibliothek so viele Ereignisse wie möglich aus dem Puffer (bis zur maximalen Nachrichtengröße, die der IoT Hub akzeptiert).  Der Ereignisbatch wird in einem einzigen HTTPS-Aufruf an IoT Hub gesendet (die einzelnen Ereignisse werden in einem JSON-Array zusammengefasst). Mit der Batchverarbeitung lassen sich in der Regel große Leistungsgewinne erzielen, da Netzwerkroundtrips reduziert werden. Zugleich wird die Bandbreite deutlich reduziert, da Sie eine Gruppe von HTTPS-Headern mit einem Ereignisbatch senden, anstatt eine Gruppe von Headern für jedes einzelne Ereignis zu senden. In der Regel sollten Sie die Batchverarbeitung einsetzen, sofern kein zwingender Grund dagegen spricht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

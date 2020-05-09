@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486099"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594638"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage-Beispiele mit Java-Clientbibliotheken (v12)
 
@@ -209,19 +209,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
       [Abrufen von Zugriffssteuerungen für eine Datei](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-:::row:::
-   :::column span="":::
-      [Erstellen einer Datei mithilfe eines Data Lake-Dateiclients](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
-   :::column-end:::
-   :::column span="":::
-      [Anfügen von Daten an eine Datei](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="2":::
-      [Herunterladen einer Datei](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
-   :::column-end:::
-:::row-end:::
+
 
 ## <a name="azure-file-samples"></a>Azure-Dateibeispiele
 

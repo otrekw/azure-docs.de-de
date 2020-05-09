@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888810"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187210"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – IntelliJ
 
@@ -190,10 +190,10 @@ Für jeden Webdienst wird ein Eingabeaufforderungsfenster und ein Webbrowserfens
 
 Um auf den Status der Dienste zuzugreifen, wechseln Sie zu den folgenden URLs:
 
-* IoT-Hub-Manager: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Gerätetelemetrie: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* Konfiguration: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* Speicheradapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-Hub-Manager: `http://localhost:9002/v1/status`
+* Gerätetelemetrie: `http://localhost:9004/v1/status`
+* Konfiguration: `http://localhost:9005/v1/status`
+* Speicheradapter: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>Starten des Stream Analytics-Auftrags
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-Nach Abschluss des Befehls **Starten** zeigt Ihr Browser die Seite unter der Adresse [http://localhost:3000/dashboard](http://localhost:3000/dashboard) an. Die Fehler auf dieser Seite sind zu erwarten. Wenn Sie die Anwendung ohne Fehler anzeigen möchten, führen Sie die folgenden Schritte aus.
+Nach Abschluss des Befehls **Starten** zeigt Ihr Browser die Seite unter der Adresse `http://localhost:3000/dashboard` an. Die Fehler auf dieser Seite sind zu erwarten. Wenn Sie die Anwendung ohne Fehler anzeigen möchten, führen Sie die folgenden Schritte aus.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurieren und Ausführen von Nginx
 
@@ -226,7 +226,7 @@ Weitere Informationen zum Ausführen von Nginx finden Sie unter [nginx for Windo
 
 ### <a name="connect-to-the-dashboard"></a>Verbinden mit dem Dashboard
 
-Wechseln Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu http://localhost:9000.
+Wechseln Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu `http://localhost:9000`.
 
 ## <a name="clean-up"></a>Bereinigung
 

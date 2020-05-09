@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462355"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127831"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
 
@@ -66,7 +66,7 @@ Blobspeicher: Die Container werden nach einer Stunde im Blobspeicher angezeigt. 
 
 ## <a name="query-log-information"></a>Abfragen von Protokollinformationen
 
-In Diagnoseprotokollen enthalten zwei Tabellen Protokolle und Metriken für Azure Cognitive Search: **AzureDiagnostics** und **AzureMetrics**.
+Zwei Tabellen enthalten Protokolle und Metriken für Azure Cognitive Search: **AzureDiagnostics** und **AzureMetrics**.
 
 1. Wählen Sie unter **Überwachung** die Option **Protokolle** aus.
 
@@ -97,12 +97,12 @@ Datenstrukturen, die Azure Cognitive Search-Protokolldaten enthalten, entspreche
 
 Blobspeicher: Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
 
-Die folgende Tabelle ist eine partielle Liste häufiger Felder für die Diagnoseprotokollierung.
+Die folgende Tabelle ist eine Teilliste häufiger Felder für die Ressourcenprotokollierung.
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Name des Vorgangs |
 | operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
@@ -128,7 +128,7 @@ Metriken werden für Abfrageanforderungen erfasst und in Intervallen von einer M
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |INT |64 |Der Durchschnittswert der unformatierten Stichproben im Metrikzeitintervall, Einheiten in Sekunden oder Prozentsatz, abhängig von der Metrik. |
