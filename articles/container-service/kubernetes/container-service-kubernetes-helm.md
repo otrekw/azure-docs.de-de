@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271082"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735418"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(VERALTET) Verwenden von Helm zum Bereitstellen von Containern in einem Kubernetes-Cluster
 
@@ -34,7 +34,7 @@ Helm besteht aus zwei Komponenten:
 
 * [Installieren und Konfigurieren von `kubectl`](../container-service-connect.md) auf einem lokalen Computer
 
-* [Installieren von Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) auf einem lokalen Computer
+* [Installieren von Helm](https://helm.sh/docs/intro/quickstart/) auf einem lokalen Computer
 
 ## <a name="helm-basics"></a>Grundlagen von Helm 
 
@@ -149,5 +149,5 @@ Nun können Sie SQL-Standardbefehle verwenden, um Datenbanken, Tabellen usw. zu 
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Verwalten von Kubernetes-Diagrammen finden Sie in der [Helm-Dokumentation](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Weitere Informationen zum Verwalten von Kubernetes-Diagrammen finden Sie in der [Helm-Dokumentation](https://helm.sh/docs/). 
 

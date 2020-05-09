@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72333175"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176140"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -37,7 +37,7 @@ Erstellte Freigabemomentaufnahmen können gelesen, kopiert oder gelöscht, aber 
 
 Die Freigabemomentaufnahme-Funktion wird auf der Ebene der Dateifreigabe bereitgestellt. Abrufe finden auf der Ebene der jeweiligen Datei statt, um die Wiederherstellung einzelner Dateien zu ermöglichen. Sie können eine vollständige Dateifreigabe über SMB, die REST-API, das Portal, die Clientbibliothek oder über PowerShell/die Befehlszeilenschnittstelle wiederherstellen.
 
-Eine Freigabemomentaufnahme einer Dateifreigabe ist mit ihrer Basisdateifreigabe identisch. Der einzige Unterschied besteht darin, dass an den Freigabe-URI ein **DateTime**-Wert angehängt wird, der den Erstellungszeitpunkt der Freigabemomentaufnahme angibt. Wenn ein Dateifreigabe-URI http://storagesample.core.file.windows.net/myshare ist, lautet der Freigabemomentaufnahmen-URI z.B. in etwa:
+Eine Freigabemomentaufnahme einer Dateifreigabe ist mit ihrer Basisdateifreigabe identisch. Der einzige Unterschied besteht darin, dass an den Freigabe-URI ein **DateTime**-Wert angehängt wird, der den Erstellungszeitpunkt der Freigabemomentaufnahme angibt. Wenn der URI einer Dateifreigabe also beispielsweise „http:\//storagesample.core.file.windows.net/myshare“ lautet, sieht der URI der Freigabemomentaufnahme in etwa wie folgt aus:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```

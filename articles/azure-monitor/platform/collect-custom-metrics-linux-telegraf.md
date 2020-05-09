@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655462"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186440"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
 
@@ -24,11 +24,17 @@ Mit Azure Monitor können Sie benutzerdefinierte Metriken über Ihre Anwendungst
 
  ![Übersicht über den Telegraf-Agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
+> [!NOTE]  
+> Benutzerdefinierte Metriken werden nicht in allen Regionen unterstützt. Die unterstützten Regionen sind [hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) aufgeführt.
+
 ## <a name="send-custom-metrics"></a>Senden benutzerdefinierter Metriken 
 
 Im Rahmen dieses Tutorials wird ein virtueller Linux-Computer mit dem Betriebssystem Ubuntu 16.04 LTS bereitgestellt. Der Telegraf-Agent wird für die meisten Linux-Betriebssysteme unterstützt. Sowohl Debian- als auch RPM-Pakete sind zusammen mit nicht gepackten Linux-Binärdateien über das [InfluxData-Downloadportal](https://portal.influxdata.com/downloads) erhältlich. Weitere Informationen zu Installationsanweisungen und -optionen für Telegraf finden Sie in [dieser Installationsanleitung](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/). 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+> [!NOTE]  
+> Wenn Sie klassische Alarmregeln migrieren und einen vorhandenen virtuellen Linux-Computer verwenden möchten, stellen Sie sicher, dass der virtuelle Computer über eine systemseitig zugewiesene Identität verfügt, die auf **Ein** festgelegt ist.
 
 Erstellen Sie einen neuen virtuellen Linux-Computer: 
 

@@ -7,12 +7,13 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5bfb46410c40d394e62bf1e6bfb1f1c964c7efdd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 80601170a39333ea0075bb4ec262dd48c7f2d76d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547422"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81758335"
 ---
 # <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
 
