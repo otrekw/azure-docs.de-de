@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 04/22/2020
 ms.author: juliako
-ms.openlocfilehash: 7ec8004fa0a54265962e79320c02287b2fcf814a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89360f062f0198a6b0c857395b4956caa1109e82
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499922"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097168"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -151,6 +151,15 @@ Geben Sie im Dialogfeld die folgenden Informationen ein:
 |Name der Media Services-Ressource|Der Name des Azure Media Services-Kontos, das Sie im vorherigen Abschnitt erstellt haben.|
 |Anwendungs-ID|Die Azure AD-Anwendungs-ID (mit Berechtigungen für das angegebene Media Services-Konto), die Sie im vorherigen Abschnitt erstellt haben.|
 |Anwendungsschlüssel|Der Azure AD-Anwendungsschlüssel, den Sie im vorherigen Abschnitt erstellt haben. |
+
+## <a name="import-your-content-from-the-trial-account"></a>Importieren Ihrer Inhalte aus dem *Testkonto*
+
+Beim [Erstellen eines neuen Kontos](#connect-to-azure) haben Sie die Möglichkeit, Ihre Inhalte aus dem *Testkonto* in das neue Konto zu importieren. Wenn Sie die Option *Importieren* im Dialogfeld **Neues Konto für ein Azure-Abonnement erstellen** aktivieren, werden alle Medien und Inhaltsmodellanpassungen aus dem *Testkonto* in das neue Konto kopiert.
+
+Die Möglichkeit, den Inhalt zu importieren, gilt für den oben beschriebenen automatisierten Ansatz ebenso wie für den manuellen.
+
+> [!NOTE]
+> Der Inhalt kann aus jedem Konto nur einmal importiert werden.
 
 ## <a name="considerations"></a>Überlegungen
 
