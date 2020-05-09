@@ -1,7 +1,7 @@
 ---
-title: Verwalten von Experimentiterationen
+title: Anzeigen und erneutes Ausführen von Experimenten
 titleSuffix: ML Studio (classic) - Azure
-description: Verwalten von Experimentiterationen in Azure Machine Learning Studio (klassisch) Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
+description: Verwalten von Experimentausführungen in Azure Machine Learning Studio (Classic). Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,20 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 5c8a278f09fdb3b605020e4c2fcf7aa2776906e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208413"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Verwalten von Experimentiterationen in Azure Machine Learning Studio (klassisch)
+# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Verwalten von Experimentausführungen in Azure Machine Learning Studio (Classic)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
-
-
 
 Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern. Wenn Sie ein Experiment ausführen, speichert Machine Learning Studio (klassisch) den Verlauf des Testlaufs, einschließlich Dataset, Modul sowie Portverbindungen und Parameter. In diesem Verlauf werden auch Ergebnisse, Laufzeitinformationen, z. B. Start- und Endzeiten, Protokollmeldungen und der Ausführungsstatus aufgezeichnet. Sie können jeden dieser Testläufe jederzeit überprüfen, um die Chronologie des Experiments und die Zwischenergebnisse  zu betrachten. Ein vorheriger Testlauf des Experiment kann sogar den Ausgangspunkt einer neuen Untersuchungsphase auf dem Weg zur Erstellung einfacher, komplexer oder mehrfacher Modellierungslösungen bilden.
 
@@ -32,12 +30,12 @@ Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpu
 > 
 > 
 
-## <a name="viewing-the-prior-run"></a>Anzeigen des vorherigen Testlaufs
+## <a name="view-the-prior-run"></a>Anzeigen des vorherigen Testlaufs
 Wenn ein Experiment geöffnet ist, das Sie mindestens einmal ausgeführt haben, können Sie den vorherigen Testlauf des Versuchs anzeigen, indem Sie im Eigenschaftenbereich auf **Prior Run** (Vorheriger Testlauf) klicken.
 
 Angenommen, Sie erstellen ein Experiment und führen Versionen dieses Experiments um 11:23 Uhr 11:42 Uhr und 11:55 Uhr aus. Wenn Sie den letzten Testlauf des Experiments (11:55) öffnen und auf **Prior Run**(Vorheriger Testlauf) klicken, wird die Version, die Sie um 11:42 Uhr ausgeführt haben, geöffnet.
 
-## <a name="viewing-the-run-history"></a>Anzeigen des Ausführungsverlaufs
+## <a name="view-the-run-history"></a>Anzeigen des Ausführungsverlaufs
 Sie können alle vorherigen Testläufe eines Experiments anzeigen, indem Sie in einem geöffneten Experiment auf **View Run History** (Ausführungsverlauf anzeigen) klicken.
 
 Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linear-regression], und Sie möchten beobachten, wie sich Änderungen des Werts von **Learning Rate** (Lernrate) auf die Ergebnisse Ihres Experiments auswirken. Sie führen das Experiment mehrmals mit unterschiedlichen Werten für diesen Parameter wie folgt aus:
@@ -62,7 +60,7 @@ Klicken Sie auf einen dieser Testläufe, um eine Momentaufnahme des Experiments 
 
 In der Liste der Experimente auf der Registerkarte **EXPERIMENTS** in Machine Learning Studio (klassisch) wird immer die neueste Version eines Experiments angezeigt. Wenn Sie einen früheren Testlauf des Experiments öffnen (mit **Prior Run** [Vorheriger Testlauf] oder **VIEW RUN HISTORY** [AUSFÜHRUNGSVERLAUF ANZEIGEN]), können Sie zur Entwurfsversion zurückkehren, indem Sie auf **VIEW RUN HISTORY** klicken und die Iteration auswählen, für die unter **STATE** (STATUS) der Status **Editable** (Bearbeitbar) angezeigt wird.
 
-## <a name="iterating-on-a-previous-run"></a>Iterieren mit einem vorherigen Testlauf
+## <a name="run-a-previous-experiment"></a>Ausführen eines vorhergehenden Experiments
 Wenn Sie auf **Prior Run** (Vorheriger Testlauf) oder **VIEW RUN HISTORY** (AUSFÜHRUNGSVERLAUF ANZEIGEN) klicken und einen vorherigen Testlauf öffnen, wird ein fertiges Experiment im schreibgeschützten Modus angezeigt.
 
 Wenn Sie ausgehend von der Konfiguration eines vorherigen Testlaufs eine Iteration des Experiments beginnen möchten, können Sie dazu den Testlauf öffnen und auf **SAVE AS** (SPEICHERN UNTER) klicken. Damit wird ein neues Experiment mit einem neuen Titel, einem leeren Ausführungsverlauf sowie allen Komponenten und Parameterwerten des vorherigen Testlaufs erstellt. Dieses neue Experiment wird auf der Registerkarte **EXPERIMENTS** auf der Startseite von Machine Learning Studio (klassisch) aufgeführt. Sie können es ändern und ausführen und dadurch einen neuen Ausführungsverlauf für diese Iteration des Experiments anlegen. 

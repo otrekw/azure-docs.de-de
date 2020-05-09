@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312855"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229815"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -32,11 +32,17 @@ Mit der Azure Active Directory-Passthrough-Authentifizierung (Azure AD) können 
 >[!IMPORTANT]
 >Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Authentifizierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://aka.ms/adfstoPTADPDownload) zu folgen.
 
+>[!NOTE]
+>Wenn Sie die Pass-Through-Authentifizierung in der Azure Government-Cloud bereitstellen, lesen Sie die [Überlegungen zur Hybrididentität für Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+
 Befolgen Sie diese Anweisungen, um die Passthrough-Authentifizierung bereitzustellen:
 
 ## <a name="step-1-check-the-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
+
+>[!IMPORTANT]
+>Vom Sicherheitsstandpunkt aus sollten Administratoren den Server, auf dem der PTA-Agent ausgeführt wird, so behandeln, als sei er ein Domänencontroller.  Die PTA-Agent-Server sollten wie in [Sichern von Domänencontrollern gegen Angriffe](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) beschrieben geschützt werden.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Im Azure Active Directory Admin Center
 
@@ -71,7 +77,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
    - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www\.microsoft.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Voraussetzungen für die Azure Government-Cloud
-Laden Sie vor dem Aktivieren der Pass-Through-Authentifizierung über Azure AD Connect in Schritt 2 das neueste Release des PTA-Agents im Azure-Portal herunter.  Sie müssen sicherstellen, dass die Agent-Version **x.x.xxx.x** oder höher lautet.  Informationen zum Überprüfen des Agents finden Sie unter [Upgrade von Authentifizierungs-Agents](how-to-connect-pta-upgrade-preview-authentication-agents.md).
+Laden Sie vor dem Aktivieren der Pass-Through-Authentifizierung über Azure AD Connect in Schritt 2 das neueste Release des PTA-Agents im Azure-Portal herunter.  Sie müssen sicherstellen, dass die Agent-Version **1.5.1742.0** lautet oder höher.  Informationen zum Überprüfen des Agents finden Sie unter [Upgrade von Authentifizierungs-Agents](how-to-connect-pta-upgrade-preview-authentication-agents.md).
 
 Nachdem Sie das neueste Release des Agents heruntergeladen haben, fahren Sie anhand der folgenden Anweisungen fort, um die Pass-Through-Authentifizierung über Azure AD Connect zu konfigurieren.
 
