@@ -4,16 +4,19 @@ description: Lernen Sie den kompletten Lebenszyklus Ihrer Azure IoT Edge-Lösung
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/09/2019
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530868"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780741"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -104,7 +107,7 @@ Der IoT Edge-Hub ist standardmäßig für Leistung optimiert, sodass er versucht
 
 Wenn **OptimizeForPerformance** auf **TRUE** festgelegt wurde, wird im MQTT-Protokollkopf der Wert „PooledByteBufferAllocator“ verwendet, der eine bessere Leistung bietet, aber mehr Arbeitsspeicher zuordnet. Die Zuweisung funktioniert nicht gut unter 32-Bit-Betriebssystemen oder auf Geräten mit wenig Arbeitsspeicher. Und: Wenn RocksDb im Hinblick auf Leistung optimiert wurde, ordnet sie mehr Speicher für ihre Rolle als lokaler Speicheranbieter zu.
 
-Weitere Informationen finden Sie unter [Stabilitätsprobleme auf Geräten mit Ressourceneinschränkungen](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+Weitere Informationen finden Sie unter [Stabilitätsprobleme auf kleineren Geräten](troubleshoot-common-errors.md#stability-issues-on-smaller-devices).
 
 #### <a name="disable-unused-protocols"></a>Deaktivieren nicht verwendeter Protokolle
 
@@ -133,12 +136,31 @@ Wenn Sie von Test- zu Produktionsszenarien wechseln, entfernen Sie die Debugkonf
 * **Wichtig**
   * Verwalten des Zugriffs auf die Containerregistrierung
   * Verwenden von Tags für die Versionsverwaltung
+* **Hilfreich**
+  * Speichern von Runtimecontainern in Ihrer privaten Registrierung
 
 ### <a name="manage-access-to-your-container-registry"></a>Verwalten des Zugriffs auf die Containerregistrierung
 
 Bevor Sie Module auf IoT Edge-Geräten in der Produktion bereitstellen, legen Sie den Zugriff auf Ihre Containerregistrierung so fest, dass Außenstehende nicht auf Ihre Containerimages zugreifen oder Änderungen vornehmen können. Verwenden Sie eine private, nicht öffentliche Containerregistrierung, um Containerimages zu verwalten.
 
-In den Tutorials und anderen Dokumentationen werden Sie dazu aufgefordert, für die Containerregistrierung auf Ihrem IoT Edge-Gerät die gleichen Anmeldeinformationen zu verwenden wie auf Ihrem Entwicklungscomputer. Dieses Vorgehen dient nur der vereinfachten Einrichtung von Test- und Entwicklungsumgebungen und soll nicht für Produktionsszenarien verwendet werden. Azure Container Registry empfiehlt die [Authentifizierung mit Dienstprinzipalen](../container-registry/container-registry-auth-service-principal.md), wenn Anwendungen oder Dienste Containerimages automatisiert oder anderweitig unbeaufsichtigt pullen, was bei IoT Edge-Geräten der Fall ist. Erstellen Sie einen Dienstprinzipal mit schreibgeschütztem Zugriff auf Ihre Containerregistrierung, und geben Sie den Benutzernamen und das Kennwort im Bereitstellungsmanifest an.
+In den Tutorials und anderen Dokumentationen werden Sie dazu aufgefordert, für die Containerregistrierung auf Ihrem IoT Edge-Gerät die gleichen Anmeldeinformationen zu verwenden wie auf Ihrem Entwicklungscomputer. Dieses Vorgehen dient nur der vereinfachten Einrichtung von Test- und Entwicklungsumgebungen und soll nicht für Produktionsszenarien verwendet werden.
+
+Um den sicheren Zugriff auf Ihre Registrierung zu schützen, stehen Ihnen verschiedene [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) zur Verfügung. Eine verbreitete und empfohlene Authentifizierungsmethode ist die Verwendung eines Active Directory-Dienstprinzipals. Dieser eignet sich sehr gut für Anwendungen oder Dienste, die Containerimages automatisiert oder auf anderweitig unbeaufsichtigte Weise (ohne Monitor) pullen, wie etwa bei IoT Edge-Geräten.
+
+Um einen Dienstprinzipal zu erstellen, führen Sie die beiden Skripts wie in [Erstellen eines Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal) beschrieben aus. Diese Skripts führen folgende Aufgaben aus:
+
+* Mit dem ersten Skript wird der Dienstprinzipal erstellt. Es gibt die Dienstprinzipal-ID und das zugehörige Kennwort aus. Speichern Sie diese Werte.
+
+* Das zweite Skript erstellt Rollenzuweisungen für den Dienstprinzipal, die anschließend bei Bedarf ausgeführt werden können. Es wird empfohlen, für den Parameter `role` die Benutzerrolle **acrPull** anzuwenden. Eine Liste der Rollen finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](../container-registry/container-registry-roles.md).
+
+Geben Sie zum Authentifizieren mithilfe eines Dienstprinzipals die Dienstprinzipal-ID und das Dienstprinzipalkennwort ein, die Sie durch das erste Skript erhalten haben. Geben Sie diese Anmeldeinformationen im Bereitstellungsmanifest an.
+
+* Geben Sie als Benutzernamen oder Client-ID die Dienstprinzipal-ID an.
+
+* Geben Sie als Kennwort oder geheimen Clientschlüssel das Dienstprinzipalkennwort an.
+
+> [!NOTE]
+> Nachdem Sie eine erweiterte Sicherheitsauthentifizierung implementiert haben, deaktivieren Sie die Einstellung **Administratorbenutzer**, damit der Standardzugriff über Benutzername und Kennwort nicht mehr verfügbar ist. Wählen Sie in Ihrer Containerregistrierung im Azure-Portal im Menü im linken Bereich unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
 
 ### <a name="use-tags-to-manage-versions"></a>Verwenden von Tags für die Versionsverwaltung
 
@@ -147,6 +169,27 @@ Ein Tag ist ein Docker-Konzept, mit dem Sie Versionen von Docker-Containern unte
 Tags helfen Ihnen auch bei der Durchsetzung von Updates auf Ihren IoT Edge-Geräten. Wenn Sie eine aktualisierte Modulversion in Ihre Containerregistrierung pushen, erhöhen Sie das Tag. Pushen Sie dann eine neue Bereitstellung auf Ihre Geräte mit dem inkrementierten Tag. Die Container-Engine erkennt das inkrementierte Tag als neue Version und pullt die neueste Modulversion auf Ihr Gerät.
 
 Unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) finden Sie ein Beispiel für eine Tagkonvention und erfahren, wie IoT Edge fortlaufende und spezifische Tags verwendet, um Versionen zu verfolgen.
+
+### <a name="store-runtime-containers-in-your-private-registry"></a>Speichern von Runtimecontainern in Ihrer privaten Registrierung
+
+Sie wissen, wie Sie Ihre Containerimages für benutzerdefinierte Codemodule in Ihrer privaten Azure-Registrierung speichern können, aber Sie können sie auch verwenden, um öffentliche Containerimages wie für die Runtimemodule edgeAgent und edgHub zu speichern. Dies kann erforderlich sein, wenn Sie sehr strenge Firewallbeschränkungen besitzen, da diese Runtimecontainer in der Microsoft Container Registry (MCR) gespeichert sind.
+
+Rufen Sie die Images mit dem Docker-Pullbefehl ab, um sie in Ihrer privaten Registrierung zu platzieren. Beachten Sie, dass Sie die Images mit jeder neuen Version der IoT Edge-Runtime aktualisieren müssen.
+
+| IoT Edge-Runtimecontainer | Docker-Pullbefehl |
+| --- | --- |
+| [Azure IoT Edge-Agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
+| [Azure IoT Edge-Hub](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+Stellen Sie als nächstes sicher, dass Sie die Imagereferenzen in der Datei deployment.template.json für die Systemmodule edgeAgent und edgeHub aktualisieren. Ersetzen Sie `mcr.microsoft.com` durch Ihren Registrierungsnamen und -server für beide Module.
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub:
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>Netzwerk
 
@@ -157,7 +200,7 @@ Unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md#understand-
 
 ### <a name="review-outboundinbound-configuration"></a>Überprüfen ausgehender/eingehender Konfigurationen
 
-Kommunikationskanäle zwischen IoT Edge und Azure IoT Hub sind immer als „Ausgehend“ konfiguriert. Die meisten IoT Edge-Szenarien erfordern nur drei Verbindungen. Die Container-Engine muss sich mit der Containerregistrierung (bzw. den Registrierungen) verbinden, die die Modulimages enthält. Die IoT Edge-Runtime muss sich mit IoT Hub verbinden, um Gerätekonfigurationsinformationen abzurufen sowie Nachrichten und Telemetrie zu senden. Und falls Sie eine automatische Bereitstellung verwenden, muss sich der IoT Edge-Daemon mit dem Gerätebereitstellungsdienst verbinden. Weitere Informationen finden Sie unter [Firewall- und Portkonfigurationsregeln](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Kommunikationskanäle zwischen IoT Edge und Azure IoT Hub sind immer als „Ausgehend“ konfiguriert. Die meisten IoT Edge-Szenarien erfordern nur drei Verbindungen. Die Container-Engine muss sich mit der Containerregistrierung (bzw. den Registrierungen) verbinden, die die Modulimages enthält. Die IoT Edge-Runtime muss sich mit IoT Hub verbinden, um Gerätekonfigurationsinformationen abzurufen sowie Nachrichten und Telemetrie zu senden. Und falls Sie eine automatische Bereitstellung verwenden, muss sich der IoT Edge-Daemon mit dem Gerätebereitstellungsdienst verbinden. Weitere Informationen finden Sie unter [Firewall- und Portkonfigurationsregeln](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>Zulassen von Verbindungen von IoT Edge-Geräten
 
@@ -183,6 +226,8 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
    | \*.docker.io  | 443 | Docker Hub-Zugriff (optional) |
 
 Einige dieser Firewallregeln werden von Azure Container Registry geerbt. Weitere Informationen finden Sie unter [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall](../container-registry/container-registry-firewall-access-rules.md).
+
+Wenn Sie Ihre Firewall nicht so konfigurieren möchten, dass sie den Zugriff auf öffentliche Containerregistrierungen zulässt, können Sie Images in Ihrer privaten Containerregistrierung speichern, wie unter [Speichern von Runtimecontainern in Ihrer privaten Registrierung](#store-runtime-containers-in-your-private-registry) beschrieben.
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurieren der Kommunikation über Proxy
 
@@ -224,7 +269,7 @@ Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen
 
 Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
 
-| Plattform | Position |
+| Plattform | Standort |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

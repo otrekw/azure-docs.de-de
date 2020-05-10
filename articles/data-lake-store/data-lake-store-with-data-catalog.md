@@ -1,23 +1,17 @@
 ---
-title: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog | Microsoft Docs
-description: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Integrieren von Data Lake Storage Gen1 in Azure Data Catalog
+description: Hier erfahren Sie, wie Sie Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Daten in Ihrer Organisation auffindbar zu machen.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60196536"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692341"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).

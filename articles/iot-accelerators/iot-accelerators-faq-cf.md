@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313586"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792376"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -111,7 +111,7 @@ Die Simulation registriert die folgenden Geräte selbst:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Mithilfe von [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) und der [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) können Sie überprüfen, welche Geräte bei der von Ihrer Lösung verwendeten IoT Hub-Instanz registriert sind. Um Device Explorer zu verwenden, benötigen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung. Um die IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle verwenden zu können, benötigen Sie Ihren IoT Hub-Namen.
+Mithilfe von [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) und der [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) können Sie überprüfen, welche Geräte bei der von Ihrer Lösung verwendeten IoT Hub-Instanz registriert sind. Um Device Explorer zu verwenden, benötigen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung. Um die IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle verwenden zu können, benötigen Sie Ihren IoT Hub-Namen.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Wie kann ich Protokolldaten aus dem Simulationskomponenten abrufen?
 
@@ -125,7 +125,7 @@ Alternativ dazu können Sie sich über SSH beim virtuellen Computer anmelden und
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Wie kann ich überprüfen, ob die Simulation Daten an die Cloud sendet?
 
-Mit dem Tool [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) oder dem Befehl [monitor-events für die CLI-Erweiterung von Azure IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) können Sie die Daten überprüfen, die von bestimmten Geräten an IoT Hub gesendet werden. Um diese Tools zu verwenden, müssen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung kennen. Informationen finden Sie unter [Wie finde ich die Verbindungszeichenfolge des IoT-Hubs, den meine Lösung verwendet?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Mit dem Tool [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) oder dem Befehl [monitor-events für die CLI-Erweiterung von Azure IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) können Sie die Daten überprüfen, die von bestimmten Geräten an IoT Hub gesendet werden. Um diese Tools zu verwenden, müssen Sie die Verbindungszeichenfolge für den IoT Hub in Ihrer Bereitstellung kennen. Informationen finden Sie unter [Wie finde ich die Verbindungszeichenfolge des IoT-Hubs, den meine Lösung verwendet?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Untersuchen Sie die Daten, die von einem der Publisher-Geräte gesendet werden:
 

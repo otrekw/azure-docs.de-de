@@ -1,18 +1,18 @@
 ---
 title: Clusterknoten geht der Speicherplatz auf dem Datenträger in Azure HDInsight aus
 description: Problembehandlung bei Problemen mit dem Speicherplatz auf dem Apache Hadoop-Clusterknoten in Azure HDInsight.
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894130"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628536"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Szenario: Clusterknoten geht der Speicherplatz auf dem Datenträger in Azure HDInsight aus
 
@@ -36,7 +36,17 @@ Der Apache Yarn-Anwendungscache hat möglicherweise den gesamten verfügbaren Sp
 
 1. Um das Problem zu beheben, beenden Sie die Anwendung, wodurch der von dieser Anwendung verwendete Speicherplatz freigegeben wird.
 
-1. Optimieren Sie Ihre Anwendung, um das Problem ursächlich zu beheben.
+1. Wenn das Problem auf den Workerknoten häufig auftritt, können Sie die Einstellungen für den lokalen YARN-Cache auf dem Cluster optimieren.
+
+    Öffnen Sie die Ambari-Benutzeroberfläche, navigieren Sie zu „YARN“--> „Configs“--> „Advanced“.  
+    Fügen Sie dem benutzerdefinierten Abschnitt „yarn-site.xml“ die zwei folgenden Eigenschaften hinzu, und speichern Sie dann Folgendes:
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. Wenn das Problem durch die vorstehenden Schritte nicht dauerhaft behoben wurde, optimieren Sie Ihre Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

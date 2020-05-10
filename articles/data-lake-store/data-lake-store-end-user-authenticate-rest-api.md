@@ -1,22 +1,17 @@
 ---
-title: 'Endbenutzerauthentifizierung: REST-API mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft Docs'
+title: Authentifizierung von Endbenutzern – REST bei Data Lake Storage Gen1 – Azure
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory und der REST-API umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60877821"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688078"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe der REST-API
 > [!div class="op_single_selector"]

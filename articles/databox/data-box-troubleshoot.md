@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77560064"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628894"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
@@ -92,6 +92,17 @@ Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
     - Beispiele für ungültige Namen: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`.
 
     Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) und [Freigabenamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**Fehlerbeschreibung**: Das Verzeichnis oder die Containernamen enthalten ungültige Zeichen.
+
+**Vorgeschlagene Lösung**: Das Verzeichnis oder die Containernamen, die Sie kopiert haben, enthalten nicht unterstützte Zeichen.
+
+- Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite „Verbinden und kopieren“ die Fehlerdateien herunter, und überprüfen Sie sie, um die Namen der Ordner mit Problemen zu identifizieren. 
+- Benennen Sie das Verzeichnis oder die Container um, um sicherzustellen, dass sie den Azure-Namenskonventionen entsprechen.
+
+Weitere Informationen finden Sie in den Azure-Namenskonventionen für  [Verzeichnisse](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)  und [Container](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Größenbeschränkungsfehler für Container oder Freigaben
 

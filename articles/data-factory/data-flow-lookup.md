@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: 24fe11610d2a91fcdb0f09b8e45ea6ff4b81bd70
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606377"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594320"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 
@@ -33,7 +33,7 @@ Eine Suchtransformation ist mit einer linken äußeren Verknüpfung vergleichbar
 
 **Übereinstimmung mit mehreren Zeilen:** Bei Aktivierung dieser Option werden für eine Zeile mit mehreren Übereinstimmungen im primären Datenstrom mehrere Zeilen zurückgegeben. Anderenfalls wird basierend auf der Bedingung „Übereinstimmung mit“ nur eine einzelne Zeile zurückgegeben.
 
-**Übereinstimmung mit:** Nur sichtbar, wenn „Übereinstimmung mit mehreren Zeilen“ aktiviert ist. Wählen Sie aus, ob eine Übereinstimmung für eine beliebige Zeile, die erste Übereinstimmung oder die letzte Übereinstimmung ermittelt werden soll. Da die Ausführung bei Auswahl einer beliebigen Zeile am schnellsten ist, wird diese Einstellung empfohlen. Wenn die erste Zeile oder die letzte Zeile ausgewählt wird, müssen Sortierbedingungen angegeben werden.
+**Übereinstimmung mit:** Nur sichtbar, wenn „Übereinstimmung mit mehreren Zeilen“ nicht aktiviert ist. Wählen Sie aus, ob eine Übereinstimmung für eine beliebige Zeile, die erste Übereinstimmung oder die letzte Übereinstimmung ermittelt werden soll. Da die Ausführung bei Auswahl einer beliebigen Zeile am schnellsten ist, wird diese Einstellung empfohlen. Wenn die erste Zeile oder die letzte Zeile ausgewählt wird, müssen Sortierbedingungen angegeben werden.
 
 **Suchbedingungen:** Wählen Sie aus, für welche Spalten eine Übereinstimmung ermittelt werden soll. Wenn die Gleichheitsbedingung erfüllt ist, werden die Zeilen als Übereinstimmung betrachtet. Zeigen Sie mit dem Mauszeiger auf „Berechnete Spalte“, und wählen Sie diese Option aus, um mithilfe der [Ausdruckssprache für Datenflüsse](data-flow-expression-functions.md) einen Wert zu extrahieren.
 
@@ -55,11 +55,11 @@ Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Suchtransformatio
 
 ## <a name="broadcast-optimization"></a>Broadcastoptimierung
 
-In Azure Data Factory werden Zuordnungsdatenflüsse in aufskalierten Spark-Umgebungen ausgeführt. Wenn Ihr Dataset in den Workerknotenspeicher eingepasst werden kann, kann Ihre Suchleistung durch die Aktivierung des Broadcastings optimiert werden.
-
 ![Broadcastjoin](media/data-flow/broadcast.png "Broadcastjoin")
 
-Bei aktiviertem Broadcasting wird das gesamte Dataset in den Arbeitsspeicher verschoben. Bei kleineren Datasets, die nur wenige Tausend Zeilen enthalten, kann die Suchleistung durch das Broadcasting erheblich verbessert werden. Bei großen Datasets kann diese Option zu einer Ausnahme aufgrund von nicht genügend Arbeitsspeicher führen.
+Wenn bei Join, Lookup- und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
+
+Es wird nicht empfohlen, die Übertragung über die Option **Aus** zu deaktivieren, es sei denn, für Ihre Joins treten Timeoutfehler auf.
 
 ## <a name="data-flow-script"></a>Datenflussskript
 
@@ -72,7 +72,7 @@ Bei aktiviertem Broadcasting wird das gesamte Dataset in den Arbeitsspeicher ver
         multiple: { true | false },
         pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
         { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <lookupTransformationName>
 ```
 ### <a name="example"></a>Beispiel
@@ -86,7 +86,7 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     multiple: false,
     pickup: 'first',
     asc(ProductKey, true),
-    broadcast: 'none')~> LookupKeys
+    broadcast: 'auto')~> LookupKeys
 ```
 ## 
 Nächste Schritte

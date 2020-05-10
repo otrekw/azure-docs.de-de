@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414428"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592076"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -102,13 +102,16 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 | **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt, der bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „hour“ festgelegt, wird der Trigger alle drei Stunden ausgeführt. <br/>**Hinweis**: Das minimale Fensterintervall beträgt 5 Minuten. | Integer | Eine positive ganze Zahl | Ja |
 | **startTime**| Das erste Vorkommen, das in der Vergangenheit liegen kann. Das erste Triggerintervall ist (**startTime**, **startTime** + **interval**). | Datetime | Ein DateTime-Wert | Ja |
 | **endTime**| Das letzte Vorkommen, das in der Vergangenheit liegen kann. | Datetime | Ein DateTime-Wert | Ja |
-| **delay** | Der Zeitraum, in dem der Beginn der Datenverarbeitung für das Fenster verzögert wird. Die Ausführung der Pipeline wird nach der erwarteten Ausführungszeit sowie dem **delay**-Wert gestartet. **delay** legt fest, wie lange der Trigger nach Ablauf der fälligen Zeit wartet, bevor er eine neue Ausführung auslöst. Bei **delay** wird nicht das Fenster **startTime** geändert. Ein **delay**-Wert von 00:10:00 impliziert beispielsweise eine Verzögerung von 10 Minuten. | Timespan<br/>(hh:mm:ss)  | Ein Zeitraumwert, wobei der Standardwert 00:00:00 ist. | Nein |
+| **delay** | Der Zeitraum, in dem der Beginn der Datenverarbeitung für das Fenster verzögert wird. Die Ausführung der Pipeline wird nach der erwarteten Ausführungszeit sowie dem **delay**-Wert gestartet. **delay** legt fest, wie lange der Trigger nach Ablauf der fälligen Zeit wartet, bevor er eine neue Ausführung auslöst. Bei **delay** wird nicht das Fenster **startTime** geändert. Ein **delay**-Wert von 00:10:00 impliziert beispielsweise eine Verzögerung von 10 Minuten. | Timespan<br/>(hh:mm:ss)  | Ein Zeitraumwert, wobei der Standardwert 00:00:00 ist. | Nein  |
 | **maxConcurrency** | Die Anzahl der gleichzeitigen Triggerausführungen, die für bereite Fenster ausgelöst werden. Dies gilt beispielsweise für das Abgleichen stündlicher Ausführungen für die gestrigen Ergebnisse in 24 Fenstern. Wenn **maxConcurrency** = 10, werden Triggerereignisse nur für die ersten 10 Fenster ausgelöst (00:00-01:00 – 09:00-10:00). Nachdem die ersten 10 ausgelösten Pipelineausführungen erfolgt sind, werden Triggerausführungen für die nächsten 10 Fenster (10:00-11:00 – 19:00-20:00) ausgelöst. Wenn Sie mit dem Beispiel **maxConcurrency** = 10 fortfahren, erfolgen 10 Pipelineausführungen, sobald 10 Fenster bereit sind. Wenn nur ein Fenster bereit ist, erfolgt nur eine Pipelineausführung. | Integer | Eine ganze Zahl zwischen 1 und 50. | Ja |
-| **retryPolicy: Count** | Die Anzahl der Wiederholungen, bevor die Ausführung der Pipeline als „Failed“ markiert wird  | Integer | Eine ganze Zahl, wobei der Standardwert 0 ist (keine Wiederholungen) | Nein |
-| **retryPolicy: intervalInSeconds** | Die Verzögerung zwischen den in Sekunden angegebenen Wiederholungsversuchen | Integer | Die Anzahl der Sekunden, wobei der Standardwert 30 ist | Nein |
-| **dependsOn: type** | Der Typ von TumblingWindowTriggerReference. Erforderlich, wenn eine Abhängigkeit festgelegt ist. | String |  „TumblingWindowTriggerDependencyReference“, „SelfDependencyTumblingWindowTriggerReference“ | Nein |
-| **dependsOn: size** | Die Größe des abhängigen rollierenden Fensters. | Timespan<br/>(hh:mm:ss)  | Ein positiver Zeitspannenwert, wobei der Standardwert die Fenstergröße des untergeordneten Triggers ist.  | Nein |
-| **dependsOn: offset** | Der Offset des Abhängigkeitstriggers. | Timespan<br/>(hh:mm:ss) |  Ein Zeitspannenwert, der bei einer Selbstabhängigkeit negativ sein muss. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein  |
+| **retryPolicy: Count** | Die Anzahl der Wiederholungen, bevor die Ausführung der Pipeline als „Failed“ markiert wird  | Integer | Eine ganze Zahl, wobei der Standardwert 0 ist (keine Wiederholungen) | Nein  |
+| **retryPolicy: intervalInSeconds** | Die Verzögerung zwischen den in Sekunden angegebenen Wiederholungsversuchen | Integer | Die Anzahl der Sekunden, wobei der Standardwert 30 ist | Nein  |
+| **dependsOn: type** | Der Typ von TumblingWindowTriggerReference. Erforderlich, wenn eine Abhängigkeit festgelegt ist. | String |  „TumblingWindowTriggerDependencyReference“, „SelfDependencyTumblingWindowTriggerReference“ | Nein  |
+| **dependsOn: size** | Die Größe des abhängigen rollierenden Fensters. | Timespan<br/>(hh:mm:ss)  | Ein positiver Zeitspannenwert, wobei der Standardwert die Fenstergröße des untergeordneten Triggers ist.  | Nein  |
+| **dependsOn: offset** | Der Offset des Abhängigkeitstriggers. | Timespan<br/>(hh:mm:ss) |  Ein Zeitspannenwert, der bei einer Selbstabhängigkeit negativ sein muss. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein   |
+
+> [!NOTE]
+> Nach der Veröffentlichung eines Triggers für rollierende Fenster können **Intervall** und **Häufigkeit** nicht mehr bearbeitet werden.
 
 ### <a name="windowstart-and-windowend-system-variables"></a>Systemvariablen „WindowStart“ und „WindowEnd“
 

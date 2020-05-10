@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/12/2020
-ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233702"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598497"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -200,9 +200,9 @@ Auf der [Startseite des Clusters](#homePage):
 
 Das Kennwort wird auf allen Knoten im Cluster geändert.
 
-### <a name="change-the-ssh-user-password"></a>Ändern des SSH-Benutzerkennworts
+### <a name="change-the-ssh-user-password-or-public-key"></a>Ändern des SSH-Benutzerkennworts oder des öffentlichen Schlüssels
 
-1. Speichern Sie den folgenden Text mit einem Texteditor als Datei mit dem Namen **changepassword.sh**.
+1. Speichern Sie den folgenden Text mit einem Text-Editor als Datei namens **changecredentials.sh**.
 
     > [!IMPORTANT]  
     > Sie müssen einen Editor verwenden, der „LF“ als Zeilenende verwendet. Wenn der Editor „CRLF“ verwendet, funktioniert das Skript nicht.
@@ -219,16 +219,22 @@ Das Kennwort wird auf allen Knoten im Cluster geändert.
 4. Wählen Sie auf der Seite **Skriptaktionen** die Option **+ Neue übermitteln** aus.
 5. Geben Sie auf der Seite **Skriptaktion übermitteln** die folgenden Informationen ein:
 
+> [!NOTE]
+> Folgende Zeichen dürfen in den SSH-Kennwörtern nicht verwendet werden:
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | Feld | Wert |
    | --- | --- |
    | Skripttyp | Wählen Sie in der Dropdownliste **– Benutzerdefiniert** aus.|
-   | Name |„Change ssh password“ (SSH-Kennwort ändern) |
-   | Bash-Skript-URI |Der URI zur Datei „changepassword.sh“ |
+   | Name |"Change ssh credentials" |
+   | Bash-Skript-URI |Der URI der Datei „changecredentials.sh“ |
    | Knotentyp(en): (Hauptknoten, Worker, Nimbus, Supervisor oder Zookeeper.) |✓ für alle aufgeführten Knotentypen |
    | Parameter |Geben Sie den SSH-Benutzernamen und dann das neue Kennwort ein. Es muss ein Leerzeichen zwischen den Benutzernamen und das Kennwort eingefügt werden. |
    | Speichern Sie diese Skriptaktion ... |Lassen Sie dieses Feld deaktiviert. |
 
-6. Wählen Sie **Erstellen** aus, um das Skript anzuwenden. Nachdem das Skript ausgeführt wurde, können Sie per SSH mit dem neuen Kennwort eine Verbindung mit dem Cluster herstellen.
+6. Wählen Sie **Erstellen** aus, um das Skript anzuwenden. Nachdem das Skript ausgeführt wurde, können Sie per SSH mit den neuen Anmeldeinformationen eine Verbindung mit dem Cluster herstellen.
 
 ## <a name="find-the-subscription-id"></a>Ermitteln der Abonnement-ID
 
