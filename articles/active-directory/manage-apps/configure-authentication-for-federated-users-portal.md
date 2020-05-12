@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943441"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690500"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -65,9 +65,9 @@ Die Syntax der Domänenhinweise variiert je nach verwendetem Protokoll und wird 
 
 **WS-Verbund**: „whr=contoso.com“ in der Abfragezeichenfolge.
 
-**SAML**: Eine SAML-Authentifizierungsanforderung, die einen Domänenhinweis enthält, oder eine Abfragezeichenfolge „whr=contoso.com“.
+**SAML**:  Eine SAML-Authentifizierungsanforderung, die einen Domänenhinweis enthält, oder eine Abfragezeichenfolge „whr=contoso.com“.
 
-**Open ID Connect**: Eine Abfragezeichenfolge „domain_hint=contoso.com“. 
+**OpenID Connect**: Eine Abfragezeichenfolge „domain_hint=contoso.com“. 
 
 Wenn ein Domänenhinweis in der Authentifizierungsanforderung der Anwendung enthalten und der Mandant mit dieser Domäne verbunden ist, versucht Azure AD, die Anmeldung an den für diese Domäne konfigurierten Identitätsanbieter umzuleiten. 
 
@@ -168,7 +168,7 @@ In den folgenden Beispielen erstellen, aktualisieren, verknüpfen und löschen S
 
 Wenn nichts zurückgegeben wird, bedeutet dies, dass in Ihrem Mandanten keine Richtlinien erstellt wurden.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Beispiel: Festlegen der Richtlinie zur Startbereichsermittlung für eine Anwendung 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>Beispiel: Festlegen einer Richtlinie zur Startbereichsermittlung für eine Anwendung 
 
 In diesem Beispiel erstellen Sie eine Richtlinie, die eine der folgenden Aktionen durchführt, sobald Sie einer Anwendung zugewiesen wird: 
 - Wenn Ihr Mandant eine einzige Domäne aufweist, werden Benutzer beim Anmelden bei einer Anwendung automatisch beschleunigt zu einem AD FS-Anmeldebildschirm weitergeleitet. 
@@ -251,7 +251,7 @@ Notieren Sie sich die **ObjectID** der Richtlinie, für die Sie Zuordnungen aufl
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Beispiel: Entfernen der Richtlinie zur Startbereichsermittlung für eine Anwendung
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>Beispiel: Entfernen einer Richtlinie zur Startbereichsermittlung aus einer Anwendung
 #### <a name="step-1-get-the-objectid"></a>Schritt 1: Abrufen der ObjectID
 Verwenden Sie das vorherige Beispiel, um die **ObjectID** der Richtlinie und die ObjectID des Anwendungsdienstprinzipals abzurufen, von dem Sie sie entfernen möchten. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607491"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801315"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -211,7 +211,7 @@ Um die aktuelle Synchronisierungsaktivität auf einem Server zu überprüfen, le
 Möglicherweise protokolliert ein Serverendpunkt aufgrund eines Fehlers oder unzureichender Systemressourcen mehrere Stunden lang keine Synchronisierungsaktivität. Überprüfen Sie, ob die neueste [Version des Azure-Dateisynchronisierungs-Agents](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) installiert ist. Wenn das Problem weiterhin auftritt, öffnen Sie eine Supportanfrage.
 
 > [!Note]  
-> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt S[erverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
+> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt [Serverendpunkt hat den Integritätsstatus „Keine Aktivität“ oder „Ausstehend“, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  
@@ -303,10 +303,10 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 > Wenn das Skript „ FileSyncErrorsReport.ps1“ die Meldung „Es wurden keine Dateifehler gefunden“ zurückgibt oder darin keine Fehler auf Elementebene für die Synchronisierungsgruppe aufgelistet werden, ist die Ursache eine der folgenden:
 >
 >- Ursache 1: Bei der letzten abgeschlossenen Synchronisierungssitzung gab es keine Fehler auf Elementebene. Das Portal sollte bald aktualisiert werden, damit „0 Dateien ohne Synchronisierung“ angezeigt wird. 
->   - Überprüfen Sie die [Ereignis-ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) im Telemetrieereignisprotokoll, um zu bestätigen, dass „PerItemErrorCount“ gleich „0“ ist. 
+>    - Überprüfen Sie die [Ereignis-ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) im Telemetrieereignisprotokoll, um zu bestätigen, dass „PerItemErrorCount“ gleich „0“ ist. 
 >
 >- Ursache 2: Das Ereignisprotokoll „ItemResults“ wurde auf dem Server aufgrund von zu vielen Fehlern auf Elementebene überschrieben, und das Protokoll enthält keine Fehler mehr für diese Synchronisierungsgruppe.
->   - Zur Verhinderung dieses Problems vergrößern Sie das Ereignisprotokoll „ItemResults“. Das Ereignisprotokoll „ItemResults“ ist in der Ereignisanzeige unter „Applications and Services Logs\Microsoft\FileSync\Agent“ zu finden. 
+>    - Zur Verhinderung dieses Problems vergrößern Sie das Ereignisprotokoll „ItemResults“. Das Ereignisprotokoll „ItemResults“ ist in der Ereignisanzeige unter „Applications and Services Logs\Microsoft\FileSync\Agent“ zu finden. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen
 **ItemResults-Protokoll – Synchronisierungsfehler nach Element**  
@@ -333,7 +333,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Die Datei kann aufgrund eines unerwarteten Fehlers nicht synchronisiert werden. | Wenn der Fehler mehrere Tage lang besteht, erstellen Sie eine Supportanfrage. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Die Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Die Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
-| 0x80070017 | -2147024873 | ERROR_CRC | Die Datei kann aufgrund eines CRC-Fehlers nicht synchronisiert werden. Dieser Fehler kann auftreten, wenn eine Tieringdatei vor dem Löschen eines Serverendpunkts nicht abgerufen wurde oder wenn die Datei beschädigt ist. | Zur Behebung dieses Problems informieren Sie sich unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint), wie Sie verwaiste Tieringdateien entfernen. Wenn der Fehler weiterhin auftritt, nachdem Sie die verwaisten Tieringdateien entfernt haben, führen Sie [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) auf dem Volume aus. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Die Datei kann aufgrund eines CRC-Fehlers nicht synchronisiert werden. Dieser Fehler kann auftreten, wenn eine Tieringdatei vor dem Löschen eines Serverendpunkts nicht abgerufen wurde oder wenn die Datei beschädigt ist. | Zur Behebung dieses Problems informieren Sie sich unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint), wie Sie verwaiste Tieringdateien entfernen. Sollte der Fehler nach dem Entfernen verwaister Tieringdateien weiterhin auftreten, führen Sie [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) auf dem Volume aus. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Die Datei kann nicht synchronisiert werden, da die maximale Anzahl von Konfliktdateien erreicht wurde. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Weitere Informationen zu Dateikonflikten finden Sie unter den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) zur Azure-Dateisynchronisierung. | Um dieses Problem zu beheben, reduzieren Sie die Anzahl der Konfliktdateien. Die Datei wird synchronisiert, sobald die Anzahl der Konfliktdateien weniger als 100 beträgt. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
@@ -454,7 +454,7 @@ Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berec
 2. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
 3. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
-<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Unbekannter Fehler beim Zugriff auf das Speicherkonto aufgetreten.**  
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Unbekannter Fehler beim Zugriff auf das Speicherkonto.**  
 
 | | |
 |-|-|
@@ -807,12 +807,9 @@ Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsda
 | **Fehlerzeichenfolge** | ECS_E_INVALID_AAD_TENANT |
 | **Korrektur erforderlich** | Ja |
 
-Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung zurzeit das Verschieben eines Abonnements in einen anderen Azure Active Directory-Mandanten nicht unterstützt.
+Stellen Sie sicher, dass Sie über den neuesten Agent für die Azure-Dateisynchronisierung verfügen. Ab Agent-Version 10 unterstützt die Azure-Dateisynchronisierung das Verschieben eines Abonnements in einen anderen Azure Active Directory-Mandanten.
  
-Um das Problem zu lösen, führen Sie eine der folgenden Optionen aus:
-
-- **Option 1 (empfohlen)** : Verschieben Sie das Abonnement zurück in den ursprünglichen Azure Active Directory-Mandanten.
-- **Option 2**: Löschen Sie die aktuelle Synchronisierungsgruppe, und erstellen Sie sie erneut. Wenn Cloudtiering auf dem Serverendpunkt aktiviert war, löschen Sie die Synchronisierungsgruppe, und führen Sie dann die im Abschnitt [Cloudtiering]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentierten Schritte aus, um die verwaisten Tieringdateien zu entfernen, bevor Sie die Synchronisierungsgruppe erneut erstellen. 
+Sobald Sie über die neueste Agent-Version verfügen, müssen Sie der Anwendung Microsoft.StorageSync Zugriff auf das Speicherkonto gewähren (weitere Informationen finden Sie unter [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)).
 
 <a id="-2134364010"></a>**Fehler bei der Synchronisierung aufgrund einer nicht konfigurierten Ausnahme für Firewall und virtuelles Netzwerk**  
 
@@ -1210,7 +1207,7 @@ $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 
 *Option 2: Bereitstellen der Azure-Dateifreigabe und Kopieren der Dateien, die auf dem Server verwaist sind, in die lokale Umgebung*
 
-Bei dieser Option muss der Server nicht entfernt werden, aber es muss genügend freier Speicherplatz auf dem Datenträger vorhanden sein, um die gesamten Dateien in die lokale Umgebung kopieren zu können.
+Bei dieser Option muss der Serverendpunkt nicht entfernt werden, aber es muss genügend freier Speicherplatz auf dem Datenträger vorhanden sein, um die gesamten Dateien in die lokale Umgebung kopieren zu können.
 
 1. Führen Sie die [Bereitstellung](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) der Azure-Dateifreigabe auf der Windows Server-Instanz durch, die über verwaiste mehrstufige Dateien verfügt.
 2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
@@ -1232,6 +1229,12 @@ Unbeabsichtigte Rückrufe können auch in anderen Szenarien auftreten, z.B. beim
 > [!NOTE]
 >Verwenden Sie Ereignis-ID 9059 im Telemetrieereignisprotokoll, um zu bestimmen, welche Anwendungen Rückrufe erzeugen. Dieses Ereignis stellt Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt bereit und wird einmal pro Stunde protokolliert.
 
+### <a name="tls-12-required-for-azure-file-sync"></a>TLS 1.2 für Azure-Dateisynchronisierung erforderlich
+
+Sie können die TLS-Einstellungen auf Ihrem Server anzeigen, indem Sie sich die [Registrierungseinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) ansehen. 
+
+Wenn Sie einen Proxy verwenden, sehen Sie in der Dokumentation zu Ihrem Proxy nach, und stellen Sie sicher, dass er für die Verwendung von TLS 1.2 konfiguriert ist.
+
 ## <a name="general-troubleshooting"></a>Allgemeine Problembehandlung
 Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, führen Sie zunächst die folgenden Schritte aus:
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle.
@@ -1242,7 +1245,25 @@ Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, f�
 3. Überprüfen Sie, ob die Filtertreiber der Azure-Dateisynchronisierung („StorageSync.sys“ und „StorageSyncGuard.sys“) ausgeführt werden:
     - Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten `fltmc` ein. Überprüfen Sie, ob die Dateisystem-Filtertreiber „StorageSync.sys“ und „StorageSyncGuard.sys“ aufgelistet sind.
 
-Wenn das Problem nicht behoben wird, führen Sie das AFSDiag-Tool aus:
+Wenn das Problem nicht behoben werden kann, führen Sie das Tool AFSDiag aus, und übermitteln Sie die Ausgabe der ZIP-Datei zur weiteren Untersuchung an den für Ihren Fall zuständigen Supportmitarbeiter.
+
+Ab Agent-Version 11:
+
+1. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und führen Sie die folgenden Befehle aus (drücken Sie nach jedem Befehl die EINGABETASTE):
+
+    > [!NOTE]
+    >AFSDiag erstellt das Ausgabeverzeichnis und einen temporären Ordner darin, bevor Protokolle gesammelt werden, und löscht den temporären Ordner nach der Ausführung. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D**.
+3. Eine ZIP-Datei, die Protokolle und Ablaufverfolgungsdateien enthält, wird im angegebenen Ausgabeverzeichnis gespeichert. 
+
+Bis Agent-Version 10:
 1. Erstellen Sie eine Verzeichnis zum Speichern der Ausgabe von AFSDiag (z.B. „C:\Ausgabe“).
     > [!NOTE]
     >AFSDiag löscht vor der Protokollerfassung den gesamten Inhalt des Ausgabeverzeichnisses. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.

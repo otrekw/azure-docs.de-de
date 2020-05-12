@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218864"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690813"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 
@@ -26,12 +26,12 @@ Maschinelles Sehen bietet einige Dienste, die auf Bildern erscheinenden gedruckt
 
 Die Lese-API erkennt mithilfe unserer neuesten Erkennungsmodelle Textinhalt auf einem Bild und konvertiert den erkannten Text in eine computerlesbare Zeichendatenfolge. Sie wurde für textlastige Bilder (wie digital eingescannte Dokumente) und für Bilder mit starkem Bildrauschen optimiert. Sie bestimmt, welches Erkennungsmodell für die einzelnen Textzeilen verwendet werden soll und unterstützt Bilder mit gedrucktem und handschriftlichem Text. Die Lese-API wird asynchron ausgeführt, da es bei größeren Dokumenten mehrere Minuten dauern kann, bis ein Ergebnis zurückgegeben wird.
 
-Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten Wörter in der Ausgabe beibehalten. Zu jeder Zeile werden die Koordinaten des umgebenden Felds übertragen, und jedes Wort innerhalb der Zeile verfügt über seine eigenen Koordinaten. Wenn ein Wort mit geringer Zuverlässigkeit erkannt wurde, wird diese Information ebenfalls vermittelt. Weitere Informationen finden Sie unter [Referenzdokumentation zur Lese-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) und [Referenzdokumentation zur Lese-API (Vorschau)](https://go.microsoft.com/fwlink/?linkid=2118322).
+Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten Wörter in der Ausgabe beibehalten. Zu jeder Zeile werden die Koordinaten des umgebenden Felds übertragen, und jedes Wort innerhalb der Zeile verfügt über seine eigenen Koordinaten. Wenn ein Wort mit geringer Zuverlässigkeit erkannt wurde, wird diese Information ebenfalls vermittelt. Weitere Informationen finden Sie unter [Referenzdokumentation zur Lese-API 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) oder [Referenzdokumentation zur Lese-API 3.0 (Vorschau)](https://go.microsoft.com/fwlink/?linkid=2118322).
 
 > [!NOTE]
-> Dieses Feature steht nur für englisch- und spanischsprachigen Text (Vorschau) zur Verfügung.
+> Dieses Feature steht nur für englisch- und spanischsprachigen Text (Vorschauversion 3.0) zur Verfügung.
 
-### <a name="image-requirements"></a>Anforderungen an Images
+### <a name="image-requirements"></a>Bildanforderungen
 
 Die Lese-API kann Bilder analysieren, die folgende Anforderungen erfüllen:
 
@@ -53,7 +53,7 @@ Bei Bedarf korrigiert die OCR die Drehung des erkannten Textes, indem sie den Dr
 
 Weitere Informationen finden Sie in der [OCR-Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc).
 
-### <a name="image-requirements"></a>Anforderungen an Images
+### <a name="image-requirements"></a>Bildanforderungen
 
 Die OCR-API kann Bilder analysieren, die folgende Anforderungen erfüllen:
 
@@ -72,7 +72,7 @@ Bei Fotos, auf denen Text dominiert, kann es durch teilweise erkannte Wörter zu
 
 Die Texterkennungs-API ähnelt OCR, wird jedoch asynchron ausgeführt und verwendet aktualisierte Erkennungsmodelle. Weitere Informationen finden Sie in der [Referenzdokumentation zur Texterkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200).
 
-### <a name="image-requirements"></a>Anforderungen an Images
+### <a name="image-requirements"></a>Bildanforderungen
 
 Die Texterkennungs-API kann Bilder analysieren, die folgende Anforderungen erfüllen:
 

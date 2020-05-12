@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7f6b623cc5f864106dc2f119308370e80014a4c2
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67204531"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611023"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Ändern des Kennworts für das Azure AD-Connector-Konto
 Das Azure AD-Connector-Konto sollte keine Verwaltung erfordern. Wenn Sie die Anmeldeinformationen des Kontos zurückzusetzen müssen, finden Sie die notwendigen Informationen in diesem Thema. Dies ist beispielsweise der Fall, wenn ein globaler Administrator versehentlich über PowerShell das Kennwort des Kontos zurückgesetzt hat.
@@ -30,7 +31,7 @@ Das Azure AD-Connector-Konto sollte keine Verwaltung erfordern. Wenn Sie die Anm
 Kann das Azure AD-Connector-Konto aufgrund von Authentifizierungsproblemen keine Verbindung mit Azure AD herstellen, kann das Kennwort zurückgesetzt werden.
 
 1. Melden Sie sich beim Azure AD Connect-Synchronisierungsserver an, und starten Sie PowerShell.
-2. Führen Sie `Add-ADSyncAADServiceAccount` aus.  
+2. Führen Sie `Add-ADSyncAADServiceAccount` aus.
    ![PowerShell-Cmdlet addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. Stellen Sie Anmeldeinformationen eines globalen Azure AD-Administrators bereit.
 
@@ -40,18 +41,13 @@ Dieses Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert e
 Dieser Abschnitt enthält eine Liste mit Fehlern, die von Kunden gemeldet und durch das Zurücksetzen der Anmeldeinformationen für das Azure AD-Connector-Konto behoben wurden.
 
 ---
-Ereignis 6900  
-Der Server hat einen unerwarteten Fehler beim Verarbeiten einer Benachrichtigung über eine Kennwortänderung erkannt:  
-AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+Ereignis 6900. Der Server hat einen unerwarteten Fehler beim Verarbeiten einer Benachrichtigung über eine Kennwortänderung erkannt: AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.
 
 ---
-Ereignis 659  
-Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+Ereignis 659. Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 **Übersichtsthemen**
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](how-to-connect-sync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
-

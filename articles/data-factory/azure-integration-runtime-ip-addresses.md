@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3fae34d0bb1aaaa2471f1cc9fd55ef9b4b73dfd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415597"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594286"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>IP-Adressen von Azure Integration Runtime
 
@@ -25,7 +25,7 @@ ms.locfileid: "81415597"
 Die von Azure Integration Runtime verwendeten IP-Adressen richten sich nach der Region, in der sich Ihre Azure Integration Runtime-Instanz befindet. *Alle* Azure Integration Runtime-Instanzen in ein und derselben Region verwenden dieselben IP-Adressbereiche.
 
 > [!IMPORTANT]  
-> Datenflüsse verwenden diese IPs derzeit nicht. 
+> Datenflüsse unterstützen die Verwendung von festen IP-Adressbereichen nicht.
 >
 > Sie können diese IP-Adressbereiche für Datenverschiebungen, Pipeline und externe Aktivitäten verwenden. Diese IP-Adressbereiche können auch verwendet werden, um in Datenspeichern, Netzwerksicherheitsgruppen oder Firewalls Whitelists für eingehenden Datenverkehr von Azure Integration Runtime einzurichten. 
 

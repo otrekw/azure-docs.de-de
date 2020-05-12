@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259084"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610920"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängig von den Knoteneinstellungen und Vorgängen, die Sie in Ihrer Resource Manager-Vorlage definieren.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool (Vorschau)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in Ihren Knotenpools (Vorschau)
 
 > [!WARNING]
-> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. Aufgrund dieser Einschränkung werden Windows-Agentpools bei dieser Previewfunktion nicht unterstützt. In der Vorschauversion müssen Sie die *Load-Balancer-SKU „Basic“* verwenden, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
+> Sie müssen die Erweiterung 0.4.43 oder höher der CLI-Vorschauversion installieren, um das Feature „Öffentliche IP-Adresse pro Knoten“ verwenden zu können.
 
 AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils eine eigene dedizierte öffentliche IP-Adresse erhalten. Ein häufiges Szenario hierfür sind Gamingworkloads, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dieses Szenario kann in AKS erreicht werden, indem Sie sich für eine Previewfunktion für öffentliche IP-Adressen für Knoten (Vorschau) registrieren.
 
-Sie registrieren sich für die Funktion für öffentliche IP-Adressen von Knoten, indem Sie den folgenden Befehl an der Azure-Befehlszeilenschnittstelle ausgeben.
+Um die neueste Erweiterung von aks-preview zu installieren und zu aktualisieren, verwenden Sie die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+Registrieren Sie sich für das Feature für öffentliche IP-Adressen von Knoten über den folgenden Azure CLI-Befehl:
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+Die Registrierung des Features kann einige Minuten dauern.  Sie können den Status mit dem folgenden Befehl überprüfen:
 
-Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie agentPoolProfiles die Eigenschaft `enableNodePublicIP` (boolescher Wert) hinzu. Sie müssen den Wert auf `true` festlegen, da er standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
+Erstellen Sie nach erfolgreicher Registrierung eine neue Ressourcengruppe.
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+Erstellen Sie einen neuen AKS-Cluster, und fügen Sie an Ihre Knoten eine öffentliche IP-Adresse an. Jeder Knoten im Knotenpool erhält eine eindeutige öffentliche IP-Adresse. Sie können dies überprüfen, indem Sie sich die VM-Skalierungsgruppeninstanzen ansehen.
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+Bei vorhandenen AKS-Clustern können Sie auch einen neuen Knotenpool hinzufügen und eine öffentliche IP-Adresse an Ihre Knoten anfügen.
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> In der Vorschauphase unterstützt der Azure Instance Metadata Service derzeit nicht das Abrufen öffentlicher IP-Adressen für die VM-SKU im Standardtarif. Aufgrund dieser Einschränkung können Sie nicht über kubectl-Befehle die den Knoten zugewiesenen öffentlichen IP-Adressen anzeigen. Die IP-Adressen sind jedoch zugewiesen und funktionieren wie vorgesehen. Die öffentlichen IP-Adressen Ihrer Knoten werden an die Instanzen in Ihrer VM-Skalierungsgruppe angefügt.
+
+Sie können die öffentlichen IP-Adressen Ihrer Knoten auf verschiedene Weise ermitteln:
+
+* Mit dem Azure CLI-Befehl [az vmss list-instance-public-ips][az-list-ips]
+* Mit [PowerShell- oder Bash-Befehlen][vmss-commands] 
+* Sie können die öffentlichen IP-Adressen auch im Azure-Portal anzeigen, indem Sie die Instanzen in der VM-Skalierungsgruppe einsehen.
+
+> [!Important]
+> Die [Knotenressourcengruppe][node-resource-group] enthält die Knoten und deren öffentlichen IP-Adressen. Verwenden Sie die Knotenressourcengruppe, wenn Sie Befehle ausführen, um die öffentlichen IP-Adressen Ihrer Knoten zu ermitteln.
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -753,6 +796,12 @@ Wenn Sie den Cluster selbst löschen möchten, verwenden Sie den Befehl [az grou
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+Sie können auch den zusätzlichen Cluster löschen, den Sie für das Szenario für öffentliche IP-Adressen für Knotenpools erstellt haben.
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -795,3 +844,7 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

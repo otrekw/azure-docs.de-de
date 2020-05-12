@@ -1,21 +1,25 @@
 ---
-title: Erfassen eines Images einer Linux-VM mit der Azure CLI
-description: Erfassen Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) ein Image eines virtuellen Azure-Computers, das für Massenbereitstellungen verwendet werden soll.
+title: Erfassen eines verwalteten Images einer Linux-VM mit der Azure-Befehlszeilenschnittstelle
+description: Erfassen Sie mit der Azure-Befehlszeilenschnittstelle ein verwaltetes Image einer Azure-VM, das für Massenbereitstellungen verwendet werden soll.
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226830"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792682"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
-Um mehrere Kopien eines virtuellen Computers (Virtual Machine, VM) für die Verwendung in Azure zu erstellen, erfassen Sie ein Image des virtuellen Computers oder der Betriebssystem-VHD. Wenn Sie ein Image für die Bereitstellung erstellen möchten, müssen Sie persönliche Kontoinformationen entfernen. In den folgenden Schritten heben Sie die Bereitstellung eines vorhandenen virtuellen Computers auf, heben dessen Zuordnung auf und erstellen ein Image. Sie können dieses Image verwenden, um virtuelle Computer über jede Ressourcengruppe innerhalb Ihres Abonnements hinweg zu erstellen.
+Um mehrere Kopien eines virtuellen Computers (VM) für die Verwendung zum Entwickeln und Testen in Azure zu erstellen, erfassen Sie ein verwaltetes Image der VM oder der Betriebssystem-VHD. Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](../shared-images-cli.md).
+
+Wenn Sie ein verwaltetes Image erstellen möchten, müssen Sie persönliche Kontoinformationen entfernen. In den folgenden Schritten heben Sie die Bereitstellung eines vorhandenen virtuellen Computers auf, heben dessen Zuordnung auf und erstellen ein Image. Sie können dieses Image verwenden, um virtuelle Computer über jede Ressourcengruppe innerhalb Ihres Abonnements hinweg zu erstellen.
 
 Wenn Sie zum Sichern oder Debuggen eine Kopie Ihres vorhandenen virtuellen Linux-Computers erstellen oder eine spezielle Linux-VHD über einen lokalen virtuellen Computer hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können mehrere virtuelle Computer aus dem Image des virtuellen Quellcomputers erstellen. Gehen Sie wie folgt vor, um Änderungen an Ihrem Image vorzunehmen: 
-
-- Erstellen Sie einen virtuellen Computer aus Ihrem Image.
-- Nehmen Sie sämtliche Updates oder Änderungen an der Konfiguration vor.
-- Führen Sie erneut die Schritte zum Aufheben der Bereitstellung, zum Aufheben der Zuordnung, zum Generalisieren und zum Erstellen eines Images aus.
-- Verwenden Sie dieses neue Image für zukünftige Bereitstellungen. Sie können das ursprüngliche Image löschen.
-
-Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI](/cli/azure).
+Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](shared-images.md).

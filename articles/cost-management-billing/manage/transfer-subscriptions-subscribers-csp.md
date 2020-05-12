@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200519"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791152"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -50,6 +50,7 @@ Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu üb
 
 1. Erstellen Sie Azure-Zielabonnements.
 1. Stellen Sie sicher, dass sich Quell- und Zielabonnement im gleichen Azure Active Directory-Mandanten (Azure AD) befinden. Weitere Informationen zum Ändern eines Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Beachten Sie, dass das Änderungsverzeichnis nicht das CSP-Abonnement ist. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
 
     > [!IMPORTANT]
     >  - Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen über die [RBAC](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.

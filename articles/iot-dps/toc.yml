@@ -11,11 +11,11 @@
       items:
         - name: Azure-Portal
           href: quick-setup-auto-provision.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-Vorlage
           href: quick-setup-auto-provision-rm.md
-    - name: Bereitstellen eines einzelnen simulierten Geräts
+    - name: Bereitstellen eines einzelnen Geräts
       items:
         - name: Nachweis des symmetrischen Schlüssels
           items:

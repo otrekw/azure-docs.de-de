@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756838"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627771"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -27,8 +27,9 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-| Frage | Lösung |
-| -------- | -------- |
+| Frage | Antwort |
+| -------- | ------ |
+| Bedeutet die Registrierung eines Geräts die Zustimmung für den Zugriff auf das Gerät durch das Unternehmen oder den Dienst? | Durch das Registrieren eines Geräts erhält Ihr Gerät Zugriff auf die Dienste Ihrer Organisation, ohne dass Sie Ihrer Organisation erlauben, auf Ihr Gerät zuzugreifen. |
 | Kann ich in Microsoft Authenticator für Android Screenshots meiner OTP-Codes erstellen? | Ab Microsoft Authenticator für Android Release 6.2003.1704 werden bei einem Screenshot von Authenticator standardmäßig alle OTP-Codes ausgeblendet, um Benutzer besser zu schützen. Wenn ein Benutzer die OTP-Codes in Screenshots anzeigen oder zulassen möchte, dass der Authenticator-Bildschirm in anderen Apps erfasst wird, kann er dazu die Einstellung „Bildschirmaufnahme“ in der Authenticator-App aktivieren und die App anschließend neu starten. |
 | Was speichert Authenticator in meinem Namen, und wie kann ich diese Daten löschen? | Die Microsoft Authenticator-App erfasst drei Arten von Informationen:<ul><li>Kontoinformationen, die Sie beim Hinzufügen Ihres Kontos angeben. Diese Daten können durch Entfernen Ihres Kontos entfernt werden.</li><li>Diagnoseprotokolldaten, die sich nur in der App befinden, bis Sie die Option **Protokolle senden** im Menü **Hilfe** der App auswählen, um die Protokolle an Microsoft zu senden. Diese Protokolldateien enthalten personenbezogene Daten, beispielsweise Ihre E-Mail-Adressen (z. B. alain@contoso.com), Server- oder IP-Adressen und Gerätedaten (z. B. Gerätename und Betriebssystemversion). Die personenbezogenen Daten sind dabei auf Informationen beschränkt, die für die Behebung von Problemen mit der App erforderlich sind. Sie können diese Protokolldateien in der App jederzeit aufrufen, um die erfassten Informationen anzuzeigen. Wenn Sie die Protokolldateien senden, können die Techniker der Authenticator-App sie zur Behebung von vom Kunden gemeldeten Problemen verwenden.</li><li>Nicht personenbezogene Verwendungsdaten, z. B. „Ablauf zum Hinzufügen des Kontos gestartet/Konto erfolgreich hinzugefügt“ oder „Benachrichtigung genehmigt“. Diese Daten sind Bestandteil unserer Entwicklungsentscheidungen und helfen uns bei der Ermittlung, welche Funktionen für Sie wichtig sind und an welcher Stelle Verbesserungen in Form von Updates an den Apps vorgenommen werden müssen. Sie als App-Benutzer erhalten eine Benachrichtigung über diese Datensammlung beim ersten Start der App, und Sie werden darüber informiert, dass diese auf der Seite **Einstellungen** der App deaktiviert werden kann. Sie können diese Einstellung jederzeit aktivieren oder deaktivieren.</li></ul> |
 | Wozu dienen die Codes in der App? | Wenn Sie die Microsoft Authenticator-App öffnen, werden Ihnen Ihre hinzugefügten Konten als Kacheln angezeigt.<li>Auf einem iOS-Gerät werden für Ihre Geschäfts-, Schul- oder Unikonten und Ihre persönlichen Microsoft-Konten in der Vollbildansicht des Kontos sechs- oder achtstellige Zahlen angezeigt (der Zugriff erfolgt durch Tippen auf die Kontokachel).<br><br>![Bildschirm „Konten“ in der App](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>Bei anderen Konten auf einem iOS-Gerät und allen Konten auf Android-Geräten werden auf der Seite „Konten“ der App sechs- oder achtstellige Zahlen angezeigt. Sie verwenden diese Codes zur Überprüfung, ob Sie derjenige sind, der Sie vorgeben, zu sein. Nachdem Sie sich mit Ihrem Benutzernamen und Kennwort angemeldet haben, geben Sie den Überprüfungscode ein, der dem Konto zugeordnet ist. Wenn Sie sich z. B. als „Katy“ bei Ihrem Contoso-Konto anmelden und ein iOS-Gerät verwenden, tippen Sie auf die Kontokachel, und verwenden Sie dann den Prüfcode, um Ihre Identität zu verifizieren. Wenn Sie sich als „Katy“ bei Ihrem Outlook-Konto anmelden, führen Sie dieselben Schritte aus.<br><br>![Nach dem Tippen auf die Kontokachel in der App](./media/user-help-auth-app-faq/katy-signin.png)<br><br>Nach dem Tippen auf die Kachel ihres Contoso-Kontos sieht Katy den Prüfcode in der Vollbildansicht und gibt 895823 ein, um die Anmeldung abzuschließen.<br><br>![Bildschirm für den Prüfcode in der App](./media/user-help-auth-app-faq/verification-code.png) |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257212"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594621"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Debuggen und Problembehandlung im Azure Machine Learning Designer (Vorschau)
 
-Dieser Abschnitt bietet eine Übersicht zur Problembehandlung für Pipelines im Designer.
-Die **Protokolldateien** für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
+Dieser Abschnitt bietet eine Übersicht zur Problembehandlung für Pipelines im Designer. Die **70_driver_log**-Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
 
-### <a name="access-logs-from-the-authoring-page"></a>Zugreifen auf Protokolle auf der Seite zur Dokumenterstellung
+### <a name="get-logs-from-the-authoring-page"></a>Abrufen von Protokollen auf der Seite zur Dokumenterstellung
 
-Wenn Sie eine Pipelineausführung übermitteln und auf der Seite zur Dokumenterstellung bleiben, finden Sie die für die einzelnen Module generierten Protokolldateien.
+Wenn Sie eine Pipelineausführung übermitteln und auf der Seite zur Dokumenterstellung bleiben, finden Sie nach der Ausführung der einzelnen Module die jeweils generierten Protokolldateien.
 
-1. Wählen Sie ein beliebiges Modul im Zeichenbereich der Dokumenterstellung aus.
+1. Wählen Sie ein Modul aus, dessen Ausführung im Dokumenterstellungsbereich beendet wurde.
 1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
-1. Wählen Sie die Protokolldatei `70_driver_log.txt` aus.
+1. Erweitern Sie den Bereich auf der rechten Seite, und wählen Sie die Datei **70_driver_log.txt** aus, um sie im Browser anzuzeigen. Sie können Protokolle auch lokal herunterladen.
 
-    ![Modulprotokolle auf der Seite zur Dokumenterstellung](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Erweiterter Ausgabebereich im Designer](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Zugreifen auf Protokolle von Pipelineausführungen
+### <a name="get-logs-from-pipeline-runs"></a>Abrufen von Protokollen von Pipelineausführungen
 
-Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseite für Pipelineausführungen, entweder im Abschnitt **Pipelines** oder im Abschnitt **Experimente**.
+Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseite für Pipelineausführungen, entweder im Abschnitt **Pipelines** oder im Abschnitt **Experimente** des Studios.
 
 1. Wählen Sie eine im Designer erstellte Pipelineausführung aus.
-    ![Pipelineausführungsseite](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. Wählen Sie im Vorschaubereich ein beliebiges Modul aus.
+
+    ![Seite für Pipelineausführungen](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. Wählen Sie im Vorschaubereich ein Modul aus.
 1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
-1. Wählen Sie die Protokolldatei `70_driver_log.txt` aus.
+1. Erweitern Sie den Bereich auf der rechten Seite, um die Datei **70_driver_log.txt** im Browser anzuzeigen, oder wählen Sie die Datei aus, um die Protokolle lokal herunterzuladen.
+
+> [!IMPORTANT]
+> Wenn Sie eine Pipeline über die Detailseite für Pipelineausführungen aktualisieren möchten, müssen Sie die Pipelineausführung in einen neuen Pipelineentwurf **klonen**. Pipelineausführungen sind Momentaufnahmen von Pipelines. Sie ähneln Protokolldateien und können nicht geändert werden. 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Debuggen und Problembehandlung in Application Insights
 Weitere Informationen zur Verwendung der OpenCensus-Python-Bibliothek in diesem Zusammenhang finden Sie in diesem Handbuch: [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)

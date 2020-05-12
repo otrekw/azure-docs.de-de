@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225110"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791985"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -51,7 +51,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 
 * Azure-Portal
 * PowerShell
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
@@ -88,7 +88,7 @@ Ja. Sie können eine Routingtabelle erstellen und einem Subnetz zuordnen. Weiter
 Nein. Multicast und Broadcast werden nicht unterstützt.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Welche Protokolle werden innerhalb von VNets unterstützt?
-Sie können die Protokolle TCP, UDP und ICMP TCP/IP in VNets verwenden. Unicast wird innerhalb von VNETs unterstützt, mit Ausnahme von DHCP (Dynamic Host Configuration Protocol) per Unicast (Quellport UDP/68, Zielport UDP/67). Verkapselte Multicast-, Broadcast- und IP-in-IP-Pakete sowie GRE-Pakete (Generic Routing Encapsulation) werden blockiert. 
+Sie können die Protokolle TCP, UDP und ICMP TCP/IP in VNets verwenden. Unicast wird innerhalb von VNETs unterstützt, mit Ausnahme von DHCP (Dynamic Host Configuration Protocol) per Unicast (Quellport UDP/68, Zielport UDP/67) und UDP-Quellport 65330, der für den Host reserviert ist. Verkapselte Multicast-, Broadcast- und IP-in-IP-Pakete sowie GRE-Pakete (Generic Routing Encapsulation) werden blockiert. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Kann ich meine Standardrouter innerhalb eines VNet mit "ping" abfragen?
 Nein.

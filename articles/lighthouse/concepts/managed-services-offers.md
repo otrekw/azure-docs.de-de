@@ -1,28 +1,28 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
 description: Angebote für verwaltete Dienste gestatten es Dienstanbietern, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 03/30/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 13e1825ae6eb50b1b376e3bd3de908a545fbe023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144910"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792291"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
-In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Marketplace](https://azuremarketplace.microsoft.com) beschrieben. Angebote für verwaltete Dienste gestatten Ihnen, Kunden Ressourcenverwaltungsdienste mit [delegierter Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) anzubieten. Sie können diese Angebote für alle potenziellen Kunden oder nur für einen oder mehrere bestimmte Kunden verfügbar machen. Da Sie Kunden die Gebühren, die im Zusammenhang mit diesen verwalteten Diensten stehen, direkt in Rechnung stellen, werden von Microsoft keine Gebühren erhoben.
+In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Marketplace](https://azuremarketplace.microsoft.com) beschrieben. Angebote für verwaltete Dienste gestatten Ihnen, Kunden Ressourcenverwaltungsdienste über [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) anzubieten. Sie können diese Angebote für alle potenziellen Kunden oder nur für einen oder mehrere bestimmte Kunden verfügbar machen. Da Sie Kunden die Gebühren, die im Zusammenhang mit diesen verwalteten Diensten stehen, direkt in Rechnung stellen, werden von Microsoft keine Gebühren erhoben.
 
 ## <a name="understand-managed-service-offers"></a>Grundlegendes zu Angeboten für verwaltete Dienste
 
 Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für die delegierte Azure-Ressourcenverwaltung. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen.
 
-Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mit diesen Ressourcen im Mandanten Ihrer Organisation arbeiten. Dazu wird ein Manifest verwendet, das die Azure AD-Benutzer, -Gruppen und -Dienstprinzipale, die mithilfe der delegierten Azure-Ressourcenverwaltung Zugriff auf Kundenressourcen erhalten, sowie die Rollen für ihre Zugriffsebene angibt. Dadurch, dass Sie einer Azure AD-Gruppe Berechtigungen anstelle einer Reihe einzelner Benutzer- oder Anwendungskonten zuweisen, können Sie einzelne Benutzer hinzufügen oder entfernen, wenn sich Ihre Zugriffsanforderungen ändern.
+Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mit diesen Ressourcen im Mandanten Ihrer Organisation arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die Rollen für ihre Zugriffsebene angibt. Dadurch, dass Sie einer Azure AD-Gruppe Berechtigungen anstelle einer Reihe einzelner Benutzer- oder Anwendungskonten zuweisen, können Sie einzelne Benutzer hinzufügen oder entfernen, wenn sich Ihre Zugriffsanforderungen ändern.
 
 ## <a name="public-and-private-offers"></a>Öffentliche und private Angebote
 
-Jedes Angebot verwalteter Dienste umfasst mindestens einen Plan. Pläne können entweder privat oder öffentlich sein.
+Jedes Angebot für verwaltete Dienste umfasst mindestens einen Plan. Pläne können entweder privat oder öffentlich sein.
 
 Wenn Sie Ihr Angebot auf bestimmte Kunden beschränken möchten, können Sie einen privaten Plan veröffentlichen. Wenn Sie dies tun, kann der Plan nur für die speziellen, von Ihnen angegebenen Abonnement-IDs erworben werden. Weitere Informationen finden Sie unter [Private Angebote](../../marketplace/private-offers.md).
 
@@ -40,4 +40,4 @@ Informationen zum Veröffentlichen eines Angebots für verwaltete Dienste finden
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) und [Mandantenübergreifende Verwaltungserfahrungen](cross-tenant-management-experience.md).
-- [Veröffentlichen von Angeboten für verwaltete Dienste](../how-to/publish-managed-services-offers.md) im Azure Marketplace.
+- [Veröffentlichen von Angeboten für verwaltete Dienste](../how-to/publish-managed-services-offers.md) in Azure Marketplace.

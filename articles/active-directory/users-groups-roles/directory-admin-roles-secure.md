@@ -1,12 +1,12 @@
 ---
-title: Bewährte Methoden für den sicheren Administratorzugriff – Azure AD | Microsoft-Dokumentation
+title: Sichere Zugriffsmethoden für Administratoren in Azure AD | Microsoft-Dokumentation
 description: Stellen Sie sicher, dass Administratorzugriff und Administratorkonten Ihrer Organisation sicher sind. Für Systemarchitekten und IT-Profis, die Azure AD, Azure und Microsoft Online Services konfigurieren.
 services: active-directory
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
-ms.date: 11/13/2019
+ms.date: 04/30/2020
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,53 +14,37 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231714"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837191"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
-Die Sicherheit der meisten, wenn nicht aller Geschäftsressourcen in modernen Organisationen hängt von der Integrität der privilegierten Konten ab, die IT-Systeme verwalten. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um zu versuchen, mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, schnell Zugriff auf sensible Daten und Systeme zu erhalten. Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. Weitere Informationen zu den neuesten Bedrohungen von Endpunkten und Cloud finden Sie unter [Informieren Sie sich über die aktuellen Angriffe auf Endpunkte und auf die Cloud ](https://www.microsoft.com/security/operations/security-intelligence-report). Dieser Artikel kann Ihnen helfen, eine Roadmap zum Schließen der Lücken zwischen Ihren aktuellen Plänen und dem hier beschriebenen Leitfaden zu entwickeln.
+Die Sicherheit der Geschäftsressourcen hängt von der Integrität der privilegierten Konten ab, mit denen Ihre IT-Systeme verwaltet werden. Cyberkriminelle haben es beim Diebstahl von Anmeldeinformationen besonders auf Administratorkonten und andere privilegierte Zugriffsmöglichkeiten abgesehen, um Zugriff auf sensible Daten zu erhalten.
+
+Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. Weitere Informationen zu den neuesten Bedrohungen von Endpunkten und Cloud finden Sie unter [Informieren Sie sich über die aktuellen Angriffe auf Endpunkte und auf die Cloud ](https://www.microsoft.com/security/operations/security-intelligence-report). Dieser Artikel kann Ihnen helfen, eine Roadmap zum Schließen der Lücken zwischen Ihren aktuellen Plänen und dem hier beschriebenen Leitfaden zu entwickeln.
 
 > [!NOTE]
 > Microsoft sieht sich in der Pflicht, den Ansprüchen von Vertrauen, Transparenz, Einhaltung von Standards und Einhaltung behördlicher Bestimmungen in höchstem Maße gerecht zu werden. Mehr darüber, wie das globale Incidentreaktionsteam von Microsoft die Auswirkungen von Angriffen auf Clouddienste abschwächt, und wie die Sicherheit in Businessprodukte und Clouddienste von Microsoft integriert ist, erfahren Sie unter [Sicherheit](https://www.microsoft.com/trustcenter/security), und mehr über Complianceziele von Microsoft unter [Compliance](https://www.microsoft.com/trustcenter/compliance).
 
-<!--## Risk management, incident response, and recovery preparation
+Bisher haben sich Unternehmen bezüglich der Organisationssicherheit auf die Ein- und Ausstiegspunkte eines Netzwerks als Sicherheitsbereich konzentriert. Mit SaaS-Apps und persönlichen Geräten im Internet hat dieser Ansatz jedoch an Wirksamkeit verloren. In Azure AD wird der Netzwerksicherheitsbereich durch eine Authentifizierung in der Identitätsschicht Ihrer Organisation ersetzt. Für Steuerung und Kontrolle sind Benutzer zuständig, die privilegierten Administratorrollen zugewiesen sind. Deren Zugriff muss geschützt werden, und zwar unabhängig davon, ob es sich um eine lokale, hybride oder Cloudumgebung handelt.
 
-A cyber-attack, if successful, can shut down operations not just for a few hours, but in some cases for days or even weeks. The collateral damage, such as legal ramifications, information leaks, and media coverage, could potentially continue for years. To ensure effective company-wide risk containment, cybersecurity and IT pros must align their response and recovery processes. To reduce the risk of business disruption due to a cyber-attack, industry experts recommend you do the following:
-
-* As part of your risk management operations, establish a crisis management team for your organization that is responsible for managing all types of business disruptions.
-
-* Compare your current risk mitigations, incident response, and recovery plan with industry best practices for managing a business disruption before, during, and after a cyber-attack.
-
-* Develop and implement a roadmap for closing the gaps between your current plans and the best practices described in this document.
-
-
-## Securing privileged access for hybrid and cloud deployments
-
-does the article really start here?-->
-Für die meisten Organisationen hängt die Sicherheit der Geschäftsressourcen von der Integrität der privilegierten Konten ab, die IT-Systeme verwalten. Cyberangreifer konzentrieren sich auf privilegierten Zugriff auf Infrastruktursysteme (z.B. Active Directory und Azure Active Directory), um Zugriff auf sensible Daten einer Organisation zu erlangen. 
-
-Herkömmliche Ansätze, die sich auf das Schützen der Ein- und Ausgangspunkte eines Netzwerks als primäre Sicherheitszone konzentrieren, sind aufgrund steigender Verwendung von SaaS-Apps und persönlichen Geräten im Internet weniger effektiv. In einem komplexen modernen Unternehmen bilden die Authentifizierungs- und Autorisierungssteuerelemente in der Identitätsschicht einer Organisation den natürlichen Ersatz für die Netzwerksicherheitszone.
-
-Privilegierte Administratorkonten kontrollieren diese neue „Sicherheitszone“ wirksam. Der Schutz des privilegierten Zugriffs ist entscheidend – dabei spielt es keine Rolle, ob es sich um eine lokale oder Cloudumgebung bzw. hybride lokale und cloudgehostete Dienste handelt. Um Administratorzugriff gegen entschlossene Angreifer zu schützen, müssen Sie einen vollständigen und wohl überlegten Ansatz wählen, um die Systeme Ihrer Organisation vor Risiken zu bewahren. 
-
-Schützen des privilegierten Zugriffs verlangt Änderungen an
+Das Sichern des privilegierten Zugriffs erfordert Änderungen an folgenden Elementen:
 
 * Prozessen, Verwaltungsmethoden und Wissensmanagement
 * technischen Komponenten wie z.B. Maßnahmen zu Hostverteidigung, Kontenschutz und Identitätsverwaltung
 
-Dieses Dokument konzentriert sich hauptsächlich auf das Erstellen einer Roadmap zum Schützen von Identitäten und Zugriff, die in Azure AD, Microsoft Azure, Office 365 und anderen Clouddiensten verwaltet oder gemeldet werden. Für Organisationen mit lokalen Administratorkonten beachten Sie den Leitfaden für lokalen und hybriden privilegierten Zugriff, der von Active Directory aus verwaltet wird, unter [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+Sichern Sie Ihren privilegierten Zugriff auf eine Art und Weise, die in den von Ihnen bevorzugten Microsoft-Diensten verwaltet und gemeldet wird. Wenn Sie über lokale Administratorkonten verfügen, beachten Sie unter [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) den Leitfaden für den lokalen und hybriden privilegierten Zugriff in Active Directory.
 
-> [!NOTE] 
-> Der Leitfaden in diesem Artikel bezieht sich in erster Linie auf Features von Azure Active Directory, die in den Azure Active Directory Premium-Plänen P1 und P2 enthalten sind. Azure Active Directory Premium P2 ist in der EMS E5-Suite und Microsoft 365 E5-Suite enthalten. In diesem Leitfaden wird davon ausgegangen, dass Ihre Organisation bereits Azure AD Premium P2-Lizenzen für Ihre Benutzer erworben hat. Wenn Sie nicht über diese Lizenzen verfügen, gilt möglicherweise ein Teil dieses Leitfadens nicht für Ihre Organisation. Darüber hinaus wird in diesem Artikel der Begriff globaler Administrator (oder globaler Admin) durchgängig als Synonym für „Unternehmensadministrator“ oder „Mandantenadministrator“ verwendet.
+> [!NOTE]
+> Der Leitfaden in diesem Artikel bezieht sich in erster Linie auf Features von Azure Active Directory, die in den Azure Active Directory Premium-Plänen P1 und P2 enthalten sind. Azure Active Directory Premium P2 ist in der EMS E5-Suite und Microsoft 365 E5-Suite enthalten. In diesem Leitfaden wird davon ausgegangen, dass Ihre Organisation bereits Azure AD Premium P2-Lizenzen für Ihre Benutzer erworben hat. Wenn Sie nicht über diese Lizenzen verfügen, gilt möglicherweise ein Teil dieses Leitfadens nicht für Ihre Organisation. Im gesamten Artikel ist außerdem der Begriff „Globaler Administrator“ (oder „Globaler Admin“) identisch mit „Unternehmensadministrator“ oder „Mandantenadministrator“.
 
-## <a name="develop-a-roadmap"></a>Entwickeln einer Roadmap 
+## <a name="develop-a-roadmap"></a>Entwickeln einer Roadmap
 
-Microsoft empfiehlt Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gegenüber Cyberangreifern zu entwickeln und zu befolgen. Sie können Ihre Roadmap jederzeit den bestehenden Funktionen und spezifischen Anforderungen in Ihrer Organisation anpassen. Jede Phase der Roadmap sollte den Aufwand und Probleme erhöhen, die Angreifern beim Angriff auf den privilegierten Zugriff auf Ihre lokalen, Cloud- und Hybridressourcen entstehen. Microsoft empfiehlt die folgenden vier Roadmapphasen: Diese empfohlene Roadmap sieht zunächst die wirkungsvollsten und schnellsten Implementierungen auf der Grundlage der Erfahrung von Microsoft mit Cyberangriffsvorfällen und Reaktionsimplementierung vor. Die Zeitpläne für diese Roadmap sind ungefähre Werte.
+Microsoft empfiehlt Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gegenüber Cyberangreifern zu entwickeln und zu befolgen. Sie können Ihre Roadmap jederzeit den bestehenden Funktionen und spezifischen Anforderungen in Ihrer Organisation anpassen. Jede Phase der Roadmap sollte den Aufwand und Probleme erhöhen, die Angreifern beim Angriff auf den privilegierten Zugriff auf Ihre lokalen, Cloud- und Hybridressourcen entstehen. Microsoft empfiehlt die folgenden vier Roadmap-Phasen. Planen Sie zuerst die effektivsten und schnellsten Implementierungen. Dieser Artikel, der auf der Erfahrung von Microsoft mit Cyberangriffen und der Implementierung entsprechender Reaktionen basiert, kann dabei als Leitfaden dienen. Die Zeitpläne für diese Roadmap sind ungefähre Werte.
 
 ![Phasen der Roadmap mit Zeitplänen](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
@@ -72,9 +56,9 @@ Microsoft empfiehlt Ihnen, eine Roadmap zum Schützen des privilegierten Zugriff
 
 * Phase 4 (sechs Monate und später): Fortsetzung des Aufbaus von Verteidigungsmaßnahmen zur weiteren Härtung Ihrer Sicherheitsplattform
 
-Dieses Roadmapframework folgt dem Konzept, die Verwendung von Microsoft-Technologien zu maximieren, die Sie möglicherweise bereits bereitgestellt haben. Sie können auch die wichtigsten aktuellen und zukünftigen Sicherheitstechnologien nutzen und Sicherheitstools anderer Hersteller integrieren, die Sie bereits bereitgestellt haben oder bereitzustellen erwägen. 
+Dieses Roadmapframework folgt dem Konzept, die Verwendung von Microsoft-Technologien zu maximieren, die Sie möglicherweise bereits bereitgestellt haben. Erwägen Sie, alle Sicherheitstools von anderen Anbietern einzubinden, die Sie schon bereitgestellt haben oder bereitstellen möchten.
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>Phase 1: Wichtige Dinge, die umgehend erledigt werden sollten
+## <a name="stage-1-critical-items-to-do-right-now"></a>Phase 1: Wichtige Dinge, die zuerst anstehen
 
 ![Phase 1: Wichtige als Erstes zu erledigende Dinge](./media/directory-admin-roles-secure/stage-one.png)
 
@@ -84,48 +68,55 @@ Phase 1 der Roadmap konzentriert sich auf wichtige Aufgaben, die schnell und ein
 
 #### <a name="turn-on-azure-ad-privileged-identity-management"></a>Aktivieren von Azure AD Privileged Identity Management
 
-Wenn Sie Azure AD Privileged Identity Management (PIM) nicht bereits aktiviert haben, holen Sie dies in Ihrem Mandanten für die Produktion nach. Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
+Wir empfehlen, Azure AD Privileged Identity Management (PIM) in Ihrer Azure AD-Produktionsumgebung zu aktivieren. Nach der Aktivierung von PIM erhalten Sie bei einer Änderung an privilegierten Zugriffsrollen eine Benachrichtigung per E-Mail. Benachrichtigungen stellen ein Frühwarnsystem dar, wenn zusätzliche Benutzer zu Rollen mit hohen Zugriffsrechten hinzugefügt werden.
 
-Azure AD Privileged Identity Management ist in Azure AD Premium P2 oder EMS E5 enthalten. Diese Lösungen unterstützen Sie beim Schützen des Zugriffs auf Anwendungen und Ressourcen in lokaler Umgebung und Cloud. Wenn Sie noch nicht über Azure AD Premium P2 oder EMS E5 verfügen und weitere Features aus dieser Roadmap ausprobieren möchten, registrieren Sie sich für die [kostenlose 90-tägige Testversion von Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Testen Sie mit diesen Testlizenzen Azure AD Privileged Identity Management und Azure AD Identity Protection, um die Aktivität mithilfe erweiterter Sicherheitsberichterstattung, Überwachung und Warnungen von Azure AD zu überwachen.
+Azure AD Privileged Identity Management ist in Azure AD Premium P2 oder EMS E5 enthalten. Um den Zugriff auf lokale und in der Cloud verfügbare Anwendungen und Ressourcen besser zu schützen, registrieren Sie sich für die [kostenlose 90-Tage-Testversion von Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Azure AD Privileged Identity Management und Azure AD Identity Protection überwachen mithilfe von Berichterstattung, Überwachung und Warnungen von Azure AD die Sicherheitsaktivitäten.
 
-Nach dem Aktivieren von Azure AD Privileged Identity Management:
+Gehen Sie nach dem Aktivieren von Azure AD Privileged Identity Management wie folgt vor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) über ein Konto an, das als globaler Administrator Ihres Produktionsmandanten konfiguriert ist.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) über ein Konto an, das als globaler Administrator Ihrer Azure AD-Produktionsorganisation konfiguriert ist.
 
-2. Um den Mandanten auszuwählen, in dem Sie Privileged Identity Management verwenden möchten, wählen Sie Ihren Benutzernamen in der oberen rechten Ecke des Azure-Portals aus.
+2. Um die Azure AD-Organisation auszuwählen, in der Sie Privileged Identity Management verwenden möchten, wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen aus.
 
 3. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus, und filtern Sie die Liste nach **Azure AD Privileged Identity Management**.
 
 4. Öffnen Sie Privileged Identity Management in der Liste **Alle Dienste**, und heften Sie Privileged Identity Management an Ihr Dashboard.
 
-Der ersten Person, die Azure AD Privileged Identity Management in Ihrem Mandanten verwendet, werden automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** im Mandanten zugewiesen. Nur Administratoren für privilegierte Rollen können die Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Darüber hinaus wird Ihnen nach dem Hinzufügen von Azure AD Privileged Identity Management der Sicherheits-Assistent angezeigt, der Sie durch die erste Ermittlung und Zuweisung führt. Sie können den Assistenten zu diesem Zeitpunkt ohne weitere Änderungen beenden. 
+Die Person in Ihrer Organisation, die PIM zum ersten Mal verwendet, wird automatisch den Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** zugewiesen. Nur Administratoren für privilegierte Rollen können die Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Der PIM-Sicherheitsassistent führt Sie durch die anfängliche Erkennungs- und Zuweisungsumgebung. Sie können den Assistenten zu diesem Zeitpunkt ohne weitere Änderungen beenden.
 
-#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifizieren und Kategorisieren von Konten in stark privilegierten Rollen 
+#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifizieren und Kategorisieren von Konten in stark privilegierten Rollen
 
-Zeigen Sie nach dem Aktivieren von Azure AD Privileged Identity Management die Benutzer in den Verzeichnisrollen globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator an. Wenn Sie in Ihrem Mandanten nicht über Azure AD PIM verfügen, können Sie die [PowerShell-API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) verwenden. Beginnen Sie mit der Rolle des globalen Administrators, da diese Rolle generisch ist: Ein Benutzer mit dieser Administratorrolle besitzt dieselben Berechtigungen für alle Clouddienste, die Ihre Organisation abonniert hat, unabhängig davon, ob ihm die Rolle im Microsoft 365 Admin Center, im Azure-Portal oder mithilfe des Azure AD-Moduls für Microsoft PowerShell zugewiesen wurde. 
+Nachdem Sie Azure AD Privileged Identity Management aktiviert haben, können Sie Benutzer mit den folgenden Azure AD-Rollen anzeigen:
+
+* Globaler Administrator
+* Administrator für privilegierte Rollen
+* Exchange Online-Administrator
+* SharePoint Online-Administrator
+
+Wenn in Ihrer Organisation Azure AD Privileged Identity Management nicht verwendet wird, können Sie die [PowerShell-API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) nutzen. Beginnen Sie mit der Rolle „Globaler Administrator“, da ein globaler Administrator bei allen Clouddiensten, die Ihre Organisation abonniert hat, über gleiche Berechtigungen verfügt. Diese Berechtigungen werden unabhängig vom Ort der Zuweisung (Microsoft 365 Admin Center, Azure-Portal oder Azure AD-Modul für Microsoft PowerShell) erteilt.
 
 Entfernen Sie alle Konten, die in diesen Rollen nicht mehr benötigt werden. Kategorisieren Sie anschließend die restlichen Konten, die Administratorrollen zugewiesen sind:
 
-* Einzeln Benutzern mit Administratorrechten zugewiesen und kann auch zu nicht administrativen Zwecken (z.B. persönliche E-Mail) verwendet werden
-* Einzeln Benutzern mit Administratorrechten zugewiesen und nur für Verwaltungszwecke vorgesehen
+* Ist zwar Administratoren zugewiesen, wird aber auch für nicht administrative Zwecke (z. B. persönliche E-Mail) verwendet
+* Ist Administratoren zugewiesen und wird nur für Verwaltungszwecke verwendet
 * Für mehrere Benutzer freigegeben
 * Für Notfallzugriffs-Szenarios
 * Für automatisierte Skripts
 * Für externe Benutzer
 
-#### <a name="define-at-least-two-emergency-access-accounts"></a>Definieren Sie mindestens zwei Notfallzugriffs-Konten 
+#### <a name="define-at-least-two-emergency-access-accounts"></a>Definieren Sie mindestens zwei Notfallzugriffs-Konten
 
-Stellen Sie sicher, dass Sie nicht in eine Situation geraten, in der sie versehentlich von der Verwaltung Ihres Azure AD-Mandanten ausgesperrt werden, weil sie sich nicht anmelden oder nicht das Konto eines vorhandenen einzelnen Benutzers als Administrator aktivieren können. Wenn die Organisation z.B. mit einem lokalen Identitätsanbieter verbunden ist, könnte dieser Identitätsanbieter möglicherweise nicht verfügbar sein, sodass Benutzer sich nicht lokal anmelden können. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten konfigurieren.
+Es kann sein, dass ein Benutzer versehentlich aus seiner Rolle ausgesperrt wird. Wenn beispielsweise ein lokaler Verbundidentitätsanbieter nicht verfügbar ist, können sich Benutzer nicht anmelden oder ein vorhandenes Administratorkonto aktivieren. Sie können Vorbereitungen für eine unbeabsichtigte Situation ohne Zugriffsmöglichkeit treffen, indem Sie mindestens zwei Notfallzugriffskonten speichern.
 
-Konten für den Notfallzugriff unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen das Ziel der Kontrolle sicherstellen, und dass die Verwendung der Notfallkonten ausschließlich auf Zeiten beschränkt wird, in denen dies notwendig ist.
+Notfallzugriffskonten helfen Ihnen, den privilegierten Zugriff innerhalb einer Azure AD-Organisation einzuschränken. Diese Konten verfügen über hohe Zugriffsrechte und sind keinen bestimmten Einzelpersonen zugewiesen. Notfallzugriffskonten sind auf Notfallsituationen oder Szenarien beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Stellen Sie sicher, dass Sie die Nutzung des Notfallkontos kontrollieren und auf die unbedingt erforderliche Zeit beschränken.
 
-Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der *.onmicrosoft.com-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](directory-emergency-access.md).
+Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen über die Domäne „\*.onmicrosoft.com“ (für den Notfallzugriff) keine reinen Cloudkonten angezeigt werden, erstellen Sie diese. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](directory-emergency-access.md).
 
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Aktivieren der mehrstufigen Authentifizierung und Registrieren aller anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Aktivieren Sie die mehrstufige Authentifizierung (MFA), und registrieren Sie alle anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien.
 
 Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) von Azure für alle Benutzer vor, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Nutzen Sie den Leitfaden zum Aktivieren [einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](../authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) registriert sind. Weitere Informationen finden Sie unter Schritt 2 und 3 des Handbuchs [Zugriffsschutz für Daten und Dienste in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Phase 2: Gegenmaßnahmen für die gängigsten Angriffsstrategien
+## <a name="stage-2-mitigate-frequently-used-attacks"></a>Phase 2: Gegenmaßnahmen für gängige Angriffsstrategien
 
 ![Phase 2: Gegenmaßnahmen für gängige Angriffsstrategien](./media/directory-admin-roles-secure/stage-two.png)
 
@@ -135,67 +126,78 @@ Phase 2 der Roadmap konzentriert sich auf die Abwehr besonders häufig verwendet
 
 #### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Durchführen einer Inventur der Dienste, Besitzer und Administratoren
 
-Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/fundamentals/management-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
+Mit der Zunahme von BYOD- (Bring Your Own Device) und Homeoffice-Richtlinien sowie zunehmender WLAN-Konnektivität ist es wichtig zu überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Mit einer Sicherheitsüberprüfung können Geräte, Anwendungen und Programme in Ihrem Netzwerk angezeigt werden, die von Ihrer Organisation nicht unterstützt werden und ein hohes Risiko darstellen. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/fundamentals/management-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind.
 
 * Identifizieren Sie die Benutzer mit Administratorrollen und die Dienste, über die sie verwalten können.
-* Finden Sie mit Azure AD PIM heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Azure AD haben, einschließlich zusätzlicher Rollen zu den in Schritt 1 aufgelisteten.
+* Finden Sie mit Azure AD PIM heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Azure AD haben.
 * Neben den in Azure AD definierten Rollen enthält Office 365 eine Reihe von Administratorrollen, die Sie Benutzern in Ihrer Organisation zuweisen können. Jede Administratorrolle ist allgemeinen Geschäftsfunktionen zugeordnet und stattet Benutzer in Ihrer Organisation mit Berechtigungen für bestimmte Aufgaben im [Microsoft 365 Admin Center](https://admin.microsoft.com) aus. Finden Sie im Microsoft 365 Admin Center heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Office 365 haben, einschließlich über Rollen, die nicht in Azure AD verwaltet werden. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) und [Bewährte Methoden für die Sicherheit von Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
-* Führen Sie die Inventur in anderen Diensten durch, von denen Ihre Organisation abhängig ist, z.B. Azure, Intune oder Dynamics 365.
-* Stellen Sie sicher, dass Ihren Administratorkonten (für Verwaltungszwecke verwendete Konten, nicht einfach herkömmliche Benutzerkonten) gültige E-Mail-Adressen angefügt sind, und dass sie für Azure MFA registriert sind bzw. MFA lokal verwenden.
+* Machen Sie in Diensten, auf die sich Ihre Organisation verlässt (z. B. Azure, Intune oder Dynamics 365), eine Bestandsaufnahme.
+* Stellen Sie sicher, dass für Ihre Konten, die zu Verwaltungszwecken verwendet werden, Folgendes gilt:
+
+  * Den Konten sind geschäftliche E-Mail-Adressen zugeordnet
+  * Die Konten sind für Azure Multi-Factor Authentication registriert oder verwenden lokale MFA
 * Fragen Sie Benutzer nach der geschäftlichen Begründung für den Administratorzugriff.
 * Entziehen Sie den Administratorzugriff Personen und Diensten, die ihn nicht benötigen.
 
 #### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Identifizieren von Microsoft-Konten in Administratorrollen, die auf Arbeits- oder Schulkonten umgestellt werden müssen
 
-In manchen Fällen verwenden die ersten globalen Administratoren für eine Organisation ihre vorhandenen Microsoft-Kontoanmeldeinformationen, wenn sie beginnen, Azure AD zu nutzen. Diese Microsoft-Konten sollten durch einzelne cloudbasierte oder synchronisierte Konten ersetzt werden. 
+Wenn Ihre anfänglichen globalen Administratoren die vorhandenen Anmeldeinformationen für ihr Microsoft-Konto, die sie bei der ersten Verwendung von Azure AD benutzt haben, wiederverwenden, ersetzen Sie die Microsoft-Konten durch einzelne cloudbasierte oder synchronisierte Konten.
 
-#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Sicherstellen von separaten Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten 
+#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Sicherstellen von separaten Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten
 
-Globale Administratorkonten sollten nicht über persönliche E-Mail-Adressen verfügen, da persönliche E-Mail-Konten regelmäßig das Phishingziel von Cyberangreifern sind. Um Internetrisiken (Phishingangriffe unbeabsichtigtes Webbrowsen) von Administratorrechten zu trennen, erstellen Sie dedizierte Konten für jeden Benutzer mit Administratorrechten. 
+Persönliche E-Mail-Konten werden regelmäßig von Cyberkriminellen ausgespäht und stellen ein Risiko dar. Daher sind persönliche E-Mail-Adressen für globale Administratorkonten nicht akzeptabel. Um Internetrisiken von Administratorrechten zu separieren, erstellen Sie dedizierte Konten für jeden Benutzer mit Administratorrechten.
 
-Sofern nicht bereits geschehen, erstellen Sie separate Konten für Benutzer zum Durchführen globaler Administratoraufgaben, um sicherzustellen, dass sie nicht versehentlich E-Mails öffnen oder Programme ausführen, die ihren Administratorkonten zugeordnet sind. Achten Sie darauf, dass die E-Mail dieser Konten an ein Arbeitspostfach weitergeleitet wird.  
+* Stellen Sie sicher, dass Sie separate Konten für Benutzer erstellen, die globale Verwaltungsaufgaben ausführen sollen
+* Stellen Sie sicher, dass Ihre globalen Administratoren nicht versehentlich mit ihren Administratorkonten E-Mails öffnen oder Programme ausführen
+* Achten Sie darauf, dass die E-Mail-Nachrichten für diese Konten an ein Arbeitspostfach weitergeleitet werden
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Sicherstellen, dass die Kennwörter von Administratorkonten kürzlich geändert wurden
 
-Stellen Sie sicher, dass alle Benutzer sich mindestens einmal in den letzten 90 Tagen bei ihren administrativen Konten angemeldet und ihre Kennwörter geändert haben. Stellen Sie außerdem sicher, dass bei gemeinsam genutzten Konten, deren Kennwort mehreren Benutzern bekannt ist, die Kennwörter kürzlich geändert wurden.
+Stellen Sie sicher, dass alle Benutzer sich mindestens einmal in den letzten 90 Tagen bei ihren Administratorkonten angemeldet und ihre Kennwörter geändert haben. Vergewissern Sie sich außerdem, dass alle freigegebenen Konten kürzlich die Änderung der Kennwörter veranlasst haben.
 
 #### <a name="turn-on-password-hash-synchronization"></a>Aktivieren der Kennworthashsynchronisierung
 
-Die Kennworthashsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD). Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennworthashsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihrer lokalen Infrastruktur – z.B. AD- oder AD FS-Server – ein Fehler auftritt oder sie vorübergehend nicht verfügbar ist. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen AD-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.  Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).
+Azure AD Connect synchronisiert einen Hash eines Benutzerkennworthashs aus dem lokalen Active Directory mit einer cloudbasierten Azure AD-Organisation. Wenn Sie einen Verbund mit Active Directory Federation Services (AD FS) verwenden, können Sie die Kennworthashsynchronisierung als Sicherungsmaßnahme nutzen. Diese Sicherung kann nützlich sein, wenn Ihre lokalen Active Directory- oder AD FS-Server vorübergehend nicht verfügbar sind.
 
-#### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Fordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung
+Die Kennworthashsynchronisierung ermöglicht Benutzern, sich bei einem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen Active Directory-Instanz verwenden. Die Kennworthashsynchronisierung ermöglicht Azure AD Identity Protection die Erkennung kompromittierter Anmeldeinformationen, indem sie Kennworthashs mit Kennwörtern vergleicht, die bekanntermaßen kompromittiert sind. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).
 
-Azure AD empfiehlt, dass Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für alle Benutzer voraussetzen, einschließlich Administratoren und aller anderen Benutzer, die einen entscheidenden Einfluss haben würden, wenn ihr Konto gefährdet würde (z.B. kaufmännische Geschäftsführer). Auf diese Weise sinkt das Risiko eines Angriffs aufgrund eines offengelegten Kennworts.
+#### <a name="require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users"></a>Anfordern der Multi-Factor Authentication für Benutzer mit privilegierten Rollen und hoher Gefährdung
+
+Azure AD empfiehlt, Multi-Factor Authentication (MFA) für alle Benutzer anzufordern. Achten Sie darauf, die Benutzer zu berücksichtigen, bei denen die Kompromittierung ihres Kontos erhebliche Auswirkungen haben würde (z. B. Mitarbeiter der Finanzabteilung). MFA reduziert das Risiko eines Angriffs mithilfe eines kompromittierten Kennworts.
 
 Aktivieren Sie:
 
 * [Richtlinien für MFA mit bedingtem Zugriff](../authentication/howto-mfa-getstarted.md) für alle Benutzer in Ihrer Organisation.
 
-Wenn Sie Windows Hello for Business verwenden, kann die MFA-Anforderung durch Verwendung der Windows Hello-Anmeldebenutzeroberfläche erfüllt werden. Weitere Informationen finden Sie unter [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
+Wenn Sie Windows Hello for Business verwenden, kann die MFA-Anforderung durch Verwendung der Windows Hello-Anmeldebenutzeroberfläche erfüllt werden. Weitere Informationen finden Sie unter [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport).
 
-#### <a name="configure-identity-protection"></a>Konfigurieren von Identity Protection 
+#### <a name="configure-identity-protection"></a>Konfigurieren von Identity Protection
 
-Azure AD Identity Protection ist ein algorithmusbasiertes Überwachungs- und Berichterstattungstool, mit dem Sie potenzielle Sicherheitslücken erkennen können, die Auswirkungen auf die Identitäten Ihrer Organisation haben können. Sie können automatische Antworten auf diese erkannten verdächtigen Aktivitäten konfigurieren und entsprechende Maßnahmen zu deren Behebung ergreifen. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Azure AD Identity Protection ist ein algorithmusbasiertes Überwachungs- und Berichterstattungstool, das potenzielle Sicherheitsrisiken erkennt, die Auswirkungen auf die Identitäten in Ihrer Organisation haben können. Sie können automatische Antworten auf diese erkannten verdächtigen Aktivitäten konfigurieren und entsprechende Maßnahmen zu deren Behebung ergreifen. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Abrufen Ihres Office 365 Secure Score (bei Verwendung von Office 365)
 
-Secure Score findet heraus, welche Office 365-Dienste Sie verwenden (z.B. OneDrive, SharePoint und Exchange), prüft dann Ihre Einstellungen und Aktivitäten und vergleicht diese mit einer von Microsoft aufgestellten Grundlinie. Das Ergebnis sagt aus, in welchem Maße Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen (globaler Administrator oder benutzerdefinierte Administratorrolle) für ein Office 365 Business Premium- oder Enterprise-Abonnement verfügt, kann unter [https://securescore.office.com](https://securescore.office.com/) auf Secure Score zugreifen.
+Secure Score prüft Ihre Einstellungen und Aktivitäten bei Office 365-Diensten und vergleicht diese mit einer von Microsoft aufgestellten Grundlinie. Das Ergebnis sagt aus, in welchem Maße Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Office 365 Business Premium- oder Enterprise-Abonnement verfügt, kann auf [https://securescore.office.com](https://securescore.office.com/) auf Secure Score zugreifen.
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Leitfaden: Überprüfen der Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365)
 
-Die [Plan von Sicherheit und Compliance in Office 365](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) erklärt den Ansatz, mit dem ein Office 365-Kunde Office 365 konfigurieren und andere EMS-Funktionen nutzen sollte. Lesen Sie dann die Schritte 3 bis 6 zum [Zugriffsschutz für Daten und Dienste in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) und das Handbuch zum [Überwachen von Sicherheit und Compliance in Office 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
+Im [Plan für Sicherheit und Compliance](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) wird der Ansatz für die Konfiguration von Office 365 und die Aktivierung von anderen EMS-Funktionen für Office 365-Kunden behandelt. Lesen Sie dann die Schritte 3 bis 6 zum [Zugriffsschutz für Daten und Dienste in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) und das Handbuch zum [Überwachen von Sicherheit und Compliance in Office 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
 
 #### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Konfigurieren der Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365)
 
-Sie können überwachen, wie Benutzer in Ihrer Organisation Office 365-Dienste verwenden, sodass Sie Benutzer identifizieren können, die über ein Administratorkonto verfügen und möglicherweise keinen Office 365-Zugriff benötigen, weil sie sich nicht bei diesen Portalen anmelden. Weitere Informationen finden Sie unter [Aktivitätsberichte im Microsoft 365 Admin Center](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
+Überwachen Sie Ihre Organisation auf Benutzer, die Office 365 zum Identifizieren von Mitarbeitern verwenden, die über ein Administratorkonto verfügen, aber möglicherweise keinen Zugriff auf Office 365 benötigen, da sie sich nicht bei diesen Portalen anmelden. Weitere Informationen finden Sie unter [Aktivitätsberichte im Microsoft 365 Admin Center](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>Einrichten von Notfallreaktionsplan-Besitzern
 
-Eine wirksame Reaktion auf Notfälle ist eine komplexe Angelegenheit. Daher erfordert das Einrichten einer erfolgreichen Notfallreaktionsfunktion erhebliche Planung und Ressourcen. Es ist wichtig, dass Sie eine kontinuierliche Überwachung auf Cyberangriffe durchführen und Verfahren für die Priorisierung der Behandlung von Vorfällen festlegen. Effektive Methoden zum Sammeln, Analysieren und Berichten von Daten sind entscheidend für den Aufbau von Beziehungen und zum Einrichten einer Kommunikation mit anderen internen Gruppen und Planbesitzern. Weitere Informationen finden Sie unter [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717). 
+Das Einrichten einer Funktion für eine erfolgreiche Reaktion auf Vorfälle setzt eine umfangreiche Planung und erhebliche Ressourcen voraus. Sie müssen ständig Cyberangriffe überwachen und Prioritäten für die Behandlung von Vorfällen festlegen. Sammeln, analysieren und melden Sie Vorfallsdaten, um Beziehungen aufzubauen und für die Kommunikation mit anderen internen Gruppen und Planbesitzern zu sorgen. Weitere Informationen finden Sie unter [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717).
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Schützen von lokalen privilegierten Administratorkonten, falls noch nicht geschehen
 
-Wenn Ihr Azure Active Directory-Mandant mit einem lokalen Active Directory synchronisiert wird, orientieren Sie sich an dem Leitfaden in [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Phase 1. Dies umfasst das Erstellen separater Administratorkonten für Benutzer, die lokale Verwaltungsaufgaben durchführen, das Bereitstellen von Privileged Access Workstations für Active Directory-Administratoren und das Erstellen von eindeutigen Kennwörtern für lokale Administratoren für Arbeitsstationen und Server.
+Wenn Ihre Azure Active Directory-Organisation mit einem lokalen Active Directory synchronisiert wird, orientieren Sie sich an dem Leitfaden in [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Diese Phase umfasst Folgendes:
+
+* Erstellen separater Administratorkonten für Benutzer, die lokale Verwaltungsaufgaben durchführen müssen
+* Bereitstellen von Privileged Access Workstations (PAW) für Active Directory-Administratoren
+* Erstellen einmaliger lokaler Administratorkennwörter für Workstations und Server
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf Azure verwalten
 
@@ -205,7 +207,7 @@ Verwenden Sie Enterprise-Portal und Azure-Portal, um die Abonnements in Ihrer Or
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Entfernen von Microsoft-Konten aus Administratorrollen
 
-Microsoft-Konten aus anderen Programmen wie Xbox, Live und Outlook sollten nicht als Administratorkonten für organisatorische Abonnements verwendet werden. Entfernen Sie den Administratorstatus von allen Microsoft-Konten, und ersetzen Sie sie durch Azure Active Directory-Konten (z. B. chris@contoso.com), Geschäfts-, Schul- oder Unikonten.
+Microsoft-Konten aus anderen Programmen wie Xbox, Live und Outlook sollten nicht als Administratorkonten für die Abonnements Ihrer Organisation verwendet werden. Entfernen Sie den Administratorstatus von allen Microsoft-Konten, und ersetzen Sie sie durch Azure AD-Geschäfts-, Schul- oder Unikonten (z. B. chris@contoso.com). Verlassen Sie sich zu Verwaltungszwecken auf Konten, die sich in Azure AD und nicht in anderen Diensten authentifizieren.
 
 #### <a name="monitor-azure-activity"></a>Überwachen der Azure-Aktivität
 
@@ -217,33 +219,45 @@ Das Azure-Aktivitätsprotokoll zeigt den Verlauf der Ereignisse auf Abonnementeb
 
 Bereiten Sie Richtlinien für bedingten Zugriff für lokale und Cloud-gehostete Anwendungen vor. Wenn Sie über mit dem Arbeitsbereich verknüpfte persönliche Geräte von Benutzern verfügen, erhalten Sie weitere Informationen unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../active-directory-device-registration-on-premises-setup.md).
 
+## <a name="stage-3-take-control-of-admin-activity"></a>Phase 3: Kontrolle der Administratoraktivitäten
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>Phase 3: Schaffung von Transparenz und uneingeschränkter Kontrolle über Administratoraktivitäten
+![Phase 3: Kontrolle der Administratoraktivitäten](./media/directory-admin-roles-secure/stage-three.png)
 
-![Phase 3: Kontrolle über Administratoraktivitäten](./media/directory-admin-roles-secure/stage-three.png)
-
-Phase 3 baut auf den abschwächenden Maßnahmen aus Phase 2 auf und soll innerhalb von ca. 1 bis 3 Monaten implementiert werden. Diese Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Komponenten.
+Phase 3 baut auf den Maßnahmen aus Phase 2 auf und sollte innerhalb von ca. 1 bis 3 Monaten implementiert werden. Diese Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Komponenten.
 
 ### <a name="general-preparation"></a>Allgemeine Vorbereitung
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Durchführen einer Zugriffsüberprüfung von Benutzern in Administratorrollen
 
-Mehr Unternehmensbenutzer erhalten privilegierten Zugriff über Clouddienste, was zu einer zunehmend unverwalteten Plattform führen kann. Hierzu gehören Benutzer, die globale Administratoren von Office 365 werden, Azure-Abonnementadministratoren und Benutzer, die administrativen Zugriff auf virtuelle Computer oder über SaaS-Apps besitzen. Organisationen sollten stattdessen Wert darauf legen, dass alle Mitarbeiter, insbesondere Administratoren, alltägliche Geschäftstransaktionen als nicht privilegierte Benutzer abwickeln und nur bei Bedarf Administratorrechte haben. Da die Anzahl der Benutzer mit Administratorrollen seit der ersten Annahme zugenommen haben kann, führen Sie Zugriffsprüfungen durch, um jeden Benutzer sicher zu identifizieren, der zum Aktivieren von Administratorrechten berechtigt ist. 
+Mehr Unternehmensbenutzer erhalten privilegierten Zugriff über Clouddienste, was zu einem unverwalteten Zugriff führen kann. Benutzer können heutzutage globale Administratoren für Office 365 oder Azure-Abonnementadministratoren werden oder Administratorzugriff auf virtuelle Computer oder über SaaS-Apps haben.
 
-Gehen Sie folgendermaßen vor:
+Ihre Organisation sollte dafür sorgen, dass alle Mitarbeiter normale geschäftliche Transaktionen als nicht privilegierte Benutzer ausführen und ihnen Administratorrechte nur bei Bedarf gewähren. Vervollständigen Sie die Zugriffsüberprüfungen, um die Benutzer zu identifizieren und zu bestätigen, die zum Aktivieren von Administratorrechten berechtigt sind.
 
-* Bestimmen Sie, welche Benutzer Azure AD-Administratoren sind, aktivieren Sie bedarfsorientierten und Just-in-Time-Administratorzugriff sowie rollenbasierte Sicherheitssteuerungen.
-* Konvertieren Sie Benutzer, für deren Berechtigung zum privilegierten Administratorzugriff es keinen triftigen Grund gibt, in eine andere Rolle (wenn keine geeignete Rolle vorhanden ist, entfernen Sie sie).
+Wir empfehlen Folgendes:
 
-#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Fortsetzen der Einführung einer sichereren Authentifizierung für alle Benutzer 
+1. Bestimmen Sie, welche Benutzer Azure AD-Administratoren sind, aktivieren Sie bedarfsorientierten und Just-in-Time-Administratorzugriff sowie rollenbasierte Sicherheitssteuerungen.
+2. Konvertieren Sie Benutzer, für deren Berechtigung zum privilegierten Administratorzugriff es keinen triftigen Grund gibt, in eine andere Rolle (wenn keine geeignete Rolle vorhanden ist, entfernen Sie sie).
 
-Fordern Sie für C-Suite-Führungskräfte, Manager höherer Ebene, wichtiges IT- und Sicherheitspersonal und andere Benutzer mit hoher Gefährdung moderne, sichere Authentifizierung, z.B. Azure MFA oder Windows Hello. 
+#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Fortsetzen der Einführung einer sichereren Authentifizierung für alle Benutzer
+
+Fordern Sie besonders gefährdete Benutzer auf, eine moderne, starke Authentifizierung wie Azure MFA oder Windows Hello zu verwenden. Zu den besonders gefährdeten Benutzern zählen zum Beispiel:
+
+* Führungskräfte auf Vorstandsebene
+* Hochrangige Manager
+* Wichtige IT- und Sicherheitsmitarbeiter
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Verwenden dedizierter Arbeitsstationen für die Azure AD-Verwaltung
 
-Angreifer können versuchen, privilegierte Konten anzugreifen, um Zugriff auf Daten und Systeme eines Unternehmens zu erhalten, damit sie Integrität und Authentizität der Daten über schädlichen Code, der die Programmlogik ändert, oder das Ausspionieren von Administratoranmeldeinformationen zerstören können. Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsüberträgern geschützt ist. Die Trennung solcher sensitiven Aufgaben und Konten von den täglich verwendeten Arbeitsstationen und Geräten bietet einen sehr starken Schutz vor Phishing-Angriffen, vor Sicherheitsrisiken für das Betriebssystem und die Anwendungen, verschiedenen Identitätswechselangriffen und dem Diebstahl von Anmeldeinformationen z.B. mithilfe von Keyloggern, Pass-the-Hash und Pass-the-Ticket. Durch die Bereitstellung von Privileged Access Workstations können Sie das Risiko reduzieren, dass Administratoren Administratoranmeldeinformationen außerhalb einer gefestigten Desktopumgebung eingeben. Weitere Informationen finden Sie unter [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Angreifer haben es möglicherweise auf privilegierte Konten abgesehen, um Integrität und Authentizität von Daten zu zerstören. Sie verwenden häufig bösartigen Code, der die Programmlogik ändert oder den Administrator bei der Eingabe von Anmeldeinformationen ausspioniert. Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsüberträgern geschützt ist. Die Trennung dieser sensiblen Aufgaben und Konten von den täglich genutzten Arbeitsstationen und Geräten sorgt für hohen Schutz vor folgenden Risiken:
 
-#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Lesen der Empfehlungen des National Institute of Standards and Technology zur Abwicklung von Vorfällen 
+* Phishingangriffe
+* Sicherheitsrisiken in Anwendungen und beim Betriebssystem
+* Angriffe durch Identitätswechsel
+* Angriffe zum Diebstahl von Anmeldeinformationen wie Protokollierung von Tastaturanschlägen, Pass-the-Hash und Pass-the-Ticket
+
+Durch die Bereitstellung von Privileged Access Workstations können Sie das Risiko reduzieren, dass Administratoren ihre Anmeldeinformationen in einer Desktopumgebung eingeben, die nicht speziell gesichert ist. Weitere Informationen finden Sie unter [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+
+#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Lesen der Empfehlungen des National Institute of Standards and Technology zur Abwicklung von Vorfällen
 
 Das National Institute of Standards and Technology (NIST) bietet Richtlinien für den Umgang mit Vorfällen, insbesondere für die Analyse vorfallbezogener Daten und Bestimmung der richtigen Reaktion auf jeden Vorfall. Weitere Informationen finden Sie unter [The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) (Handbuch zur Behandlung von Computersicherheitsvorfällen).
 
@@ -251,17 +265,21 @@ Das National Institute of Standards and Technology (NIST) bietet Richtlinien fü
 
 Verwenden Sie für Azure Active Directory die Funktion [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md). Die zeitlich begrenzte Aktivierung von privilegierten Rollen ermöglicht Ihnen Folgendes:
 
-* Aktivieren von Administratorrechten zur Ausführung einer bestimmten Aufgabe
+* Aktivieren von Administratorrechten zum Ausführen einer bestimmten Aufgabe
 * Erzwingen der mehrstufigen Authentifizierung während der Aktivierung
 * Verwenden von Warnungen, um Administratoren über Out-of-band-Änderungen zu informieren
-* Benutzern ermöglichen, bestimmte Berechtigungen für eine vorkonfigurierte Zeitspanne beizubehalten
-* Sicherheitsadministratoren erlauben, alle privilegierten Identitäten zu ermitteln, Überwachungsberichte anzuzeigen und Zugriffsprüfungen zu erstellen, um jeden Benutzer zu identifizieren, der zum Aktivieren von Administratorrechten berechtigt ist
+* Benutzern ermöglichen, den privilegierten Zugriff für eine vorkonfigurierte Zeitspanne beizubehalten
+* Räumen Sie Sicherheitsadministratoren die folgenden Möglichkeiten ein:
+
+  * Erkennen aller Identitäten mit hohen Zugriffsrechten
+  * Anzeigen von Überwachungsberichten
+  * Erstellen von Zugriffsüberprüfungen zum Identifizieren aller Benutzer, die zum Aktivieren von Administratorrechten berechtigt sind
 
 Wenn Sie bereits Azure AD Privileged Identity Management verwenden, passen Sie Zeitrahmen für zeitgebundene Berechtigungen nach Bedarf an (z.B. Wartungsfenster).
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Ermitteln der Gefährdung durch kennwortbasierte Anmeldeprotokolle (bei Verwendung von Exchange Online)
 
-In der Vergangenheit setzten Protokolle voraus, dass Benutzername/Kennwort-Kombinationen in Geräten, E-Mail-Konten, Telefonen usw. eingebettet waren. Doch bei den heutigen Risiken von Cyberangriffen in der Cloud sollten Sie jeden Benutzer identifizieren, der der Organisation potenziell schweren Schaden zufügen könnte, wenn seine Anmeldeinformationen gefährdet wären, und ihm durch Implementieren von sicheren Authentifizierungsanforderungen und bedingtem Zugriff die Möglichkeit verwehren, sich mit Benutzername/Kennwort bei seiner E-Mail-Adresse anzumelden. Sie können [ältere Authentifizierungsmethoden mit dem bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) blockieren. Überprüfen Sie die Details zum [Blockieren der Standardauthentifizierung](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online. 
+Wir empfehlen, jeden potenziellen Benutzer zu identifizieren, bei dem die Kompromittierung der Anmeldeinformationen katastrophale Folgen für die Organisation haben kann. Etablieren Sie für diese Benutzer strenge Authentifizierungsanforderungen, und verwenden Sie den bedingten Zugriff von Azure AD, um zu verhindern, dass sie sich mit ihrem Benutzernamen und Kennwort bei ihrer E-Mail-Anwendung anmelden. Sie können die [Legacyauthentifizierung mit bedingtem Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) und die [Basisauthentifizierung](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online blockieren.
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Durchführen einer Rollenbewertung für Office 365-Rollen (bei Verwendung von Office 365)
 
@@ -273,36 +291,48 @@ Sie können diesen Bericht von [Sicherheitsvorfallmanagement in Microsoft Office
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Fortsetzen des Schützens von lokalen privilegierten Administratorkonten
 
-Wenn Ihr Azure Active Directory-Mandant mit einem lokalen Active Directory verbunden ist, orientieren Sie sich an dem Leitfaden in [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Phase 2. Dies beinhaltet: Bereitstellen von Privileged Access Workstations für alle Administratoren, Fordern von MFA, Verwenden von „Minimale Administration“ für DC-Wartung, Verkleinern der Angriffsfläche von Domänen, Bereitstellen von ATA zur Angriffserkennung.
+Wenn Ihr Azure Active Directory-Mandant mit einem lokalen Active Directory verbunden ist, orientieren Sie sich an dem Leitfaden in [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Phase 2. In dieser Phase führen Sie folgende Aktionen aus:
+
+* Bereitstellen von Privileged Access Workstations für alle Administratoren
+* Anfordern von MFA
+* Verwenden von JEA (Just Enough Admin) für die Wartung von Domänencontrollern, um die Angriffsfläche der Domänen zu minimieren
+* Bereitstellen von Advanced Threat Assessment für die Angriffserkennung
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf Azure verwalten
 
 #### <a name="establish-integrated-monitoring"></a>Einrichten der integrierten Überwachung
 
-Das [Azure Security Center](../../security-center/security-center-intro.md) bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+[Azure Security Center](../../security-center/security-center-intro.md):
+
+* Bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements
+* Hilft bei der Erkennung von Bedrohungen, die sonst möglicherweise unbemerkt bleiben
+* Funktioniert mit einer großen Palette von Sicherheitslösungen
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Inventarisieren Ihrer privilegierten Konten auf gehosteten virtuellen Computern
 
-In den meisten Fällen müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre gesamten Azure-Abonnements oder Ressourcen erteilen. Sie können mit Azure AD-Administratorrollen Aufgaben in Ihrer Organisation verteilen und Benutzern Zugriff nur in dem zur Ausführung bestimmter Aufträge erforderlichen Umfang gewähren. Gestatten Sie z.B. mit Azure AD-Administratorrollen einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+In der Regel müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre gesamten Azure-Abonnements oder Ressourcen erteilen. Verwenden Sie Azure AD-Administratorrollen, um nur den Zugriff zu gewähren, den die Benutzer für ihre Arbeit benötigen. Mit Azure AD-Administratorrollen können Sie einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement gestatten, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementieren von PIM für Azure AD-Administratorrollen
 
-Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. Das Verwenden von PIM schützt privilegierte Konten vor Cyberangriffen durch Herabsetzen der Gefährdungszeit für Privilegien und Erweitern Ihres Einblicks in ihre Verwendung durch Berichte und Warnungen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md).
+Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. PIM bietet Schutz durch Herabsetzen der Gefährdungszeit für Berechtigungen und bietet mithilfe von Berichten und Warnungen einen größeren Einblick in die Verwendung dieser Berechtigungen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md).
 
-#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme 
+#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme
 
-Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Die [Azure-Protokollintegration](../../security/fundamentals/azure-log-integration-overview.md) erfasst Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Diagnoseprotokollen. 
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Mit der [Azure-Protokollintegration](../../security/fundamentals/azure-log-integration-overview.md) erfassen Sie Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus folgenden Quellen:
 
+* Azure-Aktivitätsprotokolle
+* Azure Security Center-Warnungen
+* Azure-Ressourcenprotokolle
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf andere Cloud-Apps über Azure AD verwalten
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Implementieren der Benutzerbereitstellung für verbundene Apps
 
-Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen (SaaS) wie z.B. Dropbox, Salesforce, ServiceNow usw. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
+Azure AD bietet Ihnen die Möglichkeit, das Erstellen und Pflegen von Benutzeridentitäten in Cloud-Apps wie Dropbox, Salesforce und ServiceNow zu automatisieren. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Integrieren von Information Protection
 
-Mit MCAS können Sie Dateien untersuchen und Richtlinien auf Grundlage von Klassifizierungsbezeichnungen von Azure Information Protection festlegen, sodass Sie umfangreicheren Einblick in Ihre Daten in der Cloud und sie besser unter Kontrolle haben. Überprüfen und klassifizieren Sie Dateien in der Cloud und wenden Sie Azure Information Protection-Bezeichnungen an. Weitere Informationen finden Sie unter [Integration mit Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
+Mit Microsoft Cloud App Security können Sie Dateien untersuchen und Richtlinien auf Grundlage von Klassifizierungsbezeichnungen von Azure Information Protection festlegen, sodass Sie einen größeren Einblick in Ihre Daten in der Cloud gewinnen und sie besser unter Kontrolle haben. Überprüfen und klassifizieren Sie Dateien in der Cloud und wenden Sie Azure Information Protection-Bezeichnungen an. Weitere Informationen finden Sie unter [Integration mit Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Konfigurieren des bedingten Zugriffs
 
@@ -310,7 +340,7 @@ Konfigurieren Sie den bedingten Zugriff basierend auf einer Gruppen-, Standort- 
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>Überwachen der Aktivität in verbundenen Cloud-Apps
 
-Um sicherzustellen, dass der Zugriff des Benutzers auch in verbundenen Anwendungen geschützt ist, sollten Sie [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) nutzen. Dadurch wird zusätzlich zum Sichern Ihrer Administratorkonten der Zugriff des Unternehmens auf Cloud-Apps sichergestellt, indem Ihnen Folgendes ermöglicht wird:
+Wir empfehlen die Verwendung von [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security), um sicherzustellen, dass der Benutzerzugriff auch in verbundenen Anwendungen geschützt ist. Diese Funktion schützt den Zugriff Ihres Unternehmens auf Cloud-Apps, sichert Ihre Administratorkonten und bietet folgende Möglichkeiten:
 
 * Erweitern des Einblicks in Cloud-Apps und der Kontrollmöglichkeiten
 * Erstellen von Richtlinien für Zugriff, Aktivitäten und Datenfreigabe
@@ -320,43 +350,52 @@ Um sicherzustellen, dass der Zugriff des Benutzers auch in verbundenen Anwendung
 
 Der SIEM-Agent von Cloud App Security integriert Cloud App Security in Ihren SIEM-Server, um zentralisierte Überwachung von Office 365-Warnungen und Aktivitäten zu ermöglichen. Er wird auf dem Server ausgeführt, bezieht Warnungen und Aktivitäten aus Cloud App Security und streamt sie an den SIEM-Server. Weitere Informationen finden Sie unter [SIEM-Integration](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Phase 4: Fortsetzung des Aufbaus von Verteidigungsmaßnahmen, um einen proaktiveren Sicherheitsstatus zu schaffen
+## <a name="stage-4-continue-building-defenses"></a>Phase 4: Weiterer Aufbau von Schutzmaßnahmen
 
-![Phase 4: Schaffen eines proaktiven Sicherheitsstatus](./media/directory-admin-roles-secure/stage-four.png)
+![Phase 4: Schaffen eines aktiven Sicherheitsstatus](./media/directory-admin-roles-secure/stage-four.png)
 
-Phase 4 der Roadmap baut auf dem Einblick von Schritt 3 auf und sollte in sechs Monaten und später implementiert werden. Das Aufstellen einer Roadmap hilft Ihnen, starke Schutzmaßnahmen für den privilegierten Zugriff vor potenziellen Angriffen zu entwickeln, die zurzeit bekannt und verfügbar sind. Da Sicherheitsbedrohungen leider ständig weiterentwickelt und verschoben werden, sollten Sie die Sicherheit als einen laufenden Prozess betrachten, der sich darauf konzentriert, für Angreifer, die es auf Ihre Umgebung abgesehen haben, den Aufwand zu steigern und die Erfolgsrate zu verringern.
+Phase 4 der Roadmap sollte nach 6 Monaten oder später implementiert werden. Vervollständigen Sie die Roadmap, um den Schutz des privilegierten Zugriffs vor den heute bekannten Angriffen zu erhöhen. In Hinblick auf zukünftige Sicherheitsbedrohungen empfehlen wir, die Sicherheit als fortwährenden Prozess zu betrachten, um die entsprechenden Gelder aufzubringen und die Erfolgsrate der Angriffe auf Ihre Umgebung zu reduzieren.
 
-Schützen von privilegiertem Zugriff ist ein entscheidender Schritt zum Einrichten der Sicherheitsgarantien für Geschäftsressourcen in einem modernen Unternehmen, aber es ist nicht der einzige Teil eines vollständigen Sicherheitsprogramms, das Elemente wie Richtlinien, Vorgänge, Informationssicherheit, Server, Anwendungen, PCs, Geräte, Cloud-Fabric und andere Komponenten beinhaltet, die laufende Sicherheitsgarantien bieten. 
+Das Sichern des privilegierten Zugriffs ist wichtig, um Sicherheitsgarantien für Ihre geschäftlichen Ressourcen zu etablieren. Diese Maßnahme sollte jedoch Teil eines umfassenden Sicherheitsprogramms sein, das für permanente Sicherheitsgarantien sorgt. Dieses Programm sollte sich u.a. auf folgende Elemente beziehen:
 
-Zusätzlich zur Verwaltung Ihrer Konten für privilegierten Zugriff sollten Sie Folgendes fortlaufend überprüfen:
+* Richtlinie
+* Operationen (Operations)
+* Informationssicherheit
+* Server
+* Anwendungen
+* Computer
+* Geräte
+* Cloud-Fabric
 
-* Stellen Sie sicher, dass Administratoren ihre Routineaufgaben als Benutzer ohne Privilegien ausführen.
-* Gewähren Sie privilegierten Zugriff nur bei Bedarf, und entziehen sie ihn danach (Just-in-Time).
-* Sorgen Sie für eine kontinuierliche Überprüfungsaktivität im Zusammenhang mit privilegierten Konten.
+Für die Verwaltung von Konten für den privilegierten Zugriff empfehlen wir die folgenden Methoden:
 
-Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zum [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+* Stellen Sie sicher, dass Administratoren ihre Routineaufgaben als Benutzer ohne Privilegien ausführen
+* Gewähren Sie privilegierten Zugriff nur bei Bedarf, und entziehen sie ihn danach (Just-in-Time)
+* Speichern Sie Aktivitätsüberwachungsprotokolle im Zusammenhang mit privilegierten Konten
+
+Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um Unterstützung bei der Implementierung der einzelnen Phasen Ihrer Roadmap durch Microsoft-Dienste zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder lesen Sie [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Diese letzte laufende Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Komponenten.
 
 ### <a name="general-preparation"></a>Allgemeine Vorbereitung
 
-#### <a name="review-admin-roles-in-azure-active-directory"></a>Überprüfen der Administratorrollen in Azure Active Directory 
+#### <a name="review-admin-roles-in-azure-ad"></a>Überprüfen der Administratorrollen in Azure AD
 
-Bestimmen Sie, ob die aktuellen integrierten Azure AD-Administratorrollen weiterhin auf dem neuesten Stand sind, und stellen Sie sicher, dass die Benutzer sich nur in den Rollen und Delegierungen befinden, die sie für die entsprechenden Berechtigungen benötigen. Mithilfe von Azure AD können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](directory-assign-admin-roles.md).
+Ermitteln Sie, ob die derzeit integrierten Azure AD-Administratorrollen noch auf dem neuesten Stand sind, und sorgen Sie dafür, dass die Benutzer nur den tatsächlich erforderlichen Rollen zugewiesen sind. Mit Azure AD können Sie separate Administratoren für unterschiedliche Funktionen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](directory-assign-admin-roles.md).
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Überprüfen von Benutzern, die in Azure AD eingebundene Geräte verwalten
 
 Weitere Informationen finden Sie unter [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](../device-management-hybrid-azuread-joined-devices-setup.md).
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>Überprüfen der Mitglieder [integrierter Administratorrollen in Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
-Wenn Sie Office 365 verwenden.
+Überspringen Sie diesen Schritt, wenn Sie Office 365 nicht verwenden.
 ‎
 #### <a name="validate-incident-response-plan"></a>Validieren des Notfallreaktionsplans
 
 Um Ihren Plan zu verbessern, empfiehlt Microsoft, dass Sie regelmäßig überprüfen, ob Ihr Plan wie erwartet funktioniert:
 
 * Prüfen Sie Ihre vorhandene Roadmap auf Lücken
-* Überarbeiten Sie basierend auf der Post-Mortem-Analyse vorhandene bewährte Methoden oder definieren Sie neue
+* Ziehen Sie Bilanz, und überarbeiten Sie entweder vorhandene bewährte Methoden oder definieren Sie neue Methoden
 * Stellen Sie sicher, dass Ihr aktualisierter Notfallreaktionsplan und Ihre bewährten Methoden in der gesamten Organisation verbreitet werden
 
 
@@ -369,17 +408,17 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 ![Konten für den Notfallzugriff](./media/directory-admin-roles-secure/emergency.jpeg)
 
-1. Versorgen Sie Führungskräfte und Sicherheitsbeauftragte mit relevanten Informationen über den Vorfall.
+1. Versorgen Sie Führungskräfte und Sicherheitsbeauftragte mit Informationen zu dem Vorfall.
 
-2. Überprüfen Sie Ihr Angriffs-Playbook. 
+2. Überprüfen Sie Ihr Angriffs-Playbook.
 
-3. Greifen Sie auf Ihre Kontobenutzername/Kennwort-Kombination für den Notfall zum Anmelden bei Azure AD zu. 
+3. Greifen Sie auf Ihre Benutzername-/Kennwortkombination für das Notfallkonto zu, um sich bei Azure AD anzumelden.
 
 4. Bitten Sie Microsoft um Hilfe, indem Sie [eine Azure-Supportanfrage öffnen](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-5. Werten Sie die [Azure AD-Anmeldeberichte aus](../reports-monitoring/overview-reports.md). Es gibt möglicherweise eine Verzögerung zwischen dem Auftreten eines Ereignisses und seiner Einbeziehung in den Bericht.
+5. Werten Sie die [Azure AD-Anmeldeberichte aus](../reports-monitoring/overview-reports.md). Zwischen dem Auftreten eines Ereignisses und seiner Einbeziehung in den Bericht kann eine gewisse Zeit verstreichen.
 
-6. Wenn in Hybridumgebungen der Verbundserver und Ihr AD FS-Server nicht verfügbar sind, müssen Sie möglicherweise vorübergehend von der Verbundauthentifizierung zur Kennworthashsynchronisierung wechseln. Dadurch wird der Domänenverbund auf die verwaltete Authentifizierung zurückgeworfen, bis der AD FS-Server verfügbar ist.
+6. Wenn in Hybridumgebungen Ihre lokale Verbundinfrastruktur und Ihr AD FS-Server nicht verfügbar sind, können Sie vorübergehend von der Verbundauthentifizierung zur Kennworthashsynchronisierung wechseln. Dadurch erfolgt ein Wechsel vom Domänenverbund zurück zur verwalteten Authentifizierung, bis der AD FS-Server wieder verfügbar ist.
 
 7. Überwachen Sie E-Mail für privilegierte Konten.
 
@@ -387,7 +426,7 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft Office 365 finden Sie unter [Sicherheitsvorfallmanagement in Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Häufig gestellte Fragen: allgemeine Fragen zum Schutz des privilegierten Zugriffs  
+## <a name="faq-answers-for-securing-privileged-access"></a>Häufig gestellte Fragen: Antworten zum Sichern des privilegierten Zugriffs  
 
 **F:** Wie gehe ich vor, wenn ich noch keine Komponenten für den sicheren Zugriff implementiert habe?
 
@@ -395,13 +434,13 @@ Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft O
 
 **F:** Welches Problem muss nach einer Sicherheitsverletzung zuerst behandelt werden?
 
-**Antwort:** Stellen Sie sicher, dass für Einzelpersonen mit hoher Gefährdung die sicherste Authentifizierung erforderlich ist.
+**Antwort:** Stellen Sie sicher, dass Sie für Einzelpersonen mit hoher Gefährdung die sicherste Authentifizierung anfordern.
 
 **F:** Was geschieht, wenn unsere privilegierten Administratoren deaktiviert wurden?
 
 **Antwort:** Erstellen Sie ein globales Administratorkonto, das immer auf dem neuesten Stand gehalten wird.
 
-**F:** Was geschieht, wenn nur noch ein einzelner globaler Administrator vorhanden ist und dieser nicht erreicht werden kann? 
+**F:** Was geschieht, wenn nur noch ein einzelner globaler Administrator vorhanden ist und dieser nicht erreicht werden kann?
 
 **Antwort:** Verwenden Sie eines Ihrer Notfallkonten, um umgehend privilegierten Zugriff zu erhalten.
 
@@ -419,7 +458,7 @@ Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft O
 
 **F:** Welche Position bezieht Microsoft hinsichtlich der Synchronisierung von Administratorkonten mit Azure AD?
 
-**Antwort:** Administratorkonten der Ebene 0 (einschließlich Konten, Gruppen und anderer Ressourcen, die direkte oder indirekte administrative Kontrolle über AD-Gesamtstruktur, Domänen oder Domänencontroller und alle Ressourcen haben) werden nur für lokale AD-Konten verwendet und in der Regel nicht mit Azure AD für die Cloud synchronisiert.
+**Antwort:** Administratorkonten auf Ebene 0 werden nur für lokale AD-Konten verwendet. Diese Konten werden in der Regel nicht mit Azure AD in der Cloud synchronisiert. Zu den Administratorkonten auf Ebene 0 gehören Konten, Gruppen und andere Ressourcen, die direkt oder indirekt administrative Kontrolle über die lokale Active Directory-Gesamtstruktur, über Domänen oder Domänencontroller und Ressourcen ausüben.
 
 **F:** Wie können wir verhindern, dass Administratoren im Portal willkürlich Administratorzugriff gewähren?
 
@@ -431,7 +470,7 @@ Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft O
 
 * [Microsoft Trust Center – Complianceangebote](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – Microsofts umfassende Reihe von Complianceangeboten für Clouddienste
 
-* [Ausführen einer Risikobeurteilung und Compliancebewertung für Microsoft Cloud Services](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Verwalten von Sicherheits- und Complianceanforderungen für Clouddienste von Microsoft
+* [Leitfaden zum Ausführen einer Risikobewertung](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Verwalten von Sicherheits- und Complianceanforderungen für Clouddienste von Microsoft
 
 ### <a name="other-microsoft-online-services"></a>Andere Microsoft Online Services
 

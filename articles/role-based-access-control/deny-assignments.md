@@ -1,6 +1,6 @@
 ---
-title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
-description: Informationen zu Ablehnungszuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen
+title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen – Azure RBAC
+description: Informationen zu Ablehnungszuweisungen bei der rollenbasierten Zugriffssteuerung (Azure RBAC, Role-Based Access Control).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372482"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733770"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
+# <a name="understand-azure-deny-assignments"></a>Verstehen von Azure-Ablehnungszuweisungen
 
 Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe oder einem Dienstprinzipal, um den Zugriff zu verweigern. Ablehnungszuweisungen hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird.
 
@@ -90,4 +90,4 @@ Principals              : {
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md)
-* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md)
+* [Auflisten von Ablehnungszuweisungen über das Azure-Portal](deny-assignments-portal.md)

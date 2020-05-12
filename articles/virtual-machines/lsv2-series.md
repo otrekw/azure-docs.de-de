@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164031"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594337"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -27,6 +27,8 @@ Die Lsv2-Reihe bietet direkt zugeordneten lokalen NVMe-Speicher mit hohem Durchs
 
 ACU: 150–175
 
+Bursting: Unterstützt
+
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
@@ -35,14 +37,14 @@ Livemigration: Nicht unterstützt
 
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
-| Size | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträgerdurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 16 | 2/3.200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 32 | 4/6.400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32 | 8/12.800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1,92 TB  | 2.200.000/14.000   | 48.000/960  | 32 | 8/16.000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/16.000+ |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1,92 TB | 3.800.000/20.000 | 80.000/1.400 | 32 | 8/16.000+ |
+| Size | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträgerdurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Datenträgerdurchsatz ohne Cache (IOPS/MB/s)<sup>4</sup> | Maximaler Burst-Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>5</sup>| Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 8\.000/1.280 | 16 | 2/3.200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 16.000/1.280 | 32 | 4/6.400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32.000/1.280 | 32 | 8/12.800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1,92 TB  | 2.200.000/14.000   | 48.000/960  | 48.000/2.000 | 32 | 8/16.000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 64.000/2.000 | 32 | 8/16.000+ |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x1,92 TB | 3.800.000/20.000 | 80.000/1.400 | 80000/2000 | 32 | 8/16.000+ |
 
 <sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 
@@ -52,7 +54,9 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 <sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten.
 
-<sup>5</sup> Für VMs mit mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich:
+<sup>5</sup> VMs der Lsv2-Serie können ihre Datenträgerleistung für jeweils bis zu 30 Minuten mit [Burst](linux/disk-bursting.md) verbessern. 
+
+<sup>6</sup> Für VMs mit mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich:
 
 - Windows Server 2016 oder höher
 - Ubuntu 16.04 LTS oder höher mit für Azure optimiertem Kernel (4.15 Kernel oder höher)

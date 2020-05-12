@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273714"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611397"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -45,11 +45,13 @@ Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle f�
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
 
-Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Update- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren. Die virtuellen Computer mit den höchsten IDs werden zuerst entfernt.
+VMs werden standardmäßig gleichmäßig aus den Skalierungsgruppen der Verfügbarkeitszonen (wenn die Skalierungsgruppe in zonaler Konfiguration bereitgestellt wurde) und Fehlerdomänen entfernt, um die Verfügbarkeit zu maximieren. Die virtuellen Computer mit den höchsten IDs werden zuerst entfernt.
+
+Sie können die Reihenfolge zur Entfernung der VM ändern, indem Sie eine [Richtlinie für horizontales Herunterskalieren](virtual-machine-scale-sets-scale-in-policy.md) für die Skalierungsgruppe festlegen.
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Was passiert, wenn ich dann die Kapazität von 15 auf 18 erhöhe?
 
-Wenn Sie die Kapazität auf 18 erhöhen, werden drei neue VMs erstellt. Die VM-Instanz-ID wird jeweils ausgehend vom vorherigen höchsten Wert erhöht (Beispiel: 20, 21, 22). Virtuelle Computer werden über Fehler- und Updatedomänen hinweg gleichmäßig verteilt.
+Wenn Sie die Kapazität auf 18 erhöhen, werden drei neue VMs erstellt. Die VM-Instanz-ID wird jeweils ausgehend vom vorherigen höchsten Wert erhöht (Beispiel: 20, 21, 22). Die VMs werden gleichmäßig auf die Fehlerdomänen verteilt.
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Kann ich bei Verwendung mehrerer Erweiterungen in einer Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
 
@@ -335,13 +337,13 @@ Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microso
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
-## <a name="deleting"></a>Wird gelöscht 
+## <a name="deleting"></a>Wird gelöscht
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Werden die Sperren, die ich für VM-Skalierungsgruppeninstanzen festgelegt habe, beim Löschen von Instanzen beachtet?
 
-Im Azure-Portal haben Sie die Möglichkeit, eine einzelne Instanz zu löschen oder mehrere Instanzen auszuwählen und gleichzeitig in einem Schritt zu löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die Instanz nicht löschen können. Wenn Sie mehrere Instanzen auswählen und eine dieser Instanzen gesperrt wurde, werden die Sperren nicht beachtet, sodass alle ausgewählten Instanzen gelöscht werden. 
- 
-In der Azure-Befehlszeilenschnittstelle können Sie nur eine einzelne Instanz löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die betreffende Instanz nicht löschen können. 
+Im Azure-Portal haben Sie die Möglichkeit, eine einzelne Instanz zu löschen oder mehrere Instanzen auszuwählen und gleichzeitig in einem Schritt zu löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die Instanz nicht löschen können. Wenn Sie mehrere Instanzen auswählen und eine dieser Instanzen gesperrt wurde, werden die Sperren nicht beachtet, sodass alle ausgewählten Instanzen gelöscht werden.
+
+In der Azure-Befehlszeilenschnittstelle können Sie nur eine einzelne Instanz löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die betreffende Instanz nicht löschen können.
 
 ## <a name="extensions"></a>Erweiterungen
 
@@ -445,7 +447,7 @@ Es gibt zwei Hauptmethoden zum Ändern des Kennworts für virtuelle Computer in 
 
     Aktualisieren Sie die Administratoranmeldeinformationen direkt im Skalierungsgruppenmodell (z. B. mit dem Azure-Ressourcen-Explorer, mit PowerShell oder mit CLI). Sobald die Skalierungsgruppe aktualisiert wurde, werden für alle neuen virtuellen Computer die neuen Anmeldeinformationen verwendet. Vorhandene virtuelle Computer erhalten die neuen Anmeldeinformationen nur, wenn für sie ein Reimaging durchgeführt wird.
 
-- Setzen Sie das Kennwort mit den Zugriffserweiterungen für virtuelle Computer zurück.
+- Setzen Sie das Kennwort mit den Zugriffserweiterungen für virtuelle Computer zurück. Achten Sie darauf, den Kennwortanforderungen zu folgen, wie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm) beschrieben.
 
     Verwenden Sie das folgende PowerShell-Beispiel:
 

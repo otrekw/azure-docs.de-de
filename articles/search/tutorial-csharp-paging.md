@@ -1,21 +1,21 @@
 ---
 title: C#-Tutorial zur Suchergebnispaginierung
 titleSuffix: Azure Cognitive Search
-description: In diesem Tutorial wird die Paginierung von Suchergebnissen veranschaulicht. Es basiert auf einem vorhandenen „hotels“-Projekt, bei dem Schaltflächen für „Erste“, „Nächste“, „Vorherige“ und „Letzte“ sowie mit Seitenzahlen verwendet werden. Bei einem zweiten Paginierungssystem wird das unendliche Scrollen verwendet. Dies wird ausgelöst, indem eine vertikale Scrollleiste ganz nach unten verschoben wird.
+description: Fügen Sie den Suchergebnissen Paginierung und Navigationsschaltflächen hinzu. Bauen Sie dabei auf einem vorhandenen hotels-Projekt auf, um Schaltflächen für „Erste“, „Nächste“, „Vorherige“ und „Letzte“ sowie mit Seitenzahlen hinzuzufügen. Bei einem zweiten Paginierungssystem wird das unendliche Scrollen verwendet. Dies wird ausgelöst, indem eine vertikale Scrollleiste ganz nach unten verschoben wird.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121523"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780571"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Tutorial: Hinzufügen von Paginierung zu Suchergebnissen mithilfe des .NET SDK
 
 Es wird beschrieben, wie Sie zwei unterschiedliche Paginierungssysteme implementieren, wobei das erste auf Seitenzahlen und das zweite auf dem unendlichen Scrollen basiert. Beide Paginierungssysteme werden häufig genutzt. Die jeweilige richtige Wahl hängt von der Benutzeroberfläche ab, die Sie für Ihre Ergebnisse verwenden möchten. In diesem Tutorial werden die Paginierungssysteme in das Projekt integriert, die im Tutorial [C#-Tutorial: Erstellen Ihrer ersten App – Azure Cognitive Search](tutorial-csharp-create-first-app.md) erstellt wurden.
 

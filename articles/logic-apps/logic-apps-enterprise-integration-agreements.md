@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790735"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612332"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
@@ -68,6 +68,14 @@ Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Su
    | **Empfangseinstellungen** | Varies | Varies | Diese Eigenschaften legen fest, wie der Hostpartner alle Nachrichten vom in der Vereinbarung angegebenen Gastpartner empfängt. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
    | **Sendeeinstellungen** | Varies | Varies | Die Eigenschaften legen fest, wie der Hostpartner alle Nachrichten an den in der Vereinbarung angegebenen Gastpartner sendet. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > Die Auflösung für eine Vereinbarung hängt von der Übereinstimmung dieser Elemente ab, die in der Partner- und eingehenden Nachricht definiert sind:
+   >
+   > * Qualifizierer und Bezeichner des Absenders
+   > * Qualifizierer und Bezeichner des Empfängers
+   >
+   > Falls sich diese Werte für Ihren Partner ändern, stellen Sie sicher, dass Sie die Vereinbarung entsprechend aktualisieren.
 
 1. Wenn Sie die Erstellung Ihrer Vereinbarung abgeschlossen haben, wählen Sie auf der Seite **Hinzufügen** die Option **OK** aus, und kehren Sie zu Ihrem Integrationskonto zurück.
 

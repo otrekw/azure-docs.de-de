@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780754"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629200"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Migrieren Ihrer SQLite-Datenbank zu „Azure SQL-Datenbank – serverlos“
-Für viele bildet SQLite den Einstieg in die Welt der Datenbanken und der SQL-Programmierung. Dank der Integration in zahlreiche Betriebssysteme und beliebte Anwendungen ist SQLite eine der am weitesten verbreiteten und meistgenutzten Datenbankengines der Welt. Und da es für viele Benutzer die erste Datenbankengine ist, ist sie häufig ein zentraler Bestandteil von Projekten und Anwendungen. In Fällen, in denen das Projekt oder die Anwendung über die ursprüngliche SQLite-Implementierung hinauswächst, müssen Entwickler ihre Daten ggf. zu einem zuverlässigen, zentralisierten Datenspeicher migrieren.
+Für viele bildet SQLite den Einstieg in die Welt der Datenbanken und der SQL-Programmierung. Dank der Integration in zahlreiche Betriebssysteme und beliebte Anwendungen ist SQLite eine der am weitesten verbreiteten und meistgenutzten Datenbank-Engines der Welt. Und da es für viele Benutzer die erste Datenbankengine ist, ist sie häufig ein zentraler Bestandteil von Projekten und Anwendungen. In Fällen, in denen das Projekt oder die Anwendung über die ursprüngliche SQLite-Implementierung hinauswächst, müssen Entwickler ihre Daten ggf. zu einem zuverlässigen, zentralisierten Datenspeicher migrieren.
 
 „Azure SQL-Datenbank – serverlos“ ist eine Computeebene für Einzeldatenbanken, bei der auf Workloadbedarf basierende Computeressourcen automatisch skaliert werden und die Nutzung sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
 

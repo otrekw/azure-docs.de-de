@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78e01c854201e3c5253cd86aebcd85b62bf5568d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481081"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629299"
 ---
 # <a name="vcore-model-overview"></a>Übersicht über das V-Kern-Modell
 
@@ -102,7 +102,7 @@ Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müss
 |Gen4     |- Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz<br>- Bereitstellung von bis zu 24 virtuellen Kernen (1 virtueller Kern = 1 physischer Kern)  |- 7 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 168 GB|
 |Gen5     |**Bereitgestelltes Computing**<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake)* mit 2,3 GHz<br>- Bereitstellung von bis zu 80 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)<br><br>**Serverloses Computing**:<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake)* mit 2,3 GHz<br>- Automatische Skalierung auf bis zu 16 virtuelle Kerne (1 virtueller Kern = 1 Hyperthread)|**Bereitgestelltes Computing**<br>- 5,1 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 408 GB<br><br>**Serverloses Computing**:<br>- Automatische Skalierung auf bis zu 24 GB pro V-Kern<br>- Automatische Skalierung auf bis zu 48 GB|
 |Fsv2-Serie     |- Intel Xeon Platinum 8168-Prozessoren (Skylake)<br>- Kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne und maximale Turbo-Taktfrequenz für Einzelkerne von 3,7 GHz<br>- Bereitstellung von 72 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 1,9 GB pro virtuellem Kern<br>- Bereitstellung von 136 GB|
-|M-Serie     |- Intel Xeon E7-8890 v3-Prozessoren mit 2,5 GHz<br>- Bereitstellung von 128 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 29 GB pro virtuellem Kern<br>- Bereitstellung von 3,7 TB|
+|M-Serie     |- Prozessoren: Intel Xeon E7-8890 v3 2,5 GHz und Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)<br>- Bereitstellung von 128 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 29 GB pro virtuellem Kern<br>- Bereitstellung von 3,7 TB|
 
 \* In der dynamischen Verwaltungssicht [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) wird die Hardwaregenerierung für Gen5-Datenbanken mit Intel SP-8160-Prozessoren (Skylake) als „Gen6“ angezeigt. Ressourcenlimits für alle Gen5-Datenbanken sind unabhängig vom Prozessortyp (Broadwell oder Skylake) identisch.
 

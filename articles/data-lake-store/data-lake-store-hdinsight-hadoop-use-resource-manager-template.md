@@ -1,23 +1,17 @@
 ---
-title: Verwenden von Azure-Vorlagen zum Erstellen von Azure HDInsight-Clustern mit Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Verwenden von HDInsight-Clustern mit Azure Data Lake Storage Gen1
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: 'Vorlage: HDInsight-Cluster mit Data Lake Storage Gen1'
+description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Nutzen von HDInsight-Clustern mit Azure Data Lake Storage Gen1
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66161384"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692030"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 mithilfe einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -105,7 +99,7 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
+   Die Ausgabe sollte etwa folgendermaßen aussehen:
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1

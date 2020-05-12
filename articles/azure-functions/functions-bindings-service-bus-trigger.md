@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273564"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690705"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
-Verwenden Sie den Service Bus-Trigger, um auf Nachrichten von einer Service Bus-Warteschlange oder einem Thema zu reagieren.
+Verwenden Sie den Service Bus-Trigger, um auf Nachrichten von einer Service Bus-Warteschlange oder einem Thema zu reagieren. Beginnend mit der Erweiterungsversion 3.1.0 können Sie Trigger für sitzungsfähige Warteschlangen oder Themen verwenden.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](functions-bindings-service-bus-output.md).
 
@@ -222,7 +222,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
   ```
 
-  Sie können die Eigenschaft `Connection` festlegen, um den Namen einer App-Einstellung anzugeben, die die zu verwendende Service Bus-Verbindungszeichenfolge enthält, wie im folgenden Beispiel gezeigt:
+  Da die `Connection`-Eigenschaft nicht definiert ist, sucht Functions nach einer App-Einstellung mit dem Namen `AzureWebJobsServiceBus`. Dies ist der Standardname für die Service Bus-Verbindungszeichenfolge. Sie können die `Connection`-Eigenschaft auch festlegen, um den Namen einer Anwendungseinstellung anzugeben, die die zu verwendende Service Bus-Verbindungszeichenfolge enthält, wie im folgenden Beispiel gezeigt:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -256,7 +256,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
 
 Das zu verwendende Service Bus-Konto wird in der folgendem Reihenfolge bestimmt:
 
-* Die Eigenschaft `ServiceBusTrigger` des Attributs `Connection`.
+* Die Eigenschaft `Connection` des Attributs `ServiceBusTrigger`.
 * Das Attribut `ServiceBusAccount`, das auf den gleichen Parameter angewendet wird wie das Attribut `ServiceBusTrigger`.
 * Das Attribut `ServiceBusAccount`, das auf die Funktion angewendet wird.
 * Das Attribut `ServiceBusAccount`, das auf die Klasse angewendet wird.
@@ -354,21 +354,24 @@ Die `maxAutoRenewDuration` kann in der Datei *host.json* konfiguriert werden, di
 
 ## <a name="message-metadata"></a>Metadaten von Nachrichten
 
-Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse.
+Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet)-Klasse.
 
 |Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|Die Anzahl der Übermittlungen.|
-|`DeadLetterSource`|`string`|Die Quelle von unzustellbaren Nachrichten.|
-|`ExpiresAtUtc`|`DateTime`|Die Ablaufzeit in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|Die in die Warteschlange eingereihte Uhrzeit in UTC.|
-|`MessageId`|`string`|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
 |`ContentType`|`string`|Ein Inhaltstypbezeichner, der vom Sender und Empfänger für anwendungsspezifische Logik verwendet wird.|
-|`ReplyTo`|`string`|Die Antwort auf die Warteschlangenadresse.|
-|`SequenceNumber`|`Int64`|Eindeutige Nummer, die vom Service Bus einer Nachricht zugewiesen wird.|
-|`To`|`string`|Die Zieladresse.|
-|`Label`|`string`|Die anwendungsspezifische Bezeichnung.|
 |`CorrelationId`|`string`|Die Korrelations-ID.|
+|`DeadLetterSource`|`string`|Die Quelle von unzustellbaren Nachrichten.|
+|`DeliveryCount`|`Int32`|Die Anzahl der Übermittlungen.|
+|`EnqueuedTimeUtc`|`DateTime`|Die in die Warteschlange eingereihte Uhrzeit in UTC.|
+|`ExpiresAtUtc`|`DateTime`|Die Ablaufzeit in UTC.|
+|`Label`|`string`|Die anwendungsspezifische Bezeichnung.|
+|`MessageId`|`string`|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
+|`MessageReceiver`|`MessageReceiver`|Service Bus-Nachrichtenempfänger. Kann verwendet werden, um die Nachricht abzubrechen, abzuschließen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben.|
+|`MessageSession`|`MessageSession`|Ein Nachrichtenempfänger speziell für sitzungsfähige Warteschlangen und Themen.|
+|`ReplyTo`|`string`|Die Antwort auf die Warteschlangenadresse.|
+|`SequenceNumber`|`long`|Eindeutige Nummer, die vom Service Bus einer Nachricht zugewiesen wird.|
+|`To`|`string`|Die Zieladresse.|
+|`UserProperties`|`IDictionary<string, object>`|Eigenschaften, die vom Absender festgelegt werden.|
 
 [Codebeispiele](#example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
 

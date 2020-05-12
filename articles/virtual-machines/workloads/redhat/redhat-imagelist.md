@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605477"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838585"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Verfügbare RHEL-Images (Red Hat Enterprise Linux) in Azure
 Azure bietet eine Vielzahl von RHEL-Images für verschiedene Anwendungsfälle.
@@ -27,6 +27,9 @@ Azure bietet eine Vielzahl von RHEL-Images für verschiedene Anwendungsfälle.
 
 ## <a name="list-of-rhel-images"></a>Liste der RHEL-Images
 Die folgende Liste enthält die in Azure verfügbaren RHEL-Images. Sofern nicht anders angegeben, sind alle Images mit LVM partitioniert und an reguläre RHEL-Repositorys angefügt (nicht EUS, nicht E4S). Die folgenden Images sind derzeit zur allgemeinen Verwendung verfügbar:
+
+> [!NOTE]
+> Unformatierte Images werden zugunsten von LVM-partitionierten Images nicht mehr erstellt. LVM bietet im Vergleich zum älteren (LVM-fremden) Partitionierungsschema mehrere Vorteile, einschließlich wesentlich flexiblerer Optionen für Änderungen der Partitionsgröße.
 
 Angebot| SKU | Partitionierung | Bereitstellung | Notizen
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | RAW    | Linux-Agent |
 |             | 7.6      | RAW    | Linux-Agent | Ab Mai 2019 standardmäßig mit EUS-Repositorys verknüpft.
 |             | 76-gen2  | RAW    | Linux-Agent | Standardmäßig mit EUS-Repositorys verknüpft.
 |             | 7,7      | LVM    | Linux-Agent | Standardmäßig mit EUS-Repositorys verknüpft.
+|             | 77-gen2  | LVM    | Linux-Agent | Standardmäßig mit EUS-Repositorys verknüpft.
+|             | 7,8      | LVM    | Linux-Agent | An reguläre Repositorys angefügt (EUS nicht für RHEL 7.8 verfügbar)
+|             | 78-gen2  | LVM    | Linux-Agent | An reguläre Repositorys angefügt (EUS nicht für RHEL 7.8 verfügbar)
 |             | 8-LVM    | LVM    | Linux-Agent | RHEL 8.x-Imagefamilie. An reguläre Repositorys angefügt.
 |             | 8-lvm-gen2| LVM    | Linux-Agent | Hyper-V Generation 2 – RHEL 8.x-Imagefamilie. An reguläre Repositorys angefügt.
 |             | 8        | LVM    | Linux-Agent | RHEL 8.0-Images

@@ -3,15 +3,15 @@ title: Zugriff auf virtuelle Azure-Netzwerke
 description: Übersicht darüber, wie Logik-Apps mit Integrationsdienstumgebungen (ISEs) auf virtuelle Azure-Netzwerke (VNETs) zugreifen können
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127249"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734914"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
@@ -111,16 +111,18 @@ Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.micr
 
 ## <a name="ise-endpoint-access"></a>ISE-Endpunktzugriff
 
-Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriffsendpunkte verwendet werden sollen. Ihre Auswahl bestimmt, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können.
-
-Diese Endpunkte haben auch Einfluss auf die Methode, mit der Sie auf Eingaben und Ausgaben im Ausführungsverlauf Ihrer Logik-App zugreifen können.
-
-* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf die Ein- und Ausgaben Ihrer Logik-Apps im Ausführungsverlauf zugreifen können.
-
-* **Extern:** Öffentliche Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *von außerhalb des virtuellen Netzwerks* zulassen, wo Sie auf die Ein- und Ausgaben Ihrer Logik-Apps im Ausführungsverlauf zugreifen können. Wenn Sie Netzwerksicherheitsgruppen (NSGs) verwenden, stellen Sie sicher, dass Sie mit eingehenden Regeln eingerichtet sind, um den Zugriff auf die Eingaben und Ausgaben des Ausführungsverlaufs zuzulassen. Weitere Informationen finden Sie unter [Aktivieren des Zugriffs für ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriffsendpunkte verwendet werden sollen. Ihre Auswahl bestimmt, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können. Diese Endpunkte haben auch Einfluss auf die Methode, mit der Sie auf die Eingaben und Ausgaben aus dem Ausführungsverlauf Ihrer Logik-App zugreifen können.
 
 > [!IMPORTANT]
-> Die Zugriffsendpunktoption ist nur bei der ISE-Erstellung verfügbar und kann später nicht mehr geändert werden.
+> Sie können den Zugriffsendpunkt nur während der Erstellung der ISE auswählen und diese Option später nicht mehr ändern.
+
+* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden.
+
+* **Extern:** Öffentliche Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *von außerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können. Wenn Sie Netzwerksicherheitsgruppen (NSGs) verwenden, stellen Sie sicher, dass Sie mit eingehenden Regeln eingerichtet sind, um den Zugriff auf die Eingaben und Ausgaben des Ausführungsverlaufs zuzulassen. Weitere Informationen finden Sie unter [Aktivieren des Zugriffs für ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+
+Um zu ermitteln, ob Ihre ISE einen internen oder externen Zugriffsendpunkt verwendet, wählen Sie im Menü Ihrer ISE unter **Einstellungen** die Option **Eigenschaften** aus, und suchen Sie die Eigenschaft **Zugriffsendpunkt**:
+
+![ISE-Zugriffsendpunkt suchen](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 

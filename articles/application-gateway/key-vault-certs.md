@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617505"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743699"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-Terminierung mit Key Vault-Zertifikaten
 
@@ -50,7 +50,21 @@ Die Application Gateway-Integration in Key Vault erfolgt über eine Konfiguratio
    Sie importieren dann entweder ein vorhandenes Zertifikat oder erstellen ein neues in Ihrem Schlüsseltresor. Das Zertifikat wird von Anwendungen verwendet, die über das Anwendungsgateway ausgeführt werden. In diesem Schritt kann auch ein Key Vault-Geheimnis verwendet werden, das als base-64-codierte PFX-Datei ohne Kennwort gespeichert ist. Die Verwendung eines Zertifikattyps wird empfohlen, da für Zertifikattypobjekte im Schlüsseltresor Funktionen für die automatische Verlängerung zur Verfügung stehen. Nach dem Erstellen eines Zertifikats oder Geheimnisses definieren Sie Zugriffsrichtlinien im Schlüsseltresor, durch die der Identität der *get*-Zugriff zum Erhalten des Geheimnisses gewährt werden kann.
    
    > [!NOTE]
-   > Wenn Sie das Application Gateway über eine ARM-Vorlage bereitstellen, entweder mithilfe der Azure CLI oder PowerShell, oder über eine im Azure-Portal bereitgestellte Azure-Anwendung, muss das SSL-Zertifikat, das im Schlüsseltresor als base-64-codierte PFX-Datei gespeichert ist, **kennwortlos** sein. Außerdem müssen Sie die unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/templates/key-vault-parameter.md) aufgeführten Schritte durchführen. Es ist besonders wichtig, `enabledForTemplateDeployment` auf `true` festzulegen.
+   > Wenn Sie das Anwendungsgateway über eine ARM-Vorlage, entweder mithilfe der Azure CLI oder mit PowerShell, oder über eine im Azure-Portal bereitgestellte Azure-Anwendung bereitstellen, wird das SSL-Zertifikat im Schlüsseltresor als Base64-codierte PFX-Datei gespeichert. Sie müssen die unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/templates/key-vault-parameter.md) aufgeführten Schritte durchführen. 
+   >
+   > Es ist besonders wichtig, `enabledForTemplateDeployment` auf `true` festzulegen. Das Zertifikat kann ein Kennwort aufweisen oder Kennwortlos sein. Im folgenden Beispiel wird eine mögliche Konfiguration für den `sslCertificates`-Eintrag in den `properties`-Eigenschaften für die Konfiguration der ARM-Vorlage für ein App-Gateway veranschaulicht, wenn ein Zertifikat mit einem Kennwort vorliegt. Die Werte `appGatewaySSLCertificateData` und `appGatewaySSLCertificatePassword` werden wie im Abschnitt [Referenzieren von Geheimnissen mit einer dynamischen ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id) beschrieben im Schlüsseltresor gesucht. Sie können die Funktionsweise der Suche nachvollziehen, indem Sie die Verweise von `parameters('secretName')` zurückverfolgen. Wenn das Zertifikat Kennwortlos ist, lassen Sie den `password`-Eintrag aus.
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **Konfigurieren der Application Gateway-Instanz**
 

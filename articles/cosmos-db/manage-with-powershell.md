@@ -4,24 +4,22 @@ description: Verwenden Sie Azure PowerShell, um Ihre Azure Cosmos-Konten, -Daten
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 04/29/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c8e833a4ba18520d8e354398cfd0d00525594d15
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: d4473bbfe10fa2d0fc87eed7889a3e06af650b5b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365757"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592144"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Verwalten von SQL-API-Ressourcen für Azure Cosmos DB mit PowerShell
 
 In der folgenden Anleitung erfahren Sie, wie Sie PowerShell-Skripts verwenden und die Verwaltung von Azure Cosmos DB-Ressourcen (einschließlich Konten, Datenbanken, Container und Durchsatz) automatisieren.
 
 > [!NOTE]
-> In den Beispielen in diesem Artikel werden die PowerShell-Cmdlets `Get-AzResource` und `Set-AzResource` für Azure-Ressourcenvorgänge und [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb)-Verwaltungs-Cmdlets verwendet. `Az.CosmosDB`-Cmdlets befinden sich noch in der Vorschauphase und können sich vor der allgemeinen Verfügbarkeit ggf. noch ändern. Informationen zu Aktualisierungen der Befehle finden Sie auf der Referenzseite zur [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb)-API.
-
-Alle Eigenschaften, die mit `Get-Resource`/`Set-AzResource`-PowerShell-Cmdlets verwaltet werden können, finden Sie unter [Azure Cosmos DB-Ressourcenanbieterschema](/azure/templates/microsoft.documentdb/allversions).
+> In den Beispielen in diesem Artikel werden die [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb)-Verwaltungs-Cmdlets verwendet. Diese Cmdlets befinden sich noch in der Vorschauphase und können sich vor der allgemeinen Verfügbarkeit ggf. noch ändern. Informationen zu Aktualisierungen der Befehle finden Sie auf der Referenzseite zur [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb)-API.
 
 Zur plattformübergreifenden Verwaltung von Azure Cosmos DB können Sie die Cmdlets `Az` und `Az.CosmosDB` mit [PowerShell (plattformübergreifend)](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) und die [Azure CLI](manage-with-cli.md), die [REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
 
@@ -30,8 +28,6 @@ Zur plattformübergreifenden Verwaltung von Azure Cosmos DB können Sie die Cmdl
 ## <a name="getting-started"></a>Erste Schritte
 
 Führen Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell][powershell-install-configure] aus, um PowerShell zu installieren und sich bei Ihrem Azure-Konto anzumelden.
-
-* Unten wird `Set-AzureResource` verwendet. Der Benutzer wird zur Bestätigung aufgefordert.  Fügen Sie das Flag `-Force` an den Befehl an, falls Sie die Ausführung ohne Erzwingung der Benutzerbestätigung vorziehen.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-Konten
 
@@ -57,14 +53,17 @@ Mit diesem Befehl wird ein Azure Cosmos DB-Datenbankkonto mit [mehreren Region
 $resourceGroupName = "myResourceGroup"
 $locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
-$apiKind = "GlobalDocumentDB"
+$apiKind = "Sql"
 $consistencyLevel = "BoundedStaleness"
 $maxStalenessInterval = 300
 $maxStalenessPrefix = 100000
 
-New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
-    -Location $locations -Name $accountName `
-    -ApiKind $apiKind -EnableAutomaticFailover:$true `
+New-AzCosmosDBAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Location $locations `
+    -Name $accountName `
+    -ApiKind $apiKind `
+    -EnableAutomaticFailover:$true `
     -DefaultConsistencyLevel $consistencyLevel `
     -MaxStalenessIntervalInSeconds $maxStalenessInterval `
     -MaxStalenessPrefix $maxStalenessPrefix
@@ -110,7 +109,7 @@ Mit diesem Befehl können Sie die Eigenschaften Ihres Azure Cosmos DB-Datenbankk
 * Aktivieren der Multimasterarchitektur
 
 > [!NOTE]
-> Sie können nicht gleichzeitig Regionselemente vom Typ `locations` hinzufügen oder entfernen und andere Eigenschaften für ein Azure Cosmos-Konto ändern. Die Anpassung von Regionen muss getrennt von anderen Änderungen des Kontos vorgenommen werden.
+> Sie können nicht gleichzeitig Regionselemente (`locations`) hinzufügen oder entfernen und andere Eigenschaften für ein Azure Cosmos-Konto ändern. Die Anpassung von Regionen muss getrennt von anderen Änderungen des Kontos vorgenommen werden.
 > [!NOTE]
 > Mit diesem Befehl können Sie Regionen hinzufügen und entfernen, aber weder Failoverprioritäten anpassen noch ein manuelles Failover auslösen. Weitere Informationen finden Sie unter [Anpassen der Failoverpriorität für ein Azure Cosmos DB-Konto](#modify-failover-priority) und [Auslösen eines manuellen Failovers](#trigger-manual-failover).
 
@@ -119,37 +118,33 @@ Mit diesem Befehl können Sie die Eigenschaften Ihres Azure Cosmos DB-Datenbankk
 $resourceGroupName = "myResourceGroup"
 $locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
-$apiKind = "GlobalDocumentDB"
+$apiKind = "Sql"
 $consistencyLevel = "Session"
 $enableAutomaticFailover = $true
 
+# Create the Cosmos DB account
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations -Name $accountName `
-    -ApiKind $apiKind -EnableAutomaticFailover:$enableAutomaticFailover `
+    -Location $locations `
+    -Name $accountName `
+    -ApiKind $apiKind `
+    -EnableAutomaticFailover:$enableAutomaticFailover `
     -DefaultConsistencyLevel $consistencyLevel
-
-# Region operations
-$resourceType = "Microsoft.DocumentDb/databaseAccounts"
-$apiVersion = "2020-03-01"
 
 # Add a region to the account
 $locations2 = @("West US 2", "East US 2", "South Central US")
 $locationObjects2 = @()
 $i = 0
-ForEach ($location in $locations2) { $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ } }
-$accountProperties = @{
-    databaseAccountOfferType = "Standard";
-    locations = $locationObjects2;
-    enableAutomaticFailover = $enableAutomaticFailover;
+ForEach ($location in $locations2) {
+    $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ }
 }
 
-Set-AzResource -ResourceType $resourceType `
+Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
-    -ApiVersion $apiVersion -Name $accountName `
-    -PropertyObject $accountProperties
+    -Name $accountName `
+    -LocationObject $locationObjects2
 
-Write-Host "Set-AzResource returns before the region update is complete."
+Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 Write-Host "When region was added, press any key to continue."
 $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | OUT-NULL
@@ -159,19 +154,16 @@ $HOST.UI.RawUI.Flushinputbuffer()
 $locations3 = @("West US 2", "South Central US")
 $locationObjects3 = @()
 $i = 0
-ForEach ($location in $locations3) { $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ } }
-$accountProperties = @{
-    databaseAccountOfferType = "Standard";
-    locations = $locationObjects3;
-    enableAutomaticFailover = $enableAutomaticFailover;
+ForEach ($location in $locations3) {
+    $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ }
 }
 
-Set-AzResource -ResourceType $resourceType `
+Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
-    -ApiVersion $apiVersion -Name $accountName `
-    -PropertyObject $accountProperties
+    -Name $accountName `
+    -LocationObject $locationObjects3
 
-Write-Host "Set-AzResource returns before the region update is complete."
+Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> Aktivieren mehrerer Schreibregionen für ein Azure Cosmos-Konto
@@ -206,7 +198,8 @@ $accountName = "mycosmosaccount"
 
 Remove-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PassThru
+    -Name $accountName `
+    -PassThru:$true
 ```
 
 ### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a> Aktualisieren der Tags eines Azure Cosmos DB-Kontos
@@ -220,7 +213,8 @@ $tags = @{dept = "Finance"; environment = "Production";}
 
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Tag $tags
+    -Name $accountName `
+    -Tag $tags
 ```
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a> Auflisten von Kontoschlüsseln
@@ -235,7 +229,8 @@ $accountName = "mycosmosaccount"
 
 Get-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Type "Keys"
+    -Name $accountName `
+    -Type "Keys"
 ```
 
 ### <a name="list-connection-strings"></a><a id="list-connection-strings"></a>: Verbindungszeichenfolgen auflisten
@@ -248,7 +243,8 @@ $accountName = "mycosmosaccount"
 
 Get-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Type "ConnectionStrings"
+    -Name $accountName `
+    -Type "ConnectionStrings"
 ```
 
 ### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> Erneutes Generieren von Kontoschlüsseln
@@ -263,7 +259,8 @@ $keyKind = "primary" # Other key kinds: secondary, primaryReadOnly, secondaryRea
 
 New-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -KeyKind $keyKind
+    -Name $accountName `
+    -KeyKind $keyKind
 ```
 
 ### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a> Aktivieren des automatischen Failovers
@@ -573,7 +570,7 @@ Set-AzCosmosDBSqlContainer `
 
 ### <a name="create-an-azure-cosmos-db-container-with-conflict-resolution"></a><a id="create-container-lww"></a>Erstellen eines Azure Cosmos DB-Containers mit Konfliktauflösung
 
-Wenn Sie eine gespeicherte Prozedur verwenden möchten, können Sie eine Konfliktauflösungsrichtlinie erstellen. Legen Sie dazu `"mode"="custom"` und den Auflösungspfad als Name der gespeicherten Prozedur (`"conflictResolutionPath"="myResolverStoredProcedure"`) fest. Legen Sie `"mode"="custom"` und `"conflictResolutionPath"=""` fest, um alle Konflikte in „ConflictsFeed“ zu schreiben und diese getrennt zu behandeln.
+Übergeben Sie `-Type "Custom" -Path ""`, um alle Konflikte in „ConflictsFeed“ zu schreiben und diese getrennt zu behandeln.
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy
@@ -597,6 +594,34 @@ Set-AzCosmosDBSqlContainer `
     -PartitionKeyPath $partitionKeyPath `
     -ConflictResolutionPolicy $conflictResolutionPolicy
 ```
+
+Wenn Sie eine Richtlinie zur Konfliktlösung für die Verwendung einer gespeicherten Prozedur erstellen möchten, rufen Sie `New-AzCosmosDBSqlConflictResolutionPolicy` auf, und übergeben Sie die Parameter `-Type` und `-ConflictResolutionProcedure`.
+
+```azurepowershell-interactive
+# Create container with custom conflict resolution policy using a stored procedure
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$conflictResolutionSprocName = "mysproc"
+
+$conflictResolutionSproc = "/dbs/$databaseName/colls/$containerName/sprocs/$conflictResolutionSprocName"
+
+$conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
+    -Type Custom `
+    -ConflictResolutionProcedure $conflictResolutionSproc
+
+Set-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -ConflictResolutionPolicy $conflictResolutionPolicy
+```
+
 
 ### <a name="list-all-azure-cosmos-db-containers-in-a-database"></a><a id="list-containers"></a>Auflisten aller Azure Cosmos DB-Container einer Datenbank
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416073"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791458"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (früher SQL DW) – Häufig gestellte Fragen
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416073"
 
 Q. Was ist Azure Synapse?
 
-A. Azure Synapse ist ein grenzenloser Analysedienst, der Data Warehousing mit Big Data-Analysen kombiniert. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen unter Verwendung von serverlosen On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang. Azure Synapse kombiniert diese beiden Welten in einer vereinheitlichten Oberfläche zur Erfassung, Vorbereitung, Verwaltung und Verarbeitung von Daten für sofortige BI- und Machine Learning-Anforderungen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+A. Azure Synapse ist ein Analysedienst, der Data Warehousing mit Big Data-Analysen vereint. Azure Synapse vereint diese beiden Ansätze in einer vereinheitlichten Oberfläche für die Erfassung, Aufbereitung, Verwaltung und Verarbeitung von Daten für BI- und ML-Anforderungen (maschinelles Lernen). Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
 Q. Was ist mit Azure SQL Data Warehouse geschehen?
 
-A. Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse (SQL DW). Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse-Workloads in der Produktion mit Azure Synapse weiterhin ausführen und gleichzeitig automatisch von den neuen Funktionen (derzeit in der Vorschauversion) profitieren. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+A. Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse (SQL DW). Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse-Workloads in der Produktionsumgebung mit Azure Synapse weiter ausführen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
 Q. Was ist ein Synapse SQL-Pool?
 
@@ -43,8 +43,7 @@ A. Azure Synapse bietet verschiedene Lösungen für den Schutz von Daten, z.B. t
 
 Q. Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards Azure Synapse erfüllt?
 
-A. Auf der Seite [Microsoft-Compliance](https://www.microsoft.com/trustcenter/compliance/complianceofferings) finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO).
-Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure Synapse-Dienste anzuzeigen.
+A. Auf der Seite [Microsoft-Compliance](https://www.microsoft.com/trustcenter/compliance/complianceofferings) finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure Synapse-Dienste anzuzeigen.
 
 Q. Kann ich eine Verbindung mit Power BI herstellen?
 

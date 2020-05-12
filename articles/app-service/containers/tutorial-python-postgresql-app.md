@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085755"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609781"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Python-Web-App (Django) mit PostgreSQL in Azure App Service
 
@@ -133,7 +133,7 @@ Wenn der Befehl abgeschlossen ist, suchen Sie die Ausgabezeilen, die mit `Ran Da
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> Um den Speicherort für Ihre Postgres-Serverinstanz anzugeben, schließen Sie das Argument `--location <location-name>` ein, wobei `<location_name>` eine der [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) ist. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az-account-list-locations)-Befehl abrufen.
+> `--location <location-name>`: Kann auf eine beliebige [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) festgelegt werden. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az-account-list-locations)-Befehl abrufen. Legen Sie bei Produktions-Apps für Ihre Datenbank und Ihre App den gleichen Standort fest.
 
 ## <a name="deploy-the-app-service-app"></a>Bereitstellen der App Service-App
 
@@ -149,7 +149,7 @@ Stellen Sie sicher, dass Sie sich wieder im Repositorystamm (`djangoapp`) befind
 Erstellen Sie mit dem Befehl [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App, wie im folgenden Beispiel gezeigt wird. Ersetzen Sie *\<app-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<app-name>.azurewebsites.net*). Gültige Zeichen für *\<app-name>* sind `A`-`Z`, `0`-`9` und `-`.
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ Nachdem die Bereitstellung abgeschlossen ist, wird eine JSON-Ausgabe wie die fol
 Kopieren Sie den Wert von *\<app-resource-group>* . Sie benötigen ihn, um die App später zu konfigurieren. 
 
 > [!TIP]
-> Sie können den gleichen Befehl später zum Bereitstellen von Änderungen und sofortigen Aktivieren von Diagnoseprotokollen verwenden:
+> Die entsprechenden Einstellungen werden in einem ausgeblendeten Verzeichnis vom Typ *.azure* in Ihrem Repository gespeichert. Sie können den einfachen Befehl später zum erneuten Bereitstellen von Änderungen und zum sofortigen Aktivieren von Diagnoseprotokollen verwenden:
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 Der Beispielcode wird jetzt bereitgestellt, aber die App stellt noch keine Verbindung mit der Postgres-Datenbankinstanz in Azure her. Diesen Schritt führen Sie als Nächstes durch.
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 Um die Änderungen erneut bereitzustellen, führen Sie den folgenden Befehl im Repositorystamm aus:
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service erkennt, dass die App vorhanden ist, und stellt lediglich den Code bereit.

@@ -1,21 +1,21 @@
 ---
-title: AutoVervollständigen und Vorschläge
+title: C#-Tutorial zu AutoVervollständigen und Vorschlägen
 titleSuffix: Azure Cognitive Search
-description: In diesem Tutorial wird veranschaulicht, wie Sie mit AutoVervollständigen und Vorschlägen die Suchbegriffeingaben von Benutzern per Dropdownliste erfassen. Es basiert auf einem vorhandenen „hotels“-Projekt.
+description: Hier erfahren Sie, wie Sie AutoVervollständigen und Vorschläge hinzufügen, um die Suchbegriffeingaben von Benutzern per Dropdownliste zu erfassen. Dieses Tutorial basiert auf einem vorhandenen hotels-Projekt.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641069"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780554"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Cognitive Search
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen mithilfe des .NET SDK
 
 Es wird beschrieben, wie Sie die AutoVervollständigen-Funktion (Textvervollständigung und vorgeschlagene Dokumente) implementieren, die genutzt wird, wenn ein Benutzer mit der Eingabe in einem Suchfeld beginnt. In diesem Tutorial veranschaulichen wir die Ergebnisse von Textvervollständigungsabfragen und Vorschlägen zunächst separat und anschließend zusammen. Ein Benutzer muss ggf. nur zwei oder drei Zeichen eingeben, um alle verfügbaren Ergebnisse zu ermitteln.
 

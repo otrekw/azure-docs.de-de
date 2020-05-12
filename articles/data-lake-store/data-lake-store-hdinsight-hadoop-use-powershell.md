@@ -1,23 +1,17 @@
 ---
-title: 'PowerShell: Azure HDInsight-Cluster mit Azure Data Lake Storage Gen1 als Add-On-Speicher | Microsoft Docs'
+title: 'PowerShell: HDInsight mit Data Lake Storage Gen1 – Add-On-Speicher – Azure'
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell einen HDInsight-Cluster mit Azure Data Lake Storage Gen1 als zusätzlichem Speicher erstellen.
-services: data-lake-store,hdinsight
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970138"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692044"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell
 

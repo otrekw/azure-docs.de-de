@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135554"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628604"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Ermitteln der zu erwerbenden Reservierung
 
 Mit Ausnahme von Azure Databricks sind alle Reservierungen stundenbasiert. Reservierungen sollten auf der Grundlage der konsistenten Basisnutzung erworben werden. Die zu erwerbende Reservierung kann auf unterschiedliche Weise ermittelt werden, und dieser Artikel unterstützt Sie bei der Entscheidungsfindung.
 
-Wenn Sie mehr Kapazität erwerben als Sie in der Vergangenheit genutzt haben, führt dies zu einer nicht optimal ausgelasteten Reservierung. Eine Unterauslastung sollte nach Möglichkeit vermieden werden. Nicht genutzte reservierte Kapazität verfällt (sprich: sie wird nicht auf die nächste Stunde übertragen).  Nutzung, die über die reservierte Menge hinausgeht, wird zu den höheren Preisen für die nutzungsbasierte Bezahlung abgerechnet.
+Wenn Sie mehr Kapazität erwerben als Sie in der Vergangenheit genutzt haben, führt dies zu einer nicht optimal ausgelasteten Reservierung. Eine Unterauslastung sollte nach Möglichkeit vermieden werden. Nicht genutzte reservierte Kapazität verfällt (sprich: sie wird nicht auf die nächste Stunde übertragen). Nutzung, die über die reservierte Menge hinausgeht, wird zu den höheren Preisen für die nutzungsbasierte Bezahlung abgerechnet.
 
 ## <a name="analyze-usage-data"></a>Analysieren der Nutzungsdaten
 
@@ -40,11 +40,11 @@ Ignorieren Sie Ressourcen mit einer täglichen Nutzung von weniger als 24 Stund
 
 Wenn Sie die Analyse auf der Ebene der Instanzgrößenfamilie durchführen möchten, können Sie die Werte für die Instanzgrößenflexibilität aus [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) verwenden. Kombinieren Sie die Werte mit Ihren Daten, um die Analyse durchzuführen. Weitere Informationen zur Instanzgrößenflexibilität finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>Analysieren der Nutzung für den Erwerb einer reservierten SQL-Datenbank-Instanz
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Analysieren der Nutzung für einen Kauf von reservierten Azure Synapse Analytics-Instanzen
 
-Reservierte Kapazität gilt für die V-Kern-Computepreise für SQL-Datenbanken. Sie gilt nicht für DTU-basierte Preise, SQL-Lizenzkosten oder andere computefremde Kosten.
+Reservierte Kapazität gilt für den DWU-Preis von Azure Synapse Analytics. Sie gilt nicht für Azure Synapse Analytics-Lizenzkosten oder andere computefremde Kosten.
 
-Filtern Sie Ihre Nutzungsdaten wie folgt, um die relevante SQL-Nutzung einzugrenzen:
+Filtern Sie Ihre Nutzungsdaten wie folgt, um die relevante Nutzung einzugrenzen:
 
 
 - Filtern Sie **MeterCategory** (Kategorie der Verbrauchseinheit) nach **SQL Database** (SQL-Datenbank).
@@ -58,24 +58,24 @@ Die Daten geben Aufschluss über die konsistente Verwendung für:
 - Datenbanktyp-Kombination: beispielsweise verwaltete Instanz oder Pool für elastische Datenbanken pro Einzeldatenbank.
 - Dienstebene: beispielsweise universell oder geschäftskritisch.
 - Generation: beispielsweise 5. Generation.
-- Ressourcenspeicherort
+- Resource Location
 
-### <a name="analysis-for-sql-data-warehouse"></a>Analyse für SQL Data Warehouse
+### <a name="analysis-for-azure-synapse-analytics"></a>Analyse für Azure Synapse Analytics
 
-Reservierte Kapazität gilt für die SQL Data Warehouse-DWU-Nutzung und wird in Einheiten von jeweils 100 DWU erworben. Filtern Sie Ihre Nutzungsdaten wie folgt, um die relevante SQL-Nutzung einzugrenzen:
+Reservierte Kapazität gilt für die Azure Synapse Analytics-DWU-Nutzung und wird in Einheiten von jeweils 100 DWU erworben. Filtern Sie Ihre Nutzungsdaten wie folgt, um die relevante Nutzung einzugrenzen:
 
 - Filtern Sie **MeterName** (Name der Verbrauchseinheit) nach **100 DWUs**.
 - Filtern Sie **Unterkategorie für Verbrauchseinheit** nach **Compute Optimized Gen2** (Für Compute optimiert, Gen2).
 
-Ermitteln Sie anhand des Felds **Ressourcenspeicherort** die Nutzung für SQL DW in einer Region.
+Ermitteln Sie anhand des Felds **Ressourcenspeicherort** die Nutzung für Azure Synapse Analytics in einer Region.
 
-Die SQL Data Warehouse-Nutzung kann im Laufe des Tages zentral hoch- oder herunterskaliert werden. Wenden Sie sich an das Team, das die SQL Data Warehouse-Instanz verwaltet, um sich über die Basisnutzung zu informieren.
+Die Azure Synapse Analytics-Nutzung kann im Laufe des Tages hoch- oder herunterskaliert werden. Wenden Sie sich an das Team, das die Azure Synapse Analytics-Instanz verwaltet, um sich über die Basisnutzung zu informieren.
 
-Navigieren Sie im Azure-Portal zu „Reservierungen“, und erwerben Sie reservierte SQL Data Warehouse-Kapazität (Vielfaches von 100 DWU).
+Navigieren Sie im Azure-Portal zu „Reservierungen“, und erwerben Sie reservierte Azure Synapse Analytics-Kapazität in Vielfachen von 100 DWU.
 
 ## <a name="reservation-purchase-recommendations"></a>Empfehlungen für den Reservierungserwerb
 
-Zur Berechnung der Empfehlungen für den Reservierungserwerb werden Ihre stündlichen Nutzungsdaten der letzten sieben, 30 und 60 Tage analysiert. Azure berechnet die Kosten, die entstanden wären, wenn Sie eine Reservierung erworben hätten, und vergleicht sie mit ihren tatsächlichen Kosten für die nutzungsbasierte Bezahlung, die im entsprechenden Zeitraum angefallen sind. Die Berechnung wird für jede Menge durchgeführt, die Sie während des Zeitrahmens verwendet haben. Empfohlen wird die Menge, mit der Sie die höchsten Einsparungen erzielen. 
+Zur Berechnung der Empfehlungen für den Reservierungserwerb werden Ihre stündlichen Nutzungsdaten der letzten sieben, 30 und 60 Tage analysiert. Azure berechnet die Kosten, die entstanden wären, wenn Sie eine Reservierung erworben hätten, und vergleicht sie mit ihren tatsächlichen Kosten für die nutzungsbasierte Bezahlung, die im entsprechenden Zeitraum angefallen sind. Die Berechnung wird für jede Menge durchgeführt, die Sie während des Zeitrahmens verwendet haben. Empfohlen wird die Menge, mit der Sie die höchsten Einsparungen erzielen.
 
 Angenommen, Sie nutzen die meiste Zeit 500 virtuelle Computer, es gibt jedoch gelegentliche Spitzenzeiten mit einer Nutzung von 700 virtuellen Computern. In diesem Beispiel berechnet Azure Ihre Einsparungen sowohl für 500 als auch für 700 virtuelle Computer. Da die Nutzung von 700 virtuellen Computern nur sporadisch auftritt, kommt die Empfehlungsberechnung zu dem Ergebnis, dass die höchsten Einsparungen bei einem Reservierungserwerb für 500 virtuelle Computer erzielt werden, und die Empfehlung wird für diese Menge abgegeben.
 

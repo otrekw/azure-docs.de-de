@@ -3,24 +3,24 @@ title: Private Link
 description: Übersicht über das Feature „Privater Endpunkt“
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78945367"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628996"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Private Link für Azure SQL-Datenbank und Data Warehouse
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 
-Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../virtual-network/virtual-networks-overview.md) und Subnetz. 
+Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../virtual-network/virtual-networks-overview.md) und Subnetz. 
 
 > [!IMPORTANT]
-> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Dieser Artikel gilt *nicht* für Bereitstellungen vom Typ **Verwaltete Instanz** in Azure SQL-Datenbank.
+> Dieser Artikel gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und Azure Synapse Analytics, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf SQL-Datenbank als auch auf Azure Synapse Analytics verwiesen wird. Dieser Artikel gilt *nicht* für Bereitstellungen vom Typ **Verwaltete Instanz** in Azure SQL-Datenbank.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 
@@ -28,7 +28,7 @@ Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein autorisierter Benut
 
 Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit SQL-Datenbank hergestellt wird. Die SQL-Datenbank-Instanz befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
 
-1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](sql-database-networkaccess-overview.md).
+1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](sql-database-networkaccess-overview.md).
 1. Lassen Sie nur Datenverkehr für die SQL-Datenbank-Instanz mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver](sql-database-vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](sql-database-firewall-configure.md).
 1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/manage-network-security-group.md) und Diensttags:
     - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 Das Ergebnis zeigt, dass eine einzelne IP-Adresse aktiv ist. Diese entspricht der IP-Adresse für den privaten Endpunkt.
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Überprüfen der Konnektivität mithilfe von SQL Server Management Studio (SSMS)
 > [!NOTE]
 > Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients. Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche schlagen fehl. Dieses Verhalten ist entwurfsbedingt, da ein privater Endpunkt Datenverkehr an das SQL-Gateway in der Region weiterleitet und der FQDN angegeben werden muss, damit Anmeldungen erfolgreich sind.
@@ -174,11 +173,9 @@ Verwenden oder implementieren Sie eine der folgenden Optionen, um in einer lokal
 - [ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Herstellen einer Verbindung über eine Azure SQL Data Warehouse-Instanz mit Azure Storage unter Verwendung von Polybase
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Herstellen einer Verbindung zwischen Azure Synapse Analytics und Azure Storage unter Verwendung von PolyBase
 
-PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL Data Warehouse zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen über private Endpunkte, Dienstendpunkte oder IP-basierte Firewalls einschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die [hier](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) angegebenen Schritte aus, um PolyBase-Import- und -Exportszenarien zu ermöglichen, in denen Azure SQL Data Warehouse eine Verbindung mit Azure Storage (mit VNET-Schutz) herstellt. 
-
-
+PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure Synapse Analytics zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen über private Endpunkte, Dienstendpunkte oder IP-basierte Firewalls einschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die [hier](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) angegebenen Schritte aus, um PolyBase-Importszenarien und -Exportszenarien zu ermöglichen, in denen Azure Synapse Analytics eine Verbindung mit Azure Storage (mit VNET-Schutz) herstellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

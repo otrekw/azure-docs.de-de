@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229474"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791866"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -68,13 +68,13 @@ Führen Sie nach dem Deklarieren der Knoteneigenschaften und Platzierungseinschr
 1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht `RemoveNode` aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
 2. Führen Sie `Get-ServiceFabricNode` aus, um sicherzustellen, dass der Status des Knotens tatsächlich in „Deaktiviert“ geändert wurde. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Dies kann für jeden Knoten einige Stunden dauern. Fahren Sie erst fort, nachdem der Status des Knotens in „Deaktiviert“ geändert wurde.
 3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
-4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
+4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert ab, der unter dem für die Zuverlässigkeitsstufe erforderlichen liegt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
 5. Nachdem alle virtuellen Computer ausgeschaltet sind (dargestellt als „Inaktiv“), zeigt „fabric:/System/InfrastructureService/[Knotenname]“ einen Fehlerstatus an. Anschließend können Sie die Clusterressource aktualisieren, um den Knotentyp zu entfernen. Sie können entweder die Bereitstellung per ARM-Vorlage verwenden oder die Clusterressource über [Azure Resource Manager](https://resources.azure.com) bearbeiten. Dadurch wird ein Clusterupgrade gestartet, bei dem der Dienst „fabric:/System/InfrastructureService/[Knotentyp]“ mit dem Fehlerzustand entfernt wird.
  6. Anschließend können Sie optional die VM-Skalierungsgruppe löschen – die Knoten werden aber in der Ansicht im Service Fabric Explorer weiterhin als „Inaktiv“ angezeigt. Der letzte Schritt ist die Bereinigung mit dem Befehl `Remove-ServiceFabricNodeState`.
 
 ## <a name="horizontal-scaling"></a>Horizontale Skalierung
 
-Sie können die horizontale Skalierung entweder [manuell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) oder [programmgesteuert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling) durchführen.
+Sie können die horizontale Skalierung entweder [manuell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out) oder [programmgesteuert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling) durchführen.
 
 > [!NOTE]
 > Wenn Sie einen Knotentyp mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ skalieren, wird der Skalierungsvorgang langsam durchgeführt.
@@ -103,7 +103,7 @@ Für ein manuelles Aufskalieren aktualisieren Sie die Kapazität in der SKU-Eige
 
 Beim horizontalen Herunterskalieren müssen mehr Aspekte berücksichtigt werden als beim horizontalen Hochskalieren. Beispiel:
 
-* Service Fabric-Systemdienste werden auf dem primären Knotentyp in Ihrem Cluster ausgeführt. Sie dürfen also niemals die Anzahl der Instanzen für diesen Knotentyp herunterfahren oder so herunterskalieren, dass weniger Instanzen vorhanden sind, als durch die Zuverlässigkeitsstufe vorgegeben ist. 
+* Service Fabric-Systemdienste werden auf dem primären Knotentyp in Ihrem Cluster ausgeführt. Sie dürfen somit niemals die Anzahl der Instanzen für diesen Knotentyp herunterfahren oder so abskalieren, dass weniger Instanzen vorhanden sind, als durch die Zuverlässigkeitsstufe vorgegeben ist. 
 * Für einen zustandsbehafteten Dienst muss eine bestimmte Anzahl von Knoten stets aktiv sein, um die Verfügbarkeit sicherzustellen und den Zustand des Diensts beizubehalten. Sie benötigen mindestens eine Anzahl von Knoten, die der Anzahl der Zielreplikatgruppen der Partition oder des Diensts entspricht.
 
 Beim manuellen Abskalieren gehen Sie folgendermaßen vor:
@@ -111,7 +111,7 @@ Beim manuellen Abskalieren gehen Sie folgendermaßen vor:
 1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht `RemoveNode` aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
 2. Führen Sie `Get-ServiceFabricNode` aus, um sicherzustellen, dass der Status des Knotens tatsächlich in „Deaktiviert“ geändert wurde. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Dies kann für jeden Knoten einige Stunden dauern. Fahren Sie erst fort, nachdem der Status des Knotens in „Deaktiviert“ geändert wurde.
 3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
-4. Wiederholen Sie ggf. die Schritte 1 bis 3, bis die gewünschte Kapazität bereitgestellt wird. Skalieren Sie auf keinen Fall die Anzahl der Instanzen des primären Knotentyps auf einen Wert herunter, der unter dem von der Zuverlässigkeitsstufe vorgegebenen liegt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
+4. Wiederholen Sie ggf. die Schritte 1 bis 3, bis die gewünschte Kapazität bereitgestellt wird. Skalieren Sie auf keinen Fall die Anzahl der Instanzen des primären Knotentyps auf einen Wert ab, der unter dem von der Zuverlässigkeitsstufe vorgegebenen liegt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
 
 Um manuell abzuskalieren, aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Wenn Sie einen Cluster zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer mit einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer). Ihre Möglichkeiten:
+> Wenn Sie einen Cluster abskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer mit einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer). Ihre Möglichkeiten:
 > * Rufen Sie den Befehl [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) mit dem entsprechenden Knotennamen auf.
 > * Stellen Sie die [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper/) in Ihrem Cluster bereit. Diese Anwendung stellt sicher, dass die herunterskalierten Knoten im Service Fabric Explorer entfernt werden.
 

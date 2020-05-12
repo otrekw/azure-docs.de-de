@@ -1,29 +1,29 @@
 ---
-title: Erstellen einer technischen Azure-VM-Ressource
-description: Dieser Artikel beschreibt die Schritte und Anforderungen für die Konfiguration eines Containerangebots im Azure Marketplace.
+title: Technische Konzepte für Azure-Containerangebote – kommerzieller Microsoft-Marketplace
+description: Technische Ressourcen und Anleitungen, die Ihnen bei der Konfiguration eines Containerangebots im Azure Marketplace helfen.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730640"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791883"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>Erstellen einer technischen Azure-VM-Ressource
+# <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
 > [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal ins Partner Center. Befolgen Sie zur Verwaltung Ihrer Angebote bis zur erfolgten Migration Ihrer Angebote die Anweisungen in [Vorbereiten Ihrer technischen Containerressourcen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) für das Cloud-Partnerportal.
+> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal zu Partner Center. Befolgen Sie zur Verwaltung Ihrer Angebote bis zur erfolgten Migration Ihrer Angebote die Anweisungen in [Vorbereiten Ihrer technischen Containerressourcen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) für das Cloud-Partnerportal.
 
-Dieser Artikel beschreibt die Schritte und Anforderungen für die Konfiguration eines Containerangebots im Azure Marketplace.
+Dieser Artikel enthält technische Ressourcen und Empfehlungen, die Ihnen helfen, ein Containerangebot im Azure Marketplace zu erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Informationen zu Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
+Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
 
 ## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
 
@@ -61,6 +61,6 @@ Weitere Informationen finden Sie in folgenden Tutorials:
 - [Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines neuen Containerangebots mit dem Cloud-Partnerportal](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Erstellen Sie Ihr Containerangebot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).

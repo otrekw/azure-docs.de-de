@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459779"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838857"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -28,7 +28,7 @@ Falls Sie [Azure Security Center](../../security-center/index.yml) verwenden, we
 > - Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann. Sie müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
 > - Derzeit unterstützen VMs der Generation 2 Azure Disk Encryption nicht. Einzelheiten finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 
-Die Grundlagen von Azure Disk Encryption für Linux können Sie in den Schnellstarts [Erstellen und Verschlüsseln einer Linux-VM mit der Azure-Befehlszeilenschnittstelle](disk-encryption-cli-quickstart.md) und [Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit Azure PowerShell](disk-encryption-powershell-quickstart.md) in wenigen Minuten erlernen.
+Die Grundlagen von Azure Disk Encryption für Linux können Sie in den Schnellstarts [Erstellen und Verschlüsseln einer Linux-VM mit der Azure CLI](disk-encryption-cli-quickstart.md) und [Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit Azure PowerShell](disk-encryption-powershell-quickstart.md) in wenigen Minuten erlernen.
 
 ## <a name="supported-vms-and-operating-systems"></a>Unterstützte VMs und Betriebssysteme
 
@@ -56,29 +56,36 @@ Azure Disk Encryption wird von einer Teilmenge der [Azure zugelassenen Linux-Dis
 
 Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk Encryption nicht. Unter den zugelassenen unterstützen nur die folgenden Distributionen und Versionen Azure Disk Encryption:
 
-| Linux-Verteilung | Version | Für die Verschlüsselung unterstützter Volumetyp|
-| --- | --- |--- |
-| Ubuntu | 18,04| Betriebssystem- und andere Datenträger |
-| Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
-| Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | Betriebssystem- und andere Datenträger |
-| RHEL | 7,7 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 7.6 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 7,5 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 7.4 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 7.3 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 7.2 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RHEL | 6,8 | Datenträger für Daten (siehe der Hinweis unten) |
-| RHEL | 6.7 | Datenträger für Daten (siehe der Hinweis unten) |
-| CentOS | 7,7 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.6 | Betriebssystem- und andere Datenträger |
-| CentOS | 7,5 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.4 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.3 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.2n | Betriebssystem- und andere Datenträger |
-| CentOS | 6,8 | Datenträger |
-| openSUSE | 42.3 | Datenträger |
-| SLES | 12-SP4 | Datenträger |
-| SLES | 12-SP3 | Datenträger |
+| Herausgeber | Angebot | SKU | URN | Für die Verschlüsselung unterstützter Volumetyp |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
+| RedHat | RHEL 7.7 | 7,7 | RedHat:RHEL:7.7:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.7 | 7-RAW | RedHat:RHEL:7-RAW:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.5 | 7,5 | RedHat:RHEL:7.5:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.3 | 7.3 | RedHat:RHEL:7.3:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 6.8 | 6,8 | RedHat:RHEL:6.8:latest | Datenträger für Daten (siehe der Hinweis unten) |
+| RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | Datenträger für Daten (siehe der Hinweis unten) |
+| OpenLogic | CentOS 7.7 | 7,7 | OpenLogic:CentOS:7.7:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.5 | 7,5 | OpenLogic:CentOS:7.5:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.3 | 7.3 | OpenLogic:CentOS:7.3:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.2n | 7.2n | OpenLogic:CentOS:7.2n:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7.1 | 7.1 | OpenLogic:CentOS:7.1:latest | Nur Datenträger für Daten |
+| OpenLogic | CentOS 7.0 | 7.0 | OpenLogic:CentOS:7.0:latest | Nur Datenträger für Daten |
+| OpenLogic | CentOS 6.8 | 6,8 | OpenLogic:CentOS:6.8:latest | Nur Datenträger für Daten |
+| SUSE | openSUSE 42.3 | 42.3 | SUSE:openSUSE-Leap:42.3:latest | Nur Datenträger für Daten |
+| SUSE | SLES 12-SP4 | 12-SP4 | SUSE:SLES:12-SP4:latest | Nur Datenträger für Daten |
+| SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE:SLES-HPC:12-SP3:latest | Nur Datenträger für Daten |
 
 > [!NOTE]
 > Die neue Azure Disk Encryption-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt.  
@@ -119,7 +126,7 @@ In der folgenden Tabelle werden einige der häufig in der Azure Disk Encryption-
 | Begriff | Definition |
 | --- | --- |
 | Azure-Schlüsseltresor | Key Vault ist ein Dienst zum Verwalten kryptografischer Schlüssel, der auf Hardwaresicherheitsmodulen mit FIPS-Überprüfung (Federal Information Processing Standards) basiert. Diese Standards tragen dazu bei, Ihre kryptografischen Schlüssel und vertraulichen Geheimnisse zu schützen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure-Befehlszeilenschnittstelle | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
+| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-Computern verwendet wird. |
 | Schlüsselverschlüsselungsschlüssel (Key encryption key, KEK) | Der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen des Geheimnisses verwendet wird. Sie können einen mit Hardwaresicherheitsmodulen geschützten Schlüssel oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-Cmdlets | Weitere Informationen finden Sie unter [Azure PowerShell-Cmdlets](/powershell/azure/overview). |

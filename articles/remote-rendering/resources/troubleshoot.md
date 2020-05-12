@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678828"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792614"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -77,6 +77,14 @@ Die Videoqualität kann durch die Netzwerkqualität oder einen fehlenden H.265-V
 * Weitere Informationen finden Sie in den Schritten zum [Identifizieren von Netzwerkproblemen](#unstable-holograms).
 * Informationen zum Installieren des aktuellen Grafiktreibers finden Sie in den [Systemanforderungen](../overview/system-requirements.md#development-pc).
 
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Mit MRC aufgezeichnetes Video spiegelt nicht die Qualität des Liveerlebnisses wider
+
+Ein Video kann mit Hololens mithilfe von [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) aufgezeichnet werden. Das resultierende Video weist jedoch aus zwei Gründen eine schlechtere Qualität als das Liveerlebnis auf:
+* Die Videobildfrequenz ist auf 30 Hz begrenzt, im Gegensatz zu 60 Hz beim Liveerlebnis.
+* Die Videobilder durchlaufen nicht den Verarbeitungsschritt [Late Stage Reprojection](../overview/features/late-stage-reprojection.md), daher wirkt das Video weniger flüssig.
+
+Beides sind inhärente Einschränkungen der Aufzeichnungstechnik.
+
 ## <a name="black-screen-after-successful-model-loading"></a>Schwarzer Bildschirm nach erfolgreichem Laden des Modells
 
 Wenn Sie mit der Renderingruntime verbunden sind und erfolgreich ein Modell geladen haben, aber danach nur ein schwarzer Bildschirm angezeigt wird, kann dies verschiedene Gründe haben.
@@ -90,9 +98,42 @@ Wenn diese beiden Schritte nicht hilfreich waren, müssen Sie herausfinden, ob d
 
 ### <a name="common-client-side-issues"></a>Häufige clientseitige Fehler
 
+**Das Modell überschreitet die Grenzwerte des ausgewählten virtuellen Computers, insbesondere die maximale Anzahl von Polygonen:**
+
+Weitere Informationen finden Sie bei den spezifischen [VM-Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
+
 **Das Modell befindet sich nicht im Ansichtsfrustum:**
 
 In vielen Fällen wird das Modell ordnungsgemäß dargestellt, befindet sich jedoch außerhalb des Kamerafrustums. Ein häufiger Grund dafür ist, dass das Modell mit einem Pivot deutlich außerhalb des Mittelpunkts exportiert wurde, sodass es von der Entfernungsclippingebene der Kamera abgeschnitten wird. Es hilft, den Begrenzungsrahmen des Modells programmgesteuert abzufragen und mit Unity als Linienrahmen zu visualisieren oder die entsprechenden Werte im Debugprotokoll auszugeben.
+
+Der Konvertierungsprozess generiert außerdem neben dem konvertierten Modell eine [JSON-Ausgabedatei](../how-tos/conversion/get-information.md). Beim Debuggen von Problemen mit der Modellpositionierung ist es sinnvoll, einen Blick auf den `boundingBox`-Eintrag im [outputStatistics-Abschnitt](../how-tos/conversion/get-information.md#the-outputstatistics-section) zu werfen:
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+Das Begrenzungsfeld wird als `min`- und `max`-Position in Metern im 3D-Raum beschrieben. Eine Koordinate von 1000,0 bedeutet daher eine Entfernung von einem Kilometer vom Ursprung.
+
+Bei diesem Begrenzungsfeld können zwei Probleme auftreten, die zu unsichtbarer Geometrie führen:
+* **Das Feld kann stark dezentriert sein**, sodass das Objekt aufgrund von Verdeckung durch die entfernte Ebene in seiner Gesamtheit beschnitten wird. Die `boundingBox`-Werte für diesen Fall würden etwa so aussehen: `min = [-2000, -5,-5], max = [-1990, 5,5]`, mit einem großen Offset auf der X-Achse als Beispiel für diesen Fall. Um diese Art Problem zu lösen, aktivieren Sie die Option `recenterToOrigin` in der [Konfiguration der Modellkonvertierung](../how-tos/conversion/configure-model-conversion.md).
+* **Das Feld kann zentriert sein, ist aber um Größenordnungen zu groß**. Das bedeutet, dass die Geometrie des Modells in allen Richtungen abgeschnitten wird, obwohl die Kamera in der Mitte es Modells startet. Typische `boundingBox`-Werte für diesen Fall sehen etwa so aus: `min = [-1000,-1000,-1000], max = [1000,1000,1000]`. Der Grund für diese Art Problem ist normalerweise ein nicht angepasster Einheitenbereich. Geben Sie zum Ausgleich einen [Skalierungswert für die Konvertierung](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) an, oder nehmen Sie ein Markup des Quellmodells mit den richtigen Einheiten vor. Skalierung kann auch auf den Stammknoten angewendet werden, wenn das Modell zur Laufzeit geladen wird.
 
 **Die Unity-Renderpipeline enthält nicht die Renderhooks:**
 
@@ -102,8 +143,20 @@ Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framez
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Unity-Code, der die Remote Rendering-API verwendet, wird nicht kompiliert.
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Verwenden von „Debuggen“ beim Kompilieren für den Unity-Editor
+
 Stellen Sie den *Buildtyp* der Unity-Lösung auf **Debug** um. Beim Testen von ARR im Unity-Editor ist die Definition `UNITY_EDITOR` nur in Debugbuilds verfügbar. Beachten Sie, dass dies nicht mit dem Buildtyp in Zusammenhang steht, der für [bereitgestellte Anwendungen](../quickstarts/deploy-to-hololens.md) verwendet wird. Hierbei sollten Sie Releasebuilds verwenden.
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Kompilierungsfehler beim Kompilieren von Unity-Beispielen für HoloLens 2
+
+Bei dem Versuch, Unity-Beispiele ( Schnellstart, ShowCaseApp, ...) für HoloLens 2 zu kompilieren, sind fälschlicherweise Fehler aufgetreten. Visual Studio beanstandet, dass einige Dateien nicht kopiert werden können, obwohl sie vorhanden sind. Wenn Sie auf dieses Problem treffen:
+* Entfernen Sie alle temporären Unity-Dateien aus dem Projekt, und versuchen Sie es erneut.
+* Stellen Sie sicher, dass sich die Projekte in einem Verzeichnis auf dem Datenträger mit einem relativ kurzen Pfad befinden, da es beim Kopieren gelegentlich zu Problemen mit langen Dateinamen zu kommen scheint.
+* Wenn das nicht hilft, könnte es sein, dass zwischen MS Sense und dem Kopierschritt ein Konflikt besteht. Führen Sie diesen Registrierungsbefehl über die Befehlszeile aus (erfordert Administratorrechte), um eine Ausnahme einzurichten:
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>Instabile Hologramme
 
 Wenn bei Kopfbewegungen auch gerenderte Objekte bewegt werden, liegen möglicherweise Probleme mit der *Late Stage Reprojection* (LSR) vor. Hinweise zur Vorgehensweise in einer solchen Situation finden Sie im Abschnitt zur [Late Stage Reprojection](../overview/features/late-stage-reprojection.md).

@@ -1,29 +1,25 @@
 ---
-title: 'Authentifizierung von Endbenutzern: Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Authentifizierung von Endbenutzern: Data Lake Storage Gen1 mit Azure AD'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66234058"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688237"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Endbenutzerauthentifizierung mit Azure Data Lake Storage Gen1 mit Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Authentifizierung von Endbenutzern](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [Dienst-zu-Dienst-Authentifizierung](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-> 
-> 
+>
+>
 
 Azure Data Lake Storage Gen1 verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Storage Gen1 oder Azure Data Lake Analytics funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren. Sie haben zwei Möglichkeiten:
 
@@ -38,11 +34,11 @@ Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Aut
 * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 * Ihre Abonnement-ID. Sie können sie über das Azure-Portal abrufen. Sie ist beispielsweise auf dem Blatt „Data Lake Storage Gen1“ des Kontos verfügbar.
-  
+
     ![Abrufen der Abonnement-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Der Name Ihrer Azure AD-Domäne. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.onmicrosoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
-  
+* Der Name Ihrer Azure AD-Domäne. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.onmicrosoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar.
+
     ![Abrufen der AAD-Domäne](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 * Ihre Azure-Mandanten-ID. Informationen zum Abrufen der Mandanten-ID finden Sie unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
@@ -53,12 +49,12 @@ Dieser Authentifizierungsmechanismus wird empfohlen, wenn sich ein Endbenutzer �
 Das Ergebnis der Endbenutzeranmeldung ist, dass Ihre Anwendung über ein Zugriffs- und ein Aktualisierungstoken verfügt. Das Zugriffstoken wird an jede an Data Lake Storage Gen1 oder Data Lake Analytics gestellte Anforderung angefügt und ist standardmäßig eine Stunde gültig. Mithilfe des Aktualisierungstokens kann ein neues Zugriffstoken abgerufen werden, das standardmäßig bis zu zwei Wochen gültig ist. Es gibt zwei Ansätze für die Anmeldung von Endbenutzern.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Verwenden des OAuth 2.0-Popupfensters
-Ihre Anwendung kann das Einblenden eines OAuth 2.0-Autorisierungsfensters auslösen, in das Endbenutzer ihre Anmeldeinformationen eingeben können. Dieses Popupfenster funktioniert auch mit dem zweistufigen Authentifizierungsprozess von Azure AD. 
+Ihre Anwendung kann das Einblenden eines OAuth 2.0-Autorisierungsfensters auslösen, in das Endbenutzer ihre Anmeldeinformationen eingeben können. Dieses Popupfenster funktioniert auch mit dem zweistufigen Authentifizierungsprozess von Azure AD.
 
 > [!NOTE]
 > Von der Azure AD Authentication Library (ADAL) für Python oder Java wird diese Methode noch nicht unterstützt.
-> 
-> 
+>
+>
 
 ### <a name="directly-passing-in-user-credentials"></a>Direktes Übergeben von Benutzeranmeldeinformationen
 Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. Diese Methode funktioniert nur mit Benutzerkonten mit Organisations-ID. Sie ist nicht kompatibel mit persönlichen bzw. Live ID-Benutzerkonten, die beispielsweise auf @outlook.com oder @live.com enden. Darüber hinaus ist diese Methode nicht kompatibel mit Benutzerkonten, die die zweistufige Authentifizierung von Azure AD benötigen.
@@ -106,7 +102,7 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 3. Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Hiermit wählen Sie eine API aus**, klicken Sie auf **Azure Data Lake** und anschließend auf **Auswählen**.
 
     ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
- 
+
 4.  Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Berechtigungen auswählen**, aktivieren Sie das Kontrollkästchen, um **Data Lake Store vollen Zugriff zu gewähren**, und klicken Sie auf **Auswählen**.
 
     ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
@@ -114,7 +110,7 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
     Klicken Sie auf **Fertig**.
 
 5. Wiederholen Sie die letzten beiden Schritte, um ebenfalls Berechtigungen für die **Windows Azure-Service-Verwaltungs-API** zu erteilen.
-   
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine native Azure AD-Anwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe von .NET SDK, Java SDK, REST-API usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Storage Gen1 authentifizieren und anschließend andere Vorgänge im Store durchführen.
 
@@ -122,4 +118,3 @@ In diesem Artikel haben Sie eine native Azure AD-Anwendung erstellt und die erfo
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des Python SDK](data-lake-store-end-user-authenticate-python.md)
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe der REST-API](data-lake-store-end-user-authenticate-rest-api.md)
-

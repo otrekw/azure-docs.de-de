@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services-Fehlercodes für Liveereignisse | Microsoft-Dokumentation
 description: In diesem Artikel werden Fehlercodes für Liveereignisse aufgelistet.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/4/2020
+ms.author: inhenkel
+ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654578"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791050"
 ---
 # <a name="media-services-live-event-error-codes"></a>Azure Media Services-Fehlercodes für Liveereignisse
 
@@ -40,6 +40,7 @@ Wenn Sie die [Event Grid](https://docs.microsoft.com/azure/event-grid/)-Ereignis
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Der Zeitstempel für das Video- oder Audio-FLVTag vom RTMP-Encoder ist ungültig. |
 | MPE_INGEST_FRAMERATE_EXCEEDED | Die eingehenden, vom Encoder erfassten Streams mit Frameraten haben den maximal zulässigen Wert von 30 BpS für die Codierung von Liveereignissen/Kanälen überschritten.|
 | MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | Die eingehenden, vom Encoder erfassten Streams haben die folgenden zulässigen Auflösungen überschritten: 1920 x 1088 für die Codierung von Liveereignissen/Kanälen und 4096 x 2160 für Pass-Through-Liveereignisse/-Kanäle.|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | Das Liveereignis hat eine große Menge von Audiodaten gleichzeitig oder eine große Menge von Videodaten ohne Keyframes erhalten. Wir haben den Encoder getrennt, um ihm die Möglichkeit zu geben, einen Wiederholungsversuch mit korrekten Daten auszuführen. |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 

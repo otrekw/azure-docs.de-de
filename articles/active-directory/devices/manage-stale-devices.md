@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672303"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788874"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -176,7 +176,7 @@ Weitere Informationen zu den unterschiedlichen Typen finden Sie in der [Übersic
 
 Alle Authentifizierungen, bei denen ein Gerät für die Authentifizierung gegenüber Azure AD genutzt wird, werden abgelehnt. Typische Beispiele:
 
-- **In Hybrid-Azure AD eingebundenes Gerät**: Benutzer verwenden das Gerät ggf., um sich an ihrer lokalen Domäne anzumelden. Sie können aber nicht auf Azure AD-Ressourcen, z.B. Office 365, zugreifen.
+- **Hybrid in Azure AD eingebundenes Gerät**: Benutzer können das Gerät ggf. zur Anmeldung in ihrer lokalen Domäne verwenden. Sie können aber nicht auf Azure AD-Ressourcen, z.B. Office 365, zugreifen.
 - **In Azure AD eingebundenes Gerät**: Benutzer können das Gerät nicht verwenden, um sich anzumelden. 
 - **Mobile Geräte**: Der Benutzer kann nicht auf Azure AD-Ressourcen, z.B. Office 365, zugreifen. 
 

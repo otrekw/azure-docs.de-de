@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481414"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597721"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -47,10 +47,12 @@ Für die Verwendung des Anwendungsproxys benötigen Sie einen Windows-Server, au
 Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Windows-Server einsetzen. Für dieses Tutorial reicht ein Windows-Server aus.
 
 > [!IMPORTANT]
-> Bei der Installation des Connectors unter Windows Server 2019 gilt eine HTTP2-Einschränkung. Eine Problemumgehung zur Verwendung des Connectors unter dieser Version besteht darin, den folgenden Registrierungsschlüssel hinzuzufügen und den Server neu zu starten. Beachten Sie, dass es sich hierbei um einen Schlüssel handelt, der für die gesamte Registrierung des Computers gilt. 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> Wenn Sie den Connector unter Windows Server 2019 installieren, müssen Sie die HTTP2-Protokollunterstützung in der WinHttp-Komponente deaktivieren. Diese Einstellung ist in früheren Versionen unterstützter Betriebssysteme standardmäßig deaktiviert. Wenn Sie den folgenden Registrierungsschlüssel hinzufügen und den Server neu starten, wird die Einstellung unter Windows Server 2019 deaktiviert. Beachten Sie, dass es sich hierbei um einen computerweiten Registrierungsschlüssel handelt.
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>Empfehlungen für den Connectorserver
 

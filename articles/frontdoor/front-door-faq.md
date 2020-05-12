@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313752"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594133"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Häufig gestellte Fragen zu Azure Front Door
 
@@ -91,7 +91,7 @@ Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifische
 
 - Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus dem Back-End-IP-Adressraum von Azure Front Door und den Infrastrukturdiensten von Azure akzeptieren. Lesen Sie die unten stehenden IP-Details, um Ihr Backend mit ACLs zu versehen:
  
-    - Ziehen Sie den Abschnitt *AzureFrontDoor.Backend* unter [IP-Bereiche und Diensttags in Azure](https://www.microsoft.com/download/details.aspx?id=56519) für den IPv4-Back-End-IP-Adressbereich von Front Door zurate. Alternativ können Sie auch das Diensttag *AzureFrontDoor.Backend* in Ihren [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder mit [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) verwenden.
+    - Ziehen Sie den Abschnitt *AzureFrontDoor.Backend* unter [IP-Bereiche und Diensttags in Azure](https://www.microsoft.com/download/details.aspx?id=56519) für den IPv4-Back-End-IP-Adressbereich von Front Door zurate. Alternativ können Sie auch das Diensttag *AzureFrontDoor.Backend* in Ihren [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) verwenden.
     - Der **IPv6**-Back-End-IP-Adressraum von Front Door ist zwar im Diensttag abgedeckt, in der JSON-Datei in den Azure IP-Adressbereichen aber nicht aufgeführt. Wenn Sie einen expliziten IPv6-Adressbereich suchen, ist dieser zurzeit beschränkt auf `2a01:111:2050::/44`
     - [Grundlegenden Infrastrukturdienste](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) von Azure über virtualisierte IP-Hostadressen: `168.63.129.16` und `169.254.169.254`
 

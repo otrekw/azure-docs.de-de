@@ -3,12 +3,12 @@ title: Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
 description: Mithilfe von Azure Advisor können Sie die Hochverfügbarkeit Ihrer Azure-Bereitstellungen sicherstellen.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443107"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788024"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
 
@@ -28,6 +28,10 @@ Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierun
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Verwenden von Managed Disks zur Erhöhung der Datenzuverlässigkeit
 
 Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern befinden, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht widerstandsfähig gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Advisor identifiziert diese Verfügbarkeitsgruppen und empfehlen die Migration zu Azure Managed Disks. Dadurch wird sichergestellt, dass die Datenträger der verschiedenen virtuellen Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden. 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Bekanntes Problem mit der Version des Images des virtuellen Netzwerkgeräts von Check Point
+
+Azure Advisor kann ermitteln, ob für Ihren virtuellen Computer ggf. eine Version des Check Point-Images ausgeführt wird, bei der das bekannte Problem besteht, dass bei einem Wartungsvorgang für die Plattform Netzwerkkonnektivität verloren geht. Die Empfehlung von Azure Advisor hilft Ihnen, ein Upgrade auf eine neuere Version des Images durchzuführen, um dieses Problem zu beheben. Dadurch wird Geschäftskontinuität durch bessere Netzwerkkonnektivität sichergestellt.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Sicherstellen von Fehlertoleranz für Anwendungsgateways
 
@@ -83,7 +87,7 @@ Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des .NET SDK
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB Java SDK auf die aktuelle Version über Maven
 
-Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Java SDK und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB Java SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
+Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Java SDK und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB Java SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-async-java).
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB-Spark-Connectors auf die aktuelle Version über Maven
 

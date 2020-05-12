@@ -4,15 +4,15 @@ description: Verfolgen Sie Bindungen mit Azure-Kunden nach, indem Sie eine Partn
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204799"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778820"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -159,4 +159,5 @@ Ja, Sie können Ihre Partner-ID mit Azure Stack verknüpfen.
 
 **Wie kann ich meine Partner-ID verknüpfen, wenn mein Unternehmen über [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) auf Kundenressourcen zugreift?**
 
-Wenn Sie Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, indem Sie [ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wird Ihre MPN-ID automatisch zugeordnet. Wenn Sie [Kunden durch Bereitstellen von Azure Resource Manager-Vorlagen integrieren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), müssen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen integrierten Abonnements hat. Dieser Schritt muss in Ihrem Dienstanbietermandanten ausgeführt werden. Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, das Ihrer MPN-ID zugeordnet ist, und diesem Konto Lesezugriff auf jeden integrierten Kunden zu gewähren.
+Wenn Sie Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, indem Sie [ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wird Ihre MPN-ID automatisch zugeordnet. Wenn Sie [Kunden durch Bereitstellen von Azure Resource Manager-Vorlagen integrieren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), müssen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen integrierten Abonnements hat. Dieser Schritt muss in Ihrem Dienstanbietermandanten ausgeführt werden. Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, das Ihrer MPN-ID zugeordnet ist, und diesem Konto Lesezugriff auf jeden integrierten Kunden zu gewähren. In diesem Beispiel wird die RBAC-Rolle „Leser“ verwendet. Dabei handelt es sich um eine der Rollen, die nicht für vom Partner erworbenes Guthaben (Partner Earned Credit, PEC) berechtigt sind. Weitere Informationen zu Rollen finden Sie unter [Rollen und Berechtigungen für vom Partner erworbenes Guthaben](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2).
+

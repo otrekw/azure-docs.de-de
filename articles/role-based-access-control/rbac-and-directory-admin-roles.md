@@ -1,6 +1,6 @@
 ---
-title: Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen
-description: 'Enthält eine Beschreibung der unterschiedlichen Rollen in Azure: Administrator für klassisches Abonnement, Rollenbasierte Zugriffssteuerung (RBAC) in Azure und Azure AD-Administrator (Azure Active Directory).'
+title: Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
+description: 'Dieser Artikel enthält eine Beschreibung der verschiedenen Rollen in Azure: Administratorrollen für klassisches Abonnement, Azure-Rollen und Azure AD-Rollen (Azure Active Directory).'
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,32 +15,32 @@ ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: f2229d57b249bab734b1ef91c10d5ec42ab95a17
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 70baddf86207c490d3b85e0f584525592f8a7ad7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641431"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735804"
 ---
-# <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
+# <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
 Wenn Azure neu für Sie ist, kann es schwierig sein, alle unterschiedlichen Rollen in Azure zu verstehen. In diesem Artikel werden die folgenden Rollen und ihre Verwendung beschrieben:
 - Administrator für klassisches Abonnement
-- Rollenbasierte Zugriffssteuerung in Azure
-- Azure AD-Administrator (Azure Active Directory)
+- Azure-Rollen
+- Azure Active Directory-Rollen (Azure AD)
 
 ## <a name="how-the-roles-are-related"></a>Rollenbeziehungen
 
-Es ist hilfreich, sich mit dem Entwicklungsverlauf auszukennen, um die Rollen in Azure besser zu verstehen. Bei der ersten Veröffentlichung von Azure wurde der Zugriff auf Ressourcen mit nur drei Administratorrollen verwaltet: Kontoadministrator, Dienstadministrator und Co-Admin. Später wurde die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen hinzugefügt. Die rollenbasierte Zugriffssteuerung in Azure ist ein neueres Autorisierungssystem, mit dem eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht wird. RBAC umfasst viele integrierte Rollen, kann in unterschiedlichen Bereichen zugewiesen werden und ermöglicht es Ihnen, Ihre eigenen benutzerdefinierten Rollen zu erstellen. Für die Verwaltung der Ressourcen in Azure AD, z.B. Benutzer, Gruppen und Domänen, gibt es mehrere Azure AD-Administratorrollen.
+Es ist hilfreich, sich mit dem Entwicklungsverlauf auszukennen, um die Rollen in Azure besser zu verstehen. Bei der ersten Veröffentlichung von Azure wurde der Zugriff auf Ressourcen mit nur drei Administratorrollen verwaltet: Kontoadministrator, Dienstadministrator und Co-Admin. Später wurde die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) hinzugefügt. Die rollenbasierte Zugriffssteuerung in Azure ist ein neueres Autorisierungssystem, mit dem eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht wird. Azure RBAC umfasst viele integrierte Rollen, kann in unterschiedlichen Bereichen zugewiesen werden und ermöglicht es Ihnen, Ihre eigenen benutzerdefinierten Rollen zu erstellen. Für die Verwaltung der Ressourcen in Azure AD, z. B. Benutzer, Gruppen und Domänen, gibt es mehrere Azure AD-Rollen.
 
-Das folgende Diagramm enthält eine allgemeine Darstellung zur Beziehung der Rollen „Administrator für klassisches Abonnement“, „Azure RBAC“ und „Azure AD-Administrator“.
+Das folgende Diagramm enthält eine allgemeine Darstellung zur Beziehung der Rollen „Administrator für klassisches Abonnement“, „Azure“ und „Azure AD“.
 
 ![Unterschiedliche Rollen in Azure](./media/rbac-and-directory-admin-roles/rbac-admin-roles.png)
 
 
 ## <a name="classic-subscription-administrator-roles"></a>Administrator für klassisches Abonnement
 
-Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rollen für „Administrator für klassisches Abonnement“ in Azure. Administratoren für klassische Abonnements verfügen über Vollzugriff auf das Azure-Abonnement. Sie können Ressourcen über das Azure-Portal, Azure Resource Manager-APIs und APIs des klassischen Azure-Bereitstellungsmodells verwalten. Das Konto, das zum Registrieren für Azure verwendet wird, wird automatisch sowohl als Kontoadministrator als auch als Dienstadministrator eingerichtet. Anschließend können zusätzliche Co-Administratoren hinzugefügt werden. Der Dienstadministrator und die Co-Administratoren haben gleichwertigen Zugriff wie Benutzer, denen für den Abonnementbereich die Rolle „Besitzer“ (eine Azure RBAC-Rolle) zugewiesen wurde. In der folgenden Tabelle sind die Unterschiede zwischen diesen drei Rollen für Administratoren für klassische Abonnements beschrieben.
+Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rollen für „Administrator für klassisches Abonnement“ in Azure. Administratoren für klassische Abonnements verfügen über Vollzugriff auf das Azure-Abonnement. Sie können Ressourcen über das Azure-Portal, Azure Resource Manager-APIs und APIs des klassischen Azure-Bereitstellungsmodells verwalten. Das Konto, das zum Registrieren für Azure verwendet wird, wird automatisch sowohl als Kontoadministrator als auch als Dienstadministrator eingerichtet. Anschließend können zusätzliche Co-Administratoren hinzugefügt werden. Der Dienstadministrator und die Co-Administratoren haben gleichwertigen Zugriff wie Benutzer, denen für den Abonnementbereich die Rolle „Besitzer“ (eine Azure-Rolle) zugewiesen wurde. In der folgenden Tabelle sind die Unterschiede zwischen diesen drei Rollen für Administratoren für klassische Abonnements beschrieben.
 
 | Administrator für klassisches Abonnement | Begrenzung | Berechtigungen | Notizen |
 | --- | --- | --- | --- |
@@ -68,11 +68,11 @@ Jedes Abonnement ist einem Azure AD-Verzeichnis zugeordnet. Sie finden das Verze
 
 Konten und Abonnements werden im [Azure-Kontocenter](https://account.azure.com/Subscriptions) verwaltet.
 
-## <a name="azure-rbac-roles"></a>Azure RBAC-Rollen
+## <a name="azure-roles"></a>Azure-Rollen
 
-Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen, z.B. Compute und Speicher, ermöglicht. Azure RBAC umfasst mehr als 70 integrierte Rollen. Es gibt vier grundlegende RBAC-Rollen. Die ersten drei Rollen gelten für alle Ressourcentypen:
+Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen, z.B. Compute und Speicher, ermöglicht. Azure RBAC umfasst mehr als 70 integrierte Rollen. Es gibt vier grundlegende Azure-Rollen. Die ersten drei Rollen gelten für alle Ressourcentypen:
 
-| Azure RBAC-Rolle | Berechtigungen | Notizen |
+| Azure-Rolle | Berechtigungen | Notizen |
 | --- | --- | --- |
 | [Besitzer](built-in-roles.md#owner) | <ul><li>Vollzugriff auf alle Ressourcen</li><li>Delegieren des Zugriffs an andere Personen</li></ul> | Dem Dienstadministrator und den Co-Administratoren wird die Rolle „Besitzer“ für den Abonnementbereich zugewiesen<br>Gilt für alle Ressourcentypen. |
 | [Mitwirkender](built-in-roles.md#contributor) | <ul><li>Erstellen und Verwalten aller Arten von Azure-Ressourcen</li><li>Erstellen eines neuen Mandanten in Azure Active Directory</li><li>Kann keinen Zugriff für andere Personen gewähren</li></ul> | Gilt für alle Ressourcentypen. |
@@ -81,9 +81,9 @@ Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierung
 
 Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
 
-Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen RBAC. Benutzer, Gruppen und Anwendungen, denen RBAC-Rollen zugewiesen sind, können die [APIs des klassischen Azure-Bereitstellungsmodells](../azure-resource-manager/management/deployment-models.md) nicht verwenden.
+Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen Azure RBAC. Benutzer, Gruppen und Anwendungen, denen Azure-Rollen zugewiesen sind, können die [APIs des klassischen Azure-Bereitstellungsmodells](../azure-resource-manager/management/deployment-models.md) nicht verwenden.
 
-Im Azure-Portal werden Rollenzuweisungen, für die RBAC genutzt wird, auf dem Blatt **Zugriffssteuerung (IAM)** angezeigt. Dieses Blatt ist im gesamten Portal zu finden, z. B. unter Verwaltungsgruppen, Abonnements, Ressourcengruppen und verschiedenen Ressourcen.
+Im Azure-Portal werden Rollenzuweisungen, für die Azure RBAC genutzt wird, auf dem Blatt **Zugriffssteuerung (IAM)** angezeigt. Dieses Blatt ist im gesamten Portal zu finden, z. B. unter Verwaltungsgruppen, Abonnements, Ressourcengruppen und verschiedenen Ressourcen.
 
 ![Blatt „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
@@ -91,44 +91,44 @@ Wenn Sie auf die Registerkarte **Rollen** klicken, wird die Liste mit den integr
 
 ![Integrierte Rollen im Azure-Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md).
+Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](role-assignments-portal.md).
 
-## <a name="azure-ad-administrator-roles"></a>Azure AD-Administratorrollen
+## <a name="azure-ad-roles"></a>Azure AD-Rollen
 
-Azure AD-Administratorrollen werden verwendet, um Azure AD-Ressourcen in einem Verzeichnis zu verwalten, z.B. Erstellen oder Bearbeiten von Benutzern, Zuweisen von Administratorrollen für andere Personen, Zurücksetzen von Benutzerkennwörtern, Verwalten von Benutzerlizenzen und Verwalten von Domänen. In der folgenden Tabelle sind einige der wichtigeren Azure AD-Administratorrollen beschrieben.
+Azure AD-Rollen werden verwendet, um Azure AD-Ressourcen in einem Verzeichnis zu verwalten, z. B. Erstellen oder Bearbeiten von Benutzern, Zuweisen von Administratorrollen für andere Personen, Zurücksetzen von Benutzerkennwörtern, Verwalten von Benutzerlizenzen und Verwalten von Domänen. In der folgenden Tabelle sind einige der wichtigeren Azure AD-Rollen beschrieben:
 
-| Rolle „Azure AD-Administrator“ | Berechtigungen | Notizen |
+| Azure AD-Rolle | Berechtigungen | Notizen |
 | --- | --- | --- |
 | [Globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
 | [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
 | [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 
-Im Azure-Portal können Sie die Liste mit den Azure AD-Administratorrollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Im Azure-Portal können Sie die Liste mit den Azure AD-Rollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Rollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-![Azure AD-Administratorrollen im Azure-Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
+![Azure AD-Rollen im Azure-Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
-## <a name="differences-between-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Unterschiede zwischen Azure RBAC-Rollen und Azure AD-Administratorrollen
+## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Unterschiede zwischen Azure-Rollen und Azure AD-Rollen
 
-Grob gesehen werden mit Azure RBAC-Rollen Berechtigungen zum Verwalten von Azure-Ressourcen gesteuert, während mit Azure AD-Administratorrollen Berechtigungen zum Verwalten von Azure Active Directory-Ressourcen gesteuert werden. Die folgende Tabelle enthält einen Vergleich einiger Unterschiede.
+Grob gesehen werden mit Azure-Rollen Berechtigungen zum Verwalten von Azure-Ressourcen gesteuert, während mit Azure AD-Rollen Berechtigungen zum Verwalten von Azure Active Directory-Ressourcen gesteuert werden. Die folgende Tabelle enthält einen Vergleich einiger Unterschiede.
 
-| Azure RBAC-Rollen | Azure AD-Administratorrollen |
+| Azure-Rollen | Azure AD-Rollen |
 | --- | --- |
 | Verwalten des Zugriffs auf Azure-Ressourcen | Verwalten des Zugriffs auf Azure Active Directory-Ressourcen |
 | Unterstützt benutzerdefinierte Rollen | Unterstützt benutzerdefinierte Rollen |
 | Bereich kann auf mehreren Ebenen angegeben werden (Verwaltungsgruppe, Abonnement, Ressourcengruppe, Ressource) | Bereich befindet sich auf Mandantenebene |
 | Zugriff auf Rolleninformationen ist per Azure-Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-Vorlagen, REST-API möglich | Zugriff auf Rolleninformationen ist per Azure-Verwaltungsportal, Microsoft 365 Admin Center, Microsoft Graph, Azure AD PowerShell möglich |
 
-### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Gibt es Überschneidungen zwischen Azure RBAC-Rollen und Azure AD-Administratorrollen?
+### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Überlappen sich Azure-Rollen und Azure AD-Rollen?
 
-Standardmäßig wird mit Azure RBAC-Rollen und Azure AD-Administratorrollen nicht der gesamte Azure- bzw. Azure AD-Bereich abgedeckt. Aber wenn ein globaler Administrator den Zugriff erweitert, indem er im Azure-Portal den Switch **Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten** auswählt, wird dem globalen Administrator die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) (eine RBAC-Rolle) für alle Abonnements eines bestimmten Mandanten gewährt. Die Rolle „Benutzerzugriffsadministrator“ ermöglicht es dem Benutzer, anderen Benutzern Zugriff auf Azure-Ressourcen zu gewähren. Dieser Switch kann hilfreich sein, um wieder Zugriff auf das Abonnement zu erlangen. Weitere Informationen finden Sie unter [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](elevate-access-global-admin.md).
+Standardmäßig wird mit Azure-Rollen und Azure AD-Rollen nicht der gesamte Azure- bzw. Azure AD-Bereich abgedeckt. Aber wenn ein globaler Administrator den Zugriff erweitert, indem er im Azure-Portal den Switch **Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten** auswählt, wird dem globalen Administrator die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) (eine Azure-Rolle) für alle Abonnements eines bestimmten Mandanten gewährt. Die Rolle „Benutzerzugriffsadministrator“ ermöglicht es dem Benutzer, anderen Benutzern Zugriff auf Azure-Ressourcen zu gewähren. Dieser Switch kann hilfreich sein, um wieder Zugriff auf das Abonnement zu erlangen. Weitere Informationen finden Sie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](elevate-access-global-admin.md).
 
-Mit mehreren Azure AD-Administratorrollen sind Azure AD und Microsoft Office 365 abgedeckt, z.B. bei den Rollen „Globaler Administrator“ und „Benutzeradministrator“. Wenn Sie beispielsweise Mitglied der Rolle „Globaler Administrator“ sind, verfügen Sie über globale Administratorfunktionen in Azure AD und Office 365, z.B. Vornehmen von Änderungen an Microsoft Exchange und Microsoft SharePoint. Standardmäßig hat der globale Administrator aber keinen Zugriff auf Azure-Ressourcen.
+Mit mehreren Azure AD-Rollen sind Azure AD und Microsoft Office 365 abgedeckt, z. B. bei den Rollen „Globaler Administrator“ und „Benutzeradministrator“. Wenn Sie beispielsweise Mitglied der Rolle „Globaler Administrator“ sind, verfügen Sie über globale Administratorfunktionen in Azure AD und Office 365, z.B. Vornehmen von Änderungen an Microsoft Exchange und Microsoft SharePoint. Standardmäßig hat der globale Administrator aber keinen Zugriff auf Azure-Ressourcen.
 
-![Rollenvergleich: Azure RBAC und Azure AD-Administrator](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
+![Rollenvergleich: Azure RBAC und Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](overview.md)
+- [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](overview.md)
 - [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Verwaltung von Azure-Abonnements im klassischen Bereitstellungsmodell](classic-administrators.md)
 - [Cloud Adoption Framework: Ressourcenzugriffsverwaltung in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

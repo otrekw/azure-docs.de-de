@@ -1,23 +1,26 @@
 ---
-title: Benutzerdefinierte Metriken in Azure Monitor
+title: Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 description: Erfahren Sie mehr zu benutzerdefinierten Metriken in Azure Monitor und wie diese modelliert werden.
 author: ancav
+ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.author: ancav
+ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270705"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837310"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
-Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese Metriken werden als [Standard- oder Plattformmetriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bezeichnet. Allerdings sind sie beschränkt. Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen.
-Diese **benutzerdefinierten** Metriken können über Ihre Anwendungstelemetrie, einen auf Ihren Azure-Ressourcen ausgeführten Agent, oder sogar über ein außerhalb des Unternehmens befindliches Überwachungssystem gesammelt und direkt an Azure Monitor übermittelt werden. Nach der Veröffentlichung in Azure Monitor können Sie nach benutzerdefinierten Metriken für Ihre Azure-Ressourcen und -Anwendungen suchen, diese abfragen und Warnungen ausgeben, und zwar parallel zu den von Azure ausgegebenen Standardmetriken.
+Wenn Sie Ressourcen und Anwendungen in Azure bereitstellen, sollten Sie mit dem Erfassen von Telemetriedaten beginnen, um Einblicke in deren Leistung und Integrität zu erhalten. Azure stellt Ihnen einige sofort einsetzbare Metriken zur Verfügung. Diese Metriken werden als [Standard- oder Plattformmetriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bezeichnet. Allerdings sind sie beschränkt. 
+
+Möglicherweise möchten Sie einige benutzerdefinierte Leistungsindikatoren oder unternehmensspezifische Metriken sammeln, um eingehendere Erkenntnisse bereitzustellen. Diese **benutzerdefinierten** Metriken können über Ihre Anwendungstelemetrie, einen auf Ihren Azure-Ressourcen ausgeführten Agent, oder sogar über ein außerhalb des Unternehmens befindliches Überwachungssystem gesammelt und direkt an Azure Monitor übermittelt werden. Nach der Veröffentlichung in Azure Monitor können Sie nach benutzerdefinierten Metriken für Ihre Azure-Ressourcen und -Anwendungen suchen, diese abfragen und Warnungen ausgeben, und zwar parallel zu den von Azure ausgegebenen Standardmetriken.
+
+Benutzerdefinierte Azure Monitor-Metriken sind aktuell in der öffentlichen Vorschauphase. 
 
 ## <a name="methods-to-send-custom-metrics"></a>Methoden zum Senden benutzerdefinierter Metriken
 
@@ -27,19 +30,15 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
 - Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model"></a>Preismodell
+## <a name="pricing-model-and-rentention"></a>Preismodell und Aufbewahrung
 
-Es fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Im Azure Monitor-Metrikspeicher erfasste benutzerdefinierte Metriken werden pro MB abgerechnet, wobei jedem geschriebenen Datenpunkt einer benutzerdefinierten Metrik eine Größe von 8 Bytes zugewiesen wird. Alle erfassten Metriken werden 90 Tage lang aufbewahrt.
+Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). Bestimmte Preisdetails für alle Metriken, einschließlich benutzerdefinierter Metriken, und Metrikabfragen finden Sie auf dieser Seite. Zusammenfassend fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Doch für benutzerdefinierte Metriken werden Kosten anfallen, sobald sie die Phase der allgemeinen Verfügbarkeit erreichen. Metrik-API-Abfragen verursachen Kosten.
 
-Metrikabfragen werden auf der Anzahl der API-Standardaufrufe basierend in Rechnung gestellt. Ein API-Standardaufruf ist ein Aufruf, der 1.440 Datenpunkte analysiert (1.440 ist auch die Gesamtanzahl von Datenpunkten, die pro Metrik pro Tag gespeichert werden können). Wenn ein API-Aufruf mehr als 1.440 Datenpunkte analysiert, zählt er als mehrere API-Standardaufrufe. Wenn ein API-Aufruf weniger als 1.440 Datenpunkte analysiert, zählt er weniger als ein API-Aufruf. Die Anzahl von API-Standardaufrufen wird jeden Tag als Gesamtzahl der pro Tag analysierten Datenpunkte dividiert durch 1.440 berechnet.
-
-Bestimmte Preisdetails für benutzerdefinierte Metriken und Metrikabfragen finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
+Benutzerdefinierte Metriken werden [genauso lange wie Plattformmetriken](data-platform-metrics.md#retention-of-metrics) aufbewahrt. 
 
 > [!NOTE]  
-> Über das Application Insights SDK an Azure Monitor gesendete Metriken werden als erfasste Protokolldaten abgerechnet und verursachen nur dann zusätzliche Metrikgebühren, wenn das Application Insights-Feature [Hiermit aktivieren Sie Dimensionswarnungen für benutzerdefinierte Metriken](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) ausgewählt wurde. Erfahren Sie mehr über das [Application Insights-Preismodell](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) und [Preise in Ihrer Region](https://azure.microsoft.com/pricing/details/monitor/).
+> Metriken, die über das Application Insights SDK an Azure Monitor gesendet werden, werden als erfasste Protokolldaten in Rechnung gestellt. Sie verursachen nur dann zusätzliche Metrikgebühren, wenn das Application Insights-Feature [Dimensionswarnungen für benutzerdefinierte Metriken aktivieren](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) ausgewählt wurde. Bei Aktivieren dieses Kontrollkästchens werden Daten über die API für benutzerdefinierte Metriken an die Azure Monitor-Metrikdatenbank gesendet, um komplexere Warnungen zu ermöglichen.  Erfahren Sie mehr über das [Application Insights-Preismodell](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) und [Preise in Ihrer Region](https://azure.microsoft.com/pricing/details/monitor/).
 
-> [!NOTE]  
-> Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). 
 
 ## <a name="how-to-send-custom-metrics"></a>Vorgehensweise beim Senden benutzerdefinierter Metriken
 
@@ -212,6 +211,11 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 |Asien, Osten | https:\//eastasia.monitoring.azure.com
 |Korea, Mitte   | https:\//koreacentral.monitoring.azure.com
 
+## <a name="latency-and-storage-retention"></a>Latenz und Aufbewahrungsdauer im Speicher
+
+Das Hinzufügen einer ganz neuen Metrik oder einer neuen Dimension, die einer Metrik hinzugefügt wird, kann bis zu 2 bis 3 Minuten dauern. Sobald diese im System enthalten ist, sollten die Daten in 99 % der Fälle nach weniger als 30 Sekunden angezeigt werden. 
+
+Wenn Sie eine Metrik löschen oder eine Dimension entfernen, kann es eine Woche bis zu einem Monat dauern, bis die Löschung aus dem System erfolgt.
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metriken:

@@ -1,22 +1,18 @@
 ---
-title: 'Endbenutzerauthentifizierung: Python mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Authentifizierung von Endbenutzern: Python bei Data Lake Storage Gen1 – Azure'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory mit Python umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231506"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691795"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79231506"
 > * [Verwenden des .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Verwenden von Python](data-lake-store-end-user-authenticate-python.md)
 > * [Verwenden der REST-API](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Python SDK die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 durchführen. Endbenutzerauthentifizierung kann weiter in zwei Kategorien unterteilt werden:
 
@@ -98,7 +94,7 @@ Verwenden Sie den folgenden Codeausschnitt zur Authentifizierung bei Azure AD f�
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ Führen Sie hiermit die Authentifizierung bei Azure AD für Dateisystemvorgänge
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Endbenutzerauthentifizierung ohne mehrstufige Authentifizierung
 
 Dies ist veraltet. Weitere Informationen finden Sie unter [Authentifizieren mit Tokenanmeldeinformationen](/azure/python/python-sdk-azure-authenticate).
-   
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung von Endbenutzern verwenden, um sich mithilfe von Python bei Azure Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie Python mit Azure Data Lake Storage Gen1 verwenden.
 
 * [Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit Python](data-lake-store-get-started-python.md)
 * [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit Python](data-lake-store-data-operations-python.md)
-

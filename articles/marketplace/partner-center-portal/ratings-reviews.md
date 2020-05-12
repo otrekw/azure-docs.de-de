@@ -1,44 +1,41 @@
 ---
-title: Dashboard „Bewertungen und Rezensionen“ in Analysen für den kommerziellen Marketplace in Partner Center
-description: Erfahren Sie, wie Sie auf eine konsolidierte Ansicht des Kundenfeedbacks zu Ihren Angeboten im Azure Marketplace und bei AppSource zugreifen können.
+title: Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
+description: Erfahren Sie, wie Sie auf eine konsolidierte Ansicht des Kundenfeedbacks zu Ihren Angeboten in Microsoft AppSource und im Azure Marketplace zugreifen können.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262416"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792920"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Bewertungen und Rezensionen“ in Analysen für den kommerziellen Marketplace
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
 
-Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezensionen“ in Partner Center. Im Dashboard wird eine konsolidierte Ansicht des Kundenfeedbacks zu Angeboten im Azure Marketplace und bei AppSource angezeigt.
-
-Um auf das **Dashboard „Bewertungen und Rezensionen“** in den Partner Center-Analysetools zuzugreifen, öffnen Sie unter „Kommerzieller Marketplace“ das **[Dashboard „Analyse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** .
-
->[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
-
-## <a name="ratings--reviews"></a>Bewertungen und Rezensionen
-
-Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben.
+Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezensionen“ in Partner Center. Im Dashboard wird eine konsolidierte Ansicht des Kundenfeedbacks zu Angeboten bei Microsoft AppSource und im Azure Marketplace angezeigt. Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben.
 
 - Kunden können eine neue Bewertung übermitteln oder eine vorhandene Bewertung oder Rezension, die sie bereits übermittelt haben, überprüfen, aktualisieren oder löschen. Kunden können nur Änderungen an den Bewertungen und Rezensionen vornehmen, deren Besitzer sie sind.  
 - Rezensionen werden auf der Registerkarte „Rezensionen“ auf der Produktseite des Angebots im Azure Marketplace bzw. in AppSource veröffentlicht. Kunden können ihren Namen einschließen oder ihre Beiträge anonym veröffentlichen.  
 
-Im Dashboard **Bewertungen und Rezensionen** werden die Trends und Erkenntnisse dieser Aktivität nach Kunden angezeigt. Sie können grafische Darstellungen folgender Elemente anzeigen:
+>[!NOTE]
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
+
+## <a name="access-the-dashboard"></a>Zugreifen auf das Dashboard
+
+Erweitern Sie in Partner Center im [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) den Abschnitt **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** , und wählen Sie **Bewertungen und Rezensionen** aus.
+
+Im Dashboard wird eine grafische Darstellung der folgenden Kundenaktivität angezeigt:
 
 - Bewertungen und Rezensionen  
 - Rezensionskommentare
 
-Herausgeber können über die **Registerkarten der Marketplace-Storefront** ihre Angebotsmetriken separat auf den Registerkarten von AppSource und dem Azure Marketplace anzeigen. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
+Auf den Registerkarten zur **Marketplace-Storefront** können Sie die Metriken zu Ihrem Angebot bei Microsoft AppSource und im Azure Marketplace separat anzeigen. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
 
-
-### <a name="ratings-and-reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
+### <a name="ratings--reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
 
 Im Abschnitt mit der Zusammenfassung von Bewertungen und Rezensionen werden die folgenden Metriken für einen ausgewählten Datumsbereich angezeigt:
 

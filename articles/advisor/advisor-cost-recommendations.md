@@ -3,12 +3,12 @@ title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229690"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788092"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe von Azure Advisor
 
@@ -49,6 +49,9 @@ Es empfiehlt sich, Momentaufnahmen unabhängig vom Speichertyp des übergeordnet
 
 ## <a name="utilize-lifecycle-management"></a>Verwenden der Lebenszyklusverwaltung
 Von Azure Advisor wird anhand von Informationen zu Objektanzahl, Gesamtgröße und Transaktionen Ihrer Azure Blob Storage-Instanz ermittelt, ob sich für eines oder mehrere Ihrer Speicherkonten die Aktivierung der Lebenszyklusverwaltung empfiehlt, um Daten aufzuteilen. Sie werden zur Erstellung von Lebenszyklusverwaltungsregeln aufgefordert, um Ihre Daten zur Optimierung Ihrer Speicherkosten automatisch in die kalte Ebene oder in die Archivebene zu verschieben. Dies hat keine Auswirkungen auf die Anwendungskompatibilität, da die Daten weiterhin in Azure Blob Storage vorhanden sind.
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>Erstellen einer Empfehlung zu kurzlebigen Betriebssystemdatenträgern
+[Kurzlebige Betriebssystemdatenträger](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) bieten Kunden folgende Vorteile: Sparen der Speicherkosten für Betriebssystemdatenträger. Reduzieren der Lese-/Schreibwartezeit auf dem Betriebssystemdatenträger. Schnellerer VM-Reimagingvorgang durch Zurücksetzen des Betriebssystems (und des temporären Datenträgers) in den ursprünglichen Zustand. Es empfiehlt sich eher, für kurzlebige IaaS-VMs oder VMs mit zustandslosen Workloads kurzlebige Betriebssystemdatenträger zu verwenden. Azure Advisor bietet Empfehlungen für Ressourcen, die von kurzlebigen Betriebssystemdatenträgern profitieren können. 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Zugreifen auf Kostenempfehlungen im Azure Advisor
 

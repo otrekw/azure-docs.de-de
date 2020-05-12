@@ -4,12 +4,12 @@ description: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Appl
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234738"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690866"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -38,7 +38,7 @@ Wir sehen uns nun an, wie Vorgänge dieser Art nachverfolgt werden können.
 Auf allgemeiner Ebene besteht die Aufgabe darin, `RequestTelemetry` zu erstellen und bekannte Eigenschaften festzulegen. Nachdem der Vorgang abgeschlossen ist, wird die Telemetrie nachverfolgt. Das folgende Beispiel veranschaulicht diese Aufgabe.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>HTTP-Anforderung in selbstgehosteter Owin-App
-In diesem Beispiel wird der Kontext der Ablaufverfolgung gemäß dem [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) verteilt. Sie sollten davon ausgehen, die hier beschriebenen Header zu erhalten.
+In diesem Beispiel wird der Kontext der Ablaufverfolgung gemäß dem [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) verteilt. Sie sollten davon ausgehen, die hier beschriebenen Header zu erhalten.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Das HTTP-Protokoll für die Korrelation deklariert außerdem den `Correlation-Context`-Header. Dieser wird hier jedoch zur Vereinfachung weggelassen.
 
 ## <a name="queue-instrumentation"></a>Warteschlangeninstrumentierung
-Es ist zwar ein [W3C Trace Context](https://www.w3.org/TR/trace-context/) und ein [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vorhanden, um Korrelationsdetails mit der HTTP-Anforderung zu übergeben, aber für jedes Warteschlangenprotokoll muss definiert werden, wie die gleichen Details für die Warteschlangennachricht übergeben werden. Einige Warteschlangenprotokolle (z.B. AMQP) ermöglichen das Übergeben von zusätzlichen Metadaten, und für einige andere (z.B. Azure Storage Queue) ist es erforderlich, dass der Kontext in der Nachrichtennutzlast codiert wird.
+Es ist zwar ein [W3C Trace Context](https://www.w3.org/TR/trace-context/) und ein [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vorhanden, um Korrelationsdetails mit der HTTP-Anforderung zu übergeben, aber für jedes Warteschlangenprotokoll muss definiert werden, wie die gleichen Details für die Warteschlangennachricht übergeben werden. Einige Warteschlangenprotokolle (z.B. AMQP) ermöglichen das Übergeben von zusätzlichen Metadaten, und für einige andere (z.B. Azure Storage Queue) ist es erforderlich, dass der Kontext in der Nachrichtennutzlast codiert wird.
 
 > [!NOTE]
 > * **Komponenten übergreifende Ablaufverfolgung wird für Warteschlangen noch nicht unterstützt**: Wenn mit HTTP Ihr Producer und Consumer Telemetriedaten an verschiedene Application Insights-Ressourcen senden, zeigen die Oberfläche zur Transaktionsdiagnose und die Anwendungsübersicht Transaktionen und Übersicht End-to-End an. Bei Warteschlangen wird dies noch nicht unterstützt. 
@@ -482,4 +482,4 @@ Jeder Application Insights-Vorgang (Anforderung oder Abhängigkeit) umfasst ein 
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
 - Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](../../azure-monitor/app/api-custom-events-metrics.md) an Application Insights.
 - Informationen zur [Standardkonfiguration](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.
-- Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Benutzerhandbuch), um zu erfahren, wie wir Telemetriedaten korrelieren.
+- Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Benutzerhandbuch), um zu erfahren, wie wir Telemetriedaten korrelieren.

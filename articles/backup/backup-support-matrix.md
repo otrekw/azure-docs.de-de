@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537320"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801262"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -56,7 +56,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 
 **Begrenzung** | **Details**
 --- | ---
-**Azure-VM-Datenträger** | Maximal 16 <br> Wenn Sie sich für die private Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (bis zu 32 Datenträger) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
+**Azure-VM-Datenträger** | Maximal 16 <br> Wenn Sie sich für die eingeschränkte Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (mit bis zu 32 Datenträgern) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
 **Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
