@@ -1,18 +1,18 @@
 ---
 title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677414"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864503"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
-Genau wie eine Blaupause, die einem Ingenieur oder Architekten die Skizzierung der Entwurfsparameter für ein Projekt ermöglicht, ermöglicht es Azure Blueprints Cloudarchitekten und zentralen IT-Gruppen, eine wiederholbare Gruppe von Azure-Ressourcen zu definieren, mit der die Standards, Muster und Anforderungen einer Organisation implementiert und erzwungen werden. Mit Azure Blueprints können Entwicklungsteams schnell neue Umgebungen bereitstellen und einrichten und dabei darauf vertrauen, dass sie die Konformitätsanforderungen der Organisation erfüllen und über eine Reihe integrierter Komponenten (z.B. Netzwerk) zur Beschleunigung der Entwicklung und Bereitstellung verfügen.
+Genau wie eine Blaupause, die einem Ingenieur oder Architekten die Skizzierung der Entwurfsparameter für ein Projekt ermöglicht, ermöglicht es Azure Blueprints Cloudarchitekten und zentralen IT-Gruppen, eine wiederholbare Gruppe von Azure-Ressourcen zu definieren, mit der die Standards, Muster und Anforderungen einer Organisation implementiert und erzwungen werden. Mit Azure Blueprints können Entwicklungsteams schnell neue Umgebungen bereitstellen und einrichten und dabei darauf vertrauen, dass sie die Konformitätsanforderungen der Organisation erfüllen und über eine Reihe integrierter Komponenten (z. B. Netzwerk) zur Beschleunigung der Entwicklung und Bereitstellung verfügen.
 
 Blaupausen sind eine deklarative Möglichkeit zum Orchestrieren der Bereitstellung mehrerer Ressourcenvorlagen und anderer Artefakte wie etwa:
 
@@ -21,12 +21,11 @@ Blaupausen sind eine deklarative Möglichkeit zum Orchestrieren der Bereitstellu
 - Azure-Ressourcen-Manager-Vorlagen
 - Ressourcengruppen
 
-Der Azure-Dienst für Blaupausen wird vom global verteilten [Azure Cosmos DB](../../cosmos-db/introduction.md)-Dienst unterstützt.
-Blaupausenobjekte werden in mehreren Azure-Regionen repliziert. Diese Replikation bietet niedrige Wartezeiten, Hochverfügbarkeit und konsistenten Zugriff auf Ihre Blaupausenobjekte – unabhängig davon, in welcher Region Ihre Ressourcen von Azure Blueprints bereitgestellt werden.
+Der Azure-Dienst für Blaupausen wird vom global verteilten [Azure Cosmos DB](../../cosmos-db/introduction.md)-Dienst unterstützt. Blaupausenobjekte werden in mehreren Azure-Regionen repliziert. Diese Replikation bietet niedrige Wartezeiten, Hochverfügbarkeit und konsistenten Zugriff auf Ihre Blaupausenobjekte – unabhängig davon, in welcher Region Ihre Ressourcen von Azure Blueprints bereitgestellt werden.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Unterschied zu Resource Manager-Vorlagen
 
-Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Resource Manager-Vorlagenbereitstellungen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Mit diesen können Sie das Paket zusammenstellen und versionieren – auch über eine CI/CD-Pipeline. Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
+Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Resource Manager-Vorlagenbereitstellungen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Mit diesen können Sie das Paket zusammenstellen und versionieren – auch über eine CI/CD-Pipeline. Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
 
 Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine Resource Manager-Vorlage eingefügt werden. Eine Resource Manager-Vorlage ist jedoch ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
 

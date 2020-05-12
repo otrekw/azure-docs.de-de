@@ -4,15 +4,15 @@ description: In diesem Artikel wird die Überwachung von Apps in Azure App Servi
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500436"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738098"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -49,7 +49,7 @@ Wenn eine App das Kontingent für *CPU (Short)* (CPU (kurz)), *CPU (Day)* (CPU (
 
 ![403-Fehlermeldung][http403]
 
-Wenn das Arbeitsspeicherkontingent der App überschritten wird, wird die App neu gestartet.
+Wenn das Arbeitsspeicherkontingent der App überschritten wird, wird die App vorübergehend beendet.
 
 Wenn das Dateisystemkontingent überschritten wird, tritt bei jedem Schreibvorgang ein Fehler auf. Zu Schreibvorgängen zählen auch alle Protokollschreibvorgänge.
 
@@ -131,11 +131,7 @@ Es gibt zwei Metriken, die die CPU-Auslastung widerspiegeln:
 **CPU percentage** (CPU-Prozentsatz): Hilfreich für Apps, die in den Plänen „Basic“, „Standard“ und „Premium“ gehostet werden, da sie horizontal hochskaliert werden können. Der CPU-Prozentsatz ist ein guter Indikator für die allgemeine Nutzung über alle Instanzen hinweg.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granularität und Aufbewahrungsrichtlinien für Metriken
-Metriken für eine App und einen App Service-Plan werden vom Dienst mit den folgenden Granularitäten und Aufbewahrungsrichtlinien protokolliert und aggregiert:
-
-* Metriken mit der Granularität **Minute** werden 30 Stunden lang aufbewahrt.
-* Metriken mit der Granularität **Stunde** werden 30 Tage lang aufbewahrt.
-* Metriken mit der Granularität **Tag** werden 30 Tage lang aufbewahrt.
+Metriken für eine App und einen App Service-Plan werden vom Dienst protokolliert und aggregiert sowie [gemäß diesen Regeln aufbewahrt](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Überwachen von Kontingenten und Metriken im Azure-Portal
 Im [Azure-Portal](https://portal.azure.com) können Sie den Status der verschiedenen Kontingente und Metriken einsehen, die für eine App gelten.

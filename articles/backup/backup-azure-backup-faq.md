@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156054"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801704"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -107,7 +107,7 @@ Windows 8 oder höher | 54.400 GB
 Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
-Azure VM | 16 Datenträger<br/> Wenn Sie sich für die private Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (bis zu 32 Datenträger) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com. <br><br> Datenträger bis zu 32 TB
+Azure VM | 16 Datenträger<br/> Wenn Sie sich für die eingeschränkte Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (mit bis zu 32 Datenträgern) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com. <br><br> Datenträger bis zu 32 TB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 

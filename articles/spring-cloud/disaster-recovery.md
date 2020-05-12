@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76279138"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792325"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Notfallwiederherstellung in Azure Spring Cloud
 
@@ -31,4 +31,33 @@ Zur Sicherstellung von Hochverfügbarkeit und Schutz vor Ausfällen müssen Sie 
 
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) gewährleistet einen DNS-basierten Lastausgleich des Datenverkehrs und kann Netzwerkdatenverkehr auf mehrere Regionen verteilen.  Verwenden Sie Azure Traffic Manager, um Kunden an die nächstgelegene Azure Spring Cloud-Dienstinstanz weiterzuleiten.  Optimale Leistungs- und Redundanzwerte werden erzielt, indem Sie den gesamten Anwendungsdatenverkehr über Azure Traffic Manager leiten, bevor er an den Azure Spring Cloud-Dienst gesendet wird.
 
-Wenn Sie Azure Spring Cloud-Anwendungen in mehreren Regionen festgelegt haben, können Sie über Azure Traffic Manager den Datenverkehrsfluss in die Anwendungen in den einzelnen Regionen steuern.  Definieren Sie einen Azure Traffic Manager-Endpunkt für jeden Dienst unter Verwendung der Dienst-IP-Adresse. Kunden sollten eine Verbindung mit einem DNS-Namen in Azure Traffic Manager herstellen, der auf den Azure Spring Cloud-Dienst verweist.  Mit Azure Traffic Manager wird ein Lastausgleich des Datenverkehrs über die definierten Endpunkte vorgenommen.  Bei einem Ausfall eines Rechenzentrums leitet Azure Traffic Manager den Datenverkehr von dieser Region an die zugehörige andere Region des Regionspaars weiter, um die Dienstkontinuität sicherzustellen.
+Wenn Sie über Azure Spring Cloud-Anwendungen in mehreren Regionen verfügen, können Sie über Azure Traffic Manager den Datenverkehrsfluss in die Anwendungen in den einzelnen Regionen steuern.  Definieren Sie einen Azure Traffic Manager-Endpunkt für jeden Dienst unter Verwendung der Dienst-IP-Adresse. Kunden sollten eine Verbindung mit einem DNS-Namen in Azure Traffic Manager herstellen, der auf den Azure Spring Cloud-Dienst verweist.  Mit Azure Traffic Manager wird ein Lastausgleich des Datenverkehrs über die definierten Endpunkte vorgenommen.  Bei einem Ausfall eines Rechenzentrums leitet Azure Traffic Manager den Datenverkehr von dieser Region an die zugehörige andere Region des Regionspaars weiter, um die Dienstkontinuität sicherzustellen.
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Erstellen von Azure Traffic Manager für Azure Spring Cloud
+
+1. Erstellen Sie Azure Spring Cloud in zwei unterschiedlichen Regionen.
+Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschiedenen Regionen bereitgestellt werden („USA, Osten“ und „Europa, Westen“). Starten Sie eine vorhandene Azure Spring Cloud-Anwendung über das Azure-Portal, um zwei Dienstinstanzen zu erstellen. Jede dient jeweils als primärer bzw. Failoverendpunkt für den Datenverkehr. 
+
+**Info zu den beiden Dienstinstanzen**:
+
+| Service Name | Standort | Application |
+|--|--|--|
+| service-sample-a | East US | gateway / auth-service / account-service |
+| service-sample-b | Europa, Westen | gateway / auth-service / account-service |
+
+2. Richten Sie eine benutzerdefinierten Domäne für den Dienst ein. Befolgen Sie dazu die Anweisungen im [Dokument zu benutzerdefinierten Domänen](spring-cloud-tutorial-custom-domain.md), um eine benutzerdefinierte Domäne für diese beiden vorhandenen Dienstinstanzen einzurichten. Nach der erfolgreichen Einrichtung werden beide Dienstinstanzen an die benutzerdefinierte Domäne „bcdr-test.contoso.com“ gebunden.
+
+3. Erstellen Sie einen Traffic Manager und zwei Endpunkte: [Erstellen Sie ein Traffic Manager-Profil über das Azure-Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+
+Im Folgenden das Traffic Manager-Profil:
+* Traffic Manager-DNS-Name: http://asc-bcdr.trafficmanager.net
+* Endpunktprofile: 
+
+| Profil | type | Ziel | Priority | Benutzerdefinierte Headereinstellungen |
+|--|--|--|--|--|
+| Endpunkt für das Profil A | Externer Endpunkt | service-sample-a.asc-test.net | 1 | host: bcdr-test.contoso.com |
+| Endpunkt für das Profil B | Externer Endpunkt | service-sample-b.asc-test.net | 2 | host: bcdr-test.contoso.com |
+
+4. Erstellen Sie einen CNAME-Eintrag in der DNS-Zone: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+
+5. Nun ist die Umgebung vollständig eingerichtet. Kunden sollten in der Lage sein, über „bcdr-test.contoso.com“ auf die App zuzugreifen.

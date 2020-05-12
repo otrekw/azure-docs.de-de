@@ -4,12 +4,12 @@ description: Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. K
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229450"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793056"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -104,7 +104,7 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 
 - Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden.
 - Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
-- Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
+- Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum Abskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
 - Wenn Sie die automatische Skalierung verwenden, legen Sie die Regeln so fest, dass die Abskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
 - Beim Löschen oder Freigeben von virtuellen Computern auf dem primären Knotentyp sollten Sie niemals die Anzahl der zugeordneten virtuellen Computer unter die Anforderungen der Zuverlässigkeitsstufe reduzieren. Diese Vorgänge werden in einer Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ auf unbestimmte Zeit blockiert.
 

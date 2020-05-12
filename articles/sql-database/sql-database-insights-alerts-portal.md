@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79209471"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801806"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics-Datenbanken im Azure-Portal
 
@@ -24,8 +24,8 @@ ms.locfileid: "79209471"
 
 In diesem Artikel erfahren Sie, wie Sie im Azure-Portal Warnungen für Einzel-, Pool- und Data Warehouse-Datenbanken in Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.
 
-> [!IMPORTANT]
-> Dieses Feature steht in einer verwalteten Instanz noch nicht zur Verfügung. Als Alternative können Sie den SQL-Agent verwenden, um E-Mail-Warnungen für einige Metriken auf der Grundlage [dynamischer Verwaltungssichten](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) zu senden.
+> [!NOTE]
+> Spezifische Anweisungen für verwaltete SQL-Instanzen finden Sie unter [Erstellen von Warnungen für verwaltete Azure SQL-Datenbank-Instanzen](sql-database-managed-instance-alerts.md).
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 

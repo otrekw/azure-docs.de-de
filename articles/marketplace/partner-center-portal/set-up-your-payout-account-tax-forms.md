@@ -1,17 +1,17 @@
 ---
-Description: Um auf dem kommerziellen Marketplace Geld aus Angebotsverkäufen zu erhalten, müssen Sie Ihr Auszahlungskonto einrichten und die erforderlichen Steuerformulare ausfüllen.
-title: Einrichten des Auszahlungskontos und Ausfüllen der Steuerformulare | Azure Marketplace
+title: Einrichten von Auszahlungskonten und Steuerformularen – kommerzieller Microsoft-Marketplace
+Description: Erfahren Sie hier, wie Sie Ihr Auszahlungskonto einrichten und die erforderlichen Steuerformulare ausfüllen müssen, um auf dem kommerziellen Marketplace Geld aus Angebotsverkäufen zu erhalten.
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: fb0caa64feb7cb024b684a2e94937aec8893bb5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281305"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792886"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Einrichten von Auszahlungskonten und Steuerformularen
 
@@ -32,7 +32,7 @@ Nachdem Sie Ihr Konto eingerichtet haben, müssen Sie zwei Schritte ausführen, 
 
 ## <a name="tax-forms"></a>Steuerformulare
 
-### <a name="filling-out-your-tax-forms"></a>Ausfüllen von Steuerformularen
+### <a name="fill-out-your-tax-forms"></a>Ausfüllen von Steuerformularen
 
 Zunächst müssen Sie ein Steuerprofil erstellen und es den Programmen zuweisen, an denen Sie teilnehmen. Sie können Ihr *Steuerprofil* für den kommerziellen Marketplace erstellen, indem Sie die folgenden Schritte ausführen:
 
@@ -45,18 +45,21 @@ Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und �
 > In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihr Angebot bereitstellen. Unter [Microsoft Azure Marketplace – Herausgebervertrag](https://go.microsoft.com/fwlink/p/?LinkID=699560) ist angegeben, für welche Länder Microsoft die Mehrwertsteuer und Verbrauchssteuer für Sie überweist. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern unter Umständen die Mehrwert- und Verbrauchssteuer für Ihre Angebotsverkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen App-Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Aktivitäten auf dem kommerziellen Marketplace zu ermitteln.
 
 1. Wählen Sie in [Partner Center](https://partner.microsoft.com/dashboard) oben rechts das Symbol **Kontoeinstellungen** und dann die Option **Entwicklereinstellungen** aus.
+
 2. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Auszahlung und Steuer** und dann **Auszahlungs- und Steuerprofilzuweisung** aus.
 
 3. Wählen Sie die Kombination aus Programm und Verkäufer-ID aus, für die Sie die Steuerinformationen konfigurieren möchten.
 
 4. Falls Sie ein vorhandenes Steuerprofil verwenden möchten, können Sie es in der Dropdownliste auswählen. Wählen Sie andernfalls die Option **Neues Profil erstellen** und dann **Senden** aus. Sie gelangen auf die Steuerprofilseite.
+
 5. Klicken Sie auf die Schaltfläche **Bearbeiten**, um Ihre Steuerinformationen zu bearbeiten.
+
 6. Aktivieren Sie das entsprechende Optionsfeld, und wählen Sie Ihr Land aus, wenn Sie dazu aufgefordert werden. Mit diesem Schritt wird die Microsoft-Geschäftseinheit festgelegt, die verwendet wird, um die Auszahlungen für Ihr Konto vorzunehmen.
 
 7. Abhängig von Ihrer Auswahl in Schritt 6 werden Sie aufgefordert, die jeweiligen erforderlichen Steuerinformationen für Ihr Land anzugeben.
 
-> [!NOTE]
-> Unabhängig von Ihrem Land (Wohnsitz) und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über den kommerziellen Marketplace bereitstellen zu können. Herausgeber, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Herausgeber außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
+   > [!NOTE]
+   > Unabhängig von Ihrem Land (Wohnsitz) und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über den kommerziellen Marketplace bereitstellen zu können. Herausgeber, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Herausgeber außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
 
 ### <a name="withholding-rates"></a>Quellensteuer
 
@@ -108,8 +111,8 @@ Falls Sie für den Empfang von Auszahlungen ein Bankkonto angegeben haben, müss
 
 6. Klicken Sie auf „Senden“, um Ihre Änderungen zu speichern.
 
-> [!NOTE]
-> Es kann bis zu 48 Stunden dauern, bis die Informationen in Ihrem Profil von Microsoft überprüft wurden. Nach Abschluss dieses Prozesses wird unter *Status der Überprüfung* der Status **Abgeschlossen** angezeigt.
+   > [!NOTE]
+   > Es kann bis zu 48 Stunden dauern, bis die Informationen in Ihrem Profil von Microsoft überprüft wurden. Nach Abschluss dieses Prozesses wird unter *Status der Überprüfung* der Status **Abgeschlossen** angezeigt.
 
 Überprüfen Sie Folgendes, um sicherzustellen, dass die Auszahlungen für Sie erfolgreich sind:
 
@@ -122,7 +125,9 @@ Falls Sie für den Empfang von Auszahlungen ein Bankkonto angegeben haben, müss
 Sie können vorhandene Zahlungsprofile bearbeiten, falls Sie Änderungen vornehmen oder fehlerhafte Informationen korrigieren müssen.
 
 1. Wählen Sie in [Partner Center](https://partner.microsoft.com/dashboard) oben rechts das Zahnradsymbol für die **Einstellungen** und dann die Option **Entwicklereinstellungen** aus.
+
 2. Wählen Sie unterhalb der Überschrift *Auszahlung und Steuer* die Option **Auszahlungs- und Steuerprofile** aus.
+
 3. Ihre Zahlungsprofile werden zusammen mit dem jeweiligen Status aufgeführt. Suchen Sie nach dem Profil, das Sie bearbeiten möchten, und klicken Sie ganz rechts auf **Bearbeiten**.
 
 > [!IMPORTANT]
@@ -138,9 +143,13 @@ In einigen Ländern und Regionen können Sie ein Zahlungskonto erstellen, indem 
 Häufig gestellte Fragen zur Verwendung von PayPal als Zahlungsmethode:
 
 - **Welche PayPal-Einstellungen benötige ich, um Zahlungen zu erhalten?** Stellen Sie sicher, dass für Ihr PayPal-Konto eCheck-Zahlungen (elektronische Überweisungen) nicht blockiert sind. Diese Einstellung befindet sich bei PayPal auf der Seite mit den Einstellungen für den Zahlungsempfang. Weitere Informationen finden Sie auf der [Seite für die Einrichtung des PayPal-Kontos](https://go.microsoft.com/fwlink/p/?linkid=513139).
+
 - **Wird mein Land bzw. meine Region unterstützt?** Weitere Informationen dazu, wo PayPal als Zahlungsmethode unterstützt wird, finden Sie unter [Zahlungsschwellenwerte, Methoden und Zeiträume](payment-thresholds-methods-timeframes.md).
+
 - **Muss mein PayPal-Konto für dasselbe Land bzw. die Region wie mein Partner Center-Konto registriert sein?** Nein. Beim Einrichten eines PayPal-Kontos können Sie die Standardkonfiguration übernehmen. Es sollten keine Probleme mit anderen Ländern/Regionen und Währungen auftreten, falls Sie die Zahlung in bestimmten Währungen nicht blockiert haben. Diese Einstellung befindet sich bei PayPal auf der Seite mit den Einstellungen für den Zahlungsempfang.
+
 - **Muss ich PayPal-Zahlungen manuell akzeptieren?** Nein. PayPal-Konten werden standardmäßig so eingerichtet, dass Benutzer Zahlungen manuell akzeptieren müssen. Dies bedeutet, dass die Zahlung zurückgebucht wird, wenn Sie sie nicht innerhalb von 30 Tagen akzeptieren. Sie können diese Einstellung ändern, indem Sie auf der PayPal-Seite mit den weiteren Einstellungen die Option „Ask Me“ (Nachfragen) deaktivieren.
+
 - **Welche Währungen werden von PayPal unterstützt?** Die aktuelle Liste finden Sie auf der [Supportseite von PayPal](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal).
 
 ### <a name="specific-requirements-for-certain-countriesregions"></a>Spezielle Anforderungen für bestimmte Länder/Regionen
@@ -193,3 +202,7 @@ Falls Sie für den Empfang von Auszahlungen ein Bankkonto angegeben haben, müss
 4. Wählen Sie auf der Seite *Profilzuweisung* die Währung aus, die von uns für Ihre Auszahlungen verwendet werden soll.
 5. Sie müssen für jedes Programm, an dem Sie teilnehmen, ein Zahlungsprofil auswählen. Es ist aber möglich, dasselbe Profil für mehrere Programme zu nutzen.
 6. Klicken Sie auf „Senden“, um Ihre Änderungen zu speichern.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Abrechnung des kommerziellen Marketplace](billing-details.md)

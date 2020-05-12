@@ -1,22 +1,17 @@
 ---
-title: Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation
-description: Informationen zum Authentifizieren bei Azure Data Lake Storage Gen1 mit Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
+title: 'Authentifizierung: Data Lake Storage Gen1 mit Azure AD'
+description: Erfahren Sie, wie Sie die Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory ausführen.
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60193593"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692285"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory
 
@@ -35,7 +30,7 @@ Die folgende Tabelle verdeutlicht, wie Endbenutzerauthentifizierung und Authenti
 * Leere Zellen bedeuten, dass die Authentifizierungsoption nicht unterstützt wird.
 
 
-|Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |Azure-Befehlszeilenschnittstelle | Python   |REST     |
+|Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
 |Endbenutzer (ohne MFA\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Endbenutzer (mit MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |

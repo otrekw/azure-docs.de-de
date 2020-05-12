@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876505"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690823"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
 
@@ -76,7 +76,11 @@ Leider werden die Cognitive Services-Container *nicht* nativ in den Sovereign Cl
 
 **F: Wie kann ich die Cognitive Services-Container auf IoT-Geräten ausführen?**
 
-Unabhängig davon, ob Sie keine zuverlässige Internetverbindung besitzen oder bei den Bandbreitenkosten sparen möchten. Oder wenn Sie Anforderungen mit niedriger Latenz haben oder es sich um vertrauliche Daten handelt, die lokal analysiert werden müssen, bietet Ihnen [Azure IoT Edge mit den Cognitive Services-Containern](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) Konsistenz mit der Cloud.
+**A:** Unabhängig davon, ob Sie keine zuverlässige Internetverbindung besitzen oder bei den Bandbreitenkosten sparen möchten. Oder wenn Sie Anforderungen mit niedriger Latenz haben oder es sich um vertrauliche Daten handelt, die lokal analysiert werden müssen, bietet Ihnen [Azure IoT Edge mit den Cognitive Services-Containern](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) Konsistenz mit der Cloud.
+
+**F: Sind diese Container mit OpenShift kompatibel?** 
+
+Wir testen keine Container mit OpenShift, aber im Allgemeinen sollten Cognitive Services-Container auf jeder Plattform ausgeführt werden können, die Docker-Images unterstützt. Wenn Sie OpenShift verwenden, empfehlen wir, die Container als `root-user` auszuführen.
 
 **F: Wie stelle ich Produktfeedback und Featureempfehlungen bereit?**
 

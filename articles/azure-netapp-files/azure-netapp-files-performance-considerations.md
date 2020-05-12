@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67454661"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691315"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Überlegungen zur Leistung für Azure NetApp Files
 
@@ -34,8 +34,6 @@ Typische Überlegungen zur Speicherleistung, einschließlich Lese- und Schreibmi
 Der bei Tests beobachtete maximale empirische Durchsatz beträgt 4.500MiB/s.  Im Storage Premium-Tarif bietet ein Volumekontingent von 70,31TiB ein Durchsatzlimit, das hoch genug ist, um diese Leistung zu erzielen.  
 
 Wenn Sie erwägen, Volumekontingente über 70,31TiB zuzuweisen, kann einem Volume zum Speichern zusätzlicher Daten ein zusätzliches Kontingent zugewiesen werden. Das hinzugefügte Kontingent führt jedoch nicht zu einer weiteren Zunahme des tatsächlichen Durchsatzes.  
-
-Weitere Informationen finden Sie unter [Leistungsbenchmarks für Azure NetApp Files](azure-netapp-files-performance-benchmarks.md).
 
 ## <a name="overprovisioning-the-volume-quota"></a>Überbereitstellung des Volumekontingents
 
@@ -64,4 +62,4 @@ Wenn Ihre Leistungsanforderungen vorübergehend sind oder Sie für einen bestimm
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
-- [Leistungsbenchmarks für Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)
+- [Leistungsbenchmarks für Linux](performance-benchmarks-linux.md)

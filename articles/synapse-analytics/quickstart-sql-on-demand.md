@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d543abc88c1e45f2c1f5503473d8e92566fc582
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457381"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692171"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Schnellstart: Verwenden von SQL On-Demand
 
-Synapse SQL On-Demand (Vorschauversion) ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SQL On-Demand verschiedene Arten von Dateien abfragen.
+Synapse SQL On-Demand (Vorschauversion) ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SQL On-Demand verschiedene Dateitypen abfragen.
 
 Die folgenden Dateitypen werden unterstützt: JSON, CSV, Apache Parquet
 
@@ -41,19 +41,18 @@ Parameter für den Schnellstart:
 
 ## <a name="first-time-setup"></a>Erstmalige Einrichtung
 
-Vorbereitung:
+Vor der Verwendung der Beispiele:
 
 - Erstellen Sie eine Datenbank für Ihre Sichten (sofern Sie Sichten verwenden möchten).
 - Erstellen Sie Anmeldeinformationen, die von SQL On-Demand für den Zugriff auf Dateien im Speicher verwendet werden können.
 
 ### <a name="create-database"></a>Erstellen einer Datenbank
 
-Erstellen Sie zu Demonstrationszwecken eine eigene Datenbank. Hierbei handelt es sich um die Datenbank, in der Ihre Sichten erstellt werden. Verwenden Sie diese Datenbank in den Beispielabfragen dieses Artikels.
+Erstellen Sie zu Demonstrationszwecken eine eigene Datenbank. Sie verwenden diese Datenbank zum Erstellen der Ansichten sowie für die Beispielabfragen in diesem Artikel.
 
 > [!NOTE]
 > Die Datenbanken werden nicht für tatsächliche Daten, sondern nur für Sichtmetadaten verwendet.
->
-> Notieren Sie sich den verwendeten Datenbanknamen. Er wird im weiteren Verlauf der Schnellstartanleitung benötigt.
+>Notieren Sie sich den verwendeten Datenbanknamen. Er wird im weiteren Verlauf der Schnellstartanleitung benötigt.
 
 Verwenden Sie die folgende Abfrage, und ändern Sie `mydbname` in einen Namen Ihrer Wahl:
 
@@ -66,9 +65,15 @@ CREATE DATABASE mydbname
 Erstellen Sie Anmeldeinformationen, mit denen SQL On-Demand auf Dateien im Speicher zugreifen kann, um Abfragen mit SQL On-Demand zu ermöglichen.
 
 > [!NOTE]
-> Beachten Sie, dass Sie Anmeldeinformationen für den Zugriff auf das Speicherkonto erstellen müssen. SQL On-Demand kann zwar auf Speicher aus unterschiedlichen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich der Speicher und der Azure Synapse-Arbeitsbereich in derselben Region befinden.
+> Zur erfolgreichen Ausführung der Beispiele in diesem Abschnitt muss ein SAS-Token verwendet werden.
+>
+> Für die Verwendung von SAS-Token muss die Benutzeridentität gelöscht werden, wie in [diesem Artikel](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through) erläutert.
+>
+> Von SQL On-Demand wird standardmäßig immer AAD-Pass-Through verwendet.
 
-Ändern Sie den folgenden Codeausschnitt, um Anmeldeinformationen für CSV-, JSON- und Parquet-Container zu erstellen:
+Weitere Informationen zum Verwalten der Speicherzugriffssteuerung finden Sie im Artikel [Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau) in Azure Synapse Analytics](sql/develop-storage-files-storage-access-control.md).
+
+Führen Sie den folgenden Codeausschnitt aus, um die in den Beispielen in diesem Abschnitt verwendeten Anmeldeinformationen zu erstellen:
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -177,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> Die gesamte JSON-Datei wird als einzelne Zeile/Spalte gelesen. FIELDTERMINATOR, FIELDQUOTE und ROWTERMINATOR werden deshalb auf „0x0b“ festgelegt, da wir nicht erwarten, sie in der Datei zu finden.
+> Sie lesen die gesamte JSON-Datei als einzelne Zeile oder Spalte. FIELDTERMINATOR, FIELDQUOTE und ROWTERMINATOR werden deshalb auf „0x0b“ festgelegt, da nicht erwartet wird, sie in der Datei zu finden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nun können Sie mit den folgenden Schnellstartartikeln beginnen:
+Nun können Sie mit den folgenden Artikeln fortfahren:
 
 - [Abfragen einer einzelnen CSV-Datei](sql/query-single-csv-file.md)
 - [Abfragen von Ordnern und mehreren CSV-Dateien](sql/query-folders-multiple-csv-files.md)
@@ -192,7 +197,4 @@ Nun können Sie mit den folgenden Schnellstartartikeln beginnen:
 - [Erstellen und Verwenden von Sichten](sql/create-use-views.md)
 - [Erstellen und Verwenden externer Tabellen](sql/create-use-external-tables.md)
 - [Speichern des Abfrageergebnisses in Azure Storage](sql/create-external-table-as-select.md)
-
-Im nächsten Artikel erfahren Sie, wie Sie eine einzelne CSV-Datei abfragen:
-> [!div class="nextstepaction"]
-> [Abfragen einer einzelnen CSV-Datei](sql/query-single-csv-file.md)
+- [Abfragen einer einzelnen CSV-Datei](sql/query-single-csv-file.md)

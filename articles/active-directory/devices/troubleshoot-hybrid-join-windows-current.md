@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331767"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611312"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung
 
 Der Inhalt dieses Artikels gilt für Geräte, auf denen Windows 10 oder Windows Server 2016 ausgeführt wird.
 
@@ -30,13 +31,13 @@ In diesem Artikel wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in 
 - [Unternehmensroaming von Einstellungen](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
-Dieses Dokument enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme. 
+Dieses Dokument enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme.
 
 Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-Hybridbeitritt das Windows 10-Update vom November 2015 und höher.
 
 ## <a name="troubleshoot-join-failures"></a>Beheben von Einbindungsfehlern
 
-### <a name="step-1-retrieve-the-join-status"></a>Schritt 1: Abrufen des Beitrittsstatus 
+### <a name="step-1-retrieve-the-join-status"></a>Schritt 1: Abrufen des Beitrittsstatus
 
 **So rufen Sie den Beitrittsstatus ab**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>Schritt 2: Bewerten des Beitrittsstatus 
+### <a name="step-2-evaluate-the-join-status"></a>Schritt 2: Bewerten des Beitrittsstatus
 
 Überprüfen Sie die folgenden Felder, und stellen Sie sicher, dass sie die erwarteten Werte aufweisen:
 
-#### <a name="domainjoined--yes"></a>DomainJoined: YES  
+#### <a name="domainjoined--yes"></a>DomainJoined: YES
 
-Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden ist. Wenn der Wert **NO** lautet, kann das Gerät keinen Azure AD-Hybridbeitritt durchführen.  
+Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden ist. Wenn der Wert **NO** lautet, kann das Gerät keinen Azure AD-Hybridbeitritt durchführen.
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined: Nein  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined: Nein
 
 Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert ist (markiert als *Workplace Join*). Dieser Wert sollte für in eine Domäne eingebundene Computer mit Hybrideinbindung in Azure AD **NO** lauten. Wenn der Wert **YES** lautet, wurde vor Abschluss der Hybrideinbindung in Azure AD ein Geschäfts-, Schul- oder Unikonto hinzugefügt. In diesem Fall wird das Konto ignoriert, wenn eine Version von Windows 10 (1607) mit Anniversary Update verwendet wird.
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined: YES  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined: YES
 
 Dieses Feld gibt an, ob das Gerät eingebunden ist. Der Wert ist **YES**, wenn das Gerät entweder in Azure AD oder hybrid in Azure AD eingebunden ist.
-Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen. 
+Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen.
 
 Fahren Sie mit den nächsten Schritten zur weiteren Problembehandlung fort.
 
@@ -155,7 +156,7 @@ Mögliche Fehlerursachen:
    - In der AD-Gesamtstruktur, zu der das Gerät gehört, ist ein gültiges SCP-Objekt erforderlich, das auf einen verifizierten Domänennamen in Azure AD verweist.
    - Ausführliche Informationen finden Sie im Abschnitt [Konfigurieren eines Dienstverbindungspunkts (SPC)](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - Fehler beim Herstellen einer Verbindung und beim Abrufen der Ermittlungsmetadaten vom Ermittlungsendpunkt.
-   - Das Gerät sollte im SYSTEM-Kontext auf `https://enterpriseregistration.windows.net` zugreifen können, um die Endpunkte für Registrierung und Autorisierung zu ermitteln. 
+   - Das Gerät sollte im SYSTEM-Kontext auf `https://enterpriseregistration.windows.net` zugreifen können, um die Endpunkte für Registrierung und Autorisierung zu ermitteln.
    - Wenn die lokale Umgebung einen Proxy für den ausgehenden Datenverkehr erfordert, muss der IT-Administrator sicherstellen, dass das Computerkonto des Geräts in der Lage ist, den Proxy zu ermitteln und sich im Hintergrund zu authentifizieren.
 - Fehler beim Herstellen der Verbindung zum Endpunkt des Benutzerbereichs und beim Durchführen der Bereichsermittlung. (Nur Windows 10, Version 1809 und höher)
    - Das Gerät sollte im SYSTEM-Kontext auf `https://login.microsoftonline.com` zugreifen können, um eine Bereichsermittlung für die verifizierte Domäne durchführen und den Domänentyp (verwaltet/Verbund) bestimmen zu können.
@@ -173,7 +174,7 @@ Mögliche Fehlerursachen:
    - Ursache: Beim Ausführen der Ermittlung ist eine Zeitüberschreitung aufgetreten.
    - Lösung: Stellen Sie sicher, dass im SYSTEM-Kontext auf `https://enterpriseregistration.windows.net` zugegriffen werden kann. Weitere Informationen finden Sie im Abschnitt [Netzwerkverbindungsanforderungen](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Ursache: Allgemeiner Fehler bei der Bereichsermittlung. Der Domänentyp (verwaltet/Verbund) konnte vom Sicherheitstokendienst (STS) nicht bestimmt werden. 
+   - Ursache: Allgemeiner Fehler bei der Bereichsermittlung. Der Domänentyp (verwaltet/Verbund) konnte vom Sicherheitstokendienst (STS) nicht bestimmt werden.
    - Lösung: Suchen Sie weiter unten nach dem Unterfehler, um weitere Untersuchungen durchzuführen.
 
 **Häufige Unterfehlercodes:**
@@ -260,7 +261,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Ursache: Das Authentifizierungsprotokoll ist nicht WS-Trust.
-   - Lösung: Der lokale Identitätsanbieter muss WS-Trust unterstützen 
+   - Lösung: Der lokale Identitätsanbieter muss WS-Trust unterstützen
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Ursache: Der lokale Verbunddienst hat keine XML-Antwort zurückgegeben.
    - Lösung: Stellen Sie sicher, dass der MEX-Endpunkt eine gültige XML-Antwort zurückgibt. Stellen Sie sicher, dass der Proxy keine Beeinträchtigung darstellt und keine Antworten in einem Format ohne XML zurückgibt.
@@ -278,7 +279,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode
    - Lösung: Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
    - Ursache: Das vom Server gesendete Zertifikat von Transport Layer Security (TLS), zuvor bekannt als Secure Sockets Layer (SSL), konnte nicht überprüft werden.
-   - Lösung: Überprüfen Sie die Zeitabweichung des Clients. Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen. 
+   - Lösung: Überprüfen Sie die Zeitabweichung des Clients. Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Ursache: Der Versuch, eine Verbindung mit `https://login.microsoftonline.com` herzustellen, ist fehlgeschlagen.
    - Lösung: Überprüfen Sie die Netzwerkverbindung mit `https://login.microsoftonline.com`.
@@ -293,11 +294,11 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode
    - Lösung: Überprüfen Sie die Einstellungen des Verbundservers. Suchen Sie in den Authentifizierungsprotokollen nach dem Serverfehlercode.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
    - Ursache: Beim Versuch, ein Zugriffstoken vom Tokenendpunkt abzurufen, wurde ein Fehler gemeldet.
-   - Lösung: Suchen Sie im ADAL-Protokoll nach dem zugrunde liegenden Fehler. 
+   - Lösung: Suchen Sie im ADAL-Protokoll nach dem zugrunde liegenden Fehler.
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
    - Ursache: Allgemeiner ADAL-Fehler
    - Lösung: Suchen Sie in den Authentifizierungsprotokollen nach dem Unterfehlercode oder dem Serverfehlercode.
-    
+
 #### <a name="join-phase"></a>Einbindungsphase
 
 Fehlerursachen:
@@ -337,7 +338,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    - Ursache: Fehlerantwort vom DRS empfangen mit Fehlercode: „DirectoryError“
    - Lösung: Informationen zu möglichen Gründen und Lösungen finden Sie im Serverfehlercode.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Ursache: Fehlerantwort vom DRS empfangen mit Fehlercode: „AuthenticationError“ und Fehleruntercode ist NICHT „DeviceNotFound“. 
+   - Ursache: Fehlerantwort vom DRS empfangen mit Fehlercode: „AuthenticationError“ und Fehleruntercode ist NICHT „DeviceNotFound“.
    - Lösung: Informationen zu möglichen Gründen und Lösungen finden Sie im Serverfehlercode.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
    - Ursache: Fehlerantwort vom DRS empfangen mit Fehlercode: „DirectoryError“
@@ -349,7 +350,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    - Ursache: TPM-Vorgang ist fehlgeschlagen oder ungültig
    - Lösung: Wahrscheinlich aufgrund eines ungültigen Sysprep-Images. Stellen Sie sicher, dass der Computer, von dem das Sysprep-Image erstellt wurde, nicht in Azure AD oder hybrid in Azure AD eingebunden oder bei Azure AD registriert ist.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Ursache: Allgemeiner TPM-Fehler. 
+   - Ursache: Allgemeiner TPM-Fehler.
    - Lösung: Deaktivieren Sie TPM auf Geräten mit diesem Fehler. Windows 10 Version 1809 und höher erkennt automatisch TPM-Fehler und schließt die Hybrid-Azure AD-Einbindung ohne Verwendung des TPM ab.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
    - Ursache: TPM im FIPS-Modus wird derzeit nicht unterstützt.
@@ -386,28 +387,32 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Schritt 5: Sammeln Sie Protokolle, und wenden Sie sich an den Microsoft-Support
 
-Hier erhalten Sie öffentliche Skripts: [https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+Laden Sie die Datei „Auth.zip“ von [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) herunter.
 
-1. Öffnen Sie eine Administratoreingabeaufforderung und führen Sie `start_ngc_tracing_public.cmd` aus.
-2. Führen Sie die Schritte zum Reproduzieren des Problems aus.
-3. Stoppen Sie die Ausführung des Protokollierungsskripts, indem Sie `stop_ngc_tracing_public.cmd` ausführen.
-4. Komprimieren Sie die Protokolle unter `%SYSTEMDRIVE%\TraceDJPP\*`, und senden Sie sie zur Analyse ein.
+1. Entpacken Sie die Datei, und benennen Sie die enthaltenen Dateien **start-auth.txt** und **stop-auth.txt** in **start-auth.cmd** und **stop-auth.cmd** um.
+1. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **start-auth.cmd** aus.
+1. Wechseln Sie über „Konto wechseln“ zu einer anderen Sitzung mit dem Problembenutzer.
+1. Reproduzieren Sie das Problem.
+1. Wechseln Sie über „Konto wechseln“ wieder zurück zur Administratorsitzung, in der die Ablaufverfolgung ausgeführt wird.
+1. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **stop-auth.cmd** aus.
+1. Komprimieren Sie den Ordner **Authlogs** im Ordner, in dem die Skripts ausgeführt wurden, und übermitteln Sie ihn.
 
 ## <a name="troubleshoot-post-join-issues"></a>Beheben von Problemen nach der Einbindung
 
-### <a name="retrieve-the-join-status"></a>Abrufen des Beitrittsstatus 
+### <a name="retrieve-the-join-status"></a>Abrufen des Beitrittsstatus
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: JA und AzureADPrt: YES
-  
-Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
+
+Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat.
+Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 
 - Dem Gerät wurde bei der Registrierung ein ungültiger Speicherschlüssel im TPM zugewiesen (prüfen Sie den KeySignTest bei der Ausführung mit erhöhten Rechten).
 - Alternative Anmelde-ID.
 - HTTP-Proxy nicht gefunden.
 
 ## <a name="known-issues"></a>Bekannte Probleme
-- Unter „Einstellungen -> Konten -> Auf Arbeits- oder Schulkonto zugreifen“ werden für Geräte mit Hybrid-Azure AD-Einbindung möglicherweise zwei verschiedene Konten angezeigt, wenn Sie mit mobilen Hotspots oder externen WLAN-Netzwerken verbunden sind: ein Konto für Azure AD und eins für das lokale AD. Dies ist nur ein Problem mit der Benutzeroberfläche und hat keinerlei Auswirkungen auf die Funktionalität. 
- 
+- Unter „Einstellungen -> Konten -> Auf Arbeits- oder Schulkonto zugreifen“ werden für Geräte mit Hybrid-Azure AD-Einbindung möglicherweise zwei verschiedene Konten angezeigt, wenn Sie mit mobilen Hotspots oder externen WLAN-Netzwerken verbunden sind: ein Konto für Azure AD und eins für das lokale AD. Dies ist nur ein Problem mit der Benutzeroberfläche und hat keinerlei Auswirkungen auf die Funktionalität.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Fahren Sie mit [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) fort.

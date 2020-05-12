@@ -1,10 +1,10 @@
 ---
 title: Kontrolle des Netzwerkzugriffs
-description: Übersicht über die Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse, um den Zugriff zu verwalten und eine einzelne oder eine Pooldatenbank zu konfigurieren.
+description: Übersicht über die Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics, um den Zugriff zu verwalten und eine einzelne oder eine Pooldatenbank zu konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414409"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629574"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Netzwerk-Zugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics
 
 > [!NOTE]
-> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
+> Dieser Artikel gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und Azure Synapse Analytics, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf Azure SQL-Datenbank als auch auf Azure Synapse Analytics verwiesen wird.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für **verwaltete Azure SQL-Datenbank-Instanzen**. Weitere Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).

@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128085"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612893"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Anpassen von Feeds für Windows Virtual Desktop-Benutzer
 
+>[!IMPORTANT]
+>Dieser Inhalt gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
+>
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Sie können den Feed anpassen, damit die RemoteApp- und Remotedesktopressourcen den Benutzern auf erkennbare Weise angezeigt werden.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+## <a name="prerequisites"></a>Voraussetzungen
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+In diesem Artikel wird davon ausgegangen, dass Sie das Windows Virtual Desktop PowerShell-Modul bereits heruntergeladen und installiert haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>Anpassen des Anzeigenamens für eine RemoteApp
 
@@ -32,16 +36,55 @@ Sie können den Anzeigenamen für eine veröffentlichte RemoteApp ändern, indem
 Um eine Liste der veröffentlichten RemoteApps für eine App-Gruppe abzurufen, führen Sie das folgende PowerShell-Cmdlet aus:
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![Screenshot des PowerShell-Cmdlets „Get-RDSRemoteApp“ mit hervorgehobenem Namen und Anzeigenamen](media/get-rdsremoteapp.png)
 
-Um einer RemoteApp einen Anzeigenamen zuzuweisen, führen Sie das folgende PowerShell-Cmdlet aus:
+Um einer RemoteApp einen Anzeigenamen zuzuweisen, führen Sie das folgende Cmdlet mit den erforderlichen Parametern aus:
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Screenshot des PowerShell-Cmdlets „Set-RDSRemoteApp“ mit hervorgehobenem Namen und neuem Anzeigenamen](media/set-rdsremoteapp.png)
+
+Angenommen, Sie haben die aktuellen Anwendungen mit dem folgenden Beispiel-Cmdlet abgerufen:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+Die Ausgabe würde wie folgt aussehen:
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+Führen Sie dieses Cmdlet aus, um den Anzeigenamen zu aktualisieren:
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+Führen Sie dieses Cmdlet aus, um zu bestätigen, dass Sie den Anzeigenamen erfolgreich aktualisiert haben:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+Die Ausgabe des Cmdlets sollte wie folgt aussehen:
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Anpassen des Anzeigenamens für einen Remotedesktop
 
@@ -50,20 +93,39 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 Führen Sie zum Abrufen der Remotedesktopressource das folgende PowerShell-Cmdlet aus:
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![Screenshot des PowerShell-Cmdlets „Get-RDSRemoteApp“ mit hervorgehobenem Namen und Anzeigenamen](media/get-rdsremotedesktop.png)
 
 Führen Sie zum Zuweisen eines Anzeigenamens zur Remotedesktopressource das folgende PowerShell-Cmdlet aus:
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Screenshot des PowerShell-Cmdlets „Set-RDSRemoteApp“ mit hervorgehobenem Namen und neuem Anzeigenamen](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>Anpassen eines Anzeigenamens im Azure-Portal
+
+Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern, indem Sie im Azure-Portal einen Anzeigenamen festlegen. 
+
+1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an. 
+
+2. Suchen Sie nach **Windows Virtual Desktop**.
+
+3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus. 
+
+4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten. 
+
+5. Wählen Sie im Menü auf der linken Bildschirmseite **Anwendungen** aus.
+
+6. Wählen Sie die Anwendung aus, die Sie aktualisieren möchten, und geben Sie dann einen neuen **Anzeigenamen** ein. 
+
+7. Wählen Sie **Speichern** aus. Für die Anwendung, die Sie bearbeitet haben, sollte jetzt der aktualisierte Name angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop:
     
- * [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
- * [Herstellen einer Verbindung über einen Webbrowser](connect-web.md) 
+ * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+ * [Herstellen einer Verbindung mit dem Webclient](connect-web.md) 
+ * [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
+ * [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
+ * [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)

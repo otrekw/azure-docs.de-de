@@ -10,16 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80371620"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780911"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Versionshinweise: Speech-Geräte-SDK
 
 In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgeführt.
+
+## <a name="speech-devices-sdk-1110"></a>Speech Devices SDK 1.11.0:
+
+- Unterstützung von [beliebigen Mikrofonarraygeometrien](how-to-devices-microphone-array-configuration.md) und Festlegen des Arbeitswinkels über eine [Konfigurationsdatei](https://aka.ms/sdsdk-micarray-json).
+- Unterstützung für [Urbetter DDK](http://www.urbetter.com/products_56/278.html).
+- Die Binärdateien für den [GGEC Speaker](https://aka.ms/sdsdk-download-speaker), der in unserem [Beispiel für den Sprach-Assistenten](https://aka.ms/sdsdk-speaker) verwendet wird, wurden freigegeben.
+- Die Binärdateien für [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) und [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64) für Raspberry Pi und ähnliche Geräte wurden freigegeben.
+- Die [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)-Komponente wurde auf Version 1.11.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-190"></a>Speech Devices SDK 1.9.0:
 

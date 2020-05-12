@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
+title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell – Azure RBAC
+description: Erfahren Sie, wie Sie mithilfe von Azure-PowerShell und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,25 +13,25 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd852d19b284f97995855fe06c97ea0ea69be293
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137395"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733961"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell
+# <a name="list-azure-deny-assignments-using-azure-powershell"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell Ablehnungszuweisungen auflisten.
+[Azure-Ablehnungszuweisungen](deny-assignments.md) hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird. In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell Ablehnungszuweisungen auflisten.
 
 > [!NOTE]
-> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Ablehnungszuweisungen](deny-assignments.md).
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Azure-Ablehnungszuweisungen](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folgendes verfügen:
 
-- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist
+- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Azure-Rollen](built-in-roles.md) enthalten ist
 - [PowerShell in Azure Cloud Shell](/azure/cloud-shell/overview) oder [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>Auflisten von Ablehnungszuweisungen
@@ -126,5 +126,5 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md)
-- [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md)
-- [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API](deny-assignments-rest.md)
+- [Auflisten von Ablehnungszuweisungen über das Azure-Portal](deny-assignments-portal.md)
+- [Auflisten von Azure-Ablehnungszuweisungen mithilfe der REST-API](deny-assignments-rest.md)

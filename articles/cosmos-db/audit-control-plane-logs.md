@@ -4,24 +4,34 @@ description: Hier erfahren Sie, wie Sie Vorgänge wie das Hinzufügen einer Regi
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: 64ad8e6b1101d8486268c857b3a7752e1801f52c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420286"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735350"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 
-Vorgänge auf Steuerungsebene schließen Änderungen am Azure Cosmos-Konto oder -Container ein. Vorgänge auf Steuerungsebene sind beispielsweise das Erstellen eines Azure Cosmos-Kontos, das Hinzufügen einer Region, das Aktualisieren des Durchsatzes, das Durchführen von Failovern für Regionen und das Hinzufügen von VNETs. In diesem Artikel wird erläutert, wie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwacht werden.
+Die Steuerungsebene in Azure Cosmos DB ist ein RESTful-Dienst, mit dem Sie eine Vielzahl von Vorgängen im Azure Cosmos-Konto ausführen können. Sie stellt ein öffentliches Ressourcenmodell (z. B. Datenbank, Konto) und verschiedene Vorgänge für die Endbenutzer bereit, um Aktionen für das Ressourcenmodell auszuführen. Vorgänge der Steuerungsebene schließen Änderungen am Azure Cosmos-Konto oder -Container ein. Zu den Vorgängen der Steuerungsebene gehören beispielsweise das Erstellen eines Azure Cosmos-Kontos, das Hinzufügen einer Region, das Aktualisieren des Durchsatzes, das Durchführen von Failovern für Regionen und das Hinzufügen von VNETs. In diesem Artikel wird erläutert, wie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwacht werden. Sie können die Vorgänge der Steuerungsebene für Azure Cosmos-Konten mithilfe der Azure-Befehlszeilenschnittstelle, des Azure-Portals oder von PowerShell ausführen, während Sie für Container die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden.
+
+Im Folgenden finden Sie einige Beispielszenarien, in denen das Überwachen von Vorgängen der Steuerungsebene hilfreich ist:
+
+* Sie möchten eine Warnung erhalten, wenn die Firewallregeln für Ihr Azure Cosmos-Konto geändert werden. Die Warnung ist erforderlich, um nicht autorisierte Änderungen an Regeln, mit denen die Netzwerksicherheit Ihres Azure Cosmos-Kontos gesteuert wird, zu ermitteln und schnell Maßnahmen ergreifen zu können.
+
+* Sie möchten eine Warnung erhalten, wenn in Ihrem Azure Cosmos-Konto eine Region hinzugefügt oder entfernt wird. Das Hinzufügen oder Entfernen von Regionen hat Auswirkungen auf die Abrechnung und die Anforderungen an die Datenhoheit. Mit dieser Warnung können Sie ein versehentliches Hinzufügen oder Entfernen von Regionen in Ihrem Konto erkennen.
+
+* Sie möchten aus den Diagnoseprotokollen mehr Einzelheiten zu Änderungen erfahren. Ein Beispiel ist ein geändertes VNET.
 
 ## <a name="disable-key-based-metadata-write-access"></a>Deaktivieren des schlüsselbasierten Metadatenschreibzugriffs
- 
-Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können nur von einem Benutzer Änderungen an allen Ressourcen vorgenommen werden, der über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügt. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
 
- Beachten Sie die folgenden Punkte, wenn Sie den Metadatenschreibzugriff deaktivieren:
+Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk). 
+
+Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstell-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
+
+Beachten Sie die folgenden Punkte, wenn Sie den Metadatenschreibzugriff deaktivieren:
 
 * Überprüfen Sie die Einstellungen, und stellen Sie sicher, dass Ihre Anwendungen mithilfe des SDK oder mit Kontoschlüsseln keine Metadatenaufrufe durchführen, die die oben genannten Ressourcen ändern (z. B. Sammlung erstellen, Durchsatz aktualisieren usw.).
 
@@ -29,7 +39,9 @@ Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deak
 
 ## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Aktivieren von Diagnoseprotokollen für Vorgänge auf Steuerungsebene
 
-Mithilfe des Azure-Portals können Sie Diagnoseprotokolle für Vorgänge auf Steuerungsebene aktivieren. Führen Sie die folgenden Schritte aus, um die Protokollierung für Vorgänge auf Steuerungsebene zu aktivieren:
+Mithilfe des Azure-Portals können Sie Diagnoseprotokolle für Vorgänge auf Steuerungsebene aktivieren. Nach dem Aktivieren wird der Vorgang als Paar von Start- und Abschlussereignissen mit relevanten Details in den Diagnoseprotokollen aufgezeichnet. So bilden beispielsweise *RegionFailoverStart* und *RegionFailoverComplete* die Grenzen eines Failoverereignisses für eine Region.
+
+Führen Sie die folgenden Schritte aus, um die Protokollierung für Vorgänge auf Steuerungsebene zu aktivieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Azure Cosmos-Konto.
 
@@ -45,7 +57,8 @@ Sie können die Protokolle auch in einem Speicherkonto oder Stream in einem Even
 
 Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schritte aus, um Vorgänge für ein bestimmtes Konto nachzuverfolgen:
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+
 1. Öffnen Sie im linken Navigationsbereich die Registerkarte **Überwachen**, und klicken Sie dann auf den Bereich **Protokolle**. Es wird eine Benutzeroberfläche geöffnet, mit der Sie problemlos Abfragen mit diesem spezifischen Konto im Bereich ausführen können. Führen Sie die folgende Abfrage aus, um die Protokolle auf Steuerungsebene anzuzeigen:
 
    ```kusto
@@ -54,7 +67,7 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
    | where TimeGenerated >= ago(1h)
    ```
 
-Die folgenden Screenshots zeigen Protokolle für den Fall, dass einem Azure Cosmos-Konto ein VNET hinzugefügt wird:
+Die folgenden Screenshots zeigen Protokolle beim Ändern der Konsistenzebene für ein Azure Cosmos-Konto:
 
 ![Protokolle auf Steuerungsebene beim Hinzufügen eines VNET](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
@@ -67,6 +80,96 @@ Die folgenden Screenshots zeigen Protokolle für den Fall, dass der Durchsatz ei
 Wenn Sie weitere debuggen möchten, können Sie einen bestimmten Vorgang im **Aktivitätsprotokoll** ermitteln, indem Sie die Aktivitäts-ID oder den Zeitstempel des Vorgangs verwenden. Der Zeitstempel wird für einige Resource Manager-Clients verwendet, bei denen die Aktivitäts-ID nicht explizit übermittelt wurde. Das Aktivitätsprotokoll enthält Details zur Identität, mit der der Vorgang initiiert wurde. Der folgende Screenshot veranschaulicht, wie Sie die Aktivitäts-ID verwenden und die damit verbundenen Vorgänge im Aktivitätsprotokoll ermitteln:
 
 ![Verwenden der Aktivitäts-ID und Suchen der Vorgänge](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+
+## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vorgänge der Steuerungsebene für Azure Cosmos-Konten
+
+Die folgenden Vorgänge der Steuerungsebene sind auf Kontoebene verfügbar. Die meisten Vorgänge werden auf Kontoebene nachverfolgt. Diese Vorgänge sind als Metriken in Azure Monitor verfügbar:
+
+* Region hinzugefügt
+* Region entfernt
+* Konto gelöscht
+* Failover der Region
+* Erstelltes Konto
+* Virtuelles Netzwerk gelöscht
+* Netzwerkeinstellungen für Konto aktualisiert
+* Replikationseinstellungen für Konto aktualisiert
+* Kontoschlüssel aktualisiert
+* Sicherungseinstellungen des Kontos aktualisiert
+* Diagnoseeinstellungen des Kontos aktualisiert
+
+## <a name="control-plane-operations-for-database-or-containers"></a>Vorgänge der Steuerungsebene für Datenbanken oder Container
+
+Die folgenden Vorgänge der Steuerungsebene sind auf Datenbank- und Containerebene verfügbar. Diese Vorgänge sind als Metriken in Azure Monitor verfügbar:
+
+* SQL-Datenbank aktualisiert
+* SQL-Container aktualisiert
+* Durchsatz der SQL-Datenbank aktualisiert
+* Durchsatz des SQL-Containers aktualisiert
+* SQL-Datenbank gelöscht
+* SQL-Container gelöscht
+* Cassandra-Keyspace aktualisiert
+* Cassandra-Tabelle aktualisiert
+* Durchsatz eines Cassandra-Keyspace aktualisiert
+* Durchsatz der Cassandra-Tabelle aktualisiert
+* Cassandra-Keyspace gelöscht
+* Cassandra-Tabelle gelöscht
+* Gremlin-Datenbank aktualisiert
+* Gremlin-Diagramm aktualisiert
+* Durchsatz der Gremlin-Datenbank aktualisiert
+* Durchsatz des Gremlin-Diagramms aktualisiert
+* Gremlin-Datenbank gelöscht
+* Gremlin-Diagramm gelöscht
+* Mongo-Datenbank aktualisiert
+* Mongo-Sammlung aktualisiert
+* Durchsatz der Mongo-Datenbank aktualisiert
+* Durchsatz der Mongo-Sammlung aktualisiert
+* Mongo-Datenbank gelöscht
+* Mongo-Sammlung gelöscht
+* AzureTable-Tabelle aktualisiert
+* Durchsatz der AzureTable-Tabelle aktualisiert
+* AzureTable-Tabelle gelöscht
+
+## <a name="diagnostic-log-operations"></a>Vorgänge in Diagnoseprotokollen
+
+Die folgenden Vorgangsbezeichnungen werden in Diagnoseprotokollen für die verschiedenen Vorgänge verwendet:
+
+* RegionAddStart, RegionAddComplete
+* RegionRemoveStart, RegionRemoveComplete
+* AccountDeleteStart, AccountDeleteComplete
+* RegionFailoverStart, RegionFailoverComplete
+* AccountCreateStart, AccountCreateComplete
+* AccountUpdateStart, AccountUpdateComplete
+* VirtualNetworkDeleteStart, VirtualNetworkDeleteComplete
+* DiagnosticLogUpdateStart, DiagnosticLogUpdateComplete
+
+Bei API-spezifischen Vorgängen hat die Vorgangsbezeichnung folgendes Format:
+
+* APITyp + APITypRessourcentyp + Vorgangstyp + Anfang/Ende
+* APITyp + APITypRessourcentyp + Durchsatz + Vorgangstyp + Anfang/Ende
+
+**Beispiel** 
+
+* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
+* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+* SqlContainersUpdateStart, SqlContainersUpdateComplete
+
+Die *ResourceDetails*-Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
+
+## <a name="diagnostic-log-queries-for-control-plane-operations"></a>Diagnoseprotokollabfragen für Vorgänge auf Steuerungsebene
+
+Im Folgenden finden Sie einige Beispiele für den Abruf von Diagnoseprotokollen für Vorgänge auf Steuerungsebene:
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdateStart"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

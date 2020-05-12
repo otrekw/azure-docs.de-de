@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383369"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838483"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
@@ -49,7 +49,7 @@ In diesem Artikel werden die SQL-Datenbank-Features aufgeführt, die sich derzei
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-Serverprinzipale auf Instanzebene (Anmeldungen)</a> | Erstellen Sie Anmeldungen auf Serverebene mithilfe der Anweisung <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>. |
 | [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) | Replizieren Sie die Änderungen aus Ihren Tabellen in andere Datenbanken, die in verwalteten Instanzen, Einzeldatenbanken oder SQL Server-Instanzen abgelegt wurden, oder aber aktualisieren Sie die Tabellen, wenn einige Zeilen in anderen verwalteten Instanzen oder einer SQL Server-Instanz geändert werden. Weitere Informationen finden Sie unter [Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank](replication-with-sql-database-managed-instance.md). |
 | Bedrohungserkennung |Weitere Informationen finden Sie unter [Konfigurieren der Bedrohungserkennung (Vorschau) für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-threat-detection.md).|
-| Langfristiges Aufbewahren von Sicherungen | Weitere Informationen finden Sie unter [Verwalten der langfristigen Sicherungsaufbewahrung für verwaltete Azure SQL-Datenbank-Instanzen (PowerShell)](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
+| Langfristiges Aufbewahren von Sicherungen | Weitere Informationen finden Sie unter [Konfigurieren der langfristigen Sicherungsaufbewahrung für verwaltete Azure SQL-Datenbank-Instanzen](sql-database-managed-instance-long-term-backup-retention-configure.md) (derzeit in der eingeschränkten Public Preview). | 
 
 ---
 
@@ -69,7 +69,7 @@ Die folgenden Funktionen sind im Bereitstellungsmodell für verwaltete Instanzen
   - Unterstützung für <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 und SharePoint 2019 </a> und <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Erstellen Sie Instanzen mit <a href="https://aka.ms/managed-instance-collation">Sortierung auf Serverebene</a> und <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">Zeitzone</a> für Ihre Auswahl.
   - Verwaltete Instanzen sind jetzt durch eine <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrierte Firewall</a> geschützt.
-  - Konfigurieren Sie Instanzen für die Verwendung von [öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-configure.md), einer Verbindung zur [Proxy-Außerkraftsetzung](sql-database-connectivity-architecture.md#connection-policy), um eine bessere Netzwerkleistung zu erzielen, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuellen Kernen bei der Gen5-Hardwaregenerierung</a>, oder <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurieren Sie die Beibehaltung der Sicherung bis zu 35 Tage</a> für eine Point-in-Time-Wiederherstellung. Die langfristige Beibehaltung der Sicherung (bis zu 10 Jahre) ist noch nicht aktiviert, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Kopiesicherungen</a> verwenden können.
+  - Konfigurieren Sie Instanzen für die Verwendung von [öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-configure.md), einer Verbindung zur [Proxy-Außerkraftsetzung](sql-database-connectivity-architecture.md#connection-policy), um eine bessere Netzwerkleistung zu erzielen, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuellen Kernen bei der Gen5-Hardwaregenerierung</a>, oder <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurieren Sie die Beibehaltung der Sicherung bis zu 35 Tage</a> für eine Point-in-Time-Wiederherstellung. [Die langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md#managed-instance-support) (bis zu 10 Jahre) ist zurzeit in der eingeschränkten Public Preview verfügbar.  
   - Neue Funktionen ermöglichen Ihnen die <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">Geowiederherstellung Ihrer Datenbank in einem anderen Rechenzentrum mithilfe von PowerShell </a>, das [Umbenennen einer Datenbank](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/) und das [Löschen eines virtuellen Clusters](sql-database-managed-instance-delete-virtual-cluster.md).
   - Die neue integrierte [Rolle „Mitwirkender für Instanzen“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) ermöglicht SoD-Einhaltung (Separation of Duty, Aufgabentrennung) von Sicherheitsprinzipien und Einhaltung von Unternehmensstandards.
   - Eine verwaltete Instanz ist in den folgenden Azure Government-Regionen für GA (US Gov Texas, US Gov Arizona) sowie in China, Norden 2, und China, Osten 2, verfügbar. Außerdem ist sie in den folgenden öffentlichen Regionen verfügbar: Australien, Mitte; Australien, Mitte 2; Brasilien, Süden; Frankreich, Süden; VAE, Mitte; VAE, Norden; Südafrika, Norden; Südafrika, Westen.
@@ -78,30 +78,35 @@ Die folgenden Funktionen sind im Bereitstellungsmodell für verwaltete Instanzen
 
 |Problem  |Entdeckt am  |Status  |Gelöst am  |
 |---------|---------|---------|---------|
-|[Berechtigungen für Ressourcengruppe werden nicht auf verwaltete Instanz angewendet](#permissions-on-resource-group-not-applied-to-managed-instance)|Februar 2020|Mit Problemumgehung||
-|[Einschränkung beim manuellen Failover über das Portal für Failovergruppen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Januar 2020|Mit Problemumgehung||
-|[SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind](#in-memory-oltp-memory-limits-are-not-applied)|Dezember 2019|Mit Problemumgehung||
-|[SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dezember 2019|Keine Problemumgehung|März 2020|
-|[AAD-Anmeldungen und -Benutzer werden in SSDT nicht unterstützt](#aad-logins-and-users-are-not-supported-in-ssdt)|November 2019|Keine Problemumgehung||
-|[In-Memory-OLTP-Arbeitsspeicherlimits werden nicht angewendet](#in-memory-oltp-memory-limits-are-not-applied)|Oktober 2019|Mit Problemumgehung||
-|[Zurückgegebener Fehler beim Versuch, eine nicht leere Datei zu entfernen](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Oktober 2019|Mit Problemumgehung||
-|[Das Ändern der Dienstebene und Erstellen von Instanzvorgängen werden durch die laufende Datenbankwiederherstellung blockiert](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|September 2019|Mit Problemumgehung||
-|[Resource Governor auf Dienstebene „Unternehmenskritisch“ muss nach einem Failover möglicherweise neu konfiguriert werden](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|September 2019|Mit Problemumgehung||
-|[Datenbankübergreifende Service Broker-Dialoge müssen nach einem Upgrade der Dienstebene erneut initialisiert werden](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|August 2019|Mit Problemumgehung||
-|[Identitätswechsel für Azure AD-Anmeldetypen wird nicht unterstützt](#impersonification-of-azure-ad-login-types-is-not-supported)|Juli 2019|Keine Problemumgehung||
-|[Parameter @query wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Keine Problemumgehung||
-|[Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden](#transactional-replication-must-be-reconfigured-after-geo-failover)|März 2019|Keine Problemumgehung||
-|[Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet](#temporary-database-is-used-during-restore-operation)||Mit Problemumgehung||
-|[Struktur und Inhalt von TEMPDB werden neu erstellt](#tempdb-structure-and-content-is-re-created)||Keine Problemumgehung||
-|[Überschreiten des Speicherplatzes mit kleinen Datenbankdateien](#exceeding-storage-space-with-small-database-files)||Mit Problemumgehung||
-|[Statt Datenbanknamen werden GUID-Werte angezeigt](#guid-values-shown-instead-of-database-names)||Mit Problemumgehung||
-|[Fehlerprotokolle werden nicht persistent gespeichert](#error-logs-arent-persisted)||Keine Problemumgehung||
-|[Transaktionsbereich in zwei Datenbanken innerhalb derselben Instanz wird nicht unterstützt](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Mit Problemumgehung||
-|[CLR-Module und Verbindungsserver können manchmal nicht auf eine lokale IP-Adresse verweisen](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Mit Problemumgehung||
-|Nach dem Wiederherstellen der Datenbank aus Azure Blob Storage wird die Datenbankkonsistenz nicht mithilfe von DBCC CHECKDB überprüft.||Gelöst|November 2019|
-|Die Point-in-Time-Wiederherstellung einer Datenbank von der Dienstebene „Unternehmenskritisch“ in die Dienstebene „Universell“ wird nicht gelingen, wenn die Quelldatenbank In-Memory-OLTP-Objekte enthält.||Gelöst|Oktober 2019|
-|Feature „Datenbank-E-Mail“ bei externen (Nicht-Azure-) E-Mail-Servern über sichere Verbindung||Gelöst|Oktober 2019|
-|Eigenständige Datenbanken werden in verwalteter Instanz nicht unterstützt||Gelöst|August 2019|
+|[Der Agent reagiert beim Ändern, Deaktivieren oder Aktivieren vorhandener Aufträge nicht mehr](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mai 2020|Automatisch behoben| |
+|[Berechtigungen für Ressourcengruppe werden nicht auf verwaltete Instanz angewendet](#permissions-on-resource-group-not-applied-to-managed-instance)|Februar 2020|Mit Problemumgehung| |
+|[Einschränkung beim manuellen Failover über das Portal für Failovergruppen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Januar 2020|Mit Problemumgehung| |
+|[SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind](#in-memory-oltp-memory-limits-are-not-applied)|Dezember 2019|Mit Problemumgehung| |
+|[SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dezember 2019|Gelöst|März 2020|
+|[AAD-Anmeldungen und -Benutzer werden in SSDT nicht unterstützt](#aad-logins-and-users-are-not-supported-in-ssdt)|November 2019|Keine Problemumgehung| |
+|[In-Memory-OLTP-Arbeitsspeicherlimits werden nicht angewendet](#in-memory-oltp-memory-limits-are-not-applied)|Oktober 2019|Mit Problemumgehung| |
+|[Zurückgegebener Fehler beim Versuch, eine nicht leere Datei zu entfernen](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Oktober 2019|Mit Problemumgehung| |
+|[Das Ändern der Dienstebene und Erstellen von Instanzvorgängen werden durch die laufende Datenbankwiederherstellung blockiert](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|September 2019|Mit Problemumgehung| |
+|[Resource Governor auf Dienstebene „Unternehmenskritisch“ muss nach einem Failover möglicherweise neu konfiguriert werden](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|September 2019|Mit Problemumgehung| |
+|[Datenbankübergreifende Service Broker-Dialoge müssen nach einem Upgrade der Dienstebene erneut initialisiert werden](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|August 2019|Mit Problemumgehung| |
+|[Identitätswechsel für Azure AD-Anmeldetypen wird nicht unterstützt](#impersonification-of-azure-ad-login-types-is-not-supported)|Juli 2019|Keine Problemumgehung| |
+|[Parameter @query wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Keine Problemumgehung| |
+|[Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden](#transactional-replication-must-be-reconfigured-after-geo-failover)|März 2019|Keine Problemumgehung| |
+|[Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet](#temporary-database-is-used-during-restore-operation)||Mit Problemumgehung| |
+|[Struktur und Inhalt von TEMPDB werden neu erstellt](#tempdb-structure-and-content-is-re-created)| |Keine Problemumgehung| |
+|[Überschreiten des Speicherplatzes mit kleinen Datenbankdateien](#exceeding-storage-space-with-small-database-files)| |Mit Problemumgehung| |
+|[Statt Datenbanknamen werden GUID-Werte angezeigt](#guid-values-shown-instead-of-database-names) ||Mit Problemumgehung| |
+|[Fehlerprotokolle werden nicht persistent gespeichert](#error-logs-arent-persisted)||Keine Problemumgehung| |
+|[CLR-Module und Verbindungsserver können manchmal nicht auf eine lokale IP-Adresse verweisen](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |Mit Problemumgehung| |
+|[Transaktionsbereich in zwei Datenbanken innerhalb derselben Instanz wird nicht unterstützt](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |Gelöst|März 2020|
+|Nach dem Wiederherstellen der Datenbank aus Azure Blob Storage wird die Datenbankkonsistenz nicht mithilfe von DBCC CHECKDB überprüft.| |Gelöst|November 2019|
+|Die Point-in-Time-Wiederherstellung einer Datenbank von der Dienstebene „Unternehmenskritisch“ in die Dienstebene „Universell“ wird nicht gelingen, wenn die Quelldatenbank In-Memory-OLTP-Objekte enthält.| |Gelöst|Oktober 2019|
+|Feature „Datenbank-E-Mail“ bei externen (Nicht-Azure-) E-Mail-Servern über sichere Verbindung| |Gelöst|Oktober 2019|
+|Eigenständige Datenbanken werden in verwalteter Instanz nicht unterstützt| |Gelöst|August 2019|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Der Agent reagiert beim Ändern, Deaktivieren oder Aktivieren vorhandener Aufträge nicht mehr
+
+Unter bestimmten Umständen kann es vorkommen, dass der Agent nicht mehr reagiert, wenn ein vorhandener Auftrag geändert, deaktiviert oder aktiviert wird. Das Problem wird automatisch behoben, sobald es erkannt wird, indem ein Neustart des Agent-Prozesses veranlasst wird.
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Berechtigungen für Ressourcengruppe werden nicht auf verwaltete Instanz angewendet
 
@@ -133,7 +138,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden
 
-Der SQL-Agent erstellt jedes Mal, wenn der Auftrag gestartet wird, eine neue Sitzung und erhöht den Speicherverbrauch allmählich. Um zu vermeiden, dass die interne Arbeitsspeichergrenze erreicht wird, wodurch die Ausführung geplanter Aufträge blockiert würde, wird der Agent-Prozess neu gestartet, sobald der Arbeitsspeicherverbrauch den Schwellenwert erreicht. Dies kann dazu führen, dass die Ausführung von Aufträgen unterbrochen wird, die zum Zeitpunkt des Neustarts ausgeführt werden.
+**(Gelöst im März 2020)** Der SQL-Agent erstellt jedes Mal, wenn der Auftrag gestartet wird, eine neue Sitzung und erhöht den Speicherverbrauch allmählich. Um zu vermeiden, dass die interne Arbeitsspeichergrenze erreicht wird, wodurch die Ausführung geplanter Aufträge blockiert würde, wird der Agent-Prozess neu gestartet, sobald der Arbeitsspeicherverbrauch den Schwellenwert erreicht. Dies kann dazu führen, dass die Ausführung von Aufträgen unterbrochen wird, die zum Zeitpunkt des Neustarts ausgeführt werden.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory-OLTP-Arbeitsspeicherlimits werden nicht angewendet.
 
@@ -228,7 +233,7 @@ Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespei
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Ein Transaktionsbereich in zwei Datenbanken in derselben Instanz wird nicht unterstützt
 
-Die `TransactionScope`-Klasse in .NET funktioniert nicht, wenn zwei Abfragen an zwei Datenbanken in derselben Instanz im gleichen Transaktionsbereich gesendet werden:
+**(Gelöst im März 2020)** Die `TransactionScope`-Klasse in .NET funktioniert nicht, wenn zwei Abfragen an zwei Datenbanken in derselben Instanz im gleichen Transaktionsbereich gesendet werden:
 
 ```csharp
 using (var scope = new TransactionScope())
@@ -253,9 +258,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erforderte er MS DTC.
-
-**Problemumgehung:** Verwenden Sie [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
+**Problemumgehung (seit März 2020 nicht mehr erforderlich):** Verwenden Sie [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR-Module und Verbindungsserver können manchmal nicht auf eine lokale IP-Adresse verweisen
 

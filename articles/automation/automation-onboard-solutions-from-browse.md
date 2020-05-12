@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979475"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731916"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -33,9 +33,9 @@ Wählen Sie über die Kontrollkästchen die virtuellen Computer aus, die Sie in 
 Klicken Sie in der Befehlsleiste auf **Dienste**, und wählen Sie **Änderungsnachverfolgung**, **Bestand** oder **Updateverwaltung**.
 
 > [!NOTE]
-> **Änderungsnachverfolgung** und **Bestand** verwenden dieselbe Lösung. Ist die eine Option aktiviert, ist die andere ebenfalls aktiviert.
+> „Änderungsnachverfolgung“ und „Bestand“ verwenden dieselbe Lösung. Wenn eine dieser Lösungen aktiviert ist, ist auch die andere aktiviert.
 
-Die folgende Abbildung zeigt die Updateverwaltung. Änderungsnachverfolgung und Bestand haben das gleiche Layout und Verhalten.
+Die folgende Abbildung zeigt die Updateverwaltung. „Änderungsnachverfolgung“ und „Bestand“ haben das gleiche Layout und Verhalten.
 
 Die Liste der virtuellen Computer wird gefiltert, um nur die virtuellen Computer anzuzeigen, die sich in demselben Abonnement und Speicherort befinden. Wenn sich Ihr virtueller Computer in mehr als drei Ressourcengruppen befindet, werden die ersten drei Ressourcengruppen ausgewählt.
 
@@ -107,13 +107,13 @@ Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in I
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit **Aktivieren nicht möglich** angezeigt. Es gibt verschiedene Gründe, warum einige Computer nicht aktiviert werden können. Die folgenden Abschnitte zeigen mögliche Gründe für den Status**Aktivieren nicht möglich** auf einem virtuellen Computer beim Versuch einer Integration.
+Beim Onboarding mehrerer Computer, werden einige Computer möglicherweise mit `Cannot enable` angezeigt. Es gibt verschiedene Gründe, warum einige Computer nicht aktiviert werden können. Die folgenden Abschnitte zeigen mögliche Gründe für den Status `Cannot enable` auf einer VM beim Versuch des Onboardings.
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM berichtet an einen anderen Arbeitsbereich: '\<workspaceName\>'.  Ändern der Konfiguration für die Verwendung zum Aktivieren
 
 **Ursache:** Dieser Fehler zeigt an, dass der virtuelle Computer, den Sie integrieren möchten, an einen anderen Arbeitsbereich berichtet.
 
-**Lösung**: Klicken Sie auf **Als Konfiguration verwenden**, um das angestrebte Automation-Konto und den angestrebten Log Analytics-Arbeitsbereich zu ändern.
+**Lösung**: Klicken Sie auf **Als Konfiguration verwenden**, um das gewünschte Automation-Konto und den Log Analytics-Arbeitsbereich zu ändern.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM berichtet an einen Arbeitsbereich, der in diesem Abonnement nicht verfügbar ist.
 
@@ -129,7 +129,7 @@ Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit *
 
 **Ursache:** Die Lösung wird nicht für alle Linux-Verteilungen oder alle Versionen von Windows unterstützt.
 
-**Lösung:** Lesen Sie die [Liste der unterstützten Clients](automation-update-management.md#clients) für die Lösung.
+**Lösung:** Informieren Sie sich in der Liste [unterstützter Clients](automation-update-management.md#supported-client-types).
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klassische VMs können nicht aktiviert werden.
 
@@ -148,7 +148,7 @@ Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit *
 So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 
 * Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-* Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Entfernen Sie den [Log Analytics-Agent für Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics-Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

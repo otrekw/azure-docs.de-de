@@ -1,23 +1,17 @@
 ---
-title: 'Java SDK: Dateisystemvorgänge in Azure Data Lake Storage Gen1 | Microsoft-Dokumentation'
-description: Verwenden Sie das Azure Data Lake Storage Gen1 Java SDK, um in Data Lake Storage Gen1 Dateisystemvorgänge wie etwa das Erstellen von Ordnern auszuführen.
-services: data-lake-store
-documentationcenter: ''
+title: 'Java SDK: Dateisystemvorgänge in Data Lake Storage Gen1 – Azure'
+description: Verwenden Sie das Java SDK für Azure Data Lake Storage Gen1, um in Data Lake Storage Gen1 Dateisystemvorgänge wie etwa das Erstellen von Ordnern und das Hoch- und Herunterladen von Datendateien auszuführen.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60877463"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691772"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem Java SDK
 > [!div class="op_single_selector"]
@@ -58,7 +52,7 @@ Das auf [GitHub](https://azure.microsoft.com/documentation/samples/data-lake-sto
           </dependency>
         </dependencies>
    
-    Die erste Abhängigkeit ist die Verwendung des Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) aus dem Maven-Repository. Die zweite Abhängigkeit ist die Angabe des Protokollierungsframeworks (`slf4j-nop`) für diese Anwendung. Das Data Lake Storage Gen1 SDK verwendet die Protokollierungsfassade [slf4j](https://www.slf4j.org/), bei der Sie aus einer Reihe gängiger Protokollierungsframeworks wie log4j, Java-Protokollierung, Logback usw. wählen oder die Protokollierung deaktivieren können. Da wir im vorliegenden Beispiel die Protokollierung deaktivieren möchten, verwenden wir die Bindung **slf4j-nop**. Informationen zur Verwendung anderer Protokollierungsoptionen für Ihre App finden Sie [hier](https://www.slf4j.org/manual.html#projectDep).
+    Die erste Abhängigkeit ist die Verwendung des Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) aus dem Maven-Repository. Die zweite Abhängigkeit ist die Angabe des Protokollierungsframeworks (`slf4j-nop`) für diese Anwendung. Das Data Lake Storage Gen1 SDK verwendet die Protokollierungsfassade [SLF4J](https://www.slf4j.org/), bei der Sie zwischen mehreren gängigen Protokollierungsframeworks wie Log4j, Java-Protokollierung, Logback usw. auswählen oder die Protokollierung deaktivieren können. Da wir im vorliegenden Beispiel die Protokollierung deaktivieren möchten, verwenden wir die Bindung **slf4j-nop**. Informationen zur Verwendung anderer Protokollierungsoptionen für Ihre App finden Sie [hier](https://www.slf4j.org/manual.html#projectDep).
 
 3. Fügen Sie Ihrer Anwendung die folgenden Importanweisungen hinzu.
 

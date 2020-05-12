@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845258"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612060"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Lesen von Eingabe in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer
 
@@ -65,11 +65,11 @@ Der Parameter `stream` ist der Stream, der das serialisierte Objekt enthält. `D
 
 `StreamingDiagnostics` ist die Diagnose für benutzerdefinierte Operatoren, einschließlich Serialisierungsmodul, Deserialisierer und benutzerdefinierter Funktionen.
 
-`WriteError` schreibt eine Fehlermeldung in Diagnoseprotokolle und sendet den Fehler an die Diagnose.
+`WriteError` schreibt eine Fehlermeldung in Ressourcenprotokolle und sendet den Fehler an die Diagnose.
 
-`briefMessage` ist eine kurze Fehlermeldung. Diese Meldung wird in der Diagnose angezeigt und wird vom Produktteam für das Debuggen verwendet. Fügen Sie keine vertraulichen Informationen ein, und beschränken Sie die Meldung auf maximal 200 Zeichen.
+`briefMessage` ist eine kurze Fehlermeldung. Diese Meldung wird in der Diagnose angezeigt und vom Produktteam für das Debuggen verwendet. Fügen Sie keine vertraulichen Informationen ein, und beschränken Sie die Meldung auf maximal 200 Zeichen.
 
-`detailedMessage` ist eine ausführliche Fehlermeldung, die nur in den Diagnoseprotokollen im Speicher eingefügt wird. Diese Meldung darf maximal 2.000 Zeichen umfassen.
+`detailedMessage` ist eine ausführliche Fehlermeldung, die nur in den Ressourcenprotokollen im Speicher hinzugefügt wird. Diese Meldung darf maximal 2.000 Zeichen umfassen.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -247,6 +247,10 @@ Dies wird nicht unterstützt. Wenn Sie diese Funktion benötigen, können Sie in
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Kann ich meine Implementierung des Deserialisierers für die Community freigeben, sodass andere Benutzer sie verwenden können?
 
 Nach der Implementierung des Deserialisierers können Sie ihn für die Community freigeben. Übermitteln Sie den Code an das [Azure Stream Analytics-Repository in GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
+
+### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Welche sonstigen Einschränkungen gelten für die Verwendung benutzerdefinierter Deserialisierer in Stream Analytics?
+
+Wenn die Eingabe im Protobuf-Format mit einem Schema vorliegt, das den MapField-Typ enthält, können Sie keinen benutzerdefinierten Deserialisierer implementieren. Wir arbeiten an einer zukünftigen Unterstützung dieses Typs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

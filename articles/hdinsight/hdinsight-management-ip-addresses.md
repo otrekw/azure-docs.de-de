@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78271803"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778259"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
@@ -82,7 +82,7 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 
 Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
 
-Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs](./control-network-traffic.md).
 
 Wenn Sie benutzerdefinierte Routen (User-Defined Routes, UDRs) verwenden, sollten Sie eine Route angeben und ausgehenden Datenverkehr vom virtuellen Netzwerk an die oben genannten IP-Adressen zulassen und den nächsten Hop dabei auf „Internet“ festlegen.
 
