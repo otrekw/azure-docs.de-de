@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263453"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606890"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bedrohungsschutz in Azure Security Center
 
@@ -31,6 +31,12 @@ Der Bedrohungsschutz von Azure Security Center bietet umfassende Schutzmaßnahme
 
 Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um Ihre Warnungen an Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. an ein beliebiges anderes externes Tool zu exportieren. 
 
+> [!TIP]
+> Wenn Sie die Security Center-Features zum Schutz vor Bedrohungen aktivieren möchten, müssen Sie den Tarif „Standard“ dem Abonnement mit den entsprechenden Workloads zuweisen.
+>
+> Sie können den Schutz vor Bedrohungen für **Azure Storage-Konten** entweder auf Abonnement- oder Ressourcenebene aktivieren.
+> Sie können den Schutz vor Bedrohungen für **SQL-Server von Azure SQL-Datenbank** entweder auf Abonnement- oder Ressourcenebene aktivieren.
+> Sie können den Schutz vor Bedrohungen für **Azure Database for MariaDB/MySQL/PostgreSQL** nur auf der Ressourcenebene aktivieren.
 
 
 

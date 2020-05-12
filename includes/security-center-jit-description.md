@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: c77849b2285283a34e6adf84dc3845a4076407af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597938"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82616070"
 ---
 ## <a name="attack-scenario"></a>Angriffsszenario
 
@@ -29,9 +29,16 @@ Wenn ein Benutzer den Zugriff auf einen virtuellen Computer anfordert, überprü
  > Wenn eine Just-In-Time-Zugriffsanforderung für einen von einer Azure Firewall geschützten virtuellen Computer genehmigt wird, ändert Security Center automatisch sowohl die Netzwerksicherheitsgruppe als auch Regeln für die Firewallrichtlinie. Für den angegebenen Zeitraum ermöglichen die Regeln eingehenden Datenverkehr an die ausgewählten Ports und angeforderte Quell-IP-Adressen oder -Bereiche. Nach Ablauf dieser Zeitspanne stellt Security Center die Firewall- und NSG-Regeln mit dem zuvor verwendeten Zustand wieder her.
 
 
+## <a name="roles-that-can-read-jit-policies"></a>Rollen, die JIT-Richtlinien lesen können
+
+Die Rollen **Reader** und **SecurityReader** können beide Richtlinien lesen.
+
 ## <a name="permissions-needed-to-configure-and-use-jit"></a>Berechtigungen, die zum Konfigurieren und Verwenden von JIT erforderlich sind
+
+Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten können, benötigen Sie die folgenden Details:
 
 | Optionen, die Benutzern ermöglicht werden können: | Festzulegende Berechtigungen|
 | --- | --- |
 | Konfigurieren oder Bearbeiten einer JIT-Richtlinie für einen virtuellen Computer | *Weisen Sie der Rolle diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Im Bereich eines Abonnements oder einer Ressourcengruppe eines virtuellen Computers: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Anfordern von JIT-Zugriff auf einen virtuellen Computer | *Weisen Sie dem Benutzer diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
+|Lesen von JIT-Richtlinien| *Weisen Sie dem Benutzer diese Aktionen zu:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
