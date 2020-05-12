@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Teste
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084327"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731933"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -57,7 +57,7 @@ Sollten Sie kein GitHub-Konto besitzen, sehen Sie sich die [Voraussetzungen](#pr
 
 1. Wählen Sie die grüne Schaltfläche **New** (Neu) aus.
 1. Geben Sie unter **Repository Name** (Repositoryname) einen Repositorynamen ein.  Beispiel: **AzureRmPipeline-repo**. Denken Sie daran, alle Vorkommen von **AzureRmPipeline** durch Ihren Projektnamen zu ersetzen. In diesem Tutorial können Sie entweder **Public** (Öffentlich) oder **Private** (Privat) auswählen. Wählen Sie anschließend **Create Repository** (Repository erstellen) aus.
-1. Notieren Sie sich die URL. Die Repository-URL hat das folgende Format: **https://github.com/ [IhrKontoname]/[IhrRepositoryname]** .
+1. Notieren Sie sich die URL. Die Repository-URL hat das folgende Format: **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
 
 Dieses Repository wird als *Remoterepository* bezeichnet. Jeder Entwickler des gleichen Projekts kann sein eigenes *lokales Repository* klonen und die Änderungen mit dem Remoterepository zusammenführen.
 
@@ -104,7 +104,7 @@ Die Datei „azuredeploy.json“ wurde dem lokalen Repository hinzugefügt. Als 
     ```
 
     Daraufhin wird unter Umständen eine LF-Warnung angezeigt. Diese Warnung kann ignoriert werden. **master** ist der Masterbranch.  Üblicherweise wird für jedes Update ein eigener Branch erstellt. Zur Vereinfachung des Tutorials verwenden wir den Masterbranch direkt.
-1. Navigieren Sie in einem Browser zu Ihrem GitHub-Repository.  Die URL lautet **https://github.com/ [Name Ihres Kontos]/[Name Ihres GitHub-Repositorys]** . Der Ordner **CreateWebApp** und die drei Dateien im Ordner werden angezeigt.
+1. Navigieren Sie in einem Browser zu Ihrem GitHub-Repository.  Die URL lautet **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . Der Ordner **CreateWebApp** und die drei Dateien im Ordner werden angezeigt.
 1. Wählen Sie **linkedStorageAccount.json** aus, um die Vorlage zu öffnen.
 1. Wählen Sie die Schaltfläche **raw** (unformatiert) aus. Die URL wird mit **raw.githubusercontent.com** gestartet.
 1. Kopieren Sie die URL.  Sie müssen diesen Wert angeben, wenn Sie die Pipeline später in diesem Tutorial konfigurieren.

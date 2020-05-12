@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 03/17/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 19b13db83b2c2533e963a503dc8ea3e362b5b5ed
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365977"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652962"
 ---
 # <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Aktualisieren des Durchsatzes (RU/s) für eine Datenbank oder einen Container der Azure Cosmos DB-SQL-API
 
@@ -39,9 +39,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Erstellt eine neue Cosmos DB-SQL-Datenbank oder aktualisiert eine vorhandene Cosmos DB-SQL-Datenbank. |
-| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Ruft einen Cosmos DB-SQL-Container ab. |
-| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Erstellt einen neuen Cosmos DB-SQL-Container oder aktualisiert einen vorhandenen Cosmos DB-SQL-Container. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Ruft den Durchsatzwert des SQL-Containers ab. |
+| [Update-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Aktualisiert den Durchsatzwert des SQL-Containers. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

@@ -13,22 +13,28 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535696"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629098"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure-Computeeinheit (ACU)
 
-Das Konzept der Azure-Compute-Einheit (Azure Compute Unit, ACU) bietet eine Möglichkeit zum Vergleichen der Rechenleistung (CPU) zwischen den Azure-SKUs. Auf diese Weise können Sie leicht feststellen, welche SKU Ihren Leistungsanforderungen am ehesten entspricht. Zurzeit ist der ACU-Wert auf einem kleinen virtuellen Computer (Standard_A1) auf den Standardwert 100 festgelegt, und an den übrigen SKUs kann ungefähr abgelesen werden, wie viel schneller die jeweilige SKU einen Standard-Benchmarktest ausführen kann.
+Das Konzept der Azure-Compute-Einheit (Azure Compute Unit, ACU) bietet eine Möglichkeit zum Vergleichen der Rechenleistung (CPU) zwischen den Azure-SKUs. Auf diese Weise können Sie leicht feststellen, welche SKU Ihren Leistungsanforderungen am ehesten entspricht. Zurzeit ist der ACU-Wert auf einem kleinen virtuellen Computer (Standard_A1) auf den Standardwert „100“ festgelegt, und an den übrigen SKUs kann ungefähr abgelesen werden, wie viel schneller die jeweilige SKU einen Standard-Benchmarktest ausführen kann.
+
+*ACUs verwenden die Intel® Turbo-Technologie, um die CPU-Frequenz zu erhöhen und eine Leistungssteigerung zu erzielen.  Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
+
+**ACUs verwenden die AMD® Boost-Technologie, um die CPU-Frequenz zu erhöhen und eine Leistungssteigerung zu erzielen.  Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
+
+***Mit Hyperthreading und der Möglichkeit zum Ausführen geschachtelter Virtualisierungen
 
 > [!IMPORTANT]
 > Die ACU ist nur ein Richtwert. Die Ergebnisse für Ihre Workload können abweichen.
 <br>
 
-| SKU-Familie | ACU\vCPU | vCPU: Kern |
+| SKU-Familie | ACU\vCPU | vCPU: Core |
 | --- | --- |---|
 | [A0](sizes-previous-gen.md) |50 | 1:1 |
 | [A1–A4](sizes-previous-gen.md) |100 | 1:1 |
@@ -55,10 +61,6 @@ Das Konzept der Azure-Compute-Einheit (Azure Compute Unit, ACU) bietet eine Mög
 | [L4s–L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2–L80s_v2](lsv2-series.md) |150–175** | 2:1 |
 | [M](m-series.md) | 160–180 | 2:1\*\*\* |
-
-*ACUs verwenden die Intel® Turbo-Technologie, um die CPU-Frequenz zu erhöhen und eine Leistungssteigerung zu erzielen.  Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
-**ACUs verwenden die AMD® Boost-Technologie, um die CPU-Frequenz zu erhöhen und eine Leistungssteigerung zu erzielen.  Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
-***Mit Hyperthreading und der Möglichkeit zum Ausführen geschachtelter Virtualisierungen
 
 Es folgen Links für weitere Informationen zu den verschiedenen Größen:
 

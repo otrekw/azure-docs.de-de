@@ -3,15 +3,15 @@ title: Verwalten der Integrationsdienstumgebungen in Azure Logic Apps
 description: Überprüfen der Netzwerkintegrität und Verwalten von Logik-Apps, Verbindungen, benutzerdefinierten Connectors und Integrationskonten in Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) für Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237230"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598418"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -54,6 +54,10 @@ Sie können die Logik-Apps anzeigen und verwalten, die in ihrer ISE vorhanden si
    ![Anzeigen von Logik-Apps](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. Wenn Sie Logik-Apps entfernen möchten, die Sie nicht mehr in Ihrer ISE benötigen, markieren Sie diese Logik-Apps und wählen dann **Löschen** aus. Um den Löschvorgang zu bestätigen, wählen Sie **Ja** aus.
+
+> [!NOTE]
+> Wenn Sie eine untergeordnete Logik-App löschen und neu erstellen, müssen Sie die übergeordnete Logik-App erneut speichern. Die neu erstellte untergeordnete App besitzt andere Metadaten.
+> Wenn Sie die übergeordnete Logik-App nach dem erneuten Erstellen der untergeordneten App nicht erneut speichern, schlagen ihre Aufrufe der untergeordneten Logik-App mit dem Fehler „Nicht autorisiert“ fehl. Dieses Verhalten gilt für über- und untergeordnete Logik-Apps, z. B. solche, die Artefakte in Integrationskonten verwenden oder Azure-Funktionen aufrufen.
 
 <a name="find-api-connections"></a>
 

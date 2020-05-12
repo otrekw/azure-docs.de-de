@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436165"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612825"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ Wenn Security Center erkennt, dass ein virtueller Computer bereits mit einem Arb
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>In meiner Umgebung sind bereits Arbeitsbereiche vorhanden. Kann ich diese zum Sammeln von Sicherheitsdaten verwenden?
 Wenn der Log Analytics-Agent bereits als Azure-Erweiterung auf einem virtuellen Computer installiert ist, verwendet Security Center den vorhandenen verbundenen Arbeitsbereich. Eine Security Center-Lösung wird im Arbeitsbereich installiert, falls noch keine vorhanden ist, und die Lösung wird mittels [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) nur auf die relevanten virtuellen Computer angewendet.
 
-Wenn Security Center den Log Analytics-Agent auf virtuellen Computern installiert, werden dabei die von Security Center erstellten Standardarbeitsbereiche verwendet.
+Wenn Security Center den Log Analytics-Agent auf virtuellen Computern installiert, werden dabei die von Security Center erstellten Standardarbeitsbereiche verwendet, wenn Security Center auf keinen vorhandenen Arbeitsbereich verwiesen wird.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Die Lösung „Security“ ist bereits in meinen Arbeitsbereichen enthalten. Was bedeutet das für die Abrechnung?
 Die Lösung „Sicherheit und Überwachung“ wird verwendet, um Funktionen der Security Center-Standardebene für Azure-VMs zu aktivieren. Wenn die Lösung „Sicherheit und Überwachung“ bereits in einem Arbeitsbereich installiert ist, verwendet Security Center die vorhandene Lösung. Die Abrechnung wird dadurch nicht beeinflusst.

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907221"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732001"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
 
@@ -19,7 +19,8 @@ Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/quicks
 
 Für die Ereignisüberwachung in Echtzeit und die Durchführung eines umfassenderen Debuggens richten Sie die Diagnoseprotokollierung für Ihre Logik-App mithilfe der [Azure Monitor-Protokolle](../azure-monitor/overview.md) ein. Dieser Azure-Dienst hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Sie können dann Ereignisse suchen und anzeigen, z. B. Triggereignisse, Ausführungsereignisse und Aktionsereignisse. Durch das Speichern dieser Informationen in [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu analysieren. Sie können diese Diagnosedaten auch mit anderen Azure-Diensten verwenden, z. B. Azure Storage und Azure Event Hubs. Weitere Informationen finden Sie unter [Überwachen von Logik-Apps mittels Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, die für die Verwendung eines [internen Zugriffsendpunkts](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access) erstellt wurde, können Sie *nur innerhalb Ihres virtuellen Netzwerks* Eingaben und Ausgaben aus dem Ausführungsverlauf der Logik-App anzeigen und darauf zugreifen. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
 <a name="review-runs-history"></a>
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mit RBAC und Azure PowerShell'
-description: In diesem Tutorial erfahren Sie, wie Sie einer Gruppe mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure PowerShell Zugriff auf Azure-Ressourcen gewähren.
+title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mithilfe von Azure PowerShell – Azure RBAC'
+description: In diesem Tutorial erfahren Sie, wie Sie einer Gruppe mit Azure PowerShell und der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) Zugriff auf Azure-Ressourcen gewähren.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138236"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735520"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mit RBAC und Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mithilfe von Azure PowerShell
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Tutorial gewähren Sie einer Gruppe Zugriff, damit sie mithilfe von Azure PowerShell alle Elemente in einem Abonnement anzeigen und alle Elemente in einer Ressourcengruppe verwalten kann.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwaltet. In diesem Tutorial gewähren Sie einer Gruppe Zugriff, damit sie mithilfe von Azure PowerShell alle Elemente in einem Abonnement anzeigen und alle Elemente in einer Ressourcengruppe verwalten kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -44,7 +44,7 @@ Zum Durcharbeiten dieses Tutorials benötigen Sie Folgendes:
 
 ## <a name="role-assignments"></a>Rollenzuweisungen
 
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. In diesem Tutorial führen Sie die zwei folgenden Rollenzuweisungen aus:
+In Azure RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. In diesem Tutorial führen Sie die zwei folgenden Rollenzuweisungen aus:
 
 | Sicherheitsprinzipal | Rollendefinition | `Scope` |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ Zum Zuweisen einer Rolle benötigen Sie einen Benutzer, eine Gruppe oder einen D
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Wenn Sie nicht über die Berechtigungen zum Erstellen von Gruppen verfügen, können Sie es stattdessen mit dem [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md) versuchen.
+Wenn Sie nicht über die Berechtigungen zum Erstellen von Gruppen verfügen, können Sie es stattdessen mit dem [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mithilfe von Azure PowerShell](tutorial-role-assignments-user-powershell.md) versuchen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -294,4 +294,4 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen löschen Sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](role-assignments-powershell.md)
+> [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](role-assignments-powershell.md)

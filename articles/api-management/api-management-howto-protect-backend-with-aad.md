@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804366"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778973"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -79,7 +79,7 @@ Jede Clientanwendung, aus der die API aufgerufen wird, muss auch in Azure AD als
     - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird, beispielsweise *Client-App*. 
     - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (Beliebiges Azure AD-Verzeichnis – mehrinstanzenfähig)** aus. 
 
-1. Wählen Sie im Abschnitt **Umleitungs-URI** die Option `Web` aus, und geben Sie die URL `https://contoso5.portal.azure-api.net/signin` ein.
+1. Wählen Sie im Abschnitt **Umleitungs-URI** die Option `Web` aus, und lassen Sie das URL-Feld vorerst leer.
 
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen. 
 
@@ -149,9 +149,9 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Wechseln Sie zurück zu Ihrer Client-App, und wählen Sie **Authentifizierung** aus.
+1. Wechseln Sie zurück zu Ihrer Client-App-Registrierung in Azure Active Directory, und wählen Sie **Authentifizierung** aus.
 
-1. Wählen Sie unter **Umleitungs-URIs** den Typ **Web** aus, fügen Sie **redirect_url** unter **Umleitungs-URI** ein, und speichern Sie dann.
+1. Klicken Sie unter **Plattformkonfigurationen** auf **Plattform hinzufügen**, wählen Sie den Typ **Web** aus, fügen Sie die **redirect_url** unter **Umleitungs-URI**ein, und klicken Sie dann auf die Schaltfläche **Konfigurieren**, um zu speichern.
 
 Nachdem Sie nun einen OAuth 2.0-Autorisierungsserver konfiguriert haben, kann die Entwicklerkonsole Zugriffstoken von Azure AD abrufen. 
 

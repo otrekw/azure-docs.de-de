@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Power BI-App-Erstellung – Azure Marketplace
+title: Übersicht über die Power BI-App-Erstellung – Microsoft AppSource
 description: In diesem Artikel werden die allgemeinen Schritte zum Veröffentlichen einer Power BI-App in Microsoft AppSource beschrieben. Die technischen und geschäftlichen Anforderungen, die Ihre Power BI-App erfüllen muss, damit sie auf dem kommerziellen Marketplace veröffentlicht werden kann, werden ebenfalls angegeben.
 author: anbene
 ms.author: mingshen
@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732679"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837837"
 ---
 # <a name="power-bi-app-creation-overview"></a>Übersicht über die Power BI-App-Erstellung
-
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Power BI-App-Angebote aus dem Cloud-Partnerportal in Partner Center. Befolgen Sie für die Verwaltung Ihrer Angebote bis zur erfolgten Migration die Anweisungen unter [Power BI-App-Angebote](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) für das Cloud-Partnerportal.
 
 In diesem Artikel wird erläutert, wie Sie eine Power BI-App in Microsoft [AppSource](https://appsource.microsoft.com/) veröffentlichen. In einer Power BI-App sind anpassbare Inhalte wie Datasets, Berichte und Dashboards gepackt. Sie können die App dann mit anderen Power BI-Plattformen bereitstellen, die AppSource verwenden, vom Entwickler zugelassene Änderungen und Anpassungen vornehmen und die App mit Ihren eigenen Daten verbinden.
 
@@ -39,7 +36,7 @@ Dies sind die wichtigsten Schritte zur Veröffentlichung:
 1. Erstellen Sie eine Anwendung in Power BI. Sie erhalten einen Link zur Paketinstallation. Dies ist die wichtigste technische Ressource für das Angebot. Senden Sie das Testpaket an die Vorproduktion, bevor Sie das Angebot in Partner Center erstellen. Weitere Informationen finden Sie unter [Was sind Power BI-Apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
 2. Fügen Sie das Marketingmaterial hinzu, z. B. einen offiziellen Namen, eine Beschreibung und Logos.
 3. Schließen Sie die rechtlichen und unterstützenden Dokumente ein, z. B. Nutzungsbedingungen, Datenschutzrichtlinie, Unterstützungsrichtlinie und Benutzerhilfe.
-4. Erstellen Sie das Angebot: Verwenden Sie Partner Center, um die Details des Angebots zu bearbeiten, darunter die Angebotsbeschreibung, Marketingmaterial, rechtliche Hinweise und Supportinformationen sowie Ressourcenspezifikationen.
+4. Erstellen Sie das Angebot. Verwenden Sie Partner Center, um die Details des Angebots zu bearbeiten, darunter die Angebotsbeschreibung, Marketingmaterial, rechtliche Hinweise und Supportinformationen sowie Ressourcenspezifikationen.
 5. Übermitteln Sie es zur Veröffentlichung.
 6. Überwachen Sie den Fortschritt in Partner Center, wo das AppSource-Onboardingteam Ihre App testet, überprüft und zertifiziert.
 7. Nach der Zertifizierung sollten Sie die App in der Testumgebung überprüfen und sie dann freigeben. Dadurch wird sie in AppSource gelistet (in den Onlinemodus geschaltet).
@@ -79,6 +76,6 @@ Die geschäftlichen Anforderungen umfassen verfahrenstechnische, vertragliche un
 - Stellen Sie Inhalte bereit, die die Kriterien erfüllen, damit Ihr Angebot in AppSource gelistet wird. Weitere Informationen finden Sie im Blogbeitrag [Have an app to list on AppSource? Here’s how](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how) (Informationen zum Listen einer Anwendung in AppSource).
 - Akzeptieren Sie die [Datenschutzbestimmungen von Microsoft](https://privacy.microsoft.com/privacystatement), und befolgen Sie sie.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-step"></a>Nächster Schritt
 
 - [Erstellen eines Power BI-App-Angebots in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

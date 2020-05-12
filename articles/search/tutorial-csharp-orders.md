@@ -1,21 +1,21 @@
 ---
 title: C#-Tutorial zur Reihenfolge von Ergebnissen
 titleSuffix: Azure Cognitive Search
-description: In diesem Tutorial wird veranschaulicht, wie Sie Suchergebnisse sortieren. Es basiert auf einem vorherigen „hotels“-Projekt mit einer Sortierung nach primären und sekundären Eigenschaften und enthält ein Bewertungsprofil zum Hinzufügen von Kriterien für die Erhöhung.
+description: In diesem C#-Tutorial wird veranschaulicht, wie Sie Suchergebnisse sortieren. Es basiert auf einem vorherigen hotels-Projekt mit einer Sortierung nach primären und sekundären Eigenschaften und enthält ein Bewertungsprofil zum Hinzufügen von Kriterien für die Erhöhung.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121544"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780605"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Cognitive Search
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>Tutorial: Sortieren von Suchergebnissen mithilfe des .NET SDK
 
 Bis zu diesem Punkt in unserer Tutorialreihe werden Ergebnisse zurückgegeben und in einer Standardreihenfolge Reihenfolge angezeigt. Dies kann die Reihenfolge sein, in der sich die Daten befinden, oder es wurde möglicherweise ein standardmäßiges _Bewertungsprofil_ definiert, das verwendet wird, wenn keine Reihenfolgeparameter angegeben sind. In diesem Tutorial wird erläutert, wie Ergebnisse basierend auf einer primären Eigenschaft angeordnet werden, und wie diese Auswahl dann für Ergebnisse mit derselben primären Eigenschaft basierend auf einer sekundären Eigenschaft angeordnet werden. Als Alternative zur Sortierung nach Zahlenwerten zeigt das letzte Beispiel, wie nach einem benutzerdefinierten Bewertungsprofil sortiert wird. Wir werden uns auch etwas näher mit der Anzeige von _komplexen Typen_ befassen.
 

@@ -1,20 +1,20 @@
 ---
-title: Umgang mit Prüfungsfeedback für Azure-Apps-Angebote im kommerziellen Marketplace
-description: Der Umgang mit Prüfungsfeedback für Azure-Apps-Angebote für das Anbieten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center
+title: Umgang mit Prüfungsfeedback für Azure-Apps-Angebote im kommerziellen Microsoft-Marketplace
+description: Hier wird der Umgang mit Prüfungsfeedback für Azure-Apps-Angebote für das Auflisten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center beschrieben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279792"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744871"
 ---
-# <a name="handling-review-feedback"></a>Verarbeiten von Prüfungsfeedback
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Umgang mit Prüfungsfeedback für Azure-Apps-Angebote vor der Veröffentlichung im Azure Marketplace
 
 In diesem Artikel wird erläutert, wie Sie auf die Azure DevOps-Umgebung zugreifen können, die vom Microsoft Azure Marketplace-Prüfungsteam verwendet wird. Wenn während des Schritts **Prüfung durch Microsoft** kritische Probleme in Ihrem Azure-Anwendungsangebot gefunden werden, können Sie sich bei diesem System anmelden, um detaillierte Informationen zu diesen Problemen einzusehen (Prüfungsfeedback). Nachdem Sie alle diese Probleme behoben haben, müssen Sie Ihr Angebot erneut übermitteln, damit es in Azure Marketplace weiter veröffentlicht wird. Das folgende Diagramm veranschaulicht, wie sich dieser Feedbackvorgang auf den Veröffentlichungsvorgang auswirkt.
 

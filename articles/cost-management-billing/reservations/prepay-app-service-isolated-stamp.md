@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6d91b455501e2deec4f5ea36e48fafd17144b2c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199414"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628145"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Senken der Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität
 
@@ -41,7 +41,7 @@ Erwerben Sie Windows-Stempelreservierungen, wenn für den Stempel mindestens ein
 Reservierte Kapazität für gesonderte Stempel kann über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) erworben werden. Bezahlen Sie die Reservierung [im Voraus oder monatlich](monthly-payments-reservations.md). Für den Erwerb von reservierter Kapazität müssen Sie über die Besitzerrolle für mindestens ein Enterprise- oder Einzelabonnement mit nutzungsbasierten Tarifen verfügen.
 
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Sollte diese Einstellung deaktiviert sein, müssen Sie EA-Administrator sein.
-- Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents reservierte Kapazität für SQL Data Warehouse erwerben.
+- Für das Cloud Solution Provider-Programm (CSP) können nur die Administratoren oder Vertriebsmitarbeiter reservierte Azure Synapse Analytics-Kapazität erwerben.
 
 **Vorgehensweise für den Erwerb:**
 

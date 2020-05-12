@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/04/2020
 ms.author: b-juche
-ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054466"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791407"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegieren eines Subnetzes an Azure NetApp Files 
 
@@ -28,7 +28,8 @@ Sie müssen ein Subnetze an Azure NetApp Files delegieren.   Wenn Sie ein Volume
 ## <a name="considerations"></a>Überlegungen
 * Der Assistent zum Erstellen eines neuen Subnetzes verwendet standardmäßig eine /24-Netzwerkmaske, die 251 IP-Adressen bereitstellt. Die Verwendung einer /28-Netzwerkmaske, die 16 nutzbare IP-Adressen bereitstellt, ist für den Dienst ausreichend.
 * In jedem Azure Virtual Network (VNET) kann nur ein Subnetz an Azure NetApp Files delegiert werden.   
-   Azure ermöglicht es Ihnen, mehrere delegierte Subnetze in einem VNet zu erstellen.  Alle Versuche, ein neues Volume zu erstellen, schlagen jedoch fehl, wenn Sie mehr als ein delegiertes Subnetz verwenden.
+   Azure ermöglicht es Ihnen, mehrere delegierte Subnetze in einem VNet zu erstellen.  Alle Versuche, ein neues Volume zu erstellen, schlagen jedoch fehl, wenn Sie mehr als ein delegiertes Subnetz verwenden.  
+   Sie können nur über ein delegiertes Subnetz in einem VNet verfügen. Ein NetApp-Konto kann Volumes in mehreren VNets bereitstellen, die jeweils über ihre eigenen delegierte Subnetze verfügen.  
 * Sie können im delegierten Subnetz keine Netzwerksicherheitsgruppe und keinen Dienstendpunkt festlegen. Dadurch würde bei der Subnetzdelegierung ein Fehler auftreten.
 * Der Zugriff auf einem Volume aus einem globalen virtuellen Peeringnetzwerk wird zurzeit nicht unterstützt.
 * Das Erstellen von [benutzerdefinierten angepassten Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) in VM-Subnetzen mit Adresspräfix (Ziel) für ein Subnetz, das an Azure NetApp Files delegiert wurde, wird nicht unterstützt. Dies wirkt sich auf die VM-Konnektivität aus.

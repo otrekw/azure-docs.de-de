@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617336"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787361"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -51,15 +51,15 @@ Die folgenden Mindestanforderungen gelten für einen Windows Hybrid Runbook Work
 
 Weitere Netzwerkanforderungen für den Hybrid Runbook Worker finden Sie unter [Konfigurieren des Netzwerks](automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="server-onboarding-for-management-with-automation-dsc"></a>Serveronboarding für die Verwaltung mit Azure Automation DSC
+### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>Serveronboarding für die Verwaltung mit State Configuration (DSC)
 
-Informationen zum Onboarding von Servern für die Verwaltung mit DSC finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
+Informationen zum Onboarding von Servern für die Verwaltung mit State Configuration (DSC) finden Sie unter [Onboarding von Computern für die Verwaltung mit State Configuration (DSC)](automation-dsc-onboarding.md).
 
-Beim Aktivieren der [Lösung für die Updateverwaltung](../operations-management-suite/oms-solution-update-management.md) werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um in dieser Lösung enthaltene Runbooks zu unterstützen. Es erfolgt jedoch keine Registrierung des Workers für Hybrid Runbook Worker-Gruppen, die in Ihrem Automation-Konto bereits definiert wurden.
+Beim Aktivieren der [Updateverwaltung](automation-update-management.md) werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um Runbookupdates zu unterstützen. Es erfolgt jedoch keine Registrierung des Workers für Hybrid Runbook Worker-Gruppen, die in Ihrem Automation-Konto bereits definiert wurden.
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>Hinzufügen des Computers zu einer Hybrid Runbook Worker-Gruppe
 
-Sie können den Workercomputer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen. Beachten Sie, dass Sie Automation-Runbooks unterstützen müssen, sofern Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+Sie können den Workercomputer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen. Beachten Sie, dass Sie Automation-Runbooks unterstützen müssen, sofern Sie sowohl für die Azure Automation-Funktion als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
 ## <a name="automated-deployment"></a>Automatisierte Bereitstellung
 
@@ -81,7 +81,7 @@ Laden Sie das Skript **New-OnPremiseHybridWorker.ps1** aus dem [PowerShell-Katal
 | `WorkspaceName` | Optional | Name des Log Analytics-Arbeitsbereichs. Falls kein Log Analytics-Arbeitsbereich vorhanden ist, wird dieser durch das Skript erstellt und konfiguriert. |
 
 > [!NOTE]
-> Wenn Sie Lösungen aktivieren, unterstützt Azure Automation nur bestimmte Regionen für das Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
+> Wenn Sie Funktionen aktivieren, unterstützt Azure Automation nur bestimmte Regionen für das Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Schritt 2: Öffnen einer Windows PowerShell-Befehlszeilenshell
 
@@ -115,9 +115,9 @@ Führen Sie auf dem Zielcomputer die ersten beiden Schritte einmalig für Ihre A
 
 Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, lesen Sie zuerst die [Entwurfsanleitung für Azure Monitor-Protokolle](../azure-monitor/platform/design-logs-deployment.md), bevor Sie einen Arbeitsbereich erstellen.
 
-### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>Schritt 2: Hinzufügen der Automation-Lösung zum Log Analytics-Arbeitsbereich
+### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>Schritt 2: Hinzufügen einer Azure Automation-Funktion zum Log Analytics-Arbeitsbereich
 
-Die Automation-Lösung fügt Azure Automation Funktionen hinzu, einschließlich Unterstützung für den Hybrid Runbook Worker. Wenn Sie die Lösung Ihrem Log Analytics-Arbeitsbereich hinzufügen, werden die Workerkomponenten, die Sie gemäß der Beschreibung im nächsten Schritt installieren, automatisch auf den Agent-Computer gepusht.
+Eine Automation-Funktion fügt Azure Automation Funktionen hinzu, einschließlich Unterstützung für den Hybrid Runbook Worker. Wenn Sie Ihrem Log Analytics-Arbeitsbereich eine Funktion hinzufügen, werden die Workerkomponenten, die Sie gemäß der Beschreibung im nächsten Schritt installieren, automatisch auf den Agent-Computer gepusht.
 
 Führen Sie das folgende PowerShell-Cmdlet aus, um Ihrem Arbeitsbereich die Automation-Lösung hinzuzufügen.
 
@@ -177,13 +177,38 @@ Sie finden die für dieses Cmdlet erforderlichen Informationen im Azure-Portal a
 
 Runbooks können beliebige Aktivitäten und Cmdlets der Module verwenden, die Sie in Ihrer Azure Automation-Umgebung installiert haben. Da diese Module nicht automatisch auf den lokalen Computern bereitgestellt werden, müssen Sie sie manuell installieren. Die Ausnahme ist das Azure-Modul. Dieses Modul wird standardmäßig installiert und bietet Zugriff auf Cmdlets für alle Azure-Dienste und -Aktivitäten für Azure Automation.
 
-Da der primäre Zweck des Features Hybrid Runbook Worker in der Verwaltung lokaler Ressourcen besteht, müssen Sie sehr wahrscheinlich die Module zur Unterstützung dieser Ressourcen installieren, insbesondere das Modul `PowerShellGet`. Informationen zum Installieren von Windows PowerShell-Modulen finden Sie unter [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Da der primäre Zweck des Hybrid Runbook Workers in der Verwaltung lokaler Ressourcen besteht, müssen Sie sehr wahrscheinlich die Module zur Unterstützung dieser Ressourcen installieren, insbesondere das Modul `PowerShellGet`. Informationen zum Installieren von Windows PowerShell-Modulen finden Sie unter [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
 Installierte Module müssen sich an einem Speicherort befinden, auf den von der Umgebungsvariablen `PSModulePath` verwiesen wird, damit sie vom Hybrid Worker automatisch importiert werden. Weitere Informationen finden Sie unter [Installieren von Modulen in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>Entfernen des Hybrid Runbook Workers von einem lokalen Windows-Computer
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
+2. Wählen Sie unter **Kontoeinstellungen** die Option **Schlüssel** aus, und notieren Sie sich die Werte für **URL** und **Primärer Zugriffsschlüssel**.
+
+3. Öffnen Sie eine PowerShell-Sitzung im Administratormodus, und führen Sie den folgenden Befehl aus. Verwenden Sie dabei Ihre Werte für URL und primären Zugriffsschlüssel. Verwenden Sie den Parameter `Verbose`, um ein ausführliches Protokoll zum Entfernungsvorgang zu erhalten. Verwenden Sie zum Entfernen veralteter Computer aus Ihrer Hybrid Worker-Gruppe den optionalen Parameter `machineName`.
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+## <a name="remove-a-hybrid-worker-group"></a>Entfernen einer Hybrid Worker-Gruppe
+
+Um eine Hybrid Runbook Worker-Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von allen Computern entfernen, die Mitglied der Gruppe sind. Führen Sie dann die folgenden Schritte aus, um die Gruppe zu entfernen:
+
+1. Wählen Sie im Azure-Portal das Automation-Konto aus.
+2. Wählen Sie unter **Prozessautomatisierung** die Option **Hybrid Worker-Gruppen** aus. Wählen Sie die Gruppe aus, die Sie löschen möchten. Die Seite „Eigenschaften“ für diese Gruppe wird angezeigt.
+
+   ![Eigenschaftenseite](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+
+3. Wählen Sie auf der Seite „Eigenschaften“ der ausgewählten Gruppe die Option **Löschen** aus. Eine Meldung fordert Sie zur Bestätigung dieser Aktion auf. Klicken Sie auf **Ja**, wenn Sie den Vorgang wirklich fortsetzen möchten.
+
+   ![Bestätigungsmeldung](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+
+   Der Abschluss dieses Vorgangs kann mehrere Sekunden in Anspruch nehmen. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Rechenzentrum oder in einer anderen Cloudumgebung konfigurieren, lesen Sie sich [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md) durch.
-* Anweisungen zum Entfernen von Hybrid Runbook Workern finden Sie unter [Entfernen von Azure Automation-Hybrid Runbook Workern](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
 * Informationen zur Problembehandlung Ihrer Hybrid Runbook Worker finden Sie unter [Problembehandlung von Windows Hybrid Runbook Workern](troubleshoot/hybrid-runbook-worker.md#windows).
-* Zusätzliche Schritte zum Beheben von Problemen mit der Updateverwaltung finden Sie unter [Updateverwaltung: Problembehandlung](troubleshoot/update-management.md).
+

@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673200"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597976"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -78,7 +78,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="installing-the-azure-backup-agent"></a>Installieren des Azure Backup-Agents
 
-Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](https://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\Downloads\*.
+Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](https://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie `C:\Downloads\*`.
 
 Alternativ können Sie das Downloadprogramm mithilfe von PowerShell abrufen:
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 Die Sicherungsdaten, die an Azure Backup gesendet werden, werden verschlüsselt, um die Vertraulichkeit der Daten zu schützen. Die Verschlüsselungspassphrase ist das "Kennwort" zum Entschlüsseln der Daten zum Zeitpunkt der Wiederherstellung.
 
-Sie müssen eine Sicherheits-PIN generieren, indem Sie im Azure-Portal im Abschnitt **Recovery Services-Tresor** unter **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN** auf **Generieren** klicken. Verwenden Sie diese PIN anschließend im folgenden Befehl als `generatedPIN`:
+Sie müssen eine Sicherheits-PIN generieren, indem Sie im Azure-Portal im Abschnitt **Recovery Services-Tresor** unter **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN** auf **Generieren** klicken. 
+
+>[!NOTE]
+> Die Sicherheits-PIN kann nur über das Azure-Portal generiert werden.
+
+Verwenden Sie diese PIN anschließend im folgenden Befehl als `generatedPIN`:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

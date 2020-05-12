@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425329"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692396"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von Power BI Professional
 
@@ -26,7 +26,7 @@ ms.locfileid: "81425329"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-In diesem Tutorial werden die Schritte zum Herstellen einer Verbindung zwischen Power BI Desktop und SQL On-Demand (Vorschauversion) erläutert.
+In diesem Tutorial werden die Schritte zum Herstellen einer Verbindung zwischen Power BI Desktop und SQL On-Demand (Vorschauversion) erläutert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ Parameter:
 | Dienstendpunktadresse von SQL On-Demand    | Wird als Servername verwendet.                                   |
 | Dienstendpunktregion von SQL On-Demand     | Wird verwendet, um zu bestimmen, welcher Speicher in Beispielen genutzt wird. |
 | Benutzername und Kennwort für den Endpunktzugriff | Wird für den Zugriff auf den Endpunkt verwendet.                               |
-| Datenbank, die Sie zum Erstellen von Ansichten verwenden     | Diese Datenbank wird als Ausgangspunkt in Beispielen verwendet.       |
+| Datenbank zum Erstellen von Ansichten     | Diese Datenbank wird als Ausgangspunkt in Beispielen verwendet.       |
 
 ## <a name="first-time-setup"></a>Erstmalige Einrichtung
 
@@ -57,10 +57,10 @@ Vor der Verwendung von Beispielen müssen zwei Schritte ausgeführt werden:
 
 ### <a name="create-database"></a>Erstellen einer Datenbank
 
-Da Sie eine Demoumgebung verwenden, sollten Sie eine eigene Datenbank zu Demonstrationszwecken erstellen. Die Datenbank ist erforderlich, damit darin Ansichten erstellt werden können. Diese Datenbank wird in einigen Beispielabfragen in dieser Dokumentation verwendet.
+In diesem Artikel zu den ersten Schritten sollten Sie eine eigene Datenbank zu Demozwecken erstellen. Zum Erstellen von Ansichten ist eine Datenbank erforderlich. Diese Datenbank wird in einigen Beispielabfragen in dieser Dokumentation verwendet.
 
 > [!NOTE]
-> Beachten Sie, dass Datenbanken nur für Ansichtsmetadaten und nicht für tatsächliche Daten verwendet werden.
+> Datenbanken werden nur zum Anzeigen von Metadaten (nicht für tatsächliche Daten) verwendet.
 >
 > Notieren Sie sich den von Ihnen verwendeten Datenbanknamen. Sie benötigen ihn später.
 
@@ -73,7 +73,7 @@ DROP DATABASE IF EXISTS demo;
 Sie müssen Anmeldeinformationen erstellen, damit Sie Abfragen ausführen können. Diese Anmeldeinformationen werden von SQL On-Demand für den Zugriff auf Dateien im Speicher verwendet.
 
 > [!NOTE]
-> Beachten Sie, dass Sie Anmeldeinformationen für den Zugriff auf das Speicherkonto erstellen müssen. SQL On-Demand kann zwar auf Speicher aus unterschiedlichen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich der Speicher und der Azure Synapse-Arbeitsbereich in derselben Region befinden.
+> Sie müssen Anmeldeinformationen für den Speicherkontozugriff erstellen. SQL On-Demand kann zwar auf Speicher aus unterschiedlichen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich der Speicher und der Azure Synapse-Arbeitsbereich in derselben Region befinden.
 
 Führen Sie den folgenden **Codeausschnitt zum Erstellen von Anmeldeinformationen für Containern mit Volkszählungsdaten** aus:
 
@@ -92,12 +92,13 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>Erstellen eines Power BI Desktop-Berichts
 
-Öffnen Sie die Power BI Desktop-Anwendung, und wählen Sie die Option „Daten abrufen“ aus.
+Öffnen Sie die Power BI Desktop-Anwendung, und wählen Sie die Option **Daten abrufen** aus.
+
 ![Öffnen der Power BI Desktop-Anwendung und Auswählen von „Daten abrufen“](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>Schritt 1: Auswählen einer Datenquelle
 
-Wählen Sie im Menü „Azure“ und dann „Azure SQL-Datenbank“ aus.
+Wählen Sie im Menü die Option **Azure** und dann **Azure SQL-Datenbank** aus.
 ![Auswählen der Datenquelle](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>Schritt 2: Auswählen einer Datenbank

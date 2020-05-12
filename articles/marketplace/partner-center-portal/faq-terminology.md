@@ -1,26 +1,24 @@
 ---
-title: Häufig gestellte Fragen und Terminologie für Analysen für den kommerziellen Marketplace in Partner Center
-description: Erfahren Sie, wie Sie häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace beantworten. Enthält ein Datenwörterbuch für Analyseterminologie.
+title: Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace – Partner Center
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace in Partner Center. Dieser Artikel enthält ein Datenwörterbuch für Analyseterminologie.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251825"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791475"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace
 
 In diesem Artikel werden häufig gestellte Fragen zu Analysenachrichten in Partner Center behandelt. Außerdem wird ein Wörterbuch für Analyseterminologie bereitgestellt.
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-Dieser Abschnitt enthält Antworten auf häufig gestellte Fragen zu Meldungen vom Typ **No Analytics Available Yet** (Noch keine Analysen verfügbar) in Partner Center.
+## <a name="common-questions"></a>Häufig gestellte Fragen
 
 **Ich kann meine Analysedaten in Partner Center nicht anzeigen. Wenn ich auf diese Seiten zugreife, wird die folgende Meldung angezeigt. Warum?**
 
@@ -101,5 +99,5 @@ Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).

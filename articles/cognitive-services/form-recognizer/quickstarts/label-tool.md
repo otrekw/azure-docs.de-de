@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397989"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691335"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -37,7 +37,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
 
 > [!TIP]
-> Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte und in TypeScript geschriebene Webanwendung. Besuchen Sie [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten.
+> Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte TypeScript-Webanwendung. Besuchen Sie das Repository [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten. Wenn Sie Tool online ausprobieren möchten, besuchen Sie die [FOTT-Website](https://fott.azurewebsites.net/).   
 
 1. Installieren Sie zunächst Docker auf einem Hostcomputer. In dieser Anleitung wird veranschaulicht, wie Sie den lokalen Computer als Host verwenden. Wenn Sie einen Docker-Hostingdienst in Azure verwenden möchten, hilft Ihnen die Anleitung zum [Bereitstellen des Tools für die Beschriftung von Beispielen](../deploy-label-tool.md) weiter. 
 
@@ -61,7 +61,7 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Wechseln Sie zu [http://localhost:3000](http://localhost:3000).
+   Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Gehe zu `http://localhost:3000`.
 
 > [!NOTE]
 > Sie können auch die Formularerkennungs-REST-API verwenden, um Dokumente zu beschriften und Modelle zu trainieren. Informationen zum Trainieren und Analysieren mit der REST-API finden Sie unter [Trainieren mit Beschriftungen mit der REST-API und Python](./python-labeled-data.md).
@@ -104,7 +104,7 @@ Geben Sie die folgenden Werte in die Felder ein:
 Im Tool für die Beschriftung von Beispielen werden Ihre Konfigurationen und Einstellungen in Projekten gespeichert. Erstellen Sie ein neues Projekt, und geben Sie die folgenden Werte in die Felder ein:
 
 * **Anzeigename**: der Anzeigename des Projekts.
-* **Sicherheitstoken**: Einige Projekteinstellungen können vertrauliche Werte wie z. B. API-Schlüssel oder andere gemeinsam genutzte Geheimnisse enthalten. Jedes Projekt generiert ein Sicherheitstoken, das zum Verschlüsseln und Entschlüsseln von vertraulichen Projekteinstellungen verwendet werden kann. Sie finden die Sicherheitstoken in den Anwendungseinstellungen, indem Sie auf das Zahnradsymbol in der unteren Ecke der linken Navigationsleiste klicken.
+* **Sicherheitstoken**: Einige Projekteinstellungen können vertrauliche Werte wie z. B. API-Schlüssel oder andere gemeinsam genutzte Geheimnisse enthalten. Jedes Projekt generiert ein Sicherheitstoken, das zum Verschlüsseln und Entschlüsseln von vertraulichen Projekteinstellungen verwendet werden kann. Sie finden die Sicherheitstoken in den Anwendungseinstellungen, indem Sie unten auf der linken Navigationsleiste auf das Zahnradsymbol klicken.
 * **Quellverbindung**: Die von Ihnen im vorherigen Schritt erstellte Azure Blob Storage-Verbindung, die Sie für dieses Projekt verwenden möchten.
 * **Ordnerpfad** (optional): Wenn Ihre Quellformulare in einem Ordner im Blobcontainer gespeichert sind, geben Sie hier den Ordnernamen an.
 * **URI des Formularerkennungsdiensts**: Die URL Ihres Formularerkennungs-Endpunkts.
@@ -130,9 +130,9 @@ Klicken Sie im linken Bereich auf **OCR in allen Dateien ausführen**, um Textla
 Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textelemente an, die das Modell erkennen soll.
 
 1. Verwenden Sie zuerst den Bearbeitungsbereich des Editors, um die Tags zu erstellen, die Sie identifizieren möchten.
-  1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
-  1. Geben Sie den Tagnamen ein.
-  1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
+   1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
+   1. Geben Sie den Tagnamen ein.
+   1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
 1. Klicken und ziehen Sie im Hauptbereich des Editors, um ein oder mehrere Wörter in den markierten Textelementen auszuwählen.
 1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
     > [!Tip]
@@ -144,15 +144,30 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
     > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
     > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
 
-
-Führen Sie die oben genannten Schritte aus, um fünf Ihrer Formulare zu beschriften, und fahren Sie dann mit dem nächsten Schritt fort.
-
 ![Haupt-Editor-Fenster des Tools für die Beschriftung von Beispielen](../media/label-tool/main-editor.png)
 
+Führen Sie die oben genannten Schritte aus, um mindestens fünf Ihrer Formulare zu beschriften.
+
+### <a name="specify-tag-value-types"></a>Angeben von Tagwerttypen
+
+Optional können Sie den erwarteten Datentyp für jedes Tag festlegen. Öffnen Sie das Kontextmenü rechts neben einem Tag, und wählen Sie im Menü einen Typ aus. Diese Funktion ermöglicht es dem Erkennungsalgorithmus, bestimmte Annahmen zu treffen, die die Genauigkeit der Texterkennung verbessern. Außerdem wird sichergestellt, dass die erkannten Werte in der endgültigen JSON-Ausgabe in einem standardisierten Format zurückgegeben werden. 
+
+> [!div class="mx-imgBorder"]
+> ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](../media/whats-new/formre-value-type.png)
+
+Derzeit werden die folgenden Werttypen und Variationen unterstützt:
+* `string`
+    * Standardwert, `no-whitespaces`, `alphanumeric`
+* `number`
+    * Standardwert, `currency`
+* `date` 
+    * Standardwert, `dmy`, `mdy`, `ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 
-Klicken Sie im linken Bereich auf das Symbol „Trainieren“ (Eisenbahnwaggon), um die Seite „Training“ zu öffnen. Klicken Sie dann auf die Schaltfläche **Trainieren**, um mit dem Training des Modells zu beginnen. Sobald der Trainingsprozess abgeschlossen ist, werden folgende Informationen angezeigt:
+Klicken Sie im linken Bereich auf das Symbol „Trainieren“, um die Seite „Training“ zu öffnen. Klicken Sie dann auf die Schaltfläche **Trainieren**, um mit dem Training des Modells zu beginnen. Sobald der Trainingsprozess abgeschlossen ist, werden folgende Informationen angezeigt:
 
 * **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort; Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die REST-API ausführen möchten.
 * **Durchschnittliche Genauigkeit**: Die durchschnittliche Genauigkeit des Modells. Sie können die Modellgenauigkeit verbessern, indem Sie weitere Formulare beschriften und erneut ein Training ausführen, um ein neues Modell zu erstellen. Wir empfehlen, zunächst fünf Formulare zu beschriften und dann bei Bedarf weitere Formulare hinzuzufügen.
@@ -167,7 +182,7 @@ Untersuchen Sie nach Abschluss des Trainings den Wert **Durchschnittliche Genaui
 
 ## <a name="analyze-a-form"></a>Analysieren eines Formulars
 
-Klicken Sie links auf das Symbol für die Vorhersage (Rechtecke), um Ihr Modell zu testen. Laden Sie ein Formulardokument hoch, das Sie im Trainingsprozess nicht verwendet haben. Klicken Sie dann rechts auf die Schaltfläche **Vorhersage**, um die Schlüssel-Wert-Vorhersagen für das Formular zu erhalten. Das Tool wendet Beschriftungen in Begrenzungsrahmen an und meldet die Konfidenz jeder Beschriftung.
+Klicken Sie links auf das Symbol für die Vorhersage (Glühbirne), um Ihr Modell zu testen. Laden Sie ein Formulardokument hoch, das Sie im Trainingsprozess nicht verwendet haben. Klicken Sie dann rechts auf die Schaltfläche **Vorhersage**, um die Schlüssel-Wert-Vorhersagen für das Formular zu erhalten. Das Tool wendet Beschriftungen in Begrenzungsrahmen an und meldet die Konfidenz jeder Beschriftung.
 
 > [!TIP]
 > Sie können die Analyse-API auch mit einem REST-Aufruf ausführen. Informationen dazu finden Sie unter [Trainieren mit Beschriftungen mit Python](./python-labeled-data.md).

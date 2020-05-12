@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080410"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612315"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -30,7 +30,9 @@ In diesem Artikel erfahren Sie, wie Sie ein Modell mit automatisiertem Machine L
 
 ## <a name="how-does-remote-differ-from-local"></a>Remote und lokal – wo liegen die Unterschiede?
 
-Im Tutorial [Train a classification model with automated machine learning (Trainieren eines Klassifizierungsmodells mit automatisiertem maschinellen Lernen)](tutorial-auto-train-models.md) erfahren Sie, wie Sie einen lokalen Computer zum Trainieren von Modellen mit automatisiertem maschinellen Lernen verwenden. Der Workflow zum lokalen Trainieren trifft ebenfalls auf Remoteziele zu. Bei Remotecomputezielen werden jedoch die Experimentiterationen mit automatisiertem maschinellem Lernen asynchron ausgeführt. Diese Funktion ermöglicht es, eine bestimmte Iteration abzubrechen, den Ausführungsstatus anzuzeigen oder im Jupyter Notebook an anderen Zellen weiterzuarbeiten. Damit Sie Ihr Modell remote trainieren können, müssen Sie zunächst ein Remotecomputeziel wie AmlCompute erstellen. Konfigurieren Sie dann die Remoteressource, und übermitteln Sie dort Ihren Code.
+Bei der Verwendung von Remotecomputezielen sind mehr Features verfügbar.  Weitere Informationen finden Sie im [Leitfaden zu lokal und remote verwalteten ML-Computezielen](concept-automated-ml.md#local-remote).
+
+Im Tutorial [Train a classification model with automated machine learning (Trainieren eines Klassifizierungsmodells mit automatisiertem maschinellen Lernen)](tutorial-auto-train-models.md) erfahren Sie, wie Sie einen lokalen Computer zum Trainieren von Modellen mit automatisiertem maschinellen Lernen verwenden. Der Workflow zum lokalen Trainieren trifft ebenfalls auf Remoteziele zu. Damit Sie Ihr Modell remote trainieren können, müssen Sie zunächst ein Remotecomputeziel wie AmlCompute erstellen. Konfigurieren Sie dann die Remoteressource, und übermitteln Sie dort Ihren Code.
 
 Dieser Artikel zeigt die weiteren erforderlichen Schritte, um ein Experiment mit automatisiertem Machine Learning auf einem AmlCompute-Remoteziel auszuführen. Das Arbeitsbereichsobjekt `ws` aus dem Tutorial wird hier im gesamten Code verwendet.
 

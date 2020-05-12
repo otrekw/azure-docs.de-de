@@ -3,14 +3,14 @@ title: Konfigurieren von Windows Update-Einstellungen für die Zusammenarbeit mi
 description: In diesem Artikel werden die Windows Update-Einstellungen beschrieben, die Sie für die Zusammenarbeit mit der Azure-Updateverwaltung konfigurieren.
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235638"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779449"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Konfigurieren von Windows Update-Einstellungen für Updateverwaltung
 
@@ -22,6 +22,8 @@ Die Azure-Updateverwaltung verwendet den [Windows Update-Client](https://docs.mi
 - Direktem Bearbeiten der Registrierung
 
 Die Updateverwaltung berücksichtigt viele der Einstellungen, die zum Steuern des Windows Update-Clients angegeben werden. Wenn Sie Einstellungen für die Aktivierung Windows-fremder Updates verwenden, verwaltet die Updateverwaltung diese Updates ebenfalls. Wenn Sie das Herunterladen von Updates vor der Updatebereitstellung ermöglichen, können Bereitstellungen schneller, effizienter und in der Regel innerhalb des Wartungsfensters durchgeführt werden.
+
+Weitere Empfehlungen zum Einrichten von WSUS in Ihrem Azure-Abonnement und wie Sie Ihre virtuellen Windows-Computer auf sichere Weise auf dem neuesten Stand halten, finden Sie unter [Planen Ihrer Bereitstellung für die Aktualisierung von virtuellen Windows-Computern in Azure mithilfe von WSUS](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Vorzeitiges Herunterladen von Updates
 

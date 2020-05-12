@@ -127,6 +127,8 @@
               items:
                 - name: Sicherheitsrisikobewertung
                   href: sql-vulnerability-assessment.md
+                - name: Regeln für die Sicherheitsrisikobewertung
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: Speichern von Überprüfungen zur Sicherheitsrisikobewertung hinter Firewalls und VNETs
                   href: sql-database-vulnerability-assessment-storage.md
             - name: Erweiterter Schutz vor Bedrohungen

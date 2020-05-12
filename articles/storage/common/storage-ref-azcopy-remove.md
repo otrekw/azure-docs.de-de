@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033994"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780724"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -89,11 +89,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Tastatur
 
-**--exclude-path string**      Schließt diese Pfade beim Entfernen aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: myFolder;myFolder/subDirName/file.pdf
+**--delete-snapshots**-Zeichenfolge: Standardmäßig schlagen Löschvorgänge fehl, wenn ein Blob über Momentaufnahmen verfügt. Geben Sie „include“ an, um das Stammblob und alle zugehörigen Momentaufnahmen zu entfernen. Alternativ können Sie auch „only“ angeben, um nur die Momentaufnahmen zu entfernen und den Stammblob zu behalten.
+
+**--exclude-path**-Zeichenfolge: schließt diese Pfade beim Entfernen aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: myFolder;myFolder/subDirName/file.pdf
 
 **--exclude-pattern string**   Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName
 
-**-h, --help**                     Hilfe zu „remove“
+**--force-if-read-only**: erzwingt beim Löschen von Azure Files-Dateien oder -Ordnern, dass der Löschvorgang ausgeführt wird, auch wenn für das vorhandene Objekt das Nur-Lese-Attribut festgelegt ist
+
+**-h, --help**: Hilfe beim Entfernen
 
 **--include-path** string      Schließt nur diese Pfade beim Entfernen ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: myFolder;myFolder/subDirName/file.pdf
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
 |–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
+|--trusted-microsoft-suffixes-Zeichenfolge   | Gibt zusätzliche Domänensuffixe an, an die Azure Active Directory-Anmeldetoken gesendet werden können.  Der Standardwert ist ' *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net'. Alle hier aufgelisteten Werte werden zum Standardwert hinzugefügt. Aus Sicherheitsgründen sollten Sie hier nur Microsoft Azure-Domänen platzieren. Trennen Sie mehrere E-Mail-Adressen durch Semikolons voneinander.|
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -1,0 +1,60 @@
+---
+title: Azure Load Balancer-SKUs
+description: Übersicht über Azure Load Balancer-SKUs
+services: load-balancer
+documentationcenter: na
+author: asudbring
+ms.service: load-balancer
+ms.devlang: na
+ms.topic: overview
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 05/01/2020
+ms.author: allensu
+ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734942"
+---
+# <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
+
+Azure Load Balancer ist in zwei Varianten oder SKUs verfügbar.
+
+## <a name="sku-comparison"></a><a name="skus"></a> SKU-Vergleich
+
+Der Lastenausgleich unterstützt sowohl Basic- als auch Standard-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Lastenausgleich im Tarif „Basic“ möglich ist, kann auch mit dem Lastenausgleich im Tarif „Standard“ erstellt werden.
+
+Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](load-balancer-standard-overview.md).
+
+>[!NOTE]
+> Microsoft empfiehlt den Lastenausgleich im Tarif „Standard“.
+Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgruppen können nur mit einer SKU, nie mit beiden verbunden werden. Die SKU für den Lastenausgleich muss mit der SKU für öffentliche IP-Adressen übereinstimmen, wenn Sie sie mit öffentlichen IP-Adressen verwenden. SKUs für den Lastenausgleich und SKUs für öffentliche IP-Adressen sind nicht änderbar.
+
+| | Load Balancer Standard | Load Balancer Basic |
+| --- | --- | --- |
+| [Größe des Back-End-Pools](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
+| Back-End-Pool-Endpunkte | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
+| [Integritätstests](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown) | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Bei Ausfall aller Tests werden alle TCP-Verbindungen getrennt. |
+| Verfügbarkeitszonen | Zonenredundante und zonale Front-Ends für eingehenden und ausgehenden Datenverkehr | Nicht verfügbar |
+| Diagnose | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | [Azure Monitor-Protokolle](./load-balancer-monitor-log.md) |
+| HA-Ports | [Verfügbar für den internen Lastenausgleich](./load-balancer-ha-ports-overview.md) | Nicht verfügbar |
+| Standardmäßig sicher | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Hinweis: Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
+| Regeln für ausgehenden Datenverkehr | [Deklarative ausgehende NAT-Konfiguration](./load-balancer-outbound-rules-overview.md) | Nicht verfügbar |
+| TCP-Zurücksetzung bei Leerlauf | [Verfügbar für jede Regel](./load-balancer-tcp-reset.md) | Nicht verfügbar |
+| [Mehrere Front-Ends](./load-balancer-multivip-overview.md) | Eingehend und [ausgehend](./load-balancer-outbound-connections.md) | Nur eingehend |
+| Verwaltungsvorgänge | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
+| SLA | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
+
+Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](load-balancer-standard-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informationen zu den ersten Schritten mit einer Load Balancer-Instanz finden Sie unter [Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer im Azure-Portal](quickstart-load-balancer-standard-public-portal.md).
+- Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
+- Informationen zu [Integritätstests](load-balancer-custom-probe-overview.md)
+- Informationen zur Verwendung von [Load Balancer für ausgehende Verbindungen](load-balancer-outbound-connections.md)
+- Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md)
+- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).

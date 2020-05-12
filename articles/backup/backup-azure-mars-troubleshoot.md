@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installati
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421271"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598010"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -24,6 +24,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 - Stellen Sie sicher, dass MARS ausgeführt wird (in der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
 - [Stellen Sie sicher, dass am Speicherort des Ablageordners 5-10 % freier Volumespeicherplatz vorhanden ist](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
 - [Prüfen Sie, ob Azure Backup von einem anderen Prozess oder einer Antivirensoftware beeinträchtigt wird](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- Wenn der Sicherungsauftrag mit Warnungen abgeschlossen wurde, lesen Sie den Abschnitt [Mit Warnungen abgeschlossene Sicherungsaufträge](#backup-jobs-completed-with-warning).
 - Wenn geplante Sicherungen fehlschlagen, manuelle Sicherungen jedoch funktionieren, lesen Sie den Abschnitt [Sicherungen werden nicht nach Zeitplan ausgeführt](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule).
 - Stellen Sie sicher, dass Ihr Betriebssystem über die neuesten Updates verfügt.
 - [Stellen Sie sicher, dass nicht unterstützte Laufwerke und Dateien mit nicht unterstützten Attributen von der Sicherung ausgeschlossen werden](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
@@ -42,7 +43,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | Ursache | Empfohlene Aktionen |
 | ---     | ---    |
 | **Die Tresor-Anmeldeinformationen sind ungültig** <br/> <br/> Die Dateien mit den Tresoranmeldeinformationen sind möglicherweise beschädigt oder abgelaufen. (Beispiel: Sie wurden möglicherweise mehr als 48 Stunden vor der Registrierung heruntergeladen.)| Laden Sie neue Anmeldeinformationen aus dem Recovery Services-Tresor im Azure-Portal herunter. (Siehe Schritt 6 im Abschnitt [Herunterladen des MARS-Agents](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent).) Führen Sie dann nach Bedarf die folgenden Schritte aus: <ul><li> Wenn Sie MARS bereits installiert und registriert haben, öffnen Sie die MMC-Konsole des Microsoft Azure Backup-Agents, und wählen Sie dann **Server registrieren** im Bereich **Aktionen** aus, um die Registrierung mit den neuen Anmeldeinformationen abzuschließen. <br/> <li> Wenn bei der Neuinstallation ein Fehler auftritt, wiederholen Sie den Installationsvorgang mit neuen Anmeldeinformationen.</ul> **Hinweis**: Wenn mehrere Dateien mit Tresor-Anmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei für die nächsten 48 Stunden gültig. Wir empfehlen, eine neue Datei mit Tresor-Anmeldeinformationen herunterzuladen.
-| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.<br></br> Wenn Sie die Verbindung über Azure Express Route herstellen, stellen Sie sicher, dass die Einstellungen wie unter [Azure ExpressRoute-Unterstützung](backup-support-matrix-mars-agent.md#azure-expressroute-support) beschrieben konfiguriert sind.
+| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.<br></br> Wenn Ihre Verbindung über Azure ExpressRoute hergestellt wird, stellen Sie sicher, dass die Einstellungen wie unter [Azure ExpressRoute-Unterstützung](backup-support-matrix-mars-agent.md#azure-expressroute-support) beschrieben konfiguriert sind.
 | **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Weitere Empfehlungen
@@ -74,6 +75,32 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | Fehler  | Mögliche Ursache | Empfohlene Aktionen |
 | ---     | ---     | ---    |
 | <br /><ul><li>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden. (ID: 100050) Überprüfen Sie Ihre Netzwerkeinstellungen, und stellen Sie sicher, dass Sie eine Verbindung mit dem Internet herstellen können.<li>(407) Proxyauthentifizierung erforderlich. |Ein Proxy blockiert die Verbindung. |  <ul><li>Navigieren Sie in Internet Explorer zu **Extras** > **Internetoptionen** > **Sicherheit** > **Internet**. Wählen Sie **Stufe anpassen** aus, und scrollen Sie zum Abschnitt **Dateidownload**. Wählen Sie **Aktivieren** aus.<p>Sie müssen möglicherweise auch [URLs und IP-Adressen](install-mars-agent.md#verify-internet-access) zu Ihren vertrauenswürdigen Sites in Internet Explorer hinzufügen.<li>Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<li> Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxyserver diese [URLs und IP-Adressen](install-mars-agent.md#verify-internet-access) zulassen. <li>Wenn Sie Antivirensoftware auf dem Server installiert haben, schließen Sie die folgenden Dateien vom Virenscan aus: <ul><li>CBEngine.exe (statt dpmra.exe)<li>CSC.exe: (Diese Datei ist mit dem .NET Framework verknüpft.) Für jede auf dem Server installierte .NET Framework-Version gibt es eine Datei namens „CSC.exe“. Schließen Sie Dateien mit dem Namen „CSC.exe“ für alle .NET Framework-Versionen auf dem betroffenen Server aus. <li>Speicherort des Ablageordners oder Caches. <br>Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.<li>Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+
+## <a name="backup-jobs-completed-with-warning"></a>Mit Warnungen abgeschlossene Sicherungsaufträge
+
+- Wenn der MARS-Agent während der Sicherung Dateien und Ordner durchläuft, können verschiedene Bedingungen auftreten, die dazu führen können, dass die Sicherung als mit Warnungen abgeschlossen gekennzeichnet wird. Während dieser Bedingungen wird ein Auftrag als mit Warnungen abgeschlossen angezeigt. Das stellt zwar kein Problem dar, bedeutet aber, dass mindestens eine Datei nicht gesichert werden konnte. Der Auftrag hat also diese Datei übersprungen, aber alle anderen betreffenden Dateien in der Datenquelle gesichert.
+
+  ![Mit Warnungen abgeschlossener Sicherungsauftrag](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
+
+- Folgende Bedingungen können dazu führen, dass Dateien bei Sicherungsvorgängen übersprungen werden:
+  - Nicht unterstützte Dateiattribute (Beispiele: in einem OneDrive-Ordner, komprimierter Stream, Analysepunkte). Eine vollständige Liste finden Sie in der [Supportmatrix](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#supported-file-types-for-backup).
+  - Ein Dateisystemproblem
+  - Ein anderer störender Prozess (Beispiel: Antivirensoftware, die Handles für Dateien hält, kann den Zugriff auf Dateien durch den MARS-Agent verhindern.)
+  - Von einer Anwendung gesperrte Dateien  
+
+- Der Sicherungsdienst kennzeichnet diese Dateien in der Protokolldatei mit der folgenden Namenskonvention als fehlgeschlagen: *LastBackupFailedFilesxxxx.txt* unter dem Ordner *C:\Programme\Microsoft Azure Recovery Service Agent\temp*.
+- Sehen Sie sich zur Behebung dieses Problems die Protokolldatei an, um die Art des Problems zu verstehen:
+
+  | Fehlercode             | Ursachen                                             | Empfehlungen                                              |
+  | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
+  | 0x80070570             | Die Datei oder das Verzeichnis ist beschädigt und nicht lesbar. | Führen Sie **chkdsk** auf dem Quellvolume aus.                             |
+  | 0x80070002, 0x80070003 | Das System kann die angegebene Datei nicht finden.         | [Stellen Sie sicher, dass der Ordner „scratch“ nicht voll ist.](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  Überprüfen Sie, ob das Volume mit dem konfigurierten temporären Speicherbereich vorhanden ist (nicht gelöscht wurde).  <br><br>   [Stellen Sie sicher, dass der MARS-Agent von der auf dem Computer installierten Antivirensoftware ausgeschlossen ist.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070005             | Der Zugriff wird verweigert.                                    | [Überprüfen Sie, ob der Zugriff durch Antivirensoftware oder andere Drittanbietersoftware blockiert wird.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
+  | 0x8007018b             | Der Zugriff auf die Clouddatei wird verweigert.                | OneDrive-Dateien, Git-Dateien oder andere Dateien, die sich auf dem Computer im Offlinezustand befinden können |
+
+- Sie können [einer vorhandenen Richtlinie Ausschlussregeln hinzufügen](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#add-exclusion-rules-to-existing-policy), um nicht unterstützte, fehlende oder gelöschte Dateien aus Ihrer Sicherungsrichtlinie auszuschließen, sodass Sicherungen erfolgreich ausgeführt werden.
+
+- Vermeiden Sie das Löschen und erneute Erstellen von geschützten Ordnern mit denselben Namen im Ordner der obersten Ebene. Das Löschen und erneute Erstellen dieser Ordner könnte dazu führen, dass die Sicherung mit Warnungen mit dem folgenden Fehler abgeschlossen wird: *Eine schwerwiegende Inkonsistenz wurde festgestellt. Daher können die Änderungen nicht repliziert werden.*  Wenn Sie Ordner löschen und neu erstellen müssen, sollten Sie diese Aktionen in den Unterordnern des geschützten Ordners der obersten Ebene ausführen.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Fehler beim Festlegen des Verschlüsselungsschlüssels für sichere Sicherungen
 
@@ -121,7 +148,7 @@ Wenn geplante Sicherungen nicht automatisch ausgelöst werden, manuelle Sicherun
  Get-ExecutionPolicy -List
 
 Set-ExecutionPolicy Unrestricted
-```
+ ```
 
 - Stellen Sie sicher, dass keine MSonlineBackup-Dateien des PowerShell-Moduls fehlen oder beschädigt sind. Wenn Dateien fehlen oder beschädigt sind, führen Sie die folgenden Schritte aus:
 
@@ -138,7 +165,6 @@ Set-ExecutionPolicy Unrestricted
 Fehler | Mögliche Ursachen | Empfohlene Aktionen
 --- | --- | ---
 Fehler beim aktuellen Vorgang aufgrund eines internen Dienstfehlers: „Ressource nicht im Dienststempel angegeben“. Wiederholen Sie den Vorgang nach einiger Zeit. (ID: 230006) | Der geschützte Server wurde umbenannt. | <li> Benennen Sie den Server wieder in den ursprünglichen Namen um, der beim Tresor registriert ist. <br> <li> Registrieren Sie den Server mit dem neuen Namen erneut beim Tresor.
-
 
 ## <a name="troubleshoot-restore-problems"></a>Behandlung von Problemen bei der Wiederherstellung
 
@@ -206,25 +232,25 @@ In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung d
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
-Fehlermeldung | Empfohlene Maßnahme |
+Fehlermeldung | Empfohlene Maßnahme
 -- | --
 Microsoft Azure Recovery Services Agent was unable to access backup checksum stored in scratch location (Der Microsoft Azure Recovery Services-Agent konnte nicht auf die im Ablageordner gespeicherte Sicherungsprüfsumme zugreifen.) | Führen Sie zum Beheben des Fehlers die folgenden Schritte aus, und starten Sie den Server neu. <br/> - [Überprüfen Sie, ob der Ablageordner durch ein Antivirenprogramm oder einen anderen Prozess blockiert wird](#another-process-or-antivirus-software-blocking-access-to-cache-folder).<br/> - [Überprüfen Sie, ob der Ablageordner gültig ist und der MARS-Agent darauf zugreifen kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
-Fehlermeldung | Empfohlene Maßnahme |
+Fehlermeldung | Empfohlene Maßnahme
 -- | --
 Microsoft Azure Recovery Services Agent was unable to access the scratch location to initialize VHD (Der Microsoft Azure Recovery Services-Agent konnte nicht auf den Ablageordner zugreifen, um die virtuelle Festplatte zu initialisieren.) | Führen Sie zum Beheben des Fehlers die folgenden Schritte aus, und starten Sie den Server neu. <br/> - [Überprüfen Sie, ob der Ablageordner durch ein Antivirenprogramm oder einen anderen Prozess blockiert wird](#another-process-or-antivirus-software-blocking-access-to-cache-folder).<br/> - [Überprüfen Sie, ob der Ablageordner gültig ist und der MARS-Agent darauf zugreifen kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
-Fehlermeldung | Empfohlene Maßnahme |
+Fehlermeldung | Empfohlene Maßnahme
 -- | --
 Backup failed due to insufficient storage in volume  where the scratch folder is located (Die Sicherung ist aufgrund von unzureichendem Speicher im Volume des Ablageordners fehlgeschlagen.) | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/>- [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).<br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#prerequisites).
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
-Fehlermeldung | Empfohlene Maßnahme |
+Fehlermeldung | Empfohlene Maßnahme
 -- | --
 Es wurden keine Änderungen in einer Datei gefunden. Dies kann verschiedene Ursachen haben. Wiederholen Sie den Vorgang | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/> - [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409). <br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#prerequisites).
 

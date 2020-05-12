@@ -1,6 +1,6 @@
 ---
-title: Beheben von Fehlern mit der Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungslösung in Azure beheben können.
+title: Problembehandlung für die Azure Automation-Updateverwaltung
+description: Erfahren Sie, wie Sie Fehler und Probleme mit der Lösung für die Updateverwaltung in Azure Automation beheben können.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984622"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790829"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Beheben von Problemen mit der Lösung für die Updateverwaltung
 
-In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die bei Verwendung der Updateverwaltung auftreten können.
+In diesem Artikel werden Problemen beschrieben, die bei Verwendung der Lösung für die Updateverwaltung auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Onboardingproblemen finden Sie unter [Problembehandlung bei der Integration von Lösungen](onboarding.md).
 
-Es gibt eine Agent-Problembehandlung für den Hybrid Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md). Verwenden Sie für alle anderen Probleme die folgende Anleitung zur Problembehandlung.
+>[!NOTE]
+>Wenn Sie Probleme beim Onboarding der Lösung auf einem virtuellen Computer (VM) feststellen, sehen Sie auf dem virtuellen Computer das **Operations Manager**-Protokoll unter **Anwendungs- und Dienstprotokolle** ein. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
 
-Wenn Sie Probleme beim Onboarding der Lösung auf einem virtuellen Computer (VM) feststellen, sehen Sie auf dem virtuellen Computer das **Operations Manager**-Protokoll unter **Anwendungs- und Dienstprotokolle** ein. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
-
-Der folgende Abschnitt enthält spezifische Fehlermeldungen und passende Lösungsvorschläge. Informationen zu anderen Onboardingproblemen finden Sie unter [Problembehandlung bei der Integration von Lösungen](onboarding.md).
+>[!NOTE]
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Szenario: Sie erhalten die Fehlermeldung „Fehler beim Aktivieren der Updatelösung“.
 
@@ -49,13 +49,13 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Führen Sie je nach Betriebssystem die Problembehandlung für [Windows](update-agent-issues.md#troubleshoot-offline) oder [Linux](update-agent-issues-linux.md#troubleshoot-offline) aus.
 
-* Rufen Sie den Abschnitt [Netzwerkplanung](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.  
+* Rufen Sie den Abschnitt [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.  
 
-* Rufen Sie den Abschnitt [Netzwerkplanung](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit der Log Analytics-Agent funktioniert.
+* Rufen Sie den Abschnitt [Netzwerkkonfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit der Log Analytics-Agent funktioniert.
 
 * Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Lösung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht im **Updateverwaltungsportal angezeigt wird, müssen Sie die Bereichskonfiguration den Computern gemäß festlegen. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrierte Computer im Arbeitsbereich](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
-* Entfernen Sie die Workerkonfiguration, indem Sie die Schritte in [Entfernen eines Hybrid Runbook Workers](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker) ausführen. 
+* Entfernen Sie die Workerkonfiguration, indem Sie die Schritte in [Entfernen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder in [Entfernen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Szenario: Ersetztes Update wird in der Updateverwaltung als fehlend angezeigt
 
@@ -299,7 +299,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Es ist ein doppelter Computername mit unterschiedlichen Quellcomputer-IDs vorhanden. Dieses Szenario tritt auf, wenn ein virtueller Computer mit einem bestimmten Computernamen in verschiedenen Ressourcengruppen erstellt wird und Meldungen an den gleichen Logistics Agent-Arbeitsbereich im Abonnement sendet.
 
-* Das zu integrierende VM-Image stammt möglicherweise von einem geklonten Computer, der nicht über System Preparation (Sysprep) mit MMA-Installation (Microsoft Monitoring Agent) vorbereitet wurde.
+* Das zu integrierende VM-Image stammt möglicherweise von einem geklonten Computer, der nicht über die Systemvorbereitung (Sysprep) mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
 
 ### <a name="resolution"></a>Lösung
 
@@ -351,17 +351,16 @@ Dieser Fehler tritt bei der Erstellung einer Updatebereitstellung auf, bei der A
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) mit dem `ForUpdate`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
+Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) mit dem `ForUpdateConfiguration`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Szenario: Unerklärliche Neustarts
@@ -449,7 +448,7 @@ Der Computer wurde bereits in einen anderen Arbeitsbereich für die Updateverwal
 ### <a name="resolution"></a>Lösung
 
 1. Befolgen Sie die Schritte unter [Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt](#nologs), um sicherzustellen, dass der Computer Meldungen an den richtigen Arbeitsbereich zurückgibt.
-2. Bereinigen Sie Artefakte auf dem Computer durch [Löschen der Hybrid Runbook-Gruppe](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group), und wiederholen Sie den Vorgang.
+2. Bereinigen Sie Artefakte auf dem Computer durch [Löschen der Hybrid Runbook-Gruppe](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group), und wiederholen Sie den Vorgang.
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Szenario: Der Computer kann nicht mit dem Dienst kommunizieren.
 
@@ -614,7 +613,7 @@ KB2267602 ist das [Windows Defender-Definitionsupdate](https://www.microsoft.com
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten.
+Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten.
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
 * Stellen Sie eine Verbindung mit [@AzureSupport](https://twitter.com/azuresupport) her, dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit.

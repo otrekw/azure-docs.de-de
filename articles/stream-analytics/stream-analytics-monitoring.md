@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431651"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611890"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
-## <a name="introduction-the-monitor-page"></a>Einführung: die Seite „Überwachen“
+## <a name="introduction-the-monitor-page"></a>Einführung: Seite „Monitor“
 Im Azure-Portal werden wichtige Leistungsmetriken angezeigt, die zum Überwachen der Leistung Ihrer Abfragen und Aufträge sowie für die Problembehandlung verwendet werden können. Navigieren Sie zum Anzeigen dieser Metriken zum Stream Analytics-Auftrag, dessen Metriken Sie interessieren, und zeigen Sie auf der Seite „Übersicht“ den Abschnitt **Überwachung** an.  
 
 ![Link zur Stream Analytics-Auftragsüberwachung](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
@@ -37,7 +37,7 @@ Das Fenster wird wie folgt angezeigt:
 | Funktionsanforderungen      | Anzahl der Aufrufe an die Azure Machine Learning-Funktion (falls vorhanden) |
 | Eingabefehler bei Deserialisierung       | Anzahl der Eingabeereignisse, die nicht deserialisiert werden konnten.  |
 | Eingabeereignisbytes      | Vom Stream Analytics-Auftrag erhaltene Datenmenge, in Byte. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
-| Eingabeereignisse           | Anzahl der Datensätze, die aus den Eingabeereignissen deserialisiert wurden. Diese Anzahl umfasst nicht eingehende Ereignisse, die zu Deserialisierungsfehlern führen. |
+| Eingabeereignisse           | Anzahl der Datensätze, die aus den Eingabeereignissen deserialisiert wurden. Diese Anzahl umfasst nicht eingehende Ereignisse, die zu Deserialisierungsfehlern führen. Die gleichen Ereignisse können in Szenarios wie internen Wiederherstellungen und Selbstverknüpfungen erfasst werden. Daher wird empfohlen, keine Übereinstimmungen der Metriken für Eingabe- und Ausgabeereignisse zu erwarten, wenn Ihr Auftrag eine einfache Pass-Through-Abfrage enthält. |
 | Empfangene Eingabequellen       | Anzahl der vom Auftrag empfangenen Nachrichten. Für Event Hub besteht eine Nachricht aus einem einzelnen EventData. Für ein Blob ist eine Nachricht ein einzelnes Blob. Beachten Sie, dass die Eingabequellen vor der Deserialisierung gezählt werden. Bei Deserialisierungsfehlern können die Eingabequellen größer sein als die Eingabeereignisse. Andernfalls können sie kleiner als oder gleich den Eingabeereignissen sein, da jede Nachricht mehrere Ereignisse enthalten kann. |
 | Ereignisse bei verspäteter Eingabe      | Ereignisse, die später als das konfigurierte Toleranzfenster für Eingangsverzögerung eingetroffen sind. Weitere Informationen finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md). |
 | Ereignisse für falsche Reihenfolge    | Anzahl der Ereignisse, die in falscher Reihenfolge empfangen und anhand der Richtlinie für die Ereignissortierung entweder verworfen oder mit einem angepassten Zeitstempel versehen wurden. Dies kann von der Konfiguration der Einstellung „Toleranzfenster für Fehlordnung“ beeinflusst werden. |

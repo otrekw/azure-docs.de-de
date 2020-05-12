@@ -4,12 +4,12 @@ description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Sys
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602468"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610784"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -124,7 +124,7 @@ Nachdem Sie mit dem Azure Recovery Services-Agent den Systemstatus als Dateien w
 
 2. Öffnen Sie nach dem Neustart das Snap-In Windows Server-Sicherung. Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Windows Server-Sicherung** verwendeten Computer oder Server durchsuchen.
 
-    Die Desktop-App wird in den Suchergebnissen angezeigt.
+    Die Desktop-App wird in den Suchergebnissen angezeigt. Wenn sie nicht angezeigt wird oder beim Öffnen der Anwendung Fehler auftreten, müssen Sie die **Windows Server-Sicherungsfeatures** und davon abhängige Komponenten installieren, die in **Server-Manager** im **Assistenten zum Hinzufügen von Features** verfügbar sind.
 
 3. Wählen Sie im Snap-In **Lokale Sicherung** aus.
 

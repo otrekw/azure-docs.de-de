@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat'
-description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und des Azure-Portals anzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat.
+title: 'Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat – Azure RBAC'
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe des Azure-Portals und der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) anzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74419604"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734160"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat
 
-Sie können das Blatt **Zugriffssteuerung (IAM)** der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwenden, um anzuzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat. Manchmal möchten Sie jedoch unter Umständen nur schnell den Zugriff für einen einzelnen Benutzer oder einen anderen Sicherheitsprinzipal anzeigen. Die einfachste Möglichkeit ist hierbei die Verwendung der Funktion **Zugriff überprüfen** im Azure-Portal.
+Sie können das Blatt **Zugriffssteuerung (IAM)** der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwenden, um anzuzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat. Manchmal möchten Sie jedoch unter Umständen nur schnell den Zugriff für einen einzelnen Benutzer oder einen anderen Sicherheitsprinzipal anzeigen. Die einfachste Möglichkeit ist hierbei die Verwendung der Funktion **Zugriff überprüfen** im Azure-Portal.
 
 ## <a name="view-role-assignments"></a>Anzeigen von Rollenzuweisungen
 
@@ -54,4 +54,4 @@ Sie können das Blatt **Zugriffssteuerung (IAM)** der [rollenbasierten Zugriffss
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](quickstart-assign-role-user-portal.md)
+> [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit dem Azure-Portal](quickstart-assign-role-user-portal.md)

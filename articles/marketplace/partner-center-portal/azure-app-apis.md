@@ -1,20 +1,20 @@
 ---
-title: Onboarding-API für Azure-Apps im kommerziellen Marketplace
-description: API-Voraussetzungen für Azure-Apps im kommerziellen Marketplace in Microsoft Partner Center
+title: Partner Center-Übermittlungs-API zum Integrieren von Azure-Apps im kommerziellen Microsoft-Marketplace
+description: Informieren Sie sich über die Voraussetzungen für die Verwendung der Partner Center-Übermittlungs-API für Azure-Apps im kommerziellen Marketplace im Microsoft Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279758"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744893"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API zum Onboarding von Azure-Apps in Partner Center
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Partner Center-Übermittlungs-API zum Integrieren von Azure-Apps im Partner Center
 
 Verwenden Sie die *Partner Center-Übermittlungs-API*, um Azure-Angebote programmgesteuert abzufragen, zu erstellen und zu veröffentlichen.  Diese API ist nützlich, wenn Ihr Konto viele Angebote verwaltet und Sie den Übermittlungsvorgang für diese Angebote automatisieren und optimieren möchten.
 
@@ -70,3 +70,8 @@ Geben Sie die Mandanten-ID, die Client-ID und den Schlüssel für die Anwendung,
 Nachdem Sie über ein Azure AD-Zugriffstoken verfügen, können Sie Methoden in der Partner Center-Übermittlungs-API aufrufen. Zum Erstellen oder Aktualisieren von Übermittlungen werden in der Partner Center-Übermittlungs-API in der Regel mehrere Methoden in einer bestimmten Reihenfolge aufgerufen. Informationen zu den einzelnen Szenarien und der Syntax der einzelnen Methoden finden Sie bei der Erfassungs-API von Swagger.
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Erfahren Sie mehr über das [Erstellen einer technischen Azure-VM-Ressource](create-azure-container-technical-assets.md).
+* Erfahren Sie mehr über das [Erstellen eines Azure-Containerangebots](create-azure-container-offer.md).

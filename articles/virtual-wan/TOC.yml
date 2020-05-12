@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Globale Transitarchitektur
           href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN-Verbindungsarchitektur
+          href: sd-wan-connectivity-architecture.md
         - name: Herstellen einer Verbindung mit China
           href: interconnect-china.md
 - name: Tutorials
@@ -98,7 +100,7 @@
       href: '/powershell/module/az.network#networking'
     - name: REST
       href: /rest/api/azure
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/virtual-wan
     - name: Python SDK
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'

@@ -3,17 +3,17 @@ title: Verwalten des Azure Storage-Lebenszyklus
 description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen, um alternde Daten von heißen zu kalten und zu Archivebenen zu übertragen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598305"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692130"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -24,7 +24,7 @@ Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Auf
 - Überführen von Blobs in eine kältere Speicherebene (heiß in kalt, heiß in Archiv oder kalt in Archiv) zur Optimierung von Leistung und Kosten
 - Löschen von Blobs am Ende ihres Lebenszyklus
 - Definieren von Regeln, die ein Mal täglich auf Speicherkontoebene ausgeführt werden
-- Anwenden von Regeln auf Container oder eine Teilmenge von Blobs (durch Einsatz von Präfixen als Filter)
+- Anwenden von Regeln auf Container oder eine Teilmenge von Blobs (mit Namenspräfixen oder [Blobindextags](storage-manage-find-blobs.md) als Filter)
 
 Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklus häufig auf Daten zugegriffen wird, nach zwei Wochen aber nur noch gelegentlich. Nach dem ersten Monat wird auf das Dataset nur noch selten zugegriffen. In diesem Szenario empfiehlt sich in den frühen Phasen heißer Speicher. Die kalte Speicherebene eignet sich am besten für den gelegentlichen Zugriff. Die Archivspeicherebene ist die beste Option, wenn die Daten mehr als einen Monat alt sind. Durch Anpassen der Speicherebenen im Hinblick auf das Alter der Daten können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen. Für diesen Übergang stehen Richtlinienregeln für die Lebenszyklusverwaltung zur Verfügung, um alternde Daten in kühlere Ebenen zu verschieben.
 
@@ -292,7 +292,11 @@ Filter umfassen Folgendes:
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der aktuellen Version wird `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein  |
+| blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein  |
+
+> [!NOTE]
+> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regelaktionen
 
@@ -300,7 +304,7 @@ Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbeding
 
 Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
 
-| Action        | Basisblob                                   | Momentaufnahme      |
+| Aktion        | Basisblob                                   | Momentaufnahme      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
 | tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
@@ -405,6 +409,42 @@ Für einige Daten wird erwartet, dass sie einige Tage oder Monate nach der Erste
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>Löschen von Daten mit Blobindextags
+Einige Daten sollten nur ablaufen, wenn sie explizit zur Löschung gekennzeichnet sind. Sie können eine Lebenszyklusverwaltungsrichtlinie so konfigurieren, dass Daten ablaufen, die mit Schlüssel-Wert-Attributen für den Blobindex gekennzeichnet sind. Im folgenden Beispiel ist eine Richtlinie dargestellt, mit der alle Blockblobs gelöscht werden, die mit `Project = Contoso` gekennzeichnet sind. Weitere Informationen zum Blobindex finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>Löschen von alten Momentaufnahmen
 
 Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer regelmäßig zugegriffen wird, werden Momentaufnahmen häufig verwendet, um ältere Versionen der Daten nachzuverfolgen. Sie können eine Richtlinie erstellen, die alte Momentaufnahmen auf der Grundlage des Alters der Momentaufnahme löscht. Das Alter der Momentaufnahme wird durch Auswertung der Erstellungszeit der Momentaufnahme bestimmt. Diese Richtlinie löscht Blockblob-Momentaufnahmen in Container `activedata`, die mindestens 90 Tage alt sind (ab dem Zeitpunkt der Erstellung der Momentaufnahme).
@@ -448,3 +488,7 @@ Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert s
 Erfahren Sie, wie Daten nach versehentlichem Löschen wiederhergestellt werden:
 
 - [Vorläufiges Löschen für Azure Storage-Blobs](../blobs/storage-blob-soft-delete.md)
+
+Erfahren Sie, wie Sie Daten mit dem Blobindex verwalten und suchen können:
+
+- [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex](storage-manage-find-blobs.md)

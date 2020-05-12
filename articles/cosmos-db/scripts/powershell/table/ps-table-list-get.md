@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 166b9c2d6b20fbd6a71ba5df17e049838038617d
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: eaab34dbf91256f0e06465d97b91543237310f97
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365914"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652914"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Auflisten und Abrufen von Tabellen für Azure Cosmos DB – Tabellen-API
 
@@ -40,7 +40,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listet Cosmos DB-Konten auf oder ruft ein bestimmtes Cosmos DB-Konto ab. |
-| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Listet Cosmos DB-Tabellen-API-Tabellen in einem Konto auf oder ruft eine bestimmte Cosmos DB-Tabellen-API-Tabelle in einem Konto ab. |
+| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Listet Tabellen-API-Tabellen in einem Konto auf oder ruft eine bestimmte Tabellen-API-Tabelle in einem Konto ab. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273000"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779002"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,11 +47,7 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 
 In diesem Tutorial wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](how-to-configure-environment.md#local), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
 
-Sehen Sie sich das folgende Video an, oder führen Sie die unten angegebenen detaillierten Schritte aus, um das Tutorial über Ihren Arbeitsbereich zu klonen und auszuführen. 
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
-
-
+ Führen Sie die unten angegebenen detaillierten Schritte aus, um das Tutorial über Ihren Arbeitsbereich zu klonen und auszuführen. 
 
 ### <a name="clone-a-notebook-folder"></a>Klonen eines Notebook-Ordners
 
@@ -63,7 +59,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 
 1. Wählen Sie links **Notebooks** aus.
 
-1. Öffnen Sie den Ordner **Beispiele**.
+1. Wählen Sie oben die Registerkarte **Beispiele** aus.
 
 1. Öffnen Sie den Ordner **Python**.
 
@@ -71,26 +67,33 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 
 1. Wählen Sie rechts vom Ordner **Tutorials** die Auslassungspunkte ( **„...“** ) und anschließend **Klonen** aus.
 
-    ![Klonen des Ordners](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Klonen des Ordners „Tutorials“":::
 
 1. Eine Liste der Ordner mit den einzelnen Benutzern wird angezeigt, die auf den Arbeitsbereich zugreifen.  Wählen Sie Ihren Ordner aus, um den Ordner **Tutorials** dort zu klonen.
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">Öffnen des geklonten Notebooks
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>Öffnen des geklonten Notebooks
 
-1. Öffnen Sie unter **Benutzerdateien** Ihren Ordner und anschließend den geklonten Ordner **Tutorials**.
-
-    ![Öffnen des Ordners „Tutorials“](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. Öffnen Sie den Ordner **Tutorials**, den Sie soeben im Abschnitt **Benutzerdateien** geschlossen haben.
 
     > [!IMPORTANT]
     > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden.  Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.
     
 1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **tutorials/create-first-ml-experiment** aus.
 
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Öffnen des Ordners „Tutorials“":::
+
+
 1. Wählen Sie auf der oberen Leiste eine Computeinstanz aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden [mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen](concept-compute-instance.md#contents). 
 
 1. Werden keine virtuellen Computer gefunden, wählen Sie **+ Hinzufügen** aus, um den virtuellen Computer mit der Compute-Instanz zu erstellen. 
 
-    1. Geben Sie beim Erstellen eines virtuellen Computers einen Namen an.  Der Name muss zwischen 2 und 16 Zeichen lang sein. Gültige Zeichen sind Buchstaben, Ziffern und Bindestriche (-), und der Name muss in Ihrem Azure-Abonnement eindeutig sein.
+    1. Befolgen Sie diese Regeln, wenn Sie eine VM erstellen:  
+        + Der Name ist erforderlich und darf nicht leer sein.
+        + Der Name muss unter allen vorhandenen Compute-Instanzen in der Azure-Region des Arbeitsbereichs/der Compute-Instanz eindeutig sein (ohne Beachtung der Groß-/Kleinschreibung). Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.
+        + Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern (0 bis 9) und Bindestriche (-).
+        + Der Name muss zwischen 3 und 24 Zeichen lang sein.
+        + Der Name muss mit einem Buchstaben beginnen (nicht mit einer Ziffer oder einem Bindestrich).
+        + Wenn ein Bindestrich im Namen verwendet wird, muss darauf mindestens ein Buchstabe folgen. Beispiel: „Test-“, „test-0“ und „test-01“ sind ungültig, während „test-a0“ und „test-0a“ gültige Namen sind.
 
     1.  Wählen Sie die VM-Größe aus den verfügbaren Optionen aus.
 

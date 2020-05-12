@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641363"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733657"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -84,7 +84,7 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 1. Führen Sie die erforderlichen Änderungen für erhöhte Zugriffsrechte durch.
 
-    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md). Wenn Sie Azure AD Privileged Identity Management (PIM) verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-portal.md). Wenn Sie Azure AD Privileged Identity Management (PIM) verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
 
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 
@@ -321,5 +321,5 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu den verschiedenen Rollen in Azure](rbac-and-directory-admin-roles.md)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API](role-assignments-rest.md)
+- [Grundlegendes zu den verschiedenen Rollen](rbac-and-directory-admin-roles.md)
+- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](role-assignments-rest.md)

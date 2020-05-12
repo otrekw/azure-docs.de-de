@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234326"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739363"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -89,8 +89,8 @@ Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in d
 | Logischer Datenträger | % freier Speicher |
 | Logischer Datenträger | % verwendete Inodes |
 | Logischer Datenträger | % verwendeter Speicher |
-| Logischer Datenträger | Byte gelesen/s |
-| Logischer Datenträger | Lesevorgänge/s |
+| Logischer Datenträger | Byte gelesen/s  |
+| Logischer Datenträger | Lesevorgänge/s  |
 | Logischer Datenträger | Übertragungen/s |
 | Logischer Datenträger | Byte geschrieben/s |
 | Logischer Datenträger | Schreibvorgänge/s |
@@ -175,7 +175,7 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
     </source>
 
 ## <a name="data-collection"></a>Datensammlung
-Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihr Abonnement festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
+Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihren Log Analytics-Arbeitsbereich festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
 
 ## <a name="performance-record-properties"></a>Eigenschaften von Leistungsdatensätzen
 Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.

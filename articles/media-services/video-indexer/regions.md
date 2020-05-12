@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382748"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594949"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-Regionen, in denen Video Indexer vorhanden ist
 
@@ -23,7 +23,7 @@ Video Indexer-APIs enthalten einen Parameter **location**, den Sie auf die Azure
 
 ## <a name="locations"></a>Standorte
 
-Dem Parameter **location** muss der Codename der Azure-Region als Wert zugewiesen werden. Wenn Sie Video Indexer im Vorschaumodus verwenden, sollten Sie *„trial“* als Wert verwenden. Andernfalls können Sie die folgende Zeile in der [Azure CLI](/cli/azure) ausführen, um den Codenamen der Azure-Region abzurufen, in der sich Ihr Konto befindet und a die Ihr Aufruf weitergeleitet werden soll:
+Dem Parameter `location` muss der Codename der Azure-Region als Wert zugewiesen werden. Wenn Sie Video Indexer im Vorschaumodus verwenden, sollten Sie `"trial"` als Wert verwenden. `trial` ist der Standardwert für den Parameter `location`. Andernfalls können Sie die folgende Zeile in der [Azure CLI](/cli/azure) ausführen, um den Codenamen der Azure-Region abzurufen, in der sich Ihr Konto befindet und a die Ihr Aufruf weitergeleitet werden soll:
 
 ```azurecli-interactive
 az account list-locations

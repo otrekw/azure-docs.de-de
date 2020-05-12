@@ -1,5 +1,5 @@
 ---
-title: Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace in Partner Center
+title: Dashboard „Downloads“ in Analysen für den kommerziellen Microsoft-Marketplace im Partner Center
 description: Erfahren Sie, wie Sie auf Downloadanforderungen für Ihre Marketplace-Angebote zugreifen.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: f81b8ae927df6c95bbc34be7ad9916c88aeba03b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 136a65e47327007d7a28c2777051be61f475323e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251672"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732717"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: e24684063e73b8f8b659304987f46632f3601e8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426119"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732324"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 
@@ -25,7 +25,7 @@ Für den Zugriff auf einen Schlüsseltresor muss Ihre Schlüsseltresor-Clientanw
 
 * Authentifizierung über Azure Active Directory (Azure AD)
 * Verwaltung von Azure Key Vault Dies umfasst das Erstellen, Lesen, Aktualisieren, Löschen und Festlegen von Zugriffsrichtlinien per Azure Resource Manager.
-* Der Zugriff auf Objekte (Schlüssel und Geheimnisse), die in Key Vault gespeichert sind, sowie deren Verwaltung werden über den Key Vault-spezifischen Endpunkt abgewickelt (Beispiel: [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
+* Der Zugriff auf Objekte (Schlüssel und Geheimnisse), die in Key Vault gespeichert sind, sowie deren Verwaltung werden über den Key Vault-spezifischen Endpunkt abgewickelt (Beispiel: `https://yourvaultname.vault.azure.net`).  
 
 Je nach Konfiguration und Umgebung gibt es verschiedene Varianten.
 
@@ -64,7 +64,13 @@ Für alle Schlüsseltresorvorgänge in Bezug auf die Objektverwaltung (Schlüsse
 
 ## <a name="ip-address-ranges"></a>IP-Adressbereiche
 
-Der Key Vault-Dienst nutzt andere Azure-Ressourcen, z.B. die PaaS-Infrastruktur. Daher ist es nicht möglich, einen bestimmten Bereich mit IP-Adressen anzugeben, über die Endpunkte des Key Vault-Diensts zu bestimmten Zeiten verfügen. Wenn Ihre Firewall nur IP-Adressbereiche unterstützt, helfen Ihnen die Informationen im Dokument zu den [Microsoft Azure Datacenter-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) weiter. Authentifizierung und Identität (Azure Active Directory) ist ein globaler Dienst und kann ohne vorherige Ankündigung ein Failover auf andere Regionen durchführen oder Datenverkehr verlagern. In diesem Szenario müssen alle [IP-Adressbereiche für Authentifizierung und Identität](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) der Firewall hinzugefügt werden.
+Der Key Vault-Dienst nutzt andere Azure-Ressourcen, z.B. die PaaS-Infrastruktur. Daher ist es nicht möglich, einen bestimmten Bereich mit IP-Adressen anzugeben, über die Endpunkte des Key Vault-Diensts zu bestimmten Zeiten verfügen. Wenn Ihre Firewall nur IP-Adressbereiche unterstützt, helfen Ihnen die Informationen in den folgenden Dokumenten zu IP-Bereichen für Microsoft Azure-Rechenzentren weiter:
+* [Öffentlich](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
+* [Deutschland](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
+* [China](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+Authentifizierung und Identität (Azure Active Directory) ist ein globaler Dienst und kann ohne vorherige Ankündigung ein Failover auf andere Regionen durchführen oder Datenverkehr verlagern. In diesem Szenario müssen alle [IP-Adressbereiche für Authentifizierung und Identität](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) der Firewall hinzugefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74688972"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801483"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Erstellen einer Node.js-App in Azure
 
@@ -23,7 +23,7 @@ Wenn Sie kein Azure-Konto besitzen, [registrieren Sie sich jetzt](https://azure.
 
 [Visual Studio Code](https://code.visualstudio.com/) sowie [Node.js und npm](https://nodejs.org/en/download) – der Node.js-Paket-Manager – müssen installiert sein.
 
-Sie müssen auch die [Azure App Service-Erweiterung](vscode:extension/ms-azuretools.vscode-azureappservice) installieren, mit der Sie Linux-Web-Apps im Azure-PaaS-Dienst (Platform-as-a-Service) erstellen, verwalten und bereitstellen können.
+Sie müssen auch die [Azure App Service-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) installieren, mit der Sie Linux-Web-Apps im Azure-PaaS-Dienst (Platform-as-a-Service) erstellen, verwalten und bereitstellen können.
 
 ### <a name="sign-in"></a>Anmelden
 
@@ -83,7 +83,7 @@ Als Nächstes stellen Sie sicher, dass die Anwendung ausgeführt wird. Starten S
 npm start
 ```
 
-Öffnen Sie jetzt Ihren Browser, und navigieren Sie zu [http://localhost:3000](http://localhost:3000). Dort sollte ein Bildschirm wie der folgende angezeigt werden:
+Öffnen Sie jetzt Ihren Browser, und navigieren Sie zu `http://localhost:3000`. Dort sollte ein Bildschirm wie der folgende angezeigt werden:
 
 ![Ausführen der Express-Anwendung](./media/quickstart-nodejs/express.png)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Protokolle der ausgeführten App S
 
 Suchen Sie die App im **AZURE APP SERVICE-Explorer**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Streamingprotokolle anzeigen** aus.
 
-Wenn Sie dazu aufgefordert werden, aktivieren Sie die Protokollierung, und starten Sie die Anwendung neu. Sobald die App neu gestartet wurde, wird das VS Code-Ausgabefenster mit einer Verbindung mit dem Protokollstream geöffnet.
+Das VS Code-Ausgabefenster wird mit einer Verbindung mit dem Protokollstream geöffnet.
 
 ![Anzeigen von Streamingprotokollen](./media/quickstart-nodejs/view-logs.png)
 
@@ -159,12 +159,12 @@ Wenn Sie dazu aufgefordert werden, aktivieren Sie die Protokollierung, und start
 
 Nach einigen Sekunden sehen Sie eine Meldung, die Sie darüber informiert, dass eine Verbindung mit dem Protokollstreamingdienst hergestellt wurde. Aktualisieren Sie die Seite mehrmals, um weitere Aktivitäten anzuzeigen.
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+<pre>
+2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+</pre>
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)

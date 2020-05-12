@@ -3,12 +3,12 @@ title: Übersicht über Azure-Status | Microsoft-Dokumentation
 description: Eine globale Ansicht der Integrität von Azure-Diensten
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78898338"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732549"
 ---
 # <a name="azure-status-overview"></a>Azure-Statusübersicht
 
@@ -24,9 +24,7 @@ Die Azure-Statusseite wird bei Änderung der Integrität von Azure-Diensten in E
 
 ## <a name="azure-status-history"></a>Azure-Statusverlauf
 
-Während die Azure-Statusseite immer die aktuellen Integritätsinformationen anzeigt, finden Sie ältere Ereignisse auf der [Azure Status-Verlaufsseite](https://status.azure.com/status/history/).
-
-Auf der Statusverlaufsseite werden Ereignisse angezeigt, die bis zu 365 Tage zurückliegen – angefangen mit Ereignissen, die im November 2019 veröffentlicht wurden. Die Informationen umfassen eine vorläufige Ursache, eine Risikominderung sowie nächste Schritte für Azure.
+Während die Azure-Statusseite immer die aktuellen Integritätsinformationen anzeigt, finden Sie ältere Ereignisse auf der [Azure Status-Verlaufsseite](https://status.azure.com/status/history/). Die Seite „Verlauf“ enthält alle Ursachenanalysen für Vorfälle ab dem 20. November 2019 sowie einen fünfjährigen Ursachenanalyseverlauf ab diesem Datum. Ursachenanalysen, die vor dem 20. November 2019 erstellt wurden, sind nicht verfügbar.
 
 ## <a name="rss-feed"></a>RSS-Feed
 

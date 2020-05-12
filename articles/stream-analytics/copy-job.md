@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771494"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612264"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopieren oder Sichern von Azure Stream Analytics-Aufträgen
 
-Sie können Ihre bereitgestellten Azure Stream Analytics-Aufträge mit Visual Studio Code oder Visual Studio kopieren oder sichern. 
+Sie können Ihre bereitgestellten Azure Stream Analytics-Aufträge mit Visual Studio Code oder Visual Studio kopieren oder sichern. Beim Kopieren eines Auftrags in eine andere Region wird der letzte Ausgabezeitpunkt nicht mitkopiert. Daher können Sie beim Starten des kopierten Auftrags die Option [**Zeitpunkt der letzten Beendigung**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) nicht verwenden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.

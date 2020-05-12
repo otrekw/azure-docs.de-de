@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096332"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692420"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>Schnellstart: Verwenden von Synapse Studio (Vorschauversion)
 
@@ -56,7 +56,7 @@ Mithilfe der Links auf der Symbolleiste können Sie neue Ordner erstellen und Da
 
    ![Abfragen von Dateien im Speicher](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Führen Sie die generierte Abfrage oder das generierte Notebook aus, um den Inhalt der Datei anzuzeigen:
+3. Führen Sie die generierte Abfrage oder das generierte Notebook aus, um den Inhalt der Datei anzuzeigen.
 
    ![Anzeigen des Dateiinhalts](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -64,7 +64,7 @@ Mithilfe der Links auf der Symbolleiste können Sie neue Ordner erstellen und Da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ermöglichen Sie Azure AD-Benutzern das Abfragen von Dateien, indem Sie die [RBAC-Berechtigung **Storage-Blobdatenleser** oder **Mitwirkender an Storage-Blobdaten** für Azure Storage zuweisen](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
+- Ermöglichen Sie Azure AD-Benutzern das Abfragen von Dateien, indem Sie die [RBAC-Berechtigung **Storage-Blobdatenleser** oder **Mitwirkender an Storage-Blobdaten** für Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) zuweisen.
 - [Abfragen von Dateien in Azure Storage mithilfe von SQL On-Demand](sql/on-demand-workspace-overview.md)
-- [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool.md)
+- [Erstellen eines Apache Spark-Pools mithilfe des Azure-Portals](quickstart-create-apache-spark-pool.md)
 - [Erstellen eines Power BI-Berichts für in Azure Storage gespeicherte Dateien](sql/tutorial-connect-power-bi-desktop.md)

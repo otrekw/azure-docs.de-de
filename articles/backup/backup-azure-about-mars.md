@@ -4,12 +4,12 @@ description: Erfahren Sie, wie der MARS-Agent die Sicherungsszenarien unterstüt
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673295"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611482"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informationen zum Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -39,19 +39,21 @@ Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 
 ## <a name="backup-process"></a>Sicherungsprozess
 
-1. Erstellen Sie im Azure-Portal einen [Recovery Services-Tresor](install-mars-agent.md#create-a-recovery-services-vault), und wählen Sie unter „Sicherungsziele“ Dateien, Ordner und den Systemstatus aus.
+1. Erstellen Sie im Azure-Portal einen [Recovery Services-Tresor](install-mars-agent.md#create-a-recovery-services-vault), und wählen Sie unter **Sicherungsziele** die gewünschten Dateien und Ordner und den Systemstatus aus.
 2. [Laden Sie die Anmeldeinformationen für den Recovery Services-Tresor und das Agent-Installationsprogramm auf einen lokalen Computer herunter](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent).
 
-    Um den lokalen Computer durch Auswahl der Sicherungsoption zu schützen, wählen Dateien, Ordner und den Systemstatus aus, und laden Sie dann den MARS-Agent herunter.
-
-3. Vorbereiten der Infrastruktur:
-
-    a. Führen Sie das Installationsprogramm aus, [um den Agent zu installieren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent).
-
-    b. Verwenden Sie Ihre heruntergeladenen Tresor-Anmeldeinformationen, um den Computer im Recovery Services-Tresor zu registrieren.
-4. [Konfigurieren Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) in der Agent-Konsole auf dem Client. Geben Sie die Aufbewahrungsrichtlinie für Ihre Sicherungsdaten an, um den Schutz zu starten.
+3. [Installieren Sie den Agent](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent), und verwenden Sie die heruntergeladenen Tresoranmeldeinformationen, um den Computer im Recovery Services-Tresor zu registrieren.
+4. Wechseln Sie zur Agent-Konsole auf dem Client, und [konfigurieren Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy), um anzugeben, welche Elemente gesichert werden sollen, wann die Sicherung ausgeführt werden soll (Zeitplan) und wie lange die Sicherungen in Azure aufbewahrt werden sollen (Aufbewahrungsrichtlinie). Dann können Sie mit dem Schutz beginnen.
 
 ![Azure Backup-Agent-Diagramm](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>Zusätzliche Informationen
+
+- Die **Erstsicherung** (erste Sicherung) wird gemäß Ihren Sicherungseinstellungen ausgeführt.  Der MARS-Agent erstellt mit VSS eine Momentaufnahme der für die Sicherung ausgewählten Volumes. Der Agent verwendet zum Erstellen der Momentaufnahme nur den Windows-Systemwritervorgang. Der Agent verwendet keine anwendungsbezogenen VSS Writer und erfasst keine App-konsistenten Momentaufnahmen. Nach der Erstellung der Momentaufnahme mit VSS erstellt der MARS-Agent eine virtuelle Festplatte (Virtual Hard Disk, VHD) in dem Cacheordner, den Sie beim Konfigurieren der Sicherung angegeben haben. Außerdem speichert der Agent Prüfsummen für die einzelnen Datenblöcke.
+
+- **Inkrementelle Sicherungen** (nachfolgende Sicherungen) werden gemäß dem von Ihnen angegebenen Zeitplan ausgeführt. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und es wird eine neue VHD erstellt. Die VHD wird komprimiert und verschlüsselt und dann an den Tresor gesendet. Nach Abschluss der inkrementellen Sicherung wird die neue VHD mit der VHD zusammengeführt, die nach der ersten Replikation erstellt wurde. Durch diese zusammengeführte VHD erhalten Sie den aktuellen Zustand zum Vergleich für die laufende Sicherung.
+
+- Der MARS-Agent kann den Sicherungsauftrag mithilfe des USN-Änderungsjournals (Update Sequence Number, Aktualisierungssequenznummer) im **optimierten Modus** oder durch Überprüfen auf Änderungen in Verzeichnissen oder Dateien durch Scannen des gesamten Volumes im **nicht optimierten Modus** ausführen. Der nicht optimierte Modus ist langsamer, weil der Agent alle Dateien auf dem Volume überprüfen und mit den Metadaten vergleichen muss, um die geänderten Dateien zu bestimmen.  Die **Erstsicherung** wird immer im nicht optimierten Modus ausgeführt. Wenn bei der vorherigen Sicherung ein Fehler aufgetreten ist, wird der nächste geplante Sicherungsauftrag im nicht optimierten Modus ausgeführt.
 
 ### <a name="additional-scenarios"></a>Zusätzliche Szenarien
 

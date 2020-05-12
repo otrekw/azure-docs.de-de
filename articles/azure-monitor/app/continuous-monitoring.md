@@ -2,13 +2,13 @@
 title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure Pipelines und Azure Application Insights | Microsoft-Dokumentation
 description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights.
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655394"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652763"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
@@ -51,17 +51,19 @@ Die Vorlage **Azure App Service-Bereitstellung mit kontinuierlicher Überwachung
 
 Ändern Sie die Einstellungen für Warnungsregeln wie folgt:
 
-1. Wählen Sie auf der Seite der Releasepipeline im linken Bereich die Option **Configure Application Insights Alerts** (Application Insights-Warnungen konfigurieren).
+Wählen Sie auf der Seite der Releasepipeline im linken Bereich die Option **Configure Application Insights Alerts** (Application Insights-Warnungen konfigurieren).
 
-1. Wählen Sie im Bereich **Azure Monitor-Warnungen** neben **Warnungsregeln** die Auslassungszeichen ( **...** ).
-   
-1. Wählen Sie im Dialogfeld **Warnungsregeln** das Dropdownsymbol neben einer Warnungsregel, z. B. **Verfügbarkeit**. 
-   
-1. Ändern Sie den **Schwellenwert** und andere Einstellungen, um Ihre Anforderungen zu erfüllen.
-   
-   ![Ändern der Warnung](media/continuous-monitoring/003.png)
-   
-1. Wählen Sie **OK** und dann oben rechts im Azure DevOps-Fenster die Option **Speichern**. Geben Sie einen beschreibenden Kommentar ein, und wählen Sie anschließend **OK**.
+Die vier Standardwarnungsregeln werden über ein Inlineskript erstellt:
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+Sie können das Skript ändern und zusätzliche Warnungsregeln hinzufügen, die Warnungsbedingungen ändern oder Warnungsregeln entfernen, die für Ihre Bereitstellungszwecke nicht sinnvoll sind.
 
 ## <a name="add-deployment-conditions"></a>Hinzufügen von Bereitstellungsbedingungen
 

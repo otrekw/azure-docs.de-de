@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137661"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692465"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Verwalten von Blobeigenschaften und Metadaten mit .NET
 
@@ -24,6 +24,11 @@ Blobs unterstützen neben den darin enthaltenen Daten auch Systemeigenschaften u
 - **Systemeigenschaften**: Systemeigenschaften sind in jeder Blobspeicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Die Azure Storage-Clientbibliothek für .NET verwaltet diese Eigenschaften für Sie.
 
 - **Benutzerdefinierte Metadaten**: Benutzerdefinierte Metadaten bestehen aus mindestens einem Name-Wert-Paar, das Sie für eine Blobspeicherressource angeben. Metadaten können verwendet werden, um zusätzliche Werte mit der Ressource zu speichern. Metadatenwerte sind nur für Ihre eigenen Zwecke bestimmt und wirken sich nicht auf das Verhalten der Ressource aus.
+
+> [!NOTE]
+> Blobindextags bieten auch die Möglichkeit, beliebige benutzerdefinierte Schlüssel-Wert-Attribute zusammen mit einer Blobspeicherressource zu speichern. Trotz der Ähnlichkeit mit Metadaten werden nur Blobindextags automatisch indiziert und durch den nativen Blob-Dienst abfragbar gemacht. Metadaten können nicht nativ indiziert und abgefragt werden, es sei denn, Sie verwenden einen separaten Dienst wie z. B. Azure Search.
+>
+> Weitere Informationen zu dieser Funktion finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 Das Abrufen von Metadaten- und Eigenschaftswerten für eine Blobspeicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der Methode `FetchAttributes` oder `FetchAttributesAsync` abrufen. Eine Ausnahme von dieser Regel besteht darin, dass die Methoden `Exists` und `ExistsAsync` die entsprechende `FetchAttributes`-Methode im Hintergrund aufrufen. Wenn Sie eine dieser Methoden aufrufen, müssen Sie `FetchAttributes` nicht zusätzlich aufrufen.
 

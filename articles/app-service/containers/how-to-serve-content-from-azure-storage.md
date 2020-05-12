@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297916"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625322"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
 
@@ -45,7 +45,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an App Service für Linux
 
 Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
 
-Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet.
+Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner, den Sie aus Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird die gesamte Azure Storage-Instanz eingebunden.
 
 
 > [!CAUTION]

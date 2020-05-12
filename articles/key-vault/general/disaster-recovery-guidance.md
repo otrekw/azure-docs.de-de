@@ -2,19 +2,19 @@
 title: Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Key Vault – Azure Key Vault| Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Key Vault.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 96929dcbe3d51589b0c3c0df89671dadb20e37cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/04/2020
+ms.author: sudbalas
+ms.openlocfilehash: 4796e6c555ca67794409fb1476f3c4fd0d760719
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425879"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780452"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
@@ -34,6 +34,8 @@ Beachten Sie folgende Einschränkungen:
 * Nachdem ein Failover abgeschlossen wurde, befindet sich der Schlüsseltresor im schreibgeschützten Modus. Folgende Anforderungen werden in diesem Modus unterstützt:
   * Auflisten von Schlüsseltresoren
   * Abrufen von Eigenschaften von Schlüsseltresoren
+   * Auflisten von Zertifikaten
+  * Abrufen von Zertifikaten
   * Auflisten geheimer Schlüssel
   * Abrufen geheimer Schlüssel
   * Auflisten von Schlüsseln

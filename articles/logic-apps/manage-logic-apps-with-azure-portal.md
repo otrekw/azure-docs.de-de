@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415973"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598163"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Verwalten von Logik-Apps im Azure-Portal
 
@@ -145,6 +145,10 @@ Das Löschen Ihrer Logik-App wirkt sich wie folgt auf Ihre Workflowinstanzen aus
 * Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt. Abhängig von der Anzahl dieser Ausführungen kann dies einige Zeit in Anspruch nehmen.
 
 * Das Logic Apps-Modul erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+> [!NOTE]
+> Wenn Sie eine untergeordnete Logik-App löschen und neu erstellen, müssen Sie die übergeordnete Logik-App erneut speichern. Die neu erstellte untergeordnete App besitzt andere Metadaten.
+> Wenn Sie die übergeordnete Logik-App nach dem erneuten Erstellen der untergeordneten App nicht erneut speichern, schlagen ihre Aufrufe der untergeordneten Logik-App mit dem Fehler „Nicht autorisiert“ fehl. Dieses Verhalten gilt für über- und untergeordnete Logik-Apps, z. B. solche, die Artefakte in Integrationskonten verwenden oder Azure-Funktionen aufrufen.
 
 <a name="delete-single-logic-app"></a>
 

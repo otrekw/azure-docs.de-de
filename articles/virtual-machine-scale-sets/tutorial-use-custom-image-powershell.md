@@ -4,171 +4,269 @@ description: Es wird beschrieben, wie Sie Azure PowerShell zum Erstellen eines b
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: akjosh
+ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278290"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792767"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit Azure PowerShell
 
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen und Anpassen einer VM
-> * Aufheben der Bereitstellung und Generalisieren der VM
-> * Erstellen eines benutzerdefinierten VM-Images von der Quell-VM
-> * Bereitstellen einer Skalierungsgruppe, für die das benutzerdefinierte VM-Image verwendet wird
+> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Imagedefinition
+> * Erstellen einer Imageversion
+> * Erstellen einer Skalierungsgruppe aus einem Image 
+> * Freigeben eines Imagekatalogs
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
+## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+In den folgenden Schritten wird erläutert, wie Sie eine vorhandene VM in ein wiederverwendbares benutzerdefiniertes Image umwandeln, mit dem Sie eine Skalierungsgruppe erstellen können.
+
+Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Sehen Sie sich ggf. die [Schnellstartanleitung zu PowerShell](quick-create-powershell.md) an, um einen virtuellen Computer für dieses Tutorial zu erstellen. Ersetzen Sie beim Durcharbeiten des Tutorials bei Bedarf die Ressourcennamen.
+
+## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
+
+Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
+
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
 
-## <a name="create-and-configure-a-source-vm"></a>Erstellen und Konfigurieren einer Quell-VM
+## <a name="get-the-vm"></a>Abrufen des virtuellen Computers
 
->[!NOTE]
-> In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein generalisiertes VM-Image erstellen und verwenden. Das Erstellen einer Skalierungsgruppe auf der Grundlage einer speziellen VHD wird nicht unterstützt.
-
-Erstellen Sie zunächst mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe und dann mit [New-AzVM](/powershell/module/az.compute/new-azvm) eine VM. Diese VM wird dann als Quelle für ein benutzerdefiniertes VM-Image verwendet. Im folgenden Beispiel wird eine VM mit dem Namen *myCustomVM* in der Ressourcengruppe *myResourceGroup* erstellt. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für die VM ein:
-
-```azurepowershell-interactive
-# Create a resource a group
-New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
-
-# Create a Windows Server 2016 Datacenter VM
-New-AzVm `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myCustomVM" `
-  -ImageName "Win2016Datacenter" `
-  -OpenPorts 3389
-```
-
-Listen Sie zum Herstellen einer Verbindung mit dem virtuellen Computer mithilfe von [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) wie folgt die öffentliche IP-Adresse auf:
+Mit [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) können Sie eine Liste der VMs abrufen, die in einer Ressourcengruppe verfügbar sind. Wenn Sie den Namen und die Ressourcengruppe des virtuellen Computers kennen, können Sie erneut `Get-AzVM` verwenden, um das VM-Objekt abzurufen und für die spätere Verwendung in einer Variablen zu speichern. In diesem Beispiel wird ein virtueller Computer namens *sourceVM* aus der Ressourcengruppe „myResourceGroup“ abgerufen und der Variablen *$vm* zugewiesen. 
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie eine Remoteverbindung mit der VM. Führen Sie diesen Schritt bei Verwendung von Azure Cloud Shell an einer lokalen PowerShell-Eingabeaufforderung oder über einen Remotedesktopclient aus. Geben Sie Ihre eigene IP-Adresse aus dem vorherigen Befehl an. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen ein, die Sie im ersten Schritt beim Erstellen des virtuellen Computers verwendet haben:
+Erstellen Sie mit dem Befehl [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
 
-```powershell
-mstsc /v:<IpAddress>
-```
-
-Installieren Sie einen einfachen Webserver, um Ihre VM anzupassen. Wenn die VM-Instanz in der Skalierungsgruppe bereitgestellt wird, verfügt sie über alle erforderlichen Pakete zum Ausführen einer Webanwendung. Öffnen Sie auf dem virtuellen Computer eine lokale PowerShell-Eingabeaufforderung, und installieren Sie den IIS-Webserver wie folgt mit [Install-WindowsFeature](/powershell/module/servermanager/install-windowsfeature):
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-Im letzten Schritt der Vorbereitung Ihrer VM für die Nutzung als benutzerdefiniertes Image generalisieren Sie die VM. Sysprep entfernt Ihre gesamten persönlichen Kontoinformationen und -konfigurationen und setzt die VM für zukünftige Bereitstellungen in einen bereinigten Zustand zurück. Weitere Informationen finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
-
-Führen Sie zum Generalisieren der VM Sysprep aus, und richten Sie für die VM eine sofort einsatzbereite Benutzeroberfläche ein. Wenn Sie fertig sind, können Sie Sysprep anweisen, die VM herunterzufahren:
-
-```powershell
-C:\Windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown
-```
-
-Die Remoteverbindung mit der VM wird automatisch geschlossen, wenn Sysprep den Prozess abgeschlossen hat und die VM heruntergefahren wird.
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Erstellen eines benutzerdefinierten VM-Images von der Quell-VM
-Die Quell-VM wird jetzt mit dem installierten IIS-Webserver angepasst. Wir erstellen das benutzerdefinierte VM-Image für die Verwendung mit einer Skalierungsgruppe.
-
-Zum Erstellen eines Images muss die Zuordnung des virtuellen Computers aufgehoben werden. Heben Sie mit [Stop-AzVm](/powershell/module/az.compute/stop-azvm) die Zuordnung des virtuellen Computers auf. Legen Sie anschließend mit [Set-AzVm](/powershell/module/az.compute/set-azvm) den Zustand des virtuellen Computers auf „Generalisiert“ fest, um die Azure-Plattform darüber zu informieren, dass der virtuelle Computer als benutzerdefiniertes Image verwendet werden kann. Sie können nur aus einer generalisierten VM ein Image erstellen:
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myGalleryRG* in der Region *EastUS* erstellt:
 
 ```azurepowershell-interactive
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
 ```
 
-Es kann einige Minuten dauern, die Zuordnung der VM aufzuheben und sie zu generalisieren.
+## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs 
 
-Erstellen Sie nun mit [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) und [New-AzImage](/powershell/module/az.compute/new-azimage) ein Image des virtuellen Computers. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* aus Ihrer VM erstellt:
+Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens von Images verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
+
+Erstellen Sie mit [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) einen Imagekatalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
 
 ```azurepowershell-interactive
-# Get VM object
-$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
-
-# Create the VM image configuration based on the source VM
-$image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
-
-# Create the custom VM image
-New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
 ```
 
-## <a name="configure-the-network-security-group-rules"></a>Konfigurieren der Netzwerksicherheitsgruppen-Regeln
-Sie müssen vor dem Erstellen der Skalierungsgruppe die zuordnenden Netzwerksicherheitsgruppen-Regeln konfigurieren, um den Zugriff auf HTTP, RDP und Remoting zuzulassen. 
+
+## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
+
+Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+
+Erstellen Sie die Imagedefinition mit [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In diesem Beispiel hat das Katalogimage den Namen *myGalleryImage* und wird für ein spezialisiertes Image erstellt. 
 
 ```azurepowershell-interactive
-$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-
-$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-
-$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
-
-New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "EastUS" -SecurityRules $rule1,$rule2,$rule3
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
 ```
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Erstellen einer Skalierungsgruppe aus dem benutzerdefinierten VM-Image
+
+## <a name="create-an-image-version"></a>Erstellen einer Imageversion
+
+Erstellen Sie mit [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion aus einem virtuellen Computer. 
+
+Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
+
+In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Osten* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation müssen Sie die *Quellregion* als Ziel für die Replikation angeben.
+
+Verwenden Sie `$vm.Id.ToString()` für `-Source`, um eine Imageversion des virtuellen Computers zu erstellen.
+
+```azurepowershell-interactive
+$region1 = @{Name='South Central US';ReplicaCount=1}
+$region2 = @{Name='East US';ReplicaCount=2}
+$targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
+
+## <a name="create-a-scale-set-from-the-image"></a>Erstellen einer Skalierungsgruppe auf der Grundlage des Images
 Erstellen Sie jetzt mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine Skalierungsgruppe, für die der Parameter `-ImageName` genutzt wird, um das im vorherigen Schritt erstellte VM-Image zu definieren. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
 
 ```azurepowershell-interactive
+# Define variables for the scale set
+$resourceGroupName = "myVMSSRG3"
+$scaleSetName = "myScaleSet3"
+$location = "East US"
+
+# Create a resource group
+New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+
+# Create a networking pieces
+$subnet = New-AzVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myVnet" `
+  -Location $location `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $subnet
+$publicIP = New-AzPublicIpAddress `
+  -ResourceGroupName $resourceGroupName `
+  -Location $location `
+  -AllocationMethod Static `
+  -Name "myPublicIP"
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
+  -Name "myFrontEndPool" `
+  -PublicIpAddress $publicIP
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
+  -Name "myRDPRule" `
+  -FrontendIpConfigurationId $frontendIP.Id `
+  -Protocol TCP `
+  -FrontendPortRangeStart 50001 `
+  -FrontendPortRangeEnd 50010 `
+  -BackendPort 3389
+# Create the load balancer and health probe
+$lb = New-AzLoadBalancer `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myLoadBalancer" `
+  -Location $location `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -InboundNatPool $inboundNATPool
+Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+  -LoadBalancer $lb `
+  -Protocol TCP `
+  -Port 80 `
+  -IntervalInSeconds 15 `
+  -ProbeCount 2
+Add-AzLoadBalancerRuleConfig `
+  -Name "myLoadBalancerRule" `
+  -LoadBalancer $lb `
+  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+  -BackendAddressPool $lb.BackendAddressPools[0] `
+  -Protocol TCP `
+  -FrontendPort 80 `
+  -BackendPort 80 `
+  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
+Set-AzLoadBalancer -LoadBalancer $lb
+
+# Create IP address configurations
+$ipConfig = New-AzVmssIpConfig `
+  -Name "myIPConfig" `
+  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
+  -SubnetId $vnet.Subnets[0].Id
+
+# Create a configuration 
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 2 `
+    -SkuName "Standard_DS2" `
+    -UpgradePolicyMode "Automatic"
+
+# Reference the image version
+Set-AzVmssStorageProfile $vmssConfig `
+  -OsDiskCreateOption "FromImage" `
+  -ImageReferenceId $galleryImage.Id
+
+# Complete the configuration
+ 
+Add-AzVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name "network-config" `
+  -Primary $true `
+  -IPConfiguration $ipConfig 
+
+# Create the scale set 
 New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -SecurityGroupName "myNSG"
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicyMode "Automatic" `
-  -ImageName "myImage"
+  -ResourceGroupName $resourceGroupName `
+  -Name $scaleSetName `
+  -VirtualMachineScaleSet $vmssConfig
 ```
 
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
 
 
-## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Um Ihre Skalierungsgruppe in Aktion zu sehen, rufen Sie wie folgt mit [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab:
+## <a name="share-the-gallery"></a>Teilen des Katalogs
 
+Wir empfehlen, dass Sie den Zugriff auf der Ebene des Imagekatalogs teilen. Verwenden Sie eine E-Mail-Adresse und das Cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser), um die Objekt-ID für den Benutzer abzurufen, und verwenden Sie dann [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um ihnen Zugriff auf den Katalog zu gewähren. Ersetzen Sie die Beispiel-E-Mail-Adresse alinne_montes@contoso.com in diesem Beispiel durch Ihre eigenen Informationen.
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myPublicIPAddress" | Select IpAddress
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
-
-Geben Sie die öffentliche IP-Adresse in Ihren Webbrowser ein. Die IIS-Standardwebseite wird angezeigt, wie im folgenden Beispiel dargestellt:
-
-![IIS-Ausführung über das benutzerdefinierte VM-Image](media/tutorial-use-custom-image-powershell/default-iis-website.png)
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie mit [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) die Ressourcengruppe und alle dazugehörigen Ressourcen, um Ihre Skalierungsgruppe und die weiteren Ressourcen zu entfernen. Der Parameter `-Force` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten. Der Parameter `-AsJob` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist.
+
+Wenn die Ressourcengruppe und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the scale set resource group
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Azure bietet darüber hinaus den auf Packer basierenden Dienst [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview). Beschreiben Sie einfach Ihre Anpassungen in einer Vorlage, und diese übernimmt die Imageerstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image für Ihre Skalierungsgruppen mit Azure PowerShell erstellen und verwenden:
 
 > [!div class="checklist"]
-> * Erstellen und Anpassen einer VM
-> * Aufheben der Bereitstellung und Generalisieren der VM
-> * Erstellen eines benutzerdefinierten VM-Images
-> * Bereitstellen einer Skalierungsgruppe, für die das benutzerdefinierte VM-Image verwendet wird
+> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Imagedefinition
+> * Erstellen einer Imageversion
+> * Erstellen einer Skalierungsgruppe aus einem Image 
+> * Freigeben eines Imagekatalogs
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Anwendungen in Ihrer Skalierungsgruppe bereitstellen.
 

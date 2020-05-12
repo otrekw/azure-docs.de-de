@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie benutzerdefinierte ausgehende Routen in Azure
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676503"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733497"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route (Vorschau)
 
@@ -73,7 +73,7 @@ Hier sehen Sie eine Netzwerktopologie, die standardmäßig in AKS-Clustern berei
 
 Wenn `userDefinedRouting` festgelegt ist, konfiguriert AKS ausgehende Datenpfade nicht automatisch. Folgende Konfiguration muss vom **Benutzer** vorgenommen werden.
 
-Der Cluster muss in einem vorhandenen Netzwerk mit einem konfigurierten Subnetz bereitgestellt werden. Im Subnetz muss eine gültige benutzerdefinierte Route (User-Defined Route, UDR) mit ausgehender Konnektivität vorhanden sein.
+Der AKS-Cluster muss in einem vorhandenen virtuellen Netzwerk mit einem konfigurierten Subnetz bereitgestellt werden. Bei Verwendung der Standardlastenausgleichs-Architektur müssen Sie expliziten ausgehenden Datenverkehr herstellen. Hierzu müssen ausgehende Anforderungen an ein Gerät, z. B. eine Firewall oder ein Gateway, gesendet werden, oder Sie müssen den ausgehenden Datenverkehr über eine öffentliche IP-Adresse zulassen, die dem Standardlastenausgleich oder einem bestimmten Knoten zugewiesen ist.
 
 Der AKS-Ressourcenanbieter stellt eine standardmäßige Lastenausgleichsressource (Standard Load Balancer, SLB) bereit. Der Lastenausgleich wird ohne jede Regeln konfiguriert und [verursacht erst dann Gebühren, wenn eine Regel platziert wird](https://azure.microsoft.com/pricing/details/load-balancer/). AKS stellt **nicht** automatisch eine öffentliche IP-Adresse für das SLB-Front-End bereit. AKS konfiguriert den Back-End-Pool für den Lastenausgleich **nicht** automatisch.
 

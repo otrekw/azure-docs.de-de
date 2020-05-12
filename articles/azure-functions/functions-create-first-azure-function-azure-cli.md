@@ -4,24 +4,42 @@ description: Es wird beschrieben, wie Sie eine Funktion über die Befehlszeile e
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732809"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626257"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Schnellstart: Erstellen einer Funktion in Azure, die auf HTTP-Anforderungen antwortet
 
-In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
+::: zone pivot="programming-language-csharp"  
+In diesem Artikel wird mithilfe von Befehlszeilentools eine auf der C#-Klassenbibliothek basierende Funktion erstellt, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer JavaScript-Funktion, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer TypeScript-Funktion, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer PowerShell-Funktion, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Python-Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. 
+::: zone-end
+
+Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 Es gibt auch eine [Visual Studio Code-basierte Version](functions-create-first-function-vs-code.md) dieses Artikels.
 ::: zone-end  
-
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) für Java-Entwickler zur Verfügung.
+> Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) für Java-Entwickler zur Verfügung.
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -381,9 +399,16 @@ Gehen Sie wie folgt vor, falls Sie mit dem nächsten Schritt fortfahren möchten
 
 Verwenden Sie andernfalls den unten angegebenen Befehl, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen, damit keine weiteren Kosten anfallen.
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
 ```
+::: zone-end
+::: zone pivot="programming-language-java"
+```azurecli
+az group delete --name java-functions-group
+```
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416026"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690904"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Was ist Azure Synapse Analytics (früher SQL DW)?
+
+> [!NOTE] 
+> Testen Sie die neuesten Azure Synapse-Features (etwa Arbeitsbereiche, Spark, SQL On-Demand und integrierte Synapse Studio-Umgebung), indem Sie [Zugriff auf Azure Synapse (Vorschau für Arbeitsbereiche) anfordern](https://aka.ms/synapsepreview). 
+>
+>Sehen Sie sich die [Dokumentation zu Azure Synapse (Vorschau für Arbeitsbereiche)](../overview-what-is.md) an.
 
 Azure Synapse ist ein Analysedienst, der Data Warehousing für Unternehmen mit Big Data-Analysen vereint. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen, indem serverlose On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang verwendet werden. Azure Synapse kombiniert diese beiden Welten in einer vereinheitlichten Oberfläche zur Erfassung, Vorbereitung, Verwaltung und Verarbeitung von Daten für sofortige BI- und Machine Learning-Anforderungen.
 
@@ -30,10 +35,7 @@ Azure Synapse besteht aus vier Komponenten:
 - Synapse-Pipelines: Hybrid-Datenintegration (Vorschau)
 - Studio: Einheitliche Benutzeroberfläche.  (Vorschau)
 
-> [!NOTE]
-> Fordern Sie [hier](https://aka.ms/synapsepreview) den Zugriff an, um auf die Previewfunktionen von Azure Synapse zugreifen zu können. Microsoft verarbeitet alle Anforderungen und antwortet so schnell wie möglich.
->
-> Sehen Sie sich die [Dokumentation zur Vorschauversion von Azure Synapse](../overview-what-is.md) an.
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Synapse SQL-Pool in Azure Synapse
 

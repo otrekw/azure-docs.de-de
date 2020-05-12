@@ -3,12 +3,12 @@ title: Überwachen der Leistung von Azure App Services | Microsoft-Dokumentation
 description: Überwachung der Anwendungsleistung für Azure App Services. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437194"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733446"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -55,21 +55,22 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsstufen aktiviert.
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new.png)
-
-   * Die .NET-Ebene **Basissammlung** bietet wesentliche Einzelinstanz-APM-Funktionen.
-
-   * Die .NET-Ebene **Empfohlen Sammlung**:
-       * Fügt CPU-, Speicher- und E/A-Nutzungstrends hinzu.
-       * Korreliert von Microservices über Anforderungs-/Abhängigkeitsgrenzen hinweg.
-       * Sammelt Nutzungstrends und ermöglicht die Korrelation von Verfügbarkeitsergebnissen und Transaktionen.
-       * Erfasst Ausnahmen, die vom Hostprozess nicht behandelt werden.
-       * Verbessert die Genauigkeit der APM-Metriken unter Last, wenn die Stichprobe verwendet wird.
+ 
+ Es folgt eine Übersicht über die gesammelten Daten für jede Route:
+        
+|  | .NET – Basissammlung | .NET – Empfohlene Sammlung |
+| --- | --- | --- |
+| Fügt CPU-, Speicher- und E/A-Nutzungstrends hinzu. |Ja |Ja |
+| Sammelt Nutzungstrends und ermöglicht die Korrelation von Verfügbarkeitsergebnissen und Transaktionen. | Ja |Ja |
+| Erfasst Ausnahmen, die vom Hostprozess nicht behandelt werden. | Ja |Ja |
+| Verbessert die Genauigkeit der APM-Metriken unter Last, wenn die Stichprobe verwendet wird. | Ja |Ja |
+| Korreliert Microservices über Anforderungs-/Abhängigkeitsgrenzen hinweg. | Nein (nur APM-Einzelinstanzfunktionen) |Ja |
 
 3. Zum Konfigurieren von Einstellungen wie der Stichprobe, die Sie zuvor über die Datei „applicationinsights.config“ steuern konnten, können Sie jetzt über die Anwendungseinstellungen mit dem entsprechenden Präfix mit genau diesen Einstellungen interagieren. 
 
     * Wenn Sie beispielsweise den anfänglichen Prozentsatz für die Stichprobenerstellung ändern möchten, können Sie die Anwendungseinstellung `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` und einen Wert von `100` erstellen.
 
-    * Eine Liste der unterstützten Einstellungen des Telemetrieprozessors für die adaptive Stichprobenerstellung finden Sie im [Code](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) und der [zugehörigen Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
+    * Eine Liste der unterstützten Einstellungen des Telemetrieprozessors für die adaptive Stichprobenerstellung finden Sie im [Code](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) und der [zugehörigen Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -397,7 +398,11 @@ Aktuelle Informationen zu Application Insights-Agent/Erweiterung finden Sie in d
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP und WordPress werden nicht unterstützt.
 
-PHP- und WordPress-Sites werden nicht unterstützt. Zurzeit ist kein offiziell unterstütztes SDK/unterstützter Agent für die serverseitige Überwachung dieser Workloads verfügbar. Das manuelle Instrumentieren clientseitiger Transaktionen auf einer PHP- oder WordPress-Site durch Hinzufügen des clientseitigen JavaScripts zu Ihren Webseiten kann jedoch mithilfe des [JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) erreicht werden. 
+PHP- und WordPress-Sites werden nicht unterstützt. Zurzeit ist kein offiziell unterstütztes SDK/unterstützter Agent für die serverseitige Überwachung dieser Workloads verfügbar. Das manuelle Instrumentieren clientseitiger Transaktionen auf einer PHP- oder WordPress-Site durch Hinzufügen des clientseitigen JavaScripts zu Ihren Webseiten kann jedoch mithilfe des [JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) erreicht werden.
+
+### <a name="connection-string-and-instrumentation-key"></a>Verbindungszeichenfolge und Instrumentierungsschlüssel
+
+Bei Verwendung von Überwachung ohne Code ist nur die Verbindungszeichenfolge erforderlich. Es wird jedoch weiterhin empfohlen, den Instrumentierungsschlüssel festzulegen, um die Abwärtskompatibilität mit älteren Versionen des SDKs aufrechtzuerhalten, wenn eine manuelle Instrumentierung ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](../app/profiler.md)

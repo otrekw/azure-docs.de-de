@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880787"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739346"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus-Messagingausnahmen
 In diesem Artikel werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
@@ -46,8 +46,6 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen 
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Es wurde versucht, eine Nachricht mit einer bestimmten Sequenznummer zu empfangen. Diese Nachricht wurde nicht gefunden. |Stellen Sie sicher, dass die Nachricht nicht bereits empfangen wurde. Überprüfen Sie in der Warteschlange für unzustellbare Nachrichten, ob die Nachricht als unzustellbar gekennzeichnet wurde. |Der Wiederholungsversuch ist nicht hilfreich. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |Der Client kann keine Verbindung mit Service Bus herstellen. |Stellen Sie sicher, dass der angegebene Hostname richtig und der Host erreichbar ist. |Eine Wiederholung kann helfen, wenn zeitweilige Verbindungsprobleme vorliegen. |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |Der Dienst kann die Anforderung derzeit nicht verarbeiten. |Der Client kann eine gewisse Zeit warten und dann den Vorgang wiederholen. |Der Client kann den Vorgang nach einer gewissen Zeitspanne wiederholen. Wenn die Wiederholung zu einer anderen Ausnahme führt, überprüfen Sie das Wiederholungsverhalten dieser Ausnahme. |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |Das der Nachricht zugeordnete Sperrtoken ist abgelaufen, oder das Sperrtoken wurde nicht gefunden. |Verwerfen Sie die Nachricht. |Der Wiederholungsversuch ist nicht hilfreich. |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |Die dieser Sitzung zugeordnete Sperre ist verloren gegangen. |Brechen Sie das [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -Objekt ab. |Der Wiederholungsversuch ist nicht hilfreich. |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Eine allgemeine Messagingausnahme, die in folgenden Fällen ausgelöst werden kann:<p>Es wird versucht, ein [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)-Element mit einem Namen oder einem Pfad zu erstellen, der zu einem anderen Entitätstyp gehört (z.B. zu einem Thema).</p><p>Es wird versucht, eine Nachricht zu senden, die größer als 256 KB ist. </p>Der Server oder der Dienst hat beim Verarbeiten der Anforderung einen Fehler festgestellt. Sehen Sie sich die Details in der Ausnahmemeldung an. Dies ist in der Regel eine vorübergehende Ausnahme.</p><p>Die Anforderung wurde beendet, da die Entität gedrosselt wird. Fehlercode: 50001, 50002, 50008. </p> | Überprüfen Sie den Code, und stellen Sie sicher, dass nur serialisierbare Objekte für den Nachrichtentext verwendet werden (oder verwenden Sie ein benutzerdefiniertes Serialisierungsprogramm). <p>Überprüfen Sie die Dokumentation für die unterstützten Werttypen der Eigenschaften, und verwenden Sie nur unterstützte Typen.</p><p> Überprüfen Sie die [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) -Eigenschaft. Wenn sie den Wert **TRUE**aufweist, können Sie versuchen, den Vorgang zu wiederholen. </p>| Ist die Ausnahme auf eine Drosselung zurückzuführen, wiederholen Sie den Vorgang nach einigen Sekunden. Das Wiederholungsverhalten ist nicht definiert und in anderen Szenarien unter Umständen nicht hilfreich.|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Es wurde versucht, eine Entität mit einem Namen zu erstellen, der bereits von einer anderen Entität in diesem Dienstnamespace verwendet wird. |Löschen Sie die vorhandene Entität, oder wählen Sie einen anderen Namen für die zu erstellende Entität. |Der Wiederholungsversuch ist nicht hilfreich. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |Die Messagingentität hat die maximal zulässige Größe erreicht, oder die maximale Anzahl von Verbindungen zu einem Namespace wurde überschritten. |Schaffen Sie Platz in der Entität, indem Sie Nachrichten aus der Entität oder ihren Unterwarteschlangen empfangen. Siehe [QuotaExceededException](#quotaexceededexception). |Eine Wiederholung kann helfen, wenn in der Zwischenzeit Nachrichten entfernt wurden. |
@@ -102,6 +100,96 @@ Eine [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexcepti
 
 ### <a name="queues-and-topics"></a>Warteschlangen und Themen
 Für Warteschlangen und Themen wird das Zeitlimit entweder in der [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)-Eigenschaft als Teil der Verbindungszeichenfolge oder über [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) angegeben. Die Fehlermeldung selbst kann variieren, aber sie enthält immer den Timeoutwert für den aktuellen Vorgang. 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>Ursache
+
+Die Ausnahme **MessageLockLostException** wird ausgelöst, wenn eine Nachricht über den Empfangsmodus [PeekLock](message-transfers-locks-settlement.md#peeklock) empfangen wird und die Sperre des Clients auf Dienstseite abgelaufen ist.
+
+Die Sperre einer Nachricht kann aufgrund verschiedener Gründe ablaufen: 
+
+  * Der Timer der Sperre ist abgelaufen, bevor die Clientanwendung ihn erneuert hat.
+  * Die Clientanwendung hat die Sperre abgerufen, diese in einem dauerhaften Speicher gespeichert und dann neu gestartet. Nach diesem Neustart hat die Clientanwendung die In-Flight-Nachrichten abgerufen und versucht, diese abzuschließen.
+
+### <a name="resolution"></a>Lösung
+
+Wenn die Ausnahme **MessageLockLostException** auftritt, kann die Clientanwendung die Nachricht nicht mehr verarbeiten. Die Clientanwendung kann die Ausnahme optional zur Analyse protokollieren, jedoch *muss* der Client die Nachricht verwerfen.
+
+Da die Sperre der Nachricht abgelaufen ist, wird sie wieder in die Warteschlange (oder das Abonnement) eingereiht, sodass die Clientanwendung sie beim nächsten Empfangsaufruf verarbeiten kann.
+
+Wenn **MaxDeliveryCount** überschritten wurde, kann die Nachricht in **DeadLetterQueue** verschoben werden.
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>Ursache
+
+Die Ausnahme **SessionLockLostException** wird ausgelöst, wenn eine Sitzung akzeptiert wird und die Sperre des Clients auf Dienstseite abläuft.
+
+Die Sperre einer Sitzung kann aufgrund verschiedener Gründe ablaufen: 
+
+  * Der Timer der Sperre ist abgelaufen, bevor die Clientanwendung ihn erneuert hat.
+  * Die Clientanwendung hat die Sperre abgerufen, diese in einem dauerhaften Speicher gespeichert und dann neu gestartet. Nach diesem Neustart hat die Clientanwendung die In-Flight-Sitzungen abgerufen und versucht, die Nachrichten in diesen Sitzungen abzuschließen.
+
+### <a name="resolution"></a>Lösung
+
+Wenn die Ausnahme **SessionLockLostException** auftritt, kann die Clientanwendung die Nachrichten in der Sitzung nicht mehr verarbeiten. Die Clientanwendung kann die Ausnahme zur Analyse protokollieren, jedoch *muss* der Client die Nachrichten verwerfen.
+
+Da die Sperre der Sitzung abgelaufen ist, wird sie wieder in die Warteschlange (oder das Abonnement) eingereiht, sodass sie von der nächsten Clientanwendung gesperrt werden kann, die die Sitzung akzeptiert. Da die Sitzungssperre immer von jeweils einer einzelnen Clientanwendung aufrechterhalten wird, wird die Reihenfolge der Verarbeitung garantiert.
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>Ursache
+
+In den folgenden Fällen wird die Ausnahme **SocketException** ausgelöst:
+   * Wenn ein Verbindungsversuch fehlschlägt, weil der Host nach einem festgelegten Zeitraum nicht ordnungsgemäß reagiert hat (TCP-Fehlercode 10060).
+   * Eine aktive Verbindung ist fehlgeschlagen, weil der verbundene Host nicht reagiert hat.
+   * Ein Fehler ist beim Verarbeiten der Nachricht aufgetreten, oder es kam beim Remotehost zu einer Zeitüberschreitung.
+   * Es liegt ein Problem mit der zugrunde liegenden Netzwerkressource vor.
+
+### <a name="resolution"></a>Lösung
+
+Die **SocketException**-Fehler geben an, dass die VM, die die Anwendungen hostet, den Namen `<mynamespace>.servicebus.windows.net` nicht in die entsprechende IP-Adresse konvertieren kann. 
+
+Überprüfen Sie, ob der folgende Befehl erfolgreich eine IP-Adresse zuweisen kann.
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+Dadurch sollte eine Ausgabe ähnlich der folgenden zurückgegeben werden:
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+Wenn der obige Name **nicht in eine IP-Adresse und den Namespace-Alias aufgelöst wird**, wenden Sie sich zur weiteren Untersuchung an den Netzwerkadministrator. Die Namensauflösung erfolgt über einen DNS-Server. Diese Ressource befindet sich üblicherweise im Kundennetzwerk. Wenn die DNS-Auflösung über Azure DNS erfolgt, wenden Sie sich an den Azure-Support.
+
+Wenn die Namensauflösung **erwartungsgemäß funktioniert**, überprüfen Sie [hier](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues), ob Verbindungen mit Azure Service Bus erlaubt sind.
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>Ursache
+
+**MessagingException** ist eine generische Ausnahme, die aus verschiedenen Gründen ausgelöst werden kann. Einige dieser Gründe werden im Folgenden aufgeführt.
+
+   * Es wurde versucht, eine **QueueClient**-Instanz in einem **Thema** oder **Abonnement** zu erstellen.
+   * Die Größe der gesendeten Nachricht ist überschreitet den Grenzwert für die jeweilige Stufe. Erfahren Sie mehr über die [Kontingente und Grenzwerte von Service Bus](service-bus-quotas.md).
+   * Eine spezifische Datenebenenanforderung (Senden, Empfangen, Abschließen, Verwerfen) wurde aufgrund von Drosselung beendet.
+   * Vorübergehende Probleme durch Dienstupgrades und Neustarts
+
+> [!NOTE]
+> Die obige Liste von Ausnahmen ist nicht vollständig.
+
+### <a name="resolution"></a>Lösung
+
+Die Lösungsschritte hängen davon ab, wodurch die Ausnahme **MessagingException** ausgelöst wurde.
+
+   * Bei **vorübergehenden Problemen** (bei denen ***isTransient*** auf ***TRUE*** festgelegt ist) oder **Drosselungsproblemen** kann das Problem manchmal durch Wiederholen des Vorgangs gelöst werden. Die Standardwiederholungsrichtlinie für das SDK kann hierfür verwendet werden.
+   * Bei anderen Problemen geben die in der Ausnahme angegebenen Details Informationen zum Problem und den Lösungsschritten an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die vollständige .NET-API-Referenz für Service Bus finden Sie unter [Azure .NET API Referenz](/dotnet/api/overview/azure/service-bus).

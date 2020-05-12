@@ -1,17 +1,17 @@
 ---
+title: Steuerliche Aspekte für den kommerziellen Microsoft-Marketplace
 Description: In den folgenden Tabellen finden Sie Informationen zu Ihren Vertriebsländern bzw. -regionen, um die steuerlichen Aspekte der Preisauswahl, die Auswirkungen auf die Auszahlung und die Steuerverantwortung besser verstehen zu können.
-title: Steuerliche Aspekte | Azure Marketplace
-ms.date: 2/13/2020
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285162"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793022"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber
 
@@ -23,10 +23,6 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 > [!IMPORTANT]
 > Die Steuerverantwortung in Händlerländern/-regionen und die Gegebenheiten (wie [weiter unten](#reseller-countriesregions) beschrieben) werden ungeachtet der Informationen in der folgenden Tabelle in Anhang A der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) behandelt.
 > Beachten Sie, dass die Spalte **Auszahlungsauswirkungen** nur für Herausgeber gilt. Die in dieser Spalte aufgeführten Steuersätze können jederzeit geändert werden, und Microsoft kann nicht garantieren, dass die Sätze in den folgenden Tabellen stets genau sind.
-
-
-
- 
 
 | Land/Region                   | Steuerliche Aspekte der Preisauswahl                                                                                                             | Auszahlungsauswirkung                    | Steuerverantwortung |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
@@ -262,19 +258,18 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Sambia                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Simbabwe                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 
-Die folgenden Informationen gelten nur für Azure Marketplace-Herausgeber, ungeachtet etwaiger oben gemachter anderslautender Angaben: 
+Die folgenden Informationen gelten nur für Azure Marketplace-Herausgeber, ungeachtet etwaiger oben gemachter anderslautender Angaben:
 
-| Land/Region                   | Steuerliche Aspekte der Preisauswahl                                                                                                             | Steuerverwaltung                    | 
+| Land/Region                   | Steuerliche Aspekte der Preisauswahl                                                                                                             | Steuerverwaltung                    |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Australien (für Bestellungen über alle Kundenbestellszenarien, mit Ausnahme des Szenarios „Enterprise Agreement“) | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Microsoft |
 | Australien (nur für Bestellungen über das Kundenbestellszenario „Enterprise Agreement“) | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber |
-| Brasilien | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber **(siehe „Händlerländer/-regionen“)** |
-| Mexiko | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber **(siehe „Händlerländer/-regionen“)** |
+| Brasilien | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber (**siehe „Händlerländer/-regionen“** ) |
+| Mexiko | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber (**siehe „Händlerländer/-regionen“** ) |
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Gemischte Überweisungsländer/-regionen für Herausgeber
 
-
-Bestimmte Microsoft-Abrechnungspartner erheben möglicherweise Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern (sofern zutreffend), die für den Erwerb Ihrer App(s) oder Ihrer In-App Produkte durch Kunden im Store in den nachstehend aufgeführten Ländern/Regionen gelten, und überweisen diese. Die [Berichte](payout-summary.md#transaction-history-download-export), die Microsoft Ihnen zur Verfügung stellt, enthalten die Transaktionen, für die ein Abrechnungspartner Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die für den Erwerb Ihrer App(s) oder In-App-Produkte durch Kunden im Store gelten, erhoben hat. Mit Ausnahme der in diesen Berichten beschriebenen Transaktionen überweisen Microsoft und seine Abrechnungsdienstanbieter keinerlei Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die in Verbindung mit dem Erwerb Ihrer App(s) oder In-App Produkte durch Kunden in diesen Ländern anfallen. Sie sind dafür verantwortlich, die Ihnen zur Verfügung gestellten Berichte zu überprüfen und Ihre entsprechenden Verpflichtungen zu ermitteln und zu erfüllen (sofern zutreffend), um die in Verbindung mit den Transaktionen für Ihre App(s) oder In-App-Produkte anfallenden Steuern anzumelden, zu erheben und zu überweisen.
+Bestimmte Microsoft-Abrechnungspartner erheben möglicherweise Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern (sofern zutreffend), die für den Erwerb Ihrer App(s) oder Ihrer In-App Produkte durch Kunden im Store in den nachstehend aufgeführten Ländern/Regionen gelten, und überweisen diese. Die [Berichte](payout-summary-overview.md#transaction-history-download-export), die Microsoft Ihnen zur Verfügung stellt, enthalten die Transaktionen, für die ein Abrechnungspartner Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die für den Erwerb Ihrer App(s) oder In-App-Produkte durch Kunden im Store gelten, erhoben hat. Mit Ausnahme der in diesen Berichten beschriebenen Transaktionen überweisen Microsoft und seine Abrechnungsdienstanbieter keinerlei Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die in Verbindung mit dem Erwerb Ihrer App(s) oder In-App Produkte durch Kunden in diesen Ländern anfallen. Sie sind dafür verantwortlich, die Ihnen zur Verfügung gestellten Berichte zu überprüfen und Ihre entsprechenden Verpflichtungen zu ermitteln und zu erfüllen (sofern zutreffend), um die in Verbindung mit den Transaktionen für Ihre App(s) oder In-App-Produkte anfallenden Steuern anzumelden, zu erheben und zu überweisen.
 
 | Gemischte Überweisungsländer/-regionen |
 |------------------------------------|
@@ -285,16 +280,13 @@ Bestimmte Microsoft-Abrechnungspartner erheben möglicherweise Umsatzsteuer, Geb
 
 In bestimmten Ländern/Regionen fungiert Microsoft nicht als Agent, sondern als Händler, der Ihre App(s) und In-App-Produkte im Store verfügbar macht. Weitere Einzelheiten zu den Geschäftsbedingungen für Händlerländer/-regionen finden Sie in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560).
 
-Folgendes gilt nur für Azure Marketplace-Herausgeber: 
+Folgendes gilt nur für Azure Marketplace-Herausgeber:
 
 |                    Händlerländer/-regionen                                                                          |
 |------------------------------------------------------------------------------------------------------------------------|
 | Brasilien (für Bestellungen über alle Kundenbestellszenarien, mit Ausnahme von CSP) |
 | Mexiko (nur für Bestellungen über das Kundenbestellszenario „Enterprise Agreement“) |
 
+## <a name="next-steps"></a>Nächste Schritte
 
- 
-
-
-
-
+[Einrichten von Auszahlungskonten und Steuerformularen](set-up-your-payout-account-tax-forms.md)

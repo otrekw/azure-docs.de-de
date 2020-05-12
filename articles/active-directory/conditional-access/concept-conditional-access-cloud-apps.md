@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457296"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778463"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -71,7 +71,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 
 Im Rahmen von Office 365 stehen Ihnen cloudbasierte Dienste für Produktivität und Zusammenarbeit wie Exchange, SharePoint und Microsoft Teams zur Verfügung. Office 365-Clouddienste sind umfassend integriert, um nahtlose Funktionen für die Zusammenarbeit zu gewährleisten. Diese Integration kann beim Erstellen von Richtlinien zu Verwirrung führen, da einige Apps wie Microsoft Teams Abhängigkeiten von anderen Apps wie SharePoint oder Exchange aufweisen.
 
-Mit der Office 365-App (Vorschauversion) können Sie gleichzeitig auf all diese Dienste abzielen. Statt auf einzelne Cloud-Apps abzuzielen, empfehlen wir die Verwendung der neuen Office 365-App (Vorschauversion). Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können.
+Mit der Office 365-App (Vorschauversion) können Sie gleichzeitig auf all diese Dienste abzielen. Wir empfehlen die Verwendung der neuen Office 365-App (Vorschauversion), statt auf einzelne Cloud-Apps abzuzielen, um Probleme mit [Dienstabhängigkeiten](service-dependencies.md) zu vermeiden. Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können.
 
 Administratoren können wahlweise bestimmte Apps von der Richtlinie ausschließen, indem sie die Office 365-App (Vorschauversion) einbeziehen und bestimmte Apps ihrer Wahl in der Richtlinie ausschließen.
 
