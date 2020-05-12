@@ -1,5 +1,5 @@
 ---
-title: Optionen für die Datenerfassung
+title: Datenerfassung und Automatisierung
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie mehr über die Optionen zur Datenerfassung für das Training Ihrer Machine Learning-Modelle.
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086878"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789860"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Datenerfassung in Azure Machine Learning
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Optionen für die Datenerfassung für Azure Machine Learning-Workflows
 
-In diesem Artikel lernen Sie die Vor- und Nachteile der folgenden mit Azure Machine Learning verfügbaren Optionen zur Datenerfassung kennen. 
+In diesem Artikel lernen Sie die Vor- und Nachteile von Optionen zur Datenerfassung kennen, die mit Azure Machine Learning verfügbar sind. 
 
-1. [Azure Data Factory](#use-azure-data-factory)-Pipelines
-2. [Python-SDK für Azure Machine Learning](#use-the-python-sdk)
+Folgende Optionen stehen zur Auswahl:
++ [Azure Data Factory](#azure-data-factory)-Pipelines, die speziell zum Extrahieren, Laden und Transformieren von Daten erstellt wurden
+
++ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), das eine benutzerdefinierte Codelösung für grundlegende Datenerfassungsaufgaben bietet.
+
++ Eine Kombination beider Optionen
 
 Die Datenerfassung ist der Prozess, bei dem unstrukturierte Daten aus einer oder mehreren Quellen extrahiert und dann für das Training von Machine Learning-Modellen vorbereitet werden. Sie ist auch zeitintensiv, insbesondere wenn sie manuell durchgeführt wird und Sie über große Datenmengen aus mehreren Quellen verfügen. Die Automatisierung dieses Aufwands setzt Ressourcen frei und stellt sicher, dass Ihre Modelle die aktuellsten und geeignetsten Daten verwenden.
 
-Azure Data Factory (ADF) wurde speziell zum Extrahieren, Laden und Transformieren von Daten entwickelt. Mit dem Python SDK können Sie jedoch eine benutzerdefinierte Codelösung für grundlegende Datenerfassungsaufgaben entwickeln. Wenn beides nicht ganz Ihren Bedürfnissen entspricht, können Sie auch ADF und das Python SDK zusammen verwenden, um einen Gesamtworkflow für die Datenerfassung zu erstellen, der Ihren Anforderungen entspricht. 
-
-## <a name="use-azure-data-factory"></a>Verwenden von Azure Data Factory
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) bietet native Unterstützung für die Überwachung von Datenquellen und für Trigger für Datenerfassungspipelines.  
 
@@ -55,7 +57,7 @@ Diese Schritte und das folgende Diagramm veranschaulichen den Workflow von Azure
     
 Erfahren Sie, wie Sie eine Datenerfassungspipeline für Machine Learning mit [Azure Data Factory](how-to-data-ingest-adf.md) erstellen.
 
-## <a name="use-the-python-sdk"></a>Verwenden des Python SDK 
+## <a name="azure-machine-learning-python-sdk"></a>Python-SDK für Azure Machine Learning 
 
 Mit dem [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) können Sie Datenerfassungsaufgaben in eine [Azure Machine Learning-Pipeline](how-to-create-your-first-pipeline.md) integrieren.
 
@@ -73,5 +75,7 @@ In der folgenden Abbildung besteht die Azure Machine Learning-Pipeline aus zwei 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie eine Datenerfassungspipeline für Machine Learning mit [Azure Data Factory](how-to-data-ingest-adf.md) erstellen.
-* Erfahren Sie, wie Sie mit [Azure-Pipelines](how-to-cicd-data-ingestion.md) die Entwicklungslebenszyklen Ihrer Datenerfassungspipelines automatisieren und verwalten können.
+Befolgen Sie diese Anleitungen:
+* [Erstellen einer Datenerfassungspipeline mit Azure Data Factory](how-to-data-ingest-adf.md)
+
+* [Automatisieren und Verwalten von Datenerfassungspipelines mit Azure Pipelines](how-to-cicd-data-ingestion.md).

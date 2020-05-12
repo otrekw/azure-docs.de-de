@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127800"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744323"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -18,6 +18,10 @@ Dieser Artikel beantwortet häufige Fragen zu Azure Migrate: Servermigration“ 
 - Fragen zur [Azure Migrate-Appliance](common-questions-appliance.md)
 - Fragen zur [Ermittlung, Bewertung und Abhängigkeitsvisualisierung](common-questions-discovery-assessment.md)
 - Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
+
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Welche geografischen Regionen werden für die Migration mit Azure Migrate unterstützt?
+
+In der Unterstützungsmatrix für Azure Migrate finden Sie die unterstützten geografischen Regionen für die [öffentliche Cloud](migrate-support-matrix.md#supported-geographies-public-cloud) und für [Azure Government](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Wie funktioniert die VMware-Replikation ohne Agent?
 
@@ -61,7 +65,7 @@ Nein. Azure-Verfügbarkeitszonen werden für die Azure Migrate-Migration nicht u
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Welches Transportprotokoll verwendet Azure Migrate bei der Replikation?
 
-Azure Migrate verwendet das NBD-Protokoll (Network Block Device) mit SSL-Verschlüsselung.
+Azure Migrate verwendet das NBD-Protokoll (Network Block Device) mit TLS-Verschlüsselung.
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Welche vCenter Server-Version ist für die Migration mindestens erforderlich?
 
@@ -83,6 +87,10 @@ Das in der NetQosPolicy zu verwendende AppNamePrefix ist „GatewayWindowsServic
  
 New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Kann ich virtuelle Computer, die bereits repliziert werden, nach Azure migrieren? 
+
+Wenn virtuelle Computer bereits auf andere Weise nach Azure repliziert werden, können Sie diese Computer nicht als virtuelle Computer mit Azure Migrate-Servermigration migrieren. Als Problemumgehung können Sie die virtuellen Computer wie physische Server behandeln und sie gemäß [unterstützter physischer Servermigration](migrate-support-matrix-physical-migration.md) migrieren.
+
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wann migriere ich Computer als physische Server?
 
 Die Behandlung von Computern als physische Server für die Migration ist in verschiedenen Szenarien hilfreich:
@@ -92,6 +100,10 @@ Die Behandlung von Computern als physische Server für die Migration ist in vers
 - Zum Migrieren von Hyper-V- oder VMware-VMs, falls Sie aus irgendeinem Grund den Standardmigrationsprozess für [Hyper-V](tutorial-migrate-hyper-v.md) oder die [VMware](server-migrate-overview.md)-Migration nicht nutzen können. Wenn Sie beispielsweise VMware vCenter nicht ausführen und nur ESXi-Hosts verwenden.
 - Zum Migrieren von VMs, die zurzeit in privaten Clouds ausgeführt werden, zu Azure.
 - Wenn Sie VMs, die in öffentlichen Clouds ausgeführt werden, z. B. Amazon Web Services (AWS) oder Google Cloud Platform (GCP), zu Azure migrieren möchten.
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ich habe zwei (oder mehr) Appliances zum Entdecken von VMs auf meiner vCenter Server-Instanz bereitgestellt. Wenn ich versuche, die VMs zu migrieren, werden mir aber nur die VMs für eine der Appliances angezeigt.
+
+Dies ist möglicherweise ein guter Anwendungsfall, wird aber derzeit nicht unterstützt. Die Bereitstellung von zwei (oder mehr) Appliances zum Entdecken der gleichen Gruppe aus VMs führ zu einem Dienstproblem, bei dem der VM-Besitz ständig zwischen den Appliances wechselt. Dies ist der Grund dafür, dass VMs scheinbar auftauchen und wieder verschwinden. Um dieses Problem zu lösen, müssen Sie eine Appliance löschen und eine Aktualisierung mit Leerung des Caches durchführen.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Benötige ich VMware vCenter, um VMware-VMs zu migrieren?
 Zum [Migrieren von VMware-VMs](server-migrate-overview.md) mithilfe der VMware-Migration mit oder ohne Agent müssen ESXi-Hosts, auf denen sich VMs befinden, von vCenter Server verwaltet werden. Wenn Sie nicht über vCenter Server verfügen, können Sie VMware-VMs migrieren, indem Sie sie als physische Server migrieren. [Weitere Informationen](migrate-support-matrix-physical-migration.md)
