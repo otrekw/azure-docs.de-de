@@ -3,20 +3,18 @@ title: Erstellen Ihrer ersten dauerhaften Funktion in Azure mit JavaScript
 description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion mit Visual Studio Code erstellen und veröffentlichen.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80257647"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889670"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Erstellen Ihrer ersten dauerhaften Funktion in JavaScript
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](../functions-overview.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die Azure Functions-Erweiterung von Visual Studio Code verwenden, um lokal eine dauerhafte Funktion namens „hello world“ zu erstellen und zu testen.  Mit dieser Funktion werden Aufrufe anderer Funktionen orchestriert und miteinander verkettet. Anschließend veröffentlichen Sie den Funktionscode in Azure.
 
@@ -50,7 +48,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | JavaScript | Erstellen Sie ein lokales Node.js-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v3 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
@@ -61,7 +59,7 @@ Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installi
 
 Und es wird die Datei „package.json“ im Stammordner erstellt.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Aktivieren des Azure Functions v2-Kompatibilitätsmodus
+### <a name="enable-compatibility-mode"></a>Aktivieren des Kompatibilitätsmodus
 
 Aktuell muss für JavaScript Durable Functions der Azure Functions v2-Kompatibilitätsmodus aktiviert werden.
 
@@ -104,7 +102,7 @@ Sie verwenden eine Vorlage, um den Code Ihrer dauerhaften Funktion in Ihrem Proj
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Orchestrator für Durable Functions | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestrator | Der Name Ihrer dauerhaften Funktion. |
@@ -119,7 +117,7 @@ Fügen Sie als Nächstes die referenzierte Aktivitätsfunktion `Hello` hinzu.
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Aktivität für Durable Functions | Erstellen Sie eine Aktivitätsfunktion. |
     | Angeben eines Funktionsnamens | Hallo | Der Name Ihrer Aktivitätsfunktion. |
@@ -134,7 +132,7 @@ Abschließend fügen Sie noch eine per HTTP ausgelöste Funktion hinzu, durch di
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | HTTP-Starter für Durable Functions | Erstellen Sie eine HTTP-Startfunktion. |
     | Angeben eines Funktionsnamens | DurableFunctionsHttpStart | Der Name Ihrer Aktivitätsfunktion. |
@@ -159,7 +157,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
 1. Geben Sie bei den Eingabeaufforderungen die folgenden Informationen an, um ein neues Speicherkonto in Azure zu erstellen:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen des Abonnements | *Name Ihres Abonnements* | Auswählen des Azure-Abonnements |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos |  |
@@ -204,7 +202,7 @@ Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer r
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Aktivieren des Azure Functions v2-Kompatibilitätsmodus
+### <a name="enable-compatibility-mode"></a>Aktivieren des Kompatibilitätsmodus
 
 Die Azure Functions v2-Kompatibilität, die Sie lokal aktiviert haben, muss auch in der App in Azure aktiviert werden.
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
-description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe der REST-API auflisten, erstellen, aktualisieren oder löschen.
+title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure über die REST-API – Azure RBAC
+description: Erfahren Sie, wie Sie benutzerdefinierte Rollen in Azure mithilfe der REST-API und Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062188"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734092"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure über die REST-API
 
 > [!IMPORTANT]
-> Das Hinzufügen von Verwaltungsgruppen zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+> Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe der REST-API auflisten, erstellen, aktualisieren oder löschen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe der REST-API auflisten, erstellen, aktualisieren oder löschen.
 
 ## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
@@ -189,7 +189,7 @@ Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefiniti
 
 1. Fügen Sie in der `notActions`-Eigenschaft die Vorgänge hinzu, die von den zulässigen `actions` ausgeschlossen sind.
 
-1. Geben Sie in den Eigenschaften `roleName` und `description` einen eindeutigen Rollennamen und eine Beschreibung an. Weitere Informationen zu den Eigenschaften finden Sie unter [Erstellen von benutzerdefinierten Rollen in Azure](custom-roles.md).
+1. Geben Sie in den Eigenschaften `roleName` und `description` einen eindeutigen Rollennamen und eine Beschreibung an. Weitere Informationen zu den Eigenschaften finden Sie unter [Benutzerdefinierte Rollen in Azure](custom-roles.md).
 
     Es folgt ein Beispiel für einen Anforderungstext:
 
@@ -340,6 +340,6 @@ Verwenden Sie zum Löschen einer benutzerdefinierten Rolle die [Rollendefinition
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API](role-assignments-rest.md)
+- [Benutzerdefinierte Azure-Rollen](custom-roles.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der REST-API](role-assignments-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

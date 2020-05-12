@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670116"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591651"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Übersicht über Protokollabfragen in Azure Monitor
 Mithilfe von Protokollabfragen können Sie die Daten, die in [Azure Monitor-Protokollen](../platform/data-platform-logs.md) erfasst werden, in vollem Umfang nutzen. Eine leistungsstarke Abfragesprache ermöglicht es Ihnen, Daten aus mehreren Tabellen zusammenzufügen, größere Mengen an Daten zu aggregieren und komplexe Vorgänge mit möglichst wenig Code auszuführen. Beinahe jede Frage kann beantwortet und jede Analyse durchgeführt werden, solange unterstützende Daten erfasst wurden und Sie wissen, wie die richtige Abfrage erstellt werden muss.
@@ -81,7 +81,7 @@ Log Analytics ist das wichtigste Tool, das im Azure-Portal zum Schreiben von Pro
 Sie können Log Analytics über verschiedene Orte im Azure-Portal starten. Der Umfang der Daten, die für Log Analytics verfügbar sind, ist von der Art und Weise abhängig, wie Sie das Tool starten. Weitere Informationen finden Sie unter [Query Scope (Abfrageumfang)](scope.md).
 
 - Klicken Sie im Menü **Azure Monitor** oder im Menü **Log Analytics-Arbeitsbereiche** auf **Protokolle**.
-- Klicken Sie in einer Application Insights-Anwendung auf der Seite **Übersicht** auf **Analytics**.
+- Klicken Sie in einer Application Insights-Anwendung auf der Seite **Übersicht** auf **Protokolle**.
 - Klicken Sie im Menü einer Azure-Ressource auf **Protokolle**.
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

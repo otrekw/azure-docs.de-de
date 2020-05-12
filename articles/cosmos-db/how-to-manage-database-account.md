@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Azure Cosmos DB Ressourcen mit dem Azure
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225902"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745023"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos 
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-Vorlage
 
-Diese Azure Resource Manager-Vorlage erstellt ein Azure Cosmos-Konto für SQL-APIs, die mit zwei Regionen und Optionen zur Auswahl der Konsistenzebene, von automatischem Failover und Multimaster konfiguriert sind. Klicken Sie zum Bereitstellen dieser Vorlage auf der Infoseite zum [Erstellen eines Azure Cosmos-Kontos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql) auf „Bereitstellen in Azure“.
+Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit Azure Resource Manager-Vorlagen](manage-sql-with-resource-manager.md).
 
 ## <a name="addremove-regions-from-your-database-account"></a>Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto
 
@@ -163,7 +163,7 @@ Weitere Informationen finden Sie unter [Aktivieren automatischer Failover mit de
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-Weitere Informationen finden Sie unter [Aktivieren automatischer Failover mit PowerShell](manage-with-powershell.md#enable-automatic-failover).
+Weitere Informationen finden Sie unter [Aktivieren des automatischen Failovers mit PowerShell](manage-with-powershell.md#enable-automatic-failover).
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Festlegen von Failoverprioritäten für Ihr Azure Cosmos-Konto
 

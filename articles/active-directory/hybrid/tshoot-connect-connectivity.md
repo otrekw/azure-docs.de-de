@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049737"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610444"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problembehebung bei Azure AD-Konnektivitätsproblemen
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -31,7 +32,7 @@ Azure AD Connect verwendet zur Authentifizierung die moderne Authentifizierung (
 
 In diesem Artikel zeigen wir Ihnen, wie Fabrikam durch seinen Proxy mit Azure AD verbunden wird. Der Proxyserver heißt fabrikamproxy und verwendet Port 8080.
 
-Zunächst stellen wir sicher, dass [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) richtig konfiguriert ist.  
+Zunächst stellen wir sicher, dass [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) richtig konfiguriert ist.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf
 Die folgenden Probleme sind die häufigsten Fehler, die im Installations-Assistenten auftreten.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Der Installations-Assistent wurde nicht richtig konfiguriert
-Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kann.  
+Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kann.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Falls dieser Fehler angezeigt wird, überprüfen Sie, ob [machine.config](how-to-connect-install-prerequisites.md#connectivity) richtig konfiguriert wurde.
 * Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity) , um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ### <a name="a-microsoft-account-is-used"></a>Ein Microsoft-Konto wird verwendet
-Bei Verwendung eines **Microsoft-Kontos** anstelle eines **Schul- oder Organisationskontos** wird ein generischer Fehler angezeigt.  
+Bei Verwendung eines **Microsoft-Kontos** anstelle eines **Schul- oder Organisationskontos** wird ein generischer Fehler angezeigt.
 ![Ein Microsoft-Konto wird verwendet](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Der MFA-Endpunkt ist nicht erreichbar
-Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsoftonline-p.com** nicht erreichbar ist und Ihr globaler Administrator MFA aktiviert hat.  
+Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsoftonline-p.com** nicht erreichbar ist und Ihr globaler Administrator MFA aktiviert hat.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Wenn dieser Fehler angezeigt wird, stellen Sie sicher, dass dem Proxy der Endpunkt **secure.aadcdn.microsoftonline-p.com** hinzugefügt wurde.
 
 ### <a name="the-password-cannot-be-verified"></a>Das Kennwort kann nicht überprüft werden
-Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen dieser Fehler angezeigt:  
-![Falsches Kennwort.](./media/tshoot-connect-connectivity/badpassword.png)
+Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen dieser Fehler angezeigt: ![Falsches Kennwort.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Handelt es sich um ein temporäres Kennwort, das geändert werden muss? Handelt es sich um das richtige Kennwort? Versuchen Sie, sich bei `https://login.microsoftonline.com` (auf einem anderen Computer als dem Azure AD Connect-Server) anzumelden, und überprüfen Sie, ob das Konto verwendbar ist.
 
@@ -186,7 +186,7 @@ Die Authentifizierung war erfolgreich, aber es liegt ein Authentifizierung bei A
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Globale Administratorrolle für Azure AD erforderlich
-Der Benutzer wurde erfolgreich authentifiziert. Dem Benutzer ist aber keine globale Administratorrolle zugewiesen. Auf diese Weise können Sie dem Benutzer [die globale Administratorrolle zuweisen](../users-groups-roles/directory-assign-admin-roles.md). 
+Der Benutzer wurde erfolgreich authentifiziert. Dem Benutzer ist aber keine globale Administratorrolle zugewiesen. Auf diese Weise können Sie dem Benutzer [die globale Administratorrolle zuweisen](../users-groups-roles/directory-assign-admin-roles.md).
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Wird als „Unerwarteter Fehler“ im Installations-Assistenten angezeigt. Dies 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Schritte zur Problembehandlung für frühere Versionen.
 Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
 
-Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Diese Konfiguration kann mit [**netsh**](how-to-connect-install-prerequisites.md#connectivity) durchgeführt werden.  
+Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Diese Konfiguration kann mit [**netsh**](how-to-connect-install-prerequisites.md#connectivity) durchgeführt werden.
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Der Anmelde-Assistent wurde nicht richtig konfiguriert

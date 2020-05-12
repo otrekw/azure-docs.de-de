@@ -1,26 +1,21 @@
 ---
-title: Synchronisieren von Attributen mit Azure Active Directory zur Zuordnung | Microsoft-Dokumentation
+title: Synchronisieren von Attributen mit Azure AD zu Zuordnungszwecken
 description: Erfahren Sie, wie Sie Attribute aus Ihren lokalen Active Directory Domain Services (AD) mit Azure Active Directory (Azure AD) synchronisieren können. Verwenden Sie beim Konfigurieren der Benutzerbereitstellungen in SaaS-Apps (Software-as-a-Service) die Verzeichniserweiterungsfunktion, um Quellattribute hinzuzufügen, die nicht standardmäßig synchronisiert sind.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: mimart
-ms.custom: ''
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d1efaf54bee65bd3274987e68e643f887baade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522270"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593147"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung
 

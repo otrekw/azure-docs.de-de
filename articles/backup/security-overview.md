@@ -3,12 +3,12 @@ title: Übersicht über Sicherheitsfeatures
 description: Erfahren Sie mehr über die Sicherheitsfunktionen in Azure Backup, die Ihnen helfen, Ihre Sicherungsdaten zu schützen und die Sicherheitsanforderungen Ihres Unternehmens zu erfüllen.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585818"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743655"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Übersicht über Sicherheitsfeatures in Azure Backup
 
@@ -16,9 +16,9 @@ Einer der wichtigsten Schritte zum Schutz Ihrer Daten besteht darin, eine zuverl
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Verwalten und Steuern von Identitäten und Benutzerzugriff
 
-Azure Backup bietet eine präzise Zugriffsverwaltung über die [rollenbasierte Zugriffssteuerung in Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf haben. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig. Mit Azure Backup können Sie die verwalteten Vorgänge über eine präzise Zugriffsverwaltung mithilfe der [rollenbasierten Zugriffssteuerung in Azure (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault) steuern. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
-Azure Backup bietet drei integrierte Rollen, um Vorgänge der Sicherungsverwaltung zu steuern:
+Azure Backup bietet drei [integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles), um Vorgänge der Sicherungsverwaltung zu steuern:
 
 * Mitwirkender für Sicherungen: Erstellen und Verwalten von Sicherungen, außer Löschen von Recovery Services-Tresoren und Gewähren des Zugriffs für andere Personen
 * Sicherungsoperator: alle Berechtigungen eines Mitwirkenden, außer Entfernen von Sicherungen und Verwalten von Sicherungsrichtlinien
@@ -47,13 +47,13 @@ Sie können nun [private Endpunkte](https://docs.microsoft.com/azure/private-lin
 
 Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. In Azure werden Daten bei der Übertragung zwischen Azure Storage und dem Tresor per HTTPS geschützt. Diese Daten bleiben im Azure-Backbone-Netzwerk.
 
-* Sicherungsdaten werden automatisch mit von Microsoft verwalteten Schlüsseln verschlüsselt. Sie können auch die gesicherten virtuellen Computer mit verwaltetem Datenträger im Recovery Services-Tresor verschlüsseln, indem Sie [vom Kunden verwaltete Schlüssel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) verwenden, die in Azure Key Vault gespeichert sind. Sie müssen keine besonderen Maßnahmen ergreifen, um diese Verschlüsselung zu aktivieren. Dies gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
+* Sicherungsdaten werden automatisch mit von Microsoft verwalteten Schlüsseln verschlüsselt. Sie können auch die gesicherten virtuellen Computer mit verwaltetem Datenträger im Recovery Services-Tresor verschlüsseln, indem Sie [vom Kunden verwaltete Schlüssel](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) verwenden, die in Azure Key Vault gespeichert sind. Sie müssen keine besonderen Maßnahmen ergreifen, um diese Verschlüsselung zu aktivieren. Dies gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
 
 * Azure Backup unterstützt die Sicherung und Wiederherstellung von Azure-VMs, deren Datenträger für Betriebssystem/Daten mit Azure Disk Encryption (ADE) verschlüsselt wurden. [Erfahren Sie mehr über verschlüsselte Azure-VMs und Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Schutz von Sicherungsdaten vor unbeabsichtigten Löschungen
 
-Azure Backup verfügt über Sicherheitsfeatures für den Schutz von Sicherungsdaten auch nach dem Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein Benutzer die Sicherung einer VM löscht. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an. [Erfahren Sie mehr über das vorläufige Löschen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete).
+Azure Backup verfügt über Sicherheitsfeatures für den Schutz von Sicherungsdaten auch nach dem Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein Benutzer die Sicherung einer VM löscht. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an. [Erfahren Sie mehr über das vorläufige Löschen](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Überwachung und Warnungen zu verdächtigen Aktivitäten
 

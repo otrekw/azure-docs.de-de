@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 09b02d043e970c68cdff0e3dc4f97328c9d74c84
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383775"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789843"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Leadverwaltung für kommerziellen Marketplace
 
-
 Kunden spielen für erfolgreiche Unternehmen eine entscheidende Rolle. Angesichts des Wandels beim Produktkauf sind Marketingfachleute darauf angewiesen, einen direkten Kontakt mit Kunden herzustellen und eine Beziehung aufzubauen. Aus diesem Grund stellt die Generierung hochwertiger Leads ein unverzichtbares Werkzeug für Ihren Vertriebszyklus dar. Nachdem Sie Ihr Angebot im [Partner Center](https://partner.microsoft.com/) gelistet haben, stehen Ihnen Tools zur Verfügung, mit denen Sie programmgesteuert Kundenkontaktinformationen erhalten können, sobald ein Kunde Interesse bekundet oder Ihr Produkt im Marketplace einsetzt. 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>Was sind Leads im Marketplace?
 
 Die Leads stammen von Kunden, die interessiert sind oder Ihre Produkte aus dem Marketplace einsetzen. Unabhängig davon, ob Ihr Produkt im Azure Marketplace oder in AppSource gelistet ist, können Sie Leads von Kunden erhalten, sobald es von Ihrem CRM richtig für Ihre Angebote im Partner Center eingerichtet ist. 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>Vorgehensweise zum Verbinden Ihres CRM-Systems mit dem Partner Center
 
@@ -48,7 +44,7 @@ Nachdem Sie Ihr Leadziel ordnungsgemäß konfiguriert und in Ihrem Angebot auf �
 
 Nach der technischen Einrichtung sollten Sie diese Leads in Ihre aktuelle Vertriebs- und Marketingstrategie sowie in Ihre Betriebsprozesse integrieren. Wir sind daran interessiert, einen besseren Überblick über Ihren allgemeinen Vertriebsprozess zu erhalten, und möchten bei der Bereitstellung hochwertiger Leads und ausreichender Daten eng mit Ihnen zusammenarbeiten, um zu Ihrem Erfolg beizutragen. Wir freuen uns, wenn Sie uns Ihr Feedback mitteilen würden, wie wir die Leads, die wir Ihnen zusenden, durch zusätzliche Daten optimieren und verbessern können, um diesen Kunden zum Erfolg zu verhelfen. Teilen Sie uns Ihr Feedback und Ihre Vorschläge mit, damit wir Ihrem Vertriebsteam durch Marketplace-Leads zu größerem Erfolg verhelfen können.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Häufige Leadkonfigurationsfehler bei der Veröffentlichung im Partner Center
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Häufige Leadkonfigurationsfehler bei Veröffentlichung im Partner Center
 
 **Lead konnte nicht in Dynamics CRM gespeichert werden. Überprüfen Sie die Einstellungen des Dynamics CRM-Kontos. LastCRMError: Anmeldung bei Dynamics CRM nicht möglich, LastCRMException:** 
 
@@ -90,7 +86,7 @@ Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleic
 
 **Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?** 
 
-Hier finden Sie die Dokumentation: [Rufen Sie die Kundenleads ab](./partner-center-portal/commercial-marketplace-get-customer-leads.md), oder übermitteln Sie ein Supportticket über „aka.ms/marketplacepublishersupport“, indem Sie Angebotsart und Leadverwaltung auswählen. 
+Eine Dokumentation finden Sie unter [Generieren von Kundenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md), oder senden Sie ein Supportticket unter [Hilfe und Support](https://partner.microsoft.com/support/v2/?stage=1). Wählen Sie Angebotstyp und Leadverwaltung aus. 
 
 **Muss ich ein Leadziel konfigurieren, um ein Angebot im Marketplace zu veröffentlichen?**
 
@@ -187,7 +183,7 @@ Der Lead wird nur geschrieben, wenn Sie Azure Blob Storage als Leadziel auswähl
 
 **Ich habe eine E-Mail vom Marketplace erhalten. Warum kann ich den Lead in meinem CRM nicht finden?**  
 
-Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine personenbezogenen Informationen von EDU-Domänen weiter. Senden Sie ein [Supportticket](https://aka.ms/marketplacepublishersupport).
+Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine personenbezogenen Informationen von EDU-Domänen weiter. Senden Sie ein Supportticket unter [Hilfe und Support](https://partner.microsoft.com/support/v2/?stage=1).
 
 **Ich habe Azure-Tabelle/Azure BLOB als Leadziel konfiguriert. Wie kann ich die Leads anzeigen?** 
 

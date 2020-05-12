@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230446"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734738"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 
@@ -37,7 +37,7 @@ Erstellen Sie Ihr neues Verzeichnis, indem Sie den Schritten unter [Create a new
 >[!IMPORTANT]
 >Die Person, die den Mandanten erstellt, wird automatisch zum globalen Administrator für diesen Mandanten. Der globale Administrator kann dem Mandanten weitere Administratoren hinzufügen.
 
-Weitere Informationen zu Abonnementrollen finden Sie unter [Azure RBAC-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
+Weitere Informationen zu Abonnementrollen finden Sie unter [Azure-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
 >[!TIP]
 > Wenn Sie planen, Ihre lokale Windows Server AD mit Azure AD in einen Verbund aufzunehmen, müssen Sie **Ich möchte diese Domäne für einmaliges Anmelden bei meinem lokalen Active Directory konfigurieren** aktivieren, wenn Sie zum Synchronisieren Ihrer Verzeichnisse das Tool Azure AD Connect ausführen.

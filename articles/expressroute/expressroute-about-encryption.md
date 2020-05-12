@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461462"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838755"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-Verschlüsselung
  
@@ -31,7 +31,7 @@ Nein. Wenn MACsec konfiguriert ist und ein Schlüsselkonflikt auftritt, geht die
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Wird durch das Aktivieren von MACsec für ExpressRoute Direct die Netzwerkleistung beeinträchtigt?
 Die Verschlüsselung und Entschlüsselung von MACsec erfolgt auf Hardware auf den von uns verwendeten Routern. Auf unserer Seite wird die Leistung nicht beeinträchtigt. Sie sollten sich jedoch mit dem Netzwerkanbieter der von Ihnen verwendeten Geräte in Verbindung setzen und ermitteln, ob sich MACsec auf die Leistung auswirkt.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Welche Verschlüsselungssammlungen werden für die Verschlüsselung unterstützt?
-Wir unterstützen AES128 und AES256.
+Wir unterstützen nur die [XPN](https://1.ieee802.org/security/802-1aebw/) (Extended Packet Numbering)-Version von AES128 und AES256. Deaktivieren Sie außerdem [SCI](https://en.wikipedia.org/wiki/IEEE_802.1AE) (Secure Channel Identifier) in der MACsec-Konfiguration auf Ihrem Gerät. 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Häufig gestellte Fragen zur End-to-End-Verschlüsselung durch IPsec
 IPsec ist ein [IETF-Standard](https://tools.ietf.org/html/rfc6071). Daten werden auf der IP-Ebene (Internet Protocol) oder auf der Netzwerkebene 3 verschlüsselt. Sie können mit IPsec eine End-to-End-Verbindung zwischen Ihrem lokalen Netzwerk und Ihrem virtuellen Netzwerk (VNet) in Azure verschlüsseln. Weitere häufig gestellte Fragen finden Sie unten.
