@@ -1,22 +1,17 @@
 ---
-title: 'Endbenutzerauthentifizierung: .NET SDK mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Authentifizierung von Endbenutzern: .NET bei Data Lake Storage Gen1 – Azure'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory mit dem .NET SDK umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66243711"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688153"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe des .NET SDK
 > [!div class="op_single_selector"]

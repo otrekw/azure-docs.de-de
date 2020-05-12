@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 10d81de48c0d8f56c7c3fd26e3fd82a8c3df84c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474678"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791254"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastisches Skalieren eines Cassandra-API-Kontos für Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Wenn Sie die Latenz minimieren müssen, gibt es in der Cassandra-API eine ganze 
 * [Manuell über das Azure-Portal](#use-azure-portal)
 * [Programmgesteuert über die Funktionen der Steuerungsebene](#use-control-plane)
 * [Programmgesteuert über CQL-Befehle mit einem bestimmten SDK](#use-cql-queries)
-* [Dynamisch über Autopilot](#use-autopilot)
+* [Dynamisch über Autoskalierung](#use-autoscale)
 
 In den folgenden Abschnitten werden die Vor- und Nachteile der einzelnen Ansätze beschrieben. So können Sie die beste Strategie auswählen, um die Skalierungsanforderungen Ihres Systems, die Gesamtkosten und die Effizienzanforderungen Ihrer Lösung gegeneinander abzuwägen.
 
@@ -46,23 +46,23 @@ Der Vorteil dieser Methode besteht darin, dass sie eine unkomplizierte, „schl�
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Verwenden der Steuerungsebene
 
-Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [PowerShell](powershell-samples-cassandra.md) und [Azure CLI](cli-samples-cassandra.md).
+Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [PowerShell](powershell-samples-cassandra.md) und der [Azure CLI](cli-samples-cassandra.md).
 
 Diese Methode bietet den Vorteil, dass Sie das Hoch- oder Herunterskalieren von Ressourcen timerbasiert automatisieren können, um sowohl Lastspitzen als auch Zeiträume mit niedriger Aktivität zu berücksichtigen. Sehen Sie sich das Beispiel [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) an, um zu erfahren, wie Sie dies mit Azure Functions und PowerShell erreichen.
 
-Ein Nachteil dieses Ansatzes ist, dass Sie nicht in Echtzeit auf unvorhersehbare Änderungen bei den Skalierungsanforderungen reagieren können. Stattdessen müssen Sie möglicherweise den Anwendungskontext in Ihrem System auf Client-/SDK-Ebene in Betracht ziehen oder [Autopilot](provision-throughput-autopilot.md) nutzen.
+Ein Nachteil dieses Ansatzes ist, dass Sie nicht in Echtzeit auf unvorhersehbare Änderungen bei den Skalierungsanforderungen reagieren können. Stattdessen müssen Sie möglicherweise den Anwendungskontext in Ihrem System auf Client-/SDK-Ebene in Betracht ziehen oder die [Autoskalierung](provision-throughput-autoscale.md) nutzen.
 
 ## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>Verwenden von CQL-Abfragen mit einem bestimmten SDK
 
 Sie können das System dynamisch per Code skalieren, indem Sie [CQL ALTER-Befehle](cassandra-support.md#keyspace-and-table-options) für die betreffende Datenbank oder den betreffenden Container ausführen.
 
-Dieser Ansatz bietet den Vorteil, dass Sie dynamisch und auf eine Weise, die sich für die jeweilige Anwendung optimal eignet, auf Skalierungsanforderungen reagieren können. Bei diesem Ansatz können Sie weiterhin von den Standardgebühren und -preisen für Anforderungseinheiten profitieren. Wenn die Skalierungsanforderungen Ihres Systems größtenteils vorhersehbar sind (etwa 70 % oder mehr), ist das SDK mit CQL möglicherweise eine kostengünstigere Methode der automatischen Skalierung als Autopilot. Der Nachteil hierbei ist, dass die Implementierung von Wiederholungsversuchen sehr komplex sein und die Ratenbegrenzung zu höheren Latenzen führen kann.
+Dieser Ansatz bietet den Vorteil, dass Sie dynamisch und auf eine Weise, die sich für die jeweilige Anwendung optimal eignet, auf Skalierungsanforderungen reagieren können. Bei diesem Ansatz können Sie weiterhin von den Standardgebühren und -preisen für Anforderungseinheiten profitieren. Wenn die Skalierungsanforderungen Ihres Systems größtenteils vorhersehbar sind (etwa 70 % oder mehr), ist das SDK mit CQL möglicherweise eine kostengünstigere Methode als die Autoskalierung. Der Nachteil hierbei ist, dass die Implementierung von Wiederholungsversuchen sehr komplex sein und die Ratenbegrenzung zu höheren Latenzen führen kann.
 
-## <a name="use-autopilot"></a><a id="use-autopilot"></a>Verwenden von Autopilot
+## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>Verwenden von per Autoskalierung bereitgestelltem Durchsatz
 
-Zusätzlich zur manuellen oder programmgesteuerten Bereitstellung von Durchsatz können Sie auch Azure Cosmos-Container im Autopilot-Modus konfigurieren. Autopilot führt eine automatische und sofortige Skalierung auf die Nutzungsanforderungen innerhalb der angegebenen RU-Bereiche durch, ohne dass dabei SLAs gefährdet werden. Weitere Informationen finden Sie im Artikel [Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus](provision-throughput-autopilot.md).
+Zusätzlich zur manuellen (Standard) oder programmgesteuerten Bereitstellung des Durchsatzes können Sie Azure Cosmos-Container auch mit per Autoskalierung bereitgestelltem Durchsatz konfigurieren. Die Autoskalierung führt eine automatische und sofortige Skalierung auf die Nutzungsanforderungen innerhalb der angegebenen RU-Bereiche durch, ohne dass dabei SLAs gefährdet werden. Weitere Informationen finden Sie im Artikel [Erstellen von Azure Cosmos-Containern und -Datenbanken im Autoskalierungsmodus](provision-throughput-autoscale.md).
 
-Der Vorteil dieses Ansatzes: Er ist die einfachste Methode zum Verwalten der Skalierungsanforderungen in Ihrem System. Dieser Ansatz garantiert, dass **innerhalb der konfigurierten RU-Bereiche** keine Ratenbegrenzung angewendet wird. Der Nachteil: Wenn die Skalierungsanforderungen in Ihrem System vorhersagbar sind, ist Autopilot möglicherweise weniger kosteneffektiv als die Verwendung der oben beschriebenen Methoden mit der Steuerungsebene oder der Verwendung des SDK.
+Der Vorteil dieses Ansatzes: Er ist die einfachste Methode zum Verwalten der Skalierungsanforderungen in Ihrem System. Dieser Ansatz garantiert, dass **innerhalb der konfigurierten RU-Bereiche** keine Ratenbegrenzung angewendet wird. Der Nachteil: Wenn die Skalierungsanforderungen in Ihrem System vorhersagbar sind, ist die Autoskalierung möglicherweise weniger kosteneffektiv als die Verwendung der oben beschriebenen Methoden mit der Steuerungsebene oder der Verwendung des SDK.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659491"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731708"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -29,16 +29,17 @@ Die Quell- und Zielabonnements des Arbeitsbereichs müssen in demselben Azure Ac
 ```
 
 ## <a name="workspace-move-considerations"></a>Überlegungen zum Verschieben von Arbeitsbereichen
-Verwaltete Lösungen, die im Arbeitsbereich installiert sind, werden mit dem Verschiebungsvorgang für den Log Analytics-Arbeitsbereich verschoben. Verbundene Agents bleiben verbunden und senden nach der Verschiebung weiterhin Daten an den Arbeitsbereich. Da der Verschiebungsvorgang erfordert, dass der Arbeitsbereich nicht mit einem Automation-Konto verknüpft ist, müssen auf dieser Verknüpfung basierende Lösungen entfernt werden.
+Verwaltete Lösungen, die im Arbeitsbereich installiert sind, werden mit dem Verschiebungsvorgang für den Log Analytics-Arbeitsbereich verschoben. Verbundene Agents bleiben verbunden und senden nach der Verschiebung weiterhin Daten an den Arbeitsbereich. Da für den Verschiebungsvorgang keine verknüpften Dienste aus dem Arbeitsbereich vorhanden sein dürfen, müssen Lösungen, die von diesem Link abhängig sind, entfernt werden, damit der Arbeitsbereich verschoben werden kann.
 
 Folgende Lösungen müssen vor dem Aufheben der Verknüpfung mit Ihrem Automation-Konto entfernt werden:
 
 - Updateverwaltung
 - Change Tracking
 - Starten/Beenden von VMs außerhalb der Kernzeit
+- Azure Security Center
 
 
-### <a name="delete-in-azure-portal"></a>Löschen über das Azure-Portal
+### <a name="delete-solutions-in-azure-portal"></a>Löschen von Lösungen aus dem Azure-Portal
 Verwenden Sie das folgende Verfahren, um die Lösungen mithilfe des Azure-Portals zu entfernen:
 
 1. Öffnen Sie das Menü für die Ressourcengruppe, in der alle Lösungen installiert sind.
@@ -57,8 +58,8 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-### <a name="remove-alert-rules"></a>Entfernen von Warnungsregeln
-Für die Lösung **VMs starten/beenden** müssen Sie auch die Warnungsregeln entfernen, die von der Lösung erstellt werden. Verwenden Sie das folgende Verfahren, um diese Regeln im Azure-Portal zu entfernen.
+### <a name="remove-alert-rules-for-startstop-vms-solution"></a>Entfernen von Warnungsregeln für die Lösung zum Starten/Beenden von VMs
+Für die Lösung **zum Starten/Beenden von VMs** müssen Sie ebenfalls die Warnungsregeln entfernen, die von der Lösung erstellt werden. Verwenden Sie das folgende Verfahren, um diese Regeln im Azure-Portal zu entfernen.
 
 1. Öffnen Sie das Menü **Monitor**, und klicken Sie dann auf **Warnungen**.
 2. Klicken Sie auf **Warnungsregeln verwalten**.
@@ -98,8 +99,6 @@ Verwenden Sie wie im folgenden Beispiel [Move-AzResource](/powershell/module/Azu
 ``` PowerShell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
-
-
 
 > [!IMPORTANT]
 > Nach dem Verschiebungsvorgang sollten Lösungen und Automation-Kontoverknüpfungen neu konfiguriert werden, um den Arbeitsbereich wieder in den vorherigen Zustand zu bringen.

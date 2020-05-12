@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899004"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629506"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorisieren des Zugriffs auf Event Grid-Ressourcen
 Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene Verwaltungsvorgänge erhalten, z.B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid nutzt die rollenbasierte Zugriffsüberprüfung (Role Based Access Control, RBAC) von Azure.
+
 
 ## <a name="operation-types"></a>Vorgangstypen
 
@@ -111,7 +112,7 @@ Wenn Sie Berechtigungen angeben müssen, die sich von den integrierten Rollen un
 
 Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutzern das Durchführen unterschiedlicher Aktionen ermöglichen. Diese benutzerdefinierten Rollen unterscheiden sich von den integrierten Rollen, da sie einen breiteren Zugriff ermöglichen als Ereignisabonnements.
 
-**EventGridReadOnlyRole.json:** Zulassen nur von Lesevorgängen.
+**EventGridReadOnlyRole.json**: Ausschließliches Zulassen schreibgeschützter Operationen.
 
 ```json
 {
@@ -130,7 +131,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json:** Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
+**EventGridNoDeleteListKeysRole.json**: Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
 
 ```json
 {
@@ -153,7 +154,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridContributorRole.json:** Zulassen aller Event Grid-Aktionen.
+**EventGridContributorRole.json**: Zulassen aller Event Grid-Aktionen.
 
 ```json
 {
@@ -182,6 +183,23 @@ Benutzerdefinierte Rollen können mit [PowerShell](../role-based-access-control/
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
 Alle Ereignisse oder Daten, die vom Event Grid-Dienst auf den Datenträger geschrieben werden, werden unter Verwendung eines von Microsoft verwalteten Schlüssels verschlüsselt, um die Verschlüsselung der ruhenden Daten zu gewährleisten. Ereignisse und Daten werden außerdem maximal 24 Stunden lang aufbewahrt (in Übereinstimmung mit der [Event Grid-Wiederholungsrichtlinie](delivery-and-retry.md)). Nach 24 Stunden oder nach Ablauf der Ereignislebensdauer (je nachdem, welcher Zeitraum kürzer ist) werden alle Ereignisse und Daten von Event Grid gelöscht.
+
+## <a name="permissions-for-event-subscriptions"></a>Berechtigungen für Ereignisabonnements
+Wenn Sie einen Ereignishandler verwenden, der kein Webhook ist (z.B. einen Event Hub oder Warteschlangenspeicher), benötigen Sie Schreibzugriff auf diese Ressource. Durch diese Berechtigungsüberprüfung wird verhindert, dass ein nicht autorisierter Benutzer Ereignisse an Ihre Ressource sendet.
+
+Sie benötigen die Berechtigung **Microsoft.EventGrid/EventSubscriptions/Write** für die Ressource, die als Ereignisquelle verwendet wird. Sie benötigen diese Berechtigung, da Sie ein neues Abonnement im Gültigkeitsbereich der Ressource schreiben. Die angeforderte Ressource variiert abhängig davon, ob Sie ein Systemthema oder ein benutzerdefiniertes Thema abonnieren. In diesem Abschnitt werden beide Typen beschrieben.
+
+### <a name="system-topics-azure-service-publishers"></a>Systemthemen (Azure-Dienstherausgeber)
+Für Systemthemen benötigen Sie die Berechtigung zum Schreiben eines neuen Abonnements im Gültigkeitsbereich der Ressource, die das Ereignis veröffentlicht. Das Format der Ressource ist: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`.
+
+Beispiel: Um ein Ereignis im Speicherkonto **myacct** zu abonnieren, benötigen Sie die Berechtigung Microsoft.EventGrid/EventSubscriptions/Write für: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`.
+
+### <a name="custom-topics"></a>Benutzerdefinierte Themen
+Für benutzerdefinierte Themen benötigen Sie die Berechtigung zum Schreiben eines neuen Ereignisabonnements im Gültigkeitsbereich des Event Grid-Themas. Das Format der Ressource ist: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`.
+
+Beispiel: Um das benutzerdefinierte Thema **mytopic** zu abonnieren, benötigen Sie die Berechtigung Microsoft.EventGrid/EventSubscriptions/Write für: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

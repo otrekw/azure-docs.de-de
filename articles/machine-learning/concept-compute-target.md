@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398179"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780112"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -68,7 +68,33 @@ Sie können Azure Machine Learning-Computecluster für zum Trainieren und für B
 * Automatische Clusterverwaltung und Auftragsplanung 
 * Unterstützt CPU- und GPU-Ressourcen
 
+### <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 
+Wenn Sie eine Knotengröße für eine verwaltete Computeressource in Azure Machine Learning auswählen, können Sie unter den in Azure verfügbaren VM-Größen auswählen. Azure bietet eine Reihe von Größen für Linux und Windows für verschiedene Workloads. Weitere Informationen zu den verschiedenen [Arten und Größen von virtuellen Computern](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) finden Sie hier.
+
+Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
+* Einige VM-Serien werden in Azure Machine Learning nicht unterstützt.
+* Einige VM-Serien sind eingeschränkt. Um eine eingeschränkte Serie zu verwenden, wenden Sie sich an den Support, und fordern Sie eine Kontingenterhöhung für die Serie an. Informationen zur Kontaktaufnahme mit dem Support finden Sie unter [Azure-Supportoptionen](https://azure.microsoft.com/support/options/)
+
+In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Serien und Einschränkungen. 
+
+| **Unterstützte VM-Serie**  | **Einschränkungen** |
+|------------|------------|
+| D | Keine |
+| Dv2 | Keine |  
+| DSv2 | Keine |  
+| FSv2 | Keine |  
+| M | Genehmigung erforderlich |
+| NC | Keine |    
+| NCsv2 | Genehmigung erforderlich |
+| NCsv3 | Genehmigung erforderlich |  
+| NDs | Genehmigung erforderlich |
+| NDv2 | Genehmigung erforderlich |
+| SH | Keine |
+| NVv3 | Genehmigung erforderlich | 
+
+
+Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Hier können Sie überprüfen, ob die VM-Serie verfügbar ist: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 

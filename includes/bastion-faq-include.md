@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57a764b62fcda333f042794e176c24c8e6cc5526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80374099"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780305"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welche Regionen sind verfügbar?
 
@@ -31,17 +31,19 @@ Derzeit wird IPv6 nicht unterstützt. Azure Bastion unterstützt nur IPv4.
 
 Sie benötigen keinen RDP- oder SSH-Client, um auf das RDP/SSH Ihres virtuellen Computers über das Azure-Portal zuzugreifen. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um direkt über den Browser RDP-/SSH-Zugriff auf Ihren virtuellen Computer zu erhalten.
 
-### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Erfordert Azure Bastion auf virtuellen Computern, die von Azure gehostet werden, eine RDS-CAL für administrative Aufgaben?
-Nein. Für den Zugriff auf virtuelle Windows Server-Computer durch Azure Bastion ist keine [RDS-CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) erforderlich, wenn sich die Verwendung rein auf administrative Aufgaben beschränkt.
+### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Muss auf dem virtuellen Azure-Computer ein Agent ausgeführt werden?
+
+Sie müssen keinen Agent oder eine andere Software in Ihrem Browser oder auf Ihrem virtuellen Azure-Computer installieren. Für den Bastion-Dienst ist kein Agent und keine zusätzliche Software für RDP/SSH erforderlich.
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Wie viele gleichzeitige RDP-und SSH-Sitzungen werden von den einzelnen Azure Bastion-Instanzen unterstütz?
+
 RDP und SSH sind beides nutzungsbasierte Protokolle. Eine umfassende Nutzung von Sitzungen führt dazu, dass der Bastionhost eine niedrigere Gesamtzahl von Sitzungen unterstützt. Bei den folgenden Zahlen wird von normalen täglichen Workflows ausgegangen:
 
 [!INCLUDE [limits](bastion-limits.md)]
 
-### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Muss auf dem virtuellen Azure-Computer ein Agent ausgeführt werden?
+### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Welche Funktionen werden in einer RDP-Sitzung unterstützt?
 
-Sie müssen keinen Agent oder eine andere Software in Ihrem Browser oder auf Ihrem virtuellen Azure-Computer installieren. Für den Bastion-Dienst ist kein Agent und keine zusätzliche Software für RDP/SSH erforderlich.
+Derzeit wird nur das Kopieren/Einfügen von Text unterstützt. Funktionen wie das Kopieren von Dateien werden nicht unterstützt. Sie können uns Ihr Feedback zu neuen Features auf der [Azure Bastion-Feedbackseite](https://feedback.azure.com/forums/217313-networking?category_id=367303) mitteilen.
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welche Browser werden unterstützt?
 
@@ -59,9 +61,8 @@ Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 
 Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://aka.ms/BastionHostPricing).
 
-### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Warum erhalte ich vor Beginn der Bastion-Sitzung die Fehlermeldung „Ihre Sitzung ist abgelaufen.“?
-
-Eine Sitzung darf nur über das Azure-Portal initiiert werden. Melden Sie sich beim Azure-Portal an, und starten Sie Ihre Sitzung erneut. Dieser Fehler ist zu erwarten, wenn Sie direkt von einer anderen Browsersitzung oder -registerkarte aus zu der URL navigieren. Er trägt zum Schutz Ihrer Sitzung bei und sorgt dafür, dass nur über das Azure-Portal auf die Sitzung zugegriffen werden kann.
+### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Erfordert Azure Bastion auf virtuellen Computern, die von Azure gehostet werden, eine RDS-CAL für administrative Aufgaben?
+Nein. Für den Zugriff auf virtuelle Windows Server-Computer durch Azure Bastion ist keine [RDS-CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) erforderlich, wenn sich die Verwendung rein auf administrative Aufgaben beschränkt.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welche Tastaturlayouts werden während der Bastion-Remotesitzung unterstützt?
 
@@ -72,9 +73,9 @@ Azure Bastion unterstützt derzeit das Tastaturlayout „en-us-qwerty“ innerha
 Nein. UDR wird in einem Azure Bastion-Subnetz nicht unterstützt.
 In Szenarien, bei denen Azure Bastion und Azure Firewall bzw. ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) im gleichen virtuellen Netzwerk vorhanden sind, müssen Sie den Datenverkehr zwischen einem Azure Bastion-Subnetz und Azure Firewall nicht erzwingen, da die Kommunikation zwischen Azure Bastion und Ihren VMs privat ist. Weitere Informationen finden Sie unter [Zugreifen auf virtuelle Computer hinter Azure Firewall mit Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
-### <a name="is-file-transfer-supported-with-azure-bastion-rdp-session"></a><a name="filetransfer"></a>Wird die Dateiübertragung mit einer Azure Bastion-RDP-Sitzung unterstützt?
+### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Warum erhalte ich vor Beginn der Bastion-Sitzung die Fehlermeldung „Ihre Sitzung ist abgelaufen.“?
 
-Wir arbeiten daran, neue Funktionen hinzuzufügen. Derzeit wird die Dateiübertragung nicht unterstützt, sie ist jedoch Teil unserer Roadmap. Sie können uns Ihr Feedback zu neuen Features auf der [Azure Bastion-Feedbackseite](https://feedback.azure.com/forums/217313-networking?category_id=367303) mitteilen.
+Eine Sitzung darf nur über das Azure-Portal initiiert werden. Melden Sie sich beim Azure-Portal an, und starten Sie Ihre Sitzung erneut. Dieser Fehler ist zu erwarten, wenn Sie direkt von einer anderen Browsersitzung oder -registerkarte aus zu der URL navigieren. Er trägt zum Schutz Ihrer Sitzung bei und sorgt dafür, dass nur über das Azure-Portal auf die Sitzung zugegriffen werden kann.
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Behandeln von Bereitstellungsfehlern
 

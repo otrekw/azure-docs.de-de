@@ -1,22 +1,22 @@
 ---
-title: Bundesstaaten- und Provinzcodes für das Co-Selling | Azure Marketplace
-description: Verwenden Sie die folgenden Codes für Bundesstaaten und Provinzen, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
+title: Bundesstaaten- und Provinzcodes für das Co-Selling im Azure Marketplace
+description: Verwenden Sie die folgenden Codes für Bundesstaaten und Provinzen, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots im Azure Marketplace angeben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619361"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744701"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Bundesstaaten- und Provinzcodes für das Co-Selling
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Bundesstaaten- und Provinzcodes für das Co-Selling im Azure Marketplace
 
-Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzustellen, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots bereitstellen](commercial-marketplace-co-sell.md#contacts).
+In diesem Artikel werden die Codes für Bundesstaaten und Provinzen aufgelistet, die Sie bei der Angabe von Kontaktinformationen für das Co-Selling Ihres Angebots verwenden können. Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzustellen, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots bereitstellen](commercial-marketplace-co-sell.md#contacts).
 
 ## <a name="us-states-and-territories"></a>US-Bundesstaaten und -Territorien
 

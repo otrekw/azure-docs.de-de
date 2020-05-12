@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919531"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744743"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
 
@@ -131,7 +131,9 @@ So zeigen Sie die Sicherheitsempfehlungen von Azure Security Center für die Doc
 
     [![Log Analytics-Aktion](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Passen Sie die Abfrageparameter nach Bedarf an, und wählen Sie **Ausführen** aus, wenn Sie sicher sind, dass die Abfrage für Ihren Host geeignet ist. 
+1. Optimieren Sie die Abfrageparameter bei Bedarf.
+
+1. Wenn Sie sicher sind, dass der Befehl für Ihren Host geeignet und bereit ist, wählen Sie **Ausführen** aus.
 
 
 

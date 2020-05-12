@@ -1,6 +1,6 @@
 ---
-title: Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal (Vorschau) – Azure RBAC
-description: Erfahren Sie, wie benutzerdefinierte Azure-Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) über das Azure-Portal erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
+title: Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal – Azure RBAC
+description: Erfahren Sie, wie benutzerdefinierte Azure-Rollen über das Azure-Portal und die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,21 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77674700"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734178"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal (Vorschau)
-
-> [!IMPORTANT]
-> Die Funktion zum Erstellen benutzerdefinierter Azure-Rollen über das Azure-Portal befindet sich aktuell in der öffentlichen Vorschauversion.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal
 
 Wenn sich die spezifischen Anforderungen Ihrer Organisation mit den [integrierten Azure-Rollen](built-in-roles.md) nicht erfüllen lassen, können Sie eigene benutzerdefinierte Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement- und Ressourcengruppenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Verzeichnis (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Jedes Verzeichnis kann bis zu 5.000 benutzerdefinierte Rollen enthalten. Benutzerdefinierte Rollen können über das Azure-Portal, mit Azure PowerShell, über die Azure CLI oder mithilfe der REST-API erstellt werden. In diesem Artikel wird das Erstellen benutzerdefinierter Rollen über das Azure-Portal beschrieben.
 
@@ -77,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um eine benutzerdefinierte Rolle von Gru
 
 1. Öffnen Sie im Azure-Portal ein Abonnement oder eine Ressourcengruppe, in dem bzw. in der es möglich sein soll, die benutzerdefinierte Rolle zuzuweisen. Öffnen Sie dann **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf **Hinzufügen** und anschließend auf **Benutzerdefinierte Rolle hinzufügen (Vorschau)** .
+1. Klicken Sie auf **Hinzufügen** und anschließend auf **Benutzerdefinierte Rolle hinzufügen**.
 
     ![Das Menü „Benutzerdefinierte Rolle hinzufügen“](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Sie können die meisten Werte Ihrer benutzerdefinierten Rolle in einer JSON-Date
     }
     ```
 
-1. Geben Sie in der JSON-Datei Werte für die verschiedenen Eigenschaften an. Im Folgenden finden Sie ein Beispiel mit hinzugefügten Werten. Informationen zu den verschiedenen Eigenschaften finden Sie unter [Grundlegendes zu Rollendefinitionen](role-definitions.md).
+1. Geben Sie in der JSON-Datei Werte für die verschiedenen Eigenschaften an. Im Folgenden finden Sie ein Beispiel mit hinzugefügten Werten. Informationen zu den verschiedenen Eigenschaften finden Sie unter [Grundlegendes zu Azure-Rollendefinitionen](role-definitions.md).
 
     ```json
     {
@@ -141,7 +136,7 @@ Sie können die meisten Werte Ihrer benutzerdefinierten Rolle in einer JSON-Date
     
 1. Öffnen Sie im Azure-Portal die Seite **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf **Hinzufügen** und anschließend auf **Benutzerdefinierte Rolle hinzufügen (Vorschau)** .
+1. Klicken Sie auf **Hinzufügen** und anschließend auf **Benutzerdefinierte Rolle hinzufügen**.
 
     ![Das Menü „Benutzerdefinierte Rolle hinzufügen“](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Wenn Sie eine Berechtigung ausschließen, wird sie als `NotActions` oder `NotDat
 
 ## <a name="step-5-assignable-scopes"></a>Schritt 5: Zuweisbare Bereiche
 
-Auf der Registerkarte **Zuweisbare Bereiche** geben Sie an, wo Ihre benutzerdefinierte Rolle zugewiesen werden kann (z.B. in einem Abonnement oder in einer Ressourcengruppe). Abhängig davon, wie Sie den Vorgang zum Erstellen der Rolle begonnen haben, wird auf dieser Registerkarte möglicherweise der Bereich angezeigt, in dem Sie die Seite „Zugriffssteuerung (IAM)“ geöffnet haben. Der zuweisbare Bereich kann nicht auf den Stammbereich ("/") festgelegt werden. In dieser Vorschauversion können keine Verwaltungsgruppen als zuweisbarer Bereich hinzugefügt werden.
+Auf der Registerkarte **Zuweisbare Bereiche** geben Sie an, wo Ihre benutzerdefinierte Rolle zugewiesen werden kann (z.B. in einem Abonnement oder in einer Ressourcengruppe). Abhängig davon, wie Sie den Vorgang zum Erstellen der Rolle begonnen haben, wird auf dieser Registerkarte möglicherweise der Bereich angezeigt, in dem Sie die Seite „Zugriffssteuerung (IAM)“ geöffnet haben. Der zuweisbare Bereich kann nicht auf den Stammbereich ("/") festgelegt werden. Derzeit können keine Verwaltungsgruppen als zuweisbarer Bereich hinzugefügt werden.
 
 1. Klicken Sie auf **Zuweisbare Bereiche hinzufügen**, um den Bereich „Zuweisbare Bereiche hinzufügen“ zu öffnen.
 
@@ -352,6 +347,6 @@ Führen Sie die folgenden Schritte aus, um Ihre benutzerdefinierten Rollen anzuz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Benutzerdefinierte Rollen in Azure](custom-roles.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Benutzerdefinierte Azure-Rollen](custom-roles.md)
 - [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)

@@ -6,30 +6,28 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256979"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838772"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
 Als Voraussetzung sollten Sie mit dem Konzept der Streamingeinheiten vertraut sein, die unter [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md) beschrieben werden.
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Welche Teile hat ein Stream Analytics-Auftrag?
-Eine Stream Analytics-Auftragsdefinition umfasst Eingaben, Abfrage und Ausgabe. Bei Eingaben handelt es sich um Eingaben, aus denen der Auftrag den Datenstrom liest. Bei der Abfrage wird die Datenstromeingabe transformiert, und der Auftrag sendet die Auftragsergebnisse an die Ausgabe.
+Eine Stream Analytics-Auftragsdefinition umfasst mindestens eine Streamingeingabe, eine Abfrage und eine Ausgabe. Bei Eingaben handelt es sich um Eingaben, aus denen der Auftrag den Datenstrom liest. Bei der Abfrage wird die Datenstromeingabe transformiert, und der Auftrag sendet die Auftragsergebnisse an die Ausgabe.
 
-Für einen Auftrag wird mindestens eine Eingabequelle für Datenstreaming benötigt. Die Datenstrom-Eingabequelle kann entweder ein Azure Event Hub oder ein Azure Blob Storage sein. Weitere Informationen finden Sie unter [Einführung in Azure Stream Analytics](stream-analytics-introduction.md) und [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
-
-## <a name="partitions-in-sources-and-sinks"></a>Partitionen in Quellen und Senken
-Bei der Skalierung eines Stream Analytics-Auftrags werden die Partitionen in der Eingabe oder Ausgabe genutzt. Durch die Partitionierung können Daten basierend auf einem Partitionsschlüssel in Teilmengen unterteilt werden. Ein Vorgang, bei dem Daten verbraucht werden (z.B. einem Stream Analytics-Auftrag), können unterschiedliche Partitionen parallel genutzt und in diesen geschrieben werden. Dadurch erhöht sich der Durchsatz. 
+## <a name="partitions-in-inputs-and-outputs"></a>Partitionen in Eingaben und Ausgaben
+Durch die Partitionierung können Daten basierend auf einem [Partitionsschlüssel](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions) in Teilmengen unterteilt werden. Wenn Ihre Eingabe (z. B. Event Hubs) durch einen Schlüssel partitioniert ist, wird dringend empfohlen, diesen Partitionsschlüssel anzugeben, wenn Sie dem Stream Analytics-Auftrag Eingaben hinzufügen. Bei der Skalierung eines Stream Analytics-Auftrags werden die Partitionen in der Eingabe und Ausgabe genutzt. Mit einem Stream Analytics-Auftrag können unterschiedliche Partitionen parallel genutzt und beschrieben werden, wodurch sich der Durchsatz erhöht. 
 
 ### <a name="inputs"></a>Eingaben
 Alle Azure Stream Analytics-Eingaben können Partitionierung nutzen:
--   Event Hub (Partitionsschlüssel muss explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden)
--   IoT Hub (Partitionsschlüssel muss explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden)
+-   Event Hub (Bei Verwendung des Kompatibilitätsgrads 1,1 oder niedriger muss der Partitionsschlüssel explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden.)
+-   IoT Hub (Bei Verwendung des Kompatibilitätsgrads 1,1 oder niedriger muss der Partitionsschlüssel explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden.)
 -   Blob Storage
 
 ### <a name="outputs"></a>Ausgaben
@@ -54,13 +52,13 @@ Weitere Informationen zu den Partitionen finden Sie in den folgenden Artikeln:
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Hochgradig parallele Aufträge
-Ein *hochgradig paralleler* Auftrag stellt das am stärksten skalierbare Szenario dar, das in Azure Stream Analytics zur Verfügung steht. Er verbindet eine Partition der Eingabe mit einer Instanz der Abfrage und einer Partition der Ausgabe. Für eine solche Parallelität gelten folgende Anforderungen:
+Ein *hochgradig paralleler* Auftrag stellt das am stärksten skalierbare Szenario in Azure Stream Analytics dar. Er verbindet eine Partition der Eingabe mit einer Instanz der Abfrage und einer Partition der Ausgabe. Für eine solche Parallelität gelten folgende Anforderungen:
 
-1. Wenn Ihre Abfragelogik davon abhängig ist, dass derselbe Schlüssel durch dieselbe Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in derselben Partition Ihrer Eingabe aufgenommen werden. Bei Event Hubs oder IoT Hub bedeutet dies, dass für die Ereignisdaten der Wert **PartitionKey** festgelegt sein muss. Alternativ können Sie partitionierte Absender verwenden. Bei Blob Storage bedeutet dies, dass die Ereignisse an denselben Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass derselbe Schlüssel von derselben Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel für diese Logik wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
+1. Wenn Ihre Abfragelogik davon abhängig ist, dass derselbe Schlüssel durch dieselbe Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in derselben Partition Ihrer Eingabe aufgenommen werden. Bei Event Hubs oder IoT Hub bedeutet dies, dass für die Ereignisdaten der Wert **PartitionKey** festgelegt sein muss. Alternativ können Sie partitionierte Absender verwenden. Bei Blob Storage bedeutet dies, dass die Ereignisse an denselben Partitionsordner gesendet werden. Beispiel: Von einer Abfrageinstanz werden Daten anhand von „userID“ aggregiert, wobei die Event Hub-Eingabe mit „userID“ als Partitionsschlüssel partitioniert wurde. Wenn es für Ihre Abfragelogik jedoch nicht erforderlich ist, dass derselbe Schlüssel von derselben Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel für diese Logik wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
 
-2. Nachdem die Daten auf der Eingabeseite angeordnet wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition by** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch denselben Schlüssel partitioniert werden. Unterhalb des Kompatibilitätsgrads 1.0 und 1.1 muss der Partitionierungsschlüssel auf **PartitionId** festgelegt werden, damit der Auftrag vollständige Parallelität aufweist. Bei Aufträgen mit einem Kompatibilitätsgrad von 1,2 und höher kann die benutzerdefinierte Spalte in den Eingabeeinstellungen als „Partitionsschlüssel“ angegeben werden, und der Auftrag wird dann automatisch parallelisiert, auch wenn keine PARTITION BY-Klausel vorhanden ist. Für die Event Hub-Ausgabe muss die Eigenschaft „Partitionsschlüsselspalte“ auf „PartitionId“ gesetzt werden.
+2. Der nächste Schritt besteht darin, die Abfrage zu partitionieren. Bei Aufträgen mit dem Kompatibilitätsgrad 1,2 oder höher (empfohlen) kann die benutzerdefinierte Spalte in den Eingabeeinstellungen als Partitionsschlüssel angegeben werden. Der Auftrag wird dann automatisch parallelisiert. Für Aufträge mit dem Kompatibilitätsgrad 1,0 oder 1,1 müssen Sie in allen Schritten der Abfrage **PARTITION BY PartitionId** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch denselben Schlüssel partitioniert werden. 
 
-3. Die meisten unserer Ausgaben können Partitionierung nutzen. Wenn Sie jedoch einen Ausgabetyp verwenden, der keine Partitionierung unterstützt, wird Ihr Auftrag nicht vollständig parallel ausgeführt. Stellen Sie für Event Hub-Ausgaben sicher, dass die **Schlüsselspalte „Partition“** auf den gleichen Wert wie der Schlüssel der Abfragepartition festgelegt ist. Weitere Informationen finden Sie im [Abschnitt über Ausgaben](#outputs).
+3. Bei den meisten in Stream Analytics unterstützten Ausgaben können Sie die Vorteile der Partitionierung nutzen. Wenn Sie einen Ausgabetyp verwenden, der keine Partitionierung unterstützt, weist der Auftrag keine *hochgradige Parallelität* auf. Stellen Sie bei Event Hub-Ausgaben sicher, dass die **Partitionsschlüsselspalte** auf denselben Partitionsschlüssel wie den in der Abfrage verwendeten Schlüssel festgelegt ist. Weitere Informationen finden Sie im [Abschnitt über Ausgaben](#outputs).
 
 4. Die Anzahl von Eingabepartitionen muss mit der Anzahl von Ausgabepartitionen identisch sein. Die Blob Storage-Ausgabe kann Partitionen unterstützen und erbt das Partitionierungsschema der Upstream-Abfrage. Bei der Angabe eines Partitionsschlüssels für Blob Storage werden Daten pro Eingabepartition partitioniert, daher ist das Ergebnis trotzdem vollständig parallel. Im Folgenden werden Beispiele für Partitionswerte vorgestellt, die einen vollständig parallelen Auftrag ermöglichen:
 
@@ -80,8 +78,14 @@ In den folgenden Abschnitten werden einige Beispielszenarien für hochgradige Pa
 Abfrage:
 
 ```SQL
+    --Using compatibility level 1.2 or above
     SELECT TollBoothId
-    FROM Input1 Partition By PartitionId
+    FROM Input1
+    WHERE TollBoothId > 100
+    
+    --Using compatibility level 1.0 or 1.1
+    SELECT TollBoothId
+    FROM Input1 PARTITION BY PartitionId
     WHERE TollBoothId > 100
 ```
 
@@ -95,6 +99,12 @@ Diese Abfrage stellt einen einfachen Filter dar. Daher ist keine Partitionierung
 Abfrage:
 
 ```SQL
+    --Using compatibility level 1.2 or above
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    
+    --Using compatibility level 1.0 or 1.1
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
@@ -110,7 +120,7 @@ Im vorherigen Abschnitt haben wir einige Szenarien mit hochgradiger Parallelitä
 * Eingabe: Event Hub mit 8 Partitionen
 * Ausgabe: Event Hub mit 32 Partitionen
 
-In diesem Fall spielt es keine Rolle, um welche Abfrage es sich handelt. Wenn die Anzahl der Eingabepartitionen nicht der Anzahl der Ausgabepartitionen entspricht, weist die Topologie keine hochgradige Parallelität auf. Es kann jedoch dennoch ein gewisser Grad an Parallelisierung erreicht werden.
+Wenn die Anzahl der Eingabepartitionen nicht der Anzahl der Ausgabepartitionen entspricht, weist die Topologie unabhängig von der Abfrage keine hochgradige Parallelität auf. Es lässt sich aber trotzdem ein gewisser Grad an Parallelität erzielen.
 
 ### <a name="query-using-non-partitioned-output"></a>Abfragen mit nicht partitionierter Ausgabe
 * Eingabe: Event Hub mit 8 Partitionen
@@ -121,6 +131,7 @@ Die Power BI-Ausgabe unterstützt derzeit keine Partitionierung. Daher besteht i
 ### <a name="multi-step-query-with-different-partition-by-values"></a>Mehrstufige Abfrage mit unterschiedlichen Werten für „Partition by“
 * Eingabe: Event Hub mit 8 Partitionen
 * Ausgabe: Event Hub mit 8 Partitionen
+* Kompatibilitätsgrad: 1,0 oder 1,1
 
 Abfrage:
 
@@ -138,11 +149,10 @@ Abfrage:
 
 Wie Sie sehen, wird im zweiten Schritt **TollBoothId** als Partitionierungsschlüssel verwendet. Dieser Schritt entspricht nicht dem ersten Schritt, und deshalb muss eine Umschichtung durchgeführt werden. 
 
-In den vorherigen Beispielen werden einige Stream Analytics-Aufträge gezeigt, die einer hochgradig parallelen Topologie entsprechen (oder nicht entsprechen). Liegt eine Entsprechung mit dieser Topologie vor, können sie maximal skaliert werden. Für Aufträge, für die keines dieser Profile geeignet ist, werden bei zukünftigen Updates Leitfäden bezüglich Skalierungen zur Verfügung gestellt. Verwenden Sie bis dahin die allgemeinen Hinweise in den folgenden Abschnitten.
-
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Kompatibilitätsgrad 1.2: Mehrstufige Abfrage mit unterschiedlichen Werten für „PARTITION BY“ 
+### <a name="multi-step-query-with-different-partition-by-values"></a>Mehrstufige Abfrage mit unterschiedlichen Werten für „Partition by“
 * Eingabe: Event Hub mit 8 Partitionen
 * Ausgabe: Event Hub mit 8 Partitionen („Partitionsschlüsselspalte“ muss auf „TollBoothId“ gesetzt werden)
+* Kompatibilitätsgrad – 1,2 oder höher
 
 Abfrage:
 
@@ -158,7 +168,7 @@ Abfrage:
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Kompatibilitätsgrad 1.2 ermöglicht die standardmäßige parallele Abfrageausführung. Beispielsweise wird die Abfrage aus dem vorherigen Abschnitt so lange partitioniert, wie die Spalte „TollBoothId“ als Eingabepartitionsschlüssel festgelegt ist. Die Klausel „PARTITION BY PartitionId“ ist nicht erforderlich.
+Kompatibilitätsgrad 1,2 oder höher ermöglicht standardmäßig die parallele Abfrageausführung. Beispielsweise wird die Abfrage aus dem vorherigen Abschnitt so lange partitioniert, wie die Spalte „TollBoothId“ als Eingabepartitionsschlüssel festgelegt ist. Die Klausel „PARTITION BY PartitionId“ ist nicht erforderlich.
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Berechnen der maximal möglichen Streaming-Einheiten für einen Auftrag
 Die Gesamtzahl der von einem Stream Analytics-Auftrag verwendbaren Streaming-Einheiten hängt von der Anzahl an Schritten in der für den Auftrag definierten Abfrage und der Anzahl an Partitionen für die einzelnen Schritte ab.

@@ -1,6 +1,6 @@
 ---
-title: Erstellen oder Aktualisieren benutzerdefinierter Rollen für Azure-Ressourcen mithilfe der Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe der Azure CLI auflisten, erstellen, aktualisieren oder löschen.
+title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle – Azure RBAC
+description: Erfahren Sie, wie Sie benutzerdefinierte Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle und Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062229"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734840"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Erstellen oder aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!IMPORTANT]
 > Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe der Azure CLI auflisten, erstellen, aktualisieren oder löschen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe der Azure CLI auflisten, erstellen, aktualisieren oder löschen.
 
-Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure CLI](tutorial-custom-role-cli.md).
+Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle in Azure mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure CLI](tutorial-custom-role-cli.md)
-- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Rolle in Azure mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-custom-role-cli.md)
+- [Benutzerdefinierte Azure-Rollen](custom-roles.md)
 - [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)

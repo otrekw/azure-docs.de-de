@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247009"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839163"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -159,8 +159,11 @@ Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch.
 In diesem Beispiel wird davon ausgegangen, dass Sie Befehle aus einer Azure Cloud Shell-Sitzung ausführen.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> Wenn der Browser Benutzer auffordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern, können Sie `--content-type 'text/html; charset=utf-8'` an den Befehl anhängen. 
 
 * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
@@ -178,11 +181,13 @@ Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch.
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> Wenn der Browser Benutzer auffordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern, können Sie `-Properties @{ ContentType = "text/html; charset=utf-8";}` an den Befehl anhängen.
 
 * Ersetzen Sie den Platzhalterwert `<path-to-file>` durch den vollqualifizierten Pfad zu der Datei, die Sie hochladen möchten (z.B. `C:\temp\index.html`).
 

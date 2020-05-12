@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b29d66e8bb213fbbb162c3249f022e0783f9f62f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115668"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598367"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Benutzerdefinierte Funktionen in Azure Stream Analytics
 
@@ -30,8 +30,8 @@ FROM
 
 Azure Stream Analytics unterstützt die folgenden vier Funktionstypen: 
 
-* Benutzerdefinierte JavaScript-Funktionen 
-* Benutzerdefinierte JavaScript-Aggregate 
+* JavaScript, benutzerdefinierte Funktionen 
+* Benutzerdefinierte Aggregate in JavaScript 
 * Benutzerdefinierte C#-Funktionen (unter Verwendung von Visual Studio) 
 * Azure Machine Learning 
 
@@ -43,10 +43,13 @@ Benutzerdefinierte Funktionen sind zustandslos, und der Rückgabewert kann nur e
 
 Azure Stream Analytics führt keine Protokollierung aller Funktionsaufrufe und der zurückgegebenen Ergebnisse durch. Um eine Wiederholbarkeit zu garantieren – sodass beispielsweise die erneute Ausführung eines Auftrags mit einem älteren Zeitstempel die gleichen Ergebnisse liefert – sollten Sie keine Funktionen wie `Date.GetData()` oder `Math.random()` verwenden, da diese Funktionen nicht bei jedem Aufruf dasselbe Ergebnis liefern.  
 
-## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+## <a name="resource-logs"></a>Ressourcenprotokolle
 
-Laufzeitfehler werden als schwerwiegend betrachtet und in den Aktivitäts- und Diagnoseprotokollen aufgezeichnet. Es wird empfohlen, dass Ihre Funktion alle Ausnahmen und Fehler behandelt und ein gültiges Ergebnis an Ihre Abfrage zurückgibt. Auf diese Weise wird vermieden, dass Ihr Auftrag in einen [fehlerhaften Zustand](job-states.md) wechselt.  
+Laufzeitfehler werden als schwerwiegend betrachtet und in den Aktivitäts- und Ressourcenprotokollen aufgezeichnet. Es wird empfohlen, dass Ihre Funktion alle Ausnahmen und Fehler behandelt und ein gültiges Ergebnis an Ihre Abfrage zurückgibt. Auf diese Weise wird vermieden, dass Ihr Auftrag in einen [fehlerhaften Zustand](job-states.md) wechselt.  
 
+## <a name="exception-handling"></a>Ausnahmebehandlung
+
+Jede Ausnahme bei der Datenverarbeitung wird beim Einlesen von Daten in Azure Stream Analytics als schwerwiegender Fehler betrachtet. Benutzerdefinierte Funktionen haben ein höheres Potenzial, Ausnahmen auszulösen und die Verarbeitung abzubrechen. Um dieses Problem zu vermeiden, verwenden Sie einen *try-catch*-Block in JavaScript oder C#, um Ausnahmen während der Ausführung des Codes abzufangen. Abgefangene Ausnahmen können protokolliert und behandelt werden, ohne dass ein Systemfehler verursacht wird. Es wird empfohlen, den benutzerdefinierten Code immer in einen *try-catch*-Block einzuschließen, damit keine unerwarteten Ausnahmen für das Verarbeitungsmodul ausgelöst werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -54,4 +57,3 @@ Laufzeitfehler werden als schwerwiegend betrachtet und in den Aktivitäts- und D
 * [Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate](stream-analytics-javascript-user-defined-aggregates.md)
 * [Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Aufträge](stream-analytics-edge-csharp-udf-methods.md)
 * [Integrieren von Azure Stream Analytics in Azure Machine Learning](machine-learning-udf.md)
-

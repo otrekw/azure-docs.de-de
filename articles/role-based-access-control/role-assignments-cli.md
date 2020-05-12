@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle
-description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der Azure-Befehlszeilenschnittstelle gewähren.
+title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle – Azure RBAC
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der Azure CLI und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) erteilen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225374"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735775"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In diesem Artikel wird das Zuweisen von Rollen mithilfe der Azure-Befehlszeilenschnittstelle beschrieben.
 
@@ -62,7 +62,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-In der RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
+In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
 
 ### <a name="user-at-a-resource-group-scope"></a>Benutzer in einem Ressourcengruppenbereich
 
@@ -72,7 +72,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong*contoso.com *im Ressourcengruppenkontext \@pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
+Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -97,7 +97,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird dem Benutzer [patlong](built-in-roles.md#virtual-machine-contributor)contoso.com *im Ressourcengruppenkontext \@pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen. Zum Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list) verwenden. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](built-in-roles.md).
+Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) zugewiesen. Zum Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list) verwenden. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -149,7 +149,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *annm*example.com *im Abonnementbereich die Rolle \@Reader* zugewiesen.
+Im folgenden Beispiel wird dem Benutzer *annm\@example.com* im Abonnementbereich die Rolle *Reader* zugewiesen.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -163,7 +163,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain*example.com *im Verwaltungsgruppenbereich die Rolle \@Abrechnungsleser* zugewiesen.
+Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* zugewiesen.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -187,7 +187,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
 
-In RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) eine Rollenzuweisung, um den Zugriff zu entfernen:
+In Azure RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) eine Rollenzuweisung, um den Zugriff zu entfernen:
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
@@ -205,7 +205,7 @@ Im folgenden Beispiel wird die Rolle *Reader* von der Gruppe *Ann Mack Team* mit
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain*example.com *im Verwaltungsgruppenbereich die Rolle \@Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
+Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -213,5 +213,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle](role-assignments-list-cli.md)
+- [Auflisten von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](role-assignments-list-cli.md)
 - [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/cli-azure-resource-manager.md)

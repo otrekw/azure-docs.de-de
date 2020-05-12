@@ -1,23 +1,17 @@
 ---
-title: Vergleich von Azure Data Lake Storage Gen1 mit Azure Storage Blob | Microsoft Docs
-description: Vergleich von Azure Data Lake Storage Gen1 mit Azure Storage Blob
-services: data-lake-store
-documentationcenter: ''
+title: Vergleich von Azure Data Lake Storage Gen1 und Blob Storage
+description: Hier finden Sie eine Zusammenfassung der Unterschiede zwischen Azure Data Lake Storage Gen1 und Azure Blob Storage.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438721"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691723"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Vergleich von Azure Data Lake Storage Gen1 und Azure Blob Storage
 
@@ -35,11 +29,11 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 | Serverseitige API |[WebHDFS-kompatible REST-API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage-REST-API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop-Dateisystemclient |Ja |Ja |
 | Datenvorgänge – Authentifizierung |Basierend auf [Azure Active Directory-Identitäten](../active-directory/develop/authentication-scenarios.md) |Basierend auf gemeinsamen Geheimnissen – [Kontozugriffsschlüssel](../storage/common/storage-account-keys-manage.md) und [Shared Access Signature-Schlüssel](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
-| Datenvorgänge – Authentifizierungsprotokoll |OAuth 2.0. Aufrufe müssen ein gültiges, über Azure Active Directory ausgestelltes JWT (JSON Web Token) enthalten. |Hashbasierter Nachrichtenauthentifizierungscode (Hashed Message Authentication Code, HMAC). Aufrufe müssen einen Base64-codierten SHA-256-Hash über einen Teil der HTTP-Anforderung enthalten. |
+| Datenvorgänge – Authentifizierungsprotokoll |OAuth 2.0. Aufrufe müssen ein gültiges, über Azure Active Directory ausgestelltes JWT (JSON Web Token) enthalten. |Hash-based Message Authentication Code (HMAC). Aufrufe müssen einen Base64-codierten SHA-256-Hash über einen Teil der HTTP-Anforderung enthalten. |
 | Datenvorgänge – Autorisierung |POSIX-Zugriffssteuerungslisten (ACLs).  Auf Azure Active Directory-Identitäten basierende ACLs können auf Datei- und Ordnerebene festgelegt werden. |Für die Autorisierung auf Kontoebene – Verwenden Sie [Zugriffsschlüssel](../storage/common/storage-account-keys-manage.md)<br>Für Konto-, Container- oder Blobautorisierung – Verwenden Sie [Shared Access Signature-Schlüssel](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Datenvorgänge – Überwachung |Verfügbar. Weitere Informationen finden Sie [hier](data-lake-store-diagnostic-logs.md) . |Verfügbar |
 | Verschlüsselung für ruhende Daten |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault</li></ul></ul> |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault (Vorschau)</li></ul><li>Clientseitige Verschlüsselung</li></ul> |
-| Verwaltungsvorgänge (z.B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
+| Verwaltungsvorgänge (z. B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
 | Entwickler-SDKs |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
 | Leistung von Analyseworkloads |Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. |Optimierte Leistung für parallele Analyseworkloads. |
 | Größenbeschränkungen |Keine Beschränkungen für Kontogrößen, Dateigrößen oder die Anzahl von Dateien. |Informationen zu bestimmten Grenzwerten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../storage/common/scalability-targets-standard-account.md) und [Skalierbarkeits- und Leistungsziele für Blob Storage](../storage/blobs/scalability-targets.md). Für größere Kontolimits wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/). |

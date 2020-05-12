@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mit Azure PowerShell'
-description: In diesem Tutorial lernen Sie die ersten Schritte beim Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell kennen.
+title: 'Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mit Azure PowerShell – Azure RBAC'
+description: Dieses Tutorial enthält Informationen zu den ersten Schritten beim Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell und der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138276"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735588"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell
 
-Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -73,7 +73,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
 
 1. Öffnen Sie die Datei **ReaderSupportRole.json** in einem Editor.
 
-    Die JSON-Ausgabe sieht wie folgt aus. Informationen zu den verschiedenen Eigenschaften finden Sie unter [Erstellen von benutzerdefinierten Rollen in Azure](custom-roles.md).
+    Die JSON-Ausgabe sieht wie folgt aus. Informationen zu den verschiedenen Eigenschaften finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md).
 
     ```json
     {
@@ -277,4 +277,4 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell](custom-roles-powershell.md)
+> [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell](custom-roles-powershell.md)

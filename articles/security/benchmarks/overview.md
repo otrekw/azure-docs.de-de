@@ -7,13 +7,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587531"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606873"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Übersicht über den Vergleichstest für die Azure-Sicherheit
 
@@ -31,7 +31,7 @@ Die folgenden Steuerungen werden im Vergleichstest für die Azure-Sicherheit ver
 - [Bestands- und Ressourcenverwaltung](security-control-inventory-asset-management.md)
 - [Sichere Konfiguration](security-control-secure-configuration.md)
 - [Schutz vor Schadsoftware](security-control-malware-defense.md)
-- [Datenwiederherstellung](security-control-data-recovery.md)
+- [Wiederherstellung der Daten](security-control-data-recovery.md)
 - [Reaktion auf Vorfälle](security-control-incident-response.md)
 - [Penetrationstests und Red Team-Übungen](security-control-penetration-tests-red-team-exercises.md)
 
@@ -46,10 +46,10 @@ Jede Empfehlung umfasst die folgenden Informationen:
 - **Verantwortlichkeit**: Ob der Kunde oder der Dienstanbieter (oder beide) für die Implementierung dieser Empfehlung verantwortlich ist. Die Sicherheitsverantwortlichkeiten werden in der öffentlichen Cloud geteilt. Einige Sicherheitskontrollen sind nur für den Clouddienstanbieter verfügbar, daher ist der Anbieter für diese verantwortlich. Dabei handelt es sich um allgemeine Beobachtungen – für einige einzelne Dienste unterscheidet sich die Verantwortlichkeit von den Angaben im Vergleichstest für die Azure-Sicherheit. Diese Unterschiede werden in den grundlegenden Empfehlungen für den jeweiligen Dienst beschrieben. 
 - **Details**: Enthält die Begründung für die Empfehlung sowie Links zu Implementierungsanleitungen. Wenn die Empfehlung von Azure Security Center unterstützt wird, ist dies hier ebenfalls angegeben.
 
-Wir freuen uns über Ihr detailliertes Feedback und die aktive Teilnahme an den Bemühungen im Zusammenhang mit dem Vergleichstest für die Azure-Sicherheit. Wenn Sie die dem Benchmarkteam eine unmittelbare Rückmeldung geben möchten, füllen Sie das Formular unter [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) aus.
+Wir freuen uns über Ihr detailliertes Feedback und die aktive Teilnahme an den Bemühungen im Zusammenhang mit dem Vergleichstest für die Azure-Sicherheit. Wenn Sie die dem Team für den Vergleichstest für die Azure-Sicherheit eine unmittelbare Rückmeldung geben möchten, füllen Sie das Formular unter [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Schauen Sie sich die erste Sicherheitskontrolle an: [Netzwerksicherheit](security-control-network-security.md)
-- Lesen Sie die [Einführung zum Azure Security-Vergleichstest](introduction.md).
+- Lesen Sie die [Einführung zum Vergleichstest für die Azure-Sicherheit](introduction.md)
 - Laden Sie die [Excel-Tabelle mit Version 1 des Vergleichstests für die Azure-Sicherheit](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) herunter.

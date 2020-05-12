@@ -2,17 +2,17 @@
 title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109048"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744091"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
-In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt zur README.md-Datei in Ihrem GitHub-Repository oder zu einer Webseite hinzufügen, die auf das Repository verweist.
+In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt zur README.md-Datei in Ihrem GitHub-Repository oder zu einer Webseite hinzufügen, die auf das Repository verweist. Diese Methode unterstützt nur die Bereitstellung auf Ressourcengruppenebene.
 
 ## <a name="use-common-image"></a>Verwenden eines einheitlichen Bilds
 

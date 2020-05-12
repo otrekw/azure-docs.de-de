@@ -1,33 +1,37 @@
 ---
-title: SAP SuccessFactors-Attributreferenz | Microsoft-Dokumentation
+title: SAP SuccessFactors-Attributreferenz
 description: Hier erfahren Sie, welche SuccessFactors-Attribute von der SuccessFactors-/personalbasierten Bereitstellung unterstützt werden.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522355"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593183"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-Attributreferenz
 
+In diesem Artikel finden Sie Informationen zu folgenden Themen:
+
+- [Unterstützte SuccessFactors-Entitäten und -Attribute](#supported-successfactors-entities-and-attributes)
+- [Standardzuordnung von Attributen](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>Unterstützte SuccessFactors-Entitäten und -Attribute
 
-Die folgende Tabelle enthält die Liste der SuccessFactors-Attribute, die von den folgenden zwei Bereitstellungsanwendungen unterstützt werden: 
-* [Benutzerbereitstellung von SuccessFactors in Active Directory](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [Benutzerbereitstellung von SuccessFactors in Azure AD](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+Die folgende Tabelle enthält die Liste der SuccessFactors-Attribute, die von den folgenden zwei Bereitstellungsanwendungen unterstützt werden:
+
+- [Benutzerbereitstellung von SuccessFactors in Active Directory](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [Benutzerbereitstellung von SuccessFactors in Azure AD](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors-Entität                  | SuccessFactors-Attribut     | Vorgangstyp |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ Die folgende Tabelle enthält die Liste der SuccessFactors-Attribute, die von de
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Lesen           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Lesen           |
 
-
 ## <a name="default-attribute-mapping"></a>Standardzuordnung von Attributen
 
 Die folgende Tabelle enthält die standardmäßige Attributzuordnung zwischen den oben aufgeführten SuccessFactors-Attributen und AD/Azure AD-Attributen. Auf dem Blatt „Zuordnung“ der Azure AD-Bereitstellungs-App können Sie diese Standardzuordnung ändern, um Attribute aus der obigen Liste aufzunehmen. 
@@ -138,4 +141,3 @@ Die folgende Tabelle enthält die standardmäßige Attributzuordnung zwischen de
 | 18 | EmpJob\.Location                       | officeLocationAddress    | streetAddress                           | Nicht verfügbar                                                                                           |
 | 19 | EmpJob\.Location                       | officeLocationZipCode    | postalCode                              | Nicht verfügbar                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Wenn „activeEmploymentsCount=0“ angegeben ist, deaktivieren Sie das Konto.                                           |
-

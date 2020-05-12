@@ -1,65 +1,57 @@
 ---
 title: Resource Manager-Vorlagen für die Azure Cosmos DB-API für MongoDB
 description: Verwenden Sie Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren der MongoDB-API von Azure Cosmos DB.
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: thvankra
-ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/30/2020
+ms.author: mjbrown
+ms.openlocfilehash: d6f916002f949f78e4854903940f342261a109ff
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063638"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791220"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die MongoDB-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
-In diesem Artikel wird beschrieben, wie Sie verschiedene Vorgänge durchführen können, um die Verwaltung Ihrer Azure Cosmos DB-Konten, -Datenbanken und -Container mithilfe von Azure Resource Manager-Vorlagen zu automatisieren. Dieser Artikel enthält Beispiele nur für Azure Cosmos DB-API-Konten für MongoDB. Beispiele für Konten anderer API-Typen finden Sie in den Artikeln zur Verwendung von Azure Resource Manager-Vorlagen mit der Azure Cosmos DB-API für [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md) und [Tabellen](manage-table-with-resource-manager.md).
+In diesem Artikel erfahren Sie, wie Sie Ihre Konten, Datenbanken und Sammlungen für die Azure Cosmos DB für MongoDB-API mithilfe von Azure Resource Manager-Vorlagen bereitstellen und verwalten.
 
-## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Erstellen der Azure Cosmos DB-API für MongoDB-Konto, -Datenbank und -Sammlung <a id="create-resource"></a>
+Dieser Artikel enthält Beispiele nur für Azure Cosmos DB-API-Konten für MongoDB. Beispiele für Konten anderer API-Typen finden Sie in den Artikeln zur Verwendung von Azure Resource Manager-Vorlagen mit der Azure Cosmos DB-API für [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md) und [Tabellen](manage-table-with-resource-manager.md).
 
-Erstellen Sie Azure Cosmos DB-Ressourcen mithilfe einer Azure Resource Manager-Vorlage. Mit dieser Vorlage wird ein Azure Cosmos-Konto für die MongoDB-API mit zwei Sammlungen erstellt, die sich auf Datenbankebene einen Durchsatz von 400 RU/s teilen. Kopieren Sie die Vorlage, und stellen Sie sie wie unten gezeigt bereit, oder besuchen Sie den [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/), und führen Sie die Bereitstellung über das Azure-Portal durch. Sie können die Vorlage auch auf Ihren lokalen Computer herunterladen oder eine neue Vorlage erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
-
-> [!NOTE]
-> Kontonamen müssen Kleinbuchstaben enthalten; ihre Länge darf maximal 44 Zeichen betragen.
-> Zum Aktualisieren der RU/s müssen Sie die Vorlage mit den aktualisierten Eigenschaftswerten für den Durchsatz erneut übermitteln.
+> [!IMPORTANT]
 >
-> Derzeit können Sie mithilfe von PowerShell und der Befehlszeilenschnittstelle nur Version 3.2 der Azure Cosmos DB-API für MongoDB-Konten (d. h. Konten mit dem Endpunkt im Format `*.documents.azure.com`) erstellen. Um Konten der Version 3.6 zu erstellen, verwenden Sie stattdessen Resource Manager-Vorlagen (unten) oder das Azure-Portal.
+> * Die Länge von Kontonamen ist auf 44 Zeichen (ausschließlich Kleinbuchstaben) beschränkt.
+> * Sie müssen die Vorlage mit aktualisierter Angabe der RU/s erneut übermitteln, um die Durchsatzwerte zu ändern.
+> * Wenn Sie einem Azure Cosmos-Konto Speicherorte hinzufügen oder aus ihm entfernen, können Sie nicht gleichzeitig andere Eigenschaften ändern. Diese Vorgänge müssen separat ausgeführt werden.
+
+Wenn Sie eine der unten aufgeführten Azure Cosmos DB-Ressourcen erstellen möchten, kopieren Sie die folgende Beispielvorlage in eine neue JSON-Datei. Optional können Sie eine JSON-Parameterdatei erstellen, die beim Bereitstellen mehrerer Instanzen derselben Ressource mit unterschiedlichen Namen und Werten verwendet werden soll. Für das Bereitstellen von Azure Resource Manager-Vorlagen stehen Ihnen viele Möglichkeiten zur Verfügung, beispielsweise das [Azure-Portal](../azure-resource-manager/templates/deploy-portal.md), die [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) und [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md).
+
+<a id="create-autoscale"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-autoscale-provisioned-throughput"></a>Azure Cosmos-Konto für MongoDB mit per Autoskalierung bereitgestelltem Durchsatz
+
+Mit dieser Vorlage wird ein Azure Cosmos-Konto für die MongoDB-API (3.2 oder 3.6) mit zwei Sammlungen erstellt, die sich auf Datenbankebene einen per Autoskalierung bereitgestellten Durchsatz teilen. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
+
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb-autoscale/azuredeploy.json":::
+
+<a id="create-manual"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-standard-provisioned-throughput"></a>Azure Cosmos-Konto für MongoDB mit standardmäßig bereitgestelltem Durchsatz
+
+Mit dieser Vorlage wird ein Azure Cosmos-Konto für die MongoDB-API (3.2 oder 3.6) mit zwei Sammlungen erstellt, die sich auf Datenbankebene einen (manuell bereitgestellten) Durchsatz von standardmäßig 400 RU/s teilen. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
+
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
-
-### <a name="deploy-via-the-azure-cli"></a>Bereitstellen über die Azure CLI
-
-Wenn Sie die Azure Resource Manager-Vorlage mit der Azure CLI bereitstellen möchten, **kopieren** Sie das Skript, und wählen Sie **Ausprobieren** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf die Shell, und wählen Sie **Einfügen** aus:
-
-```azurecli-interactive
-
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the first collection name: ' collection1Name
-read -p 'Enter the second collection name: ' collection2Name
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-  --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb/azuredeploy.json \
-  --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-  databaseName=$databaseName collection1Name=$collection1Name collection2Name=$collection2Name
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-Der Befehl `az cosmosdb show` zeigt das neu erstellte Azure Cosmos-Konto, nachdem es bereitgestellt wurde. Wenn Sie eine lokal installierte Version der Azure CLI statt Cloud Shell verwenden möchten, lesen Sie den Artikel [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier sind einige zusätzlichen Ressourcen:
 
-- [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
-- [Schema von Azure Cosmos DB-Ressourcenanbietern](/azure/templates/microsoft.documentdb/allversions)
-- [Schnellstartvorlagen für Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
+* [Schema von Azure Cosmos DB-Ressourcenanbietern](/azure/templates/microsoft.documentdb/allversions)
+* [Schnellstartvorlagen für Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)

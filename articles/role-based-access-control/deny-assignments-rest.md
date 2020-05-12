@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
-description: Hier erfahren Sie, wie Sie Ablehnungszuweisungen für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen und der REST-API auflisten.
+title: Auflisten von Azure-Ablehnungszuweisungen mithilfe der REST-API – Azure RBAC
+description: Hier erfahren Sie, wie Sie Azure-Ablehnungszuweisungen für Benutzer, Gruppen und Anwendungen mithilfe der REST-API und der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Azure auflisten.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063019"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733869"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>Auflisten von Azure-Ablehnungszuweisungen mithilfe der REST-API
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit der REST-API Ablehnungszuweisungen auflisten.
+[Azure-Ablehnungszuweisungen](deny-assignments.md) hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird. In diesem Artikel wird beschrieben, wie Sie mit der REST-API Ablehnungszuweisungen auflisten.
 
 > [!NOTE]
-> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Ablehnungszuweisungen](deny-assignments.md).
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Azure-Ablehnungszuweisungen](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folgendes verfügen:
 
-- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist.
+- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Azure-Rollen](built-in-roles.md) enthalten ist.
 
 ## <a name="list-a-single-deny-assignment"></a>Auflisten einer einzelnen Ablehnungszuweisung
 
@@ -91,7 +91,7 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>Auflisten von Ablehnungszuweisungen im Stammbereich (/)
 
-1. Erhöhen Sie Ihre Zugriffsrechte wie unter [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](elevate-access-global-admin.md) beschrieben.
+1. Erhöhen Sie Ihre Zugriffsrechte wie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](elevate-access-global-admin.md) beschrieben.
 
 1. Verwenden Sie die folgende Anforderung:
 
@@ -112,5 +112,5 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md)
-- [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](elevate-access-global-admin.md)
+- [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](elevate-access-global-admin.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

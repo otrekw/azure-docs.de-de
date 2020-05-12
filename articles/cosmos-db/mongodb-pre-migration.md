@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 73ac1a6ffd5fc2b2d52f169e1e0332044638f9f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75942082"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791747"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 
@@ -30,7 +30,7 @@ Wenn Sie die obigen erforderlichen vorbereitenden Schritte für die Migration be
 
 Nachfolgend werden spezifische Merkmale der Azure Cosmos DB-API für MongoDB aufgeführt:
 
-- **Kapazitätsmodell**: Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [Autopilot-Modells](provision-throughput-autopilot.md) bereitgestellt werden.
+- **Kapazitätsmodell**: Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [per Autoskalierung bereitgestellten Durchsatzes](provision-throughput-autoscale.md) bereitgestellt werden.
 
 - **Anforderungseinheiten**: In Azure Cosmos DB sind jedem Datenbankvorgang Kosten für Anforderungseinheiten (Request Units, RUs) zugeordnet. Bei der Ausführung werden diese von der verfügbaren Anforderungseinheitenebene für eine bestimmte Sekunde subtrahiert. Wenn für eine Anforderung mehr RUs als die aktuell zugeordnete Anzahl von Anforderungseinheiten pro Sekunde erforderlich sind, gibt es zwei Möglichkeiten, das Problem zu beheben: Sie können die Anzahl von RUs erhöhen oder warten, bis die nächste Sekunde beginnt, und dann den Vorgang wiederholen.
 

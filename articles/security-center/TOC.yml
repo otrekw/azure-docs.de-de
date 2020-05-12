@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: Verwalten von Sicherheitswarnungen
           href: security-center-managing-and-responding-alerts.md
+        - name: Unterdrückungsregeln für Sicherheitswarnungen
+          href: alerts-suppression-rules.md
         - name: Verwalten von Sicherheitsvorfällen
           href: security-center-incident.md
         - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)

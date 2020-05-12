@@ -3,15 +3,15 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 2/18/2020
+ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520887"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801007"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -196,14 +196,25 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>sms
-Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./../../azure-monitor/platform/alerts-rate-limiting.md) und zum [Verhalten von SMS-Benachrichtigungen](../../azure-monitor/platform/alerts-sms-behavior.md).
+Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./../../azure-monitor/platform/alerts-rate-limiting.md) und zum [Verhalten von SMS-Benachrichtigungen](../../azure-monitor/platform/alerts-sms-behavior.md). 
 
-Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von SMS-Aktionen verfügen.  
+Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von SMS-Aktionen verfügen.
+
+> [!NOTE]
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, wird SMS für Ihr Land nicht unterstützt.  Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird. In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen SMS-Anbieter mit Unterstützung in Ihrem Land anruft.  
+
+Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
+  
 
 ### <a name="voice"></a>Sprache
-Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./../../azure-monitor/platform/alerts-rate-limiting.md).
+Weitere wichtige Informationen finden Sie im Artikeln zu [Ratenlimits](./../../azure-monitor/platform/alerts-rate-limiting.md).
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sprachaktionen verfügen.
+
+> [!NOTE]
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, werden Sprachanrufe für Ihr Land nicht unterstützt. Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird.  In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen Anbieter von Sprachanrufen mit Unterstützung in Ihrem Land anruft.  
+
+Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
 
 ### <a name="webhook"></a>Webhook
 Webhooks werden mit den folgenden Regeln abgerufen. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn der HTTP-Statuscode 408, 429, 503 oder 504 zurückgegeben wird oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite Wiederholungsversuch erfolgt nach 100 Sekunden. Nach zwei Ausfällen wird der Endpunkt 30 Minuten lang von keiner Aktionsgruppe aufgerufen. 

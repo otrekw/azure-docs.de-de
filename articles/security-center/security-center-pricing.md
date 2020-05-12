@@ -11,25 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2019
+ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: fd84058c8421d144678c91fac3e5671511d0fd4a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435497"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612791"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif für erhöhte Sicherheit
+
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
 
 ## <a name="pricing-tiers"></a>Tarife
 Security Center wird in zwei Tarifen angeboten:
 
 - Der **Free** -Tarif ist für alle Ihre Azure-Abonnements aktiviert, sobald Sie das Azure Security Center-Dashboard zum ersten Mal im Azure-Portal aufrufen, oder wenn Sie es programmgesteuert über die API aktiviert haben. Der Tarif „Free“ umfasst eine Sicherheitsrichtlinie, eine kontinuierliche Bewertung der Sicherheit und umsetzbare Sicherheitsempfehlungen für den Schutz Ihrer Azure-Ressourcen.
-- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads. Im Tarif „Standard“ stehen zudem Funktionen für den Schutz vor Bedrohungen zur Verfügung. Diese verwenden u. a. integrierte Verhaltensanalysen und maschinelles Lernen, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Außerdem wird im Tarif „Standard“ die Überprüfung auf Sicherheitsrisiken für Ihre virtuellen Computer durchgeführt. Sie können den Tarif „Standard“ kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, Skalierungsgruppen für virtuelle Computer, App Service, SQL Server-Instanzen und Speicherkonten. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
 
-Die meisten der Sicherheitsbewertungen im Tarif „Free“ für virtuelle Computer erfordern (ebenso wie viele der Sicherheitswarnungen im Standard-Tarif) die Installation der Funktion „Log Analytics-Agent“. Sie können die automatische Bereitstellung im Security Center aktivieren, um den Agent automatisch für Ihre Azure-VMs bereitzustellen.
+- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Im Tarif „Standard“ stehen zudem Funktionen für den Schutz vor Bedrohungen zur Verfügung. Diese verwenden u. a. integrierte Verhaltensanalysen und maschinelles Lernen, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Außerdem wird im Tarif „Standard“ die Überprüfung auf Sicherheitsrisiken für Ihre virtuellen Computer durchgeführt. Sie können den Tarif „Standard“ kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, Skalierungsgruppen für virtuelle Computer, App Service, SQL Server-Instanzen und Speicherkonten. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
+
+Die meisten der Sicherheitsbewertungen im Tarif „Free“ für virtuelle Computer erfordern (ebenso wie viele der Sicherheitswarnungen im Standard-Tarif) die Installation des Log Analytics-Agents. Sie können die automatische Bereitstellung im Security Center aktivieren, um den Agent automatisch für Ihre Azure-VMs bereitzustellen.
 
 ## <a name="try-standard-tier-free-for-30-days"></a>Tarif „Standard“ kostenlos 30 Tage lang testen
 Der Tarif „Standard“ ist in den ersten 30 Tagen kostenlos. Wenn Sie den Dienst über diese 30 Tage hinaus nutzen, wird er automatisch in Rechnung gestellt.
@@ -47,8 +49,12 @@ So erhalten Sie den Tarif „Standard“
 [![Security Center-Tarife](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
-> Wenn Sie alle Security Center-Features aktivieren möchten, müssen Sie den Tarif „Standard“ dem Abonnement mit den entsprechenden virtuellen Computern zuweisen. Durch das Konfigurieren von Preisen für einen Arbeitsbereich werden Just-in-Time-VM-Zugriff, adaptive Anwendungssteuerungen und Netzwerkerkennungen für Azure-Ressourcen nicht aktiviert.
+> Wenn Sie alle Security Center-Features einschließlich des Schutzes vor Bedrohungen aktivieren möchten, müssen Sie den Tarif „Standard“ dem Abonnement mit den entsprechenden Workloads zuweisen. Durch das Konfigurieren von Preisen für einen Arbeitsbereich werden Just-in-Time-VM-Zugriff, adaptive Anwendungssteuerungen und Netzwerkerkennungen für Azure-Ressourcen nicht aktiviert. 
 >
+> Sie können den Schutz vor Bedrohungen für **Azure Storage-Konten** entweder auf Abonnement- oder Ressourcenebene aktivieren.
+> Sie können den Schutz vor Bedrohungen für **SQL-Server von Azure SQL-Datenbank** entweder auf Abonnement- oder Ressourcenebene aktivieren.
+> Sie können den Schutz vor Bedrohungen für **Azure Database for MariaDB/MySQL/PostgreSQL** nur auf der Ressourcenebene aktivieren.
+
 
 ## <a name="why-upgrade-to-standard"></a>Gründe für ein Upgrade auf den Tarif „Standard“
 Security Center bietet mehr Sicherheit und besseren Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads:

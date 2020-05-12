@@ -2,15 +2,15 @@
 title: Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 description: In diesem Dokument wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvailability()“ erstellen, die gemäß der Konfiguration der Funktion „TimerTrigger“ regelmäßig ausgeführt wird. Die Ergebnisse dieses Tests werden an Ihre Application Insights-Ressource gesendet. Dort können Sie für die Ergebnisdaten zur Verfügbarkeit Abfragen durchführen und Warnungen einrichten. Mit angepassten Tests können Sie komplexere Verfügbarkeitstests als bei Verwendung der Portalbenutzeroberfläche schreiben, eine App in Ihrem virtuellen Azure-Netzwerk (VNET) überwachen, die Endpunktadresse ändern oder einen Verfügbarkeitstest erstellen, falls er in Ihrer Region nicht verfügbar ist.
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665798"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791107"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Um sicherzustellen, dass alles funktioniert, können Sie sich das Diagramm auf der Registerkarte „Verfügbarkeit“ Ihrer Application Insights-Ressource ansehen.
 
 > [!NOTE]
-> Wenn Sie Ihre eigene Geschäftslogik in „runAvailabilityTest.csx“ implementiert haben, werden Ihnen erfolgreiche Ergebnisse wie in den folgenden Screenshots angezeigt. Wenn Sie das nicht getan haben, werden Ihnen fehlerhafte Ergebnisse angezeigt.
+> Wenn Sie Ihre eigene Geschäftslogik in „runAvailabilityTest.csx“ implementiert haben, werden Ihnen erfolgreiche Ergebnisse wie in den folgenden Screenshots angezeigt. Wenn Sie das nicht getan haben, werden Ihnen fehlerhafte Ergebnisse angezeigt. Bei mit `TrackAvailability()` erstellten Tests wird neben dem Testnamen **Benutzerdefiniert** angezeigt.
 
 >[!div class="mx-imgBorder"]
->![Registerkarte „Verfügbarkeit“ mit erfolgreichen Ergebnissen](media/availability-azure-functions/availtab.png)
-
-Wenn Sie Ihren Test mit Azure Functions einrichten, wird Ihnen Folgendes auffallen: Im Gegensatz zur Verwendung der Option **Test hinzufügen** auf der Registerkarte „Verfügbarkeit“ wird der Name Ihres Tests nicht angezeigt, und Sie können nicht damit interagieren. Die Ergebnisse werden visualisiert, aber Sie erhalten eine Zusammenfassung und nicht die ausführliche Ansicht, die beim Erstellen eines Verfügbarkeitstests über das Portal angezeigt wird.
+>![Registerkarte „Verfügbarkeit“ mit erfolgreichen Ergebnissen](media/availability-azure-functions/availability-custom.png)
 
 Wählen Sie zum Anzeigen der End-to-End-Transaktionsdetails unter „Drilldown“ die Option **Erfolgreich** oder **Fehler** aus, und wählen Sie anschließend ein Beispiel aus. Sie können auf die End-to-End-Transaktionsdetails auch zugreifen, indem Sie im Graphen einen Datenpunkt auswählen.
 

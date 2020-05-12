@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641625"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801772"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -92,9 +92,15 @@ Eine weitere Möglichkeit ist die Verwendung eines [benutzerdefinierten Bewertun
 
 ## <a name="hit-highlighting"></a>Treffermarkierung
 
-Die Treffermarkierung bezieht sich auf die Textformatierung (wie Fett- oder Gelbmarkierung), die auf Treffer in einem Ergebnis angewendet werden, sodass die Übereinstimmungen leicht zu erkennen sind. Anweisungen zur Treffermarkierung werden in der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) bereitgestellt. Das Suchmodul schließt die Übereinstimmungen in die Tags `highlightPreTag` und `highlightPostTag` ein, und Ihr Code behandelt die Antwort entsprechend (indem er beispielsweise eine fett formatierte Schrift verwendet).
+Die Treffermarkierung bezieht sich auf die Textformatierung (wie Fett- oder Gelbmarkierung), die auf Treffer in einem Ergebnis angewendet werden, sodass die Übereinstimmungen leicht zu erkennen sind. Anweisungen zur Treffermarkierung werden in der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) bereitgestellt. 
 
-Die Formatierung wird auf Abfragen kompletter Begriffe angewendet. Im folgenden Beispiel sind die Begriffe „sandy“, „sand“, „beaches“ und „beach“ im Beschreibungsfeld zur Markierung mit Tags versehen. Bei Abfragen, die eine Abfrageerweiterung in der Engine auslösen, wie z. B. Fuzzy- und Platzhaltersuche, wird die Treffermarkierung nur begrenzt unterstützt.
+Um die Treffermarkierung zu aktivieren, fügen Sie `highlight=[comma-delimited list of string fields]` hinzu, um anzugeben, für welche Felder die Markierung verwendet wird. Die Markierung eignet sich für längere Inhaltsfelder, z. B. ein Beschreibungsfeld, bei denen die Übereinstimmung nicht sofort ersichtlich ist. Für die Treffermarkierung eignen sich nur Felddefinitionen, die das Attribut **durchsuchbar** aufweisen.
+
+Azure Cognitive Search gibt standardmäßig bis zu fünf Markierungen pro Feld zurück. Sie können die Anzahl anpassen, indem Sie einen Bindestrich gefolgt von einer ganzen Zahl an das Feld anfügen. `highlight=Description-10` gibt beispielsweise bis zu 10 Markierungen zu übereinstimmenden Inhalten im Beschreibungsfeld zurück.
+
+Die Formatierung wird auf Abfragen kompletter Begriffe angewendet. Der Formatierungstyp wird durch Tags (`highlightPreTag` und `highlightPostTag`) bestimmt, und die Antwort wird vom Code verarbeitet (z. B., wenn eine Schriftart fett formatiert oder ein gelber Hintergrund angewendet werden soll).
+
+Im folgenden Beispiel sind die Begriffe „sandy“, „sand“, „beaches“ und „beach“ im Beschreibungsfeld zur Markierung mit Tags versehen. Bei Abfragen, die eine Abfrageerweiterung in der Engine auslösen, wie z. B. Fuzzy- und Platzhaltersuche, wird die Treffermarkierung nur begrenzt unterstützt.
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

@@ -4,14 +4,14 @@ description: Indizieren räumlicher Daten mit Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137902"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839203"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indizieren von räumlichen Daten mit Azure Cosmos DB
 
@@ -28,11 +28,17 @@ Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für �
 
 ## <a name="modifying-geospatial-data-type"></a>Ändern des räumlichen Datentyps
 
-In Ihrem Container gibt `geospatialConfig` an, wie die räumlichen Daten indiziert werden. Sie sollten eine `geospatialConfig` pro Container angeben: „geography“ oder „geometry“. Ohne Angabe wird `geospatialConfig` standardmäßig auf den geography-Datentyp festgelegt. Wenn Sie `geospatialConfig` ändern, werden alle vorhandenen räumlichen Daten im Container neu indiziert.
+In Ihrem Container legt die **Geokonfiguration** fest, wie die räumlichen Daten indiziert werden. Geben Sie pro Container eine **Geokonfiguration** an: „Geografie“ oder „Geometrie“.
 
-> [!NOTE]
-> Azure Cosmos DB unterstützt derzeit Änderungen von „geospatialConfig“ im .NET SDK nur in Version 3.6 und höher.
->
+Sie können im Azure-Portal zwischen den räumlichen Typen **Geografie** und **Geometrie** wechseln. Es ist wichtig, dass Sie eine [gültige Indizierungsrichtlinie für räumliche Geometrie mit einem Begrenzungsrahmen](#geometry-data-indexing-examples) erstellen, bevor Sie zum räumlichen Typ „Geometrie“ wechseln.
+
+Im Folgenden wird beschrieben, wie Sie die **Geokonfiguration** im Azure-Portal in **Data Explorer** festlegen:
+
+![Festlegen der Geokonfiguration](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+Sie können auch die `geospatialConfig` im .NET SDK ändern, um die **Geokonfiguration** anzupassen:
+
+Ohne Angabe wird `geospatialConfig` standardmäßig auf den geography-Datentyp festgelegt. Wenn Sie `geospatialConfig` ändern, werden alle vorhandenen räumlichen Daten im Container neu indiziert.
 
 Das folgende Beispiel veranschaulicht, wie der räumliche Datentyp in `geometry` geändert wird, indem die `geospatialConfig`-Eigenschaft festgelegt und eine **boundingBox** hinzugefügt wird:
 
@@ -112,7 +118,7 @@ Der Begrenzungsrahmen umfasst folgende Eigenschaften:
 
 Ein Begrenzungsrahmen ist erforderlich, da geometrische Daten auf einer Ebene liegen, die unendlich sein kann. Für räumliche Indizes ist jedoch ein endlicher Raum erforderlich. Beim **geography**-Datentyp ist die Erde die Begrenzung, sodass Sie keinen Begrenzungsrahmen festlegen müssen.
 
-Sie sollten einen Begrenzungsrahmen erstellen, der alle (oder die meisten) Ihrer Daten enthält. Nur Vorgänge, die mit Objekten berechnet werden, die vollständig im Begrenzungsrahmen liegen, nutzen den räumlichen Index. Sie sollten den Begrenzungsrahmen nicht wesentlich größer als notwendig machen, da sich dies negativ auf die Abfrageleistung auswirkt.
+Erstellen Sie einen Begrenzungsrahmen, der alle (oder die meisten) Ihre(r) Daten enthält. Nur Vorgänge, die mit Objekten berechnet werden, die vollständig im Begrenzungsrahmen liegen, nutzen den räumlichen Index. Wenn Sie den Begrenzungsrahmen größer als nötig erstellen, wirkt sich dies negativ auf die Abfrageleistung aus.
 
 Nachstehend finden Sie ein Beispiel für eine Indizierungsrichtlinie, die **geometry**-Daten indiziert, wobei **geospatialConfig** auf `geometry` festgelegt ist:
 

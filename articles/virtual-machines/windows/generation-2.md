@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869641"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838823"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -28,7 +28,7 @@ VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht
 VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnahme: VMs der Mv2-Serie). Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
 
 * [B-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC-Serie](../dcv2-series.md)
+* [DCsv2-Serie](../dcv2-series.md)
 * [DSv2-Serie](../dv2-dsv2-series.md) und [Dsv3-Serie](../dv3-dsv3-series.md)
 * [Dasv4-Serie](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3-Serie](../ev3-esv3-series.md)
@@ -38,13 +38,13 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnah
 * [HB-Serie](../hb-series.md)
 * [HC-Serie](../hc-series.md)
 * [Ls-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) und [Lsv2-Serie](../lsv2-series.md)
-* [Mv2-Serie](../mv2-series.md)
+* [M-Serie](../m-series.md)
+* [Mv2-Serie](../mv2-series.md)<sup>1</sup>
 * [NCv2-Serie](../ncv2-series.md) und [NCv3-Serie](../ncv3-series.md)
 * [ND-Serie](../nd-series.md)
 * [NVv3-Serie](../nvv3-series.md)
 
-> [!NOTE]
-> Die Verwendung von VM-Images der Generation 2 für VMs der Mv2-Serie ist allgemein verfügbar, da die Mv2-Serie ausschließlich mit VM-Images der Generation 2 arbeitet. VM-Images der Generation 1 werden auf VMs der Mv2-Serie nicht unterstützt. 
+<sup>1</sup> Die Mv2-Serie unterstützt keine VM-Images der Generation 1 und nur eine Teilmenge von Images der Generation 2. Ausführliche Informationen finden Sie in der [Dokumentation zur Mv2-Serie](https://docs.microsoft.com/azure/virtual-machines/mv2-series).
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-Images der Generation 2 in Azure Marketplace
 
@@ -58,6 +58,9 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
 * Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
+
+> [!NOTE]
+> Bestimmte VM-Größen wie die Mv2-Serie unterstützen möglicherweise nur eine Teilmenge dieser Images. Vollständige Informationen finden Sie in der Dokumentation zur entsprechenden VM-Größe.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391502"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609356"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -290,7 +290,7 @@ Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
 
 * **Ressourcengruppe**: Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
 * **Sperrebene**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
-* **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Wenn mehr als ein Wert erforderlich ist, können Sie diese in der Form `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` angeben. Die Werte werden hierbei durch ein Leerzeichen voneinander getrennt.
+* **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Wenn mehr als ein Wert erforderlich ist, können Sie diese in der Form `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` angeben. Die Werte werden hierbei durch ein Komma voneinander getrennt.
 * **Paketdatei-URI**: Der Speicherort eines ZIP-Pakets, das die erforderlichen Dateien enthält.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Bereitstellen eines eigenen Speichers (Bring Your Own Storage) für die Definition der verwalteten Anwendung

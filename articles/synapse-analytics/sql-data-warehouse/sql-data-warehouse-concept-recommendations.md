@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/05/2020
+ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633682"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607747"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-Empfehlungen
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Synapse SQL-Empfehlungen beschrieben, die durch Azu
 
 SQL Analytics bietet Empfehlungen, um sicherzustellen, dass Ihr Data Warehouse-Workload für Leistung konsistent optimiert wird. Empfehlungen sind in den [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eng integriert, um Sie direkt im [Azure-Portal](https://aka.ms/Azureadvisor) mit bewährten Methoden vertraut zu machen. SQL Analytics sammelt Telemetrie- und Oberflächenempfehlungen für Ihre aktive Workload in einem täglichen Rhythmus. Die unterstützten Empfehlungsszenarien werden im Folgenden zusammen mit der Anwendung empfohlener Aktionen beschrieben.
 
-Sie können noch heute [Ihre Empfehlungen überprüfen](https://aka.ms/Azureadvisor)! Dieses Feature ist zurzeit nur auf Gen2-Data Warehouses anwendbar.
+Sie können noch heute [Ihre Empfehlungen überprüfen](https://aka.ms/Azureadvisor)! 
 
 ## <a name="data-skew"></a>Datenschiefe
 
@@ -51,14 +51,22 @@ Zur Generierung von Empfehlungen für replizierte Tabellen ermittelt der Advisor
 
 Der Advisor nutzt kontinuierlich workloadbasierte Heuristik wie etwa Tabellenzugriffshäufigkeit, durchschnittlich zurückgegebene Zeilen sowie Schwellenwerte für Data Warehouse-Größe und -Aktivität, um hochwertige Empfehlungen zu generieren.
 
-Im Anschluss wird die workloadbasierte Heuristik beschrieben, die ggf. im Azure-Portal für die einzelnen Empfehlungen für replizierte Tabellen verfügbar ist:
+Im anschließenden Abschnitt wird die workloadbasierte Heuristik beschrieben, die ggf. im Azure-Portal für die einzelnen Empfehlungen für replizierte Tabellen verfügbar ist:
 
 - Scan avg (Scandurchschnitt): Der durchschnittliche Prozentsatz von Zeilen, die aus der Tabelle zurückgegeben wurden (für jeden Tabellenzugriff in den letzten sieben Tagen).
 - Frequent read, no update (Häufig lesen, keine Aktualisierung): Gibt an, dass die Tabelle in den letzten sieben Tagen nicht aktualisiert wurde, aber Zugriffsaktivitäten festgestellt wurden.
 - Read/update ratio (Verhältnis zwischen Lesen und Aktualisieren): Das Verhältnis zwischen Zugriffs- und Aktualisierungsvorgängen für die Tabelle in den letzten sieben Tagen.
-- Aktivität: Ermittelt die Nutzung anhand der Zugriffsaktivität. Die Tabellenzugriffsaktivität wird dabei mit der durchschnittlichen Tabellenzugriffsaktivität innerhalb des gesamten Data Warehouse während der letzten sieben Tage verglichen.
+- Aktivität: Ermittelt die Nutzung anhand der Zugriffsaktivität. Diese Aktivität vergleicht die Tabellenzugriffsaktivität mit der durchschnittlichen Tabellenzugriffsaktivität innerhalb des gesamten Data Warehouse während der letzten sieben Tage.
 
 Derzeit zeigt der Advisor maximal vier Kandidaten für replizierte Tabellen auf einmal an – mit gruppierten Columnstore-Indizes und unter Priorisierung der höchsten Aktivität.
 
 > [!IMPORTANT]
-> Die Empfehlung für replizierte Tabellen ist nicht narrensicher und berücksichtigt keine Datenverschiebungsvorgänge. Wir arbeiten daran, dies als Heuristik hinzuzufügen, bis dahin empfiehlt es sich jedoch, die Workload nach Anwendung der Empfehlung zu überprüfen. Wenden Sie sich an sqldwadvisor@service.microsoft.com, wenn Ihnen Empfehlungen für replizierte Tabellen auffallen, die zu einer Verschlechterung Ihrer Workload führen. Weitere Informationen zu replizierten Tabellen finden Sie in [dieser Dokumentation](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+> Die Empfehlung für replizierte Tabellen ist nicht narrensicher und berücksichtigt keine Datenverschiebungsvorgänge. Wir arbeiten daran, dies als Heuristik hinzuzufügen, bis dahin empfiehlt es sich jedoch, die Workload nach Anwendung der Empfehlung zu überprüfen. Weitere Informationen zu replizierten Tabellen finden Sie in [dieser Dokumentation](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+
+
+## <a name="adaptive-gen2-cache-utilization"></a>Adaptive (Gen2) Cacheauslastung
+Wenn Sie über ein großes Workingset verfügen, kann es zu einem niedrigen Prozentsatz der Cachetreffer und einer hohen Cacheauslastung kommen. Für dieses Szenario sollten Sie hochskalieren, um die Cachekapazität zu erhöhen und Ihre Workload erneut auszuführen. Weitere Informationen finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+
+## <a name="tempdb-contention"></a>TempDB-Konflikt
+
+Die Abfrageleistung kann sich bei hohen tempdb-Konflikten verschlechtern.  Tempdb-Konflikte können über benutzerdefinierte temporäre Tabellen auftreten, oder wenn eine große Menge von Datenverschiebungen vorkommen. In diesem Szenario können Sie für höhere tempdb-Zuordnungen skalieren und [Ressourcenklassen sowie die Workloadverwaltung konfigurieren](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management), um mehr Arbeitsspeicher für Ihre Abfragen bereitzustellen. 

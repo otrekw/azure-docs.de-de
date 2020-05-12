@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6478656855e29ada829db4356f976b2f04ceb83a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582758"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739312"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -51,6 +51,10 @@ Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu install
 ```
 
 Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0).
+
+> [!NOTE]
+> Die Azure AD PowerShell-Cmdlets funktionieren nicht mit der neuen Version von PowerShell (Version 7), da diese auf .NET Core basiert. Wir arbeiten derzeit an einem Update, um dieses Problem zu beheben. In der Zwischenzeit verwenden Sie am besten das Windows PowerShell 5.x-Modul für Azure AD PowerShell-Vorgänge. 
+
 
 ## <a name="connect-to-the-directory"></a>Herstellen einer Verbindung mit dem Verzeichnis
 

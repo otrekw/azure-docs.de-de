@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415709"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791764"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -138,9 +138,9 @@ Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Hau
 
 Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang. 
 
-## <a name="autopilot-mode-limits"></a>Limits im Autopilot-Modus
+## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 
-Im Artikel [Autopilot](provision-throughput-autopilot.md#autopilot-limits) finden Sie die Limits für Durchsatz und Speicher im Autopilot-Modus.
+Im Artikel [Autoskalierung](provision-throughput-autoscale.md#autoscale-limits) finden Sie die Grenzwerte für Durchsatz und Speicher bei Autoskalierung.
 
 ## <a name="sql-query-limits"></a>Grenzwerte für SQL-Abfragen
 

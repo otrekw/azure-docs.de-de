@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und Azure PowerShell
-description: Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure PowerShell ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff besitzen.
+title: Auflisten von Azure-Rollenzuweisungen mit Azure PowerShell – Azure RBAC
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff besitzen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,21 +14,21 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931152"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735707"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und Azure PowerShell
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>Auflisten von Azure-Rollenzuweisungen mit Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell Rollenzuweisungen auflisten.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und Azure PowerShell](role-assignments-powershell.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](role-assignments-powershell.md)

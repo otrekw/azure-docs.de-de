@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984536"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793090"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
 Die automatische Skalierung ist eine weitere Funktion von Service Fabric, mit der Ihre Dienste basierend auf der Last, die von Diensten gemeldet wird, oder basierend auf ihrer Ressourcennutzung dynamisch skaliert werden können. Die automatische Skalierung bietet eine hervorragende Flexibilität und ermöglicht die Bereitstellung zusätzlicher Instanzen oder Partitionen Ihres Diensts bei Bedarf. Der gesamte Prozess der automatischen Skalierung ist automatisiert und transparent. Sobald Sie Ihre Richtlinien für einen Dienst eingerichtet haben, müssen Sie keine manuellen Skalierungsvorgänge auf Dienstebene mehr durchführen. Die automatische Skalierung kann während der Erstellung des Diensts oder zu einem beliebigen Zeitpunkt durch Aktualisieren des Diensts aktiviert werden.
@@ -130,7 +130,7 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 * Die _minimale Anzahl von Instanzen_ definiert die Untergrenze für die Skalierung. Wenn die Anzahl von Partitionen des Diensts diesen Grenzwert erreicht, wird der Dienst unabhängig von der Last nicht horizontal herunterskaliert.
 
 > [!WARNING] 
-> Bei Verwendung von „AddRemoveIncrementalNamedPartitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim Hochskalieren sind die neuen Partitionen leer, und beim Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
+> Bei Verwendung von „AddRemoveIncrementalNamedPartitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim Aufskalieren sind die neuen Partitionen leer, und beim Abskalieren **wird die Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
 
 ## <a name="setting-auto-scaling-policy"></a>Festlegen der Richtlinie für die automatische Skalierung
 

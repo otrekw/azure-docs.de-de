@@ -1,5 +1,5 @@
 ---
-title: Vorläufiges Löschen in Azure Key Vault | Microsoft Docs
+title: Vorläufiges Löschen in Azure Key Vault | Microsoft-Dokumentation
 description: Die Funktion für vorläufiges Löschen in Azure Key Vault ermöglicht Ihnen die Wiederherstellung gelöschter Schlüsseltresore und Schlüsseltresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate.
 ms.service: key-vault
 ms.subservice: general
@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427714"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598514"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -24,7 +24,7 @@ Die Key Vault-Funktion für vorläufiges Löschen ermöglicht die Wiederherstell
 
 ## <a name="supporting-interfaces"></a>Unterstützende Schnittstellen
 
-Die Funktion für vorläufiges Löschen ist ursprünglich über die [REST](/rest/api/keyvault/)-, [CLI](soft-delete-cli.md)-, [PowerShell](soft-delete-powershell.md)- und [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)-Schnittstelle verfügbar.
+Die Funktion für vorläufiges Löschen ist ursprünglich über die [REST](/rest/api/keyvault/)-, [CLI](soft-delete-cli.md)-, [PowerShell](soft-delete-powershell.md)- und [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)-Schnittstelle sowie über die [ARM-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.keyvault/2019-09-01/vaults) verfügbar.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -46,7 +46,7 @@ Der Name eines vorläufig gelöschten Schlüsseltresors kann erst nach Ablauf de
 
 ### <a name="purge-protection"></a>Bereinigungsschutz 
 
-Der Bereinigungsschutz ist ein optionales Key Vault-Verhalten und ist standardmäßig **nicht aktiviert**. Es kann über die [Befehlszeilenschnittstelle](soft-delete-cli.md#enabling-purge-protection) oder [PowerShell](soft-delete-powershell.md#enabling-purge-protection) aktiviert werden.
+Der Bereinigungsschutz ist ein optionales Key Vault-Verhalten und ist standardmäßig **nicht aktiviert**. Der Schutz vor dem endgültigen Löschen kann nur aktiviert werden, wenn das vorläufige Löschen aktiviert ist.  Es kann über die [Befehlszeilenschnittstelle](soft-delete-cli.md#enabling-purge-protection) oder [PowerShell](soft-delete-powershell.md#enabling-purge-protection) aktiviert werden.
 
 Bei aktiviertem Bereinigungsschutz kann ein Tresor oder ein Objekt im gelöschten Zustand erst nach Ablauf der Aufbewahrungsdauer endgültig gelöscht werden. Vorläufig gelöschte Tresore und Objekte können unter Einhaltung der Aufbewahrungsrichtlinie weiterhin wiederhergestellt werden. 
 
@@ -58,7 +58,7 @@ Das endgültige Löschen eines Schlüsseltresors kann über einen POST-Vorgang f
 
 Es gelten folgende Ausnahmen:
 - Wenn das Azure-Abonnement als *nicht löschbar* markiert wurde. In diesem Fall kann der eigentliche Löschvorgang nur vom Dienst ausgeführt werden, und dies erfolgt als geplanter Prozess. 
-- Wenn das Flag „--enable-purge-protection“ auf dem Tresor selbst aktiviert wurde. In diesem Fall wartet Key Vault 90 Tage ab der Markierung des ursprünglichen geheimen Objekts zum Löschen, bevor das Objekt vollständig gelöscht wird.
+- Wenn das `--enable-purge-protection flag` im Tresor selbst aktiviert wurde. In diesem Fall wartet Key Vault 90 Tage ab der Markierung des ursprünglichen geheimen Objekts zum Löschen, bevor das Objekt vollständig gelöscht wird.
 
 ### <a name="key-vault-recovery"></a>Wiederherstellung eines Schlüsseltresors
 
@@ -72,7 +72,7 @@ Gleichzeitig plant Key Vault die Ausführung des Löschens der zugrunde liegende
 
 ### <a name="soft-delete-retention-period"></a>Aufbewahrungszeitraum für vorläufig gelöschte Ressourcen
 
-Vorläufig gelöschte Ressourcen werden für einen festgelegten Zeitraum von 90 Tagen beibehalten. Während des Aufbewahrungsintervalls für vorläufig gelöschte Ressourcen gilt Folgendes:
+Vorläufig gelöschte Ressourcen werden für einen festgelegten Zeitraum von 90 Tagen beibehalten. Während des Aufbewahrungsintervalls für vorläufig gelöschte Ressourcen gilt Folgendes:
 
 - Sie können alle im vorläufig gelöschten Zustand befindlichen Schlüsseltresore und Key Vault-Objekte für Ihr Abonnement auflisten sowie auf die entsprechenden Löschungs- und Wiederherstellungsinformationen zugreifen.
     - Nur Benutzer mit speziellen Berechtigungen können gelöschte Tresore auflisten. Wir empfehlen unseren Benutzern das Erstellen einer benutzerdefinierten Rolle mit diesen speziellen Berechtigungen für den Umgang mit gelöschten Tresoren.

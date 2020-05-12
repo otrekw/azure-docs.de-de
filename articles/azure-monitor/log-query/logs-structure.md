@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662075"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738081"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
@@ -54,16 +54,17 @@ Im Gegensatz zu einem Log Analytics-Arbeitsbereich verwendet eine Application In
 
 | Tabelle | BESCHREIBUNG | 
 |:---|:---|
-| availabilityResults | Zusammenfassungsdaten aus Verfügbarkeitstests. |
-| browserTimings      | Daten über die Leistung des Clients, z. B. die angefallene Zeit zum Verarbeiten der eingehenden Daten. |
-| customEvents        | Benutzerdefinierte Ereignisse, die von Ihrer Anwendung erstellt werden. |
-| customMetrics       | Benutzerdefinierte Metriken, die von Ihrer Anwendung erstellt werden. |
-| dependencies        | Aufrufe der Anwendung von externen Komponenten. |
-| Ausnahmen          | Ausnahmen, die von der Anwendungsruntime ausgelöst werden. |
-| pageViews           | Daten über jede Websiteansicht mit Browserinformationen. |
-| performanceCounters | Leistungsmessungen der Computeressourcen zur Unterstützung der Anwendung. |
-| requests            | Details zu jeder Anwendungsanforderung.  |
-| traces              | Ergebnisse der verteilten Ablaufverfolgung. |
+| availabilityResults   | Zusammenfassungsdaten aus Verfügbarkeitstests.
+| browserTimings      |     Daten über die Leistung des Clients, z. B. die angefallene Zeit zum Verarbeiten der eingehenden Daten.
+| customEvents        | Benutzerdefinierte Ereignisse, die von Ihrer Anwendung erstellt werden.
+| customMetrics       | Benutzerdefinierte Metriken, die von Ihrer Anwendung erstellt werden.
+| dependencies        | Aufrufe von der Anwendung an andere Komponenten (einschließlich externer Komponenten), die über TrackDependency() aufgezeichnet werden – z. B. Aufrufe der REST-API, der Datenbank oder eines Dateisystems. 
+| Ausnahmen            | Ausnahmen, die von der Anwendungslaufzeit ausgelöst werden, erfassen sowohl server- als auch clientseitige (Browser) Ausnahmen.
+| pageViews           | Daten über jede Websiteansicht mit Browserinformationen.
+| performanceCounters   | Leistungsmessungen der Computeressourcen, die die Anwendung unterstützen, z. B. Windows-Leistungsindikatoren.
+| requests            | Von Ihrer Anwendung empfangene Anforderungen. Beispielsweise wird für jede HTTP-Anforderung, die Ihre Web-App empfängt, ein separater Anforderungsdatensatz protokolliert. 
+| traces                | Ausführliche Protokolle (Ablaufverfolgungen), die über Anwendungscode-/Protokollierungsframeworks ausgegeben und mithilfe von TrackTrace() aufgezeichnet werden.
+
 
 Sie können das Schema für jede Tabelle auf der Registerkarte **Schema** in Log Analytics für die Anwendung anzeigen lassen.
 

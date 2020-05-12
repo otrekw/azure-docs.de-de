@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014365"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690626"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
@@ -42,7 +42,7 @@ Möchten Sie:
 
 - Gewinnen Sie tiefere Einblicke in Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben.
 
-- Damit Sie diese Fragen beantworten können, stellt Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
+- Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
 
 
 
@@ -116,7 +116,7 @@ Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 Für jeden Trend erhalten Sie eine Aufschlüsselung nach folgenden Kategorien:
 
-- Position
+- Standort
 
     ![Anmeldungen nach Ort](./media/howto-use-azure-monitor-workbooks/45.png)
 

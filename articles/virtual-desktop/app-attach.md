@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128321"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612468"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -28,7 +28,7 @@ In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps 
 Bevor Sie beginnen, müssen Sie Folgendes für das MSIX-Feature zum Anfügen von Apps konfigurieren:
 
 - Zugriff auf das Windows-Insider-Portal, um die Version von Windows 10 mit Unterstützung für die APIs für das MSIX-Feature zum Anfügen von Apps abzurufen.
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Weitere Informationen finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Weitere Informationen finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 - Das MSIX-Pakettool
 - Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird
 

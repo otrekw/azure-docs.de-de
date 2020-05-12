@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086418"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691220"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen
 
@@ -85,20 +85,21 @@ Verwenden Sie die `MimicWrapper`-Klasse, um eine Erläuterung für AutoML-Modell
 
 - Dem Erklärmoduleinrichtungsobjekt
 - Ihrem Arbeitsbereich
-- Einem LightGBM-Modell, das als Ersatz für das automatisierte `fitted_model`-ML-Modell fungiert
+- Ein Surrogatmodell zur Erklärung des automatisierten ML-Modells `fitted_model`
 
 Die MimicWrapper-Klasse verwendet außerdem das `automl_run`-Objekt, in das die Erklärungen für entwickelte Features hochgeladen werden.
 
 ```python
-from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
+                         explainable_model=automl_explainer_setup_obj.surrogate_model, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
                          features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
-                         classes=automl_explainer_setup_obj.classes)
+                         classes=automl_explainer_setup_obj.classes,
+                         explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
 ```
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Verwenden von MimicExplainer zum Berechnen und Visualisieren der Relevanz von entwickelten Features
