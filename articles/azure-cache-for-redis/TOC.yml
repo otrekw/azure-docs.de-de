@@ -7,18 +7,26 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: ASP.NET-App
-      href: cache-web-app-howto.md
-    - name: .NET Core-App
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET-App
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Java-App
-      href: cache-java-get-started.md
-    - name: Node.js-App
-      href: cache-nodejs-get-started.md
-    - name: Python-App
-      href: cache-python-get-started.md
+    - name: Erstellen eines Caches
+      items:
+        - name: 'Tarife „Basic“, „Standard“ und „Premium“'
+          href: quickstart-create-redis.md
+        - name: Enterprise-Tarife
+          href: quickstart-create-redis-enterprise.md
+    - name: Verwenden eines Cache
+      items:
+        - name: ASP.NET-App
+          href: cache-web-app-howto.md
+        - name: .NET Core-App
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET-App
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java-App
+          href: cache-java-get-started.md
+        - name: Node.js-App
+          href: cache-nodejs-get-started.md
+        - name: Python-App
+          href: cache-python-get-started.md
 - name: Tutorials
   items:
     - name: Verwenden von Caching mit Bestenlisten

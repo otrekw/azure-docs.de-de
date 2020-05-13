@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: Aktivieren von Protokollen
           href: troubleshoot-diagnostic-logs.md
+        - name: Abrufen von Ressourcenereignissen
+          href: get-resource-events.md
     - name: Verwalten der App
       items:
         - name: Verwalten des Hostingplans

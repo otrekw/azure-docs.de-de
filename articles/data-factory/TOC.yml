@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Erstellen einer Data Factory – Resource Manager-Vorlage
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 'Sicherheit: Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln'
+      href: quickstart-enable-customer-managed-key.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
 - name: Tutorials

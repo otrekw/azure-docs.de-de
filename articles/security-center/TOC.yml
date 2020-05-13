@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Funktionsabdeckung für Azure PaaS-Ressourcen
           href: features-paas.md
+    - name: Neuigkeiten in Security Center
+      href: release-notes.md
     - name: Sicherheitsempfehlungen
       href: recommendations-reference.md
     - name: Sicherheitswarnungen und Kill Chain für Absichten
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Vorhandene Benutzer von Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Versionshinweise
+    - name: Archiv der Neuerungen in Security Center
+      href: release-notes-archive.md
+    - name: 'Azure-Roadmap: Blog'
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Feature- und API-Ausmusterung (Juli 2019)
       href: security-center-features-retirement-july2019.md

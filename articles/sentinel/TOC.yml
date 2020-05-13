@@ -94,11 +94,11 @@
                   items:
                     - name: Check Point
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint-Produkte
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern
           href: connect-azure-stack.md
-    - name: Mehrere Mandanten (MSSP)
+    - name: Arbeiten mit mehreren Mandanten (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
+      href: multiple-workspace-view.md
     - name: Einrichten von kundenseitig verwalteten Schlüsseln (CMK)
       href: customer-managed-keys.md
     - name: Erstellen von Incidents auf der Grundlage von Warnungen
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'

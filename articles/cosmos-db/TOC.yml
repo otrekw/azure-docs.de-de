@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: Migrieren von der Änderungsfeed-Verarbeitungsbibliothek
           href: how-to-migrate-from-change-feed-library.md
-        - name: Erstellen einer Java-SQL-Anwendung mit einem Änderungsfeed
+        - name: "Änderungsfeed: Async\_Java-Beispiel"
           href: create-sql-api-java-changefeed.md
     - name: Integrierte Analysen mit Apache Spark
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: Überwachen der Nutzung von Anforderungseinheiten
               href: monitor-request-unit-usage.md
+            - name: Überwachen der normalisierten Nutzung von Anforderungseinheiten
+              href: monitor-normalized-request-units.md
         - name: Verwenden von Azure Monitor-Protokollen
           items:
             - name: Überwachen mit Diagnoseprotokollen

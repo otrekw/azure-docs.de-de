@@ -315,6 +315,8 @@
           href: search-security-overview.md
         - name: Erstellen eines privaten Endpunkts
           href: service-create-private-endpoint.md
+        - name: Konfigurieren einer IP-Firewall
+          href: service-configure-firewall.md
         - name: Dienstschlüsselverwaltung
           href: search-security-api-keys.md
         - name: Rollenbasierter Administratorzugriff
