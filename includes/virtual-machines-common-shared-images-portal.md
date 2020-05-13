@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903665"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788989"
 ---
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
-
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-
-> [!NOTE]
-> Wenn Sie sich bei der Vorschauversion für die Verwendung des Katalogs mit freigegebenen Images registriert haben, müssen Sie den `Microsoft.Compute`-Anbieter möglicherweise erneut registrieren. Öffnen Sie [Cloud Shell](https://shell.azure.com/bash) und geben Sie ein: `az provider register -n Microsoft.Compute`.
-
 ## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs
 
 Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens von Images verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten.  Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
 
 Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Geben Sie in das Suchfeld **Katalog mit freigegebenen Images** ein und wählen Sie in den Ergebnissen **Katalog mit freigegebenen Images** aus.
-1. Klicken Sie auf der Seite **Katalog mit freigegebenen Images** auf **Erstellen**.
-1. Wählen Sie das richtige Abonnement aus.
+1. Klicken Sie auf der Seite **Katalog der freigegebenen Images** auf **Hinzufügen**.
+1. Wählen Sie auf der Seite **Katalog mit freigegebenen Images erstellen** das richtige Abonnement aus.
 1. Wählen Sie in **Ressourcengruppe** **Neu erstellen** aus, und geben Sie *myGalleryRG* für den Namen ein.
 1. Geben Sie unter **Name***myGallery* als Namen des Katalogs ein.
 1. Übernehmen Sie den Standardwert für **Region**.
 1. Sie können eine kurze Beschreibung des Katalogs eingeben, wie *Mein Imagekatalog zum Testen*. Klicken Sie dann auf **Überprüfen + Erstellen**.
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
-   
+
+
 ## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
 
 Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
@@ -46,8 +40,9 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden ver
 Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In diesem Beispiel heißt das Katalogimage *myImageDefinition*.
 
 1. Wählen Sie auf der Seite Ihres neuen Imagekatalogs **Neue Imagedefinition hinzufügen** oben auf der Seite aus. 
+1. Wählen Sie unter **Neue Imagedefinition zum Katalog mit freigegebenen Images hinzufügen** für **Region** die Option *USA, Osten* aus.
 1. Geben Sie für **Name der Imagedefinition***myImageDefinition* ein.
-1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.
+1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.  
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quell-VM aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
 1. Geben Sie für **Herausgeber***myPublisher* ein. 

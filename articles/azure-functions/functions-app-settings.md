@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656800"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690764"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -37,6 +37,10 @@ Die Verbindungszeichenfolge für Application Insights. Verwenden Sie `APPLICATIO
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 Konfiguriert in Version 2.x oder höher der Functions-Runtime das App-Verhalten auf der Grundlage der Runtimeumgebung. Dieser Wert ist [während der Initialisierung lesen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Sie können `AZURE_FUNCTIONS_ENVIRONMENT` auf beliebige Werte festlegen, aber [drei Werte](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) werden unterstützt: [Entwicklung](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) und [Produktion](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Wenn `AZURE_FUNCTIONS_ENVIRONMENT` nicht festgelegt ist, wird als Standardwert in einer lokalen Umgebung `Development` und in Azure `Production` verwendet. Diese Einstellung sollte anstelle von `ASPNETCORE_ENVIRONMENT` verwendet werden, um die Laufzeitumgebung festzulegen. 
+
+## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
+
+In Version 2.x und höheren Versionen der Functions-Runtime können Anwendungseinstellungen Einstellungen in [host.json](functions-host-json.md) in der aktuellen Umgebung außer Kraft setzen. Diese Außerkraftsetzungen werden als Anwendungseinstellungen namens `AzureFunctionsJobHost__path__to__setting` ausgedrückt. Weitere Informationen finden Sie unter [Außerkraftsetzung der Werte in der Datei „host.json“](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 

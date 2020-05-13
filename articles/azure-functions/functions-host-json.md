@@ -2,13 +2,13 @@
 title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758837"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690899"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -24,6 +24,8 @@ Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich
 Andere Konfigurationsoptionen für Funktions-Apps werden in den [App-Einstellungen](functions-app-settings.md) (für bereitgestellte Apps) oder in der Datei [local.settings.json](functions-run-local.md#local-settings-file) (für die lokale Entwicklung) verwaltet.
 
 Konfigurationen in „host.json“, die mit Bindungen im Zusammenhang stehen, werden gleichmäßig auf alle Funktionen in der Funktions-App angewendet. 
+
+Mithilfe der Anwendungseinstellungen können Sie auch [Einstellungen pro Umgebung außer Kraft setzen oder anwenden](#override-hostjson-values).
 
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 
@@ -386,6 +388,23 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>Außerkraftsetzung der Werte in der Datei „host.json“
+
+Es kann Fälle geben, in denen Sie spezifische Einstellungen in einer Datei vom Typ „host.json“ für eine bestimmte Datei konfigurieren oder ändern möchten, ohne die Datei „host.json“ selbst zu ändern.  Sie können bestimmte Werte in der Datei „host.json“ außer Kraft setzen, indem Sie einen entsprechenden Wert als Anwendungseinstellung erstellen. Wenn von der Runtime eine Anwendungseinstellung im Format `AzureFunctionsJobHost__path__to__setting` ermittelt wird, wird die entsprechende Einstellung in der JSON-Datei „host.json“ unter `path.to.setting` außer Kraft gesetzt. Bei der Angabe als Anwendungseinstellung wird der Punkt (`.`), mit dem die JSON-Hierarchie angegeben wird, durch einen doppelten Unterstrich (`__`) ersetzt. 
+
+Angenommen, Sie möchten die Application Insight-Stichprobenentnahme bei der lokalen Ausführung deaktivieren. Wenn Sie die lokale Datei „host.json“ geändert haben, um Application Insights zu deaktivieren, wird diese Änderung unter Umständen während der Bereitstellung an Ihre Produktions-App gepusht. Es ist sicherer, stattdessen die Anwendungseinstellung `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` in der Datei `local.settings.json` zu erstellen. Dies wird in der folgenden Datei vom Typ `local.settings.json` gezeigt, die nicht veröffentlicht wird:
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

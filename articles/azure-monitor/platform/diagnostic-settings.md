@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: edb34b1456efae4d06465cfa2e64e546f621c6da
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681133"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737894"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure
 
@@ -31,7 +31,13 @@ Jede Azure-Ressource erfordert eine eigene Diagnoseeinstellung, die folgende Kri
 Mit einer einzelnen Diagnoseeinstellung kann maximal eines der Ziele definiert werden. Wenn Sie Daten an mehrere Ziele eines bestimmten Typs senden möchten (z.B. zwei verschiedene Log Analytics-Arbeitsbereiche), dann erstellen Sie mehrere Einstellungen. Jede Ressource kann bis zu fünf Diagnoseeinstellungen aufweisen.
 
 > [!NOTE]
-> [Plattformmetriken](metrics-supported.md) werden automatisch in den [Azure Monitor-Metriken](data-platform-metrics.md) erfasst. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste in Azure Monitor-Protokollen erfasst werden, um dann mit anderen Überwachungsdaten anhand von [Protokollabfragen](../log-query/log-query-overview.md) analysiert zu werden.
+> [Plattformmetriken](metrics-supported.md) werden automatisch in den [Azure Monitor-Metriken](data-platform-metrics.md) erfasst. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste in Azure Monitor-Protokollen erfasst werden, um dann mit anderen Überwachungsdaten anhand von [Protokollabfragen](../log-query/log-query-overview.md) mit bestimmten Einschränkungen analysiert zu werden. 
+>  
+>  
+> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar. Darüber hinaus können aufgrund von internen Einschränkungen nicht alle Metriken in Azure Monitor-Protokolle oder in Log Analytics exportiert werden. Weitere Informationen finden Sie in der [Liste mit den exportierbaren Metriken](metrics-supported-export-diagnostic-settings.md). 
+>  
+>  
+> Um diese Einschränkungen für bestimmte Metriken zu umgehen, empfiehlt es sich, diese mithilfe der [REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/list) manuell zu extrahieren und mithilfe der [Azure Monitor-Datensammler-API](data-collector-api.md) in Azure Monitor-Protokolle zu importieren.  
 
 ## <a name="destinations"></a>Destinations
 
@@ -78,9 +84,8 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
      - **AllMetrics** leitet die Plattformmetriken einer Ressource an den Azure-Protokollspeicher weiter, jedoch in Protokollform. Diese Metriken werden in der Regel nur an die Zeitreihendatenbank für Azure Monitor-Metriken gesendet. Wenn Sie sie an den Azure Monitor-Protokollspeicher (der über Log Analytics durchsucht werden kann) senden, können Sie sie in Abfragen integrieren, die andere Protokolle durchsuchen. Diese Option ist möglicherweise nicht für alle Ressourcentypen verfügbar. Bei Unterstützung dieser Option wird für [unterstützte Azure Monitor-Metriken](metrics-supported.md) aufgelistet, welche Metriken für welche Ressourcentypen gesammelt werden.
 
        > [!NOTE]
-       > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
-       >
-       > *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar.
+       > Informationen zu Einschränkungen bei der Weiterleitung von Metriken an Azure Monitor-Protokolle finden Sie weiter oben in diesem Artikel.  
+
 
      - Für **Protokolle** werden die verschiedenen verfügbaren Kategorien abhängig vom Ressourcentyp aufgelistet. Überprüfen Sie alle Kategorien, die Sie an ein Ziel weiterleiten möchten.
 

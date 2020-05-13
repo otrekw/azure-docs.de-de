@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc29d1ac4c2e4c22ce6e6f8356927e768dc274e3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705427"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597653"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -24,7 +24,7 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 * Es werden Datenträgergrößen von bis zu 32 TB unterstützt. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
 * Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
-* Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
+* Wenn Sie virtuelle Computer, die nicht verwaltete Premium-Datenträger in Speicherkonten verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 Prozent* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen. Dies ist **nur** für die erste Sicherung erforderlich. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 
 ## <a name="whats-new-in-this-feature"></a>Was ist neu in diesem Feature?
 

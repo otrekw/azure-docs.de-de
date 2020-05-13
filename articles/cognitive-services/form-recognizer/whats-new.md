@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155170"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627992"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -23,50 +23,65 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 > [!NOTE]
 > In den Schnellstartanleitungen und Leitfäden für die Formularerkennung wird immer die neueste Version der API verwendet, sofern nicht anders angegeben.
 
+## <a name="april-2020"></a>April 2020
+
+### <a name="new-features"></a>Neue Funktionen
+* **SDK-Unterstützung für Version 2.0 der Formularerkennungs-API (Public Preview):** Diesen Monat wurde die Dienstunterstützung um ein Vorschau-SDK für Version 2.0 der Formularerkennung (Vorschauversion) erweitert. Verwenden Sie die folgenden Links, um die ersten Schritte mit Ihrer bevorzugten Sprache auszuführen: 
+   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
+   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
+   * [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
+   * [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
+
+
+  Das neue SDK unterstützt alle Features von Version 2.0 der REST-API für die Formularerkennung. Sie können beispielsweise ein Modell mit oder ohne Bezeichnungen trainieren und Text, Schlüssel-Wert-Paare und Tabellen aus Ihren Formularen extrahieren, mit dem vorgefertigten Belegdienst Daten aus Belegen extrahieren sowie mit dem Layoutdienst Text und Tabellen aus Ihren Dokumenten extrahieren. Sie können Ihr Feedback zu den SDKs über das [SDK-Feedbackformular](https://aka.ms/FR_SDK_v1_feedback) teilen.
+ 
+* **Kopieren eines benutzerdefinierten Modells:** Mithilfe der neuen Funktion zum Kopieren benutzerdefinierter Modelle können Sie nun Modelle zwischen Regionen und Abonnements kopieren. Vor dem Aufrufen der API zum Kopieren eines benutzerdefinierten Modells müssen Sie zunächst die Autorisierung zum Kopieren in die Zielressource erhalten, indem Sie den Vorgang für die Kopierautorisierung für den Zielressourcenendpunkt aufrufen.
+   * REST-API zum [Generieren einer Kopierautorisierung](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)
+   * REST-API zum [Kopieren eines benutzerdefinierten Modells](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel) 
+
+
 ## <a name="march-2020"></a>März 2020 
+
+### <a name="new-features"></a>Neue Funktionen
+
+* **Werttypen für die Beschriftung** Sie können nun die Typen der Werte angeben, die Sie mit dem Tool „Formularerkennung“ zur Beschriftung von Beispielen beschriften können. Derzeit werden die folgenden Werttypen und Variationen unterstützt:
+  * `string`
+    * Standardwert, `no-whitespaces`, `alphanumeric`
+  * `number`
+    * Standardwert, `currency`
+  * `date` 
+    * Standardwert, `dmy`, `mdy`, `ymd`
+  * `time`
+  * `integer`
+
+  Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Beschriften von Beispielen](./quickstarts/label-tool.md#specify-tag-value-types).
+
+
+* **Visualisierung von Tabellen** Im Tool für die Beschriftung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Dadurch können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden.
+
+  Hier sehen Sie ein Beispiel für die Erkennung und Extraktion von Tabellen:
+
+  > [!div class="mx-imgBorder"]
+  > ![Tabellenvisualisierung mit dem Tool für die Beschriftung von Beispielen](./media/whats-new/formre-table-viz.png)
+
+    Die extrahierten Tabellen stehen in der JSON-Ausgabe unter `"pageResults"` zur Verfügung.
+
+  > [!IMPORTANT]
+  > Das Beschriften von Tabellen wird nicht unterstützt. Nicht automatisch erkannte und extrahierte Tabellen können nur als Schlüssel-Wert-Paare beschriftet werden. Beim Beschriften von Tabellen als Schlüssel-Wert-Paare muss jede Zelle als eindeutiger Wert beschriftet werden.
 
 ### <a name="extraction-enhancements"></a>Extraktionsverbesserungen
 
 Dieses Release bietet Verbesserungen bei der Extraktion sowie eine verbesserte Genauigkeit. Hierzu zählt insbesondere die Möglichkeit, mehrere Schlüssel-Wert-Paare in der gleichen Textzeile zu beschriften und zu extrahieren. 
  
-### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Formularerkennungstool für die Beschriftung von Beispielen jetzt als Open-Source-Projekt verfügbar
+### <a name="sample-labeling-tool-is-now-open-source"></a>Tool für die Beschriftung von Beispielen jetzt als Open-Source-Projekt verfügbar
 
-Das Formularerkennungstool für die Beschriftung von Beispielen ist jetzt als Open-Source-Projekt verfügbar. Sie können es in Ihre Lösungen integrieren und kundenspezifische Änderungen vornehmen, um es an Ihre individuellen Anforderungen anzupassen.
+Das Tool „Formularerkennung“ für die Beschriftung von Beispielen ist jetzt als Open-Source-Projekt verfügbar. Sie können es in Ihre Lösungen integrieren und kundenspezifische Änderungen vornehmen, um es an Ihre individuellen Anforderungen anzupassen.
 
-Weitere Informationen zum Formularerkennungstool für die Beschriftung von Beispielen finden Sie in der Dokumentation auf [GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
-
-### <a name="labeling-value-types"></a>Beschriften von Werttypen
-
-Für das Formularerkennungstool für die Beschriftung von Beispielen stehen nun Werttypen zur Verfügung. Derzeit werden folgende Werttypen unterstützt: 
-
-* String
-* Number 
-* Integer
-* Date 
-* Time
-
-Die folgende Abbildung zeigt die Werttypauswahl im Formularerkennungstool für die Beschriftung von Beispielen:
-
-> [!div class="mx-imgBorder"]
-> ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](./media/whats-new/formre-value-type.png)
-
-Die extrahierten Tabellen stehen in der JSON-Ausgabe in `pageResults` zur Verfügung.
-
-### <a name="table-visualization"></a>Tabellenvisualisierung 
-
-Im Formularerkennungstool für die Beschriftung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Dadurch können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse mit dem Formularerkennungstool für die Beschriftung von Beispielen durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden. 
-
-Hier sehen Sie ein Beispiel für die Erkennung und Extraktion von Tabellen:
-
-> [!div class="mx-imgBorder"]
-> ![Tabellenvisualisierung mit dem Tool für die Beschriftung von Beispielen](./media/whats-new/formre-table-viz.png)
-
-> [!IMPORTANT]
-> Das Beschriften von Tabellen wird nicht unterstützt. Nicht automatisch erkannte und extrahierte Tabellen können nur als Schlüssel-Wert-Paare beschriftet werden. Beim Beschriften von Tabellen als Schlüssel-Wert-Paare muss jede Zelle als Wert beschriftet werden.
+Weitere Informationen zum Tool „Formularerkennung“ für die Beschriftung von Beispielen finden Sie in der Dokumentation auf [GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ### <a name="tls-12-enforcement"></a>Erzwingen von TLS 1.2
 
-* TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
+TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Januar 2020
 

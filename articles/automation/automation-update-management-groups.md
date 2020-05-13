@@ -1,24 +1,34 @@
 ---
-title: Verwenden dynamischer Gruppen mit der Azure-Updateverwaltung
+title: Verwenden dynamischer Gruppen mit Azure Automation-Updateverwaltung
 description: In diesem Artikel wird beschrieben, wie dynamische Gruppen mit der Azure Automation-Updateverwaltung funktionieren.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75420393"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690774"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Verwenden dynamischer Gruppen mit der Updateverwaltung
 
-Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuellen Azure-Computern oder Azure-fremden virtuellen Computern als Ziel für Updatebereitstellungen zu verwenden. Diese Gruppen werden zum Zeitpunkt der Bereitstellung ausgewertet, sodass Sie die Bereitstellung nicht bearbeiten müssen, um Computer hinzuzufügen.
+Die Updateverwaltung ermöglicht Ihnen, eine dynamische Gruppe von Azure-VMs oder Nicht-Azure-VMs als Ziel für Updatebereitstellungen zu verwenden. Mit der Verwendung einer dynamischen Gruppe können Sie verhindern, dass Sie Ihre Bereitstellung zum Aktualisieren der Computer bearbeiten müssen.
 
-## <a name="azure-machines"></a>Azure-Computer
+> [!NOTE]
+> Dynamische Gruppen funktionieren nicht mit klassischen VMs.
 
-Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Dynamische Gruppen funktionieren nicht mit klassischen VMs. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen:
+Sie können dynamische Gruppen für Azure- oder Nicht-Azure-Computer im Azure-Portal über die **Updateverwaltung** definieren. Weitere Informationen finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md).
+
+Eine dynamische Gruppe wird mit einer Abfrage definiert, die von Azure Automation zur Bereitstellungszeit ausgewertet wird. Auch wenn bei einer Abfrage für eine dynamische Gruppe eine große Zahl von Computern abgerufen wird, kann Azure Automation jeweils nur maximal 1.000 Computer verarbeiten. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management). 
+
+> [!NOTE]
+> Falls Sie damit rechnen, dass mehr als 1.000 Computer aktualisiert werden müssen, empfehlen wir Ihnen, die Updates auf mehrere Aktualisierungszeitpläne aufzuteilen. 
+
+## <a name="define-dynamic-groups-for-azure-machines"></a>Definieren dynamischer Gruppen für Azure-Computer
+
+Beim Definieren einer Abfrage für eine dynamische Gruppe, die für Azure-Computer bestimmt ist, können Sie die dynamische Gruppe mit den folgenden Elementen füllen:
 
 * Subscription
 * Ressourcengruppen
@@ -27,16 +37,16 @@ Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellun
 
 ![Auswählen von Gruppen](./media/automation-update-management/select-groups.png)
 
-Um eine Vorschau der Ergebnisse einer dynamischen Gruppe anzuzeigen, klicken Sie auf die Schaltfläche **Vorschau**. Diese Vorschau zeigt die Gruppenmitgliedschaft zu diesem Zeitpunkt an. In diesem Beispiel suchen wir nach Computern, bei denen das Tag **Role** den Wert **BackendServer** aufweist. Wenn dieses Tag weiteren Computern hinzugefügt wird, werden sie bei zukünftigen Bereitstellungen dieser Gruppe hinzugefügt.
+Klicken Sie auf **Vorschau**, um die Ergebnisse Ihrer Abfrage für die dynamische Gruppe anzuzeigen. Die Vorschau zeigt die Gruppenmitgliedschaft zum aktuellen Zeitpunkt. Im Beispiel suchen wir nach Computern mit dem Tag `Role` für die Gruppe **BackendServer**. Wenn dieses Tag weiteren Computern hinzugefügt wird, werden sie bei künftigen Bereitstellungen dieser Gruppe hinzugefügt.
 
 ![Anzeigen einer Vorschau von Gruppen](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Azure-fremde Computer
+## <a name="define-dynamic-groups-for-non-azure-machines"></a>Definieren dynamischer Gruppen für Nicht-Azure-Computer
 
-Bei Azure-fremden Computern wird die dynamische Gruppe mithilfe von gespeicherten Suchen (auch als Computergruppen bezeichnet) erstellt. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Nachdem die Gruppe erstellt wurde, können Sie sie in der Liste der gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau der Computer in der gespeicherten Suche anzuzeigen.
+Bei Verwendung einer dynamischen Gruppe für nicht zu Azure gehörende Computer werden gespeicherte Suchen genutzt, die auch als Computergruppen bezeichnet werden. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Nachdem Ihre gespeicherte Suche erstellt wurde, können Sie sie im Azure-Portal unter **Updateverwaltung** in der Liste mit den gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau für die Computer in der gespeicherten Suche anzuzeigen.
 
 ![Auswählen von Gruppen](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie eine dynamische Gruppe erstellt haben, können Sie [eine Updatebereitstellung erstellen](automation-tutorial-update-management.md).
+Nachdem Sie eine dynamische Gruppe erstellt haben, können Sie eine [Updatebereitstellung erstellen](automation-tutorial-update-management.md).

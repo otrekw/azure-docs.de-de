@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314758"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610971"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 
@@ -161,7 +161,7 @@ Message Analyzer enthält Ressourcen für Azure Storage, mit denen Sie Server-, 
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Herunterladen und Installieren von Message Analyzer und der Azure-Speicherressourcen
 
-1. Laden Sie [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) aus dem Microsoft Download Center herunter, und führen Sie das Installationsprogramm aus.
+1. Laden Sie [Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) herunter.
 2. Starten Sie Message Analyzer.
 3. Wählen Sie im Menü **Extras** die Option **Asset-Manager**. Wählen Sie im Dialogfeld **Asset-Manager** die Option **Downloads**, und filtern Sie die Anzeige nach **Azure Storage**. Die Azure-Speicherressourcen werden angezeigt, wie in der folgenden Abbildung dargestellt.
 4. Klicken Sie auf **Sync All Displayed Items** , um die Azure-Speicherressourcen zu installieren. Die verfügbaren Ressourcen umfassen:
