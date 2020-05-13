@@ -212,6 +212,8 @@
     - name: Problembehandlung
       items:
         - name: Handbuch zur Problembehandlung
+          href: troubleshooting-guide.md
+        - name: .NET-Ausnahmen
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager-Ausnahmen
           href: resource-manager-exceptions.md

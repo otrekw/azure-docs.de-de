@@ -84,3 +84,5 @@
       href: language-support.md
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: form-recognizer-encryption-of-data-at-rest.md

@@ -63,7 +63,7 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -234,6 +234,11 @@
                       href: instance-generalized-image-version-cli.md
                 - name: Aktualisieren von Imageressourcen
                   href: ../virtual-machines/update-image-resources-cli.md
+            - name: Problembehandlung für freigegebene Images
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: Verwendung der kundenseitig verwalteten Schlüssel
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: Erstellen einer Vorlage
       items:
         - name: Informationen zu Skalierungsgruppenvorlagen

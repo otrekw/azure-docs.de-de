@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways
           href: how-to-configure-local-metrics-logs.md
-        - name: Protokollieren von Anforderungen mit Azure Application Insights
-          href: api-management-howto-app-insights.md
         - name: Einrichten der Notfallwiederherstellung mithilfe von Sicherung/Wiederherstellung
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Verwalten von Benutzerkonten
