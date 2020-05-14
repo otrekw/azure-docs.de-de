@@ -1,23 +1,17 @@
 ---
-title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Storm | Microsoft Docs
-description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Storm
-services: data-lake-store
-documentationcenter: ''
+title: 'Leistungsoptimierung: Storm mit Azure Data Lake Storage Gen1'
+description: Erfahren Sie, wie Sie die Leistung für einen Storm-Cluster in Azure Data Lake Storage Gen1 optimieren.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61436476"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691643"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Storage Gen1
 
@@ -59,15 +53,15 @@ Bei Verwendung von Data Lake Storage Gen1 erzielen Sie die beste Leistung, wenn 
 
 ### <a name="example-topology"></a>Topologiebeispiel
 
-Angenommen, Sie verwenden einen Cluster mit acht Workerknoten mit einer Azure-VM vom Typ D13v2. Diese VM hat acht Kerne, sodass sich für die acht Workerknoten insgesamt 64 Kerne ergeben.
+Angenommen, Sie verwenden einen Cluster mit acht Workerknoten mit einer Azure-VM vom Typ D13v2. Diese VM hat acht Kerne, sodass sich für die acht Workerknoten insgesamt 64 Kerne ergeben.
 
-Angenommen, es werden acht Bolt-Threads pro Kern verwendet. Bei 64 Kernen bedeutet dies, dass wir insgesamt 512 Bolt Executor-Instanzen (also Threads) benötigen. In diesem Fall beginnen wir beispielsweise mit einer JVM pro VM und verwenden hauptsächlich die Threadparallelität in der JVM, um Parallelität zu erzielen. Dies bedeutet, dass wir acht Workertasks (eine pro Azure-VM) und 512 Bolt Executors benötigen. Bei dieser Konfiguration versucht Storm, die Worker gleichmäßig auf die Workerknoten (auch als Supervisorknoten bezeichnet) zu verteilen und jedem Workerknoten eine JVM zuzuordnen. Innerhalb der Supervisor versucht Storm, die Executors gleichmäßig auf die Supervisor zu verteilen, sodass jeder Supervisor (also jede JVM) acht Threads aufweist.
+Angenommen, es werden acht Bolt-Threads pro Kern verwendet. Bei 64 Kernen bedeutet dies, dass wir insgesamt 512 Bolt Executor-Instanzen (also Threads) benötigen. In diesem Fall beginnen wir beispielsweise mit einer JVM pro VM und verwenden hauptsächlich die Threadparallelität in der JVM, um Parallelität zu erzielen. Dies bedeutet, dass Sie acht Workertasks (eine pro Azure-VM) und 512 Bolt-Executors benötigen. Bei dieser Konfiguration versucht Storm, die Worker gleichmäßig auf die Workerknoten (auch als Supervisorknoten bezeichnet) zu verteilen und jedem Workerknoten eine JVM zuzuordnen. Innerhalb der Supervisor versucht Storm, die Executors gleichmäßig auf die Supervisor zu verteilen, sodass jeder Supervisor (also jede JVM) acht Threads erhält.
 
 ## <a name="tune-additional-parameters"></a>Optimieren zusätzlicher Parameter
 Nachdem Sie über die grundlegende Topologie verfügen, können Sie überlegen, ob Sie Parameter optimieren möchten:
 * **Anzahl von JVMs pro Workerknoten:** Wenn Sie eine große Datenstruktur haben (z.B. eine Suchtabelle), die Sie im Arbeitsspeicher hosten, wird für jede JVM eine separate Kopie benötigt. Alternativ dazu können Sie die Datenstruktur über viele Threads hinweg nutzen, wenn Sie eine geringere Zahl von JVMs verwenden. Für den Ein-/Ausgang des Bolts macht die Anzahl von JVMs keinen so großen Unterschied wie die Anzahl von Threads aus, die für diese JVMs hinzugefügt werden. Der Einfachheit halber ist es ratsam, eine JVM pro Worker zu verwenden. Aber je nachdem, was der Zweck Ihres Bolts ist oder welche Anwendungsverarbeitung Sie benötigen, müssen Sie diese Anzahl ggf. ändern.
 * **Anzahl von Spout Executors:** Da im vorherigen Beispiel Bolts zum Schreiben in Data Lake Storage Gen1 verwendet werden, ist die Anzahl von Spouts für die Bolt-Leistung nicht direkt relevant. Je nach Verarbeitungs- oder E/A-Aufwand im Spout kann es ratsam sein, die Spouts zu optimieren, um die beste Leistung zu erzielen. Achten Sie darauf, dass Sie über genügend Spouts verfügen, um die Bolts auszulasten. Die Ausgaberaten der Spouts sollten mit dem Durchsatz der Bolts übereinstimmen. Die tatsächliche Konfiguration hängt vom Spout ab.
-* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Wir empfehlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
+* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Es wird empfohlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
 * **Lokale oder Shuffle-Gruppierung:** Wenn diese Einstellung aktiviert ist, werden Tupel in demselben Workerprozess an Bolts gesendet. Auf diese Weise werden die prozessübergreifende Kommunikation und Netzwerkaufrufe reduziert. Dies wird für die meisten Topologien empfohlen.
 
 Dieses einfache Szenario ist ein guter Ausgangspunkt. Führen Sie einen Test mit Ihren eigenen Daten durch, um die vorherigen Parameter zu optimieren und so eine optimale Leistung zu erzielen.
@@ -85,7 +79,7 @@ Sie können die folgenden Einstellungen ändern, um den Spout zu optimieren.
   Eine hilfreiche Berechnung ist die Schätzung, wie groß die einzelnen Tupel sind. Ermitteln Sie anschließend, über wie viel Arbeitsspeicher ein Spout-Thread verfügt. Wenn Sie den gesamten Arbeitsspeicher, der einem Thread zugeordnet ist, durch diesen Wert teilen, sollten Sie die Obergrenze für den Parameter zur Bestimmung der maximalen Anzahl von ausstehenden Spouts erhalten.
 
 ## <a name="tune-the-bolt"></a>Optimieren des Bolts
-Legen Sie beim Schreiben in Data Lake Storage Gen1 eine Größensynchronisierungsrichtlinie (Puffer auf Clientseite) auf 4 MB fest. Anschließend wird nur dann die Leerung oder ein hsync()-Vorgang durchgeführt, wenn die Puffergröße auf diesen Wert festgelegt ist. Der Data Lake Storage Gen1-Treiber auf der Worker-VM führt diese Pufferung automatisch durch, sofern Sie nicht explizit einen hsync()-Vorgang durchführen.
+Legen Sie beim Schreiben in Data Lake Storage Gen1 eine Größensynchronisierungsrichtlinie (Puffer auf Clientseite) auf 4 MB fest. Anschließend wird nur dann die Leerung oder ein hsync()-Vorgang durchgeführt, wenn die Puffergröße diesen Wert aufweist. Der Data Lake Storage Gen1-Treiber auf der Worker-VM führt diese Pufferung automatisch durch, sofern Sie nicht explizit einen hsync()-Vorgang durchführen.
 
 Der Data Lake Storage Gen1 Storm-Standardbolt verfügt über einen Parameter für die Richtlinie zur Größensynchronisierung (fileBufferSize), den Sie zum Optimieren dieses Parameters verwenden können.
 
@@ -95,7 +89,7 @@ Bei Topologien mit hohem E/A-Aufwand ist es ratsam, dass jeder Bolt-Thread in se
 
 In Storm hält ein Spout ein Tupel vor, bis es vom Bolt explizit bestätigt wird. Wenn ein Tupel vom Bolt gelesen, aber noch nicht bestätigt wurde, wurde der Spout unter Umständen nicht dauerhaft in das Data Lake Storage Gen1-Back-End übernommen. Nachdem ein Tupel bestätigt wurde, kann für den Spout vom Bolt die Beibehaltung garantiert werden, und anschließend können die Quelldaten von der jeweiligen Quelle, von der gelesen wird, gelöscht werden.  
 
-Für Data Lake Storage Gen1 erzielen Sie die beste Leistung, wenn für den Bolt eine Tupeldatenmenge von 4 MB gepuffert wird. Führen Sie den Schreibvorgang auf das Data Lake Storage Gen1-Back-End dann als einen 4-MB-Vorgang durch. Nachdem die Daten erfolgreich in den Speicher geschrieben wurden (durch Aufruf von „hflush()“), kann der Bolt die Daten gegenüber dem Spout bestätigen. Dies ist die Vorgehensweise des hier angegebenen Beispiel-Bolts. Es ist auch akzeptabel, eine größere Anzahl von Tupeln vorzuhalten, bevor ein hflush()-Aufruf durchgeführt wird und die Tupel bestätigt werden. Hierdurch wird aber die Anzahl von In-Flight-Tupeln erhöht, die vom Spout vorgehalten werden müssen, sodass sich die Menge des erforderlichen Arbeitsspeichers pro JVM erhöht.
+Für Data Lake Storage Gen1 erzielen Sie die beste Leistung, wenn für den Bolt eine Tupeldatenmenge von 4 MB gepuffert wird. Führen Sie den Schreibvorgang auf dem Data Lake Storage Gen1-Back-End dann als einen 4-MB-Vorgang durch. Nachdem die Daten erfolgreich in den Speicher geschrieben wurden (durch Aufruf von „hflush()“), kann der Bolt die Daten gegenüber dem Spout bestätigen. Dies ist die Vorgehensweise des hier angegebenen Beispiel-Bolts. Es ist auch akzeptabel, eine größere Anzahl von Tupeln vorzuhalten, bevor ein hflush()-Aufruf durchgeführt wird und die Tupel bestätigt werden. Hierdurch wird aber die Anzahl von In-Flight-Tupeln erhöht, die vom Spout vorgehalten werden müssen, sodass sich die Menge des erforderlichen Arbeitsspeichers pro JVM erhöht.
 
 > [!NOTE]
 > Anwendungen verfügen ggf. über die Anforderung, die Bestätigung von Tupeln aus anderen nicht leistungsbezogenen Gründen häufiger durchzuführen (bei Datengrößen von weniger als 4 MB). Dies kann sich aber auf den E/A-Durchsatz des Speicher-Back-Ends auswirken. Wägen Sie diesen Nachteil sorgfältig gegenüber der E/A-Leistung des Bolts ab.
@@ -104,7 +98,7 @@ Falls die Eingangsrate der Tupel nicht sonderlich hoch ist und es daher lange da
 * Reduzieren Sie die Anzahl von Bolts, damit weniger Puffer gefüllt werden müssen.
 * Verwenden Sie eine Richtlinie auf Zeit- oder Anzahlbasis, bei der jeweils nach x Leerungsvorgängen oder y Millisekunden ein hflush()-Vorgang ausgelöst wird und die bisher angesammelten Tupel bestätigt werden.
 
-Beachten Sie, dass der Durchsatz in diesem Fall geringer ist. Bei einer niedrigen Ereignisrate ist der maximale Durchsatz aber sowieso nicht das oberste Ziel. Mit diesen Lösungsansätzen können Sie die Gesamtzeit reduzieren, die ein Tupel für das Durchlaufen des Speichers benötigt. Dies kann eine Rolle spielen, wenn Sie auch bei einer geringen Ereignisrate eine Echtzeitpipeline verwenden möchten. Beachten Sie auch, dass Sie den Parameter „topology.message.timeout_secs“ ebenfalls anpassen sollten, wenn die Eingangsrate der Tupel niedrig ist. So tritt für die Tupel keine Zeitüberschreitung auf, während sie gepuffert oder verarbeitet werden.
+Der Durchsatz ist in diesem Fall geringer. Bei einer niedrigen Ereignisrate ist der maximale Durchsatz aber sowieso nicht das oberste Ziel. Mit diesen Lösungsansätzen können Sie die Gesamtzeit reduzieren, die ein Tupel für das Durchlaufen des Speichers benötigt. Dies kann eine Rolle spielen, wenn Sie auch bei einer geringen Ereignisrate eine Echtzeitpipeline verwenden möchten. Beachten Sie auch, dass Sie den Parameter „topology.message.timeout_secs“ ebenfalls anpassen sollten, wenn die Eingangsrate der Tupel niedrig ist. So tritt für die Tupel keine Zeitüberschreitung auf, während sie gepuffert oder verarbeitet werden.
 
 ## <a name="monitor-your-topology-in-storm"></a>Überwachen Ihrer Topologie in Storm  
 Während der Topologieausführung können Sie sie über die Storm-Benutzeroberfläche überwachen. Die wichtigsten Parameter sind:

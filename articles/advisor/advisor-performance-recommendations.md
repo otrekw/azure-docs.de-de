@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 description: Nutzen Sie den Advisor, um die Leistung Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443057"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787939"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -28,6 +28,10 @@ Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen f
 > Um Empfehlungen zu erhalten, muss eine Datenbank ungefähr eine Woche lang genutzt werden, und innerhalb dieser Woche müssen durchweg Aktivitäten erfolgen. SQL Database Advisor kann leichter für einheitliche Abfragemuster als für zufällige Aktivitätsspitzen optimiert werden.
 
 Weitere Informationen zu SQL Database Advisor finden Sie unter [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Verbessern der Zuverlässigkeit und der Leistung durch Upgraden Ihrer Speicherclientbibliothek auf die neueste Version
+
+In der neuesten Version der Speicherclientbibliothek/des SDK werden Probleme behoben, die von Kunden gemeldet oder proaktiv im Rahmen unseres Qualitätssicherungsprozesses erkannt werden. Darüber hinaus bietet die neueste Version neben Zuverlässigkeits- und Leistungsoptimierungen auch neue Features, die Azure Storage noch benutzerfreundlicher machen. Advisor bietet Ihnen Empfehlungen und Anweisungen zum Upgrade auf die neueste Version des SDK, wenn Sie eine veraltete Version verwenden. Die Empfehlungen beziehen sich auf die unterstützten Sprachen: C++ und .NET.
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von App Services
 
@@ -73,6 +77,26 @@ Migrieren Sie Ihr Speicherkonto-Bereitstellungsmodell zu Azure Resource Manager 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Entwerfen Ihrer Speicherkonten, damit die maximale Abonnementgrenze nicht erreicht wird
 
 In einer Azure-Region können maximal 250 Speicherkonten pro Abonnement unterstützt werden. Wenn das Limit erreicht ist, können Sie keine weiteren Speicherkonten in dieser Region-Abonnement-Kombination mehr erstellen. Advisor überprüft Ihre Abonnements und zeigt Empfehlungen an, damit Sie weniger Speicherkonten für Abonnements entwerfen, bei denen das maximale Limit bald erreicht ist.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Erwägen, die Größe Ihrer VNet Gateway-SKU zu erhöhen, um eine intensive P2S-Nutzung zu unterstützen
+
+Jede Gateway-SKU kann nur eine vorgegebene Anzahl gleichzeitiger P2S-Verbindungen unterstützen. Wenn Ihre Verbindungsanzahl den Grenzwert Ihres Gateways fast erreicht hat, können weitere Verbindungsversuche fehlschlagen. Durch Erhöhen der Größe Ihres Gateways können Sie mehr gleichzeitige P2S-Benutzer unterstützen.Advisor gibt dazu Empfehlungen und schlägt entsprechende Schritte vor.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Erwägen, die Größe Ihrer VNet Gateway-SKU zu erhöhen, um eine hohe CPU-Auslastung zu unterstützen
+
+Bei hohem Datenverkehr kann das VPN-Gateway Pakete aufgrund hoher CPU-Auslastung verwerfen. Sie sollten ein Upgrade Ihrer VPN Gateway-SKU erwägen, da Ihr VPN ständig mit hoher CPU-Auslastung ausgeführt wird.Durch Erhöhen der Größe Ihres VPN-Gateways stellen Sie sicher, dass Verbindungen nicht aufgrund hoher CPU-Auslastung verworfen werden. Advisor empfiehlt, wie dieses Problem proaktiv angegangen werden kann. 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Erhöhen der Batchgröße beim Laden, um Durchsatz, Datenkomprimierung und Abfrageleistung zu verbessern
+
+Advisor kann erkennen, dass Sie Leistung und Durchsatz beim Ladevorgang verbessern können, indem Sie die Batchgröße beim Laden von Daten in Ihre Datenbank erhöhen. Erwägen Sie die COPY-Anweisung. Falls die COPY-Anweisung nicht möglich sein sollte, erwägen Sie, bei Nutzung von Ladehilfsprogrammen, wie z. B. der SQLBulkCopy-API oder BCP, die Batchgröße zu erhöhen. Empfohlen wird eine Batchgröße im Bereich von 100.000 bis 1 Mio. Zeilen. Dadurch lassen sich Ladedurchsatz, Datenkomprimierung und Abfrageleistung verbessern.
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Bereitstellen des Speicherkontos in derselben Region, um die Wartezeit beim Laden zu minimieren
+
+Advisor kann erkennen, dass Sie Daten aus einer anderen Region als der Ihres SQL-Pools laden. Erwägen Sie, Daten aus einem Speicherkonto zu laden, das sich in derselben Region wie der SQL-Pool befindet, um die Wartezeit beim Laden zu minimieren. Dies dient zum Minimieren der Wartezeit und Steigern der Leistung beim Laden.
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>Nicht unterstützte Kubernetes-Version erkannt
+
+Advisor kann erkennen, wenn eine nicht unterstützte Kubernetes-Version erkannt wird. Die Empfehlung hilft sicherzustellen, dass der Kubernetes-Cluster mit einer unterstützten Version ausgeführt wird.
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimieren der Leistung der Azure MySQL-, Azure PostgreSQL- und Azure MariaDB-Server 
 

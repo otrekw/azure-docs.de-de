@@ -2,13 +2,13 @@
 title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232710"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743665"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -45,9 +45,9 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 --- | ---
 **Unterstützte Betriebssysteme** | Von Azure unterstützte [Windows-](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) und [Linux-](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Betriebssysteme können mithilfe der Migration ohne Agent migriert werden.
 **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Bei den folgenden Betriebssystemen nimmt Azure Migrate diese Änderungen automatisch vor:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8<br/><br/> Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise.
-**Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition (/) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und sich nicht auf andere Datenträger erstrecken.
+**Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken.
 **UEFI-Start** | Die Migration von VMs mit UEFI-Start wird nicht unterstützt.
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 4 TB für Datenträger
+**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 60 Datenträger pro virtuellem Computer
 **Verschlüsselte Datenträger/Volumes** | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.
@@ -64,10 +64,12 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Azure Migrate-Appliance ohne Agent 
-Bei der Migration ohne Agent wird die Azure Migrate-Appliance verwendet und auf einem virtuellen VMware-Computer bereitgestellt.
+
+Bei der Migration ohne Agent wird die [Azure Migrate-Appliance](migrate-appliance.md) verwendet. Sie können die Appliance mithilfe einer in vCenter Server importierten OVA-Vorlage oder mit einem [PowerShell-Skript](deploy-appliance-script.md) als VMware-VM bereitstellen.
 
 - Erfahren Sie etwas über die [Anforderungen für die Appliance](migrate-appliance.md#appliance---vmware) für VMware.
-- Erfahren Sie etwas über die [URLs](migrate-appliance.md#url-access), auf die die Appliance Zugriff benötigt.
+- Informationen zu den URLs, auf die die Appliance Zugriff benötigt, finden Sie unter [URLs für die öffentliche Cloud](migrate-appliance.md#public-cloud-urls) und [URLs für Azure Government-Clouds](migrate-appliance.md#government-cloud-urls).
+- In Azure Government müssen Sie die Appliance [mithilfe des Skripts](deploy-appliance-script-government.md) bereitstellen.
 
 ## <a name="agentless-ports"></a>Ports ohne Agent
 
@@ -123,7 +125,8 @@ Wenn Sie die Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub ein
 
 - Erfahren Sie etwas über die [Anforderungen für die Replikationsappliance](migrate-replication-appliance.md#appliance-requirements) für VMware.
 - MySQL muss auf der Appliance installiert sein. Erfahren Sie etwas über die [Installationsoptionen ](migrate-replication-appliance.md#mysql-installation).
-- Erfahren Sie etwas über die [URLs](migrate-replication-appliance.md#url-access) und [Ports](migrate-replication-appliance.md#port-access), auf die die Replikationsappliance Zugriff benötigt.
+- Informationen zu den URLs, auf die die Replikationsappliance Zugriff benötigt, finden Sie unter [URLs für die öffentliche Cloud](migrate-replication-appliance.md#url-access) und [URLs für Azure Government-Clouds](migrate-replication-appliance.md#azure-government-url-access).
+- Überprüfen Sie die [URLs](migrate-replication-appliance.md#port-access), auf die die Replikationsappliance zugreifen können muss.
 
 ## <a name="agent-based-ports"></a>Agent-basierte Ports
 

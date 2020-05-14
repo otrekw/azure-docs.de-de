@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 05/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77443056"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691033"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion) 
 
@@ -36,29 +36,34 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Erstellen einer Hub-Spoke-Architektur
 
-Erstellen Sie zunächst ein Spoke-VNET für Ihre Server.
+Erstellen Sie zunächst ein virtuelles Spoke-Netzwerk für Ihre Server.
 
-### <a name="create-a-spoke-vnet-and-subnets"></a>Erstellen von Spoke-VNET und Subnetzen
+### <a name="create-a-spoke-virtual-network-and-subnets"></a>Erstellen eines virtuellen Spoke-Netzwerks und der Subnetze
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
 2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.
-4. Geben Sie unter **Name** den Namen **Spoke-01** ein.
-5. Geben Sie unter **Adressraum** die Zeichenfolge **10.0.0.0/16** ein.
-6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie **FW-Manager** als Name ein, und wählen Sie **OK** aus.
-8. Wählen Sie unter **Standort** die Option **(USA) USA, Osten** aus.
-9. Geben Sie unter **Subnetz** für **Name** den Namen **Workload-SN** ein.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
-11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Erstellen** aus.
+2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie **FW-Manager** als Name ein, und wählen Sie **OK** aus.
+2. Geben Sie unter **Name** den Namen **Spoke-01** ein.
+3. Wählen Sie unter **Region** die Option **(USA) USA, Osten** aus.
+4. Klicken Sie auf **Weiter: IP-Adressen**.
+1. Übernehmen Sie für **Adressraum** den Standardwert **10.0.0.0/16**.
+3. Wählen Sie unter **Subnetzname** die Einstellung **Standard** aus.
+4. Ändern Sie den Subnetznamen in **Workload-SN**.
+5. Geben Sie unter **Subnetzadressbereich** den Bereich **10.0.1.0/24** ein.
+6. Wählen Sie **Speichern** aus.
 
 Erstellen Sie als nächstes ein Subnetz für einen Jumpserver.
 
-1. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **FW-Manager** aus.
-2. Wählen Sie das virtuelle Netzwerk **Spoke-01** aus.
-3. Wählen Sie **Subnetze** >  **+ Subnetz** aus.
-4. Geben Sie unter **Name** den Namen **Jump-SN** ein.
-5. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.2.0/24** ein.
-6. Klicken Sie auf **OK**.
+1. Wählen Sie **Subnetz hinzufügen** aus.
+4. Geben Sie unter **Subnetzname** den Namen **Jump-SN** ein.
+5. Geben Sie unter **Subnetzadressbereich** den Bereich **10.0.2.0/24** ein.
+6. Wählen Sie **Hinzufügen**.
+
+Erstellen Sie jetzt das virtuelle Netzwerk.
+
+1. Klicken Sie auf **Überprüfen + erstellen**.
+2. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-the-secured-virtual-hub"></a>Erstellen des geschützten virtuellen Hubs
 
@@ -66,36 +71,38 @@ Erstellen Sie mithilfe von Firewall Manager Ihren geschützten virtuellen Hub.
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Alle Dienste** aus.
 2. Geben Sie **Firewall Manager** in das Suchfeld ein, und wählen Sie **Firewall Manager** aus.
-3. Wählen Sie auf der Seite **Firewall Manager** die Option **Geschützten virtuellen Hub erstellen** aus.
-4. Wählen Sie auf der Seite **Neuen geschützten virtuellen Hub erstellen** Ihr Abonnement und die Ressourcengruppe **FW-Manager** aus.
-5. Geben Sie als **Name des geschützten virtuellen Hubs** den Namen **Hub-01** ein.
-6. Wählen Sie unter **Standort** die Option **USA, Osten** aus.
-7. Geben Sie unter **Adressraum des Hubs** den Adressraum **10.1.0.0/16** ein.
-8. Geben Sie als Name des neuen vWAN den Namen **vwan-01** ein.
-9. Lassen Sie das Kontrollkästchen **VPN Gateway zum Aktivieren vertrauenswürdiger Sicherheitspartner einbeziehen** deaktiviert.
-10. Wählen Sie **Weiter: Azure Firewall** aus.
-11. Übernehmen Sie die Standardeinstellung **Azure Firewall** **aktiviert**, und wählen Sie **Weiter: Vertrauenswürdiger Sicherheitspartner** aus.
-12. Übernehmen Sie die Standardeinstellung **Vertrauenswürdiger Sicherheitspartner** **deaktiviert**, und wählen Sie **Weiter: Überprüfen + erstellen**.
-13. Klicken Sie auf **Erstellen**. Die Bereitstellung dauert ca. 30 Minuten.
+3. Wählen Sie auf der Seite **Firewall Manager** die Option **View secured virtual hubs** (Geschützte virtuelle Hubs anzeigen) aus.
+4. Wählen Sie auf der Seite **Firewall Manager | Geschützte virtuelle Hubs** die Option **Neuen geschützten virtuellen Hub erstellen** aus.
+5. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Manager** aus.
+7. Wählen Sie als **Region** die Option **USA, Osten** aus.
+1. Geben Sie als **Name des geschützten virtuellen Hubs** den Namen **Hub-01** ein.
+2. Geben Sie unter **Adressraum des Hubs** den Adressraum **10.1.0.0/16** ein.
+3. Geben Sie als Name des neuen vWAN den Namen **Vwan-01** ein.
+4. Lassen Sie das Kontrollkästchen **VPN Gateway zum Aktivieren vertrauenswürdiger Sicherheitspartner einbeziehen** deaktiviert.
+5. Wählen Sie **Weiter: Azure Firewall** aus.
+6. Übernehmen Sie die Standardeinstellung **Azure Firewall** **aktiviert**, und wählen Sie **Weiter: Vertrauenswürdiger Sicherheitspartner** aus.
+7. Übernehmen Sie die Standardeinstellung **Vertrauenswürdiger Sicherheitspartner** **deaktiviert**, und wählen Sie **Weiter: Überprüfen + erstellen**.
+8. Klicken Sie auf **Erstellen**. Die Bereitstellung dauert ca. 30 Minuten.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>Herstellen einer Verbindung für die Hub-and-Spoke-VNETs
 
 Nun können Sie das Peering für die Hub-and-Spoke-VNETs durchführen.
 
-1. Wählen Sie die Ressourcengruppe **FW-Manager** und anschließend das virtuelle WAN **vwan-01** aus.
+1. Wählen Sie die Ressourcengruppe **FW-Manager** und anschließend das virtuelle WAN **Vwan-01** aus.
 2. Wählen Sie unter **Konnektivität** die Option **Virtuelle Netzwerkverbindungen** aus.
 3. Wählen Sie **Verbindung hinzufügen** aus.
 4. Geben Sie unter **Verbindungsname** den Namen **hub-spoke** ein.
 5. Wählen Sie unter **Hubs** die Option **Hub-01** aus.
-6. Wählen Sie unter **Virtuelles Netzwerk** die Option **Spoke-01** aus.
-7. Klicken Sie auf **OK**.
+6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Manager** aus.
+7. Wählen Sie unter **Virtuelles Netzwerk** die Option **Spoke-01** aus.
+8. Klicken Sie auf **OK**.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
 
 Eine Firewallrichtlinie definiert Regelsammlungen für die Weiterleitung von Datenverkehr an einen oder mehrere geschützte virtuelle Hubs. Sie erstellen zuerst Ihre Firewallrichtlinie und schützen dann Ihren Hub.
 
-1. Wählen Sie in Firewall Manager die Option **Azure Firewall-Richtlinie erstellen** aus.
-2. Wählen Sie Ihr Abonnement und die Ressourcengruppe **FW-Manager** aus.
+1. Wählen Sie in Firewall Manager die Option **View Azure Firewall policies** (Azure Firewall-Richtlinien anzeigen) aus.
+2. Wählen Sie die Option **Azure-Firewallrichtlinie erstellen** aus.
 3. Geben Sie unter **Richtliniendetails** für **Name** den Namen **Policy-01** ein, und wählen Sie für **Region** die Option **USA, Osten** aus.
 4. Wählen Sie **Weiter: Regeln** aus.
 5. Wählen Sie auf der Registerkarte **Regeln** die Option **Regelsammlung hinzufügen** aus.
@@ -109,10 +116,11 @@ Eine Firewallrichtlinie definiert Regelsammlungen für die Weiterleitung von Dat
 13. Vergewissern Sie sich, dass der Zieltyp **FQDN** lautet.
 14. Geben Sie unter **Ziel** das Ziel **\*.microsoft.com** ein.
 15. Wählen Sie **Hinzufügen**.
-16. Klicken Sie auf **Weiter: Geschützte virtuelle Hubs**.
-17. Wählen Sie auf der Registerkarte **Geschützte virtuelle Hubs** die Option **Hub-01** aus.
-19. Klicken Sie auf **Überprüfen + erstellen**.
-20. Klicken Sie auf **Erstellen**.
+16. Klicken Sie auf **Weiter: Hubs**.
+17. Wählen Sie auf der Registerkarte **Hubs** die Option **Virtuelle Hubs zuordnen** aus.
+18. Wählen Sie **Hub-01** und dann **Hinzufügen** aus.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+2. Klicken Sie auf **Erstellen**.
 
 Dieser Vorgang dauert etwa fünf Minuten (oder länger).
 
@@ -126,10 +134,9 @@ Als Nächstes müssen Sie sicherstellen, dass Netzwerkdatenverkehr durch Ihre Fi
 4. Wählen Sie unter **Internetdatenverkehr** > **Datenverkehr von virtuellen Netzwerken** die Option **Send via Azure Firewall** (Über Azure Firewall senden) aus.
 5. Wählen Sie unter **Privater Azure-Datenverkehr** > **Datenverkehr von virtuellen Netzwerken** die Option **Send via Azure Firewall** (Über Azure Firewall senden) aus.
 6. Wählen Sie **IP-Adresspräfix(e) bearbeiten** aus.
-7. Wählen Sie **IP-Adresspräfix hinzufügen** aus.
 8. Geben Sie **10.0.1.0/24** als Adresse des Workloadsubnetzes ein, und wählen Sie **Speichern** aus.
 9. Wählen Sie unter **Einstellungen** die Option **Verbindungen** aus.
-10. Wählen Sie die Verbindung **hub-spoke** > **Sicherer Internetdatenverkehr** > **OK** aus.
+10. Vergewissern Sie sich, dass für die **Hub-Spoke-Verbindung** unter **Internetdatenverkehr** die Option **Geschützt** angezeigt wird.
 
 
 ## <a name="test-your-firewall"></a>Testen Ihrer Firewall
@@ -147,12 +154,11 @@ Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstelle
    |Resource group     |**FW-Manager**|
    |Name des virtuellen Computers     |**Jump-Srv**|
    |Region     |**(USA) USA, Osten**|
-   |Benutzername des Administrators     |**azureuser**|
-   |Kennwort     |Geben Sie Ihr Kennwort ein.|
+   |Benutzername des Administrators     |Geben Sie einen Benutzernamen ein.|
+   |Kennwort     |Geben Sie ein Kennwort ein.|
 
 4. Wählen Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus.
 5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
-
 6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Datenträger**.
 7. Übernehmen Sie die Standardeinstellungen für Datenträger, und wählen Sie **Weiter: Netzwerk** aus.
 8. Vergewissern Sie sich, dass als virtuelles Netzwerk **Spoke-01** und als Subnetz **Jump-SN** ausgewählt ist.

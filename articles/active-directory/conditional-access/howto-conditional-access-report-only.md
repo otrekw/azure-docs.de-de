@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295109"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690370"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus (Vorschauversion)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus
 
 Gehen Sie wie folgt vor, um eine Richtlinie für bedingten Zugriff im reinen Berichtsmodus zu konfigurieren:
 
@@ -42,7 +42,7 @@ Gehen Sie wie folgt vor, um das Ergebnis einer Richtlinie im reinen Berichtsmodu
 1. Melden Sie sich als Berichtleseberechtigter, Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
 1. Navigieren Sie zu **Azure Active Directory** > **Anmeldungen**.
 1. Wählen Sie eine Anmeldung aus, oder fügen Sie Filter hinzu, um die Ergebnisse einzugrenzen.
-1. Wählen Sie im Bereich **Details** die Registerkarte **Nur Bericht (Vorschau)** aus, um die bei der Anmeldung ausgewerteten Richtlinien anzuzeigen.
+1. Wählen Sie im Drawer **Details** die Registerkarte **Nur Bericht** aus, um die bei der Anmeldung ausgewerteten Richtlinien anzuzeigen.
 
 > [!NOTE]
 > Wählen Sie beim Herunterladen der Anmeldeprotokolle das JSON-Format aus, um nur berichtsspezifische Ergebnisdaten für den bedingten Zugriff einzubeziehen.
@@ -62,7 +62,7 @@ Nachdem Sie die Azure AD-Protokolle in Azure Monitor integriert haben, können 
 
 1. Melden Sie sich als Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
 1. Navigieren Sie zu **Azure Active Directory** > **Arbeitsmappen**.
-1. Wählen Sie **Erkenntnisse zum bedingten Zugriff (Vorschau)** aus.
+1. Wählen Sie **Erkenntnisse zum bedingten Zugriff** aus.
 1. Wählen Sie in der Dropdownliste **Richtlinien für bedingten Zugriff** eine oder mehrere Richtlinien aus. Standardmäßig sind alle aktivierten Richtlinien ausgewählt.
 1. Wählen Sie einen Zeitbereich aus (wenn der Zeitbereich das verfügbare Dataset überschreitet, werden im Bericht alle verfügbaren Daten angezeigt). Nachdem Sie die **Richtlinie für bedingten Zugriff** und die Parameter für den **Zeitbereich** festgelegt haben, wird der Bericht geladen.
    1. Suchen Sie optional nach einzelnen **Benutzern** oder **Apps**, um den Bereich des Berichts einzugrenzen.

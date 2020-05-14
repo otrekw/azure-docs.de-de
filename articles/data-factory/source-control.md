@@ -10,35 +10,40 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/09/2019
-ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/30/2020
+ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604602"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629322"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Die Benutzeroberfläche von Azure Data Factory bietet zwei Möglichkeiten zur visuellen Erstellung:
+Standardmäßig erfolgt die Erstellung mit der Azure Data Factory-Benutzeroberfläche (UX) direkt für den Data Factory-Dienst. Für diese Umgebung gelten die folgenden Einschränkungen:
 
-- Direktes Erstellen mit dem Data Factory-Dienst
-- Erstellen mit Azure Repos Git oder GitHub-Integration
+- Der Data Factory-Dienst umfasst kein Repository zum Speichern der JSON-Entitäten für Ihre Änderungen. Änderungen können nur über die Schaltfläche **Alle veröffentlichen** gespeichert werden, und sämtliche Änderungen werden direkt im Data Factory-Dienst veröffentlicht.
+- Der Data Factory-Dienst ist nicht für Kollaboration oder Versionskontrolle optimiert.
+
+Um eine bessere Erstellung zu ermöglichen, können Sie mit Azure Data Factory ein Git-Repository mit Azure Repos oder GitHub konfigurieren. Git ist ein Versionskontrollsystem, das eine einfachere Änderungsnachverfolgung und Kollaboration ermöglicht. In diesem Tutorial wird erläutert, wie Sie ein Git-Repository konfigurieren und in diesem arbeiten, und Sie finden hier bewährte Methoden und eine Anleitung zum Troubleshooting.
 
 > [!NOTE]
-> In der Azure Government-Cloud wird nur die direkte Erstellung mit dem Data Factory-Dienst unterstützt.
+> Die Git-Integration von Azure Data Factory ist in der Azure Government-Cloud nicht verfügbar.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Direktes Erstellen mit dem Data Factory-Dienst
+## <a name="advantages-of-git-integration"></a>Vorteile der Git-Integration
 
-Beim direkten Erstellen mit dem Data Factory-Dienst können Änderungen nur über die Schaltfläche **Alle veröffentlichen** gespeichert werden. Nach Klick auf die Schaltfläche werden alle vorgenommenen Änderungen direkt im Data Factory-Dienst veröffentlicht. 
+Im Folgenden finden Sie eine Liste einiger der Vorteile der Git-Integration für die Erstellung:
 
-![Modus „Veröffentlichen“](media/author-visually/data-factory-publish.png)
-
-Das direkte Erstellen mit dem Data Factory-Dienst weist die folgenden Einschränkungen auf:
-
-- Der Data Factory-Dienst umfasst kein Repository zum Speichern der JSON-Entitäten für Ihre Änderungen.
-- Der Data Factory-Dienst ist nicht für Zusammenarbeit oder Versionskontrolle optimiert.
+-   **Quellcodeverwaltung:** Wenn Ihre Data Factory-Workloads sehr wichtig sind, sollten Sie Ihre Factory in Git integrieren, um verschiedene Vorteile der Quellcodeverwaltung wie die folgenden nutzen zu können:
+    -   Möglichkeit zum Nachverfolgen/Überwachen von Änderungen
+    -   Möglichkeit zum Rückgängigmachen von Änderungen, die Fehler verursacht haben
+-   **Partielle Speicherungen:** Wenn Sie eine Erstellung für den Data Factory-Dienst durchführen, können Sie Änderungen nicht als Entwurf speichern, und alle Veröffentlichungen müssen die Data Factory-Validierung durchlaufen. Falls Ihre Pipelines noch nicht abgeschlossen sind oder Sie einfach Änderungen im Fall eines Computerabsturzes nicht verlieren möchten, ermöglicht die Git-Integration inkrementelle Änderungen von Data Factory-Ressourcen unabhängig von ihrem Zustand. Durch das Konfigurieren eines Git-Repositorys können Sie Änderungen speichern und die Veröffentlichung erst dann durchführen, wenn Sie Ihre Änderungen zu Ihrer Zufriedenheit getestet haben.
+-   **Kollaboration und Steuerung:** Wenn mehrere Ihrer Teammitglieder Beiträge zur selben Factory liefern, empfiehlt es sich, Ihre Teamkollegen über einen Code Review-Prozess miteinander zusammenarbeiten zu lassen. Sie können die Factory auch so einrichten, dass nicht alle Mitwirkenden über die gleichen Berechtigungen verfügen. Einige Teammitglieder sind möglicherweise nur berechtigt, Änderungen über Git vorzunehmen, und nur bestimmte Personen im Team dürfen die Änderungen an der Factory veröffentlichen.
+-   **Bessere CI/CD:**  Wenn Sie eine Bereitstellung in mehreren Umgebungen mit einem [Continuous Delivery-Prozess](continuous-integration-deployment.md) durchführen, werden bestimmte Aktionen durch die Git-Integration vereinfacht. Zu diesen Aktionen zählen beispielsweise folgende:
+    -   Konfigurieren Ihrer Releasepipeline, sodass sie automatisch ausgelöst wird, sobald Änderungen an der Entwicklungsfactory vorgenommen wurden.
+    -   Anpassen der Eigenschaften in Ihrer Factory, die als Parameter in der Resource Manager-Vorlage verfügbar sind. Es kann hilfreich sein, nur die erforderlichen Eigenschaften als Parameter beizubehalten und alles andere fest zu codieren.
+-   **Höhere Leistung:** Im Durchschnitt wird eine Factory mit Git-Integration 10-mal schneller geladen als eine für die Erstellung für den Data Factory-Dienst. Diese Leistungsverbesserung liegt daran, dass Ressourcen über Git heruntergeladen werden.
 
 > [!NOTE]
 > Das direkte Erstellen mit dem Data Factory-Dienst wird auf der Azure Data Factory-Benutzeroberfläche deaktiviert, wenn ein Git-Repository konfiguriert ist. Änderungen am Dienst können direkt über PowerShell oder ein SDK vorgenommen werden.
@@ -78,7 +83,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 | **Azure Repos-Organisation** | Der Name Ihrer Azure Repos-Organisation. Sie können den Namen Ihrer Azure Repos-Organisation unter `https://{organization name}.visualstudio.com` finden. Sie können sich [bei Ihrer Azure Repos-Organisation anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | `<your organization name>` |
 | **Projektname** | Der Name Ihres Azure Repos-Projekts. Sie können den Namen Ihres Azure Repos-Projekts unter `https://{organization name}.visualstudio.com/{project name}` finden. | `<your Azure Repos project name>` |
 | **Repositoryname** | Der Name Ihres Azure Repos-Coderepositorys. Azure Repos-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt umfangreicher wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | `<your Azure Repos code repository name>` |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Dieser lautet standardmäßig `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Die Standardeinstellung ist `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
 | **Stammordner** | Ihr Stammordner im Branch für die Azure Repos-Kollaboration. | `<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem **Dokumenterstellungsbereich** in ein Azure Repos Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -88,7 +93,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Verwenden eines anderen Azure Active Directory-Mandanten
 
-Sie können ein Azure Repos Git-Repository in einem anderen Azure Active Directory-Mandanten erstellen. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
+Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
 
 ### <a name="use-your-personal-microsoft-account"></a>Verwenden Ihres persönlichen Microsoft-Kontos
 
@@ -142,10 +147,10 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos. | GitHub |
 | **GitHub Enterprise verwenden** | Kontrollkästchen zum Auswählen von GitHub Enterprise | nicht ausgewählt (Standard) |
-| **GitHub Enterprise-URL** | Die GitHub Enterprise-URL des Stamms (muss für den lokalen GitHub Enterprise-Server „HTTPS“ lauten). Beispiel: https://github.mydomain.com. Nur erforderlich, wenn **GitHub Enterprise verwenden** ausgewählt ist | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise-URL** | Die GitHub Enterprise-URL des Stamms (muss für den lokalen GitHub Enterprise-Server „HTTPS“ lauten). Beispiel: `https://github.mydomain.com`. Nur erforderlich, wenn **GitHub Enterprise verwenden** ausgewählt ist | `<your GitHub enterprise url>` |                                                           
 | **GitHub-Konto** | Ihr GitHub-Kontoname. Sie finden diesen Namen unter https:\//github.com/{Kontoname}/{Repositoryname}. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert. | `<your GitHub account name>` |
 | **Repositoryname**  | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet. | `<your repository name>` |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch>` |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Die Standardeinstellung ist „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch>` |
 | **Stammordner** | Ihr Stammordner im Branch für die GitHub-Kollaboration. |`<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem Erstellungsbereich auf der Benutzeroberfläche in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -159,18 +164,6 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 - Die GitHub-Integration in die visuellen Data Factory-Erstellungstools funktioniert nur in der allgemein verfügbaren Version von Data Factory.
 
 - Von einer einzelnen GitHub-Verzweigung können maximal 1.000 Entitäten pro Ressourcentyp wie Pipelines und Datasets abgerufen werden. Sobald diese Begrenzung erreicht wurde, sollten Sie Ihre Ressourcen in einzelne Factorys aufteilen. Azure DevOps-Git-Repositorys unterliegen dieser Einschränkung nicht.
-
-## <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
-
-Um zu einem anderen Git-Repository zu wechseln, klicken Sie auf der Data Factory-Übersichtseite rechts oben auf das Symbol **Git-Repositoryeinstellungen**. Wenn das Symbol nicht angezeigt wird, löschen Sie den lokalen Browsercache. Wählen Sie das Symbol aus, um die Zuordnung zum aktuellen Repository zu entfernen.
-
-![Git-Symbol](media/author-visually/remove-repo.png)
-
-Klicken Sie im eingeblendeten Bereich „Repositoryeinstellungen“ auf **Git entfernen**. Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
-
-![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repo2.png)
-
-Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren und dann vorhandene Data Factory-Ressourcen in das neue Repository importieren. 
 
 ## <a name="version-control"></a>Versionskontrolle
 
@@ -188,7 +181,7 @@ Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollabora
 
 ### <a name="configure-publishing-settings"></a>Konfigurieren von Veröffentlichungseinstellungen
 
-Fügen Sie dem Stammordner im Kollaborationsbranch eine `publish_config.json`-Datei hinzu, um den Branch für die Veröffentlichung zu konfigurieren (der Branch, in dem Resource Manager-Vorlage gespeichert werden). Die Data Factory liest die Datei, sucht das Feld `publishBranch` und erstellt wenn nötig einen neuen Branch, mit dem angegebenen Wert. Anschließend speichert sie die Resource Manager-Vorlagen am angegebenen Ort. Beispiel:
+Standardmäßig generiert Data Factory die Resource Manager-Vorlagen der veröffentlichten Factory und speichert sie in einem Branch mit dem Namen `adf_public`. Um einen benutzerdefinierten Veröffentlichungsbranch zu konfigurieren, fügen Sie dem Stammordner im Kollaborationsbranch die Datei `publish_config.json` hinzu. Beim Veröffentlichen liest ADF diese Datei, sucht nach dem Feld `publishBranch` und speichert alle Resource Manager-Vorlagen am angegebenen Speicherort. Wenn der Branch nicht vorhanden ist, wird er von Data Factory automatisch erstellt. Das nachstehende Beispiel zeigt, wie diese Datei aussieht:
 
 ```json
 {
@@ -196,7 +189,7 @@ Fügen Sie dem Stammordner im Kollaborationsbranch eine `publish_config.json`-Da
 }
 ```
 
-Wenn Sie einen neuen Branch für die Veröffentlichung angeben, löscht die Data Factory den vorherigen Branch für die Veröffentlichung nicht. Wenn Sie den vorherigen Branch für die Veröffentlichung entfernen möchten, löschen Sie ihn manuell.
+In Azure Data Factory kann jeweils nur ein Veröffentlichungsbranch vorhanden sein. Wenn Sie einen neuen Branch für die Veröffentlichung angeben, löscht die Data Factory den vorherigen Branch für die Veröffentlichung nicht. Wenn Sie den vorherigen Branch für die Veröffentlichung entfernen möchten, löschen Sie ihn manuell.
 
 > [!NOTE]
 > Die Data Factory liest die `publish_config.json`-Datei nur, wenn diese die Factory lädt. Wenn die Factory bereits im Portal geladen ist, aktualisieren Sie den Browser, damit Ihre Änderungen übernommen werden.
@@ -214,17 +207,6 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 > [!IMPORTANT]
 > Der Masterbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Masterbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
 
-## <a name="advantages-of-git-integration"></a>Vorteile der Git-Integration
-
--   **Quellcodeverwaltung.** Wenn Ihre Data Factory-Workloads sehr wichtig sind, sollten Sie Ihre Factory in Git integrieren, um verschiedene Vorteile der Quellcodeverwaltung wie die folgenden nutzen zu können:
-    -   Möglichkeit zum Nachverfolgen/Überwachen von Änderungen
-    -   Möglichkeit zum Rückgängigmachen von Änderungen, die Fehler verursacht haben
--   **Partielle Speicherungen.** Wenn Sie viele Änderungen an Ihrer Factory vornehmen, werden Sie feststellen, dass Sie im regulären LIVE-Modus Ihre Änderungen nicht als Entwurf speichern können, da Sie nicht bereit sind oder Änderungen nicht verlieren möchten, falls der Computer abstürzt. Mit der Git-Integration können Sie Ihre Änderungen weiterhin inkrementell speichern und erst dann in der Factory veröffentlichen, wenn Sie dazu bereit sind. Git fungiert als Stagingstelle für Ihre Arbeit, bis Sie Ihre Änderungen zu Ihrer Zufriedenheit getestet haben.
--   **Kollaboration und Steuerung.** Wenn mehrere Ihrer Teammitglieder an derselben Factory arbeiten, empfiehlt es sich, Ihre Teamkollegen über einen Code Review-Prozess miteinander zusammenarbeiten zu lassen. Sie können Ihre Factory auch so einrichten, dass nicht jeder Mitwirkende an der Factory Berechtigungen zum Bereitstellen in der Factory hat. Teammitglieder sind möglicherweise nur berechtigt, Änderungen über Git vorzunehmen, und nur bestimmte Personen im Team dürfen die Änderungen an der Factory „veröffentlichen“.
--   **Anzeigen von Unterschieden als Diff.** Im Git-Modus können Sie ein übersichtliches Diff der Nutzlast anzeigen, die in der Factory veröffentlicht werden soll. In diesem Diff sehen Sie alle Ressourcen/Entitäten, die seit der letzten Veröffentlichung in der Factory geändert/hinzugefügt/gelöscht wurden. Basierend auf diesem Diff können Sie entweder mit der Veröffentlichung fortfahren oder zurückkehren, die Änderungen überprüfen und den Vorgang später wiederaufnehmen.
--   **Bessere CI/CD.** Wenn Sie den Git-Modus verwenden, können Sie Ihre Releasepipeline so konfigurieren, dass sie automatisch ausgelöst wird, sobald Änderungen an der Entwicklungsfactory vorgenommen wurden. Sie können auch die Eigenschaften in Ihrer Factory anpassen, die als Parameter in der Resource Manager-Vorlage verfügbar sind. Es kann hilfreich sein, nur die erforderlichen Eigenschaften als Parameter beizubehalten und alles andere fest zu codieren.
--   **Höhere Leistung.** Eine durchschnittliche Factory wird im Git-Modus 10-mal schneller geladen als im normalen LIVE-Modus, da die Ressourcen über Git heruntergeladen werden.
-
 ## <a name="best-practices-for-git-integration"></a>Bewährte Methoden für die Git-Integration
 
 ### <a name="permissions"></a>Berechtigungen
@@ -238,9 +220,9 @@ Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzu
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Verwenden von Kennwörtern aus Azure Key Vault
 
-Es wird empfohlen, Azure Key Vault zum Speichern von Verbindungszeichenfolgen oder Kennwörtern für verknüpfte Data Factory-Dienste zu verwenden. Aus Sicherheitsgründen speichern wir diese geheimen Informationen nicht in Git, sodass Änderungen an verknüpften Diensten stattdessen sofort im Azure Data Factory-Dienst veröffentlicht werden.
+Es wird empfohlen, Azure Key Vault zum Speichern von Verbindungszeichenfolgen oder Kennwörtern oder zur Authentifizierung verwalteter Identitäten für verknüpfte Data Factory-Dienste zu verwenden. Aus Sicherheitsgründen speichert Data Factory Geheimnisse nicht in Git. Alle Änderungen an verknüpften Diensten mit Geheimnissen wie Kennwörtern werden sofort im Azure Data Factory-Dienst veröffentlicht.
 
-Durch die Verwendung von Key Vault werden Continuous Integration und Continuous Deployment vereinfacht, da Sie diese Geheimnisse nicht während der Bereitstellung von Ressourcen-Manager-Vorlagen angeben müssen.
+Durch die Verwendung von Key Vault oder der MSI-Authentifizierung werden Continuous Integration und Continuous Deployment vereinfacht, da Sie diese Geheimnisse nicht bei der Bereitstellung von Resource Manager-Vorlagen angeben müssen.
 
 ## <a name="troubleshooting-git-integration"></a>Problembehandlung bei der Git-Integration
 
@@ -253,15 +235,25 @@ Wenn der Branch für die Veröffentlichung nicht mit dem Masterbranch synchron i
 1. Erstellen eines Pull Request zum Mergen der Änderungen in den Kollaborationsbranch 
 
 Im Folgenden werden einige Beispielsituationen veranschaulicht, die zu einem veralteten Branch für die Veröffentlichung führen können:
-- Ein Benutzer verfügt über mehrere Branches. In einem Featurebranch hat er einen verknüpften Dienst gelöscht, der nicht mit Azure Key Vault verknüpft ist (nicht mit Azure Key Vault verknüpfte Dienste werden sofort veröffentlicht, unabhängig davon, ob sie sich in Git befinden oder nicht), und hat den Featurebranch nicht mit dem Kollaborationsbranch zusammengeführt.
+- Ein Benutzer verfügt über mehrere Branches. In einem Featurebranch hat er einen verknüpften Dienst gelöscht, der nicht mit Azure Key Vault verbunden ist (nicht mit Azure Key Vault verknüpfte Dienste werden unabhängig davon, ob sie sich in Git befinden, sofort veröffentlicht), und den Featurebranch nicht mit dem Kollaborationsbranch zusammengeführt.
 - Ein Benutzer hat die Data Factory über das SDK oder über PowerShell bearbeitet.
 - Ein Benutzer hat alle Ressourcen zu einem neuen Branch migriert und zum ersten Mal versucht, eine Veröffentlichung durchzuführen. Verknüpfte Dienste sollten beim Importieren von Ressourcen manuell erstellt werden.
-- Ein Benutzer lädt einen nicht mit Azure Key Vault verknüpften Dienst oder eine Integration Runtime-JSON-Datei manuell hoch. Er verweist aus einer anderen Ressource auf diese Ressource, z. B. in einem Dataset, einem verknüpften Dienst oder einer Pipeline. Ein nicht mit Azure Key Vault verknüpfter Dienst, der über die Benutzeroberfläche erstellt wird, wird sofort veröffentlicht, weil die Anmeldeinformationen verschlüsselt werden müssen. Wenn Sie ein Dataset hochladen, das auf diesen verknüpften Dienst verweist, und versuchen, dieses zu veröffentlichen, wird das von der Benutzeroberfläche zugelassen, weil es in der Git-Umgebung enthalten ist. Es wird zum Zeitpunkt der Veröffentlichung abgelehnt, da es nicht im Data Factory-Dienst vorhanden ist.
+- Ein Benutzer lädt einen nicht mit Azure Key Vault verknüpften Dienst oder eine Integration Runtime-JSON-Datei manuell hoch. Er verweist aus einer anderen Ressource auf diese Ressource, z. B. in einem Dataset, einem verknüpften Dienst oder einer Pipeline. Ein über die Benutzeroberfläche erstellter, nicht mit Azure Key Vault verknüpfter Dienst wird sofort veröffentlicht, da die Anmeldeinformationen verschlüsselt werden müssen. Wenn Sie ein Dataset hochladen, das auf diesen verknüpften Dienst verweist, und versuchen, dieses zu veröffentlichen, wird das von der Benutzeroberfläche zugelassen, weil es in der Git-Umgebung enthalten ist. Es wird zum Zeitpunkt der Veröffentlichung abgelehnt, da es nicht im Data Factory-Dienst vorhanden ist.
 
-## <a name="provide-feedback"></a>Feedback geben
-Wählen Sie **Feedback** aus, um Kommentare zu Funktionen abzugeben oder um Microsoft Probleme mit dem Tool zu melden:
+## <a name="switch-to-a-different-git-repository"></a>Wechseln zu einem anderen Git-Repository
 
-![Feedback](media/author-visually/provide-feedback.png)
+Um zu einem anderen Git-Repository zu wechseln, klicken Sie auf der Data Factory-Übersichtseite rechts oben auf das Symbol **Git Repo Settings** (Git-Repositoryeinstellungen). Wenn das Symbol nicht angezeigt wird, löschen Sie den lokalen Browsercache. Wählen Sie das Symbol aus, um die Zuordnung zum aktuellen Repository zu entfernen.
+
+![Git-Symbol](media/author-visually/remove-repo.png)
+
+Klicken Sie im eingeblendeten Bereich „Repositoryeinstellungen“ auf **Git entfernen**. Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
+
+![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repo2.png)
+
+Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren und dann vorhandene Data Factory-Ressourcen in das neue Repository importieren.
+
+> [!IMPORTANT]
+> Beim Entfernen einer Git-Konfiguration aus einer Data Factory wird nichts aus dem Repository gelöscht. Die Factory enthält alle veröffentlichten Ressourcen. Sie können die Factory weiterhin direkt für den Dienst bearbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

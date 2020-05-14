@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417527"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626956"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -86,11 +86,11 @@ Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattu
 
 ## <a name="charges-covered-by-reservation"></a>Gebühren, die durch Reservierung abgedeckt werden
 
-- **Reservierte VM-Instanz**: Eine Reservierung deckt nur die Computekosten virtueller Computer ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Windows, Netzwerke oder Speicher ab.
+- **Reservierte VM-Instanz**: Eine Reservierung deckt nur die Computekosten von virtuellen Computern sowie von Clouddiensten ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Windows, Netzwerke oder Speicher ab.
 - **Reservierte Azure Storage-Kapazität**: Eine Reservierung deckt die Speicherkapazität für Storage Standard-Konten für Blobspeicher oder Azure Data Lake Gen2-Speicher ab. Die Reservierung deckt keine Bandbreite oder Transaktionsraten ab.
 - **Reservierte Azure Cosmos DB-Kapazität**: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab. Die Speicher- und Netzwerkkosten werden nicht abgedeckt.
 - **Reservierte virtuelle Kerne für SQL-Datenbank**: In einer Reservierung sind nur die Computekosten enthalten. Die SQL-Lizenz wird separat abgerechnet.
-- **SQL Data Warehouse**: Eine Reservierung deckt die cDWU-Nutzung ab. Sie deckt keine mit der SQL Data Warehouse-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
+- **Azure Synapse Analytics:** Eine Reservierung deckt die cDWU-Nutzung ab. Sie deckt keine mit der Azure Synapse Analytics-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
 - **Azure Databricks**: Eine Reservierung deckt nur die DBU-Nutzung ab. Andere Gebühren (etwa Compute-, Speicher- und Netzwerkgebühren) werden separat angewendet.
 - **App Service-Stempelgebühr**: Eine Reservierung deckt die Stempelnutzung ab. Sie gilt nicht für Worker. Jede andere dem Stempel zugeordnete Ressource wird also separat abgerechnet.
 - **Azure Database for MySQL**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den MySQL-Datenbankserver ab.

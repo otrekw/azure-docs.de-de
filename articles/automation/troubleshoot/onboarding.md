@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Problemen beim Onboarding von Azure Automation-Verwaltungslösungen
-description: Hier erfahren Sie, wie Sie Fehler beim Onboarding von Lösungen behandeln.
+description: Erfahren Sie, wie Sie Probleme beim Onboarding von Azure Automation-Lösungen behandeln.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679228"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836528"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>Behandeln von Problemen beim Onboarding von Lösungen
 
-Beim Onboarding der Lösungen „Updateverwaltung“, „Änderungsnachverfolgung“ oder „Bestand“ können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+Beim Onboarding der Lösungen „Updateverwaltung“, „Änderungsnachverfolgung“ oder „Bestand“ von Azure Automation erhalten Sie ggf. Fehlermeldungen. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -35,7 +35,7 @@ Beim Umbenennen registrierter Knoten wird der Knotenname in Azure Automation nic
 
 Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut. Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über HTTPS-Proxy wird nicht unterstützt
 
 #### <a name="issue"></a>Problem
 
@@ -43,7 +43,7 @@ Beim Herstellen einer Verbindung über eine Proxylösung, die den HTTPS-Datenver
 
 #### <a name="cause"></a>Ursache
 
-Azure Automation unterstützt keine Neusignierung von Zertifikaten, die zum Verschlüsseln des Datenverkehrs verwendet werden.
+Azure Automation unterstützt kein erneutes Signieren von Zertifikaten, die zum Verschlüsseln von Datenverkehr verwendet werden.
 
 #### <a name="resolution"></a>Lösung
 
@@ -51,7 +51,7 @@ Für dieses Problem gibt es derzeit keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
 
 #### <a name="issue"></a>Problem
 
@@ -71,9 +71,9 @@ Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass Sie über die richtigen [Berechtigungen verfügen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding-permissions), und wiederholen Sie dann das Onboarding der Lösung. Wenn Sie den Fehler `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
+Stellen Sie sicher, dass Sie über die richtigen [Berechtigungen verfügen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding-permissions), und wiederholen Sie dann das Onboarding der Lösung. Wenn Sie die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Fehler beim Onboarding mit der Meldung: Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung.
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Fehler beim Onboarding mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
 
 #### <a name="issue"></a>Problem
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Siehe [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](https://aka.ms/PricingTierWarning).
+Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Lösung
 
@@ -124,7 +124,7 @@ Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der
 * Wählen Sie als neues Ziel der Richtlinie eine andere spezifische Ressource aus, z. B. ein Automation-Konto.
 * Überarbeiten Sie die Gruppe der Ressourcen, für deren Ablehnung diese Richtlinie konfiguriert wurde.
 
-Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Übersicht zu Azure-Richtlinien](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Prüfen Sie die Benachrichtigungen rechts oben im Azure-Portal, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zur Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Übersicht zu Azure-Richtlinien](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
 
@@ -148,10 +148,10 @@ Entfernen Sie die folgenden Lösungen aus Ihrem Arbeitsbereich, sofern Sie sie v
 * Änderungsnachverfolgung und Bestand
 * Starten/Beenden von VMs außerhalb der Kernzeit
 
-Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen. 
+Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung mit Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen:
 
-* Für die Updateverwaltung entfernen Sie Updatebereitstellungen (Zeitpläne) aus Ihrem Automation-Konto.
-* Für „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**. Siehe [Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](../automation-solution-vm-management.md#remove-the-solution).
+* Für „Updateverwaltung“ entfernen Sie **Updatebereitstellungen (Zeitpläne)** aus Ihrem Automation-Konto.
+* Für „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**. Weitere Informationen finden Sie unter [Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Fehler der Log Analytics für Windows-Erweiterung
 
@@ -189,9 +189,9 @@ Mögliche Ursachen für diesen Fehler:
 
 Stellen Sie sicher, dass die ordnungsgemäßen Ports und Adressen für die Kommunikation geöffnet sind. Eine Liste der Ports und Adressen finden Sie unter [Planen Ihres Netzwerks](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
 
-Die Installation der Log Analytics für Windows-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
+Die Installation von Log Analytics für Windows-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
 
 #### <a name="issue"></a>Problem
 
@@ -242,8 +242,8 @@ Versuchen Sie, die Log Analytics für Windows-Erweiterung zu installieren, wenn 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem hier nicht aufgeführt wird, oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Stellen Sie eine Verbindung mit [@AzureSupport](https://twitter.com/azuresupport) her, dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Der Azure-Support verbindet die Azure-Community mit Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Wechseln Sie zur [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und wählen Sie **Support erhalten** aus.

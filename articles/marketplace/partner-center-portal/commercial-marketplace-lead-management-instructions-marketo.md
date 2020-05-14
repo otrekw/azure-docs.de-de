@@ -1,78 +1,93 @@
 ---
-title: Konfigurieren der Leadverwaltung in Marketo | Azure Marketplace
-description: Konfigurieren der Leadverwaltung in Marketo für Azure Marketplace-Kunden.
+title: 'Leadverwaltung in Marketo: kommerzieller Microsoft-Marketplace'
+description: Erfahren Sie, wie Sie eine Marketo-CRM-System für die Verwaltung von Leads aus Microsoft AppSource und dem Azure Marketplace verwenden.
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281509"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789877"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Konfigurieren der Leadverwaltung in Marketo
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Verwenden von Marketo zum Verwalten von Leads im kommerziellen Marketplace
 
-In diesem Artikel ist beschrieben, wie Sie Ihr Marketo-CRM-System einrichten, um Vertriebsleads aus dem Marketplace-Angebot zu verarbeiten.
+In diesem Artikel wird beschrieben, wie Sie Ihr Marketo-CRM-System einrichten, um Vertriebsleads zu Ihren Angeboten bei Microsoft AppSource und im Azure Marketplace zu verarbeiten.
 
 ## <a name="set-up-your-marketo-crm-system"></a>Einrichten Ihres Marketo-CRM-Systems
 
 1. Melden Sie sich bei Marketo an.
-2. Wählen Sie **Design Studio** (Designstudio) aus.
-    ![„Design Studio“ in Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  Wählen Sie **New Form** (Neues Formular) aus.
+1. Wählen Sie **Design Studio** (Designstudio) aus.
+
+    ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+
+1.  Wählen Sie **New Form** (Neues Formular) aus.
+
     ![Neues Formular in Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
-4.  Füllen Sie im Fenster „New Form“ (Neues Formular) die Pflichtfelder aus, und wählen Sie **Erstellen** aus.
+1.  Füllen Sie im Dialogfeld **New Form** (Neues Formular) die Pflichtfelder aus, und wählen Sie **Create** (Erstellen) aus.
+
     ![Erstellen eines neuen Formulars in Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  Wählen Sie im Abschnitt „Field Details“ (Felddetails) **Fertig stellen** aus.
+1.  Wählen Sie auf der Seite **Field Details** (Felddetails) die Option **Finish** (Fertig stellen) aus.
+
     ![Fertigstellen eines Formulars in Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  Bestätigen Sie die Eingaben, und schließen Sie sie.
+1.  Bestätigen Sie die Eingaben, und schließen Sie das Fenster.
 
-7. Wählen Sie auf der Registerkarte *MarketplaceLeadBacked* die Option **Embed Code** (Code einbetten) aus. 
+1. Wählen Sie auf der Registerkarte **MarketplaceLeadBackend** die Option **Embed Code** (Code einbetten) aus. 
 
-    ![Einbettungscode](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Marketo-Einbettungscode](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Der Marketo-Einbettungscode wird etwa folgendermaßen angezeigt:
+1. Der Marketo-Einbettungscode wird etwa folgendermaßen angezeigt:
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. Kopieren Sie die Werte für die unten aufgeführten Felder, die im Einbettungscodeformular angezeigt werden. Sie verwenden diese Werte, um Ihr Angebot so zu konfigurieren, dass Sie im nächsten Schritt Leads erhalten. Das nächste Beispiel dient als Leitfaden zum Abrufen der benötigten IDs aus dem Marketo-Einbettungscode.
+1. Kopieren Sie die Werte für die folgenden Felder, die im Einbettungscodeformular angezeigt werden. Sie verwenden diese Werte im nächsten Schritt, um Ihr Angebot so zu konfigurieren, dass Sie Leads erhalten. Das nächste Beispiel dient als Leitfaden zum Abrufen der benötigten IDs aus dem Marketo-Einbettungscode.
 
     - Server-ID: **ys12**
     - Munchkin-ID: **123-PQR-789**
     - Formular-ID: **1179**
 
-    **Eine andere Möglichkeit zum Ermitteln dieser Werte**
+    Andere Möglichkeit zum Ermitteln dieser Werte:
 
-    - Die Server-ID befindet sich in der URL Ihrer Marketo-Instanz. Beispiel: „`serverID.marketo.com`“.
-    - Sie erhalten die Munchkin-ID Ihres Abonnements, indem Sie im Menü „Admin“ (Verwaltung) > „Munchkin“ das Feld „Munchkin Account ID“ (Munchkin-Konto-ID) anzeigen. Sie finden die ID auch im ersten Teil Ihrer Marketo-REST-API-Hostdomäne: `https://{Munchkin ID}.mktorest.com`.
-    - Die Formular-ID ist die ID des Einbettungscodeformulars, das Sie in Schritt 7 erstellt haben, um Leads zu Ihrem Marketplace zu leiten.
+    - Die Server-ID befindet sich in der URL Ihrer Marketo-Instanz, z B. `serverID.marketo.com`.
+    - Sie erhalten die Munchkin-ID Ihres Abonnements, indem Sie im Menü **Admin** (Verwaltung)  >  **Munchkin** das Feld **Munchkin Account ID** (Munchkin-Konto-ID) anzeigen. Sie finden die ID auch im ersten Teil Ihrer Marketo-REST-API-Hostdomäne: `https://{Munchkin ID}.mktorest.com`.
+    - Die Formular-ID ist die ID des Einbettungscodeformulars, das Sie in Schritt 7 erstellt haben, um Leads zum Marketplace zu leiten.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Konfigurieren Ihres Angebots zum Senden von Leads zu Marketo
 
-Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren: 
+Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren. 
 
-1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
-1. Wählen Sie im Abschnitt „Leadverwaltung“ die Option **Verbinden** aus. 
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 
-    ![Leadverwaltung – Verbinden](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 
-1. Wählen Sie im Popupfenster „Verbindungsdetails“ **Marketo** als Leadziel aus.
+1. Wählen Sie im Abschnitt **Leadverwaltung** die Option **Verbinden** aus. 
+
+    ![Schaltfläche „Verbinden“ im Bereich „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+
+1. Wählen Sie im Popupfenster **Verbindungsdetails** für das **Leadziel** die Option **Marketo** aus.
 
     ![Auswählen einer Leadzielgruppe](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. Geben Sie die **Server-ID**, die **Munching-Konto-ID** und die **Formular-ID** an.
+1. Geben Sie die **Server-ID**, die **Munchkin-Konto-ID** und die **Formular-ID** an.
 
-    >[!Note]
-    >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten. 
+    > [!NOTE]
+    > Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten. 
 
+1. Geben Sie unter **Kontakt-E-Mail** die E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
+
+1. Klicken Sie auf **OK**.
+
+   Wählen Sie **Überprüfen** aus, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
+
+   ![Popupfenster „Verbindungsdetails“](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

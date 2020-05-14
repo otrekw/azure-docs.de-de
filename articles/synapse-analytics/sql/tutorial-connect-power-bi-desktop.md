@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769479"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692410"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Tutorial: Herstellen einer Verbindung zwischen SQL On-Demand (Vorschauversion) und Power BI Desktop und Erstellen eines Berichts
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Tutorial: Verwenden von SQL On-Demand (Vorschauversion) und Power BI Desktop und Erstellen eines Berichts
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -24,7 +24,7 @@ In diesem Tutorial lernen Sie Folgendes:
 >
 > - Erstellen einer Demodatenbank
 > - Erstellen der für den Bericht verwendeten Ansicht
-> - Herstellen einer Verbindung mit Power BI Desktop
+> - Herstellen einer Verbindung Power BI Desktop und SQL On-Demand
 > - Erstellen eines Berichts anhand einer Ansicht
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -130,11 +130,11 @@ Erstellen Sie anhand der folgenden Schritte den Bericht für Power BI Desktop:
 
     - Beispiel für AAD 
   
-    ![Klicken Sie auf „Anmelden“.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![Klicken Sie auf „Anmelden“.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - Beispiel für SQL-Anmeldung: Geben Sie Ihren Benutzernamen und Ihr Kennwort ein:
 
-    ![Verwenden Sie die SQL-Anmeldung.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![Verwenden Sie die SQL-Anmeldung.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. Wählen Sie die Ansicht `usPopulationView` und dann **Laden** aus. 

@@ -1,48 +1,52 @@
 ---
-title: HTTPS-Endpunkt | Azure Marketplace
-description: Konfigurieren Sie die Leadverwaltung für einen HTTPS-Endpunkt.
+title: Leadverwaltung mit einem HTTPS-Endpunkt – kommerzieller Microsoft-Marketplace
+description: Hier erfahren Sie, wie Sie Power Automate und einen HTTPS-Endpunkt für die Verwaltung von Leads von Microsoft AppSource und Azure Marketplace verwenden.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262612"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790982"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
->[!Note]
->Der in diesen Anweisungen verwendete Power Automate-Connector erfordert ein kostenpflichtiges Power Automate-Abonnement. Berücksichtigen Sie dies, bevor Sie die Anweisungen in diesem Dokument befolgen.
+Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht explizit für den Empfang von Microsoft AppSource- und Azure Marketplace-Leads unterstützt wird, können Sie für die Verarbeitung dieser Leads einen HTTPS-Endpunkt in [Power Automate](https://powerapps.microsoft.com/automate-processes/) verwenden. Mit einem HTTPS-Endpunkt können diese Leads aus dem kommerziellen Marketplace per E-Mail-Benachrichtigung gesendet oder in ein von Power Automate unterstütztes CRM-System geschrieben werden.
 
-Wenn Ihr CRM-System (Customer Relationship Management) im Partner Center nicht explizit für den Empfang von Azure Marketplace- und AppSource-Leads unterstützt wird, können Sie zum Umgang mit diesen Leads einen HTTPS-Endpunkt in Power Automate verwenden. Mit einem HTTPS-Endpunkt können diese Leads per E-Mail-Benachrichtigung versendet oder in ein von Power Automate unterstütztes CRM-System (Customer Relationship Management) geschrieben werden. Die Anweisungen in diesem Artikel führen Sie schrittweise durch den grundlegenden Prozess des Erstellens eines neuen Flows mithilfe von Power Automate. Dabei wird die HTTP POST-URL erstellt, die Sie im Veröffentlichungsportal für das Feld „Leadverwaltung“ > **HTTPS-Endpunkt-URL** eingeben. Außerdem finden Sie hier Anweisungen dazu, wie Sie Ihren Flow mithilfe des Tools [Postman](https://www.getpostman.com/downloads/) testen können, das online zugänglich ist.
+In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt wird, um die HTTP-Post-URL zu generieren, die Sie zum Konfigurieren von Leads in Partner Center verwenden. Außerdem sind Schritte zum Testen Ihres Flows mit [Postman](https://www.getpostman.com/downloads/) aufgeführt.
 
-## <a name="create-a-flow-using-power-automate"></a>Erstellen eines Flows mit Power Automate
+>[!NOTE]
+>Der in diesen Anweisungen verwendete Power Automate-Connector erfordert ein kostenpflichtiges Power Automate-Abonnement. Berücksichtigen Sie dies unbedingt, bevor Sie diesen Flow konfigurieren.
 
-1. Öffnen Sie die [Flow](https://flow.microsoft.com/)-Webseite. Wählen Sie **Anmelden** aus, oder – falls Sie noch kein Konto besitzen – wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Flow-Konto zu erstellen.
+## <a name="create-a-flow-by-using-power-automate"></a>Erstellen eines Flows mit Power Automate
 
-2. Melden Sie sich an, und wählen Sie **Meine Flows** in der Menüleiste aus.
+1. Rufen Sie die [Power Automate](https://flow.microsoft.com/)-Webseite auf. Wählen Sie **Anmelden**. Wenn Sie noch nicht über ein Konto verfügen, wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Power Automate-Konto zu erstellen.
 
-3. Wählen Sie **+Automatisiert – ohne Vorlage** aus.
+1. Melden Sie sich an, und wählen Sie auf der Menüleiste **Meine Flows** aus.
 
-    ![Meine Flows und +Automatisiert – ohne Vorlage](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    ![Anmelden bei „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-4. Wählen Sie im Fenster *Automatisierten Flow erstellen* die Option **Überspringen** aus. 
+1. Wählen Sie unter **+ Neu** die Option **+ Sofort – ohne Vorlage** aus.
 
-    ![Automatisierten Flow erstellen – Überspringen](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+    ![„+Automatisiert – ohne Vorlage“ unter „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-5. Geben Sie im Feld **Connectors und Trigger durchsuchen** den Suchbegriff „Anforderung“ ein, um den Anforderungsconnector zu finden.
-6. Wählen Sie unter *Trigger* die Option **Beim Empfang einer HTTP-Anforderung** aus. 
+1. Geben Sie dem Flow einen Namen, und wählen Sie dann unter **Auslöser für diesen Flow auswählen** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-    ![Anforderungsconnector – Trigger](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+    ![Schaltfläche „Überspringen“ im Fenster „Automatisierten Flow erstellen“](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. Kopieren Sie im Fenster *Beim Empfang einer HTTP-Anforderung* das JSON-Schema, und fügen Sie es unten im Textfeld **JSON-Schema für Anforderungstext** ein. In diesem Schema werden in Microsoft die Leaddaten eingeschlossen.
+1. Klicken Sie auf den Flowschritt, um ihn zu erweitern.
 
-    ![Anforderungsconnector – Trigger](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+    ![Erweitern des Flowschritts](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
+
+1. Verwenden Sie eine der folgenden Methoden, um das **JSON-Schema für Anforderungstext** zu konfigurieren:
+
+    - Kopieren Sie das JSON-Schema in das Textfeld **JSON-Schema für Anforderungstext**.
+    - Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus. Fügen Sie im Textfeld **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** das JSON-Beispiel ein. Wählen Sie **Fertig** aus, um das Schema zu erstellen.
 
     **JSON-Schema**
 
@@ -103,121 +107,141 @@ Wenn Ihr CRM-System (Customer Relationship Management) im Partner Center nicht e
     }
     ```
 
->[!Note]
->An diesem Punkt in der Konfiguration können Sie auswählen, ob Sie eine Verbindung mit einem CRM-System herstellen oder eine E-Mail-Benachrichtigung konfigurieren. Befolgen Sie die übrigen Anweisungen entsprechend Ihrer Entscheidung.
+    **JSON-Beispiel**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
 
-### <a name="to-connect-to-a-crm-system"></a>So stellen Sie eine Verbindung mit einem CRM-System her
+>[!NOTE]
+>An diesem Punkt in der Konfiguration können Sie entweder eine Verbindung mit einem CRM-System herstellen oder eine E-Mail-Benachrichtigung konfigurieren. Befolgen Sie die übrigen Anweisungen entsprechend Ihrer Entscheidung.
+
+### <a name="connect-to-a-crm-system"></a>Verbinden mit einem CRM-System
 
 1. Wählen Sie **+ Neuer Schritt**aus.
-2. Wählen Sie das gewünschte CRM-System aus. Suchen Sie unter *Connectors und Aktionen durchsuchen* danach, und wählen Sie es im Abschnitt *Aktionen* mit der Option zum Erstellen eines neuen Datensatzes aus. Auf dem folgenden Screenshot wird beispielsweise **Dynamics 365 – Neuen Datensatz erstellen** verwendet.
+1. Wählen Sie das gewünschte CRM-System aus, indem Sie unter **Connectors und Aktionen durchsuchen** nach ihm suchen. Wählen Sie es auf der Registerkarte **Aktionen** mit der Aktion zum Erstellen eines neuen Datensatzes aus. Auf dem folgenden Bildschirm wird beispielsweise **Neuen Datensatz erstellen (Dynamics 365)** dargestellt.
 
     ![Create a new record (Neuen Datensatz erstellen)](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-3. Geben Sie den **Organisationsnamen** für das CRM-System an. Wählen Sie in der Dropdownliste **Entitätsname** die Option **Leads** aus.
+1. Geben Sie den **Organisationsnamen** für das CRM-System an. Wählen Sie in der Dropdownliste **Entitätsname** die Option **Leads** aus.
 
     ![Leads auswählen](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 
-4. Flow zeigt ein Formular für die Eingabe von Leadinformationen an. Sie können Elemente aus der Eingabeanforderung zuordnen, indem Sie auswählen, dass dynamischer Inhalt hinzugefügt werden soll. Im folgenden Screenshot wird beispielsweise **OfferTitle** verwendet.
+1. In Power Automate wird ein Formular für die Eingabe von Leadinformationen angezeigt. Sie können Elemente aus der Eingabeanforderung zuordnen, indem Sie auswählen, dass dynamischer Inhalt hinzugefügt werden soll. Auf dem folgenden Bildschirm wird beispielsweise **OfferTitle** verwendet.
 
     ![Dynamischen Inhalt hinzufügen](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. Ordnen Sie die gewünschten Felder zu, und wählen Sie dann **Speichern** aus, um den Flow zu speichern. Eine HTTP-POST-URL wird erstellt. Diese ist im Fenster *Beim Empfang einer HTTP-Anforderung* zugänglich. Kopieren Sie diese URL mithilfe des Steuerelements zum Kopieren, das sich rechts neben der HTTP-POST-URL befindet – dies ist wichtig, damit die URL vollständig ist und Sie keinen Teil davon übersehen. Speichern Sie diese URL, da Sie sie beim Konfigurieren der Leadverwaltung im Veröffentlichungsportal benötigen.
+1. Ordnen Sie die gewünschten Felder zu, und wählen Sie dann **Speichern** aus, um den Flow zu speichern. Eine HTTP-POST-URL wird erstellt. Diese ist im Fenster **Beim Empfang einer HTTP-Anforderung** zugänglich. Kopieren Sie diese URL mit dem Steuerelement zum Kopieren, das sich rechts neben der HTTP POST-URL befindet. Die Verwendung des Kopiersteuerelements ist wichtig, damit Sie keinen Teil der gesamten URL auslassen. Speichern Sie diese URL, da Sie sie beim Konfigurieren der Leadverwaltung im Veröffentlichungsportal benötigen.
 
-    ![Beim Empfang einer HTTP-Anforderung](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    ![Wenn eine HTTP-Anforderung empfangen wird](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
-### <a name="to-set-up-email-notification"></a>So richten Sie E-Mail-Benachrichtigungen ein
+### <a name="set-up-email-notification"></a>Einrichten von E-Mail-Benachrichtigungen
 
 1. Wählen Sie nach dem Abschließen des JSON-Schemas die Option **+ Neuer Schritt** aus.
-2. Wählen Sie unter **Aktion auswählen** die Option **Aktionen** aus.
-3. Wählen Sie unter **Aktionen** die Option **E-Mail senden (Office 365 Outlook)** aus.
+1. Wählen Sie unter **Aktion auswählen** die Option **Aktionen** aus.
+1. Wählen Sie auf der Registerkarte **Aktionen** die Option **E-Mail senden (Office 365 Outlook)** aus.
 
-    >[!Note]
-    >Wenn Sie einen anderen E-Mail-Anbieter verwenden möchten, suchen Sie stattdessen *E-Mail-Benachrichtigung senden (E-Mail)* , und wählen Sie diese Aktion aus.
+    >[!NOTE]
+    >Wenn Sie einen anderen E-Mail-Anbieter verwenden möchten, suchen Sie nach **E-Mail-Benachrichtigung senden (E-Mail)** , und wählen Sie diese Option aus.
 
     ![Hinzufügen einer E-Mail-Aktion](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
 
-4. Konfigurieren Sie im Fenster **E-Mail senden** die folgenden Pflichtfelder:
+1. Konfigurieren Sie im Fenster **E-Mail senden** die folgenden Pflichtfelder:
 
-   - **An**: Geben Sie mindestens eine gültige E-Mail-Adresse ein, an welche die Leads gesendet werden.
-   - **Betreff**: Flow ermöglicht das Hinzufügen dynamischer Inhalte (wie etwa **LeadSource** im folgenden Screenshot). Geben Sie zunächst einen Feldnamen ein, und klicken Sie anschließend im Popupfenster auf die Auswahlliste „Dynamischer Inhalt“. 
+   - **An**: Geben Sie mindestens eine gültige E-Mail-Adresse ein, an die die Leads gesendet werden.
+   - **Antragsteller:** Power Automate ermöglicht das Hinzufügen dynamischer Inhalte, etwa **LeadSource** auf dem folgenden Bildschirm. Geben Sie als Erstes einen Feldnamen ein. Wählen Sie dann im Popupfenster die Auswahlliste für dynamischen Inhalt aus. 
 
-        >[!Note] 
-        > Beim Hinzufügen von Feldnamen können Sie nach jedem einen Doppelpunkt (:) eingeben und dann EINGABE drücken, um eine neue Zeile zu erstellen. Nachdem Sie die Feldnamen hinzugefügt haben, können Sie die einzelnen zugeordneten Parameter aus der dynamischen Auswahlliste hinzufügen.
+        >[!NOTE] 
+        > Wenn Sie Feldnamen hinzufügen, können Sie hinter dem jeweiligen Namen einen Doppelpunkt (:) hinzufügen und dann mit der **EINGABETASTE** eine neue Zeile erstellen. Nachdem Sie die Feldnamen hinzugefügt haben, können Sie die einzelnen zugeordneten Parameter aus der dynamischen Auswahlliste hinzufügen.
 
         ![Hinzufügen einer E-Mail-Aktion mit dynamischem Inhalt](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Text**: Fügen Sie über die Auswahlliste „Dynamischer Inhalt“ die gewünschten Informationen in den E-Mail-Text ein. Verwenden Sie beispielsweise „LastName“ (Nachname), „FirstName“ (Vorname), „Email“ (E-Mail-Adresse) und „Company“ (Unternehmen). <br> <br> Ein Beispiel für eine fertig eingerichtete E-Mail-Benachrichtigung sehen Sie auf dem folgenden Screenshot.
+   - **Text**: Fügen Sie über die Auswahlliste für dynamischen Inhalt die gewünschten Informationen in den E-Mail-Text ein. Verwenden Sie beispielsweise „LastName“, „FirstName“, „Email“ und „Company“. Ein Beispiel für eine fertig eingerichtete E-Mail-Benachrichtigung sehen Sie auf dem folgenden Bildschirm.
 
 
-       ![Hinzufügen einer E-Mail-Aktion](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Beispiel für eine E-Mail-Benachrichtigung](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. Wählen Sie **Speichern** aus, um den Flow fertigzustellen. Eine HTTP-POST-URL wird erstellt. Diese ist im Fenster *Beim Empfang einer HTTP-Anforderung* zugänglich. Kopieren Sie diese URL mithilfe des Steuerelements zum Kopieren, das sich rechts neben der HTTP-POST-URL befindet – dies ist wichtig, damit die URL vollständig ist und Sie keinen Teil davon übersehen. Speichern Sie diese URL, da Sie sie beim Konfigurieren der Leadverwaltung im Veröffentlichungsportal benötigen.
+1. Wählen Sie **Speichern** aus, um den Flow fertigzustellen. Eine HTTP-POST-URL wird erstellt. Diese ist im Fenster **Beim Empfang einer HTTP-Anforderung** zugänglich. Kopieren Sie diese URL mit dem Steuerelement zum Kopieren, das sich rechts neben der HTTP POST-URL befindet. Die Verwendung dieses Steuerelements ist wichtig, damit Sie keinen Teil der gesamten URL auslassen. Speichern Sie diese URL, da Sie sie beim Konfigurieren der Leadverwaltung im Veröffentlichungsportal benötigen.
 
-   ![HTTP-POST-URL ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![HTTP-POST-URL](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testen
 
-Durch Ausführen der folgenden Schritte können Sie mithilfe des Tools [Postman](https://app.getpostman.com/app/download/win64) die ordnungsgemäße Funktionsweise testen. Dieses Tool kann online heruntergeladen werden. Es ist für Windows verfügbar. 
+Sie können Ihre Konfiguration mit [Postman](https://app.getpostman.com/app/download/win64) testen. Ein Onlinedownload von Postman ist für Windows erhältlich. 
 
 1. Starten Sie Postman, und wählen Sie **New** > **Request** (Neu > Anforderung) aus, um das Testtool einzurichten. 
 
    ![Anforderung zum Einrichten des Testtools](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
-2. Füllen Sie das Formular *Save Request* (Anforderung speichern) aus, und wählen Sie dann **Save** (Speichern) aus, um sie im erstellten Ordner zu speichern.
+1. Füllen Sie das Formular **Save Request** (Anforderung speichern) aus, und speichern Sie die Anforderung dann im erstellten Ordner.
 
-   ![Save Request (Anforderung speichern)](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
+   ![Formular „Save Request“ (Anforderung speichern)](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
 
-3. Wählen Sie in der Dropdownliste den Eintrag **POST** aus. 
+1. Wählen Sie in der Dropdownliste den Eintrag **POST** aus. 
 
    ![Meinen Flow testen](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Fügen Sie bei der Aufforderung *Anforderungs-URL eingeben* die HTTP-POST-URL aus dem Flow ein, den Sie in Power Automate erstellt haben.
+1. Fügen Sie bei der Aufforderung **Anforderungs-URL eingeben** die HTTP-POST-URL aus dem Flow ein, den Sie in Power Automate erstellt haben.
 
    ![HTTP-POST-URL einfügen](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-5. Wechseln Sie zurück zu [Flow](https://flow.microsoft.com/), und suchen Sie nach dem erstellten Flow zum Senden von Leads, indem Sie auf der Flow-Menüleiste **Meine Flows** auswählen.  Wählen Sie die drei Punkte neben dem Flownamen aus, und wählen Sie **Bearbeiten** aus.
+1. Kehren Sie zu [Power Automate](https://flow.microsoft.com/) zurück. Suchen Sie den erstellten Flow zum Senden von Leads, indem Sie auf der Power Automate-Menüleiste **Meine Flows** auswählen. Wählen Sie die Auslassungspunkte neben dem Flownamen aus, um weitere Optionen anzuzeigen, und wählen Sie dann **Bearbeiten** aus.
 
-   ![Meine Flows – Bearbeiten](./media/commercial-marketplace-lead-management-instructions-https/my-flows-edit.png)
 
-6. Wählen Sie in der oberen rechten Ecke **Testen** aus. Wählen Sie „Ich führe die Triggeraktion durch“ und anschließend **Testen** aus. Am oberen Bildschirmrand wird ein Hinweis angezeigt, der besagt, dass der Test gestartet wurde.
+1. Wählen Sie in der rechten oberen Ecke **Testen**, anschließend **Ich führe die Triggeraktion durch** und dann **Testen** aus. Am oberen Bildschirmrand wird ein Hinweis darüber angezeigt, dass der Test gestartet wurde.
 
-   ![Flow testen – Trigger](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
+   ![Option „Ich führe die Triggeraktion durch“](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
-7. Wechseln Sie zurück zur Postman-App, und wählen Sie neben dem Feld, in dem Sie die HTTPS-URL eingefügt haben, **Send** (Senden)aus.
+1. Wechseln Sie zurück zur Postman-App, und wählen Sie **Send** (Senden) aus.
 
-   ![Meinen Flow testen – Senden](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
+   ![Schaltfläche „Send“ (Senden)](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
 
-8. Wechseln Sie zurück zu Ihrem Flow, und überprüfen Sie das Ergebnis. Wenn alles wie erwartet funktioniert, wird eine Meldung mit dem Hinweis angezeigt, dass der Vorgang erfolgreich abgeschlossen wurde.
+1. Wechseln Sie zurück zu Ihrem Flow, und überprüfen Sie das Ergebnis. Wenn alles wie erwartet funktioniert, wird eine Meldung mit dem Hinweis angezeigt, dass der Flow erfolgreich abgeschlossen wurde.
 
-   ![Flow – Ergebnisse überprüfen](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
+   ![Überprüfen der Ergebnisse](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-9. Außerdem sollten Sie eine E-Mail erhalten haben. Überprüfen Sie Ihren Posteingang. 
+1. Außerdem sollten Sie eine E-Mail erhalten haben. Überprüfen Sie Ihren Posteingang. 
 
-    >[!Note] 
-    >Wenn keine E-Mail aus dem Test angezeigt wird, überprüfen Sie Ihren Spamordner. Unten sehen Sie nur die Feldbezeichnungen, die Sie beim Konfigurieren der Benachrichtigung hinzugefügt haben. Wäre dies ein tatsächlicher, von Ihrem Angebot generierter Lead, würden Sie zudem im Text und in der Betreffzeile die tatsächlichen Informationen aus dem Leadkontakt sehen.
+    >[!NOTE] 
+    >Wenn keine E-Mail aus dem Test angezeigt wird, überprüfen Sie Ihren Spamordner. Auf dem folgenden Bildschirm werden nur die Feldbezeichnungen angezeigt, die Sie beim Konfigurieren der E-Mail-Benachrichtigung hinzugefügt haben. Wäre dies ein tatsächlicher, von Ihrem Angebot generierter Lead, wären außerdem im Text und in der Betreffzeile die tatsächlichen Informationen aus dem Leadkontakt angegeben.
 
    ![Empfangene E-Mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurieren Sie Ihr Angebot so, dass Leads an den HTTPS-Endpunkt gesendet werden
 
-Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren:
+Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren.
 
-1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
-2. Wählen Sie im Abschnitt „Leadverwaltung“ die Option **Verbinden** aus.
-3. Wählen Sie im Popupfenster „Verbindungsdetails“ **HTTPS-Endpunkt** für **Leadziel** aus, und fügen Sie die HTTP-POST-URL aus dem zuvor erstellten Flow im Feld **HTTPS-Endpunkt-URL** ein.
-4. **Kontakt-E-Mail**: Geben Sie E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
-5. Klicken Sie auf **OK**.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 
-Klicken Sie auf die Schaltfläche „Überprüfen“, um sich zu vergewissern, dass die Verbindung mit einem Leadziel erfolgreich hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
+1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 
->[!Note] 
+1. Wählen Sie im Abschnitt **Leadverwaltung** die Option **Verbinden** aus. 
+    ![Schaltfläche „Verbinden“ in der Leadverwaltung](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
+1. Wählen Sie im Popupfenster **Verbindungsdetails** die Option **HTTPS-Endpunkt** als **Leadziel** aus. Fügen Sie die HTTP POST-URL aus dem in den vorherigen Schritten erstellten Flow im Feld **HTTPS-Endpunkt-URL** ein.
+    ![„Kontakt-E-Mail“ unter „Verbindungsdetails“](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
+1. Geben Sie unter **Kontakt-E-Mail** die E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolon getrennte E-Mail-Adressen angeben.
+
+1. Klicken Sie auf **OK**.
+
+Wählen Sie die Schaltfläche **Überprüfen** aus, um sich zu vergewissern, dass eine Verbindung mit einem Leadziel hergestellt wurde. Bei erfolgreicher Verbindungsherstellung enthält das Leadziel einen Testlead.
+
+>[!NOTE] 
 >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.
 
-Generierte Leads werden von Microsoft an den Flow gesendet und anschließend an das konfigurierte CRM-System oder an die konfigurierte E-Mail-Adresse weitergeleitet.
-
-![Leadverwaltung – Verbinden](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![Verbindungsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![Verbindungsdetails](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-
+Wenn Leads generiert werden, sendet Microsoft sie an den Flow. Die Leads werden an das konfigurierte CRM-System oder die E-Mail-Adresse weitergeleitet.

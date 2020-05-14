@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668003"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625529"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -222,6 +222,23 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
     Das von Ihnen erstellte Volume wird auf der Seite „Volumes“ angezeigt. 
  
     Ein Volume erbt Abonnement-, Ressourcengruppen- und Standortattribute aus dem Kapazitätspool. Den Volumebereitstellungsstatus können Sie auf der Benachrichtigungsregisterkarte überwachen.
+
+## <a name="control-access-to-an-smb-volume"></a>Steuern des Zugriffs auf ein SMB-Volume  
+
+Der Zugriff auf ein SMB-Volume wird durch Berechtigungen verwaltet.  
+
+### <a name="share-permissions"></a>Freigabeberechtigungen  
+
+Ein neues Volume verfügt standardmäßig über die Freigabeberechtigungen **Jeder/Vollzugriff**. Mitglieder der Gruppe „Domänen-Admins“ können die Freigabeberechtigungen mithilfe der Computerverwaltung unter dem Computerkonto ändern, das für das Azure NetApp Files-Volume verwendet wird.
+
+![SMB-Einbindungspfad](../media/azure-netapp-files/smb-mount-path.png) 
+![Festlegen von Freigabeberechtigungen](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS-Datei- und -Ordnerberechtigungen  
+
+Sie können Berechtigungen für eine Datei oder einen Ordner festlegen, indem Sie die Registerkarte **Sicherheit** in den Eigenschaften des Objekts im Windows-SMB-Client verwenden.
+ 
+![Festlegen von Datei- und Ordnerberechtigungen](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

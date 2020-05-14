@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944118"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610240"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service mit Traffic Manager-Integration
 
@@ -66,12 +66,18 @@ Sobald Ihre App Service-App einen unterstützten Tarif aufweist, wird sie in der
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Die Details variieren von Domänenanbieter zu Domänenanbieter. Generell erfolgt die Zuordnung jedoch *vom* benutzerdefinierten Domänennamen (etwa **contoso.com**) *zum* Traffic Manager-Domänennamen (**contoso.trafficmanager.net**), der in Ihre App integriert ist.
+Die Details variieren je nach Domänenanbieter. Generell erfolgt die Zuordnung jedoch *von* einem [benutzerdefinierten Nicht-Stammdomänennamen](#what-about-root-domains) (etwa **www.contoso.com**) *zum* Traffic Manager-Domänennamen (**contoso.trafficmanager.net**), der in Ihre App integriert ist. 
 
 > [!NOTE]
 > Wenn ein Eintrag bereits verwendet wird und Sie Ihre Apps präemptiv an ihn binden müssen, können Sie einen zusätzlichen CNAME-Eintrag erstellen. Um beispielsweise **www\.contoso.com** präemptiv an Ihre App zu binden, erstellen Sie einen CNAME-Eintrag zur Verknüpfung von **awverify.www** mit **contoso.trafficmanager.net**. Anschließend können Sie Ihrer App „www\.contoso.com“ hinzufügen, ohne den CNAME-Eintrag „www“ ändern zu müssen. Weitere Informationen finden Sie unter [Migrieren eines aktiven DNS-Namens zu Azure App Service](manage-custom-dns-migrate-domain.md).
 
 Speichern Sie die Änderungen, sobald Sie die DNS-Datensätze bei Ihrem Domänenanbieter hinzugefügt oder geändert haben.
+
+### <a name="what-about-root-domains"></a>Wie verhält es sich mit Stammdomänen?
+
+Da Traffic Manager nur die Zuordnung benutzerdefinierter Domänen mit CNAME-Einträgen unterstützt und da die DNS-Standards keine CNAME-Einträge für die Zuordnung von Stammdomänen unterstützen (z. B. **contoso.com**), unterstützt Traffic Manager keine Zuordnung zu Stammdomänen. Um dieses Problem zu umgehen, verwenden Sie eine URL-Umleitung auf App-Ebene. In ASP.NET Core können Sie beispielsweise die [URL-Umschreibung](/aspnet/core/fundamentals/url-rewriting) verwenden. Verwenden Sie dann Traffic Manager, um einen Lastausgleich für die Unterdomäne (**www.contoso.com**) vorzunehmen.
+
+In Hochverfügbarkeitsszenarien können Sie eine fehlertolerante DNS-Einrichtung ohne Traffic Manager implementieren, indem Sie mehrere *A-Einträge* erstellen, die von der Stammdomäne auf die IP-Adresse der einzelnen App-Kopien verweisen. Dann [ordnen Sie dieselbe Stammdomäne allen App-Kopien zu](app-service-web-tutorial-custom-domain.md#map-an-a-record). Da derselbe Domänenname nicht zwei verschiedenen Apps in derselben Region zugeordnet werden kann, funktioniert diese Einrichtung nur, wenn sich die App-Kopien in unterschiedlichen Regionen befinden.
 
 ## <a name="enable-custom-domain"></a>Aktivieren einer benutzerdefinierten Domäne
 Nachdem die Datensätze für Ihren Domänennamen weitergegeben wurden, verwenden Sie den Browser, um zu überprüfen, ob Ihr benutzerdefinierter Domänenname zu Ihrer App Service-App aufgelöst wird.

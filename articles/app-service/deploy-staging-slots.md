@@ -3,14 +3,14 @@ title: Einrichten von Stagingumgebungen
 description: Hier erfahren Sie, wie Sie Apps in einem produktionsfremden Slot bereitstellen und automatisch in die Produktion überführen. Erhöhen Sie die Zuverlässigkeit, und vermeiden Sie bereitstellungsbedingte Downtime für Apps.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300859"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597914"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, u
    
     ![Titel des Bereitstellungsslots](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Am oberen Seitenrand wird der Name des Slots angezeigt, um Sie daran zu erinnern, dass es sich um den Bereitstellungsslot handelt.
+    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Um Sie daran zu erinnern, dass Sie den Bereitstellungsslot sehen, wird der App-Name als **\<App-Name>/\<Slotname>** angezeigt, während der App-Typ **App Service (Slot)** lautet. Sie können den Slot auch als separate App in der Ressourcengruppe mit denselben Bezeichnungen sehen.
 
 6. Wählen Sie auf der Ressourcenseite des Slots die App-URL aus. Der Bereitstellungsslot besitzt einen eigenen Hostnamen und ist außerdem eine Live-App. Informationen zum Beschränken des öffentlichen Zugriffs auf den Bereitstellungsslot finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
-Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](app-service-deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen. 
+Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](app-service-deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen.
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau darg
 
 ## <a name="delete-a-slot"></a>Löschen eines Slots
 
-Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
+Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Der App-Typ lautet **App Service (Slot)** und soll Sie daran erinnern, dass Sie einen Bereitstellungsslot sehen. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
 
 ![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

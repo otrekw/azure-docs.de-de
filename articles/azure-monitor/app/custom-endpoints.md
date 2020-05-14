@@ -3,20 +3,25 @@ title: 'Azure Application Insights: Außerkraftsetzen der SDK-Standardendpunkte'
 description: Ändern der Standardendpunkte des Azure Monitor Application Insights SDK für Regionen wie Azure Government
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298317"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629183"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
 Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie die standardmäßigen Endpunktadressen überschreiben. Jedes SDK erfordert geringfügig andere Änderungen, die in diesem Artikel beschrieben werden. Diese Änderungen erfordern eine Anpassung des Beispielcodes und das Ersetzen der Platzhalterwerte für `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` und `Profile_Query_Endpoint_address` durch die tatsächlichen Endpunktadressen der jeweiligen Region. Am Ende dieses Artikels finden Sie Links zu den Endpunktadressen für Regionen, in denen diese Konfiguration erforderlich ist.
 
+> [!NOTE]
+> [Verbindungszeichenfolgen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) sind die neue bevorzugte Methode zum Festlegen von benutzerdefinierten Endpunkten in Application Insights.
+
+---
+
 ## <a name="sdk-code-changes"></a>Änderungen am SDK-Code
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET in „applicationinsights.config“
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Die Datei „applicationinsights.config“ wird automatisch überschrieben, wenn ein SDK-Upgrade erfolgt. Nachdem ein SDK-Upgrade erfolgt ist, müssen Sie die regionsspezifischen Endpunktwerte erneut eingeben.
@@ -41,7 +46,7 @@ Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Ändern Sie die Datei „appsettings.json“ in Ihrem Projekt wie folgt, um den Hauptendpunkt anzupassen:
 
@@ -69,58 +74,13 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
 
-### <a name="azure-functions-v2x"></a>Azure Functions v2.x
+# <a name="azure-functions"></a>[Azure-Funktionen](#tab/functions)
 
-Installieren Sie die folgenden Pakete in Ihrem Funktionsprojekt:
+Für Azure Functions wird nun empfohlen, [Verbindungszeichenfolgen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) zu verwenden, die in den Anwendungseinstellungen der Funktion festgelegt werden. Um im Funktionsbereich auf die Anwendungseinstellungen für Ihre Funktion zuzugreifen, wählen Sie **Einstellungen** > **Konfiguration** > **Anwendungseinstellungen** aus. 
 
-- Microsoft.ApplicationInsights, Version 2.10.0
-- Microsoft.ApplicationInsights.PerfCounterCollector, Version 2.10.0
-- Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, Version 2.10.0
+Name: `APPLICATIONINSIGHTS_CONNECTION_STRING` Wert: `Connection String Value`
 
-Fügen Sie dann den Startcode für ihre Funktionsanwendung hinzu (oder ändern Sie ihn):
-
-```csharp
-[assembly: WebJobsStartup(typeof(Example.Startup))]
-namespace Example
-{
-  class Startup : FunctionsStartup
-  {
-      public override void Configure(IWebJobsBuilder builder)
-      {
-          var quickPulseFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryModule) && 
-                                               sd.ImplementationType == typeof(QuickPulseTelemetryModule));
-          if (quickPulseFactory != null)
-          {
-              builder.Services.Remove(quickPulseFactory);
-          }
-
-          var appIdFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(IApplicationIdProvider));
-          if (appIdFactory != null)
-          {
-              builder.Services.Remove(appIdFactory);
-          }
-
-          var channelFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryChannel));
-          if (channelFactory != null)
-          {
-              builder.Services.Remove(channelFactory);
-          }
-
-          builder.Services.AddSingleton<ITelemetryModule, QuickPulseTelemetryModule>(_ =>
-              new QuickPulseTelemetryModule
-              {
-                  QuickPulseServiceEndpoint = "QuickPulse_Endpoint_Address"
-              });
-
-          builder.Services.AddSingleton<IApplicationIdProvider, ApplicationInsightsApplicationIdProvider>(_ => new ApplicationInsightsApplicationIdProvider() { ProfileQueryEndpoint = "Profile_Query_Endpoint_address" });
-
-          builder.Services.AddSingleton<ITelemetryChannel>(_ => new ServerTelemetryChannel() { EndpointAddress = "TelemetryChannel_Endpoint_Address" });
-      }
-  }
-}
-```
-
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 Ändern Sie in der Datei „applicationinsights.xml“ die Standardendpunktadresse.
 
@@ -155,7 +115,7 @@ namespace Example
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,7 +134,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -187,9 +147,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 Anleitungen zum Ändern des Erfassungsendpunkts für das opencensus-python-SDK finden Sie im [opencensus-python-Repository](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py).
+
+---
 
 ## <a name="regions-that-require-endpoint-modification"></a>Regionen, für die Endpunktänderungen erforderlich sind
 

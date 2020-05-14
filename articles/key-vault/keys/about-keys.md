@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686058"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900934"
 ---
 # <a name="about-azure-key-vault-keys"></a>Informationen zu Azure Key Vault-Schlüsseln
 
@@ -103,7 +103,7 @@ Weitere Informationen finden Sie unter [Schlüsselvorgänge in der Referenz zur 
 
 Nachdem ein Schlüssel in Key Vault erstellt wurde, können die folgenden kryptografischen Vorgänge mit dem Schlüssel ausgeführt werden:  
 
--   **Sign an Verify** (Signieren und überprüfen): Streng genommen handelt es sich hierbei um den Vorgang „sign hash“ (Hash signieren) oder „verify hash“ (Hash überprüfen), da Key Vault das Hashing von Inhalten im Rahmen der Signaturerstellung nicht unterstützt. Anwendungen sollten ein Hashing der Daten durchführen, die lokal signiert werden sollen, und dann anfordern, dass Key Vault den Hash signiert. Die Überprüfung signierter Hashes wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, stellen Sie sicher, dass die Vorgänge lokal ausgeführt werden.  
+-   **Sign an Verify** (Signieren und überprüfen): Streng genommen handelt es sich hierbei um den Vorgang „sign hash“ (Hash signieren) oder „verify hash“ (Hash überprüfen), da Key Vault das Hashing von Inhalten im Rahmen der Signaturerstellung nicht unterstützt. Anwendungen sollten ein Hashing der Daten durchführen, die lokal signiert werden sollen, und dann anfordern, dass Key Vault den Hash signiert. Die Überprüfung signierter Hashes wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten VERIFY-Vorgänge lokal ausgeführt werden.  
 -   **Key Encryption / Wrapping** (Verschlüsselung mit Schlüssel / Umschließen): Ein in Key Vault gespeicherter Schlüssel kann zum Schutz eines anderen Schlüssels verwendet werden. In der Regel handelt es sich dabei um einen symmetrischen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK). Wenn der Schlüssel in Key Vault asymmetrisch ist, wird die Schlüsselverschlüsselung verwendet. RSA-OAEP und die WRAPKEY/UNWRAPKEY-Vorgänge sind beispielsweise äquivalent zu ENCRYPT/DECRYPT. Wenn der Schlüssel in Key Vault symmetrisch ist, wird die Schlüsselumschließung verwendet. Beispiel: AES-KW. Der WRAPKEY-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten WRAPKEY-Vorgänge lokal ausgeführt werden.  
 -   **Encrypt and Decrypt** (Verschlüsseln und Entschlüsseln): Ein in Key Vault gespeicherter Schlüssel kann zum Verschlüsseln oder Entschlüsseln eines einzelnen Datenblocks verwendet werden. Die Größe des Blocks wird durch den Schlüsseltyp und den ausgewählten Verschlüsselungsalgorithmus bestimmt. Der ENCRYPT-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten ENCRYPT-Vorgänge lokal ausgeführt werden.  
 

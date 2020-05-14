@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189363"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592059"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -74,27 +74,38 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
 
 * Apache Storm
 
-    Sie können Apache Storm problemlos Datenknoten während der Ausführung hinzufügen oder daraus entfernen. Nach erfolgreichem Abschluss des Skalierungsvorgangs müssen Sie jedoch die Topologie neu ausgleichen.
-
-    Es stehen zwei Methoden für den erneuten Ausgleich zur Verfügung:
+    Sie können Apache Storm problemlos Datenknoten während der Ausführung hinzufügen oder daraus entfernen. Nach erfolgreichem Abschluss des Skalierungsvorgangs müssen Sie jedoch die Topologie neu ausgleichen. Durch eine Neuverteilung kann die Topologie die [Parallelitätseinstellungen](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) an die neue Anzahl von Knoten im Cluster anpassen. Verwenden Sie eine der folgenden Optionen, um ausgeführte Topologien erneut auszugleichen:
 
   * Storm-Webbenutzeroberfläche
+
+    Führen Sie die folgenden Schritte aus, um eine Topologie mithilfe der Storm-Benutzeroberfläche erneut auszugleichen.
+
+    1. Öffnen Sie `https://CLUSTERNAME.azurehdinsight.net/stormui` im Webbrowser, wobei `CLUSTERNAME` der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
+
+    1. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche **Neu ausgleichen**. Geben Sie die Verzögerung ein, bevor der Neuausgleich abgeschlossen ist.
+
+        ![Ausgleichen der HDInsight Storm-Skalierung](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * Befehlszeilenschnittstelle (CLI)
 
-    Weitere Informationen finden Sie in der [Apache Storm-Dokumentation](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    Stellen Sie eine Verbindung zum Server her, und verwenden Sie folgenden Befehl, um eine Topologie erneut auszugleichen:
 
-    Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![Ausgleichen der HDInsight Storm-Skalierung](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    Sie können auch Parameter angeben, um die ursprünglich von der Topologie bereitgestellten Parallelitätshinweise zu überschreiben. Der nachstehende Code konfiguriert beispielsweise die Topologie `mytopology` mit 5 Workerprozessen, 3 Executors für die Komponente blue-spout und 10 Executors für die Komponente yellow-bolt neu.
 
-    Es folgt ein Beispiel-CLI-Befehl für den Neuausgleich der Storm-Topologie:
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    Nach Skalierungsvorgängen sollten Partitionsreplikate ausgeglichen werden. Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md).
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Sicheres zentrales Herunterskalieren eines Clusters
 
@@ -252,3 +263,8 @@ Regionsserver werden innerhalb weniger Minuten nach Abschluss eines Skalierungsv
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Automatisches Skalieren von Azure HDInsight-Clustern](hdinsight-autoscale-clusters.md)
+
+Detaillierte Informationen zum Skalieren von HDInsight-Clustern finden Sie hier:
+
+* [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Verwalten von Apache Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md#scale-clusters)

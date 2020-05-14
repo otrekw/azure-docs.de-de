@@ -1,70 +1,66 @@
 ---
-title: Erstellen eines Power BI-App-Angebots – Azure Marketplace
+title: Erstellen eines Power BI-App-Angebots im kommerziellen Microsoft-Marketplace
 description: Erfahren Sie, wie Sie ein Power BI-App-Angebot erstellen und in Microsoft AppSource veröffentlichen.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 05/01/2020
+ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674857"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839146"
 ---
-# <a name="create-a-power-bi-app"></a>Erstellen einer Power BI-App
+# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Erstellen einer Power BI-App für Microsoft AppSource
 
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Power BI-App-Angebote aus dem Cloud-Partnerportal in Partner Center. Befolgen Sie für die Verwaltung Ihrer Angebote bis zur erfolgten Migration die Anweisungen unter [Erstellen eines Power BI-App-Angebots](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-create-offer) für das Cloud-Partnerportal.
+In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in Microsoft [AppSource](https://appsource.microsoft.com/) veröffentlichen.
 
-In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in Microsoft [AppSource](https://appsource.microsoft.com/) veröffentlichen.
-
-Damit Sie ein Power BI-App-Angebot erstellen können, benötigen Sie ein Konto im kommerziellen Marketplace in Partner Center. Wenn Sie noch keines erstellt haben, lesen Sie [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+2. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Übersicht**.
+3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Power BI-Dienst-App** aus.
 
-    :::image type="content" source="media/power-bi-menu-overview.png" alt-text="Menü für Übersicht über den kommerziellen Marketplace" border="false":::
+   ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-pbi-app.png)
 
-3. Wählen Sie **+ Neues Angebot** > **Power BI App** (Power BI-App) aus. Das Dialogfeld **Neues Angebot** wird angezeigt.
+> [!NOTE]
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 > [!IMPORTANT]
-> Wenn die Option **Power BI App** (Power BI-App) nicht angezeigt wird oder nicht aktiviert ist, verfügt Ihr Konto nicht über die Berechtigung zum Erstellen dieses Angebotstyps. Überprüfen Sie, ob Sie alle [Anforderungen](create-power-bi-app-overview.md) für diesen Angebotstyp erfüllen (einschließlich der Registrierung für ein Entwicklerkonto).
+> Wenn die Option **Power BI-Dienst-App** nicht angezeigt wird oder nicht aktiviert ist, verfügt Ihr Konto nicht über die Berechtigung zum Erstellen dieses Angebotstyps. Überprüfen Sie, ob Sie alle [Anforderungen](create-power-bi-app-overview.md) für diesen Angebotstyp erfüllen (einschließlich der Registrierung für ein Entwicklerkonto).
 
-### <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
+## <a name="new-offer"></a>Neues Angebot
 
 Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
 - Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
 - Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-
 - Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
-Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der zum Verweisen auf das Angebot im Partner Center verwendet wird.
+Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
 - Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
-- Dies kann nach dem Auswählen von **Erstellen** nicht mehr geändert werden.
+- Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
-Nachdem Sie diese beiden Werte eingegeben haben, wählen Sie **Erstellen** aus, um mit der Seite „Angebotsübersicht“ fortzufahren.
+Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-overview"></a>Angebotsübersicht
 
-Die Seite **Angebotsübersicht** zeigt eine visuelle Darstellung der zum Veröffentlichen dieses Angebots erforderlichen Schritte (sowohl der abgeschlossenen als auch der noch ausstehenden) und der erwarteten Dauer ihrer Ausführung.
+Diese Seite zeigt eine visuelle Darstellung der zum Veröffentlichen dieses Angebots erforderlichen Schritte (sowohl der abgeschlossenen als auch der noch ausstehenden) und der erwarteten Dauer ihrer Ausführung.
 
 Sie enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der Grundlage der von Ihnen ausgewählten Optionen. Beispiel:
 
 - Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) (Angebotsentwurf löschen)
 - Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
 - Wenn das Angebot in der Vorschau ist: [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) (Live schalten)
-- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben: [Cancel publishing](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) (Veröffentlichung abbrechen)
+- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben, gehen Sie wie unter [Stornieren der Veröffentlichung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) beschrieben vor.
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
-
-Führen Sie die unten angegebenen Schritte aus, um Ihr Angebot einzurichten.
 
 ### <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
@@ -90,7 +86,7 @@ Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 - [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
 
-Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt fortfahren: Eigenschaften.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="properties"></a>Eigenschaften
 
@@ -184,9 +180,13 @@ Hier einige Tipps zum Verfassen Ihrer Beschreibung:
 - Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
 - Verwenden Sie möglichst branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
 
-Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors. Mit dem Rich-Text-Editor können Sie Zahlen, Aufzählungspunkte, fette und kursive Formatierungen und Einzüge hinzufügen, um die Lesbarkeit Ihrer Beschreibung zu verbessern.
+Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
 
-:::image type="content" source="media/power-bi-rich-text-editor.png" alt-text="Darstellung des Rich-Text-Editors" border="false":::
+![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
+
+| <center>Textformat ändern | <center>Aufzählungszeichen oder Nummerierung hinzufügen | <center>Texteinzüge hinzufügen oder entfernen |
+| --- | --- | --- |
+| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
 
 ### <a name="search-keywords"></a>Suchbegriffe
 
@@ -206,7 +206,7 @@ Geben Sie die Webadresse der Datenschutzrichtlinien Ihrer Organisation ein. Es l
 
 ### <a name="contact-information"></a>Kontaktinformationen
 
-Sie müssen den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt** und einen **Technischen Ansprechpartner** angeben. Diese Informationen werden Kunden nicht angezeigt. Sie sind für Microsoft verfügbar und dürfen gegenüber CSP-Partnern (Cloud Solution Provider) angegeben werden.
+Sie müssen den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Supportkontakt** und einen **technischen Ansprechpartner** angeben. Diese Informationen werden Kunden nicht angezeigt. Sie sind für Microsoft verfügbar und dürfen gegenüber CSP-Partnern (Cloud Solution Provider) angegeben werden.
 
 - Supportkontakt (erforderlich): Für allgemeine Supportfragen.
 - Technischer Ansprechpartner (erforderlich): Für technische Fragen und Zertifizierungsprobleme.
@@ -222,9 +222,14 @@ Geben Sie mindestens ein und bis zu drei verwandte Marketingdokumente im PDF-For
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
+>[!NOTE]
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
+
 #### <a name="store-logos"></a>Store-Logos
 
-Stellen Sie PNG-Dateien für das Logo Ihres Angebots in zwei Größen bereit: **Klein** (48 x 48 Pixel) und **Groß** (216 x 216 Pixel).
+Stellen Sie PNG-Dateien für das Logo Ihres Angebots in zwei Pixelgrößen bereit:
+- **Klein** (48 x 48)
+- **Groß** (216 x 216)
 
 Beide Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Liste verwendet.
 
@@ -234,7 +239,7 @@ Fügen Sie mindestens einen und bis zu fünf Screenshots hinzu, die zeigen, wie 
 
 #### <a name="videos-optional"></a>Videos (optional)
 
-Fügen Sie optional bis zu fünf Videos hinzu, die Ihr Angebot vorstellen. Geben Sie den Namen des Videos, seine Webadresse und ein Miniaturbild des Videos im PNG-Format mit einer Größe von 1280 x 720 Pixel ein.
+Fügen Sie optional bis zu fünf Videos hinzu, die Ihr Angebot vorstellen. Geben Sie den Namen des Videos, seine Webadresse und ein Miniaturbild des Videos im PNG-Format mit einer Größe von 1280 x 720 Pixel ein.
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 

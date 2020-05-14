@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364157"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598486"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -94,7 +94,13 @@ Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn 
 
 Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden. 
 
+**Was geschieht, wenn die beiden Hardwaregenerationen nicht in derselben Region unterstützt werden?**
+
 Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden, kann die Hardwaregeneration nur manuell gewechselt werden. Dazu müssen Sie eine neue Instanz in der Region bereitstellen, in der die gewünschte Hardwaregeneration verfügbar ist, sowie die Daten zwischen der alten und neuen Instanz manuell sichern und wiederherstellen.
+
+**Was geschieht, wenn nicht genügend IP-Adressen zum Ausführen des Updatevorgangs vorhanden sind?**
+
+Falls nicht genügend IP-Adressen im Subnetz vorhanden sind, in dem die verwaltete Instanz bereitgestellt wird, müssen Sie ein neues Subnetz und darin eine neue verwaltete Instanz erstellen. Es wird auch empfohlen, ein neues Subnetz mit mehr IP-Adressen zu erstellen, damit bei zukünftigen Updatevorgängen eine ähnliche Situation vermieden werden kann. (Informationen zu geeigneten Subnetzgrößen finden Sie unter [Ermitteln der Größe von VNET-Subnetzen](sql-database-managed-instance-determine-size-vnet-subnet.md).) Nachdem die neue Instanz bereitgestellt wurde, können Sie Daten zwischen der alten und der neuen Instanz manuell sichern und wiederherstellen. Sie können auch eine instanzenübergreifende [Point-in-Time-Wiederherstellung](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell) durchführen. 
 
 
 ## <a name="tune-performance"></a>Optimieren der Leistung

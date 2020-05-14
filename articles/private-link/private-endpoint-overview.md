@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115244"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744393"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -35,7 +35,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten: 
 - Ein privater Endpunkt ermöglicht die Verbindung zwischen den Consumern im selben VNet, in regionalen VNets mit Peering, globalen VNets mit Peering und lokalen Standorten mit [VPN](https://azure.microsoft.com/services/vpn-gateway/) oder [Express Route](https://azure.microsoft.com/services/expressroute/) und Diensten auf Basis von Private Link.
  
-- Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine Netzwerkschnittstelle eingerichtet. Der Schnittstelle wird eine private IP-Adresse aus dem Subnetz zugewiesen, das dem Private Link-Dienst zugeordnet ist.
+- Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine schreibgeschützte Netzwerkschnittstelle eingerichtet. Der Schnittstelle wird eine private IP-Adresse aus dem Subnetz zugewiesen, das der Private Link-Ressource zugeordnet ist.
  
 - Der private Endpunkt muss in derselben Region wie das virtuelle Netzwerk bereitgestellt werden. 
  
@@ -57,23 +57,23 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure Storage (in englischer Sprache)**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tabelle (table, table_secondary)<BR> Warteschlange (queue, queue_secondary)<BR> Datei (file, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake-Dateisystem Gen2 (dfs, dfs_secondary)       |
-|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
-|**Azure Database for PostgreSQL – Einzelserver** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts    | Sql, MongoDB, Cassandra, Gremlin, Table|
+|**Azure Database for PostgreSQL – Einzelserver** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | Tresor |
-|**Azure Kubernetes Service: Kubernetes-API** | Microsoft.ContainerService/managedClusters | managedCluster |
+|**Azure Kubernetes Service: Kubernetes-API** | Microsoft.ContainerService/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft.Search/searchService| searchService|  
-|**Azure Container Registry** | Microsoft.ContainerRegistry/registries  | Registrierung |
-|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores   | configurationStore |
-|**Azure Backup** | Microsoft.RecoveryServices/vaults   | Tresor |
+|**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | Registrierung |
+|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores    | configurationStore |
+|**Azure Backup** | Microsoft.RecoveryServices/vaults    | Tresor |
 |**Azure Event Hub** | Microsoft.EventHub/namespaces    | Namespace |
 |**Azure Service Bus** | Microsoft.ServiceBus/namespaces | Namespace |
 |**Azure Relay** | Microsoft.Relay/namespaces | Namespace |
-|**Azure Event Grid** | Microsoft.EventGrid/topics  | topic |
-|**Azure Event Grid** | Microsoft.EventGrid/domains | Domäne |
+|**Azure Event Grid** | Microsoft.EventGrid/topics    | topic |
+|**Azure Event Grid** | Microsoft.EventGrid/domains    | Domäne |
 |**Azure-WebApps** | Microsoft.Web/sites    | site |
-|**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces  | Arbeitsbereich |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | Arbeitsbereich |
   
  
 ## <a name="network-security-of-private-endpoints"></a>Netzwerksicherheit privater Endpunkte 
@@ -104,52 +104,11 @@ Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitz
 Wenn Sie eine Verbindung mit einer Private Link-Ressource über einen voll qualifizierten Domänennamen (FQDN) als Teil der Verbindungszeichenfolge herstellen, ist es wichtig, Ihre DNS-Einstellungen so zu konfigurieren, dass sie in die zugewiesene private IP-Adresse aufgelöst werden. Bestehende Azure-Dienste verfügen möglicherweise bereits über eine DNS-Konfiguration, die beim Herstellen einer Verbindung über einen öffentlichen Endpunkt verwendet werden kann. Diese muss überschrieben werden, um eine Verbindung mithilfe Ihres privaten Endpunkts herzustellen. 
  
 Die Netzwerkschnittstelle, die dem privaten Endpunkt zugeordnet ist, enthält alle Informationen, die zur Konfiguration Ihres DNS erforderlich sind, einschließlich FQDN und privater IP-Adressen, die einer bestimmten Private Link-Ressource zugewiesen wurden. 
- 
-Mit den folgenden Optionen können Sie Ihre DNS-Einstellungen für private Endpunkte konfigurieren: 
-- **Hostdatei (wird nur für Tests empfohlen)** . Sie können die Hostdatei auf einem virtuellen Computer verwenden, um das DNS zu überschreiben.  
-- **Private DNS-Zone**. Sie können private DNS-Zonen verwenden, um die DNS-Auflösung für einen bestimmten privaten Endpunkt zu überschreiben. Eine private DNS-Zone kann mit Ihrem virtuellen Netzwerk verknüpft werden, um bestimmte Domänen aufzulösen.
-- **Benutzerdefinierter DNS-Server**. Sie können Ihren eigenen DNS-Server verwenden, um die DNS-Auflösung für eine angegebene Private Link-Ressource zu überschreiben. Wenn Ihr [DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) in einem virtuellen Netzwerk gehostet wird, können Sie zum Verwenden einer privaten DNS-Zone eine DNS-Weiterleitungsregel erstellen, um die Konfiguration für alle Private Link-Ressourcen zu vereinfachen.
- 
-> [!IMPORTANT]
-> Es wird nicht empfohlen, eine Zone zu überschreiben, die aktiv zur Auflösung öffentlicher Endpunkte genutzt wird. Verbindungen mit Ressourcen können ohne DNS-Weiterleitung an das öffentliche DNS nicht ordnungsgemäß aufgelöst werden. Um Probleme zu vermeiden, erstellen Sie einen anderen Domänennamen, oder halten Sie sich an den vorgeschlagenen Namen für jeden der folgenden Dienste. 
- 
-Verwenden Sie für Azure-Dienste die Zonennamen in der folgenden Tabelle:
 
-|Typ der Private Link-Ressource   |Unterressource  |Zonenname  |
-|---------|---------|---------|
-|SQL DB (Microsoft.Sql/servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure Synapse Analytics (Microsoft.Sql/servers)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
-|Speicherkonto (Microsoft.Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Speicherkonto (Microsoft.Storage/storageAccounts)    |    Tabelle (table, table_secondary)      |   privatelink.table.core.windows.net       |
-|Speicherkonto (Microsoft.Storage/storageAccounts)    |    Warteschlange (queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Speicherkonto (Microsoft.Storage/storageAccounts)   |    Datei (file, file_secondary)      |    privatelink.file.core.windows.net      |
-|Speicherkonto (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake-Dateisystem Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake-Dateisystem Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Tabelle|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL – Einzelserver (Microsoft.DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (Microsoft.KeyVault/vaults)|Tresor|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service: Kubernetes-API (Microsoft.ContainerService/managedClusters) | managedCluster | {guid}.privatelink.<region>.azmk8s.io|
-|Azure Search (Microsoft.Search/searchServices)|searchService|privatelink.search.windows.net|   
-|Azure Container Registry (Microsoft.ContainerRegistry/registries) | Registrierung | privatelink.azurecr.io |
-|Azure App Configuration (Microsoft.Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|
-|Azure Backup (Microsoft.RecoveryServices/vaults)| Tresor |privatelink.{region}.backup.windowsazure.com|
-|Azure Event Hub (Microsoft.EventHub/namespaces)| Namespace |privatelink.servicebus.windows.net|
-|Azure Service Bus (Microsoft.ServiceBus/namespaces) | Namespace |privatelink.servicebus.windows.net|
-|Azure Relay (Microsoft.Relay/namespaces) | Namespace |privatelink.servicebus.windows.net|
-|Azure Event Grid (Microsoft.EventGrid/topics)   | topic | topic.{region}.privatelink.eventgrid.azure.net|
-|Azure Event Grid (Microsoft.EventGrid/domains) | Domäne | domain.{region}.privatelink.eventgrid.azure.net |
-|Azure-Web-Apps (Microsoft.Web/sites)    | site | privatelink.azurewebsites.net |
-|Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)   | Arbeitsbereich | privatelink.api.azureml.ms |
- 
-Azure erstellt einen DNS-Eintrag des Typs CNAME (kanonischer Name) im öffentlichen DNS zum Umleiten der Auflösung an die vorgeschlagenen Domänennamen. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
- 
-Ihre Anwendungen müssen die Verbindungs-URL nicht ändern. Beim Versuch der Auflösung mithilfe eines öffentlichen DNS wird der DNS-Server nun in Ihre privaten Endpunkten aufgelöst. Der Prozess wirkt sich nicht auf Ihre Anwendungen aus. 
+Ausführliche Informationen zu bewährten Methoden und Empfehlungen finden Sie im Artikel [DNS-Konfiguration für private Azure-Endpunkte](private-endpoint-dns.md).
+
+
+
  
 ## <a name="limitations"></a>Einschränkungen
  

@@ -2,13 +2,13 @@
 title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437589"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780333"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -25,12 +25,24 @@ Die Azure Migrate-Appliance wird in den folgenden Szenarien verwendet.
 **Bewertung von Hyper-V-VMs** | Azure Migrate-Serverbewertung | Ermitteln von virtuellen Hyper-V-Computern<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
 **Bewertung physischer Computer** |  Azure Migrate-Serverbewertung |  Ermitteln physischer Server (oder virtuelle Computer, die als physische Server behandelt werden)<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
 
+## <a name="deployment-methods"></a>Bereitstellungsmethoden
+
+Die Appliance kann mithilfe verschiedener Methoden bereitgestellt werden:
+
+- Die Appliance kann mithilfe einer Vorlage für VMware-VMs und Hyper-V-VMs (OVA-Vorlage für VMware oder VHD für Hyper-V) bereitgestellt werden.
+- Wenn Sie keine Vorlage verwenden möchten, können Sie die Appliance für VMware oder Hyper-V mithilfe eines PowerShell-Skripts bereitstellen.
+- In Azure Government sollten Sie die Appliance mithilfe eines Skripts bereitstellen.
+- Bei physischen Servern stellen Sie die Appliance immer mithilfe eines Skripts bereit.
+- Die entsprechenden Downloadlinks finden Sie in den nachstehenden Tabellen.
+
+
 ## <a name="appliance---vmware"></a>Appliance – VMware 
 
 In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für VMware zusammengefasst.
 
 **Anforderung** | **VMware** 
 --- | ---
+**Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
 **Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).<br/>- **DRA-Agent**: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen replizierten Computern und Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
 **Unterstützte Bereitstellung** | Bereitstellen als VMware VM mit OVA-Vorlage.<br/><br/> Bereitstellen als VMware VM oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
@@ -50,6 +62,7 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 
 **Anforderung** | **Hyper-V** 
 --- | ---
+**Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
 **Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/>- **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
 **Unterstützte Bereitstellung** | Bereitstellen als Hyper-V VM mithilfe einer VHD-Vorlage.<br/><br/> Bereitstellen als virtueller Hyper-V-Computer oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
@@ -66,20 +79,24 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 
 **Anforderung** | **Physisch** 
 --- | ---
+**Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
 **Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten: <br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
-**Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts.
+**Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts. Das Skript steht im Portal als Download zur Verfügung.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 250 physische Server ermitteln.
 **PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal herunter. [Weitere Informationen](tutorial-assess-physical.md#set-up-the-appliance) Alternativ können Sie es [direkt herunterladen](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Die Downloadgröße beträgt 59,7 MB.
-**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
+**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.<br/> Das Ausführen der Appliance auf einem Computer mit Windows Server 2019 wird nicht unterstützt.
 **Hashwert** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 ## <a name="url-access"></a>URL-Zugriff
 
 Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 
-- Bei der Bereitstellung der Appliance führt Azure Migrate eine Verbindungsüberwachung für die in der folgenden Tabelle zusammengefassten URLs durch.
-- Wenn Sie einen URL-basierten Proxy für die Internetverbindung verwenden, müssen Sie den Zugriff auf diese URLs zulassen und somit sicherstellen, dass der Proxy alle CNAME-Einträge auflöst, die beim Nachschlagen der URLs empfangen werden.
+- Wenn Sie die Appliance bereitstellen, führt Azure Migrate eine Konnektivitätsprüfung für die erforderlichen URLs durch.
+- Sie müssen den Zugriff auf alle URLs in der Liste zulassen. Wenn Sie nur eine Bewertung durchführen, können Sie die URLs überspringen, die für die VMware-Migration ohne Agent als erforderlich gekennzeichnet sind.
+-  Wenn Sie einen URL-basierten Proxy für die Internetverbindung verwenden, stellen Sie sicher, dass der Proxy alle CNAME-Einträge auflöst, die beim Abrufen der URLs empfangen werden.
+
+### <a name="public-cloud-urls"></a>URLs für die öffentliche Cloud
 
 **URL** | **Details**  
 --- | --- |
@@ -87,7 +104,7 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
 management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
-dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
+*.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
 download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center
@@ -95,6 +112,25 @@ download.microsoft.com/download | Zulassen von Downloads von Microsoft Download 
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
 *.hypervrecoverymanager.windowsazure.com | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
 *.blob.core.windows.net |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
+
+### <a name="government-cloud-urls"></a>URLs für Azure Government-Clouds
+
+**URL** | **Details**  
+--- | --- |
+*.portal.azure.us  | Navigieren Sie zum Azure-Portal.
+graph.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
+login.microsoftonline.us  | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
+management.usgovcloudapi.net | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
+dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
+*.vault.usgovcloudapi.net | Verwalten von Geheimnissen in Azure Key Vault
+aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
+download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center
+*.servicebus.usgovcloudapi.net  | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.hypervrecoverymanager.windowsazure.us | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.blob.core.usgovcloudapi.net  |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
+*.applicationinsights.us | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
+
 
 
 
@@ -225,7 +261,7 @@ Die von der Azure Migrate-Appliance ermittelten Metadaten helfen Ihnen bei der E
 
 Nachstehend finden Sie die vollständige Liste der Hyper-V-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
 
-**DATEN* | **WMI-KLASSE** | **WMI-KLASSENEIGENSCHAFT**
+**DATEN** | **WMI-KLASSE** | **WMI-KLASSENEIGENSCHAFT**
 --- | --- | ---
 **Computerdetails** | 
 Seriennummer von BIOS _ Msvm_BIOSElement | BIOSSerialNumber
@@ -267,14 +303,158 @@ Virtueller Hyper-V-Netzwerkadapter | Gesendete Bytes/Sekunde | Berechnung der VM
 - Die Speichernutzung ist (Aktueller Druck * Sichtbarer physischer Speicher des Gastcomputers) / 100.
 - Die Werte für die Festplatten- und Netzwerkauslastung werden von den aufgeführten Hyper-V-Leistungsindikatoren gesammelt.
 
+
+## <a name="collected-data---physical"></a>Gesammelte Daten – physisch
+
+Die Appliance sammelt Metadaten, Leistungsdaten und Abhängigkeitsanalysedaten (wenn die [Abhängigkeitsanalyse](concepts-dependency-visualization.md) ohne Agent verwendet wird).
+
+### <a name="windows-metadata"></a>Windows-Metadaten
+
+Die von der Azure Migrate-Appliance ermittelten Metadaten helfen Ihnen bei der Ermittlung der Bereitschaft von Computern und Apps für die Migration zu Azure, der richtigen Größe für Computer und Apps, der Kosten der Planung und bei der Analyse von Anwendungsabhängigkeiten. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
+
+Nachstehend finden Sie die vollständige Liste der Windows-Servermetadaten, die die Appliance sammelt und an Azure sendet.
+
+**DATEN** | **WMI-KLASSE** | **WMI-KLASSENEIGENSCHAFT**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Domain, Name, PartOfDomain
+Anzahl der Prozessorkerne | Win32_PRocessor | NumberOfCores
+Zugeordneter Arbeitsspeicher | Win32_ComputerSystem | TotalPhysicalMemory
+Seriennummer des BIOS | Win32_ComputerSystemProduct | IdentifyingNumber
+BIOS-GUID | Win32_ComputerSystemProduct | UUID
+Starttyp | Win32_DiskPartition | Überprüfen auf Partition mit Type = **GPT:System** für EFI/BIOS
+Betriebssystemname | Win32_OperatingSystem | Caption
+Betriebssystemversion |Win32_OperatingSystem | Version
+Betriebssystemarchitektur | Win32_OperatingSystem | OSArchitecture
+Datenträgeranzahl | Win32_DiskDrive | Model, Size, DeviceID, MediaType, Name
+Datenträgergröße | Win32_DiskDrive | Size
+NIC-Liste | Win32_NetworkAdapterConfiguration | Description, Index
+NIC-IP-Adresse | Win32_NetworkAdapterConfiguration | IPAddress
+NIC-MAC-Adresse | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux-Metadaten
+
+Nachstehend finden Sie die vollständige Liste der Linux-Servermetadaten, die die Appliance sammelt und an Azure sendet.
+
+**DATEN** | **LINUX** 
+--- | --- 
+FQDN | cat /proc/sys/kernel/hostname, hostname -f
+Anzahl der Prozessorkerne |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+Zugeordneter Arbeitsspeicher | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
+Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+BIOS-GUID | cat /sys/class/dmi/id/product_uuid
+Starttyp | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
+Betriebssystemname/-version | Für die Version und den Namen des Betriebssystems wird auf folgende Dateien zugegriffen:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+Betriebssystemarchitektur | Uname -m
+Datenträgeranzahl | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
+Startdatenträger | df /boot \| sed -n 2p \| awk '{print $1}'
+Datenträgergröße | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'
+NIC-Liste | ip -o -4 addr show \| awk '{print $2}'
+NIC-IP-Adresse | ip addr show $nic \| grep inet \| awk '{print $2}' \| cut -f1 -d "/" 
+NIC-MAC-Adresse | ip addr show $nic \| grep ether  \| awk '{print $2}'
+
+### <a name="windows-performance-data"></a>Windows-Leistungsdaten
+
+Nachstehend finden Sie die Windows-Serverleistungsdaten, die die Appliance sammelt und an Azure sendet.
+
+**Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
+--- | --- | ---
+CPU-Auslastung | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+Speicherauslastung | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
+NIC-Anzahl | Win32_PerfFormattedData_Tcpip_NetworkInterface | Ruft die Anzahl der Netzwerkgeräte ab.
+Pro NIC empfangene Daten | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+Pro NIC übertragene Daten | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+Datenträgeranzahl | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | Anzahl der Datenträger
+Datenträgerdetails | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+
+### <a name="linux-performance-data"></a>Linux-Leistungsdaten
+
+Nachstehend finden Sie die Linux-Serverleistungsdaten, die die Appliance sammelt und an Azure sendet.
+
+**Daten** | **Linux** 
+--- | --- 
+CPU-Auslastung | cat /proc/stat/| grep 'cpu' /proc/stat
+Speicherauslastung | free \| grep Mem \| awk '{print $3/$2 * 100.0}'
+NIC-Anzahl | lshw -class network \| grep eth[0-60] \| wc -l
+Pro NIC empfangene Daten | cat /sys/class/net/eth$nic/statistics/rx_bytes
+Pro NIC übertragene Daten | cat /sys/class/net/eth$nic/statistics/tx_bytes
+Datenträgeranzahl | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
+Datenträgerdetails | cat /proc/diskstats
+
+
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
-Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden. Dies geschieht automatisch, da auf der Appliance standardmäßig die automatische Aktualisierung aktiviert ist. Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
+Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden. Dies geschieht automatisch, da auf der Appliance standardmäßig die automatische Aktualisierung aktiviert ist. Sie können diese Standardeinstellung ändern, um die Appliancedienste manuell zu aktualisieren.
 
-- **Deaktivieren der automatischen Aktualisierung**: Sie deaktivieren die automatische Aktualisierung in der Registrierung, indem Sie in „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“ den Schlüssel „AutoUpdate“ auf 0 (DWORD) festlegen. Wenn Sie manuelle Updates verwenden, müssen Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden.
-- **Manuelles Aktualisieren**: Stellen Sie bei manuellen Updates sicher, dass Sie alle Agents auf der Appliance aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.
+### <a name="turn-off-auto-update"></a>Deaktivieren der automatischen Aktualisierung
 
-![Automatisches Aktualisieren der Appliance](./media/migrate-appliance/autoupdate.png)
+1. Öffnen Sie auf dem Computer, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+2. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Zum Deaktivieren der automatischen Aktualisierung erstellen Sie einen Registrierungsschlüssel **AutoUpdate** mit dem DWORD-Wert 0.
+
+    ![Festlegen des Registrierungsschlüssels](./media/migrate-appliance/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>Aktivieren der automatischen Aktualisierung
+
+Sie können die automatische Aktualisierung über eine der folgenden Methoden aktivieren:
+
+- Löschen des AutoUpdate-Registrierungsschlüssels unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“.
+- Nach Abschluss der Ermittlung im Appliance-Konfigurations-Manager.
+
+So löschen Sie den Registrierungsschlüssel:
+
+1. Öffnen Sie auf dem Computer, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+2. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Löschen Sie den Registrierungsschlüssel **AutoUpdate**, der zuvor zum Deaktivieren der automatischen Aktualisierung erstellt wurde.
+
+Aktivierung im Appliance-Konfigurations-Manager nach Abschluss der Ermittlung:
+
+1. Öffnen Sie auf dem Computer mit der Appliance den Appliance-Konfigurations-Manager.
+2. Klicken Sie unter **Appliancedienste** > **Die automatische Aktualisierung der Azure Migrate-Komponenten ist deaktiviert** auf die Option zum Aktivieren der automatischen Aktualisierung.
+
+    ![Aktivieren der automatischen Aktualisierung](./media/migrate-appliance/turn-on.png)
+
+### <a name="check-the-appliance-services-version"></a>Überprüfen der Appliancediensteversion
+
+Sie können die Version der Appliancedienste über eine der folgenden Methoden überprüfen:
+
+- Im Appliance-Konfigurations-Manager, nachdem die Ermittlung abgeschlossen wurde.
+- Auf dem Computer mit der Appliance unter **Systemsteuerung** > **Programme und Features**.
+
+So überprüfen Sie die Version im Appliance-Konfigurations-Manager:
+
+1. Öffnen Sie nach Abschluss der Ermittlung den Appliance-Konfigurations-Manager (in der Appliance-Web-App).
+2. Überprüfen Sie die Version der Appliancedienste unter **Appliancedienste**.
+
+    ![Überprüfen der Version](./media/migrate-appliance/version.png)
+
+So überprüfen Sie die Version in der Systemsteuerung:
+
+1. Klicken Sie in der Appliance auf **Start** > **Systemsteuerung** > **Programme und Features**
+2. Überprüfen Sie die Version der Appliancedienste in der Liste.
+
+    ![Überprüfen der Version in der Systemsteuerung](./media/migrate-appliance/programs-features.png)
+
+### <a name="manually-update-an-older-version"></a>Manuelle Aktualisierung einer älteren Version
+
+Wenn bei einer oder mehreren Komponenten eine ältere Version vorhanden ist, müssen Sie den Dienst deinstallieren und eine manuelle Aktualisierung auf die aktuelle Version durchführen.
+
+1. In diesem [Download](https://aka.ms/latestapplianceservices) der LatestComponents.json-Datei finden Sie die jeweils aktuelle Version der Appliancedienste.
+2.  Öffnen Sie die Datei „LatestComponents.json“ nach dem Herunterladen im Editor.
+3. Suchen Sie in der Datei nach der aktuellen Dienstversion und dem zugehörigen Downloadlink. Beispiel:
+
+    "Name": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+
+4.  Laden Sie die aktuelle Version eines überholten Diensts über den Downloadlink in der Datei herunter.
+5. Führen Sie nach dem Herunterladen den folgenden Befehl in einem Befehlsfenster für Administratoren aus, um die Integrität der heruntergeladenen MSI-Datei zu überprüfen.
+
+    Beispiel: ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```  C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+
+5. Überprüfen Sie, ob die Befehlsausgabe dem Hashwerteintrag für den Dienst in der Datei (z. B. der oben stehende Hashwert MD5) entspricht.
+6. Führen Sie dann die MSI-Datei aus, um den Dienst zu installieren. Es handelt sich um eine unbeaufsichtigte Installation, und das Installationsfenster wird geschlossen, sobald der Vorgang beendet ist.
+7. Überprüfen Sie nach Abschluss der Installation die Version des Diensts unter **Systemsteuerung** > **Programme und Features**. Die Dienstversion sollte auf die aktuelle Version aus der JSON-Datei aktualisiert worden sein.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

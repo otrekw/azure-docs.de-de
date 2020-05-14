@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587174"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744749"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -44,7 +44,7 @@ Zusätzlich zu den dedizierten RBAC-Rollen von Azure Sentinel gibt es RBAC-Rolle
 > Log Analytics-Rollen gewähren auch Lesezugriff auf alle Azure-Ressourcen, weisen aber nur den Log Analytics-Ressourcen Schreibrechte zu.
 
 
-Ein Benutzer, dem z. B. die Rollen **Azure Sentinel-Leser** und **Azure-Mitwirkender** (nicht **Azure Sentinel-Mitwirkender**) zugewiesen sind, kann Daten in Azure Sentinel bearbeiten, obwohl er nur über die Berechtigungen für **Sentinel-Leser** verfügt. Wenn Sie daher Berechtigungen nur in Azure Sentinel gewähren möchten, sollten Sie die vorherigen Berechtigungen dieses Benutzers sorgfältig entfernen und sicherstellen, dass Sie keine erforderliche Berechtigungsrolle für eine andere Ressource aufheben.
+Ein Benutzer, dem z. B. die Rollen **Azure Sentinel-Leser** und **Azure-Mitwirkender** (nicht **Azure Sentinel-Mitwirkender**) zugewiesen sind, kann Daten in Azure Sentinel bearbeiten, obwohl er nur über die Berechtigungen für **Sentinel-Leser** verfügt. Wenn Sie daher einem Benutzer Berechtigungen nur in Azure Sentinel gewähren möchten, sollten Sie die vorherigen Berechtigungen dieses Benutzers sorgfältig entfernen und sicherstellen, dass Sie keine erforderliche Berechtigungsrolle für eine andere Ressource aufheben.
 
 > [!NOTE]
 >- Azure Sentinel verwendet Playbooks für die automatische Reaktion auf Bedrohungen. Playbooks nutzen Azure Logic Apps und sind eine separate Azure-Ressource. Sie können bestimmten Mitgliedern Ihres Security Operations-Teams die Option zuweisen, Logic Apps für SOAR-Vorgänge (Sicherheitsorchestrierung, Automatisierung und Reaktion) zu verwenden. Sie können die Rolle [Logik-App-Mitwirkender](../role-based-access-control/built-in-roles.md#logic-app-contributor) oder die Rolle [Logik-App-Operator](../role-based-access-control/built-in-roles.md#logic-app-operator) verwenden, um eine explizite Berechtigung für die Verwendung von Playbooks zu erteilen.

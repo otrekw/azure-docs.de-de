@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Entfernen von Rollenzuweisungen für externe Benutzer über RBAC und das Azure-Portal
-description: Hier erfahren Sie, wie Sie organisationsexternen Benutzern mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) Zugriff auf Azure-Ressourcen erteilen.
+title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen für externe Benutzer über das Azure-Portal – Azure RBAC
+description: Hier erfahren Sie, wie Sie organisationsexternen Benutzern mithilfe des Azure-Portals und der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Zugriff auf Azure-Ressourcen erteilen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225366"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735758"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen für externe Gastbenutzer über das Azure-Portal
 
-Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](overview.md) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern zusammenarbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
+Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](overview.md) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern zusammenarbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von Azure RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,7 +69,7 @@ Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Direc
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Hinzufügen einer Rollenzuweisung für einen Gastbenutzer
 
-In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um eine Rollenzuweisung für einen Gastbenutzer in verschiedenen Bereichen hinzuzufügen:
+In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um eine Rollenzuweisung für einen Gastbenutzer in verschiedenen Bereichen hinzuzufügen:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**.
 

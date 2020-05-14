@@ -1,33 +1,33 @@
 ---
-title: 'Erstellen eines Azure-Containerangebots in Partner Center: Azure Marketplace'
-description: In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen.
+title: Erstellen eines Azure-Containerangebots – Azure Marketplace
+description: In diesem Artikel wird erläutert, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81867359"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791934"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
 > [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal nach Partner Center. Folgen Sie für die Verwaltung Ihrer Angebote bis zum Abschluss der Migration den Anweisungen unter [Container](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) für das Cloud-Partnerportal.
+> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal ins Partner Center. Folgen Sie für die Verwaltung Ihrer Angebote bis zum Abschluss der Migration den Anweisungen unter [Container](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) für das Cloud-Partnerportal.
 
-In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an, und wählen Sie dann im oberen Menü **Dashboard** aus.
-2. Wählen Sie im linken Menü **Kommerzieller Marketplace** und dann **Übersicht** aus.
-3. Wählen Sie auf der Seite **Übersicht** die Option **+ Neues Angebot** und dann **Azure-Container** aus. Das Dialogfeld **Neues Angebot** wird angezeigt.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Azure-Container** aus.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="Seite „Übersicht“ in Partner Center. Die Schaltfläche „Neues Angebot“ und das Beratungsdienstangebot sind hervorgehoben.":::
+    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
@@ -36,16 +36,16 @@ In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Mar
 
 Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
-- Diese ID können Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen sehen.
+- Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
 - Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
-**Geben Sie einen**  **Angebotsalias** ein. Dies ist der Name, der zum Verweisen auf das Angebot im Partner Center verwendet wird.
+Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
 - Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
 - Dies kann nach dem Auswählen von **Erstellen** nicht mehr geändert werden.
 
-Wählen Sie **Erstellen** aus, bevor Sie fortfahren.
+Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-overview"></a>Angebotsübersicht
 
@@ -64,7 +64,7 @@ Führen Sie die unten angegebenen Schritte aus, um Ihr Angebot einzurichten.
 
 ### <a name="connect-lead-management--optional"></a>Einbinden der Leadverwaltung (optional)
 
-Wenn Sie Ihr Angebot mithilfe von Partner Center im Marketplace veröffentlichen, können Sie es mit Ihrem CRM-System (Customer Relationship Management) verbinden. Dadurch empfangen Sie Kontaktinformationen zum Kunden, sobald jemand sein Interesse an Ihrem Produkt bekundet oder es verwendet.
+Wenn Sie Ihr Angebot mithilfe des Partner Centers im kommerziellen Marketplace veröffentlichen, können Sie es mit Ihrem CRM-System (Customer Relationship Management) verbinden. Dadurch empfangen Sie Kontaktinformationen zum Kunden, sobald jemand sein Interesse an Ihrem Produkt bekundet oder es verwendet.
 
 1. **Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen**. Das Partner Center unterstützt die folgenden CRM-Systeme:
 
@@ -83,10 +83,10 @@ Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
 - [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
 
-Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt fortfahren: Eigenschaften.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ### <a name="properties"></a>Eigenschaften
 
@@ -216,7 +216,7 @@ Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bew�
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
 >[!Note]
->Wenn ein Problem beim Hochladen von Dateien auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 
