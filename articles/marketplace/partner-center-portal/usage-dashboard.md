@@ -1,31 +1,31 @@
 ---
-title: Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace in Partner Center
-description: Erfahren Sie, wie Sie auf Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote zugreifen.
+title: Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
+description: Erfahren Sie, wie Sie auf Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote zugreifen. Navigieren Sie zum Dashboard „Nutzung“ im Partner Center unter „Kommerzieller Marketplace“.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262178"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793005"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Nutzung“ im Partner Center. In diesem Dashboard werden Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote in zwei getrennten Registerkarten angezeigt: „VM-Nutzung“ und „Nutzung nach getakteter Abrechnung“
 
-Um auf das Dashboard „Nutzung“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter „Kommerzieller Marketplace“.
+Um auf das Dashboard „Nutzung“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter **Kommerzieller Marketplace**.
 
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Dashboard „Nutzung“
 
-Im Dashboard „Nutzung“ sind die Metriken zur Nutzung und zur Nutzung nach getakteter Abrechnung für alle VM-Angebote dargestellt. Diese befinden sich auf zwei getrennten Registerkarten: „VM-Nutzung“ und „Nutzung nach getakteter Abrechnung“
+Im Dashboard „Nutzung“ sind die Metriken zur Nutzung und zur Nutzung nach getakteter Abrechnung für alle VM-Angebote dargestellt. Diese Metriken befinden sich auf zwei getrennten Registerkarten: „VM-Nutzung“ und „Nutzung nach getakteter Abrechnung“
 
 Die Registerkarte „VM-Nutzung“ enthält grafische Darstellungen der folgenden Nutzungsdaten:
 
@@ -45,7 +45,7 @@ Die Registerkarte „VM-Nutzung“ enthält grafische Darstellungen der folgende
 
 In der Tabelle „Nutzungszusammenfassung“ werden die Nutzungsstunden der Kunden für alle erworbenen Angebote angezeigt.
 
-- Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet.
+- Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet.
 - Die tatsächlichen Nutzungsstunden werden als die Zeitspanne (in Stunden) definiert, in der VMs ausgeführt wurden.
 - Der Prozentwert stellt eine Zunahme/Abnahme der Nutzung im ausgewählten Datumsbereich dar ([Nutzung im letzten Monat – Nutzung im ersten Monat])/Nutzung im ersten Monat).
 - Nach oben weisende grüne Dreiecke geben eine Zunahme an.
@@ -58,13 +58,13 @@ Im Wärmebild **Normalisierte Nutzung nach Geografie** werden die Nutzungsstunde
 
 ### <a name="usage-by-offers"></a>Nutzung nach Angeboten
 
-- Im Kreisdiagramm **Normalisierte Nutzung nach Angeboten** sind die normalisierten Nutzungsstunden entsprechend dem ausgewählten Datumsbereich nach Angeboten aufgeschlüsselt. Die 5 Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
+- Im Kreisdiagramm **Normalisierte Nutzung nach Angeboten** sind die normalisierten Nutzungsstunden entsprechend dem ausgewählten Datumsbereich nach Angeboten aufgeschlüsselt. Die fünf Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
 - Im Balkendiagramm wird der Wachstumstrend für den ausgewählten Datumsbereich nach Monaten angezeigt. In den Monatsspalten sind die Nutzungsstunden aus den Angeboten mit den meisten Nutzungsstunden für den jeweiligen Monat dargestellt. Im Liniendiagramm wird der prozentuale Wachstumstrend auf der sekundären Y-Achse dargestellt.
 - Mit dem Schieberegler oben im Diagramm können Sie entlang der X-Achse nach rechts und links scrollen und/oder sich auf bestimmte Datenpunkte konzentrieren.
 
 ### <a name="usage-trend-by-offers-and-skus"></a>Nutzungstrend nach Angeboten und SKUs
 
-In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewählten SKUs eines Angebots angezeigt. In der Angebotsbestenliste werden die 50 Top-Angebote mit der höchsten Nutzung nach Nutzungsstunden sortiert aufgelistet. In der SKU-Bestenliste werden die 50 Top-SKUs mit der höchsten Nutzung für das ausgewählte Angebot aufgelistet.
+In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewählten SKUs eines Angebots angezeigt. In der Angebotsbestenliste werden die 50 Topangebote mit der höchsten Nutzung nach Nutzungsstunden sortiert aufgelistet. In der SKU-Bestenliste werden die 50 Top-SKUs mit der höchsten Nutzung für das ausgewählte Angebot aufgelistet.
 
 ### <a name="usage-by-offer-type"></a>Nutzung nach Angebotstyp
 
@@ -97,7 +97,7 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 > [!NOTE]
 > Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der normalisierten Ansicht oder in der Rohdatenansicht anzuzeigen. Die normalisierte Ansicht ist die Standardansicht für diese Diagramme.
 
-**Filter für die Seite „Nutzung“** werden auf Seitenebene angewendet. Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export für detaillierte Nutzungsdaten anzuzeigen. Filter werden auf die Daten angewendet, die für den Datenbereich extrahiert wurden, den Sie in der oberen rechten Ecke der Seite „Bestellungen“ ausgewählt haben.
+**Filter für die Seite „Nutzung“** werden auf Seitenebene angewendet. Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export für detaillierte Nutzungsdaten anzuzeigen. Filter werden auf die Daten angewandt, die für den in der rechten oberen Ecke der Seite „Bestellungen“ ausgewählten Datenbereich extrahiert wurden.
 
 - **Angebotstypen** und **Angebotsnamen** werden nur für die Angebote aufgelistet, die Sie im ausgewählten Datumsbereich erworben haben. In der Liste enthaltene Angebotsnamen werden für Angebotstypen angezeigt, die aus der Liste ausgewählt werden.
 - Die Standardauswahl für jede der Filteroptionen lautet „Alle“, mit Ausnahme von **Verwendungstyp**. Die Standardauswahl für **Verwendungstyp** ist „Normalisierte Nutzung“. Um die Rohdatennutzung in den Diagrammen anzuzeigen, wählen Sie „Rohdatennutzung“ aus.
@@ -122,6 +122,6 @@ Auf der Registerkarte **Nutzung nach getakteter Abrechnung** werden Nutzungsinfo
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).
+- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Microsoft AppSource und Azure Marketplace finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
