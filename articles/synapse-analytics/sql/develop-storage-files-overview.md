@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676673"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691876"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Abfragen von Speicherdateien mithilfe von SQL On-Demand-Ressourcen (Vorschau) innerhalb von Synapse SQL
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+Verwenden Sie unbedingt [geeignete abgeleitete Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), um eine optimale Leistung zu erzielen. 
+
 ### <a name="filename-function"></a>filename-Funktion
 
-Diese Funktion gibt den Namen der Datei zurück, aus der die Zeile stammt.
+Diese Funktion gibt den Namen der Datei zurück, aus der die Zeile stammt. 
 
 Informationen zum Abfragen bestimmter Dateien finden Sie in Abschnitt zu Dateinamen im Artikel [Abfragen bestimmter Dateien](query-specific-files.md#filename).
+
+Der Rückgabedatentyp ist „nvarchar(1024)“. Um optimale Leistung zu erzielen, wandeln Sie das Ergebnis der filename-Funktion immer in den entsprechenden Datentyp um. Achten Sie bei Verwendung des Zeichendatentyps unbedingt auf die richtige Länge.
 
 ### <a name="filepath-function"></a>filepath-Funktion
 
@@ -137,6 +141,8 @@ Diese Funktion gibt eine vollständigen Pfad oder eine Teil eines Pfads zurück:
 - Beim Aufruf mit Parameter wird ein Teil eines Pfads zurückgegeben, der dem Platzhalterzeichen an der im Parameter angegebenen Position entspricht. Der Parameterwert 1 beispielsweise würde den Teil eines Pfads zurückgeben, der dem ersten Platzhalterzeichen entspricht.
 
 Weitere Informationen finden Sie im Abschnitt zu Dateipfaden im Artikel [Abfragen bestimmter Dateien](query-specific-files.md#filepath).
+
+Der Rückgabedatentyp ist „nvarchar(1024)“. Um optimale Leistung zu erzielen, wandeln Sie das Ergebnis der filepath-Funktion immer in den entsprechenden Datentyp um. Achten Sie bei Verwendung des Zeichendatentyps unbedingt auf die richtige Länge.
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Verwenden von komplexen Typen und geschachtelten oder wiederholten Datenstrukturen
 
