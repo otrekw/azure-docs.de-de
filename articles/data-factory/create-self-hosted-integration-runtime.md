@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416635"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857697"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -67,7 +67,7 @@ Führen Sie die unten angegebenen Schritte aus, um über die Azure Data Factory-
 1. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
 
 1. Wählen Sie auf der daraufhin angezeigten Seite **Selbstgehostet** aus, um eine selbstgehostete IR zu erstellen, und wählen Sie dann **Weiter**aus.
-   ![Erstellen einer selbstgehosteten IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![Erstellen einer selbstgehosteten IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. Geben Sie einen Namen für Ihre IR ein, und wählen Sie **Erstellen** aus.
 

@@ -2,21 +2,20 @@
 title: Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie benutzerdefinierte Richtlinien für das horizontale Herunterskalieren mit Azure-VM-Skalierungsgruppen verwenden, die die Autoskalierungskonfiguration zum Verwalten der Instanzenzahl verwenden.
 services: virtual-machine-scale-sets
-author: avirishuv
-manager: vashan
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 02/26/2020
-ms.author: avverma
-ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919837"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125161"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
 

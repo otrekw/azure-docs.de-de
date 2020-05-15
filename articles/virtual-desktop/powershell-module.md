@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653132"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195129"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Einrichten des PowerShell-Moduls für Windows Virtual Desktop
 
@@ -63,7 +63,7 @@ Dadurch werden Sie direkt bei dem Standardabonnement für Ihre Administratoranme
 Wenn Sie das Standardabonnement ändern möchten, nachdem Sie sich angemeldet haben, führen Sie das folgende Cmdlet aus:
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 Wenn Sie ein neues Abonnement verwenden möchten und auswählen, müssen Sie die ID des Abonnements in den anschließend ausgeführten Cmdlets nicht angeben. Mit dem folgenden Cmdlet wird beispielsweise ein bestimmter Sitzungshost abgerufen, ohne dass die Abonnement-ID erforderlich ist:

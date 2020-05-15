@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 6ad9c7912eee6c3f5ec55b9cd7ab340bc79c9db7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73837772"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930232"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Vorhersagen einer Antwort mit einem einfachen Modell
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Reihe „Data Science für Einsteiger“
@@ -128,4 +128,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio (klassisch)](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

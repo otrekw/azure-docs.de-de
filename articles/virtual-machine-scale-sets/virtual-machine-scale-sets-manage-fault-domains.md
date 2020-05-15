@@ -1,18 +1,20 @@
 ---
 title: Verwalten von Fehlerdomänen in Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie beim Erstellen einer VM-Skalierungsgruppe die richtige Anzahl von Fehlerdomänen (FDs) auswählen.
-author: rajsqr
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 12/18/2018
-ms.author: drewm
-ms.openlocfilehash: 297837354cea4bb5ccdcc03261810dcffd144243
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 1f5b253dbc2161892bcc2aee07c8cd3788fa5fb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275730"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200032"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Auswählen der richtigen Anzahl von Fehlerdomänen für VM-Skalierungsgruppen
 VM-Skalierungsgruppen werden in Azure-Regionen ohne Zonen standardmäßig mit fünf Fehlerdomänen erstellt. Wenn diese Option für Regionen ausgewählt ist, die die Zonenbereitstellung von VM-Skalierungsgruppen unterstützen, lautet der Standardwert der Anzahl von Fehlerdomänen für jede Zone 1. FD = 1 bedeutet in diesem Fall, dass die zur Skalierungsgruppe gehörenden VM-Instanzen auf bestmögliche Weise über viele Racks verteilt werden.

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82710233"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118157"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Storage – Referenz
 
@@ -142,7 +142,7 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressource
 |**correlationId** | Hierbei handelt es sich um die ID, die zum ressourcenübergreifenden Korrelieren von Protokollen verwendet wird. Beispiel: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**location** | Hierbei handelt es sich um den Speicherort des Speicherkontos. Beispiel: `North Europe`. |
 |**protocol**|Hierbei handelt es sich um das für den Vorgang verwendete Protokoll, z. B. `HTTP`, `HTTPS`, `SMB` oder `NFS`.|
-| **uri** | Hierbei handelt es sich um den angeforderten Uniform Resource Identifier. Beispiel: http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10. |
+| **uri** | Hierbei handelt es sich um den angeforderten Uniform Resource Identifier. Beispiel: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>Felder, die beschreiben, wie der Vorgang authentifiziert wurde
 

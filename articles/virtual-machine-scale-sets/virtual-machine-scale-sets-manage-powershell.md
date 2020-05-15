@@ -2,18 +2,19 @@
 title: Verwalten von Virtual Machine Scale Sets mit Azure PowerShell
 description: Informationen zu gängigen Azure PowerShell-Cmdlets für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 5794fb40b49a575c12f6855292c41014fabf3b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 68b5aa21f861009dd78f48428fa0ffdc5b5ae3a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011598"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124868"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 

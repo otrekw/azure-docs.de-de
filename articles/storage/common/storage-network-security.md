@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 6f0e7c514835227fafd439803107531fbc62285c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 911172bd6ef9c08419e74828657c8bdb2f8d1b30
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133833"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930640"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -393,7 +393,7 @@ Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Ermöglicht den Zugriff auf Speicherkonten über Data Share. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity) |
-| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage und lesen die Daten. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
+| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage und lesen die Daten. [Weitere Informationen](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |

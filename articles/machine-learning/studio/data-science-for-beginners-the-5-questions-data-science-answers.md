@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204442"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930147"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger – Video 1: Die 5 Fragen, die Data Science beantwortet
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.
@@ -136,4 +136,4 @@ Das sind sie also: Die 5 Fragen, die Data Science beantworten kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio (klassisch)](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

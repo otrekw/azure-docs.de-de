@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e41d00a31a0065e2923259cbb0bb36986cbb2ec8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144483"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995064"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -73,7 +73,7 @@ Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](
 Wir unterstützen zwei Arten von Datasets: 
 + Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-DataFrame laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
 
-+ Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Dateien, die von FileDatasets referenziert werden, können Sie auf Ihr Computeziel [herunterladen oder dort einbinden](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target).
++ Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Dateien, die von FileDatasets referenziert werden, können Sie auf Ihr Computeziel [herunterladen oder dort einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
 
 Weitere Funktionalität für Datasets finden Sie in der folgenden Dokumentation:
 

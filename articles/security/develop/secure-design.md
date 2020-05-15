@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461717"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857173"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -222,11 +222,11 @@ Benötigt ein Softwareentwickler die Rechte eines Domänenadministrators? Benöt
 Achten Sie darauf, dass in Ihrer Anwendung in allen Zugriffsmustern das [Prinzip der geringsten Rechte](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) erzwungen wird.
 
 > [!NOTE]
->  Die Regeln der geringsten Rechte müssen für die Software und die Personen gelten, die die Software erstellen. Softwareentwickler können ein großes Risiko für die IT-Sicherheit darstellen, wenn ihnen zu viel Zugriff gewährt wird. Die Folgen können schwerwiegend sein, wenn ein Entwickler böswillige Absichten hat oder mehr Zugriff erhält, als er benötigt. Es empfiehlt sich, dass für Entwickler die Regeln der geringsten Rechte während des gesamten Entwicklungslebenszyklus angewendet werden.
+> Die Regeln der geringsten Rechte müssen für die Software und die Personen gelten, die die Software erstellen. Softwareentwickler können ein großes Risiko für die IT-Sicherheit darstellen, wenn ihnen zu viel Zugriff gewährt wird. Die Folgen können schwerwiegend sein, wenn ein Entwickler böswillige Absichten hat oder mehr Zugriff erhält, als er benötigt. Es empfiehlt sich, dass für Entwickler die Regeln der geringsten Rechte während des gesamten Entwicklungslebenszyklus angewendet werden.
 
 #### <a name="implement-just-in-time-access"></a>Implementieren von Just-In-Time-Zugriff
 
-Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity), um wie folgt vorzugehen:
+Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity), um wie folgt vorzugehen:
 
 - Erteilen der Berechtigungen, die Benutzer benötigen, nur Just-In-Time.
 - Zuweisen von Rollen für eine verkürzte Dauer mit der Gewissheit, dass die Berechtigungen automatisch widerrufen werden.

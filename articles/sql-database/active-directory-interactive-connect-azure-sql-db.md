@@ -4,19 +4,19 @@ description: C#-Codebeispiel mit Erklärungen für das Herstellen der Verbindung
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: active directory
+ms.custom: active directory, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
-ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc597881d15dbd534b36109fc653ffbc671f1f4d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73692305"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197077"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure Multi-Factor Authentication
 

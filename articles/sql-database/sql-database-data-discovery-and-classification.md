@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766989"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123852"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Datenermittlung und -klassifizierung für Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -152,18 +152,6 @@ Weitere Informationen zur Verwendung von T-SQL für Klassifizierungen finden Sie
 - Zum Entfernen der Klassifizierung aus einer oder mehreren Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG LÖSCHEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zum Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>Verwenden der REST-API
-
-Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen programmgesteuert zu verwalten. Die veröffentlichte REST-API unterstützt die folgenden Vorgänge:
-
-- [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) Erstellt oder aktualisiert die Vertraulichkeitsbezeichnung der angegebenen Spalte.
-- [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) Löscht die Vertraulichkeitsbezeichnung der angegebenen Spalte.
-- [Deaktivieren von Empfehlungen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) Deaktiviert Vertraulichkeitsempfehlungen für die angegebene Spalte.
-- [Aktivieren von Empfehlungen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) Aktiviert Vertraulichkeitsempfehlungen für die angegebene Spalte. (Standardmäßig sind Empfehlungen für alle Spalten aktiviert.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) (Abrufen): Ruft die Vertraulichkeitsbezeichnung der angegebenen Spalte ab.
-- [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) Ruft die aktuellen Vertraulichkeitsbezeichnungen der angegebenen Datenbank ab.
-- [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) Ruft die empfohlenen Vertraulichkeitsbezeichnungen für die angegebene Datenbank ab.
-
 ### <a name="use-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
 Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azure SQL-Datenbank und verwaltete Instanzen zu verwalten.
 
@@ -185,6 +173,17 @@ Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azu
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>Verwenden der REST-API
+
+Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen programmgesteuert zu verwalten. Die veröffentlichte REST-API unterstützt die folgenden Vorgänge:
+
+- [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) Erstellt oder aktualisiert die Vertraulichkeitsbezeichnung der angegebenen Spalte.
+- [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) Löscht die Vertraulichkeitsbezeichnung der angegebenen Spalte.
+- [Deaktivieren von Empfehlungen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) Deaktiviert Vertraulichkeitsempfehlungen für die angegebene Spalte.
+- [Aktivieren von Empfehlungen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) Aktiviert Vertraulichkeitsempfehlungen für die angegebene Spalte. (Standardmäßig sind Empfehlungen für alle Spalten aktiviert.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) (Abrufen): Ruft die Vertraulichkeitsbezeichnung der angegebenen Spalte ab.
+- [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) Ruft die aktuellen Vertraulichkeitsbezeichnungen der angegebenen Datenbank ab.
+- [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) Ruft die empfohlenen Vertraulichkeitsbezeichnungen für die angegebene Datenbank ab.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nächste Schritte
 

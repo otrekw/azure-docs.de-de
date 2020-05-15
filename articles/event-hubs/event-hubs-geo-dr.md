@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209144"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858288"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -138,7 +138,7 @@ Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Im [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) wird ein einfacher Workflow erläutert, der eine Geo-Kopplung erstellt und ein Failover für ein Notfallwiederherstellungsszenario initiiert.
-* Der [REST API-Verweis](/rest/api/eventhub/disasterrecoveryconfigs) beschreibt APIs für das Konfigurieren der georedundanten Notfallwiederherstellung.
+* Der [REST API-Verweis](/rest/api/eventhub/) beschreibt APIs für das Konfigurieren der georedundanten Notfallwiederherstellung.
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 

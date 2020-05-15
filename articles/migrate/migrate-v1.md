@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77914380"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993803"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -216,7 +216,7 @@ Nach dem Konfigurieren eines Arbeitsbereichs müssen Sie auf allen lokalen Compu
 4. Kopieren Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel. Sie benötigen diese Angaben beim Installieren des MMA auf dem lokalen Computer.
 
 > [!NOTE]
-> Um die Installation von Agents zu automatisieren, können Sie ein Bereitstellungstool wie Configuration Manager oder ein Partnertool wie [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) verwenden, das eine Agent-Bereitstellungslösung für Azure Migrate bereitstellt.
+> Um die Installation von Agents zu automatisieren, können Sie ein Bereitstellungstool wie Configuration Manager oder ein Partnertool wie [Intigua](https://www.intigua.com/intigua-for-azure-migration) verwenden, das eine Agent-Bereitstellungslösung für Azure Migrate bereitstellt.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Installieren des MMA-Agents auf einem Windows-Computer

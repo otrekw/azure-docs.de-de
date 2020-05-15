@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186928"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993713"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Bei Remoteausführungen muss auf die Trainingsdaten vom Remotecomputeziel aus zu
 * Einfaches übertragen von Daten aus statischen Dateien oder URL-Quellen in Ihren Arbeitsbereich
 * Bereitstellen Ihrer Daten für Trainingsskripts, wenn die Ausführung mit Cloudcomputeressourcen erfolgt
 
-Ein Beispiel für die Verwendung der `Dataset`-Klasse zum Einbinden von Daten in das Computeziel finden Sie in dieser [Vorgehensweise](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target).
+Ein Beispiel für die Verwendung der `Dataset`-Klasse zum Einbinden von Daten in das Computeziel finden Sie in dieser [Vorgehensweise](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
 
 ## <a name="train-and-validation-data"></a>Trainings- und Überprüfungsdaten
 

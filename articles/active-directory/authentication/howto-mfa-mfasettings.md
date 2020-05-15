@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105657"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116287"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -36,7 +36,7 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
 | [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen melden können. |
 | [Benachrichtigungen](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
-| [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
+| [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
 | Anbieter | Hier werden alle vorhandenen Authentifizierungsanbieter angezeigt, die Sie möglicherweise mit Ihrem Konto verknüpft haben. Neue Authentifizierungsanbieter können ab 1. September 2018 nicht mehr erstellt werden. |
 

@@ -1,19 +1,20 @@
 ---
 title: Angefügte Datenträger für Azure Virtual Machine Scale Sets
 description: Erfahren Sie anhand von kurz erläuterten Anwendungsfällen, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
-author: avirishuv
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 4/25/2017
-ms.author: avverma
-ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e5bdb30929b4d93b05d850a56c9a6baf32f9856b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123377"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125008"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.

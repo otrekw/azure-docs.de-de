@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77199040"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994178"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -49,7 +49,7 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
     |`--workernode-count`| Die Anzahl an Workerknoten im Cluster. In diesem Artikel wird die Variable `clusterSizeInNodes` als Wert verwendet, der an `--workernode-count` übergeben wird. |
     |`--version`| Die HDInsight-Clusterversion. In diesem Artikel wird die Variable `clusterVersion` als Wert verwendet, der an `--version` übergeben wird. Weitere Informationen: [Unterstützte HDInsight-Versionen](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| Die Art von HDInsight-Cluster, z. B. hadoop, interactivehive, hbase, kafka, storm, spark, rserver, mlservices.  In diesem Artikel wird die Variable `clusterType` als Wert verwendet, der an `--type` übergeben wird. Weitere Informationen: [Clustertypen und Konfiguration](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|Die Versionen verschiedener Hadoop-Komponenten durch Leerzeichen getrennt im Format „Komponente=Version“. In diesem Artikel wird die Variable `componentVersion` als Wert verwendet, der an `--component-version` übergeben wird. Weitere Informationen: [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--component-version`|Die Versionen verschiedener Hadoop-Komponenten durch Leerzeichen getrennt im Format „Komponente=Version“. In diesem Artikel wird die Variable `componentVersion` als Wert verwendet, der an `--component-version` übergeben wird. Weitere Informationen: [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
     Ersetzen Sie `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME` und `PASSWORD` durch die gewünschten Werte. Ändern Sie die Werte der anderen Variablen nach Bedarf. Geben Sie dann die CLI-Befehle ein.
 

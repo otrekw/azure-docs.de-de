@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c171c1bab99e4e3748267308745ee66631ed08d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451668"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888977"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -621,4 +621,4 @@ Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, so
 - [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server-Verschlüsselung](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Always Encrypted-Assistent](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Always Encrypted-Blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Always Encrypted-Blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

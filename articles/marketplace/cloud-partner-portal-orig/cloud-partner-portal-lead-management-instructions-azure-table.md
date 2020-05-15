@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280353"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124702"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Leadverwaltungsanleitung für Tabellenspeicher
 
@@ -98,7 +98,7 @@ In den nächsten Schritten wird eine Verbindung mit Ihrer Speichertabelle herges
 
    - **Abfrage filtern**: Wenn Sie dieses Feld auswählen, wird das Symbol **Vergangene Zeit abrufen** in einem Popupfenster angezeigt. Wählen Sie **Vergangene Zeit** aus, um diesen Wert als Zeitstempel zum Filtern der Abfrage zu verwenden. Alternativ können Sie die folgende Funktion in das Feld einfügen:
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![Einrichten der Funktion zum Filtern der Abfrage](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

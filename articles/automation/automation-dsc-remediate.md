@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f871b406793e455c857ca14c83434c9ed3e004df
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406087"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993842"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>Korrigieren nicht konformer DSC-Server
 
@@ -37,8 +37,7 @@ Update-DscConfiguration -Wait -Verbose
 
 Für Linux-Server ist derzeit keine vergleichbare Funktion verfügbar.
 Die einzige Möglichkeit besteht darin, den Registrierungsvorgang zu wiederholen.
-
-Für Azure-Knoten können Sie die Abweichung im Azure-Portal oder mithilfe von Cmdlets des Az-Moduls korrigieren. Ausführliche Informationen zu diesem Prozess sind unter [Onboarding von Computern zur Verwaltung durch Azure Automation State Configuration](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal) dokumentiert.
+Für Azure-Knoten können Sie die Abweichung im Azure-Portal oder mithilfe von Cmdlets des Az-Moduls korrigieren. Ausführliche Informationen zu diesem Prozess sind unter [Onboarding von Computern zur Verwaltung durch Azure Automation State Configuration](automation-dsc-onboarding.md#enable-a-vm-using-azure-portal) dokumentiert.
 Für Hybridknoten kann die Korrektur von Abweichungen mit den enthaltenen Python-Skripts durchgeführt werden.
 Weitere Informationen finden Sie im Repository [PowerShell DSC für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 

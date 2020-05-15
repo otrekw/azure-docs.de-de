@@ -1,20 +1,20 @@
 ---
 title: Behandeln von Kartenereignissen | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine interaktive Web SDK-Karte mit Kartenereignissen erstellen.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534897"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124005"
 ---
 # <a name="interact-with-the-map"></a>Interaktion mit der Karte
 

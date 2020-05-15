@@ -1,17 +1,20 @@
 ---
 title: Azure Disk Encryption und Erweiterungssequenzierung von Azure VM-Skalierungsgruppen
 description: Dieser Artikel enthält eine Anleitung zur Aktivierung von Microsoft Azure Disk Encryption für virtuelle Linux-IaaS-Computer.
-author: msmbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76279029"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117256"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Verwenden von Azure Disk Encryption mit Erweiterungssequenzierung der VM-Skalierungsgruppe
 

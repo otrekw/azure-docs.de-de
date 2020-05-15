@@ -2,20 +2,19 @@
 title: Automatische Instanzreparaturen mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie Richtlinien für automatische Reparaturen für VM-Instanzen in einer Skalierungsgruppe konfigurieren
 author: avirishuv
-manager: vashan
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
-ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/28/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603679"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197041"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen
 
@@ -154,7 +153,7 @@ az vmss create \
   --generate-ssh-keys \
   --load-balancer <existingLoadBalancer> \
   --health-probe <existingHealthProbeUnderLoaderBalancer> \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 Im Beispiel oben werden ein vorhandener Load Balancer und ein vorhandener Integritätstest zum Überwachen der Anwendungsintegrität von Instanzen verwendet. Wenn Sie stattdessen die Verwendung einer Application Health-Erweiterung zur Überwachung vorziehen, können Sie eine Skalierungsgruppe erstellen, die Application Health-Erweiterung konfigurieren und dann die Richtlinie für automatische Reparaturen mithilfe von *az vmss update* aktivieren, wie im nächsten Abschnitt beschrieben.
@@ -217,7 +216,7 @@ az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Anzeigen und Aktualisieren des Dienststatus einer Richtlinie für automatische Instanzreparaturen

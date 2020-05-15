@@ -3,12 +3,12 @@ title: 'Schnellstart: QnA Maker-Clientbibliothek für Python'
 description: In dieser Schnellstartanleitung werden die ersten Schritte mit der QnA Maker-Clientbibliothek für Python gezeigt.
 ms.topic: include
 ms.date: 04/27/2020
-ms.openlocfilehash: ccd046ad8e511517abd9f45072781e736f0e79b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8a180096e21203dd45d806ceca14794c985d664a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204016"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876060"
 ---
 Verwenden Sie die QnA Maker-Clientbibliothek für Python für folgende Zwecke:
 
@@ -53,7 +53,7 @@ Erstellen Sie ein [CognitiveServicesCredentials](https://docs.microsoft.com/pyth
 
 Verwenden Sie nach dem Erstellen des Clients die [Wissensdatenbank](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python), um Ihre Wissensdatenbank zu erstellen, zu verwalten und zu veröffentlichen.
 
-Bei sofortigen Vorgängen gibt eine Methode in der Regel ein JSON-Objekt zurück, das den Status angibt. Bei zeitintensiven Vorgängen ist die Antwort die Vorgangs-ID. Rufen Sie die [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python)-Methode mit der Vorgangs-ID auf, um den [Status der Anforderung](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python) zu bestimmen.
+Bei sofortigen Vorgängen gibt eine Methode in der Regel ein JSON-Objekt zurück, das den Status angibt. Bei zeitintensiven Vorgängen ist die Antwort die Vorgangs-ID. Rufen Sie die [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python)-Methode mit der Vorgangs-ID auf, um den [Status der Anforderung](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) zu bestimmen.
 
 
 ## <a name="code-examples"></a>Codebeispiele
@@ -84,7 +84,7 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Erstellen Sie als Nächstes ein CognitiveServicesCredentials-Objekt mit Ihrem Schlüssel, und verwenden Sie es mit Ihrem Endpunkt, um ein [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python)-Objekt zu erstellen.
+Erstellen Sie als Nächstes ein CognitiveServicesCredentials-Objekt mit Ihrem Schlüssel, und verwenden Sie es mit Ihrem Endpunkt, um ein [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.qnamakerclient?view=azure-python)-Objekt zu erstellen.
 
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]

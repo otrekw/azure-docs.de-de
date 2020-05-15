@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114160"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872140"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 
@@ -45,7 +45,7 @@ Die folgenden Fehlercodes und Meldungen werden bei der Verwendung von Änderungs
 
 Das folgende Beispiel zeigt, wie Sie Änderungsdatenströme für alle Elemente der Sammlung abrufen können. In diesem Beispiel wird ein Cursor erstellt, um Elemente zu überwachen, wenn sie eingefügt, aktualisiert oder ersetzt werden. Die `$match`-Phase, `$project`-Phase und `fullDocument`-Option sind erforderlich, um die Änderungsdatenströme abzurufen. Die Überwachung auf Löschvorgänge mit Änderungsdatenströmen wird derzeit nicht unterstützt. Als Problemumgehung können Sie den zu löschenden Elementen eine schwache Markierung hinzufügen. Beispielsweise können Sie ein Attribut im Element mit dem Namen „deleted“ hinzufügen. Wenn Sie das Element löschen möchten, können Sie „deleted“ auf `true` und eine Gültigkeitsdauer für das Element festlegen. Da das Aktualisieren von „deleted“ in `true` ein Update ist, wird diese Änderung im Änderungsdatenstrom angezeigt.
 
-### <a name="javascript"></a>JavaScript:
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 var cursor = db.coll.watch(
@@ -61,8 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-
-### <a name="c"></a>C#:
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()

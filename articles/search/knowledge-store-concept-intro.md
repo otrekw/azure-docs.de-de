@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942994"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858802"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
 
@@ -25,6 +25,10 @@ Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus
 Wenn Sie in der Vergangenheit kognitive Fähigkeiten genutzt haben, wissen Sie bereits, dass Dokumente mithilfe von *Skillsets* auf verschiedene Weisen angereichert werden. Bei der Ausgabe kann es sich um einen Suchindex oder (neu in dieser Vorschauversion) um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, resultieren jedoch in einer Ausgabe, die auf sehr unterschiedliche Weisen strukturiert, gespeichert und verwendet wird.
 
 Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
+
 
 ![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Wissensspeicher im Pipelinediagramm")
 
@@ -46,6 +50,10 @@ Wissensspeicher bieten u. a. folgende Vorteile:
 > Neu bei KI-Anreicherung und kognitiven Qualifikationen? Azure Cognitive Search arbeitet mit den Bild- und Sprachfeatures von Cognitive Services zusammen, um Quelldaten unter Verwendung der optischen Zeichenerkennung (Optical Character Recognition, OCR) für Bilddateien, der Entitätserkennung, der Extraktion von Schlüsselbegriffen aus Textdateien u. v. m. zu extrahieren und anzureichern. Weitere Informationen finden Sie unter [Was ist die „kognitive Suche“ in Azure Search?](cognitive-search-concept-intro.md).
 
 ## <a name="physical-storage"></a>Physischer Speicher
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
+
 
 Physisch wird ein Wissensspeicher durch das `projections`-Element einer `knowledgeStore`-Definition in einem Skillset ausgedrückt. Durch die Projektion wird eine Struktur der Ausgabe definiert, sodass sie Ihrer beabsichtigten Nutzung entspricht.
 

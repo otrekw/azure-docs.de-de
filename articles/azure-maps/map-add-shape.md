@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Polygonebene zu einer Karte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie ein Polygon und ein Multipolygon auf einer Karte im Microsoft Azure Maps Web SDK rendern.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9191f054ca3c7374bcbc7bec46573289a512612c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535051"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124039"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene zur Karte
 

@@ -2,17 +2,19 @@
 title: Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
 description: Informationen zum Aktivieren von Beendigungsbenachrichtigungen für Instanzen von Azure-VM-Skalierungsgruppen
 author: avirishuv
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 02/26/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226938"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125178"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
 Für Skalierungsgruppeninstanzen kann der Empfang von Beendigungsbenachrichtigungen aktiviert und ein vordefiniertes Verzögerungstimeout für den Beendigungsvorgang festgelegt werden. Die Beendigungsbenachrichtigung wird über „Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)“ gesendet. Dieser Subdienst sendet Benachrichtigungen über die Durchführung und Verzögerung einschneidender Vorgänge, z. B. Neustarts und erneute Bereitstellungen. In der Lösung wurde der Scheduled Events-Liste mit „Terminate“ ein weiteres Ereignis hinzugefügt. Welche Verzögerung dem Beendigungsereignis zugeordnet wird, hängt von dem Verzögerungslimit ab, das der Benutzer in der Konfiguration des Skalierungsgruppenmodells festlegt.

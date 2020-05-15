@@ -1,17 +1,17 @@
 ---
 title: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API in Azure Cosmos DB
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren und Trigger mit der JavaScript-Abfrage-API in Azure Cosmos DB schreiben.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: mjbrown
-ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441710"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982325"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Schreiben von gespeicherten Prozeduren und Triggern in Azure Cosmos DB mit der JavaScript-Abfrage-API
 

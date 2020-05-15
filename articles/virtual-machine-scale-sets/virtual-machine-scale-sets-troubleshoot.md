@@ -1,20 +1,20 @@
 ---
 title: Beheben von Problemen bei der automatischen Skalierung mit Virtual Machine Scale Sets
 description: Beheben Sie Probleme bei der automatischen Skalierung von VM-Skalierungsgruppen. Sie erhalten grundlegende Informationen zu typischen Problemen sowie zu ihrer Behebung.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
+author: avirishuv
+ms.author: avverma
+ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: windows
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 11/16/2017
-ms.author: mimckitt
-ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviwer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273374"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125144"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 **Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.

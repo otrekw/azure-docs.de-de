@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687770"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891087"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher“ in Azure HDInsight
 
@@ -101,7 +101,7 @@ In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask*
 </property>
 ```
 
-Wahrscheinlich war der Kartenjoin die Ursache für den OOM-Fehler im Java-Heapspeicher. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
+Wahrscheinlich war der Kartenjoin die Ursache für den OOM-Fehler im Java-Heapspeicher. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
 
 ![Diagramm des Tez-Containerspeichers: Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

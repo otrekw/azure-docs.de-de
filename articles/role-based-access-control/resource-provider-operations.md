@@ -13,20 +13,18 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839095"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199567"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
 In diesem Artikel werden die Vorgänge aufgeführt, die jedem Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Diese Vorgänge können in [benutzerdefinierten Azure-Rollen](custom-roles.md) verwendet werden, um eine präzise Zugriffssteuerung für Ressourcen in Azure bereitzustellen. Die Vorgangszeichenfolgen weisen folgendes Format auf: `{Company}.{ProviderName}/{resourceType}/{action}`. Eine Liste, wie die Namespaces von Ressourcenanbietern den Azure-Diensten zugeordnet werden, finden Sie unter [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/management/azure-services-resource-providers.md).
 
 Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 

@@ -1,20 +1,20 @@
 ---
 title: Anzeigen von Informationen zu einer Koordinate auf einer Karte | Microsoft Azure Maps
 description: Hier erfahren Sie, wie Sie Informationen zu einer Adresse auf der Karte anzeigen, wenn ein Benutzer eine Koordinate auswählt.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371432"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123988"
 ---
 # <a name="get-information-from-a-coordinate"></a>Abrufen von Informationen von einer Koordinate
 

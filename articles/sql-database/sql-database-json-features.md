@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 968da0154f5a2587531e7594956a069f11c110d2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687757"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890954"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Getting started with JSON features in Azure SQL Database (Erste Schritte mit JSON-Features in der Azure SQL-Datenbank)
 In Azure SQL-Datenbank können Sie Daten analysieren und abfragen, die im JavaScript Object Notation-Format [(JSON)](https://www.json.org/) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren. Die folgenden JSON-Szenarien stehen in Azure SQL-Datenbank zur Verfügung:
@@ -192,5 +192,5 @@ In diesen Ressourcen finden Sie weitere Informationen zur Integration von JSON i
 * [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9-Video](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-Weitere Informationen zu verschiedenen Szenarios der Integration von JSON in Ihre Anwendung enthalten die Demos in diesem [Channel 9-Video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds), oder suchen Sie in den [JSON-Blogbeiträgen](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/) nach einem Szenario, das Ihrem Anwendungsfall entspricht.
+Weitere Informationen zu verschiedenen Szenarios der Integration von JSON in Ihre Anwendung enthalten die Demos in diesem [Channel 9-Video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds), oder suchen Sie in den [JSON-Blogbeiträgen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases) nach einem Szenario, das Ihrem Anwendungsfall entspricht.
 

@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770404"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858414"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgraden einer internen Azure Load Balancer-Instanz: Ausgehende Verbindung erforderlich
-[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.
+[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/skus#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.
 
 Ein Upgrade umfasst vier Phasen:
 

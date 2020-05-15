@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78675314"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201527"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -174,7 +174,7 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
 3. Fügen Sie jetzt Anwendungseinstellungen für die Umgebungsvariablen hinzu, die die IoT-Hub-Verbindungszeichenfolge und die Event Hub-Consumergruppe angeben. Einzelne Einstellungen sind im `-settings`-Parameter durch Leerzeichen getrennt. Verwenden Sie die Dienst-Verbindungszeichenfolge für Ihren IoT-Hub und die zuvor in diesem Tutorial erstellte Consumergruppe. Die Werte dürfen nicht in Anführungszeichen stehen.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Aktivieren Sie das WebSocket-Protokoll für die Web-App, und konfigurieren Sie die Web-App so, dass sie ausschließlich HTTPS-Anforderungen empfängt (HTTP-Anforderungen werden zu HTTPS umgeleitet).

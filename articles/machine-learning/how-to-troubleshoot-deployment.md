@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399687"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929246"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -24,12 +24,12 @@ Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Con
 
 Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System eine Reihe von Aufgaben aus.
 
-Der empfohlene und aktuellste Ansatz für die Modellimplementierung erfolgt über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)-Objekt als Eingabeparameter. In diesem Fall erstellt unser Dienst während der Bereitstellungsphase ein Docker-Basisimage für Sie und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
+Der empfohlene und aktuellste Ansatz für die Modellimplementierung erfolgt über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter. In diesem Fall erstellt unser Dienst während der Bereitstellungsphase ein Docker-Basisimage für Sie und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
 
 1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
 
 2. Definieren der Rückschlusskonfiguration:
-    1. Erstellen Sie ein [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)-Objekt auf der Grundlage der Abhängigkeiten, die Sie in der YAML-Datei für die Umgebung angeben, oder verwenden Sie eine unserer bezogenen Umgebungen.
+    1. Erstellen Sie ein [Environment](how-to-use-environments.md)-Objekt auf der Grundlage der Abhängigkeiten, die Sie in der YAML-Datei für die Umgebung angeben, oder verwenden Sie eine unserer bezogenen Umgebungen.
     2. Erstellen Sie eine Rückschlusskonfiguration (InferenceConfig-Objekt) auf der Grundlage der Umgebung und des Bewertungsskripts.
 
 3. Stellen Sie das Modell im ACI-Dienst (Azure Container Instance) oder in AKS (Azure Kubernetes Service) bereit.
@@ -50,7 +50,7 @@ Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Mo
 
 Beim Auftreten eines Problems besteht der erste Schritt darin, die (zuvor beschriebene) Bereitstellungsaufgabe in einzelne Schritte aufzuschlüsseln, um das Problem zu isolieren.
 
-Angenommen, Sie verwenden die neue/empfohlene Bereitstellungsmethode über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)-Objekt als Eingabeparameter, dann kann Ihr Code in drei Hauptschritte unterteilt werden:
+Angenommen, Sie verwenden die neue/empfohlene Bereitstellungsmethode über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter, dann kann Ihr Code in drei Hauptschritte unterteilt werden:
 
 1. Registrieren des Modells. Hier finden Sie Beispielcode dazu:
 

@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261039"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115607"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Zentralisieren der Anwendungsverwaltung mit Azure AD
 
@@ -53,7 +53,7 @@ Die meisten Anwendungen erfordern die Bereitstellung eines Benutzers in der Anwe
 
 |Funktion  |BESCHREIBUNG|Empfehlung |
 |---------|---------|---------|
-|SCIM-Bereitstellung|[SCIM](https://aka.ms/SICMOverview) ist eine in der Branche bewährte Methode für die Automatisierung der Benutzerbereitstellung. Alle SCIM-konformen Anwendungen können in Azure AD integriert werden. Sie können automatisch Benutzerkonten erstellen, aktualisieren und löschen, ohne CSV-Dateien, benutzerdefinierte Skripts oder lokale Lösungen verwalten zu müssen.|Sehen Sie sich die wachsende Anzahl [vorab integrierter](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) Apps im Azure AD-App-Katalog an.|
+|SCIM-Bereitstellung|[SCIM](https://aka.ms/SCIMOverview) ist eine in der Branche bewährte Methode für die Automatisierung der Benutzerbereitstellung. Alle SCIM-konformen Anwendungen können in Azure AD integriert werden. Sie können automatisch Benutzerkonten erstellen, aktualisieren und löschen, ohne CSV-Dateien, benutzerdefinierte Skripts oder lokale Lösungen verwalten zu müssen.|Sehen Sie sich die wachsende Anzahl [vorab integrierter](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) Apps im Azure AD-App-Katalog an.|
 |Microsoft Graph|Nutzen Sie den vollen Umfang der Daten, die Azure AD zu bieten hat, um Ihre Anwendung mit den erforderlichen Daten auszustatten.|Nutzen Sie [Microsoft Graph](https://developer.microsoft.com/graph/), um Daten aus dem gesamten Microsoft-Ökosystem zu erhalten. |
 
 

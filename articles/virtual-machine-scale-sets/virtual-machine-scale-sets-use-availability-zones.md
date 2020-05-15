@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Azure-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 description: Erfahren Sie, wie Skalierungsgruppen für virtuelle Azure Computer erstellt werden, die Verfügbarkeitszonen verwenden, um bessere Redundanz bei Ausfällen bereitzustellen.
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 08/08/2018
-ms.author: jushiman
-ms.openlocfilehash: a23164215376bee291c07d49c88bd9e916d710bf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207835"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197354"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 

@@ -2,17 +2,19 @@
 title: Erstellen einer Skalierungsgruppe, die Azure Spot-VMS nutzt
 description: Erfahren Sie, wie Sie Azure-VM-Skalierungsgruppen erstellen, die Spot-VMs nutzen, um Kosten zu sparen.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545940"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125042"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 

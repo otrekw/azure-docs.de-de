@@ -2,18 +2,19 @@
 title: Übersicht über Azure-VM-Skalierungsgruppen
 description: Enthält Informationen zu Azure-VM-Skalierungsgruppen und zur automatischen Skalierung Ihrer Anwendungen.
 author: mimckitt
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: overview
-ms.custom: mvc
-ms.date: 09/26/2019
 ms.author: mimckitt
-ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.topic: overview
+ms.service: virtual-machine-scale-sets
+ms.subservice: ''
+ms.date: 09/26/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 986a2722515ac49aad9e655d1dcef06f5ce2e3dc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272541"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198411"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe von identischen virtuellen Computern mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.

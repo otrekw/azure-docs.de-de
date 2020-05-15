@@ -2,17 +2,19 @@
 title: Verwalten von Virtual Machine Scale Sets mit der Azure CLI
 description: Gängige Azure CLI-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011581"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124328"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.

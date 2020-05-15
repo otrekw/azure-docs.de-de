@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393277"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928872"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 
@@ -267,5 +267,5 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
-* Eine Einführung in die Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen](/azure/machine-learning/service/concept-event-grid-integration).
-* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](/azure/machine-learning/service/how-to-use-event-grid).
+* Eine Einführung in die Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen](/azure/machine-learning/concept-event-grid-integration).
+* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](/azure/machine-learning/how-to-use-event-grid).

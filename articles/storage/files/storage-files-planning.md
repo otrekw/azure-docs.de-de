@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209484"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856904"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -84,7 +84,7 @@ Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen 
     - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz bezahlen, den Sie bereitstellen, und nicht für den Speicherplatz, den Sie tatsächlich anfordern. 
     - Standard-Dateifreigaben werden mit einem Modell mit nutzungsbasierter Bezahlung abgerechnet, das die Grundkosten für den Speicherplatz für den tatsächlich genutzten Speicher und dann zusätzliche Transaktionskosten basierend auf der Nutzung der Freigabe umfasst. Mit Standard-Dateifreigaben erhöht sich Ihre Rechnung, wenn Sie die Azure-Dateifreigabe umfangreicher nutzen (Lesen/Schreiben/Einbinden).
 - **Redundanzoptionen**
-    - Premium-Dateifreigaben sind nur für lokal redundanten (LRS) und zonenredundanten Speicher (ZRS) verfügbar. 
+    - Premium-Dateifreigaben sind nur für lokal redundanten (LRS) und zonenredundanten Speicher (ZRS) verfügbar.
     - Standard-Dateifreigaben sind für lokal redundanten, zonenredundanten, georedundanten (GRS) und georedundanten (GZRS) Speicher verfügbar.
 - **Maximale Größe einer Dateifreigabe**
     - Premium-Dateifreigaben können ohne zusätzlichen Aufwand für bis zu 100 TiB bereitgestellt werden.

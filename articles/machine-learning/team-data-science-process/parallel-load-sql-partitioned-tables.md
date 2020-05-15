@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721335"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891683"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Erstellen und Optimieren von Tabellen für den schnellen parallelen Import von Daten in eine SQL Server-Instanz auf einer Azure-VM
 
@@ -99,7 +99,7 @@ Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und I
 * [Ändern Sie für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx) das Transaktionsprotokollierungsschema in BULK_LOGGED, um den Aufwand für die Protokollierung zu minimieren. Beispiel:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Starten Sie zum Beschleunigen des Ladevorgangs der Daten die Massenimportvorgänge parallel. Tipps zur schnelleren Verarbeitung von Massenimporten großer Datenmengen in SQL Server-Datenbanken finden Sie unter [Laden von 1 TB in weniger als 1 Stunde](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Starten Sie zum Beschleunigen des Ladevorgangs der Daten die Massenimportvorgänge parallel. Tipps zur schnelleren Verarbeitung von Massenimporten großer Datenmengen in SQL Server-Datenbanken finden Sie unter [Laden von 1 TB in weniger als 1 Stunde](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour).
 
 Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Daten mit BPC.
 

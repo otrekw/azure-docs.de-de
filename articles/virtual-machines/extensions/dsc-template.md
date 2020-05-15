@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547798"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891663"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -185,8 +185,8 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 | settings.configuration.function |string |Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss in dem durch **settings.configuration.script** definierten Skript enthalten sein. Diese Eigenschaft ist erforderlich, wenn **settings.configuration.url** oder **settings.configuration.function** definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um LCM-Metadaten festzulegen, und es müssen Argumente angegeben werden. |
 | settings.configurationArguments |Collection |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist nicht verschlüsselt. |
 | settings.configurationData.url |string |Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (PSD1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die Eigenschaft **protectedSettings.configurationDataUrlSasToken** auf den Wert Ihres SAS-Tokens festlegen. |
-| settings.privacy.dataCollection |string |Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind **Enable**, **Disable**, **''** oder **$null**. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert. Der Standardwert ist **''** . Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung). |
-| settings.advancedOptions.downloadMappings |Collection |Definiert alternative Speicherorte zum Herunterladen von WMF. Weitere Informationen finden Sie unter [Azure DSC Extension 2.8 & How to map downloads of the extension dependencies to your own location](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) (Azure DSC-Erweiterung 2.8 und Zuweisen von Downloads der Erweiterungsabhängigkeiten an Ihren eigenen Speicherort). |
+| settings.privacy.dataCollection |string |Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind **Enable**, **Disable**, **''** oder **$null**. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert. Der Standardwert ist **''** . Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung). |
+| settings.advancedOptions.downloadMappings |Collection |Definiert alternative Speicherorte zum Herunterladen von WMF. Weitere Informationen finden Sie unter [Azure DSC Extension 2.8 & How to map downloads of the extension dependencies to your own location](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/) (Azure DSC-Erweiterung 2.8 und Zuweisen von Downloads der Erweiterungsabhängigkeiten an Ihren eigenen Speicherort). |
 | protectedSettings.configurationArguments |Collection |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist verschlüsselt. |
 | protectedSettings.configurationUrlSasToken |string |Gibt das SAS-Token für den Zugriff auf die durch **settings.configuration.url** definierte URL an. Diese Eigenschaft ist verschlüsselt. |
 | protectedSettings.configurationDataUrlSasToken |string |Gibt das SAS-Token für den Zugriff auf die durch **settings.configurationData.url** definierte URL an. Diese Eigenschaft ist verschlüsselt. |

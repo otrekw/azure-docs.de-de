@@ -2,19 +2,19 @@
 title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure-Befehlszeilenschnittstelle'
 description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle schnell eine VM-Skalierungsgruppe erstellen können.
 author: ju-shim
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.devlang: azurecli
-ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.openlocfilehash: 392af4d96efc9b60cedc8488dc1cebbfd68a92c5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: af69b4d80ef6f7216bdf13a7e7314e8b0616f376
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011326"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197714"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In diesem Schnellstart erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit der Azure-Befehlszeilenschnittstelle bereit.
