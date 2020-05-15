@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80517924"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201449"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -22,11 +22,11 @@ Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen ve
 
 | **Angebotstyp** | **Im Partner Center verfügbare Co-Selling-Seite** |
 |    -----------------------    |    -----------------------------  |
-| Software-as-a-Service (SaaS) |     Allgemeine Verfügbarkeit April 2020      |
+| Software-as-a-Service (SaaS) |      Jetzt verfügbar      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Jetzt verfügbar      |
 | Dynamics 365 for Operations     |     Jetzt verfügbar       |
-| Dynamics 365 Business Central      |  Allgemeine Verfügbarkeit April 2020     |
-| Azure-Anwendung     |     Allgemeine Verfügbarkeit April 2020     |
+| Dynamics 365 Business Central      |   Jetzt verfügbar     |
+| Azure-Anwendung     |      Jetzt verfügbar     |
 | Virtueller Azure-Computer      |     Wird noch bekannt gegeben       |
 | Azure-Container     |     Wird noch bekannt gegeben       |
 | Beratungsdienst      |     Wird noch bekannt gegeben       |

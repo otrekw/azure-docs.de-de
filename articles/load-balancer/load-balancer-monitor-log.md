@@ -11,19 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935331"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858761"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
-
->[!IMPORTANT]
->Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Protokolle können an einen Event Hub oder einen Log Analytics-Arbeitsbereich gestreamt werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden.  In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 95a1734a3e7fd65fc87f4825ae71ee3006616bc3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629370"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871475"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -119,7 +119,7 @@ Beispiele für Laufzeitkonfigurationen finden Sie unter [Auswählen und Verwende
 Beim Übermitteln einer Ausführung komprimiert Azure Machine Learning das Verzeichnis, in dem das Skript als ZIP-Datei enthalten ist, und sendet es an das Computeziel. Die ZIP-Datei wird dann extrahiert, und das Skript wird ausgeführt. Azure Machine Learning speichert die ZIP-Datei im Rahmen der Ausführungsaufzeichnung zudem als Momentaufnahme. Alle Benutzer mit Zugriff auf den Arbeitsbereich können eine Ausführungsaufzeichnung durchsuchen und die Momentaufnahme herunterladen.
 
 > [!NOTE]
-> Um zu verhindern, dass nicht benötigte Dateien in die Momentaufnahme eingeschlossen werden, erstellen Sie eine Ignorierdatei (GITIGNORE oder AMLIGNORE). Platzieren Sie diese Datei im Snapshot-Verzeichnis, und fügen Sie die zu ignorierenden Dateinamen hinzu. Für die AMLIGNORE-Datei werden die gleiche [Syntax und die gleichen Muster wie für die GITIGNORE-Datei](https://git-scm.com/docs/gitignore) verwendet. Wenn beide Dateien vorhanden sind, hat die AMLIGNORE-Datei Vorrang.
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
 

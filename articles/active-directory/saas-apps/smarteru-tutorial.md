@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit SmarterU | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit SmarterU | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SmarterU konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76549290"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981951"
 ---
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory-Integration mit SmarterU
+
 > [!NOTE]
 > Der Prozess für die Integration von SmarterU in Azure Active Directory wird ebenfalls im [SmarterU-Hilfesystem](https://help.smarteru.com/ID2053086) dokumentiert und verwaltet.
-
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory-Integration mit SmarterU
 
 In diesem Tutorial erfahren Sie, wie Sie SmarterU in Azure Active Directory (Azure AD) integrieren.
 Die Integration von SmarterU in Azure AD bietet die folgenden Vorteile:
@@ -217,7 +217,7 @@ Damit sich Azure AD-Benutzer bei SmarterU anmelden können, müssen sie in Smart
 
     a. Klicken Sie auf **+Benutzer**.
 
-    b. Geben Sie die zugehörigen Attributwerte des Azure AD-Benutzerkontos in die folgenden Textfelder ein: **Primäre E-Mail-Adresse**, **Mitarbeiter-ID**, **Kennwort**, **Kennwort bestätigen**, **Angegebener Name**, **Nachname**.
+    b. Geben Sie die zugehörigen Attributwerte des Azure AD-Benutzerkontos in die folgenden Textfelder ein: **Primäre E-Mail-Adresse**, **Mitarbeiter-ID**, **Kennwort**, **Kennwort überprüfen**, **Vorname**, **Nachname**.
 
     c. Klicken Sie auf **Aktiv**.
 

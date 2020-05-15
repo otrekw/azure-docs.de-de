@@ -1,36 +1,30 @@
 ---
-title: Erstellen eines Azure IoT Edge-Modulangebots im Partner Center – Azure Marketplace
-description: Erfahren Sie, wie Sie mithilfe von Partner Center ein IoT Edge-Modulangebot in Azure Marketplace erstellen
+title: Erstellen eines Azure IoT Edge-Modulangebots im Azure Marketplace mit Partner Center
+description: Erfahren Sie, wie Sie mithilfe von Partner Center ein IoT Edge-Modulangebot im Azure Marketplace erstellen, konfigurieren und veröffentlichen.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869145"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857654"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace
 
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer IoT Edge-Modulangebote aus dem Cloud-Partnerportal in das Partner Center. Befolgen Sie zur Verwaltung Ihrer Angebote bis zur erfolgten Migration Ihrer Angebote die Anweisungen in [Übersicht über das Veröffentlichen von IoT Edge-Modulangeboten](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) für das Cloud-Partnerportal.
-
-In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet der Dinge) für den Azure Marketplace erstellen und veröffentlichen.
-
-Damit Sie ein IoT Edge-Modulangebot erstellen können, benötigen Sie ein Konto im kommerziellen Marketplace im Partner Center. Wenn Sie noch keins erstellt haben, lesen Sie [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet der Dinge) für den Azure Marketplace erstellen und veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
-1. Melden Sie sich beim Partner Center an.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **IoT Edge-Modul** aus.
 
-    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/cs-menu-overview.png)
-
-3. Wählen Sie **+ Neues Angebot** > **IoT Edge-Modul** aus. Das Dialogfeld **Neues Angebot** wird angezeigt.
+    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
@@ -41,14 +35,14 @@ Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jed
 
 - Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
 - Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- Nachdem Sie Erstellen ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
+- Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
-Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der zum Verweisen auf das Angebot im Partner Center verwendet wird.
+Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
 - Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
 - Dies kann nach dem Auswählen von **Erstellen** nicht mehr geändert werden.
 
-Wählen Sie nach dem Eingeben dieser beiden Werte **Erstellen** aus, bevor Sie mit der nächsten Seite fortfahren, Angebotsübersicht.
+Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-overview"></a>Angebotsübersicht
 
@@ -86,10 +80,10 @@ Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
 - [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)-PDF-Datei (vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist).
 
-Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt fortfahren, Eigenschaften.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ### <a name="properties"></a>Eigenschaften
 

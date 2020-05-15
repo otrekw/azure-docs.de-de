@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230862"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199521"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal
 
@@ -42,9 +42,6 @@ Gehen Sie wie folgt vor, um B2B-Zusammenarbeitsbenutzer dem Verzeichnis hinzuzuf
 
    ![Position von „Neuer Gastbenutzer“ auf der Benutzeroberfläche](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > Die Option **Neuer Gastbenutzer** ist auch auf der Seite **Organisationsbeziehungen** verfügbar. Wählen Sie in **Azure Active Directory** unter **Verwalten** die Option **Organisationsbeziehungen** aus.
-
 5. Wählen Sie auf der Seite **Neuer Benutzer** die Option **Benutzer einladen** aus, und fügen Sie dann die Informationen des Gastbenutzers hinzu. 
 
     > [!NOTE]

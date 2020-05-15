@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels für UK OFFICIAL und UK NHS
 description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851365"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005617"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -27,9 +27,6 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 - Sichere Übertragung in Speicherkonten sollte aktiviert werden.
 - Überwachungsergebnisse von Windows-Webservern anzeigen, die keine sicheren Kommunikationsprotokolle verwenden
 - Erforderliche Komponenten zum Überwachen von Windows-Webservern bereitstellen, die keine sicheren Kommunikationsprotokolle verwenden
-- In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
-- In Ihrer Web-App sollte die neueste TLS-Version verwendet werden.
-- In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
 
 ## <a name="23-data-at-rest-protection"></a>2.3 Schutz von ruhenden Daten
 
@@ -129,8 +126,8 @@ Durch die Zuweisung von Azure-Richtliniendefinitionen hilft Ihnen die Blaupause 
 
 - \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
 - \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
-- \[Vorschau\]: Linux-VMs überwachen, die Konten ohne Kennwörter verwenden
-- \[Vorschau\]: Linux-VMs überwachen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Konten ohne Kennwörter verwenden
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
 - Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.
 - VMs sollten zu neuen Azure Resource Manager-Ressourcen migriert werden
 - Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden
@@ -141,12 +138,10 @@ Sofern Sie nicht mehr als 25 Richtlinien für eine angemessene sichere Benutzerv
 
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
-- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
 - Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden
-- NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
+- Auf virtuelle Computer mit Internetzugang müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.
 - Die Endpoint Protection-Lösung sollte für VM-Skalierungsgruppen installiert sein.
 - Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.
-- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Remotedebuggen sollte für Funktions-Apps deaktiviert werden
 - Remotedebuggen muss für Webanwendung deaktiviert werden
 - Remotedebuggen für API-App deaktivieren
@@ -179,13 +174,13 @@ Mit dieser Blaupause werden vier Azure-Richtliniendefinitionen zum Überwachen v
 
 Die Blaupause weist auch eine Azure-Richtliniendefinition zum Überwachen der Dateiberechtigungen für Passwörter von virtuellen Linux-Computern zu, um bei einer fehlerhaften Festlegung eine Warnung auszugeben. Dieses Design ermöglicht Ihnen Korrekturmaßnahmen, die sicherstellen, dass Authentifikatoren nicht kompromittiert werden.
 
-- \[Vorschau\]: Überwachen der Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf virtuellen Linux-Computern
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
 
 ## <a name="13-audit-information-for-users"></a>13 Überwachungsinformationen für Benutzer
 
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
+- Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Überwachen der Diagnoseeinstellung
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs

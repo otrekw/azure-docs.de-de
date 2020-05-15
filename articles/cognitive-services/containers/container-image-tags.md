@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878764"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925999"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services-Containerimagetags
 
@@ -106,6 +106,7 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags            | Notizen |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
 | `2.0.2-amd64-preview` |       |
@@ -131,6 +132,46 @@ Dieses Containerimage verfügt über die folgenden Tags:
 | Imagetags                  | Notizen                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Containerimage mit dem Gebietsschema `en-US`. |
+| `2.2.0-amd64-ar-ae-preview` | Containerimage mit dem Gebietsschema `ar-AE`. |
+| `2.2.0-amd64-ar-eg-preview` | Containerimage mit dem Gebietsschema `ar-EG`. |
+| `2.2.0-amd64-ar-kw-preview` | Containerimage mit dem Gebietsschema `ar-KW`. |
+| `2.2.0-amd64-ar-qa-preview` | Containerimage mit dem Gebietsschema `ar-QA`. |
+| `2.2.0-amd64-ar-sa-preview` | Containerimage mit dem Gebietsschema `ar-SA`. |
+| `2.2.0-amd64-ca-es-preview` | Containerimage mit dem Gebietsschema `ca-ES`. |
+| `2.2.0-amd64-da-dk-preview` | Containerimage mit dem Gebietsschema `da-DK`. |
+| `2.2.0-amd64-de-de-preview` | Containerimage mit dem Gebietsschema `de-DE`. |
+| `2.2.0-amd64-en-au-preview` | Containerimage mit dem Gebietsschema `en-AU`. |
+| `2.2.0-amd64-en-ca-preview` | Containerimage mit dem Gebietsschema `en-CA`. |
+| `2.2.0-amd64-en-gb-preview` | Containerimage mit dem Gebietsschema `en-GB`. |
+| `2.2.0-amd64-en-in-preview` | Containerimage mit dem Gebietsschema `en-IN`. |
+| `2.2.0-amd64-en-nz-preview` | Containerimage mit dem Gebietsschema `en-NZ`. |
+| `2.2.0-amd64-en-us-preview` | Containerimage mit dem Gebietsschema `en-US`. |
+| `2.2.0-amd64-es-es-preview` | Containerimage mit dem Gebietsschema `es-ES`. |
+| `2.2.0-amd64-es-mx-preview` | Containerimage mit dem Gebietsschema `es-MX`. |
+| `2.2.0-amd64-fi-fi-preview` | Containerimage mit dem Gebietsschema `fi-FI`. |
+| `2.2.0-amd64-fr-ca-preview` | Containerimage mit dem Gebietsschema `fr-CA`. |
+| `2.2.0-amd64-fr-fr-preview` | Containerimage mit dem Gebietsschema `fr-FR`. |
+| `2.2.0-amd64-gu-in-preview` | Containerimage mit dem Gebietsschema `gu-IN`. |
+| `2.2.0-amd64-hi-in-preview` | Containerimage mit dem Gebietsschema `hi-IN`. |
+| `2.2.0-amd64-it-it-preview` | Containerimage mit dem Gebietsschema `it-IT`. |
+| `2.2.0-amd64-ja-jp-preview` | Containerimage mit dem Gebietsschema `ja-JP`. |
+| `2.2.0-amd64-ko-kr-preview` | Containerimage mit dem Gebietsschema `ko-KR`. |
+| `2.2.0-amd64-mr-in-preview` | Containerimage mit dem Gebietsschema `mr-IN`. |
+| `2.2.0-amd64-nb-no-preview` | Containerimage mit dem Gebietsschema `nb-NO`. |
+| `2.2.0-amd64-nl-nl-preview` | Containerimage mit dem Gebietsschema `nl-NL`. |
+| `2.2.0-amd64-pl-pl-preview` | Containerimage mit dem Gebietsschema `pl-PL`. |
+| `2.2.0-amd64-pt-br-preview` | Containerimage mit dem Gebietsschema `pt-BR`. |
+| `2.2.0-amd64-pt-pt-preview` | Containerimage mit dem Gebietsschema `pt-PT`. |
+| `2.2.0-amd64-ru-ru-preview` | Containerimage mit dem Gebietsschema `ru-RU`. |
+| `2.2.0-amd64-sv-se-preview` | Containerimage mit dem Gebietsschema `sv-SE`. |
+| `2.2.0-amd64-ta-in-preview` | Containerimage mit dem Gebietsschema `ta-IN`. |
+| `2.2.0-amd64-te-in-preview` | Containerimage mit dem Gebietsschema `te-IN`. |
+| `2.2.0-amd64-th-th-preview` | Containerimage mit dem Gebietsschema `th-TH`. |
+| `2.2.0-amd64-tr-tr-preview` | Containerimage mit dem Gebietsschema `tr-TR`. |
+| `2.2.0-amd64-zh-cn-preview` | Containerimage mit dem Gebietsschema `zh-CN`. |
+| `2.2.0-amd64-zh-hk-preview` | Containerimage mit dem Gebietsschema `zh-HK`. |
+| `2.2.0-amd64-zh-tw-preview` | Containerimage mit dem Gebietsschema `zh-TW`. |
+| `2.1.1-amd64-en-us-preview` | Containerimage mit dem Gebietsschema `en-US`. |
 | `2.1.1-amd64-ar-ae-preview` | Containerimage mit dem Gebietsschema `ar-AE`. |
 | `2.1.1-amd64-ar-eg-preview` | Containerimage mit dem Gebietsschema `ar-EG`. |
 | `2.1.1-amd64-ar-kw-preview` | Containerimage mit dem Gebietsschema `ar-KW`. |

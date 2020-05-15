@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7c12612dbe37de6b08cb05a64af460296ade93
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393904"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995828"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Verwalten Ihrer Benutzer mit „Meine Mitarbeiter“ (Vorschau)
 
@@ -26,9 +26,28 @@ ms.locfileid: "81393904"
 
 Vor dem Konfigurieren von „Meine Mitarbeiter“ für Ihre Organisation empfehlen wir Ihnen, diese Dokumentation und die [Benutzerdokumentation](../user-help/my-staff-team-manager.md) zu lesen. So können Sie sicherstellen, dass Sie mit den Funktionen und Auswirkungen dieses Features für Ihre Benutzer vertraut sind. Sie können die Benutzerdokumentation verwenden, um Ihre Benutzer zu schulen und auf die neue Oberfläche vorzubereiten. So sorgen Sie für einen erfolgreichen Rollout.
 
+Die SMS-basierte Authentifizierung für Benutzer ist eine Previewfunktion der Public Preview von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="how-my-staff-works"></a>Funktionsweise von „Meine Mitarbeiter“
 
 „Meine Mitarbeiter“ basiert auf Verwaltungseinheiten. Hierbei handelt es sich um Container mit Ressourcen, die verwendet werden können, um den Umfang der administrativen Kontrolle einer Rollenzuweisung einzuschränken. Bei „Meine Mitarbeiter“ werden Verwaltungseinheiten genutzt, um eine Teilmenge der Benutzer einer Organisation zu definieren, z. B. nach einem Geschäft oder einer Abteilung. Anschließend kann einem Teammanager beispielsweise eine Rolle zugewiesen werden, die eine oder mehrere Verwaltungseinheiten umfasst. Im Beispiel unten wurde dem Benutzer die Administratorrolle „Authentifizierung“ gewährt, die die drei Verwaltungseinheiten umfasst. Weitere Informationen zu Verwaltungseinheiten finden Sie unter [Verwalten von Verwaltungseinheiten in Azure Active Directory](directory-administrative-units.md).
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
+
+* Ein aktives Azure-Abonnement.
+
+  * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ihr Abonnement muss einem Azure Active Directory-Mandanten zugeordnet sein.
+
+  * [Erstellen Sie einen Azure Active Directory-Mandanten](../fundamentals/sign-up-organization.md), oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto](../fundamentals/active-directory-how-subscriptions-associated-directory.md), sofern erforderlich.
+* Sie benötigen Berechtigungen als *globaler Administrator* in Ihrem Azure AD-Mandanten, um die SMS-basierte Authentifizierung zu aktivieren.
+* Jeder Benutzer, der in der Richtlinie für die Authentifizierung per Textnachricht aktiviert wird, muss lizenziert werden, auch wenn er dies nicht nutzt. Jeder aktivierte Benutzer muss über eine der folgenden Azure AD- oder Microsoft 365-Lizenzen verfügen:
+
+  * [Azure AD Premium P1 oder P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 (M365) F1 oder F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 oder E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) oder [Microsoft 365 (M365) E3 oder E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Aktivieren von „Meine Mitarbeiter“
 
@@ -41,16 +60,27 @@ Nachdem Sie die Verwaltungseinheiten konfiguriert haben, können Sie diesen Bere
 > [!Note]
 > Nur Benutzer, denen eine Administratorrolle zugewiesen wurde, können auf „Meine Mitarbeiter“ zugreifen. Wenn Sie „Meine Mitarbeiter“ für einen Benutzer aktivieren, dem keine Administratorrolle zugewiesen ist, kann er nicht auf „Meine Mitarbeiter“ zugreifen.
 
+## <a name="conditional-access"></a>Bedingter Zugriff
+
+Sie können das Portal „Meine Mitarbeiter“ mit der Azure AD-Richtlinie für bedingten Zugriff schützen. Verwenden Sie sie für Aufgaben wie die Anforderung einer mehrstufigen Authentifizierung vor dem Zugriff auf „Meine Mitarbeiter“.
+
+Wir empfehlen dringend, dass Sie „Meine Mitarbeiter“ mit [Azure AD-Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/) schützen. Um eine Richtlinie für bedingten Zugriff auf „Meine Mitarbeiter“ anzuwenden, müssen Sie den Dienstprinzipal „Meine Mitarbeiter“ manuell mit PowerShell erstellen.
+
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Anwenden einer Richtlinie für bedingten Zugriff auf „Meine Mitarbeiter“
+
+1. Installieren Sie die [Microsoft Graph Beta PowerShell-Cmdlets](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
+1. Führen Sie die folgenden Befehle aus:
+
+        Connect-Graph -Scopes "Directory.AccessAsUser.All"
+        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+
+1. Erstellen Sie eine Richtlinie für bedingten Zugriff, die für die Cloudanwendung „Meine Mitarbeiter“ gilt.
+
+    ![Erstellen einer Richtlinie für bedingten Zugriff für die Anwendung „Meine Mitarbeiter“](media/my-staff-configure/conditional-access.png)
+
 ## <a name="using-my-staff"></a>Verwenden von „Meine Mitarbeiter“
 
 Wenn ein Benutzer „Meine Mitarbeiter“ aufruft, werden die Namen der [Verwaltungseinheiten](directory-administrative-units.md) angezeigt, für die er über Administratorrechte verfügt. In der [Benutzerdokumentation zu „Meine Mitarbeiter“](../user-help/my-staff-team-manager.md) verwenden wir den Begriff „Standort“ für Verwaltungseinheiten. Wenn für die Berechtigungen eines Administrators kein Umfang bzw. Bereich für Verwaltungseinheiten festgelegt ist, gelten die Berechtigungen für die gesamte Organisation. Nach dem Aktivieren von „Meine Mitarbeiter“ können die Benutzer, die zugeordnet wurden und denen eine Administratorrolle zugewiesen wurde, unter [https://mystaff.microsoft.com](https://mystaff.microsoft.com) darauf zugreifen. Sie können eine Verwaltungseinheit auswählen, um die darin enthaltenen Benutzer anzuzeigen, und dann einen Benutzer auswählen, um sein Profil zu öffnen.
-
-## <a name="licenses"></a>Lizenzen
-
-Jeder in „Meine Mitarbeiter“ aktivierte Benutzer muss auch dann über eine Lizenz verfügen, wenn er das Portal „Meine Mitarbeiter“ nicht verwendet. Jeder aktivierte Benutzer muss über eine der folgenden Azure AD- oder Microsoft 365-Lizenzen verfügen:
-
-- Azure AD Premium P1 oder P2
-- Microsoft 365 F1 oder F3
 
 ## <a name="reset-a-users-password"></a>Zurücksetzen des Kennworts für einen Benutzer
 

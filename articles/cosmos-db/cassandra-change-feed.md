@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137415"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872559"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Änderungsfeed in der Azure Cosmos DB-API für Cassandra
 
@@ -21,6 +21,8 @@ Die Unterstützung für den [Änderungsfeed](change-feed.md) in der Azure Cosmos
 Im folgenden Beispiel wird gezeigt, wie Sie einen Änderungsfeed für alle Zeilen in einer Cassandra-API-Keyspace-Tabelle mithilfe von .NET abrufen. Das Prädikat COSMOS_CHANGEFEED_START_TIME() wird direkt in CQL verwendet, um Elemente im Änderungsfeed ab einer angegebenen Startzeit (in diesem Fall das aktuelle Datum und die Uhrzeit) abzufragen. Sie können das ganze Beispiel für C# [hier](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) und für Java [hier](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java) herunterladen.
 
 In jeder Iterationen wird die Abfrage mithilfe des Pagingzustands am letzten Punkt fortgesetzt, an dem Änderungen gelesen wurden. Sie können einen kontinuierlichen Stream neuer Änderungen an der Tabelle im Keyspace erkennen. Es werden Änderungen an Zeilen angezeigt, die eingefügt oder aktualisiert wurden. Die Überwachung auf Löschvorgänge mithilfe des Änderungsfeeds wird in der Cassandra-API derzeit nicht unterstützt.
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,6 +72,9 @@ In jeder Iterationen wird die Abfrage mithilfe des Pagingzustands am letzten Pun
     }
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
         Session cassandraSession = utils.getSession();
 
@@ -104,7 +109,11 @@ In jeder Iterationen wird die Abfrage mithilfe des Pagingzustands am letzten Pun
         }
 
 ```
+---
+
 Um die Änderungen an einer einzelnen Zeile nach Primärschlüssel abzurufen, können Sie der Abfrage den Primärschlüssel hinzufügen. Im folgenden Beispiel wird gezeigt, wie Sie Änderungen für die Zeile mit „user_id = 1“ nachverfolgen.
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -112,11 +121,15 @@ Um die Änderungen an einer einzelnen Zeile nach Primärschlüssel abzurufen, k�
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
     String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
                     + dtf.format(now)+ "'";
     SimpleStatement st=new  SimpleStatement(query);
 ```
+---
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 Es gelten die folgenden Einschränkungen, wenn der Änderungsfeed mit der Cassandra-API verwendet wird:

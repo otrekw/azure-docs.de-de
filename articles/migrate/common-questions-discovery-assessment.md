@@ -3,12 +3,12 @@ title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migra
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9374330044bcd0c0c5f2be44688c2b35760d4418
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681900"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996756"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -108,6 +108,11 @@ Daten | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Server
 Visualisierung | Das Abhängigkeitsdiagramm eines einzelnen Servers kann über eine Dauer von einer Stunde bis hin zu 30 Tagen angezeigt werden. | Abhängigkeitsdiagramm eines einzelnen Servers.<br/><br/> Das Diagramm kann nur über eine Stunde angezeigt werden.<br/><br/> Abhängigkeitsdiagramm für eine Gruppe von Servern.<br/><br/> Hinzufügen und Entfernen von Servern in einer Gruppe aus der Diagrammansicht.
 Datenexport | Kann derzeit nicht im Tabellenformat heruntergeladen werden. | Daten können mit Log Analytics abgefragt werden.
 
+
+## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>Muss ich die Appliance für die Abhängigkeitsanalyse ohne Agent bereitstellen?
+
+Ja, die [Azure Migrate-Appliance](migrate-appliance.md) muss bereitgestellt werden.
+
 ## <a name="do-i-pay-for-dependency-visualization"></a>Ist die Visualisierung der Abhängigkeiten kostenpflichtig?
 
 Nein. Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/pricing/details/azure-migrate/).
@@ -136,7 +141,7 @@ Für die Agent-basierte Visualisierung von Abhängigkeiten:
 
 - Verwenden Sie ein [Skript für die Installation des Dependency-Agents](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples).
 - Für MMA [verwenden Sie die Befehlszeile oder die Automatisierung](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration), oder verwenden Sie ein [Skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
-- Zusätzlich zu Skripts können Sie Bereitstellungstools wie Microsoft Endpoint Configuration Manager und [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) zum Bereitstellen der Agents verwenden.
+- Zusätzlich zu Skripts können Sie Bereitstellungstools wie Microsoft Endpoint Configuration Manager und [Intigua](https://www.intigua.com/intigua-for-azure-migration) zum Bereitstellen der Agents verwenden.
 
 ## <a name="what-operating-systems-does-mma-support"></a>Welche Betriebssysteme unterstützt MMA?
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082593"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901284"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption für virtuelle Windows-Computer
 
@@ -21,7 +21,7 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Azure Disk
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Was ist Azure Disk Encryption für virtuelle Windows-Computer?
 
-Azure Disk Encryption für Windows-VMs (virtuelle Computer) bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und der Datenträgers für Daten. Darüber hinaus wird die Verschlüsselung des Datenträgers für kurzlebige Ressourcen bereitstellt, [wenn der VolumeType-Parameter auf „All“ festgelegt ist](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  Der Inhalt wird verschlüsselt von der VM an den Back-End-Speicher übertragen. Auf diese Weise wird eine End-to-End-Verschlüsselung mit einem vom Kunden verwalteten Schlüssel erreicht.
+Azure Disk Encryption für Windows-VMs bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung der Datenträger für das Betriebssystem und für Daten. Darüber hinaus wird der temporäre Datenträger verschlüsselt, wenn der [VolumeType-Parameter auf „All“ festgelegt](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) ist.  Der Inhalt wird verschlüsselt von der VM zum Speicher-Back-End übertragen. Auf diese Weise wird eine End-to-End-Verschlüsselung mit einem vom Kunden verwalteten Schlüssel erreicht.
  
 Weitere Informationen finden Sie unter [Unterstützte VMs und Betriebssysteme](disk-encryption-overview.md#supported-vms-and-operating-systems).
  
@@ -59,9 +59,9 @@ Nein, Azure Disk Encryption verschlüsselt nur bereitgestellte Volumes.
 
 Bei der serverseitigen Speicherverschlüsselung werden verwaltete Azure-Datenträger in Azure Storage verschlüsselt. Verwaltete Datenträger werden standardmäßig mit serverseitiger Verschlüsselung mit einem von der Plattform verwalteten Schlüssel verschlüsselt (Stand: 10. Juni 2017). Sie können die Verschlüsselung verwalteter Datenträger mit Ihren eigenen Schlüsseln verwalten, indem Sie einen kundenseitig verwalteten Schlüssel angeben. Weitere Informationen finden Sie unter [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](disk-encryption.md).
  
-## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Wie unterscheidet sich Azure Disk Encryption von der serverseitigen Speicherverschlüsselung mit einem vom Kunden verwalteten Schlüssel, und wann sollten die Lösungen verwendet werden?
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Wie unterscheidet sich Azure Disk Encryption von der serverseitigen Speicherverschlüsselung mit einem vom Kunden verwalteten Schlüssel, und wann sollte ich die beiden Lösungen verwenden?
 
-Azure Disk Encryption bietet End-to-End-Verschlüsselung für den Betriebssystemdatenträger, Datenträger für Daten und den Datenträger für kurzlebige Ressourcen mit einem vom Kunden verwalteten Schlüssel.
+Azure Disk Encryption bietet End-to-End-Verschlüsselung für den Betriebssystemdatenträger, Datenträger für Daten und den temporären Datenträger mit einem vom Kunden verwalteten Schlüssel.
 
 - Wenn Ihre Anforderungen das Verschlüsseln der genannten Datenträger sowie End-to-End-Verschlüsselung einschließen, verwenden Sie Azure Disk Encryption. 
 - Wenn Ihre Anforderungen das Verschlüsseln von ruhenden Daten mit einem vom Kunden verwalteten Schlüssel einschließen, verwenden Sie [serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln](disk-encryption.md). Sie können einen Datenträger nicht sowohl mit Azure Disk Encryption als auch mit der serverseitigen Speicherverschlüsselung mit vom Kunden verwalteten Schlüsseln verschlüsseln.
@@ -129,9 +129,6 @@ Azure Disk Encryption wählt die Verschlüsselungsmethode in BitLocker basierend
 \* AES-256-Bit mit Diffuser wird in Windows 2012 und höher nicht unterstützt.
 
 Um die Version Ihres Windows-Betriebssystems zu ermitteln, führen Sie das Tool "winver" auf dem virtuellen Computer aus.
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Werden die Daten auf den bereits verschlüsselten Datenlaufwerken gelöscht, wenn ich EncryptFormatAll verwende und alle Volumetypen angebe?
-Nein, Daten werden nicht von Datenträgern für Daten gelöscht, die bereits mit Azure Disk Encryption verschlüsselt wurden. Ebenso wie EncryptFormatAll das Betriebssystemlaufwerk nicht erneut verschlüsselte, werden auch bereits verschlüsselte Laufwerke für Daten nicht erneut verschlüsselt. 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Kann ich einen verschlüsselten virtuellen Computer sichern und wiederherstellen? 
 

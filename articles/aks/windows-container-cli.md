@@ -3,13 +3,13 @@ title: Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Serv
 description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle schnell einen Kubernetes-Cluster erstellen und eine Anwendung in einem Windows Server-Container in Azure Kubernetes Service (AKS) bereitstellen.
 services: container-service
 ms.topic: article
-ms.date: 04/14/2020
-ms.openlocfilehash: 148ba900839c6eaf031416b0884778edded5735c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/06/2020
+ms.openlocfilehash: 28925961ea3b99f939ac650d54b5dcece2551f59
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208107"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926611"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -22,18 +22,6 @@ Für diesen Artikel werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
-### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
-
-Für die Verwendung von Windows Server-Containern benötigen Sie *aks-preview*-CLI-Erweiterungsversion 0.4.12 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -92,9 +80,6 @@ az aks create \
     --enable-addons monitoring \
     --kubernetes-version 1.16.7 \
     --generate-ssh-keys \
-    --enable-vmss \
-    --vm-set-type VirtualMachineScaleSets \
-    --load-balancer-sku standard \
     --network-plugin azure
 ```
 
@@ -294,7 +279,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add

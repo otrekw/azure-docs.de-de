@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608029"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982767"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
 
@@ -273,7 +273,7 @@ Gehen Sie wie folgt vor, falls Sie ein Konto nicht entfernen können oder wenn d
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS-Proxyproblem
 
-Es ist nicht möglich, Azure Cosmos DB-Knoten in der linken Struktur aufzulisten, wenn Sie den HTTP/HTTPS-Proxy in ASE konfigurieren. Dies ist ein bekanntes Problem, das im nächsten Release behoben sein wird. Derzeit können Sie den Azure Cosmos DB-Daten-Explorer im Azure-Portal als Problemumgehung verwenden.
+Es ist nicht möglich, Azure Cosmos DB-Knoten in der linken Struktur aufzulisten, wenn Sie den HTTP/HTTPS-Proxy in ASE konfigurieren. Derzeit können Sie den Azure Cosmos DB-Daten-Explorer im Azure-Portal als Problemumgehung verwenden.
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>Problem mit dem Knoten „Development“ unter „Local and Attached“
 

@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733029"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891465"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 
@@ -24,7 +24,7 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java-Ent
 
 ## <a name="deploying-your-app"></a>Bereitstellen Ihrer App
 
-Sie können das [Azure-Web-App-Plug-In für Maven](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) verwenden, um Ihre WAR-Dateien bereitzustellen. Die Bereitstellung mit beliebten IDEs wird außerdem mit [Azure Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) oder [Azure Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) unterstützt.
+Sie können das [Azure-Web-App-Plug-In für Maven](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) verwenden, um Ihre WAR-Dateien bereitzustellen. Die Bereitstellung mit beliebten IDEs wird außerdem mit [Azure Toolkit für IntelliJ](/azure/developer/java/toolkit-for-intellij/) oder [Azure Toolkit für Eclipse](/azure/developer/java/toolkit-for-eclipse) unterstützt.
 
 In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
 

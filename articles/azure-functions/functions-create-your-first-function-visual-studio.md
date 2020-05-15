@@ -1,22 +1,22 @@
 ---
 title: 'Schnellstart: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Visual Studio eine per HTTP ausgelöste Azure-Funktion erstellen und veröffentlichen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Visual Studio eine Azure-Funktion mit HTTP-Trigger erstellen und veröffentlichen.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81308932"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122747"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Schnellstart: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio
 
 Mit Azure Functions können Sie Ihren Code in einer serverlosen Umgebung ausführen, ohne vorher einen virtuellen Computer zu erstellen oder eine Webanwendung zu veröffentlichen.
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Visual Studio 2019 eine per HTTP ausgelöste C#-Funktions-App vom Typ „hello world“ lokal erstellen und testen und anschließend in Azure veröffentlichen. 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Visual Studio 2019 eine C#-Funktions-App vom Typ „Hallo Welt“ mit HTTP-Trigger lokal erstellen und testen und anschließend in Azure veröffentlichen. 
 
 ![localhost-Antwort der Funktion im Browser](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -58,7 +58,7 @@ Sie müssen in Ihrem Azure-Abonnement über eine Funktions-App verfügen, um Ihr
 
 1. Kopieren Sie die auf der Profilseite **Veröffentlichen** angegebene Basis-URL der Funktions-App. Ersetzen Sie den Teil `localhost:port` der URL, die Sie zum lokalen Testen der Funktion verwendet haben, durch die neue Basis-URL. Hängen Sie anschließend die Abfragezeichenfolge `?name=<YOUR_NAME>` an diese URL an, und führen Sie die Anforderung aus.
 
-    Die URL, über die Ihre per HTTP ausgelöste Funktion aufgerufen wird, hat das folgende Format:
+    Die URL, über die Ihre Funktion mit HTTP-Trigger aufgerufen wird, hat das folgende Format:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Sie müssen in Ihrem Azure-Abonnement über eine Funktions-App verfügen, um Ihr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe von Visual Studio eine C#-Funktions-App in Azure mit einer einfachen, per HTTP ausgelösten Funktion erstellt und veröffentlicht. 
+In dieser Schnellstartanleitung haben Sie mithilfe von Visual Studio eine C#-Funktions-App in Azure mit einer einfachen HTTP-Triggerfunktion erstellt und veröffentlicht. 
 
 Im nächsten Artikel erfahren Sie, wie Sie Ihrer Funktion eine Azure Storage-Warteschlangenbindung zu hinzufügen:
 > [!div class="nextstepaction"]

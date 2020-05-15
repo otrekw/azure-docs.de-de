@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383067"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201580"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -129,7 +129,7 @@ Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereic
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wird erzwungenes Tunneling bzw. die erzwungene Verkettung mit einem virtuellen Netzwerkgerät unterstützt?
 
-Erzwungenes Tunneling wird unterstützt. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung (Vorschau)](forced-tunneling.md). 
+Erzwungenes Tunneling wird unterstützt. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung](forced-tunneling.md). 
 
 Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231786"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199373"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -71,13 +71,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie lange werden Aktivitätsprotokolldaten (Überwachungs- und Anmeldevorgänge) im Azure-Portal aufbewahrt?** 
 
-**A:** Die folgende Tabelle zeigt den Datenaufbewahrungszeitraum für Aktivitätsprotokolle. Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure AD-Berichte](reference-reports-data-retention.md).
-
-| Bericht                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Überwachungsprotokolle             | 7 Tage        | 30 Tage             | 30 Tage             |
-| Anmeldungen               | –           | 30 Tage             | 30 Tage             |
-| Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
+**A:** Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure AD-Berichte](reference-reports-data-retention.md).
 
 ---
 

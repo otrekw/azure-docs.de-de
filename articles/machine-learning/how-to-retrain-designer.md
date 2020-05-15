@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810357"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981900"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,19 +32,13 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich mit der Enterprise-SKU.
-* Ein Dataset, auf das der Designer zugreifen kann. Die folgenden Werte sind möglich:
-   * Ein registriertes Azure Machine Learning-Dataset.
-    
-     **-oder-**
-   * Eine Datendatei, die in einem Azure Machine Learning-Datenspeicher gespeichert ist.
-   
-Informationen zum Datenzugriff mithilfe des Designers finden Sie unter [Importieren von Daten in den Designer](how-to-designer-import-data.md).
+* Schließen Sie den ersten Teil dieser Gewusst wie-Reihe [Transformieren von Daten im Designer](how-to-designer-transform-data.md) ab.
 
 In diesem Artikel wird auch davon ausgegangen, dass Sie grundlegende Kenntnisse zur Erstellung einer einfachen Pipeline im Designer haben. Als Einführung können Sie das [Tutorial](tutorial-designer-automobile-price-train-score.md) durchführen. 
 
 ### <a name="sample-pipeline"></a>Beispiel-Pipeline
 
-Die in diesem Artikel verwendete Pipeline ist eine geänderte Version von [Beispiel 3: Einkommensvorhersage](samples-designer.md#classification-samples) verwendeten Pipeline. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
+Die in diesem Artikel verwendete Pipeline ist eine geänderte Version von [Beispiel 3: Einkommensvorhersage](samples-designer.md#classification) verwendeten Pipeline. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
 
 ![Screenshot der geänderten Beispielpipeline mit einem Feld, in dem das Modul „Import Data“ (Daten importieren) hervorgehoben ist](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 

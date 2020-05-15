@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460261"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930062"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erstellen von Ressourcen auf der Mandantenebene
 
@@ -19,6 +19,7 @@ Im Zuge der Entwicklung Ihrer Organisation müssen unter Umständen [Richtlinien
 Folgende Ressourcentypen können auf der Mandantenebene bereitgestellt werden:
 
 * [Bereitstellungen:](/azure/templates/microsoft.resources/deployments) Für geschachtelte Vorlagen, die für die Bereitstellung in Verwaltungsgruppen oder Abonnements verwendet werden.
+* managementGroups
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ Bei Mandantenbereitstellungen müssen bei der Verwendung von Vorlagenfunktionen 
 * Verwenden Sie die Funktion [tenantResourceId()](template-functions-resource.md#tenantresourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf der Mandantenebene bereitgestellt werden.
 
   Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   Die zurückgegebene Ressourcen-ID hat das folgende Format:
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

@@ -4,20 +4,20 @@ description: Es ist hilfreich, das Benutzerkonto, unter dem eine Aufgabe ausgef�
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111741"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980285"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
+
 > [!NOTE] 
 > Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell). 
 >
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Linux-VM-Konfiguration über SSH ausgeführt wird, lesen Sie den Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Um eine Verbindung mit Knoten herzustellen, auf denen Windows über RDP ausgeführt wird, lesen Sie den Artikel [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).<br /><br />
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Clouddienstkonfiguration über RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
 Eine Aufgabe wird in Azure Batch immer unter einem Benutzerkonto ausgeführt. Standardmäßig werden Aufgaben unter Standardbenutzerkonten ohne Administratorberechtigungen ausgeführt. Diese standardmäßigen Benutzerkontoeinstellungen sind in der Regel ausreichend. Für bestimmte Szenarien ist es jedoch hilfreich, in der Lage zu sein, das Benutzerkonto zu konfigurieren, unter dem eine Aufgabe ausgeführt werden soll. Dieser Artikel beschreibt die Typen von Benutzerkonten, und wie Sie sie für Ihr Szenario konfigurieren können.
 
@@ -46,8 +46,8 @@ Weitere Informationen zum Zugriff auf Dateien und Verzeichnisse aus einer Aufgab
 
 Die Rechteerweiterungsebene des Benutzerkontos lässt erkennen, ob eine Aufgabe mit erhöhten Zugriffsrechten ausgeführt wird. Sowohl ein automatisches Benutzerkonto als auch ein benanntes Benutzerkonto kann mit erhöhten Zugriffsrechten ausgeführt werden. Die zwei Optionen für die Rechteerweiterungsebene sind:
 
-- **NonAdmin:** Die Aufgabe wird als Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
-- **Admin:** Die Aufgabe wird als Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
+- **NonAdmin:** Die Aufgabe wird unter dem Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
+- **Admin:** Die Aufgabe wird unter einem Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
 
 ## <a name="auto-user-accounts"></a>Automatische Benutzerkonten
 

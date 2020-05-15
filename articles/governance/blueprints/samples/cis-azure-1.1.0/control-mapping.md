@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 description: Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“ zu Azure Policy.
-ms.date: 11/04/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656969"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863959"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -25,7 +25,7 @@ Viele der zugeordneten Empfehlungen werden mit einer [Azure Policy](../../../pol
 Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie die Überwachung durchführen können, wenn die mehrstufige Authentifizierung für privilegierte Azure Active Directory-Konten nicht aktiviert ist.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
-- MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.
+- MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1.2. Sicherstellen, dass die mehrstufige Authentifizierung für alle nicht privilegierten Benutzer aktiviert ist
 
@@ -37,9 +37,9 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie die Überwachung für Gastkonten durchführen können, die ggf. entfernt werden müssen.
 
-- Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
 - Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.
+- Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 Sicherstellen, dass keine benutzerdefinierten Abonnementbesitzerrollen erstellt werden
 
@@ -51,7 +51,7 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definit
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie Netzwerke und virtuelle Computer überwachen können, für die der Standard-Tarif von Security Center nicht aktiviert ist.
 
- - Standard-Tarif von Security Center muss ausgewählt sein
+- Standard-Tarif von Security Center muss ausgewählt sein
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2.2. Sicherstellen, dass „Automatische Bereitstellung des Überwachungs-Agents“ auf „Ein“ festgelegt ist
 
@@ -87,20 +87,14 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie virtuelle Computer mit Internetzugriff schützen können.
 
-- NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2.8. Sicherstellen, dass die ASC-Standardrichtlinieneinstellung „Web Application Firewall überwachen“ nicht deaktiviert ist
-
-Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie virtuelle Computer schützen können, auf denen Webanwendungen ausgeführt werden.
-
-- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
+- Auf virtuelle Computer mit Internetzugang müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2.9. Sicherstellen, dass die ASC-Standardrichtlinieneinstellung „Next Generation Firewall-Überwachung aktivieren“ nicht deaktiviert ist
 
 Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie Subnetze und virtuelle Computer vor Bedrohungen schützen können, indem Sie den Zugriff einschränken. Die Security Center-Richtlinie, auf die von dieser CIS Microsoft Azure Foundations Benchmark-Empfehlung verwiesen wird, wurde durch zwei neue Empfehlungen ersetzt. Die unten aufgeführten Richtlinien gelten für die neuen Empfehlungen.
 
 - Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden
-- Virtuellen Computern muss eine Netzwerksicherheitsgruppe zugeordnet sein
+- Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2.10. Sicherstellen, dass die ASC-Standardrichtlinieneinstellung „Sicherheitsrisikobewertung überwachen“ nicht deaktiviert ist
 
@@ -128,7 +122,7 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass die SQL Server-Überwachung aktiviert ist.
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
+- Die Überwachung in SQL Server muss aktiviert werden.
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2.15. Sicherstellen, dass die ASC-Standardrichtlinieneinstellung „SQL-Verschlüsselung überwachen“ nicht deaktiviert ist
 
@@ -182,7 +176,7 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass die SQL Server-Überwachung aktiviert ist. 
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
+- Die Überwachung in SQL Server muss aktiviert werden.
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4.2. Sicherstellen, dass „AuditActionGroups“ in der Überwachungsrichtlinie für eine SQL Server-Instanz ordnungsgemäß festgelegt ist
 
@@ -200,8 +194,8 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass auf Computern mit SQL Server und auf verwalteten SQL-Instanzen Advanced Data Security aktiviert ist.
 
-- Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
+- Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5. Sicherstellen, dass „Bedrohungstypen für Erkennung“ auf „Alle“ festgelegt ist
 
@@ -214,15 +208,15 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definiti
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass die Benachrichtigungen für Advanced Data Security richtig aktiviert sind.
 
-- Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
 - Advanced Data Security-Einstellungen für SQL Server sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
+- Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4.7. Sicherstellen, dass „E-Mail-Dienst und Co-Administratoren“ aktiviert ist
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass die Benachrichtigungen für Advanced Data Security richtig aktiviert sind.
 
-- In den Advanced Data Security-Einstellungen für die verwaltete SQL-Instanz müssen E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer aktiviert sein
 - E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer sollten in den erweiterten Einstellungen für Datensicherheit in SQL Server aktiviert werden.
+- In den Advanced Data Security-Einstellungen für die verwaltete SQL-Instanz müssen E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer aktiviert sein
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4.8. Sicherstellen, dass der Azure Active Directory-Administrator konfiguriert ist
 
@@ -240,8 +234,8 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass die TDE-Schutzvorrichtung für Computer mit SQL Server und verwaltete SQL-Instanzen mit Ihrem eigenen Schlüssel verschlüsselt ist.
 
-- Die TDE-Schutzvorrichtung verwalteter SQL-Instanzen sollte mit Ihrem eigenen Schlüssel verschlüsselt werden.
 - Die TDE-Schutzvorrichtung in SQL Server sollte mit Ihrem eigenen Schlüssel verschlüsselt werden.
+- Die TDE-Schutzvorrichtung verwalteter SQL-Instanzen sollte mit Ihrem eigenen Schlüssel verschlüsselt werden.
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11. Sicherstellen, dass „SSL-Verbindung erzwingen“ für den MySQL-Datenbankserver auf „AKTIVIERT“ festgelegt ist
 
@@ -315,11 +309,83 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 - Azure Monitor muss Aktivitätsprotokolle aus allen Regionen erfassen
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 Sicherstellen, dass das Speicherkonto, das den Container mit Aktivitätsprotokollen enthält, per BYOK (Bring Your Own Key) verschlüsselt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass Speicherkonten, die Aktivitätsprotokolle enthalten, per BYOK verschlüsselt sind.
+
+- Speicherkonto mit dem Container mit Aktivitätsprotokollen muss per BYOK verschlüsselt sein
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7. Sicherstellen, dass die Protokollierung für Azure Key Vault aktiviert ist
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass Diagnoseprotokolle für Schlüsseltresore aktiviert sind.
 
 - Diagnoseprotokolle in Key Vault sollten aktiviert sein.
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Richtlinienzuweisung erstellen“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte Richtlinienvorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Netzwerksicherheitsgruppe erstellen oder aktualisieren“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Netzwerksicherheitsgruppe löschen“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 Sicherstellen, dass eine Aktivitätsprotokollwarnung für die Regel „Netzwerksicherheitsgruppe erstellen oder aktualisieren“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 Sicherstellen, dass eine Aktivitätsprotokollwarnung für die Regel „Netzwerksicherheitsgruppe löschen“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Sicherheitslösung erstellen oder aktualisieren“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte Sicherheitsvorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Sicherheitslösung löschen“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte Sicherheitsvorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „SQL Server-Firewallregel erstellen oder aktualisieren bzw. löschen“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 Sicherstellen, dass eine Aktivitätsprotokollwarnung für „Sicherheitsrichtlinie aktualisieren“ vorhanden ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass spezifische Aktivitätsprotokollwarnungen vorhanden sind.
+
+- Für bestimmte Sicherheitsvorgänge muss eine Aktivitätsprotokollwarnung vorliegen
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6.1 Sicherstellen, dass der RDP-Zugriff aus dem Internet eingeschränkt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass der RDP-Zugriff eingeschränkt ist.
+
+- RDP-Zugriff über das Internet blockieren
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6.2 Sicherstellen, dass der SSH-Zugriff aus dem Internet eingeschränkt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass der SSH-Zugriff eingeschränkt ist.
+
+- SSH-Zugriff über das Internet blockieren
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6.5. Sicherstellen, dass Network Watcher aktiviert ist
 
@@ -349,7 +415,7 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass nur genehmigte Erweiterungen für virtuelle Computer installiert werden. Für diese Richtlinie wird ein Parameterarray benötigt, in dem alle genehmigten Erweiterungen für virtuelle Computer angegeben sind. Diese Richtlinien-Initiativendefinition enthält die vorgeschlagenen Standardwerte, die von Kunden überprüft werden sollten. 
 
- - Es dürfen nur genehmigte VM-Erweiterungen installiert werden
+- Es dürfen nur genehmigte VM-Erweiterungen installiert werden
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7.5. Sicherstellen, dass die neuesten Betriebssystempatches für alle virtuellen Computer angewendet werden
 
@@ -373,7 +439,15 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass die rollenbasierte Zugriffssteuerung in Kubernetes-Dienstclustern zum Verwalten der Berechtigungen verwendet wird.
 
-- \[Vorschau\]: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) sollte für Kubernetes Service verwendet werden.
+- Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) sollte für Kubernetes Service verwendet werden.
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9.1 Sicherstellen, dass die App Service-Authentifizierung für Azure App Service festgelegt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass Anforderungen für App Service-Apps authentifiziert werden.
+
+- Authentifizierung sollte für Ihre API-App aktiviert werden
+- Authentifizierung sollte für Ihre Funktions-App aktiviert werden
+- Authentifizierung sollte für Ihre Web-App aktiviert werden
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9.2. Sicherstellen, dass die Web-App den gesamten HTTP-Datenverkehr in Azure App Service an HTTPS umleitet
 
@@ -434,7 +508,7 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definit
 Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von Java verwenden.
 
 - Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
-- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird
 - Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
 
 ## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9.10 Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird
@@ -444,7 +518,6 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definit
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

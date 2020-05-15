@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509821"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980897"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -137,9 +137,6 @@ Nachdem Sie die Diagramme konfiguriert haben, werden den Diagrammlinien automati
 Um die Farbe einer Diagrammlinie zu ändern, klicken Sie auf den farbigen Balken in der zum Diagramm gehörenden Legende. Das Dialogfeld für die Farbauswahl wird geöffnet. Verwenden Sie die Farbauswahl, um die Farbe für die Linie zu konfigurieren.
 
 Nachdem Sie die Diagrammfarben konfiguriert haben, bleiben sie in dieser Form erhalten, wenn Sie das Diagramm an ein Dashboard anheften. Im folgenden Abschnitt wird erläutert, wie Sie ein Diagramm anheften.
-
-> [!NOTE]
-> Aufgrund von Einschränkungen des Release- und Veröffentlichungszeitplans ist es zum Ändern der Farben von Diagrammlinien vorübergehend erforderlich, einen speziellen Parameter ( **?feature.colorpicker=true**) beim Starten des Azure-Portals zu übergeben ([https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)). Diese Einschränkung wird bald entfernt. 
 
 ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/018.png)
 

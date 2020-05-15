@@ -1,14 +1,14 @@
 ---
 title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677423"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863976"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>Beispiel 2: Verwenden einer JSON-Zuweisungsdefinitionsdatei
 
-Im folgenden Beispiel wird fast dieselbe Zuweisung wie in [Beispiel 1](#example-1-provide-parameters) erstellt.
-Anstatt der Übergabe von Parametern an das Cmdlet zeigt das Beispiel die Verwendung einer JSON-Zuweisungsdefinitionsdatei und des Parameters **AssignmentFile**. Außerdem wird die Eigenschaft **excludedPrincipals** als Teil von **locks** konfiguriert. Es gibt keinen PowerShell-Parameter für **excludedPrincipals**, und die Eigenschaft kann nur konfiguriert werden, indem sie durch die JSON-Zuweisungsdefinitionsdatei festgelegt wird.
+Im folgenden Beispiel wird fast dieselbe Zuweisung wie in [Beispiel 1](#example-1-provide-parameters) erstellt. Anstatt der Übergabe von Parametern an das Cmdlet zeigt das Beispiel die Verwendung einer JSON-Zuweisungsdefinitionsdatei und des Parameters **AssignmentFile**. Außerdem wird die Eigenschaft **excludedPrincipals** als Teil von **locks** konfiguriert. Es gibt keinen PowerShell-Parameter für **excludedPrincipals**, und die Eigenschaft kann nur konfiguriert werden, indem sie durch die JSON-Zuweisungsdefinitionsdatei festgelegt wird.
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Umfassendes Codebeispiel
+## <a name="code-example"></a>Codebeispiel
 
 Im folgenden Beispiel sind alle Schritte zusammengefasst. Zuerst wird die Blaupausendefinition abgerufen, und anschließend wird eine Blaupausenzuweisung im spezifischen Abonnement `{subId}` entfernt:
 

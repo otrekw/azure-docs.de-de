@@ -1,19 +1,20 @@
 ---
 title: Näherungsplatzierungsgruppen (Vorschau) für VM-Skalierungsgruppen
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Windows-VM-Skalierungsgruppen in Azure.
-author: cynthn
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.subservice: availability
 ms.date: 07/01/2019
-ms.author: cynthn
-ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76273618"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124345"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Vorschau: Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell
 

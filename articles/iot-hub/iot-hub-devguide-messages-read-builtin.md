@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729986"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996937"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -61,12 +61,12 @@ Sie können in diesem Fall eine SAS-Richtlinie für den gemeinsamen Zugriff mit 
 
 Zu den SDKs, die Sie für die Verbindung mit dem integrierten Event Hub-kompatiblen Endpunkt verwenden können, den der IoT Hub bereitstellt, gehören:
 
-| Sprache | SDK | Beispiel | Notizen |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Schnellstart](quickstart-send-telemetry-dotnet.md) | Verwendet Event Hubs-kompatible Informationen |
- Java | https://github.com/Azure/azure-event-hubs-java | [Schnellstart](quickstart-send-telemetry-java.md) | Verwendet Event Hubs-kompatible Informationen |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Schnellstart](quickstart-send-telemetry-node.md) | Verwendet die IoT Hub-Verbindungszeichenfolge |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Verwendet die IoT Hub-Verbindungszeichenfolge |
+| Sprache | SDK | Beispiel |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Schnellstart](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Schnellstart](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Schnellstart](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 Zu den Produktintegrationen, die Sie mit dem integrierten Event Hub-kompatiblen Endpunkt verwenden können, den der IoT Hub bereitstellt, gehören:
 

@@ -6,68 +6,66 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 05/01/2020
+ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314090"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983056"
 ---
-# <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
+# <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines neuen SaaS-Angebots im kommerziellen Marketplace
 
-Wenn Sie mit dem Erstellen von Software-as-a-Service-Angeboten (SaaS-Angeboten) beginnen möchten, müssen Sie zuerst [ein Partner Center-Konto erstellen](./create-account.md) und das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, in dem die Registerkarte **Übersicht** ausgewählt ist.
+Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) im kommerziellen Marketplace beginnen zu können, müssen Sie zuerst [ein Partner Center-Konto erstellen](./create-account.md), das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen und die Registerkarte **Übersicht** auswählen.
 
-![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
+## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
->[!Note]
-> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Stellen Sie sicher, dass Sie das Angebot für die Veröffentlichung übermitteln, nachdem Sie die Änderungen vorgenommen haben.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+3. Wählen Sie in der Übersicht die Option **+ Neues Angebot** > **SaaS (Software-as-a-Service)** aus.
 
-Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus.
+   ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-saas.png)
 
-Wenn Sie einen anderen Angebotstyp auswählen, werden Sie möglicherweise zum älteren [Cloud-Partnerportal](https://cloudpartner.azure.com/) umgeleitet. Im kommerziellen Marketplace im Partner Center-Portal sind derzeit nur SaaS- und Dynamics 365-Angebote verfügbar.
+> [!NOTE]
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
-![Fenster „Neues Angebot“ im Partner Center](./media/new-offer-click.png)
+## <a name="new-offer"></a>Neues Angebot
 
-Das Dialogfeld **Neues Angebot** wird angezeigt.
+Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
-![Dialogfeld „Neues Angebot“](./media/new-offer-popup.png)
+- Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
+- Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
-## <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
+Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
-- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Die **Angebots-ID** ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
-Beispiel: test-offer-1
-<br>Dies resultiert in der folgenden URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
-
-- **Angebotsalias**: Der Name, der zum Verweisen auf das Angebot im Partner Center-Portal verwendet wird. Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom *Angebotsnamen* und anderen Werten, die den Kunden angezeigt werden. Dieser Wert kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.
-
-<br>Beispiel: Testangebot 1&#8482;
-
-Klicken Sie auf **Erstellen**.  Für das Angebot wird die Seite **Angebotsübersicht** erstellt.  
+- Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
+- Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
 -->
 
+Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+
 ## <a name="offer-overview"></a>Angebotsübersicht
 
-Die Seite **Angebotsübersicht** enthält Folgendes:
+**Veröffentlichungsstatus** enthält eine visuelle Darstellung der zum Veröffentlichen des Angebots erforderlichen Schritte und Angaben zur Dauer der einzelnen Schritte. Die Symbole für unvollständige Veröffentlichungsschritte sind abgeblendet.
 
-- **Veröffentlichungsstatus** enthält eine visuelle Darstellung der zum Veröffentlichen des Angebots erforderlichen Schritte und Angaben zur Dauer der einzelnen Schritte. Die Symbole für unvollständige Veröffentlichungsschritte sind abgeblendet.
+Das Menü **Angebotsübersicht** enthält eine Liste mit Links zum Ausführen von Vorgängen für das Angebot. Die Liste der Vorgänge ändert sich basierend auf der Auswahl, die Sie für das Angebot vornehmen.  
 
-- Das Menü **Angebotsübersicht** enthält eine Liste mit Links zum Ausführen von Vorgängen für das Angebot. Die Liste der Vorgänge ändert sich basierend auf der Auswahl, die Sie für das Angebot vornehmen.  
-    - Wenn das Angebot ein Entwurf ist: „Entwurf löschen“
-    - Wenn das Angebot live ist: „Stop sell offer“ (Verkauf des Angebots einstellen)
-    - Wenn das Angebot in der Vorschau ist: „Live schalten“
-    - Wenn keine Bestätigung durch den Herausgeber erfolgt ist: „Veröffentlichung abbrechen“
+- Wenn das Angebot ein Entwurf ist: „Entwurf löschen“
+- Wenn das Angebot live ist: „Stop sell offer“ (Verkauf des Angebots einstellen)
+- Wenn das Angebot in der Vorschau ist: „Live schalten“
+- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: „Veröffentlichung abbrechen“
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
-Auf der Registerkarte **Angebotseinrichtung** wird um die folgenden Informationen gebeten. Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben.
+Auf dieser Seite werden folgende Informationen angefordert:
 
 - **Möchten Sie über Microsoft verkaufen?** (Ja/Nein)
-    - **Ja**: Sie möchten Ihr Angebot über Microsoft verkaufen, wobei Microsoft Marketplace-Transaktionen in Ihrem Auftrag hostet, oder 
-    - **Nein**: Sie möchten Ihr Angebot lediglich über die Marketplaces auflisten und alle finanziellen Transaktionen unabhängig von Microsoft abwickeln.
+    - **Ja**, ich möchte über Microsoft verkaufen, und Microsoft soll Transaktionen in meinem Namen hosten.
+    - **Nein**, ich möchte mein Angebot lieber nur in den Marketplaces listen und Transaktionen unabhängig verarbeiten.
 
 ### <a name="sell-through-microsoft"></a>Über Microsoft verkaufen
 
@@ -79,7 +77,6 @@ Um SaaS-Angebote (Software-as-a-Service) mit dem kommerziellen Marketplace im Pa
 
 - Das Angebot muss die Identitätsverwaltung und Benutzerauthentifizierung von [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) verwenden.
 - Das Angebot muss für die Integration in den Azure Marketplace [SaaS-Fulfillment-APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) verwenden.
-- Weitere Informationen zu den weitergehenden Anforderungen finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 #### <a name="saas-pricing-and-billing-options"></a>Preis- und Abrechnungsoptionen für SaaS
 
@@ -87,7 +84,7 @@ Bei SaaS-Lösungen, die im Azure-Abonnement des Herausgebers ausgeführt werden,
 
 SaaS bietet Unterstützung für die monatliche oder jährliche Abrechnung auf der Grundlage einer Pauschalgebühr, pro Benutzer oder gemäß der über den Gebührenabrechnungsdienst ermittelten Nutzungsgebühren. Der kommerzielle Marketplace von Microsoft arbeitet nach einem Agenturmodell, bei dem die Herausgeber die Preise festlegen, Microsoft den Kunden Rechnungen stellt und Microsoft die Einnahmen dann unter Einbehaltung einer Agenturgebühr an den Herausgeber auszahlt.
 
-Die folgende Tabelle zeigt eine exemplarische Aufschlüsselung der Kosten und Auszahlungen zur Veranschaulichung des Agenturmodells.
+Hier sehen Sie eine exemplarische Aufschlüsselung der Kosten und Auszahlungen zur Veranschaulichung des Agenturmodells:
 
 |**Ihre Lizenzkosten**|**100 USD pro Monat**|
 |:---|:---|
@@ -102,21 +99,21 @@ Die folgende Tabelle zeigt eine exemplarische Aufschlüsselung der Kosten und Au
 - Für Partner, die für die **reduzierte Marketplace-Dienstgebühr** qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt. In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus.
 
 > [!NOTE]
-> **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag.
+> **Reduzierte Marketplace-Dienstgebühr:** Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden. Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden. Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag.
 
 ### <a name="list-through-microsoft"></a>List through Microsoft (Über Microsoft auflisten)
 
 Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu werben. Wenn Sie Ihr Angebot nur auflisten und die Transaktion nicht über Microsoft ausführen lassen, nimmt Microsoft nicht direkt an Softwarelizenztransaktionen teil. Es gibt keine zugehörige Transaktionsgebühr, und der Herausgeber behält 100 % der vom Kunden gezahlten Softwarelizenzgebühren. Der Herausgeber ist für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso.
 
-- **Wie sollen potenzielle Kunden mit diesem Angebot interagieren?**
+<!-- - **How do you want potential customers to interact with this listing offer?** -->
 
 #### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 
-Listen Sie Ihr kostenloses Angebot für Kunden, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden per [1-Klick-Authentifizierung über Azure Active Directory](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können.  Beispiel: `https://contoso.com/saas-app`
+Listen Sie Ihr kostenloses Angebot für Kunden, indem Sie eine gültige Adresse (beginnend mit *http* oder *https*) angeben, mit der die Kunden per [1-Klick-Authentifizierung über Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können. Beispiel: `https://contoso.com/saas-app`.
 
 #### <a name="free-trial-listing"></a>Kostenlose Testversion (Listing)
 
-Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden [per 1-Klick-Authentifizierung über Azure Active Directory](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können.  Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
+Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion, indem Sie eine gültige Adresse (beginnend mit *http* oder *https*) angeben, mit der die Kunden [per 1-Klick-Authentifizierung über Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können. Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
 
 > [!NOTE]
 > Die Token, die Ihre Anwendung über den Testlink erhält, können nur verwendet werden, um zum Automatisieren der Kontoerstellung in Ihrer App Benutzerinformationen aus Azure AD abzurufen. Die Authentifizierung mit diesem Token wird für Microsoft-Konten (MSA) nicht unterstützt.
@@ -125,24 +122,25 @@ Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversi
 
 Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management).
 
-## <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
+#### <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
 
 ![Liste der Marketplace-Beispielangebote mit Hinweisen](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>Aktivieren einer Testversion
 
-Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen, was zu einer höheren Konvertierung und der Generierung von aussichtsreichen Leads führt. Weitere Informationen finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen Ihres Angebots](./test-drive.md).
+Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, das Produkt vor dem Kauf zu testen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Weitere Informationen zu Testversionen finden Sie [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
 
-- **Enable a test drive** (Testversion aktivieren) (Kontrollkästchen)
+Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
 
-Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung zu konfigurieren, in der Kunden Ihr Angebot während eines festen Zeitraums testen können. 
+Weitere Informationen finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen Ihres Angebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
 
 ### <a name="test-drive-resources"></a>Testversionen von Ressourcen
 
-- [Testversion: Marketing und Best Practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [Bewährte technische Methoden für Testversionen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Übersicht über Testversionen (PDF-Download)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+- [Bewährte Marketingmethoden](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Test Drive Best Practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) (Bewährte Methoden für Testversionen)
+- [Übersicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF-Datei; stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
 
-## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
@@ -151,19 +149,17 @@ Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung
 - [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Lead management at a glance](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (Übersicht über die Leadverwaltung, Informationsblatt in englischer Sprache)
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="properties"></a>Eigenschaften
 
-Auf der Registerkarte **Eigenschaften** werden Sie aufgefordert, die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App zu definieren.
-
-Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben.
+Auf dieser Seite werden Sie aufgefordert, die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App zu definieren.
 
 ### <a name="category"></a>Category
 
-Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen aus. Geben Sie in der Angebotsbeschreibung an, wie Ihr Angebot diesen Kategorien entspricht.
+Wählen Sie mindestens eine bzw. bis zu drei Kategorien aus, um Ihr Angebot in den entsprechenden Marketplace-Suchbereichen zu platzieren. Geben Sie in der Angebotsbeschreibung an, inwiefern Ihr Angebot diesen Kategorien entspricht.
 
-### <a name="industry"></a>Branche
+### <a name="industries"></a>Branchen
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -177,7 +173,7 @@ Microsoft stellt eine Vorlage für den Standardvertrag bereit.
 
 - **Möchten Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace verwenden?**
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft eine Vorlage für Standardverträge für den kommerziellen Microsoft-Marketplace bereit, mit der Transaktionen im Marketplace erleichtert werden. Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Herausgeber im kommerziellen Marketplace ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen. Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178.
+Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft eine Vorlage für Standardverträge für den kommerziellen Microsoft-Marketplace bereit, mit der Transaktionen im Marketplace erleichtert werden. Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Herausgeber im kommerziellen Marketplace ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen. Den Standardvertrag finden Sie unter https://go.microsoft.com/fwlink/?linkid=2041178.
 
 Sie können auswählen, ob Sie den Standardvertrag statt Ihrer eigenen benutzerdefinierten Geschäftsbedingungen verwenden möchten, indem Sie das Kontrollkästchen „Standardvertrag für den kommerziellen Marketplace verwenden“ aktivieren.
 
@@ -198,13 +194,13 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 >[!NOTE]
 > Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag.
 
-**Bestimmungen der universellen Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace**: Geben Sie in diesem Feld die universellen Zusatzbestimmungen ein. Sie können eine universelle Zusatzvereinbarung pro Angebot angeben. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Die Bestimmungen werden Kunden während des Ermittlungs- und Kaufprozesses in AppSource, dem Azure Marketplace und dem Azure-Portal angezeigt.
+**Bestimmungen der universellen Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace:** Geben Sie in diesem Feld die universellen Zusatzbestimmungen ein. Sie können eine universelle Zusatzvereinbarung pro Angebot angeben. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Die Bestimmungen werden Kunden während des Ermittlungs- und Kaufprozesses in AppSource, dem Azure Marketplace und dem Azure-Portal angezeigt.
 
-**Benutzerdefinierte Bestimmungen der Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace**: Wählen Sie zunächst **Benutzerdefinierte Zusatzbestimmungen hinzufügen** aus. Sie können bis zu 10 benutzerdefinierte Zusatzbestimmungen pro Angebot angeben.
+**Benutzerdefinierte Bestimmungen der Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace:** Wählen Sie zunächst **Benutzerdefinierte Zusatzbestimmungen hinzufügen** aus. Sie können bis zu 10 benutzerdefinierte Zusatzbestimmungen pro Angebot angeben.
 
-- **Benutzerdefinierte Zusatzbestimmungen**: Geben Sie Ihre Zusatzbestimmungen in das Feld für benutzerdefinierte Bestimmungen der Zusatzvereinbarung ein. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Nur Kunden mit den Mandanten-IDs, die Sie für diese benutzerdefinierten Bestimmungen angeben, werden diese benutzerdefinierten Zusatzbestimmungen im Rahmen der Kaufabwicklung im Azure-Portal für das Angebot präsentiert.  
+- **Benutzerdefinierte Zusatzvereinbarungen**: Geben Sie Ihre benutzerdefinierten Zusatzvereinbarungen in das Feld für benutzerdefinierte Zusatzvereinbarungen ein. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Diese benutzerdefinierten Zusatzbestimmungen werden im Azure-Portal im Rahmen der Kaufabwicklung für das Angebot nur für Kunden mit den Mandanten-IDs angezeigt, die Sie für diese benutzerdefinierten Bestimmungen angeben.  
 - **Mandanten-IDs** (erforderlich): Jede benutzerdefinierte Zusatzvereinbarung kann für bis zu 20 Mandanten-IDs gelten. Wenn Sie eine benutzerdefinierte Zusatzvereinbarung hinzufügen, müssen Sie mindestens eine Mandanten-ID angeben. Die Mandanten-ID identifiziert Ihren Kunden in Azure. Sie können Ihren Kunden bitten, Ihnen diese ID mitzuteilen. Kunden finden ihre ID unter „portal.azure.com“ > „Azure Active Directory“ > „Eigenschaften“. Der Wert „Verzeichnis-ID“ ist die Mandanten-ID (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können die von Ihrer Organisation zugeteilte Mandanten-ID Ihres Kunden auch nachschlagen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Office 365?](https://www.whatismytenantid.com) die Domänennamen-URL des Kunden verwenden.
-- **Beschreibung** (optional): Sie können optional eine aussagekräftige Beschreibung für die Mandanten-ID hinzufügen, mit der Sie den Kunden, für den die Zusatzvereinbarung gelten soll, einfacher identifizieren können.
+- **Beschreibung** (optional): Geben Sie optional eine aussagekräftige Beschreibung für die Mandanten-ID an, mit der Sie den Kunden, für den die Zusatzvereinbarung gelten soll, einfacher identifizieren können.
 
 #### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
@@ -212,11 +208,11 @@ Wenn Sie Ihre eigenen Geschäftsbedingungen einschließen möchten, können Sie 
 
 Kunden müssen diese Bestimmungen akzeptieren, bevor sie Ihr Angebot testen können.
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
-Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
+Auf dieser Seite werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
 
 > [!NOTE]
 > Die Inhalte der Angebotsliste (z. B. Angebotsbeschreibung, Dokumente, Screenshots, Nutzungsbedingungen und Datenschutzrichtlinien) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
@@ -225,11 +221,10 @@ Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) ange
 
 Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.
 
-- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
-- **Zusammenfassung** (erforderlich): Geben Sie eine kurze Beschreibung Ihres Angebots ein, die in den Suchergebnissen für Marketplace-Liste(n) verwendet werden soll. In diesem Feld können bis zu 100 Zeichen Text eingegeben werden.
-- **Beschreibung:** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Übersicht über die Marketplace-Liste(n) angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben.
-In dieses Feld können einschließlich Markup bis zu 3.000 Textzeichen eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
-- **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in dem/den Marketplace(s) nach Ihrem Angebot suchen können.
+- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in den von Ihnen gewählten Marketplaces angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
+- **Zusammenfassung** (erforderlich): Geben Sie eine kurze Beschreibung Ihres Angebots ein, die in den Suchergebnissen für Marketplace-Einträge verwendet werden soll. In diesem Feld können bis zu 100 Zeichen Text eingegeben werden.
+- **Beschreibung** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Marketplace-Eintragsübersicht angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben. In dieses Feld können einschließlich Markup bis zu 3.000 Textzeichen eingegeben werden. Weitere Tipps finden Sie unter [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+- **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in den Marketplaces nach Ihrem Angebot suchen können.
 - **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden.
 
 #### <a name="description"></a>**Beschreibung**
@@ -241,91 +236,93 @@ Dies ist ein Pflichtfeld. Die **Beschreibung** sollte folgende Elemente enthalte
 * Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
 * Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
 
-Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:
+Die Kernbestandteile Ihres Nutzenversprechens sollten Folgendes umfassen:
 
-* Beschreibung des Produkts.
-* Benutzertyp, der von dem Produkt profitiert.
-* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.
+* Beschreibung des Produkts
+* Typ von Benutzern, die von dem Produkt profitieren
+* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt
 
-Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors.
+Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
 
-![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
+![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
 
-Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
-
-- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text und wählen ein Textformat aus, wie unten dargestellt:
-
-     ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
-
-- Um dem Text eine nummerierte Liste oder eine Liste mit Aufzählungszeichen hinzuzufügen, verwenden Sie die folgenden Optionen:
-
-     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png)
-
-- Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
-
-     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Einzügen](./media/text-editor5.png)
+| <center>Ändern des Textformats | <center>Hinzufügen von Aufzählungszeichen oder Nummerierungen | <center>Hinzufügen oder Entfernen von Texteinzügen |
+| --- | --- | --- |
+| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
 
 #### <a name="links"></a>Links
 
-- **Datenschutzrichtlinie** (erforderlich): Erstellen Sie eine Verknüpfung zur Datenschutzrichtlinie Ihrer Organisation. Sie müssen sicherzustellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
-- **Marketingmaterial für das CSP-Programm** (optional): Fügen Sie einen Link zu Marketingmaterial ein, wenn Sie Ihr Angebot auf das [CSP-Programm (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) ausdehnen. Durch CSP wird Ihr Angebot auf ein breiteres Spektrum von qualifizierten Kunden erweitert, indem CSP-Partnern das Bündeln, Vermarkten und Verkaufen Ihres Angebots ermöglicht wird. Diese Handelspartner benötigen Zugriff auf Materialien für die Vermarktung Ihres Angebots. Weitere Informationen finden Sie unter [Go-To-Market-Dienste](https://partner.microsoft.com/reach-customers/gtm).
-- **Nützliche Links** (optional): Optionale zusätzliche Onlinedokumente zu Ihrer App oder zugehörigen Diensten, die durch die Angabe eines **Titels** und einer **URL** aufgeführt werden. Fügen Sie weitere nützliche Links hinzu, indem Sie auf **+ URL hinzufügen** klicken.
+- **Datenschutzrichtlinie** (erforderlich): Link zur Datenschutzrichtlinie Ihrer Organisation. Sie müssen sicherzustellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
+- **Marketingmaterial für das CSP-Programm** (optional): Stellen Sie einen Link zu Marketingmaterial bereit, wenn Sie Ihr Angebot auf das [CSP-Programm (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) ausdehnen. Durch CSP wird Ihr Angebot auf ein breiteres Spektrum von qualifizierten Kunden erweitert, indem CSP-Partnern das Bündeln, Vermarkten und Verkaufen Ihres Angebots ermöglicht wird. Diese Handelspartner benötigen Zugriff auf Materialien für die Vermarktung Ihres Angebots. Weitere Informationen finden Sie unter [Go-To-Market-Dienste](https://partner.microsoft.com/reach-customers/gtm).
+- **Nützliche Links** (optional): Optionale zusätzliche Onlinedokumente zu Ihrer App oder zu zugehörigen Diensten, die durch die Angabe eines **Titels** und einer **URL** aufgeführt werden. Fügen Sie weitere nützliche Links hinzu, indem Sie auf **+ URL hinzufügen** klicken.
 
 #### <a name="contact-information"></a>Kontaktinformationen
 
-- **Kontakte**: Geben Sie für jeden Kundenkontakt den **Namen**, die **Telefonnummer** und die **E-Mail-Adresse** eines Mitarbeiters ein.  (Diese werden *nicht* öffentlich angezeigt). Zudem ist eine **Support-URL** für die Gruppe **Supportkontakt** erforderlich.  (Diese Information *wird* öffentlich angezeigt).
+- **Kontakte**: Geben Sie für jeden Kundenkontakt **Name**, **Telefonnummer** und **E-Mail-Adresse** eines Mitarbeiters an. (Diese Angaben werden *nicht* öffentlich angezeigt.) Eine **Support-URL** ist für die Gruppe **Supportkontakt** erforderlich. (Sie *wird* öffentlich angezeigt.)
 
-**Supportkontakt** (erforderlich): Für allgemeine Supportfragen.
-
-**Technischer Ansprechpartner** (erforderlich): Für technische Fragen.
-
-**Channel Manager contact** (Channel-Manager-Kontakt) (erforderlich): Für Fragen von Handelspartnern zum CSP-Programm.
+    - **Supportkontakt** (erforderlich): Für allgemeine Supportfragen.
+    - **Technischer Ansprechpartner** (erforderlich): Für technische Fragen.
+    - **Channel Manager contact** (Channel-Manager-Kontakt) (erforderlich): Für Fragen von Handelspartnern zum CSP-Programm.
 
 #### <a name="files-and-images"></a>Files and Images (Dateien und Bilder)
 
-- **Dokumente** (erforderlich): Fügen Sie zugehörige Marketingdokumente im PDF-Format für Ihr Angebot hinzu, mindestens ein (1) und maximal drei (3) Dokumente pro Angebot.
-- **Bilder** (optional): In dem/den Marketplace(s) können Logobilder Ihres Angebots an mehreren Stellen angezeigt werden, wobei die folgenden Größen erforderlich sind. „Small: 48 x 48 pixels“  _(Klein: 48 x 48 Pixel) (erforderlich),_ „Medium: 90 x 90 pixels“  _(Medium: 90 x 90 Pixel) (erforderlich),_ „Large: 216 x 216 pixels“  _(Groß: 216 x 216 Pixel) (erforderlich),_ „Wide: 255 x 115 pixels“ (Breit: 255 x 115 Pixel) und „Hero: 815 x 290 pixels“ (Hero: 815 x 290 Pixel). Alle Bilder müssen das PNG-Format aufweisen.
+- **Dokumente** (erforderlich): Fügen Sie für Ihr Angebot Marketingdokumente im PDF-Format hinzu (pro Angebot mindestens ein Dokument und maximal drei Dokumente).
+- **Bilder** (optional): In den Marketplaces können Logobilder Ihres Angebots an verschiedenen Stellen angezeigt werden, weshalb folgende Pixelgrößen im PNG-Format erforderlich sind:
+
+    - **Klein** (48 x 48, erforderlich)
+    - **Mittel** (90 x 90, erforderlich)
+    - **Groß** (216 x 216, erforderlich)
+    - **Breit** (255 x 115)
+    - **Hero** (815 x 290)
+
 - **Screenshots** (erforderlich): Fügen Sie Screenshots hinzu, um Ihr Angebot zu veranschaulichen. Es können maximal fünf (5) Screenshots hinzugefügt werden. Ihre Größe sollte 1280 x 720 Pixel betragen. Alle Bilder müssen das PNG-Format aufweisen.
 - **Videos** (optional): Fügen Sie Links zu Videos hinzu, um Ihr Angebot zu veranschaulichen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos hinzufügen. Es muss das PNG-Format und eine Größe von 1280 x 720 Pixel aufweisen. Sie können bis zu vier Videos pro Angebot anzeigen.
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
+>[!NOTE]
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
 - [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="preview"></a>Vorschau
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
-Sie können auf der Registerkarte **Vorschau** eine eingeschränkte **Vorschauzielgruppe** für das Freigeben Ihres Angebots definieren, bevor Sie das Angebot für die größere Marketplace-Zielgruppe live veröffentlichen.
+## <a name="preview-audience"></a>Vorschauzielgruppe
+
+Auf dieser Seite können Sie eine eingeschränkte **Vorschauzielgruppe** für die Veröffentlichung Ihres Angebots definieren, bevor Sie Ihr Angebot für die allgemeine Marketplace-Zielgruppe live schalten.
 
 > [!IMPORTANT]
 > Nachdem Sie Ihr Angebot in der Vorschau überprüft haben, wählen Sie **Live schalten** aus, damit es für die öffentliche Marketplace-Zielgruppe live veröffentlicht werden kann.
 
-- **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description.** (Definieren Sie eine Vorschauzielgruppe: Fügen Sie eine einzelne AAD/MSA-Konto-E-Mail-Adresse pro Zeile und optional eine Beschreibung hinzu.)
+Fügen Sie pro Zeile jeweils eine AAD-/MSA-Konto-E-Mail-Adresse und optional eine Beschreibung hinzu.
 
 Fügen Sie manuell bis zu 10 E-Mail-Adressen oder durch Hochladen einer CSV-Datei bis zu 20 E-Mail-Adressen für vorhandene Microsoft-Konten (MSA) oder Azure Active Directory-Konten hinzu, um Unterstützung bei der Überprüfung Ihres Angebots vor der Liveveröffentlichung zu erhalten. Durch das Hinzufügen dieser Konten definieren Sie eine Zielgruppe, die Zugriff auf die Vorschau Ihres Angebot erhält, bevor es in dem/den Marketplace(s) veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
 
 > [!NOTE]
 > Die Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Einer Vorschauzielgruppe wird Zugriff auf das Angebot gewährt, _bevor_ es in den Marketplaces live veröffentlicht wird. Sie können auch einen Plan erstellen und nur für eine private Zielgruppe verfügbar machen. Auf der Registerkarte **Planlisting** können Sie mit dem Kontrollkästchen **This is a private plan** (Dies ist ein privater Plan) eine private Zielgruppe definieren. Sie können mithilfe von Azure-Mandanten-IDs eine private Zielgruppe von bis zu 20.000 Kunden definieren.
 
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
-Auf der Registerkarte **Technische Konfiguration** werden die technischen Informationen (URL-Pfad, Webhook, Mandanten-ID und App-ID) für die Verbindung mit Ihrem Angebot definiert. Durch diese Verbindung können wir Ihr Angebot für den Endkunden bereitstellen, wenn er es kaufen möchte. Diagramme, die die Verwendung der gesammelten Felder beschreiben, finden Sie in der Dokumentation zu [SaaS-Fulfillment-APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Auf dieser Seite werden die technischen Informationen (URL-Pfad, Webhook, Mandanten-ID und App-ID) für die Verbindung mit Ihrem Angebot definiert. Durch diese Verbindung können wir Ihr Angebot für den Endkunden bereitstellen, wenn er es kaufen möchte. Diagramme, die die Verwendung der gesammelten Felder beschreiben, finden Sie in der Dokumentation zu [SaaS-Fulfillment-APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **URL der Angebotsseite** (erforderlich): Definieren Sie die URL der Website, zu der der Kunde weitergeleitet wird, nachdem er Ihr Angebot auf dem Marketplace erworben hat. Diese URL wird der Endpunkt sein, der ein Token erhält, wenn ein Kunde auf die Seite weitergeleitet wird. Dieses Token kann über die Auflösung in den Fulfillment-APIs gegen Bereitstellungsdetails ausgetauscht werden. Diese und alle anderen Daten, die Sie sammeln, können als Teil einer interaktiven, in Ihre Benutzeroberfläche integrierten Webseite für Kunden verwendet werden, wo sie die Registrierung abschließen und den Kauf aktivieren können.
+- **URL der Angebotsseite** (erforderlich): Definieren Sie die URL der Website, zu der der Kunde weitergeleitet wird, nachdem er Ihr Angebot über den Marketplace erworben hat. Diese URL wird der Endpunkt sein, der ein Token erhält, wenn ein Kunde auf die Seite weitergeleitet wird. Dieses Token kann über die Auflösung in den Fulfillment-APIs gegen Bereitstellungsdetails ausgetauscht werden. Diese und alle anderen Daten, die Sie sammeln, können als Teil einer interaktiven, in Ihre Benutzeroberfläche integrierten Webseite für Kunden verwendet werden, wo sie die Registrierung abschließen und den Kauf aktivieren können.
 
-- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das SaaS-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z. B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (etwa, wenn das SaaS-Abonnement ungültig geworden ist), muss ein Webhook für die Verbindung angegeben werden. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z. B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der Nummer, die unter **Verzeichnis-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-Mandanten-ID** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der Nummer, die unter **Verzeichnis-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der Nummer die unter **Anwendungs-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
+- **Azure AD-App-ID** (erforderlich): Sie benötigen auch Ihre [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der Nummer die unter **Anwendungs-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
 
 >[!Note]
 >Die Azure-Anwendungs-ID ist Ihrer Herausgeber-ID zugeordnet. Stellen Sie also sicher, dass in all Ihren Angeboten dieselbe Anwendungs-ID verwendet wird.
 
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+
 ## <a name="plan-overview"></a>Planübersicht
 
-Auf der Registerkarte **Planübersicht** können Sie eine Vielzahl von Planoptionen innerhalb desselben Angebots bereitstellen. Diese Pläne (auch als SKUs bezeichnet) können sich in Bezug auf Version, Monetarisierung und Dienstebenen unterscheiden. Sie müssen mindestens einen Plan einrichten, um Ihr Angebot im Marketplace zu verkaufen.
+Auf dieser Seite können Sie verschiedene Planoptionen innerhalb des gleichen Angebots angeben. Diese Pläne (auch als SKUs bezeichnet) können sich in Bezug auf Version, Monetarisierung und Dienstebenen unterscheiden. Sie müssen mindestens einen Plan einrichten, um Ihr Angebot im Marketplace zu verkaufen.
 
 Nach der Erstellung werden die Plannamen, IDs und Preismodelle, die Verfügbarkeit (öffentlich oder privat), der aktuelle Veröffentlichungsstatus und alle verfügbaren Aktionen angezeigt.
 
@@ -341,65 +338,48 @@ Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem akt
 
 ### <a name="plan-listing"></a>Planlisting
 
-Auf der Registerkarte **Planlisting** werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
+Auf dieser Seite können Sie den Plannamen und eine Beschreibung angeben. <!-- displays the languages (and markets) where your plan is available, currently English (United States) is the only location available. Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the marketplace details (offer name, description, search terms, etc.) for each language / market.-->
 
-#### <a name="plan-listing-details"></a>Planlistinginformationen
+<!--#### Plan listing details-->
 
-Nach Auswahl einer der Plansprachen werden Informationen zum **Planlisting** angezeigt, einschließlich **Name** und **Beschreibung**.
+<!--Selecting one of the plan languages will display the **plan listing** information, including **Name** and **Description.** -->
 
-- **Name**: Ist auf Grundlage Ihre Vorschaueintrags **Neuer Plan** im Voraus ausgefüllt und wird als Titel des Softwareplans für Ihr Angebot im Marketplace angezeigt.
-- **Beschreibung:** Diese Beschreibung bietet die Möglichkeit zu erklären, was diesen Softwareplan einzigartig macht und von anderen Softwareplänen in Ihrem Angebot unterscheidet. Sie darf bis zu 500 Zeichen enthalten.
+- **Name**: Wird auf der Grundlage Ihres Vorschaueintrags **Neuer Plan** vorab aufgefüllt und als Titel des Softwareplans für Ihr Angebot im Marketplace angezeigt.
+- **Beschreibung**: Hier können Sie erläutern, was diesen Softwareplan einzigartig macht und von anderen Softwareplänen in Ihrem Angebot unterscheidet. Sie darf bis zu 500 Zeichen enthalten.
 
-Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
-#### <a name="plan-pricing-and-availability"></a>Preise und Verfügbarkeit des Plans
+#### <a name="pricing-and-availability"></a>Preise und Verfügbarkeit
 
-Auf der Registerkarte **Preise und Verfügbarkeit** können Sie die Märkte, in denen der Plan verfügbar ist, das gewünschte Monetarisierungsmodell, den Preis und den Abrechnungszeitraum konfigurieren. Darüber hinaus können Sie angeben, ob der Plan für alle Benutzer oder nur für bestimmte Kunden (eine private Zielgruppe) angezeigt werden soll.
+Auf dieser Seite können Sie die Märkte, in denen der Plan verfügbar ist, sowie das gewünschte Monetarisierungsmodell, den Preis und den Abrechnungszeitraum konfigurieren. Darüber hinaus können Sie angeben, ob der Plan für alle Benutzer oder nur für bestimmte Kunden (eine private Zielgruppe) angezeigt werden soll.
 
-##### <a name="enabling-free-trials"></a>Aktivieren kostenloser Testversionen
+#### <a name="markets-optional"></a>Märkte (optional)
 
-SaaS-Angebote über den kommerziellen Marketplace ermöglichen Ihnen beim Verkauf über Microsoft, eine einmonatige kostenlose Testversion bereitzustellen. Kostenlose Testversionen werden für alle Abrechnungsmodelle und -bedingungen mit Ausnahme von Volumentarifen unterstützt. Diese Option ermöglicht es Kunden, durch den kostenlosen Zugriff für einen Monat eine niedrige Schwelle für den Einstieg zu erhalten.  Wenn Sie eine kostenlose Testversion für Pläne in Ihrem Angebot aktivieren, kann der Kunde diese Version nicht vor Ende des ersten Monats in ein kostenpflichtiges Abonnement umwandeln.  Während dieses Zeitraums können Kunden, die Ihr Angebot erwerben, alle unterstützten Pläne ausprobieren, bei denen die kostenlose Testversion aktiviert ist, und zwischen diesen wechseln.  Die Umwandlung in ein kostenpflichtiges Abonnement erfolgt automatisch am Ende der Laufzeit.
+Jeder Plan muss in mindestens einem Markt verfügbar sein. Wählen Sie **Märkte bearbeiten** aus, und aktivieren Sie das Kontrollkästchen für jeden Marktstandort, an dem Sie diesen Plan zur Verfügung stellen möchten. Auf dieser Seite stehen ein Suchfeld und eine Option zum Auswählen von Ländern zur Verfügung, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
 
->[!Note]
->Wenn sich der Kunde für die Umwandlung in einen Plan ohne kostenlose Testversionen entscheidet, wird dies umgesetzt, doch geht die kostenlose Testversion sofort verloren.  Auch sobald ein Kunde mit dem Bezahlen für einen Plan beginnt, kann er selbst dann keine kostenlose Testversion mehr für dasselbe Abonnement erhalten, wenn eine Umwandlung in eine SKU erfolgt, die kostenlose Testversionen unterstützt.
+Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen anderen Marktstandort hinzufügen, wird der Preis für den neuen Markt entsprechend dem aktuellen Wechselkurs berechnet. Überprüfen Sie vor dem Veröffentlichen den Preis für jeden Markt. Sehen Sie sich die Preise mithilfe des Links „Preise exportieren (XLSX)“ an, nachdem Sie Ihre Änderungen gespeichert haben.
 
-Die Möglichkeit, eine kostenlose Testversion zu konfigurieren, steht für jeden Plan in Ihrem Angebot zur Verfügung. Navigieren Sie zu „Preise und Verfügbarkeit“ für jedes Angebot, und aktivieren Sie das Kontrollkästchen, um eine einmonatige Testversion zuzulassen.
-
-![Kontrollkästchen für eine einmonatige kostenlose Testversion](./media/free-trial-enable.png)
-
->[!Note]
->Sobald Ihr transaktionsfähiges Angebot mit einer kostenlosen Testversion veröffentlicht wurde, kann es für den jeweiligen Plan nicht mehr deaktiviert werden. Vergewissern Sie sich, dass diese Einstellung für die erste Veröffentlichung korrekt ist, damit der Plan nicht neu erstellt werden muss.
-
-Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
-
->[!Note]
->Kostenlose Testversionen werden für Pläne, die den Marketplace-Messungsdienst nutzen, nicht unterstützt.
-
-#### <a name="markets"></a>Märkte
-
-- **Edit markets** (Märkte bearbeiten) (optional)
-
-Jeder Plan muss in mindestens einem Markt verfügbar sein. Aktivieren Sie das Kontrollkästchen für jeden Marktstandort, in dem Sie diesen Plan zur Verfügung stellen möchten. Zur Unterstützung sind ein Suchfeld und eine Schaltfläche zum Auswählen von Ländern vorhanden, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
-
-Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen anderen Marktstandort hinzufügen, wird der Preis für den neuen Markt entsprechend dem aktuellen Wechselkurs berechnet. Überprüfen Sie vor dem Veröffentlichen den Preis für jeden Markt. Die Preise können nach dem Speichern der Änderungen mithilfe des Links „Export prices (xlsx)“ (Preise exportieren (.xlsx)) überprüft werden.
+Wählen Sie **Speichern** aus, bevor Sie den Vorgang fortsetzen.
 
 #### <a name="pricing"></a>Preise
 
-- **Preismodell**: „Flat rate“ (Pauschalgebühr) oder „Seat based“ (Arbeitsplatzbasiert)
+##### <a name="pricing-model"></a>Preismodell
 
-**Flat rate:** (Pauschalgebühr): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einer einzelnen monatlichen oder jährlichen Pauschalgebühr. Dies wird manchmal als arbeitsplatzbasierter Preis bezeichnet. Dieses Preismodell ermöglicht Ihnen das optionale Definieren von Volumentarifen, bei denen die Marketplace-Messungsdienst-API zur Berechnung für Kunden nach nicht standardmäßigen Einheiten verwendet wird.  Weitere Informationen zur getakteten Abrechnung finden Sie unter [Getaktete Abrechnung mit dem Marketplace-Messungsdienst](./saas-metered-billing.md).
+**Pauschalgebühr**: Ermöglichen Sie den Zugriff auf Ihr Angebot mit einer einzelnen monatlichen oder jährlichen Pauschalgebühr. Dies wird manchmal als arbeitsplatzbasierter Preis bezeichnet. Dieses Preismodell ermöglicht Ihnen das optionale Definieren von Volumentarifen, bei denen die Marketplace-Messungsdienst-API zur Berechnung für Kunden nach nicht standardmäßigen Einheiten verwendet wird.  Weitere Informationen zur getakteten Abrechnung finden Sie unter [Getaktete Abrechnung mit dem Marketplace-Messungsdienst](./saas-metered-billing.md).
 
-**Pro Benutzer:** Ermöglichen Sie den Zugriff auf Ihr Angebot mit einem Preis, der auf der Anzahl der Benutzer, die auf Ihr Angebot zugreifen, oder auf der Anzahl der belegten Arbeitsplätze basiert. Mithilfe des benutzerbasierten Modells können Sie die minimal und maximal zulässige Anzahl von Benutzern auf Grundlage des Preises festlegen. Auf diese Weise können durch das Konfigurieren mehrerer Pläne unterschiedliche Preise auf Grundlage der Anzahl der Benutzer festgelegt werden.  Diese Felder sind optional. Wenn keine Auswahl erfolgt, wird angenommen, dass die Anzahl der Arbeitsplätze unbegrenzt ist (mindestens 1 und maximal die vom System unterstützte Anzahl). Diese Felder können beim Aktualisieren des Plans bearbeitet werden.
+**Pro Benutzer**: Ermöglichen Sie den Zugriff auf Ihr Angebot mit einem Preis, der auf der Anzahl von Benutzern, die auf Ihr Angebot zugreifen, oder auf der Anzahl beanspruchter Arbeitsplätze basiert. Mithilfe des benutzerbasierten Modells können Sie die minimal und maximal zulässige Anzahl von Benutzern auf Grundlage des Preises festlegen. Auf diese Weise können durch das Konfigurieren mehrerer Pläne unterschiedliche Preise auf Grundlage der Anzahl der Benutzer festgelegt werden.  Diese Felder sind optional. Wenn keine Auswahl erfolgt, wird angenommen, dass die Anzahl der Arbeitsplätze unbegrenzt ist (mindestens 1 und maximal die vom System unterstützte Anzahl). Diese Felder können beim Aktualisieren des Plans bearbeitet werden.
 
 Nach der Veröffentlichung kann das Abrechnungspreismodell nicht mehr geändert werden. Darüber hinaus müssen alle Pläne für das gleiche Angebot dasselbe Preismodell aufweisen.
 
-- **Abrechnungszeitraum**: „Monatlich“ oder „Jährlich“
+##### <a name="user-limits"></a>Benutzergrenzwerte
 
-Wählen Sie aus, wie häufig Kunden den aufgeführten Preis zahlen müssen. Es muss mindestens ein monatlicher oder jährlicher Preis angegeben werden. Es ist auch möglich, für Kunden beide Optionen verfügbar zu machen.
+Wählen Sie ggf. Unter- und Obergrenzen für Benutzer aus, bzw. legen Sie sie fest.
 
-- **Preis**: „USD per month“ (US-Dollar pro Monat) oder „USD per year“ (US-Dollar pro Jahr)
+##### <a name="billing-term-and-price"></a>Abrechnungszeitraum und Preis
 
-Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation. Sie sind für die Überprüfung des Preismodells und diese Einstellungen verantwortlich.
+Wählen Sie die **Laufzeit** und den **Preis** aus, der von Kunden zu zahlen ist. Es muss mindestens ein monatlicher oder jährlicher Preis angegeben werden. Es ist auch möglich, für Kunden beide Optionen verfügbar zu machen.
+
+Preise in USD (USD = US-Dollar) werden beim Speichern gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation. Sie sind für die Überprüfung des Preismodells und diese Einstellungen verantwortlich.
 *\*Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.*
 
 Überprüfen Sie Ihre Preise vor der Veröffentlichung sorgfältig, da nicht alle Elemente eines Plans nach seiner Veröffentlichung geändert werden können:
@@ -408,17 +388,34 @@ Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung
 - Nachdem ein Abrechnungszeitraum für einen Plan veröffentlicht wurde, kann er nicht mehr entfernt werden.
 - Nachdem ein Preis für einen Markt in Ihrem Plan veröffentlicht wurde, kann er nicht mehr geändert werden.
 
-### <a name="plan-audience"></a>Planzielgruppe
+#### <a name="free-trial"></a>Kostenlose Testversion
 
-Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt wird. Sie können mithilfe von Azure AD-Mandanten-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
+SaaS-Angebote über den kommerziellen Marketplace ermöglichen Ihnen beim Verkauf über Microsoft, eine einmonatige kostenlose Testversion bereitzustellen. Kostenlose Testversionen werden für alle Abrechnungsmodelle und -bedingungen mit Ausnahme von Volumentarifen unterstützt. Diese Option ermöglicht es Kunden, durch den kostenlosen Zugriff für einen Monat eine niedrige Schwelle für den Einstieg zu erhalten.  Wenn Sie eine kostenlose Testversion für Pläne in Ihrem Angebot aktivieren, kann der Kunde diese Version nicht vor Ende des ersten Monats in ein kostenpflichtiges Abonnement umwandeln.  Während dieses Zeitraums können Kunden, die Ihr Angebot erwerben, alle unterstützten Pläne ausprobieren, bei denen die kostenlose Testversion aktiviert ist, und zwischen diesen wechseln.  Die Umwandlung in ein kostenpflichtiges Abonnement erfolgt automatisch am Ende der Laufzeit.
 
-#### <a name="privacy"></a>Datenschutz
+>[!NOTE]
+>Wenn sich der Kunde für die Umwandlung in einen Plan ohne kostenlose Testversionen entscheidet, wird dies umgesetzt, doch geht die kostenlose Testversion sofort verloren. Auch sobald ein Kunde mit dem Bezahlen für einen Plan beginnt, kann er selbst dann keine kostenlose Testversion mehr für dasselbe Abonnement erhalten, wenn eine Umwandlung in eine SKU erfolgt, die kostenlose Testversionen unterstützt.
 
-- **This is a private plan** (Dies ist ein privater Plan) (optionales Kontrollkästchen)
+Hier können Sie für jeden Plan in Ihrem Angebot eine kostenlose Testversion konfigurieren. Aktivieren Sie das Kontrollkästchen, um eine einmonatige Testversion zuzulassen.
 
-Aktivieren Sie dieses Kontrollkästchen, um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Nachdem ein Plan als für alle Benutzer sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. (Der Plan kann nicht wieder als privater Plan konfiguriert werden).
+![Kontrollkästchen für eine einmonatige kostenlose Testversion](./media/free-trial-enable.png)
 
-- **Restricted Audience (Tenant IDs)** (Eingeschränkte Zielgruppe (Mandanten-IDs))
+>[!NOTE]
+>Sobald Ihr transaktionsfähiges Angebot mit einer kostenlosen Testversion veröffentlicht wurde, kann es für den jeweiligen Plan nicht mehr deaktiviert werden. Vergewissern Sie sich, dass diese Einstellung für die erste Veröffentlichung korrekt ist, damit der Plan nicht neu erstellt werden muss.
+
+Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+
+>[!NOTE]
+>Kostenlose Testversionen werden für Pläne, die den Marketplace-Messungsdienst nutzen, nicht unterstützt.
+
+#### <a name="plan-visibility"></a>Sichtbarkeit des Plans
+
+Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt werden soll. Sie können mithilfe von Azure AD-Mandanten-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
+
+##### <a name="privacy"></a>Datenschutz
+
+Aktivieren Sie das Kontrollkästchen **Dies ist ein privater Plan.** , um den Plan als privaten Plan festzulegen und nur für die von Ihnen ausgewählte eingeschränkte Zielgruppe anzuzeigen. Nachdem Sie den Plan als privaten Plan veröffentlicht haben, können Sie die Zielgruppe aktualisieren oder den Plan für alle Benutzer verfügbar machen. Sobald ein Plan als für alle Benutzer als sichtbar veröffentlicht wurde, muss er für alle Benutzer sichtbar bleiben. (Er kann nicht wieder als privater Plan konfiguriert werden.)
+
+##### <a name="restricted-audience-tenant-ids"></a>**Restricted Audience (Tenant IDs)** (Eingeschränkte Zielgruppe (Mandanten-IDs))
 
 Weisen Sie die Zielgruppe zu, die Zugriff auf den privaten Plan hat. Der Zugriff wird mit Mandanten-IDs zugewiesen. Dabei kann eine Beschreibung jeder zugewiesenen Mandanten-ID angegeben werden. Es können maximal 10 Mandanten-IDs oder, wenn eine CSV-Tabellenkalkulationsdatei importiert wird, 20.000 Mandanten-IDs von Kunden hinzugefügt werden.
 
@@ -427,7 +424,9 @@ Ein Mandant stellt eine Organisation dar, wobei die ID als global eindeutiger Be
 In SaaS-Angeboten werden private Zielgruppen mithilfe von Mandanten-IDs definiert, in anderen Angebotstypen können jedoch Azure-Abonnement-IDs (die auch als GUIDs dargestellt werden) verwendet werden.
 
 > [!NOTE]
-> Eine private Zielgruppe (oder eingeschränkte Zielgruppe) unterscheidet sich von einer Vorschauzielgruppe. Sie können auf der Registerkarte **[Vorschau](#preview)** eine Vorschauzielgruppe definieren. Einer Vorschauzielgruppe wird Zugriff auf das Angebot gewährt, *bevor* es im Marketplace live veröffentlicht wird. Die Festlegung als private Zielgruppe gilt nur für einen bestimmten Plan. Für die private Zielgruppe können alle Pläne (private und nicht private Pläne) angezeigt werden, jedoch nur während des eingeschränkten Vorschauzeitraums, in dem der Plan getestet und überprüft wird.
+> Eine private Zielgruppe (oder eingeschränkte Zielgruppe) unterscheidet sich von einer Vorschauzielgruppe. Auf der Seite **[Vorschau](#preview-audience)** können Sie eine Vorschauzielgruppe definieren. Einer Vorschauzielgruppe wird Zugriff auf das Angebot gewährt, *bevor* es im Marketplace live veröffentlicht wird. Die Festlegung als private Zielgruppe gilt nur für einen bestimmten Plan. Für die private Zielgruppe können alle Pläne (private und nicht private Pläne) angezeigt werden, jedoch nur während des eingeschränkten Vorschauzeitraums, in dem der Plan getestet und überprüft wird.
+
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Beispielliste der Pläne innerhalb eines Marketplace-Angebots
 
@@ -439,19 +438,19 @@ Wenn Sie die Option wählen, Ihr Angebot im CSP-Programm verfügbar zu machen, k
 
 ## <a name="publish"></a>Veröffentlichen
 
-Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, klicken Sie rechts oben im Portal auf **Veröffentlichen**. Sie werden zur Seite **Review and publish** (Überprüfen und veröffentlichen) weitergeleitet.
+Sobald Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, klicken Sie rechts oben im Portal auf **Überprüfen und veröffentlichen**.
 
 ### <a name="submit-offer-to-preview"></a>Übermitteln des Angebots für die Vorschau
 
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Sie müssen zum entsprechenden Abschnitt zurückkehren und ihn aktualisieren.
-    - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+    - **Nicht gestartet**: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+    - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Sie müssen zum entsprechenden Abschnitt zurückkehren und ihn aktualisieren.
+    - **Vollständig**: Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Sie müssen zum Partner Center zurückkehren und **Live schalten** auswählen, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-step"></a>Nächster Schritt
 
 - [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](./update-existing-offer.md)

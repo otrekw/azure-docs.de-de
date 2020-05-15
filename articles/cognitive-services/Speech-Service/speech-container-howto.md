@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879014"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856415"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
 Container ermöglichen es Ihnen, einige der Speech-Dienst-APIs in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Speech-Container herunterladen, installieren und ausführen.
 
-Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es stehen vier verschiedene Container zur Verfügung. Die beiden Standardcontainer sind **Spracherkennung** und **Sprachsynthese**. Die beiden benutzerdefinierten Container sind **Benutzerdefinierte Spracherkennung** und **Benutzerdefinierte Sprachsynthese**.
+Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es stehen vier verschiedene Container zur Verfügung. Die beiden Standardcontainer sind **Spracherkennung** und **Sprachsynthese**. Die beiden benutzerdefinierten Container sind **Benutzerdefinierte Spracherkennung** und **Benutzerdefinierte Sprachsynthese**. Speech-Container haben denselben [Preis](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) wie die cloudbasierten Azure Speech-Dienste.
 
 > [!IMPORTANT]
 > Alle Speech-Container werden zurzeit im Rahmen einer [öffentlichen eingeschränkten Vorschau](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio) angeboten. Wenn Speech-Container in die allgemeine Verfügbarkeit übergehen, erfolgt eine entsprechende Ankündigung.
 
 | Funktion | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.1.1 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.1.1 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.2.0 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.2.0 |
 | Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
 | Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
 
@@ -164,7 +164,7 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas des Containers **Spracherkennung** finden Sie unter [Imagetags für Spracherkennung](../containers/container-image-tags.md#speech-to-text).
@@ -258,6 +258,33 @@ Dieser Befehl:
 * Ordnet 4 CPU-Kerne und 4 GB Arbeitsspeicher zu.
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
+
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analysieren der Stimmung bei der Spracherkennungsausgabe 
+
+Ab v2.2.0 des Spracherkennungscontainers können Sie die [API für die Standpunktanalyse v3](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) in der Ausgabe aufrufen. Um die Standpunktanalyse aufrufen zu können, benötigen Sie einen Textanalyse-API-Ressourcenendpunkt. Beispiel: 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+Wenn Sie auf einen Textanalyseendpunkt in der Cloud zugreifen, benötigen Sie einen Schlüssel. Wenn Sie die Textanalyse lokal ausführen, müssen Sie diesen möglicherweise nicht bereitstellen.
+
+Der Schlüssel und der Endpunkt werden wie im folgenden Beispiel als Argumente an den Speech-Container übergeben.
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+Dieser Befehl:
+
+* Führt dieselben Schritte aus wie der obige Befehl.
+* Speichert einen Textanalyse-API-Endpunkt und einen Schlüssel zum Senden von Standpunktanalyseanforderungen. 
+
 
 # <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
@@ -380,6 +407,9 @@ Dieser Befehl:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
+> [!NOTE]
+> Verwenden Sie eine eindeutige Portnummer, wenn Sie mehrere Container verwenden.
+
 | Container | SDK-Host-URL | Protocol |
 |--|--|--|
 | Spracherkennung und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ Dieser Befehl:
 Weitere Informationen zur Verwendung der Protokolle WSS und HTTPS finden Sie unter [Containersicherheit](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>Analysieren von Stimmungen
+
+Wenn Sie Ihre Anmeldeinformationen für die Textanalyse-API [in den Container](#analyze-sentiment-on-the-speech-to-text-output) eingegeben haben, können Sie das Speech SDK verwenden, um Spracherkennungsanforderungen mit Standpunktanalyse zu senden. Sie können die API-Antworten so konfigurieren, dass sie entweder ein *einfaches* oder *detailliertes* Format verwenden.
+
+# <a name="simple-format"></a>[Einfaches Format](#tab/simple-format)
+
+Fügen Sie `"Sentiment"` als Wert für `Simple.Extensions` hinzu, um den Speech-Client für die Verwendung eines einfachen Formats zu konfigurieren. Wenn Sie eine bestimmte Modellversion für die Textanalyse auswählen möchten, ersetzen Sie `'latest'` in der `speechcontext-phraseDetection.sentimentAnalysis.modelversion`-Eigenschaftskonfiguration.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions` gibt das Stimmungsergebnis auf der Stammebene der Antwort zurück.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[Detailliertes Format](#tab/detailed-format)
+
+Fügen Sie `"Sentiment"` als Wert für `Detailed.Extensions`, `Detailed.Options` oder beides hinzu, um den Speech-Client für die Verwendung eines detaillierten Formats zu konfigurieren. Wenn Sie eine bestimmte Modellversion für die Textanalyse auswählen möchten, ersetzen Sie `'latest'` in der `speechcontext-phraseDetection.sentimentAnalysis.modelversion`-Eigenschaftskonfiguration.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions` stellt das Stimmungsergebnis auf der Stammebene der Antwort dar. `Detailed.Options` liefert das Ergebnis auf der `NBest`-Ebene der Antwort. Sie können separat oder zusammen verwendet werden.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+Wenn Sie die Standpunktanalyse vollständig deaktivieren möchten, fügen Sie `sentimentanalysis.enabled` den Wert `false` hinzu.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>Sprachsynthese oder benutzerdefinierte Sprachsynthese
 

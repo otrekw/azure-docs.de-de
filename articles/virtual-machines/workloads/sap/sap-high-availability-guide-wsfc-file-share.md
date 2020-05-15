@@ -16,13 +16,166 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918664"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982971"
 ---
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
+
+> ![Windows][Logo_Windows] Windows
+>
+
+Windows Server-Failoverclustering ist die Grundlage für eine SAP ASCS/SCS-Installation und ein DBMS in Windows mit Hochverfügbarkeit.
+
+Bei einem Failovercluster handelt es sich um eine Gruppe von 1+n unabhängigen Servern, die zur Steigerung der Verfügbarkeit von Anwendungen und Diensten zusammenarbeiten. Wenn ein Knotenfehler auftritt, berechnet das Windows Server-Failoverclustering die Anzahl von Fehlern, die auftreten können, und erhält weiterhin einen fehlerfreien Cluster für die Bereitstellung der Anwendungen und Dienste aufrecht. Sie können zwischen verschiedenen Quorummodi wählen, um das Failoverclustering zu erzielen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie mit den in diesem Artikel beschriebenen Aufgaben beginnen, lesen Sie diesen Artikel:
+
+* [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver][sap-high-availability-architecture-scenarios]
+
+> [!IMPORTANT]
+> Das Gruppieren von SAP ASCS/SCS-Instanzen über eine Dateifreigabe wird für SAP NetWeaver 7.40-Produkte (und höher) mit SAP Kernel 7.49 (und höher) unterstützt.
+>
+
+
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server-Failoverclustering in Azure
+
+Im Vergleich zu Bare-Metal- oder privaten Cloudbereitstellungen sind für virtuelle Azure-Computer zusätzliche Schritte erforderlich, um Windows Server-Failoverclustering zu konfigurieren. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
+
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Namensauflösung in Azure und Name des virtuellen Hosts für den Cluster
+
+Die Azure-Cloudplattform bietet keine Möglichkeit, virtuelle IP-Adressen, z.B. Floating IP-Adressen, zu konfigurieren. Sie benötigen eine alternative Lösung für die Einrichtung einer virtuellen IP-Adresse, um die Clusterressource in der Cloud zu erreichen. 
+
+Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azure zur Verfügung. Mit dem internen Load Balancer erreichen Clients den Cluster über die virtuelle IP-Adresse des Clusters. 
+
+Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Die Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Lastenausgleich übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
+
+![Abbildung 1: Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
+
+_**Abbildung 1:** Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
+
+## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS-HA mit Dateifreigabe
+
+SAP hat neue Ansätze und eine Alternative zum Gruppieren von freigegebenen Datenträgern entwickelt, die eine Gruppierung von SAP ASCS/SCS-Instanzen in einem Windows-Failovercluster ermöglichen. Anstatt freigegebene Datenträger in einem Cluster zu verwenden, können Sie mit einer SMB-Dateifreigabe globale SAP-Hostdateien bereitstellen.
+
+> [!NOTE]
+> Eine SMB-Dateifreigabe ist eine Alternative zur Verwendung von freigegebenen Datenträgern in einem Cluster, um die Gruppierung von SAP ASCS/SCS-Instanzen zu ermöglichen.  
+>
+
+Diese Architektur weist in folgenden Bereichen Besonderheiten auf:
+
+* SAP Central Services (mit eigener Dateistruktur und Prozessen für Nachrichten und das Einreihen in die Warteschlange) sind von globalen SAP-Hostdateien getrennt.
+* SAP Central Services werden unter einer SAP ASCS/SCS-Instanz ausgeführt.
+* Die SAP ASCS/SCS-Instanz ist in einem Cluster enthalten und über den virtuellen Hostnamen des \<virtuellen ASCS/SCS-Hostnamens\> zugänglich.
+* Globale SAP-Dateien befinden sich in der SMB-Dateifreigabe, und es wird über den Hostnamen des \<globalen SAP-Hosts\> darauf zugegriffen: \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+* Die SAP ASCS/SCS-Instanz wird auf einem lokalen Datenträger auf beiden Clusterknoten installiert.
+* Der Netzwerkname des \<virtuellen ASCS/SCS-Hostnamens\> unterscheidet sich vom &lt;globalen SAP-Host&gt;.
+
+![Abbildung 2: SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
+
+_**Abbildung 2:** Neue SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit einer SMB-Dateifreigabe_
+
+Voraussetzungen für SMB-Dateifreigaben:
+
+* SMB 3.0-Protokoll (oder höher).
+* Möglichkeit zum Festlegen von Active Directory-Zugriffssteuerungslisten (ACLs) für Active Directory-Benutzergruppen und das Computerobjekt `computer$`.
+* Für die Dateifreigabe muss Hochverfügbarkeit aktiviert sein:
+    * Die zum Speichern von Dateien verwendeten Datenträger dürfen kein Single Point of Failure sein.
+    * Ausfallzeiten des Servers oder des virtuellen Computers verursachen keine Ausfallzeiten für die Dateifreigabe.
+
+Die SAP \<SID\>-Clusterrolle enthält jetzt keine freigegebenen Clusterdatenträger und keine Clusterressource von allgemeinen Dateifreigaben.
+
+
+![Abbildung 3: SAP \<SID\>-Clusterrollenressourcen zur Verwendung einer Dateifreigabe][sap-ha-guide-figure-8005]
+
+_**Abbildung 3:** SAP &lt;SID&gt;-Clusterrollenressourcen zur Verwendung einer Dateifreigabe_
+
+
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Dateifreigaben mit horizontaler Skalierung mit direkten Speicherplätzen in Azure als SAPMNT-Dateifreigabe
+
+Dateifreigaben mit horizontaler Skalierung können zum Hosten und Schützen von globalen SAP-Hostdateien verwendet werden. Eine Dateifreigabe mit horizontaler Skalierung bietet außerdem einen hochverfügbaren SAPMNT-Dateifreigabedienst.
+
+![Abbildung 4: Dateifreigabe mit horizontaler Skalierung zum Schützen von globalen SAP-Hostdateien][sap-ha-guide-figure-8006]
+
+_**Abbildung 4:** Eine Dateifreigabe mit horizontaler Skalierung zum Schützen von globalen SAP-Hostdateien_
+
+> [!IMPORTANT]
+> Dateifreigaben mit horizontaler Skalierung werden in der Microsoft Azure-Cloud und in lokalen Umgebungen vollständig unterstützt.
+>
+
+Durch Dateifreigaben mit horizontaler Skalierung wird eine hochverfügbare und horizontal skalierbare SAPMNT-Dateifreigabe ermöglicht.
+
+Direkte Speicherplätze werden als freigegebener Datenträger für eine Dateifreigabe mit horizontaler Skalierung verwendet. Mit direkten Speicherplätzen können Sie hochverfügbaren und skalierbaren Speicher erstellen, in dem Server mit lokalem Speicher verwendet werden. Freigegebener Speicher für eine Dateifreigabe mit horizontaler Skalierung ist, wie bei globalen SAP-Hostdateien, kein Single Point of Failure.
+
+Beachten Sie bei der Auswahl von „Direkte Speicherplätze“ die folgenden Anwendungsfälle:
+
+- Die zum Erstellen des Clusters mit „Direkte Speicherplätze“ verwendeten virtuellen Computer müssen in einer Azure-Verfügbarkeitsgruppe bereitgestellt werden.
+- Für die Notfallwiederherstellung eines Clusters mit „Direkte Speicherplätze“ können Sie [Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage) verwenden.
+- Ein Ausdehnen des Clusters mit „Direkte Speicherplätze“ über verschiedene Azure-Verfügbarkeitszonen wird nicht unterstützt.
+
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>SAP-Voraussetzungen für Dateifreigaben mit horizontaler Skalierung in Azure
+
+Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr System folgende Anforderungen erfüllen:
+
+* Mindestens zwei Clusterknoten für eine Dateifreigabe mit horizontaler Skalierung.
+* Jeder Knoten muss mindestens zwei lokale Datenträger aufweisen.
+* Aus Leistungsgründen müssen Sie die *Spiegelungsresilienz* nutzen:
+    * Zwei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung mit zwei Clusterknoten.
+    * Drei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung mit drei oder mehr Clusterknoten.
+* Es wird empfohlen, mindestens drei Clusterknoten mit Drei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung zu verwenden.
+    Diese Einrichtung bietet eine bessere Skalierbarkeit und Speicherresilienz als ein Setup mit einer Dateifreigabe mit horizontaler Skalierung mit zwei Clusterknoten und Zwei-Wege-Spiegelung.
+* Sie müssen Azure Premium-Datenträger verwenden.
+* Wir empfehlen die Verwendung von Azure Managed Disks.
+* Es wird empfohlen, Volumes mit dem robusten Dateisystem (ReFS) zu formatieren.
+    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung für das ReFS-Dateisystem][1869038] und im Kapitel [Auswählen des Dateisystems][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
+    * Installieren Sie unbedingt das [kumulative Update für Microsoft KB4025334][kb4025334].
+* Sie können als Azure-VM-Größen die DS-Serie oder die DSv2-Serie verwenden.
+* Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
+    Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] und [DS-Serie][ds-series].
+* Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
+* Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<globaler SAP-Host\>. Dies wird für den \<Namen des virtuellen ASCS/SCS-Hosts\> der SAP ASCS/SCS-Instanz oder für den DBMS erledigt. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. Der \<globale SAP-Host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
+
+
+> [!IMPORTANT]
+> Die SAPMNT-Dateifreigabe, die auf den \<globalen SAP-Host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
+>
+> Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
+
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurieren von SAP ASCS/SCS-Instanzen und einer Dateifreigabe mit horizontaler Skalierung in zwei Clustern
+
+Sie können SAP ASCS/SCS-Instanzen auch in einem Cluster mit eigener SAP-\<SID\>-Clusterrolle bereitstellen. In diesem Fall konfigurieren Sie die Dateifreigabe mit horizontaler Skalierung in einem anderen Cluster mit einer anderen Clusterrolle.
+
+> [!IMPORTANT]
+>In diesem Szenario wird die SAP ASCS/SCS-Instanz so konfiguriert, dass sie über den UNC-Pfad \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\. auf den globalen SAP-Host zugreifen kann.
+>
+
+![Abbildung 5: In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung][sap-ha-guide-figure-8007]
+
+_**Abbildung 5:** In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
+
+> [!IMPORTANT]
+> In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe oder über Azure-Verfügbarkeitszonen bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt. Bei dieser Technologie werden Bereitstellungen über Verfügbarkeitszonen unterstützt.
+>
+
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Allgemeine Dateifreigabe mit SIOS DataKeeper als freigegebenen Clusterdatenträgern
+
+
+Eine allgemeine Dateifreigabe ist eine weitere Option zum Erzielen einer hochverfügbaren Dateifreigabe.
+
+In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebenen Clusterdatenträger nutzen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen][sap-high-availability-infrastructure-wsfc-file-share]
+* [SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure][sap-high-availability-installation-wsfc-shared-disk]
+* [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern][deploy-sofs-s2d-in-azure]
+* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
+* [Ausführliche Betrachtung: Volumes in direkten Speicherplätzen][deep-dive-volumes-in-s2d]
+
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -202,156 +355,3 @@ ms.locfileid: "77918664"
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 [1869038]:https://launchpad.support.sap.com/#/notes/1869038 
-
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
-
-> ![Windows][Logo_Windows] Windows
->
-
-Windows Server-Failoverclustering ist die Grundlage für eine SAP ASCS/SCS-Installation und ein DBMS in Windows mit Hochverfügbarkeit.
-
-Bei einem Failovercluster handelt es sich um eine Gruppe von 1+n unabhängigen Servern, die zur Steigerung der Verfügbarkeit von Anwendungen und Diensten zusammenarbeiten. Wenn ein Knotenfehler auftritt, berechnet das Windows Server-Failoverclustering die Anzahl von Fehlern, die auftreten können, und erhält weiterhin einen fehlerfreien Cluster für die Bereitstellung der Anwendungen und Dienste aufrecht. Sie können zwischen verschiedenen Quorummodi wählen, um das Failoverclustering zu erzielen.
-
-## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit den in diesem Artikel beschriebenen Aufgaben beginnen, lesen Sie diesen Artikel:
-
-* [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver][sap-high-availability-architecture-scenarios]
-
-> [!IMPORTANT]
-> Das Gruppieren von SAP ASCS/SCS-Instanzen über eine Dateifreigabe wird für SAP NetWeaver 7.40-Produkte (und höher) mit SAP Kernel 7.49 (und höher) unterstützt.
->
-
-
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server-Failoverclustering in Azure
-
-Im Vergleich zu Bare-Metal- oder privaten Cloudbereitstellungen sind für virtuelle Azure-Computer zusätzliche Schritte erforderlich, um Windows Server-Failoverclustering zu konfigurieren. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
-
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Namensauflösung in Azure und Name des virtuellen Hosts für den Cluster
-
-Die Azure-Cloudplattform bietet keine Möglichkeit, virtuelle IP-Adressen, z.B. Floating IP-Adressen, zu konfigurieren. Sie benötigen eine alternative Lösung für die Einrichtung einer virtuellen IP-Adresse, um die Clusterressource in der Cloud zu erreichen. 
-
-Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azure zur Verfügung. Mit dem internen Load Balancer erreichen Clients den Cluster über die virtuelle IP-Adresse des Clusters. 
-
-Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Die Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Lastenausgleich übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
-
-![Abbildung 1: Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
-
-_**Abbildung 1:** Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
-
-## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS-HA mit Dateifreigabe
-
-SAP hat neue Ansätze und eine Alternative zum Gruppieren von freigegebenen Datenträgern entwickelt, die eine Gruppierung von SAP ASCS/SCS-Instanzen in einem Windows-Failovercluster ermöglichen. Anstatt freigegebene Datenträger in einem Cluster zu verwenden, können Sie mit einer SMB-Dateifreigabe globale SAP-Hostdateien bereitstellen.
-
-> [!NOTE]
-> Eine SMB-Dateifreigabe ist eine Alternative zur Verwendung von freigegebenen Datenträgern in einem Cluster, um die Gruppierung von SAP ASCS/SCS-Instanzen zu ermöglichen.  
->
-
-Diese Architektur weist in folgenden Bereichen Besonderheiten auf:
-
-* SAP Central Services (mit eigener Dateistruktur und Prozessen für Nachrichten und das Einreihen in die Warteschlange) sind von globalen SAP-Hostdateien getrennt.
-* SAP Central Services werden unter einer SAP ASCS/SCS-Instanz ausgeführt.
-* Die SAP ASCS/SCS-Instanz ist in einem Cluster enthalten und über den virtuellen Hostnamen des \<virtuellen ASCS/SCS-Hostnamens\> zugänglich.
-* Globale SAP-Dateien befinden sich in der SMB-Dateifreigabe, und es wird über den Hostnamen des \<globalen SAP-Hosts\> darauf zugegriffen: \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
-* Die SAP ASCS/SCS-Instanz wird auf einem lokalen Datenträger auf beiden Clusterknoten installiert.
-* Der Netzwerkname des \<virtuellen ASCS/SCS-Hostnamens\> unterscheidet sich vom &lt;globalen SAP-Host&gt;.
-
-![Abbildung 2: SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
-
-_**Abbildung 2:** Neue SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit einer SMB-Dateifreigabe_
-
-Voraussetzungen für SMB-Dateifreigaben:
-
-* SMB 3.0-Protokoll (oder höher).
-* Möglichkeit zum Festlegen von Active Directory-Zugriffssteuerungslisten (ACLs) für Active Directory-Benutzergruppen und das Computerobjekt `computer$`.
-* Für die Dateifreigabe muss Hochverfügbarkeit aktiviert sein:
-    * Die zum Speichern von Dateien verwendeten Datenträger dürfen kein Single Point of Failure sein.
-    * Ausfallzeiten des Servers oder des virtuellen Computers verursachen keine Ausfallzeiten für die Dateifreigabe.
-
-Die SAP \<SID\>-Clusterrolle enthält jetzt keine freigegebenen Clusterdatenträger und keine Clusterressource von allgemeinen Dateifreigaben.
-
-
-![Abbildung 3: SAP \<SID\>-Clusterrollenressourcen zur Verwendung einer Dateifreigabe][sap-ha-guide-figure-8005]
-
-_**Abbildung 3:** SAP &lt;SID&gt;-Clusterrollenressourcen zur Verwendung einer Dateifreigabe_
-
-
-## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Dateifreigaben mit horizontaler Skalierung mit direkten Speicherplätzen in Azure als SAPMNT-Dateifreigabe
-
-Dateifreigaben mit horizontaler Skalierung können zum Hosten und Schützen von globalen SAP-Hostdateien verwendet werden. Eine Dateifreigabe mit horizontaler Skalierung bietet außerdem einen hochverfügbaren SAPMNT-Dateifreigabedienst.
-
-![Abbildung 4: Dateifreigabe mit horizontaler Skalierung zum Schützen von globalen SAP-Hostdateien][sap-ha-guide-figure-8006]
-
-_**Abbildung 4:** Eine Dateifreigabe mit horizontaler Skalierung zum Schützen von globalen SAP-Hostdateien_
-
-> [!IMPORTANT]
-> Dateifreigaben mit horizontaler Skalierung werden in der Microsoft Azure-Cloud und in lokalen Umgebungen vollständig unterstützt.
->
-
-Durch Dateifreigaben mit horizontaler Skalierung wird eine hochverfügbare und horizontal skalierbare SAPMNT-Dateifreigabe ermöglicht.
-
-Direkte Speicherplätze werden als freigegebener Datenträger für eine Dateifreigabe mit horizontaler Skalierung verwendet. Mit direkten Speicherplätzen können Sie hochverfügbaren und skalierbaren Speicher erstellen, in dem Server mit lokalem Speicher verwendet werden. Freigegebener Speicher für eine Dateifreigabe mit horizontaler Skalierung ist, wie bei globalen SAP-Hostdateien, kein Single Point of Failure.
-
-Beachten Sie bei der Auswahl von „Direkte Speicherplätze“ die folgenden Anwendungsfälle:
-
-- Die zum Erstellen des Clusters mit „Direkte Speicherplätze“ verwendeten virtuellen Computer müssen in einer Azure-Verfügbarkeitsgruppe bereitgestellt werden.
-- Für die Notfallwiederherstellung eines Clusters mit „Direkte Speicherplätze“ können Sie [Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage) verwenden.
-- Ein Ausdehnen des Clusters mit „Direkte Speicherplätze“ über verschiedene Azure-Verfügbarkeitszonen wird nicht unterstützt.
-
-### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>SAP-Voraussetzungen für Dateifreigaben mit horizontaler Skalierung in Azure
-
-Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr System folgende Anforderungen erfüllen:
-
-* Mindestens zwei Clusterknoten für eine Dateifreigabe mit horizontaler Skalierung.
-* Jeder Knoten muss mindestens zwei lokale Datenträger aufweisen.
-* Aus Leistungsgründen müssen Sie die *Spiegelungsresilienz* nutzen:
-    * Zwei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung mit zwei Clusterknoten.
-    * Drei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung mit drei oder mehr Clusterknoten.
-* Es wird empfohlen, mindestens drei Clusterknoten mit Drei-Wege-Spiegelung für eine Dateifreigabe mit horizontaler Skalierung zu verwenden.
-    Diese Einrichtung bietet eine bessere Skalierbarkeit und Speicherresilienz als ein Setup mit einer Dateifreigabe mit horizontaler Skalierung mit zwei Clusterknoten und Zwei-Wege-Spiegelung.
-* Sie müssen Azure Premium-Datenträger verwenden.
-* Wir empfehlen die Verwendung von Azure Managed Disks.
-* Es wird empfohlen, Volumes mit dem robusten Dateisystem (ReFS) zu formatieren.
-    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung für das ReFS-Dateisystem][1869038] und im Kapitel [Auswählen des Dateisystems][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
-    * Installieren Sie unbedingt das [kumulative Update für Microsoft KB4025334][kb4025334].
-* Sie können als Azure-VM-Größen die DS-Serie oder die DSv2-Serie verwenden.
-* Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
-    Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] und [DS-Serie][ds-series].
-* Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
-* Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<globaler SAP-Host\>. Dies wird für den \<Namen des virtuellen ASCS/SCS-Hosts\> der SAP ASCS/SCS-Instanz oder für den DBMS erledigt. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. Der \<globale SAP-Host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
-
-
-> [!IMPORTANT]
-> Die SAPMNT-Dateifreigabe, die auf den \<globalen SAP-Host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
->
-> Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
-
-### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurieren von SAP ASCS/SCS-Instanzen und einer Dateifreigabe mit horizontaler Skalierung in zwei Clustern
-
-Sie können SAP ASCS/SCS-Instanzen auch in einem Cluster mit eigener SAP-\<SID\>-Clusterrolle bereitstellen. In diesem Fall konfigurieren Sie die Dateifreigabe mit horizontaler Skalierung in einem anderen Cluster mit einer anderen Clusterrolle.
-
-> [!IMPORTANT]
->In diesem Szenario wird die SAP ASCS/SCS-Instanz so konfiguriert, dass sie über den UNC-Pfad \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\. auf den globalen SAP-Host zugreifen kann.
->
-
-![Abbildung 5: In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung][sap-ha-guide-figure-8007]
-
-_**Abbildung 5:** In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
-
-> [!IMPORTANT]
-> In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe oder über Azure-Verfügbarkeitszonen bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt. Bei dieser Technologie werden Bereitstellungen über Verfügbarkeitszonen unterstützt.
->
-
-## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Allgemeine Dateifreigabe mit SIOS DataKeeper als freigegebenen Clusterdatenträgern
-
-
-Eine allgemeine Dateifreigabe ist eine weitere Option zum Erzielen einer hochverfügbaren Dateifreigabe.
-
-In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebenen Clusterdatenträger nutzen.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-* [Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen][sap-high-availability-infrastructure-wsfc-file-share]
-* [SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure][sap-high-availability-installation-wsfc-shared-disk]
-* [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern][deploy-sofs-s2d-in-azure]
-* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
-* [Ausführliche Betrachtung: Volumes in direkten Speicherplätzen][deep-dive-volumes-in-s2d]

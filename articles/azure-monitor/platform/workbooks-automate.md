@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658403"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982138"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 
-Ressourcenbesitzer können Ihre Arbeitsmappen über Resource Manager-Vorlagen programmgesteuert erstellen und verwalten. 
+Ressourcenbesitzer können Ihre Arbeitsmappen über Resource Manager-Vorlagen programmgesteuert erstellen und verwalten.
 
 Dies kann in den folgenden Szenarien hilfreich sein:
 * Bereitstellen von organisations- oder domänenspezifischen Analyseberichten zusammen mit Ressourcenbereitstellungen. Sie können beispielsweise organisationsspezifische Leistungs-und Fehlerarbeitsmappen für Ihre neuen Apps oder VMs bereitstellen.
@@ -26,7 +26,98 @@ Dies kann in den folgenden Szenarien hilfreich sein:
 
 Die Arbeitsmappe wird in der gewünschten Untergruppe/Ressourcengruppe und mit dem Inhalt erstellt, der in den Resource Manager-Vorlagen angegeben ist.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Azure Resource Manager-Vorlage für das Bereitstellen von Arbeitsmappen
+Es gibt zwei Arten von Arbeitsmappenressourcen, die programmgesteuert verwaltet werden können:
+* [Arbeitsmappenvorlagen](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [Arbeitsmappeninstanzen](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>Azure Resource Manager-Vorlage für das Bereitstellen einer Arbeitsmappenvorlage
+
+1. Öffnen Sie eine Arbeitsmappe, die Sie programmgesteuert bereitstellen möchten.
+2. Versetzen Sie die Arbeitsmappe in den Bearbeitungsmodus, indem Sie auf das Symbolleistenelement _Bearbeiten_ klicken.
+3. Öffnen Sie _Erweiterter Editor_, indem Sie auf der Symbolleiste auf die Schaltfläche _</>_ klicken.
+4. Stellen Sie sicher, dass Sie sich auf der Registerkarte _Katalogvorlage_ befinden.
+
+    ![Registerkarte „Katalogvorlage“](./media/workbooks-automate/gallery-template.png)
+1. Kopieren Sie den JSON-Code in der Katalogvorlage in die Zwischenablage.
+2. Im Folgenden ein Beispiel für eine Azure Resource Manager-Vorlage, mit der eine Arbeitsmappenvorlage im Azure Monitor-Arbeitsmappenkatalog bereitgestellt wird. Fügen Sie den kopierten JSON-Code anstelle von `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` ein. Eine Azure Resource Manager-Referenzvorlage, mit der eine Arbeitsmappenvorlage erstellt wird, finden Sie [hier](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
+
+    ```json
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. Geben Sie im `galleries`-Objekt für die Schlüssel `name` und `category` Ihre Werte ein. Im nächsten Abschnitt erfahren Sie mehr über [Parameter](#parameters).
+2. Stellen Sie diese Azure Resource Manager-Vorlage über das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), die [Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli) oder [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) usw. bereit.
+3. Öffnen Sie das Azure-Portal, und navigieren Sie zum Arbeitsmappenkatalog, der in der Azure Resource Manager-Vorlage ausgewählt wurde. Navigieren Sie in der Beispielvorlage zum Azure Monitor-Arbeitsmappenkatalog:
+    1. Öffnen Sie das Azure-Portal, und navigieren Sie zu Azure Monitor.
+    2. Öffnen Sie `Workbooks` aus dem Inhaltsverzeichnis.
+    3. Suchen Sie Ihre Vorlage im Katalog unter der Kategorie `Deployed Templates` (einer der lilafarbenen Einträge).
+
+### <a name="parameters"></a>Parameter
+
+|Parameter                |Erklärung                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Der Name der Arbeitsmappenvorlagen-Ressource in Azure Resource Manager.                                  |
+|`type`                    | Immer „microsoft.insights/workbooktemplates“                                                            |
+| `location`               | Der Azure-Speicherort, an dem die Arbeitsmappe erstellt wird.                                               |
+| `apiVersion`             | 17.10.2019 Vorschau                                                                                     |
+| `type`                   | Immer „microsoft.insights/workbooktemplates“                                                            |
+| `galleries`              | Die Gruppe von Galerien, in der diese Arbeitsmappenvorlage angezeigt wird.                                                |
+| `gallery.name`           | Der Anzeigename der Arbeitsmappenvorlage im Katalog.                                             |
+| `gallery.category`       | Die Gruppe im Katalog, in die die Vorlage eingefügt werden soll.                                                     |
+| `gallery.order`          | Eine Zahl, die die Rangordnung bestimmt, in der die Vorlage in einer Kategorie im Katalog angezeigt werden soll. Ein niedrigerer Rang impliziert eine höhere Priorität. |
+| `gallery.resourceType`   | Der Ressourcentyp, der dem Katalog entspricht. Dies ist normalerweise die Ressourcentyp-Zeichenfolge, die der Ressource entspricht (z. B. microsoft.operationalinsights/workspaces). |
+|`gallery.type`            | Sie wird als Arbeitsmappentyp bezeichnet und ist ein eindeutiger Schlüssel, der zur Unterscheidung des Katalogs innerhalb eines Ressourcentyps dient. Application Insights verfügen beispielsweise über die Typen `workbook` und `tsg`, die verschiedenen Arbeitsmappenkatalogen entsprechen. |
+
+### <a name="galleries"></a>Kataloge
+
+| Galerie                                        | Ressourcentyp                                      | Arbeitsmappentyp |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Arbeitsmappen in Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
+| VM Insights in Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
+| Arbeitsmappen im Log Analytics-Arbeitsbereich           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Arbeitsmappen in Application Insights              | `microsoft.insights/component`                     | `workbook`    |
+| Leitfäden zur Problembehandlung in Application Insights | `microsoft.insights/component`                     | `tsg`         |
+| Nutzung in Application Insights                  | `microsoft.insights/component`                     | `usage`       |
+| Arbeitsmappen in Kubernetes Service                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| Arbeitsmappen in Ressourcengruppen                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Arbeitsmappen in Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| VM Insights in virtuellen Computern                | `microsoft.compute/virtualmachines`                | `insights`    |
+| VM Insights in VM-Skalierungsgruppen      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Azure Resource Manager-Vorlage für das Bereitstellen einer Arbeitsmappeninstanz
+
 1. Öffnen Sie eine Arbeitsmappe, die Sie programmgesteuert bereitstellen möchten.
 2. Versetzen Sie die Arbeitsmappe in den Bearbeitungsmodus, indem Sie auf das Symbolleistenelement _Bearbeiten_ klicken.
 3. Öffnen Sie _Erweiterter Editor_, indem Sie auf der Symbolleiste auf die Schaltfläche _</>_ klicken.
@@ -124,4 +215,3 @@ Aus technischen Gründen können mit diesem Mechanismus keine Arbeitsmappeninsta
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Arbeitsmappen die neue [Azure Monitor für Storage-Erfahrung](../insights/storage-insights-overview.md) fördern.
-

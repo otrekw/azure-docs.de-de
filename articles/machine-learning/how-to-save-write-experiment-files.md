@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79078427"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872068"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Speichern Sie Ihre Experimentdateien in einem Datenspeicher, um diesen Fehler zu
 Experimentbeschreibung &nbsp;|Lösung zum Speicherlimit
 ---|---
 Weniger als 2000 Dateien und Verwendung eines Datenspeichers nicht möglich| Setzen Sie die Größenbeschränkung für die Momentaufnahme folgendermaßen außer Kraft: <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dies kann je nach Anzahl und Größe der Dateien mehrere Minuten dauern.
-Spezifisches Skriptverzeichnis muss verwendet werden| Erstellen Sie eine `.amlignore`-Datei zum Ausschließen von Dateien aus der Momentaufnahme des Experiments, die nicht Teil des Quellcodes sind. Fügen Sie der `.amlignore`-Datei die Dateinamen hinzu, und legen Sie die Datei in demselben Verzeichnis wie Ihr Trainingsskript ab. Für die `.amlignore`-Datei werden [dieselbe Syntax und dieselben Muster](https://git-scm.com/docs/gitignore) wie für eine `.gitignore`-Datei verwendet.
+Spezifisches Skriptverzeichnis muss verwendet werden| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 Pipeline|Verwenden Sie für jeden Schritt ein anderes Unterverzeichnis.
 Jupyter Notebooks| Erstellen Sie eine `.amlignore`-Datei, oder verschieben Sie Ihr Notebook in ein neues, leeres Unterverzeichnis, und führen Sie den Code erneut aus.
 

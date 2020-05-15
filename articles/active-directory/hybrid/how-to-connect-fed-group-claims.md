@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408401"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854162"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory (öffentliche Vorschau)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
 Azure Active Directory kann Informationen zur Gruppenmitgliedschaft eines Benutzer in Token bereitstellen, damit diese in Anwendungen verwendet werden können.  Zwei grundlegende Muster werden unterstützt:
 
-- Gruppen, die durch das Attribut ihres Azure Active Directory-Objektbezeichners (OID) identifiziert werden (allgemein verfügbar)
-- Gruppen, die durch sAMAccountName- oder GroupSID-Attribute für in Active Directory (AD) synchronisierte Gruppen und Benutzer identifiziert werden (öffentliche Vorschau)
+- Gruppen, die durch das Attribut ihres Azure Active Directory-Objektbezeichners (OID) identifiziert werden
+- Gruppen, die durch sAMAccountName- oder GroupSID-Attribute für in Active Directory (AD) synchronisierte Gruppen und Benutzer identifiziert werden
 
 > [!IMPORTANT]
-> Für diese Vorschauversion müssen einige Einschränkungen beachtet werden:
+> Bei dieser Funktion sind einige Einschränkungen zu beachten:
 >
 >- Die Unterstützung für die Verwendung lokal synchronisierter sAMAccountName -und SID-Attribute (Sicherheits-ID) soll das Verschieben vorhandener Anwendungen aus AD FS und anderen Identitätsanbietern ermöglichen. In Azure AD verwaltete Gruppen umfassen nicht die Attribute, die für die Ausgabe dieser Ansprüche erforderlich sind.
 >- In größeren Organisationen kann die Anzahl der Gruppen, bei denen ein Benutzer Mitglied ist, den Grenzwert übersteigen, den Azure Active Directory zu einem Token hinzufügt. Dieser beträgt 150 Gruppen für ein SAML-Token und 200 Gruppen für ein JWT-Token. Dies kann zu unvorhersehbaren Ergebnissen führen. Wenn die Benutzer über eine große Anzahl von Gruppenmitgliedschaften verfügen, wird die Option zum Einschränken der in Ansprüchen ausgegebenen Gruppen auf die relevanten Gruppen für die Anwendung empfohlen.  
