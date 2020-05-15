@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Bewertung/Migration von physischen
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535280"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901427"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Vorbereiten auf die Bewertung und Migration physischer Server zu Azure
 
@@ -105,10 +105,9 @@ Bereiten Sie Azure für die Migration physischer Server mithilfe der Servermigra
 ### <a name="assign-azure-account-permissions"></a>Zuweisen der Azure-Kontoberechtigungen
 
 Weisen Sie dem Azure-Konto die Rolle „Mitwirkender für virtuelle Computer“ zu. Dadurch werden Berechtigungen für folgende Aktionen erteilt:
-
-    - Erstellen einer VM in der ausgewählten Ressourcengruppe
-    - Erstellen einer VM im ausgewählten virtuellen Netzwerk
-    - Schreiben auf einen verwalteten Azure-Datenträger 
+  - Erstellen einer VM in der ausgewählten Ressourcengruppe
+  - Erstellen einer VM im ausgewählten virtuellen Netzwerk
+  - Schreiben auf einen verwalteten Azure-Datenträger 
 
 ### <a name="create-an-azure-network"></a>Erstellen eines Azure-Netzwerks
 

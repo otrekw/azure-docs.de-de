@@ -1,14 +1,14 @@
 ---
 title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausenartefakte während einer Blaupausenzuweisung bereitgestellt werden, und wie Sie die Bereitstellungsreihenfolge anpassen können.
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677557"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864520"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -47,8 +47,7 @@ Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer b
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
 > [!NOTE]
-> Beim Erstellen von Blaupausenobjekten erhält jede Artefaktressource ihren Namen vom Dateinamen (bei Verwendung von [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)) oder dem URL-Endpunkt (bei Verwendung der [REST-API](/rest/api/blueprints/artifacts/createorupdate)).
-> _resourceGroup_-Verweise in Artefakten müssen mit denen in der Blaupausendefinition übereinstimmen.
+> Beim Erstellen von Blaupausenobjekten erhält jede Artefaktressource ihren Namen vom Dateinamen (bei Verwendung von [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)) oder dem URL-Endpunkt (bei Verwendung der [REST-API](/rest/api/blueprints/artifacts/createorupdate)). _resourceGroup_-Verweise in Artefakten müssen mit denen in der Blaupausendefinition übereinstimmen.
 
 ### <a name="example---ordered-resource-group"></a>Beispiel: Sortierte Ressourcengruppe
 
@@ -137,7 +136,8 @@ Das Vorlagenartefakt auf Abonnementebene, das von der Ressourcengruppe **wait-fo
 
 Beim Erstellen wird eine topologische Sortierung verwendet, um das Abhängigkeitsdiagramm der Blaupausenartefakte zu erstellen. Die Überprüfung stellt sicher, dass alle Abhängigkeitsebenen zwischen Ressourcengruppen und Artefakten unterstützt werden.
 
-Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreihenfolge zur Folge hat, wird keine Änderung vorgenommen. Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt. Ein weiteres Beispiel wäre eine untergeordnete Richtlinienzuweisung der Ressourcengruppe „standard-rg“, die von der untergeordneten Rollenzuweisung der Ressourcengruppe „standard-rg“ abhängt. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
+Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreihenfolge zur Folge hat, wird keine Änderung vorgenommen.
+Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt. Ein weiteres Beispiel wäre eine untergeordnete Richtlinienzuweisung der Ressourcengruppe „standard-rg“, die von der untergeordneten Rollenzuweisung der Ressourcengruppe „standard-rg“ abhängt. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

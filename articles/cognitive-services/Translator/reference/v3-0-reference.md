@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619151"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857298"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -147,7 +147,7 @@ Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wied
 
 ## <a name="virtual-network-support"></a>Unterstützung von Virtual Network
 
-Der Übersetzerdienst ist jetzt in einigen Regionen (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP` und `global`) mit Virtual Network-Funktionen verfügbar. Informationen zum Aktivieren von Virtual Network finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Der Übersetzerdienst ist jetzt in einigen Regionen (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP` und `global`) mit Virtual Network-Funktionen verfügbar. Informationen zum Aktivieren von Virtual Network finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Nachdem Sie diese Funktion aktiviert haben, müssen Sie den benutzerdefinierten Endpunkt zum Aufrufen der Übersetzer-API verwenden. Die Verwendung des globalen Übersetzerendpunkts (api.cognitive.microsofttranslator.com) und die Authentifizierung mit einem Zugriffstoken sind nicht möglich.
 

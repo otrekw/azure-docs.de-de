@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679510"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855342"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -102,7 +102,7 @@ Durch Einchecken des Runbooks können Sie die Änderungen, die Sie an einem Runb
    > [!NOTE]
    > Quellcodeverwaltungs-Runbooks sind spezielle Automation-Runbooks, die Sie weder anzeigen noch bearbeiten können. Obwohl sie nicht in Ihrer Runbookliste angezeigt werden, enthält die Auftragsliste Synchronisierungsaufträge.
 
-5. Der Name des geänderten Runbooks wird als Eingabeparameter an das eingecheckte Runbook gesendet. Sie können die [Auftragsdetails anzeigen](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal), indem Sie das Runbook auf der Seite „Repositorysynchronisierung“ erweitern.  
+5. Der Name des geänderten Runbooks wird als Eingabeparameter an das eingecheckte Runbook gesendet. Sie können die [Auftragsdetails anzeigen](automation-runbook-execution.md#job-statuses), indem Sie das Runbook auf der Seite „Repositorysynchronisierung“ erweitern.  
 
     ![Fenster mit der Eingabe für einen Synchronisierungsauftrag](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. Aktualisieren Sie das GitHub-Repository nach Abschluss des Auftrags, um die Änderungen anzuzeigen.  Ihr Repository sollte einen Commit mit der Meldung enthalten, dass eine **Aktualisierung von *Runbookname* in Azure Automation** erfolgt ist.  

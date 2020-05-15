@@ -3,16 +3,16 @@ title: Aktualisieren einer Containergruppe
 description: Hier erfahren Sie, wie Sie ausgeführte Container in Ihren Azure Container Instances-Containergruppen aktualisieren.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160101"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928719"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualisieren von Containern in Azure Container Instances
 
-Während des normalen Betriebs Ihrer Containerinstanzen ist es unter Umständen erforderlich, die in einer [Containergruppe](container-instances-container-groups.md) ausgeführten Container zu aktualisieren. Beispielsweise möchten Sie möglicherweise eine Eigenschaft aktualisieren, z. B. eine Imageversion, einen DNS-Namen oder eine Umgebungsvariable, oder eine Eigenschaft in einem Container aktualisieren, dessen Anwendung abgestürzt ist.
+Während des normalen Betriebs Ihrer Containerinstanzen ist es unter Umständen erforderlich, die in einer [Containergruppe](./container-instances-container-groups.md) ausgeführten Container zu aktualisieren. Beispielsweise möchten Sie möglicherweise eine Eigenschaft aktualisieren, z. B. eine Imageversion, einen DNS-Namen oder eine Umgebungsvariable, oder eine Eigenschaft in einem Container aktualisieren, dessen Anwendung abgestürzt ist.
 
 Aktualisieren Sie die in einer Containergruppe ausgeführten Container, indem Sie eine vorhandene Gruppe mit mindestens einer geänderten Eigenschaft erneut bereitstellen. Wenn Sie eine Containergruppe aktualisieren, werden alle ausgeführten Container in der Gruppe direkt neu gestartet. Dies erfolgt in der Regel auf demselben zugrunde liegenden Containerhost.
 
@@ -28,7 +28,7 @@ Aktualisieren einer vorhandenen Containergruppe:
 * Legen Sie andere Eigenschaften mit den Werten fest, die Sie zuvor angegeben haben. Wenn Sie keinen Wert für eine Eigenschaft festlegen, wird der Standardwert wiederhergestellt.
 
 > [!TIP]
-> Eine [YAML-Datei](/container-instances-container-groups.md#deployment) hilft bei der Verwaltung der Bereitstellungskonfiguration einer Containergruppe und bietet einen Startpunkt für die Bereitstellung einer aktualisierten Gruppe. Wenn Sie eine andere Methode zum Erstellen der Gruppe verwendet haben, können Sie die Konfiguration mithilfe des Befehls [az container export][az-container-export] in eine YAML-Datei exportieren. 
+> Eine [YAML-Datei](./container-instances-container-groups.md#deployment) hilft bei der Verwaltung der Bereitstellungskonfiguration einer Containergruppe und bietet einen Startpunkt für die Bereitstellung einer aktualisierten Gruppe. Wenn Sie eine andere Methode zum Erstellen der Gruppe verwendet haben, können Sie die Konfiguration mithilfe des Befehls [az container export][az-container-export] in eine YAML-Datei exportieren. 
 
 ### <a name="example"></a>Beispiel
 
@@ -80,7 +80,7 @@ Wenn Sie eine Containergruppe löschen und erneut erstellen, wird sie nicht erne
 
 Die **Containergruppe** wurde in diesem Artikel bereits mehrmals erwähnt. Jeder Container in Azure Container Instances wird in einer Containergruppe bereitgestellt, und Containergruppen können mehrere Container enthalten.
 
-[Containergruppen in Azure Container Instances](container-instances-container-groups.md)
+[Containergruppen in Azure Container Instances](./container-instances-container-groups.md)
 
 [Bereitstellen einer Containergruppe](container-instances-multi-container-group.md)
 

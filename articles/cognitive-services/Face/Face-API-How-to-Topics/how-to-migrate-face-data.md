@@ -3,19 +3,19 @@ title: Migrieren Ihrer Gesichtserkennungsdaten zwischen Abonnements – Gesichts
 titleSuffix: Azure Cognitive Services
 description: Dieser Leitfaden zeigt auf, wie Sie Ihre gespeicherten Gesichtserkennungsdaten von einem Gesichtserkennungsabonnement in ein anderes migrieren können.
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169810"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120809"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725859"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857404"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Schreiben von Plug-Ins für Azure Media Player #
 
@@ -87,7 +87,7 @@ Inspirationen und weitere Beispiele zum Erstellen von Plug-Ins finden Sie in uns
 
 ### <a name="plugin-gallery"></a>Plug-In-Katalog ###
 
-Der [Plug-In-Katalog](http//:aka.ms/ampplugins) weist mehrere Plug-Ins auf, die bereits von der Community für Features wie Zeitachsenmarkierungen, Zoom, Analysen und mehr beigetragen wurden. Die Seite bietet Zugriff auf die Plug-Ins und Anweisungen zu ihrer Einrichtung sowie eine Demo, die die Plug-Ins in der Praxis zeigt. Wenn Sie ein tolles Plug-In geschaffen haben und denken, es sollte in unseren Katalog aufgenommen werden, können Sie es gerne einreichen, damit wir es prüfen können.
+Der [Plug-In-Katalog](https://aka.ms/ampplugins) weist mehrere Plug-Ins auf, die bereits von der Community für Features wie Zeitachsenmarkierungen, Zoom, Analysen und mehr beigetragen wurden. Die Seite bietet Zugriff auf die Plug-Ins und Anweisungen zu ihrer Einrichtung sowie eine Demo, die die Plug-Ins in der Praxis zeigt. Wenn Sie ein tolles Plug-In geschaffen haben und denken, es sollte in unseren Katalog aufgenommen werden, können Sie es gerne einreichen, damit wir es prüfen können.
 
 ## <a name="next-steps"></a>Nächste Schritte ##
 

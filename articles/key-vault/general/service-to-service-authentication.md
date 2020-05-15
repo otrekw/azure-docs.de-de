@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686190"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857085"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -272,7 +272,7 @@ Legen Sie mithilfe der Azure CLI das Standardabonnement auf ein Abonnement fest,
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>Fehler der Art „Nicht autorisierter Zugriff“, „Zugriff verweigert“, „Unzulässig“ oder ähnlicher Fehler
 
-Der verwendete Prinzipal besitzt keinen Zugriff auf die Ressource, auf die er zugreifen möchte. Erteilen Sie entweder Ihrem Benutzerkonto oder dem MSI-"Contributor" des App Service Zugriff auf eine Ressource. Welche dieser Optionen Sie ausführen müssen, hängt davon ab, ob Sie das Beispiel auf dem lokalen Computer ausführen oder es in Azure in Ihrem App Service bereitstellen. Einige Ressourcen wie Schlüsseltresore haben ebenfalls ihre eigenen [Zugriffsrichtlinien](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies), die Sie verwenden, um Prinzipalen wie Benutzern, Apps und Gruppen Zugriff zu erteilen.
+Der verwendete Prinzipal besitzt keinen Zugriff auf die Ressource, auf die er zugreifen möchte. Erteilen Sie entweder Ihrem Benutzerkonto oder dem MSI-"Contributor" des App Service Zugriff auf eine Ressource. Welche dieser Optionen Sie ausführen müssen, hängt davon ab, ob Sie das Beispiel auf dem lokalen Computer ausführen oder es in Azure in Ihrem App Service bereitstellen. Einige Ressourcen wie Schlüsseltresore haben ebenfalls ihre eigenen [Zugriffsrichtlinien](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies), die Sie verwenden, um Prinzipalen wie Benutzern, Apps und Gruppen Zugriff zu erteilen.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Häufige Probleme bei Bereitstellung in Azure App Service
 

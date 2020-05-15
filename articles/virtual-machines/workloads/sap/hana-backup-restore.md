@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 091c0a8cb4c0db517ab2dbabaf16633227dba42c
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594694"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901389"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -162,7 +162,7 @@ In diesem Schritt autorisieren Sie das erstellte SAP HANA-Benutzerkonto, damit d
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>Schritt 6: Abrufen der Momentaufnahmeskripts, Konfigurieren der Momentaufnahmen und Testen der Konfiguration und Konnektivität
 
-Laden Sie von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.2) die neueste Version der Skripts herunter. Die Art der Installation von Skripts wurde mit Release 4.1 der Skripts geändert. Weitere Informationen finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Laden Sie von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) die neueste Version der Skripts herunter. Die Art der Installation von Skripts wurde mit Release 4.1 der Skripts geändert. Weitere Informationen finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 Die genaue Befehlsfolge finden Sie unter „Easy installation of snapshot tools (default)“ (Einfache Installation von Momentaufnahmetools [Standard]) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). Es wird die Verwendung der Standardinstallation empfohlen. 
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235238"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891274"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -570,4 +570,4 @@ Mit der Event Grid-Triggerfunktion werden Protokolle ähnlich denen im folgenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Versenden eines Event Grid-Ereignisses](./functions-bindings-event-grid-trigger.md)
+* [Versenden eines Event Grid-Ereignisses](./functions-bindings-event-grid-output.md)

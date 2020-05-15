@@ -3,12 +3,12 @@ title: Azure Service Fabric Central Secrets Store
 description: In diesem Artikel wird beschrieben, wie Sie den Central Secrets Store in Azure Service Fabric verwenden.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770416"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197761"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Central Secrets Store in Azure Service Fabric 
 In diesem Artikel wird beschrieben, wie Sie den Central Secrets Store (CSS) in Azure Service Fabric zum Erstellen von Geheimnissen in Service Fabric-Anwendungen verwenden. CSS ist ein lokaler Geheimnisspeichercache, der verwendet wird, um vertrauliche Daten wie Kennwörter, Token und Schlüssel im Arbeitsspeicher verschlüsselt zu speichern.
@@ -28,7 +28,7 @@ Fügen Sie Ihrer Clusterkonfiguration das folgende Skript unter `fabricSettings`
                 },
                 {
                     "name":  "MinReplicaSetSize",
-                    "value":  "3"
+                    "value":  "1"
                 },
                 {
                     "name":  "TargetReplicaSetSize",

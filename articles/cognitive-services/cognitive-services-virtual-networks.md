@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202077"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
@@ -55,7 +55,7 @@ Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive
 
 Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *USA, Mitte (EUAP)* , *USA, Süden-Mitte*, *USA, Osten*, *USA, Westen 2*, *Global* und *US Gov Virginia* beschränkt.
 > [!div class="checklist"]
-> * [Textübersetzung](./translator/index.yml)
+> * [Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Diensttags
 Neben der Unterstützung von VNET-Dienstendpunkten für die obigen Dienste unterstützt Cognitive Services auch ein Diensttag für die Konfiguration von Netzwerkregeln für ausgehenden Datenverkehr. Das Diensttag „CognitiveServicesManagement“ beinhaltet folgende Dienste:

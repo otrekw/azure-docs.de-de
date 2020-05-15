@@ -13,12 +13,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881281"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853779"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -153,12 +153,12 @@ Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azu
 
 ### <a name="issuer"></a>Issuer (Aussteller)
 
-Azure AD legt das `Issuer`-Element auf `https://login.microsoftonline.com/<TenantIDGUID>/` fest, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
+Azure AD legt das `Issuer`-Element auf `https://sts.windows.net/<TenantIDGUID>/` fest, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 Eine Antwort mit einem Issuer-Element sieht beispielsweise wie im folgenden Beispiel aus:
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>Status
@@ -191,7 +191,7 @@ Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD im `Assertion`-E
 Dieses Element ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>Signatur

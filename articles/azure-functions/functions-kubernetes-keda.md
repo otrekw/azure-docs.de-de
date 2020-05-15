@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301674"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121693"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions in Kubernetes mit KEDA
 
@@ -28,7 +28,7 @@ Um Functions in Ihrem Kubernetes-Cluster ausführen zu können, müssen Sie die 
 
 ### <a name="installing-with-helm"></a>Installieren mit Helm
 
-Es gibt verschiedene Möglichkeiten, KEDA in einem Kubernetes-Cluster, einschließlich Helm, zu installieren.  Bereitstellungsoptionen sind auf der [KEDA-Site ](https://keda.sh/deploy/) dokumentiert.
+Es gibt verschiedene Möglichkeiten, KEDA in einem Kubernetes-Cluster, einschließlich Helm, zu installieren.  Bereitstellungsoptionen sind auf der [KEDA-Site ](https://keda.sh/docs/deploy/) dokumentiert.
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Bereitstellen einer Funktions-App in Kubernetes
 

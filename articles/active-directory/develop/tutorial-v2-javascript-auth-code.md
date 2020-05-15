@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee156c8118a67061d0a000867ee64fe1f3ebd18c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f664f5fa4219a8bcc32230b352e90cc2516faceb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181882"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890381"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa---msaljs-20"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA): MSAL.js 2.0
 
@@ -282,7 +282,7 @@ Sie verfügen jetzt über einen einfachen Server zum Bereitstellen Ihrer SPA. Di
 
 ## <a name="register-your-application"></a>Anwendung registrieren
 
-Befolgen Sie die Anleitung zum [Registrieren einer neuen Single-Page-Webanwendung](https://docs.microsoft.com/zure/active-directory/develop/scenario-spa-app-registration).
+Befolgen Sie die Anleitung zum [Registrieren einer neuen Single-Page-Webanwendung](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration).
 
 #### <a name="set-a-redirect-url-for-nodejs"></a>Festlegen einer Umleitungs-URL für Node.js
 

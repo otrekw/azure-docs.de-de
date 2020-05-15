@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682929"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993773"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Zusammenstellen von DSC-Konfigurationen in Azure Automation State Configuration mit zusammengesetzten Ressourcen
 
@@ -34,9 +34,9 @@ Bevor Sie eine aus zusammengesetzten Ressourcen erstellte Konfiguration im Azure
 1. Im Schritt **Parameter** wird der Parameter für jede einzelne zusammengesetzte Ressource verfügbar gemacht, damit Werte angegeben werden können. Wenn ein Parameter über eine Beschreibung verfügt, wird diese neben dem Parameterfeld angezeigt. Wenn ein Parameter vom Typ `PSCredential` ist, bietet das Dropdown eine Liste der **Anmeldeinformations**objekte im aktuellen Automation-Konto. Außerdem ist die Option **+ Anmeldeinformationen hinzufügen** verfügbar. Nachdem alle erforderlichen Parameter angegeben wurden, können Sie auf **Save and compile** (Speichern und kompilieren) klicken.
    ![Screenshot: Schritt „Parameter“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Nachdem die neue Konfiguration gespeichert wurde, wird sie für die Kompilierung übermittelt. Sie können den Status des Kompilierungsauftrags wie für jede andere importierte Konfiguration anzeigen. Weitere Informationen finden Sie unter [Anzeigen eines Kompilierungsauftrags](automation-dsc-getting-started.md#viewing-a-compilation-job).
+Nachdem die neue Konfiguration gespeichert wurde, wird sie für die Kompilierung übermittelt. Sie können den Status des Kompilierungsauftrags wie für jede andere importierte Konfiguration anzeigen. Weitere Informationen finden Sie unter [Anzeigen eines Kompilierungsauftrags](automation-dsc-getting-started.md#view-a-compilation-job).
 
-Nachdem die Kompilierung erfolgreich abgeschlossen wurde, wird die neue Konfiguration auf der Registerkarte **Kompilierte Konfigurationen** angezeigt. Sie können die Konfiguration dann einem verwalteten Knoten zuweisen, indem Sie die Schritte unter [Neuzuweisen eines Knotens zu einer anderen Knotenkonfiguration](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration) verwenden.
+Nachdem die Kompilierung erfolgreich abgeschlossen wurde, wird die neue Konfiguration auf der Registerkarte **Kompilierte Konfigurationen** angezeigt. Sie können die Konfiguration dann einem verwalteten Knoten zuweisen, indem Sie die Schritte unter [Neuzuweisen eines Knotens zu einer anderen Knotenkonfiguration](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

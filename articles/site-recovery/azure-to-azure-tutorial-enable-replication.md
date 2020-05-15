@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80292487"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871493"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -170,8 +170,8 @@ Wenn Azure Disk Encryption (ADE) für die Quell-VM aktiviert ist, überprüfen S
    1. **Schlüsseltresore für Schlüsselverschlüsselung**: Site Recovery erstellt standardmäßig einen neuen Schlüsseltresor in der Zielregion. Der Name verfügt über das Suffix `asr` und basiert auf den Schlüsselverschlüsselungsschlüsseln der Quell-VM. Falls bereits ein von Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
 1. Wählen Sie **Anpassen** aus, um benutzerdefinierte Schlüsseltresore auszuwählen.
 
-> [!NOTE]
-> Azure Site Recovery unterstützt derzeit nur Azure-VMs, auf denen Windows-Betriebssysteme ausgeführt werden und die [für die Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app).
+>[!NOTE]
+> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows-Betriebssysteme ausgeführt werden. Für Linux-Betriebssysteme wird nur ADE ohne AAD unterstützt. Bei Computern mit ADE 1.1 (ohne AAD) müssen die virtuellen Computer außerdem verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
 
 ### <a name="track-replication-status"></a>Nachverfolgen des Replikationsstatus
 

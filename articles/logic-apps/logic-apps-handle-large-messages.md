@@ -3,16 +3,16 @@ title: Verarbeiten großer Nachrichten mittels Blockerstellung („Chunking“)
 description: Erfahren Sie, wie Sie große Nachrichten verarbeiten, indem Sie Blockerstellung in automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
 ms.suite: integration
-author: shae-hurst
-ms.author: shhurst
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456555"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117562"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 

@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398340"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890943"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
@@ -341,7 +341,7 @@ GO
 ### <a name="maintenance"></a>Wartung
 
 - **Hinzufügen neuer Shards**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
+- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 

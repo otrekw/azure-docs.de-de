@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733244"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125773"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -252,7 +252,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
    ```
 
    > [!NOTE]  
-   > Denken Sie daran, eine Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind. Denken Sie daran, eine [Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions).
+   > Denken Sie daran, eine Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind. Denken Sie daran, eine [Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind](./metrics-custom-overview.md#supported-regions).
  
 1. Führen Sie die folgenden Befehle aus, um den virtuellen Computers bereitzustellen:  
 

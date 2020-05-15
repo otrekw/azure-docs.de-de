@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92cba923bc197d82083973b3fac476ab93117ad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db852254d7f6ec9c0cb76151fa23e58e2d97bd2c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231372"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit SAP Cloud Platform Identity Authentication
 
@@ -176,7 +176,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden bei Azure,
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>Konfigurieren des einmaligen Anmeldens für SAP Cloud Platform Identity Authentication
 
-1. Wechseln Sie zum Konfigurieren von SSO für Ihre Anwendung zur SAP Cloud Platform Identity Authentication-Verwaltungskonsole. Die URL hat das folgende Muster: `https://<tenant-id>.accounts.ondemand.com/admin`. Lesen Sie dann in der Dokumentation von SAP Cloud Platform Identity Authentication den Artikel [Integration with Microsoft Azure AD](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/626b17331b4d4014b8790d3aea70b240.html).
+1. Wechseln Sie zum Konfigurieren von SSO für Ihre Anwendung zur SAP Cloud Platform Identity Authentication-Verwaltungskonsole. Die URL hat das folgende Muster: `https://<tenant-id>.accounts.ondemand.com/admin`. Lesen Sie dann in der Dokumentation von SAP Cloud Platform Identity Authentication den Artikel [Integration with Microsoft Azure AD](https://developers.sap.com/tutorials/cp-ias-azure-ad.html).
 
 2. Wählen Sie im Azure-Portal die Schaltfläche **Speichern** aus.
 
@@ -199,7 +199,7 @@ SAP Cloud Platform Identity Authentication unterstützt die Identitätsverbundop
 
 Die Option für Identitätsverbund ist standardmäßig deaktiviert. Ist Identitätsverbund aktiviert, können auf die Anwendung nur Benutzer zugreifen, die in SAP Cloud Platform Identity Authentication importiert wurden.
 
-Weitere Informationen zum Aktivieren oder Deaktivieren des Identitätsverbunds in SAP Cloud Platform Identity Authentication finden Sie in [Configure Identity Federation with the User Store of SAP Cloud Platform Identity Authentication](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/c029bbbaefbf4350af15115396ba14e2.html) (Konfigurieren des Identitätsverbunds mit dem Benutzerspeicher von SAP Cloud Platform Identity Authentication) unter „Enable Identity Federation with SAP Cloud Platform Identity Authentication“ (Aktivieren des Identitätsverbunds in SAP Cloud Platform Identity Authentication).
+Weitere Informationen zum Aktivieren oder Deaktivieren des Identitätsverbunds in SAP Cloud Platform Identity Authentication finden Sie in [Configure Identity Federation with the User Store of SAP Cloud Platform Identity Authentication](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/c029bbbaefbf4350af15115396ba14e2.html) (Konfigurieren des Identitätsverbunds mit dem Benutzerspeicher von SAP Cloud Platform Identity Authentication) unter „Enable Identity Federation with SAP Cloud Platform Identity Authentication“ (Aktivieren des Identitätsverbunds in SAP Cloud Platform Identity Authentication).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

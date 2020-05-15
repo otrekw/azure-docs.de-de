@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617134"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117206"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Failoverprozedur für die Notfallwiederherstellung
 
@@ -34,7 +34,7 @@ Beim Failover auf einen Standort für die Notfallwiederherstellung müssen zwei 
 >[!NOTE]
 >Die folgenden Schritte müssen auf der HANA-Einheit (große Instanzen) ausgeführt werden, die der Notfallwiederherstellungseinheit entspricht. 
  
-Um die letzte replizierte Speichermomentaufnahme wiederherzustellen, befolgen Sie die Schritte unter „Perform full DR failover – azure_hana_dr_failover“ (Ausführen eines vollständigen Failovers für die Notfallwiederherstellung – azure_hana_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Um die letzte replizierte Speichermomentaufnahme wiederherzustellen, befolgen Sie die Schritte unter „Perform full DR failover – azure_hana_dr_failover“ (Ausführen eines vollständigen Failovers für die Notfallwiederherstellung – azure_hana_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 Wenn Sie für mehrere SAP HANA-Instanzen ein Failover ausführen möchten, führen Sie den Befehl azure_hana_dr_failover mehrfach aus. Geben Sie bei entsprechender Aufforderung die SAP HANA-SID ein, für die Sie das Failover und die Wiederherstellung ausführen möchten. 
 
