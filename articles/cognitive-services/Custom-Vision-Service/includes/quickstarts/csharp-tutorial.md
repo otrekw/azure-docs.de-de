@@ -54,7 +54,7 @@ Das erstellte Projekt wird auf der [Custom Vision-Website](https://customvision.
 
 ### <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
 
-Die Bilder für dieses Projekt sind bereits enthalten. Auf sie wird in **Program.cs** in der Methode _LoadImagesFromDisk_ verwiesen. Sie können bis zu 64 Bilder in einem Batch hochladen.
+Die Bilder für dieses Projekt sind bereits enthalten. Auf sie wird in _Program.cs_ in der Methode **LoadImagesFromDisk** verwiesen. Sie können bis zu 64 Bilder in einem Batch hochladen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 

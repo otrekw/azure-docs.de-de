@@ -172,7 +172,7 @@ Fügen Sie außerdem der Datei _pom.xml_ die folgende Abhängigkeit hinzu, um di
        });
    ```
 
-1. Rufen Sie die Methode `DialogServiceConnector` auf, um `connectAsync()` mit Direct Line Speech zu verbinden. Um Ihren Bot zu testen, können Sie die Methode `listenOnceAsync` aufrufen und eine Audioeingabe von Ihrem Mikrofon senden. Außerdem können Sie die Methode `sendActivityAsync` verwenden, um eine benutzerdefinierte Aktivität als serialisierte Zeichenfolge zu senden. Diese benutzerdefinierten Aktivitäten können zusätzliche Daten bereitstellen, die Ihr Bot in der Konversation verwendet.
+1. Rufen Sie die Methode `connectAsync()` auf, um `DialogServiceConnector` mit Direct Line Speech zu verbinden. Um Ihren Bot zu testen, können Sie die Methode `listenOnceAsync` aufrufen und eine Audioeingabe von Ihrem Mikrofon senden. Außerdem können Sie die Methode `sendActivityAsync` verwenden, um eine benutzerdefinierte Aktivität als serialisierte Zeichenfolge zu senden. Diese benutzerdefinierten Aktivitäten können zusätzliche Daten bereitstellen, die Ihr Bot in der Konversation verwendet.
 
    ```java
    connector.connectAsync();

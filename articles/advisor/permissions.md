@@ -12,7 +12,7 @@ ms.locfileid: "75422319"
 ---
 # <a name="permissions-in-azure-advisor"></a>Berechtigungen in Azure Advisor
 
-Azure Advisor bietet Empfehlungen basierend auf der Nutzung und Konfiguration Ihrer Azure-Ressourcen und -Abonnements. Advisor verwendet die über die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (RBAC) bereitgestellten [integrierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/overview), um Ihren Zugriff auf die Empfehlungen und Advisor-Funktionen zu verwalten. 
+Azure Advisor bietet Empfehlungen basierend auf der Nutzung und Konfiguration Ihrer Azure-Ressourcen und -Abonnements. Advisor verwendet die über die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) bereitgestellten [integrierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles), um Ihren Zugriff auf die Empfehlungen und Advisor-Funktionen zu verwalten. 
 
 ## <a name="roles-and-their-access"></a>Rollen und der zugehörige Zugriff
 

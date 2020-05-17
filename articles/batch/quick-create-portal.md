@@ -99,7 +99,7 @@ Gehen Sie wie folgt vor, um die erste Aufgabe zu erstellen:
 
 1. Wählen Sie **Hinzufügen**.
 
-2. Geben Sie **mytask** als *Task-ID* ein. 
+2. Geben Sie *mytask* als **Task-ID** ein. 
 
 3. Geben Sie in der **Befehlszeile** die Zeichenfolge `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` ein. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 

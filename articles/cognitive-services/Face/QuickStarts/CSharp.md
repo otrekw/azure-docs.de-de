@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 
 ### <a name="include-namespaces"></a>Einschließen von Namespaces
 
-Fügen Sie am Anfang der Datei `using`Program.cs*die folgenden*-Anweisungen hinzu:
+Fügen Sie am Anfang der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
 
 ```csharp
 using System;
@@ -244,7 +244,7 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Method
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel: 
+Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel:
 
 ```json
 [

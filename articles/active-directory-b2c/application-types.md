@@ -22,7 +22,7 @@ ms.locfileid: "78190142"
 
 Azure Active Directory B2C (Azure AD B2C) unterstützt die Authentifizierung für eine Vielzahl moderner Anwendungsarchitekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](protocols-overview.md) oder [OpenID Connect](protocols-overview.md). In diesem Artikel werden die Anwendungstypen beschrieben, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarios, bevor Sie mit dem Erstellen von Anwendungen beginnen.
 
-Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](tutorial-create-tenant.md) in Ihrem [Azure AD B2C-Mandanten](https://portal.azure.com/) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
+Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](https://portal.azure.com/) in Ihrem [Azure AD B2C-Mandanten](tutorial-create-tenant.md) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
 
 * Eine **Anwendungs-ID**, die Ihre Anwendung eindeutig ausweist.
 * Ein **Antwort-URI**, der zum Umleiten von Antworten zurück an die Anwendung verwendet werden kann.

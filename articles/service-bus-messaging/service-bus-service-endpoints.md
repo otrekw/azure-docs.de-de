@@ -63,7 +63,7 @@ Die VNET-Regel ist eine Zuordnung des Service Bus-Namespace zu einem Subnetz ein
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienstendpunkt hinzufügen. Zum Beschränken des Zugriffs müssen Sie den Dienstendpunkt des virtuellen Netzwerks (VNET-Dienstendpunkt) für diesen Event Hubs-Namespace integrieren.
 
-1. Navigieren Sie im **Azure-Portal** zu Ihrem [Service Bus-Namespace](https://portal.azure.com).
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**.
 2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Standardmäßig ist die Option **Alle Netzwerke** ausgewählt. Ihr Namespace akzeptiert Verbindungen von jeder IP-Adresse. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
 
     ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/service-endpoints/firewall-all-networks-selected.png)

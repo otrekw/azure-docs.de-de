@@ -65,7 +65,7 @@ Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie mit [New-AzReso
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Erstellen Sie mit *New-AzVirtualNetworkSubnetConfig* eine Subnetzkonfiguration namens [myFrontendSubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
+Erstellen Sie mit [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) eine Subnetzkonfiguration namens *myFrontendSubnet*:
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-Erstellen Sie mit *New-AzVirtualNetwork* unter Verwendung von *myFrontendSubnet* und *myBackendSubnet* ein VNET namens [myVNet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
+Erstellen Sie mit [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) unter Verwendung von *myFrontendSubnet* und *myBackendSubnet* ein VNET namens *myVNet*:
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ Dank einer öffentlichen IP-Adresse kann über das Internet auf Azure-Ressourcen
 
 Als Zuordnungsmethode kann die statische Zuordnung festgelegt werden. Dadurch wird sichergestellt, dass die IP-Adresse einem virtuellen Computer zugewiesen bleibt, auch wenn seine Zuordnung aufgehoben ist. Wenn Sie eine statische IP-Adresse verwenden, kann die IP-Adresse selbst nicht angegeben werden. Stattdessen wird sie aus einem Pool verfügbarer Adressen zugeordnet.
 
-Erstellen Sie mithilfe von *New-AzPublicIpAddress* eine öffentliche IP-Adresse namens [myPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
+Erstellen Sie mithilfe von [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse namens *myPublicIPAddress*:
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Fügen Sie mit *New-AzNetworkSecurityGroup* die Netzwerksicherheitsgruppe [myFrontendNSG](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) hinzu:
+Fügen Sie mit [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) die Netzwerksicherheitsgruppe *myFrontendNSG* hinzu:
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

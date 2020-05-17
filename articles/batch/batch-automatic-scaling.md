@@ -213,7 +213,7 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | time(string dateTime="") |timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
 | val(doubleVec v, double i) |double |Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben. |
 
-Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel: 
+Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -233,7 +233,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden. |
 | Count() |Liefert die Gesamtzahl der Stichprobenwerte im Metrikverlauf zurück. |
 | HistoryBeginTime() |Gibt den Zeitstempel des ältesten verfügbaren Stichprobenwerts für die Metrik zurück. |
-| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel: <br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
+| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Stichproben, Prozentsatz für die Stichprobe und die *GetSample()* -Methode
 Das Abrufen von Metrikdaten zu Aufgaben und Ressourcen sowie das anschließende Anpassen der Poolgröße basierend auf diesen Daten ist die Kernfunktion einer Formel für die automatische Skalierung. Daher ist es wichtig, sich damit vertraut zu machen, wie Formeln für die automatische Skalierung mit Metrikdaten (Stichproben) interagieren.
@@ -258,7 +258,7 @@ Verwenden Sie hierzu `GetSample(interval look-back start, interval look-back end
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel: 
+Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -399,7 +399,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von _CreatePool_ nicht den Parameter _targetDedicatedNodes_ oder den Parameter **targetLowPriorityNodes** an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
+> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von **CreatePool** nicht den Parameter _targetDedicatedNodes_ oder den Parameter _targetLowPriorityNodes_ an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
 >
 >
 
@@ -463,7 +463,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Aktivieren der automatischen Skalierung für einen vorhandenen Pool
 
-Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel: 
+Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel:
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Aktivieren des automatischen Skalierens für einen Pool][rest_enableautoscale] (REST-API)
