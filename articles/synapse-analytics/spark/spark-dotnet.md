@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6943be033653d88b272817d2dcf58042aaaab616
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587798"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Verwenden von .NET für Apache Spark mit Azure Synapse Analytics
 
 [.NET für Apache Spark](https://dot.net/spark) ist eine kostenlose, Open-Source- und plattformübergreifende .NET-Unterstützung für Spark. .NET für Apache Spark stellt .NET-Bindungen für Spark bereit, mit denen Sie über C# und F# auf Spark-APIs zugreifen können. .NET für Apache Spark verschafft Ihnen die Möglichkeit, benutzerdefinierte Funktionen mithilfe von .NET für Spark zu schreiben und auszuführen. Mit den .NET-APIs für Spark können Sie auf alle Aspekte von Spark zugreifen, die Ihnen helfen, Ihre Daten zu analysieren, einschließlich Spark SQL und strukturiertem Streaming.
 
-Sie können Daten mit .NET für Apache Spark mithilfe von Spark-Batchauftragsdefinitionen oder mit interaktiven Azure Synapse Analytics-Notebooks analysieren. In diesem Artikel erfahren Sie, wie Sie .NET für Apache Spark mit Azure Synapse mit beiden Methoden verwenden. 
+Sie können Daten mit .NET für Apache Spark mithilfe von Spark-Batchauftragsdefinitionen oder mit interaktiven Azure Synapse Analytics-Notebooks analysieren. In diesem Artikel erfahren Sie, wie Sie .NET für Apache Spark mit Azure Synapse mit beiden Methoden verwenden.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Übermitteln von Batchaufträgen mithilfe der Spark-Auftragsdefinition
 
@@ -52,9 +52,9 @@ Notebooks sind eine hervorragende Möglichkeit, um Prototypen Ihrer .NET für Ap
 
 ### <a name="how-to-use-notebooks"></a>Verwenden von Notebooks
 
-Wenn Sie ein neues Notebook erstellen, wählen Sie einen Sprachkernel aus, mit dem Sie Ihre Geschäftslogik umsetzen möchten. Es gibt Kernelunterstützung für mehrere Sprachen, einschließlich C#. 
+Wenn Sie ein neues Notebook erstellen, wählen Sie einen Sprachkernel aus, mit dem Sie Ihre Geschäftslogik umsetzen möchten. Es gibt Kernelunterstützung für mehrere Sprachen, einschließlich C#.
 
-Um .NET für Apache Spark in Ihrem Azure Synapse Analytics-Notebook zu verwenden, wählen Sie **.NET Spark (C#)** als Ihren Kernel aus, und fügen Sie das Notebook an einen vorhandenen Spark-Pool an. 
+Um .NET für Apache Spark in Ihrem Azure Synapse Analytics-Notebook zu verwenden, wählen Sie **.NET Spark (C#)** als Ihren Kernel aus, und fügen Sie das Notebook an einen vorhandenen Spark-Pool an.
 
 Das .NET Spark-Notebook basiert auf den interaktiven .NET-Erfahrungen und bietet interaktive C#-Erfahrungen mit der Möglichkeit zur Verwendung des standardmäßigen .NET für Spark mit bereits vordefinierter Spark-Sitzungsvariable `spark`.
 
