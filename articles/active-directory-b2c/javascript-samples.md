@@ -45,7 +45,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie �
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 
-Sie aktivieren die Skriptausführung, indem Sie dem **RelyingParty**-Element das [ScriptExecution](relyingparty.md)-Element hinzufügen.
+Sie aktivieren die Skriptausführung, indem Sie dem [RelyingParty](relyingparty.md)-Element das **ScriptExecution**-Element hinzufügen.
 
 1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
 2. Fügen Sie das **ScriptExecution**-Element zum **UserJourneyBehaviors**-Element von **RelyingParty** hinzu:

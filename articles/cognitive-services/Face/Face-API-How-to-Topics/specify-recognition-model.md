@@ -59,7 +59,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und sie mit einem **Person**-Objekt verknüpfen (z. B. über den API-Aufruf [Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)). Mehrere **Person**-Objekte können zusammen in einem **PersonGroup**-Objekt gespeichert werden. Dann kann ein neues Gesicht mit einem **PersonGroup**-Objekt (mit dem Aufruf [Face - Identify]) verglichen und die entsprechende Person innerhalb dieser Gruppe identifiziert werden.
 
-Ein **PersonGroup**-Objekt sollte ein eindeutiges Erkennungsmodell für alle **Person**-Objekte aufweisen, und Sie können dies mit dem Parameter `recognitionModel` beim Erstellen der Gruppe ([PersonGroup - Create] oder [LargePersonGroup - Create]) angeben. Wenn Sie diesen Parameter nicht angeben, wird das ursprüngliche `recognition_01`-Modell verwendet. Eine Gruppe verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zugeordnet. Dies kann nach der Erstellung einer Gruppe nicht mehr geändert werden. Verwenden Sie die API **PersonGroup – Get** mit dem Parameter [PersonGroup – Get], der auf _true_ festgelegt ist, um festzustellen, mit welchem Modell ein **PersonGroup**-Objekt konfiguriert ist.
+Ein **PersonGroup**-Objekt sollte ein eindeutiges Erkennungsmodell für alle **Person**-Objekte aufweisen, und Sie können dies mit dem Parameter `recognitionModel` beim Erstellen der Gruppe ([PersonGroup - Create] oder [LargePersonGroup - Create]) angeben. Wenn Sie diesen Parameter nicht angeben, wird das ursprüngliche `recognition_01`-Modell verwendet. Eine Gruppe verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zugeordnet. Dies kann nach der Erstellung einer Gruppe nicht mehr geändert werden. Verwenden Sie die API [PersonGroup – Get] mit dem Parameter _returnRecognitionModel_, der auf **true** festgelegt ist, um festzustellen, mit welchem Modell ein **PersonGroup**-Objekt konfiguriert ist.
 
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
@@ -85,7 +85,7 @@ Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
-Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_02_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell [Face – Detect] erkannt worden sein (_Face – Detect_). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
+Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_02_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_02_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
 
 Es gibt keine Änderung bei der API [Face – Find Similar]. Sie geben nur die Modellversion bei der Erkennung an.
 

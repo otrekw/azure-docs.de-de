@@ -23,7 +23,7 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
 
 * Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK), Version 8](https://aka.ms/azure-jdks)
-* Ordnungsgemäße [Installation](https://maven.apache.org/download.cgi) von [Apache Maven](https://maven.apache.org/install.html) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
+* Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
 * Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist „wasb://“ für Azure Storage, „abfs://“ für Azure Data Lake Storage Gen2 oder „adl://“ für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
 
 * Ein Text-Editor oder eine Java-IDE

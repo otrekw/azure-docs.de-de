@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Ordnen Sie mit *az network vnet subnet update* die Routingtabelle *myRouteTablePublic* dem Subnetz [Public](/cli/azure/network/vnet/subnet) zu.
+Ordnen Sie mit [az network vnet subnet update](/cli/azure/network/vnet/subnet) die Routingtabelle *myRouteTablePublic* dem Subnetz *Public* zu.
 
 ```azurecli-interactive
 az network vnet subnet update \

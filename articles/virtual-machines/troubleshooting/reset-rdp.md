@@ -55,7 +55,7 @@ Mit diesem Prozess wird der Remotedesktopdienst auf der VM aktiviert, und es wir
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Zurücksetzen mit der VMAccess-Erweiterung und PowerShell
 
-Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](/powershell/azure/overview) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
+Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](/powershell/azure/overview) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 

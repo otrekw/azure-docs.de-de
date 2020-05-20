@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus.
-3. Geben Sie im Feld *Filter* den Text **Abonnements** ein. Wenn **Abonnements** in den Suchergebnissen angezeigt wird, wählen Sie diesen Eintrag aus.
+3. Geben Sie im Feld **Filter** den Text *Abonnements* ein. Wenn **Abonnements** in den Suchergebnissen angezeigt wird, wählen Sie diesen Eintrag aus.
 4. Wählen Sie den Namen des Abonnements aus, für das Sie die Nutzungsinformationen anzeigen möchten.
 5. Wählen Sie unter **EINSTELLUNGEN** die Option **Nutzung + Kontingente** aus.
 6. Sie können die folgenden Optionen auswählen:

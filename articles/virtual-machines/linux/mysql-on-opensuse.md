@@ -32,7 +32,7 @@ Erstellen Sie zunächst eine Ressourcengruppe. In diesem Beispiel heißt die Res
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM *myVM* und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die [VM-Größe](sizes.md) auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
+Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM [myVM](sizes.md) und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die *VM-Größe* auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \

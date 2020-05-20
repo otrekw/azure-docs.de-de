@@ -19,7 +19,7 @@ ms.locfileid: "75749724"
 
 Wartezeit wird gelegentlich auch als Antwortzeit bezeichnet und ist die Zeit, die eine Anwendung auf den Abschluss einer Anforderung warten muss. Die Wartezeit kann sich direkt auf die Leistung einer Anwendung auswirken. Eine kurze Wartezeit ist häufig wichtig in Szenarien mit menschlicher Interaktion – etwa bei Kreditkartentransaktionen oder beim Laden von Webseiten. Systeme, die eine hohe Verarbeitungsrate für Ereignisse benötigen (beispielsweise IoT-Ereignisse oder Protokollierung von Telemetriedaten) sind ebenfalls auf kurze Wartezeiten angewiesen. In diesem Artikel erfahren Sie, wie Sie die Wartezeit für Vorgänge in Blockblobs nachvollziehen und messen und wie Sie Anwendungen mit kurzer Wartezeit entwerfen.
 
-In Azure Storage stehen für Blockblobs zwei verschiedene Leistungsoptionen zur Verfügung: „Premium“ und „Standard“. Premium-Blockblobs bieten dank SSD-Hochleistungsdatenträgern eine deutlich kürzere und konsistentere Wartezeit als Standard-Blockblobs. Weitere Informationen finden Sie im Artikel **Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“** unter [Blockblobspeicher mit Premium-Leistung](storage-blob-storage-tiers.md).
+In Azure Storage stehen für Blockblobs zwei verschiedene Leistungsoptionen zur Verfügung: „Premium“ und „Standard“. Premium-Blockblobs bieten dank SSD-Hochleistungsdatenträgern eine deutlich kürzere und konsistentere Wartezeit als Standard-Blockblobs. Weitere Informationen finden Sie im Artikel [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md) unter **Blockblobspeicher mit Premium-Leistung**.
 
 ## <a name="about-azure-storage-latency"></a>Informationen zur Azure Storage-Wartezeit
 

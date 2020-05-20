@@ -64,7 +64,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
     
     |Einstellung|value|
     |---|---|
-    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie **myVNet1** für *Name* und *mySubnet* für das Subnetz ein.|
+    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet1* für **Name** und *mySubnet* für das Subnetz ein.|
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Standard** aus, und wählen Sie in der Dropdownliste**Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
     |Startdiagnose|Wählen Sie **Deaktiviert** aus.|
     |||
@@ -78,7 +78,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
     |Resource group | Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM2* ein.|
     |Location|Europa, Westen|
     |VM-Name | myIISVMWEurope|
-    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie **myVNet2** für *Name* und *mySubnet* für das Subnetz ein.|
+    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet2* für **Name** und *mySubnet* für das Subnetz ein.|
     |||
 
 8. Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.
@@ -149,7 +149,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
 
     |Einstellung|value|
     |---|---|
-    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie **myVNet3** für *Name* und *mySubnet3* für das Subnetz ein.|
+    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet3* für **Name** und *mySubnet3* für das Subnetz ein.|
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Standard** aus, und wählen Sie in der Dropdownliste**Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
     |Startdiagnose|Wählen Sie **Deaktiviert** aus.|
     |||
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
     |---|---|
     |VM-Name | *myVMWEurope*|
     |Resource group | Wählen Sie **Vorhandene** und dann *myResourceGroupTM2* aus.|
-    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie **myVNet4** für *Name* und *mySubnet4* für das Subnetz ein.|
+    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet4* für **Name** und *mySubnet4* für das Subnetz ein.|
     |||
 
 8. Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.

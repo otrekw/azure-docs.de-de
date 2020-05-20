@@ -15,5 +15,5 @@ Der Host ist ein x64-basierter Computer, auf dem der Docker-Container ausgeführ
 
 * [Azure Kubernetes Service](../articles/aks/index.yml)
 * [Azure Container Instances](../articles/container-instances/index.yml)
-* Ein in [Azure Stack](https://kubernetes.io/) bereitgestellter [Kubernetes](/azure-stack/operator)-Cluster Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+* Ein in [Azure Stack](/azure-stack/operator) bereitgestellter [Kubernetes](https://kubernetes.io/)-Cluster Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 

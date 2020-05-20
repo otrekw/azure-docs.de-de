@@ -35,12 +35,12 @@ Sie können auch [Azure Active Directory](https://azure.microsoft.com/services/a
 Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffentlichen Schlüssel), können Sie es in das Portal hochladen. Wenn das Zertifikat im Portal verfügbar ist, kann jeder Benutzer mit einem entsprechenden Zertifikat (privater Schlüssel) über die Verwaltungs-API eine Verbindung herstellen und auf die Ressourcen für das zugehörige Abonnement zugreifen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie unten in der Azure-Dienstliste auf **Alle Dienste**, und wählen Sie dann in der Dienstgruppe **Allgemein** die Option _Abonnements_ aus.
+2. Klicken Sie unten in der Azure-Dienstliste auf **Alle Dienste**, und wählen Sie dann in der Dienstgruppe _Allgemein_ die Option **Abonnements** aus.
 
     ![Abonnementmenü](./media/azure-api-management-certs/subscriptions_menu.png)
 
 3. Stellen Sie sicher, dass Sie das Abonnement auswählen, das Sie dem Zertifikat zuordnen möchten.     
-4. Wenn Sie das richtige Abonnement ausgewählt haben, klicken Sie in der Gruppe **Einstellungen** auf _Verwaltungszertifikate_.
+4. Wenn Sie das richtige Abonnement ausgewählt haben, klicken Sie in der Gruppe _Einstellungen_ auf **Verwaltungszertifikate**.
 
     ![Einstellungen](./media/azure-api-management-certs/mgmtcerts_menu.png)
 

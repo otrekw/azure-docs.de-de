@@ -91,7 +91,7 @@ In den meisten Fällen werden Sie ihre Azure-Dateifreigabe über das SMB-Protoko
 Die folgenden Beispiele zeigen, wie Sie mit dem Azure PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. Der Parameter `-Context` dient zum Abrufen des Speicherkontoschlüssels, um die angegebenen Aktionen für die Dateifreigabe auszuführen. Um den Speicherkontoschlüssel abrufen zu können, müssen Sie für das Speicherkonto über die RBAC-Rolle `Owner` verfügen.
 
 #### <a name="create-directory"></a>Erstellen eines Verzeichnisses
-Verwenden Sie das Cmdlet *New-AzStorageDirectory*, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen [myDirectory](/powershell/module/az.storage/New-AzStorageDirectory) zu erstellen.
+Verwenden Sie das Cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `

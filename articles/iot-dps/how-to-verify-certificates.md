@@ -65,7 +65,7 @@ Die in der Dokumentation und den SDKs bereitgestellten PowerShell- und Bash-Skri
 
 1. Laden Sie die resultierende Signatur als Verifizierungszertifikat in Ihren Bereitstellungsdienst im Portal hoch. Verwenden Sie unter **Zertifikatdetails** im Azure-Portal das Symbol _Datei-Explorer_ neben dem Feld **PEM- oder CER-Verifizierungszertifikatsdatei**, um das signierte Verifizierungszertifikat von Ihrem System hochzuladen.
 
-2. Nachdem das Zertifikat hochgeladen wurde, klicken Sie auf **Überprüfen**. Der **STATUS** Ihres Zertifikats in der Liste **Zertifikate** wechselt zu **_Überprüft_** . Klicken Sie auf **Aktualisieren**, wenn es nicht automatisch aktualisiert wird.
+2. Nachdem das Zertifikat hochgeladen wurde, klicken Sie auf **Überprüfen**. Der **STATUS** Ihres Zertifikats in der Liste **Zertifikate** wechselt zu **_Überprüft_**. Klicken Sie auf **Aktualisieren**, wenn es nicht automatisch aktualisiert wird.
 
    ![Hochladen der Zertifikatprüfung](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

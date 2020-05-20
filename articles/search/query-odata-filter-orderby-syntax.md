@@ -129,7 +129,7 @@ Zeichenfolgenkonstanten in OData werden durch einfache Anführungszeichen getren
 Beispielsweise würde ein Ausdruck mit einem unformatierten Apostroph wie „Alice's car“ in OData als die Zeichenfolgenkonstante `'Alice''s car'` dargestellt werden.
 
 > [!IMPORTANT]
-> Wenn Sie Filter programmgesteuert erstellen, sollten Sie daran denken, Zeichenfolgenkonstanten aus Benutzereingaben mit Escapezeichen zu versehen. Dadurch wird – insbesondere bei Verwendung von Filtern zum Implementieren von [Sicherheitskürzungen](https://wikipedia.org/wiki/SQL_injection) – die Möglichkeit von [Injektionsangriffen](search-security-trimming-for-azure-search.md) umgangen.
+> Wenn Sie Filter programmgesteuert erstellen, sollten Sie daran denken, Zeichenfolgenkonstanten aus Benutzereingaben mit Escapezeichen zu versehen. Dadurch wird – insbesondere bei Verwendung von Filtern zum Implementieren von [Sicherheitskürzungen](search-security-trimming-for-azure-search.md) – die Möglichkeit von [Injektionsangriffen](https://wikipedia.org/wiki/SQL_injection) umgangen.
 
 ### <a name="constants-syntax"></a>Konstantensyntax
 

@@ -16,7 +16,7 @@ ms.locfileid: "74173714"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers
 
-Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](rewrite-http-headers.md) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) zu konfigurieren.
+Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](rewrite-http-headers.md) zu konfigurieren.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

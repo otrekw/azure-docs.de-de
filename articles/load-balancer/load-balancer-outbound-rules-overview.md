@@ -36,7 +36,7 @@ Mit Ausgangsregeln können Sie steuern:
 - Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert (4-120 Minuten)
 - Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird
 
-Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md#lb) beschriebene [Szenario 2](load-balancer-outbound-connections.md). Die Rangfolge der Szenarien bleibt unverändert.
+Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md) beschriebene [Szenario 2](load-balancer-outbound-connections.md#lb). Die Rangfolge der Szenarien bleibt unverändert.
 
 ## <a name="outbound-rule"></a>Ausgehende Regel
 

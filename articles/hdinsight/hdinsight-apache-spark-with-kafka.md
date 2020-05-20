@@ -17,7 +17,7 @@ ms.locfileid: "74327398"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Beispiel für Apache Spark-Streaming (DStream) mit Apache Kafka in HDInsight
 
-Erfahren Sie, wie Sie [Apache Spark](https://spark.apache.org/) verwenden, um Daten mithilfe von [DStreams](https://kafka.apache.org/) in oder aus [Apache Kafka](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) in HDInsight zu streamen. In diesem Beispiel wird ein auf dem Spark-Cluster ausgeführtes [Jupyter Notebook](https://jupyter.org/) verwendet.
+Erfahren Sie, wie Sie [Apache Spark](https://spark.apache.org/) verwenden, um Daten mithilfe von [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) in oder aus [Apache Kafka](https://kafka.apache.org/) in HDInsight zu streamen. In diesem Beispiel wird ein auf dem Spark-Cluster ausgeführtes [Jupyter Notebook](https://jupyter.org/) verwendet.
 
 > [!NOTE]  
 > Mit den in diesem Dokument beschriebenen Schritten wird eine Azure-Ressourcengruppe erstellt, die jeweils einen Spark- und einen Kafka-Cluster in HDInsight beinhaltet. Die Cluster befinden sich innerhalb eines virtuellen Azure-Netzwerks, wodurch Spark- und Kafka-Cluster direkt miteinander kommunizieren können.

@@ -24,7 +24,7 @@ Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-An
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die unter [Verwenden von Apache Sqoop mit Hadoop in HDInsight](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) beschriebene [Einrichtung der Testumgebung](./hdinsight-use-sqoop.md) muss abgeschlossen sein.
+* Die unter [Verwenden von Apache Sqoop mit Hadoop in HDInsight](./hdinsight-use-sqoop.md) beschriebene [Einrichtung der Testumgebung](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) muss abgeschlossen sein.
 
 * Ein Client zum Abfragen der Azure SQL-Datenbank. Erwägen Sie die Verwendung von [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) oder [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
 

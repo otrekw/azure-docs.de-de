@@ -166,7 +166,7 @@ Die Regel mit dem Namen **defaultSecurityRules/DenyAllInBound** verhindert einge
 
 ## <a name="resolve-a-problem"></a>Beheben eines Problems
 
-Unabhängig davon, ob Sie das im [Szenario](#diagnose-using-azure-portal) dieses Artikels dargestellte Problem über das [Azure-Portal](#diagnose-using-powershell), über [PowerShell](#diagnose-using-azure-cli) oder über die [Azure CLI](#scenario) diagnostizieren, die Lösung besteht darin, eine Netzwerksicherheitsregel mit den folgenden Eigenschaften zu erstellen:
+Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestellte Problem über das [Azure-Portal](#diagnose-using-azure-portal), über [PowerShell](#diagnose-using-powershell) oder über die [Azure CLI](#diagnose-using-azure-cli) diagnostizieren, die Lösung besteht darin, eine Netzwerksicherheitsregel mit den folgenden Eigenschaften zu erstellen:
 
 | Eigenschaft                | value                                                                              |
 |---------                |---------                                                                           |

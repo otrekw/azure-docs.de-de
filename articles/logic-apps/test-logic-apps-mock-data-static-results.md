@@ -86,7 +86,7 @@ Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die 
 
 1. Kopieren Sie entweder das ganze JSON-Objekt oder den genauen Unterabschnitt, den Sie verwenden möchten, z. B. den Abschnitt „Ausgaben“ oder sogar nur den Abschnitt „Header“.
 
-1. Führen Sie alle unter **Einrichten von statischen Ergebnissen** beschriebenen notwendigen Schritte aus, um das Feld [Statisches Ergebnis](#set-up-static-results) zu öffnen.
+1. Führen Sie alle unter [Einrichten von statischen Ergebnissen](#set-up-static-results) beschriebenen notwendigen Schritte aus, um das Feld **Statisches Ergebnis** zu öffnen.
 
 1. Wählen Sie anschließend eine der folgenden beiden Optionen aus **:**
 

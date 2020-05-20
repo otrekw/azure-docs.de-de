@@ -117,7 +117,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnit
 
 Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer während dessen Erstellung benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](~/articles/azure-resource-manager/management/overview.md#terminology) eine [Ressourcengruppe](/cli/azure/group/#az-group-create) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. decodiert werden:
+1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az-group-create) eine [Ressourcengruppe](~/articles/azure-resource-manager/management/overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. decodiert werden:
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

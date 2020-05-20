@@ -47,7 +47,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie die neueste Version des [Raspbian
 
 Die folgenden Schritte zeigen, wie Sie Ihren Raspberry Pi für die Erstellung einer C-Anwendung vorbereiten, die eine Verbindung mit dem Solution Accelerator herstellt:
 
-1. Stellen Sie mithilfe von **SSH** eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) unter [SSH (Secure Shell)](https://www.raspberrypi.org/).
+1. Stellen Sie mithilfe von **SSH** eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/) unter [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).
 
 1. Verwenden Sie den folgenden Befehl aus, um Ihr Raspberry Pi zu aktualisieren:
 

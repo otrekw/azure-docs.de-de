@@ -98,7 +98,7 @@ Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen V
 
 Das Senden von Ereignissen in Batches kann den Durchsatz erhöhen. Mithilfe der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API können Sie einen Batch erstellen, dem später Datenobjekte für einen [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)-Aufruf hinzugefügt werden können.
 
-Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 1 MB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
+Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 1 MB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
 
@@ -107,7 +107,7 @@ Sie senden Ereignisse asynchron an einen Event Hub. Beim asynchronen Senden wird
 ## <a name="event-consumers"></a>Ereignisconsumer
 Die [EventProcessorHost][] -Klasse verarbeitet Daten aus Event Hubs. Sie sollten diese Implementierung verwenden, wenn Sie Ereignisleser auf der .NET-Plattform erstellen. [EventProcessorHost][] wird eine threadsichere Laufzeitumgebung mit mehreren Prozessen für Ereignisprozessorimplementierungen bereitgestellt, die auch die Erstellung von Prüfpunkten und die Leaseverwaltung für Partitionen ermöglicht.
 
-Sie können [EventProcessorHost][] implementieren, um die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Klasse zu verwenden. Diese Schnittstelle enthält vier Methoden:
+Sie können [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementieren, um die [EventProcessorHost][]-Klasse zu verwenden. Diese Schnittstelle enthält vier Methoden:
 
 * [OpenAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.openasync)
 * [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.closeasync)

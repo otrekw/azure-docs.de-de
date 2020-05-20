@@ -51,7 +51,7 @@ Die Telemetriedaten werden in dem Speicherkonto, das Sie bei der Konfiguration d
 
 Sie können Telemetriedaten in einer der folgenden Arten verwenden:
 
-- Lesen Sie Daten direkt aus dem Azure-Tabellenspeicher (z.B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in **diesem** Thema unter [Consuming telemetry information](https://msdn.microsoft.com/library/mt742089.aspx) (Nutzung von Telemetrieinformationen).
+- Lesen Sie Daten direkt aus dem Azure-Tabellenspeicher (z.B. mithilfe des Speicher-SDK). Eine Beschreibung der Telemetriespeichertabellen finden Sie in [diesem](https://msdn.microsoft.com/library/mt742089.aspx) Thema unter **Consuming telemetry information** (Nutzung von Telemetrieinformationen).
 
 oder
 

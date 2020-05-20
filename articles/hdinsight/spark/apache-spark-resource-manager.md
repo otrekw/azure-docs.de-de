@@ -17,7 +17,7 @@ ms.locfileid: "75932104"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight
 
-Erfahren Sie, wie Sie auf die mit Ihrem [Apache Spark](https://ambari.apache.org/)-Cluster verknüpften Benutzeroberflächen wie die [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)-Benutzeroberfläche, die [Apache Hadoop YARN](./apache-azure-spark-history-server.md)-Benutzeroberfläche und den [Spark-Verlaufsserver](https://spark.apache.org/) zugreifen, und wie Sie den Cluster für optimale Leistung konfigurieren.
+Erfahren Sie, wie Sie auf die mit Ihrem [Apache Spark](https://spark.apache.org/)-Cluster verknüpften Benutzeroberflächen wie die [Apache Ambari](https://ambari.apache.org/)-Benutzeroberfläche, die [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)-Benutzeroberfläche und den [Spark-Verlaufsserver](./apache-azure-spark-history-server.md) zugreifen, und wie Sie den Cluster für optimale Leistung konfigurieren.
 
 ## <a name="open-the-spark-history-server"></a>Öffnen des Spark-Verlaufsservers
 

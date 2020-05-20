@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwic
 
 ## <a name="get-started"></a>Erste Schritte
 
-In den Schnellstartanleitungen und Tutorials zu v1.0 wird Schritt für Schritt die Erstellung einer App auf Ihrer bevorzugten Plattform mit dem ADAL SDK (Azure AD Authentication Library) beschrieben. Informationen zu den ersten Schritten finden Sie unter **Microsoft identity platform (Azure Active Directory for developers)** (Microsoft-Identitätsplattform (Azure Active Directory für Entwickler)) in den **Schnellstartanleitungen zu v1.0** und in den [Tutorials zu v1.0](index.yml).
+In den Schnellstartanleitungen und Tutorials zu v1.0 wird Schritt für Schritt die Erstellung einer App auf Ihrer bevorzugten Plattform mit dem ADAL SDK (Azure AD Authentication Library) beschrieben. Informationen zu den ersten Schritten finden Sie unter [Microsoft identity platform (Azure Active Directory for developers)](index.yml) (Microsoft-Identitätsplattform (Azure Active Directory für Entwickler)) in den **Schnellstartanleitungen zu v1.0** und in den **Tutorials zu v1.0**.
 
 ## <a name="how-to-guides"></a>Gewusst-wie-Anleitungen
 
