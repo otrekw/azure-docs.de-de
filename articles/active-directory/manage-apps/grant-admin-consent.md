@@ -43,7 +43,7 @@ Sie können die mandantenweite Administratoreinwilligung über *Unternehmensanwe
 
 So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unternehmensanwendungen** aufgeführte Anwendung:
 
-1. Melden Sie sich als [globaler Administrator](https://portal.azure.com), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) an.
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **Unternehmensanwendungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**.
@@ -56,7 +56,7 @@ Bei Anwendungen, die Ihre Organisation entwickelt hat, oder die direkt in Ihrem 
 
 So erteilen Sie die mandantenweite Administratoreinwilligung in **App-Registrierungen**:
 
-1. Melden Sie sich als [globaler Administrator](https://portal.azure.com), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) an.
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **App-Registrierungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung erteilen**.

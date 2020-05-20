@@ -1,0 +1,61 @@
+- name: Dokumentation zu Azure Static Web Apps
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure Static Web Apps
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen Ihrer ersten statischen Web-App
+      href: getting-started.md
+- name: Konzepte
+  items:
+    - name: API-Unterstützung mit Azure Functions
+      href: apis.md
+    - name: Routen
+      href: routes.md
+    - name: Authentifizierung und Autorisierung
+      href: authentication-authorization.md
+    - name: Zugreifen auf Benutzerinformationen
+      href: user-information.md
+    - name: Überprüfen von Pull Requests in Präproduktionsumgebungen
+      href: review-publish-pull-requests.md
+    - name: Benutzerdefinierte Domäne
+      href: custom-domain.md
+    - name: Build- und Workflowkonfiguration
+      href: github-actions-workflow.md
+- name: Anleitungen
+  items:
+    - name: Einrichten der lokalen Entwicklung
+      href: local-development.md
+    - name: Hinzufügen einer API
+      href: add-api.md
+    - name: Konfigurieren von App-Einstellungen
+      href: application-settings.md
+- name: Tutorials
+  items:
+    - name: Veröffentlichen über einen Generator für statische Websites
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: Bereitstellen über ein Framework
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: Ressourcen
+  items:
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      items:
+        - name: 'Veröffentlichen einer Angular-, React-, Svelte- oder Vue JavaScript-App und -API'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Erstellen und Veröffentlichen einer statischen Web-App mit Gatsby
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Kontingente
+      href: quotas.md

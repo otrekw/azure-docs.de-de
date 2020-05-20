@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST-API-Tutorials
       items:
+        - name: Erstellen von Gebäudeplänen
+          href: tutorial-creator-indoor-maps.md
         - name: Einrichten eines Geofence
           href: tutorial-geofence.md
         - name: Räumliche Analysen
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: Auswählen des richtigen Tarifs
       href: choose-pricing-tier.md
+    - name: Creator für Gebäudepläne
+      items:
+        - name: Konzepte für Gebäudepläne
+          href: creator-indoor-maps.md
+        - name: Fehler und Warnungen bei der Zeichnungskonvertierung
+          href: drawing-conversion-error-codes.md
     - name: Abdeckung
       items:
         - name: Abdeckung durch Geocodierung
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: Verwalten des Tarifs
           href: how-to-manage-pricing-tier.md
+        - name: Verwalten von Creator
+          href: how-to-manage-creator.md
         - name: Anzeigen von Nutzungsmetriken
           href: how-to-view-api-usage.md
     - name: Abrufen von Kartendaten aus REST-APIs
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten
           href: how-to-show-traffic-android.md
+    - name: Entwickeln mit Creator-Gebäudeplänen
+      items:
+        - name: Modul für Gebäudepläne
+          href: how-to-use-indoor-module.md
+        - name: Dynamischer Stil für Gebäudepläne
+          href: indoor-map-dynamic-styling.md
+        - name: Schnellansicht für Zeichnungsfehler
+          href: drawing-error-visualizer.md
     - name: Bereitstellen von Datenfeedback
       href: how-to-use-feedback-tool.md
 - name: Verweis
   items:
     - name: API- und Parametererweiterungen
       items:
+        - name: Anforderungen an Zeichnungspakete
+          href: drawing-requirements.md
         - name: Fahrzeugnutzungsmodell
           href: consumption-model.md
         - name: GeoJSON-Format erweitern
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: Räumliches IO-Modul
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: Modul für Innenbereiche
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.maps/accounts
 - name: Ressourcen

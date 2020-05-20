@@ -13,7 +13,7 @@
   items:
     - name: Verwenden des SDK
       href: sdk-learning-loop.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden von Azure Notebook
       href: tutorial-use-azure-notebook-generate-loop-data.md
@@ -39,6 +39,8 @@
         - name: Lernrichtlinie
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Ausbildungsmodus
+          href: concept-apprentice-mode.md
         - name: Aktive und inaktive Ereignisse
           href: concept-active-inactive-events.md
         - name: Belohnungen
@@ -58,13 +60,15 @@
           href: concept-feature-evaluation.md
     - name: Skalierbarkeit und Leistung
       href: concepts-scalability-performance.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erstellen einer Personalisierungsressource
       href: how-to-create-resource.md
-    - name: Konfigurieren einer Lernschleife
+    - name: Konfigurieren der Personalisierung
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Verwenden des Ausbildungsmodus
+      href: how-to-learning-behavior.md
     - name: Verwalten von Modell- und Lerneinstellungen
       href: how-to-manage-model.md
     - name: Analysieren mit einer Offlinebewertung

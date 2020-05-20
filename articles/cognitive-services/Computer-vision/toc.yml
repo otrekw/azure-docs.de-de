@@ -131,10 +131,12 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Maschinelles Sehen-API v3.0
+      href: 'https://aka.ms/computer-vision-v3-ref'
     - name: Maschinelles Sehen-API v3.0-preview
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6'
     - name: Maschinelles Sehen-API v2.1

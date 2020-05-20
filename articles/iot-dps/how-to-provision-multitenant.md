@@ -57,7 +57,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl **az iot hub create** in der Region [eastus](/cli/azure/iot/hub#az-iot-hub-create) einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
+2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **eastus** einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird in der Region *eastus* ein IoT Hub mit dem Namen *contoso-east-hub* erstellt. Sie müssen anstelle von **contoso-east-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 
@@ -67,7 +67,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
-3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl **az iot hub create** in der Region [westus](/cli/azure/iot/hub#az-iot-hub-create) einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
+3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **westus** einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird am Standort *westus* eine IoT Hub-Instanz mit dem Namen *contoso-west-hub* erstellt. Sie müssen anstelle von **contoso-west-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 

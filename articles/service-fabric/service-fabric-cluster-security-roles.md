@@ -89,7 +89,7 @@ Die Zugriffssteuerung vom Typ „Benutzer“ ist standardmäßig auf die folgend
 Die Zugriffssteuerung des Typs „Admin“ kann auch auf die zuvor genannten Vorgänge zugreifen.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Ändern der Standardeinstellungen für Clientrollen
-In der Manifestdatei des Clusters können bei Bedarf Administratorfunktionen für den Client bereitgestellt werden. Sie können die Standardeinstellungen ändern, indem Sie während der **Clustererstellung** die Option [Fabric-Einstellungen](service-fabric-cluster-creation-via-portal.md) auswählen und die zuvor beschriebenen Einstellungen in den Feldern **name**, **admin**, **user** und **value** angeben.
+In der Manifestdatei des Clusters können bei Bedarf Administratorfunktionen für den Client bereitgestellt werden. Sie können die Standardeinstellungen ändern, indem Sie während der [Clustererstellung](service-fabric-cluster-creation-via-portal.md) die Option **Fabric-Einstellungen** auswählen und die zuvor beschriebenen Einstellungen in den Feldern **name**, **admin**, **user** und **value** angeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)

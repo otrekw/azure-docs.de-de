@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>Hinzufügen eines Gesichts zu einem Person-Objekt mit einem angegebenen Modell
 
-Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und über die API **PersonGroup Person – Add Face** einem [Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)-Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
+Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und über die API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) einem **Person**-Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
 
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 

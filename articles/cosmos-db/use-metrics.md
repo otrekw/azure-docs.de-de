@@ -54,7 +54,7 @@ Der häufigste Fehlerstatuscode ist 429 (Ratenbegrenzung/Drosselung). Dieser Feh
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Durchsatzverteilung
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie im **Azure-Portal** zum Blatt [Metriken](https://portal.azure.com). Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich an der extremen Partition am linken Rand erkennen lässt.
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt **Metriken**. Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich an der extremen Partition am linken Rand erkennen lässt.
 
 ![Einzelne Partition mit starker Auslastung um 15:05 Uhr](media/use-metrics/metrics-17.png)
 

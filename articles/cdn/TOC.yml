@@ -67,6 +67,8 @@
           href: cdn-restrict-access-by-country.md
         - name: Verbessern der Leistung durch Komprimieren von Dateien
           href: cdn-improve-performance.md
+        - name: Endpunkt mit mehreren Ursprüngen
+          href: endpoint-multiorigin.md
         - name: Steuern des Zwischenspeicherverhaltens
           items:
             - name: Steuern des Zwischenspeicherverhaltens mithilfe von Cacheregeln

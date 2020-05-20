@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: Dokumentation zur Textübersetzung
-summary: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit Microsoft Speech Services übersetzt werden.
+title: Dokumentation zu Translator
+summary: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
 metadata:
-  title: 'Dokumentation zur Textübersetzung: Schnellstarts, Tutorials, API-Referenz'
+  title: 'Dokumentation zu Translator: Schnellstarts, Tutorials, API-Referenz'
   titleSuffix: Azure Cognitive Services
-  description: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit Microsoft Speech Services übersetzt werden.
+  description: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529795"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592745"
 landingContent:
 - title: Übersetzer
   linkLists:
   - linkListType: overview
     links:
-    - text: Textübersetzungs-API
+    - text: Übersetzer
       url: translator-info-overview.md
     - text: Benutzerdefinierter Translator
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: Häufig gestellte Fragen
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Textübersetzungs-API
+- title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: Referenz zur Textübersetzungs-API (v3)
+    - text: Referenz zu Translator (v3)
       url: reference/v3-0-reference.md
     - text: Anforderungsgrenzwerte
       url: request-limits.md

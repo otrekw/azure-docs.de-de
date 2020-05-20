@@ -79,7 +79,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 
 In diesem Tutorial werden die Ticketverkaufsdaten analysiert. Im aktuellen Schritt generieren Sie Ticketdaten für alle Mandanten.  Diese Daten werden später für die Analyse extrahiert. *Sie müssen zuvor unbedingt den Batch von Mandanten wie oben beschrieben bereitgestellt haben, damit Sie über eine sinnvolle Datenmenge verfügen*. Eine ausreichend große Datenmenge kann unterschiedliche Ticketkaufmuster verfügbar machen.
 
-1. Öffnen Sie **…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** in der *PowerShell ISE*, und legen Sie den folgenden Wert fest:
+1. Öffnen Sie *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* in der **PowerShell ISE**, und legen Sie den folgenden Wert fest:
     - **$DemoScenario** = **1** Kaufen von Tickets für Veranstaltungen an allen Veranstaltungsorten
 2. Drücken Sie **F5**, um das Skript auszuführen und einen Ticketkaufverlauf für jede Veranstaltung an sämtlichen Veranstaltungsorten zu erstellen.  Die Skriptausführung dauert mehrere Minuten, da Zehntausende von Tickets generiert werden.
 
