@@ -363,7 +363,7 @@ Das direkte Hinzufügen von Testfällen für Tabellenwertfunktionen und gespeich
 
 Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitstellung in Azure Pipelines einzurichten:
 
-1. Fügen Sie einen PowerShell-Skripttask im Build oder der Releasepipeline hinzu, und führen Sie das folgende PowerShell-Skript aus. Mit dieser Aufgabe können Azure SDK-Abhängigkeiten für `PackageDeploymentTool.exe` und `PackageDeploymentTool.exe` abgerufen werden. Sie können die Parameter **-AzureSDK** und **-DBDeploymentTool** festlegen, um die Abhängigkeiten und Bereitstellungstools in bestimmte Ordner zu laden. Übergeben Sie den **-AzureSDK**-Pfad in Schritt 2 als `PackageDeploymentTool.exe`-AzureSDKPath **-Parameter an** . 
+1. Fügen Sie einen PowerShell-Skripttask im Build oder der Releasepipeline hinzu, und führen Sie das folgende PowerShell-Skript aus. Mit dieser Aufgabe können Azure SDK-Abhängigkeiten für `PackageDeploymentTool.exe` und `PackageDeploymentTool.exe` abgerufen werden. Sie können die Parameter **-AzureSDK** und **-DBDeploymentTool** festlegen, um die Abhängigkeiten und Bereitstellungstools in bestimmte Ordner zu laden. Übergeben Sie den **-AzureSDK**-Pfad in Schritt 2 als **-AzureSDKPath**-Parameter an `PackageDeploymentTool.exe`. 
 
     ```powershell
     <#

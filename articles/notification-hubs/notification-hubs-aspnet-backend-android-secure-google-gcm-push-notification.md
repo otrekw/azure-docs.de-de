@@ -86,7 +86,7 @@ Dazu müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ih
         return basicAuthHeader;
     }
     ```
-3. Fügen Sie am Anfang der Datei `import` die folgenden `MainActivity`-Anweisungen hinzu:
+3. Fügen Sie am Anfang der Datei `MainActivity` die folgenden `import`-Anweisungen hinzu:
 
     ```java
     import android.content.SharedPreferences;

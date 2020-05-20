@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Um die neuen von den Transformatoren `words` und `features` hinzugefügten Spalten `Tokenizer` und `HashingTF` sowie ein Beispiel für den Estimator `LogisticRegression` anzuzeigen, führen Sie eine `PipelineModel.transform()`-Methode für den ursprünglichen Dataframe aus. Im Produktionscode ist der nächste Schritt die Übergabe in einen Testdataframe, um das Training zu überprüfen.
+Um die neuen von den Transformatoren `Tokenizer` und `HashingTF` hinzugefügten Spalten `words` und `features` sowie ein Beispiel für den Estimator `LogisticRegression` anzuzeigen, führen Sie eine `PipelineModel.transform()`-Methode für den ursprünglichen Dataframe aus. Im Produktionscode ist der nächste Schritt die Übergabe in einen Testdataframe, um das Training zu überprüfen.
 
 ```python
 peek = model.transform(training)

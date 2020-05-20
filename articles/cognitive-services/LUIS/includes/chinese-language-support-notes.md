@@ -18,5 +18,5 @@ ms.locfileid: "73500217"
 
  - In der Kultur `zh-CN` erwartet LUIS den vereinfachten chinesischen Zeichensatz anstelle des traditionellen.
  - Die Namen der Absichten, Entitäten, Features und regulären Ausdrücke können in chinesischen oder lateinischen Zeichen vorliegen.
- - Informationen zu den in der Kultur [ unterstützten vordefinierten Domänen finden Sie in der ](../luis-reference-prebuilt-domains.md)Referenz zu vordefinierten Domänen`zh-CN`.
+ - Informationen zu den in der Kultur `zh-CN` unterstützten vordefinierten Domänen finden Sie in der [Referenz zu vordefinierten Domänen](../luis-reference-prebuilt-domains.md).
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->

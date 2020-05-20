@@ -70,7 +70,7 @@ Blockiert|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>Änderungen an Objekten
 
-- Das Feld `contractualRules` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `contractualRules` enthält eine Liste von Regeln, die eingehalten werden müssen (z.B. Artikelzuordnungen). Statt `contractualRules` müssen Sie die in `provider` angegebene Zuordnung anwenden. Der Artikel umfasst `contractualRules` nur, wenn die Antwort der [Websuche-API](../bing-web-search/search-the-web.md) eine News-Antwort enthält.
+- Das Feld `contractualRules` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `contractualRules` enthält eine Liste von Regeln, die eingehalten werden müssen (z.B. Artikelzuordnungen). Statt `provider` müssen Sie die in `contractualRules` angegebene Zuordnung anwenden. Der Artikel umfasst `contractualRules` nur, wenn die Antwort der [Websuche-API](../bing-web-search/search-the-web.md) eine News-Antwort enthält.
 
 ## <a name="non-breaking-changes"></a>Geringfügige Änderungen
 

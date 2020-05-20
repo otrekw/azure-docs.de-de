@@ -66,7 +66,7 @@ Kopieren Sie als nächstes den Code aus dieser Anleitung, und fügen Sie ihn in 
 
 ### <a name="update-the-programs-using-statements"></a>Aktualisieren der using-Anweisungen des Programms
 
-Fügen Sie am Anfang der Datei `using`Program.cs_die folgenden_-Anweisungen hinzu:
+Fügen Sie am Anfang der Datei _Program.cs_ die folgenden `using`-Anweisungen hinzu:
 
 ```csharp
 using System;

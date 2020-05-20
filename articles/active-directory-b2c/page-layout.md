@@ -33,7 +33,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 - Alle Seiten
   - Korrekturen zur Barrierefreiheit
-  - Sie können nun `data-preload="true"`in den HTML-Tags[ das Attribut ](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+  - Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
     - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
     - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
   - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt

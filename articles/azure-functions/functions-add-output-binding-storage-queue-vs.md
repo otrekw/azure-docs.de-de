@@ -75,7 +75,7 @@ Eine neue Warteschlange mit dem Namen `outqueue` wird in Ihrem Speicherkonto von
 
 1. Öffnen Sie in Visual Studio im Menü **Ansicht** die Option **Cloud-Explorer**.
 
-1. Erweitern Sie im **Cloud-Explorer** Ihr Azure-Abonnement und **Speicherkonten** und anschließend das von Ihrer Funktion verwendete Speicherkonto. Den Namen des Speicherkontos finden Sie in der Datei `AzureWebJobsStorage`local.settings.json *in der Verbindungszeichenfolge*.  
+1. Erweitern Sie im **Cloud-Explorer** Ihr Azure-Abonnement und **Speicherkonten** und anschließend das von Ihrer Funktion verwendete Speicherkonto. Den Namen des Speicherkontos finden Sie in der Datei *local.settings.json* in der Verbindungszeichenfolge`AzureWebJobsStorage`.  
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und doppelklicken Sie anschließend auf die Warteschlange namens **outqueue**, um die Inhalte der Warteschlange in Visual Studio anzuzeigen. 
 

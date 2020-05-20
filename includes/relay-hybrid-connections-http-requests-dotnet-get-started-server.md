@@ -55,7 +55,7 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
     private const string Key = "{SASKey}";
     ```
 
-3. Fügen Sie der Klasse `RunAsync` die Methode `Program` hinzu:
+3. Fügen Sie der Klasse `Program` die Methode `RunAsync` hinzu:
    
     ```csharp
     private static async Task RunAsync()

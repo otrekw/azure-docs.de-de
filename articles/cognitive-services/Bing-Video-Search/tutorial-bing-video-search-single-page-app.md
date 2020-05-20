@@ -87,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Das `<form>`-Attribut des HTML-Tags `onsubmit` ruft die `bingWebSearch`-Funktion auf, um die Suchergebnisse zurückzugeben. `bingWebSearch` verwendet `getSubscriptionKey()` zur Authentifizierung aller Abfragen. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, falls dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
+Das `onsubmit`-Attribut des HTML-Tags `<form>` ruft die `bingWebSearch`-Funktion auf, um die Suchergebnisse zurückzugeben. `bingWebSearch` verwendet `getSubscriptionKey()` zur Authentifizierung aller Abfragen. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, falls dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 

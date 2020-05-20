@@ -102,7 +102,7 @@ Der JavaScript/TypeScript-Client sendet HTTP-Anforderungen an die Aushandlungsfu
 
 #### <a name="localhost"></a>Localhost
 
-Wenn Sie die Funktions-App auf Ihrem lokalen Computer ausführen, können Sie `Host`local.settings.json*einen Abschnitt vom Typ* hinzufügen, um CORS zu aktivieren. Fügen Sie im Abschnitt `Host` zwei Eigenschaften hinzu:
+Wenn Sie die Funktions-App auf Ihrem lokalen Computer ausführen, können Sie *local.settings.json* einen Abschnitt vom Typ `Host` hinzufügen, um CORS zu aktivieren. Fügen Sie im Abschnitt `Host` zwei Eigenschaften hinzu:
 
 * `CORS`: Geben Sie die Basis-URL (also den Ursprung der Clientanwendung) ein.
 * `CORSCredentials`: Legen Sie diese Eigenschaft auf `true` fest, um Anforderungen vom Typ „withCredentials“ zu ermöglichen.

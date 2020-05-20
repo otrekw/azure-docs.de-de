@@ -92,7 +92,7 @@ In diesem Abschnitt aktualisieren Sie den Code, um anzugeben, dass beide Tokenau
 1. Fügen Sie am Anfang der Datei die folgende `using`-Anweisung hinzu:
 
     `using System.Collections.Generic;`
-1. Fügen Sie der Definition [`ValidIssuers`][validissuers] die Eigenschaft [`TokenValidationParameters`][tokenvalidationparameters] hinzu, und geben Sie die beiden im vorherigen Abschnitt notierten URIs an:
+1. Fügen Sie der Definition [`TokenValidationParameters`][tokenvalidationparameters] die Eigenschaft [`ValidIssuers`][validissuers] hinzu, und geben Sie die beiden im vorherigen Abschnitt notierten URIs an:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters

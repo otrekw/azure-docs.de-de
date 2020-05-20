@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Wenn einer der Ansprüche im Wörterbuch, das Sie übergeben, mit einem der obligatorischen Ansprüche identisch ist, wird der Wert des zusätzlichen Anspruchs berücksichtigt. Er überschreibt die von MSAL.NET berechneten Ansprüche.
 
-Wenn Sie eigene Ansprüche, einschließlich der obligatorischen Ansprüche, die von Azure AD erwartet werden, angeben möchten, übergeben Sie als `false`-Parameter `mergeWithDefaultClaims`.
+Wenn Sie eigene Ansprüche, einschließlich der obligatorischen Ansprüche, die von Azure AD erwartet werden, angeben möchten, übergeben Sie als `mergeWithDefaultClaims`-Parameter `false`.

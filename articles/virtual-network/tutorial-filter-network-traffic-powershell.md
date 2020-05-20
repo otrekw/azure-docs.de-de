@@ -290,7 +290,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu *, um sich zu vergewissern, dass Sie außerhalb von Azure auf den Webserver* myVmWeb`http://<public-ip-address-from-previous-step>` zugreifen können. Die Verbindung wird erfolgreich hergestellt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
+Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu `http://<public-ip-address-from-previous-step>`, um sich zu vergewissern, dass Sie außerhalb von Azure auf den Webserver *myVmWeb* zugreifen können. Die Verbindung wird erfolgreich hergestellt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

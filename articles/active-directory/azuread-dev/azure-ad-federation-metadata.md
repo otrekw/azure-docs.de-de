@@ -41,7 +41,7 @@ Für **mandantenspezifische Endpunkte** kann `TenantDomainName` einem der folgen
 * Ein registrierter Domänenname eines Azure AD-Mandanten (Beispiel: `contoso.onmicrosoft.com`).
 * Die unveränderliche Mandanten-ID der Domäne (Beispiel: `72f988bf-86f1-41af-91ab-2d7cd011db45`).
 
-Für **mandantenunabhängige Endpunkte** wird `TenantDomainName` als `common` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
+Für **mandantenunabhängige Endpunkte** wird `common` als `TenantDomainName` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
 
 Ein mandantenspezifischer Endpunkt kann etwa wie folgt lauten: `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Der mandantenunabhängige Endpunkt ist [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Sie können das Verbundmetadaten-Dokument anzeigen, indem Sie diese URL in einen Browser eingeben.
 

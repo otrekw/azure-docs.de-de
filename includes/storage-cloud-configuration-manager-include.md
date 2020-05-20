@@ -13,7 +13,7 @@ ms.locfileid: "72038173"
 ---
 Die [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) stellt eine Klasse für die Analyse einer Verbindungszeichenfolge aus einer Konfigurationsdatei bereit. Die Klasse [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analysiert Konfigurationseinstellungen. Sie analysiert Einstellungen für Clientanwendungen, die auf dem Desktop, auf einem mobilen Gerät, auf einem virtuellen Azure-Computer oder in einem Azure-Clouddienst ausgeführt werden.
 
-Fügen Sie die folgenden `CloudConfigurationManager`-Anweisungen hinzu, um auf das Paket `using` zu verweisen:
+Fügen Sie die folgenden `using`-Anweisungen hinzu, um auf das Paket `CloudConfigurationManager` zu verweisen:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager

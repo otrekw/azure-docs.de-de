@@ -46,7 +46,7 @@ Wenn Sie nicht das Portal verwenden, um Ihren Cluster zu erstellen, oder wenn Si
 
 Nachdem Sie die Vorlage erstellt haben, aktivieren Sie den DNS-Dienst mit den folgenden Schritten:
 
-1. Überprüfen Sie, ob die `apiversion` für die Ressource `2017-07-01-preview` auf `Microsoft.ServiceFabric/clusters` oder höher festgelegt ist. Wenn nicht, aktualisieren Sie die Ressource, wie im folgenden Beispiel gezeigt:
+1. Überprüfen Sie, ob die `apiversion` für die Ressource `Microsoft.ServiceFabric/clusters` auf `2017-07-01-preview` oder höher festgelegt ist. Wenn nicht, aktualisieren Sie die Ressource, wie im folgenden Beispiel gezeigt:
 
     ```json
     {
@@ -72,7 +72,7 @@ Nachdem Sie die Vorlage erstellt haben, aktivieren Sie den DNS-Dienst mit den fo
           }
         ```
 
-   - Um den Dienst mit nicht standardmäßigen Einstellungen zu aktivieren, fügen Sie dem `DnsService`-Abschnitt innerhalb des `fabricSettings`-Abschnitts einen `properties`-Abschnitt hinzu. In diesem Fall müssen Sie den DNS-Dienst nicht zu `addonFeatures` hinzufügen. Weitere Informationen zu den Eigenschaften, die für den DNS-Dienst festgelegt werden können, finden Sie bei den [DnsService](./service-fabric-cluster-fabric-settings.md#dnsservice)-Einstellungen.
+   - Um den Dienst mit nicht standardmäßigen Einstellungen zu aktivieren, fügen Sie dem `fabricSettings`-Abschnitt innerhalb des `properties`-Abschnitts einen `DnsService`-Abschnitt hinzu. In diesem Fall müssen Sie den DNS-Dienst nicht zu `addonFeatures` hinzufügen. Weitere Informationen zu den Eigenschaften, die für den DNS-Dienst festgelegt werden können, finden Sie bei den [DnsService](./service-fabric-cluster-fabric-settings.md#dnsservice)-Einstellungen.
 
        ```json
            "properties": {

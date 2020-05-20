@@ -428,7 +428,7 @@ Die Metriken für Azure Files können über das [Azure-Portal](https://portal.az
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Storage-Clientbibliothek für .NET zum Aktivieren von Metriken für Azure Files verwenden.
 
-Fügen Sie Ihrer Datei `using` zunächst die folgenden `Program.cs`-Direktiven zusammen mit den oben hinzugefügten Direktiven hinzu:
+Fügen Sie Ihrer Datei `Program.cs` zunächst die folgenden `using`-Direktiven zusammen mit den oben hinzugefügten Direktiven hinzu:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;

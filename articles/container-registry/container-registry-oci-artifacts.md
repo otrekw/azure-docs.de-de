@@ -34,7 +34,7 @@ In diesem Abschnitt werden zwei vorgeschlagene Workflows für die Anmeldung bei 
 
 ### <a name="sign-in-with-oras"></a>Anmelden mit ORAS
 
-Führen Sie den Befehl [ unter Verwendung eines ](container-registry-auth-service-principal.md)Dienstprinzipals`oras login` mit Pushrechten aus, um sich mit der Anwendungs-ID und dem Kennwort des Dienstprinzipals bei der Registrierung anzumelden. Geben Sie den vollqualifizierten Registrierungsnamen (nur Kleinbuchstaben) an – in diesem Fall: *myregistry.azurecr.io*. Die Anwendungs-ID des Dienstprinzipals wird in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben.
+Führen Sie den Befehl `oras login` unter Verwendung eines [Dienstprinzipals](container-registry-auth-service-principal.md) mit Pushrechten aus, um sich mit der Anwendungs-ID und dem Kennwort des Dienstprinzipals bei der Registrierung anzumelden. Geben Sie den vollqualifizierten Registrierungsnamen (nur Kleinbuchstaben) an – in diesem Fall: *myregistry.azurecr.io*. Die Anwendungs-ID des Dienstprinzipals wird in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben.
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD

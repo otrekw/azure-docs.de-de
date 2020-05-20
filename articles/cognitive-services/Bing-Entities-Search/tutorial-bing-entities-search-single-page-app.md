@@ -71,7 +71,7 @@ Die Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendun
 
 In diesem Tutorial wird ein Großteil des HTML- und CSS-Codes nicht ausführlich behandelt, da dieser selbsterklärend ist.
 
-Der HTML-Teil enthält das Suchformular, in dem der Benutzer eine Abfrage eingibt und Suchoptionen auswählt. Das Formular wird vom JavaScript-Teil ausgewertet, der die Suche mithilfe des `<form>`-Attributs des `onsubmit`-Tags ausführt:
+Der HTML-Teil enthält das Suchformular, in dem der Benutzer eine Abfrage eingibt und Suchoptionen auswählt. Das Formular wird vom JavaScript-Teil ausgewertet, der die Suche mithilfe des `onsubmit`-Attributs des `<form>`-Tags ausführt:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">

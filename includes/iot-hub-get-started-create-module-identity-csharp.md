@@ -35,7 +35,7 @@ Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und ein
 
     ![Installieren des Azure IoT Hub-.NET-Dienst-SDK in der aktuellen Version](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
    ```csharp
    using Microsoft.Azure.Devices;

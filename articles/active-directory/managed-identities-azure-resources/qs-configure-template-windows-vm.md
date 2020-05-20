@@ -163,7 +163,7 @@ Zum Entfernen der systemseitig zugewiesenen verwalteten Identität von einem vir
 
    **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
 
-   Wenn `apiVersion` als `2017-12-01` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.  
+   Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.  
 
 Das folgende Beispiel zeigt, wie Sie eine vom System zugewiesene verwaltete Identität von einer VM ohne vom Benutzer zugewiesene verwaltete Identitäten entfernen:
 
@@ -194,7 +194,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
    **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
 
-   Wenn `apiVersion` als `2018-06-01` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `userAssignedIdentities`-Wörterbuchformat gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
+   Wenn `2018-06-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `userAssignedIdentities`-Wörterbuchformat gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
 
    ```JSON
     {
@@ -213,7 +213,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
    **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
 
-   Wenn `apiVersion` als `2017-12-01` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
+   Wenn `2017-12-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
 
    ```JSON
    {

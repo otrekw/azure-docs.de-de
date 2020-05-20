@@ -32,7 +32,7 @@ Nachdem Sie das Skript ausgeführt haben, notieren Sie die **ID** und das **Kenn
 
 Damit Sie einem vorhandenen Dienstprinzipal den Zugriff auf die Registrierung gewähren können, müssen Sie dem Dienstprinzipal eine neue Rolle zuweisen. Wie bei der Erstellung eines neuen Dienstprinzipals können Sie unter anderem Pull-, Push- und Pull- sowie Besitzerzugriff gewähren.
 
-Das folgende Skript verwendet den Befehl [az role assignment create][az-role-assignment-create], um einem in der Variablen *festgelegten Dienstprinzipal Berechtigungen vom Typ*Pull`SERVICE_PRINCIPAL_ID` zuzuweisen. Passen Sie den Wert `--role` an, wenn Sie eine andere Zugriffsebene zuweisen möchten.
+Das folgende Skript verwendet den Befehl [az role assignment create][az-role-assignment-create], um einem in der Variablen `SERVICE_PRINCIPAL_ID` festgelegten Dienstprinzipal Berechtigungen vom Typ *Pull* zuzuweisen. Passen Sie den Wert `--role` an, wenn Sie eine andere Zugriffsebene zuweisen möchten.
 
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->

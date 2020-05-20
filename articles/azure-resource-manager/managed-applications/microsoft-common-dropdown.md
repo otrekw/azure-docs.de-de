@@ -57,7 +57,7 @@ Ein Auswahlsteuerelement mit einer Dropdownliste.
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
 - Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert ist **NULL**.
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
-- Fügen Sie zum Emulieren eines nicht benötigten Werts `""` ein Element mit einer Bezeichnung und dem Wert `constraints.allowedValues` (leere Zeichenfolge) hinzu.
+- Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

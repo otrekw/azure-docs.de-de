@@ -42,7 +42,7 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise 
 ## <a name="manually-prepare-a-debian-vhd"></a>Manuelles Vorbereiten einer Debian-VHD
 1. Wählen Sie im Hyper-V-Manager den virtuellen Computer aus.
 2. Klicken Sie auf **Verbinden** , um ein Konsolenfenster für den virtuellen Computer zu öffnen.
-3. Wenn Sie das Betriebssystem mithilfe einer ISO-Datei installiert haben, kommentieren Sie in `deb cdrom` alle Zeilen aus, die sich auf „`/etc/apt/source.list`“ beziehen.
+3. Wenn Sie das Betriebssystem mithilfe einer ISO-Datei installiert haben, kommentieren Sie in `/etc/apt/source.list` alle Zeilen aus, die sich auf „`deb cdrom`“ beziehen.
 
 4. Bearbeiten Sie die Datei `/etc/default/grub`, und ändern Sie den **GRUB_CMDLINE_LINUX**-Parameter wie folgt, um zusätzliche Kernelparameter für Azure einzubinden.
    

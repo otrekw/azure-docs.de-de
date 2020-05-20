@@ -44,7 +44,7 @@ Um ein Weibo-Konto als Identitätsanbieter in Azure Active Directory B2C (Azure 
 1. Wählen Sie **保存以上信息** (Speichern) aus.
 1. Wählen Sie **高级信息** (Weitere Informationen) aus.
 1. Wählen Sie neben dem Feld **授权设置** (Umleitungs-URL) für OAuth2.0 die Option **编辑** (Bearbeiten) aus.
-1. Geben Sie für `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`授权设置 **(Umleitungs-URL) für OAuth2.0 die Zeichenfolge** ein. Wenn der Name Ihres Mandanten beispielsweise „contoso“ lautet, legen Sie die URL auf `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` fest.
+1. Geben Sie für **授权设置** (Umleitungs-URL) für OAuth2.0 die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Wenn der Name Ihres Mandanten beispielsweise „contoso“ lautet, legen Sie die URL auf `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` fest.
 1. Wählen Sie **提交** (Senden) aus.
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurieren eines Weibo-Kontos als Identitätsanbieter

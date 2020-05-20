@@ -53,7 +53,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Erstellen Sie mit der `numpy`-Funktion von `random.choice` wie folgt Stichproben:
+3. Erstellen Sie mit der `random.choice`-Funktion von `numpy` wie folgt Stichproben:
    
         # A 1 percent sample
         sample_ratio = 0.01 

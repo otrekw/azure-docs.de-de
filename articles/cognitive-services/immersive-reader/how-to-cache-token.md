@@ -22,7 +22,7 @@ In diesem Artikel wird veranschaulicht, wie das Authentifizierungstoken zwischen
 
 ## <a name="using-aspnet"></a>Verwenden von ASP.NET
 
-Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim `AuthenticationResult`Erstellen der Plastischer Reader-Ressource[ erhalten haben, ein ](./how-to-create-immersive-reader.md) abzurufen.
+Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim [Erstellen der Plastischer Reader-Ressource](./how-to-create-immersive-reader.md) erhalten haben, ein `AuthenticationResult` abzurufen.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()

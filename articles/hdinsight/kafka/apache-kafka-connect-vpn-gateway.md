@@ -254,7 +254,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
     ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld `kafka-env`Filter__die Zeichenfolge__ ein.
+4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
 
     ![Kafka-Konfiguration für kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,7 +268,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld `listeners`Filter__die Zeichenfolge__ ein.
+6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld __Filter__ die Zeichenfolge `listeners` ein.
 
 7. Um Kafka zum Lauschen an allen Netzwerkschnittstellen zu konfigurieren, ändern Sie den Wert im Feld __Listener__ in `PLAINTEXT://0.0.0.0:9092`.
 

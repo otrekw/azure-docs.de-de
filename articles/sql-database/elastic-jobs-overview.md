@@ -33,7 +33,7 @@ Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, fi
 
 ## <a name="create-run-and-manage-jobs"></a>Erstellen, Ausführen und Verwalten von Aufträgen
 
-1. Erstellen Sie mithilfe von *PowerShell* oder [T-SQL](elastic-jobs-powershell.md) Anmeldeinformationen für die Auftragsausführung in der [Auftragsdatenbank](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
+1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank*.
 2. Definieren Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) die Zielgruppe (also die Datenbanken, für die der Auftrag ausgeführt werden soll).
 3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](sql-database-manage-logins.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell.md).
 4. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) einen Auftrag.
@@ -77,7 +77,7 @@ Die Vorschauversion ist aktuell auf 100 gleichzeitige Aufträge beschränkt.
 
 Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden kann, kann beschränkt werden, um sicherzustellen, dass es beim Ausführen von Aufträgen für Datenbanken in einem elastischen SQL-Pool nicht zu einer Überlastung der Ressourcen kommt.
 
-Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `sp_add_jobstep` der gespeicherten Prozedur `@max_parallelism` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
+Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `@max_parallelism` der gespeicherten Prozedur `sp_add_jobstep` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
 
 ## <a name="best-practices-for-creating-jobs"></a>Best Practices für die Auftragserstellung
 

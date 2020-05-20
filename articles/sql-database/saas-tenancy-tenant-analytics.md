@@ -92,7 +92,7 @@ In den folgenden Schritten stellen Sie einen Analysespeicher namens **tenantanal
     - Wenn Sie SQL-Datenbank mit Columnstore verwenden, legen Sie **$DemoScenario** = **3** fest.  
 3. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript*Deploy-TenantAnalytics\<XX>.ps1* aufruft), um den Mandantenanalysespeicher zu erstellen. 
 
-Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und mithilfe des Anmeldenamens **developer&lt; und dem Kennwort &gt;P**ssword1 **eine Verbindung mit den Servern &lt;tenants1-dpt-&gt;Benutzer***und*catalog-dpt-*Benutzer\@* her. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
+Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und mithilfe des Anmeldenamens *developer* und dem Kennwort *P\@ssword1* eine Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;** her. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 

@@ -76,7 +76,7 @@ Aktivieren Sie das Kontrollkästchen `Include backup restore service` unter `+ S
 ### <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
 Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihrem Cluster aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die [Beispielvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) verwenden oder eine Resource Manager-Vorlage erstellen. Aktivieren Sie den _Dienst für Sicherungen und Wiederherstellungen_ mit den folgenden Schritten:
 
-1. Überprüfen Sie, ob `apiversion` für die **-Ressource auf `2018-02-01`** `Microsoft.ServiceFabric/clusters` festgelegt ist. Wenn nicht, aktualisieren Sie sie wie im folgenden Codeausschnitt:
+1. Überprüfen Sie, ob `apiversion` für die `Microsoft.ServiceFabric/clusters`-Ressource auf **`2018-02-01`** festgelegt ist. Wenn nicht, aktualisieren Sie sie wie im folgenden Codeausschnitt:
 
     ```json
     {

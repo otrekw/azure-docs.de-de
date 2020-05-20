@@ -51,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mithilfe von *ein virtuelles Netzwerk namens*myVNet*und ein Subnetz namens*myAGSubnet`az network vnet create`. Fügen Sie dann mithilfe von *ein Subnetz namens*myBackendSubnet`az network vnet subnet create` hinzu, das von den Back-End-Servern benötigt wird. Erstellen Sie mithilfe von *die öffentliche IP-Adresse*myAGPublicIPAddress`az network public-ip create`.
+Erstellen Sie mithilfe von `az network vnet create` ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Fügen Sie dann mithilfe von `az network vnet subnet create` ein Subnetz namens *myBackendSubnet* hinzu, das von den Back-End-Servern benötigt wird. Erstellen Sie mithilfe von `az network public-ip create` die öffentliche IP-Adresse *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -108,7 +108,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-a-port"></a>Hinzufügen von Back-End-Pools für Bilder und Videos sowie eines Ports
 
-Fügen Sie Ihrem Anwendungsgateway mithilfe von *Back-End-Pools namens*imagesBackendPool*und*videoBackendPool`az network application-gateway address-pool create` hinzu. Verwenden Sie `az network application-gateway frontend-port create`, um den Front-End-Port für die Pools hinzuzufügen.
+Fügen Sie Ihrem Anwendungsgateway mithilfe von `az network application-gateway address-pool create` Back-End-Pools namens *imagesBackendPool* und *videoBackendPool* hinzu. Verwenden Sie `az network application-gateway frontend-port create`, um den Front-End-Port für die Pools hinzuzufügen.
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Fügen Sie mithilfe von *den Back-End-Listener namens*backendListener`az network application-gateway http-listener create` hinzu. Dieser ist zum Weiterleiten von Datenverkehr erforderlich.
+Fügen Sie mithilfe von `az network application-gateway http-listener create` den Back-End-Listener namens *backendListener* hinzu. Dieser ist zum Weiterleiten von Datenverkehr erforderlich.
 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-a-url-path-map"></a>Hinzufügen einer URL-Pfadzuordnung
 
-URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Erstellen Sie mithilfe von *und* URL-Pfadzuordnungen namens *imagePathRule* und `az network application-gateway url-path-map create`videoPathRule`az network application-gateway url-path-map rule create`.
+URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Erstellen Sie mithilfe von `az network application-gateway url-path-map create` und `az network application-gateway url-path-map rule create` URL-Pfadzuordnungen namens *imagePathRule* und *videoPathRule*.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -169,7 +169,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-a-routing-rule"></a>Hinzufügen einer Routingregel
 
-Die Routingregel ordnet die URL-Zuordnungen dem von Ihnen erstellten Listener zu. Fügen Sie mithilfe von *eine Regel namens*rule2`az network application-gateway rule create` hinzu.
+Die Routingregel ordnet die URL-Zuordnungen dem von Ihnen erstellten Listener zu. Fügen Sie mithilfe von `az network application-gateway rule create` eine Regel namens *rule2* hinzu.
 
 ```azurecli-interactive
 az network application-gateway rule create \

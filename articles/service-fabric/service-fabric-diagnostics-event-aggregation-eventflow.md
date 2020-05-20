@@ -34,7 +34,7 @@ Eine Liste verschiedener Pakete mit der Bezeichnung „Inputs“ und „Outputs�
 Nachdem alle Pakete installiert wurde, ist der nächste Schritt das Konfigurieren und Aktivieren von EventFlow im Dienst.
 
 ## <a name="configure-and-enable-log-collection"></a>Konfigurieren und Aktivieren der Protokollsammlung
-Die EventFlow-Pipeline, die für das Senden der Protokolle zuständig ist, wird aus einer Spezifikation erstellt, die in einer Konfigurationsdatei gespeichert wird. Mit dem `Microsoft.Diagnostics.EventFlow.ServiceFabric`-Paket wird eine anfängliche EventFlow-Konfigurationsdatei mit dem Namen `PackageRoot\Config` im Projektmappenordner `eventFlowConfig.json` installiert. Diese Konfigurationsdatei muss so geändert werden, dass Daten aus der `EventSource`-Standarddienstklasse und allen anderen Eingaben, die Sie konfigurieren möchten, erfasst und Daten an den entsprechenden Ort gesendet werden.
+Die EventFlow-Pipeline, die für das Senden der Protokolle zuständig ist, wird aus einer Spezifikation erstellt, die in einer Konfigurationsdatei gespeichert wird. Mit dem `Microsoft.Diagnostics.EventFlow.ServiceFabric`-Paket wird eine anfängliche EventFlow-Konfigurationsdatei mit dem Namen `eventFlowConfig.json` im Projektmappenordner `PackageRoot\Config` installiert. Diese Konfigurationsdatei muss so geändert werden, dass Daten aus der `EventSource`-Standarddienstklasse und allen anderen Eingaben, die Sie konfigurieren möchten, erfasst und Daten an den entsprechenden Ort gesendet werden.
 
 >[!NOTE]
 >Wenn die Projektdatei das Format von VisualStudio 2017 hat, wird die Datei `eventFlowConfig.json` nicht automatisch hinzugefügt. Erstellen Sie daher die Datei im Ordner `Config`, und legen Sie die Buildaktion auf `Copy if newer` fest. 

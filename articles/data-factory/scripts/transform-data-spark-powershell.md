@@ -63,7 +63,7 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline, die Daten in der Cloud 
 
 ### <a name="upload-the-input-file"></a>Hochladen der Eingabedatei
 1. Erstellen Sie eine Datei mit dem Namen **minecraftstory.txt** und etwas Text darin. Das Spark-Programm zählt die Wörter in diesem Text. 
-2. Erstellen Sie im Blobcontainer im Ordner `inputfiles` einen Unterordner mit dem Namen `spark`. 
+2. Erstellen Sie im Blobcontainer im Ordner `spark` einen Unterordner mit dem Namen `inputfiles`. 
 3. Laden Sie `minecraftstory.txt` in den Unterordner `inputfiles` hoch. 
 
 ## <a name="sample-script"></a>Beispielskript

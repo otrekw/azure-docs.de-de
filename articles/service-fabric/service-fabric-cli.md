@@ -99,7 +99,7 @@ Es kann vorkommen, dass ein Fehler aufgrund eines nicht gefundenen Befehls auftr
 
 `sfctl: command not found`
 
-Vergewissern Sie sich in diesem Fall, dass über `~/.local/bin` auf `$PATH` zugegriffen werden kann:
+Vergewissern Sie sich in diesem Fall, dass über `$PATH` auf `~/.local/bin` zugegriffen werden kann:
 
 ```bash
 export PATH=$PATH:~/.local/bin

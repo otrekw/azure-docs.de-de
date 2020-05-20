@@ -124,7 +124,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
     Dieser Code legt das Geräte-Token für die Anfrage fest.
 
    > [!NOTE]
-   > Die Methode sollte nun keinen weiteren Code mehr enthalten. Falls Sie aus dem Tutorial `registerNativeWithDeviceToken`Erste Schritte mit Notification Hubs[ bereits über einen Aufruf der Methode ](notification-hubs-ios-apple-push-notification-apns-get-started.md) verfügen, müssen Sie diesen Aufruf auskommentieren oder entfernen.
+   > Die Methode sollte nun keinen weiteren Code mehr enthalten. Falls Sie aus dem Tutorial [Erste Schritte mit Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) bereits über einen Aufruf der Methode `registerNativeWithDeviceToken` verfügen, müssen Sie diesen Aufruf auskommentieren oder entfernen.
 
 8. Fügen Sie in der Datei `PushToUserAppDelegate.m` die folgende Handlermethode hinzu:
 
@@ -151,7 +151,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
     }
     ```
 
-10. Initialisieren Sie in der Datei `viewDidLoad` die Bezeichnung `PushToUserViewController.m` in der Methode `installationId` wie folgt:
+10. Initialisieren Sie in der Datei `PushToUserViewController.m` die Bezeichnung `installationId` in der Methode `viewDidLoad` wie folgt:
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];

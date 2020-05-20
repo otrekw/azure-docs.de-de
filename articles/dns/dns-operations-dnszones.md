@@ -140,7 +140,7 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>Angeben der Zone mithilfe eines $zone-Objekts
 
-Sie können festlegen, dass die Zone mithilfe eines von `$zone` zurückgegebenen `Get-AzureRmDnsZone`-Objekts gelöscht werden soll.
+Sie können festlegen, dass die Zone mithilfe eines von `Get-AzureRmDnsZone` zurückgegebenen `$zone`-Objekts gelöscht werden soll.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -162,7 +162,7 @@ Die Cmdlets `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` und `Remove-AzureRmDnsZon
 
 Sowohl `New-AzureRmDnsZone` als auch `Set-AzureRmDnsZone` fordern eine Bestätigung an, wenn die PowerShell-Einstellungsvariable `$ConfirmPreference` einen Wert von `Medium` oder weniger hat. Aufgrund der potenziell wesentlichen Auswirkungen der Löschung einer DNS-Zone forder das `Remove-AzureRmDnsZone`-Cmdlet zur Bestätigung auf, wenn die PowerShell-Variable `$ConfirmPreference` einen anderen Wert als `None` aufweist.
 
-Da `$ConfirmPreference` der Standardwert für `High` ist, fordert nur `Remove-AzureRmDnsZone` standardmäßig zur Bestätigung auf.
+Da `High` der Standardwert für `$ConfirmPreference` ist, fordert nur `Remove-AzureRmDnsZone` standardmäßig zur Bestätigung auf.
 
 Die aktuelle Einstellung für `$ConfirmPreference` kann mithilfe des `-Confirm`-Parameters überschrieben werden. Bei Angabe von `-Confirm` oder `-Confirm:$True` fordert das Cmdlet vor der Ausführung eine Bestätigung an. Bei Verwendung von `-Confirm:$False` fordert das Cmdlet keine Bestätigung an.
 

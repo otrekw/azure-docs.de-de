@@ -82,7 +82,7 @@ Der `context`-Parameter hat folgende Eigenschaften:
 - `deviceId`, z.B. `Simulated.Chiller.123`
 - `deviceModel`, z.B. `Chiller`
 
-Der `state`-Parameter enthält den Status des Geräts, wie er vom Gerätesimulationsdienst verwaltet wird. Dieser Wert ist das vom vorherigen Aufruf an `state` zurückgegebene `main`-Objekt.
+Der `state`-Parameter enthält den Status des Geräts, wie er vom Gerätesimulationsdienst verwaltet wird. Dieser Wert ist das vom vorherigen Aufruf an `main` zurückgegebene `state`-Objekt.
 
 Das folgende Beispiel zeigt eine typische Implementierung der `main`-Methode zum Behandeln des vom Simulationsdienst verwalteten Gerätestatus:
 

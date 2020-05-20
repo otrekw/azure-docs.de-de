@@ -107,7 +107,7 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 -   **Richtlinienbereiche:** alle Bereiche  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
- Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Authorization` im Header `Bearer` fest.
+ Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   

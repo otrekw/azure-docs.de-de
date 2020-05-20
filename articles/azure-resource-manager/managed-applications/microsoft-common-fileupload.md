@@ -85,7 +85,7 @@ Beim Testen eines CreateUiDefinition-Elements schneiden manche Browser (etwa Goo
 - Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
 - Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) für den Zugriff auf die Datei während der Bereitstellung.
 - Der Wert für `options.openMode` bestimmt, wie die Datei gelesen wird. Wenn eine Nur-Text-Datei erwartet wird, geben Sie **text** an. Andernfalls geben Sie **binary** an. Der Standardwert lautet **text**.
-- Wenn `options.uploadMode`file**für** und `options.openMode`binary**für** festgelegt ist, ist die Ausgabe Base64-codiert.
+- Wenn **file** für `options.uploadMode` und **binary** für `options.openMode` festgelegt ist, ist die Ausgabe Base64-codiert.
 - `options.encoding` gibt die beim Lesen der Datei zu verwendende Codierung an. Der Standardwert ist **UTF-8**. Er wird nur verwenden, wenn für `options.openMode` der Wert **text** angegeben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte

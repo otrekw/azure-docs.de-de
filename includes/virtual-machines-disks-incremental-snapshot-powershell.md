@@ -34,7 +34,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Melden Sie sich nach der Installation bei der PowerShell-Sitzung mit `az login` an.
 
-Um eine inkrementelle Momentaufnahme mit Azure PowerShell zu erstellen, legen Sie die Konfiguration mit [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) mit dem Parameter `-Incremental` fest und übergeben diese dann als Variable über den Parameter [ an ](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0)New-AzSnapshot`-Snapshot`.
+Um eine inkrementelle Momentaufnahme mit Azure PowerShell zu erstellen, legen Sie die Konfiguration mit [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) mit dem Parameter `-Incremental` fest und übergeben diese dann als Variable über den Parameter `-Snapshot` an [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0).
 
 Ersetzen Sie `<yourDiskNameHere>`, `<yourResourceGroupNameHere>` und `<yourDesiredSnapShotNameHere>` durch Ihre Werte. Anschließend können Sie das folgende Skript verwenden, um eine inkrementelle Momentaufnahme zu erstellen:
 

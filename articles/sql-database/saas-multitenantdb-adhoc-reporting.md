@@ -72,7 +72,7 @@ Um dieses Muster umzusetzen, enthalten alle Mandantentabellen eine *VenueId*-Spa
 
 In dieser Übung wird die Datenbank *adhocreporting* bereitgestellt. Dies ist die Hauptdatenbank, die das Schema enthält, das zum Abfragen aller Mandantendatenbanken verwendet wird. Die Datenbank wird auf dem vorhandenen Katalogserver bereitgestellt. Dies ist der Server, der für alle verwaltungsbezogenen Datenbanken in der Beispielanwendung verwendet wird.
 
-1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* in der *PowerShell ISE*, und legen Sie folgende Werte fest:
+1. Öffnen Sie ...\\Learning Modules\\Operational Analytics*Adhoc Reporting**Demo-AdhocReporting.ps1* in der \\PowerShell ISE\\, und legen Sie folgende Werte fest:
    * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen**.
 
 2. Drücken Sie **F5**, um das Skript auszuführen und die Datenbank *adhocreporting* zu erstellen.

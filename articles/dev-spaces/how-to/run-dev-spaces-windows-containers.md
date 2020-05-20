@@ -20,7 +20,7 @@ Sie können Azure Dev Spaces für neue und vorhandene Kubernetes-Namespaces akti
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits über einen Cluster mit Linux- und Windows-Knotenpools verfügen. Wenn Sie einen Cluster mit Linux- und Windows-Knotenpools erstellen müssen, finden Sie [hier][windows-container-cli] entsprechende Anweisungen.
 
-Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl `kubectl`az aks get-credentials[ können Sie ][az-aks-get-credentials] für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
+Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

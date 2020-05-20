@@ -80,7 +80,7 @@ Wie bei herkömmlichen SQL-Transaktionen auch, können Sie mit den per Phoenix-T
 
 Informationen zur Aktivierung von Phoenix-Transaktionen finden Sie in der [Dokumentation zu Apache Phoenix-Transaktionen](https://phoenix.apache.org/transactions.html).
 
-Legen Sie die `TRANSACTIONAL`-Eigenschaft in einer `true`-Anweisung auf `CREATE` fest, um eine neue Tabelle mit aktivierten Transaktionen zu erstellen:
+Legen Sie die `TRANSACTIONAL`-Eigenschaft in einer `CREATE`-Anweisung auf `true` fest, um eine neue Tabelle mit aktivierten Transaktionen zu erstellen:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;

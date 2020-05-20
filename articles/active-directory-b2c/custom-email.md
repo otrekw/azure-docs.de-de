@@ -151,7 +151,7 @@ Wenn Sie ein SendGrid-Konto erstellt und den SendGrid-API-Schlüssel in einem Az
     </html>
     ```
 
-1. Erweitern Sie **Settings** (Einstellungen) auf der linken Seite, und geben Sie **unter**Email Subject`{{subject}}` (E-Mail-Betreff) ein.
+1. Erweitern Sie **Settings** (Einstellungen) auf der linken Seite, und geben Sie `{{subject}}` unter **Email Subject** (E-Mail-Betreff) ein.
 1. Wählen Sie **Save Template** (Vorlage speichern) aus.
 1. Wählen Sie den Zurück-Pfeil aus, um zur Seite **Transactional Templates** (Transaktionsvorlagen) zurückzukehren.
 1. Notieren Sie sich die **ID** der erstellten Vorlage zur Verwendung in einem späteren Schritt. Beispiel: `d-989077fbba9746e89f3f6411f596fb96`. Diese ID geben Sie an, wenn Sie [die Anspruchstransformation hinzufügen](#add-the-claims-transformation).

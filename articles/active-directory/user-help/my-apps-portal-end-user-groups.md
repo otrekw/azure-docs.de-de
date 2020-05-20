@@ -108,7 +108,7 @@ Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h
 
 Für Gruppen in Ihrem Besitz können Sie Mitglieder hinzufügen und entfernen.
 
-1. Wählen Sie die Gruppe aus, der Sie Mitglieder hinzufügen möchten, und klicken Sie anschließend auf der Seite *&lt;Gruppenname&gt;* auf **+** .
+1. Wählen Sie die Gruppe aus, der Sie Mitglieder hinzufügen möchten, und klicken Sie anschließend auf der Seite *&lt;Gruppenname&gt;* auf **+**.
 
     ![Hinzufügen eines Gruppenmitglieds mit hervorgehobenem Pluszeichen](media/my-apps-portal/my-apps-portal-add-member-link.png)
 

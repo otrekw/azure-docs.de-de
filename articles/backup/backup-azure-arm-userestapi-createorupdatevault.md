@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Erstellen einer Anforderung
 
-Zum Erstellen der *PUT*-Anforderung ist der `{subscription-id}`-Parameter erforderlich. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): Sie definieren zusammen mit dem `{resourceGroupName}`-Parameter einen `{vaultName}` und `api-version` für Ihre Ressourcen. In diesem Artikel wird `api-version=2016-06-01` verwendet.
+Zum Erstellen der *PUT*-Anforderung ist der `{subscription-id}`-Parameter erforderlich. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): Sie definieren zusammen mit dem `api-version`-Parameter einen `{resourceGroupName}` und `{vaultName}` für Ihre Ressourcen. In diesem Artikel wird `api-version=2016-06-01` verwendet.
 
 Die folgenden Header sind erforderlich:
 

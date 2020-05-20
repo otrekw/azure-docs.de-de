@@ -33,7 +33,7 @@ Diese Ausnahme tritt auf, wenn der Serialisierungsprozess versucht, mehr Puffers
 
 ## <a name="resolution"></a>Lösung
 
-Erhöhen Sie den `Kryoserializer`-Pufferwert. Fügen Sie in „spark2 config“ unter `spark.kryoserializer.buffer.max` einen Schlüssel namens `2048` hinzu, und legen Sie ihn auf `Custom spark2-thrift-sparkconf` fest.
+Erhöhen Sie den `Kryoserializer`-Pufferwert. Fügen Sie in „spark2 config“ unter `Custom spark2-thrift-sparkconf` einen Schlüssel namens `spark.kryoserializer.buffer.max` hinzu, und legen Sie ihn auf `2048` fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

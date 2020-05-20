@@ -66,7 +66,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 ## <a name="html-form"></a>HTML-Formular
 
-`index.html` enthält ein Formular, mit dem Benutzer Suchvorgänge ausführen und Suchoptionen auswählen können. Das Attribut `onsubmit` wird ausgelöst, wenn das Formular gesendet wird, wobei die in `bingWebSearch()` definierte `scripts.js`-Methode aufgerufen wird. Es verwendet drei Argumente:
+`index.html` enthält ein Formular, mit dem Benutzer Suchvorgänge ausführen und Suchoptionen auswählen können. Das Attribut `onsubmit` wird ausgelöst, wenn das Formular gesendet wird, wobei die in `scripts.js` definierte `bingWebSearch()`-Methode aufgerufen wird. Es verwendet drei Argumente:
 
 * Suchabfrage
 * Ausgewählte Optionen
@@ -129,7 +129,7 @@ function bingSearchOptions(form) {
 
 `SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen mit zwei Zuständen: `strict` oder `moderate`.
 
-Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `answerCount` ist `promote` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
+Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `promote` ist `answerCount` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
 > [!NOTE]
 > Das Höherstufen eines Ergebnistyps *garantiert nicht*, dass er in den Suchergebnissen enthalten ist. Vielmehr erhöht sich dadurch die Relevanz dieser Ergebnistypen ausgehend von den üblichen Relevanzwerten. Wenn Sie Suchergebnisse auf bestimmte Ergebnisse einschränken möchten, können Sie dazu den `responseFilter`-Abfrageparameter verwenden oder einen anderen Endpunkt wie die Bing-Bildersuche-API oder die Bing-News-Suche-API verwenden.
 

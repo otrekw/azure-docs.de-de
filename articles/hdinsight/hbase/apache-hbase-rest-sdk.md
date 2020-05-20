@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-In diesem Fall gibt der Code nur die erste übereinstimmende Zeile zurück, da bei einem eindeutigen Schlüssel nur eine Zeile vorhanden sein sollte. Der zurückgegebene Wert wird aus dem `string`-Array-Format in das `byte[]`-Format umgewandelt. Sie können den Wert auch in andere Typen konvertieren, z. B. eine ganze Zahl (Integer) für das Veröffentlichungsdatum des Films:
+In diesem Fall gibt der Code nur die erste übereinstimmende Zeile zurück, da bei einem eindeutigen Schlüssel nur eine Zeile vorhanden sein sollte. Der zurückgegebene Wert wird aus dem `byte[]`-Array-Format in das `string`-Format umgewandelt. Sie können den Wert auch in andere Typen konvertieren, z. B. eine ganze Zahl (Integer) für das Veröffentlichungsdatum des Films:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

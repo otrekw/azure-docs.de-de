@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit *az network vnet subnet create* das Subnetz namens [myBackendSubnet](/cli/azure/network/vnet/subnet) hinzufügen, das vom Back-End-Serverpool benötigt wird. Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip#az-network-public-ip-create).
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das vom Back-End-Serverpool benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Hinzufügen der Umleitungskonfiguration
 
-Fügen Sie mit *az network application-gateway redirect-config create\. die Umleitungskonfiguration hinzu, die Datenverkehr von* www*contoso.org\. an den Listener für* www[contoso.com](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) im Anwendungsgateway sendet.
+Fügen Sie mit [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) die Umleitungskonfiguration hinzu, die Datenverkehr von *www\.contoso.org* an den Listener für *www\.contoso.com* im Anwendungsgateway sendet.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

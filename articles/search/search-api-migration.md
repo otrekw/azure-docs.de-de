@@ -66,7 +66,7 @@ Wenn Sie das Upgrade von einer früheren allgemein verfügbaren Version, 2017-11
 
 * Der Code erzeugt Fehler, wenn nicht erkannte Eigenschaften in einer API-Antwort zurückgegeben werden. Standardmäßig sollte die Anwendung Eigenschaften ignorieren, die sie nicht versteht.
 
-* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der `@search.nextPageParameters`Search-API-Referenz[ nach ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) suchen).
+* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der [Search-API-Referenz](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) nach `@search.nextPageParameters` suchen).
 
 Wenn diese Situationen für Sie zutreffen, müssen Sie den Code möglicherweise entsprechend ändern. Darüber hinaus sollten keine Änderungen nötig sein, es sei denn, Sie möchten die [neuen Funktionen](#WhatsNew) der Version 2019-05-06 verwenden.
 

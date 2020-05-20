@@ -78,7 +78,7 @@ Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für `AcrImageSigner`Rolle**die Option** aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
+Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
 
 In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „Dienstprinzipal“, und einem Benutzer mit dem Namen „Azure-Benutzer“.
 

@@ -171,7 +171,7 @@ Die folgende Abbildung enthält Kaufempfehlungen aus dem Bericht.
 
 In diesem Beispiel verfügt das Cloudyn\_A-Konto über Kaufempfehlungen für 32 reservierte Instanzen. Wenn Sie allen Kaufempfehlungen nachkommen, können Sie pro Jahr bis zu 137.770 US-Dollar sparen. Beachten Sie, dass in den Kaufempfehlungen von Cloudyn vorausgesetzt wird, dass die Nutzung für ausgeführte Workloads konsistent bleibt.
 
-Klicken Sie unter **Justifications** (Begründungen) jeweils auf das Pluszeichen ( **+** ), um die Details zu den einzelnen Kaufempfehlungen anzuzeigen. Hier ist ein Beispiel für die erste Empfehlung in der Liste angegeben.
+Klicken Sie unter **Justifications** (Begründungen) jeweils auf das Pluszeichen (**+**), um die Details zu den einzelnen Kaufempfehlungen anzuzeigen. Hier ist ein Beispiel für die erste Empfehlung in der Liste angegeben.
 
 ![Beispiel für Kaufbegründungsdetails](./media/tutorial-optimize-reserved-instances/aws02.png)
 

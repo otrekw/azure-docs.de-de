@@ -44,7 +44,7 @@ Die Teammitglieder arbeiten auf eine etwas andere Art und Weise an dem Python-No
 
 ### <a name="python-notebook-source-code"></a>Python-Notebookquellcode
 
-Die Data Engineers arbeiten mit dem Python-Notebookquellcode entweder lokal in einer IDE (z. B. [Visual Studio Code](https://code.visualstudio.com)) oder direkt im Databricks-Arbeitsbereich. Letzteres bietet die Möglichkeit, den Code in der Entwicklungsumgebung zu debuggen. In jedem Fall wird der Code gemäß einer Branchingrichtlinie in das Repository gemergt. Es wird dringend empfohlen, den Code nicht im `.py`-Format von Jupyter-Notebooks, sondern in `.ipynb`-Dateien zu speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
+Die Data Engineers arbeiten mit dem Python-Notebookquellcode entweder lokal in einer IDE (z. B. [Visual Studio Code](https://code.visualstudio.com)) oder direkt im Databricks-Arbeitsbereich. Letzteres bietet die Möglichkeit, den Code in der Entwicklungsumgebung zu debuggen. In jedem Fall wird der Code gemäß einer Branchingrichtlinie in das Repository gemergt. Es wird dringend empfohlen, den Code nicht im `.ipynb`-Format von Jupyter-Notebooks, sondern in `.py`-Dateien zu speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory-Quellcode
 

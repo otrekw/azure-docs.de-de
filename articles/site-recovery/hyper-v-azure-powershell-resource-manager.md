@@ -45,7 +45,7 @@ Darüber hinaus gelten für das in diesem Artikel beschriebene Beispiel die folg
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Schritt 1: Anmelden bei Ihrem Azure-Konto
 
 1. Öffnen Sie eine PowerShell-Konsole, und führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Konto anzumelden. Das Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert: `Connect-AzAccount`.
-   - Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter `Connect-AzAccount`Credential**im Cmdlet** angeben.
+   - Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter **Credential** im Cmdlet `Connect-AzAccount` angeben.
    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primären Mandantendomänennamen als Mandanten an. Beispiel: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 

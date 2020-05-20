@@ -33,13 +33,13 @@ So erstellen Sie einen Mandanten:
 
     ![Screenshot des Portals mit Mandantennamen oben rechts][tenantcallout]  
 
-8. Notieren Sie sich die *Mandanten-ID*, damit Sie später angeben können, wo Ihr Azure Red Hat OpenShift-Cluster erstellt werden soll. Im Portal sollte jetzt das Azure Active Directory-Übersichtsblatt für Ihren neuen Mandanten angezeigt werden. Klicken Sie auf **Eigenschaften**, und kopieren Sie den Wert der **Verzeichnis-ID**. Im Tutorial `TENANT`Erstellen eines Azure Red Hat OpenShift-Clusters[ bezeichnen wir diesen Wert als ](tutorial-create-cluster.md).
+8. Notieren Sie sich die *Mandanten-ID*, damit Sie später angeben können, wo Ihr Azure Red Hat OpenShift-Cluster erstellt werden soll. Im Portal sollte jetzt das Azure Active Directory-Übersichtsblatt für Ihren neuen Mandanten angezeigt werden. Klicken Sie auf **Eigenschaften**, und kopieren Sie den Wert der **Verzeichnis-ID**. Im Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) bezeichnen wir diesen Wert als `TENANT`.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>Ressourcen
 
-Weitere Informationen zu [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/) finden Sie in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+Weitere Informationen zu [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) finden Sie in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

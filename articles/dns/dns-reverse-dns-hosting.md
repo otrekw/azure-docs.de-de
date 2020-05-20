@@ -40,7 +40,7 @@ In diesem Artikel werden die Schritte zum Erstellen Ihrer ersten Reverse-Lookup-
 Der Name einer IPv4-Reverse-Lookupzone basiert auf dem IP-Adressbereich, den sie darstellt. Er sollte das folgende Format aufweisen: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Beispiele finden Sie in der [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Beim Erstellen von klassenlosen Reverse-DNS-Lookupzonen in Azure DNS muss im Zonennamen anstelle eines Schrägstrichs (`-`) ein Bindestrich (`/`) verwendet werden.
+> Beim Erstellen von klassenlosen Reverse-DNS-Lookupzonen in Azure DNS muss im Zonennamen anstelle eines Schrägstrichs (`/`) ein Bindestrich (`-`) verwendet werden.
 >
 > Beispiel: Für den IP-Adressbereich 192.0.2.128/26 müssen Sie `128-26.2.0.192.in-addr.arpa` als Zonennamen verwenden, nicht `128/26.2.0.192.in-addr.arpa`.
 >

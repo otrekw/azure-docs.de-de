@@ -106,7 +106,7 @@ Hier ist die Hauptklasse, die den Client implementiert, dessen Konstruktor die V
 
 Informationen zum [Erstellen eines SAS-Sicherheitstokens](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token) finden Sie in der Azure-Dokumentation.
 
-Fügen Sie der `generateSasToken`-Klasse die `NotificationHub`-Methode hinzu, um das Token basierend auf dem URI der aktuellen Anforderung und den aus der Verbindungszeichenfolge extrahierten Anmeldeinformationen zu erstellen.
+Fügen Sie der `NotificationHub`-Klasse die `generateSasToken`-Methode hinzu, um das Token basierend auf dem URI der aktuellen Anforderung und den aus der Verbindungszeichenfolge extrahierten Anmeldeinformationen zu erstellen.
 
     ```php
     private function generateSasToken($uri) {

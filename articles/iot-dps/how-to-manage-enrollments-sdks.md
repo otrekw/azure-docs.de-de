@@ -39,8 +39,8 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
     Anhand des folgenden Workflows können Sie eine Registrierungsgruppe mit den SDKs erstellen:
 
     1. Bei einer Registrierungsgruppe wird als Nachweismechanismus das X.509-Stammzertifikat verwendet.  Rufen Sie die Dienst-SDK-API ```X509Attestation.createFromRootCertificate``` mit dem Stammzertifikat auf, um einen Nachweis für die Registrierung zu erstellen.  Das X.509-Stammzertifikat wird entweder als PEM-Datei oder Zeichenfolge bereitgestellt.
-    1. Erstellen Sie mit dem erstellten ```EnrollmentGroup```-Bezeichner und einem eindeutigen ```attestation```-Bezeichner eine neue ```enrollmentGroupId```-Variable.  Optional können Sie Parameter wie ```Device ID```, ```IoTHubHostName``` und ```ProvisioningStatus``` festlegen.
-    2. Rufen Sie mit ```createOrUpdateEnrollmentGroup``` die Dienst-SDK-API ```EnrollmentGroup``` in Ihrer Back-End-Anwendung auf, um eine Registrierungsgruppe zu erstellen.
+    1. Erstellen Sie mit dem erstellten ```attestation```-Bezeichner und einem eindeutigen ```enrollmentGroupId```-Bezeichner eine neue ```EnrollmentGroup```-Variable.  Optional können Sie Parameter wie ```Device ID```, ```IoTHubHostName``` und ```ProvisioningStatus``` festlegen.
+    2. Rufen Sie mit ```EnrollmentGroup``` die Dienst-SDK-API ```createOrUpdateEnrollmentGroup``` in Ihrer Back-End-Anwendung auf, um eine Registrierungsgruppe zu erstellen.
 
 * Eine **individuelle Registrierung** ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden entweder X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Wir empfehlen individuelle Registrierungen für Geräte, die besondere Erstkonfigurationen erfordern oder die nur SAS-Token über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
 
@@ -49,8 +49,8 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
     1. Wählen Sie Ihren ```attestation```-Mechanismus aus, d.h. TPM oder X.509.
         1. **TPM**: Mit dem Endorsement Key eines physischen Geräts oder TPM-Simulators als Eingabe können Sie die Dienst-SDK-API ```TpmAttestation``` zum Erstellen eines Nachweis für die Registrierung aufrufen. 
         2. **X.509**: Mit dem Clientzertifikat als Eingabe können Sie die Dienst-SDK-API ```X509Attestation.createFromClientCertificate``` zum Erstellen eines Nachweises für die Registrierung aufrufen.
-    2. Erstellen Sie mithilfe von ```IndividualEnrollment``` und einer eindeutigen ```attestation``` als Eingabe eine neue ```registrationId```-Variable, die sich auf Ihrem Gerät befindet oder über den TPM-Simulator generiert wurde.  Optional können Sie Parameter wie ```Device ID```, ```IoTHubHostName``` und ```ProvisioningStatus``` festlegen.
-    3. Rufen Sie mit ```createOrUpdateIndividualEnrollment``` die Dienst-SDK-API ```IndividualEnrollment``` in Ihrer Back-End-Anwendung auf, um eine individuelle Registrierung zu erstellen.
+    2. Erstellen Sie mithilfe von ```attestation``` und einer eindeutigen ```registrationId``` als Eingabe eine neue ```IndividualEnrollment```-Variable, die sich auf Ihrem Gerät befindet oder über den TPM-Simulator generiert wurde.  Optional können Sie Parameter wie ```Device ID```, ```IoTHubHostName``` und ```ProvisioningStatus``` festlegen.
+    3. Rufen Sie mit ```IndividualEnrollment``` die Dienst-SDK-API ```createOrUpdateIndividualEnrollment``` in Ihrer Back-End-Anwendung auf, um eine individuelle Registrierung zu erstellen.
 
 Wenn Sie eine Registrierung erfolgreich erstellt haben, gibt der Device Provisioning-Dienst ein Registrierungsergebnis zurück. Dieser Workflow wird in den [oben genannten](#prerequisites) Beispielen veranschaulicht.
 

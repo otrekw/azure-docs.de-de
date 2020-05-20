@@ -47,7 +47,7 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Fügen Sie der Klasse `ProcessMessagesOnConnection` die Methode `Program` hinzu:
+3. Fügen Sie der Klasse `Program` die Methode `ProcessMessagesOnConnection` hinzu:
    
     ```csharp
     // The method initiates the connection.
@@ -98,7 +98,7 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Fügen Sie der Klasse `RunAsync` die Methode `Program` hinzu:
+4. Fügen Sie der Klasse `Program` die Methode `RunAsync` hinzu:
    
     ```csharp
     private static async Task RunAsync()

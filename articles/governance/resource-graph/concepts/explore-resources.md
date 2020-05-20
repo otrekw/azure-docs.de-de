@@ -305,7 +305,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Im Beispiel `join`Auflisten virtueller Computer mit deren Netzwerkschnittstelle und der öffentlichen IP-Adresse[ wird gezeigt, wie Sie diese Schritte in einer einzelnen Abfrage mit dem Operator ](../samples/advanced.md#join-vmpip) ausführen.
+Im Beispiel [Auflisten virtueller Computer mit deren Netzwerkschnittstelle und der öffentlichen IP-Adresse](../samples/advanced.md#join-vmpip) wird gezeigt, wie Sie diese Schritte in einer einzelnen Abfrage mit dem Operator `join` ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

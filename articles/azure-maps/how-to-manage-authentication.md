@@ -48,7 +48,7 @@ Sie können Ihre Authentifizierungsdetails im Azure-Portal anzeigen. Wählen Sie
 
 1. Führen Sie je nach verwendeter Authentifizierungsmethode einen der folgenden Schritte aus. 
 
-    * Wenn in Ihrer Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK verwendet wird, aktivieren Sie `oauth2AllowImplicitFlow`. Um diese Einstellung zu aktivieren, legen Sie **im Abschnitt**Manifest`oauth2AllowImplicitFlow` der App-Registrierung auf TRUE fest. 
+    * Wenn in Ihrer Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK verwendet wird, aktivieren Sie `oauth2AllowImplicitFlow`. Um diese Einstellung zu aktivieren, legen Sie `oauth2AllowImplicitFlow` im Abschnitt **Manifest** der App-Registrierung auf TRUE fest. 
     
        ![App-Manifest](./media/how-to-manage-authentication/app-manifest.png)
 

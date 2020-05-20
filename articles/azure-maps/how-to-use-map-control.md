@@ -52,7 +52,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. Um die Karte so zu rendern, dass sie den gesamten Bereich der Seite ausfüllt, fügen Sie dem `<style>`-Element das folgende `<head>`-Element hinzu.
+3. Um die Karte so zu rendern, dass sie den gesamten Bereich der Seite ausfüllt, fügen Sie dem `<head>`-Element das folgende `<style>`-Element hinzu.
 
    ```HTML
     <style>
@@ -75,7 +75,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
     </body>
    ```
 
-5. Definieren Sie zum Initialisieren des Kartensteuerelements ein neues Skripttag im HTML-Text. Übergeben Sie beim Erstellen einer Instanz der `id`-Klasse die `<div>` der Karte `HTMLElement` oder ein `document.getElementById('myMap')` (z.B. `Map`) als ersten Parameter. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel oder Ihre Azure Active Directory-Anmeldeinformationen (AAD), um die Karte mithilfe der [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions) zu authentifizieren. 
+5. Definieren Sie zum Initialisieren des Kartensteuerelements ein neues Skripttag im HTML-Text. Übergeben Sie beim Erstellen einer Instanz der `Map`-Klasse die `id` der Karte `<div>` oder ein `HTMLElement` (z.B. `document.getElementById('myMap')`) als ersten Parameter. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel oder Ihre Azure Active Directory-Anmeldeinformationen (AAD), um die Karte mithilfe der [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions) zu authentifizieren. 
 
    Wenn Sie ein Konto erstellen oder Ihren Schlüssel suchen müssen, befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 

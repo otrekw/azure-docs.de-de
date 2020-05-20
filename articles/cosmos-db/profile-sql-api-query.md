@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Ressourcenintensive Abfragen
 
-Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das [-Objekt die ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse`-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
+Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das `FeedResponse`-Objekt die [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx)-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
 
 ```csharp
 string query = "SELECT * FROM c";

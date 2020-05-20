@@ -179,7 +179,7 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
 
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2017-12-01**
 
-   Wenn `apiVersion` oder früher als `2017-12-01` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Variablenabschnitt der Vorlage definierten Variable gespeichert werden.
+   Wenn `2017-12-01` oder früher als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Variablenabschnitt der Vorlage definierten Variable gespeichert werden.
 
    ```json
    {

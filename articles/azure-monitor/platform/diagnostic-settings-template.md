@@ -30,7 +30,7 @@ Ausführliche Informationen finden Sie unter [Bereitstellen von Ressourcen mit A
 
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
-Für Ressourcenprotokolle fügen Sie der Vorlage eine Ressource vom Typ `<resource namespace>/providers/diagnosticSettings` hinzu. Der Eigenschaftenabschnitt verwendet das unter [Diagnoseeinstellungen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) beschriebene Format. Geben Sie im Abschnitt `category` ein `logs`-Element für jede der Kategorien an, die für die zu erfassende Ressource gültig sind. Fügen Sie die `metrics`-Eigenschaft hinzu, um Ressourcenmetriken an denselben Ziele zu erfassen, falls die [Ressource Metriken unterstützt](metrics-supported.md).
+Für Ressourcenprotokolle fügen Sie der Vorlage eine Ressource vom Typ `<resource namespace>/providers/diagnosticSettings` hinzu. Der Eigenschaftenabschnitt verwendet das unter [Diagnoseeinstellungen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) beschriebene Format. Geben Sie im Abschnitt `logs` ein `category`-Element für jede der Kategorien an, die für die zu erfassende Ressource gültig sind. Fügen Sie die `metrics`-Eigenschaft hinzu, um Ressourcenmetriken an denselben Ziele zu erfassen, falls die [Ressource Metriken unterstützt](metrics-supported.md).
 
 Es folgt eine Vorlage, mit der eine Ressourcenprotokollkategorie für eine bestimmte Ressource in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst wird.
 
