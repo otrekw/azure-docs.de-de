@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisat
 Azure-Verwaltungsgruppen ermöglichen Ihnen das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für Gruppen von Abonnements sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Jeder Azure AD-Mandant erhält eine einzelne Verwaltungsgruppe der obersten Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Gruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. 
 
 Die Stammverwaltungsgruppe wird automatisch erstellt, wenn Sie die folgenden Aktionen durchführen: 
-1. Aktivieren Sie die Nutzung von Azure-Verwaltungsgruppen, indem Sie im **Azure-Portal** zu [Verwaltungsgruppen](https://portal.azure.com) navigieren.
+1. Aktivieren Sie die Nutzung von Azure-Verwaltungsgruppen, indem Sie im [Azure-Portal](https://portal.azure.com) zu **Verwaltungsgruppen** navigieren.
 2. Erstellen Sie eine Verwaltungsgruppe über einen API-Aufruf.
 3. Erstellen Sie eine Verwaltungsgruppe mit PowerShell.
 

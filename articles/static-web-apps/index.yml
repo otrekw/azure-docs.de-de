@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Static Web Apps
+summary: Mit Azure Static Web Apps können Sie JavaScript-Webanwendungen erstellen, die im Falle von Änderungen auf GitHub automatisch veröffentlicht werden.
+metadata:
+  title: Dokumentation zu Azure Static Web Apps
+  description: Mit Azure Static Web Apps können Sie JavaScript-Webanwendungen erstellen, die im Falle von Änderungen auf GitHub automatisch veröffentlicht werden.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593068"
+landingContent:
+- title: Informationen zu Azure Static Web Apps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Static Web Apps?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen Ihrer ersten Angular-App
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: Erstellen Ihrer ersten React-App
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: Erstellen Ihrer ersten Vue-App
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: Erstellen Ihrer ersten App (ohne Framework)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Veröffentlichen einer Angular-, React-, Svelte- oder Vue JavaScript-App und -API
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: Wichtige Begriffe
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Routen
+      url: routes.md
+    - text: Öffentliche APIs
+      url: apis.md
+    - text: Staging
+      url: review-publish-pull-requests.md
+    - text: Beschränken des Zugriffs
+      url: authentication-authorization.md
+- title: Veröffentlichungsszenarien
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Veröffentlichen über Gatsby
+      url: publish-gatsby.md
+    - text: Veröffentlichen über Hugo
+      url: publish-hugo.md
+    - text: Veröffentlichen über VuePress
+      url: publish-vuepress.md
+    - text: Bereitstellen über Next.js
+      url: deploy-nextjs.md
+    - text: Bereitstellen über Nuxt.js
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Veröffentlichen einer statischen Web-App mit Gatsby
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

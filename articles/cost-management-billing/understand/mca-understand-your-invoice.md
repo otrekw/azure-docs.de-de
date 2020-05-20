@@ -23,7 +23,7 @@ Die Rechnung enthält eine Zusammenfassung der Gebühren sowie Zahlungsanweisung
 
 ## <a name="billing-period"></a>Abrechnungszeitraum
 
-Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im *Azure-Portal* in den Eigenschaften des Abrechnungsprofils das [Rechnungsdatum](https://portal.azure.com/) überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
+Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im [Azure-Portal](https://portal.azure.com/) in den Eigenschaften des Abrechnungsprofils das *Rechnungsdatum* überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
 
 ## <a name="invoice-terms-and-descriptions"></a>Begriffe auf der Rechnung und entsprechende Beschreibungen
 

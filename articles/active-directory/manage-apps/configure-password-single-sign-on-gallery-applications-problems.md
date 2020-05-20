@@ -39,13 +39,13 @@ Probieren Sie es zunächst mit den folgenden Schritten, um dieses Problem zu beh
 
 - Der Benutzer soll unter Verwendung der für ihn gespeicherten Anmeldeinformationen zunächst versuchen, **sich direkt bei der Anwendungswebsite anzumelden**.
 
-  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** des Bereichs **Anwendungszugriff** auf die Schaltfläche [Anmeldeinformationen aktualisieren](https://myapps.microsoft.com/) klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
+  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
 
   * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 
 - Wenn sich der Benutzer seine eigenen Anmeldeinformationen zugewiesen hat, soll er **sich vergewissern, dass sein Kennwort in der Anwendung nicht abgelaufen ist**. Sollte dies der Fall sein, soll der Benutzer **das abgelaufene Kennwort aktualisieren**, indem er sich direkt bei der Anwendung anmeldet.
 
-  * Nachdem das Kennwort in der Anwendung aktualisiert wurde, bitten Sie den Benutzer, in der **Anwendungskachel** im Abschnitt **Apps** des Bereichs **Anwendungszugriff** auf die Schaltfläche [Anmeldeinformationen aktualisieren](https://myapps.microsoft.com/) zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
+  * Nachdem das Kennwort in der Anwendung aktualisiert wurde, bitten Sie den Benutzer, in der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
 
   * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 

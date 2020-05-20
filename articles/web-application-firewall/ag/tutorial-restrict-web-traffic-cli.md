@@ -38,7 +38,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit *az group create* eine Azure-Ressourcengruppe mit dem Namen [myResourceGroupAG](/cli/azure/group#az-group-create).
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Azure-Ressourcengruppe mit dem Namen *myResourceGroupAG*.
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
@@ -143,7 +143,7 @@ In diesem Artikel verwendet das Anwendungsgateway ein Speicherkonto, um Daten zu
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mit *az storage account create* ein Speicherkonto namens [myagstore1](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+Erstellen Sie mit [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) ein Speicherkonto namens *myagstore1*.
 
 ```azurecli-interactive
 az storage account create \

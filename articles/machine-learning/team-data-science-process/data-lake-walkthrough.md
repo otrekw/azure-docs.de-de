@@ -607,7 +607,7 @@ Nachdem das Machine Learning-Modell erstellt wurde, sollten Sie es in Betrieb ne
 Azure Machine Learning Studio (Classic) kann Daten direkt aus Azure Data Lake Storage einlesen und dann zum Erstellen und Bereitstellen von Modellen verwendet werden. Bei diesem Ansatz verweist eine Hive-Tabelle auf Azure Data Lake Storage. Für die Hive-Tabelle muss ein separater Azure HDInsight-Cluster bereitgestellt werden. 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>Erstellen eines HDInsight Linux-Clusters
-Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter **Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals** im Abschnitt [Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Storage](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter [Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Storage**.
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

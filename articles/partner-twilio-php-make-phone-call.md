@@ -67,7 +67,7 @@ Der folgende HTML-Code erstellt eine Webseite (**callform.html**) zur Eingabe de
 ```
 
 ## <a name="create-the-code-to-make-the-call"></a>Erstellen des Codes für den Anruf
-Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte [$sid][twilio_console] und **$token** im folgenden Code durch Ihr **Twilio-Konto** und Ihr Authentifizierungstoken in der Twilio-Konsole.
+Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte **$sid** und **$token** im folgenden Code durch Ihr [Twilio-Konto][twilio_console] und Ihr Authentifizierungstoken in der Twilio-Konsole.
 
 ```html
 <html>

@@ -224,7 +224,7 @@ Es gibt fünf Sicherheitsrollen für Benutzer und Gruppen, die nachfolgend in ab
 * Dienstoperator
 * Clusterbenutzer
 
-Wechseln Sie zum Verwalten der Rollen zur **Ambari-Verwaltungsseite**, und wählen Sie in der Menügruppe **Cluster** auf der linken Seite den Link *Rollen* aus.
+Wechseln Sie zum Verwalten der Rollen zur **Ambari-Verwaltungsseite**, und wählen Sie in der Menügruppe *Cluster* auf der linken Seite den Link **Rollen** aus.
 
 ![Apache Ambari – Menülink „Rollen“](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 

@@ -23,7 +23,7 @@ Erstellen Sie zunächst das Projekt in Visual Studio, und vergewissern Sie sich,
 
 1. Wählen Sie im Fenster **Neues Projekt erstellen** die Option **Konsolen-App (.NET Framework)** und dann **Weiter** aus.
 
-1. Geben Sie im Fenster **Neues Projekt konfigurieren** unter *Projektname* den Namen **helloworld** ein, und wählen Sie unter **Speicherort** den Verzeichnispfad aus, oder erstellen Sie ihn. Wählen Sie anschließend **Erstellen** aus.
+1. Geben Sie im Fenster **Neues Projekt konfigurieren** unter **Projektname** den Namen *helloworld* ein, und wählen Sie unter **Speicherort** den Verzeichnispfad aus, oder erstellen Sie ihn. Wählen Sie anschließend **Erstellen** aus.
 
 1. Wählen Sie auf der Visual Studio-Menüleiste **Extras** > **Tools und Features abrufen** aus, um den Visual Studio-Installer zu öffnen und das Dialogfeld **Änderung** anzuzeigen.
 

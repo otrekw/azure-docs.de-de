@@ -273,7 +273,7 @@ Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den 
 
 Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie replizieren möchten. In diesem Abschnitt laden Sie einige Daten in den Quellcluster. Im nächsten Abschnitt aktivieren Sie die Replikation zwischen den beiden Clustern.
 
-Wenn Sie eine Tabelle namens **Kontakte** erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter [Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
 
 > [!NOTE]
 > Wenn Sie Tabellen aus einem benutzerdefinierten Namespace replizieren möchten, müssen Sie sicherstellen, dass auch die entsprechenden benutzerdefinierten Namespaces auch auf dem Zielcluster definiert sind.
