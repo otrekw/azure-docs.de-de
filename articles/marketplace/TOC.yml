@@ -202,26 +202,6 @@
           href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Containerangebot
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/containers/cpp-prerequisites.md
-            - name: Erstellen eines Containerangebots
-              href: ./cloud-partner-portal/containers/cpp-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/containers/cpp-offer-settings-tab.md
-                - name: Registerkarte „SKUs“
-                  href: ./cloud-partner-portal/containers/cpp-skus-tab.md
-                - name: Registerkarte „Marketplace“
-                  href: ./cloud-partner-portal/containers/cpp-marketplace-tab.md
-                - name: Registerkarte „Support“
-                  href: ./cloud-partner-portal/containers/cpp-support-tab.md
-            - name: Erstellen technischer Containerressourcen
-              href: ./cloud-partner-portal/containers/cpp-create-technical-assets.md
-            - name: Veröffentlichen eines Containerangebots
-              href: ./cloud-partner-portal/containers/cpp-publish-offer.md
-            - name: Aktualisieren eines vorhandenen Angebots
-              href: ./cloud-partner-portal/containers/cpp-update-existing-offer.md
         - name: Angebot „Dynamics 365 for Business Central“
           href: ./cloud-partner-portal-orig/cpp-business-central-offer.md
           items:

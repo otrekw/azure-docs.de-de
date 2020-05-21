@@ -16,7 +16,7 @@
       href: ./manage.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: '/powershell/module/az.resources/#resources'
@@ -26,3 +26,5 @@
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
+    - name: Resource Manager-Vorlagen
+      href: /azure/templates/microsoft.management/managementgroups
