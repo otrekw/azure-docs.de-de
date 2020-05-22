@@ -1,7 +1,7 @@
 - name: Dokumentation zum kommerziellen Marketplace
   href: index.yml
   items:
-    - name: Roadmap für den kommerziellen Marketplace
+    - name: Updates für den kommerziellen Marketplace
       href: ./marketplace-roadmap.md
     - name: Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: Cloudpartnerportal
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: Migration vom Cloud-Partnerportal zu Partner Center
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: Häufig gestellte Fragen zur Migration
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Tour durch das Portal
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: Erste Schritte
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Neues
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webanalysen
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: Definitionen
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: VM-Angebot
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: Erstellen eines VM-Angebots
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: Registerkarte „SKUs“
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: Registerkarte „Testversion“
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Registerkarte „Marketplace“
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: Registerkarte „Support“
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: Erstellen technischer VM-Ressourcen
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: Erstellen einer virtuellen Festplatte
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: Allgemeine Probleme beim Erstellen der virtuellen Festplatte
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: Herstellen einer Verbindung mit dem virtuellen Computer
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: Konfigurieren des virtuellen Computers
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows-Remoteverwaltung
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: Konfigurieren von WinRM nach dem Erstellen einer VM
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: Bereitstellen einer VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: Erstellen eines Benutzer-VM-Images
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: Erstellen eines Key Vault-Zertifikats
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Key Vault-Bereitstellungsvorlage
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: Bereitstellen einer VM anhand einer Benutzer-VHD
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD-Bereitstellungsvorlage
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: Bereitstellen einer VM aus dem Marketplace
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: Zertifizieren des VM-Images
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM-Selbsttestclient
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: Abrufen des SAS-URI
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: Allgemeine Probleme mit der SAS-URL
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: Veröffentlichen eines Angebots für virtuelle Computer
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: Aktualisieren eines vorhandenen Angebots
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API-Referenz
       items:
         - name: Übersicht
@@ -361,6 +294,8 @@
   items:
     - name: Übersicht über den kommerziellen Marketplace
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Häufig gestellte Fragen zur Migration
+      href: ./cloud-partner-portal-migration-faq.md
     - name: Kontoverwaltung
       items:
         - name: Erstellen eines neuen Partner Center-Kontos

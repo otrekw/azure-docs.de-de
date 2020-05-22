@@ -2,13 +2,13 @@
 title: 'Tutorial: Muster: LUIS'
 description: In diesem Tutorial werden Muster verwendet, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 ms.topic: tutorial
-ms.date: 04/14/2020
-ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/07/2020
+ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380772"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592915"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen, um Vorhersagen zu verbessern
 
@@ -41,7 +41,8 @@ Führen Sie die folgenden Schritte durch:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true) herunter, und speichern Sie sie.
 
-1. Importieren Sie die JSON-Datei im [LUIS-Vorschauportal](https://preview.luis.ai) in eine neue App. Wählen Sie auf der Seite **Meine Apps** die Option **+ Neue App für Unterhaltung** und dann **Als JSON importieren** aus. Wählen Sie die Datei aus, die Sie im vorherigen Schritt heruntergeladen haben.
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Importieren Sie die JSON-Datei im [LUIS-Portal](https://www.luis.ai) in eine neue App. Wählen Sie auf der Seite **Meine Apps** die Option **+ Neue App für Unterhaltung** und dann **Als JSON importieren** aus. Wählen Sie die Datei aus, die Sie im vorherigen Schritt heruntergeladen haben.
 
 1. Wählen Sie auf der Registerkarte **Versionen** im Abschnitt **Verwalten** die aktive Version und dann **Klonen** aus. Geben Sie für die geklonte Version den Namen `patterns` an. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
@@ -468,33 +469,7 @@ Die Mustersyntax verfügt über Anfangs- und Endankersyntax für Äußerungen in
 
 ## <a name="using-patternany-entity"></a>Verwenden der Entität „pattern.any“
 
-Mit der Entität „pattern.any“ können Sie Freiformdaten finden, bei denen die Formulierung der Entität erschwert, das Ende der Entität vom Rest der Äußerung zu unterscheiden.
-
-Diese Human Resources-App hilft Mitarbeitern, Unternehmensformulare zu finden.
-
-|Äußerung|
-|--|
-|Wo ist **HRF-123456**?|
-|Wer hat **HRF-123234** erstellt?|
-|Ist **HRF-456098** in Französisch veröffentlicht?|
-
-Jedes Formular verfügt jedoch sowohl über einen formatierten Name, der in der obigen Tabelle verwendet wird, als auch einen Anzeigenamen, z.B. `Request relocation from employee new to the company 2018 version 5`.
-
-Äußerungen mit dem Anzeigenamen sehen folgendermaßen aus:
-
-|Äußerung|
-|--|
-|Wo ist **Request relocation from employee new to the company 2018 version 5**?|
-|Wer hat **Request relocation from employee new to the company 2018 version 5** erstellt?|
-|Wurde **Request relocation from employee new to the company 2018 version 5** in Französisch veröffentlicht?|
-
-Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das Ende von Entitäten zu erkennen. Mit einer Pattern.any-Entität in einem Muster können Sie den Anfang und das Ende des Formularnamens angeben, damit LUIS diesen ordnungsgemäß extrahiert.
-
-|Beispiel für eine Vorlagenäußerung|
-|--|
-|Wo ist {FormName}[?]|
-|Wer hat {FormName} erstellt[?]|
-|Wurde {FormName} in Französisch veröffentlicht[?]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>Hinzufügen von Beispieläußerungen mit „Pattern.any“
 

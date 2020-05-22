@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure-Abonnements
               href: event-schema-subscriptions.md
+    - name: Partnerthemen
+      items:
+        - name: Übersicht über Partnerthemen
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: "Event\_Grid-Partner werden"
+          href: partner-onboarding-overview.md
     - name: Ereignisdomänen
       href: event-domains.md
     - name: Ereignisschemaformate
@@ -186,6 +194,8 @@
   items:
     - name: Posten eines Beitrags in einem benutzerdefinierten Thema
       href: post-to-custom-topic.md
+    - name: Abonnieren von Auth0-Ereignissen
+      href: auth0-how-to.md
     - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md
     - name: Unzustellbare Nachrichten und Wiederholung
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: Schützen eines Webhooks mit AAD
           href: secure-webhook-delivery.md
+        - name: Ereignisbereitstellung mit verwalteter Identität
+          href: managed-service-identity.md
     - name: Problembehandlung
       items:
         - name: Aktivieren von Diagnoseprotokollen

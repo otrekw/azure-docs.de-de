@@ -240,10 +240,7 @@
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
             - name: Azure Kubernetes Service
-              items:
-                - name: Kubernetes (veraltet)
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
+              href: app/kubernetes-codeless.md
             - name: 'Eigenständig: beliebige Umgebung'
               items:
                 - name: Java (Vorschau)
@@ -1000,8 +997,6 @@
           items:
             - name: Verfügbarkeit
               href: app/monitor-web-app-availability.md
-            - name: Metrikwarnungen
-              href: app/alerts.md
         - name: Metrikwarnungsregeln
           items:
             - name: Verwalten von Metrikwarnungen
@@ -1268,6 +1263,8 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights-Connector
           href: platform/app-insights-connector.md
+        - name: Application Insights für AKS ohne Code
+          href: app/kubernetes.md
         - name: Überwachen von Docker-Anwendungen
           href: app/docker.md
         - name: Einstellung des OMS-Portals

@@ -42,8 +42,6 @@
         - name: 2. Extrahieren von Benutzerdaten
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. Ermitteln der Stimmung anhand von Benutzeräußerungen
-          href: tutorial-publish-settings.md
     - name: Verbessern der App
       items:
         - name: Korrigieren von unsicheren Vorhersagen
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Benutzerdefinierter Entitätsverweis
       items:
-        - name: Durch maschinelles Lernen erworbene Entität
+        - name: "Machine\_Learning-Entität"
           href: reference-entity-machine-learned-entity.md
         - name: Entität vom Typ „Composite“
           href: reference-entity-composite.md

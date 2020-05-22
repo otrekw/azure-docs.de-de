@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: "Konfigurieren der Azure\_AD-Integration"
               href: howto-configure-sign-in-aad-authentication.md
+            - name: Herstellen einer Verbindung mit verwalteter Identität
+              href: howto-connect-with-managed-identity.md
         - name: Optimieren
           items:
             - name: Masseneinfügungen

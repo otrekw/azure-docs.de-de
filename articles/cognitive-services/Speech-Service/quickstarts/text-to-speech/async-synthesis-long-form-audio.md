@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561980"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592558"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Schnellstart: Asynchrone Synthese für lange Audioinhalte in Python (Vorschau)
 
 In dieser Schnellstartanleitung verwenden Sie die API für lange Audioinhalte, um Text asynchron in Sprache zu konvertieren und die Audioausgabe von einem vom Dienst bereitgestellten URI abzurufen. Diese REST-API eignet sich ideal für Inhaltsanbieter, die Audiodaten aus Texten mit mehr als 5.000 Zeichen (oder mit einer Länge von mehr als 10 Minuten) synthetisieren müssen. Weitere Informationen finden Sie unter [API für lange Audioinhalte](../../long-audio-api.md).
 
-> [!NOTE]
-> Die asynchrone Synthese für lange Audioinhalte kann nur mit [benutzerdefinierten neuronalen Stimmen](../../how-to-custom-voice.md#custom-neural-voices) verwendet werden.
+Asynchrone Synthese für lange Audioinhalte kann mit [öffentlichen neuronalen Stimmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) und [benutzerdefinierten neuronalen Stimmen](../../how-to-custom-voice.md#custom-neural-voices) verwendet werden. Beide unterstützen eine bestimmte Sprache und einen bestimmten Dialekt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +55,7 @@ Diese Module werden verwendet, um Argumente zu analysieren, die HTTP-Anforderung
 
 ## <a name="get-a-list-of-supported-voices"></a>Abrufen einer Liste der unterstützten Stimmen
 
-Dieser Code ruft eine Liste der verfügbaren Stimmen ab, mit denen Sie Text in Sprache konvertieren können. Fügen Sie den Code zu `voice_synthesis_client.py` hinzu:
+Dieser Code ermöglicht es Ihnen, eine vollständige Liste der Stimmen für eine bestimmte Region bzw. für einen Endpunkt abzurufen, die bzw. den Sie verwenden können. Sehen Sie sich die Informationen zu [unterstützten Regionen/Endpunkten](../../long-audio-api.md) an. Fügen Sie den Code zu `voice_synthesis_client.py` hinzu:
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -99,6 +98,8 @@ There are xx voices available:
 Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xxx , Id: xxx, Locale: en-US, Gender: Male, PublicVoice: xxx, Created: 2019-07-22T09:38:14Z
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
+
+Wenn der Parameter **PublicVoice** auf **True** festgelegt ist, wird eine öffentliche neuronale Stimme verwendet. Andernfalls wird eine benutzerdefinierte neuronale Stimme verwendet. 
 
 ## <a name="prepare-input-files"></a>Vorbereiten der Eingabedateien
 

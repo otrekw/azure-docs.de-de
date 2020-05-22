@@ -1,20 +1,33 @@
 ---
 title: Neuigkeiten – Language Understanding (LUIS)
 description: Dieser Artikel wird regelmäßig mit Neuigkeiten über die Language Understanding-API von Azure Cognitive Services aktualisiert.
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097726"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592796"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="may-2020---build"></a>Mai 2020: //Build
+
+* Als **allgemein verfügbar** (generally available, GA) veröffentlicht:
+    * [Language Understanding-Container](luis-container-howto.md)
+    * Vorschauportal zum [aktuellen Portal](https://www.luis.ai) heraufgestuft, [vorheriges](https://previous.luis.ai) Portal aber weiterhin verfügbar
+    * Neue Erstellung und Beschriftung für durch maschinelles Lernen erworbene Entitäten
+    * [Prozess zum Upgraden](migrate-from-composite-entity.md) von zusammengesetzten und einfachen Entitäten auf durch maschinelles Lernen erworbene Entitäten
+    * [Einstellungsunterstützung](how-to-application-settings-portal.md) für die Normalisierung von Wortvarianten
+* Änderungen an der Erstellungs-API (Vorschau)
+    * App-Schema 7.x für geschachtelte, durch maschinelles Lernen erworbene Entitäten
+    * [Migration zu erforderlichem Feature](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>März 2020
 
@@ -26,7 +39,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 
 * Verbesserte Produktivität von Entwicklern
     * Allgemeine Verfügbarkeit unseres [Vorhersageendpunkts V3](luis-migration-api-v3.md).
-    * Möglichkeit zum Importieren und Exportieren von Apps mit dem LU-Format ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dies ebnet den Weg für einen effektiven CI/CD-Prozess.
+    * Möglichkeit zum Importieren und Exportieren von Apps mit dem Format `.lu` ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dies ebnet den Weg für einen effektiven CI/CD-Prozess.
 * Spracherweiterung
     * [Arabisch und Hindi](luis-language-support.md) in der öffentlichen Vorschau.
 * Vordefinierte Modelle

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77560897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593170"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrieren von der Sprachübersetzungs-API zum Speech-Dienst
 
@@ -37,7 +37,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 | Mehrere Sprachen in einer einzelnen Anforderung übersetzt | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | SDKs verfügbar                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Informationen zu verfügbaren SDKs finden Sie in der [Dokumentation zum Speech-Dienst](index.yml).                                                                                                                                                    |
 | WebSockets-Verbindungen                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Sprachen-API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Der Speech-Dienst unterstützt denselben Sprachumfang, der im Artikel [Sprachenreferenz für Sprachübersetzungs-API](../translator-speech/languages-reference.md) beschrieben wird. |
+| Sprachen-API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Der Speech-Dienst unterstützt denselben Sprachumfang, der im Artikel mit der [Sprachenreferenz für Translator](../translator-speech/languages-reference.md) beschrieben wird. |
 | Filter und Markierung für Obszönitäten                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | .WAV/PCM als Eingabe                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Andere Dateitypen als Eingabe                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,14 +55,14 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 
 * Wenn Ihre Anwendung langlebige Verbindungen verwendet und die verfügbaren SDKs nicht nutzen kann, können Sie eine WebSockets-Verbindung verwenden. Steuern Sie das Zeitlimit von 10 Minuten, indem Sie die Verbindung zum jeweils richtigen Zeitpunkt wiederherstellen.
 
-* Wenn Ihre Anwendung die Textübersetzungs-API und die Sprachübersetzungs-API verwendet, um benutzerdefinierte Übersetzungsmodelle zu aktivieren, können Sie mithilfe des Speech-Diensts direkt Kategorie-IDs hinzufügen.
+* Wenn Ihre Anwendung den Translator-Dienst und die Sprachübersetzungs-API verwendet, um benutzerdefinierte Übersetzungsmodelle zu aktivieren, können Sie mithilfe des Speech-Diensts direkt Kategorie-IDs hinzufügen.
 
 * Im Gegensatz zur Sprachübersetzungs-API kann der Speech-Dienst Übersetzungen in mehrere Sprachen in einer einzigen Anforderung durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Speech-Dienst kostenlos testen](get-started.md)
-* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Spracherkennungs-SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Weitere Informationen
 

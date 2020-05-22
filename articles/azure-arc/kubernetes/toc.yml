@@ -1,0 +1,28 @@
+- name: Kubernetes mit Azure Arc-Aktivierung
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Kubernetes mit Azure Arc-Aktivierung
+      href: overview.md
+- name: Anleitungen
+  items:
+    - name: Clustervorgänge
+      items:
+        - name: Herstellen einer Clusterverbindung
+          href: connect-cluster.md
+        - name: Verwenden von GitOps für verbundene Cluster
+          href: use-gitops-connected-cluster.md
+        - name: Verwenden von GitOps mit Helm
+          href: use-gitops-with-helm.md
+        - name: Azure Monitor für Container
+          href: deploy-azure-monitor-for-containers.md
+        - name: "Installieren des Azure\_Policy-Add-Ons"
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Verwenden von Azure Policy
+          href: use-azure-policy.md
+        - name: Bereitstellen von IoT-Workloads
+          href: deploy-azure-iot-edge-workloads.md
+        - name: Durchführen des Onboardings für den Dienstprinzipal
+          href: create-onboarding-service-principal.md
+        - name: Problembehandlung
+          href: Troubleshooting.md

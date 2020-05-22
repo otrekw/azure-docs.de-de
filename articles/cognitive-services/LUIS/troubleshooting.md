@@ -2,14 +2,14 @@
 title: 'Häufig gestellte Fragen (FAQ): LUIS'
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101109"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592847"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -66,7 +66,7 @@ Wenn Sie eine LUIS-App an ein anderes Azure-Abonnement übertragen möchten, mü
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Eine vordefinierte Entität wird in einer Beispieläußerung anstelle meiner benutzerdefinierten Entität markiert. Wie kann ich dies korrigieren?
 
-Im LUIS-Portal können Sie Text für genau die Entität bezeichnen, die Sie extrahieren möchten. Wenn das LUIS-Portal nicht die richtige Absichtsvorhersage anzeigt, müssen Sie möglicherweise weitere Äußerungen hinzufügen und die Entität innerhalb des Texts bezeichnen oder einen Deskriptor (wie etwa ein Feature) hinzufügen.
+Im LUIS-Portal können Sie Text für genau die Entität bezeichnen, die Sie extrahieren möchten. Sollte im LUIS-Portal nicht die richtige Entitätsvorhersage angezeigt werden, müssen Sie möglicherweise weitere Äußerungen hinzufügen und die Entität innerhalb des Texts beschriften oder ein Feature hinzufügen.
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ich habe versucht, eine App- oder Versionsdatei zu importieren, aber eine Fehlermeldung erhalten. Was ist passiert?
 

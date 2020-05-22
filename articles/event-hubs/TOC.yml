@@ -133,6 +133,8 @@
   items:
     - name: Regionsübergreifendes Verschieben
       href: move-across-regions.md
+    - name: Dynamisches Hinzufügen von Partitionen
+      href: dynamically-add-partitions.md
     - name: Verwenden von Blob Storage als Prüfpunktspeicher in Azure Stack Hub
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: Konfigurieren von VNET-Dienstendpunkten
           href: event-hubs-service-endpoints.md
-        - name: Konfigurieren privater Endpunkte (Vorschau)
+        - name: Konfigurieren privater Endpunkte
           href: private-link-service.md
         - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
           href: configure-customer-managed-key.md

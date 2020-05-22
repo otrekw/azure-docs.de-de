@@ -17,13 +17,13 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Bereitstellen mit IP-Adressgruppen
+    - name: 'Bereitstellen mit IP-Adressgruppen: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: Bereitstellen mit mehreren Adressen
+    - name: 'Bereitstellen mit mehreren Adressen: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Bereitstellen mit Verfügbarkeitszonen
+    - name: 'Bereitstellen mit Verfügbarkeitszonen: ARM-Vorlage'
       displayName: Resource Manager
       href: deploy-template.md
 - name: Beispiele

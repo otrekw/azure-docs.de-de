@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879240"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592898"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
 
@@ -23,7 +23,7 @@ Die LUIS-Container weisen eine Reihe von beachtenswerten Einschränkungen auf. V
 
 ## <a name="supported-dependencies-for-latest-container"></a>Unterstützte Abhängigkeiten für `latest`-Container
 
-Der neueste LUIS-Container, der unter [//build/ 2019](https://news.microsoft.com/build2019/) veröffentlicht wird, unterstützt diese Punkte:
+Vom aktuellen LUIS-Container wird Folgendes unterstützt:
 
 * [Neue vordefinierte Bereiche](luis-reference-prebuilt-domains.md): Zu diesen auf Unternehmen fokussierten Domänen gehören Entitäten, Beispieläußerungen und Muster. Erweitern Sie diese Domänen für Ihre eigenen Zwecke.
 

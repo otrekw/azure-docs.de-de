@@ -1,7 +1,7 @@
 ---
-title: Textübersetzungs-API – Methode für Wörterbuchbeispiele
+title: Translator-Methode für Wörterbuchbeispiele
 titleSuffix: Azure Cognitive Services
-description: Die Methode für Wörterbuchbeispiele stellt Beispiele zur kontextbezogenen Verwendung von Begriffen im Wörterbuch bereit.
+description: Von der Translator-Methode für Wörterbuchbeispiele werden Beispiele zur kontextbezogenen Verwendung von Begriffen im Wörterbuch bereitgestellt.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76548066"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592507"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
+# <a name="translator-30-dictionary-examples"></a>Translator 3.0: Wörterbuchbeispiele
 
 Im Folgenden finden Sie Kontextbeispiele zur Verwendungen von Begriffen im Wörterbuch. Dieser Vorgang wird zusammen mit der [Wörterbuchsuche](./v3-0-dictionary-lookup.md) verwendet.
 
@@ -36,8 +36,8 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 | Abfrageparameter | BESCHREIBUNG |
 | --------- | ----------- |
 | api-version <img width=200/> | **Erforderlicher Parameter**.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
-| from | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum [-Bereich hinzugefügten ](./v3-0-languages.md)unterstützten Sprachen`dictionary` als Quellsprache auswählen. |
-| zu | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum [-Bereich hinzugefügten ](./v3-0-languages.md)unterstützten Sprachen`dictionary` als Zielsprache auswählen.  | 
+| from | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Quellsprache auswählen. |
+| zu | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen.  | 
 
 Anforderungsheader enthalten Folgendes:
 
@@ -73,23 +73,23 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeichenfolge im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `normalizedSource`: eine Zeichenfolge, die die normalisierte Form des Quellbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Text`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
+  * `normalizedSource`: Eine Zeichenfolge, die die normalisierte Form des Ausgangsbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Text`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
     
-  * `normalizedTarget`: eine Zeichenfolge, die die normalisierte Form des Zielbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Translation`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
+  * `normalizedTarget`: Eine Zeichenfolge, die die normalisierte Form des Zielbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Translation`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
   
-  * `examples`: eine Liste von Beispielen für das Begriffspaar (Begriff in der Ausgangssprache + Begriff in der Zielsprache). Jedes Listenelement ist ein Objekt mit den folgenden Zeichenfolgeneigenschaften:
+  * `examples`: Eine Liste von Beispielen für das Begriffspaar (Begriff in der Ausgangssprache + Begriff in der Zielsprache). Jedes Listenelement ist ein Objekt mit den folgenden Zeichenfolgeneigenschaften:
 
-    * `sourcePrefix`: die Zeichenfolge, die verkettet werden soll, _bevor_ der Wert von `sourceTerm` ein vollständiges Beispiel erstellen kann. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
+    * `sourcePrefix`: Die Zeichenfolge, die _vor_ dem Wert von `sourceTerm` verkettet werden soll, um ein vollständiges Beispiel zu bilden. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
 
-    * `sourceTerm`: eine Zeichenfolge, die dem tatsächlich nachgeschlagenen Begriff entspricht. Die Zeichenfolge wird durch `sourcePrefix` und `sourceSuffix` hinzugefügt, um ein vollständiges Beispiel zu erstellen. Der Wert der Zeichenfolge wird unterteilt, sodass dieser auf einer Benutzeroberfläche z.B. durch Fettformatierung markiert werden kann.
+    * `sourceTerm`: Eine Zeichenfolge, die dem tatsächlich nachgeschlagenen Begriff entspricht. Die Zeichenfolge wird durch `sourcePrefix` und `sourceSuffix` hinzugefügt, um ein vollständiges Beispiel zu erstellen. Der Wert der Zeichenfolge wird unterteilt, sodass dieser auf einer Benutzeroberfläche z.B. durch Fettformatierung markiert werden kann.
 
-    * `sourceSuffix`: die Zeichenfolge, die verkettet werden soll, _nachdem_ der Wert von `sourceTerm` ein vollständiges Beispiel erstellen kann. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
+    * `sourceSuffix`: Die Zeichenfolge, die _hinter_ dem Wert von `sourceTerm` verkettet werden soll, um ein vollständiges Beispiel zu bilden. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
 
-    * `targetPrefix`: eine Zeichenfolge, die `sourcePrefix` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetPrefix`: Eine Zeichenfolge, die `sourcePrefix` ähnelt, aber dem Ziel zugewiesen ist.
 
-    * `targetTerm`: eine Zeichenfolge, die `sourceTerm` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetTerm`: Eine Zeichenfolge, die `sourceTerm` ähnelt, aber dem Ziel zugewiesen ist.
 
-    * `targetSuffix`: eine Zeichenfolge, die `sourceSuffix` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetSuffix`: Eine Zeichenfolge, die `sourceSuffix` ähnelt, aber dem Ziel zugewiesen ist.
 
     > [!NOTE]
     > Wenn es keine Beispiele im Wörterbuch gibt, lautet die Antwort zwar „200 (OK)“, aber die `examples`-Liste ist leer.

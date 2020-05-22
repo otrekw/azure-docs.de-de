@@ -1,7 +1,7 @@
 ---
-title: Referenz für die Textübersetzungs-API Version 3.0
+title: Referenz zu Translator V3.0
 titleSuffix: Azure Cognitive Services
-description: Referenzdokumentation für die Textübersetzungs-API Version 3.0 Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API.
+description: Referenzdokumentation für Translator V3.0 Version 3 von Translator umfasst eine moderne JSON-basierte Web-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857298"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592269"
 ---
-# <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
+# <a name="translator-v30"></a>Translator v3.0
 
 ## <a name="whats-new"></a>Neuigkeiten
 
-Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. Sie ermöglicht eine bessere Nutzung und Leistung, indem vorhandene Features zu einer geringeren Zahl von Vorgängen zusammengefasst und neue Features bereitgestellt werden.
+Version 3 von Translator umfasst eine moderne JSON-basierte Web-API. Sie ermöglicht eine bessere Nutzung und Leistung, indem vorhandene Features zu einer geringeren Zahl von Vorgängen zusammengefasst und neue Features bereitgestellt werden.
 
  * Transliteration zur Konvertierung von Text in einer Sprache aus einem Skript in ein anderes Skript.
  * Übersetzung in mehrere Sprachen innerhalb einer Anforderung.
@@ -37,7 +37,7 @@ Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan 
 * **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
 * **Europa:** Europa, Norden und Europa, Westen
 
-Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
+Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
 
 Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
 
@@ -50,13 +50,13 @@ Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearb
 
 ## <a name="authentication"></a>Authentifizierung
 
-Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-Multi-Service](https://azure.microsoft.com/pricing/details/cognitive-services/) in Azure Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
+Abonnieren Sie Translator oder [Cognitive Services-Multi-Service](https://azure.microsoft.com/pricing/details/cognitive-services/) in Azure Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
 
 Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Diese Tabelle beschreibt, wie jeder verwendet wird:
 
 |Header|BESCHREIBUNG|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
+|Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für Translator.|
 |Authorization|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Verwendung mit einer Cognitive Services-Ressource für mehrere Dienste und einer regionalen Übersetzerressource.*<br/>Der Wert ist die Region der Ressource für mehrere Dienste bzw. der regionalen Übersetzerressource. Dieser Wert ist bei Verwendung einer globalen Übersetzerressource optional.|
 
@@ -65,13 +65,13 @@ Die erste Option ist die Authentifizierung mithilfe des Headers `Ocp-Apim-Subscr
 
 #### <a name="authenticating-with-a-global-resource"></a>Authentifizieren mit einer globalen Ressource
 
-Wenn Sie eine [globale Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) verwenden, müssen Sie einen Header einschließen, um die Übersetzer-API aufzurufen.
+Wenn Sie eine [globale Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) verwenden, müssen Sie einen Header einschließen, um Translator aufzurufen.
 
 |Header|BESCHREIBUNG|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
+|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für Translator.|
 
-Hier sehen Sie eine Beispielanforderung zum Aufrufen der Übersetzer-API mit der globalen Übersetzerressource.
+Hier sehen Sie eine Beispielanforderung zum Aufrufen von Translator mit der globalen Übersetzerressource.
 
 ```curl
 // Pass secret key using headers
@@ -84,14 +84,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 #### <a name="authenticating-with-a-regional-resource"></a>Authentifizieren mit einer regionalen Ressource
 
 Wenn Sie eine [regionale Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) verwenden,
-benötigen Sie zwei Header, um die Übersetzer-API aufzurufen.
+Sie benötigen zwei Header, um Translator aufzurufen.
 
 |Header|BESCHREIBUNG|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
+|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für Translator.|
 |Ocp-Apim-Subscription-Region| Der Wert ist die Region der Übersetzerressource. |
 
-Hier sehen Sie eine Beispielanforderung zum Aufrufen der Übersetzer-API mit der regionalen Übersetzerressource.
+Hier sehen Sie eine Beispielanforderung zum Aufrufen von Translator mit der regionalen Übersetzerressource.
 
 ```curl
 // Pass secret key and region using headers
@@ -106,7 +106,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 Sie können eine Cognitive Services-Ressource für mehrere Dienste verwenden. Auf diese Weise können Sie einen einzigen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren. 
 
-Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Sie benötigen zwei Header, um die Übersetzer-API aufzurufen.
+Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Sie benötigen zwei Header, um Translator aufzurufen.
 
 |Header|BESCHREIBUNG|
 |:-----|:----|
@@ -143,22 +143,22 @@ Eine erfolgreiche Anforderung gibt das codierte Zugriffstoken im Antworttext im 
 Authorization: Bearer <Base64-access_token>
 ```
 
-Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn die Translator-APIs mehrfach aufgerufen werden. Wenn Ihr Programm aber über längere Zeit Anforderungen an die Translator-API sendet, muss das Programm regelmäßig (beispielsweise alle acht Minuten) ein neues Zugriffstoken anfordern.
+Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn Translator mehrfach aufgerufen wird. Wenn Ihr Programm aber über längere Zeit Anforderungen an Translator sendet, muss das Programm regelmäßig (beispielsweise alle acht Minuten) ein neues Zugriffstoken anfordern.
 
 ## <a name="virtual-network-support"></a>Unterstützung von Virtual Network
 
 Der Übersetzerdienst ist jetzt in einigen Regionen (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP` und `global`) mit Virtual Network-Funktionen verfügbar. Informationen zum Aktivieren von Virtual Network finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
-Nachdem Sie diese Funktion aktiviert haben, müssen Sie den benutzerdefinierten Endpunkt zum Aufrufen der Übersetzer-API verwenden. Die Verwendung des globalen Übersetzerendpunkts (api.cognitive.microsofttranslator.com) und die Authentifizierung mit einem Zugriffstoken sind nicht möglich.
+Nachdem Sie diese Funktion aktiviert haben, müssen Sie den benutzerdefinierten Endpunkt zum Aufrufen von Translator verwenden. Die Verwendung des globalen Übersetzerendpunkts (api.cognitive.microsofttranslator.com) und die Authentifizierung mit einem Zugriffstoken sind nicht möglich.
 
 Den benutzerdefinierten Endpunkt können Sie ermitteln, nachdem Sie die [Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) erstellt haben.
 
 |Header|BESCHREIBUNG|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
+|Ocp-Apim-Subscription-Key| Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für Translator.|
 |Ocp-Apim-Subscription-Region| Der Wert ist die Region der Übersetzerressource. Bei einer Ressource vom Typ `global` ist dieser Wert optional.|
 
-Hier sehen Sie eine Beispielanforderung zum Aufrufen der Übersetzer-API mit dem benutzerdefinierten Endpunkt.
+Hier sehen Sie eine Beispielanforderung zum Aufrufen von Translator mit dem benutzerdefinierten Endpunkt.
 
 ```curl
 // Pass secret key and region using headers
@@ -218,7 +218,7 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 400079| Das für die Übersetzung zwischen Ausgangs- und Zielsprache angeforderte benutzerdefinierte System ist nicht vorhanden.|
 | 400080| Transliteration wird für die Sprache oder das Skript nicht unterstützt.|
 | 401000| Die Anforderung wurde nicht autorisiert, da die Anmeldeinformationen fehlen oder ungültig sind.|
-| 401015| „Die angegebenen Anmeldeinformationen gelten für die SAPI. Diese Anforderung erfordert Anmeldeinformationen für die Text-API. Verwenden Sie ein Abonnement für die Textübersetzungs-API.“|
+| 401015| „Die angegebenen Anmeldeinformationen gelten für die SAPI. Diese Anforderung erfordert Anmeldeinformationen für die Text-API. Verwenden Sie ein Abonnement für Translator.“|
 | 403000| Der Vorgang ist nicht zulässig.|
 | 403001| Der Vorgang ist nicht zulässig, da das kostenlose Kontingent für das Abonnement überschritten wurde.|
 | 405000| Die Anforderungsmethode wird für die angeforderte Ressource nicht unterstützt.|

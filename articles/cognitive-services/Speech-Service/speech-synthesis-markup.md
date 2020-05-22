@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583228"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592779"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -191,11 +191,14 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > Die Anpassung der Sprechstile funktioniert nur bei neuronalen Stimmen.
 
-Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie die Sprechweise anpassen, um mit dem `<mstts:express-as>`-Element Fröhlichkeit, Einfühlungsvermögen oder Stimmung auszudrücken. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
+Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements „<mstts:express-as>“ die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 
 Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück.
 
@@ -220,10 +223,15 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
 |                         | `style="empathetic"`      | Drückt ein Gefühl von Anteilnahme und Verständnis aus               |
+|   `pt-BR-FranciscaNeural`| `style="calm"`      | Ruhiger Ton               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
-|                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |
+|                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |   
+| `zh-CN-YunyangNeural`  | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
+| `zh-CN-YunyeNeural`  | `style="calm"`      | Ruhiger Ton               |  
+|                         | `style="sad"`       | Unzufriedener und verärgerter Ton    |
+|                         | `style="serious"`         | Ernster und strenger Ton        |   
 
 **Beispiel**
 
@@ -359,7 +367,10 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Verwenden eines benutzerdefinierten Lexikons zum Verbessern der Aussprache
 
-In einigen Fällen kann TTS ein Wort nicht richtig aussprechen, z. B. einen Firmennamen oder einen fremdsprachlichen Begriff. Entwickler können das Lesen dieser Entitäten in SSML mithilfe der Tags `phoneme` und `sub` definieren. Sie können auch das Lesen mehrerer Entitäten definieren, indem sie mithilfe des `lexicon`-Tags auf eine benutzerdefinierte Lexikondatei verweisen.
+Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werden. Beispielsweise der Name eines Unternehmens oder ein medizinischer Begriff. Mit den Tags `phoneme` und `sub` können Entwickler die Aussprache einzelner Entitäten in SSML definieren. Wenn Sie dagegen die Aussprache mehrerer Entitäten definieren möchten, können Sie mithilfe des Tags `lexicon` ein benutzerdefiniertes Lexikon erstellen.
+
+> [!NOTE]
+> Für das benutzerdefinierte Lexikon wird derzeit die UTF-8-Codierung unterstützt. 
 
 **Syntax**
 
@@ -375,14 +386,10 @@ In einigen Fällen kann TTS ein Wort nicht richtig aussprechen, z. B. einen Fir
 
 **Verwendung**
 
-Schritt 1: Definieren Sie ein benutzerdefiniertes Lexikon. 
-
-Sie können das Lesen von Entitäten anhand einer Liste benutzerdefinierter Lexikonelemente definieren, die als XML- oder PLS-Datei gespeichert werden.
-
-**Beispiel**
+Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein benutzerdefiniertes Lexikon erstellen. Dieses wird als XML- oder als PLS-Datei gespeichert. Das folgende Beispiel zeigt eine XML-Datei:
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,39 +407,61 @@ Sie können das Lesen von Entitäten anhand einer Liste benutzerdefinierter Lexi
 </lexicon>
 ```
 
-Jedes `lexeme`-Element ist ein Lexikonelement. `grapheme` enthält Text, der die Orthografie von `lexeme` beschreibt. Das Vorleseformular kann als `alias` bereitgestellt werden. Die Telefonzeichenfolge könnte im `phoneme`-Element angegeben werden.
+Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alias` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie<span class="docon docon-navigate-external x-hidden-focus"></span></a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt.
 
-Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alais` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie<span class="docon docon-navigate-external x-hidden-focus"></span></a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt.
+Wichtig: Die Aussprache eines Worts kann mit dem benutzerdefinierten Lexikon nicht direkt festgelegt werden. Wenn Sie die Aussprache für ein Wort festlegen möchten, müssen Sie zuerst einen Alias (`alias`) angeben und anschließend das Phonem (`phoneme`) diesem Alias (`alias`) zuordnen. Beispiel:
 
-Weitere Informationen zu benutzerdefinierten Lexikondateien finden Sie auf der W3C-Website unter [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/) (Spezifikation für Aussprachelexika (PLS) Version 1.0).
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-Schritt 2: Laden Sie die benutzerdefinierte Lexikondatei hoch, die Sie in Schritt 1 online erstellt haben. Sie können sie an einer beliebigen Stelle speichern, wobei empfohlen wird, sie in Microsoft Azure zu speichern, beispielsweise in [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+> [!IMPORTANT]
+> Das Element `phoneme` darf bei Verwendung des IPA keine Leerzeichen enthalten.
 
-Schritt 3: Verweisen Sie in SSML auf die benutzerdefinierte Lexikondatei.
+Weitere Informationen zu benutzerdefinierten Lexikondateien finden Sie unter [Spezifikation für Aussprachelexika (Pronunciation Lexicon Specification, PLS), Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/).
+
+Veröffentlichen Sie als Nächstes Ihre benutzerdefinierte Lexikondatei. Diese Datei kann zwar an einem beliebigen Ort gespeichert werden, es empfiehlt sich jedoch, [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zu verwenden.
+
+Nachdem Sie Ihr benutzerdefiniertes Lexikon veröffentlicht haben, können Sie von SSML aus darauf verweisen.
+
+> [!NOTE]
+> Das Element `lexicon` muss sich innerhalb des Elements `voice` befinden.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-„BTW“ wird als „By the way“ gelesen. „Benigni“ wird mit der bereitgestellten IPA als „bɛˈniːnji“ gelesen.  
 
-**Einschränkung**
+Wenn Sie dieses benutzerdefinierte Lexikon verwenden, wird „BTW“ als „By the way“ gelesen. „Benigni“ wird gemäß der IPA-Angabe als „bɛˈniːnji“ gelesen.  
+
+**Einschränkungen**
 - Dateigröße: Die maximale Größe benutzerdefinierter Lexikondateien beträgt 100 KB. Wenn diese Größe überschritten wird, treten bei Syntheseanforderungen Fehler auf.
 - Lexikoncacheaktualisierung: Das benutzerdefinierte Lexikon wird beim ersten Laden mit dem URI als Schlüssel im TTS-Dienst zwischengespeichert. Ein Lexikon mit demselben URI wird innerhalb von 15 Minuten nicht neu geladen, sodass Änderungen am benutzerdefinierten Lexikon nach maximal 15 Minuten in Kraft treten.
 
 **Phonetische Sätze des Speech-Diensts**
 
-Im obigen Beispiel wird das als IPA-Phonemsatz bezeichnete internationale phonetische Alphabet verwendet. Wir empfehlen Entwicklern, das IPA zu verwenden, da es der internationale Standard ist. Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phonetischen Satz für sieben Sprachen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN` und `zh-TW`).
+Im obigen Beispiel wird das als IPA-Phonemsatz bezeichnete internationale phonetische Alphabet verwendet. Wir empfehlen Entwicklern, das IPA zu verwenden, da es der internationale Standard ist. Einige IPA-Zeichen können in Unicode als zusammengesetzte und als aufgelöste Version dargestellt werden. Im benutzerdefinierten Lexikon wird nur die aufgelöste Unicodedarstellung unterstützt.
+
+Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phonetischen Satz für sieben Sprachen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN` und `zh-TW`).
 
 Sie können `sapi` wie unten gezeigt als Wert des `alphabet`-Attributs mit benutzerdefinierten Lexika verwenden.
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

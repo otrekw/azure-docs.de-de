@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Wetterdienst
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Kartenerstellungsdienst
+          items:
+            - name: Aliasdienst
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: Konvertierungsdienst
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: Datasetdienst
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: Featurezustandsdienst
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: Kachelsetdienst
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS-Dienst
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Kartenkontoverwaltung
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

@@ -366,7 +366,7 @@
         - name: Erstellen von Dashboards und Berichten
           items:
             - name: Visualisieren mit Power BI
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: Problembehandlung
       items:
         - name: Konnektivität
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Datenverwaltung
           href: sql-data-warehouse-partner-data-management.md
+        - name: "Public\_Preview-Partner"
+          href: sql-data-warehouse-partner-launch.md

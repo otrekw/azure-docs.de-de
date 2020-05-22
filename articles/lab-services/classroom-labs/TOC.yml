@@ -118,10 +118,12 @@
       items:
         - name: Zugreifen auf Classroom-Labs
           href: how-to-use-classroom-lab.md
-        - name: Verwenden der Remotedesktopverbindung für virtuelle Linux-Computer
+        - name: Herstellen einer Verbindung mit virtuellen Linux-Computern
           href: how-to-use-remote-desktop-linux-student.md
         - name: Herstellen einer RDP-Verbindung zwischen einem Mac und einem virtuellen Computer
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: Herstellen einer RDP-Verbindung zwischen einem Chromebook und einem virtuellen Computer
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Anzeigen von Supportinformationen (Kursteilnehmer)

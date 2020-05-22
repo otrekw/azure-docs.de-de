@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878305"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83609000"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics – Vorschaufeatures
 
@@ -21,6 +21,15 @@ Dieser Artikel fasst alle Features zusammen, die sich derzeit in der Vorschau f�
 ## <a name="public-previews"></a>Öffentliche Vorschauversionen
 
 Die folgenden Features befinden sich in der öffentlichen Vorschau. Sie können diese Features heute nutzen, sollten sie aber nicht in Ihrer Produktionsumgebung einsetzen.
+
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Authentifizieren bei der SQL-Datenbank-Ausgabe mit verwalteten Identitäten
+
+Azure Stream Analytics unterstützt die [Authentifizierung über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für Azure SQL-Datenbank-Ausgabesenken. Verwaltete Identitäten heben die Einschränkungen benutzerbasierter Authentifizierungsmethoden auf, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Benutzertoken, die alle 90 Tage ablaufen. Wenn Sie die Notwendigkeit einer manuellen Authentifizierung aufheben, können Ihre Stream Analytics-Bereitstellungen vollständig automatisiert werden.
+
+### <a name="output-to-azure-synapse-analytics"></a>Ausgabe an Azure Synapse Analytics
+
+Bei Azure Stream Analytics-Aufträgen kann die Ausgabe in eine SQL-Pooltabelle in [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) erfolgen, und es können Durchsatzraten von bis zu 200 MB/s verarbeitet werden. Dies unterstützt die anspruchsvollsten Anforderungen hinsichtlich Echtzeitanalyse und Datenverarbeitung im langsamsten Pfad für Workloads wie z. B. das Erstellen von Berichten und Dashboards.  
+
 
 ### <a name="online-scaling"></a>Onlineskalierung
 

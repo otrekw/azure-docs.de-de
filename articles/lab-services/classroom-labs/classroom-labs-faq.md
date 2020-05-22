@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443498"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592609"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Classroom-Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)
 Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Classroom-Labs in Azure Lab Services. 
@@ -28,8 +28,8 @@ Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu C
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Gilt das Kontingent pro Benutzer oder pro Woche oder für die gesamte Dauer des Labs? 
 Das Kontingent, das Sie für ein Lab festlegen, gilt für jeden Kursteilnehmer für die gesamte Dauer des Labs. Und die [geplante Ausführungszeit von virtuellen Computern](how-to-create-schedules.md) wird nicht mit dem Kontingent eines Benutzers verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt.  Weitere Informationen zu Kontingenten finden Sie unter [Festlegen von Kontingenten für Benutzer](how-to-configure-student-usage.md#set-quotas-for-users).
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Wenn ein Professor einen virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies auf das Kursteilnehmerkontingent aus? 
-Nein. Tut es nicht. Wenn der Professor den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus. 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Wenn ein Lehrer/Dozent einen virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies auf das Kursteilnehmerkontingent aus? 
+Nein. Tut es nicht. Wenn der Lehrer/Dozent den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus. 
 
 ## <a name="schedules"></a>Zeitpläne
 
@@ -58,13 +58,16 @@ Weitere Informationen finden Sie unter [Azure-IP-Adressbereiche und Diensttags �
 
 Wenn ein Administrator Sie einem Labkonto als Lab-Ersteller hinzufügt, erhalten Sie die Berechtigungen zum Erstellen von Labs. Sie verfügen jedoch nicht über die Berechtigungen zum Bearbeiten jeglicher Einstellungen innerhalb des Labkontos, einschließlich der Liste der aktivierten Images virtueller Computer. Um zusätzliche Images zu aktivieren, wenden Sie sich an Ihren Labkontoadministrator, damit dieser dies für Sie erledigt, oder bitten Sie den Administrator, Sie mit der Rolle „Mitwirkender“ zum Labkonto hinzuzufügen. Die Rolle „Mitwirkender“ erteilt Ihnen die Berechtigungen zum Bearbeiten der Liste der Images für virtuelle Computer im Labkonto.
 
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Kann ich zusätzliche Datenträger an einen virtuellen Computer anfügen?
+Nein. Es ist nicht möglich, zusätzliche Datenträger an einen virtuellen Computer in einem Classroom-Lab anzufügen. 
+
 ## <a name="users"></a>Benutzer
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>Wie viele Benutzer können sich in einem Classroom-Lab befinden?
 Sie können einem Classroom-Lab bis zu 400 Benutzer hinzufügen. 
 
 ## <a name="blog-post"></a>Blogbeitrag
-Abonnieren Sie den [Azure Lab Services-Blog](https://azure.microsoft.com/blog/tag/azure-lab-services/).
+Abonnieren Sie den [Azure Lab Services-Blog](https://aka.ms/azlabs-blog).
 
 ## <a name="update-notifications"></a>Updatebenachrichtigungen
 Abonnieren Sie [Lab Services-Updates](https://azure.microsoft.com/updates/?product=lab-services), um über neue Features in Labs Services auf dem Laufenden zu bleiben.
@@ -74,6 +77,6 @@ Abonnieren Sie [Lab Services-Updates](https://azure.microsoft.com/updates/?produ
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
 
 - Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. 
-- Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Stack Overflow-Forum zu Azure Lab Services](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Tech Community-Forum zu Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). 
 - Um Funktionsanforderungen einzureichen, übermitteln Sie Ihre Anfragen und Ideen an die [UserVoice-Plattform für Azure Lab Services](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

@@ -1,21 +1,14 @@
 ---
 title: Migrieren zu V3 einer durch maschinelles Lernen erworbenen Entität
-titleSuffix: Azure Cognitive Services
 description: Die V3-Erstellung bietet einen neuen Entitätstyp, die durch maschinelles Lernen erworbene Entität, sowie die Möglichkeit, Beziehungen zur durch maschinelles Lernen erworbenen Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 12/30/2019
-ms.author: diberry
-ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 05/08/2020
+ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75563822"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593221"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrieren zur V3-Erstellungsentität
 
@@ -23,14 +16,14 @@ Die V3-Erstellung bietet einen neuen Entitätstyp, die durch maschinelles Lernen
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entitäten sind in V3 zerlegbar
 
-Entitäten, die mit den V3-Erstellungs-APIs erstellt werden, entweder mithilfe der [APIs](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) oder im [Vorschau Portal](https://preview.luis.ai/), ermöglichen Ihnen das Erstellen eines mehrstufigen Entitätsmodells mit einem übergeordneten und mehreren untergeordneten Elementen. Das übergeordnete Element ist als **durch maschinelles Lernen erworbene Entität** bekannt, und die untergeordneten Elemente werden als **Unterkomponenten** der durch maschinelles Lernen erworbenen Entität bezeichnet.
+Entitäten, die mit den V3-Erstellungs-APIs erstellt werden (entweder mithilfe der [APIs](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) oder über das Portal), ermöglichen das Erstellen eines mehrstufigen Entitätsmodells mit einem übergeordneten Element und mehreren untergeordneten Elementen. Das übergeordnete Element wird als **durch maschinelles Lernen erworbene Entität** bezeichnet, und die untergeordneten Elemente werden als **untergeordnete Entitäten** der durch maschinelles Lernen erworbenen Entität bezeichnet.
 
-Jede Unterkomponente ist ebenfalls eine durch maschinelles Lernen erworbene Entität, aber mit den zusätzlichen Konfigurationsoptionen für Einschränkungen und Deskriptoren.
+Jede untergeordnete Entität ist ebenfalls eine durch maschinelles Lernen erworbene Entität, verfügt aber über die zusätzlichen Konfigurationsoptionen von Features.
 
-* **Einschränkungen** sind Regeln für den exakten Textabgleich, die sicherstellen, dass eine Entität extrahiert wird, wenn sie einer Regel entspricht. Die Regel wird durch eine Entität für den exakten Textvergleich definiert, derzeit: eine [vordefinierte Entität](luis-reference-prebuilt-entities.md), eine [Entität für reguläre Ausdrücke](reference-entity-regular-expression.md) oder eine [Listenentität](reference-entity-list.md).
-* **Deskriptoren** sind [Features](luis-concept-feature.md), wie z. B. Ausdruckslisten oder Entitäten, die verwendet werden, um die Entität anzugeben.
-
-Die V3-Erstellung bietet einen neuen Entitätstyp, die durch maschinelles Lernen erworbene Entität, sowie die Möglichkeit, Beziehungen zur durch maschinelles Lernen erworbenen Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
+* **Erforderliche Features** sind Regeln, die sicherstellen, dass eine Entität extrahiert wird, wenn sie einem Feature entspricht. Die Regel wird durch das erforderliche Feature für das Modell definiert:
+    * [Vordefinierte Entität](luis-reference-prebuilt-entities.md)
+    * [Entität vom Typ „RegEx“](reference-entity-regular-expression.md)
+    * [Entität vom Typ „List“](reference-entity-list.md)
 
 ## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>Wie sehen diese neuen Beziehungen im Vergleich mit der Erstellung in V2 aus
 
@@ -61,7 +54,7 @@ Berücksichtigen Sie bei der Migration die folgenden Punkte in Ihrem Migrationsp
     * Entitäten
         * Entität vom Typ „Hierarchical“
         * Entität vom Typ „Composite“
-    * Rollen: Rollen können nur auf eine durch maschinelles Lernen erworbene (übergeordnete) Entität angewendet werden. Rollen können nicht auf Unterkomponenten angewendet werden
+    * Rollen: Rollen können nur auf eine durch maschinelles Lernen erworbene (übergeordnete) Entität angewendet werden. Rollen können nicht auf untergeordnete Entitäten angewendet werden.
     * Batchtests und Muster, die hierarchische und zusammengesetzte Entitäten verwenden
 
 Wenn Sie den Migrationsplan entwerfen, sehen Sie Zeit zum Überprüfen der endgültigen durch maschinelles Lernen erworbenen Entitäten nach der Migration aller hierarchischen und zusammengesetzten Entitäten vor. Auch wenn eine geradlinige Migration funktioniert, kann Sie der stärker vereinheitlichte JSON nach dem Ändern und Überprüfen Ihrer Batchtestergebnisse und des Vorhersage-JSONs zu Änderungen veranlassen, sodass die endgültigen Informationen, die an die clientseitige App übermittelt werden, anders organisiert sind. Dieser Vorgang hat Ähnlichkeiten mit dem Refactoring von Code und sollte dem gleichen Reviewprozess unterzogen werden, wie er in Ihrer Organisation etabliert wurde.
@@ -70,7 +63,7 @@ Wenn für Ihr V2-Modell keine Batchtests eingerichtet wurden und die Batchtests 
 
 ## <a name="migrating-from-v2-entities"></a>Migration von V2-Entitäten
 
-Wenn Sie mit der Umstellung auf das V3-Erstellungsmodell beginnen, sollten Sie berücksichtigen, wie die Umstellung auf die durch maschinelles Lernen erworbene Entität und ihre Unterkomponenten, einschließlich der Einschränkungen und Deskriptoren, erfolgen soll.
+Wenn Sie mit der Umstellung auf das V3-Erstellungsmodell beginnen, müssen Sie sich überlegen, wie die Umstellung auf die durch maschinelles Lernen erworbene Entität und ihre untergeordneten Entitäten und Features erfolgen soll.
 
 Die folgende Tabelle gibt an, welche Entitäten von einem V2- zu einem V3-Entitätsdesign migriert werden müssen.
 
@@ -81,20 +74,20 @@ Die folgende Tabelle gibt an, welche Entitäten von einem V2- zu einem V3-Entit�
 
 ## <a name="migrate-v2-composite-entity"></a>Migrieren einer zusammengesetzten V2-Entität
 
-Jedes untergeordnete Element der zusammengesetzten V2-Entität muss durch eine Unterkomponente der durch maschinelles Lernen erworbenen V3-Entität dargestellt werden. Wenn es sich bei dem zusammengesetzten untergeordneten Element um einen vordefinierten regulären Ausdruck oder um eine Listenentität handelt, sollte diese(r) als **Einschränkung** auf die Unterkomponente angewendet werden, die das untergeordnete Element darstellt.
+Jedes untergeordnete Element der zusammengesetzten V2-Entität muss durch eine untergeordnete Entität der durch maschinelles Lernen erworbenen V3-Entität dargestellt werden. Wenn es sich bei dem zusammengesetzten untergeordneten Element um eine vordefinierte Entität, um einen regulären Ausdruck oder um eine Listenentität handelt, muss dies als erforderliches Feature auf die untergeordnete Entität angewendet werden.
 
 Überlegungen bei der Planung der Migration einer zusammengesetzten Entität zu einer durch maschinelles Lernen erworbenen Entität:
 * Untergeordnete Entitäten können nicht in Mustern verwendet werden
 * Untergeordnete Entitäten werden nicht mehr gemeinsam verwendet
 * Untergeordnete Entitäten müssen bezeichnet werden, wenn sie bisher keine durch maschinelles Lernen erworbenen Entitäten waren
 
-### <a name="existing-descriptors"></a>Vorhandene Deskriptoren
+### <a name="existing-features"></a>Vorhandene Features
 
-Jede Ausdruckliste, die zur Verstärkung von Wörtern in der zusammengesetzten Entität verwendet wird, sollte als Deskriptor entweder auf die durch maschinelles Lernen erworbene (übergeordnete) Entität, die Unterkomponente (untergeordnete Entität) oder die Absicht angewendet werden (wenn sich die Ausdrucksliste nur auf eine Absicht bezieht). Planen Sie, den Deskriptor der Entität hinzuzufügen, die am stärksten von ihm profitieren kann. Fügen Sie den Deskriptor nicht allgemein der durch maschinelles Lernen erworbenen (übergeordneten) Entität hinzu, wenn sie die Vorhersage einer Unterkomponente (untergeordneten Entität) in höherem Maß verstärkt.
+Jede Ausdruckliste, die zur Verstärkung von Wörtern in der zusammengesetzten Entität verwendet wird, muss als Feature entweder auf die durch maschinelles Lernen erworbene (übergeordnete) Entität, auf die untergeordnete Entität oder auf die Absicht (sofern sich die Ausdrucksliste nur auf eine einzelne Absicht bezieht) angewendet werden. Planen Sie, das Feature der Entität hinzuzufügen, die am meisten verstärkt werden soll. Fügen Sie das Feature nicht allgemein der durch maschinelles Lernen erworbenen (übergeordneten) Entität hinzu, wenn damit die Vorhersage einer untergeordneten Entität am meisten verstärkt wird.
 
-### <a name="new-descriptors"></a>Neue Deskriptoren
+### <a name="new-features"></a>Neue Funktionen
 
-Fügen Sie bei der V3-Erstellung einen Planungsschritt hinzu, um Entitäten als mögliche Deskriptoren für alle Entitäten und Absichten auszuwerten.
+Fügen Sie bei der V3-Erstellung einen Planungsschritt hinzu, um Entitäten als mögliche Features für alle Entitäten und Absichten auszuwerten.
 
 ### <a name="example-entity"></a>Beispielentität
 
@@ -114,8 +107,8 @@ Die Migration ist in der folgenden Tabelle veranschaulicht:
 |V2-Modelle|V3-Modelle|
 |--|--|
 |Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: durch maschinelles Lernen erworbene Entität mit dem Namen `Order`|
-|Untergeordnete Entität: vordefinierte datetimeV2|* Migrieren der vordefinierten Entität zur neuen App<br>* Hinzufügen einer Einschränkung zur übergeordneten Entität für die vordefinierte datetimeV2|
-|Untergeordnete Entität: Listenentität für Beläge|* Migrieren der Listenentität zur neuen App<br>* Fügen Sie anschließend dem übergeordneten Element eine Einschränkung für die Listenentität hinzu.|
+|Untergeordnete Entität: vordefinierte datetimeV2|* Migrieren Sie die vordefinierte Entität zur neuen App.<br>* Fügen Sie das erforderliche Feature dem übergeordneten Element für „datetimeV2“ (vordefiniert) hinzu.|
+|Untergeordnete Entität: Listenentität für Beläge|* Migrieren Sie die Listenentität zur neuen App.<br>* Fügen Sie anschließend dem übergeordneten Element ein erforderliches Feature für die Listenentität hinzu.|
 
 
 ## <a name="migrate-v2-hierarchical-entity"></a>Migrieren einer hierarchischen V2-Entität
@@ -124,7 +117,7 @@ Bei der V2-Erstellung wurde eine hierarchische Entität vor den in LUIS vorhande
 
 Bei der V3-Erstellung:
 * Eine Rolle kann auf die durch maschinelles Lernen erworbene (übergeordnete) Entität angewendet werden
-* Rollen können auf keine der Unterkomponenten angewendet werden
+* Eine Rolle kann auf keine untergeordneten Entitäten angewendet werden.
 
 Diese Entität ist lediglich ein Beispiel. Die Migration Ihrer eigenen Entität erfordert möglicherweise andere Überlegungen.
 
@@ -141,6 +134,56 @@ Die Migration ist in der folgenden Tabelle veranschaulicht:
 |--|--|
 |Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: durch maschinelles Lernen erworbene Entität mit dem Namen `Order`|
 |Untergeordnete Entität: hierarchische Entität mit ursprünglichem und endgültigem Pizzabelag|* Fügen Sie `Order` für jeden Belag eine Rolle hinzu.|
+
+## <a name="api-change-constraint-replaced-with-required-feature"></a>API-Änderung: Einschränkung durch erforderliches Feature ersetzt
+
+Diese Änderung wurde im Mai 2020 auf der //Build-Konferenz vorgenommen und gilt nur für die V3-Erstellungs-APIs, bei denen eine App ein eingeschränktes Feature verwendet. Wenn Sie von der V2-Erstellung zur V3-Erstellung migrieren oder keine eingeschränkten V3-Features verwendet haben, können Sie diesen Abschnitt überspringen.
+
+**Funktion:** Möglichkeit, eine vorhandene Entität als Feature für ein anderes Modell erforderlich zu machen und dieses Modell nur zu extrahieren, wenn die Entität erkannt wird. Die Funktion ist unverändert, aber die API und die Terminologie haben sich geändert.
+
+|Alte Terminologie|Neue Terminologie|
+|--|--|
+|`constrained feature`<br>`constraint`<br>`instanceOf`|`required feature`<br>`isRequired`|
+
+#### <a name="automatic-migration"></a>Automatische Migration
+
+Ab dem **19. Juni 2020** dürfen keine programmgesteuerten Einschränkungen mehr mithilfe der vorherigen Erstellungs-API erstellt werden, von der diese Funktion verfügbar gemacht wurde.
+
+Bereits vorhandene Einschränkungsfeatures werden automatisch zum Flag für erforderliche Features migriert. Es sind keine programmgesteuerten Änderungen für Ihre Vorhersage-API erforderlich, und auch die Qualität der Vorhersagegenauigkeit bleibt unverändert.
+
+#### <a name="luis-portal-changes"></a>Änderungen im LUIS-Portal
+
+Im LUIS-Vorschauportal hat wurde diese Funktion als **Einschränkung** bezeichnet. Im aktuellen LUIS-Portal wird diese Funktion als **erforderliches Feature** bezeichnet.
+
+#### <a name="previous-authoring-api"></a>Alte Erstellungs-API
+
+Diese Funktion wurde in der Vorschauversion der **[API zum Erstellen einer untergeordneten Entität](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d86cf3c6a25a45529767d77)** als Teil der Definition einer Entität unter Verwendung der Eigenschaft `instanceOf` des untergeordneten Elements einer Entität angewendet:
+
+```json
+{
+    "name" : "dayOfWeek",
+    "instanceOf": "datetimeV2",
+    "children": [
+        {
+           "name": "dayNumber",
+           "instanceOf": "number",
+           "children": []
+        }
+    ]
+}
+```
+
+#### <a name="new-authoring-api"></a>Neue Erstellungs-API
+
+Diese Funktion wird nun mit der **[API zum Hinzufügen eine Entitätsfeaturebeziehung](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d9dc1781e38aaec1c375f26)** unter Verwendung der Eigenschaften `featureName` und `isRequired` angewendet. Der Wert der Eigenschaft `featureName` ist der Name des Modells.
+
+```json
+{
+    "featureName": "YOUR-MODEL-NAME-HERE",
+    "isRequired" : true
+}
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

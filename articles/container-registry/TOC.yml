@@ -91,7 +91,7 @@
           items:
             - name: Beschränken des Zugriffs mithilfe eines privaten Endpunkts
               href: container-registry-private-link.md
-            - name: Konfigurieren von Firewallregeln für einen Dienst
+            - name: Konfigurieren des öffentlichen Registrierungszugriffs
               href: container-registry-access-selected-networks.md
             - name: Beschränken des Zugriffs mithilfe eines Dienstendpunkts (Vorschauversion)
               href: container-registry-vnet.md

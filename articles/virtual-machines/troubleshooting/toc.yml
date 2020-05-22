@@ -77,6 +77,10 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Fehler beim kritischen Dienst
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 'Behandeln von Startfehlern: Status nicht gefunden'
+          href: boot-error-status-not-found.md
+        - name: "Behandeln von Problemen mit der Windows\_Update-Installationskapazität"
+          href: windows-update-installation-capacity.md
         - name: Virtueller Computer reagiert beim Anwenden der Richtlinie für lokale Benutzer und Gruppen nicht
           href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Kein startbarer Datenträger

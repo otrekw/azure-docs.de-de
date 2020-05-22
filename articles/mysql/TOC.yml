@@ -276,6 +276,8 @@
       items:
         - name: "Konfigurieren der Azure\_AD-Integration"
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: Herstellen einer Verbindung mit verwalteter Identität
+          href: howto-connect-with-managed-identity.md
     - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
       items:
         - name: Azure-Portal

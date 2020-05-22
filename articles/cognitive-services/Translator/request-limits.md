@@ -1,7 +1,7 @@
 ---
-title: Anforderungslimits – Textübersetzungs-API
+title: Anforderungsgrenzwerte – Translator
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel werden die Anforderungslimits für die Textübersetzungs-API aufgeführt. Die Gebühren werden basierend auf der Anzahl der Zeichen berechnet, nicht nach der Anforderungshäufigkeit, mit einem Grenzwert von 5.000 Zeichen pro Anforderung. Die Zeichengrenzwerte sind abonnementbasiert, wobei F0 auf 2 Millionen Zeichen pro Stunde beschränkt ist.
+description: In diesem Artikel sind die Anforderungsgrenzwerte für Translator aufgeführt. Die Gebühren werden basierend auf der Anzahl der Zeichen berechnet, nicht nach der Anforderungshäufigkeit, mit einem Grenzwert von 5.000 Zeichen pro Anforderung. Die Zeichengrenzwerte sind abonnementbasiert, wobei F0 auf 2 Millionen Zeichen pro Stunde beschränkt ist.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498935"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592235"
 ---
-# <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
+# <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
-In diesem Artikel werden die Drosselungslimits für die Textübersetzungs-API aufgeführt. Zu den Diensten gehören Übersetzung, Transliteration, Satzlängenerkennung, Spracherkennung und alternative Übersetzungen.
+In diesem Artikel sind die Drosselungsgrenzwerte für Translator aufgeführt. Zu den Diensten gehören Übersetzung, Transliteration, Satzlängenerkennung, Spracherkennung und alternative Übersetzungen.
 
 ## <a name="character-and-array-limits-per-request"></a>Zeichen- und Arraygrenzwerte pro Anforderung
 
 Jede Übersetzungsanforderung ist auf 5.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 1.500 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 1.500 · 3 = 4.500 Zeichen. Dies entspricht dem Anforderungsgrenzwert. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
 
-In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang der Textübersetzungs-API aufgeführt.
+In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang von Translator aufgeführt.
 
 | Vorgang | Maximale Größe des Arrayelements |   Maximale Anzahl von Arrayelementen |  Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vor
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
-Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. 
+Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene von Translator. 
 
 Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Beispielsweise sollten Zeichen beim Grenzwert für den F0-Tarif von 2 Millionen Zeichen pro Stunde nicht schneller als mit ungefähr 33.300 Zeichen pro Minute gleitendes Fenster (2 Millionen, dividiert durch 60 Minuten) verbraucht werden.
 
@@ -58,7 +58,7 @@ Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschr�
 
 ## <a name="latency"></a>Latency
 
-Die maximale Latenz der Textübersetzungs-API beträgt bei Verwendung von Standardmodellen 15 Sekunden und bei Verwendung von benutzerdefinierten Modellen 120 Sekunden. In der Regel werden die Antworten *für Text unter 100 Zeichen* innerhalb von 150 bis 300 Millisekunden zurückgegeben. Die benutzerdefinierten Übersetzungsmodelle weisen ähnliche Latenzmerkmale für dauerhafte Anforderungsraten auf. Die Latenz kann aber höher sein, wenn Ihre Anforderungsrate unterbrochen wird. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar. Wenn Sie innerhalb dieses Zeitrahmens keine Übersetzung oder eine [Fehlerantwort](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) erhalten, überprüfen Sie Ihren Code und die Netzwerkverbindung, und versuchen Sie es nochmal. 
+Die maximale Wartezeit von Translator beträgt bei Verwendung von Standardmodellen 15 Sekunden und bei Verwendung von benutzerdefinierten Modellen 120 Sekunden. In der Regel werden die Antworten *für Text unter 100 Zeichen* innerhalb von 150 bis 300 Millisekunden zurückgegeben. Die benutzerdefinierten Übersetzungsmodelle weisen ähnliche Latenzmerkmale für dauerhafte Anforderungsraten auf. Die Latenz kann aber höher sein, wenn Ihre Anforderungsrate unterbrochen wird. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar. Wenn Sie innerhalb dieses Zeitrahmens keine Übersetzung oder eine [Fehlerantwort](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) erhalten, überprüfen Sie Ihren Code und die Netzwerkverbindung, und versuchen Sie es nochmal. 
 
 ## <a name="sentence-length-limits"></a>Grenzwerte bei der Satzlänge
 
@@ -82,4 +82,4 @@ Bei Verwendung der [BreakSentence](https://docs.microsoft.com/azure/cognitive-se
 
 * [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionale Verfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [Referenz für Version 3 der Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Referenz zu Version 3 von Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

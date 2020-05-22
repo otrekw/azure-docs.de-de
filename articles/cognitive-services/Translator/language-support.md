@@ -1,7 +1,7 @@
 ---
-title: Sprachunterstützung – Textübersetzungs-API
+title: 'Sprachunterstützung: Translator'
 titleSuffix: Azure Cognitive Services
-description: Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten mithilfe der neuronalen maschinellen Übersetzung (Neural Machine Translation, NMT).
+description: Von Cognitive Services Translator werden die folgenden Sprachen für die Übersetzung von Texten mithilfe der neuronalen maschinellen Übersetzung (Neural Machine Translation, NMT) unterstützt.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684825"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592728"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
+# <a name="language-and-region-support-for-translator"></a>Sprach- und Regionsunterstützung für Translator
 
-Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten. Die neuronale maschinelle Übersetzung (NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende, maschinelle Übersetzungen und steht standardmäßig in V3 der Translator-Text-API bereit, wenn ein neuronales System verfügbar ist.
+Von Translator werden die folgenden Sprachen für die Übersetzung von Texten unterstützt. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
 
 [Weitere Informationen zur Funktionsweise von maschineller Übersetzung](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Sprachübersetzung
 
-**V2 der Textübersetzungs-API**
+**V2 von Translator**
 
 > [!NOTE]
 > V2 wurde am 30. April 2018 eingestellt. Migrieren Sie Ihre Anwendungen zu V3, um die Vorteile der neuen Funktionen zu nutzen, die ausschließlich in V3 verfügbar sind.
@@ -35,7 +35,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 * Neuronales System als Standard: Das neuronale System ist als standardmäßiges Übersetzungssystem festgelegt. Verwenden Sie den Parameter `category=smt`, um auf das statistische System zur Verwendung mit Microsoft Translator Hub zuzugreifen.
 * Nur neuronales System: Es ist nur die neuronale Übersetzung verfügbar.
 
-**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind.
+**V3 von Translator**: In der Version 3 von Translator wird standardmäßig ein neuronales System verwendet. Die statistischen Systeme sind nur verfügbar, wenn kein neuronales System vorhanden ist.
 
 > [!NOTE]
 > Derzeit ist eine Teilmenge der neuronalen Sprachen in Custom Translator verfügbar und es werden nach und nach zusätzliche Sprachen hinzugefügt. [Zeigen Sie die zurzeit verfügbaren Sprachen im benutzerdefinierten Translator an](#customization).
@@ -204,12 +204,12 @@ Das Wörterbuch unterstützt die Übertragung der folgenden Sprachen in das oder
 
 ## <a name="detect"></a>Detect
 
-Die Textübersetzungs-API erkennt alle verfügbaren Sprachen für die Übersetzung und Transliteration.
+Von Translator werden alle verfügbaren Sprachen für die Übersetzung und Transliteration erkannt.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programmgesteuerter Zugriff auf die Textübersetzungs-API-Sprachliste
+## <a name="access-the-translator-language-list-programmatically"></a>Programmgesteuertes Zugreifen auf die Translator-Sprachliste
 
-Sie können eine Liste der unterstützten Sprachen für die Textübersetzungs-API v3. 0 mit der Sprachen-Methode abrufen. Sie können die Liste nach Funktion, Sprachcode sowie Sprachname in Englisch oder jeder anderen unterstützten Sprache anzeigen. Sobald neue Sprachen verfügbar gemacht werden, wird diese Liste automatisch vom Microsoft Translator-Dienst aktualisiert.
+Mithilfe der Methode „Languages“ kann eine Liste der unterstützten Sprachen für Translator 3.0 abgerufen werden. Sie können die Liste nach Funktion, Sprachcode sowie Sprachname in Englisch oder jeder anderen unterstützten Sprache anzeigen. Sobald neue Sprachen verfügbar gemacht werden, wird diese Liste automatisch vom Microsoft Translator-Dienst aktualisiert.
 
 [Anzeigen der Referenzdokumentation zum Vorgang „Languages“](reference/v3-0-languages.md)
 
@@ -269,6 +269,6 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Zugreifen auf die Liste auf der Microsoft Translator-Website
 
-Für einen schnellen Überblick über die Sprachen werden auf der Microsoft Translator-Website alle Sprachen angezeigt, die von der Translator-Text-API und -Sprach-API unterstützt werden. Diese Liste enthält keine entwicklerspezifischen Informationen wie z.B. Sprachcodes.
+Für einen schnellen Überblick über die Sprachen werden auf der Microsoft Translator-Website alle Sprachen angezeigt, die von den Translator- und Speech-APIs unterstützt werden. Diese Liste enthält keine entwicklerspezifischen Informationen wie z.B. Sprachcodes.
 
 [Die Liste der Sprachen](https://www.microsoft.com/translator/languages.aspx)

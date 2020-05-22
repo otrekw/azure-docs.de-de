@@ -7,7 +7,7 @@
       items:
         - name: Was ist Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: 1 – Vorbereiten
           href: data-box-gateway-deploy-prep.md
@@ -65,7 +65,7 @@
       items:
         - name: "Was ist Azure Stack\_Edge?"
           href: azure-stack-edge-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: 1 – Vorbereiten
           href: azure-stack-edge-deploy-prep.md
@@ -88,7 +88,11 @@
         - name: Sicherheitsübersicht
           href: azure-stack-edge-security.md
         - name: Spezifikationen für die Überprüfung
-          href: azure-stack-edge-technical-specifications-compliance.md
+          items:
+            - name: Gerätespezifikationen
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: Netzkabelspezifikationen
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: Anleitung
       items:
         - name: 'Entwickeln eines C#-Moduls'

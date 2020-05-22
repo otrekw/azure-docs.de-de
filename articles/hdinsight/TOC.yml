@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planen der Clusterkapazität
           href: ./hdinsight-capacity-planning.md
+        - name: Anfordern einer Erhöhung des Kontingents für CPU-Kerne
+          href: ./quota-increase-request.md
         - name: Bewährte Methoden für die Clusterverwaltung
           href: ./cluster-management-best-practices.md
         - name: Verfügbarkeit und Zuverlässigkeit
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Problembehandlung für Apache Oozie
               href: ./troubleshoot-oozie.md
+            - name: Verstehen und Beheben von WebHCat-Fehlern
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Verweis
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Aktivieren von Heapdumps für Apache Hadoop-Dienste
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Verstehen und Beheben von WebHCat-Fehlern
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: Hilfe im Forum
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: Preisrechner
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Optimieren von Apache Spark-Aufträgen
           href: ./spark/apache-spark-perf.md
+        - name: "Migrieren zu Spark\_2.3 oder\_2.4"
+          href: ./spark/migrate-versions.md
     - name: Anleitung
       items:
         - name: Verwenden von Tools
@@ -495,7 +499,7 @@
               href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
             - name: 'Bedarfsorientiertes Extrahieren, Transformieren und Laden'
               href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: 'Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung '
+            - name: Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung
               href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
             - name: Analysieren von Big Data
               items:
@@ -736,6 +740,8 @@
       items:
         - name: Best Practices für Gateway
           href: ./interactive-query/gateway-best-practices.md
+        - name: Größenrichtlinien
+          href: ./interactive-query/sizing-guidelines.md
     - name: Anleitung
       items:
         - name: Entwickeln
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Keine Reaktion der Apache Tez-Anwendung
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP-Größenrichtlinien
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP-Abfrageleistung
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Langsamer Reducer

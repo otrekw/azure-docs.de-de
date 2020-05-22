@@ -1,90 +1,147 @@
 ---
 title: Features – LUIS
-titleSuffix: Azure Cognitive Services
 description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.author: diberry
-ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591895"
 ---
-# <a name="machine-learned-features"></a>Durch maschinelles Lernen erworbene Features
+# <a name="machine-learning-ml-features"></a>Machine Learning-Features (ML)
 
-Beim maschinellen Lernen ist ein _Feature_ ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht oder durch die es lernt. In Language Understanding (LUIS) beschreibt und erläutert ein Feature, was an Ihren Absichten und Entitäten wichtig ist.
+Beim maschinellen Lernen ist ein  **Feature** ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht.
 
-Im [LUIS-Vorschauportal](https://preview.luis.ai) handelt es sich bei Features um _Deskriptoren_, da sie zum _Beschreiben_ der Absicht oder Entität verwendet werden.
+Features des maschinellen Lernens liefern für LUIS wichtige Hinweise dazu, wo nach Informationen gesucht werden sollte, die für ein Konzept den Unterschied ausmachen. Hierbei handelt es sich um Hinweise, die von LUIS befolgt werden können, aber nicht um feste Regeln.  Diese Hinweise werden zusammen mit den Bezeichnungen genutzt, um Daten finden zu können.
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Features (_Deskriptoren_) in Language Understanding
+ LUIS unterstützt als Features sowohl Ausdruckslisten als auch andere Entitäten:
+* Feature „Ausdrucksliste“
+* Modell (Absicht oder Entität) als Feature
 
-Features, die auch als Deskriptoren bezeichnet werden, beschreiben Hinweise, um Language Understanding das Identifizieren der Beispieläußerungen zu erleichtern. Folgende Features sind enthalten:
+Features sollten als erforderlicher Bestandteil Ihres Schemaentwurfs angesehen werden.
 
-* Ausdruckslisten als Features für Absichten oder Entitäten
-* Entitäten als Features für Absichten oder Entitäten
+## <a name="a-phrase-list-for-a-particular-concept"></a>Eine Ausdrucksliste für ein bestimmtes Konzept
 
-Features sollten zum Zweck der Modellaufschlüsselung als notwendiger Teil Ihres Schemas angesehen werden.
+Eine Ausdrucksliste ist eine Liste mit Wörtern oder Ausdrücken, die für ein bestimmtes Konzept steht.
 
-## <a name="what-is-a-phrase-list"></a>Was ist eine Ausdrucksliste
+Beim Hinzufügen einer Ausdrucksliste können Sie das Feature wie folgt festlegen:
+* **[Global](#global-features)** . Ein globales Feature gilt für die gesamte App.
 
-Eine Ausdrucksliste ist eine Liste von Wörtern, Ausdrücken, Zahlen oder anderen Zeichen, die bei der Erkennung des Konzepts helfen, das Sie zu erkennen versuchen. In der Liste wird Groß-/Kleinschreibung unterschieden.
+### <a name="when-to-use-a-phrase-list"></a>Wann Sie Ausdruckslisten verwenden
 
-## <a name="when-to-use-a-phrase-list"></a>Wann Sie Ausdruckslisten verwenden
-
-Bei einer Ausdrucksliste berücksichtigt LUIS den Kontext und verallgemeinert, um Elemente zu erkennen, die einander ähnlich sind, ohne eine genaue textliche Übereinstimmung darzustellen. Wenn Sie Ihre LUIS-App in der Lage sein soll, zu generalisieren und neue Elemente zu identifizieren, verwenden Sie eine Ausdrucksliste.
-
-Wenn Sie neue Instanzen erkennen möchten, z. B. einen Besprechungsplan, bei dem auch die Namen neuer Kontakte ermittelt werden, oder eine Inventur-App, bei der neue Produkte ermittelt werden sollen, beginnen Sie mit einer durch maschinelles Lernen erworbenen Entität. Erstellen Sie dann eine Ausdrucksliste, die LUIS hilft, Wörter mit ähnlicher Bedeutung zu finden. Diese Ausdrucksliste führt LUIS beim Erkennen von Beispielen, indem sie dem Wert dieser Wörter zusätzliche Wichtigkeit verleiht.
-
-Ausdruckslisten ähneln einem domänenspezifischen Vokabular, das zur Verbesserung des Verständnisses von Absichten und Entitäten beiträgt.
-
-## <a name="considerations-when-using-a-phrase-list"></a>Wichtige Aspekte bei Verwendung einer Ausdrucksliste
-
-Eine Ausdrucksliste wird standardmäßig auf alle Modelle in der App angewendet. Dies funktioniert bei Ausdruckslisten, die alle Absichten und Entitäten übergreifen können. Zum Zweck der Aufschlüsselung sollten Sie eine Ausdrucksliste nur auf die Modelle anwenden, für die sie relevant ist.
-
-Wenn Sie eine Ausdrucksliste erstellen (standardmäßig global erstellt) und sie dann später als Deskriptor (Feature) auf ein bestimmtes Modell anwenden, wird sie aus den anderen Modellen entfernt. Diese Entfernung verleiht der Ausdruckliste für das Modell, auf das sie angewendet wird, Wichtigkeit, und hilft, die Genauigkeit, die sie im Modell bietet, zu verbessern.
-
-Das `enabledForAllModels`-Flag steuert diesen Modellbereich in der API.
-
-<a name="how-to-use-phrase-lists"></a>
+Verwenden Sie eine Ausdrucksliste, wenn Ihre LUIS-App dazu in der Lage sein soll, zu generalisieren und neue Elemente für das Konzept zu identifizieren. Ausdruckslisten ähneln einem domänenspezifischen Vokabular, das zur Verbesserung des Verständnisses von Absichten und Entitäten beiträgt.
 
 ### <a name="how-to-use-a-phrase-list"></a>Verwenden von Ausdruckslisten
 
-[Erstellen Sie eine Begriffsliste](luis-how-to-add-features.md), wenn Ihre Absicht oder Entität wichtige Wörter oder Ausdrücke enthält, wie etwa:
+Bei einer Ausdrucksliste berücksichtigt LUIS den Kontext und verallgemeinert, um Elemente zu erkennen, die einander ähnlich sind, ohne eine genaue textliche Übereinstimmung darzustellen.
 
-* Branchenbegriffe
-* Jargon
-* Abkürzungen
-* Unternehmensspezifische Sprache
-* Ausdrücke in einer anderen Sprache, die in Ihrer App jedoch häufig verwendet werden
-* Schlüsselwörter und -ausdrücke in Ihren Beispieläußerungen
+Schritte zur Verwendung einer Ausdrucksliste:
+* Verwenden einer durch maschinelles Lernen erworbenen Entität als Ausgangspunkt
+    * Hinzufügen von Beispieläußerungen
+    * Vergeben von Bezeichnungen mit einer durch maschinelles Lernen erworbenen Entität
+* Hinzufügen einer Ausdrucksliste
+    * Fügen Sie Wörter mit ähnlicher Bedeutung hinzu. Gehen Sie **nicht** so vor, dass Sie jedes mögliche Wort oder beliebige Ausdrücke hinzufügen. Fügen Sie jeweils einige Wörter oder Ausdrücke hinzu, trainieren Sie erneut, und veröffentlichen Sie.
+    * Überprüfen und Hinzufügen von vorgeschlagenen Wörtern
 
-Fügen Sie **nicht** jedes denkbare Wort oder jeden denkbaren Ausdruck hinzu. Fügen Sie jeweils einige Wörter oder Ausdrücke hinzu, trainieren Sie erneut, und veröffentlichen Sie. Wenn die Liste Ihrer App mit der Zeit anwächst, können einige Ausdrücke möglicherweise verschiedene Formen (Synonyme) aufweisen. Gliedern Sie diese in eine weitere Liste aus.
+### <a name="a-typical-scenario-for-a-phrase-list"></a>Typisches Szenario für eine Ausdrucksliste
 
+Ein typisches Szenario für eine Ausdrucksliste ist die Verstärkung von Wörtern, die sich auf ein bestimmtes Thema beziehen.
+
+Ein Beispiel für Wörter, für die zum Verstärken der Signifikanz ggf. eine Ausdrucksliste benötigt wird, sind medizinische Fachbegriffe. Die Begriffe können hierbei eine bestimmte physische, chemische, therapeutische oder abstrakte Bedeutung haben. Ohne Verwendung einer Ausdrucksliste weiß LUIS nicht, dass die Begriffe für Ihren Themenbereich wichtig sind.
+
+Gehen Sie wie folgt vor, wenn Sie die medizinischen Fachbegriffe extrahieren möchten:
+* Erstellen Sie zunächst Beispieläußerungen, und bezeichnen Sie die medizinischen Begriffe in diesen Äußerungen.
+* Erstellen Sie anschließend eine Ausdrucksliste mit Beispielen für die Begriffe innerhalb des Themenbereichs. Diese Ausdrucksliste sollte den von Ihnen bezeichneten eigentlichen Begriff und andere Begriffe enthalten, mit denen dasselbe Konzept beschrieben wird.
+* Fügen Sie die Ausdrucksliste der Entität oder untergeordneten Entität hinzu, von der das in der Ausdrucksliste verwendete Konzept extrahiert wird. Das häufigste Szenario ist eine Komponente (untergeordnetes Element) einer durch maschinelles Lernen erworbenen Entität. Wenn die Ausdrucksliste übergreifend auf alle Absichten bzw. Entitäten angewendet werden soll, sollten Sie sie als globale Ausdrucksliste kennzeichnen. Das `enabledForAllModels`-Flag steuert diesen Modellbereich in der API.
+
+<a name="how-to-use-phrase-lists"></a>
+<a name="how-to-use-a-phrase-lists"></a>
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Wann eine Entität als Feature verwendet werden soll
+## <a name="a-model-as-a-feature-helps-another-model"></a>Ein Modell als Feature dient als Unterstützung für ein anderes Modell
 
-Eine Entität kann auf der Absichts- oder der Entitätsebene als Feature hinzugefügt werden.
+Sie können ein Modell (Absicht oder Entität) einem anderen Modell (Absicht oder Entität) als Feature hinzufügen. Indem Sie eine vorhandene Absicht oder Entität als Feature hinzufügen, sorgen Sie für ein klar definiertes Konzept mit bezeichneten Beispielen.
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Entität als Feature einer Absicht
+Beim Hinzufügen eines Modells als Feature können Sie das Feature wie folgt festlegen:
+* **[Erforderlich](#required-features)** : Es muss ein erforderliches Feature gefunden werden, damit das Modell vom Vorhersageendpunkt zurückgegeben wird.
+* **[Global](#global-features)** . Ein globales Feature gilt für die gesamte App.
 
-Fügen Sie eine Entität einer Absicht als Deskriptor (Feature) hinzu, wenn die Erkennung dieser Entität für die Absicht wichtig ist.
+### <a name="when-to-use-an-entity-as-a-feature-to-an-intent"></a>Verwenden einer Entität als Feature für eine Absicht
 
-Wenn die Absicht beispielsweise das Buchen eines Fluges und die Entität die Ticketinformationen sind (etwa die Anzahl der Sitze, Abflugort und Ankunftsort), dann würde das Auffinden der Entität mit den Ticketinformationen der Vorhersage der Flugbuchungsabsicht größeres Gewicht verleihen.
+Fügen Sie eine Entität einer Absicht als Feature hinzu, wenn die Erkennung dieser Entität für die Absicht wichtig ist.
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Entität als Feature einer anderen Entität
+Wenn die Absicht beispielsweise das Buchen eines Flugs (`BookFlight`) und die Entität die Ticketinformationen sind (z. B. Platzanzahl, Abflugort und Ankunftsort), würde die Ermittlung der Entität mit den Ticketinformationen der Vorhersage der Flugbuchungsabsicht (`BookFlight`) ein erheblich höheres Gewicht verleihen.
+
+### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>Verwenden einer Entität als Feature für eine andere Entität
 
 Eine Entität (A) sollte einer anderen Entität (B) als Feature hinzugefügt werden, wenn die Erkennung dieser Entität (A) für die Vorhersage von Entität (B) wichtig ist.
 
-Wenn beispielsweise die Straßenanschriftsentität (A) erkannt wird, dann verleiht das Auffinden der Straßenanschrift (A) der Vorhersage für die Versandadressentität (B) zusätzliches Gewicht.
+Wenn eine Lieferadressen-Entität beispielsweise eine untergeordnete Anschrift-Entität enthält, verleiht die Ermittlung der untergeordneten Anschrift-Entität der Vorhersage der Lieferadressen-Entität ein erheblich höheres Gewicht.
+
+* Lieferadresse (durch maschinelles Lernen erworbene Entität)
+    * Hausnummer (untergeordnete Entität)
+    * Anschrift (untergeordnete Entität)
+    * Ort (untergeordnete Entität)
+    * Bundesland oder Kanton (untergeordnete Entität)
+    * Land (untergeordnete Entität)
+    * Postleitzahl (untergeordnete Entität)
+
+## <a name="required-features"></a>Erforderliche Features
+
+Es muss ein erforderliches Feature gefunden werden, damit das Modell vom Vorhersageendpunkt zurückgegeben wird. Verwenden Sie ein erforderliches Feature, wenn Sie wissen, dass die eingehenden Daten mit dem Feature übereinstimmen müssen.
+
+**Für ein erforderliches Feature wird eine nicht durch maschinelles Lernen erworbene Entität verwendet**:
+* Entität vom Typ „RegEx“
+* Entität vom Typ „List“
+* Vordefinierte Entität
+
+Was sind gute Features, die als erforderlich gekennzeichnet werden sollten? Legen Sie das Feature entsprechend fest, wenn Sie sich sicher sind, dass Ihr Modell in den Daten zu finden ist. Für ein erforderliches Feature wird nichts zurückgegeben, wenn es nicht gefunden wird.
+
+Wir verwenden wieder das Beispiel für die Lieferadresse:
+* Lieferadresse (durch maschinelles Lernen erworbene Entität)
+    * Hausnummer (untergeordnete Entität)
+    * Anschrift (untergeordnete Entität)
+    * Straße (untergeordnete Entität)
+    * Ort (untergeordnete Entität)
+    * Bundesland oder Kanton (untergeordnete Entität)
+    * Land (untergeordnete Entität)
+    * Postleitzahl (untergeordnete Entität)
+
+### <a name="required-feature-using-prebuilt-entities"></a>Erforderliches Feature mit vordefinierten Entitäten
+
+Ort, Bundesland/Kanton und Land gehören meistens fest zusammen und ändern sich nicht häufig. Unter Umständen verfügen diese Entitäten über die relevanten empfohlenen Features, und diese Features können dann als erforderlich gekennzeichnet werden. Dies bedeutet, dass die gesamte Lieferadresse nicht zurückgegeben wird, wenn die Entitäten mit den erforderlichen Features nicht gefunden werden.
+
+Was passiert, wenn Ort, Bundesland/Kanton oder Land in der Äußerung enthalten sind, aber dies an einem Ort oder als Slangausdruck erfolgt, der von LUIS nicht erwartet wird? Falls Sie eine Nachbearbeitung als Hilfe bei der Auflösung der Entität durchführen möchten, weil von LUIS eine niedrige Zuverlässigkeitsbewertung vergeben wurde, sollten Sie das Feature nicht als erforderlich kennzeichnen.
+
+Ein weiteres Beispiel für ein erforderliches Feature für die Lieferadresse ist, die Hausnummer zu einer erforderlichen [vordefinierten](luis-reference-prebuilt-entities.md) Nummer zu machen. Benutzer können dann entweder „1 Microsoft Way“ oder „One Microsoft Way“ eingeben. In beiden Fällen wird dies für die untergeordnete Entität „Hausnummer“ richtig als Hausnummer „1“ aufgelöst.
+
+### <a name="required-feature-using-list-entities"></a>Erforderliches Feature bei Verwendung von Listenentitäten
+
+Eine [Listenentität](reference-entity-list.md) wird als Liste mit kanonischen Namen und den zugehörigen Synonymen verwendet. Wenn die Äußerung als erforderliches Feature nicht entweder den kanonischen Namen oder ein Synonym enthält, wird die Entität nicht als Teil des Vorhersageendpunkts zurückgegeben.
+
+Nehmen Sie für das Beispiel mit der Lieferadresse an, dass Ihr Unternehmen Lieferungen nur in eine begrenzte Anzahl von Ländern durchführt. Sie können eine Listenentität erstellen, bei der es mehrere Möglichkeiten gibt, wie Ihre Kunden das Land angeben können. Falls LUIS im Text der Äußerung keine genaue Übereinstimmung findet, wird die Entität (mit dem erforderlichen Feature der Listenentität) in der Vorhersage nicht zurückgegeben.
+
+|Kanonischer Name|Synonyme|
+|--|--|
+|Vereinigte Staaten|U.S.<br>U.S.A<br>US<br>USA<br>0|
+
+Die Clientanwendung, z. B. ein Chatbot, kann eine Folgefrage stellen, damit der Kunde versteht, dass die Länderauswahl begrenzt und _erforderlich_ ist.
+
+### <a name="required-feature-using-regular-expression-entities"></a>Erforderliches Feature mit Entitäten für reguläre Ausdrücke
+
+Eine [Entität vom Typ „Regulärer Ausdruck“](reference-entity-regular-expression.md), die als erforderliches Feature verwendet wird, verfügt über umfassende Funktionen zum Abgleichen von Text.
+
+Für das Beispiel mit der Lieferadresse können Sie einen regulären Ausdruck erstellen, mit dem die Syntaxregeln der Postleitzahlen des Lands erfasst werden.
+
+## <a name="global-features"></a>Globale Features
+
+Die häufigste Verwendung ist die Anwendung eines Features auf ein bestimmtes Modell, aber Sie können das Feature auch als **globales Feature** konfigurieren, um es auf Ihre gesamte Anwendung anzuwenden.
+
+Die häufigste Verwendung eines globalen Features ist das Hinzufügen von zusätzlichem Vokabular, z. B. Wörter in einer anderen Sprache, zur App. Wenn Ihre Kunden hauptsächlich eine bestimmte Sprache nutzen, gleichzeitig aber erwarten, dass sie innerhalb derselben Äußerung noch eine weitere Sprache verwenden können, können Sie ein Feature für Wörter der zweiten Sprache hinzufügen.
+
+Da vom Benutzer erwartet wird, dass er die zweite Sprache für alle Absichten oder Entitäten nutzen kann, sollte dies im Rahmen einer Ausdrucksliste hinzugefügt und diese Liste als globales Feature konfiguriert werden.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 Informationen zu [Best Practices](luis-concept-best-practices.md).

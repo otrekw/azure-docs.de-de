@@ -4,12 +4,12 @@ description: In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über 
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548726"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592575"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTPS-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Endpunktäußerungen sollten regelmäßig im Rahmen der geplanten LUIS-Wartung überprüft werden.
@@ -33,11 +33,11 @@ Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren S
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importieren der Beispiel-App
+## <a name="download-json-file-for-app"></a>Herunterladen der JSON-Datei für die App
 
-Führen Sie zum Importieren einer App die folgenden Schritte aus:
+Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) herunter, und speichern Sie sie.
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) herunter, und speichern Sie sie.
+## <a name="import-json-file-for-app"></a>Importieren der JSON-Datei für die App
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

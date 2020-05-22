@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Erkennen von Sprache aus einem Blobspeicher
           href: quickstarts/from-blob.md
+        - name: Aussprachebewertung mit Referenzeingabe
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Anleitungen
       items:
         - name: Auswählen eines Spracherkennungsmodus
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: Bewerten der Custom Speech-Genauigkeit
           href: how-to-custom-speech-evaluate-data.md
+        - name: "Verbessern der Custom\_Speech-Genauigkeit"
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Trainieren eines Modells für Custom Speech
           href: how-to-custom-speech-train-model.md
         - name: Bereitstellen eines benutzerdefinierten Modells

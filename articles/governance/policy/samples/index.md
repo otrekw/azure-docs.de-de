@@ -3,12 +3,12 @@ title: Index der Richtlinienbeispiele
 description: Index der Integrationen für Azure Policy Kategorietags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr
 ms.date: 03/25/2020
 ms.topic: sample
-ms.openlocfilehash: d990f911612c8e1f5ab7cdbdae7efe362aa70bb5
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80257171"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697182"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -27,6 +27,7 @@ Nachfolgend finden Sie Beispiele für verschiedene Muster, in der die Sprache un
 - [Fields](./pattern-fields.md)
 - [Parameter](./pattern-parameters.md)
 - [Details zu Auswirkungen](./pattern-effect-details.md)
+- [Verwenden von Tags](./pattern-effect-details.md)
 - [value-Operator](./pattern-value-operator.md)
 - [count-Operator](./pattern-count-operator.md)
 - [Gruppieren von Richtliniendefinitionen in einer Initiative](./pattern-group-with-initiative.md)

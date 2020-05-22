@@ -2,13 +2,13 @@
 title: 'Tutorial: Batchtests zur Fehlersuche: LUIS'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Batchtests nutzen, um die Qualität Ihrer LUIS-App (Language Understanding) zu überprüfen.
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78250557"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592592"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 
@@ -41,7 +41,9 @@ Importieren Sie eine App, mit der eine Pizzabestellung angenommen wird, z. B. `
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) herunter, und speichern Sie sie.
 
-1. Verwenden Sie das [LUIS-Vorschauportal](https://preview.luis.ai/), importieren Sie den JSON-Code in eine neue App, und geben Sie der App den Namen `Pizza app`.
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Importieren Sie den JSON-Code in eine neue App, und nennen Sie sie `Pizza app`.
+
 
 1. Wählen Sie oben rechts im Navigationsbereich die Option **Trainieren** aus, um die App zu trainieren.
 

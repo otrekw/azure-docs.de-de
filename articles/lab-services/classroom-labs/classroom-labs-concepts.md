@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526228"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592626"
 ---
 # <a name="classroom-labs-concepts"></a>Konzepte von Classroom-Labs
 
@@ -26,13 +26,13 @@ Die folgende Liste enthält wichtige Lab Services-Konzepte und -Definitionen:
 
 ## <a name="quota"></a>Kontingent
 
-Das Kontingent ist das Zeitlimit (in Stunden), das ein Kursleiter für die Verwendung einer Lab-VM durch einen Kursteilnehmer festlegen kann. Es kann auf 0 (null) oder eine bestimmte Anzahl von Stunden festgelegt werden. Wenn das Kontingent auf 0 festgelegt wird, kann der Kursteilnehmer den virtuellen Computer nur verwenden, wenn ein Zeitplan ausgeführt wird oder wenn ein Kursleiter den virtuellen Computer manuell für den Kursteilnehmer einschaltet.  
+Das Kontingent ist das Zeitlimit (in Stunden), das ein Lehrer/Dozent für die Verwendung einer Lab-VM durch einen Kursteilnehmer festlegen kann. Es kann auf 0 (null) oder eine bestimmte Anzahl von Stunden festgelegt werden. Wenn das Kontingent auf 0 festgelegt wird, kann der Kursteilnehmer den virtuellen Computer nur verwenden, wenn ein Zeitplan ausgeführt wird oder wenn ein Lehrer/Dozent den virtuellen Computer manuell für den Kursteilnehmer einschaltet.  
 
-Die Kontingentstunden werden gezählt, wenn Kursteilnehmer den virtuellen Computer in einem Lab selbst starten.  Wenn ein Kursleiter den virtuellen Computer in einem Lab für einen Kursteilnehmer manuell startet, werden für den Kursteilnehmer keine Kontingentstunden verwendet.
+Die Kontingentstunden werden gezählt, wenn Kursteilnehmer den virtuellen Computer in einem Lab selbst starten.  Wenn ein Lehrer/Dozent den virtuellen Computer in einem Lab für einen Kursteilnehmer manuell startet, werden für den Kursteilnehmer keine Kontingentstunden verwendet.
 
 ## <a name="schedules"></a>Zeitpläne
 
-Zeitpläne sind die Zeitfenster, die ein Kursleiter für die Klasse erstellen kann, damit die virtuellen Computer der Kursteilnehmer für den Unterricht zur Verfügung stehen.  Zeitpläne können einmalig oder wiederkehrend sein.  Kontingentstunden werden nicht verbraucht, wenn ein Zeitplan ausgeführt wird.
+Zeitpläne sind die Zeitfenster, die ein Lehrer/Dozent für die Klasse erstellen kann, damit die virtuellen Computer der Kursteilnehmer für den Unterricht zur Verfügung stehen.  Zeitpläne können einmalig oder wiederkehrend sein.  Kontingentstunden werden nicht verbraucht, wenn ein Zeitplan ausgeführt wird.
 
 Es stehen drei Arten von Zeitplänen zur Verfügung: „Standard“, „Start only“ (Nur starten) und „Stop only“ (Nur beenden).
 
@@ -50,13 +50,13 @@ In diesem Artikel werden verschiedene Benutzerprofile in Azure Lab Services besc
 
 ### <a name="lab-account-owner"></a>Lab-Kontobesitzer
 
-Typischerweise fungiert der IT-Administrator der Cloudressourcen des Unternehmens, der das Azure-Abonnement besitzt, als Besitzer eines Lab-Kontos und erledigt die folgenden Aufgaben:
+Typischerweise fungiert ein IT-Administrator der Cloudressourcen eines Unternehmens, der das Azure-Abonnement besitzt, als Besitzer eines Lab-Kontos und erledigt die folgenden Aufgaben:
 
 - Einrichten eines Lab-Dienstkontos für Ihre Organisation
 - Verwalten und Konfigurieren von Richtlinien in allen Labs
 - Erteilen von Berechtigungen an Personen in der Organisation zum Erstellen eines Lab unter dem Lab-Konto
 
-### <a name="professor"></a>Professor
+### <a name="educator"></a>Lehrer/Dozent
 
 Üblicherweise erstellen Benutzer (etwa eine Lehrkraft oder ein Onlinetrainer) Classroom-Labs unter einem Labkonto. Ein Lehrer/Dozent führt die folgenden Aufgaben aus:
 

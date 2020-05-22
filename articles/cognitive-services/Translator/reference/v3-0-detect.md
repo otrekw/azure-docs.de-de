@@ -1,7 +1,7 @@
 ---
-title: Erkennungsmethode für die Textübersetzungs-API
+title: Translator-Methode „Detect“
 titleSuffix: Azure Cognitive Services
-description: Identifizieren Sie die Sprache eines Textabschnitts mit der Detect-Methode der Textübersetzungs-API von Azure Cognitive Services.
+description: Ermitteln Sie die Sprache eines Texts mit der Methode „Detect“ von Azure Cognitive Services Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73837301"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592286"
 ---
-# <a name="translator-text-api-30-detect"></a>Textübersetzungs-API 3.0: Detect
+# <a name="translator-30-detect"></a>Translator 3.0: Detect
 
 Identifiziert die Sprache eines Textabschnitts.
 
@@ -87,13 +87,13 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
   * `language`: Code der erkannten Sprache.
 
-  * `score`:Ein Floatwert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
+  * `score`: Ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
 
-  * `isTranslationSupported`: ein boolescher Wert, der wahr ist (TRUE), wenn die erkannte Sprache eine der für die Textübersetzung unterstützte Sprache ist
+  * `isTranslationSupported`: Ein boolescher Wert, der TRUE lautet, wenn die erkannte Sprache eine der für die Textübersetzung unterstützten Sprachen ist.
 
-  * `isTransliterationSupported`: ein boolescher Wert, der wahr ist (TRUE), wenn die erkannte Sprache eine der für die Transliteration unterstützte Sprache ist
+  * `isTransliterationSupported`: Ein boolescher Wert, der TRUE lautet, wenn die erkannte Sprache eine der für die Transliteration unterstützten Sprachen ist.
   
-  * `alternatives`: ein Array anderer möglicher Sprachen. Jedes Element des Arrays ist ein anderes Objekt mit den gleichen Eigenschaften wie oben: `language`, `score`, `isTranslationSupported` und `isTransliterationSupported`.
+  * `alternatives`: Ein Array anderer möglicher Sprachen. Jedes Element des Arrays ist ein anderes Objekt mit den gleichen Eigenschaften wie oben: `language`, `score`, `isTranslationSupported` und `isTransliterationSupported`.
 
 Eine JSON-Beispielantwort lautet wie folgt:
 
@@ -170,7 +170,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Beispiele
 

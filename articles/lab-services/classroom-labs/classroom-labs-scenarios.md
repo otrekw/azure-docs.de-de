@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26caebafc7c147452decbb28e313513072d7511b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76717980"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592048"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Verwenden von Classroom-Labs für Schulungen
-Sie können Labs für Schulungen einrichten. Mit Classroom-Labs von Azure Lab Services können Sie ein Lab für Ihre Schulung erstellen, bei der jeder Benutzer eine identische und isolierte Schulungsumgebung verwendet. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. 
+Azure Lab Services ermöglicht es Lehrern/Dozenten (Lehrkräften, Professoren, Ausbildern oder Tutoren usw.), schnell und einfach ein Online-Lab zu erstellen, um vorkonfigurierte Lernumgebungen für die Lab-Benutzer bereitzustellen. Jeder Lab-Benutzer könnte identische und isolierte Umgebungen für die Schulung verwenden. Richtlinien können angewendet werden, um sicherzustellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z. B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. 
 
 ![Classroom-Lab](../media/classroom-labs-scenarios/classroom.png)
 
@@ -37,10 +37,10 @@ Classroom-Labs erfüllt die folgenden Anforderungen für das Durchführen von Sc
 In diesem Artikel erfahren Sie mehr über die verschiedenen Azure Lab Services-Features, mit denen die zuvor beschriebenen Schulungsanforderungen erfüllt werden können. Zudem enthält er detaillierte Schritte, mit denen Sie ein Lab zu Schulungszwecken einrichten können.  
 
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Erstellen des Lab-Kontos als Lab-Kontoadministrator
-Bei der Verwendung von Azure Lab Services muss zuerst im Azure-Portal ein Lab-Konto erstellt werden. Nachdem der Lab-Kontoadministrator das Lab-Konto erstellt hat, fügt der Administrator die Benutzer hinzu, die in der Rolle **Lab-Ersteller** Labs erstellen möchten. Die Ausbilder erstellen Labs mit virtuellen Computern, damit die Kursteilnehmer die Übungen in ihren Kursen ausführen können. Einzelheiten hierzu finden Sie unter [Erstellen und Verwalten von Lab-Konten](how-to-manage-lab-accounts.md).
+Bei der Verwendung von Azure Lab Services muss zuerst im Azure-Portal ein Lab-Konto erstellt werden. Nachdem der Lab-Kontoadministrator das Lab-Konto erstellt hat, fügt der Administrator die Benutzer hinzu, die in der Rolle **Lab-Ersteller** Labs erstellen möchten. Die Lehrer/Dozenten erstellen Labs mit virtuellen Computern, damit die Kursteilnehmer die Übungen in ihren Kursen ausführen können. Einzelheiten hierzu finden Sie unter [Erstellen und Verwalten von Lab-Konten](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Erstellen und Verwalten von Classroom-Labs
-Die Ausbilder, denen im Lab-Konto die Rolle „Lab-Ersteller“ zugewiesen wurde, können im Lab-Konto ein oder mehrere Labs erstellen. Sie erstellen und konfigurieren einen virtuellen Computer als Vorlage, der die gesamte erforderliche Software enthält, die für die Übungen in dem jeweiligen Kurs erforderlich sind. Sie wählen aus den verfügbaren Images zum Erstellen von Classroom-Labs ein vorgefertigtes Image aus und passen es durch die Installation der für das Lab erforderlichen Software an. Einzelheiten hierzu finden Sie unter [Erstellen und Verwalten von Classroom-Labs](how-to-manage-classroom-labs.md).
+Die Lehrer/Dozenten, denen im Lab-Konto die Rolle „Lab-Ersteller“ zugewiesen wurde, können im Lab-Konto ein oder mehrere Labs erstellen. Sie erstellen und konfigurieren einen virtuellen Computer als Vorlage, der die gesamte erforderliche Software enthält, die für die Übungen in dem jeweiligen Kurs erforderlich sind. Sie wählen aus den verfügbaren Images zum Erstellen von Classroom-Labs ein vorgefertigtes Image aus und passen es durch die Installation der für das Lab erforderlichen Software an. Einzelheiten hierzu finden Sie unter [Erstellen und Verwalten von Classroom-Labs](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Konfigurieren von Nutzungseinstellungen und Richtlinien
 Ein Lab-Ersteller kann Benutzer hinzufügen oder entfernen, einen Registrierungslink abrufen und an Lab-Benutzer senden, Richtlinien (z. B. individuelle Kontingente pro Benutzer) einrichten, die Anzahl der im Lab verfügbaren Computer aktualisieren und vieles mehr. Einzelheiten hierzu finden Sie unter [Konfigurieren von Nutzungseinstellungen und Richtlinien](how-to-configure-student-usage.md).

@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: "Azure\_EA-Portalverwaltung"
           href: ea-portal-administration.md
+        - name: "Azure\_EA-Portalverwaltung für Partner"
+          href: ea-partner-portal-administration.md
+        - name: "Azure\_Enterprise-Übertragungen"
+          href: ea-transfers.md
         - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
           href: mca-enterprise-operations.md
         - name: 'Azure EA: Vereinbarungen und Ergänzungen'
           href: ea-portal-agreements.md
         - name: Rechnungen für die Unternehmensregistrierung
           href: ea-portal-enrollment-invoices.md
+        - name: "Azure\_EA-Preise"
+          href: ea-pricing-overview.md
         - name: Azure Enterprise-REST-APIs
           href: ea-portal-rest-apis.md
         - name: Reservierte Azure EA-VM-Instanzen
           href: ea-portal-vm-reservations.md
         - name: "Problembehandlung für den Zugriff auf das Azure\_EA-Portal"
           href: ea-portal-troubleshoot.md
+        - name: Azure Marketplace
+          href: ea-azure-marketplace.md
 - name: Problembehandlung
   items:
     - name: Keine Abonnements gefunden

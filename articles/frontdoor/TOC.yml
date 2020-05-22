@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: Einrichten eines Regelmoduls
       href: front-door-tutorial-rules-engine.md
+    - name: Web Application Firewall und Front Door
+      href: front-door-waf.md
 - name: Beispiele
   items:
     - name: Resource Manager-Vorlagen

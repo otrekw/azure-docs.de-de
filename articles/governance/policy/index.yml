@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 11/04/2019
-  ms.openlocfilehash: d4ebb4dbc8fb2bc71ac9f061ef6d4500b86831ff
-  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.date: 05/20/2020
+  ms.openlocfilehash: 347e60c8b0c50db1bdba7c8262701542448fe12a
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80289191"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83682076"
 landingContent:
 - title: Informationen zu Azure Policy
   linkLists:
@@ -73,10 +73,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
-    - text: Richtlinie für AKS
-      url: ./concepts/rego-for-aks.md
-    - text: Richtlinie für die AKS-Engine
-      url: ./concepts/aks-engine.md
+    - text: Richtlinie für Kubernetes
+      url: ./concepts/policy-for-kubernetes.md
     - text: Richtlinie für virtuelle Computer
       url: ./concepts/guest-configuration.md
 - title: Überprüfen und Warten von Ressourcen
@@ -103,7 +101,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: /cli/azure/policy
     - text: Azure PowerShell (Richtlinie)
       url: /powershell/module/az.resources/#policies
