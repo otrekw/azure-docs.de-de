@@ -1623,20 +1623,6 @@
                     - name: "Übersicht über die Azure\_AD-Tokenauthentifizierung"
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: "Abrufen eines Azure\_AD-Tokens mithilfe der Azure\_AD-Authentifizierungsbibliothek"
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: "Abrufen eines Azure\_AD-Tokens mithilfe eines Dienstprinzipals"
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: "Problembehandlung für Azure\_AD-Zugriffstoken"
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory-Token
-                  items:
-                    - name: "Übersicht über die Azure\_AD-Tokenauthentifizierung"
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: "Abrufen eines Azure\_AD-Tokens mithilfe der AAD-Authentifizierungsbibliothek"
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
