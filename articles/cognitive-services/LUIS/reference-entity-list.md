@@ -2,13 +2,13 @@
 title: Entität vom Typ „List“ – LUIS
 description: Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Empfehlungsfeatures nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097573"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588886"
 ---
 # <a name="list-entity"></a>Entität vom Typ „List“
 
@@ -132,4 +132,7 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](tutorial-list-entity.md) erfahren Sie, wie Sie eine **Listenentität** verwenden, um exakte Textübereinstimmungen aus einer Liste bekannter Elemente zu extrahieren.
+Weitere Informationen zu Entitäten finden Sie hier:
+
+* [Konzepte](luis-concept-entity-types.md)
+* [Anleitung zum Erstellen](luis-how-to-add-entities.md)

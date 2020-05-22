@@ -2,13 +2,13 @@
 title: Entwicklerressourcen – Language Understanding
 description: SDKs, REST-APIs und CLI unterstützen Sie beim Entwickeln von LUIS-Anwendungen (Language Understanding) in Ihrer Programmiersprache. Verwalten Sie Ihre Azure-Ressourcen und LUIS-Vorhersagen.
 ms.topic: reference
-ms.date: 03/16/2020
-ms.openlocfilehash: 5e375157cef4789bc2980f6154ea8d59e765ff3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 820811c53f143c9747cd11f45cafb075398b080b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457983"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589005"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST- und CLI-Entwicklerressourcen für LUIS (Language Understanding)
 
@@ -71,6 +71,10 @@ In der folgende Tabelle werden die Parameter erläutert, die in der vorherigen T
 |`q` oder `query`|Äußerungstext, der von der Clientanwendung gesendet wird, wie z.B. ein Chatbot|
 |`version`|Versionsname aus 10 Zeichen|
 |`slot`| `production` oder `staging`|
+
+## <a name="app-schema"></a>App-Schema
+
+Das [App-Schema](app-schema-definition.md) wird im Format `.json` oder `.lu` importiert/exportiert.
 
 ### <a name="language-based-sdks"></a>Sprachbasierte SDKs
 

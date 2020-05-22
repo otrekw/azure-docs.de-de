@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446780"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586990"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -80,9 +80,9 @@ So migrieren Sie einen Arbeitsbereich:
 
 4. Wählen Sie auf der nächsten Seite eine der beiden Optionen aus:
 
-    a. Nur bereitgestellte Trainings: Nach Auswahl dieser Option werden nur Ihre bereitgestellten Systeme und dazugehörige Dokumente migriert.
+    a. Nur bereitgestellte Trainings: Nach Auswahl dieser Option werden nur Ihre bereitgestellten Systeme und zugehörige Dokumente migriert.
 
-    b. Alle erfolgreichen Trainings: Nach Auswahl dieser Option werden alle erfolgreichen Trainings und dazugehörige Dokumente migriert.
+    b. Alle erfolgreichen Trainings: Nach Auswahl dieser Option werden alle erfolgreichen Trainings und zugehörige Dokumente migriert.
 
     c. Geben Sie die ID des Zielarbeitsbereichs in Custom Translator ein.
 
@@ -108,11 +108,11 @@ Auf der Seite „Migrationsverlauf“ werden die folgenden Informationen als Zus
 
 2. Migriert am: Datum und Zeitstempel der Migration
 
-3. Projekte: Die Anzahl der für die Migration angeforderten Projekte im Vergleich zur Anzahl der erfolgreich migrierten Projekte.
+3. Projekte: Anzahl der für die Migration angeforderten Projekte im Vergleich zur Anzahl der erfolgreich migrierten Projekte.
 
-4. Trainings: Die Anzahl der für die Migration angeforderten Trainings im Vergleich zur Anzahl der erfolgreich migrierten Trainings.
+4. Trainings: Anzahl der für die Migration angeforderten Trainings im Vergleich zur Anzahl der erfolgreich migrierten Trainings.
 
-5. Dokumente: Die Anzahl der für die Migration angeforderten Dokumente im Vergleich zur Anzahl der erfolgreich migrierten Dokumente.
+5. Dokumente: Anzahl der für die Migration angeforderten Dokumente im Vergleich zur Anzahl der erfolgreich migrierten Dokumente.
 
     ![Details des Migrationsverlaufs](media/how-to/how-to-migration-history-details.png)
 
@@ -134,9 +134,9 @@ In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Cu
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | V2    | V3  |
-| SMT-Anpassung | Ja   | Nein  |
-| NMT-Anpassung | Nein     | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
+| SMT-Anpassung | Ja   | Nein |
+| NMT-Anpassung | Nein    | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
 | Keine Ablaufverfolgung | Ja | Ja |
 
 ## <a name="new-languages"></a>Neue Sprachen
@@ -146,4 +146,4 @@ Wenn Sie zu einer Community oder Organisation gehören, die an einem neuen Sprac
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](how-to-train-model.md).
-- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

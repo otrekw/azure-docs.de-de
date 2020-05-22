@@ -1,7 +1,7 @@
 ---
-title: Microsoft Translator-Text-API Version 2.0
+title: Translator v2.0
 titleSuffix: Azure Cognitive Services
-description: Referenzdokumentation für die Textübersetzungs-API, Version 2.0
+description: Referenzdokumentation für Translator v2.0
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72242500"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588614"
 ---
-# <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
+# <a name="translator-v20"></a>Translator v2.0
 
 > [!IMPORTANT]
-> Diese Version der Textübersetzungs-API ist als veraltet markiert. [Sehen Sie sich die Dokumentation für Version 3 der Textübersetzungs-API an](v3-0-reference.md).
+> Diese Version von Translator ist als veraltet markiert. [Sehen Sie sich die Dokumentation für Version 3 von Translator an](v3-0-reference.md).
 
-Die Textübersetzungs-API, Version 2, kann nahtlos in Ihre Apps, Websites, Tools oder andere Lösungen integriert werden, damit Benutzererlebnisse in mehreren Sprachen zur Verfügung stehen. Sie können sie auf jeder Hardwareplattform und mit jedem Betriebssystem verwenden, um Sprachübersetzungen und andere sprachbezogene Vorgänge wie Textsprachenerkennung oder Sprachsynthese nach Industriestandards durchzuführen. Weitere Informationen finden Sie unter [Textübersetzungs-API](../translator-info-overview.md).
+Version 2 von Translator kann nahtlos in Ihre Apps, Websites, Tools oder andere Lösungen integriert werden, damit Benutzererlebnisse in mehreren Sprachen zur Verfügung stehen. Sie können sie auf jeder Hardwareplattform und mit jedem Betriebssystem verwenden, um Sprachübersetzungen und andere sprachbezogene Vorgänge wie Textsprachenerkennung oder Sprachsynthese nach Industriestandards durchzuführen. Weitere Informationen finden Sie unter [Was ist Translator?](../translator-info-overview.md).
 
 ## <a name="getting-started"></a>Erste Schritte
-Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
+Für den Zugriff auf Translator müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
 
 ## <a name="authentication"></a>Authentifizierung 
-Alle Aufrufe der Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmethoden:
+Alle Aufrufe von Translator erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmethoden:
 
 - Ein Zugriffstoken. Verwenden Sie den Abonnementschlüssel, um ein Zugriffstoken zu generieren. Senden Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des `Authorization`-Headers oder des `access_token`-Abfrageparameters an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
-- Direkte Verwendung eines Abonnementschlüssels. Übergeben Sie Ihren Abonnementschlüssel als Wert im `Ocp-Apim-Subscription-Key`-Header, der in Ihrer Anforderung an die Textübersetzungs-API enthalten ist. Wenn Sie den Abonnementschlüssel direkt verwenden, müssen Sie nicht zum Erstellen eines Zugriffstokens den Tokenauthentifizierungsdienst aufrufen.
+- Direkte Verwendung eines Abonnementschlüssels. Übergeben Sie Ihren Abonnementschlüssel als Wert im `Ocp-Apim-Subscription-Key`-Header, der in Ihrer Anforderung an Translator enthalten ist. Wenn Sie den Abonnementschlüssel direkt verwenden, müssen Sie nicht zum Erstellen eines Zugriffstokens den Tokenauthentifizierungsdienst aufrufen.
 - Ein [Azure Cognitive Services-Abonnement für mehrere Dienste](https://azure.microsoft.com/pricing/details/cognitive-services/). Mit dieser Methode können Sie einen einzelnen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren.
 Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie der Anforderung zwei Authentifizierungsheader hinzufügen. Der erste Header übergibt den geheimen Schlüssel. Der zweite Header gibt die Region an, die Ihrem Abonnement zugeordnet ist:
    - `Ocp-Apim-Subscription-Key`
@@ -803,6 +803,6 @@ Antwortinhaltstyp: application/xml
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Migrieren zu Version 3 der Textübersetzungs-API](../migrate-to-v3.md)
+> [Migrieren zu Version 3 von Translator](../migrate-to-v3.md)
 
 

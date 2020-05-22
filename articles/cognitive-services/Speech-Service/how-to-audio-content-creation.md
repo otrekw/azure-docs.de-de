@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402239"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589651"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>Verbessern der Synthese mit Audio Content-Erstellung
+# <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
 [Audio Content Creation](https://aka.ms/audiocontentcreation) ist ein Onlinetool, mit dem Sie die Sprachsynthese von Microsoft an Ihre Apps und Produkte anpassen und optimieren können. Sie können mit diesem Tool öffentliche und benutzerdefinierte Stimmen optimieren, um noch natürlichere Sprachausdrücke zu erzielen und Ihre Ausgabe in der Cloud zu verwalten.
 
@@ -25,28 +25,26 @@ Das Tool Audio Content Creation basiert auf der [Speech Synthesis Markup Languag
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-Dieses Diagramm zeigt die Schritte zum Optimieren und Exportieren von Sprachausgaben. Verwenden Sie die unten angegebenen Links, um mehr über die einzelnen Schritte zu erfahren.
+Das folgende Diagramm zeigt die erforderlichen Schritte zum Optimieren der Sprachsyntheseausgaben. Verwenden Sie die unten angegebenen Links, um mehr über die einzelnen Schritte zu erfahren.
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. Der erste Schritt besteht darin, [ein Azure-Konto zu erstellen, eine Speech-Ressource zu registrieren und einen Abonnementschlüssel zu erhalten](#create-a-speech-resource). Wenn Sie über einen Abonnementschlüssel verfügen, können Sie damit den Speech-Dienst aufrufen und auf [Audio Content Creation](https://aka.ms/audiocontentcreation) zugreifen.
-2. [Erstellen Sie eine Datei zur Audiooptimierung](#create-an-audio-tuning-file) als Nur-Text-Datei oder mit SSML.
-3. Wählen Sie die Stimme und die Sprache aus, die Sie optimieren möchten. Audio Content Creation umfasst alle [Stimmen der Microsoft-Sprachsynthese](language-support.md#text-to-speech). Sie können eine Standardstimme, eine neuronale Stimme oder Ihre eigene benutzerdefinierte Stimme verwenden.
+1. [Richten Sie Ihr Azure-Konto und die Speech-Ressource ein](#set-up-your-azure-account-and-speech-resource), um loszulegen.
+2. [Erstellen Sie eine Datei zur Audiooptimierung](#create-an-audio-tuning-file) als Nur-Text- oder SSML-Skript.
+3. Wählen Sie die Stimme und die Sprache für Ihren Skriptinhalt aus. Audio Content Creation umfasst alle [Stimmen der Microsoft-Sprachsynthese](language-support.md#text-to-speech). Sie können eine Standardstimme, eine neuronale Stimme oder Ihre eigene benutzerdefinierte Stimme verwenden.
    >[!NOTE]
    > Der Zugriff auf benutzerdefinierte neuronale Stimmen ist nur eingeschränkt möglich. Hiermit können Sie High-Definition-Stimmen erstellen, die wie natürliche Stimmen klingen. Weitere Einzelheiten finden Sie unter [Zulassung](https://aka.ms/ignite2019/speech/ethics).
 
-4. Überprüfen Sie das Standardergebnis. Verwenden Sie dann das Optimierungstool, um Aussprache, Tonhöhe, Geschwindigkeit, Intonation, Sprachstil usw. anzupassen. Eine umfassende Liste der Optionen finden Sie unter [Markupsprache für Sprachsynthese](speech-synthesis-markup.md).
-5. Speichern und [exportieren Sie die optimierten Audiodaten](#export-tuned-audio). Nachdem Sie die Optimierungsspur im System gespeichert haben, können Sie weiterhin mit der Ausgabe fortfahren. Wenn Sie mit der Ausgabe zufrieden sind, können Sie mit der Exportfunktion eine Aufgabe zur Audioerstellung erstellen. Sie können den Status der Exportaufgabe beobachten und die Ausgabe für die Verwendung in Ihren Apps und Produkten herunterladen.
-6. Im letzten Schritt verwenden Sie die benutzerdefinierte und optimierte Stimme in Ihren Apps und Produkten.
+4. Überprüfen Sie die Standardsyntheseausgabe. Verbessern Sie dann die Ausgabe, indem Sie Aussprache, Pausen, Tonhöhe, Geschwindigkeit, Intonation, Sprachstil usw. anpassen. Eine umfassende Liste der Optionen finden Sie unter [Markupsprache für Sprachsynthese](speech-synthesis-markup.md). In [diesem Video](https://youtu.be/mUvf2NbfuYU) wird gezeigt, wie Sie die Sprachausgabe mit Audio Content Creation optimieren. 
+5. Speichern und [exportieren Sie die optimierten Audiodaten](#export-tuned-audio). Nachdem Sie die Optimierungsspur im System gespeichert haben, können Sie die Ausgabe weiter bearbeiten. Wenn Sie mit der Ausgabe zufrieden sind, können Sie mit der Exportfunktion eine Aufgabe zur Audioerstellung erstellen. Sie können den Status der Exportaufgabe beobachten und die Ausgabe für die Verwendung in Ihren Apps und Produkten herunterladen.
 
-## <a name="create-a-speech-resource"></a>Erstellen einer Speech-Ressource
+## <a name="set-up-your-azure-account-and-speech-resource"></a>Einrichten Ihres Azure-Kontos und der Speech-Ressource
 
-Führen Sie die folgenden Schritte aus, um eine Speech-Ressource zu erstellen und mit Speech Studio zu verbinden.
-
-1. Befolgen Sie diese Anweisungen, um sich [für ein Azure-Konto zu registrieren](get-started.md#new-resource) und [eine Speech-Ressource zu erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
-2. Melden Sie sich bei [Audio Content Creation](https://aka.ms/audiocontentcreation) an.
-3. Wählen Sie ein vorhandenes Projekt aus, oder klicken Sie auf **Neu erstellen**.
-4. Sie können Ihr Abonnement jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.
+1. Sie benötigen ein Azure-Konto, um Audio Content Creation verwenden zu können. Ein Azure-Konto kann mithilfe Ihres Microsoft-Kontos erstellt werden. Befolgen Sie [diese Anweisungen](get-started.md#new-resource) zum Einrichten eines Azure-Kontos. 
+2. [Erstellen Sie eine Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource) für Ihr Azure-Konto. Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
+2. Wenn Sie das Azure-Konto und die Sprachressource erstellt haben, können Sie die Sprachdienste verwenden und auf [Audio Content Creation](https://aka.ms/audiocontentcreation) zugreifen.
+3. Wählen Sie die Speech-Ressource aus, die Sie bearbeiten müssen. Sie können hier auch eine neue Speech-Ressource erstellen. 
+4. Sie können Ihre Speech-Ressource jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.
 
 ## <a name="create-an-audio-tuning-file"></a>Erstellen einer Audiooptimierungsdatei
 
@@ -54,21 +52,22 @@ Es gibt zwei Möglichkeiten, Ihre Inhalte in das Audio Content Creation-Tool zu 
 
 **Option 1:**
 
-1. Nachdem Sie sich bei [Audio Content Creation](https://aka.ms/audiocontentcreation) angemeldet haben, klicken Sie auf **Audio Tuning** (Audiooptimierung), um eine neue Audiooptimierungsdatei zu erstellen.
-2. Wenn das Bearbeitungsfenster angezeigt wird, können Sie bis zu 10.000 Zeichen eingeben.
+1. Klicken Sie auf **Neue Datei**, um eine neue Audiooptimierungsdatei zu erstellen.
+2. Geben oder fügen Sie Ihren Inhalt in das Bearbeitungsfenster ein. Eine Datei kann jeweils bis zu 20.000 Zeichen enthalten. Ist Ihr Skript länger als 20.000 Zeichen, können Sie Option 2 verwenden, um den Inhalt automatisch in mehrere Dateien zu unterteilen. 
 3. Vergessen Sie nicht zu speichern.
 
 **Option 2:**
 
-1. Nachdem Sie sich bei [Audio Content Creation](https://aka.ms/audiocontentcreation) angemeldet haben, klicken Sie auf **Hochladen**, um Textdateien zu importieren. Sowohl Nur-Text als auch SSML werden unterstützt.
-2. Stellen Sie beim Hochladen Ihrer Textdateien sicher, dass der Inhalt diese Anforderungen erfüllt.
+1. Klicken Sie auf **Hochladen**, um Textdateien zu importieren. Sowohl Nur-Text als auch SSML werden unterstützt.
+2. Wenn die Skriptdatei mehr als 20.000 Zeichen umfasst, teilen Sie die Datei nach Absätzen, Zeichen oder regulären Ausdrücken. 
+3. Stellen Sie beim Hochladen Ihrer Textdateien sicher, dass die Datei die folgenden Anforderungen erfüllt:
 
    | Eigenschaft | Wert/Hinweise |
    |----------|---------------|
    | Dateiformat | Nur-Text (.txt)<br/> SSML-Text (.txt)<br/> ZIP-Dateien werden nicht unterstützt. |
    | Codierungsformat | UTF-8 |
    | Dateiname | Jede Datei muss einen eindeutigen Namen haben. Duplikate werden nicht unterstützt. |
-   | Textlänge | Textdateien dürfen maximal 10.000 Zeichen lang sein. |
+   | Textlänge | Textdateien dürfen maximal 20.000 Zeichen lang sein. |
    | SSML-Einschränkungen | Jede SSML-Datei darf nur ein einziges SSML-Element enthalten. |
 
 ### <a name="plain-text-example"></a>Beispiel für Nur-Text
@@ -91,7 +90,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 Nachdem Sie Ihre Audioausgabe überprüft haben und mit der Optimierung und den Anpassungen zufrieden sind, können Sie die Audiodatei exportieren.
 
-1. Klicken Sie im Tool [Audio Content Creation](https://aka.ms/audiocontentcreation) auf **Exportieren**, um eine Aufgabe zur Audioerstellung zu erstellen.
+1. Klicken Sie auf **Exportieren**, um eine Aufgabe zur Audioerstellung zu erstellen. Der **Export in eine Audiobibliothek** wird empfohlen, da dadurch die lange Audioausgabe und die gesamten Audioausgabefunktionen unterstützt werden. Sie können die Audiodaten auch direkt auf den lokalen Datenträger herunterladen, allerdings sind nur die ersten zehn Minuten verfügbar. 
 2. Wählen Sie das Ausgabeformat für die Audiooptimierung aus. Eine Liste der unterstützten Formate und Abtastraten finden Sie unten.
 3. Sie können den Status der Aufgabe auf der Registerkarte der **Exportaufgabe** anzeigen. Wenn die Aufgabe zu einem Fehler führt, finden Sie auf der Seite mit den ausführlichen Informationen einen vollständigen Bericht.
 4. Wenn die Aufgabe abgeschlossen wurde, steht Ihre Audiodatei auf der Registerkarte **Audio Library** (Audiobibliothek) zum Download zur Verfügung.

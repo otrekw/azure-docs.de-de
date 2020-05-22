@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 05/8/2020
+ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585401"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -65,6 +65,33 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Tabelle | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert. |
 |Erben des Partitionsschemas| Eine Option zum Erben des Partitionierungsschemas Ihres vorherigen Abfrageschrittes, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).|
 |Max Batch Count| Der empfohlene obere Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
+
+Es gibt zwei Adapter, die eine Ausgabe von Azure Stream Analytics an Azure Synapse Analytics (früher SQL Data Warehouse) ermöglichen: SQL-Datenbank und Azure Synapse. Es wird empfohlen, den Azure Synapse Analytics-Adapter anstelle des SQL-Datenbank-Adapters zu wählen, wenn eine der folgenden Bedingungen zutrifft:
+
+* **Durchsatz**: Wenn der erwartete Durchsatz jetzt oder in Zukunft über 10 MB/s liegt, verwenden Sie die Azure Synapse-Ausgabeoption, um eine bessere Leistung zu erzielen.
+
+* **Eingabepartitionen**: Wenn Sie über acht oder mehr Eingabepartitionen verfügen, verwenden Sie die Azure Synapse-Ausgabeoption, um das horizontale Skalieren zu verbessern.
+
+## <a name="azure-synapse-analytics-preview"></a>Azure Synapse Analytics (Vorschau)
+
+[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (früher SQL Data Warehouse) ist ein unbegrenzter Analysedienst, der Data Warehousing für Unternehmen mit Big Data-Analysen vereint. 
+
+Bei Azure Stream Analytics-Aufträgen kann die Ausgabe in eine SQL-Pooltabelle in Azure Synapse Analytics erfolgen, und es können Durchsatzraten von bis zu 200 MB/s verarbeitet werden. Dies unterstützt die anspruchsvollsten Anforderungen hinsichtlich Echtzeitanalyse und Datenverarbeitung im langsamsten Pfad für Workloads wie z. B. das Erstellen von Berichten und Dashboards.  
+
+Die SQL-Pooltabelle muss vorhanden sein, bevor Sie sie Ihrem Stream Analytics-Auftrag als Ausgabe hinzufügen können. Das Schema der Tabelle muss den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. 
+
+Wenn Sie Azure Synapse als Ausgabe verwenden möchten, müssen Sie sicherstellen, dass Sie das Speicherkonto konfiguriert haben. Navigieren Sie zu den Speicherkontoeinstellungen, um das Speicherkonto zu konfigurieren. Es sind nur die Speicherkontotypen zulässig, die Tabellen unterstützen: „Allgemein V2“ und „Allgemein V1“.   
+
+Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Azure Synapse Analytics-Ausgabe.
+
+|Eigenschaftenname|BESCHREIBUNG|
+|-|-|
+|Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Datenbank weiterzuleiten. |
+|Datenbank |Der Name des SQL-Pools, an den Sie die Ausgabe senden. |
+|Servername |Name des Azure Synapse-Servers.  |
+|Username |Der Benutzername, der Schreibzugriff auf die Datenbank hat. Stream Analytics unterstützt nur die SQL-Authentifizierung. |
+|Kennwort |Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
+|Tabelle  | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert.|
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blobspeicher und Azure Data Lake Gen2
 

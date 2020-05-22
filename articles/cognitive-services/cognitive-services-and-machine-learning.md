@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75531478"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584619"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -108,8 +108,8 @@ In den folgenden Punkten ist jeder Dienst entsprechend der Art von Daten kategor
 |[Spracherkennung (Speech-to-Text, STT)](speech-service/speech-to-text.md)|x|x||
 |[Sprachübersetzung](speech-service/speech-translation.md)|x|||
 |[Textanalyse](./text-analytics/overview.md)|x|||
-|[Textübersetzung](./translator/translator-info-overview.md)|x|||
-|[Textübersetzung – Custom Translator](./translator/custom-translator/overview.md)||x||
+|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator – benutzerdefinierter Translator](./translator/custom-translator/overview.md)||x||
 
 *Personalisierung benötigt für ein Auswerten Ihrer Richtlinien und Daten nur Trainingsdaten, die vom Dienst erfasst wurden (weil der Dienst in Echtzeit funktioniert). Personalisierung benötigt für ein Vorab- oder Stapelverarbeitungstraining keine großen Datasets mit bereits erfassten Daten. 
 

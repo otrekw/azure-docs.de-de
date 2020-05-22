@@ -1,21 +1,14 @@
 ---
 title: Entität vom Typ „RegEx“ (Regulärer Ausdruck) – LUIS
-titleSuffix: Azure Cognitive Services
 description: Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74841216"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585605"
 ---
 # <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“
 
@@ -106,4 +99,7 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](tutorial-regex-entity.md) erstellen Sie eine App zum Extrahieren einheitlich formatierter Daten aus einer Äußerung mithilfe der **RegEx**-Entität.
+Weitere Informationen zu Entitäten finden Sie hier:
+
+* [Konzepte](luis-concept-entity-types.md)
+* [Anleitung zum Erstellen](luis-how-to-add-entities.md)

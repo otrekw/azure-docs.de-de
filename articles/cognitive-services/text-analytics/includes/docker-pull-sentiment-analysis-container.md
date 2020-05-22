@@ -9,19 +9,34 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e502b886c8031174180d40f1c5b7e373a974ee8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3db0e2ffdd4a75f02634ca2227c3c41416d4f65
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877020"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588383"
 ---
-#### <a name="docker-pull-for-the-sentiment-analysis-container"></a>Docker-Pullvorgang für den Standpunktanalysecontainer
+#### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>Docker-Pullvorgang für den Container der Standpunktanalyse v3
 
-Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus Microsoft Container Registry herunterzuladen.
-
-Eine vollständige Beschreibung der verfügbaren Tags für die Textanalysecontainer finden Sie im Docker Hub im Container für die [Standpunktanalyse](https://go.microsoft.com/fwlink/?linkid=2018654).
+Der Container für die Standpunktanalyse v3 ist in mehreren Sprachen verfügbar. Verwenden Sie den folgenden Befehl, um den Container für Englisch herunterzuladen. 
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en
 ```
+
+Wenn Sie den Container für eine andere Sprache herunterladen möchten, ersetzen Sie `en` durch einen der folgenden Sprachcodes: 
+
+| Textanalysecontainer | Sprachcode |
+|--|--|
+| Englisch | `en` |
+| Spanisch | `es` |
+| Französisch | `fr` |
+| Italienisch | `it` |
+| Deutsch | `de` |
+| Chinesisch (vereinfacht) | `zh` |
+| Chinesisch (traditionell) | `zht` |
+| Japanisch | `ja` |
+| Portugiesisch | `pt` |
+| Niederländisch | `nl` |
+
+Eine vollständige Beschreibung der verfügbaren Tags für die Textanalysecontainer finden Sie bei [Docker Hub](https://go.microsoft.com/fwlink/?linkid=2018654).

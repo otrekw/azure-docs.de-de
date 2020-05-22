@@ -1,23 +1,23 @@
 ---
-title: Übersetzungsmethode der Textübersetzungs-API
+title: Translator-Methode „Translate“
 titleSuffix: Azure Cognitive Services
-description: Erhalten Sie Informationen zu den Parametern, Headern und Textnachrichten für die Translate-Methode der Textübersetzungs-API von Azure Cognitive Services zur Übersetzung von Text.
+description: Hier finden Sie Informationen zu den Parametern, Headern und Textnachrichten für die Methode „Translate“ von Azure Cognitive Services Translator zur Übersetzung von Text.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80052398"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584636"
 ---
-# <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
+# <a name="translator-30-translate"></a>Translator 3.0: Translate
 
 Übersetzt Text.
 
@@ -234,7 +234,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Beispiele
 
@@ -454,6 +454,14 @@ Die Antwort lautet:
 
 ### <a name="obtain-alignment-information"></a>Abrufen von Informationen zur Ausrichtung
 
+Die Ausrichtung wird als Zeichenfolgenwert des folgenden Formats für jedes Wort der Quelle zurückgegeben. Die Informationen für jedes Wort sind durch ein Leerzeichen getrennt. Dies gilt auch für Sprachen (Skripts), die keine Leerzeichen als Trennung enthalten, z.B. Chinesisch:
+
+[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]\:[TgtTextEndIndex]] *
+
+Beispiel für Ausrichtungszeichenfolge: „0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21“.
+
+Anders ausgedrückt: Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind ggf. nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. In diesem Fall gibt die Methode keinen Fehler zurück.
+
 Um Informationen über die Ausrichtung zu erhalten, geben Sie `includeAlignment=true` in der Abfragezeichenfolge ein.
 
 ```curl
@@ -483,9 +491,10 @@ Das Abrufen der Ausrichtungsinformationen ist ein experimentelles Feature, das f
 
 * Ausrichtung ist für Text im HTML-Format – d.h. textType=html – nicht verfügbar.
 * Die Ausrichtung wird nur für eine Teilmenge der Sprachpaare zurückgegeben:
-  - aus dem Englischen in eine andere Sprache
-  - aus einer beliebigen anderen Sprache ins Englische mit Ausnahme von Chinesisch (vereinfacht) und Chinesisch (traditionell) sowie aus dem Lettischen ins Englische;
-  - aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische.
+  - Aus einer beliebigen Sprache ins Englische bzw. aus dem Englischen in eine beliebige Sprache, mit Ausnahme von Chinesisch (traditionell), Kantonesisch (traditionell) und Serbisch (Kyrillisch)
+  - Aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische
+  - Aus dem Japanischen ins Chinesische (vereinfacht) und umgekehrt 
+  - Aus dem Chinesischen (vereinfacht) ins Chinesische (traditionell) und umgekehrt 
 * Sie erhalten keine Ausrichtung, wenn es sich bei dem Satz um eine vordefinierte Übersetzung handelt. Beispiele für vordefinierte Übersetzung sind „This is a test“, „I love you“ und andere häufig verwendete Sätze.
 * Die Ausrichtung ist nicht verfügbar, wenn Sie einen der [hier beschriebenen](../prevent-translation.md) Ansätze zum Verhindern der Übersetzung anwenden.
 
@@ -515,7 +524,7 @@ Die Antwort lautet:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Übersetzen mit dynamischem Wörterbuch
 
-Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist, können Sie diese als Markup in der Anforderung angeben. Das dynamische Wörterbuch ist nur für zusammengesetzte Substantive wie Eigennamen und Produktnamen sicher.
+Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist, können Sie diese als Markup in der Anforderung angeben. Das dynamische Wörterbuch ist nur für Eigennamen wie Personen- und Produktnamen sicher.
 
 Das anzugebende Markup verwendet die folgende Syntax.
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742868"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585350"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Leitfaden für das Entwerfen verteilter Tabellen im Synapse SQL-Pool
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-Die Wahl einer Verteilungsspalte ist eine wichtige Entwurfsentscheidung, da die Zeilenverteilung auf den Werten in dieser Spalte basiert. Die beste Wahl hängt von mehreren Faktoren ab und erfordert häufig Kompromisse. Sollten Sie sich beim ersten Mal nicht für die optimale Spalte entschieden haben, können Sie die Tabelle mithilfe von [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) mit einer anderen Verteilungsspalte neu erstellen.
+Die in der Verteilungsspalte gespeicherten Daten können aktualisiert werden. Aktualisierungen von Daten in der Verteilungsspalte können zu einer Zufallswiedergabe von Daten führen.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Wählen Sie eine Verteilungsspalte, für die keine Aktualisierungen erforderlich sind.
+Die Wahl einer Verteilungsspalte ist eine wichtige Entwurfsentscheidung, da die Zeilenverteilung auf den Werten in dieser Spalte basiert. Die beste Wahl hängt von mehreren Faktoren ab und erfordert häufig Kompromisse. Nach dem Auswählen einer Verteilungsspalte kann diese nicht mehr geändert werden.  
 
-Eine Verteilungsspalte kann nicht aktualisiert werden – es sei denn, Sie löschen die Zeile und fügen eine neue Zeile mit den aktualisierten Werten ein. Entscheiden Sie sich daher für eine Spalte mit statischen Werten.
+Sollten Sie sich beim ersten Mal nicht für die optimale Spalte entschieden haben, können Sie die Tabelle mithilfe von [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) mit einer anderen Verteilungsspalte neu erstellen.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Wählen Sie eine Verteilungsspalte mit Daten, die sich gleichmäßig verteilen lassen.
 

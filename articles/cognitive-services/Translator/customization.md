@@ -1,5 +1,5 @@
 ---
-title: Anpassen der Übersetzung – Textübersetzungs-API
+title: Anpassen der Übersetzung – Translator
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie den Microsoft Translator-Hub zum Erstellen Ihres eigenen Systems für die maschinelle Übersetzung mit der Terminologie und dem Stil, den Sie bevorzugen.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71257628"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588648"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
-Der benutzerdefinierte Microsoft Translator ist ein Feature des Microsoft Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie die Textübersetzungs-API (nur Version 3) zum Übersetzen verwenden.
+Benutzerdefinierter Translator ist ein Feature des Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie Translator (nur Version 3) zum Übersetzen verwenden.
 
 Das Feature kann mit [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) auch zum Anpassen der Sprachübersetzung verwendet werden.
 
@@ -33,7 +33,7 @@ Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentation
 
 Das System akzeptiert auch Daten, die parallel auf Dokumentebene parallel sind, jedoch noch nicht auf Satzebene ausgerichtet wurden. Wenn Sie über Zugriff auf Versionen mit dem gleichen Inhalt in mehreren Sprachen verfügen, die sich jedoch in separaten Dokumenten befinden, kann der benutzerdefinierte Translator Sätze über mehrere Dokumente hinweg automatisch abgleichen.  Das System kann auch einsprachige Daten in einer oder beiden Sprachen verwenden, um die parallelen Trainingsdaten zu ergänzen, um die Übersetzungen zu verbessern.
 
-Das benutzerdefinierte System ist dann über einen regulären Aufruf der Microsoft-Textübersetzungs-API mit dem Category-Parameter verfügbar.
+Das benutzerdefinierte System ist dann über einen regulären Aufruf von Translator mit dem Category-Parameter verfügbar.
 
 Mit dem entsprechenden Typ und der Menge von Trainingsdaten ist es nicht ungewöhnlich, unter Verwendung des benutzerdefinierten Translators Gewinne von fünf bis zehn oder sogar mehr BLEU-Punkten für die Übersetzungsqualität zu erwarten.
 
@@ -59,7 +59,7 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
 > [!NOTE]
-> Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit der Textübersetzungs-API V2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Die Textübersetzungs-API V3.0 unterstützt diese Methoden nicht.
+> Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit Translator v2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Translator v3.0 unterstützt diese Methoden nicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a79e6fb2be717b5ecee243b26824039630e1a416
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744286"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590246"
 ---
-# <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals (Vorschau)
+# <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals
 
 In diesem Artikel wird erläutert, wie Sie die Ressourcenverwendung und Abfrageaktivität der [Arbeitsauslastungsgruppe](sql-data-warehouse-workload-isolation.md#workload-groups) überwachen.
 Ausführliche Informationen zum Konfigurieren des Azure-Metrik-Explorers finden Sie im Artikel [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Ausführliche Informationen zum Überwachen der Systemressourcenverwendung finden Sie in der Dokumentation zur Überwachung von Azure Synapse Analytics im Abschnitt [Ressourcenverwendung](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization).

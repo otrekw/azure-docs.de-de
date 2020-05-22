@@ -2,34 +2,29 @@
 title: 'Anwendungseinstellungen: LUIS'
 description: Anwendungseinstellungen für Language Understanding-Apps von Azure Cognitive Services werden in der App und im Portal gespeichert.
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382203"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590983"
 ---
-# <a name="application-settings"></a>Anwendungseinstellungen
+# <a name="app-and-version-settings"></a>App- und Versionseinstellungen
 
-Diese Anwendungseinstellungen werden in der [exportierten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) App gespeichert und mit den REST-APIs [aktualisiert](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings). Wenn Sie die Einstellungen Ihrer App-Version ändern, wird der Trainingsstatus Ihrer App auf „Untrainiert“ zurückgesetzt.
+Diese Einstellungen werden in der [exportierten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) App gespeichert und mithilfe der REST-APIs oder über das LUIS-Portal aktualisiert.
 
-Machen Sie sich mit den [Konzepten](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) von diakritischen Zeichen und Interpunktion vertraut.
+Wenn Sie die Einstellungen Ihrer App-Version ändern, wird der Trainingsstatus Ihrer App auf „Untrainiert“ zurückgesetzt.
 
-|Einstellung|Standardwert|Notizen|
-|--|--|--|
-|NormalizePunctuation|True|Entfernt die Interpunktion.|
-|NormalizeDiacritics|True|Entfernt diakritische Zeichen.|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+Textreferenz und Beispiele enthalten Folgendes:
+
+* [Interpunktion](#punctuation-normalization)
+* [Diakritische Zeichen](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>Normalisierung von diakritischen Zeichen
-
-Aktivieren Sie die Äußerungsnormalisierung für diakritische Zeichen für Ihre LUIS-JSON-App-Datei im Parameter `settings`.
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisierung von diakritischen Zeichen auf Äußerungen auswirkt:
 
@@ -133,16 +128,7 @@ Gilt sowohl für Spanisch als auch für Mexikanisch (Kanada).
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>Normalisierung der Interpunktion
-
-Aktivieren Sie die Äußerungsnormalisierung für die Interpunktion für Ihre LUIS-JSON-App-Datei im Parameter `settings`.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Interpunktion auf Äußerungen auswirkt:
 

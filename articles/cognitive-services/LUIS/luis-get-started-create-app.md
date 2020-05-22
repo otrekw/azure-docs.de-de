@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erstellen einer App – LUIS'
 description: In dieser Schnellstartanleitung lernen Sie, eine LUIS-App zu erstellen, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80287797"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589135"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
@@ -21,11 +21,15 @@ In dieser Schnellstartanleitung erstellen Sie eine LUIS-App, die die vordefinier
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 Sie können Ihre Anwendungen auf der Seite **Meine Apps** erstellen und verwalten.
 
-1. Wählen Sie in der Liste „Meine Apps“ die Option **+ New app for conversation** (+ Neue App für die Konversation) aus.
+1. Wählen Sie in der Liste „Meine Apps“ die Option **New app for conversation** (+ Neue App für die Konversation) und anschließend in der Liste mit den Optionen erneut **New app for conversation** (+ Neue App für die Konversation) aus.
 
-1. Geben Sie im Dialogfeld den Namen `Home Automation` für Ihre Anwendung ein. Legen Sie die Kultur auf **Englisch** fest. Die Beschreibung ist optional und wird nicht für die Erstellung oder Vorhersage verwendet. Die Vorhersageressource ist auch bei der Erstellung einer LUIS-App optional. Wählen Sie **Fertig**aus.
+1. Geben Sie im Dialogfeld den Namen `Home Automation` für Ihre Anwendung ein.
+1. Legen Sie die Kultur auf **Englisch** fest.
+1. Geben Sie optional eine Beschreibung ein.
+1. Wählen Sie keine Vorhersageressource aus, falls Sie die Ressource noch nicht erstellt haben. Um den Vorhersageendpunkt (Staging oder Produktion) Ihrer App verwenden zu können, müssen Sie eine Vorhersageressource zuweisen.
+1. Wählen Sie **Fertig**aus.
 
-    LUIS erstellt die App. Bei der Veröffentlichung Ihrer App in der Produktion müssen Sie eine Vorhersageressource zuweisen, damit Ihre App zahlreiche Anforderungen verarbeiten kann.
+    LUIS erstellt die App.
 
     ![Geben Sie Ihrer Anwendung im Dialogfeld den Namen „Home Automation“.](./media/create-new-app-details.png)
 
@@ -34,24 +38,27 @@ Sie können Ihre Anwendungen auf der Seite **Meine Apps** erstellen und verwalte
 
 ## <a name="add-prebuilt-domain"></a>Hinzufügen einer vordefinierten Domäne
 
-Wählen Sie die Option **Vordefinierte Domänen** aus, und suchen Sie nach **HomeAutomation**. Wählen Sie auf der Karte „HomeAutomation“ die Option **Domäne hinzufügen** aus.
+1. Wählen Sie im linken Navigationsbereich die Option **Prebuilt domains** (Vordefinierte Domänen) aus.
+1. Suchen Sie nach **HomeAutomation**.
+1. Wählen Sie auf der Karte „HomeAutomation“ die Option **Domäne hinzufügen** aus.
 
-![Wählen Sie die Option „Vordefinierte Domänen“ aus, und suchen Sie nach „HomeAutomation“. Wählen Sie auf der Karte „HomeAutomation“ die Option „Domäne hinzufügen“ aus.](media/luis-quickstart-new-app/home-automation.png)
+    ![Wählen Sie die Option „Vordefinierte Domänen“ aus, und suchen Sie nach „HomeAutomation“. Wählen Sie auf der Karte „HomeAutomation“ die Option „Domäne hinzufügen“ aus.](media/luis-quickstart-new-app/home-automation.png)
 
-Wenn die Domäne erfolgreich hinzugefügt wurde, enthält das Feld für die vordefinierte Domäne eine Schaltfläche **Remove domain** (Domäne entfernen).
+    Wenn die Domäne erfolgreich hinzugefügt wurde, enthält das Feld für die vordefinierte Domäne eine Schaltfläche **Remove domain** (Domäne entfernen).
 
 ## <a name="intents-and-entities"></a>Absichten und Entitäten
 
-Wählen Sie **Absichten** aus, um die Absichten der HomeAutomation-Domäne anzuzeigen. Die Absichten der vordefinierten Domäne verfügen über Beispieläußerungen.
+1. Wählen Sie **Absichten** aus, um die Absichten der HomeAutomation-Domäne anzuzeigen. Die Absichten der vordefinierten Domäne verfügen über Beispieläußerungen.
 
-![Screenshot: Liste mit HomeAutomation-Absichten](media/luis-quickstart-new-app/home-automation-intents.png "Screenshot: Liste mit HomeAutomation-Absichten")
+    ![Screenshot: Liste mit HomeAutomation-Absichten](media/luis-quickstart-new-app/home-automation-intents.png "Screenshot: Liste mit HomeAutomation-Absichten")
 
-> [!NOTE]
-> **None** (Keine) ist eine Absicht, die von allen LUIS-Apps bereitgestellt wird. Diese Absicht verwenden Sie zum Behandeln von Äußerungen, die keiner Funktionalität Ihrer App entsprechen.
+    > [!NOTE]
+    > **None** (Keine) ist eine Absicht, die von allen LUIS-Apps bereitgestellt wird. Diese Absicht verwenden Sie zum Behandeln von Äußerungen, die keiner Funktionalität Ihrer App entsprechen.
 
-Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält die Absicht eine Liste von Äußerungen, die mit Entitäten bezeichnet sind.
+1. Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Die Absicht enthält eine Liste von Beispieläußerungen, die mit Entitäten beschriftet sind.
 
-[![Screenshot: Absicht „HomeAutomation.TurnOff“](media/luis-quickstart-new-app/home-automation-turnoff.png "Screenshot: Absicht „HomeAutomation.TurnOff“")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+    > [!div class="mx-imgBorder"]
+    > [![Screenshot: Absicht „HomeAutomation.TurnOff“](media/luis-quickstart-new-app/home-automation-turnoff.png "Screenshot: Absicht „HomeAutomation.TurnOff“")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
@@ -60,13 +67,13 @@ Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält 
 ## <a name="test-your-app"></a>Testen Ihrer App
 Nachdem Sie Ihre App trainiert haben, können Sie sie testen.
 
-1. Wählen Sie im Navigationsbereich rechts oben die Option **Testen** aus. 1. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE.
+1. Wählen Sie im Navigationsbereich rechts oben die Option **Testen** aus.
+
+1. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE.
 
     ```
     Turn off the lights
     ```
-
-    Überprüfen Sie, ob die Absicht mit der höchsten Bewertung der Absicht entspricht, die Sie für die einzelnen Testäußerungen erwartet haben.
 
     In diesem Beispiel wurde `Turn off the lights` korrekt als Absicht mit der höchsten Bewertung von **HomeAutomation.TurnOff** identifiziert.
 
@@ -74,7 +81,8 @@ Nachdem Sie Ihre App trainiert haben, können Sie sie testen.
 
 1. Wählen Sie **Überprüfen** aus, um weitere Informationen zur Vorhersage anzuzeigen.
 
-    ![Screenshot: Testbereich mit Überprüfungsinformationen](media/luis-quickstart-new-app/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Testbereich mit Überprüfungsinformationen](media/luis-quickstart-new-app/test.png)
 
 1. Schließen Sie den Testbereich.
 

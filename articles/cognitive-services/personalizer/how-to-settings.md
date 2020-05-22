@@ -2,13 +2,13 @@
 title: Konfigurieren der Personalisierung
 description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, wie oft der Dienst Untersuchungen durchführt, wie oft das Modell neu trainiert wird und wie viele Daten gespeichert werden.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218572"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584653"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Konfigurieren der Lernschleife der Personalisierung
 
@@ -18,6 +18,23 @@ Konfigurieren Sie die Lernschleife auf der Seite **Konfiguration** im Azure-Port
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>Planen von Konfigurationsänderungen
+
+Da einige Konfigurationsänderungen [Ihr Modell zurücksetzen](#settings-that-include-resetting-the-model), sollten Sie Ihre Konfigurationsänderungen planen.
+
+Wenn Sie planen, den [Ausbildungsmodus](concept-apprentice-mode.md) zu verwenden, stellen Sie sicher, dass Sie Ihre Personalisierungskonfiguration überprüfen, bevor Sie in den Ausbildungsmodus wechseln.
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>Einstellungen, die das Zurücksetzen des Modells einbeziehen
+
+Die folgenden Aktionen lösen ein erneutes Training des Modells unter Verwendung der bis zu den letzten zwei Tagen verfügbaren Daten aus.
+
+* Relevanz
+* Durchsuchen
+
+Verwenden Sie zum [Löschen](how-to-manage-model.md) aller Ihrer Daten die Seite **Modell- und Lerneinstellungen**.
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>Konfigurieren von Relevanzen für die Feedbackschleife
 
@@ -66,16 +83,7 @@ Wählen Sie nach dem Ändern dieses Werts unbedingt **Speichern** aus.
 
 Wählen Sie nach dem Ändern dieses Werts unbedingt **Speichern** aus.
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>Einstellungen, die das Zurücksetzen des Modells einbeziehen
-
-Die folgenden Aktionen umfassen ein sofortiges erneutes Training des Modells mit den Daten der letzten 2 Tage.
-
-* Relevanz
-* Durchsuchen
-
-Verwenden Sie zum [Löschen](how-to-manage-model.md) aller Ihrer Daten die Seite **Modell- und Lerneinstellungen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

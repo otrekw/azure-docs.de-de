@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443549"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589498"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Einrichten eines Labs zur Schulung in Shellskripts unter Linux
 Erfahren Sie, wie Sie unter Linux ein Lab für Schulungen zum Erstellen von Shellskripts einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können. 
@@ -32,19 +32,19 @@ Nachdem Sie das Lab-Konto erstellt haben, aktivieren Sie die folgenden Einstellu
 
 | Lab-Kontoeinstellungen | Instructions |
 | ----------- | ------------ |  
-| Marketplace-Bilder | Aktivieren Sie das Image [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) zur Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](specify-marketplace-images.md). | 
+| Marketplace-Bilder | Aktivieren Sie das Image „Ubuntu Server 18.04 LTS“ für die Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](specify-marketplace-images.md). | 
 
 Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab mit den folgenden Einstellungen zu erstellen:
 
 | Lab-Einstellungen | Wert/Anweisungen | 
 | ------------ | ------------------ |
 | Größe des virtuellen Computers (VM) | Klein  |
-| VM-Image | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
-| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Kursleiter und Kursteilnehmer mithilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services.](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm) </p>|
+| VM-Image | Ubuntu Server 18.04 LTS |
+| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Lehrer/Dozenten und Kursteilnehmer mithilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services.](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm) </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Desktop und xRDP installieren
-Auf dem [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)-Abbild ist standardmäßig kein Remotedesktop-Server installiert. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Remotedesktop, um eine Verbindung zum Linux-VM in Azure herzustellen](../../virtual-machines/linux/use-remote-desktop.md), um die zum Herstellen einer Verbindung über das Remotedesktopprotokoll erforderlichen Pakete auf der Vorlage für virtuelle Maschinen zu installieren.
+Auf dem „Ubuntu Server 18.04 LTS“-Abbild ist standardmäßig kein Remotedesktop-Server installiert. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Remotedesktop, um eine Verbindung zum Linux-VM in Azure herzustellen](../../virtual-machines/linux/use-remote-desktop.md), um die zum Herstellen einer Verbindung über das Remotedesktopprotokoll erforderlichen Pakete auf der Vorlage für virtuelle Maschinen zu installieren.
 
 ## <a name="install-ruby"></a>Installieren von Ruby
 Ruby ist eine dynamische Open Source-Programmiersprache, die mit Bash-Skripts kombiniert werden kann. In diesem Abschnitt wird gezeigt, wie Sie `apt-get` verwenden, um die neueste Version von [Ruby](https://www.ruby-lang.org/) zu installieren.

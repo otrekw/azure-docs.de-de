@@ -9,23 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219108"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585622"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im LUIS-Portal oder mithilfe der LUIS-Erstellungs-[APIs](developer-reference-resource.md) erstellen.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 ## <a name="using-the-luis-portal"></a>Mithilfe des LUIS-Portals
 
-Sie können eine neue App auf verschiedene Arten im Vorschauportal erstellen:
+Eine neue App kann im Portal auf verschiedene Arten erstellt werden:
 
 * Beginnen Sie mit einer leeren App, und erstellen Sie Absichten, Äußerungen und Entitäten.
 * Beginnen Sie mit einer leeren App, und fügen Sie eine [vordefinierte Domäne](luis-how-to-use-prebuilt-domains.md) hinzu.
@@ -35,13 +33,13 @@ Sie können eine neue App auf verschiedene Arten im Vorschauportal erstellen:
 Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 * [Anwendung hinzufügen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f): Beginnen Sie mit einer leeren App, und erstellen Sie Absichten, Äußerungen und Entitäten.
-* [Vorgefertigte Anwendung hinzufügen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5): Beginnen Sie mit einer vorgefertigten Domäne, einschließlich Absichten, Äußerungen und Entitäten.  
+* [Vorgefertigte Anwendung hinzufügen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5): Beginnen Sie mit einer vorgefertigten Domäne, einschließlich Absichten, Äußerungen und Entitäten.
 
 
 <a name="export-app"></a>
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
- 
+
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
@@ -59,10 +57,10 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 1. Wählen Sie Ihre Anwendungskultur und dann **Fertig** aus. Die Beschreibungs- und Vorhersageressource sind an dieser Stelle optional. Die Festlegung kann dann jederzeit im Bereich **Verwalten** des Portals erfolgen.
 
     > [!NOTE]
-    > Die Kultur kann nach dem Erstellen der Anwendung nicht mehr geändert werden. 
+    > Die Kultur kann nach dem Erstellen der Anwendung nicht mehr geändert werden.
 
-    Nachdem die App erstellt wurde, zeigt das LUIS-Portal die Liste **Absichten** mit der bereits für Sie erstellten Absicht `None` an. Sie verfügen jetzt über eine leere App. 
-    
+    Nachdem die App erstellt wurde, zeigt das LUIS-Portal die Liste **Absichten** mit der bereits für Sie erstellten Absicht `None` an. Sie verfügen jetzt über eine leere App.
+
     > [!div class="mx-imgBorder"]
     > ![Liste „Absichten“ mit erstellter Absicht „Keine“ ohne Beispieläußerungen.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
@@ -79,4 +77,4 @@ Die Kontextsymbolleiste bietet weitere Aktionen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr App-Entwurf die Absichtserkennung umfasst, [erstellen Sie neue Absichten](luis-how-to-add-intents.md), und fügen Sie Beispieläußerungen hinzu. Wenn Ihr App-Entwurf nur die Datenextraktion umfasst, fügen Sie der Absicht „Keine“ Beispieläußerungen hinzu. Dann [erstellen Sie Entitäten](luis-how-to-add-example-utterances.md) und bezeichnen die Beispieläußerungen mit diesen Entitäten. 
+Wenn Ihr App-Entwurf die Absichtserkennung umfasst, [erstellen Sie neue Absichten](luis-how-to-add-intents.md), und fügen Sie Beispieläußerungen hinzu. Wenn Ihr App-Entwurf nur die Datenextraktion umfasst, fügen Sie der Absicht „Keine“ Beispieläußerungen hinzu. Dann [erstellen Sie Entitäten](luis-how-to-add-example-utterances.md) und bezeichnen die Beispieläußerungen mit diesen Entitäten.

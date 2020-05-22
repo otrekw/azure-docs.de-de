@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257741"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588172"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -54,7 +54,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
         > Notieren Sie sich den Benutzernamen und das Kennwort. Diese Angaben werden nicht noch einmal angezeigt.
     3. Deaktivieren Sie die Option **Use same password for all virtual machines** (Dasselbe Kennwort für alle virtuellen Computer verwenden), wenn Sie möchten, dass die Kursteilnehmer ihre eigenen Kennwörter festlegen. Dieser Schritt ist **optional**. 
 
-        Ein Kursleiter kann auch dasselbe Kennwort für alle VMs im Lab verwenden, oder den Kursteilnehmern erlauben, die Kennwörter für ihre virtuellen Computer selbst festzulegen. Standardmäßig ist diese Einstellung für alle Windows- und Linux-Images mit Ausnahme von Ubuntu aktiviert. Bei der Auswahl einer **Ubuntu**-VM ist diese Einstellung deaktiviert, sodass die Kursteilnehmer bei der ersten Anmeldung aufgefordert werden, ein Kennwort festzulegen.  
+        Ein Lehrer/Dozent kann auch dasselbe Kennwort für alle VMs im Lab verwenden, oder den Kursteilnehmern erlauben, die Kennwörter für ihre virtuellen Computer selbst festzulegen. Standardmäßig ist diese Einstellung für alle Windows- und Linux-Images mit Ausnahme von Ubuntu aktiviert. Bei der Auswahl einer **Ubuntu**-VM ist diese Einstellung deaktiviert, sodass die Kursteilnehmer bei der ersten Anmeldung aufgefordert werden, ein Kennwort festzulegen.  
 
         ![Fenster „Neues Lab“](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. Wählen Sie dann **Weiter** auf der Seite **VM-Anmeldeinformationen** aus. 
@@ -103,14 +103,16 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
 | Medium | 4 | 7 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. | 
-| Mittel (geschachtelte Virtualisierung) | 4 | 16 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. Sie unterstützt auch die geschachtelte Virtualisierung. <p>Diese Größe kann in Szenarien verwendet werden, in denen jeder Kursteilnehmer mehrere virtuelle Computer benötigt. Die Kursleiter können die geschachtelte Virtualisierung nutzen, um einige kleine geschachtelte virtuelle Computer innerhalb des virtuellen Computers einzurichten. </p> |
-| Groß | 8 | 32 GB | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. Sie unterstützt auch die geschachtelte Virtualisierung. |  
+| Mittel (geschachtelte Virtualisierung) | 4 | 16 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. Sie unterstützt auch die geschachtelte Virtualisierung. <p>Diese Größe kann in Szenarien verwendet werden, in denen jeder Kursteilnehmer mehrere virtuelle Computer benötigt. Die Lehrer/Dozenten können die geschachtelte Virtualisierung nutzen, um einige kleine geschachtelte virtuelle Computer innerhalb des virtuellen Computers einzurichten. </p> |
+| Kleine GPU (Compute) | 6 | 56 GB | <p>Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning-Anwendungen.</p><p>Azure Lab Services installiert und konfiguriert automatisch die erforderlichen GPU-Treiber, wenn Sie ein Lab mit GPU-Images erstellen. </p> | 
 | Kleine GPU (Visualisierung) | 6 | 56 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
-| Kleine GPU (Compute) | 6 | 56 GB | Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning-Anwendungen. | 
+| Groß | 8 | 16 GB | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. |
+| Groß (geschachtelte Virtualisierung) | 8 | 32 GB | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. Sie unterstützt auch die geschachtelte Virtualisierung. |  
 | Mittlere GPU (Visualisierung) | 12 | 112 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
 
 > [!NOTE]
-> Azure Lab Services installiert und konfiguriert automatisch die erforderlichen GPU-Treiber, wenn Sie ein Lab mit GPU-Images erstellen.  
+> Beim Erstellen eines Classroom-Labs werden möglicherweise einige dieser VM-Größen nicht in der Liste angezeigt. Die Liste wird basierend auf der aktuellen Kapazität des Standorts des Labs aufgefüllt. Wenn der Ersteller des Lab-Kontos [Lab-Erstellern das Auswählen eines Standorts für das Lab gestattet](allow-lab-creator-pick-lab-location.md), können Sie versuchen, einen anderen Ort für das Lab auszuwählen, und dann nachsehen, ob die VM-Größe verfügbar ist. 
+
 
 ## <a name="view-all-classroom-labs"></a>Anzeigen aller Classroom-Labs
 1. Navigieren Sie zum [Azure Lab Services-Portal](https://labs.azure.com).

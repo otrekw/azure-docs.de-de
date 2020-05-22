@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71695164"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588903"
 ---
-# <a name="composite-entity"></a>Entität vom Typ „Composite“ 
+# <a name="composite-entity"></a>Entität vom Typ „Composite“
 
-Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
+Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität.
+
+> [!CAUTION]
+> Diese Entität ist **veraltet**. Migrieren Sie zur [durch maschinelles Lernen erworbenen Entität](reference-entity-machine-learned-entity.md).
 
 **Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt**:
 
-* Sind aufeinander bezogen. 
+* Sind aufeinander bezogen.
 * Sie sind im Kontext der Äußerung miteinander verknüpft.
 * Verwenden eine Vielzahl von Entitätstypen.
 * Müssen gruppiert und von der Clientanwendung als eine Informationseinheit verarbeitet werden.
@@ -87,7 +90,7 @@ Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zu
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
@@ -169,14 +172,17 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 }
 ```
 
-* * * 
+* * *
 
 
-|Datenobjekt|Name der Entität|value|
+|Datenobjekt|Name der Entität|Wert|
 |--|--|--|
 |Vordefinierte Entität – number|"builtin.number"|"2"|
 |Vordefinierte Entität – GeographyV2|"Location::ToLocation"|"cairo"|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-tutorial-composite-entity.md) fügen Sie eine **zusammengesetzte Entität** hinzu, um extrahierte Daten verschiedener Typen in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
+Weitere Informationen zu Entitäten finden Sie hier:
+
+* [Konzepte](luis-concept-entity-types.md)
+* [Anleitung zum Erstellen](luis-how-to-add-entities.md)

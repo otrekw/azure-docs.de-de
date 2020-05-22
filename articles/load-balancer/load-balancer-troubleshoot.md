@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935478"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590263"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
-Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure Load Balancer vom Typ „Basic“ und „Standard“. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure Load Balancer vom Typ „Basic“ und „Standard“. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-diagnostics.md).
 
 Wenn die Load Balancer-Konnektivität nicht verfügbar ist, liegen meist die folgenden Symptome vor: 
 
@@ -124,7 +124,7 @@ Wenn die auf der Back-End-VM eines Load Balancers gehostete Anwendung versucht, 
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Ursache 4: Der Zugriff auf das Front-End des internen Load Balancers erfolgt über die beteiligte VM des Load Balancer-Back-End-Pools
 
-Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine der teilnehmenden Back-End-VMs versucht, auf das Front-End des internen Load Balancers zuzugreifen, treten möglicherweise Fehler auf, wenn der Flow der Ausgangs-VM zugeordnet wird. Dieses Szenario wird nicht unterstützt. Überprüfen Sie die [Beschränkungen](concepts-limitations.md#limitations) für eine ausführliche Beschreibung.
+Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine der teilnehmenden Back-End-VMs versucht, auf das Front-End des internen Load Balancers zuzugreifen, treten möglicherweise Fehler auf, wenn der Flow der Ausgangs-VM zugeordnet wird. Dieses Szenario wird nicht unterstützt. Überprüfen Sie die [Beschränkungen](concepts.md#limitations) für eine ausführliche Beschreibung.
 
 **Auflösung:** Es gibt mehrere Möglichkeiten, die Blockierung für dieses Szenarios aufzuheben, einschließlich der Verwendung eines Proxys. Evaluieren Sie Application Gateway oder andere Proxys von Drittanbietern (z.B. nginx oder haproxy). Weitere Informationen zu Application Gateway finden Sie unter [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
 
@@ -132,11 +132,15 @@ Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Ursache: Der Back-End-Port kann nicht für eine Lastenausgleichsregel geändert werden, die von einem Integritätstest für den Lastenausgleich verwendet wird, auf den von der VM-Skalierungsgruppe verwiesen wird.
 **Lösung** Um den Port zu ändern, können Sie den Integritätstest entfernen, indem Sie die VM-Skalierungsgruppe aktualisieren, den Port aktualisieren und dann den Integritätstest erneut konfigurieren.
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>Symptom: Geringer Datenverkehr wird noch über den Lastenausgleich geleitet, nachdem VMs aus dem Back-End-Pool des Lastenausgleichs entfernt wurden. 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>Ursache: Aus dem Back-End-Pool entfernte virtuelle Computer sollten keinen Datenverkehr mehr empfangen. Die geringe Menge an Netzwerkdatenverkehr könnte im Zusammenhang mit Speicher, DNS und andere Funktionen in Azure stehen. 
+Um dies zu überprüfen, können Sie eine Netzwerküberwachung durchführen. Die für Ihre Blob-Speicherkonten verwendeten vollqualifizierten Namen (FQDN) werden in den Eigenschaften des jeweiligen Speicherkontos aufgeführt.  Auf einem virtuellen Computer innerhalb Ihres Azure-Abonnements können Sie einen nslookup-Vorgang durchführen, um die Azure IP zu ermitteln, die diesem Speicherkonto zugewiesen ist.
+
 ## <a name="additional-network-captures"></a>Zusätzliche Netzwerkerfassungen
 Wenn Sie eine Supportanfrage öffnen möchten, erfassen Sie die folgenden Informationen, um eine schnellere Lösung zu ermöglichen. Wählen Sie eine einzelne Back-End-VM für die Durchführung der folgenden Tests aus:
 - Verwenden Sie „Psping“ von einer der Back-End-VMs im VNET, um die Testportantwort zu testen (Beispiel: psping 10.0.0.4:3389), und zeichnen Sie die Ergebnisse auf. 
 - Wenn bei diesen Pingtests keine Antwort empfangen wird, führen Sie beim Ausführen von „PsPing“ eine gleichzeitige Netsh-Ablaufverfolgung auf der Back-End-VM und der VNET-Test-VM aus, und beenden Sie dann die Netsh-Ablaufverfolgung. 
-  
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).

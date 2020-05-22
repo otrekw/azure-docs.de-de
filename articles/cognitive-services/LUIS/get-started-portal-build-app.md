@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Komponenten einer App sowie Absichten und Entitäten. Außerdem verwenden Sie zu Testzwecken eine Beispieläußerung im LUIS-Portal.
 ms.topic: quickstart
-ms.date: 04/14/2020
-ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/05/2020
+ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382582"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585211"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
@@ -18,10 +18,10 @@ In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Erstellen Sie
 
 ## <a name="create-an-app"></a>Erstellen einer App
 
-1. Wählen Sie auf der Kontextsymbolleiste die Option **+ New app for conversation** (+ Neue App für Unterhaltungen) und anschließend **New app for conversation** (Neue App für Unterhaltungen) aus.
+1. Wählen Sie auf der Kontextsymbolleiste die Option **+ New app for conversation** (+ Neue App für die Konversation) und anschließend erneut **+ New app for conversation** (+ Neue App für die Konversation) aus.
 
     > [!div class="mx-imgBorder"]
-    > [![Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [![Screenshot: Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Konfigurieren Sie die App im Popupfenster mit den folgenden Einstellungen, und wählen Sie dann **Fertig** aus.
 
@@ -32,11 +32,11 @@ In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Erstellen Sie
    |Beschreibung (optional)|`App made with LUIS Portal`|Beschreibung der App<br>optional|
    |Vorhersageressource (optional) |-  |Nicht auswählen. Sie erhalten von LUIS einen Startschlüssel für die kostenlose Erstellung sowie für 1.000 Vorhersageendpunktanforderungen. |
 
-   ![Eingeben der Einstellungen für die neue App](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![Screenshot: Eingabe neuer App-Einstellungen](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>Erstellen von Absichten
 
-Nachdem die LUIS-App erstellt wurde, müssen Sie Absichten erstellen. Absichten dienen zum Kategorisieren der Texteingaben von Benutzern. Beispielsweise kann eine Personalverwaltungs-App zwei Funktionen aufweisen. Personen dabei zu helfen:
+Nachdem die LUIS-App erstellt wurde, müssen Sie Absichten erstellen. Absichten dienen zum Klassifizieren der Texteingaben von Benutzern. Beispielsweise kann eine Personalverwaltungs-App zwei Funktionen aufweisen. Personen dabei zu helfen:
 
  1. Stellen zu finden und sich auf sie zu bewerben
  1. Formulare für die Bewerbung auf Stellen zu finden
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um Absichten zu erstellen:
 
 1. Nachdem die App erstellt wurde, wird die Seite **Intents** (Absichten) des Abschnitts **Erstellen** angezeigt. Klicken Sie auf **Erstellen**.
 
-   [![Auswählen von „Erstellen“, um eine neue Absicht zu erstellen](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Screenshot: Auswählen von „Erstellen“ zum Erstellen einer neuen Absicht](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Geben Sie den Namen der Absicht ein, `FindForm`, und wählen Sie dann **Fertig** aus.
 
@@ -63,27 +63,27 @@ Nach dem Erstellen von Absichten fügen Sie Beispieläußerungen hinzu. Beispiel
 Für die `FindForm`-Absicht dieser Beispielanwendung gehört zu den Beispieläußerungen die Formularnummer. Die Clientanwendung benötigt die Formularnummer, um die Anforderung des Benutzers zu erfüllen, daher ist es wichtig, sie in die Äußerung einzuschließen.
 
 > [!div class="mx-imgBorder"]
-> [![Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [![Screenshot: Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 Fügen Sie der `FindForm`-Absicht die folgenden 15 Beispieläußerungen hinzu.
 
 |#|Beispiele für Äußerungen|
 |--|--|
-|1|Looking for hrf-123456 (Nach hrf-123456 suchen)|
-|2|Where is the human resources form hrf-234591? (Wo ist das Personalformular hrf-234591?)|
-|3|hrf-345623, where is it (hrf-345623, wo)|
-|4|Is it possible to send me hrf-345794 (Kann mir hrf-345794 zugesendet werden)|
-|5|Do I need hrf-234695 to apply for an internal job? (Benötige ich hrf-234695 zur Bewerbung um eine interne Stelle?)|
-|6|Does my manager need to know I'm applying for a job with hrf-234091 (Muss mein Vorgesetzter wissen, dass ich mich mit hrf-234091 um eine Stelle bewerbe)|
-|7|Where do I send hrf-234918? Do I get an email response it was received? (Wohin muss ich hrf-234918 senden? Wird der Empfang per E-Mail bestätigt?)|
-|8|hrf-234555|
-|9|When was hrf-234987 updated? (Wann wurde hrf-234987 aktualisiert?)|
-|10|Do I use form hrf-876345 to apply for engineering positions (Verwende ich das Formular hrf-876345 zur Bewerbung um Technikerstellen)|
-|11|Was a new version of hrf-765234 submitted for my open req? (Wurde für meine offene Anfrage eine neue Version von hrf-765234 übermittelt?)|
-|12|Do I use hrf-234234 for international jobs? (Muss ich für interne Stellen hrf-234234 verwenden?)|
-|13|hrf-234598 spelling mistake (Rechtschreibfehler in hrf-234598)|
-|14|will hrf-234567 be edited for new requirements (Wird hrf-234567 mit neuen Anforderungen überarbeitet)|
-|15|hrf-123456, hrf-123123, hrf-234567|
+|1|`Looking for hrf-123456`|
+|2|`Where is the human resources form hrf-234591?`|
+|3|`hrf-345623, where is it`|
+|4|`Is it possible to send me hrf-345794`|
+|5|`Do I need hrf-234695 to apply for an internal job?`|
+|6|`Does my manager need to know I'm applying for a job with hrf-234091`|
+|7|`Where do I send hrf-234918? Do I get an email response it was received?`|
+|8|`hrf-234555`|
+|9|`When was hrf-234987 updated?`|
+|10|`Do I use form hrf-876345 to apply for engineering positions`|
+|11|`Was a new version of hrf-765234 submitted for my open req?`|
+|12|`Do I use hrf-234234 for international jobs?`|
+|13|`hrf-234598 spelling mistake`|
+|14|`will hrf-234567 be edited for new requirements`|
+|15|`hrf-123456, hrf-123123, hrf-234567`|
 
 Diese Beispieläußerungen unterscheiden sich entwurfsbedingt in folgenden Punkten:
 
@@ -96,20 +96,21 @@ Diese Beispieläußerungen unterscheiden sich entwurfsbedingt in folgenden Punkt
 
 ## <a name="create-a-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“
 
-Um in der Vorhersageantwort zur Laufzeit die Formularnummer zurückzugeben, muss das Formular als Entität gekennzeichnet sein. Da der Text mit der Formularnummer sehr strukturiert ist, können Sie ihn mithilfe einer Entität vom Typ „Regulärer Ausdruck“ markieren. Gehen Sie wie folgt vor, um die Entität zu erstellen:
+Um in der Vorhersageantwort zur Laufzeit die Formularnummer zurückzugeben, muss die Formularnummer als Entität extrahiert werden. Da der Text mit der Formularnummer sehr strukturiert ist, können Sie ihn eine Entität vom Typ „RegEx“ verwenden. Gehen Sie wie folgt vor, um die Entität vom Typ „RegEx“ zu erstellen:
 
 1. Wählen Sie im Menü links die Option **Entitäten** aus.
 
 1. Wählen Sie auf der Seite **Entitäten** die Option **Erstellen** aus.
 
-1. Geben Sie den Namen `Human Resources Form Number` ein, und wählen Sie den Entitätstyp **RegEx** und anschließend **Weiter** aus.
+1. Geben Sie den Namen `FormNumber` ein, und wählen Sie den Entitätstyp **Regex** aus.
 
-   ![Erstellen einer Entität vom Typ „Regulärer Ausdruck“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+1. Geben Sie den regulären Ausdruck `hrf-[0-9]{6}` in das Feld **Regex** ein. Dieser Eintrag entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu. Wählen Sie anschließend **Erstellen** aus.
 
-1. Geben Sie den folgenden regulären Ausdruck (**RegEx**) ein: `hrf-[0-9]{6}`. Dieser Eintrag entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu. Wählen Sie anschließend **Erstellen** aus.
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Erstellen einer Entität vom Typ „RegEx“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-   ![Eingeben eines regulären Ausdrucks für eine Entität](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
 
+    Diese Entität extrahiert jeden Text, der mit dem regulären Ausdruck in einer der Absichten übereinstimmt.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
 
@@ -123,11 +124,10 @@ Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clien
 
    |Beispieläußerungen für die Absicht „None“|
    |--|
-   |Bellende Hunde sind nervig|
-   |Bestell mir eine Pizza|
-   |Pinguine im Ozean|
+   |`Barking dogs are annoying`|
+   |`Penguins in the ocean`|
 
-   Diese Beispieläußerungen sind für die aktuelle App nicht relevant. Falls Begriffe für Tiere, Lebensmittel oder den Ozean für Ihre App relevant sind, müssen für die Absicht **None** andere Beispieläußerungen verwendet werden.
+   Diese Beispieläußerungen sind für die aktuelle App nicht relevant. Falls Begriffe für Tiere oder den Ozean für Ihre App relevant sind, müssen für die Absicht **None** andere Beispieläußerungen verwendet werden.
 
 ## <a name="train-the-app"></a>Trainieren der App
 
@@ -140,7 +140,7 @@ Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clien
    Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt. Falls Sie anstelle des Entitätsnamens den ursprünglichen Text anzeigen möchten, schalten Sie über die Symbolleiste die **Entities View** (Entitätsansicht) um.
 
    > [!div class="mx-imgBorder"]
-   > [![Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [![Screenshot: Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testen der neuen App im interaktiven Testbereich
 
@@ -155,9 +155,9 @@ Verwenden Sie den interaktiven **Testbereich** im LUIS-Portal, um zu überprüfe
     Wählen Sie **Überprüfen** aus, um Entitätsvorhersagen anzuzeigen.
 
    > [!div class="mx-imgBorder"]
-   > ![Testen einer neuen Äußerung im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
+   > ![Screenshot: Testen neuer Äußerungen im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   Die am stärksten vorhergesagte Absicht ist richtigerweise **FindForm** mit einer Zuverlässigkeit von mehr als 90 % (0,977). Die Entität **Personalwesen-Formularnummer** wird mit dem Wert hrf-234098 extrahiert.
+   Die am stärksten vorhergesagte Absicht ist richtigerweise **FindForm** mit einer Zuverlässigkeit von mehr als 90 % (0,977). Die Entität **FormNumber** wird mit dem Wert „hrf-234098“ extrahiert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

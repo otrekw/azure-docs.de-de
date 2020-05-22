@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925999"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584602"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services-Containerimagetags
 
@@ -25,15 +25,13 @@ Azure Cognitive Services bietet viele Containerimages. Die Containerregistrierun
 
 ## <a name="anomaly-detector"></a>Anomalieerkennung
 
-Das Containerimage [Anomalieerkennung][ad-containers] befindet sich in der `containerpreview.azurecr.io`-Containerregistrierung. Es befindet sich im Repository `microsoft` und trägt den Namen `cognitive-services-anomaly-detector`. Der vollqualifizierte Containerimagename lautet `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector`.
+Das Containerimage für die [Anomalieerkennung][ad-containers] finden Sie im Containerregistrierungssyndikat `mcr.microsoft.com`. Es befindet sich im Repository `azure-cognitive-services` und trägt den Namen `anomaly-detector`. Der vollqualifizierte Containerimagename lautet `mcr.microsoft.com/azure-cognitive-services/anomaly-detector`.
 
 Dieses Containerimage verfügt über die folgenden Tags:
 
 | Imagetags                    | Notizen |
 |-------------------------------|:------|
 | `latest`                      |       |
-| `1.1.009301-amd64-preview`    |       |
-| `1.1.008500001-amd64-preview` |       |
 
 ## <a name="computer-vision"></a>Maschinelles Sehen
 
@@ -657,10 +655,20 @@ Das Containerimage [Standpunktanalyse][ta-se] befindet sich im `mcr.microsoft.co
 
 Dieses Containerimage verfügt über die folgenden Tags:
 
-| Imagetags                    | Notizen |
-|-------------------------------|:------|
-| `latest`                      |       |
-| `1.1.009301-amd64-preview`    |       |
+| Imagetags | Notizen                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0-en`   | Standpunktanalyse v3 (Englisch)               |
+| `3.0-es`   | Standpunktanalyse v3 (Spanisch)               |
+| `3.0-fr`   | Standpunktanalyse v3 (Französisch)                |
+| `3.0-it`   | Standpunktanalyse v3 (Italienisch)               |
+| `3.0-de`   | Standpunktanalyse v3 (Deutsch)                |
+| `3.0-zh`   | Standpunktanalyse v3 (Chinesisch, vereinfacht)  |
+| `3.0-zht`  | Standpunktanalyse v3 (Chinesisch, traditionell) |
+| `3.0-ja`   | Standpunktanalyse v3 (Japanisch)              |
+| `3.0-pt`   | Standpunktanalyse v3 (Portugiesisch)            |
+| `3.0-nl`   | Standpunktanalyse v3 (Niederländisch)                 |
+| `1.1.009301-amd64-preview`    | Standpunktanalyse v2      |
 | `1.1.008510001-amd64-preview` |       |
 | `1.1.007750002-amd64-preview` |       |
 | `1.1.007360001-amd64-preview` |       |

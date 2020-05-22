@@ -7,19 +7,19 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: e67f65d252be0ea638d3b5fa241d9413e76f1a98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 253c391b222c757a367bd5cd39939052cc697b00
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877019"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588386"
 ---
-Zum Ausführen des Containers für die *Standpunktanalyse* führen Sie den folgenden `docker run`-Befehl aus.
+Zum Ausführen des Containers für *Standpunktanalyse v3* führen Sie den folgenden `docker run`-Befehl aus:
 
 ```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \
 mcr.microsoft.com/azure-cognitive-services/sentiment \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -29,6 +29,6 @@ ApiKey={API_KEY}
 Dieser Befehl:
 
 * Führt einen *Standpunktanalyse-Container* aus dem Containerimage aus
-* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
+* Zuweisen von einem CPU-Kern und 8 GB Arbeitsspeicher
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.

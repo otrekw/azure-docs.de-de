@@ -2,13 +2,13 @@
 title: 'Schnellstart: Bereitstellen einer App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine App bereitstellen, indem Sie eine Vorhersageendpunktressource erstellen, die Ressource zuweisen, ein Training durchführen und die App veröffentlichen.
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756289"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585069"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -30,7 +30,7 @@ In diesem Schnellstart erfahren Sie, wie eine Anwendung bereitgestellt wird. Sie
 
 Jedes Mal, wenn Sie eine neue Dokumenterstellungs- oder Vorhersageabfrageressource für LUIS erstellen, müssen Sie der LUIS-App die Ressource zuweisen. Nachdem Sie die Ressource zugewiesen haben, müssen Sie diesen Schritt nur dann erneut ausführen, wenn Sie eine neue Ressource erstellen. Sie können beispielsweise eine neue Ressource erstellen, um die Regionen Ihrer App zu erweitern oder eine größere Anzahl von Vorhersageabfragen zu unterstützen.
 
-1. Melden Sie sich beim [LUIS-Portal (Vorschauversion)](https://preview.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
 
 1. Wählen Sie im Menü oben rechts die Option **Verwalten** aus, und wählen Sie dann **Azure-Ressourcen** aus.
 
@@ -59,7 +59,7 @@ Jedes Mal, wenn Sie eine neue Dokumenterstellungs- oder Vorhersageabfrageressour
 
 ## <a name="prediction-endpoint-request"></a>Anforderung für Vorhersageendpunkt
 
-Die Äußerung des Benutzers wird im Vorschauportal am Ende der URL bei `query=` an die GET-Anforderung angefügt. Geben Sie nach `query=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
+Die Äußerung des Benutzers wird im Portal am Ende der URL bei `query=` an die GET-Anforderung angefügt. Geben Sie nach `query=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
 
 ```Is there a form named hrf-234098```
 

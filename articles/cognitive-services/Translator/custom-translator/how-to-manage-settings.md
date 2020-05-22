@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218628"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587233"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 
@@ -29,11 +29,11 @@ So greifen Sie auf die Seite „Einstellungen“ zu
 
 ## <a name="associating-microsoft-translator-subscription"></a>Zuordnen des Microsoft Translator-Abonnements
 
-Zum Trainieren oder Bereitstellen von Modellen benötigen Sie den Abonnementschlüssel der Microsoft-Textübersetzungs-API, der Ihrem Arbeitsbereich zugeordnet ist.
+Zum Trainieren oder Bereitstellen von Modellen muss Ihrem Arbeitsbereich ein Translator-Abonnementschlüssel zugeordnet sein.
 
 Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
 
-1. Abonnieren Sie die Microsoft-Textübersetzungs-API. In diesem Artikel finden Sie die genaue Anleitung.
+1. Abonnieren Sie Translator. In diesem Artikel erfahren Sie, wie Sie Translator abonnieren.
 2. Notieren Sie sich den Schlüssel Ihres Microsoft Translator-Abonnements. „Key1“ oder „Key2“ sind zulässig.
 3. Navigieren Sie zurück zum Custom Translator-Portal.
 

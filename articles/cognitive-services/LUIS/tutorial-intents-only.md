@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Vorhersagen von Absichten: LUIS'
-description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
+description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt.
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80286743"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588940"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
@@ -37,7 +37,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 |`ModifyOrder`|Ermitteln Sie die Pizzabestellung des Benutzers.|
 |`Greeting`|Beginnen Sie mit der Bot-Konversation.|
 |`ConfirmOrder`|Bestätigen Sie die Pizzabestellung.|
-|`None`|Ermitteln Sie, ob der Benutzer etwas fragt, das die App nicht beantworten soll. Diese Absicht steht im Rahmen der App-Erstellung zur Verfügung und kann nicht gelöscht werden. |
+|`None`|Ermitteln Sie, ob der Benutzer etwas fragt, das die LUIS-App nicht beantworten kann. Diese Absicht steht im Rahmen der App-Erstellung zur Verfügung und kann nicht gelöscht werden. |
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
@@ -64,9 +64,10 @@ Um eine Äußerung klassifizieren zu können, werden Beispiele von Benutzeräuß
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![Hinzufügen von Beispieläußerungen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Hinzufügen von Beispieläußerungen im LUIS-Portal auf der Seite der Absicht](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Durch die Bereitstellung von _Beispieläußerungen_ bringen Sie LUIS bei, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollen.
+    Durch die Bereitstellung von _Beispieläußerungen_ bringen Sie LUIS bei, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollen. Dies sind positive Beispiele. Die Äußerungen in allen anderen Absichten werden für diese Absicht als negative Beispiele behandelt.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -178,6 +179,8 @@ Um eine Äußerung klassifizieren zu können, werden Beispiele von Benutzeräuß
 
 ## <a name="client-application-next-steps"></a>Nächste Schritte in der Clientanwendung
 
+In diesem Tutorial wurden die LUIS-App und Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells.
+
 Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erledigt. LUIS gibt keine Antworten auf Benutzeräußerungen, es identifiziert lediglich, nach welcher Art Information in natürlicher Sprache gefragt wird. Der Dialoganschluss wird von der Clientanwendung, etwa einem Azure Bot, bereitgestellt.
 
 
@@ -193,8 +196,6 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial wurden die LUIS-App und Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells.
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer zerlegbaren Entität zu dieser App](tutorial-machine-learned-entity.md)

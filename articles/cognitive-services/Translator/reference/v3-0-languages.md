@@ -1,7 +1,7 @@
 ---
-title: Verwenden der Languages-Methode der Textübersetzungs-API
+title: Translator-Methode „Languages“
 titleSuffix: Azure Cognitive Services
-description: Die Languages-Methode ruft die Sprachen ab, die derzeit von anderen Vorgängen der Textübersetzungs-API unterstützt werden.
+description: Die Methode „Languages“ dient zum Abrufen der Sprachen, die derzeit von anderen Translator-Vorgängen unterstützt werden.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73835830"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588597"
 ---
-# <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
+# <a name="translator-30-languages"></a>Translator 3.0: Languages
 
-Ruft die Sprachen ab, die derzeit von anderen Vorgängen der Textübersetzungs-API unterstützt werden. 
+Ruft die Sprachen ab, die derzeit von anderen Translator-Vorgängen unterstützt werden. 
 
 ## <a name="request-url"></a>Anfrage-URL
 
@@ -101,7 +101,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
   Im folgenden Code wird ein Beispiel veranschaulicht:
           
@@ -135,7 +135,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für die Sprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
@@ -192,15 +192,15 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
-  * `translations`: Die Liste der Sprachen mit alterativen Übersetzungen und Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
+  * `translations`: Die Liste der Sprachen mit alternativen Übersetzungen sowie Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
 
     * `name`: Der Anzeigename der Zielsprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
 
     * `nativeName`: Der Anzeigename der Zielsprache in dem Gebietsschema, das nativ für die Zielsprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
     
     * `code`: Sprachcode, der die Zielsprache identifiziert.
 
@@ -275,7 +275,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
 </table> 
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Beispiele
 

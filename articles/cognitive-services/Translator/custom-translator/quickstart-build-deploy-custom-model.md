@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370175"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587091"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -24,13 +24,13 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 
 1. Für die Verwendung des [Custom Translator](https://portal.customtranslator.azure.ai)-Portals benötigen Sie ein [Microsoft-Konto](https://signup.live.com) oder [Azure AD-Konto](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (in Azure gehostetes Organisationskonto), um sich anzumelden.
 
-2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
+2. Ein Translator-Abonnement über das Azure-Portal. Der Translator-Abonnementschlüssel wird für die Zuordnung zu Ihrem Arbeitsbereich im benutzerdefinierten Translator benötigt. Eine Registrierungsanleitung für Translator finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim Portal für den [benutzerdefinierten Translator](https://portal.customtranslator.azure.ai) an, um Arbeitsbereiche und Projekte zu erstellen, Dateien hochzuladen sowie Modelle zu erstellen und bereitzustellen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, um einen Arbeitsbereich zu erstellen und dem Abonnement für die Microsoft-Textübersetzungs-API zuzuordnen.
+Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, einen Arbeitsbereich zu erstellen und den Arbeitsbereich dem Translator-Abonnement zuzuordnen.
 
 ![Erstellen eines Arbeitsbereichs](media/quickstart/terms-of-service.png)
 ![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-1.png)
@@ -40,7 +40,7 @@ Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, u
 ![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-5.png)
 ![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-6.png)
 
-Navigieren Sie bei nachfolgenden Besuchen im Portal für den benutzerdefinierten Translator zur Seite „Einstellungen“. Dort können Sie den Arbeitsbereich verwalten, weitere Arbeitsbereiche erstellen, den Abonnementschlüssel der Microsoft-Textübersetzungs-API Ihren Arbeitsbereichen zuordnen, Mitbesitzer hinzufügen und Abonnementschlüssel ändern.
+Navigieren Sie bei späteren Besuchen des Portals für den benutzerdefinierten Translator zur Seite „Einstellungen“. Dort können Sie den Arbeitsbereich verwalten, weitere Arbeitsbereiche erstellen, den Translator-Abonnementschlüssel Ihren Arbeitsbereichen zuordnen, Mitbesitzer hinzufügen und einen Abonnementschlüssel ändern.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
@@ -83,7 +83,7 @@ Wenn Sie das trainierte Modell bereitstellen möchten, klicken Sie auf die Schal
 
 ## <a name="use-a-deployed-model"></a>Verwenden eines bereitgestellten Modells
 
-Auf bereitgestellte Modelle kann über die [Microsoft-Textübersetzungs-API V3 durch Angabe der Kategorie-ID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) zugegriffen werden. Weitere Informationen zur Textübersetzungs-API finden Sie auf der Webseite mit der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+Auf bereitgestellte Modelle kann über die [Microsoft-Textübersetzungs-API V3 durch Angabe der Kategorie-ID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der [Webseite mit der API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

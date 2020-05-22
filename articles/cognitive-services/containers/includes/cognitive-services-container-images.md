@@ -6,40 +6,66 @@ manager: nitinme
 description: Zwei Tabellen, die die Containerregistrierungen, Repositorys und Imagenamen für alle Cognitive Service-Angebote darstellen.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876823"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590661"
 ---
 ### <a name="container-repositories-and-images"></a>Containerrepositorys und -images
 
-Die folgenden Tabellen stellen eine Liste der verfügbaren Containerimages dar, die von Azure Cognitive Services geboten werden. Eine vollständige Liste aller verfügbaren Namen für Containerimages und ihrer verfügbaren Tags finden Sie unter [Cognitive Services-Containerimagetags](../container-image-tags.md). Zurzeit gibt es keine allgemein verfügbaren Cognitive Services-Container. Bis auf Weiteres sind Container entweder als *öffentlich, nicht geschlossen* oder *öffentliche Vorschau, geschlossen* verfügbar.
+Die folgenden Tabellen stellen eine Liste der verfügbaren Containerimages dar, die von Azure Cognitive Services geboten werden. Eine vollständige Liste aller verfügbaren Namen für Containerimages und ihrer verfügbaren Tags finden Sie unter [Cognitive Services-Containerimagetags](../container-image-tags.md). 
 
- - *Öffentlich, nicht geschlossen*: Container sind ohne Beschränkungsmechanismus öffentlich verfügbar.
- - *Öffentliche Vorschau, geschlossen*: Container sind öffentlich verfügbar, erfordern jedoch eine formelle Anforderung für den Zugriff auf die Containerregistrierung.
+#### <a name="generally-available"></a>Allgemein verfügbar 
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Öffentliche „nicht verwaltete“ Vorschau (Containerregistrierung: `mcr.microsoft.com`)
+Die Microsoft-Containerregistrierung (MCR) syndiziert alle allgemein verfügbaren Container für Cognitive Services. Die Container sind auch direkt über den [Docker-Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)verfügbar.
 
-Die Microsoft-Containerregistrierung (MCR) syndikalisiert alle öffentlich verfügbaren, „nicht verwalteten“ Container für Cognitive Services. Die Container sind auch direkt über den [Docker-Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)verfügbar.
+#### <a name="luis"></a>[LUIS](#tab/luis)
+
+| LUIS-Container | Container Registry/Repository/Imagename |
+|--|--|
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+
+Weitere Informationen finden Sie unter [Installieren und Ausführen von Docker-Containern für LUIS](../../LUIS/luis-container-howto.md).
+
+#### <a name="text-analytics"></a>[Textanalyse](#tab/text-analytics)
+
+| Textanalysecontainer | Container Registry/Repository/Imagename |
+|--|--|
+| Standpunktanalyse v3 (Englisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
+| Standpunktanalyse v3 (Spanisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
+| Standpunktanalyse v3 (Französisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
+| Standpunktanalyse v3 (Italienisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
+| Standpunktanalyse v3 (Deutsch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
+| Standpunktanalyse v3 (Chinesisch, vereinfacht) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
+| Standpunktanalyse v3 (Chinesisch, traditionell) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
+| Standpunktanalyse v3 (Japanisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
+| Standpunktanalyse v3 (Portugiesisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
+| Standpunktanalyse v3 (Niederländisch) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+
+Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern für die Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md).
+
+---
+
+#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>Öffentliche „nicht verwaltete“ Vorschau (Containerregistrierung: `mcr.microsoft.com`)
+
+Die folgenden Vorschaucontainer sind öffentlich verfügbar. Die Microsoft-Containerregistrierung (MCR) syndiziert alle öffentlich verfügbaren, nicht verwalteten Container für Cognitive Services. Die Container sind auch direkt über den [Docker-Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)verfügbar.
 
 | Dienst | Container | Container Registry/Repository/Imagename |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
 | [Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Schlüsselwortextraktion | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Spracherkennung | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Standpunktanalyse | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+| [Anomalieerkennung](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomalieerkennung | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Öffentliche "verwaltete" Vorschau (Containerregistrierung: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Öffentliche „verwaltete“ Vorschau (Containerregistrierung: `containerpreview.azurecr.io`)
 
-Die Vorschauversion der Containerregistrierung hostet alle öffentlich verfügbaren, „verwalteten“ Container für Cognitive Services. Diese Container erfordern für den Zugriff eine formelle Anforderung über die Containerregistrierung.
+Die folgenden Container für die verwaltete Vorschau werden in der Registrierung der Containervorschau gehostet und setzen eine Zugriffsbewerbung voraus. Weitere Informationen finden Sie unter [Cognitive Services-Zulassung](../../cognitive-services-gating-process.md).
 
 | Dienst | Container | Container Registry/Repository/Imagename |
 |--|--|--|
-| [Anomalieerkennung](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomalieerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [Maschinelles Sehen](../../Computer-vision/computer-vision-how-to-install-containers.md) | Lesen | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Gesichtserkennung](../../face/face-how-to-install-containers.md) | Gesicht | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Formularerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |

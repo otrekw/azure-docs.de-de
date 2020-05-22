@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423944"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587679"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -38,12 +38,12 @@ Betrachten wir zunächst kurz die verfügbaren Authentifizierungsheader für die
 | Header | BESCHREIBUNG |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Verwenden Sie diesen Header für die Authentifizierung mit einem Abonnementschlüssel für einen bestimmten Dienst oder für mehrere Dienste. |
-| Ocp-Apim-Subscription-Region | Dieser Header ist nur bei Verwendung eines Schlüssels zu einem Abonnement für mehrere Dienste mit der [Textübersetzungs-API](./Translator/reference/v3-0-reference.md) erforderlich. Verwenden Sie diesen Header, um die Abonnementregion anzugeben. |
+| Ocp-Apim-Subscription-Region | Dieser Header ist nur bei Verwendung eines Schlüssels für ein Abonnement für mehrere Dienste mit dem [Translator-Dienst](./Translator/reference/v3-0-reference.md) erforderlich. Verwenden Sie diesen Header, um die Abonnementregion anzugeben. |
 | Authorization | Verwenden Sie diesen Header, wenn Sie ein Authentifizierungstoken verwenden. Die Schritte zum Ausführen eines Tokenaustauschs werden in den folgenden Abschnitten beschrieben. Der angegebene Wert weist folgendes Format auf: `Bearer <TOKEN>`. |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für einen einzelnen Dienst
 
-Die erste Option zum Authentifizieren einer Anforderung nutzt einen Abonnementschlüssel für einen bestimmten Dienst wie Textübersetzung. Die Schlüssel stehen im Azure-Portal für jede Ressource, die Sie erstellt haben, zur Verfügung. Wenn Sie einen Abonnementschlüssel zum Authentifizieren einer Anforderung verwenden möchten, müssen Sie diesen als `Ocp-Apim-Subscription-Key`-Header übergeben.
+Die erste Option zum Authentifizieren einer Anforderung nutzt einen Abonnementschlüssel für einen bestimmten Dienst wie Translator. Die Schlüssel stehen im Azure-Portal für jede Ressource, die Sie erstellt haben, zur Verfügung. Wenn Sie einen Abonnementschlüssel zum Authentifizieren einer Anforderung verwenden möchten, müssen Sie diesen als `Ocp-Apim-Subscription-Key`-Header übergeben.
 
 Diese Beispielanforderungen veranschaulichen die Verwendung des `Ocp-Apim-Subscription-Key`-Headers. Wenn Sie dieses Beispiel verwenden möchten, müssen Sie einen gültigen Abonnementschlüssel einfügen.
 
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dies ist ein Beispielaufruf der Textübersetzungs-API:
+Dies ist ein Beispielaufruf des Translator-Diensts:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -78,7 +78,7 @@ Der Abonnementschlüssel wird in jeder Anforderung als `Ocp-Apim-Subscription-Ke
 
 Wenn Sie für eine Anforderung an `api.cognitive.microsoft.com` einen Schlüssel zu einem Abonnement für mehrere Dienste verwenden, müssen Sie die Region in die URL einschließen. Beispiel: `westus.api.cognitive.microsoft.com`.
 
-Wenn Sie einen Schlüssel zu einem Abonnement für mehrere Dienste mit der Textübersetzungs-API verwenden, müssen Sie die Region des Abonnements im `Ocp-Apim-Subscription-Region`-Header angeben.
+Wenn Sie einen Schlüssel für ein Abonnement für mehrere Dienste mit dem Translator-Dienst verwenden, müssen Sie die Region des Abonnements im `Ocp-Apim-Subscription-Region`-Header angeben.
 
 Die Authentifizierung für mehrere Dienste wird in den folgenden Regionen unterstützt:
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dies ist ein Beispielaufruf der Textübersetzungs-API:
+Dies ist ein Beispielaufruf des Translator-Diensts:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -150,7 +150,7 @@ Diese Regionen für mehrere Dienste unterstützen den Tokenaustausch:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Nach dem Erhalt eines Authentifizierungstokens müssen Sie dieses in jeder Anforderung als `Authorization`-Header übergeben. Dies ist ein Beispielaufruf der Textübersetzungs-API:
+Nach dem Erhalt eines Authentifizierungstokens müssen Sie dieses in jeder Anforderung als `Authorization`-Header übergeben. Dies ist ein Beispielaufruf des Translator-Diensts:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \

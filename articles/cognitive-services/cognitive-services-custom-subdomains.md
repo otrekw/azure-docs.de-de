@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73647694"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590637"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Benutzerdefinierte Unterdomänennamen für Cognitive Services
 
@@ -66,11 +66,11 @@ Jeder benutzerdefinierte Unterdomänenname ist eindeutig. Wenn Sie also einen ei
 Ja. Dies ist eine Liste der regionalen Endpunkte, die Sie mit Azure Cognitive Services-Ressourcen verwenden können.
 
 > [!NOTE]
-> Die Textübersetzungs-API und die Bing-Suche-APIs verwenden globale Endpunkte.
+> Der Translator-Dienst und die Bing-Suche-APIs verwenden globale Endpunkte.
 
 | Endpunkttyp | Region | Endpunkt |
 |---------------|--------|----------|
-| Öffentlich | Global (Textübersetzung und Bing) | `https://api.cognitive.microsoft.com` |
+| Öffentlich | Global (Translator und Bing) | `https://api.cognitive.microsoft.com` |
 | | Australien (Osten) | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brasilien Süd | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Kanada, Mitte | `https://canadacentral.api.cognitive.microsoft.com` |

@@ -2,14 +2,14 @@
 title: Bewährte Methoden für das Entwickeln von LUIS-Apps
 description: Erfahren Sie, wie Sie mit bewährten Methoden die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382388"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589804"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App:
@@ -31,11 +31,11 @@ Die folgende Liste enthält bewährte Methoden für LUIS-Apps:
 
 |Sie sollten|Sie sollten auf keinen Fall|
 |--|--|
-|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Deskriptoren zu Absichten](#do-add-descriptors-to-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
+|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Features zu Absichten](#do-add-features-to-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
 |[Anstreben einer Balance zwischen zu allgemeinen und zu spezifischen Absichten](#do-find-sweet-spot-for-intents)|[Verwenden von LUIS als Trainingsplattform](#dont-use-luis-as-a-training-platform)|
 |[Iteratives Aufbauen der App mit Versionen](#do-build-your-app-iteratively-with-versions)<br>[Erstellen von Entitäten zur Modellaufschlüsselung](#do-build-for-model-decomposition)|[Hinzufügen sehr vieler Beispieläußerungen im gleichen Format und Ignorieren anderer Formate](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Hinzufügen von Mustern in späteren Iterationen](#do-add-patterns-in-later-iterations)|[Kombinieren der Definition von Absichten und Entitäten](#dont-mix-the-definition-of-intents-and-entities)|
-|[Verwenden Sie für alle Absichten die gleiche Menge an Äußerungen](#balance-your-utterances-across-all-intents), mit Ausnahme der Absicht „None“.<br>[Hinzufügen von Beispieläußerungen zur Absicht „None“](#do-add-example-utterances-to-none-intent)|[Erstellen von Deskriptoren mit allen möglichen Werten](#dont-create-descriptors-with-all-the-possible-values)|
+|[Verwenden Sie für alle Absichten die gleiche Menge an Äußerungen](#balance-your-utterances-across-all-intents), mit Ausnahme der Absicht „None“.<br>[Hinzufügen von Beispieläußerungen zur Absicht „None“](#do-add-example-utterances-to-none-intent)|[Erstellen von Ausdruckslisten mit allen möglichen Werten](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Verwenden des Vorschlagfeatures für das aktive Lernen](#do-leverage-the-suggest-feature-for-active-learning)|[Hinzufügen von zu vielen Mustern](#dont-add-many-patterns)|
 |[Überwachen der Leistung Ihrer App mit Batchtests](#do-monitor-the-performance-of-your-app)|[Trainieren und Veröffentlichen jeder einzelnen hinzugefügten Beispieläußerung](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -53,9 +53,9 @@ Erwägen Sie die folgenden Beispieläußerungen:
 
 `Book a flight` und `Book a hotel` verwenden dasselbe Vokabular in Form von `book a `. Das Format ist das gleiche. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter `flight` und `hotel` in Entitäten.
 
-## <a name="do-add-descriptors-to-intents"></a>Fügen Sie Absichten Deskriptoren hinzu
+## <a name="do-add-features-to-intents"></a>Hinzufügen von Features zu Absichten
 
-Deskriptoren helfen, Features für eine Absicht zu beschreiben. Bei einem Deskriptor kann es sich um eine Ausdrucksliste aus Wörtern handeln, die für die betreffende Absicht wichtig sind, oder um eine Entität, die für die Absicht wichtig ist.
+Features dienen zum Beschreiben von Konzepten für eine Absicht. Bei einem Feature kann es sich um eine Ausdrucksliste mit Wörtern handeln, die für die betreffende Absicht wichtig sind, oder um eine für die Absicht wichtige Entität.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit eine solche Überlappung nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein.
@@ -73,17 +73,22 @@ Die Modellaufschlüsselung folgt dem typischen Prozess von:
 * Erstellen einer **Absicht** basierend auf den Benutzerabsichten der Client-App
 * Hinzufügen von 15–30 Beispieläußerungen, die auf echten Benutzereingaben beruhen
 * Bezeichnen des Datenkonzepts der oberen Ebene in Beispieläußerungen
-* Aufschlüsseln des Datenkonzepts in Unterkomponenten
-* Hinzufügen von Deskriptoren (Features) zu Unterkomponenten
-* Hinzufügen von Deskriptoren (Features) zur Absicht
+* Aufschlüsseln des Datenkonzepts in untergeordnete Entitäten
+* Hinzufügen von Features zu untergeordneten Entitäten
+* Hinzufügen von Features zu Absichten
 
 Nachdem Sie die Absicht erstellt und Beispieläußerungen hinzugefügt haben, wird im folgenden Beispiel die Entitätsaufschlüsselung beschrieben.
 
-Beginnen Sie mit der Identifizierung der vollständigen Datenkonzepte, die Sie in einer Äußerung extrahieren möchten. Dies ist Ihre durch maschinelles Lernen erworbene Entität. Schlüsseln Sie anschließend den Ausdruck in seine Teile auf. Dies beinhaltet das Identifizieren der Unterkomponenten (als Entitäten) zusammen mit Deskriptoren und Einschränkungen.
+Beginnen Sie mit der Identifizierung der vollständigen Datenkonzepte, die Sie in einer Äußerung extrahieren möchten. Dies ist Ihre durch maschinelles Lernen erworbene Entität. Schlüsseln Sie anschließend den Ausdruck in seine Teile auf. Dies schließt die Identifizierung von untergeordneten Entitäten und Features ein.
 
-Wenn Sie beispielsweise eine Adresse extrahieren möchten, könnte die oberste durch maschinelles Lernen erworbene Entität `Address` heißen. Identifizieren Sie beim Erstellen der Adresse einige ihrer Unterkomponenten, wie etwa die Straßenanschrift, die Stadt, das Bundesland und die Postleitzahl.
+Wenn Sie beispielsweise eine Adresse extrahieren möchten, könnte die oberste durch maschinelles Lernen erworbene Entität `Address` heißen. Identifizieren Sie beim Erstellen der Adresse einige der untergeordneten Entitäten wie etwa die Anschrift, die Stadt, das Bundesland und die Postleitzahl.
 
-Fahren Sie fort, diese Elemente aufzuschlüsseln, indem Sie die Postleitzahl zu einem regulären Ausdruck **einschränken**. Schlüsseln Sie die Straßenanschrift in die Bestandteile der Hausnummer (unter Verwendung einer vordefinierten Zahl), des Straßennamens und des Straßentyps auf. Der Straßentyp kann mit einer **Deskriptorliste** beschrieben werden, beispielsweise als Allee, Weg, Straße oder Platz.
+Schlüsseln Sie diese Elemente wie folgt weiter auf:
+* Fügen Sie ein erforderliches Feature der Postleitzahl als Entität vom Typ „regulärer Ausdruck“ hinzu.
+* Schlüsseln Sie die Anschrift in folgende Teile auf:
+    * **Hausnummer** mit einem erforderlichen Feature in Form einer vordefinierten Entität (Zahl)
+    * **Straßenname**
+    * **Straßentyp** mit einem erforderlichen Feature in Form einer Listenentität mit Wörtern wie „Allee“, „Weg“, „Straße“ und „Platz“
 
 Die V3-Erstellungs-API ermöglicht die Aufschlüsselung von Modellen.
 
@@ -145,9 +150,9 @@ Erstellen Sie eine Absicht für jede Aktion, die Ihr Bot akzeptieren soll. Verwe
 
 Erstellen Sie für einen Bot, der Flüge buchen soll, die Absicht **BookFlight**. Sie sollten nicht für jede Fluggesellschaft oder jedes Ziel eine Absicht erstellen. Verwenden Sie diese Datenelemente als [Entitäten](luis-concept-entity-types.md), und kennzeichnen Sie sie in den Beispieläußerungen.
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Erstellen Sie keine Deskriptoren mit sämtlichen möglichen Werten
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Erstellen Sie keine Ausdruckslisten mit allen möglichen Werten
 
-Stellen Sie einige wenige Beispiele in den [Deskriptorausdruckslisten](luis-concept-feature.md) bereit, aber fügen Sie nicht jedes Wort hinzu. LUIS generalisiert und berücksichtigt dabei den Kontext.
+Geben Sie in den [Ausdruckslisten](luis-concept-feature.md) einige Beispiele an, aber nicht jedes Wort bzw. jeden Ausdruck. LUIS generalisiert und berücksichtigt dabei den Kontext.
 
 ## <a name="dont-add-many-patterns"></a>Fügen Sie nicht viele Muster hinzu.
 

@@ -1,7 +1,7 @@
 ---
-title: Filtern von Obszönitäten – Textübersetzungs-API
+title: 'Filtern von Obszönitäten: Translator'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Filterung von Obszönitäten, um den Grad der Obszönität zu bestimmen, die in Ihrem Text in der Textübersetzungs-API von Azure Cognitive Services übersetzt wurde.
+description: Verwenden Sie die Filterung von Obszönitäten, um in Azure Cognitive Services Translator den Grad der Obszönität für Ihren übersetzten Text zu bestimmen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73836226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586795"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Textübersetzungs-API
+# <a name="add-profanity-filtering-with-the-translator"></a>Hinzufügen der Filterung von Obszönitäten mit Translator
 
 In der Regel behält der Übersetzungsdienst Obszönitäten, die im Quelltext vorhanden sind, in der Übersetzung bei. Der Grad an Obszönitäten und der Kontext, bei dem Wörter als obszön angesehen werden, unterscheiden sich je nach Kultur. Daher kann der Obszönitätsgrad in der Zielsprache unter Umständen verstärkt oder reduziert werden.
 
@@ -26,7 +26,7 @@ Wenn Sie keine Obszönitäten in der Übersetzung wünschen (unabhängig davon, 
 Für die Translate()-Methode wird der Parameter „options“ verwendet, der das neue Element „ProfanityAction“ enthält. Die akzeptierten Werte für ProfanityAction sind „NoAction“, „Marked“ und „Deleted“.
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Akzeptierte Werte für ProfanityAction und Beispiele
-|ProfanityAction-Wert | Action | Beispiel: Ausgangssprache – Japanisch | Beispiel: Zielsprache – Englisch|
+|ProfanityAction-Wert | Aktion | Beispiel: Ausgangssprache – Japanisch | Beispiel: Zielsprache – Englisch|
 | :---|:---|:---|:---|
 | NoAction | Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönität wird aus der Ausgangs- in die Zielsprache übernommen. | 彼は変態です。 | He is a jerk. (Er ist ein Vollidiot.) |
 | Marked | Obszöne Wörter werden in die XML-Tags \<profanity> ... \</profanity> eingeschlossen. | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
@@ -34,4 +34,4 @@ Für die Translate()-Methode wird der Parameter „options“ verwendet, der das
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Translator-API](reference/v3-0-translate.md)
+> [Anwenden der Filterung von Obszönitäten in Ihrem Translator-Aufruf](reference/v3-0-translate.md)

@@ -4,19 +4,19 @@ description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräuße
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382142"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585571"
 ---
 # <a name="pattern-syntax"></a>Mustersyntax
 
 Die Mustersyntax ist eine Vorlage für eine Äußerung. Die Vorlage sollte sowohl abzugleichende Wörter und Entitäten als auch zu ignorierende Wörter und [Interpunktion](luis-reference-application-settings.md#punctuation-normalization) enthalten. Sie ist **kein** regulärer Ausdruck.
 
 > [!CAUTION]
-> Zu den Mustern gehören nur übergeordnete, durch maschinelles Lernen erworbene Entitäten, keine Unterkomponenten.
+> Muster enthalten nur übergeordnete, durch maschinelles Lernen erworbene Entitäten (also keine untergeordneten Entitäten).
 
 Entitäten in Mustern sind in geschweifte Klammern, `{}`, eingeschlossen. Muster können Entitäten und Entitäten mit Rollen enthalten. [Pattern.any](luis-concept-entity-types.md#patternany-entity) ist eine Entität, die ausschließlich in Mustern verwendet wird.
 

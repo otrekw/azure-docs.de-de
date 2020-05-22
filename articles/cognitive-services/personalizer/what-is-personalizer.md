@@ -3,12 +3,12 @@ title: Was ist die Personalisierung?
 description: Die Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687264"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586217"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -69,18 +69,25 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
 
 ## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Entwerfen und Implementieren der Personalisierung für Ihre Clientanwendung
 
-1. Führen Sie das [Entwerfen](concepts-features.md) und Planen für Inhalt, **_Aktionen_** und **_Kontext_** durch. Ermitteln Sie den Relevanzalgorithmus für die Bewertung der **_Relevanz_** .
+1. Führen Sie das [Entwerfen](concepts-features.md) und Planen für Inhalt, **_Aktionen_** und **_Kontext_** durch. Ermitteln Sie den Relevanzalgorithmus für die Bewertung der **_Relevanz_**.
 1. Jede von Ihnen erstellte [Personalisierungsressource](how-to-settings.md) wird als gesonderte Lernschleife angesehen. Die Schleife empfängt sowohl jeweils den Rangfolge- als auch den Relevanz-Aufruf für diesen Inhalt bzw. die Benutzererfahrung.
-1. Fügen Sie die Personalisierung Ihrer Website oder dem Inhaltssystem hinzu:
+
+    |Ressourcentyp| Zweck|
+    |--|--|
+    |[Ausbildungsmodus](concept-apprentice-mode.md) `E0`|Trainieren des Personalisierungsmodells ohne Beeinträchtigung der vorhandenen Anwendung und anschließendes Bereitstellen für das Onlinelernverhalten in einer Produktionsumgebung|
+    |Standard, `S0`|Onlinelernverhalten in einer Produktionsumgebung|
+    |Free, `F0`| Ausprobieren des Onlinelernverhaltens in einer Nichtproduktionsumgebung|
+
+1. Fügen Sie die Personalisierung Ihrer Anwendung, der Website oder dem System hinzu:
     1. Fügen Sie der Personalisierung in Ihrer Anwendung, der Website oder dem System einen **Rangfolge**-Aufruf hinzu, um das am besten geeignete _Inhaltselement_ zu ermitteln, bevor der Inhalt dem Benutzer angezeigt wird.
     1. Zeigen Sie dem Benutzer das am besten geeignete _Inhaltselement_ an, das anhand der zurückgegebenen _Relevanzaktion-ID_ gekennzeichnet ist.
-    1. Wenden Sie den _Algorithmus_ auf die gesammelten Informationen an, die das Verhalten des Benutzers angeben, um die **Relevanzbewertung** zu ermitteln. Beispiel:
+    1. Wenden Sie die _Geschäftslogik_ auf die gesammelten Informationen an, die das Verhalten des Benutzers angeben, um die **Relevanzbewertung** zu ermitteln. Beispiel:
 
-        |Verhalten|Berechnete Relevanzbewertung|
-        |--|--|
-        |Benutzer hat das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt|**1**|
-        |Benutzer hat anderen Inhalt ausgewählt|**0**|
-        |Benutzer hat innegehalten und zunächst gescrollt, bevor er das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt hat|**0,5**|
+    |Verhalten|Berechnete Relevanzbewertung|
+    |--|--|
+    |Benutzer hat das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt|**1**|
+    |Benutzer hat anderen Inhalt ausgewählt|**0**|
+    |Benutzer hat innegehalten und zunächst gescrollt, bevor er das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt hat|**0,5**|
 
     1. Fügen Sie einen **Relevanz**-Aufruf hinzu, bei dem eine Relevanzbewertung zwischen 0 und 1 gesendet wird.
         * Unmittelbar nach dem Anzeigen Ihrer Inhalte

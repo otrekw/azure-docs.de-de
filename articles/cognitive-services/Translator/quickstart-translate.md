@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Übersetzen von Text – Textübersetzung'
+title: 'Schnellstart: Übersetzen von Text – Translator'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text mithilfe der Textübersetzungs-API.
+description: In dieser Schnellstartanleitung übersetzen Sie Text mithilfe von Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3be05a6c4005b79a3fcde6a71e663f5f70d4d61e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e8f0f3ff1b34701d45b0138a3c11795520c30a2f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525174"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586623"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen von Text
+# <a name="quickstart-use-the-translator-to-translate-text"></a>Schnellstart: Verwenden von Translator zum Übersetzen von Text
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Textübersetzungs-REST-API eine Textzeichenfolge aus dem Englischen ins Deutsche, Italienische, Japanische und Thailändische übersetzen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Translator-REST-API eine Textzeichenfolge aus dem Englischen ins Deutsche, Italienische, Japanische und Thailändische übersetzen.
 
-Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Translator-Ressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/translate-csharp.md)]

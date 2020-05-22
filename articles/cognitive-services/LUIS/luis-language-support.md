@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744144"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591045"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -24,7 +24,7 @@ LUIS bietet eine Reihe von Features innerhalb des Diensts. Nicht alle Funktionen
 
 ## <a name="multi-language-luis-apps"></a>LUIS-Apps mit mehreren Sprachen
 
-Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot, haben Sie einige Optionen. Wenn LUIS alle Sprachen unterstützt, entwickeln Sie eine LUIS-App für jede Sprache. Jede LUIS-App weist eine eindeutige App-ID und ein eindeutiges Endpunktprotokoll auf. Wenn Sie ein Sprachverständnis für eine Sprache bereitstellen müssen, die LUIS nicht unterstützt, können Sie mit der [Microsoft Translator-API](../Translator/translator-info-overview.md) die Äußerung in eine unterstützte Sprache übersetzen, die Äußerung an den LUIS-Endpunkt senden und die resultierenden Bewertungen empfangen.
+Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot, haben Sie einige Optionen. Wenn LUIS alle Sprachen unterstützt, entwickeln Sie eine LUIS-App für jede Sprache. Jede LUIS-App weist eine eindeutige App-ID und ein eindeutiges Endpunktprotokoll auf. Wenn Sie Sprachverständnis für eine von LUIS nicht unterstützte Sprache bereitstellen möchten, können Sie mithilfe des [Translator-Diensts](../Translator/translator-info-overview.md) die Äußerung in eine unterstützte Sprache übersetzen, die Äußerung an den LUIS-Endpunkt senden und die resultierenden Bewertungen empfangen.
 
 ## <a name="languages-supported"></a>Unterstützte Sprachen
 
