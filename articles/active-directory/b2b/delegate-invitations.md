@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74272901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591283"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -36,11 +36,9 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 ### <a name="to-configure-external-collaboration-settings"></a>So können Sie die Einstellungen für externe Zusammenarbeit konfigurieren:
 
 1. Melden Sie sich als Mandantenadministrator im [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** aus.
-3. Wählen Sie unter **Externe Benutzer** die Option **Manage external collaboration settings** (Einstellungen für externe Zusammenarbeit verwalten) aus.
-   > [!NOTE]
-   > Sie können auch über die Seite **Organisationsbeziehungen** auf die **Einstellungen für externe Zusammenarbeit** zugreifen. Navigieren Sie in Azure Active Directory unter **Verwalten** zu **Organisationsbeziehungen** > **Einstellungen**.
-4. Wählen Sie auf der Seite **Einstellungen für externe Zusammenarbeit** die Richtlinien aus, die Sie aktivieren möchten.
+2. Wählen Sie **Azure Active Directory** aus.
+3. Wählen Sie **Externe Identitäten** > **Einstellungen für externe Zusammenarbeit** aus.
+6. Wählen Sie auf der Seite **Einstellungen für externe Zusammenarbeit** die Richtlinien aus, die Sie aktivieren möchten.
 
    ![Einstellungen für externe Zusammenarbeit](./media/delegate-invitations/control-who-to-invite.png)
 

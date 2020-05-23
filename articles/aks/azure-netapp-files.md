@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][anf-delegate-subnet][an Azure NetApp Files zu delegieren][az-network-vnet-subnet-create]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
+Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][az-network-vnet-subnet-create][an Azure NetApp Files zu delegieren][anf-delegate-subnet]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus

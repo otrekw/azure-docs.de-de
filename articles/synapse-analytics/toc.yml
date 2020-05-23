@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Tutorials
   items:
+    - name: Erste Schritte
+      href: get-started.md
     - name: Ausführen von Apache Spark-Anwendungen für Spark-Pools
       href: ./spark/intellij-tool-synapse.md
     - name: Spark-Auftragsdefinitionen

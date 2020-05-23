@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126658"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591232"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -90,8 +90,8 @@ Nun legen Sie die Google-Client-ID und den geheimen Clientschlüssel entweder du
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>So konfigurieren Sie den Google-Verbund im Azure AD-Portal 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
-2. Wählen Sie **Organisationsbeziehungen** aus.
-3. Wählen Sie **Identitätsanbieter** aus, und klicken Sie dann auf die Schaltfläche **Google**.
+2. Wählen Sie **Externe Identitäten** aus.
+3. Wählen Sie **Alle Identitätsanbieter** aus, und klicken Sie dann auf die Schaltfläche **Google**.
 4. Geben Sie einen Namen ein. Geben Sie dann die Client-ID und den geheimen Clientschlüssel ein, die Sie zuvor erhalten haben. Wählen Sie **Speichern** aus. 
 
    ![Screenshot der Seite „Google als Identitätsanbieter hinzufügen“](media/google-federation/google-identity-provider.png)
@@ -105,15 +105,15 @@ Nun legen Sie die Google-Client-ID und den geheimen Clientschlüssel entweder du
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie in „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“ erstellt haben. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
+   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie hier erstellt haben: „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Wie entferne ich einen Google Verbund?
 Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können Google-Gastbenutzer, die bereits seine Einladung eingelöst haben, sich nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen erteilen, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>So löschen Sie den Google-Verbund im Azure AD-Portal 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
-2. Wählen Sie **Organisationsbeziehungen** aus.
-3. Wählen Sie **Identitätsanbieter** aus.
+2. Wählen Sie **Externe Identitäten** aus.
+3. Wählen Sie **Alle Identitätsanbieter** aus.
 4. Wählen Sie in der Zeile **Google** das Kontextmenü ( **...** ) aus, und wählen Sie dann **Löschen** aus. 
    
    ![Screenshot der Option „Löschen“ für den Identitätsanbieter für soziale Netzwerke](media/google-federation/google-social-identity-providers.png)

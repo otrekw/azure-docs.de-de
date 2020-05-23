@@ -15,6 +15,9 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
           href: quickstart-create-server-up-azure-cli.md
+        - name: Erstellen einer Datenbank – ARM-Vorlage
+          href: quickstart-create-postgresql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
         - name: Verbinden und abfragen
           items:
             - name: Python

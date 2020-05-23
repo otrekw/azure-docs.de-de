@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591215"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 |     |
@@ -50,10 +50,13 @@ Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD **
 
 ### <a name="authentication-url"></a>Authentifizierungs-URL
 Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne der Authentifizierungs-URL mit der Zieldomäne übereinstimmt, oder wenn es sich bei der Authentifizierungs-URL um einen dieser zulässigen Identitätsanbieter handelt (diese Liste kann geändert werden):
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com
@@ -143,8 +146,8 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>So konfigurieren Sie direkten Verbund im Azure AD-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
-2. Wählen Sie **Organisationsbeziehungen** aus.
-3. Wählen Sie **Identitätsanbieter** und dann **Neuer SAML-/WS-Fed-IdP** aus.
+2. Wählen Sie **Externe Identitäten** > **Alle Identitätsanbieter** aus.
+3. Wählen Sie „Identitätsanbieter“ aus, und wählen Sie dann **Neuer SAML-/WS-Fed-IdP** aus.
 
     ![Screenshot der Schaltfläche zum Hinzufügen eines neuen SAML- oder WS-Verbund-Identitätsanbieters](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -191,8 +194,8 @@ Testen Sie nun Ihre Einrichtung des direkten Verbunds, indem Sie einen neuen B2B
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Wie bearbeite eine direkte Verbundbeziehung?
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
-2. Wählen Sie **Organisationsbeziehungen** aus.
-3. Wählen Sie **Identitätsanbieter** aus.
+2. Wählen Sie **Externe Identitäten** aus.
+3. Wählen Sie **Alle Identitätsanbieter** aus.
 4. Wählen Sie unter **SAML-/WS-Fed-IdP** den Anbieter aus.
 5. Aktualisieren Sie die Werte im Bereich mit den Identitätsanbieterdetails.
 6. Wählen Sie **Speichern** aus.
@@ -202,8 +205,8 @@ Testen Sie nun Ihre Einrichtung des direkten Verbunds, indem Sie einen neuen B2B
 Sie können Ihre direkte Verbundeinrichtung entfernen. Wenn Sie dies tun, können sich Verbundgastbenutzer, die ihre Einladungen bereits eingelöst haben, nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen gewähren, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. So entfernen Sie den direkten Verbund mit einem Identitätsanbieter im Azure AD-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
-2. Wählen Sie **Organisationsbeziehungen** aus.
-3. Wählen Sie **Identitätsanbieter** aus.
+2. Wählen Sie **Externe Identitäten** aus.
+3. Wählen Sie **Alle Identitätsanbieter** aus.
 4. Wählen Sie den Identitätsanbieter und dann **Löschen** aus. 
 5. Wählen Sie **Ja** aus, um den Löschvorgang zu bestätigen. 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160738"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585894"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -99,7 +99,7 @@ Wenn sich ein Gast zum ersten Mal anmeldet, um auf Ressourcen in einer Partneror
 
    ![Screenshot mit neuen Nutzungsbedingungen](media/redemption-experience/terms-of-use-accept.png) 
 
-   Sie können die [Nutzungsbedingungen](../governance/active-directory-tou.md) unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** konfigurieren.
+   Sie können [Nutzungsbedingungen](../governance/active-directory-tou.md) unter **Externe Identitäten** > **Nutzungsbedingungen** konfigurieren.
 
 3. Sofern nicht anders angegeben, wird der Gast zum Zugriffsbereich für Apps weitergeleitet, der die Anwendungen auflistet, auf die der Gast zugreifen kann.
 

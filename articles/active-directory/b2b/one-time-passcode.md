@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230822"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585917"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)
 
@@ -56,7 +56,7 @@ Wenn ein Gastbenutzer eine Einladung einlöst oder einen Link zu einer Ressource
 
 Zum Zeitpunkt der Einladung gibt es keinen Hinweis darauf, dass der eingeladene Benutzer die Authentifizierung mit Einmalkennung verwendet. Wenn sich der Gastbenutzer jedoch anmeldet, wird die Authentifizierung mit Einmalkennung als alternative Methode verwendet, wenn keine anderen Authentifizierungsmethoden eingesetzt werden können. 
 
-Sie können die Gastbenutzer anzeigen, die sich im Azure-Portal mit Einmalkennungen authentifizieren. Wechseln Sie zu diesem Zweck zu **Azure Active Directory** > **Organisationsbeziehungen** > **Benutzer aus anderen Organisationen**.
+Sie können im Azure-Portal die Gastbenutzer anzeigen, die sich mit Einmalkennungen authentifizieren, indem Sie zu **Azure Active Directory** > **Benutzer** wechseln.
 
 ![Screenshot mit einem Benutzer mit Einmalkennung mit dem Quellwert „OTP“](media/one-time-passcode/otp-users.png)
 
@@ -72,8 +72,7 @@ Es dauert möglicherweise einige Minuten, bis die Abonnierungsaktion wirksam wir
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>So abonnieren Sie mithilfe des Azure AD-Portals
 1.  Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com/) an.
 2.  Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
-3.  Wählen Sie unter **Verwalten** die Option **Organisationsbeziehungen** aus.
-4.  Wählen Sie **Settings**aus.
+3.  Wählen Sie **Externe Identitäten** > **Einstellungen für externe Zusammenarbeit** aus.
 5.  Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschauversion)** die Option **Ja** aus.
  
 ### <a name="to-opt-in-using-powershell"></a>So abonnieren Sie mithilfe von PowerShell
@@ -139,8 +138,7 @@ Es dauert möglicherweise einige Minuten, bis die Kündigungsaktion für das Abo
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>So deaktivieren Sie die Vorschauversion mithilfe des Azure AD-Portals
 1.  Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com/) an.
 2.  Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
-3.  Wählen Sie unter **Verwalten** die Option **Organisationsbeziehungen** aus.
-4.  Wählen Sie **Settings**aus.
+3.  Wählen Sie **Externe Identitäten** > **Einstellungen für externe Zusammenarbeit** aus.
 5.  Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschauversion)** die Option **Nein** aus.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>So deaktivieren Sie die Vorschauversion mithilfe von PowerShell
