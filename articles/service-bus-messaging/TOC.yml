@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: Anhalten und Reaktivieren von Messagingentitäten
           href: entity-suspend.md
+        - name: Verwenden von Service Bus Explorer zum Ausführen von Datenvorgängen für Service Bus
+          href: explorer.md
         - name: Verwenden von ARM-Vorlagen
           href: service-bus-resource-manager-overview.md
           items:

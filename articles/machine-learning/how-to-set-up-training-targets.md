@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 625efcce7305cd7b1dd415a286e6b1e92682cc0a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616832"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588121"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Mehr über das [Übermitteln von Experimenten](#submit) finden Sie am Ende diese
 
 Um das Modelltraining mit beliebten Frameworks zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Kalkulatoren-Klasse.  Diese Klasse erlaubt es Ihnen, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn). Es wird empfohlen, einen Schätzwert für das Training zu verwenden, da es eingebettete Objekte wie Umgebungs- oder RunConfiguration-Objekte automatisch für Sie erstellt. Wenn Sie mehr Kontrolle darüber haben möchten, wie diese Objekte erstellt werden, und angeben möchten, welche Pakete für Ihre Experimentausführung installiert werden sollen, befolgen Sie [diese Schritte](#amlcompute), um Ihre Trainingsexperimente mithilfe eines RunConfiguration-Objekts an ein Azure Machine Learning Compute zu übermitteln.
 
-Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Kalkulatoren, um die Verwendung dieser Frameworks zu vereinfachen.
+Azure Machine Learning bietet spezifische Schätzer für [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) und [Ray RLlib](how-to-use-reinforcement-learning.md).
 
 Weitere Informationen finden Sie unter [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md).
 
@@ -64,7 +64,7 @@ Weitere Informationen finden Sie unter [Trainieren von ML-Modellen mit Kalkulato
 
 Mit ML-Pipelines können Sie Ihren Workflow durch Einfachheit, Geschwindigkeit, Portabilität und Wiederverwendung optimieren. Beim Erstellen von Pipelines mit Azure Machine Learning können Sie sich auf Ihre Fachkenntnisse (Machine Learning) und nicht auf die Infrastruktur und Automatisierung konzentrieren.
 
-ML-Pipelines werden in mehreren **Schritten** erstellt, bei denen es sich um unterschiedliche Recheneinheiten in der Pipeline handelt. Jeder Schritt kann unabhängig ausgeführt werden und isolierte Computeressourcen verwenden. Dadurch können mehrere Datenanalysten gleichzeitig an derselben Pipeline arbeiten, ohne dass die Computeressourcen überlastet werden. Außerdem ist es so einfacher, für jeden Schritt verschiedene Computetypen/-größen zu verwenden.
+ML-Pipelines werden in mehreren **Schritten** erstellt, bei denen es sich um unterschiedliche Recheneinheiten in der Pipeline handelt. Jeder Schritt kann unabhängig ausgeführt werden und isolierte Computeressourcen verwenden. Durch diesen Ansatz können mehrere Datenanalysten gleichzeitig an derselben Pipeline arbeiten, ohne dass die Computeressourcen überlastet werden. Außerdem ist es so einfacher, für jeden Schritt verschiedene Computetypen/-größen zu verwenden.
 
 > [!TIP]
 > ML-Pipelines können beim Trainieren von Modellen Laufzeitkonfiguration oder Kalkulatoren verwenden.
@@ -99,26 +99,12 @@ Sie können Azure Machine Learning Compute verwenden, um den Trainingsprozess au
 
 Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
 
+> [!TIP]
+> Cluster können in der Regel auf bis zu 100 Knoten skaliert werden, solange Ihr Kontingent für die Anzahl der erforderlichen Kerne ausreicht. Standardmäßig werden Cluster mit aktivierter Kommunikation zwischen den Knoten des Clusters eingerichtet, um beispielsweise MPI-Aufträge zu unterstützen. Sie können Ihre Cluster jedoch auf 1.000 Knoten skalieren, indem Sie einfach [ein Supportticket einreichen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) und eine Whitelist für Ihr Abonnement, den Arbeitsbereich oder einen bestimmten Cluster anfordern, um die Kommunikation zwischen den Knoten zu deaktivieren. 
 
-Sie können eine Azure Machine Learning Compute-Umgebung bedarfsgesteuert beim Planen einer Ausführung oder als persistente Ressource erstellen.
+Azure Machine Learning Compute kann in mehreren Ausführungen wiederverwendet werden. Compute kann für andere Benutzer im Arbeitsbereich freigegeben werden und wird zwischen den Ausführungen beibehalten. Dabei werden Knoten basierend auf der Anzahl der übermittelten Ausführungen und der Einstellung „max_nodes“ für Ihren Cluster automatisch hoch- oder herunterskaliert. Die Einstellung „min_nodes“ steuert die Mindestanzahl verfügbarer Knoten.
 
-#### <a name="run-based-creation"></a>Ausführungsbasierte Erstellung
-
-Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird automatisch für Ihre Ausführung erstellt. Das Computeziel wird nach Abschluss der Ausführung automatisch gelöscht. 
-
-> [!IMPORTANT]
-> Die ausführungsbasierte Erstellung von Azure Machine Learning Compute ist zurzeit als Vorschauversion verfügbar. Verwenden Sie die ausführungsbasierte Erstellung nicht, wenn Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen nutzen. Um Hyperparameteroptimierung oder automatisches maschinelles Lernen zu verwenden, erstellen Sie stattdessen ein [persistentes Computeziel](#persistent).
-
-1.  **Erstellen, Anfügen und Konfigurieren**: Die ausführungsbasierte Erstellung führt alle notwendigen Schritte aus, um das Computeziel mit der Laufzeitkonfiguration zu erstellen, anzufügen und zu konfigurieren.  
-
-  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
-
-
-Nachdem Sie nun die Computeressource angefügt und Ihre Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](#submit).
-
-#### <a name="persistent-compute"></a><a id="persistent"></a>Persistente Computeressource
-
-Eine persistente Azure Machine Learning Compute-Ressource kann für mehrere Aufträge wiederverwendet werden. Sie kann für andere Benutzer im Arbeitsbereich freigegeben werden und bleibt zwischen Aufträgen erhalten.
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
 
 1. **Erstellen und Anfügen**: Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstellen, geben Sie die Eigenschaften **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte. Die Computeressource skaliert automatisch auf Null herunter, wenn sie nicht benötigt wird.   Dedizierte VMs werden erstellt, um Ihre Aufträge bei Bedarf auszuführen.
     
@@ -380,7 +366,7 @@ Nachdem Sie eine Laufzeitkonfiguration erstellt haben, verwenden Sie sie zum Aus
 > [!IMPORTANT]
 > Wenn Sie eine Trainingsausführung übermitteln, wird eine Momentaufnahme des Verzeichnisses, das Ihre Trainingsskripts enthält, erstellt und an das Computeziel gesendet. Sie wird auch als Teil des Experiments in Ihrem Arbeitsbereich gespeichert. Wenn Sie Dateien ändern und die Ausführung erneut übermitteln, werden nur die geänderten Dateien hochgeladen.
 >
-> Wenn Sie verhindern möchten, dass Dateien von der Momentaufnahme erfasst werden, müssen Sie eine [GITIGNORE](https://git-scm.com/docs/gitignore)- oder `.amlignore`-Datei im Verzeichnis erstellen und diesem die Dateien hinzufügen. Für die `.amlignore`-Datei werden die gleiche Syntax und die gleichen Muster wie für die [GITIGNORE](https://git-scm.com/docs/gitignore)-Datei verwendet. Wenn beide Dateien vorhanden sind, hat die `.amlignore`-Datei Vorrang.
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 > 
 > Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -498,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Beachten Sie den Abschnitt *arguments* in der Laufzeitkonfiguration and *parameter space* in der HyperDrive-Konfiguration. Diese Abschnitte enthalten die Befehlszeilenargumente, die an das Trainingsskript übergeben werden sollen. Der Wert in der Laufzeitkonfiguration bleibt für jede Iteration gleich, während der Bereich in der HyperDrive-Konfiguration iteriert wird. Geben Sie nicht das gleiche Argument in beiden Dateien an.
 
-Weitere Einzelheiten zu diesen ```az ml```-CLI-Befehlen und zum vollständigen Satz von Argumenten finden Sie in der [Referenzdokumentation](reference-azure-machine-learning-cli.md).
+Weitere Einzelheiten zu diesen ```az ml```-CLI-Befehlen finden Sie in der [Referenzdokumentation](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

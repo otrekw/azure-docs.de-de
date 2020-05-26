@@ -10,7 +10,7 @@
       href: internet-analyzer-create-test-portal.md
     - name: "Erstellen eines Internet\_Analyzer-Tests mithilfe der Befehlszeilenschnittstelle"
       href: internet-analyzer-cli.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Einbetten des Clients
       href: internet-analyzer-embed-client.md
@@ -30,8 +30,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Vorschau-SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

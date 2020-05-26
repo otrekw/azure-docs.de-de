@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Erkennen von Sprache aus einem Blobspeicher
           href: quickstarts/from-blob.md
-        - name: Aussprachebewertung mit Referenzeingabe
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Anleitungen
       items:
         - name: Auswählen eines Spracherkennungsmodus
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: Tools
   items:
-    - name: SPX
+    - name: Speech-Befehlszeilenschnittstelle
+      displayName: SPX
       items:
-        - name: Was ist SPX?
+        - name: Worum handelt es sich bei der Speech-Befehlszeilenschnittstelle?
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: SPX-Grundlagen
+        - name: Grundlagen der Speech-Befehlszeilenschnittstelle
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

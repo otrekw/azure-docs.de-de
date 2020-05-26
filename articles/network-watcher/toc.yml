@@ -182,8 +182,8 @@
       href: frequently-asked-questions.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Dienstupdates

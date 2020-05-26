@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Synapse Analytics: Spark-Auftragsdefinition für Synapse'
-description: In diesem Tutorial erfahren Sie, wie Sie Spark-Auftragsdefinitionen mithilfe von Azure Synapse Analytics erstellen und an einen Synapse Spark-Pool übermitteln.
+title: 'Tutorial – Apache Spark für Azure Synapse Analytics: Apache Spark-Auftragsdefinition für Synapse'
+description: 'Tutorial: Erstellen Sie Spark-Auftragsdefinitionen mithilfe von Azure Synapse Analytics, und übermitteln Sie sie an einen Pool für Apache Spark für Azure Synapse Analytics.'
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5fc9dffaa73d195c842381b6682a00e9834c0fe7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425909"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587934"
 ---
 # <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Tutorial: Erstellen von Apache Spark-Auftragsdefinitionen für Synapse Spark-Pools mithilfe von Azure Synapse Analytics
 
@@ -85,7 +85,7 @@ Vor dem Übermitteln einer Spark-Auftragsdefinition müssen Sie zunächst Dateie
 
    * Wählen Sie unter **Sprache** die Option **Spark (Scala)** aus.
 
-    |  Eigenschaft   | Beschreibung   |  
+    |  Eigenschaft   | BESCHREIBUNG   |  
     | ----- | ----- |  
     |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Spark-Auftragsdefinition ein.  In diesem Tutorial wird `job definition sample` verwendet. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden.|  
     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine JAR-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. |
@@ -102,7 +102,7 @@ Vor dem Übermitteln einer Spark-Auftragsdefinition müssen Sie zunächst Dateie
 
    * Wählen Sie unter **Sprache** die Option **PySpark (Python)** aus.
 
-    |  Eigenschaft   | Beschreibung   |  
+    |  Eigenschaft   | BESCHREIBUNG   |  
     | ----- | ----- |  
     |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Spark-Auftragsdefinition ein.  In diesem Tutorial wird `job definition sample` verwendet. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden.|  
     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine PY-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen.|
@@ -118,7 +118,7 @@ Vor dem Übermitteln einer Spark-Auftragsdefinition müssen Sie zunächst Dateie
 
    * Wählen Sie unter **Sprache** die Option **.NET Spark (C#/F#)** aus.
 
-    |  Eigenschaft   | Beschreibung   |  
+    |  Eigenschaft   | BESCHREIBUNG   |  
     | ----- | ----- |  
     |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Spark-Auftragsdefinition ein.  In diesem Tutorial wird `job definition sample` verwendet. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden.|  
     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie in Ihrem Speicher eine ZIP-Datei aus, die Ihre Anwendung vom Typ „.NET für Spark“ enthält (ausführbare Hauptdatei, DLLs mit benutzerdefinierten Funktionen und andere erforderliche Dateien). Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen.|
