@@ -3,18 +3,18 @@ title: 'Verwaltete Instanz: Verbindungstypen'
 description: Erfahren Sie mehr über die Verbindungstypen verwalteter Instanzen
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7df26590ec1514edcab24a1af9d85048b332d92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819454"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773642"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Verwaltete Azure SQL-Datenbank-Instanz: Verbindungstypen
 

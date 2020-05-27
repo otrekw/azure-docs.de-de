@@ -3,7 +3,7 @@ title: Konfigurieren einer verwalteten Instanz
 description: Hier erfahren Sie, wie Sie eine verwaltete Azure SQL-Datenbank-Instanz konfigurieren und verwalten.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 56d605a165281b980f7780c5649cc42ba95f2728
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638028"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773388"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Verwenden einer verwalteten Instanz in Azure SQL-Datenbank
 

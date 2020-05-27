@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 29967c5f8d452fbf66d9a121357415176139b39d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564518"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774082"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge
 
@@ -136,11 +136,11 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgef�
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  
-1.    Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
+1. Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
-1.    Fügen Sie der lokalen Freigabe Daten hinzu.
+1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  

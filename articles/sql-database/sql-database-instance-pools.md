@@ -3,7 +3,7 @@ title: Instanzenpools (Vorschauversion)
 description: In diesem Artikel werden Azure SQL-Datenbank-Instanzenpools beschrieben (Vorschau).
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a418972b78750dbed90f0148aac45dbcc2617f8e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878152"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773082"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Was sind SQL-Datenbank-Instanzenpools (Vorschau)?
 

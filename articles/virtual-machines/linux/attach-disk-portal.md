@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969357"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774197"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -179,6 +179,7 @@ Writing superblocks and filesystem accounting information: done
 Das Hilfsprogramm „fdisk“ benötigt interaktive Eingaben und ist daher nicht ideal für die Verwendung in Automatisierungsskripts. Allerdings kann für das [Parted](https://www.gnu.org/software/parted/)-Hilfsprogramm ein Skript erstellt werden, das sich dann besser in Automatisierungsszenarios eignet. Das Hilfsprogramm „Parted“ kann zum Partitionieren und Formatieren eines Datenträgers verwendet werden. In der folgenden exemplarischen Vorgehensweise verwenden wir einen neuen Datenträger/Dev/Quelldomänencontroller und formatieren ihn mithilfe des [XFS](https://xfs.wiki.kernel.org/)-Dateisystems.
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 Wie oben gezeigt verwenden wir das [partprobe](https://linux.die.net/man/8/partprobe)-Hilfsprogramm, um sicherzustellen, dass der Kernel die neue Partition und das neue Dateisystem sofort erkennt. Wenn „partprobe“ nicht verwendet werden kann, können die Befehle „blkid“ oder „lslbk“ nicht sofort die UUID für das neue Dateisystem zurückgeben.
