@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit einem Peernetzwerk in Azure Lab Services | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Peerverbindung zwischen Ihrem Labnetzwerk und einem anderen Netzwerk herstellen. Sie können z.B. Ihr lokales Schul- oder Universitätsnetzwerk mit dem virtuellen Netzwerk eines Labs in Azure verbinden.
+description: Hier erfahren Sie, wie Sie eine Peerverbindung zwischen Ihrem Labnetzwerk und einem anderen Netzwerk herstellen. Sie können z. B. Ihr lokales Organisations- oder Schul-/Universitätsnetzwerk mit dem virtuellen Netzwerk eines Labs in Azure verbinden.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 556a32a111149fe5ade3b11fee9c732c935de289
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188003"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592014"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services
 
@@ -46,11 +46,16 @@ Während Sie ein [neues Labkonto erstellen](tutorial-setup-lab-account.md), kön
 
 ### <a name="address-range"></a>Adressbereich
 
-Es gibt auch eine Option, um einen **Adressbereich** für virtuelle Computer für die Labs bereitzustellen.  Die Eigenschaft **Adressbereich** ist nur verfügbar, wenn **Virtuelles Peernetzwerk** für das Lab aktiviert ist.  Wenn der Adressbereich bereitgestellt wird, werden alle virtuellen Computer in den Labs unter dem Lab-Konto in diesem Adressbereich erstellt. Der Adressbereich muss in CIDR-Notation (z. B. 10.20.0.0/20) angegeben werden und darf sich nicht mit vorhandenen Adressbereichen überschneiden.  Wenn Sie einen Adressbereich angeben, ist es wichtig, die Anzahl von *Labs* zu berücksichtigen, die erstellt werden sollen. Wählen Sie einen Adressbereich, der für die geplante Anzahl von Labs geeignet ist. Lab Services geht von maximal 512 virtuellen Computern pro Lab aus.  Bei einem IP-Bereich mit „/23“ kann beispielsweise nur ein Lab erstellt werden.  Ein Bereich mit „/21“ ermöglicht das Erstellen von vier Labs.
+Es gibt auch eine Option, um einen **Adressbereich** für virtuelle Computer für die Labs bereitzustellen.  Die Eigenschaft **Adressbereich** ist nur gültig, wenn ein **Virtuelles Peernetzwerk** für das Lab aktiviert ist. Wenn der Adressbereich bereitgestellt wird, werden alle virtuellen Computer in den Labs unter dem Lab-Konto in diesem Adressbereich erstellt. Der Adressbereich muss in CIDR-Notation (z. B. 10.20.0.0/20) angegeben werden und darf sich nicht mit vorhandenen Adressbereichen überschneiden.  Wenn Sie einen Adressbereich angeben, ist es wichtig, die Anzahl von *Labs* zu berücksichtigen, die erstellt werden sollen. Wählen Sie einen Adressbereich, der für die geplante Anzahl von Labs geeignet ist. Lab Services geht von maximal 512 virtuellen Computern pro Lab aus.  Bei einem IP-Bereich mit „/23“ kann beispielsweise nur ein Lab erstellt werden.  Ein Bereich mit „/21“ ermöglicht das Erstellen von vier Labs.
 
-Wenn kein **Adressbereich** angegeben ist, verwendet Lab Services den standardmäßigen Adressbereich, der von Azure beim Erstellen des virtuellen Netzwerks bereitgestellt wird, das als Peernetzwerk Ihres virtuellen Netzwerks konfiguriert werden soll.  Für den Bereich ist häufig etwas wie „10.x.0.0/16“ angegeben.  Dies kann zu überlappenden IP-Bereichen führen. Geben Sie daher entweder einen Adressbereich in den Labeinstellungen an, oder überprüfen Sie den Adressbereich Ihres virtuellen Netzwerks, für das das Peering durchgeführt werden soll.
+Wenn kein **Adressbereich** angegeben ist, verwendet Lab Services den standardmäßigen Adressbereich, der von Azure beim Erstellen des virtuellen Netzwerks bereitgestellt wird, das als Peernetzwerk Ihres virtuellen Netzwerks konfiguriert werden soll.  Für den Bereich ist häufig etwas wie „10.x.0.0/16“ angegeben.  Dies kann zu überlappenden IP-Bereichen führen. Geben Sie daher entweder einen Adressbereich in den Lab-Einstellungen an, oder überprüfen Sie den Adressbereich Ihres virtuellen Netzwerks, für das das Peering durchgeführt werden soll.
 
-## <a name="configure-after-the-lab-is-created"></a>Konfigurieren nach Erstellen des Labs
+> [!NOTE]
+> Bei der Erstellung des Labs kann ein Fehler auftreten, wenn das Lab-Konto mit einem virtuellen Netzwerk gepeert ist, aber einen zu engen IP-Adressbereich besitzt. Im Adressbereich kann der Speicher ausgehen, wenn im Lab-Konto zu viele Labs vorhanden sind (jedes Lab verwendet 512 Adressen). 
+> 
+> Wenn die Erstellung des Labs fehlschlägt, wenden Sie sich an den Besitzer/Administrator Ihres Lab-Kontos, und fordern Sie die Vergrößerung des Adressbereichs an. Der Administrator kann den Adressbereich mithilfe der im Abschnitt [Angeben eines Adressbereichs für virtuelle Computer in einem Lab-Konto](#specify-an-address-range-for-vms-in-the-lab-account) beschriebenen Schritte vergrößern. 
+
+## <a name="configure-after-the-lab-account-is-created"></a>Konfigurieren nach Erstellen des Labkontos
 
 Die gleiche Eigenschaft kann über die Registerkarte **Labkonfiguration** der Seite **Labkonto** aktiviert werden, wenn Sie zum Zeitpunkt der Erstellung des Labkontos kein Peernetzwerk eingerichtet haben. Änderungen an dieser Einstellung gelten nur für die Labs, die nach der Änderung erstellt werden. Wie Sie in der Abbildung sehen, können Sie die Option **Virtuelles Peernetzwerk** für Labs im Labkonto aktivieren oder deaktivieren.
 
@@ -60,6 +65,21 @@ Wenn Sie ein virtuelles Netzwerk für das Feld **Virtuelles Peernetzwerk** ausw�
 
 > [!IMPORTANT]
 > Die Einstellung für das virtuelle Peernetzwerk gilt nur für Labs, die nach dem Durchführen der Änderung erstellt werden, nicht für vorhandene Labs.
+
+
+## <a name="specify-an-address-range-for-vms-in-the-lab-account"></a>Angeben eines Adressbereichs für VMs im Lab-Konto
+Das folgende Verfahren besteht aus Schritten zum Angeben eines Adressbereichs für VMs im Lab. Wenn Sie den Bereich aktualisieren, den Sie zuvor angegeben haben, gilt der geänderte Adressbereich nur für virtuelle Computer, die nach der Änderung erstellt werden. 
+
+Hier werden einige Einschränkungen zur Angabe des Adressbereichs aufgeführt, die Sie beachten sollten. 
+
+- Das Präfix muss kleiner als oder gleich 23 sein. 
+- Wenn ein virtuelles Netzwerk mittels Peering mit dem Labkonto verbunden ist, darf sich der angegebene Adressbereich nicht mit dem Adressbereich des mittels Peering verbundenen virtuellen Netzwerks überschneiden.
+
+1. Wählen Sie auf der Seite **Labkonto** im Menü auf der linken Seite die Option **Labeinstellungen**.
+2. Geben Sie für das Feld **Adressbereich** den Adressbereich für virtuelle Computer an, die im Lab erstellt werden. Der Adressbereich muss in der CIDR-Notation (Classless Inter-Domain Routing) angegeben werden (Beispiel: 10.20.0.0/23). Virtuelle Computer im Lab werden in diesem Adressbereich erstellt.
+3. Wählen Sie auf der Symbolleiste **Speichern** aus. 
+
+    ![Konfigurieren des Adressenbereichs](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

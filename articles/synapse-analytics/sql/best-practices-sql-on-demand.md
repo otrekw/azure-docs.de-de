@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692146"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592932"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Bewährte Methoden für SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Sobald eine Drosselung erkannt wird, verfügt SQL On-Demand über eine integrier
 
 Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
-- Konvertieren Sie das CSV- in das Parquet-Format – Parquet ist ein Spaltenformat. Da es komprimiert ist, sind die Dateigrößen kleiner als CSV-Dateien mit denselben Daten. SQL On-Demand benötigt weniger Zeit und Speicheranforderungen, um es zu lesen.
+- Konvertieren Sie das CSV- und JSON-Format in das Parquet-Format – Parquet ist ein Spaltenformat. Da es komprimiert ist, sind die Dateien kleiner als CSV- oder JSON-Dateien mit denselben Daten. SQL On-Demand benötigt weniger Zeit und Speicheranforderungen, um es zu lesen.
 - Wenn eine Abfrage auf eine einzelne große Datei ausgerichtet ist, lohnt es sich, diese in mehrere kleinere Dateien aufzuteilen.
 - Versuchen Sie, die Größe Ihrer CSV-Datei unter 10 GB zu halten.
 - Es ist besser, gleich große Dateien für einen einzelnen OPENROWSET-Pfad oder einen Speicherort für die Tabelle zu verwenden.
@@ -118,7 +118,14 @@ Weitere Informationen finden Sie unter [Dateinamen](develop-storage-files-overvi
 > [!TIP]
 > Wandeln Sie das Ergebnis der Funktionen „filepath“ und „fileinfo“ immer in einen geeigneten Datentyp um. Achten Sie, wenn Sie Zeichendatentypen verwenden, unbedingt auf die Verwendung der richtigen Länge.
 
+> [!NOTE]
+> Funktionen zur Partitionsentfernung („filepath“ und „fileinfo“) werden derzeit nicht für externe Tabellen unterstützt, außer denen, die automatisch für jede in Apache Spark für Azure Synapse Analytics erstellte Tabelle erzeugt werden.
+
 Wenn Ihre gespeicherten Daten nicht partitioniert sind, sollten Sie eine Partitionierung in Erwägung ziehen, damit Sie diese Funktionen verwenden können, um Abfragen zu optimieren, die auf diese Dateien ausgerichtet sind. Bei der [Abfrage partitionierter Spark-Tabellen](develop-storage-files-spark-tables.md) aus SQL On-Demand ist die Abfrage automatisch nur auf die benötigten Dateien ausgerichtet.
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>Verwenden von PARSER_VERSION 2.0 zum Abfragen von CSV-Dateien
+
+Beim Abfragen von CSV-Dateien können Sie einen leistungsoptimierten Parser verwenden. Ausführliche Informationen finden Sie unter [PARSER_VERSION](develop-openrowset.md).
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Verwenden von CETAS zum Verbessern von Abfrageleistung und Verknüpfungen
 
@@ -127,6 +134,12 @@ Wenn Ihre gespeicherten Daten nicht partitioniert sind, sollten Sie eine Partiti
 Sie können CETAS verwenden, um häufig verwendete Teile von Abfragen, z. B. verknüpfte Verweistabellen, zu einem neuen Satz von Dateien zu speichern. Als nächstes können Sie eine Verknüpfung zu dieser einzelnen externen Tabelle herstellen, anstatt gemeinsame Verknüpfungen in mehreren Abfragen zu wiederholen.
 
 Da CETAS Parquet-Dateien generiert, werden Statistiken automatisch erstellt, wenn die erste Abfrage auf diese externe Tabelle ausgerichtet ist, was zu einer verbesserten Leistung führt.
+
+## <a name="aad-pass-through-performance"></a>Leistung von AAD-Pass-Through
+
+SQL On-Demand ermöglicht Ihnen den Zugriff auf Dateien im Speicher über AAD-Pass-Through oder SAS-Anmeldeinformationen. Die Leistung von AAD-Pass-Through kann im Vergleich zu SAS geringer sein. 
+
+Wenn Sie eine bessere Leistung benötigen, verwenden Sie SAS-Anmeldeinformationen für den Speicherzugriff, bis die Leistung von AAD-Pass-Through verbessert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
