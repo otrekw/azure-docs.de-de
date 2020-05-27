@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933809"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592473"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -74,14 +74,14 @@ Wählen Sie im Dialogfeld **Reset virtual machine(s)** (Virtuelle(n) Computer zu
 
 
 ## <a name="set-password-for-vms"></a>Festlegen eines Kennworts für virtuelle Computer
-Ein Labbesitzer (Kursleiter) kann die Kennwörter für virtuelle Computer zum Zeitpunkt der Erstellung des Labs (Assistent für Lab-Erstellung) oder nach dem Erstellen des Labs (auf der Seite **Vorlage**) festlegen und zurücksetzen. 
+Ein Labbesitzer (Lehrkraft) kann die Kennwörter für virtuelle Computer zum Zeitpunkt der Erstellung des Labs (Assistent für Lab-Erstellung) oder nach dem Erstellen des Labs (auf der Seite **Vorlage**) festlegen und zurücksetzen. 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Festlegen des Kennworts zum Zeitpunkt der Lab-Erstellung
-Ein Labbesitzer (Kursleiter) kann auf der Seite **Virtual machine credentials** (Anmeldeinformationen für virtuelle Computer) im Assistenten zur Lab-Erstellung ein Kennwort für die virtuellen Computer im Lab festlegen.
+Ein Labbesitzer (Lehrkraft) kann auf der Seite **VM-Anmeldeinformationen** im Assistenten zur Lab-Erstellung ein Kennwort für die virtuellen Computer im Lab festlegen.
 
 ![Fenster „Neues Lab“](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-Durch das Aktivieren/Deaktivieren der Option **Use same password for all virtual machines** (Dasselbe Kennwort für alle virtuellen Computer verwenden) auf dieser Seite der Kursleiter festlegen, ob für alle virtuellen Computer im Lab dasselbe Kennwort verwendet werden soll oder ob die Kursteilnehmer eigene Kennwörter für ihre virtuellen Computer festlegen können. Standardmäßig ist diese Einstellung für alle Images mit den Betriebssystemen Windows und Linux mit Ausnahme von Ubuntu aktiviert. Wenn diese Einstellung deaktiviert ist, werden die Kursteilnehmer bei der ersten Verbindung mit der VM aufgefordert, ein Kennwort festzulegen. 
+Durch das Aktivieren/Deaktivieren der Option **Dasselbe Kennwort für alle VMs verwenden** auf dieser Seite kann eine Lehrkraft festlegen, ob für alle virtuellen Computer im Lab dasselbe Kennwort verwendet werden soll oder ob die Kursteilnehmer eigene Kennwörter für ihre virtuellen Computer festlegen können. Standardmäßig ist diese Einstellung für alle Images mit den Betriebssystemen Windows und Linux mit Ausnahme von Ubuntu aktiviert. Wenn diese Einstellung deaktiviert ist, werden die Kursteilnehmer bei der ersten Verbindung mit der VM aufgefordert, ein Kennwort festzulegen. 
 
 ### <a name="reset-password-later"></a>Späteres Zurücksetzen des Kennworts
 
@@ -91,7 +91,7 @@ Durch das Aktivieren/Deaktivieren der Option **Use same password for all virtual
     ![Dialogfeld „Kennwort festlegen“](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>Herstellen einer Verbindung virtuellen Computern von Kursteilnehmern
-Der Ersteller des Labs (Instruktor/Professor) kann eine Verbindung mit einer Kursteilnehmer-VM herstellen, wenn die folgenden Bedingungen erfüllt sind: 
+Der Ersteller des Labs (Lehrkraft) kann eine Verbindung mit dem virtuellen Computer eines Kursteilnehmers herstellen, wenn die folgenden Bedingungen erfüllt sind: 
 
 - Die Option **Gleiches Kennwort für alle virtuellen Computer verwenden** wurde beim Erstellen des Labs ausgewählt.
 - Die VM wird ausgeführt. 
@@ -101,7 +101,7 @@ Der Ersteller des Labs (Instruktor/Professor) kann eine Verbindung mit einer Kur
 ![Schaltfläche „Herstellen einer Verbindung mit Kursteilnehmer-VM“](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Wenn der Professor den virtuellen Computer startet und eine Verbindung mit ihm herstellt, ist das Kontingent für Schüler und Studenten davon nicht betroffen. 
+> Wenn die Lehrkraft den virtuellen Computer startet und eine Verbindung mit ihm herstellt, ist das Kontingent für Kursteilnehmer davon nicht betroffen. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Exportieren einer Liste mit virtuellen Computern in eine CSV-Datei
 

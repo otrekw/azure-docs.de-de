@@ -3,15 +3,15 @@ title: Firewalleinstellungen für Azure Lab Services
 description: Erfahren Sie, wie Sie die öffentliche IP-Adresse und den Portnummernbereich von virtuellen Computern in einem Lab ermitteln, damit den Firewallregeln Informationen hinzugefügt werden können.
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443453"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589532"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Firewalleinstellungen für Azure Lab Services
 
@@ -24,7 +24,7 @@ Jedes Lab verwendet eine einzelne öffentliche IP-Adresse und mehrere Ports.  Di
 
 ## <a name="find-public-ip-for-a-lab"></a>Ermitteln der öffentlichen IP-Adresse für ein Lab
 
-Die öffentlichen IP-Adressen für die einzelnen Labs werden im Labkonto der Lab-Dienste auf der Seite **Alle Labs** aufgeführt.  Anweisungen zum Auffinden der Seite **Alle Labs** finden Sie unter [Verwalten der Labs in einem Labkonto](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Die öffentlichen IP-Adressen für die einzelnen Labs werden im Labkonto der Lab-Dienste auf der Seite **Alle Labs** aufgeführt.  Anweisungen zum Auffinden der Seite **Alle Labs** finden Sie unter [Anzeigen der Labs in einem Labkonto](manage-labs.md#view-labs-in-a-lab-account).  
 
 > [!div class="mx-imgBorder"]
 > ![Seite „Alle Labs“](../media/how-to-configure-firewall-settings/all-labs-properties.png)

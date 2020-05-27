@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77592219"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591776"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -38,8 +38,8 @@ In diesem Tutorial richten Sie ein Lab mit virtuellen Computern für Ihre Klasse
 Nachfolgend ist der typische Workflow für die Verwendung von Azure Lab Services beschrieben:
 
 1. Der Ersteller eines Labkontos kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufügen. Der Ersteller/Administrator des Labkontos fügt der Rolle **Ersteller des Labs** beispielsweise Lehrkräfte hinzu, damit diese Labs für ihre Kurse erstellen können. 
-2. Anschließend erstellen die Lehrkräfte Labs mit virtuellen Computern für ihre Klassen und senden Registrierungslinks an die Kursteilnehmer. 
-3. Schüler/Studenten verwenden zum Registrieren für das Lab den Registrierungslink, den sie von Lehrkräften erhalten. Nach der Registrierung können sie virtuelle Computer in den Labs für Unterrichtsarbeit und Hausaufgaben nutzen. 
+2. Anschließend erstellen die Lehrkräfte Labs mit virtuellen Computern für ihre Kurse und senden Registrierungslinks an die Kursteilnehmer. 
+3. Kursteilnehmer verwenden zum Registrieren für das Lab den Registrierungslink, den sie von Lehrkräften erhalten. Nach der Registrierung können sie virtuelle Computer in den Labs für Unterrichtsarbeit und Hausaufgaben nutzen. 
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 In diesem Schritt erstellen Sie ein Lab für Ihre Klasse in Azure. 

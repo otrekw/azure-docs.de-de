@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7831e554fcca20134d5cf8608481ff0c82eb8a0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184672"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591997"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services
 
-Momentan können Sie mithilfe von Azure Lab Services in einem Lab eine Vorlage für virtuelle Computer einrichten und jedem Ihrer Benutzer jeweils eine Kopie zur Verfügung zu stellen. Wenn Sie aber ein Dozent sind und Unterricht zu Netzwerken, Sicherheit oder IT geben, müssen Sie möglicherweise für jeden Ihrer Kursteilnehmer eine Umgebung bereitstellen, in der mehrere VMs über ein Netzwerk miteinander kommunizieren können.
+Momentan können Sie mithilfe von Azure Lab Services in einem Lab eine Vorlage für virtuelle Computer einrichten und jedem Ihrer Benutzer jeweils eine Kopie zur Verfügung zu stellen. Wenn Sie aber eine Lehrkraft sind und Unterricht zu Netzwerken, Sicherheit oder IT geben, müssen Sie möglicherweise für jeden Ihrer Kursteilnehmer eine Umgebung bereitstellen, in der mehrere VMs über ein Netzwerk miteinander kommunizieren können.
 
 Eine geschachtelte Virtualisierung ermöglicht Ihnen, innerhalb einer Vorlage für virtuelle Computer in einem Lab eine Umgebung mit mehreren virtuellen Computern zu erstellen. Wenn diese Vorlage veröffentlicht wird, wird für jeden Benutzer im Lab ein eingerichteter virtueller Computer bereitgestellt, in dem weitere virtuelle Computer eingeschlossen sind.  Dieser Artikel behandelt die Vorgehensweise zum Einrichten der geschachtelten Virtualisierung auf einem Vorlagencomputer in Azure Lab Services.
 

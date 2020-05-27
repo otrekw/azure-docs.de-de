@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337284"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636998"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie
 
@@ -162,7 +162,7 @@ In einem technischen RESTful-Profil empfiehlt es sich, die Sprache bzw. das Gebi
 
 ## <a name="handling-error-messages"></a>Verarbeiten von Fehlermeldungen
 
-Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z. B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API die HTTP-Fehlermeldung 409 (Antwortstatuscode „Konflikt“) zurückgeben. Weitere Informationen finden Sie unter [Technisches RESTful-Profil](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
+Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z. B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API die HTTP-Fehlermeldung 409 (Antwortstatuscode „Konflikt“) zurückgeben. Weitere Informationen finden Sie unter [Technisches RESTful-Profil](restful-technical-profile.md#returning-error-message).
 
 Dies kann nur durch Aufrufen eines technischen REST-API-Profils aus einem technischen Validierungsprofil erreicht werden. Dadurch kann der Benutzer die Daten auf der Seite korrigieren und die Validierung bei der Seitenübermittlung erneut ausführen.
 

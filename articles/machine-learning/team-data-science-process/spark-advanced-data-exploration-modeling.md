@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718650"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634513"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
 
@@ -54,11 +54,11 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6-Notebooks
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Enthält Themen im Notebook 1 und Modellentwicklung mit Hyperparameteroptimierung und Kreuzvalidierung.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Enthält Themen im Notebook 1 und Modellentwicklung mit Hyperparameteroptimierung und Kreuzvalidierung.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei bietet Informationen zum Durchführen von Datenuntersuchungen, Modellieren und Bewerten in Spark 2.0-Clustern.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei bietet Informationen zum Durchführen von Datenuntersuchungen, Modellieren und Bewerten in Spark 2.0-Clustern.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
