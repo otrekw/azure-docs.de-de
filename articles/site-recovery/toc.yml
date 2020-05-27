@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: Löschen eines Tresors
               href: delete-vault.md
-    - name: Site Recovery Unterstützung für Näherungsplatzierungsgruppen
+    - name: Site Recovery für Näherungsplatzierungsgruppen
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: Notfallwiederherstellung für Apps
       items:

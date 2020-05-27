@@ -5,27 +5,18 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535654"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649034"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
 In diesem Artikel erfahren Sie, wie [Azure App Service](overview.md) zum Schutz Ihrer Web-App, Ihres Mobile App-Back-Ends, Ihrer API-App sowie Ihrer [Funktions-App](/azure/azure-functions/) beiträgt. Außerdem erfahren Sie, wie Sie Ihre App mithilfe der integrierten App Service-Features noch besser schützen können.
 
-Die Plattformkomponenten von App Service werden aktiv geschützt und gehärtet. Zu diesen Komponenten zählen unter anderem virtuelle Azure-Computer, Speicher, Netzwerkverbindungen und Webframeworks sowie Verwaltungs- und Integrationsfeatures. Die Konformität von App Service wird kontinuierlich und streng geprüft, um Folgendes zu gewährleisten:
-
-- Ihre App-Ressourcen sind zu ihrem [Schutz](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) von den Azure-Ressourcen anderer Kunden isoliert.
-- [VM-Instanzen und Laufzeitsoftware werden regelmäßig aktualisiert](overview-patch-os-runtime.md), um auf neu entdeckte Sicherheitsrisiken zu reagieren. 
-- Die Weitergabe von Geheimnissen (etwa Verbindungszeichenfolgen) zwischen Ihrer App und anderen Azure-Ressourcen (etwa [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)) erfolgt innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Gespeicherte Geheimnisse werden immer verschlüsselt.
-- Die gesamte Kommunikation über die App Service-Verbindungsfeatures (beispielsweise [Hybridverbindung](app-service-hybrid-connections.md)) wird verschlüsselt. 
-- Verbindungen mit Remoteverwaltungstools wie Azure PowerShell, Azure CLI, Azure SDKs und REST-APIs werden jeweils verschlüsselt.
-- Das Bedrohungsmanagement schützt die Infrastruktur und die Plattform rund um die Uhr vor Schadsoftware sowie vor DDoS-Angriffen (Distributed Denial of Service), MITM-Angriffen (Man in the Middle) und anderen Bedrohungen.
-
-Weitere Informationen zur Infrastruktur und Plattform-Sicherheit in Azure finden Sie unter [Azure Trust Center](https://azure.microsoft.com/overview/trusted-cloud/).
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 In den folgenden Abschnitten wird gezeigt, wie Sie Ihre App Service-App noch besser vor Bedrohungen schützen.
 

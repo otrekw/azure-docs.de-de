@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 53e5bf4f770ce986af2f3572bd6c1ef4cd9e3c2b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605245"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680558"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: Resource Manager-Vorlage
 
-In dieser Schnellstartanleitung wird mithilfe einer Resource Manager-Vorlage eine Azure Firewall-Instanz mit exemplarischen IP-Adressgruppen erstellt, die in einer Netzwerk- und in einer Anwendungsregel verwendet werden.
-
-Eine IP-Adressgruppe ist eine Ressource der obersten Ebene und ermöglicht es, IP-Adressen, Bereiche und Subnetze in einem einzelnen Objekt zu definieren und zu gruppieren. Dies ist bei der Verwaltung von IP-Adressen in Azure Firewall-Regeln hilfreich. IP-Adressen können entweder manuell eingegeben oder aus einer Datei importiert werden.
+In dieser Schnellstartanleitung wird mithilfe einer Resource Manager-Vorlage eine Azure Firewall-Instanz mit exemplarischen IP-Adressgruppen erstellt, die in einer Netzwerk- und in einer Anwendungsregel verwendet werden. Eine IP-Adressgruppe ist eine Ressource der obersten Ebene und ermöglicht es, IP-Adressen, Bereiche und Subnetze in einem einzelnen Objekt zu definieren und zu gruppieren. Dies ist bei der Verwaltung von IP-Adressen in Azure Firewall-Regeln hilfreich. IP-Adressen können entweder manuell eingegeben oder aus einer Datei importiert werden.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,22 +31,21 @@ Mit dieser Vorlage werden eine Azure Firewall-Instanz sowie IP-Adressgruppen un
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
 - [**Microsoft.Network/ipGroups**](/azure/templates/microsoft.network/ipGroups)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

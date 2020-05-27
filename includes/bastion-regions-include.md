@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78668348"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721112"
 ---
 >[!NOTE]
 >Wir arbeiten mit Hochdruck daran, weitere Regionen hinzuzufügen. Wenn eine neue Region hinzukommt, wird sie in diese Liste aufgenommen.
@@ -35,6 +35,8 @@ ms.locfileid: "78668348"
 * Frankreich, Mitte
 * Nordeuropa
 * Norwegen, Osten
+* Norwegen, Westen
+* Schweiz, Norden
 * UK, Süden
 * UK, Westen
 * Europa, Westen
@@ -49,6 +51,7 @@ ms.locfileid: "78668348"
 * Korea, Mitte
 * Korea, Süden
 * Asien, Südosten
+* Indien, Mitte
 * Indien, Westen
 
 **Naher Osten und Afrika**

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178492"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673542"
 ---
 | Resource | Standardlimit | Maximales Limit | 
 | --- | --- | --- |
@@ -29,6 +29,9 @@ ms.locfileid: "67178492"
 | Verbindungen pro Einheit und Tag für Free-Tarif |20 |20 |
 | Verbindungen pro Einheit pro Tag für Standard-Tarif |1\.000 |1\.000|
 | Enthaltene Nachrichten pro Einheit und Tag für Free-Tarif|20.000 |20.000 |
+| Zusätzliche Nachrichten pro Einheit und Tag für Free-Tarif|0 |0 |
 | Enthaltene Nachrichten pro Einheit und Tag für Standard-Tarif|1\.000.000 |1\.000.000 |
+| Zusätzliche Nachrichten pro Einheit und Tag für Standard-Tarif|Unbegrenzt |Unbegrenzt |
 
-Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern. 
+Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern.
+

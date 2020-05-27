@@ -543,6 +543,8 @@
       items:
         - name: Sicherheitshinweise für die Datenverschiebung
           href: data-movement-security-considerations.md
+        - name: Datenzugriffsstrategien
+          href: data-access-strategies.md
         - name: IP-Adressen von Azure Integration Runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Speichern von Anmeldeinformationen in Azure Key Vault

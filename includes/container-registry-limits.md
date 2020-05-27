@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117156"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683416"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,9 +26,9 @@ ms.locfileid: "79117156"
 | webhooks | 2 | 10 | 500 |
 | Georeplikation | – | – | [Unterstützt][geo-replication] |
 | Inhaltsvertrauensstellung | – | – | [Unterstützt][content-trust] |
-| Zugriff auf das virtuelle Netzwerk | – | – | [Vorschau][vnet] |
-| Integration privater Links | – | – | [Vorschau][plink] |
-| Vom Kunden verwaltete Schlüssel | – | – | [Vorschau][cmk] |
+| Private Link mit privaten Endpunkten | – | – | [Unterstützt][plink] |
+| Dienstendpunkt-VNET-Zugriff | – | – | [Vorschau][vnet] |
+| Vom Kunden verwaltete Schlüssel | – | – | [Unterstützt][cmk] |
 | Repositorybezogene Berechtigungen | – | – | [Vorschau][token]|
 | &bull; Token | – | – | 20.000 |
 | &bull; Bereichszuordnungen | – | – | 20.000 |

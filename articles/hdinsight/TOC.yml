@@ -762,8 +762,12 @@
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Verwenden von Python mit Apache Hive und Apache Pig
               href: ./hadoop/python-udf-hdinsight.md
-            - name: Apache Hive mit Apache Spark
+            - name: HWC-Integration mit Apache Spark und Apache Hive
               href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: HWC und Apache Spark-Vorgänge
+              href: ./interactive-query/apache-hive-warehouse-connector-operations.md
+            - name: HWC-Integration mit Apache Zeppelin
+              href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
             - name: Apache Hive mit Hadoop
               href: ./hadoop/hdinsight-use-hive.md
             - name: Verwenden der Apache Hive-Ansicht

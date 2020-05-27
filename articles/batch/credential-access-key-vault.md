@@ -1,14 +1,14 @@
 ---
 title: Sicherer Zugriff auf Key Vault mit Batch
 description: Erfahren Sie, wie Sie mit Azure Batch programmgesteuert auf Ihre Anmeldeinformationen aus Key Vault zugreifen können.
-ms.topic: how-to
+ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725719"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117453"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Sicherer Zugriff auf Key Vault mit Batch
 

@@ -17,6 +17,9 @@
     - name: Ausführen Ihrer ersten Abfrage – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 'Ausführen Ihrer ersten Abfrage: Python'
+      displayName: 'library, azure-mgmt, cli'
+      href: first-query-python.md
     - name: Bereitstellen einer freigegebenen Abfrage – ARM-Vorlage
       displayName: 'resource manager, queries'
       href: shared-query-template.md
@@ -87,13 +90,13 @@
       href: ./reference/supported-tables-resources.md
 - name: Ressourcen
   items:
+    - name: 'GitHub: Governancebeispiele'
+      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
+    - name: YouTube-Kanal zu Governance
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: GitHub-Repository mit Beispielen
-      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
     - name: UserVoice
       href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345061'
-    - name: YouTube-Kanal zu Governance
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109596"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696433"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -33,7 +33,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
 * [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
 * [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]
+* [Konfigurieren einzelner Logikschichten in separaten Verfügbarkeitsgruppen]
 * [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
 * [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]
 
@@ -98,13 +98,6 @@ Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträger
 
 Wenn Sie [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events) abonnieren, wird Ihr virtueller Computer über geplante Wartungsereignisse unterrichtet, die Ihren virtuellen Computer beeinträchtigen können. Wenn geplante Ereignisse aktiviert sind, erhält Ihr virtueller Computer ein Mindestmaß an Zeit, bevor die Wartungsaktivität ausgeführt wird. Beispielsweise werden Host-BS-Updates, die Ihren virtuellen Computer beeinträchtigen könnten, als Ereignisse in die Warteschlange gestellt, die die Auswirkung sowie den Zeitpunkt angeben, zu dem die Wartung durchgeführt wird, wenn keine Aktion ausgeführt wird. Geplante Ereignisse werden auch in eine Warteschlange gestellt, wenn Azure den bevorstehenden Hardwarefehler erkennt, der sich auf Ihren virtuellen Computer auswirken könnte, sodass Sie entscheiden können, wann die Reparatur ausgeführt werden soll. Kunden können das Ereignis nutzen, um Aufgaben vor der Wartung auszuführen, z.B. Speichern des Status, Failover zum sekundären Standort usw. Nachdem Sie Ihre Logik zur ordnungsgemäßen Behandlung des Wartungsereignisses fertig gestellt haben, können Sie das ausstehende geplante Ereignis genehmigen, um der Plattform zu ermöglichen, die Wartung fortzusetzen.
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitszonen und Verfügbarkeitsgruppen
-Wenn Ihre virtuellen Computer fast alle identisch sind und Ihre Anwendung auf die gleiche Weise unterstützen, wird empfohlen, für jede Ebene der Anwendung eine Verfügbarkeitszone oder Verfügbarkeitsgruppe zu konfigurieren.  Wenn Sie zwei unterschiedliche Ebenen (Stufen, Tiers) in derselben Verfügbarkeitszone oder -gruppe platzieren, können alle virtuellen Computer auf derselben Anwendungsebene gleichzeitig neu gestartet werden. Indem Sie mindestens zwei virtuelle Computer in einer Verfügbarkeitszone oder -gruppe für jede Ebene konfigurieren, gewährleisten Sie, dass mindestens ein virtueller Computer auf jeder Ebene verfügbar ist.
-
-Beispielsweise können Sie alle virtuellen Computer aus dem Front-End Ihrer Anwendung, auf denen IIS, Apache und Nginx ausgeführt werden, in einer einzigen Verfügbarkeitszone oder -gruppe anordnen. Stellen Sie sicher, dass in derselben Verfügbarkeitszone oder -gruppe nur virtuelle Front-End-Computer platziert sind. Stellen Sie analog dazu sicher, dass sich virtuelle Computer der Datenebene in ihrer eigenen Verfügbarkeitszone oder -gruppe befinden. Dazu gehören beispielsweise Ihre replizierten virtuellen SQL Server-Computer oder Ihre virtuellen MySQL-Computer.
-
-<!--Image reference-->
-   ![Anwendungsebenen](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinieren eines Lastenausgleichs mit Verfügbarkeitszonen oder -gruppen
 Kombinieren Sie den Azure-Lastenausgleich ([Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md)) mit einer Verfügbarkeitszone oder -gruppe, um höchste Anwendungsresilienz zu erzielen. Der Azure-Lastenausgleich verteilt den Datenverkehr auf mehrere virtuelle Computer. In die virtuellen Computer der Standardebene ist der Azure-Lastenausgleich bereits integriert. Der Azure Load Balancer ist aber nicht auf allen Ebenen des virtuellen Computers verfügbar. Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich zwischen virtuellen Computern](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
@@ -116,7 +109,6 @@ Ein Tutorial dazu, wie ein Lastenausgleich über Verfügbarkeitszonen hinweg vor
 
 <!-- Link references -->
 [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
 [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]: #use-managed-disks-for-vms-in-an-availability-set

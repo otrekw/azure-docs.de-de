@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592949"
+ms.locfileid: "83656197"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Azure Synapse Analytics mithilfe von Webtools
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - [Synapse Analytics-Arbeitsbereich](quickstart-create-workspace.md)
-- [Apache Spark-Pool](quickstart-create-apache-spark-pool.md)
+- [Apache Spark-Pool](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -133,7 +133,9 @@ Structured Query Language (SQL) ist die gängigste und am häufigsten verwendete
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Ihre Daten werden von Azure Synapse in Azure Data Lake Storage gespeichert. Nicht genutzte Spark-Instanzen können gefahrlos heruntergefahren werden. Für einen Apache Spark-Pool in Azure Synapse fallen Gebühren an, solange er ausgeführt wird (selbst, wenn er nicht genutzt wird). Die Gebühren für den Pool sind erheblich höher als die Kosten für den Speicher. Daher ist es wirtschaftlich sinnvoll, nicht genutzte Spark-Instanzen herunterzufahren.
+Ihre Daten werden von Azure Synapse in Azure Data Lake Storage gespeichert. Nicht genutzte Spark-Instanzen können gefahrlos heruntergefahren werden. Für einen Apache Spark-Pool in Azure Synapse fallen Gebühren an, solange er ausgeführt wird (selbst, wenn er nicht genutzt wird). 
+
+Da die Gebühren für den Pool deutlich höher sind als die Kosten für den Speicher, ist es wirtschaftlich sinnvoll, nicht genutzte Spark-Instanzen herunterzufahren.
 
 Beenden Sie alle verbundenen Sitzungen (Notebooks), um sicherzustellen, dass die Spark-Instanz heruntergefahren wird. Der Pool wird heruntergefahren, wenn die im Apache Spark-Pool angegebene **Leerlaufzeit** erreicht wird. Sie können auch auf der Statusleiste am unteren Rand des Notebooks die Option **Sitzung beenden** auswählen.
 

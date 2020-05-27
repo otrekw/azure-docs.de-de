@@ -12,17 +12,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4b6a2481c18314a44470a020033ffdc4ba1d7259
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380030"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860051"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 In dieser Schnellstartanleitung erfahren Sie anhand eines Codebeispiels, wie in einer Angular-Single-Page-Webanwendung (Single-Page Application, SPA) Benutzer mit persönlichen Microsoft-Konten und mit Geschäfts-, Schul- oder Unikonten angemeldet werden können. Eine Angular-SPA kann auch ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen.
 
@@ -142,7 +139,7 @@ Wählen Sie **Anmelden** aus, wenn die Anwendung im Browser geladen wurde. Bei d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich als Nächstes im Angular-Tutorial darüber, wie Sie einen Benutzer anmelden und Token abrufen.
+Informieren Sie sich als Nächstes im Angular-Tutorial darüber, wie Sie einen Benutzer anmelden und Token abrufen:
 
 > [!div class="nextstepaction"]
 > [Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)

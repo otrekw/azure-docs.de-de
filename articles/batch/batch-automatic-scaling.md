@@ -1,15 +1,16 @@
 ---
 title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
-ms.topic: how-to
+ms.topic: article
 ms.date: 10/24/2019
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780248"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113560"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -22,7 +23,7 @@ Sie können die automatische Skalierung beim Erstellen eines Pools oder für ein
 In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich Ihre Formeln für die automatische Skalierung zusammensetzen. Dazu zählen Variablen, Operatoren, Operationen und Funktionen. Es wird erläutert, wie verschiedene Metriken zu Compute-Ressourcen und Aufgaben in Batch abgerufen werden können. Sie können diese Metriken verwenden, um die Knotenanzahl des Pools basierend auf Ressourcenverbrauch und Aufgabenstatus automatisch anzupassen. Anschließend wird beschrieben, wie Sie mit der REST-API und der .NET-API von Batch eine Formel erstellen und die automatische Skalierung für einen Pool aktivieren. Zum Abschluss werden nun verschiedene Beispielformeln gezeigt.
 
 > [!IMPORTANT]
-> Wenn Sie ein Batch-Konto erstellen, können Sie die [Kontokonfiguration](accounts.md) angeben, die bestimmt, ob Pools in einem Batch-Dienstabonnement (Standard) oder in Ihrem Benutzerabonnement zugeordnet werden. Wenn Sie Ihr Batch-Konto mit der Batch-Standarddienstkonfiguration erstellt haben, ist Ihr Konto auf eine maximale Anzahl von Kernen beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst skaliert Computeknoten nur bis zu diesem Kernspeichergrenzwert. Aus diesem Grund erreicht der Batch-Dienst möglicherweise nicht die Zielanzahl der von einer Formel für die automatische Skalierung angegebenen Computeknoten. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
+> Wenn Sie ein Batch-Konto erstellen, können Sie die [Kontokonfiguration](batch-api-basics.md#account) angeben, die bestimmt, ob Pools in einem Batch-Dienstabonnement (Standard) oder in Ihrem Benutzerabonnement zugeordnet werden. Wenn Sie Ihr Batch-Konto mit der Batch-Standarddienstkonfiguration erstellt haben, ist Ihr Konto auf eine maximale Anzahl von Kernen beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst skaliert Computeknoten nur bis zu diesem Kernspeichergrenzwert. Aus diesem Grund erreicht der Batch-Dienst möglicherweise nicht die Zielanzahl der von einer Formel für die automatische Skalierung angegebenen Computeknoten. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
 >
 >Wenn Sie Ihr Konto mit der Konfiguration „Benutzerabonnement“ erstellt haben, teilt Ihr Konto das Kernkontingent für das Abonnement. Weitere Informationen finden Sie unter [Virtual Machines-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) in [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 >

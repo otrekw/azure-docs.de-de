@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605204"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680541"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen – Resource Manager-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen bereitzustellen.
-
-Die bereitgestellte Firewall verfügt über Regeln einer NAT-Regelsammlung, die RDP-Verbindungen mit zwei virtuellen Windows Server 2019-Computern ermöglichen.
+In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen bereitzustellen. Die bereitgestellte Firewall verfügt über Regeln einer NAT-Regelsammlung, die RDP-Verbindungen mit zwei virtuellen Windows Server 2019-Computern ermöglichen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,21 +33,20 @@ Mit dieser Vorlage werden eine Azure Firewall-Instanz mit zwei öffentlichen IP
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

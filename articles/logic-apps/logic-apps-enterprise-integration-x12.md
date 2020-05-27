@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613075"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739531"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -168,7 +168,7 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
    Die **Sendeeinstellungen** sind in diese Abschnitte unterteilt:
 
    * [Identifiers (Bezeichner)](#outbound-identifiers)
-   * [Bestätigung](#outbound-acknowledgement)
+   * [Bestätigung ](#outbound-acknowledgement)
    * [Schemas](#outbound-schemas)
    * [Umschläge](#outbound-envelopes)
    * [Kontrollversionsnummer](#outbound-control-version-number)
@@ -319,8 +319,8 @@ In dieser Tabelle sind die betroffenen Nachrichtentypen, alle Varianten und die 
 | Nachrichtentyp oder -variante |  BESCHREIBUNG | Dokumentversionsnummer (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Informationen im Gesundheitswesen: Statusbenachrichtigung (USA) | 005010X212 |
-| 837_I | Geltendmachung von Ansprüchen bei der Krankenkasse – Zahnmedizin (USA) | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | Geltendmachung von Ansprüchen bei der Krankenkasse – Institution (USA) | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | Geltendmachung von Ansprüchen bei der Krankenkasse – Institution (USA) | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Geltendmachung von Ansprüchen bei der Krankenkasse – Zahnmedizin (USA) | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | Geltendmachung von Ansprüchen bei der Krankenkasse – Professionell (USA) | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 

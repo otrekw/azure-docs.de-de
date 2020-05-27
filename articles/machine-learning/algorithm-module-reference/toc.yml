@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: Bearbeiten von Metadaten
       href: edit-metadata.md
+    - name: Gruppieren von Daten in Containern
+      href: group-data-into-bins.md
     - name: Verknüpfen von Daten
       href: join-data.md
     - name: Normalisieren von Daten
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: Textanalyse
   items:
+    - name: Konvertieren eines Word-Dokuments in das PDF-Format
+      href: convert-word-to-vector.md
     - name: Extrahieren von N-Gramm-Funktionen aus Text
       href: extract-n-gram-features-from-text.md
     - name: Feature Hashing
